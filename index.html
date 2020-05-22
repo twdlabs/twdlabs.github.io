@@ -8,25 +8,9 @@
 		<link href="sunhtml.png" rel="icon" type="image/png"/>
 		<title>GitHub (CIS 255)</title>
 
+		<link href="git.css" rel="stylesheet"/>
 		<style type="text/css">
-
-			hr {border-width:.5px; margin:1em;}
-			img {height:200px;}
-
-			code {background-color:#BBB; display:block; padding:.5em 1em; border-radius:1em;}
-			code div {display:inline-block;}
-			code div.tag {color:dodgerblue;}
-			code div.attr {color:green;}
-			code div.value {color:gold;}
-
-			form {background-color:#BBB; display:block; font-family:sans-serif; padding:.5em 1em; border-radius:1em;}
-			form label {margin-top:.5em; display:block;}
-			form input {margin:.5em 0; border-radius:.5em; font-size:1em; padding:.25em .5em; width:100%; box-sizing:border-box;}
-			form select {margin:.5em 0; border-radius:.5em; font-size:1em; padding:.25em .5em; width:100%; box-sizing:border-box;}
-			form button {margin:.5em 0; border-radius:.5em; font-size:1.25em; padding:.5em; width:100%; background-color:dodgerblue; color:#FFF;}
-
-			footer {text-align:center;}
-
+			.hidden {display:none;}
 		</style>
 	</head>
 	<body>
@@ -39,11 +23,14 @@
 
 		<p>Hello, GitHub!</p>
 
-		<img src="sunhtml.png"/>
+
+		<img id="sun" src="sunhtml.png"/>
+
+		<div class="hidden">This is a hidden message</div>
 
 		<hr>
 
-		<p>Code for my HTML-only navbar above:</p>
+		<p>Code for my <span style="font-weight:bold;">HTML-only</span> navbar above:</p>
 		<code>
 			&lt;<div class="tag">nav</div>&gt;<br/>
 				&nbsp;&nbsp;&lt;<div class="tag">a</div> <div class="attr">href</div>=&quot;<div class="value">https://atg973.github.io/</div>&quot;&gt;GitHub&lt;/<div class="tag">a</div>&gt; *<br/>
@@ -78,6 +65,23 @@
 
 		<hr>
 
+		HTML Validation:
+		<img id="html" src="">
+
+		CSS Validation:
+		<img id="css" src="">
+
+		<hr>
+
+		Box Model:
+		<img id="boxmodel" src="boxmodel.png">
+
+		<hr>
+
+		<a href="bootstrap.html">Bootstrap 4 Layout</a>
+
+		<hr>
+
 		About The Internet:
 		<p>"Global Internet traffic in 2020 will be equivalent to 95x the volume of the entire Global Internet in 2005." (<a href="https://www.cisco.com/c/dam/m/en_us/solutions/service-provider/vni-forecast-highlights/pdf/Global_2020_Forecast_Highlights.pdf">Source</a>)</p>
 
@@ -90,6 +94,16 @@
 
 		About HTML:
 		<p>"The World Wide Web is composed primarily of HTML documents transmitted from web servers to web browsers using the Hypertext Transfer Protocol (HTTP)." (<a href="https://en.m.wikipedia.org/wiki/HTML">Source</a>)</p>
+
+		<hr>
+
+		About CSS:
+		<p>"" (<a href="https://"></a>)</p>
+
+		<hr>
+
+		About Bootstrap:
+		<p>"" (<a href="https://"></a>)</p>
 
 		<hr>
 
