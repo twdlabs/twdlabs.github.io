@@ -1,0 +1,8 @@
+
+html,body {height:100%; margin:0;}
+div#container {background-color:rgba(30,144,255,0.75); padding:.5em 1em; min-height:100%;}
+div#container h1 {font-size:1.25rem;}
+div#container ul {padding-left:1.5em; /*margin:0;*/}
+div#container li {/*list-style:none;*/ /*display:inline-block;*/}
+div#container a {text-decoration:none; color:#fff;}
+div#container a:hover {color:#BBB; /*font-weight:500;*/}
