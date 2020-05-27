@@ -1,0 +1,26 @@
+
+div#container nav {position:sticky;}
+
+div#container hr {border-width:.5px; margin:1em;}
+div#container #sun {height:200px; box-shadow:0px 8px 4px rgba(0,0,0,0.25);}
+
+div#container code {background-color:#BBB; display:block; padding:.5em 1em; border-radius:1em;}
+div#container code span {display:inline-block;}
+div#container code span.tag {color:dodgerblue;}
+div#container code span.attr {color:green;}
+div#container code span.value {color:gold;}
+
+div#container form {background-color:#BBB; display:block; font-family:sans-serif; padding:.5em 1em; border-radius:1em; transition:border-radius 1s;}
+div#container form:hover {border-radius:0;}
+div#container form label {margin-top:.5em; display:block;}
+div#container form input {margin:.5em 0; border-radius:.5em; font-size:1em; padding:.25em .5em; width:100%; box-sizing:border-box;}
+div#container form select {margin:.5em 0; border-radius:.5em; font-size:1em; padding:.25em .5em; width:100%; box-sizing:border-box;}
+div#container form button {margin:.5em 0; border-radius:.5em; font-size:1.25em; padding:.5em; width:100%; background-color:dodgerblue; color:#FFF;}
+
+div#container img#html {display:block;}
+div#container img#css {display:block;}
+div#container img#boxmodel {display:block;}
+
+div#container p a {display:inline;}
+
+div#container footer {text-align:center;}
