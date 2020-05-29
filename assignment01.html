@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="sunhtml.ico" rel="icon" type="image/png"/>
+		<title>Assignment 1</title>
+
+		<!-- Bootstrap 4 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<link href="https://atg973.github.io/bs4/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://atg973.github.io/bs4/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://atg973.github.io/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://atg973.github.io/bs4/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<link href="css/theme.css" rel="stylesheet"/>
+		<link href="css/assignment01.css" rel="stylesheet"/>
+	</head>
+	<body>
+
+		<div id="container">
+
+			<nav>
+				<a href="index.html">GitHub</a> *
+				<a href="http://webp.svsu.edu/~atitusgl/">M Drive</a> *
+				<a href="http://csis.svsu.edu/~atitusgl/">CSIS Server</a>
+			</nav>
+
+			<p>Hello, GitHub!</p>
+
+			<h1>Assignment 1</h1>
+
+			<img id="sun" src="pic/sunhtml.png" alt="Sun" />
+
+			<hr>
+
+			<p>Code for my <span style="font-weight:bold;">HTML-only</span> navbar above:</p>
+			<code>
+				&lt;<span class="tag">nav</span>&gt;<br/>
+					&nbsp;&nbsp;&lt;<span class="tag">a</span> <span class="attr">href</span>=&quot;<span class="value">https://atg973.github.io/</span>&quot;&gt;GitHub&lt;/<span class="tag">a</span>&gt; *<br/>
+					&nbsp;&nbsp;&lt;<span class="tag">a</span> <span class="attr">href</span>=&quot;<span class="value">http://webp.svsu.edu/~atitusgl/</span>&quot;&gt;M Drive&lt;/<span class="tag">a</span>&gt; *<br/>
+					&nbsp;&nbsp;&lt;<span class="tag">a</span> <span class="attr">href</span>=&quot;<span class="value">http://csis.svsu.edu/~atitusgl/</span>&quot;&gt;CSIS Server&lt;/<span class="tag">a</span>&gt;<br/>
+				&lt;/<span class="tag">nav</span>&gt;<br/>
+			</code>
+
+			<hr>
+
+			<form>
+
+				<!-- <h3> Lead Capture Form</h3> -->
+
+				<label for="fName">First name:</label>
+				<input type="text" id="fName" name="fName"><br/>
+
+				<label for="email">Email address:</label>
+				<input type="email" id="email" name="email"><br/>
+
+				<label for="grade">Main Interest:</label>
+				<select id="grade">
+					<option value="js">JavaScript</option>
+					<option value="css">Cascading Style Sheets</option>
+					<option value="html">HyperText Markup Language</option>
+				</select>
+
+				<br/>
+				<button type="submit" name="submit">Submit</button>
+				
+			</form>
+
+			<hr>
+
+			About The Internet:
+			<p>"Global Internet traffic in 2020 will be equivalent to 95x the volume of the entire Global Internet in 2005." (<a href="https://www.cisco.com/c/dam/m/en_us/solutions/service-provider/vni-forecast-highlights/pdf/Global_2020_Forecast_Highlights.pdf">Source</a>)</p>
+
+			<hr>
+
+			About Domains and Hosting:
+			<p>"Because the Internet is based on IP addresses, not domain names, every Web server requires a Domain Name System (DNS) server to translate domain names into IP addresses." (<a href="https://www.webopedia.com/TERM/D/domain_name.html">Source</a>)</p>
+
+			<hr>
+
+			About HTML:
+			<p>"The World Wide Web is composed primarily of HTML documents transmitted from web servers to web browsers using the Hypertext Transfer Protocol (HTTP)." (<a href="https://en.m.wikipedia.org/wiki/HTML">Source</a>)</p>
+
+			<hr>
+
+			<footer>
+				<p>CIS 255 (Spring 2020)</p>
+				<p>
+					<a href="https://jigsaw.w3.org/css-validator/check/referer">
+						<img src="https://jigsaw.w3.org/css-validator/images/vcss"
+					alt="Valid CSS!" style="border:0; width:88px; height:31px;">
+					</a>
+				</p>
+			</footer>
+			
+		</div>
+
+	</body>
+</html>

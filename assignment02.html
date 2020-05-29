@@ -6,7 +6,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link href="sunhtml.ico" rel="icon" type="image/png"/>
-		<title>Assignment 1 &amp; 2 (CIS 255)</title>
+		<title>Assignment 2</title>
 
 		<!-- Bootstrap 4 -->
 		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
@@ -21,7 +21,7 @@
 		<link href="css/theme.css" rel="stylesheet"/>
 		<link href="css/assignment02.css" rel="stylesheet"/>
 		<style>
-			div#container .hidden {display:none;}
+			div#container {display:block;}
 		</style>
 	</head>
 	<body>
@@ -29,63 +29,29 @@
 		<div id="container">
 
 			<nav>
-				<a href="https://atg973.github.io/">GitHub</a> *
+				<a href="index.html">GitHub</a> *
 				<a href="http://webp.svsu.edu/~atitusgl/">M Drive</a> *
 				<a href="http://csis.svsu.edu/~atitusgl/">CSIS Server</a>
 			</nav>
 
 			<p>Hello, GitHub!</p>
 
-			<h1>Assignment 1 &amp; 2</h1>
+			<h1>Assignment 2</h1>
 
 			<img id="sun" src="pic/sunhtml.png" alt="Sun" />
+			<span>HTML Sun</span>
 
 			<div class="hidden">This is a hidden message</div>
 
 			<hr>
 
-			<p>Code for my <span style="font-weight:bold;">HTML-only</span> navbar above:</p>
-			<code>
-				&lt;<span class="tag">nav</span>&gt;<br/>
-					&nbsp;&nbsp;&lt;<span class="tag">a</span> <span class="attr">href</span>=&quot;<span class="value">https://atg973.github.io/</span>&quot;&gt;GitHub&lt;/<span class="tag">a</span>&gt; *<br/>
-					&nbsp;&nbsp;&lt;<span class="tag">a</span> <span class="attr">href</span>=&quot;<span class="value">http://webp.svsu.edu/~atitusgl/</span>&quot;&gt;M Drive&lt;/<span class="tag">a</span>&gt; *<br/>
-					&nbsp;&nbsp;&lt;<span class="tag">a</span> <span class="attr">href</span>=&quot;<span class="value">http://csis.svsu.edu/~atitusgl/</span>&quot;&gt;CSIS Server&lt;/<span class="tag">a</span>&gt;<br/>
-				&lt;/<span class="tag">nav</span>&gt;<br/>
-			</code>
-
-			<hr>
-
-			<form>
-
-				<!-- <h3> Lead Capture Form</h3> -->
-
-				<label for="fName">First name:</label>
-				<input type="text" id="fName" name="fName"><br/>
-
-				<label for="email">Email address:</label>
-				<input type="email" id="email" name="email"><br/>
-
-				<label for="grade">Main Interest:</label>
-				<select id="grade">
-					<option value="js">JavaScript</option>
-					<option value="css">Cascading Style Sheets</option>
-					<option value="html">HyperText Markup Language</option>
-				</select>
-
-				<br/>
-				<button type="submit" name="submit">Submit</button>
-				
-			</form>
-
-			<hr>
-
 			<p>
 				HTML Validation:
-				<img id="html" src="pic/html-validation.png" alt="HTML Validation" style="width:100%; max-width:400px;">
+				<img id="html" class="validation" src="pic/html-validation.png" alt="HTML Validation">
 			</p>
 			<p>
 				CSS Validation:
-				<img id="css" src="pic/css-validation.png" alt="CSS Validation" style="width:100%; max-width:400px;">
+				<img id="css" class="validation" src="pic/css-validation.png" alt="CSS Validation">
 			</p>
 
 			<hr>
@@ -95,25 +61,13 @@
 
 			<hr>
 
-			<div style="position:relative; height:400px;">
-				<iframe src="bootstrap.html" style="width:100%; height:100%; border:none;"></iframe>
-				<a href="bootstrap.html" target="_blank" style="display:block; width:100%; height:100%; background-color:rgba(0,0,0,0.5); position:absolute; top:0; left:0; text-align:center; font-size:2em; color:#FFF; text-decoration:none;">Bootstrap 4 Layout<small style="display:block; color:#777;">(Click to open)</small></a>
+			<div class="pageBox">
+				<iframe src="bootstrap.html"></iframe>
+				<a href="bootstrap.html" target="_blank">
+					<h1>Bootstrap 4 Layout</h1>
+					<small>(Click to open)</small>
+				</a>
 			</div>
-
-			<hr>
-
-			About The Internet:
-			<p>"Global Internet traffic in 2020 will be equivalent to 95x the volume of the entire Global Internet in 2005." (<a href="https://www.cisco.com/c/dam/m/en_us/solutions/service-provider/vni-forecast-highlights/pdf/Global_2020_Forecast_Highlights.pdf">Source</a>)</p>
-
-			<hr>
-
-			About Domains and Hosting:
-			<p>"Because the Internet is based on IP addresses, not domain names, every Web server requires a Domain Name System (DNS) server to translate domain names into IP addresses." (<a href="https://www.webopedia.com/TERM/D/domain_name.html">Source</a>)</p>
-
-			<hr>
-
-			About HTML:
-			<p>"The World Wide Web is composed primarily of HTML documents transmitted from web servers to web browsers using the Hypertext Transfer Protocol (HTTP)." (<a href="https://en.m.wikipedia.org/wiki/HTML">Source</a>)</p>
 
 			<hr>
 
