@@ -1,26 +1,17 @@
 
-div#container nav {position:sticky;}
+div#container #sun {height:200px; box-shadow:0px 8px 4px rgba(0,0,0,0.25); display:inline-block;}
 
-div#container hr {border-width:.5px; margin:1em;}
-div#container #sun {height:200px; box-shadow:0px 8px 4px rgba(0,0,0,0.25);}
+div#container .hidden {display:none;}
 
-div#container code {background-color:#BBB; display:block; padding:.5em 1em; border-radius:1em;}
-div#container code span {display:inline-block;}
-div#container code span.tag {color:dodgerblue;}
-div#container code span.attr {color:green;}
-div#container code span.value {color:gold;}
-
-div#container form {background-color:#BBB; display:block; font-family:sans-serif; padding:.5em 1em; border-radius:1em; transition:border-radius 1s;}
-div#container form:hover {border-radius:0;}
-div#container form label {margin-top:.5em; display:block;}
-div#container form input {margin:.5em 0; border-radius:.5em; font-size:1em; padding:.25em .5em; width:100%; box-sizing:border-box;}
-div#container form select {margin:.5em 0; border-radius:.5em; font-size:1em; padding:.25em .5em; width:100%; box-sizing:border-box;}
-div#container form button {margin:.5em 0; border-radius:.5em; font-size:1.25em; padding:.5em; width:100%; background-color:dodgerblue; color:#FFF;}
-
-div#container img#html {display:block;}
-div#container img#css {display:block;}
+div#container img.validation {display:block; width:100%; max-width:400px;}
 div#container img#boxmodel {display:block;}
 
-div#container p a {display:inline;}
+div#container img {border-radius:1em; transition:border-radius 1s;}
+div#container img:hover {border-radius:0;}
 
-div#container footer {text-align:center;}
+div#container div.pageBox {position:relative; height:400px;}
+div#container div.pageBox iframe {width:100%; height:100%; border:none;}
+div#container div.pageBox a {display:block; width:100%; height:100%; box-sizing:border-box; padding-top:1em; background-color:rgba(0,0,0,0.5); position:absolute; top:0; left:0; text-align:center; font-size:1.5em; color:#FFF; text-decoration:none;}
+div#container div.pageBox a small {display:block; color:#AAA;}
+
+div#container p a {display:inline;}
