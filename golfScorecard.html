@@ -21,11 +21,20 @@
 
 		<!-- <link href="css/theme.css" rel="stylesheet"/> -->
 		<style type="text/css">
-			div#container table {background-color:#DDD; border:2px solid #000; width:100%; box-sizing:border-box; text-align:center;}
-			div#container table tr {}
-			div#container table .circle {border:2px solid dodgerblue; border-radius:50%;}
-			div#container table .square {border:2px solid dodgerblue;}
-			div#container table button.btn {padding-top:0; padding-bottom:2px; /*width:50%;*/}
+			div#container {padding:.1rem; transition:padding .5s;}
+			div#container h1 {padding:.25rem; text-align:center;}
+			div#container table {border:2px solid #000; width:100%; box-sizing:border-box; text-align:center; border-collapse:separate; margin:0;}
+			/*div#container table th,*/
+			div#container table td {padding:.5em; position:relative;}
+			div#container table td::before {position:absolute; top:0; left:50%; transform:translateX(-50%); font-size:.5em;}
+			div#container table td.circle {border:2px solid dodgerblue; border-radius:50%;}
+			div#container table td.circle::before {content:'birdie';}
+			div#container table td.square {border:2px solid dodgerblue;}
+			div#container table td.square::before {content:'bogey'}
+			div#container table button.btn {padding-top:0; padding-bottom:2px;}
+			@media screen and (min-width:576px) {
+				div#container {padding:1.5rem;}
+			}
 		</style>
 		<script type="text/javascript" src="js/golfScorecard.js"></script>
 	</head>
@@ -250,7 +259,7 @@
 				</tr>
 
 				<tr id="row20">
-					<th id="allTotal">-</th>
+					<th>Total</th>
 					<th id="parTotal">-</th>
 					<th id="scoreTotal">-</th>
 					<th id="overTotal">-</th>
