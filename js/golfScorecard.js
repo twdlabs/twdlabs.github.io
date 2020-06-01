@@ -115,10 +115,6 @@ function updateTotals() {
 	for(let i=1 ; i<=18 ; i++) {
 		let row = document.getElementById('row'+i);
 
-		// Add to all total. 
-		var holeTD = row.children[0];
-		if (holeTD.innerHTML!='-') allTotal += Number.parseInt(holeTD.innerHTML);
-
 		// Add to par total. 
 		var parTD = row.children[1];
 		if (parTD.innerHTML!='-') parTotal += Number.parseInt(parTD.innerHTML);
@@ -133,7 +129,6 @@ function updateTotals() {
 	}
 
 	// Display the totals on the page. 
-	document.getElementById('allTotal').innerHTML = allTotal;
 	document.getElementById('parTotal').innerHTML = parTotal;
 	document.getElementById('scoreTotal').innerHTML = scoreTotal;
 	document.getElementById('overTotal').innerHTML = overTotal;
