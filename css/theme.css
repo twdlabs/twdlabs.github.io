@@ -6,7 +6,7 @@ div#container {background-color:rgba(30,144,255,0.75); padding:.5em 1em; min-hei
 div#container nav {position:sticky;}
 
 div#container hr {border-width:.5px; margin:1em;}
-div#container h1 {font-size:1.75rem;}
+div#container h1 {font-size:1.75rem; margin-top:1rem;}
 div#container ul {padding-left:1.5em; /*margin:0;*/}
 div#container li {/*list-style:none;*/ /*display:inline-block;*/}
 div#container a {text-decoration:none; color:#fff;}

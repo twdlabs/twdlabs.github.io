@@ -4,7 +4,7 @@ div#container #sun {height:200px; box-shadow:0px 8px 4px rgba(0,0,0,0.25); displ
 div#container .hidden {display:none;}
 
 div#container img.validation {display:block; width:100%; max-width:400px;}
-div#container img#boxmodel {display:block;}
+div#container img#boxmodel {display:block; max-width:100%;}
 
 div#container img {border-radius:1em; transition:border-radius 1s;}
 div#container img:hover {border-radius:0;}
