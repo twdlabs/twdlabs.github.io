@@ -87,6 +87,9 @@ function resetScore(row) {
 	// Reset the number over par.
 	overTD.innerHTML = '-';
 
+	// Un-highlight birdies and bogeys. 
+	checkStatus(row);
+
 	// Update the totals.
 	updateTotals();
 }
