@@ -1,7 +1,15 @@
 
+// var clubs = loadDistanceList();
+
+
+
+//////////////////////////////////////////////
+// ------ Functions (clubMeNow.html) ------ //
+//////////////////////////////////////////////
+
 
 // Initialize "clubs" array. 
-function loadClubDistances() {
+function loadDistanceList() {
 	var clubs;
 
 	// Load from local storage if array already exists. 
@@ -10,7 +18,7 @@ function loadClubDistances() {
 	}
 	// Create a new array otherwise.
 	else {
-		resetAllClubDistances();
+		resetDistanceList();
 		clubs = JSON.parse( localStorage.getItem('clubs') );
 	}
 
@@ -18,7 +26,19 @@ function loadClubDistances() {
 }
 
 // Create a new "clubs" array. 
-function resetClubDistances() {
+function resetDistanceList() {
+	// Create new 2d array in global variable "clubs". 
+	// Columns...
+	// 0: Sort Position
+	// 1: Club Abbreviation
+	// 2: Club Name
+	// 3: Average Distance
+	// 4: Minimum Distance
+	// 5: Maximum Distance
+	// 6: Number Of Shots
+	// 7: Loft / Degrees
+	// 8: Typical (Men)
+	// 9: Typical (Women)
 	clubs = [
 				[ 199, "Dr","Driver", 	0,0,0,0, 10.5,230,200],
 				[ 300, "3+w","3+ wood", 0,0,0,0, 13.5,210,180],
@@ -35,19 +55,20 @@ function resetClubDistances() {
 				[1299, "Gw","Gap", 		0,0,0,0, 51.0,90,70],
 				[1399, "Sw","Sand", 	0,0,0,0, 56.0,80,60],
 				[1499, "Lw","Lob", 		0,0,0,0, 60.0,60,40],
-				[1599, "abc","Putter", 	0,0,0,0, 60.0,3,3],
+				[1599, "Ptr","Putter", 	0,0,0,0, 60.0,3,3],
 	];
 
-	// Store array in local storage. 
+	// Store the array in local storage. 
 	var str = JSON.stringify(clubs);
 	localStorage.setItem('clubs',str);
 
-	// Refresh screen. 
+	// Refresh the screen. 
 	window.location.href = "clubMeNow.html";
 }
 
+
 // Add data to the table. 
-function populateTable() {
+function populateDistanceList() {
 	// Select the HTML table. 
 	var clubTable = document.getElementById('clubTable');
 
@@ -65,25 +86,132 @@ function populateTable() {
 		var cell5 = row.insertCell(5);	// ("+" button)
 		var cell6 = row.insertCell(6);	// clubName
 
-		// Create an empty cell for each column. 
-		cell0.className = "c_";	// clubAbbrev
-		cell1.className = "c_";	// avgDist
-		cell2.className = "c_";	// minDist
-		cell3.className = "c_";	// maxDist
-		cell4.className = "c_";	// numOfShots
-		cell5.className = "c_";	// ("+" button)
-		cell6.className = "c_";	// clubName
+		// Right align the appropriate cells. 
+		cell0.className = 'CMN_hidden';				// clubAbbrev
+		cell1.className = 'CMN_right CMN_fullHeight';	// avgDist
+		cell2.className = 'CMN_right CMN_hidden';		// minDist
+		cell3.className = 'CMN_right CMN_fullHeight';	// maxDist
+		cell4.className = 'CMN_right CMN_hidden';		// numOfShots
+		cell5.className = '';						// ("+" button)
+		cell6.className = 'CMN_fullHeight';			// clubName
 
-		// Create an empty cell for each column. 
-		cell0.innerHTML = clubs[i][0];	// clubAbbrev
-		cell1.innerHTML = clubs[i][1];	// avgDist
-		cell2.innerHTML = clubs[i][2];	// minDist
-		cell3.innerHTML = clubs[i][3];	// maxDist
-		cell4.innerHTML = clubs[i][4];	// numOfShots
-		cell5.innerHTML = clubs[i][5];	// ("+" button)
-		cell6.innerHTML = clubs[i][6];	// clubName
-
-		// 
-		
+		// Populate table with data from "clubs" array. 
+		cell0.innerHTML = clubs[i][1];				// clubAbbrev
+		cell1.innerHTML = Math.round(clubs[i][3]);	// avgDist
+		cell2.innerHTML = Math.round(clubs[i][4]);	// minDist
+		cell3.innerHTML = Math.round(clubs[i][5]);	// maxDist
+		cell4.innerHTML = Math.round(clubs[i][6]);	// numOfShots
+		cell5.innerHTML = '<button class="btn btn-success CMN_noPadding CMN_fullHeight" onclick="newDistance('+ i +');">&plus;</button>';	// ("+" button)
+		cell6.innerHTML = clubs[i][2];				// clubName
+		// cell6.innerHTML = clubs[i][2] +', '+ clubs[i][7] + '&deg;';	// clubName
 	}
 }
+
+
+
+// Navigate to "Distance Entry" screen. 
+function newDistance(c) {
+	// Save the chosen club. 
+	localStorage.setItem("club",c);
+	// Redirect to the entry form. 
+	window.location.href = "newDistance.html";
+}
+
+
+// TODO: Replace the current "clubs" array with the previous one. 
+function undoLastShot() {
+	// YOUR CODE HERE
+}
+
+// Navigate to "About" screen. 
+function displayAbout() {
+	window.location.href = "clubAbout.html";
+}
+
+// Navigate to "Penalty Info" screen. 
+// TODO: Is this used ?
+function displayPenaltyInfo() {
+	window.location.href = "clubPenaltyInfo.html";
+}
+
+
+
+
+////////////////////////////////////////////////
+// ------ Functions (newDistance.html) ------ //
+////////////////////////////////////////////////
+
+
+// Place precise numbers into stats table.
+function populateStatsTable() {
+	document.getElementById('CMN_club').innerHTML = '<strong>'+ Math.round(clubs[clubRow][1]) +'</strong>';
+	document.getElementById('CMN_min').innerHTML = Math.round(clubs[clubRow][4]);
+	document.getElementById('CMN_avg').innerHTML = '<strong>'+ Math.round(clubs[clubRow][3]) +'</strong>';
+	document.getElementById('CMN_max').innerHTML = Math.round(clubs[clubRow][5]);
+	document.getElementById('CMN_num').innerHTML = Math.round(clubs[clubRow][6]);
+}
+
+// Add fast-entry buttons for pre-set "realistic" distances (in decrements of 5 yards). 
+function addTapEntryBtns() {
+	// Set a reasonable range for the tapEntry buttons.
+	var variation = 30;
+	var avgPlus = Math.round( clubs[clubRow][3] + variation );
+	var avgMinus = Math.max( avgPlus - 2*variation , 0 );
+	if( Math.round(clubs[clubRow][3])==0 ) {
+		avgPlus = 320;
+		avgMinus = 0;
+	}
+
+	// Add buttons to newDistance entry page 
+	var code = '';
+	for (var i=320 ; i>0 ; i-=5) {
+		
+		if( Math.round(clubs[clubRow][3])==i ) {
+			code += '<span class="CMN_green">';
+			code += '<button class="CMN_noPadding CMN_fullHeight CMN_tapEntry CMN_bold" onclick="updateStats('+i+');">';
+			code += i;
+			code += '</button>';
+			code += '</span>';
+		}
+		else {
+			code += '<span>';
+			code += '<button class="CMN_noPadding CMN_fullHeight CMN_tapEntry" onclick="updateStats('+i+');">';
+			code += i;
+			code += '</button>';
+			code += '</span>';
+		}
+		
+	}
+	document.getElementById('CMN_tapEntryBtns').innerHTML = code;
+}
+
+// TODO: Add how many yards left/right of target, lie (fairway, rough, sand, trees). 
+function addYardage() {}
+
+// TODO: Add error checking for distnaces > 400. 
+function checkForErrors() {}
+
+// TODO: Show fast-entry buttons in decrements of 5 yards. 
+function appendTapEntryButtons() {}
+
+// TODO: Update distances based on user-entered value (shotDistance). 
+function updateStats() {}
+
+
+
+
+// Navigate to club distance list screen.
+function cancelEntry() {
+	window.location.href = "clubMeNow.html";
+}
+
+// Navigate to club distance list screen.
+function newClub() {
+	window.location.href = "newClub.html";
+}
+
+
+
+
+
+

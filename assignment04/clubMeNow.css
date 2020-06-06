@@ -1,0 +1,21 @@
+
+div#container {/*padding-top:1em; padding-bottom:1em;*/}
+div#container h1 {/*font-size:2em;*/ text-align:center;}
+div#container h2 {font-size:1.5em;}
+div#container table,
+div#container table th,
+div#container table td {text-align:center; border:1px solid #000;}
+div#container table th {background-color:#5cb85c; /*border-color:#4cae4c;*/}
+div#container table button {padding:0 .5em .1em; margin:0 .25em;}
+div#container .CMN_right {/*text-align:right;*/}
+div#container .CMN_hidden {display:none;}
+div#container .CMN_green_bg {background-color:#caff33;}
+div#container .CMN_green {color:green;}
+div#container .CMN_bold {font-weight:bold;}
+div#container .CMN_fullHeight {/*font-size:4vh;*/ /*font-size:2em;*/}
+div#container .CMN_moreHeight {/*height:6vh;*/ /*font-size:4vh;*/ /*font-size:2em;*/}
+div#container .CMN_noPadding {/*padding:0;*/}
+div#container .CMN_tapEntry {min-width:50px; text-align:center;}
+div#container div.buttonBox {text-align:center; margin:1em 0;}
+div#container hr {border-width:.5px; margin:1em;}
+div#container footer {text-align:center;}
