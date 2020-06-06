@@ -142,6 +142,13 @@ function displayPenaltyInfo() {
 ////////////////////////////////////////////////
 
 
+// TODO: Add how many yards left/right of target, lie (fairway, rough, sand, trees). 
+function addYardage() {}
+
+// TODO: Add error checking for distnaces > 400. 
+function checkForErrors() {}
+
+
 // Place precise numbers into stats table.
 function populateStatsTable() {
 	document.getElementById('CMN_club').innerHTML = '<strong>'+ Math.round(clubs[clubRow][1]) +'</strong>';
@@ -185,19 +192,39 @@ function addTapEntryBtns() {
 	document.getElementById('CMN_tapEntryBtns').innerHTML = code;
 }
 
-// TODO: Add how many yards left/right of target, lie (fairway, rough, sand, trees). 
-function addYardage() {}
-
-// TODO: Add error checking for distnaces > 400. 
-function checkForErrors() {}
-
-// TODO: Show fast-entry buttons in decrements of 5 yards. 
-function appendTapEntryButtons() {}
-
 // TODO: Update distances based on user-entered value (shotDistance). 
-function updateStats() {}
+function updateStats(shotDistance=0) {
+	// shotDistance can be user-entered by fast-entry button (shotDistance = s) or by typed input (shotDistance = 0). 
 
+	// Save the typed input. 
+	if(shotDistance==0) shotDistance = parseInt( document.getElementById('clubVal').value );
 
+	if(parseInt(shotDistance) > 0) {
+		// Save the current "clubs" array for "Undo" functionality. 
+		var str = JSON.stringify(clubs);
+		localStorage.setItem('clubsUndo', str)
+		// Update average. 
+		currentAvg = clubs[clubRow][3];
+		currentNumShots = clubs[clubRow][6];
+		newAvg = (currentAvg*currentNumShots + shotDistance) / (currentNumShots+1);
+		clubs[clubRow][3] = newAvg;
+		// Update shot count. 
+		clubs[clubRow][6] += 1;
+		// Update min. 
+		if(clubs[clubRow][4]==0 || shotDistance<clubs[clubRow][4]) {
+			clubs[clubRow][4] = shotDistance;
+		}
+		// Update max. 
+		if(clubs[clubRow][5]==0 || shotDistance>clubs[clubRow][5]) {
+			clubs[clubRow][5] = shotDistance;
+		}
+		// Save updated stats in local storage. 
+		var str = JSON.stringify(clubs);
+		localStorage.setItem('clubs',str);
+		// Return to home screen. 
+		window.location.href = "clubMeNow.html";
+	}
+}
 
 
 // Navigate to club distance list screen.

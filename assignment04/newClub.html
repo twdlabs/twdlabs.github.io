@@ -26,11 +26,11 @@
 			<h1>Add Club</h1>
 
 			<form action="clubMeNow.html">
-				<input id="clubName" class="form-control CMN_moreHeight" type="text" name="clubName" placeholder="Driver" required="">
+				<input name="clubName" id="clubName" type="text" class="form-control CMN_moreHeight" placeholder="Driver" required />
 
 				<div class="buttonBox">
-					<button class="btn btn-success" onclick="addClub();">✔</button>
-					<button class="btn btn-danger" onclick="cancelClub();">x</button>
+					<button class="btn btn-success CMN_fullHeight" onclick="addClub();">&#10004;</button>
+					<button class="btn btn-danger CMN_fullHeight" onclick="cancelEntry();">&#10008;</button>
 				</div>
 			</form>
 
@@ -44,6 +44,20 @@
 
 		<!-- ClubMeNow Custom JS -->
 		<script src="clubMeNow.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			// Retrieve row of user-chosen club. 
+			var clubRow = parseInt(localStorage.getItem('club'));
+			// Retrieve "clubs" array. 
+			var clubs = JSON.parse(localStorage.getItem('clubs'))
+			// Display full clubName of user-chosen club. 
+			var newClubName;
+			var newClubDistances;
+
+			// TODO: 
+			function addClub() {
+				// 
+			}
+		</script>
 
 	</body>
 </html>

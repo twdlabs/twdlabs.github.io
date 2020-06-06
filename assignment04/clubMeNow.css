@@ -5,7 +5,7 @@ div#container h2 {font-size:1.5em;}
 div#container table,
 div#container table th,
 div#container table td {text-align:center; border:1px solid #000;}
-div#container table th {background-color:#5cb85c; /*border-color:#4cae4c;*/}
+div#container table th {background-color:#5cb85c; color:#000; /*border-color:#4cae4c;*/}
 div#container table button {padding:0 .5em .1em; margin:0 .25em;}
 div#container .CMN_right {/*text-align:right;*/}
 div#container .CMN_hidden {display:none;}
