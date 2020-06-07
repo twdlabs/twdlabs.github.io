@@ -4,10 +4,16 @@ div#container {text-align:center;}
 div#container h1 {/*font-size:2em;*/ text-align:center;}
 div#container h2 {font-size:1.5em;}
 
-div#container button#modeBtn {position:fixed; bottom:.25em; left:.25em; padding:1em; opacity:.5; transition:opacity .25s;}
-div#container button#modeBtn:hover {opacity:1;}
-div#container button#modeBtn::before {content:'Mobile';}
-div#container.mobileMode button#modeBtn::before {content:'Desktop';}
+div#container div#mobileMode {/*position:fixed; bottom:.1em; left:.1em;*/ margin-top:.25em;}
+div#container div#mobileMode {background-color:#5cb85c; color:#DDD; padding:.75em .5em;/* transition:opacity .25s;*/}
+div#container div#mobileMode i {font-size:1.5em;}
+div#container div#mobileMode i.fa-toggle-off {display:inline-block;}
+div#container div#mobileMode i.fa-toggle-on {display:none;}
+div#container.mobileMode div#mobileMode i.fa-toggle-off {display:none;}
+div#container.mobileMode div#mobileMode i.fa-toggle-on {display:inline-block;}
+div#container div#mobileMode:hover {opacity:1;}
+/*div#container button#mobileMode::before {content:'Mobile';}*/
+/*div#container.mobileMode button#mobileMode::before {content:'Desktop';}*/
 
 div#container table#clubTable,
 div#container table#clubTable th,

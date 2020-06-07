@@ -122,6 +122,7 @@ function newDistance(i) {
 // TODO: Replace the current "clubs" array with the previous one. 
 function undoLastShot() {
 	// YOUR CODE HERE
+	var str = localStorage.setItem('clubsArrayOld')
 }
 
 // Navigate to "About" screen. 

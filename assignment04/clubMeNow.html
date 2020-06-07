@@ -15,6 +15,10 @@
 		<script src="https://atg973.github.io/bs3/jquery.min.js" type="text/javascript"></script>
 		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
 		<script src="https://atg973.github.io/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- F.A. Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="https://atg973.github.io/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 		
 		<!-- ClubMeNow Custom CSS -->
 		<link href="clubMeNow.css" rel="stylesheet"/>
@@ -24,7 +28,6 @@
 		<div id="container" class="container mobileModex">
 
 			<h1>Club Distances</h1>
-			<button id="modeBtn" class="btn btn-default" onclick="$('div#container').toggleClass('mobileMode');"></button>
 			
 			
 			<div style="text-align:center; display:none; margin-bottom:.5em;">
@@ -64,6 +67,13 @@
 				<button class="btn btn-warning" onclick="undoLastShot();">Undo</button>
 				<button class="btn btn-danger" onclick="resetDistanceList();">Reset</button>
 				<button class="btn btn-info" onclick="displayAbout();">About</button>
+				<br>
+				<div id="mobileMode" class="btn btn-default" onclick="$('div#container').toggleClass('mobileMode');">
+					<i class="fa fa-laptop"></i>
+					<i class="fa fa-toggle-off switch"></i>
+					<i class="fa fa-toggle-on switch"></i>
+					<i class="fa fa-tablet" style="padding:0 .1em;"></i>
+				</div>
 			</div>
 
 			<hr>
