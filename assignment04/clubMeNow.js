@@ -13,13 +13,13 @@ function loadDistanceList() {
 	var clubs;
 
 	// Load from local storage if array already exists. 
-	if(localStorage.getItem('clubs')) {
-		clubs = JSON.parse( localStorage.getItem('clubs') );
+	if(localStorage.getItem('clubsArray')) {
+		clubs = JSON.parse( localStorage.getItem('clubsArray') );
 	}
 	// Create a new array otherwise.
 	else {
 		resetDistanceList();
-		clubs = JSON.parse( localStorage.getItem('clubs') );
+		clubs = JSON.parse( localStorage.getItem('clubsArray') );
 	}
 
 	return clubs;
@@ -30,7 +30,7 @@ function resetDistanceList() {
 	// Create new 2d array in global variable "clubs". 
 	// Columns...
 	// 0: Sort Position
-	// 1: Club Abbreviation
+	// 1: Club Name Abbreviation
 	// 2: Club Name
 	// 3: Average Distance
 	// 4: Minimum Distance
@@ -60,7 +60,7 @@ function resetDistanceList() {
 
 	// Store the array in local storage. 
 	var str = JSON.stringify(clubs);
-	localStorage.setItem('clubs',str);
+	localStorage.setItem('clubsArray',str);
 
 	// Refresh the screen. 
 	window.location.href = "clubMeNow.html";
@@ -78,7 +78,7 @@ function populateDistanceList() {
 		var row = clubTable.insertRow(i+1);
 
 		// Create an empty cell for each column. 
-		var cell0 = row.insertCell(0);	// clubAbbrev
+		var cell0 = row.insertCell(0);	// clubNameAbbrev
 		var cell1 = row.insertCell(1);	// avgDist
 		var cell2 = row.insertCell(2);	// minDist
 		var cell3 = row.insertCell(3);	// maxDist
@@ -87,13 +87,13 @@ function populateDistanceList() {
 		var cell6 = row.insertCell(6);	// clubName
 
 		// Right align the appropriate cells. 
-		cell0.className = 'CMN_hidden';				// clubAbbrev
+		cell0.className = 'CMN_hidden';					// clubAbbrev
 		cell1.className = 'CMN_right CMN_fullHeight';	// avgDist
 		cell2.className = 'CMN_right CMN_hidden';		// minDist
 		cell3.className = 'CMN_right CMN_fullHeight';	// maxDist
 		cell4.className = 'CMN_right CMN_hidden';		// numOfShots
-		cell5.className = '';						// ("+" button)
-		cell6.className = 'CMN_fullHeight';			// clubName
+		cell5.className = '';							// ("+" button)
+		cell6.className = 'CMN_fullHeight';				// clubName
 
 		// Populate table with data from "clubs" array. 
 		cell0.innerHTML = clubs[i][1];				// clubAbbrev
@@ -101,18 +101,19 @@ function populateDistanceList() {
 		cell2.innerHTML = Math.round(clubs[i][4]);	// minDist
 		cell3.innerHTML = Math.round(clubs[i][5]);	// maxDist
 		cell4.innerHTML = Math.round(clubs[i][6]);	// numOfShots
-		cell5.innerHTML = '<button class="btn btn-success CMN_noPadding CMN_fullHeight" onclick="newDistance('+ i +');">&plus;</button>';	// ("+" button)
+		let plusBtn = '<button class="btn btn-success CMN_noPadding CMN_fullHeight" onclick="newDistance('+ i +');">&plus;</button>';
+		cell5.innerHTML = plusBtn;					// ("+" button)
 		cell6.innerHTML = clubs[i][2];				// clubName
-		// cell6.innerHTML = clubs[i][2] +', '+ clubs[i][7] + '&deg;';	// clubName
+		cell6.innerHTML = clubs[i][2] +', '+ clubs[i][7] + '&deg;';	// clubName
 	}
 }
 
 
 
 // Navigate to "Distance Entry" screen. 
-function newDistance(c) {
-	// Save the chosen club. 
-	localStorage.setItem("club",c);
+function newDistance(i) {
+	// Save the index of chosen club. 
+	localStorage.setItem('clubIndex',i);
 	// Redirect to the entry form. 
 	window.location.href = "newDistance.html";
 }
@@ -202,7 +203,7 @@ function updateStats(shotDistance=0) {
 	if(parseInt(shotDistance) > 0) {
 		// Save the current "clubs" array for "Undo" functionality. 
 		var str = JSON.stringify(clubs);
-		localStorage.setItem('clubsUndo', str)
+		localStorage.setItem('clubsArrayOld', str)
 		// Update average. 
 		currentAvg = clubs[clubRow][3];
 		currentNumShots = clubs[clubRow][6];
@@ -220,7 +221,7 @@ function updateStats(shotDistance=0) {
 		}
 		// Save updated stats in local storage. 
 		var str = JSON.stringify(clubs);
-		localStorage.setItem('clubs',str);
+		localStorage.setItem('clubsArray',str);
 		// Return to home screen. 
 		window.location.href = "clubMeNow.html";
 	}

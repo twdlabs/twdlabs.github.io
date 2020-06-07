@@ -21,13 +21,14 @@
 	</head>
 	<body onload="populateDistanceList();">
 
-		<div id="container" class="container">
+		<div id="container" class="container mobileModex">
 
 			<h1>Club Distances</h1>
+			<button id="modeBtn" class="btn btn-default" onclick="$('div#container').toggleClass('mobileMode');"></button>
 			
-			<div style="text-align:center; display:block; margin-bottom:.5em;">
+			
+			<div style="text-align:center; display:none; margin-bottom:.5em;">
 				<a href="newClub.html">New Club</a>
-				&nbsp;&nbsp;&nbsp;
 				<a href="newDistance.html">New Distance</a>
 			</div>
 
@@ -39,11 +40,12 @@
 					<th class="CMN_fullHeight CMN_right">Max</th>
 					<th class="CMN_right CMN_hidden">Num</th>
 					<th class="CMN_fullHeight"></th>
-					<th class="CMN_fullHeight">
-						<button class="btn btn-warning CMN_noPadding CMN_fullHeight" onclick="newClub();">&plus;</button>
-						<!-- <br> -->
-						Club
-					</th>
+					<th class="CMN_fullHeight">Club Name</th>
+				</tr>
+				<tr>
+					<td colspan="7">
+						<button class="btn btn-warning CMN_noPadding CMN_fullHeight" onclick="newClub();" style="width:100%; padding:.5em;">Add Club</button>
+					</td>
 				</tr>
 				<!-- <tr>
 					<td>Name</td>

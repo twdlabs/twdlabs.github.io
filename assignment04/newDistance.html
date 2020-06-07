@@ -55,7 +55,7 @@
 					</td>
 				</tr>
 			</table>
-			<table id="CMN_statsTable" class="table table-bordered" style="text-align:left;">
+			<table id="CMN_statsTable" class="table table-bordered" style="">
 				<tr>
 					<th>Club</th>
 					<th>Min</th>
@@ -88,9 +88,9 @@
 		<script src="clubMeNow.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			// Retrieve row of user-chosen club. 
-			var clubRow = parseInt(localStorage.getItem('club'));
+			var clubRow = parseInt(localStorage.getItem('clubIndex'));
 			// Retrieve "clubs" array. 
-			var clubs = JSON.parse(localStorage.getItem('clubs'))
+			var clubs = JSON.parse(localStorage.getItem('clubsArray'))
 			// Display full clubName of user-chosen club. 
 			document.getElementById('clubValLbl').innerHTML = clubs[clubRow][2];
 		</script>
