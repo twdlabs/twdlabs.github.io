@@ -39,6 +39,7 @@ div#container .CMN_noPadding {padding:0;}
 div#container .CMN_tapEntry {min-width:50px;}
 
 div#container div.buttonBox {margin:1em 0;}
+div#container div.buttonBox button.btn {font-size:1.5em;}
 /*div#container.mobileMode div.buttonBox button {padding:1em 2em;}*/
 div#container hr {border-width:.5px; margin:1em;}
 div#container footer {}
