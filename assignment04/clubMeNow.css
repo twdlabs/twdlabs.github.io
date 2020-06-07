@@ -33,8 +33,8 @@ div#container.mobileMode .CMN_hidden {display:none;}
 div#container .CMN_green_bg {background-color:#caff33;}
 div#container .CMN_green {color:green;}
 div#container .CMN_bold {font-weight:bold;}
-div#container.mobileMode .CMN_fullHeight {font-size:4vh; /*font-size:2em;*/}
-div#container.mobileMode .CMN_moreHeight {height:6vh; /*font-size:4vh;*/ /*font-size:2em;*/}
+div#container.mobileMode .CMN_fullHeight {font-size:3vh; /*font-size:2em;*/}
+div#container.mobileMode .CMN_moreHeight {height:6vh; font-size:3vh; /*font-size:2em;*/}
 div#container .CMN_noPadding {padding:0;}
 div#container .CMN_tapEntry {min-width:50px;}
 
