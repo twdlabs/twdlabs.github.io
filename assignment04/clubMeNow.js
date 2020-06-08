@@ -18,57 +18,15 @@ function loadDistanceList() {
 	}
 	// Create a new array otherwise.
 	else {
-		resetDistanceList();
+		newDistanceList();
 		clubs = JSON.parse( localStorage.getItem('clubsArray') );
 	}
 
 	return clubs;
 }
 
-// Create a new "clubs" array. 
-function resetDistanceList() {
-	// Create new 2d array in global variable "clubs". 
-	// Columns...
-	// 0: Sort Position
-	// 1: Club Name Abbreviation
-	// 2: Club Name
-	// 3: Average Distance
-	// 4: Minimum Distance
-	// 5: Maximum Distance
-	// 6: Number Of Shots
-	// 7: Loft / Degrees
-	// 8: Typical (Men)
-	// 9: Typical (Women)
-	clubs = [
-				[ 199, "Dr","Driver", 	0,0,0,0, 10.5,230,200],
-				[ 300, "3+w","3+ wood", 0,0,0,0, 13.5,210,180],
-				[ 350, "3h","3 hybrid", 0,0,0,0, 18.0,180,160],
-				// [ 399, "3i","3 iron", 	0,0,0,0, 18.5,180,160],
-				// [ 499, "4i","4 iron", 	0,0,0,0, 18.5,170,150],
-				[ 599, "5i","5 iron", 	0,0,0,0, 21.0,160,140],
-				[ 699, "6i","6 iron", 	0,0,0,0, 24.0,150,130],
-				[ 799, "7i","7 iron", 	0,0,0,0, 27.0,140,120],
-				[ 899, "8i","8 iron", 	0,0,0,0, 31.5,130,110],
-				[ 999, "9i","9 iron", 	0,0,0,0, 36.0,120,100],
-				[1099, "Pw","Pitching", 0,0,0,0, 41.0,110,90],
-				[1199, "Aw","Approach", 0,0,0,0, 46.0,100,80],
-				[1299, "Gw","Gap", 		0,0,0,0, 51.0,90,70],
-				[1399, "Sw","Sand", 	0,0,0,0, 56.0,80,60],
-				[1499, "Lw","Lob", 		0,0,0,0, 60.0,60,40],
-				[1599, "Ptr","Putter", 	0,0,0,0, 60.0,3,3],
-	];
-
-	// Store the array in local storage. 
-	var str = JSON.stringify(clubs);
-	localStorage.setItem('clubsArray',str);
-
-	// Refresh the screen. 
-	window.location.href = "clubMeNow.html";
-}
-
-
-// Add data to the table. 
-function populateDistanceList() {
+// Add refreshed data to the table (whenever home screen in loaded). 
+function refreshDistanceList() {
 	// Select the HTML table. 
 	var clubTable = document.getElementById('clubTable');
 
@@ -108,6 +66,47 @@ function populateDistanceList() {
 	}
 }
 
+// Create a new "clubs" array. 
+function newDistanceList() {
+	// Create new 2d array in global variable "clubs". 
+	// Columns...
+	// 0: Sort Position
+	// 1: Club Name Abbreviation
+	// 2: Club Name
+	// 3: Average Distance
+	// 4: Minimum Distance
+	// 5: Maximum Distance
+	// 6: Number Of Shots
+	// 7: Loft / Degrees
+	// 8: Typical (Men)
+	// 9: Typical (Women)
+	clubs = [
+				[ 199, "Dr","Driver", 	0,0,0,0, 10.5,230,200],
+				[ 300, "3+w","3+ wood", 0,0,0,0, 13.5,210,180],
+				[ 350, "3h","3 hybrid", 0,0,0,0, 18.0,180,160],
+				// [ 399, "3i","3 iron", 	0,0,0,0, 18.5,180,160],
+				// [ 499, "4i","4 iron", 	0,0,0,0, 18.5,170,150],
+				// [ 599, "5i","5 iron", 	0,0,0,0, 21.0,160,140],
+				// [ 699, "6i","6 iron", 	0,0,0,0, 24.0,150,130],
+				[ 799, "7i","7 iron", 	0,0,0,0, 27.0,140,120],
+				[ 899, "8i","8 iron", 	0,0,0,0, 31.5,130,110],
+				[ 999, "9i","9 iron", 	0,0,0,0, 36.0,120,100],
+				[1099, "Pw","Pitching", 0,0,0,0, 41.0,110,90],
+				[1199, "Aw","Approach", 0,0,0,0, 46.0,100,80],
+				[1299, "Gw","Gap", 		0,0,0,0, 51.0,90,70],
+				[1399, "Sw","Sand", 	0,0,0,0, 56.0,80,60],
+				[1499, "Lw","Lob", 		0,0,0,0, 60.0,60,40],
+				[1599, "Ptr","Putter", 	0,0,0,0, 60.0,3,3],
+	];
+
+	// Store the array in local storage. 
+	var str = JSON.stringify(clubs);
+	localStorage.setItem('clubsArray',str);
+
+	// Refresh the screen. 
+	window.location.href = "clubMeNow.html";
+}
+
 
 
 // Navigate to "Distance Entry" screen. 
@@ -119,10 +118,14 @@ function newDistance(i) {
 }
 
 
-// TODO: Replace the current "clubs" array with the previous one. 
+// Replace the current "clubs" array with the previous one. 
 function undoLastShot() {
-	// YOUR CODE HERE
-	var str = localStorage.setItem('clubsArrayOld')
+	// Confirm before undo. 
+	var go = confirm('Are you sure you want to permanently undo the last shot?');
+	if(!go) return;7 
+
+	var str = localStorage.getItem('clubsArrayOld');
+	clubs = JSON.parse(str);
 }
 
 // Navigate to "About" screen. 
@@ -136,6 +139,22 @@ function displayPenaltyInfo() {
 	window.location.href = "clubPenaltyInfo.html";
 }
 
+// TODO: Reset one specific club in the list. 
+function resetOneClub(i) {
+	// Confirm before reset. 
+	var go = confirm('Are you sure you want to reset this club ?');
+	if(!go) return;
+
+}
+
+// TODO: Remove one specific club in the list. 
+function removeOneClub(i) {
+	// Confirm before removal. 
+	var go = confirm('Are you sure you want to permanently remove this club ?');
+	if(!go) return;
+	// 
+}
+
 
 
 
@@ -147,8 +166,11 @@ function displayPenaltyInfo() {
 // TODO: Add how many yards left/right of target, lie (fairway, rough, sand, trees). 
 function addYardage() {}
 
-// TODO: Add error checking for distnaces > 400. 
-function checkForErrors() {}
+// TODO: Error checking for distnaces > 400. 
+function checkForNewDistanceErrors(shotDistance) {
+	if (shotDistance>400) ;
+	else ;
+}
 
 
 // Place precise numbers into stats table.
@@ -196,50 +218,81 @@ function addTapEntryBtns() {
 
 // TODO: Update distances based on user-entered value (shotDistance). 
 function updateStats(shotDistance=0) {
-	// shotDistance can be user-entered by fast-entry button (shotDistance = s) or by typed input (shotDistance = 0). 
+	// shotDistance can be user-entered by fast tap-entry button (shotDistance = s) or by typed input (shotDistance = 0). 
 
-	// Save the typed input. 
+	// When the input is typed, save the given input. 
 	if(shotDistance==0) shotDistance = parseInt( document.getElementById('clubVal').value );
+
+	// Check for errors in input (distance > 400). 
+	checkForNewDistanceErrors(shotDistance);
 
 	if(parseInt(shotDistance) > 0) {
 		// Save the current "clubs" array for "Undo" functionality. 
 		var str = JSON.stringify(clubs);
 		localStorage.setItem('clubsArrayOld', str)
+
 		// Update average. 
 		currentAvg = clubs[clubRow][3];
 		currentNumShots = clubs[clubRow][6];
 		newAvg = (currentAvg*currentNumShots + shotDistance) / (currentNumShots+1);
 		clubs[clubRow][3] = newAvg;
+		
 		// Update shot count. 
 		clubs[clubRow][6] += 1;
+		
 		// Update min. 
 		if(clubs[clubRow][4]==0 || shotDistance<clubs[clubRow][4]) {
 			clubs[clubRow][4] = shotDistance;
 		}
+		
 		// Update max. 
 		if(clubs[clubRow][5]==0 || shotDistance>clubs[clubRow][5]) {
 			clubs[clubRow][5] = shotDistance;
 		}
-		// Save updated stats in local storage. 
+		
+		// Save updated "clubs" array in local storage. 
 		var str = JSON.stringify(clubs);
 		localStorage.setItem('clubsArray',str);
+		
 		// Return to home screen. 
 		window.location.href = "clubMeNow.html";
 	}
 }
 
 
-// Navigate to club distance list screen.
+// Navigate to home screen (club distance list).
 function cancelEntry() {
 	window.location.href = "clubMeNow.html";
 }
 
-// Navigate to club distance list screen.
+// Navigate to new club screen.
 function newClub() {
 	window.location.href = "newClub.html";
 }
 
 
+
+
+////////////////////////////////////////////////
+// ------ Functions (newClub.html) ------ //
+////////////////////////////////////////////////
+
+// TODO: Add new club to the list. 
+function addClub() {
+	// Save the new club to the list.
+	clubs.push(['','']);
+
+	// Store it in local storage. 
+
+	// Warn if > 14 
+	alert('');
+
+	// Refresh to home screen. 
+	window.location.href = "clubMeNow.html";
+}
+
+// TODO: Add error checking for club count > 14. 
+function checkForNewClubErrors() {}
 
 
 

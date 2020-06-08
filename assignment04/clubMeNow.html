@@ -23,7 +23,7 @@
 		<!-- ClubMeNow Custom CSS -->
 		<link href="clubMeNow.css" rel="stylesheet"/>
 	</head>
-	<body onload="populateDistanceList();">
+	<body onload="refreshDistanceList();">
 
 		<div id="container" class="container mobileModex">
 			
@@ -64,7 +64,7 @@
 
 			<div class="buttonBox">
 				<button class="btn btn-warning" onclick="undoLastShot();">Undo</button>
-				<button class="btn btn-danger" onclick="resetDistanceList();">Reset</button>
+				<button class="btn btn-danger" onclick="newDistanceList();">Reset</button>
 				<button class="btn btn-info" onclick="displayAbout();">About</button>
 				<br>
 				<div id="mobileMode" class="btn btn-default" onclick="$('div#container').toggleClass('mobileMode');">
