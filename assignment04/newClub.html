@@ -26,7 +26,7 @@
 			<h1>Add Club</h1>
 
 			<form action="clubMeNow.html">
-				<input name="clubName" id="clubName" type="text" class="form-control CMN_moreHeight" placeholder="Driver" required />
+				<input name="clubName" id="clubName" type="text" class="form-control CMN_moreHeight" placeholder="Club Name" required />
 
 				<div class="buttonBox">
 					<button class="btn btn-success CMN_fullHeight" onclick="addClub();">&#10003;</button>
@@ -52,32 +52,35 @@
 			// Retrieve row of user-chosen club. 
 			var clubRow = parseInt(localStorage.getItem('clubIndex'));
 
-			// Retrieve "clubs" array. 
+			// Retrieve "clubs" array from local storage. 
 			var clubs = JSON.parse(localStorage.getItem('clubsArray'));
 
 			// Display full clubName of user-chosen club. 
 			var newClubName;
 			var newClubDistances;
 
-			// TODO: Add new club to the list. 
+			// Add new club to the list. 
 			function addClub() {
-				// Find last sort index value. 
-				var newIndex = clubs[clubs.length][0] + 100
+				// Save club name. 
+				newClubName = document.getElementById('clubName').value;
+				console.log('newClubName = '+newClubName);
 
-				// Save the new club to the list.
-				var newClub = [newIndex,newClubName,newClubName, 0,0,0,0, 60.0,3,3];
+				// Calculate new sort position value (end of list). 
+				var newPosition = clubs[clubs.length-1][0] + 100;
+
+				// Add the new club to the list (clubs array).
+				var newClub = [newPosition,newClubName.substr(0,3),newClubName, 0,0,0,0, 90.0,0,0];
 				clubs.push(newClub);
 
 				// Store it in local storage. 
-				var str = JSON.stringify(newClub);
+				var str = JSON.stringify(clubs);
 				localStorage.setItem('clubsArray',str);
 
-				// Warn if > 14 
-				alert('');
+				// Warn the user if they are attempting to carry more than 14 clubs. 
+				if(clubs.length>14) alert('Warning: you are only allowed to carry 14 clubs in your golf bag in match play competition.');
 
 				// Refresh to home screen. 
 				window.location.href = "clubMeNow.html";
-				// 
 			}
 		</script>
 

@@ -266,7 +266,7 @@ function cancelEntry() {
 }
 
 // Navigate to new club screen.
-function newClub() {
+function newClubEntry() {
 	window.location.href = "newClub.html";
 }
 
