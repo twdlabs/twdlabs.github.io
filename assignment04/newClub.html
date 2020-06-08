@@ -51,14 +51,32 @@
 		<script type="text/javascript">
 			// Retrieve row of user-chosen club. 
 			var clubRow = parseInt(localStorage.getItem('clubIndex'));
+
 			// Retrieve "clubs" array. 
-			var clubs = JSON.parse(localStorage.getItem('clubsArray'))
+			var clubs = JSON.parse(localStorage.getItem('clubsArray'));
+
 			// Display full clubName of user-chosen club. 
 			var newClubName;
 			var newClubDistances;
 
-			// TODO: 
+			// TODO: Add new club to the list. 
 			function addClub() {
+				// Find last sort index value. 
+				var newIndex = clubs[clubs.length][0] + 100
+
+				// Save the new club to the list.
+				var newClub = [newIndex,newClubName,newClubName, 0,0,0,0, 60.0,3,3];
+				clubs.push(newClub);
+
+				// Store it in local storage. 
+				var str = JSON.stringify(newClub);
+				localStorage.setItem('clubsArray',str);
+
+				// Warn if > 14 
+				alert('');
+
+				// Refresh to home screen. 
+				window.location.href = "clubMeNow.html";
 				// 
 			}
 		</script>
