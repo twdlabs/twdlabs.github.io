@@ -18,16 +18,24 @@
 
 		<!-- F.A. Icons -->
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-		<link href="https://atg973.github.io/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <link href="https://atg973.github.io/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
 		
 		<!-- ClubMeNow Custom CSS -->
 		<link href="clubMeNow.css" rel="stylesheet"/>
 	</head>
-	<body onload="refreshDistanceList();">
+	<body onload="appendTableRows();">
 
-		<div id="container" class="container mobileModex">
+		<div id="container" class="container">
 			
 			<h1>Club Distances</h1>
+			<!-- <br> -->
+			<div id="mobileMode" class="btn btn-default" onclick="$('div#container').toggleClass('mobileMode');">
+				<i class="fa fa-laptop"></i>
+				<i class="fa fa-toggle-off switch"></i>
+				<i class="fa fa-toggle-on switch"></i>
+				<i class="fa fa-tablet" style="padding:0 .1em;"></i>
+				<br>
+			</div>
 			
 			<div style="text-align:center; display:none; margin-bottom:.5em;">
 				<a href="newClub.html">New Club</a>
@@ -50,30 +58,25 @@
 					</td>
 				</tr>
 				<!-- <tr>
-					<td>Name</td>
+					<td>Club Abbrev</td>
 					<td>0</td>
 					<td>0</td>
 					<td>0</td>
 					<td>0</td>
 					<td>
-						<button class="btn btn-success CMN_noPadding CMN_fullHeight" onclick="newDistance();">&plus;</button>
+						<button class="btn btn-success CMN_noPadding CMN_fullHeight" onclick="newDistanceEntry();">&plus;</button>
 					</td>
-					<td>0</td>
+					<td>Club Name</td>
 				</tr> -->
 			</table>
 
 			<div class="buttonBox">
 				<button class="btn btn-warning" onclick="undoLastShot();">Undo</button>
-				<button class="btn btn-danger" onclick="newDistanceList();">Reset</button>
+				<button class="btn btn-danger" onclick="resetDistanceList();">Reset</button>
 				<button class="btn btn-info" onclick="displayAbout();">About</button>
-				<br>
-				<div id="mobileMode" class="btn btn-default" onclick="$('div#container').toggleClass('mobileMode');">
-					<i class="fa fa-laptop"></i>
-					<i class="fa fa-toggle-off switch"></i>
-					<i class="fa fa-toggle-on switch"></i>
-					<i class="fa fa-tablet" style="padding:0 .1em;"></i>
-				</div>
 			</div>
+
+			<a href="golfScorecards.html">Golf Scorecards</a>
 
 			<hr>
 
@@ -91,6 +94,10 @@
 		<script src="clubMeNow.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			var clubs = loadDistanceList();
+
+			// Ask the user if they would prefer the mobile version of the app. 
+			// var mobileMode = confirm('Load mobile mode ?')
+			// if(mobileMode) document.getElementById('container').classList.add('mobileMode')
 		</script>
 
 	</body>

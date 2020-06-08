@@ -18,7 +18,7 @@ function loadDistanceList() {
 	}
 	// Create a new array otherwise.
 	else {
-		newDistanceList();
+		resetDistanceList();
 		clubs = JSON.parse( localStorage.getItem('clubsArray') );
 	}
 
@@ -26,7 +26,7 @@ function loadDistanceList() {
 }
 
 // Add refreshed data to the table (whenever home screen in loaded). 
-function refreshDistanceList() {
+function appendTableRows() {
 	// Select the HTML table. 
 	var clubTable = document.getElementById('clubTable');
 
@@ -59,15 +59,15 @@ function refreshDistanceList() {
 		cell2.innerHTML = Math.round(clubs[i][4]);	// minDist
 		cell3.innerHTML = Math.round(clubs[i][5]);	// maxDist
 		cell4.innerHTML = Math.round(clubs[i][6]);	// numOfShots
-		let plusBtn = '<button class="btn btn-success CMN_noPadding CMN_fullHeight" onclick="newDistance('+ i +');">&plus;</button>';
+		let plusBtn = '<button class="btn btn-success CMN_noPadding CMN_fullHeight" onclick="newDistanceEntry('+ i +');">&plus;</button>';
 		cell5.innerHTML = plusBtn;					// ("+" button)
 		cell6.innerHTML = clubs[i][2];				// clubName
 		cell6.innerHTML = clubs[i][2] +', '+ clubs[i][7] + '&deg;';	// clubName
 	}
 }
 
-// Create a new "clubs" array. 
-function newDistanceList() {
+// Create a new "clubs" array. Restore to original "factory settings". 
+function resetDistanceList() {
 	// Create new 2d array in global variable "clubs". 
 	// Columns...
 	// 0: Sort Position
@@ -103,14 +103,14 @@ function newDistanceList() {
 	var str = JSON.stringify(clubs);
 	localStorage.setItem('clubsArray',str);
 
-	// Refresh the screen. 
+	// Refresh screen. 
 	window.location.href = "clubMeNow.html";
 }
 
 
 
 // Navigate to "Distance Entry" screen. 
-function newDistance(i) {
+function newDistanceEntry(i) {
 	// Save the index of chosen club. 
 	localStorage.setItem('clubIndex',i);
 	// Redirect to the entry form. 
@@ -122,10 +122,14 @@ function newDistance(i) {
 function undoLastShot() {
 	// Confirm before undo. 
 	var go = confirm('Are you sure you want to permanently undo the last shot?');
-	if(!go) return;7 
+	if(!go) return;
 
+	// Restore the previous version.
 	var str = localStorage.getItem('clubsArrayOld');
 	clubs = JSON.parse(str);
+
+	// Refresh to home screen. 
+	window.location.href = "clubMeNow.html";
 }
 
 // Navigate to "About" screen. 
@@ -260,12 +264,12 @@ function updateStats(shotDistance=0) {
 }
 
 
-// Navigate to home screen (club distance list).
+// Navigate to home screen (club distance list). 
 function cancelEntry() {
 	window.location.href = "clubMeNow.html";
 }
 
-// Navigate to new club screen.
+// Navigate to new club screen. 
 function newClubEntry() {
 	window.location.href = "newClub.html";
 }

@@ -4,9 +4,11 @@ div#container {text-align:center;}
 div#container h1 {/*font-size:2em;*/ text-align:center;}
 div#container h2 {font-size:1.5em;}
 
-div#container div#mobileMode {/*position:fixed; bottom:.1em; left:.1em;*/ margin-top:.25em;}
-div#container div#mobileMode {background-color:#5cb85c; color:#DDD; padding:.75em .5em;/* transition:opacity .25s;*/}
-div#container div#mobileMode i {font-size:1.5em;}
+div#container div#mobileMode {/*position:fixed; bottom:.1em; left:.1em;*/ min-width:100px; margin-top:.25em;}
+div#container div#mobileMode {/*background-color:#5cb85c; color:#EEE;*/ padding:.75em .5em; /* transition:opacity .25s;*/}
+div#container div#mobileMode::after {content:'Desktop Mode'; font-size:1rem;}
+div#container.mobileMode div#mobileMode::after {content:'Mobile Mode';}
+div#container div#mobileMode i {font-size:1.25em;}
 div#container div#mobileMode i.fa-toggle-off {display:inline-block;}
 div#container div#mobileMode i.fa-toggle-on {display:none;}
 div#container.mobileMode div#mobileMode i.fa-toggle-off {display:none;}
