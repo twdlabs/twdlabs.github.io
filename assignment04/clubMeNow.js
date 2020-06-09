@@ -128,6 +128,10 @@ function undoLastShot() {
 	var str = localStorage.getItem('clubsArrayOld');
 	clubs = JSON.parse(str);
 
+	// Save it as the current version. 
+	str = JSON.stringify(clubs);
+	localStorage.setItem('clubsArray',str);
+
 	// Refresh to home screen. 
 	window.location.href = "clubMeNow.html";
 }
