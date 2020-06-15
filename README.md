@@ -1,2 +1,2 @@
 # atg973.github.io
-Trial for CIS 255
+Assignments for CIS 255
