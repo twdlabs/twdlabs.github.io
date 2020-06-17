@@ -41,7 +41,7 @@ function loadContent() {
 			chartData.data.labels = newConfirmedOver1000.map( (x) => x.Slug );
 			chartData.data.datasets[0].data = newConfirmedOver1000.map( (x) => x.NewConfirmed );
 			chartData.data.datasets[1].data = newConfirmedOver1000.map( (x) => x.NewDeaths );
-			var myChart = new Chart(ctx, chartData); 
+			var covidChart = new Chart(ctx, chartData); 
 		}
 	};
 	xhttp.open("GET", URL, true);
@@ -50,7 +50,7 @@ function loadContent() {
 
 // Code below modified from :
 // https://www.sitepoint.com/introduction-chart-js-2-0-six-examples/
-var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('covidChart').getContext('2d');
 var chartData = {
 	type:'line',
 	data:{
@@ -84,7 +84,7 @@ var chartData = {
 	}
 };
 
-var myChart = new Chart(ctx, chartData); 
+var covidChart = new Chart(ctx, chartData); 
 // note: logarithmic scale ignores maxTicksLimit
 
 
