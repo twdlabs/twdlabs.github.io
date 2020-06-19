@@ -2,16 +2,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title></title>
-
-		<style type="text/css"></style>
-		<script src="covidChart.js" type="text/javascript"></script>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../sunhtml.ico" rel="icon" type="image/png"/>
+		<title>Covid Chart</title>
 	</head>
 	<body>
 
 		<div id="container">
 			<h2>Canvas element (for Chart.js)</h2>
-			
+
 			<canvas id="covidChart"></canvas>
 
 			<h2>AJAX example: Covid19api</h2>
@@ -20,12 +21,13 @@
 				<p>Click button to load content.</p>
 			</div>
 
-			<button type="button" onclick="loadContent()">Load New Content</button>
+			<button type="button" onclick="loadNewContent();">Load New Content</button>
 		</div>
 
-		<!-- CDN JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script> 
+		<!-- Chart JS -->
+		<script src="chart.min.js"></script>
 		<!-- Custom JS -->
 		<script src="covidChart.js" type="text/javascript"></script>
+		
 	</body>
 </html>

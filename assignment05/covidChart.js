@@ -9,7 +9,7 @@ var newConfirmedOver1000;
 // Load API content into variables
 // Code below modified from: 
 // https://www.w3schools.com/js/js_ajax_intro.asp
-function loadContent() {
+function loadNewContent() {
 	// Send AJAX call
 	var xhttp = new XMLHttpRequest();
 	// When ready...
@@ -52,18 +52,27 @@ function loadContent() {
 // https://www.sitepoint.com/introduction-chart-js-2-0-six-examples/
 var ctx = document.getElementById('covidChart').getContext('2d');
 var chartData = {
-	type:'line',
+	type:'bar',
+	// type:'pie',
+	// type:'line',
+	// type:'polarArea',
+	// type:'doughnut',
+	// type:'bubble',
 	data:{
-		labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-		datasets:[{
-			label:'apples',
-			data: [ 12, 19, 3, 17, 6, 3, 7 ],
-			backgroundColor:'rgba(153,255,51,0.4)'
-		}, {
-			label:'oranges',
-			data: [ 2, 29, 5, 5, 2, 3, 10 ],
-			backgroundColor:'rgba(255,153,0,0.4)'
-		}]
+		labels:[ 'M', 'T', 'W', 'T', 'F', 'S', 'S' ],
+		datasets:[
+			{
+				label:'apples',
+				backgroundColor:'rgba(153,255,51,0.5)',
+				// fill:false,
+				data: [ 12, 19, 3, 17, 6, 3, 7 ]
+			}, {
+				label:'oranges',
+				backgroundColor:'rgba(255,153,0,0.5)',
+				// fill:false,
+				data: [ 2, 29, 5, 5, 2, 3, 10 ]
+			}
+		]
 	},
 	options:{
 		scales:{
