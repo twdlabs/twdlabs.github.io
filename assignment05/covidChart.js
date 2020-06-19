@@ -23,24 +23,24 @@ function loadNewContent() {
 
 			// loop through countries in API summary
 			// instead: write code to use filter() method!
-			newConfirmedOver1000 = [];
-			for (let c of covidJson.Countries) {
-				if (c.NewConfirmed > 1000) {
-					newConfirmedOver1000.push({ 
-						"Slug": c.Slug, 
-						"NewConfirmed": c.NewConfirmed, 
-						"NewDeaths": c.NewDeaths
-					});
-				}
-			}
+			// newConfirmedOver1000 = [];
+			// for (let c of covidJson.Countries) {
+			// 	if (c.NewConfirmed > 1000) {
+			// 		newConfirmedOver1000.push({ 
+			// 			"Slug": c.Slug, 
+			// 			"NewConfirmed": c.NewConfirmed, 
+			// 			"NewDeaths": c.NewDeaths
+			// 		});
+			// 	}
+			// }
 
-			chartData.data.datasets[0].backgroundColor = "rgba(100,100,100,0.4)";
-			chartData.data.datasets[1].backgroundColor = "rgba(255,0,0,0.4)";
-			chartData.data.datasets[0].label = 'new cases';
-			chartData.data.datasets[1].label = 'new deaths';
-			chartData.data.labels = newConfirmedOver1000.map( (x) => x.Slug );
-			chartData.data.datasets[0].data = newConfirmedOver1000.map( (x) => x.NewConfirmed );
-			chartData.data.datasets[1].data = newConfirmedOver1000.map( (x) => x.NewDeaths );
+			// chartData.data.datasets[0].backgroundColor = "rgba(100,100,100,0.4)";
+			// chartData.data.datasets[1].backgroundColor = "rgba(255,0,0,0.4)";
+			// chartData.data.datasets[0].label = 'new cases';
+			// chartData.data.datasets[1].label = 'new deaths';
+			// chartData.data.labels = newConfirmedOver1000.map( (x) => x.Slug );
+			// chartData.data.datasets[0].data = newConfirmedOver1000.map( (x) => x.NewConfirmed );
+			// chartData.data.datasets[1].data = newConfirmedOver1000.map( (x) => x.NewDeaths );
 			var covidChart = new Chart(ctx, chartData); 
 		}
 	};
