@@ -1,11 +1,10 @@
-
 // --- global variables ---
 var loans = [
-	{ loan_year: 2020, loan_amount: 10000.00, loan_int_rate: 0.0453 },
-	{ loan_year: 2021, loan_amount: 10000.00, loan_int_rate: 0.0453 },
-	{ loan_year: 2022, loan_amount: 10000.00, loan_int_rate: 0.0453 },
-	{ loan_year: 2023, loan_amount: 10000.00, loan_int_rate: 0.0453 },
-	{ loan_year: 2024, loan_amount: 10000.00, loan_int_rate: 0.0453 }
+	{ loan_year:2020, loan_amount:10000.00, loan_int_rate:0.0453 },
+	{ loan_year:2021, loan_amount:10000.00, loan_int_rate:0.0453 },
+	{ loan_year:2022, loan_amount:10000.00, loan_int_rate:0.0453 },
+	{ loan_year:2023, loan_amount:10000.00, loan_int_rate:0.0453 },
+	{ loan_year:2024, loan_amount:10000.00, loan_int_rate:0.0453 }
 ]; 
 
 
@@ -22,7 +21,7 @@ function loadDoc() {
 	document.getElementById("loan_bal0" + 1).innerHTML = toComma(loanWithInterest.toFixed(2));
 
 	// pre-fill defaults for other loan years
-	for(var i=2; i<6; i++) {
+	for(var i=2 ; i<6 ; i++) {
 		document.getElementById("loan_year0" + i).value = defaultYear++;
 		document.getElementById("loan_year0" + i).disabled = true;
 		document.getElementById("loan_year0" + i).style.backgroundColor = "gray";
@@ -39,7 +38,7 @@ function loadDoc() {
 	// all input fields: select contents on fucus
 	$("input[type=text]").focus(function() {
 		$(this).select();
-		$(this).css("background-color", "yellow");
+		$(this).css("background-color", "#fff6db");
 	}); 
 	$("input[type=text]").blur(function() {
 		$(this).css("background-color", "white");
@@ -60,7 +59,7 @@ function toComma(value) {
 
 function updateLoansArray() {
 	loans[0].loan_year = parseInt($("#loan_year01").val());
-	for(var i=1; i<5; i++) {
+	for(var i=1 ; i<5 ; i++) {
 		loans[i].loan_year = loans[0].loan_year + i;
 		$("#loan_year0"+ (i+1) ).val(loans[i].loan_year);
 	}
