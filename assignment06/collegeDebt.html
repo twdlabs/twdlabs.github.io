@@ -27,7 +27,8 @@
 			table td, table th, 
 			table td input {text-align:right;}
 			#loan_table {background-color:pink;}
-			button.btn {width:30%; padding:.75em;}
+			button.btn {width:30%; padding:.75em; position:relative;}
+			button.btn div.subtitle {font-size:.5em; position:absolute; left:0; bottom:.5em; width:100%;}
 		</style>
 	</head>
 
@@ -148,9 +149,17 @@
 							<br/>
 
 							<div style="text-align:center;">
-								<button type="button" class="btn btn-secondary" onclick="loadLoanArray();">Load</button>
-								<button type="button" class="btn btn-primary" onclick="processForm();">Re-calculate</button>
-								<button type="button" class="btn btn-secondary" onclick="saveLoanArray();">Save</button>
+								<button type="button" class="btn btn-secondary" onclick="loadLoanData();">
+									Load
+									<!-- <div class="subtitle">from memory</div> -->
+								</button>
+								<button type="button" class="btn btn-primary" onclick="processForm();">
+									Re-calculate
+								</button>
+								<button type="button" class="btn btn-secondary" onclick="saveLoanData();">
+									Save
+									<!-- <div class="subtitle">to memory</div> -->
+								</button>
 							</div>
 
 							<br/>
