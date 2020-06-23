@@ -84,18 +84,36 @@ function loadDoc() {
 
 	// Run this function whenever the loan interest rate boxes lose focus. 
 	$('#loan_int01').blur( function(){ updateLoanInterestRates(); } );
+
+	// Run this function whenever the loan interest rate boxes lose focus. 
+	$('input[type=text]').change( function(){ validateInput(); } );
 } 
 // end: function loadDoc()
 
 
+// Validate user input using regular expressions. 
+function validateInput() {
+	// Log the validation activity in the console. 
+	console.log( 'Now validating user input...' );
+
+	var pattern = /abcd/;
+
+	// Log the validation activity in the console. 
+	console.log( 'Validated user input' );
+}
+
+
 // Format a given number value (with commas separating groups of 3 digits). 
 function toComma(value) {
-	return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return value.toString().replace( /\B(?=(\d{3})+(?!\d))/g , "," );
 }
 
 // Update loan years in the loans array (whenever the text box loses focus). 
 function updateLoanYears() {
+	// Log the updating activity in the console. 
 	console.log( 'Now updating loan years:\n'+JSON.stringify(loans) );
+
+	// Update the loan interest rates in array. 
 	loans[0].loan_year = parseInt( $('#loan_year01').val() );
 	for(var i=1 ; i<5 ; i++) {
 		// Update in array. 
@@ -103,6 +121,8 @@ function updateLoanYears() {
 		// Update on screen. 
 		$('#loan_year0'+ (i+1) ).val(loans[i].loan_year);
 	}
+
+	// Log the updating activity in the console. 
 	console.log( 'Updated loan years:\n'+JSON.stringify(loans) );
 
 	// Display the newly updated data on the screen for the user to see. 
@@ -187,7 +207,13 @@ function loadLoanData() {
 
 // Take the user input, and use it to populate the payments table. 
 function processForm() {
-	// Validate user inputs using regular expressions. 
+	var principalAmount = 0;
+	for (var i=0 ; i<loans.length ; i++) {
+		principalAmount += loans[i].loan_amount;
+		principalAmount *= (1 + loans[i].loan_int_rate);
+	}
+
+	var paymentAmount = principalAmount;
 }
 
 // Save loan array to local storage. 
