@@ -6,13 +6,72 @@ var loans = [
 	{ loan_year:2022, loan_amount:10000, loan_int_rate:0.0453 },
 	{ loan_year:2023, loan_amount:10000, loan_int_rate:0.0453 },
 	{ loan_year:2024, loan_amount:10000, loan_int_rate:0.0453 }
-]; 
+];
+
+
+
+
+// Format a given number value (with commas separating groups of 3 digits). 
+function toCommas(value) {
+	return value.toString().replace( /\B(?=(\d{3})+(?!\d))/g , "," );
+}
+
+// Format a given number value (with commas separating groups of 3 digits). 
+function toMoney(value) {
+	return `\$${ toComma(value.toFixed(2)) }`;
+}
+
+
+// Save loan array to local storage. 
+function saveForm() {
+	// Save stringified version of loans array into local storage. 
+	localStorage.setItem('savedLoan', JSON.stringify(loans) );
+
+	// Log the saving activity in the console. 
+	console.log('Saved loans array to localStorage');
+
+	// Display the contents of localStorage. 
+	showLocalStorage();
+}
+
+// Load loan array from local storage. 
+function loadForm() {
+	// Display the contents of localStorage. 
+	showLocalStorage();
+
+	// Get loans array from local storage and display the new data on screen. 
+	if(localStorage.getItem('savedLoan')) {
+		loans = JSON.parse( localStorage.getItem('savedLoan') );
+		updateForm();
+	}
+	// Let the user know if the item is not found in local storage.
+	else {
+		alert('Error: There is no saved data to load.');
+	}
+	
+	// Log the loading activity in the console. 
+	console.log('Loaded loans array from localStorage');
+}
+
+// Display the contents of localStorage in the console. 
+function showLocalStorage() {
+	var str = '';
+	str += 'localStorage ['+localStorage.length+' item(s)]';
+	for(let i=0 ; i<localStorage.length ; i++) {
+		var dataItem = localStorage.key(i);
+		str += '\nlocalStorage['+i+']: '+dataItem;
+	}
+	console.log(str);
+}
+
+
+
 
 
 // --- function: loadDoc() --- //
 function loadDoc() {
 
-	// Calculate amounts 
+	// Get amounts for first loan year. 
 	var defaultYear = loans[0].loan_year;
 	var defaultLoanAmount = loans[0].loan_amount;
 	var defaultInterestRate = loans[0].loan_int_rate;
@@ -62,86 +121,64 @@ function loadDoc() {
 		$('#loan_bal0'+i).html( toCommas(loanWithInterest.toFixed(2)) );
 	} // end: "for" loop
 
-	// Select contents on focus (for all text input fields). 
+	// Select contents and highlight box when text input has focus. 
 	$('input[type=text]').focus(function() {
 		$(this).select();
 		$(this).css('background-color', '#fe7');
 	}); 
+	// Update loan data when text input loses focus. 
 	$('input[type=text]').blur(function() {
 		$(this).css('background-color', 'white');
+		updateLoansArray();
 	});
 
 	// set focus to first year: messes up codepen
 	// $('#loan_year01').focus();
-
-	// Run this function whenever the year text box loses focus. 
-	$('input[type=text]').blur( function(){ updateLoanData(); });
-
-	// Run this function whenever the year text box loses focus. 
-	// $('#loan_year01').blur( function(){ updateLoanYears(); });
-	// Run this function whenever the loan amount text boxes loses focus. 
-	// $('#loan_amt01, #loan_amt02, #loan_amt03, #loan_amt04, #loan_amt05').blur( function(){ updateLoanAmounts(); } );
-	// Run this function whenever the loan interest rate boxes lose focus. 
-	// $('#loan_int01').blur( function(){ updateLoanInterestRates(); } );
-
-	// Run this function whenever the loan interest rate boxes lose focus. 
-	$('input[type=text]').change( function(){ validateInput(); } );
 } 
 // end: function loadDoc()
 
 
 
 
-// Format a given number value (with commas separating groups of 3 digits). 
-function toCommas(value) {
-	return value.toString().replace( /\B(?=(\d{3})+(?!\d))/g , "," );
-}
-
-// Format a given number value (with commas separating groups of 3 digits). 
-function toMoney(value) {
-	return `\$${toComma(value.toFixed(2))}`;
-}
 
 
 
+// Update the loans data with user-entered values. 
+function updateLoansArray() {
+	// Validate user input using regular expressions. RegEx Tester: https://www.regexpal.com/
+	var valid = true;									// Valid by default until regex detects mismatch. 
+	var regexYr = /^(19|20)\d{2}$/;						// Enforces: 4 numerical digits staring with 19 or 20
+	var regexAmt = /^([1-9][0-9]*)+(.[0-9]{1,2})?$/;	// Enforces: ?
+	var regexInt = /^(0|)+(.[0-9]{1,5})?$/;				// Enforces: ?
 
+	// Proceed if user-enetered data is valid. 
+	if(valid) {
+		// Update the loan data in array (years, amounts, interest rates). 
+		for(var i=0 ; i<loans.length ; i++) {
+			// Save year in array. 
+			if(i==0) loans[i].loan_year = parseInt( $('#loan_year01').val() );
+			else loans[i].loan_year = loans[0].loan_year + i;
 
-// Update the loans array (whenever the text box loses focus). 
-function updateLoanData() {
+			// Save loan amount in array. 
+			loans[i].loan_amount = parseInt(  $( '#loan_amt0'+(i+1) ).val()  );
 
-	// Update the loan array (years, amounts, interest rates). 
-	for(var i=0 ; i<loans.length ; i++) {
-		// Save year in array. 
-		if(i==0) loans[i].loan_year = parseInt( $('#loan_year01').val() );
-		else loans[i].loan_year = loans[0].loan_year + i;
+			// Save interest rate in array. 
+			loans[i].loan_int_rate = Number.parseFloat(  $('#loan_int01').val()  );
+		}
 
-		// Save loan amount in array. 
-		loans[i].loan_amount = parseInt(  $( '#loan_amt0'+(i+1) ).val()  );
+		// Log the updating activity in the console. 
+		console.log( 'Updated loan data:\n'+JSON.stringify(loans) );
 
-		// Save interest rate in array. 
-		loans[i].loan_int_rate = Number.parseFloat(  $('#loan_int01').val()  );
+		// Display updated loans data on the form. 
+		updateForm();
 	}
-
-	// Log the updating activity in the console. 
-	console.log( 'Updated loan data:\n'+JSON.stringify(loans) );
-
-	// Display the newly updated data on the screen for the user to see. 
-	updateForm();
 }
 
 
 
 
 
-// Validate user input using regular expressions. 
-function validateInput() {
-	var pattern = /^abcd$/;
-
-	// Log the validation activity in the console. 
-	console.log( 'Validated user input' );
-}
-
-// Refresh the loan data on the screen (using the loan data in the array). 
+// Display updated loans data on the form (using loan data in array). 
 function updateForm() {
 	// Enforces rule: four numerical digits starting with 19 or 20.
 	var yearP = /^(19|20)\d{2}$/;
@@ -169,62 +206,6 @@ function updateForm() {
 
 
 
-// TODO: Take the user input, and use it to populate the payments table. 
-function processForm() {
-	var principalAmount = 0;
-	for (var i=0 ; i<loans.length ; i++) {
-		principalAmount += loans[i].loan_amount;
-		principalAmount *= (1 + loans[i].loan_int_rate);
-	}
-
-	var paymentAmount = principalAmount;
-}
-
-// Load loan array from local storage. 
-function loadForm() {
-	// Display the contents of localStorage. 
-	showLocalStorage();
-
-	// Retrieve stringified version of loans array from local storage. 
-	var strLoanInfo = localStorage.getItem('savedLoanInfo');
-	// Save actual loans array into global variable 'loans'. 
-	loans = JSON.parse(strLoanInfo);
-
-	// Display the newly loaded data on the screen for the user to see. 
-	updateForm()
-
-	// Log the loading activity in the console. 
-	console.log('Loaded loan array from localStorage:\n'+strLoanInfo);
-}
-
-// Save loan array to local storage. 
-function saveForm() {
-	// Create stringified version of loans array from global variable 'loans'. 
-	var strLoanInfo = JSON.stringify(loans);
-	// Save stringified version of loans array into local storage. 
-	localStorage.setItem('savedLoanInfo',strLoanInfo);
-
-	// Log the saving activity in the console. 
-	console.log('Saved loan array to localStorage:\n'+strLoanInfo);
-
-	// Display the contents of localStorage. 
-	showLocalStorage();
-}
-
-// Display the contents of localStorage in the console. 
-function showLocalStorage() {
-	var str = '';
-	str += 'localStorage['+localStorage.length+' item(s)]';
-	for(let i=0 ; i<localStorage.length ; i++) {
-		var dataItem = localStorage.key(i);
-		str += '\nlocalStorage['+i+']: '+dataItem;
-	}
-	console.log(str);
-}
-
-
-
-
 /***********/
 // ANGULAR //
 /***********/
@@ -240,5 +221,19 @@ function showLocalStorage() {
 // 		let pay = 12 * (total / ((( ))) )
 // 	}
 // } );
+
+
+
+
+// TODO: Take the user input, and use it to populate the payments table. 
+function processForm() {
+	var principalAmount = 0;
+	for (var i=0 ; i<loans.length ; i++) {
+		principalAmount += loans[i].loan_amount;
+		principalAmount *= (1 + loans[i].loan_int_rate);
+	}
+
+	var paymentAmount = principalAmount;
+}
 
 
