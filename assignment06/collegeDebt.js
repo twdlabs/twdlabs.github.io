@@ -14,8 +14,8 @@ var loanBalance;
 var paymentData;
 
 // Format a given number value (with commas separating groups of 3 digits). 
-function toCommas(value) {
-	return value.toString().replace( /\B(?=(\d{3})+(?!\d))/g , "," );
+function toComma(value) {
+	return value.toString().replace( /\B(?=(\d{3})+(?!\d))/g , ',' );
 }
 
 // Format a given number value (with commas separating groups of 3 digits). 
@@ -81,12 +81,12 @@ function loadDoc() {
 	// document.getElementById('loan_year0'+1).value = defaultYear++;
 	// document.getElementById('loan_amt0'+1).value = defaultLoanAmount.toFixed(2);
 	// document.getElementById('loan_int0'+1).value = defaultInterestRate;
-	// document.getElementById('loan_bal0'+1).innerHTML = toCommas(loanWithInterest.toFixed(2));
+	// document.getElementById('loan_bal0'+1).innerHTML = toComma(loanWithInterest.toFixed(2));
 	// Pre-fill default values for the first loan year. (jQuery equivalent of above 4 statements)
 	$('#loan_year0'+1).val( defaultYear++ );
 	$('#loan_amt0'+1).val( defaultLoanAmount.toFixed(2) );
 	$('#loan_int0'+1).val( defaultInterestRate );
-	$('#loan_bal0'+1).html( toCommas(loanWithInterest.toFixed(2)) );
+	$('#loan_bal0'+1).html( toComma(loanWithInterest.toFixed(2)) );
 
 
 	// Pre-fill default values for the remaining loan years. 
@@ -118,9 +118,9 @@ function loadDoc() {
 		// Calculate the ending balance for the year. 
 		loanWithInterest = (loanWithInterest + defaultLoanAmount) * (1 + defaultInterestRate);
 
-		// document.getElementById('loan_bal0'+i).innerHTML = toCommas(loanWithInterest.toFixed(2));
+		// document.getElementById('loan_bal0'+i).innerHTML = toComma(loanWithInterest.toFixed(2));
 		// Update the ending balance for the year. (jQuery equivalent of above statement)
-		$('#loan_bal0'+i).html( toCommas(loanWithInterest.toFixed(2)) );
+		$('#loan_bal0'+i).html( toComma(loanWithInterest.toFixed(2)) );
 	} // end: "for" loop
 
 	// Select contents and highlight box when text input has focus. 
@@ -162,7 +162,7 @@ function updateLoansArray() {
 	// Prevent update and turn red if user-entered loan amount doesn't match regex. 
 	for (var i=0 ; i<loans.length ; i++) {
 		if( !regexLoanAmt.test( $(`#loan_amt0${i+1}`).val() ) ) {
-			$(`#loan_amt0${i}`).css('background-color','#f33');
+			$(`#loan_amt0${i+1}`).css('background-color','#f33');
 			valid = false;
 		}
 	}
@@ -230,7 +230,7 @@ function updateForm() {
 
 		// Update year-end loan balance. 
 		loanBalance = (loanBalance + newLoan) * (1 + rate);
-		$(`#loan_bal0${i+1}`).text( toMoney(loanBalance.toFixed(2)) );
+		$(`#loan_bal0${i+1}`).text( toMoney(loanBalance) );
 	}
 
 	// Display the total amount of interest accrued while in school. 
@@ -266,8 +266,8 @@ app.controller('myCtrl', function($scope) {
 		let n = 11;
 
 		// Loan Payment Formula (https://www.thebalance.com/loan-payment-calculations-315564)
-		let paymentAmount = currentBalance * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
-		// A = P * i * Math.pow(1+i,n) / ( Math.pow(1+i,n) - 1 )
+		let paymentAmount = 12 * (currentBalance/( (( (1+r)**(n*12) )-1 )/ (r*(1+r)**(n*12))) );
+		// let paymentAmount = currentBalance * r * Math.pow(1+r,n) / (Math.pow(1+r,n)-1);
 
 		for (let i=0 ; i<n-1 ; i++) {
 			currentBalance -= paymentAmount;
@@ -276,7 +276,7 @@ app.controller('myCtrl', function($scope) {
 				'year': (loans[loans.length-1].loan_year + 1 + i),
 				'payment': toMoney(paymentAmount),
 				'intAmount': toMoney(intAmount),
-				'ye': toMoney(currentBalance += intAmount)
+				'yeBalance': toMoney(currentBalance += intAmount)
 			}
 		}
 
@@ -284,7 +284,7 @@ app.controller('myCtrl', function($scope) {
 			'year': (loans[loans.length-1].loan_year + n),
 			'payment': toMoney(currentBalance),
 			'intAmount': toMoney(0),
-			'ye': toMoney(0)
+			'yeBalance': toMoney(0)
 		}
 
 		paymentData = $scope.payments;
