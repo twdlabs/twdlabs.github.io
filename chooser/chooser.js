@@ -1,18 +1,10 @@
 
 // An array containing all the page names
-var labels = ['Homepage','Projects In-Progress','Favorite Projects'];
-var pageNames = [
-					'acito', 'homepage', 
-					'bgvid', 'buttonpress', 'chooser', 'finance', 'fitness', 'form3d', 'git', 'hero', 'image', 'logo', 'logoanimation', 'parallax', 'parallax2', 'popup', 'probability', 'reast', 'reast2', 'storage', 'ticker', 
-					'aspectratio', 'autocomplete', 'checkout', 'device', 'dunbar', 'evolution', 'finance', 'findascale', 'fitness', 'form', 'hero', 'lightSwitch', 'loading', 'nav', 'overlay', 'pricing', 'probability', 'radix', 'refresh', 'scale3d', 'scroller', 'scrollProgressBar', 'search', 'sideNav', 'slideshow', 'socialMedia', 'solarsystem', 'sphere', 'splash', 'sort', 'soundfx', 'syntax', 'tabs', 'template', 'user', 'viewport'
-				];
+var labels = ['Apps'];
+var pageNames = ['chooser', 'finance', 'fitness', 'probability', 'reast'];
 var pageNames2d = [
-					['acito', 'homepage'] , 
-					['bgvid', 'buttonpress', 'chooser', 'finance', 'fitness', 'form3d', 'git', 'hero', 'image', 'logo', 'logoanimation', 'parallax', 'parallax2', 'popup', 'probability', 'reast', 'reast2', 'storage', 'ticker'] , 
-					['aspectratio', 'autocomplete', 'checkout', 'device', 'dunbar', 'evolution', 'finance', 'findascale', 'fitness', 'form', 'hero', 'lightSwitch', 'loading', 'nav', 'overlay', 'pricing', 'probability', 'radix', 'refresh', 'scale3d', 'scroller', 'scrollProgressBar', 'search', 'sideNav', 'slideshow', 'socialMedia', 'solarsystem', 'sphere', 'splash', 'sort', 'soundfx', 'syntax', 'tabs', 'template', 'user', 'viewport']
+					['chooser', 'finance', 'fitness', 'probability', 'reast']
 				];
-// [];
-// ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 
 
