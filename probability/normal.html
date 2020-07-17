@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Probability - Normal</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+		
+		<!-- 'Font Awesome' Icons -->
+		<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
+
+		<!-- Toaster -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="normal.css" rel="stylesheet" type="text/css"/>
+		<script src="normal.js" type="text/javascript"></script>
+		<script src="ztable.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container" class="container-fluid">
+
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-xs-12">
+					<h2>
+						<img src="../atgicon.ico">
+						Normal Distribution
+					</h2>
+				</div>
+			</div>
+			<!-- /head-row -->
+
+			<!-- row -->
+			<div class="row">
+
+				<div class="col-sm-12">
+
+
+					<!-- inputGroup -->
+					<div id="d" class="inputGroup">
+						
+						<!-- collapsible -->
+						<div class="collapsible">
+							<legend>Derivation of Distribution</legend>
+						</div>
+						<!-- /collapsible -->
+
+						<!-- content -->
+						<div class="content">
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-6">
+									<label for="iterations">Levels of Iteration</label>
+								</div>
+								<div class="col-xs-6">
+									<input id="iterations" type="number" placeholder="3"/>
+								</div>
+							</div>
+							<!-- /input-row -->
+
+							<!-- button-row -->
+							<div class="button-row row">
+								<div class="col-xs-4">
+									<button onclick="onClear();">Clear</button>
+								</div>
+								<div class="col-xs-4">
+									<button onclick="deriveDistribution();">Submit</button>
+								</div>
+								<div class="col-xs-4">
+									<button onclick="setDefault(); deriveDistribution();">Example</button>
+								</div>
+							</div>
+							<!-- /button-row -->
+						</div>
+						<!-- /content -->
+
+					</div>
+					<!-- /inputGroup -->
+
+				</div>
+
+				<div class="col-sm-12">
+
+					<!-- inputGroup -->
+					<div id="z" class="inputGroup">
+						
+						<!-- collapsible -->
+						<div class="collapsible">
+							<legend>Test Value Percentiles</legend>
+						</div>
+						<!-- /collapsible -->
+
+						<!-- content -->
+						<div class="content">
+							
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-7">
+									<label for="distributionType">Distribution Type</label>
+								</div>
+								<div class="col-xs-5">
+									<select id="distributionType" disabled>
+										<option>Normal</option>
+										<option>Uniform</option>
+										<option>Bernoulli</option>
+										<option>Normal Gaussian</option>
+										<option>Pareto</option>
+										<option>Poisson</option>
+										<option>Exponential</option>
+										<option>Geometric</option>
+										<option>Hypergeometric</option>
+										<option>Binomial</option>
+										<option>Negative Binomial</option>
+										<option>Chi-squared</option>
+										<option>Gamma</option>
+										<option>Beta</option>
+										<option>Log Normal</option>
+										<option>Weibull</option>
+										<option>t</option>
+									</select>
+								</div>
+							</div>
+							<!-- /input-row -->
+
+							
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-12">
+									Population Data
+								</div>
+							</div>
+							<!-- /input-row -->
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-6">
+									<label for="mu">Mean (<i>&mu;</i>)</label>
+								</div>
+								<div class="col-xs-6">
+									<input id="mu" type="number" placeholder="&mu;"/>
+								</div>
+							</div>
+							<!-- /input-row -->
+
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-6">
+									<label for="sigma">Standard deviation (<i>&sigma;</i>)</label>
+								</div>
+								<div class="col-xs-6">
+									<input id="sigma" type="number" placeholder="&sigma;"/>
+								</div>
+							</div>
+							<!-- /input-row -->
+
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-6">
+									<label for="testValue">Test Value (<i>x</i>)</label>
+								</div>
+								<div class="col-xs-6">
+									<input id="testValue" type="number" placeholder="X" step="0.01" />
+								</div>
+							</div>
+							<!-- /input-row -->
+
+							<!-- button-row -->
+							<div class="button-row row">
+								<div class="col-xs-4">
+									<button onclick="onClearZ();">Clear</button>
+								</div>
+								<div class="col-xs-4">
+									<button onclick="testValue();">Submit</button>
+								</div>
+								<div class="col-xs-4">
+									<button onclick="setDefaultZ(); testValue();">Example</button>
+								</div>
+							</div>
+							<!-- /button-row -->
+
+						</div>
+						<!-- /content -->
+
+					</div>
+					<!-- /inputGroup -->
+
+				</div>
+
+			</div>
+			<!-- /row -->
+
+			<!-- output-row -->
+			<div class="output-row row">
+				<div class="col-xs-12">
+					<div id="outputBox">&nbsp;</div>
+				</div>
+			</div>
+			<!-- /output-row -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Collapsible -->
+		<!-- <link href="../collapsible/collapsible.css" rel="stylesheet" type="text/css"/> -->
+		<script src="../collapsible/collapsible.js" type="text/javascript"></script>
+
+	</body>
+
+</html>
+
+

@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Golden Ratio Body</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="golden.css" rel="stylesheet" type="text/css"/>
+		<script src="golden.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container" class="container-fluid">
+
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-xs-12">
+					<h2>
+						<img src="../atgicon.ico">
+						Golden Ratio Body
+					</h2>
+				</div>
+			</div>
+			<!-- /head-row -->
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<!-- inputGroup -->
+					<div class="inputGroup">
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-12">
+								<p>
+									Golden ratio <i>φ</i> <br>&equals; &frac12; &bull; (1 + &radic;5) <br>&asymp; 1.618
+								</p>
+							</div>
+							<div class="col-xs-12">
+								<p>
+									<div>Waist circumference <span class="var">c<sub>w</sub></span></div>
+									<small>Measured at smallest point (at belly button for men, a bit higher for women)</small>
+								</p>
+							</div>
+							<div class="col-xs-6">
+								<p>
+									<div>Shoulder circumference <span class="var">c<sub>s</sub></span></div>
+									<small>Measured at widest point<br>(usually on top of armpit)</small>
+								</p>
+							</div>
+							<div class="col-xs-6">
+								<p>
+									<div>Hip circumference <span class="var">c<sub>h</sub></span></div>
+									<small>Measured at largest point<br>(usually around glutes)</small>
+								</p>
+							</div>
+							<div class="col-xs-12">
+								<p>
+									<div>Body height <span class="var">h</span></div>
+								</p>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<!--div class="col-xs-12">
+								<label for="">Gender</label>
+							</div-->
+							<div class="col-xs-6">
+								<input id="male" type="radio" name="gender"/>
+								<label for="male">
+									<caption>Male</caption>
+								</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="female" type="radio" name="gender"/>
+								<label for="female">
+									<caption>Female</caption>
+								</label>
+							</div>
+						</div>
+						<!-- /button-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-7">
+								<label for="Cw">Waist circumference (c<sub>w</sub>)</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="Cw" type="number"/>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-7">
+								<label for="Cs">Shoulder circumference (c<sub>s</sub>)</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="Cs" type="number"/>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-7">
+								<label for="Ch">Hip circumference (c<sub>h</sub>)</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="Ch" type="number"/>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-7">
+								<label for="height">Body height (h)</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="height" type="number"/>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="onClear();">Clear</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="onSubmit();">Submit</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="setDefault(); onSubmit();">Example</button>
+							</div>
+						</div>
+						<!-- /button-row -->
+
+					</div>
+					<!-- /inputGroup -->
+
+				</div>
+			</div><!-- /row -->
+
+			<!-- output-row -->
+			<div class="output-row row">
+				<div class="col-xs-12">
+					<div id="outputBox"></div>
+				</div>
+			</div>
+			<!-- /output-row -->
+
+		</div>
+		<!-- /#container -->
+
+	</body>
+
+</html>
+

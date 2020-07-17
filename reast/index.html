@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Real Estate Deal Dashboard</title>
+
+		<!-- Bootstrap 4 -->
+		<!-- <link href="../../import/bs4/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<link href="https://import.atgserver.xyz/bs4/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<!-- <script src="../../import/bs4/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="../../import/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgserver.xyz/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="../../import/bs4/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/bootstrap.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<!-- jQuery -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="../../import/bs4/jquery.min.js" type="text/javascript"></script> -->
+
+		<!-- F.A. Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="https://import.atgserver.xyz/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="reast.css" rel="stylesheet" type="text/css"/>
+		<script src="reast.js" type="text/javascript"></script>
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-md navbar-light bg-light static-top">
+			<div class="container-fluid">
+
+				<a class="navbar-brand" href="#">
+					<i class="fa fa-home"></i>
+					Real Estate Dashboard
+				</a>
+
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div id="navbarResponsive" class="collapse navbar-collapse">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="../chooser/index.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../finance/index.html">Finance</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../fitness/index.html">Fitness</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../probability/index.html">Probability</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="../reast/index.html">Real Estate</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
+
+		<!-- contentBox -->
+		<div class="contentBox">
+
+			<!-- tabcontent#splash -->
+			<div id="splash" class="tabcontent">
+				<h1>Real Estate</h1>
+				<i class="fa fa-home"></i>
+			</div>
+			<!-- /tabcontent#splash -->
+
+			<!-- tabcontent#hardmoney -->
+			<div id="hardmoney" class="tabcontent">
+				<iframe src="hardmoney.html"></iframe>
+			</div>
+			<!-- /tabcontent#hardmoney -->
+
+			<!-- tabcontent#rental -->
+			<div id="rental" class="tabcontent">
+				<iframe src="rental.html"></iframe>
+			</div>
+			<!-- /tabcontent#rental -->
+
+			<!-- tabcontent#wholesale -->
+			<div id="wholesale" class="tabcontent">
+				<iframe src="wholesale.html"></iframe>
+			</div>
+			<!-- /tabcontent#wholesale -->
+
+			<!-- tabcontent#appreciate -->
+			<div id="appreciate" class="tabcontent">
+				<iframe src="appreciate.html"></iframe>
+			</div>
+			<!-- /tabcontent#appreciate -->
+
+			<!-- tabcontent#timer -->
+			<div id="timer" class="tabcontent">
+				<iframe src="timer.html"></iframe>
+			</div>
+			<!-- /tabcontent#timer -->
+
+		</div>
+		<!-- /contentBox -->
+
+		<!-- linkBox -->
+		<div class="linkBox">
+			
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('hardmoney',this)" id="defaultOpen">
+				<div class="bubble"></div>
+				<div><i class="fa fa-money"></i></div>
+				<div class="title">Hard Money</div>
+			</button>
+			<!-- /tablink -->
+
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('rental',this)" id="">
+				<div class="bubble"></div>
+				<div><i class="fa fa-building-o"></i></div>
+				<div class="title">Deal Valuation</div>
+			</button>
+			<!-- /tablink -->
+			
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('wholesale',this)" id="">
+				<div class="bubble"></div>
+				<div><i class="fa fa-handshake-o"></i></div>
+				<div class="title">Wholesale</div>
+			</button>
+			<!-- /tablink -->
+			
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('appreciate',this)" id="">
+				<div class="bubble"></div>
+				<div><i class="fa fa-building"></i></div>
+				<div class="title">Deal Appreciation</div>
+			</button>
+			<!-- /tablink -->
+			
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('timer',this)" id="">
+				<div class="bubble"></div>
+				<div><i class="fa fa-clock-o"></i></div>
+				<div class="title">Timer</div>
+			</button>
+			<!-- /tablink -->
+
+		</div>
+		<!-- /linkBox -->
+
+	</body>
+</html>

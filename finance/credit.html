@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Credit Score Goal Analyzer</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+		
+		<!-- 'Font Awesome' Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="credit.css" rel="stylesheet" type="text/css"/>
+		<script src="credit.js" type="text/javascript"></script>
+		
+		<!-- Dollar Formatting -->
+		<script src="../dollar/dollar.js" type="text/javascript"></script>
+	</head>
+	
+	<body onload="onResize(); play();" onresize="onResize();">
+		
+		<div id="container" class="container">
+			
+			<div class="head row">
+				
+				<div>
+					<h2 style="font-weight:bold;">
+						<div class="deviceType">
+							<span class="visible-xs"><i class="fa fa-mobile"></i></span>
+							<span class="visible-sm"><i class="fa fa-tablet"></i></span>
+							<span class="visible-md"><i class="fa fa-laptop"></i></span>
+							<span class="visible-lg"><i class="fa fa-desktop"></i></span>
+						</div>
+						
+						Credit Score Program
+						
+						<div class="deviceType">
+							<span class="visible-xs"><i class="fa fa-mobile"></i></span>
+							<span class="visible-sm"><i class="fa fa-tablet"></i></span>
+							<span class="visible-md"><i class="fa fa-laptop"></i></span>
+							<span class="visible-lg"><i class="fa fa-tv"></i></span>
+						</div>
+					</h2>
+					<button onclick="play();"><i class="fa fa-play"></i></button>
+				</div>
+				
+				<div id="creditCards">
+					<i class="fa fa-google-wallet" style="color:green;"></i>
+					<i class="fa fa-cc-visa" style="color:navy;"></i>
+					<i class="fa fa-cc-amex" style="color:blue;"></i>
+					<i class="fa fa-cc-discover" style="color:orange;"></i>
+					<i class="fa fa-cc-mastercard" style="color:red;"></i>
+					<i class="fa fa-cc-paypal" style="color:skyblue;"></i>
+					<i class="fa fa-cc-stripe" style="color:navy;"></i>
+					<i class="fa fa-paypal" style="color:blue;"></i>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<div id="factorBox" class="col-xs-12 col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
+					<div class="col-xs-6" style="text-align:left; padding-right:4px;">
+						<div class="listHeader">Score Factor</div>
+						<div>1. Payment history</div>
+						<div>2. Credit utilization</div>
+						<div>3. Age of credit</div>
+						<div>4. Account diversity</div>
+						<div>5. Hard inquiries</div>
+					</div>
+					<div class="col-xs-3" style="text-align:left; padding-left:4px;">
+						<div class="listHeader">Portion</div>
+						<div>35%</div>
+						<div>30%</div>
+						<div>15%</div>
+						<div>10%</div>
+						<div>10%</div>
+					</div>
+					<div class="col-xs-3" style="text-align:left; padding-left:4px;">
+						<div class="listHeader">Points</div>
+						<div>192.5</div>
+						<div>165</div>
+						<div>82.5</div>
+						<div>55</div>
+						<div>55</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="row">
+				
+				<div class="col-sm-6 col-md-5 col-md-offset-1 col-xl-4 col-xl-offset-1">
+					<div class="container card">
+						
+						<div class="row">
+							<h3 class="col-xs-12">On-Time Payment History</h3>
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="a0">
+									Open accounts
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="a0" type="number" value="9" min="0" max="1000"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="T0">
+									Total payment history
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="T0" type="number" value="281" min="0" max="100000"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="P">
+									Late/missed payments
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="P" type="number" value="6" min="0" max="100"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="rT">
+									Desired on-time ratio<br/>
+									(click rating below)
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="rT" class="ratio" type="number" value="99" min="96" max="100"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="ratingContainer">
+								<div>
+									<div class="ratingBar lo" onclick="setTimelyRatio(96)"></div>
+									<div class="ratingBar lomid" onclick="setTimelyRatio(97)"></div>
+									<div class="ratingBar mid" onclick="setTimelyRatio(98)"></div>
+									<div class="ratingBar himid" onclick="setTimelyRatio(99)"></div>
+									<div class="ratingBar hi" onclick="setTimelyRatio(100)"></div>
+								</div>
+								<div>
+									<div class="ratingLabel" onclick="setTimelyRatio(96)">&lt;97%</div>
+									<div class="ratingLabel" onclick="setTimelyRatio(97)">97%</div>
+									<div class="ratingLabel" onclick="setTimelyRatio(98)">98%</div>
+									<div class="ratingLabel" onclick="setTimelyRatio(99)">99%</div>
+									<div class="ratingLabel" onclick="setTimelyRatio(100)">100%</div>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-6" style="padding-right:6px;">
+								<button class="clear btn" onclick="clearItOut('A');">Clear</button>
+							</div>
+							<div class="col-xs-6" style="padding-left:6px;">
+								<button class="submit btn" onclick="submitA();">Submit</button>
+							</div>
+							
+							<div class="col-xs-12">
+								<div id="outputA" class="outputSpace empty"></div>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="col-sm-6 col-md-5 col-xl-4 col-xl-offset-2">
+					<div class="container card">
+						
+						<div class="row">
+							<h3 class="col-xs-12">Credit Utilization</h3>
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="totalBalance">
+									Total Credit Balances
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="totalBalance" type="number" value="1673"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="totalLimit">
+									Total Credit Limits
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="totalLimit" type="number" value="12000"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="rU">
+									Desired utilization ratio<br/>
+									(click rating below)
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="rU" class="ratio" type="number" value="9" min="0" max="75"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row" style="visibility:hidden;">
+							
+							<div class="col-xs-8">
+								<label for="R">
+									Empty
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input type="number"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="ratingContainer">
+								<div>
+									<div class="ratingBar lo" onclick="setUseRatio(100)"></div>
+									<div class="ratingBar lomid" onclick="setUseRatio(74)"></div>
+									<div class="ratingBar mid" onclick="setUseRatio(49)"></div>
+									<div class="ratingBar himid" onclick="setUseRatio(29)"></div>
+									<div class="ratingBar hi" onclick="setUseRatio(9)"></div>
+								</div>
+								<div>
+									<div class="ratingLabel" onclick="setUseRatio(100)">75%+</div>
+									<div class="ratingLabel" onclick="setUseRatio(74)">50-74%</div>
+									<div class="ratingLabel" onclick="setUseRatio(49)">30-49%</div>
+									<div class="ratingLabel" onclick="setUseRatio(29)">10-29%</div>
+									<div class="ratingLabel" onclick="setUseRatio(9)">0-9%</div>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-6" style="padding-right:6px;">
+								<button class="clear btn" onclick="clearItOut('B');">Clear</button>
+							</div>
+							<div class="col-xs-6" style="padding-left:6px;">
+								<button class="submit btn" onclick="submitB();">Submit</button>
+							</div>
+							
+							<div class="col-xs-12">
+								<div id="outputB" class="outputSpace empty"></div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<!--div class="col-sm-6 col-md-5 col-md-offset-1 col-xl-4 col-xl-offset-1"-->
+				<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-xl-4 col-xl-offset-4">
+					<div class="container card">
+						
+						<div class="row">
+							<h3 class="col-xs-12">Age Of Credit</h3>
+						</div>
+						
+						<div class="row" style="visibility:hidden;">
+							
+							<div class="col-xs-8">
+								<label for="totalLimit">
+									Total Credit Balance
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="totalBalance" type="number" value="1513"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="currentAge">
+									Age of oldest credit account<br/>(in months)
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="currentAge" type="number" value="3" min="0"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-8">
+								<label for="desiredAge">
+									Desired credit age<br/>(in years)<br/>
+									(click rating below)
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input id="desiredAge" type="number" value="9" min="0" max="9"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row" style="visibility:hidden;">
+							
+							<div class="col-xs-8">
+								<label for="R">
+									Empty
+								</label>
+							</div>
+							<div class="col-xs-4">
+								<div class="input">
+									<input type="number"></input>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="ratingContainer">
+								<div>
+									<div class="ratingBar lo" onclick="setCreditAge(0)"></div>
+									<div class="ratingBar lomid" onclick="setCreditAge(2)"></div>
+									<div class="ratingBar mid" onclick="setCreditAge(5)"></div>
+									<div class="ratingBar himid" onclick="setCreditAge(7)"></div>
+									<div class="ratingBar hi" onclick="setCreditAge(9)"></div>
+								</div>
+								<div>
+									<div class="ratingLabel" onclick="setCreditAge(0)">&lt;2 yrs</div>
+									<div class="ratingLabel" onclick="setCreditAge(2)">2-5 yrs</div>
+									<div class="ratingLabel" onclick="setCreditAge(5)">5-7 yrs</div>
+									<div class="ratingLabel" onclick="setCreditAge(7)">7-9 yrs</div>
+									<div class="ratingLabel" onclick="setCreditAge(9)">9+ yrs</div>
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="row">
+							
+							<div class="col-xs-6" style="padding-right:6px;">
+								<button class="clear btn" onclick="clearItOut('C');">Clear</button>
+							</div>
+							<div class="col-xs-6" style="padding-left:6px;">
+								<button class="submit btn" onclick="submitC();">Submit</button>
+							</div>
+							
+							<div class="col-xs-12">
+								<div id="outputC" class="outputSpace empty"></div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-5 col-xl-4 col-xl-offset-2" style="display:none;">
+					<div class="container card">
+						
+						<div class="row">
+							<div></div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="row" style="height:100px;"></div>
+			
+		</div>
+		
+	</body>
+
+</html>

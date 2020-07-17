@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Return Finder</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- Toast -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+		
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="cagr.css" rel="stylesheet" type="text/css"/>
+		<script src="cagr.js" type="text/javascript"></script>
+
+		<script>
+			var freq = ['m','w','d']; // frequency: [daily, weekly, monthly]
+			
+			jQuery(document).ready( function(){
+				// Load data from Y! server.
+				jQuery("#loadData").click( function(){
+					var symbol = $("#symbolInput").val();
+					var mm0 = $("#month0").val() , dd0 = $("#date0").val() , yyyy0 = $("#year0").val();
+					var mm = $("#month").val() , dd = $("#date").val() , yyyy = $("#year").val() ;
+					var f = 2;  //document.getElementById("freq").selectedIndex; alert("selectedIndex = " + f);
+					var yUrl = "https://ichart.yahoo.com/table.csv?s="+symbol + "&a="+(mm0-1) + "&b="+dd0 + "&c="+yyyy0 + "&d="+(mm-1) + "&e="+dd + "&f="+ yyyy + "&g="+freq[f] + "&ignore=.csv";
+					jQuery.ajax({
+								url:yUrl,
+								dataType:'text',
+								success:function(data){ loadData(data); }
+								});
+				} );
+			} );
+		</script>
+		
+	</head>
+
+	<body>
+		
+		<!-- container -->
+		<div id="container" class="container-fluid">
+
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-xs-12">
+					<h3>
+						<img src="../atgicon.ico" style="height:30px; position:relative; bottom:3px;">
+						CAGR Return Finder
+						<div><small>How fast is your money growing?</small></div>
+					</h3>
+				</div>
+				<div class="col-xs-7">
+					<input id="simple" type="radio" name="method" onclick="toggleStrategy(0);" checked="true"/>
+					<label for="simple">Lump Sum Method</label>
+					<br>
+					<input id="dca" type="radio" name="method" onclick="toggleStrategy(1);" disabled/>
+					<label for="dca">Dollar Cost Average</label>
+				</div>
+				<div id="checkboxes" class="col-xs-5">
+					<input type="checkbox" id="datesOn" onclick="toggleDates()" disabled/>
+					<label for="datesOn">Date Range</label>
+					<br>
+					<input type="checkbox" id="priceCheckOn" onclick="togglePriceCheck()" disabled/>
+					<label for="priceCheckOn">Market</label>
+				</div>
+			</div>
+			<!-- /head-row -->
+
+			<!-- input-row -->
+			<div id="symbolArea" class="input-row row" style="display:none;">
+				<div class="col-xs-12">
+					<div class="col-xs-6">
+						<label for="symbolInput">Ticker</label>
+					</div>
+					<div class="col-xs-6">
+						<input id="symbolInput" type="text" value="T" placeholder="e.g. AAPL" size="8"/>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="col-xs-6">
+						<label for="freq">Frequency</label>
+					</div>
+					<div class="col-xs-6">
+						<select id="freq">
+							<option>quarterly</option>
+							<option selected>monthly</option>
+							<option>weekly</option>
+							<option>daily</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="col-xs-6">
+						<label for="dollarAmount">Amount ($)</label>
+					</div>
+					<div class="col-xs-6">
+						<input id="dollarAmount" type="number" value="" placeholder="100" min="1" max="100000"/>
+					</div>
+				</div>
+				<div class="col-xs-12 button-row">
+					<button id="loadData">Load it up!</button>
+				</div>
+			</div>
+			<!-- /input-row -->
+
+			<!-- input-row -->
+			<div id="dateArea" class="input-row row" style="display:none;">
+				<div class="col-xs-6" style="padding-right:6px;">
+					<div class="col-xs-12">Start Date</div>
+					<div class="col-xs-3" style="padding:0 1px;">
+						<input id="month0" type="number" value="10" min="1" max="12"/>
+					</div>
+					<div class="col-xs-3" style="padding:0 1px;">
+						<input id="date0" type="number" value="1" min="1" max="28"/>
+					</div>
+					<div class="col-xs-6" style="padding:0 1px;">
+						<input id="year0" type="number" value="2008" min="1800" max="2017"/>
+					</div>
+				</div>
+				<div class="col-xs-6" style="padding-left:6px;">
+					<div class="col-xs-12">End Date</div>
+					<div class="col-xs-3" style="padding:0 1px;">
+						<input id="month" type="number" value="5" min="1" max="12"></input>
+					</div>
+					<div class="col-xs-3" style="padding:0 1px;">
+						<input id="date" type="number" value="2" min="1" max="28"></input>
+					</div>
+					<div class="col-xs-6" style="padding:0 1px;">
+						<input id="year" type="number" value="2012" min="1900" max="2017"></input>
+					</div>
+				</div>
+			</div>
+			<!-- /input-row -->
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="inputGroup">
+						
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="startingPrice" class="inputLabel">Start Value</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="startingPrice" type="number" placeholder="62" size="8" step=".01" required/>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="endingPrice" class="inputLabel">End Value</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="endingPrice" type="number" placeholder="208" size="8" step=".01" required/>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- input-row -->
+						<div id="timeArea" class="input-row row">
+							<div class="col-xs-6">
+								<label for="timeInput" class="inputLabel">Years</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="timeInput" type="number" placeholder="9" min="1" max="150" required/>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="onClear();">Clear</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="onSubmit();">Submit</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="setDefault(); onSubmit();">Example</button>
+							</div>
+						</div>
+						<!-- /button-row -->
+					</div>
+
+				</div>
+			</div>
+			<!-- /row -->
+			
+			<!-- output-row -->
+			<div class="output-row row">
+				<div id="output">
+					<div class="col-xs-9">
+						<label for="cagr">Compounded Annual Growth:</label>
+					</div>
+					<div class="col-xs-3">
+						<span id="cagr"></span>
+					</div>
+					<div class="col-xs-9">
+						<label for="overallGrowth">Total Growth:</label>
+					</div>
+					<div class="col-xs-3">
+						<span id="overallGrowth"></span>
+					</div>
+				</div>
+			</div>
+			<!-- /output-row -->
+
+		</div>
+		<!-- /container -->
+
+	</body>
+
+</html>

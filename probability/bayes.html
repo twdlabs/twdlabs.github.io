@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Probability - Bayesian Calculator</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- Toaster -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="bayes.css" rel="stylesheet" type="text/css"/>
+		<script src="bayes.js" type="text/javascript"></script>
+	</head>
+	<body>
+
+		<!-- #container -->
+		<div id="container" class="container-fluid">
+
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-xs-12">
+					<h2>
+						<img src="../atgicon.ico">
+						Bayesian Calculator
+					</h2>
+				</div>
+			</div>
+			<!-- /head-row -->
+
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<!-- inputGroup -->
+					<div class="inputGroup">
+
+						<!-- head-row -->
+						<div class="head-row row">
+							<div class="col-xs-12">
+								Confidence level <i>&gamma;</i> &equals; 1 &minus; <i>&alpha;</i> &equals; P(E|H<sub>0</sub>)
+							</div>
+							<div class="col-xs-12">
+								Null Hypothesis <i>H<sub>0</sub></i>
+							</div>
+							<div class="col-xs-12">
+								&nbsp;
+							</div>
+						</div>
+						<!-- /head-row -->
+
+						<!-- input-row -->
+						<div class="input-row row" style="display:none;">
+							<div class="col-xs-7">
+								<label for="pHE">
+									P(<i>H<sub>0</sub></i>|E)
+								</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="pHE" type="number" placeholder=".25" step="0.01" min="0" max="1" disabled />
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-7">
+								<label for="alpha">
+									Significance level <i>&alpha;</i>
+								</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="alpha" type="number" placeholder=".05" step="0.0001" min="0" max=".25" />
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-7">
+								<label for="pH">
+									A Priori Probability P(<i>H<sub>0</sub></i>)
+								</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="pH" type="number" placeholder=".25" step="0.0001" min="0" max="1" />
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-7">
+								<label for="pE">
+									Probability of Evidence P(<i>E</i>)
+								</label>
+							</div>
+							<div class="col-xs-5">
+								<input id="pE" type="number" placeholder=".25" step="0.0001" min="0" max="1" />
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="onClear();">Clear</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="onSubmit();">Submit</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="setDefault(); onSubmit();">Example</button>
+							</div>
+						</div>
+						<!-- /button-row -->
+
+					</div>
+					<!-- /inputGroup -->
+
+				</div>
+			</div>
+			<!-- /row -->
+
+
+			<!-- output-row -->
+			<div class="output-row row">
+				<div class="col-xs-12">
+					<div id="outputBox">&nbsp;</div>
+				</div>
+			</div>
+			<!-- /output-row -->
+
+		</div>
+		<!-- /#container -->
+
+	</body>
+</html>

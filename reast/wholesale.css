@@ -1,0 +1,28 @@
+
+body {padding:0px;}
+
+div#container {max-width:1000px; padding:6px 12px;}
+@media screen and (min-width:768px) { 
+	div#container div.card-row > div:nth-of-type(1) {padding-right:7.5px;}
+	div#container div.card-row > div:nth-of-type(2) {padding-left:7.5px;}
+ }
+
+div#container div.card {width:100%; background-color:#2EABFC; /*background-color:#0A9FFF;*/ color:#004F83; border-radius:6px; padding:12px; margin-top:6px; margin-bottom:6px; box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4); transition:.5s all, 1s height;}
+div#container div.card:hover {box-shadow: 0px 2px 12px 4px rgba(0,0,0,0.5);}
+
+/*div#container div.input-row {padding:4px;}*/
+div#container div.input-row .theInput {border-radius:5px; border:0; text-align:right; width:100%; padding:4px 8px; margin:4px 0;}
+div#container div.input-row select.theInput {/*height:28px;*/ cursor:pointer;}
+
+div#container div.button-row {margin-top:12px;}
+div#container div.button-row > div:nth-of-type(1) {/*padding-left:0px;*/ padding-right:3px;}
+div#container div.button-row > div:nth-of-type(2) {padding-left:3px; padding-right:3px;}
+div#container div.button-row > div:nth-of-type(3) {padding-left:3px; /*padding-right:0px;*/}
+div#container div.button-row button {border-radius:5px; border:1px solid #888; padding:6px; width:100%; background-color:#2EABFC; background:#E8E8E8; font-weight:bold;}
+div#container div.button-row > div:nth-of-type(1) button {background-color:#efefef;}
+div#container div.button-row > div:nth-of-type(2) button {background-color:dodgerblue; color:#fff;}
+div#container div.button-row > div:nth-of-type(3) button {background-color:#efefef;}
+
+div#container div.output-row {margin-top:12px;}
+div#container div.output-row div.output {background-color:#EEE; background-color:#FF9D22; background-color:#FFC522; color:#004F83; border-radius:5px; padding:20px 15px; margin:24px 0; text-align:center;}
+div#container div.output-row div.output label {width:100%; font-weight:normal; font-size:10px;}

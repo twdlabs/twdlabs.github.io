@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Investment Return Timer</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="timer.css" rel="stylesheet" type="text/css"/>
+		<script src="timer.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+		<!-- container -->
+		<div id="container" class="container">
+
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-xs-12">
+					<h2>
+						<img src="../atgicon.ico">
+						Investment Return Timer
+					</h2>
+					<div style="position:absolute; top:0; right:0;">
+						<span style="color:#74b6f7; float:right; position:relative;">
+							<span class="visible-xs">xs&nbsp;&nbsp;&nbsp;</span>
+							<span class="visible-sm">sm&nbsp;&nbsp;&nbsp;</span>
+							<span class="visible-md">md&nbsp;&nbsp;&nbsp;</span>
+							<span class="visible-lg">lg&nbsp;&nbsp;&nbsp;</span>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- /head-row -->
+
+			<!-- row -->
+			<div class="row">
+
+				<div class="col-sm-6">
+
+					<div id="card1" class="container-fluid card">
+						
+						<!-- head-row -->
+						<div class="head-row row">
+							<div class="col-xs-12">
+								<h4>House Money Timer</h4>
+								<p>How long to get back initial investment</p>
+							</div>
+						</div>
+						<!-- /head-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="growthRate">Growth Rate (%):</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="growthRate" type="number" value="10" min="0" max="99" placeholder="10">
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="priceToEarnings">P/E Ratio:</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="priceToEarnings" type="number" value="7" min="1" max="99" placeholder="1">
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="onClear(1);">Clear</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="calculateTime();">Submit</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="setDefault(1); calculateTime();">Example</button>
+							</div>
+						</div>
+						<!-- /button-row -->
+
+						<!-- output-row -->
+						<div class="output-row row">
+							<div class="col-xs-12">
+								<div id="howLong" class="output"></div>
+							</div>
+						</div>
+						<!-- /output-row -->
+						
+					</div>
+					
+				</div>
+
+				<div class="col-sm-6">
+
+					<div id="card2" class="container-fluid card">
+						
+						<!-- head-row -->
+						<div class="head-row row">
+							<div class="col-xs-12">
+								<h4>Aesop's Birds</h4>
+								<p>How many birds in the bush you can get</p>
+							</div>
+						</div>
+						<!-- /head-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="interestRate">Interest Rate (%):</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="interestRate" type="number" value="10" min="1"max="99" placeholder="10">
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="timeHorizon">Time Horizon (yrs):</label>
+							</div>
+							<div class="col-xs-6">
+								<input id="timeHorizon" type="number" value="10" min="1"max="99" placeholder="15">
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="onClear(2);">Clear</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="valueBirds();">Submit</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="setDefault(2); valueBirds();">Example</button>
+							</div>
+						</div>
+						<!-- /button-row -->
+						
+						<!-- output-row -->
+						<div class="output-row row">
+							<div class="col-xs-12">
+								<div id="birdValue" class="output"></div>
+							</div>
+						</div>
+						<!-- /output-row -->
+						
+					</div>
+				</div>
+
+			</div>
+			<!-- /row -->
+
+		</div>
+		<!-- /container -->
+
+	</body>
+
+</html>

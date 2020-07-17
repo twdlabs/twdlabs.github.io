@@ -1,0 +1,133 @@
+
+
+/*div {transition:.40s;}*/
+
+body {padding:24px; transition:1s; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";}
+@media screen and (max-width:767px) { 
+	body {padding:12px;} 
+}
+
+div#container {background-color:#EFEFEF; background-color:#E6F1FE; color:#222; max-width:800px; border-radius:8px; padding:12px;}
+div#container {box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4); transition:.5s;}
+div#container:hover {box-shadow: 0px 2px 12px 4px rgba(0,0,0,0.5);}
+
+div#container div.head-row h2 {text-align:center; margin-bottom:24px;}
+div#container div.head-row h2 img {height:34px; position:relative; bottom:3px;}
+
+div#container div.inputGroup {background:rgba(0,0,0,0.1); padding:12px; border-radius:5px;}
+div#container div.inputGroup input:focus {background-color:#ffe393; background-color:#FFEDB8;}
+div#container div.inputGroup input,
+div#container div.inputGroup button {box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.4); transition:.25s;}
+div#container div.inputGroup input:hover,
+div#container div.inputGroup button:hover {box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.25);}
+
+/* Comparison Slider */
+div#container div.inputGroup label.switch {position:relative; display:inline-block; width:32px; height:20px;}
+/*div#container div.inputGroup label.switch input {display:none;}
+div#container div.inputGroup label.switch input:focus + span.slider {box-shadow:0 0 1px #2196F3;}*/
+div#container div.inputGroup label.switch span.slider {position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background-color:#999; transition:.4s;}
+div#container div.inputGroup label.switch span.slider:before {position:absolute; content:""; height:12px; width:12px; left:4px; bottom:4px; background-color:white; transition:.4s;}
+div#container div.inputGroup label.switch input:checked + span.slider {background-color:#2196F3;}
+div#container div.inputGroup label.switch input:checked + span.slider:before {transform:translateX(12px);}
+/* Round sliders */
+div#container div.inputGroup label.switch span.slider.round {border-radius:40px;}
+div#container div.inputGroup label.switch span.slider.round:before {border-radius:50%;}
+
+div#container div.input-row {padding:4px 0;}
+div#container div.input-row > div {padding:0 8px;}
+div#container div.input-row > div > label {width:100%; padding:4px 0;}
+div#container div.input-row input {text-align:center;}
+div#container div.input-row input[type='number'],
+div#container div.input-row input[type='text'] {width:100%; padding:4px 12px; border-radius:5px; border:1px solid #888;}
+@media screen and (max-width:767px) {
+	div#container div.input-row.free-input label {text-align:center;}	
+}
+@media screen and (min-width:768px) {
+	div#container div.input-row.free-input > div:nth-of-type(1) > label {text-align:right;}
+	div#container div.input-row.free-input > div:nth-of-type(4) > label {text-align:left;}	
+}
+/*************************** DISPLAY EXPERIMENT *****************************/
+/* Eliminate extra label on the right during comparison. */
+/* 
+div#container div.input-row.free-input.single > div:nth-of-type(1) {}
+div#container div.input-row.free-input.comparison > div:nth-of-type(1) {width:33%;}
+div#container div.input-row.free-input.comparison > div:nth-of-type(2) {width:33%;}
+div#container div.input-row.free-input.comparison > div:nth-of-type(3) {width:33%;}
+*/
+/*div#container div.input-row.free-input.single > div:nth-of-type(3) {display:none;}*/
+/*div#container div.input-row.free-input.comparison > div:nth-of-type(4) {display:none;}*/
+/****************************************************************************/
+div#container div.input-row div.radioWrap {text-align:center; padding-left:6px; padding-right:6px;}
+div#container div.input-row div.radioWrap label {display:block; margin:0;}
+div#container div.input-row div.radioWrap label:nth-of-type(1) {font-size:12px;}
+div#container div.input-row div.radioWrap label:nth-of-type(2) {font-size:10px;}
+
+div#container div.button-row {padding-top:16px;}
+div#container div.button-row > div.col-xs-4:nth-of-type(1) {padding-right:4px;}
+div#container div.button-row > div.col-xs-4:nth-of-type(2) {padding-left:4px; padding-right:4px;}
+div#container div.button-row > div.col-xs-4:nth-of-type(3) {padding-left:4px;}
+div#container div.button-row button {width:100%; border-radius:5px; border:1px solid #888; padding:.5em; background-color:#EEE; font-weight:bold;}
+div#container div.button-row > div:nth-of-type(1) button {background-color:#efefef;}
+div#container div.button-row > div:nth-of-type(2) button {background-color:dodgerblue; color:#fff;}
+div#container div.button-row > div:nth-of-type(3) button {background-color:#efefef;}
+/*
+div#container div.button-row input[type='checkbox'] {display:none;}
+div#container div.button-row input[type='checkbox']:checked+label button {background-color:dodgerblue; color:#EEE;}
+div#container div.button-row label {width:100%;}
+*/
+div#container div.output-row div#outputBox {display:none;}
+/*div#container div.output-row div#outputBox {padding-left:60px; padding-right:60px; }
+@media screen and (max-width:767px) { div#container div.output-row div#outputBox {padding-left:24px; padding-right:24px;} }*/
+div#container div.output-row div#outputBox div.output {/*width:100%;*/ min-height:100px; margin-top:24px; padding:18px; border-radius:5px; color:#222; transition: font-size .35s; /*overflow:auto;*/ transition:height 1s;}
+div#container div.output-row div#outputBox div#outputA {background-color:rgba(255,150,100,0.25);}
+div#container div.output-row div#outputBox div#outputB {background-color:rgba(100,150,255,0.25);}
+div#container div.output-row div#outputBox div#outputC {background-color:rgba(150,255,100,0.25)}
+div#container div.output-row div#outputBox div#outputX {background-color:rgba(255,255,255,0.5)}
+/*div#container div.output-row div#outputBox div.output * {visibility:hidden;}*/
+div#container div.output-row div#outputBox div.output div.outputLabel {font-size:12px; text-align:center; width:100%; /*background-color:#F00;*/}
+div#container div.output-row div#outputBox div.output div.outputValue {font-size:18px; text-align:center; width:100%; /*background-color:#F0F;*/ margin-top:16px; font-weight:bold;}
+@media screen and (max-width:767px) { 
+	div#container div.output-row div#outputBox div.output div.outputLabel {font-size:10px;}
+	div#container div.output-row div#outputBox div.output div.outputValue {font-size:16px;}	
+}
+div#container div.output-row div#outputBox div.outputTable div.row {transition:.5s;}
+@media screen and (max-width:575px) { 
+	div#container div.output-row div#outputBox div.outputTable div.row {font-size:10px;}
+}
+@media screen and (max-width:400px) { 
+	div#container div.output-row div#outputBox div.outputTable div.row {font-size:8px;}
+}
+div#container div.output-row div#outputBox div.outputTable div.tableHead {text-align:center; font-size:10px;}
+div#container div.output-row div#outputBox div.outputTable div.tableHead div.num {font-weight:600; font-size:16px;}
+div#container div.output-row div#outputBox div.outputTable div.colHead {font-size:16px; font-weight:bold; margin-top:24px; margin-bottom:6px;}
+div#container div.output-row div#outputBox div.outputTable div.colA {text-align:left;}
+div#container div.output-row div#outputBox div.outputTable div.colB {text-align:center;}
+div#container div.output-row div#outputBox div.outputTable div.colC {text-align:right;}
+div#container div.output-row div#outputBox div.outputTable div.yearTitle {text-align:center; font-weight:bold; cursor:pointer; margin-top:12px;}
+div#container div.output-row div#outputBox div.outputTable div.within {display:none;}
+div#container div.output-row div#outputBox div.outputTable div.within1 {display:block; margin-top:12px;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd {font-weight:bold; cursor:pointer; margin-bottom:12px;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder {background-color:#CCC; height:1em; border-radius:5px; overflow:hidden;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar {background-color:dodgerblue; height:100%;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar.bl {border-radius:5px 0 0 5px; float:left;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar.br {border-radius:0 5px 5px 0; float:right;}
+div#container div.output-row div#outputBox div#outputTableA {background-color:rgba(255,150,100,0.25);}
+div#container div.output-row div#outputBox div#outputTableB {background-color:rgba(100,150,255,0.25);}
+div#container div.output-row div#outputBox div#outputTableX {background-color:rgba(255,255,255,0.5)}
+div#container div.output-row div#outputBox div.paymentGraph {background-color:#FFF; border:1px solid rgba(0,0,0,0.05); border-radius:8px; position:relative; padding:0; margin-bottom:16px;}
+div#container div.output-row div#outputBox div.paymentGraph > * {display:inline-block; position:absolute; }
+div#container div.output-row div#outputBox div.paymentGraph div.bar {background-color:rgba(0,0,0,0.05); bottom:0;}
+div#container div.output-row div#outputBox div.paymentGraph div.bar.P {border-top:1px solid dodgerblue;}
+div#container div.output-row div#outputBox div.paymentGraph div.bar.I {border-top:1px solid red;}
+div#container div.output-row div#outputBox div.paymentGraph div.xMark {font-size:8px; bottom:-16px; transform:translateX(-50%) rotate(67.5deg);}
+div#container div.output-row div#outputBox div.paymentGraph div.yMark {font-size:8px; left:-24px; transform:translateY(50%);}
+div#container div.output-row div#outputBox div.paymentGraph div.graphTitle {top:0; left:50%; transform:translateX(-50%); text-align:center; font-size:12px;}
+
+/*div#scrollProgressBarHolder {position:fixed; top:0; left:0; right:0; width:100%; z-index:100;}*/
+/*div#scrollProgressBarHolder #scrollProgressBar {position:absolute; left:0; min-width:.1%; max-width:100%; height:2px; background-color:#F00;}*/
+
+div#scrollButtons {position:fixed; top:50%; transform:translateY(-50%); right:24px; width:40px;}
+div#scrollButtons button {width:100%; border-radius:5px; border:1px solid #888; background-color:#EEE; padding:6px 0; margin:6px 0;}
+div#scrollButtons button#scrollToTop {}
+div#scrollButtons button#scrollToBottom {}
+

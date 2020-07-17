@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Fitness Dashboard</title>
+
+		<!-- Bootstrap 4 -->
+		<!-- <link href="../../import/bs4/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<link href="https://import.atgserver.xyz/bs4/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<!-- <script src="../../import/bs4/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="../../import/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgserver.xyz/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="../../import/bs4/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/bootstrap.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<!-- jQuery -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="../../import/bs4/jquery.min.js" type="text/javascript"></script> -->
+
+		<!-- F.A. Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="https://import.atgserver.xyz/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="fitness.css" rel="stylesheet" type="text/css"/>
+		<script src="fitness.js" type="text/javascript"></script>
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-md navbar-light bg-light static-top">
+			<div class="container-fluid">
+
+				<a class="navbar-brand" href="#">
+					<i class="fa fa-child"></i>
+					Fitness Dashboard
+				</a>
+
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div id="navbarResponsive" class="collapse navbar-collapse">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="../chooser/index.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../finance/index.html">Finance</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="../fitness/index.html">Fitness</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../probability/index.html">Probability</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../reast/index.html">Real Estate</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
+
+		<!-- contentBox -->
+		<div class="contentBox">
+
+			<!-- tabcontent#splash -->
+			<div id="splash" class="tabcontent">
+				<h1>Fitness</h1>
+				<i class="fa fa-child"></i>
+			</div>
+			<!-- /tabcontent#splash -->
+
+			<!-- tabcontent#bmi -->
+			<div id="bmi" class="tabcontent">
+				<iframe src="bmi.html"></iframe>
+			</div>
+			<!-- /tabcontent#bmi -->
+
+			<!-- tabcontent#golden -->
+			<div id="golden" class="tabcontent">
+				<iframe src="golden.html"></iframe>
+			</div>
+			<!-- /tabcontent#golden -->
+
+			<!-- tabcontent#protein -->
+			<div id="protein" class="tabcontent">
+				<iframe src="protein.html"></iframe>
+			</div>
+			<!-- /tabcontent#protein -->
+
+		</div>
+		<!-- /contentBox -->
+
+		<!-- linkBox -->
+		<div class="linkBox">
+
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('bmi',this)" id="defaultOpen">
+				<div class="bubble"></div>
+				<div><i class="fa fa-balance-scale"></i></div>
+				<div class="title">BMI</div>
+			</button>
+			<!-- /tablink -->
+
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('golden',this)" id="">
+				<div class="bubble"></div>
+				<div><i class="fa fa-sliders"></i></div>
+				<div class="title">Golden Ratio</div>
+			</button>
+			<!-- /tablink -->
+			
+			<!-- tablink -->
+			<button class="tablink" onclick="openPage('protein',this)" id="">
+				<div class="bubble"></div>
+				<div><i class="fa fa-shopping-cart"></i></div>
+				<div class="title">Protein Pricer</div>
+			</button>
+			<!-- /tablink -->
+
+		</div>
+		<!-- /linkBox -->
+
+	</body>
+</html>

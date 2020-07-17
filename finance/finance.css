@@ -1,0 +1,31 @@
+
+* {box-sizing:border-box;}
+html, body {height:100%; margin:0; font-family:Arial; overflow-y:hidden;} /* Set height of body and the document to 100% */
+
+/* Style the tab content (and add height:100% for full page content) */
+div.contentBox div.tabcontent {display:none; padding:0; height:100%; position:relative; background-color:#dfdfdf; overflow:auto; -webkit-overflow-scrolling:touch;}
+div.contentBox div.tabcontent iframe {width:100%; height:100%; position:absolute; top:0; right:0; bottom:0; left:0; border:none;}
+div.contentBox div#splash {display:block; background-color:dodgerblue; color:#FFF; text-align:center; padding:1em;}
+div.contentBox div#splash h1 {}
+div.contentBox div#splash i.fa {font-size:4rem; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+
+div.linkBox {position:fixed; bottom:0; left:0; right:0; width:100%; background-color:#FFF;}
+div.linkBox {box-shadow:rgba(0,0,0,.25) 0px -2px 2px; border-top:0px solid #09C; overflow-y:hidden; transition:1s padding;}
+div.linkBox button.tablink {background-color:#FFF; color:#666; float:left; border:none; outline:none; cursor:pointer; padding:6px 0px; font-size:17px; width:12.500%; transition:.1s; text-align:center; position:relative; overflow-x:hidden;}
+div.linkBox button.tablink div.bubble {border-radius:50%; background-color:rgba(22,22,22,0.15); opacity:0; padding:0; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:.1s; z-index:1;}
+div.linkBox button.tablink:active div.bubble {opacity:1; padding:32px;}
+div.linkBox button.tablink i.fa {font-size:1.15em; z-index:1;}
+div.linkBox button.tablink div.title {font-size:.6em; z-index:1;}
+
+@media screen and (max-width:575px) { /* mobile(xs) */
+	div.linkBox {padding:0 5%;}
+}
+@media screen and (min-width:576px) { /* mobile(sm) */
+	div.linkBox {padding:0 10%;}
+}
+@media screen and (min-width:768px) { /* tablet(md) */
+	div.linkBox {padding:0 20%;}
+}
+@media screen and (min-width:992px) { /* laptop(lg), desktop(xl) */
+	div.linkBox {padding:0 30%;}
+}

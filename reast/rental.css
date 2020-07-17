@@ -1,0 +1,51 @@
+
+body {padding:12px;}
+
+div#container {text-align:center; background-color:#E6F1FE; color:#222; max-width:800px; border-radius:8px; padding:12px; box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4); transition:.5s;}
+div#container:hover {box-shadow: 0px 2px 12px 4px rgba(0,0,0,0.5);}
+
+/*div#container > div.row {padding-top:6px; padding-bottom:4px;}*/
+div#container fieldset legend {font-size:20px;}
+
+div#container div.head-row h2 {text-align:center; margin-bottom:24px;}
+div#container div.head-row h2 img {height:34px; position:relative; bottom:3px;}
+
+div#container div.inputGroup {background:rgba(0,0,0,0.1); padding:12px; border-radius:5px;}
+
+/*div#container div.input-row {padding-top:3px; padding-bottom:3px;}*/
+div#container div.input-row.simple {display:none;}
+div#container div.input-row .simple {display:none;}
+div#container div.input-row label {width:100%; text-align:left; padding:4px}
+div#container div.input-row input {width:100%; border-radius:5px; border:1px solid #888; padding:4px 12px; text-align:right;}
+div#container div.input-row button {width:100%; border-radius:5px; border:1px solid #888; padding:4px; background-color:#EEE;}
+
+div#container div.button-row {margin-top:12px;}
+div#container div.button-row > div:nth-of-type(1) {padding-right:2px;}
+div#container div.button-row > div:nth-of-type(2) {padding-left:2px; padding-right:2px;}
+div#container div.button-row > div:nth-of-type(3) {padding-left:2px;}
+div#container div.button-row button {width:100%; border-radius:5px; border:1px solid #888; padding:6px; background-color:#EEE; font-weight:bold;}
+div#container div.button-row > div:nth-of-type(1) button {background-color:#efefef;}
+div#container div.button-row > div:nth-of-type(2) button {background-color:dodgerblue; color:#fff;}
+div#container div.button-row > div:nth-of-type(3) button {background-color:#efefef;}
+
+div#container div.output-row {display:none;}
+div#container div.output-row div.output {border-radius:5px; border:1px solid #888; margin-top:12px; padding:12px 36px; background-color:rgba(0,0,0,0.25);}
+
+div#container div.output-row div#output {text-align:left;}
+/*div#container div.output-row > * {display:none;}*/
+div#container div.output-row .heading {font-weight:bold; font-size:15px; padding:0; padding-top:12px;}
+div#container div.output-row .result {font-weight:bold;}
+div#container div.output-row .number {text-align:right; font-weight:bold;}
+div#container div.output-row .marginBar .innerBar {display:inline-block; padding:1px 0 0; text-align:center; font-weight:bold; font-size:10px; min-width:1%; max-width:99%; position:relative; height:2px; margin:20px 0 10px;}
+div#container div.output-row .marginBar .innerBar:nth-of-type(1) {background-color:#0F0; color:#444; border-radius:15px 0 0 15px;}
+div#container div.output-row .marginBar .innerBar:nth-of-type(2) {background-color:#F00; color:#BBB; color:#444; border-radius:0 15px 15px 0;}
+div#container div.output-row .marginBar .innerBar .caption {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); overflow:visible; border:1px dotted rgba(0,0,0,0.1); border-radius:5px;}
+
+div#container div.output-row div#theQuadrants {position:relative; text-align:center;}
+div#container div.output-row div#theQuadrants div.row {max-width:450px; margin:auto;}
+div#container div.output-row div#theQuadrants div.row > div {padding-top:48px; padding-bottom:48px; /*opacity:0.5;*/}
+div#container div.output-row div#theQuadrants div#quadUnitsBox {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); /*background-color:blue; border-radius:50%; padding:12px 6px;*/}
+/*div#container div.output-row div#theQuadrants div#quadUnitsBox .quadNum {width:75px; font-size:10px;}*/
+div#container div.output-row div#theQuadrants div#quadRentBox {display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%); background-color:blue; border-radius:50%; padding:12px 6px;}
+div#container div.output-row div#theQuadrants div.quadNum {width:100%; border:1px solid #888; background-color:#CCC; color:#000; border-radius:10px; padding:4px}
+div#container div.output-row div#theQuadrants div.quadNum input {width:100%; border-radius:5px; border:1px solid #888; padding:4px 12px; text-align:right;}

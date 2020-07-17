@@ -1,0 +1,52 @@
+
+body {padding:12px;}
+
+div#container {/*text-align:center;*/ background-color:#E6F1FE; color:#222; max-width:800px; border-radius:8px; padding:12px;}
+div#container {box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4); box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); transition:.5s;}
+div#container:hover {box-shadow: 0px 2px 12px 4px rgba(0,0,0,0.5);}
+
+div#container div.head-row h2 {text-align:center;}
+div#container div.head-row h4 {text-align:center;}
+div#container div.head-row h2 img {height:34px; position:relative; bottom:3px;}
+
+div#container div.inputGroup {background:rgba(0,0,0,0.1); padding:12px; border-radius:5px; margin-bottom:12px;}
+div#container div.input-row {padding-top:3px; padding-bottom:3px;}
+div#container div.input-row label {width:100%; text-align:left; padding:4px; margin:0; user-select:none;}
+div#container div.input-row input {width:100%; border-radius:5px; border:1px solid #888; padding:4px 12px; text-align:right;}
+
+div#container div.button-row {margin-top:1em;}
+div#container div.button-row > div:nth-of-type(1) {padding-right:2px;}
+div#container div.button-row > div:nth-of-type(2) {padding-left:2px; padding-right:2px;}
+div#container div.button-row > div:nth-of-type(3) {padding-left:2px;}
+div#container div.button-row button {width:100%; border-radius:5px; border:1px solid #888; padding:6px; background-color:#EEE; font-weight:bold;}
+div#container div.button-row > div:nth-of-type(1) button {background-color:#efefef;}
+div#container div.button-row > div:nth-of-type(2) button {background-color:dodgerblue; color:#fff;}
+div#container div.button-row > div:nth-of-type(3) button {background-color:#efefef;}
+
+div#container div.output-row div.output {border-radius:5px; border:1px solid #888; padding:12px; background-color:#DDD; text-align:center; margin-bottom:6px;}
+div#container div.output-row div.output .bold {font-weight:bold;}
+div#container div.output-row div.output#histogram > div > div {display:inline-block; width:6%;}
+div#container div.output-row div.output#histogram div.bar {position:relative; min-height:0px; background:#08F; border-radius:5px 5px 0 0; border:1px solid rgba(0,0,0,0.5); margin-top:12px; transition:.1s;}
+div#container div.output-row div.output#histogram div.barDigits {position:absolute; top:0; left:50%; transform:translate(-50%,-100%);}
+@media screen and (max-width:767px){ /* mobile(xs) */
+	div#container div.output-row div.output#histogram div.barLabel , 
+	div#container div.output-row div.output#histogram div.barDigits {font-size:6px;}
+}
+@media screen and (min-width:768px){ /* tablet(sm) desktop(md) */
+	div#container div.output-row div.output#histogram div.barLabel , 
+	div#container div.output-row div.output#histogram div.barDigits {font-size:10px;}
+}
+@media screen and (min-width:1200px){ /* large desktop(lg) */
+	div#container div.output-row div.output#histogram div.barLabel , 
+	div#container div.output-row div.output#histogram div.barDigits {font-size:14px;}
+}
+
+
+#loadingScreen {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.25); display:none;}
+#loadingScreen .fa {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px; color:#FFF;}
+
+#variableBoxHolder {position:fixed; top:0; right:0; /*cursor:crosshair;*/}
+#variableBoxHolder #variableBox {position:relative; top:-200px; transition:1s; min-width:220px; min-height:80px; background:rgba(0,0,0,0.25); color:#FFF; border-radius:5px; font-size:12px; padding-top:8px; padding-bottom:8px; cursor:pointer;}
+#variableBoxHolder #variableBox .row > div:nth-of-type(1) {text-align:left;}
+#variableBoxHolder #variableBox .row > div:nth-of-type(2) {text-align:right;}
+#variableBoxHolder #variableBox #gameLight {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100%; height:100%; border:1px solid rgba(0,0,0,0.1); border-radius:50%; opacity:.5; /*background:rgba(255,193,7);*/}

@@ -1,0 +1,36 @@
+
+* {transition:.5s;}
+body {padding:1em;}
+div#container {text-align:center; background-color:#E6F1FE; color:#222; max-width:1000px; border-radius:8px; padding:24px;}
+div.card {background-color:#5E94D9; /*background-color:#B8D3F6;*/ width:100%; padding:12px 16px; border-radius:5px; margin-bottom:1em;}
+div.card div.row {padding-top:4px; padding-bottom:4px; margin-top:4px; margin-bottom:4px;}
+
+div#container div.input-row div.radioWrap {font-size:12px;}
+div#container div.input-row #jobTable #independentArea {display:none;}
+div#container div.input-row .input {text-align:right;}
+div#container div.input-row .labels {text-align:left;}
+div#container div.input-row .input input {text-align:right; border-radius:5px; border:1px solid #888; padding:4px 12px; width:100%; font-weight:bold;}
+div#container div.input-row .input button {border-radius:5px;}
+
+.header {font-style:italic;}
+.dollar {text-align:right;}
+
+div#container div.button-row {margin-top:12px; margin-bottom:18px;}
+div#container div.button-row > div:nth-of-type(1) {padding-right:4px;}
+div#container div.button-row > div:nth-of-type(2) {padding-left:4px; padding-right:4px;}
+div#container div.button-row > div:nth-of-type(3) {padding-left:4px;}
+div#container div.button-row button {width:100%; border-radius:5px; border:1px solid #888; padding:.5em; font-weight:bold;}
+div#container div.button-row > div:nth-of-type(1) button {background-color:#efefef;}
+div#container div.button-row > div:nth-of-type(2) button {background-color:dodgerblue; color:#fff;}
+div#container div.button-row > div:nth-of-type(3) button {background-color:#efefef;}
+
+div#container div.output-row {font-size:16px;}
+div#container div.output-row .outputTable {display:none;}
+div#container div.output-row .outputTable .card {background-color:#FF9C61; background-color:#EFEFEF;}
+div#container div.output-row .outputTable .card .labels {text-align:left;}
+div#container div.output-row .outputTable .card .output {font-weight:bold; /*text-decoration:underline;*/}
+
+#bracketCharts {margin-top:24px;}
+#bracketCharts .bracketChart {margin-top:16px; margin-top:16px;}
+#bracketCharts .bracketChart td {padding:4px;}
+#bracketCharts .bracketChart td.head {font-weight:bold;}

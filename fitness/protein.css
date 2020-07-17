@@ -1,0 +1,10 @@
+
+div#container {padding:24px;}
+div#container div.card {background-color:#DDD; border-radius:12px; padding:24px 20px; margin-top:24px; margin-bottom:24px;}
+div#container div.card div.input-row, 
+div#container div.card div.button-row, 
+div#container div.card div.output-row {margin-top:6px; margin-bottom:6px;}
+div#container div.card div.input-row input {width:100%; border-radius:5px; border:0; padding:4px 12px; font-size:12px; text-align:right;}
+div#container div.card div.button-row > div {padding-left:8px; padding-right:8px;}
+div#container div.card div.button-row button {border-radius:5px; border:0; width:100%; background-color:#BBB; padding:4px 12px;}
+div#container div.card div.output-row .outputBox {background-color:#00cc99; border-radius:5px; text-align:right; padding:4px 12px; font-size:12px;}

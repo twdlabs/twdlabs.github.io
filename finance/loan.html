@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Loan Amortization Calculator</title>
+
+		<!-- Bootstrap 3 Style & Plugins -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- Bootstrap 4 Style & Plugins -->
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"> -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script> -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script> -->
+
+		<!-- F.A. Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="https://import.atgserver.xyz/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+		<!-- Dollar Formatting -->
+		<script src="../dollar/dollar.js" type="text/javascript"></script>
+
+		<!-- Toaster -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="loan.css" rel="stylesheet" type="text/css"/>
+		<script src="loan.js" type="text/javascript"></script>
+	</head>
+
+	<body onload="/*onClear();*/ setAllToggles();" onscroll="/*onScroll()*/">
+
+		<!-- 
+		<div id="scrollProgressBarHolder">
+			<div id="scrollProgressBar"></div>
+		</div> -->
+
+		<!-- 
+		<nav class="navbar bg-dark navbar-dark navbar-expand-md">
+			<a class="navbar-brand" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsibleNavbar" onclick="$('.navbar-toggler').toggleClass('open');">
+				<img src="../atglogo-transparent.png"\>ATG Media
+			</a>
+
+			<button class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar" onclick="$(this).toggleClass('open');">
+				<span class="navbar-toggler-icon"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<li class="nav-item" data-toggle="collapse" data-target="#collapsibleNavbar" onclick="$('.navbar-toggler').toggleClass('open');">
+						<a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item" data-toggle="collapse" data-target="#collapsibleNavbar" onclick="$('.navbar-toggler').toggleClass('open');">
+						<a class="nav-link" href="#">Link</a>
+					</li>
+					<li class="nav-item dropdown" onclick="toggleDrop(this);">
+						<a class="nav-link" href="#">Link</a>
+						<ul class="dropmenu">
+							<li class="nav-item" data-toggle="collapse" data-target="#collapsibleNavbar" onclick="$('.navbar-toggler').toggleClass('open');">
+								<a class="nav-link" href="#">Link</a>
+							</li>
+							<li class="nav-item" data-toggle="collapse" data-target="#collapsibleNavbar" onclick="$('.navbar-toggler').toggleClass('open');">
+								<a class="nav-link" href="#">Link</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav> -->
+
+
+		<!-- container -->
+		<div id="container" class="container-fluid">
+
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-xs-12">
+					<h2>
+						<img src="../atgicon.ico">
+						Loan Amortization Calculator
+					</h2>
+				</div>
+			</div>
+			<!-- /head-row -->
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-sm-12">
+
+					<!-- inputGroup -->
+					<div class="inputGroup">
+
+						<!-- row -->
+						<div class="row">
+							<div class="col-xs-12" style="text-align:center; float:left;">
+								<div style="display:inline-block; margin:0 24px 12px;">
+									<label for="compareCheck">Comparison</label><br/>
+									<label class="switch">
+										<input id="compareCheck" type="checkbox" onclick="toggleComparison(); onClear();">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div style="display:inline-block; margin:0 24px 12px;">
+									<label for="doExtraPayment">Extra Payment</label><br/>
+									<label class="switch">
+										<input id="doExtraPayment" type="checkbox" onclick="toggleExtraPayment();">
+										<span class="slider round"></span>
+									</label>
+								</div>
+								<div style="display:inline-block; margin:0 24px 12px;">
+									<label for="doBaloonPayment">Baloon Payment</label><br/>
+									<label class="switch">
+										<input id="doBaloonPayment" type="checkbox" onclick="toggleBaloonPayment();">
+										<span class="slider round"></span>
+									</label>
+								</div>
+							</div>
+							<div class="col-xs-12" style="text-align:center; display:none;">
+								<div id="comparisonLabels" class="comparison">
+									<div class="col-xs-3 col-sm-2"></div>
+
+									<div class="col-xs-3 col-sm-4">
+										<h4>A</h4>
+									</div>
+									<div class="col-xs-3 col-sm-4">
+										<h4>B</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input comparison">
+							<div class="col-xs-3 col-sm-2">
+								<label for="principalA">Principal</label>
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<input id="principalA" type="text" min="0" placeholder="500,000">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<input id="principalB" type="text" min="0" placeholder="500,000">
+							</div>
+							<div class="col-xs-3 col-sm-2">
+								<label for="principalB">Principal</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input single">
+							<div class="col-xs-3 col-sm-4">
+								<label for="principal">Principal</label>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input id="principal" type="text" min="0" placeholder="140,000">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<label for="principal">Principal</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input comparison">
+							<div class="col-xs-3 col-sm-2">
+								<label for="aprA">APR (%)</label>
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<input id="aprA" type="number" min="0" step="0.001" placeholder="3.568">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<input id="aprB" type="number" min="0" step="0.001" placeholder="5.157">
+							</div>
+							<div class="col-xs-3 col-sm-2">
+								<label for="aprB">APR (%)</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input single">
+							<div class="col-xs-3 col-sm-4">
+								<label for="apr">APR (%)</label>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input id="apr" type="number" min="0" step="0.001" placeholder="6">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<label for="apr">APR (%)</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input comparison">
+							<div class="col-xs-3 col-sm-2">
+								<label for="timeA">Term</label>
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<input id="timeA" type="number" min="0" placeholder="30">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<input id="timeB" type="number" min="0" placeholder="30">
+							</div>
+							<div class="col-xs-3 col-sm-2">
+								<label for="timeB">Term</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input single">
+							<div class="col-xs-3 col-sm-4">
+								<label for="time">Term</label>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input id="time" type="number" min="0" placeholder="30">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<label for="time">Term</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row" style="display:none;">
+							<div class="col-xs-3" style="display:none;">
+								Term Units
+							</div>
+							<div class="radioWrap col-xs-2">
+								<input type="radio" id="timeInYears" name="timeUnit" value="1" checked>
+								<label for="timeInYears" style="display:block; padding:0;">years</label>
+							</div>
+							<div class="radioWrap col-xs-2">
+								<input type="radio" id="timeInMonths" name="timeUnit" value="12">
+								<label for="timeInMonths" style="display:block; padding:0;">months</label>
+							</div>
+							<div class="radioWrap col-xs-2">
+								<input type="radio" id="timeInWeeks" name="timeUnit" value="52">
+								<label for="timeInWeeks" style="display:block; padding:0;">weeks</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input extra" style="display:none;">
+							<div class="col-xs-3 col-sm-4">
+								<label for="extraAmount">Extra Amount</label>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input id="extraAmount" type="text" min="0" placeholder="8,000">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<label for="extraAmount">Extra Amount</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input extra" style="display:none;">
+							<div class="col-xs-3 col-sm-4">
+								<label for="extraFreq">Extras/yr</label>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input id="extraFreq" type="number" min="0" placeholder="2">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<label for="extraFreq">Extras/yr</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row free-input baloon" style="display:none;">
+							<div class="col-xs-3 col-sm-4">
+								<label for="baloonAmount">Baloon Amount</label>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input id="baloonAmount" type="text" min="0" placeholder="10,000">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<label for="baloonAmount">Baloon Amount</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row" style="display:none;">
+							<div class="col-xs-3 col-sm-4">
+								<label for="compounding">Payments/yr</label>
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<input id="compounding" type="number" min="0" placeholder="12" value="12">
+							</div>
+							<div class="col-xs-3 col-sm-4">
+								<label for="compounding">Payments/yr</label>
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- input-row -->
+						<div class="input-row row">
+
+							<div class="col-xs-10 col-xs-offset-1">
+								<div class="col-xs-12" style="font-weight:bold; text-align:center; display:none;">
+									Compounding
+								</div>
+								<div class="col-xs-12">
+									<div class="radioWrap col-sm-2 col-xs-4">
+										<input id="annually" name="compounding" type="radio" value="1" onclick="setCompounding(1);">
+										<label for="annually">Annual</label>
+										<label for="annually">once a year</label>
+									</div>
+									<div class="radioWrap col-sm-2 col-xs-4">
+										<input id="semiannually" name="compounding" type="radio" value="2" onclick="setCompounding(2);">
+										<label for="semiannually">Semiannual</label>
+										<label for="semiannually">twice a year</label>
+									</div>
+									<div class="radioWrap col-sm-2 col-xs-4">
+										<input id="quarterly" name="compounding" type="radio" value="4" onclick="setCompounding(4);">
+										<label for="quarterly">Quarterly</label>
+										<label for="quarterly">4x a year</label>
+									</div>
+									<div class="radioWrap col-sm-2 col-xs-4">
+										<input id="monthly" name="compounding" type="radio" value="12" onclick="setCompounding(12);" checked>
+										<label for="monthly">Monthly</label>
+										<label for="monthly">12x a year</label>
+									</div>
+									<div class="radioWrap col-sm-2 col-xs-4">
+										<input id="weekly" name="compounding" type="radio" value="52" onclick="setCompounding(52);">
+										<label for="weekly">Weekly</label>
+										<label for="weekly">52x a year</label>
+									</div>
+									<div class="radioWrap col-sm-2 col-xs-4">
+										<input id="daily" name="compounding" type="radio" value="365" onclick="setCompounding(365);">
+										<label for="daily">Daily</label>
+										<label for="daily">365x a year</label>
+									</div>
+								</div>
+								<div class="radioWrap">
+									<input id="debugger" type="checkbox">
+									<label for="debugger">Debug</label>
+								</div>
+							</div>
+
+						</div>
+						<!-- /input-row -->
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="onClear();">Clear</button>
+							</div>
+							<div class="col-xs-4">
+								<button id="submitBtn" onclick="onSubmit();">Submit</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="setDefault(); onSubmit();">Example</button>
+							</div>
+							<!--div class="col-xs-12">
+								<button onclick="showData();">Show Data</button>
+							</div-->
+						</div>
+						<!-- /button-row -->
+
+					</div>
+					<!-- /inputGroup -->
+
+				</div>
+			</div>
+			<!-- /row -->
+
+			<!-- output-row -->
+			<div class="output-row row">
+
+				<!-- outputBox -->
+				<div id="outputBox" class="col-xs-12">
+
+					<div class="col-sm-12 single">
+						<div id="outputX" class="output row">
+							<div class="payment col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Periodic Payment</div>
+							</div>
+							<div class="paymentYr col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Annualized Payment</div>
+							</div>
+							<div class="interest col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Total Interest Paid</div>
+							</div>
+							<div class="paymentTotal col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Total Amount Paid</div>
+							</div>
+						</div>
+
+						<div id="paymentGraphX" class="output paymentGraph"></div>
+						<div id="outputTableX" class="output outputTable row"></div>
+					</div>
+
+					<div class="col-sm-8 col-sm-offset-2 comparison">
+						<div id="outputC" class="output row">
+							<div class="payment col-xs-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Periodic Payment<br/>Difference</div>
+							</div>
+							<div class="interest col-xs-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Total Interest<br/>Difference</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 comparison">
+						<div id="outputA" class="output row">
+							<div class="payment col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Periodic Payment</div>
+							</div>
+							<div class="paymentYr col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Annualized Payment</div>
+							</div>
+							<div class="interest col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Total Interest Paid</div>
+							</div>
+							<div class="paymentTotal col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Total Amount Paid</div>
+							</div>
+						</div>
+						<div id="paymentGraphA" class="output paymentGraph"></div>
+						<div id="outputTableA" class="output outputTable row"></div>
+					</div>
+
+					<div class="col-sm-6 comparison">
+						<div id="outputB" class="output row">
+							<div class="payment col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Periodic Payment</div>
+							</div>
+							<div class="paymentYr col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Annualized Payment</div>
+							</div>
+							<div class="interest col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Total Interest Paid</div>
+							</div>
+							<div class="paymentTotal col-sm-6">
+								<div class="outputValue"></div>
+								<div class="outputLabel">Total Amount Paid</div>
+							</div>
+						</div>
+						<div id="paymentGraphB" class="output paymentGraph"></div>
+						<div id="outputTableB" class="output outputTable row"></div>
+					</div>
+
+				</div>
+				<!-- /outputBox -->
+
+			</div>
+			<!-- /output-row -->
+
+		</div>
+		<!-- /container -->
+
+		<!-- #scrollButtons -->
+		<div id="scrollButtons">
+			<button id="scrollToTop" onclick="scrollPageTo(0);">
+				<i class="fa fa-angle-up"></i>
+			</button>
+			<button id="scrollToBottom" onclick="scrollPageTo( $('body').height() );">
+				<i class="fa fa-angle-down"></i>
+			</button>
+		</div>
+		<!-- /#scrollButtons -->
+
+		<script type="text/javascript">
+			var inputs = document.getElementsByTagName('input');
+			var input;
+
+			for (var i=0 ; i < inputs.length ; i++) {
+				input = inputs[i];
+				
+				input.addEventListener("keyup", function(event) {
+					event.preventDefault();
+					if (event.keyCode === 13) {
+						document.getElementById("submitBtn").click();
+					}
+				});
+			}
+		</script>
+
+	</body>
+
+</html>

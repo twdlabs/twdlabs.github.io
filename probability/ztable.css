@@ -1,0 +1,30 @@
+
+div#container {padding:1rem;}
+
+div#container h1 {font-size:1.5rem; /*margin:0;*/}
+div#container h2 {font-size:1.25rem; margin:0;}
+
+div#container div.form {padding:1rem;}
+div#container div.form div.col-75 {width:75%; display:inline-block; position:relative;}
+div#container div.form div.col-25 {width:25%; display:inline-block; position:relative;}
+div#container div.form div.col-75 input#zScore,
+div#container div.form div.col-25 button#goBtn {width:100%; height:100%; border-radius:.25em; border:1px solid #ccc; padding:.25em .75em;}
+div#container div.form div.col-75 input#zScore {border-right:0 none; border-top-right-radius:0; border-bottom-right-radius:0;}
+div#container div.form div.col-25 button#goBtn {border-left:0 none; border-top-left-radius:0; border-bottom-left-radius:0;}
+div#container div.form div.col-75 div#clearBtn {background-color:#CCC; display:inline-block; height:1.5em; width:1.5em; text-align:center; border-radius:50%; position:absolute; right:3em; top:50%; transform:translateY(-50%); cursor:pointer; user-select:none;}
+div#container div.form div.col-75 div#clearBtn div {position:relative; bottom:.05rem; color:#FFF;}
+
+div#container div#zTable {border:1.5px solid #000; /*padding:.25em;*/}
+div#container div#zTable div.col {width:10%; display:inline-block; border:1px solid #000; padding:.25em; cursor:pointer;}
+div#container div#zTable div.col div.main {text-align:center; padding:.5em 0;}
+div#container div#zTable div.col div.tip {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.5); box-sizing:border-box; background-color:rgba(0,0,0,0.75); border:1px solid #000; border-radius:.5em; padding:.5em; color:#FFF; text-align:center; opacity:0; transition:all 1s, opacity .25s;}
+div#container div#zTable div.col:hover div.tip {width:100%; height:100%; opacity:1; transform:translate(-50%,-50%);}
+
+div#container label span#length {font-weight:bold;}
+
+@media screen and (max-width:1000px) {
+	div#container div#zTable div.col {width:20%;}
+}
+@media screen and (max-width:400px) {
+	div#container div#zTable div.col {width:50%;}
+}

@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Compound Interest Calculator</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- Toast -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+		
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="interest.css" rel="stylesheet" type="text/css"/>
+		<script src="interest3.js" type="text/javascript"></script>
+		
+		<!-- Dollar Formatting -->
+		<script src="../dollar/dollar.js" type="text/javascript"></script>
+	</head>
+	
+	<body>
+		
+		<div id="container" class="container-fluid">
+			
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-sm-12">
+					<h2>
+						<img src="../atgicon.ico">
+						Compound Interest Calculator
+					</h2>
+				</div>
+			</div>
+			<!-- /head-row -->
+			
+			<!-- row -->
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- inputGroup -->
+					<div class="inputGroup">
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="principal">Principal</label>
+							</div>
+							<div class="col-xs-6">
+								<input type="number" id="principal" value="" placeholder="1000" min="0" max="1000000" step=".01"></input>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="apy">Annual Return (APY)</label>
+							</div>
+							<div class="col-xs-6">
+								<input type="number" id="apy" value="" placeholder="15" min="0" step="0.001"></input>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="fee">Fee  (APR)</label>
+							</div>
+							<div class="col-xs-6">
+								<input type="number" id="fee" value="" placeholder="0" min="0" step="0.001"></input>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="time">Term (in yrs)</label>
+							</div>
+							<div class="col-xs-6">
+								<input type="number" id="time" value="" placeholder="30" min="0" max="100" step=".01"></input>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-6">
+								<label for="compoundFreq">Compound Freq.</label>
+							</div>
+							<div class="col-xs-6">
+								<select id="compoundFreq" size="1">
+									<!-- <option value="0" selected>--</option> -->
+									<option value="0.2">every 5 yrs</option>
+									<option value="0.25">every 4 yrs</option>
+									<option value="0.33333333">every 3 yrs</option>
+									<option value="0.5">every 2 yrs</option>
+									<option value="1" selected>annually</option>
+									<option value="2">semi-annually</option>
+									<option value="4">quarterly</option>
+									<option value="12">monthly</option>
+									<option value="26">biweekly</option>
+									<option value="52">weekly</option>
+									<option value="365">daily</option>
+								</select>
+							</div>
+						</div>
+						<!-- /input-row -->
+						
+						<!-- input-row -->
+						<div class="input-row row" style="display:none;">
+							<div class="col-xs-5">
+								<label for="includeTax">Taxes included</label>
+							</div>
+							<div class="col-xs-1">
+								<input id="includeTax" type="checkbox" onclick="toggleTaxSection();" style="margin:12px;" checked/>
+							</div>
+							<div class="col-xs-6">
+								<div id="taxSection">
+									<div class="col-xs-6" style="text-align:center;">
+										<input type="radio" name="taxTime" id="taxBefore" style="margin:12px;"></input>
+										<label for="taxBefore" style="padding:0; width:50%;">before</label>
+									</div>
+									<div class="col-xs-6" style="text-align:center;">
+										<input type="radio" name="taxTime" id="taxAfter" style="margin:12px;"></input>
+										<label for="taxAfter" style="padding:0; width:50%;">after</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /input-row -->						
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-12">
+								<input id="addPeriodically" type="checkbox" onclick="toggleAddition();" style="margin:4px;"/>
+								<label for="addPeriodically" style="text-align:center;">
+									<div class="chkLabel">Periodic Addition</div>
+								</label>
+							</div>
+						</div>
+						<!-- /button-row -->
+						
+						<div id="cTable">
+							
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-6">
+									<label for="addAmount">Amount</label>
+								</div>
+								<div class="col-xs-6">
+									<input type="number" id="addAmount" value="" placeholder="1000" min="0" max="1000000"></input>
+								</div>
+							</div>
+							<!-- /input-row -->
+							
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-6">
+									<label for="additionFreq">
+										Frequency
+										<span id="currentFreq" style="float:right;">0</span>
+									</label>
+								</div>
+								<div class="col-xs-6">
+									<select id="additionFreq" size="1" onchange="updateContribution(true);">
+										<!-- <option value="0" selected>--</option> -->
+										<option value="1" selected>annually</option>
+										<option value="2">semi-annually</option>
+										<option value="4">quarterly</option>
+										<option value="12">monthly</option>
+										<option value="26">biweekly</option>
+										<option value="52">weekly</option>
+										<option value="365">daily</option>
+									</select>
+								</div>
+							</div>
+							<!-- /input-row -->
+							
+							<!-- input-row -->
+							<div class="input-row row">
+								<div class="col-xs-6">
+									<label for="additionHoldupTime">
+										Offset (yrs)
+										<input type="checkbox" id="additionHoldup" style="float:right;" onclick="toggleAdditionDelay();">
+									</label>
+								</div>
+								<div class="col-xs-6">
+									<input type="number" id="additionHoldupTime" value="" placeholder="0" min="0" max="100" disabled></input>
+								</div>
+							</div>
+							<!-- /input-row -->
+							
+						</div>
+
+						
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="onClear();">Clear</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="setDefault(); onSubmit();">Example</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="onSubmit();">Submit</button>
+							</div>
+						</div>
+						<!-- /button-row -->
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-12">
+								<input id="toggleTable" type="checkbox" onclick="toggleTable();" checked/>
+								<label for="toggleTable">
+									<div class="chkLabel">Table</div>
+								</label>
+							</div>
+						</div>
+						<!-- /button-row -->
+						
+					</div>
+					<!-- /inputGroup -->
+				</div>
+			</div>
+			<!-- /row -->
+					
+			
+			
+			<!-- output-row -->
+			<div class="output-row row">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div id="outputBox" class="outputWrapper">
+
+						<div id="valueOutput" class="checkbox-row row">
+							<div class="col-xs-7">
+								Present Value: 
+							</div>
+							<div class="col-xs-5">
+								<div id="outputPV" class="result">0.00</div>
+							</div>
+							<div class="col-xs-7">
+								Future Value: 
+							</div>
+							<div class="col-xs-5">
+								<div id="outputFV" class="result">0.00</div>
+							</div>
+
+							<div class="col-xs-12">
+								<input id="toggleFeeInfo" type="checkbox" onclick="toggleFeeInfo();" />
+								<label for="toggleFeeInfo">
+									<div class="chkLabel">Show more...</div>
+								</label>
+							</div>
+							
+							<div class="col-xs-7 feeInfo">
+								Future Value (w/o fees): 
+							</div>
+							<div class="col-xs-5 feeInfo">
+								<div id="outputFFFV" class="result">0.00</div>
+							</div>
+							<div class="col-xs-7 feeInfo">
+								Lost Returns: 
+							</div>
+							<div class="col-xs-5 feeInfo">
+								<div id="outputDeltaFV" class="result"></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /output-row -->
+
+			<!-- output-row -->
+			<div class="output-row row">
+				<div class="col-sm-12">
+					<div id="outputTableWrapper" class="outputWrapper">
+
+						<div id="outputTable" class="container-fluid">
+							<div id="row">
+								<!-- Table Headers -->
+								<!-- <div class="col-xs-2">
+									<div class="header" id="period">Period</div>
+								</div>
+								<div class="col-xs-2">
+									<div class="header">Begin Balance</div>
+								</div>
+								<div class="col-xs-2">
+									<div class="header">Earn</div>
+								</div>
+								<div class="col-xs-2">
+									<div class="header">Pay</div>
+								</div>
+								<div class="col-xs-2">
+									<div class="header">Add</div>
+								</div>
+								<div class="col-xs-2">
+									<div class="header">End Balance</div>
+								</div> -->
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div id="outputTableWrapperX" class="outputWrapper">
+
+						<table id="outputTableX" align="center">
+							<tr><!-- Table Headers -->
+								<!-- <th class="header" id="period">Period</th>
+								<th class="header">Begin Balance</th>
+								<th class="header">Earn</th>
+								<th class="header">Pay</th>
+								<th class="header">Add</th>
+								<th class="header">End Balance</th> -->
+							</tr>
+						</table>
+
+					</div>
+				</div>
+			</div>
+			<!-- /output-row -->
+			
+			
+			<!-- <div id="snackbar" class="container-fluid">
+				<div id="" class="row"></div>
+			</div> -->
+
+		</div>
+		
+	</body>
+	
+</html>
+

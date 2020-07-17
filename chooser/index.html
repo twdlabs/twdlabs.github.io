@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="atgicon.ico" rel="icon"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Page Chooser</title>
+
+		<!-- Bootstrap 4 -->
+		<!-- <link href="../../import/bs4/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<link href="https://import.atgserver.xyz/bs4/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<!-- <script src="../../import/bs4/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="../../import/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgserver.xyz/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="../../import/bs4/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs4/bootstrap.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<!-- F.A. Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <link href="https://atg973.github.io/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
+
+		<!-- Toaster -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+
+		<!-- Floating Copyright Footer -->
+		<link href="../copyright/copyright.css" rel="stylesheet" type="text/css">
+		<script src="../copyright/copyright.js" type="text/javascript"></script>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="chooser.css" rel="stylesheet" type="text/css"/>
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-expand-md navbar-light bg-light static-top">
+			<div class="container-fluid">
+
+				<a class="navbar-brand" href="#">Home</a>
+
+				<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div id="navbarResponsive" class="collapse navbar-collapse">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="../chooser/index.html">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../finance/index.html">Finance</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../fitness/index.html">Fitness</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../probability/index.html">Probability</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="../reast/index.html">Real Estate</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</nav>
+
+		<!-- #container -->
+		<div id="container" class="container-fluid">
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-12">
+
+					<h2>
+						<i class="fa fa-sitemap"></i>
+						Page Chooser
+						<i class="fa fa-sitemap"></i>
+					</h2>
+					<p>Start typing:</p>
+
+					<!-- <form autocomplete="off" action="https://www.w3schools.com//action_page.php"> -->
+					<div class="form">
+
+						<div class="input-row row">
+							<div class="autocompleteBox">
+								<input id="pageName" type="text" placeholder="Page Name">
+								<div id="clearBtn" onclick="$('#pageName').val('');">
+									<label for="clearBtn">&times;</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="button-row row">
+							<div class="col-4">
+								<button onclick="$('#pageName').val('');">Clear</button>
+							</div>
+							<div class="col-4">
+								<button id="submitBtn" onclick="openPage();">Go</button>
+							</div>
+							<div class="col-4">
+								<button id="exportBtn" onclick="showLibraryList();">List</button>
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+			<!-- /row -->
+
+		</div>
+		<!-- /#container -->
+
+		<script src="chooser.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			function openPage() {
+				var userInput = $('#pageName').val().toLowerCase();
+
+				if(userInput.length>0) {
+					// Confirm input if not found in preloaded pages.
+					if(!pageNames.includes(userInput)) {
+						var go = confirm("Page not listed. Continue?");
+						if(!go) return;
+					}
+
+					// Load the page in the same window. 
+					// window.open('../'+userInput+'/index.html');
+					// window.open('../'+userInput+'/index.html','_self');
+					window.location.href = ('../'+userInput+'/index.html');
+
+					// Load the page in a new window. 
+					// window.open('../'+userInput+'/index.html','_blank');
+				}
+				else {
+					alert("No input detected. Please try again.");
+				}
+			}
+
+			var inputBox = document.getElementById("pageName");
+			inputBox.addEventListener("keyup", function(event) {
+				event.preventDefault();
+				if (event.keyCode === 13) {
+					document.getElementById("submitBtn").click();
+				}
+			});
+		</script>
+		
+	</body>
+
+</html>

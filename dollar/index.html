@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Dollar Formatter</title>
+
+		<!-- Bootstrap 3 -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<link href="https://import.atgserver.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="../../import/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgserver.xyz/bs3/bootstrap.min.js" type="text/javascript"></script>
+		<script src="../../import/bs3/bootstrap.min.js" type="text/javascript"></script>
+
+		<!-- 'Font Awesome' Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+		<!-- CSS Stylesheet & JavaScript code -->
+		<link href="dollar.css" rel="stylesheet" type="text/css"/>
+		<script src="dollar.js" type="text/javascript"></script>
+
+		<!-- Toast -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container" class="container-fluid">
+
+			<!-- head-row -->
+			<div class="head-row row">
+				<div class="col-xs-12">
+					<h2>
+						<img src="../atgicon.ico">
+						Dollar Formatter
+					</h2>
+				</div>
+			</div>
+			<!-- /head-row -->
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+					<!-- inputGroup -->
+					<div class="inputGroup">
+
+						<!-- input-row -->
+						<div class="input-row row">
+							<div class="col-xs-12">
+								<input id="dollarAmount" type="text" placeholder="1000000" ondblclick="this.value = this.placeholder" />
+							</div>
+						</div>
+						<!-- /input-row -->
+
+						<!-- button-row -->
+						<div class="button-row row">
+							<div class="col-xs-4">
+								<button onclick="$('#dollarAmount').val(''); $('#outputBox').html('&nbsp;');">Clear</button>
+							</div>
+							<!--div class="col-xs-4">
+								<button onclick="$('#dollarAmount').val('1000000'); $('#outputBox').html( dollar( $('#dollarAmount').val() ) );">Example</button>
+							</div-->
+							<div class="col-xs-4">
+								<button onclick="$('#outputBox').html( dollar0( $('#dollarAmount').val() ) )">Dollar0</button>
+							</div>
+							<div class="col-xs-4">
+								<button onclick="$('#outputBox').html( dollar( $('#dollarAmount').val() ) )">Dollar</button>
+							</div>
+						</div>
+						<!-- /button-row -->
+
+					</div>
+					<!-- /inputGroup -->
+
+				</div>
+			</div><!-- /row -->
+
+			<!-- output-row -->
+			<div class="output-row row">
+				<div class="col-xs-12">
+					<div id="outputBox">&nbsp;</div>
+				</div>
+			</div>
+			<!-- /output-row -->
+
+		</div><!-- /#container -->
+
+		<!-- #snackbar -->
+		<div id="snackbar"></div>
+		<!-- /#snackbar -->
+
+	</body>
+
+</html>
+
+
