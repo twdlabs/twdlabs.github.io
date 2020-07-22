@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Skills Portfolio</title>
+
+		<!-- Bootstrap 5 (CSS) -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+		<!-- Bootstrap 5 (JS, Popper.js, and jQuery) -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+		<style type="text/css">
+			html, body {margin:0;}
+			div#container {background-color:transparent; color:#333; padding:1rem; font-family:Verdana; overflow-x:hidden;}
+			div#container div.headerBox {position:relative; padding:10rem 3rem 2rem;}
+			div#container div.headerBox h1 {position:relative; z-index:2; font-weight:bold; font-size:5vw; transition:.25s font-size;}
+			div#container div.headerBox div.logo {width:10vw; height:1vw; background-color:#333; z-index:2; position:relative; border-radius:1rem; transition:.25s;}
+			div#container div.headerBox div.logo span {display:inline-block; position:absolute; left:0; top:0; height:100%; border-radius:inherit;}
+			div#container div.headerBox div.logo span:nth-of-type(4) {background-color:#e3ff50; width:33%; transform:translateX(-.5px);}
+			div#container div.headerBox div.logo span:nth-of-type(3) {background-color:cyan; width:55%;}
+			div#container div.headerBox div.logo span:nth-of-type(2) {background-color:indigo; width:77%;}
+			div#container div.headerBox div.logo span:nth-of-type(1) {background-color:hotpink; width:100%;}
+			div#container div.headerBox div.watermark {font-size:15rem;font-size:30vw; font-weight:bold; color:#EEE; opacity:.75; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); overflow:hidden; white-space:nowrap; z-index:-1;}
+			div#container div.headerBox div.watermark::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:transparent linear-gradient(transparent,#FFF);}
+			div#container div.skillsetBox {padding:0 3rem;}
+			div#container div.skillsetBox div.category {/*background-color:rgba(255,255,255,0.5);*/ padding:1rem 0; /*margin:1rem 0;*/ /*width:50%;*/}
+			div#container div.skillsetBox div.category div.img {display:inline-block; height:4rem; width:4rem; background-color:#EEE; content:''; float:left; margin-right:1rem; padding:.5rem; border-radius:.25em}
+			div#container div.skillsetBox div.category div.img img {display:none;}
+			div#container div.skillsetBox div.category div.img svg {height:100%; width:100%;}
+			div#container div.skillsetBox div.category div.labelBox {display:inline-block;}
+			div#container div.skillsetBox div.category div.labelBox div.name {font-size:1.25rem; color:#333; font-weight:bold;}
+			div#container div.skillsetBox div.category div.labelBox div.skillset {}
+			div#container div.skillsetBox div.category div.labelBox div.skillset div.skill {display:inline-block; background-color:#EEE; color:#333; font-weight:300; border-radius:1rem; padding:.1em .75em; font-size:.65rem;}
+
+			@media screen and (max-width:991px) {
+				div#container div.headerBox h1 {font-size:2.5rem;}
+				div#container div.headerBox div.logo {width:4rem; height:.4rem;}
+				div#container div.headerBox, 
+				div#container div.skillsetBox {padding-left:0rem; padding-right:0rem; transition:.5s padding;}
+			}
+		</style>
+	</head>
+	<body>
+
+		<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarColor03">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Features</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Pricing</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+				</ul>
+				<form class="form-inline">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+
+		<div id="container">
+			<div class="headerBox">
+				<div class="watermark">My Skills</div>
+				<div class="logo">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<h1>My Skills</h1>
+			</div>
+			<div class="skillsetBox">
+
+				<div class="container-fluid">
+					<!-- row -->
+					<div class="row">
+
+						<div class="col-md-6">
+
+							<!-- category -->
+							<div class="category">
+								<div class="img">
+									<img src="">
+									<svg viewBox="0 0 16 16" class="bi bi-file-earmark-spreadsheet" fill="currentColor">
+										<path fill-rule="evenodd" d="M5 9H3V8h10v1h-3v2h3v1h-3v2H9v-2H6v2H5v-2H3v-1h2V9zm1 0v2h3V9H6z"/>
+										<path d="M4 1h5v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6h1v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z"/>
+										<path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 0 1 9 4.5z"/>
+									</svg>
+								</div>
+								<div class="labelBox">
+									<div class="name">Web Development</div>
+									<div class="skillset">
+										<div class="skill">HTML</div>
+										<div class="skill">CSS3</div>
+										<div class="skill">JavaScript</div>
+									</div>
+								</div>
+							</div>
+							<!-- /category -->
+							
+						</div>
+
+						<div class="col-md-6">
+
+							<!-- category -->
+							<div class="category">
+								<div class="img">
+									<img src="">
+									<svg viewBox="0 0 16 16" class="bi bi-file-earmark-spreadsheet" fill="currentColor">
+										<path fill-rule="evenodd" d="M5 9H3V8h10v1h-3v2h3v1h-3v2H9v-2H6v2H5v-2H3v-1h2V9zm1 0v2h3V9H6z"/>
+										<path d="M4 1h5v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6h1v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z"/>
+										<path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 0 1 9 4.5z"/>
+									</svg>
+								</div>
+								<div class="labelBox">
+									<div class="name">Frontend Frameworks</div>
+									<div class="skillset">
+										<div class="skill">Bootstrap</div>
+										<div class="skill">Angular</div>
+										<div class="skill">jQuery</div>
+									</div>
+								</div>
+							</div>
+							<!-- /category -->
+							
+						</div>
+
+						<div class="col-md-6">
+
+							<!-- category -->
+							<div class="category">
+								<div class="img">
+									<img src="">
+									<svg viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor">
+										<path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
+										<path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+									</svg>
+								</div>
+								<div class="labelBox">
+									<div class="name">Backend Frameworks</div>
+									<div class="skillset">
+										<div class="skill">AJAX</div>
+										<div class="skill">MySQL</div>
+									</div>
+								</div>
+							</div>
+							<!-- /category -->
+							
+						</div>
+
+						<div class="col-md-6">
+
+							<!-- category -->
+							<div class="category">
+								<div class="img">
+									<img src="">
+									<svg viewBox="0 0 16 16" class="bi bi-app" fill="currentColor">
+										 <path fill-rule="evenodd" d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+										 <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+									</svg>
+								</div>
+								<div class="labelBox">
+									<div class="name">Mobile App Development</div>
+									<div class="skillset">
+										<div class="skill">Android</div>
+										<div class="skill">Java</div>
+										<div class="skill">iOS</div>
+										<div class="skill">Swift</div>
+									</div>
+								</div>
+							</div>
+							<!-- /category -->
+							
+						</div>
+
+						<div class="col-md-6">
+
+							<!-- category -->
+							<div class="category">
+								<div class="img">
+									<img src="">
+									<svg viewBox="0 0 16 16" class="bi bi-bookshelf" fill="currentColor">
+										<path fill-rule="evenodd" d="M2.5 0a.5.5 0 0 1 .5.5V2h10V.5a.5.5 0 0 1 1 0v15a.5.5 0 0 1-1 0V15H3v.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zM3 14h10v-3H3v3zm0-4h10V7H3v3zm0-4h10V3H3v3z"/>
+									</svg>
+								</div>
+								<div class="labelBox">
+									<div class="name" title="Content Management Systems">CMS</div>
+									<div class="skillset">
+										<div class="skill">WordPress</div>
+										<div class="skill">Shopify</div>
+									</div>
+								</div>
+							</div>
+							<!-- /category -->
+							
+						</div>
+
+						<div class="col-md-6">
+
+							<!-- category -->
+							<div class="category">
+								<div class="img">
+									<img src="">
+									<svg viewBox="0 0 16 16" class="bi bi-file-earmark-spreadsheet" fill="currentColor">
+										<path fill-rule="evenodd" d="M5 9H3V8h10v1h-3v2h3v1h-3v2H9v-2H6v2H5v-2H3v-1h2V9zm1 0v2h3V9H6z"/>
+										<path d="M4 1h5v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6h1v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z"/>
+										<path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 0 1 9 4.5z"/>
+									</svg>
+								</div>
+								<div class="labelBox">
+									<div class="name">Web Services</div>
+									<div class="skillset">
+										<div class="skill">XML</div>
+										<div class="skill">JSON</div>
+									</div>
+								</div>
+							</div>
+							<!-- /category -->
+							
+						</div>
+						
+					</div>
+					<!-- /row -->
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+</html>
