@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Chinese Sound Board</title>
+
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+		<!-- Custom CSS -->
+		<style type="text/css">
+			html,body {height:100%; margin:0; font-family:-apple-system, BlinkMacSystemFont, "Roboto", Helvetica, Arial, sans-serif;}
+			div#container {min-height:100%; background-color:#333; color:#FFF; padding:1rem 0 0; overflow:auto; text-align:center;}
+			div#container select {/*border:0;*/ /*background-color:#333; color:#FFF;*/}
+			/*div#container select option {background-color:#333; overflow:hidden;}*/
+			div#container table {background-color:#FADE4B; color:#333; border-collapse:collapse; margin:.25rem auto; border:3px solid #CE3922; border-bottom-width:4px;}
+			div#container table tr {}
+			div#container table tr th,
+			div#container table tr td {padding:.35rem; /*border:1px solid #CE3922;*/ position:relative;}
+			div#container table tr th::after {display:none; content:'guide'; position:absolute; top:100%; left:-.5rem; background-color:#FFF; z-index:1; padding:.25rem; font-size:.75em; font-weight:400; border:.5px solid #000; color:#333;}
+			div#container table tr th:hover::after {display:block;}
+
+			.highlight {background-color:dodgerblue; background-color:rgba(30,144,255,0.25)}
+		</style>
+	</head>
+	<body>
+
+		<div id="container">
+			On click: 
+			<select>
+				<option>Show tone menu</option>
+				<option>Play 1st tone</option>
+				<option>Play 2nd tone</option>
+				<option>Play 3rd tone</option>
+				<option>Play 4th tone</option>
+			</select>
+			<table>
+				<tr>
+					<th>abc</th>
+					<th>def</th>
+					<th>ghi</th>
+					<th>jkl</th>
+					<th>mno</th>
+					<th>pqr</th>
+					<th>stu</th>
+					<th>vwx</th>
+				</tr>
+				<tr>
+					<th>def</th>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+				</tr>
+				<tr>
+					<th>ghi</th>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+				</tr>
+				<tr>
+					<th>jkl</th>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+				</tr>
+				<tr>
+					<th>mno</th>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+				</tr>
+				<tr>
+					<th>pqr</th>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+				</tr>
+				<tr>
+					<th>stu</th>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+				</tr>
+				<tr>
+					<th>vwx</th>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+					<td>abc</td>
+				</tr>
+			</table>
+		</div>
+
+		<script type="text/javascript">
+			$('table th, table td')
+			.hover(function() {
+				let index = $(this).index();
+
+				var tr = $(this).parent();
+				tr.addClass('highlight');
+				$('tr :nth-child('+(index+1)+')').addClass('highlight');
+			})
+			.mouseout(function() {
+				let index = $(this).index();
+
+				var tr = $(this).parent();
+				tr.removeClass('highlight');
+				$('tr :nth-child('+(index+1)+')').removeClass('highlight');
+			});
+		</script>
+
+	</body>
+</html>
