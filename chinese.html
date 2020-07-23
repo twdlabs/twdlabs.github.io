@@ -16,10 +16,10 @@
 			div#container {min-height:100%; background-color:#333; color:#FFF; padding:1rem 0 0; overflow:auto; text-align:center;}
 			div#container select {/*border:0;*/ /*background-color:#333; color:#FFF;*/}
 			/*div#container select option {background-color:#333; overflow:hidden;}*/
-			div#container table {background-color:#FADE4B; color:#333; border-collapse:collapse; margin:.25rem auto; border:3px solid #CE3922; border-bottom-width:4px;}
+			div#container table {background-color:#FADE4B; color:#333; border-collapse:collapse; margin:.25rem auto; border:3px solid #CE3922; border-bottom-width:4px; overflow:auto; width:100%;}
 			div#container table tr {}
 			div#container table tr th,
-			div#container table tr td {padding:.35rem; /*border:1px solid #CE3922;*/ position:relative;}
+			div#container table tr td {cursor:pointer; padding:.35rem; border:1px solid #CE3922; position:relative;}
 			div#container table tr th::after {display:none; content:'guide'; position:absolute; top:100%; left:-.5rem; background-color:#FFF; z-index:1; padding:.25rem; font-size:.75em; font-weight:400; border:.5px solid #000; color:#333;}
 			div#container table tr th:hover::after {display:block;}
 
@@ -29,6 +29,7 @@
 	<body>
 
 		<div id="container">
+
 			On click: 
 			<select>
 				<option>Show tone menu</option>
@@ -37,7 +38,8 @@
 				<option>Play 3rd tone</option>
 				<option>Play 4th tone</option>
 			</select>
-			<table>
+
+			<table id="table">
 				<tr>
 					<th>abc</th>
 					<th>def</th>
@@ -122,6 +124,38 @@
 		</div>
 
 		<script type="text/javascript">
+			var consonants = ['b','p','m','f','d','t','n','l','g','k','h','z','c','s','zh','ch','sh','r','j','q','x'];
+			var vowels = ['a','o','e','i','i','er','ai','ei','ao','ou','an','en','ang','eng','ong','i','ia','iao','ie','iu','ian','in','iang','ing','iong','u','ua','uo','uai','ui','uan','un','uang','ueng','ü','üe','üan','ün'];
+			var vowels2 = ['a','o','e','','','er','ai','','ao','ou','an','en','ang','eng','','yi','ya','yao','ye','you','yan','yin','yang','ying','yong','wu','wa','wo','wai','wei','wan','wen','wang','weng','yu','yue','yuan','yun'];
+			var table = document.getElementById('table');
+
+			// Empty the table. 
+			table.innerHTML = '';
+
+			// Populate the new table with the vowels. 
+			let row1 = '<tr>';
+			let row2 = '<tr>';
+			for (var j=0 ; j<vowels.length ; j++) {
+				row1 += '<th>' + vowels[j] + '</th>'
+				row2 += '<td>' + vowels2[j] + '</td>'
+			}
+			row1 += '</tr>'
+			row2 += '</tr>'
+
+			table.innerHTML += row1;
+			table.innerHTML += row2;
+
+			// Populate the table with all word combinations by combining each vowel with each consonant. 
+			for(var i=0 ; i<consonants.length ; i++) {
+				let rowX = '<tr>';
+				for (var j=0 ; j<vowels.length ; j++) {
+					rowX += '<td>' + consonants[i]+vowels[j] + '</td>';
+				}
+				rowX += '</tr>';
+				table.innerHTML += rowX;
+			}
+
+			// Highlight table row and column on hover. 
 			$('table th, table td')
 			.hover(function() {
 				let index = $(this).index();
