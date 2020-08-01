@@ -26,12 +26,12 @@ function onSubmit(){
 	var h = $('#height').val();
 	var output = '';
 
-	if() {
-		output += '';
-	}
-	else {
-		output += '';
-	}
+	// if() {
+	// 	output += '';
+	// }
+	// else {
+	// 	output += '';
+	// }
 	
 	$('#outputBox').html(output).slideDown();
 	

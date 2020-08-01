@@ -107,10 +107,10 @@ div#container div.output-row div#outputBox div.outputTable div.yearTitle {text-a
 div#container div.output-row div#outputBox div.outputTable div.within {display:none;}
 div#container div.output-row div#outputBox div.outputTable div.within1 {display:block; margin-top:12px;}
 div#container div.output-row div#outputBox div.outputTable div.yearEnd {font-weight:bold; cursor:pointer; margin-bottom:12px;}
-div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder {background-color:#CCC; height:1em; border-radius:5px; overflow:hidden;}
-div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar {background-color:dodgerblue; height:100%;}
-div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar.bl {border-radius:5px 0 0 5px; float:left;}
-div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar.br {border-radius:0 5px 5px 0; float:right;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder {background-color:#CCC; height:.5rem; border-radius:5px; overflow:hidden;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar {background-color:dodgerblue; height:100%; border-radius:inherit;}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar.bl {float:left; /*border-radius:5px 0 0 5px;*/}
+div#container div.output-row div#outputBox div.outputTable div.yearEnd div.loanProgressBarHolder div.loanProgressBar.br {float:right; /*border-radius:0 5px 5px 0;*/}
 div#container div.output-row div#outputBox div#outputTableA {background-color:rgba(255,150,100,0.25);}
 div#container div.output-row div#outputBox div#outputTableB {background-color:rgba(100,150,255,0.25);}
 div#container div.output-row div#outputBox div#outputTableX {background-color:rgba(255,255,255,0.5)}

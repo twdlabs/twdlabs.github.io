@@ -441,7 +441,7 @@ function onSubmit(){
 
 			var result = "";
 			result += "<div class='loanProgressBarHolder'>";
-			result += "<div class='loanProgressBar br' style='width:"+blPercentage+";'>";
+			result += "<div class='loanProgressBar bl' style='width:"+brPercentage+";'>";
 			result += "</div>";
 			result += "</div>";
 			return result;

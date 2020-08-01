@@ -10,12 +10,14 @@ $(document).ready(function(){
 window.onresize = onResize;
 function onResize() {
 	var bodyHeight = $('body').outerHeight();
+	var navHeight = $('nav').outerHeight();
 	var buttonHeight = $('#defaultOpen').outerHeight();
 
-	var contentHeight = bodyHeight - buttonHeight;
-	$('.tabcontent').css('height',''+contentHeight);
-
-	// $('.tabcontent').css('margin-bottom',''+buttonHeight);
+	var contentHeight = bodyHeight - buttonHeight - navHeight;
+	$('.contentBox')
+	.css('height', contentHeight)
+	.css('margin-top', navHeight)
+	.css('margin-bottom', buttonHeight);
 }
 
 function openPage(pageId,button) {
