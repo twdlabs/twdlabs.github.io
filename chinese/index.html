@@ -5,51 +5,26 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
 		<title>Chinese Sound Board</title>
 
 		<!-- jQuery -->
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
 		<!-- Custom CSS -->
-		<style type="text/css">
-			html,body {height:100%; margin:0; font-family:-apple-system, BlinkMacSystemFont, "Roboto", Helvetica, Arial, sans-serif;}
-			div#container {min-height:100%; background-color:#FFF; color:#333; padding:1rem 0 0; overflow:auto; text-align:center;}
-
-			div#container select {/*border:0;*/ /*background-color:#333; color:#FFF;*/}
-			/*div#container select option {background-color:#333; overflow:hidden;}*/
-			div#container input {width:4em; border-radius:.25em;}
-			div#container button {border-radius:1em;}
-
-			div#container table {background-color:#FADE4B; background-color:rgba(250,222,75,0.75); color:#333; border-collapse:collapse; margin:.25rem auto; border:3px solid #CE3922; border-bottom-width:4px;}
-			div#container table tr {}
-			div#container table tr th,
-			div#container table tr td {cursor:pointer; padding:.35rem; border:1px solid #CE3922; position:relative;}
-			div#container table tr th::after {display:none; content:'description'; position:absolute; top:100%; left:-.5rem; background-color:rgba(255,238,119); z-index:1; padding:.25rem; font-size:.75em; font-weight:400; border:.5px solid #000; color:#333;}
-			div#container table tr th:hover::after {display:block;}
-
-			div#container div#soundPlayer {display:none; /*visibility:hidden;*/ position:absolute; top:0; left:0; border:1px solid #999; background-color:#FFF; padding:.3rem; box-shadow:1px 4px 10px rgba(0,0,0,0.6);}
-			div#container div#soundPlayer::before {content:''; position:absolute; top:2rem; right:102%; border:1em solid #999; border-left:0 none; border-bottom-color:transparent; border-top-color:transparent;}
-			div#container div#soundPlayer::after {content:''; position:absolute; top:2rem; right:100%; border:1em solid #FFF; border-left:0 none; border-bottom-color:transparent; border-top-color:transparent;}
-			div#container div#soundPlayer div.btn {background-color:#e3e3e3; color:#333; border:1px solid #bbb; border-radius:2rem; margin-bottom:.2rem; padding:.15rem .75rem .25rem .35rem; cursor:pointer;}
-			div#container div#soundPlayer div.btn:hover {background-color:#fed; border:1px solid #f94;}
-			div#container div#soundPlayer div.btn svg {height:1em; width:1em; color:#224a9a; position:relative; top:.15em; margin-right:.2em;}
-
-			.highlight {background-color:dodgerblue; background-color:rgba(30,144,255,0.25)}
-		</style>
+		<link href="chinese.css" rel="stylesheet">
 	</head>
 	<body>
+		
 
 		<div id="container">
 
-			<!-- <input type="text">
-			<input type="text">
-			<br>
-			<button onclick="positionSoundPlayer()">Position</button>
-			<br>
-			<br> -->
+			<div id="bg"></div>
+
+			<h1>Chinese Soundboard</h1>
 
 			On click:
-			<select id="tone">
+			<select id="toneNumber">
 				<option value="0">Show tone menu</option>
 				<option value="1">Play 1st tone</option>
 				<option value="2">Play 2nd tone</option>
@@ -57,175 +32,81 @@
 				<option value="4">Play 4th tone</option>
 			</select>
 
-			<table id="table">
-				<tr>
-					<th>abc</th>
-					<th>def</th>
-					<th>ghi</th>
-					<th>jkl</th>
-					<th>mno</th>
-				</tr>
-				<tr>
-					<th>def</th>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-				</tr>
-				<tr>
-					<th>ghi</th>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-				</tr>
-				<tr>
-					<th>jkl</th>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-				</tr>
-				<tr>
-					<th>mno</th>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-				</tr>
-				<tr>
-					<th>pqr</th>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-				</tr>
-				<tr>
-					<th>stu</th>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-				</tr>
-				<tr>
-					<th>vwx</th>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-					<td>abc</td>
-				</tr>
-			</table>
 
-			<div id="soundPlayer">
+			<div id="tableBox">
+				<table id="table">
+					<tr>
+						<th>abc</th>
+						<th>def</th>
+						<th>ghi</th>
+						<th>jkl</th>
+						<th>mno</th>
+					</tr>
+					<tr>
+						<th>def</th>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+					</tr>
+					<tr>
+						<th>ghi</th>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+					</tr>
+					<tr>
+						<th>jkl</th>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+					</tr>
+					<tr>
+						<th>mno</th>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+					</tr>
+					<tr>
+						<th>pqr</th>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+					</tr>
+					<tr>
+						<th>stu</th>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+					</tr>
+					<tr>
+						<th>vwx</th>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+						<td>abc</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="soundChooser">
 				<div class="btn"></div>
 				<div class="btn"></div>
 				<div class="btn"></div>
 				<div class="btn"></div>
 			</div>
 
+			<div id="soundPlayer">
+			</div>
+
 		</div>
 
-		<script type="text/javascript">
-			var consonants = ['b','p','m','f','d','t','n','l','g','k','h','z','c','s','zh','ch','sh','r','j','q','x'];
-			var vowels = ['a','o','e','i','i','er','ai','ei','ao','ou','an','en','ang','eng','ong','i','ia','iao','ie','iu','ian','in','iang','ing','iong','u','ua','uo','uai','ui','uan','un','uang','ueng','ü','üe','üan','ün'];
-			var vowels2 = ['a','o','e','','','er','ai','','ao','ou','an','en','ang','eng','','yi','ya','yao','ye','you','yan','yin','yang','ying','yong','wu','wa','wo','wai','wei','wan','wen','wang','weng','yu','yue','yuan','yun'];
-			var table = document.getElementById('table');
-
-			// Create new empty table. 
-			table.innerHTML = '';
-
-			// Add the vowels to the table. 
-			let row1 = '<tr><td></td>';
-			let row2 = '<tr><th></th>';
-			for (var j=0 ; j<vowels.length ; j++) {
-				row1 += '<th>' + vowels[j] + '</th>'
-				row2 += '<td>' + vowels2[j] + '</td>'
-			}
-			row1 += '</tr>'
-			row2 += '</tr>'
-
-			table.innerHTML += row1;
-			table.innerHTML += row2;
-
-			// Populate the table with all word combinations by combining each vowel with each consonant. 
-			for(var i=0 ; i<consonants.length ; i++) {
-				let rowX = '<tr><th>'+consonants[i]+'</th>';
-				for (var j=0 ; j<vowels.length ; j++) {
-					if(true) rowX += '<td>' + consonants[i]+vowels[j] + '</td>';
-					else 	 rowX += '<td></td>';
-				}
-				rowX += '</tr>';
-				table.innerHTML += rowX;
-			}
-
-			// Highlight table row and column on hover. 
-			$('table th, table td')
-			.hover(function() {
-				let index = $(this).index();
-
-				var tr = $(this).parent();
-				tr.addClass('highlight');
-				$('tr :nth-child('+(index+1)+')').addClass('highlight');
-			})
-			// Un-highlight table row and column on mouseout. 
-			.mouseout(function() {
-				let index = $(this).index();
-
-				var tr = $(this).parent();
-				tr.removeClass('highlight');
-				$('tr :nth-child('+(index+1)+')').removeClass('highlight');
-			})
-			// When table cell is clicked, take the following action...
-			.click(function() {
-				let x = $(this).offset().left + $(this).outerWidth() + 8;
-				let y = $(this).offset().top - 32;
-				console.log('x = '+x,'y = '+y);
-				let word = $(this).html();
-				let tone = $('#tone').val();
-				console.log('word = '+word, 'tone = '+tone);
-
-				// Open the sound player, giving the user the choice of which tone to play. 
-				if(tone==0) positionSoundPlayer(x,y, word);
-				// 
-				else {
-					// $('div#soundPlayer div.btn')[tone-1].find('audio').play();
-					console.log( $('div#soundPlayer div.btn') );
-					console.log( $('div#soundPlayer div.btn:nth-child(1)').children('audio') );
-					console.log( $('div#soundPlayer div.btn:nth-child(2)').children('audio') );
-					console.log( $('div#soundPlayer div.btn:nth-child(3)').children('audio') );
-					console.log( $('div#soundPlayer div.btn:nth-child(4)').children('audio') );
-				}
-			});
-
-			// Close sound player when clicking outside the box. 
-			$('#container').click(function() {
-				// $('div#soundPlayer').hide();
-				// console.log('Close sound player.');
-				console.log('Clicked #container.');
-			});
-
-			// Play the contained sound when clicking a button in the sound player. 
-			$('div#soundPlayer div.btn').click(function() {
-				$(this).find('audio')[0].play();
-			});
-
-			function positionSoundPlayer(x,y, word) {
-				// Coolect user input for positioning. 
-				if(!x) x = Number.parseInt( $('div#container input:nth-of-type(1)').val() );
-				if(!y) y = Number.parseInt( $('div#container input:nth-of-type(2)').val() );
-
-				// Position sound player based on user input. 
-				$('div#soundPlayer').css('left',x+'px').css('top',y+'px');
-
-				// Populate the buttons in the soundplayer window. 
-				let vol = '<svg viewBox="0 0 16 16" class="bi bi-volume-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/><path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707z"/><path fill-rule="evenodd" d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/></svg>';
-				let audio = '<audio src="sound.wav"><source src="sound.wav">Your browser does not support the audio element.</audio>';
-				for(var i=0;i<4;i++) $('div#soundPlayer div.btn:nth-child('+(i+1)+')').html(vol + word + audio);
-
-				// Make sound player visible. 
-				$('div#soundPlayer').show();
-			}
-		</script>
+		<script src="chinese.js" type="text/javascript"></script>
 
 	</body>
 </html>

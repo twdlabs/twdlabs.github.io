@@ -1,0 +1,27 @@
+/** {background-color:black;}*/
+html,body {height:100%; margin:0; font-family:-apple-system, BlinkMacSystemFont, "Roboto", Helvetica, Arial, sans-serif;}
+
+div#container {min-height:100%; box-sizing:border-box; background-color:#FFF; color:#333; /*box-sizing:border-box; width:100%; display:inline-block;*/ padding:2rem 0 0; overflow:auto; text-align:center; position:relative;}
+
+div#container > * {z-index:2; position:relative;}
+
+div#container div#bg {z-index:1; position:fixed; top:0; right:0; bottom:0; left:0; /*background-color:lime;*/}
+
+div#container select {/*border:0;*/ /*background-color:#333; color:#FFF;*/ margin-bottom:1em;}
+div#container select option {/*background-color:#333; color:#FFF;*/ /*overflow:hidden;*/}
+
+div#container div#tableBox {width:100%; overflow-x:auto; /*padding:1em; box-sizing:border-box;*/}
+div#container table {background-color:#FADE4B; background-color:rgba(250,222,75,0.75); color:#333; border-collapse:collapse; margin:.25rem auto; border:3px solid #CE3922; border-bottom-width:4px;}
+div#container table tr th,
+div#container table tr td {cursor:pointer; padding:.35rem; border:1px solid #CE3922; position:relative;}
+div#container table tr th::after {display:none; content:'description'; position:absolute; top:100%; left:-.5rem; background-color:rgba(255,238,119); z-index:1; padding:.25rem; font-size:.75em; font-weight:400; border:.5px solid #000; color:#333;}
+div#container table tr th:hover::after {display:block;}
+
+div#container div#soundChooser {display:none; /*visibility:hidden;*/ position:absolute; top:0; left:0; border:1px solid #999; background-color:#FFF; padding:.3rem; box-shadow:1px 4px 10px rgba(0,0,0,0.6);}
+div#container div#soundChooser::before {content:''; position:absolute; top:2rem; right:102%; border:1em solid #999; border-left:0 none; border-bottom-color:transparent; border-top-color:transparent;}
+div#container div#soundChooser::after {content:''; position:absolute; top:2rem; right:100%; border:1em solid #FFF; border-left:0 none; border-bottom-color:transparent; border-top-color:transparent;}
+div#container div#soundChooser div.btn {background-color:#e3e3e3; color:#333; border:1px solid #bbb; border-radius:2rem; margin-bottom:.2rem; padding:.15rem .75rem .25rem .35rem; cursor:pointer;}
+div#container div#soundChooser div.btn:hover {background-color:#fed; border:1px solid #f94;}
+div#container div#soundChooser div.btn svg {height:1em; width:1em; color:#224a9a; position:relative; top:.15em; margin-right:.2em;}
+
+.highlight {background-color:dodgerblue; background-color:rgba(30,144,255,0.25)}
