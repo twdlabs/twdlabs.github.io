@@ -48,13 +48,13 @@
 			<br>
 			<br> -->
 
-			On click: &egrave;
-			<select>
-				<option>Show tone menu</option>
-				<option>Play 1st tone</option>
-				<option>Play 2nd tone</option>
-				<option>Play 3rd tone</option>
-				<option>Play 4th tone</option>
+			On click:
+			<select id="tone">
+				<option value="0">Show tone menu</option>
+				<option value="1">Play 1st tone</option>
+				<option value="2">Play 2nd tone</option>
+				<option value="3">Play 3rd tone</option>
+				<option value="4">Play 4th tone</option>
 			</select>
 
 			<table id="table">
@@ -167,6 +167,7 @@
 				tr.addClass('highlight');
 				$('tr :nth-child('+(index+1)+')').addClass('highlight');
 			})
+			// Un-highlight table row and column on mouseout. 
 			.mouseout(function() {
 				let index = $(this).index();
 
@@ -174,20 +175,36 @@
 				tr.removeClass('highlight');
 				$('tr :nth-child('+(index+1)+')').removeClass('highlight');
 			})
+			// When table cell is clicked, take the following action...
 			.click(function() {
 				let x = $(this).offset().left + $(this).outerWidth() + 8;
 				let y = $(this).offset().top - 32;
+				console.log('x = '+x,'y = '+y);
 				let word = $(this).html();
-				console.log(x,y)
-				positionSoundPlayer(x,y, word);
+				let tone = $('#tone').val();
+				console.log('word = '+word, 'tone = '+tone);
+
+				// Open the sound player, giving the user the choice of which tone to play. 
+				if(tone==0) positionSoundPlayer(x,y, word);
+				// 
+				else {
+					// $('div#soundPlayer div.btn')[tone-1].find('audio').play();
+					console.log( $('div#soundPlayer div.btn') );
+					console.log( $('div#soundPlayer div.btn:nth-child(1)').children('audio') );
+					console.log( $('div#soundPlayer div.btn:nth-child(2)').children('audio') );
+					console.log( $('div#soundPlayer div.btn:nth-child(3)').children('audio') );
+					console.log( $('div#soundPlayer div.btn:nth-child(4)').children('audio') );
+				}
 			});
 
-			// Close osund player when clicking outside the box. 
+			// Close sound player when clicking outside the box. 
 			$('#container').click(function() {
 				// $('div#soundPlayer').hide();
+				// console.log('Close sound player.');
+				console.log('Clicked #container.');
 			});
 
-			// 
+			// Play the contained sound when clicking a button in the sound player. 
 			$('div#soundPlayer div.btn').click(function() {
 				$(this).find('audio')[0].play();
 			});
@@ -212,3 +229,11 @@
 
 	</body>
 </html>
+
+<!-- 
+āáǎà
+ēéěè
+īíǐì
+ōóǒò
+ūúǔù
+ -->
