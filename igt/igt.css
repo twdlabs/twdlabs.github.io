@@ -1,0 +1,103 @@
+
+
+* {box-sizing:border-box; font-family:sans-serif;}
+
+
+html {height:100%;}
+body {height:100%; margin:0;}
+
+
+div#container {max-width:50rem; margin:0 auto; min-height:100%; padding:0 2rem; text-align:center; background-color:#00000004;}
+div#container {display:flex; flex-direction:column; justify-content:space-between; user-select:none;}
+div#container.dark {background-color:#000C; color:#EEE;}
+
+
+
+div#container header {flex:0 1 auto;}
+div#container header h1 {font-weight:100; cursor:pointer;}
+
+
+div#container main {flex:0 1 auto; /*flex-grow:1;*/}
+
+div#container main section {flex:0 0 auto; margin:3rem 0;}
+
+div#container main section#record {visibility:hidden;}
+div#container main section#record p {font-size:2rem;}
+div#container main section#record p .money:before {content:'$';}
+div#container.on main section#record {visibility:visible;}
+
+div#container main section#cards {display:flex; flex-direction:row; justify-content:space-between; visibility:hidden;}
+div#container main section#cards div.deckBox {flex:0 1 25%; text-align:center; transition:.25s margin;}
+div#container main section#cards div.deckBox div.deck {background-color:#FFF; border:solid #0001; cursor:pointer; display:inline-block;}
+div#container.dark main section#cards div.deckBox div.deck {border-color:#0008;}
+div#container main section#cards div.deckBox div.deck {position:relative;}
+div#container main section#cards div.deckBox div.deck.active {border-color:#ED9577; border-color:#eea236;}
+div#container.dark main section#cards div.deckBox div.deck.active {border-color:#FF8855; border-color:#eea236;}
+div#container main section#cards div.deckBox div.deck img {height:10rem; display:inline-block; padding:.5rem .25rem 0;}
+div#container main section#cards div.deckBox div.deck div.msg {position:absolute; top:0; left:0; width:100%; height:100%; background-color:#0008;}
+div#container main section#cards div.deckBox div.deck div.msg {display:flex; flex-direction:column; justify-content:center; align-items:center; color:#FFF;}
+div#container main section#cards div.deckBox div.deck div.msg {opacity:1; visibility:visible; transition:.5s;}
+div#container main section#cards div.deckBox div.deck div.msg.gone {opacity:0; visibility:hidden;}
+div#container main section#cards div.deckBox div.deck div.msg span {padding:.25rem .5rem .125rem; transform:none; transition:.5s transform;}
+div#container main section#cards div.deckBox div.deck div.msg span.gain {color:#5cb85c;}
+div#container main section#cards div.deckBox div.deck div.msg span.gain:before {content:'+$';}
+div#container main section#cards div.deckBox div.deck div.msg span.loss {color:#d9534f;}
+div#container main section#cards div.deckBox div.deck div.msg span.loss:before {content:'-$';}
+div#container main section#cards div.deckBox div.deck div.msg.gone span {transform:translateY(1rem);}
+div#container main section#cards div.deckBox div.deck button.next {border:1px solid transparent; border-radius:.25rem; margin-top:.5rem;}
+div#container main section#cards div.deckBox div.deck button.next {font-weight:400; text-align:center; white-space:nowrap; padding:.25rem 1rem .125rem; cursor:pointer;}
+div#container main section#cards div.deckBox div.deck button.next {color:#333; background-color:#fff; border-color:#ccc;}
+div#container main section#cards div.deckBox div.deck button.next:hover {background-color:#e6e6e6; border-color:#adadad;}
+div#container main section#cards div.deckBox div.deck button.next {color:#fff; background-color:#f0ad4e; border-color:#eea236;}
+div#container main section#cards div.deckBox div.deck button.next:hover {background-color:#ec971f; border-color:#d58512;}
+div#container main section#cards div.deckBox label {font-size:1.5rem; margin-top:1rem; display:block; cursor:inherit; user-select:none;}
+div#container.on main section#cards {visibility:visible;}
+
+div#container main section#action {}
+div#container main section#action button.btn {display:inline-block; min-width:10rem; touch-action:manipulation; border:2px solid transparent; border-radius:.25rem;}
+div#container main section#action button.btn {font-weight:400; text-align:center; white-space:nowrap; cursor:pointer;}
+div#container main section#action button.btn {color:#FFF;}
+div#container main section#action div.selectmsg {font-size:1.25rem; border:1px solid transparent; padding:.5rem 2rem .375rem;}
+
+div#container main section#action button.start {display:inline-block; background-color:#5cb85c; border-color:#4cae4c; padding:4rem 8rem; font-size:3rem;}
+div#container main section#action button.start:hover {background-color:#449d44; border-color:#398439;}
+div#container main section#action button.next {display:none; background-color:#337ab7; border-color:#2e6da4; padding:.5rem 2rem .375rem; font-size:1.25rem;}
+div#container main section#action button.next:hover {background-color:#286090; border-color:#204d74;}
+div#container main section#action div.selectmsg {display:none;}
+
+div#container.on main section#action button.start {display:none;}
+div#container.on main section#action button.next {display:none;}
+div#container.on main section#action div.selectmsg {display:inline-block;}
+
+div#container.on.going main section#action button.start {display:none;}
+div#container.on.going main section#action button.next {display:inline-block;}
+div#container.on.going main section#action div.selectmsg {display:none;}
+
+
+div#container footer {flex:0 1 auto; text-align:center;}
+div#container footer p {font-size:.75rem; color:#0008;}
+div#container.dark footer p {color:#FFF;}
+
+
+
+/* Large Screen */
+@media screen and (max-width:40rem) {
+	div#container main section#cards {justify-content:center;}
+	div#container main section#cards div.deckBox {flex-basis:50%;}
+}
+
+/* Medium Screen */
+@media screen and (max-width:36rem) {
+	div#container main section#cards {flex-wrap:wrap; justify-content:center;}
+	div#container main section#cards div.deckBox {margin:1rem 0;}
+	div#container main section#cards div.deckBox label {margin-top:.5rem;}
+}
+
+/* Small Screen */
+@media screen and (max-width:25rem) {
+	div#container main section#record p {font-size:1.5rem;}
+	div#container main section#cards {/*flex-direction:column;*/ /*align-items:center;*/}
+	div#container main section#cards div.deckBox label {font-size:1.125;}
+	div#container main section#action button.start {padding:2rem 4rem; font-size:1.5rem;}
+	div#container footer p {font-size:.625rem;}
+}

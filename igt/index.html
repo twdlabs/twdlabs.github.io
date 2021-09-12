@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Iowa Gambling Test</title>
+
+		<!-- jQuery -->
+		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+
+		<!-- Main CSS Stylesheet -->
+		<link href="igt.css" rel="stylesheet" type="text/css"/>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container" class="dark">
+
+			<header>
+
+				<h1 onclick="$('div#container').toggleClass('dark');">Iowa Gambling Test</h1>
+				
+			</header>
+
+			<main>
+
+				<!-- #record -->
+				<section id="record">
+
+					<!-- cardCount -->
+					<p class="cardCount">
+						Cards selected: 
+						<span id="cardCount">0</span> of 100
+					</p>
+					<!-- /cardCount -->
+
+					<!-- prevTotal -->
+					<!-- <p class="prevTotal">
+						Previous total: 
+						<span id="prevTotal" class="money">0</span>
+					</p> -->
+					<!-- /prevTotal -->
+
+					<!-- cashAmount -->
+					<p class="cashAmount">
+						Current total: 
+						<span id="cashAmount" class="money">0</span>
+					</p>
+					<!-- /cashAmount -->
+
+				</section>
+				<!-- /#record -->
+
+				<!-- #cards -->
+				<section id="cards">
+
+					<!-- deckBox -->
+					<div class="deckBox">
+
+						<!-- deck -->
+						<div id="deckA" class="deck">
+							<img src="pic/BIKE125.jpg" alt="Card Deck">
+							<div class="msg gone">
+								<span class="gain">hi</span>
+								<span class="loss">hi</span>
+								<button class="next btn">Repeat</button>
+							</div>
+						</div>
+						<!-- /deck -->
+
+						<!-- label -->
+						<label for="deckA">Deck A</label>
+						<!-- /label -->
+						
+					</div>
+					<!-- /deckBox -->
+					
+					<!-- deckBox -->
+					<div class="deckBox">
+
+						<!-- deck -->
+						<div id="deckB" class="deck">
+							<img src="pic/BIKE125.jpg" alt="Card Deck">
+							<div class="msg gone">
+								<span class="gain">hi</span>
+								<span class="loss">hi</span>
+								<button class="next btn">Repeat</button>
+							</div>
+						</div>
+						<!-- /deck -->
+
+						<!-- label -->
+						<label for="deckB">Deck B</label>
+						<!-- /label -->
+						
+					</div>
+					<!-- /deckBox -->
+					
+					<!-- deckBox -->
+					<div class="deckBox">
+
+						<!-- deck -->
+						<div id="deckC" class="deck">
+							<img src="pic/BIKE125.jpg" alt="Card Deck">
+							<div class="msg gone">
+								<span class="gain">hi</span>
+								<span class="loss">hi</span>
+								<button class="next btn">Repeat</button>
+							</div>
+						</div>
+						<!-- /deck -->
+
+						<!-- label -->
+						<label for="deckC">Deck C</label>
+						<!-- /label -->
+						
+					</div>
+					<!-- /deckBox -->
+
+					<!-- deckBox -->
+					<div class="deckBox">
+
+						<!-- deck -->
+						<div id="deckD" class="deck">
+							<img src="pic/BIKE125.jpg" alt="Card Deck">
+							<div class="msg gone">
+								<span class="gain">hi</span>
+								<span class="loss">hi</span>
+								<button class="next btn">Repeat</button>
+							</div>
+						</div>
+						<!-- /deck -->
+
+						<!-- label -->
+						<label for="deckD">Deck D</label>
+						<!-- /label -->
+						
+					</div>
+					<!-- /deckBox -->
+
+				</section>
+				<!-- /#cards -->
+
+				<!-- #action -->
+				<section id="action">
+
+					<!-- startbtn -->
+					<button class="start btn">Start</button>
+					<!-- /startbtn -->
+
+					<!-- contbtn -->
+					<button class="next btn">Continue</button>
+					<!-- /contbtn -->
+
+					<!-- selectmsg -->
+					<div class="selectmsg msg">
+						Select a deck.
+					</div>
+					<!-- /selectmsg -->
+
+				</section>
+				<!-- /#action -->
+				
+			</main>
+
+			<footer>
+				<p>
+					Originated by researchers at the University of Iowa:
+					Antoine Bechara, Antonio Damasio, Hanna Damasio, and Steven Anderson.
+				</p>
+			</footer>
+			
+		</div>
+		<!-- /#container -->
+
+		<!-- Main JS Script -->
+		<script src="igt.js" type="text/javascript"></script>
+
+	</body>
+
+</html>
+
+
+
