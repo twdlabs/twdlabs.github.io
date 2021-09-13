@@ -1,0 +1,42 @@
+
+body {background-color:#EEE; font-family:sans-serif; margin:0;}
+
+div#container {max-width:400px; margin:0 auto; background-color:#FFF; padding:1rem;}
+
+div#container h1 {text-align:center;}
+div#container h3 {text-align:center; margin:1em 0 .75rem;}
+
+div#container div.container {display:flex; width:100%; height:4rem; border:solid #CE6F46;}
+div#container div.container div.item {padding:.25rem .75rem; text-align:center; flex:0 0 auto; /*flex-grow:1;*/ /*margin:0 .25rem;*/}
+div#container div.container div.item:nth-of-type(3n+1) {background-color:#FF8D99;}
+div#container div.container div.item:nth-of-type(3n+2) {background-color:#FEC26C;}
+div#container div.container div.item:nth-of-type(3n+3) {background-color:#B6D4F6;}
+
+div#container div#btnBox {text-align:center;}
+
+div#container div#btnBox input {width:100%; background-color:#2A649B;}
+div#container div#btnBox div.edge {display:inline-block; width:50%;}
+div#container div#btnBox div.edge.l {text-align:left;}
+div#container div#btnBox div.edge.r {text-align:right;}
+
+div#container div#btnBox div.btnBox {margin:.5rem 0 0;}
+div#container div#btnBox div.btnBox div.head {text-align:center;}
+div#container div#btnBox div.btnBox div.desc {font-size:14px; text-align:center; margin-bottom:6px;}
+div#container div#btnBox div.btnBox button {margin-bottom:.5em; border:solid #ECF6FF; border-radius:1rem;}
+div#container div#btnBox div.btnBox button {background-color:#D1E2F5; background-color:#D3E2F8; color:#474479; font-weight:bold; font-size:12px; padding:.5em 1em;}
+div#container div#btnBox div.btnBox button.default {/*background-color:#96bde8;*/ position:relative;}
+div#container div#btnBox div.btnBox button.active {background-color:#82afe3; border:solid #cce7ff;}
+div#container div#btnBox div.btnBox button.default::after {content:'⋅'; position:absolute; left:8px; top:50%; transform:translateY(-50%);}
+div#container div#btnBox div.btnBox button span.icon {display:none;}
+
+
+@media screen and (max-width:399px) {
+	div#container div#btnBox div.btnBox button.full,
+	div#container div#btnBox div.btnBox button.half,
+	div#container div#btnBox div.btnBox button.third {min-width:auto; width:100%;}
+}
+@media screen and (min-width:400px) {
+	div#container div#btnBox div.btnBox button.full {min-width:18rem;}
+	div#container div#btnBox div.btnBox button.half {min-width:9rem;}
+	div#container div#btnBox div.btnBox button.third {min-width:6rem;}
+}

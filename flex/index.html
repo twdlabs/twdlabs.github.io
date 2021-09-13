@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Flexbox Dashboard</title>
+
+		<!-- Bootstrap 4 -->
+		<!-- <link href="https://import.atgmedia.xyz/bs4/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/bootstrap.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<link href="flex.css" rel="stylesheet">
+		<script src="flex.js" type="text/javascript"></script>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<h1>Flexbox Dashboard</h1>
+
+			<!-- container -->
+			<div class="container">
+				<div class="item">1</div>
+				<div class="item">2</div>
+				<div class="item">3</div>
+				<div class="item">4</div>
+				<div class="item">5</div>
+				<div class="item">6</div>
+				<div class="item">7</div>
+				<div class="item">8</div>
+			</div>
+			<!-- /container -->
+
+			<!-- #btnBox -->
+			<div id="btnBox">
+
+				<!-- btnBox -->
+				<div class="btnBox">
+					<div class="edge l">&minus;</div><div class="edge r">&plus;</div>
+					<!-- <br> -->
+					<input id="widthSetter" type="range" oninput="adjustWidth(this.value);">
+				</div>
+				<!-- /btnBox -->
+
+
+				<h3>Flex Direction</h3>
+
+				<!-- btnBox -->
+				<div class="btnBox" title="flex-direction">
+					<!-- <div class="head">Flex Direction</div> -->
+					<div class="desc">Choose direction of flex items:</div>
+					<button class="half default" onclick="setFlexDirection('row');">Row</button>
+					<button class="half" onclick="setFlexDirection('column');">Column</button>
+					<br>
+					<button class="half" onclick="setFlexDirection('row-reverse');">
+						<span>Row-Reverse</span>
+					</button>
+					<button class="half" onclick="setFlexDirection('column-reverse');">
+						<span>Column-Reverse</span>
+					</button>
+				</div>
+				<!-- /btnBox -->
+
+
+				<h3>Main Axis</h3>
+
+				<!-- btnBox -->
+				<div class="btnBox" title="justify-content">
+					<!-- <div class="head">Main Axis</div> -->
+					<div class="desc">Choose where to group flex items:</div>
+					<button class="third default" onclick="setJustification('flex-start');">Start</button>
+					<button class="third" onclick="setJustification('center');">Center</button>
+					<button class="third" onclick="setJustification('flex-end');">End</button>
+					<br>
+					<button class="half" onclick="setJustification('space-around');">Space Around</button>
+					<button class="half" onclick="setJustification('space-between');">Space Between</button>
+				</div>
+				<!-- /btnBox -->
+
+				<!-- btnBox -->
+				<div class="btnBox" title="flex-grow">
+					<!-- <div class="head">Main Axis</div> -->
+					<div class="desc">Choose flex item grow setting:</div>
+					<button class="half default" onclick="setGrowth(0);">Don't Grow</button>
+					<button class="half" onclick="setGrowth(1);">Grow</button>
+				</div>
+				<!-- /btnBox -->
+
+				<!-- btnBox -->
+				<div class="btnBox" title="flex-shrink">
+					<!-- <div class="head">Main Axis</div> -->
+					<div class="desc">Choose flex item shrink setting:</div>
+					<button class="half" onclick="setShrinkth(0);">Don't Shrink</button>
+					<button class="half default" onclick="setShrinkth(1);">Shrink</button>
+				</div>
+				<!-- /btnBox -->
+
+
+				<h3>Wrap Status</h3>
+
+				<!-- btnBox -->
+				<div class="btnBox" title="flex-wrap">
+					<!-- <div class="head">Wrap Status</div> -->
+					<div class="desc">Choose how to wrap flex items:</div>
+					<button class="third default" onclick="setWrapStatus('nowrap');">No Wrap</button>
+					<button class="third" onclick="setWrapStatus('wrap');">Wrap</button>
+					<button class="third" onclick="setWrapStatus('wrap-reverse');">Wrap Reverse</button>
+				</div>
+				<!-- /btnBox -->
+
+
+				<h3>Cross Axis</h3>
+
+				<!-- btnBox -->
+				<div class="btnBox" title="align-items">
+					<!-- <div class="head">Cross Axis</div> -->
+					<div class="desc">Choose how to align un-wrapped flex items:</div>
+					<button class="third" onclick="setAlignment('flex-start');">Start</button>
+					<button class="third" onclick="setAlignment('center');">Center</button>
+					<button class="third" onclick="setAlignment('flex-end');">End</button>
+					<br>
+					<button class="full default" onclick="setAlignment('stretch');">Stretch</button>
+				</div>
+				<!-- /btnBox -->
+
+				<!-- btnBox -->
+				<div class="btnBox" title="align-content">
+					<!-- <div class="head">Cross Axis</div> -->
+					<div class="desc">Choose how to group wrapped flex items:</div>
+					<button class="third default" onclick="setOverflowAlignment('flex-start');">Start</button>
+					<button class="third" onclick="setOverflowAlignment('center');">Center</button>
+					<button class="third" onclick="setOverflowAlignment('flex-end');">End</button>
+					<br>
+					<button class="half" onclick="setOverflowAlignment('space-around');">Space Around</button>
+					<button class="half" onclick="setOverflowAlignment('space-between');">Space Between</button>
+				</div>
+				<!-- /btnBox -->
+
+			</div>
+			<!-- /#btnBox -->
+			
+		</div>
+		<!-- /#container -->
+
+	</body>
+	
+</html>
