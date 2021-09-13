@@ -1,0 +1,112 @@
+
+* {box-sizing:border-box;}
+
+
+html {height:100%; font-family:sans-serif;}
+body {height:100%; margin:0;}
+
+
+div#container {display:flex; flex-direction:column; justify-content:flex-start;}
+div#container {text-align:center; padding:1rem; min-height:100%; max-width:800px; margin:0 auto;}
+
+
+/* Be more specific with these selectors (to overcome confusion). */
+div#container section.input {}
+div#container section.input div.form {display:none;}
+div#container section.input div.matrix {display:none;}
+div#container section.input.add div.add {display:block;}
+div#container section.input.mul div.mul {display:block;}
+div#container section.input.exp div.exp {display:block;}
+div#container section.input.inv div.inv {display:block;}
+div#container section.input.det div.det {display:block;}
+div#container section.input.tra div.tra {display:block;}
+div#container section.input div.form.gone {/*display:none;*/}
+
+
+div#container section.input div.form {max-width:200px; margin:2rem auto;}
+div#container section.input div.form label {text-align:left; display:block; margin-bottom:.25rem;}
+div#container section.input div.form button {/*display:block;*/ flex:1 1 auto; width:100%; margin-top:.25rem;}
+div#container section.input div.form button {background-color:#F0F0F0; border:1px solid #DADADA; border-radius:.25rem; box-shadow:0 1px 1px #BBB; padding:.25rem 1rem; font-size:.875rem; user-select:none;}
+div#container section.input div.form button span.name {/*display:none;*/}
+div#container section.input div.form div.line {display:flex; flex-direction:row; align-items:center; overflow-x:auto;}
+div#container section.input div.form div.line input {padding:.25rem .5rem; border:1px solid #DADADA; border-radius:.25rem; font-size:.875rem;}
+div#container section.input div.form div.line input {flex:1 1 50%; flex:1 1 20%; flex:1 1 auto; text-align:center;}
+div#container section.input div.form div.line button {flex:0 1 0; margin:0;}
+div#container section.input div.form div.line button.decr {margin-right:.25rem;}
+div#container section.input div.form div.line button.incr {margin-left:.25rem;}
+div#container section.input div.form div.line span.x {flex:0 1 auto; margin:0 .25rem;}
+
+
+div#container section#chooser .inner {display:flex; flex-direction:row; justify-content:stretch;}
+div#container section#chooser .inner div.sub {flex:1 1 auto;}
+div#container section#chooser .inner div.sub {display:flex; flex-direction:row; justify-content:space-around;}
+@media screen and (min-width:601px) {
+	div#container section#chooser .inner {flex-direction:row;}
+	div#container section#chooser .inner div.sub:first-of-type {margin-right:.5rem;}
+}
+@media screen and (max-width:600px) {
+	div#container section#chooser .inner {flex-direction:column;}
+	div#container section#chooser .inner div.sub:first-of-type {margin-bottom:.5rem;}
+}
+div#container section#chooser div.operation {flex:1 1 auto; width:33%; /*font-size:.75rem;*/ margin-left:.5rem; background-color:dodgerblue; font-weight:600; border-radius:.25rem;}
+div#container section#chooser div.operation:first-of-type {margin-left:0;}
+div#container section#chooser div.operation.on {background-color:gold;}
+div#container section#chooser div.operation.m1 {}
+div#container section#chooser div.operation.m2 {}
+div#container section#chooser div.operation.gone {display:none;}
+div#container section#chooser div.operation input {display:none;}
+div#container section#chooser div.operation label {display:block; color:#FFF; padding:.5rem .25rem .25rem; user-select:none; cursor:pointer; border:solid transparent; border-radius:inherit;}
+div#container section#chooser div.operation input:checked + label {color:#000; border-color:#000;}
+
+
+div#container section#sizer {}
+
+
+div#container section#definer {}
+/*div#container section#definer.add div#matrixB {display:block;}*/
+/*div#container section#definer.mul div#matrixB {display:block;}*/
+
+
+div#container section#output {}
+div#container section#output.gone {visibility:hidden;}
+
+
+div#container section#memory {position:fixed; top:0; right:0; margin-right:2rem;}
+div#container section#memory div.form {display:flex; flex-direction:row;}
+div#container section#memory div.form button {margin:0 .25rem; padding:.5rem .75rem .25rem;}
+div#container section#memory div.form button svg {font-size:1.5rem; transition:.25s;}
+div#container section#memory div.form button span.name {font-size:.75rem; display:block; display:none;}
+
+
+div#container div.matrix {margin:1rem auto; max-width:100%; margin-bottom:.25rem; /*border:1px solid #0002;*/ counter-reset:row; overflow-x:auto;}
+div#container div.matrix h4 {margin:.25rem 0 .25rem; font-weight:600;}
+div#container div.matrix button {background-color:#F0F0F0; border:1px solid #DADADA; border-radius:.25rem; box-shadow:0 1px 1px #BBB; padding:.25rem 1rem; font-size:.875rem; margin:.15rem .125rem .5rem;}
+div#container div.matrix div.row {display:flex; flex-direction:row; justify-content:center; position:relative;}
+div#container div.matrix div.row:before {/*content:counter(row);*/ counter-increment:row; position:absolute; top:50%; left:0; transform:translate(-50%,-50%);}
+div#container div.matrix div.row div.inner {display:inline-block;}
+div#container div.matrix div.row div.entry {flex:1 1 auto; border:1px solid #0002; border-radius:.25rem; padding:.5rem .25rem; max-width:3rem; text-align:center; margin:.5px;}
+div#container div.matrix div.row div.entry {overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
+div#container div.matrix div.row div.entry:before,
+div#container div.matrix div.row div.entry:after {content:' ';}
+div#container div.matrix div.row div.entry input {display:block; width:100%; outline:none; border:0 none; font-size:.875rem; text-align:center; background-color:transparent;}
+div#container div.matrix div.row div.entry div.value {font-size:.75rem; /*font-size:1rem;*/ cursor:pointer;}
+div#container div.matrix div.row div.entry div.value:empty:before {content:'0';}
+
+div#container div.matrix div.row:nth-of-type(2n+1) div.entry:nth-of-type(2n+1) {}
+div#container div.matrix div.row:nth-of-type(2n+1) div.entry:nth-of-type(2n+2) {background-color:#F8F8F8;}
+div#container div.matrix div.row:nth-of-type(2n+2) div.entry:nth-of-type(2n+1) {background-color:#F8F8F8;}
+div#container div.matrix div.row:nth-of-type(2n+2) div.entry:nth-of-type(2n+2) {}
+
+
+
+@media screen and (max-width:600px) {
+	/*div#container section.input div.form div.line {flex-direction:column;}
+	div#container section.input div.form div.line input {flex:0 1 auto; width:100%;}
+	div#container section.input div.form div.line span.x {display:none;}*/
+	div#container section#memory {margin-right:1rem;}
+	div#container section.input div.form,
+	div#container section#memory div.form {margin:1rem auto;}
+	div#container section#memory div.form button svg {font-size:1rem;}
+	div#container section#memory div.form button span.name {display:none;}
+}
+
