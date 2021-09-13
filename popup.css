@@ -1,0 +1,37 @@
+
+
+/*  Popup:
+	 - Settings Editor
+	 - Page Listing
+	 - Feedback Form
+*/
+
+
+div.popup {position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);}
+div.popup {width:100%; max-width:300px; border-radius:.5em; z-index:10;}
+div.popup {transition:.5s ease-in-out; transition-timing-function:cubic-bezier(.78,.13,.12,1.27); transition-timing-function:cubic-bezier(.78,.13,0,1.22);}
+div.popup {background-color:dodgerblue; color:#FFF; padding:1rem; box-shadow: 0 0 .75rem rgba(0,0,0,.75);}
+div.popup.anchored {transform:translate(-50%,-50%) translateY(100vh); opacity:0;}
+
+
+div.popup div.inner {padding:0;}
+
+div.popup div.inner svg {color:#000; margin-bottom:.25rem; margin-right:.25rem;}
+
+div.popup div.inner label {margin:.25rem 0;}
+div.popup div.inner select {width:100%; /*margin-bottom:.5rem;*/ padding:.25rem;}
+div.popup div.inner select#list {/*height:100%;*/ height:25em; padding:4px; resize:vertical;}
+
+div.popup div.inner a {margin-top:.25em; display:inline-block;}
+
+div.popup div.inner div.button-row div.l {padding-right:.25rem;}
+div.popup div.inner div.button-row div.r {padding-left:.25rem;}
+div.popup div.inner button {display:block; width:100%; border:1px solid #888; border-radius:.5em; margin:.5rem auto 0;}
+div.popup div.inner button {cursor:pointer; padding:.25em; font-weight:bold; background-color:#f0f0f0;}
+
+div.popup div.closeBtn {position:absolute; top:.15em; right:.4em; font-size:2em; /*font-weight:bold;*/ cursor:pointer;}
+
+
+/*  Feedback Form  */
+div.popup div.inner button.feedbackBtn {padding:2rem; }
+div.popup div.inner button.feedbackBtn i.fa {font-size:3rem;}

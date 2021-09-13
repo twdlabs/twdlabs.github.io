@@ -1,0 +1,47 @@
+
+* {box-sizing:border-box;}
+
+html,body {height:100%; margin:0; /*font-family:fira-sans,Arial,sans-serif;*/ font-weight:400;}
+
+nav.navbar {display:none;}
+nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:100;}
+nav.navbar {box-shadow: 0px 2px 2px 0 rgba(0,0,0,.25); box-shadow: 0px 2px 2px rgba(0,0,0,.05);}
+nav.navbar a.navbar-brand svg, 
+nav.navbar a.navbar-brand i.fa {margin-right:.25em;}
+nav.navbar button.navbar-toggler {padding:.15rem .45rem;}
+nav.navbar ul.navbar-nav li.nav-item {margin:0 .25rem;}
+nav.navbar ul.navbar-nav li.nav-item a.nav-link {border-radius:.25rem; padding:.5rem .75rem;}
+nav.navbar ul.navbar-nav li.nav-item:hover a.nav-link {background-color:#eee;}
+nav.navbar ul.navbar-nav li.nav-item.active a.nav-link {background-color:dodgerblue; color:#fff; /*border:1px solid #000;*/}
+
+div#container {padding:6rem .5rem 10rem; min-height:100%; transition:.25s;}
+div#container div.container-fluid {max-width:600px; margin:0 auto;} 
+div#container h2, p {text-align:center;}
+div#container div.form .input-row {margin:2px 0;}
+div#container div.form input#pageName {border:1px solid #ddd; border-radius:.5em; width:100%; margin:3px 0; box-shadow:0px 1px 1px 0 rgba(0,0,0,.5);}
+div#container div.form input#pageName {padding:.5em 1em; font-size:16px; background-color:#f1f1f1; /*font-weight:bold;*/}
+/*div#container div.form input#pageName {border-radius:10px; padding:5px 10px; width:100%; transition:1s;}*/
+div#container div.form div#clearBtn {border-radius:50%; background-color:rgba(0,0,0,0.25); cursor:pointer; margin:0; padding:9px; position:absolute; right:.75em; top:50%; transform:translateY(-50%);}
+div#container div.form div#clearBtn label {color:#eee; cursor:pointer; padding-bottom:2px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); user-select:none;}
+
+div#container div.form div.button-row {margin-top:.5rem; margin-bottom:1rem;}
+div#container div.form div.button-row div.l {padding-right:3px;}
+div#container div.form div.button-row div.r {padding-left:3px;}
+/*div.form input[type='submit'], div.form input[type='reset'], */
+div#container div.form div.button-row button {border:1px solid #ddd; border-radius:.5em; width:100%; box-shadow:0px 1px 1px 0 rgba(0,0,0,.25);}
+div#container div.form div.button-row button {cursor:pointer; padding:.5em; font-weight:bold; position:relative; background-color:#efefef;}
+div#container div.form div.button-row button:hover {}
+div#container div.form div.button-row button.primary {background-color:dodgerblue; color:#fff; transition:.5s;}
+div#container div.form div.button-row button.primary:hover {}
+div#container div.form div.button-row button svg {position:absolute; left:1em; top:50%; transform:translateY(-50%);}
+
+
+div#container div.form .autocompleteBox {position:relative; display:inline-block; width:100%;}	/*the container must be positioned relative:*/
+
+.autocomplete-items {position:absolute; border:1px solid #d4d4d4; border-bottom:none; border-top:none; z-index:1; text-align:left;
+/*position the autocomplete items to be the same width as the container:*/ top:100%; left:0; right:0;}
+.autocomplete-items div {padding:10px; cursor:pointer; background-color:#fff; color:#000; border-bottom:1px solid #d4d4d4;}
+.autocomplete-items div:hover {background-color:#e9e9e9;}	/*when hovering an item:*/
+.autocomplete-active {background-color:dodgerblue !important; color:#ffffff;}	/*when navigating through the items using the arrow keys:*/
+
+

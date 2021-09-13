@@ -1,0 +1,50 @@
+
+
+/*  Dark Theme  */
+
+div#container.dark div.floatContainer {background-image:linear-gradient(to bottom, #444,#4440);}
+
+body.dark,
+div#container.dark {background-color:#444; color:#ddd;}
+div#container.dark div#desktop {background-color:#1e90ffd0;}
+div#container.dark div#desktop div.group {}
+div#container.dark div#desktop div.group div.item,
+div#container.dark div#desktop div.group a.item {color:#fffc;}
+div#container.dark div#desktop div.group a.item div.miniframe {background-color:#444;}
+
+/* Position: default */
+div#container.dark div#desktop div.group a.item div.miniframe.def:before {border-bottom-color:#777;}
+div#container.dark div#desktop div.group a.item div.miniframe.def::after {border-bottom-color:#444;}
+/* Position: horizontally flipped */
+div#container.dark div#desktop div.group a.item div.miniframe.flip-x:before {border-bottom-color:#777;}
+div#container.dark div#desktop div.group a.item div.miniframe.flip-x::after {border-bottom-color:#444;}
+/* Position: vertically flipped */
+div#container.dark div#desktop div.group a.item div.miniframe.flip-y:before {border-top-color:#777;}
+div#container.dark div#desktop div.group a.item div.miniframe.flip-y::after {border-top-color:#444;}
+/* Position: horizontally flipped and vertically flipped */
+div#container.dark div#desktop div.group a.item div.miniframe.flip-x-y:before {border-top-color:#777;}
+div#container.dark div#desktop div.group a.item div.miniframe.flip-x-y::after {border-top-color:#444;}
+
+
+/*  Color Themes  */
+
+div#container.blue div.form div.button-row button.primary {background-color:dodgerblue; color:#fff;}
+div#container.green div.form div.button-row button.primary {background-color:limegreen; color:#fff;}
+div#container.orange div.form div.button-row button.primary {background-color:orange; color:#fff;}
+div#container.red div.form div.button-row button.primary {background-color:red; color:#fff;}
+
+div#container.blue div#desktop {background-color:#1e90ffd0;}
+div#container.green div#desktop {background-color:#32cd32d0;}
+div#container.orange div#desktop {background-color:#ffa500d0;}
+div#container.red div#desktop {background-color:#ff0000d0;}
+
+div#container.blue div.popup {background-color:dodgerblue; color:#fff;}
+div#container.green div.popup {background-color:limegreen; color:#fff;}
+div#container.orange div.popup {background-color:orange; color:#fff;}
+div#container.red div.popup {background-color:red; color:#fff;}
+div#container.blue div.popup {transition:.5s;}
+
+/* mobile(xs) */
+@media screen and (max-width:575px) {
+	div#container div.form button svg {display:none;}
+}

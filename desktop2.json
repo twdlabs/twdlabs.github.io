@@ -1,0 +1,76 @@
+
+{
+	"desktop": [
+
+		{
+			"name":"dashboards",
+			"items":[
+				{
+					"name":"ItemName", 
+					"icon":""
+				},
+				{
+					"name":"ItemName", 
+					"icon":""
+				}
+			]
+		},
+
+		{
+			"name":"recent",
+			"items":[
+				{
+					"name":"ItemName", 
+					"icon":""
+				},
+				{
+					"name":"ItemName", 
+					"icon":""
+				}
+			]
+		},
+
+		{
+			"name":"misc",
+			"items":[
+				{
+					"name":"ItemName", 
+					"icon":""
+				},
+				{
+					"name":"ItemName", 
+					"icon":""
+				}
+			]
+		},
+
+		{
+			"name":"settings",
+			"items":[
+				{
+					"name":"ItemName", 
+					"icon":""
+				},
+				{
+					"name":"ItemName", 
+					"icon":""
+				}
+			]
+		},
+
+		{
+			"name":"GroupName",
+			"items":[
+				{
+					"name":"ItemName", 
+					"icon":""
+				},
+				{
+					"name":"ItemName", 
+					"icon":""
+				}
+			]
+		}
+
+	]
+}

@@ -1,0 +1,112 @@
+
+{
+	"desktop": [
+
+		{
+			"name":"Dashboards",
+			"items":[
+				{
+					"name":"Manager", 
+					"icon":""
+				},
+				{
+					"name":"Finance", 
+					"icon":""
+				},
+				{
+					"name":"Math", 
+					"icon":""
+				},
+				{
+					"name":"Music", 
+					"icon":""
+				},
+				{
+					"name":"Probability", 
+					"icon":""
+				},
+				{
+					"name":"Stocks", 
+					"icon":""
+				}
+			]
+		},
+
+		{
+			"name":"Recent",
+			"items":[
+				{
+					"name":"Calendar", 
+					"icon":""
+				},
+				{
+					"name":"Dashboard", 
+					"icon":""
+				},
+				{
+					"name":"Diagram", 
+					"icon":""
+				},
+				{
+					"name":"Family Tree", 
+					"icon":""
+				},
+				{
+					"name":"Levels", 
+					"icon":""
+				},
+				{
+					"name":"Notes", 
+					"icon":""
+				},
+				{
+					"name":"RegExp", 
+					"icon":""
+				},
+				{
+					"name":"Messages", 
+					"icon":""
+				},
+				{
+					"name":"Messages", 
+					"icon":""
+				},
+				{
+					"name":"Side Nav", 
+					"icon":""
+				},
+				{
+					"name":"Tasks", 
+					"icon":""
+				},
+				{
+					"name":"Flexbox", 
+					"icon":""
+				},
+				{
+					"name":"Calculator", 
+					"icon":""
+				},
+				{
+					"name":"Developer", 
+					"icon":""
+				}
+			]
+		},
+
+		{
+			"name":"Misc",
+			"items":[
+				{
+					"name":"Cluster", 
+					"icon":""
+				},
+				{
+					"name":"Grid", 
+					"icon":""
+				}
+			]
+		}
+
+	]
+}

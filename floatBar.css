@@ -1,0 +1,67 @@
+
+/****** Float Container ******/
+
+div.floatContainer {/*display:none;*/}
+div.floatContainer {position:fixed; top:0; left:0; right:0; width:100%; z-index:5; box-sizing:border-box; transition:.25s;}
+div.floatContainer {background-image:linear-gradient(to bottom, #fff,#fff0); padding-top:1.5rem;}
+div.floatContainer div.floatBar {border:1px solid #DCDCDE; border-radius:8px; box-shadow:0px 1px 1px 0 #000a; z-index:1;}
+div.floatContainer div.floatBar {position:relative; background-color:#FFF;}
+div.floatContainer.b div.floatBar {height:2.5rem;}
+div.floatContainer.a div.floatBar input#searchBox {width:100%; font-size:1em; border:0; border-radius:8px; /*opacity:.25;*/ padding:11px 52px; transition:1s;}
+div.floatContainer.b div.floatBar input#searchBox {display:none;}
+div.floatContainer div.floatBar div.btn {cursor:pointer; transition:0.1s;}
+div.floatContainer.a div.floatBar div.btn {position:absolute; top:50%; transform:translateY(-50%);}
+div.floatContainer.b div.floatBar div.btn {float:right;}
+div.floatContainer.a div.floatBar div.btn.left {left:4px; padding:12px 6px 12px 12px;}
+div.floatContainer.b div.floatBar div.btn.left {float:left;}
+div.floatContainer.a div.floatBar div.btn.right {right:16px;}
+div.floatContainer.b div.floatBar div.btn.right {float:right;}
+div.floatContainer div.floatBar div.btn div.icon-bar {height:2px; background-color:#3e4245;}
+
+/* Search Bar Default State */
+div.floatContainer div.floatBar div.menuBtn, 
+div.floatContainer div.floatBar div.acctBtn {display:block;}
+div.floatContainer div.floatBar div.backBtn, 
+div.floatContainer div.floatBar div.clearBtn, 
+div.floatContainer div.floatBar div.dictateBtn {display:none;}
+/* Search Bar Ready State */
+div.floatContainer div.floatBar.searchReady div.menuBtn, 
+div.floatContainer div.floatBar.searchReady div.acctBtn {display:none;}
+div.floatContainer div.floatBar.searchReady div.backBtn {display:block;}
+div.floatContainer div.floatBar.searchReady div.clearBtn {display:none;}
+div.floatContainer div.floatBar.searchReady div.dictateBtn {display:block;}
+/* Search Bar Active State */
+div.floatContainer div.floatBar.searchActive div.menuBtn, 
+div.floatContainer div.floatBar.searchActive div.acctBtn {display:none;}
+div.floatContainer div.floatBar.searchActive div.backBtn {display:block;}
+div.floatContainer div.floatBar.searchActive div.clearBtn {display:block;}
+div.floatContainer div.floatBar.searchActive div.dictateBtn {display:none;}
+
+/* Search Bar Button Components */
+div.floatContainer div.floatBar div.menuBtn div.icon-bar {width:16px; border-radius:2px; position:relative; transition:.5s;}
+div.floatContainer div.floatBar div.menuBtn div.icon-bar:nth-of-type(1) {bottom:2px;}
+div.floatContainer div.floatBar div.menuBtn div.icon-bar:nth-of-type(2) {}
+div.floatContainer div.floatBar div.menuBtn div.icon-bar:nth-of-type(3) {top:2px;}
+div.floatContainer div.floatBar div.menuBtn.open div.icon-bar {opacity:0.1;}
+div.floatContainer div.floatBar div.acctBtn img {border-radius:50%; height:24px; width:24px; position:absolute; top:50%; right:0; transform:translateY(-50%);}
+div.floatContainer div.floatBar div.backBtn div.icon-box {transform:rotate(-45deg); border:solid #3e4245; border-width:2px 0 0 2px; padding:5px; cursor:pointer;}
+div.floatContainer div.floatBar div.clearBtn div.icon-bar {width:14px; position:absolute; top:50%; left:50%;}
+div.floatContainer div.floatBar div.clearBtn div.icon-bar:nth-of-type(1) {transform:translate(-50%,-50%) rotate(-45deg);}
+div.floatContainer div.floatBar div.clearBtn div.icon-bar:nth-of-type(2) {transform:translate(-50%,-50%) rotate(45deg);}
+div.floatContainer div.floatBar div.clearBtn span.icon-box {background-color:transparent; position:relative; height:14px; width:14px; display:block;}
+
+/* mobile(xs), mobile(sm) */
+@media screen and (max-width:767px) {
+	div.floatContainer {padding:.75rem .5rem 0;}
+	div.contentBox div.tabcontent {/*padding-top:4.25rem;*/}
+}
+/* tablet(md), laptop(lg), desktop(xl) */
+@media screen and (min-width:768px) {
+	div.floatContainer {padding:1.5rem 1em 0;}
+	div.contentBox div.tabcontent {/*padding-top:5rem;*/}
+}
+/* laptop(lg), desktop(xl) */
+@media screen and (min-width:992px) {
+	div.floatContainer div.floatBar {width:40%;}
+}
+
