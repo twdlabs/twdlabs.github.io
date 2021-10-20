@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+	
 	<head>
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -8,218 +9,584 @@
 		<link href="../atgicon.ico" rel="icon"/>
 		<title>Calculator</title>
 
-		<style type="text/css">
-			
-			* {box-sizing:border-box;}
-			
-			body {background-color:#0008; font-family:sans-serif;}
+		<!-- jQuery -->
+		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
 
-			div#container {background-color:#000; padding:2rem; /*max-width:40rem;*/ margin:0 auto;}
-			div#container {display:flex; flex-direction:column; align-content:center;}
-
-			div#container div#screen {background-color:#000; color:#FFF; font-size:6rem; font-weight:100; text-align:right; margin-top:1em;}
-
-			div#container div#btnPanel {border:1px solid #FFF2;}
-
-			div#container div.row {display:flex; flex-direction:row; justify-content:center;}
-
-			div#container div.row div.cell {min-width:5rem; min-height:5rem; margin:.4rem .35rem;}
-
-			/*div#container div.row div.cell {flex:0 0 25%;}*/
-			/*div#container div.row div.cell.wide {flex:0 0 50%;}*/
-
-			div#container div.row div.cell button {border:0 none; border-radius:50rem; width:100%; height:100%; font-size:2.5rem; font-weight:200;}
-			div#container div.row div.cell.wide button {text-align:left; padding-left:1.5rem; /*max-width:10rem;*/}
-
-			div#container div.row div.cell button.pole {position:relative;}
-			div#container div.row div.cell button.pole::after {content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); height:1px; width:1rem;}
-
-			div#container div.row div.cell button.dark {background-color:#333; color:#FFF;}
-
-			div#container div.row div.cell button.light {background-color:#a5a5a5; color:#000; font-size:2rem;}
-			div#container div.row div.cell button.light span.slash {}
-
-			div#container div.row div.cell button.orange {background-color:#FEA00A; color:#FFF;}
-			div#container div.row div.cell button.orange span.symbol {position:relative; top:-.125rem;}
-		</style>
+		<!-- Main Style -->
+		<link href="calc.css" rel="stylesheet" type="text/css">
 	</head>
+
 	<body>
 
 		<!-- #container -->
-		<div id="container">
+		<div id="container" class="debug">
 
 			<!-- #screen -->
 			<div id="screen">
-				<span class="caption">52</span>
+				<input type="text" class="caption" id="workingNum" value="0" disabled>
+				<input type="text" class="caption" id="breadcrumbs" value="" disabled>
+				<!-- <div class="caption">1,000,000</div> -->
 			</div>
 			<!-- /#screen -->
 
-			<!-- #btnPanel -->
-			<div id="btnPanel">
+			<!-- #panel -->
+			<div id="panel">
 
-				<!-- row -->
-				<div class="row">
+				<!-- panel -->
+				<div class="panel" id="ops">
 
-					<!-- cell -->
-					<div class="cell">
-						<button class="light">AC</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="light pole">
-							<sup>+</sup>
-							<sub>-</sub>
-						</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="light">%</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="orange">
-							<span class="symbol">&divide;</span>
-						</button>
-					</div>
-					<!-- /cell -->
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="orange boost op" id="divide">
+								<span class="caption">&divide;</span>
+							</button>
+						</div>
+						<!-- /field -->
 
-				</div>
-				<!-- /row -->
+					</div>
+					<!-- /row -->
 
-				<!-- row -->
-				<div class="row">
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="orange boost op" id="times">
+								<span class="caption">&times;</span>
+							</button>
+						</div>
+						<!-- /field -->
 
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">7</button>
 					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">8</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">9</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="orange">
-							<span class="symbol">&times;</span>
-						</button>
-					</div>
-					<!-- /cell -->
+					<!-- /row -->
 
-				</div>
-				<!-- /row -->
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="orange boost op" id="minus">
+								<span class="caption">&minus;</span>
+							</button>
+						</div>
+						<!-- /field -->
 
-				<!-- row -->
-				<div class="row">
+					</div>
+					<!-- /row -->
 
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">4</button>
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="orange boost op" id="plus">
+								<span class="caption">&plus;</span>
+							</button>
+						</div>
+						<!-- /field -->
+
 					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">5</button>
+					<!-- /row -->
+
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="orange boost" id="equals">
+								<span class="caption">&equals;</span>
+							</button>
+						</div>
+						<!-- /field -->
+
 					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">6</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="orange">
-							<span class="symbol">&minus;</span>
-						</button>
-					</div>
-					<!-- /cell -->
+					<!-- /row -->
 
 				</div>
-				<!-- /row -->
+				<!-- /panel -->
 
-				<!-- row -->
-				<div class="row">
+				<!-- panel -->
+				<div class="panel" id="num">
 
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">1</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">2</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">3</button>
-					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="orange">
-							<span class="symbol">&plus;</span>
-						</button>
-					</div>
-					<!-- /cell -->
+					<!-- row -->
+					<!-- <div class="row"> -->
+
+						<!-- field -->
+						<div class="field">
+							<button class="mod" id="clear">
+								<span class="caption c">C</span>
+								<span class="caption ac">AC</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="mod boost slash">
+								<span class="caption">
+									<sup>&plus;</sup>
+									<sub>&minus;</sub>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="mod boost slash" id="percent">
+								<span class="caption">
+									<sup>o</sup>
+									<sub>o</sub>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+
+					<!-- </div> -->
+					<!-- /row -->
+
+					<!-- row -->
+					<!-- <div class="row"> -->
+
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit7" value="7">
+								<span class="caption">7</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit8" value="8">
+								<span class="caption">8</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit9" value="9">
+								<span class="caption">9</span>
+							</button>
+						</div>
+						<!-- /field -->
+
+					<!-- </div> -->
+					<!-- /row -->
+
+					<!-- row -->
+					<!-- <div class="row"> -->
+
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit4" value="4">
+								<span class="caption">4</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit5" value="5">
+								<span class="caption">5</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit6" value="6">
+								<span class="caption">6</span>
+							</button>
+						</div>
+						<!-- /field -->
+
+					<!-- </div> -->
+					<!-- /row -->
+
+					<!-- row -->
+					<!-- <div class="row"> -->
+
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit1" value="1">
+								<span class="caption">1</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit2" value="2">
+								<span class="caption">2</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digit3" value="3">
+								<span class="caption">3</span>
+							</button>
+						</div>
+						<!-- /field -->
+
+					<!-- </div> -->
+					<!-- /row -->
+
+					<!-- row -->
+					<!-- <div class="row"> -->
+
+						<!-- field -->
+						<div class="field wide">
+							<button class="digit" id="digit0" value="0">
+								<span class="caption">0</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="digit" id="digitDP" value=".">
+								<span class="caption">.</span>
+							</button>
+						</div>
+						<!-- /field -->
+
+					<!-- </div> -->
+					<!-- /row -->
 
 				</div>
-				<!-- /row -->
+				<!-- /panel -->
 
-				<!-- row -->
-				<div class="row">
+				<!-- panel -->
+				<div class="panel" id="sci">
 
-					<!-- cell -->
-					<div class="cell wide">
-						<button class="dark">0</button>
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci op" id="openparen">
+								<span class="caption">(</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci" id="closeparen">
+								<span class="caption">)</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">mc</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">m&plus;</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">m-</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci op">
+								<span class="caption">mr</span>
+							</button>
+						</div>
+						<!-- /field -->
+
 					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="dark">.</button>
+					<!-- /row -->
+
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci op">
+								<span class="caption">
+									2<sup>nd</sup>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">
+									x<sup>2</sup>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">
+									x<sup>3</sup>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci op">
+								<span class="caption">
+									x<sup>y</sup>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">
+									e<sup>x</sup>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">
+									10<sup>x</sup>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+
 					</div>
-					<!-- /cell -->
-					
-					<!-- cell -->
-					<div class="cell">
-						<button class="orange">
-							&equals;
-						</button>
+					<!-- /row -->
+
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci boost slash">
+								<span class="caption">
+									<sup>1</sup>
+									<sub>x</sub>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">
+									<sup>2</sup>&radic;x
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">
+									<sup>3</sup>&radic;x
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci op">
+								<span class="caption">
+									<sup>y</sup>&radic;x
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">ln</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">
+									log<sub>10</sub>
+								</span>
+							</button>
+						</div>
+						<!-- /field -->
+
 					</div>
-					<!-- /cell -->
+					<!-- /row -->
+
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">x!</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">sin</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">cos</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">tan</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">e</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci op">
+								<span class="caption">EE</span>
+							</button>
+						</div>
+						<!-- /field -->
+
+					</div>
+					<!-- /row -->
+
+					<!-- row -->
+					<div class="row">
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">Rad</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">sinh</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">cosh</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">tanh</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">&pi;</span>
+							</button>
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+							<button class="sci">
+								<span class="caption">Rand</span>
+							</button>
+						</div>
+						<!-- /field -->
+
+					</div>
+					<!-- /row -->
 
 				</div>
-				<!-- /row -->
+				<!-- /panel -->
+				
+			</div>
+			<!-- /#panel -->
+
+			<!-- #debugger -->
+			<div id="debugger" class="debugger">
+
+				<!-- debugBtn -->
+				<button class="debugBtn">&square;</button>
+				<!-- /debugBtn -->
 
 			</div>
-			<!-- /#btnPanel -->
+			<!-- /#debugger -->
+
+			<!-- #tracker -->
+			<div id="tracker" class="debugger">
+				Details goes here
+			</div>
+			<!-- /#tracker -->
 
 		</div>
 		<!-- /#container -->
 
 
+		<script type="text/javascript" src="calc.js"></script>
+
 	</body>
+
 </html>

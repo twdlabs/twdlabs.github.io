@@ -1,0 +1,92 @@
+
+
+* {box-sizing:border-box;}
+
+
+body {background-color:#000; color:#FFF; margin:0; font-family:sans-serif;}
+body {display:flex; flex-direction:row; justify-content:center; align-items:center; min-height:100vh; padding-bottom:5rem;}
+
+
+div#container {background-color:inherit; color:inherit; padding:2rem; margin:0 auto; overflow:auto;}
+
+
+div#container div#panel {display:flex; flex-direction:row-reverse; justify-content:center;}
+div#container div#panel div.panel {flex-grow:1; flex-shrink:0; flex-basis:0;}
+div#container div#panel div.panel#ops {flex-grow:1;}
+div#container div#panel div.panel#num {flex-grow:3;}
+div#container div#panel div.panel#sci {flex-grow:6;}
+
+div#container div#panel div.panel#num {display:grid; grid-template-columns:repeat(3,1fr);}
+div#container div#panel div.panel#num div.field {}
+div#container div#panel div.panel#num div.field.wide {grid-column:span 2;}
+div#container div#panel div.panel#num div.field.wide button span.caption {left:25%}
+
+div#container div#panel div.panel div.row {display:flex; flex-direction:row; justify-content:flex-end;}
+div#container div#panel div.panel div.field {min-width:5rem; min-height:5rem; flex-grow:1; flex-basis:0;}
+div#container div#panel div.panel div.field.wide {/*flex-grow:2;*/}
+
+div#container div#panel div.panel div.field button {border:1px solid #000; width:100%; height:100%; font-weight:200; cursor:pointer; transition:.25s;}
+div#container div#panel div.panel div.field button {position:relative;}
+div#container div#panel div.panel div.field button span.caption {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div#panel div.panel div.field button span.caption.c {display:none;}
+div#container div#panel div.panel div.field button span.caption.ac {display:block;}
+div#container.de div.panel div.field button span.caption.c {display:block;}
+div#container.de div.panel div.field button span.caption.ac {display:none;}
+
+div#container div#panel div.panel div.field button sup,
+div#container div#panel div.panel div.field button sub {font-size:1rem;}
+
+div#container div#panel div.panel div.field button.slash {position:relative;}
+div#container div#panel div.panel div.field button.slash sup,
+div#container div#panel div.panel div.field button.slash sub {font-size:.65em;}
+div#container div#panel div.panel div.field button.slash::after {content:'/'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(22.5deg); font-weight:200; font-size:1.125em;}
+div#container div#panel div.panel div.field button.boost span.caption {transform:translate(-50%,-50%) translateY(-.125rem);}
+
+div#container div.panel#ops div.field button.orange {background-color:#FE9F0C; color:#FFF; font-size:2.5rem;}
+div#container div.panel#ops div.field button.orange:active {background-color:#FBC78D; color:#FFF;}
+div#container div.panel#ops div.field button.orange.op.active {background-color:#FFF; color:#FE9F0C;}
+
+div#container div.panel#sci div.field button.sci {background-color:#212121; color:#FFF; font-size:1.75rem;}
+div#container div.panel#sci div.field button.sci:active {background-color:#4D4D4D; color:#FFF;}
+div#container div.panel#sci div.field button.sci.op.active {background-color:#7F7F7F; color:#000;}
+
+div#container div.panel#num div.field button.mod {background-color:#A5A5A5; color:#000; font-size:2rem; font-weight:400;}
+div#container div.panel#num div.field button.mod:active {background-color:#D9D9D9; color:#000;}
+div#container div.panel#num div.field button.digit {background-color:#333; color:#FFF; font-size:2.5rem;}
+div#container div.panel#num div.field button.digit:active {background-color:#737373; color:#FFF;}
+
+
+div#container div#screen {width:100%; background-color:inherit; color:inherit; font-size:6rem; font-weight:100; margin-top:1rem;}
+div#container div#screen input.caption {display:block; width:100%; background-color:inherit; color:inherit; text-align:right; font-size:inherit; border:inherit; outline:none; font-weight:inherit; user-select:none; cursor:pointer;}
+div#container div#screen input.caption#breadcrumbs {font-size:1rem; padding:0 .5rem;}
+
+
+
+div#container.debug div.panel div.field {margin:.4rem;}
+div#container.debug div.panel div.field button {border:0 none; border-radius:50rem;}
+
+
+
+/* Small Screen */
+@media screen and (max-width:64rem) {
+	div#container div.panel#sci {display:none;}
+}
+
+
+
+
+/* Debug */
+div#container.debug,
+div#container.debug * {border:1px solid #FFF2;}
+/*div#container div#panel div.panel {padding:.4rem; display:grid; grid-template-columns:repeat(4,25%);}*/
+/*div#container div#panel div.panel div.field {flex:0 0 25%;}*/
+div#container div#panel div.panel div.field.wide button {text-align:left; padding-left:1.75rem;}
+div#container div.debugger {position:fixed; padding:1rem;}
+div#container div#debugger {right:0; top:0; left:0; width:100%; text-align:center; margin-top:2rem;}
+div#container div#debugger button {width:10%; min-width:3rem; min-height:3rem; border-radius:50rem; background-color:inherit; color:inherit; border:1px solid #FFF2; cursor:pointer;}
+div#container div#tracker {top:0; left:0;}
+div#container div#tracker {display:grid; grid-template-columns:repeat(2,1fr);}
+div#container div#tracker span.name {text-align:left;}
+div#container div#tracker span.value {text-align:right;}
+
+
