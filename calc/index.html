@@ -40,7 +40,7 @@
 						
 						<!-- field -->
 						<div class="field">
-							<button class="orange boost op" id="divide">
+							<button class="orange boost op" id="divide" value="÷">
 								<span class="caption">&divide;</span>
 							</button>
 						</div>
@@ -54,7 +54,7 @@
 						
 						<!-- field -->
 						<div class="field">
-							<button class="orange boost op" id="times">
+							<button class="orange boost op" id="times" value="×">
 								<span class="caption">&times;</span>
 							</button>
 						</div>
@@ -68,7 +68,7 @@
 						
 						<!-- field -->
 						<div class="field">
-							<button class="orange boost op" id="minus">
+							<button class="orange boost op" id="minus" value="−">
 								<span class="caption">&minus;</span>
 							</button>
 						</div>
@@ -82,7 +82,7 @@
 						
 						<!-- field -->
 						<div class="field">
-							<button class="orange boost op" id="plus">
+							<button class="orange boost op" id="plus" value="+">
 								<span class="caption">&plus;</span>
 							</button>
 						</div>
@@ -565,24 +565,21 @@
 			</div>
 			<!-- /#panel -->
 
-			<!-- #debugger -->
-			<div id="debugger" class="debugger">
-
-				<!-- debugBtn -->
-				<button class="debugBtn">&square;</button>
-				<!-- /debugBtn -->
-
-			</div>
-			<!-- /#debugger -->
-
-			<!-- #tracker -->
-			<div id="tracker" class="debugger">
-				Details goes here
-			</div>
-			<!-- /#tracker -->
-
 		</div>
 		<!-- /#container -->
+
+
+		<!-- #debugger -->
+		<div id="debugger" class="debug">
+			<!-- debugBtn -->
+			<button class="debugBtn" onclick="toggleDebugMode()" ondblclick="toggleSciMode()">&square;</button>
+			<!-- /debugBtn -->
+		</div>
+		<!-- /#debugger -->
+
+		<!-- #tracker -->
+		<div id="tracker" class="debug">Details goes here</div>
+		<!-- /#tracker -->
 
 
 		<script type="text/javascript" src="calc.js"></script>
