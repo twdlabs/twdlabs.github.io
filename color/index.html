@@ -26,11 +26,16 @@
 
 		<div id="container">
 
+
+			<!-- head -->
 			<h1>Color Palette</h1>
+			<!-- /head -->
+
 			
 			<!-- #huewheel -->
 			<div id="huewheel"></div>
 			<!-- /#huewheel -->
+
 			
 			<!-- #palette -->
 			<div id="palette" onclick="console.log( 'color' , $(this).css('background-color') )"></div>
@@ -39,53 +44,166 @@
 
 			<!-- chooser -->
 			<div class="chooser r">
-				<button class="delta minus" onclick="deltaRed(-10)">&minus;</button>
-				<label for="red">R</label>
-				<button class="delta plus" onclick="deltaRed(10)">&plus;</button>
 
+				<!-- label -->
+				<label for="red">Red</label>
+				<!-- /label -->
+
+				<!-- #red -->
 				<input type="range" id="red" min="0" max="255" step="5" value="0" oninput="updateColor();">
-				<label for="red" id="rValue">&nbsp;</label>
+				<!-- /#red -->
+
+				<!-- ranger -->
+				<div class="ranger">
+
+					<!-- delta -->
+					<button class="delta minus" onclick="deltaRed(-5)">
+						<span class="caption">&minus;</span>
+					</button>
+					<!-- /delta -->
+
+					<!-- #rValue -->
+					<label for="red" id="rValue">
+						<span class="caption">&nbsp;</span>
+					</label>
+					<!-- /#rValue -->
+
+					<!-- delta -->
+					<button class="delta plus" onclick="deltaRed(5)">
+						<span class="caption">&plus;</span>
+					</button>
+					<!-- /delta -->
+					
+				</div>
+				<!-- /ranger -->
+
 			</div>
 			<!-- /chooser -->
+
 
 			<!-- chooser -->
 			<div class="chooser g">
-				<button class="delta minus" onclick="deltaGreen(-10)">&minus;</button>
-				<label for="green">G</label>
-				<button class="delta plus" onclick="deltaGreen(10)">&plus;</button>
 
+				<!-- label -->
+				<label for="green">Green</label>
+				<!-- /label -->
+
+				<!-- #green -->
 				<input type="range" id="green" min="0" max="255" step="5" value="0" oninput="updateColor();">
-				<label for="green" id="gValue">&nbsp;</label>
+				<!-- /#green -->
+
+				<!-- ranger -->
+				<div class="ranger">
+
+					<!-- delta -->
+					<button class="delta minus" onclick="deltaGreen(-5)">
+						<span class="caption">&minus;</span>
+					</button>
+					<!-- /delta -->
+
+					<!-- #gValue -->
+					<label for="green" id="gValue">
+						<span class="caption">&nbsp;</span>
+					</label>
+					<!-- /#gValue -->
+
+					<!-- delta -->
+					<button class="delta plus" onclick="deltaGreen(5)">
+						<span class="caption">&plus;</span>
+					</button>
+					<!-- /delta -->
+					
+				</div>
+				<!-- /ranger -->
+
 			</div>
 			<!-- /chooser -->
+
 
 			<!-- chooser -->
 			<div class="chooser b">
-				<button class="delta minus" onclick="deltaBlue(-10)">&minus;</button>
-				<label for="blue">B</label>
-				<button class="delta plus" onclick="deltaBlue(10)">&plus;</button>
 
+				<!-- label -->
+				<label for="blue">Blue</label>
+				<!-- /label -->
+
+				<!-- #blue -->
 				<input type="range" id="blue" min="0" max="255" step="5" value="0" oninput="updateColor();">
-				<label for="blue" id="bValue">&nbsp;</label>
+				<!-- /#blue -->
+
+				<!-- ranger -->
+				<div class="ranger">
+
+					<!-- delta -->
+					<button class="delta minus" onclick="deltaBlue(-5)">
+						<span class="caption">&minus;</span>
+					</button>
+					<!-- /delta -->
+
+					<!-- #bValue -->
+					<label for="blue" id="bValue">
+						<span class="caption">&nbsp;</span>
+					</label>
+					<!-- /#bValue -->
+
+					<!-- delta -->
+					<button class="delta plus" onclick="deltaBlue(5)">
+						<span class="caption">&plus;</span>
+					</button>
+					<!-- /delta -->
+					
+				</div>
+				<!-- /ranger -->
+
 			</div>
 			<!-- /chooser -->
+
 
 			<!-- chooser -->
 			<div class="chooser a">
-				<button class="delta minus" onclick="deltaAlpha(-10)">&minus;</button>
-				<label for="alpha">A</label>
-				<button class="delta plus" onclick="deltaAlpha(10)">&plus;</button>
 
+				<!-- label -->
+				<label for="alpha">Alpha</label>
+				<!-- /label -->
+
+				<!-- #alpha -->
 				<input type="range" id="alpha" min="0" max="100" step="5" value="100" oninput="updateColor();">
-				<label for="alpha" id="aValue">&nbsp;</label>
+				<!-- /#alpha -->
+
+				<!-- ranger -->
+				<div class="ranger">
+
+					<!-- delta -->
+					<button class="delta minus" onclick="deltaAlpha(-5)">
+						<span class="caption">&minus;</span>
+					</button>
+					<!-- /delta -->
+
+					<!-- #aValue -->
+					<label for="alpha" id="aValue">
+						<span class="caption">&nbsp;</span>
+					</label>
+					<!-- /#aValue -->
+
+					<!-- delta -->
+					<button class="delta plus" onclick="deltaAlpha(5)">
+						<span class="caption">&plus;</span>
+					</button>
+					<!-- /delta -->
+					
+				</div>
+				<!-- /ranger -->
+
 			</div>
 			<!-- /chooser -->
+
 
 			<!-- chooser -->
 			<div class="chooser x">
-				<button class="rnd">Random Color</button>
+				<button class="rnd" onclick="createRandomColor()">Random Color</button>
 			</div>
 			<!-- /chooser -->
+
 
 		</div>
 

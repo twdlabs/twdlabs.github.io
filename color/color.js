@@ -42,7 +42,9 @@ function updateColor() {
 	blue = $('input#blue').val()*1;
 	alpha = $('input#alpha').val()/100;
 
-	$('div#palette').css( 'background-color' , 'rgba('+(red)+','+(green)+','+(blue)+','+(alpha)+')' );
+	// Assign composited color to palette. 
+	$('div#palette').css('background-color',`rgba(${red},${green},${blue},${alpha})`);
+	// $('div#palette').css( 'background-color' , 'rgba('+(red)+','+(green)+','+(blue)+','+(alpha)+')' );
 
 	$('label#rValue').html(red);
 	$('label#gValue').html(green);
@@ -50,35 +52,89 @@ function updateColor() {
 	$('label#aValue').html(alpha);
 }
 
-// 
+// Change value for red component. 
 function deltaRed(dv) {
-	var oldValue = 1*$('input#red').val();
-	var newValue = oldValue + dv;
+
+	// Get old value. 
+	let oldValue = 1*$('input#red').val();
+
+	// Calculate new value. 
+	let newValue = oldValue + dv;
+	
+	// Update displayed value. 
 	$('input#red').val(newValue);
+	
+	// Update displayed color. 
 	updateColor();
 }
 
-// 
+// Change value for green component. 
 function deltaGreen(dv) {
-	var oldValue = 1*$('input#green').val();
-	var newValue = oldValue + dv;
+
+	// Get old value. 
+	let oldValue = 1*$('input#green').val();
+
+	// Calculate new value. 
+	let newValue = oldValue + dv;
+	
+	// Update displayed value. 
 	$('input#green').val(newValue);
+	
+	// Update displayed color. 
 	updateColor();
 }
 
-// 
+// Change value for blue component. 
 function deltaBlue(dv) {
-	var oldValue = 1*$('input#blue').val();
-	var newValue = oldValue + dv;
+
+	// Get old value. 
+	let oldValue = 1*$('input#blue').val();
+
+	// Calculate new value. 
+	let newValue = oldValue + dv;
+	
+	// Update displayed value. 
 	$('input#blue').val(newValue);
+	
+	// Update displayed color. 
 	updateColor();
 }
 
-// 
+// Change value for alpha component. 
 function deltaAlpha(dv) {
-	var oldValue = 1*$('input#alpha').val();
-	var newValue = oldValue + dv;
+
+	// Get old value. 
+	let oldValue = 1*$('input#alpha').val();
+
+	// Calculate new value. 
+	let newValue = oldValue + dv;
+	
+	// Update displayed value. 
 	$('input#alpha').val(newValue);
+	
+	// Update displayed color. 
+	updateColor();
+}
+
+// Create random color and display it. 
+function createRandomColor() {
+	// Select random number (0-255) for red value. 
+	let r = Math.floor( 256*Math.random() );
+	// Select random number (0-255) for green value. 
+	let g = Math.floor( 256*Math.random() );
+	// Select random number (0-255) for blue value. 
+	let b = Math.floor( 256*Math.random() );
+	// Use constant alpha value. 
+	// let a = $('input#alpha').val();
+	// let a = 1;
+	
+	// Update displayed values. 
+	$('input#red').val(r);
+	$('input#green').val(g);
+	$('input#blue').val(b);
+	// $('input#alpha').val(a*100);
+
+	// Update displayed color. 
 	updateColor();
 }
 

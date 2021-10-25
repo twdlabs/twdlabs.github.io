@@ -6,26 +6,28 @@
 body {height:100vh; margin:0; /*font-family:sans-serif;*/}
 
 
-div#container {max-width:500px; margin:0 auto; text-align:center; padding:16px; background-color:#00000008;}
+div#container {height:100%; max-width:24rem; margin:0 auto; text-align:center; padding:16px; background-color:#00000008;}
+div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center;}
 
 
-div#container h1 {}
+div#container h1 {margin-bottom:1em;}
 
 
-div#container div#palette {border:3px solid #000; border-radius:50%; cursor:pointer; display:inline-block; padding:120px; margin-bottom:60px;}
+div#container div#palette {border:3px solid #000; border-radius:50%; cursor:pointer; display:inline-block; padding:120px; margin-bottom:3rem;}
 
 
-div#container div.chooser {margin-bottom:1.5rem; padding:.5em 2em; border-radius:.5em; font-weight:bold;}
+div#container div.chooser {margin-bottom:1.5rem; padding:.5em 2em; border-radius:.5em; font-weight:bold; width:100%;}
 div#container div.chooser.r {background-color:#F00B;}
 div#container div.chooser.g {background-color:#0F0B;}
-div#container div.chooser.b {background-color:#00FB; color:#DDD;}
+div#container div.chooser.b {background-color:#00FB;}
 div#container div.chooser.a {background-color:#0004;}
 
-div#container div.chooser div.ranger {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-
-div#container div.chooser label {cursor:pointer; padding:0 .5em; font-size:1.25rem;}
+div#container div.chooser label {cursor:pointer; padding:0 .5em; font-size:1.25rem; text-shadow:0px 1px 3px #000D; color:#FFF;}
 div#container div.chooser input {cursor:pointer; width:100%;}
-div#container div.chooser button.delta {cursor:pointer; display:inline-block; user-select:none; border-radius:5rem; border:2px solid #ccc; min-width:2rem;}
-div#container div.chooser button.delta span.caption {position:relative; top:-1px; /*transform:translateY(-.125rem);*/}
+div#container div.chooser button {cursor:pointer; user-select:none; border:2px solid #CCC;}
 
+div#container div.chooser div.ranger {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container div.chooser div.ranger button.delta {min-width:2rem; border-radius:5rem; background-color:#FFF; color:#000;}
+div#container div.chooser div.ranger button.delta span.caption {position:relative; top:-1px; /*transform:translateY(-.125rem);*/}
+div#container div.chooser button.rnd {padding:1rem 2rem; border-radius:1rem;}
 
