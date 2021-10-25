@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Color Chooser</title>
+
+		<!-- Bootstrap 4 -->
+		<link href="https://import.atgmedia.xyz/bs4/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/bootstrap.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<style type="text/css">
+			html,body {height:100%; margin:0; /*font-family:sans-serif;*/}
+			div#container {max-width:500px; margin:0 auto; text-align:center; padding:16px; background-color:#00000008;}
+			div#container div#palette {border:3px solid #000; border-radius:50%; cursor:pointer; display:inline-block; padding:120px; margin-bottom:60px;}
+			div#container div.chooser {margin-bottom:1.5rem; padding:.5em 2em; border-radius:.5em; font-weight:bold;}
+			div#container div.chooser label {cursor:pointer; padding:0 .5em; font-size:1.25rem;}
+			div#container div.chooser input {cursor:pointer; width:100%;}
+			div#container div.chooser button.delta {cursor:pointer; display:inline-block; user-select:none; border-radius:.5em; border:2px solid #ccc;}
+			div#container div.chooser.r {background-color:#f00c;}
+			div#container div.chooser.g {background-color:#0f0c;}
+			div#container div.chooser.b {background-color:#00fc; /*color:#ddd;*/}
+			div#container div.chooser.a {background-color:#888c;}
+		</style>
+		<script type="text/javascript">
+			// Open access to url parameters. 
+			const params = new URLSearchParams(window.location.search);
+
+			$(document).ready(function() {
+				// Get page id from url parameter 'p'. 
+				let r = params.get('r');
+				let g = params.get('g');
+				let b = params.get('b');
+				let a = params.get('a');
+				console.log( 'r', r , 'g', g , 'b', b , 'a', a );
+
+				// Load chosen color. 
+				$('input#red').val(r);
+				$('input#green').val(g);
+				$('input#blue').val(b);
+
+				// Update color from parameters
+				updateColor();
+			});
+
+			var red, green, blue, alpha;
+
+			function updateColor() {
+				red = $('input#red').val()*1;
+				green = $('input#green').val()*1;
+				blue = $('input#blue').val()*1;
+				alpha = $('input#alpha').val()/100;
+
+				$('div#palette').css( 'background-color' , 'rgba('+(red)+','+(green)+','+(blue)+','+(alpha)+')' );
+
+				$('label#rValue').html(red);
+				$('label#gValue').html(green);
+				$('label#bValue').html(blue);
+				$('label#aValue').html(alpha);
+			}
+
+			function deltaRed(dv) {
+				var oldValue = 1*$('input#red').val();
+				var newValue = oldValue + dv;
+				$('input#red').val(newValue);
+				updateColor();
+			}
+
+			function deltaGreen(dv) {
+				var oldValue = 1*$('input#green').val();
+				var newValue = oldValue + dv;
+				$('input#green').val(newValue);
+				updateColor();
+			}
+
+			function deltaBlue(dv) {
+				var oldValue = 1*$('input#blue').val();
+				var newValue = oldValue + dv;
+				$('input#blue').val(newValue);
+				updateColor();
+			}
+
+			function deltaAlpha(dv) {
+				var oldValue = 1*$('input#alpha').val();
+				var newValue = oldValue + dv;
+				$('input#alpha').val(newValue);
+				updateColor();
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<div id="container">
+
+			<h1>Color Palette</h1>
+			
+			<!-- #huewheel -->
+			<div id="huewheel"></div>
+			<!-- /#huewheel -->
+			
+			<!-- #palette -->
+			<div id="palette" onclick="console.log( 'color' , $(this).css('background-color') )"></div>
+			<!-- /#palette -->
+
+
+			<!-- chooser -->
+			<div class="chooser r">
+				<button class="delta minus" onclick="deltaRed(-10)">&minus;</button>
+				<label for="red">R</label>
+				<button class="delta plus" onclick="deltaRed(10)">&plus;</button>
+
+				<input type="range" id="red" min="0" max="255" step="5" value="0" oninput="updateColor();">
+				<label for="red" id="rValue">&nbsp;</label>
+			</div>
+			<!-- /chooser -->
+
+			<!-- chooser -->
+			<div class="chooser g">
+				<button class="delta minus" onclick="deltaGreen(-10)">&minus;</button>
+				<label for="green">G</label>
+				<button class="delta plus" onclick="deltaGreen(10)">&plus;</button>
+
+				<input type="range" id="green" min="0" max="255" step="5" value="0" oninput="updateColor();">
+				<label for="green" id="gValue">&nbsp;</label>
+			</div>
+			<!-- /chooser -->
+
+			<!-- chooser -->
+			<div class="chooser b">
+				<button class="delta minus" onclick="deltaBlue(-10)">&minus;</button>
+				<label for="blue">B</label>
+				<button class="delta plus" onclick="deltaBlue(10)">&plus;</button>
+
+				<input type="range" id="blue" min="0" max="255" step="5" value="0" oninput="updateColor();">
+				<label for="blue" id="bValue">&nbsp;</label>
+			</div>
+			<!-- /chooser -->
+
+			<!-- chooser -->
+			<div class="chooser a">
+				<button class="delta minus" onclick="deltaAlpha(-10)">&minus;</button>
+				<label for="alpha">A</label>
+				<button class="delta plus" onclick="deltaAlpha(10)">&plus;</button>
+
+				<input type="range" id="alpha" min="0" max="100" step="5" value="100" oninput="updateColor();">
+				<label for="alpha" id="aValue">&nbsp;</label>
+			</div>
+			<!-- /chooser -->
+
+		</div>
+
+	</body>
+</html>
