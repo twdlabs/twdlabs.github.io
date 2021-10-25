@@ -18,86 +18,8 @@
 		<!-- <script src="https://import.atgmedia.xyz/bs4/bootstrap.min.js" type="text/javascript"></script> -->
 		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
 
-		<style type="text/css">
-			html,body {height:100%; margin:0; /*font-family:sans-serif;*/}
-			div#container {max-width:500px; margin:0 auto; text-align:center; padding:16px; background-color:#00000008;}
-			div#container div#palette {border:3px solid #000; border-radius:50%; cursor:pointer; display:inline-block; padding:120px; margin-bottom:60px;}
-			div#container div.chooser {margin-bottom:1.5rem; padding:.5em 2em; border-radius:.5em; font-weight:bold;}
-			div#container div.chooser label {cursor:pointer; padding:0 .5em; font-size:1.25rem;}
-			div#container div.chooser input {cursor:pointer; width:100%;}
-			div#container div.chooser button.delta {cursor:pointer; display:inline-block; user-select:none; border-radius:.5em; border:2px solid #ccc;}
-			div#container div.chooser.r {background-color:#f00c;}
-			div#container div.chooser.g {background-color:#0f0c;}
-			div#container div.chooser.b {background-color:#00fc; /*color:#ddd;*/}
-			div#container div.chooser.a {background-color:#888c;}
-		</style>
-		<script type="text/javascript">
-			// Open access to url parameters. 
-			const params = new URLSearchParams(window.location.search);
-
-			$(document).ready(function() {
-				// Get page id from url parameter 'p'. 
-				let r = params.get('r');
-				let g = params.get('g');
-				let b = params.get('b');
-				let a = params.get('a');
-				console.log( 'r', r , 'g', g , 'b', b , 'a', a );
-
-				// Load chosen color. 
-				$('input#red').val(r);
-				$('input#green').val(g);
-				$('input#blue').val(b);
-
-				// Update color from parameters
-				updateColor();
-			});
-
-			var red, green, blue, alpha;
-
-			function updateColor() {
-				red = $('input#red').val()*1;
-				green = $('input#green').val()*1;
-				blue = $('input#blue').val()*1;
-				alpha = $('input#alpha').val()/100;
-
-				$('div#palette').css( 'background-color' , 'rgba('+(red)+','+(green)+','+(blue)+','+(alpha)+')' );
-
-				$('label#rValue').html(red);
-				$('label#gValue').html(green);
-				$('label#bValue').html(blue);
-				$('label#aValue').html(alpha);
-			}
-
-			function deltaRed(dv) {
-				var oldValue = 1*$('input#red').val();
-				var newValue = oldValue + dv;
-				$('input#red').val(newValue);
-				updateColor();
-			}
-
-			function deltaGreen(dv) {
-				var oldValue = 1*$('input#green').val();
-				var newValue = oldValue + dv;
-				$('input#green').val(newValue);
-				updateColor();
-			}
-
-			function deltaBlue(dv) {
-				var oldValue = 1*$('input#blue').val();
-				var newValue = oldValue + dv;
-				$('input#blue').val(newValue);
-				updateColor();
-			}
-
-			function deltaAlpha(dv) {
-				var oldValue = 1*$('input#alpha').val();
-				var newValue = oldValue + dv;
-				$('input#alpha').val(newValue);
-				updateColor();
-			}
-
-		</script>
-
+		<!-- Main Style -->
+		<link href="color.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -159,7 +81,16 @@
 			</div>
 			<!-- /chooser -->
 
+			<!-- chooser -->
+			<div class="chooser x">
+				<button class="rnd">Random Color</button>
+			</div>
+			<!-- /chooser -->
+
 		</div>
+
+		<!-- Main Script -->
+		<script type="text/javascript" src="color.js"></script>
 
 	</body>
 </html>
