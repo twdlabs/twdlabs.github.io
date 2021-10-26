@@ -31,7 +31,8 @@ div.sidenav div.navhead a.logoBtn {margin:0 auto; padding:.5rem 1.5rem;}
 div.sidenav div.navhead a.logoBtn img {height:2.5rem;}
 div.sidenav div.navhead a.logoBtn .text {font-size:1.25rem; padding:.25rem; height:100%; display:inline-block; transform:translateY(10%);}
 div.sidenav div.container {padding:1rem 0 1.5rem; height:100%; overflow-y:auto;}
-div.sidenav div.container a.navBtn {}
+div.sidenav div.container a.navBtn {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+div.sidenav div.container a .icon, 
 div.sidenav div.container a svg, 
 div.sidenav div.container a i.fa {min-width:1.75em; max-width:2.25em; box-sizing:border-box; /*padding-right:1.25rem;*/}
 div.sidenav div.container a i.fa {/*position:absolute; left:0;*/ /*transform:translateX(-50%);*/}
