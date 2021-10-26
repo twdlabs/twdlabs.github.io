@@ -1,0 +1,37 @@
+
+
+/****** Navbar & Side Navigation ******/
+
+/*body {overflow-x:hidden;}*/
+
+div.sidenav {height:100%; max-width:100%; position:fixed; z-index:200; top:0; bottom:0; left:-18rem; width:18rem; background-color:#FFF; /*overflow-x:visible;*/}
+div.sidenav {box-shadow:rgba(0,0,0,.05) 2px 0px 4px;}
+div.sidenav {transition:0.25s;}
+div.sidenav::after {content:''; position:absolute; top:0; bottom:0; left:100%; height:100%; width:1.25rem; z-index:10;}
+
+div.sidenav.open {transform:translateX(100%); box-shadow:2px 0 2px rgba(0,0,0,0.25);}
+div.sidenav.open::after {/*width:100%;*/}
+
+div.sidenav.debug {transition:none;}
+div.sidenav.debug::after {background-color:dodgerblue; opacity:0.1; border-radius:0 1em 1em 0;}
+
+
+div.sidenav {display:flex; flex-direction:column;}
+div.sidenav div.navhead {/*height:3rem;*/box-shadow:rgba(0,0,0,.05) 0px 2px 2px;}
+div.sidenav div.container {flex:1;}
+div.sidenav a {padding:.75rem 1.5rem; text-decoration:none; color:#818181; display:block; transition:0.3s; position:relative; font-weight:400;}
+div.sidenav a:hover,
+div.sidenav a:focus,
+div.sidenav a:active {color:#f1f1f1; color:#e1e1e1; color:rgb(13,110,253);}
+div.sidenav hr {border:0 none; border-top:1px solid rgba(0,0,0,0.05);}
+div.sidenav hr.full {margin:1rem 0;}
+div.sidenav hr.open {margin:1rem 0rem 1rem 3.5rem;}
+div.sidenav div.navhead {position:sticky; top:0; background-color:#FFF; z-index:2; border:1px solid rgba(0,0,0,0.05); border-width:1px 0;}
+div.sidenav div.navhead a.logoBtn {margin:0 auto; padding:.5rem 1.5rem;}
+div.sidenav div.navhead a.logoBtn img {height:2.5rem;}
+div.sidenav div.navhead a.logoBtn .text {font-size:1.25rem; padding:.25rem; height:100%; display:inline-block; transform:translateY(10%);}
+div.sidenav div.container {padding:1rem 0 1.5rem; height:100%; overflow-y:auto;}
+div.sidenav div.container a.navBtn {}
+div.sidenav div.container a svg, 
+div.sidenav div.container a i.fa {min-width:1.75em; max-width:2.25em; box-sizing:border-box; /*padding-right:1.25rem;*/}
+div.sidenav div.container a i.fa {/*position:absolute; left:0;*/ /*transform:translateX(-50%);*/}
