@@ -1,5 +1,4 @@
 
-$(document).ready(startNotifying);
 
 // Create new notification on regular interval. 
 function startNotifying() {

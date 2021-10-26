@@ -1,54 +1,87 @@
 
 
-// 
+// Handle beginning of search. 
 function onSearchStart() {
+	// Modify placeholder text in search field. 
 	$('#searchBox').attr('placeholder','Search');
 
-	// $('.menuBtn, .acctBtn').fadeOut(100);
-	// $('.backBtn').fadeIn(100);
+	// $('.floatBar .menuBtn, .floatBar .acctBtn').fadeOut(100);
+	// $('.floatBar .backBtn').fadeIn(100);
 
-	if( $('#searchBox').val() ) {
-		searchActive();
-		// $('.clearBtn').fadeIn(100);
-	}
-	else {
-		searchReady();
-		// $('.dictateBtn').fadeIn(100);
-	}
+	// Handle initial search query. 
+	onQueryChange();
+
 }
 
-// 
+
+
+// Handle change of search query. 
 function onQueryChange() {
-	if( $('#searchBox').val() ) {
+
+	// Get current search query. 
+	let currentQuery = $('#searchBox').val();
+
+	// Set search status to 'active' if text field has content. 
+	if( currentQuery ) {
 		searchActive();
-		// $('.dictateBtn').hide();
-		// $('.clearBtn').show();
-	} 
+		// $('.floatBar .dictateBtn').hide();
+		// $('.floatBar .clearBtn').show();
+		// $('.floatBar .clearBtn').fadeIn(100);
+	}
+
+	// Set search status to 'ready' if text field has no content. 
 	else {
 		searchReady();
-		// $('.clearBtn').hide();
-		// $('.dictateBtn').show();
+		// $('.floatBar .clearBtn').hide();
+		// $('.floatBar .dictateBtn').show();
+		// $('.floatBar .dictateBtn').fadeIn(100);
+	}
+
+	/*****/
+	
+	// Set search status to 'active'. 
+	function searchActive() {
+		$('.floatBar').removeClass('searchReady').addClass('searchActive');
+	}
+	// Set search status to 'ready'. 
+	function searchReady() {
+		$('.floatBar').removeClass('searchActive').addClass('searchReady');
 	}
 }
 
-// 
+
+
+
+// Handle end of search. 
 function onSearchEnd() {
-	$('#searchBox').val('').attr('placeholder','Search here');
+	// Clear search field. 
+	$('#searchBox').val('')
+	// Modify placeholder text in search field. 
+	.attr('placeholder','Search here');
+
+	// 
 	searchOver();
-	// $('.backBtn, .dictateBtn, .clearBtn').fadeOut(100);
-	// $('.menuBtn, .acctBtn').fadeIn(100);
+	// $('.floatBar .backBtn, .floatBar .dictateBtn, .floatBar .clearBtn').fadeOut(100);
+	// $('.floatBar .menuBtn, .floatBar .acctBtn').fadeIn(100);
+
+	/*****/
+
+	// Remove search status. 
+	function searchOver() {
+		$('.floatBar').removeClass('searchReady searchActive');
+	}
 }
 
-// 
-function searchReady() {
-	$('.floatBar').removeClass('searchActive').addClass('searchReady');
-}
-// 
-function searchActive() {
-	$('.floatBar').removeClass('searchReady').addClass('searchActive');
-}
-// 
-function searchOver() {
-	$('.floatBar').removeClass('searchReady searchActive');
-}
 
+
+
+// Synchronize the contents of both search text fields. 
+function syncronizeInput(event) {
+	
+	// Get content of chnaged search field. 
+	var trgt = event.currentTarget.value;
+
+	// Update both search fields. 
+	$('#searchBox').val(trgt);
+	$('#pageName').val(trgt);
+}

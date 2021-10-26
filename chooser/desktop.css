@@ -88,7 +88,7 @@ div#desktop div.group a.item div.miniframe div.mfbox div.section {width:50%; hei
 div#desktop div.group a.item div.miniframe.tall div.mfbox div.section {width:100%; height:50%; float:none; /*display:block;*/}
 div#desktop div.group a.item div.miniframe div.mfbox div.preview,
 div#desktop div.group a.item div.miniframe div.mfbox div.desc {display:inline-block; height:100%; width:100%; box-sizing:border-box; border:.5px solid #000;}
-div#desktop div.group a.item div.miniframe div.mfbox div.desc {text-align:left; overflow:hidden; padding:.5rem; position:relative;}
+div#desktop div.group a.item div.miniframe div.mfbox div.desc {text-align:center; overflow:hidden; padding:1.5rem 1.25rem; position:relative;}
 div#desktop div.group a.item div.miniframe div.mfbox div.desc::after {content:''; position:absolute; top:0; right:0; bottom:0; left:0; background:linear-gradient(to bottom,#0000 85%,#fff);}
 div#desktop div.group a.item div.miniframe div.mfbox div.preview iframe {height:200%; width:200%; transform:scale(.5) translate(-50%,-50%); box-sizing:border-box;}
 

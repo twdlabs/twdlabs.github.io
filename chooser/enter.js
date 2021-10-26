@@ -12,7 +12,7 @@ $(document).ready( function() {
 	// Take action when key is pressed inside input box. 
 	// inputBox.addEventListener('keyup', function(event) {
 	$('input.myQuery').on('keyup', function(event) {
-		console.log(event, event.target);
+		// console.log(event, event.target);
 		// Prevent default behavior of button press. 
 		event.preventDefault();
 

@@ -1,41 +1,112 @@
 
 // An array containing all the page names
-var labels = ['Apps'];
-var pageNames = ['chooser', 'finance', 'fitness', 'probability', 'reast'];
-var pageNames2d = [
-					['chooser', 'finance', 'fitness', 'probability', 'reast']
-				];
+// var labels = ['Homepage','Projects In-Progress','Favorite Projects'];
+// var pageNames = [
+// 					'chooser', 'evolution', 'finance', 'fitness', 'math', 'music', 'probability', 'reast', 'reast2', 'stocks', 'tabs', 
+// 					'acito', 'layouts', 'linktree', 
+// 					'bgvid', 'buttonpress', 'form3d', 'git', 'hero', 'image', 'logo', 'logoanimation', 'parallax', 'parallax2', 'popup', 'storage', 'ticker', 
+// 					'aspectratio', 'autocomplete', 'checkout', 'cluster', 'device', 'form', 'hero', 'lightSwitch', 'loading', 'nav', 'overlay', 'pricing', 'refresh', 'scale3d', 'scroller', 'scrollProgressBar', 'search', 'sidenav', 'slideshow', 'socialMedia', 'solarsystem', 'sphere', 'splash', 'sort', 'soundfx', 'syntax', 'template', 'user', 'viewport'
+// 				];
+// var pageNames2d = [
+// 					['chooser', 'evolution', 'finance', 'fitness', 'math', 'music', 'probability', 'reast', 'reast2', 'stocks', 'tabs'] , 
+// 					['acito', 'layouts', 'linktree'] , 
+// 					['bgvid', 'buttonpress', 'form3d', 'git', 'hero', 'image', 'logo', 'logoanimation', 'parallax', 'parallax2', 'popup', 'storage', 'ticker'] , 
+// 					['aspectratio', 'autocomplete', 'checkout', 'cluster', 'device', 'form', 'hero', 'lightSwitch', 'loading', 'nav', 'overlay', 'pricing', 'refresh', 'scale3d', 'scroller', 'scrollProgressBar', 'search', 'sidenav', 'slideshow', 'socialMedia', 'solarsystem', 'sphere', 'splash', 'sort', 'soundfx', 'syntax', 'template', 'user', 'viewport']
+// 				];
+// [];
+// var pageUrls = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
 
+// Set flag for public state. 
+let onPublicPage = false;
+// let onPublicPage = true;
 
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function(){
-	if(this.readyState == 4 && this.status == 200){
-		loadItUp(this);
+
+$(document).ready(function() {
+
+	// Apply saved settings. 
+	applySettings();
+
+	// Syncronize the two page input text fields. 
+	$('input.myQuery').on('input',syncronizeInput);
+
+	// Get text field for page url input. 
+	let pageInputBox = document.getElementById('pageName');
+
+	// Add autocomplete functionality to text field (using given source list for autocomplete values). 
+	if(onPublicPage) {
+		startAutocomplete(pageInputBox, publicProjectUrlList);
 	}
-};
-xhttp.open( 'GET', '../library.xml', true );
-xhttp.send();
+	else {
+		startAutocomplete(pageInputBox, projectUrlList);
+	}
+
+	// Start creating new notification on regular interval. 
+	// startNotifying();
+
+	// Request XML for project library list. 
+	// xhttp.open( 'GET', '../library.xml', true );
+	// xhttp.send();
+});
 
 
+
+// // Load lists of page names from XML file. 
+// const xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+// 	if(this.readyState == 4 && this.status == 200){
+// 		// Load XML data. 
+// 		loadItUp(this);
+// 	}
+// };
+
+// Load XML data. Setup autocomplete functionality. 
 function loadItUp(xml) {
+	// console.log('xml',xml);
+
+	// Get XML document for library. 
 	var xmlDoc = xml.responseXML;
-	var items = xmlDoc.getElementsByTagName('item');
-	pageNames = getArrayFromAttributes(items);
-	// alert( "items" + showAllNodes(items) );
-	// alert( "pageNames" + showAll(pageNames) );
+	console.log('xmlDoc',xmlDoc);
+
+	// Get all page items from XML document. 
+	var allItems = xmlDoc.getElementsByTagName('item');
+	console.log('allItems',allItems);
+
+	// Get page url from each page item. 
+	pageUrls = getUrlsByAttribute(allItems);
+	console.log('pageUrls',pageUrls);
+
+	// Filter out duplicate entries. 
+	let uniquePageUrls = [];
+	// Create list of unique entries from list of page urls. 
+	for (var i=0 ; i<pageUrls.length ; i++) {
+		let entry = pageUrls[i];
+		let alreadyGotIt = uniquePageUrls.includes(entry);
+		if(!alreadyGotIt) uniquePageUrls.push(entry);
+	}
+	console.log('uniquePageUrls',uniquePageUrls);
+	// pageUrls.filter( (entry)=>{
+	// 	// Check if entry already exists in list. 
+	// 	let alreadyExists = pageUrls.includes(entry)
+	// 	return ( !alreadyExists );
+	// } );
+
+	// console.log( "allItems" );
+	// console.table( allItems );
+	// console.log( "allItems" + showAllNodes(allItems) );
+	// console.log( "pageNames" );
+	// console.table( pageNames );
+	// console.log( "pageNames" + showAll(pageNames) );
+
+	// Start autocomplete functionality on given text field, using given source list for autocomplete values. 
+	let pageInputBox = document.getElementById('pageName');
+	// startAutocomplete(pageInputBox, pageUrls);
+	startAutocomplete(pageInputBox, uniquePageUrls);
 
 	/*****/
 
-	function getArrayFromChildNodes(orig) {
-		var result = [];
-
-		for(var i=0 ; i<orig.length ; i++) {
-			result.push( orig[i].childNodes[0].nodeValue );
-		}
-		return result;
-	}
-	function getArrayFromAttributes(orig) {
+	// Get array of page urls from attributes of page items. 
+	function getUrlsByAttribute(orig) {
 		var result = [];
 		var url;
 
@@ -47,20 +118,31 @@ function loadItUp(xml) {
 		}
 		return result;
 	}
-	function showAll(elmnts,x) {
-		var result = '['+elmnts.length+']';
-		for (var i=0; i<elmnts.length; i++) {
-			result += "\n"+i+": \"" + elmnts[i] + "\"";
-		}
-		return result;
-	}
-	function showAllNodes(elmnts,x) {
-		var result = '['+elmnts.length+']';
-		for (var i=0; i<elmnts.length; i++) {
-			result += "\n"+i+": \"" + elmnts[i].childNodes[0].nodeValue + "\"";
-		}
-		return result;
-	}
+	// // Get array of page urls from child nodes of page items. 
+	// function getUrlsByChildNode(orig) {
+	// 	var result = [];
+
+	// 	for(var i=0 ; i<orig.length ; i++) {
+	// 		result.push( orig[i].childNodes[0].nodeValue );
+	// 	}
+	// 	return result;
+	// }
+	// // Create string representation of all elements in list. 
+	// function showAll(elmnts,x) {
+	// 	var result = '['+elmnts.length+']';
+	// 	for (var i=0; i<elmnts.length; i++) {
+	// 		result += "\n"+i+": \"" + elmnts[i] + "\"";
+	// 	}
+	// 	return result;
+	// }
+	// // Create string representation of child node values from each element in list. 
+	// function showAllNodes(elmnts,x) {
+	// 	var result = '['+elmnts.length+']';
+	// 	for (var i=0; i<elmnts.length; i++) {
+	// 		result += "\n"+i+": \"" + elmnts[i].childNodes[0].nodeValue + "\"";
+	// 	}
+	// 	return result;
+	// }
 }
 
 
@@ -69,27 +151,70 @@ function loadItUp(xml) {
 
 
 
-// Display a list of all the possible pages. 
+// Clear text field for page url. 
+function clearUrlInput() {
+	$('#pageName').val('');
+}
+
+
+// Open page indicated by user-entered directory. 
+function openPage(userInput = $('#pageName').val()) {
+	if(userInput) userInput = userInput.toLowerCase();
+
+	if(userInput.length>0) {
+		// Confirm input if not found in preloaded pages.
+		// if(!pageNames.includes(userInput)) {
+		// 	toast('Page not listed.')
+		// 	let go = confirm("Page not listed. Continue?");
+		// 	if(!go) return;
+		// }
+
+		// Load the page in same window. 
+		window.location.href = ('../'+userInput+'/index.html');
+		// window.open('../'+userInput+'/index.html');
+		// window.open('../'+userInput+'/index.html','_self');
+		// Load the page in new window. 
+		// window.open('../'+userInput+'/index.html','_blank');
+	}
+	else {
+		toast("No input detected. Please try again.");
+	}
+}
+
+
+// Display list of all possible pages. 
 function showLibraryList() {
 	var outputList = showAll(pageNames);
 	var outputList2d = showAll2d(pageNames2d);
 
-	var code = '';
-	code += '<div id="sharePopup">';
-		code += '<h4>Library List</h4>';
+	// Create popup. 
+	var popup = '';
+	popup += '<div id="sharePopup" class="popup">';
+		popup += '<h4>';
+		popup += '<svg width="1em" hei ght="1em" viewBox="0 0 16 16" class="bi bi-view-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/></svg>';
+		popup += ' Library List';
+		popup += '</h4>';
 
-		// code += '<textarea id="list" readonly>'+outputList+'</textarea>';
-		code += '<select id="list" size="10">'+outputList2d+'</select>';
+		// popup += '<textarea id="list" readonly>'+outputList+'</textarea>';
+		popup += '<select id="list" size="10">'+outputList2d+'</select>';
 
-		code += '<div class="closeBtn" onclick="$(this).parent().remove();">&times;</div>';
-		code += '<a href="../library.xml">See more...</a>'
-	code += '</div>';
-	document.getElementById('container').innerHTML += code;
+		popup += '<div class="closeBtn" onclick="closeLibraryList();">&times;</div>';
+		popup += '<a href="../library.xml" style="display:block; text-decoration:none;"> <button>See more</button> </a>'
+	popup += '</div>';
 
-	// alert(outputList);
+	// Add overlay  effect. 
+	addOverlay();
+
+	// Add popup. 
+	document.getElementById('container').innerHTML += popup;
+
+	// console.log(outputList);
+	
 
 	/*****/
 
+
+	// 
 	function showAll(elmnts,x) {
 		var result = '';
 		for (var i=0; i<elmnts.length; i++) {
@@ -99,6 +224,7 @@ function showLibraryList() {
 		return result;
 	}
 
+	// 
 	function showAll2d(elmnts,x) {
 		var result = '';
 		for (var i=0; i<elmnts.length; i++) {
@@ -112,131 +238,39 @@ function showLibraryList() {
 	}
 }
 
+function closeLibraryList() {
+	// Remove popup. 
+	$('#sharePopup').remove();
+
+	// Remove overlay effect. 
+	removeOverlay();
+}
+
 
 
 /*********************************************************/
 
 
 
-// Initiate the autocomplete function on the "page" element, and pass along the pageNames array as possible autocomplete values:
-setTimeout( function(){
-	autocomplete(document.getElementById('pageName'), pageNames);
-	showToast('Ready');
-	$('input#pageName').focus();
-},1000)
+// Close all popups. 
+function closeAllPopups() {
+	console.log('Closing all popups from chooser/chooser.js');
 
+	// Close xyz popup. 
+	closeSideNav();
 
-function autocomplete(nameInput, arr) {
-	// alert( 'arr' + showAll(arr) );
-	function showAll(elmnts,x) {
-		var result = '['+elmnts.length+']';
-		for (var i=0; i<elmnts.length; i++) {
-			result += '\n'+i+': \"' + elmnts[i] + '\"';
-		}
-		return result;
-	}
+	// Close xyz popup. 
+	closeLibraryList();
 
-	// The autocomplete function takes two arguments, the text field element and an array of possible autocompleted values: 
-	var currentFocus;
+	// Close xyz popup. 
+	closeSettings();
 
-	// Do stuff when user writes in the text field:
-	nameInput.addEventListener('input', function(e) {
-		var a, b, i, val = this.value;
+	// Close xyz popup. 
+	closeFeedbackForm();
 
-		// Close any already open lists of autocompleted values
-		closeAllLists();
-		if (!val) { return false; }
-		currentFocus = -1;
-		
-		// Create a DIV element that will contain the items (values):
-		a = document.createElement('DIV');
-		a.setAttribute('id', this.id + 'autocomplete-list');
-		a.setAttribute('class', 'autocomplete-items');
-		
-		// Append the DIV element as a child of the autocomplete container:
-		this.parentNode.appendChild(a);
-
-		// For each item in the array...
-		for (i = 0; i < arr.length; i++) {
-			// Check if the item starts with the same letters as the text field value:
-			if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-				// Create a DIV element for each matching element:
-				b = document.createElement('DIV');
-				// Make the matching letters normal and the suggestions bold:
-				b.innerHTML = arr[i].substr(0, val.length);
-				b.innerHTML += '<strong>' + arr[i].substr(val.length) + '</strong>';
-				// Insert a hidden input field that will hold the current array item's value:
-				b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-				// Execute a function when someone clicks on the item value (DIV element):
-				b.addEventListener('click', function(e) {
-					// Insert the value for the autocomplete text field:
-					nameInput.value = this.getElementsByTagName('input')[0].value;
-					// Close the list of autocompleted values, (or any other open lists of autocompleted values):
-					closeAllLists();
-				});
-				a.appendChild(b);
-			}
-		}
-	});
-
-	// Do stuff when user presses a key on the keyboard:
-	nameInput.addEventListener('keydown', function(e) {
-		var x = document.getElementById(this.id + 'autocomplete-list');
-		if (x) x = x.getElementsByTagName('div');
-		if (e.keyCode == 40) {
-			// If the arrow DOWN key is pressed, increase the currentFocus variable:
-			currentFocus++;
-			// and make the current item more visible:
-			addActive(x);
-		} else if (e.keyCode == 38) { //up
-			// If the arrow UP key is pressed, decrease the currentFocus variable:
-			currentFocus--;
-			// and make the current item more visible:
-			addActive(x);
-		} else if (e.keyCode == 13) {
-			// If the ENTER key is pressed, prevent the form from being submitted,
-			e.preventDefault();
-			if (currentFocus > -1) {
-				// and simulate a click on the "active" item:
-				if (x) x[currentFocus].click();
-			}
-		}
-	});
-
-	// Do stuff when user clicks in the document:
-	document.addEventListener('click', function (e) {
-		closeAllLists(e.target);
-	});
-
-	function addActive(x) {
-		// A function to classify an item as "active":
-		if (!x) return false;
-
-		// Start by removing the "active" class on all items:
-		removeActive(x);
-		if (currentFocus >= x.length) currentFocus = 0;
-		if (currentFocus < 0) currentFocus = (x.length - 1);
-		
-		// Add class "autocomplete-active":
-		x[currentFocus].classList.add('autocomplete-active');
-	}
-
-	function removeActive(x) {
-		// A function to remove the "active" class from all autocomplete items:
-		for (var i = 0; i < x.length; i++) {
-			x[i].classList.remove('autocomplete-active');
-		}
-	}
-
-	function closeAllLists(elmnt) {
-		// Close all autocomplete lists in the document, except the one passed as an argument:
-		var x = document.getElementsByClassName('autocomplete-items');
-		for (var i = 0; i < x.length; i++) {
-			if (elmnt != x[i] && elmnt != nameInput) {
-				x[i].parentNode.removeChild(x[i]);
-			}
-		}
-	}
-
+	// Remove overlay. 
+	removeOverlay();
 }
+
+
 

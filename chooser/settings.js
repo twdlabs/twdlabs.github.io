@@ -6,11 +6,6 @@ var sizes = ['sm','md','lg'];
 
 
 
-$(document).ready(function() {
-	// Apply saved settings. 
-	applySettings();
-});
-
 
 
 // Show settings editor. 

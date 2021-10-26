@@ -3,7 +3,7 @@
 
 div.floatContainer {/*display:none;*/}
 div.floatContainer {position:fixed; top:0; left:0; right:0; width:100%; z-index:5; box-sizing:border-box; transition:.25s;}
-div.floatContainer {background-image:linear-gradient(to bottom, #fff,#fff0); padding-top:1.5rem;}
+div.floatContainer {background:linear-gradient(to bottom, #fff,#fff0); background:linear-gradient(to bottom, #fff,#fff8 25%,#fff1 90%,#fff0); padding-top:1.5rem;}
 div.floatContainer div.floatBar {border:1px solid #DCDCDE; border-radius:8px; box-shadow:0px 1px 1px 0 #000a; z-index:1;}
 div.floatContainer div.floatBar {position:relative; background-color:#FFF;}
 div.floatContainer.b div.floatBar {height:2.5rem;}
