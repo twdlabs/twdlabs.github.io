@@ -15,14 +15,15 @@ function countTime() {
 
 
 // Create log when event fired from sidenav. 
-let events = ['click','dblclick','mousedown','mouseup','mousewheel','wheel', 'touchcancel','touchend','touchstart', 'drag','dragstart','dragend','dragenter','dragleave','drop', 'change','keydown','keypress','keyup','input'];
+let eventName = ['click','dblclick','mousedown','mouseup','mousewheel','wheel', 'touchcancel','touchend','touchstart', 'drag','dragstart','dragend','dragenter','dragleave','drop', 'change','keydown','keypress','keyup','input'];
 
 // Handle all preselected events. 
-for (var i=0 ; i<events.length ; i++) {
-	document.getElementById('mySidenav').addEventListener( events[i] , eventHandler );
+for (var i=0 ; i<eventName.length ; i++) {
+	$('div.sidenav').on( eventName[i] , trackEvent );
+	// document.getElementById('mySidenav').addEventListener( eventName[i] , trackEvent );
 }
 
 // Define logging function. 
-function eventHandler(event){
-	console.log('sidenav:', event.type);
+function trackEvent(event){
+	console.log('sidenav event:', event.type);
 }

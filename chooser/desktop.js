@@ -35,13 +35,13 @@ function setupDesktopItems() {
 	// Get number of item groups. 
 	let numGroups = desktopData.length;
 
-	// Add desktop groups. 
+	// Prepare desktop groups. 
 	for(let h=0 ; h<numGroups ; h++) {
+		
 		// Get group of items. 
 		let itemgroup = desktopData[h];
 		console.log();
 		console.log('itemgroup',itemgroup);
-
 		// Get number of items in group. 
 		let numItems = itemgroup.items.length;
 		console.log('numItems',numItems);
@@ -50,7 +50,7 @@ function setupDesktopItems() {
 		result += '<!-- group -->';
 		result += (itemgroup.include) ? '<div class="group active">' : '<div class="group hidden">';
 		
-		// Add group head. 
+		// Open and close group head. 
 		result += '<!-- ghead -->';
 		result += `<div class="ghead">${itemgroup.title}</div>`;
 		result += '<!-- /ghead -->';
@@ -65,15 +65,16 @@ function setupDesktopItems() {
 			let item = itemgroup.items[i];
 			// console.log('item',item);
 
-			// 
+			// Compile item from data. 
 			result += '<!-- item -->';
 			if(item.link) {
 				result += '<a class="item" href="../';
 				result += (item.directory) ? (item.directory+'/') : '';
 				result += 'index.html">';
 			}
-			else 
+			else {
 				result += '<a class="item" href="javascript:void(0)" onclick="'+item.onclick+'">';
+			}
 					result += '<!-- icon -->';
 					result += '<div class="icon">';
 						result += `<svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">${item.innersvg}</svg>`;
@@ -91,7 +92,7 @@ function setupDesktopItems() {
 		result += '</div>';
 		result += '<!-- /gbody -->';
 		
-		// Close group body. 
+		// Close group container. 
 		result += '</div>';
 		result += '<!-- /group -->';
 	}
