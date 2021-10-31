@@ -1,149 +1,29 @@
 
-// An array containing all the page names
-// var labels = ['Homepage','Projects In-Progress','Favorite Projects'];
-// var pageNames = [
-// 					'chooser', 'evolution', 'finance', 'fitness', 'math', 'music', 'probability', 'reast', 'reast2', 'stocks', 'tabs', 
-// 					'acito', 'layouts', 'linktree', 
-// 					'bgvid', 'buttonpress', 'form3d', 'git', 'hero', 'image', 'logo', 'logoanimation', 'parallax', 'parallax2', 'popup', 'storage', 'ticker', 
-// 					'aspectratio', 'autocomplete', 'checkout', 'cluster', 'device', 'form', 'hero', 'lightSwitch', 'loading', 'nav', 'overlay', 'pricing', 'refresh', 'scale3d', 'scroller', 'scrollProgressBar', 'search', 'sidenav', 'slideshow', 'socialMedia', 'solarsystem', 'sphere', 'splash', 'sort', 'soundfx', 'syntax', 'template', 'user', 'viewport'
-// 				];
-// var pageNames2d = [
-// 					['chooser', 'evolution', 'finance', 'fitness', 'math', 'music', 'probability', 'reast', 'reast2', 'stocks', 'tabs'] , 
-// 					['acito', 'layouts', 'linktree'] , 
-// 					['bgvid', 'buttonpress', 'form3d', 'git', 'hero', 'image', 'logo', 'logoanimation', 'parallax', 'parallax2', 'popup', 'storage', 'ticker'] , 
-// 					['aspectratio', 'autocomplete', 'checkout', 'cluster', 'device', 'form', 'hero', 'lightSwitch', 'loading', 'nav', 'overlay', 'pricing', 'refresh', 'scale3d', 'scroller', 'scrollProgressBar', 'search', 'sidenav', 'slideshow', 'socialMedia', 'solarsystem', 'sphere', 'splash', 'sort', 'soundfx', 'syntax', 'template', 'user', 'viewport']
-// 				];
-// [];
-// var pageUrls = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
+/*********************************************************/
 
-// Set flag for public state. 
-let onPublicPage = false;
-// let onPublicPage = true;
 
 
 $(document).ready(function() {
 
-	// Apply saved settings. 
+	// Apply saved settings.
 	applySettings();
 
-	// Syncronize the two page input text fields. 
+	// Syncronize the two page input text fields.
 	$('input.myQuery').on('input',syncronizeInput);
 
-	// Get text field for page url input. 
+	// Get text field for page url input.
 	let pageInputBox = document.getElementById('pageName');
 
-	// Add autocomplete functionality to text field (using given source list for autocomplete values). 
-	if(onPublicPage) {
-		startAutocomplete(pageInputBox, publicProjectUrlList);
-	}
-	else {
-		startAutocomplete(pageInputBox, projectUrlList);
-	}
+	// Add autocomplete functionality to text field (using given source list for autocomplete values).
+	if(currentlyOnPublicPage)
+		startAutocomplete(pageInputBox, projectPublicNames);
+	else
+		startAutocomplete(pageInputBox, projectNames);
 
-	// Start creating new notification on regular interval. 
+	// Start creating new notification on regular interval.
 	// startNotifying();
-
-	// Request XML for project library list. 
-	// xhttp.open( 'GET', '../library.xml', true );
-	// xhttp.send();
 });
-
-
-
-// // Load lists of page names from XML file. 
-// const xhttp = new XMLHttpRequest();
-// xhttp.onreadystatechange = function() {
-// 	if(this.readyState == 4 && this.status == 200){
-// 		// Load XML data. 
-// 		loadItUp(this);
-// 	}
-// };
-
-// Load XML data. Setup autocomplete functionality. 
-function loadItUp(xml) {
-	// console.log('xml',xml);
-
-	// Get XML document for library. 
-	var xmlDoc = xml.responseXML;
-	console.log('xmlDoc',xmlDoc);
-
-	// Get all page items from XML document. 
-	var allItems = xmlDoc.getElementsByTagName('item');
-	console.log('allItems',allItems);
-
-	// Get page url from each page item. 
-	pageUrls = getUrlsByAttribute(allItems);
-	console.log('pageUrls',pageUrls);
-
-	// Filter out duplicate entries. 
-	let uniquePageUrls = [];
-	// Create list of unique entries from list of page urls. 
-	for (var i=0 ; i<pageUrls.length ; i++) {
-		let entry = pageUrls[i];
-		let alreadyGotIt = uniquePageUrls.includes(entry);
-		if(!alreadyGotIt) uniquePageUrls.push(entry);
-	}
-	console.log('uniquePageUrls',uniquePageUrls);
-	// pageUrls.filter( (entry)=>{
-	// 	// Check if entry already exists in list. 
-	// 	let alreadyExists = pageUrls.includes(entry)
-	// 	return ( !alreadyExists );
-	// } );
-
-	// console.log( "allItems" );
-	// console.table( allItems );
-	// console.log( "allItems" + showAllNodes(allItems) );
-	// console.log( "pageNames" );
-	// console.table( pageNames );
-	// console.log( "pageNames" + showAll(pageNames) );
-
-	// Start autocomplete functionality on given text field, using given source list for autocomplete values. 
-	let pageInputBox = document.getElementById('pageName');
-	// startAutocomplete(pageInputBox, pageUrls);
-	startAutocomplete(pageInputBox, uniquePageUrls);
-
-	/*****/
-
-	// Get array of page urls from attributes of page items. 
-	function getUrlsByAttribute(orig) {
-		var result = [];
-		var url;
-
-		for(var i=0 ; i<orig.length ; i++) {
-			url = orig[i].getAttribute('url');
-			if( !result.includes(url) ) {
-				result.push( url );
-			}
-		}
-		return result;
-	}
-	// // Get array of page urls from child nodes of page items. 
-	// function getUrlsByChildNode(orig) {
-	// 	var result = [];
-
-	// 	for(var i=0 ; i<orig.length ; i++) {
-	// 		result.push( orig[i].childNodes[0].nodeValue );
-	// 	}
-	// 	return result;
-	// }
-	// // Create string representation of all elements in list. 
-	// function showAll(elmnts,x) {
-	// 	var result = '['+elmnts.length+']';
-	// 	for (var i=0; i<elmnts.length; i++) {
-	// 		result += "\n"+i+": \"" + elmnts[i] + "\"";
-	// 	}
-	// 	return result;
-	// }
-	// // Create string representation of child node values from each element in list. 
-	// function showAllNodes(elmnts,x) {
-	// 	var result = '['+elmnts.length+']';
-	// 	for (var i=0; i<elmnts.length; i++) {
-	// 		result += "\n"+i+": \"" + elmnts[i].childNodes[0].nodeValue + "\"";
-	// 	}
-	// 	return result;
-	// }
-}
 
 
 
@@ -151,13 +31,13 @@ function loadItUp(xml) {
 
 
 
-// Clear text field for page url. 
+// Clear text field for page url.
 function clearUrlInput() {
 	$('#pageName').val('');
 }
 
 
-// Open page indicated by user-entered directory. 
+// Open page indicated by user-entered directory.
 function openPage(userInput = $('#pageName').val()) {
 	if(userInput) userInput = userInput.toLowerCase();
 
@@ -169,11 +49,11 @@ function openPage(userInput = $('#pageName').val()) {
 		// 	if(!go) return;
 		// }
 
-		// Load the page in same window. 
+		// Load the page in same window.
 		window.location.href = ('../'+userInput+'/index.html');
 		// window.open('../'+userInput+'/index.html');
 		// window.open('../'+userInput+'/index.html','_self');
-		// Load the page in new window. 
+		// Load the page in new window.
 		// window.open('../'+userInput+'/index.html','_blank');
 	}
 	else {
@@ -182,12 +62,12 @@ function openPage(userInput = $('#pageName').val()) {
 }
 
 
-// Display list of all possible pages. 
+// Display list of all possible pages.
 function showLibraryList() {
 	var outputList = showAll(pageNames);
 	var outputList2d = showAll2d(pageNames2d);
 
-	// Create popup. 
+	// Create popup.
 	var popup = '';
 	popup += '<div id="sharePopup" class="popup">';
 		popup += '<h4>';
@@ -202,19 +82,19 @@ function showLibraryList() {
 		popup += '<a href="../library.xml" style="display:block; text-decoration:none;"> <button>See more</button> </a>'
 	popup += '</div>';
 
-	// Add overlay  effect. 
+	// Add overlay  effect.
 	addOverlay();
 
-	// Add popup. 
+	// Add popup.
 	document.getElementById('container').innerHTML += popup;
 
 	// console.log(outputList);
-	
+
 
 	/*****/
 
 
-	// 
+	//
 	function showAll(elmnts,x) {
 		var result = '';
 		for (var i=0; i<elmnts.length; i++) {
@@ -224,7 +104,7 @@ function showLibraryList() {
 		return result;
 	}
 
-	// 
+	//
 	function showAll2d(elmnts,x) {
 		var result = '';
 		for (var i=0; i<elmnts.length; i++) {
@@ -239,10 +119,10 @@ function showLibraryList() {
 }
 
 function closeLibraryList() {
-	// Remove popup. 
+	// Remove popup.
 	$('#sharePopup').remove();
 
-	// Remove overlay effect. 
+	// Remove overlay effect.
 	removeOverlay();
 }
 
@@ -252,25 +132,133 @@ function closeLibraryList() {
 
 
 
-// Close all popups. 
+// Close all popups.
 function closeAllPopups() {
 	console.log('Closing all popups from chooser/chooser.js');
 
-	// Close xyz popup. 
+	// Close xyz popup.
 	closeSideNav();
 
-	// Close xyz popup. 
+	// Close xyz popup.
 	closeLibraryList();
 
-	// Close xyz popup. 
+	// Close xyz popup.
 	closeSettings();
 
-	// Close xyz popup. 
+	// Close xyz popup.
 	closeFeedbackForm();
 
-	// Remove overlay. 
+	// Remove overlay.
 	removeOverlay();
 }
 
 
 
+
+
+/*********************************************************/
+/*********************************************************/
+/*********************************************************/
+
+
+
+
+
+// // Load lists of page names from XML file.
+// const xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+// 	if(this.readyState == 4 && this.status == 200){
+// 		// Load XML data.
+// 		loadItUp(this);
+// 	}
+// };
+
+// Request XML for project library list.
+// xhttp.open( 'GET', '../library.xml', true );
+// xhttp.send();
+
+
+// Load XML data. Setup autocomplete functionality.
+function loadItUp(xml) {
+	// console.log('xml',xml);
+
+	// Get XML document for library.
+	var xmlDoc = xml.responseXML;
+	console.log('xmlDoc',xmlDoc);
+
+	// Get all page items from XML document.
+	var allItems = xmlDoc.getElementsByTagName('item');
+	console.log('allItems',allItems);
+
+	// Get page url from each page item.
+	pageUrls = getUrlsByAttribute(allItems);
+	console.log('pageUrls',pageUrls);
+
+	// Filter out duplicate entries.
+	let uniquePageUrls = [];
+	// Create list of unique entries from list of page urls.
+	for (var i=0 ; i<pageUrls.length ; i++) {
+		let entry = pageUrls[i];
+		let alreadyGotIt = uniquePageUrls.includes(entry);
+		if(!alreadyGotIt) uniquePageUrls.push(entry);
+	}
+	console.log('uniquePageUrls',uniquePageUrls);
+	// pageUrls.filter( (entry)=>{
+	// 	// Check if entry already exists in list.
+	// 	let alreadyExists = pageUrls.includes(entry)
+	// 	return ( !alreadyExists );
+	// } );
+
+	// console.log( "allItems" );
+	// console.table( allItems );
+	// console.log( "allItems" + showAllNodes(allItems) );
+	// console.log( "pageNames" );
+	// console.table( pageNames );
+	// console.log( "pageNames" + showAll(pageNames) );
+
+	// Start autocomplete functionality on given text field, using given source list for autocomplete values.
+	let pageInputBox = document.getElementById('pageName');
+	// startAutocomplete(pageInputBox, pageUrls);
+	startAutocomplete(pageInputBox, uniquePageUrls);
+
+	/*****/
+
+	// Get array of page urls from attributes of page items.
+	function getUrlsByAttribute(orig) {
+		var result = [];
+		var url;
+
+		for(var i=0 ; i<orig.length ; i++) {
+			url = orig[i].getAttribute('url');
+			if( !result.includes(url) ) {
+				result.push( url );
+			}
+		}
+		return result;
+	}
+	// // Get array of page urls from child nodes of page items.
+	// function getUrlsByChildNode(orig) {
+	// 	var result = [];
+
+	// 	for(var i=0 ; i<orig.length ; i++) {
+	// 		result.push( orig[i].childNodes[0].nodeValue );
+	// 	}
+	// 	return result;
+	// }
+	// // Create string representation of all elements in list.
+	// function showAll(elmnts,x) {
+	// 	var result = '['+elmnts.length+']';
+	// 	for (var i=0; i<elmnts.length; i++) {
+	// 		result += "\n"+i+": \"" + elmnts[i] + "\"";
+	// 	}
+	// 	return result;
+	// }
+	// // Create string representation of child node values from each element in list.
+	// function showAllNodes(elmnts,x) {
+	// 	var result = '['+elmnts.length+']';
+	// 	for (var i=0; i<elmnts.length; i++) {
+	// 		result += "\n"+i+": \"" + elmnts[i].childNodes[0].nodeValue + "\"";
+	// 	}
+	// 	return result;
+	// }
+}

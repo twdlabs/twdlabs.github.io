@@ -1,6 +1,6 @@
 
 
-// The autocomplete function takes two arguments: text field element and array of possible autocompleted values. 
+// The autocomplete function takes two arguments: text field element and array of possible autocompleted values.
 function startAutocomplete(inputBox, sourceList) {
 	// console.log( 'sourceList['+sourceList.length+']' );
 	// console.table( sourceList );
@@ -8,7 +8,7 @@ function startAutocomplete(inputBox, sourceList) {
 
 	var currentFocus;
 
-	// Do stuff when user writes in text field. 
+	// Do stuff when user writes in text field.
 	inputBox.addEventListener('input', function(e) {
 		var a, b, i, val = this.value;
 
@@ -16,12 +16,12 @@ function startAutocomplete(inputBox, sourceList) {
 		closeAllLists();
 		if (!val) { return false; }
 		currentFocus = -1;
-		
+
 		// Create a DIV element that will contain the items (values):
 		a = document.createElement('DIV');
 		a.setAttribute('id', this.id + 'autocomplete-list');
 		a.setAttribute('class', 'autocomplete-items');
-		
+
 		// Append the DIV element as a child of the autocomplete container:
 		this.parentNode.appendChild(a);
 
@@ -48,7 +48,7 @@ function startAutocomplete(inputBox, sourceList) {
 		}
 	});
 
-	// Do stuff when user presses key on keyboard. 
+	// Do stuff when user presses key on keyboard.
 	inputBox.addEventListener('keydown', function(e) {
 		var x = document.getElementById(this.id + 'autocomplete-list');
 		if (x) x = x.getElementsByTagName('div');
@@ -72,20 +72,22 @@ function startAutocomplete(inputBox, sourceList) {
 		}
 	});
 
-	// Do stuff when user clicks elsewhere on document. 
+	// Do stuff when user clicks elsewhere on document.
 	document.addEventListener('click', function(e) {
 		closeAllLists(e.target);
 	});
 
-	// Notify user autocomplete function ready. 
+	// Notify user autocomplete function is ready.
 	showToast('Autocomplete ready');
 
-	// Bring focus to page input box. 
+	// Bring focus to page input box.
 	$('input#pageName').focus();
+
 
 	/*****/
 
-	// 
+
+	//
 	function showAll(elmnts,x) {
 		var result = '['+elmnts.length+']';
 		for (var i=0; i<elmnts.length; i++) {
@@ -102,7 +104,7 @@ function startAutocomplete(inputBox, sourceList) {
 		removeActive(x);
 		if (currentFocus >= x.length) currentFocus = 0;
 		if (currentFocus < 0) currentFocus = (x.length - 1);
-		
+
 		// Add class "autocomplete-active":
 		x[currentFocus].classList.add('autocomplete-active');
 	}
@@ -115,7 +117,7 @@ function startAutocomplete(inputBox, sourceList) {
 	}
 
 	function closeAllLists(elmnt) {
-		// Close all autocomplete lists in the document, except the one passed as an argument:
+		// Close all autocomplete lists in document, except the one passed as an argument. 
 		var x = document.getElementsByClassName('autocomplete-items');
 		for (var i = 0; i < x.length; i++) {
 			if (elmnt != x[i] && elmnt != inputBox) {
@@ -125,4 +127,3 @@ function startAutocomplete(inputBox, sourceList) {
 	}
 
 }
-
