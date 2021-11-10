@@ -1,18 +1,140 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+
 	<head>
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="../atgicon.ico" rel="icon"/>
-		<title>Redirecting...</title>
+		<title>Minion</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			body {min-height:100vh; margin:0;}
+
+			div#container {background-color:#F5D60E; height:100vh;}
+			div#container {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+			div#container div.bar {height:4rem; width:100%; background-color:#231D1D;}
+			div#container div.bar {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+			div#container div.bar div.goggle {background-color:#A8A7AC; height:150%; /*min-width:50%;*/ padding:0 2rem;}
+			div#container div.bar div.goggle {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+			div#container div.bar div.goggle div.eyeball {background-color:#FFF; border:.75rem solid #A6A4AD; border-radius:50%; min-width:10rem; min-height:10rem;}
+			div#container div.bar div.goggle div.eyeball {display:flex; flex-direction:row; justify-content:center; align-items:flex-start; /*align-items:center;*/ padding:.25rem;}
+			div#container div.bar div.goggle div.eyeball div.iris {background:#985818 radial-gradient(#271e1e 35%, #935a29 40%); border-radius:50%; min-width:3.25rem; min-height:3.25rem;}
+			div#container div.bar div.goggle div.eyeball div.iris {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+			div#container div.bar div.goggle div.eyeball div.iris div.pupil {background-color:#000; border-radius:50%; min-width:1.5rem; min-height:1.5rem;}
+			div#container div.bar div.goggle div.eyeball div.iris div.pupil::after {content:''; background-color:#FFF; height:.75rem; width:.52rem; position:absolute; transform:rotate(45deg) translateX(2px); border-radius:50%;}
+		</style>
 	</head>
+
 	<body>
 
+		<!-- #container -->
+		<div id="container">
+
+			<!-- bar -->
+			<div class="bar">
+
+				<!-- goggle -->
+				<div class="goggle">
+
+					<!-- eyeball -->
+					<div class="eyeball l">
+
+						<!-- iris -->
+						<div class="iris">
+							<div class="pupil"></div>
+						</div>
+						<!-- /iris -->
+
+					</div>
+					<!-- /eyeball -->
+
+					<!-- eyeball -->
+					<div class="eyeball r">
+
+						<!-- iris -->
+						<div class="iris">
+							<div class="pupil"></div>
+						</div>
+						<!-- /iris -->
+
+					</div>
+					<!-- /eyeball -->
+
+				</div>
+				<!-- /goggle -->
+
+			</div>
+			<!-- /bar -->
+
+		</div>
+		<!-- /#container -->
+
 		<script type="text/javascript">
-			window.location.href = '/chooser';
+			
+			// Get eyeball elements. 
+			let eyeballs = document.querySelectorAll('.eyeball');
+			// console.log('eyeballs:',eyeballs);
+
+			// List events to watch for. 
+			let events = ['mousemove','touchmove'];
+			// console.log('events:',events);
+
+			// Go for each event type. 
+			for(let e of events) {
+				document.body.addEventListener(e, checkPositioning);
+			}
+
+			/*****/
+
+			// Check for positioning. 
+			function checkPositioning(event) {
+				// Go for each eyeball. 
+				for(let eyeball of eyeballs) {
+					// console.log('eyeball:',eyeball);
+
+					// Get DOM rectangle of eyeball. 
+					let rectangle = eyeball.getBoundingClientRect();
+					let w = eyeball.clientWidth;
+					let h = eyeball.clientHeight;
+					// console.log('rectangle:',rectangle);
+
+					// Get center position of eyeball. 
+					let eyeX = rectangle.left + w/2;
+					let eyeY = rectangle.top + h/2;
+					// console.log('eyeX:',eyeX);
+					// console.log('eyeY:',eyeY);
+
+					// Get position of user's pointer/cursor (from top-left corner). 
+					let x = isTouchDevice() ? (event.touches[0].clientX) : (event.clientX);
+					let y = isTouchDevice() ? (event.touches[0].clientY) : (event.clientY);
+					// console.log('x:',x);
+					// console.log('y:',y);
+
+					// Get position differential between pointer and eyeball. 
+					let dx = x - eyeX;
+					let dy = y - eyeY;
+					console.log('dx:',dx);
+					console.log('dy:',dy);
+				}
+			}
+
+			// Check for touch screen. 
+			function isTouchDevice() {
+				try {
+					document.createEvent('TouchEvent');
+					return true;
+				}
+				catch(e) {
+					return false;
+				}
+			}
+
 		</script>
 
 	</body>
+
 </html>
