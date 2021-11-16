@@ -3,40 +3,65 @@
 
 
 
-body {margin:0; display:flex; flex-direction:row; min-height:100vh; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;}
-nav#nav {flex:0 1 auto;}
+
+
+body {display:flex; flex-direction:row; margin:0; min-height:100vh; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;}
+nav#sidebar {flex:0 1 auto;}
 div#container {flex:1 1 auto;}
 
 
 
-nav#nav {background-color:#13101D; display:flex; flex-direction:column; justify-content:space-between;}
-nav#nav main.main {flex-grow:1; padding:1rem;}
-nav#nav footer.bottom {flex-grow:0;}
+
+
+nav#sidebar {background-color:#13101D; display:flex; flex-direction:column; justify-content:space-between; padding:1rem 0; /* transition:.5s; */}
+
+
+nav#sidebar div.top {flex-grow:0; padding:0 1rem;}
+nav#sidebar div.top {display:flex; flex-direction:row; justify-content:center; align-items:center; color:#FFF;}
+
+nav#sidebar div.top div.logo {display:flex; flex-direction:row; justify-content:center; justify-content:flex-start; padding:1rem 0; max-width:0; overflow:hidden; transition:.5s;;}
+nav#sidebar div.top div.logo svg.icon {margin-right:.5rem;}
+nav#sidebar div.top div.logo div.name {}
+
+nav#sidebar div.top div.toggler {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem;}
+nav#sidebar div.top div.toggler {cursor:pointer; user-select:none;}
+nav#sidebar div.top div.toggler:hover {background-color:#F8F8F8; color:#13101D;}
+
+
+nav#sidebar ul.navlist {flex-grow:1; padding:0 1rem; /* transition:.5s; */}
+nav#sidebar ul.navlist {list-style:none; margin:0; padding:0 1rem;}
+nav#sidebar ul.navlist li.navitem {}
+nav#sidebar ul.navlist li.navitem a.navlink {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem; text-decoration:none;}
+nav#sidebar ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center; position:relative;}
+nav#sidebar ul.navlist li.navitem a.navlink:hover {background-color:#F8F8F8; color:#13101D;}
+nav#sidebar ul.navlist li.navitem a.navlink svg.icon {flex:0 1 auto; margin-right:0; transition:.5s;}
+nav#sidebar ul.navlist li.navitem a.navlink span.caption {flex: 1 1 auto; max-width:0; overflow:hidden; white-space:nowrap; transition:.5s;}
+nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {position:absolute; left:calc(100% + 1rem); top:50%; background-color:#FFF; border-radius:.25rem; padding:.75rem 1rem; font-size:.75rem; white-space:nowrap;}
+nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {opacity:0; transform:translateY(calc(-50% - 1rem));}
+nav#sidebar ul.navlist li.navitem a.navlink:hover span.tooltip {opacity:1; transform:translateY(-50%); transition:.5s;}
+/* nav#sidebar ul.navlist li.navitem div.navlink {background-color:#1F1B32;} */
+/* nav#sidebar ul.navlist li.navitem div.navlink svg.icon {display:none; flex: 1 1 auto;} */
+/* nav#sidebar ul.navlist li.navitem div.navlink input.search {max-width:0; overflow:hidden; transition:.5s; flex: 1 1 auto; background-color:inherit; border:0 none; outline:none; color:inherit; font-size:1em;} */
+
+
+nav#sidebar div.bottom {flex-grow:0; padding:0;}
+nav#sidebar div.bottom {display:flex; flex-direction:row; justify-content:center; align-items:center; color:#FFF;}
+nav#sidebar div.bottom div.profile {}
+nav#sidebar div.bottom div.profile svg.icon {}
+nav#sidebar div.bottom div.profile div.name {}
 
 
 
-nav#nav ul.navlist {list-style:none; margin:0; padding:0;}
 
-/* nav#nav ul.navlist li.navitem {min-width:10rem;} */
-nav#nav ul.navlist li.navitem div.navlink,
-nav#nav ul.navlist li.navitem a.navlink {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem; text-decoration:none;}
-nav#nav ul.navlist li.navitem div.navlink {background-color:#1F1B32;}
-nav#nav ul.navlist li.navitem div.navlink,
-nav#nav ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
-nav#nav ul.navlist li.navitem a.navlink:hover {background-color:#F8F8F8; color:#13101D;}
-
-nav#nav ul.navlist li.navitem div.navlink svg.icon,
-nav#nav ul.navlist li.navitem a.navlink svg.icon {flex:0 1 auto;}
-nav#nav ul.navlist li.navitem div.navlink input.search {flex: 1 1 auto; background-color:inherit; border:0 none; outline:none; color:inherit; font-size:1em;}
-nav#nav ul.navlist li.navitem a.navlink span.caption {flex: 1 1 auto;}
-nav#nav ul.navlist li.navitem div.navlink input.search {display:none;}
-nav#nav ul.navlist li.navitem a.navlink span.caption {display:none;}
-nav#nav.open ul.navlist li.navitem div.navlink svg.icon,
-nav#nav.open ul.navlist li.navitem a.navlink svg.icon {margin-right:1rem;}
-nav#nav.open ul.navlist li.navitem div.navlink input.search {display:block;}
-nav#nav.open ul.navlist li.navitem a.navlink span.caption {display:block;}
+div#container {background-color:#E6EAF8; padding:1.5rem 1rem;}
+div#container h1 {margin:0;}
 
 
 
-div#container {background-color:#E6EAF8; padding:0 1rem;}
-div#container h1 {}
+
+nav#sidebar.open div.top div.logo {padding:1rem; max-width:100%;}
+nav#sidebar.open div.top div.toggler {margin-left:.5rem;}
+nav#sidebar.open ul.navlist li.navitem {min-width:10rem;}
+nav#sidebar.open ul.navlist li.navitem a.navlink svg.icon {margin-right:1rem;}
+nav#sidebar.open ul.navlist li.navitem a.navlink span.caption {max-width:100%;}
+
