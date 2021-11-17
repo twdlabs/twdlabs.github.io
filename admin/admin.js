@@ -3,11 +3,6 @@
 // Define navigation bar data. 
 let navdata = [
 	{
-		name:'Search',
-		link:'javascript:void(0)',
-		innersvg:'<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>'
-	},
-	{
 		name:'Dashboard',
 		link:'javascript:void(0)',
 		innersvg:'<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>'
@@ -46,14 +41,28 @@ let navdata = [
 		name:'Settings',
 		link:'javascript:void(0)',
 		innersvg:'<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>'
-	},
+	}
 ];
 
-// Create navigation items to list. 
-let result = '';
-for(let i=0 ; i<navdata.length ; i++) {
+
+
+// Add search box. 
+// addSearchBox();
+// Add navigation items. 
+addNavItems();
+
+
+/*****/
+
+
+// Add search box. 
+function addSearchBox() {
+
+	// Create navigation items to list. 
+	let result = '';
+	
 	// Get item. 
-	let item = navdata[i];
+	let item = searchdata[i];
 
 	// Define item. 
 	result += '<!-- navitem -->';
@@ -73,9 +82,44 @@ for(let i=0 ; i<navdata.length ; i++) {
 		result += '<!-- /navlink -->';
 	result += '</li>';
 	result += '<!-- /navitem -->';
+	
+	// Add navigation items to list. 
+	let navlist = document.querySelector('ul#navlist');
+	console.log('navlist',navlist);
+	navlist.innerHTML = result;
 }
 
-// Add navigation items to list. 
-let navlist = document.querySelector('ul#navlist');
-console.log('navlist',navlist);
-navlist.innerHTML = result;
+// Add navigation items. 
+function addNavItems() {
+
+	// Create navigation items to list. 
+	let result = '';
+	for(let i=0 ; i<navdata.length ; i++) {
+		// Get item. 
+		let item = navdata[i];
+	
+		// Define item. 
+		result += '<!-- navitem -->';
+		result += '<li class="navitem">';
+			result += '<!-- navlink -->';
+			result += `<a href="${item.link}" class="navlink">`;
+				result += '<!-- icon -->';
+				result += `<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">${item.innersvg}</svg>`;
+				result += '<!-- /icon -->';
+				result += '<!-- caption -->';
+				result += `<span class="caption">${item.name}</span>`;
+				result += '<!-- /caption -->';
+				result += '<!-- tooltip -->';
+				result += `<span class="tooltip">${item.name}</span>`;
+				result += '<!-- /tooltip -->';
+			result += '</a>';
+			result += '<!-- /navlink -->';
+		result += '</li>';
+		result += '<!-- /navitem -->';
+	}
+	
+	// Add navigation items to list. 
+	let navlist = document.querySelector('ul#navlist');
+	console.log('navlist',navlist);
+	navlist.innerHTML = result;
+}

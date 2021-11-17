@@ -6,62 +6,91 @@
 
 
 body {display:flex; flex-direction:row; margin:0; min-height:100vh; font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;}
-nav#sidebar {flex:0 1 auto;}
+nav#sidebar {flex:0 1 auto; max-height:100vh;}
+/* nav#sidebar {overflow-y:auto;} */
 div#container {flex:1 1 auto;}
 
 
 
 
 
-nav#sidebar {background-color:#13101D; display:flex; flex-direction:column; justify-content:space-between; padding:1rem 0; /* transition:.5s; */}
+nav#sidebar {background-color:#13101D; display:flex; flex-direction:column; justify-content:space-between; padding:1rem 0 0;}
+nav#sidebar {min-width:0; transition:.5s;}
 
 
-nav#sidebar div.top {flex-grow:0; padding:0 1rem;}
-nav#sidebar div.top {display:flex; flex-direction:row; justify-content:center; align-items:center; color:#FFF;}
+nav#sidebar div.brand {display:none !important;}
+nav#sidebar div.brand {flex-grow:0; padding:0 1rem;}
+nav#sidebar div.brand {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:#F8F8F8;}
 
-nav#sidebar div.top div.logo {display:flex; flex-direction:row; justify-content:center; justify-content:flex-start; padding:1rem 0; max-width:0; overflow:hidden; transition:.5s;;}
-nav#sidebar div.top div.logo svg.icon {margin-right:.5rem;}
-nav#sidebar div.top div.logo div.name {}
+nav#sidebar div.brand div.logo {display:flex; flex-direction:row; justify-content:center; justify-content:flex-start; align-items:center; padding:1rem 0;}
+nav#sidebar div.brand div.logo {max-width:0; overflow:hidden; opacity:0; transition:.5s;;}
+nav#sidebar div.brand div.logo svg.icon {flex:0 0 auto; font-size:1.5rem; /* margin-left:.15rem; */ margin-right:.5rem;}
+nav#sidebar div.brand div.logo div.name {flex:1 1 auto; font-size:1.5rem;}
 
-nav#sidebar div.top div.toggler {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem;}
-nav#sidebar div.top div.toggler {cursor:pointer; user-select:none;}
-nav#sidebar div.top div.toggler:hover {background-color:#F8F8F8; color:#13101D;}
+nav#sidebar div.brand div.toggler {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem;}
+nav#sidebar div.brand div.toggler {cursor:pointer; user-select:none;}
+/* nav#sidebar div.brand div.toggler:hover {background-color:#F8F8F8; color:#13101D;} */
+nav#sidebar div.brand div.toggler svg.icon {display:block; /* margin:0 .15rem; */}
 
 
-nav#sidebar ul.navlist {flex-grow:1; padding:0 1rem; /* transition:.5s; */}
-nav#sidebar ul.navlist {list-style:none; margin:0; padding:0 1rem;}
-nav#sidebar ul.navlist li.navitem {}
-nav#sidebar ul.navlist li.navitem a.navlink {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem; text-decoration:none;}
+nav#sidebar div.finder {display:none !important;}
+nav#sidebar div.finder {flex-grow:0; padding:.125rem .75rem;}
+nav#sidebar div.finder div.search {background-color:#1F1B32; color:#F8F8F8; border-radius:.5rem; padding:1rem; transition:.25s; cursor:pointer;}
+nav#sidebar div.finder div.search {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+nav#sidebar div.finder div.search:hover {background-color:#F8F8F8; color:#13101D;}
+nav#sidebar div.finder div.search label.icon {flex:0 1 auto; cursor:pointer;}
+nav#sidebar div.finder div.search label.icon svg.icon {margin-right:0; /* margin:0 .15rem; */ transition:.5s;}
+nav#sidebar div.finder div.search div.searchfield {flex: 1 1 auto; border-radius:.25rem;}
+nav#sidebar div.finder div.search div.searchfield {max-width:0; overflow:hidden; opacity:0; white-space:nowrap; transition:.5s;}
+nav#sidebar div.finder div.search div.searchfield input {background-color:inherit; border:0 none; outline:none; color:inherit; font-size:1em; max-width:100%;}
+/* nav#sidebar div.finder div.search div.searchfield input {display:none;} */
+
+
+nav#sidebar ul.navlist {display:none !important;}
+nav#sidebar ul.navlist {flex-grow:1; list-style:none; margin:0; padding:0 .75rem; /* overflow-x:visible; */ /* transition:.5s; */}
+nav#sidebar ul.navlist li.navitem {padding:.125rem 0; /* transition:.5s; */}
+nav#sidebar ul.navlist li.navitem a.navlink {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem; text-decoration:none; transition:.25s;}
 nav#sidebar ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center; position:relative;}
 nav#sidebar ul.navlist li.navitem a.navlink:hover {background-color:#F8F8F8; color:#13101D;}
-nav#sidebar ul.navlist li.navitem a.navlink svg.icon {flex:0 1 auto; margin-right:0; transition:.5s;}
-nav#sidebar ul.navlist li.navitem a.navlink span.caption {flex: 1 1 auto; max-width:0; overflow:hidden; white-space:nowrap; transition:.5s;}
-nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {position:absolute; left:calc(100% + 1rem); top:50%; background-color:#FFF; border-radius:.25rem; padding:.75rem 1rem; font-size:.75rem; white-space:nowrap;}
-nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {opacity:0; transform:translateY(calc(-50% - 1rem));}
-nav#sidebar ul.navlist li.navitem a.navlink:hover span.tooltip {opacity:1; transform:translateY(-50%); transition:.5s;}
-/* nav#sidebar ul.navlist li.navitem div.navlink {background-color:#1F1B32;} */
-/* nav#sidebar ul.navlist li.navitem div.navlink svg.icon {display:none; flex: 1 1 auto;} */
-/* nav#sidebar ul.navlist li.navitem div.navlink input.search {max-width:0; overflow:hidden; transition:.5s; flex: 1 1 auto; background-color:inherit; border:0 none; outline:none; color:inherit; font-size:1em;} */
+nav#sidebar ul.navlist li.navitem a.navlink svg.icon {flex:0 1 auto; margin-right:0; /* margin:0 .15rem; */ transition:.5s;}
+nav#sidebar ul.navlist li.navitem a.navlink span.caption {flex: 1 1 auto; max-width:0; overflow:hidden; opacity:0; white-space:nowrap; transition:.5s;}
+nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {position:absolute; left:calc(100% + 1.5rem); top:50%; background-color:#FFF; border-radius:.25rem; padding:.5rem 1rem; font-size:.875rem; white-space:nowrap; box-shadow:rgba(0,0,0,0.2) 0 .25rem .625rem 0; min-width:8rem; text-align:center;}
+nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {visibility:hidden; opacity:0; transform:translateY(calc(-50% - 1rem));}
+nav#sidebar ul.navlist li.navitem a.navlink:hover span.tooltip {visibility:visible; opacity:1; transform:translateY(-50%); transition:.5s;}
 
 
-nav#sidebar div.bottom {flex-grow:0; padding:0;}
-nav#sidebar div.bottom {display:flex; flex-direction:row; justify-content:center; align-items:center; color:#FFF;}
-nav#sidebar div.bottom div.profile {}
-nav#sidebar div.bottom div.profile svg.icon {}
-nav#sidebar div.bottom div.profile div.name {}
+nav#sidebar div.user {display:none !important;}
+nav#sidebar div.user {flex-grow:0; padding:.75rem; color:#FFF; transition:.5s;}
+nav#sidebar div.user {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+nav#sidebar div.user div.profile {flex-grow:1; max-width:0; overflow:hidden; opacity:0; transition:.5s;}
+nav#sidebar div.user div.profile {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+nav#sidebar div.user div.profile img.pic {max-height:2.5rem; border-radius:.75rem; margin-right:.5rem;}
+nav#sidebar div.user div.profile div.bio {white-space:nowrap;}
+nav#sidebar div.user div.profile div.bio div.name {font-size:1rem; margin-bottom:.15rem;}
+nav#sidebar div.user div.profile div.bio div.job {font-size:.75rem; margin-top:.15rem;}
+nav#sidebar div.user div.logger {border-radius:.5rem; padding:1rem; background-color:#1F1B32;}
+nav#sidebar div.user div.logger {cursor:pointer; user-select:none;}
+nav#sidebar div.user div.logger svg.icon {display:block; font-size:1.25rem;}
 
 
 
 
 div#container {background-color:#E6EAF8; padding:1.5rem 1rem;}
-div#container h1 {margin:0;}
+div#container h1 {margin:0; user-select:none;}
 
 
 
 
-nav#sidebar.open div.top div.logo {padding:1rem; max-width:100%;}
-nav#sidebar.open div.top div.toggler {margin-left:.5rem;}
-nav#sidebar.open ul.navlist li.navitem {min-width:10rem;}
-nav#sidebar.open ul.navlist li.navitem a.navlink svg.icon {margin-right:1rem;}
-nav#sidebar.open ul.navlist li.navitem a.navlink span.caption {max-width:100%;}
+nav#sidebar.open {min-width:18rem;}
+nav#sidebar.open div.brand div.logo {padding:1rem; max-width:100%; opacity:1;}
+nav#sidebar.open div.brand div.toggler {margin-left:.5rem;}
+nav#sidebar.open div.finder div.search label.icon svg.icon {margin-right:1rem;}
+nav#sidebar.open div.finder div.search div.searchfield {max-width:100%; opacity:1;}
+nav#sidebar.open ul.navlist li.navitem {min-width:16rem;}
+nav#sidebar.open ul.navlist li.navitem a.navlink svg.icon {font-size:1.25rem; margin-right:1rem;}
+nav#sidebar.open ul.navlist li.navitem a.navlink span.caption {max-width:100%; opacity:1;}
+nav#sidebar.open ul.navlist li.navitem a.navlink span.tooltip {display:none;}
+nav#sidebar.open div.user {background-color:#1F1B32;}
+nav#sidebar.open div.user div.profile {max-width:100%; opacity:1;}
+nav#sidebar.open div.user div.logger {padding:.5rem;}
 
