@@ -34,15 +34,14 @@ nav#sidebar div.brand div.toggler svg.icon {display:block; /* margin:0 .15rem; *
 
 /* nav#sidebar div.finder {display:none !important;} */
 nav#sidebar div.finder {flex-grow:0; padding:.125rem .75rem;}
-nav#sidebar div.finder div.search {background-color:#1F1B32; color:#F8F8F8; border-radius:.5rem; padding:1rem; transition:.5s; cursor:pointer;}
-nav#sidebar div.finder div.search {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+nav#sidebar div.finder label.search {background-color:#1F1B32; color:#F8F8F8; border-radius:.5rem; padding:1rem; transition:.5s; cursor:pointer;}
+nav#sidebar div.finder label.search {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 nav#sidebar div.finder div.search:hover {background-color:#F8F8F8; color:#13101D;}
-nav#sidebar div.finder div.search label.icon {flex:0 1 auto; cursor:pointer;}
-nav#sidebar div.finder div.search label.icon svg.icon {}
-nav#sidebar div.finder div.search div.searchfield {flex: 1 1 auto; border-radius:.25rem;}
-nav#sidebar div.finder div.search div.searchfield {overflow:hidden; white-space:nowrap;}
-nav#sidebar div.finder div.search div.searchfield input {background-color:inherit; border:0 none; outline:none; color:inherit; font-size:1em; max-width:100%;}
-/* nav#sidebar div.finder div.search div.searchfield input {display:none;} */
+nav#sidebar div.finder label.search svg.icon {flex:0 1 auto; cursor:pointer;}
+nav#sidebar div.finder label.search div.searchfield {flex: 1 1 auto; border-radius:.25rem;}
+nav#sidebar div.finder label.search div.searchfield {overflow:hidden; white-space:nowrap;}
+nav#sidebar div.finder label.search div.searchfield input {background-color:inherit; border:0 none; outline:none; color:inherit; font-size:1em; max-width:100%;}
+/* nav#sidebar div.finder label.search div.searchfield input {display:none;} */
 
 
 /* nav#sidebar ul.navlist {display:none !important;} */
@@ -88,15 +87,16 @@ div#container h1 {margin:0; user-select:none;}
 
 nav#sidebar div.brand div.logo {/* max-width:0; */ opacity:0; transition:.5s;}
 
-nav#sidebar div.finder div.search label.icon svg.icon {margin:0; /* margin:0 .15rem; */ transition:.5s;}
-nav#sidebar div.finder div.search div.searchfield {/* max-width:0; */ opacity:0; transition:.5s;}
+nav#sidebar div.finder label.search svg.icon {margin:0; /* margin:0 .15rem; */ transition:.5s;}
+nav#sidebar div.finder label.search div.searchfield {/* max-width:0; */ opacity:0; transition:.5s;}
 
+nav#sidebar ul.navlist li.navitem a.navlink {}
 nav#sidebar ul.navlist li.navitem a.navlink svg.icon {margin:0; /* margin:0 .15rem; */ transition:.5s;}
-nav#sidebar ul.navlist li.navitem a.navlink span.caption {/* max-width:0; */ opacity:0; transition:.5s;}
+nav#sidebar ul.navlist li.navitem a.navlink span.caption {max-width:0; opacity:0; transition:.5s;}
 nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {display:block;}
 
 nav#sidebar div.user {background-color:transparent; transition:.5s;}
-nav#sidebar div.user div.profile {/* max-width:0; */ opacity:0; transition:.5s;}
+nav#sidebar div.user div.profile {max-width:0; opacity:0; transition:.5s;}
 nav#sidebar div.user div.logger {padding:1rem; transition:.5s;}
 
 
@@ -108,9 +108,10 @@ nav#sidebar div.user div.logger {padding:1rem; transition:.5s;}
 
 nav#sidebar.open div.brand div.logo {padding:1rem; max-width:100%; opacity:1;}
 
-nav#sidebar.open div.finder div.search label.icon svg.icon {margin-right:1rem;}
-nav#sidebar.open div.finder div.search div.searchfield {max-width:100%; opacity:1;}
+nav#sidebar.open div.finder label.search svg.icon {margin-right:1rem;}
+nav#sidebar.open div.finder label.search div.searchfield {max-width:100%; opacity:1;}
 
+nav#sidebar.open ul.navlist li.navitem a.navlink {}
 nav#sidebar.open ul.navlist li.navitem a.navlink svg.icon {margin-right:1rem;}
 nav#sidebar.open ul.navlist li.navitem a.navlink span.caption {max-width:100%; opacity:1;}
 nav#sidebar.open ul.navlist li.navitem a.navlink span.tooltip {display:none;}
