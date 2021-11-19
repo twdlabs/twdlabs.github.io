@@ -14,50 +14,55 @@ body {display:flex; flex-direction:row; margin:0; min-height:100vh; font-family:
 
 nav#sidebar {flex:0 1 auto; max-height:100vh; /* overflow-y:auto; */}
 nav#sidebar {background-color:#13101D; display:flex; flex-direction:column; justify-content:space-between; padding:1rem 0 0;}
-nav#sidebar * {border:1px solid #FFF1;}
-
-
+/* nav#sidebar * {border:1px solid #FFF1;} */
 /* nav#sidebar div.brand {display:none !important;} */
-nav#sidebar div.brand {flex-grow:0; padding:0 1rem;}
-nav#sidebar div.brand {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:#F8F8F8;}
+/* nav#sidebar div.finder {display:none !important;} */
+/* nav#sidebar ul.navlist {display:none !important;} */
+/* nav#sidebar div.user {display:none !important;} */
 
-nav#sidebar div.brand div.logo {display:flex; flex-direction:row; justify-content:center; justify-content:flex-start; align-items:center; padding:1rem 0;}
-nav#sidebar div.brand div.logo {overflow:hidden;}
-nav#sidebar div.brand div.logo svg.icon {flex:0 0 auto; font-size:1.5rem; /* margin-left:.15rem; */ margin-right:.5rem;}
+
+nav#sidebar div.brand {flex-grow:0; padding:0 1rem;}
+nav#sidebar div.brand {display:flex; flex-direction:row; justify-content:center; align-items:center; color:#F8F8F8;}
+nav#sidebar div.brand div.logo {flex-grow:0;}
+nav#sidebar div.brand div.toggler {display:none;}
+/* nav#sidebar div.brand div.logo {flex-grow:1;} */
+/* nav#sidebar div.brand div.toggler {display:block;} */
+
+nav#sidebar div.brand div.logo {display:flex; flex-direction:row; justify-content:center; justify-content:flex-start; align-items:center;}
+nav#sidebar div.brand div.logo {overflow:hidden; user-select:none;}
+nav#sidebar div.brand div.logo svg.icon {flex:1 0 auto; font-size:1.5rem; /* margin-left:.15rem; */}
 nav#sidebar div.brand div.logo div.name {flex:1 1 auto; font-size:1.5rem;}
 
-nav#sidebar div.brand div.toggler {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem; margin-left:.5rem;}
+nav#sidebar div.brand div.toggler {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem;}
 nav#sidebar div.brand div.toggler {cursor:pointer; user-select:none;}
-/* nav#sidebar div.brand div.toggler:hover {background-color:#F8F8F8; color:#13101D;} */
+nav#sidebar div.brand div.toggler:hover {background-color:#F8F8F8; color:#13101D;}
 nav#sidebar div.brand div.toggler svg.icon {display:block; /* margin:0 .15rem; */}
 
 
-/* nav#sidebar div.finder {display:none !important;} */
 nav#sidebar div.finder {flex-grow:0; padding:.125rem .75rem;}
 nav#sidebar div.finder label.search {background-color:#1F1B32; color:#F8F8F8; border-radius:.5rem; padding:1rem; transition:.5s; cursor:pointer;}
 nav#sidebar div.finder label.search {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 nav#sidebar div.finder div.search:hover {background-color:#F8F8F8; color:#13101D;}
-nav#sidebar div.finder label.search svg.icon {flex:0 1 auto; cursor:pointer;}
+nav#sidebar div.finder label.search svg.icon {flex:0 0 auto; cursor:pointer;}
 nav#sidebar div.finder label.search div.searchfield {flex: 1 1 auto; border-radius:.25rem;}
 nav#sidebar div.finder label.search div.searchfield {overflow:hidden; white-space:nowrap;}
 nav#sidebar div.finder label.search div.searchfield input {background-color:inherit; border:0 none; outline:none; color:inherit; font-size:1em; max-width:100%;}
 /* nav#sidebar div.finder label.search div.searchfield input {display:none;} */
 
 
-/* nav#sidebar ul.navlist {display:none !important;} */
 nav#sidebar ul.navlist {flex-grow:1; list-style:none; margin:0; padding:0 .75rem; /* overflow-x:visible; */ /* transition:.5s; */}
+nav#sidebar ul.navlist li.navitem {display:flex; flex-direction:column; justify-content:start; align-items:stretch;}
 nav#sidebar ul.navlist li.navitem {padding:.125rem 0; /* min-width:16rem; */ /* transition:.5s; */}
 nav#sidebar ul.navlist li.navitem a.navlink {background-color:#13101D; color:#F8F8F8; border-radius:.5rem; padding:1rem; text-decoration:none; transition:.25s;}
 nav#sidebar ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center; position:relative;}
 nav#sidebar ul.navlist li.navitem a.navlink:hover {background-color:#F8F8F8; color:#13101D;}
-nav#sidebar ul.navlist li.navitem a.navlink svg.icon {flex:0 1 auto; font-size:1.125rem;}
+nav#sidebar ul.navlist li.navitem a.navlink svg.icon {flex:0 0 auto; font-size:1.125rem;}
 nav#sidebar ul.navlist li.navitem a.navlink span.caption {flex: 1 1 auto; overflow:hidden; white-space:nowrap;}
 nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {position:absolute; left:calc(100% + 1.5rem); top:50%; background-color:#FFF; border-radius:.25rem; padding:.5rem 1rem; font-size:.875rem; white-space:nowrap; box-shadow:rgba(0,0,0,0.2) 0 .25rem .625rem 0; min-width:8rem; text-align:center;}
 nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {visibility:hidden; opacity:0; transform:translateY(calc(-50% - 1rem));}
 nav#sidebar ul.navlist li.navitem a.navlink:hover span.tooltip {visibility:visible; opacity:1; transform:translateY(-50%); transition:.5s;}
 
 
-/* nav#sidebar div.user {display:none !important;} */
 nav#sidebar div.user {flex-grow:0; padding:.75rem; color:#FFF;}
 nav#sidebar div.user {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 nav#sidebar div.user div.profile {flex-grow:1; overflow:hidden;}
@@ -68,6 +73,7 @@ nav#sidebar div.user div.profile div.bio div.name {font-size:1rem; margin-bottom
 nav#sidebar div.user div.profile div.bio div.job {font-size:.75rem; margin-top:.15rem;}
 nav#sidebar div.user div.logger {border-radius:.5rem; background-color:#1F1B32;}
 nav#sidebar div.user div.logger {cursor:pointer; user-select:none;}
+nav#sidebar div.user div.logger {padding:.75rem;}
 nav#sidebar div.user div.logger svg.icon {display:block; font-size:1.25rem;}
 
 
@@ -83,41 +89,47 @@ div#container h1 {margin:0; user-select:none;}
 
 /* Closed Navbar */
 
-/* nav#sidebar {min-width:0; width:6rem; transition:2.5s;} */
+nav#sidebar {width:4.5rem; transition:.5s;}
 
-nav#sidebar div.brand div.logo {/* max-width:0; */ opacity:0; transition:.5s;}
+nav#sidebar div.brand div.logo {padding:1rem 0; transition:.5s;}
+nav#sidebar div.brand div.logo svg.icon {margin-right:0; transition:.5s; }
+nav#sidebar div.brand div.logo div.name {max-width:0; flex-grow:0; flex-basis:0; opacity:0; transition:.5s;}
+nav#sidebar div.brand div.toggler {margin:0; transition:.5s;}
 
-nav#sidebar div.finder label.search svg.icon {margin:0; /* margin:0 .15rem; */ transition:.5s;}
-nav#sidebar div.finder label.search div.searchfield {/* max-width:0; */ opacity:0; transition:.5s;}
+nav#sidebar div.finder label.search svg.icon {margin:0; transition:.5s;}
+nav#sidebar div.finder label.search div.searchfield {max-width:0; opacity:0; transition:.5s;}
 
-nav#sidebar ul.navlist li.navitem a.navlink {}
-nav#sidebar ul.navlist li.navitem a.navlink svg.icon {margin:0; /* margin:0 .15rem; */ transition:.5s;}
+nav#sidebar ul.navlist li.navitem a.navlink svg.icon {margin:0; transition:.5s;}
 nav#sidebar ul.navlist li.navitem a.navlink span.caption {max-width:0; opacity:0; transition:.5s;}
 nav#sidebar ul.navlist li.navitem a.navlink span.tooltip {display:block;}
 
 nav#sidebar div.user {background-color:transparent; transition:.5s;}
 nav#sidebar div.user div.profile {max-width:0; opacity:0; transition:.5s;}
-nav#sidebar div.user div.logger {padding:1rem; transition:.5s;}
 
 
 
 
 /* Open Navbar */
 
-/* nav#sidebar.open {min-width:18rem; width:18rem;} */
+nav#sidebar.open {width:16rem;}
 
-nav#sidebar.open div.brand div.logo {padding:1rem; max-width:100%; opacity:1;}
+nav#sidebar.open div.brand div.logo {padding:1rem;}
+nav#sidebar.open div.brand div.logo svg.icon {margin-right:.5rem;}
+nav#sidebar.open div.brand div.logo div.name {max-width:100%; flex-grow:1; flex-basis:auto; opacity:1;}
+nav#sidebar.open div.brand div.toggler {margin-left:.5rem;}
 
 nav#sidebar.open div.finder label.search svg.icon {margin-right:1rem;}
 nav#sidebar.open div.finder label.search div.searchfield {max-width:100%; opacity:1;}
 
-nav#sidebar.open ul.navlist li.navitem a.navlink {}
 nav#sidebar.open ul.navlist li.navitem a.navlink svg.icon {margin-right:1rem;}
 nav#sidebar.open ul.navlist li.navitem a.navlink span.caption {max-width:100%; opacity:1;}
 nav#sidebar.open ul.navlist li.navitem a.navlink span.tooltip {display:none;}
 
 nav#sidebar.open div.user {background-color:#1F1B32;}
 nav#sidebar.open div.user div.profile {max-width:100%; opacity:1;}
-nav#sidebar.open div.user div.logger {padding:.5rem;}
 
+
+nav#sidebar.open + div#container {position:relative;}
+nav#sidebar.open + div#container::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; background-color:transparent; visibility:hidden; transition:.5s;}
+nav#sidebar.open + div#container::after {background-color:#0004; visibility:visible;}
 

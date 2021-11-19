@@ -46,48 +46,14 @@ let navdata = [
 
 
 
-// Add search box. 
-// addSearchBox();
 // Add navigation items. 
 addNavItems();
+let autoToggle = setInterval(toggleSideNav,2500);
+
 
 
 /*****/
 
-
-// Add search box. 
-function addSearchBox() {
-
-	// Create navigation items to list. 
-	let result = '';
-	
-	// Get item. 
-	let item = searchdata[i];
-
-	// Define item. 
-	result += '<!-- navitem -->';
-	result += '<li class="navitem">';
-		result += '<!-- navlink -->';
-		result += `<a href="${item.link}" class="navlink">`;
-			result += '<!-- icon -->';
-			result += `<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">${item.innersvg}</svg>`;
-			result += '<!-- /icon -->';
-			result += '<!-- caption -->';
-			result += `<span class="caption">${item.name}</span>`;
-			result += '<!-- /caption -->';
-			result += '<!-- tooltip -->';
-			result += `<span class="tooltip">${item.name}</span>`;
-			result += '<!-- /tooltip -->';
-		result += '</a>';
-		result += '<!-- /navlink -->';
-	result += '</li>';
-	result += '<!-- /navitem -->';
-	
-	// Add navigation items to list. 
-	let navlist = document.querySelector('ul#navlist');
-	console.log('navlist',navlist);
-	navlist.innerHTML = result;
-}
 
 // Add navigation items. 
 function addNavItems() {
@@ -122,4 +88,18 @@ function addNavItems() {
 	let navlist = document.querySelector('ul#navlist');
 	console.log('navlist',navlist);
 	navlist.innerHTML = result;
+}
+
+
+// Toggle navigation sidebar. 
+function toggleSideNav() {
+	console.log('toggleSideNav');
+	document.getElementById('sidebar').classList.toggle('open');
+}
+
+
+// Toggle navigation sidebar. 
+function openSideNav() {
+	console.log('openSideNav');
+	document.getElementById('sidebar').classList.add('open');
 }

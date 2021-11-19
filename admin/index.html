@@ -15,10 +15,10 @@
 	<body>
 
 		<!-- #sidebar -->
-		<nav id="sidebar" class="openx">
+		<nav id="sidebar" class="">
 
 			<!-- brand -->
-			<div class="brand">
+			<div class="brand" onclick="toggleSideNav();">
 
 				<!-- logo -->
 				<div class="logo">
@@ -37,7 +37,7 @@
 				<!-- /logo -->
 
 				<!-- toggler -->
-				<div class="toggler" onclick="console.log('toggle'); document.getElementById('sidebar').classList.toggle('open');">
+				<div class="toggler">
 					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
 					</svg>
@@ -51,7 +51,7 @@
 			<div class="finder">
 
 				<!-- search -->
-				<label class="search">
+				<label class="search" onclick="openSideNav();">
 
 					<!-- icon -->
 					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -141,7 +141,7 @@
 		<!-- #container -->
 		<div id="container">
 			
-			<h1 onclick="console.log('toggle'); document.getElementById('sidebar').classList.toggle('open');">Home Content</h1>
+			<h1 onclick="clearInterval(autoToggle);">Home Content</h1>
 
 		</div>
 		<!-- /#container -->
