@@ -64,22 +64,25 @@ function openPage(userInput = $('#pageName').val()) {
 
 // Display list of all possible pages.
 function showLibraryList() {
-	var outputList = showAll(pageNames);
-	var outputList2d = showAll2d(pageNames2d);
+	console.log('Opening library list');
+
+	var outputList = getAll(projectNames);
 
 	// Create popup.
 	var popup = '';
 	popup += '<div id="sharePopup" class="popup">';
-		popup += '<h4>';
-		popup += '<svg width="1em" hei ght="1em" viewBox="0 0 16 16" class="bi bi-view-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/></svg>';
-		popup += ' Library List';
-		popup += '</h4>';
+		popup += '<div class="inner">';
+			popup += '<h4>';
+			popup += '<svg width="1em" hei ght="1em" viewBox="0 0 16 16" class="bi bi-view-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/></svg>';
+			popup += ' Library List';
+			popup += '</h4>';
 
-		// popup += '<textarea id="list" readonly>'+outputList+'</textarea>';
-		popup += '<select id="list" size="10">'+outputList2d+'</select>';
+			// popup += '<textarea id="list" readonly>'+outputList+'</textarea>';
+			popup += '<select id="list" size="10">'+outputList+'</select>';
 
-		popup += '<div class="closeBtn" onclick="closeLibraryList();">&times;</div>';
-		popup += '<a href="../library.xml" style="display:block; text-decoration:none;"> <button>See more</button> </a>'
+			popup += '<div class="closeBtn" onclick="closeLibraryList();">&times;</div>';
+			popup += '<a href="../library.xml" style="display:block; text-decoration:none;"> <button>See more</button> </a>'
+		popup += '</div>';
 	popup += '</div>';
 
 	// Add overlay  effect.
@@ -94,31 +97,36 @@ function showLibraryList() {
 	/*****/
 
 
-	//
-	function showAll(elmnts,x) {
-		var result = '';
-		for (var i=0; i<elmnts.length; i++) {
-			// result += '\n' + elmnts[i];
-			result += '<option>' + elmnts[i] + '</option>';
-		}
-		return result;
-	}
+	// Get elements as one group of select options. 
+	function getAll(elements,x) {
 
-	//
-	function showAll2d(elmnts,x) {
+		// Initialize result. 
 		var result = '';
-		for (var i=0; i<elmnts.length; i++) {
-			result += '<optgroup label="'+labels[i]+'">';
-			for (var j=0; j<elmnts[i].length; j++) {
-				result += '<option>' + elmnts[i][j] + '</option>';
-			}
-			result += '</optgroup>';
+
+		// Do each one in the group. 
+		for (var i=0; i<elements.length; i++) {
+			result += '<option ondblclick="clipText(this);">' + elements[i] + '</option>';
 		}
+
+		// Return result. 
 		return result;
 	}
 }
 
+// Copy content of selected option to clipboard. 
+function clipText(inputBox) {
+
+	// Copy text to clipboard. 
+	navigator.clipboard.writeText(inputBox.value);
+
+	// Show the copied text in alert. 
+	console.log('Copied:',inputBox.value);
+	toast('Copied: '+inputBox.value);
+}
+
 function closeLibraryList() {
+	console.log('Closing library list');
+
 	// Remove popup.
 	$('#sharePopup').remove();
 
@@ -211,10 +219,10 @@ function loadItUp(xml) {
 
 	// console.log( "allItems" );
 	// console.table( allItems );
-	// console.log( "allItems" + showAllNodes(allItems) );
+	// console.log( "allItems" + getAllNodes(allItems) );
 	// console.log( "pageNames" );
 	// console.table( pageNames );
-	// console.log( "pageNames" + showAll(pageNames) );
+	// console.log( "pageNames" + getAll(pageNames) );
 
 	// Start autocomplete functionality on given text field, using given source list for autocomplete values.
 	let pageInputBox = document.getElementById('pageName');
@@ -246,18 +254,18 @@ function loadItUp(xml) {
 	// 	return result;
 	// }
 	// // Create string representation of all elements in list.
-	// function showAll(elmnts,x) {
-	// 	var result = '['+elmnts.length+']';
-	// 	for (var i=0; i<elmnts.length; i++) {
-	// 		result += "\n"+i+": \"" + elmnts[i] + "\"";
+	// function getAll(elements,x) {
+	// 	var result = '['+elements.length+']';
+	// 	for (var i=0; i<elements.length; i++) {
+	// 		result += "\n"+i+": \"" + elements[i] + "\"";
 	// 	}
 	// 	return result;
 	// }
 	// // Create string representation of child node values from each element in list.
-	// function showAllNodes(elmnts,x) {
-	// 	var result = '['+elmnts.length+']';
-	// 	for (var i=0; i<elmnts.length; i++) {
-	// 		result += "\n"+i+": \"" + elmnts[i].childNodes[0].nodeValue + "\"";
+	// function getAllNodes(elements,x) {
+	// 	var result = '['+elements.length+']';
+	// 	for (var i=0; i<elements.length; i++) {
+	// 		result += "\n"+i+": \"" + elements[i].childNodes[0].nodeValue + "\"";
 	// 	}
 	// 	return result;
 	// }
