@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>E-commerce</title>
+		
+		<!-- F.A. Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			html,body {font-family:sans-serif; min-height:100%; margin:0; background-color:#0001;}
+
+			header {background-color:#0008; height:10rem;}
+
+			div#container {}
+			div#container main {max-width:75rem; margin:0 auto; background-color:#0001; padding:1rem .75rem;}
+			div#container main {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between;}
+			div#container main div.product {flex:0 0 25%; /*border:1px solid #0002;*/ padding:1rem .75rem; box-shadow:0px 1px 1px 0 rgba(0,0,0,.05); z-index:1; transition:.25s;}
+			div#container main div.product:hover {transform:translateY(-1rem);}
+			div#container main div.product div.photo {padding:50%; background-color:#0001;}
+			div#container main div.product div.name {font-size:1.25rem; margin-top:.75rem;}
+			div#container main div.product div.name:after  {content:'Product Name';}
+			div#container main div.product div.rating {font-size:1.15rem; color:red; margin-top:.25rem;}
+			div#container main div.product div.price {margin-top:.25rem;}
+			div#container main div.product div.price:before {content:'$';}
+
+			footer {background-color:#0001; height:20rem;}
+
+
+
+			/* Medium Screen */
+			@media screen and (max-width:60rem) {
+				div#container main div.product {flex-basis:33.333%;}
+			}
+
+			/* Small Screen */
+			@media screen and (max-width:42rem) {
+				div#container main div.product {flex-basis:50%;}
+			}
+
+			/* Extra Small Screen */
+			@media screen and (max-width:30rem) {
+				div#container main div.product {flex-basis:100%;}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header>
+
+			<main></main>
+			
+		</header>
+
+		<!-- #container -->
+		<div id="container">
+
+			<main>
+
+				<!-- product -->
+				<div class="product">
+					<div class="photo"></div>
+					<div class="name"></div>
+					<div class="rating">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+					</div>
+					<div class="price">100.00</div>
+				</div>
+				<!-- /product -->
+
+				<!-- product -->
+				<div class="product">
+					<div class="photo"></div>
+					<div class="name"></div>
+					<div class="rating">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+					</div>
+					<div class="price">100.00</div>
+				</div>
+				<!-- /product -->
+
+				<!-- product -->
+				<div class="product">
+					<div class="photo"></div>
+					<div class="name"></div>
+					<div class="rating">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+					</div>
+					<div class="price">100.00</div>
+				</div>
+				<!-- /product -->
+
+				<!-- product -->
+				<div class="product">
+					<div class="photo"></div>
+					<div class="name"></div>
+					<div class="rating">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-o"></i>
+					</div>
+					<div class="price">100.00</div>
+				</div>
+				<!-- /product -->
+				
+			</main>
+			
+		</div>
+		<!-- /#container -->
+
+		<footer></footer>
+
+	</body>
+
+</html>

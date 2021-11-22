@@ -1,0 +1,67 @@
+
+
+
+div#container section {padding:1rem;}
+div#container section h2 {font-size:1.5rem; margin:1rem 0 0; text-transform:uppercase; text-align:center;}
+
+
+div#container section.categories {display:grid; grid-template-areas: 'a b c' 'd d d'; grid-gap:.25rem; padding:.25rem;}
+
+div#container section.categories a.item {background-size:cover;}
+/* div#container section.categories a.item {display:flex; flex-direction:column; justify-content:center; align-items:center;} */
+div#container section.categories a.item {position:relative;}
+div#container section.categories a.item {background-color:rgb(0,72,255);}
+
+div#container section.categories a.item.a {grid-area:a; background-image:url('');}
+div#container section.categories a.item.b {grid-area:b; background-image:url('');}
+div#container section.categories a.item.c {grid-area:c; background-image:url('');}
+div#container section.categories a.item.d {grid-area:d; background-image:url('');}
+
+div#container section.categories a.item div.caption {background-color:#000; color:#FFF; font-weight:bold; text-transform:uppercase; padding:.5em .5em .25em; border-radius:.5rem; font-size:1.5rem; white-space:nowrap;}
+div#container section.categories a.item div.caption {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+
+div#container section.categories a.item::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%;}
+div#container section.categories a.item:hover::after {background-color:#0003;}
+
+
+div#container section.products {}
+div#container section.products div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
+
+div#container section.products aside {flex-grow:0;}
+div#container section.products main {flex-grow:1;}
+div#container section.products main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem; padding:1rem;}
+div#container section.products main div.item {border:1px solid #CCC; border-radius:.25rem; display:flex; flex-direction:column; align-items:stretch;}
+div#container section.products main div.item div.pic {background-size:cover; background-color:#0004; width:100%; padding-top:80%; margin-bottom:.5rem;}
+div#container section.products main div.item div.content {text-align:center;}
+div#container section.products main div.item div.content > * {margin-bottom:.5rem;}
+div#container section.products main div.item div.content h3.productname {margin:.5rem 0;}
+div#container section.products main div.item div.content div.productdescription {color:#0008; margin:.5rem 0;}
+div#container section.products main div.item div.content div.productprice {margin:.5rem 0;}
+div#container section.products main div.item div.content div.productprice:before {content:'$';}
+div#container section.products main div.item div.action {text-align:center; padding-bottom:.5rem;}
+div#container section.products main div.item div.action a.ctabtn {background-color:#000; color:#FFF; font-weight:bold; text-transform:uppercase; padding:.75rem 1rem .6rem; border:0 none; border-radius:.25rem; display:inline-block; text-decoration:none;}
+
+
+
+
+@media screen and (min-width:60rem) {
+	div#container section.categories a.item {padding-top:96%;}
+	div#container section.categories a.item.d {padding-top:32%;}
+}
+
+@media screen and (max-width:60rem) {
+
+	div#container section.categories a.item {padding-top:96%;}
+	div#container section.categories {display:grid; grid-template-areas: 'a b' 'c d';}
+
+	div#container section.products main {grid-template-columns:repeat(3,1fr);}
+}
+
+@media screen and (max-width:36rem) {
+
+	div#container section.categories {display:grid; grid-template-areas: 'a' 'b' 'c' 'd';}
+
+	div#container section.products main {grid-template-columns:repeat(2,1fr);}
+}
+
+
