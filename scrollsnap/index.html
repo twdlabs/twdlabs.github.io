@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Scroll Snap</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+			body {margin:0; font-family:sans-serif;}
+			div#container {scroll-snap-type:y mandatory; height:100vh; overflow-y:auto;}
+			div#container section {scroll-snap-align:start; height:100vh; font-size:3rem; display:flex; justify-content:center; align-items:center; counter-increment:n;}
+			div#container section::after {content:'Page 'counter(n);}
+			div#container section.a {background-color: rosybrown;}
+			div#container section.b {background-color: royalblue;}
+			div#container section.c {background-color: saddlebrown;}
+			div#container section.d {background-color: salmon;}
+			div#container section.e {background-color: seagreen;}
+			div#container section.f {background-color: tan;}
+		</style>
+		<link rel="stylesheet" type="text/css" href="">
+		<script type="text/javascript"></script>
+	</head>
+
+	<body>
+		
+		<!-- #container -->
+		<div id="container">
+			<section class="a"></section>
+			<section class="b"></section>
+			<section class="c"></section>
+			<section class="d"></section>
+			<section class="e"></section>
+			<section class="f"></section>
+		</div>
+		<!-- /#container -->
+
+	</body>
+
+</html>
