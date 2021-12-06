@@ -1,0 +1,35 @@
+
+
+/* div#container section#blog {} */
+div#container section#blog main {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1rem;}
+div#container section#blog main div.item {background-color:#333; color:#FFF; text-align:center; padding:1rem; border-radius:.375rem;}
+
+div#container section#blog main div.item div.head {padding-top:62.5%; border-radius:.375rem; overflow:visible; position:relative;}
+div#container section#blog main div.item div.head {background-color:#FFF4; background-size:cover; background-position:center;}
+div#container section#blog main div.item div.head div.metadata {position:absolute; top:100%; left:50%; transform:translate(-50%,-50%); white-space:nowrap;}
+div#container section#blog main div.item div.head div.metadata {background-color:#000; display:inline-block; font-size:.625rem; padding:.75rem 1.25rem; border-radius:.375rem;}
+div#container section#blog main div.item div.head div.metadata {display:flex; flex-direction:row; justify-content:center; align-items:center; gap:1rem;}
+/* div#container section#blog main div.item div.head div.metadata span.meta {} */
+/* div#container section#blog main div.item div.head div.metadata span.date {} */
+/* div#container section#blog main div.item div.head div.metadata span.author {} */
+div#container section#blog main div.item div.head div.metadata span.meta svg.icon {color:var(--blue);}
+/* div#container section#blog main div.item div.head div.metadata span.meta span.caption {} */
+div#container section#blog main div.item div.head div.metadata span.author span.caption:before {content:'By ';}
+
+div#container section#blog main div.item div.foot {display:flex; flex-direction:column; justify-content:center; align-items:center; gap:.5rem; padding-top:2rem;}
+div#container section#blog main div.item div.foot h3.title {font-weight:100; text-transform:uppercase; margin:0;}
+div#container section#blog main div.item div.foot p.textcopy {font-size:.625rem; color:#AAA; line-height:1.5; margin:0;}
+div#container section#blog main div.item div.foot a.link {color:var(--blue); text-decoration:none;}
+
+
+
+@media screen and (max-width:62rem) {
+	div#container section#blog main {grid-template-columns:repeat(2,1fr);}
+}
+
+@media screen and (max-width:40rem) {
+	div#container section#blog main {grid-template-columns:1fr;}
+}
+
+@media screen and (max-width:30rem) {
+}

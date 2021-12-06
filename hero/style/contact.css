@@ -1,0 +1,55 @@
+
+
+/* Contact Section */
+
+/* div#container section#contact {} */
+div#container section#contact main {display:flex; flex-direction:row; flex-wrap:wrap;}
+div#container section#contact main article {padding:0 2rem;}
+
+div#container section#contact main article.info {flex:1 0 33%; /*padding:0 4rem;*/}
+div#container section#contact main article.info {display:flex; flex-direction:column; align-items:stretch;}
+div#container section#contact main article.info div.item {min-height:4rem; margin-bottom:1rem; cursor:pointer; user-select:none;}
+div#container section#contact main article.info div.item {display:flex; flex-direction:row; align-items:center; overflow-x:auto;}
+div#container section#contact main article.info div.item div.icon {flex:0 0 auto;}
+div#container section#contact main article.info div.item div.icon {display:flex; flex-direction:column; justify-content:center;}
+div#container section#contact main article.info div.item div.icon {background-color:#0001; color:#0f48f8cc; font-size:1.25rem; width:3rem; height:3rem; border-radius:50%; transition:.75s;}
+div#container section#contact main article.info div.item div.icon {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container section#contact main article.info div.item:hover div.icon {background-color:#0f48f8cc; color:#FFF;}
+div#container section#contact main article.info div.item div.content {flex:1 0 auto; margin-left:1rem;}
+div#container section#contact main article.info div.item div.content {display:flex; flex-direction:column; justify-content:center;}
+div#container section#contact main article.info div.item div.content div.method {color:#000C; font-weight:500; font-size:1.5em; margin-bottom:.25rem;}
+div#container section#contact main article.info div.item div.content div.value {color:#0008; font-weight:300; font-size:.75rem;}
+
+div#container section#contact main article.form {flex:1 0 67%; /*padding:0 4rem;*/}
+div#container section#contact main article.form form {display:flex; flex-direction:row; /*justify-content:center;*/ flex-wrap:wrap;}
+div#container section#contact main article.form form div.item {padding:.5rem .25rem; text-align:center;}
+div#container section#contact main article.form form div.item.w50 {flex:1 0 50%;}
+div#container section#contact main article.form form div.item.w100 {flex:1 0 100%;}
+div#container section#contact main article.form form .forminput {width:100%; padding:.75rem; border-radius:.25rem; border:1px solid #0004; outline:none; resize:none;}
+div#container section#contact main article.form form .forminput {font-family:inherit; font-size:.875rem;}
+div#container section#contact main article.form form .forminput:focus {border-color:#0f48f8cc;}
+div#container section#contact main article.form form button.send {display:none;}
+div#container section#contact main article.form form a.send {display:inline-block; text-decoration:none;}
+div#container section#contact main article.form form a.send,
+div#container section#contact main article.form form button.send {font-size:2.5rem; font-weight:200; padding:.75rem 2rem; border-radius:10rem; border:0 none; color:#FFF; background-color:#0f48f8cc;}
+
+
+
+@media screen and (max-width:62rem) {
+	/* div#container section#contact main {} */
+	div#container section#contact main > div {padding:0 2rem;}
+	div#container section#contact main article.info {flex-basis:100%;}
+	div#container section#contact main article.form {flex-basis:100%;}
+	div#container section#contact main article.form form a.send,
+	div#container section#contact main article.form form button.send {font-size:2rem; padding:.75rem 1.75rem;}
+}
+
+@media screen and (max-width:40rem) {
+	div#container section#contact main > div {padding:0;}
+	div#container section#contact main article.form form div.item.w50 {flex-basis:100%;}
+	div#container section#contact main article.form form a.send,
+	div#container section#contact main article.form form button.send {font-size:1.75rem;}
+}
+
+@media screen and (max-width:30rem) {
+}

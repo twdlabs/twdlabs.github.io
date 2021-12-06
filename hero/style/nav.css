@@ -1,0 +1,52 @@
+
+
+/* Nav Section */
+
+div#container nav {position:fixed; left:0; height:100%; /*width:100%;*/ transition:.5s; z-index:10;}
+div#container nav {display:flex; flex-direction:column; justify-content:center;}
+div#container nav main {padding:4rem .5rem; margin-bottom:4rem;}
+
+div#container nav main ul.navlist {list-style:none; padding:.5rem 0; margin:0; border-radius:.5rem; /* min-width:12rem; */}
+div#container nav main ul.navlist {display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+div#container nav main ul.navlist li.item {padding:.25rem .5rem;}
+div#container nav main ul.navlist li.item.gone {display:none;}
+/* div#container nav main ul.navlist li.item:hover {width:100%;} */
+div#container nav main ul.navlist li.item a.link {text-decoration:none; display:inline-block; background-color:#0001; color:inherit; border-radius:50rem; padding:.75rem 1.25rem; transition:.75s;}
+div#container nav main ul.navlist li.item a.link {display:flex; flex-direction:row; justify-content:center; justify-content:flex-start; align-items:center; min-width:4rem; min-height:4rem;}
+div#container.dark nav main ul.navlist li.item a.link {background-color:#FFF1;}
+div#container nav main ul.navlist li.item a.link:hover,
+div#container nav main ul.navlist li.item a.link.active {background-color:#0f48f8cc; color:#FFF;}
+div#container nav main ul.navlist li.item a.link span.icon {font-size:1.25rem; margin-left:2px; transform:translateY(2px);}
+div#container nav main ul.navlist li.item a.link span.caption {display:inline-block; max-width:0; margin-left:0; overflow:hidden; transition:.5s;}
+div#container nav main ul.navlist li.item a.link:hover span.caption {max-width:10rem; margin-left:.5rem;}
+
+div#container aside.overlay {visibility:hidden; opacity:0; position:fixed; top:0; left:0; height:100%; width:100%; background:#0008; z-index:9; cursor:pointer; transition:.25s;}
+div#container.dark aside.overlay {background-color:#FFF4;}
+
+
+div#container.debug nav {background-color:#0001;}
+div#container.debug nav main ul.navlist {background-color:#0001;}
+
+
+
+@media screen and (max-height:60rem) {
+	/*div#container nav {justify-content:flex-start;}*/
+}
+
+
+@media screen and (max-width:62rem) {
+	div#container nav {transform:translateX(-100%); background-color:#FFF;}
+	div#container.dark nav {background-color:#111E;}
+	div#container.navopen nav {transform:translateX(0);}
+	div#container nav main ul.navlist {border-radius:2.5rem; padding:1rem .5rem;}
+	div#container nav main ul.navlist li.item a.link {min-width:12rem; min-height:initial; justify-content:flex-start;}
+	div#container nav main ul.navlist li.item a.link.active {background-color:#0002; color:inherit;}
+	div#container nav main ul.navlist li.item a.link span.caption {max-width:none; display:inline-block; margin-left:.5rem;}
+	div#container.navopen aside.overlay.gone {visibility:visible; opacity:1;}
+}
+
+@media screen and (max-width:40rem) {
+}
+
+@media screen and (max-width:30rem) {
+}

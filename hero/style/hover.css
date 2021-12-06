@@ -1,0 +1,34 @@
+
+
+/* Toggle Buttons */
+div#container div.toggler {position:fixed; padding:1rem 1.25rem; border-radius:.5rem; margin:.5rem; cursor:pointer; z-index:15;}
+
+/* Nav Toggle Button */
+div#container div.navtoggle {display:none;}
+div#container div.navtoggle {top:0; left:0; font-size:1.5rem; background-color:#0001;}
+div#container div.navtoggle svg.cross {display:none;}
+div#container div.navtoggle svg.hamburger {display:block;}
+/* div#container.navopen div.navtoggle {} */
+div#container.navopen div.navtoggle svg.cross {display:block;}
+div#container.navopen div.navtoggle svg.hamburger {display:none;}
+
+/* Theme Toggle Button */
+div#container div.themetoggle {top:0; right:0; font-size:1rem; background-color:#0001;}
+div#container div.themetoggle svg.moon {display:block;}
+div#container div.themetoggle svg.fullmoon {display:none;}
+/* div#container.dark div.themetoggle {} */
+div#container.dark div.themetoggle svg.moon {display:none;}
+div#container.dark div.themetoggle svg.fullmoon {display:block;}
+
+
+
+@media screen and (max-width:62rem) {
+	div#container div.toggler {padding:.5rem .6rem;}
+	div#container div.navtoggle {display:block;}
+}
+
+@media screen and (max-width:40rem) {
+}
+
+@media screen and (max-width:30rem) {
+}

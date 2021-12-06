@@ -1,0 +1,40 @@
+
+
+/* Footer Section */
+
+div#container footer {background-color:#0004; text-align:center;}
+div#container footer main {padding:2rem; display:flex; flex-direction:column; justify-content:center; align-items:center;}
+
+div#container footer main h1.name {font-size:2.5rem; margin-bottom:1.25rem; font-weight:100;}
+div#container footer main div.social {display:flex; flex-direction:row; justify-content:flex-start;}
+div#container footer main div.social a.btn {position:relative; font-size:1.15rem; background-color:#0f48f8cc; color:#FFF; border-radius:50%; padding:1em; margin:0 .25em; transition:.5s color;}
+div#container footer main div.social a.btn:hover {background-color:#0f48f8AA; /*color:#0f48f8cc;*/}
+div#container footer main div.social a.btn .icon {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+
+/* div#container footer main div.nav {} */
+div#container footer main div.nav ul {list-style:none; margin:0; margin-top:2rem; padding:0; display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container footer main div.nav ul li {display:flex; font-size:.75rem; text-transform:uppercase;}
+div#container footer main div.nav ul li::after {content:'|'; font-size:1.375em;}
+div#container footer main div.nav ul li:last-child::after {content:'';}
+/*div#container footer main div.nav ul li:first-child::before {content:'|';}*/
+div#container footer main div.nav ul li a.link {color:#0f48f8cc; padding:.25rem .5rem; text-decoration:none; transition:.5s color;}
+div#container footer main div.nav ul li a.link:hover,
+div#container footer main div.nav ul li a.link:active {color:rgba(0,0,0,0.6);}
+
+div#container footer main p.copy {font-size:.75rem; margin-top:2rem;}
+
+
+
+@media screen and (max-width:62rem) {
+	div#container footer main h1.name {font-size:2rem;}
+	div#container footer main p.copy {font-size:.675rem;}
+}
+
+@media screen and (max-width:40rem) {
+}
+
+@media screen and (max-width:30rem) {
+	div#container footer main div.nav ul {flex-direction:column;}
+	/* div#container footer main div.nav ul li {font-size:1rem;} */
+	div#container footer main div.nav ul li::after {content:'';}
+}

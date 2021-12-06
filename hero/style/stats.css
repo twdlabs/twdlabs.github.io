@@ -1,0 +1,28 @@
+
+
+/* Stats Section */
+
+div#container section#stats {display:none;}
+/* div#container section#stats main {} */
+
+div#container section#stats main article.set {display:flex; flex-direction:row; justify-content:space-between; flex-wrap:wrap;}
+div#container section#stats main article.set div.item {flex:0 0 25%; flex-basis:33.333%; /*cursor:pointer;*/ user-select:none;}
+div#container section#stats main article.set div.item {display:flex; flex-direction:column; align-items:center;}
+div#container section#stats main article.set div.item div.icon {font-size:1.5rem; background-color:#0f48f8cc; color:#FFF; width:3rem; height:3rem; border-radius:50%;}
+div#container section#stats main article.set div.item div.icon {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:.25rem;}
+div#container section#stats main article.set div.item div.number {font-size:2rem; margin:.25rem 0;}
+div#container section#stats main article.set div.item div.label {font-size:.75rem;}
+
+
+
+@media screen and (max-width:62rem) {
+	div#container section#stats main article.set {justify-content:center;}
+	div#container section#stats main article.set div.item {flex-basis:50%; margin-top:2rem;}
+}
+
+@media screen and (max-width:40rem) {
+}
+
+@media screen and (max-width:30rem) {
+	div#container section#stats main article.set div.item {flex-basis:100%;}
+}

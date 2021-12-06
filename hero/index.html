@@ -1,0 +1,1753 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Alex Titus</title>
+
+
+		<!-- F.A. Icons -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+
+		<!-- Screen Size Definitions -->
+		<style type="text/css">
+			/* Screen Size Definitions */
+			html {--blue:#0f48f8cc; --white:40rem; --black:30rem;}
+			html {--laptop:62rem; --tablet:40rem; --mobile:30rem;}
+		</style>
+
+
+		<!-- Main Stylesheet -->
+		<link href="style/style.css" rel="stylesheet" type="text/css">
+
+		<!-- Section Stylesheets -->
+		<link href="style/nav.css" rel="stylesheet" type="text/css">
+		<link href="style/hero.css" rel="stylesheet" type="text/css">
+		<link href="style/about.css" rel="stylesheet" type="text/css">
+		<link href="style/skills.css" rel="stylesheet" type="text/css">
+		<link href="style/portfolio.css" rel="stylesheet" type="text/css">
+		<link href="style/stats.css" rel="stylesheet" type="text/css">
+		<link href="style/resume.css" rel="stylesheet" type="text/css">
+		<link href="style/blog.css" rel="stylesheet" type="text/css">
+		<link href="style/contact.css" rel="stylesheet" type="text/css">
+		<link href="style/footer.css" rel="stylesheet" type="text/css">
+		<link href="style/hover.css" rel="stylesheet" type="text/css">
+
+		<!-- Theme Stylesheet -->
+		<link href="style/theme.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			let roles = ['', 'Student', 'Web Developer', 'UX Designer'];
+		</script>
+
+		<!-- #container -->
+		<div id="container">
+
+
+			<!-- overlay -->
+			<aside class="overlay gone" onclick="toggleSideNav(true);"></aside>
+			<!-- /overlay -->
+			
+			<!-- nav -->
+			<nav onclick="toggleSideNav(true);">
+
+				<!-- main -->
+				<main>
+					<ul class="navlist">
+
+						<!-- item -->
+						<li class="item">
+							<a href="#hero" class="link hero">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+									</svg>
+								</span>
+								<span class="caption">Home</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+						<!-- item -->
+						<li class="item">
+							<a href="#about" class="link about">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+									</svg>
+								</span>
+								<span class="caption">About</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+						<!-- item -->
+						<li class="item">
+							<a href="#skills" class="link skills">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+										<path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z"/>
+									</svg>
+								</span>
+								<span class="caption">Skills</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+						<!-- item -->
+						<li class="item">
+							<a href="#portfolio" class="link portfolio">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M12.5 3a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h5zm0 3a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h5zm.5 3.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5zm-.5 2.5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1h5z"/>
+										<path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2zM4 1v14H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h2zm1 0h9a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5V1z"/>
+									</svg>
+								</span>
+								<span class="caption">Portfolio</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+						<!-- item -->
+						<li class="item">
+							<a href="#resume" class="link resume">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/> -->
+										<path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+										<path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+									</svg>
+								</span>
+								<span class="caption">Resume</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+						<!-- item -->
+						<li class="item">
+							<a href="#blog" class="link blog">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+										<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/> -->
+										<path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+										<path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+										<path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+									</svg>
+								</span>
+								<span class="caption">Blog</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+						<!-- item -->
+						<li class="item gone">
+							<a href="#services" class="link services">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M14 10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1h12zM2 9a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z"/>
+										<path d="M5 11.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM14 3a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12zM2 2a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2z"/>
+										<path d="M5 4.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+									</svg>
+								</span>
+								<span class="caption">Services</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+						<!-- item -->
+						<li class="item">
+							<a href="#contact" class="link contact">
+								<span class="icon">
+									<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+									</svg>
+								</span>
+								<span class="caption">Contact</span>
+							</a>
+						</li>
+						<!-- /item -->
+
+					</ul>
+				</main>
+				<!-- main -->
+
+			</nav>
+			<!-- /nav -->
+
+
+
+			
+			<!-- #hero -->
+			<section id="hero" class="social gone">
+
+				<!-- main -->
+				<main>
+
+					<!-- name -->
+					<h2 class="name">Hello, my name is</h1>
+					<h1 class="name">Alex Titus</h1>
+					<!-- /name -->
+
+					<!-- roles -->
+					<p class="roles">
+						I'm
+						<span class="a">a</span>
+						<span class="typed blink"></span>
+					</p>
+					<!-- /roles -->
+
+					<!-- action -->
+					<div class="action">
+
+						<!-- <a href="javascript:void(0)" class="btn">
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+								<path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+							</svg>
+							<span class="caption">Download CV</span>
+						</a> -->
+						<a href="mailto:tituswebdev@gmail.com" class="btn primary">
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+							</svg>
+							<span class="caption">Contact me</span>
+						</a>
+
+					</div>
+					<!-- /action -->
+
+					<!-- social -->
+					<div class="social">
+
+						<!-- btn -->
+						<!-- <a class="btn twitter" href="javascript:void(0)" target="_blank">
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+							</svg>
+						</a> -->
+						<!-- /btn -->
+
+						<!-- btn -->
+						<!-- <a class="btn facebook" href="javascript:void(0)" target="_blank">
+							<i class="icon fa fa-facebook"></i>
+						</a> -->
+						<!-- /btn -->
+
+						<!-- btn -->
+						<!-- <a class="btn github" href="https://atg973.github.io/" target="_blank"> -->
+						<a class="btn github" href="https://github.com/atg973/atg973.github.io" target="_blank">
+							<!-- <i class="icon fa fa-github"></i> -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+							</svg>
+						</a>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<a class="btn instagram" href="https://www.instagram.com/mesomardy/" target="_blank">
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+							</svg>
+						</a>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<a class="btn linkedin" href="https://www.linkedin.com/in/alextg/" target="_blank">
+							<!-- <i class="icon fa fa-linkedin"></i> -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24">
+								<!-- <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/> -->
+								<circle cx="4.983" cy="5.009" r="2.188"></circle>
+								<path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path>
+							</svg>
+						</a>
+						<!-- /btn -->
+
+					</div>
+					<!-- /social -->
+
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#hero -->
+
+			<!-- Hero Script -->
+			<script src="script/hero.js" type="text/javascript"></script>
+
+
+			<!-- #about -->
+			<section id="about" class="gone shift">
+
+				<!-- title -->
+				<h2 class="title">About</h2>
+				<!-- /title -->
+
+				<!-- main -->
+				<main>
+
+					<!-- set -->
+					<div class="set">
+						<img src="pic/ithaca.jpg" alt="" class="profile">
+						<!-- <img src="pic/field400px.jpg" alt="" class="profile"> -->
+					</div>
+					<!-- /set -->
+
+					<!-- set -->
+					<div class="set wide">
+
+						<p class="motto">
+							<span class="phrase">Head in the clouds</span>
+							<span class="phrase">Feet in the dirt</span>
+						</p>
+
+						<!-- title -->
+						<h3 class="title">
+							<span class="role">Student</span>
+							<span class="role">Programmer</span>
+							<span class="role">Web Developer</span>
+						</h3>
+						<!-- /title -->
+
+						<!-- stats -->
+						<div class="stats">
+
+							<!-- colA -->
+							<div class="col colA">
+
+								<!-- item -->
+								<div class="item">
+
+									<!-- icon -->
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/> -->
+										<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- key -->
+									<span class="key">Freelance</span>
+									<!-- /key -->
+
+									<!-- value -->
+									<span class="value">Available</span>
+									<!-- /value -->
+
+								</div>
+								<!-- /item -->
+
+								<!-- item -->
+								<div class="item">
+
+									<!-- icon -->
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/> -->
+										<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- key -->
+									<span class="key">City</span>
+									<!-- /key -->
+
+									<!-- value -->
+									<span class="value">Saginaw, MI</span>
+									<!-- /value -->
+
+								</div>
+								<!-- /item -->
+
+							</div>
+							<!-- /colA -->
+
+							<!-- colB -->
+							<div class="col colB">
+
+								<!-- item -->
+								<div class="item">
+
+									<!-- icon -->
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/> -->
+										<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- key -->
+									<span class="key">Phone</span>
+									<!-- /key -->
+
+									<!-- value -->
+									<span class="value">331.256.7092</span>
+									<!-- /value -->
+
+								</div>
+								<!-- /item -->
+
+								<!-- item -->
+								<div class="item">
+
+									<!-- icon -->
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/> -->
+										<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- key -->
+									<span class="key">Email</span>
+									<!-- /key -->
+
+									<!-- value -->
+									<span class="value">atitusgl@svsu.edu</span>
+									<!-- <span class="value">tituswebdev@gmail.com</span> -->
+									<!-- <span class="value">atg@tituswebdev.com</span> -->
+									<!-- /value -->
+
+								</div>
+								<!-- /item -->
+
+							</div>
+							<!-- /colB -->
+
+							<!-- colC -->
+							<div class="col colC" style="display:none;">
+
+								<!-- item -->
+								<div class="item gone">
+
+									<!-- icon -->
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/> -->
+										<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- key -->
+									<span class="key">Website</span>
+									<!-- /key -->
+
+									<!-- value -->
+									<span class="value">tituswebdev.com</span>
+									<!-- /value -->
+
+								</div>
+								<!-- /item -->
+
+								<!-- item -->
+								<div class="item gone">
+
+									<!-- icon -->
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/> -->
+										<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- key -->
+									<span class="key">Degree</span>
+									<!-- /key -->
+
+									<!-- value -->
+									<span class="value">Bachelor</span>
+									<!-- /value -->
+
+								</div>
+								<!-- /item -->
+
+							</div>
+							<!-- /colC -->
+
+						</div>
+						<!-- /stats -->
+
+						<p class="copy">
+							Building models of the world to make life easier.
+						</p>
+						<p class="copy">
+							I'm a curious and creative individual who enjoys making practical applications out of abstract philosophical ideas.
+						</p>
+						<p class="copy">
+							I do so using my background in mathematics, statistics, and computer programming.
+						</p>
+
+					</div>
+					<!-- /set -->
+
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#about -->
+
+
+			<!-- #skills -->
+			<section id="skills" class="gone shift">
+
+				<!-- title -->
+				<h2 class="title">Skills</h2>
+				<!-- /title -->
+
+				<!-- main -->
+				<main>
+
+					<!-- skills -->
+					<div class="skills">
+
+						<!-- closebtn -->
+						<div class="closebtn">&times;</div>
+						<!-- /closebtn -->
+
+						<!-- item -->
+						<div class="item" title="Bootstrap">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="bs" src="pic/skills/Bootstrap.svg" alt="Bootstrap">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">Bootstrap</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="HTML5">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="html" src="pic/skills/HTML5.svg" alt="HTML5">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">HTML5</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="CSS3">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="css" src="pic/skills/CSS3.svg" alt="CSS3">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">CSS3</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="JavaScript">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="js" src="pic/skills/JavaScript.png" alt="JavaScript">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">JavaScript</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="TypeScript">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="ts" src="pic/skills/TypeScript.svg" alt="TypeScript">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">TypeScript</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="jQuery">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="jq" src="pic/skills/jquery.png" alt="jQuery">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">jQuery</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+						
+
+						<!-- br -->
+						<div class="br"></div>
+						<!-- /br -->
+
+
+						<!-- item -->
+						<div class="item" title="WordPress">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="wpr" src="pic/skills/wordpress.png" alt="WordPress">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">WordPress</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="PHP">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="php" src="pic/skills/PHP.svg" alt="PHP">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">PHP</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="C++">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="cpp" src="pic/skills/C++.svg" alt="C++">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">C++</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="Java">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="java" src="pic/skills/java.svg" alt="Java">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">Java</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="Visual Basic">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="vb" src="pic/skills/vb.svg" alt="VB">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">Visual Basic</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="MySQL">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="sql" src="pic/skills/MySQL.svg" alt="MySQL">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">MySQL</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+
+						<!-- br -->
+						<div class="br"></div>
+						<!-- /br -->
+
+
+						<!-- item -->
+						<div class="item" title="GitHub">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="ghb" src="pic/skills/github.png" alt="GitHub">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">GitHub</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" title="Responsive Web Design">
+							<div class="inner">
+
+								<!-- img -->
+								<span class="img">
+									<img class="rwd" src="pic/skills/rwd.jpg" alt="Responsive Web Design">
+								</span>
+								<!-- /img -->
+
+								<!-- caption -->
+								<span class="caption">Responsive Design</span>
+								<!-- /caption -->
+								
+							</div>
+						</div>
+						<!-- /item -->
+						
+						
+					</div>
+					<!-- /skills -->
+
+					
+					<!-- <hr> -->
+
+					<!-- skillset -->
+					<article class="skillset">
+
+						<!-- skill -->
+						<div class="skill rd">
+
+							<!-- name -->
+							<div class="name">Responsive Design</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill hc">
+
+							<!-- name -->
+							<div class="name">HTML/CSS</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill js">
+
+							<!-- name -->
+							<div class="name">JavaScript</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill bs">
+
+							<!-- name -->
+							<div class="name">Bootstrap</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill gh">
+
+							<!-- name -->
+							<div class="name">GitHub</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+					</article>
+					<!-- /skillset -->
+
+					<!-- skillset -->
+					<article class="skillset">
+
+						<!-- skill -->
+						<div class="skill java">
+
+							<!-- name -->
+							<div class="name">Java</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill cpp">
+
+							<!-- name -->
+							<div class="name">C++</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill vb">
+
+							<!-- name -->
+							<div class="name">Visual Basic</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill php">
+
+							<!-- name -->
+							<div class="name">PHP</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+						<!-- skill -->
+						<div class="skill sql">
+
+							<!-- name -->
+							<div class="name">SQL</div>
+							<!-- /name -->
+
+							<!-- bar -->
+							<div class="bar">
+								<div class="fill"></div>
+							</div>
+							<!-- /bar -->
+
+						</div>
+						<!-- /skill -->
+
+					</article>
+					<!-- /skillset -->
+
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#skills -->
+
+			<!-- Skills Script -->
+			<script src="script/skills.js" type="text/javascript"></script>
+
+
+			<!-- #portfolio -->
+			<section id="portfolio" class="gone shift">
+
+				<!-- title -->
+				<h2 class="title">Portfolio</h2>
+				<!-- /title -->
+
+				<!-- copy -->
+				<p class="copy" style="text-align:center">Here is some of my work</p>
+				<!-- /copy -->
+
+				<!-- main -->
+				<main>
+
+					<!-- item -->
+					<div class="item">
+						<div class="inner">
+							<h3 class="name">Project 01</h3>
+							<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem illo maxime id ipsum.</p>
+							<a class="link" href="javascript:void(0)">Read more</a>
+						</div>
+					</div>
+					<!-- /item -->
+
+					<!-- item -->
+					<div class="item">
+						<div class="inner">
+							<h3 class="name">Project 02</h3>
+							<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem illo maxime id ipsum.</p>
+							<a class="link" href="javascript:void(0)">Read more</a>
+						</div>
+					</div>
+					<!-- /item -->
+
+					<!-- item -->
+					<div class="item">
+						<div class="inner">
+							<h3 class="name">Project 03</h3>
+							<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem illo maxime id ipsum.</p>
+							<a class="link" href="javascript:void(0)">Read more</a>
+						</div>
+					</div>
+					<!-- /item -->
+
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#portfolio -->
+
+			<!-- Portfolio Script -->
+			<script src="script/portfolio.js" type="text/javascript"></script>
+
+
+			<!-- #stats -->
+			<section id="stats" class="gone shift">
+
+				<!-- title -->
+				<h2 class="title">Stats</h2>
+				<!-- /title -->
+
+				<!-- main -->
+				<main>
+
+					<!-- <p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+					</p> -->
+
+					<!-- set -->
+					<article class="set">
+
+						<!-- item -->
+						<div class="item">
+
+							<!-- icon -->
+							<div class="icon">
+								<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+								</svg>
+							</div>
+							<!-- /icon -->
+
+							<!-- number -->
+							<div class="number">5,000+</div>
+							<!-- /number -->
+
+							<!-- label -->
+							<div class="label">Hours of Coding</div>
+							<!-- /label -->
+
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item">
+
+							<!-- icon -->
+							<div class="icon">
+								<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+									<path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+								</svg>
+							</div>
+							<!-- /icon -->
+
+							<!-- number -->
+							<div class="number">205</div>
+							<!-- /number -->
+
+							<!-- label -->
+							<div class="label">Projects</div>
+							<!-- /label -->
+
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item">
+
+							<!-- icon -->
+							<div class="icon">
+								<i class="fa fa-group"></i>
+							</div>
+							<!-- /icon -->
+
+							<!-- number -->
+							<div class="number">4,056,384</div>
+							<!-- /number -->
+
+							<!-- label -->
+							<div class="label">Views</div>
+							<!-- /label -->
+
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item" style="display:none;">
+
+							<!-- icon -->
+							<div class="icon">
+								<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+								</svg>
+							</div>
+							<!-- /icon -->
+
+							<!-- number -->
+							<div class="number">100</div>
+							<!-- /number -->
+
+							<!-- label -->
+							<div class="label">Happy Reviews</div>
+							<!-- /label -->
+
+						</div>
+						<!-- /item -->
+
+					</article>
+					<!-- /set -->
+
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#stats -->
+
+
+			<!-- #resume -->
+			<section id="resume" class="gone shift">
+
+				<!-- title -->
+				<h2 class="title">Resume</h2>
+				<!-- /title -->
+
+				<!-- main -->
+				<main>
+
+					<!-- title -->
+					<h3 class="title">Summary</h3>
+					<!-- /title -->
+
+					<!-- exp -->
+					<article class="exp">
+
+						<!-- details -->
+						<div class="details">
+
+							<!-- title -->
+							<h4 class="title">Alex Titus</h4>
+							<!-- /title -->
+
+							<div class="contact">
+								<span>331.256.7092</span>
+								<span>atitusgl@svsu.edu</span>
+								<!-- <div>7400 Bay Road, Saginaw, MI</div> -->
+							</div>
+
+							<!-- copy -->
+							<p class="copy">
+								Critical thinker and persistent problem solver. Self-motivated and intuitive learner. Eager to work effectively with others to produce tangible results. Interested in overall personal growth, leadership, and communication skills development. Specifically interested in computer programming, web development, mobile software development, digital marketing, and new technology.
+							</p>
+							<!-- /copy -->
+
+						</div>
+						<!-- /details -->
+
+					</article>
+					<!-- /exp -->
+
+
+					<!-- title -->
+					<h3 class="title">Education <!-- &amp Training --></h3>
+					<!-- /title -->
+
+					<!-- exp -->
+					<article class="exp">
+
+						<!-- details -->
+						<div class="details">
+
+							<!-- title -->
+							<h4 class="title">
+								<span>Bachelor of Science in Computer Science</span>
+								<span>Minor in Mathematics</span>
+							</h4>
+							<!-- /title -->
+
+							<!-- copy -->
+							<p class="copy">
+								<span>Saginaw Valley State University</span><span class="comma">,</span>
+								<span>University Center, MI</span>
+								<!-- <br> -->
+								<!-- <span>College of Science, Engineering, and Technology</span> -->
+								<br>
+								<span>GPA: 3.45</span>
+							</p>
+							<!-- /copy -->
+
+							<div class="time">Anticpated: 2023</div>
+
+						</div>
+						<!-- /details -->
+
+						<!-- details -->
+						<div class="details gone">
+
+							<!-- title -->
+							<h4 class="title">Bachelor of Science, Computer Engineering</h4>
+							<!-- /title -->
+
+							<div class="time">2009 - 2013</div>
+
+							<!-- copy -->
+							<p class="copy">
+								<span>Swanson School of Engineering</span>
+								<br>
+								<span>University of Pittsburgh, Pittsburgh, PA</span>
+							</p>
+							<!-- /copy -->
+
+						</div>
+						<!-- /details -->
+
+					</article>
+					<!-- /exp -->
+
+					<!-- title -->
+					<h3 class="title">Industry-Related Experience</h3>
+					<!-- /title -->
+
+					<!-- exp -->
+					<article class="exp cut" id="experience">
+
+						<!-- details -->
+						<div class="details">
+
+							<!-- title -->
+							<h4 class="title">WordPress Development Intern</h4>
+							<!-- /title -->
+
+							<!-- copy -->
+							<p class="copy">
+								<span class="company">Command Web Services</span><span class="comma">,</span>
+								<span class="location">Saginaw, MI</span>
+							</p>
+							<!-- /copy -->
+
+							<!-- time -->
+							<div class="time">May 2021 - Present</div>
+							<!-- /time -->
+
+							<ul>
+								<li>Facilitate brand development and online presence for businesses with well-designed websites built in WordPress</li>
+								<li>Develop from Adobe XD designs using HTML, CSS, JavaScript, and PHP within WordPress platform</li>
+								<li>Use web development principles taught in online courses and apply them to actual business projects</li>
+							</ul>
+
+						</div>
+						<!-- /details -->
+
+						<!-- details -->
+						<div class="details">
+
+							<!-- title -->
+							<h4 class="title">Virtual Marketing Rotational Intern</h4>
+							<!-- /title -->
+
+							<!-- copy -->
+							<p class="copy">
+								<span class="company">Real Social Dynamics</span><span class="comma">,</span>
+								<span class="location">Chicago, IL</span>
+							</p>
+							<!-- /copy -->
+
+							<!-- time -->
+							<div class="time">Sept 2018 - Mar 2019</div>
+							<!-- /time -->
+
+							<ul>
+								<li>Provided logistical support for organizing local community events, promoting live events</li>
+								<li>Increased search engine response rates by 10%</li>
+								<li>Provided recommendations for site improvements</li>
+								<li>Worked closely with development team to implement optimizations</li>
+							</ul>
+
+						</div>
+						<!-- /details -->
+
+						<!-- details -->
+						<div class="details gone">
+
+							<!-- title -->
+							<h4 class="title">Member Sales Representative</h4>
+							<!-- /title -->
+
+							<!-- copy -->
+							<p class="copy">
+								<span class="company">Planet Fitness</span><span class="comma">,</span>
+								<span class="location">Aurora, IL</span>
+							</p>
+							<!-- /copy -->
+
+							<!-- time -->
+							<div class="time">Feb 2018 - Dec 2018</div>
+							<!-- /time -->
+
+							<ul>
+								<li>Created a positive experience for members and guests with superior customer service</li>
+								<li>Persuaded prospective gym members to consider joining as a member</li>
+								<li>Maintained excellent standards for selling new memberships and managing customer accounts</li>
+								<li>Assisted members and guests with general fitness questions</li>
+							</ul>
+
+						</div>
+						<!-- /details -->
+
+						<!-- details -->
+						<div class="details">
+
+							<!-- title -->
+							<h4 class="title">I.T. / Web Development Rotational Intern</h4>
+							<!-- /title -->
+
+							<!-- copy -->
+							<p class="copy">
+								<span class="company">Proctor Gallagher Institute</span><span class="comma">,</span>
+								<span class="location">Chicago, IL</span>
+							</p>
+							<!-- /copy -->
+
+							<!-- time -->
+							<div class="time">Sept 2016 - Jan 2017</div>
+							<!-- /time -->
+
+							<ul>
+								<li>Analyzed design files to create custom webpages</li>
+								<li>Developed modern responsive webpages for the company’s website</li>
+								<li>Used various technologies including HTML/CSS, JavaScript, and WordPress Visual Composer</li>
+							</ul>
+
+						</div>
+						<!-- /details -->
+
+						<!-- details -->
+						<div class="details">
+
+							<!-- title -->
+							<h4 class="title">Cooperative System Maintenance Intern</h4>
+							<!-- /title -->
+
+							<!-- copy -->
+							<p class="copy">
+								<span class="company">Ansaldo STS</span><span class="comma">,</span>
+								<span class="location">1000 Technology Drive</span><span class="comma">,</span>
+								<span class="location">Pittsburgh, PA</span>
+							</p>
+							<!-- /copy -->
+
+							<!-- time -->
+							<div class="time">Aug 2011 - Jan 2013</div>
+							<!-- /time -->
+
+							<ul>
+								<li>Supported technicians and maintenance engineers in the analysis, development, and testing of train dispatching systems</li>
+								<li>Provided solutions for software and hardware related issues</li>
+							</ul>
+
+						</div>
+						<!-- /details -->
+
+					</article>
+					<!-- /exp -->
+
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#resume -->
+
+			<!-- Resume Script -->
+			<script src="script/resume.js" type="text/javascript"></script>
+
+
+			<!-- #blog -->
+			<section id="blog" class="gone shift">
+
+				<!-- title -->
+				<h2 class="title">Blog</h2>
+				<!-- /title -->
+
+				<!-- main -->
+				<main>
+
+					<!-- item -->
+					<div class="item">
+						
+						<!-- head -->
+						<div class="head">
+
+							<!-- metadata -->
+							<div class="metadata">
+
+								<!-- date -->
+								<span class="date meta">
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5h16V4H0V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5z"/>
+									</svg>
+									<span class="caption">21 May 2021</span>
+								</span>
+								<!-- /date -->
+
+								<!-- author -->
+								<span class="author meta">
+									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+									</svg>
+									<span class="caption">Admin</span>
+								</span>
+								<!-- /author -->
+
+							</div>
+							<!-- /metadata -->
+
+						</div>
+						<!-- /head -->
+						
+						<!-- foot -->
+						<div class="foot">
+							<h3 class="title">Blog Title 01</h3>
+							<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem illo maxime id ipsum.</p>
+							<a class="link" href="javascript:void(0)">Read more</a>
+						</div>
+						<!-- /foot -->
+
+					</div>
+					<!-- /item -->
+					
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#blog -->
+
+			<!-- Blog Script -->
+			<script src="script/blog.js" type="text/javascript"></script>
+
+
+			<!-- #contact -->
+			<section id="contact" class="gone shift">
+
+				<!-- title -->
+				<h2 class="title">Contact</h2>
+				<!-- /title -->
+
+				<!-- main -->
+				<main>
+
+					<!-- info -->
+					<article class="info">
+
+						<!-- item -->
+						<div class="item">
+
+							<!-- icon -->
+							<div class="icon">
+								<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<!-- <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+									<path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/> -->
+									<path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+									<path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
+								</svg>
+							</div>
+							<!-- /icon -->
+
+							<!-- content -->
+							<div class="content">
+								<div class="method">Location:</div>
+								<div class="value">7400 Bay Road, University Center, MI 48710</div>
+							</div>
+							<!-- /content -->
+
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item">
+
+							<!-- icon -->
+							<div class="icon">
+								<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+								</svg>
+							</div>
+							<!-- /icon -->
+
+							<!-- content -->
+							<div class="content">
+								<div class="method">Email:</div>
+								<div class="value">tituswebdev@gmail.com</div>
+							</div>
+							<!-- /content -->
+
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item">
+
+							<!-- icon -->
+							<div class="icon">
+								<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+								</svg>
+								<!-- <svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/>
+									<path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								</svg> -->
+							</div>
+							<!-- /icon -->
+
+							<!-- content -->
+							<div class="content">
+								<div class="method">Call:</div>
+								<div class="value">331.256.7092</div>
+							</div>
+							<!-- /content -->
+
+						</div>
+						<!-- /item -->
+
+					</article>
+					<!-- /info -->
+
+					<!-- form -->
+					<article class="form">
+						<form>
+
+							<!-- item -->
+							<div id="name" class="item w50">
+								<input class="forminput" type="text" placeholder="Your Name">
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div id="email" class="item w50" style="display:none;">
+								<input class="forminput" type="text" placeholder="Your Email">
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div id="subject" class="item w50">
+								<input id="email" class="forminput" type="text" placeholder="Subject">
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div id="message" class="item w100">
+								<textarea id="email" class="forminput" rows="5" placeholder="Message"></textarea>
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div id="send" class="item w100">
+								<button class="send" type="submit">Send Message</button>
+								<a href="mailto:tituswebdev@gmail.com" class="send">Send Message</a>
+							</div>
+							<!-- /item -->
+
+						</form>
+					</article>
+					<!-- /form -->
+
+				</main>
+				<!-- /main -->
+
+			</section>
+			<!-- /#contact -->
+
+			<!-- Contact Script -->
+			<script src="script/contact.js" type="text/javascript"></script>
+
+
+			<!-- footer -->
+			<footer class="footer">
+
+				<!-- main -->
+				<main>
+
+					<!-- name -->
+					<!-- <h1 class="name">Alex Titus</h1> -->
+					<!-- /name -->
+
+					<!-- social -->
+					<div class="social">
+
+						<!-- btn -->
+						<!-- <a class="btn twitter" href="javascript:void(0)" target="_blank">
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+							</svg>
+						</a> -->
+						<!-- /btn -->
+
+						<!-- btn -->
+						<!-- <a class="btn facebook" href="javascript:void(0)" target="_blank">
+							<i class="icon fa fa-facebook"></i>
+						</a> -->
+						<!-- /btn -->
+
+						<!-- btn -->
+						<!-- <a class="btn github" href="https://atg973.github.io/" target="_blank"> -->
+						<a class="btn github" href="https://github.com/atg973/atg973.github.io" target="_blank">
+							<!-- <i class="icon fa fa-github"></i> -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+							</svg>
+						</a>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<a class="btn instagram" href="https://www.instagram.com/mesomardy/" target="_blank">
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+							</svg>
+						</a>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<a class="btn linkedin" href="https://www.linkedin.com/in/alextg/" target="_blank">
+							<!-- <i class="icon fa fa-linkedin"></i> -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24">
+								<!-- <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/> -->
+								<circle cx="4.983" cy="5.009" r="2.188"></circle>
+								<path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path>
+							</svg>
+						</a>
+						<!-- /btn -->
+
+					</div>
+					<!-- /social -->
+
+					<!-- nav -->
+					<div class="nav">
+						<ul>
+							<li>
+								<a href="#hero" class="link">Home</a>
+							</li>
+							<li>
+								<a href="#about" class="link">About</a>
+							</li>
+							<li>
+								<a href="#skills" class="link">Skills</a>
+							</li>
+							<li>
+								<a href="#resume" class="link">Resume</a>
+							</li>
+							<li>
+								<a href="#contact" class="link">Contact</a>
+							</li>
+						</ul>
+					</div>
+					<!-- /nav -->
+
+					<!-- copy -->
+					<p class="copy">
+						&copy; Copyright 2021
+						<strong>TWD Brands</strong>.
+						All Right Reserved.
+					</p>
+					<!-- /copy -->
+
+				</main>
+				<!-- /main -->
+
+			</footer>
+			<!-- /footer -->
+
+
+
+
+			<!-- navtoggle -->
+			<div class="toggler navtoggle" onclick="toggleSideNav();">
+
+				<!-- hamburger -->
+				<svg class="hamburger" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+				</svg>
+				<!-- /hamburger -->
+
+				<!-- cross -->
+				<svg class="cross" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+					<!-- <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/> -->
+				</svg>
+				<!-- /cross -->
+
+			</div>
+			<!-- /navtoggle -->
+
+			<!-- Navigation Sidebar Script -->
+			<script src="script/nav.js" type="text/javascript"></script>
+
+
+			<!-- themetoggle -->
+			<div class="toggler themetoggle" onclick="toggleTheme();">
+
+				<!-- moon -->
+				<svg class="moon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/>
+				</svg>
+				<!-- /moon -->
+
+				<!-- fullmoon -->
+				<svg class="fullmoon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+					<!-- <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/> -->
+				</svg>
+				<!-- /fullmoon -->
+
+			</div>
+			<!-- /themetoggle -->
+
+			<!-- Theme Script -->
+			<script src="script/theme.js" type="text/javascript"></script>
+
+
+			<!-- totop -->
+			<button class="totop gone" onclick="goToTopOfPage();" title="Go to top">
+				<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+				</svg>
+			</button>
+			<!-- /totop -->
+			
+
+		</div>
+		<!-- /#container -->
+
+
+
+		<!-- jQuery -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://import.atgmedia.xyz/bs3/jquery.min.js" type="text/javascript"></script>
+
+		<!-- Main Script -->
+		<script src="script/script.js" type="text/javascript"></script>
+
+	</body>
+
+</html>

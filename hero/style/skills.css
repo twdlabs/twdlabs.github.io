@@ -1,0 +1,74 @@
+
+/* Skills Section */
+
+/* div#container section#skills {} */
+/* div#container section#skills main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; flex-wrap:wrap;} */
+
+div#container section#skills main div.skills {flex-grow:1; width:100%; display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section#skills main div.skills {flex-wrap:wrap; gap:.5rem;}
+/* div#container section#skills main div.skills {overflow:auto; scrollbar-width:none;} */
+div#container section#skills main div.skills div.br {display:none; width:100%;}
+div#container section#skills main div.skills div.item {height:8rem; width:8rem; padding:1rem; background-color:#EEE; border-radius:.25rem; cursor:pointer;}
+div#container section#skills main div.skills div.item:hover {background-color:#CCC;}
+div#container section#skills main div.skills div.item div.inner {width:100%; height:100%;}
+div#container section#skills main div.skills div.item div.inner {display:flex; flex-direction:column; justify-content:space-between; align-items:center;}
+div#container section#skills main div.skills div.item span.img {flex-grow:1;}
+div#container section#skills main div.skills div.item span.img {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container section#skills main div.skills div.item span.img img {flex-grow:0; display:block; max-width:100%; height:4rem;}
+div#container section#skills main div.skills div.item span.caption {flex-grow:0; text-align:center; padding-top:1rem; white-space:nowrap; font-size:.75rem;}
+div#container section#skills main div.skills div.closebtn {display:none; position:fixed; bottom:0; left:50%; transform:translateX(-50%); z-index:21; cursor:pointer;}
+div#container section#skills main div.skills div.closebtn {font-size:2rem; padding:1.5rem 2rem; margin:1rem; background-color:#0008; color:#FFF; border-radius:5rem;}
+
+/* div#container section#skills main article.skillset {display:none;} */
+div#container section#skills main article.skillset {max-width:24rem; margin:0 auto; margin-top:1rem;}
+div#container section#skills main article.skillset {flex:0 0 48%;}
+div#container section#skills main article.skillset div.skill {border:1px solid #FFF8; border-radius:.25rem; padding:.25rem; margin-bottom:1rem;}
+div#container section#skills main article.skillset div.skill {display:flex; flex-direction:row-reverse; justify-content:space-between; flex-wrap:wrap; font-weight:600; font-size:.675rem; text-transform:uppercase;}
+div#container section#skills main article.skillset div.skill:before {content:'90%'; display:block;}
+div#container section#skills main article.skillset div.skill.rd:before {content:'90%';}
+div#container section#skills main article.skillset div.skill.hc:before {content:'95%';}
+div#container section#skills main article.skillset div.skill.js:before {content:'95%';}
+div#container section#skills main article.skillset div.skill.bs:before {content:'85%';}
+div#container section#skills main article.skillset div.skill.gh:before {content:'75%';}
+div#container section#skills main article.skillset div.skill.java:before {content:'95%';}
+div#container section#skills main article.skillset div.skill.cpp:before {content:'80%';}
+div#container section#skills main article.skillset div.skill.vb:before {content:'90%';}
+div#container section#skills main article.skillset div.skill.php:before {content:'70%';}
+div#container section#skills main article.skillset div.skill.sql:before {content:'60%';}
+/* div#container section#skills main article.skillset div.skill div.name {} */
+div#container section#skills main article.skillset div.skill div.bar {width:100%; display:flex; flex-direction:row; justify-content:flex-start; height:.5rem; background-color:#0001; margin-top:.5rem;}
+div#container section#skills main article.skillset div.skill div.bar div.fill {height:100%; width:90%; background-color:#0f48f8cc; transition:.75s;}
+div#container section#skills main article.skillset div.skill.rd div.bar div.fill {width:90%;}
+div#container section#skills main article.skillset div.skill.hc div.bar div.fill {width:95%;}
+div#container section#skills main article.skillset div.skill.js div.bar div.fill {width:95%;}
+div#container section#skills main article.skillset div.skill.bs div.bar div.fill {width:85%;}
+div#container section#skills main article.skillset div.skill.gh div.bar div.fill {width:75%;}
+div#container section#skills main article.skillset div.skill.java div.bar div.fill {width:95%;}
+div#container section#skills main article.skillset div.skill.cpp div.bar div.fill {width:80%;}
+div#container section#skills main article.skillset div.skill.vb div.bar div.fill {width:90%;}
+div#container section#skills main article.skillset div.skill.php div.bar div.fill {width:70%;}
+div#container section#skills main article.skillset div.skill.sql div.bar div.fill {width:60%;}
+div#container section#skills.gone main article.set div.skill div.bar div.fill {width:0;}
+
+
+div#container section#skills main div.skills div.item.active {background-color:#CCC;}
+div#container section#skills main div.skills div.item.active div.inner {background-color:#0008; justify-content:center;}
+div#container section#skills main div.skills div.item.active div.inner {position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:20;}
+div#container section#skills main div.skills div.item.active div.inner span.img {background-color:#FFF; flex-grow:0; padding-top:2rem; width:20rem; max-width:100%;}
+div#container section#skills main div.skills div.item.active div.inner span.img img {height:10rem;}
+div#container section#skills main div.skills div.item.active div.inner span.caption {background-color:#FFF; padding:2rem 0; width:20rem; max-width:100%; font-size:2rem;}
+div#container section#skills main div.skills div.closebtn.active {display:block;}
+
+
+
+@media screen and (max-width:62rem) {
+	div#container section#skills main {flex-direction:column; align-items:center;}
+	div#container section#skills main article.skillset {flex-basis:auto; max-width:32rem; width:100%;}
+}
+
+@media screen and (max-width:40rem) {
+}
+
+@media screen and (max-width:30rem) {
+	/* div#container section#skills main div.skills div.item span.img img {height:6rem;} */
+}
