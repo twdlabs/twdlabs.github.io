@@ -1,26 +1,32 @@
 
-body {margin:0; text-align:center;}
+body {font-family:sans-serif; text-align:center; margin:0;}
 
-ul#container {max-width:800px; padding:1rem; margin:0 auto;}
 
-li.container {margin:1rem 0; list-style:none;}
-li.container div.screen {position:relative; width:100%; /*opacity:.5;*/}
-li.container div.screen div.text {position:absolute; top:0; left:0; bottom:0; right:0;}
-li.container div.screen div.text {text-align:center; font-size:2rem; color:rgba(255,255,255,0.75); border:1px solid rgba(0,0,0,0.15); transition:.5s; cursor:pointer;}
-li.container div.screen:hover div.text {opacity:0;}
-li.container div.screen div.text p {display:none;}
-/*li.container div.screen div.text h1 {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100%;}*/
+ul#container {max-width:50rem; padding:1rem; margin:0 auto;}
 
-li.container div#screenA {background-color:red; padding-top:56.25%;}	/*	Aspect Ratio: 16:9	*/
-li.container div#screenD {background-color:orange; padding-top:62.5%;}	/*	Aspect Ratio: 8:5	*/
-li.container div#screenB {background-color:green; padding-top:66.66%;}	/*	Aspect Ratio: 3:2	*/
-li.container div#screenC {background-color:blue; padding-top:75%;}		/*	Aspect Ratio: 4:3	*/
-li.container div#screenE {background-color:red; padding-top:177.77%;}	/*	Aspect Ratio: 9:16	*/
-li.container div#screenF {background-color:orange; padding-top:160%;}	/*	Aspect Ratio: 5:8	*/
-li.container div#screenG {background-color:green; padding-top:150%;}	/*	Aspect Ratio: 2:3	*/
-li.container div#screenH {background-color:blue; padding-top:133.33%;}	/*	Aspect Ratio: 3:4	*/
-li.container div#screenI {background-color:hotpink; padding-top:200%;}	/*	Aspect Ratio: 2:1	*/
-li.container div#screenJ {background-color:hotpink; padding-top:50%;}	/*	Aspect Ratio: 1:2	*/
-li.container div#screenK {background-color:cyan; padding-top:80%;}
-li.container div#screenL {background-color:cyan; padding-top:125%;}
-li.container div#screenM {background-color:grey; padding-top:100%;}
+ul#container li.item {margin:1rem 0; list-style:none;}
+ul#container li.item div.screen {position:relative; width:100%; /*opacity:.5;*/ cursor:pointer;}
+ul#container li.item div.screen div.content {position:absolute; top:0; left:0; bottom:0; right:0; border:1px solid rgba(0,0,0,0.15);}
+ul#container li.item div.screen div.content {text-align:center; font-size:2rem; color:rgba(255,255,255,0.75); padding:4rem; user-select:none; transition:.5s;}
+ul#container li.item div.screen div.content {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; gap:1rem;}
+ul#container li.item div.screen div.content h2.ratio {font-size:4rem; font-weight:100; margin:0; transition:.5s;}
+ul#container li.item div.screen div.content p.ratios {opacity:0; margin:0; transition:.5s;}
+
+/* ul#container li.item:hover div.screen div.content p.ratios, */
+ul#container li.item.active div.screen div.content p.ratios {opacity:1;}
+ul#container li.item.active div.screen div.content h2.ratio {font-weight:bold;}
+
+
+ul#container li.item div#screenA {background-color:red; padding-top:56.25%;}	/*	Aspect Ratio: 16:9	*/
+ul#container li.item div#screenD {background-color:orange; padding-top:62.5%;}	/*	Aspect Ratio: 8:5	*/
+ul#container li.item div#screenB {background-color:green; padding-top:66.66%;}	/*	Aspect Ratio: 3:2	*/
+ul#container li.item div#screenC {background-color:blue; padding-top:75%;}		/*	Aspect Ratio: 4:3	*/
+ul#container li.item div#screenE {background-color:red; padding-top:177.77%;}	/*	Aspect Ratio: 9:16	*/
+ul#container li.item div#screenF {background-color:orange; padding-top:160%;}	/*	Aspect Ratio: 5:8	*/
+ul#container li.item div#screenG {background-color:green; padding-top:150%;}	/*	Aspect Ratio: 2:3	*/
+ul#container li.item div#screenH {background-color:blue; padding-top:133.33%;}	/*	Aspect Ratio: 3:4	*/
+ul#container li.item div#screenI {background-color:hotpink; padding-top:200%;}	/*	Aspect Ratio: 2:1	*/
+ul#container li.item div#screenJ {background-color:hotpink; padding-top:50%;}	/*	Aspect Ratio: 1:2	*/
+ul#container li.item div#screenK {background-color:cyan; padding-top:80%;}
+ul#container li.item div#screenL {background-color:cyan; padding-top:125%;}
+ul#container li.item div#screenM {background-color:grey; padding-top:100%;}
