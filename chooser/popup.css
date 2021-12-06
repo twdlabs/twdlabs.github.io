@@ -8,7 +8,7 @@
 
 
 div.popup {position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);}
-div.popup {width:100%; max-width:300px; border-radius:.5em; z-index:10;}
+div.popup {width:100%; max-width:20rem; border-radius:.5em; z-index:10;}
 div.popup {transition:.5s ease-in-out; transition-timing-function:cubic-bezier(.78,.13,.12,1.27); transition-timing-function:cubic-bezier(.78,.13,0,1.22);}
 div.popup {background-color:dodgerblue; color:#FFF; padding:1rem; box-shadow: 0 0 .75rem rgba(0,0,0,.75);}
 div.popup.anchored {transform:translate(-50%,-50%) translateY(100vh); opacity:0;}

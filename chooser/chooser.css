@@ -19,6 +19,12 @@ nav.navbar ul.navbar-nav li.nav-item.active a.nav-link {background-color:dodgerb
 
 div#container {padding:6rem .5rem 10rem; min-height:100%; transition:.25s;}
 div#container div.inner {max-width:600px; padding:1rem; margin:0 auto;}
+div#container div.inner button.setBtn {display:inline-block; position:fixed; bottom:0; right:0; height:2rem; width:2rem; margin:1rem; padding:1.25rem; border-radius:.75rem; z-index:10;}
+div#container div.inner button.setBtn {font-size:1.5rem; background-color:#0002; color:#000; border:1px solid #0004; cursor:pointer; user-select:none;}
+div#container div.inner button.setBtn {opacity:.1; transition:.25s;}
+div#container div.inner button.setBtn:hover {opacity:1;}
+div#container div.inner button.setBtn svg {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+/* div#container div.inner button.setBtn {background-color:#fff4; color:#fff; border-color:#fff4;} */
 
 div#container div.head {text-align:center;}
 div#container div.head h2 {}

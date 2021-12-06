@@ -37,10 +37,10 @@ function openSettings() {
 			setPop += '</div>';
 
 			setPop += '<div class="input-row row">';
-				setPop += '<div class="col-5">';
+				setPop += '<div class="col-6">';
 					setPop += '<label for="themeAppearance">Appearance</label>';
 				setPop += '</div>';
-				setPop += '<div class="col-7">';
+				setPop += '<div class="col-6">';
 					setPop += '<select id="themeAppearance" size="1">';
 						setPop += '<option value="light">Light</option>';
 						setPop += '<option value="dark">Dark</option>';
@@ -49,10 +49,10 @@ function openSettings() {
 			setPop += '</div>';
 
 			setPop += '<div class="input-row row">';
-				setPop += '<div class="col-5">';
+				setPop += '<div class="col-6">';
 					setPop += '<label for="themeColor">Theme Color</label>';
 				setPop += '</div>';
-				setPop += '<div class="col-7">';
+				setPop += '<div class="col-6">';
 					setPop += '<select id="themeColor" size="1">';
 						setPop += '<option value="blue">Blue</option>';
 						setPop += '<option value="green">Green</option>';
@@ -63,10 +63,10 @@ function openSettings() {
 			setPop += '</div>';
 
 			setPop += '<div class="input-row row">';
-				setPop += '<div class="col-5">';
+				setPop += '<div class="col-6">';
 					setPop += '<label for="fontSize">Font Size</label>';
 				setPop += '</div>';
-				setPop += '<div class="col-7">';
+				setPop += '<div class="col-6">';
 					setPop += '<select id="fontSize" size="1">';
 						setPop += '<option value="sm">Small</option>';
 						setPop += '<option value="md">Medium</option>';
