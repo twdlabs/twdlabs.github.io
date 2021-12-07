@@ -1,26 +1,50 @@
 
 
+:root {
+	/* Theme Color Definitions */
+	--fadedwhite:#FFFFFF06;
+	--offwhite:#FFFA;
+	--darkitem:#333;
+	--light:#AAA;
+	--dark:#444;
+	--blue:#0f48f8cc;
+	--fullblue:#0f48f8ee;
+	--lightblue:#0f48f888;
+	--lightlightblue:#0f48f822;
+	--lightblack:#111;
+	--tpblack:#0009;
+	--tptpblack:#0002;
+
+	/* Screen Size Definitions */
+	--mobile:30rem;
+	--tablet:40rem;
+	--laptop:62rem;
+}
+
+
 * {box-sizing:border-box;}
 
 
-html {height:100vh; background-color:#FFF;}
-html.dark {background-color:#111;}
+html {height:100vh; background-color:white;}
+html.dark {background-color:var(--lightblack);}
+
+
 body {min-height:100%; margin:0;}
 
 
 /* General Container */
 html,body,
-div#container {scroll-behavior:smooth; overflow-x:hidden;}
-div#container {background-color:#FFF; color:#0009; font-family:Verdana,sans-serif; /* user-select:none; */}
+div#container {scroll-behavior:smooth; overflow-x:hidden; /* user-select:none; */}
+div#container {background-color:white; color:var(--tpblack); font-family:Verdana,sans-serif;}
 div#container.navopen {overflow:hidden;}
 
 
 /* General Section */
-div#container section {min-height:25rem; /* background-color:#0f48f8cc; */ border-bottom:1px solid #000; /* border-width:1rem; */ border-color:#0f48f811; padding:.125rem;}
+div#container section {min-height:25rem; border-bottom:2px solid var(--lightlightblue); padding:.125rem; transition:.5s}
 div#container section h2.title {text-align:center; text-transform:uppercase; margin-top:2em; margin-bottom:0; font-size:2rem; font-weight:100; padding-bottom:.675em; position:relative;}
 div#container section h2.title {opacity:1; transform:none; transition:.75s;}
-div#container section h2.title:before {content:''; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:6rem; height:1px; background-color:#0002;}
-div#container section h2.title::after {content:''; position:absolute; left:50%; bottom:0; transform:translate(-50%,1px); width:2rem; height:3px; background-color:#0f48f888;}
+div#container section h2.title:before {content:''; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:6rem; height:1px; background-color:var(--tptpblack);}
+div#container section h2.title::after {content:''; position:absolute; left:50%; bottom:0; transform:translate(-50%,1px); width:2rem; height:3px; background-color:var(--lightblue);}
 div#container section main {opacity:1; transform:none; transition:.75s;}
 div#container section main {max-width:75rem; margin:0 auto; padding:2rem 4rem;}
 div#container section.shift {margin-left:4rem;}
@@ -32,8 +56,8 @@ div#container section.gone main {opacity:0; transform:translateY(3rem);}
 div#container button.totop {position:fixed; bottom:0; right:0; z-index:10;}
 div#container button.totop {font-size:1.25rem; margin:2rem; min-width:3rem; min-height:3rem;}
 div#container button.totop {display:flex; justify-content:center; align-items:center;}
-div#container button.totop {background-color:#0f48f8cc; padding:.5rem; cursor:pointer; border:0 none; border-radius:50%; color:#FFF; font-weight:500; transition:.25s;}
-div#container button.totop:hover {background-color:#FFF; color:#0f48f8cc;}
+div#container button.totop {background-color:var(--blue); padding:.5rem; cursor:pointer; border:0 none; border-radius:50%; color:white; font-weight:500; transition:.25s;}
+div#container button.totop:hover {background-color:white; color:var(--blue);}
 div#container button.totop.gone,
 div#container.navopen button.totop {transform:translateY(6rem);}
 

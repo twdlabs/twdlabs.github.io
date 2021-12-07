@@ -1,7 +1,7 @@
 
 
 /* General Container */
-div#container.dark {background-color:#444; color:#FFF9;}
+div#container.dark {background-color:var(--dark); color:var(--offwhite);}
 
 /* Nav Toggle Button */
 /* Theme Toggle Button */
@@ -9,7 +9,7 @@ div#container.dark {background-color:#444; color:#FFF9;}
 /* Nav Section */
 
 /* General Section */
-div#container.dark section {border-color:#FFF;}
+div#container.dark section {border:1px solid var(--fadedwhite);}
 
 /* Hero Section */
 div#container.dark section#hero:before {background-color:#111E;}
@@ -17,7 +17,7 @@ div#container.dark section#hero:before {background-color:#111E;}
 /* About Section */
 
 /* Skills Section */
-div#container.dark section#skills main div.skills div.item {background-color:#333;}
+div#container.dark section#skills main div.skills div.item {background-color:var(--darkitem); color:var(--offwhite);}
 
 /* Stats Section */
 

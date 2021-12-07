@@ -7,12 +7,15 @@ div#container section#resume main article.exp {display:flex; flex-direction:row;
 div#container section#resume main article.exp div.details {padding:1rem 1.5rem .25rem; position:relative;}
 div#container section#resume main article.exp.cut div.details {width:50%;}
 div#container section#resume main article.exp div.details.gone {display:none;}
-div#container section#resume main article.exp div.details h4.title {font-weight:400; text-transform:uppercase; margin:0; margin-bottom:.75rem; color:#0f48f8cc;}
+div#container section#resume main article.exp div.details h4.title {font-weight:400; text-transform:uppercase; margin:0; margin-bottom:.75rem; color:var(--blue);}
+div#container.dark section#resume main article.exp div.details h4.title {color:var(--fullblue);}
 div#container section#resume main article.exp div.details h4.title span {display:inline;}
 div#container section#resume main article.exp div.details h4.title span::after {content:' |';}
 div#container section#resume main article.exp div.details h4.title span:last-child::after {content:'';}
-div#container section#resume main article.exp div.details:before {content:''; position:absolute; bottom:0; left:0; transform:translate( calc(-50% - 1px), 1.5rem ); width:0; height:100%; border:1px solid #0009;}
-div#container section#resume main article.exp div.details::after {content:''; position:absolute; top:0; left:0; transform:translate( calc(-50% - 1px), 1.25rem ); border:1px solid #0009; border-radius:50%; width:.75rem; height:.75rem; background-color:#FFF;}
+div#container section#resume main article.exp div.details:before {content:''; position:absolute; bottom:0; left:0; transform:translate( calc(-50% - 1px), 1.5rem ); width:0; height:100%; border:1px solid #0008;}
+div#container.dark section#resume main article.exp div.details:before {border-color:var(--lightblack);}
+div#container section#resume main article.exp div.details::after {content:''; position:absolute; top:0; left:0; transform:translate( calc(-50% - 1px), 1.25rem ); background-color:#FFF; border:2px solid #0008; border-radius:50%; width:.75rem; height:.75rem;}
+div#container.dark section#resume main article.exp div.details::after {background-color:var(--dark); border-color:var(--lightblack);}
 /* div#container section#resume main article.exp div.details div.contact {} */
 div#container section#resume main article.exp div.details div.contact span {display:inline;}
 div#container section#resume main article.exp div.details div.contact span::after {content:' |';}
@@ -20,7 +23,8 @@ div#container section#resume main article.exp div.details div.contact span:last-
 /* div#container section#resume main article.exp div.details p.copy {} */
 div#container section#resume main article.exp div.details p.copy span {display:inline;}
 div#container section#resume main article.exp div.details p.copy span.comma {display:inline;}
-div#container section#resume main article.exp div.details div.time {display:inline-block; background-color:#0001; padding:.35rem .75rem; text-transform:uppercase; font-size:.875rem;}
+div#container section#resume main article.exp div.details div.time {display:inline-block; background-color:var(--tptpblack); padding:.35rem .75rem; text-transform:uppercase; font-size:.75rem; border-radius:.25rem;}
+div#container.dark section#resume main article.exp div.details div.time {background-color:var(--offwhite); color:var(--lightblack);}
 div#container section#resume main article.exp div.details p.copy {font-size:.875rem; margin:.875rem 0; font-style:italic;}
 div#container section#resume main article.exp div.details ul {font-size:.875rem; margin:.875rem 0; padding:0; padding-left:1rem;}
 div#container section#resume main article.exp div.details ul li {margin-top:.5rem; line-height:1.5em;}
