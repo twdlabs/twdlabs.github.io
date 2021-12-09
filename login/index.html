@@ -12,16 +12,22 @@
 		<style type="text/css">
 			* {box-sizing:border-box;}
 
+
 			html {height:100%; font-family:sans-serif;}
 			body {background:linear-gradient(135deg, #8052ec, #d161ff); height:100%;}
+			body {display:flex; flex-direction:column; justify-content:center;}
 			
-			div#container {display:flex; flex-direction:column; max-width:16rem; margin:0 auto;}
-			div#container div.input {border:1px solid transparent; border-radius:.25rem; position:relative; overflow:hidden;}
-			div#container div.input input {width:100%; font-size:1rem; padding:1.25rem .75rem .5rem;}
-			div#container div.input label.placeholder {position:absolute; top:0; left:0; user-select:none; pointer-events:none;}
-			div#container div.input label.placeholder {padding:1.25rem .75rem; opacity:0; transition:.1s;}
-			div#container div.input input:placeholder-shown + label.placeholder {opacity:1;}
-			div#container div.input input:focus + label.placeholder {font-size:.75rem; padding:.5rem .75rem;}
+
+			div#container {display:flex; flex-direction:column; justify-content:center; max-width:16rem; margin:0 auto;}
+			div#container div.input {border:1px solid transparent; margin-top:.5rem; position:relative; overflow:hidden;}
+
+			div#container div.input input {width:100%; font-size:1rem; padding:1.25rem .75rem .5rem; border:2px solid transparent; border-radius:.25rem; outline:none; transition:.15s;}
+			div#container div.input input:focus {border-color:black;}
+			div#container div.input label.placeholder {position:absolute; top:0; left:0; padding:0 .75rem; font-weight:100; user-select:none; pointer-events:none;}
+			div#container div.input label.placeholder {font-size:1rem; padding-top:1.5rem; transition:.1s;}
+			div#container div.input.holdsvalue label.placeholder {font-size:.75rem; padding-top:.5rem;}
+			div#container div.input input:focus + label.placeholder {font-size:.75rem; padding-top:.5rem;}
+			
 		</style>
 	</head>
 
@@ -38,7 +44,7 @@
 				<!-- /#username -->
 
 				<!-- placeholder -->
-				<label class="placeholder" for="password">Username</label>
+				<label class="placeholder" for="password">Username*</label>
 				<!-- /placeholder -->
 
 			</div>
@@ -52,7 +58,7 @@
 				<!-- /#password -->
 
 				<!-- placeholder -->
-				<label class="placeholder" for="password">Password</label>
+				<label class="placeholder" for="password">Password*</label>
 				<!-- /placeholder -->
 				
 			</div>
@@ -63,6 +69,33 @@
 
 	</body>
 
-	<script type="text/javascript"></script>
+	<script type="text/javascript">
+		// Get all input fields. 
+		let inputfields = document.getElementsByClassName('input');
+
+		// Handle state checks on focus in and out. 
+		for(field of inputfields) {
+			// field.addEventListener('focusin',checkFieldValue);
+			field.addEventListener('focusout',checkFieldValue);
+		}
+
+		/*****/
+		
+		// Check state of text input field. 
+		function checkFieldValue(event) {
+			let fieldbox = event.currentTarget;
+			console.log('field box', event.currentTarget);
+			let field = event.currentTarget.children[0];
+			console.log('field', field, field.value);
+
+			// Check if input field is empty. 
+			let emptyField = (field.value == '');
+			console.log('emptyField?',emptyField);
+
+			// 
+			if(!emptyField) fieldbox.classList.add('holdsvalue');
+			else fieldbox.classList.remove('holdsvalue');
+		}
+	</script>
 
 </html>
