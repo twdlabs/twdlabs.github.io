@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Timeline</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			body {font-family:sans-serif; background:linear-gradient(180deg, #bea2e7, #86b7e7); color:#FFF; height:100vh; margin:0;}
+			body {display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+
+			div#container {padding:2rem 1rem 2rem 4rem;}
+			div#container ul.timeline {list-style:none; padding:0; margin:0; position:relative;}
+			div#container ul.timeline:before {content:''; position:absolute; top:0; left:0; height:100%; border:2px dashed #FFF;}
+			div#container ul.timeline li.item {background-color:#FFF4; padding:1rem 1.5rem; margin:3rem 1rem 3rem 4rem; border-radius:.5rem; max-width:16.25rem; box-shadow: 0 0 4px rgba(0,0,0,.12), 0 2px 2px rgba(0,0,0,.08);}
+			div#container ul.timeline li.item {display:flex; flex-direction:column; position:relative;}
+			div#container ul.timeline li.item span.pole {content:''; position:absolute; top:0; left:-4rem; height:100%; border:2px solid #FFF;}
+			div#container ul.timeline li.item span.pole:before,
+			div#container ul.timeline li.item span.pole::after {content:''; position:absolute; left:0; transform:translate(-50%,-50%); border-radius:50%; border:2px solid #FFF; width:.675rem; height:.675rem; background-color:#86b7e7;}
+			div#container ul.timeline li.item span.pole:before {top:0;}
+			div#container ul.timeline li.item span.pole::after {top:100%;}
+			div#container ul.timeline li.item span.title {font-weight:bold;}
+			div#container ul.timeline li.item span.description {font-weight:100; margin-top:.5rem;}
+			div#container ul.timeline li.item div.timespan {position:absolute; top:0; right:calc(100% + 5rem); height:100%;}
+			div#container ul.timeline li.item div.timespan {display:flex; flex-direction:column; justify-content:space-between;}
+			div#container ul.timeline li.item div.timespan span.time {font-size:.75rem;}
+			div#container ul.timeline li.item div.timespan span.time.a {transform:translateY(-40%);}
+			div#container ul.timeline li.item div.timespan span.time.b {transform:translateY(40%);}
+		</style>
+		<link href="" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- timeline -->
+			<ul class="timeline" id="timeline">
+
+				<!-- item -->
+				<li class="item">
+
+					<!-- pole -->
+					<span class="pole"></span>
+					<!-- /pole -->
+
+					<!-- title -->
+					<span class="title">Title</span>
+					<!-- /title -->
+
+					<!-- description -->
+					<span class="description">Description</span>
+					<!-- /description -->
+
+					<!-- timespan -->
+					<div class="timespan">
+						<span class="time a">0:00</span>
+						<span class="time b">0:00</span>
+					</div>
+					<!-- /timespan -->
+
+				</li>
+				<!-- /item -->
+
+			</ul>
+			<!-- /timeline -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- <script src="" type="text/javascript"></script> -->
+		<script type="text/javascript">
+
+			// Define timeline data. 
+			let timelineData = [
+				{
+					title:'Title 1',
+					description:'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+					timeA:'12:00',
+					timeB:'1:00'
+				},
+				{
+					title:'Title 2',
+					description:'Beatae similique neque ad pariatur autem animi totam.',
+					timeA:'2:00',
+					timeB:'3:00'
+				},
+				{
+					title:'Title 3',
+					description:'Dolore explicabo ipsam alias omnis dignissimos blanditiis.',
+					timeA:'4:00',
+					timeB:'5:00'
+				},
+				{
+					title:'Title 4',
+					description:'Voluptate corrupti adipisci nihil harum distinctio veritatis.',
+					timeA:'6:00',
+					timeB:'7:00'
+				}
+			];
+
+
+			/*****/
+
+
+			// Add items to timeline. 
+			addItems();
+
+
+			/*****/
+			
+
+			// Add items to timeline. 
+			function addItems() {
+				let result = '';
+
+				for(item of timelineData) {
+					result += `
+					<!-- item -->
+					<li class="item">
+
+						<!-- pole -->
+						<span class="pole"></span>
+						<!-- /pole -->
+
+						<!-- title -->
+						<span class="title">${item.title}</span>
+						<!-- /title -->
+
+						<!-- description -->
+						<span class="description">${item.description}</span>
+						<!-- /description -->
+
+						<!-- timespan -->
+						<div class="timespan">
+							<span class="time a">${item.timeA}</span>
+							<span class="time b">${item.timeB}</span>
+						</div>
+						<!-- /timespan -->
+
+					</li>
+					<!-- /item -->`;
+				}
+
+				// 
+				document.getElementById('timeline').innerHTML = result;
+			}
+		</script>
+
+	</body>
+
+</html>
