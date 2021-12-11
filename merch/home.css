@@ -24,7 +24,7 @@ div#container section.categories a.item::after {content:''; position:absolute; t
 div#container section.categories a.item:hover::after {background-color:#0003;}
 
 
-div#container section.products {}
+/* div#container section.products {} */
 div#container section.products div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
 
 div#container section.products aside {flex-grow:0;}
