@@ -7,57 +7,29 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link href="../atgicon.ico" rel="icon"/>
-		<title>Merch Listing</title>
+		<title>Merch Results</title>
+
+		<!-- jQuery -->
+		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+
+		<!-- Main Site Stylesheet -->
+		<link href="../style.css" rel="stylesheet" type="text/css"/>
+		<!-- Main Site Script -->
+		<script src="../script.js" type="text/javascript"></script>
+
+		<!-- Specific Page Stylesheet -->
+		<link href="page.css" rel="stylesheet" type="text/css"/>
 		
 		<!-- F.A. Icons -->
 		<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
-
-		<style type="text/css">
-			* {box-sizing:border-box;}
-
-			html,body {font-family:sans-serif; min-height:100%; margin:0; background-color:#0001;}
-
-			header {background-color:#0008; height:4rem;}
-
-			/* div#container {} */
-			div#container main {max-width:75rem; margin:0 auto; background-color:#0001; padding:1rem .75rem;}
-			div#container main {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between;}
-			div#container main div.product {flex:0 0 25%; /*border:1px solid #0002;*/ padding:1rem .75rem; box-shadow:0px 1px 1px 0 rgba(0,0,0,.05); z-index:1; transition:.25s;}
-			div#container main div.product:hover {transform:translateY(-1rem);}
-			div#container main div.product div.photo {padding:50%; background-color:#0001;}
-			div#container main div.product div.name {font-size:1.25rem; margin-top:.75rem;}
-			div#container main div.product div.rating {font-size:1.15rem; color:red; margin-top:.25rem;}
-			div#container main div.product div.price {margin-top:.25rem;}
-			div#container main div.product div.price:before {content:'$';}
-
-			footer {background-color:#0001; height:20rem;}
-
-
-
-			/* Medium Screen */
-			@media screen and (max-width:60rem) {
-				div#container main div.product {flex-basis:33.333%;}
-			}
-
-			/* Small Screen */
-			@media screen and (max-width:42rem) {
-				div#container main div.product {flex-basis:50%;}
-			}
-
-			/* Extra Small Screen */
-			@media screen and (max-width:30rem) {
-				div#container main div.product {flex-basis:100%;}
-			}
-		</style>
 	</head>
 
 	<body>
 
-		<header>
-
-			<main></main>
-			
-		</header>
+		<!-- #navbar -->
+		<nav id="navbar"></nav>
+		<script>loadNav();</script>
+		<!-- /#navbar -->
 
 		<!-- #container -->
 		<div id="container">
