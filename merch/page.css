@@ -10,12 +10,12 @@ div#container section.categories {display:grid; grid-template-areas: 'a b c' 'd 
 div#container section.categories a.item {background-size:cover;}
 /* div#container section.categories a.item {display:flex; flex-direction:column; justify-content:center; align-items:center;} */
 div#container section.categories a.item {position:relative;}
-div#container section.categories a.item {background-color:rgb(0,72,255);}
+div#container section.categories a.item {background-color:var(--blue); background-size:cover; background-position:center;}
 
-div#container section.categories a.item.a {grid-area:a; background-image:url('');}
-div#container section.categories a.item.b {grid-area:b; background-image:url('');}
-div#container section.categories a.item.c {grid-area:c; background-image:url('');}
-div#container section.categories a.item.d {grid-area:d; background-image:url('');}
+div#container section.categories a.item.a {grid-area:a; background-image:url('pic/shoes2.jpg');}
+div#container section.categories a.item.b {grid-area:b; background-image:url('pic/hat.jpg');}
+div#container section.categories a.item.c {grid-area:c; background-image:url('pic/tshirt.jpg');}
+div#container section.categories a.item.d {grid-area:d; background-image:url('pic/sunglasses.jpg');}
 
 div#container section.categories a.item div.caption {background-color:#000; color:#FFF; font-weight:bold; text-transform:uppercase; padding:.5em .5em .25em; border-radius:.5rem; font-size:1.5rem; white-space:nowrap;}
 div#container section.categories a.item div.caption {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
