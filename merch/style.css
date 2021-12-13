@@ -125,8 +125,8 @@ div#container {max-width:72rem; margin: 0 auto;}
 	nav#navbar main div.toggle {flex-grow:0;}
 	nav#navbar main div.toggle a.navlink.toggler {display:flex;}
 	nav#navbar main div.toggle div#navlist {position:absolute; top:100%; right:0; left:0; width:100%; overflow:hidden;}
-	nav#navbar main div.toggle div#navlist {max-height:0; transition:.25s;}
-	nav#navbar main div.toggle div#navlist.active {max-height:20rem;}
+	nav#navbar main div.toggle div#navlist {max-height:0; z-index:10; transition:.5s;}
+	nav#navbar main div.toggle div#navlist.active {max-height:20rem; z-index:20;}
 	nav#navbar main div.toggle div#navlist ul.navlist {flex-direction:column; justify-content:flex-end; align-items:stretch; padding:0 .5rem .5rem;}
 	nav#navbar main div.toggle div#navlist ul.navlist li.navitem {padding:.125rem 0;}
 

@@ -176,7 +176,7 @@ function addToCart(element) {
 function updateCart() {
 	
 	// Sort cart items. 
-	cartItems.sort(sortNumbers);
+	// cartItems.sort(sortNumbers);
 
 	// Add element for each cart item. 
 	let result = '';
