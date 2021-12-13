@@ -57,6 +57,7 @@ nav#navbar main div.account a.navlink span.caption {display:none;}
 
 
 /* Navbar: General Drawer */
+nav#navbar main div#navdrawer {position:absolute; top:100%; right:0; left:0; width:100%;}
 nav#navbar main div.navdrawer {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch; z-index:10;}
 nav#navbar main div.navdrawer.active {z-index:20;}
 nav#navbar main div.navdrawer div.inner {background-color:var(--offwhite); padding:.5rem;}
@@ -64,7 +65,7 @@ nav#navbar main div.navdrawer div.inner {background-color:var(--offwhite); paddi
 /* Navbar: General Drawer Box */
 nav#navbar main div.navdrawer.box {position:absolute; top:100%; right:0; width:50%; overflow:hidden; background-color:var(--offwhite); font-size:.75rem;}
 nav#navbar main div.navdrawer.box {max-height:0; transition:.25s;}
-nav#navbar main div.navdrawer.box.active {max-height:50vh;}
+nav#navbar main div.navdrawer.box.active {max-height:50vh; min-height:25vh;}
 nav#navbar main div.navdrawer.box div.item {background-color:white; min-height:3rem;}
 
 /* Navbar: Search Bar Drawer Box */
