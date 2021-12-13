@@ -1,10 +1,6 @@
 
-
-// Initialize list of id's of cart items. 
-let cartIds = [0,1,1,1,2,2];
-
 // Define product data. 
-let productdata = [
+const productdata = [
 	{
 		name:'Lorem Ipsum Dolor',
 		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit totam sapiente consectetur eligendi',
@@ -124,29 +120,21 @@ let productdata = [
 		exprice:'149.99',
 		photourl:'./pic/p7.jpg',
 		producturl:'./product/'
+	}
+];
+
+// Initialize list of id's of cart items. 
+let cartItems = [
+	{
+		id:0,
+		qty:2
 	},
 	{
-		name:'Lorem Ipsum Dolor',
-		description:'Lorem ipsum dolor sit, amet consectetur adipisicing',
-		rating:{
-			average:4.5,
-			numratings:137
-		},
-		price:'99.99',
-		exprice:'149.99',
-		photourl:'./pic/shoes.jpg',
-		producturl:'./product/'
+		id:1,
+		qty:4
 	},
 	{
-		name:'Lorem Ipsum Dolor',
-		description:'Lorem ipsum dolor sit, amet consectetur adipisicing',
-		rating:{
-			average:4.5,
-			numratings:137
-		},
-		price:'99.99',
-		exprice:'149.99',
-		photourl:'./pic/shoes1.jpg',
-		producturl:'./product/'
-	},
+		id:2,
+		qty:4
+	}
 ];

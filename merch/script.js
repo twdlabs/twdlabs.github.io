@@ -28,7 +28,8 @@ let navdata = [
 $(document).ready(function() {
 
 	// Update cart. 
-	updateCart();
+	// updateCart();
+	setTimeout(updateCart,100);
 });
 
 
@@ -38,10 +39,11 @@ $(document).ready(function() {
 
 // Load navigation bar from file. 
 function loadNav(atRootDirectory) {
+	console.log('loadNav()');
 
 	// Get relative url of navbar file. 
 	let url = ( (atRootDirectory) ? ('') : ('../') ) + 'navbar.html';
-	console.log('Loading navbar:',url);
+	console.log('Load navbar from:',url);
 
 	// Load navbar. 
 	$('#navbar').load(url);
@@ -145,11 +147,23 @@ function addToCart(element) {
 	// Get product id of selected item. 
 	let id = element.getAttribute('data-productid');
 
+	// Check if item is already in cart. 
+	let alreadyInCart = false;
+	let cartindex = -1;
+	for (i in cartItems) {
+		let item = cartItems[i];
+		if(id==item.id) {
+			alreadyInCart = true;
+			cartindex = i;
+		}
+	}
+
 	// Add id of selected item to cart array. 
-	cartIds.push(id);
+	if(alreadyInCart) cartItems[cartindex].qty++;
+	else cartItems.push({id:id,qty:1});
 
 	// Show items in cart. 
-	console.log('Cart:',cartIds);
+	console.log('Cart:',cartItems);
 
 	// Update cart items in cart drawer. 
 	updateCart();
@@ -161,12 +175,15 @@ function addToCart(element) {
 // Update cart items in cart drawer. 
 function updateCart() {
 	
+	// Sort cart items. 
+	cartItems.sort(sortNumbers);
+
 	// Add element for each cart item. 
 	let result = '';
-	for(id of cartIds) {
+	for(item of cartItems) {
 
 		// Get product by id. 
-		product = productdata[id];
+		product = productdata[item.id];
 
 		// Create product element. 
 		result += `
@@ -194,24 +211,31 @@ function updateCart() {
 			<!-- quantity -->
 			<div class="quantity">
 				<span class="delta">&minus;</span>
-				<span class="qty">1</span>
+				<span class="qty">${item.qty}</span>
 				<span class="delta">&plus;</span>
 			</div>
 			<!-- /quantity -->
 
 		</div>
-		<!-- /item -->`;
+		<!-- /item -->
+		`;
 	}
 	// console.log('result',result);
 
 	// Get inside of cart drawer. 
 	let cartbox = document.querySelector('div#cartbox div.inner');
-	// let cartbox = $('div#cartbox div.inner');
 	console.log('cartbox',cartbox);
 
 	// Add elements to cart drawer. 
 	cartbox.innerHTML = result;
-	// cartbox.html(result);
+
+	/*****/
+
+	// Sort cart items. 
+	function sortNumbers(a,b) {
+		return (a.id-b.id);
+	}
+
 }
 
 
