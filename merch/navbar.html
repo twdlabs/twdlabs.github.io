@@ -36,7 +36,7 @@
 				<div class="toggle">
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink toggler" title="Toggle" onclick="closeOtherDrawers('navlist'); document.getElementById('navlist').classList.toggle('active');">
+					<a href="javascript:void(0)" class="navlink toggler" title="Toggle" onclick="toggleDrawer('navlist')">
 
 						<!-- icon -->
 						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -52,7 +52,7 @@
 					<!-- /navlink -->
 
 					<!-- #navlist -->
-					<div id="navlist">
+					<div id="navlist" class="navdrawer">
 
 						<!-- navlist -->
 						<ul class="navlist" id="navlist">
@@ -91,27 +91,7 @@
 							<li class="navitem">
 
 								<!-- navlink -->
-								<a href="javascript:void(0)" class="navlink page">Menu</a>
-								<!-- /navlink -->
-								
-							</li>
-							<!-- /navitem -->
-							
-							<!-- navitem -->
-							<li class="navitem">
-
-								<!-- navlink -->
-								<a href="javascript:void(0)" class="navlink page">Order</a>
-								<!-- /navlink -->
-								
-							</li>
-							<!-- /navitem -->
-							
-							<!-- navitem -->
-							<li class="navitem">
-
-								<!-- navlink -->
-								<a href="javascript:void(0)" class="navlink page">Blogs</a>
+								<a href="javascript:void(0)" class="navlink page">Orders</a>
 								<!-- /navlink -->
 								
 							</li>
@@ -130,7 +110,7 @@
 				<div class="account">
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink search" title="Search" onclick="closeOtherDrawers('searchbar'); document.getElementById('searchbar').classList.toggle('active');">
+					<a href="javascript:void(0)" class="navlink search" title="Search" onclick="toggleDrawer('searchbar')">
 
 						<!-- icon -->
 						<svg class="icon" width=".7em" height=".7em" fill="currentColor" viewBox="0 0 16 16">
@@ -146,7 +126,7 @@
 					<!-- /navlink -->
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink likes" title="Likes">
+					<a href="javascript:void(0)" class="navlink likes" title="Likes" onclick="toggleDrawer('likebox')">
 
 						<!-- icon -->
 						<svg class="icon" width=".75em" height=".75em" fill="currentColor" viewBox="0 0 16 16">
@@ -163,7 +143,7 @@
 					<!-- /navlink -->
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink cart" title="Cart">
+					<a href="javascript:void(0)" class="navlink cart" title="Cart" onclick="toggleDrawer('cartbox')">
 
 						<!-- icon -->
 						<svg class="icon" width=".9em" height=".9em" fill="currentColor" viewBox="0 0 16 16">
@@ -179,7 +159,7 @@
 					<!-- /navlink -->
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink account" title="Account">
+					<a href="javascript:void(0)" class="navlink account" title="Account" onclick="toggleDrawer('accountbox')">
 
 						<!-- icon -->
 						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -199,8 +179,10 @@
 				</div>
 				<!-- /account -->
 
+
+
 				<!-- #searchbar -->
-				<div id="searchbar">
+				<div id="searchbar" class="navdrawer">
 
 					<!-- inner -->
 					<div class="inner">
@@ -213,7 +195,7 @@
 							<!-- /#searchquery -->
 		
 							<!-- sendquery -->
-							<button class="sendquery">
+							<button class="sendquery" onclick="searchForProduct()">
 		
 								<!-- icon -->
 								<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -232,7 +214,87 @@
 
 				</div>
 				<!-- /#searchbar -->
+
+
+				<!-- #likebox -->
+				<div id="likebox" class="navdrawer box">
+
+					<!-- inner -->
+					<div class="inner">
+
+						<!-- item -->
+						<div class="item"></div>
+						<!-- /item -->
+
+					</div>
+					<!-- /inner -->
+
+				</div>
+				<!-- /#likebox -->
+
+
+				<!-- #cartbox -->
+				<div id="cartbox" class="navdrawer box">
+
+					<!-- inner -->
+					<div class="inner">
+
+						<!-- item -->
+						<div class="item">
+
+							<!-- photo -->
+							<div class="photo"></div>
+							<!-- /photo -->
+
+							<!-- content -->
+							<div class="content">
+
+								<!-- name -->
+								<div class="name">Product</div>
+								<!-- /name -->
+
+								<!-- desc -->
+								<div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit totam sapiente consectetur eligendi</div>
+								<!-- /desc -->
+
+							</div>
+							<!-- /content -->
+
+							<!-- quantity -->
+							<div class="quantity">
+								<span class="delta">&minus;</span>
+								<span class="qty">1</span>
+								<span class="delta">&plus;</span>
+							</div>
+							<!-- /quantity -->
+
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /inner -->
+
+				</div>
+				<!-- /#cartbox -->
+
+
+				<!-- #accountbox -->
+				<div id="accountbox" class="navdrawer box">
+
+					<!-- inner -->
+					<div class="inner">
+
+						<!-- item -->
+						<div class="item"></div>
+						<!-- /item -->
+
+					</div>
+					<!-- /inner -->
+
+				</div>
+				<!-- /#accountbox -->
 				
+
 			</main>
 			<!-- /main -->
 
