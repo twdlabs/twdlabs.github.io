@@ -2,7 +2,10 @@
 
 // Toggle navbar slide drawer. 
 function toggleDrawer(id) {
-	console.log('Toggling drawer');
+	console.log('Toggling drawer:',id);
+
+	// Bring focus to search query field upon opening. 
+	if(id=='searchbar') document.getElementById('searchquery').focus();
 
 	// Close all other drawers. 
 	closeOtherDrawers(id);
@@ -17,7 +20,7 @@ function toggleDrawer(id) {
 
 // Open navbar slide drawer. 
 function openDrawer(id) {
-	console.log('Opening drawer...');
+	console.log('Opening drawer:',id);
 
 	// Close all other drawers. 
 	closeOtherDrawers(id);
@@ -32,6 +35,8 @@ function openDrawer(id) {
 
 // Close all other navbar slide drawers. 
 function closeOtherDrawers(exceptionId) {
+	console.log('Closing all drawers except:', (exceptionId?exceptionId:'none') );
+
 	// let drawerIds = ['navlist','searchbar','likebox','cartbox','accountbox'];
 
 	// Get all nav drawers. 

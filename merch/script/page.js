@@ -57,11 +57,11 @@ function addProductItems() {
 				<div class="productprice">
 
 					<!-- price -->
-					<a class="price" href="${p.producturl}">${p.price}</a>
+					<a class="price" href="${p.producturl}">${(1*p.price).toFixed(2)}</a>
 					<!-- /price -->
 
 					<!-- exprice -->
-					<a class="price exprice" href="${p.producturl}">${p.exprice}</a>
+					<a class="price exprice" href="${p.producturl}">${(1*p.exprice).toFixed(2)}</a>
 					<!-- /exprice -->
 
 				</div>
@@ -81,7 +81,9 @@ function addProductItems() {
 	// Add elements to page. 
 	document.querySelector('section#products div.inner main').innerHTML = result;
 
+
 	/*****/
+
 
 	// Get elements for star rating. 
 	function getRatingStars(avgrating) {

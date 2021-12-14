@@ -64,7 +64,7 @@ function changeCartQty(id, dq) {
 		return foundItem;
 	}
 
-	// TODO: Remove from cart item with matching id. 
+	// Remove from cart item with matching id. 
 	function removeCartItemById(removeId) {
 
 		// Get cart index of item. 
@@ -80,72 +80,3 @@ function changeCartQty(id, dq) {
 }
 
 
-// Update cart items in cart drawer. 
-function updateCart() {
-	console.log('Updating cart...');
-	
-	// Sort cart items. 
-	// cartItems.sort(sortNumbers);
-
-	// Add element for each cart item. 
-	let result = '';
-	for(item of cartItems) {
-
-		// Get product by id. 
-		product = productdata[item.productid];
-
-		// Create product element. 
-		result += `
-		<!-- item -->
-		<div class="item" data-productid="${item.productid}">
-
-			<!-- photo -->
-			<div class="photo">${ (product.photourl) ? (`<img src="${product.photourl}">`) : ('') }</div>
-			<!-- /photo -->
-
-			<!-- content -->
-			<div class="content">
-
-				<!-- name -->
-				<div class="name">${product.name}</div>
-				<!-- /name -->
-
-				<!-- desc -->
-				<div class="desc">${product.description}</div>
-				<!-- /desc -->
-
-			</div>
-			<!-- /content -->
-
-			<!-- quantity -->
-			<div class="quantity">
-				<span class="delta" onclick="changeCartQty(${item.productid},-1)">&minus;</span>
-				<span class="qty">${item.qty}</span>
-				<span class="delta" onclick="changeCartQty(${item.productid},1)">&plus;</span>
-			</div>
-			<!-- /quantity -->
-
-		</div>
-		<!-- /item -->
-		`;
-	}
-	// console.log('result',result);
-
-	// Get inside of cart drawer. 
-	let cartbox = document.querySelector('div#cartbox div.inner');
-	// console.log('cartbox',cartbox);
-
-	// Add elements to cart drawer. 
-	cartbox.innerHTML = result;
-
-	// Scroll to top of cart. 
-	cartbox.scrollTop = 0;
-
-	/*****/
-
-	// Sort cart items. 
-	function sortNumbers(a,b) {
-		return (a.productid - b.productid ) ;
-	}
-
-}
