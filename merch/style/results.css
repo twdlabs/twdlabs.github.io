@@ -6,7 +6,7 @@ html,body {font-family:sans-serif; min-height:100%; margin:0; background-color:#
 /* div#container {} */
 div#container main {max-width:75rem; margin:0 auto; background-color:#EEE; padding:1rem .75rem;}
 div#container main {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between;}
-div#container main div.product {flex:0 0 25%; /*border:1px solid #0002;*/ padding:1rem .75rem; box-shadow:0px 1px 1px 0 rgba(0,0,0,.05); z-index:1; transition:.25s;}
+div#container main div.product {flex-grow:0; flex-shrink:0; flex-basis:25%; /*border:1px solid #0002;*/ padding:1rem .75rem; box-shadow:0px 1px 1px 0 rgba(0,0,0,.05); z-index:1; transition:.25s;}
 div#container main div.product:hover {transform:translateY(-1rem);}
 div#container main div.product div.photo {padding:50%; background-color:#0001;}
 div#container main div.product div.name {font-size:1.25rem; margin-top:.75rem;}
@@ -24,11 +24,11 @@ footer {background-color:#0001; height:20rem;}
 }
 
 /* Small Screen */
-@media screen and (max-width:42rem) {
+@media screen and (max-width:48rem) {
 	div#container main div.product {flex-basis:50%;}
 }
 
 /* Extra Small Screen */
-@media screen and (max-width:30rem) {
+@media screen and (max-width:32rem) {
 	div#container main div.product {flex-basis:100%;}
 }

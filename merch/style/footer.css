@@ -16,7 +16,7 @@ footer#footer main section div.col input#email {display:block; padding:.75rem; b
 footer#footer main section div.col input#email:focus {border-color:black;}
 footer#footer main section div.col button#subscribe {display:inline-block; padding:.75rem; background-color:var(--blue); color:white; font-size:1.125rem; border:1px solid var(--blue); margin:0; margin-top:1rem;}
 footer#footer main section div.col ul.navlist {list-style:none; padding:0; margin:0; margin-top:1.5rem;}
-footer#footer main section div.col ul.navlist li.navitem {display:flex; flex-direction:row; margin-top:1rem;}
+footer#footer main section div.col ul.navlist li.navitem {display:flex; flex-direction:row; align-items:center; margin-top:1rem;}
 footer#footer main section div.col ul.navlist li.navitem svg.icon {font-size:.75rem; color:var(--blue);}
 footer#footer main section div.col ul.navlist li.navitem a.navlink {color:inherit; font-weight:100; text-decoration:none; padding-left:.5rem; transition:.25s;}
 footer#footer main section div.col ul.navlist li.navitem a.navlink:hover {color:var(--blue); padding-left:1.25rem;}
