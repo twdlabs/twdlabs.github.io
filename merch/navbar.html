@@ -13,7 +13,7 @@
 				<div class="logo">
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink" title="Toggle">
+					<a href="javascript:void(0)" class="navlink">
 
 						<!-- icon -->
 						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -52,48 +52,18 @@
 					<!-- /navlink -->
 
 					<!-- #navlist -->
-					<div id="navlist" class="navdrawer">
+					<div id="navlist" class="navdrawer sidelined">
 
 						<!-- navlist -->
-						<ul class="navlist" id="navlist">
+						<ul class="navlist">
 							
 							<!-- navitem -->
 							<li class="navitem">
 
 								<!-- navlink -->
-								<a href="javascript:void(0)" class="navlink page">Home</a>
+								<a class="navlink page" href="javascript:void(0)">Xyz</a>
 								<!-- /navlink -->
 
-							</li>
-							<!-- /navitem -->
-							
-							<!-- navitem -->
-							<li class="navitem">
-
-								<!-- navlink -->
-								<a href="javascript:void(0)" class="navlink page">About</a>
-								<!-- /navlink -->
-								
-							</li>
-							<!-- /navitem -->
-							
-							<!-- navitem -->
-							<li class="navitem">
-
-								<!-- navlink -->
-								<a href="javascript:void(0)" class="navlink page">Popular</a>
-								<!-- /navlink -->
-								
-							</li>
-							<!-- /navitem -->
-							
-							<!-- navitem -->
-							<li class="navitem">
-
-								<!-- navlink -->
-								<a href="javascript:void(0)" class="navlink page">Orders</a>
-								<!-- /navlink -->
-								
 							</li>
 							<!-- /navitem -->
 
@@ -126,7 +96,7 @@
 					<!-- /navlink -->
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink likes" title="Likes" onclick="toggleDrawer('likebox')">
+					<a href="javascript:void(0)" class="navlink favs" title="Favorites" onclick="toggleDrawer('likebox')">
 
 						<!-- icon -->
 						<svg class="icon" width=".75em" height=".75em" fill="currentColor" viewBox="0 0 16 16">
@@ -136,7 +106,7 @@
 						<!-- /icon -->
 
 						<!-- caption -->
-						<span class="caption">Likes</span>
+						<span class="caption">Favorites</span>
 						<!-- /caption -->
 
 					</a>
@@ -147,7 +117,8 @@
 
 						<!-- icon -->
 						<svg class="icon" width=".9em" height=".9em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+							<!-- <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/> -->
+							<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
 						</svg>
 						<!-- /icon -->
 
@@ -218,35 +189,13 @@
 	
 					<!-- #likebox -->
 					<div id="likebox" class="navdrawer box">
+
+						<!-- title -->
+						<h3 class="title">Your Favorites</h3>
+						<!-- /title -->
 	
 						<!-- inner -->
-						<div class="inner">
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-						</div>
+						<div class="inner"></div>
 						<!-- /inner -->
 	
 					</div>
@@ -254,12 +203,16 @@
 	
 					<!-- #cartbox -->
 					<div id="cartbox" class="navdrawer box">
+
+						<!-- title -->
+						<h3 class="title">Your Cart</h3>
+						<!-- /title -->
 	
 						<!-- inner -->
 						<div class="inner">
 	
 							<!-- item -->
-							<div class="item">
+							<div class="item" data-productid="0">
 	
 								<!-- photo -->
 								<div class="photo"></div>
@@ -276,14 +229,18 @@
 									<div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit totam sapiente consectetur eligendi</div>
 									<!-- /desc -->
 	
+									<!-- price -->
+									<div class="price">100.00</div>
+									<!-- /price -->
+	
 								</div>
 								<!-- /content -->
 	
 								<!-- quantity -->
 								<div class="quantity">
-									<span class="delta">&minus;</span>
+									<span class="delta" onclick="changeCartQty(this.id,-1)">&minus;</span>
 									<span class="qty">1</span>
-									<span class="delta">&plus;</span>
+									<span class="delta" onclick="changeCartQty(this.id,1)">&plus;</span>
 								</div>
 								<!-- /quantity -->
 	
@@ -298,35 +255,13 @@
 	
 					<!-- #accountbox -->
 					<div id="accountbox" class="navdrawer box">
+
+						<!-- title -->
+						<h3 class="title">Your Account</h3>
+						<!-- /title -->
 	
 						<!-- inner -->
-						<div class="inner">
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-							<!-- item -->
-							<div class="item"></div>
-							<!-- /item -->
-	
-						</div>
+						<div class="inner"></div>
 						<!-- /inner -->
 	
 					</div>

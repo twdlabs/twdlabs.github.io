@@ -94,7 +94,7 @@ div#container section#products div.inner aside.refine {flex-grow:0; width:20rem;
 	div#container section#products div.inner aside.refine {width:auto;}
 }
 
-@media screen and (max-width:40rem) {
+@media screen and (max-width:48rem) {
 
 	/* Categories Section */
 
@@ -102,7 +102,7 @@ div#container section#products div.inner aside.refine {flex-grow:0; width:20rem;
 	div#container section#products div.inner main {grid-template-columns:repeat(2,1fr);}
 }
 
-@media screen and (max-width:30rem) {
+@media screen and (max-width:32rem) {
 
 	/* Categories Section */
 	div#container section#categories main {display:grid; grid-template-areas: 'a' 'b' 'c' 'd';}

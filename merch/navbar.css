@@ -1,0 +1,208 @@
+
+
+
+/* Navbar */
+nav#navbar {min-height:3rem; background-color:var(--offwhite); padding:.625rem 0 .5rem; transition:.5s; position:relative;}
+nav#navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:25; box-shadow:var(--shadow);}
+nav#navbar main {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+nav#navbar main {max-width:72rem; padding:0 1rem; margin: 0 auto; transition:.5s;}
+
+
+/* Navbar: General Section */
+nav#navbar main div a.navlink {display:flex; justify-content:center; align-items:center; min-width:2rem; min-height:2rem; border-radius:.25rem; margin:0 .15rem;}
+nav#navbar main div a.navlink {background-color:#FFF8; color:inherit; text-decoration:none;}
+nav#navbar main div a.navlink.active {background-color:#0008; color:white;}
+
+/* Navbar: Logo Section */
+nav#navbar main div.logo {flex-grow:1; flex-basis:0;}
+nav#navbar main div.logo {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+nav#navbar main div.logo a.navlink {background-color:transparent; font-size:2rem; padding:.65rem .85rem .15rem; transition:.5s;}
+nav#navbar main div.logo a.navlink svg.icon {color:var(--blue); margin-bottom:.5rem;}
+nav#navbar main div.logo a.navlink span.caption {margin-left:.35rem;}
+
+/* Navbar: Toggle Section */
+nav#navbar main div.toggle {flex-grow:1; flex-basis:0;}
+nav#navbar main div.toggle {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+/* nav#navbar main div.toggle a.navlink {} */
+nav#navbar main div.toggle a.navlink:hover {background-color:#0008; background-color:var(--blue); color:white;}
+nav#navbar main div.toggle a.navlink.toggler {font-size:1.5rem; display:none;}
+/* nav#navbar main div.toggle a.navlink svg.icon {} */
+nav#navbar main div.toggle a.navlink span.caption {display:none;}
+
+/* Navbar Drawer: Navigation List */
+nav#navbar main div.toggle div#navlist {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch;}
+nav#navbar main div.toggle div#navlist ul.navlist {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+nav#navbar main div.toggle div#navlist ul.navlist {background-color:var(--offwhite);}
+nav#navbar main div.toggle div#navlist ul.navlist {list-style:none; padding:0; margin:0;}
+nav#navbar main div.toggle div#navlist ul.navlist li.navitem {font-size:1.125rem;}
+nav#navbar main div.toggle div#navlist ul.navlist li.navitem a.navlink.page {justify-content:flex-start; padding:.75rem .75rem .5rem;}
+
+/* Navbar: Account Section */
+nav#navbar main div.account {flex-grow:1; flex-basis:0;}
+nav#navbar main div.account {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
+nav#navbar main div.account a.navlink {font-size:1.5rem; transition:.5s;}
+nav#navbar main div.account a.navlink:hover {background-color:#0008; background-color:var(--blue); color:white;}
+/* nav#navbar main div.account a.navlink svg.icon {} */
+nav#navbar main div.account a.navlink span.caption {display:none;}
+
+
+/* Navbar Drawer: General */
+nav#navbar main div#navdrawer {position:absolute; top:100%; right:0; left:0; width:100%;}
+nav#navbar main div#navdrawer div.navdrawer {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch; z-index:10;}
+nav#navbar main div#navdrawer div.navdrawer.active {z-index:20; box-shadow:var(--shadow);}
+nav#navbar main div#navdrawer div.navdrawer h3.title {background-color:white; margin:0; padding:1.5rem 1rem 1rem;}
+nav#navbar main div#navdrawer div.navdrawer div.inner {/* height:100%; */ /* padding:0 .25rem .25rem; */ border:.25rem solid var(--offwhite); overflow:auto;}
+nav#navbar main div#navdrawer div.navdrawer div.inner {background-color:var(--offwhite); overflow:auto; scrollbar-width:none;}
+
+/* Navbar Drawer: General Box */
+nav#navbar main div#navdrawer div.navdrawer.box {position:absolute; top:100%; right:0; width:50%; overflow:hidden; background-color:var(--offwhite); font-size:.75rem;}
+nav#navbar main div#navdrawer div.navdrawer.box {max-height:0; transition:.25s;}
+nav#navbar main div#navdrawer div.navdrawer.box.active {max-height:50vh; max-height:25vh;}
+nav#navbar main div#navdrawer div.navdrawer.box div.inner {background-color:white;}
+nav#navbar main div#navdrawer div.navdrawer.box div.inner div.item {background-color:white; /* min-height:3rem; */}
+nav#navbar main div#navdrawer div.navdrawer.box div.inner:empty:before {content:'[Empty]'; display:block; padding:1.25rem .75rem 1rem;}
+
+/* Navbar Drawer: Search Bar */
+nav#navbar main div#navdrawer div#searchbar {position:absolute; top:100%; right:0; left:0; width:100%; overflow:hidden; background-color:var(--offwhite); font-size:1.125rem;}
+nav#navbar main div#navdrawer div#searchbar {max-height:0; transition:.25s;}
+nav#navbar main div#navdrawer div#searchbar.active {max-height:5rem;}
+nav#navbar main div#navdrawer div#searchbar div.input {position:relative;}
+nav#navbar main div#navdrawer div#searchbar div.input input#searchquery {width:100%; padding:.75rem 4.5rem .75rem 2rem; font-size:inherit; border-radius:2rem; border: 0px solid var(--offwhite); outline:none;}
+nav#navbar main div#navdrawer div#searchbar div.input button.sendquery {position:absolute; right:0; top:50%; transform:translateY(-50%); height:100%; cursor:pointer;}
+nav#navbar main div#navdrawer div#searchbar div.input button.sendquery {background-color:transparent; color:inherit; border-color:transparent; border-radius:0 2rem 2rem 0; font-size:1.25rem; padding:0 1rem;}
+nav#navbar main div#navdrawer div#searchbar div.input button.sendquery:active {color: var(--blue); border-color:transparent;}
+
+/* Navbar Drawer: Favorites Box */
+/* nav#navbar main div#navdrawer div#likebox {} */
+nav#navbar main div#navdrawer div#likebox div.inner:empty:before {content:'You have no favorites.';}
+
+/* Navbar Drawer: Cart Box */
+/* nav#navbar main div#navdrawer div#cartbox {} */
+nav#navbar main div#navdrawer div#cartbox div.inner {display:flex; flex-direction:column-reverse;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item {display:flex; flex-direction:row; align-items:flex-start; padding:.25rem .5rem; user-select:none; border:.5px solid var(--offwhite); /* overflow:hidden; */}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.photo {flex-grow:0; flex-shrink:0; width:3rem;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.photo:empty::after {content:''; display:block; width:100%; padding-top:100%; background-color:#0008;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.photo img {width:100%;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.content {flex-grow:1; padding:.5rem;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.content div.name {font-size:.875rem; font-weight:bold;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.content div.desc {margin-top:.25rem;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.content div.price {margin-top:.25rem;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.content div.price:before {content:'$';}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity {flex-grow:0; flex-shrink:0;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity {display:flex; flex-direction:row; justify-content:start; align-items:center; padding:.5rem 0;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.qty {font-size:1.15rem; text-align:center;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta {font-size:1rem; padding:.5rem; text-align:center; cursor:pointer; user-select:none;}
+/* nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta.plus {margin-left:.125rem;} */
+/* nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta.minus {margin-right:.125rem;} */
+nav#navbar main div#navdrawer div#cartbox div.inner:empty:before {content:'Your cart is empty.';}
+
+/* Navbar Drawer: Account Box */
+/* nav#navbar main div#navdrawer div#accountbox {} */
+nav#navbar main div#navdrawer div#accountbox div.inner:empty:before {content:'You have no account information.';}
+
+
+
+/* Medium Screen */
+@media screen and (max-width:60rem) {
+
+	/* Navbar */
+
+	/* Navbar: Logo Section */
+	nav#navbar main div.logo {flex-grow:1;}
+
+	/* Navbar: Toggle Section */
+	nav#navbar main div.toggle {flex-grow:0;}
+	nav#navbar main div.toggle {justify-content:flex-end;}
+	nav#navbar main div.toggle a.navlink.toggler {display:flex;}
+	/* Navbar Drawer: Navigation List */
+	nav#navbar main div.toggle div#navlist {position:absolute; top:100%; right:0; left:0; width:100%; overflow:hidden;}
+	nav#navbar main div.toggle div#navlist {max-height:0; z-index:10; transition:.5s;}
+	nav#navbar main div.toggle div#navlist.active {max-height:20rem; z-index:20;}
+	nav#navbar main div.toggle div#navlist ul.navlist {flex-direction:column; justify-content:flex-end; align-items:stretch; padding:0 .5rem .5rem;}
+	nav#navbar main div.toggle div#navlist ul.navlist li.navitem {padding:.125rem 0;}
+	/* Navbar Drawer: Sidelined Navigation List */
+
+	/* Navbar: Account Section */
+	nav#navbar main div.account {flex-grow:0;}
+
+
+	/* Navbar Drawer: General */
+
+	/* Navbar Drawer: General Box */
+
+	/* Navbar Drawer: Search Bar */
+
+	/* Navbar Drawer: Favorites Box */
+
+	/* Navbar Drawer: Cart Box */
+
+	/* Navbar Drawer: Account Box */
+}
+
+/* Small Screen */
+@media screen and (max-width:48rem) {
+	
+	/* Navbar */
+
+	/* Navbar: Logo Section */
+	nav#navbar main div.logo a.navlink {font-size:1.75rem;}
+
+	/* Navbar: Toggle Section */
+	/* Navbar Drawer: Navigation List */
+	/* Navbar Drawer: Sidelined Navigation List */
+
+	/* Navbar: Account Section */
+
+
+	/* Navbar Drawer: General */
+
+	/* Navbar Drawer: General Box */
+	nav#navbar main div#navdrawer div.navdrawer.box {width:75%;}
+
+	/* Navbar Drawer: Search Bar */
+
+	/* Navbar Drawer: Favorites Box */
+
+	/* Navbar Drawer: Cart Box */
+
+	/* Navbar Drawer: Account Box */
+}
+
+/* Extra Small Screen */
+@media screen and (max-width:32rem) {
+	
+	/* Navbar */
+	nav#navbar main {flex-wrap:wrap;}
+
+	/* Navbar: Logo Section */
+	nav#navbar main div.logo a.navlink {font-size:1.5rem;}
+
+	/* Navbar: Toggle Section */
+	/* Navbar Drawer: Navigation List */
+	/* Navbar Drawer: Sidelined Navigation List */
+	/* nav#navbar main div.toggle div#navlist.sidelined {position:fixed; top:0; left:0; width:100%; height:100%; transform:translateX(100%); max-height:none;}
+	nav#navbar main div.toggle div#navlist.sidelined.active {transform:translateX(0); max-height:none;}
+	nav#navbar main div.toggle div#navlist.sidelined ul.navlist {height:100%; justify-content:center;}
+	nav#navbar main div.toggle div#navlist.sidelined ul.navlist li.navitem a.navlink.page {padding:1.75rem 1.5rem 1.5rem;} */
+
+	/* Navbar: Account Section */
+	nav#navbar main div.account {flex-basis:100%; flex-shrink:0; justify-content:center;}
+	nav#navbar main div.account a.navlink {font-size:1.25rem;}
+
+
+	/* Navbar Drawer: General */
+
+	/* Navbar Drawer: General Box */
+	nav#navbar main div#navdrawer div.navdrawer.box {width:100%;}
+
+	/* Navbar Drawer: Search Bar */
+	nav#navbar main div#navdrawer div#searchbar {font-size:1rem;}
+	nav#navbar main div#navdrawer div#searchbar div.input input#searchquery {padding:.5rem 3.5rem .5rem 1.5rem;}
+	nav#navbar main div#navdrawer div#searchbar div.input button.sendquery {font-size:1rem;}
+
+	/* Navbar Drawer: Favorites Box */
+
+	/* Navbar Drawer: Cart Box */
+
+	/* Navbar Drawer: Account Box */
+}

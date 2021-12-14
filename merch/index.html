@@ -12,14 +12,22 @@
 		<!-- jQuery -->
 		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
 
-		<!-- Main Site Stylesheet -->
+		<!-- Main Site Stylesheets -->
 		<link href="style.css" rel="stylesheet" type="text/css"/>
-		<!-- Main Site Script -->
-		<script src="data.js" type="text/javascript"></script>
-		<script src="script.js" type="text/javascript"></script>
-
+		<link href="navbar.css" rel="stylesheet" type="text/css"/>
+		<link href="footer.css" rel="stylesheet" type="text/css"/>
 		<!-- Specific Page Stylesheet -->
 		<link href="page.css" rel="stylesheet" type="text/css"/>
+
+		<!-- Main Site Scripts -->
+		<script src="data.js" type="text/javascript"></script>
+		<script src="search.js" type="text/javascript"></script>
+		<!-- <script src="favs.js" type="text/javascript"></script> -->
+		<script src="cart.js" type="text/javascript"></script>
+		<!-- <script src="account.js" type="text/javascript"></script> -->
+		<script src="navdrawer.js" type="text/javascript"></script>
+		<script src="script.js" type="text/javascript"></script>
+
 	</head>
 
 	<body>
@@ -31,7 +39,7 @@
 
 
 		<!-- #container -->
-		<div id="container">
+		<div id="container" onclick="closeOtherDrawers()">
 
 			<!-- #categories -->
 			<section id="categories">
@@ -182,6 +190,13 @@
 
 		</div>
 		<!-- /#container -->
+
+
+		<!-- #footer -->
+		<footer id="footer"></footer>
+		<script>loadFooter(true);</script>
+		<!-- /#footer -->
+		
 		
 		
 		<!-- Star Images -->
