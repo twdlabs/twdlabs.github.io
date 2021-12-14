@@ -154,7 +154,7 @@
 				<div id="navdrawer">
 
 					<!-- #searchbar -->
-					<div id="searchbar" class="navdrawer">
+					<div id="searchbar" class="navdrawer box">
 	
 						<!-- inner -->
 						<div class="inner">
@@ -163,11 +163,11 @@
 							<div class="input">
 		
 								<!-- #searchquery -->
-								<input id="searchquery" type="search" value="" placeholder="Search...">
+								<input id="searchquery" type="search" value="" placeholder="Search..." onkeyup="event.preventDefault(); if(event.keyCode===13) document.getElementById('sendquery').click();">
 								<!-- /#searchquery -->
 			
 								<!-- sendquery -->
-								<button class="sendquery" onclick="searchForProduct()">
+								<button class="sendquery" id="sendquery" onclick="searchForProduct()">
 			
 									<!-- icon -->
 									<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -195,7 +195,37 @@
 						<!-- /title -->
 	
 						<!-- inner -->
-						<div class="inner"></div>
+						<div class="inner">
+	
+							<!-- item -->
+							<div class="item" data-productid="0">
+	
+								<!-- photo -->
+								<div class="photo" style="background-image:url('pic/avatar.png');"></div>
+								<!-- /photo -->
+	
+								<!-- content -->
+								<div class="content">
+	
+									<!-- name -->
+									<div class="name">Product</div>
+									<!-- /name -->
+	
+									<!-- desc -->
+									<div class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit totam sapiente consectetur eligendi</div>
+									<!-- /desc -->
+	
+									<!-- price -->
+									<div class="price">100.00</div>
+									<!-- /price -->
+	
+								</div>
+								<!-- /content -->
+	
+							</div>
+							<!-- /item -->
+
+						</div>
 						<!-- /inner -->
 	
 					</div>
@@ -215,7 +245,7 @@
 							<div class="item" data-productid="0">
 	
 								<!-- photo -->
-								<div class="photo"></div>
+								<div class="photo" style="background-image:url('pic/avatar.png');"></div>
 								<!-- /photo -->
 	
 								<!-- content -->
@@ -257,11 +287,37 @@
 					<div id="accountbox" class="navdrawer box">
 
 						<!-- title -->
-						<h3 class="title">Your Account</h3>
+						<h3 class="title">Accounts</h3>
 						<!-- /title -->
 	
 						<!-- inner -->
-						<div class="inner"></div>
+						<div class="inner">
+	
+							<!-- item -->
+							<div class="item" data-userid="0">
+	
+								<!-- photo -->
+								<div class="photo" style="background-image:url('pic/avatar.png');"></div>
+								<!-- /photo -->
+	
+								<!-- content -->
+								<div class="content">
+	
+									<!-- name -->
+									<div class="name">John Smith</div>
+									<!-- /name -->
+	
+									<!-- email -->
+									<div class="email">johnsmith@mail.com</div>
+									<!-- /email -->
+	
+								</div>
+								<!-- /content -->
+	
+							</div>
+							<!-- /item -->
+
+						</div>
 						<!-- /inner -->
 	
 					</div>
