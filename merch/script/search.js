@@ -1,5 +1,8 @@
 
 
+/* SEARCH */
+
+
 // TODO: Search for products related to search query. 
 function searchForProduct() {
 
