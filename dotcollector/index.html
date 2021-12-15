@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Dot Collector</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			body {font-family:sans-serif; height:100vh; margin:0;}
+			body {display:flex; flex-direction:column; align-items:stretch;}
+
+
+			nav#header {flex-grow:0;}
+			nav#header {display:flex; flex-direction:row; justify-content:flex-end;}
+			nav#header {background-color:black; color:white; min-height:4rem; padding:.5rem 2rem;}
+			nav#header div.user {display:flex; flex-direction:row; align-items:center; /* padding:.5rem; */}
+			nav#header div.user div.photo {min-height:2.5rem; min-width:2.5rem; border:.5px solid white; border-radius:50%;}
+			nav#header div.user div.photo {background:#FFF4 url('avatar-m.png'); background-size:cover; background-position:center;}
+			nav#header div.user div.name {font-size:.875rem; margin-left:.5rem; margin-top:.25rem;}
+
+
+			div#container {flex-grow:1;}
+			div#container {display:flex; flex-direction:row;}
+			div#container aside#panel {flex-grow:0; min-width:10rem;}
+			div#container main#main {flex-grow:1;}
+
+
+			div#container aside#panel {background-color:#272627; color:white; padding:2rem .75rem;}
+			div#container aside#panel h3.title {font-size:1rem; font-weight:100; margin:0;}
+			div#container aside#panel ul.list {list-style:none; padding:0; margin:0; margin-top:1rem;}
+			div#container aside#panel ul.list li.person {margin-top:.5rem;}
+			div#container aside#panel ul.list li.person a.user {display:flex; flex-direction:row; align-items:center; color:inherit; text-decoration:none;}
+			div#container aside#panel ul.list li.person a.user div.photo {min-height:3rem; min-width:3rem; border:.5px solid white; border-radius:50%;}
+			div#container aside#panel ul.list li.person a.user div.photo {background:#FFF4; background-size:cover; background-position:center;}
+			div#container aside#panel ul.list li.person a.user div.name {font-size:.875rem; margin-left:.75rem; margin-top:.25rem;}
+
+
+			div#container main#main {background-color:white; display:flex; flex-direction:column;}
+			div#container main#main nav.pager {flex-grow:0;}
+			div#container main#main div.container {flex-grow:1;}
+
+			div#container main#main nav.pager {background-color:#F4F2F4; min-height:3rem;}
+			div#container main#main nav.pager ul.navlist {list-style:none; padding:0; margin:0;}
+			div#container main#main nav.pager ul.navlist {display:flex; flex-direction:row; justify-content:center;}
+			div#container main#main nav.pager ul.navlist li.navitem {color:#C4C2C4; font-size:1.25rem; padding:1rem;}
+			div#container main#main nav.pager ul.navlist li.navitem.active {color:#939193;}
+			div#container main#main nav.pager ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none; display:block;}
+			div#container main#main nav.pager ul.navlist li.navitem.active a.navlink {text-decoration:underline;}
+			
+			div#container main#main div.container {overflow:hidden;}
+			div#container main#main div.container div.inner {display:flex; flex-direction:row; align-items:stretch; height:100%; transition:.5s;}
+			div#container main#main div.container div.inner section.page {width:100%; flex-shrink:0;}
+			div#container main#main div.container div.inner section.page#one {background-color:#00f4; }
+			div#container main#main div.container div.inner section.page#two {background-color:#0f04;}
+			div#container main#main div.container div.inner section.page#two div.gridbox {}
+			div#container main#main div.container div.inner section.page#two div.gridbox div.row {}
+			div#container main#main div.container div.inner section.page#two div.gridbox div.row div.item {min-height:2.5rem; min-width:2.5rem; border:.5px solid white; background-color:#0004; display:grid; place-items:center;}
+			div#container main#main div.container div.inner section.page#two div.gridbox div.row div.item.user {border-radius:50%; background:#FFF4; background-size:cover; background-position:center;}
+			div#container main#main div.container div.inner section.page#two div.gridbox div.row div.item.rating {}
+
+
+			@media screen and (max-width:40rem) {
+				div#container main#main nav.pager ul.navlist li.navitem {font-size:.75rem;}
+			}
+
+		</style>
+	</head>
+	
+	<body>
+
+		<!-- nav -->
+		<nav id="header">
+
+			<!-- user -->
+			<div class="user">
+
+				<!-- photo -->
+				<div class="photo"></div>
+				<!-- /photo -->
+
+				<!-- name -->
+				<div class="name">John</div>
+				<!-- /name -->
+
+			</div>
+			<!-- /user -->
+
+		</nav>
+		<!-- /nav -->
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- panel -->
+			<aside id="panel">
+
+				<!-- title -->
+				<h3 class="title">Participants</h3>
+				<!-- /title -->
+
+				<!-- list -->
+				<ul class="list" id="personlist">
+
+					<!-- person -->
+					<li class="person">
+
+						<!-- user -->
+						<a class="user" href="javascipt:void(0)">
+			
+							<!-- photo -->
+							<div class="photo" style="background-image:url('avatar-m.png');"></div>
+							<!-- /photo -->
+			
+							<!-- name -->
+							<div class="name">John</div>
+							<!-- /name -->
+			
+						</a>
+						<!-- /user -->
+
+					</li>
+					<!-- /person -->
+
+				</ul>
+				<!-- /list -->
+				
+			</aside>
+			<!-- /panel -->
+
+			<!-- main -->
+			<main id="main">
+
+				<!-- pager -->
+				<nav class="pager">
+
+					<!-- navlist -->
+					<ul class="navlist" id="pagerlist">
+
+						<!-- navitem -->
+						<li class="navitem active">
+
+							<!-- navlink -->
+							<a class="navlink" href="javascript:void(0)" onclick="goToPage('one');">My synthesis</a>
+							<!-- /navlink -->
+
+						</li>
+						<!-- /navitem -->
+
+						<!-- navitem -->
+						<li class="navitem">
+
+							<!-- navlink -->
+							<a class="navlink" href="javascript:void(0)" onclick="goToPage('two');">Everyone's Synthesis</a>
+							<!-- /navlink -->
+
+						</li>
+						<!-- /navitem -->
+
+					</ul>
+					<!-- /navlist -->
+					
+				</nav>
+				<!-- /pager -->
+
+				<!-- container -->
+				<div class="container">
+
+					<!-- inner -->
+					<div class="inner">
+
+						<!-- #one -->
+						<section id="one" class="page">
+		
+						</section>
+						<!-- /#one -->
+		
+						<!-- #two -->
+						<section id="two" class="page">
+		
+							<!-- gridbox -->
+							<div class="gridbox">
+			
+								<!-- item -->
+								<div class="item">.</div>
+								<!-- /item -->
+			
+							</div>
+							<!-- /gridbox -->
+		
+						</section>
+						<!-- /#two -->
+
+					</div>
+					<!-- /inner -->
+
+				</div>
+				<!-- /container -->
+
+			</main>
+			<!-- /main -->
+			
+		</div>
+		<!-- /#container -->
+
+		<!-- Main Script -->
+		<script type="text/javascript">
+
+			// Define list of users. 
+			let users = [
+				{
+					fname:'Ray',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Larry',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Mary',
+					photourl:'avatar-f.png'
+				},
+				{
+					fname:'Rachel',
+					photourl:'avatar-f.png'
+				},
+				{
+					fname:'Steve',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Sean',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Tiffany',
+					photourl:'avatar-f.png'
+				},
+				{
+					fname:'Jake',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Tom',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Anthony',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Jason',
+					photourl:'avatar-m.png'
+				},
+				{
+					fname:'Daniel',
+					photourl:'avatar-m.png'
+				},
+				// {
+				// 	fname:'John',
+				// 	photourl:'avatar-m.png'
+				// },
+			];
+
+			// Define matrix of ratings. 
+			let ratings = [
+
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+				[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+
+			];
+
+
+			/*****/
+
+
+			// Add people to participants list. 
+			fillParticipantsList();
+
+			// Click to last page. 
+			document.querySelector('main#main nav.pager ul.navlist li.navitem:last-child a.navlink').click();
+
+
+			/*****/
+
+
+			// Add people to participants list. 
+			function fillParticipantsList() {
+
+				// Get empty person list on page. 
+				let personlist = document.getElementById('personlist');
+
+				// 
+				let result = '';
+				for(user of users) {
+					result += `
+					<!-- person -->
+					<li class="person">
+
+						<!-- user -->
+						<a class="user" href="javascipt:void(0)">
+			
+							<!-- photo -->
+							<div class="photo" style="background-image:url('${user.photourl}');"></div>
+							<!-- /photo -->
+			
+							<!-- name -->
+							<div class="name">${user.fname}</div>
+							<!-- /name -->
+			
+						</a>
+						<!-- /user -->
+
+					</li>
+					<!-- /person -->`;
+				}
+
+				// 
+				personlist.innerHTML = result;
+			}
+			
+			// Go to page based on given id. 
+			function goToPage(id) {
+
+				// Define page ids. 
+				// let pageIds = ['one','two'];
+				
+				// Get page ids. 
+				let pages = document.querySelector('main#main div.container div.inner').children;
+				let pageIds = [...pages].map( (item) => item.id );
+				// console.log('pageIds',pageIds);
+
+				// Get page index. 
+				let pageIndex = pageIds.indexOf(id);
+
+				// Get horizontal offset percentage. 
+				let dx = (-100*pageIndex)+'%';
+
+				// Get page holder. 
+				let pageholder = document.querySelector('main#main div.container div.inner');
+
+				// Add transformation to page holder. 
+				pageholder.style.transform = `translateX(${dx})`;
+
+
+				// Highlight nav item corresponding to selected page. 
+				let pageritems = document.getElementById('pagerlist').children;
+				// console.log('pageritems',pageritems);
+				// Remove all highlights. 
+				for(item of pageritems) {
+					item.classList.remove('active');
+				}
+				// Highlight selected item. 
+				pageritems[pageIndex].classList.add('active');
+				// console.log('Highlight',pageritems[pageIndex]);
+			}
+
+		</script>
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>
