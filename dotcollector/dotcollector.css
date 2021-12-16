@@ -1,0 +1,74 @@
+
+* {box-sizing:border-box;}
+
+body {font-family:sans-serif; height:100vh; margin:0;}
+body {display:flex; flex-direction:column; align-items:stretch;}
+
+
+nav#header {flex-grow:0;}
+nav#header {display:flex; flex-direction:row; justify-content:flex-end;}
+nav#header {background-color:black; color:white; min-height:4rem; padding:.5rem 2rem;}
+nav#header div.user {display:flex; flex-direction:row; align-items:center; /* padding:.5rem; */}
+nav#header div.user div.photo {min-height:2.5rem; min-width:2.5rem; border:.5px solid white; border-radius:50%;}
+nav#header div.user div.photo {background:#FFF4 url('avatar-m.png'); background-size:cover; background-position:center;}
+nav#header div.user div.name {font-size:.875rem; margin-left:.5rem; margin-top:.25rem;}
+
+
+div#container {flex-grow:1;}
+div#container {display:flex; flex-direction:row;}
+div#container aside#panel {flex-grow:0; min-width:10rem;}
+div#container main#main {flex-grow:1;}
+
+
+div#container aside#panel {background-color:#272627; color:white; padding:2rem .75rem;}
+div#container aside#panel h3.title {font-size:1rem; font-weight:100; margin:0;}
+div#container aside#panel ul.list {list-style:none; padding:0; margin:0; margin-top:1rem;}
+div#container aside#panel ul.list li.person {margin-top:.5rem;}
+div#container aside#panel ul.list li.person a.user {display:flex; flex-direction:row; align-items:center; color:inherit; text-decoration:none;}
+div#container aside#panel ul.list li.person a.user div.photo {min-height:3rem; min-width:3rem; border:.5px solid white; border-radius:50%;}
+div#container aside#panel ul.list li.person a.user div.photo {background:#FFF4; background-size:cover; background-position:center;}
+div#container aside#panel ul.list li.person a.user div.name {font-size:.875rem; margin-left:.75rem; margin-top:.25rem;}
+
+
+div#container main#main {background-color:white; display:flex; flex-direction:column;}
+div#container main#main nav.pager {flex-grow:0;}
+div#container main#main div.container {flex-grow:1;}
+
+div#container main#main nav.pager {background-color:#F4F2F4; min-height:3rem;}
+div#container main#main nav.pager ul.navlist {list-style:none; padding:0; margin:0;}
+div#container main#main nav.pager ul.navlist {display:flex; flex-direction:row; justify-content:center;}
+div#container main#main nav.pager ul.navlist li.navitem {color:#C4C2C4; font-size:1.25rem; padding:1rem;}
+div#container main#main nav.pager ul.navlist li.navitem.active {color:#939193;}
+div#container main#main nav.pager ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none; display:block;}
+div#container main#main nav.pager ul.navlist li.navitem.active a.navlink {text-decoration:underline #C4C2C4;}
+
+div#container main#main div.container {overflow:hidden;}
+div#container main#main div.container div.inner {display:flex; flex-direction:row; align-items:stretch; height:100%; transition:.5s;}
+div#container main#main div.container div.inner section.page {width:100%; flex-shrink:0; display:grid; place-items:center;}
+/* div#container main#main div.container div.inner section.page#one {background-color:#00f4;} */
+/* div#container main#main div.container div.inner section.page#two {background-color:#0f04;} */
+div#container main#main div.container div.inner section.page#two div.gridbox {border:.5px solid #FFFE; background-color:white; margin-bottom:12rem; position:relative;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row {display:flex; flex-direction:row;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.item {display:grid; place-items:center; min-height:2.5rem; min-width:2.5rem;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.user {border:1px solid white; border-radius:50%; margin-right:.25rem;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.user {background-color:#0001; background-size:cover; background-position:center;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating {background-color:#AAA; color:white; border:.5px solid #00000008; border-color:#FFF8;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r1 {background-color:#D15468;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r2 {background-color:#D15468;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r3 {background-color:#DA5863;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r4 {background-color:#E88990;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r5 {background-color:#AAA;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r6 {background-color:#9CBD84;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r7 {background-color:#99BB82;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r8 {background-color:#84AE68;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating.r9 {background-color:#6F9D4D;}
+div#container main#main div.container div.inner section.page#two div.gridbox div.row div.rating:empty {background-color:#FFF; /* background-image:linear-gradient(#DA5863,#AAA,#6F9D4D); */}
+div#container main#main div.container div.inner section.page#two div.gridbox:before,
+div#container main#main div.container div.inner section.page#two div.gridbox::after {content:''; color:#AAA; position:absolute; transform:translate(-50%,-50%);}
+div#container main#main div.container div.inner section.page#two div.gridbox:before {content:'';}
+div#container main#main div.container div.inner section.page#two div.gridbox::after {content:'';}
+
+
+@media screen and (max-width:40rem) {
+	div#container main#main nav.pager ul.navlist li.navitem {font-size:.75rem;}
+}
