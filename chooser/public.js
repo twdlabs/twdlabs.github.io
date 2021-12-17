@@ -1,3 +1,3 @@
 
 // Set flag for public page. 
-currentlyOnPublicPage = true;
+let currentlyOnPublicPage = true;
