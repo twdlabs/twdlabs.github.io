@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Theme</title>
+
+		<style type="text/css">
+			
+			:root {
+				--b:#1E7CBC;
+				--g:#249D5E;
+				--o:#FDA201;
+				--p:#9250AE;
+				--t:#1FA9B4;
+				--y:#FFCD23;
+				--r:#FB1A2E;
+				--m:#F45690;
+			}
+			* {box-sizing:border-box;}
+
+
+			body {font-family:Verdana,sans-serif; margin:0;}
+
+
+
+			div#container {background-color: whitesmoke; min-height:100vh; position:relative; overflow:hidden;}
+			div#container {display:grid; place-items:center; padding:2rem 1rem;}
+
+
+			div#container main.main {background-color:white; padding:1.25rem; box-shadow:rgba(0,0,0,0.2) 0 .25rem .625rem 0; width:24rem; max-width:85vw;}
+			div#container main.main div.photo {background:black url('pic.jpg'); background-size:cover; background-position:center; width:100%; height:16rem; margin-bottom:1.5rem;}
+			div#container main.main div.content {display:flex; flex-direction:column; align-items:center; color:#444; text-align:center;}
+			div#container main.main div.content h2.head {font-weight:600; margin:0;}
+			div#container main.main div.content p.textcopy {font-weight:100; line-height:2; margin:.75rem 0;}
+			div#container main.main div.content button.readmore {background-color:dodgerblue; color:white; font-size:inherit; letter-spacing:1px; padding:.65rem 1.75rem; border:0 none; border-radius:.25rem; cursor:pointer; margin-top:.5rem; transition:.5s;}
+			div#container main.main div.content button.readmore:hover {letter-spacing:4px;}
+
+
+			div#container aside#themer {position:absolute; top:0; height:100%; right:0; width:24rem; max-width:100%; z-index:40; transform:translateX(100%); transition:.5s;}
+			div#container aside#themer.active {transform:translateX(0);}
+			div#container aside#themer {background-color:#FFFFFFF0; color:#222; text-align:center;}
+			div#container.dark aside#themer {background-color:#252525F0; color:white;}
+			div#container aside#themer div.inner {display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch; height:100%; padding:1.5rem;}
+			div#container aside#themer div.inner hr.line {width:100%; border:none; border-top:.5px solid threedlightshadow; margin:1rem 0; transition:.5s;}
+			div#container.dark aside#themer div.inner hr.line {border-color:threeddarkshadow;}
+			div#container aside#themer div.inner h2.head {font-size:1.25rem; font-weight:400; margin:0;}
+			div#container aside#themer div.inner div.chooser {padding:0 1.5rem;}
+
+			div#container aside#themer div.inner div#themepicker {display:flex; flex-direction:row; justify-content:center; align-items:center; /* gap:1rem; */}
+			div#container aside#themer div.inner div#themepicker div.label {font-size:.875rem;}
+			div#container aside#themer div.inner div#themepicker label.switch {background-color:#0001; border:1px solid threedlightshadow; padding:.25rem; border-radius:3rem; cursor:pointer; position:relative; transition:.5s;}
+			div#container aside#themer div.inner div#themepicker label.switch {box-sizing:content-box; height:auto; /* width:4rem; */ width:5rem; /* width:6rem; */ margin:0 .75rem;}
+			div#container.dark aside#themer div.inner div#themepicker label.switch {background-color:#FFF1; border-color:threeddarkshadow;}
+			div#container aside#themer div.inner div#themepicker label.switch div.ball {content:''; display:block; width:2rem; height:2rem; border-radius:50%; background-color:white; transition:.5s;}
+			div#container aside#themer div.inner div#themepicker label.switch input.cb {position:absolute; top:0; right:0; display:none;}
+			div#container aside#themer div.inner div#themepicker label.switch input.cb:checked + div.ball {/* transform:translateX(100%); */ transform:translateX(150%); /* transform:translateX(200%); */}
+			
+			div#container aside#themer div.inner div#colorpicker {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.75rem; margin:0 auto;}
+			div#container aside#themer div.inner div#colorpicker label.color {background-color:#0001; min-width:3rem; border-radius:.5rem; overflow:hidden; cursor:pointer;}
+			div#container aside#themer div.inner div#colorpicker label.color div.fill {content:''; display:block; padding-top:100%;}
+			div#container aside#themer div.inner div#colorpicker label.color.b div.fill {background-color:var(--b);}
+			div#container aside#themer div.inner div#colorpicker label.color.g div.fill {background-color:var(--g);}
+			div#container aside#themer div.inner div#colorpicker label.color.o div.fill {background-color:var(--o);}
+			div#container aside#themer div.inner div#colorpicker label.color.p div.fill {background-color:var(--p);}
+			div#container aside#themer div.inner div#colorpicker label.color.t div.fill {background-color:var(--t);}
+			div#container aside#themer div.inner div#colorpicker label.color.y div.fill {background-color:var(--y);}
+			div#container aside#themer div.inner div#colorpicker label.color.r div.fill {background-color:var(--r);}
+			div#container aside#themer div.inner div#colorpicker label.color.m div.fill {background-color:var(--m);}
+			div#container aside#themer div.inner div#colorpicker label.color input.rb {display:none; position:absolute;}
+			div#container aside#themer div.inner div#colorpicker label.color input.rb:checked + div.fill {opacity:.5;}
+
+			div#container aside#themer div.inner button.closebtn {font-size:2.5rem; font-weight:400; margin-top:-.75rem; /* padding:.75rem; */ cursor:pointer; align-self:flex-end;}
+			div#container aside#themer div.inner button.closebtn {background-color:transparent; border:none}
+
+
+			div#container div.overlay {position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; cursor:pointer;}
+			div#container div.overlay {background-color:#0004; visibility:hidden; opacity:0; transition:.5s;}
+			div#container aside#themer.active + div.overlay {visibility:visible; opacity:1;}
+			
+			
+			div#container button.togglebtn {position:absolute; top:0; right:0; font-size:2rem; padding:1.5rem; cursor:pointer; z-index:20;}
+			div#container button.togglebtn {background-color:transparent; border:none}
+
+
+			@media screen and (max-width:20rem) {
+				div#container aside#themer div.inner div#themepicker {flex-direction:column;}
+				div#container aside#themer div.inner div#themepicker label.switch {width:auto; height:4rem; /* height:5rem; */ /* height:6rem; */ margin:.75rem 0;}
+				/* div#container aside#themer div.inner div#themepicker label.switch div.ball {} */
+				div#container aside#themer div.inner div#themepicker label.switch input.cb:checked + div.ball {transform:translateY(100%); /* transform:translateY(150%); */ /* transform:translateY(200%); */}
+				div#container aside#themer div.inner div#colorpicker {grid-template-columns:repeat(2,1fr); max-width:20rem;}
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container" onload="let darktheme = document.getElementById('darktheme').classList.contains('dark'); if(darktheme) this.classList.add('dark'); else this.classList.remove('dark');">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- photo -->
+				<div class="photo"></div>
+				<!-- /photo -->
+
+				<!-- content -->
+				<div class="content">
+
+					<!-- head -->
+					<h2 class="head">Some Text Heading</h2>
+					<!-- /head -->
+
+					<!-- textcopy -->
+					<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aspernatur quo necessitatibus, illum fuga praesentium accusantium dolorum magni. </p>
+					<!-- /textcopy -->
+
+					<!-- readmore -->
+					<button class="readmore">Read More</button>
+					<!-- /readmore -->
+
+				</div>
+				<!-- /content -->
+
+			</main>
+			<!-- /main -->
+	
+			<!-- #themer -->
+			<aside id="themer" class="active">
+
+				<!-- inner -->
+				<div class="inner">
+
+					<!-- closebtn -->
+					<button class="closebtn" onclick="document.getElementById('themer').classList.remove('active')">
+						&times
+					</button>
+					<!-- /closebtn -->
+	
+					<!-- line -->
+					<hr class="line">
+					<!-- /line -->
+
+					<!-- head -->
+					<h2 class="head">Switch Theme</h2>
+					<!-- /head -->
+	
+					<!-- line -->
+					<hr class="line">
+					<!-- /line -->
+
+					<!-- themepicker -->
+					<div id="themepicker" class="themepicker chooser">
+
+						<!-- light -->
+						<div class="light label">Light</div>
+						<!-- /light -->
+
+						<!-- switch -->
+						<label class="switch">
+
+							<!-- cb -->
+							<input type="checkbox" class="cb" id="darktheme" oninput="let darktheme = this.checked; if(darktheme) document.getElementById('container').classList.add('dark'); else document.getElementById('container').classList.remove('dark');">
+							<!-- /cb -->
+
+							<!-- ball -->
+							<div class="ball"></div>
+							<!-- /ball -->
+
+						</label>
+						<!-- /switch -->
+
+						<!-- dark -->
+						<div class="dark label">Dark</div>
+						<!-- /dark -->
+						
+					</div>
+					<!-- /themepicker -->
+	
+					<!-- line -->
+					<hr class="line">
+					<!-- /line -->
+	
+					<!-- line -->
+					<hr class="line">
+					<!-- /line -->
+
+					<!-- head -->
+					<h2 class="head">Pick Color</h2>
+					<!-- /head -->
+	
+					<!-- line -->
+					<hr class="line">
+					<!-- /line -->
+
+					<!-- #colorpicker -->
+					<div id="colorpicker" class="colorpicker chooser">
+
+						<!-- color -->
+						<label class="color b">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="b">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+						<!-- color -->
+						<label class="color g">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="g">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+						<!-- color -->
+						<label class="color o">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="o">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+						<!-- color -->
+						<label class="color p">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="p">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+						<!-- color -->
+						<label class="color t">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="t">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+						<!-- color -->
+						<label class="color y">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="y">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+						<!-- color -->
+						<label class="color r">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="r">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+						<!-- color -->
+						<label class="color m">
+
+							<!-- rb -->
+							<input type="radio" name="color" class="rb" value="m">
+							<!-- /rb -->
+
+							<!-- fill -->
+							<div class="fill"></div>
+							<!-- /fill -->
+
+						</label>
+						<!-- /color -->
+
+					</div>
+					<!-- /#colorpicker -->
+
+				</div>
+				<!-- /inner -->
+
+			</aside>
+			<!-- /#themer -->
+
+			<!-- overlay -->
+			<div class="overlay" onclick="document.getElementById('themer').classList.remove('active')"></div>
+			<!-- /overlay --
+
+			<!-- togglebtn -->
+			<button class="togglebtn" onclick="document.getElementById('themer').classList.add('active')">
+				<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+				</svg>
+			</button>
+			<!-- /togglebtn -->
+
+		</div>
+		<!-- /#container -->
+
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
