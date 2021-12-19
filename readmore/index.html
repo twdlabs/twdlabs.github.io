@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Read More</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			body {font-family:sans-serif; display:grid; place-items:center; padding:1rem; margin:0; height:100vh;}
+
+			div#container {max-width:30rem; padding:1rem; margin:0 auto;}
+			div#container section.post {border:1px solid #0001; padding:1.5rem 1rem;}
+			div#container section.post h2.head {margin:0;}
+
+			div#container section.post p.textcopy {line-height:1.75;}
+			div#container section.post p.textcopy span.excerpt {display:inline;}
+			div#container section.post p.textcopy span.excerpt::after {content:'...';}
+			div#container section.post p.textcopy span.more {display:none;}
+			div#container section.post.active p.textcopy span.excerpt::after {content:'';}
+			div#container section.post.active p.textcopy span.more {display:inline;}
+
+			div#container section.post button.readbtn {background-color:#ff0268; color:white; padding:.75rem 1rem; border:none; cursor:pointer;}
+			div#container section.post button.readbtn span.expand {display:block;}
+			div#container section.post button.readbtn span.collapse {display:none;}
+			div#container section.post.active button.readbtn span.expand {display:none;}
+			div#container section.post.active button.readbtn span.collapse {display:block;}
+		</style>
+		<link href="" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- post -->
+			<section class="post">
+				
+				<!-- head -->
+				<h2 class="head">Blog Post A</h2>
+				<!-- /head -->
+
+				<!-- textcopy -->
+				<p class="textcopy">
+					<span class="excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab.</span>
+					<span class="more">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab.</span>
+				</p>
+				<!-- /textcopy -->
+
+				<!-- readbtn -->
+				<button class="readbtn">
+					<span class="caption expand">Read More</span>
+					<span class="caption collapse">Read Less</span>
+				</button>
+				<!-- /readbtn -->
+
+			</section>
+			<!-- /post -->
+			
+		</div>
+		<!-- /#container -->
+
+		<script type="text/javascript">
+
+			// Define blog data. 
+			let blogdata = [
+				{
+					title:'Blog Post A',
+					content:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab.'
+				},
+				{
+					title:'Blog Post B',
+					content:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore.'
+				},
+				{
+					title:'Blog Post C',
+					content:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore.'
+				},
+				{
+					title:'Blog Post D',
+					content:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore.'
+				},
+				{
+					title:'Blog Post E',
+					content:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore. Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio in et quidem nam suscipit autem facere magni ab. Iste temporibus et aut, nihil impedit sunt commodi alias possimus ratione dolore.'
+				},
+			];
+
+			// Define character limit for post excerpts. 
+			let charlimit = 120;
+
+			/*****/
+
+			// Populate blog. 
+			populateBlog();
+
+			// Activate buttons. 
+			activateButtons();
+
+
+			/*****/
+
+
+			// Populate blog. 
+			function populateBlog() {
+
+				// Create elements for blog posts. 
+				let result = '';
+				for(post of blogdata) {
+					
+					// Open section. 
+					result += `
+					<!-- post -->
+					<section class="post">`;
+
+					// Add header. 
+					result += `
+						<!-- head -->
+						<h2 class="head">${post.title}</h2>
+						<!-- /head -->`;
+
+					// Add text content. 
+					let excerpt = (post.content).slice(0,charlimit);
+					let more = (post.content).slice(charlimit);
+					result += `
+						<!-- textcopy -->
+						<p class="textcopy">
+							<span class="excerpt">${excerpt}</span><span class="more">${more}</span>
+						</p>
+						<!-- /textcopy -->`;
+
+					// Add read button if needed. 
+					if(true||xyz) result += `
+						<!-- readbtn -->
+						<button class="readbtn">
+							<span class="caption expand">Read More</span>
+							<span class="caption collapse">Read Less</span>
+						</button>
+						<!-- /readbtn -->`;
+
+					// Close section. 
+					result += `
+					</section>
+					<!-- /post -->`;
+
+					// 
+					result += ``;
+					result += ``;
+				}
+
+				// Add to page. 
+				document.getElementById('container').innerHTML = result;
+
+			}
+
+
+			// Activate buttons. 
+			function activateButtons() {
+
+				// Get all read buttons. 
+				let readbtns = document.querySelectorAll('.readbtn');
+				console.log(readbtns);
+
+				// Add event handlers. 
+				for(let btn of readbtns) {
+					btn.addEventListener('click', function() {
+						let section = event.currentTarget.parentElement;
+						section.classList.toggle('active');
+					})
+				}
+				
+			}
+
+		</script>
+
+	</body>
+
+</html>
