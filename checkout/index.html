@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Checkout</title>
+
+		<style type="text/css">
+
+			* {box-sizing:border-box;}
+			
+			body {background-color:#2DBF7A; font-family:sans-serif; height:100vh; margin:0; padding:1rem;}
+			body {display:grid; place-items:center;}
+			
+			div#container {background-color:white; max-width:36rem; width:100%; /* height:40rem; */}
+			div#container {display:flex; flex-direction:column; /* gap:1rem; */ padding:1.25rem; border-radius:.25rem; margin-bottom:1rem;}
+
+			div#container main {display:flex; flex-direction:row; gap:1rem;}
+
+			div#container section {flex-grow:1; flex-basis:0; margin-top:1rem;}
+			div#container section h2.head {font-size:1.1rem; font-weight:500; text-transform:uppercase; margin:0; margin-bottom:.25rem; grid-area:h;}
+			
+			div#container section div.group {display:flex; flex-direction:row; gap:1rem;}
+			div#container section div.input {display:flex; flex-direction:column; align-items:stretch; font-size:.875rem; font-weight:100; padding:.35rem 0; /* background-color:#00000011; */ /* margin:1rem 0; */}
+			div#container section div.input label {padding:.5rem 0;}
+			div#container section div.input label::after {content:':'; margin-left:.15rem; display:inline-block;}
+			div#container section div.input input {border:1px solid #0002; font-size:inherit; padding:.75rem 1rem; width:100%; outline:none; border-radius:.25rem;}
+			div#container section div.input input:focus {border-color:black; background-color:#FFD;}
+
+			/* div#container main section#billing {} */
+			/* div#container main section#payment {} */
+			div#container section#proceed {width:100%;}
+			div#container section#proceed button.proceed {background-color:#229A61; color:white; border:1px solid #0002; border-radius:.25rem; border:0 none; font-size:1rem; font-weight:100; letter-spacing:1px; padding:.75rem; width:100%; cursor:pointer;}
+
+
+			@media screen and (max-width:30rem) {
+				div#container main {flex-direction:column; /* gap:2rem; */}
+				div#container section {margin-top:1rem;}
+			}
+			
+			/* div#container section {display:grid; grid-template-areas:'h h' 'a a' 'b b' 'c c' 'd d' 'e f';} */
+			/* div#container section div.input.a {grid-area:a;} */
+			/* div#container section div.input.b {grid-area:b;} */
+			/* div#container section div.input.c {grid-area:c;} */
+			/* div#container section div.input.d {grid-area:d;} */
+			/* div#container section div.input.e {grid-area:e;} */
+			/* div#container section div.input.f {grid-area:f;} */
+
+		</style>
+	</head>
+	
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+
+			<!-- main -->
+			<main>
+
+				<!-- #billing -->
+				<section id="billing">
+	
+					<!-- head -->
+					<h2 class="head">Billing Address</h2>
+					<!-- /head -->
+	
+					<!-- input -->
+					<div class="input a">
+	
+						<!-- label -->
+						<label for="name">Full Name</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<input type="text" id="name" placeholder="John Doe">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- input -->
+					<div class="input b">
+	
+						<!-- label -->
+						<label for="email">Email</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<input type="text" id="email" placeholder="example@example.com">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- input -->
+					<div class="input c">
+	
+						<!-- label -->
+						<label for="address">Address</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<input type="text" id="address" placeholder="123 Main Street">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- input -->
+					<div class="input d">
+	
+						<!-- label -->
+						<label for="city">City</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<input type="text" id="city" placeholder="Chicago">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- group -->
+					<div class="group">
+	
+						<!-- input -->
+						<div class="input e">
+		
+							<!-- label -->
+							<label for="state">State</label>
+							<!-- /label -->
+		
+							<!-- input -->
+							<input type="text" id="state" placeholder="IL">
+							<!-- /input -->
+							
+						</div>
+						<!-- /input -->
+		
+						<!-- input -->
+						<div class="input f">
+		
+							<!-- label -->
+							<label for="zipcode">Zip Code</label>
+							<!-- /label -->
+		
+							<!-- input -->
+							<input type="text" id="zipcode" placeholder="60502">
+							<!-- /input -->
+							
+						</div>
+						<!-- /input -->
+	
+					</div>
+					<!-- /group -->
+	
+				</section>
+				<!-- /#billing -->
+		
+				<!-- #payment -->
+				<section id="payment">
+	
+					<!-- head -->
+					<h2 class="head">Payment</h2>
+					<!-- /head -->
+	
+					<!-- input -->
+					<div class="input a">
+	
+						<!-- label -->
+						<label for="">Accepted Cards</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<img src="cc.png" style="height:43px; align-self:flex-start;">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- input -->
+					<div class="input b">
+	
+						<!-- label -->
+						<label for="cardname">Name On Card</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<input type="text" id="cardname" placeholder="John M. Doe">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- input -->
+					<div class="input c">
+	
+						<!-- label -->
+						<label for="cardnumber">Credit Card Number</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<input type="text" id="cardnumber" placeholder="1111-2222-3333-4444">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- input -->
+					<div class="input d">
+	
+						<!-- label -->
+						<label for="expmonth">Exp Month</label>
+						<!-- /label -->
+	
+						<!-- input -->
+						<input type="text" id="expmonth" placeholder="January">
+						<!-- /input -->
+						
+					</div>
+					<!-- /input -->
+	
+					<!-- group -->
+					<div class="group">
+	
+						<!-- input -->
+						<div class="input e">
+		
+							<!-- label -->
+							<label for="expyear">Exp Year</label>
+							<!-- /label -->
+		
+							<!-- input -->
+							<input type="text" id="expyear" placeholder="2022">
+							<!-- /input -->
+							
+						</div>
+						<!-- /input -->
+		
+						<!-- input -->
+						<div class="input f">
+		
+							<!-- label -->
+							<label for="cvv">CVV</label>
+							<!-- /label -->
+		
+							<!-- input -->
+							<input type="text" id="cvv" placeholder="1234">
+							<!-- /input -->
+							
+						</div>
+						<!-- /input -->
+						
+					</div>
+					<!-- /group -->
+					
+				</section>
+				<!-- /#payment -->
+
+			</main>
+			<!-- /main -->
+
+			<!-- #proceed -->
+			<section id="proceed">
+				<!-- <button class="proceed">Proceed To Checkout</button> -->
+				<button class="proceed">Place Order</button>
+			</section>
+			<!-- /#proceed -->
+
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Main Script -->
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>
