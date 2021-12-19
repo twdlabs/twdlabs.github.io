@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Hexagon Shape</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			:root {--hexagoncolor:#0f0;}
+
+			body {font-family:serif; margin:0;}
+
+			div#container {height:100vh; display:grid; place-items:center;}
+			div#container {background-color:black; animation:colorchange 2s linear infinite;}
+			div#container div.hexagon {background-color:var(--hexagoncolor); height:8.66rem; width:5rem; position:relative;}
+			div#container div.hexagon:before,
+			div#container div.hexagon::after {content:''; position:absolute; top:50%; transform:translateY(-50%); height:0; width:0; border-style:solid; border-width:4.33rem 2.5rem; box-sizing:content-box;}
+			div#container div.hexagon::before {right:100%; border-color:transparent; border-right-color:var(--hexagoncolor);}
+			div#container div.hexagon::after {left:100%; border-color:transparent; border-left-color:var(--hexagoncolor);}
+
+			@keyframes colorchange {
+				0% {filter:hue-rotate(0deg);}
+				100% {filter:hue-rotate(360deg);}
+			}
+		</style>
+		<script type="text/javascript"></script>
+	</head>
+	
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- hexagon -->
+			<div class="hexagon"></div>
+			<!-- /hexagon -->
+
+		</div>
+		<!-- /#container -->
+
+	</body>
+
+</html>
