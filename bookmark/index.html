@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Bookmark</title>
+
+		<style type="text/css">
+
+			:root {
+				--blue:#2b8ced;
+				/* --grey:#454b51; */
+			}
+			* {box-sizing:border-box;}
+			body {font-family:sans-serif; margin:0;}
+			div#container {background:linear-gradient(180deg,dodgerblue,black); display:grid; place-items:center; height:100vh;}
+			div#container div.bookmark {background-color:var(--grey,#222); display:grid; place-items:center; min-width:8rem; min-height:8rem; border-radius:1rem; cursor:pointer;}
+			/* div#container div.bookmark.active {} */
+			div#container div.bookmark svg.icon {color:#555; font-size:4rem; transition:.125s; /* display:none; */}
+			div#container div.bookmark.active svg.icon {color:dodgerblue; animation:pump .5s; transition:.5s;}
+			/* div#container div.bookmark::after {content:''; display:block; height:1.5rem; width:0; border:1rem solid #555; border-bottom-color:transparent; border-width:1.5rem 1.5rem;} */
+
+			@keyframes pump {
+				0% {transform:scale(1);}
+				50% {transform:scale(.85);}
+				100% {transform:scale(1);}
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- bookmark -->
+			<div class="bookmark" onclick="this.classList.toggle('active')">
+
+				<!-- icon -->
+				<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+				</svg>
+				<!-- /icon -->
+
+			</div>
+			<!-- /bookmark -->
+
+		</div>
+		<!-- /#container -->
+
+	</body>
+
+</html>
