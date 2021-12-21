@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Live</title>
+
+		<style type="text/css">
+
+			* {box-sizing:border-box;}
+			body {font-family:sans-serif; margin:0;}
+			div#container {background:black; height:100vh; max-width:24rem; margin:0 auto;}
+			div#container {display:flex; flex-direction:column; align-items:stretch;}
+			div#container section {position:relative;}
+			div#container section.content {flex-grow:1;}
+			div#container section.writer {flex-grow:0;}
+
+			div#container section.content {background-color:#FFF1;}
+			div#container section.content div.vid {position:relative; padding-top:200%;}
+			div#container section.content div.vid div.inner {position:absolute; top:0; left:0; width:100%; height:100%;}
+			div#container section.content div.vid div.inner {display:flex; flex-direction:row; justify-content:center; align-items:flex-end; align-items:center;}
+			/* div#container section.content div.vid div.inner video#video {height:100%; width:100%;} */
+			/* div#container section.content div.vid div.inner video#video {min-height:100%; min-width:100%;} */
+			div#container section.content div.vid div.inner video#video {max-height:100%; max-width:100%;}
+			div#container section.content div.overlay {background-color:inherit;}
+			div#container section.content div.overlay {position:absolute; top:0; left:0; width:100%; height:100%; z-index:10;}
+			div#container section.content div.overlay {display:flex; flex-direction:column; justify-content:space-between; align-items:stretch;}
+			div#container section.content div.overlay div.headbox {background-color:#FFF1; color:white; display:flex; flex-direction:row; align-items:center; min-height:3rem;}
+			div#container section.content div.overlay div.headbox div.title {flex-grow:1;}
+			div#container section.content div.overlay div.headbox div.livesign {flex-grow:0;}
+			div#container section.content div.overlay div.headbox div.eyecount {flex-grow:0;}
+			div#container section.content div.overlay div.headbox div.closebtn {flex-grow:0; font-size:2rem; font-weight:100;}
+			div#container section.content div.overlay div.chatbox {background-color:#FFF1; height:50%;}
+
+			div#container section.writer {display:flex; flex-direction:row; align-items:center; padding:1rem;}
+			div#container section.writer div.btn {flex-grow:0; color:white; margin-left:1rem;}
+			div#container section.writer div.commentbox {flex-grow:1; position:relative;}
+			div#container section.writer div.commentbox input#commentfield {background-color:transparent; color:white; border:1px solid white; border-radius:6rem; font-size:.55rem; padding:.5rem .75rem; padding-right:3rem; width:100%;}
+			div#container section.writer div.commentbox input#commentfield::placeholder {color:white; opacity:1;}
+			div#container section.writer div.commentbox svg.icon {position:absolute; right:.75rem; top:50%; transform:translateY(-50%); color:white;}
+
+
+
+			div#container section.videobox {display:none;}
+			/* div#container section.videobox {background-color:limegreen; padding-top:200%;}
+			div#container section.videobox div.inner {position:absolute; top:0; left:0; width:100%; height:100%; background-color:#0004;}
+			div#container section.videobox div.inner {display:grid; place-items:center; overflow:hidden;}
+			div#container section.videobox div.inner video#video {min-width:100%; min-height:100%;} */
+			div#container section.videobox div.inner video#video {display:none;}
+
+			div#container section.contentbox {display:none;}
+			/* div#container section.contentbox {background-color:transparent;}
+			div#container section.contentbox div.inner {position:absolute; top:0; left:0; width:100%; height:100%; background-color:#0004;}
+			div#container section.contentbox div.inner {} */
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- content -->
+			<section class="content">
+
+				<!-- vid -->
+				<div class="vid">
+
+					<!-- inner -->
+					<div class="inner">
+	
+						<!-- #video -->
+						<!-- <video id="video" src="../gametapes/bgvid.mp4" autoplay muted controls></video> -->
+						<video id="video" src="vid.mp4" autoplay muted controls></video>
+						<!-- /#video -->
+	
+					</div>
+					<!-- /inner -->
+					
+				</div>
+				<!-- /vid -->
+
+				<!-- overlay -->
+				<div class="overlay">
+
+					<!-- headbox -->
+					<div class="headbox">
+
+						<!-- title -->
+						<div class="title"></div>
+						<!-- /title -->
+
+						<!-- livesign -->
+						<div class="livesign"></div>
+						<!-- /livesign -->
+
+						<!-- eyecount -->
+						<div class="eyecount"></div>
+						<!-- /eyecount -->
+						
+						<!-- closebtn -->
+						<div class="closebtn">&times;</div>
+						<!-- /closebtn -->
+
+					</div>
+					<!-- /headbox -->
+
+					<!-- chatbox -->
+					<div class="chatbox"></div>
+					<!-- /chatbox -->
+				</div>
+				<!-- /overlay -->
+
+			</section>
+			<!-- /content -->
+
+			<!-- writer -->
+			<section class="writer">
+
+				<!-- commentbox -->
+				<div class="commentbox">
+
+					<!-- #commentfield -->
+					<input id="commentfield" type="text" placeholder="Add a comment..."/>
+					<!-- /#commentfield -->
+
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /commentbox -->
+
+				<!-- btn -->
+				<div class="btn">
+
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
+						<!-- <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/>
+						<path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z"/>
+						<path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/> -->
+						<path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z" style="transform: translate(-2px,-2px);"/>
+					</svg>
+					<!-- /icon -->
+
+				</div>
+				<!-- /btn -->
+
+				<!-- btn -->
+				<div class="btn">
+
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+						<path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+					</svg>
+					<!-- /icon -->
+
+				</div>
+				<!-- /btn -->
+
+				<!-- btn -->
+				<div class="btn">
+
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+					</svg>
+					<!-- /icon -->
+
+				</div>
+				<!-- /btn -->
+
+				<!-- btn -->
+				<div class="btn">
+
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+					</svg>
+					<!-- /icon -->
+
+				</div>
+				<!-- /btn -->
+
+			</section>
+			<!-- /writer -->
+
+			<!-- GONE v -->
+
+			<!-- videobox -->
+			<section class="videobox">
+
+				<!-- inner -->
+				<div class="inner">
+
+					<!-- #video -->
+					<video id="video" src="vid.mp4" autoplay muted></video>
+					<!-- /#video -->
+
+				</div>
+				<!-- /inner -->
+
+			</section>
+			<!-- /videobox -->
+
+			<!-- contentbox -->
+			<section class="contentbox">
+
+				<!-- inner -->
+				<div class="inner">
+
+				</div>
+				<!-- /inner -->
+
+			</section>
+			<!-- /contentbox -->
+
+		</div>
+		<!-- /#container -->
+
+	</body>
+
+</html>
