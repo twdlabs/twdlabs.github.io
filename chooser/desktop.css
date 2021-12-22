@@ -2,14 +2,15 @@
 
 /*  Desktop  */
 
-div#desktop {padding:.75rem 1.5rem; border:1px solid #0002; border-radius:.25rem; margin:1.5rem 0; background-color:#80bfff; background-color:#1e90ffd0; background-color:#1e90ff;}
+div#desktop {padding:.75rem; border:1px solid #0002; border-radius:.25rem; max-width:36rem; margin:1.5rem auto;}
+div#desktop {background-color:#80bfff; background-color:#1e90ffd0; background-color:#1e90ff;}
 div#desktop {box-shadow:0px 1px 1px 0 rgba(0,0,0,.25); transition:.5s;}
 div#desktop:hover {box-shadow:0px 1px 4px 1px rgba(0,0,0,.25);}
 
 div#desktop div.group {position:relative;}
 div#desktop div.group.hidden {display:none;}
 /*div#desktop div.group > div {position:relative;}*/
-div#desktop div.group div.ghead {cursor:pointer; user-select:none; z-index:2;}
+div#desktop div.group div.ghead {cursor:pointer; user-select:none; padding:1rem 0; /* z-index:2; */}
 div#desktop div.group div.gbody {display:none; z-index:1;}
 div#desktop div.group.active div.gbody {display:block;}
 
@@ -22,23 +23,26 @@ div#desktop div.group .item div.icon {font-size:2rem;}
 div#desktop div.group .item div.label {font-size:.75rem; user-select:none;}
 
 
-/*  mobile(xs)  */
-@media screen and (max-width:575px) {
-	div#desktop div.group {margin:1rem 0;}
-	/*div#desktop div.group div.gbody {margin-top:1rem}*/
-	div#desktop div.group div.gbody .item {display:block; text-align:left;}
-	div#desktop div.group div.gbody .item div.icon {font-size:1rem; display:inline-block;}
-	div#desktop div.group div.gbody .item div.label {font-size:1rem; display:inline-block;}
-}
-
 /*  mobile(sm), tablet(md), laptop(lg), desktop(xl)  */
-@media screen and (min-width:576px) {
+@media screen and (min-width:24rem/* 576px */) {
+	div#desktop {text-align:center;}
 	div#desktop div.group {margin:1rem 0;}
 	/*div#desktop div.group div.ghead,*/
 	/*div#desktop div.group div.gbody {margin-top:1rem}*/
 
 	div#desktop div.group div.gbody a.item div.miniframe:hover,
 	div#desktop div.group div.gbody a.item:hover div.miniframe {display:block;}
+}
+
+/*  mobile(xs)  */
+@media screen and (max-width:24rem/* 575px */) {
+	div#desktop {text-align:left;}
+	div#desktop div.group {margin:1rem 0;}
+	div#desktop div.group div.ghead {padding:0;}
+	/*div#desktop div.group div.gbody {margin-top:1rem}*/
+	div#desktop div.group div.gbody .item {display:block; text-align:left;}
+	div#desktop div.group div.gbody .item div.icon {font-size:1rem; display:inline-block;}
+	div#desktop div.group div.gbody .item div.label {font-size:1rem; display:inline-block;}
 }
 
 

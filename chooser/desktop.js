@@ -6,7 +6,7 @@ let setupMiniFrames = false;
 
 
 
-/*********************************************************/
+/*****/
 
 
 
@@ -16,10 +16,11 @@ $(document).ready(function() {
 	if(setupDesktop) {
 
 		// Setup desktop items on page.
-		if(currentlyOnPublicPage)
-			setupDesktopItems(projectPublicData);
-		else
-			setupDesktopItems(projectOrigData);
+		setupDesktopItems(projectData);
+		// if(currentlyOnPublicPage)
+		// 	setupDesktopItems(projectPublicData);
+		// else
+		// 	setupDesktopItems(projectOrigData);
 
 		// Setup desktop mini-frames.
 		if(setupMiniFrames) setupMiniFrameItems();
@@ -31,13 +32,13 @@ $(document).ready(function() {
 
 
 
-/*********************************************************/
+/*****/
 
 
 
 // Setup desktop items on page.
 function setupDesktopItems(desktopData) {
-	console.log('desktopData',desktopData);
+	// console.log('desktopData',desktopData);
 
 	// Initialize result of desktop items.
 	let result = '';
@@ -48,7 +49,7 @@ function setupDesktopItems(desktopData) {
 
 	// Get number of item groups.
 	let numGroups = desktopData.length;
-	console.log('numGroups', numGroups);
+	// console.log('numGroups', numGroups);
 	// Prepare desktop groups.
 	for(h in desktopData)
 	// for(let h=0 ; h<numGroups ; h++)
@@ -56,8 +57,8 @@ function setupDesktopItems(desktopData) {
 
 		// Get group of items.
 		let itemgroup = desktopData[h];
-		console.log();
-		console.log('itemgroup', itemgroup);
+		// console.log();
+		// console.log('itemgroup', itemgroup);
 
 		//
 		if(!itemgroup.includeInDesktop) continue;
@@ -78,7 +79,7 @@ function setupDesktopItems(desktopData) {
 
 		// Get number of items in group.
 		let numItems = itemgroup.items.length;
-		console.log('numItems', numItems);
+		// console.log('numItems', numItems);
 		// Add desktop items.
 		for(let i=0 ; i<numItems ; i++) {
 			// Get item.

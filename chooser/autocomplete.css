@@ -1,0 +1,10 @@
+
+
+div#container div.form .autocompleteBox {position:relative; display:inline-block; width:100%;}	/*the container must be positioned relative:*/
+
+
+.autocomplete-items {position:absolute; border:1px solid #D4D4D4; border-bottom:none; border-top:none; z-index:1; text-align:left;
+/*position the autocomplete items to be the same width as the container:*/ top:100%; left:0; right:0;}
+.autocomplete-items div {padding:10px; cursor:pointer; background-color:#FFF; color:#000; border-bottom:1px solid #D4D4D4;}
+.autocomplete-items div:hover {background-color:#E9E9E9;}	/*when hovering an item:*/
+.autocomplete-active {background-color:dodgerblue !important; color:#FFFFFF;}	/*when navigating through the items using the arrow keys:*/

@@ -2,9 +2,9 @@
 
 // The autocomplete function takes two arguments: text field element and array of possible autocompleted values.
 function startAutocomplete(inputBox, sourceList) {
-	console.log( 'sourceList['+sourceList.length+']' );
-	console.table( sourceList );
-	console.log( 'sourceList' + showAll(sourceList) );
+	// console.log( 'sourceList['+sourceList.length+']' );
+	// console.table( sourceList );
+	// console.log( 'sourceList' + showAll(sourceList) );
 
 
 	// 1. Establish data variables. 

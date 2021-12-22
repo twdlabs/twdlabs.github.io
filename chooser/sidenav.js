@@ -15,10 +15,11 @@ $(document).ready(function() {
 	if(setupSidenav) {
 
 		// Setup sidebar navigation items on page.
-		if(currentlyOnPublicPage)
-			setupSidenavItems(projectPublicData);
-		else
-			setupSidenavItems(projectOrigData);
+		setupSidenavItems(projectData);
+		// if(currentlyOnPublicPage)
+		// 	setupSidenavItems(projectPublicData);
+		// else
+		// 	setupSidenavItems(projectOrigData);
 
 	}
 
@@ -32,7 +33,7 @@ $(document).ready(function() {
 
 // Setup sidebar navigation items on page.
 function setupSidenavItems(navData) {
-	console.log('navData',navData);
+	// console.log('navData',navData);
 
 	// Initialize result of sidebar navigation items.
 	let result = '';
@@ -43,7 +44,7 @@ function setupSidenavItems(navData) {
 
 	// Get number of item groups.
 	let numGroups = navData.length;
-	console.log('numGroups', numGroups);
+	// console.log('numGroups', numGroups);
 	// Prepare sidenav groups.
 	for(h in navData)
 	// for(let h=0 ; h<numGroups ; h++)
@@ -51,8 +52,8 @@ function setupSidenavItems(navData) {
 
 		// Get group of items.
 		let itemgroup = navData[h];
-		console.log();
-		console.log('itemgroup', itemgroup);
+		// console.log();
+		// console.log('itemgroup', itemgroup);
 
 		//
 		if(!itemgroup.includeInNavigation) continue;
@@ -63,7 +64,7 @@ function setupSidenavItems(navData) {
 
 		// Get number of items in group.
 		let numItems = itemgroup.items.length;
-		console.log('numItems', numItems);
+		// console.log('numItems', numItems);
 		// Add sidebar navigation items.
 		for(let i=0 ; i<numItems ; i++) {
 			// Get item.

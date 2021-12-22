@@ -2,7 +2,7 @@
 * {box-sizing:border-box;}
 
 html,
-body {height:100%; margin:0; /*font-family:fira-sans,Arial,sans-serif;*/ font-weight:400;}
+body {height:100%; margin:0; font-family:fira-sans,Arial,sans-serif; font-weight:400;}
 
 
 nav.navbar {display:none;}
@@ -17,8 +17,8 @@ nav.navbar ul.navbar-nav li.nav-item:hover a.nav-link {background-color:#EEE;}
 nav.navbar ul.navbar-nav li.nav-item.active a.nav-link {background-color:dodgerblue; color:#FFF; /*border:1px solid #000;*/}
 
 
-div#container {padding:6rem .5rem 10rem; min-height:100%; transition:.25s;}
-div#container div.inner {max-width:600px; padding:1rem; margin:0 auto;}
+div#container {padding:6rem 1rem 10rem; min-height:100%; transition:.25s;}
+/* div#container div.inner {max-width:600px; padding:1rem; margin:0 auto;} */
 div#container div.inner button.setBtn {display:inline-block; position:fixed; bottom:0; right:0; height:2rem; width:2rem; margin:1rem; padding:1.25rem; border-radius:.75rem; z-index:10;}
 div#container div.inner button.setBtn {font-size:1.5rem; background-color:#0002; color:#000; border:1px solid #0004; cursor:pointer; user-select:none;}
 div#container div.inner button.setBtn {opacity:.1; transition:.25s;}
@@ -27,14 +27,17 @@ div#container div.inner button.setBtn svg {position:absolute; top:50%; left:50%;
 /* div#container div.inner button.setBtn {background-color:#fff4; color:#fff; border-color:#fff4;} */
 
 div#container div.head {text-align:center;}
-div#container div.head h2 {}
-div#container div.head p {}
+/* div#container div.head h2 {} */
+/* div#container div.head p {} */
 div#container div.head div.menuBtn {font-size:1rem; cursor:pointer;}
+div#container div.head div.menuBtn {display:flex; flex-direction:row; justify-content:center;}
 
 
 div#container div.form {padding:0;}
-div#container div.form div.input-row {/* margin:2px 0; */}
-div#container div.form div.button-row {/* margin:.5rem 0 1rem; */}
+div#container div.form {max-width:36rem; /* padding:1rem; */ margin:0 auto;}
+/* div#container div.form div.input-row {margin:2px 0;} */
+div#container div.form div.button-row {display:flex; flex-direction:row; justify-content:stretch; /* margin:.5rem 0 1rem; */ margin:0 -.25rem;}
+div#container div.form div.button-row div.cell {flex-grow:1; flex-basis:0; padding:.25rem;}
 div#container div.form input#pageName {border:1px solid #ddd; border-radius:.5em; width:100%; margin:3px 0; box-shadow:0px 1px 1px 0 rgba(0,0,0,.5);}
 div#container div.form input#pageName {padding:.5em 1em; font-size:16px; background-color:#F1F1F1; /*font-weight:bold;*/}
 /*div#container div.form input#pageName {border-radius:10px; padding:5px 10px; width:100%; transition:1s;}*/
@@ -45,31 +48,15 @@ div.form input[type='submit'],
 div.form input[type='reset'], */
 div#container div.form button {border:1px solid #ddd; border-radius:.5em; width:100%; box-shadow:0px 1px 1px 0 rgba(0,0,0,.25); margin-top:.5rem;}
 div#container div.form button {cursor:pointer; padding:.5em; font-weight:bold; position:relative; background-color:#EFEFEF;}
-div#container div.form button:hover {}
+/* div#container div.form button:hover {} */
 div#container div.form button.primary {background-color:dodgerblue; color:#FFF; transition:.5s;}
-div#container div.form button.primary:hover {}
+/* div#container div.form button.primary:hover {} */
 div#container div.form button svg {position:absolute; left:1em; top:50%; transform:translateY(-50%);}
 
 
-div#container div.form .autocompleteBox {position:relative; display:inline-block; width:100%;}	/*the container must be positioned relative:*/
 
-
-.autocomplete-items {position:absolute; border:1px solid #D4D4D4; border-bottom:none; border-top:none; z-index:1; text-align:left;
-/*position the autocomplete items to be the same width as the container:*/ top:100%; left:0; right:0;}
-.autocomplete-items div {padding:10px; cursor:pointer; background-color:#FFF; color:#000; border-bottom:1px solid #D4D4D4;}
-.autocomplete-items div:hover {background-color:#E9E9E9;}	/*when hovering an item:*/
-.autocomplete-active {background-color:dodgerblue !important; color:#FFFFFF;}	/*when navigating through the items using the arrow keys:*/
-
-
-
-/* xyz screen */
-@media screen and (min-width:576px) {
-	div#container div.form div.button-row div.l {padding-right:3px;}
-	div#container div.form div.button-row div.r {padding-left:3px;}
-}
-
-/* xyz screen */
-@media screen and (max-width:575px) {
-	div#container div.form button.listBtn,
-	div#container div.form button.clearBtn {display:none;}
+/* smaller screen */
+@media screen and (max-width:24rem) {
+	div#container div.form div.button-row div.cell.l,
+	div#container div.form div.button-row div.cell.r {display:none;}
 }

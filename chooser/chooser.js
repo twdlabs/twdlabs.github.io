@@ -16,10 +16,11 @@ $(document).ready(function() {
 	let pageInputBox = document.getElementById('pageName');
 
 	// Add autocomplete functionality to text field (using given source list for autocomplete values).
-	if(currentlyOnPublicPage)
-		startAutocomplete(pageInputBox, projectPublicNames);
-	else
-		startAutocomplete(pageInputBox, projectNames);
+	startAutocomplete(pageInputBox, projectNames);
+	// if(currentlyOnPublicPage)
+	// 	startAutocomplete(pageInputBox, projectPublicNames);
+	// else
+	// 	startAutocomplete(pageInputBox, projectNames);
 
 	// Start creating new notification on regular interval.
 	// startNotifying();
