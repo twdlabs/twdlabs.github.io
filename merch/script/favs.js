@@ -18,11 +18,7 @@ function updateFavs() {
 		// Create fav element. 
 		result += `
 		<!-- item -->
-		<div class="item" data-productid="${id}">
-	
-			<!-- deleter -->
-			<div class="deleter" onclick="removeFavItemById(${id});">&times;</div>
-			<!-- /deleter -->
+		<div class="item" data-productid="${id}" title="id: ${id}">
 
 			<!-- photo -->
 			<a class="photo" href="javascript:void(0)" style="background-image:url('${product.photourl}');"></a>
@@ -32,7 +28,7 @@ function updateFavs() {
 			<div class="content">
 
 				<!-- name -->
-				<div class="name">${id+': '+product.name}</div>
+				<div class="name">${product.name}</div>
 				<!-- /name -->
 
 				<!-- desc -->
@@ -45,6 +41,10 @@ function updateFavs() {
 
 			</div>
 			<!-- /content -->
+	
+			<!-- deleter -->
+			<div class="deleter" onclick="removeFavItemById(${id});">&times;</div>
+			<!-- /deleter -->
 
 		</div>
 		<!-- /item -->`;

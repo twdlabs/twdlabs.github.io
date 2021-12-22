@@ -21,7 +21,7 @@ function updateCart() {
 		// Create product element. 
 		result += `
 		<!-- item -->
-		<div class="item" data-productid="${item.productid}">
+		<div class="item" data-productid="${item.productid}" title="id: ${item.productid}">
 	
 			<!-- deleter -->
 			<div class="deleter" onclick="removeCartItemById(${item.productid});">&times;</div>
