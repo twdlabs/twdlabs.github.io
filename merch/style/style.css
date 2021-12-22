@@ -12,7 +12,7 @@
 
 
 .freeze {overflow:hidden;}
-.freeze div#container {/* pointer-events:none; */}
+/* .freeze div#container {pointer-events:none;} */
 .freeze div#container::after {content:''; position:fixed; top:0; left:0; width:100%; height:100%; background-color:#0008; cursor:pointer; z-index:15;}
 
 
@@ -20,7 +20,8 @@ body {margin:0; font-family:sans-serif;}
 
 
 /* Main Container */
-div#container {max-width:72rem; margin: 0 auto; margin-top:4.5rem; transition:.15s;}
+/* div#container {max-width:72rem; margin: 0 auto;} */
+div#container {margin-top:4.5rem; transition:.15s;}
 
 
 

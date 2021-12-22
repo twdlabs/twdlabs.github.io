@@ -3,7 +3,7 @@
 /* SEARCH */
 
 
-// TODO: Search for products related to search query. 
+// Search for products related to search query. 
 function searchForProduct() {
 
 	// Initialize list of ids for matching products. 
@@ -16,23 +16,31 @@ function searchForProduct() {
 	// Clear search field and remove focus. 
 	searchfield.value = '';
 	searchfield.blur();
-	closeOtherDrawers();
+
+	// Close all navbar slide drawers. 
+	closeAllDrawersBut();
 
 	// Show search query. 
 	console.log('Search query: '+query);
 
 	// Get all matching products. 
-	for(key in productdata) {
+	for(index in productdata) {
 
-		// Get product data item. 
-		p = productdata[key];
+		// Get product data item at index. 
+		product = productdata[index];
 
-		// Add to list of matching products if name or descriptions matches query. 
-		if( p.name.includes(query) || p.description.includes(query) ) matchingProductIds.push(key);
+		// Check if product name or description matches search query (case insensitive). 
+		let n = product.name.toUpperCase();
+		let d = product.description.toUpperCase();
+		let q = query.toUpperCase();
+		let weGotAMatch = n.includes(q) || d.includes(q);
+
+		// Add to list of matching products if match found. 
+		if(weGotAMatch) matchingProductIds.push(index);
 	}
 
-	// TODO: Show results popup page with matching products. 
+	// Show results popup page with matching products. 
 	console.log('All products:',productdata);
-	console.log('matchingProductIds',matchingProductIds);
-	alert('Search results for: '+query + '\n' + ( matchingProductIds.length ? matchingProductIds : '[none]' ) );
+	console.log(`Search results for: "${query}"`, matchingProductIds);
+	passTheToast(   `Search results for: "${query}"<br>`  +  '['+( (matchingProductIds.length) ? (matchingProductIds) : ('none') )+']'   );
 }

@@ -2,14 +2,25 @@
 
 // Load navigation bar from file. 
 $(document).ready(function() {
+	
+	// Load site navbar. 
+	loadNav(atRootDirectory);
 
+	// Load site footer. 
+	loadFooter(atRootDirectory);
+
+	// Start it up. 
 	setTimeout(startItUp,500);
 });
 
 
-// Start it up. 
+/*****/
+
+
+// Start up site for current user. 
 function startItUp() {
 	console.log('Starting up...');
+	// if(!confirm('Start it up ?')) return;
 
 	// Update accounts. 
 	updateAccounts();
@@ -20,23 +31,25 @@ function startItUp() {
 	// Update favorites. 
 	updateFavs();
 
-	console.log('Started up...');
-}
+	// Add product items to page. 
+	addProductItems();
 
-/*****/
+	// Complete startup. 
+	console.log('Started up...');
+	console.log(`${userdata[currentuserid].fname} is now logged in...`);
+	passTheToast(`Welcome, ${userdata[currentuserid].fname}!`)
+}
 
 
 // Load navigation bar from file. 
 function loadNav(atRootDirectory) {
-	// console.log('loadNav()');
 
 	// Get relative url of navbar file. 
 	let url = ( (atRootDirectory) ? ('') : ('../') ) + 'navbar.html';
 	// console.log('Load navbar from:',url);
 
 	// Load default navbar. Populate navigation lists. 
-	// $('#navbar').load(url);
-	$('#navbar').load(url,populateNavList);
+	$('#navbar').load(url, populateNavList);
 
 	/*****/
 
@@ -45,7 +58,7 @@ function loadNav(atRootDirectory) {
 	
 		// Create elements for navigation data items. 
 		let result = '';
-		for(item of navdata[0]) {
+		for(item of navdata[0].data) {
 			// console.log('item',item);
 			result += `
 			<!-- navitem -->
@@ -68,106 +81,108 @@ function loadNav(atRootDirectory) {
 
 // Load footer bar from file. 
 function loadFooter(atRootDirectory) {
-	// console.log('loadFooter()');
 
 	// Get relative url of navbar file. 
 	let url = ( (atRootDirectory) ? ('') : ('../') ) + 'footer.html';
 	// console.log('Load footer from:',url);
 
 	// Load default footer. Populate navigation lists. 
-	// $('#footer').load(url);
-	$('#footer').load(url,populateFooter);
+	$('footer#footer').load(url, populateFooter);
 
 	/*****/
 
 	// Populate footer navigation list. 
 	function populateFooter() {
-	
+		
+		// Initialize result. 
+		let result = '';
+
 		// Create elements for navigation data items. 
-		let resultA = '';
-		let resultB = '';
-		let resultC = '';
+		for(navlist of navdata) {
+			// console.log('navlist', navlist);
 
-		// for(list of navdata) {
-		// }
+			// Add column opener. 
+			result += `
+			<!-- col -->
+			<div class="col">`;
 
-		for(item of navdata[0]) {
-			// console.log('item',item);
+			// Add list header. 
+			result += `
+			<!-- navhead -->
+			<h3 class="navhead">${navlist.title}</h3>
+			<!-- /navhead -->`;
 
-			// 
-			resultA += `
-			<!-- navitem -->
-			<li class="navitem">
+			// Add list opener. 
+			result += `
+			<!-- navlist -->
+			<ul class="navlist">`;
 
-				<!-- icon -->
-				<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-				</svg>
-				<!-- /icon -->
-	
-				<!-- navlink -->
-				<a href="${item.url}" class="navlink page">${item.name}</a>
-				<!-- /navlink -->
-	
-			</li>
-			<!-- /navitem -->`;
+			// Add list items. 
+			for(navitem of navlist.data) {
+				// console.log('\tnavitem', navitem);
+
+				// 
+				let name = navitem.name;
+				let url = navitem.url;
+				result += `
+				<!-- navitem -->
+				<li class="navitem">`;
+				result += `
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">`;
+				result += (navitem.innersvg) ? (navitem.innersvg) : (`
+						<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>`);
+				result += `
+					</svg>
+					<!-- /icon -->`;
+				result += `
+					<!-- navlink -->
+					<a class="navlink" href="${url}">${name}</a>
+					<!-- /navlink -->`;
+				result += `
+				</li>
+				<!-- /navitem -->`;
+			}
+
+			// Add list closer. 
+			result += `
+			</ul>
+			<!-- /navlist -->`;
+
+			// Add column closer. 
+			result += `
+			</div>
+			<!-- /col -->`;
 		}
-		// console.log('resultA',resultA);
 
-		for(item of navdata[1]) {
-			// console.log('item',item);
+		// Create elements for newsletter form. 
+		result += `
+		<!-- col -->
+		<div class="col wide">
 
-			// 
-			resultB += `
-			<!-- navitem -->
-			<li class="navitem">
+			<!-- navhead -->
+			<h3 class="navhead">Newsletter</h3>
+			<!-- /navhead -->
 
-				<!-- icon -->
-				<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-				</svg>
-				<!-- /icon -->
-	
-				<!-- navlink -->
-				<a href="${item.url}" class="navlink page">${item.name}</a>
-				<!-- /navlink -->
-	
-			</li>
-			<!-- /navitem -->`;
-		}
-		// console.log('resultB',resultB);
+			<!-- textcopy -->
+			<p class="textcopy">
+				Subscribe for latest updates.
+			</p>
+			<!-- /textcopy -->
 
-		for(item of navdata[2]) {
-			// console.log('item',item);
+			<!-- #email -->
+			<input type="email" id="email" placeholder="Enter your email..." autocomplete="off">
+			<!-- /#email -->
 
-			// 
-			resultC += `
-			<!-- navitem -->
-			<li class="navitem">
+			<!-- #subscribe -->
+			<button id="subscribe">Subscribe</button>
+			<!-- /#subscribe -->
 
-				<!-- icon -->
-				<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-				</svg>
-				<!-- /icon -->
-	
-				<!-- navlink -->
-				<a href="${item.url}" class="navlink page">${item.name}</a>
-				<!-- /navlink -->
-	
-			</li>
-			<!-- /navitem -->`;
-		}
-		// console.log('resultC',resultC);
-	   
+		</div>
+		<!-- /col -->`;
+
 		// Add result to page. 
-		document.querySelector('#footer div.col ul#quicklinks').innerHTML = resultA;
-		document.querySelector('#footer div.col ul#morelinks').innerHTML = resultB;
-		document.querySelector('#footer div.col ul#contactlinks').innerHTML = resultC;
-		// let navlists = document.querySelectorAll('#footer ul.navlist');
-		// for(list of navlists) {
-		// 	list.innerHTML = result;
-		// }
+		let navsection = document.querySelector('footer#footer section#nav');
+		navsection.innerHTML = result;
 	}
 }
-

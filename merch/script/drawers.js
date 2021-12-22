@@ -8,13 +8,16 @@ function toggleDrawer(id) {
 	if(id=='searchbar') document.getElementById('searchquery').focus();
 
 	// Close all other drawers. 
-	closeOtherDrawers(id);
+	closeAllDrawersBut(id);
 	
 	// Toggle selected drawer. 
 	document.getElementById(id).classList.toggle('active');
 
-	// Set drawer scroll mode. 
-	setDrawerScrollMode();
+	// Set scroll mode. 
+	setScrollMode();
+
+	// Set toggle button mode. 
+	setToggleButtonMode();
 }
 
 
@@ -23,24 +26,27 @@ function openDrawer(id) {
 	console.log('Opening drawer:',id);
 
 	// Close all other drawers. 
-	closeOtherDrawers(id);
+	closeAllDrawersBut(id);
 	
 	// Open selected drawer. 
 	document.getElementById(id).classList.add('active');
 
-	// Set drawer scroll mode. 
-	setDrawerScrollMode();
+	// Set scroll mode. 
+	// setScrollMode();
+
+	// Set toggle button mode. 
+	setToggleButtonMode();
 }
 
 
 // Close all other navbar slide drawers. 
-function closeOtherDrawers(exceptionId) {
-	console.log('Closing all drawers except:', (exceptionId?exceptionId:'none') );
+function closeAllDrawersBut(exceptionId) {
+	// console.log('Closing all drawers except:', (exceptionId?exceptionId:'none') );
 
 	// let drawerIds = ['navlist','searchbar','likebox','cartbox','accountbox'];
 
 	// Get all nav drawers. 
-	let navDrawers = document.querySelectorAll('.navdrawer');
+	let navDrawers = document.querySelectorAll('div.navbin');
 	navDrawers = [...navDrawers];
 	// console.log('navDrawers', navDrawers);
 
@@ -54,16 +60,18 @@ function closeOtherDrawers(exceptionId) {
 		if(id!=exceptionId) document.getElementById(id).classList.remove('active');
 	}
 
-	// Set drawer scroll mode. 
-	setDrawerScrollMode();
+	// Set scroll mode. 
+	setScrollMode();
+
+	// Set toggle button mode. 
+	setToggleButtonMode();
 }
 
-// Set drawer scroll mode. 
-// Check if drawer open. If so, freeze browser window scroll. 
-function setDrawerScrollMode() {
+// Set scroll mode: Check if drawer open, and freeze browser window scroll if open. 
+function setScrollMode() {
 
 	// Get all nav drawers. 
-	let navDrawers = document.querySelectorAll('.navdrawer');
+	let navDrawers = document.querySelectorAll('div.navbin');
 	navDrawers = [...navDrawers];
 	// console.log('navDrawers', navDrawers);
 
@@ -84,5 +92,38 @@ function setDrawerScrollMode() {
 	else {
 		document.body.classList.remove('freeze');
 		document.documentElement.classList.remove('freeze');
+	}
+}
+
+
+// Set toggle button mode. 
+function setToggleButtonMode() {
+
+	// Get all drawers.
+	let allDrawers = document.querySelectorAll('div.navbin');
+	// console.log('allDrawers',allDrawers);
+
+	// Get all drawer handles (togglers).
+	let allTogglers = document.querySelectorAll('a.navlink.toggler');
+	// console.log('allTogglers',allTogglers);
+
+	// Set appropriate state for each drawer handle (toggler). 
+	for(let i=0 ; i<allDrawers.length ; i++) {
+
+		// Get drawer. 
+		let drawer = allDrawers[i];
+		// console.log('drawer',drawer);
+		
+		// Get corresponding drawer handle (toggler). 
+		let toggler = allTogglers[i];
+		// console.log('toggler',toggler);
+
+		// Check if drawer open. 
+		let drawerOpen = drawer.classList.contains('active');
+		// console.log('drawerOpen',drawerOpen);
+
+		// Change toggler button mode based on drawer open state. 
+		if(drawerOpen) toggler.classList.add('active');
+		else toggler.classList.remove('active');
 	}
 }

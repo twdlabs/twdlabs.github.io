@@ -2,48 +2,51 @@
 
 /* Footer */
 
-footer#footer {min-height:3rem; background-color:var(--offwhite); padding:4rem 0; transition:.5s;}
-footer#footer main {max-width:72rem; padding:0 4rem; margin: 0 auto; transition:.5s;}
+footer#footer {min-height:3rem; background-color:var(--offwhite); padding:3rem; transition:.5s;}
+footer#footer main {max-width:72rem; padding:0; margin: 0 auto; transition:.5s;}
 
 footer#footer main section {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:stretch; align-items:stretch;}
 /* footer#footer main section#nav {} */
 footer#footer main section div.col {flex-grow:1; flex-basis:0; padding:1rem;}
-/* footer#footer main section div.col.wide {flex-basis:100%;} */
+footer#footer main section div.col.wide {/* flex-basis:100%; */ /* text-align:center; */}
 
 footer#footer main section div.col h3.navhead {font-size:1.25rem; font-weight:400; letter-spacing:2px; margin:0;}
 footer#footer main section div.col p.textcopy {font-weight:100; margin:0; margin-top:1.5rem;}
-footer#footer main section div.col input#email {display:block; padding:.75rem; border:1px solid white; font-size:inherit; outline:none; margin:0; margin-top:1rem;}
+footer#footer main section div.col input#email {/* display:block; */ padding:.75rem 1.25rem; border:1px solid white; border-radius:.25rem; font-size:inherit; outline:none; margin:0; margin-top:1rem; margin-right:.5rem;}
 footer#footer main section div.col input#email:focus {border-color:black;}
-footer#footer main section div.col button#subscribe {display:inline-block; padding:.75rem; background-color:var(--blue); color:white; font-size:1.125rem; border:1px solid var(--blue); margin:0; margin-top:1rem;}
+footer#footer main section div.col button#subscribe {display:inline-block; padding:.75rem; background-color:var(--blue); color:white; font-size:1.125rem; border:1px solid var(--blue); border-radius:.25rem; margin:0; margin-top:1rem;}
 footer#footer main section div.col ul.navlist {list-style:none; padding:0; margin:0; margin-top:1.5rem;}
 footer#footer main section div.col ul.navlist li.navitem {display:flex; flex-direction:row; align-items:center; margin-top:1rem;}
-footer#footer main section div.col ul.navlist li.navitem svg.icon {font-size:.75rem; color:var(--blue);}
-footer#footer main section div.col ul.navlist li.navitem a.navlink {color:inherit; font-weight:100; text-decoration:none; padding-left:.5rem; transition:.25s;}
+footer#footer main section div.col ul.navlist li.navitem svg.icon {font-size:.75rem; color:var(--blue); margin-bottom:.1875rem;}
+footer#footer main section div.col ul.navlist li.navitem a.navlink {color:inherit; font-size:.875rem; font-weight:100; text-decoration:none; padding-left:.5rem; transition:.25s;}
 footer#footer main section div.col ul.navlist li.navitem a.navlink:hover {color:var(--blue); padding-left:1.25rem;}
 
 
 
 /* Medium Screen */
-@media screen and (max-width:60rem) {
+@media screen and (max-width:64rem) {
 
 	/* Footer */
+	footer#footer {padding:2rem;}
+	footer#footer main section div.col {flex-basis:33%;}
+	footer#footer main section div.col.wide {flex-basis:67%;}
 	footer#footer main section div.col h3.navhead {margin-top:1rem;}
-	footer#footer main section div.col {flex-basis:33.3%;}
-	footer#footer main section div.col.wide {flex-basis:100%;}
 }
 
 /* Small Screen */
 @media screen and (max-width:48rem) {
 
 	/* Footer */
-	footer#footer {padding: 2rem 0;}
-	footer#footer main {padding: 0 2rem;}
+	footer#footer {padding:2rem;}
+	footer#footer main {padding:0;}
 	/* footer#footer main section {flex-direction:column;} */
-	footer#footer main section div.col {flex-basis:100%;}
+	footer#footer main section div.col {flex-basis:50%;}
 }
 
 /* Extra Small Screen */
 @media screen and (max-width:32rem) {
 
 	/* Footer */
+	footer#footer {padding:1rem;}
+	footer#footer main section div.col {flex-basis:100%;}
 }

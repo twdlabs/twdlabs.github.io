@@ -1,0 +1,5 @@
+
+div#snackbar {position:fixed; left:50%; transform:translateX(-50%); z-index:1000; min-width:16rem; border-radius:.5rem; cursor:pointer; user-select:none;}
+div#snackbar {background-color:rgba(51,51,51,0.75); color:#fff; backdrop-filter:blur(.25rem); font-size:.875rem; padding:.875rem .75rem .75rem; text-align:center;}
+div#snackbar {bottom:0; opacity:0; visibility:hidden; transition:.5s;}
+div#snackbar.active {bottom:2rem; opacity:1; visibility:visible;}
