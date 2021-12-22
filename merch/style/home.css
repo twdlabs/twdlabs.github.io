@@ -94,7 +94,7 @@ div#container section#featured div.inner main div.item div.content div.productac
 	100% {transform:scale(1);}
 }
 
-div#container section#featured div.inner aside.refine {display:none;}
+/* div#container section#featured div.inner aside.refine {display:none;} */
 div#container section#featured div.inner aside.refine {flex-grow:0; width:20rem; text-align:center;}
 
 

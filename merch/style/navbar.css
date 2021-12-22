@@ -65,6 +65,7 @@ nav#navbar main div#navdrawer div.navbin div.inner {display:flex; flex-direction
 nav#navbar main div#navdrawer div.navbin div.inner div.item {flex-shrink:0; background-color:white; /* padding:0 .35rem; */ /* border:.25rem solid white; */ /* border-radius:.5rem; */ /* margin-top:.25rem; */}
 nav#navbar main div#navdrawer div.navbin div.inner div.item {padding:.25rem .35rem; border-top:1px solid #0002;}
 nav#navbar main div#navdrawer div.navbin div.inner div.item {display:flex; flex-direction:row; align-items:center; user-select:none; overflow:hidden; /* min-height:3rem; */}
+nav#navbar main div#navdrawer div.navbin div.inner div.item:hover {background-color:#0001;}
 nav#navbar main div#navdrawer div.navbin div.inner div.item a.photo {flex-grow:0; flex-shrink:0; width:3rem; border-radius:.25rem; background-size:cover; background-position:center;}
 nav#navbar main div#navdrawer div.navbin div.inner div.item a.photo::after {content:''; display:block; width:100%; padding-top:100%; background-color:#0001;}
 nav#navbar main div#navdrawer div.navbin div.inner div.item div.content {flex-grow:1; padding:0 .5rem;}
@@ -105,6 +106,7 @@ nav#navbar main div#navdrawer div#accountbox {max-width:16rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item {border:0 none;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item {cursor:pointer;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser {flex-direction:column; border-bottom:1px solid #0002; padding-bottom:.65rem; margin-bottom:.25rem;}
+nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser:hover {background-color:initial;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser div.content {margin-top:.5rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser div.content div.desc {margin-top:.125rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner:empty:before {content:'You have no account information.';}
