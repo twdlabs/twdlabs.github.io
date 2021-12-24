@@ -1,4 +1,57 @@
 
+testResults = [
+	{
+		setname:'Set Name',
+		setlist: [
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+		]
+	},
+	{
+		setname:'Set Name',
+		setlist: [
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+		]
+	},
+	{
+		setname:'Set Name',
+		setlist: [
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'xyz',
+				link:'javascript:void(0)'
+			},
+		]
+	},
+]
 
 // Search Overlay Object
 class Search {
@@ -61,9 +114,6 @@ class Search {
 		let sameQueryAsB4 = this.searchField.value == this.prevQuery;
 		if(sameQueryAsB4) return;
 
-		// Set timer length. 
-		let dt = 1500;
-
 		// Clear timer if still typing. 
 		clearTimeout(this.resultsTimer);
 
@@ -74,11 +124,13 @@ class Search {
 			this.clearSearchResults();
 
 			// Show loader icon. 
-			this.setWaitState(true);
+			if(!this.loadingResults) this.setWaitState(true);
 
 			// Start timer for new search results. 
+			let dt = 1500;
 			this.resultsTimer = setTimeout(this.getSearchResults.bind(this), dt);
 		}
+
 		// Stop everything (if no query present). 
 		else {
 
@@ -93,9 +145,9 @@ class Search {
 		this.prevQuery = this.searchField.value;
 	}
 
-	// TODO: Set state of loader (when waiting for results). 
-	setWaitState(loading) {
-		if(loading /* && !this.loadingResults */) {
+	// Set appropriate state for loader. 
+	setWaitState(currentlyWaiting) {
+		if(currentlyWaiting) {
 			this.loadSpinner.classList.add('active');
 			this.loadingResults = true;
 		}
@@ -114,26 +166,67 @@ class Search {
 
 	// TODO: Get results of search query. 
 	getSearchResults() {
-		// console.log(this.resultsBox);
+		console.log(this.resultsBox);
 
 		// Get search query. 
 		let query = this.searchField.value;
 
 		// TODO: Send request for search results. 
 		let resultList = [];
+		resultList = testResults;
 
 		// Show search results. 
 	// 	this.showSearchResults(resultList);
 	// }
 	// // TODO: Show results of search query. 
 	// showSearchResults(resultList) {
-		console.log(this.resultsBox);
+		console.log('resultList',resultList);
 
 		// Initialize display for search results. 
 		let searchResults = '';
 
 		// TODO: Get results of search query. 
-		searchResults += `These are your search results for... "${query}": `+resultList;
+		searchResults += `<div style="width:100%;">Here are your search results for... "${query}": </div>`;
+		for(let resultSet of resultList) {
+			console.log('resultSet',resultSet);
+
+			searchResults += `
+			<!-- resultset -->
+			<div class="resultset">`;
+
+			searchResults += `
+			<!-- resulthead -->
+			<h3 class="resulthead">
+				Result Head
+			</h3>
+			<!-- /resulthead -->
+	
+			<!-- resultlist -->
+			<ul class="resultlist">`;
+
+			for(let resultItem of resultSet.setlist) {
+				console.log('resultItem',resultItem);
+				searchResults += `
+				<!-- resultitem -->
+				<li class="resultitem">
+
+					<!-- resultlink -->
+					<a class="resultlink" href="${resultItem.link}">
+						${resultItem.name}
+					</a>
+					<!-- /resultlink -->
+
+				</li>
+				<!-- /resultitem -->`;
+			}
+
+			searchResults += `
+			</ul>
+			<!-- /resultlist -->
+
+			</div>
+			<!-- /resultset -->`;
+		}
 
 		// Display search results on page. 
 		this.resultsBox.innerHTML = searchResults;
@@ -171,6 +264,9 @@ class Search {
 
 		// Update overlay state. 
 		this.alreadyOpen = true;
+
+		// Focus on text field. 
+		this.searchField.focus();
 	}
 
 	// Close search overlay. 
