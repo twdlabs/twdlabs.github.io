@@ -1,0 +1,44 @@
+
+
+* {box-sizing:border-box;}
+
+body {font-family:sans-serif; margin:0;}
+
+div#container {background:linear-gradient(135deg,dodgerblue,white); height:100vh;}
+
+div#container {position:relative;}
+div#container div.openbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div.openbtn {background-color:dodgerblue; color:white; border-radius:.25rem; padding:.75em 1em; cursor:pointer;}
+
+div#container div#searchoverlay {position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%;}
+div#container div#searchoverlay {opacity:0; visibility:hidden; transform:scale(1.05); transition:.25s;}
+div#container div#searchoverlay.active {opacity:.95; visibility:visible; transform:none;}
+
+div#container div#searchoverlay {display:flex; flex-direction:column;}
+div#container div#searchoverlay div.top {flex-grow:0;}
+div#container div#searchoverlay div.bottom {flex-grow:1;}
+
+div#container div#searchoverlay div.top {background-color:#EEE; color:dodgerblue; font-size:2rem; border-bottom:1px solid #0002;}
+div#container div#searchoverlay div.top div.input {position:relative; max-width:50rem; margin:auto;}
+div#container div#searchoverlay div.top div.input div.closebtn {background-color:dodgerblue; color:white; border-radius:.25rem; padding:0 .25em; cursor:pointer; right:0;}
+div#container div#searchoverlay div.top div.input div.searchicon {font-size:.95em; padding-top:.25em; user-select:none; left:0;}
+div#container div#searchoverlay div.top div.input div.closebtn,
+div#container div#searchoverlay div.top div.input div.searchicon {position:absolute; top:50%; transform:translateY(-50%); margin:0 1rem;}
+div#container div#searchoverlay div.top div.input input#searchquery {display:block; width:100%; height:100%; background-color:#FFF0; padding:1rem 4rem; border:0 none; outline:none; color:inherit; font-size:inherit;}
+
+div#container div#searchoverlay div.bottom {background-color:white; position:relative;}
+div#container div#searchoverlay div.bottom div#loader {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2.5rem; height:2.5rem; border-radius:50%;}
+div#container div#searchoverlay div.bottom div#loader {background-color:transparent; border:.5rem solid #E8E8E8; border-top-color:dodgerblue; animation:spin 1s linear infinite;}
+div#container div#searchoverlay div.bottom div#loader {visibility:hidden; opacity:0; transition:.15s;}
+div#container div#searchoverlay div.bottom div#loader.active {visibility:visible; opacity:1;}
+div#container div#searchoverlay div.bottom div#resultsbox {background-color:dodgerblue; color:white; width:100%; min-height:100%; overflow:auto; padding:2rem 1rem;}
+
+@keyframes spin {
+	0% {transform:rotate(0deg);}
+	100% {transform:rotate(180deg);}
+	100% {transform:rotate(360deg);}
+}
+
+@media screen and (max-width:40rem) {
+	div#container div#searchoverlay div.top {font-size:1.5rem;}
+}
