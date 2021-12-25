@@ -1,23 +1,26 @@
 
 
+// Define initial image tags. 
+const tagCollection = [];
+
 // Define image urls. 
-const images = [
+const imageData = [
 	{
 		url:'1.jpg',
-		tags:[
+		taglist:[
 			'city',
 			'water',
 		]
 	},
 	{
 		url:'2 2.jpg',
-		tags:[
+		taglist:[
 			'mountain',
 		]
 	},
 	{
 		url:'2.jpg',
-		tags:[
+		taglist:[
 			'water',
 			'mountain',
 			'sky',
@@ -25,21 +28,20 @@ const images = [
 	},
 	{
 		url:'3.jpg',
-		tags:[
+		taglist:[
 			'dog',
 			'grass',
 		]
 	},
 	{
 		url:'1033200-starry-sky-background-1330x2000-for-ipad.jpg',
-		tags:[
+		taglist:[
 			'sky',
 		]
 	},
 	{
 		url:'a.jpg',
-		tags:[
-			'house',
+		taglist:[
 			'buildings',
 			'water',
 			'sky',
@@ -48,7 +50,7 @@ const images = [
 	},
 	{
 		url:'b.jpeg',
-		tags:[
+		taglist:[
 			'city',
 			'trees',
 			'streets',
@@ -56,7 +58,7 @@ const images = [
 	},
 	{
 		url:'city.jpg',
-		tags:[
+		taglist:[
 			'city',
 			'trees',
 			'buildings',
@@ -65,26 +67,26 @@ const images = [
 	},
 	{
 		url:'code.jpg',
-		tags:[
+		taglist:[
 			'code',
 		]
 	},
 	{
 		url:'codecode.jpg',
-		tags:[
+		taglist:[
 			'code',
 		]
 	},
 	{
 		url:'devicework.jpg',
-		tags:[
+		taglist:[
 			'device',
 			'hands',
 		]
 	},
 	{
 		url:'Dubai.jpg',
-		tags:[
+		taglist:[
 			'sky',
 			'city',
 			'buildings',
@@ -92,13 +94,13 @@ const images = [
 	},
 	{
 		url:'earthmap.jpg',
-		tags:[
+		taglist:[
 			'map',
 		]
 	},
 	{
 		url:'fd21366fc13ca502751ebb8f7d18f2dd.jpg',
-		tags:[
+		taglist:[
 			'beach',
 			'water',
 			'sky',
@@ -106,13 +108,13 @@ const images = [
 	},
 	{
 		url:'library.jpg',
-		tags:[
+		taglist:[
 			'buildings',
 		]
 	},
 	{
 		url:'Navagio.jpg',
-		tags:[
+		taglist:[
 			'beach',
 			'mountain',
 			'water',
@@ -121,14 +123,14 @@ const images = [
 	},
 	{
 		url:'NEWSLIDER21.jpg',
-		tags:[
+		taglist:[
 			'trees',
 			'sky',
 		]
 	},
 	{
 		url:'np3.jpg',
-		tags:[
+		taglist:[
 			'beach',
 			'mountain',
 			'water',
@@ -137,26 +139,26 @@ const images = [
 	},
 	{
 		url:'Squarespace+Learning+-+Forum+Banner.jpg',
-		tags:[
+		taglist:[
 			'device',
 			'desk',
 		]
 	},
 	{
 		url:'starry-sky-wallpaper-dark.jpg',
-		tags:[
+		taglist:[
 			'sky',
 		]
 	},
 	{
 		url:'wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
-		tags:[
+		taglist:[
 			'sky',
 		]
 	},
 	{
 		url:'ze0NeqF.jpg',
-		tags:[
+		taglist:[
 			'beach',
 			'mountain',
 			'water',
@@ -166,5 +168,3 @@ const images = [
 	}
 ];
 
-// Define initial image tags. 
-const tagCollection = [];
