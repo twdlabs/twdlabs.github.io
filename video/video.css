@@ -5,7 +5,7 @@
 body {font-family:sans-serif; margin:0;}
 
 
-div#container {background:linear-gradient(135deg,#BBB,#EEE); height:100vh;}
+div#container {background:linear-gradient(135deg,#BBB,#EEE); min-height:100vh;}
 div#container {display:flex; flex-direction:column; align-items:stretch;}
 div#container h1.head {flex-grow:0; font-weight:100; margin:0; margin-top:1rem; text-align:center; width:100%;}
 
@@ -16,22 +16,30 @@ div#container main#main aside.playlist {flex-grow:0; background-color:white; bor
 
 div#container main#main main.player {padding:.75rem;}
 div#container main#main main.player h2.head {font-weight:100;}
-div#container main#main main.player div.video {background-color:#0002; padding-top:56.25%; border-radius:.25rem; /* margin:1rem; */}
+div#container main#main main.player div.video {background-color:#0002; padding-top:62.5%; border-radius:.25rem; position:relative;}
+div#container main#main main.player div.video video {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
 
-div#container main#main aside.playlist {height:100%; overflow:auto; scrollbar-width:none;}
+div#container main#main aside.playlist {height:100%; width:100%; max-width:18rem; overflow:auto; scrollbar-width:none;}
 div#container main#main aside.playlist ul.vidlist {list-style:none; padding:.75rem; margin:0; height:100%; overflow:auto; scrollbar-width:none;}
-div#container main#main aside.playlist ul.vidlist li.viditem {padding-bottom:.5rem;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {background-color:#0001; display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {color:inherit; text-decoration:none; width:16rem; padding:.4rem; border:1px solid #0002; border-radius:.25rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem {margin-bottom:.25rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem:last-child {margin-bottom:0;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {/* background-color:#0001; */ display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {color:inherit; text-decoration:none; padding:.4rem; /* border:1px solid #0002; */ border-radius:.25rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem:hover a.vidlink {background-color:#ddd;}
 div#container main#main aside.playlist ul.vidlist li.viditem.active a.vidlink {background-color:dodgerblue; color:white;}
 div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {flex-grow:0; width:4rem; border:1px solid #0002; border-radius:.25rem;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-size:cover; background-position:center;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-color:#0001; background-size:cover; background-position:center;}
 div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo::after {content:''; display:block; padding-top:75%;}
 div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content {flex-grow:1; margin-left:.75rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content {display:flex; flex-direction:column; align-items:stretch;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content span.title {font-size:.875rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content span.author,
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.details {color:#AAA; font-size:.8rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.details span.ets::after {content:' ago';}
 
 
 @media screen and (max-width:48rem) {
 	div#container main#main {flex-direction:column; align-items:stretch;}
-	div#container main#main aside.playlist {margin-left:0; margin-top:.75rem;}
+	div#container main#main aside.playlist {max-width:none; margin:.75rem auto 0;}
 	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {width:100%;}
 }
