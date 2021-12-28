@@ -2,44 +2,193 @@
 * {box-sizing:border-box;}
 
 
+
 body {font-family:sans-serif; margin:0;}
 
 
-div#container {background:linear-gradient(135deg,#BBB,#EEE); min-height:100vh;}
+
+/* Main Container */
+
+div#container {background:linear-gradient(135deg,#F0F0F0,white); min-height:100vh;}
 div#container {display:flex; flex-direction:column; align-items:stretch;}
 div#container h1.head {flex-grow:0; font-weight:100; margin:0; margin-top:1rem; text-align:center; width:100%;}
-
-div#container main#main {flex-grow:1; padding:.75rem;}
+div#container main#main {flex-grow:1; padding:.75rem; transition:.25s;}
 div#container main#main {display:flex; flex-direction:row; justify-content:center; align-items:stretch; align-items:flex-start;}
 div#container main#main main.player {flex-grow:1; background-color:white; border-radius:.25rem; max-width:60rem;}
 div#container main#main aside.playlist {flex-grow:0; background-color:white; border-radius:.25rem; margin-left:.75rem;}
 
-div#container main#main main.player {padding:.75rem;}
-div#container main#main main.player h2.head {font-weight:100;}
-div#container main#main main.player div.video {background-color:#0002; padding-top:62.5%; border-radius:.25rem; position:relative;}
-div#container main#main main.player div.video video {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
 
-div#container main#main aside.playlist {height:100%; width:100%; max-width:18rem; overflow:auto; scrollbar-width:none;}
-div#container main#main aside.playlist ul.vidlist {list-style:none; padding:.75rem; margin:0; height:100%; overflow:auto; scrollbar-width:none;}
-div#container main#main aside.playlist ul.vidlist li.viditem {margin-bottom:.25rem;}
+
+/* Video Player */
+
+div#container main#main main.player {padding:.5rem; transition:.25s;}
+
+div#container main#main main.player div.vid {background-color:#0002; padding-top:62.5%; border-radius:.25rem; position:relative;}
+div#container main#main main.player div.vid video {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
+
+div#container main#main main.player div.metadata {margin:.75rem; user-select:none;}
+div#container main#main main.player div.metadata h2#title {font-size:1.25rem; font-weight:100; margin:0; margin:.25rem 0;}
+div#container main#main main.player div.metadata div#viewcount {color:#AAA; font-size:.65rem;}
+
+div#container main#main main.player div.reaction {display:flex; flex-direction:row; justify-content:center; align-items:center; margin:.75rem 0; padding:0 1.25rem;}
+div#container main#main main.player div.reaction {overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
+div#container main#main main.player div.reaction::-webkit-scrollbar {display:none;}
+div#container main#main main.player div.reaction div.btn {display:flex; flex-direction:column; align-items:center; min-width:2rem; margin:0 .875rem; cursor:pointer; user-select:none; position:relative;}
+div#container main#main main.player div.reaction div.btn svg.icon {font-size:1rem;}
+div#container main#main main.player div.reaction div.btn span.caption {font-size:.6rem; margin-top:.35rem;}
+div#container main#main main.player div.reaction div.btn svg.icon.priori {display:block;}
+div#container main#main main.player div.reaction div.btn svg.icon.already {display:none;}
+div#container main#main main.player div.reaction div.btn div#playlistList {visibility:hidden; opacity:0; transform:translate(-50%,100%); transition:.5s;}
+div#container main#main main.player div.reaction div.btn.active svg.icon.priori {display:none;}
+div#container main#main main.player div.reaction div.btn.active svg.icon.already {display:block;}
+div#container main#main main.player div.reaction div.btn.active div#playlistList {visibility:visible; opacity:1; transform:translateX(-50%);}
+
+div#container main#main main.player div.channel {padding:.5rem; border-top:1px solid #0002;}
+div#container main#main main.player div.channel {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container main#main main.player div.channel div.brand {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; cursor:pointer; user-select:none;}
+div#container main#main main.player div.channel div.brand div#avatar {border-radius:50%; min-width:1.75rem; min-height:1.75rem;}
+div#container main#main main.player div.channel div.brand div#avatar {background-color:#0001; background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container main#main main.player div.channel div.brand div.details {margin-left:.375rem;}
+div#container main#main main.player div.channel div.brand div.details div#channelname {color:black; font-size:.75rem;}
+div#container main#main main.player div.channel div.brand div.details div#channelsubcount {color:#AAA; font-size:.65rem;}
+div#container main#main main.player div.channel div.subbtns {display:flex; flex-direction:row; align-items:center; align-items:flex-end;}
+div#container main#main main.player div.channel div.subbtns {color:#AAA; text-transform:uppercase;}
+div#container main#main main.player div.channel div.subbtns >div {display:flex; flex-direction:column;}
+div#container main#main main.player div.channel div.subbtns div#subbtn {font-size:.75rem; cursor:pointer; user-select:none;}
+div#container main#main main.player div.channel div.subbtns div#subbtn span.caption {font-weight:normal;}
+div#container main#main main.player div.channel div.subbtns div#subbtn span.caption.no {display:block; color:red; opacity:.75;}
+div#container main#main main.player div.channel div.subbtns div#subbtn span.caption.yes {display:none;}
+div#container main#main main.player div.channel div.subbtns div#subbtn.active span.caption.no {display:none;}
+div#container main#main main.player div.channel div.subbtns div#subbtn.active span.caption.yes {display:block;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn {display:none;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn {font-size:1rem; margin-left:.5rem; cursor:pointer; user-select:none;}
+/* div#container main#main main.player div.channel div.subbtns div#notifbtn svg.icon {} */
+div#container main#main main.player div.channel div.subbtns div#notifbtn svg.icon.all {display:none;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn svg.icon.some {display:none;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn svg.icon.none {display:block;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn.on svg.icon.all {display:none;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn.on svg.icon.some {display:block;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn.on svg.icon.none {display:none;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.all {display:block;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.some {display:none;}
+div#container main#main main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.none {display:none;}
+div#container main#main main.player div.channel div.subbtns div#subbtn + div#notifbtn {display:none;}
+div#container main#main main.player div.channel div.subbtns div#subbtn.active + div#notifbtn {display:block;}
+
+
+/* 'Save to Playlist' List */
+
+div#container div#playlistList {position:fixed; bottom:0; left:50%; width:100%; max-width:20rem;}
+div#container div#playlistList {background-color:#222; color:white; font-size:.75rem; user-select:none;}
+div#container div#playlistList section {padding:1rem; border-top:.5px solid #FFF3;}
+
+div#container div#playlistList section.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1rem;}
+
+div#container div#playlistList section.body {display:flex; flex-direction:column; align-items:stretch; padding:.5rem 0;}
+div#container div#playlistList section.body div.item {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; padding:.75rem 1rem; cursor:pointer;}
+div#container div#playlistList section.body div.item span.checkbox {flex-grow:0; display:flex; flex-direction:column;}
+div#container div#playlistList section.body div.item span.checkbox svg.empty {display:block;}
+div#container div#playlistList section.body div.item span.checkbox svg.filled {display:none;}
+div#container div#playlistList section.body div.item.active span.checkbox svg.empty {display:none;}
+div#container div#playlistList section.body div.item.active span.checkbox svg.filled {display:block;}
+div#container div#playlistList section.body div.item span.plname {flex-grow:1; margin-left:1.25rem;}
+div#container div#playlistList section.body div.item span.plstatus {flex-grow:0; display:flex; flex-direction:column;}
+div#container div#playlistList section.body div.item span.plstatus svg.public {display:block;}
+div#container div#playlistList section.body div.item span.plstatus svg.linked {display:none;}
+div#container div#playlistList section.body div.item span.plstatus svg.private {display:none;}
+
+div#container div#playlistList section.donebtn {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; cursor:pointer;}
+
+
+
+/* Video Playlist */
+
+div#container main#main aside.playlist {height:100%; width:100%; max-width:18rem; overflow:auto; scrollbar-width:none; padding:.25rem; transition:.25s;}
+div#container main#main aside.playlist ul.vidlist {list-style:none; padding:0; margin:0; height:100%; overflow:auto; scrollbar-width:none;}
+/* div#container main#main aside.playlist ul.vidlist li.viditem {margin-bottom:.25rem;} */
 div#container main#main aside.playlist ul.vidlist li.viditem:last-child {margin-bottom:0;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {/* background-color:#0001; */ display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {color:inherit; text-decoration:none; padding:.4rem; /* border:1px solid #0002; */ border-radius:.25rem;}
-div#container main#main aside.playlist ul.vidlist li.viditem:hover a.vidlink {background-color:#ddd;}
-div#container main#main aside.playlist ul.vidlist li.viditem.active a.vidlink {background-color:dodgerblue; color:white;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {flex-grow:0; width:4rem; border:1px solid #0002; border-radius:.25rem;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-color:#0001; background-size:cover; background-position:center;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo::after {content:''; display:block; padding-top:75%;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content {flex-grow:1; margin-left:.75rem;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content {display:flex; flex-direction:column; align-items:stretch;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content span.title {font-size:.875rem;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content span.author,
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.details {color:#AAA; font-size:.8rem;}
-div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.details span.ets::after {content:' ago';}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {/* background-color:#0001; */ display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {color:inherit; text-decoration:none; padding:.25rem; /* border:1px solid #0002; */ border-radius:.25rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem:hover a.vidlink {background-color:#EEE; color:black; transition:.5s;}
+div#container main#main aside.playlist ul.vidlist li.viditem.active a.vidlink {background-color:#1e90ffCC; color:white;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {flex-grow:0; min-width:6rem; max-width:100%; border:1px solid #0002; border-radius:.25rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-color:#0004; background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo::after {content:''; display:block; padding-top:62.5%;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content {flex-grow:1; padding-left:.5rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content {display:flex; flex-direction:row; justify-content:flex-start; align-items:flex-start; align-items:center;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {display:none;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {background-color:#0004; border-radius:50%; min-width:2.5rem; min-height:2.5rem; margin-right:.4rem;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta {flex-grow:1;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.vidtitle {font-size:.875rem; line-height:1.25;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata {color:#AAA; font-size:.8rem; line-height:1.25; /* margin-top:.25rem; */ transition:.25s;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata {display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.dot {margin:-1rem 3px;}
+/* div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.vidauthor {} */
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.dot.a {display:none;}
+div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+/* div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata span.viewcount {} */
+/* div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata span.dot.b {} */
+/* div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata span.timesince {} */
+
+div#container main#main aside.playlist ul.vidlist li.viditem.active a.vidlink div.content span.author,
+div#container main#main aside.playlist ul.vidlist li.viditem.active a.vidlink div.content div.details {color:#606060;}
+
+
 
 
 @media screen and (max-width:48rem) {
-	div#container main#main {flex-direction:column; align-items:stretch;}
-	div#container main#main aside.playlist {max-width:none; margin:.75rem auto 0;}
-	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {width:100%;}
+
+	/* Main Container */
+	div#container main#main {flex-direction:column; justify-content:flex-start; align-items:stretch;}
+
+	/* Video Player */
+	div#container main#main main.player {flex-grow:0;}
+
+	/* Video Playlist */
+	div#container main#main aside.playlist {flex-grow:1;}
+	div#container main#main aside.playlist {max-width:none; margin:.5rem auto 0;}
+	div#container main#main aside.playlist ul.vidlist {display:flex; flex-flow:row wrap; justify-content:flex-start;}
+	div#container main#main aside.playlist ul.vidlist li.viditem {flex-basis:33.33%; flex-grow:0;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {flex-direction:column;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content {padding:.5rem;}
+}
+
+
+@media screen and (max-width:40rem) {
+
+	/* Main Container */
+
+	/* Video Player */
+
+	/* Video Playlist */
+	div#container main#main aside.playlist ul.vidlist li.viditem {flex-basis:50%;}
+}
+
+
+@media screen and (max-width:32rem) {
+
+	/* Main Container */
+	div#container h1.head {margin-bottom:.5rem; display:none;}
+	div#container main#main {padding:0;}
+
+	/* Video Player */
+	div#container main#main main.player {padding:0;}
+	/* div#container main#main main.player div.metadata {margin:.5rem;} */
+	div#container main#main main.player div.metadata h2#title {font-size:.875rem;}
+
+	/* Video Playlist */
+	div#container main#main aside.playlist {border-radius:0; padding:0;}
+	div#container main#main aside.playlist ul.vidlist li.viditem {flex-basis:100%;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink {border-radius:0; padding:0; padding-bottom:.35rem;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.photo {border-radius:0;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {display:block;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata {flex-direction:row; flex-wrap:wrap; align-items:center; margin-top:0;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata >* {flex-grow:0;}
+	div#container main#main aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.dot.a {display:block;}
+}
+
+
+@media screen and (max-width:22rem) {
+	div#container main#main main.player div.reaction {justify-content:flex-start;}
 }
