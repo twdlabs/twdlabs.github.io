@@ -4,8 +4,19 @@
 function toggleDrawer(id) {
 	console.log('Toggling drawer:',id);
 
-	// Bring focus to search query field upon opening. 
-	if(id=='searchbar') document.getElementById('searchquery').focus();
+	// Bring focus to search query field if search selected. 
+	if(id=='searchbar') {
+		let field = document.getElementById('searchquery');
+		field.focus();
+		field.value = '';
+	}
+
+	// Bring focus to user id field if login selected. 
+	if(id=='loginbox') {
+		let field = document.getElementById('userid');
+		field.focus();
+		field.value = '';
+	}
 
 	// Close all other drawers. 
 	closeAllDrawersBut(id);

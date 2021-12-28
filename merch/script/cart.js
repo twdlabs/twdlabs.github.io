@@ -6,26 +6,24 @@
 // Update cart items in cart drawer. 
 function updateCart() {
 	console.log('Updating cart...');
-	
-	// Sort cart items. 
-	// userdata[currentuserid].cartItems.sort(sortNumbers);
 
-	// Add elements and prices for cart items. 
+	// Initialize results. 
 	let result = '';
 	let total = 0;
-	for(item of userdata[currentuserid].cartItems) {
+
+	// Get user's cart data. 
+	let cartlist = ( isLoggedIn() ) ? ( userdata[currentuserid].cartItems ) : ( [] );
+
+	// Go thru each cart item. 
+	for(item of cartlist) {
 
 		// Get product by id. 
 		product = productdata[item.productid];
 
-		// Create product element. 
+		// Add item's page elements. 
 		result += `
 		<!-- item -->
 		<div class="item" data-productid="${item.productid}" title="id: ${item.productid}">
-	
-			<!-- deleter -->
-			<div class="deleter" onclick="removeCartItemById(${item.productid});">&times;</div>
-			<!-- /deleter -->
 
 			<!-- photo -->
 			<a class="photo" href="javascript:void(0)" style="background-image:url('${product.photourl}');"></a>
@@ -66,12 +64,16 @@ function updateCart() {
 				
 			</div>
 			<!-- /quantity -->
+	
+			<!-- deleter -->
+			<div class="deleter" onclick="removeCartItemById(${item.productid});">&times;</div>
+			<!-- /deleter -->
 
 		</div>
 		<!-- /item -->
 		`;
 
-		// Add to cart total. 
+		// Add item price to cart total. 
 		total += 1*item.qty*product.price;
 	}
 	// console.log('result',result);
@@ -87,21 +89,16 @@ function updateCart() {
 	carttotalbox.innerHTML = (1*total).toFixed(2);
 
 	// Scroll to top of cart. 
-	cartbox.scrollTop = -Infinity;
-
-	/*****/
-
-	// Sort cart items. 
-	function sortNumbers(a,b) {
-		return (a.productid - b.productid ) ;
-	}
-
+	// cartbox.scrollTop = -Infinity;
 }
 
 
 // Add selected item to cart. 
 function addToCart(element) {
 	console.log('Add to cart:',element);
+
+	// Get user's cart data. 
+	let cartlist = ( isLoggedIn() ) ? ( userdata[currentuserid].cartItems ) : ( [] );
 
 	// Get product id of selected item. 
 	let id = 1*element.getAttribute('data-productid');
@@ -111,10 +108,10 @@ function addToCart(element) {
 	let cartindex = -1;
 	
 	// Check if item is already in cart. 
-	for (i in userdata[currentuserid].cartItems) {
+	for (i in cartlist) {
 
 		// Get cart item. 
-		let item = userdata[currentuserid].cartItems[i];
+		let item = cartlist[i];
 
 		// Check for matching id btwn cart item and newly added item. 
 		if(id==item.productid) {
@@ -126,11 +123,11 @@ function addToCart(element) {
 
 	// Increment quantity of selected item if already in cart. 
 	if(alreadyInCart) {
-		userdata[currentuserid].cartItems[cartindex].qty++;
+		cartlist[cartindex].qty++;
 	}
 	// Add selected item to cart if not already added. 
 	else {
-		userdata[currentuserid].cartItems.unshift({
+		cartlist.unshift({
 			productid:id,
 			qty:1
 		});
@@ -142,7 +139,7 @@ function addToCart(element) {
 	}, 500);
 
 	// Show cart items in cart drawer. 
-	console.log('Cart after:',userdata[currentuserid].cartItems);
+	console.log('Cart after:',cartlist);
 	updateCart();
 }
 
@@ -169,14 +166,17 @@ function changeCartQty(id, dq) {
 	// Get cart item using id.
 	function getCartItemById(queryId) {
 
+		// Get user's cart data. 
+		let cartlist = ( isLoggedIn() ) ? ( userdata[currentuserid].cartItems ) : ( [] );
+
 		// Inititalize space for found cart item. 
 		let foundItem = undefined;
 
 		// Search for cart item. 
-		for(key in userdata[currentuserid].cartItems) {
+		for(index in cartlist) {
 
 			// Get cart item. 
-			let item = userdata[currentuserid].cartItems[key];
+			let item = cartlist[index];
 
 			// Check for matching id btwn cart item and searched item. 
 			if(queryId==item.productid) {
@@ -195,18 +195,21 @@ function changeCartQty(id, dq) {
 function removeCartItemById(queryId) {
 	console.log('Removing item with product id:',queryId);
 
+	// Get user's cart data. 
+	let cartlist = ( isLoggedIn() ) ? ( userdata[currentuserid].cartItems ) : ( [] );
+
 	// Get cart index of item to be removed. 
 	let indexOfDeletion = undefined;
-	for(index in userdata[currentuserid].cartItems) {
+	for(index in cartlist) {
 
 		// Check for matching id btwn cart item and item to be deleted. 
-		if(userdata[currentuserid].cartItems[index].productid==queryId) {
+		if(cartlist[index].productid==queryId) {
 			indexOfDeletion = index;
 		}
 	}
 
 	// Remove single cart item at given index. 
-	if(indexOfDeletion>-1) userdata[currentuserid].cartItems.splice(indexOfDeletion,1);
+	if(indexOfDeletion>-1) cartlist.splice(indexOfDeletion,1);
 	// Notify if index invalid. 
 	else console.error('Invalid index of removal.');
 

@@ -2,10 +2,10 @@
 
 
 /* Navbar */
-nav#navbar {min-height:3rem; background-color:var(--offwhite); padding:.625rem 0 .5rem; transition:.5s; position:relative;}
+nav#navbar {min-height:3rem; background-color:var(--offwhite); padding:.625rem 0 0; transition:.5s; position:relative;}
 nav#navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:25; box-shadow:var(--shadow);}
-nav#navbar main {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-nav#navbar main {max-width:72rem; padding:0 1rem; margin: 0 auto; transition:.5s;}
+nav#navbar main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; position:relative;}
+nav#navbar main {max-width:72rem; padding:0 1rem .5rem; margin: 0 auto; transition:.5s;}
 
 
 /* Navbar: General Section */
@@ -27,9 +27,11 @@ nav#navbar main div.toggle {display:flex; flex-direction:row; justify-content:ce
 nav#navbar main div.toggle a.navlink:hover {background-color:#0008; background-color:var(--blue); color:white;}
 nav#navbar main div.toggle a.navlink.toggler {font-size:1.5rem; display:none;}
 nav#navbar main div.toggle a.navlink svg.icon {display:block;}
+nav#navbar main div.toggle a.navlink span.closer,
 nav#navbar main div.toggle a.navlink svg.icon.closer {display:none;}
 nav#navbar main div.toggle a.navlink span.caption {display:none;}
 nav#navbar main div.toggle a.navlink.active svg.icon {display:none;}
+nav#navbar main div.toggle a.navlink.active span.closer,
 nav#navbar main div.toggle a.navlink.active svg.icon.closer {display:block;}
 
 /* Navbar Drawer: Navigation List */
@@ -43,27 +45,34 @@ nav#navbar main div.toggle div#navlist ul.navlist li.navitem a.navlink.page {jus
 /* Navbar: Account Section */
 nav#navbar main div.account {flex-grow:1; flex-basis:0;}
 nav#navbar main div.account {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
-nav#navbar main div.account a.navlink {font-size:1.5rem; transition:.5s;}
-nav#navbar main div.account a.navlink:hover {background-color:#0008; background-color:var(--blue); color:white;}
-nav#navbar main div.account a.navlink svg.icon {display:block;}
-nav#navbar main div.account a.navlink svg.icon.closer {display:none;}
-nav#navbar main div.account a.navlink span.caption {display:none;}
-nav#navbar main div.account a.navlink.active svg.icon {display:none;}
-nav#navbar main div.account a.navlink.active svg.icon.closer {display:block;}
+nav#navbar main div.account a.navlink.toggler {font-size:1.5rem; transition:.5s;}
+nav#navbar main div.account a.navlink.toggler:hover {background-color:#0008; background-color:var(--blue); color:white;}
+nav#navbar main div.account a.navlink.toggler svg.icon {display:block;}
+nav#navbar main div.account a.navlink.toggler span.closer,
+nav#navbar main div.account a.navlink.toggler svg.icon.closer {display:none;}
+nav#navbar main div.account a.navlink.toggler span.caption {display:none;}
+nav#navbar main div.account a.navlink.toggler.active svg.icon {display:none;}
+nav#navbar main div.account a.navlink.toggler.active span.closer,
+nav#navbar main div.account a.navlink.toggler.active svg.icon.closer {display:block;}
+nav#navbar main div.account a.navlink.toggler.in {display:none;}
+nav#navbar main div.account a.navlink.toggler.out {display:flex;}
+nav#navbar.loggedin main div.account a.navlink.toggler.in {display:flex;}
+nav#navbar.loggedin main div.account a.navlink.toggler.out {display:none;}
 
 
 /* Navbar Drawer: General Bin */
-/* nav#navbar main div#navdrawer {position:absolute; top:100%; right:0; left:0; width:100%;} */
+nav#navbar main div#navdrawer {position:absolute; top:100%; right:0; left:0; width:100%;}
 nav#navbar main div#navdrawer div.navbin {position:absolute; top:100%; right:1rem; overflow:hidden; width:100%; box-shadow:var(--shadow); border-radius:0 0 .5rem .5rem;}
 nav#navbar main div#navdrawer div.navbin {/* background-color:var(--offwhite); */ background-color:white; font-size:.75rem; display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch;}
 nav#navbar main div#navdrawer div.navbin {max-height:0; z-index:10; transition:.25s;}
 nav#navbar main div#navdrawer div.navbin.active {max-height:50vh; z-index:20;}
-nav#navbar main div#navdrawer div.navbin h3.title {background-color:white; margin:0; padding:1.5rem 1rem 1rem;}
+nav#navbar main div#navdrawer div.navbin h3.title {background-color:white; margin:0; padding:.75rem 1rem .5rem; background-image:linear-gradient( var(--offwhite),white );}
 /* nav#navbar main div#navdrawer div.navbin div.inner {background-color:var(--offwhite); border:.25rem solid var(--offwhite);} */
 nav#navbar main div#navdrawer div.navbin div.inner {/* border-radius:.5rem; */ padding-bottom:.125rem; overflow:auto; scrollbar-width:none;}
 nav#navbar main div#navdrawer div.navbin div.inner {display:flex; flex-direction:column; /* gap:.125rem; */ /* height:100%; */}
 nav#navbar main div#navdrawer div.navbin div.inner div.item {flex-shrink:0; background-color:white; /* padding:0 .35rem; */ /* border:.25rem solid white; */ /* border-radius:.5rem; */ /* margin-top:.25rem; */}
 nav#navbar main div#navdrawer div.navbin div.inner div.item {padding:.25rem .35rem; border-top:1px solid #0002;}
+nav#navbar main div#navdrawer div.navbin div.inner div.item:first-child {border-top:none;}
 nav#navbar main div#navdrawer div.navbin div.inner div.item {display:flex; flex-direction:row; align-items:center; user-select:none; overflow:hidden; /* min-height:3rem; */}
 nav#navbar main div#navdrawer div.navbin div.inner div.item:hover {background-color:#0001;}
 nav#navbar main div#navdrawer div.navbin div.inner div.item a.photo {flex-grow:0; flex-shrink:0; width:3rem; border-radius:.25rem; background-size:cover; background-position:center;}
@@ -74,25 +83,25 @@ nav#navbar main div#navdrawer div.navbin div.inner div.item div.content div.name
 nav#navbar main div#navdrawer div.navbin div.inner div.item div.content div.desc {font-size:.5rem; margin-top:.25rem; /* display:none; */}
 nav#navbar main div#navdrawer div.navbin div.inner div.item div.content div.price {margin-top:.25rem;}
 nav#navbar main div#navdrawer div.navbin div.inner div.item div.content div.price:before {content:'$';}
-nav#navbar main div#navdrawer div.navbin div.inner div.item div.deleter {flex-grow:0; font-size:1.25rem; font-weight:100; cursor:pointer; margin-right:.35rem;}
+nav#navbar main div#navdrawer div.navbin div.inner div.item div.deleter {flex-grow:0; font-size:1.25rem; font-weight:100; cursor:pointer; margin:0 .35rem;}
 nav#navbar main div#navdrawer div.navbin div.inner:empty:before {content:'[Empty]'; display:block; padding:1.25rem .75rem 1rem;}
 nav#navbar main div#navdrawer div.navbin div.total {display:flex; flex-direction:row; justify-content:space-between;}
-nav#navbar main div#navdrawer div.navbin div.total {font-size:1.15rem; padding:1.5rem 1rem 1rem;;}
+nav#navbar main div#navdrawer div.navbin div.total {font-size:1.15rem; padding:1.5rem 1rem 1rem; padding:.75rem 1rem .5rem;}
 
 /* Navbar Drawer: Favorites Bin */
 nav#navbar main div#navdrawer div#likebox {max-width:20rem;}
-nav#navbar main div#navdrawer div#likebox div.inner div.item {}
+/* nav#navbar main div#navdrawer div#likebox div.inner div.item {} */
 nav#navbar main div#navdrawer div#likebox div.inner:empty:before {content:'You have no favorites.';}
 nav#navbar main div#navdrawer div#likebox div.total span#favstotal:after {content:' item(s)';}
 nav#navbar main div#navdrawer div#likebox div.total span#favstotal:empty:after {content:'0 item(s)';}
 
 /* Navbar Drawer: Cart Bin */
 nav#navbar main div#navdrawer div#cartbox {max-width:20rem;}
-nav#navbar main div#navdrawer div#cartbox div.inner div.item {}
+/* nav#navbar main div#navdrawer div#cartbox div.inner div.item {} */
 nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity {flex-grow:0; flex-shrink:0;}
-nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity {display:flex; flex-direction:row; justify-content:start; align-items:center; padding:.5rem 0;}
-nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.qty {font-size:1.15rem; text-align:center;}
-nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta {background-color:#CCC; color:#555; font-size:.75rem; padding:.25rem .5rem; border-radius:.35rem; text-align:center; cursor:pointer; user-select:none;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity {display:flex; flex-direction:row; justify-content:space-between; align-items:center; /* border:1px solid #CCC; */ border-radius:.35rem; overflow:hidden; margin:.5rem 0;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.qty {font-size:.75rem; min-width:.75rem; text-align:center; margin-top:.125rem;}
+nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta {background-color:#CCC; color:#555; font-size:.75rem; padding:.25rem .45rem; /* border-radius:.35rem; */ text-align:center; cursor:pointer; user-select:none;}
 nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta:last-child {margin-left:.5rem;}
 nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta:first-child {margin-right:.5rem;}
 /* nav#navbar main div#navdrawer div#cartbox div.inner div.item div.quantity span.delta.plus {margin-left:.125rem;} */
@@ -102,14 +111,23 @@ nav#navbar main div#navdrawer div#cartbox div.total span#carttotal:before {conte
 nav#navbar main div#navdrawer div#cartbox div.total span#carttotal:empty:before {content:'$0.00';}
 
 /* Navbar Drawer: Account Bin */
-nav#navbar main div#navdrawer div#accountbox {max-width:16rem;}
+nav#navbar main div#navdrawer div#accountbox {max-width:12rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item {border:0 none;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item {cursor:pointer;}
+nav#navbar main div#navdrawer div#accountbox div.inner div.item a.photo {width:2rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser {flex-direction:column; border-bottom:1px solid #0002; padding-bottom:.65rem; margin-bottom:.25rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser:hover {background-color:initial;}
+nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser a.photo {width:4rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser div.content {margin-top:.5rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner div.item.activeuser div.content div.desc {margin-top:.125rem;}
 nav#navbar main div#navdrawer div#accountbox div.inner:empty:before {content:'You have no account information.';}
+
+/* Navbar Drawer: Login Bin */
+nav#navbar main div#navdrawer div#loginbox {max-width:8rem;}
+/* nav#navbar main div#navdrawer div#loginbox div.inner div.item {} */
+nav#navbar main div#navdrawer div#loginbox div.inner div.item div.input,
+nav#navbar main div#navdrawer div#loginbox div.inner div.item div.input button,
+nav#navbar main div#navdrawer div#loginbox div.inner div.item div.input input {width:100%;}
 
 /* Navbar Drawer: Search Bar */
 /* nav#navbar main div#navdrawer div#searchbar {position:absolute; top:100%; right:0; left:0; width:100%; overflow:hidden; background-color:var(--offwhite);} */
@@ -157,6 +175,7 @@ nav#navbar main div#navdrawer div#searchbar.bare div.inner div.input input#searc
 	/* Navbar Drawer: Favorites Bin */
 	/* Navbar Drawer: Cart Bin */
 	/* Navbar Drawer: Account Bin */
+	/* Navbar Drawer: Login Bin */
 	/* Navbar Drawer: Search Bar */
 }
 
@@ -177,6 +196,7 @@ nav#navbar main div#navdrawer div#searchbar.bare div.inner div.input input#searc
 	/* Navbar Drawer: Favorites Bin */
 	/* Navbar Drawer: Cart Bin */
 	/* Navbar Drawer: Account Bin */
+	/* Navbar Drawer: Login Bin */
 	/* Navbar Drawer: Search Bar */
 }
 
@@ -204,6 +224,7 @@ nav#navbar main div#navdrawer div#searchbar.bare div.inner div.input input#searc
 	/* Navbar Drawer: Favorites Bin */
 	/* Navbar Drawer: Cart Bin */
 	/* Navbar Drawer: Account Bin */
+	/* Navbar Drawer: Login Bin */
 	/* Navbar Drawer: Search Bar */
 	nav#navbar main div#navdrawer div#searchbar {font-size:1rem;}
 	nav#navbar main div#navdrawer div#searchbar div.inner div.input input#searchquery {padding:.5rem 1.5rem; padding-right:3.5rem;}

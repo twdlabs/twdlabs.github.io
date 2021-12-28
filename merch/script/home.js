@@ -140,8 +140,11 @@ function addProductItems() {
 	// Check if product in favorites list. 
 	function inFavsList(queryId) {
 
+		// Get user's favs data. 
+		let favsidlist = ( isLoggedIn() ) ? ( userdata[currentuserid].favIds ) : ( [] );
+
 		// Check liked items until match found. 
-		for(id of userdata[currentuserid].favIds) {
+		for(id of favsidlist) {
 			// Yes if matching id found in array. 
 			if(id==queryId) return true;
 		}

@@ -86,16 +86,16 @@ div#container section#featured div.inner main div.item div.content div.productac
 div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.cart span.caption {font-size:.875rem; margin-left:.5rem;}
 div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs {flex-grow:0; padding:.75rem 1rem; margin-left:.35rem;}
 div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs svg.icon {font-size:1rem;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs.active {color:crimson; color:orange;}
+div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs.active {color:crimson; color:orange; transition:.5s;}
 div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs.active svg.icon {animation:pump .5s;}
+div#container section#featured div.inner aside.refine {display:none;}
+div#container section#featured div.inner aside.refine {flex-grow:0; width:20rem; text-align:center;}
+
 @keyframes pump {
 	0% {transform:scale(1);}
 	50% {transform:scale(.85);}
 	100% {transform:scale(1);}
 }
-
-/* div#container section#featured div.inner aside.refine {display:none;} */
-div#container section#featured div.inner aside.refine {flex-grow:0; width:20rem; text-align:center;}
 
 
 

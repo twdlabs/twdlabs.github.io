@@ -3,6 +3,13 @@
 /* ACCOUNT */
 
 
+// Define current user. 
+let currentuserid = -1;
+
+
+/*****/
+
+
 // Update user items in account drawer. 
 function updateAccounts() {
 	console.log('Updating accounts...');
@@ -93,5 +100,53 @@ function chooseUser(target) {
 
 	// Start it up. 
 	setTimeout(startItUp,500);
+}
+
+
+// Login user. 
+function userLogin() {
+	
+	// Get user input. 
+	let input = document.getElementById('userid').value;
+	console.log('input',input);
+	
+	// Get user id. 
+	let id = 1*input;
+	console.log('id',id);
+
+	// Check if user id is valid. 
+	let userIdValid = (input.length>0) && (id>-1) && (id<userdata.length);
+	console.log('userIdValid',userIdValid);
+
+	// Login if user id valid. 
+	if(userIdValid) currentuserid = id;
+
+	// Close all navbar slide drawers. 
+	closeAllDrawersBut();
+
+	// Start it up. 
+	setTimeout(startItUp,500);
+}
+
+
+// Logout user. 
+function userLogout() {
+
+	// Remove current user id. 
+	currentuserid = -1;
+
+	// Close all navbar slide drawers. 
+	closeAllDrawersBut();
+
+	// Start it up. 
+	setTimeout(startItUp,500);
+
+	passTheToast('You are now logged out.');
+}
+
+
+// Check if user is logged in. 
+function isLoggedIn() {
+	return ( currentuserid>-1 && currentuserid<userdata.length );
 }
 

@@ -7,15 +7,19 @@
 function updateFavs() {
 	console.log('Updating favorites...');
 
-	// Add element for each liked item. 
+	// Initialize result. 
 	let result = '';
-	let total = userdata[currentuserid].favIds.length;
-	for(let id of userdata[currentuserid].favIds) {
+
+	// Get user's favs data. 
+	let favsidlist = ( isLoggedIn() ) ? ( userdata[currentuserid].favIds ) : ( [] );
+
+	// Go thru each liked item. 
+	for(let id of favsidlist) {
 
 		// Get product by id. 
 		let product = productdata[id];
 
-		// Create fav element. 
+		// Add item's page elements. 
 		result += `
 		<!-- item -->
 		<div class="item" data-productid="${id}" title="id: ${id}">
@@ -49,6 +53,7 @@ function updateFavs() {
 		</div>
 		<!-- /item -->`;
 	}
+	let total = favsidlist.length;
 	// console.log('result',result);
 
 	// Get inside of favs drawer. 
@@ -67,6 +72,9 @@ function updateFavs() {
 function toggleFav(favbtn) {
 	console.log('Toggle favorite:',favbtn);
 
+	// Get user's favs data. 
+	let favsidlist = ( isLoggedIn() ) ? ( userdata[currentuserid].favIds ) : ( [] );
+
 	// Get product id of selected item. 
 	let id = 1*favbtn.getAttribute('data-productid');
 
@@ -75,10 +83,10 @@ function toggleFav(favbtn) {
 	let favindex = -1;
 
 	// Check if item is already in favorites list. 
-	for (let i in userdata[currentuserid].favIds) {
+	for (let i in favsidlist) {
 
 		// Get fav item id. 
-		let favId = userdata[currentuserid].favIds[i];
+		let favId = favsidlist[i];
 
 		// Check for matching id btwn fav item and newly liked item. 
 		if(id==favId) {
@@ -99,7 +107,7 @@ function toggleFav(favbtn) {
 	// Add selected item to favs list if not already added. 
 	else {
 		// Add id of selected item to list. 
-		userdata[currentuserid].favIds.unshift(id);
+		favsidlist.unshift(id);
 
 		// Activate selected fav button. 
 		favbtn.classList.add('active');
@@ -111,26 +119,27 @@ function toggleFav(favbtn) {
 	}
 
 	// Show liked items in favorites drawer. 
-	console.log('Favs after:',userdata[currentuserid].favIds);
+	console.log('Favs after:',favsidlist);
 	updateFavs();
 
 	/*****/
 
 	// Remove id from fav list at given index. 
 	function removeFavItemById(queryId) {
+		console.log('Removing item with product id:',queryId);
 
 		// Get favs index of item to be removed. 
 		let indexOfDeletion = undefined;
-		for(index in userdata[currentuserid].favIds) {
+		for(index in favsidlist) {
 
 			// Check for matching id btwn favs item and item to be deleted. 
-			if(userdata[currentuserid].favIds[index]==queryId) {
+			if(favsidlist[index]==queryId) {
 				indexOfDeletion = index;
 			}
 		}
 
 		// Remove single favs item at given index. 
-		if(indexOfDeletion>-1) userdata[currentuserid].favIds.splice(indexOfDeletion,1);
+		if(indexOfDeletion>-1) favsidlist.splice(indexOfDeletion,1);
 
 		// Notify if index invalid. 
 		else console.error('Invalid index of removal.');
@@ -141,13 +150,16 @@ function toggleFav(favbtn) {
 // Remove item from favs list (by id). 
 function removeFavItemById(queryId) {
 	console.log('Removing item with product id:',queryId);
-	// console.log('favIds (before)',userdata[currentuserid].favIds);
+
+	// Get user's favs data. 
+	let favsidlist = ( isLoggedIn() ) ? ( userdata[currentuserid].favIds ) : ( [] );
+	// console.log('favIds (before)',favsidlist);
 
 	// Get favs list index of item to be removed. 
 	let indexOfDeletion = undefined;
-	for(index in userdata[currentuserid].favIds) {
+	for(index in favsidlist) {
 
-		let favId = userdata[currentuserid].favIds[index];
+		let favId = favsidlist[index];
 
 		// Check for matching id btwn favs list item and item to be deleted. 
 		if(favId==queryId) {
@@ -156,10 +168,10 @@ function removeFavItemById(queryId) {
 	}
 
 	// Remove single liked item at given index. 
-	if(indexOfDeletion>-1) userdata[currentuserid].favIds.splice(indexOfDeletion,1);
+	if(indexOfDeletion>-1) favsidlist.splice(indexOfDeletion,1);
 	// Notify if index invalid. 
 	else console.error('Invalid index of removal.');
-	// console.log('favIds (after)',userdata[currentuserid].favIds);
+	// console.log('favIds (after)',favsidlist);
 
 	// Update liked items in favs list drawer. 
 	updateFavs();
