@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+
 	<body>
 
 		<!-- #navbar -->
@@ -36,7 +37,7 @@
 				<div class="toggle">
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink toggler" title="Toggle" onclick="toggleDrawer('navlist')">
+					<a href="javascript:void(0)" class="navlink toggler" title="Toggle menu" onclick="toggleDrawer('navlist')">
 
 						<!-- icon -->
 						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -45,13 +46,14 @@
 						<!-- /icon -->
 
 						<!-- closer -->
-						<svg class="icon closer" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<span class="closer">&times;</span>
+						<!-- <svg class="icon closer" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-						</svg>
+						</svg> -->
 						<!-- /closer -->
 
 						<!-- caption -->
-						<span class="caption">Toggle</span>
+						<span class="caption">Menu</span>
 						<!-- /caption -->
 
 					</a>
@@ -89,7 +91,7 @@
 					<a href="javascript:void(0)" class="navlink toggler search" title="Search" onclick="toggleDrawer('searchbar')">
 
 						<!-- icon -->
-						<svg class="icon" width=".7em" height=".7em" fill="currentColor" viewBox="0 0 16 16">
+						<svg class="icon" width=".875em" height=".875em" fill="currentColor" viewBox="0 0 16 16">
 							<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
 						</svg>
 						<!-- /icon -->
@@ -126,7 +128,7 @@
 						<!-- /closer -->
 
 						<!-- caption -->
-						<span class="caption">Favorites</span>
+						<span class="caption">Saved</span>
 						<!-- /caption -->
 
 					</a>
@@ -198,24 +200,31 @@
 						<!-- /closer -->
 
 						<!-- caption -->
-						<span class="caption">Account</span>
+						<span class="caption">Login</span>
 						<!-- /caption -->
 
 					</a>
 					<!-- /navlink -->
 
 					<!-- navlink -->
-					<a href="javascript:void(0)" class="navlink toggler logout in" title="Logout" onclick="userLogout()">
+					<a href="javascript:void(0)" class="navlink toggler signup out" title="Login" onclick="toggleDrawer('signupbox')">
 
 						<!-- icon -->
 						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-							<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+							<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+							<path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
 						</svg>
 						<!-- /icon -->
 
+						<!-- closer -->
+						<span class="closer">&times;</span>
+						<!-- <svg class="icon closer" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+						</svg> -->
+						<!-- /closer -->
+
 						<!-- caption -->
-						<span class="caption">Logout</span>
+						<span class="caption">Sign Up</span>
 						<!-- /caption -->
 
 					</a>
@@ -390,15 +399,25 @@
 						<div class="total">
 							
 							<!-- caption -->
-							<span class="caption">Total</span>
+							<span class="caption">Subtotal</span>
 							<!-- /caption -->
 
-							<!-- #carttotal -->
-							<span id="carttotal"></span>
-							<!-- /#carttotal -->
+							<!-- #cartquantity -->
+							<span id="cartquantity"></span>
+							<!-- /#cartquantity -->
+
+							<!-- #cartsubtotal -->
+							<span id="cartsubtotal"></span>
+							<!-- /#cartsubtotal -->
 
 						</div>
 						<!-- /total -->
+
+						<!-- proceed -->
+						<a class="proceed" href="javascript:void(0)" style="font-size:2rem; padding:1rem;">
+							Proceed to Checkout
+						</a>
+						<!-- /proceed -->
 	
 					</div>
 					<!-- /#cartbox -->
@@ -463,12 +482,29 @@
 
 						</div>
 						<!-- /inner -->
+
+						<!-- navlink -->
+						<a href="javascript:void(0)" class="navlink toggler logout in" title="Logout" onclick="userLogout()">
+
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+								<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">Logout</span>
+							<!-- /caption -->
+
+						</a>
+						<!-- /navlink -->
 	
 					</div>
 					<!-- /#accountbox -->
 	
 					<!-- #loginbox -->
-					<div id="loginbox" class="navbin">
+					<div id="loginbox" class="navbin userin">
 
 						<!-- title -->
 						<h3 class="title">Login</h3>
@@ -476,38 +512,6 @@
 	
 						<!-- inner -->
 						<div class="inner">
-
-							<!-- item -->
-							<div class="item" style="display:none;">
-	
-								<!-- input -->
-								<div class="input">
-		
-									<!-- #username -->
-									<input id="username" type="text" value="" placeholder="Username" autocomplete="off">
-									<!-- /#username -->
-		
-								</div>
-								<!-- /input -->
-
-							</div>
-							<!-- /item -->
-
-							<!-- item -->
-							<div class="item" style="display:none;">
-	
-								<!-- input -->
-								<div class="input">
-		
-									<!-- #password -->
-									<input id="password" type="password" value="" placeholder="Password" autocomplete="off">
-									<!-- /#password -->
-		
-								</div>
-								<!-- /input -->
-
-							</div>
-							<!-- /item -->
 
 							<!-- item -->
 							<div class="item">
@@ -530,8 +534,52 @@
 	
 								<!-- input -->
 								<div class="input">
+		
+									<!-- #password -->
+									<input id="password" type="password" value="" placeholder="Password" autocomplete="off">
+									<!-- /#password -->
+		
+								</div>
+								<!-- /input -->
 
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input" style="flex-grow:0;">
+
+									<!-- #saveid -->
+									<input type="checkbox" id="saveid">
+									<!-- /#saveid -->
+		
+								</div>
+								<!-- /input -->
+	
+								<!-- input -->
+								<div class="input">
+
+									<!-- label -->
+									<label for="saveid" style="font-size:.65rem; margin-left:.25rem;">Remember me</label>
+									<!-- /label -->
+		
+								</div>
+								<!-- /input -->
+
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input">
+
+									<!-- sendlogin -->
 									<button class="sendlogin" id="sendlogin" onclick="userLogin()">Login</button>
+									<!-- /sendlogin -->
 		
 								</div>
 								<!-- /input -->
@@ -544,6 +592,102 @@
 	
 					</div>
 					<!-- /#loginbox -->
+	
+					<!-- #signupbox -->
+					<div id="signupbox" class="navbin userin">
+
+						<!-- title -->
+						<h3 class="title">Sign Up</h3>
+						<!-- /title -->
+	
+						<!-- inner -->
+						<div class="inner">
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input">
+		
+									<!-- #username -->
+									<input id="username" type="text" value="" placeholder="Name" autocomplete="off">
+									<!-- /#username -->
+		
+								</div>
+								<!-- /input -->
+
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input">
+		
+									<!-- #phonenumber -->
+									<input id="phonenumber" type="text" value="" placeholder="Phone Number" autocomplete="off">
+									<!-- /#phonenumber -->
+		
+								</div>
+								<!-- /input -->
+
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input">
+		
+									<!-- #password -->
+									<input id="password" type="password" value="" placeholder="Password" autocomplete="off">
+									<!-- /#password -->
+		
+								</div>
+								<!-- /input -->
+
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input">
+		
+									<!-- #passwordconfirm -->
+									<input id="passwordconfirm" type="password" value="" placeholder="Confirm Password" autocomplete="off">
+									<!-- /#passwordconfirm -->
+		
+								</div>
+								<!-- /input -->
+
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input">
+
+									<!-- sendsignup -->
+									<button class="sendsignup" id="sendsignup" onclick="userSignup()">Sign Up</button>
+									<!-- /sendsignup -->
+		
+								</div>
+								<!-- /input -->
+
+							</div>
+							<!-- /item -->
+
+						</div>
+						<!-- /inner -->
+	
+					</div>
+					<!-- /#signupbox -->
 
 				</div>
 				<!-- /#navdrawer -->
@@ -556,4 +700,5 @@
 		<!-- /#navbar -->
 		
 	</body>
+	
 </html>
