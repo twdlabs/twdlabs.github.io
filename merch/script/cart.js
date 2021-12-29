@@ -9,7 +9,8 @@ function updateCart() {
 
 	// Initialize results. 
 	let result = '';
-	let total = 0;
+	let subtotal = 0;
+	let cartquantity = 0;
 
 	// Get user's cart data. 
 	let cartlist = ( isLoggedIn() ) ? ( userdata[currentuserid].cartItems ) : ( [] );
@@ -73,20 +74,33 @@ function updateCart() {
 		<!-- /item -->
 		`;
 
-		// Add item price to cart total. 
-		total += 1*item.qty*product.price;
+		// Add item price to cart subtotal. 
+		subtotal += 1*item.qty*product.price;
+		cartquantity += 1*item.qty
 	}
 	// console.log('result',result);
 
+
 	// Get inside of cart drawer. 
 	let cartbox = document.querySelector('div#cartbox div.inner');
+
 	// Add elements to cart drawer. 
 	cartbox.innerHTML = result;
 
-	// Get cart total box. 
-	let carttotalbox = document.getElementById('carttotal');
-	// Add total to cart total box. 
-	carttotalbox.innerHTML = (1*total).toFixed(2);
+
+	// Get cart subtotal box. 
+	let cartsubtotalbox = document.getElementById('cartsubtotal');
+
+	// Add subtotal to cart subtotal box. 
+	cartsubtotalbox.innerHTML = (1*subtotal).toFixed(2);
+
+
+	// Get cart subtotal box. 
+	let cartquantitybox = document.getElementById('cartquantity');
+
+	// Add subtotal to cart subtotal box. 
+	cartquantitybox.innerHTML = (1*cartquantity) + ( (cartquantity==1) ? (' item') : (' items') );
+
 
 	// Scroll to top of cart. 
 	// cartbox.scrollTop = -Infinity;

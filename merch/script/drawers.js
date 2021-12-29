@@ -18,6 +18,13 @@ function toggleDrawer(id) {
 		field.value = '';
 	}
 
+	// TODO: Bring focus to user id field if signup selected. 
+	// if(id=='signupbox') {
+	// 	let field = document.getElementById('userid');
+	// 	field.focus();
+	// 	field.value = '';
+	// }
+
 	// Close all other drawers. 
 	closeAllDrawersBut(id);
 	

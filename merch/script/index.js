@@ -36,8 +36,20 @@ function startItUp() {
 
 	// Complete startup. 
 	console.log('Started up...');
-	console.log(`${userdata[currentuserid].fname} is now logged in...`);
-	passTheToast(`Welcome, ${userdata[currentuserid].fname}!`)
+
+	// Get user's name. 
+	let firstname = ( isLoggedIn() ) ? ( userdata[currentuserid].fname ) : ( undefined );
+
+	// Notify of status. 
+	if(firstname) {
+		console.log(`${firstname} is now logged in...`);
+		passTheToast(`Welcome, ${firstname}!`);
+	}
+	else console.log(`Nobody is logged in...`);
+
+	// Set page's login status. 
+	if( isLoggedIn() ) document.getElementById('navbar').classList.add('loggedin');
+	else document.getElementById('navbar').classList.remove('loggedin');
 }
 
 

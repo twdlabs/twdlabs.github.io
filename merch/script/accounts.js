@@ -6,6 +6,9 @@
 // Define current user. 
 let currentuserid = -1;
 
+// Get saved user id if available. 
+if(localStorage.currentuserid) currentuserid = localStorage.currentuserid
+
 
 /*****/
 
@@ -103,6 +106,13 @@ function chooseUser(target) {
 }
 
 
+// TODO: Signup user. 
+function userSignup() {
+	userdata.push(
+		[]
+	);
+}
+
 // Login user. 
 function userLogin() {
 	
@@ -119,7 +129,19 @@ function userLogin() {
 	console.log('userIdValid',userIdValid);
 
 	// Login if user id valid. 
-	if(userIdValid) currentuserid = id;
+	if(userIdValid) {
+
+		// Save user id. 
+		currentuserid = id;
+
+		// Check if user requested to save user id. 
+		let saveId = document.getElementById('saveid').checked;
+
+		// Save user id if user requested. 
+		if(saveId) localStorage.currentuserid = currentuserid;
+		// Otherwise, clear any previously recorded user id. 
+		else localStorage.currentuserid = -1;
+	}
 
 	// Close all navbar slide drawers. 
 	closeAllDrawersBut();
@@ -134,6 +156,7 @@ function userLogout() {
 
 	// Remove current user id. 
 	currentuserid = -1;
+	localStorage.currentuserid = currentuserid;
 
 	// Close all navbar slide drawers. 
 	closeAllDrawersBut();
