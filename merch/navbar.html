@@ -84,8 +84,8 @@
 				</div>
 				<!-- /toggle -->
 
-				<!-- account -->
-				<div class="account">
+				<!-- user -->
+				<div class="user">
 
 					<!-- navlink -->
 					<a href="javascript:void(0)" class="navlink toggler search" title="Search" onclick="toggleDrawer('searchbar')">
@@ -231,7 +231,7 @@
 					<!-- /navlink -->
 
 				</div>
-				<!-- /account -->
+				<!-- /user -->
 
 				<!-- #navdrawer -->
 				<div id="navdrawer">
@@ -244,6 +244,12 @@
 	
 							<!-- input -->
 							<div class="input">
+			
+								<!-- icon -->
+								<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+								</svg>
+								<!-- /icon -->
 		
 								<!-- #searchquery -->
 								<input id="searchquery" type="search" value="" placeholder="Search..." autocomplete="off" onkeyup="event.preventDefault(); if(event.keyCode===13) document.getElementById('sendquery').click();">
@@ -253,8 +259,8 @@
 								<button class="sendquery" id="sendquery" onclick="searchForProduct()">
 			
 									<!-- icon -->
-									<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-										<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+									<svg class="icon arrow" width="1.25em" height="1.25em" fill="currentColor" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
 									</svg>
 									<!-- /icon -->
 			
@@ -522,6 +528,34 @@
 									<!-- #userid -->
 									<input id="userid" type="text" value="" placeholder="User ID" autocomplete="off" onkeyup="let e=event; let key=e.keyCode||e.charCode; console.log(key); if(key==13) document.getElementById('sendlogin').click();">
 									<!-- /#userid -->
+									
+									<!-- icon -->
+									<svg class="icon user" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+									</svg>
+									<!-- /icon -->
+		
+								</div>
+								<!-- /input -->
+
+							</div>
+							<!-- /item -->
+
+							<!-- item -->
+							<div class="item">
+	
+								<!-- input -->
+								<div class="input">
+		
+									<!-- #useremail -->
+									<input id="useremail" type="email" value="" placeholder="User Email" autocomplete="off" onkeyup="let e=event; let key=e.keyCode||e.charCode; console.log(key); if(key==13) document.getElementById('sendlogin').click();">
+									<!-- /#useremail -->
+									
+									<!-- icon -->
+									<svg class="icon envelope" width=".85em" height=".85em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+									</svg>
+									<!-- /icon -->
 		
 								</div>
 								<!-- /input -->
@@ -536,8 +570,14 @@
 								<div class="input">
 		
 									<!-- #password -->
-									<input id="password" type="password" value="" placeholder="Password" autocomplete="off">
+									<input id="password" type="password" value="" placeholder="Password" autocomplete="off" onkeyup="let e=event; let key=e.keyCode||e.charCode; console.log(key); if(key==13) document.getElementById('sendlogin').click();">
 									<!-- /#password -->
+									
+									<!-- icon -->
+									<svg class="icon key" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+									</svg>
+									<!-- /icon -->
 		
 								</div>
 								<!-- /input -->
@@ -547,26 +587,14 @@
 
 							<!-- item -->
 							<div class="item">
-	
-								<!-- input -->
-								<div class="input" style="flex-grow:0;">
 
-									<!-- #saveid -->
-									<input type="checkbox" id="saveid">
-									<!-- /#saveid -->
-		
-								</div>
-								<!-- /input -->
-	
-								<!-- input -->
-								<div class="input">
+								<!-- #saveid -->
+								<input type="checkbox" id="saveid" style="flex-grow:0;">
+								<!-- /#saveid -->
 
-									<!-- label -->
-									<label for="saveid" style="font-size:.65rem; margin-left:.25rem;">Remember me</label>
-									<!-- /label -->
-		
-								</div>
-								<!-- /input -->
+								<!-- label -->
+								<label for="saveid" style="font-size:.65rem; margin-left:.35rem; padding-top:.15rem;">Remember me</label>
+								<!-- /label -->
 
 							</div>
 							<!-- /item -->
@@ -612,6 +640,12 @@
 									<!-- #username -->
 									<input id="username" type="text" value="" placeholder="Name" autocomplete="off">
 									<!-- /#username -->
+									
+									<!-- icon -->
+									<svg class="icon user" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+									</svg>
+									<!-- /icon -->
 		
 								</div>
 								<!-- /input -->
@@ -628,6 +662,12 @@
 									<!-- #phonenumber -->
 									<input id="phonenumber" type="text" value="" placeholder="Phone Number" autocomplete="off">
 									<!-- /#phonenumber -->
+									
+									<!-- icon -->
+									<svg class="icon phone" width=".85em" height=".85em" fill="currentColor" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+									</svg>
+									<!-- /icon -->
 		
 								</div>
 								<!-- /input -->
@@ -644,6 +684,12 @@
 									<!-- #password -->
 									<input id="password" type="password" value="" placeholder="Password" autocomplete="off">
 									<!-- /#password -->
+									
+									<!-- icon -->
+									<svg class="icon key" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+									</svg>
+									<!-- /icon -->
 		
 								</div>
 								<!-- /input -->
@@ -660,6 +706,12 @@
 									<!-- #passwordconfirm -->
 									<input id="passwordconfirm" type="password" value="" placeholder="Confirm Password" autocomplete="off">
 									<!-- /#passwordconfirm -->
+									
+									<!-- icon -->
+									<svg class="icon key" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+									</svg>
+									<!-- /icon -->
 		
 								</div>
 								<!-- /input -->
