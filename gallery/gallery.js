@@ -85,11 +85,8 @@ function loadItUp() {
 		// Activate image clicks in gallery. 
 		activateImageClicks();
 
-		// Activate heart button clicks in gallery. 
-		activateHeartClicks();
-
-		// Activate download button clicks in gallery. 
-		activateDownloadClicks();
+		// Activate heart buttons in gallery. 
+		activateGalleryLikeBtns();
 
 		/*****/
 
@@ -182,8 +179,8 @@ function loadItUp() {
 			}
 		}
 
-		// Activate heart button clicks. 
-		function activateHeartClicks() {
+		// Activate heart buttons in gallery. 
+		function activateGalleryLikeBtns() {
 		
 			// Get all heart buttons. 
 			let likebtns = document.querySelectorAll('section#gallery main div.item div.panel a.btn.like');
@@ -192,21 +189,7 @@ function loadItUp() {
 			for(let btn of likebtns) {
 		
 				// Add click handler to heart button. 
-				btn.addEventListener('click', toggleLikeImage);
-			}
-		}
-
-		// Activate download button clicks. 
-		function activateDownloadClicks() {
-
-			// Get all download buttons. 
-			let dlbtns = document.querySelectorAll('section#gallery main div.item div.panel a.btn.dl');
-		
-			// Go thru each download button. 
-			for(let btn of dlbtns) {
-		
-				// Add click handler to download button. 
-				btn.addEventListener('click', downloadImage);
+				btn.addEventListener('click', clickGalleryLikeBtn);
 			}
 		}
 	}
@@ -265,76 +248,28 @@ function selectTag(event) {
 
 // Select image to blow up on overlay. 
 function selectImage(event) {
-	console.log('selectImage', event.currentTarget);
+	// console.log('selectImage', event.currentTarget);
 
 	// Get parent item. 
 	let item = event.currentTarget.parentElement;
 
 	// Get id of selected image. 
 	let id = item.getAttribute('data-id');
-	console.log('selected id:', id, item);
+	// console.log('selected id:', id, item);
 
 	// Attach selected id to overlay. 
-	overlay.setAttribute('data-selected-id',id);
+	overlay.setAttribute('data-displayed-img-id',id);
 
 	// Open page overlay, displaying selected image (by id). 
 	openPicOverlay(id);
 }
 
-// Toggle selected image to/from list of liked images. 
-function toggleLikeImage(event) {
-	console.log('toggleLikeImage', event.currentTarget.parentElement.parentElement);
-	// console.log('likedImageIds (before)',likedImageIds);
-
-	// Get index of selected image. 
-	let item = event.currentTarget.parentElement.parentElement;
-	let id = 1*item.getAttribute('data-id');
-
-	// Check if image already liked. 
-	let alreadyLiked = likedImageIds.includes(id);
-
-	// Add selected image to like list. 
-	if(!alreadyLiked) {
-
-		// Add image id to list. 
-		likedImageIds.push(id);
-
-		// Update on page. 
-		item.classList.add('liked');
-	}
-	// Remove selected image from like list. 
-	else {
-		
-		// Get index of image id to remove from list. 
-		let removeIndex = likedImageIds.indexOf(id);
-
-		// Remove image id from list. 
-		likedImageIds.splice(removeIndex,1);
-
-		// Update on page. 
-		item.classList.remove('liked');
-	}
-	// console.log('likedImageIds (after)',likedImageIds);
-}
-
-// TODO: Download full HD version of selected image. 
-function downloadImage(event) {
-	console.log('downloadImage', event.currentTarget.parentElement.parentElement);
-
-	// Get index of image to download. 
-	let item = event.currentTarget.parentElement.parentElement;
-	let id = ( item.hasAttribute('data-id') ) ? ( 1*item.getAttribute('data-id') ) : ( -1 );
-	let imgurl = imageData[id].url;
-	console.log(`imgurl: '${imgurl}'`);
-}
-
-
-// Open picture overlay. 
+// Open picture overlay popup. 
 function openPicOverlay(id) {
-	console.log('id', id);
+	// console.log('id', id);
 
 	let img = imageData[id];
-	console.log('img', img);
+	// console.log('img', img);
 
 	// Add selected image to overlay. 
 	document.querySelector('section#overlay main.main div.content').innerHTML = `<img src="pic/${img.url}">`;
@@ -357,43 +292,158 @@ function openPicOverlay(id) {
 	// Add string representation of tags to overlay. 
 	document.querySelector('section#overlay main.main div.head div.title').innerHTML = `Tags: ${tizags}`;
 
+	// Activate buttons in overlay popup. 
+	updateOverlayBtns();
+
 	// Show overlay on page. 
 	document.getElementById('overlay').classList.add('active');
+
+	/*****/
+
+	// Activate buttons in overlay popup. 
+	function updateOverlayBtns() {
+
+		// Get overlay. 
+		let overlay = document.getElementById('overlay');
+
+		// Check if id present in overlay. 
+		let hasId = overlay.hasAttribute('data-displayed-img-id');
+
+		// Get id of displayed image. 
+		let id = ( hasId ) ? ( 1*overlay.getAttribute('data-displayed-img-id') ) : ( -1 );
+		
+
+		// Get download button in overlay. 
+		let dlbtn = document.getElementById('dlbtn');
+
+		// Get url of displayed image. 
+		let imgurl = imageData[id].url;
+		// console.log(`imgurl: '${imgurl}'`);
+
+		// Set download button attributes: 'href' & 'download'. 
+		dlbtn.setAttribute('download',`img${id}`);
+		dlbtn.setAttribute('href',`pic/${imgurl}`);
+
+
+		// Get heart button in overlay. 
+		let likebtn = document.getElementById('likebtn');
+		likebtn.addEventListener('click', clickOverlayLikeBtn);
+
+		// Check if displayed item now liked. 
+		let nowLiked = likedImageIds.includes(id);
+
+		// Set heart button in overlay popup to appropriate initial state. 
+		if(nowLiked) likebtn.classList.add('active');
+		else likebtn.classList.remove('active');
+	}
 }
 
-// Close picture overlay. 
+// Close picture overlay popup. 
 function closePicOverlay() {
 
 	// Get overlay. 
 	let overlay = document.getElementById('overlay');
 
-	// Hide overlay from page. 
+	// Hide overlay popup from page. 
 	overlay.classList.remove('active');
 	
-	// Remove id value from overlay. 
-	overlay.removeAttribute('data-selected-id');
+	// Remove image content from overlay popup. 
+	document.querySelector('section#overlay main div.content').innerHTML = '';
+	
+	// Remove id value from overlay popup. 
+	overlay.removeAttribute('data-displayed-img-id');
+
+	// De-activate buttons in overlay popup. 
+	clearOverlayBtns();
+
+	/*****/
+
+	// De-activate buttons in overlay popup. 
+	function clearOverlayBtns() {
+
+		// Get download button from overlay. 
+		let dlbtn = document.getElementById('dlbtn');
+
+		// Clear download button attributes: 'href' & 'download'. 
+		dlbtn.setAttribute('download','');
+		dlbtn.setAttribute('href','javascript:void(0)');
+
+		// Get heart button from overlay. 
+		let likebtn = document.getElementById('likebtn');
+		likebtn.removeEventListener('click', clickOverlayLikeBtn);
+	}
 }
 
+// Select displayed image to toggle 'like' for. 
+function clickOverlayLikeBtn(event) {
+	// console.log('clickOverlayLikeBtn', event.currentTarget);
+
+	// Get id of displayed image. 
+	let overlay = document.getElementById('overlay');
+	let hasId = overlay.hasAttribute('data-displayed-img-id');
+	let id = ( hasId ) ? ( 1*overlay.getAttribute('data-displayed-img-id') ) : ( -1 );
+
+	// Toggle 'like' for selected image. 
+	toggleImageLikeById(id);
+}
+
+// Select image in gallery to toggle 'like' for. 
+function clickGalleryLikeBtn(event) {
+	console.log('clickGalleryLikeBtn', event.currentTarget.parentElement.parentElement);
+
+	// Get id of selected image. 
+	let item = event.currentTarget.parentElement.parentElement;
+	let hasId = item.hasAttribute('data-id');
+	let id = ( hasId ) ? ( 1*item.getAttribute('data-id') ) : ( -1 );
+
+	// Toggle 'like' for selected image. 
+	toggleImageLikeById(id);
+}
+
+// Toggle image 'like' by id. 
+function toggleImageLikeById(id) {
+
+	// Check if image already liked. 
+	let alreadyLiked = likedImageIds.includes(id);
+	// console.log('toggleImageLikeById', id, alreadyLiked?'turn off':'turn on' );
 
 
-// TODO: Add click handler for overlay download button. 
-document.getElementById('dlbtn').addEventListener('click',function() {
+	// console.log('likedImageIds (before)',likedImageIds);
 
-	// Get id of displayed image from overlay attribute. 
-	// let id = overlay.getAttribute('data-selected-id');
+	// Add selected image to like list. 
+	if(!alreadyLiked) {
 
-	// Get image url. 
-	// let url = imageData[id].url;
+		// Add image id to list. 
+		likedImageIds.push(id);
+	}
+	// Remove selected image from like list. 
+	else {
+		
+		// Get index of image id to remove from list. 
+		let removeIndex = likedImageIds.indexOf(id);
 
-	// Download selected image. 
+		// Remove image id from list. 
+		likedImageIds.splice(removeIndex,1);
+	}
 
-});
+	// console.log('likedImageIds (after)',likedImageIds);
 
-// TODO: Add click handler for overlay heart button. 
-document.getElementById('likebtn').addEventListener('click',function() {
 
-	// Get id of displayed image from overlay attribute. 
-	let id = overlay.getAttribute('data-selected-id');
+	// Check if item now liked. 
+	let nowLiked = likedImageIds.includes(id);
 
-	// 
-});
+	// Get overlay heart button. 
+	let likebtn = document.getElementById('likebtn');
+
+	// Update heart button in overlay popup. 
+	if(nowLiked) likebtn.classList.add('active');
+	else likebtn.classList.remove('active');
+
+	// Get corresponding item in gallery. 
+	let item = document.querySelectorAll('section#gallery main div.item')[id];
+
+	// Update item's heart button in gallery. 
+	if(nowLiked) item.classList.add('liked');
+	else item.classList.remove('liked');
+}
+

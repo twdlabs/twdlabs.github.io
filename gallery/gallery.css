@@ -53,7 +53,7 @@ div#container section#gallery main div.item div.image:before {background-color:#
 
 div#container section#gallery main div.item div.panel {position:absolute; bottom:0; left:0; width:100%; /* height:25%; */ padding:.5rem ;}
 div#container section#gallery main div.item div.panel {display:flex; flex-direction:row; justify-content:flex-end; user-select:none; /* pointer-events:none; */}
-div#container section#gallery main div.item div.panel {background:linear-gradient(#0000,#0004); opacity:0; transition:.125s;}
+div#container section#gallery main div.item div.panel {background:linear-gradient(#0000,#0004); opacity:0.35; transition:.125s;}
 div#container section#gallery main div.item:hover div.panel {opacity:1;}
 
 div#container section#gallery main div.item div.panel div.user {flex-grow:1; display:flex; flex-direction:row; align-items:center;}
@@ -97,10 +97,11 @@ div#container section#overlay main div.head div.user div.details div.followercou
 
 div#container section#overlay main div.head a.btn {flex-grow:0; display:grid; place-items:center; width:1.75rem; height:1.75rem; cursor:pointer;}
 div#container section#overlay main div.head a.btn {background-color:#EEE; font-size:1.25rem; padding:.25rem; border-radius:.25rem; margin-left:.5rem;}
-div#container section#overlay main div.head a.btn.dl {color:#AAA; transition:.25s;}
-div#container section#overlay main div.head a.btn.like {color:#CCC; transition:.25s;}
-div#container section#overlay main div.head a.btn:hover {color:#999;}
-div#container section#overlay main div.head a.btn.like.active {color:red;}
+div#container section#overlay main div.head a.btn#dlbtn {color:#AAA; transition:.25s;}	/* #dlbtn */
+div#container section#overlay main div.head a.btn#likebtn {color:#CCC; transition:.25s;}	/* #likebtn */
+div#container section#overlay main div.head a.btn#dlbtn:hover {color:#999;}
+div#container section#overlay main div.head a.btn#likebtn:hover {color:#999;}
+div#container section#overlay main div.head a.btn#likebtn.active {color:red;}
 
 div#container section#overlay main div.head div.closebtn {position:absolute; top:0; left:100%; background-color:#FFF0; color:#FFF; border-radius:50%; min-height:2rem; min-width:2rem; margin:.5rem;}
 div#container section#overlay main div.head div.closebtn {display:grid; place-items:center; font-size:1.5rem; font-weight:100; cursor:pointer; user-select:none;}
