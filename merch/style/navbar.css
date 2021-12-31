@@ -26,11 +26,11 @@ nav#navbar main div.toggle {display:flex; flex-direction:row; justify-content:ce
 nav#navbar main div.toggle a.navlink:hover {background-color:#0008; background-color:var(--blue); color:white;}
 nav#navbar main div.toggle a.navlink.toggler {font-size:1.5rem; display:none;}
 nav#navbar main div.toggle a.navlink svg.icon {display:block;}
-nav#navbar main div.toggle a.navlink span.closer,
+nav#navbar main div.toggle a.navlink span.closer {display:none; font-weight:100; margin-top:-.5rem;}
 nav#navbar main div.toggle a.navlink svg.icon.closer {display:none; font-weight:100;}
 nav#navbar main div.toggle a.navlink span.caption {display:none; font-size:.675rem; text-align:center; /* white-space:nowrap; */}
 nav#navbar main div.toggle a.navlink.active svg.icon {display:none;}
-nav#navbar main div.toggle a.navlink.active span.closer,
+nav#navbar main div.toggle a.navlink.active span.closer {display:block;}
 nav#navbar main div.toggle a.navlink.active svg.icon.closer {display:block;}
 /* Special Buttons */
 nav#navbar main div.toggle a.navlink {justify-content:space-between; min-width:2.75rem; min-height:2.75rem;}
@@ -44,25 +44,26 @@ nav#navbar main div.toggle div#navlist ul.navlist {list-style:none; padding:0; m
 nav#navbar main div.toggle div#navlist ul.navlist li.navitem {font-size:1.125rem;}
 nav#navbar main div.toggle div#navlist ul.navlist li.navitem a.navlink.page {justify-content:center; padding:.75rem .75rem .5rem;}
 
-/* Navbar: Account Section */
-nav#navbar main div.account {flex-grow:1; flex-basis:0;}
-nav#navbar main div.account {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
-nav#navbar main div.account a.navlink.toggler {font-size:1.5rem; transition:.5s;}
-nav#navbar main div.account a.navlink.toggler:hover {background-color:#0008; background-color:var(--blue); color:white;}
-nav#navbar main div.account a.navlink.toggler svg.icon {display:block;}
-nav#navbar main div.account a.navlink.toggler span.closer,
-nav#navbar main div.account a.navlink.toggler svg.icon.closer {display:none; font-weight:100;}
-nav#navbar main div.account a.navlink.toggler span.caption {display:none; font-size:.675rem; text-align:center; /* white-space:nowrap; */}
-nav#navbar main div.account a.navlink.toggler.active svg.icon {display:none;}
-nav#navbar main div.account a.navlink.toggler.active span.closer,
-nav#navbar main div.account a.navlink.toggler.active svg.icon.closer {display:block;}
-nav#navbar main div.account a.navlink.toggler.in {display:none;}
-nav#navbar main div.account a.navlink.toggler.out {display:flex;}
-nav#navbar.loggedin main div.account a.navlink.toggler.in {display:flex;}
-nav#navbar.loggedin main div.account a.navlink.toggler.out {display:none;}
+/* Navbar: User Section */
+nav#navbar main div.user {flex-grow:1; flex-basis:0;}
+nav#navbar main div.user {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
+nav#navbar main div.user a.navlink.toggler {font-size:1.5rem; transition:.5s;}
+nav#navbar main div.user a.navlink.toggler:hover {background-color:#0008; background-color:var(--blue); color:white;}
+nav#navbar main div.user a.navlink.toggler svg.icon {display:block;}
+nav#navbar main div.user a.navlink.toggler span.closer {display:none; font-weight:100; margin-top:-.5rem;}
+nav#navbar main div.user a.navlink.toggler svg.icon.closer {display:none; font-weight:100;}
+nav#navbar main div.user a.navlink.toggler span.caption {display:none; font-size:.675rem; text-align:center; /* white-space:nowrap; */}
+nav#navbar main div.user a.navlink.toggler.active svg.icon {display:none;}
+nav#navbar main div.user a.navlink.toggler.active span.closer {display:block;}
+nav#navbar main div.user a.navlink.toggler.active svg.icon.closer {display:block;}
+nav#navbar main div.user a.navlink.toggler.in {display:none;}
+nav#navbar main div.user a.navlink.toggler.out {display:flex;}
+nav#navbar.loggedin main div.user a.navlink.toggler.in {display:flex;}
+nav#navbar.loggedin main div.user a.navlink.toggler.out {display:none;}
 /* Special Buttons */
-nav#navbar main div.account a.navlink.toggler {justify-content:space-between; min-width:2.75rem; min-height:2.75rem;}
-nav#navbar main div.account a.navlink.toggler span.caption {display:block;}
+nav#navbar main div.user a.navlink.toggler {justify-content:space-between; min-width:2.75rem; min-height:2.75rem;}
+nav#navbar main div.user a.navlink.toggler span.caption {display:block;}
+
 
 
 /* Navbar Drawer: General Bin */
@@ -137,9 +138,11 @@ nav#navbar main div#navdrawer div.navbin.userin {width:12rem;}
 /* nav#navbar main div#navdrawer div#loginbox {} */
 /* nav#navbar main div#navdrawer div#signupbox {} */
 /* nav#navbar main div#navdrawer div.navbin.userin div.inner div.item {} */
-nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input {flex-grow:1;}
-nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input input {width:100%;}
-nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input button {width:100%;}
+nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input {flex-grow:1; position:relative;}
+nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input input {font-size:inherit; padding:.5rem 1rem; padding-left:1.75rem; width:100%;}
+nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input button {padding:.5rem 1rem; width:100%;}
+nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input svg.icon {position:absolute; left:1rem; top:50%; transform:translate(-50%,-50%);}
+nav#navbar main div#navdrawer div.navbin.userin div.inner div.item div.input svg.icon {color:#555; font-size:1rem;}
 
 /* Navbar Drawer: Search Bar */
 /* nav#navbar main div#navdrawer div#searchbar {position:absolute; top:100%; right:0; left:0; width:100%; overflow:hidden; background-color:var(--offwhite);} */
@@ -148,10 +151,13 @@ nav#navbar main div#navdrawer div#searchbar {max-height:0; transition:.25s;}
 nav#navbar main div#navdrawer div#searchbar.active {max-height:5rem;}
 nav#navbar main div#navdrawer div#searchbar div.inner {padding-bottom:0; transition:.25s;}
 nav#navbar main div#navdrawer div#searchbar div.inner div.input {position:relative; transition:.25s;}
-nav#navbar main div#navdrawer div#searchbar div.inner div.input input#searchquery {width:100%; padding:.75rem 2rem; padding-right:4.5rem; font-size:inherit; border-radius:2rem; border: 0px solid var(--offwhite); outline:none;}
+nav#navbar main div#navdrawer div#searchbar div.inner div.input svg.icon.search {position:absolute; left:0; top:50%; transform:translateY(-50%); height:100%; cursor:pointer; z-index:10;}
+nav#navbar main div#navdrawer div#searchbar div.inner div.input svg.icon.search {background-color:transparent; color:inherit; border-color:transparent; border-radius:0 2rem 2rem 0; font-size:1rem; margin:0 1rem;}
+nav#navbar main div#navdrawer div#searchbar div.inner div.input input#searchquery {width:100%; padding:.75rem 3rem; font-size:inherit; border-radius:2rem; border: 0px solid var(--offwhite); outline:none;}
 nav#navbar main div#navdrawer div#searchbar div.inner div.input button.sendquery {position:absolute; right:0; top:50%; transform:translateY(-50%); height:100%; cursor:pointer; z-index:10;}
-nav#navbar main div#navdrawer div#searchbar div.inner div.input button.sendquery {background-color:transparent; color:inherit; border-color:transparent; border-radius:0 2rem 2rem 0; font-size:1.25rem; padding:0 1rem;}
-nav#navbar main div#navdrawer div#searchbar div.inner div.input button.sendquery:active {color: var(--blue); border-color:transparent;}
+nav#navbar main div#navdrawer div#searchbar div.inner div.input button.sendquery {display:grid; place-items:center;}
+nav#navbar main div#navdrawer div#searchbar div.inner div.input button.sendquery {background-color:transparent; color:inherit; border-color:transparent; border-radius:0 2rem 2rem 0; font-size:1.25rem; padding:0 1rem; padding-right:.5rem;}
+nav#navbar main div#navdrawer div#searchbar div.inner div.input button.sendquery:active {color:var(--blue);}
 
 nav#navbar main div#navdrawer div#searchbar.bare {background-color:transparent; box-shadow:none;}
 nav#navbar main div#navdrawer div#searchbar.bare div.inner {background-color:transparent; border-color:transparent; padding:.5rem;}
@@ -180,8 +186,8 @@ nav#navbar main div#navdrawer div#searchbar.bare div.inner div.input input#searc
 	nav#navbar main div.toggle div#navlist ul.navlist li.navitem {padding:.125rem 0;}
 	nav#navbar main div.toggle div#navlist ul.navlist li.navitem a.navlink.page {align-items:flex-start;}
 	/* Navbar Drawer: Sidelined Navigation List */
-	/* Navbar: Account Section */
-	nav#navbar main div.account {flex-grow:0;}
+	/* Navbar: User Section */
+	nav#navbar main div.user {flex-grow:0;}
 
 	/* Navbar Drawer: General Bin */
 	nav#navbar main div#navdrawer div.navbin {right:0; border-radius:0 0 0 .5rem;}
@@ -202,7 +208,7 @@ nav#navbar main div#navdrawer div#searchbar.bare div.inner div.input input#searc
 	/* Navbar: Toggle Section */
 	/* Navbar Drawer: Navigation List */
 	/* Navbar Drawer: Sidelined Navigation List */
-	/* Navbar: Account Section */
+	/* Navbar: User Section */
 
 	/* Navbar Drawer: General Bin */
 	/* nav#navbar main div#navdrawer div.navbin {width:75%;} */
@@ -222,15 +228,19 @@ nav#navbar main div#navdrawer div#searchbar.bare div.inner div.input input#searc
 	/* Navbar: Logo Section */
 	nav#navbar main div.logo a.navlink {font-size:1.5rem;}
 	/* Navbar: Toggle Section */
+	nav#navbar main div.toggle a.navlink {justify-content:center; min-width:2rem; min-height:2rem;}
+	nav#navbar main div.toggle a.navlink span.caption {display:none;}
 	/* Navbar Drawer: Navigation List */
 	/* Navbar Drawer: Sidelined Navigation List */
 	/* nav#navbar main div.toggle div#navlist.sidelined {position:fixed; top:0; left:0; width:100%; height:100%; transform:translateX(100%); max-height:none;}
 	nav#navbar main div.toggle div#navlist.sidelined.active {transform:translateX(0); max-height:none;}
 	nav#navbar main div.toggle div#navlist.sidelined ul.navlist {height:100%; justify-content:center;}
 	nav#navbar main div.toggle div#navlist.sidelined ul.navlist li.navitem a.navlink.page {padding:1.75rem 1.5rem 1.5rem;} */
-	/* Navbar: Account Section */
-	/* nav#navbar main div.account {flex-basis:100%; flex-shrink:0; justify-content:center;} */
-	nav#navbar main div.account a.navlink {font-size:1.25rem;}
+	/* Navbar: User Section */
+	/* nav#navbar main div.user {flex-basis:100%; flex-shrink:0; justify-content:center;} */
+	nav#navbar main div.user a.navlink {font-size:1.25rem;}
+	nav#navbar main div.user a.navlink.toggler {justify-content:center; min-width:2rem; min-height:2rem;}
+	nav#navbar main div.user a.navlink.toggler span.caption {display:none;}
 
 	/* Navbar Drawer: General Bin */
 	/* nav#navbar main div#navdrawer div.navbin {width:100%;} */

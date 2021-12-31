@@ -58,7 +58,8 @@ div#container section#featured div.inner {display:flex; flex-direction:row; just
 div#container section#featured div.inner main {flex-grow:1;}
 div#container section#featured div.inner main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem; padding:1rem;}
 
-div#container section#featured div.inner main div.item {border:1px solid var(--offwhite); border-radius:.25rem; display:flex; flex-direction:column; align-items:stretch;}
+div#container section#featured div.inner main div.item {background-color:white; border:1px solid var(--offwhite); border-radius:.25rem;}
+div#container section#featured div.inner main div.item {display:flex; flex-direction:column; align-items:stretch;}
 /* div#container section#featured div.inner main div.item a.photo {text-decoration:none; color:inherit;} */
 div#container section#featured div.inner main div.item a.photo {background-color:var(--offwhite); background-size:cover; background-position:center; width:100%; padding-top:100%; border-bottom:1px solid var(--offwhite);}
 div#container section#featured div.inner main div.item div.content {display:flex; flex-direction:column; align-items:stretch; text-align:center; padding:.75rem;}
