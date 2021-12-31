@@ -1,13 +1,14 @@
 
 
 // Define initial image tags. 
-const tagCollection = [];
+const allTags = [];
 
 // Define image urls. 
 const imageData = [
 	{
 		url:'1.jpg',
 		taglist:[
+			'',
 			'city',
 			'water',
 		]
@@ -15,12 +16,14 @@ const imageData = [
 	{
 		url:'2 2.jpg',
 		taglist:[
+			'',
 			'mountain',
 		]
 	},
 	{
 		url:'2.jpg',
 		taglist:[
+			'',
 			'water',
 			'mountain',
 			'sky',
@@ -29,6 +32,7 @@ const imageData = [
 	{
 		url:'3.jpg',
 		taglist:[
+			'',
 			'dog',
 			'grass',
 		]
@@ -36,12 +40,14 @@ const imageData = [
 	{
 		url:'1033200-starry-sky-background-1330x2000-for-ipad.jpg',
 		taglist:[
+			'',
 			'sky',
 		]
 	},
 	{
 		url:'a.jpg',
 		taglist:[
+			'',
 			'buildings',
 			'water',
 			'sky',
@@ -51,6 +57,7 @@ const imageData = [
 	{
 		url:'b.jpeg',
 		taglist:[
+			'',
 			'city',
 			'trees',
 			'streets',
@@ -59,6 +66,7 @@ const imageData = [
 	{
 		url:'city.jpg',
 		taglist:[
+			'',
 			'city',
 			'trees',
 			'buildings',
@@ -68,18 +76,21 @@ const imageData = [
 	{
 		url:'code.jpg',
 		taglist:[
+			'',
 			'code',
 		]
 	},
 	{
 		url:'codecode.jpg',
 		taglist:[
+			'',
 			'code',
 		]
 	},
 	{
 		url:'devicework.jpg',
 		taglist:[
+			'',
 			'device',
 			'hands',
 		]
@@ -87,6 +98,7 @@ const imageData = [
 	{
 		url:'Dubai.jpg',
 		taglist:[
+			'',
 			'sky',
 			'city',
 			'buildings',
@@ -95,12 +107,14 @@ const imageData = [
 	{
 		url:'earthmap.jpg',
 		taglist:[
+			'',
 			'map',
 		]
 	},
 	{
 		url:'fd21366fc13ca502751ebb8f7d18f2dd.jpg',
 		taglist:[
+			'',
 			'beach',
 			'water',
 			'sky',
@@ -109,12 +123,14 @@ const imageData = [
 	{
 		url:'library.jpg',
 		taglist:[
+			'',
 			'buildings',
 		]
 	},
 	{
 		url:'Navagio.jpg',
 		taglist:[
+			'',
 			'beach',
 			'mountain',
 			'water',
@@ -124,6 +140,7 @@ const imageData = [
 	{
 		url:'NEWSLIDER21.jpg',
 		taglist:[
+			'',
 			'trees',
 			'sky',
 		]
@@ -131,6 +148,7 @@ const imageData = [
 	{
 		url:'np3.jpg',
 		taglist:[
+			'',
 			'beach',
 			'mountain',
 			'water',
@@ -140,6 +158,7 @@ const imageData = [
 	{
 		url:'Squarespace+Learning+-+Forum+Banner.jpg',
 		taglist:[
+			'',
 			'device',
 			'desk',
 		]
@@ -147,18 +166,21 @@ const imageData = [
 	{
 		url:'starry-sky-wallpaper-dark.jpg',
 		taglist:[
+			'',
 			'sky',
 		]
 	},
 	{
 		url:'wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
 		taglist:[
+			'',
 			'sky',
 		]
 	},
 	{
 		url:'ze0NeqF.jpg',
 		taglist:[
+			'',
 			'beach',
 			'mountain',
 			'water',
@@ -167,4 +189,7 @@ const imageData = [
 		]
 	}
 ];
+
+// Define initial list of liked images. 
+let likedImageIds = [ 1, 3, 5, 7 ];
 

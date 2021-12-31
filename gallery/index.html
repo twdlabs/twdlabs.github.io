@@ -21,13 +21,22 @@
 			<!-- #head -->
 			<section id="head">
 
+				<!-- head -->
 				<h1 class="head">
+
+					<!-- icon -->
 					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
 						<path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
 					</svg>
-					Image Gallery
+					<!-- /icon -->
+
+					<!-- caption -->
+					<span class="caption">Image Gallery</span>
+					<!-- /caption -->
+
 				</h1>
+				<!-- /head -->
 
 			</section>
 			<!-- /#head -->
@@ -49,19 +58,19 @@
 					<!-- /tag -->
 	
 					<!-- tag -->
-					<div class="tag item">
+					<div class="tag item" data-value="xyz">
 						<span class="caption">xyz</span>
 					</div>
 					<!-- /tag -->
 	
 					<!-- tag -->
-					<div class="tag item">
+					<div class="tag item" data-value="xyz">
 						<span class="caption">xyz</span>
 					</div>
 					<!-- /tag -->
 	
 					<!-- tag -->
-					<div class="tag item">
+					<div class="tag item" data-value="xyz">
 						<span class="caption">xyz</span>
 					</div>
 					<!-- /tag -->
@@ -78,9 +87,69 @@
 				<!-- main -->
 				<main>
 
-					<!-- image -->
-					<div class="image item" style="background-image:url('');"></div>
-					<!-- /image -->
+					<!-- item -->
+					<div class="item">
+
+						<!-- image -->
+						<div class="image" style="background-image:url('');"></div>
+						<!-- /image -->
+
+						<!-- panel -->
+						<div class="panel">
+
+							<!-- user -->
+							<div class="user">
+	
+								<!-- avatar -->
+								<div class="avatar"></div>
+								<!-- /avatar -->
+	
+								<!-- details -->
+								<div class="details">
+	
+									<!-- username -->
+									<div class="username">TWDLabs</div>
+									<!-- /username -->
+	
+									<!-- followercount -->
+									<div class="followercount">50k followers</div>
+									<!-- /followercount -->
+									
+								</div>
+								<!-- /details -->
+								
+							</div>
+							<!-- /user -->
+
+							<!-- btn -->
+							<a class="btn like" href="javascript:void(0)">
+
+								<!-- icon -->
+								<svg class="icon heart" width=".7em" height=".7em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+								</svg>
+								<!-- /icon -->
+
+							</a>
+							<!-- /btn -->
+
+							<!-- btn -->
+							<a class="btn dl" href="pic/xyz.jpg" target="_blank" download="xyz0">
+
+								<!-- icon -->
+								<svg class="icon download" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+								</svg>
+								<!-- /icon -->
+
+							</a>
+							<!-- /btn -->
+
+						</div>
+						<!-- /panel -->
+
+					</div>
+					<!-- /item -->
 
 				</main>
 				<!-- /main -->
@@ -89,7 +158,7 @@
 			<!-- /#gallery -->
 
 			<!-- #overlay -->
-			<section id="overlay" onclick="if(event.target==event.currentTarget) closePicOverlay();">
+			<section id="overlay" onclick="if(event.target==event.currentTarget) closePicOverlay();" data-selected-id="0">
 
 				<!-- main -->
 				<main class="main">
@@ -102,6 +171,60 @@
 							Tags: abc, xyz
 						</div>
 						<!-- /title -->
+
+						<!-- user -->
+						<div class="user">
+
+							<!-- avatar -->
+							<div class="avatar">
+								
+							</div>
+							<!-- /avatar -->
+
+							<!-- details -->
+							<div class="details">
+
+								<!-- username -->
+								<div class="username">
+									TWDLabs
+								</div>
+								<!-- /username -->
+
+								<!-- followercount -->
+								<div class="followercount">
+									50k followers
+								</div>
+								<!-- /followercount -->
+								
+							</div>
+							<!-- /details -->
+							
+						</div>
+						<!-- /user -->
+
+						<!-- btn -->
+						<a class="btn dl" id="dlbtn" href="pic/xyz.jpg" target="_blank" download="xyz0">
+
+							<!-- icon -->
+							<svg class="icon download" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+							</svg>
+							<!-- /icon -->
+
+						</a>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<a class="btn like" id="likebtn" href="javascript:void(0)">
+
+							<!-- icon -->
+							<svg class="icon heart" width=".7em" height=".7em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+							</svg>
+							<!-- /icon -->
+
+						</a>
+						<!-- /btn -->
 
 						<!-- closebtn -->
 						<div class="closebtn" onclick="closePicOverlay()">&times;</div>
