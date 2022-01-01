@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Step Progress Bar</title>
+
+		<style type="text/css">
+
+			* {box-sizing:border-box;}
+			
+
+			body {font-family:sans-serif; margin:0; --grey:#EEE;}
+
+
+			div#container {background:linear-gradient(135deg,dodgerblue,white); min-height:100vh;}
+			div#container {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+
+			div#container main#main {background-color:white; border-radius:.25rem; width:100%; max-width:60rem;}
+			div#container main#main {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.5rem;}
+
+			div#container main#main div.step {background-color:#00000008; /* border:1px solid black; */ border-radius:.25rem; width:8rem; min-height:6rem; margin:.5rem 0;}
+			div#container main#main div.step {display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative;}
+			div#container main#main div.step:before,
+			div#container main#main div.step::after {content:''; position:absolute; height:.25rem; background-color:var(--grey); width:50%; z-index:10;}
+			div#container main#main div.step:before {left:0; top:50%; transform:translateY(-50%);}
+			div#container main#main div.step::after {right:0; top:50%; transform:translateY(-50%);}
+			div#container main#main div.step:first-child:before,
+			div#container main#main div.step:last-child::after {content:none;}
+			div#container main#main div.step span.dot {background-color:var(--grey); color:grey; border:.125rem solid grey; border-radius:50%; min-width:1.75rem; min-height:1.75rem;}
+			div#container main#main div.step span.dot {display:grid; place-items:center; position:relative; z-index:20;}
+			div#container main#main div.step span.caption {border:1px solid grey; border-radius:1rem; color:grey; font-size:.75rem; font-weight:100; padding:.25rem .5rem .15rem; position:absolute; top:100%; left:50%; transform:translateX(-50%); margin-top:.5rem;}
+
+			div#container main#main div.step.active:before,
+			div#container main#main div.step.active::after {background-color:dodgerblue; border-radius:1rem;}
+			div#container main#main div.step.active span.dot {background-color:dodgerblue; border-color:dodgerblue; color:white;}
+			div#container main#main div.step.active span.caption {border-color:dodgerblue; color:dodgerblue;}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main id="main">
+
+				<!-- step -->
+				<div class="step active">
+
+					<!-- dot -->
+					<span class="dot">
+						
+						<!-- icon -->
+						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+						</svg>
+						<!-- /icon -->
+
+						<!-- caption -->
+						<span class="caption">Cart</span>
+						<!-- /caption -->
+					</span>
+					<!-- /dot -->
+
+				</div>
+				<!-- /step -->
+
+				<!-- step -->
+				<div class="step active">
+
+					<!-- dot -->
+					<span class="dot">
+						
+						<!-- icon -->
+						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<!-- <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/> -->
+							<path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+						</svg>
+						<!-- /icon -->
+
+						<!-- caption -->
+						<span class="caption">Shipping</span>
+						<!-- /caption -->
+					</span>
+					<!-- /dot -->
+
+				</div>
+				<!-- /step -->
+
+				<!-- step -->
+				<div class="step">
+
+					<!-- dot -->
+					<span class="dot">
+						
+						<!-- icon -->
+						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+							<path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+						</svg>
+						<!-- /icon -->
+
+						<!-- caption -->
+						<span class="caption">Payment</span>
+						<!-- /caption -->
+					</span>
+					<!-- /dot -->
+
+				</div>
+				<!-- /step -->
+
+				<!-- step -->
+				<div class="step">
+
+					<!-- dot -->
+					<span class="dot">
+						
+						<!-- icon -->
+						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<!-- <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/> -->
+							<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+						</svg>
+						<!-- /icon -->
+
+						<!-- caption -->
+						<span class="caption">Confirm</span>
+						<!-- /caption -->
+					</span>
+					<!-- /dot -->
+
+				</div>
+				<!-- /step -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
