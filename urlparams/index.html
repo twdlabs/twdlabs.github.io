@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>URLSearchParams</title>
+
+		<!-- jQuery -->
+		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+
+		<style type="text/css">
+			html,body {height:100%; margin:0; font-family:sans-serif;}
+			div#container {min-height:100%; padding:1em; font-size:1.75rem; max-width:400px; margin:0 auto;}
+			div#container h1 {text-align:center; font-size:2rem;}
+			div#container table {width:100%;}
+			div#container table tr {padding:.25em;}
+			div#container table tr label {font-weight:bold;}
+			div#container table tr.r label {color:red;}
+			div#container table tr.g label {color:green;}
+			div#container table tr.b label {color:blue;}
+			div#container table tr div.value {text-align:right;}
+			div#container table tr button {font-size:1.25rem; padding:.5rem; margin-top:1em; border-radius:.5rem; width:100%;}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="container">
+
+			<h1>URL Search Parameters</h1>
+
+			<table>
+
+				<tr class="r">
+					<td>
+						<label for="red">Red</label>
+					</td>
+					<td>
+						<div id="red" class="value"></div>
+					</td>
+				</tr>
+
+				<tr class="g">
+					<td>
+						<label for="green">Green</label>
+					</td>
+					<td>
+						<div id="green" class="value"></div>
+					</td>
+				</tr>
+
+				<tr class="b">
+					<td>
+						<label for="blue">Blue</label>
+					</td>
+					<td>
+						<div id="blue" class="value"></div>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2">
+						<button onclick="createRandom();">Generate Random</button>
+					</td>
+				</tr>
+
+			</table>
+			
+		</div>
+
+		<script type="text/javascript">
+			// Get search parameters from url. 
+			const params = new URLSearchParams(window.location.search);
+			// var red;
+			// var green;
+			// var blue;
+			$(document).ready(useParams);
+
+			// Get parameters and display on page. 
+			function useParams(r,g,b) {
+				let manual = (r && g && b);
+
+				// Get RGB values from search parameters if necessary. 
+				if(!manual) {
+					r = params.get('r');
+					g = params.get('g');
+					b = params.get('b');
+				}
+
+				// Display the saved RGB values. 
+				document.getElementById('red').innerHTML = r;
+				document.getElementById('green').innerHTML = g;
+				document.getElementById('blue').innerHTML = b;
+			}
+
+			// Set new parameters. 
+			function setParams(r,g,b) {
+				// Reset the saved RGB values as search parameters. 
+				// params.set('r', r);
+				// params.set('g', g);
+				// params.set('b', b);
+
+				// Display the saved RGB values. 
+				// document.getElementById('red').innerHTML = r;
+				// document.getElementById('green').innerHTML = g;
+				// document.getElementById('blue').innerHTML = b;
+				// window.location.search = '?' + params.toString();
+			}
+
+			// Create random color combination. 
+			function createRandom() {
+				let r = Math.round( 255*Math.random() );
+				let g = Math.round( 255*Math.random() );
+				let b = Math.round( 255*Math.random() );
+
+				// Get parameters and display on page. 
+				useParams(r,g,b);
+
+				// Set new parameters. 
+				// setParams(r,g,b);
+			}
+		</script>
+
+	</body>
+
+</html>
