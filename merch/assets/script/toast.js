@@ -2,7 +2,7 @@
 
 // Get snackbar element. 
 let snackbar = document.getElementById('snackbar');
-console.log('snackbar',snackbar);
+// console.log('snackbar',snackbar);
 
 // Add snackbar if non-existent. 
 if(!snackbar) addSnackbar();

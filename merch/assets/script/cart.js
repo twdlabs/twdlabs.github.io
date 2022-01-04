@@ -21,13 +21,17 @@ function updateCart() {
 		// Get product by id. 
 		product = productdata[item.productid];
 
+		// Get product photo url. 
+		let atHome = atRootDir;
+		let photourl = `${ (atHome) ? ('') : ('../') }${product.photourl}`;
+
 		// Add item's page elements. 
 		result += `
 		<!-- item -->
 		<div class="item" data-productid="${item.productid}" title="id: ${item.productid}">
 
 			<!-- photo -->
-			<a class="photo" href="javascript:void(0)" style="background-image:url('${product.photourl}');"></a>
+			<a class="photo" href="javascript:void(0)" style="background-image:url('${photourl}');"></a>
 			<!-- /photo -->
 
 			<!-- content -->
@@ -108,14 +112,14 @@ function updateCart() {
 
 
 // Add selected item to cart. 
-function addToCart(element) {
-	console.log('Add to cart:',element);
+function addToCart(item) {
+	console.log('Add to cart:',item);
 
 	// Get user's cart data. 
 	let cartlist = ( isLoggedIn() ) ? ( userdata[currentuserid].cartItems ) : ( [] );
 
 	// Get product id of selected item. 
-	let id = 1*element.getAttribute('data-productid');
+	let id = 1*item.getAttribute('data-productid');
 
 	// Assume initially that selected item is not in cart. 
 	let alreadyInCart = false;

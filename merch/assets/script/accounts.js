@@ -4,10 +4,11 @@
 
 
 // Define current user. 
-let currentuserid = -1;
 
 // Get saved user id if available. 
-if(localStorage.currentuserid) currentuserid = localStorage.currentuserid
+currentuserid = 1;
+// if(localStorage.currentuserid) currentuserid = localStorage.currentuserid;
+// else currentuserid = -1;
 
 
 /*****/
@@ -25,6 +26,10 @@ function updateAccounts() {
 		// Get user by id. 
 		let user = userdata[i];
 
+		// Get user photo url. 
+		let atHome = atRootDir;
+		let photourl = `${ (atHome) ? ('') : ('../') }${user.photourl}`;
+
 		// Create special account element for active user. 
 		if(i==currentuserid) {
 			activeuser = `
@@ -32,7 +37,7 @@ function updateAccounts() {
 			<div class="item activeuser" data-userid="${i}">
 	
 				<!-- photo -->
-				<a class="photo" href="javascript:void(0)" style="background-image:url('${user.photourl}');"></a>
+				<a class="photo" href="javascript:void(0)" style="background-image:url('${photourl}');"></a>
 				<!-- /photo -->
 	
 				<!-- content -->
@@ -60,7 +65,7 @@ function updateAccounts() {
 			<div class="item" data-userid="${i}" onclick="chooseUser(this)">
 	
 				<!-- photo -->
-				<a class="photo" href="javascript:void(0)" style="background-image:url('${user.photourl}');"></a>
+				<a class="photo" href="javascript:void(0)" style="background-image:url('${photourl}');"></a>
 				<!-- /photo -->
 	
 				<!-- content -->

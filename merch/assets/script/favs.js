@@ -19,13 +19,17 @@ function updateFavs() {
 		// Get product by id. 
 		let product = productdata[id];
 
+		// Get product photo url. 
+		let atHome = atRootDir;
+		let photourl = `${ (atHome) ? ('') : ('../') }${product.photourl}`;
+
 		// Add item's page elements. 
 		result += `
 		<!-- item -->
 		<div class="item" data-productid="${id}" title="id: ${id}">
 
 			<!-- photo -->
-			<a class="photo" href="javascript:void(0)" style="background-image:url('${product.photourl}');"></a>
+			<a class="photo" href="javascript:void(0)" style="background-image:url('${photourl}');"></a>
 			<!-- /photo -->
 
 			<!-- content -->
@@ -69,29 +73,24 @@ function updateFavs() {
 
 
 // Toggle selected item in favorites. 
-function toggleFav(favbtn) {
-	console.log('Toggle favorite:',favbtn);
+function toggleFav(item) {
+	console.log('Toggle favorite:',item);
 
 	// Get user's favs data. 
 	let favsidlist = ( isLoggedIn() ) ? ( userdata[currentuserid].favIds ) : ( [] );
 
 	// Get product id of selected item. 
-	let id = 1*favbtn.getAttribute('data-productid');
+	let id = 1*item.getAttribute('data-productid');
 
 	// Assume initially that selected item is not in favorites list. 
 	let alreadyFaved = false;
-	let favindex = -1;
 
 	// Check if item is already in favorites list. 
-	for (let i in favsidlist) {
-
-		// Get fav item id. 
-		let favId = favsidlist[i];
+	for (let favId of favsidlist) {
 
 		// Check for matching id btwn fav item and newly liked item. 
 		if(id==favId) {
 			alreadyFaved = true;
-			favindex = i;
 			break;
 		}
 	}
@@ -102,7 +101,7 @@ function toggleFav(favbtn) {
 		removeFavItemById(id);
 
 		// De-activate selected fav button. 
-		favbtn.classList.remove('active');
+		item.classList.remove('liked');
 	}
 	// Add selected item to favs list if not already added. 
 	else {
@@ -110,7 +109,7 @@ function toggleFav(favbtn) {
 		favsidlist.unshift(id);
 
 		// Activate selected fav button. 
-		favbtn.classList.add('active');
+		item.classList.add('liked');
 	
 		// Show favorites drawer on page. 
 		setTimeout(function() {
