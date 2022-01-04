@@ -1,5 +1,23 @@
 
+/* Google Fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+/* Navbar Stylesheet */
+@import url('module/navbar.css');
+
+/* Footer Stylesheet */
+@import url('module/footer.css');
+
+/* Toast Stylesheet */
+@import url('module/toast.css');
+
+
+
+
 :root{
+	--black:#333;
 	/* --blue:rgb(0,72,255); */
 	--blue:rgb(20,120,255);
 	--grey:#777;
@@ -8,7 +26,8 @@
 }
 
 
-* {box-sizing:border-box; scrollbar-width:none; -webkit-overflow-scrolling:touch;}
+* {box-sizing:border-box; font-family:sans-serif; font-family:'Nunito',sans-serif;}
+/* * {scrollbar-width:none; -webkit-overflow-scrolling:touch;} */
 
 
 .freeze {overflow:hidden;}
@@ -16,26 +35,42 @@
 .freeze div#container::after {content:''; position:fixed; top:0; left:0; width:100%; height:100%; background-color:#0008; cursor:pointer; z-index:15;}
 
 
-body {background:linear-gradient( white, var(--offwhite) ); font-family:sans-serif; margin:0;}
+body {/* background:linear-gradient( white, var(--offwhite) ); */ background-color:#0001; margin:0;}
+
 
 
 /* Main Container */
+
 /* div#container {max-width:72rem; margin: 0 auto;} */
 div#container {margin-top:4.5rem; transition:.15s;}
+div#container >main {min-height:75vh;}
+
+
+/* General Section */
+
+div#container section {max-width:72rem; margin: 0 auto; padding:1rem;}
+div#container section h2 {font-size:1.5rem; margin:1rem 0 0; text-transform:uppercase; text-align:center;}
 
 
 
 /* Medium Screen */
 @media screen and (max-width:60rem) {
+
+	/* Main Container */
+	div#container {margin-top:4.5rem;}
 }
 
 /* Small Screen */
 @media screen and (max-width:48rem) {
+
+	/* Main Container */
 	div#container {margin-top:4.25rem;}
 }
 
 /* Extra Small Screen */
 @media screen and (max-width:32rem) {
-	div#container {margin-top:6rem;}
+
+	/* Main Container */
+	div#container {margin-top:4rem;}
 }
 

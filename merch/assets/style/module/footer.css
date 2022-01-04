@@ -2,33 +2,46 @@
 
 /* Footer */
 
-footer#footer {min-height:3rem; background-color:var(--offwhite); padding:3rem; transition:.5s;}
-footer#footer main {max-width:72rem; padding:0; margin: 0 auto; transition:.5s;}
+footer#footer {
+	/* font-family:'Montserrat',sans-serif; */
+	/* font-family:'Poppins',sans-serif; */
+	font-family:'Nunito',sans-serif;
+}
+footer#footer {min-height:3rem; background-color:var(--offwhite,#0001); padding:3rem; transition:.5s;}
+footer#footer:empty {height:20rem;}
 
+footer#footer main {max-width:72rem; padding:0; margin: 0 auto; transition:.5s;}
 footer#footer main section {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:stretch; align-items:stretch;}
 /* footer#footer main section#nav {} */
-footer#footer main section div.col {flex-grow:1; flex-basis:0; padding:1rem;}
-footer#footer main section div.col.wide {/* flex-basis:100%; */ /* text-align:center; */}
 
-footer#footer main section div.col h3.navhead {font-size:1.25rem; font-weight:400; letter-spacing:2px; margin:0;}
-footer#footer main section div.col p.textcopy {font-weight:100; margin:0; margin-top:1.5rem;}
-footer#footer main section div.col input#email {/* display:block; */ padding:.75rem 1.25rem; border:1px solid white; border-radius:.25rem; font-size:inherit; outline:none; margin:0; margin-top:1rem; margin-right:.5rem;}
+footer#footer main section div.col {flex-grow:1; flex-basis:0; padding:.5rem 1.5rem; transition:.25s;}
+footer#footer main section div.col.wide {width:100%; flex-shrink:0; text-align:center;}
+
+footer#footer main section div.col h3.navhead {font-size:1.125rem; font-weight:400; letter-spacing:2px; margin:0; white-space:nowrap;}
+footer#footer main section div.col ul.navlist {list-style:none; padding:0; margin:0; margin-top:1.125rem;}
+footer#footer main section div.col ul.navlist li.navitem {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+footer#footer main section div.col ul.navlist li.navitem {font-size:.875rem; margin-top:1rem;}
+footer#footer main section div.col ul.navlist li.navitem svg.icon {color:var(--blue); margin-bottom:.1875rem;}
+footer#footer main section div.col ul.navlist li.navitem svg.icon.arrow {font-size:.75em;}
+footer#footer main section div.col ul.navlist li.navitem a.navlink {font-size:1em; font-weight:200; text-decoration:none; white-space:nowrap;}
+footer#footer main section div.col ul.navlist li.navitem a.navlink {color:inherit; padding-left:.5rem; padding-right:.75rem; transition:.25s;}
+footer#footer main section div.col ul.navlist li.navitem a.navlink:hover {color:var(--blue); padding-left:1.25rem; padding-right:0;}
+footer#footer main section div.col p.textcopy {font-size:.875rem; font-weight:100; margin:0; margin-top:.75rem;}
+footer#footer main section div.col input#email {/* display:block; */ padding:.5em 1.25em; font-size:1.125rem; outline:none; margin:0; margin-right:.5rem; margin-bottom:.75rem;}
+footer#footer main section div.col input#email {border:1px solid white; border-radius:.25rem;}
 footer#footer main section div.col input#email:focus {border-color:black;}
-footer#footer main section div.col button#subscribe {display:inline-block; padding:.75rem; background-color:var(--blue); color:white; font-size:1.125rem; border:1px solid var(--blue); border-radius:.25rem; margin:0; margin-top:1rem;}
-footer#footer main section div.col ul.navlist {list-style:none; padding:0; margin:0; margin-top:1.5rem;}
-footer#footer main section div.col ul.navlist li.navitem {display:flex; flex-direction:row; align-items:center; margin-top:1rem;}
-footer#footer main section div.col ul.navlist li.navitem svg.icon {font-size:.75rem; color:var(--blue); margin-bottom:.1875rem;}
-footer#footer main section div.col ul.navlist li.navitem a.navlink {color:inherit; font-size:.875rem; font-weight:100; text-decoration:none; padding-left:.5rem; transition:.25s;}
-footer#footer main section div.col ul.navlist li.navitem a.navlink:hover {color:var(--blue); padding-left:1.25rem;}
+footer#footer main section div.col button#subscribe {background-color:var(--blue); color:white; font-size:1.125rem; cursor:pointer;}
+footer#footer main section div.col button#subscribe {display:inline-block; padding:.5em .75em; border:1px solid var(--blue); border-radius:.25rem; margin:0;}
 
 
 
 /* Medium Screen */
-@media screen and (max-width:64rem) {
+@media screen and (max-width:60rem) {
 
 	/* Footer */
 	footer#footer {padding:2rem;}
-	footer#footer main section div.col {flex-basis:33%;}
+	/* footer#footer main section div.col {flex-basis:33%;} */
+	footer#footer main section div.col {padding:1rem;}
 	footer#footer main section div.col.wide {flex-basis:67%;}
 	footer#footer main section div.col h3.navhead {margin-top:1rem;}
 }
@@ -37,16 +50,27 @@ footer#footer main section div.col ul.navlist li.navitem a.navlink:hover {color:
 @media screen and (max-width:48rem) {
 
 	/* Footer */
-	footer#footer {padding:2rem;}
+	/* footer#footer {padding:2rem;} */
 	footer#footer main {padding:0;}
 	/* footer#footer main section {flex-direction:column;} */
-	footer#footer main section div.col {flex-basis:50%;}
+	/* footer#footer main section div.col {flex-basis:50%;} */
 }
 
 /* Extra Small Screen */
 @media screen and (max-width:32rem) {
 
 	/* Footer */
-	footer#footer {padding:1rem;}
-	footer#footer main section div.col {flex-basis:100%;}
+	footer#footer {padding:4rem 2rem 6rem;}
+	footer#footer main section div.col {flex-basis:100%; padding:1rem .25rem; font-size:.75rem;}
+	footer#footer main section div.col h3.navhead {font-size:.875rem; margin-top:2rem; letter-spacing:1px;}
+	footer#footer main section div.col ul.navlist {margin-top:.75rem;}
+	footer#footer main section div.col ul.navlist li.navitem {font-size:.75rem; margin-top:1.125rem;}
+	footer#footer main section div.col ul.navlist li.navitem a.navlink {padding-left:.25rem;}
+	footer#footer main section div.col ul.navlist li.navitem a.navlink:hover {padding-left:.625rem;}
+	/* Footer Revisions */
+	footer#footer main section div.col {font-size:1.25rem; text-align:center;}
+	footer#footer main section div.col h3.navhead {font-size:1.5rem;}
+	footer#footer main section div.col ul.navlist li.navitem {font-size:1.25rem; justify-content:center;}
+	footer#footer main section div.col ul.navlist li.navitem a.navlink:hover {padding-left:.25rem;}
+	footer#footer main section div.col p.textcopy {font-size:1.25rem;}
 }

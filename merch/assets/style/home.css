@@ -1,30 +1,33 @@
 
 
 
-/* General Section */
-
-div#container section {max-width:72rem; margin: 0 auto; padding:1rem;}
-div#container section h2 {font-size:1.5rem; margin:1rem 0 0; text-transform:uppercase; text-align:center;}
-
-
-
 /* Carousel Section */
 
-div#container section#carousel {display:none;}
-div#container section#carousel {max-width:none; /* height:40rem; */ padding-top:66.67%; position:relative;}
-div#container section#carousel main {/* display:none; */ position:absolute; top:0; left:0; width:100%; height:100%;}
-/* div#container section#carousel main {background:var(--grey) url('../pic/sunglasses.jpg'); background-size:cover; background-position:center;} */
+/* div#container section#carousel {display:none;} */
+div#container section#carousel {max-width:none; /* height:40rem; */ overflow:hidden; padding-top:40rem; position:relative;}
+div#container section#carousel main {display:none;}
+div#container section#carousel main {position:absolute; top:0; left:0; width:100%; height:100%; user-select:none;}
+/* div#container section#carousel main {background:var(--grey) url('../images/product/sunglasses.jpg'); background-size:cover; background-position:center;} */
 div#container section#carousel main {display:flex; flex-direction:row; animation:slide 15s ease-in-out 0s infinite forwards;}
-div#container section#carousel main img {width:100%; flex-shrink:0;}
+div#container section#carousel main img.slide {width:100%; flex-shrink:0; object-fit:cover; object-position:center center;}
+div#container section#carousel aside.panel {position:absolute; bottom:0; right:0; margin:2rem;}
+div#container section#carousel aside.panel {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section#carousel aside.panel div.btn {display:grid; place-items:center;}
+div#container section#carousel aside.panel div.btn {background-color:white; border:1px solid black; border-radius:.25rem; font-size:1.15rem; min-width:1.75rem; min-height:2rem; margin:0 .125rem; cursor:pointer;}
 @keyframes slide {
 	0% {transform:translateX(0%);}
-	30% {transform:translateX(0%);}
-	33% {transform:translateX(-100%);}
-	63% {transform:translateX(-100%);}
-	66% {transform:translateX(-200%);}
-	96% {transform:translateX(-200%);}
-	99% {transform:translateX(-300%);}
-	100% {transform:translateX(-300%);}
+
+	23% {transform:translateX(0%);}
+	25% {transform:translateX(-100%);}
+
+	48% {transform:translateX(-100%);}
+	50% {transform:translateX(-200%);}
+
+	73% {transform:translateX(-200%);}
+	75% {transform:translateX(-300%);}
+
+	98% {transform:translateX(-300%);}
+	100% {transform:translateX(-400%);}
 }
 
 
@@ -36,10 +39,10 @@ div#container section#categories main {display:grid; grid-template-areas: 'a b c
 div#container section#categories a.item {display:grid; place-items:center; position:relative;}
 div#container section#categories a.item {background-color:var(--blue); background-size:cover; background-position:center;}
 
-div#container section#categories a.item.a {grid-area:a; background-image:url('../pic/shoes.jpg');}
-div#container section#categories a.item.b {grid-area:b; background-image:url('../pic/hat.jpg');}
-div#container section#categories a.item.c {grid-area:c; background-image:url('../pic/tshirt.jpg');}
-div#container section#categories a.item.d {grid-area:d; background-image:url('../pic/sunglasses.jpg');}
+div#container section#categories a.item.a {grid-area:a; background-image:url('../images/product/shoes.jpg');}
+div#container section#categories a.item.b {grid-area:b; background-image:url('../images/product/hat.jpg');}
+div#container section#categories a.item.c {grid-area:c; background-image:url('../images/product/tshirt.jpg');}
+div#container section#categories a.item.d {grid-area:d; background-image:url('../images/product/sunglasses.jpg');}
 
 div#container section#categories a.item div.caption {background-color:#000; color:#FFF; font-size:1.5rem; font-weight:bold; text-transform:uppercase; padding:.5em .5em .25em; border-radius:.5rem; white-space:nowrap;}
 div#container section#categories a.item div.caption {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
@@ -49,99 +52,41 @@ div#container section#categories a.item::after {background-color:#0002; transiti
 div#container section#categories a.item:hover::after {background-color:#0008;}
 
 
-
-/* Featured Products Section */
-
-/* div#container section#featured {} */
-div#container section#featured div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
-
-div#container section#featured div.inner main {flex-grow:1;}
-div#container section#featured div.inner main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem; padding:1rem;}
-
-div#container section#featured div.inner main div.item {background-color:white; border:1px solid var(--offwhite); border-radius:.25rem;}
-div#container section#featured div.inner main div.item {display:flex; flex-direction:column; align-items:stretch;}
-/* div#container section#featured div.inner main div.item a.photo {text-decoration:none; color:inherit;} */
-div#container section#featured div.inner main div.item a.photo {background-color:var(--offwhite); background-size:cover; background-position:center; width:100%; padding-top:100%; border-bottom:1px solid var(--offwhite);}
-div#container section#featured div.inner main div.item div.content {display:flex; flex-direction:column; align-items:stretch; text-align:center; padding:.75rem;}
-div#container section#featured div.inner main div.item div.content h3.productname {font-size:1.25rem; margin:0; margin-top:.5rem;}
-/* div#container section#featured div.inner main div.item div.content h3.productname {text-align:left;} */
-div#container section#featured div.inner main div.item div.content h3.productname a.name {font-weight:300; color:inherit; text-decoration:none;}
-div#container section#featured div.inner main div.item div.content div.productdescription {color:#0008; margin-top:.5rem; display:none;}
-div#container section#featured div.inner main div.item div.content div.productrating {display:flex; flex-direction:row; justify-content:center; align-items:flex-end; margin-top:.5rem;}
-/* div#container section#featured div.inner main div.item div.content div.productrating {justify-content:flex-start;} */
-div#container section#featured div.inner main div.item div.content div.productrating div.rating {display:flex; flex-direction:row;}
-div#container section#featured div.inner main div.item div.content div.productrating div.rating {font-size:1.25rem; color:var(--blue);}
-div#container section#featured div.inner main div.item div.content div.productrating div.numratings {font-size:.9rem; color:var(--grey); margin-left:.25rem;}
-div#container section#featured div.inner main div.item div.content div.productrating div.numratings:before {content:'(';}
-div#container section#featured div.inner main div.item div.content div.productrating div.numratings::after {content:')';}
-div#container section#featured div.inner main div.item div.content div.productprice {display:flex; flex-direction:row; justify-content:center; align-items:flex-end; margin-top:.5rem;}
-/* div#container section#featured div.inner main div.item div.content div.productprice {justify-content:flex-start;} */
-div#container section#featured div.inner main div.item div.content div.productprice a.price {font-size:1.375rem; font-weight:500; color:var(--blue); text-decoration:none;}
-div#container section#featured div.inner main div.item div.content div.productprice a.price:before {content:'$';}
-div#container section#featured div.inner main div.item div.content div.productprice a.exprice {font-size:.85rem; font-weight:100; color:var(--grey); text-decoration:line-through; margin-bottom:.25em; margin-left:.375rem;}
-div#container section#featured div.inner main div.item div.content div.productaction {display:flex; flex-direction:row; margin-top:.5rem;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn {background-color:#000; color:#FFF; border:0 none; border-radius:.25rem; text-align:center;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn {display:flex; justify-content:center; align-items:center; text-decoration:none; font-weight:600; text-transform:uppercase;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.cart {flex-grow:1; padding:1rem 1rem .75rem;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.cart svg.icon {font-size:1rem;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.cart span.caption {font-size:.875rem; margin-left:.5rem;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs {flex-grow:0; padding:.75rem 1rem; margin-left:.35rem;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs svg.icon {font-size:1rem;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs.active {color:crimson; color:orange; transition:.5s;}
-div#container section#featured div.inner main div.item div.content div.productaction a.ctabtn.favs.active svg.icon {animation:pump .5s;}
-div#container section#featured div.inner aside.refine {display:none;}
-div#container section#featured div.inner aside.refine {flex-grow:0; width:20rem; text-align:center;}
-
-@keyframes pump {
-	0% {transform:scale(1);}
-	50% {transform:scale(.85);}
-	100% {transform:scale(1);}
-}
-
-
-
-
+/* Large Screen */
 @media screen and (min-width:60rem) {
+
+	/* Carousel Section */
 
 	/* Categories Section */
 	div#container section#categories a.item {padding-top:96%;}
 	div#container section#categories a.item.d {padding-top:32%;}
-
-	/* Featured Products Section */
 }
 
+/* Medium Screen */
 @media screen and (max-width:60rem) {
+
+	/* Carousel Section */
 
 	/* Categories Section */
 	div#container section#categories a.item {padding-top:96%;}
 	div#container section#categories main {display:grid; grid-template-areas: 'a b' 'c d';}
-
-	/* Featured Products Section */
-	div#container section#featured div.inner {flex-direction:column;}
-	div#container section#featured div.inner main {grid-template-columns:repeat(3,1fr);}
-	div#container section#featured div.inner main div.item div.content h3.productname {font-size:1.15rem;}
-	div#container section#featured div.inner main div.item div.content div.productrating div.rating {font-size:1rem;}
-	div#container section#featured div.inner main div.item div.content div.productrating div.numratings {font-size:.75rem;}
-	div#container section#featured div.inner main div.item div.content div.productprice a.price {font-size:1.125rem;}
-	div#container section#featured div.inner main div.item div.content div.productprice a.exprice {font-size:.75rem;}
-	div#container section#featured div.inner aside.refine {width:auto;}
 }
 
+/* Small Screen */
 @media screen and (max-width:48rem) {
 
-	/* Categories Section */
+	/* Carousel Section */
 
-	/* Featured Products Section */
-	div#container section#featured div.inner main {grid-template-columns:repeat(2,1fr);}
+	/* Categories Section */
 }
 
+/* Extra Small Screen */
 @media screen and (max-width:32rem) {
 
+	/* Carousel Section */
+	
 	/* Categories Section */
 	div#container section#categories main {display:grid; grid-template-areas: 'a' 'b' 'c' 'd';}
-
-	/* Featured Products Section */
-	div#container section#featured div.inner main {grid-template-columns:1fr;}
 }
 
 
