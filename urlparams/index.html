@@ -10,119 +10,117 @@
 		<title>URLSearchParams</title>
 
 		<!-- jQuery -->
-		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script> -->
 
-		<style type="text/css">
-			html,body {height:100%; margin:0; font-family:sans-serif;}
-			div#container {min-height:100%; padding:1em; font-size:1.75rem; max-width:400px; margin:0 auto;}
-			div#container h1 {text-align:center; font-size:2rem;}
-			div#container table {width:100%;}
-			div#container table tr {padding:.25em;}
-			div#container table tr label {font-weight:bold;}
-			div#container table tr.r label {color:red;}
-			div#container table tr.g label {color:green;}
-			div#container table tr.b label {color:blue;}
-			div#container table tr div.value {text-align:right;}
-			div#container table tr button {font-size:1.25rem; padding:.5rem; margin-top:1em; border-radius:.5rem; width:100%;}
-		</style>
+		<!-- Main Stylesheet -->
+		<link href="urlparams.css" rel="stylesheet" type="text/css"/>
 	</head>
 
 	<body>
 
+		<!-- #container -->
 		<div id="container">
 
-			<h1>URL Search Parameters</h1>
+			<!-- main -->
+			<main>
 
-			<table>
+				<!-- head -->
+				<h1 class="head">URL Search Parameters</h1>
+				<!-- /head -->
 
-				<tr class="r">
-					<td>
-						<label for="red">Red</label>
-					</td>
-					<td>
-						<div id="red" class="value"></div>
-					</td>
-				</tr>
+				<!-- row -->
+				<div class="row">
 
-				<tr class="g">
-					<td>
-						<label for="green">Green</label>
-					</td>
-					<td>
-						<div id="green" class="value"></div>
-					</td>
-				</tr>
+					<!-- label -->
+					<label for="red" class="r">Red</label>
+					<!-- /label -->
 
-				<tr class="b">
-					<td>
-						<label for="blue">Blue</label>
-					</td>
-					<td>
-						<div id="blue" class="value"></div>
-					</td>
-				</tr>
+					<!-- value -->
+					<div id="red" class="value">&dash;</div>
+					<!-- /value -->
 
-				<tr>
-					<td colspan="2">
-						<button onclick="createRandom();">Generate Random</button>
-					</td>
-				</tr>
+				</div>
+				<!-- /row -->
 
-			</table>
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label for="green" class="g">Green</label>
+					<!-- /label -->
+
+					<!-- value -->
+					<div id="green" class="value">&dash;</div>
+					<!-- /value -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label for="blue" class="b">Blue</label>
+					<!-- /label -->
+
+					<!-- value -->
+					<div id="blue" class="value">&dash;</div>
+					<!-- /value -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- submitbtn -->
+					<button class="submitbtn" onclick="createRandomColor(); window.href=('color.html');">Generate Random</button>
+					<!-- /submitbtn -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- go -->
+					<a id="go" href="javascript:void(0)"></a>
+					<!-- /go -->
+
+				</div>
+				<!-- /row -->
+
+			</main>
+			<!-- /main -->
 			
 		</div>
+		<!-- /#container -->
 
+		
+		<!-- Main Script -->
+		<!-- <script src="urlparams.js" type="text/javascript"></script> -->
 		<script type="text/javascript">
-			// Get search parameters from url. 
-			const params = new URLSearchParams(window.location.search);
-			// var red;
-			// var green;
-			// var blue;
-			$(document).ready(useParams);
-
-			// Get parameters and display on page. 
-			function useParams(r,g,b) {
-				let manual = (r && g && b);
-
-				// Get RGB values from search parameters if necessary. 
-				if(!manual) {
-					r = params.get('r');
-					g = params.get('g');
-					b = params.get('b');
-				}
-
-				// Display the saved RGB values. 
-				document.getElementById('red').innerHTML = r;
-				document.getElementById('green').innerHTML = g;
-				document.getElementById('blue').innerHTML = b;
-			}
-
-			// Set new parameters. 
-			function setParams(r,g,b) {
-				// Reset the saved RGB values as search parameters. 
-				// params.set('r', r);
-				// params.set('g', g);
-				// params.set('b', b);
-
-				// Display the saved RGB values. 
-				// document.getElementById('red').innerHTML = r;
-				// document.getElementById('green').innerHTML = g;
-				// document.getElementById('blue').innerHTML = b;
-				// window.location.search = '?' + params.toString();
-			}
 
 			// Create random color combination. 
-			function createRandom() {
+			function createRandomColor() {
+
+				// Create random color combination. 
 				let r = Math.round( 255*Math.random() );
 				let g = Math.round( 255*Math.random() );
 				let b = Math.round( 255*Math.random() );
-
-				// Get parameters and display on page. 
-				useParams(r,g,b);
-
-				// Set new parameters. 
-				// setParams(r,g,b);
+			
+				// Display RGB values of generated color. 
+				document.getElementById('red').innerHTML = r;
+				document.getElementById('green').innerHTML = g;
+				document.getElementById('blue').innerHTML = b;
+			
+				// Set color and search parameters for outgoing link. 
+				let gobtn = document.getElementById('go');
+				gobtn.style.backgroundColor = `rgb(${r},${g},${b})`;
+				gobtn.href = `color.html?r=${r}&g=${g}&b=${b}`;
+				gobtn.target = '_blank';
 			}
+			
 		</script>
 
 	</body>

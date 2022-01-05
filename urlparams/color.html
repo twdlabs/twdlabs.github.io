@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Color</title>
+
+		<style type="text/css">
+
+			* {box-sizing:border-box;}
+
+			body {font-family:sans-serif; margin:0;}
+			
+			div#container {/* background:linear-gradient(135deg,dodgerblue,white); */ min-height:100vh;}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+		</div>
+		<!-- /#container -->
+
+
+		<script type="text/javascript">
+
+			displayColor();
+
+			// Get search parameters from url and display on page. 
+			function displayColor() {
+
+				// Get search parameters from url. 
+				const params = new URLSearchParams(window.location.search);
+				console.log('window.location.search', window.location.search);
+				// console.log('params', params);
+
+				// Get RGB values from search parameters. 
+				r = params.get('r');
+				g = params.get('g');
+				b = params.get('b');
+				console.log('r', r);
+				console.log('g', g);
+				console.log('b', b);
+
+				// Compile color property. 
+				let color = `rgb(${r},${g},${b})`;
+				console.log('color', color);
+
+				// Display color. 
+				if( r&&g&&b ) document.body.style.backgroundColor = color;
+				else document.body.style.backgroundColor = '#000F';
+			}
+
+		</script>
+
+	</body>
+
+</html>
