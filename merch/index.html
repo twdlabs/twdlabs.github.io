@@ -88,7 +88,7 @@
 				<main>
 
 					<!-- item -->
-					<a href="./gallery" class="item a">
+					<a href="gallery/index.html?q=shoe" class="item a" data-filter="shoes">
 
 						<!-- caption -->
 						<div class="caption">Shoes</div>
@@ -98,7 +98,7 @@
 					<!-- /item -->
 	
 					<!-- item -->
-					<a href="./gallery" class="item b">
+					<a href="gallery/index.html?q=hat" class="item b" data-filter="hats">
 
 						<!-- caption -->
 						<div class="caption">Hats</div>
@@ -108,7 +108,7 @@
 					<!-- /item -->
 	
 					<!-- item -->
-					<a href="./gallery" class="item c">
+					<a href="gallery/index.html?q=shirt" class="item c" data-filter="shirts">
 
 						<!-- caption -->
 						<div class="caption">T Shirts</div>
@@ -118,7 +118,7 @@
 					<!-- /item -->
 	
 					<!-- item -->
-					<a href="./gallery" class="item d">
+					<a href="gallery/index.html?q=glasses" class="item d" data-filter="glasses">
 
 						<!-- caption -->
 						<div class="caption">Sunglasses</div>
@@ -152,17 +152,45 @@
 		<script src="./assets/database.js" type="text/javascript"></script>
 
 		<!-- Main Site Scripts -->
-		<script src="./assets/script/search.js" type="text/javascript"></script>
-		<script src="./assets/script/favs.js" type="text/javascript"></script>
-		<script src="./assets/script/cart.js" type="text/javascript"></script>
-		<script src="./assets/script/accounts.js" type="text/javascript"></script>
-		<script src="./assets/script/drawers.js" type="text/javascript"></script>
+		<script src="./assets/script/module/search.js" type="text/javascript"></script>
+		<script src="./assets/script/module/favs.js" type="text/javascript"></script>
+		<script src="./assets/script/module/cart.js" type="text/javascript"></script>
+		<script src="./assets/script/module/accounts.js" type="text/javascript"></script>
+		<script src="./assets/script/module/drawers.js" type="text/javascript"></script>
 		<!-- Toast Script -->
-		<script src="./assets/script/toast.js" type="text/javascript"></script>
+		<script src="./assets/script/module/toast.js" type="text/javascript"></script>
 		
 		<!-- Main Site Script -->
 		<script>const atRootDir = true;</script>
-		<script src="./assets/script/index.js" type="text/javascript"></script>
+		<script src="./assets/script/module/index.js" type="text/javascript"></script>
+
+		<script>
+
+			// // Get all category links. 
+			// let categorylinks = document.querySelectorAll('section#categories main a.item');
+
+			// // Activate category links. 
+			// for(let link of categorylinks) {
+			// 	link.addEventListener('click',goToCategoryPage);
+			// }
+
+			// // Go to category page. 
+			// function goToCategoryPage(event) {
+
+			// 	// Get filter query from link. 
+			// 	let link = event.currentTarget;
+			// 	console.log('Link:',link);
+
+			// 	// Get filter query from link. 
+			// 	let filter = link.getAttribute('data-filter');
+			// 	console.log('Filter:',filter);
+
+			// 	// Open product gallery page with filter applied (if filter valid). 
+			// 	let href = './gallery' + ( (filter)?(`?filter=${filter}`):('') );
+			// 	console.log('href:',href);
+			// 	window.location.href = href;
+			// }
+		</script>
 		
 	</body>
 
