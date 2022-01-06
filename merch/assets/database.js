@@ -470,7 +470,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/shoes.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shoe',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Air Force One Rope',
@@ -482,7 +486,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/shoes1.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shoe',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'T-Shirt',
@@ -494,7 +502,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/tshirt.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shirt',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Cap',
@@ -506,7 +518,11 @@ const productdata = [
 		price:'29.994',
 		exprice:'149.99',
 		photourl:'./assets/images/product/hat.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'hat',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Sunglasses',
@@ -518,7 +534,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/sunglasses.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'glasses',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Lorem',
@@ -530,7 +550,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/p2.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shirt',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Lorem',
@@ -542,7 +566,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/p3.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shirt',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Lorem',
@@ -554,7 +582,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/p4.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shirt',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Lorem',
@@ -566,7 +598,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/p5.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shirt',
+			// 'xyzabcxyz',
+		]
 	},
 	{
 		name:'Lorem',
@@ -578,7 +614,11 @@ const productdata = [
 		price:'99.99',
 		exprice:'149.99',
 		photourl:'./assets/images/product/p7.jpg',
-		producturl:'./product/'
+		producturl:'./product/',
+		taglist:[
+			'shirt',
+			// 'xyzabcxyz',
+		]
 	}
 ];
 
