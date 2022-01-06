@@ -6,27 +6,17 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="../atgicon.ico" rel="icon"/>
+		<link href="../../atgicon.ico" rel="icon"/>
 		<title>Product | Merch</title>
 
-		<!-- jQuery -->
-		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- Main Site Stylesheet -->
+		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
 
-		<!-- Main Site Stylesheets -->
-		<link href="../style/style.css" rel="stylesheet" type="text/css"/>
-		<link href="../style/navbar.css" rel="stylesheet" type="text/css"/>
-		<link href="../style/footer.css" rel="stylesheet" type="text/css"/>
 		<!-- Specific Page Stylesheet -->
-		<link href="../style/product.css" rel="stylesheet" type="text/css"/>
+		<link href="../assets/style/product.css" rel="stylesheet" type="text/css"/>
 
-		<!-- Main Site Scripts -->
-		<script src="../script/database.js" type="text/javascript"></script>
-		<script src="../script/search.js" type="text/javascript"></script>
-		<script src="../script/favs.js" type="text/javascript"></script>
-		<script src="../script/cart.js" type="text/javascript"></script>
-		<script src="../script/accounts.js" type="text/javascript"></script>
-		<script src="../script/drawers.js" type="text/javascript"></script>
-		<script src="../script/script.js" type="text/javascript"></script>
+		<!-- jQuery Script -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script> -->
 
 	</head>
 
@@ -34,7 +24,6 @@
 
 		<!-- #navbar -->
 		<nav id="navbar"></nav>
-		<script>loadNav();</script>
 		<!-- /#navbar -->
 
 
@@ -238,26 +227,17 @@
 						<div class="spec">
 
 							<!-- key -->
-							<div class="key">Qty</div>
-							<!-- /key -->
-
-							<!-- values -->
-							<div class="values">
-								<button class="delta decr" onclick="changeQty(-1)">&minus;</button>
-								<div class="value" id="quantity">1000</div>
-								<button class="delta incr" onclick="changeQty(1)">&plus;</button>
-							</div>
-							<!-- /values -->
-							
-						</div>
-						<!-- /spec -->
-						
-						<!-- spec -->
-						<div class="spec">
-
-							<!-- key -->
 							<div class="key">Size</div>
 							<!-- /key -->
+
+							<select name="size" id="size">
+								<option value="">Select Size</option>
+								<option value="sm">Small</option>
+								<option value="md">Medium</option>
+								<option value="lg">Large</option>
+								<option value="xl">X-Large</option>
+								<option value="xxl">XX-Large</option>
+							</select>
 
 							<!-- values -->
 							<div class="values">
@@ -302,6 +282,24 @@
 								</div>
 								<!-- /option -->
 
+							</div>
+							<!-- /values -->
+							
+						</div>
+						<!-- /spec -->
+						
+						<!-- spec -->
+						<div class="spec">
+
+							<!-- key -->
+							<div class="key">Qty</div>
+							<!-- /key -->
+
+							<!-- values -->
+							<div class="values">
+								<button class="delta decr" onclick="changeQty(-1)">&minus;</button>
+								<div class="value" id="quantity">1000</div>
+								<button class="delta incr" onclick="changeQty(1)">&plus;</button>
 							</div>
 							<!-- /values -->
 							
@@ -865,29 +863,28 @@
 
 		<!-- #footer -->
 		<footer id="footer"></footer>
-		<script>loadFooter();</script>
 		<!-- /#footer -->
 
 
 
-		<!-- <script src="xyz.js" type="text/javascript"></script> -->
-		
-		<script type="text/javascript">
-			// Set initial quantity. 
-			let quantity = 1;
-			document.getElementById('quantity').innerHTML = quantity;
+		<!-- Database Script -->
+		<script src="../assets/database.js" type="text/javascript"></script>
 
-			function changeQty(dx) {
-				// Change quantity by given differential. 
-				quantity += dx;
+		<!-- Main Site Scripts -->
+		<script src="../assets/script/module/search.js" type="text/javascript"></script>
+		<script src="../assets/script/module/favs.js" type="text/javascript"></script>
+		<script src="../assets/script/module/cart.js" type="text/javascript"></script>
+		<script src="../assets/script/module/accounts.js" type="text/javascript"></script>
+		<script src="../assets/script/module/drawers.js" type="text/javascript"></script>
+		<!-- Toast Script -->
+		<script src="../assets/script/module/toast.js" type="text/javascript"></script>
 
-				// Undo change if it goes below one. 
-				if(quantity<1) quantity -= dx;
+		<!-- Main Site Script -->
+		<script>const atRootDir = false;</script>
+		<script src="../assets/script/module/index.js" type="text/javascript"></script>
 
-				// Uodate quantity displayed on page. 
-				document.getElementById('quantity').innerHTML = quantity;
-			}
-		</script>
+		<!-- Specific Page Script -->
+		<script src="../assets/script/product.js" type="text/javascript"></script>
 
 	</body>
 
