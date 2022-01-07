@@ -7,61 +7,61 @@
 
 /* Featured Products Section */
 
-/* div#container section#featured {display:none;} */
-div#container section#featured div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
+/* div#container section#listings {display:none;} */
+div#container section#listings div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
 
-div#container section#featured div.inner main {flex-grow:1;}
-div#container section#featured div.inner main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem; padding:1rem;}
-/* div#container section#featured div.inner main {display:flex; flex-direction:row; padding:1rem;} */
+div#container section#listings main {flex-grow:1;}
+div#container section#listings main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem; padding:1rem;}
+/* div#container section#listings main {display:flex; flex-direction:row; padding:1rem;} */
 
-div#container section#featured div.inner main div.item {background-color:white; border:1px solid var(--offwhite); border-radius:.25rem; overflow:hidden; box-shadow:0 .125rem .75rem #0002;}
-div#container section#featured div.inner main div.item {display:flex; flex-direction:column; align-items:stretch;}
-div#container section#featured div.inner main div.item div.top {position:relative;}
-div#container section#featured div.inner main div.item div.top a.photo {background-color:var(--offwhite); background-size:cover; background-position:center; width:100%; padding-top:100%; border-bottom:1px solid var(--offwhite);}
-div#container section#featured div.inner main div.item div.top a.photo {color:inherit; text-decoration:none; display:block; position:relative;}
-div#container section#featured div.inner main div.item div.top a.photo::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; transition:.25s;}
-/* div#container section#featured div.inner main div.item:hover div.top a.photo::after {background-color:#0003;} */
-div#container section#featured div.inner main div.item div.top:hover a.photo::after {background-color:#0003;}
-div#container section#featured div.inner main div.item div.top div.panel {background-color:white; border:1px solid transparent; position:absolute; top:0; left:0; width:100%;}
-div#container section#featured div.inner main div.item div.top div.panel {display:flex; flex-direction:row; justify-content:center;}
-div#container section#featured div.inner main div.item div.top div.panel {transform:translateY(-100%); transition:.25s;}
-/* div#container section#featured div.inner main div.item:hover div.top div.panel {transform:none;} */
-div#container section#featured div.inner main div.item div.top:hover div.panel {transform:none;}
-div#container section#featured div.inner main div.item div.top div.panel a.ctabtn {display:grid; place-items:center; font-size:1rem; min-height:2.5rem; min-width:2.125rem; margin:0 .125rem;}
-div#container section#featured div.inner main div.item div.top div.panel a.ctabtn {background-color:white; color:inherit; transition:.25s;}
-div#container section#featured div.inner main div.item div.top div.panel a.ctabtn:hover {background-color:var(--grey); color:white;}
-div#container section#featured div.inner main div.item div.content {display:flex; flex-direction:column; align-items:stretch; text-align:center; padding:.75rem;}
-div#container section#featured div.inner main div.item div.content h3.productname {font-size:1.25rem; margin:0; margin-top:.5rem;}
-div#container section#featured div.inner main div.item div.content h3.productname a.name {font-weight:300; color:inherit; text-decoration:none;}
-div#container section#featured div.inner main div.item div.content div.productdescription {color:#0008; margin-top:.5rem; display:none;}
-div#container section#featured div.inner main div.item div.content div.productrating {display:flex; flex-direction:row; justify-content:center; align-items:flex-end; margin-top:.5rem;}
-div#container section#featured div.inner main div.item div.content div.productrating div.rating {display:flex; flex-direction:row;}
-div#container section#featured div.inner main div.item div.content div.productrating div.rating {font-size:.85rem; color:var(--blue); color:orange;}
-div#container section#featured div.inner main div.item div.content div.productrating div.numratings {font-size:.75rem; color:var(--grey); margin-left:.25rem;}
-div#container section#featured div.inner main div.item div.content div.productrating div.numratings:before {content:'(';}
-div#container section#featured div.inner main div.item div.content div.productrating div.numratings::after {content:')';}
-div#container section#featured div.inner main div.item div.content div.productprice {display:flex; flex-direction:row; justify-content:center; align-items:flex-end; margin-top:.5rem;}
-div#container section#featured div.inner main div.item div.content div.productprice a.price {font-size:1.375rem; font-weight:500; color:var(--blue); color:var(--black); text-decoration:none;}
-div#container section#featured div.inner main div.item div.content div.productprice a.price:before {content:'$';}
-div#container section#featured div.inner main div.item div.content div.productprice a.exprice {font-size:.85rem; font-weight:100; color:var(--grey); text-decoration:line-through; margin-bottom:.25em; margin-left:.375rem;}
-div#container section#featured div.inner main div.item div.content div.productcta {display:flex; flex-direction:row; margin-top:.5rem;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn {border:2px solid var(--black); border-radius:.25rem; text-align:center; text-decoration:none;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn {display:flex; justify-content:center; align-items:center; font-weight:400;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn {background-color:white; color:var(--black); transition:.5s;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn:hover {background-color:var(--black); color:white;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn.cart {flex-grow:1; /* padding:1rem 1rem .75rem; */ padding:.75rem 1rem;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn.cart svg.icon {font-size:1rem; /* margin-bottom:.25rem; */}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn.cart span.caption {font-size:.875rem; letter-spacing:.5px; margin-left:.5rem; text-transform:uppercase;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn.favs {display:none;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn.favs {flex-grow:0; padding:.75rem 1rem; margin-left:.35rem;}
-div#container section#featured div.inner main div.item div.content div.productcta a.ctabtn.favs svg.icon {font-size:1rem;}
-div#container section#featured div.inner main div.item.liked div.content div.productcta a.ctabtn.favs {color:crimson; color:orange; transition:.5s;}
-div#container section#featured div.inner main div.item.liked div.content div.productcta a.ctabtn.favs svg.icon {animation:pump .5s;}
-/* div#container section#featured div.inner main div.item div.content h3.productname {text-align:left;} */
-/* div#container section#featured div.inner main div.item div.content div.productrating {justify-content:flex-start;} */
-/* div#container section#featured div.inner main div.item div.content div.productprice {justify-content:flex-start;} */
-div#container section#featured div.inner aside.refine {display:none;}
-div#container section#featured div.inner aside.refine {flex-grow:0; width:20rem; text-align:center;}
+div#container section#listings main div.item {background-color:white; border:1px solid var(--offwhite); border-radius:.25rem; overflow:hidden; box-shadow:0 .125rem .75rem #0002;}
+div#container section#listings main div.item {display:flex; flex-direction:column; align-items:stretch;}
+div#container section#listings main div.item div.top {position:relative;}
+div#container section#listings main div.item div.top a.photo {background-color:var(--offwhite); background-size:cover; background-position:center; width:100%; padding-top:100%; border-bottom:1px solid var(--offwhite);}
+div#container section#listings main div.item div.top a.photo {color:inherit; text-decoration:none; display:block; position:relative;}
+div#container section#listings main div.item div.top a.photo::after {content:''; position:absolute; top:0; left:0; width:100%; height:100%; transition:.25s;}
+/* div#container section#listings main div.item:hover div.top a.photo::after {background-color:#0003;} */
+div#container section#listings main div.item div.top:hover a.photo::after {background-color:#0003;}
+div#container section#listings main div.item div.top div.panel {background-color:white; border:1px solid transparent; position:absolute; top:0; left:0; width:100%;}
+div#container section#listings main div.item div.top div.panel {display:flex; flex-direction:row; justify-content:center;}
+div#container section#listings main div.item div.top div.panel {transform:translateY(-100%); transition:.25s;}
+/* div#container section#listings main div.item:hover div.top div.panel {transform:none;} */
+div#container section#listings main div.item div.top:hover div.panel {transform:none;}
+div#container section#listings main div.item div.top div.panel a.ctabtn {display:grid; place-items:center; font-size:1rem; min-height:2.5rem; min-width:2.125rem; margin:0 .125rem;}
+div#container section#listings main div.item div.top div.panel a.ctabtn {background-color:white; color:inherit; transition:.25s;}
+div#container section#listings main div.item div.top div.panel a.ctabtn:hover {background-color:var(--grey); color:white;}
+div#container section#listings main div.item div.content {display:flex; flex-direction:column; align-items:stretch; text-align:center; padding:.75rem;}
+div#container section#listings main div.item div.content h3.productname {font-size:1.25rem; margin:0; margin-top:.5rem;}
+div#container section#listings main div.item div.content h3.productname a.name {font-weight:300; color:inherit; text-decoration:none;}
+div#container section#listings main div.item div.content div.productdescription {color:#0008; margin-top:.5rem; display:none;}
+div#container section#listings main div.item div.content div.productrating {display:flex; flex-direction:row; justify-content:center; align-items:flex-end; align-items:center; margin-top:.5rem;}
+div#container section#listings main div.item div.content div.productrating div.rating {display:flex; flex-direction:row;}
+div#container section#listings main div.item div.content div.productrating div.rating {font-size:.85rem; font-size:1rem; color:var(--blue); color:orange;}
+div#container section#listings main div.item div.content div.productrating div.numratings {font-size:.75rem; color:var(--grey); margin-left:.25rem;}
+div#container section#listings main div.item div.content div.productrating div.numratings:before {content:'(';}
+div#container section#listings main div.item div.content div.productrating div.numratings::after {content:')';}
+div#container section#listings main div.item div.content div.productprice {display:flex; flex-direction:row; justify-content:center; align-items:flex-end; margin-top:.5rem;}
+div#container section#listings main div.item div.content div.productprice a.price {font-size:1.375rem; font-weight:500; color:var(--blue); color:var(--black); text-decoration:none;}
+div#container section#listings main div.item div.content div.productprice a.price:before {content:'$';}
+div#container section#listings main div.item div.content div.productprice a.exprice {font-size:.85rem; font-weight:100; color:var(--grey); text-decoration:line-through; margin-bottom:.25em; margin-left:.375rem;}
+div#container section#listings main div.item div.content div.productcta {display:flex; flex-direction:row; margin-top:.5rem;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn {border:2px solid var(--black); border-radius:.25rem; text-align:center; text-decoration:none;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn {display:flex; justify-content:center; align-items:center; font-weight:400;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn {background-color:white; color:var(--black); transition:.5s;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn:hover {background-color:var(--black); color:white;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn.cart {flex-grow:1; /* padding:1rem 1rem .75rem; */ padding:.75rem 1rem;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn.cart svg.icon {font-size:1rem; /* margin-bottom:.25rem; */}
+div#container section#listings main div.item div.content div.productcta a.ctabtn.cart span.caption {font-size:.875rem; letter-spacing:.5px; margin-left:.5rem; text-transform:uppercase;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn.favs {display:none;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn.favs {flex-grow:0; padding:.75rem 1rem; margin-left:.35rem;}
+div#container section#listings main div.item div.content div.productcta a.ctabtn.favs svg.icon {font-size:1rem;}
+div#container section#listings main div.item.liked div.content div.productcta a.ctabtn.favs {color:crimson; color:orange; transition:.5s;}
+div#container section#listings main div.item.liked div.content div.productcta a.ctabtn.favs svg.icon {animation:pump .5s;}
+/* div#container section#listings main div.item div.content h3.productname {text-align:left;} */
+/* div#container section#listings main div.item div.content div.productrating {justify-content:flex-start;} */
+/* div#container section#listings main div.item div.content div.productprice {justify-content:flex-start;} */
+div#container section#listings aside.refine {display:none;}
+div#container section#listings aside.refine {flex-grow:0; width:20rem; text-align:center;}
 
 @keyframes pump {
 	0% {transform:scale(1);}
@@ -75,28 +75,28 @@ div#container section#featured div.inner aside.refine {flex-grow:0; width:20rem;
 @media screen and (max-width:60rem) {
 
 	/* Featured Products Section */
-	div#container section#featured div.inner {flex-direction:column;}
-	div#container section#featured div.inner main {grid-template-columns:repeat(3,1fr);}
-	div#container section#featured div.inner main div.item div.content h3.productname {font-size:1.15rem;}
-	div#container section#featured div.inner main div.item div.content div.productrating div.rating {font-size:1rem;}
-	div#container section#featured div.inner main div.item div.content div.productrating div.numratings {font-size:.75rem;}
-	div#container section#featured div.inner main div.item div.content div.productprice a.price {font-size:1.125rem;}
-	div#container section#featured div.inner main div.item div.content div.productprice a.exprice {font-size:.75rem;}
-	div#container section#featured div.inner aside.refine {width:auto;}
+	div#container section#listings div.inner {flex-direction:column;}
+	div#container section#listings main {grid-template-columns:repeat(3,1fr);}
+	div#container section#listings main div.item div.content h3.productname {font-size:1.15rem;}
+	div#container section#listings main div.item div.content div.productrating div.rating {font-size:1rem;}
+	div#container section#listings main div.item div.content div.productrating div.numratings {font-size:.75rem;}
+	div#container section#listings main div.item div.content div.productprice a.price {font-size:1.125rem;}
+	div#container section#listings main div.item div.content div.productprice a.exprice {font-size:.75rem;}
+	div#container section#listings aside.refine {width:auto;}
 }
 
 /* Small Screen */
 @media screen and (max-width:48rem) {
 
 	/* Featured Products Section */
-	div#container section#featured div.inner main {grid-template-columns:repeat(2,1fr);}
+	div#container section#listings main {grid-template-columns:repeat(2,1fr);}
 }
 
 /* Extra Small Screen */
 @media screen and (max-width:32rem) {
 
 	/* Featured Products Section */
-	div#container section#featured div.inner main {grid-template-columns:1fr;}
+	div#container section#listings main {grid-template-columns:1fr;}
 }
 
 

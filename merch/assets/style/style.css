@@ -43,13 +43,14 @@ body {/* background:linear-gradient( white, var(--offwhite) ); */ background-col
 
 /* div#container {max-width:72rem; margin: 0 auto;} */
 div#container {margin-top:4.5rem; transition:.15s;}
-div#container >main {min-height:75vh;}
+/* div#container >main {min-height:75vh;} */
 
 
 /* General Section */
 
-div#container section {max-width:72rem; margin: 0 auto; padding:1rem;}
+div#container section {padding:1rem;}
 div#container section h2 {font-size:1.5rem; margin:1rem 0 0; text-transform:uppercase; text-align:center;}
+div#container section main {max-width:72rem; margin:0 auto;}
 
 
 
