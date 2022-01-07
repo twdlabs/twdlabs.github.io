@@ -10,9 +10,11 @@ div#container div.row div.col {flex-grow:1; display:flex; flex-direction:column;
 div#container div.row div.col hr.space {margin:0; border:0 none; border-top:1px solid rgb(128,128,128);}
 div#container div.row div.col hr.space.t {margin-top:1rem;}
 div#container div.row div.col hr.space.b {margin-bottom:1rem;}
+/* div#container div.row div.basic {} */
+/* div#container div.row div.details {} */
 
 
-div#container div.basic {flex-basis:8rem;}
+/* div#container div.basic {} */
 div#container div.basic div.productpic {flex-grow:1; background-color:#0004; padding-top:100%;}
 div#container div.basic div.actionbtns {flex-grow:0; margin-top:1rem; display:flex; flex-direction:row; justify-content:space-between; align-items:stretch;}
 div#container div.basic div.actionbtns button {flex-grow:1; margin-left:.85rem}
@@ -25,9 +27,9 @@ div#container div.basic div.actionbtns button.addcartbtn {background-color:orang
 /* div#container div.details {} */
 
 /* div#container div.details div.productname {} */
-div#container div.details div.productname h2#name {font-size:1.25rem; margin-bottom:1em;}
+div#container div.details div.productname h1#name {font-size:1.75rem; margin:0; margin-bottom:.5rem;}
 
-/* div#container div.details div.productbrand {} */
+div#container div.details div.productbrand {display:none;}
 /* div#container div.details div.productbrand span#brand {} */
 
 /* div#container div.details div.productrating {} */
