@@ -21,7 +21,7 @@ function showProducts() {
 	console.log('Filter:', filter);
 
 	// Get destination for product elements. 
-	let destination = document.querySelector('section#featured div.inner main');
+	let destination = document.querySelector('section#listings main');
 
 	// Create set of elements representing all matching product items. 
 	let result = '';
