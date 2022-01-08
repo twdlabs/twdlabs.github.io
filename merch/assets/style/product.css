@@ -3,97 +3,102 @@
 
 /* div#container {overflow:hidden;} */
 
+/* div#container section {} */
+/* div#container section#product {} */
+div#container section#featured {padding:0;}
+div#container section#featured main {max-width:none;}
 
 
-div#container div.row {display:flex; flex-direction:row;}
-div#container div.row div.col {flex-grow:1; display:flex; flex-direction:column; align-items:stretch; padding:1rem;}
-div#container div.row div.col hr.space {margin:0; border:0 none; border-top:1px solid rgb(128,128,128);}
-div#container div.row div.col hr.space.t {margin-top:1rem;}
-div#container div.row div.col hr.space.b {margin-bottom:1rem;}
-/* div#container div.row div.basic {} */
-/* div#container div.row div.details {} */
+div#container section div.row {display:flex; flex-direction:row;}
+div#container section div.row div.col {flex-grow:1; display:flex; flex-direction:column; align-items:stretch; padding:1rem;}
+div#container section div.row div.col hr.space {margin:0; border:0 none; border-top:1px solid rgb(128,128,128);}
+div#container section div.row div.col hr.space.t {margin-top:1rem;}
+div#container section div.row div.col hr.space.b {margin-bottom:1rem;}
 
 
-/* div#container div.basic {} */
-div#container div.basic div.productpic {flex-grow:1; background-color:#0004; padding-top:100%;}
-div#container div.basic div.actionbtns {flex-grow:0; margin-top:1rem; display:flex; flex-direction:row; justify-content:space-between; align-items:stretch;}
-div#container div.basic div.actionbtns button {flex-grow:1; margin-left:.85rem}
-div#container div.basic div.actionbtns button:first-child {margin-left:0}
-div#container div.basic div.actionbtns button {white-space:nowrap; padding:.5rem 1rem; border:0 none; border-radius:.25rem; cursor:pointer;}
-div#container div.basic div.actionbtns button.buybtn {background-color:crimson; color:white;}
-div#container div.basic div.actionbtns button.addcartbtn {background-color:orange; color:black;}
+/* div#container section#product div.row div.basic {} */
+
+div#container section#product div.row div.basic div.productpic {flex-grow:1; padding-top:100%;}
+div#container section#product div.row div.basic div.productpic {background-color:#0004; background-size:cover; background-position:center;}
+
+div#container section#product div.row div.basic div.actionbtns {flex-grow:0; margin-top:1rem; display:flex; flex-direction:row; justify-content:space-between; align-items:stretch;}
+div#container section#product div.row div.basic div.actionbtns button {flex-grow:1; margin-left:.85rem}
+div#container section#product div.row div.basic div.actionbtns button:first-child {margin-left:0}
+div#container section#product div.row div.basic div.actionbtns button {white-space:nowrap; padding:.5rem 1rem; border:0 none; border-radius:.25rem; cursor:pointer;}
+div#container section#product div.row div.basic div.actionbtns button.buybtn {background-color:crimson; color:white;}
+div#container section#product div.row div.basic div.actionbtns button.addcartbtn {background-color:orange; color:black;}
 
 
-/* div#container div.details {} */
+/* div#container section#product div.row div.details {} */
 
-/* div#container div.details div.productname {} */
-div#container div.details div.productname h1#name {font-size:1.75rem; margin:0; margin-bottom:.5rem;}
+/* div#container section#product div.row div.details div.productname {} */
+div#container section#product div.row div.details div.productname h1#name {font-size:1.75rem; margin:0; /* margin-bottom:.5rem; */}
 
-div#container div.details div.productbrand {display:none;}
-/* div#container div.details div.productbrand span#brand {} */
+div#container section#product div.row div.details div.productbrand {display:none;}
+/* div#container section#product div.row div.details div.productbrand span#brand {} */
 
-/* div#container div.details div.productrating {} */
-div#container div.details div.productrating div#rating {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
-div#container div.details div.productrating div#rating svg.star {color:orange;}
+div#container section#product div.row div.details div.productrating {display:none;}
+div#container section#product div.row div.details div.productrating div#rating {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+div#container section#product div.row div.details div.productrating div#rating svg.star {color:orange;}
 
-/* div#container div.details div.productpricing {} */
-div#container div.details div.productpricing table.pricing {border:0 none;}
-div#container div.details div.productpricing table.pricing td {border:0 none; padding:.15rem .25rem;}
-div#container div.details div.productpricing table.pricing span {display:block; width:100%;}
-div#container div.details div.productpricing table.pricing span.key {white-space:nowrap;}
-div#container div.details div.productpricing table.pricing span.key::after {content:':';}
-div#container div.details div.productpricing table.pricing span.value {text-align:right;}￼
-div#container div.details div.productpricing table.pricing span.value:before {content:'$';}
-div#container div.details div.productpricing table.pricing span.value#retailprice {text-decoration:line-through;}
-/* div#container div.details div.productpricing table.pricing span.value#dealprice {} */
-/* div#container div.details div.productpricing table.pricing span.value#savedamount {} */
+/* div#container section#product div.row div.details div.productpricing {} */
+div#container section#product div.row div.details div.productpricing table.pricing {border:0 none;}
+div#container section#product div.row div.details div.productpricing table.pricing td {border:0 none; padding:.15rem .25rem;}
+div#container section#product div.row div.details div.productpricing table.pricing span {display:block; width:100%;}
+div#container section#product div.row div.details div.productpricing table.pricing span.key {white-space:nowrap;}
+div#container section#product div.row div.details div.productpricing table.pricing span.key::after {content:':';}
+div#container section#product div.row div.details div.productpricing table.pricing span.value {text-align:right;}￼
+div#container section#product div.row div.details div.productpricing table.pricing span.value:before {content:'$';}
+div#container section#product div.row div.details div.productpricing table.pricing span.value#retailprice {text-decoration:line-through;}
+/* div#container section#product div.row div.details div.productpricing table.pricing span.value#dealprice {} */
+/* div#container section#product div.row div.details div.productpricing table.pricing span.value#savedamount {} */
 
-div#container div.details div.productdelivery {display:none;}
-/* div#container div.details div.productdelivery div.line {} */
+div#container section#product div.row div.details div.productdelivery {display:none;}
+/* div#container section#product div.row div.details div.productdelivery div.line {} */
 
-/* div#container div.details div.productspecs {} */
-div#container div.details div.productspecs div.spec {margin:1rem;}
-div#container div.details div.productspecs div.spec {display:flex; flex-direction:row; align-items:center;}
-div#container div.details div.productspecs div.spec div.key {margin-right:1rem;}
-div#container div.details div.productspecs div.spec div.key:after {content:':';}
-div#container div.details div.productspecs div.spec select {display:block;}
-div#container div.details div.productspecs div.spec div.values {display:inline-flex; flex-direction:row; justify-content:flex-start; align-items:stretch; /* border:1px solid #0004; */ /* border-radius:.5rem; overflow:hidden; */}
-/* div#container div.details div.productspecs div.spec div.values div.choice {} */
-div#container div.details div.productspecs div.spec div.values div.choice label {display:block; min-width:2rem; min-height:2rem; border-radius:50%; cursor:pointer; user-select:none; border:2px solid #FFF; margin:.125rem;}
-div#container div.details div.productspecs div.spec div.values div.choice input {display:none;}
-div#container div.details div.productspecs div.spec div.values div.choice input:checked + 
+/* div#container section#product div.row div.details div.productspecs {} */
+div#container section#product div.row div.details div.productspecs div.spec {margin:1rem;}
+div#container section#product div.row div.details div.productspecs div.spec {display:flex; flex-direction:row; align-items:center;}
+div#container section#product div.row div.details div.productspecs div.spec div.key {margin-right:1rem;}
+div#container section#product div.row div.details div.productspecs div.spec div.key:after {content:':';}
+div#container section#product div.row div.details div.productspecs div.spec select {display:block;}
+div#container section#product div.row div.details div.productspecs div.spec div.values {display:inline-flex; flex-direction:row; justify-content:flex-start; align-items:stretch; /* border:1px solid #0004; */ /* border-radius:.5rem; overflow:hidden; */}
+/* div#container section#product div.row div.details div.productspecs div.spec div.values div.choice {} */
+div#container section#product div.row div.details div.productspecs div.spec div.values div.choice label {display:block; min-width:2rem; min-height:2rem; border-radius:50%; cursor:pointer; user-select:none; border:2px solid #FFF; margin:.125rem;}
+div#container section#product div.row div.details div.productspecs div.spec div.values div.choice input {display:none;}
+div#container section#product div.row div.details div.productspecs div.spec div.values div.choice input:checked + 
 label.value {border-color:#222;}
-div#container div.details div.productspecs div.spec div.values div.option {border:1px solid #0004; font-size:.75rem;}
-div#container div.details div.productspecs div.spec div.values div.option label {display:grid; place-items:center; min-height:2rem; min-width:2rem; cursor:pointer; user-select:none;}
-div#container div.details div.productspecs div.spec div.values div.option input {display:none;}
-div#container div.details div.productspecs div.spec div.values div.option input:checked + 
+div#container section#product div.row div.details div.productspecs div.spec div.values div.option {border:1px solid #0004; font-size:.75rem;}
+div#container section#product div.row div.details div.productspecs div.spec div.values div.option label {display:grid; place-items:center; min-height:2rem; min-width:2rem; cursor:pointer; user-select:none;}
+div#container section#product div.row div.details div.productspecs div.spec div.values div.option input {display:none;}
+div#container section#product div.row div.details div.productspecs div.spec div.values div.option input:checked + 
 label.value {background-color:#DDD;}
-div#container div.details div.productspecs div.spec div.values div.value#quantity {padding:.5rem 1rem;}
-div#container div.details div.productspecs div.spec button.delta {background-color:#CCC; color:black; border:0 none; padding:.25rem .75rem .35rem; cursor:pointer;}
+div#container section#product div.row div.details div.productspecs div.spec div.values div.value#quantity {padding:.5rem 1rem;}
+div#container section#product div.row div.details div.productspecs div.spec button.delta {background-color:#CCC; color:black; border:0 none; padding:.25rem .75rem .35rem; cursor:pointer;}
 
 
-/* div#container div.description {} */
-div#container div.description h3.head {margin:0;}
-/* div#container div.description div.content {} */
-div#container div.description div.content p.textcopy {margin:0;}
+/* div#container section#product div.row div.description {} */
+div#container section#product div.row div.description h3.head {margin:0;}
+/* div#container section#product div.row div.description div.content {} */
+div#container section#product div.row div.description div.content p.textcopy {margin:0;}
 
 
-div#container div.suggestions {overflow:hidden;}
-div#container div.suggestions h3.head {margin:0;}
-div#container div.suggestions div.content {max-width:100%; white-space:nowrap; overflow-x:scroll; scrollbar-width:none; -webkit-overflow-scrolling:touch;}
-div#container div.suggestions div.content div.product {display:inline-flex; flex-direction:column; align-items:stretch; padding:.5rem;}
-div#container div.suggestions div.content div.product div.pic {background-color:#0004; padding-top:80%;}
-div#container div.suggestions div.content div.product div.pic img {display:none;}
-div#container div.suggestions div.content div.product div.textcopy {padding:.75rem; text-align:center;}
-div#container div.suggestions div.content div.product div.textcopy > div {margin-top:.5rem;}
-/* div#container div.suggestions div.content div.product div.textcopy div.name {} */
-div#container div.suggestions div.content div.product div.textcopy div.rating {display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container div.suggestions div.content div.product div.textcopy div.rating svg.star {color:orange;}
-/* div#container div.suggestions div.content div.product div.textcopy div.dealprice {} */
-div#container div.suggestions div.content div.product div.textcopy div.dealprice:before {content:'$';}
-/* div#container div.suggestions div.content div.product div.textcopy div.actionbtns {} */
-div#container div.suggestions div.content div.product div.textcopy div.actionbtns button.addcartbtn {background-color:orange; color:black;}
-div#container div.suggestions div.content div.product div.textcopy div.actionbtns button {white-space:nowrap; padding:.5rem 1rem; border:0 none; border-radius:.25rem; cursor:pointer;}
+div#container section#featured div.row div.suggestions {overflow:hidden; padding:0;}
+div#container section#featured div.row div.suggestions h3.head {margin:0;}
+div#container section#featured div.row div.suggestions div.content {max-width:100%; white-space:nowrap; overflow-x:scroll; scrollbar-width:none; -webkit-overflow-scrolling:touch;}
+div#container section#featured div.row div.suggestions div.content div.product {display:inline-flex; flex-direction:column; align-items:stretch; padding:.5rem;}
+div#container section#featured div.row div.suggestions div.content div.product div.pic {background-color:#0004; padding-top:80%;}
+div#container section#featured div.row div.suggestions div.content div.product div.pic img {display:none;}
+div#container section#featured div.row div.suggestions div.content div.product div.textcopy {padding:.75rem; text-align:center;}
+div#container section#featured div.row div.suggestions div.content div.product div.textcopy > div {margin-top:.5rem;}
+/* div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.name {} */
+div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.rating {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.rating svg.star {color:orange;}
+/* div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.dealprice {} */
+div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.dealprice:before {content:'$';}
+/* div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.actionbtns {} */
+div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.actionbtns button.addcartbtn {background-color:orange; color:black;}
+div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.actionbtns button {white-space:nowrap; padding:.5rem 1rem; border:0 none; border-radius:.25rem; cursor:pointer;}
 
 
 
@@ -101,6 +106,6 @@ div#container div.suggestions div.content div.product div.textcopy div.actionbtn
 @media screen and (max-width:60rem) {}
 
 @media screen and (max-width:36rem) {
-	div#container div.row {flex-direction:column;}
+	div#container section div.row {flex-direction:column;}
 }
 
