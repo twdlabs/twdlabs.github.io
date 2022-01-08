@@ -38,16 +38,15 @@ div#container div.details div.productrating div#rating svg.star {color:orange;}
 
 /* div#container div.details div.productpricing {} */
 div#container div.details div.productpricing table.pricing {border:0 none;}
-div#container div.details div.productpricing table.pricing td {border:0 none; padding:.15rem .5rem;}
-/* div#container div.details div.productpricing table.pricing span.key {} */
+div#container div.details div.productpricing table.pricing td {border:0 none; padding:.15rem .25rem;}
+div#container div.details div.productpricing table.pricing span {display:block; width:100%;}
+div#container div.details div.productpricing table.pricing span.key {white-space:nowrap;}
 div#container div.details div.productpricing table.pricing span.key::after {content:':';}
-/* div#container div.details div.productpricing table.pricing span.value {}￼ */
+div#container div.details div.productpricing table.pricing span.value {text-align:right;}￼
 div#container div.details div.productpricing table.pricing span.value:before {content:'$';}
 div#container div.details div.productpricing table.pricing span.value#retailprice {text-decoration:line-through;}
 /* div#container div.details div.productpricing table.pricing span.value#dealprice {} */
 /* div#container div.details div.productpricing table.pricing span.value#savedamount {} */
-
-/* div#container div.details div.productassurance {} */
 
 div#container div.details div.productdelivery {display:none;}
 /* div#container div.details div.productdelivery div.line {} */
@@ -58,9 +57,9 @@ div#container div.details div.productspecs div.spec {display:flex; flex-directio
 div#container div.details div.productspecs div.spec div.key {margin-right:1rem;}
 div#container div.details div.productspecs div.spec div.key:after {content:':';}
 div#container div.details div.productspecs div.spec select {display:block;}
-div#container div.details div.productspecs div.spec div.values {display:inline-flex; flex-direction:row; justify-content:flex-start; align-items:stretch; border:1px solid #0004; /* border-radius:.5rem; overflow:hidden; */}
+div#container div.details div.productspecs div.spec div.values {display:inline-flex; flex-direction:row; justify-content:flex-start; align-items:stretch; /* border:1px solid #0004; */ /* border-radius:.5rem; overflow:hidden; */}
 /* div#container div.details div.productspecs div.spec div.values div.choice {} */
-div#container div.details div.productspecs div.spec div.values div.choice label {display:block; padding:1.25rem; border-radius:50%; cursor:pointer; user-select:none; border:2px solid #FFF; margin:.125rem;}
+div#container div.details div.productspecs div.spec div.values div.choice label {display:block; min-width:2rem; min-height:2rem; border-radius:50%; cursor:pointer; user-select:none; border:2px solid #FFF; margin:.125rem;}
 div#container div.details div.productspecs div.spec div.values div.choice input {display:none;}
 div#container div.details div.productspecs div.spec div.values div.choice input:checked + 
 label.value {border-color:#222;}
