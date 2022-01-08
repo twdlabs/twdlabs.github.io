@@ -54,12 +54,13 @@ function createProductElement(productid) {
 
 	// Get product urls. 
 	let atHome = atRootDir;
-	let url = `${ (atHome) ? ('') : ('../') }${product.producturl}`;
+	// let url = `${ (atHome) ? ('') : ('../') }${product.producturl}`;
+	let url = `${ (atHome) ? ('') : ('../') }product/index.html?id=${productid}`;
 	let photourl = `${ (atHome) ? ('') : ('../') }${product.photourl}`;
 
 	return `
 	<!-- item -->
-	<div class="item ${ inFavsList(productid)?('liked'):('') }" data-productid="${productid}">
+	<div class="item ${ isAlreadyFaved(productid)?('liked'):('') }" data-productid="${productid}">
 
 		<!-- top -->
 		<div class="top">
@@ -119,7 +120,11 @@ function createProductElement(productid) {
 
 			<!-- productname -->
 			<h3 class="productname">
+
+				<!-- name -->
 				<a class="name" href="${ url }">${ product.name }</a>
+				<!-- /name -->
+
 			</h3>
 			<!-- /productname -->
 
@@ -145,12 +150,18 @@ function createProductElement(productid) {
 			<div class="productprice">
 
 				<!-- price -->
-				<a class="price" href="${ url }">${ (1*product.price).toFixed(2) }</a>
-				<!-- /price -->
+				<a class="price" href="${ url }" style="background-image:url('');">
 
-				<!-- exprice -->
-				<a class="price exprice" href="${ url }">${ (1*product.exprice).toFixed(2) }</a>
-				<!-- /exprice -->
+					<!-- price -->
+					<span class="price">${ (1*product.price).toFixed(2) }</span>
+					<!-- /price -->
+
+					<!-- exprice -->
+					<span class="price exprice">${ (1*product.exprice).toFixed(2) }</span>
+					<!-- /exprice -->
+
+				</a>
+				<!-- /price -->
 
 			</div>
 			<!-- /productprice -->
@@ -219,7 +230,7 @@ function createProductElement(productid) {
 	}
 
 	// Check if product in favorites list. 
-	function inFavsList(queryId) {
+	function isAlreadyFaved(queryId) {
 
 		// Get user's favs data. 
 		let favsidlist = ( isLoggedIn() ) ? ( userdata[currentuserid].favIds ) : ( [] );
