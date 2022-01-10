@@ -1,0 +1,17 @@
+
+* {box-sizing:border-box;}
+
+body {font-family:sans-serif; font-weight:100; margin:0;}
+
+div#container {/* background:linear-gradient(135deg,dodgerblue,white); */ background-color:#222; min-height:100vh;}
+div#container {display:grid; place-items:center;}
+div#container main {background-color:#FFF; padding:1rem; border-radius:.25rem; width:100%; max-width:30rem;}
+
+div#container div#syllabus {}
+/* div#container div#syllabus:before {content:'Syllabus: ';} */
+
+div#container ol.navlist {/* padding:0; margin:0; */}
+div#container ol.navlist li.navitem {}
+div#container ol.navlist li.navitem a.navlink {display:block; margin-top:.5rem;}
+div#container ol.navlist>li.navitem>a.navlink {font-weight:bold; margin-top:1.5rem;}
+div#container ol.navlist li.navitem ul.navlist {}

@@ -23,29 +23,33 @@ function clickLink(event) {
 	function getBreadcrumbs() {
 
 		// Create list of ancestor names. 
-		let ancestorNames = [];
+		let ancestors = [];
 		let currentItem = event.currentTarget.parentElement;
 		while( isValidItem(currentItem) ) {
 
-			// Get name of current item. 
+			// Get name and url of current item. 
 			let navlink = currentItem.children[0];
 			let name = navlink.innerText;
+			let url = navlink.href;
 
 			// Save name at beginning of list. 
-			ancestorNames.unshift(name);
+			ancestors.unshift({
+				name:name,
+				url:url,
+			});
 
 			// Move to next potential ancestor. 
 			currentItem = getAncestor(currentItem);
 		}
-		console.log('Ancestor names:', ancestorNames);
+		console.log('Breadcrumbs:', ancestors);
 
 		// Create string of names. 
 		let breadcrumbs = 'Home';
-		for(let name of ancestorNames) {
+		for(let item of ancestors) {
 			// Add connecting arrow with item name. 
-			breadcrumbs += ' > '+name;
+			breadcrumbs += ' > '+`<a class="navlink" href="${item.url}">${item.name}</a>`;
 		}
-		console.log('Breadcrumbs:', breadcrumbs);
+		// console.log('Breadcrumbs:', breadcrumbs);
 
 		return breadcrumbs;
 
