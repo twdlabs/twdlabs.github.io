@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Analog Clock</title>
+
+		<style type="text/css">
+
+			* {box-sizing:border-box;}
+			body {font-family:sans-serif; margin:0;}
+			div#container {background:linear-gradient(dodgerblue 50%,black 50%); background:linear-gradient(#2987e4 50%,#16191e 50%); min-height:100vh;}
+			div#container {display:grid; place-items:center;}
+			div#container main.clock {background-color:#16191e; border:1rem solid #242931; border-radius:50%; height:20rem; width:20rem; box-shadow:1rem 1rem 2rem rgba(0,0,0,0.2); position:relative;}
+			div#container main.clock::after {content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background-color:white; border-radius:50%; height:1rem; width:1rem;}
+			div#container main.clock div.inner {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+			div#container main.clock div.inner div.hand {position:absolute; top:50%; left:50%; transform:translate(-50%,-100%); border-radius:1rem; transition:.1s;}
+			/* div#container main.clock div.inner div.hand {animation:tick 6s infinite;} */
+			div#container main.clock div.inner div.hand.hrs {background-color:white; height:4rem; width:.5rem;}
+			div#container main.clock div.inner div.hand.min {background-color:white; height:6rem; width:.35rem;}
+			div#container main.clock div.inner div.hand.sec {background-color:#2987e4; height:8rem; width:.125rem;}
+			
+			@keyframes tick {
+				0% {transform:rotate(0);}
+				50% {transform:rotate(180deg);}
+				100% {transform:rotate(360deg);}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="clock">
+
+				<!-- inner -->
+				<div class="inner">
+
+					<!-- hand -->
+					<div class="hrs hand"></div>
+					<!-- /hand -->
+	
+					<!-- hand -->
+					<div class="min hand"></div>
+					<!-- /hand -->
+	
+					<!-- hand -->
+					<div class="sec hand"></div>
+					<!-- /hand -->
+
+				</div>
+				<!-- /inner -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
