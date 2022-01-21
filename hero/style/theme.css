@@ -9,7 +9,7 @@ div#container.dark {background-color:var(--dark); color:var(--offwhite);}
 /* Nav Section */
 
 /* General Section */
-div#container.dark section {border:1px solid var(--fadedwhite);}
+div#container.dark section {border-color:var(--fadedwhite);}
 
 /* Hero Section */
 div#container.dark section#hero:before {background-color:#111E;}
@@ -18,6 +18,8 @@ div#container.dark section#hero:before {background-color:#111E;}
 
 /* Skills Section */
 div#container.dark section#skills main div.skills div.item {background-color:var(--darkitem); color:var(--offwhite);}
+div#container.dark section#skills main div.skills div.item.active div.inner span.img,
+div#container.dark section#skills main div.skills div.item.active div.inner span.caption {background-color:var(--darkitem);}
 
 /* Stats Section */
 

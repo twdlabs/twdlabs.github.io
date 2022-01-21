@@ -13,13 +13,14 @@
 	--lightlightblue:#0f48f822;
 	--lightblack:#111;
 	--tpblack:#0009;
-	--tptpblack:#0002;
+	--tptpblack:#0001;
 
 	/* Screen Size Definitions */
 	--mobile:30rem;
 	--tablet:40rem;
 	--laptop:62rem;
 }
+
 
 
 * {box-sizing:border-box;}
@@ -40,15 +41,15 @@ div#container.navopen {overflow:hidden;}
 
 
 /* General Section */
-div#container section {min-height:25rem; border-bottom:2px solid var(--lightlightblue); padding:.125rem; transition:.5s}
+div#container section {min-height:25rem; border-bottom:1px solid var(--tptpblack); /* border-color:var(--lightlightblue); */ padding:.125rem; transition:.5s}
 div#container section h2.title {text-align:center; text-transform:uppercase; margin-top:2em; margin-bottom:0; font-size:2rem; font-weight:100; padding-bottom:.675em; position:relative;}
 div#container section h2.title {opacity:1; transform:none; transition:.75s;}
 div#container section h2.title:before {content:''; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:6rem; height:1px; background-color:var(--tptpblack);}
 div#container section h2.title::after {content:''; position:absolute; left:50%; bottom:0; transform:translate(-50%,1px); width:2rem; height:3px; background-color:var(--lightblue);}
+div#container section.shift {margin-left:6rem;}
 div#container section main {opacity:1; transform:none; transition:.75s;}
-div#container section main {max-width:75rem; margin:0 auto; padding:2rem 4rem;}
-div#container section.shift {margin-left:4rem;}
-div#container section.gone h2.title,
+div#container section main {max-width:75rem; margin:0 auto; padding:2rem 1rem;}
+div#container section.gone h2.title {opacity:0; transform:translateY(3rem);}
 div#container section.gone main {opacity:0; transform:translateY(3rem);}
 
 
@@ -66,11 +67,11 @@ div#container.navopen button.totop {transform:translateY(6rem);}
 @media screen and (max-width:62rem) {
 	.stuck {overflow:hidden;}
 	div#container section.shift {margin-left:0;}
-	div#container section main {padding:2rem 4rem;}
+	div#container section main {padding:2rem 3.75rem;}
 }
 
 @media screen and (max-width:40rem) {
-	div#container section main {padding:2rem 2rem;}
+	/* div#container section main {padding:2rem 1rem;} */
 	div#container button.totop {font-size:1rem; margin:1rem; min-width:2.5rem; min-height:2.5rem;}
 }
 
@@ -87,3 +88,4 @@ div#container section#services {}
 div#container section#services main {}
 
 */
+

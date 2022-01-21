@@ -36,8 +36,8 @@ div#container section#skills main article.skillset div.skill.vb:before {content:
 div#container section#skills main article.skillset div.skill.php:before {content:'70%';}
 div#container section#skills main article.skillset div.skill.sql:before {content:'60%';}
 /* div#container section#skills main article.skillset div.skill div.name {} */
-div#container section#skills main article.skillset div.skill div.bar {width:100%; display:flex; flex-direction:row; justify-content:flex-start; height:.5rem; background-color:#0001; margin-top:.5rem;}
-div#container section#skills main article.skillset div.skill div.bar div.fill {height:100%; width:90%; background-color:#0f48f8cc; transition:.75s;}
+div#container section#skills main article.skillset div.skill div.bar {width:100%; display:flex; flex-direction:row; justify-content:flex-start; height:.5rem; background-color:#0001; margin-top:.5rem; border-radius:2rem; overflow:hidden;}
+div#container section#skills main article.skillset div.skill div.bar div.fill {height:100%; width:90%; max-width:100%; background-color:var(--blue); transition:.75s;}
 div#container section#skills main article.skillset div.skill.rd div.bar div.fill {width:90%;}
 div#container section#skills main article.skillset div.skill.hc div.bar div.fill {width:95%;}
 div#container section#skills main article.skillset div.skill.js div.bar div.fill {width:95%;}
@@ -48,7 +48,7 @@ div#container section#skills main article.skillset div.skill.cpp div.bar div.fil
 div#container section#skills main article.skillset div.skill.vb div.bar div.fill {width:90%;}
 div#container section#skills main article.skillset div.skill.php div.bar div.fill {width:70%;}
 div#container section#skills main article.skillset div.skill.sql div.bar div.fill {width:60%;}
-div#container section#skills.gone main article.set div.skill div.bar div.fill {width:0;}
+div#container section#skills.gone main article.set div.skill div.bar div.fill {max-width:0;}
 
 
 div#container section#skills main div.skills div.item.active {background-color:#CCC;}

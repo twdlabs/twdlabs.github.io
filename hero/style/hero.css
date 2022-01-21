@@ -11,19 +11,28 @@ div#container section#hero main {display:flex; flex-direction:column; text-align
 
 div#container section#hero main h1.name {font-size:4rem; margin:0; font-weight:100;}
 div#container section#hero main h2.name {font-size:2rem; margin:0; font-weight:100;}
+
 div#container section#hero main p.roles {font-size:1.5rem; font-weight:500; margin:.25rem 0 1rem;}
 div#container section#hero main p.roles span.a,
 div#container section#hero main p.roles span.typed {color:#0f48f8cc;}
 div#container section#hero main p.roles span.typed:after {content:'|'; font-size:1.33em; margin-left:1px; opacity:1; /*transform:translateY(1px);*/ display:inline-block;}
 div#container section#hero main p.roles span.typed.blink:after {animation:blinking 0.75s infinite;}
+
 div#container section#hero main div.action {display:flex; flex-direction:row; justify-content:flex-start; gap:.75rem;}
 div#container section#hero main div.action a.btn {font-size:.875rem; font-weight:bold; padding:.75rem 2rem .75rem 3rem; text-decoration:none; min-width:12rem; transition:.5s;}
 div#container section#hero main div.action a.btn {border:1px solid #0f48f8cc; border-radius:.25rem; background-color:#FFF9; color:#0f48f8cc; cursor:pointer; position:relative;}
 div#container section#hero main div.action a.btn.primary {background-color:#0f48f8cc; color:#FFF;}
 div#container section#hero main div.action a.btn svg.icon {position:absolute; left:0; top:50%; transform:translateY(-50%); margin-left:1.5rem;}
+
 div#container section#hero main div.social {display:flex; flex-direction:row; justify-content:flex-start;}
 div#container section#hero main div.social a.btn {font-size:1.25rem; padding:1rem 0; margin:0 1rem; cursor:pointer; text-decoration:none; color:inherit; transition:.5s;}
 div#container section#hero main div.social a.btn:hover {color:#0f48f8cc;}
+
+div#container section#hero main div.scroll {position:absolute; bottom:0; left:50%; transform:translateX(-50%); margin:1rem;}
+div#container section#hero main div.scroll {min-width:1.5rem; min-height:2.35rem; border:2px solid var(--tpblack); border-radius:10rem;}
+div#container section#hero main div.scroll::after {position:absolute; left:50%; top:35%; transform:translate(-50%,-50%);}
+div#container section#hero main div.scroll::after {content:''; background-color:var(--tpblack); border-radius:inherit; min-width:.25rem; min-height:.65rem;}
+div#container section#hero main div.scroll svg.icon {font-size:2rem; display:none;}
 
 div#container section#hero.gone main {opacity:0; transform:scale(0);}
 
