@@ -3,189 +3,198 @@
 // Define initial image tags. 
 const allTags = [];
 
-// Define image urls. 
+// Define user data. 
+let userData = [
+	{
+		username:'TWDLabs',
+		followercount:'50k',
+		avatarurl:'avatar.jpg',
+	},
+]
+
+// Define image data (i.e. urls, tags). 
 const imageData = [
 	{
-		url:'1.jpg',
+		imageurl:'1.jpg',
 		taglist:[
-			'',
 			'city',
 			'water',
+			'',
 		]
 	},
 	{
-		url:'2 2.jpg',
+		imageurl:'2 2.jpg',
 		taglist:[
-			'',
 			'mountain',
+			'',
 		]
 	},
 	{
-		url:'2.jpg',
+		imageurl:'2.jpg',
 		taglist:[
-			'',
 			'water',
 			'mountain',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'3.jpg',
+		imageurl:'3.jpg',
 		taglist:[
-			'',
 			'dog',
 			'grass',
+			'',
 		]
 	},
 	{
-		url:'1033200-starry-sky-background-1330x2000-for-ipad.jpg',
+		imageurl:'1033200-starry-sky-background-1330x2000-for-ipad.jpg',
 		taglist:[
-			'',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'a.jpg',
+		imageurl:'a.jpg',
 		taglist:[
-			'',
 			'buildings',
 			'water',
 			'sky',
 			'grass',
+			'',
 		]
 	},
 	{
-		url:'b.jpeg',
+		imageurl:'b.jpeg',
 		taglist:[
-			'',
 			'city',
 			'trees',
 			'streets',
+			'',
 		]
 	},
 	{
-		url:'city.jpg',
+		imageurl:'city.jpg',
 		taglist:[
-			'',
 			'city',
 			'trees',
 			'buildings',
 			'streets',
+			'',
 		]
 	},
 	{
-		url:'code.jpg',
+		imageurl:'code.jpg',
 		taglist:[
-			'',
 			'code',
+			'',
 		]
 	},
 	{
-		url:'codecode.jpg',
+		imageurl:'codecode.jpg',
 		taglist:[
-			'',
 			'code',
+			'',
 		]
 	},
 	{
-		url:'devicework.jpg',
+		imageurl:'devicework.jpg',
 		taglist:[
-			'',
 			'device',
 			'hands',
+			'',
 		]
 	},
 	{
-		url:'Dubai.jpg',
+		imageurl:'Dubai.jpg',
 		taglist:[
-			'',
 			'sky',
 			'city',
 			'buildings',
+			'',
 		]
 	},
 	{
-		url:'earthmap.jpg',
+		imageurl:'earthmap.jpg',
 		taglist:[
-			'',
 			'map',
+			'',
 		]
 	},
 	{
-		url:'fd21366fc13ca502751ebb8f7d18f2dd.jpg',
+		imageurl:'fd21366fc13ca502751ebb8f7d18f2dd.jpg',
 		taglist:[
-			'',
 			'beach',
 			'water',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'library.jpg',
+		imageurl:'library.jpg',
 		taglist:[
-			'',
 			'buildings',
+			'',
 		]
 	},
 	{
-		url:'Navagio.jpg',
+		imageurl:'Navagio.jpg',
 		taglist:[
-			'',
 			'beach',
 			'mountain',
 			'water',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'NEWSLIDER21.jpg',
+		imageurl:'NEWSLIDER21.jpg',
 		taglist:[
-			'',
 			'trees',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'np3.jpg',
+		imageurl:'np3.jpg',
 		taglist:[
-			'',
 			'beach',
 			'mountain',
 			'water',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'Squarespace+Learning+-+Forum+Banner.jpg',
+		imageurl:'Squarespace+Learning+-+Forum+Banner.jpg',
 		taglist:[
-			'',
 			'device',
 			'desk',
+			'',
 		]
 	},
 	{
-		url:'starry-sky-wallpaper-dark.jpg',
+		imageurl:'starry-sky-wallpaper-dark.jpg',
 		taglist:[
-			'',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
+		imageurl:'wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
 		taglist:[
-			'',
 			'sky',
+			'',
 		]
 	},
 	{
-		url:'ze0NeqF.jpg',
+		imageurl:'ze0NeqF.jpg',
 		taglist:[
-			'',
 			'beach',
 			'mountain',
 			'water',
 			'sky',
 			'trees',
+			'',
 		]
 	}
 ];
