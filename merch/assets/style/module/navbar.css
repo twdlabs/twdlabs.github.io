@@ -1,24 +1,30 @@
 
 
-
 /* Navbar */
-nav#navbar {min-height:3rem; background-color:var(--offwhite); padding:.625rem 0 0; transition:.5s; position:relative;}
-nav#navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:25; opacity:.875; box-shadow:var(--shadow);}
+nav#navbar {min-height:3rem; background-color:var(--offwhite); padding:0 0; transition:.5s; position:relative;}
+nav#navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:25; box-shadow:var(--shadow);}
+/* nav#navbar {opacity:.75;} */
 nav#navbar:empty {height:4.5rem;}
+
+
+/* nav#navbar div#shout {display:none;} */
+nav#navbar div#shout {background-color:var(--black); color:white; padding:.5rem 0; text-align:center;}
+
+
 nav#navbar main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; position:relative;}
-nav#navbar main {max-width:72rem; padding:0 1rem .5rem; margin: 0 auto; transition:.5s;}
+nav#navbar main {max-width:72rem; padding:.625rem 1rem .5rem; margin: 0 auto; transition:.5s;}
 
 
 /* Navbar: General Section */
 nav#navbar main div a.navlink {display:flex; flex-direction:column; justify-content:center; align-items:center; min-width:2rem; min-height:2rem;}
-nav#navbar main div a.navlink {background-color:#FFF8; color:inherit; text-decoration:none; padding:.125rem; padding-top:.25rem; border-radius:.25rem; margin:0 .15rem;}
+nav#navbar main div a.navlink {background-color:#FFF8; color:inherit; text-decoration:none; padding:.125rem; padding-top:.5rem; border-radius:.25rem; margin:0 .15rem;}
 nav#navbar main div a.navlink.active {background-color:#0008; color:white;}
 
 /* Navbar: Logo Section */
 nav#navbar main div.logo {flex-grow:1; flex-basis:0;}
 nav#navbar main div.logo {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
-nav#navbar main div.logo a.navlink {background-color:transparent; /* font-family:'Poppins',sans-serif; */ flex-direction:row; font-size:2rem; padding:.65rem .85rem .15rem; transition:.5s;}
-nav#navbar main div.logo a.navlink svg.icon {color:var(--blue); margin-bottom:.5rem;}
+nav#navbar main div.logo a.navlink {background-color:transparent; /* font-family:'Poppins',sans-serif; */ flex-direction:row; font-size:2rem; padding:.25rem .85rem .15rem; transition:.5s;}
+nav#navbar main div.logo a.navlink svg.icon {color:var(--blue); margin-bottom:.25rem;}
 nav#navbar main div.logo a.navlink span.caption {margin-left:.35rem;}
 
 /* Navbar: Toggle Section */
@@ -62,17 +68,19 @@ nav#navbar main div.user a.navlink.toggler.out {display:flex;}
 nav#navbar.loggedin main div.user a.navlink.toggler.in {display:flex;}
 nav#navbar.loggedin main div.user a.navlink.toggler.out {display:none;}
 /* Special Buttons */
-nav#navbar main div.user a.navlink.toggler {justify-content:space-between; min-width:3rem; min-height:2.75rem;}
+nav#navbar main div.user a.navlink.toggler {justify-content:space-between; min-width:4rem; min-height:3.25rem;}
 nav#navbar main div.user a.navlink.toggler span.caption {display:block;}
 
 
 
 /* Navbar Drawer: General Bin */
 nav#navbar main div#navdrawer {position:absolute; top:100%; right:0; left:0; width:100%;}
-nav#navbar main div#navdrawer div.navbin {position:absolute; top:100%; right:1rem; overflow:hidden; width:100%; box-shadow:var(--shadow); border-radius:0 0 .5rem .5rem;}
+nav#navbar main div#navdrawer div.navbin {position:absolute; top:100%; right:1rem; width:100%; border-radius:0 0 .5rem .5rem; box-shadow:var(--shadow);}
 nav#navbar main div#navdrawer div.navbin {background-color:white; font-size:.75rem; display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch;}
-nav#navbar main div#navdrawer div.navbin {max-height:0; z-index:10; transition:.25s;}
-nav#navbar main div#navdrawer div.navbin.active {max-height:50vh; z-index:20;}
+nav#navbar main div#navdrawer div.navbin {max-height:0; overflow:hidden; z-index:10; transition:.25s;}
+nav#navbar main div#navdrawer div.navbin.active {max-height:50vh; overflow:visible; z-index:20;}
+nav#navbar main div#navdrawer div.navbin.active:before {content:''; height:0; width:0; border:solid transparent; border-width:.75rem 1rem; border-bottom-color:var(--offwhite);}
+nav#navbar main div#navdrawer div.navbin.active:before {display:block; position:absolute; bottom:100%; right:0; z-index:-1; box-shadow:var(--shadow);}
 nav#navbar main div#navdrawer div.navbin h3.title {background-color:white; margin:0; padding:.75rem 1rem .5rem; background-image:linear-gradient( var(--offwhite),white );}
 /* nav#navbar main div#navdrawer div.navbin div.inner {background-color:var(--offwhite); border:.25rem solid var(--offwhite);} */
 nav#navbar main div#navdrawer div.navbin div.inner {/* border-radius:.5rem; */ padding-bottom:.125rem; overflow:auto; scrollbar-width:none;}
