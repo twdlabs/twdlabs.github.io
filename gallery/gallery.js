@@ -129,7 +129,7 @@ function loadItUp() {
 							<!-- /username -->
 
 							<!-- followercount -->
-							<div class="followercount">${ (user.followercount) ? (user.followercount) : ('0') } followers</div>
+							<div class="followercount">${ (user.followercount) ? formatFollowerCount(user.followercount) : ('0') }</div>
 							<!-- /followercount -->
 							
 						</div>
@@ -293,134 +293,10 @@ function selectImage(event) {
 	// console.log('selected id:', id, item);
 
 	// Attach selected id to overlay. 
-	overlay.setAttribute('data-displayed-imageid',id);
+	overlay.setAttribute('data-displayedimageid',id);
 
 	// Open page overlay, displaying selected image (by id). 
 	openPicOverlay(id);
-}
-
-// Open picture overlay popup. 
-function openPicOverlay(id) {
-	// console.log('id', id);
-
-	let img = imageData[id];
-	// console.log('img', img);
-
-	// Add selected image to overlay. 
-	document.querySelector('section#overlay main.main div.content').innerHTML = `<img src="pic/${img.imageurl}">`;
-
-	// Activate like button if image in liked list. 
-	if(img.liked) document.getElementById('likebtn').classList.add('active');
-	else document.getElementById('likebtn').classList.remove('active');
-
-	// List tags from selected image. 
-	let tizags = 'Tags: ';
-	for(let i in img.taglist) {
-
-		// Get tag. 
-		let t = img.taglist[i];
-
-		// Add tag to list. 
-		// if(i==0) tizags += t;
-		// else tizags += `, ${t}`;
-		tizags += `<span class="tag">${t}</span>`;
-	}
-	// Add list of tags to overlay. 
-	document.querySelector('section#overlay main.main div.foot div.taglist').innerHTML = tizags;
-
-	// Activate buttons in overlay popup. 
-	updateOverlayBtns();
-
-	// Show overlay on page. 
-	document.getElementById('overlay').classList.add('active');
-
-	/*****/
-
-	// Activate buttons in overlay popup. 
-	function updateOverlayBtns() {
-
-		// Get overlay. 
-		let overlay = document.getElementById('overlay');
-
-		// Check if id present in overlay. 
-		let hasImageId = overlay.hasAttribute('data-displayed-imageid');
-
-		// Get id of displayed image. 
-		let id = ( hasImageId ) ? ( 1*overlay.getAttribute('data-displayed-imageid') ) : ( -1 );
-		
-
-		// Get download button in overlay. 
-		let dlbtn = document.getElementById('dlbtn');
-
-		// Get url of displayed image for download button url. 
-		let imgurl = imageData[id].imageurl;
-		// console.log(`imgurl: '${imgurl}'`);
-
-		// Set download button attributes: 'href' & 'download'. 
-		dlbtn.setAttribute('download',`img${id}`);
-		dlbtn.setAttribute('href',`pic/${imgurl}`);
-
-
-		// Get heart button in overlay. 
-		let likebtn = document.getElementById('likebtn');
-		likebtn.addEventListener('click', clickOverlayLikeBtn);
-
-		// Check if displayed item now liked. 
-		let nowLiked = likedImageIds.includes(id);
-
-		// Set heart button in overlay popup to appropriate initial state. 
-		if(nowLiked) likebtn.classList.add('active');
-		else likebtn.classList.remove('active');
-	}
-}
-
-// Close picture overlay popup. 
-function closePicOverlay() {
-
-	// Get overlay. 
-	let overlay = document.getElementById('overlay');
-
-	// Hide overlay popup from page. 
-	overlay.classList.remove('active');
-	
-	// Remove image content from overlay popup. 
-	document.querySelector('section#overlay main div.content').innerHTML = '';
-	
-	// Remove id value from overlay popup. 
-	overlay.removeAttribute('data-displayed-imageid');
-
-	// De-activate buttons in overlay popup. 
-	clearOverlayBtns();
-
-	/*****/
-
-	// De-activate buttons in overlay popup. 
-	function clearOverlayBtns() {
-
-		// Get download button from overlay. 
-		let dlbtn = document.getElementById('dlbtn');
-
-		// Clear download button attributes: 'href' & 'download'. 
-		dlbtn.setAttribute('download','');
-		dlbtn.setAttribute('href','javascript:void(0)');
-
-		// Get heart button from overlay. 
-		let likebtn = document.getElementById('likebtn');
-		likebtn.removeEventListener('click', clickOverlayLikeBtn);
-	}
-}
-
-// Select displayed image to toggle 'like' for. 
-function clickOverlayLikeBtn(event) {
-	// console.log('clickOverlayLikeBtn', event.currentTarget);
-
-	// Get id of displayed image. 
-	let overlay = document.getElementById('overlay');
-	let hasImageId = overlay.hasAttribute('data-displayed-imageid');
-	let id = ( hasImageId ) ? ( 1*overlay.getAttribute('data-displayed-imageid') ) : ( -1 );
-
-	// Toggle 'like' for selected image. 
-	toggleImageLikeById(id);
 }
 
 // Select image in gallery to toggle 'like' for. 
@@ -439,21 +315,57 @@ function clickGalleryLikeBtn(event) {
 // Toggle image 'like' by id. 
 function toggleImageLikeById(id) {
 
+	if(id==-1) console.error('Toggle like error: Invalid image id found on overlay');
+
 	// Check if image already liked. 
 	let alreadyLiked = likedImageIds.includes(id);
-	// console.log('toggleImageLikeById', id, alreadyLiked?'turn off':'turn on' );
+	// console.log('toggleImageLikeById', id, alreadyLiked?'turning off':'turning on' );
 
-
-	// console.log('likedImageIds (before)',likedImageIds);
-
+	// console.log('Liked images (before):',likedImageIds);
 	// Add selected image to like list. 
-	if(!alreadyLiked) {
+	if(!alreadyLiked) addImageLikeById(id);
+	// Remove selected image from like list. 
+	else removeImageLikeById(id);
+	// console.log('Liked images (after)':,likedImageIds);
+
+
+	// Check if item now liked. 
+	let nowLiked = likedImageIds.includes(id);
+
+	// Get corresponding item in gallery. 
+	let item = document.querySelectorAll('section#gallery main div.item')[id];
+	// Get overlay heart button. 
+	let likebtn = document.getElementById('likebtn');
+
+	
+	if(nowLiked) {
+
+		// Update heart button of item in gallery. 
+		item.classList.add('liked');
+
+		// Update overlay heart button. 
+		likebtn.classList.add('active');
+	}
+	else {
+
+		// Update heart button of item in gallery. 
+		item.classList.remove('liked');
+
+		// Update overlay heart button. 
+		likebtn.classList.remove('active');
+	}
+
+	/*****/
+
+	// Add image 'like' by id. 
+	function addImageLikeById(id) {
 
 		// Add image id to list. 
 		likedImageIds.push(id);
 	}
-	// Remove selected image from like list. 
-	else {
+
+	// Remove image 'like' by id. 
+	function removeImageLikeById(id) {
 		
 		// Get index of image id to remove from list. 
 		let removeIndex = likedImageIds.indexOf(id);
@@ -461,25 +373,85 @@ function toggleImageLikeById(id) {
 		// Remove image id from list. 
 		likedImageIds.splice(removeIndex,1);
 	}
+}
 
-	// console.log('likedImageIds (after)',likedImageIds);
 
+// Format follower count number. 
+function formatFollowerCount(num,expanded=false) {
+	// console.log('num',num, (expanded)?('expanded'):('abbreviated') );
+	
+	// Format general integer. 
+	if(expanded) {
 
-	// Check if item now liked. 
-	let nowLiked = likedImageIds.includes(id);
+		// Create string representation of number. 
+		let numstr = '' + Math.floor(num);
+		// console.log('numstr:',numstr);
 
-	// Get overlay heart button. 
-	let likebtn = document.getElementById('likebtn');
+		// Add commas to numbers longer than 3 digits. 
+		if(numstr.length>3) {
 
-	// Update heart button in overlay popup. 
-	if(nowLiked) likebtn.classList.add('active');
-	else likebtn.classList.remove('active');
+			// Split number into pieces. 
+			let splitNumber = numstr.split('');
+			let newSplitNumber = [];
+			// console.log('splitNumber:',splitNumber);
+			// console.log('newSplitNumber:',newSplitNumber);
+	
 
-	// Get corresponding item in gallery. 
-	let item = document.querySelectorAll('section#gallery main div.item')[id];
+			// Get bottom digit group and add comma. Repeat till last digit group. 
+			while(splitNumber.length>3) {
+				newSplitNumber.unshift( splitNumber.pop() );
+				newSplitNumber.unshift( splitNumber.pop() );
+				newSplitNumber.unshift( splitNumber.pop() );
+				newSplitNumber.unshift(',');
+			}
+			// console.log('splitNumber:',splitNumber);
+			// console.log('newSplitNumber:',newSplitNumber);
 
-	// Update item's heart button in gallery. 
-	if(nowLiked) item.classList.add('liked');
-	else item.classList.remove('liked');
+			// Get last digit group. 
+			while(splitNumber.length) {
+				newSplitNumber.unshift( splitNumber.pop() );
+			}
+			// console.log('splitNumber:',splitNumber);
+			// console.log('newSplitNumber:',newSplitNumber);
+	
+			// Reassemble split number into string. 
+			numstr = newSplitNumber.join('');
+		}
+
+		// Return final result text. 
+		if(numstr==1) return ( numstr + ' view' );
+		else return ( numstr + ' followers' );
+	}
+
+	// Format abbreviated number. 
+	else {
+	
+		// Define components of formatted number. 
+		let coeff = 1*num;
+		let suffindex = 0;
+		let suffix = [' followers','K followers','M followers','B followers','T followers',' follower'];	// potential suffixes
+	
+		// Divide number until less than a thousand. 
+		while(coeff>1000 && suffindex<5) {
+	
+			// Divide number by thousand. 
+			coeff /= 1000;
+			// console.log('\tcoeff',coeff);
+	
+			// Increment suffix index. 
+			suffindex++;
+			// console.log('\tsuffindex',suffindex);
+		}
+	
+		// Add final formatting to view count. 
+		coeff = coeff.toFixed(1);
+		let removeExtraZero = coeff.includes('.0');
+		if(removeExtraZero) coeff = coeff.substr(0,coeff.length-2);
+		if(coeff==1 && suffindex==0) suffindex = 5;
+	
+		// Return final result text. 
+		return ( coeff + suffix[suffindex] );
+
+	}
 }
 

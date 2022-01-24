@@ -1,0 +1,72 @@
+
+
+/* Overlay Section */
+
+
+div#container section#overlay {position:fixed; top:0; left:0; width:100%; height:100%; /* overflow:auto; */}
+div#container section#overlay {display:grid; place-items:center;}
+div#container section#overlay {visibility:hidden; opacity:0; transition:.5s;}
+div#container section#overlay.active {visibility:visible; opacity:1;}
+div#container section#overlay::after {content:''; background-color:#000A; position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; cursor:pointer;}
+
+div#container section#overlay main {background-color:white; max-width:40rem; width:100%; padding:.25rem; border-radius:.125rem; box-shadow:0 5px 10px rgba(0, 0, 0, 0.3);}
+div#container section#overlay main {display:flex; flex-direction:column; align-items:stretch; position:relative;}
+
+div#container section#overlay main div.closebtn {position:absolute; top:0; right:auto; bottom:auto; left:100%;}
+div#container section#overlay main div.closebtn {background-color:#FFF0; color:#FFF; border-radius:50%; min-height:2rem; min-width:2rem; margin:.5rem;}
+div#container section#overlay main div.closebtn {display:grid; place-items:center; font-size:1.5rem; font-weight:100; cursor:pointer; user-select:none;}
+
+div#container section#overlay main div.head {flex-grow:0; display:flex; flex-direction:row; align-items:center; padding:.35rem .25rem .15rem;}
+div#container section#overlay main div.head div.space {flex-grow:1;}
+
+div#container section#overlay main div.head a.user {display:flex; flex-direction:row; align-items:center; margin:0 .25rem;}
+div#container section#overlay main div.head a.user {color:inherit; text-decoration:none;}
+div#container section#overlay main div.head a.user div.avatar {flex-grow:0; width:3rem; height:3rem; border-radius:50%; overflow:hidden;}
+div#container section#overlay main div.head a.user div.avatar {background-color:#0004; background-position:top center; background-size:cover;}
+div#container section#overlay main div.head a.user div.avatar img {width:100%; height:100%; object-fit:cover;}
+div#container section#overlay main div.head a.user div.details {flex-grow:1; margin-left:.5rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+div#container section#overlay main div.head a.user div.details div.username {font-size:1.25rem;}
+div#container section#overlay main div.head a.user div.details div.followercount {font-size:.875rem;}
+
+div#container section#overlay main div.head a.btn {flex-grow:0; display:grid; place-items:center; width:2.125rem; height:2.125rem; cursor:pointer;}
+div#container section#overlay main div.head a.btn {background-color:#EFEFEF; font-size:1.5rem; padding:.25rem; border:1px solid #CCC; border-radius:.25rem; margin:0 .25rem;}
+div#container section#overlay main div.head a.btn {color:#888; transition:.25s;}
+div#container section#overlay main div.head a.btn:hover {color:#444;}
+/* div#container section#overlay main div.head a.btn#dlbtn {} */
+/* div#container section#overlay main div.head a.btn#likebtn {} */
+div#container section#overlay main div.head a.btn#likebtn svg.icon {display:block;}
+div#container section#overlay main div.head a.btn#likebtn svg.icon.fill {display:none; color:crimson;}
+div#container section#overlay main div.head a.btn#likebtn.active svg.icon {display:none;}
+div#container section#overlay main div.head a.btn#likebtn.active svg.icon.fill {display:block;}
+/* div#container section#overlay main div.head a.btn#commentbtn {} */
+
+div#container section#overlay main div.content {flex-grow:1; background-color:#0004; margin-top:.25rem;}
+div#container section#overlay main div.content:empty {padding-top:62.5%;}
+div#container section#overlay main div.content img {display:block; width:100%; max-height:100%;}
+
+div#container section#overlay main div.foot {/* display:none; */ padding:.75rem .5rem .5rem;}
+div#container section#overlay main div.foot div.taglist {font-size:1.125rem; transition:.25s;}
+div#container section#overlay main div.foot div.taglist span.tag {font-size:.875rem; background-color:#EFEFEF; padding:.375em .5em .25em; border:1px solid #CCC; border-radius:.35rem; margin:.25rem;}
+div#container section#overlay main div.foot div.taglist span.tag {cursor:pointer; user-select:none;}
+div#container section#overlay main div.foot div.taglist span.tag:empty {display:none;}
+
+
+
+@media screen and (max-width:48rem) {
+
+	/* Overlay Section */
+	div#container section#overlay main div.closebtn {position:absolute; top:auto; right:0; bottom:100%; left:auto;}
+}
+
+
+
+@media screen and (max-width:32rem) {
+
+	/* Overlay Section */
+	div#container section#overlay main div.head a.user div.avatar {width:2rem; height:2rem;}
+	div#container section#overlay main div.head a.user div.details div.username {font-size:1rem;}
+	div#container section#overlay main div.head a.user div.details div.followercount {font-size:.75rem;}
+	div#container section#overlay main div.head a.btn {font-size:1.25rem; width:1.75rem; height:1.75rem;}
+	div#container section#overlay main div.foot div.taglist {font-size:.875rem;}
+	div#container section#overlay main div.foot div.taglist span.tag {font-size:.75rem;}
+}

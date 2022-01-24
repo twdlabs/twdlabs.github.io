@@ -7,7 +7,7 @@ const allTags = [];
 let userData = [
 	{
 		username:'TWDLabs',
-		followercount:'50k',
+		followercount:'6490',
 		avatarurl:'avatar.jpg',
 	},
 ]
