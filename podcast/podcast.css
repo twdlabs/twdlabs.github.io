@@ -1,0 +1,29 @@
+
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap'); */
+
+* {box-sizing:border-box;}
+body {font-family:Nunito,sans-serif; margin:0;}
+div#container {background-color:#121112; display:grid; place-items:center; min-height:100vh;}
+div#container main {display:flex; flex-direction:column-reverse;}
+div#container main {color:white; width:100%; max-width:40rem; padding:2rem; border:2px solid #FFF2; border-width:1px 0;}
+div#container main div.item {background-color:#121112; width:100%;}
+div#container main div.item {display:flex; flex-direction:row; padding:1.25rem 0; border:1px solid #FFF2; border-width:.25px 0 0; user-select:none;}
+div#container main div.item div.left {flex-grow:0; width:32rem;}
+div#container main div.item div.left img.albumart {width:100%; object-fit:cover; border:0 none; border-radius:.5rem;}
+div#container main div.item div.right {flex-grow:1; margin-left:1rem;}
+div#container main div.item div.right div.title {display:flex; flex-direction:row; align-items:flex-start; /* margin-top:.75rem; */}
+div#container main div.item div.right div.title::before {background-color:dodgerblue; min-width:.55rem; min-height:.55rem; border-radius:50%; opacity:.75; margin-top:.25rem; margin-right:.75rem;}
+div#container main div.item div.right div.title.new::before {content:'';}
+div#container main div.item div.right div.title span.caption {font-size:1.25rem; font-weight:600;}
+div#container main div.item div.right div.excerpt {color:#FFF8; color:#AAA; line-height:1.25; /* white-space:nowrap; */ margin-top:.75rem;}
+div#container main div.item div.right div.bar {display:flex; flex-direction:row; align-items:center; margin-top:1rem;}
+div#container main div.item div.right div.bar {color:#FFF8; color:#AAA;}
+div#container main div.item div.right div.bar a.playbtn {background-color:white; color:#121112; display:grid; place-items:center; font-size:1.5rem; min-width:2.5rem; min-height:2.5rem; border-radius:50%; cursor:pointer; margin-right:1rem;}
+div#container main div.item div.right div.bar a.playbtn svg.icon {transform:translateX(1px);}
+div#container main div.item div.right div.bar div.metadata {display:flex; flex-direction:row; align-items:center;}
+/* div#container main div.item div.right div.bar div.metadata svg.icon {margin-right:.75rem;} */
+div#container main div.item div.right div.bar div.metadata span.date {margin-left:.75rem;}
+div#container main div.item div.right div.bar div.metadata span.bull {/* font-size:.5rem; */ margin-left:.35rem;}
+div#container main div.item div.right div.bar div.metadata span.length {margin-left:.35rem;}
+div#container main div.item div.right div.bar div.metadata svg.icon.gone {visibility:hidden; display:none;}
+
