@@ -9,53 +9,8 @@
 		<link href="../atgicon.ico" rel="icon"/>
 		<title>Music Player</title>
 
-		<style type="text/css">
-
-			* {box-sizing:border-box;}
-
-			body {font-family:sans-serif; margin:0;}
-
-			div#container {background:linear-gradient(135deg,dodgerblue,purple); display:grid; place-items:center; min-height:100vh; padding:1rem;}
-			div#container main {background-color:white; width:100%; max-width:20rem; border-radius:1rem;}
-
-			div#container main section.player {display:flex; flex-direction:row; align-items:center; border-bottom: 1px solid #0002; padding:.75rem;}
-			div#container main section.player div.albumart {flex-grow:0; width:3rem; height:3rem; margin-right:.75rem;}
-			div#container main section.player div.albumart {background-size:cover; border-radius:1rem; position:relative; overflow:hidden;}
-			div#container main section.player div.albumart div#playbtn {position:absolute; width:100%; height:100%; display:grid; place-items:center; background-color:#0004; cursor:pointer;}
-			div#container main section.player div.albumart div#playbtn svg.icon {font-size:2rem; color:white;}
-			div#container main section.player div.albumart div#playbtn svg.icon.play {display:block; transform:translateX(1px);}
-			div#container main section.player div.albumart div#playbtn svg.icon.pause {display:none;}
-			div#container main section.player.active div.albumart div#playbtn svg.icon.play {display:none;}
-			div#container main section.player.active div.albumart div#playbtn svg.icon.pause {display:block;}
-			div#container main section.player div.meat {flex-grow:1; display:flex; flex-direction:column;}
-			div#container main section.player div.meat div.top {display:flex; flex-direction:row; align-items:center; padding-top:.5rem;}
-			div#container main section.player div.meat div.top div.btn {flex-grow:0; color:#0008; font-size:1.5rem; cursor:pointer;}
-			div#container main section.player div.meat div.top div.metadata {flex-grow:1; display:flex; flex-direction:column; align-items:center;}
-			div#container main section.player div.meat div.top div.metadata div.title {color:black; font-size:1rem; font-weight:bold; margin:.15rem 0 .5em;}
-			div#container main section.player div.meat div.top div.metadata div.artist {color:#AAA; font-size:.675rem; font-weight:bold;}
-			div#container main section.player div.meat div.controller {margin-top:1rem;}
-			div#container main section.player div.meat div.controller div.line {font-size:.35rem; height:1em; background-color:#0002; border-radius:1rem; position:relative; display:flex; flex-direction:row; align-items:center;}
-			div#container main section.player div.meat div.controller div.line:before,
-			div#container main section.player div.meat div.controller div.line::after {content:''; display:block; height:100%; border-radius:inherit;}
-			div#container main section.player div.meat div.controller div.line:before {/* flex-grow:1; flex-basis:0; */ background-color:dodgerblue; opacity:.45; width:25%;}
-			div#container main section.player div.meat div.controller div.line div.ball {flex-grow:0; position:relative;}
-			div#container main section.player div.meat div.controller div.line div.ball::after {width:2.5em; height:2.5em; border-radius:50%; background-color:dodgerblue; margin-top:-.25px;}
-			div#container main section.player div.meat div.controller div.line div.ball::after {content:''; display:block; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-			div#container main section.player div.meat div.controller div.line::after {flex-grow:1; flex-basis:0;}
-
-			div#container main section.playlist {height:12rem; border-radius:inherit; overflow:hidden;}
-			div#container main section.playlist ul#playlist {list-style:none; padding:.15rem .75rem 0; margin:0;}
-			div#container main section.playlist ul#playlist {height:100%; background-color:white; overflow:auto;}
-			div#container main section.playlist ul#playlist li.playitem {display:flex; flex-direction:row; align-items:center; padding:.375rem 0; border-bottom:.5px solid #0002;;}
-			div#container main section.playlist ul#playlist li.playitem div.albumart {flex-grow:0; width:3rem; height:3rem; margin-right:.75rem;}
-			div#container main section.playlist ul#playlist li.playitem div.albumart img {display:block; width:100%; height:100%; background-color:#0001; object-fit:cover; border:0 none; border-radius:1rem;}
-			div#container main section.playlist ul#playlist li.playitem div.metadata {flex-grow:1; display:flex; flex-direction:column; justify-content:center; align-items:stretch; font-weight:bold;}
-			div#container main section.playlist ul#playlist li.playitem div.metadata div.title {color:black; font-size:.875rem; margin-bottom:.25em;}
-			div#container main section.playlist ul#playlist li.playitem div.metadata div.bottom {display:flex; flex-direction:row; color:#AAA; font-size:.675rem;}
-			div#container main section.playlist ul#playlist li.playitem div.metadata div.bottom div.artist {flex-grow:1;}
-			div#container main section.playlist ul#playlist li.playitem div.metadata div.bottom div.duration {flex-grow:0;}
-			
-		</style>
+		<link href="musicplayer.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
@@ -70,10 +25,10 @@
 				<section class="player">
 
 					<!-- albumart -->
-					<div class="albumart" style="background-image:url('../podcast/albumart.jpg');">
+					<div id="albumart" class="albumart" style="background-image:url('abc.jpg');">
 
 						<!-- #playbtn -->
-						<div id="playbtn" onclick="this.parentElement.parentElement.classList.toggle('active')">
+						<div id="playbtn">
 
 							<!-- icon -->
 							<svg class="icon play" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -121,11 +76,23 @@
 							<div class="metadata">
 
 								<!-- title -->
-								<div class="title">Media Title</div>
+								<div id="songtitle" class="title">
+									
+									<!-- caption -->
+									<span class="caption"></span>
+									<!-- /caption -->
+									
+								</div>
 								<!-- /title -->
 
 								<!-- artist -->
-								<div class="artist">Artist Name</div>
+								<div id="artistname" class="artist">
+									
+									<!-- caption -->
+									<span class="caption"></span>
+									<!-- /caption -->
+
+								</div>
 								<!-- /artist -->
 
 							</div>
@@ -150,11 +117,15 @@
 						<div class="controller">
 
 							<!-- line -->
-							<div class="line">
+							<div class="line" onclick="skipToPosition(event);">
 
-								<!-- ball -->
-								<div class="ball"></div>
-								<!-- /ball -->
+								<!-- progress -->
+								<div id="progress"></div>
+								<!-- /progress -->
+
+								<!-- scrubber -->
+								<div class="scrubber"></div>
+								<!-- /scrubber -->
 
 							</div>
 							<!-- /line -->
@@ -177,35 +148,41 @@
 						<!-- playitem -->
 						<li class="playitem">
 
-							<!-- albumart -->
-							<div class="albumart">
-								<img src="../podcast/albumart.jpg">
-							</div>
-							<!-- /albumart -->
+							<!-- playlink -->
+							<a class="playlink" href="javascript:void(0)" data-songid="0">
 
-							<!-- metadata -->
-							<div class="metadata">
-
-								<!-- title -->
-								<div class="title">Media Title</div>
-								<!-- /title -->
-
-								<!-- bottom -->
-								<div class="bottom">
-
-									<!-- artist -->
-									<div class="artist">Artist Name</div>
-									<!-- /artist -->
-	
-									<!-- duration -->
-									<div class="duration">01:59</div>
-									<!-- /duration -->
-
+								<!-- albumart -->
+								<div class="albumart">
+									<img src="def.jpg">
 								</div>
-								<!-- /bottom -->
-								
-							</div>
-							<!-- /metadata -->
+								<!-- /albumart -->
+	
+								<!-- metadata -->
+								<div class="metadata">
+	
+									<!-- title -->
+									<div class="title">Media Title</div>
+									<!-- /title -->
+	
+									<!-- bottom -->
+									<div class="bottom">
+	
+										<!-- artist -->
+										<div class="artist">Artist Name</div>
+										<!-- /artist -->
+		
+										<!-- duration -->
+										<div class="duration">01:59</div>
+										<!-- /duration -->
+	
+									</div>
+									<!-- /bottom -->
+									
+								</div>
+								<!-- /metadata -->
+
+							</a>
+							<!-- /playlink -->
 
 						</li>
 						<!-- /playitem -->
@@ -219,55 +196,19 @@
 			</main>
 			<!-- /main -->
 
+			<!-- #tracker -->
+			<aside id="tracker"></aside>
+			<!-- /#tracker -->
+
 		</div>
 		<!-- /#container -->
 
 
-		<script type="text/javascript">
-
-			let result = '';
-			// for(let x of xyz) {
-			for(let x=0;x<6;x++) {
-				result += `
-				<!-- playitem -->
-				<li class="playitem">
-
-					<!-- albumart -->
-					<div class="albumart">
-						<img src="../podcast/albumart.jpg">
-					</div>
-					<!-- /albumart -->
-
-					<!-- metadata -->
-					<div class="metadata">
-
-						<!-- title -->
-						<div class="title">Media Title</div>
-						<!-- /title -->
-
-						<!-- bottom -->
-						<div class="bottom">
-
-							<!-- artist -->
-							<div class="artist">Artist Name</div>
-							<!-- /artist -->
-
-							<!-- duration -->
-							<div class="duration">01:59</div>
-							<!-- /duration -->
-
-						</div>
-						<!-- /bottom -->
-						
-					</div>
-					<!-- /metadata -->
-
-				</li>
-				<!-- /playitem -->`;
-			}
-			document.getElementById('playlist').innerHTML = result;
-
-		</script>
+		<!-- Database -->
+		<script src="database.js" type="text/javascript"></script>
+		
+		<!-- Main Script -->
+		<script src="musicplayer.js" type="text/javascript"></script>
 
 	</body>
 

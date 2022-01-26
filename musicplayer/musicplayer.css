@@ -1,0 +1,67 @@
+
+
+* {box-sizing:border-box;}
+
+
+
+body {font-family:sans-serif; margin:0;}
+
+
+
+div#container {background:linear-gradient(135deg,dodgerblue,purple); display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container main {background-color:white; width:100%; max-width:20rem; border-radius:1rem;}
+
+
+/* Player Section */
+
+div#container main section.player {display:flex; flex-direction:row; align-items:center; border-bottom: 1px solid #0002; border-radius:inherit; padding:.75rem;}
+div#container main section.player div.albumart {flex-grow:0; width:3rem; height:3rem; margin-right:.75rem;}
+div#container main section.player div.albumart {background-size:cover; border-radius:1rem; position:relative; overflow:hidden;}
+div#container main section.player div.albumart div#playbtn {position:absolute; width:100%; height:100%; display:grid; place-items:center; background-color:#0004; cursor:pointer;}
+div#container main section.player div.albumart div#playbtn svg.icon {font-size:2rem; color:white;}
+div#container main section.player div.albumart div#playbtn svg.icon.play {display:block; transform:translateX(1px);}
+div#container main section.player div.albumart div#playbtn svg.icon.pause {display:none;}
+div#container main section.player.active div.albumart div#playbtn svg.icon.play {display:none;}
+div#container main section.player.active div.albumart div#playbtn svg.icon.pause {display:block;}
+
+div#container main section.player div.meat {flex-grow:1; display:flex; flex-direction:column;}
+div#container main section.player div.meat div.top {display:flex; flex-direction:row; align-items:center; padding-top:.5rem;}
+div#container main section.player div.meat div.top div.btn {flex-grow:0; color:#0008; font-size:1.5rem; cursor:pointer;}
+div#container main section.player div.meat div.top div.metadata {flex-grow:1; display:flex; flex-direction:column; align-items:center;}
+div#container main section.player div.meat div.top div.metadata div#songtitle {color:black; font-size:1rem; font-weight:bold; margin:.15rem 0 .5em;}
+div#container main section.player div.meat div.top div.metadata div#songtitle span.caption:empty:before {content:'Music Player';}
+div#container main section.player div.meat div.top div.metadata div#artistname {color:#AAA; font-size:.675rem; font-weight:bold;}
+div#container main section.player div.meat div.top div.metadata div#artistname span.caption:empty:before {content:'TWD Labs';}
+div#container main section.player div.meat div.controller {margin-top:1rem;}
+div#container main section.player div.meat div.controller div.line {font-size:.35rem; height:1em; background-color:#0002; border-radius:1rem; position:relative; display:flex; flex-direction:row; align-items:stretch; cursor:pointer;}
+div#container main section.player div.meat div.controller div.line div#progress {/* flex-grow:1; flex-basis:0; */ height:100%; border-radius:inherit;}
+div#container main section.player div.meat div.controller div.line div#progress {background-color:dodgerblue; opacity:.45; width:0%;}
+div#container main section.player div.meat div.controller div.line div.scrubber {flex-grow:0; position:relative; cursor:pointer;}
+div#container main section.player div.meat div.controller div.line div.scrubber::after {width:.5em; height:2.5em; border-radius:1rem; background-color:dodgerblue;}
+div#container main section.player div.meat div.controller div.line div.scrubber::after {content:''; display:block; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container main section.player div.meat div.controller div.line::after {flex-grow:1; flex-basis:0;}
+div#container main section.player div.meat div.controller div.line::after {content:''; display:block; height:100%; border-radius:inherit;}
+
+
+/* Playlist Section */
+
+div#container main section.playlist {height:12rem; border-radius:0 0 1rem 1rem; overflow:hidden; padding-bottom:.75rem;}
+div#container main section.playlist ul#playlist {list-style:none; padding:.15rem .75rem 0; margin:0;}
+div#container main section.playlist ul#playlist {height:100%; background-color:white; overflow:auto;}
+div#container main section.playlist ul#playlist li.playitem {padding:.375rem 0; border-bottom:.5px solid #0002;}
+div#container main section.playlist ul#playlist li.playitem a.playlink {display:flex; flex-direction:row; align-items:center;}
+div#container main section.playlist ul#playlist li.playitem a.playlink {color:inherit; text-decoration:none;}
+div#container main section.playlist ul#playlist li.playitem a.playlink div.albumart {flex-grow:0; width:3rem; height:3rem; margin-right:.75rem;}
+div#container main section.playlist ul#playlist li.playitem a.playlink div.albumart img {display:block; width:100%; height:100%; background-color:#0001; object-fit:cover; border:0 none; border-radius:1rem;}
+div#container main section.playlist ul#playlist li.playitem a.playlink div.metadata {flex-grow:1; display:flex; flex-direction:column; justify-content:center; align-items:stretch; font-weight:bold;}
+div#container main section.playlist ul#playlist li.playitem a.playlink div.metadata div.title {color:black; font-size:.875rem; margin-bottom:.25em;}
+div#container main section.playlist ul#playlist li.playitem a.playlink div.metadata div.bottom {display:flex; flex-direction:row; color:#AAA; font-size:.675rem;}
+div#container main section.playlist ul#playlist li.playitem a.playlink div.metadata div.bottom div.artist {flex-grow:1;}
+div#container main section.playlist ul#playlist li.playitem a.playlink div.metadata div.bottom div.duration {flex-grow:0;}
+
+
+/* Tracker */
+
+div#container aside#tracker {display:none;}
+div#container aside#tracker {position:fixed; top:0; left:0; background-color:#0001; color:white; padding:1rem; border-radius:.5rem; margin:1rem;}
+
