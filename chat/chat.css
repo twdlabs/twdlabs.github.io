@@ -1,0 +1,29 @@
+
+* {box-sizing:border-box;}
+
+
+body {font-family:sans-serif;}
+
+
+div#container {display:flex; flex-direction:column;}
+
+div#container div.msg-group {display:flex; margin-top:1.25rem;}
+div#container div.msg-group.r {align-self:flex-start; flex-direction:row;}
+div#container div.msg-group.s {align-self:flex-end; flex-direction:row-reverse;}
+
+div#container div.msg-group div.avatar {flex-grow:0; display:flex; flex-direction:column; justify-content:flex-end; padding:0 .5rem;}
+div#container div.msg-group div.avatar img {max-width:2rem; max-height:2rem; border-radius:50%;}
+
+div#container div.msg-group div.msgs {flex-grow:1; display:flex; flex-direction:column;}
+div#container div.msg-group.r div.msgs {align-items:flex-start;}
+div#container div.msg-group.s div.msgs {align-items:flex-end;}
+
+div#container div.msg-group div.msgs div.bubble {border-radius:1.25rem; padding:.65rem .65rem .5rem; margin-top:.15rem;}
+div#container div.msg-group.r div.msgs div.bubble {background-color:#EEE; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
+div#container div.msg-group.r div.msgs div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
+div#container div.msg-group.r div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
+div#container div.msg-group.s div.msgs div.bubble {background-color:dodgerblue; color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
+div#container div.msg-group.s div.msgs div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
+div#container div.msg-group.s div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
+
+div#container div.msg-group div.msgs div.bubble span.caption {line-height:1.25; font-size:.95rem;}
