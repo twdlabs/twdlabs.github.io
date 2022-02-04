@@ -9,6 +9,7 @@
 		<link href="../atgicon.ico" rel="icon"/>
 		<title>Live Chat</title>
 
+		<!-- Main Stylesheet -->
 		<link href="chat.css" type="text/css" rel="stylesheet">
 	</head>
 
@@ -17,336 +18,258 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- msg-group -->
-			<div class="msg-group r">
+			<!-- main -->
+			<main>
 
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-f.png">
-				</div>
-				<!-- /avatar -->
+				<!-- header -->
+				<header class="header">
 
-				<!-- msgs -->
-				<div class="msgs">
+					<!-- backbtn -->
+					<div class="backbtn">
 
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
+						<!-- icon -->
+						<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+						</svg>
+						<!-- /icon -->
+
 					</div>
-					<!-- /bubble -->
+					<!-- /backbtn -->
 
-				</div>
-				<!-- /msgs -->
+					<!-- recipient -->
+					<div class="recipient">
 
-			</div>
-			<!-- /msg-group -->
+						<!-- avatar -->
+						<div class="avatar">
+							<img src="assets/avatar-f.png">
+						</div>
+						<!-- /avatar -->
 
-			<!-- msg-group -->
-			<div class="msg-group s">
+						<!-- remainder -->
+						<div class="remainder">
 
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-m.png">
-				</div>
-				<!-- /avatar -->
+							<!-- name -->
+							<div class="name">Jane Doe</div>
+							<!-- /name -->
 
-				<!-- msgs -->
-				<div class="msgs">
+							<!-- status -->
+							<div class="status">Active Now</div>
+							<!-- /status -->
 
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
+						</div>
+						<!-- /remainder -->
+
 					</div>
-					<!-- /bubble -->
+					<!-- /recipient -->
 
-				</div>
-				<!-- /msgs -->
+				</header>
+				<!-- /header -->
 
-			</div>
-			<!-- /msg-group -->
+				<!-- #thread -->
+				<section id="thread">
 
-			<!-- msg-group -->
-			<div class="msg-group r">
+					<!-- inner -->
+					<div class="inner">
+	
+						<!-- msg-group -->
+						<div class="msg-group r">
 
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-f.png">
-				</div>
-				<!-- /avatar -->
+							<!-- timestamp -->
+							<div class="timestamp">0:00</div>
+							<!-- /timestamp -->
 
-				<!-- msgs -->
-				<div class="msgs">
+							<!-- content -->
+							<div class="content">
+			
+								<!-- avatar -->
+								<div class="avatar">
+									<img src="assets/avatar-f.png">
+								</div>
+								<!-- /avatar -->
+				
+								<!-- msgs -->
+								<div class="msgs">
+				
+									<!-- bubble -->
+									<div class="bubble">
+	
+										<!-- caption -->
+										<span class="caption">Yerrrrr</span>
+										<!-- /caption -->
+	
+										<!-- timestamp -->
+										<span class="timestamp">0:00</span>
+										<!-- /timestamp -->
+										
+									</div>
+									<!-- /bubble -->
+				
+									<!-- bubble -->
+									<div class="bubble">
+	
+										<!-- caption -->
+										<span class="caption">What's the word</span>
+										<!-- /caption -->
+	
+										<!-- timestamp -->
+										<span class="timestamp">0:00</span>
+										<!-- /timestamp -->
+									</div>
+									<!-- /bubble -->
+				
+									<!-- bubble -->
+									<div class="bubble">
+	
+										<!-- caption -->
+										<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+										<!-- /caption -->
+	
+										<!-- timestamp -->
+										<span class="timestamp">0:00</span>
+										<!-- /timestamp -->
+	
+									</div>
+									<!-- /bubble -->
+				
+								</div>
+								<!-- /msgs -->
 
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
+							</div>
+							<!-- /content -->
+			
+						</div>
+						<!-- /msg-group -->
+			
+						<!-- msg-group -->
+						<div class="msg-group s">
+
+							<!-- timestamp -->
+							<div class="timestamp">0:00</div>
+							<!-- /timestamp -->
+
+							<!-- content -->
+							<div class="content">
+			
+								<!-- avatar -->
+								<div class="avatar">
+									<img src="assets/avatar-m.png">
+								</div>
+								<!-- /avatar -->
+				
+								<!-- msgs -->
+								<div class="msgs">
+				
+									<!-- bubble -->
+									<div class="bubble">
+	
+										<!-- caption -->
+										<span class="caption">Yerrrrr</span>
+										<!-- /caption -->
+	
+										<!-- timestamp -->
+										<span class="timestamp">0:00</span>
+										<!-- /timestamp -->
+										
+									</div>
+									<!-- /bubble -->
+				
+									<!-- bubble -->
+									<div class="bubble">
+	
+										<!-- caption -->
+										<span class="caption">What's the word</span>
+										<!-- /caption -->
+	
+										<!-- timestamp -->
+										<span class="timestamp">0:00</span>
+										<!-- /timestamp -->
+										
+									</div>
+									<!-- /bubble -->
+				
+									<!-- bubble -->
+									<div class="bubble">
+	
+										<!-- caption -->
+										<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+										<!-- /caption -->
+	
+										<!-- timestamp -->
+										<span class="timestamp">0:00</span>
+										<!-- /timestamp -->
+										
+									</div>
+									<!-- /bubble -->
+				
+								</div>
+								<!-- /msgs -->
+
+							</div>
+							<!-- /content -->
+			
+						</div>
+						<!-- /msg-group -->
+
 					</div>
-					<!-- /bubble -->
+					<!-- /inner -->
 
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
+				</section>
+				<!-- /#thread -->
+
+				<!-- composer -->
+				<section class="composer">
+
+					<!-- btn -->
+					<div class="btn mediabtn">
+
+						<!-- icon -->
+						<svg class="icon camera" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+							<path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+						</svg>
+						<!-- /icon -->
+
 					</div>
-					<!-- /bubble -->
+					<!-- /btn -->
 
-				</div>
-				<!-- /msgs -->
+					<!-- #newmessage -->
+					<input id="newmessage" type="text" placeholder="Type your message here...">
+					<!-- /#newmessage -->
 
-			</div>
-			<!-- /msg-group -->
+					<!-- btn -->
+					<div class="btn sendbtn" onclick="sendNewMessage()">
 
-			<!-- msg-group -->
-			<div class="msg-group s">
+						<!-- icon -->
+						<svg class="icon paperplane" width=".85em" height=".85em" fill="currentColor" viewBox="0 0 16 16">
+							<!-- <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/> -->
+							<path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"/>
+						</svg>
+						<!-- /icon -->
 
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-m.png">
-				</div>
-				<!-- /avatar -->
+						<!-- icon -->
+						<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="display:none">
+							<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
 
-				<!-- msgs -->
-				<div class="msgs">
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
 					</div>
-					<!-- /bubble -->
+					<!-- /btn -->
 
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
-					</div>
-					<!-- /bubble -->
+				</section>
+				<!-- /composer -->
 
-				</div>
-				<!-- /msgs -->
-
-			</div>
-			<!-- /msg-group -->
-
-			<!-- msg-group -->
-			<div class="msg-group r">
-
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-f.png">
-				</div>
-				<!-- /avatar -->
-
-				<!-- msgs -->
-				<div class="msgs">
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-					</div>
-					<!-- /bubble -->
-
-				</div>
-				<!-- /msgs -->
-
-			</div>
-			<!-- /msg-group -->
-
-			<!-- msg-group -->
-			<div class="msg-group s">
-
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-m.png">
-				</div>
-				<!-- /avatar -->
-
-				<!-- msgs -->
-				<div class="msgs">
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-					</div>
-					<!-- /bubble -->
-
-				</div>
-				<!-- /msgs -->
-
-			</div>
-			<!-- /msg-group -->
-
-			<!-- msg-group -->
-			<div class="msg-group r">
-
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-f.png">
-				</div>
-				<!-- /avatar -->
-
-				<!-- msgs -->
-				<div class="msgs">
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.</span>
-					</div>
-					<!-- /bubble -->
-
-				</div>
-				<!-- /msgs -->
-
-			</div>
-			<!-- /msg-group -->
-
-			<!-- msg-group -->
-			<div class="msg-group s">
-
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-m.png">
-				</div>
-				<!-- /avatar -->
-
-				<!-- msgs -->
-				<div class="msgs">
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.</span>
-					</div>
-					<!-- /bubble -->
-
-				</div>
-				<!-- /msgs -->
-
-			</div>
-			<!-- /msg-group -->
-
-			<!-- msg-group -->
-			<div class="msg-group r">
-
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-f.png">
-				</div>
-				<!-- /avatar -->
-
-				<!-- msgs -->
-				<div class="msgs">
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.</span>
-					</div>
-					<!-- /bubble -->
-
-				</div>
-				<!-- /msgs -->
-
-			</div>
-			<!-- /msg-group -->
-
-			<!-- msg-group -->
-			<div class="msg-group s">
-
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="avatar-m.png">
-				</div>
-				<!-- /avatar -->
-
-				<!-- msgs -->
-				<div class="msgs">
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Yerrrrr</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">What's the word</span>
-					</div>
-					<!-- /bubble -->
-
-					<!-- bubble -->
-					<div class="bubble">
-						<span class="caption">Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.</span>
-					</div>
-					<!-- /bubble -->
-
-				</div>
-				<!-- /msgs -->
-
-			</div>
-			<!-- /msg-group -->
+			</main>
+			<!-- /main -->
 
 		</div>
 		<!-- /#container -->
 
 
+		<!-- Database Script -->
+		<script src="assets/database.js" type="text/javascript"></script>
+
 		<!-- Main Script -->
-		<script type="text/javascript"></script>
+		<script src="chat.js" type="text/javascript"></script>
 
 	</body>
 
