@@ -3,7 +3,11 @@
 * {box-sizing:border-box;}
 
 
+
+
 body {font-family:sans-serif; margin:0;}
+
+
 
 
 div#container {background-color:dodgerblue; background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); display:grid; place-items:center; min-height:100vh; padding:1rem;}
@@ -28,6 +32,7 @@ div#overlay main.overlay div.head div.video {padding-top:56.25%; position:relati
 div#overlay main.overlay div.head div.video video {position:absolute; top:0; right:0; height:100%; width:100%; object-fit:cover;}
 /* div#overlay main.overlay div.head div.video::after {content:''; background:linear-gradient(transparent,#181818 50%); height:2rem;} */
 /* div#overlay main.overlay div.head div.video::after {position:absolute; right:0; bottom:0; left:0; width:100%;} */
+
 div#overlay main.overlay div.head div.cover {position:absolute; bottom:0; right:0; left:0; width:100%; padding:3rem;}
 div#overlay main.overlay div.head div.cover {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch;}
 div#overlay main.overlay div.head div.cover {background:linear-gradient(transparent,#181818);}
@@ -55,29 +60,37 @@ div#overlay main.overlay div.head div.cover div.panel div.space {flex-grow:1;}
 
 div#overlay main.overlay div.body {min-height:20rem;}
 div#overlay main.overlay div.body section {margin:3rem;}
+div#overlay main.overlay div.body section h3.head {font-size:1.45rem; font-weight:400;}
 
-div#overlay main.overlay div.body section.metadata {display:flex; flex-direction:row; align-items:flex-start;}
-div#overlay main.overlay div.body section.metadata div.col {flex-shrink:0;}
-div#overlay main.overlay div.body section.metadata div.col.left {width:67%;}
-div#overlay main.overlay div.body section.metadata div.col.right {width:33%; font-size:.875rem;}
-div#overlay main.overlay div.body section.metadata div.col div.line {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
-div#overlay main.overlay div.body section.metadata div.col div.line {line-height:1.5; margin-bottom:1.25rem;}
-div#overlay main.overlay div.body section.metadata div.col div.line span.piece {margin-right:.75rem;}
-div#overlay main.overlay div.body section.metadata div.col div.line span.key {color:#888;}
-div#overlay main.overlay div.body section.metadata div.col div.line span.key::after {content:': '; margin-right:.35rem;}
+/* div#overlay main.overlay div.body section.metadata {} */
+div#overlay main.overlay div.body section.metadata a.browselink {color:inherit; text-decoration:none;}
+/* div#overlay main.overlay div.body section.metadata a.browselink:after {content:',';} */
+div#overlay main.overlay div.body section.metadata a.browselink:hover {text-decoration:underline;}
 
-div#overlay main.overlay div.body section.playlist {}
-div#overlay main.overlay div.body section.playlist h3.head {font-size:1.5rem; font-weight:300;}
+div#overlay main.overlay div.body section.metadata.a {display:flex; flex-direction:row; align-items:flex-start;}
+div#overlay main.overlay div.body section.metadata.a div.col {flex-shrink:0;}
+div#overlay main.overlay div.body section.metadata.a div.col div.line {line-height:1.5; margin-bottom:1.25rem;}
+div#overlay main.overlay div.body section.metadata.a div.col.left {width:67%;}
+div#overlay main.overlay div.body section.metadata.a div.col.left div.line {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+div#overlay main.overlay div.body section.metadata.a div.col.left div.line span.piece {margin-right:.75rem;}
+div#overlay main.overlay div.body section.metadata.a div.col.right {width:33%; font-size:.875rem; margin-left:2rem;}
+div#overlay main.overlay div.body section.metadata.a div.col.right div.line span.key {color:#686868;}
+div#overlay main.overlay div.body section.metadata.a div.col.right div.line span.key::after {content:': '; /* margin-right:.35rem; */}
+
+/* Playlist Section */
 div#overlay main.overlay div.body section.playlist ul.list {list-style:none; padding:0; margin:0; counter-reset:epnum;}
-div#overlay main.overlay div.body section.playlist ul.list li.item {padding:1.5rem 4rem; border-bottom:1px solid #333; counter-increment:epnum;}
+div#overlay main.overlay div.body section.playlist ul.list li.item {cursor:pointer; padding:1.5rem 4rem; border-bottom:1px solid #333; counter-increment:epnum;}
 div#overlay main.overlay div.body section.playlist ul.list li.item.active {background-color:#333;}
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner {position:relative; /* border:1px solid black; */}
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; align-items:stretch;}
-div#overlay main.overlay div.body section.playlist ul.list li.item div.inner:before {content:''counter(epnum); position:absolute; left:-1.5rem; top:50%; transform:translate(-50%,-50%); font-size:1.5rem;}
-div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail {flex-shrink:0; width:8rem; border-radius:.25rem; margin-right:1rem; overflow:hidden;}
-div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail div.img {padding-top:56.25%; position:relative;}
+div#overlay main.overlay div.body section.playlist ul.list li.item div.inner:before {content:''counter(epnum); position:absolute; left:0; top:50%; transform:translate(-50%,-50%); font-size:1.5rem; margin-left:-1.5rem;}
+div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail {min-width:4rem; display:flex; flex-direction:column; justify-content:center; width:8rem; border-radius:.25rem; margin-right:1rem; overflow:hidden; position:relative;}
+div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail div.img {padding-top:56.25%; position:relative; background-color:#FFF1;}
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail div.img img {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
-div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail div.img:empty {background-color:#0008;}
+div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail div.playbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); min-height:3rem; min-width:3rem; background-color:#0004; border:1px solid white; border-radius:50%;}
+div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail div.playbtn {visibility:hidden; opacity:0; transition:.25s;}
+div#overlay main.overlay div.body section.playlist ul.list li.item:hover div.inner div.thumbnail div.playbtn {visibility:visible; opacity:1;}
+div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.thumbnail div.playbtn svg.icon.play {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:2.5rem; margin-left:1px;}
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.metadata {flex-grow:1; display:flex; flex-direction:column; justify-content:center;}
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.metadata div.top {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.metadata div.top {color:#FDFDFD; font-size:1rem;}
@@ -85,7 +98,30 @@ div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.metadata div.top span.duration {font-weight:200;}
 div#overlay main.overlay div.body section.playlist ul.list li.item div.inner div.metadata div.desc {color:#CCC; font-size:.875rem; font-weight:200;}
 
+/* div#overlay main.overlay div.body section.suggestions {} */
+
+/* div#overlay main.overlay div.body section.related {} */
+
+div#overlay main.overlay div.body section.metadata.b {font-size:.875rem;}
+div#overlay main.overlay div.body section.metadata.b h3.head:before {content:'About '; font-weight:100;}
+div#overlay main.overlay div.body section.metadata.b div.line {line-height:1.5; margin-bottom:.5rem;}
+div#overlay main.overlay div.body section.metadata.b div.line span.key {color:#686868;}
+div#overlay main.overlay div.body section.metadata.b div.line span.key::after {content:': '; /* margin-right:.35rem; */}
+
 
 div#overlay main.overlay div.closebtn {position:absolute; top:0; right:0; min-height:2.25rem; min-width:2.25rem; border-radius:50%; margin:1rem;}
 div#overlay main.overlay div.closebtn {background-color:black; color:white; font-size:1.75rem; font-weight:100; cursor:pointer;}
 div#overlay main.overlay div.closebtn {display:grid; place-items:center;}
+
+
+@media screen and (max-width:36rem) {
+
+	div#overlay main.overlay div.body section {margin:3rem 1.5rem;}
+	div#overlay main.overlay div.body section.metadata.a {flex-direction:column;}
+	div#overlay main.overlay div.body section.metadata.a div.col.col {width:100%; margin:0;}
+	
+	/* Playlist Section */
+	div#overlay main.overlay div.body section.playlist ul.list li.item {padding:1.5rem 1rem;}
+	div#overlay main.overlay div.body section.playlist ul.list li.item div.inner:before {display:none;}
+	div#overlay main.overlay div.body section.playlist ul.list li.item div.inner:before {margin-left:-1rem;}
+}

@@ -4,7 +4,7 @@ let selectedIndex = 0;
 const episodeData = [
 	{
 		title:'Episode Title A',
-		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis reiciendis aspernatur eaque totam asperiores.',
 		duration:3
 	},
 	{
@@ -39,26 +39,6 @@ const episodeData = [
 	},
 	{
 		title:'Episode Title H',
-		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis reiciendis aspernatur eaque totam asperiores.',
-		duration:30
-	},
-	{
-		title:'Episode Title I',
-		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis reiciendis aspernatur eaque totam asperiores.',
-		duration:30
-	},
-	{
-		title:'Episode Title J',
-		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis reiciendis aspernatur eaque totam asperiores.',
-		duration:30
-	},
-	{
-		title:'Episode Title K',
-		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis reiciendis aspernatur eaque totam asperiores.',
-		duration:30
-	},
-	{
-		title:'Episode Title L',
 		description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis reiciendis aspernatur eaque totam asperiores.',
 		duration:30
 	},
