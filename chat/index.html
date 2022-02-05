@@ -21,242 +21,437 @@
 			<!-- main -->
 			<main>
 
-				<!-- header -->
-				<header class="header">
+				<!-- innermain -->
+				<div class="innermain">
 
-					<!-- backbtn -->
-					<div class="backbtn">
-
-						<!-- icon -->
-						<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
-						</svg>
-						<!-- /icon -->
-
-					</div>
-					<!-- /backbtn -->
-
-					<!-- recipient -->
-					<div class="recipient">
-
-						<!-- avatar -->
-						<div class="avatar">
-							<img src="assets/avatar-f.png">
-						</div>
-						<!-- /avatar -->
-
-						<!-- remainder -->
-						<div class="remainder">
-
-							<!-- name -->
-							<div class="name">Jane Doe</div>
-							<!-- /name -->
-
-							<!-- status -->
-							<div class="status">Active Now</div>
-							<!-- /status -->
-
-						</div>
-						<!-- /remainder -->
-
-					</div>
-					<!-- /recipient -->
-
-				</header>
-				<!-- /header -->
-
-				<!-- #thread -->
-				<section id="thread">
-
-					<!-- inner -->
-					<div class="inner">
+					<!-- home -->
+					<article class="home">
 	
-						<!-- msg-group -->
-						<div class="msg-group r">
-
-							<!-- timestamp -->
-							<div class="timestamp">0:00</div>
-							<!-- /timestamp -->
-
-							<!-- content -->
-							<div class="content">
+						<!-- header -->
+						<header class="header">
+	
+							<!-- inner -->
+							<div class="inner">
+		
+								<!-- user -->
+								<div class="user active">
 			
+									<!-- avatar -->
+									<div class="avatar">
+										<img src="assets/avatar-m.png">
+									</div>
+									<!-- /avatar -->
+			
+									<!-- remainder -->
+									<div class="remainder">
+			
+										<!-- name -->
+										<div class="name">John Doe</div>
+										<!-- /name -->
+			
+										<!-- status -->
+										<div class="status"></div>
+										<!-- /status -->
+			
+									</div>
+									<!-- /remainder -->
+			
+								</div>
+								<!-- /user -->
+			
+								<!-- logoutbtn -->
+								<div class="logoutbtn">
+									
+									<!-- caption -->
+									<span class="caption">Logout</span>
+									<!-- /caption -->
+			
+								</div>
+								<!-- /logoutbtn -->
+	
+							</div>
+							<!-- /inner -->
+		
+						</header>
+						<!-- /header -->
+	
+						<!-- contacts -->
+						<section class="contacts">
+
+							<!-- search -->
+							<div class="search">
+		
+								<!-- #searchquery -->
+								<input id="searchquery" type="text" placeholder="Enter name to search..." oninput="filterContacts()">
+								<!-- /#searchquery -->
+		
+								<!-- btn -->
+								<div class="btn closebtn" onclick="closeSearch()">
+		
+									<!-- icon -->
+									<svg class="icon close" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+										<path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+									</svg>
+									<!-- /icon -->
+		
+								</div>
+								<!-- /btn -->
+	
+								<!-- overlay -->
+								<div class="overlay">
+	
+									<!-- message -->
+									<div class="message">Select a user to start chat</div>
+									<!-- /message -->
+		
+									<!-- btn -->
+									<div class="btn searchbtn" onclick="openSearch()">
+			
+										<!-- icon -->
+										<svg class="icon searchglass" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+										</svg>
+										<!-- /icon -->
+			
+									</div>
+									<!-- /btn -->
+	
+								</div>
+								<!-- /overlay -->
+								
+							</div>
+							<!-- /search -->
+	
+							<!-- contactlist -->
+							<ul class="contactlist">
+	
+								<!-- contactitem -->
+								<li class="contactitem active">
+		
+									<!-- avatar -->
+									<div class="avatar">
+										<img src="assets/avatar-f.png">
+									</div>
+									<!-- /avatar -->
+			
+									<!-- remainder -->
+									<div class="remainder">
+			
+										<!-- name -->
+										<div class="name">Jane Doe</div>
+										<!-- /name -->
+			
+										<!-- preview -->
+										<div class="preview">No message available</div>
+										<!-- /preview -->
+			
+									</div>
+									<!-- /remainder -->
+	
+									<!-- status -->
+									<div class="status"></div>
+									<!-- /status -->
+	
+								</li>
+								<!-- /contactitem -->
+	
+								<!-- contactitem -->
+								<li class="contactitem">
+		
+									<!-- avatar -->
+									<div class="avatar">
+										<img src="assets/avatar-f.png">
+									</div>
+									<!-- /avatar -->
+			
+									<!-- remainder -->
+									<div class="remainder">
+			
+										<!-- name -->
+										<div class="name">Jenny Doe</div>
+										<!-- /name -->
+			
+										<!-- preview -->
+										<div class="preview">No message available</div>
+										<!-- /preview -->
+			
+									</div>
+									<!-- /remainder -->
+	
+									<!-- status -->
+									<div class="status"></div>
+									<!-- /status -->
+	
+								</li>
+								<!-- /contactitem -->
+	
+								<!-- contactitem -->
+								<li class="contactitem active">
+		
+									<!-- avatar -->
+									<div class="avatar">
+										<img src="assets/avatar-m.png">
+									</div>
+									<!-- /avatar -->
+			
+									<!-- remainder -->
+									<div class="remainder">
+			
+										<!-- name -->
+										<div class="name">Steve Doe</div>
+										<!-- /name -->
+			
+										<!-- preview -->
+										<div class="preview">No message available</div>
+										<!-- /preview -->
+			
+									</div>
+									<!-- /remainder -->
+	
+									<!-- status -->
+									<div class="status"></div>
+									<!-- /status -->
+	
+								</li>
+								<!-- /contactitem -->
+								
+							</ul>
+							<!-- /contactlist -->
+	
+						</section>
+						<!-- /contacts -->
+	
+					</article>
+					<!-- /home -->
+	
+					<!-- thread -->
+					<article class="thread">
+	
+						<!-- header -->
+						<header class="header">
+	
+							<!-- backbtn -->
+							<div class="backbtn" onclick="goHome()">
+	
+								<!-- icon -->
+								<!-- <svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+								</svg> -->
+								<!-- /icon -->
+	
+								<!-- icon -->
+								<svg class="icon leftangle" width=".75em" height=".75em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+								</svg>
+								<!-- /icon -->
+	
+							</div>
+							<!-- /backbtn -->
+	
+							<!-- recipient -->
+							<div class="recipient active">
+	
 								<!-- avatar -->
 								<div class="avatar">
 									<img src="assets/avatar-f.png">
 								</div>
 								<!-- /avatar -->
-				
-								<!-- msgs -->
-								<div class="msgs">
-				
-									<!-- bubble -->
-									<div class="bubble">
 	
-										<!-- caption -->
-										<span class="caption">Yerrrrr</span>
-										<!-- /caption -->
+								<!-- remainder -->
+								<div class="remainder">
 	
-										<!-- timestamp -->
-										<span class="timestamp">0:00</span>
-										<!-- /timestamp -->
-										
-									</div>
-									<!-- /bubble -->
-				
-									<!-- bubble -->
-									<div class="bubble">
+									<!-- name -->
+									<div class="name">Jane Doe</div>
+									<!-- /name -->
 	
-										<!-- caption -->
-										<span class="caption">What's the word</span>
-										<!-- /caption -->
+									<!-- status -->
+									<div class="status"></div>
+									<!-- /status -->
 	
-										<!-- timestamp -->
-										<span class="timestamp">0:00</span>
-										<!-- /timestamp -->
-									</div>
-									<!-- /bubble -->
-				
-									<!-- bubble -->
-									<div class="bubble">
-	
-										<!-- caption -->
-										<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-										<!-- /caption -->
-	
-										<!-- timestamp -->
-										<span class="timestamp">0:00</span>
-										<!-- /timestamp -->
-	
-									</div>
-									<!-- /bubble -->
-				
 								</div>
-								<!-- /msgs -->
-
+								<!-- /remainder -->
+	
 							</div>
-							<!-- /content -->
+							<!-- /recipient -->
+	
+						</header>
+						<!-- /header -->
+	
+						<!-- #history -->
+						<section id="history">
+	
+							<!-- inner -->
+							<div class="inner">
 			
-						</div>
-						<!-- /msg-group -->
+								<!-- msg-group -->
+								<div class="msg-group r">
+	
+									<!-- timestamp -->
+									<div class="timestamp">0:00</div>
+									<!-- /timestamp -->
+	
+									<!-- content -->
+									<div class="content">
+					
+										<!-- avatar -->
+										<div class="avatar">
+											<img src="assets/avatar-f.png">
+										</div>
+										<!-- /avatar -->
+						
+										<!-- msgs -->
+										<div class="msgs">
+						
+											<!-- bubble -->
+											<div class="bubble">
 			
-						<!-- msg-group -->
-						<div class="msg-group s">
-
-							<!-- timestamp -->
-							<div class="timestamp">0:00</div>
-							<!-- /timestamp -->
-
-							<!-- content -->
-							<div class="content">
+												<!-- caption -->
+												<span class="caption">Yerrrrr</span>
+												<!-- /caption -->
+												
+											</div>
+											<!-- /bubble -->
+						
+											<!-- bubble -->
+											<div class="bubble">
 			
-								<!-- avatar -->
-								<div class="avatar">
-									<img src="assets/avatar-m.png">
+												<!-- caption -->
+												<span class="caption">What's the word</span>
+												<!-- /caption -->
+											</div>
+											<!-- /bubble -->
+						
+											<!-- bubble -->
+											<div class="bubble">
+			
+												<!-- caption -->
+												<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+												<!-- /caption -->
+			
+											</div>
+											<!-- /bubble -->
+						
+										</div>
+										<!-- /msgs -->
+	
+									</div>
+									<!-- /content -->
+					
 								</div>
-								<!-- /avatar -->
-				
-								<!-- msgs -->
-								<div class="msgs">
-				
-									<!-- bubble -->
-									<div class="bubble">
+								<!-- /msg-group -->
+					
+								<!-- msg-group -->
+								<div class="msg-group s">
 	
-										<!-- caption -->
-										<span class="caption">Yerrrrr</span>
-										<!-- /caption -->
+									<!-- timestamp -->
+									<div class="timestamp">0:00</div>
+									<!-- /timestamp -->
 	
-										<!-- timestamp -->
-										<span class="timestamp">0:00</span>
-										<!-- /timestamp -->
-										
+									<!-- content -->
+									<div class="content">
+					
+										<!-- avatar -->
+										<div class="avatar">
+											<img src="assets/avatar-m.png">
+										</div>
+										<!-- /avatar -->
+						
+										<!-- msgs -->
+										<div class="msgs">
+						
+											<!-- bubble -->
+											<div class="bubble">
+			
+												<!-- caption -->
+												<span class="caption">Yerrrrr</span>
+												<!-- /caption -->
+												
+											</div>
+											<!-- /bubble -->
+						
+											<!-- bubble -->
+											<div class="bubble">
+			
+												<!-- caption -->
+												<span class="caption">What's the word</span>
+												<!-- /caption -->
+												
+											</div>
+											<!-- /bubble -->
+						
+											<!-- bubble -->
+											<div class="bubble">
+			
+												<!-- caption -->
+												<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
+												<!-- /caption -->
+												
+											</div>
+											<!-- /bubble -->
+						
+										</div>
+										<!-- /msgs -->
+	
 									</div>
-									<!-- /bubble -->
-				
-									<!-- bubble -->
-									<div class="bubble">
-	
-										<!-- caption -->
-										<span class="caption">What's the word</span>
-										<!-- /caption -->
-	
-										<!-- timestamp -->
-										<span class="timestamp">0:00</span>
-										<!-- /timestamp -->
-										
-									</div>
-									<!-- /bubble -->
-				
-									<!-- bubble -->
-									<div class="bubble">
-	
-										<!-- caption -->
-										<span class="caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-										<!-- /caption -->
-	
-										<!-- timestamp -->
-										<span class="timestamp">0:00</span>
-										<!-- /timestamp -->
-										
-									</div>
-									<!-- /bubble -->
-				
+									<!-- /content -->
+					
 								</div>
-								<!-- /msgs -->
-
+								<!-- /msg-group -->
+	
 							</div>
-							<!-- /content -->
-			
-						</div>
-						<!-- /msg-group -->
+							<!-- /inner -->
+	
+						</section>
+						<!-- /#history -->
+	
+						<!-- composer -->
+						<section class="composer">
+	
+							<!-- btn -->
+							<div class="btn mediabtn">
+	
+								<!-- icon -->
+								<svg class="icon camera" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+									<path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+								</svg>
+								<!-- /icon -->
+	
+							</div>
+							<!-- /btn -->
+	
+							<!-- #newmessage -->
+							<input id="newmessage" type="text" placeholder="Type your message here...">
+							<!-- /#newmessage -->
+	
+							<!-- btn -->
+							<div class="btn sendbtn" onclick="sendNewMessage()">
+	
+								<!-- icon -->
+								<svg class="icon paperplane" width=".85em" height=".85em" fill="currentColor" viewBox="0 0 16 16">
+									<!-- <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/> -->
+									<path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"/>
+								</svg>
+								<!-- /icon -->
+	
+								<!-- icon -->
+								<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="display:none">
+									<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+								</svg>
+								<!-- /icon -->
+	
+							</div>
+							<!-- /btn -->
+	
+						</section>
+						<!-- /composer -->
+	
+					</article>
+					<!-- /thread -->
 
-					</div>
-					<!-- /inner -->
-
-				</section>
-				<!-- /#thread -->
-
-				<!-- composer -->
-				<section class="composer">
-
-					<!-- btn -->
-					<div class="btn mediabtn">
-
-						<!-- icon -->
-						<svg class="icon camera" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-							<path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
-						</svg>
-						<!-- /icon -->
-
-					</div>
-					<!-- /btn -->
-
-					<!-- #newmessage -->
-					<input id="newmessage" type="text" placeholder="Type your message here...">
-					<!-- /#newmessage -->
-
-					<!-- btn -->
-					<div class="btn sendbtn" onclick="sendNewMessage()">
-
-						<!-- icon -->
-						<svg class="icon paperplane" width=".85em" height=".85em" fill="currentColor" viewBox="0 0 16 16">
-							<!-- <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/> -->
-							<path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"/>
-						</svg>
-						<!-- /icon -->
-
-						<!-- icon -->
-						<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="display:none">
-							<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-						</svg>
-						<!-- /icon -->
-
-					</div>
-					<!-- /btn -->
-
-				</section>
-				<!-- /composer -->
+				</div>
+				<!-- /innermain -->
 
 			</main>
 			<!-- /main -->
