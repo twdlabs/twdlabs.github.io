@@ -24,14 +24,11 @@ body {font-family:sans-serif; margin:0;}
 div#container {display:flex; flex-direction:row; align-items:stretch; height:100vh;}
 div#container {background-color:#CCC; /* background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); */ padding:1rem;}
 
-div#container main {width:100%; max-width:24rem; max-height:100%; margin:0 auto;}
-div#container main {overflow:hidden;}
+div#container main {width:100%; max-width:60rem; max-height:100%; overflow:hidden; border-radius:.5rem; margin:0 auto;}
 
-div#container main div.innermain {height:100%; width:200%; display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container main div.innermain {transform:none; transition:250ms;}
-div#container main div.innermain.open {transform:translateX(-50%);}
+div#container main div.innermain {height:100%; width:100%; display:flex; flex-direction:row; justify-content:center; align-items:center;}
 
-div#container main div.innermain article {height:100%; width:100%; max-height:100%; max-width:24rem; border-radius:.5rem; overflow:hidden;}
+div#container main div.innermain article {height:100%; width:50%; max-height:100%; /* max-width:24rem; */ overflow:hidden;}
 /* div#container main div.innermain article.home {} */
 /* div#container main div.innermain article.thread {} */
 
@@ -61,7 +58,7 @@ div#container main article.home header.header div.inner div.logoutbtn {backgroun
 div#container main article.home header.header div.inner div.logoutbtn {cursor:pointer; user-select:none;}
 div#container main article.home header.header div.inner div.logoutbtn span.caption {display:block; margin-top:.125rem;}
 
-div#container main article.home section.contacts div.search {display:flex; flex-direction:row; align-items:stretch; /* padding:0 2rem; */ margin:.75rem 0 .125rem; position:relative;}
+div#container main article.home section.contacts div.search {display:flex; flex-direction:row; align-items:stretch; /* padding:0 2rem; */ overflow:hidden; margin:.75rem 0 .125rem; position:relative;}
 div#container main article.home section.contacts div.search input#searchquery {flex-grow:1; font-family:inherit; font-size:inherit; padding:.5rem 1rem .375rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
 div#container main article.home section.contacts div.search div.btn.closebtn {flex-grow:0; display:grid; place-items:center; background-color:var(--black); color:white; cursor:pointer;}
 div#container main article.home section.contacts div.search div.btn.closebtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
@@ -121,37 +118,37 @@ div#container main article.thread header.header div.recipient.active div.remaind
 
 /* Message History Section */
 
-div#container main article.thread section#history {flex-grow:1; background-color:var(--lightgrey); padding:1rem; padding-top:0;}
-div#container main article.thread section#history {overflow:auto; scrollbar-width:none; scroll-behavior:smooth;}
-/* div#container main article.thread section#history {display:flex; flex-direction:column; justify-content:center; align-items:stretch; min-height:100%;} */
+div#container main article.thread section#msghistory {flex-grow:1; background-color:var(--lightgrey); padding:1rem; padding-top:0;}
+div#container main article.thread section#msghistory {overflow:auto; scrollbar-width:none; scroll-behavior:smooth;}
+/* div#container main article.thread section#msghistory {display:flex; flex-direction:column; justify-content:center; align-items:stretch; min-height:100%;} */
 
-div#container main article.thread section#history div.inner:empty {display:grid; place-items:center; text-align:center;}
-div#container main article.thread section#history div.inner:empty:before {content:'No messages are available. Once you send messages they will appear here.'; line-height:1.5; width:100%; max-width:20rem; margin:0 auto;}
+div#container main article.thread section#msghistory div.inner:empty {display:grid; place-items:center; text-align:center;}
+div#container main article.thread section#msghistory div.inner:empty:before {content:'No messages are available. Once you send messages they will appear here.'; line-height:1.5; width:100%; max-width:20rem; margin:0 auto;}
 
-div#container main article.thread section#history div.inner div.msg-group {filter:drop-shadow(#0001 0 .25rem .375rem); margin-top:2rem;}
-div#container main article.thread section#history div.inner div.msg-group div.timestamp {color:var(--grey); font-size:.675rem; text-align:center; margin:1rem 0;}
+div#container main article.thread section#msghistory div.inner div.msg-group {filter:drop-shadow(#0001 0 .25rem .375rem); margin-top:2rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.timestamp {color:var(--grey); font-size:.675rem; text-align:center; margin:1rem 0;}
 
-div#container main article.thread section#history div.inner div.msg-group div.content {display:flex;}
-div#container main article.thread section#history div.inner div.msg-group.r div.content {/* align-self:flex-start; */ flex-direction:row;}
-div#container main article.thread section#history div.inner div.msg-group.s div.content {/* align-self:flex-end; */ flex-direction:row-reverse;}
-div#container main article.thread section#history div.inner div.msg-group div.content div.avatar {flex-grow:0; padding:0 .5rem;}
-div#container main article.thread section#history div.inner div.msg-group div.content div.avatar {display:flex; flex-direction:column; justify-content:flex-end;}
-div#container main article.thread section#history div.inner div.msg-group div.content div.avatar img {max-width:2rem; max-height:2rem; border-radius:50%; filter:grayscale(.25);}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content {display:flex;}
+div#container main article.thread section#msghistory div.inner div.msg-group.r div.content {/* align-self:flex-start; */ flex-direction:row;}
+div#container main article.thread section#msghistory div.inner div.msg-group.s div.content {/* align-self:flex-end; */ flex-direction:row-reverse;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.avatar {flex-grow:0; padding:0 .5rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.avatar {display:flex; flex-direction:column; justify-content:flex-end;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.avatar img {max-width:2rem; max-height:2rem; border-radius:50%; filter:grayscale(.25);}
 
-div#container main article.thread section#history div.inner div.msg-group div.content div.msgs {flex-grow:1;}
-div#container main article.thread section#history div.inner div.msg-group div.content div.msgs {position:relative; display:flex; flex-direction:column;}
-div#container main article.thread section#history div.inner div.msg-group.r div.content div.msgs {align-items:flex-start;}
-div#container main article.thread section#history div.inner div.msg-group.s div.content div.msgs {align-items:flex-end;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.msgs {flex-grow:1;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.msgs {position:relative; display:flex; flex-direction:column;}
+div#container main article.thread section#msghistory div.inner div.msg-group.r div.content div.msgs {align-items:flex-start;}
+div#container main article.thread section#msghistory div.inner div.msg-group.s div.content div.msgs {align-items:flex-end;}
 
-div#container main article.thread section#history div.inner div.msg-group div.content div.msgs div.bubble {font-weight:200; border-radius:1.25rem; padding:.65rem .85rem .5rem; margin-top:.15rem;}
-div#container main article.thread section#history div.inner div.msg-group.r div.content div.msgs div.bubble {background-color:white; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
-div#container main article.thread section#history div.inner div.msg-group.r div.content div.msgs div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
-div#container main article.thread section#history div.inner div.msg-group.r div.content div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
-div#container main article.thread section#history div.inner div.msg-group.s div.content div.msgs div.bubble {background-color:var(--black); color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
-div#container main article.thread section#history div.inner div.msg-group.s div.content div.msgs div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
-div#container main article.thread section#history div.inner div.msg-group.s div.content div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
-div#container main article.thread section#history div.inner div.msg-group div.content div.msgs div.bubble span.caption {line-height:1.25; font-size:.875rem;}
-div#container main article.thread section#history div.inner div.msg-group div.content div.msgs div.bubble span.timestamp {position:absolute; left:0; top:50%; transform:translate(-100%,-50%);}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.msgs div.bubble {font-weight:200; border-radius:1.25rem; padding:.65rem .85rem .5rem; margin-top:.15rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group.r div.content div.msgs div.bubble {background-color:white; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group.r div.content div.msgs div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group.r div.content div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group.s div.content div.msgs div.bubble {background-color:var(--black); color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group.s div.content div.msgs div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group.s div.content div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.msgs div.bubble span.caption {line-height:1.25; font-size:.875rem;}
+div#container main article.thread section#msghistory div.inner div.msg-group div.content div.msgs div.bubble span.timestamp {position:absolute; left:0; top:50%; transform:translate(-100%,-50%);}
 
 
 /* Message Composer Section */
@@ -166,3 +163,13 @@ div#container main article.thread section.composer div.btn svg.icon {font-size:1
 div#container main article.thread section.composer input#newmessage {flex-grow:1; font-size:inherit; font-family:inherit; padding:.5rem 1rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
 
 
+@media screen and (max-width:40rem) {
+
+	div#container main {max-width:24rem;}
+
+	div#container main div.innermain {width:200%;}
+	div#container main div.innermain {transform:none; transition:250ms;}
+	div#container main div.innermain.open {transform:translateX(-50%);}
+
+	div#container main div.innermain article {width:100%;}
+}

@@ -11,7 +11,7 @@ let currentUserId = 0;
 refreshContactList();
 
 // Refresh messages in thread. 
-refreshMsgThread();
+// refreshMsgHistory();
 
 // Handle events. 
 handleEvents();
@@ -51,14 +51,16 @@ function refreshContactList() {
 	let result = '';
 
 	// Accumulate contact data. 
-	for(let user of userData) {
+	for(let index in userData) {
+		let user = userData[index];
 
-		// TODO: Get latest message. 
+		// TODO: Find last message sent between two users. 
 		let lastMessage = '';
+		// lastMessage = findLastMessage(0,1);
 
 		result += `
 		<!-- contactitem -->
-		<li class="contactitem${ (user.online) ? (' active') : ('') }">
+		<li class="contactitem${ (user.online) ? (' active') : ('') }" data-userid="${index}">
 
 			<!-- avatar -->
 			<div class="avatar">
@@ -88,18 +90,16 @@ function refreshContactList() {
 		<!-- /contactitem -->`;
 	}
 
-	// Add messages into thread. 
+	// Add contacts to contact list. 
 	document.querySelector('article.home section.contacts ul.contactlist').innerHTML = result;
 
 
-	// Load contacts. 
-	// loadContacts();
-
 	/*****/
 
-	// Load contacts. 
-	// function loadContacts() {
-	// }
+
+	// Find last message sent between two users. 
+	function findLastMessage(useridA,useridB) {
+	}
 }
 
 // Open search. 
@@ -142,22 +142,38 @@ function closeSearch() {
 }
 
 
-// Open message thread. 
+// Open messaging thread. 
 function openMsgThread(event) {
-	console.log('Opening message thread...',event.currentTarget);
+
+	// Get user data for selected contact. 
+	let selectedContact = event.currentTarget;
+	let userid = selectedContact.getAttribute('data-userid');
+	let user = userData[userid];
+	console.log('Opening message thread...', selectedContact,userid,user);
+
+	// Refresh recipient on messaging thread. 
+	document.getElementById('recipientname').innerHTML = `${user.fname} Doe`;
+	document.getElementById('recipientavatar').innerHTML = `<img src="${user.avatarurl}">`;
+	if(user.online) document.getElementById('recipient').classList.add('active');
+	else document.getElementById('recipient').classList.remove('active');
+
+	// TODO: Refresh message history on messaging thread. 
+	refreshMsgHistory();
+
+	// Open messaging thread. 
 	document.querySelector('main div.innermain').classList.add('open');
 }
 
 // Refresh messages in thread. 
-function refreshMsgThread() {
+function refreshMsgHistory() {
 	console.log('Refreshing message thread...');
 
 	// Load message thread history. 
 	loadMessageHistory();
 
 	// Scroll to bottom of message history thread. 
-	let history = document.getElementById('history');
-	history.scrollTop = history.scrollHeight;
+	let msghistory = document.getElementById('msghistory');
+	msghistory.scrollTop = msghistory.scrollHeight;
 
 	/*****/
 
@@ -213,7 +229,7 @@ function refreshMsgThread() {
 		}
 
 		// Add messages into thread. 
-		document.querySelector('article.thread section#history div.inner').innerHTML = result;
+		document.querySelector('article.thread section#msghistory div.inner').innerHTML = result;
 
 		/*****/
 	
@@ -267,6 +283,7 @@ function sendNewMessage() {
 	else {
 		messageData.push({
 			userid:currentUserId,
+			userid:currentUserId,
 			timestampsec:Math.floor(new Date().getTime()/1000),
 			messagetext:[
 				message,
@@ -275,6 +292,6 @@ function sendNewMessage() {
 	}
 
 	// Refresh messages in thread. 
-	refreshMsgThread();
+	refreshMsgHistory();
 }
 

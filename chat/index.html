@@ -127,7 +127,7 @@
 							<ul class="contactlist">
 	
 								<!-- contactitem -->
-								<li class="contactitem active">
+								<li class="contactitem active" data-userid="-1">
 		
 									<!-- avatar -->
 									<div class="avatar">
@@ -140,66 +140,6 @@
 			
 										<!-- name -->
 										<div class="name">Jane Doe</div>
-										<!-- /name -->
-			
-										<!-- preview -->
-										<div class="preview">No message available</div>
-										<!-- /preview -->
-			
-									</div>
-									<!-- /remainder -->
-	
-									<!-- status -->
-									<div class="status"></div>
-									<!-- /status -->
-	
-								</li>
-								<!-- /contactitem -->
-	
-								<!-- contactitem -->
-								<li class="contactitem">
-		
-									<!-- avatar -->
-									<div class="avatar">
-										<img src="assets/avatar-f.png">
-									</div>
-									<!-- /avatar -->
-			
-									<!-- remainder -->
-									<div class="remainder">
-			
-										<!-- name -->
-										<div class="name">Jenny Doe</div>
-										<!-- /name -->
-			
-										<!-- preview -->
-										<div class="preview">No message available</div>
-										<!-- /preview -->
-			
-									</div>
-									<!-- /remainder -->
-	
-									<!-- status -->
-									<div class="status"></div>
-									<!-- /status -->
-	
-								</li>
-								<!-- /contactitem -->
-	
-								<!-- contactitem -->
-								<li class="contactitem active">
-		
-									<!-- avatar -->
-									<div class="avatar">
-										<img src="assets/avatar-m.png">
-									</div>
-									<!-- /avatar -->
-			
-									<!-- remainder -->
-									<div class="remainder">
-			
-										<!-- name -->
-										<div class="name">Steve Doe</div>
 										<!-- /name -->
 			
 										<!-- preview -->
@@ -250,11 +190,11 @@
 							<!-- /backbtn -->
 	
 							<!-- recipient -->
-							<div class="recipient active">
+							<div class="recipient active" id="recipient">
 	
 								<!-- avatar -->
-								<div class="avatar">
-									<img src="assets/avatar-f.png">
+								<div class="avatar" id="recipientavatar">
+									<!-- <img src="assets/avatar-f.png"> -->
 								</div>
 								<!-- /avatar -->
 	
@@ -262,7 +202,7 @@
 								<div class="remainder">
 	
 									<!-- name -->
-									<div class="name">Jane Doe</div>
+									<div class="name" id="recipientname">User Name</div>
 									<!-- /name -->
 	
 									<!-- status -->
@@ -278,8 +218,8 @@
 						</header>
 						<!-- /header -->
 	
-						<!-- #history -->
-						<section id="history">
+						<!-- #msghistory -->
+						<section id="msghistory">
 	
 							<!-- inner -->
 							<div class="inner">
@@ -403,7 +343,7 @@
 							<!-- /inner -->
 	
 						</section>
-						<!-- /#history -->
+						<!-- /#msghistory -->
 	
 						<!-- composer -->
 						<section class="composer">
