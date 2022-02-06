@@ -9,26 +9,9 @@
 		<link href="../atgicon.ico" rel="icon"/>
 		<title>Login Form</title>
 
-		<style type="text/css">
-			* {box-sizing:border-box;}
-
-
-			html {height:100%; font-family:sans-serif;}
-			body {background:linear-gradient(135deg, #8052ec, #d161ff); height:100%;}
-			body {display:flex; flex-direction:column; justify-content:center;}
-			
-
-			div#container {display:flex; flex-direction:column; justify-content:center; max-width:16rem; margin:0 auto;}
-			div#container div.input {border:1px solid transparent; margin-top:.5rem; position:relative; overflow:hidden;}
-
-			div#container div.input input {width:100%; font-size:1rem; padding:1.25rem .75rem .5rem; border:2px solid transparent; border-radius:.25rem; outline:none; transition:.15s;}
-			div#container div.input input:focus {border-color:black;}
-			div#container div.input label.placeholder {position:absolute; top:0; left:0; padding:0 .75rem; font-weight:100; user-select:none; pointer-events:none;}
-			div#container div.input label.placeholder {font-size:1rem; padding-top:1.5rem; transition:.1s;}
-			div#container div.input.holdsvalue label.placeholder {font-size:.75rem; padding-top:.5rem;}
-			div#container div.input input:focus + label.placeholder {font-size:.75rem; padding-top:.5rem;}
-			
-		</style>
+		<!-- Main Stylesheet -->
+		<link href="login.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
@@ -36,66 +19,178 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- input -->
-			<div class="input">
+			<!-- #login -->
+			<main id="login">
 
-				<!-- #username -->
-				<input type="text" id="username" autocomplete="off" placeholder="">
-				<!-- /#username -->
+				<!-- head -->
+				<h1 class="head">Login</h1>
+				<!-- /head -->
 
-				<!-- placeholder -->
-				<label class="placeholder" for="password">Username*</label>
-				<!-- /placeholder -->
+				<!-- input -->
+				<div class="input">
+	
+					<!-- #username -->
+					<input type="text" id="username" autocomplete="off" placeholder="">
+					<!-- /#username -->
+	
+					<!-- placeholder -->
+					<label class="placeholder" for="password">Username *</label>
+					<!-- /placeholder -->
+	
+				</div>
+				<!-- /input -->
+	
+				<!-- input -->
+				<div class="input">
+	
+					<!-- #password -->
+					<input type="password" id="password" autocomplete="off" placeholder="">
+					<!-- /#password -->
+	
+					<!-- placeholder -->
+					<label class="placeholder" for="password">Password *</label>
+					<!-- /placeholder -->
 
-			</div>
-			<!-- /input -->
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+						<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+					</svg>
+					<!-- /icon -->
+	
+				</div>
+				<!-- /input -->
+	
+				<!-- input -->
+				<div class="input">
 
-			<!-- input -->
-			<div class="input">
+					<!-- submitbtn -->
+					<button class="submitbtn">Continue to Chat</button>
+					<!-- /submitbtn -->
+					
+				</div>
+				<!-- /input -->
 
-				<!-- #password -->
-				<input type="password" id="password" autocomplete="off" placeholder="">
-				<!-- /#password -->
+				<!-- textcopy -->
+				<p class="textcopy">
+					Not yet signed up?
+					<a class="switchlink" href="javascript:void(0)" onclick="toggleNewUserMode(true)">Sign up now</a>
+				</p>
+				<!-- /textcopy -->
 
-				<!-- placeholder -->
-				<label class="placeholder" for="password">Password*</label>
-				<!-- /placeholder -->
-				
-			</div>
-			<!-- /input -->
+			</main>
+			<!-- /#login -->
+
+			<!-- #signup -->
+			<main id="signup">
+
+				<!-- head -->
+				<h1 class="head">Sign Up</h1>
+				<!-- /head -->
+
+				<!-- bar -->
+				<div class="bar">
+
+					<!-- input -->
+					<div class="input">
+		
+						<!-- #username -->
+						<input type="text" id="fname" autocomplete="off" placeholder="">
+						<!-- /#username -->
+		
+						<!-- placeholder -->
+						<label class="placeholder" for="password">First name</label>
+						<!-- /placeholder -->
+		
+					</div>
+					<!-- /input -->
+					
+					<!-- space -->
+					<div class="space"></div>
+					<!-- /space -->
+	
+					<!-- input -->
+					<div class="input">
+		
+						<!-- #username -->
+						<input type="text" id="lname" autocomplete="off" placeholder="">
+						<!-- /#username -->
+		
+						<!-- placeholder -->
+						<label class="placeholder" for="password">Last name</label>
+						<!-- /placeholder -->
+		
+					</div>
+					<!-- /input -->
+
+				</div>
+				<!-- /bar -->
+
+				<!-- input -->
+				<div class="input">
+	
+					<!-- #username -->
+					<input type="text" id="username" autocomplete="off" placeholder="">
+					<!-- /#username -->
+	
+					<!-- placeholder -->
+					<label class="placeholder" for="password">Username *</label>
+					<!-- /placeholder -->
+	
+				</div>
+				<!-- /input -->
+	
+				<!-- input -->
+				<div class="input">
+	
+					<!-- #password -->
+					<input type="password" id="password" autocomplete="off" placeholder="">
+					<!-- /#password -->
+	
+					<!-- placeholder -->
+					<label class="placeholder" for="password">Password *</label>
+					<!-- /placeholder -->
+
+					<!-- icon -->
+					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+						<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+					</svg>
+					<!-- /icon -->
+	
+				</div>
+				<!-- /input -->
+	
+				<!-- input -->
+				<div class="input">
+
+					<!-- submitbtn -->
+					<button class="submitbtn">Continue to Chat</button>
+					<!-- /submitbtn -->
+					
+				</div>
+				<!-- /input -->
+
+				<!-- textcopy -->
+				<p class="textcopy">
+					Already signed up?
+					<a class="switchlink" href="javascript:void(0)" onclick="toggleNewUserMode(false)">Login now</a>
+				</p>
+				<!-- /textcopy -->
+
+			</main>
+			<!-- /#signup -->
 			
 		</div>
 		<!-- /#container -->
 
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<script src="login.js" type="text/javascript"></script>
+
 	</body>
-
-	<script type="text/javascript">
-		// Get all input fields. 
-		let inputfields = document.getElementsByClassName('input');
-
-		// Handle state checks on focus in and out. 
-		for(field of inputfields) {
-			// field.addEventListener('focusin',checkFieldValue);
-			field.addEventListener('focusout',checkFieldValue);
-		}
-
-		/*****/
-		
-		// Check state of text input field. 
-		function checkFieldValue(event) {
-			let fieldbox = event.currentTarget;
-			console.log('field box', event.currentTarget);
-			let field = event.currentTarget.children[0];
-			console.log('field', field, field.value);
-
-			// Check if input field is empty. 
-			let emptyField = (field.value == '');
-			console.log('emptyField?',emptyField);
-
-			// 
-			if(!emptyField) fieldbox.classList.add('holdsvalue');
-			else fieldbox.classList.remove('holdsvalue');
-		}
-	</script>
 
 </html>
