@@ -1,4 +1,11 @@
 
+const xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = ()=>{
+	if(this.readyState==4 && this.status==200) ;
+};
+xhttp.open('GET','overlay.html');
+xhttp.send();
+
 
 // Open picture overlay popup. 
 function openPicOverlay(id) {
@@ -8,7 +15,7 @@ function openPicOverlay(id) {
 	// console.log('img', img);
 
 	// Add selected image to overlay. 
-	document.querySelector('section#overlay main.main div.content').innerHTML = `<img src="pic/${img.imageurl}">`;
+	document.querySelector('section#overlay main.main div.content').innerHTML = `<img src="images/full/${img.imageurl}">`;
 
 	// Activate like button if image in liked list. 
 	if(img.liked) document.getElementById('likebtn').classList.add('active');
@@ -94,6 +101,10 @@ function closePicOverlay() {
 	// De-activate buttons in overlay popup. 
 	clearOverlayBtns();
 
+	// De-activate comments section in overlay popup. 
+	let commentbox = document.getElementById('commentbox');
+	commentbox.classList.remove('active');
+
 	/*****/
 
 	// De-activate buttons in overlay popup. 
@@ -110,17 +121,4 @@ function closePicOverlay() {
 		let likebtn = document.getElementById('likebtn');
 		likebtn.removeEventListener('click', clickOverlayLikeBtn);
 	}
-}
-
-// Select displayed image to toggle 'like' for. 
-function clickOverlayLikeBtn(event) {
-	// console.log('clickOverlayLikeBtn', event.currentTarget);
-
-	// Get id of displayed image. 
-	let overlay = document.getElementById('overlay');
-	let hasImageIdOnOverlay = overlay.hasAttribute('data-displayedimageid');
-	let id = ( hasImageIdOnOverlay ) ? ( 1*overlay.getAttribute('data-displayedimageid') ) : ( -1 );
-
-	// Toggle 'like' for selected image. 
-	toggleImageLikeById(id);
 }

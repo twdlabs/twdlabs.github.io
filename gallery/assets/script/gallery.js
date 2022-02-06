@@ -48,6 +48,56 @@ function loadItUp() {
 
 		/*****/
 
+		// Filter images that match selected tag. 
+		function selectTag(event) {
+			console.log(event.currentTarget);
+
+			// Get tag value. 
+			let tag = event.currentTarget.getAttribute('data-value');
+			// let tag = event.currentTarget.innerText;
+			console.log('tag:',tag);
+
+			// Initialize list of matching image indexes. 
+			let matchedIndexes = [];
+
+			// Find matching images and save index. 
+			for(let index in imageData) {
+				let img = imageData[index];
+				// console.log(img);
+
+				// Check if image matches tag. 
+				let weGotAMatch = img.taglist.includes(tag);
+
+				// Add url to list if matched. 
+				if(weGotAMatch) matchedIndexes.push(index);
+			}
+			console.log('matchedIndexes',matchedIndexes);
+
+			// Show matched images. 
+			showMatchedImages();
+
+			/*****/
+
+			// Show matched images. 
+			function showMatchedImages() {
+
+				// Get all images. 
+				let allImgs = document.querySelectorAll('section#gallery main div.item');
+				console.log('allImgs',allImgs);
+
+				// Go thru each image element. 
+				for(let index in imageData) {
+
+					// Check if image matches selected tag. 
+					let weGotAMatch = matchedIndexes.includes(index);
+
+					// Adjust class based on match status. 
+					if(weGotAMatch) allImgs[index].classList.remove('gone');
+					else allImgs[index].classList.add('gone');
+				}
+			}
+		}
+
 		// Save all image tags. 
 		function getImageTags() {
 
@@ -105,10 +155,6 @@ function loadItUp() {
 			<!-- item -->
 			<div class="item${ (liked)?(' liked'):('') }" data-imageid="${ index }">
 
-				<!-- image -->
-				<div class="image" style="background-image:url('thumbnail/${ img.imageurl }');"></div>
-				<!-- /image -->
-
 				<!-- panel -->
 				<div class="panel top">
 
@@ -140,6 +186,10 @@ function loadItUp() {
 
 				</div>
 				<!-- /panel -->
+
+				<!-- image -->
+				<div class="image" style="background-image:url('images/thumbnail/${ img.imageurl }');"></div>
+				<!-- /image -->
 
 				<!-- panel -->
 				<div class="panel bottom">
@@ -177,16 +227,29 @@ function loadItUp() {
 					</a>
 					<!-- /btn -->
 
+					<!-- btn -->
+					<a class="btn share" id="commentbtn" href="javascript:void(0)">
+
+						<!-- icon -->
+						<svg class="icon paperplane" width=".75em" height=".75em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+						</svg>
+						<!-- /icon -->
+
+					</a>
+					<!-- /btn -->
+
 					<!-- space -->
 					<div class="space"></div>
 					<!-- /space -->
 
 					<!-- btn -->
-					<a class="btn dl" href="pic/${ img.imageurl }" target="_blank" download="img${index}">
+					<a class="btn dl" href="images/full/${ img.imageurl }" target="_blank" download="img${index}">
 
 						<!-- icon -->
 						<svg class="icon download" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+							<path d="M1.5 14a.5.5 0 0 0 0 1v-1zm13 1a.5.5 0 0 0 0-1v1zm-13 0h13v-1h-13v1z"/>
 						</svg>
 						<!-- /icon -->
 
@@ -212,6 +275,26 @@ function loadItUp() {
 				// Add click handler to image element. 
 				img.addEventListener('click', selectImage);
 			}
+
+			/*****/
+
+			// Select image to blow up on overlay. 
+			function selectImage(event) {
+				// console.log('selectImage', event.currentTarget);
+			
+				// Get parent item. 
+				let item = event.currentTarget.parentElement;
+			
+				// Get id of selected image. 
+				let id = item.getAttribute('data-imageid');
+				// console.log('selected id:', id, item);
+			
+				// Attach selected id to overlay. 
+				overlay.setAttribute('data-displayedimageid',id);
+			
+				// Open page overlay, displaying selected image (by id). 
+				openPicOverlay(id);
+			}
 		}
 
 		// Activate heart buttons in gallery. 
@@ -230,228 +313,4 @@ function loadItUp() {
 	}
 }
 
-
-// Filter images that match selected tag. 
-function selectTag(event) {
-	console.log(event.currentTarget);
-
-	// Get tag value. 
-	let tag = event.currentTarget.getAttribute('data-value');
-	// let tag = event.currentTarget.innerText;
-	console.log('tag:',tag);
-
-	// Initialize list of matching image indexes. 
-	let matchedIndexes = [];
-
-	// Find matching images and save index. 
-	for(let index in imageData) {
-		let img = imageData[index];
-		// console.log(img);
-
-		// Check if image matches tag. 
-		let weGotAMatch = img.taglist.includes(tag);
-
-		// Add url to list if matched. 
-		if(weGotAMatch) matchedIndexes.push(index);
-	}
-	console.log('matchedIndexes',matchedIndexes);
-
-	// Show matched images. 
-	showMatchedImages();
-
-	/*****/
-
-	// Show matched images. 
-	function showMatchedImages() {
-
-		// Get all images. 
-		let allImgs = document.querySelectorAll('section#gallery main div.item');
-		console.log('allImgs',allImgs);
-
-		// Go thru each image element. 
-		for(let index in imageData) {
-
-			// Check if image matches selected tag. 
-			let weGotAMatch = matchedIndexes.includes(index);
-
-			// Adjust class based on match status. 
-			if(weGotAMatch) allImgs[index].classList.remove('gone');
-			else allImgs[index].classList.add('gone');
-		}
-	}
-}
-
-// Select image to blow up on overlay. 
-function selectImage(event) {
-	// console.log('selectImage', event.currentTarget);
-
-	// Get parent item. 
-	let item = event.currentTarget.parentElement;
-
-	// Get id of selected image. 
-	let id = item.getAttribute('data-imageid');
-	// console.log('selected id:', id, item);
-
-	// Attach selected id to overlay. 
-	overlay.setAttribute('data-displayedimageid',id);
-
-	// Open page overlay, displaying selected image (by id). 
-	openPicOverlay(id);
-}
-
-// Select image in gallery to toggle 'like' for. 
-function clickGalleryLikeBtn(event) {
-	console.log('clickGalleryLikeBtn', event.currentTarget.parentElement.parentElement);
-
-	// Get id of selected image. 
-	let item = event.currentTarget.parentElement.parentElement;
-	let hasImageId = item.hasAttribute('data-imageid');
-	let id = ( hasImageId ) ? ( 1*item.getAttribute('data-imageid') ) : ( -1 );
-
-	// Toggle 'like' for selected image. 
-	toggleImageLikeById(id);
-}
-
-// Toggle image 'like' by id. 
-function toggleImageLikeById(id) {
-
-	if(id==-1) console.error('Toggle like error: Invalid image id found on overlay');
-
-	// Check if image already liked. 
-	let alreadyLiked = likedImageIds.includes(id);
-	// console.log('toggleImageLikeById', id, alreadyLiked?'turning off':'turning on' );
-
-	// console.log('Liked images (before):',likedImageIds);
-	// Add selected image to like list. 
-	if(!alreadyLiked) addImageLikeById(id);
-	// Remove selected image from like list. 
-	else removeImageLikeById(id);
-	// console.log('Liked images (after)':,likedImageIds);
-
-
-	// Check if item now liked. 
-	let nowLiked = likedImageIds.includes(id);
-
-	// Get corresponding item in gallery. 
-	let item = document.querySelectorAll('section#gallery main div.item')[id];
-	// Get overlay heart button. 
-	let likebtn = document.getElementById('likebtn');
-
-	
-	if(nowLiked) {
-
-		// Update heart button of item in gallery. 
-		item.classList.add('liked');
-
-		// Update overlay heart button. 
-		likebtn.classList.add('active');
-	}
-	else {
-
-		// Update heart button of item in gallery. 
-		item.classList.remove('liked');
-
-		// Update overlay heart button. 
-		likebtn.classList.remove('active');
-	}
-
-	/*****/
-
-	// Add image 'like' by id. 
-	function addImageLikeById(id) {
-
-		// Add image id to list. 
-		likedImageIds.push(id);
-	}
-
-	// Remove image 'like' by id. 
-	function removeImageLikeById(id) {
-		
-		// Get index of image id to remove from list. 
-		let removeIndex = likedImageIds.indexOf(id);
-
-		// Remove image id from list. 
-		likedImageIds.splice(removeIndex,1);
-	}
-}
-
-
-// Format follower count number. 
-function formatFollowerCount(num,expanded=false) {
-	// console.log('num',num, (expanded)?('expanded'):('abbreviated') );
-	
-	// Format general integer. 
-	if(expanded) {
-
-		// Create string representation of number. 
-		let numstr = '' + Math.floor(num);
-		// console.log('numstr:',numstr);
-
-		// Add commas to numbers longer than 3 digits. 
-		if(numstr.length>3) {
-
-			// Split number into pieces. 
-			let splitNumber = numstr.split('');
-			let newSplitNumber = [];
-			// console.log('splitNumber:',splitNumber);
-			// console.log('newSplitNumber:',newSplitNumber);
-	
-
-			// Get bottom digit group and add comma. Repeat till last digit group. 
-			while(splitNumber.length>3) {
-				newSplitNumber.unshift( splitNumber.pop() );
-				newSplitNumber.unshift( splitNumber.pop() );
-				newSplitNumber.unshift( splitNumber.pop() );
-				newSplitNumber.unshift(',');
-			}
-			// console.log('splitNumber:',splitNumber);
-			// console.log('newSplitNumber:',newSplitNumber);
-
-			// Get last digit group. 
-			while(splitNumber.length) {
-				newSplitNumber.unshift( splitNumber.pop() );
-			}
-			// console.log('splitNumber:',splitNumber);
-			// console.log('newSplitNumber:',newSplitNumber);
-	
-			// Reassemble split number into string. 
-			numstr = newSplitNumber.join('');
-		}
-
-		// Return final result text. 
-		if(numstr==1) return ( numstr + ' view' );
-		else return ( numstr + ' followers' );
-	}
-
-	// Format abbreviated number. 
-	else {
-	
-		// Define components of formatted number. 
-		let coeff = 1*num;
-		let suffindex = 0;
-		let suffix = [' followers','K followers','M followers','B followers','T followers',' follower'];	// potential suffixes
-	
-		// Divide number until less than a thousand. 
-		while(coeff>1000 && suffindex<5) {
-	
-			// Divide number by thousand. 
-			coeff /= 1000;
-			// console.log('\tcoeff',coeff);
-	
-			// Increment suffix index. 
-			suffindex++;
-			// console.log('\tsuffindex',suffindex);
-		}
-	
-		// Add final formatting to view count. 
-		coeff = coeff.toFixed(1);
-		let removeExtraZero = coeff.includes('.0');
-		if(removeExtraZero) coeff = coeff.substr(0,coeff.length-2);
-		if(coeff==1 && suffindex==0) suffindex = 5;
-	
-		// Return final result text. 
-		return ( coeff + suffix[suffindex] );
-
-	}
-}
 

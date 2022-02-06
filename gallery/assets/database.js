@@ -8,7 +8,7 @@ let userData = [
 	{
 		username:'TWDLabs',
 		followercount:'6490',
-		avatarurl:'avatar.jpg',
+		avatarurl:'images/avatar.jpg',
 	},
 ]
 

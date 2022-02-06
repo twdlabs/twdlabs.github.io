@@ -3,13 +3,14 @@
 /* Overlay Section */
 
 
-div#container section#overlay {position:fixed; top:0; left:0; width:100%; height:100%; /* overflow:auto; */}
-div#container section#overlay {display:grid; place-items:center;}
+div#container section#overlay {position:fixed; top:0; left:0; width:100%; height:100%; overflow:auto; z-index:30;}
+div#container section#overlay {display:flex; flex-direction:column; justify-content:flex-start; align-items:center;}
 div#container section#overlay {visibility:hidden; opacity:0; transition:.5s;}
 div#container section#overlay.active {visibility:visible; opacity:1;}
 div#container section#overlay::after {content:''; background-color:#000A; position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; cursor:pointer;}
 
-div#container section#overlay main {background-color:white; max-width:40rem; width:100%; padding:.25rem; border-radius:.125rem; box-shadow:0 5px 10px rgba(0, 0, 0, 0.3);}
+div#container section#overlay main {background-color:white; max-width:40rem; width:100%; padding:.25rem; border-radius:.125rem;}
+div#container section#overlay main {box-shadow:0 5px 10px rgba(0, 0, 0, 0.3); margin:auto 0;}
 div#container section#overlay main {display:flex; flex-direction:column; align-items:stretch; position:relative;}
 
 div#container section#overlay main div.closebtn {position:absolute; top:0; right:auto; bottom:auto; left:100%;}
@@ -49,6 +50,18 @@ div#container section#overlay main div.foot div.taglist {font-size:1.125rem; tra
 div#container section#overlay main div.foot div.taglist span.tag {font-size:.875rem; background-color:#EFEFEF; padding:.375em .5em .25em; border:1px solid #CCC; border-radius:.35rem; margin:.25rem;}
 div#container section#overlay main div.foot div.taglist span.tag {cursor:pointer; user-select:none;}
 div#container section#overlay main div.foot div.taglist span.tag:empty {display:none;}
+
+
+div#container section#overlay aside#commentbox {background-color:#0001;}
+div#container section#overlay aside#commentbox>div {max-height:0; overflow:hidden; transition:.5s;}
+div#container section#overlay aside#commentbox.active>div {max-height:10rem;}
+div#container section#overlay aside#commentbox div#commentlist {height:10rem;}
+div#container section#overlay aside#commentbox div#commentposter {display:flex; flex-direction:row;}
+div#container section#overlay aside#commentbox div#commentposter textarea#commentcontent,
+div#container section#overlay aside#commentbox div#commentposter input#commentcontent {flex-grow:1; font-family:inherit; padding:.5rem; border:1px solid #0001; outline:none;}
+div#container section#overlay aside#commentbox div#commentposter textarea#commentcontent {/* line-height:1; */ /* height:2rem; */ /* max-height:4rem; */ resize:none;}
+div#container section#overlay aside#commentbox div#commentposter button.postcomment {background-color:transparent; color:dodgerblue; font-family:inherit; font-weight:600; cursor:pointer; padding:.5rem 1rem .15rem; border:0 none;}
+
 
 
 
