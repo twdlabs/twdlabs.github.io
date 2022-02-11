@@ -10,7 +10,7 @@
 		<title>Login Form</title>
 
 		<!-- Main Stylesheet -->
-		<link href="login.css" rel="stylesheet" type="text/css"/>
+		<link href="user.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -26,50 +26,60 @@
 				<h1 class="head">Login</h1>
 				<!-- /head -->
 
-				<!-- input -->
-				<div class="input">
-	
-					<!-- #username -->
-					<input type="text" id="username" autocomplete="off" placeholder="">
-					<!-- /#username -->
-	
-					<!-- placeholder -->
-					<label class="placeholder" for="password">Username *</label>
-					<!-- /placeholder -->
-	
-				</div>
-				<!-- /input -->
-	
-				<!-- input -->
-				<div class="input">
-	
-					<!-- #password -->
-					<input type="password" id="password" autocomplete="off" placeholder="">
-					<!-- /#password -->
-	
-					<!-- placeholder -->
-					<label class="placeholder" for="password">Password *</label>
-					<!-- /placeholder -->
+				<form action="connect.php" method="post">
 
-					<!-- icon -->
-					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-						<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-					</svg>
-					<!-- /icon -->
-	
-				</div>
-				<!-- /input -->
-	
-				<!-- input -->
-				<div class="input">
+					<!-- input -->
+					<div class="input">
+		
+						<!-- #username -->
+						<input type="text" id="username" autocomplete="off" name="username" placeholder="">
+						<!-- /#username -->
+		
+						<!-- placeholder -->
+						<label class="placeholder" for="password">Email</label>
+						<!-- /placeholder -->
+		
+					</div>
+					<!-- /input -->
+		
+					<!-- input -->
+					<div class="input hiddenpw">
+		
+						<!-- #password -->
+						<input type="password" id="password" autocomplete="off" name="password" placeholder="">
+						<!-- /#password -->
+		
+						<!-- placeholder -->
+						<label class="placeholder" for="password">Password</label>
+						<!-- /placeholder -->
 
-					<!-- submitbtn -->
-					<button class="submitbtn">Continue to Chat</button>
-					<!-- /submitbtn -->
+						<!-- btn -->
+						<div class="btn visibilitytoggler">
+		
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+								<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+							</svg>
+							<!-- /icon -->
+
+						</div>
+						<!-- /btn -->
+		
+					</div>
+					<!-- /input -->
+		
+					<!-- input -->
+					<div class="input">
+	
+						<!-- submitbtn -->
+						<button class="submitbtn">Continue to Chat</button>
+						<!-- /submitbtn -->
+						
+					</div>
+					<!-- /input -->
 					
-				</div>
-				<!-- /input -->
+				</form>
 
 				<!-- textcopy -->
 				<p class="textcopy">
@@ -88,88 +98,125 @@
 				<h1 class="head">Sign Up</h1>
 				<!-- /head -->
 
-				<!-- bar -->
-				<div class="bar">
+				<form action="connect.php" method="post">
 
+					<!-- bar -->
+					<div class="bar">
+	
+						<!-- input -->
+						<div class="input">
+			
+							<!-- #username -->
+							<input type="text" id="fname" autocomplete="off" name="fname" placeholder="">
+							<!-- /#username -->
+			
+							<!-- placeholder -->
+							<label class="placeholder" for="password">First name</label>
+							<!-- /placeholder -->
+			
+						</div>
+						<!-- /input -->
+						
+						<!-- space -->
+						<div class="space"></div>
+						<!-- /space -->
+		
+						<!-- input -->
+						<div class="input">
+			
+							<!-- #username -->
+							<input type="text" id="lname" autocomplete="off" name="lname" placeholder="">
+							<!-- /#username -->
+			
+							<!-- placeholder -->
+							<label class="placeholder" for="password">Last name</label>
+							<!-- /placeholder -->
+			
+						</div>
+						<!-- /input -->
+	
+					</div>
+					<!-- /bar -->
+	
 					<!-- input -->
 					<div class="input">
 		
 						<!-- #username -->
-						<input type="text" id="fname" autocomplete="off" placeholder="">
+						<input type="text" id="username" autocomplete="off" name="username" placeholder="">
 						<!-- /#username -->
 		
 						<!-- placeholder -->
-						<label class="placeholder" for="password">First name</label>
+						<label class="placeholder" for="password">Email</label>
 						<!-- /placeholder -->
 		
 					</div>
 					<!-- /input -->
-					
-					<!-- space -->
-					<div class="space"></div>
-					<!-- /space -->
-	
+		
+					<!-- input -->
+					<div class="input hiddenpw">
+		
+						<!-- #password -->
+						<input type="password" id="password" autocomplete="off" name="password" placeholder="">
+						<!-- /#password -->
+		
+						<!-- placeholder -->
+						<label class="placeholder" for="password">Password</label>
+						<!-- /placeholder -->
+
+						<!-- btn -->
+						<div class="btn visibilitytoggler">
+		
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+								<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+							</svg>
+							<!-- /icon -->
+
+						</div>
+						<!-- /btn -->
+		
+					</div>
+					<!-- /input -->
+		
+					<!-- input -->
+					<div class="input hiddenpw">
+		
+						<!-- #passwordconfirm -->
+						<input type="password" id="passwordconfirm" autocomplete="off" name="passwordconfirm" placeholder="">
+						<!-- /#passwordconfirm -->
+		
+						<!-- placeholder -->
+						<label class="placeholder" for="password">Confirm Password</label>
+						<!-- /placeholder -->
+
+						<!-- btn -->
+						<div class="btn visibilitytoggler">
+		
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+								<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+							</svg>
+							<!-- /icon -->
+
+						</div>
+						<!-- /btn -->
+		
+					</div>
+					<!-- /input -->
+		
 					<!-- input -->
 					<div class="input">
-		
-						<!-- #username -->
-						<input type="text" id="lname" autocomplete="off" placeholder="">
-						<!-- /#username -->
-		
-						<!-- placeholder -->
-						<label class="placeholder" for="password">Last name</label>
-						<!-- /placeholder -->
-		
+	
+						<!-- submitbtn -->
+						<button class="submitbtn">Continue to Chat</button>
+						<!-- /submitbtn -->
+						
 					</div>
 					<!-- /input -->
 
-				</div>
-				<!-- /bar -->
-
-				<!-- input -->
-				<div class="input">
-	
-					<!-- #username -->
-					<input type="text" id="username" autocomplete="off" placeholder="">
-					<!-- /#username -->
-	
-					<!-- placeholder -->
-					<label class="placeholder" for="password">Username *</label>
-					<!-- /placeholder -->
-	
-				</div>
-				<!-- /input -->
-	
-				<!-- input -->
-				<div class="input">
-	
-					<!-- #password -->
-					<input type="password" id="password" autocomplete="off" placeholder="">
-					<!-- /#password -->
-	
-					<!-- placeholder -->
-					<label class="placeholder" for="password">Password *</label>
-					<!-- /placeholder -->
-
-					<!-- icon -->
-					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-						<path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-					</svg>
-					<!-- /icon -->
-	
-				</div>
-				<!-- /input -->
-	
-				<!-- input -->
-				<div class="input">
-
-					<!-- submitbtn -->
-					<button class="submitbtn">Continue to Chat</button>
-					<!-- /submitbtn -->
-					
-				</div>
-				<!-- /input -->
+				</form>
 
 				<!-- textcopy -->
 				<p class="textcopy">
@@ -189,7 +236,7 @@
 		<!-- <script src="database.js" type="text/javascript"></script> -->
 
 		<!-- Main Script -->
-		<script src="login.js" type="text/javascript"></script>
+		<script src="user.js" type="text/javascript"></script>
 
 	</body>
 
