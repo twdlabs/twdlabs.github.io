@@ -4,153 +4,195 @@
 const userData = [
 	{
 		fname:'Ana',
-		online:false,
-		avatarurl:'assets/avatar-f.png',
+		lname:'Doe',
+		online:true,
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Bill',
-		online:true,
-		avatarurl:'assets/avatar-m.png',
+		lname:'Doe',
+		online:false,
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Chris',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'David',
-		online:false,
-		avatarurl:'assets/avatar-m.png',
+		lname:'Doe',
+		online:true,
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Eli',
-		online:false,
-		avatarurl:'assets/avatar-m.png',
+		lname:'Doe',
+		online:true,
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Fred',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'George',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Hilary',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Ian',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Jane',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Jay',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Jenny',
-		online:false,
-		avatarurl:'assets/avatar-f.png',
+		lname:'Doe',
+		online:true,
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Jill',
+		lname:'Doe',
+		online:false,
+		avatarurl:'assets/images/avatar-f.png',
+	},
+	{
+		fname:'Jim',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Joe',
-		online:false,
-		avatarurl:'assets/avatar-m.png',
+		lname:'Doe',
+		online:true,
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'John',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Kate',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Leah',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Mike',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Nina',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Oscar',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
-		fname:'Pete',
+		fname:'Peter',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Quinten',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Rachel',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Steve',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Tim',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
+	},
+	{
+		fname:'Tori',
+		lname:'Doe',
+		online:true,
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Ursula',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Victor',
-		online:false,
-		avatarurl:'assets/avatar-m.png',
+		lname:'Doe',
+		online:true,
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Wendy',
+		lname:'Doe',
 		online:false,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	{
 		fname:'Xavier',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-m.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Yolanda',
+		lname:'Doe',
 		online:true,
-		avatarurl:'assets/avatar-f.png',
+		avatarurl:'assets/images/avatar-f.png',
 	},
 ];
 
@@ -159,101 +201,75 @@ const userData = [
 // const messageData = [];
 const messageData = [
 	{
-		userid:1,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-		]
+		senderid:1,
+		recipientid:0,
+		timestamp:1577854806,
+		messagetext:'Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.'
 	},
 	{
-		userid:0,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-		]
+		senderid:1,
+		recipientid:0,
+		timestamp:1577854800,
+		messagetext:'Yerrrrr'
 	},
 	{
-		userid:1,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-		]
+		senderid:0,
+		recipientid:1,
+		timestamp:1577854801,
+		messagetext:'Yerrrrr'
 	},
 	{
-		userid:0,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-		]
+		senderid:1,
+		recipientid:0,
+		timestamp:1577854802,
+		messagetext:'What\'s the word'
 	},
 	{
-		userid:1,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-			'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-		]
+		senderid:0,
+		recipientid:1,
+		timestamp:1577854803,
+		messagetext:'What\'s the word'
 	},
 	{
-		userid:0,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-			'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-		]
+		senderid:1,
+		recipientid:0,
+		timestamp:1577854804,
+		messagetext:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
 	},
 	{
-		userid:1,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-			'Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.',
-		]
+		senderid:0,
+		recipientid:1,
+		timestamp:1577854805,
+		messagetext:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
 	},
 	{
-		userid:0,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-			'Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.',
-		]
+		senderid:0,
+		recipientid:2,
+		timestamp:1577854807,
+		messagetext:'Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.'
 	},
 	{
-		userid:1,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-			'Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.',
-		]
+		senderid:1,
+		recipientid:2,
+		timestamp:1577854808,
+		messagetext:'Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.'
 	},
 	{
-		userid:0,
-		timestampsec:1577854800,
-		messagetext:[
-			'Yerrrrr',
-			'What\'s the word ',
-			'Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.',
-		]
+		senderid:0,
+		recipientid:2,
+		timestamp:1577854809,
+		messagetext:'Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.'
 	},
 	{
-		userid:1,
-		timestampsec:1577854800,
-		messagetext:[
-			'Peace out',
-		]
+		senderid:1,
+		recipientid:2,
+		timestamp:1577854810,
+		messagetext:'Peace out'
 	},
 	{
-		userid:0,
-		timestampsec:1577854800,
-		messagetext:[
-			'Peace',
-		]
+		senderid:2,
+		recipientid:1,
+		timestamp:1577854811,
+		messagetext:'See you later'
 	},
 ];

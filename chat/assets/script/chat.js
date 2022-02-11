@@ -1,17 +1,24 @@
 
 
 // Initialize current user id. 
-let currentUserId = 0;
+let currentUserId = 1;
+
+// Initialize current recipient id. 
+let currentRecipientId = -1;
+
+// Initialize state of app pages. 
+// let brandNew = true;
 
 
 /*****/
 
 
-// Refresh contacts list. 
-refreshContactList();
+// Refresh user data. 
+refreshUserData();
 
-// Refresh messages in thread. 
-// refreshMsgHistory();
+
+/*****/
+
 
 // Handle events. 
 handleEvents();
@@ -24,274 +31,222 @@ handleEvents();
 function handleEvents() {
 	// console.log('Handling events...');
 
-	// Get contact list items. 
-	let contactitems = document.querySelectorAll('article.home section.contacts ul.contactlist li.contactitem');
-	// Activate contact list item clicks. 
-	// console.log(contactitems);
-	for(item of contactitems) {
-		item.addEventListener('click',openMsgThread);
-	}
+	// Handle home events. 
+	{
 
-	// Get text input field for new messages. 
-	let msgfield = document.getElementById('newmessage');
-	// Activate enter key to send message. 
-	msgfield.addEventListener('keyup',checkForEnter);
-}
-
-
-// Go to home page. 
-function goHome() {
-	document.querySelector('main div.innermain').classList.remove('open');
-}
-
-// Refresh contacts list. 
-function refreshContactList() {
+		// Get contact list items. 
+		let contactitems = document.querySelectorAll('article.home section.contacts ul.contactlist li.contactitem');
+		// console.log('contactitems',contactitems);
 	
-	// Initiate result. 
-	let result = '';
-
-	// Accumulate contact data. 
-	for(let index in userData) {
-		let user = userData[index];
-
-		// TODO: Find last message sent between two users. 
-		let lastMessage = '';
-		// lastMessage = findLastMessage(0,1);
-
-		result += `
-		<!-- contactitem -->
-		<li class="contactitem${ (user.online) ? (' active') : ('') }" data-userid="${index}">
-
-			<!-- avatar -->
-			<div class="avatar">
-				<img src="${user.avatarurl}">
-			</div>
-			<!-- /avatar -->
-
-			<!-- remainder -->
-			<div class="remainder">
-
-				<!-- name -->
-				<div class="name">${user.fname} Doe</div>
-				<!-- /name -->
-
-				<!-- preview -->
-				<div class="preview">${lastMessage}</div>
-				<!-- /preview -->
-
-			</div>
-			<!-- /remainder -->
-
-			<!-- status -->
-			<div class="status" title="${ (user.online) ? ('Online') : ('Offline') }"></div>
-			<!-- /status -->
-
-		</li>
-		<!-- /contactitem -->`;
+		// Activate contact list item clicks. 
+		for(item of contactitems) {
+			// console.log('item',item);
+			item.addEventListener('click',openMsgThread);
+		}
 	}
 
-	// Add contacts to contact list. 
-	document.querySelector('article.home section.contacts ul.contactlist').innerHTML = result;
+	// Handle thread events. 
+	{
 
+		// Get text input field for new messages. 
+		let msgfield = document.getElementById('newmessage');
+	
+		// Activate enter key to send message. 
+		msgfield.addEventListener('keyup',checkForEnter);
+	
+		/*****/
+	
+		// Check for enter on key press within message input text field. 
+		function checkForEnter(event) {
+			// console.log(event);
+			if(event.keyCode==13) sendNewMessage();
+		}
+	}
+}
+
+// Refresh user data. 
+function refreshUserData() {
+
+	// Get user data for current user. 
+	let currentuser = userData[currentUserId];
+	// console.log('\nLoading user data for:',currentUserId, currentuser.fname, currentuser.lname, currentuser);
+
+	// Refresh recipient on messaging thread. 
+	document.getElementById('currentusername').innerHTML = `${currentuser.fname} ${currentuser.lname}`;
+	document.getElementById('currentuseravatar').innerHTML = `<img src="${currentuser.avatarurl}">`;
+	let userheader = document.getElementById('currentuser');
+	if(currentuser.online) userheader.classList.add('online');
+	else userheader.classList.remove('online');
+
+	// Refresh contacts list. 
+	refreshContactList();
 
 	/*****/
 
+	// Refresh contacts list. 
+	function refreshContactList() {
+		
+		// Initiate result. 
+		let result = '';
 
-	// Find last message sent between two users. 
-	function findLastMessage(useridA,useridB) {
+		// Accumulate contact item data for contact list. 
+		for(let id in userData) {
+
+			// Skip oneself in contact list. 
+			if(id==currentUserId) continue;
+
+			result += createContactItem(id);
+		}
+
+		// Add contacts to contact list. 
+		document.querySelector('article.home section.contacts ul.contactlist').innerHTML = result;
+
+
+		/*****/
+
+
+		// Create contact item. 
+		function createContactItem(contactid) {
+
+			// Get contact's user data. 
+			let contact = userData[contactid];
+
+			// Get last message sent between two users: current user and current contact. 
+			let lastMessage = findLastMessageBtwn(currentUserId,1*contactid);
+
+			return `
+			<!-- contactitem -->
+			<li class="contactitem${ (contact.online) ? (' active') : ('') }" data-userid="${contactid}">
+
+				<!-- avatar -->
+				<div class="avatar">
+					<img src="${contact.avatarurl}">
+				</div>
+				<!-- /avatar -->
+
+				<!-- remainder -->
+				<div class="remainder">
+
+					<!-- name -->
+					<div class="name">${contact.fname} Doe</div>
+					<!-- /name -->
+
+					<!-- preview -->
+					<div class="preview">${ (lastMessage) ? (lastMessage) : ('') }</div>
+					<!-- /preview -->
+
+				</div>
+				<!-- /remainder -->
+
+				<!-- status -->
+				<div class="status" title="${ (contact.online) ? ('Online') : ('Offline') }"></div>
+				<!-- /status -->
+
+			</li>
+			<!-- /contactitem -->`;
+		}
+
+		// Find last message sent between two users. 
+		function findLastMessageBtwn(idA,idB) {
+			// console.log('\n\nGetting last message between users: ',idA, 'and',idB);
+
+			// Initialize default message for if not found. 
+			let savedMessageObject = undefined;
+			let isOutgoingMessage = false;
+
+			// Go thru message data. 
+			for(let currentMessageObject of messageData) {
+				// console.log('\ncurrentMessageObject: user',currentMessageObject.senderid, 'to user',currentMessageObject.recipientid);
+
+				// Check for matching senderid and matching recipientid. 
+				let foundSentMsg = currentMessageObject.senderid==idA && currentMessageObject.recipientid==idB;
+				let foundReceivedMsg = currentMessageObject.senderid==idB && currentMessageObject.recipientid==idA;
+				let foundMatchingMsg = foundSentMsg || foundReceivedMsg;
+				// console.log('foundSentMsg',foundSentMsg);
+				// console.log('foundReceivedMsg',foundReceivedMsg);
+				// console.log('foundMatchingMsg',foundMatchingMsg);
+
+				// Check if another message has already been found. 
+				let alreadyFoundMessage = savedMessageObject!=undefined;
+				// console.log('alreadyFoundMessage:',alreadyFoundMessage);
+
+				// Proceed if matching message found. 
+				if(foundMatchingMsg) {
+
+					// Save if only one found so far. 
+					if(!alreadyFoundMessage) {
+						// console.log('We found one !!!',currentMessageObject);
+						savedMessageObject = currentMessageObject;
+						isOutgoingMessage = foundSentMsg;
+					}
+
+					// Compare to last found object if exists. 
+					else {
+
+						// Replace last message object if current messsage object was sent later. 
+						let laterThanSavedMsg = currentMessageObject.timestamp>savedMessageObject.timestamp;
+						// console.log('laterThanSavedMsg:',laterThanSavedMsg);
+						if(laterThanSavedMsg) {
+							// console.log('We found another one !!!',currentMessageObject);
+							savedMessageObject = currentMessageObject;
+							isOutgoingMessage = foundSentMsg;
+						}
+					}
+				}
+			}
+
+			if(savedMessageObject) {
+				// console.log( '\nLast message found between users:',idA, 'and',idB);
+				// console.log( ''+savedMessageObject.messagetext );
+				return `${ (isOutgoingMessage) ? ('You: ') : ('') } ${savedMessageObject.messagetext}`;
+			}
+			else {
+				return '';
+			}
+		}
 	}
 }
 
-// Open search. 
-function openSearch() {
-	console.log('Opening chat search');
-
-	// Activate search section. 
-	let search = document.querySelector('article.home section.contacts div.search');
-	search.classList.add('active');
-	// console.log(search);
-
-	// Bring focus to search box. 
-	document.getElementById('searchquery').focus();
-}
-
-// Filter contacts by query. 
-function filterContacts() {
-	console.log('FIltering contacts by search query...');
-
-	// Get filter query. 
-	let query = document.getElementById('searchquery').value;
-	console.log('query:',query);
-
-	// TODO: Apply filter to contact list. 
-}
-
-// Close search. 
-function closeSearch() {
-	console.log('Closing chat search');
-
-	// De-activate search section. 
-	let search = document.querySelector('article.home section.contacts div.search');
-	search.classList.remove('active');
-	// console.log(search);
-
-	// Clear previous search query. 
-	document.getElementById('searchquery').value = '';
-
-	// TODO: Remove filter from contact list. 
-}
-
-
 // Open messaging thread. 
 function openMsgThread(event) {
+	console.log('Opening message thread...');
+
+	// Set new recipient id. 
+	let selectedItem = event.currentTarget;
+	currentRecipientId = 1*selectedItem.getAttribute('data-userid');
 
 	// Get user data for selected contact. 
-	let selectedContact = event.currentTarget;
-	let userid = selectedContact.getAttribute('data-userid');
-	let user = userData[userid];
-	console.log('Opening message thread...', selectedContact,userid,user);
+	let recipient = userData[currentRecipientId];
+	// console.log('\ncurrentRecipientId:', currentRecipientId);
+	// console.log('Recipient:',recipient.fname,recipient.lname, recipient, selectedItem);
 
 	// Refresh recipient on messaging thread. 
-	document.getElementById('recipientname').innerHTML = `${user.fname} Doe`;
-	document.getElementById('recipientavatar').innerHTML = `<img src="${user.avatarurl}">`;
-	if(user.online) document.getElementById('recipient').classList.add('active');
+	document.getElementById('recipientname').innerHTML = `${recipient.fname} ${recipient.lname}`;
+	document.getElementById('recipientavatar').innerHTML = `<img src="${recipient.avatarurl}">`;
+	if(recipient.online) document.getElementById('recipient').classList.add('active');
 	else document.getElementById('recipient').classList.remove('active');
 
-	// TODO: Refresh message history on messaging thread. 
+	// Refresh message history on messaging thread. 
 	refreshMsgHistory();
 
 	// Open messaging thread. 
 	document.querySelector('main div.innermain').classList.add('open');
+	// if(brandNew) {
+	// 	document.querySelector('main article.thread').classList.remove('gone');
+	// 	brandNew = false;
+	// }
+
+	// Bring focus to message composer box. 
+	document.getElementById('newmessage').focus();
 }
 
-// Refresh messages in thread. 
-function refreshMsgHistory() {
-	console.log('Refreshing message thread...');
+// Go to home page. 
+function closeMsgThread() {
+	console.log('Closing message thread...');
 
-	// Load message thread history. 
-	loadMessageHistory();
+	// Close messaging thread. 
+	document.querySelector('main div.innermain').classList.remove('open');
 
-	// Scroll to bottom of message history thread. 
-	let msghistory = document.getElementById('msghistory');
-	msghistory.scrollTop = msghistory.scrollHeight;
-
-	/*****/
-
-	// Load message thread history. 
-	function loadMessageHistory() {
-	
-		// Initiate result. 
-		let result = '';
-
-		// Accumulate message data. 
-		for(let msg of messageData) {
-
-			result += `
-			<!-- msg-group -->
-			<div class="msg-group ${ (msg.userid==currentUserId) ? ('s') : ('r')}">
-
-				<!-- timestamp -->
-				<div class="timestamp">${ formatDateFromSeconds(msg.timestampsec) }</div>
-				<!-- /timestamp -->
-
-				<!-- content -->
-				<div class="content">
-		
-					<!-- avatar -->
-					<div class="avatar">
-						<img src="${userData[msg.userid].avatarurl}">
-					</div>
-					<!-- /avatar -->
-		
-					<!-- msgs -->
-					<div class="msgs">`;
-		
-					for(let text of msg.messagetext) result += `
-					<!-- bubble -->
-					<div class="bubble">
-
-						<!-- caption -->
-						<span class="caption">${text}</span>
-						<!-- /caption -->
-						
-					</div>
-					<!-- /bubble -->`
-		
-					result += `
-					</div>
-					<!-- /msgs -->
-
-				</div>
-				<!-- /content -->
-	
-			</div>
-			<!-- /msg-group -->`;
-		}
-
-		// Add messages into thread. 
-		document.querySelector('article.thread section#msghistory div.inner').innerHTML = result;
-
-		/*****/
-	
-		// Format date (given seconds from start point). 
-		function formatDateFromSeconds(numseconds) {
-
-			const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat',];
-			const months = ['Jan','Feb','Mar', 'Apr','May','Jun', 'Jul','Aug','Sep', 'Oct','Nov','Dec'];
-
-			const d = new Date(1000*numseconds);
-
-			let result = d;
-			let day = days[d.getDay()];
-			let year = d.getFullYear();
-			let month = months[d.getMonth()];
-			let date = d.getDate();
-			let hour = d.getHours();
-			let minute = d.getMinutes();
-			result = `${day}, ${year} ${month} ${date}, ${ (hour) ? (hour%12) : ('12') }:${ (minute<10) ? ('0'+minute) : (minute) } ${ (hour<12) ? ('AM') : ('PM') }`;
-
-			return result;
-		}
-	}
+	// Remove previous recipient id. Is this necessary? Maybe not, just in case the desktop version is open. 
+	// currentRecipientId = -1;
 }
-
-// Check for enter on key press within message input text field. 
-function checkForEnter(event) {
-	// console.log(event);
-	if(event.keyCode==13) sendNewMessage();
-}
-
-// Send new message. 
-function sendNewMessage() {
-
-	// Get text input field. 
-	let msgfield = document.getElementById('newmessage');
-
-	// Save message from text input field. 
-	let message = msgfield.value;
-	console.log('Sending message:',message);
-
-	// Clear text input field. 
-	msgfield.value = '';
-
-	// Save message to database. 
-	let attached = false;
-	if(attached) {
-		let lastindex = messageData.length-1;
-		messageData[lastindex].messagetext.push(message);
-	}
-	else {
-		messageData.push({
-			userid:currentUserId,
-			userid:currentUserId,
-			timestampsec:Math.floor(new Date().getTime()/1000),
-			messagetext:[
-				message,
-			]
-		});
-	}
-
-	// Refresh messages in thread. 
-	refreshMsgHistory();
-}
-
