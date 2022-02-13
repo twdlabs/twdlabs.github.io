@@ -37,31 +37,31 @@ div#container main article#chat section#msghistory {overflow:auto; scrollbar-wid
 div#container main article#chat section#msghistory div.inner:empty {display:grid; place-items:center; text-align:center; height:100%;}
 div#container main article#chat section#msghistory div.inner:empty:before {content:'No messages are available. Once you send messages they will appear here.'; line-height:1.5; width:100%; max-width:20rem; margin:0 auto;}
 
-div#container main article#chat section#msghistory div.inner div.msg-group {filter:drop-shadow(#0001 0 .25rem .375rem); margin-top:2rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group div.timestamp {color:var(--grey); font-size:.675rem; text-align:center; margin:1rem 0;}
+div#container main article#chat section#msghistory div.inner div.msgblock {filter:drop-shadow(#0001 0 .25rem .375rem); margin-top:2rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock div.timestamp {color:var(--grey); font-size:.675rem; text-align:center; margin:1rem 0;}
 
-div#container main article#chat section#msghistory div.inner div.msg-group div.content {display:flex;}
-div#container main article#chat section#msghistory div.inner div.msg-group.r div.content {/* align-self:flex-start; */ flex-direction:row;}
-div#container main article#chat section#msghistory div.inner div.msg-group.s div.content {/* align-self:flex-end; */ flex-direction:row-reverse;}
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.avatar {flex-grow:0; padding:0 .5rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.avatar {display:flex; flex-direction:column; justify-content:flex-end;}
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.avatar img {max-width:2rem; max-height:2rem; object-fit:cover; border-radius:50%; filter:grayscale(.25);}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content {display:flex;}
+div#container main article#chat section#msghistory div.inner div.msgblock.r div.content {/* align-self:flex-start; */ flex-direction:row;}
+div#container main article#chat section#msghistory div.inner div.msgblock.s div.content {/* align-self:flex-end; */ flex-direction:row-reverse;}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar {flex-grow:0; padding:0 .5rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar {display:flex; flex-direction:column; justify-content:flex-end;}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar img {max-width:2rem; max-height:2rem; object-fit:cover; border-radius:50%; filter:grayscale(.25);}
 
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.msgs {flex-grow:1;}
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.msgs {position:relative; display:flex; flex-direction:column;}
-div#container main article#chat section#msghistory div.inner div.msg-group.r div.content div.msgs {align-items:flex-start;}
-div#container main article#chat section#msghistory div.inner div.msg-group.s div.content div.msgs {align-items:flex-end;}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block {flex-grow:1;}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block {position:relative; display:flex; flex-direction:column;}
+div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block {align-items:flex-start;}
+div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block {align-items:flex-end;}
 
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.msgs div.bubble {display:grid; place-items:center; font-weight:200; min-height:2.25em; min-width:2.25em; border-radius:1.25rem; padding:.65rem .85rem .5rem; margin-top:.15rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group.r div.content div.msgs div.bubble {background-color:white; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group.r div.content div.msgs div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group.r div.content div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group.s div.content div.msgs div.bubble {background-color:var(--black); color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group.s div.content div.msgs div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group.s div.content div.msgs div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.msgs div.bubble span.caption {line-height:1.25; font-size:.875rem;}
-/* div#container main article#chat section#msghistory div.inner div.msg-group div.content div.msgs div.bubble span.caption:empty::after {content:'...'; color:transparent;} */
-div#container main article#chat section#msghistory div.inner div.msg-group div.content div.msgs div.bubble span.timestamp {position:absolute; left:0; top:50%; transform:translate(-100%,-50%);}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble {display:grid; place-items:center; font-weight:200; min-height:2.25em; min-width:2.25em; border-radius:1.25rem; padding:.65rem .85rem .5rem; margin-top:.15rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block div.bubble {background-color:white; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble {background-color:var(--black); color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption {line-height:1.25; font-size:.875rem;}
+/* div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption:empty::after {content:'...'; color:transparent;} */
+div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.timestamp {position:absolute; left:0; top:50%; transform:translate(-100%,-50%);}
 
 
 /* Message Composer Section */

@@ -68,8 +68,8 @@ function refreshMsgHistory() {
 	function createMessageBlock(msgitem) {
 
 		return `
-		<!-- msg-group -->
-		<div class="msg-group ${ (msgitem.senderid==currentUserId) ? ('s') : ('r')}">
+		<!-- msgblock -->
+		<div class="msgblock ${ (msgitem.senderid==currentUserId) ? ('s') : ('r')}">
 
 			<!-- timestamp -->
 			<div class="timestamp">${ formatDate(msgitem.timestamp) }</div>
@@ -84,8 +84,8 @@ function refreshMsgHistory() {
 				</div>
 				<!-- /avatar -->
 	
-				<!-- msgs -->
-				<div class="msgs">
+				<!-- block -->
+				<div class="block">
 					
 					<!-- bubble -->
 					<div class="bubble">
@@ -98,13 +98,13 @@ function refreshMsgHistory() {
 					<!-- /bubble -->
 					
 				</div>
-				<!-- /msgs -->
+				<!-- /block -->
 
 			</div>
 			<!-- /content -->
 
 		</div>
-		<!-- /msg-group -->`;
+		<!-- /msgblock -->`;
 	}
 
 	// Format date (given milliseconds from start point). 
