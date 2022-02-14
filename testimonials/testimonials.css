@@ -1,0 +1,36 @@
+
+
+* {box-sizing:border-box;}
+body {font-family:sans-serif; margin:0;}
+div#container {background-color:dodgerblue; /* background-image:linear-gradient(135deg,dodgerblue,white); */ background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%);}
+div#container {background:white; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1rem;}
+div#container main.main {background-color:white; width:100%; max-width:40rem; /* padding:1rem; */ border-radius:.5rem; box-shadow:0 5px 10px rgba(0, 0, 0, 0.3);}
+
+
+
+
+div#container h1.head {font-size:1.75rem; padding-bottom:1.5rem; margin:0; margin-bottom:3rem;}
+div#container h1.head::after {content:'';}
+
+
+div#container main.main {display:flex; flex-direction:row; align-items:stretch; height:50vh;}
+
+
+div#container main.main div.contentbox {flex-grow:1; height:100%; overflow:hidden;}
+div#container main.main div.contentbox div.inner {height:100%; overflow:visible; /* transform:translateY(0); */ transition:.5s;}
+div#container main.main div.contentbox div.inner div.item {height:100%; padding:2.5rem;}
+
+div#container main.main div.contentbox div.inner div.item div.head {display:flex; flex-direction:row; align-items:center;}
+div#container main.main div.contentbox div.inner div.item div.head div.avatar {flex-grow:0; flex-shrink:0; height:4rem; width:4rem; border-radius:50%; overflow:hidden;}
+div#container main.main div.contentbox div.inner div.item div.head div.avatar img {object-fit:cover; height:100%; width:100%;}
+div#container main.main div.contentbox div.inner div.item div.head div.remainder {flex-grow:1; margin-left:1.25rem;}
+div#container main.main div.contentbox div.inner div.item div.head div.remainder h2.name {color:dodgerblue; font-size:1.5rem; font-weight:bold; margin:0; margin-bottom:.5rem;}
+div#container main.main div.contentbox div.inner div.item div.head div.remainder div.position {font-size:1rem; font-weight:100;}
+
+div#container main.main div.contentbox div.inner div.item div.content {margin-top:2.5rem;}
+div#container main.main div.contentbox div.inner div.item div.content p.textcopy {font-weight:100; line-height:1.5;}
+
+
+div#container main.main div.scroller {flex-grow:0; /* flex-shrink:0; */ background-color:dodgerblue; display:flex; flex-direction:column; justify-content:space-between; align-items:stretch;}
+div#container main.main div.scroller div.btn {padding:.5rem; cursor:pointer;}
+div#container main.main div.scroller div.btn svg.icon {color:white; font-size:1.5rem;}
