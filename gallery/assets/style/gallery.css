@@ -5,6 +5,13 @@
 
 
 
+:root {
+	--lightorange:#ffb442;
+	--lightlightorange:#ffc670;
+}
+
+
+
 * {box-sizing:border-box;}
 
 
@@ -25,17 +32,18 @@ div#container section main {width:100%; max-width:75rem; margin:0 auto;}
 
 /* Head Section */
 
-div#container section#head {flex-grow:0; background-color:#ffb442; padding:1rem 2rem .75rem; text-align:center;}
+div#container section#head {flex-grow:0; background-color:var(--lightorange); padding:1rem 2rem .75rem; text-align:center; z-index:30;}
 div#container section#head main {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container section#head main h1.head {display:flex; flex-direction:row; justify-content:center; align-items:center; font-size:2rem; margin:0 /* 1rem */;}
 div#container section#head main h1.head svg.icon {margin-right:.375rem; margin-bottom:.125rem;}
 div#container section#head main h1.head span.caption {white-space:nowrap;}
 div#container section#head main div.btn {font-size:2rem; /* margin:0 1rem; */ cursor:pointer;}
+div#container section#head main div.btn svg.icon {display:block;}
 
 
 /* Tags Section */
 
-div#container section#tags {flex-grow:0; background-color:#ffb442; background-color:#ffc670; overflow:hidden; position:relative;}
+div#container section#tags {flex-grow:0; background-color:var(--lightorange); background-color:var(--lightlightorange); overflow:hidden; position:relative;}
 div#container section#tags {display:flex; flex-direction:row; align-items:center; padding:1px;}
 div#container section#tags {max-height:0; transition:.5s;}
 div#container section#tags.active {max-height:10vmax;}
@@ -44,20 +52,21 @@ div#container section#tags:before {position:absolute; top:0; left:0;}
 div#container section#tags main {flex-grow:1; padding:.65rem 1rem; padding-left:0; margin:1rem;}
 div#container section#tags main {display:flex; flex-direction:row; /* justify-content:space-between; */ justify-content:flex-start; align-items:center; flex-wrap:nowrap; max-width:none;}
 div#container section#tags main {overflow-x:auto; scrollbar-width:none; position:relative;}
-/* div#container section#tags main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, #ffc670, transparent);} */
+/* div#container section#tags main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightlightorange), transparent);} */
 div#container section#tags main div.tag {flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem; margin:0 .5rem;}
 div#container section#tags main div.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
 div#container section#tags main div.tag {display:flex; justify-content:center; align-items:center; white-space:nowrap; user-select:none;}
 div#container section#tags main div.tag span.caption {padding-top:.125rem;}
 div#container section#tags main div.tag span.caption:empty::after {content:'All';}
-div#container section#tags main div.tag:hover {background-color:black; color:#ffb442;}
+div#container section#tags main div.tag:hover {background-color:black; color:var(--lightorange);}
 div#container section#tags main div.tag:empty::after {content:'-';}
 div#container section#tags button.loadbtn {background-color:#e68a00; color:white; border:0 none;}
+div#container section#tags {display:none;}
 
 
 /* Gallery Section */
 
-div#container section#gallery {flex-grow:1; background-color:#ffebcd; padding:2rem; /* text-align:center; */ overflow:auto; scrollbar-width:none;}
+div#container section#gallery {flex-grow:1; background-color:#ffebcd; padding:2rem; /* text-align:center; */ overflow:auto; scrollbar-width:none; position:relative; z-index:40;}
 div#container section#gallery main {display:flex; flex-flow:row wrap;}
 div#container section#gallery main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem;}
 div#container section#gallery main div.item {background-color:white; /* width:16rem; */ /* overflow:hidden; */ /* border:.125rem solid white; */ border-radius:.5rem; transition:.25s;}
@@ -102,6 +111,29 @@ div#container section#gallery main div.item.liked div.panel.bottom a.btn.like sv
 div#container section#gallery main div.item.liked div.panel.bottom a.btn.like svg.icon.fill {display:block;}
 div#container section#gallery main div.item.liked div.panel.bottom a.btn.like:active svg.icon {transform:none;}
 div#container section#gallery main div.item div.panel.bottom div.space {flex-grow:1;}
+
+
+/* Sidebar Section */
+
+div#container aside#sidebar {position:fixed; top:0; right:0; bottom:0; width:100%; max-width:16rem; opacity:.95; z-index:100;}
+div#container aside#sidebar {background-color:var(--lightlightorange); background-image:linear-gradient( var(--lightorange), var(--lightlightorange) ); display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+div#container aside#sidebar {transform:translateX(100%); transition:.5s;}
+div#container aside#sidebar.active {transform:translateX(0);}
+div#container aside#sidebar main {background-color:#FFF1; min-height:20rem;}
+
+/* div#container aside#sidebar main {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; flex-wrap:nowrap; flex-wrap:wrap; max-width:none;} */
+div#container aside#sidebar main {position:relative; padding:1rem; overflow:auto;}
+/* div#container aside#sidebar main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightlightorange), transparent);} */
+div#container aside#sidebar main div.tag {display:inline-block; flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem; margin:0 .5rem; margin:.5rem 0;}
+div#container aside#sidebar main div.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
+div#container aside#sidebar main div.tag {display:flex; justify-content:center; align-items:center; white-space:nowrap; user-select:none;}
+div#container aside#sidebar main div.tag span.caption {padding-top:.125rem;}
+div#container aside#sidebar main div.tag span.caption:empty::after {content:'All';}
+div#container aside#sidebar main div.tag:hover {background-color:black; color:var(--lightorange);}
+div#container aside#sidebar main div.tag:empty::after {content:'-';}
+
+div#container aside#sidebar div.closebtn {cursor:pointer; position:absolute; top:0; right:0; margin:1.5rem 2.25rem; font-size:1.5rem;}
+/* div#container aside#sidebar div.closebtn svg.icon {} */
 
 
 

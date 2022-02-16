@@ -15,7 +15,7 @@ function openPicOverlay(id) {
 	// console.log('img', img);
 
 	// Add selected image to overlay. 
-	document.querySelector('section#overlay main.main div.content').innerHTML = `<img src="images/full/${img.imageurl}">`;
+	document.querySelector('section#overlay main.main div.content').innerHTML = `<img src="assets/images/full/${img.imageurl}">`;
 
 	// Activate like button if image in liked list. 
 	if(img.liked) document.getElementById('likebtn').classList.add('active');
@@ -37,7 +37,7 @@ function openPicOverlay(id) {
 	document.querySelector('section#overlay main.main div.foot div.taglist').innerHTML = tizags;
 
 	// Update overlay popup. 
-	updateOverlay();
+	updateOverlayData();
 
 	// Show overlay on page. 
 	document.getElementById('overlay').classList.add('active');
@@ -45,7 +45,7 @@ function openPicOverlay(id) {
 	/*****/
 
 	// Update overlay popup. 
-	function updateOverlay() {
+	function updateOverlayData() {
 
 		// Get overlay. 
 		let overlay = document.getElementById('overlay');
@@ -64,9 +64,11 @@ function openPicOverlay(id) {
 		// Get url of displayed image for download button url. 
 		let imgurl = imageData[id].imageurl;
 		// console.log(`imgurl: '${imgurl}'`);
-		// Set download button attributes: 'href' & 'download'. 
+		
+		// Set file name for download button. 
 		dlbtn.setAttribute('download',`img${id}`);
-		dlbtn.setAttribute('href',`pic/${imgurl}`);
+		// Set url for download button. 
+		dlbtn.setAttribute('href',`assets/images/full/${imgurl}`);
 
 		likebtn.addEventListener('click', clickOverlayLikeBtn);
 		// Check if displayed item now liked. 

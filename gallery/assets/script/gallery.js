@@ -39,9 +39,10 @@ function loadItUp() {
 
 		// Add tag elements to page. 
 		document.querySelector('section#tags main').innerHTML = result;
+		document.querySelector('aside#sidebar main').innerHTML = result;
 
 		// Activate tag clicks. 
-		let tags = document.querySelectorAll('section#tags main div.tag.real');
+		let tags = document.querySelectorAll('section#tags main div.tag.real, aside#sidebar main div.tag.real');
 		for(let tag of tags) {
 			tag.addEventListener('click', selectTag);
 		}
@@ -188,7 +189,7 @@ function loadItUp() {
 				<!-- /panel -->
 
 				<!-- image -->
-				<div class="image" style="background-image:url('images/thumbnail/${ img.imageurl }');"></div>
+				<div class="image" style="background-image:url('assets/images/thumbnail/${ img.imageurl }');"></div>
 				<!-- /image -->
 
 				<!-- panel -->
@@ -244,7 +245,7 @@ function loadItUp() {
 					<!-- /space -->
 
 					<!-- btn -->
-					<a class="btn dl" href="images/full/${ img.imageurl }" target="_blank" download="img${index}">
+					<a class="btn dl" href="assets/images/full/${ img.imageurl }" target="_blank" download="img${index}">
 
 						<!-- icon -->
 						<svg class="icon download" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
