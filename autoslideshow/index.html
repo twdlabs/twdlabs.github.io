@@ -9,50 +9,45 @@
 		<link href="../atgicon.ico" rel="icon"/>
 		<title>Auto Slideshow</title>
 
-		<style type="text/css">
-			* {box-sizing:border-box;}
-
-			body {background-color:#7aacff; margin:0; height:100vh;}
-			body {display:grid; place-items:center;}
-
-			div#container {border:1.25rem solid white; border-radius:.5rem; width:85vmin; overflow:hidden; box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3);}
-			/* div#container {display:grid; place-items:center;} */
-			div#container div.inner {display:flex; flex-direction:row; animation: slide 15s ease-in-out 0s infinite forwards;}
-			div#container div.inner img {width:100%; flex-shrink:0;}
-
-			@keyframes slide {
-				0% {transform:translateX(0%);}
-				30% {transform:translateX(0%);}
-				33% {transform:translateX(-100%);}
-				63% {transform:translateX(-100%);}
-				66% {transform:translateX(-200%);}
-				96% {transform:translateX(-200%);}
-				99% {transform:translateX(-300%);}
-				100% {transform:translateX(-300%);}
-			}
-		</style>
-		<link rel="stylesheet" type="text/css" href="">
+		<!-- Main Stylesheet -->
+		<link href="autoslideshow.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
 
 		<!-- #container -->
 		<div id="container">
+				
+			<!-- slideshow -->
+			<div class="slideshow">
 
-			<!-- inner -->
-			<div class="inner">
-				<img src="img_5terre.jpg" alt="a">
-				<img src="img_mountains.jpg" alt="b">
-				<img src="img_snow.jpg" alt="c">
-				<img src="img_5terre.jpg" alt="a">
+				<!-- inner -->
+				<div class="inner" id="slideinner">
+
+					<!-- img -->
+					<img src="images/img_5terre.jpg" alt="a">
+					<!-- /img -->
+
+					<!-- img -->
+					<img src="images/img_mountains.jpg" alt="b">
+					<!-- /img -->
+
+				</div>
+				<!-- /inner -->
+				
 			</div>
-			<!-- /inner -->
+			<!-- /slideshow -->
+
+			<!-- toggle -->
+			<button class="toggle" onclick="document.getElementById('container').classList.toggle('devmode')">Switch</button>
+			<!-- /toggle -->
 			
 		</div>
 		<!-- /#container -->
+		
 
 		<!-- Main Script -->
-		<script type="text/javascript"></script>
+		<script src="autoslideshow.js" type="text/javascript"></script>
 
 	</body>
 
