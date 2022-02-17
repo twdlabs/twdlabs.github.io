@@ -11,8 +11,8 @@ div#container div.slideshow {border:1.25rem solid white; border-radius:.5rem; wi
 div#container div.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); transition:.5s;}
 div#container.devmode div.slideshow {width:50vw; overflow:visible;}
 div#container div.slideshow div.inner {display:flex; flex-direction:row; transition:.5s;}
-div#container div.slideshow div.inner {animation: slide4 15s ease-in-out 0s infinite forwards;}
-div#container div.slideshow div.inner img {width:100%; flex-shrink:0;}
+/* div#container div.slideshow div.inner {animation: slide4 15s ease-in-out 0s infinite forwards;} */
+div#container div.slideshow div.inner img {object-fit:cover; width:100%; flex-shrink:0;}
 div#container div.slideshow a.delta {position:absolute; top:50%; transform:translateY(-50%); font-size:3rem; color:white; padding:1rem .25rem; cursor:pointer; transition:.5s;}
 div#container div.slideshow a.delta:hover {background-color:#0004;}
 div#container div.slideshow a.delta svg.icon {display:block;}
@@ -27,6 +27,7 @@ div#container button.toggle {position:absolute; bottom:0; left:50%; transform:tr
 
 
 @keyframes slide4 {
+
 	0% {transform:translateX(0%);}
 
 	/* Pic A */
