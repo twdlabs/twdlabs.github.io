@@ -6,8 +6,8 @@
 
 
 :root {
-	--lightorange:#ffb442;
-	--lightlightorange:#ffc670;
+	--orange:#ffb442;
+	--lightorange:#ffc670;
 }
 
 
@@ -32,7 +32,7 @@ div#container section main {width:100%; max-width:75rem; margin:0 auto;}
 
 /* Head Section */
 
-div#container section#head {flex-grow:0; background-color:var(--lightorange); padding:1rem 2rem .75rem; text-align:center; z-index:30;}
+div#container section#head {flex-grow:0; background-color:var(--orange); padding:1rem 2rem .75rem; text-align:center; z-index:30;}
 div#container section#head main {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container section#head main h1.head {display:flex; flex-direction:row; justify-content:center; align-items:center; font-size:2rem; margin:0 /* 1rem */;}
 div#container section#head main h1.head svg.icon {margin-right:.375rem; margin-bottom:.125rem;}
@@ -43,7 +43,7 @@ div#container section#head main div.btn svg.icon {display:block;}
 
 /* Tags Section */
 
-div#container section#tags {flex-grow:0; background-color:var(--lightorange); background-color:var(--lightlightorange); overflow:hidden; position:relative;}
+div#container section#tags {flex-grow:0; background-color:var(--orange); background-color:var(--lightorange); overflow:hidden; position:relative;}
 div#container section#tags {display:flex; flex-direction:row; align-items:center; padding:1px;}
 div#container section#tags {max-height:0; transition:.5s;}
 div#container section#tags.active {max-height:10vmax;}
@@ -52,13 +52,13 @@ div#container section#tags:before {position:absolute; top:0; left:0;}
 div#container section#tags main {flex-grow:1; padding:.65rem 1rem; padding-left:0; margin:1rem;}
 div#container section#tags main {display:flex; flex-direction:row; /* justify-content:space-between; */ justify-content:flex-start; align-items:center; flex-wrap:nowrap; max-width:none;}
 div#container section#tags main {overflow-x:auto; scrollbar-width:none; position:relative;}
-/* div#container section#tags main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightlightorange), transparent);} */
+/* div#container section#tags main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightorange), transparent);} */
 div#container section#tags main div.tag {flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem; margin:0 .5rem;}
 div#container section#tags main div.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
 div#container section#tags main div.tag {display:flex; justify-content:center; align-items:center; white-space:nowrap; user-select:none;}
 div#container section#tags main div.tag span.caption {padding-top:.125rem;}
 div#container section#tags main div.tag span.caption:empty::after {content:'All';}
-div#container section#tags main div.tag:hover {background-color:black; color:var(--lightorange);}
+div#container section#tags main div.tag:hover {background-color:black; color:var(--orange);}
 div#container section#tags main div.tag:empty::after {content:'-';}
 div#container section#tags button.loadbtn {background-color:#e68a00; color:white; border:0 none;}
 div#container section#tags {display:none;}
@@ -67,12 +67,11 @@ div#container section#tags {display:none;}
 /* Gallery Section */
 
 div#container section#gallery {flex-grow:1; background-color:#ffebcd; padding:2rem; /* text-align:center; */ overflow:auto; scrollbar-width:none; position:relative; z-index:40;}
-div#container section#gallery main {display:flex; flex-flow:row wrap;}
+/* div#container section#gallery main {display:flex; flex-flow:row wrap;} */
 div#container section#gallery main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem;}
-div#container section#gallery main div.item {background-color:white; /* width:16rem; */ /* overflow:hidden; */ /* border:.125rem solid white; */ border-radius:.5rem; transition:.25s;}
-div#container section#gallery main div.item {margin:3rem 0;}
-div#container section#gallery main div.item {cursor:pointer; position:relative;}
-div#container section#gallery main div.item.gone {width:0; border-width:0; margin:0;}
+div#container section#gallery main div.item {background-color:white; cursor:pointer; position:relative; /* overflow:hidden; */}
+div#container section#gallery main div.item {/* width:16rem; */ /* border:.125rem solid white; */ border-radius:.5rem; margin:3rem 0; transition:.25s;}
+div#container section#gallery main div.item.gone {height:0; width:0; border-width:0; margin:0; display:none;}
 div#container section#gallery main div.item div.image {min-width:100%; /* min-height:100%; */ background-size:cover; background-position:center; position:relative; z-index:10;}
 /* div#container section#gallery main div.item div.image {transform:none; transition:.125s;} */
 /* div#container section#gallery main div.item:hover div.image {transform:scale(1.04);} */
@@ -115,25 +114,33 @@ div#container section#gallery main div.item div.panel.bottom div.space {flex-gro
 
 /* Sidebar Section */
 
-div#container aside#sidebar {position:fixed; top:0; right:0; bottom:0; width:100%; max-width:16rem; opacity:.95; z-index:100;}
-div#container aside#sidebar {background-color:var(--lightlightorange); background-image:linear-gradient( var(--lightorange), var(--lightlightorange) ); display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+div#container aside#sidebar {position:fixed; top:0; right:0; bottom:0; width:100%; max-width:16rem; /* opacity:.95; */ z-index:100; box-shadow:0 5px 10px rgba(0, 0, 0, 0.3);}
+div#container aside#sidebar {background-color:var(--lightorange); background-image:linear-gradient( var(--orange) 85%, var(--lightorange) ); overflow:auto;}
 div#container aside#sidebar {transform:translateX(100%); transition:.5s;}
 div#container aside#sidebar.active {transform:translateX(0);}
-div#container aside#sidebar main {background-color:#FFF1; min-height:20rem;}
 
-/* div#container aside#sidebar main {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; flex-wrap:nowrap; flex-wrap:wrap; max-width:none;} */
-div#container aside#sidebar main {position:relative; padding:1rem; overflow:auto;}
-/* div#container aside#sidebar main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightlightorange), transparent);} */
-div#container aside#sidebar main div.tag {display:inline-block; flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem; margin:0 .5rem; margin:.5rem 0;}
-div#container aside#sidebar main div.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
-div#container aside#sidebar main div.tag {display:flex; justify-content:center; align-items:center; white-space:nowrap; user-select:none;}
-div#container aside#sidebar main div.tag span.caption {padding-top:.125rem;}
-div#container aside#sidebar main div.tag span.caption:empty::after {content:'All';}
-div#container aside#sidebar main div.tag:hover {background-color:black; color:var(--lightorange);}
-div#container aside#sidebar main div.tag:empty::after {content:'-';}
+div#container aside#sidebar div.inner {display:flex; flex-direction:column; justify-content:center; align-items:stretch; min-height:100%;}
 
-div#container aside#sidebar div.closebtn {cursor:pointer; position:absolute; top:0; right:0; margin:1.5rem 2.25rem; font-size:1.5rem;}
+div#container aside#sidebar div.inner main {background-color:#FFF0; min-height:20rem;}
+
+div#container aside#sidebar div.inner main {flex-grow:1; /* flex-shrink:0; */ position:relative; padding:1rem;}
+div#container aside#sidebar div.inner main {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+/* div#container aside#sidebar div.inner main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightorange), transparent);} */
+div#container aside#sidebar div.inner main div.tag {display:inline-block; flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem; margin:0 .5rem; margin:.5rem 0;}
+div#container aside#sidebar div.inner main div.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
+div#container aside#sidebar div.inner main div.tag {display:flex; justify-content:center; align-items:center; white-space:nowrap; user-select:none;}
+div#container aside#sidebar div.inner main div.tag span.caption {padding-top:.125rem;}
+div#container aside#sidebar div.inner main div.tag span.caption:empty::after {content:'All';}
+div#container aside#sidebar div.inner main div.tag:hover {background-color:black; color:var(--orange);}
+div#container aside#sidebar div.inner main div.tag:empty::after {content:'-';}
+
+div#container aside#sidebar div.closebtn {font-size:2rem; text-align:right; padding:1.25rem 2.25rem 0 0; cursor:pointer; transition:.25s;}
+/* div#container aside#sidebar div.closebtn {position:absolute; top:0; right:0;} */
 /* div#container aside#sidebar div.closebtn svg.icon {} */
+
+div#container aside#sidebar::after {content:''; display:block; position:fixed; top:0; right:100%; bottom:0; width:100vw; height:100%; z-index:-1; background-color:#0004;}
+div#container aside#sidebar::after {opacity:0; visibility:hidden; transition:.5s, 0s width;}
+div#container aside#sidebar.active::after {opacity:1; visibility:visible;}
 
 
 
@@ -159,5 +166,7 @@ div#container aside#sidebar div.closebtn {cursor:pointer; position:absolute; top
 
 	div#container section#gallery {padding:1rem;}
 	div#container section#gallery main {grid-template-columns:repeat(1,1fr);}
+
+	div#container aside#sidebar div.closebtn {font-size:1.5rem; padding:1rem 1rem 0 0;}
 }
 
