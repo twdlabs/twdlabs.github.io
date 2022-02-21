@@ -1,4 +1,81 @@
 
+
+<?php
+
+	// @include 'config.php';
+
+	// Get current operation. 
+	$operation = testInput($_POST['operation']);
+
+	// Get product id for next new product added. 
+	// $newid = ??;
+
+	// Get product id. 
+	$productid = testInput($_POST['productid']);
+	if( empty($productid) ) $productid = 0;
+	
+	// Get product name. 
+	$productname = testInput($_POST['productname']);
+
+	// Get product price. 
+	$productprice = testInput($_POST['productprice']);
+
+	// Get product image url. 
+	$productimageurl = testInput($_POST['productimageurl']);
+
+	// Connect to database. 
+	// connectToDatabase();
+
+	/*****/
+	
+	// Sanitize user input. 
+	function testInput($data) {
+
+		// Remove whitespace and other predefined characters. 
+		$data = trim($data);
+
+		// Remove 'escape' backslashes. 
+		$data = stripslashes($data);
+
+		// Convert html special characters to safe html entities. 
+		$data = htmlspecialchars($data);
+		return $data;
+	}
+	
+	// Connect to database. 
+	function connectToDatabase() {
+
+		// Open connection to database server (using mysqli). 
+		$host = 'MySQL-cluster-1-MySQL-master.database.svc.cluster.local:3306';
+		$un = 'easydubpeezy-3d1ab3';
+		$pw = 'myw-DDxE8Rm-s1ckfzuY';
+		$dbname = '573350_e2def2d1826e95877a7c66b2d054abcd';
+		$mysqli = new mysqli($host,$un,$pw,$dbname,3306);
+
+		// Check connection. 
+		if($mysqli -> connect_errno) {
+			echo 'No connection established... ';
+			echo $mysqli -> connect_error;
+		}
+		// Do stuff on database server (if available). 
+		else {
+			echo 'Connection established.';
+
+			// Perform query. 
+			$queryresult = $mysqli -> query('SELECT * from Products');
+			if($queryresult) {
+				echo 'Returned rows: ' . $queryresult -> num_rows;
+			} else {
+				echo 'No query results.';
+			}
+
+			// Close connection to database server. 
+			$mysqli -> close();
+		}
+	}
+?>
+
+
 <!DOCTYPE html>
 <html>
 	
@@ -14,32 +91,67 @@
 		<!-- <style type="text/css"></style> -->
 	</head>
 	
-	<body>
+	<body onload="setTimeout(function(){document.getElementById('feedback').classList.remove('active');},1500);">
+
+		<!-- #header -->
+		<nav id="header">
+			
+			<!-- head -->
+			<h1 class="head">
+				<span class="caption">Merch Inventory</span>
+			</h1>
+			<!-- /head -->
+
+			<!-- navlist -->
+			<ul class="navlist">
+
+				<!-- navitem -->
+				<li class="navitem">
+
+					<!-- navlink -->
+					<a class="navlink" href="javascript:void(0)">1</a>
+					<!-- /navlink -->
+
+				</li>
+				<!-- /navitem -->
+
+				<!-- navitem -->
+				<li class="navitem">
+
+					<!-- navlink -->
+					<a class="navlink" href="javascript:void(0)">2</a>
+					<!-- /navlink -->
+
+				</li>
+				<!-- /navitem -->
+
+				<!-- navitem -->
+				<li class="navitem">
+
+					<!-- navlink -->
+					<a class="navlink" href="javascript:void(0)">3</a>
+					<!-- /navlink -->
+
+				</li>
+				<!-- /navitem -->
+
+			</ul>
+			<!-- /navlist -->
+
+		</nav>
+		<!-- /#header -->
 
 		<!-- #container -->
 		<div id="container">
-
-			<?php 
-				$operation = $_POST['operation'];
-				$productname = $_POST['productname'];
-				$productprice = $_POST['productprice'];
-				$productimageurl = $_POST['productimageurl'];
-			?>
 
 			<!-- #feedback -->
 			<section id="feedback" class="expand <?php if($operation) {echo 'active';} ?>" ondblclick="this.classList.toggle('expand');">
 
 				<!-- output -->
-				<div class="output">
-
-					<!-- caption -->
-					<span class="caption">Operation: </span>
-					<!-- /caption -->
+				<div class="output op">
 
 					<!-- value -->
-					<span class="value">
-						<?php echo $operation; ?>
-					</span>
+					<span class="value"><?php echo $operation; ?></span>
 					<!-- /value -->
 					
 				</div>
@@ -48,15 +160,13 @@
 				<!-- output -->
 				<div class="output">
 
-					<!-- caption -->
-					<span class="caption">Name: </span>
-					<!-- /caption -->
-
 					<!-- value -->
-					<span class="value">
-						<?php echo $productname; ?>
-					</span>
+					<span class="value"><?php echo $productid; ?></span>
 					<!-- /value -->
+
+					<!-- caption -->
+					<span class="caption">ID</span>
+					<!-- /caption -->
 
 				</div>
 				<!-- /output -->
@@ -64,15 +174,13 @@
 				<!-- output -->
 				<div class="output">
 
-					<!-- caption -->
-					<span class="caption">Price: </span>
-					<!-- /caption -->
-
 					<!-- value -->
-					<span class="value">
-						<?php echo $productprice; ?>
-					</span>
+					<span class="value"><?php echo $productname; ?></span>
 					<!-- /value -->
+
+					<!-- caption -->
+					<span class="caption">Name</span>
+					<!-- /caption -->
 
 				</div>
 				<!-- /output -->
@@ -80,22 +188,30 @@
 				<!-- output -->
 				<div class="output">
 
+					<!-- value -->
+					<span class="value"><?php echo $productprice; ?></span>
+					<!-- /value -->
+
 					<!-- caption -->
-					<span class="caption">Image: </span>
+					<span class="caption">Price</span>
 					<!-- /caption -->
 
+				</div>
+				<!-- /output -->
+
+				<!-- output -->
+				<div class="output">
+
 					<!-- value -->
-					<span class="value">
-						<?php echo $productimageurl; ?>
-					</span>
+					<span class="value"><?php echo $productimageurl; ?></span>
 					<!-- /value -->
+
+					<!-- caption -->
+					<span class="caption">Image</span>
+					<!-- /caption -->
 					
 				</div>
 				<!-- /output -->
-
-				<!-- btn -->
-				<div class="expandbtn btn" onclick="this.parentElement.classList.toggle('expand');">&plus;</div>
-				<!-- /btn -->
 
 				<!-- btn -->
 				<div class="closebtn btn" onclick="this.parentElement.classList.remove('active');">&times;</div>
@@ -107,8 +223,12 @@
 			<!-- #creator -->
 			<section id="creator">
 
+				<!-- btn -->
+				<div class="btn" onclick="this.parentElement.classList.toggle('active');">&plus;</div>
+				<!-- /btn -->
+
 				<!-- form -->
-				<form class="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+				<form class="form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
 					<!-- title -->
 					<h2 class="title">
@@ -118,19 +238,25 @@
 
 					<!-- input -->
 					<div class="input">
-						<input type="text" id="productname" name="productname" placeholder="Enter product name" autocomplete="off">
+						<input type="hidden" name="productid" value="<?php echo $newid; ?>" placeholder="Enter product id number" disabled>
 					</div>
 					<!-- /input -->
 
 					<!-- input -->
 					<div class="input">
-						<input type="number" id="productprice" name="productprice" placeholder="Enter product price" min="0">
+						<input type="file" class="image" name="productimageurl" placeholder="Select product image">
 					</div>
 					<!-- /input -->
 
 					<!-- input -->
 					<div class="input">
-						<input type="file" id="productimageurl" name="productimageurl" placeholder="Select product image">
+						<input type="text" name="productname" placeholder="Enter product name" autocomplete="off">
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+						<input type="number" name="productprice" placeholder="Enter product price" min="0" step=".01">
 					</div>
 					<!-- /input -->
 
@@ -138,7 +264,7 @@
 					<div class="input">
 
 						<!-- addbtn -->
-						<button class="addbtn btn" name="operation" value="Add Product">
+						<button class="addbtn btn" name="operation" value="Adding Product">
 
 							<!-- caption -->
 							<span class="caption">Add Product</span>
@@ -164,27 +290,35 @@
 				<!-- /overlay -->
 				
 				<!-- form -->
-				<form class="form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+				<form class="form" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
+					<!-- title -->
 					<h2 class="title">
 						<span class="caption">Edit Product</span>
 					</h2>
+					<!-- /title -->
 
 					<!-- input -->
 					<div class="input">
-						<input type="text" id="productname" name="productname" placeholder="Enter product name">
+						<input type="hidden" name="productid" id="productid" value="" placeholder="Enter product id number" disabled>
 					</div>
 					<!-- /input -->
 
 					<!-- input -->
 					<div class="input">
-						<input type="number" id="productprice" name="productprice" placeholder="Enter product price">
+						<input type="file" class="image" name="productimageurl" id="productimageurl" placeholder="Select product image">
 					</div>
 					<!-- /input -->
 
 					<!-- input -->
 					<div class="input">
-						<input type="file" id="productimageurl" name="productimageurl" placeholder="Enter product price">
+						<input type="text" name="productname" id="productname" placeholder="Enter product name" autocomplete="off">
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+						<input type="number" name="productprice" id="productprice" placeholder="Enter product price" min="0" step=".01">
 					</div>
 					<!-- /input -->
 
@@ -202,7 +336,7 @@
 						<!-- /cancelbtn -->
 
 						<!-- updatebtn -->
-						<button class="updatebtn btn" name="operation" value="Update Product">
+						<button class="updatebtn btn" name="operation" value="Updating Product">
 
 							<!-- caption -->
 							<span class="caption">Update</span>
@@ -290,7 +424,7 @@
 							<td class="cell">
 
 								<!-- editbtn -->
-								<button class="editbtn btn">
+								<button class="editbtn btn" data-productid="">
 
 									<!-- icon -->
 									<svg class="icon editpad" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -307,10 +441,16 @@
 								<!-- /editbtn -->
 								
 								<!-- form -->
-								<form class="form" action="index.php" method="post">
+								<form class="form" method="post" action="index.php">
+
+									<!-- input -->
+									<div class="input">
+										<input type="hidden" name="productid" value="">
+									</div>
+									<!-- /input -->
 
 									<!-- deletebtn -->
-									<button class="deletebtn btn" name="operation" value="Delete Product">
+									<button class="deletebtn btn" name="operation" value="Deleting Product">
 
 										<!-- icon -->
 										<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

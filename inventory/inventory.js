@@ -1,5 +1,6 @@
 
 // Get product data. 
+productdata;
 console.log(productdata);
 
 // Fill table. 
@@ -9,7 +10,7 @@ setTheTable();
 /*****/
 
 
-// Fill table. 
+// Fill table (read component). 
 function setTheTable() {
 
 	// Get body of inventory table. 
@@ -18,7 +19,12 @@ function setTheTable() {
 	
 	// Populate table with product data. 
 	let result = '';
-	for(let productitem of productdata) {
+	for(let index in productdata) {
+
+		// Get product item. 
+		let productitem = productdata[index];
+
+		// Append to result. 
 		result += `
 		<!-- row -->
 		<tr class="row">
@@ -45,7 +51,7 @@ function setTheTable() {
 			<td class="cell">
 
 				<!-- editbtn -->
-				<button class="editbtn btn">
+				<button class="editbtn btn" data-productid="${index}">
 
 					<!-- icon -->
 					<svg class="icon editpad" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -64,8 +70,14 @@ function setTheTable() {
 				<!-- form -->
 				<form class="form" action="index.php" method="post">
 
+					<!-- input -->
+					<div class="input">
+						<input type="hidden" name="productid" value="${index}">
+					</div>
+					<!-- /input -->
+
 					<!-- deletebtn -->
-					<button class="deletebtn btn" name="operation" value="Delete Product">
+					<button class="deletebtn btn" name="operation" value="Deleting Product">
 
 						<!-- icon -->
 						<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -101,7 +113,8 @@ function setTheTable() {
 
 		// Get edit buttons in inventory table. 
 		let editBtns = document.querySelectorAll('section#inventory table.table td.cell button.editbtn');
-		// Go thru edit buttons. 
+
+		// Activate edit buttons. 
 		for(let btn of editBtns) {
 			// Add click fucntion to button. 
 			btn.addEventListener('click',editItem);
@@ -109,19 +122,42 @@ function setTheTable() {
 
 		// Get delete buttons in inventory table. 
 		let deleteBtns = document.querySelectorAll('section#inventory table.table td.cell button.deletebtn');
-		// Go thru delete buttons. 
+
+		// Activate delete buttons. 
 		for(let btn of deleteBtns) {
 			// Add click fucntion to button. 
 			btn.addEventListener('click',deleteItem);
+		}
+
+		// Get table headers. 
+		let th = document.querySelectorAll('section#inventory table.table th.cell');
+
+		// Activate table headers. 
+		for(let btn of th) {
+			// Add click fucntion to button. 
+			btn.addEventListener('click',sortTableByColumn);
 		}
 	}
 }
 
 
 // TODO: Edit item. 
-function editItem() {
+function editItem(event) {
 
-	// Add metadata to updater overlay popup. 
+	// Get cliked edit button. 
+	let editbtn = event.currentTarget;
+
+	// Get product metadata. 
+	let productid = 1 * editbtn.getAttribute('data-productid');
+	let productname = productdata[productid].name;
+	let productprice = productdata[productid].price;
+	let productimageurl = productdata[productid].photourl;
+
+	// Add metadata to updater's overlay popup. 
+	document.getElementById('productid').value = productid;
+	document.getElementById('productname').value = productname;
+	document.getElementById('productprice').value = productprice;
+	// document.getElementById('productimageurl').value = productimageurl;
 
 	// Show updater overlay popup. 
 	openEditor();
@@ -138,8 +174,103 @@ function closeEditor() {
 }
 
 
+// TODO: Create item. 
+function createItem() {
+
+	// 
+}
+
+// TODO: Update item. 
+function updateItem() {
+
+	// 
+}
+
 // TODO: Delete item. 
 function deleteItem() {
 
 	// 
+}
+
+// Sort table by selected column. 
+function sortTableByColumn(event) {
+
+	// Get index of selected column. 
+	let selected_th = event.currentTarget;
+	let siblings = selected_th.parentElement.children;
+	let colindex = -1;
+	for(let i in siblings) {
+		let s = siblings[i];
+		if(s==selected_th) {
+			colindex = i;
+			break;
+		}
+	}
+	console.log('colindex:',colindex);
+
+	// Get all table headers. 
+	let tableheaders = document.querySelectorAll('section#inventory table.table th.cell');
+
+	// De-activate other table headers. 
+	for(let th of tableheaders) {
+		// Add click fucntion to button. 
+		th.classList.remove('sortsrc');
+	}
+
+	// Activate selected table header. 
+	let selected = event.currentTarget;
+	selected.classList.add('sortsrc');
+
+	// Put table rows in order. 
+	putRowsInOrder();
+
+	/*****/
+
+	// Put table rows in order. 
+	function putRowsInOrder() {
+
+		// Initialize index outside loop. 
+		let i = -1;
+
+		// Set initial sorting state. 
+		let stillswitching = true;
+		let switchRows = false;
+
+		// Get inventory table. 
+		let table = document.querySelector('section#inventory table.table');
+
+		// Continue switching until sorted properly. 
+		do {
+
+			// Set initial sorting state. 
+			stillswitching = false;
+
+			// Get all table rows. 
+			let allrows = table.rows;
+
+			// Go thru all table rows (except first 2 -- table header row & first data row) until switch found. 
+			for(i=2 ; i<allrows.length ; i++) {
+				switchRows = false;
+
+				// Get two rows to compare. 
+				let rowA = allrows[i-1];
+				let rowB = allrows[i];
+
+				// Get two cell values to compare. 
+				let a = rowA.getElementsByTagName('td')[colindex].innerHTML.toLowerCase();
+				let b = rowB.getElementsByTagName('td')[colindex].innerHTML.toLowerCase();
+
+				// Check if rows should switch. 
+				switchRows = (a > b);
+				if(switchRows) break;
+			}
+
+			// Switch rows. 
+			if(switchRows) {
+				let tbodyNode = allrows[i].parentNode;
+				tbodyNode.insertBefore(allrows[i], allrows[i-1]);
+				stillswitching = true;
+			}
+		} while(stillswitching);
+	}
 }
