@@ -7,13 +7,13 @@ let now = new Date().valueOf();
 /*****/
 
 
-// Load video on page. 
-loadVideoById(0);
+// Load initial video on page. 
+loadVideoById(currentvideoid);
 
 // Load video links. 
 loadVideoLinks();
 
-// Activate reaction buttons. 
+// Activate video reaction buttons. 
 activateReactBtns();
 
 
@@ -91,6 +91,23 @@ function loadVideoById(vidid) {
 	// 	notifbtn.classList.add('on');
 	// }
 	// else notifbtn.classList.remove('all','on');
+
+	// Activate action upon video ending. 
+	document.querySelector('main#main main.player div.vid video').addEventListener('ended', loadNextVideo);
+
+	// Load next video (if available). 
+	function loadNextVideo(event) {
+		console.log('Video has ended',event);
+
+		// Increment video index. 
+		currentvideoid++;
+
+		// Check for invalid index (past last video). 
+		let pastLastVideo = (currentvideoid >= videoData.length);
+
+		// TODO: Load next video (if available). 
+		if(!pastLastVideo) loadVideoById(currentvideoid);
+	}
 }
 
 
@@ -109,7 +126,7 @@ function loadVideoLinks() {
 		// Construct video item. 
 		result += `
 		<!-- viditem -->
-		<li class="viditem">
+		<li class="viditem${ (vidIndex==currentvideoid) ? (' active') : ('') }">
 
 			<!-- vidlink -->
 			<a class="vidlink" href="javascript:void(0)" data-id="${ vidIndex }">
@@ -200,8 +217,8 @@ function loadVideoLinks() {
 		highlightVideo();
 
 		// Load selected video on page. 
-		let id = event.currentTarget.getAttribute('data-id');
-		loadVideoById(id);
+		let currentvideoid = event.currentTarget.getAttribute('data-id');
+		loadVideoById(currentvideoid);
 
 		/*****/
 		
@@ -381,7 +398,7 @@ function activateReactBtns() {
 
 	// Attach function to all reaction buttons. 
 	// for(let btn of allreactbtns) {
-	// 	btn.addEventListener('click',reactToVideo);
+	// 	btn.addEventListener('click',toggleVideoReaction);
 	// }
 
 	// Activate like and dislike buttons. 
@@ -392,20 +409,20 @@ function activateReactBtns() {
 
 	// TODO: Activate share button. 
 	let sharebtn = document.getElementById('sharebtn');
-	sharebtn.addEventListener('click',reactToVideo);
+	sharebtn.addEventListener('click',toggleVideoReaction);
 
 	// TODO: Activate download button. 
 	let downloadbtn = document.getElementById('downloadbtn');
-	downloadbtn.addEventListener('click',reactToVideo);
+	downloadbtn.addEventListener('click',toggleVideoReaction);
 
 	// TODO: Activate save button. 
 	let savebtn = document.getElementById('savebtn');
-	savebtn.addEventListener('click',reactToVideo);
+	savebtn.addEventListener('click',toggleVideoReaction);
 
 	/*****/
 
-	// TODO: React to video. 
-	function reactToVideo(event) {
+	// Toggle video reaction. 
+	function toggleVideoReaction(event) {
 		// console.log('Reacting to video with btn:', event.currentTarget);
 		let btn = event.currentTarget;
 		btn.classList.toggle('active');
