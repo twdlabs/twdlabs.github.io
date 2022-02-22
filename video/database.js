@@ -1,14 +1,5 @@
 
 
-// Define current user. 
-let currentuserid = 0;
-
-// Define current video. 
-let currentvideoid = 10;
-
-
-/*****/
-
 
 // Define video data. 
 let videoData = [

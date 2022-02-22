@@ -37,11 +37,9 @@ div#container main#main main.player div.reaction div.btn {display:flex; flex-dir
 div#container main#main main.player div.reaction div.btn svg.icon {font-size:1rem;}
 div#container main#main main.player div.reaction div.btn span.caption {font-size:.6rem; margin-top:.35rem;}
 div#container main#main main.player div.reaction div.btn svg.icon.priori {display:block;}
-div#container main#main main.player div.reaction div.btn svg.icon.already {display:none;}
-div#container main#main main.player div.reaction div.btn div#playlistList {visibility:hidden; opacity:0; transform:translate(-50%,100%); transition:.5s;}
+div#container main#main main.player div.reaction div.btn svg.icon.posteriori {display:none;}
 div#container main#main main.player div.reaction div.btn.active svg.icon.priori {display:none;}
-div#container main#main main.player div.reaction div.btn.active svg.icon.already {display:block;}
-div#container main#main main.player div.reaction div.btn.active div#playlistList {visibility:visible; opacity:1; transform:translateX(-50%);}
+div#container main#main main.player div.reaction div.btn.active svg.icon.posteriori {display:block;}
 
 div#container main#main main.player div.channel {padding:.5rem; border-top:1px solid #0002;}
 div#container main#main main.player div.channel {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
@@ -77,6 +75,11 @@ div#container main#main main.player div.channel div.subbtns div#subbtn.active + 
 
 
 /* 'Save to Playlist' List */
+
+/* div#container main#main main.player div.reaction div.btn +  */
+div#container div#playlistList {visibility:hidden; opacity:0; transform:translate(-50%,100%); transition:.5s;}
+/* div#container main#main main.player div.reaction div.btn.active +  */
+div#container div#playlistList.active {visibility:visible; opacity:1; transform:translateX(-50%);}
 
 div#container div#playlistList {position:fixed; bottom:0; left:50%; width:100%; max-width:20rem;}
 div#container div#playlistList {background-color:#222; color:white; font-size:.75rem; user-select:none;}
