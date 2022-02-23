@@ -1,0 +1,30 @@
+
+
+* {box-sizing:border-box;}
+
+
+body {font-family:sans-serif; margin:0;}
+
+
+div#container {background-color:#181818; display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.main {background-color:black; font-size:1.25rem; display:flex; flex-direction:row; align-items:center; border-radius:20rem; position:relative;}
+
+div#container main.main div.choice {text-align:center; /* padding:0 1rem; */ z-index:20;}
+div#container main.main div.choice label {display:block; color:#fff8; white-space:nowrap; min-width:10em; padding:1.25rem 1rem; cursor:pointer; user-select:none; transition:.25s;}
+div#container main.main div.choice input {display:none;}
+div#container main.main div.choice input:checked + label {color:white;}
+
+div#container main.main div.switch {position:absolute; bottom:0; left:0; height:100%; min-width:10em; z-index:10;}
+div#container main.main div.switch {background-color:#2d2d2d; border-radius:inherit; transform:none; transition:.25s, height 0s;}
+div#container main.main.a div.switch {transform:translateX(0);}
+div#container main.main.b div.switch {transform:translateX(100%);}
+div#container main.main.c div.switch {transform:translateX(200%);}
+
+
+@media screen and (max-width:48rem) {
+	/* div#container {background-color:greenyellow;} */
+	div#container main.main {font-size:1rem; border-radius:0; /* overflow:hidden; */}
+	div#container main.main div.choice label {min-width:8em; padding:.75rem .25rem;}
+	div#container main.main div.switch {min-width:8em; height:.125rem;}
+}
