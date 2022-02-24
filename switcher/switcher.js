@@ -30,7 +30,10 @@ function selectChoice(event) {
 	// Get selected link. 
 	let selectedLink = event.currentTarget;
 	let value = selectedLink.children[0].value;
+	let nav = document.querySelector('nav.nav');
 	let main = document.querySelector('main.main');
+	nav.classList.remove('a','b','c');
+	nav.classList.add(value);
 	main.classList.remove('a','b','c');
 	main.classList.add(value);
 
