@@ -1,0 +1,49 @@
+
+
+
+* {box-sizing:border-box;}
+
+
+
+body {font-family:sans-serif; margin:0;}
+
+
+
+div#container {background-color:dodgerblue; /* background-image:linear-gradient(135deg,dodgerblue,white); */ background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%);}
+div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; min-height:100vh; padding:1rem;}
+div#container {perspective:75rem;}
+
+
+div#container nav {background-color:white; width:100%; max-width:28rem; padding:1rem; border-radius:.5rem; margin:.5rem;}
+div#container nav.quads {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.75rem;}
+div#container nav.quads div.quadrant {min-width:8rem; min-height:8rem; border-radius:.5rem; overflow:hidden; position:relative;}
+div#container nav.quads div.quadrant img.bg {display:none;}
+div#container nav.quads div.quadrant img.bg {position:absolute; height:100%; width:100%; z-index:10; object-fit:cover;}
+div#container nav.quads div.quadrant a.link {position:absolute; height:100%; width:100%; z-index:20;}
+div#container nav.quads div.quadrant a.link {background-color:#0008; color:inherit; /* color:white; */ display:grid; place-items:center; text-decoration:none;}
+/* div#container nav.quads div.quadrant a.link span.caption {} */
+div#container nav.quads div.quadrant span.tooltip {position:absolute; top:50%; left:50%; transform:translate(-50%,1rem); z-index:10;}
+div#container nav.quads div.quadrant span.tooltip {background-color:#333; color:white; font-size:.75rem; text-align:center; white-space:nowrap; padding:.375rem .75rem; border-radius:.25rem;}
+div#container nav.quads div.quadrant span.tooltip::before {position:absolute; bottom:100%; left:50%; transform:translateX(-50%);}
+div#container nav.quads div.quadrant span.tooltip::before {content:''; display:block; width:0; height:0; border:.5rem solid transparent; border-bottom-color:#333;}
+div#container nav.quads div.quadrant span.tooltip {visibility:hidden; opacity:0; transition:.125s;}
+div#container nav.quads div.quadrant:hover span.tooltip {visibility:visible; opacity:1;}
+
+
+div#container main.main {width:100%; max-width:64rem; margin:.5rem 0; overflow:hidden;}
+div#container main.main div.inner {display:flex; flex-direction:row; align-items:stretch; transition:.5s;}
+div#container main.main.bank div.inner {transform:translateX(0);}
+div#container main.main.taxes div.inner {transform:translateX(-100%);}
+div#container main.main.invest div.inner {transform:translateX(-200%);}
+div#container main.main.insurance div.inner {transform:translateX(-300%);}
+
+div#container main.main article {background-color:#FFF4; flex-shrink:0; width:100%; padding:1rem; border-radius:.5rem;}
+div#container main.main article section {background-color:white; padding:1rem; border-radius:.5rem;}
+div#container main.main article section.buckets {display:flex; flex-direction:row; justify-content:center; align-items:center; counter-reset:n;}
+div#container main.main article section.buckets {transform:none; transform-style:preserve-3d; transition:.5s;}
+/* div#container main.main article section.buckets:hover {transform:rotateX(60deg); transform:rotateX(80deg);} */
+div#container main.main article section.buckets div.bucket {background-color:#0008; min-width:3rem; min-height:3rem; border-radius:50%; margin:0 .5rem; margin-bottom:.75rem;}
+div#container main.main article section.buckets div.bucket {transform:translateZ(2rem); position:relative;}
+div#container main.main article section.buckets div.bucket::before {position:absolute; top:100%; left:50%; transform:translateX(-50%) rotateX(-45deg);}
+div#container main.main article section.buckets div.bucket::before {content:'Bucket 'counter(n); counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
+
