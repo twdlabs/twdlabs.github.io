@@ -43,6 +43,7 @@ div#container main article#chat section#msghistory div.inner div.msgblock div.ti
 div#container main article#chat section#msghistory div.inner div.msgblock div.content {display:flex;}
 div#container main article#chat section#msghistory div.inner div.msgblock.r div.content {/* align-self:flex-start; */ flex-direction:row;}
 div#container main article#chat section#msghistory div.inner div.msgblock.s div.content {/* align-self:flex-end; */ flex-direction:row-reverse;}
+
 div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar {flex-grow:0; padding:0 .5rem;}
 div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar {display:flex; flex-direction:column; justify-content:flex-end;}
 div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar img {max-width:2rem; max-height:2rem; object-fit:cover; border-radius:50%; filter:grayscale(.25);}
@@ -59,9 +60,17 @@ div#container main article#chat section#msghistory div.inner div.msgblock.r div.
 div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble {background-color:var(--black); color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
 div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
 div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
+
 div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption {line-height:1.25; font-size:.875rem;}
 /* div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption:empty::after {content:'...'; color:transparent;} */
 div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.timestamp {position:absolute; left:0; top:50%; transform:translate(-100%,-50%);}
+
+/* div#container main article#chat section#msghistory div.inner div.msgblock.r + div.msgblock.r {margin-top:0;} */
+/* div#container main article#chat section#msghistory div.inner div.msgblock.s + div.msgblock.s {margin-top:0;} */
+/* div#container main article#chat section#msghistory div.inner div.msgblock.r + div.msgblock.r div.timestamp {display:none;} */
+/* div#container main article#chat section#msghistory div.inner div.msgblock.s + div.msgblock.s div.timestamp {display:none;} */
+/* div#container main article#chat section#msghistory div.inner div.msgblock.r + div.msgblock.r div.content div.avatar {visibility:hidden;} */
+/* div#container main article#chat section#msghistory div.inner div.msgblock.s + div.msgblock.s div.content div.avatar {visibility:hidden;} */
 
 
 /* Message Composer Section */

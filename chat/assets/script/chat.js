@@ -3,40 +3,29 @@
 
 // Refresh messages in thread. 
 function refreshMsgHistory() {
-	// console.log('Refreshing message thread...');
+	console.log('\nRefreshing message thread...');
 
 	// Find all messages relevant to current user cohort. 
-	let relevantMessages = findMessagesBtwn(currentUserId,currentRecipientId);
+	let relevantMessages = findRelevantMessages(currentUserId,currentRecipientId);
+	
+	// Load message history into thread. 
+	let msgblocks = createMessageBlocks(relevantMessages);
+	let msghistorycontainer = document.querySelector('article.thread section#msghistory div.inner');
+	msghistorycontainer.innerHTML = msgblocks;
 
-	// Load message thread history. 
-	{
-
-		// Initiate result. 
-		let result = '';
-	
-		// Accumulate message data. 
-		for(let item of relevantMessages) {
-			result += createMessageBlock(item);
-		}
-	
-		// Add messages into thread. 
-		document.querySelector('article.thread section#msghistory div.inner').innerHTML = result;
-	
-		/*****/
-	
-		// Scroll to bottom of message history thread. 
-		let msghistory = document.getElementById('msghistory');
-		msghistory.scrollTop = msghistory.scrollHeight;
-	}
+	// Scroll to bottom of message history thread. 
+	let msghistory = document.getElementById('msghistory');
+	msghistory.scrollTop = msghistory.scrollHeight;
 
 
 	/*****/
+
 	
-
 	// Find all messages relevant to current user cohort. 
-	function findMessagesBtwn(idA,idB) {
-		console.log('\n\nGetting all messages between users: ',idA, 'and',idB);
+	function findRelevantMessages(idA,idB) {
+		console.log('\nGetting all messages between users:',idA, 'and',idB);
 
+		// Initialize list of relevant messages. 
 		let result = [];
 
 		// Go thru message data. 
@@ -52,8 +41,11 @@ function refreshMsgHistory() {
 				if(foundMatchingMsg) result.push(currentMessageObject);
 		}
 
-		// 
-		console.log('result', result.sort(timeSorter) );
+		// Sort messages. 
+		result.sort(timeSorter);
+
+		// Return relevant messages. 
+		console.log('Relevant messages:', result/* , result.map((item)=>{return item.messagetext;}) */ );
 		return result;
 
 		/*****/
@@ -64,68 +56,157 @@ function refreshMsgHistory() {
 		}
 	}
 
-	// Create message block. 
-	function createMessageBlock(msgitem) {
+	// Create message blocks. 
+	function createMessageBlocks(relevantMessages) {
+		console.log('\nCreating message blocks...');
 
-		return `
-		<!-- msgblock -->
-		<div class="msgblock ${ (msgitem.senderid==currentUserId) ? ('s') : ('r')}">
+		// Set time boundary for attached messages (1 min = 60 sec = 60,000 ms). 
+		const dt = 60000;
 
-			<!-- timestamp -->
-			<div class="timestamp">${ formatDate(msgitem.timestamp) }</div>
-			<!-- /timestamp -->
+		// Initiate result of all message blocks. 
+		let result = '';
 
-			<!-- content -->
-			<div class="content">
 	
-				<!-- avatar -->
-				<div class="avatar">
-					<img src="${userData[msgitem.senderid].avatarurl}">
-				</div>
-				<!-- /avatar -->
-	
-				<!-- block -->
-				<div class="block">
+		// Accumulate message data for each block and create each block. 
+		for(let index=0 ; index<relevantMessages.length ; index++) {
+			console.log('\n\trelevantMessages index:',index);
+
+			// Get message item. 
+			let msgitem = relevantMessages[index];
+			console.log('\tCurrent message item:',msgitem);
+
+			// Begin message block. 
+			result += beginMessageBlock(msgitem);
+
+			// Start preparing message block data. 
+			let msgblockdata = [  ];
+
+			// {
+
+			// 	// Set initial values of logic testers. 
+			// 	let keepGoing = true;
+			// 	let nextMsgItem = undefined;
+			// 	let matchingMsgMetadata = false;
+			// 	let proximalMsgTime = false;
+			// 	let stillSameBlock = true;
+
+			// 	// 
+			// 	while(stillSameBlock) {
+
+			// 		// Increment index. 
+			// 		index++;
+
+			// 		// Get message item. 
+			// 		msgitem = relevantMessages[index];
+			// 		msgblockdata.push(msgitem);
 					
-					<!-- bubble -->
-					<div class="bubble">
+			// 		// Refresh values of logic testers. 
+			// 		keepGoing = (index+1)<relevantMessages.length;
+			// 		nextMsgItem = keepGoing && relevantMessages[index+1];
+			// 		matchingMsgMetadata = keepGoing && (msgitem.senderid==nextMsgItem.senderid) && (msgitem.recipientid==nextMsgItem.recipientid);
+			// 		proximalMsgTime = keepGoing && (nextMsgItem.timestamp - msgitem.timestamp)<dt;
+			// 		stillSameBlock = keepGoing && matchingMsgMetadata && proximalMsgTime;
+			// 		console.log('\tNext message item:',nextMsgItem);
+			// 		console.log('\tKeep going ?',keepGoing);
+			// 		console.log('\tMatching message metadata ?',matchingMsgMetadata);
+			// 		console.log('\tProximal message time:',proximalMsgTime);
+			// 		console.log('\tStill in same block ?',stillSameBlock);
+			// 	}
+			// }
+			
+			// Fill message block. 
+			result += fillMessageBlock( msgblockdata );
 
-						<!-- caption -->
-						<span class="caption">${msgitem.messagetext}</span>
-						<!-- /caption -->
-						
+			// End message block. 
+			result += endMessageBlock();
+		}
+
+
+		// Return result of all message blocks. 
+		return result;
+
+		/*****/
+
+		// Begin message block. 
+		function beginMessageBlock(msgitem) {
+
+			// 
+			return `
+			<!-- msgblock -->
+			<div class="msgblock ${ (msgitem.senderid==currentUserId) ? ('s') : ('r')}">
+
+				<!-- timestamp -->
+				<div class="timestamp">${ formatDate(msgitem.timestamp) }</div>
+				<!-- /timestamp -->
+
+				<!-- content -->
+				<div class="content">
+		
+					<!-- avatar -->
+					<div class="avatar">
+						<img src="${userData[msgitem.senderid].avatarurl}">
 					</div>
-					<!-- /bubble -->
+					<!-- /avatar -->
+		
+					<!-- block -->
+					<div class="block">`;
+
+			/*****/
+
+			// Format date (given milliseconds from start point). 
+			function formatDate(nummilliseconds) {
+
+				// Define days. 
+				const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat',];
+				// Define months. 
+				const months = ['Jan','Feb','Mar', 'Apr','May','Jun', 'Jul','Aug','Sep', 'Oct','Nov','Dec'];
+
+				// Create date/time object. 
+				const d = new Date(nummilliseconds);
+				let day = days[d.getDay()];
+				let year = d.getFullYear();
+				let month = months[d.getMonth()];
+				let date = d.getDate();
+				let hour = d.getHours();
+				let minute = d.getMinutes();
+				let result = `${day}, ${year} ${month} ${date}, ${ (hour) ? (hour%12) : ('12') }:${ (minute<10) ? ('0'+minute) : (minute) } ${ (hour<12) ? ('AM') : ('PM') }`;
+
+				return result;
+			}
+		}
+
+		// Fill message block. 
+		function fillMessageBlock(msgblockitems) {
+
+			// 
+			for(let msgitem of msgblockitems) {
+				return `
+				<!-- bubble -->
+				<div class="bubble">
+		
+					<!-- caption -->
+					<span class="caption">${msgitem.messagetext}</span>
+					<!-- /caption -->
 					
 				</div>
-				<!-- /block -->
+				<!-- /bubble -->`;
+			}
+		}
+
+		// End message block. 
+		function endMessageBlock() {
+
+			// 
+			return `
+					</div>
+					<!-- /block -->
+
+				</div>
+				<!-- /content -->
 
 			</div>
-			<!-- /content -->
-
-		</div>
-		<!-- /msgblock -->`;
-	}
-
-	// Format date (given milliseconds from start point). 
-	function formatDate(nummilliseconds) {
-
-		// Define days. 
-		const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat',];
-		// Define months. 
-		const months = ['Jan','Feb','Mar', 'Apr','May','Jun', 'Jul','Aug','Sep', 'Oct','Nov','Dec'];
-
-		// Create date/time object. 
-		const d = new Date(nummilliseconds);
-		let day = days[d.getDay()];
-		let year = d.getFullYear();
-		let month = months[d.getMonth()];
-		let date = d.getDate();
-		let hour = d.getHours();
-		let minute = d.getMinutes();
-		let result = `${day}, ${year} ${month} ${date}, ${ (hour) ? (hour%12) : ('12') }:${ (minute<10) ? ('0'+minute) : (minute) } ${ (hour<12) ? ('AM') : ('PM') }`;
-
-		return result;
+			<!-- /msgblock -->`;
+		}
 	}
 }
 
