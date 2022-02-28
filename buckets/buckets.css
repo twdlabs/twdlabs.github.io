@@ -1,20 +1,25 @@
 
 
-
 * {box-sizing:border-box;}
 
 
+:root {
+	--frost:#FFF4;
+	
+}
 
+
+html {background-color:#0A1857;}
 body {font-family:sans-serif; margin:0;}
 
 
 
-div#container {background-color:dodgerblue; /* background-image:linear-gradient(135deg,dodgerblue,white); */ background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%);}
-div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; min-height:100vh; padding:1rem;}
-div#container {perspective:75rem;}
+/* div#container {background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%);} */
+div#container {background:#0A1857 linear-gradient(135deg,#0A1857,#08209A); display:flex; flex-direction:column; justify-content:flex-start; align-items:center; min-height:100vh; /* padding:1rem; */}
+div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; perspective:75rem;}
 
 
-div#container nav {background-color:white; width:100%; max-width:28rem; padding:1rem; border-radius:.5rem; margin:.5rem;}
+div#container nav.quads {background-color:white; width:100%; max-width:28rem; padding:1rem; border-radius:.5rem; margin:.5rem;}
 div#container nav.quads {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.75rem;}
 div#container nav.quads div.quadrant {min-width:8rem; min-height:8rem; border-radius:.5rem; overflow:hidden; position:relative;}
 div#container nav.quads div.quadrant img.bg {display:none;}
@@ -28,22 +33,46 @@ div#container nav.quads div.quadrant span.tooltip::before {position:absolute; bo
 div#container nav.quads div.quadrant span.tooltip::before {content:''; display:block; width:0; height:0; border:.5rem solid transparent; border-bottom-color:#333;}
 div#container nav.quads div.quadrant span.tooltip {visibility:hidden; opacity:0; transition:.125s;}
 div#container nav.quads div.quadrant:hover span.tooltip {visibility:visible; opacity:1;}
+div#container nav.quads {display:none;}
 
 
-div#container main.main {width:100%; max-width:64rem; margin:.5rem 0; overflow:hidden;}
-div#container main.main div.inner {display:flex; flex-direction:row; align-items:stretch; transition:.5s;}
+div#container nav.switcher {display:flex; justify-content:center;}
+div#container nav.switcher ul.navlist {background-color:var(--frost); list-style:none; padding:0; /* border-radius:20rem; */ margin:0; overflow:hidden;}
+div#container nav.switcher ul.navlist {display:flex; flex-jdirection:row; justify-content:center; align-items:center; position:relative;}
+div#container nav.switcher ul.navlist li {min-width:8rem; border-radius:inherit;}
+div#container nav.switcher ul.navlist li.navitem {text-align:center; padding:1rem 1rem; z-index:20;}
+div#container nav.switcher ul.navlist li.navitem input {display:none;}
+div#container nav.switcher ul.navlist li.navitem label.navlabel {display:block; cursor:pointer; user-select:none;}
+div#container nav.switcher ul.navlist li.navitem label.navlabel {color:#BBB; transition:.5s;}
+div#container nav.switcher ul.navlist li.navitem input:checked + label.navlabel {color:white;}
+/* div#container nav.switcher ul.navlist li.switch {display:none;} */
+div#container nav.switcher ul.navlist li.switch {position:absolute; bottom:0; left:0; height:100%; height:.125rem; z-index:10;}
+div#container nav.switcher ul.navlist li.switch {background-color:#EEE; transition:.5s;}
+
+
+
+div#container main.main {background-color:var(--frost); border-radius:.5rem; flex-grow:1;}
+div#container main.main {width:100%; max-width:64rem; /* margin:.5rem 0; */ overflow:hidden;}
+div#container main.main div.inner {display:flex; flex-direction:row; align-items:stretch; min-height:100%; transition:.5s;}
 div#container main.main.bank div.inner {transform:translateX(0);}
 div#container main.main.taxes div.inner {transform:translateX(-100%);}
 div#container main.main.invest div.inner {transform:translateX(-200%);}
 div#container main.main.insurance div.inner {transform:translateX(-300%);}
 
-div#container main.main article {background-color:#FFF4; flex-shrink:0; width:100%; padding:1rem; border-radius:.5rem;}
+div#container main.main article {flex-shrink:0; width:100%; min-height:100%; padding:1rem;}
+div#container main.main article h2.head {font-size:1.5rem; font-weight:100; margin:0; margin-bottom:1rem;}
 div#container main.main article section {background-color:white; padding:1rem; border-radius:.5rem;}
 div#container main.main article section.buckets {display:flex; flex-direction:row; justify-content:center; align-items:center; counter-reset:n;}
 div#container main.main article section.buckets {transform:none; transform-style:preserve-3d; transition:.5s;}
-/* div#container main.main article section.buckets:hover {transform:rotateX(60deg); transform:rotateX(80deg);} */
+div#container main.main article:hover section.buckets {transform:rotateX(60deg); transform:rotateX(80deg);}
 div#container main.main article section.buckets div.bucket {background-color:#0008; min-width:3rem; min-height:3rem; border-radius:50%; margin:0 .5rem; margin-bottom:.75rem;}
 div#container main.main article section.buckets div.bucket {transform:translateZ(2rem); position:relative;}
 div#container main.main article section.buckets div.bucket::before {position:absolute; top:100%; left:50%; transform:translateX(-50%) rotateX(-45deg);}
 div#container main.main article section.buckets div.bucket::before {content:'Bucket 'counter(n); counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
 
+
+
+@media screen and (max-width:30rem) {
+	div#container nav.quads {display:grid;}
+	div#container nav.switcher {display:none;}
+}
