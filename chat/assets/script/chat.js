@@ -5,25 +5,35 @@
 function refreshMsgHistory() {
 	console.log('\nRefreshing message thread...');
 
+
 	// Find all messages relevant to current user cohort. 
 	let relevantMessages = findRelevantMessages(currentUserId,currentRecipientId);
+	console.log('\tRelevant messages:', relevantMessages);
+
+	// Create separate groups of messages from original list of messages. 
+	let allMessageGroups = createSeparateMessageGroups(relevantMessages);
+	console.log('\tAll message groups:', allMessageGroups);
+
+	// Create message history layout (grouped by time proximity) from time-linked groups of messages. 
+	let msgThreadLayout = createMessageLayout(allMessageGroups);
+	// console.log('\tMessage thread layout:', msgThreadLayout);
 	
 	// Load message history into thread. 
-	let msgblocks = createMessageBlocks(relevantMessages);
-	let msghistorycontainer = document.querySelector('article.thread section#msghistory div.inner');
-	msghistorycontainer.innerHTML = msgblocks;
+	document.querySelector('article.thread section#msghistory div.inner').innerHTML = msgThreadLayout;
 
-	// Scroll to bottom of message history thread. 
-	let msghistory = document.getElementById('msghistory');
-	msghistory.scrollTop = msghistory.scrollHeight;
+	// Scroll to bottom of message history thread box. 
+	let msghistorybox = document.getElementById('msghistory');
+	msghistorybox.scrollTop = msghistorybox.scrollHeight;
 
 
 	/*****/
 
 	
-	// Find all messages relevant to current user cohort. 
+	// Find all messages relevant to current user cohort (sorted in time order). 
 	function findRelevantMessages(idA,idB) {
-		console.log('\nGetting all messages between users:',idA, 'and',idB);
+		console.log('\nGetting messages between two users...');
+		console.log('\tThis userid:',idA);
+		console.log('\tOther userid:',idB);
 
 		// Initialize list of relevant messages. 
 		let result = [];
@@ -45,7 +55,7 @@ function refreshMsgHistory() {
 		result.sort(timeSorter);
 
 		// Return relevant messages. 
-		console.log('Relevant messages:', result/* , result.map((item)=>{return item.messagetext;}) */ );
+		// console.log('\nRelevant messages:\n', result/* , result.map((item)=>{return item.messagetext;}) */ );
 		return result;
 
 		/*****/
@@ -56,71 +66,179 @@ function refreshMsgHistory() {
 		}
 	}
 
-	// Create message blocks. 
-	function createMessageBlocks(relevantMessages) {
-		console.log('\nCreating message blocks...');
+	// TODO: Create separate groups of messages from original list of messages. Transform 1D array into new 2D array. 
+	function createSeparateMessageGroups(messageList) {
+		console.log('\nCreating separate groups of messages...');
 
-		// Set time boundary for attached messages (1 min = 60 sec = 60,000 ms). 
-		const dt = 60000;
 
-		// Initiate result of all message blocks. 
+		// Intialize resulting list of message groups. 
+		let messageGroupList = [];
+
+		// Intialize number of message groups (also used as group index). 
+		let numGroups = 0;	// = messageGroupList.length;
+
+		// Go thru message list items to separate into list of grouped message items. 
+		for(let i=0 ; i<messageList.length ; i++) {
+
+			if(sameGroupAsLastOne) numGroups++;
+		}
+
+		// Intialize loop counter. 
+		// let i = 0;
+		// while(i<messageList.length) {
+
+			// Create variable for message group. 
+			let messageGroup;
+
+			// Get current message item. 
+			let currentmsgitem = messageList[i];
+			// console.log('\tCurrent message item:', currentmsgitem);
+			// console.log('\t\tSender id:', currentmsgitem.senderid);
+			// console.log('\t\tRecipient id:', currentmsgitem.recipientid);
+			// console.log('\t\tTime stamp:', currentmsgitem.timestamp);
+			// console.log('\t\tMessage content:', currentmsgitem.messagetext);
+
+
+
+
+			// Open message group. 
+			/* if() */ messageGroup = openMessageGroup();
+
+			// Add to current message group. 
+			addItemToMessageGroup(currentmsgitem);
+
+
+			// TODO: Check if next message available. 
+			let nextMessageAvailable = ( (i+1) < messageList.length );
+			
+			// TODO: 
+			if(nextMessageAvailable) {
+
+				// Check if same sender as previous message. 
+				let sameSender = ( messageList[i].senderid == messageList[i+1].senderid );
+
+				// 
+				if(sameSender) {
+
+					// Determine whether or not to remain in current message group -- based on (a) message availability, and (b) proximity to last message in group. 
+					let remainInCurrentMsgGroup = checkForTimeProximity( messageList[i], messageList[i+1] );
+					
+					// Add to current message group while more messages and still close to last message. 
+					if(remainInCurrentMsgGroup) {
+						while(remainInCurrentMsgGroup) {
+							
+							// Get next message item. 
+							currentmsgitem = messageList[++i];
+			
+							// 
+							messageGroup.push(currentmsgitem);
+			
+							// Check if next message available. 
+							nextMessageAvailable = (i+1) < messageList.length;
+							// Determine whether or not to remain in current message group -- based on (a) message availability, and (b) proximity to last message in group. 
+							remainInCurrentMsgGroup = nextMessageAvailable && checkForTimeProximity( messageList[i], messageList[i+1] );
+						}
+					}
+				}
+			}
+
+
+			// Close message group. 
+			/* if() */ closeMessageGroup();
+
+
+			
+			// Increment counter after iteration. 
+			// i++;
+		// }
+
+		// Return resulting list of message groups. 
+		// console.log('\tList of message groups:',messageGroupList);
+		return messageGroupList;
+
+		/*****/
+
+		// TODO: Open message group. 
+		function openMessageGroup() {
+
+			// Initialize new message group. 
+			return [];
+		}
+
+		// TODO: Add to current message group. 
+		function addItemToMessageGroup(msgitem) {
+
+			// Include current message item in current message group. 
+			messageGroup.push(msgitem);
+			// console.log('\tCurrent message group:',messageGroup);
+		}
+
+		// TODO: Close message group. 
+		function closeMessageGroup() {
+
+			// Save current message group to group list. 
+			messageGroupList.push(messageGroup);
+		}
+
+		// Check for time proximity btwn two messages. 
+		function checkForTimeProximity(msgitemA,msgitemB) {
+
+			// Define temporal proximity boundary for message grouping. 
+			const dtDistantBoundary = 4800000;	// 80 min = 4,800 sec = 4,800,000 ms
+			// Define temporal proximity boundary for closely attached messages. 
+			// const dtCloseBoundary = 60000;		// 1 min = 60 sec = 60,000 ms
+
+			// Get timestamp of messages (in ms). 
+			timeA = msgitemA.timestamp;
+			timeB = msgitemB.timestamp;
+
+			// Get time difference (in ms), assuming (time of message B) is after (time of message A). 
+			let dt = timeB - timeA;
+
+			return (dt < dtDistantBoundary);
+		}
+
+		/*****/
+
+		// Delete all this: Accumulate message data for each block and create each block. 
+
+		// Get message item. 
+		let msgitem = messageList[index];
+
+		// Add message item to group. 
+		msgblocks.push(msgitem);
+
+		// Set values of logic testers. 
+		let keepGoing = true;
+		keepGoing = (index+1)<messageList.length;
+		let nextMsgItem = undefined;
+		nextMsgItem = keepGoing && messageList[index+1];
+		let matchingMsgMetadata = false;
+		matchingMsgMetadata = keepGoing && (msgitem.senderid==nextMsgItem.senderid) && (msgitem.recipientid==nextMsgItem.recipientid);
+		let proximalMsgTime = false;
+		proximalMsgTime = keepGoing && (nextMsgItem.timestamp - msgitem.timestamp)<dt;
+		let stillSameBlock = true;
+		stillSameBlock = keepGoing && matchingMsgMetadata && proximalMsgTime;
+	}
+
+	// Create message history layout (grouped by time proximity) from time-linked groups of messages. 
+	function createMessageLayout(messageBlockList) {
+		console.log('\nCreating layout from message blocks...');
+		// console.log('\tmessageBlockList:',messageBlockList);
+
+		// Initiate resulting message layout. 
 		let result = '';
 
-	
-		// Accumulate message data for each block and create each block. 
-		for(let index=0 ; index<relevantMessages.length ; index++) {
-			console.log('\n\trelevantMessages index:',index);
-
-			// Get message item. 
-			let msgitem = relevantMessages[index];
-			console.log('\tCurrent message item:',msgitem);
-
+		// 
+		for(let msgBlock of messageBlockList) {
+			let firstmsgitem = msgBlock[0];
 			// Begin message block. 
-			result += beginMessageBlock(msgitem);
-
-			// Start preparing message block data. 
-			let msgblockdata = [  ];
-
-			// {
-
-			// 	// Set initial values of logic testers. 
-			// 	let keepGoing = true;
-			// 	let nextMsgItem = undefined;
-			// 	let matchingMsgMetadata = false;
-			// 	let proximalMsgTime = false;
-			// 	let stillSameBlock = true;
-
-			// 	// 
-			// 	while(stillSameBlock) {
-
-			// 		// Increment index. 
-			// 		index++;
-
-			// 		// Get message item. 
-			// 		msgitem = relevantMessages[index];
-			// 		msgblockdata.push(msgitem);
-					
-			// 		// Refresh values of logic testers. 
-			// 		keepGoing = (index+1)<relevantMessages.length;
-			// 		nextMsgItem = keepGoing && relevantMessages[index+1];
-			// 		matchingMsgMetadata = keepGoing && (msgitem.senderid==nextMsgItem.senderid) && (msgitem.recipientid==nextMsgItem.recipientid);
-			// 		proximalMsgTime = keepGoing && (nextMsgItem.timestamp - msgitem.timestamp)<dt;
-			// 		stillSameBlock = keepGoing && matchingMsgMetadata && proximalMsgTime;
-			// 		console.log('\tNext message item:',nextMsgItem);
-			// 		console.log('\tKeep going ?',keepGoing);
-			// 		console.log('\tMatching message metadata ?',matchingMsgMetadata);
-			// 		console.log('\tProximal message time:',proximalMsgTime);
-			// 		console.log('\tStill in same block ?',stillSameBlock);
-			// 	}
-			// }
-			
+			result += beginMessageBlock(firstmsgitem);
 			// Fill message block. 
-			result += fillMessageBlock( msgblockdata );
-
+			result += fillMessageBlock(msgBlock);
 			// End message block. 
 			result += endMessageBlock();
 		}
-
 
 		// Return result of all message blocks. 
 		return result;
@@ -177,20 +295,28 @@ function refreshMsgHistory() {
 
 		// Fill message block. 
 		function fillMessageBlock(msgblockitems) {
+			// console.log('\tmsgblockitems:',msgblockitems);
 
-			// 
+			// Initiate result. 
+			let result = '';
+
+			// Add to result. 
 			for(let msgitem of msgblockitems) {
-				return `
-				<!-- bubble -->
-				<div class="bubble">
-		
-					<!-- caption -->
-					<span class="caption">${msgitem.messagetext}</span>
-					<!-- /caption -->
-					
-				</div>
-				<!-- /bubble -->`;
+				result += `
+
+						<!-- bubble -->
+						<div class="bubble">
+				
+							<!-- caption -->
+							<span class="caption">${msgitem.messagetext}</span>
+							<!-- /caption -->
+							
+						</div>
+						<!-- /bubble -->`;
 			}
+
+			// Return result. 
+			return result;
 		}
 
 		// End message block. 
@@ -198,6 +324,7 @@ function refreshMsgHistory() {
 
 			// 
 			return `
+
 					</div>
 					<!-- /block -->
 
