@@ -4,7 +4,12 @@
 const sectionNames = ['overview','bank','taxes','invest','insurance'];
 
 // Define month labels. 
-const monthLabels = ['J','F','M', 'A','M','J', 'J','A','S', 'O','N','D'];
+const monthLabels = [
+	'J','F','M', 
+	'A','M','J', 
+	'J','A','S', 
+	'O','N','D',
+];
 
 // Define navigation data. 
 const navdata = [
