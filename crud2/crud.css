@@ -1,0 +1,62 @@
+
+:root {
+	--red:#DC153B;
+	--red:#FB3F41;
+	--blue:#0179FF;
+	--green:#29AF60;
+}
+
+
+
+* {box-sizing:border-box;}
+
+
+
+body {font-family:sans-serif; margin:0;}
+
+
+
+
+div#container {background-color:white; min-height:100vh; padding:1rem; margin-top:2.5rem;}
+div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center;}
+
+
+div#container main {width:100%; border-radius:.25rem; margin:1rem auto;}
+
+
+div#container main#adder {background-color:#EEE; color:#444; max-width:24rem; padding:1rem;}
+div#container main#adder h1.head {font-size:1.5rem; font-weight:500; text-transform:uppercase; text-align:center; margin:0; margin-top:.5rem;}
+
+div#container main#adder div.input {margin-top:1rem;}
+div#container main#adder div.input input {background-color:white; width:100%; padding:.75rem 1rem; border:0 none; border-radius:.25rem;}
+div#container main#adder div.input input.btn {background-color:var(--blue); color:white; font-size:inherit; cursor:pointer; transition:.125s;}
+div#container main#adder div.input input.btn:hover {background-color:#333;}
+
+
+div#container main#table {background-color:white; color:#444; max-width:52rem; overflow:auto;}
+/* div#container main#table div.row {display:flex; flex-direction:row; justify-content:space-between;} */
+/* div#container main#table div.row div.cell {} */
+div#container main#table table.table {width:100%;}
+/* div#container main#table table.table tr.row {} */
+div#container main#table table.table th.head {background-color:#EEE; padding:.5rem; /* border:1px solid; */}
+div#container main#table table.table th.head h2.head {font-size:1.125rem; font-weight:500; text-align:center; margin:0;}
+div#container main#table table.table td.cell {/* font-size:1.25em; */ height:4rem; text-align:center; padding:.75rem; /* border:1px solid; */}
+div#container main#table table.table td.cell img {height:6rem; width:100%; object-fit:cover;}
+div#container main#table table.table td.cell div.btn {display:flex; justify-content:center; align-items:center;}
+div#container main#table table.table td.cell div.btn {color:white; font-size:1rem; min-width:8rem; cursor:pointer; padding:.5rem; border-radius:.25rem;}
+div#container main#table table.table td.cell div.btn.editbtn {background-color:var(--blue);}
+div#container main#table table.table td.cell div.btn.deletebtn {background-color:var(--red); margin-top:.75rem;}
+/* div#container main#table table.table td.cell div.btn svg.icon {} */
+div#container main#table table.table td.cell span.caption {font-weight:300; white-space:nowrap; padding-top:.25rem; margin-left:.5rem;}
+
+
+div#container aside#snackbar {position:absolute; top:0; right:0; left:0; z-index:100;}
+div#container aside#snackbar {background-color:#EEEE; width:100%; text-align:center; padding:.75rem;}
+
+
+
+@media screen and (max-width:24rem) {
+	div#container {padding:1rem 0;}
+	div#container main#table table.table td.cell div.btn {font-size:.75rem;}
+}
+
