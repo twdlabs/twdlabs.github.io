@@ -1,0 +1,46 @@
+
+
+/* Navigation Bar */
+
+div#container nav.switcher {display:flex; justify-content:flex-start; width:100%; max-width:64rem; /* max-width:24rem; */ overflow:auto; scrollbar-width:none;}
+div#container nav.switcher ul.navlist {/* background-color:var(--frost); */ list-style:none; padding:0; border-radius:.5rem; margin:0; margin-bottom:.25rem; overflow:hidden;}
+div#container nav.switcher ul.navlist {display:flex; flex-direction:row; justify-content:start; align-items:center; position:relative; overflow:visible;}
+div#container nav.switcher ul.navlist li {flex-grow:0; flex-shrink:0; flex-basis:0; min-width:8rem; border-radius:inherit;}
+div#container nav.switcher ul.navlist li.navitem {text-align:center; padding:.75rem 1rem; position:relative; z-index:20;}
+div#container nav.switcher ul.navlist li.navitem img.bg {display:none;}
+div#container nav.switcher ul.navlist li.navitem img.bg {position:absolute; top:0; left:0; height:100%; width:100%; z-index:-1; object-fit:cover; object-position:top;}
+div#container nav.switcher ul.navlist li.navitem input {display:none;}
+div#container nav.switcher ul.navlist li.navitem label.navlabel {display:block; cursor:pointer; user-select:none;}
+div#container nav.switcher ul.navlist li.navitem label.navlabel {color:#BBB; text-align:center; transition:.5s;}
+div#container nav.switcher ul.navlist li.navitem input:checked + label.navlabel {color:white;}
+div#container nav.switcher ul.navlist li.navitem span.tooltip {display:none;}
+div#container nav.switcher ul.navlist li.navitem span.tooltip {position:absolute; top:50%; left:50%; transform:translate(-50%,1rem); z-index:10;}
+div#container nav.switcher ul.navlist li.navitem span.tooltip {background-color:var(--black,#333); color:white; font-size:.75rem; text-align:center; white-space:nowrap; padding:.375rem .75rem; border-radius:.25rem;}
+div#container nav.switcher ul.navlist li.navitem span.tooltip::before {position:absolute; bottom:100%; left:50%; transform:translateX(-50%);}
+div#container nav.switcher ul.navlist li.navitem span.tooltip::before {content:''; display:block; width:0; height:0; border:.5rem solid transparent; border-bottom-color:#333;}
+div#container nav.switcher ul.navlist li.navitem span.tooltip {visibility:hidden; opacity:0; transition:.125s;}
+div#container nav.switcher ul.navlist li.navitem:hover span.tooltip {visibility:visible; opacity:1;}
+div#container nav.switcher ul.navlist li.switch {position:absolute; bottom:0; left:0; height:100%; height:1px; border-radius:1rem; z-index:10; transition:.5s;}
+div#container nav.switcher ul.navlist li.switch {display:flex; flex-direction:row; justify-content:center;}
+div#container nav.switcher ul.navlist li.switch::after {content:''; background-color:var(--white); width:50%;}
+
+
+
+
+
+@media screen and (max-width:42rem) {
+
+	/* Navigation Bar */
+	/* div#container nav.switcher {} */
+	/* div#container nav.switcher ul.navlist {} */
+	div#container nav.switcher ul.navlist li {min-width:6rem;}
+	div#container nav.switcher ul.navlist li.navitem {font-size:.75rem; padding:.5rem .25rem;}
+	/* div#container nav.switcher ul.navlist li.switch {} */
+
+	/* Navigation Bar */
+	/* div#container nav.switcher {justify-content:center;} */
+	/* div#container nav.switcher ul.navlist {background-color:white; display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.5rem; padding:.5rem;} */
+	/* div#container nav.switcher ul.navlist li.navitem {background-color:#0008; display:grid; place-items:center; min-width:8rem; min-height:6rem;} */
+	/* div#container nav.switcher ul.navlist li.navitem.home {grid-column:1 / span 2;} */
+	/* div#container nav.switcher ul.navlist li.switch {display:none;} */
+}
