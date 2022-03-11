@@ -107,33 +107,115 @@ function loadEverything() {
 	// TODO: Load pie chart. 
 	function loadPieChart() {
 
-		// Get chart circle. 
-		let chartcircle = document.querySelector('section#overview div#summary section#piechart div.chart');
 
-		// Initialize result. 
-		let result = 'conic-gradient(';
+		// Initiate list of category totals. 
+		let categoryTotals = [  ];
 
-		// Add circle proportions. 
-		for(let i in categorydata) {
+		// Aggregate category totals. 
+		for(let id in categorydata) {
 
-			// Get category. 
-			let category = categorydata[i];
+			// Initialize category total. 
+			let total = 0;
+
+			// Aggregate given category total. 
+			for(let t of transactiondata) {
+				if(t.categoryid==id) total += (-1)*t.transactionamount;
+			}
+			categoryTotals.push(total);
+		}
+		console.log('categoryTotals:',categoryTotals);
+
+		// --------------------------------
+
+
+		// Initialize total earnings. 
+		let totalAmountEarned = 0;
+
+		// Aggregate total earnings. 
+		for(let t of transactiondata) {
+			if(t.transactionamount>=0) totalAmountEarned += t.transactionamount;
+		}
+		console.log('Total earnings:', dollar(totalAmountEarned) );
+
+
+		// Initialize total spending. 
+		let totalAmountSpent = 0;
+
+		// Aggregate total spending. 
+		for(let t of transactiondata) {
+			if(t.transactionamount<=0) totalAmountSpent += (-1) * t.transactionamount;
+		}
+		console.log('Total spending:', dollar(totalAmountSpent) );
+
+
+		// Initialize net balance. 
+		let netBalance = 0;
+
+		// Aggregate net balance. 
+		for(let t of transactiondata) {
+			netBalance += t.transactionamount;
+		}
+		console.log('Net balance:', dollar(totalAmountEarned-totalAmountSpent) );
+		console.log('Net balance:', dollar(netBalance) );
+
+
+		// --------------------------------
+
+
+		// Calculate budget category proportions, then angular degrees for pie chart segments. 
+		let segmentDegrees = categoryTotals.map( (amount) => ( amount/totalAmountEarned*360 ) );
+		console.log('segmentDegrees:',segmentDegrees);
+
+		
+		// --------------------------------
+
+
+		// Initialize conical gradient parameters. 
+		let cgparams = '';
+
+		// Initialize current angle position. 
+		let currentAngle = 0;
+
+		// Aggregate gradient parameters. 
+		for(let i in segmentDegrees) {
+			// Skip incom category. ???????
+			if(i==0) continue;
+
+			// Calculate anglular positions for given category segment. 
+			let beginAngle = currentAngle
+			let endingAngle = currentAngle + segmentDegrees[i];
+			// console.log();
+			// console.log(i);
+			// console.log('beginAngle:',beginAngle);
+			// console.log('endingAngle:',endingAngle);
+
+			// Refresh current angle position. 
+			currentAngle = endingAngle;
+
+			// Get color for category segment of pie chart. 
+			let color = categorydata[i].color;
 			
-			result += ',';
-			// TODO: Add color. 
-			result += '';
-			// TODO: Add begin angle. 
-			result += '0deg';
-			// TODO: Add color. 
-			result += '';
-			// TODO: Add end angle. 
-			result += '90deg';
+			// Append gradient parameters. 
+			cgparams += (i>1) ? (', ') : ('');
+			cgparams += `${color} ${beginAngle}deg, ${color} ${endingAngle}deg`;
+
+			// Check for superfluous angle (i.e. overspending). 
+			var superfluous = currentAngle>360;
+			if(superfluous) {
+				console.log('Overspent! Current angle:', `${currentAngle}deg` );
+			}
 		}
 
-		// Set gradient background. 
-		result += ')';
-		chartcircle.style.backgroundImage = 'conic-gradient(red, yellow, green, blue, black)';
-		chartcircle.style.backgroundImage = result;
+		// Complete gradient parameters with empty space. 
+		if(!superfluous) cgparams += `, white ${currentAngle}deg, white 360deg`
+		console.log('Gradient:', `conic-gradient(${cgparams})`);
+
+		// Get chart circle. 
+		let piechart = document.querySelector('section#overview div#summary section#piechart div.chart');
+
+		// Apply conical gradient parameters. 
+		piechart.style.backgroundImage = 'conic-gradient(red, yellow, green, blue, black)';
+		piechart.style.backgroundImage = `conic-gradient(${cgparams})`;
 	}
 
 	// Load categories for pie chart legend. 
@@ -207,7 +289,7 @@ function loadEverything() {
 				<td class="cell category">
 
 					<!-- data -->
-					<span class="data">${ categories[t.categoryid] }</span>
+					<span class="data">${ categorydata[t.categoryid].categoryname }</span>
 					<!-- /data -->
 					
 				</td>
