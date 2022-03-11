@@ -18,8 +18,9 @@ div#container main.main section#overview div#summary section#piechart div.chart 
 div#container main.main section#overview div#summary section#legend {color:#FFFC; color:#000C; padding:.5rem .65rem;}
 div#container main.main section#overview div#summary section#legend h3.head {font-size:1.1rem; font-weight:300; margin:0; margin-bottom:.125rem;}
 div#container main.main section#overview div#summary section#legend div.item {display:flex; flex-direction:row; align-items:flex-end; cursor:pointer; font-size:.75rem; user-select:none; margin:.4rem 0;}
-div#container main.main section#overview div#summary section#legend div.item span.color {background-color:white; border:.125rem solid black; min-width:1rem; min-height:1rem;}
+div#container main.main section#overview div#summary section#legend div.item span.color {background-color:white; border:1px solid black; min-width:1rem; min-height:1rem;}
 div#container main.main section#overview div#summary section#legend div.item span.caption {margin-left:.5rem;}
+div#container main.main section#overview div#summary section#balance {display:none;}
 
 div#container main.main section#overview div#transactions {display:flex; flex-direction:column; align-items:stretch;}
 div#container main.main section#overview div#transactions table.table {background-color:white; border-collapse:collapse; font-size:.75rem;}
@@ -90,3 +91,11 @@ div#container main.main section#bank div.pagecontent article.buckets div.bucket 
 /* div#container main.main section#insurance div.pagecontent {} */
 
 
+
+
+
+
+@media screen and (max-width:42rem) {
+	div#container main.main section#overview div#transactions table.table tr.row th.head.description {display:none;}
+	div#container main.main section#overview div#transactions table.table tr.row td.cell.description {display:none;}
+}

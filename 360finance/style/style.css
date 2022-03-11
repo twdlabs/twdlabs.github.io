@@ -20,7 +20,7 @@ div#container {display:flex; flex-direction:column; justify-content:flex-start; 
 /* Header Bar */
 div#container header.header {display:flex; flex-direction:row; justify-content:space-between; padding:.5rem 1rem;}
 div#container header.header h1.head {font-size:1.5rem; font-weight:lighter; margin:0;}
-div#container header.header nav.nav {}
+/* div#container header.header nav.nav {} */
 
 
 

@@ -104,7 +104,7 @@ function loadEverything() {
 		// navquads.innerHTML = result2;
 	}
 
-	// TODO: Load pie chart. 
+	// Load pie chart. 
 	function loadPieChart() {
 
 
@@ -228,8 +228,42 @@ function loadEverything() {
 		// Initiate result. 
 		let result = '';
 
-		// Add categories to result. 
-		for(category of categorydata) {
+
+
+		// Initialize total earnings. 
+		let totalAmountEarned = 0;
+		// Aggregate total earnings. 
+		for(let t of transactiondata) {
+			if(t.transactionamount>=0) totalAmountEarned += t.transactionamount;
+		}
+		console.log('Total earnings:', dollar(totalAmountEarned) );
+
+		// Initiate list of category totals. 
+		let categoryTotals = [  ];
+		// Aggregate category totals. 
+		for(let id in categorydata) {
+
+			// Initialize category total. 
+			let total = 0;
+
+			// Aggregate given category total. 
+			for(let t of transactiondata) {
+				if(t.categoryid==id) total += (-1)*t.transactionamount;
+			}
+			categoryTotals.push(total);
+		}
+		console.log('categoryTotals:',categoryTotals);
+
+
+
+		// Add category items to legend. 
+		for(i in categorydata) {
+
+			// Get category. 
+			let category = categorydata[i];
+			let proportion = (categoryTotals[i]/totalAmountEarned);
+
+			// Append legend item. 
 			result += `
 			<!-- item -->
 			<div class="item">
@@ -239,7 +273,7 @@ function loadEverything() {
 				<!-- /color -->
 
 				<!-- caption -->
-				<span class="caption">${category.categoryname}</span>
+				<span class="caption">${category.categoryname} ${ (i==0) ? ('') : (`(${ (100*proportion).toFixed(1) }%)`) }</span>
 				<!-- /caption -->
 
 			</div>
@@ -287,7 +321,7 @@ function loadEverything() {
 				<!-- /cell -->
 
 				<!-- cell -->
-				<td class="cell category">
+				<td class="cell category" style="color:${categorydata[t.categoryid].color};">
 
 					<!-- data -->
 					<span class="data">${ categorydata[t.categoryid].categoryname }</span>

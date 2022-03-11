@@ -51,59 +51,13 @@ const monthLabels = [
 
 
 
-// Define transaction data. 
-const transactiondata = [
-	{
-		categoryid:0,
-		merchantname:'Globadigm Consulting',
-		transactiondate:'20220101',
-		transactionamount:1000000,
-	},
-	{
-		categoryid:1,
-		merchantname:'Victorious Believers Ministries',
-		transactiondate:'20220101',
-		transactionamount:-100000,
-	},
-	{
-		categoryid:2,
-		merchantname:'Savings Account',
-		transactiondate:'20220101',
-		transactionamount:-100000,
-	},
-	{
-		categoryid:3,
-		merchantname:'Landlord Name',
-		transactiondate:'20220101',
-		transactionamount:-18000,
-	},
-	{
-		categoryid:4,
-		merchantname:'ComEd',
-		transactiondate:'20220101',
-		transactionamount:-18000,
-	},
-	{
-		categoryid:5,
-		merchantname:'Meijer',
-		transactiondate:'20220101',
-		transactionamount:-18000,
-	},
-	{
-		categoryid:5,
-		merchantname:'Chipotle',
-		transactiondate:'20220101',
-		transactionamount:-18,
-	},
-];
-
 // Define transaction types. 
 const transactiontypes = ['Purchase','Income'];
 // Define category data. 
 const categorydata = [
 	{	// 0
-		categoryname:'Income',
-		color:'darkgreen'
+		categoryname:'Cash',
+		color:'limegreen'
 	},
 	{	// 1
 		categoryname:'Tithing',
@@ -111,7 +65,7 @@ const categorydata = [
 	},
 	{	// 2
 		categoryname:'Savings',
-		color:'limegreen'
+		color:'green'
 	},
 	{	// 3
 		categoryname:'Housing',
@@ -147,11 +101,101 @@ const categorydata = [
 	},
 	{	// 11
 		categoryname:'Recreation',
-		color:'magenta'
+		color:'pink'
 	},
 	// {	// 12
 	// 	categoryname:'xyz',
 	// 	color:'white'
 	// },
+];
+
+
+
+// Define transaction data. 
+const transactiondata = [
+	{
+		categoryid:0,
+		merchantname:'Globadigm Consulting',
+		transactiondate:'20220101',
+		transactionamount:10000,
+	},
+	{
+		categoryid:1,
+		merchantname:'Victorious Believers Ministries',
+		transactiondate:'20220101',
+		transactionamount:-1000,
+	},
+	{
+		categoryid:2,
+		merchantname:'Savings Account',
+		transactiondate:'20220101',
+		transactionamount:-1000,
+	},
+	{
+		categoryid:3,
+		merchantname:'Landlord Name',
+		transactiondate:'20220101',
+		transactionamount:-1800,
+	},
+	{
+		categoryid:4,
+		merchantname:'ComEd',
+		transactiondate:'20220101',
+		transactionamount:-500,
+	},
+	{
+		categoryid:5,
+		merchantname:'Meijer',
+		transactiondate:'20220101',
+		transactionamount:-250,
+	},
+	{
+		categoryid:5,
+		merchantname:'Chipotle',
+		transactiondate:'20220101',
+		transactionamount:-18,
+	},
+	{
+		categoryid:6,
+		merchantname:'Dolce & Gabbana',
+		transactiondate:'20220101',
+		transactionamount:-300,
+	},
+	{
+		categoryid:7,
+		merchantname:'Udemy Courses',
+		transactiondate:'20220101',
+		transactionamount:-400,
+	},
+	{
+		categoryid:8,
+		merchantname:'Geico',
+		transactiondate:'20220101',
+		transactionamount:-100,
+	},
+	{
+		categoryid:9,
+		merchantname:'Sunoco',
+		transactiondate:'20220101',
+		transactionamount:-120,
+	},
+	{
+		categoryid:10,
+		merchantname:'Resort',
+		transactiondate:'20220101',
+		transactionamount:-800,
+	},
+	{
+		categoryid:11,
+		merchantname:'Movie Theater',
+		transactiondate:'20220101',
+		transactionamount:-120,
+	},
+	{
+		categoryid:11,
+		merchantname:'Game Night',
+		transactiondate:'20220101',
+		transactionamount:-120,
+	},
 ];
 
