@@ -207,7 +207,8 @@ function loadEverything() {
 		}
 
 		// Complete gradient parameters with empty space. 
-		if(!superfluous) cgparams += `, white ${currentAngle}deg, white 360deg`
+		let incomecolor = categorydata[0].color;
+		if(!superfluous) cgparams += `, ${incomecolor} ${currentAngle}deg, ${incomecolor} 360deg`
 		console.log('Gradient:', `conic-gradient(${cgparams})`);
 
 		// Get chart circle. 

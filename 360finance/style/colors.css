@@ -19,6 +19,9 @@
 	--black1:#1A1C21;
 
 	--frost:#FFFFFF22;
+
+	--shadow:0 0 1rem rgba(0,0,0,0.125);
+	--thinshadow:0 0 .25rem rgba(0,0,0,0.125);
 }
 
 /* div#container main.main section#overview div#summary section#legend div.item:nth-of-type(1) span.color {background-color:darkgreen;}
