@@ -125,6 +125,16 @@ div#container main.main section#bank div.content article.buckets div.bucket labe
 
 
 @media screen and (max-width:42rem) {
+
+	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.icon {display:none;}
+	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon {display:none;}
+
+	/* div#container main.main section#overview article#transactions div.content table.table tr.row th.head.date {display:none;} */
+	/* div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date {display:none;} */
+	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date span.data.yr {display:none;}
+
+	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.description {white-space:initial;}
+
 	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.category {display:none;}
 	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.category {display:none;}
 }
