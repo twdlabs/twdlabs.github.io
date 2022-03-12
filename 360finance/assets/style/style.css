@@ -77,7 +77,7 @@ div#container main.main section.page div.content section {background-color:var(-
 	/* Navigation Bar */
 	/* div#container nav.switcher {} */
 	/* div#container nav.switcher ul.navlist {} */
-	div#container nav.switcher ul.navlist li {min-width:6rem;}
+	/* div#container nav.switcher ul.navlist li {min-width:6rem;} */
 	div#container nav.switcher ul.navlist li.navitem {font-size:1.125rem; padding:.5rem .25rem;}
 	/* div#container nav.switcher ul.navlist li.switch {} */
 	/* Navigation Bar */
