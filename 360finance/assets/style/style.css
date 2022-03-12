@@ -1,11 +1,16 @@
 
 
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+
 * {box-sizing:border-box;}
 
 
 
 /* html {background-color:#0A1857;} */
-body {font-family:sans-serif; margin:0;}
+body {font-family:Nunito,sans-serif; margin:0; /* touch-action:pinch-zoom; */}
 
 
 
@@ -18,7 +23,7 @@ div#container {display:flex; flex-direction:column; justify-content:flex-start; 
 
 
 /* Header Bar */
-div#container header.header {display:flex; flex-direction:row; justify-content:space-between; padding:.5rem 1rem;}
+div#container header.header {display:flex; flex-direction:row; justify-content:space-between; padding:.5rem 1rem; box-shadow:var(--thinshadow);}
 div#container header.header h1.head {font-size:1.5rem; font-weight:lighter; margin:0;}
 /* div#container header.header nav.nav {} */
 
@@ -47,18 +52,19 @@ div#container nav.switcher ul.navlist li.navitem:hover span.tooltip {visibility:
 div#container nav.switcher ul.navlist li.switch {position:absolute; bottom:0; left:0; height:100%; height:1px; border-radius:1rem; z-index:10; transition:.5s;}
 div#container nav.switcher ul.navlist li.switch {display:flex; flex-direction:row; justify-content:center;}
 div#container nav.switcher ul.navlist li.switch::after {content:''; background-color:var(--white); background-color:var(--navy); width:50%;}
+/* div#container nav.switcher {display:none;} */
 
 
 
 /* Page Container */
 
-div#container main.main {background-color:var(--frost); background-color:var(--black2); background-color:white; box-shadow:var(--shadow);}
+div#container main.main {background-color:var(--frost); background-color:var(--black2); background-color:white; box-shadow:var(--thinshadow);}
 div#container main.main {border-radius:.5rem; flex-grow:1; width:100%; max-width:64rem; /* max-width:24rem; */ margin-top:.25rem; overflow:hidden;}
 div#container main.main div.inner {display:flex; flex-direction:row; align-items:stretch; min-height:100%; transition:.5s;}
-div#container main.main div.inner section.page {flex-shrink:0; width:100%; min-height:100%; padding:1rem; overflow:hidden;}
-div#container main.main div.inner section.page h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.25rem 0 1rem;}
-div#container main.main div.inner section.page div.pagecontent {display:flex; flex-direction:row; justify-content:space-between;}
-div#container main.main div.inner section.page div.pagecontent section {background-color:var(--black3); padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin-top:.5rem;}
+div#container main.main section.page {flex-shrink:0; width:100%; min-height:100%; padding:1rem; overflow:hidden;}
+div#container main.main section.page h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.25rem 0 1rem;}
+div#container main.main section.page div.content {display:flex; flex-direction:row; justify-content:space-between;}
+div#container main.main section.page div.content section {background-color:var(--black3); padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin-top:.5rem;}
 
 
 
@@ -72,7 +78,7 @@ div#container main.main div.inner section.page div.pagecontent section {backgrou
 	/* div#container nav.switcher {} */
 	/* div#container nav.switcher ul.navlist {} */
 	div#container nav.switcher ul.navlist li {min-width:6rem;}
-	div#container nav.switcher ul.navlist li.navitem {font-size:.75rem; padding:.5rem .25rem;}
+	div#container nav.switcher ul.navlist li.navitem {font-size:1.125rem; padding:.5rem .25rem;}
 	/* div#container nav.switcher ul.navlist li.switch {} */
 	/* Navigation Bar */
 	/* div#container nav.switcher {justify-content:center;} */

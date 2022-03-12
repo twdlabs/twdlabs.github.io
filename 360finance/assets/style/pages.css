@@ -1,94 +1,123 @@
 
 
 
+/* Generic Page */
+
+div#container main.main section.page article {}
+div#container main.main section.page article div.content {}
+
+
+
 /* Overview Page */
 
 /* div#container main.main section#overview {} */
-/* div#container main.main section#overview div.pagecontent {} */
+/* div#container main.main section#overview article div.content {} */
 
-div#container main.main section#overview div#summary {justify-content:flex-start; align-items:center; flex-wrap:wrap;}
-div#container main.main section#overview div#summary section.box {flex-grow:1; background-color:white; box-shadow:var(--thinshadow); margin-left:1rem;}
-div#container main.main section#overview div#summary section.box:first-of-type {margin-left:0;}
-div#container main.main section#overview div#summary section#piechart {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
-div#container main.main section#overview div#summary section#piechart {width:100%; max-width:16rem; position:relative; box-shadow:none;}
-div#container main.main section#overview div#summary section#piechart::after {content:''; display:block; width:100%; padding-top:100%;}
-div#container main.main section#overview div#summary section#piechart div.chart {position:absolute; top:0; left:0; width:100%; height:100%;}
-div#container main.main section#overview div#summary section#piechart div.chart {background-color:white; border-radius:50%;}
-/* div#container main.main section#overview div#summary section#piechart div.chart {background-image:conic-gradient(colorname 0deg, colorname 90deg, colorname 180deg, colorname 270deg);} */
-div#container main.main section#overview div#summary section#legend {color:#FFFC; color:#000C; padding:.5rem .65rem;}
-div#container main.main section#overview div#summary section#legend h3.head {font-size:1.1rem; font-weight:300; margin:0; margin-bottom:.125rem;}
-div#container main.main section#overview div#summary section#legend div.item {display:flex; flex-direction:row; align-items:flex-end; cursor:pointer; font-size:.75rem; user-select:none; margin:.4rem 0;}
-div#container main.main section#overview div#summary section#legend div.item span.color {background-color:white; border:1px solid black; min-width:1rem; min-height:1rem;}
-div#container main.main section#overview div#summary section#legend div.item span.caption {margin-left:.5rem;}
-div#container main.main section#overview div#summary section#balance {display:none;}
+div#container main.main section#overview article div.content.summary {justify-content:center; align-items:center; flex-wrap:wrap;}
+div#container main.main section#overview article div.content.summary section.box {flex-grow:1; background-color:white; box-shadow:var(--thinshadow); margin:1rem;}
+/* div#container main.main section#overview article div.content.summary section.box:first-of-type {margin-left:0;} */
+div#container main.main section#overview article div.content.summary section.piechart {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
+div#container main.main section#overview article div.content.summary section.piechart {width:100%; max-width:16rem; position:relative; box-shadow:none;}
+div#container main.main section#overview article div.content.summary section.piechart::after {content:''; display:block; width:100%; padding-top:100%;}
+div#container main.main section#overview article div.content.summary section.piechart div.chart {position:absolute; top:0; left:0; width:100%; height:100%; box-shadow:var(--shadow);}
+div#container main.main section#overview article div.content.summary section.piechart div.chart {background-color:white; display:grid; place-items:center; border-radius:50%;}
+div#container main.main section#overview article div.content.summary section.piechart div.chart {transform:none; transition:.75s linear transform;}
+/* div#container main.main section#overview article div.content.summary section.piechart div.chart:hover {transform:rotate(1080deg);} */
+div#container main.main section#overview article div.content.summary section.piechart div.chart div.disc {position:absolute; display:grid; place-items:center; font-size:1.5rem; cursor:pointer; user-select:none;}
+div#container main.main section#overview article div.content.summary section.piechart div.chart div.disc {background-color:white; min-height:62.5%; min-width:62.5%; border-radius:50%; box-shadow:var(--shadow) inset;}
+div#container main.main section#overview article div.content.summary section.piechart div.chart div.disc {min-height:95%; min-width:95%;}
+div#container main.main section#overview article div.content.summary section.piechart div.chart div.disc {transform:scale(.95); transition:.75s linear transform;}
+/* div#container main.main section#overview article div.content.summary section.piechart div.chart:hover div.disc {transform:rotate(-1080deg);} */
+/* div#container main.main section#overview article div.content.summary section.piechart div.chart {background-image:conic-gradient(colorname 0deg, colorname 90deg, colorname 180deg, colorname 270deg);} */
+div#container main.main section#overview article div.content.summary section.legend {color:#FFFC; color:#000C; padding:.5rem .65rem; padding:.25rem .65rem; /* box-shadow:var(--thinshadow); */}
+div#container main.main section#overview article div.content.summary section.legend h3.head {font-size:1.1rem; font-weight:300; margin:0; margin-bottom:.125rem;}
+div#container main.main section#overview article div.content.summary section.legend div.item {display:flex; flex-direction:row; align-items:center; cursor:pointer; font-size:.75rem; user-select:none;}
+div#container main.main section#overview article div.content.summary section.legend div.item {background-color:white; padding:.25rem 0; border:solid #0001; border-width:0 0 1px;}
+div#container main.main section#overview article div.content.summary section.legend div.item:first-child {border-top-width:1px;}
+div#container main.main section#overview article div.content.summary section.legend div.item:hover {background-color:#00000008;}
+div#container main.main section#overview article div.content.summary section.legend div.item span.color {background-color:white; border:1px solid black; min-width:1rem; min-height:1rem;}
+div#container main.main section#overview article div.content.summary section.legend div.item span.caption.name {margin-left:.5rem;}
+div#container main.main section#overview article div.content.summary section.legend div.item span.caption.proportion {margin-left:.25rem;}
+div#container main.main section#overview article div.content.summary section.legend div.item span.caption.amount {margin-left:.25rem;}
+div#container main.main section#overview article div.content.summary section.legend div.item span.space {flex-grow:1;}
 
-div#container main.main section#overview div#transactions {display:flex; flex-direction:column; align-items:stretch;}
-div#container main.main section#overview div#transactions table.table {background-color:white; border-collapse:collapse; font-size:.75rem;}
-/* div#container main.main section#overview div#transactions table.table tr.row {} */
-div#container main.main section#overview div#transactions table.table tr.row:hover {cursor:pointer; user-select:none;}
-div#container main.main section#overview div#transactions table.table tr.row th.head {text-align:left; /* border-bottom:1px solid #0002; */ padding:1rem .75rem .75rem;}
-div#container main.main section#overview div#transactions table.table tr.row th.head h3.head {display:flex; flex-direction:row; align-items:center; font-size:1.05em; /* text-align:left; */ margin:0;}
-div#container main.main section#overview div#transactions table.table tr.row th.head.amount h3.head {justify-content:flex-end; /* text-align:right; */}
-div#container main.main section#overview div#transactions table.table tr.row th.head h3.head div.sortbtn {display:flex; flex-direction:column; cursor:pointer; user-select:none; margin-left:.25rem;}
-div#container main.main section#overview div#transactions table.table tr.row th.head h3.head div.sortbtn svg.icon {font-size:.4rem;}
-div#container main.main section#overview div#transactions table.table tr.row td.cell {font-weight:bold; padding:1rem .75rem .85rem;}
-div#container main.main section#overview div#transactions table.table tr.row td.cell.date {font-weight:lighter;}
-div#container main.main section#overview div#transactions table.table tr.row td.cell.amount {text-align:right;}
-div#container main.main section#overview div#transactions table.table tr.row td.cell.amount span.data.income {color:limegreen;}
-div#container main.main section#overview div#transactions table.table tr.row {border-radius:.5rem; overflow:hidden; box-shadow:var(--thinshadow);}
-div#container main.main section#overview div#transactions table.table tbody tr.row:hover {background-color:#00000008;}
+/* div#container main.main section#overview article#incomesummary div.content {} */
 
-div#container main.main section#overview div#misc {display:none;}
-div#container main.main section#overview div#misc section#badgebox {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem;}
-div#container main.main section#overview div#misc section#badgebox div.card {display:flex; flex-direction:column; align-items:center; background-color:var(--blue); color:white; padding:.5rem; border-radius:.5rem;}
-div#container main.main section#overview div#misc section#badgebox div.card svg.icon {font-size:2rem; margin-bottom:.5rem;}
-div#container main.main section#overview div#misc section#badgebox div.card span.num {font-size:2rem; margin-bottom:.15rem;}
-div#container main.main section#overview div#misc section#badgebox div.card span.caption {font-size:.75rem;}
-div#container main.main section#overview div#misc section#badgebox {display:none;}
-div#container main.main section#overview div#misc section#bucketbox {display:flex; flex-direction:row; justify-content:center; align-items:center; counter-reset:n;}
-div#container main.main section#overview div#misc section#bucketbox {transform:none; transform-style:preserve-3d; transition:.5s;}
-div#container main.main section#overview div#misc section#bucketbox:hover {transform:rotateX(60deg); transform:rotateX(80deg);}
-div#container main.main section#overview div#misc section#bucketbox div.category {background-color:#0008; min-width:3rem; min-height:3rem; border-radius:50%; margin:0 .5rem; margin-bottom:.75rem;}
-div#container main.main section#overview div#misc section#bucketbox div.category {transform:translateZ(2rem); position:relative;}
-div#container main.main section#overview div#misc section#bucketbox div.category::before {position:absolute; top:100%; left:50%; transform:translateX(-50%) rotateX(-45deg);}
-div#container main.main section#overview div#misc section#bucketbox div.category::before {content:'Category 'counter(n); counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
-div#container main.main section#overview div#misc section#bucketbox {display:none;}
+/* div#container main.main section#overview article#spendsummary div.content {} */
+
+/* div#container main.main section#overview article#balancesummary div.content {} */
+/* div#container main.main section#overview article#balancesummary div.content section#balance {display:none;} */
+/* div#container main.main section#overview article#balancesummary div.content section#balance h3.label span.value {} */
+/* div#container main.main section#overview article#balancesummary div.content section#balance h3.label span.caption {} */
+
+div#container main.main section#overview article#transactions div.content {display:flex; flex-direction:column; align-items:stretch;}
+div#container main.main section#overview article#transactions div.content table.table {background-color:white; border-collapse:collapse; font-size:.75rem;}
+/* div#container main.main section#overview article#transactions div.content table.table tr.row {} */
+div#container main.main section#overview article#transactions div.content table.table tr.row:hover {cursor:pointer; user-select:none;}
+div#container main.main section#overview article#transactions div.content table.table tr.row th.head {text-align:left; white-space:nowrap; /* border-bottom:1px solid #0002; */ padding:1rem .75rem .75rem;}
+div#container main.main section#overview article#transactions div.content table.table tr.row th.head h3.head {display:flex; flex-direction:row; align-items:center; font-size:1.05em; /* text-align:left; */ margin:0;}
+div#container main.main section#overview article#transactions div.content table.table tr.row th.head.amount h3.head {justify-content:flex-end; /* text-align:right; */}
+div#container main.main section#overview article#transactions div.content table.table tr.row th.head h3.head div.sortbtn {display:flex; flex-direction:column; cursor:pointer; user-select:none; margin-left:.25rem;}
+div#container main.main section#overview article#transactions div.content table.table tr.row th.head h3.head div.sortbtn svg.icon {font-size:.4rem;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell {font-weight:bold; white-space:nowrap; padding:1rem .75rem .85rem;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon svg.icon {display:block; font-size:1.5rem;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date {font-weight:lighter;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.amount {text-align:right;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.amount span.data.income {color:limegreen; color:forestgreen;}
+div#container main.main section#overview article#transactions div.content table.table tr.row {border-radius:.5rem; overflow:hidden; box-shadow:var(--thinshadow);}
+div#container main.main section#overview article#transactions div.content table.table tbody tr.row:hover {background-color:#00000008;}
+
+div#container main.main section#overview article#misc div.content {display:none;}
+div#container main.main section#overview article#misc div.content section#badgebox {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem;}
+div#container main.main section#overview article#misc div.content section#badgebox div.card {display:flex; flex-direction:column; align-items:center; background-color:var(--blue); color:white; padding:.5rem; border-radius:.5rem;}
+div#container main.main section#overview article#misc div.content section#badgebox div.card svg.icon {font-size:2rem; margin-bottom:.5rem;}
+div#container main.main section#overview article#misc div.content section#badgebox div.card span.num {font-size:2rem; margin-bottom:.15rem;}
+div#container main.main section#overview article#misc div.content section#badgebox div.card span.caption {font-size:.75rem;}
+div#container main.main section#overview article#misc div.content section#badgebox {display:none;}
+div#container main.main section#overview article#misc div.content section#bucketbox {display:flex; flex-direction:row; justify-content:center; align-items:center; counter-reset:n;}
+div#container main.main section#overview article#misc div.content section#bucketbox {transform:none; transform-style:preserve-3d; transition:.5s;}
+div#container main.main section#overview article#misc div.content section#bucketbox:hover {transform:rotateX(60deg); transform:rotateX(80deg);}
+div#container main.main section#overview article#misc div.content section#bucketbox div.category {background-color:#0008; min-width:3rem; min-height:3rem; border-radius:50%; margin:0 .5rem; margin-bottom:.75rem;}
+div#container main.main section#overview article#misc div.content section#bucketbox div.category {transform:translateZ(2rem); position:relative;}
+div#container main.main section#overview article#misc div.content section#bucketbox div.category::before {position:absolute; top:100%; left:50%; transform:translateX(-50%) rotateX(-45deg);}
+div#container main.main section#overview article#misc div.content section#bucketbox div.category::before {content:'Category 'counter(n); counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
+div#container main.main section#overview article#misc div.content section#bucketbox {display:none;}
 
 
 
 /* Budget Page */
 
 /* div#container main.main section#bank {} */
-/* div#container main.main section#bank div.pagecontent {} */
+/* div#container main.main section#bank div.content {} */
 
-div#container main.main section#bank div.pagecontent article.buckets {display:flex; flex-direction:row; justify-content:center;}
-div#container main.main section#bank div.pagecontent article.buckets div.innersection {display:flex; flex-direction:row; justify-content:space-between;}
-div#container main.main section#bank div.pagecontent article.buckets div.bucket {background-color:#E2E2E2; width:.5rem; height:10rem; border-radius:1rem; margin:0 .5rem .75rem; /* overflow:hidden; */}
-div#container main.main section#bank div.pagecontent article.buckets div.bucket {display:flex; flex-direction:column; justify-content:flex-end; position:relative;}
-div#container main.main section#bank div.pagecontent article.buckets div.bucket::after {content:''; display:block; background-color:var(--blue); height:25%; border-radius:inherit;}
-div#container main.main section#bank div.pagecontent article.buckets div.bucket label.month {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
-div#container main.main section#bank div.pagecontent article.buckets div.bucket label.month {color:white; color:var(--black); font-size:.65rem; margin-top:.25rem;}
+div#container main.main section#bank div.content article.buckets {display:flex; flex-direction:row; justify-content:center;}
+div#container main.main section#bank div.content article.buckets div.innersection {display:flex; flex-direction:row; justify-content:space-between;}
+div#container main.main section#bank div.content article.buckets div.bucket {background-color:#E2E2E2; width:.5rem; height:10rem; border-radius:1rem; margin:0 .5rem .75rem; /* overflow:hidden; */}
+div#container main.main section#bank div.content article.buckets div.bucket {display:flex; flex-direction:column; justify-content:flex-end; position:relative;}
+div#container main.main section#bank div.content article.buckets div.bucket::after {content:''; display:block; background-color:var(--blue); height:25%; border-radius:inherit;}
+div#container main.main section#bank div.content article.buckets div.bucket label.month {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
+div#container main.main section#bank div.content article.buckets div.bucket label.month {color:white; color:var(--black); font-size:.65rem; margin-top:.25rem;}
 
 
 
 /* Taxes Page */
 
 /* div#container main.main section#taxes {} */
-/* div#container main.main section#taxes div.pagecontent {} */
+/* div#container main.main section#taxes div.content {} */
 
 
 
 /* Investments Page */
 
 /* div#container main.main section#invest {} */
-/* div#container main.main section#invest div.pagecontent {} */
+/* div#container main.main section#invest div.content {} */
 
 
 
 /* Insurance Page */
 
 /* div#container main.main section#insurance {} */
-/* div#container main.main section#insurance div.pagecontent {} */
+/* div#container main.main section#insurance div.content {} */
 
 
 
@@ -96,6 +125,6 @@ div#container main.main section#bank div.pagecontent article.buckets div.bucket 
 
 
 @media screen and (max-width:42rem) {
-	div#container main.main section#overview div#transactions table.table tr.row th.head.description {display:none;}
-	div#container main.main section#overview div#transactions table.table tr.row td.cell.description {display:none;}
+	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.category {display:none;}
+	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.category {display:none;}
 }

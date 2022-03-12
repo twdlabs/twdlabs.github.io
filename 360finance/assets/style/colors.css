@@ -20,23 +20,23 @@
 
 	--frost:#FFFFFF22;
 
-	--shadow:0 0 1rem rgba(0,0,0,0.125);
-	/* background-color: palevioletred; */
+	--darkshadow:0 0 1rem rgba(0,0,0,0.5);
+	--shadow:0 0 1rem rgba(0,0,0,0.375);
 	--thinshadow:0 0 .25rem rgba(0,0,0,0.125);
 }
 
-/* div#container main.main section#overview div#summary section#legend div.item:nth-of-type(1) span.color {background-color:darkgreen;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(2) span.color {background-color:deepskyblue;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(2) span.color {background-color:dodgerblue;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(3) span.color {background-color:limegreen;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(4) span.color {background-color:coral;}
+/* div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(1) span.color {background-color:darkgreen;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(2) span.color {background-color:deepskyblue;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(2) span.color {background-color:dodgerblue;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(3) span.color {background-color:limegreen;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(4) span.color {background-color:coral;}
 
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(5) span.color {background-color:gold;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(6) span.color {background-color:mediumblue;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(7) span.color {background-color:slateblue;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(8) span.color {background-color:powderblue;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(5) span.color {background-color:gold;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(6) span.color {background-color:mediumblue;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(7) span.color {background-color:slateblue;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(8) span.color {background-color:powderblue;}
 
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(9) span.color {background-color:crimson;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(10) span.color {background-color:greenyellow;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(11) span.color {background-color:mediumturquoise;}
-div#container main.main section#overview div#summary section#legend div.item:nth-of-type(12) span.color {background-color:magenta;} */
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(9) span.color {background-color:crimson;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(10) span.color {background-color:greenyellow;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(11) span.color {background-color:mediumturquoise;}
+div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(12) span.color {background-color:magenta;} */

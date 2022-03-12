@@ -1,41 +1,50 @@
 
 
+
 // Initialize selected index. 
-let selectedIndex = 0;
+var selectedIndex = 0;
+
+// Initialize total earnings. 
+var totalAmountEarned;
+
+// Initialize total spending. 
+var totalAmountSpent;
+
+// Initialize net balance. 
+var netBalance;
 
 
 /*****/
 
 
-// Load everything. 
-loadEverything();
-
-// Handle events. 
-handleEvents();
+// Load basic stuff. 
+startItUp();
 
 
 /*****/
 
 
-// Load everything. 
-function loadEverything() {
+// Load basic stuff. 
+function startItUp() {
 
-	// Overview page: Load navigation bar. 
+
+	// Load navigation bar. 
 	loadNavigation();
 
-	// Load pie chart. 
-	loadPieChart();
+	// Calculate account metrics. 
+	getAccountMetrics();
 
-	// Load legend for pie chart. 
-	loadLegend();
 
-	// Overview page: Load transactions. 
-	loadTransactions();
+	// Load page content. 
+	loadPageContent();
+
 	
-	// Budget page: Load budget. 
-	loadBudget();
+	// Handle events. 
+	handleEvents();
+
 
 	/*****/
+
 
 	// Load navigation bar. 
 	function loadNavigation() {
@@ -104,336 +113,167 @@ function loadEverything() {
 		// navquads.innerHTML = result2;
 	}
 
-	// Load pie chart. 
-	function loadPieChart() {
-
-
-		// Initiate list of category totals. 
-		let categoryTotals = [  ];
-
-		// Aggregate category totals. 
-		for(let id in categorydata) {
-
-			// Initialize category total. 
-			let total = 0;
-
-			// Aggregate given category total. 
-			for(let t of transactiondata) {
-				if(t.categoryid==id) total += (-1)*t.transactionamount;
-			}
-			categoryTotals.push(total);
-		}
-		console.log('categoryTotals:',categoryTotals);
-
-		// --------------------------------
-
-
-		// Initialize total earnings. 
-		let totalAmountEarned = 0;
+	// Calculate account metrics. 
+	function getAccountMetrics() {
 
 		// Aggregate total earnings. 
+		totalAmountEarned = 0;
 		for(let t of transactiondata) {
 			if(t.transactionamount>=0) totalAmountEarned += t.transactionamount;
 		}
-		console.log('Total earnings:', dollar(totalAmountEarned) );
-
-
-		// Initialize total spending. 
-		let totalAmountSpent = 0;
+		// console.log('Total earnings:', dollar(totalAmountEarned) );
+		// Add to income chart label. 
+		document.querySelector('section#overview article#incomesummary div.content section#incomechart div.chart div.disc').innerHTML = dollar(totalAmountEarned);
 
 		// Aggregate total spending. 
+		totalAmountSpent = 0;
 		for(let t of transactiondata) {
 			if(t.transactionamount<=0) totalAmountSpent += (-1) * t.transactionamount;
 		}
-		console.log('Total spending:', dollar(totalAmountSpent) );
-
-
-		// Initialize net balance. 
-		let netBalance = 0;
+		// console.log('Total spending:', dollar(totalAmountSpent) );
+		// Add to spend chart label. 
+		document.querySelector('section#overview article#spendsummary div.content section#spendchart div.chart div.disc').innerHTML = dollar(totalAmountSpent);
 
 		// Aggregate net balance. 
+		netBalance = 0;
 		for(let t of transactiondata) {
 			netBalance += t.transactionamount;
 		}
-		console.log('Net balance:', dollar(totalAmountEarned-totalAmountSpent) );
-		console.log('Net balance:', dollar(netBalance) );
-
-
-		// --------------------------------
-
-
-		// Calculate budget category proportions, then angular degrees for pie chart segments. 
-		let segmentDegrees = categoryTotals.map( (amount) => ( amount/totalAmountEarned*360 ) );
-		console.log('segmentDegrees:',segmentDegrees);
-
+		// console.log('Net balance:', dollar(totalAmountEarned-totalAmountSpent) );
+		// console.log('Net balance:', dollar(netBalance) );
+		// Add to balance chart label. 
+		document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart div.disc').innerHTML = dollar(netBalance);
+		// Add to balance label. 
+		document.querySelector('section#overview article#balancesummary div.content section#balance h3.label span.value').innerHTML = dollar(netBalance);
+	}
+	
+	// Handle events. 
+	function handleEvents() {
+	
+		// Activate navigation switcher links. 
+		let radiolinks = document.querySelectorAll('nav.switcher ul.navlist li.navitem input');
+		for(let link of radiolinks) {
+			link.addEventListener('input',selectPage);
+		}
+	
+		/*****/
+	
+		// Select page. 
+		function selectPage(event) {
+	
+			// Get selected navigation button. 
+			let navbtn = event.currentTarget;
+			// console.log('Navigation button:', navbtn);
+	
+			// Get selected page name. 
+			let selectedPageName = navbtn.value;
+			// console.log('Selected page name:',selectedPageName);
+	
+			// Save index for selected page. 
+			let index = sectionNames.indexOf(selectedPageName);
+			// console.log('Selected index:',index);
+	
+			// Open selected page using selected index. 
+			openSelectedPage(index);
+		}
+	
+		// Open selected page by index. 
+		function openSelectedPage(index) {
 		
-		// --------------------------------
-
-
-		// Initialize conical gradient parameters. 
-		let cgparams = '';
-
-		// Initialize current angle position. 
-		let currentAngle = 0;
-
-		// Aggregate gradient parameters. 
-		for(let i in segmentDegrees) {
-			// Skip incom category. ???????
-			if(i==0) continue;
-
-			// Calculate anglular positions for given category segment. 
-			let beginAngle = currentAngle
-			let endingAngle = currentAngle + segmentDegrees[i];
-			// console.log();
-			// console.log(i);
-			// console.log('beginAngle:',beginAngle);
-			// console.log('endingAngle:',endingAngle);
-
-			// Refresh current angle position. 
-			currentAngle = endingAngle;
-
-			// Get color for category segment of pie chart. 
-			let color = categorydata[i].color;
-			
-			// Append gradient parameters. 
-			cgparams += (i>1) ? (', ') : ('');
-			cgparams += `${color} ${beginAngle}deg, ${color} ${endingAngle}deg`;
-
-			// Check for superfluous angle (i.e. overspending). 
-			var superfluous = currentAngle>360;
-			if(superfluous) {
-				console.log('Overspent! Current angle:', `${currentAngle}deg` );
-			}
-		}
-
-		// Complete gradient parameters with empty space. 
-		let incomecolor = categorydata[0].color;
-		if(!superfluous) cgparams += `, ${incomecolor} ${currentAngle}deg, ${incomecolor} 360deg`
-		console.log('Gradient:', `conic-gradient(${cgparams})`);
-
-		// Get chart circle. 
-		let piechart = document.querySelector('section#overview div#summary section#piechart div.chart');
-
-		// Apply conical gradient parameters. 
-		piechart.style.backgroundImage = 'conic-gradient(red, yellow, green, blue, black)';
-		piechart.style.backgroundImage = `conic-gradient(${cgparams})`;
-	}
-
-	// Load categories for pie chart legend. 
-	function loadLegend() {
+			// Save index for selected page. 
+			selectedIndex = index;
+			console.log('Selected index:',index);
 		
-		// Get container for legend content. 
-		let legendbox = document.getElementById('legend');
-
-		// Initiate result. 
-		let result = '';
-
-
-
-		// Initialize total earnings. 
-		let totalAmountEarned = 0;
-		// Aggregate total earnings. 
-		for(let t of transactiondata) {
-			if(t.transactionamount>=0) totalAmountEarned += t.transactionamount;
+			// Shift navigation switch to proper position. 
+			let switich = document.querySelector('nav.switcher ul.navlist li.switch');
+			switich.style.transform = `translateX(${(100*selectedIndex)}%)`;
+			// console.log('switich:',switich);
+		
+			// Get main container. 
+			let inner = document.querySelector('div#container main.main div.inner');
+			// console.log(inner.style.transform);
+		
+			// Add transformation for selected page. 
+			inner.style.transform = `translateX(${-100*selectedIndex}%)`;
+			// console.log(inner.style.transform);
 		}
-		console.log('Total earnings:', dollar(totalAmountEarned) );
-
-		// Initiate list of category totals. 
-		let categoryTotals = [  ];
-		// Aggregate category totals. 
-		for(let id in categorydata) {
-
-			// Initialize category total. 
-			let total = 0;
-
-			// Aggregate given category total. 
-			for(let t of transactiondata) {
-				if(t.categoryid==id) total += (-1)*t.transactionamount;
-			}
-			categoryTotals.push(total);
-		}
-		console.log('categoryTotals:',categoryTotals);
-
-
-
-		// Add category items to legend. 
-		for(i in categorydata) {
-
-			// Get category. 
-			let category = categorydata[i];
-			let proportion = (categoryTotals[i]/totalAmountEarned);
-
-			// Append legend item. 
-			result += `
-			<!-- item -->
-			<div class="item">
-
-				<!-- color -->
-				<span class="color" style="background-color:${category.color};"></span>
-				<!-- /color -->
-
-				<!-- caption -->
-				<span class="caption">${category.categoryname} ${ (i==0) ? ('') : (`(${ (100*proportion).toFixed(1) }%)`) }</span>
-				<!-- /caption -->
-
-			</div>
-			<!-- /item -->`;
-		}
-
-		// Add legend content to page. 
-		legendbox.innerHTML = result;
-	}
-
-	// Load transactions. 
-	function loadTransactions() {
-
-		// Get table body. 
-		let tbody = document.querySelector('section#overview div#transactions table.table tbody');
-		// console.log('Table body:',tbody);
-
-		// Initialize result. 
-		let result = '';
-
-		// Collect transactions. 
-		for(let t of transactiondata) {
-			result += `
-			<!-- row -->
-			<tr class="row">
-
-				<!-- cell -->
-				<td class="cell date">
-
-					<!-- data -->
-					<span class="data">Mar 9, 2022</span>
-					<!-- /data -->
-					
-				</td>
-				<!-- /cell -->
-
-				<!-- cell -->
-				<td class="cell description">
-
-					<!-- data -->
-					<span class="data">${t.merchantname}</span>
-					<!-- /data -->
-					
-				</td>
-				<!-- /cell -->
-
-				<!-- cell -->
-				<td class="cell category" style="color:${categorydata[t.categoryid].color};">
-
-					<!-- data -->
-					<span class="data">${ categorydata[t.categoryid].categoryname }</span>
-					<!-- /data -->
-					
-				</td>
-				<!-- /cell -->
-
-				<!-- cell -->
-				<td class="cell amount">
-
-					<!-- data -->
-					<span class="data${ (t.transactionamount>0) ? (' income') : ('') }">${ formatCurrency(t.transactionamount) }</span>
-					<!-- /data -->
-					
-				</td>
-				<!-- /cell -->
-
-			</tr>
-			<!-- /row -->`;
-		}
-
-		// Add result to page. 
-		tbody.innerHTML = result;
-
-		/****/
-
-		// Format currency. 
-		function formatCurrency(n) {
-			return dollar(n);
-		}
-	}
-
-	// Load budget on budget page. 
-	function loadBudget() {
-
-		// Get budget container. 
-		let budgetbox = document.querySelector('section#bank article.buckets');
-		// console.log(budgetbox);
-
-		// Initiate result. 
-		let result = '';
-
-		for(let i in monthLabels) {
-			let n = i*1 + 1;
-			let ml = monthLabels[i];
-			result += `
-			<!-- bucket -->
-			<div class="bucket">
-
-				<label class="month">${ (false) ? (ml) : ( (n<10) ? ('0'+n) : (n) ) }</label>
-
-			</div>
-			<!-- /bucket -->`;
-		}
-
-		// Add result to page. 
-		budgetbox.innerHTML = result;
 	}
 }
 
 
-// Handle events. 
-function handleEvents() {
+// Load page content. 
+function loadPageContent() {
 
-	// Activate navigation switcher links. 
-	let radiolinks = document.querySelectorAll('nav.switcher ul.navlist li.navitem input');
-	for(let link of radiolinks) {
-		link.addEventListener('input',selectPage);
-	}
+	// Load overview page. 
+	loadOverviewPage();
+	
+	// Load budget page. 
+	loadBudgetPage();
+
+	// Load taxes page. 
+	loadTaxesPage();
+	
+	// Load investing page. 
+	loadInvestingPage();
+	
+	// Load insurance page. 
+	loadInsurancePage();
+
 
 	/*****/
 
-	// Select page. 
-	function selectPage(event) {
 
-		// Get selected navigation button. 
-		let navbtn = event.currentTarget;
-		// console.log('Navigation button:', navbtn);
+	// TODO: Load budget page. 
+	function loadBudgetPage() {
+	
+		// Load budget. 
+		loadBudget();
 
-		// Get selected page name. 
-		let selectedPageName = navbtn.value;
-		// console.log('Selected page name:',selectedPageName);
+		/****/
 
-		// Save index for selected page. 
-		let index = sectionNames.indexOf(selectedPageName);
-		// console.log('Selected index:',index);
+		// Load budget on budget page. 
+		function loadBudget() {
 
-		// Open selected page using selected index. 
-		openSelectedPage(index);
+			// Get budget container. 
+			let budgetbox = document.querySelector('section#bank article.buckets');
+			// console.log(budgetbox);
+
+			// Initialize result. 
+			let result = '';
+
+			for(let i in monthLabels) {
+				let n = i*1 + 1;
+				let ml = monthLabels[i];
+				result += `
+				<!-- bucket -->
+				<div class="bucket">
+
+					<label class="month">${ (false) ? (ml) : ( (n<10) ? ('0'+n) : (n) ) }</label>
+
+				</div>
+				<!-- /bucket -->`;
+			}
+
+			// Add result to page. 
+			budgetbox.innerHTML = result;
+		}
 	}
 
-	// Open selected page by index. 
-	function openSelectedPage(index) {
-	
-		// Save index for selected page. 
-		selectedIndex = index;
-		console.log('Selected index:',index);
-	
-		// Shift navigation switch to proper position. 
-		let switich = document.querySelector('nav.switcher ul.navlist li.switch');
-		switich.style.transform = `translateX(${(100*selectedIndex)}%)`;
-		// console.log('switich:',switich);
-	
-		// Get main container. 
-		let inner = document.querySelector('div#container main.main div.inner');
-		// console.log(inner.style.transform);
-	
-		// Add transformation for selected page. 
-		inner.style.transform = `translateX(${-100*selectedIndex}%)`;
-		// console.log(inner.style.transform);
+	// TODO: Load taxes page. 
+	function loadTaxesPage() {
+
+		/****/
+	}
+
+	// TODO: Load investing page. 
+	function loadInvestingPage() {
+
+		/****/
+	}
+
+	// TODO: Load insurance page. 
+	function loadInsurancePage() {
+
+		/****/
 	}
 }
-
-

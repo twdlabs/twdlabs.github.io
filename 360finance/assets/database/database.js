@@ -1,46 +1,6 @@
 
 
 
-// Define navigation data. 
-const navdata = [
-	{
-		name:'Overview',
-		code:'overview',
-		tooltip:'overall picture',
-		innersvg:'xyz',
-	},
-	{
-		// name:'Banking',
-		name:'Budget',
-		code:'bank',
-		tooltip:'daily activity',
-		innersvg:'xyz',
-	},
-	// {
-	// 	name:'Taxes',
-	// 	code:'taxes',
-	// 	tooltip:'long activity',
-	// 	innersvg:'xyz',
-	// },
-	// {
-	// 	name:'Investments',
-	// 	code:'invest',
-	// 	tooltip:'yearly filing',
-	// 	innersvg:'xyz',
-	// },
-	// {
-	// 	name:'Insurance',
-	// 	code:'insurance',
-	// 	tooltip:'risk management',
-	// 	innersvg:'xyz',
-	// },
-];
-
-
-
-// Define section names. 
-const sectionNames = ['overview','bank','taxes','invest','insurance'];
-
 // Define month labels. 
 const monthLabels = [
 	'J','F','M', 
@@ -52,62 +12,113 @@ const monthLabels = [
 
 
 // Define transaction types. 
-const transactiontypes = ['Purchase','Income'];
-// Define category data. 
-const categorydata = [
+// const transactiontypes = ['Purchase','Income'];
+
+// Define income categories. 
+const incomecategory = [
 	{	// 0
-		categoryname:'Cash',
-		color:'limegreen'
+		categoryname:'Wages',
+		categorycolor:'forestgreen',
+		clustercolor:'forestgreen',
+		categoryicon:'plus'
 	},
 	{	// 1
-		categoryname:'Tithing',
-		color:'dodgerblue'
+		categoryname:'Dividend',
+		categorycolor:'limegreen',
+		clustercolor:'forestgreen',
+		categoryicon:'plus'
 	},
 	{	// 2
+		categoryname:'Interest',
+		categorycolor:'darkseagreen',
+		clustercolor:'forestgreen',
+		categoryicon:'plus'
+	},
+	// {	// 3
+	// 	categoryname:'xyz',
+	// 	color:'white'
+	// },
+];
+
+// Define spending categories. 
+const spendcategory = [
+	{	// 0
+		categoryname:'Tithing',
+		categorycolor:'dodgerblue',
+		categoryicon:'cloud'
+	},
+	{	// 1
 		categoryname:'Savings',
-		color:'green'
+		categorycolor:'springgreen',
+		categoryicon:'cashstack'
+	},
+	{	// 2
+		categoryname:'Housing',
+		categorycolor:'coral',
+		categoryicon:'house'
 	},
 	{	// 3
-		categoryname:'Housing',
-		color:'coral'
+		categoryname:'Utilities',
+		categorycolor:'gold',
+		categoryicon:'gear'
 	},
 	{	// 4
-		categoryname:'Utilities',
-		color:'gold'
+		categoryname:'Food',
+		categorycolor:'mediumblue',
+		categoryicon:'recycle'
 	},
 	{	// 5
-		categoryname:'Food',
-		color:'mediumblue'
+		categoryname:'Clothing',
+		categorycolor:'slateblue',
+		categoryicon:'bag'
 	},
 	{	// 6
-		categoryname:'Clothing',
-		color:'slateblue'
+		categoryname:'Education',
+		categorycolor:'powderblue',
+		categoryicon:'notebook'
 	},
 	{	// 7
-		categoryname:'Education',
-		color:'powderblue'
+		categoryname:'Insurance',
+		categorycolor:'crimson',
+		categoryicon:'dice'
 	},
 	{	// 8
-		categoryname:'Insurance',
-		color:'crimson'
+		categoryname:'Transportation',
+		categorycolor:'greenyellow',
+		categoryicon:'bike'
 	},
 	{	// 9
-		categoryname:'Transportation',
-		color:'greenyellow'
+		categoryname:'Vacation',
+		categorycolor:'mediumturquoise',
+		categoryicon:'sunglasses'
 	},
 	{	// 10
-		categoryname:'Vacation',
-		color:'mediumturquoise'
+		categoryname:'Entertainment',
+		categorycolor:'hotpink',
+		categoryicon:'tvscreen'
 	},
 	{	// 11
-		categoryname:'Recreation',
-		color:'pink'
+		categoryname:'Business',
+		categorycolor:'wheat',
+		categoryicon:'briefcase'
 	},
 	// {	// 12
 	// 	categoryname:'xyz',
 	// 	color:'white'
 	// },
 ];
+
+// Define balance categories. 
+const balancecategory = [
+	{	// 0
+		categoryname:'Spending',
+		categorycolor:'#F00A'
+	},
+	{	// 1
+		categoryname:'Surplus',
+		categorycolor:'seagreen'
+	},
+]
 
 
 
@@ -121,81 +132,153 @@ const transactiondata = [
 	},
 	{
 		categoryid:1,
+ 		merchantname:'Berkshire Hathaway',
+		transactiondate:'20220101',
+		transactionamount:953.05,
+	},
+	{
+		categoryid:2,
+ 		merchantname:'JPMorgan Chase',
+		transactiondate:'20220101',
+		transactionamount:45.28,
+	},
+	{
+		categoryid:0,
 		merchantname:'Victorious Believers Ministries',
 		transactiondate:'20220101',
 		transactionamount:-1000,
 	},
 	{
-		categoryid:2,
+		categoryid:1,
 		merchantname:'Savings Account',
 		transactiondate:'20220101',
 		transactionamount:-1000,
 	},
 	{
-		categoryid:3,
-		merchantname:'Landlord Name',
+		categoryid:2,
+		merchantname:'RentPay LandlordName',
 		transactiondate:'20220101',
-		transactionamount:-1800,
+		transactionamount:-1750,
+	},
+	{
+		categoryid:3,
+		merchantname:'ComEd',
+		transactiondate:'20220101',
+		transactionamount:-402.45,
+	},
+	{
+		categoryid:3,
+		merchantname:'AT&T',
+		transactiondate:'20220101',
+		transactionamount:-91.74,
+	},
+	{
+		categoryid:3,
+		merchantname:'Comcast',
+		transactiondate:'20220101',
+		transactionamount:-88.20,
+	},
+	{
+		categoryid:3,
+		merchantname:'Spire',
+		transactiondate:'20220101',
+		transactionamount:-43.83,
 	},
 	{
 		categoryid:4,
-		merchantname:'ComEd',
-		transactiondate:'20220101',
-		transactionamount:-500,
-	},
-	{
-		categoryid:5,
 		merchantname:'Meijer',
 		transactiondate:'20220101',
 		transactionamount:-250,
 	},
 	{
-		categoryid:5,
+		categoryid:4,
 		merchantname:'Chipotle',
 		transactiondate:'20220101',
 		transactionamount:-18,
 	},
 	{
-		categoryid:6,
+		categoryid:4,
+		merchantname:'McDonald\'s',
+		transactiondate:'20220101',
+		transactionamount:-4.83,
+	},
+	{
+		categoryid:5,
 		merchantname:'Dolce & Gabbana',
 		transactiondate:'20220101',
-		transactionamount:-300,
+		transactionamount:-238,
+	},
+	{
+		categoryid:5,
+		merchantname:'H&M',
+		transactiondate:'20220101',
+		transactionamount:-24.54,
+	},
+	{
+		categoryid:5,
+		merchantname:'Men\'s Wearhouse',
+		transactiondate:'20220101',
+		transactionamount:-142,
+	},
+	{
+		categoryid:6,
+		merchantname:'Audible',
+		transactiondate:'20220101',
+		transactionamount:-14.95,
+	},
+	{
+		categoryid:6,
+		merchantname:'Udemy Courses',
+		transactiondate:'20220101',
+		transactionamount:-399.97,
 	},
 	{
 		categoryid:7,
-		merchantname:'Udemy Courses',
+		merchantname:'Geico',
 		transactiondate:'20220101',
-		transactionamount:-400,
+		transactionamount:-103,
 	},
 	{
 		categoryid:8,
-		merchantname:'Geico',
+		merchantname:'Sunoco',
 		transactiondate:'20220101',
-		transactionamount:-100,
+		transactionamount:-55.84,
+	},
+	{
+		categoryid:8,
+		merchantname:'7-Eleven',
+		transactiondate:'20220101',
+		transactionamount:-55.84,
 	},
 	{
 		categoryid:9,
-		merchantname:'Sunoco',
+		merchantname:'Vacation Resort',
 		transactiondate:'20220101',
-		transactionamount:-120,
+		transactionamount:-797,
 	},
 	{
 		categoryid:10,
-		merchantname:'Resort',
-		transactiondate:'20220101',
-		transactionamount:-800,
-	},
-	{
-		categoryid:11,
 		merchantname:'Movie Theater',
 		transactiondate:'20220101',
-		transactionamount:-120,
+		transactionamount:-79.96,
+	},
+	{
+		categoryid:10,
+		merchantname:'Netflix',
+		transactiondate:'20220101',
+		transactionamount:-19.99,
+	},
+	{
+		categoryid:10,
+		merchantname:'Apple Music',
+		transactiondate:'20220101',
+		transactionamount:-9.99,
 	},
 	{
 		categoryid:11,
-		merchantname:'Game Night',
+		merchantname:'Best Buy',
 		transactiondate:'20220101',
-		transactionamount:-120,
+		transactionamount:-1424.58,
 	},
 ];
 
