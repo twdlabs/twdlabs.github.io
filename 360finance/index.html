@@ -28,14 +28,30 @@
 			<header class="header">
 
 				<!-- head -->
-				<h1 class="head">360 Finance</h1>
+				<h1 class="head">
+
+					<!-- logo -->
+					<img class="logo" src="assets/globadigm.png" alt="globadigm">
+					<!-- /logo -->
+
+					<!-- caption -->
+					<span class="caption">360 Finance</span>
+					<!-- /caption -->
+
+				</h1>
 				<!-- /head -->
 
-				<!-- nav -->
-				<nav class="nav">
+				<!-- togglebtn -->
+				<div class="btn togglebtn" onclick="document.querySelector('nav.switcher').classList.toggle('active');">
 
-				</nav>
-				<!-- /nav -->
+					<!-- icon -->
+					<svg class="icon hamburger" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+					</svg>
+					<!-- /icon -->
+
+				</div>
+				<!-- /togglebtn -->
 
 			</header>
 			<!-- /header -->
@@ -106,14 +122,14 @@
 					<section id="overview" class="page">
 
 						<!-- article -->
-						<article id="incomesummary">
+						<article id="incomesummary" class="summary">
 
 							<!-- head -->
 							<h2 class="head">Income Summary</h2>
 							<!-- /head -->
 	
 							<!-- content -->
-							<div class="content summary">
+							<div class="content">
 	
 								<!-- #incomechart -->
 								<section id="incomechart" class="box piechart">
@@ -172,14 +188,14 @@
 						<!-- /article -->
 
 						<!-- article -->
-						<article id="spendsummary">
+						<article id="spendsummary" class="summary">
 
 							<!-- head -->
 							<h2 class="head">Spending Summary</h2>
 							<!-- /head -->
 	
 							<!-- content -->
-							<div class="content summary">
+							<div class="content">
 	
 								<!-- #spendchart -->
 								<section id="spendchart" class="box piechart">
@@ -238,14 +254,14 @@
 						<!-- /article -->
 
 						<!-- article -->
-						<article id="balancesummary">
+						<article id="balancesummary" class="summary">
 
 							<!-- head -->
 							<h2 class="head">Net Balance</h2>
 							<!-- /head -->
 	
 							<!-- content -->
-							<div class="content summary">
+							<div class="content">
 	
 								<!-- #balancechart -->
 								<section id="balancechart" class="box piechart">
@@ -660,6 +676,12 @@
 						<!-- /article -->
 
 						<!-- article -->
+						<article>
+							
+						</article>
+						<!-- /article -->
+
+						<!-- article -->
 						<article id="misc">
 
 							<!-- head -->
@@ -791,12 +813,6 @@
 						</article>
 						<!-- /article -->
 
-						<!-- article -->
-						<!-- <article>
-							
-						</article> -->
-						<!-- /article -->
-
 
 					</section>
 					<!-- /#overview -->
@@ -804,29 +820,35 @@
 					<!-- #bank -->
 					<section id="bank" class="page">
 
-						<!-- head -->
-						<h2 class="head">Budget</h2>
-						<!-- /head -->
+						<!-- article -->
+						<article>
 
-						<!-- content -->
-						<div class="content">
-
-							<!-- buckets -->
-							<article class="buckets">
-				
-								<!-- bucket -->
-								<div class="bucket">
+							<!-- head -->
+							<h2 class="head">Budget</h2>
+							<!-- /head -->
 	
-									<label class="month">J</label>
-				
-								</div>
-								<!-- /bucket -->
-				
-							</article>
-							<!-- /buckets -->
+							<!-- content -->
+							<div class="content">
+	
+								<!-- buckets -->
+								<article class="buckets">
+					
+									<!-- bucket -->
+									<div class="bucket">
+		
+										<label class="month">J</label>
+					
+									</div>
+									<!-- /bucket -->
+					
+								</article>
+								<!-- /buckets -->
+								
+							</div>
+							<!-- /content -->
 							
-						</div>
-						<!-- /content -->
+						</article>
+						<!-- /article -->
 						
 					</section>
 					<!-- /#bank -->
