@@ -23,7 +23,7 @@ const incomecategory = [
 		categoryicon:'plus'
 	},
 	{	// 1
-		categoryname:'Dividend',
+		categoryname:'Dividends',
 		categorycolor:'limegreen',
 		clustercolor:'forestgreen',
 		categoryicon:'plus'
