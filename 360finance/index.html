@@ -28,7 +28,7 @@
 			<header class="header">
 
 				<!-- head -->
-				<h1 class="head">
+				<h1 class="head" onclick="toggleNavigation()">
 
 					<!-- logo -->
 					<img class="logo" src="assets/globadigm.png" alt="globadigm">
@@ -42,7 +42,7 @@
 				<!-- /head -->
 
 				<!-- togglebtn -->
-				<div class="btn togglebtn" onclick="document.querySelector('nav.switcher').classList.toggle('active');">
+				<div class="btn togglebtn" onclick="toggleNavigation()">
 
 					<!-- icon -->
 					<svg class="icon hamburger" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -253,65 +253,11 @@
 						</article>
 						<!-- /#spendsummary -->
 
-						<!-- #balancesummary -->
-						<article id="balancesummary" class="summary">
-
-							<!-- head -->
-							<h2 class="head">Balance Summary</h2>
-							<!-- /head -->
-	
-							<!-- content -->
-							<div class="content">
-	
-								<!-- #balancechart -->
-								<section id="balancechart" class="box piechart">
-		
-									<!-- chart -->
-									<div class="chart">
-										<!-- disc -->
-										<div class="disc"></div>
-										<!-- /disc -->
-									</div>
-									<!-- /chart -->
-					
-								</section>
-								<!-- /#balancechart -->
-	
-								<!-- #balancelegend -->
-								<section id="balancelegend" class="box legend">
-
-								</section>
-								<!-- /#balancelegend -->
-	
-								<!-- #balance -->
-								<section id="balance" class="box">
-	
-									<h3 class="label" style="font-size:1.125rem; font-weight:lighter; margin:0;">
-	
-										<!-- caption -->
-										<span class="caption">Balance:</span>
-										<!-- /caption -->
-
-										<!-- value -->
-										<span class="value">-</span>
-										<!-- /value -->
-										
-									</h3>
-	
-								</section>
-								<!-- /#balance -->
-								
-							</div>
-							<!-- /content -->
-							
-						</article>
-						<!-- /#balancesummary -->
-
 						<!-- #budgetsummary -->
 						<article id="budgetsummary" class="summary">
 
 							<!-- head -->
-							<h2 class="head">Budget Summary</h2>
+							<h2 class="head">Monthly Budget Summary</h2>
 							<!-- /head -->
 	
 							<!-- content -->
@@ -354,6 +300,52 @@
 							
 						</article>
 						<!-- /#budgetsummary -->
+
+						<!-- #balancesummary -->
+						<article id="balancesummary" class="summary">
+
+							<!-- head -->
+							<h2 class="head">
+	
+								<!-- caption -->
+								<span class="caption">Current Balance:</span>
+								<!-- /caption -->
+
+								<!-- value -->
+								<span id="balance" class="value">-</span>
+								<!-- /value -->
+								
+							</h2>
+							<!-- /head -->
+	
+							<!-- content -->
+							<div class="content">
+	
+								<!-- #balancechart -->
+								<section id="balancechart" class="box piechart">
+		
+									<!-- chart -->
+									<div class="chart">
+										<!-- disc -->
+										<div class="disc"></div>
+										<!-- /disc -->
+									</div>
+									<!-- /chart -->
+					
+								</section>
+								<!-- /#balancechart -->
+	
+								<!-- #balancelegend -->
+								<section id="balancelegend" class="box legend">
+
+								</section>
+								<!-- /#balancelegend -->
+								
+							</div>
+							<!-- /content -->
+							
+						</article>
+						<!-- /#balancesummary -->
 
 						<!-- #transactions -->
 						<article id="transactions">
