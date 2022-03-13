@@ -144,7 +144,7 @@ function startItUp() {
 		// Add to balance chart label. 
 		document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart div.disc').innerHTML = dollar(netBalance);
 		// Add to balance label. 
-		document.querySelector('section#overview article#balancesummary div.content section#balance h3.label span.value').innerHTML = dollar(netBalance);
+		document.querySelector('section#overview article#balancesummary h2.head span#balance').innerHTML = dollar(netBalance);
 	}
 	
 	// Handle events. 
@@ -276,4 +276,10 @@ function loadPageContent() {
 
 		/****/
 	}
+}
+
+
+// Toggle navigation. 
+function toggleNavigation() {
+	document.querySelector('nav.switcher').classList.toggle('active');
 }

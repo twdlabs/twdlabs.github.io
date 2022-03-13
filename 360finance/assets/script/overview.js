@@ -93,7 +93,7 @@ function loadOverviewPage() {
 		// Get element for pie chart legend. 
 		let balancelegendbox = document.getElementById('balancelegend');
 		// Load legend for balance pie chart. 
-		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned);
+		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned,false);
 	}
 
 	// Load budget summary: enhanced progress bars. 

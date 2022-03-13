@@ -11,6 +11,7 @@
 /* Overview Page */
 
 /* div#container main.main section#overview {} */
+/* div#container main.main section#overview article {} */
 /* div#container main.main section#overview article div.content {} */
 
 div#container main.main section#overview article.summary div.content {justify-content:center; align-items:center; flex-wrap:wrap;}
@@ -35,33 +36,41 @@ div#container main.main section#overview article.summary div.content section.leg
 div#container main.main section#overview article.summary div.content section.legend div.item {background-color:white; padding:.25rem 0; border:solid #0001; border-width:0 0 1px;}
 div#container main.main section#overview article.summary div.content section.legend div.item:first-child {border-top-width:1px;}
 div#container main.main section#overview article.summary div.content section.legend div.item:hover {background-color:#00000008;}
-div#container main.main section#overview article.summary div.content section.legend div.item span.color {background-color:white; border:1px solid black; min-width:1rem; min-height:1rem;}
-div#container main.main section#overview article.summary div.content section.legend div.item span.caption.name {margin-left:.5rem;}
+div#container main.main section#overview article.summary div.content section.legend div.item span.color {background-color:white; border:1px solid black; min-width:1rem; min-height:1rem; margin-right:.5rem;}
+/* div#container main.main section#overview article.summary div.content section.legend div.item span.caption.name {margin-left:.5rem;} */
 div#container main.main section#overview article.summary div.content section.legend div.item span.caption.proportion {margin-left:.25rem;}
 div#container main.main section#overview article.summary div.content section.legend div.item span.caption.amount {margin-left:.25rem;}
 div#container main.main section#overview article.summary div.content section.legend div.item span.space {flex-grow:1;}
 
+/* div#container main.main section#overview article#incomesummary {} */
 /* div#container main.main section#overview article#incomesummary div.content {} */
 
+/* div#container main.main section#overview article#spendsummary {} */
 /* div#container main.main section#overview article#spendsummary div.content {} */
 
+/* div#container main.main section#overview article#balancesummary {} */
+div#container main.main section#overview article#balancesummary h2.head span.value {color:seagreen;}
+/* div#container main.main section#overview article#balancesummary h2.head span.caption {} */
 /* div#container main.main section#overview article#balancesummary div.content {} */
-/* div#container main.main section#overview article#balancesummary div.content section#balance {display:none;} */
-/* div#container main.main section#overview article#balancesummary div.content section#balance h3.label span.value {} */
-/* div#container main.main section#overview article#balancesummary div.content section#balance h3.label span.caption {} */
 
+/* div#container main.main section#overview article#budgetsummary {} */
 /* div#container main.main section#overview article#budgetsummary div.content {} */
-div#container main.main section#overview article#budgetsummary div.content section#budgetbox {max-width:20rem; /* padding:0; */}
-div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label {margin-top:.5rem;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox {max-width:24rem; padding:.5rem 1rem;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar {padding:.375rem 0;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar.total {padding:.625rem 0; border-top:1px solid grey; margin-top:.5rem;}
+/* div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label {margin-top:.5rem;} */
 div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label {display:flex; justify-content:space-between; align-items:flex-end;}
 div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label span.name {color:var(--black); font-size:1rem;}
 div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label span.remainder {color:var(--black); font-size:.65rem;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label span.remainder.over {color:var(--red);}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label span.remainder.slow {color:var(--yellow);}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label span.remainder.good {color:var(--green);}
 div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar {background-color:var(--white); height:2rem; /* margin:1rem; */}
-/* div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar {} */
 div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar {display:flex; justify-content:center; align-items:center; position:relative;}
-div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar::after {content:''; position:absolute; top:0; left:0; height:100%; width:80%; border-right:1px solid lightgrey;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar::after {content:''; position:absolute; top:0; left:0; height:100%; width:80%; border-right:1px solid var(--black); opacity:.1;}
 div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar span.caption {color:var(--black); font-size:.75rem;}
 
+/* div#container main.main section#overview article#transactions {} */
 div#container main.main section#overview article#transactions div.content {display:flex; flex-direction:column; align-items:stretch;}
 div#container main.main section#overview article#transactions div.content table.table {background-color:white; border-collapse:collapse; font-size:.75rem;}
 /* div#container main.main section#overview article#transactions div.content table.table tr.row {} */
