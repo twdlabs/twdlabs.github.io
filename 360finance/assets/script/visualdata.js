@@ -1,5 +1,57 @@
 
 
+// Create progress bars from given category data. 
+// Create progress bars based on spend category data: budget spend limits and actual spend totals. 
+function createProgressBars(boxElement,categoryData,categoryTotals) {
+
+	// Create progress bars: category items. 
+	let result = '';
+	for(i in categoryData) {
+
+		// Get data for given category. 
+		let category = categoryData[i];
+		// console.log('category:',category);
+		
+		// Get proportion of budget limit for given category. 
+		let proportion = (categoryTotals[i]/category.budgetmonthlylimit);
+		let pct = (100*proportion).toFixed(1);
+		console.log(category.categoryname,'proportion:', pct+'%');
+
+		// Append progress bar (w/ linear gradient parameters) for given category. 
+		result += `
+		<!-- progressbar -->
+		<div class="progressbar">
+
+			<!-- label -->
+			<div class="label">
+				
+				<!-- name -->
+				<span class="name">${category.categoryname}</span>
+				<!-- /name -->
+
+				<!-- remainder -->
+				<span class="remainder">${ dollar(category.budgetmonthlylimit - categoryTotals[i]) } remaining</span>
+				<!-- /remainder -->
+				
+			</div>
+			<!-- /label -->
+
+			<!-- bar -->
+			<div class="bar" style="background-image:linear-gradient(90deg, ${category.categorycolor} ${pct}% , var(--white) ${pct}% );">
+				<span class="caption">${ dollar(categoryTotals[i]) } of ${ dollar(category.budgetmonthlylimit) }</span>
+			</div>
+			<!-- /bar -->
+			
+		</div>
+		<!-- /progressbar -->`;
+	}
+
+
+	// Add progress bars to page. 
+	boxElement.innerHTML = result;
+}
+
+
 // Create pie chart from given category data. 
 function createPieChart(chartElement,categoryData,categoryTotals,totalAmount) {
 
@@ -66,7 +118,7 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 		
 		// Get proportion of total for given category. 
 		let proportion = (categoryTotals[i]/totalAmount);
-		// console.log('proportion:', (100*proportion).toFixed(1)+'%');
+		// console.log(category.categoryname,'proportion:', (100*proportion).toFixed(1)+'%');
 
 		// Append legend item for given category. 
 		result += `

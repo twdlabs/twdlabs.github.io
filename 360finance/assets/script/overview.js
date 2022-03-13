@@ -3,26 +3,29 @@
 // Load overview page. 
 function loadOverviewPage() {
 
-	// Load income pie chart. 
-	loadIncomeChart();
+	// Load income summary. 
+	loadIncomeSummary();
 
-	// Load spending pie chart. 
-	loadSpendChart();
+	// Load spending summary. 
+	loadSpendSummary();
 
-	// Load balance pie chart. 
-	loadBalanceChart();
+	// Load balance summary. 
+	loadBalanceSummary();
+
+	// Load budget summary. 
+	loadBudgetSummary();
 
 	// Load transaction list. 
 	loadTransactions();
 
 	/****/
 
-	// Load income pie chart. 
-	function loadIncomeChart() {
+	// Load income summary: pie chart and legend. 
+	function loadIncomeSummary() {
 
 		// Create list of income category totals. 
-		let categoryTotals = [  ];
-		for(let id in incomecategory) {
+		let incomecategorytotals = [  ];
+		for(let id in incomecategorydata) {
 
 			// Initialize category total. 
 			let total = 0;
@@ -31,27 +34,27 @@ function loadOverviewPage() {
 			for(let t of transactiondata) {
 				if(t.transactionamount>=0 && t.categoryid==id) total += 1*t.transactionamount;
 			}
-			categoryTotals.push(total);
+			incomecategorytotals.push(total);
 		}
-		// console.log('categoryTotals:',categoryTotals);
+		// console.log('Income category totals:',incomecategorytotals);
 
 		// Get pie chart element. 
 		let incomechartbox = document.querySelector('section#overview article#incomesummary div.content section#incomechart div.chart');
-		// Create pie chart from given totala. 
-		createPieChart(incomechartbox,incomecategory,categoryTotals,totalAmountEarned);
+		// Create pie chart from given totals. 
+		createPieChart(incomechartbox,incomecategorydata,incomecategorytotals,totalAmountEarned);
 			
 		// Get element for pie chart legend. 
 		let incomelegendbox = document.getElementById('incomelegend');
 		// Load legend for income pie chart. 
-		createPieChartLegend(incomelegendbox,incomecategory,categoryTotals,totalAmountEarned);
+		createPieChartLegend(incomelegendbox,incomecategorydata,incomecategorytotals,totalAmountEarned);
 	}
 
-	// Load spending pie chart. 
-	function loadSpendChart() {
+	// Load spending summary: pie chart and legend. 
+	function loadSpendSummary() {
 
 		// Create list of spend category totals. 
-		let categoryTotals = [  ];
-		for(let id in spendcategory) {
+		let spendcategorytotals = [  ];
+		for(let id in spendcategorydata) {
 
 			// Initialize category total. 
 			let total = 0;
@@ -60,37 +63,61 @@ function loadOverviewPage() {
 			for(let t of transactiondata) {
 				if(t.transactionamount<=0 && t.categoryid==id) total += (-1)*t.transactionamount;
 			}
-			categoryTotals.push(total);
+			spendcategorytotals.push(total);
 		}
-		// console.log('categoryTotals:',categoryTotals);
+		// console.log('Spend category totals:',spendcategorytotals);
 
 		// Get pie chart element. 
 		let spendchartbox = document.querySelector('section#overview article#spendsummary div.content section#spendchart div.chart');
-		// Create pie chart from given totala. 
-		createPieChart(spendchartbox,spendcategory,categoryTotals,totalAmountSpent);
+		// Create pie chart from given totals. 
+		createPieChart(spendchartbox,spendcategorydata,spendcategorytotals,totalAmountSpent);
 			
 		// Get element for pie chart legend. 
 		let spendlegendbox = document.getElementById('spendlegend');
 		// Load legend for spending pie chart. 
-		createPieChartLegend(spendlegendbox,spendcategory,categoryTotals,totalAmountSpent);
+		createPieChartLegend(spendlegendbox,spendcategorydata,spendcategorytotals,totalAmountSpent);
 	}
 
-	// Load balance pie chart. 
-	function loadBalanceChart() {
+	// Load balance summary: pie chart and legend. 
+	function loadBalanceSummary() {
 
 		// Create list of binary balance category totals: spending & surplus. 
-		let categoryTotals = [ totalAmountSpent, totalAmountEarned-totalAmountSpent ];
-		console.log('categoryTotals:',categoryTotals);
+		let balancecategorytotals = [ totalAmountSpent, totalAmountEarned-totalAmountSpent ];
+		// console.log('Balance category totals:',balancecategorytotals);
 
 		// Get pie chart element. 
 		let balancechartbox = document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart');
-		// Create pie chart from given totala. 
-		createPieChart(balancechartbox,balancecategory,categoryTotals,totalAmountEarned);
+		// Create pie chart from given totals. 
+		createPieChart(balancechartbox,balancecategorydata,balancecategorytotals,totalAmountEarned);
 			
 		// Get element for pie chart legend. 
 		let balancelegendbox = document.getElementById('balancelegend');
 		// Load legend for balance pie chart. 
-		createPieChartLegend(balancelegendbox,balancecategory,categoryTotals,totalAmountEarned);
+		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned);
+	}
+
+	// Load budget summary: enhanced progress bars. 
+	function loadBudgetSummary() {
+
+		// Create list of spend category totals. 
+		let spendcategorytotals = [  ];
+		for(let id in spendcategorydata) {
+
+			// Initialize category total. 
+			let total = 0;
+
+			// Aggregate given category total. 
+			for(let t of transactiondata) {
+				if(t.transactionamount<=0 && t.categoryid==id) total += (-1)*t.transactionamount;
+			}
+			spendcategorytotals.push(total);
+		}
+		// console.log('Spend category totals:',spendcategorytotals);
+
+		// Get element for progress bars. 
+		let budgetbox = document.getElementById('budgetbox');
+		// Create progress bars based on spend category data: budget spend limits and actual spend totals. 
+		createProgressBars(budgetbox,spendcategorydata,spendcategorytotals);
 	}
 
 	// Load transaction list. 
@@ -107,7 +134,7 @@ function loadOverviewPage() {
 		// transactiondata.sort(sortByAmount);
 		for(let i in transactiondata) {
 			let t = transactiondata[i];
-			let category = (t.transactionamount>0) ? incomecategory[t.categoryid] : spendcategory[t.categoryid];
+			let category = (t.transactionamount>0) ? incomecategorydata[t.categoryid] : spendcategorydata[t.categoryid];
 			// console.log(i,'Transaction:',t);
 			// console.log('Spend category:',category,category.categoryname);
 			result += `

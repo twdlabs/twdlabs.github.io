@@ -2,20 +2,12 @@
 
 
 // Define month labels. 
-const monthLabels = [
-	'J','F','M', 
-	'A','M','J', 
-	'J','A','S', 
-	'O','N','D',
-];
+const monthLabels = [ 'J','F','M', 'A','M','J', 'J','A','S', 'O','N','D' ];
 
 
 
-// Define transaction types. 
-// const transactiontypes = ['Purchase','Income'];
-
-// Define income categories. 
-const incomecategory = [
+// Define data for income categories. 
+const incomecategorydata = [
 	{	// 0
 		categoryname:'Wages',
 		categorycolor:'forestgreen',
@@ -36,80 +28,98 @@ const incomecategory = [
 	},
 	// {	// 3
 	// 	categoryname:'xyz',
+	// 	categorycolor:'forestgreen',
+	// 	clustercolor:'forestgreen',
 	// 	color:'white'
 	// },
 ];
 
-// Define spending categories. 
-const spendcategory = [
+
+// Define data for spending categories. 
+const spendcategorydata = [
 	{	// 0
 		categoryname:'Tithing',
 		categorycolor:'dodgerblue',
-		categoryicon:'cloud'
+		categoryicon:'cloud',
+		budgetmonthlylimit:1000,
 	},
 	{	// 1
 		categoryname:'Savings',
 		categorycolor:'springgreen',
-		categoryicon:'cashstack'
+		categoryicon:'cashstack',
+		budgetmonthlylimit:1000,
 	},
 	{	// 2
 		categoryname:'Housing',
 		categorycolor:'coral',
-		categoryicon:'house'
+		categoryicon:'house',
+		budgetmonthlylimit:1000,
 	},
 	{	// 3
 		categoryname:'Utilities',
 		categorycolor:'gold',
-		categoryicon:'gear'
+		categoryicon:'gear',
+		budgetmonthlylimit:1000,
 	},
 	{	// 4
 		categoryname:'Food',
 		categorycolor:'mediumblue',
-		categoryicon:'recycle'
+		categoryicon:'recycle',
+		budgetmonthlylimit:1000,
 	},
 	{	// 5
 		categoryname:'Clothing',
 		categorycolor:'slateblue',
-		categoryicon:'bag'
+		categoryicon:'bag',
+		budgetmonthlylimit:1000,
 	},
 	{	// 6
 		categoryname:'Education',
 		categorycolor:'powderblue',
-		categoryicon:'notebook'
+		categoryicon:'notebook',
+		budgetmonthlylimit:1000,
 	},
 	{	// 7
 		categoryname:'Insurance',
 		categorycolor:'crimson',
-		categoryicon:'dice'
+		categoryicon:'dice',
+		budgetmonthlylimit:1000,
 	},
 	{	// 8
 		categoryname:'Transportation',
 		categorycolor:'greenyellow',
-		categoryicon:'bike'
+		categoryicon:'bike',
+		budgetmonthlylimit:1000,
 	},
 	{	// 9
 		categoryname:'Vacation',
 		categorycolor:'mediumturquoise',
-		categoryicon:'sunglasses'
+		categoryicon:'sunglasses',
+		budgetmonthlylimit:1000,
 	},
 	{	// 10
 		categoryname:'Entertainment',
 		categorycolor:'hotpink',
-		categoryicon:'tvscreen'
+		categoryicon:'tvscreen',
+		budgetmonthlylimit:1000,
 	},
 	{	// 11
 		categoryname:'Business',
 		categorycolor:'wheat',
-		categoryicon:'briefcase'
+		categoryicon:'briefcase',
+		budgetmonthlylimit:1000,
 	},
 	// {	// 12
 	// 	categoryname:'xyz',
-	// 	color:'white'
+	// 	categorycolor:'white',
+	// 	categoryicon:'icon',
+	// 	budgetmonthlylimit:1000,
 	// },
 ];
 
-// Define balance categories. 
-const balancecategory = [
+
+// Define data for balance categories. 
+const balancecategorydata = [
 	{	// 0
 		categoryname:'Spending',
 		categorycolor:'#F00A'
@@ -118,7 +128,15 @@ const balancecategory = [
 		categoryname:'Surplus',
 		categorycolor:'seagreen'
 	},
-]
+];
+
+
+// Define budget data for spending categories. 
+const budgetcategorydata = [
+	{
+
+	},
+];
 
 
 

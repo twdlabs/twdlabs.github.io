@@ -50,6 +50,18 @@ div#container main.main section#overview article.summary div.content section.leg
 /* div#container main.main section#overview article#balancesummary div.content section#balance h3.label span.value {} */
 /* div#container main.main section#overview article#balancesummary div.content section#balance h3.label span.caption {} */
 
+/* div#container main.main section#overview article#budgetsummary div.content {} */
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox {max-width:20rem; /* padding:0; */}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label {margin-top:.5rem;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label {display:flex; justify-content:space-between; align-items:flex-end;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label span.name {color:var(--black); font-size:1rem;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.label span.remainder {color:var(--black); font-size:.65rem;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar {background-color:var(--white); height:2rem; /* margin:1rem; */}
+/* div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar {} */
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar {display:flex; justify-content:center; align-items:center; position:relative;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar::after {content:''; position:absolute; top:0; left:0; height:100%; width:80%; border-right:1px solid lightgrey;}
+div#container main.main section#overview article#budgetsummary div.content section#budgetbox div.progressbar div.bar span.caption {color:var(--black); font-size:.75rem;}
+
 div#container main.main section#overview article#transactions div.content {display:flex; flex-direction:column; align-items:stretch;}
 div#container main.main section#overview article#transactions div.content table.table {background-color:white; border-collapse:collapse; font-size:.75rem;}
 /* div#container main.main section#overview article#transactions div.content table.table tr.row {} */
