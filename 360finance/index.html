@@ -15,7 +15,7 @@
 		<!-- Main Stylesheet -->
 		<link href="assets/style/style.css" rel="stylesheet" type="text/css"/>
 
-		<!-- Specific Page Stylesheet -->
+		<!-- Specific Pages Stylesheet -->
 		<link href="assets/style/pages.css" rel="stylesheet" type="text/css"/>
 	</head>
 
@@ -25,10 +25,10 @@
 		<div id="container">
 
 			<!-- header -->
-			<header class="header">
+			<header class="header" onclick="toggleNavigation()">
 
 				<!-- head -->
-				<h1 class="head" onclick="toggleNavigation()">
+				<h1 class="head">
 
 					<!-- logo -->
 					<img class="logo" src="assets/globadigm.png" alt="globadigm">
@@ -42,7 +42,7 @@
 				<!-- /head -->
 
 				<!-- togglebtn -->
-				<div class="btn togglebtn" onclick="toggleNavigation()">
+				<div class="btn togglebtn">
 
 					<!-- icon -->
 					<svg class="icon hamburger" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -252,54 +252,6 @@
 							
 						</article>
 						<!-- /#spendsummary -->
-
-						<!-- #budgetsummary -->
-						<article id="budgetsummary" class="summary">
-
-							<!-- head -->
-							<h2 class="head">Monthly Budget Summary</h2>
-							<!-- /head -->
-	
-							<!-- content -->
-							<div class="content">
-
-								<!-- #budgetbox -->
-								<section id="budgetbox" class="box">
-
-									<!-- progressbar -->
-									<div class="progressbar">
-
-										<!-- label -->
-										<div class="label">
-											
-											<!-- name -->
-											<span class="name">Category Name</span>
-											<!-- /name -->
-
-											<!-- remainder -->
-											<span class="remainder">$900 remaining</span>
-											<!-- /remainder -->
-											
-										</div>
-										<!-- /label -->
-
-										<!-- bar -->
-										<div class="bar" style="background-image:linear-gradient(90deg, dodgerblue 25% , var(--white) 25% );">
-											<span class="caption">$300 of $1200</span>
-										</div>
-										<!-- /bar -->
-										
-									</div>
-									<!-- /progressbar -->
-
-								</section>
-								<!-- /#budgetbox -->
-
-							</div>
-							<!-- /content -->
-							
-						</article>
-						<!-- /#budgetsummary -->
 
 						<!-- #balancesummary -->
 						<article id="balancesummary" class="summary">
@@ -857,11 +809,59 @@
 					</section>
 					<!-- /#overview -->
 
-					<!-- #bank -->
-					<section id="bank" class="page">
+					<!-- #budget -->
+					<section id="budget" class="page">
+
+						<!-- #budgetsummary -->
+						<article id="budgetsummary" class="summary">
+
+							<!-- head -->
+							<h2 class="head">Monthly Budget Summary</h2>
+							<!-- /head -->
+	
+							<!-- content -->
+							<div class="content">
+
+								<!-- budgetbox -->
+								<section class="budgetbox box" onclick="this.classList.toggle('showmode');">
+
+									<!-- progressbar -->
+									<div class="progressbar">
+
+										<!-- label -->
+										<div class="label">
+											
+											<!-- name -->
+											<span class="name">Category Name</span>
+											<!-- /name -->
+
+											<!-- remainder -->
+											<span class="remainder">$900 remaining</span>
+											<!-- /remainder -->
+											
+										</div>
+										<!-- /label -->
+
+										<!-- bar -->
+										<div class="bar" style="background:dodgerblue linear-gradient(90deg, transparent 25% , var(--white) 25% );">
+											<span class="caption">$300 of $1200</span>
+										</div>
+										<!-- /bar -->
+										
+									</div>
+									<!-- /progressbar -->
+
+								</section>
+								<!-- /budgetbox -->
+
+							</div>
+							<!-- /content -->
+							
+						</article>
+						<!-- /#budgetsummary -->
 
 						<!-- article -->
-						<article>
+						<article id="oldbudgetsummary" class="summary">
 
 							<!-- head -->
 							<h2 class="head">Budget</h2>
@@ -891,7 +891,7 @@
 						<!-- /article -->
 						
 					</section>
-					<!-- /#bank -->
+					<!-- /#budget -->
 					
 					<!-- #taxes -->
 					<section id="taxes" class="page">
@@ -944,8 +944,18 @@
 
 		<!-- Data Visualization Script -->
 		<script src="assets/script/visualdata.js" type="text/javascript"></script>
+
 		<!-- Overview Page Script -->
 		<script src="assets/script/overview.js" type="text/javascript"></script>
+		<!-- Budget Page Script -->
+		<script src="assets/script/budget.js" type="text/javascript"></script>
+		<!-- Taxes Page Script -->
+		<!-- <script src="assets/script/taxes.js" type="text/javascript"></script> -->
+		<!-- Investments Page Script -->
+		<!-- <script src="assets/script/investments.js" type="text/javascript"></script> -->
+		<!-- Insurance Page Script -->
+		<!-- <script src="assets/script/insurance.js" type="text/javascript"></script> -->
+
 		<!-- Main Script -->
 		<script src="assets/script/script.js" type="text/javascript"></script>
 
