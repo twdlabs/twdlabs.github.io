@@ -11,7 +11,7 @@ var totalAmountEarned;
 var totalAmountSpent;
 
 // Initialize net balance. 
-var netBalance;
+// var netBalance;
 
 
 /*****/
@@ -122,8 +122,6 @@ function startItUp() {
 			if(t.transactionamount>=0) totalAmountEarned += t.transactionamount;
 		}
 		// console.log('Total earnings:', dollar(totalAmountEarned) );
-		// Add to income chart label. 
-		document.querySelector('section#overview article#incomesummary div.content section#incomechart div.chart div.disc').innerHTML = dollar(totalAmountEarned);
 
 		// Aggregate total spending. 
 		totalAmountSpent = 0;
@@ -131,20 +129,14 @@ function startItUp() {
 			if(t.transactionamount<=0) totalAmountSpent += (-1) * t.transactionamount;
 		}
 		// console.log('Total spending:', dollar(totalAmountSpent) );
-		// Add to spend chart label. 
-		document.querySelector('section#overview article#spendsummary div.content section#spendchart div.chart div.disc').innerHTML = dollar(totalAmountSpent);
 
 		// Aggregate net balance. 
-		netBalance = 0;
-		for(let t of transactiondata) {
-			netBalance += t.transactionamount;
-		}
+		// netBalance = 0;
+		// for(let t of transactiondata) {
+		// 	netBalance += t.transactionamount;
+		// }
 		// console.log('Net balance:', dollar(totalAmountEarned-totalAmountSpent) );
 		// console.log('Net balance:', dollar(netBalance) );
-		// Add to balance chart label. 
-		document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart div.disc').innerHTML = dollar(netBalance);
-		// Add to balance label. 
-		document.querySelector('section#overview article#balancesummary h2.head span#balance').innerHTML = dollar(netBalance);
 	}
 	
 	// Handle events. 
@@ -221,43 +213,7 @@ function loadPageContent() {
 
 
 	/*****/
-
-
-	// TODO: Load budget page. 
-	function loadBudgetPage() {
 	
-		// Load budget. 
-		loadBudget();
-
-		/****/
-
-		// Load budget on budget page. 
-		function loadBudget() {
-
-			// Get budget container. 
-			let budgetbox = document.querySelector('section#bank article.buckets');
-			// console.log(budgetbox);
-
-			// Initialize result. 
-			let result = '';
-
-			for(let i in monthLabels) {
-				let n = i*1 + 1;
-				let ml = monthLabels[i];
-				result += `
-				<!-- bucket -->
-				<div class="bucket">
-
-					<label class="month">${ (false) ? (ml) : ( (n<10) ? ('0'+n) : (n) ) }</label>
-
-				</div>
-				<!-- /bucket -->`;
-			}
-
-			// Add result to page. 
-			budgetbox.innerHTML = result;
-		}
-	}
 
 	// TODO: Load taxes page. 
 	function loadTaxesPage() {

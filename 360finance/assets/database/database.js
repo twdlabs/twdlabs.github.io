@@ -107,7 +107,7 @@ const spendcategorydata = [
 		categoryname:'Business',
 		categorycolor:'wheat',
 		categoryicon:'briefcase',
-		budgetmonthlylimit:1600,
+		budgetmonthlylimit:1400,
 	},
 	// {	// 12
 	// 	categoryname:'xyz',

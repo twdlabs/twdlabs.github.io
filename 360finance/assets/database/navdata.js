@@ -10,7 +10,7 @@ const navdata = [
 	{
 		// name:'Banking',
 		name:'Budget',
-		code:'bank',
+		code:'budget',
 		tooltip:'daily activity',
 		innersvg:'xyz',
 	},
@@ -35,4 +35,4 @@ const navdata = [
 ];
 
 // Define section names. 
-const sectionNames = ['overview','bank','taxes','invest','insurance'];
+const sectionNames = ['overview','budget','taxes','invest','insurance'];

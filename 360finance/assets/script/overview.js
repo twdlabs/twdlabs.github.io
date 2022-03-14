@@ -12,9 +12,6 @@ function loadOverviewPage() {
 	// Load balance summary. 
 	loadBalanceSummary();
 
-	// Load budget summary. 
-	loadBudgetSummary();
-
 	// Load transaction list. 
 	loadTransactions();
 
@@ -47,6 +44,10 @@ function loadOverviewPage() {
 		let incomelegendbox = document.getElementById('incomelegend');
 		// Load legend for income pie chart. 
 		createPieChartLegend(incomelegendbox,incomecategorydata,incomecategorytotals,totalAmountEarned);
+
+		// Add total income amount to income pie chart label. 
+		let label = document.querySelector('section#overview article#incomesummary div.content section#incomechart div.chart div.disc');
+		label.innerHTML = dollarBrief(totalAmountEarned);
 	}
 
 	// Load spending summary: pie chart and legend. 
@@ -76,6 +77,10 @@ function loadOverviewPage() {
 		let spendlegendbox = document.getElementById('spendlegend');
 		// Load legend for spending pie chart. 
 		createPieChartLegend(spendlegendbox,spendcategorydata,spendcategorytotals,totalAmountSpent);
+
+		// Add total spend amount to spend pie chart label. 
+		let label = document.querySelector('section#overview article#spendsummary div.content section#spendchart div.chart div.disc');
+		label.innerHTML = dollarBrief(totalAmountSpent);
 	}
 
 	// Load balance summary: pie chart and legend. 
@@ -94,30 +99,13 @@ function loadOverviewPage() {
 		let balancelegendbox = document.getElementById('balancelegend');
 		// Load legend for balance pie chart. 
 		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned,false);
-	}
 
-	// Load budget summary: enhanced progress bars. 
-	function loadBudgetSummary() {
-
-		// Create list of spend category totals. 
-		let spendcategorytotals = [  ];
-		for(let id in spendcategorydata) {
-
-			// Initialize category total. 
-			let total = 0;
-
-			// Aggregate given category total. 
-			for(let t of transactiondata) {
-				if(t.transactionamount<=0 && t.categoryid==id) total += (-1)*t.transactionamount;
-			}
-			spendcategorytotals.push(total);
-		}
-		// console.log('Spend category totals:',spendcategorytotals);
-
-		// Get element for progress bars. 
-		let budgetbox = document.getElementById('budgetbox');
-		// Create progress bars based on spend category data: budget spend limits and actual spend totals. 
-		createProgressBars(budgetbox,spendcategorydata,spendcategorytotals);
+		// Add net balance amount to balance header. 
+		let headlabel = document.querySelector('section#overview article#balancesummary h2.head span#balance');
+		headlabel.innerHTML = dollarBrief(totalAmountEarned-totalAmountSpent);
+		// Add net balance amount to balance pie chart label. 
+		let label = document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart div.disc');
+		label.innerHTML = dollarBrief(totalAmountEarned-totalAmountSpent);
 	}
 
 	// Load transaction list. 

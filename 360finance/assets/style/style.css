@@ -23,11 +23,12 @@ div#container {display:flex; flex-direction:column; justify-content:flex-start; 
 
 
 /* Header Bar */
-div#container header.header {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:.75rem 1.25rem; border-radius:.5rem; width:100%; max-width:var(--maxwidth); margin:.25rem auto; box-shadow:var(--thinshadow);}
+div#container header.header {width:100%; max-width:var(--maxwidth); padding:.75rem 1.25rem; border-radius:.5rem; margin:.25rem auto; box-shadow:var(--thinshadow);}
+div#container header.header {display:flex; flex-direction:row; justify-content:space-between; align-items:center; cursor:pointer; user-select:none;}
 div#container header.header h1.head {font-size:1.5rem; font-weight:lighter; white-space:nowrap; margin:0;}
-div#container header.header h1.head {display:flex; align-items:center; cursor:pointer; user-select:none;}
-div#container header.header h1.head img.logo {display:none;}
-div#container header.header h1.head img.logo {height:1em; object-fit:cover; margin-right:.25rem;}
+div#container header.header h1.head {display:flex; align-items:center;}
+/* div#container header.header h1.head img.logo {display:none;} */
+div#container header.header h1.head img.logo {height:1em; object-fit:cover; opacity:.5; margin-right:.5rem;}
 div#container header.header div.togglebtn {cursor:pointer; user-select:none;}
 div#container header.header div.togglebtn svg.icon {display:block; font-size:1.5rem;}
 

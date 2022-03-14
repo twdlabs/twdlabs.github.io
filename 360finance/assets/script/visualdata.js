@@ -64,11 +64,11 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 
 		// Get data for given category. 
 		let category = categoryData[i];
-		// console.log('category:',category);
+		// console.log('Category:',category.categoryname);
 		
 		// Get proportion of total for given category. 
 		let proportion = (categoryTotals[i]/totalAmount);
-		// console.log(category.categoryname,'proportion:', (100*proportion).toFixed(1)+'%');
+		// console.log('proportion:', (100*proportion).toFixed(1)+'%');
 
 		// Append legend item for given category. 
 		result += `
@@ -102,7 +102,7 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 	// Append legend item for total. 
 	if(includeTotal) result += `
 	<!-- item -->
-	<div class="item">
+	<div class="item total">
 
 		<!-- caption -->
 		<span class="caption name">Total</span>
@@ -127,28 +127,37 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 
 // Create progress bars from given category data. 
 // Create progress bars based on spend category data: budget spend limits and actual spend totals. 
-function createProgressBars(boxElement,categoryData,categoryTotals) {
+function createProgressBars(categoryData,categoryTotals) {
+	// console.log('Category Data:', categoryData);
+	// console.log('Category Totals:', categoryTotals);
 
 	// Initialize total amount. 
 	let totalBudgetAmount = 0;
 
 	// Create progress bars: category items. 
 	let result = '';
+	result += `
+	<!-- head -->
+	<h3 class="head">March 2022</h3>
+	<!-- /head -->`;
 	for(i in categoryData) {
 
 		// Get data for given category. 
 		let category = categoryData[i];
-		// console.log('category:',category);
+		// console.log('\nCategory:',category.categoryname);
 		
 		// Get proportion of budget limit for given category. 
 		let proportion = (categoryTotals[i]/category.budgetmonthlylimit);
+		// console.log('Total Spend:', categoryTotals[i]);
+		// console.log('Spend Limit:', category.budgetmonthlylimit);
+		// console.log('proportion:', proportion);
 		let pct = (100*proportion).toFixed(1);
-		console.log(category.categoryname,'proportion:', pct+'%');
+		// console.log('proportion:', pct+'%');
 
 		// Append progress bar for given category. 
 		result += `
 		<!-- progressbar -->
-		<div class="progressbar">
+		<div class="progressbar ${ getSpendStatus(pct) }">
 
 			<!-- label -->
 			<div class="label">
@@ -158,14 +167,14 @@ function createProgressBars(boxElement,categoryData,categoryTotals) {
 				<!-- /name -->
 
 				<!-- remainder -->
-				<span class="remainder ${ getSpendStatus(pct) }">${ dollar0(category.budgetmonthlylimit - categoryTotals[i]) } ${ (pct>100) ? ('Over') : ('Left') }</span>
+				<span class="remainder">${ dollar0(category.budgetmonthlylimit - categoryTotals[i]) } ${ (pct>100) ? ('Over') : ('Left') }</span>
 				<!-- /remainder -->
 				
 			</div>
 			<!-- /label -->
 
 			<!-- bar -->
-			<div class="bar" style="background-image:linear-gradient(90deg, ${category.categorycolor} ${pct}% , var(--white) ${pct}% );">
+			<div class="bar" style="background:${category.categorycolor} linear-gradient(90deg, transparent ${pct}% , var(--white) ${pct}% );">
 				<span class="caption">${ dollar0(categoryTotals[i]) } of ${ dollar0(category.budgetmonthlylimit) }</span>
 			</div>
 			<!-- /bar -->
@@ -180,12 +189,12 @@ function createProgressBars(boxElement,categoryData,categoryTotals) {
 	// Get proportion of budget limit for entire budget. 
 	let proportion = (totalAmountSpent/totalBudgetAmount);
 	let pct = (100*proportion).toFixed(1);
-	console.log('Budget proportion:', pct+'%');
+	// console.log('Total Budget proportion:', pct+'%');
 
 	// Append progress bar for entire budget. 
 	result += `
 	<!-- progressbar -->
-	<div class="progressbar total">
+	<div class="progressbar total ${ getSpendStatus(pct) }">
 
 		<!-- label -->
 		<div class="label">
@@ -195,14 +204,14 @@ function createProgressBars(boxElement,categoryData,categoryTotals) {
 			<!-- /name -->
 
 			<!-- remainder -->
-			<span class="remainder ${ getSpendStatus(pct) }">${ dollar0(totalBudgetAmount - totalAmountSpent) } ${ (pct>100) ? ('Over') : ('Left') }</span>
+			<span class="remainder">${ dollar0(totalBudgetAmount - totalAmountSpent) } ${ (pct>100) ? ('Over') : ('Left') }</span>
 			<!-- /remainder -->
 			
 		</div>
 		<!-- /label -->
 
 		<!-- bar -->
-		<div class="bar" style="background-image:linear-gradient(90deg, grey ${pct}% , var(--white) ${pct}% );">
+		<div class="bar" style="background:grey linear-gradient(90deg, transparent ${pct}% , var(--white) ${pct}% );">
 			<span class="caption">${ dollar0(totalAmountSpent) } of ${ dollar0(totalBudgetAmount) }</span>
 		</div>
 		<!-- /bar -->
@@ -210,8 +219,8 @@ function createProgressBars(boxElement,categoryData,categoryTotals) {
 	</div>
 	<!-- /progressbar -->`;
 
-	// Add progress bars to page. 
-	boxElement.innerHTML = result;
+	// Return progress bars. 
+	return result;
 
 	// Get spend status for budget category. 
 	function getSpendStatus(pct) {
