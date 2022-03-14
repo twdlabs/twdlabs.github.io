@@ -1,5 +1,10 @@
 
 
+// Define multiplier suffixes. 
+const suffix = [ '', 'k', 'm', 'b', 't' ];
+
+
+// Format given dollar amount (n) with given number of decimal places (d). 
 function dollarFormat(n,d) {
 	// Dummy Proof
 	n *= 1;			// Ensure that dollar amount is actually stored as a number (not as a string).
@@ -42,10 +47,44 @@ function dollarFormat(n,d) {
 	else		return (" $" + result);
 }
 
+// Format given dollar amount (n) with 2 decimal places. 
+function dollar(n) {
+	return dollarFormat(n,2);
+}
+
+// Format given dollar amount (n) with no decimal places. 
 function dollar0(n) {
 	return dollarFormat(n,0);
 }
 
-function dollar(n) {
-	return dollarFormat(n,2);
+// Format as abbreviated dollar amount. 
+function dollarBrief(num) {
+	
+	// Define components of formatted number. 
+	let coeff = 1*num;
+	let suffindex = 0;
+
+	// Divide number until less than a thousand. 
+	while(coeff>1000 && suffindex<5) {
+
+		// Divide number by thousand. 
+		coeff /= 1000;
+		// console.log('\tcoeff',coeff);
+
+		// Increment suffix index. 
+		suffindex++;
+		// console.log('\tsuffindex',suffindex);
+	}
+
+	// Add final formatting to subscriber count. 
+	coeff = coeff.toFixed(2);
+	let removeExtraZeroes = coeff.includes('.00');
+	if(removeExtraZeroes) coeff = coeff.substr(0,coeff.length-3);
+
+	// Return final result text. 
+	// console.log('suffindex:',suffindex);
+	// console.log('suffix:',suffix[suffindex]);
+	let result = ( '$' + coeff + suffix[suffindex] );
+	// result += '<br>' + num;
+	return result;
 }
