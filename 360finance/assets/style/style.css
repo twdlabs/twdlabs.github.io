@@ -16,9 +16,14 @@ body {font-family:Nunito,sans-serif; margin:0; /* touch-action:pinch-zoom; */}
 
 /* Main Container */
 
-div#container {background-color:var(--black1); background-color:white; min-height:100vh; padding:.5rem;}
+div#container {background-color:var(--black1); background-color:white; /* min- */height:100vh; padding:.5rem;}
 div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; align-items:stretch;}
 /* div#container {filter:drop-shadow(rgba(0, 0, 0, 0.1) 0px 4px 6px); perspective:75rem;} */
+div#container header.header {flex:0 0 auto;}
+div#container nav.switcher {flex:0 0 auto;}
+div#container main.main {flex-grow:1; overflow-x:hidden; overflow-y:auto; overflow-y:hidden;}
+div#container main.main div.inner {/* min-height:100%; */ height:100%;}
+div#container main.main div.inner section.page {/* min-height:100%; */ height:100%; overflow:hidden; overflow-y:auto;}
 
 
 
@@ -70,9 +75,9 @@ div#container nav.switcher.debug ul.navlist li.navitem input {display:inline-blo
 /* Page Container */
 
 div#container main.main {background-color:var(--frost); background-color:var(--black2); background-color:white; box-shadow:var(--thinshadow);}
-div#container main.main {flex-grow:1; width:100%; max-width:var(--maxwidth); padding:0 1rem; border-radius:.5rem; margin:.25rem auto; overflow:hidden;}
-div#container main.main div.inner {display:flex; flex-direction:row; align-items:flex-start; min-height:100%; transition:.5s;}
-div#container main.main section.page {flex-shrink:0; width:100%; min-height:100%; padding:1rem; overflow:hidden;}
+div#container main.main {width:100%; max-width:var(--maxwidth); /* padding:0 1rem; */ border-radius:.5rem; margin:.25rem auto;}
+div#container main.main div.inner {display:flex; flex-direction:row; align-items:flex-start; transition:.5s;}
+div#container main.main section.page {flex-shrink:0; width:100%; padding:1rem 2rem 3rem;}
 div#container main.main section.page h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.25rem 0 1rem;}
 div#container main.main section.page div.content {display:flex; flex-direction:row; justify-content:space-between;}
 div#container main.main section.page div.content section {background-color:var(--black3); padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin-top:.5rem;}

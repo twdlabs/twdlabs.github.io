@@ -5,10 +5,10 @@
 
 /* div#container main.main section.page article {} */
 /* div#container main.main section.page article div.content {} */
-div#container main.main section.page article.summary div.content {justify-content:center; align-items:center; flex-wrap:wrap;}
+div#container main.main section.page article.summary div.content {justify-content:center; align-items:flex-start; /* flex-wrap:wrap; */}
 div#container main.main section.page article.summary div.content section.box {flex-grow:1; background-color:white; box-shadow:var(--thinshadow); margin:1rem;}
 div#container main.main section.page article.summary div.content section.piechart {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
-div#container main.main section.page article.summary div.content section.piechart {width:100%; max-width:16rem; position:relative; box-shadow:none;}
+div#container main.main section.page article.summary div.content section.piechart {width:100%; min-width:8rem; max-width:16rem; position:relative; box-shadow:none;}
 div#container main.main section.page article.summary div.content section.piechart::after {content:''; display:block; width:100%; padding-top:100%;}
 div#container main.main section.page article.summary div.content section.piechart div.chart {position:absolute; top:0; left:0; width:100%; height:100%; box-shadow:var(--shadow);}
 div#container main.main section.page article.summary div.content section.piechart div.chart {background-color:white; display:grid; place-items:center; border-radius:50%;}
@@ -41,6 +41,8 @@ div#container main.main section.page article.summary div.content section.legend 
 /* Overview Page */
 
 /* div#container main.main section#overview {} */
+div#container main.main section#overview div.group {display:flex; flex-direction:row; flex-wrap:wrap;}
+div#container main.main section#overview div.group article {flex-grow:1;}
 /* div#container main.main section#overview article {} */
 /* div#container main.main section#overview article div.content {} */
 
@@ -119,6 +121,24 @@ div#container main.main section#budget article#budgetsummary div.content section
 /* div#container main.main section#invest article {} */
 /* div#container main.main section#invest article div.content {} */
 
+/* div#container main.main section#invest article#misc {} */
+div#container main.main section#invest article#misc div.content {flex-direction:column;}
+div#container main.main section#invest article#misc div.content section#badgebox {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem;}
+div#container main.main section#invest article#misc div.content section#badgebox div.card {display:flex; flex-direction:column; align-items:center; background-color:var(--blue); color:white; padding:.5rem; border-radius:.5rem;}
+div#container main.main section#invest article#misc div.content section#badgebox div.card svg.icon {font-size:2rem; margin-bottom:.5rem;}
+div#container main.main section#invest article#misc div.content section#badgebox div.card span.num {font-size:2rem; margin-bottom:.15rem;}
+div#container main.main section#invest article#misc div.content section#badgebox div.card span.caption {font-size:.75rem;}
+div#container main.main section#invest article#misc div.content section#bucketbox {display:flex; flex-direction:row; justify-content:center; align-items:center; counter-reset:n;}
+div#container main.main section#invest article#misc div.content section#bucketbox {transform:none; transform-style:preserve-3d; transition:.5s;}
+div#container main.main section#invest article#misc div.content section#bucketbox:hover {transform:rotateX(60deg); transform:rotateX(80deg);}
+div#container main.main section#invest article#misc div.content section#bucketbox div.category {background-color:#0008; min-width:3rem; min-height:3rem; border-radius:50%; margin:0 .5rem; margin-bottom:.75rem;}
+div#container main.main section#invest article#misc div.content section#bucketbox div.category {transform:translateZ(2rem); position:relative;}
+div#container main.main section#invest article#misc div.content section#bucketbox div.category::before {position:absolute; top:100%; left:50%; transform:translateX(-50%) rotateX(-45deg);}
+div#container main.main section#invest article#misc div.content section#bucketbox div.category::before {content:'Category 'counter(n); counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
+/* div#container main.main section#invest article#misc div.content {display:none;} */
+/* div#container main.main section#invest article#misc div.content section#badgebox {display:none;} */
+/* div#container main.main section#invest article#misc div.content section#bucketbox {display:none;} */
+
 
 
 /* Insurance Page */
@@ -182,22 +202,6 @@ div#container main.main section#budget article#budgetsummary div.content section
 
 
 
-
-div#container main.main section#overview article#misc div.content {display:none;}
-div#container main.main section#overview article#misc div.content section#badgebox {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem;}
-div#container main.main section#overview article#misc div.content section#badgebox div.card {display:flex; flex-direction:column; align-items:center; background-color:var(--blue); color:white; padding:.5rem; border-radius:.5rem;}
-div#container main.main section#overview article#misc div.content section#badgebox div.card svg.icon {font-size:2rem; margin-bottom:.5rem;}
-div#container main.main section#overview article#misc div.content section#badgebox div.card span.num {font-size:2rem; margin-bottom:.15rem;}
-div#container main.main section#overview article#misc div.content section#badgebox div.card span.caption {font-size:.75rem;}
-div#container main.main section#overview article#misc div.content section#badgebox {display:none;}
-div#container main.main section#overview article#misc div.content section#bucketbox {display:flex; flex-direction:row; justify-content:center; align-items:center; counter-reset:n;}
-div#container main.main section#overview article#misc div.content section#bucketbox {transform:none; transform-style:preserve-3d; transition:.5s;}
-div#container main.main section#overview article#misc div.content section#bucketbox:hover {transform:rotateX(60deg); transform:rotateX(80deg);}
-div#container main.main section#overview article#misc div.content section#bucketbox div.category {background-color:#0008; min-width:3rem; min-height:3rem; border-radius:50%; margin:0 .5rem; margin-bottom:.75rem;}
-div#container main.main section#overview article#misc div.content section#bucketbox div.category {transform:translateZ(2rem); position:relative;}
-div#container main.main section#overview article#misc div.content section#bucketbox div.category::before {position:absolute; top:100%; left:50%; transform:translateX(-50%) rotateX(-45deg);}
-div#container main.main section#overview article#misc div.content section#bucketbox div.category::before {content:'Category 'counter(n); counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
-div#container main.main section#overview article#misc div.content section#bucketbox {display:none;}
 
 
 /* div#container main.main section#budget article#oldbudgetsummary {display:none;} */

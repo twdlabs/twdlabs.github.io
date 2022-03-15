@@ -2,7 +2,7 @@
 
 
 // Initialize selected index. 
-var selectedIndex = 1;
+var selectedIndex = 0;
 
 // Initialize total earnings. 
 var totalAmountEarned;
@@ -187,7 +187,7 @@ function startItUp() {
 	// Handle events. 
 	function handleEvents() {
 	
-		// Activate header click to toggle navigation switcher. 
+		// Enable header click to toggle navigation switcher. 
 		let header = document.querySelector('div#container header.header');
 		header.addEventListener('click',toggleNavigation);
 	
@@ -197,7 +197,18 @@ function startItUp() {
 			link.addEventListener('input',selectPage);
 		}
 
-		// Budget: Activate show mode toggle on all budget boxes. 
+		// Overview: Enable pie chart disc clicks to toggle between full and brief dollar amount. 
+		let piechartdiscs = document.querySelectorAll('main.main section.page article.summary div.content section.piechart div.chart div.disc');
+		for(let disc of piechartdiscs) {
+			disc.addEventListener('click', function(event) {
+				// console.log(this);
+				this.classList.toggle('full');
+				// console.log(this);
+			});
+		}
+
+
+		// Budget: Enable show mode toggle on all budget boxes. 
 		let budgetboxes = document.querySelectorAll('main.main section#budget article#budgetsummary div.content section.budgetbox');
 		for(let box of budgetboxes) {
 			box.addEventListener('click', function(event) {
