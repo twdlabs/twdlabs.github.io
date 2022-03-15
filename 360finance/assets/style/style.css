@@ -71,7 +71,7 @@ div#container nav.switcher.debug ul.navlist li.navitem input {display:inline-blo
 
 div#container main.main {background-color:var(--frost); background-color:var(--black2); background-color:white; box-shadow:var(--thinshadow);}
 div#container main.main {flex-grow:1; width:100%; max-width:var(--maxwidth); padding:0 1rem; border-radius:.5rem; margin:.25rem auto; overflow:hidden;}
-div#container main.main div.inner {display:flex; flex-direction:row; align-items:stretch; min-height:100%; transition:.5s;}
+div#container main.main div.inner {display:flex; flex-direction:row; align-items:flex-start; min-height:100%; transition:.5s;}
 div#container main.main section.page {flex-shrink:0; width:100%; min-height:100%; padding:1rem; overflow:hidden;}
 div#container main.main section.page h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.25rem 0 1rem;}
 div#container main.main section.page div.content {display:flex; flex-direction:row; justify-content:space-between;}

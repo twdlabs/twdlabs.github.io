@@ -192,7 +192,7 @@ function createProgressBars(categoryData,categoryTotals,monthName) {
 	// Get proportion of budget limit for entire budget. 
 	let proportion = (totalAmountSpent/totalBudgetAmount);
 	let pct = (100*proportion).toFixed(1);
-	// console.log('Total Budget proportion:', pct+'%');
+	// console.log('Total Monthly Budget proportion:', pct+'%');
 
 	// Append progress bar for entire budget. 
 	result += `
@@ -203,7 +203,7 @@ function createProgressBars(categoryData,categoryTotals,monthName) {
 		<div class="label">
 			
 			<!-- name -->
-			<span class="name">Total Budget</span>
+			<span class="name">Total Monthly Budget</span>
 			<!-- /name -->
 
 			<!-- remainder -->

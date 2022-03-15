@@ -12,13 +12,16 @@ div#container main.main section.page article.summary div.content section.piechar
 div#container main.main section.page article.summary div.content section.piechart::after {content:''; display:block; width:100%; padding-top:100%;}
 div#container main.main section.page article.summary div.content section.piechart div.chart {position:absolute; top:0; left:0; width:100%; height:100%; box-shadow:var(--shadow);}
 div#container main.main section.page article.summary div.content section.piechart div.chart {background-color:white; display:grid; place-items:center; border-radius:50%;}
-div#container main.main section.page article.summary div.content section.piechart div.chart {transform:none; transition:.75s linear transform;}
-/* div#container main.main section.page article.summary div.content section.piechart div.chart:hover {transform:rotate(1080deg);} */
+div#container main.main section.page article.summary div.content section.piechart.spin div.chart {transform:rotate(0); transition:.25s linear transform;}
+div#container main.main section.page article.summary div.content section.piechart div.chart:hover {transform:rotate(360deg);}
 div#container main.main section.page article.summary div.content section.piechart div.chart div.disc {position:absolute; display:grid; place-items:center; font-size:1.5rem; cursor:pointer; user-select:none;}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc {background-color:white; min-height:62.5%; min-width:62.5%; border-radius:50%; box-shadow:var(--shadow) inset;}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc {min-height:90%; min-width:90%;}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc {transform:scale(.95); transition:.75s linear transform;}
-/* div#container main.main section.page article.summary div.content section.piechart div.chart:hover div.disc {transform:rotate(-1080deg);} */
+div#container main.main section.page article.summary div.content section.piechart div.chart div.disc {background-color:white; min-height:var(--piechartinner); min-width:var(--piechartinner); border-radius:50%; box-shadow:var(--shadow) inset;}
+div#container main.main section.page article.summary div.content section.piechart.spin div.chart div.disc {transform:rotate(0); transition:.25s linear transform;}
+div#container main.main section.page article.summary div.content section.piechart div.chart:hover div.disc {transform:rotate(-360deg);}
+div#container main.main section.page article.summary div.content section.piechart div.chart div.disc span.full {display:none;}
+div#container main.main section.page article.summary div.content section.piechart div.chart div.disc span.brief {display:block;}
+div#container main.main section.page article.summary div.content section.piechart div.chart div.disc.full span.full {display:block;}
+div#container main.main section.page article.summary div.content section.piechart div.chart div.disc.full span.brief {display:none;}
 /* div#container main.main section.page article.summary div.content section.piechart div.chart {background-image:conic-gradient(colorname 0deg, colorname 90deg, colorname 180deg, colorname 270deg);} */
 div#container main.main section.page article.summary div.content section.legend {color:#FFFC; color:#000C; padding:.5rem .65rem; padding:.25rem .65rem; /* box-shadow:var(--thinshadow); */}
 div#container main.main section.page article.summary div.content section.legend h3.head {font-size:1.1rem; font-weight:300; margin:0; margin-bottom:.125rem;}
@@ -79,7 +82,7 @@ div#container main.main section#overview article#transactions div.content table.
 /* div#container main.main section#budget article div.content {} */
 
 /* div#container main.main section#budget article#budgetsummary {} */
-/* div#container main.main section#budget article#budgetsummary div.content {} */
+div#container main.main section#budget article#budgetsummary div.content {display:grid; grid-template-columns:repeat(3,1fr);}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox {/* max-width:24rem; */ cursor:pointer; user-select:none; padding:.5rem 1rem;}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox h3.head {font-size:1.5rem; text-align:center; cursor:pointer; margin:1rem 0;}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar {padding:.375rem 0;}
@@ -129,19 +132,46 @@ div#container main.main section#budget article#budgetsummary div.content section
 
 
 
+@media screen and (max-width:60rem) {
+
+	/* Generic Page */
+
+	/* Overview Page */
+	
+	/* Budget Page */
+	div#container main.main section#budget article#budgetsummary div.content {display:grid; grid-template-columns:repeat(2,1fr);}
+
+	/* Taxes Page */
+
+	/* Investments Page */
+
+	/* Insurance Page */
+}
+
+
+
 @media screen and (max-width:42rem) {
 
+	/* Generic Page */
+
+	/* Overview Page */
 	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.icon {display:none;}
 	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon {display:none;}
-
 	/* div#container main.main section#overview article#transactions div.content table.table tr.row th.head.date {display:none;} */
 	/* div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date {display:none;} */
 	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date span.data.yr {display:none;}
-
 	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.description {white-space:initial;}
-
 	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.category {display:none;}
 	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.category {display:none;}
+	
+	/* Budget Page */
+	div#container main.main section#budget article#budgetsummary div.content {display:grid; grid-template-columns:repeat(1,1fr);}
+
+	/* Taxes Page */
+
+	/* Investments Page */
+
+	/* Insurance Page */
 }
 
 

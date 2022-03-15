@@ -32,6 +32,11 @@
 	--maxwidth:75rem;
 	/* --maxwidth:24rem; */
 	/* --maxwidth:none; */
+
+	--piechartinner:50%;
+	--piechartinner:62.5%;
+	--piechartinner:75%;
+	--piechartinner:90%;
 }
 
 /* div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(1) span.color {background-color:darkgreen;}

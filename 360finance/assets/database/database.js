@@ -2,7 +2,13 @@
 
 
 // Define month labels. 
-const monthLabels = [ 'J','F','M', 'A','M','J', 'J','A','S', 'O','N','D' ];
+// const monthLabels = [ 'J','F','M', 'A','M','J', 'J','A','S', 'O','N','D' ];
+const monthLabels = [ 
+	'January','February','March', 
+	'April','May','June', 
+	'July','August','September', 
+	'October','November','December' 
+];
 
 
 

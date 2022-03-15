@@ -2,7 +2,7 @@
 
 
 // Initialize selected index. 
-var selectedIndex = 0;
+var selectedIndex = 1;
 
 // Initialize total earnings. 
 var totalAmountEarned;
@@ -142,14 +142,69 @@ function startItUp() {
 		// console.log('Net balance:', dollar(totalAmountEarned-totalAmountSpent) );
 		// console.log('Net balance:', dollar(netBalance) );
 	}
+
+	// Load page content. 
+	function loadPageContent() {
+	
+		// Load overview page. 
+		loadOverviewPage();
+		
+		// Load budget page. 
+		loadBudgetPage();
+	
+		// Load taxes page. 
+		loadTaxesPage();
+		
+		// Load investing page. 
+		loadInvestingPage();
+		
+		// Load insurance page. 
+		loadInsurancePage();
+	
+	
+		/*****/
+		
+	
+		// TODO: Load taxes page. 
+		function loadTaxesPage() {
+	
+			/****/
+		}
+	
+		// TODO: Load investing page. 
+		function loadInvestingPage() {
+	
+			/****/
+		}
+	
+		// TODO: Load insurance page. 
+		function loadInsurancePage() {
+	
+			/****/
+		}
+	}
 	
 	// Handle events. 
 	function handleEvents() {
+	
+		// Activate header click to toggle navigation switcher. 
+		let header = document.querySelector('div#container header.header');
+		header.addEventListener('click',toggleNavigation);
 	
 		// Activate navigation switcher links. 
 		let radiolinks = document.querySelectorAll('nav.switcher ul.navlist li.navitem input');
 		for(let link of radiolinks) {
 			link.addEventListener('input',selectPage);
+		}
+
+		// Budget: Activate show mode toggle on all budget boxes. 
+		let budgetboxes = document.querySelectorAll('main.main section#budget article#budgetsummary div.content section.budgetbox');
+		for(let box of budgetboxes) {
+			box.addEventListener('click', function(event) {
+				// console.log(this);
+				this.classList.toggle('showmode');
+				// console.log(this);
+			});
 		}
 	
 		/*****/
@@ -197,47 +252,6 @@ function startItUp() {
 	}
 }
 
-
-// Load page content. 
-function loadPageContent() {
-
-	// Load overview page. 
-	loadOverviewPage();
-	
-	// Load budget page. 
-	loadBudgetPage();
-
-	// Load taxes page. 
-	loadTaxesPage();
-	
-	// Load investing page. 
-	loadInvestingPage();
-	
-	// Load insurance page. 
-	loadInsurancePage();
-
-
-	/*****/
-	
-
-	// TODO: Load taxes page. 
-	function loadTaxesPage() {
-
-		/****/
-	}
-
-	// TODO: Load investing page. 
-	function loadInvestingPage() {
-
-		/****/
-	}
-
-	// TODO: Load insurance page. 
-	function loadInsurancePage() {
-
-		/****/
-	}
-}
 
 
 // Toggle navigation. 

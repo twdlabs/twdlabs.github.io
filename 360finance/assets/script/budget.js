@@ -35,41 +35,21 @@ function loadBudgetPage() {
 
 		// Create progress bars based on spend category data for each month: budget spend limits and actual spend totals. 
 		// TODO: Add data for each month. 
-		let progressbars = '';
-		// for() {
-			progressbars += createProgressBars(spendcategorydata,spendcategorytotals,'March 2022');
+		let result = '';
+		for(monthName of monthLabels) {
+			let progressbars = createProgressBars(spendcategorydata,spendcategorytotals,monthName+' 2022');
+			result += `
+			<!-- budgetbox -->
+			<section class="budgetbox box">${progressbars}</section>
+			<!-- /budgetbox -->`;
 			
-		// }
+		}
 		
 		// Get container for budget summaries. 
 		let budgetsbox = document.querySelector('main.main section#budget article#budgetsummary div.content');
 
 		// Add budgets to page. 
-		budgetsbox.innerHTML = `
-		<!-- budgetbox -->
-		<section class="budgetbox box">${progressbars}</section>
-		<!-- /budgetbox -->`;
-
-		// Activate show mode toggle on all budget boxes. 
-		activateShowModeToggle();
-
-		/*****/
-
-		// Activate show mode toggle on all budget boxes. 
-		function activateShowModeToggle() {
-
-			// Get all budget boxes. 
-			let budgetboxes = document.querySelectorAll('main.main section#budget article#budgetsummary div.content section.budgetbox');
-
-			// Go thru all budget boxes. 
-			for(let box of budgetboxes) {
-				box.addEventListener('click', function(event) {
-					// console.log(this);
-					this.classList.toggle('showmode');
-					// console.log(this);
-				});
-			}
-		}
+		budgetsbox.innerHTML = result;
 	}
 
 	// Load budget on budget page. 
@@ -84,12 +64,11 @@ function loadBudgetPage() {
 
 		for(let i in monthLabels) {
 			let n = i*1 + 1;
-			let ml = monthLabels[i];
 			result += `
 			<!-- bucket -->
 			<div class="bucket">
 
-				<label class="month">${ (false) ? (ml) : ( (n<10) ? ('0'+n) : (n) ) }</label>
+				<label class="month">${ (n<10) ? ('0'+n) : (n) }</label>
 
 			</div>
 			<!-- /bucket -->`;

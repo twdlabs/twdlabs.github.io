@@ -47,7 +47,14 @@ function loadOverviewPage() {
 
 		// Add total income amount to income pie chart label. 
 		let label = document.querySelector('section#overview article#incomesummary div.content section#incomechart div.chart div.disc');
-		label.innerHTML = dollarBrief(totalAmountEarned);
+		label.innerHTML = `
+		<!-- full -->
+		<span class="full">${ dollar(totalAmountEarned) }</span>
+		<!-- /full -->
+
+		<!-- brief -->
+		<span class="brief">${ dollarBrief(totalAmountEarned) }</span>
+		<!-- /brief -->`;
 	}
 
 	// Load spending summary: pie chart and legend. 
@@ -80,7 +87,14 @@ function loadOverviewPage() {
 
 		// Add total spend amount to spend pie chart label. 
 		let label = document.querySelector('section#overview article#spendsummary div.content section#spendchart div.chart div.disc');
-		label.innerHTML = dollarBrief(totalAmountSpent);
+		label.innerHTML = `
+		<!-- full -->
+		<span class="full">${ dollar(totalAmountSpent) }</span>
+		<!-- /full -->
+
+		<!-- brief -->
+		<span class="brief">${ dollarBrief(totalAmountSpent) }</span>
+		<!-- /brief -->`;
 	}
 
 	// Load balance summary: pie chart and legend. 
@@ -105,7 +119,14 @@ function loadOverviewPage() {
 		headlabel.innerHTML = dollar(totalAmountEarned-totalAmountSpent);
 		// Add net balance amount to balance pie chart label. 
 		let label = document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart div.disc');
-		label.innerHTML = dollarBrief(totalAmountEarned-totalAmountSpent);
+		label.innerHTML = `
+		<!-- full -->
+		<span class="full">${ dollar(totalAmountEarned-totalAmountSpent) }</span>
+		<!-- /full -->
+
+		<!-- brief -->
+		<span class="brief">${ dollarBrief(totalAmountEarned-totalAmountSpent) }</span>
+		<!-- /brief -->`;
 	}
 
 	// Load transaction list. 
