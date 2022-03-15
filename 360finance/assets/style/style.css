@@ -62,6 +62,8 @@ div#container nav.switcher ul.navlist li.switch::after {content:''; background-c
 div#container nav.switcher {overflow:auto; /* Firefox */ scrollbar-width:none; /* IE & Edge */ -ms-overflow-style:none;}
 div#container nav.switcher::-webkit-scrollbar {/* Chrome / Safari / Opera */ display:none;}	
 /* div#container nav.switcher {display:none;} */
+div#container nav.switcher.debug {max-height:3rem;}
+div#container nav.switcher.debug ul.navlist li.navitem input {display:inline-block;}
 
 
 

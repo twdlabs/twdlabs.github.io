@@ -29,8 +29,9 @@
 	--shadow:0 0 1rem rgba(0,0,0,0.375);
 	--thinshadow:0 0 .25rem rgba(0,0,0,0.125);
 
-	--maxwidth:60rem;
+	--maxwidth:75rem;
 	/* --maxwidth:24rem; */
+	/* --maxwidth:none; */
 }
 
 /* div#container main.main section#overview div#spendsummary section#legend div.item:nth-of-type(1) span.color {background-color:darkgreen;}

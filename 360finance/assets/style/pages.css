@@ -170,7 +170,7 @@ div#container main.main section#overview article#misc div.content section#bucket
 div#container main.main section#overview article#misc div.content section#bucketbox {display:none;}
 
 
-div#container main.main section#budget article#oldbudgetsummary {display:none;}
+/* div#container main.main section#budget article#oldbudgetsummary {display:none;} */
 div#container main.main section#budget article#oldbudgetsummary div.content article.buckets {display:flex; flex-direction:row; justify-content:center;}
 div#container main.main section#budget article#oldbudgetsummary div.content article.buckets div.innersection {display:flex; flex-direction:row; justify-content:space-between;}
 div#container main.main section#budget article#oldbudgetsummary div.content article.buckets div.bucket {background-color:#E2E2E2; width:.5rem; height:10rem; border-radius:1rem; margin:0 .5rem .75rem; /* overflow:hidden; */}

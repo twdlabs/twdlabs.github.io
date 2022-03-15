@@ -43,6 +43,10 @@ function startItUp() {
 	handleEvents();
 
 
+	// Open page of initially selected index. 
+	openInitialPage();
+
+
 	/*****/
 
 
@@ -73,7 +77,7 @@ function startItUp() {
 				<!-- /bg -->
 		
 				<!-- radio -->
-				<input type="radio" name="navselection" id="select-${item.code}" value="${item.code}"${ (i==selectedIndex) ? (' checked') : ('') }>
+				<input type="radio" name="navselection" id="select-${item.code}" value="${item.code}"${ (i==selectedIndex&&i==-1) ? (' checked') : ('') }>
 				<!-- /radio -->
 		
 				<!-- navlabel -->
@@ -152,6 +156,7 @@ function startItUp() {
 	
 		// Select page. 
 		function selectPage(event) {
+			let debug = false;
 	
 			// Get selected navigation button. 
 			let navbtn = event.currentTarget;
@@ -159,36 +164,36 @@ function startItUp() {
 	
 			// Get selected page name. 
 			let selectedPageName = navbtn.value;
-			// console.log('Selected page name:',selectedPageName);
-	
 			// Save index for selected page. 
-			let index = sectionNames.indexOf(selectedPageName);
-			// console.log('Selected index:',index);
-	
-			// Open selected page using selected index. 
-			openSelectedPage(index);
-		}
-	
-		// Open selected page by index. 
-		function openSelectedPage(index) {
-		
-			// Save index for selected page. 
-			selectedIndex = index;
-			console.log('Selected index:',index);
+			let selectedIndex = sectionNames.indexOf(selectedPageName);
+			console.log('Selected page:',selectedIndex,selectedPageName);
 		
 			// Shift navigation switch to proper position. 
 			let switich = document.querySelector('nav.switcher ul.navlist li.switch');
+			if(debug) console.log('\tNavSwitch transformation:',switich.style.transform,switich);
 			switich.style.transform = `translateX(${(100*selectedIndex)}%)`;
-			// console.log('switich:',switich);
+			if(debug) console.log('\tNavSwitch transformation:',switich.style.transform,switich);
 		
 			// Get main container. 
 			let inner = document.querySelector('div#container main.main div.inner');
-			// console.log(inner.style.transform);
+			if(debug) console.log('\tPager transformation:',inner.style.transform,inner);
 		
 			// Add transformation for selected page. 
 			inner.style.transform = `translateX(${-100*selectedIndex}%)`;
-			// console.log(inner.style.transform);
+			if(debug) console.log('\tPager transformation:',inner.style.transform,inner);
 		}
+	}
+
+	// Open page of initially selected index. 
+	function openInitialPage() {
+
+		// Get navigator radio button. 
+		let pageselector = `nav.switcher ul.navlist li.navitem:nth-of-type(${ (1*selectedIndex)+1 }) input`;
+		let radiobtn = document.querySelector(pageselector)
+		// console.log('pageselector:',pageselector,radiobtn);
+
+		// Click navigator radio button. 
+		radiobtn.click();
 	}
 }
 

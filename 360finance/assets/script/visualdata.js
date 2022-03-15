@@ -127,18 +127,21 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 
 // Create progress bars from given category data. 
 // Create progress bars based on spend category data: budget spend limits and actual spend totals. 
-function createProgressBars(categoryData,categoryTotals) {
+function createProgressBars(categoryData,categoryTotals,monthName) {
 	// console.log('Category Data:', categoryData);
 	// console.log('Category Totals:', categoryTotals);
 
 	// Initialize total amount. 
 	let totalBudgetAmount = 0;
 
+	// Define month name. 
+	// let monthName = 'March 2022';
+
 	// Create progress bars: category items. 
 	let result = '';
 	result += `
 	<!-- head -->
-	<h3 class="head">March 2022</h3>
+	<h3 class="head">${monthName}</h3>
 	<!-- /head -->`;
 	for(i in categoryData) {
 

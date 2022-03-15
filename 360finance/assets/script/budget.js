@@ -37,14 +37,14 @@ function loadBudgetPage() {
 		// TODO: Add data for each month. 
 		let progressbars = '';
 		// for() {
-			progressbars += createProgressBars(spendcategorydata,spendcategorytotals);
+			progressbars += createProgressBars(spendcategorydata,spendcategorytotals,'March 2022');
 			
 		// }
 		
 		// Get container for budget summaries. 
 		let budgetsbox = document.querySelector('main.main section#budget article#budgetsummary div.content');
 
-		// Add progress bars to page. 
+		// Add budgets to page. 
 		budgetsbox.innerHTML = `
 		<!-- budgetbox -->
 		<section class="budgetbox box">${progressbars}</section>
