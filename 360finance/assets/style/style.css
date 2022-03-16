@@ -21,9 +21,14 @@ div#container {display:flex; flex-direction:column; justify-content:flex-start; 
 /* div#container {filter:drop-shadow(rgba(0, 0, 0, 0.1) 0px 4px 6px); perspective:75rem;} */
 div#container header.header {flex:0 0 auto;}
 div#container nav.switcher {flex:0 0 auto;}
-div#container main.main {flex-grow:1; overflow-x:hidden; overflow-y:auto; overflow-y:hidden;}
-div#container main.main div.inner {/* min-height:100%; */ height:100%;}
-div#container main.main div.inner section.page {/* min-height:100%; */ height:100%; overflow:hidden; overflow-y:auto;}
+div#container main.main {flex-grow:1; overflow-x:hidden; overflow-y:auto;}
+div#container main.main div.inner {min-height:100%;}
+div#container main.main div.inner section.page {/* min-height:100%; */ height:100%; overflow:hidden;}
+
+div#container.newscrollmode header.header {background-color:var(--white);}
+div#container.newscrollmode main.main {overflow-y:hidden;}
+div#container.newscrollmode main.main div.inner {height:100%;}
+div#container.newscrollmode main.main div.inner section.page {overflow-y:auto;}
 
 
 
@@ -33,7 +38,7 @@ div#container header.header {display:flex; flex-direction:row; justify-content:s
 div#container header.header h1.head {font-size:1.5rem; font-weight:lighter; white-space:nowrap; margin:0;}
 div#container header.header h1.head {display:flex; align-items:center;}
 /* div#container header.header h1.head img.logo {display:none;} */
-div#container header.header h1.head img.logo {height:1em; object-fit:cover; opacity:.5; margin-right:.5rem;}
+div#container header.header h1.head img.logo {height:1em; object-fit:cover; opacity:.65; margin-right:.5rem;}
 div#container header.header div.togglebtn {cursor:pointer; user-select:none;}
 div#container header.header div.togglebtn svg.icon {display:block; font-size:1.5rem;}
 
