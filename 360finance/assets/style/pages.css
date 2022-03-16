@@ -5,7 +5,7 @@
 
 /* div#container main.main section.page article {} */
 /* div#container main.main section.page article div.content {} */
-div#container main.main section.page article.summary div.content {justify-content:center; align-items:flex-start; /* flex-wrap:wrap; */}
+div#container main.main section.page article.summary div.content {justify-content:center; align-items:flex-start; flex-wrap:wrap;}
 div#container main.main section.page article.summary div.content section.box {flex-grow:1; background-color:white; box-shadow:var(--thinshadow); margin:1rem;}
 div#container main.main section.page article.summary div.content section.piechart {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
 div#container main.main section.page article.summary div.content section.piechart {width:100%; min-width:8rem; max-width:16rem; position:relative; box-shadow:none;}
