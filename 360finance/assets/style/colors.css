@@ -29,7 +29,8 @@
 	--shadow:0 0 1rem rgba(0,0,0,0.375);
 	--thinshadow:0 0 .25rem rgba(0,0,0,0.125);
 
-	--maxwidth:75rem;
+	--maxwidth:100rem;
+	/* --maxwidth:75rem; */
 	/* --maxwidth:24rem; */
 	/* --maxwidth:none; */
 

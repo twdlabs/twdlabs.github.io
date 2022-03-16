@@ -6,7 +6,8 @@ var currentPageIndex = 0;
 
 // Initialize horizontal position of pointer. 
 var lastPointX;
-const swipeActive = false;
+
+// const swipeActive = true;
 
 
 // Initialize total earnings. 
