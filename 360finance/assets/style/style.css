@@ -16,7 +16,7 @@ body {font-family:Nunito,sans-serif; margin:0; /* touch-action:pinch-zoom; */}
 
 /* Main Container */
 
-div#container {background-color:var(--black1); background-color:white; /* min- */height:100vh; padding:.5rem;}
+div#container {background-color:var(--black1); background-color:white; min-height:100vh; padding:.25rem;}
 div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; align-items:stretch;}
 /* div#container {filter:drop-shadow(rgba(0, 0, 0, 0.1) 0px 4px 6px); perspective:75rem;} */
 div#container header.header {flex:0 0 auto;}
@@ -25,6 +25,7 @@ div#container main.main {flex-grow:1; overflow-x:hidden; overflow-y:auto;}
 div#container main.main div.inner {min-height:100%;}
 div#container main.main div.inner section.page {/* min-height:100%; */ height:100%; overflow:hidden;}
 
+div#container.newscrollmode {height:100vh;}
 div#container.newscrollmode header.header {background-color:var(--white);}
 div#container.newscrollmode main.main {overflow-y:hidden;}
 div#container.newscrollmode main.main div.inner {height:100%;}
@@ -33,7 +34,7 @@ div#container.newscrollmode main.main div.inner section.page {overflow-y:auto;}
 
 
 /* Header Bar */
-div#container header.header {width:100%; max-width:var(--maxwidth); padding:.75rem 1.25rem; border-radius:.5rem; margin:.25rem auto; box-shadow:var(--thinshadow);}
+div#container header.header {width:100%; max-width:var(--maxwidth); padding:.75rem 1.25rem; border-radius:.5rem; /* margin:.25rem auto; */ box-shadow:var(--thinshadow);}
 div#container header.header {display:flex; flex-direction:row; justify-content:space-between; align-items:center; cursor:pointer; user-select:none;}
 div#container header.header h1.head {font-size:1.5rem; font-weight:lighter; white-space:nowrap; margin:0;}
 div#container header.header h1.head {display:flex; align-items:center;}
@@ -46,7 +47,7 @@ div#container header.header div.togglebtn svg.icon {display:block; font-size:1.5
 
 /* Navigation Bar */
 
-div#container nav.switcher {display:flex; justify-content:flex-start; width:100%; max-width:var(--maxwidth); margin:.25rem auto;}
+div#container nav.switcher {display:flex; justify-content:flex-start; width:100%; max-width:var(--maxwidth); /* margin:.25rem auto; */}
 div#container nav.switcher {max-height:0; transition:.25s;}
 div#container nav.switcher.active {max-height:3rem;}
 div#container nav.switcher ul.navlist {/* background-color:var(--frost); */ list-style:none; padding:0; border-radius:.5rem; margin:0; margin:.25rem 0 .125rem; overflow:hidden;}

@@ -1,8 +1,13 @@
 
 
 
-// Initialize selected index. 
-var selectedIndex = 0;
+// Initialize current page index. 
+var currentPageIndex = 0;
+
+// Initialize horizontal position of pointer. 
+var lastPointX;
+const swipeActive = false;
+
 
 // Initialize total earnings. 
 var totalAmountEarned;
@@ -77,7 +82,7 @@ function startItUp() {
 				<!-- /bg -->
 		
 				<!-- radio -->
-				<input type="radio" name="navselection" id="select-${item.code}" value="${item.code}"${ (i==selectedIndex&&i==-1) ? (' checked') : ('') }>
+				<input type="radio" name="navselection" id="select-${item.code}" value="${item.code}"${ (i==currentPageIndex&&i==-1) ? (' checked') : ('') }>
 				<!-- /radio -->
 		
 				<!-- navlabel -->
@@ -187,6 +192,7 @@ function startItUp() {
 	// Handle events. 
 	function handleEvents() {
 	
+
 		// Enable header click to toggle navigation switcher. 
 		let header = document.querySelector('div#container header.header');
 		header.addEventListener('click',toggleNavigation);
@@ -196,6 +202,14 @@ function startItUp() {
 		for(let link of radiolinks) {
 			link.addEventListener('input',selectPage);
 		}
+
+		// Enable swipe gesture. 
+		let container = document.getElementById('container');
+		container.addEventListener('touchstart',beginSwipe);
+		container.addEventListener('touchend',endSwipe);
+		container.addEventListener('mousedown',beginSwipe);
+		container.addEventListener('mouseup',endSwipe);
+
 
 		// Overview: Enable pie chart disc clicks to toggle between full and brief dollar amount. 
 		let piechartdiscs = document.querySelectorAll('main.main section.page article.summary div.content section.piechart div.chart div.disc');
@@ -222,22 +236,29 @@ function startItUp() {
 	
 		// Select page. 
 		function selectPage(event) {
-			let debug = false;
 	
 			// Get selected navigation button. 
 			let navbtn = event.currentTarget;
 			// console.log('Navigation button:', navbtn);
 	
-			// Get selected page name. 
+			// Get name of currently selected page. 
 			let selectedPageName = navbtn.value;
+
 			// Save index for selected page. 
-			let selectedIndex = sectionNames.indexOf(selectedPageName);
-			console.log('Selected page:',selectedIndex,selectedPageName);
+			currentPageIndex = pageNames.indexOf(selectedPageName);
+
+			console.log('Current page:',currentPageIndex,selectedPageName);
+			openSelectedPage();
+		}
+
+		// Open selected page. 
+		function openSelectedPage() {
+			let debug = false;
 		
 			// Shift navigation switch to proper position. 
 			let switich = document.querySelector('nav.switcher ul.navlist li.switch');
 			if(debug) console.log('\tNavSwitch transformation:',switich.style.transform,switich);
-			switich.style.transform = `translateX(${(100*selectedIndex)}%)`;
+			switich.style.transform = `translateX(${(100*currentPageIndex)}%)`;
 			if(debug) console.log('\tNavSwitch transformation:',switich.style.transform,switich);
 		
 			// Get main container. 
@@ -245,8 +266,62 @@ function startItUp() {
 			if(debug) console.log('\tPager transformation:',inner.style.transform,inner);
 		
 			// Add transformation for selected page. 
-			inner.style.transform = `translateX(${-100*selectedIndex}%)`;
+			inner.style.transform = `translateX(${-100*currentPageIndex}%)`;
 			if(debug) console.log('\tPager transformation:',inner.style.transform,inner);
+		}
+
+		// Begin swipe gesture. 
+		function beginSwipe(event) {
+			// console.log(event.type,event);
+
+			// 
+			lastPointX = event.clientX || event.touches[0].clientX;
+			// console.log('Last point x:',lastPointX);
+		}
+
+		// End swipe gesture. 
+		function endSwipe(event) {
+			console.log(event.type,event);
+
+			// 
+			let newPointX = event.clientX || event.touches[0].clientX;
+			// console.log('New point x:',newPointX);
+
+			// Check direction of swipe gesture. 
+			if(swipeActive) checkSwipe(newPointX-lastPointX);
+
+			// Reset horizontal position of pointer. 
+			lastPointX = undefined;
+		}
+
+		// Check direction of swipe gesture. 
+		function checkSwipe(dx) {
+			console.log('dx:',dx);
+
+			// Set swipe length threshold. 
+			const dxThreshold = 100;
+			
+			// Handle left swipe gesture. 
+			if(dx<(-1)*dxThreshold) {
+
+				// Increment page index (if possible). 
+				currentPageIndex++;
+				if(currentPageIndex>=pageNames.length) currentPageIndex = 0;
+
+				// Open page at current index. 
+				openSelectedPage();
+			}
+
+			// Handle right swipe gesture. 
+			if(dx>dxThreshold) {
+
+				// Decrement page index (if possible). 
+				currentPageIndex--;
+				if(currentPageIndex<0) currentPageIndex = pageNames.length-1;
+
+				// Open page at current index. 
+				openSelectedPage();
+			}
 		}
 	}
 
@@ -254,7 +329,7 @@ function startItUp() {
 	function openInitialPage() {
 
 		// Get navigator radio button. 
-		let pageselector = `nav.switcher ul.navlist li.navitem:nth-of-type(${ (1*selectedIndex)+1 }) input`;
+		let pageselector = `nav.switcher ul.navlist li.navitem:nth-of-type(${ (1*currentPageIndex)+1 }) input`;
 		let radiobtn = document.querySelector(pageselector)
 		// console.log('pageselector:',pageselector,radiobtn);
 

@@ -35,4 +35,4 @@ const navdata = [
 ];
 
 // Define section names. 
-const sectionNames = ['overview','budget','taxes','invest','insurance'];
+const pageNames = ['overview','budget','taxes','invest','insurance'];
