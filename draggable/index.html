@@ -1,0 +1,49 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Drag n Drop</title>
+
+		<style>
+			div {float:left; width:350px; height:70px; margin:10px; padding:10px; border:1px solid #aaa;}
+		</style>
+	</head>
+	<body>
+
+		<img id="drag1" src="../atgicon.ico" draggable="true" ondragstart="drag(event)" alt="TWD">
+		<p id="drag2" draggable="true" ondragstart="drag(event)">This is a draggable paragraph. Drag this element into the rectangle.</p>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!--  -->
+		</div>
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<!--  -->
+		</div>
+
+		<script>
+			function allowDrop(event) {
+				console.log('', event);
+
+				event.preventDefault();
+			}
+
+			function drag(event) {
+				console.log('', event);
+
+				event.dataTransfer.setData("Text", event.target.id);
+			}
+
+			function drop(event) {
+				console.log('', event);
+
+				var data = event.dataTransfer.getData("Text");
+				event.target.appendChild(document.getElementById(data));
+				event.preventDefault();
+			}
+		</script>
+	</body>
+</html>
