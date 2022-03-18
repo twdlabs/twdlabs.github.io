@@ -1,0 +1,31 @@
+
+
+* {box-sizing:border-box;}
+
+
+body {font-family:sans-serif; margin:0;}
+
+
+div#container {background-color:dodgerblue;}
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container main.main {background-color:white; width:100%; max-width:40rem; padding:1rem; border-radius:.5rem;}
+
+div#container main.main section.result {background-color:white; min-width:20rem; min-height:20rem; display:grid; place-items:center;}
+div#container main.main section.result div#element {background-color:dodgerblue; min-width:6rem; min-height:6rem; box-shadow:0 0 .5rem #0004;}
+
+div#container main.main section.controller {display:grid; grid-template-columns:repeat(2,1fr);}
+div#container main.main section.controller div.control {display:flex; flex-direction:column; align-items:stretch; padding:.5rem;}
+div#container main.main section.controller div.control.bar {flex-direction:row; align-items:center;}
+div#container main.main section.controller div.control label::after {content:':'; margin-right:.25rem;}
+/* div#container main.main section.controller div.control input {} */
+div#container main.main section.controller div.control.bar input {/* flex-grow:1; */ margin-left:.375rem;}
+
+div#container main.main section.output {display:flex; flex-direction:row;}
+div#container main.main section.output textarea#output {flex-grow:1; resize:none; padding:.5rem; border:1px solid #333; border-radius:.5rem;}
+div#container main.main section.output div#copybtn {background-color:dodgerblue; color:white; cursor:pointer; user-select:none;}
+div#container main.main section.output div#copybtn {display:grid; place-items:center; padding:1.125rem 2rem; border-radius:.5rem; margin-left:.375rem;}
+
+
+@media screen and (max-width:30rem) {
+	div#container main.main section.controller {display:flex; flex-direction:column;}
+}

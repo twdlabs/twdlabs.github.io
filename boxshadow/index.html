@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Box Shadow Generator</title>
+
+		<!-- Main Stylesheet -->
+		<link href="boxshadow.css" rel="stylesheet" type="text/css"/>
+
+		<!-- Toast Stylesheet -->
+		<!-- <link href="../toast/toast.css" rel="stylesheet" type="text/css"/> -->
+
+		<!-- <style type="text/css"></style> -->
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- result -->
+				<section class="result">
+
+					<!-- element -->
+					<div id="element"></div>
+					<!-- /element -->
+
+				</section>
+				<!-- /result -->
+
+				<!-- controller -->
+				<section class="controller">
+
+					<!-- control -->
+					<div class="control">
+
+						<!-- label -->
+						<label for="hshadow">Horizontal Shadow</label>
+						<!-- /label -->
+
+						<!-- #hshadow -->
+						<input type="range" id="hshadow">
+						<!-- /#hshadow -->
+
+					</div>
+					<!-- /control -->
+
+					<!-- control -->
+					<div class="control">
+
+						<!-- label -->
+						<label for="vshadow">Vertical Shadow</label>
+						<!-- /label -->
+
+						<!-- #vshadow -->
+						<input type="range" id="vshadow">
+						<!-- /#vshadow -->
+
+					</div>
+					<!-- /control -->
+
+					<!-- control -->
+					<div class="control">
+
+						<!-- label -->
+						<label for="blurradius">Blur Radius</label>
+						<!-- /label -->
+
+						<!-- #blurradius -->
+						<input type="range" id="blurradius">
+						<!-- /#blurradius -->
+
+					</div>
+					<!-- /control -->
+
+					<!-- control -->
+					<div class="control">
+
+						<!-- label -->
+						<label for="spreadradius">Spread Radius</label>
+						<!-- /label -->
+
+						<!-- #spreadradius -->
+						<input type="range" id="spreadradius">
+						<!-- /#spreadradius -->
+
+					</div>
+					<!-- /control -->
+
+					<!-- control -->
+					<div class="control bar">
+
+						<!-- label -->
+						<label for="shadowcolor">Shadow Color</label>
+						<!-- /label -->
+
+						<!-- #shadowcolor -->
+						<input type="color" id="shadowcolor">
+						<!-- /#shadowcolor -->
+
+					</div>
+					<!-- /control -->
+
+					<!-- control -->
+					<div class="control">
+
+						<!-- label -->
+						<label for="shadowcoloropacity">Shadow Color Opacity</label>
+						<!-- /label -->
+
+						<!-- #shadowcoloropacity -->
+						<input type="range" id="shadowcoloropacity" min="0" max="1" step=".1" value="1">
+						<!-- /#shadowcoloropacity -->
+
+					</div>
+					<!-- /control -->
+
+					<!-- control -->
+					<div class="control bar">
+
+						<!-- label -->
+						<label for="insetshadow">Inset Shadow</label>
+						<!-- /label -->
+
+						<!-- #insetshadow -->
+						<input type="checkbox" id="insetshadow">
+						<!-- /#insetshadow -->
+
+					</div>
+					<!-- /control -->
+
+				</section>
+				<!-- /controller -->
+
+				<!-- output -->
+				<section class="output">
+
+					<!-- #output -->
+					<textarea id="output" cols="30" rows="3"></textarea>
+					<!-- <input type="text" id="output"> -->
+					<!-- /#output -->
+
+					<!-- copybtn -->
+					<div id="copybtn" onclick="copyText()">Copy</div>
+					<!-- /copybtn -->
+
+				</section>
+				<!-- /output -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Toast Script -->
+		<!-- <script src="../toast/toast.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<script src="boxshadow.js" type="text/javascript"></script>
+
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
