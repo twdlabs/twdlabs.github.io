@@ -1,8 +1,16 @@
 
-body {font-family:sans-serif; margin:0;}
+
+body {font-family:sans-serif; margin:0; --bottomsize:6rem;}
+
+
 div#container {background-color:#2196f3; min-height:100vh; padding:1rem;}
-div#container div.dragitem {padding:.5rem; cursor:pointer; cursor:grab;}
+
+div#container div.dragitem {background-color:#fff4; cursor:pointer; cursor:grab; padding:.5rem; margin-top:1rem;}
 div#container div.dragitem:active {cursor:grabbing;}
-div#container div.dragitem.active {opacity:.25;}
-div#container div.dragdestination {background-color:gold; color:white; min-width:20rem; min-height:8rem; padding:.75rem; border:.25rem solid #AAA; margin-bottom:.75rem; transition:.25s;}
-div#container div.dragdestination.active {border:.25rem dashed #2196f3;}
+div#container div.dragitem.active {opacity:.5;}
+
+div#container div.dragdestination {background-color:gold; color:white; min-height:8rem; position:relative; padding:1rem 2rem var(--bottomsize); border:.25rem solid #AAA; margin-bottom:.75rem; transition:.25s;}
+div#container div.dragdestination.ready {border:.25rem dashed #2196f3;}
+div#container div.dragdestination::after {content:'+'; display:grid; place-items:center; background-color:black; color:gold; font-size:2rem; min-height:2.25rem; min-width:2.25rem; opacity:.75; border:.25rem solid black; border-radius:50%;}
+div#container div.dragdestination::after {position:absolute; bottom:calc(var(--bottomsize)/2); left:50%; transform:translate(-50%,50%); transition:.25s;}
+div#container div.dragdestination:empty::after {bottom:50%;}
