@@ -164,7 +164,15 @@ function loadOverviewPage() {
 				<td class="cell date">
 
 					<!-- data -->
-					<span class="data">Mar 9, 2022</span>
+					<span class="data m">${ monthNames[t.transactiondate.m - 1] }</span>
+					<!-- /data -->
+
+					<!-- data -->
+					<span class="data d">${ t.transactiondate.d }</span>
+					<!-- /data -->
+
+					<!-- data -->
+					<span class="data y">${ t.transactiondate.y }</span>
 					<!-- /data -->
 					
 				</td>
@@ -174,7 +182,7 @@ function loadOverviewPage() {
 				<td class="cell description">
 
 					<!-- data -->
-					<span class="data">${t.merchantname}</span>
+					<span class="data">${ t.merchantname }</span>
 					<!-- /data -->
 					
 				</td>

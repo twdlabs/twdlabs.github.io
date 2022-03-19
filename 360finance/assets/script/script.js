@@ -204,12 +204,12 @@ function startItUp() {
 			link.addEventListener('input',selectPage);
 		}
 
-		// Enable swipe gesture. 
-		let container = document.getElementById('container');
-		container.addEventListener('touchstart',beginSwipe);
-		container.addEventListener('touchend',endSwipe);
-		container.addEventListener('mousedown',beginSwipe);
-		container.addEventListener('mouseup',endSwipe);
+		// // Enable swipe gesture. 
+		// let container = document.getElementById('container');
+		// container.addEventListener('touchstart',beginSwipe);
+		// container.addEventListener('touchend',endSwipe);
+		// container.addEventListener('mousedown',beginSwipe);
+		// container.addEventListener('mouseup',endSwipe);
 
 
 		// Overview: Enable pie chart disc clicks to toggle between full and brief dollar amount. 

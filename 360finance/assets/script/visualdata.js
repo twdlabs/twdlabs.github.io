@@ -127,21 +127,18 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 
 // Create progress bars from given category data. 
 // Create progress bars based on spend category data: budget spend limits and actual spend totals. 
-function createProgressBars(categoryData,categoryTotals,monthName) {
+function createProgressBars(categoryData,categoryTotals,monthLabel) {
 	// console.log('Category Data:', categoryData);
 	// console.log('Category Totals:', categoryTotals);
 
 	// Initialize total amount. 
 	let totalBudgetAmount = 0;
 
-	// Define month name. 
-	// let monthName = 'March 2022';
-
 	// Create progress bars: category items. 
 	let result = '';
 	result += `
 	<!-- head -->
-	<h3 class="head">${monthName}</h3>
+	<h3 class="head">${monthLabel}</h3>
 	<!-- /head -->`;
 	for(i in categoryData) {
 
@@ -149,13 +146,15 @@ function createProgressBars(categoryData,categoryTotals,monthName) {
 		let category = categoryData[i];
 		// console.log('\nCategory:',category.categoryname);
 		
-		// Get proportion of budget limit for given category. 
+		// Get proportion of budget limit spent for given category. 
 		let proportion = (categoryTotals[i]/category.budgetmonthlylimit);
 		// console.log('Total Spend:', categoryTotals[i]);
 		// console.log('Spend Limit:', category.budgetmonthlylimit);
-		// console.log('proportion:', proportion);
+		// console.log('Spend Proportion:', proportion);
+
+		// Create displayable percentage using calculated proportion. 
 		let pct = (100*proportion).toFixed(1);
-		// console.log('proportion:', pct+'%');
+		// console.log('Spend Percentage:', pct+'%');
 
 		// Append progress bar for given category. 
 		result += `

@@ -60,20 +60,24 @@ div#container main.main section#overview article#balancesummary h2.head span.val
 /* div#container main.main section#overview article#transactions {} */
 div#container main.main section#overview article#transactions div.content {display:flex; flex-direction:column; align-items:stretch;}
 div#container main.main section#overview article#transactions div.content table.table {background-color:white; border-collapse:collapse; font-size:.75rem;}
-/* div#container main.main section#overview article#transactions div.content table.table tr.row {} */
+div#container main.main section#overview article#transactions div.content table.table tr.row {/* overflow:hidden; */ /* padding:0 .75rem; */ border-radius:.5rem; box-shadow:var(--thinshadow);}
 div#container main.main section#overview article#transactions div.content table.table tr.row:hover {cursor:pointer; user-select:none;}
-div#container main.main section#overview article#transactions div.content table.table tr.row th.head {text-align:left; white-space:nowrap; /* border-bottom:1px solid #0002; */ padding:1rem .75rem .75rem;}
+div#container main.main section#overview article#transactions div.content table.table tbody tr.row:hover {background-color:#00000008;}
+div#container main.main section#overview article#transactions div.content table.table tr.row th.head {text-align:left; white-space:nowrap; padding:1rem .375rem .85rem; /* border-bottom:1px solid #0002; */}
 div#container main.main section#overview article#transactions div.content table.table tr.row th.head h3.head {display:flex; flex-direction:row; align-items:center; font-size:1.05em; /* text-align:left; */ margin:0;}
 div#container main.main section#overview article#transactions div.content table.table tr.row th.head.amount h3.head {justify-content:flex-end; /* text-align:right; */}
 div#container main.main section#overview article#transactions div.content table.table tr.row th.head h3.head div.sortbtn {display:flex; flex-direction:column; cursor:pointer; user-select:none; margin-left:.25rem;}
 div#container main.main section#overview article#transactions div.content table.table tr.row th.head h3.head div.sortbtn svg.icon {font-size:.4rem;}
-div#container main.main section#overview article#transactions div.content table.table tr.row td.cell {font-weight:bold; white-space:nowrap; padding:1rem .75rem .85rem;}
-div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon svg.icon {display:block; font-size:1.5rem;}
-div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date {font-weight:lighter;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell {font-weight:bold; white-space:nowrap; padding:1rem .375rem .85rem;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon {font-size:1.5rem; text-align:center;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon svg.icon {display:block; margin-left:.75rem;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date {font-weight:lighter; text-align:center;}
+/* div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date span.data.y {} */
+/* div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date span.data.m {} */
+/* div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date span.data.d {} */
 div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.amount {text-align:right;}
+div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.amount span.data {margin-right:.75rem;}
 div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.amount span.data.income {color:limegreen; color:forestgreen;}
-div#container main.main section#overview article#transactions div.content table.table tr.row {border-radius:.5rem; overflow:hidden; box-shadow:var(--thinshadow);}
-div#container main.main section#overview article#transactions div.content table.table tbody tr.row:hover {background-color:#00000008;}
 
 
 
@@ -85,18 +89,19 @@ div#container main.main section#overview article#transactions div.content table.
 
 /* div#container main.main section#budget article#budgetsummary {} */
 div#container main.main section#budget article#budgetsummary div.content {display:grid; grid-template-columns:repeat(3,1fr);}
+/* div#container main.main section#budget article#budgetsummary div.content section.legendbox {} */
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox {/* max-width:24rem; */ cursor:pointer; user-select:none; padding:.5rem 1rem;}
-div#container main.main section#budget article#budgetsummary div.content section.budgetbox h3.head {font-size:1.5rem; text-align:center; cursor:pointer; margin:1rem 0;}
-div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar {padding:.375rem 0;}
-div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar.total {padding:.625rem 0; border-top:1px solid grey; margin-top:.5rem;}
+div#container main.main section#budget article#budgetsummary div.content section.budgetbox h3.head {font-size:1.5rem; text-align:center; cursor:pointer; margin:0; margin-top:.75rem;}
+div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar {padding:.125rem 0;}
+div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar.total {padding:.25rem 0; border-top:1px solid grey; margin-top:.5rem;}
 /* div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.label {margin-top:.5rem;} */
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.label {display:flex; justify-content:space-between; align-items:flex-end;}
-div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.label span.name {color:var(--black); font-size:1rem;}
+div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.label span.name {color:var(--black); font-size:.875rem;}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.label span.remainder {color:var(--black); font-size:.65rem;}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar.over div.label span.remainder {color:var(--red);}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar.slow div.label span.remainder {color:var(--yellow);}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar.good div.label span.remainder {color:var(--green);}
-div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.bar {background-color:var(--white); height:2rem; /* margin:1rem; */}
+div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.bar {background-color:var(--white); height:1.5rem; /* margin:1rem; */}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.bar {display:flex; justify-content:center; align-items:center; position:relative;}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.bar::after {content:''; position:absolute; top:0; left:0; height:100%; width:80%; border-right:1px solid var(--black); opacity:.1;}
 div#container main.main section#budget article#budgetsummary div.content section.budgetbox div.progressbar div.bar span.caption {color:var(--black); font-size:.75rem;}
@@ -170,18 +175,16 @@ div#container main.main section#invest article#misc div.content section#bucketbo
 
 
 
-@media screen and (max-width:42rem) {
+@media screen and (max-width:40rem) {
 
 	/* Generic Page */
 
 	/* Overview Page */
-	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.icon {display:none;}
-	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon {display:none;}
-	/* div#container main.main section#overview article#transactions div.content table.table tr.row th.head.date {display:none;} */
-	/* div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date {display:none;} */
-	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date span.data.yr {display:none;}
+	/* div#container main.main section#overview article#transactions div.content table.table tr.row th.head.icon, */
+	/* div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.icon {display:none;} */
+	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.date span.data.y {display:none;}
 	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.description {white-space:initial;}
-	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.category {display:none;}
+	div#container main.main section#overview article#transactions div.content table.table tr.row th.head.category,
 	div#container main.main section#overview article#transactions div.content table.table tr.row td.cell.category {display:none;}
 	
 	/* Budget Page */
