@@ -1,7 +1,8 @@
 
 body {font-family:sans-serif; margin:0;}
-div#container {padding:1rem;}
+div#container {background-color:#2196f3; min-height:100vh; padding:1rem;}
 div#container div.dragitem {padding:.5rem; cursor:pointer; cursor:grab;}
 div#container div.dragitem:active {cursor:grabbing;}
-div#container div.dragdestination {background-color:gold; color:white; min-width:20rem; min-height:8rem; padding:.75rem; border:1px solid #AAA; margin-bottom:.75rem; transition:.25s;}
-div#container div.dragdestination.active {background-color:#2196f3;}
+div#container div.dragitem.active {opacity:.25;}
+div#container div.dragdestination {background-color:gold; color:white; min-width:20rem; min-height:8rem; padding:.75rem; border:.25rem solid #AAA; margin-bottom:.75rem; transition:.25s;}
+div#container div.dragdestination.active {border:.25rem dashed #2196f3;}

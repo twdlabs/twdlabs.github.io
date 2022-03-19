@@ -18,6 +18,7 @@ function handleEvents() {
 	for(let item of dragitems) {
 		item.setAttribute('draggable','true');
 		item.addEventListener('dragstart',pickUpItem);
+		item.addEventListener('dragend',dropOffItem);
 	}
 
 	// Get drag/drop destinations. 
@@ -27,23 +28,26 @@ function handleEvents() {
 	// Activate drag/drop destinations. 
 	for(let destination of dragdestinations) {
 		destination.addEventListener('dragenter',enterDropDestination);
-		destination.addEventListener('dragleave',leaveDropDestination);
 		destination.addEventListener('dragover',allowDropping);
-		destination.addEventListener('drop',dropItem);
+		destination.addEventListener('dragleave',leaveDropDestination);
+		destination.addEventListener('drop',dropToDestination);
 	}
 }
 
 // Change highlight state of drag/drop destination element. 
-function changeHighlightState(event,on=false) {
+function changeHighlightState(destination,on=false) {
 	// Highlight drag/drop destination. 
-	if(on) event.currentTarget.classList.add('active');
+	if(on) destination.classList.add('active');
 	// Un-highlight drag/drop destination. 
-	else event.currentTarget.classList.remove('active');
+	else destination.classList.remove('active');
 }
 
-// Pick up draggable element to be dropped inside another element. 
+// Pick up draggable element (to be dropped inside another element). 
 function pickUpItem(event) {
 	console.log('Picked up item:', event.currentTarget, event);
+
+	// 
+	event.currentTarget.classList.add('active');
 
 	// Get id of dragged item. 
 	let dragitemid = event.currentTarget.id;
@@ -52,12 +56,19 @@ function pickUpItem(event) {
 	event.dataTransfer.setData('dragitemid', dragitemid);
 }
 
+// Drop dragged element. 
+function dropOffItem(event) {
+
+	// 
+	event.currentTarget.classList.remove('active');
+}
+
 // Enter drop destination element. 
 function enterDropDestination(event) {
 	console.log('Entering drop destination', event.currentTarget, event);
 
 	// Highlight drag/drop destination prior to item being dropped. 
-	changeHighlightState(event,true);
+	changeHighlightState(event.target,true);
 }
 
 // Allow for dropping inside destination element. 
@@ -73,11 +84,11 @@ function leaveDropDestination(event) {
 	console.log('Leaving drop destination', event.currentTarget, event);
 
 	// Un-highlight drag/drop destination if item not dropped inside. 
-	changeHighlightState(event,false);
+	changeHighlightState(event.target,false);
 }
 
 // Drop item inside destination element. 
-function dropItem(event) {
+function dropToDestination(event) {
 	console.log('Dropped item:', event.currentTarget, event);
 
 	// Get id of dragged item from data transfer list. 
@@ -92,7 +103,7 @@ function dropItem(event) {
 	event.currentTarget.appendChild(dragitem);
 
 	// Un-highlight drag/drop destination after item dropped inside. 
-	changeHighlightState(event,false);
+	changeHighlightState(event.currentTarget,false);
 
 	// Cancel default drag/drop behavior. 
 	event.preventDefault();
