@@ -8,42 +8,64 @@
 		<link href="../atgicon.ico" rel="icon"/>
 		<title>Drag n Drop</title>
 
-		<style>
-			div {float:left; width:350px; height:70px; margin:10px; padding:10px; border:1px solid #aaa;}
-		</style>
+		<!-- Main Stylesheet -->
+		<link href="dragndrop.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 
-		<img id="drag1" src="../atgicon.ico" draggable="true" ondragstart="drag(event)" alt="TWD">
-		<p id="drag2" draggable="true" ondragstart="drag(event)">This is a draggable paragraph. Drag this element into the rectangle.</p>
+		<!-- #container -->
+		<div id="container">
 
-		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<!--  -->
+			<!-- dragdestination -->
+			<div class="dragdestination"></div>
+			<!-- /dragdestination -->
+	
+			<!-- dragdestination -->
+			<div class="dragdestination"></div>
+			<!-- /dragdestination -->
+
+			<!-- dragitem -->
+			<div id="dragitemA" class="dragitem">
+				<img src="../atgicon.ico">
+			</div>
+			<!-- /dragitem -->
+
+			<!-- dragitem -->
+			<div id="dragitemB" class="dragitem">
+				<p>
+					This is a draggable paragraph. Drag this element into the rectangle.
+				</p>
+			</div>
+			<!-- /dragitem -->
+
+			<!-- dragitem -->
+			<div id="dragitemC" class="dragitem">
+				<p>
+					This is a draggable paragraph. Drag this element into the rectangle.
+				</p>
+			</div>
+			<!-- /dragitem -->
+
+			<!-- dragitem -->
+			<div id="dragitemD" class="dragitem">
+				<p>
+					This is a draggable paragraph. Drag this element into the rectangle.
+				</p>
+			</div>
+			<!-- /dragitem -->
+
+			<!-- dragitem -->
+			<div id="dragitemE" class="dragitem">
+				<p>
+					This is a draggable paragraph. Drag this element into the rectangle.
+				</p>
+			</div>
+			<!-- /dragitem -->
+
 		</div>
-		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
-			<!--  -->
-		</div>
+		<!-- /#container -->
 
-		<script>
-			function allowDrop(event) {
-				console.log('', event);
-
-				event.preventDefault();
-			}
-
-			function drag(event) {
-				console.log('', event);
-
-				event.dataTransfer.setData("Text", event.target.id);
-			}
-
-			function drop(event) {
-				console.log('', event);
-
-				var data = event.dataTransfer.getData("Text");
-				event.target.appendChild(document.getElementById(data));
-				event.preventDefault();
-			}
-		</script>
+		<!-- Main Script -->
+		<script src="dragndrop.js" type="text/javascript"></script>
 	</body>
 </html>
