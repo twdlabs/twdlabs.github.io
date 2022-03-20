@@ -2,7 +2,7 @@
 
 
 // Initialize current page index. 
-var currentPageIndex = 1;
+var currentPageIndex = 2;
 
 // Initialize horizontal position of pointer. 
 var lastPointX;
@@ -233,7 +233,7 @@ function startItUp() {
 			link.addEventListener('input',selectPage);
 		}
 
-		// // Enable swipe gesture. 
+		// // Enable page swipe gestures. 
 		// let container = document.getElementById('container');
 		// container.addEventListener('touchstart',beginSwipe);
 		// container.addEventListener('touchend',endSwipe);
@@ -261,8 +261,17 @@ function startItUp() {
 				// console.log(this);
 			});
 		}
+
+
+		// Activity: Make all transactions draggabble. 
+		let trows = document.querySelectorAll('section#activity article#transactions div.content table.table tbody tr.row');
+		for(let tr of trows) {
+			tr.setAttribute('draggable','true');
+		}
+		
 	
 		/*****/
+		
 
 		// Toggle navigation. 
 		function toggleNavigation() {
@@ -283,7 +292,14 @@ function startItUp() {
 			currentPageIndex = pageNames.indexOf(selectedPageName);
 
 			console.log('Current page:',currentPageIndex,selectedPageName);
+
+			// Open selected page. 
 			openSelectedPage();
+			// setTimeout(openSelectedPage,250);
+
+			// Close navigation. 
+			// toggleNavigation();
+			setTimeout(toggleNavigation,500);
 		}
 
 		// Open selected page. 

@@ -48,15 +48,16 @@ div#container header.header div.togglebtn svg.icon {display:block; font-size:1.5
 /* Navigation Bar */
 
 div#container nav.switcher {display:flex; justify-content:flex-start; width:100%; max-width:var(--maxwidth); margin:.25rem auto; margin:0 auto;}
-div#container nav.switcher {max-height:0; transition:.25s;}
+div#container nav.switcher {max-height:0; transition:.25s ease-in-out;}
 div#container nav.switcher.active {max-height:3rem;}
-div#container nav.switcher ul.navlist {list-style:none; padding:0; border-radius:.5rem; margin:0; margin:.25rem 0 .125rem; overflow:hidden;}
+div#container nav.switcher ul.navlist {list-style:none; padding:0; padding:.75rem 0; border-radius:.5rem; margin:0; overflow:hidden;}
 div#container nav.switcher ul.navlist {display:flex; flex-direction:row; justify-content:start; align-items:center; position:relative; overflow:visible;}
 div#container nav.switcher ul.navlist li {flex:0 0 0; min-width:8.5rem; border-radius:inherit; transition:.5s;}
-div#container nav.switcher ul.navlist li.navitem {font-size:1.125rem; text-align:center; padding:.75rem 1rem; position:relative; z-index:20;}
+div#container nav.switcher ul.navlist li.navitem {text-align:center; position:relative; z-index:20;}
 div#container nav.switcher ul.navlist li.navitem img.bg {display:none;}
 div#container nav.switcher ul.navlist li.navitem img.bg {position:absolute; top:0; left:0; height:100%; width:100%; z-index:-1; object-fit:cover; object-position:top;}
 div#container nav.switcher ul.navlist li.navitem input {display:none;}
+div#container nav.switcher ul.navlist li.navitem label.navlabel {font-size:1.125rem; padding:.75rem 1rem;}
 div#container nav.switcher ul.navlist li.navitem label.navlabel {display:block; cursor:pointer; user-select:none;}
 div#container nav.switcher ul.navlist li.navitem label.navlabel {color:#AAA; text-align:center; transition:.5s;}
 div#container nav.switcher ul.navlist li.navitem input:checked + label.navlabel {color:white; color:var(--gdblack);}
@@ -67,8 +68,8 @@ div#container nav.switcher ul.navlist li.navitem span.tooltip::before {position:
 div#container nav.switcher ul.navlist li.navitem span.tooltip::before {content:''; display:block; width:0; height:0; border:.5rem solid transparent; border-bottom-color:#333;}
 div#container nav.switcher ul.navlist li.navitem span.tooltip {visibility:hidden; opacity:0; transition:.125s;}
 div#container nav.switcher ul.navlist li.navitem:hover span.tooltip {visibility:visible; opacity:1;}
-div#container nav.switcher ul.navlist li.switch {position:absolute; bottom:0; left:0; height:100%; height:1px; border-radius:1rem; z-index:10;}
-div#container nav.switcher ul.navlist li.switch {display:flex; flex-direction:row; justify-content:center;}
+div#container nav.switcher ul.navlist li.switch {position:absolute; bottom:0; left:0; height:100%; height:.125rem; border-radius:1rem; margin-bottom:.125rem; z-index:10;}
+div#container nav.switcher ul.navlist li.switch {display:flex; flex-direction:row; justify-content:center; /* transition:.125s; */}
 div#container nav.switcher ul.navlist li.switch::after {content:''; background-color:var(--white); background-color:var(--gdblack); width:50%;}
 div#container nav.switcher {overflow:auto; /* IE & Edge */ -ms-overflow-style:none; /* Firefox */ scrollbar-width:none;}
 div#container nav.switcher::-webkit-scrollbar {/* Chrome / Safari / Opera */ display:none;}	
@@ -95,10 +96,11 @@ div#container main.main div.inner section.page {flex:0 0 auto; width:100%;}
 
 	/* Navigation Bar */
 	div#container nav.switcher {flex-direction:column;}
-	div#container nav.switcher.active {max-height:16rem;}
-	div#container nav.switcher ul.navlist {flex-direction:column;}
+	div#container nav.switcher.active {max-height:17rem;}
+	div#container nav.switcher ul.navlist {flex-direction:column; align-items:stretch; text-align:center;}
 	div#container nav.switcher ul.navlist li {min-width:7rem;}
-	div#container nav.switcher ul.navlist li.navitem {font-size:1rem; padding:.5rem .25rem;}
+	/* div#container nav.switcher ul.navlist li.navitem {} */
+	div#container nav.switcher ul.navlist li.navitem label.navlabel {font-size:1rem; padding:.5rem .25rem;}
 	div#container nav.switcher ul.navlist li.switch {display:none;}
 	/* Navigation Bar (old version) */
 	/* div#container nav.switcher {justify-content:center;} */

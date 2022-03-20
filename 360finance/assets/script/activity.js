@@ -32,9 +32,15 @@ function loadActivityPage() {
 				<!-- cell -->
 				<td class="cell icon" style="color:${ (category.clustercolor) ? (category.clustercolor) : (category.categorycolor) };">
 
-					<!-- data -->
-					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">${ icondata[category.categoryicon] }</svg>
-					<!-- /data -->
+					<!-- shell -->
+					<div class="shell">
+
+						<!-- icon -->
+						<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">${ icondata[category.categoryicon] }</svg>
+						<!-- /icon -->
+
+					</div>
+					<!-- /shell -->
 					
 				</td>
 				<!-- /cell -->
@@ -68,7 +74,7 @@ function loadActivityPage() {
 				<!-- /cell -->
 
 				<!-- cell -->
-				<td class="cell category" style="color:${ (category.clustercolor) ? (category.clustercolor) : (category.categorycolor) };">
+				<td class="cell category" style="--dotcolor:${ (category.clustercolor) ? (category.clustercolor) : (category.categorycolor) };">
 
 					<!-- data -->
 					<span class="data">${ category.categoryname }</span>
