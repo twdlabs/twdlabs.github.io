@@ -57,7 +57,7 @@
 			<!-- /header -->
 
 			<!-- switcher -->
-			<nav class="switcher activex">
+			<nav class="switcher active">
 
 				<!-- navlist -->
 				<ul class="navlist">
@@ -128,7 +128,7 @@
 							<article id="incomesummary" class="summary">
 	
 								<!-- head -->
-								<h2 class="head">Income Summary</h2>
+								<h2 class="head">Total Income Summary</h2>
 								<!-- /head -->
 		
 								<!-- content -->
@@ -204,7 +204,7 @@
 							<article id="spendsummary" class="summary">
 	
 								<!-- head -->
-								<h2 class="head">Spending Summary</h2>
+								<h2 class="head">Total Spending Summary</h2>
 								<!-- /head -->
 		
 								<!-- content -->
@@ -334,6 +334,12 @@
 
 						</div>
 						<!-- /group -->
+
+					</section>
+					<!-- /#overview -->
+					
+					<!-- #activity -->
+					<section id="activity" class="page">
 
 						<!-- #transactions -->
 						<article id="transactions">
@@ -703,21 +709,44 @@
 						</article>
 						<!-- /#transactions -->
 
-						<!-- article -->
-						<article>
-							
-						</article>
-						<!-- /article -->
-
-
 					</section>
-					<!-- /#overview -->
+					<!-- /#activity -->
 
 					<!-- #budget -->
 					<section id="budget" class="page">
 
-						<!-- #budgetsummary -->
-						<article id="budgetsummary" class="summary">
+						<!-- #annualsummary -->
+						<article id="annualsummary" class="summary">
+
+							<!-- head -->
+							<h2 class="head">Budget</h2>
+							<!-- /head -->
+	
+							<!-- content -->
+							<div class="content">
+	
+								<!-- buckets -->
+								<article class="buckets">
+					
+									<!-- bucket -->
+									<div class="bucket">
+		
+										<label class="month">J</label>
+					
+									</div>
+									<!-- /bucket -->
+					
+								</article>
+								<!-- /buckets -->
+								
+							</div>
+							<!-- /content -->
+							
+						</article>
+						<!-- /#annualsummary -->
+
+						<!-- #monthlysummary -->
+						<article id="monthlysummary" class="summary">
 
 							<!-- head -->
 							<h2 class="head">Monthly Budget Summary</h2>
@@ -770,37 +799,7 @@
 							<!-- /content -->
 							
 						</article>
-						<!-- /#budgetsummary -->
-
-						<!-- article -->
-						<article id="oldbudgetsummary" class="summary">
-
-							<!-- head -->
-							<h2 class="head">Budget</h2>
-							<!-- /head -->
-	
-							<!-- content -->
-							<div class="content">
-	
-								<!-- buckets -->
-								<article class="buckets">
-					
-									<!-- bucket -->
-									<div class="bucket">
-		
-										<label class="month">J</label>
-					
-									</div>
-									<!-- /bucket -->
-					
-								</article>
-								<!-- /buckets -->
-								
-							</div>
-							<!-- /content -->
-							
-						</article>
-						<!-- /article -->
+						<!-- /#monthlysummary -->
 						
 					</section>
 					<!-- /#budget -->
@@ -808,16 +807,63 @@
 					<!-- #taxes -->
 					<section id="taxes" class="page">
 
-						<!-- head -->
-						<!-- <h2 class="head">Taxes Page PlaceHolder</h2> -->
-						<!-- /head -->
+						<!-- article -->
+						<article>
+
+							<!-- head -->
+							<h2 class="head">Taxes Page PlaceHolder</h2>
+							<!-- /head -->
+							
+						</article>
+						<!-- /article -->
 
 					</section>
 					<!-- /#taxes -->
 					
 					<!-- #invest -->
 					<section id="invest" class="page">
-						<!-- /head -->
+
+						<!-- article -->
+						<article>
+
+							<!-- head -->
+							<h2 class="head">Investments Page PlaceHolder</h2>
+							<!-- /head -->
+							
+						</article>
+						<!-- /article -->
+
+					</section>
+					<!-- /#invest -->
+					
+					<!-- #insurance -->
+					<section id="insurance" class="page">
+
+						<!-- article -->
+						<article>
+
+							<!-- head -->
+							<h2 class="head">Insurance Page PlaceHolder</h2>
+							<!-- /head -->
+							
+						</article>
+						<!-- /article -->
+
+					</section>
+					<!-- /#insurance -->
+					
+					<!-- #generic -->
+					<section id="generic" class="page">
+
+						<!-- article -->
+						<article>
+
+							<!-- head -->
+							<h2 class="head">Generic Page PlaceHolder</h2>
+							<!-- /head -->
+							
+						</article>
+						<!-- /article -->
 
 						<!-- #misc -->
 						<article id="misc">
@@ -952,17 +998,7 @@
 						<!-- /#misc -->
 
 					</section>
-					<!-- /#invest -->
-					
-					<!-- #insurance -->
-					<section id="insurance" class="page">
-
-						<!-- head -->
-						<!-- <h2 class="head">Insurance Page PlaceHolder</h2> -->
-						<!-- /head -->
-
-					</section>
-					<!-- /#insurance -->
+					<!-- /#generic -->
 
 				</div>
 				<!-- /inner -->
@@ -989,6 +1025,8 @@
 
 		<!-- Overview Page Script -->
 		<script src="assets/script/overview.js" type="text/javascript"></script>
+		<!-- Activity Page Script -->
+		<script src="assets/script/activity.js" type="text/javascript"></script>
 		<!-- Budget Page Script -->
 		<script src="assets/script/budget.js" type="text/javascript"></script>
 		<!-- Taxes Page Script -->
