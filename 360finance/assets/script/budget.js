@@ -3,16 +3,41 @@
 // Load budget page. 
 function loadBudgetPage() {
 
-	// Load budget summary. 
-	loadBudgetSummaries();
+	// Load annual budget summary. 
+	loadAnnualSummary();
 
-	// Load budget. 
-	loadOldBudget();
+	// Load monthly budget summaries. 
+	loadMonthlySummaries();
 
 	/****/
 
-	// Load budget summaries: enhanced progress bars. 
-	function loadBudgetSummaries() {
+	// Load annual budget summary. 
+	function loadAnnualSummary() {
+
+		// Get budget container. 
+		let budgetbuckets = document.querySelector('section#budget article#annualsummary div.content article.buckets');
+		// console.log('budgetbuckets:',budgetbuckets);
+
+		// Create series of buckets. 
+		let result = '';
+		for(let i in monthInitials) {
+			let n = 1*i + 1;
+			result += `
+			<!-- bucket -->
+			<div class="bucket">
+
+				<label class="month">${ (n<10) ? ('0'+n) : (n) }</label>
+
+			</div>
+			<!-- /bucket -->`;
+		}
+
+		// Add result to page. 
+		budgetbuckets.innerHTML = result;
+	}
+
+	// Load monthly budget summaries: enhanced progress bars. 
+	function loadMonthlySummaries() {
 		// console.log('spendcategorydata:',spendcategorydata);
 
 		// Create progress bars based on spend category data for each month: budget spend limits and actual spend totals. 
@@ -45,10 +70,10 @@ function loadBudgetPage() {
 				}
 				spendcategorytotals.push(total);
 			}
-			console.log('Spend category totals:',spendcategorytotals);
+			// console.log(`Spend category totals (${monthName}):`,spendcategorytotals);
 			
 			// Create category progress bars for spending in given month. 
-			let progressbars = createProgressBars(spendcategorydata,spendcategorytotals,`${monthName} 2022`);
+			let progressbars = createProgressBars(spendcategorydata,spendcategorytotals,monthIndex,`${monthName} 2022`);
 
 			// Put category progress bars in budget box and add to result. 
 			result += `
@@ -58,35 +83,9 @@ function loadBudgetPage() {
 		}
 		
 		// Get container for budget summaries. 
-		let budgetsbox = document.querySelector('main.main section#budget article#budgetsummary div.content');
+		let budgetsbox = document.querySelector('main.main section#budget article#monthlysummary div.content');
 
 		// Add budgets to page. 
 		budgetsbox.innerHTML = result;
-	}
-
-	// Load budget on budget page. 
-	function loadOldBudget() {
-
-		// Get budget container. 
-		let budgetbuckets = document.querySelector('section#budget article.buckets');
-		// console.log('budgetbuckets:',budgetbuckets);
-
-		// Initialize result. 
-		let result = '';
-
-		for(let i in monthInitials) {
-			let n = i*1 + 1;
-			result += `
-			<!-- bucket -->
-			<div class="bucket">
-
-				<label class="month">${ (n<10) ? ('0'+n) : (n) }</label>
-
-			</div>
-			<!-- /bucket -->`;
-		}
-
-		// Add result to page. 
-		budgetbuckets.innerHTML = result;
 	}
 }

@@ -81,16 +81,13 @@ div#container nav.switcher.debug ul.navlist li.navitem input {display:inline-blo
 div#container main.main {background-color:var(--frost); background-color:var(--black2); background-color:white; box-shadow:var(--thinshadow);}
 div#container main.main {width:100%; max-width:var(--maxwidth); /* padding:0 1rem; */ border-radius:.5rem; margin:.25rem auto; margin:0 auto;}
 div#container main.main div.inner {display:flex; flex-direction:row; align-items:flex-start; transition:.5s;}
-div#container main.main section.page {flex-shrink:0; width:100%; padding:1rem 2rem 3rem;}
-div#container main.main section.page h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.25rem 0 1rem;}
-div#container main.main section.page div.content {display:flex; flex-direction:row; justify-content:space-between;}
-div#container main.main section.page div.content section {background-color:var(--black3); padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin-top:.5rem;}
+div#container main.main div.inner section.page {flex:0 0 auto; width:100%;}
 
 
 
 
 
-@media screen and (max-width:44rem) {
+@media screen and (max-width:52rem) {
 
 	/* Main Container */
 	
@@ -98,7 +95,7 @@ div#container main.main section.page div.content section {background-color:var(-
 
 	/* Navigation Bar */
 	div#container nav.switcher {flex-direction:column;}
-	div#container nav.switcher.active {max-height:13rem;}
+	div#container nav.switcher.active {max-height:16rem;}
 	div#container nav.switcher ul.navlist {flex-direction:column;}
 	div#container nav.switcher ul.navlist li {min-width:7rem;}
 	div#container nav.switcher ul.navlist li.navitem {font-size:1rem; padding:.5rem .25rem;}

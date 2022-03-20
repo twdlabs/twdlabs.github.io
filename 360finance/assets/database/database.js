@@ -39,28 +39,28 @@ const incomecategorydata = [
 	{	// 0
 		categoryname:'Wages',
 		categorycolor:'forestgreen',
-		clustercolor:'forestgreen',
+		clustercolor:'limegreen',
 		categoryicon:'cashstack',
 		// categoryicon:'cashcoin'
 	},
 	{	// 1
 		categoryname:'Dividends',
 		categorycolor:'limegreen',
-		clustercolor:'forestgreen',
+		clustercolor:'limegreen',
 		categoryicon:'cashstack',
 		// categoryicon:'cashcoin'
 	},
 	{	// 2
 		categoryname:'Interest',
 		categorycolor:'darkseagreen',
-		clustercolor:'forestgreen',
+		clustercolor:'limegreen',
 		categoryicon:'cashstack',
 		// categoryicon:'cashcoin'
 	},
 	// {	// 3
 	// 	categoryname:'xyz',
 	// 	categorycolor:'forestgreen',
-	// 	clustercolor:'forestgreen',
+	// 	clustercolor:'limegreen',
 	// 	color:'white'
 	// },
 ];
@@ -142,7 +142,7 @@ const spendcategorydata = [
 	},
 	{	// 12
 		categoryname:'Child Care',
-		categorycolor:'white',
+		categorycolor:'whitesmoke',
 		categoryicon:'egg',
 		budgetmonthlylimit:1000,
 	},

@@ -217,16 +217,6 @@ const transactiondata = [
 		transactionamount:-55.84,
 	},
 	{
-		categoryid:9,
-		merchantname:'Vacation Resort',
-		transactiondate:{
-			y:2022,
-			m:01,
-			d:22
-		},
-		transactionamount:-797,
-	},
-	{
 		categoryid:10,
 		merchantname:'Movie Theater',
 		transactiondate:{
@@ -265,6 +255,26 @@ const transactiondata = [
 			d:26
 		},
 		transactionamount:-1424.58,
+	},
+	{
+		categoryid:12,
+		merchantname:'Babysitter Name',
+		transactiondate:{
+			y:2022,
+			m:01,
+			d:27
+		},
+		transactionamount:-400.00,
+	},
+	{
+		categoryid:13,
+		merchantname:'Credit Card Payment',
+		transactiondate:{
+			y:2022,
+			m:01,
+			d:28
+		},
+		transactionamount:-224.58,
 	},
 
 
@@ -479,16 +489,6 @@ const transactiondata = [
 			d:21
 		},
 		transactionamount:-55.84,
-	},
-	{
-		categoryid:9,
-		merchantname:'Vacation Resort',
-		transactiondate:{
-			y:2022,
-			m:02,
-			d:22
-		},
-		transactionamount:-797,
 	},
 	{
 		categoryid:10,

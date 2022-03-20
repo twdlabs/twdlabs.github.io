@@ -5,34 +5,35 @@ const navdata = [
 		name:'Overview',
 		code:'overview',
 		tooltip:'overall picture',
-		innersvg:'xyz',
 	},
 	{
 		// name:'Banking',
+		name:'Activity',
+		code:'activity',
+		// tooltip:'Daily activity',
+		tooltip:'Recent transactions',
+	},
+	{
 		name:'Budget',
 		code:'budget',
-		tooltip:'daily activity',
-		innersvg:'xyz',
+		tooltip:'Spending Categories',
 	},
 	{
 		name:'Taxes',
 		code:'taxes',
-		tooltip:'long activity',
-		innersvg:'xyz',
+		tooltip:'Yearly filing',
 	},
 	{
 		name:'Investments',
 		code:'invest',
-		tooltip:'yearly filing',
-		innersvg:'xyz',
+		tooltip:'Long activity',
 	},
 	{
 		name:'Insurance',
 		code:'insurance',
-		tooltip:'risk management',
-		innersvg:'xyz',
+		tooltip:'Risk management',
 	},
 ];
 
 // Define section names. 
-const pageNames = ['overview','budget','taxes','invest','insurance'];
+const pageNames = ['overview','activity','budget','taxes','invest','insurance'];

@@ -2,7 +2,7 @@
 
 
 // Initialize current page index. 
-var currentPageIndex = 0;
+var currentPageIndex = 1;
 
 // Initialize horizontal position of pointer. 
 var lastPointX;
@@ -15,6 +15,8 @@ var totalAmountEarned;
 
 // Initialize total spending. 
 var totalAmountSpent;
+var totalSpendPerMonth = [ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ];
+// var totalSpendPerCategory = [];
 
 // Initialize net balance. 
 // var netBalance;
@@ -134,11 +136,22 @@ function startItUp() {
 		// console.log('Total earnings:', dollar(totalAmountEarned) );
 
 		// Aggregate total spending. 
+		// Aggregate total spend per month. 
 		totalAmountSpent = 0;
 		for(let t of transactiondata) {
-			if(t.transactionamount<=0) totalAmountSpent += (-1) * t.transactionamount;
+			// Check for spend transaction. 
+			if(t.transactionamount<=0) {
+				let transactionAmount = (-1 * t.transactionamount);
+				totalAmountSpent += transactionAmount;
+
+				let monthIndex = t.transactiondate.m-1;
+				let alreadyValidAmount = !isNaN( totalSpendPerMonth[monthIndex] );
+				if(alreadyValidAmount) totalSpendPerMonth[monthIndex] += transactionAmount;
+				else totalSpendPerMonth[monthIndex] = transactionAmount;
+			}
 		}
-		// console.log('Total spending:', dollar(totalAmountSpent) );
+		console.log('Total spending:', dollar(totalAmountSpent) );
+		console.log('Total spend per month:', totalSpendPerMonth.map(dollar)/* dollar(totalAmountSpent) */ );
 
 		// Aggregate net balance. 
 		// netBalance = 0;
@@ -154,6 +167,9 @@ function startItUp() {
 	
 		// Load overview page. 
 		loadOverviewPage();
+		
+		// Load activity page. 
+		loadActivityPage();
 		
 		// Load budget page. 
 		loadBudgetPage();
@@ -188,6 +204,19 @@ function startItUp() {
 	
 			/****/
 		}
+	}
+
+	// Open page of initially selected index. 
+	function openInitialPage() {
+
+		// Get navigator radio button. 
+		let n = (1*currentPageIndex) + 1;
+		let navselector = `nav.switcher ul.navlist li.navitem:nth-of-type(${n}) input`;
+		let radiobtn = document.querySelector(navselector)
+		// console.log('navselector:',navselector,radiobtn);
+
+		// Click navigator radio button. 
+		radiobtn.click();
 	}
 	
 	// Handle events. 
@@ -224,7 +253,7 @@ function startItUp() {
 
 
 		// Budget: Enable show mode toggle on all budget boxes. 
-		let budgetboxes = document.querySelectorAll('main.main section#budget article#budgetsummary div.content section.budgetbox');
+		let budgetboxes = document.querySelectorAll('main.main section#budget article#monthlysummary div.content section.budgetbox');
 		for(let box of budgetboxes) {
 			box.addEventListener('click', function(event) {
 				// console.log(this);
@@ -234,6 +263,11 @@ function startItUp() {
 		}
 	
 		/*****/
+
+		// Toggle navigation. 
+		function toggleNavigation() {
+			document.querySelector('nav.switcher').classList.toggle('active');
+		}
 	
 		// Select page. 
 		function selectPage(event) {
@@ -271,7 +305,7 @@ function startItUp() {
 			if(debug) console.log('\tPager transformation:',inner.style.transform,inner);
 		}
 
-		// Begin swipe gesture. 
+		// TODO: Begin swipe gesture. 
 		function beginSwipe(event) {
 			// console.log(event.type,event);
 
@@ -280,7 +314,7 @@ function startItUp() {
 			// console.log('Last point x:',lastPointX);
 		}
 
-		// End swipe gesture. 
+		// TODO: End swipe gesture. 
 		function endSwipe(event) {
 			console.log(event.type,event);
 
@@ -295,7 +329,7 @@ function startItUp() {
 			lastPointX = undefined;
 		}
 
-		// Check direction of swipe gesture. 
+		// TODO: Check direction of swipe gesture. 
 		function checkSwipe(dx) {
 			console.log('dx:',dx);
 
@@ -325,23 +359,5 @@ function startItUp() {
 			}
 		}
 	}
-
-	// Open page of initially selected index. 
-	function openInitialPage() {
-
-		// Get navigator radio button. 
-		let pageselector = `nav.switcher ul.navlist li.navitem:nth-of-type(${ (1*currentPageIndex)+1 }) input`;
-		let radiobtn = document.querySelector(pageselector)
-		// console.log('pageselector:',pageselector,radiobtn);
-
-		// Click navigator radio button. 
-		radiobtn.click();
-	}
 }
 
-
-
-// Toggle navigation. 
-function toggleNavigation() {
-	document.querySelector('nav.switcher').classList.toggle('active');
-}

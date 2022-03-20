@@ -127,7 +127,7 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 
 // Create progress bars from given category data. 
 // Create progress bars based on spend category data: budget spend limits and actual spend totals. 
-function createProgressBars(categoryData,categoryTotals,monthLabel) {
+function createProgressBars(categoryData,categoryTotals,monthIndex,monthLabel) {
 	// console.log('Category Data:', categoryData);
 	// console.log('Category Totals:', categoryTotals);
 
@@ -145,11 +145,11 @@ function createProgressBars(categoryData,categoryTotals,monthLabel) {
 		// Get data for given category. 
 		let category = categoryData[i];
 		// console.log('\nCategory:',category.categoryname);
+		// console.log('Categorical Limit:', category.budgetmonthlylimit);
+		// console.log('Categorical Spending:', categoryTotals[i]);
 		
 		// Get proportion of budget limit spent for given category. 
 		let proportion = (categoryTotals[i]/category.budgetmonthlylimit);
-		// console.log('Total Spend:', categoryTotals[i]);
-		// console.log('Spend Limit:', category.budgetmonthlylimit);
 		// console.log('Spend Proportion:', proportion);
 
 		// Create displayable percentage using calculated proportion. 
@@ -189,7 +189,9 @@ function createProgressBars(categoryData,categoryTotals,monthLabel) {
 	}
 
 	// Get proportion of budget limit for entire budget. 
-	let proportion = (totalAmountSpent/totalBudgetAmount);
+	// let totalSpendThisMonth = totalAmountSpent;
+	let totalSpendThisMonth = totalSpendPerMonth[monthIndex];
+	let proportion = (totalSpendThisMonth/totalBudgetAmount);
 	let pct = (100*proportion).toFixed(1);
 	// console.log('Total Monthly Budget proportion:', pct+'%');
 
@@ -206,7 +208,7 @@ function createProgressBars(categoryData,categoryTotals,monthLabel) {
 			<!-- /name -->
 
 			<!-- remainder -->
-			<span class="remainder">${ dollar0(totalBudgetAmount - totalAmountSpent) } ${ (pct>100) ? ('Over') : ('Left') }</span>
+			<span class="remainder">${ dollar0(totalBudgetAmount - totalSpendThisMonth) } ${ (pct>100) ? ('Over') : ('Left') }</span>
 			<!-- /remainder -->
 			
 		</div>
@@ -214,7 +216,7 @@ function createProgressBars(categoryData,categoryTotals,monthLabel) {
 
 		<!-- bar -->
 		<div class="bar" style="background:grey linear-gradient(90deg, transparent ${pct}% , var(--white) ${pct}% );">
-			<span class="caption">${ dollar0(totalAmountSpent) } of ${ dollar0(totalBudgetAmount) }</span>
+			<span class="caption">${ dollar0(totalSpendThisMonth) } of ${ dollar0(totalBudgetAmount) }</span>
 		</div>
 		<!-- /bar -->
 		
