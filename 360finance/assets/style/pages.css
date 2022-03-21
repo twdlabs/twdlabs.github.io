@@ -5,7 +5,8 @@
 
 div#container main.main section.page {padding:1rem 2rem 3rem;}
 /* div#container main.main section.page article {} */
-div#container main.main section.page article h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.25rem 0 1rem;}
+div#container main.main section.page article h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.75rem 0 .5rem; margin-bottom:0;}
+div#container main.main section.page article p.textcopy {color:#AAA; font-size:.875rem; margin:0; margin-bottom:1rem;}
 div#container main.main section.page article div.content {display:flex; flex-direction:row; justify-content:space-between;}
 div#container main.main section.page article div.content {justify-content:center; align-items:flex-start; flex-wrap:wrap;}
 div#container main.main section.page article div.content section {background-color:var(--black3); padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin-top:.5rem;}
@@ -65,22 +66,13 @@ div#container main.main section#generic article#misc div.content section#bucketb
 
 /* Overview Page */
 
-/* div#container main.main section#overview {} */
-div#container main.main section#overview div.group {display:flex; flex-direction:row; flex-wrap:wrap;}
-div#container main.main section#overview div.group article {flex-grow:1;}
-/* div#container main.main section#overview article {} */
-/* div#container main.main section#overview article div.content {} */
-
-/* div#container main.main section#overview article#incomesummary {} */
-/* div#container main.main section#overview article#incomesummary div.content {} */
-
+div#container main.main section#overview {display:flex; flex-direction:row; flex-wrap:wrap;}
+div#container main.main section#overview article {flex-grow:1;}
 /* div#container main.main section#overview article#spendsummary {} */
-/* div#container main.main section#overview article#spendsummary div.content {} */
-
+/* div#container main.main section#overview article#incomesummary {} */
 /* div#container main.main section#overview article#balancesummary {} */
+/* div#container main.main section#overview article#balancesummary h2.head {} */
 div#container main.main section#overview article#balancesummary h2.head span.value {color:seagreen;}
-/* div#container main.main section#overview article#balancesummary h2.head span.caption {} */
-/* div#container main.main section#overview article#balancesummary div.content {} */
 
 
 
@@ -88,7 +80,6 @@ div#container main.main section#overview article#balancesummary h2.head span.val
 
 /* div#container main.main section#activity {} */
 /* div#container main.main section#activity article {} */
-/* div#container main.main section#activity article div.content {} */
 
 /* div#container main.main section#activity article#transactions {} */
 div#container main.main section#activity article#transactions div.content {display:flex; flex-direction:column; align-items:stretch; overflow-x:auto;}
@@ -103,6 +94,7 @@ div#container main.main section#activity article#transactions div.content table.
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head.amount h3.head {justify-content:flex-end; /* text-align:right; */}
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head h3.head div.sortbtn {display:flex; flex-direction:column; cursor:pointer; user-select:none; margin-left:.25rem;}
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head h3.head div.sortbtn svg.icon {font-size:.4rem;}
+/* div#container main.main section#activity article#transactions div.content table.table tr.row th.head h3.head div.sortbtn {display:none;} */
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head, 
 div#container main.main section#activity article#transactions div.content table.table tr.row td.cell {font-weight:bold; white-space:nowrap; padding:1rem .25rem .85rem;}
 
@@ -110,12 +102,12 @@ div#container main.main section#activity article#transactions div.content table.
 div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.icon div.shell {background-color:#00000007; display:inline-flex; justify-content:center; align-items:center; min-height:2em; min-width:2em; border-radius:50%; margin-left:.75rem;}
 div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.icon div.shell svg.icon {display:inline-block;}
 
-div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date {font-weight:lighter; text-align:center;}
+div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date {font-weight:lighter;}
 div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date span.data.d::after {content:',';}
 
 /* div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.category {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;} */
-div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.category {--dotcolor:black; --dotsize:.375rem; color:var(--dotcolor);}
-div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.category:before {content:''; background-color:var(--dotcolor); display:block; min-height:var(--dotsize); min-width:var(--dotsize); border-radius:50%;}
+div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.category {--dotcolor:black; --dotsize:.5rem; color:var(--dotcolor);}
+div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.category:before {background-color:var(--dotcolor); display:inline-block; min-height:var(--dotsize); min-width:var(--dotsize); border-radius:50%;}
 
 div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.amount {text-align:right;}
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head.amount h3.head,
@@ -128,9 +120,9 @@ div#container main.main section#activity article#transactions div.content table.
 
 /* div#container main.main section#budget {} */
 /* div#container main.main section#budget article {} */
-/* div#container main.main section#budget article div.content {} */
 
 /* div#container main.main section#budget article#annualsummary {display:none;} */
+/* div#container main.main section#budget article#annualsummary div.content {} */
 div#container main.main section#budget article#annualsummary div.content article.buckets {display:flex; flex-direction:row; justify-content:center;}
 div#container main.main section#budget article#annualsummary div.content article.buckets div.innersection {display:flex; flex-direction:row; justify-content:space-between;}
 div#container main.main section#budget article#annualsummary div.content article.buckets div.bucket {background-color:#E2E2E2; width:.5rem; height:10rem; border-radius:1rem; margin:0 .5rem .75rem; /* overflow:hidden; */}
@@ -143,10 +135,10 @@ div#container main.main section#budget article#annualsummary div.content article
 /* div#container main.main section#budget article#monthlysummary {} */
 div#container main.main section#budget article#monthlysummary div.content {display:grid; grid-template-columns:repeat(3,1fr);}
 /* div#container main.main section#budget article#monthlysummary div.content section.legendbox {} */
-div#container main.main section#budget article#monthlysummary div.content section.budgetbox {/* max-width:24rem; */ cursor:pointer; user-select:none; padding:.5rem 1rem;}
+div#container main.main section#budget article#monthlysummary div.content section.budgetbox {/* max-width:24rem; */ cursor:pointer; user-select:none; padding:.625rem .75rem;}
 div#container main.main section#budget article#monthlysummary div.content section.budgetbox h3.head {font-size:1.125rem; font-weight:400; text-align:center; cursor:pointer; margin:0; margin-top:.5rem;}
-div#container main.main section#budget article#monthlysummary div.content section.budgetbox div.progressbar {padding:.125rem 0;}
-div#container main.main section#budget article#monthlysummary div.content section.budgetbox div.progressbar.total {padding:.25rem 0; border-top:1px solid grey; margin-top:.5rem;}
+div#container main.main section#budget article#monthlysummary div.content section.budgetbox div.progressbar {margin-top:.25rem;}
+div#container main.main section#budget article#monthlysummary div.content section.budgetbox div.progressbar.total {padding-top:.5rem; border-top:1px solid grey; margin-top:.75rem;}
 /* div#container main.main section#budget article#monthlysummary div.content section.budgetbox div.progressbar div.label {margin-top:.5rem;} */
 div#container main.main section#budget article#monthlysummary div.content section.budgetbox div.progressbar div.label {display:flex; justify-content:space-between; align-items:flex-end;}
 div#container main.main section#budget article#monthlysummary div.content section.budgetbox div.progressbar div.label span.name {color:var(--black); font-size:.875rem;}
@@ -169,7 +161,6 @@ div#container main.main section#budget article#monthlysummary div.content sectio
 
 /* div#container main.main section#taxes {} */
 /* div#container main.main section#taxes article {} */
-/* div#container main.main section#taxes article div.content {} */
 
 
 
@@ -177,7 +168,6 @@ div#container main.main section#budget article#monthlysummary div.content sectio
 
 /* div#container main.main section#invest {} */
 /* div#container main.main section#invest article {} */
-/* div#container main.main section#invest article div.content {} */
 
 
 
@@ -185,7 +175,6 @@ div#container main.main section#budget article#monthlysummary div.content sectio
 
 /* div#container main.main section#insurance {} */
 /* div#container main.main section#insurance article {} */
-/* div#container main.main section#insurance article div.content {} */
 
 
 
@@ -223,12 +212,14 @@ div#container main.main section#budget article#monthlysummary div.content sectio
 	/* div#container main.main section#activity article#transactions div.content table.table tr.row th.head.icon, */
 	/* div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.icon {display:none;} */
 	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.icon {font-size:1rem;}
-	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date {display:flex; flex-direction:column; align-items:center;}
+	div#container main.main section#activity article#transactions div.content table.table tr.row th.head.date {text-align:center;}
+	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date {display:flex; flex-direction:column; align-items:center; text-align:center;}
 	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date span.data.m {font-size:.625rem; text-transform:uppercase; margin-bottom:-.375rem;}
 	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date span.data.d {font-size:1.125rem;}
 	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date span.data.y {display:none;}
 	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.date span.data.d::after {content:'';}
 	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.description {white-space:initial;}
+	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.category:before {content:'';}
 	div#container main.main section#activity article#transactions div.content table.table tr.row th.head.category h3.head,
 	div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.category span.data {display:none;}
 	

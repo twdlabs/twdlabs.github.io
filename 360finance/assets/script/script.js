@@ -2,7 +2,7 @@
 
 
 // Initialize current page index. 
-var currentPageIndex = 2;
+var currentPageIndex = 1;
 
 // Initialize horizontal position of pointer. 
 var lastPointX;

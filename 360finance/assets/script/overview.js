@@ -109,7 +109,7 @@ function loadOverviewPage() {
 		// Get element for pie chart legend. 
 		let balancelegendbox = document.getElementById('balancelegend');
 		// Load legend for balance pie chart. 
-		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned,false);
+		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned,/* false */);
 
 		// Add net balance amount to balance header. 
 		let headlabel = document.querySelector('section#overview article#balancesummary h2.head span#balance');
