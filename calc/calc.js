@@ -22,7 +22,7 @@ console.log('\n\n1. DECLARE INITIAL VARIABLES\n\n\n');
 let numbers = [];		// list of numbers
 let operators = [];		// list of operators
 let workingNum = [];	// digits of working number
-let breadcrumbs = '';	// list of operations being performed
+let breadcrumbList = [];	// list of operations being performed
 
 // Store input completion status globally. 
 let digitsPresent = false;	// (is there a zero or a non-zero number)
@@ -122,7 +122,7 @@ function onClear() {
 		workingNum = [];
 
 		// Erase previous breadcrumbs. 
-		breadcrumbs = '';
+		breadcrumbList = [];
 	}
 }
 
@@ -166,13 +166,7 @@ function refreshStateOnPage() {
 
 
 	// Update debug tracker. 
-	let track = '';
-	track += '<span class="name">digitsPresent</span>' + `<span class="value">${digitsPresent}</span>`;
-	track += '<span class="name">workingNum</span>' + `<span class="value">${fnum}</span>`;
-	track += '<span class="name">breadcrumbs</span>' + `<span class="value">${breadcrumbs}</span>`;
-	track += '<span class="name">numbers</span>' + `<span class="value">${numbers}</span>`;
-	track += '<span class="name">operators</span>' + `<span class="value">${operators}</span>`;
-	$('div#tracker').html(track);
+	updateTracker();
 
 	/*****/
 
@@ -182,7 +176,7 @@ function refreshStateOnPage() {
 
 		// Sanitize user input. Remove invalid characters from working number before use. 
 		let validStringNumber = sanitizeUserInput(number);
-		console.log('validStringNumber',validStringNumber);
+		// console.log('validStringNumber',validStringNumber);
 
 		// Separate into two pieces: whole number and fractional number. 
 		let pieces = validStringNumber.split('.');
@@ -190,7 +184,7 @@ function refreshStateOnPage() {
 		let fractionalnumber = pieces[1];
 		// console.log('pieces', pieces);
 
-		console.log('Pre-format:  ', wholenumber,'.',fractionalnumber);
+		// console.log('Pre-format:  ', wholenumber,'.',fractionalnumber);
 		// TODO: Add commas to whole number. 
 		if(wholenumber) {
 			// Convert string to array of chars. 
@@ -233,7 +227,7 @@ function refreshStateOnPage() {
 			// Convert array back to string. 
 			fractionalnumber = fractionalnumber.join('');
 		}
-		console.log('Post-format: ', wholenumber,'.',fractionalnumber);
+		// console.log('Post-format: ', wholenumber,'.',fractionalnumber);
 
 		// Re-combine formatted string. 
 		str = wholenumber + (fractionalnumber ? '.'+fractionalnumber : '');
@@ -263,6 +257,17 @@ function refreshStateOnPage() {
 			// Return sanitized version. 
 			return source;
 		}
+	}
+
+	// Update debug tracker. 
+	function updateTracker() {
+		let track = '';
+		track += '<span class="name">digitsPresent</span>' + `<span class="value">${digitsPresent}</span>`;
+		track += '<span class="name">workingNum</span>' + `<span class="value">${fnum}</span>`;
+		track += '<span class="name">breadcrumbs</span>' + `<span class="value">${breadcrumbs}</span>`;
+		track += '<span class="name">numbers</span>' + `<span class="value">${numbers}</span>`;
+		track += '<span class="name">operators</span>' + `<span class="value">${operators}</span>`;
+		$('aside#tracker').html(track);
 	}
 }
 
@@ -403,11 +408,11 @@ function pressKey(event) {
 
 		// Click digit button upon pressing associated key. 
 		if(key>=48&&key<=57) {
-			$('button#digit'+keyValue).click();// Key: 1-9
+			$('button#digit'+keyValue).click();	// Key: 1-9
 			flag = true;
 		}
 		else if(key==190||key==46) {
-			$('button#digitDP').click();	// Key: .
+			$('button#digitDP').click();		// Key: .
 			flag = true;
 		}
 
@@ -423,7 +428,7 @@ function pressKey(event) {
 
 		// Click operator button upon pressing associated key. 
 		if(key==43) {
-			$('button#plus').click();				// Key: +
+			$('button#plus').click();			// Key: +
 			flag = true;
 		}
 		else if(key==45) {
@@ -435,7 +440,7 @@ function pressKey(event) {
 			flag = true;
 		}
 		else if(key==47) {
-			$('button#divide').click();		// Key: /
+			$('button#divide').click();			// Key: /
 			flag = true;
 		}
 
@@ -450,20 +455,24 @@ function pressKey(event) {
 		let flag = false;
 
 		// Click special button upon pressing associated key. 
-		if(key==13||key==61) {
-			$('button#equals').click();	// Key: =,Enter
+		if(key==13) {
+			$('button#equals').click();		// Key: Enter
 			flag = true;
 		}
+		// else if(key==61) {
+		// 	$('button#equals').click();		// Key: =
+		// 	flag = true;
+		// }
 		else if(key==27) {
-			$('button#clear').click();			// Key: Esc
+			$('button#clear').click();		// Key: Esc
 			flag = true;
 		}
 		else if(key==37) {
-			$('button#percent').click();		// Key: %
+			$('button#percent').click();	// Key: %
 			flag = true;
 		}
 		else if(key==40) {
-			$('button#openparen').click();		// Key: (
+			$('button#openparen').click();	// Key: (
 			flag = true;
 		}
 		else if(key==41) {

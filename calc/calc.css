@@ -1,29 +1,38 @@
 
 
+:root {
+	--black:black;
+	--white:white;
+}
+
+
 * {box-sizing:border-box;}
 
 
-body {background-color:#000; color:#FFF; margin:0; font-family:sans-serif;}
-body {display:flex; flex-direction:row; justify-content:center; align-items:center; min-height:100vh; padding-bottom:5rem;}
+body {font-family:sans-serif; margin:0;}
 
 
-div#container {background-color:inherit; color:inherit; padding:2rem; margin:0 auto; overflow:auto;}
+div#container {background-color:var(--orange,orange); display:flex; justify-content:center; align-items:center; min-height:100vh;}
+div#container {overflow:auto; padding:2rem; margin:0 auto;}
+
+div#container main.main {background-color:black; color:white; width:100%; max-width:30rem; padding:1.5rem; border-radius:2rem; margin-bottom:5rem;}
 
 
-div#container div#panel {display:flex; flex-direction:row-reverse; justify-content:center;}
+div#container div#panel {overflow-x:auto;}
+div#container div#panel div.inner {display:flex; flex-direction:row-reverse; justify-content:center;}
 div#container div#panel div.panel {flex-grow:1; flex-shrink:0; flex-basis:0;}
 div#container div#panel div.panel#ops {flex-grow:1;}
 div#container div#panel div.panel#num {flex-grow:3;}
 div#container div#panel div.panel#sci {flex-grow:6;}
 
 div#container div#panel div.panel#num {display:grid; grid-template-columns:repeat(3,1fr);}
-div#container div#panel div.panel#num div.field {/*flex:0 0 25%;*/}
+/* div#container div#panel div.panel#num div.field {flex:0 0 25%;} */
 div#container div#panel div.panel#num div.field.wide {grid-column:span 2;}
 div#container div#panel div.panel#num div.field.wide button span.caption {left:25%}
 
 div#container div#panel div.panel div.row {display:flex; flex-direction:row; justify-content:flex-end;}
 div#container div#panel div.panel div.field {min-width:5rem; min-height:5rem; flex-grow:1; flex-basis:0;}
-div#container div#panel div.panel div.field.wide {/*flex-grow:2;*/}
+/* div#container div#panel div.panel div.field.wide {flex-grow:2;} */
 
 div#container div#panel div.panel div.field button {border:.25rem solid #000; width:100%; height:100%; font-weight:200; cursor:pointer; transition:.25s;}
 div#container div#panel div.panel div.field button {position:relative; border-radius:50rem;}
@@ -74,18 +83,25 @@ div#container.debug div#panel div.panel div.field {margin:.1rem;}
 
 
 
-/* Smaller Screen */
+/* Medium Screen */
 @media screen and (max-width:52rem) {}
 
+/* Smaller Screen */
+@media screen and (max-width:30rem) {
+	div#container {padding:1rem;}
+}
 
 
 
-div.debug {position:fixed; padding:1rem;}
-div#tracker {top:0; left:0;}
-div#tracker {display:grid; grid-template-columns:repeat(2,1fr);}
-div#tracker span.name {text-align:left;}
-div#tracker span.value {text-align:right;}
-div#debugger {right:0; top:0; left:0; width:100%; text-align:center; margin-top:2rem;}
-div#debugger button {width:10%; min-width:3rem; min-height:3rem; border-radius:50rem; background-color:inherit; color:inherit; border:1px solid #FFF2; cursor:pointer;}
+
+
+aside#tracker {position:fixed; bottom:0; left:0; margin:1rem;}
+aside#tracker {background-color:white; display:grid; grid-template-columns:1fr 1fr; border:.125rem solid #0001;}
+aside#tracker span {border:1px solid #0001; padding:.5rem .75rem;}
+aside#tracker span.name {text-align:left;}
+aside#tracker span.value {text-align:right;}
+
+aside#debugger {position:fixed; top:0; right:0; left:0; width:100%; text-align:center; margin:1rem; margin-top:2rem;}
+aside#debugger button {width:10%; min-width:3rem; min-height:3rem; cursor:pointer; border:1px solid #FFF2; border-radius:50rem;}
 
 
