@@ -1,26 +1,5 @@
 
 
-// Define month initials. 
-const monthInitials = [ 'J','F','M', 'A','M','J', 'J','A','S', 'O','N','D' ];
-
-// Define month labels. 
-const monthNames = [ 
-	'Jan','Feb','Mar', 
-	'Apr','May','Jun', 
-	'Jul','Aug','Sep', 
-	'Oct','Nov','Dec' 
-];
-
-// Define full month labels. 
-const monthFullNames = [ 
-	'January','February','March', 
-	'April','May','June', 
-	'July','August','September', 
-	'October','November','December' 
-];
-
-
-
 // Define data for balance categories. 
 const balancecategorydata = [
 	{	// 0
@@ -67,6 +46,19 @@ const incomecategorydata = [
 
 
 // Define budget data for spending categories. 
+const spendcategorydatatemplate = [
+	{	// -1
+		categoryname:'xyz',
+		categorycolor:'white',
+		categoryicon:'icon',
+		budgetmonthlylimit:[
+			1000,1000,1000,
+			1000,1000,1000,
+			1000,1000,1000,
+			1000,1000,1000,
+		],
+	},
+]
 const spendcategorydata = [
 	{	// 0
 		categoryname:'Tithing',
