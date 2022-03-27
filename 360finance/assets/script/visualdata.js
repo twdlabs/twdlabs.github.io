@@ -54,7 +54,6 @@ function createPieChart(chartElement,categoryData,categoryTotals,totalAmount) {
 	chartElement.style.backgroundImage = `conic-gradient(${cgparams})`;
 }
 
-
 // Load category names, numbers, and colors in pie chart legend element. 
 function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmount,includeTotal=true) {
 
@@ -124,22 +123,17 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 }
 
 
-
 // Create progress bars from given category data. 
 // Create progress bars based on spend category data: budget spend limits and actual spend totals. 
-function createProgressBars(categoryData,categoryTotals,monthIndex,monthLabel) {
+function createProgressBars(categoryData,categoryTotals,monthIndex) {
 	// console.log('Category Data:', categoryData);
 	// console.log('Category Totals:', categoryTotals);
 
-	// Initialize total amount. 
-	let totalBudgetAmount = 0;
+	// Initialize total monthly budget amount. 
+	let totalMonthlyBudgetAmount = 0;
 
 	// Create progress bars: category items. 
 	let result = '';
-	result += `
-	<!-- head -->
-	<h3 class="head">${monthLabel}</h3>
-	<!-- /head -->`;
 	for(i in categoryData) {
 
 		// Get data for given category. 
@@ -169,7 +163,10 @@ function createProgressBars(categoryData,categoryTotals,monthIndex,monthLabel) {
 				<!-- /name -->
 
 				<!-- remainder -->
-				<span class="remainder">${ dollar0(category.budgetmonthlylimit - categoryTotals[i]) } ${ (pct>100) ? ('Over') : ('Left') }</span>
+				<span class="remainder">
+					<span class="num">${ dollar0(category.budgetmonthlylimit - categoryTotals[i]) }</span>
+					<span class="suffix">${ (pct>100) ? ('Over') : ('Left') }</span>
+				</span>
 				<!-- /remainder -->
 				
 			</div>
@@ -184,14 +181,14 @@ function createProgressBars(categoryData,categoryTotals,monthIndex,monthLabel) {
 		</div>
 		<!-- /progressbar -->`;
 
-		// Add to total amount. 
-		totalBudgetAmount += category.budgetmonthlylimit;
+		// Add to total monthly budget amount. 
+		totalMonthlyBudgetAmount += category.budgetmonthlylimit;
 	}
 
 	// Get proportion of budget limit for entire budget. 
 	// let totalSpendThisMonth = totalAmountSpent;
 	let totalSpendThisMonth = totalSpendPerMonth[monthIndex];
-	let proportion = (totalSpendThisMonth/totalBudgetAmount);
+	let proportion = (totalSpendThisMonth/totalMonthlyBudgetAmount);
 	let pct = (100*proportion).toFixed(1);
 	// console.log('Total Monthly Budget proportion:', pct+'%');
 
@@ -208,7 +205,10 @@ function createProgressBars(categoryData,categoryTotals,monthIndex,monthLabel) {
 			<!-- /name -->
 
 			<!-- remainder -->
-			<span class="remainder">${ dollar0(totalBudgetAmount - totalSpendThisMonth) } ${ (pct>100) ? ('Over') : ('Left') }</span>
+			<span class="remainder">
+				<span class="num">${ dollar0(totalMonthlyBudgetAmount - totalSpendThisMonth) }</span>
+				<span class="suffix">${ (pct>100) ? ('Over') : ('Left') }</span>
+			</span>
 			<!-- /remainder -->
 			
 		</div>
@@ -216,7 +216,7 @@ function createProgressBars(categoryData,categoryTotals,monthIndex,monthLabel) {
 
 		<!-- bar -->
 		<div class="bar" style="background:grey linear-gradient(90deg, transparent ${pct}% , var(--white) ${pct}% );">
-			<span class="caption">${ dollar0(totalSpendThisMonth) } of ${ dollar0(totalBudgetAmount) }</span>
+			<span class="caption">${ dollar0(totalSpendThisMonth) } of ${ dollar0(totalMonthlyBudgetAmount) }</span>
 		</div>
 		<!-- /bar -->
 		

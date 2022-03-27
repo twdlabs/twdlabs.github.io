@@ -112,7 +112,7 @@ function loadOverviewPage() {
 		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned,/* false */);
 
 		// Add net balance amount to balance header. 
-		let headlabel = document.querySelector('section#overview article#balancesummary h2.head span#balance');
+		let headlabel = document.querySelector('section#overview article#balancesummary div.content div#balance');
 		headlabel.innerHTML = dollar(totalAmountEarned-totalAmountSpent);
 		// Add net balance amount to balance pie chart label. 
 		let label = document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart div.disc');
