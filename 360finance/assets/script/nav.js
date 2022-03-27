@@ -2,7 +2,7 @@
 
 
 // Set initial page index. 
-var currentPageIndex = 2;
+var currentPageIndex = 0;
 
 
 // Define navigation data. 
