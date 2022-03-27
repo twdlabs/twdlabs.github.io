@@ -23,6 +23,9 @@
 		<!-- <link href="assets/style/pages/taxes.css" rel="stylesheet" type="text/css"/> -->
 		<!-- <link href="assets/style/pages/investments.css" rel="stylesheet" type="text/css"/> -->
 		<!-- <link href="assets/style/pages/insurance.css" rel="stylesheet" type="text/css"/> -->
+
+		<!-- Scroll Stylesheet -->
+		<link href="assets/style/scroll.css" rel="stylesheet" type="text/css"/>
 	</head>
 
 	<body>
@@ -80,7 +83,7 @@
 						<!-- /radio -->
 
 						<!-- navlabel -->
-						<label class="navlabel" for="choice0">Link</label>
+						<label class="navlabel" for="choice0" title="tooltip">Link</label>
 						<!-- /navlabel -->
 
 						<!-- tooltip -->
@@ -98,7 +101,7 @@
 						<!-- /bg -->
 
 						<!-- navlink -->
-						<a class="navlink" href="javascript:void(0)">Link</a>
+						<a class="navlink" href="javascript:void(0)" title="tooltip">Link</a>
 						<!-- /navlink -->
 
 						<!-- tooltip -->
@@ -123,6 +126,7 @@
 
 				<!-- inner -->
 				<div class="inner">
+
 					
 					<!-- #overview -->
 					<section id="overview" class="page">
@@ -144,7 +148,7 @@
 							<div class="content">
 	
 								<!-- #incomechart -->
-								<section id="incomechart" class="box piechart">
+								<figure id="incomechart" class="box piechart">
 		
 									<!-- chart -->
 									<div class="chart">
@@ -164,11 +168,11 @@
 									</div>
 									<!-- /chart -->
 					
-								</section>
+								</figure>
 								<!-- /#incomechart -->
 	
 								<!-- #incomelegend -->
-								<section id="incomelegend" class="box legend">
+								<figure id="incomelegend" class="box legend">
 	
 									<!-- head -->
 									<h3 class="head">Categories</h3>
@@ -200,7 +204,7 @@
 									</div>
 									<!-- /item -->
 	
-								</section>
+								</figure>
 								<!-- /#incomelegend -->
 	
 							</div>
@@ -226,7 +230,7 @@
 							<div class="content">
 	
 								<!-- #spendchart -->
-								<section id="spendchart" class="box piechart">
+								<figure id="spendchart" class="box piechart">
 		
 									<!-- chart -->
 									<div class="chart">
@@ -246,11 +250,11 @@
 									</div>
 									<!-- /chart -->
 					
-								</section>
+								</figure>
 								<!-- /#spendchart -->
 	
 								<!-- #spendlegend -->
-								<section id="spendlegend" class="box legend">
+								<figure id="spendlegend" class="box legend">
 	
 									<!-- head -->
 									<h3 class="head">Categories</h3>
@@ -282,7 +286,7 @@
 									</div>
 									<!-- /item -->
 	
-								</section>
+								</figure>
 								<!-- /#spendlegend -->
 	
 							</div>
@@ -290,6 +294,10 @@
 							
 						</article>
 						<!-- /#spendsummary -->
+
+						<!-- splitter -->
+						<div class="splitter"></div>
+						<!-- /splitter -->
 
 						<!-- #balancesummary -->
 						<article id="balancesummary" class="summary">
@@ -308,7 +316,7 @@
 							<div class="content">
 	
 								<!-- #balancechart -->
-								<section id="balancechart" class="box piechart">
+								<figure id="balancechart" class="box piechart">
 		
 									<!-- chart -->
 									<div class="chart">
@@ -328,17 +336,23 @@
 									</div>
 									<!-- /chart -->
 					
-								</section>
+								</figure>
 								<!-- /#balancechart -->
 	
 								<!-- #balancelegend -->
-								<section id="balancelegend" class="box legend">
+								<figure id="balancelegend" class="box legend">
 
-								</section>
+								</figure>
 								<!-- /#balancelegend -->
+								
+							</div>
+							<!-- /content -->
+	
+							<!-- content -->
+							<div class="content">
 
 								<!-- value -->
-								<div id="balance" class="value">-</div>
+								<figure id="balance" class="value box">-</figure>
 								<!-- /value -->
 								
 							</div>
@@ -635,25 +649,61 @@
 							<!-- content -->
 							<div class="content">
 	
-								<!-- buckets -->
-								<article class="buckets">
-					
-									<!-- bucket -->
-									<div class="bucket">
+								<!-- bucketbox -->
+								<figure class="bucketbox box">
 
-										<!-- fill -->
-										<div class="fill" style="height:50%;"></div>
-										<!-- /fill -->
-		
-										<!-- monthlabel -->
-										<label class="monthlabel">M</label>
-										<!-- /monthlabel -->
+									<!-- yrname -->
+									<figcaption class="yrname">2022</figcaption>
+									<!-- /yrname -->
+
+									<div class="inner">
 					
+										<!-- bucket -->
+										<div class="bucket">
+	
+											<!-- fill -->
+											<div class="fill" style="height:50%;"></div>
+											<!-- /fill -->
+			
+											<!-- monthlabel -->
+											<label class="monthlabel">M</label>
+											<!-- /monthlabel -->
+						
+										</div>
+										<!-- /bucket -->
+						
+										<!-- bucket -->
+										<div class="bucket">
+	
+											<!-- fill -->
+											<div class="fill" style="height:50%;"></div>
+											<!-- /fill -->
+			
+											<!-- monthlabel -->
+											<label class="monthlabel">M</label>
+											<!-- /monthlabel -->
+						
+										</div>
+										<!-- /bucket -->
+						
+										<!-- bucket -->
+										<div class="bucket">
+	
+											<!-- fill -->
+											<div class="fill" style="height:50%;"></div>
+											<!-- /fill -->
+			
+											<!-- monthlabel -->
+											<label class="monthlabel">M</label>
+											<!-- /monthlabel -->
+						
+										</div>
+										<!-- /bucket -->
+
 									</div>
-									<!-- /bucket -->
 					
-								</article>
-								<!-- /buckets -->
+								</figure>
+								<!-- /bucketbox -->
 								
 							</div>
 							<!-- /content -->
@@ -680,16 +730,8 @@
 							<!-- content -->
 							<div class="content">
 
-								<!-- legend -->
-								<section class="legendbox box">
-
-									Name
-
-								</section>
-								<!-- /legend -->
-
 								<!-- budgetbox -->
-								<section class="budgetbox box" data-monthindex="-1">
+								<figure class="budgetbox box" data-monthindex="-1">
 
 									<!-- head -->
 									<h3 class="head">MonthName 20xx</h3>
@@ -738,7 +780,7 @@
 									</div>
 									<!-- /progressbar -->
 
-								</section>
+								</figure>
 								<!-- /budgetbox -->
 
 							</div>
@@ -749,6 +791,73 @@
 						
 					</section>
 					<!-- /#budget -->
+					
+					<!-- #settings -->
+					<section id="settings" class="page">
+
+						<!-- general -->
+						<article class="general">
+
+							<!-- head -->
+							<h2 class="head">General Settings</h2>
+							<!-- /head -->
+
+							<!-- textcopy -->
+							<p class="textcopy">
+								Customize how the app works
+							</p>
+							<!-- /textcopy -->
+
+							<!-- content -->
+							<div class="content">
+
+								<figure class="box">
+									Change font size.
+								</figure>
+
+								<figure class="box">
+									Change font colors (green income).
+								</figure>
+
+								<figure class="box">
+									Change font colors (red expenses).
+								</figure>
+
+								<figure class="box">
+									Change font colors (colored categories).
+								</figure>
+
+							</div>
+							<!-- /content -->
+							
+						</article>
+						<!-- /general -->
+
+						<!-- specific -->
+						<article class="specific">
+
+							<!-- head -->
+							<h2 class="head">Page Settings</h2>
+							<!-- /head -->
+
+							<!-- textcopy -->
+							<p class="textcopy">
+								Customize how each page works
+							</p>
+							<!-- /textcopy -->
+
+							<!-- content -->
+							<div class="content">
+
+							</div>
+							<!-- /content -->
+							
+						</article>
+						<!-- /specific -->
+
+					</section>
+					<!-- /#settings -->
+
 					
 					<!-- #taxes -->
 					<section id="taxes" class="page">
@@ -946,6 +1055,7 @@
 					</section>
 					<!-- /#misc -->
 
+
 				</div>
 				<!-- /inner -->
 				
@@ -1014,7 +1124,7 @@
 						<div class="input inputbtns">
 
 							<!-- cancelbtn -->
-							<input class="btn cancelbtn" type="reset" value="Cancel" onclick="closeBudgetEditor();">
+							<input class="btn cancelbtn" type="button" value="Cancel" onclick="closeBudgetEditor();">
 							<!-- /cancelbtn -->
 
 							<!-- updatebtn -->
@@ -1041,8 +1151,6 @@
 		<!-- /#container -->
 
 
-		<!-- Navigation Database Script -->
-		<script src="assets/database/navdata.js" type="text/javascript"></script>
 		<!-- Icon Database Script -->
 		<script src="assets/database/icondata.js" type="text/javascript"></script>
 		<!-- Month Database Script -->
