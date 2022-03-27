@@ -33,7 +33,7 @@ function loadOverviewPage() {
 		// console.log('Income category totals:',incomecategorytotals);
 
 		// Get pie chart element. 
-		let incomechartbox = document.querySelector('section#overview article#incomesummary div.content section#incomechart div.chart');
+		let incomechartbox = document.querySelector('section#overview article#incomesummary div.content figure#incomechart div.chart');
 		// Create pie chart from given totals. 
 		createPieChart(incomechartbox,incomecategorydata,incomecategorytotals,totalAmountEarned);
 			
@@ -43,7 +43,7 @@ function loadOverviewPage() {
 		createPieChartLegend(incomelegendbox,incomecategorydata,incomecategorytotals,totalAmountEarned);
 
 		// Add total income amount to income pie chart label. 
-		let label = document.querySelector('section#overview article#incomesummary div.content section#incomechart div.chart div.disc');
+		let label = document.querySelector('section#overview article#incomesummary div.content figure#incomechart div.chart div.disc');
 		label.innerHTML = `
 		<!-- full -->
 		<span class="full">${ dollar(totalAmountEarned) }</span>
@@ -73,7 +73,7 @@ function loadOverviewPage() {
 		// console.log('Spend category totals:',spendcategorytotals);
 
 		// Get pie chart element. 
-		let spendchartbox = document.querySelector('section#overview article#spendsummary div.content section#spendchart div.chart');
+		let spendchartbox = document.querySelector('section#overview article#spendsummary div.content figure#spendchart div.chart');
 		// Create pie chart from given totals. 
 		createPieChart(spendchartbox,spendcategorydata,spendcategorytotals,totalAmountSpent);
 			
@@ -83,7 +83,7 @@ function loadOverviewPage() {
 		createPieChartLegend(spendlegendbox,spendcategorydata,spendcategorytotals,totalAmountSpent);
 
 		// Add total spend amount to spend pie chart label. 
-		let label = document.querySelector('section#overview article#spendsummary div.content section#spendchart div.chart div.disc');
+		let label = document.querySelector('section#overview article#spendsummary div.content figure#spendchart div.chart div.disc');
 		label.innerHTML = `
 		<!-- full -->
 		<span class="full">${ dollar(totalAmountSpent) }</span>
@@ -102,7 +102,7 @@ function loadOverviewPage() {
 		// console.log('Balance category totals:',balancecategorytotals);
 
 		// Get pie chart element. 
-		let balancechartbox = document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart');
+		let balancechartbox = document.querySelector('section#overview article#balancesummary div.content figure#balancechart div.chart');
 		// Create pie chart from given totals. 
 		createPieChart(balancechartbox,balancecategorydata,balancecategorytotals,totalAmountEarned);
 			
@@ -112,10 +112,10 @@ function loadOverviewPage() {
 		createPieChartLegend(balancelegendbox,balancecategorydata,balancecategorytotals,totalAmountEarned,/* false */);
 
 		// Add net balance amount to balance header. 
-		let headlabel = document.querySelector('section#overview article#balancesummary div.content div#balance');
-		headlabel.innerHTML = dollar(totalAmountEarned-totalAmountSpent);
+		let balancefigure = document.querySelector('section#overview article#balancesummary div.content figure#balance');
+		balancefigure.innerHTML = dollar(totalAmountEarned-totalAmountSpent);
 		// Add net balance amount to balance pie chart label. 
-		let label = document.querySelector('section#overview article#balancesummary div.content section#balancechart div.chart div.disc');
+		let label = document.querySelector('section#overview article#balancesummary div.content figure#balancechart div.chart div.disc');
 		label.innerHTML = `
 		<!-- full -->
 		<span class="full">${ dollar(totalAmountEarned-totalAmountSpent) }</span>

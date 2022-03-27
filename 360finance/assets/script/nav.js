@@ -1,37 +1,46 @@
 
 
+
+// Set initial page index. 
+var currentPageIndex = 2;
+
+
 // Define navigation data. 
 const navdata = [
 	{
 		name:'Overview',
 		code:'overview',
-		tooltip:'Overall Big Picture',
+		tooltip:'Get an overall feel for the all-around big picture (360)',
 	},
 	{
-		// name:'Banking',
 		name:'Activity',
 		code:'activity',
-		tooltip:'Recent Daily Transactions',
+		tooltip:'See a list of your bank activity and most recent transactions',
 	},
 	{
 		name:'Budget',
 		code:'budget',
-		tooltip:'Spending Categories',
+		tooltip:'See your spending categories',
+	},
+	{
+		name:'Settings',
+		code:'settings',
+		tooltip:'Customize how the app works',
 	},
 	// {
 	// 	name:'Taxes',
 	// 	code:'taxes',
-	// 	tooltip:'Yearly Accounting for Filing',
+	// 	tooltip:'Get tax accounting for your yearly filing',
 	// },
 	// {
 	// 	name:'Investments',
 	// 	code:'invest',
-	// 	tooltip:'Long-term Growth',
+	// 	tooltip:'See your long-term growth',
 	// },
 	// {
 	// 	name:'Insurance',
 	// 	code:'insurance',
-	// 	tooltip:'Risk Management Strategy',
+	// 	tooltip:'Optimize your risk management strategy',
 	// },
 ];
 
@@ -68,7 +77,7 @@ function loadNavigation() {
 			<!-- /radio -->
 	
 			<!-- navlabel -->
-			<label class="navlabel" for="select-${item.code}">${item.name}</label>
+			<label class="navlabel" for="select-${item.code}" title="${item.tooltip}">${item.name}</label>
 			<!-- /navlabel -->
 
 			<!-- tooltip -->

@@ -10,6 +10,7 @@
 
 
 
+/* :root {font-size:1rem;} */
 /* html {background-color:#0A1857;} */
 body {font-family:Nunito,sans-serif; margin:0; /* touch-action:pinch-zoom; */}
 .frozen {overflow:hidden;}
@@ -21,24 +22,19 @@ body {font-family:Nunito,sans-serif; margin:0; /* touch-action:pinch-zoom; */}
 div#container {background-color:var(--black1); background-color:white; min-height:100vh; padding:.25rem;}
 div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; align-items:stretch;}
 /* div#container {filter:drop-shadow(rgba(0, 0, 0, 0.1) 0px 4px 6px); perspective:75rem;} */
+
 div#container header.header {flex:0 0 auto;}
 div#container nav.switcher {flex:0 0 auto;}
 div#container main.main {flex-grow:1; overflow-x:hidden; overflow-y:auto;}
 div#container main.main div.inner {min-height:100%;}
 div#container main.main div.inner section.page {/* min-height:100%; */ height:100%; overflow:hidden;}
 
-div#container.newscrollmode {height:100vh;}
-div#container.newscrollmode header.header {background-color:var(--white);}
-div#container.newscrollmode main.main {overflow-y:hidden;}
-div#container.newscrollmode main.main div.inner {height:100%;}
-div#container.newscrollmode main.main div.inner section.page {overflow-y:auto;}
-
 
 
 /* Header Bar */
-div#container header.header {width:100%; max-width:var(--maxwidth); padding:.75rem 1.25rem .875rem; border-radius:.5rem; margin:.25rem auto; margin:0 auto; box-shadow:var(--thinshadow);}
+div#container header.header {width:100%; max-width:var(--maxwidth); padding:.75rem 1.25rem; border-radius:.5rem; margin:.25rem auto; margin:0 auto; box-shadow:var(--thinshadow);}
 div#container header.header {display:flex; flex-direction:row; justify-content:space-between; align-items:center; cursor:pointer; user-select:none;}
-div#container header.header h1.head {color:var(--gdcblack); font-size:1.75rem; font-weight:lighter; white-space:nowrap; margin:0;}
+div#container header.header h1.head {color:var(--gdcblack); font-size:1.5rem; font-weight:lighter; white-space:nowrap; margin:0;}
 div#container header.header h1.head {display:flex; align-items:center;}
 div#container header.header h1.head img.logo {/* display:none; */ height:1em; object-fit:cover; opacity:.875; margin-right:.5rem;}
 div#container header.header div.togglebtn {cursor:pointer; user-select:none;}
@@ -58,7 +54,7 @@ div#container nav.switcher ul.navlist li.navitem {text-align:center; position:re
 div#container nav.switcher ul.navlist li.navitem img.bg {display:none;}
 div#container nav.switcher ul.navlist li.navitem img.bg {position:absolute; top:0; left:0; height:100%; width:100%; z-index:-1; object-fit:cover; object-position:top;}
 div#container nav.switcher ul.navlist li.navitem input {display:none;}
-div#container nav.switcher ul.navlist li.navitem label.navlabel {font-size:1.125rem; padding:.75rem 1rem;}
+div#container nav.switcher ul.navlist li.navitem label.navlabel {font-size:1rem; padding:.75rem 1rem;}
 div#container nav.switcher ul.navlist li.navitem label.navlabel {display:block; cursor:pointer; user-select:none;}
 div#container nav.switcher ul.navlist li.navitem label.navlabel {color:#AAA; text-align:center; transition:.5s;}
 div#container nav.switcher ul.navlist li.navitem input:checked + label.navlabel {color:white; color:var(--gdcblack);}

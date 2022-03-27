@@ -14,12 +14,19 @@ function loadBudgetPage() {//return;
 	// Load annual budget summary. 
 	function loadAnnualSummary() {
 
+		// Initialize total monthly budget amount. 
+		let totalMonthlyBudgetAmount = 0;
+		for(category of spendcategorydata) {
+			// Add to total monthly budget amount. 
+			totalMonthlyBudgetAmount += category.budgetmonthlylimit;
+		}
+
 		// Get budget container. 
-		let budgetbuckets = document.querySelector('section#budget article#annualsummary div.content article.buckets');
+		let budgetbuckets = document.querySelector('section#budget article#annualsummary div.content figure.bucketbox div.inner');
 		// console.log('budgetbuckets:',budgetbuckets);
 
 		// Create series of buckets. 
-		let result = '';
+		let result = ``;
 		for(let monthIndex in monthFullNames) {
 
 			// Get month name for given month. 
@@ -53,7 +60,7 @@ function loadBudgetPage() {//return;
 			
 			let totalSpendThisMonth = totalSpendPerMonth[monthIndex];
 			
-			let pct = 100*(totalSpendThisMonth/totalSpendThisMonth);
+			let pct = 100*(totalSpendThisMonth/totalMonthlyBudgetAmount);
 			
 			result += `
 			<!-- bucket -->
@@ -137,9 +144,9 @@ function loadBudgetPage() {//return;
 			// Put category progress bars in budget box and add to result. 
 			result += `
 			<!-- budgetbox -->
-			<section class="budgetbox box" data-monthindex="${monthIndex}">
+			<figure class="budgetbox box" data-monthindex="${monthIndex}">
 				${ heading + btnbox + progressbars }
-			</section>
+			</figure>
 			<!-- /budgetbox -->`;
 		}
 		
@@ -239,7 +246,7 @@ function updateBudgetData() {
 		let bcmlimit = budgeteditorinputs[i].value;
 
 		// Check for valid value. 
-		let isValidValue = bcmlimit.length>0 && !isNaN(bcmlimit);
+		let isValidValue = bcmlimit.length>0 && !isNaN(bcmlimit) && 1*bcmlimit>0;
 
 		// Save value if valid. 
 		if(isValidValue) spendcategory.budgetmonthlylimit = 1*bcmlimit;
@@ -250,7 +257,6 @@ function updateBudgetData() {
 
 	// TODO: Show updated budget limits on page. 
 	loadBudgetPage();
-	// console.log( spendcategorydata );
 	console.log( spendcategorydata.map( (citem)=>(citem.budgetmonthlylimit) ) );
 }
 

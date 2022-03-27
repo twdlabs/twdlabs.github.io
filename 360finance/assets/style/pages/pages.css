@@ -5,71 +5,79 @@
 
 div#container main.main section.page {padding:1rem 2rem 3rem;}
 /* div#container main.main section.page article {} */
-div#container main.main section.page article h2.head {color:white; color:var(--black); font-size:1.5rem; font-weight:100; margin:0; margin:1.75rem 0 .5rem; margin-bottom:0;}
-div#container main.main section.page article p.textcopy {color:#AAA; font-size:.875rem; margin:0; margin-bottom:1rem;}
-div#container main.main section.page article div.content {display:flex; flex-direction:row; justify-content:space-between;}
-div#container main.main section.page article div.content {justify-content:center; align-items:flex-start; flex-wrap:wrap;}
-div#container main.main section.page article div.content section {background-color:var(--black3); padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin-top:.5rem;}
-div#container main.main section.page article div.content section.box {flex-grow:1; background-color:white; box-shadow:var(--thinshadow); margin:.5rem;}
-div#container main.main section.page article.summary div.content section.piechart {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
-div#container main.main section.page article.summary div.content section.piechart {width:100%; min-width:8rem; max-width:16rem; position:relative; box-shadow:none;}
-div#container main.main section.page article.summary div.content section.piechart::after {content:''; display:block; width:100%; padding-top:100%;}
-div#container main.main section.page article.summary div.content section.piechart div.chart {position:absolute; top:0; left:0; width:100%; height:100%; box-shadow:var(--shadow);}
-div#container main.main section.page article.summary div.content section.piechart div.chart {background-color:white; display:grid; place-items:center; border-radius:50%;}
-div#container main.main section.page article.summary div.content section.piechart.spin div.chart {transform:rotate(0); transition:.25s linear transform;}
-div#container main.main section.page article.summary div.content section.piechart div.chart:hover {transform:rotate(360deg);}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc {position:absolute; display:grid; place-items:center; font-size:1.5rem; cursor:pointer; user-select:none;}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc {background-color:white; min-height:var(--piechartinner); min-width:var(--piechartinner); border-radius:50%; box-shadow:var(--shadow) inset;}
-div#container main.main section.page article.summary div.content section.piechart.spin div.chart div.disc {transform:rotate(0); transition:.25s linear transform;}
-div#container main.main section.page article.summary div.content section.piechart div.chart:hover div.disc {transform:rotate(-360deg);}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc span.full {display:none;}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc span.brief {display:block;}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc.full span.full {display:block;}
-div#container main.main section.page article.summary div.content section.piechart div.chart div.disc.full span.brief {display:none;}
-/* div#container main.main section.page article.summary div.content section.piechart div.chart {background-image:conic-gradient(colorname 0deg, colorname 90deg, colorname 180deg, colorname 270deg);} */
-div#container main.main section.page article.summary div.content section.legend {color:#FFFC; color:#000C; padding:.5rem .65rem; padding:.25rem .65rem; /* box-shadow:var(--thinshadow); */}
-div#container main.main section.page article.summary div.content section.legend h3.head {font-size:1.1rem; font-weight:300; margin:0; margin-bottom:.125rem;}
-div#container main.main section.page article.summary div.content section.legend div.item {display:flex; flex-direction:row; align-items:center; cursor:pointer; font-size:.75rem; user-select:none;}
-div#container main.main section.page article.summary div.content section.legend div.item {background-color:white; padding:.25rem .5rem; border:solid #0001; border-width:0 0 1px;}
-div#container main.main section.page article.summary div.content section.legend div.item:first-child {border-top-width:1px;}
-div#container main.main section.page article.summary div.content section.legend div.item:hover {background-color:#00000008;}
-div#container main.main section.page article.summary div.content section.legend div.item.total {font-weight:1000;}
-div#container main.main section.page article.summary div.content section.legend div.item span.color {background-color:white; border:1px solid black; min-width:1rem; min-height:1rem; margin-right:.5rem;}
-/* div#container main.main section.page article.summary div.content section.legend div.item span.caption.name {margin-left:.5rem;} */
-div#container main.main section.page article.summary div.content section.legend div.item span.caption.proportion {margin-left:.25rem;}
-div#container main.main section.page article.summary div.content section.legend div.item span.caption.amount {font-weight:1000; margin-left:.25rem;}
-div#container main.main section.page article.summary div.content section.legend div.item span.space {flex-grow:1;}
+div#container main.main section.page article h2.head {color:white; color:var(--black); font-size:1.375rem; font-weight:100; /* text-align:center; */ margin:0; margin:1.75rem 0 .5rem; margin-bottom:0;}
+div#container main.main section.page article p.textcopy {color:#AAA; font-size:.875rem; /* text-align:center; */ margin:0; margin-bottom:1rem;}
+div#container main.main section.page article div.content {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
+div#container main.main section.page article div.content figure.box {background-color:var(--black3); background-color:white; box-shadow:var(--thinshadow);}
+div#container main.main section.page article div.content figure.box {flex-grow:1; padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin:.5rem;}
+div#container main.main section.page article.summary div.content figure.piechart {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
+div#container main.main section.page article.summary div.content figure.piechart {width:100%; min-width:8rem; max-width:16rem; position:relative; box-shadow:none;}
+div#container main.main section.page article.summary div.content figure.piechart::after {content:''; display:block; width:100%; padding-top:100%;}
+div#container main.main section.page article.summary div.content figure.piechart div.chart {position:absolute; top:0; left:0; width:100%; height:100%; box-shadow:var(--shadow);}
+div#container main.main section.page article.summary div.content figure.piechart div.chart {background-color:white; display:grid; place-items:center; border-radius:50%;}
+div#container main.main section.page article.summary div.content figure.piechart.spin div.chart {transform:rotate(0); transition:.25s linear transform;}
+div#container main.main section.page article.summary div.content figure.piechart div.chart:hover {transform:rotate(360deg);}
+div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc {position:absolute; display:grid; place-items:center; font-size:1.5rem; cursor:pointer; user-select:none;}
+div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc {background-color:white; min-height:var(--piechartinner); min-width:var(--piechartinner); border-radius:50%; box-shadow:var(--shadow) inset;}
+div#container main.main section.page article.summary div.content figure.piechart.spin div.chart div.disc {transform:rotate(0); transition:.25s linear transform;}
+div#container main.main section.page article.summary div.content figure.piechart div.chart:hover div.disc {transform:rotate(-360deg);}
+div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc span.full {display:none;}
+div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc span.brief {display:block;}
+div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc.full span.full {display:block;}
+div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc.full span.brief {display:none;}
+/* div#container main.main section.page article.summary div.content figure.piechart div.chart {background-image:conic-gradient(colorname 0deg, colorname 90deg, colorname 180deg, colorname 270deg);} */
+div#container main.main section.page article.summary div.content figure.legend {color:#FFFC; color:#000C; padding:.5rem .65rem; padding:.25rem .65rem; /* box-shadow:var(--thinshadow); */}
+div#container main.main section.page article.summary div.content figure.legend h3.head {font-size:1.1rem; font-weight:300; margin:0; margin-bottom:.125rem;}
+div#container main.main section.page article.summary div.content figure.legend div.item {display:flex; flex-direction:row; align-items:center; cursor:pointer; font-size:.75rem; user-select:none;}
+div#container main.main section.page article.summary div.content figure.legend div.item {background-color:white; padding:.25rem .5rem; border-top:1px solid #0001;}
+div#container main.main section.page article.summary div.content figure.legend div.item:last-child {padding-top:.5625rem; /* border-bottom-width:1px; */}
+div#container main.main section.page article.summary div.content figure.legend div.item:hover {background-color:#00000008;}
+div#container main.main section.page article.summary div.content figure.legend div.item.total {font-weight:1000;}
+div#container main.main section.page article.summary div.content figure.legend div.item span.color {background-color:white; border:1px solid black; min-width:1rem; min-height:1rem; margin-right:.5rem;}
+/* div#container main.main section.page article.summary div.content figure.legend div.item span.caption.name {margin-left:.5rem;} */
+div#container main.main section.page article.summary div.content figure.legend div.item span.caption.proportion {margin-left:.25rem;}
+div#container main.main section.page article.summary div.content figure.legend div.item span.caption.amount {font-weight:1000; margin-left:.25rem;}
+div#container main.main section.page article.summary div.content figure.legend div.item span.space {flex-grow:1;}
 
 
 
 /* Overview Page */
 
-div#container main.main section#overview {display:flex; flex-direction:row; flex-wrap:wrap;}
+div#container main.main section#overview {display:flex; flex-direction:row;}
+/* div#container main.main section#overview {display:grid; grid-template-columns:repeat(3,1fr);} */
 div#container main.main section#overview article {flex-grow:1;}
+/* div#container main.main section#overview div.splitter {display:none;} */
 /* div#container main.main section#overview article#spendsummary {} */
 /* div#container main.main section#overview article#incomesummary {} */
 /* div#container main.main section#overview article#balancesummary {} */
-/* div#container main.main section#overview article#balancesummary h2.head {} */
-div#container main.main section#overview article#balancesummary h2.head span.value {color:seagreen;}
+div#container main.main section#overview article h2.head,
+div#container main.main section#overview article p.textcopy {text-align:center;}
+div#container main.main section#overview article div.content {display:flex; flex-direction:column; align-items:center; padding:0 1rem;}
+div#container main.main section#overview article#balancesummary div.content figure#balance {display:flex; justify-content:space-between;}
+div#container main.main section#overview article#balancesummary div.content figure#balance {color:seagreen; text-align:right;}
+div#container main.main section#overview article#balancesummary div.content figure#balance::before {content:'Available Cash: '; color:initial; margin-right:.25rem;}
+
+
+
+/* Settings Page */
+
+/* div#container main.main section#settings {} */
+/* div#container main.main section#settings article {} */
+/* div#container main.main section#settings article.general {} */
+/* div#container main.main section#settings article.specific {} */
+div#container main.main section#settings article div.content {flex-direction:column; align-items:stretch; flex-wrap:nowrap;}
 
 
 
 /* Taxes Page */
-
 /* div#container main.main section#taxes {} */
 /* div#container main.main section#taxes article {} */
 
-
-
 /* Investments Page */
-
 /* div#container main.main section#invest {} */
 /* div#container main.main section#invest article {} */
 
-
-
 /* Insurance Page */
-
 /* div#container main.main section#insurance {} */
 /* div#container main.main section#insurance article {} */
 
@@ -104,11 +112,16 @@ div#container main.main section#misc article#misc div.content section#bucketbox 
 	/* Generic Page */
 
 	/* Overview Page */
+	div#container main.main section#overview {flex-wrap:wrap;}
+	div#container main.main section#overview div.splitter {width:100%; flex-shrink:0; order:3;}
+	div#container main.main section#overview article#incomesummary {order:1;}
+	div#container main.main section#overview article#spendsummary {order:4;}
+	div#container main.main section#overview article#balancesummary {order:2;}
+
+	/* Settings Page */
 
 	/* Taxes Page */
-
 	/* Investments Page */
-
 	/* Insurance Page */
 }
 
@@ -121,10 +134,10 @@ div#container main.main section#misc article#misc div.content section#bucketbox 
 
 	/* Overview Page */
 
+	/* Settings Page */
+
 	/* Taxes Page */
-
 	/* Investments Page */
-
 	/* Insurance Page */
 }
 

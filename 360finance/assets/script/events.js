@@ -20,7 +20,7 @@ function handleEvents() {
 	// Overview Page Events
 	
 	// Enable pie chart disc clicks to toggle between full and brief dollar amount. 
-	let piechartdiscs = document.querySelectorAll('main.main section.page article.summary div.content section.piechart div.chart div.disc');
+	let piechartdiscs = document.querySelectorAll('main.main section.page article.summary div.content figure.piechart div.chart div.disc');
 	for(let disc of piechartdiscs) {
 		disc.addEventListener('click', function(event) {
 			// console.log(this);
@@ -46,13 +46,13 @@ function handleEvents() {
 	budgetEditBtn.addEventListener('click',openBudgetEditor);
 
 	// Enable budget box double clicks to edit general monthly budget. 
-	let budgetboxes = document.querySelectorAll('main.main section#budget article#monthlysummary div.content section.budgetbox h3.head');
+	let budgetboxes = document.querySelectorAll('main.main section#budget article#monthlysummary div.content figure.budgetbox h3.head');
 	for(let box of budgetboxes) {
 		box.addEventListener('dblclick',openBudgetEditor);
 	}
 	
 	// // Enable budget box edit button clicks to edit monthly budget. 
-	// let budgeteditbtns = document.querySelectorAll('main.main section#budget article#monthlysummary div.content section.budgetbox div.btnbox a.editbtn');
+	// let budgeteditbtns = document.querySelectorAll('main.main section#budget article#monthlysummary div.content figure.budgetbox div.btnbox a.editbtn');
 	// for(let btn of budgeteditbtns) {
 	// 	btn.addEventListener('click',openBudgetEditor);
 	// }
