@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Loader</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="loader.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+
+			:root {
+				/* Radius of circle of dots */
+				--circleradius:2rem;
+
+				/* Period of oscillation around circle of dots */
+				--cycleperiod:.75s;
+
+				/* Nummber of dots in loader */
+				--numdots:15;
+
+				/* Differential angle btwn dots */
+				--dphi: calc( 360deg / var(--numdots) );
+			}
+			html::after {content:'go'/* var(--dr) */;}
+
+			* {box-sizing:border-box;}
+			body {font-family:sans-serif; margin:0;}
+			div#container {background-color:dodgerblue; display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+			div#container div.btn {cursor:pointer; user-select:none;}
+			div#container div.btn {background-color:white; font-size:1.5rem; padding:1rem 2rem; padding-top:1.375rem; border:1px solid black; border-radius:.625rem; margin:1rem;}
+			div#container div.btn.load {position:absolute; top:0; left:0;}
+			div#container div.btn.done {position:absolute; top:0; right:0;}
+
+			div#container main.main {position:relative;}
+			/* div#container main.main {background-color:white; width:100%; max-width:20rem; padding:.5rem; border-radius:.5rem;} */
+			div#container main.main span.dot {position:absolute; height:.625rem; width:.625rem;}
+			div#container main.main span.dot {background-color:black; opacity:0; border-radius:50%;}
+			div#container main.main span.dot {transform:rotate( calc( var(--i) * var(--dphi) ) ) translateY( var(--circleradius) );}
+			div#container main.main.loading span.dot {animation:cycle var(--cycleperiod) linear infinite; animation-delay:calc( var(--cycleperiod) / var(--numdots) * var(--i) );}
+
+			@keyframes cycle {
+				from {opacity:1;} to {opacity:0;}
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<div class="btn load">Load</div>
+
+			<div class="btn done">Done</div>
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- dot -->
+				<span class="dot" style="--i:0"></span>
+				<!-- /dot -->
+
+				<!-- dot -->
+				<span class="dot" style="--i:1"></span>
+				<!-- /dot -->
+
+				<!-- dot -->
+				<span class="dot" style="--i:2"></span>
+				<!-- /dot -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="loader.js" type="text/javascript"></script> -->
+		<script type="text/javascript">
+
+			// Get main container of loader. 
+			let main = document.querySelector('div#container main.main');
+
+			// Get perceived number of dots. 
+			let numdots = getComputedStyle(document.documentElement).getPropertyValue('--numdots');
+
+			// Add appropriate number of dots ot page. 
+			addDots(numdots);
+
+			// Handle events. 
+			handleEvents();
+
+			/*****/
+
+			// Add dots to page. 
+			function addDots(n) {
+
+				// Create dots. 
+				result = '';
+				for(let i=0;i<n;i++) {
+					result += `
+					<!-- dot -->
+					<span class="dot" style="--i:${i}"></span>
+					<!-- /dot -->`;
+				}
+
+				// Add to page. 
+				main.innerHTML = result;
+			}
+
+			// Handle events. 
+			function handleEvents() {
+
+				// Activate load button. 
+				let loadbtn = document.querySelector('div#container div.btn.load');
+				loadbtn.addEventListener('click',startLoading);
+
+				// Activate done button. 
+				let donebtn = document.querySelector('div#container div.btn.done');
+				donebtn.addEventListener('click',finishLoading);
+			}
+
+			// Start loading. 
+			function startLoading() {
+				// 
+				main.classList.add('loading');
+			}
+			// Finish loading. 
+			function finishLoading() {
+				// 
+				main.classList.remove('loading');
+			}
+
+		</script>
+
+	</body>
+
+</html>

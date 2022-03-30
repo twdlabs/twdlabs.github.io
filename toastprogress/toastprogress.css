@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+
+* {box-sizing:border-box;}
+
+
+
+:root {
+	--themecolor:#4070f4;
+	--period:4s;
+	--shadow:0 .25rem .125rem #0004;
+	--thinshadow:0 .125rem .125rem #0004;
+}
+
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+
+div#container {background-color:var(--themecolor); background-color:#555;}
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container div.btn {cursor:pointer; user-select:none;}
+
+
+div#container main.main {position:fixed; top:0; right:0; overflow:hidden; /* max-width:20rem; */ box-shadow:var(--shadow);}
+div#container main.main {background-color:white; display:flex; flex-direction:row; align-items:stretch;}
+div#container main.main {border-radius:.5rem; border-left:.375rem solid var(--themecolor); margin:1rem 2rem;}
+div#container main.main {transform:translateX(200%); transition:.5s;}
+div#container main.main.active {transform:translateX(0);}
+
+div#container main.main div.seg {padding:.625rem .75rem;}
+div#container main.main div.side {display:grid; place-items:center;}
+div#container main.main div.left span.icon {background-color:var(--themecolor); color:white;}
+div#container main.main div.left span.icon {display:grid; place-items:center; min-height:2em; min-width:2em; border-radius:50%;}
+/* div#container main.main div.left span.icon svg.icon {} */
+div#container main.main div.center {flex-grow:1; display:flex; flex-direction:column; align-items:stretch;}
+div#container main.main div.center p.textcopy {font-weight:100; white-space:nowrap; margin:0;}
+div#container main.main div.center p.textcopy.h {font-size:1.125rem; font-weight:800;}
+div#container main.main div.closebtn {transition:.375s;}
+div#container main.main div.closebtn:hover {background-color:whitesmoke;}
+/* div#container main.main div.closebtn div.btn {height:100%; width:100%;} */
+/* div#container main.main div.closebtn div.btn span.icon {} */
+
+div#container main.main div.progress {position:absolute; bottom:0; left:0;}
+div#container main.main div.progress {background-color:var(--themecolor); height:.125rem; width:0;}
+div#container main.main.active div.progress {animation:progress 1 linear var(--period);}
+
+
+
+div#container div.showbtn {background-color:var(--themecolor); color:white; padding:.5rem 1rem; border-radius:.25rem; box-shadow:var(--thinshadow);}
+div#container div.showbtn:hover {background-color:var(--themecolor);}
+div#container div.showbtn span.caption {font-weight:100; letter-spacing:1px; /* margin-top:1rem; */}
+
+
+
+@keyframes progress {
+	from {width:100%;} to {width:0;}
+}
+
