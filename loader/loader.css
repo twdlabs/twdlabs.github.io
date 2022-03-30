@@ -1,0 +1,45 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	/* Radius of circle of dots */
+	--circleradius:2rem;
+
+	/* Period of oscillation around circle of dots */
+	--cycleperiod:.75s;
+
+	/* Nummber of dots in loader */
+	--numdots:15;
+
+	/* Differential angle btwn dots */
+	--dphi: calc( 360deg / var(--numdots) );
+}
+html::after {content:'go'/* var(--dr) */;}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {background-color:#4070f4; display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container div.btn {cursor:pointer; user-select:none;}
+div#container div.btn {background-color:white; font-size:1.125rem; padding:.5rem 2rem; border:1px solid black; border-radius:.625rem; margin:1rem;}
+div#container div.btn.load {position:absolute; top:0; left:0;}
+div#container div.btn.done {position:absolute; top:0; right:0;}
+
+div#container main.main {position:relative;}
+/* div#container main.main {background-color:white; width:100%; max-width:20rem; padding:.5rem; border-radius:.5rem;} */
+div#container main.main span.dot {position:absolute; height:.625rem; width:.625rem;}
+div#container main.main span.dot {background-color:black; opacity:0; border-radius:50%;}
+div#container main.main span.dot {transform:rotate( calc( var(--i) * var(--dphi) ) ) translateY( var(--circleradius) );}
+div#container main.main.loading span.dot {animation:cycle var(--cycleperiod) linear infinite; animation-delay:calc( var(--cycleperiod) / var(--numdots) * var(--i) );}
+
+@keyframes cycle {
+	from {opacity:1;} to {opacity:0;}
+}
+
