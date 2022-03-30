@@ -10,7 +10,7 @@
 :root {
 	--themecolor:whitesmoke;
 	--size:1rem;
-	--sizeflip:2rem;
+	--sizeflip:1.5rem;
 	--level0:rgb(235,237,240);
 	--level1:rgb(155,233,168);
 	--level2:rgb(64,196,99);
@@ -28,7 +28,7 @@ div#container {background-color:var(--themecolor);}
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
 
-div#container main.main {background-color:white; display:flex; flex-direction:row; max-width:100%; padding:.375rem; border-radius:.5rem;}
+div#container main.main {background-color:white; display:flex; flex-direction:row; max-width:100%; padding:.375rem; padding:3rem 6rem; border-radius:.5rem;}
 div#container main.main {overflow:auto; /* IE & Edge */ -ms-overflow-style:none; /* Firefox */ scrollbar-width:none;}
 div#container main.main::-webkit-scrollbar {/* Chrome / Safari / Opera */ display:none;}
 /* div#container main.main {display:grid; grid-template-rows:repeat(7,1fr);} */
@@ -36,28 +36,32 @@ div#container main.main::-webkit-scrollbar {/* Chrome / Safari / Opera */ displa
 div#container main.main div.wk {display:flex; flex-direction:column; justify-content:space-between;}
 
 div#container main.main div.wk div.label,
-div#container main.main div.wk div.dot {min-height:var(--size); min-width:var(--size); z-index:10; border:1px solid transparent; margin:.125rem;}
-div#container main.main div.wk div.dot {cursor:pointer; border-radius:.125rem; border-color:rgb(27,31,35,.125);}
-div#container main.main.off div.wk div.dot {opacity:.5;}
-div#container main.main.off div.wk div.dot.on {opacity:1;}
-div#container main.main div.wk div.dot.l0 {background-color:var(--level0);}
-div#container main.main div.wk div.dot.l1 {background-color:var(--level1);}
-div#container main.main div.wk div.dot.l2 {background-color:var(--level2);}
-div#container main.main div.wk div.dot.l3 {background-color:var(--level3);}
-div#container main.main div.wk div.dot.l4 {background-color:var(--level4);}
+div#container main.main div.wk div.day {min-height:var(--size); min-width:var(--size); /* border:1px solid transparent; */ margin:.125rem;}
+div#container main.main div.wk div.day div.dot {cursor:pointer; height:100%; width:100%; border-radius:.125rem; border-color:rgb(27,31,35,.125); z-index:10;}
+div#container main.main.off div.wk div.day div.dot {opacity:.5;}
+div#container main.main.off div.wk div.day div.dot.on {opacity:1;}
+div#container main.main div.wk div.day div.dot.l0 {background-color:var(--level0);}
+div#container main.main div.wk div.day div.dot.l1 {background-color:var(--level1);}
+div#container main.main div.wk div.day div.dot.l2 {background-color:var(--level2);}
+div#container main.main div.wk div.day div.dot.l3 {background-color:var(--level3);}
+div#container main.main div.wk div.day div.dot.l4 {background-color:var(--level4);}
 
-div#container main.main div.wk div.dot {position:relative;}
-div#container main.main div.wk div.dot div.tag {display:none; position:absolute; bottom:calc(.5rem + 100%); left:50%; transform:translateX(-50%); z-index:20;}
-div#container main.main div.wk div.dot div.tag {background-color:#333; color:white; font-size:.875rem; white-space:nowrap; padding:.5rem 1rem; border-radius:.375rem;}
-div#container main.main div.wk div.dot div.tag::after {content:''; display:block; position:absolute; top:100%; left:50%; transform:translateX(-50%); /* background-color:transparent; */ /* height:2rem; width:2rem; */ border:.5rem solid transparent; border-top-color:#333;}
-div#container main.main div.wk div.dot:hover div.tag {display:block; opacity:1;}
+div#container main.main div.wk div.day {position:relative;}
+div#container main.main div.wk div.day div.tag {display:none; position:absolute; bottom:calc(.5rem + 100%); left:50%; transform:translateX(-50%); z-index:20;}
+div#container main.main div.wk div.day div.tag {background-color:#333; color:white; font-size:.875rem; white-space:nowrap; padding:.5rem 1rem; border-radius:.375rem;}
+div#container main.main div.wk div.day div.tag::after {content:''; display:block; position:absolute; top:100%; left:50%; transform:translateX(-50%); /* background-color:transparent; */ /* height:2rem; width:2rem; */ border:.5rem solid transparent; border-top-color:#333;}
+div#container main.main div.wk div.day div.dot:hover + div.tag {display:block; opacity:1;}
 
-div#container main.main div.wk div.label {font-size:.75rem; display:grid; place-items:center;}
-div#container main.main div.wk div.label.day {margin:0 .5rem;}
+div#container main.main div.wk div.label {font-size:.75rem; display:grid; place-items:center; z-index:10;}
+div#container main.main div.wk div.label.day {margin-right:.5rem;}
 div#container main.main div.wk div.label.month {opacity:.1; text-align:center;}
 
 
-div#container main.main.flip {flex-direction:column; overflow:initial;}
-div#container main.main.flip div.wk {flex-direction:row;}
-div#container main.main.flip div.wk div.dot {min-height:var(--sizeflip); min-width:var(--sizeflip);}
+
+@media screen and (max-width:40rem) {
+	div#container main.main/* .flip */ {flex-direction:column; overflow:initial; padding:2rem 5rem;}
+	div#container main.main/* .flip */ div.wk {flex-direction:row;}
+	div#container main.main/* .flip */ div.wk div.day {min-height:var(--sizeflip); min-width:var(--sizeflip);}
+	div#container main.main/* .flip */ div.wk div.label.day {margin-right:0;}
+}
 

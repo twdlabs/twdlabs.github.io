@@ -2,7 +2,7 @@
 
 
 // Get date of origin. 
-const dateOfOrigin = getDateOfOrigin();
+const dateOfOriginId = getDateOfOriginId();
 
 // Get main container. 
 let main = document.querySelector('main.main');
@@ -32,7 +32,7 @@ handleEvents();
 
 
 // Get date of origin. 
-function getDateOfOrigin() {
+function getDateOfOriginId() {
 
 	// Define date of first contribution. 
 	let firstDateId = new Date('2020-05-15').valueOf();		// 1589515200000
@@ -52,7 +52,7 @@ function getDateOfOrigin() {
 	
 
 	// Return result. 
-	return origDate;
+	return origDateId;
 }
 
 // Create day labels. 
@@ -115,35 +115,56 @@ function createDotsForDays() {
 		<!-- /label -->`;
 	
 		// Add days. 
+		// dotsForDays += fillPeriod();
 		for(let i in wk) {		// for(let i=0;i<7;i++) {
 	
 			// Get day differential from origin date. 
-			let index = 7*h + 1*i;
+			let numDaysFromStart = 7*h + 1*i;
 			// console.log('Day:',i);
 	
-			// Get date id. 
-			let dateId = 1*dateOfOrigin + index*msPerDay;
-			let dateObj = new Date(dateId);
-	
-			// Get number of contributions. 
+			// Get number of contributions for given day. 
 			let count = wk[i];
-			// console.log(`Day ${index}:`,count,'contributions');
+			// console.log(`Day ${numDaysFromStart}:`,count,'contributions');
+			
 	
-			// Get components of date string. 
-			let yr = 1*dateObj.getFullYear();	// four digit yr
-			let mo = 1*dateObj.getMonth();	// 0-11
-			let date = 1*dateObj.getDate();		// 1-31
+			// Get date id. 
+			let dateId = 1*dateOfOriginId + numDaysFromStart*msPerDay;
+			// console.log('dateId:',dateId);
+			// Get date object. 
+			let dateObj = new Date(dateId);
+			// console.log('dateObj:',dateObj);
+	
+			// Get components of date. 
+			let yr = 1 * dateObj.getFullYear();	// four digit yr
+			let mo = 1 * dateObj.getMonth();	// 0-11
+			let date = 1 * dateObj.getDate();	// 1-31
+
+			// Create representations of date. 
 			let datecode = `${yr}-${ format2Dgt(mo+1) }-${ format2Dgt(date) }`;		// 2022-01-01
 			let datestring = `${monthNames[mo]} ${date}, ${yr}`;					// Jan 1, 2022
+			
+			// Create representation of contribution count. 
+			let contrstring = `${ (count)?(count):('No') } contribution${ (count==1)?(''):('s') }`;
+			let contributionnote = `${contrstring} on ${datestring}`;						// xyz contributions on Jan 1, 2022
+			let contributiontagnote = `<strong>${contrstring}</strong> on ${datestring}`;	// xyz contributions on Jan 1, 2022
+
 			console.log(datecode,count,'contributions');
 	
 			// 
-			let level = '';
-			if(count>24) level = 'l4';
-			else if(count>16) level = 'l3';
-			else if(count>8) level = 'l2';
-			else if(count>0) level = 'l1';
-			else level = 'l0';
+			dotsForDays += `
+			<!-- day -->
+			<div class="day">
+
+				<!-- dot -->
+				<div class="dot ${ getLevelName(count) }" data-count="${count}" data-date="${datecode}" title="${contributionnote}"></div>
+				<!-- /dot -->
+
+				<!-- tag -->
+				<div class="tag">${contributiontagnote}</div>
+				<!-- /tag -->
+
+			</div>
+			<!-- /day -->`;
 	
 			// // 
 			// dotsForDays += `
@@ -151,17 +172,17 @@ function createDotsForDays() {
 			// <div class="dot" data-count="-1" data-date="2022-03-29" title="xyz contributions on 2022-03-29"></div>
 			// <!-- /dot -->`;
 	
-			// 
-			dotsForDays += `
-			<!-- dot -->
-			<div class="dot ${level}" data-count="${count}" data-date="${datecode}" title="${count} contributions on ${datestring}">
+			// // 
+			// dotsForDays += `
+			// <!-- dot -->
+			// <div class="dot" data-count="-1" data-date="2022-03-29" title="xyz contributions on 2022-03-29">
 
-				<!-- tag -->
-				<div class="tag">${count} contributions on ${datestring}</div>
-				<!-- /tag -->
+			// 	<!-- tag -->
+			// 	<div class="tag">xyz contributions on 2022-03-29</div>
+			// 	<!-- /tag -->
 
-			</div>
-			<!-- /dot -->`;
+			// </div>
+			// <!-- /dot -->`;
 		}
 	
 		// End period. 
@@ -174,6 +195,29 @@ function createDotsForDays() {
 	return dotsForDays;
 
 	/*****/
+
+	// Get level name for given number of contributions. 
+	function getLevelName(n) {
+
+		// Initialize result. 
+		let level = '';
+
+		// 
+		if(n>24) level = 'l4';
+		else if(n>16) level = 'l3';
+		else if(n>8) level = 'l2';
+		else if(n>0) level = 'l1';
+		else level = 'l0';
+		// console.log('Level name:',level);
+
+		// Return result. 
+		return level;
+	}
+
+	// // Fill period with days. 
+	// function fillPeriodWithDays() {
+	// 	// 
+	// }
 
 	// Format number with two digits. 
 	function format2Dgt(n) {
