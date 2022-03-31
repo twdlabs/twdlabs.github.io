@@ -28,20 +28,15 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 div#container {background-color:var(--themecolor); background-color:white;}
 div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1rem;}
+div#container h1.head {text-align:center; /* white-space:nowrap; */}
+div#container section.section {max-width:100%;}
 
 
-div#container nav.yrchooser {display:flex; flex-direction:column; align-items:stretch;}
-div#container nav.yrchooser ul.yrlist {list-style:none; padding:0; margin:0;}
-div#container nav.yrchooser ul.yrlist li.year {background-color:transparent; color:black; cursor:pointer; user-select:none; padding:.5rem 1.5rem; border-radius:.5rem; margin:.5rem 0;}
-div#container nav.yrchooser ul.yrlist li.year:hover {background-color:var(--ltgrey);}
-div#container nav.yrchooser ul.yrlist li.year.active {background-color:var(--blue); color:white;}
-
-
-div#container main.grid {background-color:white; display:flex; flex-direction:row; max-width:100%; padding:.375rem; padding:3rem 6rem; border-radius:.5rem;}
+div#container h2.head {font-size:1.25rem; font-weight:100; margin:0; margin-top:4rem;}
+div#container main.grid {background-color:white; display:flex; flex-direction:row; position:relative; max-width:100%; padding:.375rem; padding:1.5rem 6rem; border:1px solid var(--ltgrey); border-radius:.5rem;}
+/* div#container main.grid {display:grid; grid-template-rows:repeat(7,1fr);} */
 div#container main.grid {overflow:auto; /* IE & Edge */ -ms-overflow-style:none; /* Firefox */ scrollbar-width:none;}
 div#container main.grid::-webkit-scrollbar {/* Chrome / Safari / Opera */ display:none;}
-/* div#container main.grid {display:grid; grid-template-rows:repeat(7,1fr);} */
-
 div#container main.grid div.wk {display:flex; flex-direction:column; justify-content:space-between;}
 
 div#container main.grid div.wk div.label,
@@ -65,6 +60,13 @@ div#container main.grid div.wk div.day div.dot:hover + div.tag {display:block; o
 div#container main.grid div.wk div.label {font-size:.75rem; display:grid; place-items:center; z-index:10;}
 div#container main.grid div.wk div.label.day {margin-right:.5rem;}
 div#container main.grid div.wk div.label.month {opacity:.1; text-align:center;}
+
+
+div#container nav.yrchooser ul.yrlist {display:flex; flex-direction:column; align-items:center;}
+div#container nav.yrchooser ul.yrlist {list-style:none; text-align:center; padding:0; margin:0;}
+div#container nav.yrchooser ul.yrlist li.year {background-color:transparent; color:black; cursor:pointer; user-select:none; padding:.5rem 1.5rem; border-radius:.5rem; margin:.5rem 0;}
+div#container nav.yrchooser ul.yrlist li.year:hover {background-color:var(--ltgrey);}
+div#container nav.yrchooser ul.yrlist li.year.active {background-color:var(--blue); color:white;}
 
 
 

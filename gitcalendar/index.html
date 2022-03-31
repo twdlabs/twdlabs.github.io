@@ -18,88 +18,115 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- yrchooser -->
-			<nav class="yrchooser">
+			<!-- head -->
+			<h1 class="head">Git Contribution Calendar</h1>
+			<!-- /head -->
 
-				<!-- yrlist -->
-				<ul class="yrlist">
+			<!-- section -->
+			<section class="section">
 
-					<!-- year -->
-					<li class="year">2022</li>
-					<!-- /year -->
-
-					<!-- year -->
-					<li class="year">2021</li>
-					<!-- /year -->
-
-				</ul>
-				<!-- /yrlist -->
-
-			</nav>
-			<!-- /yrchooser -->
-
-			<!-- #yearlygrid -->
-			<main id="yearlygrid" class="grid">
-
-				<!-- wk -->
-				<div class="wk">
-
-					<!-- day -->
-					<div class="day">
-
-						<!-- dot -->
-						<div class="dot" data-count="-1" data-date="2022-03-29" title="xyz contributions on 2022-03-29"></div>
-						<!-- /dot -->
-
-						<!-- tag -->
-						<div class="tag">
-							<strong>xyz contributions</strong> on 2022-03-29
+				<!-- head -->
+				<h2 class="head">xyz contributions in the last year</h2>
+				<!-- /head -->
+	
+				<!-- #recentgrid -->
+				<main id="recentgrid" class="grid">
+	
+					<!-- wk -->
+					<div class="wk">
+	
+						<!-- day -->
+						<div class="day">
+	
+							<!-- dot -->
+							<div class="dot" data-count="-1" data-date="2022-03-29" title="xyz contributions on 2022-03-29"></div>
+							<!-- /dot -->
+	
+							<!-- tag -->
+							<div class="tag">
+								<strong>xyz contributions</strong> on 2022-03-29
+							</div>
+							<!-- /tag -->
+	
 						</div>
-						<!-- /tag -->
-
+						<!-- /day -->
+						
 					</div>
-					<!-- /day -->
-					
-				</div>
-				<!-- /wk -->
+					<!-- /wk -->
+	
+				</main>
+				<!-- /#recentgrid -->
 
-			</main>
-			<!-- /#yearlygrid -->
+			</section>
+			<!-- /section -->
 
-			<!-- #recentgrid -->
-			<main id="recentgrid" class="grid">
+			<!-- section -->
+			<section class="section">
 
-				<!-- wk -->
-				<div class="wk">
-
-					<!-- day -->
-					<div class="day">
-
-						<!-- dot -->
-						<div class="dot" data-count="-1" data-date="2022-03-29" title="xyz contributions on 2022-03-29"></div>
-						<!-- /dot -->
-
-						<!-- tag -->
-						<div class="tag">
-							<strong>xyz contributions</strong> on 2022-03-29
+				<!-- head -->
+				<h2 class="head">xyz contributions in 20xx</h2>
+				<!-- /head -->
+	
+				<!-- #yearlygrid -->
+				<main id="yearlygrid" class="grid">
+	
+					<!-- wk -->
+					<div class="wk">
+	
+						<!-- day -->
+						<div class="day">
+	
+							<!-- dot -->
+							<div class="dot" data-count="-1" data-date="2022-03-29" title="xyz contributions on 2022-03-29"></div>
+							<!-- /dot -->
+	
+							<!-- tag -->
+							<div class="tag">
+								<strong>xyz contributions</strong> on 2022-03-29
+							</div>
+							<!-- /tag -->
+	
 						</div>
-						<!-- /tag -->
-
+						<!-- /day -->
+						
 					</div>
-					<!-- /day -->
-					
-				</div>
-				<!-- /wk -->
-
-			</main>
-			<!-- /#recentgrid -->
-
+					<!-- /wk -->
+	
+				</main>
+				<!-- /#yearlygrid -->
+	
+				<!-- yrchooser -->
+				<nav class="yrchooser">
+	
+					<!-- yrlist -->
+					<ul class="yrlist">
+	
+						<!-- year -->
+						<li class="year">2022</li>
+						<!-- /year -->
+	
+						<!-- year -->
+						<li class="year">2021</li>
+						<!-- /year -->
+	
+					</ul>
+					<!-- /yrlist -->
+	
+				</nav>
+				<!-- /yrchooser -->
+				
+			</section>
+			<!-- /section -->
+			
 		</div>
 		<!-- /#container -->
 
 
 		<!-- Database Script -->
 		<script src="database.js" type="text/javascript"></script>
+
+		<!-- Dates Helper Script -->
+		<!-- <script src="dates.js" type="text/javascript"></script> -->
 
 		<!-- Main Script -->
 		<script src="gitcalendar.js" type="text/javascript"></script>
