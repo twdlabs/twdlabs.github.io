@@ -1,6 +1,6 @@
 
 
-// Define transaction data. 
+// Define default transaction data. 
 const transactiondata = [
 
 

@@ -17,9 +17,10 @@ div#container main.main section#budget article#annualsummary div.content figure.
 div#container main.main section#budget article#annualsummary div.content figure.bucketbox figcaption.yrname {font-size:1.5rem; margin-bottom:.5rem;}
 
 /* div#container main.main section#budget article#monthlysummary {} */
-/* div#container main.main section#budget article#monthlysummary h2.head {} */
-div#container main.main section#budget article#monthlysummary h2.head a.editbtn {font-size:1rem; text-decoration:none;}
-div#container main.main section#budget article#monthlysummary h2.head a.editbtn:hover {text-decoration:underline;}
+div#container main.main section#budget article#monthlysummary h2.head {display:flex; justify-content:space-between;}
+div#container main.main section#budget article#monthlysummary h2.head a.editbtn {display:grid; place-items:center; padding:.75rem 1rem .625rem; border-radius:.5rem;}
+div#container main.main section#budget article#monthlysummary h2.head a.editbtn {background-color:var(--blue); color:white; font-size:1rem; text-decoration:none;}
+/* div#container main.main section#budget article#monthlysummary h2.head a.editbtn:hover {text-decoration:underline;} */
 div#container main.main section#budget article#monthlysummary div.content {display:grid; grid-template-columns:repeat(3,1fr);}
 div#container main.main section#budget article#monthlysummary div.content figure.budgetbox {/* max-width:24rem; */ cursor:pointer; user-select:none; padding:.625rem .75rem 1rem;}
 div#container main.main section#budget article#monthlysummary div.content figure.budgetbox {display:flex; flex-direction:column; align-items:stretch;}

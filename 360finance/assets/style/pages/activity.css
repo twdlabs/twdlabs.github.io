@@ -36,7 +36,8 @@ div#container main.main section#activity article#transactions div.content table.
 div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.amount {text-align:right;}
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head.amount h3.head,
 div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.amount span.data {margin-right:.75rem;}
-div#container main.main section#activity article#transactions div.content table.table tr.row td.cell.amount span.data.income {color:limegreen; /* color:forestgreen; */}
+div#container main.main section#activity article#transactions div.content table.table.redexpenses tr.row td.cell.amount span.data {color:crimson;}
+div#container main.main section#activity article#transactions div.content table.table.greenincome tr.row td.cell.amount span.data.income {color:limegreen; /* color:forestgreen; */}
 
 
 

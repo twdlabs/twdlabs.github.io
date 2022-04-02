@@ -1,5 +1,6 @@
 
 
+
 // Define data for balance categories. 
 const balancecategorydata = [
 	{	// 0
@@ -13,7 +14,7 @@ const balancecategorydata = [
 ];
 
 
-// Define data for income categories. 
+// Define default data for income categories. 
 const incomecategorydata = [
 	{	// 0
 		categoryname:'Wages',
@@ -36,29 +37,31 @@ const incomecategorydata = [
 		categoryicon:'cashstack',
 		// categoryicon:'cashcoin'
 	},
-	// {	// 3
+	{	// 3
+		categoryname:'Licensing Royalty',
+		categorycolor:'forestgreen',
+		clustercolor:'limegreen',
+		categoryicon:'cashstack',
+		color:'white'
+	},
+	{	// 4
+		categoryname:'Rental Leasing',
+		categorycolor:'forestgreen',
+		clustercolor:'limegreen',
+		categoryicon:'cashstack',
+		color:'white'
+	},
+	// {	// 5
 	// 	categoryname:'xyz',
 	// 	categorycolor:'forestgreen',
 	// 	clustercolor:'limegreen',
+		// categoryicon:'cashstack',
 	// 	color:'white'
 	// },
 ];
 
 
-// Define budget data for spending categories. 
-const spendcategorydatatemplate = [
-	{	// -1
-		categoryname:'xyz',
-		categorycolor:'white',
-		categoryicon:'icon',
-		budgetmonthlylimit:[
-			1000,1000,1000,
-			1000,1000,1000,
-			1000,1000,1000,
-			1000,1000,1000,
-		],
-	},
-]
+// Define default budget data in default spending categories. 
 const spendcategorydata = [
 	{	// 0
 		categoryname:'Tithing',
@@ -151,3 +154,21 @@ const spendcategorydata = [
 	// 	budgetmonthlylimit:1000,
 	// },
 ];
+
+
+
+// const spendcategorydatatemplate = [
+// 	{	// -1
+// 		categoryname:'xyz',
+// 		categorycolor:'white',
+// 		categoryicon:'icon',
+// 		budgetmonthlylimit:[
+// 			1000,1000,1000,
+// 			1000,1000,1000,
+// 			1000,1000,1000,
+// 			1000,1000,1000,
+// 		],
+// 	},
+// ];
+
+// Consolidate customized user data. 

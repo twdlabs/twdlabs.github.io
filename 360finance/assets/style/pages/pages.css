@@ -5,9 +5,10 @@
 
 div#container main.main section.page {padding:1rem 2rem 3rem;}
 /* div#container main.main section.page article {} */
-div#container main.main section.page article h2.head {color:white; color:var(--black); font-size:1.375rem; font-weight:100; /* text-align:center; */ margin:0; margin:1.75rem 0 .5rem; margin-bottom:0;}
-div#container main.main section.page article p.textcopy {color:#AAA; font-size:.875rem; /* text-align:center; */ margin:0; margin-bottom:1rem;}
-div#container main.main section.page article div.content {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
+/* div#container main.main section.page article div.head {} */
+div#container main.main section.page article div.head h2.head {color:white; color:var(--black); font-size:1.375rem; font-weight:100; /* text-align:center; */ margin:0; margin:1.75rem 0 .5rem; margin-bottom:0;}
+div#container main.main section.page article div.head p.textcopy {color:#AAA; font-size:.875rem; /* text-align:center; */ margin:0; margin-bottom:1rem;}
+div#container main.main section.page article div.content {display:flex; flex-direction:row; justify-content:center; align-items:stretch; border-radius:.5rem;}
 div#container main.main section.page article div.content figure.box {background-color:var(--black3); background-color:white; box-shadow:var(--thinshadow);}
 div#container main.main section.page article div.content figure.box {flex-grow:1; padding:.5rem; border:1px dashed var(--frost); border-radius:.5rem; margin:.5rem;}
 div#container main.main section.page article.summary div.content figure.piechart {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
@@ -19,8 +20,8 @@ div#container main.main section.page article.summary div.content figure.piechart
 div#container main.main section.page article.summary div.content figure.piechart div.chart:hover {transform:rotate(360deg);}
 div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc {position:absolute; display:grid; place-items:center; font-size:1.5rem; cursor:pointer; user-select:none;}
 div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc {background-color:white; min-height:var(--piechartinner); min-width:var(--piechartinner); border-radius:50%; box-shadow:var(--shadow) inset;}
-div#container main.main section.page article.summary div.content figure.piechart.spin div.chart div.disc {transform:rotate(0); transition:.25s linear transform;}
-div#container main.main section.page article.summary div.content figure.piechart div.chart:hover div.disc {transform:rotate(-360deg);}
+div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc {transform:rotate(0); transition:.25s linear transform;}
+div#container main.main section.page article.summary div.content figure.piechart.spin div.chart:hover div.disc {transform:rotate(-360deg);}
 div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc span.full {display:none;}
 div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc span.brief {display:block;}
 div#container main.main section.page article.summary div.content figure.piechart div.chart div.disc.full span.full {display:block;}
@@ -65,7 +66,11 @@ div#container main.main section#overview article#balancesummary div.content figu
 /* div#container main.main section#settings article {} */
 /* div#container main.main section#settings article.general {} */
 /* div#container main.main section#settings article.specific {} */
-div#container main.main section#settings article div.content {flex-direction:column; align-items:stretch; flex-wrap:nowrap;}
+div#container main.main section#settings article div.head h2.head {text-transform:capitalize;}
+div#container main.main section#settings article div.content {flex-direction:column; align-items:stretch; flex-wrap:nowrap; box-shadow:var(--thinshadow);}
+div#container main.main section#settings article div.content figure.box {display:grid; grid-template-columns: 3fr 2fr; align-items:center; box-shadow:none;}
+div#container main.main section#settings article div.content figure.box select {font-size:inherit; padding:.5rem 1rem;}
+div#container main.main section#settings article div.content figure.box select option {padding:.5rem 1rem;}
 
 
 
@@ -98,7 +103,7 @@ div#container main.main section#misc article#misc div.content section#bucketbox:
 div#container main.main section#misc article#misc div.content section#bucketbox div.category {background-color:#0008; min-width:3rem; min-height:3rem; border-radius:50%; margin:0 .5rem; margin-bottom:.75rem;}
 div#container main.main section#misc article#misc div.content section#bucketbox div.category {transform:translateZ(2rem); position:relative;}
 div#container main.main section#misc article#misc div.content section#bucketbox div.category::before {position:absolute; top:100%; left:50%; transform:translateX(-50%) rotateX(-45deg);}
-div#container main.main section#misc article#misc div.content section#bucketbox div.category::before {content:'Category 'counter(n); counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
+div#container main.main section#misc article#misc div.content section#bucketbox div.category::before {content:'Category '/* counter(n) */; counter-increment:n; font-size:.625rem; margin-top:.125rem; white-space:nowrap;}
 /* div#container main.main section#misc article#misc div.content {display:none;} */
 /* div#container main.main section#misc article#misc div.content section#badgebox {display:none;} */
 /* div#container main.main section#misc article#misc div.content section#bucketbox {display:none;} */

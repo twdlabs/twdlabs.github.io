@@ -1,8 +1,5 @@
 
 
-// Define month initials. 
-const monthInitials = [ 'J','F','M', 'A','M','J', 'J','A','S', 'O','N','D' ];
-
 // Define month labels. 
 const monthNames = [ 
 	'Jan','Feb','Mar', 
@@ -10,6 +7,7 @@ const monthNames = [
 	'Jul','Aug','Sep', 
 	'Oct','Nov','Dec' 
 ];
+// console.log('monthNames:',monthNames);
 
 // Define full month labels. 
 const monthFullNames = [ 
@@ -18,4 +16,9 @@ const monthFullNames = [
 	'July','August','September', 
 	'October','November','December' 
 ];
+// console.log('monthFullNames:',monthFullNames);
 
+
+// Define month initials. 
+const monthInitials = monthFullNames.map( (name)=>(name.charAt(0)) );
+// console.log('monthInitials:',monthInitials);

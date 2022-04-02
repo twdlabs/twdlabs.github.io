@@ -29,16 +29,26 @@ startItUp();
 // Get the app started. 
 function startItUp() {
 
+
 	// Calculate account metrics. 
 	getAccountMetrics();
 
+
 	// Load navigation bar. 
 	loadNavigation();
+	
+	// Reset user data to default. 
+	setDefaultUserData();
+	// Load user data. 
+	loadUserData(true);
+	
 	// Load page content. 
 	loadPageContent();
 	
+
 	// Handle events. 
 	handleEvents();
+
 
 	// Open initially selected page. 
 	openSelectedPage();

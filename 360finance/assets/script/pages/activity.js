@@ -21,10 +21,15 @@ function loadActivityPage() {
 		// Collect transactions. 
 		// transactiondata.sort(sortByAmount);
 		for(let i in transactiondata) {
+
+			// Get transaction. 
 			let t = transactiondata[i];
-			let category = (t.transactionamount>0) ? incomecategorydata[t.categoryid] : spendcategorydata[t.categoryid];
 			// console.log(i,'Transaction:',t);
+
+			// Determine category by category id and transaction amount. 
+			let category = (t.transactionamount>0) ? incomecategorydata[t.categoryid] : spendcategorydata[t.categoryid];
 			// console.log('Spend category:',category,category.categoryname);
+
 			result += `
 			<!-- row -->
 			<tr class="row">

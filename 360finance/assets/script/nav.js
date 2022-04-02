@@ -1,8 +1,16 @@
 
 
+// Get navigation tab indicator. 
+let tabindicator = document.querySelector('nav.switcher ul.navlist li.switch');
+// console.log('\tNavigation tabber:',tabindicator.style.transform,tabindicator);
 
-// Set initial page index. 
-var currentPageIndex = 0;
+// Get page container. 
+let pageshifter = document.querySelector('main.main div.inner');
+// console.log('\tNavigation pager:',pageshifter.style.transform,pageshifter);
+
+// Get all app pages. 
+let appPages = document.querySelectorAll('main.main div.inner section.page');
+
 
 
 // Define navigation data. 
@@ -113,19 +121,54 @@ function loadNavigation() {
 	// navquads.innerHTML = result2;
 }
 
+// Go to previous page. 
+function goToPrevPage() {
+	
+	// Decrement page index to previous page. 
+	currentPageIndex--;
+	// Go to end if past lower bound. 
+	if(currentPageIndex<0) {
+		currentPageIndex = navdata.length-1;
+	}
+	console.log('New page index:', currentPageIndex);
+
+	// Open selected page. 
+	openSelectedPage();
+
+	// TODO: Highlight corresponding radio button. 
+	// abc.setAttribute('checked','');
+}
+// Go to next page. 
+function goToNextPage() {
+	
+	// Increment page index to next page. 
+	currentPageIndex ++;
+	// Go to beginning if past upper bound. 
+	if(currentPageIndex>=navdata.length) {
+		currentPageIndex = 0;
+	}
+	console.log('New page index:', currentPageIndex);
+
+	// Open selected page. 
+	openSelectedPage();
+
+	// TODO: Highlight corresponding radio button. 
+	// abc.setAttribute('checked','');
+}
+
 
 // Toggle navigation. 
 function toggleNavigation() {
 	document.querySelector('nav.switcher').classList.toggle('active');
 }
 
-// Select page. 
-function setNewPageIndex(event) {
+// Select new page. 
+function selectNewPage(event) {
 
 	// Get selected navigation button. 
 	let navbtn = event.currentTarget;
 	// Save index for selected page. 
-	currentPageIndex = navbtn.value;
+	currentPageIndex = 1*navbtn.value;
 	console.log('New page index:', currentPageIndex,navbtn);
 
 	// Open selected page. 
@@ -140,20 +183,20 @@ function setNewPageIndex(event) {
 // Open selected page. 
 function openSelectedPage() {
 
-	// Get navigation tab indicator. 
-	let tabindicator = document.querySelector('nav.switcher ul.navlist li.switch');
-	// console.log('\tNavigation tabber:',tabindicator.style.transform,tabindicator);
-
 	// Shift navigation tab indicator to proper position. 
 	tabindicator.style.transform = `translateX(${(100*currentPageIndex)}%)`;
 	// console.log('\tNavigation tabber:',tabindicator.style.transform,tabindicator);
 
-	// Get page container. 
-	let inner = document.querySelector('div#container main.main div.inner');
-	// console.log('\tNavigation pager:',inner.style.transform,inner);
-
 	// Shift to selected page. 
-	inner.style.transform = `translateX(${-100*currentPageIndex}%)`;
-	// console.log('\tNavigation pager:',inner.style.transform,inner);
+	pageshifter.style.transform = `translateX(${-100*currentPageIndex}%)`;
+	// console.log('\tNavigation pager:',pageshifter.style.transform,pageshifter);
+
+	// De-activate other pages. 
+	for(let page of appPages) {
+		page.classList.remove('active');
+	}
+
+	// Activate selected page. 
+	appPages[currentPageIndex].classList.add('active');
 }
 

@@ -1,7 +1,5 @@
 
-
-div#container.newscrollmode {height:100vh;}
-div#container.newscrollmode header.header {background-color:var(--white);}
-div#container.newscrollmode main.main {overflow-y:hidden;}
-div#container.newscrollmode main.main div.inner {height:100%;}
-div#container.newscrollmode main.main div.inner section.page {overflow-y:auto;}
+/* div#container {max-height:100vh; height:-moz-available; height:-webkit-fill-available; height:fill-available;} */
+/* div#container main.main {overflow-y:hidden;} */
+/* div#container main.main div.inner {height:100%;} */
+/* div#container main.main div.inner section.page {overflow-y:auto;} */
