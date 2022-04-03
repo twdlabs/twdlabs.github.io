@@ -14,7 +14,8 @@ div#container main.main section#activity article#transactions div.content table.
 div#container main.main section#activity article#transactions div.content table.table tbody tr.row:hover {background-color:#00000008;}
 
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head {text-align:left; border-bottom:1px solid #0002;}
-div#container main.main section#activity article#transactions div.content table.table tr.row th.head h3.head {display:flex; flex-direction:row; align-items:center; font-size:1.05em; /* text-align:left; */ margin:0;}
+div#container main.main section#activity article#transactions div.content table.table tr.row th.head h3.head {display:flex; flex-direction:row; align-items:center; font-size:1.05em; margin:0;}
+div#container main.main section#activity article#transactions div.content table.table tr.row th.head.date h3.head {justify-content:center;}
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head.amount h3.head {justify-content:flex-end; /* text-align:right; */}
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head h3.head div.sortbtn {display:flex; flex-direction:column; cursor:pointer; user-select:none; margin-left:.25rem;}
 div#container main.main section#activity article#transactions div.content table.table tr.row th.head h3.head div.sortbtn svg.icon {font-size:.4rem;}

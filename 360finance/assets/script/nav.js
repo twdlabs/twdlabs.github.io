@@ -169,7 +169,7 @@ function selectNewPage(event) {
 	let navbtn = event.currentTarget;
 	// Save index for selected page. 
 	currentPageIndex = 1*navbtn.value;
-	console.log('New page index:', currentPageIndex,navbtn);
+	console.log('New page index:', currentPageIndex/* , navbtn */);
 
 	// Open selected page. 
 	openSelectedPage();

@@ -14,18 +14,15 @@ function loadBudgetPage() {//return;
 	// Load annual budget summary. 
 	function loadAnnualSummary() {
 
-		// Initialize total monthly budget amount. 
-		let totalMonthlyBudgetAmount = 0;
+		// Aggregate total monthly limit for monthly budgets. 
+		let totalMonthlyBudgetLimit = 0;
 		for(category of spendcategorydata) {
-			// Add to total monthly budget amount. 
-			totalMonthlyBudgetAmount += category.budgetmonthlylimit;
+			// Add category limit to running total for total limit of monthly budget. 
+			totalMonthlyBudgetLimit += category.budgetmonthlylimit;
 		}
-
-		// Get budget container. 
-		let budgetbuckets = document.querySelector('section#budget article#annualsummary div.content figure.bucketbox div.inner');
-		// console.log('budgetbuckets:',budgetbuckets);
-
-		// Create series of buckets. 
+		
+		////////////////////////////////////////////////
+		// Create series of buckets for given year (one for each month). 
 		let result = ``;
 		for(let monthIndex in monthFullNames) {
 
@@ -55,14 +52,37 @@ function loadBudgetPage() {//return;
 				spendcategorytotals.push(total);
 			}
 			// console.log(`Spend category totals (${monthName}):`,spendcategorytotals);
-
-			let n = 1*monthIndex + 1;
 			
+			// 
 			let totalSpendThisMonth = totalSpendPerMonth[monthIndex];
 			
-			let pct = 100*(totalSpendThisMonth/totalMonthlyBudgetAmount);
+			/**************/
+
+			// Get percentage of monthly budget that is spent. 
+			let pct = 100*(totalSpendThisMonth/totalMonthlyBudgetLimit);
+
+			// Create numeric label for given month. 
+			let n = 1*monthIndex + 1;
+			let numLabel = (n<10) ? ('0'+n) : (n)
 			
-			result += `
+			// Add bucket item for given month. 
+			result += createFilledBucket(pct,numLabel);
+		}
+		////////////////////////////////////////////////
+			
+
+		// Get budget container. TODO: Rearrange this jawn for multiple years. 
+		let budgetbuckets = document.querySelector('section#budget article#annualsummary div.content figure.bucketbox div.inner');
+		// console.log('budgetbuckets:',budgetbuckets);
+
+		// Add result to page. 
+		budgetbuckets.innerHTML = result;
+
+		/****/
+
+		// Create monthly budget bucket bar. 
+		function createFilledBucket(pct,label) {
+			return `
 			<!-- bucket -->
 			<div class="bucket">
 
@@ -71,15 +91,16 @@ function loadBudgetPage() {//return;
 				<!-- /fill -->
 
 				<!-- monthlabel -->
-				<label class="monthlabel">${ (n<10) ? ('0'+n) : (n) }</label>
+				<label class="monthlabel">${ label }</label>
 				<!-- /monthlabel -->
 
 			</div>
 			<!-- /bucket -->`;
 		}
 
-		// Add result to page. 
-		budgetbuckets.innerHTML = result;
+		// // Create monthly budget bucket bar. 
+		// function createFilledBucket(pct,label) {
+		// }
 	}
 
 	// Load monthly budget summaries: enhanced progress bars. 
@@ -155,6 +176,8 @@ function loadBudgetPage() {//return;
 
 		// Add budgets to page. 
 		budgetsbox.innerHTML = result;
+
+		/****/
 	}
 }
 
