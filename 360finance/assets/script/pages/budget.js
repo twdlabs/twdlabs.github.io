@@ -4,79 +4,65 @@
 function loadBudgetPage() {//return;
 
 	// Load annual budget summary. 
-	loadAnnualSummary();
+	loadYearSums();
 
 	// Load monthly budget summaries. 
-	loadMonthlySummaries();
+	loadMonthSums();
 
 	/****/
 
 	// Load annual budget summary. 
-	function loadAnnualSummary() {
+	function loadYearSums() {
 
-		// Aggregate total monthly limit for monthly budgets. 
+		// Aggregate total limit for monthly budgets. 
 		let totalMonthlyBudgetLimit = 0;
 		for(category of spendcategorydata) {
 			// Add category limit to running total for total limit of monthly budget. 
 			totalMonthlyBudgetLimit += category.budgetmonthlylimit;
 		}
 		
-		////////////////////////////////////////////////
-		// Create series of buckets for given year (one for each month). 
-		let result = ``;
+		// Create series of buckets for given year (bucket for each month). 
+		let budgetbuckets = ``;
+		budgetbuckets += `
+		<!-- bucketbox -->
+		<figure class="bucketbox box">
+
+			<!-- yrhead -->
+			<figcaption class="yrhead">2022</figcaption>
+			<!-- /yrhead -->
+
+			<!-- yearbody -->
+			<div class="yearbody">`;
 		for(let monthIndex in monthFullNames) {
 
 			// Get month name for given month. 
 			let monthName = monthFullNames[monthIndex];
 
-			// Create list of spend category totals for given month. 
-			let spendcategorytotals = [  ];
-			for(let id in spendcategorydata) {
-				// Initialize category total. 
-				let total = 0;
-				// Aggregate given category total. 
-				for(let t of transactiondata) {
-	
-					// Check for spend transaction. 
-					let isSpendTransaction = (t.transactionamount<=0);
-					// Check for matching category. 
-					let matchingCategory = (t.categoryid==id);
-					// Check for matching month. 
-					let matchingMonth = (t.transactiondate.m-1==monthIndex);
-	
-					// Include amount in total if matches all criteria. 
-					if(isSpendTransaction && matchingCategory && matchingMonth) {
-						total += (-1)*t.transactionamount;
-					}
-				}
-				spendcategorytotals.push(total);
-			}
-			// console.log(`Spend category totals (${monthName}):`,spendcategorytotals);
-			
-			// 
-			let totalSpendThisMonth = totalSpendPerMonth[monthIndex];
-			
-			/**************/
-
-			// Get percentage of monthly budget that is spent. 
-			let pct = 100*(totalSpendThisMonth/totalMonthlyBudgetLimit);
+			// Get percentage of monthly budget limit that is spent. 
+			let pct = 100*( totalSpendPerMonth[monthIndex] / totalMonthlyBudgetLimit );
 
 			// Create numeric label for given month. 
 			let n = 1*monthIndex + 1;
-			let numLabel = (n<10) ? ('0'+n) : (n)
+			let numLabel = (n<10) ? ('0'+n) : (n);
 			
 			// Add bucket item for given month. 
-			result += createFilledBucket(pct,numLabel);
+			budgetbuckets += createFilledBucket(pct,numLabel);
 		}
-		////////////////////////////////////////////////
-			
+		budgetbuckets += `
+			</div>
+			<!-- /yearbody -->
+
+		</figure>
+		<!-- /bucketbox -->`;
+		
 
 		// Get budget container. TODO: Rearrange this jawn for multiple years. 
-		let budgetbuckets = document.querySelector('section#budget article#annualsummary div.content figure.bucketbox div.inner');
-		// console.log('budgetbuckets:',budgetbuckets);
+		let budgetsbox = document.querySelector('section#budget article#annualsummary div.content');
+		// let budgetsbox = document.querySelector('section#budget article#annualsummary div.content figure.bucketbox div.yearbody');
+		// console.log('budgetsbox:',budgetsbox);
 
-		// Add result to page. 
-		budgetbuckets.innerHTML = result;
+		// Add monthly budget buckets to page. 
+		budgetsbox.innerHTML = budgetbuckets;
 
 		/****/
 
@@ -104,7 +90,7 @@ function loadBudgetPage() {//return;
 	}
 
 	// Load monthly budget summaries: enhanced progress bars. 
-	function loadMonthlySummaries() {
+	function loadMonthSums() {
 		// console.log('spendcategorydata:',spendcategorydata);
 
 		// Create progress bars based on spend category data for each month: budget spend limits and actual spend totals. 
@@ -118,9 +104,8 @@ function loadBudgetPage() {//return;
 			// Create list of spend category totals for given month. 
 			let spendcategorytotals = [  ];
 			for(let id in spendcategorydata) {
-				// Initialize category total. 
-				let total = 0;
 				// Aggregate given category total. 
+				let categoryTotal = 0;
 				for(let t of transactiondata) {
 	
 					// Check for spend transaction. 
@@ -130,12 +115,12 @@ function loadBudgetPage() {//return;
 					// Check for matching month. 
 					let matchingMonth = (t.transactiondate.m-1==monthIndex);
 	
-					// Include amount in total if matches all criteria. 
+					// Include amount in category total if matching all criteria. 
 					if(isSpendTransaction && matchingCategory && matchingMonth) {
-						total += (-1)*t.transactionamount;
+						categoryTotal += (-1)*t.transactionamount;
 					}
 				}
-				spendcategorytotals.push(total);
+				spendcategorytotals.push(categoryTotal);
 			}
 			// console.log(`Spend category totals (${monthName}):`,spendcategorytotals);
 			

@@ -60,15 +60,12 @@ function loadOverviewPage() {
 		// Create list of spend category totals. 
 		let spendcategorytotals = [  ];
 		for(let id in spendcategorydata) {
-
-			// Initialize category total. 
-			let total = 0;
-
-			// Aggregate given category total. 
+			// Aggregate total for given category. 
+			let categoryTotal = 0;
 			for(let t of transactiondata) {
-				if(t.transactionamount<=0 && t.categoryid==id) total += (-1)*t.transactionamount;
+				if(t.transactionamount<=0 && t.categoryid==id) categoryTotal += (-1)*t.transactionamount;
 			}
-			spendcategorytotals.push(total);
+			spendcategorytotals.push(categoryTotal);
 		}
 		// console.log('Spend category totals:',spendcategorytotals);
 

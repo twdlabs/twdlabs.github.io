@@ -8,13 +8,13 @@
 /* div#container main.main section#budget article#annualsummary {display:none;} */
 /* div#container main.main section#budget article#annualsummary div.content {} */
 div#container main.main section#budget article#annualsummary div.content figure.bucketbox {flex-grow:0; text-align:center;}
-div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.inner {display:flex; flex-direction:row; justify-content:center;}
-div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.bucket {background-color:#E2E2E2; width:.75rem; height:16rem; border-radius:1rem; margin:0 .5rem .75rem; /* overflow:hidden; */}
-div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.bucket {display:flex; flex-direction:column; justify-content:flex-end; position:relative;}
-div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.bucket div.fill {content:''; display:block; background-color:var(--blue); border-radius:inherit;}
-div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.bucket label.monthlabel {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
-div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.bucket label.monthlabel {color:white; color:var(--black); font-size:.65rem; margin-top:.25rem;}
-div#container main.main section#budget article#annualsummary div.content figure.bucketbox figcaption.yrname {font-size:1.5rem; margin-bottom:.5rem;}
+div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.yearbody {display:flex; flex-direction:row; justify-content:center;}
+div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.yearbody div.bucket {background-color:#E2E2E2; width:.75rem; height:16rem; border-radius:1rem; margin:0 .5rem .75rem; /* overflow:hidden; */}
+div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.yearbody div.bucket {display:flex; flex-direction:column; justify-content:flex-end; position:relative;}
+div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.yearbody div.bucket div.fill {content:''; display:block; background-color:var(--blue); border-radius:inherit;}
+div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.yearbody div.bucket label.monthlabel {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
+div#container main.main section#budget article#annualsummary div.content figure.bucketbox div.yearbody div.bucket label.monthlabel {color:white; color:var(--black); font-size:.65rem; margin-top:.25rem;}
+div#container main.main section#budget article#annualsummary div.content figure.bucketbox figcaption.yrhead {font-size:1.5rem; margin-bottom:.5rem;}
 
 /* div#container main.main section#budget article#monthlysummary {} */
 div#container main.main section#budget article#monthlysummary h2.head {display:flex; justify-content:space-between;}
