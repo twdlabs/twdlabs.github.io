@@ -16,13 +16,13 @@
 		<link href="assets/style/style.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Specific Page Stylesheet -->
-		<link href="assets/style/pages/pages.css" rel="stylesheet" type="text/css"/>
-		<!-- <link href="assets/style/pages/overview.css" rel="stylesheet" type="text/css"/> -->
-		<link href="assets/style/pages/activity.css" rel="stylesheet" type="text/css"/>
-		<link href="assets/style/pages/budget.css" rel="stylesheet" type="text/css"/>
-		<!-- <link href="assets/style/pages/taxes.css" rel="stylesheet" type="text/css"/> -->
-		<!-- <link href="assets/style/pages/investments.css" rel="stylesheet" type="text/css"/> -->
-		<!-- <link href="assets/style/pages/insurance.css" rel="stylesheet" type="text/css"/> -->
+		<link href="assets/pages/page.css" rel="stylesheet" type="text/css"/>
+		<!-- <link href="assets/pages/overview.css" rel="stylesheet" type="text/css"/> -->
+		<link href="assets/pages/activity.css" rel="stylesheet" type="text/css"/>
+		<link href="assets/pages/budget.css" rel="stylesheet" type="text/css"/>
+		<!-- <link href="assets/pages/taxes.css" rel="stylesheet" type="text/css"/> -->
+		<!-- <link href="assets/pages/investments.css" rel="stylesheet" type="text/css"/> -->
+		<!-- <link href="assets/pages/insurance.css" rel="stylesheet" type="text/css"/> -->
 
 		<!-- Scroll Stylesheet -->
 		<!-- <link href="assets/style/scroll.css" rel="stylesheet" type="text/css"/> -->
@@ -31,7 +31,7 @@
 		<script type="text/javascript">
 
 			// Set initial page index. 
-			var currentPageIndex = 0;
+			var currentPageIndex = 2;
 
 			// Initialize current user data.
 			const currentUserData = {};
@@ -65,17 +65,35 @@
 				<!-- userdata -->
 				<div class="ud btnpanel">
 					
-					<!-- resetbtn -->
-					<div id="resetuserdata" class="btn memorybtn resetbtn">Reset</div>
-					<!-- /resetbtn -->
+					<!-- userbtn -->
+					<div id="userbtn" class="btn memorybtn userbtn" onclick="this.classList.toggle('active');">
+	
+						<!-- icon -->
+						<svg class="icon user" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+						</svg>
+						<!-- /icon -->
+						
+					</div>
+					<!-- /userbtn -->
+
+					<!-- userbox -->
+					<div class="userbox box">
 					
-					<!-- loadbtn -->
-					<div id="loaduserdata" class="btn memorybtn loadbtn">Load</div>
-					<!-- /loadbtn -->
-					
-					<!-- savebtn -->
-					<div id="saveuserdata" class="btn memorybtn savebtn">Save</div>
-					<!-- /savebtn -->
+						<!-- resetbtn -->
+						<div id="resetuserdata" class="btn memorybtn resetbtn">Reset</div>
+						<!-- /resetbtn -->
+						
+						<!-- loadbtn -->
+						<div id="loaduserdata" class="btn memorybtn loadbtn">Load</div>
+						<!-- /loadbtn -->
+						
+						<!-- savebtn -->
+						<div id="saveuserdata" class="btn memorybtn savebtn">Save</div>
+						<!-- /savebtn -->
+
+					</div>
+					<!-- /userbox -->
 
 				</div>
 				<!-- /userdata -->
@@ -741,8 +759,8 @@
 					<!-- #budget -->
 					<section id="budget" class="page">
 
-						<!-- #annualsummary -->
-						<article id="annualsummary" class="summary">
+						<!-- #annualsumup -->
+						<article id="annualsumup" class="summary">
 
 							<!-- head -->
 							<div class="head">
@@ -766,26 +784,13 @@
 								<!-- bucketbox -->
 								<figure class="bucketbox box">
 
-									<!-- yrname -->
-									<figcaption class="yrname">2022</figcaption>
-									<!-- /yrname -->
+									<!-- yrhead -->
+									<figcaption class="yrhead">2022</figcaption>
+									<!-- /yrhead -->
 
-									<div class="inner">
+									<!-- yearbody -->
+									<div class="yearbody">
 					
-										<!-- bucket -->
-										<div class="bucket">
-	
-											<!-- fill -->
-											<div class="fill" style="height:50%;"></div>
-											<!-- /fill -->
-			
-											<!-- monthlabel -->
-											<label class="monthlabel">M</label>
-											<!-- /monthlabel -->
-						
-										</div>
-										<!-- /bucket -->
-						
 										<!-- bucket -->
 										<div class="bucket">
 	
@@ -815,6 +820,7 @@
 										<!-- /bucket -->
 
 									</div>
+									<!-- /yearbody -->
 					
 								</figure>
 								<!-- /bucketbox -->
@@ -823,18 +829,21 @@
 							<!-- /content -->
 							
 						</article>
-						<!-- /#annualsummary -->
+						<!-- /#annualsumup -->
 
-						<!-- #monthlysummary -->
-						<article id="monthlysummary" class="summary">
+						<!-- #monthlysumup -->
+						<article id="monthlysumup" class="summary">
 
 							<!-- head -->
 							<div class="head">
 
 								<!-- head -->
 								<h2 class="head">
+
+									<!-- caption -->
 									<span class="caption">Monthly Budget Summary</span>
-									<a class="editbtn btn" href="javascript:void(0)">Budget</a>
+									<!-- /caption -->
+
 								</h2>
 								<!-- /head -->
 	
@@ -844,70 +853,86 @@
 								</p>
 								<!-- /textcopy -->
 
+								<!-- editbtn -->
+								<a class="editbtn btn" href="javascript:void(0)">Budget</a>
+								<!-- /editbtn -->
+
 							</div>
 							<!-- /head -->
 	
 							<!-- content -->
 							<div class="content">
 
-								<!-- budgetbox -->
-								<figure class="budgetbox box" data-monthindex="-1">
+								<!-- yrpgs -->
+								<div class="yrpgs">
 
-									<!-- head -->
-									<h3 class="head">MonthName 20xx</h3>
-									<!-- /head -->
-
-									<!-- btnbox -->
-									<div class="btnbox">
-
-										<!-- editbtn -->
-										<a class="editbtn btn" href="javascript:void(0)">Edit</a>
-										<!-- /editbtn -->
-
-										<!-- deletebtn -->
-										<a class="deletebtn btn" href="javascript:void(0)">Delete</a>
-										<!-- /deletebtn -->
-
+									<!-- yearpage -->
+									<div class="yearpage">
+	
+										<!-- budgetbox -->
+										<figure class="budgetbox box" data-monthindex="-1">
+		
+											<!-- head -->
+											<h3 class="head">MonthName 20xx</h3>
+											<!-- /head -->
+		
+											<!-- btnbox -->
+											<div class="btnbox">
+		
+												<!-- editbtn -->
+												<a class="editbtn btn" href="javascript:void(0)">Edit</a>
+												<!-- /editbtn -->
+		
+												<!-- deletebtn -->
+												<a class="deletebtn btn" href="javascript:void(0)">Delete</a>
+												<!-- /deletebtn -->
+		
+											</div>
+											<!-- /btnbox -->
+		
+											<!-- progressbar -->
+											<div class="progressbar">
+		
+												<!-- label -->
+												<div class="label">
+													
+													<!-- name -->
+													<span class="name">Category Name</span>
+													<!-- /name -->
+		
+													<!-- remainder -->
+													<span class="remainder">
+														<span class="num">$900</span>
+														<span class="suffix">Left</span>
+													</span>
+													<!-- /remainder -->
+													
+												</div>
+												<!-- /label -->
+		
+												<!-- bar -->
+												<div class="bar" style="background:dodgerblue linear-gradient(90deg, transparent 25% , var(--white) 25% );">
+													<span class="caption">$300 of $1200</span>
+												</div>
+												<!-- /bar -->
+												
+											</div>
+											<!-- /progressbar -->
+		
+										</figure>
+										<!-- /budgetbox -->
+	
 									</div>
-									<!-- /btnbox -->
+									<!-- /yearpage -->
 
-									<!-- progressbar -->
-									<div class="progressbar">
-
-										<!-- label -->
-										<div class="label">
-											
-											<!-- name -->
-											<span class="name">Category Name</span>
-											<!-- /name -->
-
-											<!-- remainder -->
-											<span class="remainder">
-												<span class="num">$900</span>
-												<span class="suffix">Left</span>
-											</span>
-											<!-- /remainder -->
-											
-										</div>
-										<!-- /label -->
-
-										<!-- bar -->
-										<div class="bar" style="background:dodgerblue linear-gradient(90deg, transparent 25% , var(--white) 25% );">
-											<span class="caption">$300 of $1200</span>
-										</div>
-										<!-- /bar -->
-										
-									</div>
-									<!-- /progressbar -->
-
-								</figure>
-								<!-- /budgetbox -->
+								</div>
+								<!-- /yrpgs -->
 
 							</div>
 							<!-- /content -->
 							
 						</article>
-						<!-- /#monthlysummary -->
+						<!-- /#monthlysumup -->
 						
 					</section>
 					<!-- /#budget -->
@@ -949,6 +974,8 @@
 										<option value="sm" selected>Small</option>
 										<option value="md">Medium</option>
 										<option value="lg">Large</option>
+										<option value="xl">X Large</option>
+										<option value="xxl">XX Large</option>
 									</select>
 									<!-- /#fontsize -->
 
@@ -1578,20 +1605,20 @@
 		<!-- Page Scripts -->
 
 		<!-- Overview Page Script -->
-		<script src="assets/script/pages/overview.js" type="text/javascript"></script>
+		<script src="assets/pages/overview.js" type="text/javascript"></script>
 		<!-- Activity Page Script -->
-		<script src="assets/script/pages/activity.js" type="text/javascript"></script>
+		<script src="assets/pages/activity.js" type="text/javascript"></script>
 		<!-- Budget Page Script -->
-		<script src="assets/script/pages/budget.js" type="text/javascript"></script>
+		<script src="assets/pages/budget.js" type="text/javascript"></script>
 		<!-- Settings Page Script -->
-		<script src="assets/script/pages/settings.js" type="text/javascript"></script>
+		<script src="assets/pages/settings.js" type="text/javascript"></script>
 
 		<!-- Taxes Page Script -->
-		<script src="assets/script/pages/taxes.js" type="text/javascript"></script>
+		<script src="assets/pages/taxes.js" type="text/javascript"></script>
 		<!-- Investments Page Script -->
-		<script src="assets/script/pages/investments.js" type="text/javascript"></script>
+		<script src="assets/pages/investments.js" type="text/javascript"></script>
 		<!-- Insurance Page Script -->
-		<script src="assets/script/pages/insurance.js" type="text/javascript"></script>
+		<script src="assets/pages/insurance.js" type="text/javascript"></script>
 
 
 		<!-- Main Scripts -->
