@@ -1,64 +1,89 @@
 
 
+// Define relevant transaction years. 
+var relevantTransactionYears/*  = [ 2020, 2021, 2022 ] */;
+
+
+/*****/
+
+
 // Load budget page. 
 function loadBudgetPage() {//return;
 
 	// Load annual budget summary. 
-	loadYearSums();
+	loadSimpleSummary();
 
 	// Load monthly budget summaries. 
-	loadMonthSums();
+	loadDetailSummary();
 
 	/****/
 
 	// Load annual budget summary. 
-	function loadYearSums() {
+	function loadSimpleSummary() {
 
 		// Aggregate total limit for monthly budgets. 
-		let totalMonthlyBudgetLimit = 0;
+		let totalBudgetLimitPerMonth = 0;
 		for(category of spendcategorydata) {
 			// Add category limit to running total for total limit of monthly budget. 
-			totalMonthlyBudgetLimit += category.budgetmonthlylimit;
+			totalBudgetLimitPerMonth += category.budgetmonthlylimit;
 		}
+
+		// Re-define relevant transaction years. 
+		relevantTransactionYears = [];
 		
 		// Create series of buckets for given year (bucket for each month). 
 		let budgetbuckets = ``;
-		budgetbuckets += `
-		<!-- bucketbox -->
-		<figure class="bucketbox box">
+		for(let year in monthlySpendTotals) 
+		/* for(let i=0 ; i<7 ; i++) */ {
 
-			<!-- yrhead -->
-			<figcaption class="yrhead">2022</figcaption>
-			<!-- /yrhead -->
+			// Open bucket box for given year. 
+			budgetbuckets += `
+			<!-- bucketbox -->
+			<figure class="bucketbox box" data-year="${year}">
+	
+				<!-- yrhead -->
+				<figcaption class="yrhead">${year}</figcaption>
+				<!-- /yrhead -->
+	
+				<!-- yearbody -->
+				<div class="yearbody">`;
 
-			<!-- yearbody -->
-			<div class="yearbody">`;
-		for(let monthIndex in monthFullNames) {
+			// Fill bucket box for given year (month by month). 
+			for(let monthIndex in monthNames) {
+	
+				// Get percentage of monthly budget limit that is spent. <------ Extend to multiple years. This is where it's at !!!!!
+				let portion = monthlySpendTotals[year][monthIndex] / totalBudgetLimitPerMonth;
+				// let portion = totalSpendPerMonth[monthIndex] / totalBudgetLimitPerMonth;
+				let pct = 100*portion;
+	
+				// Create numeric label for given month. 
+				let n = 1*monthIndex + 1;
+				let numLabel = (n<10) ? ('0'+n) : (n);
+	
+				// Get name label for given month. 
+				let nameLabel = monthNames[monthIndex];
+				
+				// Add bucket item for given month. 
+				// budgetbuckets += createFilledBucket(pct,numLabel);
+				budgetbuckets += createFilledBucket(pct,nameLabel);
+			}
 
-			// Get month name for given month. 
-			let monthName = monthFullNames[monthIndex];
+			// Close bucket box for given year. 
+			budgetbuckets += `
+				</div>
+				<!-- /yearbody -->
+	
+			</figure>
+			<!-- /bucketbox -->`;
 
-			// Get percentage of monthly budget limit that is spent. 
-			let pct = 100*( totalSpendPerMonth[monthIndex] / totalMonthlyBudgetLimit );
-
-			// Create numeric label for given month. 
-			let n = 1*monthIndex + 1;
-			let numLabel = (n<10) ? ('0'+n) : (n);
-			
-			// Add bucket item for given month. 
-			budgetbuckets += createFilledBucket(pct,numLabel);
+			// Add given year to list of relevant transaction years. 
+			relevantTransactionYears.push(1*year);
 		}
-		budgetbuckets += `
-			</div>
-			<!-- /yearbody -->
-
-		</figure>
-		<!-- /bucketbox -->`;
 		
 
 		// Get budget container. TODO: Rearrange this jawn for multiple years. 
-		let budgetsbox = document.querySelector('section#budget article#annualsummary div.content');
-		// let budgetsbox = document.querySelector('section#budget article#annualsummary div.content figure.bucketbox div.yearbody');
+		let budgetsbox = document.querySelector('section#budget article#annualsumup div.content');
+		// let budgetsbox = document.querySelector('section#budget article#annualsumup div.content figure.bucketbox div.yearbody');
 		// console.log('budgetsbox:',budgetsbox);
 
 		// Add monthly budget buckets to page. 
@@ -90,80 +115,110 @@ function loadBudgetPage() {//return;
 	}
 
 	// Load monthly budget summaries: enhanced progress bars. 
-	function loadMonthSums() {
+	function loadDetailSummary() {
 		// console.log('spendcategorydata:',spendcategorydata);
 
 		// Create progress bars based on spend category data for each month: budget spend limits and actual spend totals. 
 		// Add data for each month. 
 		let result = '';
-		for(let monthIndex in monthFullNames) {
 
-			// Get month name for given month. 
-			let monthName = monthFullNames[monthIndex];
+		// Go thru each relevant year. 
+		for(let year in monthlySpendTotals) {
+			// console.log(year);
 
-			// Create list of spend category totals for given month. 
-			let spendcategorytotals = [  ];
-			for(let id in spendcategorydata) {
-				// Aggregate given category total. 
-				let categoryTotal = 0;
+			// Open page for given year. 
+			result += `
+			<!-- yearpage -->
+			<div class="yearpage">`;
+
+			// Go thru each month in given year. 
+			for(let monthIndex in monthlySpendTotals[year]) {
+	
+				// Get month name for given month. 
+				let monthName = monthFullNames[monthIndex];
+				// console.log('monthName:',monthName);
+	
+				// Initiate list of totals for each spend category in given month. 
+				let spendcategorytotals = [  ];
+				for(let id in spendcategorydata) {
+					spendcategorytotals.push(0);
+				}
+				
+				// Aggregate totals for each spend category in given month. 
 				for(let t of transactiondata) {
 	
 					// Check for spend transaction. 
 					let isSpendTransaction = (t.transactionamount<=0);
-					// Check for matching category. 
-					let matchingCategory = (t.categoryid==id);
-					// Check for matching month. 
-					let matchingMonth = (t.transactiondate.m-1==monthIndex);
+
+					// Check for matching month and year. 
+					let matchingMonthAndYear = (t.transactiondate.m-1==monthIndex) && (t.transactiondate.y==year);
 	
 					// Include amount in category total if matching all criteria. 
-					if(isSpendTransaction && matchingCategory && matchingMonth) {
-						categoryTotal += (-1)*t.transactionamount;
+					if(isSpendTransaction && matchingMonthAndYear) {
+						spendcategorytotals[t.categoryid] += (-1)*t.transactionamount;
 					}
 				}
-				spendcategorytotals.push(categoryTotal);
+				// console.log(`Spend category totals (${monthName}):`,spendcategorytotals);
+				
+				// Create heading for given month. 
+				let heading = `
+				<!-- head -->
+				<h3 class="head">${ `${monthName} ${year}` }</h3>
+				<!-- /head -->`;
+				// Create edit button for given month. 
+				let btnbox = `
+				<!-- btnbox -->
+				<div class="btnbox">
+	
+					<!-- editbtn -->
+					<a class="editbtn btn" href="javascript:void(0)">Edit</a>
+					<!-- /editbtn -->
+	
+					<!-- deletebtn -->
+					<a class="deletebtn btn" href="javascript:void(0)">Delete</a>
+					<!-- /deletebtn -->
+	
+				</div>
+				<!-- /btnbox -->`;
+				// Create category progress bars for spending in given month. 
+				let progressbars = createProgressBars(spendcategorydata,spendcategorytotals,year,monthIndex);
+	
+				// Put category progress bars in budget box and add to result. 
+				result += `
+				<!-- budgetbox -->
+				<figure class="budgetbox box" data-monthindex="${monthIndex}">
+					${ heading + btnbox + progressbars }
+				</figure>
+				<!-- /budgetbox -->`;
 			}
-			// console.log(`Spend category totals (${monthName}):`,spendcategorytotals);
-			
-			// Create heading for given month. 
-			let heading = `
-			<!-- head -->
-			<h3 class="head">${ `${monthName} 2022` }</h3>
-			<!-- /head -->`;
-			// Create edit button for given month. 
-			let btnbox = `
-			<!-- btnbox -->
-			<div class="btnbox">
 
-				<!-- editbtn -->
-				<a class="editbtn btn" href="javascript:void(0)">Edit</a>
-				<!-- /editbtn -->
-
-				<!-- deletebtn -->
-				<a class="deletebtn btn" href="javascript:void(0)">Delete</a>
-				<!-- /deletebtn -->
-
-			</div>
-			<!-- /btnbox -->`;
-			// Create category progress bars for spending in given month. 
-			let progressbars = createProgressBars(spendcategorydata,spendcategorytotals,monthIndex);
-
-			// Put category progress bars in budget box and add to result. 
+			// Close page for given year. 
 			result += `
-			<!-- budgetbox -->
-			<figure class="budgetbox box" data-monthindex="${monthIndex}">
-				${ heading + btnbox + progressbars }
-			</figure>
-			<!-- /budgetbox -->`;
+			</div>
+			<!-- /yearpage -->`;
 		}
 		
 		// Get container for budget summaries. 
-		let budgetsbox = document.querySelector('main.main section#budget article#monthlysummary div.content');
+		let budgetsbox = document.querySelector('main.main section#budget article#monthlysumup div.content div.yrpgs');
 
 		// Add budgets to page. 
 		budgetsbox.innerHTML = result;
 
 		/****/
 	}
+}
+
+// Show detail page for selected budget. 
+function showBudgetDetailPage(event) {
+	console.log(event.currentTarget);
+
+	// Get index of selected year. 
+	let selectedYear = event.currentTarget.getAttribute('data-year');
+	let yearIndex = relevantTransactionYears.indexOf(1*selectedYear);
+
+	// TODO: Shift the page holder so appropriate page is showing. 
+	let pageholder = document.querySelector('section#budget article#monthlysumup div.content div.yrpgs');
+	pageholder.style.transform = `translateX(${-100*yearIndex}%)`;
 }
 
 

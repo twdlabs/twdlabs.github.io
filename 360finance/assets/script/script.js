@@ -12,7 +12,14 @@ var totalAmountEarned;
 
 // Initialize total spending. 
 var totalAmountSpent;
-var totalSpendPerMonth = [ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ];	// TODO: Make extendable to budgeting for multiple years. 
+
+// Initialize total spending per month. 
+var monthlySpendTotals = {
+	// 2022:[ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ],
+};
+var totalSpendPerMonth = [ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ];	// TODO: Make extendable to budgeting for multiple years. (this is now cancellable)
+
+// Initialize total spending per category. 
 // var totalSpendPerCategory = [];
 
 
@@ -57,31 +64,49 @@ function startItUp() {
 	/*****/
 
 
-	// Calculate account metrics. 
+	// Calculate account metrics.  <------ Extend to multiple years. This is where it's at !!!!!
 	function getAccountMetrics() {
 
-		// Aggregate total earnings. 
+		// Aggregate total earnings, total spending, and total spend per month. 
 		totalAmountEarned = 0;
-		for(let t of transactiondata) {
-			if(t.transactionamount>=0) totalAmountEarned += t.transactionamount;
-		}
-		// console.log('Total earnings:', dollar(totalAmountEarned) );
-
-		// Aggregate total spending. 
-		// Aggregate total spend per month. 
 		totalAmountSpent = 0;
+		monthlySpendTotals = {};
 		for(let t of transactiondata) {
+
+			// Check for income transaction. 
+			if(t.transactionamount>0) {
+
+				// Add transaction amount to total income amount. 
+				totalAmountEarned += t.transactionamount;
+			}
+
 			// Check for spend transaction. 
-			if(t.transactionamount<=0) {
+			/* if(t.transactionamount<=0) */
+			else {
+
+				// Add transaction amount to total spend amount. 
 				let transactionAmount = (-1 * t.transactionamount);
 				totalAmountSpent += transactionAmount;
 
+				// Get month and year. 
 				let monthIndex = t.transactiondate.m-1;
-				let alreadyValidAmount = !isNaN( totalSpendPerMonth[monthIndex] );
-				if(alreadyValidAmount) totalSpendPerMonth[monthIndex] += transactionAmount;
-				else totalSpendPerMonth[monthIndex] = transactionAmount;
+				let yearOfTransaction = t.transactiondate.y;
+
+				// Check if year is already represented in data. 
+				let yearNotFound = !( monthlySpendTotals[yearOfTransaction] );
+
+				// Add year to object list if non-existent. 
+				if(yearNotFound) monthlySpendTotals[yearOfTransaction] = [ 0,0,0, 0,0,0, 0,0,0, 0,0,0 ];
+				// Add transaction amount to corresponding monthly spend amount. 
+				monthlySpendTotals[yearOfTransaction][monthIndex] += transactionAmount;
+
+				// Add transaction amount to corresponding monthly spend amount. <--- (cancellable)
+				// let alreadyValidAmount = !isNaN( totalSpendPerMonth[monthIndex] );
+				// if(alreadyValidAmount) totalSpendPerMonth[monthIndex] += transactionAmount;
+				// else totalSpendPerMonth[monthIndex] = transactionAmount;
 			}
 		}
+		// console.log('Total earnings:', dollar(totalAmountEarned) );
 		// console.log('Total spending:', dollar(totalAmountSpent) );
 		// console.log('Spending per month:', totalSpendPerMonth.map(dollar) );
 

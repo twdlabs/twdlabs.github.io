@@ -1,11 +1,17 @@
 
 
 // Define month labels. 
-const monthNames = [ 
+/* const monthNames = [ 
 	'Jan','Feb','Mar', 
 	'Apr','May','Jun', 
 	'Jul','Aug','Sep', 
 	'Oct','Nov','Dec' 
+]; */
+const monthNames = [ 
+	'Ja','Fb','Mr', 
+	'Ap','Ma','Jn', 
+	'Jl','Ag','Sp', 
+	'Ot','Nv','Dc' 
 ];
 // console.log('monthNames:',monthNames);
 

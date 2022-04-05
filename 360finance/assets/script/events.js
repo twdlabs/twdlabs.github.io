@@ -72,17 +72,23 @@ function handleEvents() {
 	// Budget Page Events
 	
 	// Enable edit button to edit general monthly budget (same budget limits used for all months). 
-	let budgetEditBtn = document.querySelector('section#budget article#monthlysummary h2.head a.editbtn');
+	let budgetEditBtn = document.querySelector('section#budget article#monthlysumup div.head a.editbtn');
 	budgetEditBtn.addEventListener('click',openBudgetEditor);
 
 	// Enable budget box double clicks to edit general monthly budget. 
-	let budgetboxes = document.querySelectorAll('main.main section#budget article#monthlysummary div.content figure.budgetbox h3.head');
+	let budgetboxes = document.querySelectorAll('main.main section#budget article#monthlysumup div.content figure.budgetbox h3.head');
 	for(let box of budgetboxes) {
 		box.addEventListener('dblclick',openBudgetEditor);
 	}
+
+	// Enable simple budget boxes to navigate to corresponding detailed budget breakdown page. 
+	let simplebudgetbtns = document.querySelectorAll('section#budget article#annualsumup div.content figure.bucketbox');
+	for(let budgetbtn of simplebudgetbtns) {
+		budgetbtn.addEventListener('click',showBudgetDetailPage);
+	}
 	
 	// // Enable budget box edit button clicks to edit monthly budget. 
-	// let budgeteditbtns = document.querySelectorAll('main.main section#budget article#monthlysummary div.content figure.budgetbox div.btnbox a.editbtn');
+	// let budgeteditbtns = document.querySelectorAll('main.main section#budget article#monthlysumup div.content figure.budgetbox div.btnbox a.editbtn');
 	// console.log('budgeteditbtns:',budgeteditbtns);
 	// for(let btn of budgeteditbtns) {
 	// 	btn.addEventListener('click',openBudgetEditor);

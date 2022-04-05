@@ -125,12 +125,12 @@ function createPieChartLegend(legendElement,categoryData,categoryTotals,totalAmo
 
 // Create progress bars from given category data. 
 // Create progress bars based on spend category data: budget spend limits and actual spend totals. 
-function createProgressBars(categoryData,categoryTotals,monthIndex) {
+function createProgressBars(categoryData,categoryTotals,year,monthIndex) {
 	// console.log('Category Data:', categoryData);
 	// console.log('Category Totals:', categoryTotals);
 
-	// Initialize total monthly budget amount. 
-	let totalMonthlyBudgetAmount = 0;
+	// Initialize total monthly budget limit. 
+	let totalBudgetLimitThisMonth = 0;
 
 	// Create progress bars: category items. 
 	let result = '';
@@ -181,14 +181,13 @@ function createProgressBars(categoryData,categoryTotals,monthIndex) {
 		</div>
 		<!-- /progressbar -->`;
 
-		// Add to total monthly budget amount. 
-		totalMonthlyBudgetAmount += category.budgetmonthlylimit;
+		// Add to total monthly budget limit from given category. 
+		totalBudgetLimitThisMonth += category.budgetmonthlylimit;
 	}
 
 	// Get proportion of budget limit for entire budget. 
-	// let totalSpendThisMonth = totalAmountSpent;
-	let totalSpendThisMonth = totalSpendPerMonth[monthIndex];
-	let proportion = (totalSpendThisMonth/totalMonthlyBudgetAmount);
+	let totalSpendThisMonth = monthlySpendTotals[year][monthIndex];
+	let proportion = totalSpendThisMonth / totalBudgetLimitThisMonth;
 	let pct = (100*proportion).toFixed(1);
 	// console.log('Total Monthly Budget proportion:', pct+'%');
 
@@ -206,7 +205,7 @@ function createProgressBars(categoryData,categoryTotals,monthIndex) {
 
 			<!-- remainder -->
 			<span class="remainder">
-				<span class="num">${ dollar0(totalMonthlyBudgetAmount - totalSpendThisMonth) }</span>
+				<span class="num">${ dollar0(totalBudgetLimitThisMonth - totalSpendThisMonth) }</span>
 				<span class="suffix">${ (pct>100) ? ('Over') : ('Left') }</span>
 			</span>
 			<!-- /remainder -->
@@ -216,14 +215,14 @@ function createProgressBars(categoryData,categoryTotals,monthIndex) {
 
 		<!-- bar -->
 		<div class="bar" style="background:grey linear-gradient(90deg, transparent ${pct}% , var(--white) ${pct}% );">
-			<span class="caption">${ dollar0(totalSpendThisMonth) } of ${ dollar0(totalMonthlyBudgetAmount) }</span>
+			<span class="caption">${ dollar0(totalSpendThisMonth) } of ${ dollar0(totalBudgetLimitThisMonth) }</span>
 		</div>
 		<!-- /bar -->
 		
 	</div>
 	<!-- /progressbar -->`;
 
-	// Return progress bars. 
+	// Return resulting progress bars. 
 	return result;
 
 	// Get spend status for budget category. 
