@@ -1,0 +1,34 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	--themecolor:dodgerblue;
+	/* --themecolor:#88ABFF; */
+	--notesize:12rem;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+
+div#container {background-color:var(--themecolor); display:flex; flex-direction:row; justify-content:flex-start; flex-wrap:wrap; min-height:100vh; padding:2rem;}
+
+div#container main.main {background-color:white; width:100%; max-width:20rem; padding:1rem; border-radius:.5rem;}
+
+div#container div.square {background-color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; height:var(--notesize); width:var(--notesize); cursor:pointer; user-select:none; padding:.875rem; border-radius:.25rem; margin:.5rem; box-shadow: 0 .25rem .25rem #0002;}
+
+div#container div.square.note {align-items:stretch;}
+div#container div.square.note div.title {font-size:1.125rem; font-weight:600; margin-bottom:.25rem;}
+div#container div.square.note div.excerpt {flex-grow:1; font-size:.875rem;}
+div#container div.square.note div.foot {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding-top:.75rem; border-top:1px solid #0002;}
+div#container div.square.note div.foot span.date {font-size:.75rem;}
+div#container div.square.note div.foot span.changebtn {font-size:.75rem; cursor:pointer; user-select:none;}
+
+div#container div.square.addbtn {color:var(--themecolor); font-weight:100;}
+div#container div.square.addbtn span.icon {display:grid; place-items:center; font-size:3rem; min-height:1.5em; min-width:1.5em; border:1px dashed var(--themecolor); border-radius:50%;}
+div#container div.square.addbtn span.caption {font-size:.875rem; margin-top:.75rem;}

@@ -10,15 +10,23 @@
 		<title>Draggable Item</title>
 
 		<!-- Main Stylesheet -->
-		<!-- <link href="template.css" rel="stylesheet" type="text/css"/> -->
+		<!-- <link href="draggable.css" rel="stylesheet" type="text/css"/> -->
 		<style type="text/css">
 
 			* {box-sizing:border-box;}
+
+			:root {font-size:2rem;}
+
 			body {font-family:sans-serif; margin:0;}
+
+
 			div#container {background-color:white; min-height:100vh; position:relative; padding:1rem;}
+
 			div#container div.item {position:absolute; z-index:10;}
-			div#container div.item {background-color:whitesmoke; text-align:center; border:1px solid #CCC; /* box-shadow:0 .125rem .25rem #0003; */}
-			div#container div.item div.head {background-color:dodgerblue; color:white; white-space:nowrap; cursor:move; padding:.875rem .75rem; z-index:20;}
+			div#container div.item {background-color:whitesmoke; text-align:center; border:1px solid #CCC; box-shadow:0 .125rem .25rem #0003;}
+
+			div#container div.item div.head {background-color:dodgerblue; color:white; font-weight:600; white-space:nowrap; cursor:pointer; user-select:none; z-index:20; padding:1.5rem 3rem;}
+			div#container div.item div.head:active {cursor:move;}
 			
 		</style>
 	</head>
@@ -38,7 +46,7 @@
 
 			<!-- item -->
 			<div id="itemA" class="item">
-				<div class="head">Click here to move</div>
+				<div class="head draghook">Click here to move</div>
 				<p>Move</p>
 				<p>this</p>
 				<p>DIV</p>
@@ -53,91 +61,8 @@
 		<!-- <script src="database.js" type="text/javascript"></script> -->
 
 		<!-- Main Script -->
-		<!-- <script src="template.js" type="text/javascript"></script> -->
-		<script type="text/javascript">
-
-			// Make element draggable. 
-			let item = document.getElementById('itemA');
-			makeDraggable(item);
-
-			/*****/
-
-			// Make element draggable. 
-			function makeDraggable(element) {
-
-				// Define initial cursor position. 
-				var x0=0,y0=0;
-				var dx=0,dy=0;
-
-				// Allow for initiation of element drag movement. 
-				element.onmousedown = beginElementDrag;
-				// element.addEventListener('mousedown',beginElementDrag);
-
-				/*****/
-
-				// Begin dragging element. 
-				function beginElementDrag(event) {
-
-					// Use the default event or the window event. 
-					event = event || window.event;
-
-					// Cancel default drag/drop behavior. 
-					event.preventDefault();
-
-					// Save initial cursor position. 
-					x0 = event.clientX;
-					y0 = event.clientY;
-					// console.log('x0:',x0);
-					// console.log('y0:',y0);
-					
-					// Start moving element when mouse button pressed. 
-					element.onmousemove = dragElement;
-					element.onmouseup = endElementDrag;
-					// element.addEventListener('mousemove',dragElement);
-					// element.addEventListener('mouseup',endElementDrag);
-				}
-
-				// Drag element to current mouse position. 
-				function dragElement(event) {
-
-					// Use the default event or the window event. 
-					event = event || window.event;
-
-					// Cancel default drag/drop behavior. 
-					event.preventDefault();
-
-					// Save new cursor position. 
-					dx = x0 - event.clientX;
-					dy = y0 - event.clientY;
-					// console.log('dx:',dx);
-					// console.log('dy:',dy);
-					x0 = event.clientX;
-					y0 = event.clientY;
-					// console.log('x0:',x0);
-					// console.log('y0:',y0);
-					
-					// 
-					element.style.top = `${element.offsetTop-dy}px`;
-					element.style.left = `${element.offsetLeft-dx}px`;
-				}
-
-				// End dragging element. 
-				function endElementDrag(event) {
-
-					// Use the default event or the window event. 
-					// event = event || window.event;
-
-					// Cancel default drag/drop behavior. 
-					// event.preventDefault();
-					
-					// Stop moving element when mouse button released. 
-					element.onmousemove = null;
-					element.onmouseup = null;
-					// element.removeEventListener('mousemove',dragElement);
-					// element.removeEventListener('mouseup',endElementDrag);
-				}
-			}
-		</script>
+		<script src="draggable.js" type="text/javascript"></script>
+		<script type="text/javascript"></script>
 
 	</body>
 
