@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>File Upload</title>
+
+		<!-- Main Stylesheet -->
+		<link href="upload.css" rel="stylesheet" type="text/css"/>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- droptarget -->
+			<main class="droptarget">
+
+				<!-- icon -->
+				<svg class="icon uploadcloud" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2z"/>
+				</svg>
+				<!-- /icon -->
+
+				<!-- title -->
+				<span class="title empty">Drag &amp; Drop to Upload File</span>
+				<!-- /title -->
+
+				<!-- title -->
+				<span class="title filling">Release to Upload File</span>
+				<!-- /title -->
+
+				<!-- or -->
+				<span class="or">OR</span>
+				<!-- /or -->
+
+				<!-- btn -->
+				<label class="btn" for="browsefile">Browse File</label>
+				<!-- /btn -->
+
+				<!-- #browsefile -->
+				<input id="browsefile" type="file">
+				<!-- /#browsefile -->
+
+				<!-- <img class="upload" src="abc.png" alt="filename"> -->
+
+			</main>
+			<!-- /droptarget -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<script src="upload.js" type="text/javascript"></script>
+
+	</body>
+
+</html>

@@ -1,0 +1,35 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	--themecolor:#5256ad;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {background-color:var(--themecolor); display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.droptarget {background-color:transparent; color:white; white-space:nowrap; width:100%; max-width:36rem; min-height:15rem; transition:.125s;}
+div#container main.droptarget {display:grid; place-items:center; overflow:auto; padding:4rem 1rem; border:1px dashed white; border-radius:.25rem;}
+div#container main.droptarget svg.icon {font-size:8rem;}
+div#container main.droptarget span.or {margin:.75rem 0;}
+div#container main.droptarget label.btn {background-color:white; color:var(--themecolor); font-size:1.25rem; cursor:pointer; user-select:none; padding:.5rem 1.25rem; border-radius:.25rem; margin-top:.5rem;}
+div#container main.droptarget span.title {font-size:1.75rem;}
+div#container main.droptarget span.title.empty {display:block;}
+div#container main.droptarget span.title.filling {display:none;}
+div#container main.droptarget input#browsefile {display:none;}
+
+/* When Dragging Over */
+div#container main.droptarget.active {border-style:solid;}
+div#container main.droptarget.active span.title.empty {display:none;}
+div#container main.droptarget.active span.title.filling {display:block;}
+
+/* When Dropped */
+div#container main.droptarget.full {padding:0;}
+div#container main.droptarget.full img.upload {height:100%; width:100%; object-fit:cover; border-radius:inherit;}
