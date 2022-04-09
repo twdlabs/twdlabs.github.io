@@ -16,9 +16,15 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 
 
-div#container {background-color:var(--themecolor); display:flex; flex-direction:row; justify-content:flex-start; flex-wrap:wrap; min-height:100vh; padding:2rem;}
+div#container {background-color:var(--themecolor); display:flex; flex-direction:row; justify-content:flex-start; flex-wrap:wrap; align-content:flex-start; min-height:100vh; padding:2rem;}
 
-div#container main.main {background-color:white; width:100%; max-width:20rem; padding:1rem; border-radius:.5rem;}
+div#container div.overlay {position:fixed; top:0; left:0; height:100%; width:100%;}
+div#container div.overlay {background-color:#0008; display:grid; place-items:center; padding:2rem;}
+/* div#container div.overlay div.editor {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);} */
+div#container div.overlay div.editor {background-color:white; width:100%; max-width:20rem; padding:1rem; border-radius:.5rem;}
+div#container div.overlay div.editor h2.head {margin:0;}
+div#container div.overlay div.editor input.notetitle {width:100%;}
+div#container div.overlay div.editor textarea.notecontent {width:100%; resize:none;}
 
 div#container div.square {background-color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; height:var(--notesize); width:var(--notesize); cursor:pointer; user-select:none; padding:.875rem; border-radius:.25rem; margin:.5rem; box-shadow: 0 .25rem .25rem #0002;}
 
@@ -32,3 +38,4 @@ div#container div.square.note div.foot span.changebtn {font-size:.75rem; cursor:
 div#container div.square.addbtn {color:var(--themecolor); font-weight:100;}
 div#container div.square.addbtn span.icon {display:grid; place-items:center; font-size:3rem; min-height:1.5em; min-width:1.5em; border:1px dashed var(--themecolor); border-radius:50%;}
 div#container div.square.addbtn span.caption {font-size:.875rem; margin-top:.75rem;}
+

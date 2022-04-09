@@ -31,5 +31,5 @@ div#container main.droptarget.active span.title.empty {display:none;}
 div#container main.droptarget.active span.title.filling {display:block;}
 
 /* When Dropped */
-div#container main.droptarget.full {padding:0;}
-div#container main.droptarget.full img.upload {height:100%; width:100%; object-fit:cover; border-radius:inherit;}
+div#container main.droptarget.display {padding:0;}
+div#container main.droptarget.display img.upload {height:100%; width:100%; object-fit:cover; border-radius:inherit;}

@@ -1,13 +1,13 @@
 
 
 // Get drop target. 
-let droptarget = document.querySelector('main.droptarget');
+const droptarget = document.querySelector('main.droptarget');
+
+// Define acceptable file types. 
+const acceptedFileTypes = ['image/png','image/jpg','image/jpeg',];
 
 // Initialize data for selected file. 
 let selectedFile = undefined;
-
-// Define acceptable file types. 
-acceptedFileTypes = ['image/png','image/jpg','image/jpeg',];
 
 
 /*****/
@@ -41,18 +41,18 @@ function dropItem(event) {
 
 	// Prevent browser default handling (opening as link). 
 	event.preventDefault();
-
-	// Get user selected file. 
-	selectedFile = event.dataTransfer.files[0];
 	
 	// Show data transfer. 
 	console.log('Drag data transfer:',event.dataTransfer);
 
+	// Get user selected file. 
+	selectedFile = event.dataTransfer.files[0];
+
 	// Check for image file. 
-	let isImageFile = acceptedFileTypes.includes(selectedFile.type);
+	let validImageFile = !!(selectedFile) && acceptedFileTypes.includes(selectedFile.type);
 
 	// Use image file if valid. 
-	if(isImageFile) {
+	if(validImageFile) {
 		console.log('We got an image!',selectedFile.type);
 
 		// Create file reader. 
@@ -63,15 +63,19 @@ function dropItem(event) {
 
 		// Trigger load function above. 
 		fileReader.readAsDataURL(selectedFile);
+
+		// Put drop target into display mode. 
+		droptarget.classList.add('display');
 	}
 	else {
 		console.log('No image found');
 
+		// 
+		window.alert('Invalid image file selected')
+
 		// De-activate drop target. 
 		deactivateDropTarget();
 	}
-
-	droptarget.classList.add('full');
 
 	/*****/
 

@@ -12,6 +12,7 @@
 	--period:4s;
 	--shadow:0 .25rem .125rem #0004;
 	--thinshadow:0 .125rem .125rem #0004;
+	--edge:.375rem solid var(--themecolor);
 }
 
 
@@ -25,24 +26,27 @@ div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;
 div#container div.btn {cursor:pointer; user-select:none;}
 
 
-div#container main.main {position:fixed; top:0; right:0; overflow:hidden; /* max-width:20rem; */ box-shadow:var(--shadow);}
+div#container main.main {position:fixed; top:0; right:0; bottom:auto; left:auto; overflow:hidden; /* max-width:20rem; */ box-shadow:var(--shadow);}
 div#container main.main {background-color:white; display:flex; flex-direction:row; align-items:stretch;}
-div#container main.main {border-radius:.5rem; border-left:.375rem solid var(--themecolor); margin:1rem 2rem;}
-div#container main.main {transform:translateX(200%); transition:.5s;}
+div#container main.main {padding-bottom:.25rem; border-radius:.5rem; border-left:var(--edge); margin:1rem 2rem;}
+div#container main.main {transform:translateX(200%); transition:.5s cubic-bezier(.68,-.55,.265,1.35);}
 div#container main.main.active {transform:translateX(0);}
 
 div#container main.main div.seg {padding:.625rem .75rem;}
 div#container main.main div.side {display:grid; place-items:center;}
+/* div#container main.main div.left {} */
 div#container main.main div.left span.icon {background-color:var(--themecolor); color:white;}
 div#container main.main div.left span.icon {display:grid; place-items:center; min-height:2em; min-width:2em; border-radius:50%;}
 /* div#container main.main div.left span.icon svg.icon {} */
+/* div#container main.main div.right {} */
+div#container main.main div.right div.closebtn {height:100%;}
+/* div#container main.main div.right div.closebtn {transition:.375s;} */
+div#container main.main div.right div.closebtn:hover {background-color:whitesmoke;}
+/* div#container main.main div.right div.closebtn {height:100%; width:100%;} */
+/* div#container main.main div.right div.closebtn span.icon {} */
 div#container main.main div.center {flex-grow:1; display:flex; flex-direction:column; align-items:stretch;}
 div#container main.main div.center p.textcopy {font-weight:100; white-space:nowrap; margin:0;}
 div#container main.main div.center p.textcopy.h {font-size:1.125rem; font-weight:800;}
-div#container main.main div.closebtn {transition:.375s;}
-div#container main.main div.closebtn:hover {background-color:whitesmoke;}
-/* div#container main.main div.closebtn div.btn {height:100%; width:100%;} */
-/* div#container main.main div.closebtn div.btn span.icon {} */
 
 div#container main.main div.progress {position:absolute; bottom:0; left:0;}
 div#container main.main div.progress {background-color:var(--themecolor); height:.125rem; width:0;}
@@ -60,3 +64,10 @@ div#container div.showbtn span.caption {font-weight:100; letter-spacing:1px; /* 
 	from {width:100%;} to {width:0;}
 }
 
+@media screen and (max-width:30rem) {
+	div#container main.main {top:auto; right:0; bottom:0; left:0; transform:translateY(200%);}
+	div#container main.main {text-align:center; border-left:none; border-top:var(--edge);}
+	div#container main.main div.seg {padding:.5rem .625rem;}
+	div#container main.main div.right {padding-top:0;}
+	div#container main.main div.center p.textcopy {margin:0;}
+}
