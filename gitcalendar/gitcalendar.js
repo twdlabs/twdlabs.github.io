@@ -1,65 +1,64 @@
 
 
+
 // Get date of first commit (in ms). 
-const dateFirstCommit = getDateOfFirstCommit();
+const dateFirstCommit = new Date('2020-05-15 12:00:00').valueOf();
+
 
 // Get grid containers. 
-let yearlygrid = document.getElementById('yearlygrid');
 let recentgrid = document.getElementById('recentgrid');
+let yearlygridA = document.getElementById('yearA');
+let yearlygridB = document.getElementById('yearB');
+let yearlygridC = document.getElementById('yearC');
+let yearlygridD = document.getElementById('yearD');
+let yearlygridE = document.getElementById('yearE');
+let yearlygridF = document.getElementById('yearF');
 
 
-/*****/
+// Initialize list of most recent years. 
+var recentYears = [];
 
-
-// Add calendar for contributions in last 52 wks. 
-addRecentCalendar();
-
-// Add calendars for contributions in past few years. 
-addYearlyCalendar();
-
-// Add year navigator. 
-addYearNav();
-
-// Handle events. 
-handleEvents();
 
 
 /*****/
 
 
-// Get millisecond representation for date of first commit. 
-function getDateOfFirstCommit() {
+// Start it up. 
+startItUp();
 
-	// Define date of first contribution. 
-	let dateFirstCommit = new Date('2020-05-15 12:00:00').valueOf();
 
-	// Create object for date of first commit contributed. 
-	let dateObjFirstCommit = new Date(dateFirstCommit);
-	// console.log('Date of first commit:', dateFirstCommit, dateObjFirstCommit.getDay(), dateObjFirstCommit );
 
-	// Return result. 
-	return dateFirstCommit;
+/*****/
 
-	/****/
+
+function startItUp() {
 	
-	// // Get date of origin. 
-	// let origDate = dateFirstCommit;
-	// while( new Date(origDate).getDay()!=0 ) {
-	// 	origDate -= msPerDay;
-	// }
 	
-	// // Create object for date of origin. 
-	// let origDateObj = new Date(origDate);
-	// console.log('Start date:', origDate, origDateObj.getDay(), origDateObj );
+	// Add calendar for contributions in last 52 wks. 
+	addRecentCalendar();
+
+
+	// Add navigation for yearly calendars. 
+	// addYearCalendarNavigation();
+	
+	
+	// Add calendars for contributions in past few years. 
+	// addAllYearlyCalendars();
+	
+	
+	// Handle events. 
+	// handleEvents();
 }
+
 
 
 // TODO: Add single calendar for last 52 wks of contributions. 
 function addRecentCalendar() {
 	console.log('\nRecent Calendar');
 
-	// Get date of origin (in ms): a year ago. 
-	let startDate = getStartDate();
+	// Get start date (in ms): 52 wks prior. 
+	let startDate = getDateFromWksAgo(52);
+	let endDate = Date.now();
 	// console.log('Start date:',startDate);
 
 	// Initialize grid. 
@@ -68,99 +67,156 @@ function addRecentCalendar() {
 	// Add day labels. 
 	grid += createDayLabels();
 	// Add dots for days. 
-	grid += createDotsForDays(startDate);
+	grid += createSeriesOfWks( startDate, endDate );
 	
 	// Add recent grid to page. 
 	recentgrid.innerHTML = grid;
 
 	/****/
 
-	// Recent mode: 52 wks (364 days) prior to Sunday of most recently passed wk. 
-	// 1. Get Sunday of most recently passed wk
-	// 2. Subtract 364 days
-	// 2. Save millisecond id for that day
 
 	// Calculate millisecond representation for recent calendar start date. 
-	function getStartDate() {
-		// startDate  =  todayDate - 52wks - numBufferDays (day of wk index)
+	function getDateFromWksAgo(numWks) {
+		// 1. Get Sunday of most recently passed wk. 
+		// 2. Subtract 364 days. 
+		// 3. Save millisecond id for that day. 
 
 		// Get today's date. 
 		let todayDate = Date.now();
 
-		// Get date of 52 weeks prior (same day of week as today). 
-		let todayLess52Wks = todayDate - 52*7*msPerDay;
+		// Get number of buffer days to get a Sunday (same as index for day of week). 
+		let numBufferDays = new Date(todayDate).getDay();
 
-		// Get number of buffer days: same as index for day of week. 
-		let numBufferDays = new Date(todayLess52Wks).getDay();
+		// Recent mode
+		// Get date 52 wks (364 days) prior to Sunday of most recent week. 
+			// Get date 52 weeks (364 days) prior to today (same day of week). 
+			// Get actual start date -- Sunday prior to that day. 
+		let result = todayDate - numWks*(numDaysPerWk*msPerDay) - (numBufferDays*msPerDay);
 
-		// Get date of origin (the Sunday prior to the day 52 wks or 364 days ago). 
-		let date52WksAgo = todayLess52Wks - numBufferDays*msPerDay;
+		// Return resulting start date. 
+		return result;
+	}
+}
 
-		// Return resulting date of origin. 
-		return date52WksAgo;
+
+// Add navigation for yearly calendars. 
+function addYearCalendarNavigation() {
+
+	// Get container of year navigation. 
+	let yrlist = document.querySelector('nav#yrchooser ul.yrlist');
+
+	// Initialize year choices. 
+	let chooseyr = '';
+
+	// Initialize number of years.
+	let numYrs = 6;
+
+	// Get current year. 
+	let currentYr = ( new Date() ).getFullYear();
+
+	// Create array of most recent 6 years. 
+	recentYears = []
+	for(let i=0;i<numYrs;i++) {
+		recentYears.push( currentYr - i );
+	}
+	// console.log('recentYears:',recentYears);
+
+	// Create navigation item for each year. 
+	for(let year of recentYears) {
+		chooseyr += `
+		<!-- year -->
+		<li class="year">${year}</li>
+		<!-- /year -->`;
+	}
+	// console.log('chooseyr:',chooseyr);
+
+	// Add navigation to page. 
+	yrlist.innerHTML = chooseyr;
+
+	// Activate year navigation buttons. 
+	let navbtns = document.querySelectorAll('nav#yrchooser ul.yrlist li.year');
+	for(let btn of navbtns) {
+		btn.addEventListener('click',selectYear);
+	}
+
+	/****/
+
+	// Select year. 
+	function selectYear(event) {
+	
+		// Get selected year button. 
+		let selectedYrBtn = event.currentTarget;
+	
+		// Un-highlight all year nav buttons. 
+		for(btn of navbtns) {
+			btn.classList.remove('active');
+		}
+	
+		// Highlight selected year nav button. 
+		selectedYrBtn.classList.add('active');
+
+
+		// TODO: Show only page for selected year. 
+
+		// Hide grid pages for other years. 
+		let yearpages = document.querySelectorAll('.yeargrid');
+		for(let yg of yearpages) {
+			yg.classList.remove('active');
+		}
+		// Show page for selected year. 
+		let yr = selectedYrBtn.innerText;
+		let selectedPage = document.getElementById(`year${yr}`);
+		selectedPage.classList.add('active');
 	}
 }
 
 // TODO: Add calendars for past few years' contributions with separate page for each year. 
-function addYearlyCalendar() {
-	console.log('\nYearly Calendar');
+function addAllYearlyCalendars() {
+	for(let yr of recentYears) {
+		addYearlyCalendar(yr);
+	}
+}
 
-	// Get date of origin (in ms): a year ago. 
-	// let startDate = getStartDate();
-	let startDate = ( new Date('2022-01-01 12:00:00') ).valueOf();
-	let endDate = ( new Date('2022-12-31 12:00:00') ).valueOf();
-	// console.log('Start date:',startDate);
-	// console.log('End date:',endDate);
+// TODO: Add calendar for given year's contributions. 
+function addYearlyCalendar(year) {
+	console.log('\nYearly Calendar');
 
 	// Initialize grid. 
 	let grid = '';
-	
-	// Add day labels. 
-	grid += createDayLabels();
-	// Add dots for days. 
-	grid += createDotsForDays( startDate, endDate );
-	
-	// Add yearly grid to page. 
-	yearlygrid.innerHTML = grid;
-
-	/****/
 	
 	// Yearly mode: Jan 1 of year of earliest contribution
 	// 1. Get date of earliest contribution
 	// 2. Get year associated with that date. 
 	// 3. Save millisecond id for Jan 1 of that year
 
-	// Calculate millisecond representation for yearly calendar start date. 
-	function getStartDate() {
-		// startDate  =  todayDate - 52wks - numBufferDays (day of wk index)
+	// Go thru last few recentYears, starting with most recent year (current year). 
+	for(let yr of recentYears) {
 
-		// Get today's date. 
-		let todayDate = Date.now();
-
-		// Get date of 52 weeks prior (same day of week as today). 
-		let todayLess52Wks = todayDate - 52*7*msPerDay;
-
-		// Get number of buffer days: same as index for day of week. 
-		let numBufferDays = new Date(todayLess52Wks).getDay();
-
-		// Get date of origin (the Sunday prior to the day 52 wks or 364 days ago). 
-		let date52WksAgo = todayLess52Wks - numBufferDays*msPerDay;
-
-		// Return resulting date of origin. 
-		return date52WksAgo;
+		// Get yearly date range -- first and last day of given year (in ms). 
+		let startDate = ( new Date(`${yr}-01-01 12:00:00`) ).valueOf();
+		let endDate = ( new Date(`${yr}-12-31 12:00:00`) ).valueOf();
+		console.log(`Year ${yr} date range:`,startDate,endDate);
+	
+		// Add day labels. 
+		grid += createDayLabels();
+		// Add dots for days. 
+		grid += createSeriesOfWks( startDate, endDate );
 	}
+	
+	// TODO: Add yearly grid to page. 
+	yearlygrid.innerHTML = grid;
 }
 	
-// TODO: Add dots for actual days within given date range. 
-function createDotsForDays( startDate, endDate=Date.now() ) {
+// TODO: Create series of dot groups for actual wks within given date range. 
+function createSeriesOfWks( startDate, endDate ) {
 	console.log('Start date:', new Date(startDate) );
 	console.log('End date:', new Date(endDate) );
 
 	// Initialize result. 
-	let dotsForDays = '';
+	let seriesOfWks = '';
 
-	// Create dots for days (in 7-day groups). 
-	for(let currentDate=startDate; currentDate<endDate; currentDate+=1*msPerDay) {
+	// Create 7-day groups of day dots. 
+	for(let currentDate=1*startDate; currentDate<endDate; currentDate+=onewk) {
 	// for(let h=0;h<=52;h++) {
 
 		// Check if we need empty buffer wks. 
@@ -176,74 +232,97 @@ function createDotsForDays( startDate, endDate=Date.now() ) {
 		// let wk = contributiondata[xyz+h];
 	
 		// Begin period. 
-		dotsForDays += `
+		seriesOfWks += `
 		<!-- wk -->
 		<div class="wk">`;
 
 		// Create space for month label. 
-		dotsForDays += `
+		seriesOfWks += `
 		<!-- label -->
 		<div class="label month">-</div>
 		<!-- /label -->`;
 
-		// Create dots for days (in 7-day groups). 
-		for(let currentDate=startDate; currentDate<endDate; currentDate+=1*msPerDay) {
-			// 
-			dotsForDays += ``;
-		}
+		// 
+		seriesOfWks += createSeriesOfDays(currentDate);
 		
 		// End period. 
-		dotsForDays += `
+		seriesOfWks += `
 		</div>
 		<!-- /wk -->`;
 	}
 
 	// Return result. 
-	return dotsForDays;
+	return seriesOfWks;
+
+	/*****/
 	
-	for(let h in contributiondata) {
-	
-		// Add days. 
-		for(let i in wk) {
-	
+	// TODO: Add dots for actual days within given wk. 
+	function createSeriesOfDays(startDate) {
+
+		// 
+		let numEmptyDays = ( new Date(startDate) ).getDay();
+		let numActualDays = 7 - numEmptyDays;
+		let endDate = 1*startDate + numActualDays*oneday;
+
+		// let wklydata = 
+
+		// Create dots for days (in 7-day groups). 
+		{
+	 
 			// Get day differential from origin date. 
-			let numDaysFromStart = 7*h + 1*i;
+			// let numDaysFromStart = 7*h + 1*i;
 			// console.log('Day:',i);
 			// console.log('Days from start:',i);
 	
 			// Get number of contributions for given day. 
-			let count = wk[i];
+			// let count = wklydata[i];
 			// console.log(`Day ${numDaysFromStart}:`,count,'contributions');
 			
 			// Get date id. 
-			let dateId = 1*startDate + numDaysFromStart*msPerDay;
+			// let dateId = 1*startDate + numDaysFromStart*msPerDay;
 			// console.log('dateId:',dateId);
 
 			// Create date object to get elements of date. 
-			let dateObj = new Date(dateId);
-			let yr = 1 * dateObj.getFullYear();	// four digit yr
-			let mo = 1 * dateObj.getMonth();	// 0-11
-			let date = 1 * dateObj.getDate();	// 1-31
+			// let dateObj = new Date(dateId);
+			// let yr = 1 * dateObj.getFullYear();	// four digit yr
+			// let mo = 1 * dateObj.getMonth();	// 0-11
+			// let date = 1 * dateObj.getDate();	// 1-31
 			// console.log('dateObj:',dateObj);
 			// console.log('Year:',yr);
 			// console.log('Month index:',mo);
 			// console.log('Date:',date);
+			
+
+
+
+		}
+	
+		// 
+		let result = '';
+
+		// Create dots for given set of days. 
+		for(let d=1*startDate ; d<endDate ; d+=oneday) {
+			
+			// Create sample data. 
+			count = Math.floor( 32*Math.random() );
+			let yr = 2022;	// four digit yr
+			let mo = 0;	// 0-11
+			let date = 1;	// 1-31
 
 			// Create representations of date. 
 			let datecode = `${yr}-${ format2Dgt(mo+1) }-${ format2Dgt(date) }`;		// 2022-01-01
 			let datestring = `${monthNames[mo]} ${date}, ${yr}`;					// Jan 1, 2022
-			
+
+			console.log(datecode,count,'contributions');
+
 			// Create representation of contribution count. 
 			let contrstring = `${ (count)?(count):('No') } contribution${ (count==1)?(''):('s') }`;
-
 			// Create note of contributions for given date. 
 			let contributionnote = `${contrstring} on ${datestring}`;						// xyz contributions on Jan 1, 2022
-			let contributiontagnote = `<strong>${contrstring}</strong> on ${datestring}`;	// xyz contributions on Jan 1, 2022
+			let contributiontagnote = `<strong>${contrstring}</strong> on ${datestring}`;	// *xyz contributions* on Jan 1, 2022
 
-			// console.log(datecode,count,'contributions');
-	
 			// 
-			dotsForDays += `
+			result += `
 			<!-- day -->
 			<div class="day">
 
@@ -257,10 +336,26 @@ function createDotsForDays( startDate, endDate=Date.now() ) {
 
 			</div>
 			<!-- /day -->`;
-		}
-	}
 
-	/*****/
+			// // 
+			// result += `
+			// <!-- day -->
+			// <div class="day">
+
+			// 	<!-- dot -->
+			// 	<div class="dot"></div>
+			// 	<!-- /dot -->
+
+			// 	<!-- tag -->
+			// 	<div class="tag"></div>
+			// 	<!-- /tag -->
+
+			// </div>
+			// <!-- /day -->`;
+		}
+
+		return result;
+	}
 
 	// Get level name for given number of contributions. 
 	function getLevelName(n) {
@@ -285,66 +380,15 @@ function createDotsForDays( startDate, endDate=Date.now() ) {
 		// 
 		return (n>=0 && n<=9) ? ('0'+n) : (n) ;
 	}
-}
 
-// Add year navigator. 
-function addYearNav() {
-
-	// Get container of year navigation. 
-	let yrlist = document.querySelector('nav.yrchooser ul.yrlist');
-
-	// Initialize year choices. 
-	let chooseyr = '';
-
-	// Initialize number of years.
-	let numYrs = 6;
-
-	// Get current year. 
-	let currentYr = ( new Date() ).getFullYear();
-
-	// Create array of most recent 6 years. 
-	let recentYears = []
-	for(let i=0;i<numYrs;i++) {
-		recentYears.push( currentYr - i );
-	}
-	// console.log('recentYears:',recentYears);
-
-	// Create navigation item for each year. 
-	for(let year of recentYears) {
-		chooseyr += `
-		<!-- year -->
-		<li class="year">${year}</li>
-		<!-- /year -->`;
-	}
-	// console.log('chooseyr:',chooseyr);
-
-	// Add navigation to page. 
-	yrlist.innerHTML = chooseyr;
-
-	// Activate year navigation buttons. 
-	let navbtns = document.querySelectorAll('nav.yrchooser ul.yrlist li.year');
-	for(let btn of navbtns) {
-		btn.addEventListener('click',selectYear);
-	}
-
-	/****/
-
-	// Select year. 
-	function selectYear(event) {
+	/*****/
+	/*****/
+	/*****/
 	
-		// Get selected year button. 
-		let selectedYrBtn = event.currentTarget;
-	
-		// Un-highlight all year nav buttons. 
-		for(btn of navbtns) {
-			btn.classList.remove('active');
+	for(let h in contributiondata) {
+		// Add days. 
+		for(let i in wk) {
 		}
-	
-		// Highlight selected year nav button. 
-		selectedYrBtn.classList.add('active');
-
-		// TODO: Show data for selected year. 
-		// TODO: Switch to page for selected year. 
 	}
 }
 
@@ -357,7 +401,7 @@ function createDayLabels() {
 	// Begin period. 
 	daylabels += `
 	<!-- wk -->
-	<div class="wk">`;
+	<div class="wk labels">`;
 
 	// Create space for month label. 
 	daylabels += `
@@ -388,7 +432,7 @@ function createDayLabels() {
 function handleEvents() {
 
 	// Get all day dots. 
-	let dayDots = document.querySelectorAll('main.grid div.day div.dot');
+	let dayDots = document.querySelectorAll('figure.grid div.day div.dot');
 	// console.log('dayDots:',dayDots);
 	
 	// Enable click of day dots to focus single dot. 
@@ -415,8 +459,13 @@ function handleEvents() {
 		if(alreadySelected) {
 
 			// Un-dim entire dot grid. 
-			yearlygrid.classList.remove('off');
 			recentgrid.classList.remove('off');
+			yearlygridA.classList.remove('off');
+			yearlygridB.classList.remove('off');
+			yearlygridC.classList.remove('off');
+			yearlygridD.classList.remove('off');
+			yearlygridE.classList.remove('off');
+			yearlygridF.classList.remove('off');
 			
 			// Un-focus single selected dot. 
 			selectedDot.classList.remove('on');
@@ -426,8 +475,13 @@ function handleEvents() {
 		else {
 
 			// Dim entire dot grid. 
-			yearlygrid.classList.add('off');
 			recentgrid.classList.add('off');
+			yearlygridA.classList.add('off');
+			yearlygridB.classList.add('off');
+			yearlygridC.classList.add('off');
+			yearlygridD.classList.add('off');
+			yearlygridE.classList.add('off');
+			yearlygridF.classList.add('off');
 			
 			// Un-focus all other dots. 
 			for(let dot of dayDots) {
