@@ -64,21 +64,39 @@ function dropItem(event) {
 
 	// Get user selected file. 
 	selectedFile = event.dataTransfer.files[0];
-	console.log('Selected file:',selectedFile);
+	console.log('Selected file:',selectedFile.type,selectedFile);
 
-	// Check for image file. 
+	// Use selected file. 
+	useSelectedFile(selectedFile);
+}
+
+// Select file for input. 
+function selectFile(event) {
+
+	// Get selected file. 
+	selectedFile = event.currentTarget.files[0];
+	console.log('Selected file:',selectedFile.type,selectedFile);
+
+	// Use selected file. 
+	useSelectedFile(selectedFile);
+}
+
+// Use selected file. 
+function useSelectedFile() {
+
+	// Check for valid image file. 
 	let validImageFile = !!(selectedFile) && acceptedFileTypes.includes(selectedFile.type);
 	console.log('Valid image file:',validImageFile);
 
 	// Use image file if valid. 
 	if(validImageFile) {
-		console.log('We got a valid image file!',selectedFile.type);
+		console.log('Image file successfully loaded:',selectedFile.type);
 
 		// Create file reader. 
 		let fileReader = new FileReader();
 
 		// Load selected image when file reader is loaded.
-		fileReader.onload = ()=>{loadSelectedImage(fileReader);}
+		fileReader.onload = ()=>{ loadSelectedImage(fileReader); }
 
 		// Trigger load function above. 
 		fileReader.readAsDataURL(selectedFile);
@@ -87,7 +105,7 @@ function dropItem(event) {
 		droptarget.classList.add('display');
 	}
 	else {
-		console.log('No image found');
+		console.log('No valid image file found');
 
 		// 
 		window.alert('Invalid image file selected')
@@ -108,14 +126,4 @@ function dropItem(event) {
 		// Show selected image in drop target. 
 		droptarget.innerHTML = `<img class="upload" src="${fileUrl}" alt="${selectedFile.name}">`;
 	}
-}
-
-// Select file for input. 
-function selectFile(event) {
-
-	// Get selected file. 
-	selectedFile = event.currentTarget.files[0];
-	console.log('Selected file:',selectedFile);
-
-	// Check for image file. 
 }
