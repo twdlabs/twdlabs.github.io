@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Game Board</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="gameboard.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box;}
+
+
+			:root {
+				--themecolor:whitesmoke;
+				--paddedcell:calc(var(--cellgap) + var(--cellsize));
+				--cellsize:6rem;
+				--cellgap:.5rem;
+				--x:0;
+				--y:0;
+			}
+
+
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {background-color:var(--themecolor);}
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.gameboard {background-color:white; /* width:100%; max-width:20rem; */ padding:var(--cellgap); border-radius:.375rem;}
+			div#container main.gameboard {display:grid; grid-template:repeat(4,1fr)/repeat(4,1fr); grid-gap:var(--cellgap); position:relative;}
+			div#container main.gameboard div.cell {background-color:lightgrey; cursor:pointer; min-height:var(--cellsize); min-width:var(--cellsize); border-radius:inherit;}
+			div#container main.gameboard div.cell:hover {background-color:darkgrey;}
+			div#container main.gameboard div.tile {position:absolute; left:calc( var(--cellgap) + var(--x) * var(--paddedcell) ); top:calc( var(--cellgap) + var(--y) * var(--paddedcell) ); transition:.2s;}
+			div#container main.gameboard div.tile {background-color:dodgerblue; cursor:pointer; min-height:var(--cellsize); min-width:var(--cellsize); border-radius:inherit;}
+			div#container main.gameboard div.tile {display:grid; font-size:3rem; font-weight:bold; place-items:center; opacity:.75;}
+			div#container main.gameboard div.tile:empty:after {content:'0';}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- gameboard -->
+			<main class="gameboard">
+				
+				<!-- cell -->
+				<div class="cell" data-x="0" data-y="0"></div>
+				<!-- /cell -->
+				
+				<!-- cell -->
+				<div class="cell" data-x="1" data-y="0"></div>
+				<!-- /cell -->
+				
+				<!-- cell -->
+				<div class="cell" data-x="0" data-y="1"></div>
+				<!-- /cell -->
+				
+				<!-- cell -->
+				<div class="cell" data-x="1" data-y="1"></div>
+				<!-- /cell -->
+				
+				
+				<!-- tile -->
+				<div class="tile"></div>
+				<!-- /tile -->
+
+			</main>
+			<!-- /gameboard -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="gameboard.js" type="text/javascript"></script> -->
+		<script type="text/javascript">
+
+
+			// Load cells onto game board. 
+			loadCells();
+
+			// Activate cells on game board. 
+			activateCells();
+
+
+			/*****/
+
+
+			// Load cells onto game board. 
+			function loadCells() {
+
+				// 
+				let boardsize = 4;
+
+				// Initialize result. 
+				let result = '';
+
+				// Go thru rows for game board. 
+				for(let h=0;h<boardsize;h++) {
+
+					// Go thru columns for game board. 
+					for(let i=0;i<boardsize;i++) {
+
+						// 
+						result += `
+						<!-- cell -->
+						<div class="cell" data-x="${i}" data-y="${h}"></div>
+						<!-- /cell -->`;
+					}
+				}
+				
+				// Add result to page. 
+				document.querySelector('main.gameboard').innerHTML = result;
+			}
+
+			// Activate cells on game board. 
+			function activateCells() {
+
+				// Get all cells on game board. 
+				let allCells = document.querySelectorAll('main.gameboard div.cell');
+
+				// Go thru cells. 
+				for(let cell of allCells) {
+					cell.addEventListener('click',selectCell);
+				}
+			}
+
+			// Select cell. 
+			function selectCell(event) {
+
+				// Get selected cell. 
+				let selectedCell = event.currentTarget;
+				let x = 1 * selectedCell.getAttribute('data-x');
+				let y = 1 * selectedCell.getAttribute('data-y');
+
+				console.log(`Selected cell at x:${x} y:${y}`);
+			}
+		</script>
+
+	</body>
+
+</html>
