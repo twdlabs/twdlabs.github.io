@@ -9,7 +9,7 @@ function openSearch() {
 	document.getElementById('searchquery').value = '';
 
 	// Activate search section. 
-	let search = document.querySelector('article.home section.contacts div.search');
+	let search = document.querySelector('section#list div#contacts div.search');
 	search.classList.add('active');
 	// console.log(search);
 
@@ -34,7 +34,7 @@ function closeSearch() {
 	console.log('Closing chat search');
 
 	// De-activate search section. 
-	let search = document.querySelector('article.home section.contacts div.search');
+	let search = document.querySelector('section#list div#contacts div.search');
 	search.classList.remove('active');
 	// console.log(search);
 
@@ -49,7 +49,7 @@ function closeSearch() {
 function filterContactList(query) {
 
 	// Get all contact list items. 
-	let allContactListItems = document.querySelectorAll('article.home section.contacts ul.contactlist li.contactitem');
+	let allContactListItems = document.querySelectorAll('section#list div#contacts ul.contactlist li.contactitem');
 	// console.log('allContactListItems',allContactListItems);
 
 	// Apply contact list filter using given query. 

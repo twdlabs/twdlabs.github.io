@@ -3,90 +3,90 @@
 
 /* Message Thread Page */
 
-div#container main article#chat {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch; position:relative;}
-div#container main article#chat::after {content:''; display:none; position:absolute; top:0; left:0; height:100%; width:100%; background-color:var(--lightgrey);}
-div#container main article#chat.open::after {display:block;}
+div#container main section#chat {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch; position:relative;}
+div#container main section#chat::after {content:''; display:none; position:absolute; top:0; left:0; height:100%; width:100%; background-color:var(--lightgrey);}
+div#container main section#chat.open::after {display:block;}
 
 
 /* Header Section */
 
-div#container main article#chat header.header {flex-shrink:0; background-color:white; border:1px solid var(--offwhite);}
-div#container main article#chat header.header {display:flex; flex-direction:row; align-items:center; padding:.75rem;}
+div#container main section#chat header.header {flex-shrink:0; background-color:white; border:1px solid var(--offwhite);}
+div#container main section#chat header.header {display:flex; flex-direction:row; align-items:center; padding:.75rem;}
 
-div#container main article#chat header.header div.backbtn {display:grid; place-items:center; font-size:2.5rem; cursor:pointer; user-select:none; margin-right:1rem;}
-div#container main article#chat header.header div.backbtn {display:none;}
+div#container main section#chat header.header div.backbtn {display:grid; place-items:center; font-size:2.5rem; cursor:pointer; user-select:none; margin-right:1rem;}
+div#container main section#chat header.header div.backbtn {display:none;}
 
-div#container main article#chat header.header div.recipient {flex-grow:1; display:flex; flex-direction:row; align-items:center; padding:0 1rem;}
-div#container main article#chat header.header div.recipient div.avatar {background-color:#0004; flex-grow:0; height:3rem; width:3rem; border-radius:50%; overflow:hidden;}
-div#container main article#chat header.header div.recipient div.avatar img {height:100%; width:100%; object-fit:cover;}
-div#container main article#chat header.header div.recipient div.remainder {flex-grow:1; margin-left:.75rem;}
-div#container main article#chat header.header div.recipient div.remainder div.name {color:var(--black); font-size:1.25rem; font-weight:400;}
-div#container main article#chat header.header div.recipient div.remainder div.status {color:var(--black); font-size:1rem; font-weight:300; margin-top:.375rem;}
-div#container main article#chat header.header div.recipient div.remainder div.status:before {content:''; display:inline-block; min-height:.75rem; min-width:.75rem; border-radius:50%; background-color:var(--offwhite); margin-right:.45rem;}
-div#container main article#chat header.header div.recipient.active div.remainder div.status:before {background-color:forestgreen;}
-div#container main article#chat header.header div.recipient div.remainder div.status::after {content:'Offline';}
-div#container main article#chat header.header div.recipient.active div.remainder div.status::after {content:'Online';}
+div#container main section#chat header.header div.recipient {flex-grow:1; display:flex; flex-direction:row; align-items:center; padding:0 1rem;}
+div#container main section#chat header.header div.recipient div.avatar {background-color:#0004; flex-grow:0; height:3rem; width:3rem; border-radius:50%; overflow:hidden;}
+div#container main section#chat header.header div.recipient div.avatar img {height:100%; width:100%; object-fit:cover;}
+div#container main section#chat header.header div.recipient div.remainder {flex-grow:1; margin-left:.75rem;}
+div#container main section#chat header.header div.recipient div.remainder div.name {color:var(--black); font-size:1.25rem; font-weight:400;}
+div#container main section#chat header.header div.recipient div.remainder div.status {color:var(--black); font-size:1rem; font-weight:300; margin-top:.375rem;}
+div#container main section#chat header.header div.recipient div.remainder div.status:before {content:''; display:inline-block; min-height:.75rem; min-width:.75rem; border-radius:50%; background-color:var(--offwhite); margin-right:.45rem;}
+div#container main section#chat header.header div.recipient.active div.remainder div.status:before {background-color:forestgreen;}
+div#container main section#chat header.header div.recipient div.remainder div.status::after {content:'Offline';}
+div#container main section#chat header.header div.recipient.active div.remainder div.status::after {content:'Online';}
 
 
 /* Message History Section */
 
-div#container main article#chat section#msghistory {flex-grow:1; background-color:var(--offwhite); padding:1rem; padding-top:0;}
-div#container main article#chat section#msghistory {overflow:auto; scrollbar-width:none; scroll-behavior:smooth;}
-/* div#container main article#chat section#msghistory {display:flex; flex-direction:column; justify-content:center; align-items:stretch; min-height:100%;} */
+div#container main section#chat div#msghistory {flex-grow:1; background-color:var(--offwhite); padding:1rem; padding-top:0;}
+div#container main section#chat div#msghistory {overflow:auto; scrollbar-width:none; scroll-behavior:smooth;}
+/* div#container main section#chat div#msghistory {display:flex; flex-direction:column; justify-content:center; align-items:stretch; min-height:100%;} */
 
-div#container main article#chat section#msghistory div.inner:empty {display:grid; place-items:center; text-align:center; height:100%;}
-div#container main article#chat section#msghistory div.inner:empty:before {content:'No messages are available. Once you send messages they will appear here.'; line-height:1.5; width:100%; max-width:20rem; margin:0 auto;}
+div#container main section#chat div#msghistory div.inner:empty {display:grid; place-items:center; text-align:center; height:100%;}
+div#container main section#chat div#msghistory div.inner:empty:before {content:'No messages are available. Once you send messages they will appear here.'; line-height:1.5; width:100%; max-width:20rem; margin:0 auto;}
 
-div#container main article#chat section#msghistory div.inner div.msgblock {filter:drop-shadow(#0001 0 .25rem .375rem); margin-top:2rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock div.timestamp {color:var(--grey); font-size:.675rem; text-align:center; margin:1rem 0;}
+div#container main section#chat div#msghistory div.inner div.msgblock {filter:drop-shadow(#0001 0 .25rem .375rem); margin-top:2rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.timestamp {color:var(--grey); font-size:.675rem; text-align:center; margin:1rem 0;}
 
-div#container main article#chat section#msghistory div.inner div.msgblock div.content {display:flex;}
-div#container main article#chat section#msghistory div.inner div.msgblock.r div.content {/* align-self:flex-start; */ flex-direction:row;}
-div#container main article#chat section#msghistory div.inner div.msgblock.s div.content {/* align-self:flex-end; */ flex-direction:row-reverse;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content {display:flex;}
+div#container main section#chat div#msghistory div.inner div.msgblock.r div.content {/* align-self:flex-start; */ flex-direction:row;}
+div#container main section#chat div#msghistory div.inner div.msgblock.s div.content {/* align-self:flex-end; */ flex-direction:row-reverse;}
 
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar {flex-grow:0; padding:0 .5rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar {display:flex; flex-direction:column; justify-content:flex-end;}
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.avatar img {max-width:2rem; max-height:2rem; object-fit:cover; border-radius:50%; filter:grayscale(.25);}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.avatar {flex-grow:0; padding:0 .5rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.avatar {display:flex; flex-direction:column; justify-content:flex-end;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.avatar img {max-width:2rem; max-height:2rem; object-fit:cover; border-radius:50%; filter:grayscale(.25);}
 
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block {flex-grow:1;}
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block {position:relative; display:flex; flex-direction:column;}
-div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block {align-items:flex-start;}
-div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block {align-items:flex-end;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block {flex-grow:1;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block {position:relative; display:flex; flex-direction:column;}
+div#container main section#chat div#msghistory div.inner div.msgblock.r div.content div.block {align-items:flex-start;}
+div#container main section#chat div#msghistory div.inner div.msgblock.s div.content div.block {align-items:flex-end;}
 
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble {display:grid; place-items:center; font-weight:200; min-height:2.25em; min-width:2.25em; border-radius:1.25rem; padding:.65rem .85rem .5rem; margin-top:.15rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block div.bubble {background-color:white; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock.r div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble {background-color:var(--black); color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
-div#container main article#chat section#msghistory div.inner div.msgblock.s div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block div.bubble {display:grid; place-items:center; font-weight:200; min-height:2.25em; min-width:2.25em; border-radius:1.25rem; padding:.65rem .85rem .5rem; margin-top:.15rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock.r div.content div.block div.bubble {background-color:white; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock.r div.content div.block div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock.r div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock.s div.content div.block div.bubble {background-color:var(--black); color:white; border-radius:1.25rem .25rem .25rem 1.25rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock.s div.content div.block div.bubble:last-child {border-radius:1.25rem .25rem 1.25rem 1.25rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock.s div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem .25rem 1.25rem;}
 
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption {line-height:1.25; font-size:.875rem;}
-/* div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption:empty::after {content:'...'; color:transparent;} */
-div#container main article#chat section#msghistory div.inner div.msgblock div.content div.block div.bubble span.timestamp {position:absolute; left:0; top:50%; transform:translate(-100%,-50%);}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption {line-height:1.25; font-size:.875rem;}
+/* div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block div.bubble span.caption:empty::after {content:'...'; color:transparent;} */
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block div.bubble span.timestamp {position:absolute; left:0; top:50%; transform:translate(-100%,-50%);}
 
-/* div#container main article#chat section#msghistory div.inner div.msgblock.r + div.msgblock.r {margin-top:0;} */
-/* div#container main article#chat section#msghistory div.inner div.msgblock.s + div.msgblock.s {margin-top:0;} */
-/* div#container main article#chat section#msghistory div.inner div.msgblock.r + div.msgblock.r div.timestamp {display:none;} */
-/* div#container main article#chat section#msghistory div.inner div.msgblock.s + div.msgblock.s div.timestamp {display:none;} */
-/* div#container main article#chat section#msghistory div.inner div.msgblock.r + div.msgblock.r div.content div.avatar {visibility:hidden;} */
-/* div#container main article#chat section#msghistory div.inner div.msgblock.s + div.msgblock.s div.content div.avatar {visibility:hidden;} */
+/* div#container main section#chat div#msghistory div.inner div.msgblock.r + div.msgblock.r {margin-top:0;} */
+/* div#container main section#chat div#msghistory div.inner div.msgblock.s + div.msgblock.s {margin-top:0;} */
+/* div#container main section#chat div#msghistory div.inner div.msgblock.r + div.msgblock.r div.timestamp {display:none;} */
+/* div#container main section#chat div#msghistory div.inner div.msgblock.s + div.msgblock.s div.timestamp {display:none;} */
+/* div#container main section#chat div#msghistory div.inner div.msgblock.r + div.msgblock.r div.content div.avatar {visibility:hidden;} */
+/* div#container main section#chat div#msghistory div.inner div.msgblock.s + div.msgblock.s div.content div.avatar {visibility:hidden;} */
 
 
 /* Message Composer Section */
 
-div#container main article#chat section.composer {flex-shrink:0; background-color:var(--offwhite); min-height:3rem; padding:.125rem; padding-top:0;}
-div#container main article#chat section.composer {display:flex; flex-direction:row; align-items:stretch;}
+div#container main section#chat div#composer {flex-shrink:0; background-color:var(--offwhite); min-height:3rem; padding:.375rem; padding-top:0;}
+div#container main section#chat div#composer {display:flex; flex-direction:row; align-items:stretch;}
 
-div#container main article#chat section.composer div.btn {flex-grow:0; display:grid; place-items:center; min-height:2.5rem; background-color:var(--black); color:white; cursor:pointer;}
-div#container main article#chat section.composer div.btn.sendbtn {min-width:2.75rem; border-radius:0 .5rem .5rem 0; padding-right:.125rem;}
-div#container main article#chat section.composer div.btn.mediabtn {min-width:2.5rem; border-radius:50%; margin-right:.5rem; display:none; /* background-color:white; color:black; border-color:transparent; */}
-div#container main article#chat section.composer div.btn svg.icon {font-size:1.25rem;}
-div#container main article#chat section.composer input#newmessage {flex-grow:1; font-size:inherit; font-family:inherit; padding:.5rem 1rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
+div#container main section#chat div#composer div.btn {flex-grow:0; display:grid; place-items:center; min-height:2.5rem; background-color:var(--black); color:white; cursor:pointer;}
+div#container main section#chat div#composer div.btn.sendbtn {min-width:2.75rem; border-radius:0 .5rem .5rem 0; padding-right:.125rem;}
+div#container main section#chat div#composer div.btn.mediabtn {min-width:2.5rem; border-radius:50%; margin-right:.5rem; display:none; /* background-color:white; color:black; border-color:transparent; */}
+div#container main section#chat div#composer div.btn svg.icon {font-size:1.25rem;}
+div#container main section#chat div#composer input#newmessage {flex-grow:1; font-size:inherit; font-family:inherit; padding:.5rem 1rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
 
 
 
 @media screen and (max-width:48rem) {
-	div#container main article#chat header.header div.backbtn {display:grid;}
-	div#container main article#chat header.header div.recipient {padding:0 .25rem;}
+	div#container main section#chat header.header div.backbtn {display:grid;}
+	div#container main section#chat header.header div.recipient {padding:0 .25rem;}
 }

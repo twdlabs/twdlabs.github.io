@@ -35,7 +35,7 @@ function handleEvents() {
 	{
 
 		// Get contact list items. 
-		let contactitems = document.querySelectorAll('article.home section.contacts ul.contactlist li.contactitem');
+		let contactitems = document.querySelectorAll('section#list div#contacts ul.contactlist li.contactitem');
 		// console.log('contactitems',contactitems);
 	
 		// Activate contact list item clicks. 
@@ -99,7 +99,7 @@ function refreshUserData() {
 		}
 
 		// Add contacts to contact list. 
-		document.querySelector('article.home section.contacts ul.contactlist').innerHTML = result;
+		document.querySelector('section#list div#contacts ul.contactlist').innerHTML = result;
 
 
 		/*****/
@@ -230,9 +230,9 @@ function openMsgThread(event) {
 	refreshMsgHistory();
 
 	// Open messaging thread. 
-	document.querySelector('main div.innermain').classList.add('open');
+	document.querySelector('main div.slider').classList.add('open');
 	// if(brandNew) {
-	// 	document.querySelector('main article.thread').classList.remove('gone');
+	// 	document.querySelector('main section#chat').classList.remove('gone');
 	// 	brandNew = false;
 	// }
 
@@ -245,7 +245,7 @@ function closeMsgThread() {
 	console.log('Closing message thread...');
 
 	// Close messaging thread. 
-	document.querySelector('main div.innermain').classList.remove('open');
+	document.querySelector('main div.slider').classList.remove('open');
 
 	// Remove previous recipient id. Is this necessary? Maybe not, just in case the desktop version is open. 
 	// currentRecipientId = -1;

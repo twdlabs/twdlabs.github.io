@@ -3,23 +3,24 @@
 
 // Refresh messages in thread. 
 function refreshMsgHistory() {
-	console.log('\nRefreshing message thread...');
+	console.log('\nRefreshing message thread...');return;
 
 
 	// Find all messages relevant to current user cohort. 
 	let relevantMessages = findRelevantMessages(currentUserId,currentRecipientId);
 	console.log('\tRelevant messages:', relevantMessages);
+	let msgThreadLayout = createMessageLayout(relevantMessages);
 
 	// Create separate groups of messages from original list of messages. 
-	let allMessageGroups = createSeparateMessageGroups(relevantMessages);
-	console.log('\tAll message groups:', allMessageGroups);
+	// let allMessageGroups = createSeparateMessageGroups(relevantMessages);
+	// console.log('\tAll message groups:\t', allMessageGroups);
 
 	// Create message history layout (grouped by time proximity) from time-linked groups of messages. 
-	let msgThreadLayout = createMessageLayout(allMessageGroups);
+	// let msgThreadLayout = createMessageLayout(allMessageGroups);
 	// console.log('\tMessage thread layout:', msgThreadLayout);
 	
 	// Load message history into thread. 
-	document.querySelector('article.thread section#msghistory div.inner').innerHTML = msgThreadLayout;
+	document.querySelector('section#chat div#msghistory div.inner').innerHTML = msgThreadLayout;
 
 	// Scroll to bottom of message history thread box. 
 	let msghistorybox = document.getElementById('msghistory');
@@ -80,6 +81,10 @@ function refreshMsgHistory() {
 		// Go thru message list items to separate into list of grouped message items. 
 		for(let i=0 ; i<messageList.length ; i++) {
 
+			// 
+			let sameGroupAsLastOne = true || false;
+
+			// 
 			if(sameGroupAsLastOne) numGroups++;
 		}
 

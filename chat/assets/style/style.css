@@ -1,6 +1,10 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+
+* {box-sizing:border-box;}
 
 
 
@@ -13,31 +17,96 @@
 }
 
 
-* {box-sizing:border-box;}
-
 
 body {font-family:Montserrat,Nunito,sans-serif; margin:0;}
 
 
-/* Slider Container */
-div#container {display:flex; flex-direction:row; align-items:stretch; height:100vh;}
-div#container {background-color:var(--offwhite); background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); /* background:orange; */ padding:1rem;}
-div#container main {background-color:white; width:100%; max-width:60rem; max-height:100%; overflow:hidden; border-radius:.5rem; margin:0 auto;}
-div#container main div.innermain {height:100%; display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container main div.innermain {width:100%;}
-div#container main div.innermain article {height:100%; width:50%; max-height:100%; /* max-width:24rem; */ overflow:hidden;}
-/* div#container main div.innermain article.home {} */
-/* div#container main div.innermain article#chat {} */
-/* div#container main div.innermain article.thread {} */
+
+div#container {background-color:var(--offwhite); height:100vh; padding:1rem;}
+div#container {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+/* div#container {display:grid; place-items:center;} */
+
+div#container main {background-color:white; max-height:100%; overflow:hidden; border-radius:.5rem; margin:0 auto; box-shadow:0 .5rem 3rem #0005;}
+/* div#container main {display:block;} */
+div#container main.gone {display:none;}
+div#container main#chatapp {width:100%; max-width:60rem;}
+/* div#container main#chatapp {display:none;} */
+/* div#container.user main#chatapp {display:block;} */
+div#container main#chooseuser {width:100%; max-width:36rem;}
+div#container main#chooseuser div#gobtn {display:none;}
+div#container main#chooseuser div#gobtn {font-size:1.25rem; font-weight:bold; cursor:pointer; user-select:none;}
+div#container main#chooseuser div#gobtn {padding:.75rem 1.5rem; border:.125rem solid; border-radius:.375rem; margin:1rem;}
+/* div#container main#chooseuser {display:block; display:none;} */
+/* div#container.user main#chooseuser {display:none;} */
+
+div#container main#chatapp div.slider {height:100%; display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
+div#container main#chatapp div.slider {width:100%;}
+div#container main#chatapp div.slider section.page {/* height:100%; */ max-height:100%; width:50%; /* max-width:24rem; */ overflow:hidden;}
+/* div#container main#chatapp div.slider section#list {} */
+/* div#container main#chatapp div.slider section#chat {} */
+
+div#container main#chooseuser div.slider {display:grid; grid-template-columns:repeat(2,1fr); width:200%;}
+div#container main#chooseuser div.slider {transform:translateX(0); transition:.25s;}
+div#container main#chooseuser.newuser div.slider {transform:translateX(-50%);}
+/* div#container main#chooseuser div.slider {display:flex; flex-direction:row; align-items:center;} */
+div#container main#chooseuser div.slider section.page {display:flex; flex-direction:column; justify-content:space-between; padding:2rem;}
+/* div#container main#chooseuser div.slider section#login {display:none;} */
+/* div#container main#chooseuser div.slider section#registration {display:block;} */
+
+div#container main#chooseuser div.slider section.page h2.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container main#chooseuser div.slider section.page h2.head {font-size:2rem; font-weight:600; margin:0; margin-bottom:1rem;}
+div#container main#chooseuser div.slider section.page h2.head svg.icon {font-size:1.25em;}
+div#container main#chooseuser div.slider section.page h2.head span.caption {margin-left:.25em;}
+/* div#container main#chooseuser div.slider section.page div.bar {display:flex; flex-direction:row;} */
+div#container main#chooseuser div.slider section.page div.bar {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1.25rem; margin:.5rem 0;}
+div#container main#chooseuser div.slider section.page div.bar div.input {margin:0;}
+div#container main#chooseuser div.slider section.page div.input {display:flex; flex-direction:column; align-items:stretch; position:relative;}
+div#container main#chooseuser div.slider section.page div.input {font-size:1.125rem; font-weight:300; /* padding:0 .5rem; */ margin:.5rem 0;}
+div#container main#chooseuser div.slider section.page div.input.avi {align-items:center;}
+
+div#container main#chooseuser div.slider section.page div.input input {font-size:inherit; width:100%; padding:.75rem 1rem; border:1px solid #0003; border-radius:.375rem;}
+div#container main#chooseuser div.slider section.page div.input label.label {cursor:pointer; user-select:none; white-space:nowrap; margin-bottom:.125rem;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar {background-color:whitesmoke; display:grid; place-items:center; height:6rem; width:6rem;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar {border:.125rem solid whitesmoke; border-radius:50%; box-shadow: 0 .125rem .125rem #0002;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar {overflow:hidden; position:relative;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar.full {background-image:linear-gradient(dodgerblue,purple); border-width:.25rem; border-color:dodgerblue;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar.full img.upload {object-fit:cover; height: 100%; width:100%;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar svg.icon {position:absolute; font-size:7rem; transform:translateY(.625rem);}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar div.plusbtn {position:absolute; bottom:50%; right:0; min-height:1.5rem; min-width:1.5rem; border-radius:50%;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar div.plusbtn {background-color:dodgerblue; color:white; display:grid; place-items:center; }
+div#container main#chooseuser div.slider section.page div.input label.label.avatar div.plusbtn {display:none;}
+div#container main#chooseuser div.slider section.page div.input button.btn {background-color:#333; color:white; font-size:1.375rem; letter-spacing:1px; cursor:pointer; padding:.75rem 1rem; border:1px solid #0003; border-radius:.375rem; /* margin-top:.5rem; */}
+div#container main#chooseuser div.slider section.page div.input input#avatarfile {display:none; font-size:initial;}
+div#container main#chooseuser div.slider section.page div.input span.message {display:none;}
+div#container main#chooseuser div.slider section.page div.input span.message {font-size:1rem; text-align:center; white-space:nowrap; padding:.375rem; margin:1rem 0;}
+div#container main#chooseuser div.slider section.page div.input span.message.on {display:block;}
+div#container main#chooseuser div.slider section.page div.input span.message.error {background-color: #FAd7dd; color:#5f334f;}
+div#container main#chooseuser div.slider section.page div.input.check {flex-direction:row; align-items:center; font-size:1rem;}
+div#container main#chooseuser div.slider section.page div.input.check input {max-width:2rem;}
+div#container main#chooseuser div.slider section.page div.input.check label.label {padding-top:3px;}
+div#container main#chooseuser div.slider section.page div.input.check label.label a.link {text-decoration:none;}
+div#container main#chooseuser div.slider section.page div.input div.visibilitytoggler {position:absolute; top:50%; right:0; padding:.25rem 1.125rem;}
+div#container main#chooseuser div.slider section.page div.input div.visibilitytoggler svg.icon {display:none;}
+div#container main#chooseuser div.slider section.page div.input input[type="password"] {padding-right:3rem;}
+div#container main#chooseuser div.slider section.page div.input input[type="password"] + div.visibilitytoggler svg.eye {display:block;}
+div#container main#chooseuser div.slider section.page div.input input[type="text"] + div.visibilitytoggler svg.eyeslash {display:block;}
+
+div#container main#chooseuser div.slider section.page p.textcopy {text-align:center;}
+div#container main#chooseuser div.slider section.page p.textcopy a.link {display: block; text-decoration:none;}
 
 
 
-@media screen and (max-width:48rem) {
+@media screen and (max-width:32rem) {
 
-	div#container main {max-width:30rem;}
+	/* div#container main {} */
+	div#container main#chatapp {max-width:30rem;}
+	div#container main#chooseuser {max-width:30rem;}
 
-	div#container main div.innermain {width:200%; transform:translateX(0); /* transition:5ms transform; */}
-	div#container main div.innermain.open {transform:translateX(-50%);}
+	/* One-Pager */
+	div#container main#chatapp div.slider {width:200%; transform:translateX(0); /* transition:5ms transform; */}
+	div#container main#chatapp div.slider.open {transform:translateX(-50%);}
+	div#container main#chatapp div.slider section.page {width:100%;}
 
-	div#container main div.innermain article {width:100%;}
+	div#container main#chooseuser div.slider section.page div.bar {display:block;}
+	div#container main#chooseuser div.slider section.page div.bar div.input {margin:.5rem 0;}
 }
