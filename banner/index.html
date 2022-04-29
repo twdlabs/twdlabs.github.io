@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Scrolling Banner</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="template.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box;}
+
+
+			:root {
+				--themecolor:whitesmoke;
+				--themecolor:slateblue;
+				/* --themecolor:darkslateblue; */
+			}
+
+
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {background-color:var(--themecolor);}
+			div#container {display:flex; flex-direction:row; align-items:stretch; min-height:100vh;}
+			
+			div#container section.canvas {background-color:transparent; width:50%; overflow:hidden; position:relative;}
+			div#container section.canvas.a {background-size:cover; background-image:url('../gallery/assets/images/full/1033200-starry-sky-background-1330x2000-for-ipad.jpg');}
+			/* div#container section.canvas.b {} */
+			div#container section.canvas h1.headline {position:absolute; animation:scrolling 45s linear infinite;}
+			div#container section.canvas h1.headline {color:white; font-size:12rem; line-height:100vh; white-space:nowrap;}
+			div#container section.canvas.a h1.headline {left:100%; -webkit-text-stroke:.25rem white; -webkit-text-fill-color:transparent;}
+			/* div#container section.canvas.b h1.headline {} */
+			
+			@keyframes scrolling {
+				0% {transform:none;}
+				100% {transform:translateX(-100%);}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- canvas -->
+			<section class="canvas a">
+				
+				<!-- headline -->
+				<h1 class="headline">
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, aliquid. Quisquam, dolorum recusandae. Earum quod odio, necessitatibus sequi eligendi hic. Iusto hic alias totam at maiores quas dolorum sed ipsa?
+				</h1>
+				<!-- /headline -->
+
+			</section>
+			<!-- /canvas -->
+
+			<!-- canvas -->
+			<section class="canvas b">
+				
+				<!-- headline -->
+				<h1 class="headline">
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam, aliquid. Quisquam, dolorum recusandae. Earum quod odio, necessitatibus sequi eligendi hic. Iusto hic alias totam at maiores quas dolorum sed ipsa?
+				</h1>
+				<!-- /headline -->
+
+			</section>
+			<!-- /canvas -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="template.js" type="text/javascript"></script> -->
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
