@@ -55,10 +55,40 @@
 							<!-- /head -->
 	
 							<!-- input -->
-							<div class="input">
+							<div class="input msg">
 
 								<!-- message -->
-								<span id="loginerror" class="message error">&mdash;</span>
+								<span id="loginerror" class="message error">
+
+									<!-- icon -->
+									<svg class="icon exclamation" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+										<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- caption -->
+									<span class="caption">&mdash;</span>
+									<!-- /caption -->
+
+								</span>
+								<!-- /message -->
+
+								<!-- message -->
+								<span id="loginsuccess" class="message success">
+
+									<!-- icon -->
+									<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+										<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- caption -->
+									<span class="caption">&mdash;</span>
+									<!-- /caption -->
+
+								</span>
 								<!-- /message -->
 	
 							</div>
@@ -68,12 +98,14 @@
 							<div class="input avi">
 	
 								<!-- label -->
-								<label class="label avatar">
+								<label class="label avatar" for="emailaddy">
 
 									<!-- icon -->
-									<svg class="icon personfill" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-										<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-									</svg>
+									<span class="icon">
+										<svg class="icon personfill" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+										</svg>
+									</span>
 									<!-- /icon -->
 									
 								</label>
@@ -90,7 +122,7 @@
 								<!-- /label -->
 	
 								<!-- #emailaddy -->
-								<input id="emailaddy" type="email" placeholder="Enter your email">
+								<input id="emailaddy" type="email" placeholder="Enter your email" required>
 								<!-- /#emailaddy -->
 	
 							</div>
@@ -104,11 +136,11 @@
 								<!-- /label -->
 	
 								<!-- #password -->
-								<input id="password" type="password" placeholder="Enter your password">
+								<input id="password" type="password" placeholder="Enter your password" required>
 								<!-- /#password -->
 
 								<!-- btn -->
-								<div class="btn visibilitytoggler" onclick="togglePasswordVisibility()">
+								<div class="btn visibilitytoggler">
 			
 									<!-- icon -->
 									<svg class="icon eye" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -159,8 +191,15 @@
 
 						<!-- textcopy -->
 						<p class="textcopy">
-							Not yet signed up?
+							
+							<!-- caption -->
+							<span class="caption">Not yet signed up?</span>
+							<!-- /caption -->
+
+							<!-- link -->
 							<a class="link" href="javascript:void(0)" onclick="toggleUserForm(true)">Sign up now</a>
+							<!-- /link -->
+
 						</p>
 						<!-- /textcopy -->
 	
@@ -198,10 +237,40 @@
 							<!-- /head -->
 	
 							<!-- input -->
-							<div class="input">
+							<div class="input msg">
 
 								<!-- message -->
-								<span id="regerror" class="message error">&mdash;</span>
+								<span id="regerror" class="message error">
+
+									<!-- icon -->
+									<svg class="icon exclamation" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+										<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- caption -->
+									<span class="caption">&mdash;</span>
+									<!-- /caption -->
+									
+								</span>
+								<!-- /message -->
+
+								<!-- message -->
+								<span id="regsuccess" class="message success">
+
+									<!-- icon -->
+									<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+										<path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- caption -->
+									<span class="caption">&mdash;</span>
+									<!-- /caption -->
+									
+								</span>
 								<!-- /message -->
 	
 							</div>
@@ -218,13 +287,15 @@
 								<label class="label avatar" for="avatarfile">
 
 									<!-- icon -->
-									<svg class="icon personfill" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-										<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-									</svg>
+									<span class="icon">
+										<svg class="icon personfill" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+										</svg>
+									</span>
 									<!-- /icon -->
 									
 									<!-- plusbtn -->
-									<div class="plusbtn">&plus;</div>
+									<div class="plusbtn"><!-- &plus; --></div>
 									<!-- /plusbtn -->
 									
 								</label>
@@ -244,7 +315,7 @@
 									<!-- /label -->
 		
 									<!-- #fname -->
-									<input id="fname" type="text" placeholder="First name">
+									<input id="fname" type="text" placeholder="First name" required>
 									<!-- /#fname -->
 		
 								</div>
@@ -275,14 +346,14 @@
 								<!-- /label -->
 	
 								<!-- #newemailaddy -->
-								<input id="newemailaddy" type="email" placeholder="Enter your email">
+								<input id="newemailaddy" type="email" placeholder="Enter your email" required>
 								<!-- /#newemailaddy -->
 	
 							</div>
 							<!-- /input -->
 	
 							<!-- bar -->
-							<div class="bar">
+							<div class="bar sep">
 	
 								<!-- input -->
 								<div class="input">
@@ -292,11 +363,11 @@
 									<!-- /label -->
 		
 									<!-- #newpassword -->
-									<input id="newpassword" type="password" placeholder="Create new password">
+									<input id="newpassword" type="password" placeholder="Create new password" required>
 									<!-- /#newpassword -->
 
 									<!-- btn -->
-									<div class="btn visibilitytoggler" onclick="togglePasswordVisibility()">
+									<div class="btn visibilitytoggler">
 				
 										<!-- icon -->
 										<svg class="icon eye" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -326,11 +397,11 @@
 									<!-- /label -->
 		
 									<!-- #passwordconfirm -->
-									<input id="passwordconfirm" type="password" placeholder="Confirm password">
+									<input id="passwordconfirm" type="password" placeholder="Confirm password" required>
 									<!-- /#passwordconfirm -->
 
 									<!-- btn -->
-									<div class="btn visibilitytoggler" onclick="togglePasswordVisibility()">
+									<div class="btn visibilitytoggler">
 				
 										<!-- icon -->
 										<svg class="icon eye" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -364,8 +435,15 @@
 	
 								<!-- label -->
 								<label class="label" for="acceptterms">
-									I accept the 
+									
+									<!-- caption -->
+									<span class="caption">I accept the </span>
+									<!-- /caption -->
+
+									<!-- link -->
 									<a class="link" href="javascript:void(0)">terms &amp; conditions</a>.
+									<!-- /link -->
+									
 								</label>
 								<!-- /label -->
 	
@@ -387,8 +465,15 @@
 
 						<!-- textcopy -->
 						<p class="textcopy">
-							Already signed up?
+
+							<!-- caption -->
+							<span class="caption">Already signed up?</span>
+							<!-- /caption -->
+
+							<!-- link -->
 							<a class="link" href="javascript:void(0)" onclick="toggleUserForm(false)">Login now</a>
+							<!-- /link -->
+
 						</p>
 						<!-- /textcopy -->
 	
@@ -405,8 +490,8 @@
 			</main>
 			<!-- /#chooseuser -->
 
-			<!-- #chatapp -->
-			<main id="chatapp" class="gone">
+			<!-- #chatlist -->
+			<main id="chatlist" class="gone">
 
 				<!-- slider -->
 				<div class="slider">
@@ -464,10 +549,10 @@
 						<div id="contacts" class="contacts">
 
 							<!-- search -->
-							<div class="search">
+							<form class="search">
 		
 								<!-- #searchquery -->
-								<input id="searchquery" type="text" placeholder="Enter name to search..." oninput="filterContacts()">
+								<input id="searchquery" type="text" placeholder="Enter name to search..." oninput="filterContacts()" required>
 								<!-- /#searchquery -->
 		
 								<!-- btn -->
@@ -505,7 +590,7 @@
 								</div>
 								<!-- /overlay -->
 								
-							</div>
+							</form>
 							<!-- /search -->
 	
 							<!-- contactlist -->
@@ -729,7 +814,7 @@
 						<!-- /#msghistory -->
 	
 						<!-- #composer -->
-						<div id="composer" class="composer">
+						<form id="composer" class="composer">
 	
 							<!-- btn -->
 							<div class="btn mediabtn">
@@ -745,7 +830,7 @@
 							<!-- /btn -->
 	
 							<!-- #newmessage -->
-							<input id="newmessage" type="text" placeholder="Type your message here...">
+							<input id="newmessage" type="text" placeholder="Type your message here..." autocomplete="off" required>
 							<!-- /#newmessage -->
 	
 							<!-- btn -->
@@ -767,7 +852,7 @@
 							</div>
 							<!-- /btn -->
 	
-						</div>
+						</form>
 						<!-- /#composer -->
 	
 					</section>
@@ -777,7 +862,11 @@
 				<!-- /slider -->
 
 			</main>
-			<!-- /#chatapp -->
+			<!-- /#chatlist -->
+
+			<!-- #loadspinner -->
+			<div id="loadspinner"></div>
+			<!-- /#loadspinner -->
 
 		</div>
 		<!-- /#container -->
@@ -798,6 +887,8 @@
 		<script src="assets/script/list.js" type="text/javascript"></script>
 		<!-- Messages Script -->
 		<script src="assets/script/chat.js" type="text/javascript"></script>
+		<!-- Loader Script -->
+		<script src="assets/script/loader.js" type="text/javascript"></script>
 
 	</body>
 
