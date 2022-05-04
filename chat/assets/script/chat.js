@@ -2,8 +2,23 @@
 
 
 // Refresh messages in thread. 
-function refreshMsgHistory() {
-	console.log('\nRefreshing message thread...');return;
+function refreshMsgHistory(myId,otherId) {
+	console.log('Refreshing message history...');
+
+	// Find all messages relevant to current user cohort. 
+	let cohortMessageData = messageDataMatrix[currentUserId][currentRecipientId];
+	console.log('my id',myId);
+	console.log('other id:',otherId);
+	console.log('Cohort message data:',myId,otherId,cohortMessageData);
+
+	// 
+}
+
+
+// Refresh messages in thread. 
+function refreshMsgHistory2() {
+	console.log('\nRefreshing message history...');
+	return;
 
 
 	// Find all messages relevant to current user cohort. 
@@ -352,13 +367,20 @@ function sendNewMessage() {
 	let newMessage = msgfield.value;
 
 	// Skip sending empty messages. 
-	if(newMessage.length==0) return;
-	else console.log('Sending message:', newMessage);
+	if(newMessage==null || newMessage.length==0) {
+		console.warn('New message is empty. ');
+		return;
+	}
+	else {
+		console.log('Sending message:', newMessage);
+		// console.log(`From: ${username}`);
+		// console.log(`To: ${username}`);
+	}
 
 	// Clear text input field. 
 	msgfield.value = '';
 
-	// Save new message to database. 
+	// TODO: Save new message to database. 
 	let attached = false;
 	if(attached) {
 		let lastindex = messageData.length-1;
@@ -374,7 +396,7 @@ function sendNewMessage() {
 	}
 
 	// Refresh messages in thread. 
-	refreshMsgHistory();
+	refreshMsgHistory(currentUserId, currentRecipientId);
 	
 	// Refresh user data. 
 	refreshUserData();

@@ -23,22 +23,22 @@ const userdata = [
 // Initialize user data. 
 const userData = [
 	{
-		fname:'Ana',
-		lname:'Doe',
+		fname:'Ace',
+		lname:'Ventura',
 		online:true,
-		avatarurl:'assets/images/avatar-f.png',
+		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
 		fname:'Bill',
-		lname:'Doe',
+		lname:'Diamond',
 		online:false,
 		avatarurl:'assets/images/avatar-m.png',
 	},
 	{
-		fname:'Chris',
-		lname:'Doe',
-		online:false,
-		avatarurl:'assets/images/avatar-m.png',
+		fname:'Christine',
+		lname:'Brophy',
+		online:true,
+		avatarurl:'assets/images/avatar-f.png',
 	},
 	// {
 	// 	fname:'David',

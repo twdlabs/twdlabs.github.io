@@ -6,7 +6,8 @@ const messageData = [
 		senderid:1,
 		recipientid:0,
 		timestamp:1577854806,
-		messagetext:'Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.'
+		messagetext:'Necessitatibus iure quos iste saepe totam illum ',
+		// messagetext:'aliquid quibusdam accusantium.'
 	},
 	{
 		senderid:1,

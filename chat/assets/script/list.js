@@ -9,7 +9,7 @@ function openSearch() {
 	document.getElementById('searchquery').value = '';
 
 	// Activate search section. 
-	let search = document.querySelector('section#list div#contacts div.search');
+	let search = document.querySelector('section#list div#contacts form.search');
 	search.classList.add('active');
 	// console.log(search);
 
@@ -34,7 +34,7 @@ function closeSearch() {
 	console.log('Closing chat search');
 
 	// De-activate search section. 
-	let search = document.querySelector('section#list div#contacts div.search');
+	let search = document.querySelector('section#list div#contacts form.search');
 	search.classList.remove('active');
 	// console.log(search);
 

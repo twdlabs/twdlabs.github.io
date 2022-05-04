@@ -1,59 +1,39 @@
 
 
+// Initialize current user id. 
+let currentUserId = 0;
+
+
+/*****/
+
+
 // Choose user. 
 // chooseUser();
 
+// Handle events. 
+handleEvents();
+
+// Switch to login form. 
+toggleUserForm(newuser=false);
+
+// Clear all user forms. 
+clearUserForms();
+
 
 /*****/
 
-/*****/
-/*****/
-/*****/
 
-// Check for valid username. 
-function checkForValidUsername(un) {
-
-	// Initialize result. 
-	let matchFound = false;
-
-	// Go thru each user item, checking for match. 
-	for(let i in userdata) {
-
-		// Check for matching username (case insensitive). 
-		let matchingUsername = (un == userdata[i].username);
-
-		// Check for all matching user credentials to initiate login.
-		let matchFound = matchingUsername && matchingPassword;
-
-		// End search upon finding match. 
-		if(matchFound) break;
-	}
-
-	// Return result. 
-	return matchFound;
-}
-
-// Check for valid matching password. 
-function isValidPasswordAt(pw,index) {
-
-	// Initialize result. 
-	let matchFound = false;
-
-	// Check for matching password (case sensitive). 
-	let matchingPassword = (pw == userdata[i].password);
+// Handle events. 
+function handleEvents() {
 
 	// 
+	let vistogs = document.querySelectorAll('.visibilitytoggler.btn');
+	for(let toggler of vistogs) {
 
-	// Return result. 
-	return matchFound;
+		// 
+		toggler.addEventListener('click',togglePasswordVisibility);
+	}
 }
-
-/*****/
-/*****/
-
-
-
-
 
 
 // Toggle selected user form. 
@@ -67,9 +47,6 @@ function toggleUserForm(newuser=false) {
 
 		// Clear login form. 
 		clearLoginForm();
-
-		// Clear any error message. 
-		setLoginError(null);
 	}
 
 	// Show login form for existing user. 
@@ -80,63 +57,80 @@ function toggleUserForm(newuser=false) {
 
 		// Clear registration form. 
 		clearSignupForm();
-
-		// Clear any error message. 
-		setSignupError(null);
-	}
-
-	/*****/
-
-	// Clear login form. 
-	function clearLoginForm() {
-		clearInputById('emailaddy');
-		clearInputById('password');
-	}
-
-	// Clear registration form. 
-	function clearSignupForm() {
-		
-		// cleared out due to error received when switching pages. 
-		// clearInputById('avatarfile');
-
-		clearInputById('fname');
-		clearInputById('lname');
-		clearInputById('newemailaddy');
-		clearInputById('newpassword');
-		clearInputById('passwordconfirm');
-	}
-
-	// Clear input box with given id. 
-	function clearInputById(inputfieldid) {
-
-		// Get input field with given id. 
-		let inputfield = document.getElementById(inputfieldid);
-
-		// Clear input field value. 
-		inputfield.value = '';
-
-		// Dispatch input event to show placeholder. 
-		inputfield.dispatchEvent( new Event('input') );
 	}
 }
 
 
+// Clear all user forms. 
+function clearUserForms() {
+	
+	// Clear login and registration forms. 
+	clearLoginForm();
+	clearSignupForm();
+}
+// Clear login form. 
+function clearLoginForm() {
+
+	// Clear input fields. 
+	clearInputById('emailaddy');
+	clearInputById('password');
+
+	// Clear any messages. 
+	setLoginError(null);
+	setLoginSuccess(null);
+}
+// Clear registration form. 
+function clearSignupForm() {
+
+	// Clear input fields. 
+	clearInputById('fname');
+	clearInputById('lname');
+	clearInputById('newemailaddy');
+	clearInputById('newpassword');
+	clearInputById('passwordconfirm');
+	// cleared out due to error received when switching pages. 
+	// clearInputById('avatarfile');
+
+	// Clear any messages. 
+	setSignupError(null);
+	setSignupSuccess(null);
+}
+// Clear input box with given id. 
+function clearInputById(inputfieldid) {
+
+	// Get input field with given id. 
+	let inputfield = document.getElementById(inputfieldid);
+
+	// Clear input field value. 
+	inputfield.value = '';
+
+	// Dispatch input event to show placeholder. 
+	inputfield.dispatchEvent( new Event('input') );
+}
 // Set login error message. 
 function setLoginError(msg) {
 
 	// Get error message box. 
 	let msgbox = document.getElementById('loginerror');
 
-	// Clear message box for empty message. 
-	if(msg==null || msg=='') {
-		msgbox.innerHTML = '';
-		msgbox.classList.remove('active');
-		return;
-	}
+	// Add message to message box. 
+	msgbox.querySelector('span.caption').innerHTML = (msg) ? (msg) : ('');
 
-	// Show actual message. 
-	msgbox.innerHTML = msg;
-	msgbox.classList.add('active');
+	// Show message box for valid message. 
+	if(msg) msgbox.classList.add('active');
+	// Hide message box for empty message. 
+	else msgbox.classList.remove('active');
+
+	// // Hide message box for empty message. 
+	// if(msg==null || msg=='') {
+	// 	msgbox.querySelector('span.caption').innerHTML = '';
+	// 	msgbox.classList.remove('active');
+	// }
+	// // Show message box for valid message. 
+	// else {
+	// 	msgbox.querySelector('span.caption').innerHTML = msg;
+	// 	msgbox.classList.add('active');
+	// }
 }
 // Set signup error message. 
 function setSignupError(msg) {
@@ -144,16 +138,74 @@ function setSignupError(msg) {
 	// Get error message box. 
 	let msgbox = document.getElementById('regerror');
 
-	// Clear message box for empty message. 
-	if(msg==null || msg=='') {
-		msgbox.innerHTML = '';
-		msgbox.classList.remove('active');
-		return;
-	}
+	// Add message to message box. 
+	msgbox.querySelector('span.caption').innerHTML = (msg) ? (msg) : ('');
 
-	// Show actual message. 
-	msgbox.innerHTML = msg;
-	msgbox.classList.add('active');
+	// Show message box for valid message. 
+	if(msg) msgbox.classList.add('active');
+	// Hide message box for empty message. 
+	else msgbox.classList.remove('active');
+
+	// // Hide message box for empty message. 
+	// if(msg==null || msg=='') {
+	// 	msgbox.querySelector('span.caption').innerHTML = '';
+	// 	msgbox.classList.remove('active');
+	// }
+	// // Show message box for valid message. 
+	// else {
+	// 	msgbox.querySelector('span.caption').innerHTML = msg;
+	// 	msgbox.classList.add('active');
+	// }
+}
+// Set login success message. 
+function setLoginSuccess(msg) {
+
+	// Get success message box. 
+	let msgbox = document.getElementById('loginsuccess');
+
+	// Add message to message box. 
+	msgbox.querySelector('span.caption').innerHTML = (msg) ? (msg) : ('');
+
+	// Show message box for valid message. 
+	if(msg) msgbox.classList.add('active');
+	// Hide message box for empty message. 
+	else msgbox.classList.remove('active');
+
+	// // Hide message box for empty message. 
+	// if(msg==null || msg=='') {
+	// 	msgbox.querySelector('span.caption').innerHTML = '';
+	// 	msgbox.classList.remove('active');
+	// }
+	// // Show message box for valid message. 
+	// else {
+	// 	msgbox.querySelector('span.caption').innerHTML = msg;
+	// 	msgbox.classList.add('active');
+	// }
+}
+// Set signup success message. 
+function setSignupSuccess(msg) {
+
+	// Get success message box. 
+	let msgbox = document.getElementById('regsuccess');
+
+	// Add message to message box. 
+	msgbox.querySelector('span.caption').innerHTML = (msg) ? (msg) : ('');
+
+	// Show message box for valid message. 
+	if(msg) msgbox.classList.add('active');
+	// Hide message box for empty message. 
+	else msgbox.classList.remove('active');
+
+	// // Hide message box for empty message. 
+	// if(msg==null || msg=='') {
+	// 	msgbox.querySelector('span.caption').innerHTML = '';
+	// 	msgbox.classList.remove('active');
+	// }
+	// // Show message box for valid message. 
+	// else {
+	// 	msgbox.querySelector('span.caption').innerHTML = msg;
+	// 	msgbox.classList.add('active');
+	// }
 }
 
 
@@ -161,7 +213,7 @@ function setSignupError(msg) {
 function togglePasswordVisibility(event) {
 
 	// Get password visibility button. 
-	let btn = event.currentTarget; console.log();
+	let btn = event.currentTarget;
 
 	// Get corresponding password field. 
 	let pwField = btn.parentElement.querySelector('input');
@@ -173,7 +225,6 @@ function togglePasswordVisibility(event) {
 	if(visiblePW) pwField.type = 'password';
 	else pwField.type = 'text';
 }
-
 
 // Select file (clean up later). 
 function selectFile() {
@@ -242,9 +293,141 @@ function selectFile() {
 }
 
 
+// Login existing user. 
+function loginUser(
+	un = document.getElementById('emailaddy').value, 
+	pw = document.getElementById('password').value
+) {
+	
+	// Check for valid username. 
+	let userIndex = getUserIndex(un);
+	// Check for matching password. 
+	let isSuccessfulLogin = (userIndex>=0) && checkForMatchingPassword(pw,userIndex);
+	
+	// Check for valid login credentials. 
+	// let isSuccessfulLogin = checkForValidLogin();
 
+	// Show appropriate windows for successful login. 
+	if(isSuccessfulLogin) {
 
+		// Hide user chooser. 
+		document.getElementById('chooseuser').classList.add('gone');
 
+		// Show chat app. 
+		document.getElementById('chatlist').classList.remove('gone');
+		// Refresh user data. 
+		refreshUserData();
+
+		// Notify user of successful login. 
+		setLoginError(null);
+		setLoginSuccess('User successfully logged in');
+		console.log('Login successful.');
+		// alert('Login successful.');
+	}
+
+	// Show appropriate windows for unsuccessful login. 
+	else {
+
+		// Hide chat app. 
+		document.getElementById('chatlist').classList.add('gone');
+		// Clear user data. 
+		clearUserData();
+
+		// Show user chooser. 
+		document.getElementById('chooseuser').classList.remove('gone');
+
+		// Notify user of any error. 
+		setLoginSuccess(null);
+		setLoginError('Invalid user credentials. Email or Password is incorrect!');
+		console.warn('Login error: Invalid user credentials. Please try again.');
+		// alert('Login error: Invalid user credentials. Please try again.');
+	}
+
+	// Return result of credential check. 
+	// return isSuccessfulLogin;
+	
+	/*****/
+	
+	// Get user index for given username. 
+	function getUserIndex(username) {
+
+		// Initialize result. 
+		let matchIndex = -1;
+
+		// Skip search for empty username. 
+		if(username==null || username=='') {
+
+			// TODO: Show corresponding error message. 
+			let msg = 'Hello';
+			setLoginError(msg);
+
+			// Skip search for empty username. 
+			return matchIndex;
+		}
+
+		// Search thru user items, looking for first match. 
+		for(let i in userdata) {
+
+			// Check for matching item. 
+			if(username == userdata[i].username){
+				matchIndex = i;
+				break;
+			}
+		}
+
+		// Return result. 
+		return matchIndex;
+	}
+	
+	// Check if matching password for selected user. 
+	function checkForMatchingPassword(pw,userIndex) {
+		if(userIndex<0) return false;
+
+		// Return result. 
+		return (pw==userdata[userIndex].password)
+	}
+
+	// Check for valid login credentials. 
+	function checkForValidLogin() {
+		// 
+	}
+
+	// TODO: Check for valid login credentials. 
+	function checkForValidLogin0() {
+
+		// Initialize result. 
+		let matchFound = false;
+
+		// Go thru each user item, checking for match. 
+		for(let i in userdata) {
+ 
+			// Check for matching username (case insensitive). 
+			let matchingUsername = (un == userdata[i].username);
+
+			// Check for matching password (case sensitive). 
+			let matchingPassword = (pw == userdata[i].password);
+
+			// Check for all matching user credentials to initiate login.
+			let matchFound = matchingUsername && matchingPassword;
+
+			// End search upon finding match. 
+			if(matchFound) break;
+		}
+
+		// Return result. 
+		return matchFound;
+	}
+
+	// Clear user data. 
+	function clearUserData() {
+		
+		// Invalidate user id. 
+		currentUserId = -1;
+
+		// Refresh data for null user. 
+		refreshUserData();
+	}
+}
 
 // Register new user. 
 function registerUser(
@@ -266,8 +449,9 @@ function registerUser(
 		return;
 	}
 
-	// Remove any error message. 
+	// Remove any pevious messages. 
 	setSignupError(null);
+	setSignupSuccess(null);
 
 	// Create new user. 
 	createNewUser();
@@ -287,7 +471,7 @@ function registerUser(
 		// Initialize state of data validity. 
 		let dataIsValid = true;
 
-		// Ensure all fields are filled. 
+		// Ensure no fields are left empty. 
 		let emptyfn = checkForEmptyValue(fn);
 		let emptyln = checkForEmptyValue(ln);
 		let emptyun = checkForEmptyValue(un);
@@ -336,136 +520,81 @@ function registerUser(
 	}
 }
 
-// Login existing user. 
-function loginUser(
-	un = document.getElementById('emailaddy').value, 
-	pw = document.getElementById('password').value
-) {
-	
-	// Check for valid username. 
-	let userIndex = getUserIndex(un);
-
-	// Check for matching password. 
-	let isSuccessfulLogin = (userIndex>=0) && checkForMatchingPassword(pw,userIndex);
-
-	// Show appropriate windows for successful login. 
-	if(isSuccessfulLogin) {
-
-		// Show chat app. 
-		document.getElementById('chatapp').classList.remove('gone');
-
-		// Hide user chooser. 
-		document.getElementById('chooseuser').classList.add('gone');
-
-		// Notify user of successful login. 
-		console.log('Login successful.');
-		// alert('Login successful.');
-	}
-
-	// Show appropriate windows for unsuccessful login. 
-	else {
-
-		// Hide chat app. 
-		document.getElementById('chatapp').classList.add('gone');
-
-		// Show user chooser. 
-		document.getElementById('chooseuser').classList.remove('gone');
-
-		// Notify user of any error. 
-		setLoginError('Invalid user credentials. Email or Password is incorrect!');
-		console.warn('Login error: Invalid user credentials. Please try again.');
-		// alert('Login error: Invalid user credentials. Please try again.');
-	}
-
-	// Return result of credential check. 
-	// return isSuccessfulLogin;
-	
-	// Check for valid login credentials. 
-	// let isSuccessfulLogin = checkForValidLogin();
-	
-	/*****/
-	
-	// Get user index for given username. 
-	function getUserIndex(username) {
-
-		// Initialize result. 
-		let matchIndex = -1;
-
-		// Skip search for empty username. 
-		if(username==null || username=='') {
-
-			// TODO: Show corresponding error message. 
-			// document
-
-			// Skip search for empty username. 
-			return matchIndex;
-		}
-
-		// Search thru user items, looking for match. 
-		for(let i in userdata) {
-
-			// Check for matching item. 
-			if(username == userdata[i].username){
-				matchIndex = i;
-				break;
-			}
-		}
-
-		// Return result. 
-		return matchIndex;
-	}
-	
-	// Check if matching password for selected user. 
-	function checkForMatchingPassword(pw,userIndex) {
-		if(userIndex<0) return false;
-
-		// Return result. 
-		return (pw==userdata[userIndex].password)
-	}
-
-	// // Check for valid login credentials. 
-	// function checkForValidLogin() {
-
-	// 	// Initialize result. 
-	// 	let matchFound = false;
-
-	// 	// Go thru each user item, checking for match. 
-	// 	for(let i in userdata) {
- 
-	// 		// Check for matching username (case insensitive). 
-	// 		let matchingUsername = (un == userdata[i].username);
-
-	// 		// Check for matching password (case sensitive). 
-	// 		let matchingPassword = (pw == userdata[i].password);
-
-	// 		// Check for all matching user credentials to initiate login.
-	// 		let matchFound = matchingUsername && matchingPassword;
-
-	// 		// End search upon finding match. 
-	// 		if(matchFound) break;
-	// 	}
-
-	// 	// Return result. 
-	// 	return matchFound;
-	// }
-}
-
 
 // Logout current user. 
 function logoutUser() {
 
-	// Hide chat app. 
-	document.getElementById('chatapp').classList.add('gone');
+	// Load into function. 
+	loadIntoFunction(switchWindows);
 
-	// Show user chooser (in login mode). 
-	let userchooser = document.getElementById('chooseuser');
-	userchooser.classList.remove('gone');
-	userchooser.classList.remove('newuser');
+	// Clear all user forms. 
+	clearUserForms();
 
-	// Notify user of successful login. 
-	console.log('Successfully logged out.');
-	// alert('Successfully logged out.');
+	/****/
+
+	// Switch windows. 
+	function switchWindows() {
+
+		// Hide chat app. 
+		document.getElementById('chatlist').classList.add('gone');
+	
+		// Show user chooser (in login mode). 
+		let userchooser = document.getElementById('chooseuser');
+		userchooser.classList.remove('gone');
+		userchooser.classList.remove('newuser');
+
+		// Notify user of successful login. 
+		console.log('Successfully logged out.');
+		setLoginSuccess('Successfully logged out.');
+		// alert('Successfully logged out.');
+	}
 }
+
+
+
+
+
+/*****/
+/*****/
+// Check for valid username. 
+function checkForValidUsername(un) {
+
+	// Initialize result. 
+	let matchFound = false;
+
+	// Go thru each user item, checking for match. 
+	for(let i in userdata) {
+
+		// Check for matching username (case insensitive). 
+		let matchingUsername = (un == userdata[i].username);
+
+		// Check for all matching user credentials to initiate login.
+		let matchFound = matchingUsername && matchingPassword;
+
+		// End search upon finding match. 
+		if(matchFound) break;
+	}
+
+	// Return result. 
+	return matchFound;
+}
+// Check for valid matching password. 
+function isValidPasswordAt(pw,index) {
+
+	// Initialize result. 
+	let matchFound = false;
+
+	// Check for matching password (case sensitive). 
+	let matchingPassword = (pw == userdata[i].password);
+
+	// 
+
+	// Return result. 
+	return matchFound;
+}
+/*****/
+/*****/
+
 
 
 

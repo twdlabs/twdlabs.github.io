@@ -11,7 +11,7 @@ div#container main section#list {background-color:white; display:flex; flex-dire
 
 div#container main section#list header.header {flex-shrink:0; padding:0 2rem; margin-top:.25rem;}
 div#container main section#list header.header div.inner {display:flex; flex-direction:row; align-items:center; padding:1rem 0;}
-div#container main section#list header.header div.inner {border-bottom:1px solid var(--offwhite);}
+/* div#container main section#list header.header div.inner {border-bottom:1px solid var(--offwhite);} */
 div#container main section#list header.header div.inner div.user {flex-grow:1; display:flex; flex-direction:row; align-items:center;}
 div#container main section#list header.header div.inner div.user div.avatar {background-color:#0004; flex-grow:0; height:4rem; width:4rem; border-radius:50%; overflow:hidden;}
 div#container main section#list header.header div.inner div.user div.avatar img {height:100%; width:100%; object-fit:cover;}
@@ -31,22 +31,25 @@ div#container main section#list header.header div.inner div.logoutbtn span.capti
 
 /* Contact List */
 
-div#container main section#list div#contacts div.search {display:flex; flex-direction:row; align-items:stretch; /* padding:0 2rem; */ overflow:hidden; margin:.75rem 0 .125rem; position:relative;}
-div#container main section#list div#contacts div.search input#searchquery {flex-grow:1; font-family:inherit; font-size:inherit; padding:.5rem 1rem .375rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
-div#container main section#list div#contacts div.search div.btn.closebtn {flex-grow:0; display:grid; place-items:center; background-color:var(--black); color:white; cursor:pointer;}
-div#container main section#list div#contacts div.search div.btn.closebtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
-
-div#container main section#list div#contacts div.search div.overlay {position:absolute; top:0; left:0; height:100%; width:100%; background-color:#FFF; /* padding:0 2rem; */}
-div#container main section#list div#contacts div.search div.overlay {display:flex; flex-direction:row; align-items:center;}
-div#container main section#list div#contacts div.search div.overlay {visibility:visible; opacity:1; transition:.125s;}
-div#container main section#list div#contacts div.search.active div.overlay {visibility:hidden; opacity:0;}
-div#container main section#list div#contacts div.search div.overlay div.message {flex-grow:1; font-size:1rem; font-weight:200; padding:.5rem .25rem .375rem; user-select:none;}
-div#container main section#list div#contacts div.search div.overlay div.btn.searchbtn {flex-grow:0; display:grid; place-items:center; background-color:white; color:var(--black); cursor:pointer;}
-div#container main section#list div#contacts div.search div.overlay div.btn.searchbtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
-
 div#container main section#list div#contacts {padding:0 2rem; overflow:auto;}
+
+div#container main section#list div#contacts form.search {display:flex; flex-direction:row; align-items:stretch; overflow:hidden; /* padding:0 2rem; */ border-top:1px solid var(--offwhite); margin:.75rem 0 .125rem; position:relative;}
+div#container main section#list div#contacts form.search input#searchquery {flex-grow:1; font-family:inherit; font-size:inherit; padding:.5rem 1rem .375rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
+div#container main section#list div#contacts form.search div.btn.closebtn {flex-grow:0; display:grid; place-items:center; background-color:var(--black); color:white; cursor:pointer;}
+div#container main section#list div#contacts form.search div.btn.closebtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
+
+div#container main section#list div#contacts form.search div.overlay {position:absolute; top:0; left:0; height:100%; width:100%; background-color:#FFF; /* padding:0 2rem; */}
+div#container main section#list div#contacts form.search div.overlay {display:flex; flex-direction:row; align-items:center;}
+div#container main section#list div#contacts form.search div.overlay {visibility:visible; opacity:1; transition:.125s;}
+div#container main section#list div#contacts form.search.active div.overlay {visibility:hidden; opacity:0;}
+div#container main section#list div#contacts form.search div.overlay div.message {flex-grow:1; font-size:1rem; font-weight:200; padding:.5rem .25rem .375rem; user-select:none;}
+div#container main section#list div#contacts form.search div.overlay div.btn.searchbtn {flex-grow:0; display:grid; place-items:center; background-color:white; color:var(--black); cursor:pointer;}
+div#container main section#list div#contacts form.search div.overlay div.btn.searchbtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
+
 div#container main section#list div#contacts ul.contactlist {list-style:none; padding:0; margin:0;}
-div#container main section#list div#contacts ul.contactlist:empty::after {content:'No users are available to chat'; display:block; padding:1rem 0;}
+div#container main section#list div#contacts ul.contactlist::after {content:''; display:block; margin-bottom:1.25rem;}
+div#container main section#list div#contacts ul.contactlist:empty::after {content:'No users are available to chat'; content:'No one has signed up yet except you. Once someone signs up, they will appear here.';}
+div#container main section#list div#contacts ul.contactlist:empty::after {padding:1rem 0; border-top:1px solid var(--offwhite);}
 div#container main section#list div#contacts ul.contactlist li.contactitem {display:flex; flex-direction:row; align-items:stretch; cursor:pointer; user-select:none;}
 div#container main section#list div#contacts ul.contactlist li.contactitem {background-color:white; padding:.75rem 1rem; border-bottom:1px solid var(--offwhite); transition:.125s;}
 div#container main section#list div#contacts ul.contactlist li.contactitem.gone {max-height:0; padding:0; border-width:0; overflow:hidden;}

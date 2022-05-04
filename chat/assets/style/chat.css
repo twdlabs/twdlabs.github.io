@@ -75,14 +75,14 @@ div#container main section#chat div#msghistory div.inner div.msgblock div.conten
 
 /* Message Composer Section */
 
-div#container main section#chat div#composer {flex-shrink:0; background-color:var(--offwhite); min-height:3rem; padding:.375rem; padding-top:0;}
-div#container main section#chat div#composer {display:flex; flex-direction:row; align-items:stretch;}
+div#container main section#chat form#composer {flex-shrink:0; background-color:var(--offwhite); min-height:3rem; padding:.375rem; padding-top:0;}
+div#container main section#chat form#composer {display:flex; flex-direction:row; align-items:stretch;}
 
-div#container main section#chat div#composer div.btn {flex-grow:0; display:grid; place-items:center; min-height:2.5rem; background-color:var(--black); color:white; cursor:pointer;}
-div#container main section#chat div#composer div.btn.sendbtn {min-width:2.75rem; border-radius:0 .5rem .5rem 0; padding-right:.125rem;}
-div#container main section#chat div#composer div.btn.mediabtn {min-width:2.5rem; border-radius:50%; margin-right:.5rem; display:none; /* background-color:white; color:black; border-color:transparent; */}
-div#container main section#chat div#composer div.btn svg.icon {font-size:1.25rem;}
-div#container main section#chat div#composer input#newmessage {flex-grow:1; font-size:inherit; font-family:inherit; padding:.5rem 1rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
+div#container main section#chat form#composer div.btn {flex-grow:0; display:grid; place-items:center; min-height:2.5rem; background-color:var(--black); color:white; cursor:pointer;}
+div#container main section#chat form#composer div.btn.sendbtn {min-width:2.75rem; border-radius:0 .5rem .5rem 0; padding-right:.125rem;}
+div#container main section#chat form#composer div.btn.mediabtn {min-width:2.5rem; border-radius:50%; margin-right:.5rem; display:none; /* background-color:white; color:black; border-color:transparent; */}
+div#container main section#chat form#composer div.btn svg.icon {font-size:1.25rem;}
+div#container main section#chat form#composer input#newmessage {flex-grow:1; font-size:inherit; font-family:inherit; padding:.5rem 1rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
 
 
 
