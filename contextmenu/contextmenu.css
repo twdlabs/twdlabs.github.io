@@ -1,0 +1,25 @@
+
+* {box-sizing:border-box;}
+
+body {background-color:#2c8df7; margin:0; font-family:sans-serif;}
+
+div#container ul.menu {position:fixed; background-color:#FFF; color:#1f194c; min-width:10rem; padding:0; border-radius:.5rem; margin:0;}
+div#container ul.menu {visibility:hidden; box-shadow: 0 .25rem .5rem #0002;}
+div#container ul.menu.active {visibility:visible;}
+div#container ul.menu hr.line {border:0 none; border-top:1px solid rgba(44,141,247, .5); margin:.25rem 0;}
+div#container ul.menu li.item {font-size:1rem; padding:0 .5rem; border-radius:8px; margin:.125rem .25rem; cursor:pointer;}
+div#container ul.menu li.item {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; min-height:2rem; position:relative;}
+/* div#container ul.menu li.item {background-color:#0001;} */
+div#container ul.menu li.item.hover,
+div#container ul.menu li.item:hover {background-color:rgba(44,141,247, .2);}
+div#container ul.menu li.item svg.icon {font-size:1rem; min-width:1.25rem;}
+div#container ul.menu li.item span.caption {flex-grow:1; font-size:.75rem; margin:0 .5rem;}
+div#container ul.menu li.item svg.overflow {font-size:.65rem; font-weight:bold;}
+
+div#container ul.menu li.item ul.menu {position:absolute; top:0; left:97.5%; transform:translateY(.75rem);}
+/* div#container ul.menu li.item ul.menu {top:0; left:90%;} */
+div#container ul.menu li.item ul.menu {visibility:hidden;}
+/* div#container ul.menu li.item ul.menu li.item {} */
+div#container ul.menu li.item ul.menu li.item svg.icon {font-size:.8rem;}
+/* div#container ul.menu li.item ul.menu li.item span.caption {} */
+div#container ul.menu.active li.item:hover ul.menu {visibility:visible;}
