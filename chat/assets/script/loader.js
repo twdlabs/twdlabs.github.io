@@ -35,22 +35,24 @@ function addLoaderDots(n) {
 // Start loading. 
 function startLoading() {
 	loadspinner.classList.add('loading');
+	container.classList.add('loading');
 }
 // Finish loading. 
 function finishLoading() {
 	loadspinner.classList.remove('loading');
+	container.classList.remove('loading');
 }
 
 // Load into function. 
 function loadIntoFunction(fn) {
 
 	// Define load time. 
-	let dt = 1000;
+	let dt = 750;
 
 	// Start loading. 
 	startLoading();
 
 	// Run function at end of load time. 
-	setTimeout(fn, dt);
 	setTimeout(finishLoading, dt);
+	setTimeout(fn, dt);
 }

@@ -91,7 +91,7 @@ function filterContactList(query) {
 		q = q.toUpperCase();
 
 		// Get and fix contact info. 
-		let contact = userData[id];
+		let contact = userdata[id];
 		let f = contact.fname.toUpperCase();
 		let l = contact.lname.toUpperCase();
 

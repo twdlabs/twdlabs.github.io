@@ -41,7 +41,7 @@ div#container {display:flex; flex-direction:column; justify-content:center; alig
 div#container main {background-color:white; max-height:100%; overflow:hidden; border-radius:.5rem; margin:0 auto; box-shadow:0 .5rem 3rem #0005;}
 /* div#container main {display:block;} */
 div#container main.gone {display:none;}
-div#container main#chatlist {width:100%; max-width:60rem;}
+div#container main#chatlist {width:100%; max-width:60rem; height:100%;}
 /* div#container main#chatlist {display:none;} */
 /* div#container.user main#chatlist {display:block;} */
 div#container main#chooseuser {width:100%; max-width:36rem;}
@@ -85,7 +85,7 @@ div#container main#chooseuser div.slider section.page div.input label.label.avat
 div#container main#chooseuser div.slider section.page div.input label.label.avatar {border:.125rem solid whitesmoke; border-radius:50%; box-shadow: 0 .125rem .125rem #0002;}
 div#container main#chooseuser div.slider section.page div.input label.label.avatar {position:relative;}
 div#container main#chooseuser div.slider section.page div.input label.label.avatar.full {background-image:linear-gradient(dodgerblue,purple); border-width:.25rem; border-color:dodgerblue;}
-div#container main#chooseuser div.slider section.page div.input label.label.avatar.full img.upload {object-fit:cover; height: 100%; width:100%;}
+div#container main#chooseuser div.slider section.page div.input label.label.avatar.full img.upload {object-fit:cover; height: 100%; width:100%; border-radius:50%}
 div#container main#chooseuser div.slider section.page div.input label.label.avatar span.icon {position:absolute; display:grid; place-items:center; height:100%; width:100%; overflow:hidden; border-radius:50%;}
 div#container main#chooseuser div.slider section.page div.input label.label.avatar span.icon svg.icon {position:absolute; font-size:9rem; transform:translateY(.625rem);}
 div#container main#chooseuser div.slider section.page div.input label.label.avatar div.plusbtn {position:absolute; --corner:14%; bottom:var(--corner); right:var(--corner); transform:translate(50%,50%); --size:2rem; height:var(--size); width:var(--size); border-radius:50%;}
@@ -118,6 +118,8 @@ div#container main#chooseuser div.slider section.page p.textcopy {text-align:cen
 div#container main#chooseuser div.slider section.page p.textcopy a.link {/* display:block; */ text-decoration:none;}
 
 
+div#container > * {opacity:1; transition:.5s;}
+div#container.loading > * {opacity:.5;}
 div#container div#loadspinner {position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);}
 div#container div#loadspinner {opacity:0; transition:.5s;}
 div#container div#loadspinner.loading {opacity:1;}

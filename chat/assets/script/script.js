@@ -2,7 +2,7 @@
 
 
 // Initialize current recipient id. 
-var currentRecipientId;
+var selectedRecipientId;
 
 
 /*****/
@@ -49,11 +49,14 @@ function handleUserEvents() {
 	}
 }
 
+
 // Refresh data for currently selected user. 
 function refreshUserData() {
 
 	// Get data for current user. 
-	let currentuser = !isNaN(currentUserId) ? (userData[currentUserId]) : (null);
+	console.log('currentUserId',currentUserId);
+	let currentuser = !isNaN(currentUserId) ? (userdata[currentUserId]) : (null);
+	console.log('currentuser',currentuser);
 	let fname = (currentuser) ? (currentuser.fname) : ('[First Name]');
 	let lname = (currentuser) ? (currentuser.lname) : ('[Last Name]');
 	console.log('\nLoading user data:',currentUserId, fname, lname, currentuser);
@@ -64,11 +67,13 @@ function refreshUserData() {
 
 	// Refresh image of current user above contact list. 
 	let avatarbox = document.getElementById('currentuseravatar');
-	avatarbox.innerHTML = `<img src="${currentuser.avatarurl}">`;
+	avatarbox.innerHTML = (currentuser) ? (`<img src="${ currentuser.avatarurl }">`) : ('');
 
 	// Refresh current user status above contact list. 
 	let userheader = document.getElementById('currentuser');
-	if(currentuser.online) userheader.classList.add('online');
+	if(currentuser && currentuser.online) {
+		userheader.classList.add('online');
+	}
 	else userheader.classList.remove('online');
 
 	// Refresh list of contacts for current user. 
@@ -81,12 +86,13 @@ function refreshUserData() {
 
 	// Refresh list of contacts. 
 	function refreshContactList() {
+		if( currentUserId<0 ) return;
 		
 		// Initiate result. 
 		let result = '';
 
 		// Accumulate contact item data for contact list. 
-		for(let id in userData) {
+		for(let id in userdata) {
 
 			// Exclude oneself from contact list. 
 			if(id==currentUserId) continue;
@@ -104,7 +110,7 @@ function refreshUserData() {
 		function createContactItem(contactid) {
 
 			// Get contact's user data. 
-			let contact = userData[contactid];
+			let contact = userdata[contactid];
 
 			// Get last message sent between two users: current user and current contact. 
 			// let lastMessage = findLastMessageBtwn(1*currentUserId,1*contactid);
@@ -144,7 +150,8 @@ function refreshUserData() {
 
 		// Find most recent message sent among two-user cohort. 
 		function findLastMessageBtwnUsers(idA,idB) {
-			// console.log('\tFinding last msg btwn users:',idA,idB);
+			if( idA<0 || idB<0 ) return;
+			console.log('\tFinding last msg btwn users:',idA,idB);
 
 			// Get tagged list of sent messages. 
 			let sentMessages = getSentMessages();
@@ -219,7 +226,7 @@ function refreshUserData() {
 					let recentMsgItem = allRelevantMessages[0];
 	
 					// Determine if last message is outgoing. 
-					let isOutgoing = (recentMsgItem.senderid==idA) && (recentMsgItem.recipientid==idB);
+					let isOutgoing = (recentMsgItem.senderid==idA) /* && (recentMsgItem.recipientid==idB) */;
 	
 					// Get contents of most recent message. 
 					recentMsgContent = (isOutgoing) ? (`You: ${recentMsgItem.messagetext}`) : (recentMsgItem.messagetext);
@@ -241,17 +248,17 @@ function refreshUserData() {
 
 // Open messaging thread. 
 function openMsgThread(event) {
-	console.log('Opening message thread...');
+	// console.log('Opening message thread...');
 
 	// Set new recipient id. 
 	let selectedItem = event.currentTarget;
-	currentRecipientId = 1*selectedItem.getAttribute('data-userid');
+	selectedRecipientId = 1*selectedItem.getAttribute('data-userid');
 
 	// Get user data for selected contact. 
-	let recipient = userData[currentRecipientId];
+	let recipient = userdata[selectedRecipientId];
 	let fname = recipient.fname;
 	let lname = recipient.lname;
-	// console.log('\nCurrent recipient id:', currentRecipientId);
+	// console.log('\nCurrent recipient id:', selectedRecipientId);
 	// console.log('Recipient:', fname,lname, recipient, selectedItem);
 
 	// Refresh recipient name. 
@@ -266,7 +273,7 @@ function openMsgThread(event) {
 	else recipientbox.classList.remove('active');
 
 	// Refresh message history for current cohort. 
-	refreshMsgHistory(currentUserId, currentRecipientId);
+	refreshMsgHistory(currentUserId, selectedRecipientId);
 
 	// Make messaging thread visible. 
 	document.querySelector('main div.slider').classList.add('open');
@@ -283,7 +290,7 @@ function closeMsgThread() {
 	document.querySelector('main div.slider').classList.remove('open');
 
 	// Remove previous recipient id. Is this necessary? Maybe not, just in case the desktop version is open. 
-	// currentRecipientId = -1;
+	// selectedRecipientId = -1;
 }
 
 
