@@ -1,0 +1,45 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	--black:#444;
+	--themecolor:#2e557c;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+
+/* div#container main.main {background-color:white; width:100%; max-width:20rem; padding:1rem; border-radius:.5rem;} */
+
+
+div#container {background-color:var(--themecolor); display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container::before {content:''; position:absolute; top:0; left:0; width:100%; height:100%; z-index:-2; background-color:#30bfa5; clip-path:circle(16rem at center); transition:.5s;}
+
+div#container main.main {background-color:#30bfa5; height:25rem; width:70rem; border-radius:100rem;}
+div#container main.main {position:relative; transform-style:preserve-3d;}
+
+div#container main.main div.card {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(40deg) skew(-20deg,-10deg) scale(0.6); width:18.75rem; height:25rem; z-index:calc( -1 * var(--i) ); transition:.5s;}
+div#container main.main div.card {background-color:#FFF; display:grid; place-items:center; cursor:pointer; user-select:none; padding:1rem; border-radius:.5rem; box-shadow:1.5rem 1.5rem 6.25rem #0003;}
+div#container main.main div.card {top:calc(50% - 12.5rem); transform: translateX(-50%) translateY( calc(.5rem * var(--i)) ) rotate(40deg) skew(-20deg,-10deg) scale(0.6);}
+div#container main.main div.card.a {--i:-1; opacity:1.0; /* opacity:0.6; */}
+div#container main.main div.card.b {--i:0; opacity:0.8;}
+div#container main.main div.card.c {--i:1; opacity:0.6; /* opacity:1.0; */}
+div#container main.main:hover div.card {transform: translateX(-50%) translateY( calc(2rem * var(--i)) ) rotate(40deg) skew(-20deg,-10deg) scale(0.6);}
+div#container main.main:active div.card {opacity:1; z-index:1;}
+div#container main.main:active div.card {top:50%; transform: translateX( calc( -50% + (1rem + 100%) * var(--i) ) ) translateY(-50%) rotate(0deg) skew(0deg,0deg) scale(1.0);}
+/* div#container main.main:active div.card {transform: translateX( calc( -50% + 22rem * var(--i) ) ) translateY(-50%) rotate(0deg) skew(0deg,0deg) scale(1.0);} */
+
+div#container main.main div.card div.content {color:var(--black); opacity:0; transform:translateY(3rem); text-align:center; transition:.5s;}
+div#container main.main div.card.a div.content {--j:1;}
+div#container main.main div.card.b div.content {--j:2;}
+div#container main.main div.card.c div.content {--j:3;}
+div#container main.main:hover div.card div.content {opacity:.1;}
+div#container main.main:active div.card div.content {opacity:1; transform:translateY(0);}
+div#container main.main div.card div.content h2.head {margin:0;}
+div#container main.main div.card div.content p.textcopy {line-height:1.5; margin:0; margin-top:1rem;}
