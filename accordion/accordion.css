@@ -1,0 +1,42 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	--themecolor:whitesmoke;
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {background-color:var(--themecolor); /* background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); */}
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.accordion {background-color:white; width:100%; max-width:38rem; padding:.5rem 1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.accordion div.thing {background-color:whitesmoke; border:1px solid; min-height:3rem; transition:.5s; padding:1.25rem 1.25rem 1.125rem; border-radius:.25rem; margin:1rem 0;}
+div#container main.accordion div.thing.y {background-color:#FFF7F0; border-color:#FFD683;}
+div#container main.accordion div.thing.b {background-color:#F0FAFF; border-color:#CCEEFF;}
+div#container main.accordion div.thing.r {background-color:#FFF0F3; border-color:#FFCCD6;}
+div#container main.accordion div.thing.p {background-color:#F0F0FF; border-color:#CCCCFF;}
+div#container main.accordion div.thing.active {padding:.875rem 1.25rem;}
+div#container main.accordion div.thing h2.head {/* background-color:#0001; */ font-size:1.125rem; font-weight:400; margin:0;}
+div#container main.accordion div.thing h2.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container main.accordion div.thing h2.head {cursor:pointer; user-select:none;}
+div#container main.accordion div.thing h2.head span.caption {/* white-space:nowrap; */ /* overflow:hidden; */ margin-right:1rem;}
+div#container main.accordion div.thing h2.head div.toggler {font-size:1.5rem; font-weight:400;}
+div#container main.accordion div.thing h2.head div.toggler span.plus {display:block;}
+div#container main.accordion div.thing h2.head div.toggler span.minus {display:none;}
+div#container main.accordion div.thing.active h2.head div.toggler span.plus {display:none;}
+div#container main.accordion div.thing.active h2.head div.toggler span.minus {display:block;}
+div#container main.accordion div.thing p.textcopy {font-size:1rem; font-weight:300; line-height:1.625; margin:0;}
+div#container main.accordion div.thing p.textcopy {height:0; overflow:hidden; transition:.5s;}
+/* div#container main.accordion div.thing p.textcopy {display:none; max-height:0;} */
+div#container main.accordion div.thing.active p.textcopy {/* max-height:auto; */ margin-top:1rem;}
+/* div#container main.accordion div.thing.active p.textcopy {display:block; max-height:100vh;} */
+
