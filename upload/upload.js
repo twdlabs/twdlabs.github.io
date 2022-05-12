@@ -82,7 +82,7 @@ function selectFile(event) {
 }
 
 // Use selected file. 
-function useSelectedFile() {
+function useSelectedFile(selectedFile) {
 
 	// Check for valid image file. 
 	let validImageFile = !!(selectedFile) && acceptedFileTypes.includes(selectedFile.type);
@@ -127,3 +127,4 @@ function useSelectedFile() {
 		droptarget.innerHTML = `<img class="upload" src="${fileUrl}" alt="${selectedFile.name}">`;
 	}
 }
+
