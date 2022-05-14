@@ -20,8 +20,8 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- #chooseuser -->
-			<main id="chooseuser" class="newuser">
+			<!-- #userchooser -->
+			<main id="userchooser" class="newuser">
 
 				<!-- slider -->
 				<div class="slider">
@@ -483,12 +483,8 @@
 				</div>
 				<!-- /slider -->
 
-				<!-- #gobtn -->
-				<div id="gobtn" class="btn" onclick="chooseUser()">Start</div>
-				<!-- /#gobtn -->
-
 			</main>
-			<!-- /#chooseuser -->
+			<!-- /#userchooser -->
 
 			<!-- #chatlist -->
 			<main id="chatlist" class="gone">
@@ -832,7 +828,7 @@
 							<!-- /btn -->
 	
 							<!-- #newmessage -->
-							<input id="newmessage" type="text" placeholder="Type your message here..." autocomplete="off" required>
+							<input id="newmessage" type="text" placeholder="Type your message here..." autocomplete="off" required disabled>
 							<!-- /#newmessage -->
 	
 							<!-- btn -->
@@ -874,12 +870,12 @@
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
-		<script src="assets/database/database.js" type="text/javascript"></script>
 		<!-- User Database Script -->
 		<script src="assets/database/userdata.js" type="text/javascript"></script>
 		<!-- Message Database Script -->
 		<script src="assets/database/messagedata.js" type="text/javascript"></script>
+		<!-- Leftover Database Script -->
+		<!-- <script src="assets/database/database.js" type="text/javascript"></script> -->
 
 		<!-- Main Script -->
 		<script src="assets/script/script.js" type="text/javascript"></script>
