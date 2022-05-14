@@ -7,7 +7,7 @@ function toggleUserForm(newuser=false) {
 	if(newuser) {
 
 		// Show registration form. 
-		document.getElementById('chooseuser').classList.add('newuser');
+		document.getElementById('userchooser').classList.add('newuser');
 
 		// Clear login form. 
 		clearLoginForm();
@@ -17,7 +17,7 @@ function toggleUserForm(newuser=false) {
 	else {
 
 		// Show login form. 
-		document.getElementById('chooseuser').classList.remove('newuser');
+		document.getElementById('userchooser').classList.remove('newuser');
 
 		// Clear registration form. 
 		clearSignupForm();

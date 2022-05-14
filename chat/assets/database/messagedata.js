@@ -1,122 +1,46 @@
 
 
 // Initialize message data. 
-const messageData = [
-	{
-		senderid:1,
-		recipientid:0,
-		timestamp:1577854806,
-		messagetext:'Necessitatibus iure quos iste saepe totam illum ',
-		// messagetext:'aliquid quibusdam accusantium.'
-	},
-	{
-		senderid:1,
-		recipientid:0,
-		timestamp:1577854800,
-		messagetext:'Yerrrrr'
-	},
-	{
-		senderid:1,
-		recipientid:0,
-		timestamp:1577854801,
-		messagetext:'Yerrrrr'
-	},
-	{
-		senderid:1,
-		recipientid:0,
-		timestamp:1577854802,
-		messagetext:'What\'s the word'
-	},
-	{
-		senderid:0,
-		recipientid:1,
-		timestamp:1577854803,
-		messagetext:'What\'s the word'
-	},
-	{
-		senderid:1,
-		recipientid:0,
-		timestamp:1577854804,
-		messagetext:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	},
-	{
-		senderid:0,
-		recipientid:1,
-		timestamp:1577854805,
-		messagetext:'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	},
-	{
-		senderid:0,
-		recipientid:2,
-		timestamp:1577854807,
-		messagetext:'Necessitatibus iure quos iste saepe totam illum aliquid quibusdam accusantium.'
-	},
-	{
-		senderid:1,
-		recipientid:2,
-		timestamp:1577854808,
-		messagetext:'Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.'
-	},
-	{
-		senderid:0,
-		recipientid:2,
-		timestamp:1577854809,
-		messagetext:'Aliquam dignissimos et modi aut temporibus a natus, atque dolor iste iure.'
-	},
-	{
-		senderid:1,
-		recipientid:2,
-		timestamp:1577854810,
-		messagetext:'Peace out'
-	},
-	{
-		senderid:2,
-		recipientid:1,
-		timestamp:1577854811,
-		messagetext:'See you later'
-	},
-];
 
+// const messageDataMatrix = [
 
-// Initialize message data. 
+// 	[ 0, 0, 0 ],
+// 	[ 0, 0, 0 ],
+// 	[ 0, 0, 0 ],
 
-const messageDataX = [
-	[ 0, 0, 0 ],
-	[ 0, 0, 0 ],
-	[ 0, 0, 0 ],
-];
+// ];
 
-const messageDataY = [
+// const messageDataMatrix = [
 
-	[ [0], [0], [0], ],
+// 	[ [0], [0], [0], ],
 
-	[ [0], [0], [0], ],
+// 	[ [0], [0], [0], ],
 	
-	[ [0], [0], [0], ],
+// 	[ [0], [0], [0], ],
 
-];
+// ];
 
-const messageDataZ = [
+// const messageDataMatrix = [
 
-	[ 
-		[0], 
-		[0], 
-		[0], 
-	],
+// 	[ 
+// 		[0,0,0,0,0], 
+// 		[0,0,0,0,0], 
+// 		[0,0,0,0,0], 
+// 	],
 
-	[ 
-		[0], 
-		[0], 
-		[0], 
-	],
+// 	[ 
+// 		[0,0,0,0,0], 
+// 		[0,0,0,0,0], 
+// 		[0,0,0,0,0], 
+// 	],
 	
-	[ 
-		[0], 
-		[0], 
-		[0], 
-	],
+// 	[ 
+// 		[0,0,0,0,0], 
+// 		[0,0,0,0,0], 
+// 		[0,0,0,0,0], 
+// 	],
 
-];
+// ];
 
 const messageDataMatrix = [
 
@@ -124,34 +48,25 @@ const messageDataMatrix = [
 	[ 
 		// SenderID: 0
 		// RecipientID: 0
-		[
-			{
-				timestamp:1577854806,
-				messagetext:'This is a message.'
-			},
-			{
-				timestamp:1577954806,
-				messagetext:'This is also a message.'
-			},
-			{
-				timestamp:1578854806,
-				messagetext:'This is a third message.'
-			},
-		], 
+		[], 
 		// SenderID: 0
 		// RecipientID: 1
 		[
 			{
-				timestamp:1577854806,
-				messagetext:'This is a message.'
+				timestamp:0000000000,
+				messagetext:'Hi Bill'
 			},
 			{
-				timestamp:1577954806,
-				messagetext:'This is also a message.'
+				timestamp:2000000000,
+				messagetext:'How you been man'
 			},
 			{
-				timestamp:1578854806,
-				messagetext:'This is a third message.'
+				timestamp:4000000000,
+				messagetext:'Good to hear my man'
+			},
+			{
+				timestamp:6000000000,
+				messagetext:'Trillz'
 			},
 		], 
 		// SenderID: 0
@@ -159,15 +74,15 @@ const messageDataMatrix = [
 		[
 			{
 				timestamp:1577854806,
-				messagetext:'This is a message.'
+				messagetext:'Hi'
 			},
 			{
 				timestamp:1577954806,
-				messagetext:'This is also a message.'
+				messagetext:'Hey'
 			},
 			{
 				timestamp:1578854806,
-				messagetext:'This is a third message.'
+				messagetext:'Hello'
 			},
 		], 
 	],
@@ -178,48 +93,35 @@ const messageDataMatrix = [
 		// RecipientID: 0
 		[
 			{
-				timestamp:1577854806,
-				messagetext:'This is a message.'
+				timestamp:1000000000,
+				messagetext:'Whatup Ace'
 			},
 			{
-				timestamp:1577954806,
-				messagetext:'This is also a message.'
+				timestamp:3000000000,
+				messagetext:'Not too bad, chillin'
 			},
 			{
-				timestamp:1578854806,
-				messagetext:'This is a third message.'
+				timestamp:5000000000,
+				messagetext:'Word'
 			},
 		], 
 		// SenderID: 1
 		// RecipientID: 1
-		[
-			{
-				timestamp:1577854806,
-				messagetext:'This is a message.'
-			},
-			{
-				timestamp:1577954806,
-				messagetext:'This is also a message.'
-			},
-			{
-				timestamp:1578854806,
-				messagetext:'This is a third message.'
-			},
-		], 
+		[], 
 		// SenderID: 1
 		// RecipientID: 2
 		[
 			{
 				timestamp:1577854806,
-				messagetext:'This is a message.'
+				messagetext:'Hi'
 			},
 			{
 				timestamp:1577954806,
-				messagetext:'This is also a message.'
+				messagetext:'Hey'
 			},
 			{
 				timestamp:1578854806,
-				messagetext:'This is a third message.'
+				messagetext:'Hello'
 			},
 		], 
 	],
@@ -231,15 +133,15 @@ const messageDataMatrix = [
 		[
 			{
 				timestamp:1577854806,
-				messagetext:'This is a message.'
+				messagetext:'Hi'
 			},
 			{
 				timestamp:1577954806,
-				messagetext:'This is also a message.'
+				messagetext:'Hey'
 			},
 			{
 				timestamp:1578854806,
-				messagetext:'This is a third message.'
+				messagetext:'Hello'
 			},
 		], 
 		// SenderID: 2
@@ -247,33 +149,20 @@ const messageDataMatrix = [
 		[
 			{
 				timestamp:1577854806,
-				messagetext:'This is a message.'
+				messagetext:'Hi'
 			},
 			{
 				timestamp:1577954806,
-				messagetext:'This is also a message.'
+				messagetext:'Hey'
 			},
 			{
 				timestamp:1578854806,
-				messagetext:'This is a third message.'
+				messagetext:'Hello'
 			},
 		], 
 		// SenderID: 2
 		// RecipientID: 2
-		[
-			{
-				timestamp:1577854806,
-				messagetext:'This is a message.'
-			},
-			{
-				timestamp:1577954806,
-				messagetext:'This is also a message.'
-			},
-			{
-				timestamp:1578854806,
-				messagetext:'This is a third message.'
-			},
-		], 
+		[], 
 	],
 
 ];

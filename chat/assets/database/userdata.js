@@ -8,7 +8,7 @@ const userdata = [
 		username:'UserA@mail.com',
 		password:'password',
 		avatarurl:'assets/images/avatar-m.png',
-		online:true,
+		online:false,
 	},
 	{
 		fname:'Bill',
@@ -24,7 +24,7 @@ const userdata = [
 		username:'UserC@mail.com',
 		password:'password',
 		avatarurl:'assets/images/avatar-f.png',
-		online:true,
+		online:false,
 	},
 	
 	// {

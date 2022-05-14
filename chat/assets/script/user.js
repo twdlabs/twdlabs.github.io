@@ -1,14 +1,5 @@
 
 
-// Initialize current user id. 
-let currentUserId = 0;
-
-
-/*****/
-
-
-// Choose user. 
-// chooseUser();
 
 // Handle events. 
 handleEvents();
@@ -125,7 +116,7 @@ function loginUser(
 		if(isCredentialsValid) {
 
 			// Hide user chooser. 
-			document.getElementById('chooseuser').classList.add('gone');
+			document.getElementById('userchooser').classList.add('gone');
 			// Show chat app. 
 			document.getElementById('chatlist').classList.remove('gone');
 		}
@@ -136,7 +127,7 @@ function loginUser(
 			// Hide chat app. 
 			document.getElementById('chatlist').classList.add('gone');
 			// Show user chooser. 
-			document.getElementById('chooseuser').classList.remove('gone');
+			document.getElementById('userchooser').classList.remove('gone');
 		}
 	}
 }
@@ -270,9 +261,9 @@ function logoutUser() {
 		document.getElementById('chatlist').classList.add('gone');
 	
 		// Show user chooser (in login mode). 
-		let userchooser = document.getElementById('chooseuser');
-		userchooser.classList.remove('gone');
-		userchooser.classList.remove('newuser');
+		let userchooserbox = document.getElementById('userchooser');
+		userchooserbox.classList.remove('gone');
+		userchooserbox.classList.remove('newuser');
 
 		// Notify user of successful login. 
 		console.log('Successfully logged out.');
@@ -280,137 +271,4 @@ function logoutUser() {
 		// alert('Successfully logged out.');
 	}
 }
-
-
-
-
-
-
-
-
-
-// // Choose user: Start user functionality. 
-// function chooseUser() {
-
-// 	// Prompt user for login or registration. 
-// 	let haveValidResponse = false;
-// 	let alreadyMember = false;
-
-// 	// Continue till valid response received. 
-// 	while(!haveValidResponse) {
-
-// 		// Get user response. 
-// 		let r = prompt('Are you already a member? (Y or N)');
-// 		let response = (r) ? r.toUpperCase() : ('');
-
-// 		// Check user response. 
-// 		haveValidResponse = response=='Y' || response=='YES' || response=='N' || response=='NO';
-// 		alreadyMember = response=='Y' || response=='YES';
-// 	}
-
-// 	// Prompt user for login. 
-// 	if(alreadyMember) {
-// 		// goLoginUser();
-// 	}
-// 	// Prompt user for registration. 
-// 	else {
-// 		// goRegisterUser();
-// 	}
-// }
-
-// // Prompt user for login. 
-// function goLoginUser() {
-
-// 	// Initialize state of username input. 
-// 	let haveValidUsername = false;
-// 	// Initialize decision to cancel input. 
-// 	let cancelInput = false;
-
-// 	// Continue trying for input until valid input accepted or input process cancelled. 
-// 	while(!haveValidUsername && !cancelInput) {
-
-// 		// Get input username. 
-// 		let un = prompt('Please enter your username');
-
-// 		// Check if input is valid username. 
-// 		haveValidUsername = checkForValidUsername(un);
-// 		if(haveValidUsername) console.log('Username validated');
-
-// 		// Check for input cancellation. 
-// 		cancelInput = (un==null || un=='');
-// 		if(cancelInput) console.log('Username input cancelled');
-// 	}
-	
-// 	// Go for password only if username validated. 
-// 	if(haveValidUsername) {
-
-// 		// Initialize state of password match. 
-// 		let haveMatchingPassword = false;
-
-// 		// Initialize number of password attempts. 
-// 		let numPasswordAttempts = 0;
-
-// 		// Initialize decision to cancel input. 
-// 		cancelInput = false;
-
-// 		// Continue trying for input until valid input accepted or input process cancelled. 
-// 		while(!haveMatchingPassword && !cancelInput) {
-
-// 			// Get input password. 
-// 			let pw = prompt('Please enter your password');
-
-// 			// Check for matching password. 
-// 			haveMatchingPassword = (pw==userdata[selectedUserIndex].password);
-
-// 			// Increment number of password attempts. 
-// 			numPasswordAttempts++;
-
-// 			// Allow for only up to 3 failed password attempts. 
-// 			cancelInput = (numPasswordAttempts>=3)
-// 			if(cancelInput) break;
-// 		}
-// 	}
-// }
-
-// // Prompt user for registration. 
-// function goRegisterUser() {
-
-// 	// 
-// 	let un = prompt('Please enter your new username');
-// 	let pw0 = prompt('Please enter your new password');
-// 	let pw1 = prompt('Please confirm your password');
-// 	// let avurl = prompt('Please enter your avatar url');
-// }
-
-
-
-
-
-
-// // TODO: Check for valid login credentials. 
-// function checkCredentials0() {
-
-// 	// Initialize result. 
-// 	let matchFound = false;
-
-// 	// Go thru each user item, checking for match. 
-// 	for(let i in userdata) {
-
-// 		// Check for matching username. 
-// 		let matchingUsername = (un == userdata[i].username);
-
-// 		// Check for matching password. 
-// 		let matchingPassword = (pw == userdata[i].password);
-
-// 		// Check for all matching user credentials to initiate login.
-// 		let matchFound = matchingUsername && matchingPassword;
-
-// 		// End search upon finding match. 
-// 		if(matchFound) break;
-// 	}
-
-// 	// Return result. 
-// 	return matchFound;
-// }
-
 
