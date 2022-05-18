@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Block Menu</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="blockmenu.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; padding:0; margin:0;}
+
+
+			:root {
+				--blocksize:2.5rem;
+				--themecolor:#434750;
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+				--boxshadow: -7.5rem 7.5rem 1.25rem #0004;
+			}
+
+
+			body {font-family:Nunito,Oswald,sans-serif; margin:0;}
+
+
+			div#container {background-color:var(--themecolor);}
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {/* background-color:white; */ /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; /* box-shadow:var(--boxshadow); */}
+			div#container main.main ul.blocklist {background-color:#3e3f46; color:#999; list-style:none; transform:skewY(-15deg);}
+			div#container main.main ul.blocklist li.block {background-color:inherit; transition:.5s;}
+			div#container main.main ul.blocklist li.block {padding:1rem; width:13rem; position:relative; z-index:var(--i);}
+			div#container main.main ul.blocklist li.block.a {--i:6;}
+			div#container main.main ul.blocklist li.block.b {--i:5;}
+			div#container main.main ul.blocklist li.block.c {--i:4;}
+			div#container main.main ul.blocklist li.block.d {--i:3;}
+			div#container main.main ul.blocklist li.block.e {--i:2;}
+			div#container main.main ul.blocklist li.block.f {--i:1;}
+			div#container main.main ul.blocklist li.block:hover {background-color:#33a3ee; transform:translateX(-3rem);}
+			div#container main.main ul.blocklist li.block:last-child {box-shadow:var(--boxshadow);}
+			div#container main.main ul.blocklist li.block:before,
+			div#container main.main ul.blocklist li.block::after {content:''; position:absolute; background-color:red;}
+			div#container main.main ul.blocklist li.block:before {background-color:#2e3133; top:0; left:calc(-1*var(--blocksize)); width:var(--blocksize); height:100%; transform:skewY(45deg); transform-origin:right;}
+			div#container main.main ul.blocklist li.block::after {background-color:#35383e; top:calc(-1*var(--blocksize)); left:0; width:100%; height:var(--blocksize); transform:skewX(45deg); transform-origin:bottom;}
+			div#container main.main ul.blocklist li.block:hover:before {background-color:#1f5378;}
+			div#container main.main ul.blocklist li.block:hover::after {background-color:#2982b9;}
+			div#container main.main ul.blocklist li.block a.link {display:block; letter-spacing:1px; text-transform:uppercase; text-decoration:none;}
+			div#container main.main ul.blocklist li.block a.link {color:inherit; transition:.5s;}
+			div#container main.main ul.blocklist li.block:hover a.link {color:white;}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- blocklist -->
+				<ul class="blocklist">
+
+					<!-- block -->
+					<li class="block a">
+						<a class="link" href="javascript:void(0)">Home</a>
+					</li>
+					<!-- /block -->
+
+					<!-- block -->
+					<li class="block b">
+						<a class="link" href="javascript:void(0)">About</a>
+					</li>
+					<!-- /block -->
+
+					<!-- block -->
+					<li class="block c">
+						<a class="link" href="javascript:void(0)">Services</a>
+					</li>
+					<!-- /block -->
+
+					<!-- block -->
+					<li class="block d">
+						<a class="link" href="javascript:void(0)">Portfolio</a>
+					</li>
+					<!-- /block -->
+
+					<!-- block -->
+					<li class="block e">
+						<a class="link" href="javascript:void(0)">Team</a>
+					</li>
+					<!-- /block -->
+
+					<!-- block -->
+					<li class="block f">
+						<a class="link" href="javascript:void(0)">Contact</a>
+					</li>
+					<!-- /block -->
+
+				</ul>
+				<!-- /blocklist -->
+
+				<!-- item -->
+				<div class="item"></div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+					
+				</div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="blockmenu.js" type="text/javascript"></script> -->
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>
