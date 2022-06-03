@@ -1,0 +1,62 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	--themecolor:dodgerblue;
+	--lavender:#bea2e7;
+	--powderblue:#86b7e7;
+	--avatarsize:8rem;
+	--avatarshadow:.25rem 0 .75rem #0004;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {background-image:linear-gradient( var(--lavender), var(--powderblue) );}
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.main {display:flex; flex-direction:column; justify-content:center; align-items:stretch; width:100%; max-width:40rem; padding:1rem; border-radius:.5rem;}
+
+div#container main.main div.card {background-color:white; display:flex; flex-direction:row; align-items:center; border-radius:12rem 3rem 3rem 12rem; margin:1rem;}
+div#container main.main div.card {position:absolute; /* top:50%; left:50%; transform:translate(-50%,-50%); */}
+div#container main.main div.card {pointer-events:none; z-index:-1;}
+div#container main.main div.card {animation:rolodex 15s linear infinite; animation-delay:calc( -3s * var(--delay) );}
+div#container main.main:hover div.card {animation-play-state:paused;}
+div#container main.main div.card img.avatar {height:3rem; width:3rem; object-fit:cover;}
+div#container main.main div.card img.avatar {background-color:#0004; display:grid; place-items:center; object-fit:cover; min-height:var(--avatarsize); min-width:var(--avatarsize); border:.5rem solid white; border-radius:50%; box-shadow:var(--avatarshadow);}
+div#container main.main div.card div.details {flex-grow:1; /* white-space:nowrap; */ margin:0 2rem;}
+div#container main.main div.card div.details div.name {font-size:1.75rem; font-weight:600;}
+div#container main.main div.card div.details div.title {font-size:1.625rem;}
+div#container main.main div.card a.followbtn {display:block; background-image:linear-gradient( var(--lavender), var(--powderblue) ); color:white; font-size:1.5rem; text-decoration:none; padding:.5rem 2rem; border-radius:12rem; margin:0; margin-right:2rem;}
+
+
+@keyframes rolodex {
+
+	0% {opacity:0; transform:translateY(100%) scale(.375);}
+
+	5%,20% {opacity:.4; transform:translateY(100%) scale(.7); z-index:20;}
+
+	25%,
+	40% {opacity:1; transform:translateY(0%) scale(1); pointer-events:initial; z-index:30;}
+
+	45%,
+	60% {opacity:.4; transform:translateY(-100%) scale(.7); z-index:20;}
+
+	65% {opacity:.1; transform:translateY(-100%) scale(.375);}
+
+	100% {opacity:0; transform:translateY(-100%) scale(.375);}
+}
+
+
+
+@media screen and (max-width:42rem) {
+	div#container main.main div.card {flex-direction:column; text-align:center; padding:2rem; border-radius:2rem;}
+	div#container main.main div.card div.details {margin:1.5rem 0;}
+	div#container main.main div.card a.followbtn {margin:0;}
+}
+
