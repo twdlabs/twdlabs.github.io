@@ -1,0 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+
+	--lb: #1ec9ff;
+	--db: #2971e7;
+	--red: #fb3b2e;
+	--offwhite: #f8f8f8;
+	--innershadow: 0 -5px 0 5px rgba(0,0,0,.15), inset 0 .625rem 0 rgba(0,0,0,.1);
+	/* --outershadow: ; */
+
+	--bezeldiameter:25rem;
+	--bezelgap:3rem;
+	--circleradius:calc( .5*var(--bezeldiameter) - var(--bezelgap) );
+	--innercircleradius:calc( var(--circleradius) - 50% - 1rem );
+	--needleheight:calc( var(--circleradius) - 1rem );
+	--swingtransition:cubic-bezier(.47,-.48,.46,1.54);
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {background-color:var(--offwhite); display:grid; place-items:center; min-height:100vh; /* padding:1rem; */}
+
+div#container main.symbol {background-color:white; height:var(--bezeldiameter); width:var(--bezeldiameter); border-radius:5rem; box-shadow:var(--innershadow);}
+div#container main.symbol {display:grid; place-items:center; cursor:pointer; padding:var(--bezelgap); box-shadow:var(--boxshadow);}
+
+div#container main.symbol div.circle {background:linear-gradient( var(--lb), var(--db) ); height:100%; width:100%; position:relative;}
+div#container main.symbol div.circle {display:grid; place-items:center; border-radius:50%; box-shadow:var(--outershadow);}
+
+div#container main.symbol div.circle span.line {background-color:white; width:.125rem;}
+div#container main.symbol div.circle span.line {position:absolute; transform:rotate(var(--angle)) translateY(var(--innercircleradius));}
+div#container main.symbol div.circle span.line.long {height:1.5rem; --angle:calc(10deg*var(--i));}
+div#container main.symbol div.circle span.line.short {height:.75rem; --angle:calc(10deg*var(--i) + 5deg);}
+
+div#container main.symbol div.circle div.needle {position:absolute; width:2rem; height:100%;}
+div#container main.symbol div.circle div.needle {display:flex; flex-direction:column; justify-content:center;}
+div#container main.symbol div.circle div.needle {/* background-color:#0002; */ filter:drop-shadow(0 0 .25rem #0003);}
+div#container main.symbol div.circle div.needle {transform:rotate(45deg); transition:1s var(--swingtransition);}
+div#container main.symbol:hover div.circle div.needle {transform:rotate(405deg);}
+div#container main.symbol div.circle div.needle:before,
+div#container main.symbol div.circle div.needle::after {content:''; display:block; /* position:absolute; */ border:1rem solid transparent;}
+div#container main.symbol div.circle div.needle:before {bottom:100%; border-bottom-color:var(--red); border-bottom-width:var(--needleheight);}
+div#container main.symbol div.circle div.needle::after {top:100%; border-top-color:var(--offwhite); border-top-width:var(--needleheight);}
+
