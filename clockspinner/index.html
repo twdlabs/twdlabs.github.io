@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Clock Spinner</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="clockspinner.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+			:root {
+				--themecolor:whitesmoke;
+				--boxshadow:0 0 .25rem #0003;
+				--clocksize:4rem;
+			}
+			body {font-family:Nunito,sans-serif; margin:0;}
+			div#container {background-color:navy; display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			div#container div.clock {background-color:transparent; height:var(--clocksize); width:var(--clocksize); position:relative; border:.25rem solid white; border-radius:50%;}
+			div#container div.clock::before {content:''; background-color:white; width:.25rem; height:45%; border-radius:10rem;}
+			div#container div.clock::before {position:absolute; top:50%; left:50%; transform:translateX(-50%); transform-origin:top;}
+			div#container div.clock::before {animation:spin 2s linear infinite; /* animation-play-state:running; */}
+			@keyframes spin {
+				from {transform:translateX(-50%) rotate(0deg);}
+				to {transform:translateX(-50%) rotate(360deg);}
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- clock -->
+			<div class="clock"></div>
+			<!-- /clock -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="clockspinner.js" type="text/javascript"></script> -->
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
