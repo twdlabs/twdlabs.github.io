@@ -1,0 +1,27 @@
+
+
+/*  Navigation Status  */
+nav.navbar.gone,
+div.tablinkBox.gone {height:0; box-sizing:border-box; overflow:hidden; padding:0;}
+
+/*  Navigation Opacity  */
+nav.navbar.translucent {opacity:.15; transition:1s opacity;}
+nav.navbar.translucent:hover {opacity:1;}
+
+/*  Navigation Opacity  */
+div.tablinkBox.translucent {opacity:.15; transition:.5s background-color, .75s padding, 1s opacity;}
+div.tablinkBox.translucent:hover {opacity:1;}
+
+
+/*  Dark Theme  */
+body.dark,
+div.tablinkBox.dark,
+div.tablinkBox.dark button.tablink,
+div.contentBox.dark div.tabcontent {background-color:#454d54; color:#ddd;}
+div.contentBox.dark button.setBtn {background-color:#fff4; color:#fff; border-color:#fff4;}
+nav.navbar.bg-dark ul.navbar-nav li.nav-item:hover a.nav-link {background-color:#555;}
+
+/*  Color Themes  */
+div.contentBox div.tabcontent#splash button {background-color:dodgerblue; border:1px solid #000;}
+div.tablinkBox button.tablink.highlight {/*color:#0a84ff; color:#12bc00; color:#ea8000; color:#00b0bd; color:#4b42ff; color:#058b00;*/}
+div.tablinkBox button.tablink.highlight {color:dodgerblue;}

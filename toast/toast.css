@@ -1,0 +1,56 @@
+
+#snackbar {
+    position:fixed; 
+    z-index:1000000; 
+    visibility:hidden;
+    min-width:250px; 
+    left:50%; transform:translateX(-50%);
+    bottom:30px; 
+    border-radius:8px; 
+    padding:12px; 
+    background-color:rgba(51,51,51,0.25); 
+    color:#fff; 
+    font-size:14px; 
+    text-align:center; 
+     -webkit-backdrop-filter:blur(4px); /* backdrop-filter:blur(4px); */
+    /*display:block;*/
+    cursor:pointer;
+    user-select:none;
+    transition:1s;
+}
+#snackbar.show {
+    visibility:visible;
+    -webkit-animation:inFader 0.5s, outFader 0.5s 2.5s;
+    animation:inFader 0.5s, outFader 0.5s 2.5s;
+}
+#snackbar.long {
+    visibility:visible;
+    -webkit-animation:inFader 0.5s, outFader 1s 9s;
+    animation:inFader 0.5s, outFader 1s 9s;
+}
+#snackbar.longer {
+    visibility:visible;
+    -webkit-animation:inFader 0.5s, outFader 4s 16s;
+    animation:inFader 0.5s, outFader 4s 16s;
+}
+#snackbar.permanent {
+    visibility:visible;
+    -webkit-animation:inFader 0.5s;
+    animation:inFader 0.5s;
+}
+
+@-webkit-keyframes inFader {
+    from {bottom:0; opacity:0;} to {bottom:30px; opacity:1;}
+}
+@keyframes inFader {
+    from {bottom:0; opacity:0;} to {bottom:30px; opacity:1;}
+}
+@-webkit-keyframes outFader {
+    from {bottom:30px; opacity:1;} to {bottom:0; opacity:0;}
+}
+@keyframes outFader {
+    from {bottom:30px; opacity:1;} to {bottom:0; opacity:0;}
+}
+
+.toastColLeft {text-align:left;}
+.toastColRight {text-align:right;}

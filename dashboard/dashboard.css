@@ -1,0 +1,103 @@
+
+* {box-sizing:border-box;}
+
+
+html, body {height:100%; margin:0; font-family:Arial; background-color:#FFF; overflow:hidden;}
+
+
+/*  Navbar  */
+nav.navbar {position:fixed; top:0; left:0; right:0; width:100%; z-index:2;}
+nav.navbar {box-shadow:rgba(0,0,0,.25) 0px 3px 8px; box-shadow:rgba(0,0,0,.25) 0px 0px 8px 2px; /*border-bottom:1px solid #0004;*/}
+nav.navbar div.container-fluid {max-width:450px; margin:0 auto;}
+nav.navbar a.navbar-brand i.fa, 
+nav.navbar a.navbar-brand svg {margin-right:.25em;}
+nav.navbar a.navbar-brand svg {position:relative; top:-.2em;}
+nav.navbar button.navbar-toggler {padding:.15rem .45rem;}
+nav.navbar ul.navbar-nav {max-width:450px; margin:0 auto;}
+nav.navbar ul.navbar-nav li.nav-item {margin:0 .25rem;}
+nav.navbar ul.navbar-nav li.nav-item a.nav-link {border-radius:.25rem; padding:.5rem .75rem;}
+nav.navbar ul.navbar-nav li.nav-item:hover a.nav-link {background-color:#eee;}
+nav.navbar ul.navbar-nav li.nav-item.active a.nav-link {background-color:dodgerblue; color:#fff; border:1px solid #000;}
+/*  Mobilized Navbar  */
+nav.navbar {max-width:450px; margin:0 auto;}
+nav.navbar div.container-fluid {position:relative; background-color:inherit;}
+nav.navbar div.container-fluid div.navbarResponsive {position:absolute; top:100%; width:100%; background-color:inherit;}
+
+
+/*  Content Box  */
+div.contentBox {position:relative; height:100%; margin-top:1rem; z-index:0; transition:.5s;}
+div.contentBox div.tabcontent {padding:0; height:100%; box-sizing:border-box; position:relative; background-color:#FFF; overflow:auto; -webkit-overflow-scrolling:touch;}
+div.contentBox div.tabcontent {display:none; /*position:fixed;*/}
+div.contentBox div.tabcontent iframe {width:100%; height:100%; position:absolute; top:0; right:0; bottom:0; left:0; border:none;}
+div.contentBox div.tabcontent#splash {display:none; /*display:block;*/ text-align:center; padding:2rem; /*color:dodgerblue;*/ transition:.25s;}
+div.contentBox div.tabcontent#splash button {color:#fafafa; font-size:1rem; padding:.75rem 1.5rem; text-align:center; cursor:pointer; user-select:none; text-transform:uppercase;}
+div.contentBox div.tabcontent#splash button {border-radius:.5rem; margin-bottom:.5rem; position:relative; /*transition:.5s;*/ /*transition-timing-function:cubic-bezier(.78,.13,.12,1.27);*/}
+div.contentBox div.tabcontent#splash button {opacity:.75;}
+div.contentBox div.tabcontent#splash button:hover {opacity:1;}
+div.contentBox div.tabcontent#splash button svg,
+div.contentBox div.tabcontent#splash button i.fa {position:absolute; /*transition:.25s;*/}
+div.contentBox div.tabcontent#splash button div.title {transition:.25s;}
+/*  Full-size Buttons  */
+div.contentBox div.tabcontent#splash button.full {display:block; width:100%; max-width:400px; margin-left:auto; margin-right:auto;}
+div.contentBox div.tabcontent#splash button.full svg,
+div.contentBox div.tabcontent#splash button.full i.fa {top:50%; left:1em; transform:translateY(-50%);}
+/*  Square Buttons  */
+div.contentBox div.tabcontent#splash button.square {display:inline-block; font-size:2rem; width:auto; padding:2.5rem; margin:.5rem .25rem;}
+div.contentBox div.tabcontent#splash button.square svg,
+div.contentBox div.tabcontent#splash button.square i.fa {top:50%; left:50%; transform:translate(-50%,-50%);}
+div.contentBox div.tabcontent#splash button.square div.title {display:none;}
+/*  Buttons w shadow  */
+div.contentBox div.tabcontent#splash button.shadow {border:1px solid #75bafd; border:1px solid #a0d0fe; border:1px solid transparent;}
+div.contentBox div.tabcontent#splash button.shadow {box-shadow:rgba(0,0,0,.25) 0px 2px 2px;}	/* shadow shown */
+div.contentBox div.tabcontent#splash button.shadow:active {box-shadow:none;}					/* shadow gone on press */
+div.contentBox div.tabcontent#splash button.shadow:active {transform:translateY(3px);}			/* move down on press */
+/*  Buttons w depth  */
+div.contentBox div.tabcontent#splash button.thick {border:0 none;}
+div.contentBox div.tabcontent#splash button.thick {box-shadow:0 4px 0 0 #0169ce; /*box-shadow:0 4px 0 0 rgba(1,105,206,0.75);*/ /*box-shadow:0 4px 0 0 #000;*/}
+div.contentBox div.tabcontent#splash button.thick:active {box-shadow:0 1px 0 0 #014e99; box-shadow:0 1px 0 0 rgba(1,78,153,0.75); box-shadow:0 1px 0 0 #000; }
+div.contentBox div.tabcontent#splash button.thick:active {transform:translateY(3px);}
+/*  Settings Button  */
+div.contentBox button.setBtn {display:inline-block; position:absolute; right:0; bottom:0;}
+div.contentBox button.setBtn {height:2rem; width:2rem; margin:1rem; border-radius:.75rem; opacity:.1; transition:.25s;}
+div.contentBox button.setBtn {font-size:1rem; background-color:#0004; color:#000; border:1px solid #0004; cursor:pointer; user-select:none;}
+div.contentBox button.setBtn svg,
+div.contentBox button.setBtn i.fa {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div.contentBox button.setBtn:hover {opacity:1;}
+
+
+/*  Link Box  */
+div.tablinkBox {position:fixed; bottom:0; left:0; right:0; width:100%; z-index:1;}
+div.tablinkBox {background-color:#FFF; transition:.5s background-color, .75s padding;}
+div.tablinkBox {box-shadow:rgba(0,0,0,.25) 0px 0px 4px 2px; /*border-top:1px solid #0004;*/ overflow-y:hidden;}
+div.tablinkBox button.tablink {background-color:#FFF0; color:#666; cursor:pointer; padding:6px 0px; font-size:17px; user-select:none;}
+div.tablinkBox button.tablink {float:left; border:none; outline:none; /*width:100.000%;*/ text-align:center; position:relative; overflow-x:hidden; transition:.25s;}
+div.tablinkBox button.tablink div.icon {z-index:2;}
+div.tablinkBox button.tablink div.icon svg,
+div.tablinkBox button.tablink div.icon i.fa {font-size:1.15em;}
+div.tablinkBox button.tablink div.title {font-size:.6em; z-index:2;}
+div.tablinkBox button.tablink div.bubble {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:1;}
+div.tablinkBox button.tablink div.bubble {border-radius:50%; background-color:rgba(22,22,22,0.15);}
+div.tablinkBox button.tablink div.bubble {opacity:0; padding:0; transition:.1s;}
+div.tablinkBox button.tablink:active div.bubble {opacity:1; padding:32px;}
+
+
+
+/*  Edge Width  */
+
+/*  mobile(xs)  */
+@media screen and (max-width:575px) {
+	div.tablinkBox {padding:0 5%;}
+}
+/*  mobile(sm)  */
+@media screen and (min-width:576px) {
+	div.tablinkBox {padding:0 10%;}
+}
+/*  tablet(md)  */
+@media screen and (min-width:768px) {
+	div.tablinkBox {padding:0 20%;}
+}
+/*  laptop(lg), desktop(xl)  */
+@media screen and (min-width:992px) {
+	div.tablinkBox {padding:0 30%;}
+}
+

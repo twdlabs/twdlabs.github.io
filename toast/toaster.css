@@ -1,0 +1,26 @@
+
+body {padding:24px; transition:1s;}
+@media screen and (max-width:767px) { body {padding:12px;} }
+
+#container {/*text-align:center;*/ background-color:#E6F1FE; color:#222; max-width:1200px; border-radius:8px; padding:12px; box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4); transition:.5s;}
+#container:hover {box-shadow: 0px 2px 12px 4px rgba(0,0,0,0.5);}
+
+#container {position:relative; animation:showUp 1s;}
+@keyframes showUp {from{bottom:-100px;opacity:0;}to{bottom:0; opacity:1;}}
+
+/*#container > .row {padding-top:6px; padding-bottom:4px;}*/
+
+#container .head-row h2 {text-align:center; margin-bottom:24px;}
+#container .head-row h2 img {height:34px; position:relative; bottom:3px;}
+
+#container .inputGroup {background:rgba(0,0,0,0.1); padding:12px; border-radius:5px;}
+#container .input-row label {width:100%; text-align:left; padding:4px; margin:0;}
+#container .input-row input {width:100%; border-radius:5px; border:1px solid #777; text-align:left; padding:4px 12px; margin-top:4px; margin-bottom:4px;}
+
+#container .button-row {padding-top:12px;}
+#container .button-row > div.col-xs-4:nth-of-type(1) {padding-right:4px;}
+#container .button-row > div.col-xs-4:nth-of-type(2) {padding-left:4px; padding-right:4px;}
+#container .button-row > div.col-xs-4:nth-of-type(3) {padding-left:4px;}
+#container .button-row button {width:100%; border-radius:5px; border:1px solid #888; padding:6px; background-color:#EEE;}
+
+#container .output-row #outputBox {display:none; border-radius:5px; border:1px solid #888; padding:12px 36px; background-color:#DDD; text-align:left; margin-top:24px;}
