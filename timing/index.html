@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Timing Functions</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="timing.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+				--themecolor:whitesmoke;
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+			}
+
+
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {background-color:var(--themecolor);}
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {background-color:white; /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+			div#container main.main h1.head {margin:0;}
+			div#container main.main ul.itemlist {list-style:none; padding:0; margin:0;}
+			div#container main.main ul.itemlist li.item {display:flex; flex-direction:column; align-items:stretch; margin-top:1rem;}
+			div#container main.main ul.itemlist li.item > div {padding:.5rem .75rem; border-radius:.125rem;}
+			div#container main.main ul.itemlist li.item div.line {position:relative; background-color:#F4F4F4; height:1rem; border-radius:10rem; margin-top:.25rem;}
+			div#container main.main ul.itemlist li.item div.line div.ball {background-color:royalblue; min-height:1rem; min-width:1rem; border-radius:50%; /* transition:1s; */}
+			div#container main.main ul.itemlist li.item div.line div.ball {position:absolute; top:50%; left:0; transform:translate(0,-50%); animation-name:go; animation-duration:3s; animation-iteration-count:infinite; animation-play-state:running;}
+			div#container main.main ul.itemlist li.item div.label {background-color:#333; color:#EEE; font-family:'Courier New',Courier,monospace;}
+
+			@keyframes go {
+				0% {left:0%;}
+				2.5% {left:0%; transform:translate(0,-50%);}
+				97.5% {left:100%; transform:translate(-100%,-50%);}
+				100% {left:100%; transform:translate(-100%,-50%);}
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- head -->
+				<h1 class="head">
+					CSS Timing Functions
+				</h1>
+				<!-- /head -->
+
+				<!-- itemlist -->
+				<ul class="itemlist">
+
+					<!-- item -->
+					<li class="item">
+	
+						<!-- label -->
+						<div class="label">linear</div>
+						<!-- /label -->
+	
+						<!-- line -->
+						<div class="line">
+	
+							<!-- ball -->
+							<div class="ball"></div>
+							<!-- /ball -->
+	
+						</div>
+						<!-- /line -->
+						
+					</li>
+					<!-- /item -->
+
+				</ul>
+				<!-- /itemlist -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<script src="database.js" type="text/javascript"></script>
+
+		<!-- Main Script -->
+		<script src="timing.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>
