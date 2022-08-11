@@ -1,0 +1,32 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	/*  */
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {}
+div#container div#myCarousel {position:relative; /* max-width:25rem; */ overflow-x:hidden; /* border:.25rem solid #BBB; */ margin:0 auto;}
+
+div#container div#myCarousel div.flipper {position:absolute; top:0; bottom:0; cursor:pointer; width:4rem;}
+div#container div#myCarousel div.flipper.prev {left:0; background-image:linear-gradient(to left, #0000,#0001,#0002);}
+div#container div#myCarousel div.flipper.next {right:0; background-image:linear-gradient(to right, #0000,#0001,#0002);}
+div#container div#myCarousel div.flipper svg.icon {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div#myCarousel div.flipper svg.icon {color:#2222; font-size:2rem; font-size:3rem;}
+
+div#container div#myCarousel div.navigation {position:absolute; bottom:0; left:50%; transform:translateX(-50%); user-select:none;}
+div#container div#myCarousel div.navigation {display:inline-block; background-color:#0001; text-align:center; padding:0 .5rem; border-radius:1rem; margin-bottom:1rem;}
+div#container div#myCarousel div.navigation span.dot {display:inline-block; background-color:#fff4; cursor:pointer; height:.5rem; width:.5rem; border-radius:50%; margin:0 .15rem;}
+
+div#container div#myCarousel div.carousel-inner {position:relative; height:50rem; height:100vh; transition:.5s;}
+div#container div#myCarousel div.carousel-inner div.item {background-color:#888; font-size:5rem; text-align:center; text-transform:uppercase;}
+div#container div#myCarousel div.carousel-inner div.item {position:absolute; display:grid; place-items:center; height:100%; width:100%; border:.25rem solid #BBB; padding:1rem;}
