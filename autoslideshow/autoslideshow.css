@@ -7,12 +7,12 @@ body {display:grid; place-items:center;}
 
 
 /* div#container {} */
-div#container div.slideshow {border:1.25rem solid white; border-radius:.5rem; width:85vmin; overflow:hidden; position:relative;}
-div#container div.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); transition:.5s;}
-div#container.devmode div.slideshow {width:50vw; overflow:visible;}
-div#container div.slideshow div.inner {display:flex; flex-direction:row; transition:.5s;}
-div#container div.slideshow div.inner {animation: slide4 15s ease-in-out 0s infinite forwards;}
-div#container div.slideshow div.inner img {width:100%; flex-shrink:0;}
+div#container main.slideshow {border:1.25rem solid white; border-radius:.5rem; width:85vmin; overflow:hidden; position:relative;}
+div#container main.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); transition:.5s;}
+div#container.devmode main.slideshow {width:50vw; overflow:visible;}
+div#container main.slideshow div.inner {display:flex; flex-direction:row; transition:.5s;}
+div#container main.slideshow div.inner {animation: slide4 15s ease-in-out 0s infinite forwards;}
+div#container main.slideshow div.inner img {width:100%; flex-shrink:0;}
 div#container button.toggle {position:absolute; bottom:0; left:50%; transform:translateX(-50%); padding:.5rem 1rem; margin:1rem;}
 
 

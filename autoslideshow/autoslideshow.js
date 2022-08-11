@@ -1,92 +1,57 @@
 
 
 // Define slide data. 
-let slide = ['a','b','c','d'];
-let slidedata = [
-	'images/img_5terre.jpg',
-	'images/img_mountains.jpg',
-	'images/img_snow.jpg',
-	'images/img_lights.jpg',
+const slideData = [
+	{
+		caption:'a',
+		imageurl:'images/img_5terre.jpg'
+	},
+	{
+		caption:'b',
+		imageurl:'images/img_mountains.jpg'
+	},
+	{
+		caption:'c',
+		imageurl:'images/img_snow.jpg'
+	},
+	{
+		caption:'d',
+		imageurl:'images/img_lights.jpg'
+	},
 ];
 
 
 /*****/
 
 
-// Load slides. 
-loadSlides();
-
-// Open first slide. 
-// let currentIndex = 0;
-// selectSlideAt(currentIndex);
-
-// Start animation of switch to new slide every few seconds. 
-// let dt = 2000;
-// let slideSwitcher = setInterval(nextSlide,dt);
+// Load initial slide data. 
+loadSlideData();
 
 
 /*****/
 
 
-// Load slides onto page. 
-function loadSlides() {
-	// 
+// Load initial slide data. 
+function loadSlideData() {
+
+	// Initialize result. 
 	let result = '';
-	for(i in slidedata) {
+
+	// Add slides. 
+	for(i in slideData) {
 		// console.log(i);
 		result += `
 		<!-- img -->
-		<img src="${ slidedata[i] }" alt="${ slide[i] }">
+		<img src="${ slideData[i].imageurl }" alt="${ slideData[i].caption }">
 		<!-- /img -->`;
 	}
+
+	// Add extra copy of first slide (for smooth transition from last back to first slide). 
 	result += `
 	<!-- img -->
-	<img src="${ slidedata[0] }" alt="${ slide[0] }">
+	<img src="${ slideData[0].imageurl }" alt="${ slideData[0].caption }">
 	<!-- /img -->`;
 
-	// 
+	// Add result to page. 
 	document.getElementById('slideinner').innerHTML = result;
 }
-
-// // Select a slide by index. 
-// function selectSlideAt(index) {
-// 	console.log('index',index);
-	
-// 	// Show selected slide. 
-// 	showSlide();
-
-// 	// Highlight selected dot. 
-// 	highlightDot();
-	
-// 	/*****/
-
-// 	// Show selected slide. 
-// 	function showSlide() {
-		
-// 		// Get slide holder. 
-// 		let slideholder = document.querySelector('div#container div.slideshow div.inner');
-// 		// console.log('slideholder',slideholder);
-
-// 		// Get horizontal offset using index. 
-// 		let dx = -100*index;
-
-// 		// Show selected slide by applying horizontal offset. 
-// 		slideholder.style.transform = `translateX(${dx}%)`;
-// 	}
-
-// 	// Highlight selected dot. 
-// 	function highlightDot() {
-
-// 		// Get dots. 
-// 		let dots = document.querySelectorAll('div.controls span.dot');
-// 		// console.log('dots',dots);
-
-// 		// Highlight selected dot and un-highlight other dots. 
-// 		for(let i=0 ; i<dots.length ; i++) {
-// 			dot = dots[i];
-// 			// console.log('dot',i,dot);
-// 			if(i==index) dot.classList.add('active');
-// 			else dot.classList.remove('active');
-// 		}
-// 	}
-// }
