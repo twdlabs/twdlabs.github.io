@@ -1,0 +1,68 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+	--themecolor:whitesmoke;
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {background-color:var(--themecolor); background-image:linear-gradient(45deg,#4e65ff,#92effd);}
+div#container {position:relative; min-height:100vh; padding:1rem;}
+
+
+div#container main.nav {position:fixed; top:0; right:0; /* width:100%; max-width:20rem; */ cursor:pointer; user-select:none;}
+div#container main.nav {background-color:white; /* border-radius:.25rem; */ box-shadow:var(--boxshadow);}
+
+
+div#container main.nav section.top {display:flex; flex-direction:row; align-items:center; padding:0 .5rem;}
+div#container main.nav section.top div.box {/* display:flex; */ margin:.75rem .75rem;}
+
+div#container main.nav section.top div.userbox {font-size:1.625rem; display:flex; flex-direction:row; align-items:center;}
+div#container main.nav section.top div.userbox div.name {width:0; overflow:hidden; transition:.5s;}
+div#container main.nav section.top div.userbox div.name span.caption {white-space:nowrap;}
+div#container main.nav section.top div.userbox div.avatar {margin-right:0;}
+div#container main.nav section.top div.userbox div.avatar img.profilepic {display:block; --size:1.75em; height:var(--size); width:var(--size); object-fit:cover; border-radius:50%;}
+div#container main.nav section.top div.togglebox {height:1.25rem; width:1.5rem; position:relative; text-align:center; cursor:pointer; user-select:none;}
+div#container main.nav section.top div.togglebox span.bar {background-color:black; display:block; position:absolute; height:1px; width:1.5rem;}
+div#container main.nav section.top div.togglebox span.bar {transition:.25s;}
+div#container main.nav section.top div.togglebox span.bar.a {top:0; left:50%; transform:translateX(-50%);}
+div#container main.nav section.top div.togglebox span.bar.b {top:50%; transform:translateY(-50%);}
+div#container main.nav section.top div.togglebox span.bar.c {bottom:0; left:50%; transform:translateX(-50%);}
+div#container main.nav section.top div.togglebox svg.icon {display:block; font-size:2rem; width:1em; display:none;}
+/* div#container main.nav section.top div.togglebox svg.icon.x {display:none;} */
+/* div#container main.nav section.top div.togglebox svg.icon.bars {display:block;} */
+
+
+div#container main.nav section.bottom {max-height:0; overflow:hidden; transition:.5s;}
+div#container main.nav section.bottom ul.userlist {list-style:none; padding:2rem 1.5rem; margin:0;}
+div#container main.nav section.bottom ul.userlist li.useritem {color:#606060; display:flex; flex-direction:row; align-items:center; margin:1rem 0;}
+div#container main.nav section.bottom ul.userlist li.useritem svg.icon {font-size:2.25rem; margin-right:.5em; margin-bottom:.125rem;}
+div#container main.nav section.bottom ul.userlist li.useritem span.caption {font-size:1.5rem; white-space:nowrap; max-width:0; transition:.5s; transition-delay:1s;}
+
+
+
+
+/* div#container main.nav.open section.top {} */
+/* div#container main.nav.open section.top div.userbox {} */
+div#container main.nav.open section.top div.userbox div.name {width:10em;}
+div#container main.nav.open section.top div.userbox div.avatar {margin-right:.75em;}
+div#container main.nav.open section.top div.togglebox span.bar.a,
+div#container main.nav.open section.top div.togglebox span.bar.c {opacity:0; width:0;}
+div#container main.nav.open section.top div.togglebox span.bar.b1 {transform:rotate(45deg);}
+div#container main.nav.open section.top div.togglebox span.bar.b2 {transform:rotate(-45deg);}
+/* div#container main.nav.open section.top div.togglebox svg.icon.x {display:block;} */
+/* div#container main.nav.open section.top div.togglebox svg.icon.bars {display:none;} */
+
+div#container main.nav.open section.bottom {max-height:100vh;}
+/* div#container main.nav.open section.bottom ul.userlist {} */
+div#container main.nav.open section.bottom ul.userlist li.useritem span.caption {max-width:100%;}
+

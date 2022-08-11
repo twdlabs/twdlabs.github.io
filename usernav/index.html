@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>User Navigation</title>
+
+		<!-- Main Stylesheet -->
+		<link href="usernav.css" rel="stylesheet" type="text/css"/>
+		<style type="text/css"></style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- nav -->
+			<main class="nav">
+
+				<!-- top -->
+				<section class="top">
+
+					<!-- userbox -->
+					<div class="userbox box">
+	
+						<!-- avatar -->
+						<div class="avatar">
+	
+							<!-- profilepic -->
+							<img src="../atgicon.ico" class="profilepic">
+							<!-- /profilepic -->
+	
+						</div>
+						<!-- /avatar -->
+	
+						<!-- name -->
+						<div class="name">
+	
+							<!-- caption -->
+							<span class="caption">Ace Ventura</span>
+							<!-- /caption -->
+	
+						</div>
+						<!-- /name -->
+						
+					</div>
+					<!-- /userbox -->
+	
+					<!-- togglebox -->
+					<div class="togglebox box" onclick="document.querySelector('main.nav').classList.toggle('open') ">
+	
+						<!-- bar -->
+						<span class="bar a"></span>
+						<!-- /bar -->
+	
+						<!-- bar -->
+						<span class="bar b b1"></span>
+						<!-- /bar -->
+	
+						<!-- bar -->
+						<span class="bar b b2"></span>
+						<!-- /bar -->
+	
+						<!-- bar -->
+						<span class="bar c"></span>
+						<!-- /bar -->
+	
+						<!-- icon -->
+						<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+						</svg>
+						<!-- /icon -->
+		
+						<!-- icon -->
+						<svg class="icon x" width=".75em" height=".75em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+							<path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+						</svg>
+						<!-- /icon -->
+	
+					</div>
+					<!-- /togglebox -->
+
+				</section>
+				<!-- /top -->
+
+				<!-- bottom -->
+				<section class="bottom">
+
+					<!-- userlist -->
+					<ul class="userlist">
+
+						<!-- useritem -->
+						<li class="useritem">
+
+							<!-- icon -->
+							<svg class="icon user" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">Caption</span>
+							<!-- /caption -->
+	
+						</li>
+						<!-- /useritem -->
+
+					</ul>
+					<!-- /userlist -->
+
+				</section>
+				<!-- /bottom -->
+
+			</main>
+			<!-- /nav -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<script src="database.js" type="text/javascript"></script>
+
+		<!-- Main Script -->
+		<!-- <script src="usernav.js" type="text/javascript"></script> -->
+		<script type="text/javascript">
+
+			// 
+			const userlist = document.querySelector('ul.userlist');
+
+			// 
+			let result = '';
+			for(let listitem of userlistdata) {
+				result += `
+						<!-- useritem -->
+						<li class="useritem">
+
+							<!-- icon -->
+							<svg class="icon user" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								${listitem.innersvg}
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">${listitem.caption}</span>
+							<!-- /caption -->
+	
+						</li>
+						<!-- /useritem -->`;
+			}
+
+			// 
+			userlist.innerHTML = result;
+
+		</script>
+
+	</body>
+
+</html>
