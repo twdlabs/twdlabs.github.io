@@ -41,7 +41,7 @@ function loadVideoById(vidid) {
 	let vidsrc = videoData[currentvideoid];
 
 	// Load video. 
-	document.querySelector('main#main main.player div.vid').innerHTML = `
+	document.querySelector('section#body main.player div.vid').innerHTML = `
 	<!-- video -->
 	<video src="${ vidsrc.vidurl }" autoplay muted controls></video>
 	<!-- /video -->`;
@@ -105,7 +105,7 @@ function loadVideoById(vidid) {
 	// else notifbtn.classList.remove('all','on');
 
 	// Activate action upon video ending. 
-	document.querySelector('main#main main.player div.vid video').addEventListener('ended', selectNextVideo);
+	document.querySelector('section#body main.player div.vid video').addEventListener('ended', selectNextVideo);
 
 
 	/*****/
