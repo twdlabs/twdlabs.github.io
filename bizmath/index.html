@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Biz Math</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="bizmath.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+				--themecolor:whitesmoke;
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+			}
+
+
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {background-color:var(--themecolor);}
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {background-color:white; /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+			/* div#container main.main h1.head {text-align:center;} */
+			div#container main.main div.item {display:flex; justify-content:center; padding:.125rem;}
+			div#container main.main div.item > * {flex:0 0 auto;}
+			div#container main.main div.item label {flex-basis:50%; padding:.25rem;}
+			div#container main.main div.item input {flex-basis:50%; width:100%; text-align:right; padding:.25rem;}
+			div#container main.main div.item button {cursor:pointer; width:100%; padding:.25rem;}
+			div#container main.main div.bar {background-color:black; display:flex; flex-direction:row; padding:.125rem; border-radius:.125rem; margin-top:.5rem;}
+			div#container main.main div.bar div.segment {cursor:pointer; flex:0 0 0; --proportion:0%; transition:.25s; text-align:center; min-height:1.5rem; padding:0/* .25rem */;}
+			div#container main.main div.bar div.segment {position:relative; /* overflow:visible; */}
+			div#container main.main div.bar div.segment.cogs {background-color:orange; flex-basis:var(--proportion);}
+			div#container main.main div.bar div.segment.genadmin {background-color:dodgerblue; flex-basis:var(--proportion);}
+			div#container main.main div.bar div.segment.netprofit {background-color:limegreen; flex-basis:var(--proportion);}
+			div#container main.main div.bar div.segment label {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); height:100%;}
+			div#container main.main div.bar div.segment label {display:flex; flex-direction:column; align-items:center; transition:.5s;}
+			div#container main.main div.bar div.segment:hover label {transform:scale(1.25) translate(-37.5%,-37.5%);}
+			div#container main.main div.bar div.segment label span {cursor:pointer; font-size:.5rem; opacity:0; visibility:hidden;}
+			div#container main.main div.bar.active div.segment label span {opacity:1; visibility:visible;}
+			/* div#container main.main div.bar div.segment label span.value {} */
+			/* div#container main.main div.bar div.segment label span.caption {} */
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				
+				<!-- item -->
+				<div class="item">
+					
+					<h1 class="head">Biz Math</h1>
+					
+				</div>
+				<!-- /item -->
+				
+				<!-- item -->
+				<div class="item">
+
+					<!-- label -->
+					<label for="revenue">Revenue</label>
+					<!-- /label -->
+
+					<!-- input -->
+					<input type="number" id="revenue">
+					<!-- /input -->
+
+				</div>
+				<!-- /item -->
+				
+				<!-- item -->
+				<div class="item">
+
+					<!-- label -->
+					<label for="genadmin">Admin exp</label>
+					<!-- /label -->
+
+					<!-- input -->
+					<input type="number" id="genadmin">
+					<!-- /input -->
+
+				</div>
+				<!-- /item -->
+				
+				<!-- item -->
+				<div class="item">
+
+					<!-- label -->
+					<label for="cogs">COGS</label>
+					<!-- /label -->
+
+					<!-- input -->
+					<input type="number" id="cogs">
+					<!-- /input -->
+
+				</div>
+				<!-- /item -->
+				
+				<!-- item -->
+				<div class="item">
+
+					<!-- go -->
+					<button class="go" onclick="go()">Go</button>
+					<!-- /go -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- bar -->
+				<div class="bar">
+
+					<!-- cogs -->
+					<div class="segment cogs">
+
+						<!-- label -->
+						<label>
+
+							<!-- caption -->
+							<span class="caption">cogs</span>
+							<!-- /caption -->
+	
+							<!-- value -->
+							<span class="value">0%</span>
+							<!-- /value -->
+							
+						</label>
+						<!-- /label -->
+						
+					</div>
+					<!-- /cogs -->
+
+					<!-- genadmin -->
+					<div class="segment genadmin">
+
+						<!-- label -->
+						<label>
+
+							<!-- caption -->
+							<span class="caption">gen/admin</span>
+							<!-- /caption -->
+	
+							<!-- value -->
+							<span class="value">0%</span>
+							<!-- /value -->
+							
+						</label>
+						<!-- /label -->
+						
+					</div>
+					<!-- /genadmin -->
+
+					<!-- netprofit -->
+					<div class="segment netprofit">
+
+						<!-- label -->
+						<label>
+
+							<!-- caption -->
+							<span class="caption">net profit</span>
+							<!-- /caption -->
+	
+							<!-- value -->
+							<span class="value">0%</span>
+							<!-- /value -->
+							
+						</label>
+						<!-- /label -->
+						
+					</div>
+					<!-- /netprofit -->
+
+				</div>
+				<!-- /bar -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="bizmath.js" type="text/javascript"></script> -->
+		<script type="text/javascript">
+			// Calculate segment numbers. 
+			function go() {
+
+				// Get bar segment elements. 
+				let bar = document.querySelector('div#container main.main div.bar');
+				let segmentcogs = document.querySelector('div#container main.main div.bar div.segment.cogs');
+				let segmentgenadmin = document.querySelector('div#container main.main div.bar div.segment.genadmin');
+				let segmentnetprofit = document.querySelector('div#container main.main div.bar div.segment.netprofit');
+
+				// Calculate biz numbers. 
+				let revenue = 1 * document.getElementById('revenue').value;
+				let genadmin = 1 * document.getElementById('genadmin').value;
+				let cogs = 1 * document.getElementById('cogs').value;
+				let grossprofit = revenue - cogs;
+				let netprofit = grossprofit - genadmin;
+
+				// Calculate segment proportions. 
+				let proportioncogs = (100*cogs/revenue).toFixed(1)+'%';
+				let proportiongenadmin = (100*genadmin/revenue).toFixed(1)+'%';
+				let proportionnetprofit = (100*netprofit/revenue).toFixed(1)+'%';
+				
+				// 
+				segmentcogs.style.setProperty('--proportion', proportioncogs);
+				segmentcogs.querySelector('span.value').innerHTML = proportioncogs;
+				segmentgenadmin.style.setProperty('--proportion', proportiongenadmin);
+				segmentgenadmin.querySelector('span.value').innerHTML = proportiongenadmin;
+				segmentnetprofit.style.setProperty('--proportion', proportionnetprofit);
+				segmentnetprofit.querySelector('span.value').innerHTML = proportionnetprofit;
+				bar.classList.add('active');
+			}
+		</script>
+
+	</body>
+
+</html>
