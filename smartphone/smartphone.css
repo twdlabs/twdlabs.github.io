@@ -1,0 +1,164 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+:root {
+	--themecolor:#BBB;
+	--black:#333;
+	--boxshadow:0 0 1rem #0002;
+	/* --boxshadow:0 0 .25rem #0003; */
+}
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+
+body {font-family:Nunito,sans-serif; font-weight:100; margin:0;}
+body {background-color:var(--themecolor); display:grid; place-items:center; min-height:100vh;}
+
+
+
+/* General Container */
+div#container {background-color:var(--black); color:#FFF; user-select:none;}
+div#container {height:50rem; max-width:24rem; width:100%; padding:.5rem; border:1rem solid white; border-radius:3.5rem; margin:0 auto;}
+div#container div.inner {position:relative; height:100%;}
+div#container header.headbar,
+div#container footer.footbar,
+div#container main.screen {position:absolute; left:0; right:0; width:100%;}
+div#container header.headbar {top:0; z-index:1000;}
+div#container main.screen {top:0; bottom:0; height:100%;}
+div#container footer.footbar {bottom:0; z-index:1000;}
+
+
+
+/* Main Screen */
+div#container main.screen {--homescreenbg:black; --homescreenbg:linear-gradient(135deg, dodgerblue 25%, red);}
+div#container main.screen {background:var(--homescreenbg); overflow:hidden; border-radius:2rem; box-shadow:var(--boxshadow);}
+div#container main.screen div.home,
+div#container main.screen div.applayout {position:absolute; top:0; bottom:0; left:0; right:0; height:100%; width:100%;}
+div#container main.screen div.home {z-index:1;}
+div#container main.screen div.applayout {--appdefaultbg:#0008; background-color:var(--appdefaultbg); z-index:10;}
+div#container main.screen div.applayout {visibility:hidden; opacity:0; transform:scale(0); transition:.5s;}
+div#container main.screen div.applayout.active {visibility:visible; opacity:1; transform:scale(1);}
+
+
+
+/* Home Screen */
+div#container main.screen div.home {--squaresize:3rem; padding:3rem 1rem;}
+div#container main.screen div.home div.grid {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:2rem 1rem;}
+div#container main.screen div.home div.grid div.item {position:relative; padding-top:100%;}
+div#container main.screen div.home div.grid div.item div.applauncher {--appbg:white; --appiconcolor:black; --appiconsize:1.75rem;}
+div#container main.screen div.home div.grid div.item div.applauncher {position:absolute; top:0; bottom:0; left:0; right:0; height:100%; width:100%; box-shadow:var(--boxshadow);}
+div#container main.screen div.home div.grid div.item div.applauncher {background:var(--appbg); min-width:var(--squaresize); min-height:var(--squaresize); border-radius:.75rem;}
+div#container main.screen div.home div.grid div.item div.applauncher {display:grid; place-items:center; cursor:pointer; font-size:1.125rem;}
+div#container main.screen div.home div.grid div.item div.applauncher svg.icon {font-size:var(--appiconsize); color:var(--appiconcolor);}
+div#container main.screen div.home div.grid div.item div.applauncher span.caption {position:absolute; top:100%; min-width:100%; text-align:center;}
+div#container main.screen div.home div.grid div.item div.applauncher span.caption {color:white; font-size:.75rem; margin-top:.25rem;}
+
+
+
+/* App Screen */
+
+
+
+/* App Screen: Phone Call */
+
+/* Caller ID Section */
+div#container main.screen div.applayout.phone {display:flex; flex-direction:column; justify-content:space-between;}
+div#container main.screen div.applayout.phone section#callerid {padding:4rem 0; text-align:center;}
+div#container main.screen div.applayout.phone section#callerid h1.head {font-size:2.5rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container main.screen div.applayout.phone section#callerid h1.head div#name {display:block;}
+div#container main.screen div.applayout.phone section#callerid h1.head div#number {display:none; white-space:nowrap;}
+div#container main.screen div.applayout.phone section#callerid h1.head div#number span.areacode:before {content:'(';}
+div#container main.screen div.applayout.phone section#callerid h1.head div#number span.areacode::after {content:')';}
+div#container main.screen div.applayout.phone section#callerid h1.head div#number span.countrycode:before {content:'+';}
+div#container main.screen div.applayout.phone section#callerid h1.head div#name:empty {display:none;}					/* Show phone number when no name available */
+div#container main.screen div.applayout.phone section#callerid h1.head div#name:empty + div#number {display:block;}	/* Show phone number when no name available */
+div#container main.screen div.applayout.phone section#callerid h2.locale {font-size:1.25rem; font-weight:100; margin:0; margin-top:1rem;}
+div#container main.screen div.applayout.phone section#callerid h2.locale span#locale {display:block;}
+div#container main.screen div.applayout.phone section#callerid h2.locale span#device {display:none;}
+div#container.remote main.screen div.applayout.phone section#callerid h2.locale span#locale {display:none;}			/* Show indicator when remote device */
+div#container.remote main.screen div.applayout.phone section#callerid h2.locale span#device {display:block;}			/* Show indicator when remote device */
+
+/* Action Section */
+div#container main.screen div.applayout.phone section.action {padding:1rem 3rem;}
+div#container main.screen div.applayout.phone section.action main {max-width:16rem; margin:0 auto;}
+/* div#container.in main.screen div.applayout.phone section.action main {max-width:22rem;} */
+div#container main.screen div.applayout.phone section.action div.later {display:flex; flex-direction:row; justify-content:space-between;}
+div#container main.screen div.applayout.phone section.action div.later div.btn {display:flex; flex-direction:column; align-items:center; cursor:pointer;}
+div#container main.screen div.applayout.phone section.action div.later div.btn svg.icon {font-size:1.5rem;}
+div#container main.screen div.applayout.phone section.action div.later div.btn span.caption {font-size:.75rem; margin-top:.65rem; text-align:center;}
+div#container main.screen div.applayout.phone section.action div.decide {padding:3px; margin:3rem 0;}
+div#container main.screen div.applayout.phone section.action div.decide {display:flex; flex-direction:row;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn {display:grid; place-items:center; cursor:pointer; position:relative;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn {background-color:#FFF8; border-radius:50%; min-width:4rem; min-height:4rem;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn svg.icon {font-size:1.75rem;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn span.caption {font-size:.75rem; margin-top:.5rem;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn span.caption {position:absolute; top:100%; width:100%; text-align:center;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn.accept {background-color:#35C759;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn.decline {background-color:#FD3D30;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn.decline svg.icon {transform:translateY(.125rem) rotate(135deg);}
+div#container main.screen div.applayout.phone section.action div.decide div.slidebar {background-color:#FFF4; border-radius:50rem; padding:.25rem; cursor:pointer; flex-basis:1 0 100%;}
+div#container main.screen div.applayout.phone section.action div.decide div.slidebar {display:flex; flex-direction:row; justify-content:stretch; align-items:center;}
+div#container main.screen div.applayout.phone section.action div.decide div.slidebar div.dot {background-color:#FFF; border-radius:50%; min-width:4rem; min-height:4rem; transform:translateX(0);}
+div#container main.screen div.applayout.phone section.action div.decide div.slidebar div.dot {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container main.screen div.applayout.phone section.action div.decide div.slidebar div.dot svg.icon {font-size:1.75rem; color:#30D158;}
+div#container main.screen div.applayout.phone section.action div.decide div.slidebar span.caption {padding: 0 2rem; font-size:1.25rem; white-space:nowrap;}
+
+/* Custom Action Section for Unlocked Screen */
+div#container main.screen div.applayout.phone section.action div.decide {justify-content:center;}
+div#container main.screen div.applayout.phone section.action div.decide div.btn {display:none;}
+div#container main.screen div.applayout.phone section.action div.decide div.slidebar {display:flex;}
+div#container.in main.screen div.applayout.phone section.action div.decide {justify-content:space-between;}
+div#container.in main.screen div.applayout.phone section.action div.decide div.btn {display:grid;}
+div#container.in main.screen div.applayout.phone section.action div.decide div.slidebar {display:none;}
+
+
+
+/* Headbar */
+div#container header.headbar {cursor:pointer; display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:.5rem .875rem;}
+div#container header.headbar div.side {display:flex; flex-direction:row; align-items:center;}
+div#container header.headbar div.side div.indy {display:flex; flex-direction:column; align-items:center; padding:.125rem;}
+div#container header.headbar div.side div.indy.dnd svg.icon {display:block;}
+div#container header.headbar div.side div.indy.wifi svg.icon {display:block;}
+div#container header.headbar div.side div.indy.signal svg.icon {display:none;}
+div#container header.headbar div.side div.indy.signal svg.icon.signal4 {display:block;}
+div#container header.headbar div.side div.indy.battery svg.icon {display:none;}
+div#container header.headbar div.side div.indy.battery svg.icon.batteryfull {display:block;}
+/* div#container header.headbar div.side.left {} */
+/* div#container header.headbar div.side.right {} */
+div#container header.headbar div.side div.indy.time {flex-direction:row; margin-right:.25rem;}
+/* div#container header.headbar div.side div.indy.dnd {} */
+/* div#container header.headbar div.side div.indy.wifi {} */
+/* div#container header.headbar div.side div.indy.signal {} */
+/* div#container header.headbar div.side div.indy.battery {} */
+/* div#container header.headbar div.side div.indy svg.icon {} */
+
+
+
+/* Footbar */
+div#container footer.footbar {cursor:pointer; display:flex; flex-direction:row; justify-content:center;}
+div#container footer.footbar div.bar {background-color:#999; height:.3rem; width:40%; border-radius:1rem; transition:.25s ease-in-out; margin-bottom:.5rem;}
+/* div#container footer.footbar:hover div.bar {background-color:#333; height:3rem; width:3rem; border-radius:50%; transform:translateY(-.25rem);} */
+div#container footer.footbar:hover div.bar {display:grid; place-items:center;}
+div#container footer.footbar:hover div.bar::after {content:''; font-size:1.125rem; height:1em; width:1em; border:1px solid #999A; border-radius:.25em;}
+div#container footer.footbar:active div.bar {transform:translateY(-.375rem); transform:translateY(-.125rem); transition:.125s ease-in-out;}
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/*  */
+}
+
+
+/* Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/*  */
+}
+
