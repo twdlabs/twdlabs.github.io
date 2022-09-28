@@ -113,20 +113,19 @@ div#container main.player.muted div.btn.volumebtn svg.icon.volumemute {display:b
 div#container main.player div.bar {background-color:var(--fillcolor2); height:.125rem; /* width:100%; */ position:relative; border-radius:1rem;}
 /* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) , var(--fillcolor2) );} */
 div#container main.player div.bar {display:flex; flex-direction:row; align-items:stretch;}
-div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;}
-div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);}
 div#container main.player div.bar div.ball {position:absolute; top:50%; left:var(--fillage); transform:translate(-50%,-50%);}
 div#container main.player div.bar div.ball {background-color:var(--fillcolor); height:var(--ballsize); width:var(--ballsize); cursor:pointer; border-radius:50%;}
 
 /* Volume Bar */
-/* div#container main.player div.bar.volumebar {} */
 div#container main.player div.bar.volumebar {--fillage:25%;}
-div#container main.player div.bar.volumebar div.ball {--ballsize:1rem;}
+div#container main.player div.bar.volumebar div.ball {--ballsize:.75rem;}
 
 /* Progress Bar */
-/* div#container main.player div.bar.seekbar {} */
 div#container main.player div.bar.seekbar {--fillage:50%;}
-div#container main.player div.bar.seekbar div.ball {--ballsize:.375rem}
+div#container main.player div.bar.seekbar div.ball {--ballsize:.325rem}
 
-/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) 25% , var(--fillcolor2) 25% );} */
-/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );} */
+/* General Bar Filler */
+div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );}
+/* div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;} */
+/* div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);} */
+

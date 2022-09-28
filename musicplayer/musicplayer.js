@@ -74,8 +74,20 @@ function loadPlayer() {
 
 	// Make player automatically move to next song upon song end. 
 	songAudio.addEventListener('ended',uponSongEnd);
+
+	// TODO: Update progress bar fillage (once per second since play). 
 	
 	/****/
+
+	// TODO: Update progress bar fillage. 
+	function updateProgress() {
+		// 
+	}
+
+	// TODO: Update volume bar fillage. 
+	function updateVolume() {
+		// 
+	}
 
 	// Take action upon end of song. 
 	function uponSongEnd() {
