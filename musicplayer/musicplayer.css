@@ -11,7 +11,9 @@
 	--fillcolor:#555;
 	--fillcolor2:#CCC;
 	--themecolor:dodgerblue;
-	--cornersize:.5rem;
+	--cornersize:.375rem;
+	--boxshadow:0 0 1rem #0002;
+	/* --boxshadow:0 0 .25rem #0003; */
 }
 
 
@@ -20,6 +22,7 @@ body.dark {
 	--emptycolor:#555;
 	--fillcolor:#EEE;
 	--fillcolor2:#888;
+	/* transition:.5s; */
 }
 
 
@@ -30,12 +33,27 @@ body {background-color:var(--themecolor); font-family:Nunito,sans-serif; margin:
 
 
 body {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-div#container {display:flex; flex-direction:row; align-items:stretch;}
-/* div#container.open {} */
-div#container main.player {background-color:var(--emptycolor); /* width:100%; max-width:20rem; */ transition:5s border-radius; padding:1.5rem; border-radius:var(--cornersize);}
+div#container {position:relative; transition:.5s; transition-delay:.5s;}
+/* div#container {display:flex; flex-direction:row; align-items:stretch;} */
+div#container.open {transform:translateX(-50%);}
+
+/* div#container main.player {width:100%; max-width:20rem;} */
+div#container main.player,
+div#container aside.playlist {background-color:var(--emptycolor); border:1px solid var(--fillcolor); border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container main.player {position:relative; z-index:20; padding:1.5rem; transition:.5s;}
+div#container aside.playlist {position:absolute; z-index:10; top:0; right:0; height:100%; width:95%; transition:.5s; /* padding:1.125rem 0; */ border-left:0 none;}
+
 div#container.open main.player {border-radius:var(--cornersize) 0 0 var(--cornersize);}
-div#container aside.playlist {background-color:greenyellow; width:12rem; max-width:0; border-radius:var(--cornersize); transition:7.5s max-width, 7.5s border-radius;}
-div#container.open aside.playlist {max-width:100vw; border-radius:0 var(--cornersize) var(--cornersize) 0;}
+div#container.open aside.playlist {transform:translateX(100%); /* padding-left:.5rem; */ border-radius:0 var(--cornersize) var(--cornersize) 0;}
+
+div.themebtn {position:fixed; top:0; right:0;}
+div.themebtn {background-color:var(--emptycolor); color:var(--fillcolor); cursor:pointer; padding:1rem; border-radius:.5rem; margin:.5rem;}
+div.themebtn svg.icon {font-size:1.25rem;}
+div.themebtn svg.icon.moon {display:block;}
+div.themebtn svg.icon.moonfill {display:none;}
+/* .dark div.themebtn {} */
+.dark div.themebtn svg.icon.moon {display:none;}
+.dark div.themebtn svg.icon.moonfill {display:block;}
 
 
 /* div#container main.player section {} */
@@ -55,9 +73,9 @@ div#container main.player audio.song {position:fixed; bottom:0; left:50%; /* tra
 div#container main.player div.songdata {color:var(--fillcolor); font-weight:100; text-align:center; margin-top:.125rem;}
 div#container main.player div.songdata.albumart {cursor:pointer; transition:.5s scale;}
 div#container main.player div.songdata.albumart img.albumart {display:block; min-height:12rem; max-width:12rem; /* <-- Is this done correctly (min,max) ? */ object-fit:cover; border-radius:var(--cornersize);}
-/* div#container main.player div.songdata.songtitle {} */
-div#container main.player div.songdata.albumname {font-size:.75rem;}
-div#container main.player div.songdata.artistname {font-size:.75rem;}
+div#container main.player div.songdata.songtitle {font-size:1.25rem;}
+div#container main.player div.songdata.albumname {font-size:.875rem;}
+div#container main.player div.songdata.artistname {font-size:.875rem;}
 div#container main.player div.songdata.albumart:empty {background-color:var(--fillcolor); height:12rem; width:12rem; border-radius:var(--cornersize); overflow:hidden;}
 div#container main.player div.songdata.songtitle:empty::after {content:'[Unknown Song]';}
 div#container main.player div.songdata.albumname:empty::after {content:'[Unknown Album]';}
@@ -89,8 +107,8 @@ div#container main.player div.btn.repeatbtn svg.icon {color:var(--fillcolor2);}
 div#container main.player div.btn.repeatbtn svg.icon.repeat1 {display:none;}
 div#container main.player div.btn.repeatbtn svg.icon.repeatall {display:block;}
 div#container main.player.repeatlist div.btn.repeatbtn svg.icon {color:var(--fillcolor);}
-/* div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeat1 {} */
-/* div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeatall {} */
+div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeat1 {display:none;}
+div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeatall {display:block;}
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon {color:var(--fillcolor);}
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeat1 {display:block;}
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeatall {display:none;}
@@ -128,4 +146,33 @@ div#container main.player div.bar.seekbar div.ball {--ballsize:.325rem}
 div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );}
 /* div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;} */
 /* div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);} */
+
+/* Input Slider */
+div#container main.player input.slider {display:none;}
+/* div#container main.player input.slider.seekbar {} */
+/* div#container main.player input.slider.volumebar {} */
+
+
+div#container aside.playlist {overflow:hidden;}
+div#container aside.playlist:before,
+div#container aside.playlist::after {content:''; position:absolute; left:0; right:0; width:100%; height:1.5rem;}
+div#container aside.playlist:before {top:0; background-image:linear-gradient(to bottom,var(--emptycolor),transparent);}
+div#container aside.playlist::after {bottom:0; background-image:linear-gradient(to top,var(--emptycolor),transparent);}
+div#container aside.playlist ul.songlist {list-style:none; /* max- */height:100%; overflow:auto; padding:0; padding:1.125rem 0; margin:0;}
+div#container aside.playlist ul.songlist li.songitem {padding:0 .75rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink {display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:var(--cornersize);}
+div#container aside.playlist ul.songlist li.songitem a.songlink {color:inherit; text-decoration:none;}
+div#container aside.playlist ul.songlist li.songitem.active a.songlink {background-color:var(--fillcolor2);}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.albumart {flex-grow:0; flex-shrink:0; --size:2.75rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.albumart:empty::after {content:''; display:block; background-color:var(--fillcolor); height:var(--size); width:var(--size); border-radius:var(--cornersize);}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.albumart img.albumart {display:block; object-fit:cover; height:var(--size); width:var(--size); border-radius:var(--cornersize);}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata {flex-grow:1; flex-shrink:1; margin-left:.875rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata {color:var(--fillcolor); font-size:1rem; font-weight:100;}
+div#container aside.playlist ul.songlist li.songitem.active a.songlink div.metadata div.songdata {color:black; font-weight:400;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.songtitle {font-size:.875rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.artistname {font-size:.75rem;}
+/* div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata span.caption {white-space:nowrap; overflow:auto;} */
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata span.caption:empty::after {content:'[Empty]';}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.songtitle span.caption:empty::after {content:'[Unknown Song]';}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.artistname span.caption:empty::after {content:'[Unknown Artist]';}
 

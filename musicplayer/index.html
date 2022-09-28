@@ -14,7 +14,7 @@
 		<!-- <style type="text/css"></style> -->
 	</head>
 
-	<body class="dark">
+	<body class="">
 
 		<!-- #container -->
 		<div id="container">
@@ -167,9 +167,9 @@
 						<!-- cell -->
 						<div class="cell grow">
 							
-							<!-- line -->
-							<!-- <hr class="line"> -->
-							<!-- /line -->
+							<!-- slider -->
+							<input class="slider seekbar" type="range">
+							<!-- /slider -->
 
 							<!-- seekbar -->
 							<div class="bar seekbar">
@@ -289,6 +289,12 @@
 							<div class="btn playlistbtn" title="Toggle playlist">
 	
 								<!-- icon -->
+								<!-- <svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+								</svg> -->
+								<!-- /icon -->
+	
+								<!-- icon -->
 								<svg class="icon playlist" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 									<path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
 									<path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
@@ -367,6 +373,10 @@
 			
 								<!-- cell -->
 								<div class="cell grow">
+									
+									<!-- slider -->
+									<input class="slider volumebar" type="range">
+									<!-- /slider -->
 
 									<!-- volumebar -->
 									<div class="bar volumebar">
@@ -377,10 +387,6 @@
 										
 									</div>
 									<!-- /volumebar -->
-									
-									<!-- line -->
-									<!-- <hr class="line"> -->
-									<!-- /line -->
 									
 								</div>
 								<!-- /cell -->
@@ -423,11 +429,167 @@
 			<!-- playlist -->
 			<aside class="playlist">
 
+				<!-- songlist -->
+				<ul class="songlist">
+
+					<!-- songitem -->
+					<li class="songitem">
+
+						<!-- songlink -->
+						<a class="songlink" data-songindex="0" href="javascript:void(0)">
+
+							<!-- albumart -->
+							<div class="albumart">
+								<img class="albumart" src="abc.png">
+							</div>
+							<!-- /albumart -->
+
+							<!-- metadata -->
+							<div class="metadata">
+
+								<!-- songtitle -->
+								<div class="songdata songtitle">
+
+									<!-- caption -->
+									<span class="caption">Abcd</span>
+									<!-- /caption -->
+
+								</div>
+								<!-- /songtitle -->
+
+								<!-- artistname -->
+								<div class="songdata artistname">
+
+									<!-- caption -->
+									<span class="caption">Wxyz</span>
+									<!-- /caption -->
+
+								</div>
+								<!-- /artistname -->
+								
+							</div>
+							<!-- /metadata -->
+
+						</a>
+						<!-- /songlink -->
+						
+					</li>
+					<!-- /songitem -->
+
+					<!-- songitem -->
+					<li class="songitem">
+
+						<!-- songlink -->
+						<a class="songlink" data-songindex="1" href="javascript:void(0)">
+
+							<!-- albumart -->
+							<div class="albumart">
+								<img class="albumart" src="abc.png">
+							</div>
+							<!-- /albumart -->
+
+							<!-- metadata -->
+							<div class="metadata">
+
+								<!-- songtitle -->
+								<div class="songdata songtitle">
+
+									<!-- caption -->
+									<span class="caption">Abcd</span>
+									<!-- /caption -->
+
+								</div>
+								<!-- /songtitle -->
+
+								<!-- artistname -->
+								<div class="songdata artistname">
+
+									<!-- caption -->
+									<span class="caption">Wxyz</span>
+									<!-- /caption -->
+
+								</div>
+								<!-- /artistname -->
+								
+							</div>
+							<!-- /metadata -->
+
+						</a>
+						<!-- /songlink -->
+						
+					</li>
+					<!-- /songitem -->
+
+					<!-- songitem -->
+					<li class="songitem">
+
+						<!-- songlink -->
+						<a class="songlink" data-songindex="2" href="javascript:void(0)">
+
+							<!-- albumart -->
+							<div class="albumart">
+								<img class="albumart" src="abc.png">
+							</div>
+							<!-- /albumart -->
+
+							<!-- metadata -->
+							<div class="metadata">
+
+								<!-- songtitle -->
+								<div class="songdata songtitle">
+
+									<!-- caption -->
+									<span class="caption">Abcd</span>
+									<!-- /caption -->
+
+								</div>
+								<!-- /songtitle -->
+
+								<!-- artistname -->
+								<div class="songdata artistname">
+
+									<!-- caption -->
+									<span class="caption">Wxyz</span>
+									<!-- /caption -->
+
+								</div>
+								<!-- /artistname -->
+								
+							</div>
+							<!-- /metadata -->
+
+						</a>
+						<!-- /songlink -->
+						
+					</li>
+					<!-- /songitem -->
+
+				</ul>
+				<!-- /songlist -->
+
 			</aside>
 			<!-- /playlist -->
 
 		</div>
 		<!-- /#container -->
+
+		<!-- themebtn -->
+		<div class="themebtn" onclick="document.body.classList.toggle('dark')">
+	
+			<!-- icon -->
+			<svg class="icon moon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/>
+			</svg>
+			<!-- /icon -->
+	
+			<!-- icon -->
+			<svg class="icon moonfill" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+			</svg>
+			<!-- /icon -->
+
+		</div>
+		<!-- /themebtn -->
 
 
 		<!-- Song Database Script -->
