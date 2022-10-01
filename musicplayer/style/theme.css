@@ -1,0 +1,28 @@
+
+
+
+/* Theme Button */
+div.themebtn {position:fixed; top:0; right:0;}
+div.themebtn {background-color:var(--emptycolor); color:var(--fillcolor); cursor:pointer; padding:1rem; border-radius:.5rem; margin:.5rem;}
+div.themebtn svg.icon {font-size:1.25rem;}
+div.themebtn svg.icon.moon {display:block;}
+div.themebtn svg.icon.moonfill {display:none;}
+/* .dark div.themebtn {} */
+.dark div.themebtn svg.icon.moon {display:none;}
+.dark div.themebtn svg.icon.moonfill {display:block;}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* Theme Button */
+}
+
+/* Smartphone Screen */
+@media screen and (max-width:32rem) {
+	
+	/* Theme Button */
+}

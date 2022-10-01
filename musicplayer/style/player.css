@@ -1,0 +1,111 @@
+
+
+
+/* Music Player */
+
+/* div#container main.player {} */
+div#container main.player section.row {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin-top:.875rem;}
+/* div#container main.player section.row div.cell {} */
+div#container main.player section.row div.cell.grow {flex-grow:1; text-align:center;}
+div#container main.player section.row div.cell div.flex {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+
+div#container main.player h1.head {color:var(--fillcolor); font-size:1rem; font-weight:100; margin:0;}
+div#container main.player audio.song {display:none;}
+div#container main.player audio.song {position:fixed; bottom:0; left:50%; /* translate:-50%; */ transform:translateX(-50%); /* width:100%; */}
+div#container main.player div.songdata {color:var(--fillcolor); font-weight:100; text-align:center; margin-top:.125rem;}
+div#container main.player div.songdata.albumart {position:relative; padding-top:100%; cursor:pointer; transition:.5s scale;}
+div#container main.player div.songdata.albumart img.albumart {display:block; position:absolute; top:0; height:100%; width:100%; object-fit:cover; border-radius:var(--cornersize);}
+div#container main.player div.songdata.songtitle {font-size:1.25rem;}
+div#container main.player div.songdata.albumname {font-size:.875rem;}
+div#container main.player div.songdata.artistname {font-size:.875rem;}
+div#container main.player div.songdata.albumart:empty {background-color:var(--fillcolor); height:12rem; width:12rem; border-radius:var(--cornersize); overflow:hidden;}
+div#container main.player div.songdata.songtitle:empty::after {content:'[Unknown Song]';}
+div#container main.player div.songdata.albumname:empty::after {content:'[Unknown Album]';}
+div#container main.player div.songdata.artistname:empty::after {content:'[Unknown Artist]';}
+/* div#container main.player div.songdata span.caption {} */
+div#container main.player div.songdata span.caption:empty::after {content:'[Empty]';}
+div#container main.player div.songdata.songtitle span.caption:empty::after {content:'[Unknown Song]';}
+div#container main.player div.songdata.albumname span.caption:empty::after {content:'[Unknown Album]';}
+div#container main.player div.songdata.artistname span.caption:empty::after {content:'[Unknown Artist]';}
+div#container main.player.active div.songdata.albumart {scale:1.05;}
+/* div#container main.player.active div.songdata.albumart img.albumart {scale:1.05;} */
+
+/* General Button */
+div#container main.player div.btn {color:var(--fillcolor); font-size:1rem; cursor:pointer; user-select:none;}
+div#container main.player div.btn.lg {font-size:1.5rem;}
+div#container main.player div.btn.xl {font-size:2.5rem;}
+div#container main.player div.btn svg.icon {display:block;}
+
+/* Play/Pause Button */
+/* div#container main.player div.btn.playbtn {} */
+div#container main.player div.btn.playbtn svg.icon.play {display:block;}
+div#container main.player div.btn.playbtn svg.icon.pause {display:none;}
+div#container main.player.active div.btn.playbtn svg.icon.play {display:none;}
+div#container main.player.active div.btn.playbtn svg.icon.pause {display:block;}
+
+/* Repeat Button */
+div#container main.player div.btn.repeatbtn {padding:.25rem;}
+div#container main.player div.btn.repeatbtn svg.icon {color:var(--fillcolor2);}
+div#container main.player div.btn.repeatbtn svg.icon.repeat1 {display:none;}
+div#container main.player div.btn.repeatbtn svg.icon.repeatall {display:block;}
+div#container main.player.repeatlist div.btn.repeatbtn svg.icon {color:var(--fillcolor);}
+div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeat1 {display:none;}
+div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeatall {display:block;}
+div#container main.player.repeatsong div.btn.repeatbtn svg.icon {color:var(--fillcolor);}
+div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeat1 {display:block;}
+div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeatall {display:none;}
+
+/* Playlist Button */
+div#container main.player div.btn.playlistbtn {background-color:transparent; padding:.25rem; border-radius:.25rem;}
+div#container main.player div.btn.playlistbtn svg.icon {color:var(--fillcolor);}
+div#container.open main.player div.btn.playlistbtn {background-color:var(--fillcolor);}
+div#container.open main.player div.btn.playlistbtn svg.icon {color:var(--emptycolor);}
+
+/* Volume Button */
+div#container main.player div.btn.volumebtn {display:flex; flex-direction:column;}
+div#container main.player div.btn.volumebtn.x {display:none;}
+div#container main.player div.btn.volumebtn svg.icon {display:none; /* font-size:1.125rem; */}
+div#container main.player div.btn.volumebtn svg.icon.volumelow {display:block;}
+div#container main.player div.btn.volumebtn svg.icon.volumehigh {display:block;}
+div#container main.player.muted div.btn.volumebtn svg.icon.volumemute {display:block;}
+
+/* General Bar */
+div#container main.player div.bar {background-color:var(--fillcolor2); height:.125rem; /* width:100%; */ position:relative; border-radius:1rem;}
+/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) , var(--fillcolor2) );} */
+div#container main.player div.bar {display:flex; flex-direction:row; align-items:stretch;}
+div#container main.player div.bar div.ball {position:absolute; top:50%; left:var(--fillage); transform:translate(-50%,-50%);}
+div#container main.player div.bar div.ball {background-color:var(--fillcolor); height:var(--ballsize); width:var(--ballsize); cursor:pointer; border-radius:50%;}
+
+/* Volume Bar */
+div#container main.player div.bar.volumebar {--fillage:25%;}
+div#container main.player div.bar.volumebar div.ball {--ballsize:.75rem;}
+
+/* Progress Bar */
+div#container main.player div.bar.seekbar {--fillage:50%;}
+div#container main.player div.bar.seekbar div.ball {--ballsize:.325rem}
+
+/* General Bar Filler */
+div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );}
+/* div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;} */
+/* div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);} */
+
+/* Input Slider */
+div#container main.player input.slider {display:none;}
+/* div#container main.player input.slider.seekbar {} */
+/* div#container main.player input.slider.volumebar {} */
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Music Player */
+}
+
+/* Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Music Player */
+}

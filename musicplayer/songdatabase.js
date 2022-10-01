@@ -7,7 +7,7 @@ const songdata = [
 	// 	songname:'abc',
 	// 	albumname:'abc',
 	// 	artistname:'abc',
-	// 	albumartlink:'./media/abc.png',
+	// 	albumartlink:'./media/albumart.jpg',
 	// },
 
 	{
@@ -15,7 +15,7 @@ const songdata = [
 		songname:'Ding',
 		// albumname:'',
 		// artistname:'',
-		// albumartlink:'',
+		albumartlink:'./media/albumart.jpg',
 	},
 	{
 		songlink:'./media/CircleOfLife.mp3',
@@ -29,7 +29,7 @@ const songdata = [
 		songname:'Ding',
 		// albumname:'',
 		// artistname:'',
-		// albumartlink:'',
+		albumartlink:'./media/albumart.jpg',
 	},
 	{
 		songlink:'./media/CircleOfLife.mp3',
@@ -43,7 +43,7 @@ const songdata = [
 		songname:'Ding',
 		// albumname:'',
 		// artistname:'',
-		// albumartlink:'',
+		albumartlink:'./media/albumart.jpg',
 	},
 	{
 		songlink:'./media/CircleOfLife.mp3',
@@ -57,7 +57,7 @@ const songdata = [
 		songname:'Ding',
 		// albumname:'',
 		// artistname:'',
-		// albumartlink:'',
+		albumartlink:'./media/albumart.jpg',
 	},
 	{
 		songlink:'./media/CircleOfLife.mp3',
@@ -71,6 +71,6 @@ const songdata = [
 		songname:'Ding',
 		// albumname:'',
 		// artistname:'',
-		// albumartlink:'',
+		albumartlink:'./media/albumart.jpg',
 	},
 ];

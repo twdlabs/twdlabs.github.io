@@ -1,0 +1,47 @@
+
+
+
+
+/* Music Playlist */
+
+div#container aside.playlist {overflow:hidden;}
+
+div#container aside.playlist:before,
+div#container aside.playlist::after {content:''; position:absolute; left:0; right:0; width:100%; height:1.5rem;}
+div#container aside.playlist:before {top:0; background-image:linear-gradient(to bottom,var(--emptycolor),transparent);}
+div#container aside.playlist::after {bottom:0; background-image:linear-gradient(to top,var(--emptycolor),transparent);}
+
+div#container aside.playlist ul.songlist {list-style:none; /* max- */height:100%; overflow:auto; padding:0; padding:1.125rem 0; margin:0;}
+div#container aside.playlist ul.songlist li.songitem {padding:0 .75rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink {background-color:transparent; color:inherit; text-decoration:none;}
+div#container aside.playlist ul.songlist li.songitem.active a.songlink {background-color:var(--fillcolor2);}
+
+div#container aside.playlist ul.songlist li.songitem a.songlink {display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:var(--cornersize);}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.albumart {flex-grow:0; flex-shrink:0; --size:2.75rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.albumart:empty::after {content:''; display:block; background-color:var(--fillcolor); height:var(--size); width:var(--size); border-radius:var(--cornersize);}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.albumart img.albumart {display:block; object-fit:cover; height:var(--size); width:var(--size); border-radius:var(--cornersize);}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata {flex-grow:1; flex-shrink:1; margin-left:.875rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata {color:var(--fillcolor); font-size:1rem; font-weight:100;}
+div#container aside.playlist ul.songlist li.songitem.active a.songlink div.metadata div.songdata {color:black; font-weight:400;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.songtitle {font-size:.875rem;}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.artistname {font-size:.75rem;}
+/* div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata span.caption {white-space:nowrap; overflow:auto;} */
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata span.caption:empty::after {content:'[Empty]';}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.songtitle span.caption:empty::after {content:'[Unknown Song]';}
+div#container aside.playlist ul.songlist li.songitem a.songlink div.metadata div.songdata.artistname span.caption:empty::after {content:'[Unknown Artist]';}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Music Playlist */
+}
+
+/* Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Music Playlist */
+}
