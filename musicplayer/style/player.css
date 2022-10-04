@@ -6,6 +6,7 @@
 /* div#container main.player {} */
 div#container main.player section.row {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin-top:.875rem;}
 /* div#container main.player section.row div.cell {} */
+div#container main.player section.row div.cell.ref {position:relative;}
 div#container main.player section.row div.cell.grow {flex-grow:1; text-align:center;}
 div#container main.player section.row div.cell div.flex {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 
@@ -34,7 +35,31 @@ div#container main.player.active div.songdata.albumart {scale:1.05;}
 div#container main.player div.btn {color:var(--fillcolor); font-size:1rem; cursor:pointer; user-select:none;}
 div#container main.player div.btn.lg {font-size:1.5rem;}
 div#container main.player div.btn.xl {font-size:2.5rem;}
+div#container main.player div.btn.pad {padding:.125rem .5rem;}
 div#container main.player div.btn svg.icon {display:block;}
+
+/* General Bar */
+div#container main.player div.bar {background-color:var(--fillcolor2); height:.125rem; /* width:100%; */ position:relative; border-radius:1rem;}
+/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) , var(--fillcolor2) );} */
+div#container main.player div.bar {display:flex; flex-direction:row; align-items:stretch; cursor:pointer;}
+div#container main.player div.bar div.ball {position:absolute; top:50%; left:var(--fillage); transform:translate(-50%,-50%);}
+div#container main.player div.bar div.ball {background-color:var(--fillcolor); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
+/* General Bar Filler */
+div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );}
+/* div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;} */
+/* div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);} */
+/* Input Slider Bar */
+div#container main.player input.slider {position:absolute; top:0; right:0; bottom:0; left:0; height:100%; width:100%; z-index:10;}
+div#container main.player input.slider {display:block; cursor:pointer; width:100%; margin:0;}
+/* div#container main.player input.slider {opacity:.25;} */
+div#container main.player input.slider {display:none;}
+/* div#container main.player input.slider.seekbar {} */
+/* div#container main.player input.slider.volumebar {} */
+
+/* Song Progress Bar */
+div#container main.player div.bar.seekbar {--fillage:0%;}
+div#container main.player div.bar.seekbar div.ball {--ballsize:.325rem; transition:.125s;}
+div#container main.player div.bar.seekbar div.ball:hover {--ballsize:.75rem;}
 
 /* Play/Pause Button */
 /* div#container main.player div.btn.playbtn {} */
@@ -42,7 +67,6 @@ div#container main.player div.btn.playbtn svg.icon.play {display:block;}
 div#container main.player div.btn.playbtn svg.icon.pause {display:none;}
 div#container main.player.active div.btn.playbtn svg.icon.play {display:none;}
 div#container main.player.active div.btn.playbtn svg.icon.pause {display:block;}
-
 /* Repeat Button */
 div#container main.player div.btn.repeatbtn {padding:.25rem;}
 div#container main.player div.btn.repeatbtn svg.icon {color:var(--fillcolor2);}
@@ -54,7 +78,6 @@ div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeatall {displ
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon {color:var(--fillcolor);}
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeat1 {display:block;}
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeatall {display:none;}
-
 /* Playlist Button */
 div#container main.player div.btn.playlistbtn {background-color:transparent; padding:.25rem; border-radius:.25rem;}
 div#container main.player div.btn.playlistbtn svg.icon {color:var(--fillcolor);}
@@ -68,31 +91,21 @@ div#container main.player div.btn.volumebtn svg.icon {display:none; /* font-size
 div#container main.player div.btn.volumebtn svg.icon.volumelow {display:block;}
 div#container main.player div.btn.volumebtn svg.icon.volumehigh {display:block;}
 div#container main.player.muted div.btn.volumebtn svg.icon.volumemute {display:block;}
-
-/* General Bar */
-div#container main.player div.bar {background-color:var(--fillcolor2); height:.125rem; /* width:100%; */ position:relative; border-radius:1rem;}
-/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) , var(--fillcolor2) );} */
-div#container main.player div.bar {display:flex; flex-direction:row; align-items:stretch;}
-div#container main.player div.bar div.ball {position:absolute; top:50%; left:var(--fillage); transform:translate(-50%,-50%);}
-div#container main.player div.bar div.ball {background-color:var(--fillcolor); height:var(--ballsize); width:var(--ballsize); cursor:pointer; border-radius:50%;}
-
 /* Volume Bar */
-div#container main.player div.bar.volumebar {--fillage:25%;}
+div#container main.player div.bar.volumebar {--fillage:0%;}
 div#container main.player div.bar.volumebar div.ball {--ballsize:.75rem;}
 
-/* Progress Bar */
-div#container main.player div.bar.seekbar {--fillage:50%;}
-div#container main.player div.bar.seekbar div.ball {--ballsize:.325rem}
+/* Overflow Menu */
+div#container main.player div.overflowmenu {opacity:0; visibility:hidden; transition:0;}
+div#container.overflow main.player div.overflowmenu {opacity:1; visibility:visible; transition:.125s;}
+div#container main.player div.overflowmenu {position:absolute; top:100%; left:50%; z-index:10;}
+div#container main.player div.overflowmenu {background-color:var(--emptycolor); overflow:hidden; border-radius:var(--cornersize); border:.5px solid var(--fillcolor2);}
+div#container main.player div.overflowmenu ul.overflowlist {list-style:none; padding:0; margin:0;}
+div#container main.player div.overflowmenu ul.overflowlist li.overflowitem {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none; padding:.5rem 1rem;}
+div#container main.player div.overflowmenu ul.overflowlist li.overflowitem:hover {background-color:var(--fillcolor2);}
+div#container main.player div.overflowmenu ul.overflowlist li.overflowitem svg.icon {margin-right:.75rem;}
+div#container main.player div.overflowmenu ul.overflowlist li.overflowitem span.caption {color:var(--fillcolor); font-size:.875rem;}
 
-/* General Bar Filler */
-div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );}
-/* div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;} */
-/* div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);} */
-
-/* Input Slider */
-div#container main.player input.slider {display:none;}
-/* div#container main.player input.slider.seekbar {} */
-/* div#container main.player input.slider.volumebar {} */
 
 
 

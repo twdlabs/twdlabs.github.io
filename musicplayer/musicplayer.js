@@ -1,46 +1,13 @@
 
 
 
-// Get general container. 
-const gencontainer = document.querySelector('div#container');
-
-// Get container of music player components. 
-const musicplayer = document.querySelector('div#container main.player');
-
-// Get container of music playlist components. 
-const musicplaylist = document.querySelector('div#container aside.playlist ul.songlist');
-// const musicplaylist = document.querySelector('div#container aside.playlist');
-
-
-// Get song audio container. 
-const songAudio = document.querySelector('div#container audio.song');
-
-// Get album art box. 
-const albumartbox = document.querySelector('div#container main.player div.songdata.albumart');
-// Get song title box. 
-const songtitlebox = document.querySelector('div#container main.player div.songdata.songtitle');
-// Get artist name box. 
-const artistnamebox = document.querySelector('div#container main.player div.songdata.artistname');
-// Get album name box. 
-const albumnamebox = document.querySelector('div#container main.player div.songdata.albumname');
-
-// Get play button. 
-const playbtn = document.querySelector('div#container main.player div.btn.playbtn');
-// Get delta buttons. 
-const backbtn = document.querySelector('div#container main.player div.btn.backbtn');
-const fwdbtn = document.querySelector('div#container main.player div.btn.fwdbtn');
-// Get repeat button. 
-const repeatbtn = document.querySelector('div#container main.player div.btn.repeatbtn');
-// Get playlist button. 
-const playlistbtn = document.querySelector('div#container main.player div.btn.playlistbtn');
-
-// Get volume bar. 
-const volumebar = document.querySelector('div#container main.player div.bar.volumebar');
-const volumeball = document.querySelector('div#container main.player div.bar.volumebar div.ball');
-
-
 // Initialize player state. 
 let playerIsLoaded = false;
+
+// Initialize play watcher. 
+let playWatcherId = undefined;
+// Define interval of play watcher. 
+let playWatcherPeriod = 500;
 
 // Initialize index of current song. 
 let currentSongIndex = 0;
@@ -52,7 +19,62 @@ let currentRepeatState = 0;
 // 2: repeat song
 
 
+
+// Get general container. 
+const gencontainer = document.querySelector('div#container');
+
+
+
+// Get container of music player components. 
+const musicplayer = document.querySelector('div#container main.player');
+// Get container of music playlist components. 
+const musicplaylist = document.querySelector('div#container aside.playlist ul.songlist');
+
+
+// Get song audio container. 
+const songAudio = document.querySelector('div#container audio.song');
+
+// Get minimize button. 
+const minibtn = document.querySelector('div#container main.player div.btn.minibtn');
+// Get overflow button. 
+const overflowbtn = document.querySelector('div#container main.player div.btn.overflowbtn');
+// Get overflow button. 
+const overflowmenu = document.querySelector('div#container main.player div.overflowmenu');
+
+// Get album art box. 
+const albumartbox = document.querySelector('div#container main.player div.songdata.albumart');
+// Get song title box. 
+const songtitlebox = document.querySelector('div#container main.player div.songdata.songtitle');
+// Get artist name box. 
+const artistnamebox = document.querySelector('div#container main.player div.songdata.artistname');
+// Get album name box. 
+const albumnamebox = document.querySelector('div#container main.player div.songdata.albumname');
+
+// Get song progress bar. 
+const progressslider = document.querySelector('div#container main.player input.slider.seekbar');
+const songprogressbar = document.querySelector('div#container main.player div.bar.seekbar');
+const songprogressball = document.querySelector('div#container main.player div.bar.seekbar div.ball');
+
+// Get play button. 
+const playbtn = document.querySelector('div#container main.player div.btn.playbtn');
+// Get back button. 
+const backbtn = document.querySelector('div#container main.player div.btn.backbtn');
+// Get forward button. 
+const fwdbtn = document.querySelector('div#container main.player div.btn.fwdbtn');
+// Get repeat button. 
+const repeatbtn = document.querySelector('div#container main.player div.btn.repeatbtn');
+// Get playlist button. 
+const playlistbtn = document.querySelector('div#container main.player div.btn.playlistbtn');
+
+// Get volume level bar. 
+const volumeslider = document.querySelector('div#container main.player input.slider.volumebar');
+const volumelevelbar = document.querySelector('div#container main.player div.bar.volumebar');
+const volumelevelball = document.querySelector('div#container main.player div.bar.volumebar div.ball');
+
+
+
 /*****/
+
 
 
 // Load music playlist. 
@@ -62,7 +84,9 @@ loadPlaylist();
 loadPlayer();
 
 
+
 /*****/
+
 
 
 // Prepare music playlist for user interaction. 
@@ -171,6 +195,7 @@ function loadPlaylist() {
 	}
 }
 
+
 // Prepare music player for user interaction. 
 function loadPlayer() {
 
@@ -184,6 +209,11 @@ function loadPlayer() {
 	musicplayer.classList.remove('repeatsong');
 	playerIsLoaded = true;
 
+	// Activate minimize button. 
+	minibtn.addEventListener('click',toggleMiniPlayer);
+	// Activate overflow button. 
+	overflowbtn.addEventListener('click',toggleOverflowMenu);
+
 	// Activate music player buttons. 
 	playbtn.addEventListener('click',togglePlayState);
 	albumartbox.addEventListener('click',togglePlayState);
@@ -191,41 +221,134 @@ function loadPlayer() {
 	fwdbtn.addEventListener('click',skipFwd);
 	repeatbtn.addEventListener('click',toggleRepeatState);
 	playlistbtn.addEventListener('click',togglePlaylistState);
-	document.body.addEventListener('keyup',checkForSpecialKey);
-	// document.body.addEventListener('click',loadCurrentSong);
 
 	// Make player automatically move to next song upon song end. 
 	songAudio.addEventListener('ended',uponSongEnd);
 
-	// TODO: Update progress bar fillage once per second since play. 
-	setInterval(updateProgress,1000);
-	// ^ Is this correct ?
+	// Activate song progress bar: Set song progress when clicked/changed. 
+	progressslider.addEventListener('input',function(event) {
+		// Get new value. 
+		let newValue = event.currentTarget.value;
+		console.log('New value:',newValue,event);
+		// Set new value. 
+		setSongProgress(newValue);
+	});
+	songprogressbar.addEventListener('click',function(event) {
+		// TODO: Get new value (based on click location). 
+		// let newValue = xyz;
+		console.log('New value:',newValue,event);
+		// Set new value. 
+		setSongProgress(newValue);
+	});
 
-	// Update volume level once clicked. 
-	volumebar.addEventListener('click',updateVolumeLevel);
+	// Activate volume level bar: Set volume level when clicked/changed. 
+	volumeslider.addEventListener('input',function(event) {
+		// Get new value. 
+		let newValue = event.currentTarget.value;
+		console.log('New value:',newValue,event);
+		// Set new value. 
+		setVolumeLevel(newValue);
+	});
+	volumelevelbar.addEventListener('click',function(event) {
+		// TODO: Get new value (based on click location). 
+		// let newValue = xyz;
+		console.log('New value:',newValue,event);
+		// Set new value. 
+		setVolumeLevel(newValue);
+	});
+
 	
+	// Activate recognition of shortcut keys. 
+	document.body.addEventListener('keyup',checkForShortcutKey);
+
+	// Activate closer for outside clicks. 
+	document.body.addEventListener('click',checkForOutsideClicks);
+	
+
 	/****/
 
-	// TODO: Update progress bar fillage. 
-	function updateProgress() {
-		// 
-	}
 
-	// TODO: Update volume bar fillage. 
-	function updateVolumeLevel(event) {
-		// 
-	}
+	// Set new song progress. 
+	function setSongProgress(newValue = 0) {
 
-	// Take action upon end of song. 
-	function uponSongEnd() {
+		// Apply new level. 
+		songAudio.currentTime = (newValue/100)*songAudio.duration;
+
+		// Show current song progress. 
+		showSongProgress();
+	}
+	// Show current song progress in progress bar. 
+	function showSongProgress() {
 		
-		// Check if repeat state indicates song repeat. 
-		let repeatSongOn = currentRepeatState===2;
+		// Get song progress. 
+		let songProgress = `${ 100 * ( songAudio.currentTime / songAudio.duration ) }%`;
+		// console.log('Updating song progress:',songProgress);
+		
+		// Set song progress to bar. 
+		songprogressbar.style.setProperty('--fillage',songProgress);
+	}
 
-		// Play same song if song repeat is on. 
-		if(repeatSongOn) playSong();
-		// Otherwise: Skip forward to next song. 
-		else skipFwd();
+	// Set new volume level. 
+	function setVolumeLevel(newValue = 0) {
+
+		// Apply new level. 
+		songAudio.volume = (newValue/100);
+
+		// Show current volume level. 
+		showVolumeLevel();
+	}
+	// Show current volume level in volume bar. 
+	function showVolumeLevel() {
+		
+		// Get volume level. 
+		let volumeLevel = `${ 100 * songAudio.volume }%`;
+		// console.log('Updating volume level:',volumeLevel);
+		
+		// Set volume level to bar. 
+		volumelevelbar.style.setProperty('--fillage',volumeLevel);
+	}
+
+	// Toggle minimization of music player. 
+	function toggleMiniPlayer() {
+		
+		// Check if already minimized. 
+		let alreadyMini = gencontainer.classList.contains('mini');
+	
+		// Maximize if already minimized. 
+		if(alreadyMini) {
+	
+			// Maximize player. 
+			gencontainer.classList.remove('mini');
+		}
+		
+		// Minimize if not already minimized. 
+		else {
+			
+			// Close playlist slider. 
+			gencontainer.classList.remove('open');
+			// Close overflow window. 
+			gencontainer.classList.remove('overflow');
+			
+			// Minimize player. 
+			gencontainer.classList.add('mini');
+		}
+	}
+	
+	// Toggle overflow menu. 
+	function toggleOverflowMenu() {
+		
+		// Check if overflow menu already open. 
+		let alreadyOpen = gencontainer.classList.contains('overflow');
+	
+		// Close if already open. 
+		if(alreadyOpen) {
+			gencontainer.classList.remove('overflow');
+		}
+	
+		// Open if not already open. 
+		else {
+			gencontainer.classList.add('overflow');
+		}
 	}
 
 	// Play music player. 
@@ -234,10 +357,21 @@ function loadPlayer() {
 		// Toggle state of song audio. 
 		songAudio.play();
 		
-		// Toggle state of play button. 
+		// Toggle state of music player (for play button). 
 		musicplayer.classList.add('active');
 
+		// Start play watcher upon play (twice per second). 
+		startPlayWatcher();
+
 		console.log('Now playing...');
+
+		/***/
+
+		// Start play watcher. 
+		function startPlayWatcher() {
+			playWatcherId = setInterval(showSongProgress, playWatcherPeriod);
+			console.log('Play watcher id:',playWatcherId);
+		}
 	}
 	// Pause music player. 
 	function pauseSong() {
@@ -245,10 +379,21 @@ function loadPlayer() {
 		// Toggle state of song audio. 
 		songAudio.pause();
 		
-		// Toggle state of play button. 
+		// Toggle state of music player (for play button). 
 		musicplayer.classList.remove('active');
+	
+		// Stop play watcher upon pause. 
+		stopPlayWatcher();
 
 		console.log('Now paused.');
+
+		/***/
+
+		// Stop play watcher. 
+		function stopPlayWatcher() {
+			clearInterval(playWatcherId);
+			playWatcherId = null;
+		}
 	}
 	// Toggle song play state. 
 	function togglePlayState() {
@@ -275,21 +420,24 @@ function loadPlayer() {
 	
 		// Go to previous song if already near beginning of current song. 
 		if(justStarted) {
+
+			// Go to previous song. 
 			goToPrevSong();
+
+			// Play music player. 
 			playSong();
 		}
 		// Otherwise: Restart playing from beginning of current song. 
 		else {
-			restartSong();
+
+			// Go to beginning of current song. 
+			songAudio.currentTime = 0;
+
+			// Play music player. 
 			playSong();
 		}
 
 		/***/
-
-		// Go to beginning of current song. 
-		function restartSong() {
-			songAudio.currentTime = 0;
-		}
 
 		// Go to previous song. 
 		function goToPrevSong() {
@@ -357,6 +505,17 @@ function loadPlayer() {
 			loadCurrentSong();
 		}
 	}
+	// Take action upon end of song. 
+	function uponSongEnd() {
+		
+		// Check if repeat state indicates song repeat. 
+		let repeatSongOn = currentRepeatState===2;
+
+		// Play same song if song repeat is on. 
+		if(repeatSongOn) playSong();
+		// Otherwise: Skip forward to next song. 
+		else skipFwd();
+	}
 
 	// Toggle repeat state. 
 	function toggleRepeatState() {
@@ -380,15 +539,38 @@ function loadPlayer() {
 			musicplayer.classList.remove('repeatsong');
 		}
 	}
-
 	// Toggle playlist state. 
 	function togglePlaylistState() {
 		// 
-		container.classList.toggle('open');
+		gencontainer.classList.toggle('open');
+	}
+
+	// TODO: Increase volume (by 1/16 of capacity). 
+	function incrVolume() {
+
+		// Get current volume level. 
+
+		// Update volume level. 
+		
+		// Show new volume level. 
+		// volumeslider
+		// volumelevelbar.style.setProperty('--fillage',xyz);
+	}
+
+	// TODO: Decrease volume (by 1/16 of capacity). 
+	function decrVolume() {
+
+		// Get current volume level. 
+
+		// Update volume level. 
+		
+		// Show new volume level. 
+		// volumeslider
+		// volumelevelbar.style.setProperty('--fillage',xyz);
 	}
 
 	// Check for press of special shortcut keys. 
-	function checkForSpecialKey(event) {
+	function checkForShortcutKey(event) {
 		// console.log(event);
 		
 		// Check for special keys pressed. 
@@ -404,14 +586,63 @@ function loadPlayer() {
 		if(isLeftArrow) skipBack();
 		// Right arrow: Skip forward. 
 		if(isRightArrow) skipFwd();
+		// Up arrow: Increase volume. 
+		if(isUpArrow) incrVolume();
+		// Down arrow: Decrease volume. 
+		if(isDownArrow) decrVolume();
+	}
+
+	// Check for outside mouse clicks. 
+	function checkForOutsideClicks(event) {
+		// console.log(event);
+		// let x = event.clientX;
+		// let y = event.clientY;
+		// console.log('(x,y):',x,y);
+		
+		// Get target of this click. 
+		const clickTarget = event.target;
+
+		// Get current states. 
+		let playlistOpen = gencontainer.classList.contains('open');
+		// console.log('Playlist open:',playlistOpen);
+		let overflowOpen = gencontainer.classList.contains('overflow');
+		// console.log('Overflow open:',overflowOpen);
+
+		// Check for external clicks. 
+		let clickedInPlaylist = musicplaylist.contains(clickTarget);
+		// console.log('Clicked in playlist:',clickedInPlaylist);
+		let clickedInOverflowMenu = overflowmenu.contains(clickTarget);
+		// console.log('Clicked in overflow menu:',clickedInOverflowMenu);
+
+		// Close playlist if open and clicked outside. 
+		// if(playlistOpen && !clickedInPlaylist) closePlaylist();
+
+		// Close overflow menu if open and clicked outside. 
+		// if(overflowOpen && !clickedInOverflowMenu) closeOverflowMenu();
+
+		/***/
+
+		// Close playlist. 
+		function closePlaylist() {
+			// 
+			gencontainer.classList.remove('open');
+		}
+
+		// Close overflow menu. 
+		function closeOverflowMenu() {
+			// 
+			gencontainer.classList.remove('overflow');
+		}
 	}
 }
 
+
 // Load current song. 
-function loadCurrentSong() {
-	console.log('Loading song at current index:', currentSongIndex );
+function loadCurrentSong(index = currentSongIndex) {
+	console.log('Loading song at index:', index );
 
 	// Get data for current song. 
+	// currentSongIndex = index;
 	songToLoad = songdata[currentSongIndex];
 
 	// Load song audio into player. 
@@ -460,7 +691,7 @@ function loadCurrentSong() {
 		<!-- /albumart -->` : '';
 	}
 
-	// Update selected song in playlist. 
+	// Update highlighted song in playlist. 
 	function updatePlaylistSelection() {
 
 		// Get all song items. 
@@ -470,61 +701,20 @@ function loadCurrentSong() {
 		// Go thru all song items to refresh highlight state. 
 		for(let songitem of allSongItems) {
 			
-			// Get index from song link. 
+			// Get song link. 
 			let songlink = songitem.querySelector('a.songlink');
 			// console.log(songlink);
+
+			// Get index from song link. 
 			let index = 1 * songlink.getAttribute('data-songindex');
 			// console.log(index,songitem);
 
-			// Highlight selected song. 
+			// Highlight song if it matches selection. 
 			if(index==currentSongIndex) songitem.classList.add('active');
-			// Un-highlight all other songs. 
+
+			// Otherwise, un-highlight song. 
 			else songitem.classList.remove('active');
 		}
 	}
 }
-
-// Toggle minimization of music player. 
-function toggleMiniPlayer() {
-	
-	// Check if already minimized. 
-	let alreadyMini = gencontainer.classList.contains('mini');
-
-	// Maximize if already minimized. 
-	if(alreadyMini) {
-
-		// Maximize player. 
-		gencontainer.classList.remove('mini');
-	}
-	
-	// Minimize if not already minimized. 
-	else {
-		
-		// Close playlist slider. 
-		gencontainer.classList.remove('open');
-		
-		// Close overflow window. 
-		closeOverflowMenu();
-		
-		// Minimize player. 
-		gencontainer.classList.add('mini');
-	}
-}
-
-// Open overflow menu. 
-function openOverflowMenu() {
-	// 
-	gencontainer.classList.add('overflow');
-}
-
-// Close overflow menu. 
-function closeOverflowMenu() {
-	// 
-	gencontainer.classList.remove('overflow');
-}
-
-// // Minimize music player. 
-// function miniPlayer() {
-// 	// 
-// }
 
