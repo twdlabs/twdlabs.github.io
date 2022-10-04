@@ -6,11 +6,14 @@ let playerIsLoaded = false;
 
 // Initialize play watcher. 
 let playWatcherId = undefined;
-// Define interval of play watcher. 
-let playWatcherPeriod = 500;
+// Define interval of play watcher (in milliseconds). 
+let playWatcherPeriod = 100;
 
 // Initialize index of current song. 
 let currentSongIndex = 0;
+
+// Initialize player speed. 
+let currentPlayerSpeed = 1.0;
 
 // Initialize state of repeat button. 
 let currentRepeatState = 0;
@@ -36,40 +39,36 @@ const songAudio = document.querySelector('div#container audio.song');
 
 // Get minimize button. 
 const minibtn = document.querySelector('div#container main.player div.btn.minibtn');
+
 // Get overflow button. 
 const overflowbtn = document.querySelector('div#container main.player div.btn.overflowbtn');
-// Get overflow button. 
+// Get overflow menu. 
 const overflowmenu = document.querySelector('div#container main.player div.overflowmenu');
 
-// Get album art box. 
+// Get metadata boxes: album art, song title, artist name, album name. 
 const albumartbox = document.querySelector('div#container main.player div.songdata.albumart');
-// Get song title box. 
 const songtitlebox = document.querySelector('div#container main.player div.songdata.songtitle');
-// Get artist name box. 
 const artistnamebox = document.querySelector('div#container main.player div.songdata.artistname');
-// Get album name box. 
 const albumnamebox = document.querySelector('div#container main.player div.songdata.albumname');
 
-// Get song progress bar. 
-const progressslider = document.querySelector('div#container main.player input.slider.seekbar');
+// Get control buttons: play, skip back, skip forward, repeat toggler, playlist toggler. 
+const playbtn = document.querySelector('div#container main.player div.btn.playbtn');
+const backbtn = document.querySelector('div#container main.player div.btn.backbtn');
+const fwdbtn = document.querySelector('div#container main.player div.btn.fwdbtn');
+const repeatbtn = document.querySelector('div#container main.player div.btn.repeatbtn');
+const playlistbtn = document.querySelector('div#container main.player div.btn.playlistbtn');
+const speedbtn = document.querySelector('div#container main.player div.btn.speedbtn');
+const speedbtncaption = document.querySelector('div#container main.player div.btn.speedbtn span.caption');
+
+// Get song progress bars. 
 const songprogressbar = document.querySelector('div#container main.player div.bar.seekbar');
 const songprogressball = document.querySelector('div#container main.player div.bar.seekbar div.ball');
+const songprogressslider = document.querySelector('div#container main.player input.slider.seekbar');
 
-// Get play button. 
-const playbtn = document.querySelector('div#container main.player div.btn.playbtn');
-// Get back button. 
-const backbtn = document.querySelector('div#container main.player div.btn.backbtn');
-// Get forward button. 
-const fwdbtn = document.querySelector('div#container main.player div.btn.fwdbtn');
-// Get repeat button. 
-const repeatbtn = document.querySelector('div#container main.player div.btn.repeatbtn');
-// Get playlist button. 
-const playlistbtn = document.querySelector('div#container main.player div.btn.playlistbtn');
-
-// Get volume level bar. 
-const volumeslider = document.querySelector('div#container main.player input.slider.volumebar');
+// Get volume level bars. 
 const volumelevelbar = document.querySelector('div#container main.player div.bar.volumebar');
 const volumelevelball = document.querySelector('div#container main.player div.bar.volumebar div.ball');
+const volumelevelslider = document.querySelector('div#container main.player input.slider.volumebar');
 
 
 
@@ -219,6 +218,7 @@ function loadPlayer() {
 	albumartbox.addEventListener('click',togglePlayState);
 	backbtn.addEventListener('click',skipBack);
 	fwdbtn.addEventListener('click',skipFwd);
+	speedbtn.addEventListener('click',togglePlayerSpeed);
 	repeatbtn.addEventListener('click',toggleRepeatState);
 	playlistbtn.addEventListener('click',togglePlaylistState);
 
@@ -226,36 +226,36 @@ function loadPlayer() {
 	songAudio.addEventListener('ended',uponSongEnd);
 
 	// Activate song progress bar: Set song progress when clicked/changed. 
-	progressslider.addEventListener('input',function(event) {
+	songprogressslider.addEventListener('input',function(event) {
 		// Get new value. 
 		let newValue = event.currentTarget.value;
 		console.log('New value:',newValue,event);
 		// Set new value. 
 		setSongProgress(newValue);
 	});
-	songprogressbar.addEventListener('click',function(event) {
-		// TODO: Get new value (based on click location). 
-		// let newValue = xyz;
-		console.log('New value:',newValue,event);
-		// Set new value. 
-		setSongProgress(newValue);
-	});
+	// songprogressbar.addEventListener('click',function(event) {
+	// 	// TODO: Get new value (based on click location). 
+	// 	// let newValue = xyz;
+	// 	console.log('New value:',newValue,event);
+	// 	// Set new value. 
+	// 	setSongProgress(newValue);
+	// });
 
 	// Activate volume level bar: Set volume level when clicked/changed. 
-	volumeslider.addEventListener('input',function(event) {
+	volumelevelslider.addEventListener('input',function(event) {
 		// Get new value. 
 		let newValue = event.currentTarget.value;
 		console.log('New value:',newValue,event);
 		// Set new value. 
 		setVolumeLevel(newValue);
 	});
-	volumelevelbar.addEventListener('click',function(event) {
-		// TODO: Get new value (based on click location). 
-		// let newValue = xyz;
-		console.log('New value:',newValue,event);
-		// Set new value. 
-		setVolumeLevel(newValue);
-	});
+	// volumelevelbar.addEventListener('click',function(event) {
+	// 	// TODO: Get new value (based on click location). 
+	// 	// let newValue = xyz;
+	// 	console.log('New value:',newValue,event);
+	// 	// Set new value. 
+	// 	setVolumeLevel(newValue);
+	// });
 
 	
 	// Activate recognition of shortcut keys. 
@@ -279,13 +279,64 @@ function loadPlayer() {
 	}
 	// Show current song progress in progress bar. 
 	function showSongProgress() {
+
+		// Get timestamp boxes. 
+		const timeA = document.querySelector('div#container main.player span.timestamp.timeA');
+		const timeB = document.querySelector('div#container main.player span.timestamp.timeB');
 		
 		// Get song progress. 
-		let songProgress = `${ 100 * ( songAudio.currentTime / songAudio.duration ) }%`;
+		let songProgress = 100 * ( songAudio.currentTime / songAudio.duration );
 		// console.log('Updating song progress:',songProgress);
 		
 		// Set song progress to bar. 
-		songprogressbar.style.setProperty('--fillage',songProgress);
+		songprogressbar.style.setProperty('--fillage',`${ songProgress }%`);
+		// Set song progress to slider. 
+		songprogressslider.value = (songProgress);
+
+		// Show corresponding timestamps. 
+		showTimestamps();
+
+		/***/
+
+		// Show current timestamp. 
+		function showTimestamps() {
+
+			// Get elapsed time. 
+			let timeElapsed = formatTime(songAudio.currentTime);			
+			// Get remaining time. 
+			let timeRemaining = '-' + formatTime(songAudio.duration - songAudio.currentTime);
+			// Get song duration. 
+			let songLength = formatTime(songAudio.duration);
+			console.log('\tTimer\t\t',timeElapsed,'/',songLength,'\t',timeRemaining,'/',songLength);
+
+			// Show elapsed time. 
+			timeA.innerHTML = timeElapsed;
+			// console.log('Time elapsed:',timeElapsed,'/',songLength);
+			
+			// Show remaining time. 
+			timeB.innerHTML = timeRemaining;
+			// console.log('Time remaining:',timeRemaining,'/',songLength);
+			
+			// Show song duration. 
+			// timeB.innerHTML = songLength;
+			// console.log("Song length:",songLength);
+			
+			/**/
+
+			// Format time (minutes and seconds). 
+			function formatTime(totalNumSeconds) {
+
+				// Set number of decimal places for seconds format. 
+				let numDecimalPlaces = 0;
+
+				// Separate numbers of minutes and seconds. 
+				let min = (totalNumSeconds / 60).toFixed(0);
+				let sec = (totalNumSeconds % 60).toFixed(numDecimalPlaces);
+
+				// Return result. 
+				return `${ min }:${ ( sec<10 ) ? ( '0'+sec ) : ( sec ) }`;
+			}
+		}
 	}
 
 	// Set new volume level. 
@@ -360,8 +411,8 @@ function loadPlayer() {
 		// Toggle state of music player (for play button). 
 		musicplayer.classList.add('active');
 
-		// Start play watcher upon play (twice per second). 
-		startPlayWatcher();
+		// Start play watcher upon play (if not already running). 
+		if(playWatcherId==null) startPlayWatcher();
 
 		console.log('Now playing...');
 
@@ -369,6 +420,7 @@ function loadPlayer() {
 
 		// Start play watcher. 
 		function startPlayWatcher() {
+			showSongProgress();
 			playWatcherId = setInterval(showSongProgress, playWatcherPeriod);
 			console.log('Play watcher id:',playWatcherId);
 		}
@@ -441,11 +493,13 @@ function loadPlayer() {
 
 		// Go to previous song. 
 		function goToPrevSong() {
-			console.log('Current song index (before):',currentSongIndex);
+			let a = currentSongIndex;
+			// console.log('Current song index (before):',currentSongIndex);
 
 			// Increment current song index. 
 			currentSongIndex -= 1;
-			console.log('Current song index (during):',currentSongIndex);
+			let b = currentSongIndex;
+			// console.log('Current song index (during):',currentSongIndex);
 			
 			// Ensure song index within range. 
 			if(currentSongIndex<0) {
@@ -459,7 +513,10 @@ function loadPlayer() {
 				// Remain on first song if 'repeat list' not selected
 				else currentSongIndex = 0;
 			}
-			console.log('Current song index (after):',currentSongIndex);
+			let c = currentSongIndex;
+			// console.log('Current song index (after):',currentSongIndex);
+
+			console.log('Current song index:',`${a} –> ${b} –> ${c}`);
 
 			// Load new song into music player. 
 			loadCurrentSong();
@@ -491,15 +548,20 @@ function loadPlayer() {
 		
 		// Go to next song. 
 		function goToNextSong() {
-			console.log('Current song index (before):',currentSongIndex);
+			let a = currentSongIndex;
+			// console.log('Current song index (before):',currentSongIndex);
 			
 			// Increment current song index. 
 			currentSongIndex += 1;
-			console.log('Current song index (during):',currentSongIndex);
+			let b = currentSongIndex;
+			// console.log('Current song index (during):',currentSongIndex);
 			
 			// Ensure song index within range (modulus [length]). 
 			currentSongIndex %= songdata.length;
-			console.log('Current song index (after):',currentSongIndex);
+			let c = currentSongIndex;
+			// console.log('Current song index (after):',currentSongIndex);
+
+			console.log('Current song index:',`${a} –> ${b} –> ${c}`);
 
 			// Load new song into music player. 
 			loadCurrentSong();
@@ -512,11 +574,41 @@ function loadPlayer() {
 		let repeatSongOn = currentRepeatState===2;
 
 		// Play same song if song repeat is on. 
-		if(repeatSongOn) playSong();
+		if(repeatSongOn) {
+			// Play current song. 
+			playSong();
+		}
 		// Otherwise: Skip forward to next song. 
-		else skipFwd();
+		else {
+			// TODO: Do more here to overcome unintended nexting. 
+			// Skip forward to next song. 
+			skipFwd();
+		}
 	}
 
+	// Toggle player speed. 
+	function togglePlayerSpeed() {
+
+		// Get pre-value. 
+		let prevalue = currentPlayerSpeed;
+
+		// Increment play speed. 
+		currentPlayerSpeed += 0.5;
+
+		// Ensure play speed is within range. 
+		if(currentPlayerSpeed>2.0) currentPlayerSpeed %= 2.0;
+
+		// Get post-value. 
+		let postvalue = currentPlayerSpeed;
+
+		console.log('Changing player speed',prevalue,postvalue);
+
+		// Update caption on speed button. 
+		speedbtncaption.innerHTML = currentPlayerSpeed.toFixed(1);
+
+		// Update speed on song audio. 
+		songAudio.playbackRate = currentPlayerSpeed;
+	}
 	// Toggle repeat state. 
 	function toggleRepeatState() {
 		
@@ -545,29 +637,33 @@ function loadPlayer() {
 		gencontainer.classList.toggle('open');
 	}
 
-	// TODO: Increase volume (by 1/16 of capacity). 
-	function incrVolume() {
+	// // TODO: Increase volume (by 1/16 of capacity). 
+	// function incrVolume() {
 
-		// Get current volume level. 
+	// 	// Get current volume level. 
+	// 	let currentVolumeLevel = volumelevelslider.value;
+	// 	console.log('Current volume level:',currentVolumeLevel);
 
-		// Update volume level. 
+	// 	// Update current volume level. 
+	// 	// currentVolumeLevel += ;
 		
-		// Show new volume level. 
-		// volumeslider
-		// volumelevelbar.style.setProperty('--fillage',xyz);
-	}
+	// 	// Show new volume level. 
+	// 	// volumelevelslider.value = currentVolumeLevel;
+	// }
 
-	// TODO: Decrease volume (by 1/16 of capacity). 
-	function decrVolume() {
+	// // TODO: Decrease volume (by 1/16 of capacity). 
+	// function decrVolume() {
 
-		// Get current volume level. 
+	// 	// Get current volume level. 
+	// 	let currentVolumeLevel = volumelevelslider.value;
+	// 	console.log('Current volume level:',currentVolumeLevel);
 
-		// Update volume level. 
+	// 	// Update current volume level. 
+	// 	// currentVolumeLevel += ;
 		
-		// Show new volume level. 
-		// volumeslider
-		// volumelevelbar.style.setProperty('--fillage',xyz);
-	}
+	// 	// Show new volume level. 
+	// 	// volumelevelslider.value = currentVolumeLevel;
+	// }
 
 	// Check for press of special shortcut keys. 
 	function checkForShortcutKey(event) {
@@ -587,9 +683,9 @@ function loadPlayer() {
 		// Right arrow: Skip forward. 
 		if(isRightArrow) skipFwd();
 		// Up arrow: Increase volume. 
-		if(isUpArrow) incrVolume();
+		// if(isUpArrow) incrVolume();
 		// Down arrow: Decrease volume. 
-		if(isDownArrow) decrVolume();
+		// if(isDownArrow) decrVolume();
 	}
 
 	// Check for outside mouse clicks. 

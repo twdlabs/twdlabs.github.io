@@ -11,6 +11,9 @@ div#container main.player section.row div.cell.grow {flex-grow:1; text-align:cen
 div#container main.player section.row div.cell div.flex {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 
 div#container main.player h1.head {color:var(--fillcolor); font-size:1rem; font-weight:100; margin:0;}
+/* div#container main.player h1.head span.caption {} */
+div#container main.player h1.head span.caption.paused {display:block; /* visibility:hidden; */}
+div#container main.player h1.head span.caption.playing {display:none;}
 div#container main.player audio.song {display:none;}
 div#container main.player audio.song {position:fixed; bottom:0; left:50%; /* translate:-50%; */ transform:translateX(-50%); /* width:100%; */}
 div#container main.player div.songdata {color:var(--fillcolor); font-weight:100; text-align:center; margin-top:.125rem;}
@@ -28,38 +31,18 @@ div#container main.player div.songdata span.caption:empty::after {content:'[Empt
 div#container main.player div.songdata.songtitle span.caption:empty::after {content:'[Unknown Song]';}
 div#container main.player div.songdata.albumname span.caption:empty::after {content:'[Unknown Album]';}
 div#container main.player div.songdata.artistname span.caption:empty::after {content:'[Unknown Artist]';}
+div#container main.player.active h1.head span.caption.paused {display:none;}
+div#container main.player.active h1.head span.caption.playing {display:block;}
 div#container main.player.active div.songdata.albumart {scale:1.05;}
 /* div#container main.player.active div.songdata.albumart img.albumart {scale:1.05;} */
 
+
 /* General Button */
-div#container main.player div.btn {color:var(--fillcolor); font-size:1rem; cursor:pointer; user-select:none;}
+div#container main.player div.btn {color:var(--fillcolor); font-size:1rem; cursor:pointer; user-select:none; padding:0 .25rem;}
 div#container main.player div.btn.lg {font-size:1.5rem;}
 div#container main.player div.btn.xl {font-size:2.5rem;}
 div#container main.player div.btn.pad {padding:.125rem .5rem;}
 div#container main.player div.btn svg.icon {display:block;}
-
-/* General Bar */
-div#container main.player div.bar {background-color:var(--fillcolor2); height:.125rem; /* width:100%; */ position:relative; border-radius:1rem;}
-/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) , var(--fillcolor2) );} */
-div#container main.player div.bar {display:flex; flex-direction:row; align-items:stretch; cursor:pointer;}
-div#container main.player div.bar div.ball {position:absolute; top:50%; left:var(--fillage); transform:translate(-50%,-50%);}
-div#container main.player div.bar div.ball {background-color:var(--fillcolor); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
-/* General Bar Filler */
-div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );}
-/* div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;} */
-/* div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);} */
-/* Input Slider Bar */
-div#container main.player input.slider {position:absolute; top:0; right:0; bottom:0; left:0; height:100%; width:100%; z-index:10;}
-div#container main.player input.slider {display:block; cursor:pointer; width:100%; margin:0;}
-/* div#container main.player input.slider {opacity:.25;} */
-div#container main.player input.slider {display:none;}
-/* div#container main.player input.slider.seekbar {} */
-/* div#container main.player input.slider.volumebar {} */
-
-/* Song Progress Bar */
-div#container main.player div.bar.seekbar {--fillage:0%;}
-div#container main.player div.bar.seekbar div.ball {--ballsize:.325rem; transition:.125s;}
-div#container main.player div.bar.seekbar div.ball:hover {--ballsize:.75rem;}
 
 /* Play/Pause Button */
 /* div#container main.player div.btn.playbtn {} */
@@ -67,6 +50,12 @@ div#container main.player div.btn.playbtn svg.icon.play {display:block;}
 div#container main.player div.btn.playbtn svg.icon.pause {display:none;}
 div#container main.player.active div.btn.playbtn svg.icon.play {display:none;}
 div#container main.player.active div.btn.playbtn svg.icon.pause {display:block;}
+
+/* Speed Button */
+/* div#container main.player div.btn.speedbtn {} */
+div#container main.player div.btn.speedbtn span.caption {font-size:.75rem;}
+div#container main.player div.btn.speedbtn span.caption::after {content:'x';}
+
 /* Repeat Button */
 div#container main.player div.btn.repeatbtn {padding:.25rem;}
 div#container main.player div.btn.repeatbtn svg.icon {color:var(--fillcolor2);}
@@ -78,6 +67,7 @@ div#container main.player.repeatlist div.btn.repeatbtn svg.icon.repeatall {displ
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon {color:var(--fillcolor);}
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeat1 {display:block;}
 div#container main.player.repeatsong div.btn.repeatbtn svg.icon.repeatall {display:none;}
+
 /* Playlist Button */
 div#container main.player div.btn.playlistbtn {background-color:transparent; padding:.25rem; border-radius:.25rem;}
 div#container main.player div.btn.playlistbtn svg.icon {color:var(--fillcolor);}
@@ -91,9 +81,42 @@ div#container main.player div.btn.volumebtn svg.icon {display:none; /* font-size
 div#container main.player div.btn.volumebtn svg.icon.volumelow {display:block;}
 div#container main.player div.btn.volumebtn svg.icon.volumehigh {display:block;}
 div#container main.player.muted div.btn.volumebtn svg.icon.volumemute {display:block;}
+
+
+/* General Bar */
+/* div#container main.player div.bar {background-color:var(--fillcolor2); height:.125rem; position:relative; border-radius:1rem;} */
+/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) , var(--fillcolor2) );} */
+/* div#container main.player div.bar {display:flex; flex-direction:row; align-items:stretch; cursor:pointer;} */
+/* div#container main.player div.bar div.ball {position:absolute; top:50%; left:var(--fillage); transform:translate(-50%,-50%);} */
+/* div#container main.player div.bar div.ball {background-color:var(--fillcolor); height:var(--ballsize); width:var(--ballsize); border-radius:50%;} */
+/* General Bar Filler */
+/* div#container main.player div.bar {display:none;} */
+/* div#container main.player div.bar {background-image:linear-gradient(to right , var(--fillcolor) var(--fillage) , var(--fillcolor2) var(--fillage) );} */
+/* div#container main.player div.bar:before {content:''; position:absolute; top:0; bottom:0; height:100%;} */
+/* div#container main.player div.bar:before {background-color:var(--fillcolor); left:0; width:var(--fillage);} */
+
+/* Input Slider Bar */
+/* div#container main.player input.slider {position:absolute; top:0; right:0; bottom:0; left:0; height:100%; width:100%; z-index:10;} */
+div#container main.player input.slider {display:block; background-color:var(--fillcolor2); cursor:pointer; height:.125rem; width:100%; /* opacity:.75; */ border-radius:var(--cornersize); outline:none; margin:0;}
+/* div#container main.player input.slider {display:none;} */
+/* div#container main.player input.slider.seekbar {} */
+/* div#container main.player input.slider.volumebar {} */
+div#container main.player input.slider::-webkit-slider-thumb,
+div#container main.player input.slider::-moz-range-thumb,
+div#container main.player input.slider {-webkit-appearance:none; -moz-appearance:none; appearance:none; transition:.15s;}
+div#container main.player input.slider::-webkit-slider-thumb,
+div#container main.player input.slider::-moz-range-thumb {background-color:var(--fillcolor); cursor:pointer; --ballsize:.5rem; height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
+
+/* Song Progress Bar */
+div#container main.player div.bar.seekbar {--fillage:0%;}
+div#container main.player div.bar.seekbar div.ball {--ballsize:.325rem; transition:.125s;}
+div#container main.player div.bar.seekbar div.ball:hover {--ballsize:.75rem;}
+div#container main.player span.timestamp {font-size:.625rem;}
+
 /* Volume Bar */
 div#container main.player div.bar.volumebar {--fillage:0%;}
 div#container main.player div.bar.volumebar div.ball {--ballsize:.75rem;}
+
 
 /* Overflow Menu */
 div#container main.player div.overflowmenu {opacity:0; visibility:hidden; transition:0;}
