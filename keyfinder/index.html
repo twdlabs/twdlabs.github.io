@@ -12,42 +12,8 @@
 		<title>Key Finder</title>
 
 		<!-- Main Stylesheet -->
-		<!-- <link href="keyfinder.css" rel="stylesheet" type="text/css"/> -->
-		<style type="text/css">
-			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
-
-
-			* {box-sizing:border-box; /* padding:0; margin:0; */}
-
-
-			:root {
-				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
-				--themecolor:whitesmoke;
-				--boxshadow:0 0 1rem #0002;
-				--boxshadow:0 0 .25rem #0003;
-			}
-
-
-			html {background-color:var(--themecolor); background-image:var(--bgimg);}
-			body {font-family:Nunito,sans-serif; margin:0;}
-
-
-			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-			
-			div#container main.main {background-color:white; /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-			div#container main.main div.item {}
-
-			
-			/* Tablet Screen */
-			@media screen and (max-width:64rem) {
-				/*  */
-			}
-
-			/* Smartphone Screen */
-			@media screen and (max-width:32rem) {
-				/*  */
-			}
-		</style>
+		<link href="keyfinder.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
@@ -60,12 +26,146 @@
 
 				<!-- item -->
 				<div class="item">
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- klbl -->
+						<label class="klbl" for="keyInputBox0">A</label>
+						<!-- /klbl -->
+
+						<!-- key -->
+						<input type="text" class="key" id="keyInputBox0" size="1em" maxlength="2">
+						<!-- /key -->
+						
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- klbl -->
+						<label class="klbl" for="keyInputBox1">B</label>
+						<!-- /klbl -->
+
+						<!-- key -->
+						<input type="text" class="key" id="keyInputBox1" size="1em" maxlength="2">
+						<!-- /key -->
+						
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- klbl -->
+						<label class="klbl" for="keyInputBox2">C</label>
+						<!-- /klbl -->
+
+						<!-- key -->
+						<input type="text" class="key" id="keyInputBox2" size="1em" maxlength="2">
+						<!-- /key -->
+						
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- klbl -->
+						<label class="klbl" for="keyInputBox3">D</label>
+						<!-- /klbl -->
+
+						<!-- key -->
+						<input type="text" class="key" id="keyInputBox3" size="1em" maxlength="2">
+						<!-- /key -->
+						
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- klbl -->
+						<label class="klbl" for="keyInputBox4">E</label>
+						<!-- /klbl -->
+
+						<!-- key -->
+						<input type="text" class="key" id="keyInputBox4" size="1em" maxlength="2">
+						<!-- /key -->
+						
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- klbl -->
+						<label class="klbl" for="keyInputBox5">F</label>
+						<!-- /klbl -->
+
+						<!-- key -->
+						<input type="text" class="key" id="keyInputBox5" size="1em" maxlength="2">
+						<!-- /key -->
+						
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- klbl -->
+						<label class="klbl" for="keyInputBox6">G</label>
+						<!-- /klbl -->
+
+						<!-- key -->
+						<input type="text" class="key" id="keyInputBox6" size="1em" maxlength="2">
+						<!-- /key -->
+						
+					</div>
+					<!-- /input -->
 					
 				</div>
 				<!-- /item -->
 
 				<!-- item -->
-				<div class="item"></div>
+				<div class="item">
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- clear -->
+						<button class="btn clear" onclick="clearOutput()">Clear</button>
+						<!-- /clear -->
+						
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input">
+
+						<!-- go -->
+						<button class="btn go" onclick="showOutput()">Go</button>
+						<!-- /go -->
+						
+					</div>
+					<!-- /input -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- output -->
+					<div class="output" id="outputBox"></div>
+					<!-- /output -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<!-- <div class="item"></div> -->
 				<!-- /item -->
 
 			</main>
@@ -79,7 +179,8 @@
 		<script src="database.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
-		<script src="keyfinder.js" type="text/javascript"></script>
+		<script src="script/script.js" type="text/javascript"></script>
+		<script src="script/keyfinder.js" type="text/javascript"></script>
 		<!-- <script type="text/javascript"></script> -->
 
 	</body>

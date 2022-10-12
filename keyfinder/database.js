@@ -1,77 +1,75 @@
 
 
+
 // Define semitone intervals for key types. 
-const semitoneIntervals = {
-	keyMajor:[2,2,1,2,2,2,1],
-	keyNatMinor:[2,1,2,2,1,2,2],
-	keyHarmMinor:[2,1,2,2,1,3,1],
+const keyTypes = {
+	
+	// Major Key
+	keyMajor:{
+		indexes:[ 0,2,4,5, 7,9,11,12 ],
+		// intervals:[ 0,2,2,1, 2,2,2,1 ],
+	},
+	
+	// Natural Minor Key
+	keyNatMinor:{
+		indexes:[ 0,2,3,5, 7,8,10,12 ],
+		// intervals:[ 0,2,1,2, 2,1,2,2 ],
+	},
+
+	// Harmonic Minor Key
+	keyHarmMinor:{
+		indexes:[ 0,2,3,5, 7,8,11,12 ],
+		// intervals:[ 0,2,1,2, 2,1,3,1 ],
+	},
 };
 
-// Define key bases. 
-const keyBases = [
 
-	{
-		raw:'C',
-		flats:'C',
-		sharps:'C',
-	},
-	{
-		raw:'CD',
-		flats:'Db',
-		sharps:'C#',
-	},
-	{
-		raw:'D',
-		flats:'D',
-		sharps:'D',
-	},
+// Define key repository. 
+const keyRepo = {
+	// 
+	raw:[
+		'C','CD','D','DE','E',
+		'F','FG','G','GA','A','AB','B',
+	],
+	flats:[
+		'C','Db','D','Eb','Fb',
+		'F','Gb','G','Ab','A','Bb','Cb',
+	],
+	sharps:[
+		'C','C#','D','D#','E',
+		'E#','F#','G','G#','A','A#','B',
+	],
+};
+
+
+/*****/
+
+
+// TODO: Origin: Create list for major key. 
+function createMajorKeyList(baseIndex) {
+
+	// Initialize key index. 
+	let keyIndex = baseIndex;
 	
-	{
-		raw:'DE',
-		flats:'Eb',
-		sharps:'D#',
-	},
-	{
-		raw:'E',
-		flats:'Fb',
-		sharps:'E',
-	},
-	{
-		raw:'F',
-		flats:'F',
-		sharps:'E#',
-	},
+	// Initialize result. 
+	let result = `{ ${ showKeyAt(keyIndex) }`;
 	
-	{
-		raw:'FG',
-		flats:'Gb',
-		sharps:'F#',
-	},
-	{
-		raw:'G',
-		flats:'G',
-		sharps:'G',
-	},
-	{
-		raw:'GA',
-		flats:'Ab',
-		sharps:'G#',
-	},
+	// Add elements of key list. 
+	for(let dst of keyTypes.keyMajor) {
+		keyIndex += dst;
+		result += `, ${ showKeyAt(keyIndex) }`;
+	}
 	
-	{
-		raw:'A',
-		flats:'A',
-		sharps:'A',
-	},
-	{
-		raw:'AB',
-		flats:'Bb',
-		sharps:'A#',
-	},
-	{
-		raw:'B',
-		flats:'Cb',
-		sharps:'B',
-	},
+	// End result. 
+	result += ' }';
 	
-];
+	// Return result. 
+	return result;
+	
+	/*****/
+	
+	// Show key at given. 
+	function showKeyAt(index) {
+		return keyBases[index].rawname;
+	}
+}
