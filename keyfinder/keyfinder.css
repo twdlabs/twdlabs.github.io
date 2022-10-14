@@ -8,27 +8,48 @@
 
 :root {
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
-	--themecolor:#CCC;
+	/* --themecolor:#CCC; */
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
+
+	--emptycolor:white;
+	--fillcolor:#555;
+	--fillcolor2:#CCC;
+}
+
+div#container.dark {
+	--emptycolor:#555;
+	--fillcolor:#EEE;
+	--fillcolor2:#888;
+	/* transition:.5s; */
 }
 
 
-html {background-color:var(--themecolor); background-image:var(--bgimg);}
+html {background-color:var(--themecolor); background-color:var(--fillcolor2); background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
 
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
-div#container main.main {background-color:white; width:100%; max-width:24rem; /* overflow-x:auto; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-div#container main.main div.item {display:flex; flex-direction:row; justify-content:center; align-items:center; /* flex-wrap:wrap; */ padding-top:.75rem;}
+div#container main.main {background-color:var(--emptycolor); color:var(--fillcolor); max-width:100%; /* max-width:24rem; */ /* overflow-x:auto; */ padding:.375rem .5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main div.item {display:flex; flex-direction:row; justify-content:center; align-items:center; flex-wrap:wrap; padding-top:.75rem;}
 div#container main.main div.item div.input {display:flex; flex-direction:column; align-items:stretch; padding:0 .25rem;}
-div#container main.main div.item div.input input.key {/* width:4rem; */ text-align:center; padding:.25rem .5rem;}
-div#container main.main div.item div.input button.btn {cursor:pointer; width:100%; min-width:6rem; padding:.375rem 1.5rem;}
-div#container main.main div.item div.input label.klbl {cursor:pointer; text-align:center;}
+div#container main.main div.item div.input input.key {background-color:var(--fillcolor2); border:.125rem solid var(--fillcolor2); color:var(--fillcolor); font-size:1.125rem; font-weight:bold; /* width:4rem; */ text-align:center; padding:.25rem .5rem; border-radius:.25rem;}
+div#container main.main div.item div.input button.btn {background-color:var(--emptycolor); border: .125rem solid var(--fillcolor2); color:var(--fillcolor); cursor:pointer; font-size:1rem; font-weight:600; letter-spacing:1px; width:100%; min-width:6rem; padding:.375rem 1.5rem; border-radius:.25rem;}
+div#container main.main div.item div.input label.klbl {cursor:pointer; font-size:1.125rem; text-align:center;}
 /* div#container main.main div.item button.btn.go {} */
 /* div#container main.main div.item button.btn.clear {} */
 /* div#container main.main div.item div.output {} */
+
+/* Theme Button */
+div#container div.themebtn {position:fixed; top:0; right:0;}
+div#container div.themebtn {background-color:var(--emptycolor); color:var(--fillcolor); cursor:pointer; padding:1rem; border-radius:.5rem; margin:.5rem;}
+div#container div.themebtn svg.icon {font-size:1.25rem;}
+div#container div.themebtn svg.icon.moon {display:block;}
+div#container div.themebtn svg.icon.moonfill {display:none;}
+/* div#container.dark div.themebtn {} */
+div#container.dark div.themebtn svg.icon.moon {display:none;}
+div#container.dark div.themebtn svg.icon.moonfill {display:block;}
 
 
 /* Tablet Screen */
@@ -39,7 +60,9 @@ div#container main.main div.item div.input label.klbl {cursor:pointer; text-alig
 /* Smartphone Screen */
 @media screen and (max-width:32rem) {
 	/*  */
-	/* div#container main.main div.item {flex-direction:column; padding:.5rem .125rem;}
+	div#container main.main {padding:.25rem .75rem;}
+	div#container main.main div.item {flex-direction:column; padding-top:.5rem;}
 	div#container main.main div.item div.input {flex-direction:row; align-items:center; padding:.125rem 0;}
-	div#container main.main div.item div.input label.klbl {padding-right:1rem;} */
+	div#container main.main div.item div.input input.key {flex:0 0 60%;}
+	div#container main.main div.item div.input label.klbl {flex:0 0 40%; padding-right:1rem;}
 }

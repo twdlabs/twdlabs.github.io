@@ -16,6 +16,22 @@ class KeyScale {
 		this.sixthId = (i + scaleIntervals[5]) % 12;
 		this.seventhId = (i + scaleIntervals[6]) % 12;
 	}
+
+	// Check if scale contains input key. 
+	containsKey(keyId) {
+
+		// Return true if matches one of the scale's keys. 
+		if(this.tonicId == keyId) return true;
+		if(this.secondId == keyId) return true;
+		if(this.thirdId == keyId) return true;
+		if(this.fourthId == keyId) return true;
+		if(this.fifthId == keyId) return true;
+		if(this.sixthId == keyId) return true;
+		if(this.seventhId == keyId) return true;
+
+		// Otherwise, return false. 
+		return false;
+	}
 	
 	// Get key name of given scale interval. 
 	getKey(intervalLabel) {
@@ -39,11 +55,23 @@ class KeyInput {
 	// Create new key input object. 
 	constructor() {
 		// 
+		// this.key0 = document.getElementById('keyInputBox0');
+		// this.key1 = document.getElementById('keyInputBox1');
+		// this.key2 = document.getElementById('keyInputBox2');
+		// this.key3 = document.getElementById('keyInputBox3');
+		// this.key4 = document.getElementById('keyInputBox4');
+		// this.key5 = document.getElementById('keyInputBox5');
+		// this.key6 = document.getElementById('keyInputBox6');
+	}
+	
+	// Check for matches to given key input. 
+	checkForMatchingScales() {
+		// 
 	}
 	
 	// Check for match between key input and given scale. 
-	checkIfMatchingScale(scale) {
-		// 
+	static checkIfScaleMatches(scale) {
+		// Check if given scale contains all input keys. 
 	}
 }
 

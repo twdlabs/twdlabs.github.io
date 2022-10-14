@@ -42,11 +42,69 @@ const keyRepo = {
 };
 
 
+// Define key scale repository. 
+const keyScaleRepo = [
+
+	{
+		scalename:'C Major',
+		scalekeys: [0,2,4,5, 7,9,11,12]
+	},
+	{
+		scalename:'G Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+	{
+		scalename:'D Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+
+	{
+		scalename:'A Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+	{
+		scalename:'E Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+	{
+		scalename:'B Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+
+	{
+		scalename:'FG Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+	{
+		scalename:'CD Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+	{
+		scalename:'GA Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+
+	{
+		scalename:'DE Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+	{
+		scalename:'AB Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+	{
+		scalename:'F Major',
+		scalekeys: [0,0,0,0, 0,0,0,0]
+	},
+
+];
+
+
 /*****/
 
 
-// TODO: Origin: Create list for major key. 
-function createMajorKeyList(baseIndex) {
+// Create list of key scales. 
+function createAllKeyScales(baseIndex) {
 
 	// Initialize key index. 
 	let keyIndex = baseIndex;
