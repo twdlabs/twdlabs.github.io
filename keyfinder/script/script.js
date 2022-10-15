@@ -95,13 +95,16 @@ function showOutput() {
 		console.log('inputKeys:',inputKeys);
 	
 		// 
-		let i0 = (keyRepo.majorIds).indexOf(inputKeys[0]);
-		let i1 = (keyRepo.majorIds).indexOf(inputKeys[1]);
-		let i2 = (keyRepo.majorIds).indexOf(inputKeys[2]);
-		let i3 = (keyRepo.majorIds).indexOf(inputKeys[3]);
-		let i4 = (keyRepo.majorIds).indexOf(inputKeys[4]);
-		let i5 = (keyRepo.majorIds).indexOf(inputKeys[5]);
-		let i6 = (keyRepo.majorIds).indexOf(inputKeys[6]);
+		// let majorIds = keyRepo.majorIds;
+		let majorIds = keyRepo.keylist.map( (item)=>(item.keyid) );
+		// 
+		let i0 = majorIds.indexOf(inputKeys[0]);
+		let i1 = majorIds.indexOf(inputKeys[1]);
+		let i2 = majorIds.indexOf(inputKeys[2]);
+		let i3 = majorIds.indexOf(inputKeys[3]);
+		let i4 = majorIds.indexOf(inputKeys[4]);
+		let i5 = majorIds.indexOf(inputKeys[5]);
+		let i6 = majorIds.indexOf(inputKeys[6]);
 	
 		// Add all valid indices to list. 
 		if(i0>-1) inputKeyIndexes.push(i0);
@@ -158,31 +161,38 @@ function showOutput() {
 
 		// 
 		for(let scaleIndex of matchingScales) {
-			// result += ``;
+
+			// Get scale name. 
+			let scalename = keyScaleRepo[scaleIndex].scalename;
+
+			// Get key list for scale. 
+			let scalekeyindexlist = keyScaleRepo[scaleIndex].scalekeys;
+			let scalekeylist = formatKeys( scalekeyindexlist ).join(' ')
+
+			// 
 			result += `
 			<!-- scale -->
-			<div class="scale">
+			<div class="scale" data-scaleindex="${ scaleIndex }">
 
 				<!-- scalename -->
-				<span class="scalename">${ keyScaleRepo[scaleIndex].scalename }</span>
+				<span class="scalename">${ scalename }</span>
 				<!-- /scalename -->
 
 				<!-- scalekeylist -->
-				<span class="scalekeylist">[ ${ formatKeys( keyScaleRepo[scaleIndex].scalekeys ).join(' ') } ]</span>
+				<span class="scalekeylist">${ scalekeylist }</span>
 				<!-- /scalekeylist -->
 				
 			</div>
 			<!-- /scale -->`;
-
-			result += `
-			<!-- scale -->
-			<span class="scale"></span>
-			<!-- /scale -->`;
+			// result += ``;
 		}
 
-		// 
-		// ouputBox.innerHTML = matchingScales;
+		// Show result of matching scales on screen. 
 		ouputBox.innerHTML = result;
+		// ouputBox.innerHTML = matchingScales;
+
+		// Activate clicks on scale buttons. 
+		activateScaleBtns();
 
 		/***/
 
@@ -190,7 +200,36 @@ function showOutput() {
 		function formatKeys(listOfKeyIndexes) {
 			// 
 			// return listOfKeyIndexes.map( (i)=>( keyRepo.keylist[i].keyid ) );
-			return listOfKeyIndexes.map( (i)=>( keyRepo.keylist[i].keyid || keyRepo.keylist[i].keyflatname || keyRepo.keylist[i].keysharpname ) );
+			// return listOfKeyIndexes.map( (i) => ( keyRepo.keylist[i]['keyid'] || keyRepo.keylist[i]['keyflatname'] || keyRepo.keylist[i]['keysharpname'] ) );
+			return listOfKeyIndexes.map( 
+				(i) => ( 
+				keyRepo.keylist[i]['keyid'] || keyRepo.keylist[i]['keyflatname'] || keyRepo.keylist[i]['keysharpname'] 
+				) 
+			);
+		}
+
+		// Activate clicks on scale buttons. 
+		function activateScaleBtns() {
+			// 
+			let allScaleBtns = document.querySelectorAll('div#container main.main div.item div.output div.scale');
+			for(let scalebtn of allScaleBtns) {
+				// Show selected scale when clicked. 
+				scalebtn.addEventListener('click',showScale);
+			}
+
+			/**/
+
+			// Show selected scale. 
+			function showScale(event) {
+
+				// Get selected scale index. 
+				let scaleBtn = event.currentTarget;
+
+				// Get selected scale index. 
+				let scaleIndex = 1 * scaleBtn.getAttribute('data-scaleindex');
+
+				console.log('Selected scale index:',scaleIndex);
+			}
 		}
 	}
 }

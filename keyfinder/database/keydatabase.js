@@ -27,26 +27,103 @@ const keyTypes = {
 // Define key repository. 
 const keyRepo = {
 
-	// 
-	majorIds:[
-		'C','CD','D','DE','E','F',
-		'FG','G','GA','A','AB','B',
-	],
-	// // 
-	// minorIds:[
-	// 	'A','AB','B','C','CD','D',
-	// 	'DE','E','F','FG','G','GA',
-	// ],
-
-	// 
+	// Define key indexes for circle of fifths (for major keys). 
 	cof:[
-		// 'C','G','D','A','E','B',
-		0, 7, 2, 9, 4, 11,
-		// 'FG','CD','GA','DE','AB','F',
-		6, 1, 8, 3, 10, 5,
+
+		// Major Keys: 'C','G','D','A','E','B','FG','CD','GA','DE','AB','F',
+		// Minor Keys: 'A','E','B','FG','CD','GA','DE','AB','F','C','G','D',
+
+		{
+			// C Am
+			majorkeyindex:0,
+			minorkeyindex:9,
+			keynametype:'keysharpname'
+		},
+
+		{
+			// G Em
+			majorkeyindex:7,
+			minorkeyindex:4,
+			keynametype:'keysharpname'
+		},
+		{
+			// D Bm
+			majorkeyindex:2,
+			minorkeyindex:11,
+			keynametype:'keysharpname'
+		},
+		{
+			// A FGm
+			majorkeyindex:9,
+			minorkeyindex:6,
+			keynametype:'keysharpname'
+		},
+		{
+			// E CDm
+			majorkeyindex:4,
+			minorkeyindex:1,
+			keynametype:'keysharpname'
+		},
+		{
+			// B GAm
+			majorkeyindex:11,
+			minorkeyindex:8,
+			keynametype:'keysharpname'
+		},
+		// {
+		// 	// FG DEm
+		// 	majorkeyindex:6,
+		// 	minorkeyindex:3,
+		// 	keynametype:'keysharpname'
+		// },
+
+		{
+			// FG DEm
+			majorkeyindex:6,
+			minorkeyindex:3,
+			keynametype:'keyflatname'
+		},
+		{
+			// CD ABm
+			majorkeyindex:1,
+			minorkeyindex:10,
+			keynametype:'keyflatname'
+		},
+		{
+			// GA Fm
+			majorkeyindex:8,
+			minorkeyindex:5,
+			keynametype:'keyflatname'
+		},
+		{
+			// DE Cm
+			majorkeyindex:3,
+			minorkeyindex:0,
+			keynametype:'keyflatname'
+		},
+		{
+			// AB Gm
+			majorkeyindex:10,
+			minorkeyindex:7,
+			keynametype:'keyflatname'
+		},
+		{
+			// F Dm
+			majorkeyindex:5,
+			minorkeyindex:2,
+			keynametype:'keyflatname'
+		},
+
+		// {
+		// 	// C Am
+		// 	majorkeyindex:0,
+		// 	minorkeyindex:9,
+		// 	keynametype:'keyflatname'
+		// },
+		
 	],
 
-	// 
+	// Define list of key objects. 
 	keylist:[
 
 		{
@@ -192,61 +269,61 @@ listAllKeyScales();
 // (C Db D Eb E F Gb G Ab A Bb B) × (M Nm Hm). 
 function listAllKeyScales() {
 
-	// Go thru all keys (in order of circle of fifths). 
-	for(let basekeyindex of keyRepo.cof) {
+	// Go thru all keys (in 'circle of fifths' major order). 
+	for(let majorKeyBaseIndex of keyRepo.cof.map( (item) => (item.majorkeyindex) ) ) {
 
-		// Initialize new key scale. 
-		let keyid = keyRepo.keylist[basekeyindex].keyid;
-		let newKeyScale = {
-			scalename:`${keyid} Major`,
-			scalekeys: []
+		// Get key id for base major key. 
+		let majorKeyId = keyRepo.keylist[majorKeyBaseIndex].keyid;
+
+		// Create new major scale. 
+		let newMajorScale = {
+			scalename:`${majorKeyId} Major`,
+			scalekeys: fillScaleKeys( majorKeyBaseIndex, keyTypes.major.indexes )
 		};
-		
-		// Go thru all scale keys. 
-		for(let keyindex of keyTypes.major.indexes) {
-			
-			// Get key item. 
-			let keyitem = keyRepo.keylist[keyindex%12];
-			// console.log(keyindex,keyitem);
-			// Get key id. 
-			let keyid = keyitem.keyid;
-			
-			// Add new key scale to list. 
-			newKeyScale.scalekeys.push( (basekeyindex+keyindex)%12 );
-		}
-		
-		// 
-		keyScaleRepo.push(newKeyScale);
+		// Save major scale to list. 
+		keyScaleRepo.push(newMajorScale);
 	}
+
+	// Go thru all keys (in 'circle of fifths' minor order). 
+	for(let minorKeyBaseIndex of keyRepo.cof.map( (item) => (item.minorkeyindex) ) ) {
+
+		// Get key id for base minor key. 
+		let minorKeyId = keyRepo.keylist[minorKeyBaseIndex].keyid;
+
+		// Create new natural minor scale. 
+		let newMinorScale = {
+			scalename:`${minorKeyId} Minor`,
+			scalekeys: fillScaleKeys( minorKeyBaseIndex, keyTypes.natMinor.indexes )
+		};
+		// Save natural minor scale to list. 
+		keyScaleRepo.push(newMinorScale);
+
+		// Create new harmonic minor scale. 
+		let newHMinorScale = {
+			scalename:`${minorKeyId} H-Minor`,
+			scalekeys: fillScaleKeys( minorKeyBaseIndex, keyTypes.hMinor.indexes )
+		};
+		// Save harmonic minor scale to list. 
+		keyScaleRepo.push(newHMinorScale);
+	}
+
 	// console.log('keyScaleRepo:',keyScaleRepo);
 	
 	/****/
-	
-	// Show key at given. 
-	function showKeyAt(index) {
-		return keyBases[index].rawname;
-	}
-	
-	// Create list of key scales. 
-	function createKeyScale(baseIndex) {
-	
-		// Initialize key index. 
-		let keyIndex = baseIndex;
-		
-		// Initialize result. 
-		let result = `{ ${ showKeyAt(keyIndex) }`;
-		
-		// Add elements of key list. 
-		for(let dst of keyTypes.keyMajor) {
-			keyIndex += dst;
-			result += `, ${ showKeyAt(keyIndex) }`;
+
+	// Fill keys for given scale. 
+	function fillScaleKeys(basekeyindex, keytypeindexes) {
+
+		// Initialize resulting list. 
+		let result = [];
+
+		// Fill list with key indexes for given scale. 
+		for(let keyindex of keytypeindexes) {
+			// Add to list: index for new key scale. 
+			result.push( (basekeyindex+keyindex)%12 );
 		}
-		
-		// End result. 
-		result += ' }';
-		
-		// Return result. 
+
+		// Return resulting list. 
 		return result;
-		// 
 	}
 }

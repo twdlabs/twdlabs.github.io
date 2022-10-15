@@ -36,13 +36,15 @@ class KeyScale {
 	// Get key name of given scale interval. 
 	getKey(intervalLabel) {
 		// 
-		if(intervalLabel==1) return keyRepo.majorIds[ this.tonicId ];
-		else if(intervalLabel==2) return keyRepo.majorIds[ this.secondId ];
-		else if(intervalLabel==3) return keyRepo.majorIds[ this.thirdId ];
-		else if(intervalLabel==4) return keyRepo.majorIds[ this.fourthId ];
-		else if(intervalLabel==5) return keyRepo.majorIds[ this.fifthId ];
-		else if(intervalLabel==6) return keyRepo.majorIds[ this.sixthId ];
-		else if(intervalLabel==7) return keyRepo.majorIds[ this.seventhId ];
+		let majorIds = keyRepo.keylist.map( (item)=>(item.keyid) );
+		// 
+		if(intervalLabel==1) return majorIds[ this.tonicId ];
+		else if(intervalLabel==2) return majorIds[ this.secondId ];
+		else if(intervalLabel==3) return majorIds[ this.thirdId ];
+		else if(intervalLabel==4) return majorIds[ this.fourthId ];
+		else if(intervalLabel==5) return majorIds[ this.fifthId ];
+		else if(intervalLabel==6) return majorIds[ this.sixthId ];
+		else if(intervalLabel==7) return majorIds[ this.seventhId ];
 		else return null;
 	}
 }
