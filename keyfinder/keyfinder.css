@@ -40,6 +40,10 @@ div#container main.main div.item div.input label.klbl {cursor:pointer; font-size
 /* div#container main.main div.item button.btn.go {} */
 /* div#container main.main div.item button.btn.clear {} */
 /* div#container main.main div.item div.output {} */
+div#container main.main div.item div.output div.scale {text-align:center; margin:.5rem 0;}
+div#container main.main div.item div.output div.scale span {display:block;}
+div#container main.main div.item div.output div.scale span.scalename {font-weight:bold;}
+div#container main.main div.item div.output div.scale span.scalekeylist {font-style:italic;}
 
 /* Theme Button */
 div#container div.themebtn {position:fixed; top:0; right:0;}

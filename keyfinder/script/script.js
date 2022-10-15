@@ -18,14 +18,6 @@ const ouputBox = document.getElementById('outputBox');
 /*****/
 
 
-// TODO: Fill repository with all key (base/type) combinations: 
-// (C Db D Eb E F Gb G Ab A Bb B) × (M Nm Hm). 
-
-
-
-
-
-
 // Clear form. 
 function clearForm() {
 	
@@ -74,7 +66,9 @@ function showOutput() {
 
 	// 
 	ouputBox.innerHTML = '&nbsp;';
-	ouputBox.innerHTML = matchingScales;
+	
+	// Show matching scales. 
+	showMatchingScales();
 
 	/****/
 
@@ -101,13 +95,13 @@ function showOutput() {
 		console.log('inputKeys:',inputKeys);
 	
 		// 
-		let i0 = (keyRepo.raw).indexOf(inputKeys[0]);
-		let i1 = (keyRepo.raw).indexOf(inputKeys[1]);
-		let i2 = (keyRepo.raw).indexOf(inputKeys[2]);
-		let i3 = (keyRepo.raw).indexOf(inputKeys[3]);
-		let i4 = (keyRepo.raw).indexOf(inputKeys[4]);
-		let i5 = (keyRepo.raw).indexOf(inputKeys[5]);
-		let i6 = (keyRepo.raw).indexOf(inputKeys[6]);
+		let i0 = (keyRepo.majorIds).indexOf(inputKeys[0]);
+		let i1 = (keyRepo.majorIds).indexOf(inputKeys[1]);
+		let i2 = (keyRepo.majorIds).indexOf(inputKeys[2]);
+		let i3 = (keyRepo.majorIds).indexOf(inputKeys[3]);
+		let i4 = (keyRepo.majorIds).indexOf(inputKeys[4]);
+		let i5 = (keyRepo.majorIds).indexOf(inputKeys[5]);
+		let i6 = (keyRepo.majorIds).indexOf(inputKeys[6]);
 	
 		// Add all valid indices to list. 
 		if(i0>-1) inputKeyIndexes.push(i0);
@@ -117,7 +111,7 @@ function showOutput() {
 		if(i4>-1) inputKeyIndexes.push(i4);
 		if(i5>-1) inputKeyIndexes.push(i5);
 		if(i6>-1) inputKeyIndexes.push(i6);
-		console.log('inputKeyIndexes:',inputKeyIndexes);
+		// console.log('inputKeyIndexes:',inputKeyIndexes);
 		
 	}
 	
@@ -130,15 +124,12 @@ function showOutput() {
 			// Get key scale. 
 			let keyScale = keyScaleRepo[i];
 
-			// Check if key scale matehs input. 
-			let isMatchingScale = checkForMatchingScale(keyInput,keyScale);
-			console.log('isMatchingScale:',isMatchingScale);
+			// Check if key scale matches input. 
+			let scaleMatchesInput = checkForMatchingScale(keyInput,keyScale);
+			// console.log(1*i,'scaleMatchesInput:',scaleMatchesInput);
 
-			// Saveindex of key scale if matches input. 
-			if(isMatchingScale) {
-				matchingScales.push(i);
-				console.log('i:',i);
-			}
+			// Save index of key scale if matches input. 
+			if(scaleMatchesInput) matchingScales.push(i);
 		}
 	
 		/****/
@@ -156,6 +147,50 @@ function showOutput() {
 		
 			// Return true if no input keys missing from given list. 
 			return true;
+		}
+	}
+	
+	// Show key scales that match user input. 
+	function showMatchingScales() {
+
+		// 
+		let result = '';
+
+		// 
+		for(let scaleIndex of matchingScales) {
+			// result += ``;
+			result += `
+			<!-- scale -->
+			<div class="scale">
+
+				<!-- scalename -->
+				<span class="scalename">${ keyScaleRepo[scaleIndex].scalename }</span>
+				<!-- /scalename -->
+
+				<!-- scalekeylist -->
+				<span class="scalekeylist">[ ${ formatKeys( keyScaleRepo[scaleIndex].scalekeys ).join(' ') } ]</span>
+				<!-- /scalekeylist -->
+				
+			</div>
+			<!-- /scale -->`;
+
+			result += `
+			<!-- scale -->
+			<span class="scale"></span>
+			<!-- /scale -->`;
+		}
+
+		// 
+		// ouputBox.innerHTML = matchingScales;
+		ouputBox.innerHTML = result;
+
+		/***/
+
+		// Format keys by index. 
+		function formatKeys(listOfKeyIndexes) {
+			// 
+			// return listOfKeyIndexes.map( (i)=>( keyRepo.keylist[i].keyid ) );
+			return listOfKeyIndexes.map( (i)=>( keyRepo.keylist[i].keyid || keyRepo.keylist[i].keyflatname || keyRepo.keylist[i].keysharpname ) );
 		}
 	}
 }
