@@ -96,7 +96,7 @@ function showOutput() {
 	
 		// 
 		// let majorIds = keyRepo.majorIds;
-		let majorIds = keyRepo.keylist.map( (item)=>(item.keyid) );
+		let majorIds = keyList.map( (item)=>(item.keyid) );
 		// 
 		let i0 = majorIds.indexOf(inputKeys[0]);
 		let i1 = majorIds.indexOf(inputKeys[1]);
@@ -167,7 +167,8 @@ function showOutput() {
 
 			// Get key list for scale. 
 			let scalekeyindexlist = keyScaleRepo[scaleIndex].scalekeys;
-			let scalekeylist = formatKeys( scalekeyindexlist ).join(' ')
+			// let scalekeylist = formatKeys( scalekeyindexlist ).join(' ');
+			let scalekeylist = scalekeyindexlist.map(  (index) => ( keyList[index]['keyid'] )  );
 
 			// 
 			result += `
@@ -179,7 +180,7 @@ function showOutput() {
 				<!-- /scalename -->
 
 				<!-- scalekeylist -->
-				<span class="scalekeylist">${ scalekeylist }</span>
+				<span class="scalekeylist">${ scalekeylist.join(' ') }</span>
 				<!-- /scalekeylist -->
 				
 			</div>
@@ -199,13 +200,13 @@ function showOutput() {
 		// Format keys by index. 
 		function formatKeys(listOfKeyIndexes) {
 			// 
-			// return listOfKeyIndexes.map( (i)=>( keyRepo.keylist[i].keyid ) );
-			// return listOfKeyIndexes.map( (i) => ( keyRepo.keylist[i]['keyid'] || keyRepo.keylist[i]['keyflatname'] || keyRepo.keylist[i]['keysharpname'] ) );
-			return listOfKeyIndexes.map( 
-				(i) => ( 
-				keyRepo.keylist[i]['keyid'] || keyRepo.keylist[i]['keyflatname'] || keyRepo.keylist[i]['keysharpname'] 
-				) 
-			);
+			// return listOfKeyIndexes.map( (i)=>( keyList[i].keyid ) );
+			// return listOfKeyIndexes.map( (i) => ( keyList[i]['keyid'] || keyList[i]['keyflatname'] || keyList[i]['keysharpname'] ) );
+			// return listOfKeyIndexes.map( 
+			// 	(i) => ( 
+			// 	keyList[i]['keyid'] || keyList[i]['keyflatname'] || keyList[i]['keysharpname'] 
+			// 	) 
+			// );
 		}
 
 		// Activate clicks on scale buttons. 
@@ -229,6 +230,7 @@ function showOutput() {
 				let scaleIndex = 1 * scaleBtn.getAttribute('data-scaleindex');
 
 				console.log('Selected scale index:',scaleIndex);
+				window.alert(scaleIndex);
 			}
 		}
 	}
