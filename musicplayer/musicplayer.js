@@ -56,6 +56,7 @@ const playbtn = document.querySelector('div#container main.player div.btn.playbt
 const backbtn = document.querySelector('div#container main.player div.btn.backbtn');
 const fwdbtn = document.querySelector('div#container main.player div.btn.fwdbtn');
 const repeatbtn = document.querySelector('div#container main.player div.btn.repeatbtn');
+const shufflebtn = document.querySelector('div#container main.player div.btn.repeatbtn');
 const playlistbtn = document.querySelector('div#container main.player div.btn.playlistbtn');
 const speedbtn = document.querySelector('div#container main.player div.btn.speedbtn');
 const speedbtncaption = document.querySelector('div#container main.player div.btn.speedbtn span.caption');
@@ -214,12 +215,14 @@ function loadPlayer() {
 	overflowbtn.addEventListener('click',toggleOverflowMenu);
 
 	// Activate music player buttons. 
-	playbtn.addEventListener('click',togglePlayState);
 	albumartbox.addEventListener('click',togglePlayState);
+	playbtn.addEventListener('click',togglePlayState);
 	backbtn.addEventListener('click',skipBack);
 	fwdbtn.addEventListener('click',skipFwd);
+	// Activate music player buttons. 
 	speedbtn.addEventListener('click',togglePlayerSpeed);
 	repeatbtn.addEventListener('click',toggleRepeatState);
+	shufflebtn.addEventListener('click',toggleShuffleState);
 	playlistbtn.addEventListener('click',togglePlaylistState);
 
 	// Make player automatically move to next song upon song end. 
@@ -608,6 +611,22 @@ function loadPlayer() {
 
 		// Update speed on song audio. 
 		songAudio.playbackRate = currentPlayerSpeed;
+	}
+	// Toggle shuffle state. 
+	function toggleShuffleState() {
+		// Check current shuffle state. 
+		let shuffleon = gencontainer.classList.contains('shuffle');
+
+		if(shuffleon) {
+			// TODO: Revert to original playlist order. 
+			// Change shuffle state. 
+			gencontainer.classList.remove('shuffle');
+		}
+		else {
+			// TODO: Scramble playlistin random order. 
+			// Change shuffle state. 
+			gencontainer.classList.add('shuffle');
+		}
 	}
 	// Toggle repeat state. 
 	function toggleRepeatState() {
