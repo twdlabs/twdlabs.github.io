@@ -9,11 +9,15 @@
 :root {
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
 	--themecolor:dodgerblue;
+	--themecolor:#4070f4;
+	--themecolor2:#265df2;
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
+	--boxshadow:0 .25rem .5rem #0004;
 
 	--emptycolor:white;
 	--emptycolor2:#0004;
+	--emptycolor3:#0005;
 	--fillcolor:#555;
 	--fillcolor2:#CCC;
 }
@@ -33,25 +37,30 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
-div#container main.main {background-color:var(--emptycolor); color:var(--fillcolor); min-width:12rem; max-width:100%; padding:.125rem .75rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main {background-color:var(--emptycolor); color:var(--fillcolor); min-width:12rem; /* width:100%; */ max-width:40rem; padding:.5rem .75rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
 div#container main.main div.item {display:flex; flex-direction:row; justify-content:center; align-items:center; flex-wrap:wrap; padding-top:.75rem;}
 div#container main.main div.item div.input {display:flex; flex-direction:column; align-items:stretch; padding:0 .25rem;}
-div#container main.main div.item div.input input.key {background-color:var(--fillcolor2); border:.125rem solid var(--fillcolor2); color:var(--fillcolor); font-size:1.125rem; font-weight:bold; /* width:4rem; */ text-align:center; padding:.25rem .5rem; border-radius:.25rem;}
+div#container main.main div.item div.input input.key {color:var(--fillcolor); font-size:1.125rem; font-weight:bold; text-align:center; /* width:4rem; */}
+div#container main.main div.item div.input input.key {background-color:var(--fillcolor2); padding:.25rem .5rem; border:.125rem solid var(--fillcolor2); border-radius:.25rem;}
 div#container main.main div.item div.input label.label {cursor:pointer; font-size:1.125rem; text-align:center;}
-div#container main.main div.item div.input button.btn {color:var(--fillcolor); font-size:1rem; font-weight:600; letter-spacing:1px;}
-div#container main.main div.item div.input button.btn {background-color:var(--fillcolor2); cursor:pointer; transition:.125s; width:100%; min-width:6rem; padding:.375rem 1.5rem; border: 1px solid var(--fillcolor); border-radius:.25rem;}
+div#container main.main div.item div.input button.btn {color:var(--fillcolor); font-size:1rem; font-weight:600; letter-spacing:1px; cursor:pointer; transition:.125s;}
+div#container main.main div.item div.input button.btn {background-color:var(--fillcolor2); width:100%; min-width:6rem; padding:.375rem 1.5rem; border: 1px solid var(--fillcolor); border-radius:.25rem;}
 div#container main.main div.item div.input button.btn.go {background-color:var(--themecolor); color:white;}
 /* div#container main.main div.item div.input button.btn.clear {} */
-div#container main.main div.item div.input button.btn:hover {transform:scale(1.03);}
-div#container main.main div.item div.output {display:flex; flex-direction:column; /* flex-wrap:wrap; */ align-items:stretch; width:100%;}
-div#container main.main div.item div.output div.scale {background-color:#0004; background-color:var(--emptycolor2); cursor:pointer; text-align:center; padding:.125rem .25rem; border-radius:.25rem; margin-bottom:.625rem;}
-div#container main.main div.item div.output div.scale:hover {box-shadow:var(--boxshadow);}
-div#container main.main div.item div.output div.scale span {display:block; /* font-size:.75rem */;}
-div#container main.main div.item div.output div.scale span.scalename {font-weight:bold;}
-div#container main.main div.item div.output div.scale span.scalekeylist {font-size:.75rem; font-style:italic;}
+/* div#container main.main div.item div.input button.btn:hover {transform:scale(1.03);} */
+div#container main.main div.item div.input button.btn.go:hover {background-color:var(--themecolor2);}
+/* div#container main.main div.item div.input button.btn.go:active {background-color:var(--themecolor2);} */
+/* div#container main.main div.item div.output {width:100%;} */
+div#container main.main div.item div.output div.set {display:flex; flex-direction:row; justify-content:center; flex-wrap:wrap;}
+div#container main.main div.item div.output div.set div.scale {display:flex; flex-direction:column; align-items:center;}
+div#container main.main div.item div.output div.set div.scale {background-color:var(--emptycolor2); cursor:pointer; text-align:center; width:100%; max-width:12rem;}
+div#container main.main div.item div.output div.set div.scale {padding:.125rem .25rem; border-radius:.25rem; margin:.25rem;}
+div#container main.main div.item div.output div.set div.scale:hover {background-color:var(--emptycolor3); transition:.25s;}
+div#container main.main div.item div.output div.set div.scale span.scalename {font-weight:bold;}
+div#container main.main div.item div.output div.set div.scale span.scalekeys {font-size:.75rem; font-style:italic;}
 
 /* Theme Button */
-div#container div.themebtn {position:fixed; top:0; right:0;}
+div#container div.themebtn {position:fixed; top:0; right:0; box-shadow:var(--boxshadow);}
 div#container div.themebtn {background-color:var(--emptycolor); color:var(--fillcolor); cursor:pointer; padding:1rem; border-radius:.5rem; margin:.5rem;}
 div#container div.themebtn svg.icon {font-size:1.25rem;}
 div#container div.themebtn svg.icon.moon {display:block;}

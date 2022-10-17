@@ -24,111 +24,14 @@ const keyTypes = {
 };
 
 
-
-// Define key indexes for circle of fifths (for major and minor keys). 
-const cofList = [
-
-	// Major Keys: 'C','G','D','A','E','B','FG','CD','GA','DE','AB','F',
-	// Minor Keys: 'A','E','B','FG','CD','GA','DE','AB','F','C','G','D',
-
-	{
-		// C Am
-		majorkeyindex:0,
-		minorkeyindex:9,
-		keynametype:'keysharpname'
-	},
-
-	{
-		// G Em
-		majorkeyindex:7,
-		minorkeyindex:4,
-		keynametype:'keysharpname'
-	},
-	{
-		// D Bm
-		majorkeyindex:2,
-		minorkeyindex:11,
-		keynametype:'keysharpname'
-	},
-	{
-		// A FGm
-		majorkeyindex:9,
-		minorkeyindex:6,
-		keynametype:'keysharpname'
-	},
-	{
-		// E CDm
-		majorkeyindex:4,
-		minorkeyindex:1,
-		keynametype:'keysharpname'
-	},
-	{
-		// B GAm
-		majorkeyindex:11,
-		minorkeyindex:8,
-		keynametype:'keysharpname'
-	},
-	// {
-	// 	// FG DEm
-	// 	majorkeyindex:6,
-	// 	minorkeyindex:3,
-	// 	keynametype:'keysharpname'
-	// },
-
-	{
-		// FG DEm
-		majorkeyindex:6,
-		minorkeyindex:3,
-		keynametype:'keyflatname'
-	},
-	{
-		// CD ABm
-		majorkeyindex:1,
-		minorkeyindex:10,
-		keynametype:'keyflatname'
-	},
-	{
-		// GA Fm
-		majorkeyindex:8,
-		minorkeyindex:5,
-		keynametype:'keyflatname'
-	},
-	{
-		// DE Cm
-		majorkeyindex:3,
-		minorkeyindex:0,
-		keynametype:'keyflatname'
-	},
-	{
-		// AB Gm
-		majorkeyindex:10,
-		minorkeyindex:7,
-		keynametype:'keyflatname'
-	},
-	{
-		// F Dm
-		majorkeyindex:5,
-		minorkeyindex:2,
-		keynametype:'keyflatname'
-	},
-
-	// {
-	// 	// C Am
-	// 	majorkeyindex:0,
-	// 	minorkeyindex:9,
-	// 	keynametype:'keyflatname'
-	// },
-	
-];
-
-
-// Define list of key items. 
+// Define list of keys. 
 const keyList = [
 
 	{
 		keyid:'C',
 		keyflatname:'C',
-		keysharpname:'B#',
+		keysharpname:'C',
+		// keysharpname:'B#',
 	},
 	{
 		keyid:'CD',
@@ -148,13 +51,15 @@ const keyList = [
 	},
 	{
 		keyid:'E',
-		keyflatname:'Fb',
+		keyflatname:'E',
 		keysharpname:'E',
+		// keyflatname:'Fb',
 	},
 	{
 		keyid:'F',
 		keyflatname:'F',
-		keysharpname:'E#',
+		keysharpname:'F',
+		// keysharpname:'E#',
 	},
 
 	{
@@ -192,86 +97,221 @@ const keyList = [
 ];
 
 
-// Define key scale repository. 
-const keyScaleRepo = [
+
+// Define indexes for home keys (tonics) in circle of fifths (for major and minor keys). 
+const cofList = [
+
+	// Major Keys: 'C','G','D','A','E','B','FG','CD','GA','DE','AB','F',
+	// Minor Keys: 'A','E','B','FG','CD','GA','DE','AB','F','C','G','D',
+
+	{
+		namingkey:'keysharpname',
+		// Key: C
+		majorkeytonicindex:0,
+		// Key: Am
+		minorkeytonicindex:9,
+	},
+
+	{
+		namingkey:'keysharpname',
+		// Key: G
+		majorkeytonicindex:7,
+		// Key: Em
+		minorkeytonicindex:4,
+	},
+	{
+		namingkey:'keysharpname',
+		// Key: D
+		majorkeytonicindex:2,
+		// Key: Bm
+		minorkeytonicindex:11,
+	},
+	{
+		namingkey:'keysharpname',
+		// Key: A
+		majorkeytonicindex:9,
+		// Key: FGm
+		minorkeytonicindex:6,
+	},
+	{
+		namingkey:'keysharpname',
+		// Key: E
+		majorkeytonicindex:4,
+		// Key: CDm
+		minorkeytonicindex:1,
+	},
+	{
+		namingkey:'keysharpname',
+		// Key: B
+		majorkeytonicindex:11,
+		// Key: GAm
+		minorkeytonicindex:8,
+	},
+
+	// {
+	// 	namingkey:'keysharpname',
+	// 	// Key: FG
+	// 	majorkeytonicindex:6,
+	// 	// Key: DEm
+	// 	minorkeytonicindex:3,
+	// },
+	{
+		namingkey:'keyflatname',
+		// Key: FG
+		majorkeytonicindex:6,
+		// Key: DEm
+		minorkeytonicindex:3,
+	},
+	
+	{
+		namingkey:'keyflatname',
+		// Key: CD
+		majorkeytonicindex:1,
+		// Key: ABm
+		minorkeytonicindex:10,
+	},
+	{
+		namingkey:'keyflatname',
+		// Key: GA
+		majorkeytonicindex:8,
+		// Key: Fm
+		minorkeytonicindex:5,
+	},
+	{
+		namingkey:'keyflatname',
+		// Key: DE
+		majorkeytonicindex:3,
+		// Key: Cm
+		minorkeytonicindex:0,
+	},
+	{
+		namingkey:'keyflatname',
+		// Key: AB
+		majorkeytonicindex:10,
+		// Key: Gm
+		minorkeytonicindex:7,
+	},
+	{
+		namingkey:'keyflatname',
+		// Key: F
+		majorkeytonicindex:5,
+		// Key: Dm
+		minorkeytonicindex:2,
+	},
+
+	{
+		namingkey:'keysharpname',
+		// Key: C
+		majorkeytonicindex:0,
+		// Key: Am
+		minorkeytonicindex:9,
+	},
+	
+];
+
+
+// Define list of key scales. 
+const scaleList = [
+	
 
 	// Major key scales
+
 	// {
 	// 	scalename:'C Major',
-	// 	scalekeys: [0,2,4,5, 7,9,11,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,2,4,5, 7,9,11,0],
+	// 	namingkey:'keyid',
 	// },
+
 	// {
 	// 	scalename:'G Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keysharpname',
 	// },
 	// {
 	// 	scalename:'D Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keysharpname',
 	// },
 	// {
 	// 	scalename:'A Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keysharpname',
 	// },
 	// {
 	// 	scalename:'E Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keysharpname',
 	// },
 	// {
 	// 	scalename:'B Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keysharpname',
+	// },
+
+	// {
+	// 	scalename:'FG Major',
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keysharpname',
 	// },
 	// {
 	// 	scalename:'FG Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keyflatname',
 	// },
+
 	// {
 	// 	scalename:'CD Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keyflatname',
 	// },
 	// {
 	// 	scalename:'GA Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keyflatname',
 	// },
 	// {
 	// 	scalename:'DE Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keyflatname',
 	// },
 	// {
 	// 	scalename:'AB Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keyflatname',
 	// },
 	// {
 	// 	scalename:'F Major',
-	// 	scalekeys: [0,0,0,0, 0,0,0,0],
-	// 	keynametype:'keynametype'
+	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
+	// 	namingkey:'keyflatname',
 	// },
+
+	// {
+	// 	scalename:'C Major',
+	// 	keyindexlist: [0,2,4,5, 7,9,11,0],
+	// 	namingkey:'keyid',
+	// },
+
 
 	// Natural minor key scales
 	
+
 	// Harmonic minor key scales
 
 ];
 
 
+
 /*****/
+
 
 
 // Create list of key scales. 
 listAllKeyScales();
 
 
+
 /*****/
+
 
 
 // Define list of key scales. 
@@ -279,65 +319,106 @@ listAllKeyScales();
 // (C Db D Eb E F Gb G Ab A Bb B) × (M Nm Hm). 
 function listAllKeyScales() {
 
-	// Get list of key indexes from list of key items. 
-	let majorKeyBaseIndexList = getKeyIndexes( cofList );
+	// Get naming keys from 'circle of fifths' list. 
+	let namingKeys = getNamingKeys( cofList );
 
+	// Get major key indexes from 'circle of fifths' list. 
+	let majorTonicIndexList = getTonicKeyIndexes( cofList, 'majorkeytonicindex' );
 	// Go thru all keys (in 'circle of fifths' major order). 
-	for(let majorKeyBaseIndex of majorKeyBaseIndexList) {
+	for(let i in majorTonicIndexList) {
 
-		// Get key id for base major key. 
-		let majorKeyId = keyList[majorKeyBaseIndex].keyid;
+		// Get index of tonic key. 
+		let tonicKeyIndex = majorTonicIndexList[i];
+		let namingkey = namingKeys[i];
+
+		// Get key id for major key tonic. 
+		let tonicKey = keyList[tonicKeyIndex];
+		let tonicKeyName = formatKeyName(tonicKey,namingkey);
 
 		// Create new major scale. 
 		let newMajorScale = {
-			scalename:`${majorKeyId} Major`,
-			scalekeys: fillScaleKeys( majorKeyBaseIndex, keyTypes.major.indexes ),
-			// keynametype:xyz.keynametype
+			scalename: `${tonicKeyName} Major`,
+			keyindexlist: createKeyIndexList( tonicKeyIndex, 'major' ),
+			namingkey: namingKeys[i],
 		};
 		// Save major scale to list. 
-		keyScaleRepo.push(newMajorScale);
+		scaleList.push(newMajorScale);
 	}
 
-	// Get list of key indexes from list of key items. 
-	let minorKeyBaseIndexList = getKeyIndexes( cofList );
-
+	// Get minor key indexes from 'circle of fifths' list. 
+	let minorTonicIndexList = getTonicKeyIndexes( cofList, 'minorkeytonicindex' );
 	// Go thru all keys (in 'circle of fifths' minor order). 
-	for(let minorKeyBaseIndex of minorKeyBaseIndexList) {
+	for(let i in minorTonicIndexList) {
 
-		// Get key id for base minor key. 
-		let minorKeyId = keyList[minorKeyBaseIndex].keyid;
+		// Get index of tonic key. 
+		let tonicKeyIndex = minorTonicIndexList[i];
+		let namingkey = namingKeys[i];
+
+		// Get key id for minor key tonic. 
+		let tonicKey = keyList[tonicKeyIndex];
+		let tonicKeyName = formatKeyName(tonicKey,namingkey);
 
 		// Create new natural minor scale. 
 		let newMinorScale = {
-			scalename:`${minorKeyId} Minor`,
-			scalekeys: fillScaleKeys( minorKeyBaseIndex, keyTypes.natMinor.indexes ),
-			// keynametype:xyz.keynametype
+			scalename: `${tonicKeyName} Minor`,
+			keyindexlist: createKeyIndexList( tonicKeyIndex, 'natMinor' ),
+			namingkey: namingKeys[i],
 		};
 		// Save natural minor scale to list. 
-		keyScaleRepo.push(newMinorScale);
+		scaleList.push(newMinorScale);
+	}
+
+	// Get minor key indexes from 'circle of fifths' list. 
+	// let minorTonicIndexList = getTonicKeyIndexes( cofList, 'minorkeytonicindex' );
+	// Go thru all keys (in 'circle of fifths' minor order). 
+	for(let i in minorTonicIndexList) {
+
+		// Get index of tonic key. 
+		let tonicKeyIndex = minorTonicIndexList[i];
+		let namingkey = namingKeys[i];
+
+		// Get key id for minor key tonic. 
+		let tonicKey = keyList[tonicKeyIndex];
+		let tonicKeyName = formatKeyName(tonicKey,namingkey);
 
 		// Create new harmonic minor scale. 
 		let newHMinorScale = {
-			scalename:`${minorKeyId} H-Minor`,
-			scalekeys: fillScaleKeys( minorKeyBaseIndex, keyTypes.hMinor.indexes ),
-			// keynametype:xyz.keynametype
+			scalename: `${tonicKeyName} H-Minor`,
+			keyindexlist: createKeyIndexList( tonicKeyIndex, 'hMinor' ),
+			namingkey: namingKeys[i],
 		};
 		// Save harmonic minor scale to list. 
-		keyScaleRepo.push(newHMinorScale);
+		scaleList.push(newHMinorScale);
 	}
 
-	// console.log('keyScaleRepo:',keyScaleRepo);
+	console.log('Scale list:',scaleList);
 	
 	/****/
 
+	// 
+	function getNamingKeys(itemlist) {
+		// 
+		return itemlist.map( item => item.namingkey );
+	}
+
+	// TODO: Format key name. 
+	function formatKeyName(keyitem,namingkey) {
+		// 
+		// return keyitem['keyid'];
+		return keyitem[namingkey];
+	}
+
 	// Get list of key indexes from list of key items. 
-	function getKeyIndexes(itemlist) {
+	function getTonicKeyIndexes(itemlist,indexkey) {
+		// indexkey = 'majorkeytonicindex' || 'minorkeytonicindex';
+
 		// Map list to get subsidiary indexes from key items. 
-		return itemlist.map( (item) => (item.majorkeyindex) );
+		return itemlist.map( item => item[indexkey] );
 	}
 
 	// Fill keys for given scale. 
-	function fillScaleKeys(basekeyindex, keytypeindexes) {
+	function createKeyIndexList(basekeyindex, keytypeindicator) {
+		let keytypeindexes = keyTypes[keytypeindicator].indexes;
 
 		// Initialize resulting list. 
 		let result = [];
@@ -352,3 +433,4 @@ function listAllKeyScales() {
 		return result;
 	}
 }
+
