@@ -324,76 +324,49 @@ function listAllKeyScales() {
 
 	// Get major key indexes from 'circle of fifths' list. 
 	let majorTonicIndexList = getTonicKeyIndexes( cofList, 'majorkeytonicindex' );
-	// Go thru all keys (in 'circle of fifths' major order). 
-	for(let i in majorTonicIndexList) {
-
-		// Get index of tonic key. 
-		let tonicKeyIndex = majorTonicIndexList[i];
-		let namingkey = namingKeys[i];
-
-		// Get key id for major key tonic. 
-		let tonicKey = keyList[tonicKeyIndex];
-		let tonicKeyName = formatKeyName(tonicKey,namingkey);
-
-		// Create new major scale. 
-		let newMajorScale = {
-			scalename: `${tonicKeyName} Major`,
-			keyindexlist: createKeyIndexList( tonicKeyIndex, 'major' ),
-			namingkey: namingKeys[i],
-		};
-		// Save major scale to list. 
-		scaleList.push(newMajorScale);
-	}
-
 	// Get minor key indexes from 'circle of fifths' list. 
 	let minorTonicIndexList = getTonicKeyIndexes( cofList, 'minorkeytonicindex' );
-	// Go thru all keys (in 'circle of fifths' minor order). 
-	for(let i in minorTonicIndexList) {
+	
+	// console.log('Scale list:',scaleList);
 
-		// Get index of tonic key. 
-		let tonicKeyIndex = minorTonicIndexList[i];
-		let namingkey = namingKeys[i];
+	// Add major scales. 
+	addScales(majorTonicIndexList,'Major','major');
 
-		// Get key id for minor key tonic. 
-		let tonicKey = keyList[tonicKeyIndex];
-		let tonicKeyName = formatKeyName(tonicKey,namingkey);
+	// Add natural minor scales. 
+	addScales(minorTonicIndexList,'Minor','natMinor');
 
-		// Create new natural minor scale. 
-		let newMinorScale = {
-			scalename: `${tonicKeyName} Minor`,
-			keyindexlist: createKeyIndexList( tonicKeyIndex, 'natMinor' ),
-			namingkey: namingKeys[i],
-		};
-		// Save natural minor scale to list. 
-		scaleList.push(newMinorScale);
-	}
-
-	// Get minor key indexes from 'circle of fifths' list. 
-	// let minorTonicIndexList = getTonicKeyIndexes( cofList, 'minorkeytonicindex' );
-	// Go thru all keys (in 'circle of fifths' minor order). 
-	for(let i in minorTonicIndexList) {
-
-		// Get index of tonic key. 
-		let tonicKeyIndex = minorTonicIndexList[i];
-		let namingkey = namingKeys[i];
-
-		// Get key id for minor key tonic. 
-		let tonicKey = keyList[tonicKeyIndex];
-		let tonicKeyName = formatKeyName(tonicKey,namingkey);
-
-		// Create new harmonic minor scale. 
-		let newHMinorScale = {
-			scalename: `${tonicKeyName} H-Minor`,
-			keyindexlist: createKeyIndexList( tonicKeyIndex, 'hMinor' ),
-			namingkey: namingKeys[i],
-		};
-		// Save harmonic minor scale to list. 
-		scaleList.push(newHMinorScale);
-	}
+	// Add harmonic minor scales. 
+	addScales(minorTonicIndexList,'H-Minor','hMinor');
 
 	console.log('Scale list:',scaleList);
 	
 	/****/
+
+	// Add scales. 
+	function addScales(tonicIndexList,keyTypeName,keyTypeIndicator) {
+
+		// Go thru all keys (in 'circle of fifths' order). 
+		for(let i in tonicIndexList) {
+	
+			// Get index of tonic key. 
+			let tonicKeyIndex = tonicIndexList[i];
+			let namingkey = namingKeys[i];
+	
+			// Get key id for tonic key. 
+			let tonicKey = keyList[tonicKeyIndex];
+			let tonicKeyName = formatKeyName(tonicKey,namingkey);
+	
+			// Create new scale. 
+			let newScale = {
+				scalename: `${tonicKeyName} ${keyTypeName}`,
+				keyindexlist: createKeyIndexList( tonicKeyIndex, keyTypeIndicator ),
+				namingkey: namingKeys[i],
+			};
+
+			// Save new scale to list. 
+			scaleList.push(newScale);
+		}
+	}
 
 	// 
 	function getNamingKeys(itemlist) {
@@ -401,7 +374,7 @@ function listAllKeyScales() {
 		return itemlist.map( item => item.namingkey );
 	}
 
-	// TODO: Format key name. 
+	// Format key name. 
 	function formatKeyName(keyitem,namingkey) {
 		// 
 		// return keyitem['keyid'];

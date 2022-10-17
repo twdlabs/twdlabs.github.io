@@ -72,34 +72,40 @@ function showOutput() {
 	// Input: Save input keys to list. 
 	// Eb -> DE -> 3
 	function saveInputKeys() {
+		
+		// Get list of key ids for all keys. 
+		let allKeyIds = keyList.map( item => item.keyid );
+		console.log('All key ids:', allKeyIds);
 	
 		// 
+		// inputKeys[0] = keyInputBox0.value;
+		// inputKeys[1] = keyInputBox1.value;
+		// inputKeys[2] = keyInputBox2.value;
+		// inputKeys[3] = keyInputBox3.value;
+		// inputKeys[4] = keyInputBox4.value;
+		// inputKeys[5] = keyInputBox5.value;
+		// inputKeys[6] = keyInputBox6.value;
+
+		// Get user input keys. 
 		inputKeys = [
-			convertKey(keyInputBox0.value),
-			convertKey(keyInputBox1.value),
-			convertKey(keyInputBox2.value),
-			convertKey(keyInputBox3.value),
-			convertKey(keyInputBox4.value),
-			convertKey(keyInputBox5.value),
-			convertKey(keyInputBox6.value),
+			keyInputBox0.value,
+			keyInputBox1.value,
+			keyInputBox2.value,
+			keyInputBox3.value,
+			keyInputBox4.value,
+			keyInputBox5.value,
+			keyInputBox6.value,
 		];
-		// inputKeys[0] = convertKey(keyInputBox0.value);
-		// inputKeys[1] = convertKey(keyInputBox1.value);
-		// inputKeys[2] = convertKey(keyInputBox2.value);
-		// inputKeys[3] = convertKey(keyInputBox3.value);
-		// inputKeys[4] = convertKey(keyInputBox4.value);
-		// inputKeys[5] = convertKey(keyInputBox5.value);
-		// inputKeys[6] = convertKey(keyInputBox6.value);
-		console.log('User input converted:', inputKeys);
-		
-		// Get keyid for each given input key. 
-		let allKeyIds = keyList.map( item => item.keyid );
-		// console.log('All key ids:', allKeyIds);
+		console.log('Raw user input:', inputKeys);
 
-		// Get index for each input key. 
+		// Convert user input keys. 
+		inputKeys = inputKeys.map( convertKey );
+		console.log('User input ids:', inputKeys);
+
+		// Find index for each input key. 
 		let i = inputKeys.map( key => allKeyIds.indexOf(key) );
-
-		// Add all valid indices to list. 
+		// console.log('i:',i);
+		// Create list of valid indexes. 
 		if(i[0]>-1) inputKeyIndexes.push(i[0]);
 		if(i[1]>-1) inputKeyIndexes.push(i[1]);
 		if(i[2]>-1) inputKeyIndexes.push(i[2]);
@@ -107,14 +113,25 @@ function showOutput() {
 		if(i[4]>-1) inputKeyIndexes.push(i[4]);
 		if(i[5]>-1) inputKeyIndexes.push(i[5]);
 		if(i[6]>-1) inputKeyIndexes.push(i[6]);
-		console.log('Indexes for user input:',inputKeyIndexes);
+		console.log('User input indexes:',inputKeyIndexes);
 		
 		/****/
 
-		// TODO: Convert input key. 
-		function convertKey(rawkey) {
-			// 
-			return rawkey;
+		// Convert input key names to raw key ids. 
+		function convertKey(inputkeyname) {
+
+			// Go thru list of keys to find given key. 
+			for(let key of keyList) {
+
+				// Determine key match. 
+				let keyMatch = (inputkeyname==key.keyflatname || inputkeyname==key.keysharpname);
+
+				// Return matching key id. 
+				if(keyMatch) return key.keyid;
+			}
+
+			// Return empty string if not found. 
+			return '';
 		}
 	}
 	
@@ -144,8 +161,8 @@ function showOutput() {
 			for(let keyIndex of inputKeyIndexes) {
 		
 				// Exclude if input key is missing from given list. 
-				let missingAKey = !(keyScale.keyindexlist).includes(keyIndex);
-				if( missingAKey ) return false;
+				let missingInputKey = !(keyScale.keyindexlist).includes(keyIndex);
+				if( missingInputKey ) return false;
 			}
 		
 			// Return true if no input keys missing from given list. 
