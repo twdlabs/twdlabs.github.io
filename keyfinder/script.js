@@ -14,7 +14,6 @@ const keyInputBox6 = document.getElementById('keyInputBox6');
 const ouputBox = document.getElementById('outputBox');
 
 
-
 /*****/
 
 
@@ -48,6 +47,7 @@ function clearForm() {
 
 // Output: Show results on page. 
 function showOutput() {
+	let debug = false;
 
 	// Initialize list of input keys. 
 	let inputKeys = [];
@@ -61,21 +61,22 @@ function showOutput() {
 
 	// Get matching key scales. 
 	getMatchingScales(inputKeys);
-	console.log('Matching scale indexes:',matchingScales);
+	if(debug) console.log('Matching scale indexes:',matchingScales);
 	
 	// Show matching key scales. 
 	showMatchingScales();
-	console.log('Matching scale indexes:',matchingScales);
+	if(debug) console.log('Matching scale indexes:',matchingScales);
 
 	/****/
 
 	// Input: Save input keys to list. 
 	// Eb -> DE -> 3
 	function saveInputKeys() {
+		let debug = false;
 		
 		// Get list of key ids for all keys. 
 		let allKeyIds = keyList.map( item => item.keyid );
-		console.log('All key ids:', allKeyIds);
+		if(debug) console.log('All key ids:', allKeyIds);
 	
 		// 
 		// inputKeys[0] = keyInputBox0.value;
@@ -96,11 +97,11 @@ function showOutput() {
 			keyInputBox5.value,
 			keyInputBox6.value,
 		];
-		console.log('Raw user input:', inputKeys);
+		if(debug) console.log('Raw user input:', inputKeys);
 
 		// Convert user input keys. 
 		inputKeys = inputKeys.map( convertKey );
-		console.log('User input ids:', inputKeys);
+		if(debug) console.log('User input ids:', inputKeys);
 
 		// Find index for each input key. 
 		let i = inputKeys.map( key => allKeyIds.indexOf(key) );
@@ -113,7 +114,7 @@ function showOutput() {
 		if(i[4]>-1) inputKeyIndexes.push(i[4]);
 		if(i[5]>-1) inputKeyIndexes.push(i[5]);
 		if(i[6]>-1) inputKeyIndexes.push(i[6]);
-		console.log('User input indexes:',inputKeyIndexes);
+		if(debug) console.log('User input indexes:',inputKeyIndexes);
 		
 		/****/
 
@@ -172,6 +173,7 @@ function showOutput() {
 	
 	// Show key scales that match user input. 
 	function showMatchingScales() {
+		let debug = false;
 
 		// Initialize result. 
 		let result = '';
@@ -191,22 +193,22 @@ function showOutput() {
 
 			// Get index of matching scale. 
 			scaleIndex = matchingScales[i];
-			console.log(`i${i}`,scaleIndex);
+			if(debug) console.log(`i${i}`,scaleIndex);
 
 			// Get scale name. 
 			let scalename = scaleList[scaleIndex].scalename;
-			console.log(`\tscalename: ${scalename}`);
+			if(debug) console.log(`\tscalename: ${scalename}`);
 			
 			// Get scale naming indicator. 
 			let scalenamingkey = scaleList[scaleIndex].namingkey || ( /* 'keyid' || 'keyflatname' || */ 'keysharpname');
-			console.log(`\tscalenamingkey: ${scalenamingkey}`);
+			if(debug) console.log(`\tscalenamingkey: ${scalenamingkey}`);
 
 			// Get list of key indexes for scale. 
 			let keyindexlist = scaleList[scaleIndex].keyindexlist;
-			console.log(`\tkeyindexlist: [ ${keyindexlist.join(' ')}]`);
+			if(debug) console.log(`\tkeyindexlist: [ ${keyindexlist.join(' ')}]`);
 			// Get key list for scale. 
 			let keylist = formatKeyList( keyindexlist, scalenamingkey );
-			console.log(`\tkeylist: [ ${keylist.join(' ')}]`);
+			if(debug) console.log(`\tkeylist: [ ${keylist.join(' ')}]`);
 
 			// Add scale representation to page result. 
 			result += `
@@ -248,7 +250,7 @@ function showOutput() {
 
 		// TODO: Format keys by index (converting numbers to letters). 
 		function formatKeyList( keyindexlist, namingkey = 'keyid' ) {
-			console.log('\tnamingkey:',namingkey);
+			if(debug) console.log('\tnamingkey:',namingkey);
 
 			// Define naming key (flats, sharps, etc). 
 			// namingkey = xyz;
@@ -268,17 +270,20 @@ function showOutput() {
 
 			/**/
 
-			// TODO: Show selected scale. 
+			// Show selected scale in overlay popup. 
 			function showScale(event) {
 
-				// Get selected scale index. 
-				let scaleBtn = event.currentTarget;
+				// Get selected scale button. 
+				let selectedScaleBtn = event.currentTarget;
 
 				// Get selected scale index. 
-				let scaleIndex = 1 * scaleBtn.getAttribute('data-scaleindex');
+				let scaleIndex = 1 * selectedScaleBtn.getAttribute('data-scaleindex');
 
+				// Show selected scale on scale overlay. 
+				// openScaleDisplay( scaleIndex, `Selected scale index: ${scaleIndex}` );
 				console.log('Selected scale index:',scaleIndex);
-				window.alert(scaleIndex);
+				openScaleDisplay( scaleIndex, selectedScaleBtn.innerHTML );
+				// window.alert(scaleIndex);
 			}
 		}
 	}
