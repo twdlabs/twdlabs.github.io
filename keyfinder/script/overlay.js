@@ -44,17 +44,17 @@ function openScaleDisplay(scaleIndex, displayContent='') {
 			// Define list of key types in single piano octave. 
 			const octavePattern = [
 				'white c',
+				'black cd p1',
 				'white d',
+				'black de p2',
 				'white e',
 				'white f',
-				'white g',
-				'white a',
-				'white b',
-				'black cd p1',
-				'black de p2',
 				'black fg p4',
+				'white g',
 				'black ga p5',
+				'white a',
 				'black ab p6',
+				'white b',
 			];
 
 			// Initialize result. 
@@ -85,7 +85,7 @@ function openScaleDisplay(scaleIndex, displayContent='') {
 				// Add all keys to octave. 
 				for(let i in octavePattern) {
 
-					// Get key type. 
+					// Get current key type. 
 					let keytype = octavePattern[i];
 					
 					// Determine if key is included in scale. 

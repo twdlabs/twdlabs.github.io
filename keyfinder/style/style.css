@@ -1,0 +1,94 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	--red:#FF0C49;
+	--blue:#1e90ff;
+	--orange:#FF9C0C;
+	--darkblue:#4070f4;
+	--darkblue2:#265df2;
+
+	--fillcolor:#555;
+	--fillcolor2:#CCC;
+	--emptycolor:white;
+	--emptycolor2:#0004;
+	--emptycolor3:#0005;
+
+	--cornersize:.5rem;
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+	--boxshadow:0 .25rem .5rem #0004;
+
+	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+}
+
+div#container.dark {
+	--emptycolor:#555;
+	--emptycolor2:#AAA4;
+	--fillcolor:#EEE;
+	--fillcolor2:#888;
+	/* transition:.5s; */
+}
+
+
+html {background-color:var(--darkblue); background-color:var(--fillcolor2); background-image:var(--bgimg);}
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+/* General Container */
+
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.main {background-color:var(--emptycolor); color:var(--fillcolor); min-width:12rem; /* width:100%; */ max-width:40rem; padding:.5rem .75rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container main.main div.item {display:flex; flex-direction:row; justify-content:center; align-items:center; flex-wrap:wrap; padding-top:.75rem;}
+div#container main.main div.item div.input {display:flex; flex-direction:column; align-items:stretch; padding:0 .25rem;}
+div#container main.main div.item div.input input.key {color:var(--fillcolor); font-size:1.125rem; font-weight:bold; text-align:center; /* width:4rem; */}
+div#container main.main div.item div.input input.key {background-color:var(--fillcolor2); padding:.25rem .5rem; border:.125rem solid var(--fillcolor2); border-radius:.25rem;}
+div#container main.main div.item div.input label.label {cursor:pointer; font-size:1.125rem; text-align:center;}
+div#container main.main div.item div.input button.btn {color:var(--fillcolor); font-size:1rem; font-weight:600; letter-spacing:1px; cursor:pointer; transition:.125s;}
+div#container main.main div.item div.input button.btn {background-color:var(--fillcolor2); width:100%; min-width:6rem; padding:.375rem 1.5rem; border: 1px solid var(--fillcolor); border-radius:.25rem;}
+div#container main.main div.item div.input button.btn.go {background-color:var(--darkblue); color:white;}
+/* div#container main.main div.item div.input button.btn.clear {} */
+/* div#container main.main div.item div.input button.btn:hover {transform:scale(1.03);} */
+div#container main.main div.item div.input button.btn.go:hover {background-color:var(--darkblue2);}
+/* div#container main.main div.item div.input button.btn.go:active {background-color:var(--darkblue2);} */
+/* div#container main.main div.item div.output {width:100%;} */
+div#container main.main div.item div.output div.set {display:flex; flex-direction:row; justify-content:center; flex-wrap:wrap;}
+div#container main.main div.item div.output div.set div.scale {display:flex; flex-direction:column; align-items:center; padding:.125rem .25rem; border-radius:.25rem; margin:.25rem;}
+div#container main.main div.item div.output div.set div.scale {background-color:var(--emptycolor2); cursor:pointer; font-size:1rem; text-align:center; width:100%; max-width:12rem;}
+div#container main.main div.item div.output div.set div.scale:hover {background-color:var(--emptycolor3); transition:.25s;}
+div#container main.main div.item div.output div.set div.scale span.scalename {font-weight:bold;}
+div#container main.main div.item div.output div.set div.scale span.scalekeys {font-size:.75em; font-style:italic;}
+
+/* Theme Button */
+div#container div.themebtn {position:fixed; top:0; right:0; box-shadow:var(--boxshadow);}
+div#container div.themebtn {background-color:var(--emptycolor); color:var(--fillcolor); cursor:pointer; padding:1rem; border-radius:var(--cornersize); margin:.5rem;}
+div#container div.themebtn svg.icon {font-size:1.25rem;}
+div#container div.themebtn svg.icon.moon {display:block;}
+div#container div.themebtn svg.icon.moonfill {display:none;}
+/* div#container.dark div.themebtn {} */
+div#container.dark div.themebtn svg.icon.moon {display:none;}
+div#container.dark div.themebtn svg.icon.moonfill {display:block;}
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+	div#container main.main {padding:.125rem .75rem;}
+	div#container main.main div.item {flex-direction:column; padding-top:.5rem;}
+	div#container main.main div.item div.input {flex-direction:row; align-items:center; width:100%; padding:.125rem 0;}
+	div#container main.main div.item div.input input.key {flex:0 0 60%;}
+	div#container main.main div.item div.input label.label {flex:0 0 40%; padding-right:1rem;}
+}
