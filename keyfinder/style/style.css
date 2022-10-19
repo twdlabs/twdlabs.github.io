@@ -77,59 +77,6 @@ div#container.dark div.themebtn svg.icon.moon {display:none;}
 div#container.dark div.themebtn svg.icon.moonfill {display:block;}
 
 
-/* Overlay Display */
-
-div#overlay {opacity:0; visibility:hidden; transition:.25s;}
-div#overlay {position:fixed; top:0; left:0; height:100%; width:100%;}
-div#overlay {background-color:var(--emptycolor3); display:grid; place-items:center;}
-div#overlay.active {opacity:1; visibility:visible; transition:.5s;}
-
-div#overlay aside.bg {content:''; cursor:pointer; position:absolute; height:100%; width:100%; z-index:-1;}
-div#overlay main.main {background-color:var(--emptycolor); position:relative; padding:2rem; border-radius:var(--cornersize);}
-
-div#overlay main.main div.scale {display:flex; flex-direction:column; align-items:center;}
-div#overlay main.main div.scale {/* cursor:pointer; */ font-size:1.875rem; text-align:center; /* width:100%; max-width:12rem; */}
-div#overlay main.main div.scale span.scalename {font-weight:bold;}
-div#overlay main.main div.scale span.scalekeys {font-size:.75em; font-style:italic;}
-
-div#overlay main.main div.pianokeys {background-color:limegreen; display:flex; flex-direction:row; justify-content:center; /* padding:.25rem; */ border:.125rem solid var(--fillcolor2);}
-div#overlay main.main div.pianokeys div.octave {display:flex; flex-direction:row; position:relative; /* margin:.25rem; */}
-div#overlay main.main div.pianokeys div.octave span.key {cursor:pointer; display:grid; place-items:center; position:relative;}
-div#overlay main.main div.pianokeys div.octave span.key.white {background-color:whitesmoke; color:black; height:6rem; width:1.5rem; border:1px solid var(--fillcolor2);}
-div#overlay main.main div.pianokeys div.octave span.key.white {--dotsize:.75rem;}
-div#overlay main.main div.pianokeys div.octave span.key.black {background-color:black; color:whitesmoke; height:3.5rem; width:1rem; --cornersize:.25rem; border-radius:0 0 var(--cornersize) var(--cornersize);}
-div#overlay main.main div.pianokeys div.octave span.key.black {position:absolute; top:0; transform:translateX(-50%);}
-div#overlay main.main div.pianokeys div.octave span.key.black {--dotsize:.625rem;}
-div#overlay main.main div.pianokeys div.octave span.key.black.p1 {left:calc(100% * 1/7);}
-div#overlay main.main div.pianokeys div.octave span.key.black.p2 {left:calc(100% * 2/7);}
-div#overlay main.main div.pianokeys div.octave span.key.black.p4 {left:calc(100% * 4/7);}
-div#overlay main.main div.pianokeys div.octave span.key.black.p5 {left:calc(100% * 5/7);}
-div#overlay main.main div.pianokeys div.octave span.key.black.p6 {left:calc(100% * 6/7);}
-div#overlay main.main div.pianokeys div.octave span.key:before {position:absolute; bottom:0; left:50%; transform:translateX(-50%);}
-div#overlay main.main div.pianokeys div.octave span.key:before {content:'X'; font-size:.625rem; /* opacity:.875; */}
-div#overlay main.main div.pianokeys div.octave span.key.c:before {content:'C';}
-div#overlay main.main div.pianokeys div.octave span.key.d:before {content:'D';}
-div#overlay main.main div.pianokeys div.octave span.key.e:before {content:'E';}
-div#overlay main.main div.pianokeys div.octave span.key.f:before {content:'F';}
-div#overlay main.main div.pianokeys div.octave span.key.g:before {content:'G';}
-div#overlay main.main div.pianokeys div.octave span.key.a:before {content:'A';}
-div#overlay main.main div.pianokeys div.octave span.key.b:before {content:'B';}
-div#overlay main.main div.pianokeys div.octave span.key.cd:before {content:'CD';}
-div#overlay main.main div.pianokeys div.octave span.key.de:before {content:'DE';}
-div#overlay main.main div.pianokeys div.octave span.key.fg:before {content:'FG';}
-div#overlay main.main div.pianokeys div.octave span.key.ga:before {content:'GA';}
-div#overlay main.main div.pianokeys div.octave span.key.ab:before {content:'AB';}
-div#overlay main.main div.pianokeys div.octave span.key::after {position:absolute; /* top:80%; */ bottom:1rem; left:50%; transform:translate(-50%,-50%);}
-div#overlay main.main div.pianokeys div.octave span.key::after {content:''; background-color:var(--blue); height:var(--dotsize); width:var(--dotsize); border-radius:50%;}
-div#overlay main.main div.pianokeys div.octave span.key::after {opacity:0; visibility:hidden;}
-div#overlay main.main div.pianokeys div.octave span.key.active::after {opacity:.625; visibility:visible;}
-
-div#overlay main.main div.closebtn {position:absolute; top:0; right:0;}
-div#overlay main.main div.closebtn {cursor:pointer; font-size:1.5rem; user-select:none; margin:.125em .5em;}
-
-
-
-
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {

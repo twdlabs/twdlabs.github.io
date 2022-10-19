@@ -29,34 +29,40 @@ const keyList = [
 
 	{
 		keyid:'C',
+		keytype:'white c',
 		keyflatname:'C',
 		keysharpname:'C',
 		// keysharpname:'B#',
 	},
 	{
 		keyid:'CD',
+		keytype:'black cd p1',
 		keyflatname:'Db',
 		keysharpname:'C#',
 	},
 	{
 		keyid:'D',
+		keytype:'white d',
 		keyflatname:'D',
 		keysharpname:'D',
 	},
 
 	{
 		keyid:'DE',
+		keytype:'black de p2',
 		keyflatname:'Eb',
 		keysharpname:'D#',
 	},
 	{
 		keyid:'E',
+		keytype:'white e',
 		keyflatname:'E',
 		keysharpname:'E',
 		// keyflatname:'Fb',
 	},
 	{
 		keyid:'F',
+		keytype:'white f',
 		keyflatname:'F',
 		keysharpname:'F',
 		// keysharpname:'E#',
@@ -64,32 +70,38 @@ const keyList = [
 
 	{
 		keyid:'FG',
+		keytype:'black fg p4',
 		keyflatname:'Gb',
 		keysharpname:'F#',
 	},
 	{
 		keyid:'G',
+		keytype:'white g',
 		keyflatname:'G',
 		keysharpname:'G',
 	},
 	{
 		keyid:'GA',
+		keytype:'black ga p5',
 		keyflatname:'Ab',
 		keysharpname:'G#',
 	},
 
 	{
 		keyid:'A',
+		keytype:'white a',
 		keyflatname:'A',
 		keysharpname:'A',
 	},
 	{
 		keyid:'AB',
+		keytype:'black ab p6',
 		keyflatname:'Bb',
 		keysharpname:'A#',
 	},
 	{
 		keyid:'B',
+		keytype:'white b',
 		keyflatname:'Cb',
 		keysharpname:'B',
 	},
@@ -210,7 +222,7 @@ const cofList = [
 ];
 
 
-// Define list of key scales. 
+// Initialize list of all key scales. 
 const scaleList = [
 	
 
@@ -298,6 +310,10 @@ const scaleList = [
 	// Harmonic minor key scales
 
 ];
+
+
+// Initialize list of indexes for matching key scales. 
+let matchingScaleResults = [];
 
 
 
