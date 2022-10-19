@@ -206,7 +206,7 @@ function showOutput() {
 			// Get list of key indexes for scale. 
 			let keyindexlist = scaleList[scaleIndex].keyindexlist;
 			if(debug) console.log(`\tKey index list: [ ${keyindexlist.join(' ')}]`);
-			
+
 			// Get formatted list of keys for given scale. 
 			let scalekeyslist = formatKeyList( keyindexlist, namingkey );
 			if(debug) console.log(`\tKey list: [ ${scalekeyslist.join(' ')}]`);
@@ -277,13 +277,12 @@ function showOutput() {
 				// Get selected scale button. 
 				let selectedScaleBtn = event.currentTarget;
 
-				// Get selected scale index. 
-				let scaleIndex = 1 * selectedScaleBtn.getAttribute('data-scaleindex');
+				// Get selected result index. 
 				let resultIndex = 1 * selectedScaleBtn.getAttribute('data-resultindex');
 
 				// Show selected scale result on scale display. 
-				openScaleDisplay( resultIndex );
-				console.log(`Selected scale index: ${scaleIndex}`);
+				openScaleDisplay(resultIndex);
+				console.log(`Selected result index: ${resultIndex}`);
 			}
 		}
 	}
