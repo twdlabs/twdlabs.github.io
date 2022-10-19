@@ -18,6 +18,32 @@ const overlayPiano = document.querySelector('div#overlay main.main div.pianokeys
 /*****/
 
 
+document.addEventListener('keydown',checkForShortcutKey);
+
+// Check for shortcut key. 
+function checkForShortcutKey(event) {
+	// console.log( event, event.keyCode );
+
+	// Check if overlay open. 
+	const overlayOn = overlayPopup.classList.contains('active');
+
+	// Process shortcut keys only if overlay open. 
+	if(overlayOn) {
+
+		// Check for left arrow. 
+		let isLeftArrow = (event.keyCode==37 || event.key=='ArrowLeft');
+		if(isLeftArrow) showPrevScale();
+		
+		// Check for right arrow. 
+		let isRightArrow = (event.keyCode==39 || event.key=='ArrowRight');
+		if(isRightArrow) showNextScale();
+	}
+}
+
+
+/*****/
+
+
 // Open scale display. 
 function openScaleDisplay(resultIndex, scaleListing='--') {
 	console.log( 'Opening overlay...', resultIndex );
@@ -229,6 +255,10 @@ function updateScaleDisplay(delta) {
 	
 	// Increment or decrement result index. 
 	resultIndex += (1*delta);
+
+	// Allow for circular scale shifting. 
+	if(resultIndex < 0) resultIndex = matchingScaleResults.length - 1;
+	if(resultIndex >= matchingScaleResults.length) resultIndex = 0;
 
 	// Check for valid result index. 
 	let validResult = (resultIndex>=0) && (resultIndex<matchingScaleResults.length);
