@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<link href="../atgicon.ico" rel="apple-touch-icon"/>
+		<title>CV/Resume Template</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="resume.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; padding:0; margin:0;}
+
+
+			:root {
+				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+				--spacing:2rem;
+				--lettergap:.125rem;
+				--maxwidth:60rem;
+				--themecolor:#DDD;
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+			}
+
+
+			html {background-color:var(--themecolor); background-image:var(--bgimg);}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {background-color:white; width:100%; max-width:var(--maxwidth); padding:var(--spacing); border-radius:.5rem; box-shadow:var(--boxshadow);}
+
+			/* div#container main.main section {display:flex; flex-direction:row; align-items:center;} */
+			div#container main.main section {display:grid; grid-template-columns: 1fr 2fr; grid-gap:var(--spacing);}
+			/* div#container main.main section div.side {} */
+			/* div#container main.main section div.side.left {} */
+			/* div#container main.main section div.side.right {} */
+
+
+			div#container main.main section.head {}
+			div#container main.main section.head img.avatar {--imgsize:12rem; height:var(--imgsize); width:var(--imgsize); border-radius:50%;}
+			div#container main.main section.head div.article {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+			div#container main.main section.head div.article h1.name {font-size:3rem; font-weight:800; letter-spacing:var(--lettergap); margin:0;}
+			div#container main.main section.head div.article h2.jobtitle {font-weight:100; letter-spacing:var(--lettergap); margin:0;}
+
+			/* div#container main.main section.body {} */
+			div#container main.main section.body div.article {margin-top:3rem;}
+			div#container main.main section.body div.article h3.header {font-weight:600; letter-spacing:var(--lettergap); padding-left:.75rem; border-left:.125rem solid hotpink;}
+			div#container main.main section.body div.article p.textcopy {}
+			div#container main.main section.body div.article ul.xyzlist {list-style:none;}
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+			}
+
+			/* Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- head -->
+				<section class="head">
+
+					<!-- left -->
+					<div class="left side">
+
+						<!-- avatar -->
+						<img class="avatar" src="avatar.png" alt="John Doe Smith">
+						<!-- /avatar -->
+						
+					</div>
+					<!-- /left -->
+
+					<!-- right -->
+					<div class="right side">
+
+						<!-- article -->
+						<div class="article">
+		
+							<!-- name -->
+							<h1 class="name">John Doe Smith</h1>
+							<!-- /name -->
+		
+							<!-- jobtitle -->
+							<h2 class="jobtitle">Creative Designer</h2>
+							<!-- /jobtitle -->
+							
+						</div>
+						<!-- /article -->
+						
+					</div>
+					<!-- /right -->
+
+				</section>
+				<!-- /head -->
+
+				<!-- body -->
+				<section class="body">
+
+					<!-- left -->
+					<div class="left side">
+
+						<!-- contact -->
+						<div class="article contact">
+
+							<!-- header -->
+							<h3 class="header">Contact Info</h3>
+							<!-- /header -->
+
+							<!-- textcopy -->
+							<p class="textcopy"></p>
+							<!-- /textcopy -->
+
+							<!-- xyzlist -->
+							<ul class="xyzlist">
+
+								<!-- xyzitem -->
+								<li class="xyzitem">
+
+									<!--  -->
+									
+								</li>
+								<!-- /xyzitem -->
+
+							</ul>
+							<!-- /xyzlist -->
+
+						</div>
+						<!-- /contact -->
+
+						<!-- education -->
+						<div class="article education">
+
+							<!-- header -->
+							<h3 class="header">Education</h3>
+							<!-- /header -->
+
+							<!-- textcopy -->
+							<p class="textcopy"></p>
+							<!-- /textcopy -->
+
+							<!-- xyzlist -->
+							<ul class="xyzlist">
+
+								<!-- xyzitem -->
+								<li class="xyzitem">
+
+									<!--  -->
+									
+								</li>
+								<!-- /xyzitem -->
+
+							</ul>
+							<!-- /xyzlist -->
+
+						</div>
+						<!-- /education -->
+
+						<!-- language -->
+						<div class="article language">
+
+							<!-- header -->
+							<h3 class="header">Languages</h3>
+							<!-- /header -->
+
+							<!-- textcopy -->
+							<p class="textcopy"></p>
+							<!-- /textcopy -->
+
+							<!-- xyzlist -->
+							<ul class="xyzlist">
+
+								<!-- xyzitem -->
+								<li class="xyzitem">
+
+									<!--  -->
+									
+								</li>
+								<!-- /xyzitem -->
+
+							</ul>
+							<!-- /xyzlist -->
+
+						</div>
+						<!-- /language -->
+
+						<!-- interest -->
+						<div class="article interest">
+
+							<!-- header -->
+							<h3 class="header">Interests</h3>
+							<!-- /header -->
+
+							<!-- textcopy -->
+							<p class="textcopy"></p>
+							<!-- /textcopy -->
+
+							<!-- xyzlist -->
+							<ul class="xyzlist">
+
+								<!-- xyzitem -->
+								<li class="xyzitem">
+
+									<!--  -->
+									
+								</li>
+								<!-- /xyzitem -->
+
+							</ul>
+							<!-- /xyzlist -->
+
+						</div>
+						<!-- /interest -->
+
+					</div>
+					<!-- /left -->
+
+					<!-- right -->
+					<div class="right side">
+
+						<!-- profile -->
+						<div class="article profile">
+
+							<!-- header -->
+							<h3 class="header">Profile</h3>
+							<!-- /header -->
+
+							<!-- textcopy -->
+							<p class="textcopy"></p>
+							<!-- /textcopy -->
+
+							<!-- xyzlist -->
+							<ul class="xyzlist">
+
+								<!-- xyzitem -->
+								<li class="xyzitem">
+
+									<!--  -->
+									
+								</li>
+								<!-- /xyzitem -->
+
+							</ul>
+							<!-- /xyzlist -->
+
+						</div>
+						<!-- /profile -->
+
+						<!-- experience -->
+						<div class="article experience">
+
+							<!-- header -->
+							<h3 class="header">Experience</h3>
+							<!-- /header -->
+
+							<!-- textcopy -->
+							<p class="textcopy"></p>
+							<!-- /textcopy -->
+
+							<!-- xyzlist -->
+							<ul class="xyzlist">
+
+								<!-- xyzitem -->
+								<li class="xyzitem">
+
+									<!--  -->
+									
+								</li>
+								<!-- /xyzitem -->
+
+							</ul>
+							<!-- /xyzlist -->
+
+						</div>
+						<!-- /experience -->
+
+						<!-- proskills -->
+						<div class="article proskills">
+
+							<!-- header -->
+							<h3 class="header">Professional Skills</h3>
+							<!-- /header -->
+
+							<!-- textcopy -->
+							<p class="textcopy"></p>
+							<!-- /textcopy -->
+
+							<!-- xyzlist -->
+							<ul class="xyzlist">
+
+								<!-- xyzitem -->
+								<li class="xyzitem">
+
+									<!--  -->
+									
+								</li>
+								<!-- /xyzitem -->
+
+							</ul>
+							<!-- /xyzlist -->
+
+						</div>
+						<!-- /proskills -->
+						
+					</div>
+					<!-- /right -->
+
+				</section>
+				<!-- /body -->
+
+				<!-- item -->
+				<div class="item"></div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="resume.js" type="text/javascript"></script> -->
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>
