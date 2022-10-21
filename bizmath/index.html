@@ -12,49 +12,8 @@
 		<title>Biz Math</title>
 
 		<!-- Main Stylesheet -->
-		<!-- <link href="bizmath.css" rel="stylesheet" type="text/css"/> -->
-		<style type="text/css">
-			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
-
-
-			* {box-sizing:border-box; /* padding:0; margin:0; */}
-
-
-			:root {
-				--themecolor:whitesmoke;
-				--boxshadow:0 0 1rem #0002;
-				--boxshadow:0 0 .25rem #0003;
-			}
-
-
-			body {font-family:Nunito,sans-serif; margin:0;}
-
-
-			div#container {background-color:var(--themecolor);}
-			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-			
-			div#container main.main {background-color:white; /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-			/* div#container main.main h1.head {text-align:center;} */
-			div#container main.main div.item {display:flex; justify-content:center; padding:.125rem;}
-			div#container main.main div.item > * {flex:0 0 auto;}
-			div#container main.main div.item label {flex-basis:50%; padding:.25rem;}
-			div#container main.main div.item input {flex-basis:50%; width:100%; text-align:right; padding:.25rem;}
-			div#container main.main div.item button {cursor:pointer; width:100%; padding:.25rem;}
-			div#container main.main div.bar {background-color:black; display:flex; flex-direction:row; padding:.125rem; border-radius:.125rem; margin-top:.5rem;}
-			div#container main.main div.bar div.segment {cursor:pointer; flex:0 0 0; --proportion:0%; transition:.25s; text-align:center; min-height:1.5rem; padding:0/* .25rem */;}
-			div#container main.main div.bar div.segment {position:relative; /* overflow:visible; */}
-			div#container main.main div.bar div.segment.cogs {background-color:orange; flex-basis:var(--proportion);}
-			div#container main.main div.bar div.segment.genadmin {background-color:dodgerblue; flex-basis:var(--proportion);}
-			div#container main.main div.bar div.segment.netprofit {background-color:limegreen; flex-basis:var(--proportion);}
-			div#container main.main div.bar div.segment label {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); height:100%;}
-			div#container main.main div.bar div.segment label {display:flex; flex-direction:column; align-items:center; transition:.5s;}
-			div#container main.main div.bar div.segment:hover label {transform:scale(1.25) translate(-37.5%,-37.5%);}
-			div#container main.main div.bar div.segment label span {cursor:pointer; font-size:.5rem; opacity:0; visibility:hidden;}
-			div#container main.main div.bar.active div.segment label span {opacity:1; visibility:visible;}
-			/* div#container main.main div.bar div.segment label span.value {} */
-			/* div#container main.main div.bar div.segment label span.caption {} */
-			
-		</style>
+		<link href="bizmath.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
@@ -64,70 +23,151 @@
 
 			<!-- main -->
 			<main class="main">
-
-				
-				<!-- item -->
-				<div class="item">
 					
-					<h1 class="head">Biz Math</h1>
+				<!-- head -->
+				<h1 class="head">Biz Math</h1>
+				<!-- /head -->
+				
+				<!-- input -->
+				<div class="input">
 					
+					<!-- name -->
+					<label class="head name">Metric Name</label>
+					<!-- /name -->
+					
+					<!-- amount -->
+					<label class="head amount">Amount</label>
+					<!-- /amount -->
+					
+					<!-- margin -->
+					<label class="head margin">Margin</label>
+					<!-- /margin -->
+
 				</div>
-				<!-- /item -->
+				<!-- /input -->
 				
-				<!-- item -->
-				<div class="item">
+				<!-- input -->
+				<div class="input">
 
 					<!-- label -->
-					<label for="revenue">Revenue</label>
+					<label class="name" for="revenue">Gross Revenue</label>
 					<!-- /label -->
 
 					<!-- input -->
-					<input type="number" id="revenue">
+					<input type="number" class="amount" id="revenue" placeholder="6000">
 					<!-- /input -->
+					
+					<!-- xyz -->
+					<span class="xyz" class="margin" id="revenuemargin"></span>
+					<!-- /xyz -->
 
 				</div>
-				<!-- /item -->
+				<!-- /input -->
 				
-				<!-- item -->
-				<div class="item">
+				<!-- input -->
+				<div class="input">
 
 					<!-- label -->
-					<label for="genadmin">Admin exp</label>
+					<label class="name" for="cogs">Cost Of Goods Sold</label>
 					<!-- /label -->
 
 					<!-- input -->
-					<input type="number" id="genadmin">
+					<input type="number" id="cogs" placeholder="1200">
 					<!-- /input -->
+					
+					<!-- xyz -->
+					<span class="xyz" id="cogsmargin"></span>
+					<!-- /xyz -->
 
 				</div>
-				<!-- /item -->
+				<!-- /input -->
+
+				<!-- line -->
+				<hr class="line">
+				<!-- /line -->
 				
-				<!-- item -->
-				<div class="item">
+				<!-- input -->
+				<div class="input">
 
 					<!-- label -->
-					<label for="cogs">COGS</label>
+					<label class="name" for="grossprofit">Gross Profit</label>
+					<!-- /label -->
+
+					<!-- xyz -->
+					<span class="xyz" id="grossprofit">x</span>
+					<!-- /xyz -->
+					
+					<!-- xyz -->
+					<span class="xyz" id="grossprofitmargin"></span>
+					<!-- /xyz -->
+
+				</div>
+				<!-- /input -->
+				
+				<!-- input -->
+				<div class="input">
+
+					<!-- label -->
+					<label class="name" for="genadmin">General Admin Exp.</label>
 					<!-- /label -->
 
 					<!-- input -->
-					<input type="number" id="cogs">
+					<input type="number" id="genadmin" placeholder="2000">
 					<!-- /input -->
+					
+					<!-- xyz -->
+					<span class="xyz" id="genadminmargin"></span>
+					<!-- /xyz -->
 
 				</div>
-				<!-- /item -->
+				<!-- /input -->
+
+				<!-- line -->
+				<hr class="line">
+				<!-- /line -->
 				
-				<!-- item -->
-				<div class="item">
+				<!-- input -->
+				<div class="input">
+
+					<!-- label -->
+					<label class="name" for="netprofit">Net Profit</label>
+					<!-- /label -->
+
+					<!-- xyz -->
+					<span class="xyz" id="netprofit">x</span>
+					<!-- /xyz -->
+					
+					<!-- xyz -->
+					<span class="xyz" id="netprofitmargin"></span>
+					<!-- /xyz -->
+
+				</div>
+				<!-- /input -->
+
+				<!-- line -->
+				<hr class="line">
+				<!-- /line -->
+				
+				<!-- input -->
+				<div class="input btns">
+
+					<!-- clear -->
+					<button class="clear" onclick="clearInput()">Clear</button>
+					<!-- /clear -->
 
 					<!-- go -->
-					<button class="go" onclick="go()">Go</button>
+					<button class="go" onclick="calculateNumbers()">Go</button>
 					<!-- /go -->
 
-				</div>
-				<!-- /item -->
+					<!-- try -->
+					<button class="try" onclick="setDefault(); calculateNumbers()">Example</button>
+					<!-- /try -->
 
-				<!-- bar -->
-				<div class="bar">
+				</div>
+				<!-- /input -->
+
+				<!-- output -->
+				<div class="output bar">
 
 					<!-- cogs -->
 					<div class="segment cogs">
@@ -190,7 +230,7 @@
 					<!-- /netprofit -->
 
 				</div>
-				<!-- /bar -->
+				<!-- /output -->
 
 			</main>
 			<!-- /main -->
@@ -202,40 +242,12 @@
 		<!-- Database Script -->
 		<!-- <script src="database.js" type="text/javascript"></script> -->
 
+		<!-- Dollar Format Script -->
+		<script src="../dollar/dollar.js" type="text/javascript"></script>
+
 		<!-- Main Script -->
-		<!-- <script src="bizmath.js" type="text/javascript"></script> -->
-		<script type="text/javascript">
-			// Calculate segment numbers. 
-			function go() {
-
-				// Get bar segment elements. 
-				let bar = document.querySelector('div#container main.main div.bar');
-				let segmentcogs = document.querySelector('div#container main.main div.bar div.segment.cogs');
-				let segmentgenadmin = document.querySelector('div#container main.main div.bar div.segment.genadmin');
-				let segmentnetprofit = document.querySelector('div#container main.main div.bar div.segment.netprofit');
-
-				// Calculate biz numbers. 
-				let revenue = 1 * document.getElementById('revenue').value;
-				let genadmin = 1 * document.getElementById('genadmin').value;
-				let cogs = 1 * document.getElementById('cogs').value;
-				let grossprofit = revenue - cogs;
-				let netprofit = grossprofit - genadmin;
-
-				// Calculate segment proportions. 
-				let proportioncogs = (100*cogs/revenue).toFixed(1)+'%';
-				let proportiongenadmin = (100*genadmin/revenue).toFixed(1)+'%';
-				let proportionnetprofit = (100*netprofit/revenue).toFixed(1)+'%';
-				
-				// 
-				segmentcogs.style.setProperty('--proportion', proportioncogs);
-				segmentcogs.querySelector('span.value').innerHTML = proportioncogs;
-				segmentgenadmin.style.setProperty('--proportion', proportiongenadmin);
-				segmentgenadmin.querySelector('span.value').innerHTML = proportiongenadmin;
-				segmentnetprofit.style.setProperty('--proportion', proportionnetprofit);
-				segmentnetprofit.querySelector('span.value').innerHTML = proportionnetprofit;
-				bar.classList.add('active');
-			}
-		</script>
+		<script src="bizmath.js" type="text/javascript"></script>
+		<!-- <script type="text`/avascript"></script> -->
 
 	</body>
 
