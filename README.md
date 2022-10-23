@@ -1,10 +1,10 @@
 
 
-			<!-- head -->
-			<h1 class="head">TWD Labs</h1>
-			<!-- /head -->
 
-			<!-- link -->
+			<h1 class="head">TWD Labs</h1>
+
+
+
 			<a class="link" href="https://twdlabs.github.io" target="_blank">
 			
 				<!-- img -->
@@ -12,4 +12,4 @@
 				<!-- /img -->
 				
 			</a>
-			<!-- /link -->
+
