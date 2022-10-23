@@ -1,8 +1,5 @@
 
 
-		<!-- #container -->
-		<div id="container">
-
 			<!-- head -->
 			<h1 class="head">TWD Labs</h1>
 			<!-- /head -->
@@ -16,7 +13,3 @@
 				
 			</a>
 			<!-- /link -->
-			
-
-		</div>
-		<!-- /#container -->
