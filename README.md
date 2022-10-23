@@ -1,6 +1,22 @@
 
-<a href="https://twdlabs.github.io" target="_blank">
-  <h1>TWD LAbs</h1>
-</a>
 
-<img src="code.JPG" style="height:8rem;"/>
+		<!-- #container -->
+		<div id="container">
+
+			<!-- head -->
+			<h1 class="head">TWD Labs</h1>
+			<!-- /head -->
+
+			<!-- link -->
+			<a class="link" href="https://twdlabs.github.io" target="_blank">
+			
+				<!-- img -->
+				<img src="code.JPG" style="height:12rem;"/>
+				<!-- /img -->
+				
+			</a>
+			<!-- /link -->
+			
+
+		</div>
+		<!-- /#container -->
