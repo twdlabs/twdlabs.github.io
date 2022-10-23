@@ -22,25 +22,76 @@
 			<main class="slideshow">
 
 				<!-- inner -->
-				<div class="inner" id="slideinner">
+				<div class="inner smooth">
 
-					<!-- img -->
-					<img src="images/img_5terre.jpg" alt="a">
-					<!-- /img -->
+					<!-- slide -->
+					<img class="slide" src="images/img_5terre.jpg" alt="a" data-slideindex="0">
+					<!-- /slide -->
 
-					<!-- img -->
-					<img src="images/img_mountains.jpg" alt="b">
-					<!-- /img -->
+					<!-- slide -->
+					<img class="slide" src="images/img_mountains.jpg" alt="b" data-slideindex="1">
+					<!-- /slide -->
 
 				</div>
 				<!-- /inner -->
+
+				<!-- remote -->
+				<div class="remote" style="display:none;">
+
+					<!-- dot -->
+					<span class="dot active" data-slideindex="0"></span>
+					<!-- /dot -->
+
+					<!-- dot -->
+					<span class="dot" data-slideindex="1"></span>
+					<!-- /dot -->
+
+				</div>
+				<!-- /remote -->
 				
 			</main>
 			<!-- /slideshow -->
 
-			<!-- toggle -->
-			<button class="toggle" onclick="document.getElementById('container').classList.toggle('devmode')">Switch</button>
-			<!-- /toggle -->
+			<!-- #remote -->
+			<div id="remote">
+
+				<!-- zoomer -->
+				<button class="zoomer" onclick="document.getElementById('container').classList.toggle('devmode')">
+	
+					<!-- icon -->
+					<svg class="icon collection" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+						<path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+					</svg>
+					<!-- /icon -->
+	
+				</button>
+				<!-- /zoomer -->
+
+				<!-- #slideCounter -->
+				<div id="slideCounter">0</div>
+				<!-- /#slideCounter -->
+
+				<!-- playpauser -->
+				<button class="playpauser" onclick="toggleSlideshowMotion()">
+
+					<!-- icon -->
+					<svg class="icon play" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- icon -->
+					<svg class="icon pause" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+					</svg>
+					<!-- /icon -->
+
+				</button>
+				<!-- /playpauser -->
+
+			</div>
+			<!-- /#remote -->
 			
 		</div>
 		<!-- /#container -->
