@@ -1,19 +1,29 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
 
 
 /* General */
 
 
-* {box-sizing:border-box}
+* {box-sizing:border-box;}
 
-body {margin:0; font-family:sans-serif;}
+
+:root {
+	--black:#333;
+	--yellow:#F4D35E;
+	--navyblue:#0D3B66;
+	--lightyellow:#FAF0CA;
+}
+
+
+body {margin:0; font-family:Nunito,sans-serif;}
 
 
 
 /* Main Container */
 
 
-div#container {color:#333;}
+div#container {color:var(--black);}
 div#container a {text-decoration:none; color:inherit;}
 /* div#container a:hover {text-decoration:underline;} */
 
@@ -22,23 +32,29 @@ div#container a {text-decoration:none; color:inherit;}
 /* Header Section */
 
 
-div#container header#header {position:absolute; top:0; left:0; right:0; width:100%; padding:1.25rem 1rem; z-index:100;}
-div#container header#header {min-height:4rem;}￼
+div#container header#header {position:fixed; position:absolute; top:0; left:0; right:0; width:100%; z-index:100;}
+div#container header#header {background-color:#0004; min-height:4rem; padding:1.25rem 1rem;}
 
+div#container header#header main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:white;}
 div#container header#header main {max-width:75rem; margin:0 auto;}
-div#container header#header main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:#FFF;}
 div#container header#header main h1.navhead {flex-grow:0; order:10;}
 div#container header#header main nav.navmenu {flex-grow:1; order:20;}
 div#container header#header main div.navextras {flex-grow:0; order:30;}
 
 div#container header#header main h1.navhead {font-size:1.75rem; font-weight:100; margin:0;}
+div#container header#header main h1.navhead a.navlink {display:flex; flex-direction:row; align-items:center;}
+div#container header#header main h1.navhead a.navlink svg.icon {margin-right:.25rem;}
+/* div#container header#header main h1.navhead a.navlink span.caption {} */
+
 div#container header#header main nav.navmenu {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
 /* div#container header#header main div.navextras {} */
 
 div#container header#header main ul.navlist {display:flex; flex-direction:row; justify-content:center; align-items:center; list-style:none; margin:0; padding:0; font-size:1rem;}
 div#container header#header main ul.navlist li.navitem {padding:0 .75rem;}
 div#container header#header main ul.navlist li.navitem.mobile {display:none;}
-div#container header#header main ul.navlist li.navitem a.navlink {display:block;}
+div#container header#header main ul.navlist li.navitem a.navlink {display:block; color:#FFF; font-weight:100;}
+div#container header#header main ul.navlist li.navitem a.navlink:hover,
+div#container header#header main ul.navlist li.navitem a.navlink.active {color:var(--lightyellow);}
 
 /* Account Buttons */
 div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
@@ -52,6 +68,8 @@ div#container header#header main nav.navmenu ul.navlist#account li.navitem a.nav
 
 /* Navigation Controls */
 div#container header#header main div.navextras ul.navlist li.navitem a.navlink {font-size:1.5rem;}
+div#container header#header main div.navextras ul.navlist li.navitem a.navlink.search {font-size:1rem; font-weight:bold; margin-top:.25rem;}
+div#container header#header main div.navextras ul.navlist li.navitem a.navlink.toggle {font-size:1.5rem;}
 div#container header#header main div.navextras ul.navlist li.navitem a.navlink span.open {display:none;}
 div#container header#header main div.navextras ul.navlist li.navitem a.navlink span.closed {display:block;}
 div#container header#header.active main div.navextras ul.navlist li.navitem a.navlink span.open {display:block;}
@@ -65,76 +83,6 @@ div#container.loggedin header#header main nav.navmenu ul.navlist#account li.navi
 
 
 
-/* Banner Section */
-
-
-div#container section.banner {background-color:#000; padding: 8rem 0 3.75rem; text-align:center; position:relative;}
-div#container section.banner div.bg {position:absolute; top:0; right:0; bottom:0; left:0; z-index:10;}
-div#container section.banner div.bg {background:rgb(141,74,2) url('pic/library.jpg'); background-size:cover; background-position:center; opacity:.33;}
-div#container section.banner main {color:#FFF; position:relative; z-index:20;}
-div#container section.banner main h1.title {font-size:6.25rem; font-weight:100; margin:0; margin-bottom:1rem;}
-div#container section.banner main h2.subtitle {font-size:3.125rem; font-weight:100; margin:0; margin-bottom:1rem;}
-div#container section.banner main h3.subtitle {font-size:1.6875rem; font-weight:100; margin:0; margin-bottom:1rem;}
-div#container section.banner main a.actionbtn {display:inline-block; font-size:1.9rem; background-color:#0D3B66; padding:1.5rem 2rem 1.25rem;}
-
-
-
-/* Preview Section */
-
-
-div#container section.preview {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
-div#container section.preview {background:linear-gradient(90deg,#FFF,#FFF 49%,#FAF0CA 51%,#FAF0CA);}
-
-div#container section.preview div.half {padding:2.5rem; display:flex; flex-direction:column; align-items:center;}
-div#container section.preview div.half#events {background-color:#FFF;}
-div#container section.preview div.half#blogposts {background-color:#FAF0CA;}
-
-div#container section.preview div.half h2.headline {font-size:1.6875rem; font-weight:normal; margin:0; margin-bottom:1rem;}
-
-div#container section.preview div.half div.postlist {align-self:stretch;}
-div#container section.preview div.half div.postlist div.post {display:flex; flex-direction:row; padding:1rem 0;}
-div#container section.preview div.half div.postlist div.post div.postdate {flex-grow:0; margin-right:2rem;}
-div#container section.preview div.half div.postlist div.post div.postdate div.date {color:#FFF; min-width:5.25rem; min-height:5.25rem; border-radius:50%;}
-div#container section.preview div.half div.postlist div.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container section.preview div.half#events div.postlist div.post div.postdate div.date {background-color:#0D3B66;}
-div#container section.preview div.half#blogposts div.postlist div.post div.postdate div.date {background-color:#F4D35E;}
-div#container section.preview div.half div.postlist div.post div.postdate div.date span.date {font-size:2rem; font-weight:800;}
-div#container section.preview div.half div.postlist div.post div.postdate div.date span.month {font-size:1.5rem; font-weight:100; text-transform:uppercase; margin-top:.35rem;}
-div#container section.preview div.half div.postlist div.post div.postcontent {flex-grow:1;}
-div#container section.preview div.half div.postlist div.post div.postcontent h4.postname {font-size:1.375rem; font-weight:100; margin:0; margin-bottom:.25rem;}
-div#container section.preview div.half div.postlist div.post div.postcontent h4.postname a {text-decoration:underline; color:initial;}
-div#container section.preview div.half div.postlist div.post div.postcontent p.postexcerpt {font-weight:100; line-height:1.5em; margin:0;}
-/* div#container section.preview div.half div.postlist div.post div.postcontent p.postexcerpt span.excerpt {} */
-div#container section.preview div.half div.postlist div.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
-div#container section.preview div.half div.postlist div.post div.postcontent p.postexcerpt a.readlink {color:#999;}
-
-div#container section.preview div.half a.archivebtn {padding:1rem 1.5rem;}
-div#container section.preview div.half#events a.archivebtn {background-color:#0D3B66; color:#FFF;}
-div#container section.preview div.half#blogposts a.archivebtn {background-color:#F4D35E; color:#FFF;}
-
-
-
-/* Carousel Section */
-
-
-div#container section.carousel {width:100%; overflow-x:scroll; scrollbar-width:none;}
-div#container section.carousel {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
-
-div#container section.carousel div.page {flex:0 0 100%; width:100%; background-color:#000; background-size:cover; background-repeat:no-repeat;}
-div#container section.carousel div.page {display:flex; flex-direction:column; justify-content:center; align-items:center; padding:6rem 4rem;}
-div#container section.carousel div.page.a {background-image:url('pic/bus.jpg');}
-div#container section.carousel div.page.b {background-image:url('pic/apples.jpg');}
-div#container section.carousel div.page.c {background-image:url('pic/bread.jpg');}
-
-div#container section.carousel div.page div.bubble {background-color:rgba(0,0,0,0.68); color:#FFF; padding:2rem; text-align:center;}
-div#container section.carousel div.page div.bubble h2.headline {font-size:3rem; font-weight:100; margin:0;}
-div#container section.carousel div.page div.bubble p {margin:0; margin-top:1.5rem}
-/* div#container section.carousel div.page div.bubble p.textcopy {}
-div#container section.carousel div.page div.bubble p.action {} */
-div#container section.carousel div.page div.bubble p.action a.learnbtn {background-color:#0D3B66; color:#FFF; padding:1rem 1.5rem; display:inline-block;}
-
-
-
 /* Footer Section */
 
 
@@ -142,7 +90,7 @@ div#container footer#footer {background:linear-gradient(#FFF,#ECECEC); padding:4
 div#container footer#footer main {max-width:60rem; margin:0 auto;}
 div#container footer#footer main {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; flex-wrap:nowrap;}
 
-div#container footer#footer div.col {flex-grow:2; text-align:left;}
+div#container footer#footer div.col {flex-grow:2; flex-basis:0; text-align:left; padding:1rem;}
 div#container footer#footer div.col.wide {flex-grow:3;}
 div#container footer#footer div.col.break {display:none; flex:0 0 100%;}
 
@@ -197,17 +145,6 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {b
 	div#container header#header main div.navextras ul.navlist#extras li.navitem.mobile {display:block;}
 
 
-	/* Banner Section */
-
-
-	/* Preview Section */
-	div#container section.preview {flex-direction:column; align-items:stretch;}
-
-
-	/* Carousel Section */
-	div#container section.carousel div.page {padding:3rem 1rem;}
-
-
 	/* Footer Section */
 	div#container footer#footer main {flex-wrap:wrap;}
 	div#container footer#footer div.col {flex-basis:50%; text-align:center;}
@@ -222,15 +159,6 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {b
 
 	/* Header Section */
 
-	/* Banner Section */
-	div#container section.banner {padding: 5rem 0 2.5rem;}
-	div#container section.banner h1.title {font-size:3.6rem;}
-	div#container section.banner h2.subtitle {font-size:1.9rem;}
-	div#container section.banner h3.subtitle {font-size:1.2rem;}
-	div#container section.banner a.actionbtn {font-size:1.3rem;}
-
-	/* Preview Section */
-	/* Carousel Section */
 	/* Footer Section */
 }
 

@@ -1,0 +1,117 @@
+
+
+
+/* Banner Section */
+
+
+div#container section.banner {background-color:#000; padding: 8rem 0 3.75rem; text-align:center; position:relative;}
+div#container section.banner div.bg {position:absolute; top:0; right:0; bottom:0; left:0; z-index:10;}
+div#container section.banner div.bg {background:rgb(141,74,2) url('../images/library.jpg'); background-size:cover; background-position:center; opacity:.33;}
+div#container section.banner main {color:#FFF; position:relative; z-index:20;}
+div#container section.banner main h1.title {font-size:6.25rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main h2.subtitle {font-size:3.125rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main h3.subtitle {font-size:1.6875rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main a.actionbtn {display:inline-block; font-size:1.9rem; background-color:var(--navyblue); border-radius:.5rem; padding:1.5rem 2rem 1.25rem; padding:.75em 1em .625em;}
+
+
+
+/* Preview Section */
+
+
+div#container section.preview {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
+div#container section.preview {background:linear-gradient(90deg,#FFF 49%,var(--lightyellow) 51%);}
+
+div#container section.preview div.half {padding:2.5rem; display:flex; flex-direction:column; align-items:center;}
+div#container section.preview div.half#events {background-color:white;}
+div#container section.preview div.half#blogposts {background-color:var(--lightyellow);}
+
+div#container section.preview div.half h2.headline {font-size:1.6875rem; font-weight:normal; margin:0; margin-bottom:1rem;}
+
+div#container section.preview div.half ul.postlist {align-self:stretch; list-style:none;}
+div#container section.preview div.half ul.postlist li.post {display:flex; flex-direction:row; max-width:32rem; padding:1rem 0;}
+div#container section.preview div.half ul.postlist li.post div.postdate {flex-grow:0; margin-right:2rem;}
+div#container section.preview div.half ul.postlist li.post div.postdate div.date {color:#FFF; min-width:5.25rem; min-height:5.25rem; border-radius:50%;}
+div#container section.preview div.half ul.postlist li.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container section.preview div.half#events ul.postlist li.post div.postdate div.date {background-color:var(--navyblue);}
+div#container section.preview div.half#blogposts ul.postlist li.post div.postdate div.date {background-color:var(--yellow);}
+div#container section.preview div.half ul.postlist li.post div.postdate div.date span.date {font-size:2rem; font-weight:800;}
+div#container section.preview div.half ul.postlist li.post div.postdate div.date span.month {font-size:1.5rem; font-weight:100; text-transform:uppercase; margin-top:.75rem;}
+div#container section.preview div.half ul.postlist li.post div.postcontent {flex-grow:1;}
+div#container section.preview div.half ul.postlist li.post div.postcontent h4.postname {font-size:1.375rem; font-weight:100; margin:0; margin-bottom:.25rem;}
+/* div#container section.preview div.half ul.postlist li.post div.postcontent h4.postname a {color:initial; text-decoration:underline;} */
+div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt {font-weight:100; line-height:1.5em; margin:0;}
+/* div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt span.excerpt {} */
+div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
+div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt a.readlink {color:#999;}
+
+div#container section.preview div.half a.archivebtn {font-size:1.125rem; padding:1.125rem 1.5rem 1rem; border-radius:.25rem;}
+div#container section.preview div.half#events a.archivebtn {background-color:var(--navyblue); color:#FFF;}
+div#container section.preview div.half#blogposts a.archivebtn {background-color:var(--yellow); color:#FFF;}
+
+
+
+/* Carousel Section */
+
+
+div#container section.carousel {/* width:100%; */ position:relative; overflow-x:hidden; scrollbar-width:none;}
+div#container section.carousel div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; overflow:visible;}
+div#container section.carousel div.inner {animation:deltaslide 16s infinite ease;}
+
+div#container section.carousel div.slide {flex:0 0 100%; width:100%; background-color:#000; background-size:cover; background-repeat:no-repeat;}
+div#container section.carousel div.slide {display:flex; flex-direction:column; justify-content:center; align-items:center; padding:6rem 4rem;}
+div#container section.carousel div.slide.a {background-image:url('../images/bus.jpg');}
+div#container section.carousel div.slide.b {background-image:url('../images/apples.jpg');}
+div#container section.carousel div.slide.c {background-image:url('../images/bread.jpg');}
+
+div#container section.carousel div.slide div.bubble {background-color:rgba(0,0,0,0.68); color:#FFF; padding:2rem; text-align:center;}
+div#container section.carousel div.slide div.bubble h2.headline {font-size:3rem; font-weight:100; margin:0;}
+div#container section.carousel div.slide div.bubble p {margin:0; margin-top:1.5rem}
+/* div#container section.carousel div.slide div.bubble p.textcopy {}
+div#container section.carousel div.slide div.bubble p.action {} */
+div#container section.carousel div.slide div.bubble p.action a.learnbtn {background-color:var(--navyblue); color:#FFF; padding:1rem 1.5rem; display:inline-block; border-radius:.25rem;}
+
+div#container section.carousel div.remote {position:absolute; top:0; left:50%; transform:translateX(-50%);}
+div#container section.carousel div.remote {display:flex; flex-direction:row; align-items:center; margin:1.375rem 0;}
+div#container section.carousel div.remote span.dot {background-color:#999; --dotsize:.5rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; margin:0 .15rem;}
+div#container section.carousel div.remote span.dot.active {background-color:white; --dotsize:.625rem;}
+
+@keyframes deltaslide {
+	0%,28%	{transform:translateX(-000%);}
+	33%,62%	{transform:translateX(-100%);}
+	67%,95%	{transform:translateX(-200%);}
+	100%	{transform:translateX(-300%);}
+}
+
+
+
+
+/* Medium screen (tablet) */
+@media screen and (max-width:60rem) {
+
+	/* Banner Section */
+	div#container section.banner main h1.title {font-size:4rem;}
+	div#container section.banner main h2.subtitle {font-size:2rem;}
+	div#container section.banner main h3.subtitle {font-size:1.125rem;}
+	div#container section.banner main a.actionbtn {font-size:1.5rem;}
+
+	/* Preview Section */
+	div#container section.preview {flex-direction:column; align-items:stretch;}
+
+	/* Carousel Section */
+	div#container section.carousel div.slide {padding:3rem 1rem;}
+}
+
+/* Small screen (mobile) */
+@media screen and (max-width:32rem) {
+
+	/* Banner Section */
+	div#container section.banner {padding: 5rem 0 2.5rem;}
+	div#container section.banner h1.title {font-size:3.6rem;}
+	div#container section.banner h2.subtitle {font-size:1.9rem;}
+	div#container section.banner h3.subtitle {font-size:1.2rem;}
+	div#container section.banner a.actionbtn {font-size:1.3rem;}
+
+	/* Preview Section */
+
+	/* Carousel Section */
+}
