@@ -31,55 +31,57 @@ div#container a {text-decoration:none; color:inherit;}
 
 /* Header Section */
 
-
 div#container header#header {position:fixed; position:absolute; top:0; left:0; right:0; width:100%; z-index:100;}
 div#container header#header {background-color:#0004; min-height:4rem; padding:1.25rem 1rem;}
-
 div#container header#header main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:white;}
 div#container header#header main {max-width:75rem; margin:0 auto;}
 div#container header#header h1.navhead {flex-grow:0; order:10;}
-div#container header#header nav.navmenu {flex-grow:1; order:20;}
-div#container header#header nav.navextras {flex-grow:0; order:30;}
+div#container header#header nav.navmenu.a {flex-grow:1; order:20;}
+div#container header#header nav.navmenu.b {flex-grow:0; order:30;}
 
+/* Header Logo */
 div#container header#header h1.navhead {font-size:1.75rem; font-weight:100; margin:0;}
 div#container header#header h1.navhead a.navlink {display:flex; flex-direction:row; align-items:center;}
 div#container header#header h1.navhead a.navlink svg.icon {margin-right:.25rem;}
 /* div#container header#header h1.navhead a.navlink span.caption {} */
 
+/* Navigation Menu: General */
 div#container header#header nav.navmenu {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
-/* div#container header#header nav.navextras {} */
+div#container header#header nav.navmenu ul.navlist {display:flex; flex-direction:row; justify-content:center; align-items:center; list-style:none; margin:0; padding:0; font-size:1rem;}
+div#container header#header nav.navmenu ul.navlist li.navitem {padding:0 .75rem;}
+div#container header#header nav.navmenu ul.navlist li.navitem.mobile {display:none;}
+div#container header#header nav.navmenu ul.navlist li.navitem a.navlink {display:block; color:#FFF; font-weight:100;}
+div#container header#header nav.navmenu ul.navlist li.navitem a.navlink:hover,
+div#container header#header nav.navmenu ul.navlist li.navitem a.navlink.active {color:var(--lightyellow);}
 
-div#container header#header ul.navlist {display:flex; flex-direction:row; justify-content:center; align-items:center; list-style:none; margin:0; padding:0; font-size:1rem;}
-div#container header#header ul.navlist li.navitem {padding:0 .75rem;}
-div#container header#header ul.navlist li.navitem.mobile {display:none;}
-div#container header#header ul.navlist li.navitem a.navlink {display:block; color:#FFF; font-weight:100;}
-div#container header#header ul.navlist li.navitem a.navlink:hover,
-div#container header#header ul.navlist li.navitem a.navlink.active {color:var(--lightyellow);}
+/* Navigation Menu: Pages */
+/* div#container header#header nav.navmenu.a ul.navlist.pagelist {} */
+/* div#container header#header nav.navmenu.a ul.navlist.pagelist li.navitem {} */
+/* div#container header#header nav.navmenu.a ul.navlist.pagelist li.navitem a.navlink {} */
 
-/* Account Buttons */
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnred {background-color:#F95738;}
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnred:hover {background:linear-gradient(180deg, #F95738, red);}
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnorange {background-color:#EE964B;}
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnorange:hover {background:linear-gradient(180deg, #EE964B, orange);}
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn span.img,
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn img {height:2em;}
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn span.caption {display:inline-block; padding:.65rem 1rem .5rem; padding:.1rem 1rem 0;}
+/* Navigation Menu: Account */
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred {background-color:#F95738;}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred:hover {background:linear-gradient(180deg, #F95738, red);}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnorange {background-color:#EE964B;}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnorange:hover {background:linear-gradient(180deg, #EE964B, orange);}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.img,
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn img {height:2em;}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.caption {display:inline-block; padding:.65rem 1rem .5rem; padding:.1rem 1rem 0;}
+/* Navigation Menu: Account State (Logged in/out) */
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem.inside {display:none;}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem.outside {display:block;}
+div#container.loggedin header#header nav.navmenu.a ul.navlist.accountlist li.navitem.inside {display:block;}
+div#container.loggedin header#header nav.navmenu.a ul.navlist.accountlist li.navitem.outside {display:none;}
 
-/* Navigation Controls */
-div#container header#header nav.navextras ul.navlist li.navitem a.navlink {font-size:1.5rem;}
-div#container header#header nav.navextras ul.navlist li.navitem a.navlink.search {font-size:1rem; font-weight:bold; margin-top:.25rem;}
-div#container header#header nav.navextras ul.navlist li.navitem a.navlink.toggle {font-size:1.5rem;}
-div#container header#header nav.navextras ul.navlist li.navitem a.navlink span.open {display:none;}
-div#container header#header nav.navextras ul.navlist li.navitem a.navlink span.closed {display:block;}
-div#container header#header.active nav.navextras ul.navlist li.navitem a.navlink span.open {display:block;}
-div#container header#header.active nav.navextras ul.navlist li.navitem a.navlink span.closed {display:none;}
-
-/* Login / Logout State */
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem.inside {display:none;}
-div#container header#header nav.navmenu ul.navlist.accountlist li.navitem.outside {display:block;}
-div#container.loggedin header#header nav.navmenu ul.navlist.accountlist li.navitem.inside {display:block;}
-div#container.loggedin header#header nav.navmenu ul.navlist.accountlist li.navitem.outside {display:none;}
+/* Navigation Menu: Remote Controls */
+div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink {font-size:1.5rem;}
+div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.search {font-size:1rem; font-weight:bold; margin-top:.25rem;}
+div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.toggle {font-size:1.5rem;}
+div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink span.open {display:none;}
+div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink span.closed {display:block;}
+div#container header#header.active nav.navmenu.b ul.navlist li.navitem a.navlink span.open {display:block;}
+div#container header#header.active nav.navmenu.b ul.navlist li.navitem a.navlink span.closed {display:none;}
 
 
 
@@ -89,16 +91,16 @@ div#container.loggedin header#header nav.navmenu ul.navlist.accountlist li.navit
 div#container footer#footer {background:linear-gradient(#FFF,#ECECEC); padding:4rem 1rem;}
 div#container footer#footer main {max-width:60rem; margin:0 auto;}
 div#container footer#footer main {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; flex-wrap:nowrap;}
-
 div#container footer#footer div.col {flex-grow:2; flex-basis:0; text-align:left; padding:1rem;}
 div#container footer#footer div.col.wide {flex-grow:3;}
 div#container footer#footer div.col.break {display:none; flex:0 0 100%;}
 
 div#container footer#footer div.col h1.navhead {font-size:1.75rem; font-weight:100; color:#666; margin:0;}
+div#container footer#footer div.col h3.navhead {font-size:1.6875rem; font-weight:100; color:#666; margin:0;}
 div#container footer#footer div.col a.contactlink {font-size:.9rem; color:#999;}
 
-div#container footer#footer div.col h3.navhead {font-size:1.6875rem; font-weight:100; color:#666; margin:0;}
 div#container footer#footer div.col ul.navlist {list-style:none; margin:0; padding:0; margin-top:.75rem;}
+
 div#container footer#footer div.col ul.navlist li.navitem {font-size:.9rem; padding:.35rem;}
 div#container footer#footer div.col ul.navlist li.navitem a.navlink {display:block; color:#999;}
 
@@ -106,11 +108,11 @@ div#container footer#footer div.col ul.navlist.social {display:flex; flex-direct
 div#container footer#footer div.col ul.navlist.social li.navitem {font-size:1.25rem;}
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink {background-color:#0002; color:#FFF; padding:.45rem .5rem;}
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink {display:flex; justify-content:center; align-items:center;}
-div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.fb {background-color:#4862a3;}
-div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.twt {background-color:#55acee;}
-div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ytb {background-color:#cc1e1f;}
-div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.lin {background-color:#0077b5;}
-div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {background-color:#d8226b;}
+div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.fb {--socialcolor:#4862a3; background-color:var(--socialcolor);}
+div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.twt {--socialcolor:#55acee; background-color:var(--socialcolor);}
+div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ytb {--socialcolor:#cc1e1f; background-color:var(--socialcolor);}
+div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.lin {--socialcolor:#0077b5; background-color:var(--socialcolor);}
+div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {--socialcolor:#d8226b; background-color:var(--socialcolor);}
 /* div#container footer#footer div.col ul.navlist.social li.navitem a.navlink svg.icon {} */
 
 
@@ -124,32 +126,34 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {b
 	
 	div#container header#header {background-color:transparent; transition:.25s;}
 	div#container header#header.active {background-color:rgba(13,55,94,0.89);}
-	div#container header#header nav.navmenu {opacity:0; visibility:hidden; transform:translateY(-20%); transition:.25s;}
-	div#container header#header.active nav.navmenu {opacity:1; visibility:visible; transform:translateY(0);}
+	div#container header#header nav.navmenu.a {opacity:0; visibility:hidden; transform:translateY(-20%); transition:.25s;}
+	div#container header#header.active nav.navmenu.a {opacity:1; visibility:visible; transform:translateY(0);}
 
 	div#container header#header main {flex-wrap:wrap;}
 	div#container header#header h1.navhead {order:10; position:relative; z-index:20;}
-	div#container header#header nav.navmenu {order:30; flex: 1 0 100%; width:100%; position:relative; z-index:10;}
-	div#container header#header nav.navextras {order:20;}
+	div#container header#header nav.navmenu.a {order:30; flex: 1 0 100%; width:100%; position:relative; z-index:10;}
+	div#container header#header nav.navmenu.b {order:20;}
 
-	div#container header#header nav.navmenu {background-color:transparent; flex-direction:column; align-items:flex-start;}
-	div#container header#header nav.navmenu ul.navlist {margin:0 -.75rem;}
-	/* div#container header#header nav.navmenu ul.navlist li.navitem {padding:0;} */
-	div#container header#header nav.navmenu ul.navlist.pagelist {flex-direction:column; align-items:flex-start;}
-	div#container header#header nav.navmenu ul.navlist.accountlist {flex-direction:row;}
-	div#container header#header nav.navmenu ul.navlist.pagelist li.navitem {margin-top:1.75rem;}
-	div#container header#header nav.navmenu ul.navlist.accountlist li.navitem {margin-top:1.25rem;}
+	div#container header#header nav.navmenu.a {background-color:transparent; flex-direction:column; align-items:flex-start;}
+	div#container header#header nav.navmenu.a ul.navlist {margin:0 -.75rem;}
+	/* div#container header#header nav.navmenu.a ul.navlist li.navitem {padding:0;} */
+	div#container header#header nav.navmenu.a ul.navlist.pagelist {flex-direction:column; align-items:flex-start;}
+	div#container header#header nav.navmenu.a ul.navlist.accountlist {flex-direction:row;}
+	div#container header#header nav.navmenu.a ul.navlist.pagelist li.navitem {margin-top:1.75rem;}
+	div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem {margin-top:1.25rem;}
 
-	/* div#container header#header nav.navextras {} */
-	div#container header#header nav.navextras ul.navlist.remotelist {flex-direction:row;}
-	div#container header#header nav.navextras ul.navlist.remotelist li.navitem.mobile {display:block;}
+	/* div#container header#header nav.navmenu.b {} */
+	div#container header#header nav.navmenu.b ul.navlist.remotelist {flex-direction:row;}
+	div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem.mobile {display:block;}
 
 
 	/* Footer Section */
+
 	div#container footer#footer main {flex-wrap:wrap;}
 	div#container footer#footer div.col {flex-basis:50%; text-align:center;}
 	div#container footer#footer div.col.wide {flex:0 0 100%}
 	div#container footer#footer div.col.break {display:block;}
+	
 	div#container footer#footer div.col ul.navlist.social {width:85%; margin:0 auto; justify-content:stretch;}
 	div#container footer#footer div.col ul.navlist.social li.navitem {flex-grow:1;}
 }
