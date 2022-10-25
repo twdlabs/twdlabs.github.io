@@ -37,49 +37,49 @@ div#container header#header {background-color:#0004; min-height:4rem; padding:1.
 
 div#container header#header main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:white;}
 div#container header#header main {max-width:75rem; margin:0 auto;}
-div#container header#header main h1.navhead {flex-grow:0; order:10;}
-div#container header#header main nav.navmenu {flex-grow:1; order:20;}
-div#container header#header main div.navextras {flex-grow:0; order:30;}
+div#container header#header h1.navhead {flex-grow:0; order:10;}
+div#container header#header nav.navmenu {flex-grow:1; order:20;}
+div#container header#header nav.navextras {flex-grow:0; order:30;}
 
-div#container header#header main h1.navhead {font-size:1.75rem; font-weight:100; margin:0;}
-div#container header#header main h1.navhead a.navlink {display:flex; flex-direction:row; align-items:center;}
-div#container header#header main h1.navhead a.navlink svg.icon {margin-right:.25rem;}
-/* div#container header#header main h1.navhead a.navlink span.caption {} */
+div#container header#header h1.navhead {font-size:1.75rem; font-weight:100; margin:0;}
+div#container header#header h1.navhead a.navlink {display:flex; flex-direction:row; align-items:center;}
+div#container header#header h1.navhead a.navlink svg.icon {margin-right:.25rem;}
+/* div#container header#header h1.navhead a.navlink span.caption {} */
 
-div#container header#header main nav.navmenu {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
-/* div#container header#header main div.navextras {} */
+div#container header#header nav.navmenu {display:flex; flex-direction:row; justify-content:flex-end; align-items:center;}
+/* div#container header#header nav.navextras {} */
 
-div#container header#header main ul.navlist {display:flex; flex-direction:row; justify-content:center; align-items:center; list-style:none; margin:0; padding:0; font-size:1rem;}
-div#container header#header main ul.navlist li.navitem {padding:0 .75rem;}
-div#container header#header main ul.navlist li.navitem.mobile {display:none;}
-div#container header#header main ul.navlist li.navitem a.navlink {display:block; color:#FFF; font-weight:100;}
-div#container header#header main ul.navlist li.navitem a.navlink:hover,
-div#container header#header main ul.navlist li.navitem a.navlink.active {color:var(--lightyellow);}
+div#container header#header ul.navlist {display:flex; flex-direction:row; justify-content:center; align-items:center; list-style:none; margin:0; padding:0; font-size:1rem;}
+div#container header#header ul.navlist li.navitem {padding:0 .75rem;}
+div#container header#header ul.navlist li.navitem.mobile {display:none;}
+div#container header#header ul.navlist li.navitem a.navlink {display:block; color:#FFF; font-weight:100;}
+div#container header#header ul.navlist li.navitem a.navlink:hover,
+div#container header#header ul.navlist li.navitem a.navlink.active {color:var(--lightyellow);}
 
 /* Account Buttons */
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btnred {background-color:#F95738;}
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btnred:hover {background:linear-gradient(180deg, #F95738, red);}
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btnorange {background-color:#EE964B;}
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btnorange:hover {background:linear-gradient(180deg, #EE964B, orange);}
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btn span.img,
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btn img {height:2em;}
-div#container header#header main nav.navmenu ul.navlist#account li.navitem a.navlink.btn span.caption {display:inline-block; padding:.65rem 1rem .5rem; padding:.1rem 1rem 0;}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnred {background-color:#F95738;}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnred:hover {background:linear-gradient(180deg, #F95738, red);}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnorange {background-color:#EE964B;}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btnorange:hover {background:linear-gradient(180deg, #EE964B, orange);}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn span.img,
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn img {height:2em;}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem a.navlink.btn span.caption {display:inline-block; padding:.65rem 1rem .5rem; padding:.1rem 1rem 0;}
 
 /* Navigation Controls */
-div#container header#header main div.navextras ul.navlist li.navitem a.navlink {font-size:1.5rem;}
-div#container header#header main div.navextras ul.navlist li.navitem a.navlink.search {font-size:1rem; font-weight:bold; margin-top:.25rem;}
-div#container header#header main div.navextras ul.navlist li.navitem a.navlink.toggle {font-size:1.5rem;}
-div#container header#header main div.navextras ul.navlist li.navitem a.navlink span.open {display:none;}
-div#container header#header main div.navextras ul.navlist li.navitem a.navlink span.closed {display:block;}
-div#container header#header.active main div.navextras ul.navlist li.navitem a.navlink span.open {display:block;}
-div#container header#header.active main div.navextras ul.navlist li.navitem a.navlink span.closed {display:none;}
+div#container header#header nav.navextras ul.navlist li.navitem a.navlink {font-size:1.5rem;}
+div#container header#header nav.navextras ul.navlist li.navitem a.navlink.search {font-size:1rem; font-weight:bold; margin-top:.25rem;}
+div#container header#header nav.navextras ul.navlist li.navitem a.navlink.toggle {font-size:1.5rem;}
+div#container header#header nav.navextras ul.navlist li.navitem a.navlink span.open {display:none;}
+div#container header#header nav.navextras ul.navlist li.navitem a.navlink span.closed {display:block;}
+div#container header#header.active nav.navextras ul.navlist li.navitem a.navlink span.open {display:block;}
+div#container header#header.active nav.navextras ul.navlist li.navitem a.navlink span.closed {display:none;}
 
 /* Login / Logout State */
-div#container header#header main nav.navmenu ul.navlist#account li.navitem.inside {display:none;}
-div#container header#header main nav.navmenu ul.navlist#account li.navitem.outside {display:block;}
-div#container.loggedin header#header main nav.navmenu ul.navlist#account li.navitem.inside {display:block;}
-div#container.loggedin header#header main nav.navmenu ul.navlist#account li.navitem.outside {display:none;}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem.inside {display:none;}
+div#container header#header nav.navmenu ul.navlist.accountlist li.navitem.outside {display:block;}
+div#container.loggedin header#header nav.navmenu ul.navlist.accountlist li.navitem.inside {display:block;}
+div#container.loggedin header#header nav.navmenu ul.navlist.accountlist li.navitem.outside {display:none;}
 
 
 
@@ -128,21 +128,21 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {b
 	div#container header#header.active nav.navmenu {opacity:1; visibility:visible; transform:translateY(0);}
 
 	div#container header#header main {flex-wrap:wrap;}
-	div#container header#header main h1.navhead {order:10; position:relative; z-index:20;}
-	div#container header#header main div.navextras {order:20;}
-	div#container header#header main nav.navmenu {order:30; flex: 1 0 100%; width:100%; position:relative; z-index:10;}
+	div#container header#header h1.navhead {order:10; position:relative; z-index:20;}
+	div#container header#header nav.navmenu {order:30; flex: 1 0 100%; width:100%; position:relative; z-index:10;}
+	div#container header#header nav.navextras {order:20;}
 
-	div#container header#header main nav.navmenu {background-color:transparent; flex-direction:column; align-items:flex-start;}
-	div#container header#header main nav.navmenu ul.navlist {margin:0 -.75rem;}
-	/* div#container header#header main nav.navmenu ul.navlist li.navitem {padding:0;} */
-	div#container header#header main nav.navmenu ul.navlist#menu {flex-direction:column; align-items:flex-start;}
-	div#container header#header main nav.navmenu ul.navlist#account {flex-direction:row;}
-	div#container header#header main nav.navmenu ul.navlist#menu li.navitem {margin-top:1.75rem;}
-	div#container header#header main nav.navmenu ul.navlist#account li.navitem {margin-top:1.25rem;}
+	div#container header#header nav.navmenu {background-color:transparent; flex-direction:column; align-items:flex-start;}
+	div#container header#header nav.navmenu ul.navlist {margin:0 -.75rem;}
+	/* div#container header#header nav.navmenu ul.navlist li.navitem {padding:0;} */
+	div#container header#header nav.navmenu ul.navlist.pagelist {flex-direction:column; align-items:flex-start;}
+	div#container header#header nav.navmenu ul.navlist.accountlist {flex-direction:row;}
+	div#container header#header nav.navmenu ul.navlist.pagelist li.navitem {margin-top:1.75rem;}
+	div#container header#header nav.navmenu ul.navlist.accountlist li.navitem {margin-top:1.25rem;}
 
-	/* div#container header#header main div.navextras {} */
-	div#container header#header main div.navextras ul.navlist#extras {flex-direction:row;}
-	div#container header#header main div.navextras ul.navlist#extras li.navitem.mobile {display:block;}
+	/* div#container header#header nav.navextras {} */
+	div#container header#header nav.navextras ul.navlist.remotelist {flex-direction:row;}
+	div#container header#header nav.navextras ul.navlist.remotelist li.navitem.mobile {display:block;}
 
 
 	/* Footer Section */
