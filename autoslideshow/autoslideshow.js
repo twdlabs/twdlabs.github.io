@@ -1,45 +1,30 @@
 
 
+
+// Get page container. 
+const container = document.querySelector('div#container');
+// console.log(slideshow);
+
 // Get slideshow container. 
-const slideshow = document.querySelector('main.slideshow');
+const slideshow = document.querySelector('div#container main.slideshow');
 // console.log(slideshow);
 
 // Get slide container. 
-const slidecontainer = document.querySelector('main.slideshow div.inner');
+const slidecontainer = document.querySelector('div#container main.slideshow div.inner');
 // console.log(slidecontainer);
 
 
 /*****/
 
 
-// Define slide data. 
-const slideData = [
-	{
-		caption:'a',
-		imageurl:'images/img_5terre.jpg'
-	},
-	{
-		caption:'b',
-		imageurl:'images/img_mountains.jpg'
-	},
-	{
-		caption:'c',
-		imageurl:'images/img_snow.jpg'
-	},
-	{
-		caption:'d',
-		imageurl:'images/img_lights.jpg'
-	},
-];
-
 // Define number of slides. 
 const numSlides = slideData.length;
 
+// Define slide interval (time per slide). 
+const slideInterval = 1000;
+
 // Define current slide index. 
 let currentSlideIndex = 0;
-
-// Define slide interval (time per slide). 
-const slideInterval = 3000;
 
 // Initialize id for slide movement. 
 let slideMovement;
@@ -104,6 +89,9 @@ function loadSlideData() {
 		// Add remote controller to page. 
 		slideshow.insertAdjacentHTML('beforeend', remote );
 
+		// Activate remote. 
+		activateRemote();
+
 		/***/
 
 		// Create remote controller. 
@@ -117,7 +105,7 @@ function loadSlideData() {
 			// Add dot selector for each slide. 
 			for(let i=0 ; i<numSlides ; i++) {
 	
-				// Find if on currently selected slide. 
+				// Check for matching slide index. 
 				let onSelectedSlide = (i==currentSlideIndex);
 	
 				// Add dot. 
@@ -135,26 +123,27 @@ function loadSlideData() {
 			// Return result. 
 			return result;
 		}
+
+		// Activate remote. 
+		function activateRemote() {
+
+			// Get all remote dots. 
+			const allDots = document.querySelectorAll('div#container main.slideshow div.remote span.dot');
+			// console.log('allDots:',allDots);
+			
+			// Go thru all remote dots. 
+			for(let dot of allDots) {
+				// Activate dot clicks. 
+				dot.addEventListener('click',selectNewSlide);
+			}
+		}
 	}
-}
-
-// Toggle slide movement. 
-function toggleSlideshowMotion() {
-
-	// Check if slideshow curently playing. 
-	let currentlyPlaying = slideshow.classList.contains('active');
-
-	// Pause if curently playing. 
-	if(currentlyPlaying) pauseSlideshow();
-
-	// Play if not curently playing. 
-	else playSlideshow();
 }
 
 // Start slide movement. 
 function playSlideshow() {
 	
-	// Set interval for slide change. 
+	// Start automated slide changes and save interval id. 
 	slideMovement = setInterval(goToNextSlide,slideInterval);
 
 	// Set state of slideshow. 
@@ -168,90 +157,139 @@ function playSlideshow() {
 
 		// Increment slide index. 
 		currentSlideIndex += 1;
-		showSlideIndex();
 
-		// Apply offset to slide container for new slide. 
-		applyOffset(currentSlideIndex);
-
-		// Update state of remote controller. 
-		updateRemote(currentSlideIndex%numSlides);
+		// Show current slide. 
+		showSelectedSlide();
 
 		// Flip back to origin if on last slide. 
 		if(currentSlideIndex==numSlides) {
 
-			// Define flip time. 
-			let flipTime = 500;
-			// let flipTime = (slideInterval/numSlides);
-
-			// Do xyz in short flip time. 
-			setTimeout(flipSlideBox, flipTime );
+			// Reset slide position soon after showing last/first slide. 
+			setTimeout(resetSlidePosition, (1/4)*(slideInterval) );
 		}
 	}
 
-	// Move slide holder back to beginning. 
-	function flipSlideBox() {
+	// Reset slide position back to origin. 
+	function resetSlidePosition() {
 
-		// Remove smooth transition before flip. 
-		slidecontainer.classList.remove('smooth');
+		// Remove smooth transition before position reset. 
+		unsmoothIt();
 
-		// Reset to first slide;
+		// Reset slide index. 
 		currentSlideIndex = 0;
-		showSlideIndex();
+		// Show current slide. 
+		setTimeout(showSelectedSlide, (1/4)*(slideInterval) );
 
-		// Apply offset to slide container for first slide. 
-		applyOffset(currentSlideIndex);
+		// Add back smooth transition after position reset. 
+		setTimeout(smoothIt, (1/2)*(slideInterval) );
 
-		// Add back smooth transition after flip. 
-		slidecontainer.classList.add('smooth');
+		/***/
+
+		function smoothIt() {
+			slidecontainer.classList.add('smooth');
+		}
+
+		function unsmoothIt() {
+			slidecontainer.classList.remove('smooth');
+		}
 	}
+}
+// Pause slide movement. 
+function pauseSlideshow() {
 
-	// Show current slide index. 
-	function showSlideIndex() {
-		document.getElementById('slideCounter').innerHTML = currentSlideIndex;
-	}
+	// Clear automated call for slide movement. 
+	clearInterval(slideMovement);
 
-	// Apply offset to slide container for given slide index. 
-	function applyOffset(slideIndex) {
-		console.log('applyOffset',slideIndex);
+	// Set state of slideshow. 
+	slideshow.classList.remove('active');
+}
+// Toggle slideshow movement. 
+function toggleSlideshow() {
 
-		// Apply slide offset. 
-		slidecontainer.style.transform = `translateX(${ -100 * slideIndex }%)`;
-	}
+	// Check if slideshow curently playing. 
+	let moving = slideshow.classList.contains('active');
+
+	// Pause if curently playing. 
+	if(moving) pauseSlideshow();
+
+	// Play if not curently playing. 
+	else playSlideshow();
+}
+
+// Select new slide. 
+function selectNewSlide(event) {
+
+	// Get selected dot. 
+	let selectedDot = event.currentTarget;
+	console.log('Selected dot:',selectedDot);
+	
+	// Get and update selected slide index. 
+	currentSlideIndex = 1 * selectedDot.getAttribute('data-slideindex');
+	console.log('Selected index:',currentSlideIndex);
+
+	// Show currently selected slide. 
+	showSelectedSlide();
+}
+// Show currently selected slide. 
+function showSelectedSlide() {
+
+	// Apply offset to slide container for currently selected slide. 
+	applySlideOffset();
 
 	// Update state of remote controller. 
-	function updateRemote(slideIndex) {
+	updateRemote(currentSlideIndex%numSlides);
 
+	// Debug: Show slide index on page. 
+	showSlideIndex();
+
+	/****/
+
+	// Apply offset to slide container for current slide index. 
+	function applySlideOffset() {
+		console.log('applySlideOffset');
+	
+		// Apply slide offset. 
+		slidecontainer.style.transform = `translateX(${ -100 * currentSlideIndex }%)`;
+	}
+	
+	// Update state of remote controller. 
+	function updateRemote(slideIndex) {
+		console.log('updateRemote');
+	
 		// Get all remote dots. 
 		const remoteDots = document.querySelectorAll('div#container main.slideshow div.remote span.dot');
-
+		// console.log('remoteDots');
+	
 		// Apply remote offset. 
 		for(let dot of remoteDots) {
-			console.log('remoteDots');
-
+	
 			// Get slide index of current dot. 
 			let i = 1 * dot.getAttribute('data-slideindex');
-
-			// Find if on currently selected slide. 
+	
+			// Check for matching slide index. 
 			let onSelectedSlide = (i==slideIndex);
-
-			// 
+	
+			// Update state for active dot. 
 			if(onSelectedSlide) {
 				dot.classList.add('active');
 			}
+			
+			// Update state for inactive dot. 
 			else {
 				dot.classList.remove('active');
 			}
 		}
 	}
-}
 
-// Pause slide movement. 
-function pauseSlideshow() {
+	// Debug: Show current slide index on page. 
+	function showSlideIndex() {
+		console.log('showSlideIndex');
 
-	// 
-	clearInterval(slideMovement);
-
-	// Set state of slideshow. 
-	slideshow.classList.remove('active');
+		// Get slide counter box. 
+		const slideCounter = document.getElementById('slideCounter');
+		
+		// Show slide index in slide counter box. 
+		slideCounter.innerHTML = (currentSlideIndex % numSlides);
+	}
 }
 

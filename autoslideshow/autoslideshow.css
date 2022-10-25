@@ -3,8 +3,14 @@
 * {box-sizing:border-box;}
 
 
+:root {
+	--grey:#999;
+	--powderblue:#7aacff;
+}
 
-body {background-color:#7aacff; margin:0; height:100vh;}
+
+/* html {} */
+body {background-color:var(--powderblue); margin:0; height:100vh;}
 body {display:grid; place-items:center;}
 
 
@@ -16,14 +22,14 @@ body {display:grid; place-items:center;}
 div#container main.slideshow {border:1.25rem solid white; border-radius:.5rem; width:85vmin; overflow:hidden; position:relative;}
 div#container main.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); transition:.5s;}
 div#container main.slideshow div.inner {display:flex; flex-direction:row;}
-div#container main.slideshow div.inner.smooth {transition:1s;}
+div#container main.slideshow div.inner.smooth {transition:.5s;}
 /* div#container main.slideshow div.inner {animation: slide4 15s ease-in-out 0s infinite forwards;} */
 div#container main.slideshow div.inner img.slide {width:100%; flex-shrink:0;}
 
-div#container main.slideshow div.remote {position:absolute; top:0; left:50%; transform:translateX(-50%);}
+div#container main.slideshow div.remote {position:absolute; bottom:0; left:50%; transform:translateX(-50%);}
 div#container main.slideshow div.remote {display:flex; flex-direction:row; align-items:center; margin:1.375rem 0;}
-div#container main.slideshow div.remote span.dot {background-color:#999; --dotsize:.5rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; margin:0 .15rem;}
-div#container main.slideshow div.remote span.dot.active {background-color:white; --dotsize:.625rem;}
+div#container main.slideshow div.remote span.dot {background-color:var(--grey); cursor:pointer; --dotsize:.625rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; margin:0 .15rem;}
+div#container main.slideshow div.remote span.dot.active {background-color:white; --dotsize:.75rem;}
 
 div#container div#remote {position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%;}
 div#container div#remote {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1rem;}
