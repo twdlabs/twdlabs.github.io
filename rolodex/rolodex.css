@@ -6,7 +6,9 @@
 
 
 :root {
-	--themecolor:dodgerblue;
+	--numcards:5;
+	--singleinterval:1.5s;
+	--collectiveinterval:calc( var(--numcards) * var(--singleinterval) );
 	--lavender:#bea2e7;
 	--powderblue:#86b7e7;
 	--avatarsize:8rem;
@@ -20,12 +22,12 @@ body {font-family:Nunito,sans-serif; margin:0;}
 div#container {background-image:linear-gradient( var(--lavender), var(--powderblue) );}
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
-div#container main.main {display:flex; flex-direction:column; justify-content:center; align-items:stretch; width:100%; max-width:40rem; padding:1rem; border-radius:.5rem;}
+div#container main.main {display:flex; flex-direction:column; justify-content:center; align-items:center; width:100%; max-width:40rem; padding:1rem; border-radius:.5rem;}
 
-div#container main.main div.card {background-color:white; display:flex; flex-direction:row; align-items:center; border-radius:12rem 3rem 3rem 12rem; margin:1rem;}
+div#container main.main div.card {display:flex; flex-direction:row; align-items:center; border-radius:12rem 3rem 3rem 12rem; margin:1rem;}
 div#container main.main div.card {position:absolute; /* top:50%; left:50%; transform:translate(-50%,-50%); */}
-div#container main.main div.card {pointer-events:none; z-index:-1;}
-div#container main.main div.card {animation:rolodex 15s linear infinite; animation-delay:calc( -3s * var(--delay) );}
+div#container main.main div.card {background-color:white; cursor:pointer; /* pointer-events:none; */ z-index:-1;}
+div#container main.main div.card {animation:rolodex var(--collectiveinterval) /* linear */ infinite; animation-delay:calc( var(--i) * var(--singleinterval) );}
 div#container main.main:hover div.card {animation-play-state:paused;}
 div#container main.main div.card img.avatar {height:3rem; width:3rem; object-fit:cover;}
 div#container main.main div.card img.avatar {background-color:#0004; display:grid; place-items:center; object-fit:cover; min-height:var(--avatarsize); min-width:var(--avatarsize); border:.5rem solid white; border-radius:50%; box-shadow:var(--avatarshadow);}
