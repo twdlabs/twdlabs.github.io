@@ -6,18 +6,21 @@ class Search {
 
 	// 1. Describe and create / initiate object. 
 
-	constructor() {
+	constructor(openbtn,closebtn,searchOverlay,searchField,resultsBox,loadSpinner) {
 
 		// Get page elements for open/close buttons. 
-		this.openbtn = document.getElementById('openbtn');
-		this.closebtn = document.getElementById('closebtn');
+		this.openbtn = openbtn;
+		this.closebtn = closebtn;
 
 		// Get page elements for search overlay. 
-		this.searchOverlay = document.getElementById('searchoverlay');
-		this.searchField = document.getElementById('searchquery');
-		this.loadSpinner = document.getElementById('loader');
-		this.resultsBox = document.getElementById('resultsbox');
+		this.searchOverlay = searchOverlay;
+		this.searchField = searchField;
+		this.resultsBox = resultsBox;
+		this.loadSpinner = loadSpinner;
 		this.prevQuery = '';
+
+		// Define search results delay. 
+		this.dt = 250;
 
 		// Handle events. 
 		this.handleEvents();
@@ -75,8 +78,7 @@ class Search {
 			if(!this.loadingResults) this.setWaitState(true);
 
 			// Start timer for new search results. 
-			let dt = 1500;
-			this.resultsTimer = setTimeout(this.getSearchResults.bind(this), dt);
+			this.resultsTimer = setTimeout(this.getSearchResults.bind(this), this.dt);
 		}
 
 		// Stop everything (if no query present). 
@@ -133,8 +135,13 @@ class Search {
 		// Initialize display for search results. 
 		let searchResults = '';
 
+		// Add label for search results of search query. 
+		searchResults += `
+		<!-- resulthead -->
+		<h2 class="resulthead">Here are your search results for... "${query}": </h2>
+		<!-- /resulthead -->`;
+
 		// TODO: Get results of search query. 
-		searchResults += `<div style="width:100%;">Here are your search results for... "${query}": </div>`;
 		for(let resultSet of resultList) {
 			console.log('resultSet',resultSet);
 
@@ -240,9 +247,3 @@ class Search {
 
 }
 
-
-/*****/
-
-
-// Create new Search object. 
-const s = new Search();
