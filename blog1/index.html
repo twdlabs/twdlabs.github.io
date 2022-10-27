@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Blog</title>
+		
+		<!-- F.A. Icons -->
+		<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> -->
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			html,body {margin:0; min-height:100%;}
+
+			div#container {background-color:#0c92; background-color:#0873A211; min-height:75rem; max-width:40rem; margin:0 auto; font-family:Verdana,Helvetica,sans-serif;}
+			/*div#container div.post {width:33%; float:left;}*/
+			div#container div.post {min-height:20rem; border:1px solid #0004; padding:2rem 3rem; color:#82878C;}
+			div#container div.post h1.head {margin-top:0; color:#32373C; font-weight:500;}
+			div#container div.post p.content {text-overflow:ellipsis; /*white-space:nowrap;*/ /*height:100px;*/}
+			div#container div.post p.content a {color:#B4B9BE; text-decoration:none;}
+			div#container div.post aside {display:flex; flex-direction:row; justify-content:space-between; margin-top:2.5rem;}
+			div#container div.post aside div.author {flex:1 1 100%;}
+			div#container div.post aside div.author {display:flex; flex-direction:row; align-items:center; font-size:1.25rem;}
+			div#container div.post aside div.author img {width:4rem; margin-right:1rem;}
+			div#container div.post aside div.cta {flex:1 1 0%;}
+			div#container div.post aside div.cta {display:flex; flex-direction:row; align-items:center;}
+			div#container div.post aside div.cta div.btn {margin:0 .5em; font-size:1.5rem;}
+			/* div#container div.post aside div.cta div.btn.sharebtn {} */
+			div#container div.post aside div.cta div.btn.commentbtn {position:relative;}
+			/* div#container div.post aside div.cta div.btn svg.icon {} */
+			div#container div.post aside div.cta div.btn.commentbtn span.commentcount {/* display:none; */ color:white; font-size:.75rem;}
+			div#container div.post aside div.cta div.btn.commentbtn span.commentcount {position:absolute; top:32%; left:50%; transform:translate(-50%,-50%);}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- container -->
+		<div id="container">
+
+			<!-- post -->
+			<div class="post">
+
+				<!-- head -->
+				<h1 class="head">Post Heading Goes Here</h1>
+				<!-- /head -->
+
+				<!-- content -->
+				<p class="content">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Mauris quis diam velit.
+					<a href="javascript:void(0)">Continue reading</a>
+				</p>
+				<!-- /content -->
+
+				<!-- aside -->
+				<aside>
+
+					<!-- author -->
+					<div class="author">
+
+						<!-- avatar -->
+						<img class="avatar" src="./media/wordpress_logo.png">
+						<!-- /avatar -->
+
+						<!-- name -->
+						<span class="name">Matt Mullenweg</span>
+						<!-- /name -->
+						
+					</div>
+					<!-- /author -->
+
+					<!-- cta -->
+					<div class="cta">
+
+						<!-- btn -->
+						<div class="btn commentbtn">
+							
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- commentcount -->
+							<span class="commentcount">1</span>
+							<!-- /commentcount -->
+
+						</div>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<div class="btn sharebtn">
+
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+							</svg>
+							<!-- /icon -->
+
+						</div>
+						<!-- /btn -->
+
+					</div>
+					<!-- /cta -->
+
+				</aside>
+				<!-- /aside -->
+
+			</div>
+			<!-- /post -->
+
+			<!-- post -->
+			<div class="post">
+
+				<!-- head -->
+				<h1 class="head">Post Heading Goes Here</h1>
+				<!-- /head -->
+
+				<!-- content -->
+				<p class="content">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Mauris quis diam velit.
+					<a href="javascript:void(0)">Continue reading</a>
+				</p>
+				<!-- /content -->
+
+				<!-- aside -->
+				<aside>
+
+					<!-- author -->
+					<div class="author">
+
+						<!-- avatar -->
+						<img class="avatar" src="./media/wordpress_logo.png">
+						<!-- /avatar -->
+
+						<!-- name -->
+						<span class="name">Matt Mullenweg</span>
+						<!-- /name -->
+						
+					</div>
+					<!-- /author -->
+
+					<!-- cta -->
+					<div class="cta">
+
+						<!-- btn -->
+						<div class="btn commentbtn">
+							
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- commentcount -->
+							<span class="commentcount">1</span>
+							<!-- /commentcount -->
+
+						</div>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<div class="btn sharebtn">
+
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+							</svg>
+							<!-- /icon -->
+
+						</div>
+						<!-- /btn -->
+
+					</div>
+					<!-- /cta -->
+
+				</aside>
+				<!-- /aside -->
+
+			</div>
+			<!-- /post -->
+
+			<!-- post -->
+			<div class="post">
+
+				<!-- head -->
+				<h1 class="head">Post Heading Goes Here</h1>
+				<!-- /head -->
+
+				<!-- content -->
+				<p class="content">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Mauris quis diam velit.
+					<a href="javascript:void(0)">Continue reading</a>
+				</p>
+				<!-- /content -->
+
+				<!-- aside -->
+				<aside>
+
+					<!-- author -->
+					<div class="author">
+
+						<!-- avatar -->
+						<img class="avatar" src="./media/wordpress_logo.png">
+						<!-- /avatar -->
+
+						<!-- name -->
+						<span class="name">Matt Mullenweg</span>
+						<!-- /name -->
+						
+					</div>
+					<!-- /author -->
+
+					<!-- cta -->
+					<div class="cta">
+
+						<!-- btn -->
+						<div class="btn commentbtn">
+							
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- commentcount -->
+							<span class="commentcount">1</span>
+							<!-- /commentcount -->
+
+						</div>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<div class="btn sharebtn">
+
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+							</svg>
+							<!-- /icon -->
+
+						</div>
+						<!-- /btn -->
+
+					</div>
+					<!-- /cta -->
+
+				</aside>
+				<!-- /aside -->
+
+			</div>
+			<!-- /post -->
+			
+		</div>
+		<!-- /container -->
+
+	</body>
+
+</html>
