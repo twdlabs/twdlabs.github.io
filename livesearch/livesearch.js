@@ -1,4 +1,6 @@
 
+
+
 // Search Overlay Object
 class Search {
 
@@ -238,3 +240,9 @@ class Search {
 
 }
 
+
+/*****/
+
+
+// Create new Search object. 
+const s = new Search();
