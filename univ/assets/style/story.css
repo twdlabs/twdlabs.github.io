@@ -1,0 +1,48 @@
+
+
+
+
+/* Header Section */
+
+div#container header#header {background-color:var(--fullnavy);}
+
+
+
+/* Content Section */
+
+/* div#container main#pagecontent {} */
+div#container main#pagecontent article.story {padding:0 4rem; margin-top:4rem;}
+div#container main#pagecontent article.story h2.head {text-align:center;}
+/* div#container main#pagecontent article.story p.textcopy {} */
+
+
+
+/* Footer Section */
+
+/* div#container footer#footer {} */
+
+
+
+
+
+/* Medium screen (tablet) */
+@media screen and (max-width:60rem) {
+
+	/* Header Section */
+
+	/* Content Section */
+
+	/* Footer Section */
+}
+
+
+/* Small screen (mobile) */
+@media screen and (max-width:32rem) {
+
+	/* Header Section */
+
+	/* Content Section */
+
+	/* Footer Section */
+}
+
