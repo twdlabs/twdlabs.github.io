@@ -1,36 +1,40 @@
 
 
-// Show course data. 
-console.log('Course data:',courseData);
+// Show preview of course data. 
+// showCourseData();
 
-for(let course of courseData) {
-	console.log(`${course.deptid} ${course.coursenumber}: ${course.coursename}`);
-}
+// let c = getCourseById('CIS 255');
+// console.log('c:',c);
 
 
 /*****/
 
 
+// Show preview of course data. 
+function showCourseData() {
+	console.log('Course data:',courseData);
+
+	for(let course of courseData) {
+		console.log(`${course.deptid} ${course.coursenumber}: ${course.coursename}`);
+	}
+}
+
 // Get course by id. 
 function getCourseById(courseid) {
 
-	// Initialize result. 
-	let result = undefined;
+	// Ensure capitalization of course id. 
+	courseid = courseid.toUpperCase();
 
-	// Go thru course objects. 
+	// Go thru all course data items. 
 	for(let course of courseData) {
 
 		// Check for matching course. 
-		if(courseid.toUpperCase()==course.deptid+' '+course.coursenumber) {
+		let matchingCourse = courseid == (course.deptid+' '+course.coursenumber);
 
-			// Save matching course as result. 
-			result = course;
-
-			// End loop after match found. 
-			break;
-		}
+		// Return matching course if found. 
+		if( matchingCourse ) return course;
 	}
 
-	// Return matching course. 
-	return result;
+	// Return nothing if course not found. 
+	return null;
 }
