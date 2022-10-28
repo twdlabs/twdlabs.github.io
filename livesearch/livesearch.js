@@ -105,6 +105,16 @@ class Search {
 		else this.searchOverlay.classList.remove('wait');
 	}
 
+	// Clear previous search query. 
+	clearSearchQuery() {
+
+		// Clear contents of text field. 
+		this.searchField.value = '';
+
+		// Remove focus from text field. 
+		this.searchField.blur();
+	}
+
 	// Clear previous search results. 
 	clearSearchResults() {
 
@@ -272,27 +282,28 @@ class Search {
 	openOverlay() {
 		console.log('Opening search overlay...');
 
-		// Add active class. 
-		this.searchOverlay.classList.add('active');
-
-		// Freeze page scrolling. 
+		// Freeze background page scrolling. 
 		document.body.classList.add('freeze');
+
+		// Activate search overlay window. 
+		this.searchOverlay.classList.add('active');
+		// Bring focus to text field. 
+		setTimeout( ()=>{ this.searchField.focus(); }, this.dt );
 
 		// Update overlay state. 
 		this.alreadyOpen = true;
-
-		// Focus on text field. 
-		this.searchField.focus();
 	}
 
 	// Close search overlay. 
 	closeOverlay() {
 		console.log('Closing search overlay...');
 
-		// Remove active class. 
+		// De-activate search overlay window. 
 		this.searchOverlay.classList.remove('active');
+		// Clear contents of text field. Remove focus from text field. 
+		setTimeout( ()=>{ this.clearSearchQuery(); this.clearSearchResults(); }, this.dt );
 
-		// Un-freeze page scrolling. 
+		// Un-freeze background page scrolling. 
 		document.body.classList.remove('freeze');
 
 		// Update overlay state. 

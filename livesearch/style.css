@@ -8,15 +8,8 @@
 * {box-sizing:border-box;}
 
 
-:root {
-	--orange:#ff8f1f;
-	--yellow:#ffbf80;
-	--offwhite:#EEE;
-	--offwhite2:#E8E8E8;
-	--lightyellow:#ffe6cc;
-	--themecolor:dodgerblue;
-	--transparentwhite:#FFFFFF08;
-}
+/* :root {
+} */
 
 
 body {font-family:Nunito,sans-serif; margin:0;}
