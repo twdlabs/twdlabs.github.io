@@ -135,7 +135,7 @@ class Search {
 		// console.log('Final result list',resultList);
 
 		// Initialize total number of matching items. 
-		let totalMatchingItems = 0;
+		let totalMatchingResults = 0;
 
 		// Initialize display for final search results. 
 		let finalSearchResults = '';
@@ -150,7 +150,7 @@ class Search {
 			// console.log('resultSet',resultSet);
 
 			// Initialize number of matching items in current set. 
-			let numSetItems = 0;
+			let numSetResults = 0;
 
 			// Initialize list of matching results for current set. 
 			let currentSetSearchResults = '';
@@ -162,27 +162,48 @@ class Search {
 				// Initialize match indicator. 
 				let matchingResult = false;
 				
+				// Check for name match with search query (case insensitive). 
+				// matchingResult = ( resultItem.name.toUpperCase() ).includes( searchquery.toUpperCase() );
+				
 				// Check for match with search query (any property, case insensitive). 
-				// let matchingResult = ( resultItem.name.toUpperCase() ).includes( searchquery.toUpperCase() );
 				for(let key in resultItem) {
 					// console.log(key);
 
-					// 
-					let foundMatchInside = ( resultItem[key].toString().toUpperCase() ).includes( searchquery.toUpperCase() );
+					// Check for any matching value inside result item. 
+					let foundMatch = ( resultItem[key].toString().toUpperCase() ).includes( searchquery.toUpperCase() );
 
-					// 
-					if( foundMatchInside ) {
+					// Stop search and proceed when matching value found. 
+					if(foundMatch) {
 						matchingResult = true;
-						continue;
+						break;
 					}
 				}
 				
-				// Proceed if item matches with search query. 
+				// Include item in final results if matches search query. 
 				if(matchingResult) {
 					
 					// Increment number of matching items in current set. 
-					numSetItems += 1;
-					totalMatchingItems += 1;
+					numSetResults += 1;
+					
+					// Increment total number of matching result items. 
+					totalMatchingResults += 1;
+
+					// Intiialize default name for result. 
+					let resultname = 'Result';
+
+					// Get post type for current result. 
+					let isCourse = !!(resultItem['coursename']);
+					let isPerson = !!(resultItem['firstname']);
+					let isProgram = !!(resultItem['programname']);
+					let isBlogPost = !!(resultItem['posttitle']);
+					console.log('Post type: ',isCourse,isPerson,isProgram,isBlogPost);
+
+					// Get name for current result. 
+					if(isCourse) resultname = `${resultItem['deptid']} ${resultItem['coursenumber']}`;
+					else if(isProgram) resultname = resultItem['programname'];
+					else if(isBlogPost) resultname = resultItem['posttitle'];
+					else if(isPerson) resultname = `${resultItem['firstname']} ${resultItem['lastname']}`;
+					else resultname = resultItem[ 'name'];
 
 					// Add matching item to final search results. 
 					currentSetSearchResults += `
@@ -190,7 +211,7 @@ class Search {
 					<li class="resultitem">
 						
 						<!-- resultlink -->
-						<a class="resultlink" href="${resultItem.link}">${resultItem.name}</a>
+						<a class="resultlink" href="${resultItem.link}">${ resultname }</a>
 						<!-- /resultlink -->
 						
 					</li>
@@ -198,8 +219,8 @@ class Search {
 				}
 			}
 
-			// Include result set if contains matching items. 
-			if(numSetItems>0) {
+			// Include result set if contains matching result items. 
+			if(numSetResults>0) {
 
 				// Open result set. 
 				finalSearchResults += `
@@ -208,7 +229,7 @@ class Search {
 				<div class="resultset">
 				
 					<!-- resulthead -->
-					<h3 class="resulthead">${ resultSet.setname } (${ numSetItems })</h3>
+					<h3 class="resulthead">${ resultSet.setname } (${ numSetResults })</h3>
 					<!-- /resulthead -->
 			
 					<!-- resultlist -->
@@ -234,14 +255,14 @@ class Search {
 		// Add result head. 
 		finalSearchResults += `
 		<!-- resulthead -->
-		<h2 class="resulthead ${ (totalMatchingItems>0)?'':'empty' }">
+		<h2 class="resulthead ${ (totalMatchingResults>0)?'':'empty' }">
 
 			<!-- searchquery -->
 			<span class="searchquery">"${searchquery}"</span>
 			<!-- /searchquery -->
 
 			<!-- resultcount -->
-			<span class="resultcount">${totalMatchingItems}</span>
+			<span class="resultcount">${totalMatchingResults} results found</span>
 			<!-- /resultcount -->
 
 		</h2>

@@ -55,7 +55,7 @@ div#container div#searchoverlay.wait section.bottom:before {visibility:visible; 
 div#container div#searchoverlay section.bottom div#resultsbox {background-color:var(--transparentwhite); color:white; width:100%; min-height:100%; overflow:visible; padding:2rem;}
 div#container div#searchoverlay section.bottom div#resultsbox {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch; max-width:75rem; margin:auto;}
 div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead {display:flex; flex-direction:row; justify-content:space-between; align-items:flex-start;}
-div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead span.resultcount {font-size:1.5em;}
+/* div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead span.resultcount {font-size:1.5em;} */
 /* div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead span.searchquery {} */
 div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead span.searchquery:before {content:'Here are your search results for ';}
 div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead span.searchquery::after {content:'.';}
