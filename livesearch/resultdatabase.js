@@ -131,6 +131,10 @@ const defaultResults = [
 				link:'javascript:void(0)'
 			},
 			{
+				name:'John Quincy Adams',
+				link:'javascript:void(0)'
+			},
+			{
 				name:'James Monroe',
 				link:'javascript:void(0)'
 			},
@@ -143,7 +147,19 @@ const defaultResults = [
 				link:'javascript:void(0)'
 			},
 			{
+				name:'Calvin Coolidge',
+				link:'javascript:void(0)'
+			},
+			{
 				name:'Grover Cleveland',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'Woodrow Wilson',
+				link:'javascript:void(0)'
+			},
+			{
+				name:'Harry S. Truman',
 				link:'javascript:void(0)'
 			},
 			{
@@ -151,7 +167,7 @@ const defaultResults = [
 				link:'javascript:void(0)'
 			},
 			{
-				name:'Lyndon Johnson',
+				name:'Lyndon B. Johnson',
 				link:'javascript:void(0)'
 			},
 			{
@@ -370,23 +386,23 @@ const defaultResults = [
 			},
 		]
 	},
-	{
-		setname:'Advertising Platforms',
-		setlist: [
-			{
-				name:'Google Ads',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Facebook Ads',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'TikTok Ads',
-				link:'javascript:void(0)'
-			},
-		]
-	},
+	// {
+	// 	setname:'Advertising Platforms',
+	// 	setlist: [
+	// 		{
+	// 			name:'Google Ads',
+	// 			link:'javascript:void(0)'
+	// 		},
+	// 		{
+	// 			name:'Facebook Ads',
+	// 			link:'javascript:void(0)'
+	// 		},
+	// 		{
+	// 			name:'TikTok Ads',
+	// 			link:'javascript:void(0)'
+	// 		},
+	// 	]
+	// },
 	{
 		setname:'Days of the Week',
 		setlist: [

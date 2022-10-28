@@ -19,7 +19,7 @@ class Search {
 		this.prevQuery = '';
 
 		// Define search results delay. 
-		this.dt = 250;
+		this.dt = 500;
 
 		// Handle events. 
 		this.handleEvents();
@@ -58,10 +58,10 @@ class Search {
 
 	// Handle what's being shown upon typing query. 
 	respondToQueryTyping() {
-		console.log('Typing query...', this.searchField.value);
+		console.log('Typed query...', this.searchField.value);
 
 		// Ignore typing that doesn't change query (non-character keys). 
-		let sameQueryAsB4 = this.searchField.value == this.prevQuery;
+		let sameQueryAsB4 = (this.searchField.value == this.prevQuery);
 		if(sameQueryAsB4) return;
 
 		// Clear timer if still typing. 
@@ -77,7 +77,7 @@ class Search {
 			if(!this.currentlyLoadingResults) this.setWaitState(true);
 
 			// Start timer for new search results. 
-			this.resultsTimer = setTimeout(this.getSearchResults.bind(this), this.dt);
+			this.resultsTimer = setTimeout(this.displaySearchResults.bind(this), this.dt);
 		}
 
 		// Stop everything (if no query present). 
@@ -112,23 +112,17 @@ class Search {
 		this.resultsBox.innerHTML = '';
 	}
 
-	// TODO: Get results of search query. 
-	getSearchResults() {
-		console.log(this.resultsBox);
+	// Show all matching results for given search query. 
+	displaySearchResults() {
+		// console.log(this.resultsBox);
 
 		// Get search query. 
 		let searchquery = this.searchField.value;
 
 		// TODO: Send request for search results. 
-		let resultList = [];
-		resultList = defaultResults;
-
-		// Show search results. 
-	// 	this.showSearchResults(resultList);
-	// }
-	// // TODO: Show results of search query. 
-	// showSearchResults(resultList) {
-		// console.log('resultList',resultList);
+		// console.log('Initial result list',defaultResults);
+		let resultList = defaultResults/* .map( (xyz)=>(xyz) ) */;
+		// console.log('Final result list',resultList);
 
 		// Initialize total number of matching items. 
 		let totalMatchingItems = 0;
@@ -141,7 +135,7 @@ class Search {
 		<!-- resultbody -->
 		<div class="resultbody">`;
 
-		// TODO: Get results of search query. 
+		// Go thru all sets to find results that match search query. 
 		for(let resultSet of resultList) {
 			// console.log('resultSet',resultSet);
 
@@ -155,8 +149,23 @@ class Search {
 			for(let resultItem of resultSet.setlist) {
 				// console.log('resultItem',resultItem);
 
-				// Check for match with search query (case insensitive). 
-				let matchingResult = ( resultItem.name.toUpperCase() ).includes( searchquery.toUpperCase() );
+				// Initialize match indicator. 
+				let matchingResult = false;
+				
+				// Check for match with search query (any property, case insensitive). 
+				// let matchingResult = ( resultItem.name.toUpperCase() ).includes( searchquery.toUpperCase() );
+				for(let key in resultItem) {
+					// console.log(key);
+
+					// 
+					let foundMatchInside = ( resultItem[key].toString().toUpperCase() ).includes( searchquery.toUpperCase() );
+
+					// 
+					if( foundMatchInside ) {
+						matchingResult = true;
+						continue;
+					}
+				}
 				
 				// Proceed if item matches with search query. 
 				if(matchingResult) {
@@ -215,7 +224,17 @@ class Search {
 		// Add result head. 
 		finalSearchResults += `
 		<!-- resulthead -->
-		<h2 class="resulthead">${searchquery}</h2>
+		<h2 class="resulthead ${ (totalMatchingItems>0)?'':'empty' }">
+
+			<!-- searchquery -->
+			<span class="searchquery">"${searchquery}"</span>
+			<!-- /searchquery -->
+
+			<!-- resultcount -->
+			<span class="resultcount">${totalMatchingItems}</span>
+			<!-- /resultcount -->
+
+		</h2>
 		<!-- /resulthead -->`;
 
 		// Display search results on page. 

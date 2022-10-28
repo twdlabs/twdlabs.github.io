@@ -10,11 +10,8 @@ const closebtn = document.getElementById('closebtn');
 const searchOverlay = document.getElementById('searchoverlay');
 // Get search query field. 
 const searchField = document.getElementById('searchquery');
-
 // Get search results box. 
 const resultsBox = document.getElementById('resultsbox');
-// Get search results leader. 
-const loadSpinner = document.getElementById('loader');
 
 
 /*****/
@@ -31,5 +28,5 @@ activateLiveSearch();
 function activateLiveSearch() {
 
 	// Create new Search object. 
-	const s = new Search(openbtn,closebtn,searchOverlay,searchField,resultsBox,loadSpinner);
+	const s = new Search(openbtn,closebtn,searchOverlay,searchField,resultsBox);
 }
