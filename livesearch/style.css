@@ -1,0 +1,32 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+/* General */
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	--orange:#ff8f1f;
+	--yellow:#ffbf80;
+	--offwhite:#EEE;
+	--offwhite2:#E8E8E8;
+	--lightyellow:#ffe6cc;
+	--themecolor:dodgerblue;
+	--transparentwhite:#FFFFFF08;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+
+/* Main Container */
+
+div#container {background:linear-gradient(135deg, var(--themecolor), white); height:100vh;}
+div#container {position:relative;}
+div#container div.openbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div.openbtn {background-color:var(--themecolor); color:white; font-size:4rem; cursor:pointer; padding:.75em .875em; border-radius:.25em;}
+div#container div.openbtn svg.icon {display:block;}
