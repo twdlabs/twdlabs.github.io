@@ -15,13 +15,11 @@ div#container div#searchoverlay section.bottom {flex-grow:1; flex-shrink:1;}
 /* Query Section */
 
 div#container div#searchoverlay section.top {background-color:var(--offwhite); color:var(--themecolor); font-size:2rem; border-bottom:1px solid #0002;}
-div#container div#searchoverlay section.top div.input {max-width:50rem; margin:auto; position:relative;}
+div#container div#searchoverlay section.top div.input {position:relative; max-width:50rem; margin:auto;}
 div#container div#searchoverlay section.top div.input div.closebtn,
-div#container div#searchoverlay section.top div.input label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); margin:0 1rem;}
-div#container div#searchoverlay section.top div.input div.closebtn {right:0;}
-div#container div#searchoverlay section.top div.input label.searchlabel {left:0;}
-div#container div#searchoverlay section.top div.input div.closebtn {background-color:var(--themecolor); color:white; cursor:pointer; padding:0 .375em; border-radius:.25rem;}
-div#container div#searchoverlay section.top div.input label.searchlabel {font-size:.95em; cursor:pointer; user-select:none;}
+div#container div#searchoverlay section.top div.input label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); cursor:pointer; user-select:none; margin:0 1rem;}
+div#container div#searchoverlay section.top div.input div.closebtn {background-color:var(--themecolor); color:white; right:0; padding:0 .375em; border-radius:.25rem;}
+div#container div#searchoverlay section.top div.input label.searchlabel {font-size:.95em; left:0;}
 div#container div#searchoverlay section.top div.input label.searchlabel svg.icon {display:block;}
 div#container div#searchoverlay section.top div.input input#searchquery {display:block; width:100%; height:100%; padding:1rem 4rem; border:0 none; outline:none;}
 div#container div#searchoverlay section.top div.input input#searchquery {background-color:white; background-color:transparent; color:inherit; font-size:inherit;}
