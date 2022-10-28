@@ -9,16 +9,26 @@
 
 
 :root {
+	
 	--black:#333;
+	--darkgrey:#666;
+	--grey:#999;
+
+	--red:#F95738;
+	--orange:#EE964B;
+
 	--yellow:#F4D35E;
+	--lightyellow:#FAF0CA;
+
 	--navyblue:#0D3B66;
 	--fullnavy:rgb(13,55,94);
 	--lucentnavy:rgba(13,55,94,0.89);
-	--lightyellow:#FAF0CA;
+	
+	--themecolor:var(--fullnavy);
 }
 
 
-body {margin:0; font-family:Nunito,sans-serif;}
+body {font-family:Nunito,sans-serif; margin:0;}
 
 
 
@@ -62,13 +72,13 @@ div#container header#header nav.navmenu ul.navlist li.navitem a.navlink.toggler 
 
 /* Navigation Menu: Account */
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
-div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred {background-color:#F95738;}
-div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred:hover {background:linear-gradient(180deg, #F95738, red);}
-div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnorange {background-color:#EE964B;}
-div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnorange:hover {background:linear-gradient(180deg, #EE964B, orange);}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred {background-color:var(--red);}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred:hover {background:linear-gradient(180deg, var(--red), red);}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnorange {background-color:var(--orange);}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnorange:hover {background:linear-gradient(180deg, var(--orange), orange);}
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.img,
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn img {height:2em;}
-div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.caption {display:inline-block; font-size:1rem; padding:.65rem 1rem .5rem; padding:.1rem 1rem 0;}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.caption {display:inline-block; font-size:1.125rem; padding:0 1rem;}
 /* Navigation Menu: Account State (Logged in/out) */
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem.inside {display:none;}
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem.outside {display:block;}
@@ -77,8 +87,8 @@ div#container.loggedin header#header nav.navmenu.a ul.navlist.accountlist li.nav
 
 /* Navigation Menu: Remote Controls */
 /* div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink {font-size:1.5rem;} */
-div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.search {font-size:1.25em; font-weight:bold; /* margin-top:.25rem; */}
-div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.toggler {font-size:1.5em;}
+div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.search {font-size:1.125em; font-weight:bold; /* margin-top:.25rem; */}
+div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.toggler {font-size:1.75em;}
 div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink svg.icon {display:block;}
 div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink svg.bars {display:block;}
 div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink svg.cross {display:none;}
@@ -102,18 +112,18 @@ div#container footer#footer div.col {flex-grow:2; flex-basis:0; text-align:left;
 div#container footer#footer div.col.wide {flex-grow:3;}
 div#container footer#footer div.col.break {display:none; flex:0 0 100%;}
 
-div#container footer#footer div.col h1.navhead {font-size:1.75rem; font-weight:100; color:#666; margin:0;}
-div#container footer#footer div.col h3.navhead {font-size:1.6875rem; font-weight:100; color:#666; margin:0;}
-div#container footer#footer div.col a.contactlink {font-size:.9rem; color:#999;}
+div#container footer#footer div.col h1.navhead {font-size:1.75rem; font-weight:100; color:var(--darkgrey); margin:0;}
+div#container footer#footer div.col h3.navhead {font-size:1.6875rem; font-weight:100; color:var(--darkgrey); margin:0;}
+div#container footer#footer div.col a.contactlink {font-size:.9rem; color:var(--grey);}
 
 div#container footer#footer div.col ul.navlist {list-style:none; margin:0; padding:0; margin-top:.75rem;}
 
 div#container footer#footer div.col ul.navlist li.navitem {font-size:.9rem; padding:.35rem;}
-div#container footer#footer div.col ul.navlist li.navitem a.navlink {display:block; color:#999;}
+div#container footer#footer div.col ul.navlist li.navitem a.navlink {display:block; color:var(--grey);}
 
 div#container footer#footer div.col ul.navlist.social {display:flex; flex-direction:row; justify-content:flex-start; align-items:stretch; gap:1rem;}
 div#container footer#footer div.col ul.navlist.social li.navitem {font-size:1.25rem;}
-div#container footer#footer div.col ul.navlist.social li.navitem a.navlink {background-color:#0002; color:#FFF; padding:.45rem .5rem;}
+div#container footer#footer div.col ul.navlist.social li.navitem a.navlink {background-color:#0002; color:white; padding:.45rem .5rem;}
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink {display:flex; justify-content:center; align-items:center;}
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.fb {--socialcolor:#4862a3; background-color:var(--socialcolor);}
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.twt {--socialcolor:#55acee; background-color:var(--socialcolor);}
@@ -121,6 +131,18 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ytb {
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.lin {--socialcolor:#0077b5; background-color:var(--socialcolor);}
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {--socialcolor:#d8226b; background-color:var(--socialcolor);}
 /* div#container footer#footer div.col ul.navlist.social li.navitem a.navlink svg.icon {} */
+
+
+
+/* Search Overlay */
+
+div#container div#searchoverlay {background-color:white;}
+
+/* div#container div#searchoverlay section.top {background-color:white; font-size:2rem; padding:0 1rem;} */
+/* div#container div#searchoverlay section.top div.input {display:flex; flex-direction:row; align-items:center;} */
+
+/* div#container div#searchoverlay section.bottom {padding:2em;} */
+/* div#container div#searchoverlay section.bottom div#resultsbox {} */
 
 
 
@@ -170,6 +192,9 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {-
 	
 	div#container footer#footer div.col ul.navlist.social {width:85%; margin:0 auto; justify-content:stretch;}
 	div#container footer#footer div.col ul.navlist.social li.navitem {flex-grow:1;}
+
+
+	/* Search Overlay */
 }
 
 
@@ -181,5 +206,7 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {-
 	/* Content Section */
 
 	/* Footer Section */
+
+	/* Search Overlay */
 }
 

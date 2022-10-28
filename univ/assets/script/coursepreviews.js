@@ -1,10 +1,10 @@
 
 
 // Show preview of course data. 
-// showCourseData();
+showCourseData();
 
-// let c = getCourseById('CIS 255');
-// console.log('c:',c);
+let c = getCourseById('CIS 255');
+console.log('c:',c);
 
 
 /*****/
