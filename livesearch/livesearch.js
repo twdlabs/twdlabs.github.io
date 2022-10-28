@@ -6,7 +6,7 @@ class Search {
 
 	// 1. Describe and create / initiate object. 
 
-	constructor(openbtn,closebtn,searchOverlay,searchField,resultsBox,loadSpinner) {
+	constructor(openbtn,closebtn,searchOverlay,searchField,resultsBox) {
 
 		// Get page elements for open/close buttons. 
 		this.openbtn = openbtn;
@@ -16,7 +16,6 @@ class Search {
 		this.searchOverlay = searchOverlay;
 		this.searchField = searchField;
 		this.resultsBox = resultsBox;
-		this.loadSpinner = loadSpinner;
 		this.prevQuery = '';
 
 		// Define search results delay. 
@@ -25,11 +24,11 @@ class Search {
 		// Handle events. 
 		this.handleEvents();
 
-		// Set initial overlay state. 
+		// Set open/close state of overlay. 
 		this.alreadyOpen = false;
 
-		// Set initial state of loader. 
-		this.loadingResults = false;
+		// Set initial state for loading of results. 
+		this.currentlyLoadingResults = false;
 
 		// Initialize results timer. 
 		this.resultsTimer = undefined;
@@ -75,7 +74,7 @@ class Search {
 			this.clearSearchResults();
 
 			// Show loader icon. 
-			if(!this.loadingResults) this.setWaitState(true);
+			if(!this.currentlyLoadingResults) this.setWaitState(true);
 
 			// Start timer for new search results. 
 			this.resultsTimer = setTimeout(this.getSearchResults.bind(this), this.dt);
@@ -96,15 +95,14 @@ class Search {
 	}
 
 	// Set appropriate state for loader. 
-	setWaitState(currentlyWaiting) {
-		if(currentlyWaiting) {
-			this.loadSpinner.classList.add('active');
-			this.loadingResults = true;
-		}
-		else {
-			this.loadSpinner.classList.remove('active');
-			this.loadingResults = false;
-		}
+	setWaitState(nowWaiting) {
+
+		// Set state for loading of results. 
+		this.currentlyLoadingResults = nowWaiting;
+		
+		// Apply state to loader on page. 
+		if(nowWaiting) this.searchOverlay.classList.add('wait');
+		else this.searchOverlay.classList.remove('wait');
 	}
 
 	// Clear previous search results. 
@@ -119,72 +117,109 @@ class Search {
 		console.log(this.resultsBox);
 
 		// Get search query. 
-		let query = this.searchField.value;
+		let searchquery = this.searchField.value;
 
 		// TODO: Send request for search results. 
 		let resultList = [];
-		resultList = testResults;
+		resultList = defaultResults;
 
 		// Show search results. 
 	// 	this.showSearchResults(resultList);
 	// }
 	// // TODO: Show results of search query. 
 	// showSearchResults(resultList) {
-		console.log('resultList',resultList);
+		// console.log('resultList',resultList);
 
-		// Initialize display for search results. 
-		let searchResults = '';
+		// Initialize total number of matching items. 
+		let totalMatchingItems = 0;
 
-		// Add label for search results of search query. 
-		searchResults += `
-		<!-- resulthead -->
-		<h2 class="resulthead">Here are your search results for... "${query}": </h2>
-		<!-- /resulthead -->`;
+		// Initialize display for final search results. 
+		let finalSearchResults = '';
+
+		// Open result body. 
+		finalSearchResults += `
+		<!-- resultbody -->
+		<div class="resultbody">`;
 
 		// TODO: Get results of search query. 
 		for(let resultSet of resultList) {
-			console.log('resultSet',resultSet);
+			// console.log('resultSet',resultSet);
 
-			searchResults += `
-			<!-- resultset -->
-			<div class="resultset">`;
+			// Initialize number of matching items in current set. 
+			let numSetItems = 0;
 
-			searchResults += `
-			<!-- resulthead -->
-			<h3 class="resulthead">
-				Result Head
-			</h3>
-			<!-- /resulthead -->
-	
-			<!-- resultlist -->
-			<ul class="resultlist">`;
+			// Initialize list of matching results for current set. 
+			let currentSetSearchResults = '';
 
+			// Go thru all items in current set. 
 			for(let resultItem of resultSet.setlist) {
-				console.log('resultItem',resultItem);
-				searchResults += `
-				<!-- resultitem -->
-				<li class="resultitem">
+				// console.log('resultItem',resultItem);
 
-					<!-- resultlink -->
-					<a class="resultlink" href="${resultItem.link}">
-						${resultItem.name}
-					</a>
-					<!-- /resultlink -->
+				// Check for match with search query (case insensitive). 
+				let matchingResult = ( resultItem.name.toUpperCase() ).includes( searchquery.toUpperCase() );
+				
+				// Proceed if item matches with search query. 
+				if(matchingResult) {
+					
+					// Increment number of matching items in current set. 
+					numSetItems += 1;
+					totalMatchingItems += 1;
 
-				</li>
-				<!-- /resultitem -->`;
+					// Add matching item to final search results. 
+					currentSetSearchResults += `
+					<!-- resultitem -->
+					<li class="resultitem">
+						
+						<!-- resultlink -->
+						<a class="resultlink" href="${resultItem.link}">${resultItem.name}</a>
+						<!-- /resultlink -->
+						
+					</li>
+					<!-- /resultitem -->`;
+				}
 			}
 
-			searchResults += `
-			</ul>
-			<!-- /resultlist -->
+			// Include result set if contains matching items. 
+			if(numSetItems>0) {
 
-			</div>
-			<!-- /resultset -->`;
+				// Open result set. 
+				finalSearchResults += `
+				
+				<!-- resultset -->
+				<div class="resultset">
+				
+					<!-- resulthead -->
+					<h3 class="resulthead">${ resultSet.setname } (${ numSetItems })</h3>
+					<!-- /resulthead -->
+			
+					<!-- resultlist -->
+					<ul class="resultlist">`;
+	
+				// Add matching item from current set to final search results. 
+				finalSearchResults += currentSetSearchResults;
+	
+				finalSearchResults += `
+					</ul>
+					<!-- /resultlist -->
+	
+				</div>
+				<!-- /resultset -->`;
+			}
 		}
 
+		// Close result body. 
+		finalSearchResults += 
+		`</div>
+		<!-- /resultbody -->`;
+
+		// Add result head. 
+		finalSearchResults += `
+		<!-- resulthead -->
+		<h2 class="resulthead">${searchquery}</h2>
+		<!-- /resulthead -->`;
+
 		// Display search results on page. 
-		this.resultsBox.innerHTML = searchResults;
+		this.resultsBox.innerHTML = finalSearchResults;
 
 		// Hide loader icon. 
 		this.setWaitState(false);

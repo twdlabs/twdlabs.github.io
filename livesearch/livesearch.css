@@ -12,6 +12,7 @@
 	--orange:#ff8f1f;
 	--yellow:#ffbf80;
 	--offwhite:#EEE;
+	--offwhite2:#E8E8E8;
 	--lightyellow:#ffe6cc;
 	--themecolor:dodgerblue;
 	--transparentwhite:#FFFFFF08;
@@ -39,35 +40,51 @@ div#container div#searchoverlay {opacity:0; visibility:hidden; transform:scale(1
 div#container div#searchoverlay.active {opacity:.95; visibility:visible; transform:none;}
 
 div#container div#searchoverlay {display:flex; flex-direction:column; align-items:stretch;}
-div#container div#searchoverlay div.top {flex-grow:0; flex-shrink:0;}
-div#container div#searchoverlay div.bottom {flex-grow:1; flex-shrink:1;}
+div#container div#searchoverlay section.top {flex-grow:0; flex-shrink:0;}
+div#container div#searchoverlay section.bottom {flex-grow:1; flex-shrink:1;}
 
-div#container div#searchoverlay div.top {background-color:var(--offwhite); color:var(--themecolor); font-size:2rem; border-bottom:1px solid #0002;}
-div#container div#searchoverlay div.top div.input {max-width:50rem; margin:auto; position:relative;}
-div#container div#searchoverlay div.top div.input div.closebtn,
-div#container div#searchoverlay div.top div.input label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); margin:0 1rem;}
-div#container div#searchoverlay div.top div.input div.closebtn {right:0;}
-div#container div#searchoverlay div.top div.input label.searchlabel {left:0;}
-div#container div#searchoverlay div.top div.input div.closebtn {background-color:var(--themecolor); color:white; border-radius:.25rem; padding:0 .375em; cursor:pointer;}
-div#container div#searchoverlay div.top div.input label.searchlabel {font-size:.95em; cursor:pointer; user-select:none;}
-div#container div#searchoverlay div.top div.input label.searchlabel svg.icon {display:block;}
-div#container div#searchoverlay div.top div.input input#searchquery {display:block; width:100%; height:100%; padding:1rem 4rem; border:0 none; outline:none;}
-div#container div#searchoverlay div.top div.input input#searchquery {background-color:white; background-color:transparent; color:inherit; font-size:inherit;}
 
-div#container div#searchoverlay div.bottom {background-color:var(--themecolor); position:relative; overflow:auto;}
-div#container div#searchoverlay div.bottom div#loader {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2.5rem; height:2.5rem; border-radius:50%;}
-div#container div#searchoverlay div.bottom div#loader {background-color:transparent; border:.5rem solid #E8E8E8; border-top-color:var(--themecolor);}
-div#container div#searchoverlay div.bottom div#loader {visibility:hidden; opacity:0; transition:.15s;}
-div#container div#searchoverlay div.bottom div#loader.active {visibility:visible; opacity:1; animation:spinning 1s linear infinite;}
-div#container div#searchoverlay div.bottom div#resultsbox {background-color:var(--transparentwhite); color:white; width:100%; min-height:100%; overflow:visible; padding:2rem;}
-div#container div#searchoverlay div.bottom div#resultsbox {max-width:75rem; margin:auto;}
-div#container div#searchoverlay div.bottom div#resultsbox {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;}
-div#container div#searchoverlay div.bottom div#resultsbox h2.resulthead {width:100%;}
-div#container div#searchoverlay div.bottom div#resultsbox div.resultset {width:50%; /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ padding:2rem; padding-left:0; padding-bottom:0; /* margin:1rem; margin-left:0; */ /* text-align:center; */}
-div#container div#searchoverlay div.bottom div#resultsbox div.resultset h3.resulthead {color:var(--lightyellow); padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
-div#container div#searchoverlay div.bottom div#resultsbox div.resultset ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
-div#container div#searchoverlay div.bottom div#resultsbox div.resultset ul.resultlist li.resultitem {margin-top:.5rem;}
-div#container div#searchoverlay div.bottom div#resultsbox div.resultset ul.resultlist li.resultitem a.resultlink {color:var(--orange); color:var(--yellow);}
+/* Query Section */
+
+div#container div#searchoverlay section.top {background-color:var(--offwhite); color:var(--themecolor); font-size:2rem; border-bottom:1px solid #0002;}
+div#container div#searchoverlay section.top div.input {max-width:50rem; margin:auto; position:relative;}
+div#container div#searchoverlay section.top div.input div.closebtn,
+div#container div#searchoverlay section.top div.input label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); margin:0 1rem;}
+div#container div#searchoverlay section.top div.input div.closebtn {right:0;}
+div#container div#searchoverlay section.top div.input label.searchlabel {left:0;}
+div#container div#searchoverlay section.top div.input div.closebtn {background-color:var(--themecolor); color:white; border-radius:.25rem; padding:0 .375em; cursor:pointer;}
+div#container div#searchoverlay section.top div.input label.searchlabel {font-size:.95em; cursor:pointer; user-select:none;}
+div#container div#searchoverlay section.top div.input label.searchlabel svg.icon {display:block;}
+div#container div#searchoverlay section.top div.input input#searchquery {display:block; width:100%; height:100%; padding:1rem 4rem; border:0 none; outline:none;}
+div#container div#searchoverlay section.top div.input input#searchquery {background-color:white; background-color:transparent; color:inherit; font-size:inherit;}
+
+
+/* Results Section */
+
+div#container div#searchoverlay section.bottom {background-color:var(--themecolor); position:relative; overflow:auto;}
+
+div#container div#searchoverlay section.bottom:before {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2.5rem; height:2.5rem; border-radius:50%;}
+div#container div#searchoverlay section.bottom:before {background-color:transparent; content:''; border:.5rem solid var(--offwhite2); border-top-color:transparent;}
+div#container div#searchoverlay section.bottom:before {visibility:hidden; opacity:0; transition:.15s;}
+div#container div#searchoverlay.wait section.bottom:before {visibility:visible; opacity:1; animation:spinning 1s linear infinite;}
+
+div#container div#searchoverlay section.bottom div#resultsbox {background-color:var(--transparentwhite); color:white; width:100%; min-height:100%; overflow:visible; padding:2rem;}
+div#container div#searchoverlay section.bottom div#resultsbox {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch; max-width:75rem; margin:auto;}
+/* div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead {} */
+div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead:before {content:'Here are your search results for "';}
+div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead::after {content:'": ';}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody:empty + h2.resulthead:before {content:'No matches found for "';}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody:empty + h2.resulthead::after {content:'".';}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 3rem 0 0; /* text-align:center; */}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {color:var(--lightyellow); padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem {margin-top:.5rem;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.resultlink {color:var(--orange); color:var(--yellow);}
+
+
+
+
 
 @keyframes spinning {
 	0% {transform:rotate(0deg);}
@@ -78,6 +95,6 @@ div#container div#searchoverlay div.bottom div#resultsbox div.resultset ul.resul
 
 
 @media screen and (max-width:40rem) {
-	div#container div#searchoverlay div.top {font-size:1.5rem;}
+	div#container div#searchoverlay section.top {font-size:1.5rem;}
 }
 
