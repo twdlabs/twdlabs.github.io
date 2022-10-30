@@ -1,9 +1,6 @@
 
 
 
-// Define number of posts per preview. 
-const numPreviewPosts = 2;
-
 // Define month names. 
 const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec',];
 

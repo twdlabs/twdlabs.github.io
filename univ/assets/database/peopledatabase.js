@@ -1,81 +1,409 @@
 
 
 
-// Define student data. 
-const studentData = [
-	{
-		studentid:'000',
-		lastname:'LastName',
-		firstname:'FirstName',
-		concentrationid:'',
-	},
-	{
-		studentid:'001',
-		lastname:'Titus',
-		firstname:'Alex',
-		concentrationid:'CS',
-	},
-	{
-		studentid:'002',
-		lastname:'Kidemi',
-		firstname:'Cyril',
-		concentrationid:'CS',
-	},
-	{
-		studentid:'003',
-		lastname:'Yeboah',
-		firstname:'Kwame',
-		concentrationid:'CIS',
-	},
-];
-
-
 // Define professor data. 
 const profData = [
-	{
-		profid:'000',
-		lastname:'LastName',
-		firstname:'FirstName',
-	},
+	
 	{
 		profid:'001',
-		lastname:'Rahman',
-		firstname:'Khandaker',
+		lastname:'Jobs',
+		firstname:'Steve',
+		deptid:'MKT',
 	},
 	{
 		profid:'002',
-		lastname:'Cho',
-		firstname:'Il-Hyung',
+		lastname:'Peterson',
+		firstname:'Jordan',
+		deptid:'PSYC',
 	},
 	{
 		profid:'003',
-		lastname:'Corser',
-		firstname:'George',
+		lastname:'Wozniak',
+		firstname:'Steve',
+		deptid:'ECE',
 	},
 	{
 		profid:'004',
-		lastname:'Dharam',
-		firstname:'Poonam',
+		lastname:'Gates',
+		firstname:'Bill',
+		deptid:'CSIS',
 	},
 	{
 		profid:'005',
-		lastname:'James',
-		firstname:'Scott',
+		lastname:'Jackson',
+		firstname:'Curtis',
+		deptid:'MUS',
 	},
 	{
 		profid:'006',
-		lastname:'Mukherjee',
-		firstname:'Avishek',
+		lastname:'Tyson',
+		firstname:'Mike',
+		deptid:'KIN',
 	},
 	{
 		profid:'007',
-		lastname:'Mulahuwaish',
-		firstname:'Aos',
+		lastname:'Taylor',
+		firstname:'Jayceon',
+		deptid:'MKT',
 	},
 	{
 		profid:'008',
-		lastname:'Beyers',
-		firstname:'Richard',
+		lastname:'Robbins',
+		firstname:'Anthony',
+		deptid:'COMM',
 	},
+	{
+		profid:'009',
+		lastname:'Cook',
+		firstname:'Owen',
+		deptid:'MKT',
+	},
+	{
+		profid:'010',
+		lastname:'Proctor',
+		firstname:'Bob',
+		deptid:'MKT',
+	},
+	{
+		profid:'011',
+		lastname:'Dalio',
+		firstname:'Ray',
+		deptid:'FIN',
+	},
+	{
+		profid:'012',
+		lastname:'Tyson',
+		firstname:'Neil',
+		deptid:'PHYS',
+	},
+	{
+		profid:'013',
+		lastname:'Trump',
+		firstname:'Donald',
+		deptid:'PS',
+	},
+	{
+		profid:'014',
+		lastname:'Picasso',
+		firstname:'Pablo',
+		deptid:'ART',
+	},
+	{
+		profid:'015',
+		lastname:'Cochran',
+		firstname:'Johnny',
+		deptid:'CJ',
+	},
+	{
+		profid:'016',
+		lastname:'Kardashian',
+		firstname:'Robert',
+		deptid:'CJ',
+	},
+	{
+		profid:'017',
+		lastname:'Obama',
+		firstname:'Barack',
+		deptid:'PS',
+	},
+	{
+		profid:'018',
+		lastname:'Lopez',
+		firstname:'Taino',
+		deptid:'MKT',
+	},
+	{
+		profid:'019',
+		lastname:'Vaynerchuk',
+		firstname:'Gary',
+		deptid:'MKT',
+	},
+	{
+		profid:'020',
+		lastname:'Belfort',
+		firstname:'Jordan',
+		deptid:'MKT',
+	},
+	{
+		profid:'021',
+		lastname:'Jakes',
+		firstname:'TD',
+		deptid:'RS',
+	},
+	{
+		profid:'022',
+		lastname:'Covey',
+		firstname:'Stephen',
+		deptid:'COMM',
+	},
+	{
+		profid:'023',
+		lastname:'Carter',
+		firstname:'Sean',
+		deptid:'MUS',
+	},
+	{
+		profid:'024',
+		lastname:'Cole',
+		firstname:'Jermaine',
+		deptid:'MUS',
+	},
+	{
+		profid:'025',
+		lastname:'Austin',
+		firstname:'Johnta',
+		deptid:'MUS',
+	},
+	{
+		profid:'026',
+		lastname:'Cox',
+		firstname:'Bryan-Michael',
+		deptid:'MUS',
+	},
+	{
+		profid:'027',
+		lastname:'Garrett',
+		firstname:'Sean',
+		deptid:'MUS',
+	},
+	{
+		profid:'028',
+		lastname:'Dean',
+		firstname:'Ester',
+		deptid:'MUS',
+	},
+	{
+		profid:'029',
+		lastname:'Carter',
+		firstname:'Brandon',
+		deptid:'MKT',
+	},
+	{
+		profid:'030',
+		lastname:'Hulse',
+		firstname:'Elliott',
+		deptid:'KIN',
+	},
+	{
+		profid:'031',
+		lastname:'O\'Gallagher',
+		firstname:'Gregory',
+		deptid:'KIN',
+	},
+	{
+		profid:'032',
+		lastname:'Darwin',
+		firstname:'Charles',
+		deptid:'BIOL',
+	},
+	{
+		profid:'033',
+		lastname:'Einstein',
+		firstname:'Albert',
+		deptid:'PHYS',
+	},
+	{
+		profid:'034',
+		lastname:'Newton',
+		firstname:'Isaac',
+		deptid:'PHYS',
+	},
+	{
+		profid:'035',
+		lastname:'Faraday',
+		firstname:'Michael',
+		deptid:'PHYS',
+	},
+	{
+		profid:'036',
+		lastname:'Tesla',
+		firstname:'Nikola',
+		deptid:'PHYS',
+	},
+	{
+		profid:'037',
+		lastname:'One',
+		firstname:'KRS',
+		deptid:'COMM',
+	},
+	{
+		profid:'038',
+		lastname:'Tracy',
+		firstname:'Brian',
+		deptid:'COMM',
+	},
+	{
+		profid:'039',
+		lastname:'Buffett',
+		firstname:'Warren',
+		deptid:'FIN',
+	},
+	{
+		profid:'040',
+		lastname:'Hormozi',
+		firstname:'Alex',
+		deptid:'MKT',
+	},
+
+	// {
+	// 	profid:'000',
+	// 	lastname:'LastName',
+	// 	firstname:'FirstName',
+	// 	deptid:'XYZ',
+	// },
+
 ];
 
+
+
+
+// Define student data. 
+const studentData = [
+
+	{
+		studentid:'001',
+		lastname:'Washington',
+		firstname:'George',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'002',
+		lastname:'Adams',
+		firstname:'John',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'003',
+		lastname:'Jefferson',
+		firstname:'Thomas',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'006',
+		lastname:'Jackson',
+		firstname:'Andrew',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'007',
+		lastname:'Adams',
+		firstname:'John Quincy',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'009',
+		lastname:'Monroe',
+		firstname:'James',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'016',
+		lastname:'Lincoln',
+		firstname:'Abraham',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'017',
+		lastname:'Johnson',
+		firstname:'Andrew',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'021',
+		lastname:'Coolidge',
+		firstname:'Calvin',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'023',
+		lastname:'Cleveland',
+		firstname:'Grover',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'025',
+		lastname:'Wilson',
+		firstname:'Woodrow',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'032',
+		lastname:'Truman',
+		firstname:'Harry S.',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'036',
+		lastname:'F. Kennedy',
+		firstname:'John',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'037',
+		lastname:'B. Johnson',
+		firstname:'Lyndon',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'038',
+		lastname:'Nixon',
+		firstname:'Richard M.',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'039',
+		lastname:'Carter',
+		firstname:'James',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'040',
+		lastname:'Reagan',
+		firstname:'Ronald',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'041',
+		lastname:'Bush',
+		firstname:'George H.W.',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'042',
+		lastname:'Clinton',
+		firstname:'Bill',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'043',
+		lastname:'Bush',
+		firstname:'George W.',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'044',
+		lastname:'Obama',
+		firstname:'Barack',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'045',
+		lastname:'Trump',
+		firstname:'Donald',
+		concentrationid:'XYZ',
+	},
+	{
+		studentid:'046',
+		lastname:'Biden',
+		firstname:'Joseph',
+		concentrationid:'XYZ',
+	},
+
+	// {
+	// 	studentid:'000',
+	// 	lastname:'LastName',
+	// 	firstname:'FirstName',
+	// 	concentrationid:'',
+	// },
+
+];

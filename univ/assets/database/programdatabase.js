@@ -3,64 +3,100 @@
 
 // Define program data. 
 const programData = [
-	// {
-	// 	deptid:'XYZ',
-	// 	programid:'XYZ',
-	// 	programname:'Xyz Department',
-	// },
+
 	{
-		deptid:'CSIS',
-		programid:'CS',
-		programname:'Computer Science',
+		programid:'ACCT',
+		programname:'Accounting',
 	},
 	{
-		deptid:'CSIS',
-		programid:'CIS',
-		programname:'Computer Information Systems',
+		programid:'ART',
+		programname:'Art',
 	},
 	{
-		deptid:'CSIS',
+		programid:'BIOL',
+		programname:'Biology',
+	},
+	{
+		programid:'BL',
+		programname:'Business Leadership',
+	},
+	{
+		programid:'CJ',
+		programname:'Criminal Justice',
+	},
+	{
 		programid:'COMM',
 		programname:'Communications',
 	},
 	{
-		deptid:'ENGL',
+		programid:'CSIS',
+		programname:'Computer Science &amp; Information Systems',
+	},
+	{
+		programid:'ECE',
+		programname:'Electrical &amp; Computer Engineering',
+	},
+	{
 		programid:'ENGL',
 		programname:'English',
 	},
 	{
-		deptid:'MATH',
+		programid:'FIN',
+		programname:'Finance',
+	},
+	{
+		programid:'KIN',
+		programname:'Kinesiology',
+	},
+	{
 		programid:'MATH',
 		programname:'Mathematical Sciences',
 	},
 	{
-		deptid:'PHIL',
+		programid:'MKT',
+		programname:'Marketing',
+	},
+	{
+		programid:'MUS',
+		programname:'Music',
+	},
+	{
 		programid:'PHIL',
 		programname:'Philosophy',
 	},
 	{
-		deptid:'RPW',
-		programid:'RPW',
-		programname:'Rhetoric &amp; Professional Writing',
+		programid:'PHYS',
+		programname:'Physics',
 	},
 	{
-		deptid:'PSYC',
+		programid:'PS',
+		programname:'Political Science',
+	},
+	{
 		programid:'PSYC',
 		programname:'Psychology',
 	},
 	{
-		deptid:'BL',
-		programid:'BL',
-		programname:'Xyz Department',
+		programid:'RPW',
+		programname:'Rhetoric &amp; Professional Writing',
 	},
 	{
-		deptid:'ACCT',
-		programid:'ACCT',
-		programname:'Xyz Department',
+		programid:'RS',
+		programname:'Religious Studies',
 	},
+
 	{
-		deptid:'FIN',
-		programid:'FIN',
+		programid:'XYZ',
 		programname:'Xyz Department',
 	},
+
+	// {
+	// 	programid:'XYZ',
+	// 	programname:'Xyz Department',
+	// },
+	// {
+	// 	programid:'XYZ',
+	// 	programname:'Xyz Department',
+	// },
+	
 ];
