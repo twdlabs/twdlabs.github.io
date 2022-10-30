@@ -196,7 +196,7 @@ class Search {
 					let isPerson = !!(resultItem['firstname']);
 					let isProgram = !!(resultItem['programname']);
 					let isBlogPost = !!(resultItem['posttitle']);
-					console.log('Post type: ',isCourse,isPerson,isProgram,isBlogPost);
+					// console.log('Post type: ',isCourse,isPerson,isProgram,isBlogPost);
 
 					// Get name for current result. 
 					if(isCourse) resultname = `${resultItem['deptid']} ${resultItem['coursenumber']}`;
@@ -205,13 +205,16 @@ class Search {
 					else if(isPerson) resultname = `${resultItem['firstname']} ${resultItem['lastname']}`;
 					else resultname = resultItem[ 'name'];
 
+					// Intiialize default link for result. 
+					let resultlink = (resultItem.link) || 'javascript:void(0)';
+
 					// Add matching item to final search results. 
 					currentSetSearchResults += `
 					<!-- resultitem -->
 					<li class="resultitem">
 						
 						<!-- resultlink -->
-						<a class="resultlink" href="${resultItem.link}">${ resultname }</a>
+						<a class="resultlink" href="${ resultlink }">${ resultname }</a>
 						<!-- /resultlink -->
 						
 					</li>
