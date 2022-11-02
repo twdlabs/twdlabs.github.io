@@ -191,6 +191,9 @@ class Search {
 					// Intiialize default name for result. 
 					let resultname = 'Result';
 
+					// Intiialize default link for result. 
+					let resultlink = (resultItem.link) || 'javascript:void(0)';
+
 					// Get post type for current result. 
 					let isCourse = !!(resultItem['coursename']);
 					let isPerson = !!(resultItem['firstname']);
@@ -199,14 +202,30 @@ class Search {
 					// console.log('Post type: ',isCourse,isPerson,isProgram,isBlogPost);
 
 					// Get name for current result. 
-					if(isCourse) resultname = `${resultItem['deptid']} ${resultItem['coursenumber']}`;
-					else if(isProgram) resultname = resultItem['programname'];
-					else if(isBlogPost) resultname = resultItem['posttitle'];
-					else if(isPerson) resultname = `${resultItem['firstname']} ${resultItem['lastname']}`;
-					else resultname = resultItem[ 'name'];
+					if(isCourse) {
+						resultname = `${resultItem['deptid']} ${resultItem['coursenumber']}`;
+					}
+					else if(isProgram) {
+						resultname = resultItem['programname'];
+					}
+					else if(isBlogPost) {
+						let posttitle = resultItem['posttitle'];
+						let postauthorid = resultItem['postauthorid'];
+						let postauthoritem = defaultAuthorData[postauthorid];
+						let postauthorname = `${postauthoritem.firstname} ${postauthoritem.lastname}`;
+						resultname = `${ posttitle } by ${ postauthorname }`;
+						// resultlink = getRelativeLink('blogpost','3');
 
-					// Intiialize default link for result. 
-					let resultlink = (resultItem.link) || 'javascript:void(0)';
+						// // Get relative link for given post type and post id. 
+						// function getRelativeLink(posttype,postid) {
+						// 	// 
+						// 	return '../.././blog?postid=3';
+						// }
+					}
+					else if(isPerson) {
+						resultname = `${resultItem['firstname']} ${resultItem['lastname']}`;
+					}
+					else resultname = resultItem[ 'name'];
 
 					// Add matching item to final search results. 
 					currentSetSearchResults += `
@@ -282,7 +301,7 @@ class Search {
 	dispatchKeyPress(event) {
 
 		// Get selected key. 
-		let key = event.charCode || event.keyCode
+		let key = event.charCode || event.keyCode;
 
 		// Check if user is typing in a text field. 
 		let typingInTextField = false;
