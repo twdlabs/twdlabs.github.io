@@ -117,15 +117,11 @@ const defaultResults = [
 defaultResults.push(
 	{
 		setname:'Courses',
-		setlist: courseData
-	},
-);
-
-// Add students to list of default results. 
-defaultResults.push(
-	{
-		setname:'Students',
-		setlist: studentData
+		setlist:courseData,
+		posttype:{
+			sing:'course',
+			plural:'courses',
+		},
 	},
 );
 
@@ -133,7 +129,35 @@ defaultResults.push(
 defaultResults.push(
 	{
 		setname:'Faculty',
-		setlist: profData
+		setlist:profData,
+		posttype:{
+			sing:'faculty',
+			plural:'faculty',
+		},
+	},
+);
+
+// Add students to list of default results. 
+defaultResults.push(
+	{
+		setname:'Students',
+		setlist:studentData,
+		posttype:{
+			sing:'student',
+			plural:'students',
+		},
+	},
+);
+
+// Add events to list of default results. 
+defaultResults.push(
+	{
+		setname:'Events',
+		setlist:eventData,
+		posttype:{
+			sing:'event',
+			plural:'events',
+		},
 	},
 );
 
@@ -141,7 +165,11 @@ defaultResults.push(
 defaultResults.push(
 	{
 		setname:'Programs',
-		setlist: programData
+		setlist:programData,
+		posttype:{
+			sing:'program',
+			plural:'programs',
+		},
 	},
 );
 
@@ -149,7 +177,11 @@ defaultResults.push(
 defaultResults.push(
 	{
 		setname:'Blog Posts',
-		setlist: defaultPostData
+		setlist:blogPostData,
+		posttype:{
+			sing:'blog post',
+			plural:'blog posts',
+		},
 	},
 );
 

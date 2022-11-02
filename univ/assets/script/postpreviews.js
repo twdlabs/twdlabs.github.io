@@ -1,12 +1,8 @@
 
 
-// Define blog post data. 
-// const blogData = [];
-const blogData = defaultPostData;
 
-// Define event post data. 
-// const eventData = [];
-const eventData = defaultPostData;
+// Define number of posts per preview. 
+const numPreviewPosts = 2;
 
 
 /*****/
@@ -29,7 +25,7 @@ function showBlogPosts() {
 	let blogpostsDestination = 'section.preview div#blogposts ul.postlist';
 
 	// Show preview posts. 
-	showPostPreviews(blogData, numPreviewPosts, blogpostsDestination);
+	showPostPreviews(blogPostData, numPreviewPosts, blogpostsDestination);
 }
 
 // Show event posts. 

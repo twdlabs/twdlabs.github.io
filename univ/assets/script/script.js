@@ -28,5 +28,5 @@ activateLiveSearch();
 function activateLiveSearch() {
 
 	// Create new Search object. 
-	const s = new Search(openbtn,closebtn,searchOverlay,searchField,resultsBox);
+	/* const s =  */new Search(openbtn,closebtn,searchOverlay,searchField,resultsBox);
 }
