@@ -129,9 +129,9 @@ class Search {
 		// Get search query. 
 		let searchquery = this.searchField.value;
 
-		// TODO: Send request for search results. 
+		// Get initial search results from post database. 
+		let resultList = defaultResults;
 		// console.log('Initial result list',defaultResults);
-		let resultList = defaultResults/* .map( (xyz)=>(xyz) ) */;
 		// console.log('Final result list',resultList);
 
 		// Initialize total number of matching items. 
@@ -139,6 +139,8 @@ class Search {
 
 		// Initialize display for final search results. 
 		let finalSearchResults = '';
+
+		// TODO: Send request for search results. Potentially add new function for the following code parts. 
 
 		// Open result body. 
 		finalSearchResults += `
@@ -155,7 +157,7 @@ class Search {
 			// Initialize list of matching results for current set. 
 			let currentSetSearchResults = '';
 
-			// Go thru all items in current set. 
+			// TODO: Go thru all items in current set. 
 			for(let resultItem of resultSet.setlist) {
 				// console.log('resultItem',resultItem);
 
@@ -179,7 +181,7 @@ class Search {
 					}
 				}
 				
-				// Include item in final results if matches search query. 
+				// Include item in results if match for query. 
 				if(matchingResult) {
 					
 					// Increment number of matching items in current set. 
@@ -191,29 +193,31 @@ class Search {
 					// Intiialize default name for result. 
 					let resultname = 'Result';
 
-					// Intiialize default link for result. 
+					// TODO: Intiialize default link for result. 
 					let resultlink = (resultItem.link) || 'javascript:void(0)';
 
 					// Get post type for current result. 
-					let isCourse = !!(resultItem['coursename']);
-					let isPerson = !!(resultItem['firstname']);
-					let isProgram = !!(resultItem['programname']);
-					let isBlogPost = !!(resultItem['posttitle']);
-					// console.log('Post type: ',isCourse,isPerson,isProgram,isBlogPost);
+					let isBlogPost = !!(resultItem.posttype=='post');
+					let isProgram = !!(resultItem.posttype=='program');
+					let isCourse = !!(resultItem.posttype=='course');
+					let isEvent = !!(resultItem.posttype=='event');
+					let isPerson = !!(resultItem.posttype=='faculty' || resultItem.posttype=='student');
+					// console.log('Post type: ',isBlogPost,isProgram,isCourse,isEvent,isPerson);
 
-					// Get name for current result. 
-					if(isCourse) {
-						resultname = `${resultItem['deptid']} ${resultItem['coursenumber']}`;
-					}
-					else if(isProgram) {
-						resultname = resultItem['programname'];
-					}
-					else if(isBlogPost) {
-						let posttitle = resultItem['posttitle'];
-						let postauthorid = resultItem['postauthorid'];
-						let postauthoritem = defaultAuthorData[postauthorid];
-						let postauthorname = `${postauthoritem.firstname} ${postauthoritem.lastname}`;
-						resultname = `${ posttitle } by ${ postauthorname }`;
+					// Get search result name for blog post. 
+					if(isBlogPost) {
+
+						// Get post title. 
+						let posttitle = resultItem['title'];
+
+						// Get author name. 
+						let authorid = resultItem['authorid'];
+						let authorname = userData[authorid].title;
+
+						// Create result name. 
+						resultname = `${posttitle} by ${authorname}`;
+						
+						// TODO: Get result link. 
 						// resultlink = getRelativeLink('blogpost','3');
 
 						// // Get relative link for given post type and post id. 
@@ -222,10 +226,21 @@ class Search {
 						// 	return '../.././blog?postid=3';
 						// }
 					}
-					else if(isPerson) {
-						resultname = `${resultItem['firstname']} ${resultItem['lastname']}`;
-					}
-					else resultname = resultItem[ 'name'];
+
+					// Get search result name for program. 
+					else if(isProgram) resultname = resultItem['title'];
+
+					// Get search result name for course. 
+					else if(isCourse) resultname = resultItem['fulltitle'];
+
+					// Get search result name for event. 
+					else if(isEvent) resultname = resultItem['title'];
+
+					// Get search result name for person. 
+					else if(isPerson) resultname = resultItem['title'];
+
+					// Get miscellaneous search result name. 
+					else resultname = resultItem['title'];
 
 					// Add matching item to final search results. 
 					currentSetSearchResults += `
@@ -233,20 +248,21 @@ class Search {
 					<li class="resultitem">
 						
 						<!-- resultlink -->
-						<a class="resultlink" href="${ resultlink }">${ resultname }</a>
+						<a class="resultlink" href="${resultlink}">${resultname}</a>
 						<!-- /resultlink -->
 						
 					</li>
 					<!-- /resultitem -->`;
 				}
+
 			}
 
 			// Include result set if contains matching result items. 
 			if(numSetResults>0) {
+				console.log( `\t${numSetResults} results for ${resultSet.setname}` );
 
 				// Open result set. 
 				finalSearchResults += `
-				
 				<!-- resultset -->
 				<div class="resultset">
 				
@@ -257,13 +273,50 @@ class Search {
 					<!-- resultlist -->
 					<ul class="resultlist">`;
 	
-				// Add matching item from current set to final search results. 
+				// Add matching items from current set to final search results. 
 				finalSearchResults += currentSetSearchResults;
 	
+				// Close result set. 
 				finalSearchResults += `
 					</ul>
 					<!-- /resultlist -->
 	
+				</div>
+				<!-- /resultset -->`;
+			}
+
+			// Otherwise show message and archive link (if no matches found). 
+			else {
+
+				// Get archive url. 
+				let archiveUrl = 'javascript:void(0)';
+
+				// Get post type name (plural). 
+				let postTypePlural = 'xyzposts';
+
+				// Create empty result set. 
+				finalSearchResults += `
+				<!-- resultset -->
+				<div class="resultset">
+				
+					<!-- resulthead -->
+					<h3 class="resulthead">${resultSet.setname}</h3>
+					<!-- /resulthead -->
+
+					<!-- textcopy -->
+					<p class="textcopy">
+
+						<!-- caption -->
+						<span class="caption">No ${postTypePlural} match that search.</span>
+						<!-- /caption -->
+						
+						<!-- archivelink -->
+						<a class="archivelink" href="${archiveUrl}">View all ${postTypePlural}</a>
+						<!-- /archivelink -->
+
+					</p>
+					<!-- /textcopy -->
+					
 				</div>
 				<!-- /resultset -->`;
 			}

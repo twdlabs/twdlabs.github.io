@@ -61,12 +61,15 @@ div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead span
 div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead span.searchquery::after {content:'.';}
 div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead.empty span.resultcount {visibility:hidden;}
 div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead.empty span.searchquery:before {content:'No matches found for ';}
-div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; /* justify-content:center; */ align-content:flex-start;}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 3rem 0 0; /* text-align:center; */}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {color:var(--lightyellow); padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem {margin-top:.5rem;}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.resultlink {color:var(--orange); color:var(--lightorange);}
+/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy {text-align:center;} */
+/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy span.caption {} */
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy a.archivelink {display:block; /* color:var(--themecolor); */ text-decoration:underline;}
 
 
 
