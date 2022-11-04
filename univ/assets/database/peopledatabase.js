@@ -734,8 +734,7 @@ function addProperties() {
 		let lname = person.lastname;
 
 		// Get id of given program. 
-		let progid = person.programid;
-		console.log(progid);
+		let progid = person.programid; // console.log(progid);
 
 		// Get name of given program. 
 		let progname = getProgramById(progid).title;

@@ -3,7 +3,7 @@
 // Define default users and post authors. 
 const userData = [
 	{
-		userid:-1,
+		userid:'000001',
 		registrationtime:0,
 		lastname:'Smith',
 		firstname:'John',
@@ -11,7 +11,7 @@ const userData = [
 		userbio:'Lorem ipsum dolor imet',
 	},
 	{
-		userid:-1,
+		userid:'000002',
 		registrationtime:0,
 		lastname:'Smith',
 		firstname:'Jane',
@@ -19,7 +19,7 @@ const userData = [
 		userbio:'Lorem ipsum dolor imet',
 	},
 	{
-		userid:-1,
+		userid:'000003',
 		registrationtime:0,
 		lastname:'Smith',
 		firstname:'Joe',
@@ -27,7 +27,7 @@ const userData = [
 		userbio:'Lorem ipsum dolor imet',
 	},
 	{
-		userid:-1,
+		userid:'000004',
 		registrationtime:0,
 		lastname:'Smith',
 		firstname:'Bill',
@@ -78,7 +78,8 @@ function addProperties() {
 		let id = user.userid;
 	
 		// Compile components of full name. 
-		return `${fname} ${lname} [${id}]`;
+		return `${fname} ${lname}`;
+		// return `${fname} ${lname} [${id}]`;
 	}
 	
 	// Define searchable user tags. 

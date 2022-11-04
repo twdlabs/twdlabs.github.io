@@ -113,6 +113,30 @@ const defaultResults = [
 
 // TODO: Add all other databases as components of results database. 
 
+// Add blog posts to list of default results. 
+defaultResults.push(
+	{
+		setname:'Blog Posts',
+		setlist:blogPostData,
+		posttype:{
+			sing:'blog post',
+			plural:'blog posts',
+		},
+	},
+);
+
+// Add programs to list of default results. 
+defaultResults.push(
+	{
+		setname:'Programs',
+		setlist:programData,
+		posttype:{
+			sing:'program',
+			plural:'programs',
+		},
+	},
+);
+
 // Add courses to list of default results. 
 defaultResults.push(
 	{
@@ -121,6 +145,18 @@ defaultResults.push(
 		posttype:{
 			sing:'course',
 			plural:'courses',
+		},
+	},
+);
+
+// Add events to list of default results. 
+defaultResults.push(
+	{
+		setname:'Events',
+		setlist:eventData,
+		posttype:{
+			sing:'event',
+			plural:'events',
 		},
 	},
 );
@@ -148,47 +184,5 @@ defaultResults.push(
 		},
 	},
 );
-
-// Add events to list of default results. 
-defaultResults.push(
-	{
-		setname:'Events',
-		setlist:eventData,
-		posttype:{
-			sing:'event',
-			plural:'events',
-		},
-	},
-);
-
-// Add programs to list of default results. 
-defaultResults.push(
-	{
-		setname:'Programs',
-		setlist:programData,
-		posttype:{
-			sing:'program',
-			plural:'programs',
-		},
-	},
-);
-
-// Add blog posts to list of default results. 
-defaultResults.push(
-	{
-		setname:'Blog Posts',
-		setlist:blogPostData,
-		posttype:{
-			sing:'blog post',
-			plural:'blog posts',
-		},
-	},
-);
-
-
-
-
-
-
 
 
