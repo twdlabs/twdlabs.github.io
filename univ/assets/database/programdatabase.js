@@ -47,8 +47,8 @@ const programData = [
 	},
 	{
 		posttype:'program',
-		programid:'CSIS',
-		title:'Computer Science &amp; Information Systems',
+		programid:'CS',
+		title:'Computer Science',
 		content:'',
 		postedtime:0,
 	},
@@ -147,7 +147,7 @@ const programData = [
 	{
 		posttype:'program',
 		programid:'XYZ',
-		title:'Xyz Department',
+		title:'Default Program',
 		content:'',
 		postedtime:0,
 	},

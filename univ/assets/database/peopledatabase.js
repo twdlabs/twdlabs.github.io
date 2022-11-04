@@ -35,6 +35,7 @@ const facultyData = [
 		lastname:'Wozniak',
 		firstname:'Steve',
 		programids:[
+			'CS',
 			'ECE',
 		],
 		postedtime:0,
@@ -45,7 +46,7 @@ const facultyData = [
 		lastname:'Gates',
 		firstname:'Bill',
 		programids:[
-			'CSIS',
+			'CS',
 			'FIN',
 		],
 		postedtime:0,
