@@ -1,102 +1,180 @@
 
 
-
 // Define program data. 
 const programData = [
 
 	{
+		posttype:'program',
 		programid:'ACCT',
-		programname:'Accounting',
+		title:'Accounting',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'ART',
-		programname:'Art',
+		title:'Art',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'BIOL',
-		programname:'Biology',
+		title:'Biology',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'BL',
-		programname:'Business Leadership',
+		title:'Business Leadership',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'CJ',
-		programname:'Criminal Justice',
+		title:'Criminal Justice',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'COMM',
-		programname:'Communications',
+		title:'Communications',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'CSIS',
-		programname:'Computer Science &amp; Information Systems',
+		title:'Computer Science &amp; Information Systems',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'ECE',
-		programname:'Electrical &amp; Computer Engineering',
+		title:'Electrical &amp; Computer Engineering',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'ENGL',
-		programname:'English',
+		title:'English',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'FIN',
-		programname:'Finance',
+		title:'Finance',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'KIN',
-		programname:'Kinesiology',
+		title:'Kinesiology',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'MATH',
-		programname:'Mathematical Sciences',
+		title:'Mathematical Sciences',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'MKT',
-		programname:'Marketing',
+		title:'Marketing',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'MUS',
-		programname:'Music',
+		title:'Music',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'PHIL',
-		programname:'Philosophy',
+		title:'Philosophy',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'PHYS',
-		programname:'Physics',
+		title:'Physics',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'PS',
-		programname:'Political Science',
+		title:'Political Science',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'PSYC',
-		programname:'Psychology',
+		title:'Psychology',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'RPW',
-		programname:'Rhetoric &amp; Professional Writing',
+		title:'Rhetoric &amp; Professional Writing',
+		content:'',
+		postedtime:0,
 	},
 	{
+		posttype:'program',
 		programid:'RS',
-		programname:'Religious Studies',
+		title:'Religious Studies',
+		content:'',
+		postedtime:0,
 	},
 
 	{
+		posttype:'program',
 		programid:'XYZ',
-		programname:'Xyz Department',
+		title:'Xyz Department',
+		content:'',
+		postedtime:0,
 	},
-
-	// {
-	// 	programid:'XYZ',
-	// 	programname:'Xyz Department',
-	// },
-	// {
-	// 	programid:'XYZ',
-	// 	programname:'Xyz Department',
-	// },
 	
 ];
+
+
+/*****/
+
+
+// Get program by id. 
+function getProgramById(programid) {
+
+	// Ensure capitalization of program id. 
+	programid = programid.toUpperCase();
+
+	// Go thru all program items. 
+	for(let program of programData) {
+
+		// Check for matching program. 
+		let matchingProgram = programid == program.programid;
+
+		// Return matching program if found. 
+		if( matchingProgram ) return program;
+	}
+
+	// Return nothing if program not found. 
+	return null;
+}
+

@@ -1,259 +1,467 @@
 
 
 
-// Define professor data. 
-const profData = [
+// Define faculty data. 
+const facultyData = [
 	
 	{
-		profid:'001',
+		posttype:'faculty',
+		facultyid:'001',
 		lastname:'Jobs',
 		firstname:'Steve',
-		deptid:'MKT',
+		programids:[
+			'COMM',
+			'MKT',
+			'PHIL',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'002',
+		posttype:'faculty',
+		facultyid:'002',
 		lastname:'Peterson',
 		firstname:'Jordan',
-		deptid:'PSYC',
+		programids:[
+			'COMM',
+			'MKT',
+			'PHIL',
+			'PSYC',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'003',
+		posttype:'faculty',
+		facultyid:'003',
 		lastname:'Wozniak',
 		firstname:'Steve',
-		deptid:'ECE',
+		programids:[
+			'ECE',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'004',
+		posttype:'faculty',
+		facultyid:'004',
 		lastname:'Gates',
 		firstname:'Bill',
-		deptid:'CSIS',
+		programids:[
+			'CSIS',
+			'FIN',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'005',
+		posttype:'faculty',
+		facultyid:'005',
 		lastname:'Jackson',
 		firstname:'Curtis',
-		deptid:'MUS',
+		programids:[
+			'COMM',
+			'FIN',
+			'MKT',
+			'MUS',
+			'PHIL',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'006',
+		posttype:'faculty',
+		facultyid:'006',
 		lastname:'Tyson',
 		firstname:'Mike',
-		deptid:'KIN',
+		programids:[
+			'KIN',
+			'PHIL',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'007',
-		lastname:'Taylor',
-		firstname:'Jayceon',
-		deptid:'MKT',
+		posttype:'faculty',
+		facultyid:'007',
+		lastname:'Dupri',
+		firstname:'Jermaine',
+		programids:[
+			'MKT',
+			'MUS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'008',
+		posttype:'faculty',
+		facultyid:'008',
 		lastname:'Robbins',
 		firstname:'Anthony',
-		deptid:'COMM',
+		programids:[
+			'COMM',
+			'PHIL',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'009',
+		posttype:'faculty',
+		facultyid:'009',
 		lastname:'Cook',
 		firstname:'Owen',
-		deptid:'MKT',
+		programids:[
+			'COMM',
+			'MKT',
+			'PHIL',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'010',
+		posttype:'faculty',
+		facultyid:'010',
 		lastname:'Proctor',
 		firstname:'Bob',
-		deptid:'MKT',
+		programids:[
+			'COMM',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'011',
+		posttype:'faculty',
+		facultyid:'011',
 		lastname:'Dalio',
 		firstname:'Ray',
-		deptid:'FIN',
+		programids:[
+			'COMM',
+			'FIN',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'012',
+		posttype:'faculty',
+		facultyid:'012',
 		lastname:'Tyson',
 		firstname:'Neil',
-		deptid:'PHYS',
+		programids:[
+			'COMM',
+			'PHYS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'013',
+		posttype:'faculty',
+		facultyid:'013',
 		lastname:'Trump',
 		firstname:'Donald',
-		deptid:'PS',
+		programids:[
+			'COMM',
+			'MKT',
+			'PS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'014',
+		posttype:'faculty',
+		facultyid:'014',
 		lastname:'Picasso',
 		firstname:'Pablo',
-		deptid:'ART',
+		programids:[
+			'ART',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'015',
+		posttype:'faculty',
+		facultyid:'015',
 		lastname:'Cochran',
 		firstname:'Johnny',
-		deptid:'CJ',
+		programids:[
+			'COMM',
+			'CJ',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'016',
+		posttype:'faculty',
+		facultyid:'016',
 		lastname:'Kardashian',
 		firstname:'Robert',
-		deptid:'CJ',
+		programids:[
+			'COMM',
+			'CJ',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'017',
+		posttype:'faculty',
+		facultyid:'017',
 		lastname:'Obama',
 		firstname:'Barack',
-		deptid:'PS',
+		programids:[
+			'COMM',
+			'PS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'018',
+		posttype:'faculty',
+		facultyid:'018',
 		lastname:'Lopez',
 		firstname:'Taino',
-		deptid:'MKT',
+		programids:[
+			'COMM',
+			'FIN',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'019',
+		posttype:'faculty',
+		facultyid:'019',
 		lastname:'Vaynerchuk',
 		firstname:'Gary',
-		deptid:'MKT',
+		programids:[
+			'COMM',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'020',
+		posttype:'faculty',
+		facultyid:'020',
 		lastname:'Belfort',
 		firstname:'Jordan',
-		deptid:'MKT',
+		programids:[
+			'COMM',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'021',
+		posttype:'faculty',
+		facultyid:'021',
 		lastname:'Jakes',
 		firstname:'TD',
-		deptid:'RS',
+		programids:[
+			'COMM',
+			'RS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'022',
+		posttype:'faculty',
+		facultyid:'022',
 		lastname:'Covey',
 		firstname:'Stephen',
-		deptid:'COMM',
+		programids:[
+			'COMM',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'023',
+		posttype:'faculty',
+		facultyid:'023',
 		lastname:'Carter',
 		firstname:'Sean',
-		deptid:'MUS',
+		programids:[
+			'FIN',
+			'MUS',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'024',
+		posttype:'faculty',
+		facultyid:'024',
 		lastname:'Cole',
 		firstname:'Jermaine',
-		deptid:'MUS',
+		programids:[
+			'MUS',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'025',
+		posttype:'faculty',
+		facultyid:'025',
 		lastname:'Austin',
 		firstname:'Johnta',
-		deptid:'MUS',
+		programids:[
+			'MUS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'026',
+		posttype:'faculty',
+		facultyid:'026',
 		lastname:'Cox',
 		firstname:'Bryan-Michael',
-		deptid:'MUS',
+		programids:[
+			'MUS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'027',
+		posttype:'faculty',
+		facultyid:'027',
 		lastname:'Garrett',
 		firstname:'Sean',
-		deptid:'MUS',
+		programids:[
+			'MUS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'028',
+		posttype:'faculty',
+		facultyid:'028',
 		lastname:'Dean',
 		firstname:'Ester',
-		deptid:'MUS',
+		programids:[
+			'MUS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'029',
+		posttype:'faculty',
+		facultyid:'029',
 		lastname:'Carter',
 		firstname:'Brandon',
-		deptid:'MKT',
+		programids:[
+			'KIN',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'030',
+		posttype:'faculty',
+		facultyid:'030',
 		lastname:'Hulse',
 		firstname:'Elliott',
-		deptid:'KIN',
+		programids:[
+			'COMM',
+			'KIN',
+			'MKT',
+			'PHIL',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'031',
+		posttype:'faculty',
+		facultyid:'031',
 		lastname:'O\'Gallagher',
 		firstname:'Gregory',
-		deptid:'KIN',
+		programids:[
+			'COMM',
+			'KIN',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'032',
+		posttype:'faculty',
+		facultyid:'032',
 		lastname:'Darwin',
 		firstname:'Charles',
-		deptid:'BIOL',
+		programids:[
+			'BIOL',
+			'COMM',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'033',
+		posttype:'faculty',
+		facultyid:'033',
 		lastname:'Einstein',
 		firstname:'Albert',
-		deptid:'PHYS',
+		programids:[
+			'COMM',
+			'PHYS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'034',
+		posttype:'faculty',
+		facultyid:'034',
 		lastname:'Newton',
 		firstname:'Isaac',
-		deptid:'PHYS',
+		programids:[
+			'COMM',
+			'PHYS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'035',
+		posttype:'faculty',
+		facultyid:'035',
 		lastname:'Faraday',
 		firstname:'Michael',
-		deptid:'PHYS',
+		programids:[
+			'PHYS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'036',
+		posttype:'faculty',
+		facultyid:'036',
 		lastname:'Tesla',
 		firstname:'Nikola',
-		deptid:'PHYS',
+		programids:[
+			'PHYS',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'037',
+		posttype:'faculty',
+		facultyid:'037',
 		lastname:'One',
 		firstname:'KRS',
-		deptid:'COMM',
+		programids:[
+			'COMM',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'038',
+		posttype:'faculty',
+		facultyid:'038',
 		lastname:'Tracy',
 		firstname:'Brian',
-		deptid:'COMM',
+		programids:[
+			'COMM',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'039',
+		posttype:'faculty',
+		facultyid:'039',
 		lastname:'Buffett',
 		firstname:'Warren',
-		deptid:'FIN',
+		programids:[
+			'FIN',
+			'MKT',
+		],
+		postedtime:0,
 	},
 	{
-		profid:'040',
+		posttype:'faculty',
+		facultyid:'040',
 		lastname:'Hormozi',
 		firstname:'Alex',
-		deptid:'MKT',
+		programids:[
+			'FIN',
+			'MKT',
+		],
+		postedtime:0,
 	},
 
 	// {
-	// 	profid:'000',
+	// 	posttype:'faculty',
+	// 	facultyid:'000',
 	// 	lastname:'LastName',
 	// 	firstname:'FirstName',
-	// 	deptid:'XYZ',
+	// 	programids:[
+	// 		'XYZ',
+	// 	],
+	// 	postedtime:0,
 	// },
 
 ];
-
 
 
 
@@ -261,149 +469,291 @@ const profData = [
 const studentData = [
 
 	{
+		posttype:'student',
 		studentid:'001',
 		lastname:'Washington',
 		firstname:'George',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'002',
 		lastname:'Adams',
 		firstname:'John',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'003',
 		lastname:'Jefferson',
 		firstname:'Thomas',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'006',
 		lastname:'Jackson',
 		firstname:'Andrew',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'007',
 		lastname:'Adams',
 		firstname:'John Quincy',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'009',
 		lastname:'Monroe',
 		firstname:'James',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'016',
 		lastname:'Lincoln',
 		firstname:'Abraham',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'017',
 		lastname:'Johnson',
 		firstname:'Andrew',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'021',
 		lastname:'Coolidge',
 		firstname:'Calvin',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'023',
 		lastname:'Cleveland',
 		firstname:'Grover',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'025',
 		lastname:'Wilson',
 		firstname:'Woodrow',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'032',
 		lastname:'Truman',
 		firstname:'Harry S.',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'036',
 		lastname:'F. Kennedy',
 		firstname:'John',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'037',
 		lastname:'B. Johnson',
 		firstname:'Lyndon',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'038',
 		lastname:'Nixon',
 		firstname:'Richard M.',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'039',
 		lastname:'Carter',
 		firstname:'James',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'040',
 		lastname:'Reagan',
 		firstname:'Ronald',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'041',
 		lastname:'Bush',
 		firstname:'George H.W.',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'042',
 		lastname:'Clinton',
 		firstname:'Bill',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'043',
 		lastname:'Bush',
 		firstname:'George W.',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'044',
 		lastname:'Obama',
 		firstname:'Barack',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'045',
 		lastname:'Trump',
 		firstname:'Donald',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 	{
+		posttype:'student',
 		studentid:'046',
 		lastname:'Biden',
 		firstname:'Joseph',
-		concentrationid:'XYZ',
+		programid:'XYZ',
+		postedtime:0,
 	},
 
 	// {
+	// 	posttype:'student',
 	// 	studentid:'000',
 	// 	lastname:'LastName',
 	// 	firstname:'FirstName',
-	// 	concentrationid:'',
+	// 	programid:'',
+	// 	postedtime:0,
 	// },
 
 ];
+
+
+/*****/
+
+
+// Add additional user properties. 
+addProperties();
+
+
+/*****/
+
+
+// Define additional user properties. 
+function addProperties() {
+
+	// 
+	for(let faculty of facultyData) {
+	
+		// Get full name as title. 
+		faculty.title = getFullName(faculty);
+	
+		// Create function for full name. 
+		// faculty.fulltitle = getFullName.bind(faculty);
+		
+		// Get searchable faculty data. 
+		faculty.searchtags = getFacultyTags(faculty);
+	}
+
+	// 
+	for(let student of studentData) {
+	
+		// Get full name as title. 
+		student.title = getFullName(student);
+	
+		// Create function for full name. 
+		// student.fulltitle = getFullName.bind(student);
+		
+		// Get searchable student data. 
+		student.searchtags = getStudentTags(student);
+	}
+
+	/****/
+
+	// Define full name of given person. 
+	function getFullName(person) {
+	
+		// Get first name of person. 
+		let fname = person.firstname;
+	
+		// Get last name of person. 
+		let lname = person.lastname;
+	
+		// Get person id. 
+		// let id = person.personid;
+	
+		// Compile components of full name. 
+		return `${fname} ${lname}`;
+		// return `${fname} ${lname} [${id}]`;
+	}
+	
+	// Define searchable student tags. 
+	function getStudentTags(person) {
+	
+		// Get first name of person. 
+		let fname = person.firstname;
+	
+		// Get last name of person. 
+		let lname = person.lastname;
+
+		// Get id of given program. 
+		let progid = person.programid;
+		console.log(progid);
+
+		// Get name of given program. 
+		let progname = getProgramById(progid).title;
+	
+		// Compile components of searchable person tags. 
+		let result = [ lname, fname, progid, progname ];
+		
+		// Return string of tags. 
+		return result.join(' ');
+	}
+	
+	// Define searchable faculty tags. 
+	function getFacultyTags(person) {
+	
+		// Compile components of searchable person tags. 
+		let result = [ person.lastname, person.firstname, person.programids.join(' '), person.programids.map( (progid)=>(getProgramById(progid).title) ).join(' ') ];
+		
+		// Return string of tags. 
+		return result.join(' ');
+	}
+}
+

@@ -129,7 +129,7 @@ defaultResults.push(
 defaultResults.push(
 	{
 		setname:'Faculty',
-		setlist:profData,
+		setlist:facultyData,
 		posttype:{
 			sing:'faculty',
 			plural:'faculty',
