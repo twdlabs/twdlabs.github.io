@@ -56,7 +56,7 @@ function showPostPreviews(postData, numPosts, destination) {
 		let post = postData[i];
 
 		// Get post excerpt. 
-		let postexcerpt = getPostExcerpt(post.postcontent);
+		let postexcerpt = getPostExcerpt(post.content);
 		let d = post.posttime.date;
 		
 		// Append post element. 
@@ -80,7 +80,7 @@ function showPostPreviews(postData, numPosts, destination) {
 			
 				<!-- postname -->
 				<h4 class="postname">
-					<a href="javascript:void(0)">${post.posttitle}</a>
+					<a href="javascript:void(0)">${post.title}</a>
 				</h4>
 				<!-- /postname -->
 				

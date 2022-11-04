@@ -15,7 +15,7 @@ function showCourseData() {
 	console.log('Course data:',courseData);
 
 	for(let course of courseData) {
-		console.log(`${course.deptid} ${course.coursenumber}: ${course.coursename}`);
+		console.log(`${course.programid} ${course.coursenumber}: ${course.title}`);
 	}
 }
 
@@ -29,7 +29,7 @@ function getCourseById(courseid) {
 	for(let course of courseData) {
 
 		// Check for matching course. 
-		let matchingCourse = courseid == (course.deptid+' '+course.coursenumber);
+		let matchingCourse = courseid == (course.programid+' '+course.coursenumber);
 
 		// Return matching course if found. 
 		if( matchingCourse ) return course;
