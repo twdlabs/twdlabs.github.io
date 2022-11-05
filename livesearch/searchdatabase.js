@@ -4,678 +4,733 @@
 const defaultResults = [
 	{
 		setname:'Alphabet',
+		posttype:{
+			plural:'letters',
+			singular:'letter',
+		},
 		setlist: [
 			{
-				name:'Letter A',
-				link:'javascript:void(0)'
+				title:'Letter A',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter B',
-				link:'javascript:void(0)'
+				title:'Letter B',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter C',
-				link:'javascript:void(0)'
+				title:'Letter C',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter D',
-				link:'javascript:void(0)'
+				title:'Letter D',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter E',
-				link:'javascript:void(0)'
+				title:'Letter E',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter F',
-				link:'javascript:void(0)'
+				title:'Letter F',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter G',
-				link:'javascript:void(0)'
+				title:'Letter G',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter H',
-				link:'javascript:void(0)'
+				title:'Letter H',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter I',
-				link:'javascript:void(0)'
+				title:'Letter I',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter J',
-				link:'javascript:void(0)'
+				title:'Letter J',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter K',
-				link:'javascript:void(0)'
+				title:'Letter K',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter L',
-				link:'javascript:void(0)'
+				title:'Letter L',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter M',
-				link:'javascript:void(0)'
+				title:'Letter M',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter N',
-				link:'javascript:void(0)'
+				title:'Letter N',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter O',
-				link:'javascript:void(0)'
+				title:'Letter O',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter P',
-				link:'javascript:void(0)'
+				title:'Letter P',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter Q',
-				link:'javascript:void(0)'
+				title:'Letter Q',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter R',
-				link:'javascript:void(0)'
+				title:'Letter R',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter S',
-				link:'javascript:void(0)'
+				title:'Letter S',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter T',
-				link:'javascript:void(0)'
+				title:'Letter T',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter U',
-				link:'javascript:void(0)'
+				title:'Letter U',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter V',
-				link:'javascript:void(0)'
+				title:'Letter V',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter W',
-				link:'javascript:void(0)'
+				title:'Letter W',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter X',
-				link:'javascript:void(0)'
+				title:'Letter X',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter Y',
-				link:'javascript:void(0)'
+				title:'Letter Y',
+				content:'Hello there world'
 			},
 			{
-				name:'Letter Z',
-				link:'javascript:void(0)'
+				title:'Letter Z',
+				content:'Hello there world'
 			},
-		]
+		],
 	},
 	{
 		setname:'U.S. Presidents',
+		posttype:{
+			plural:'presidents',
+			singular:'president',
+		},
 		setlist: [
 			{
-				name:'George Washington',
-				link:'javascript:void(0)'
+				title:'George Washington',
+				content:'Hello there world'
 			},
 			{
-				name:'John Adams',
-				link:'javascript:void(0)'
+				title:'John Adams',
+				content:'Hello there world'
 			},
 			{
-				name:'Thomas Jefferson',
-				link:'javascript:void(0)'
+				title:'Thomas Jefferson',
+				content:'Hello there world'
 			},
 			{
-				name:'Andrew Jackson',
-				link:'javascript:void(0)'
+				title:'Andrew Jackson',
+				content:'Hello there world'
 			},
 			{
-				name:'John Quincy Adams',
-				link:'javascript:void(0)'
+				title:'John Quincy Adams',
+				content:'Hello there world'
 			},
 			{
-				name:'James Monroe',
-				link:'javascript:void(0)'
+				title:'James Monroe',
+				content:'Hello there world'
 			},
 			{
-				name:'Abraham Lincoln',
-				link:'javascript:void(0)'
+				title:'Abraham Lincoln',
+				content:'Hello there world'
 			},
 			{
-				name:'Andrew Johnson',
-				link:'javascript:void(0)'
+				title:'Andrew Johnson',
+				content:'Hello there world'
 			},
 			{
-				name:'Calvin Coolidge',
-				link:'javascript:void(0)'
+				title:'Calvin Coolidge',
+				content:'Hello there world'
 			},
 			{
-				name:'Grover Cleveland',
-				link:'javascript:void(0)'
+				title:'James A. Garfield',
+				content:'Hello there world'
 			},
 			{
-				name:'Woodrow Wilson',
-				link:'javascript:void(0)'
+				title:'Grover Cleveland',
+				content:'Hello there world'
 			},
 			{
-				name:'Harry S. Truman',
-				link:'javascript:void(0)'
+				title:'Woodrow Wilson',
+				content:'Hello there world'
 			},
 			{
-				name:'John F. Kennedy',
-				link:'javascript:void(0)'
+				title:'Harry S. Truman',
+				content:'Hello there world'
 			},
 			{
-				name:'Lyndon B. Johnson',
-				link:'javascript:void(0)'
+				title:'John F. Kennedy',
+				content:'Hello there world'
 			},
 			{
-				name:'Richard M. Nixon',
-				link:'javascript:void(0)'
+				title:'Lyndon B. Johnson',
+				content:'Hello there world'
 			},
 			{
-				name:'James Carter',
-				link:'javascript:void(0)'
+				title:'Richard M. Nixon',
+				content:'Hello there world'
 			},
 			{
-				name:'Ronald Reagan',
-				link:'javascript:void(0)'
+				title:'James Carter',
+				content:'Hello there world'
 			},
 			{
-				name:'George H.W. Bush',
-				link:'javascript:void(0)'
+				title:'Ronald Reagan',
+				content:'Hello there world'
 			},
 			{
-				name:'Bill Clinton',
-				link:'javascript:void(0)'
+				title:'George H.W. Bush',
+				content:'Hello there world'
 			},
 			{
-				name:'George W. Bush',
-				link:'javascript:void(0)'
+				title:'Bill Clinton',
+				content:'Hello there world'
 			},
 			{
-				name:'Barack Obama',
-				link:'javascript:void(0)'
+				title:'George W. Bush',
+				content:'Hello there world'
 			},
 			{
-				name:'Donald Trump',
-				link:'javascript:void(0)'
+				title:'Barack Obama',
+				content:'Hello there world'
 			},
 			{
-				name:'Joseph Biden',
-				link:'javascript:void(0)'
+				title:'Donald Trump',
+				content:'Hello there world'
 			},
-		]
+			{
+				title:'Joseph Biden',
+				content:'Hello there world'
+			},
+		],
 	},
 	{
 		setname:'American Universities',
+		posttype:{
+			plural:'universities',
+			singular:'university',
+		},
 		setlist: [
 			{
-				name:'Delta College',
-				link:'javascript:void(0)'
+				title:'Delta College',
+				content:'Hello there world'
 			},
 			{
-				name:'Saginaw Valley State University',
-				link:'javascript:void(0)'
+				title:'Saginaw Valley State University',
+				content:'Hello there world'
 			},
 			{
-				name:'University of Michigan',
-				link:'javascript:void(0)'
+				title:'University of Michigan',
+				content:'Hello there world'
 			},
 			{
-				name:'Michigan State University',
-				link:'javascript:void(0)'
+				title:'Michigan State University',
+				content:'Hello there world'
 			},
 			{
-				name:'Central Michigan University',
-				link:'javascript:void(0)'
+				title:'Central Michigan University',
+				content:'Hello there world'
 			},
 			{
-				name:'University of Chicago',
-				link:'javascript:void(0)'
+				title:'University of Chicago',
+				content:'Hello there world'
 			},
 			{
-				name:'DePaul University',
-				link:'javascript:void(0)'
+				title:'DePaul University',
+				content:'Hello there world'
 			},
 			{
-				name:'University of Illinois',
-				link:'javascript:void(0)'
+				title:'University of Illinois',
+				content:'Hello there world'
 			},
 			{
-				name:'University of Pittsburgh',
-				link:'javascript:void(0)'
+				title:'University of Pittsburgh',
+				content:'Hello there world'
 			},
 			{
-				name:'Duquesne University',
-				link:'javascript:void(0)'
+				title:'Duquesne University',
+				content:'Hello there world'
 			},
 			{
-				name:'University of Pennsylvania',
-				link:'javascript:void(0)'
+				title:'University of Pennsylvania',
+				content:'Hello there world'
 			},
 			{
-				name:'Pennsylvania State University',
-				link:'javascript:void(0)'
+				title:'Pennsylvania State University',
+				content:'Hello there world'
 			},
 			{
-				name:'New York University',
-				link:'javascript:void(0)'
+				title:'New York University',
+				content:'Hello there world'
 			},
 			{
-				name:'University of Southern California',
-				link:'javascript:void(0)'
+				title:'University of Southern California',
+				content:'Hello there world'
 			},
 			{
-				name:'Rutgers University',
-				link:'javascript:void(0)'
+				title:'Rutgers University',
+				content:'Hello there world'
 			},
 			{
-				name:'Princeton University',
-				link:'javascript:void(0)'
+				title:'Princeton University',
+				content:'Hello there world'
 			},
 			{
-				name:'Kennesaw University',
-				link:'javascript:void(0)'
+				title:'Kennesaw University',
+				content:'Hello there world'
 			},
 			{
-				name:'Cornell University',
-				link:'javascript:void(0)'
+				title:'Cornell University',
+				content:'Hello there world'
 			},
 			{
-				name:'Tufts University',
-				link:'javascript:void(0)'
+				title:'Tufts University',
+				content:'Hello there world'
 			},
 			{
-				name:'Georgia State University',
-				link:'javascript:void(0)'
+				title:'Georgia State University',
+				content:'Hello there world'
 			},
 			{
-				name:'Louisiana State University',
-				link:'javascript:void(0)'
+				title:'Louisiana State University',
+				content:'Hello there world'
 			},
 			{
-				name:'Florida State University',
-				link:'javascript:void(0)'
+				title:'Florida State University',
+				content:'Hello there world'
 			},
 			{
-				name:'Harvard University',
-				link:'javascript:void(0)'
+				title:'Harvard University',
+				content:'Hello there world'
 			},
-		]
+		],
 	},
 	{
 		setname:'Social Media Platforms',
+		posttype:{
+			plural:'platforms',
+			singular:'platform',
+		},
 		setlist: [
 			{
-				name:'Friendster',
-				link:'javascript:void(0)'
+				title:'Friendster',
+				content:'Hello there world'
 			},
 			{
-				name:'MySpace',
-				link:'javascript:void(0)'
+				title:'MySpace',
+				content:'Hello there world'
 			},
 			{
-				name:'Black Planet',
-				link:'javascript:void(0)'
+				title:'Black Planet',
+				content:'Hello there world'
 			},
 			{
-				name:'Facebook',
-				link:'javascript:void(0)'
+				title:'Facebook',
+				content:'Hello there world'
 			},
 			{
-				name:'Twitter',
-				link:'javascript:void(0)'
+				title:'Twitter',
+				content:'Hello there world'
 			},
 			{
-				name:'Instagram',
-				link:'javascript:void(0)'
+				title:'Instagram',
+				content:'Hello there world'
 			},
 			{
-				name:'Snapchat',
-				link:'javascript:void(0)'
+				title:'Snapchat',
+				content:'Hello there world'
 			},
 			{
-				name:'YouTube',
-				link:'javascript:void(0)'
+				title:'YouTube',
+				content:'Hello there world'
 			},
 			{
-				name:'Meerkat',
-				link:'javascript:void(0)'
+				title:'Meerkat',
+				content:'Hello there world'
 			},
 			{
-				name:'Tinder',
-				link:'javascript:void(0)'
+				title:'Tinder',
+				content:'Hello there world'
 			},
 			{
-				name:'Bumble',
-				link:'javascript:void(0)'
+				title:'Bumble',
+				content:'Hello there world'
 			},
 			{
-				name:'Rumble',
-				link:'javascript:void(0)'
+				title:'Rumble',
+				content:'Hello there world'
 			},
 			{
-				name:'TikTok',
-				link:'javascript:void(0)'
+				title:'TikTok',
+				content:'Hello there world'
 			},
 			{
-				name:'musically',
-				link:'javascript:void(0)'
+				title:'musically',
+				content:'Hello there world'
 			},
 			{
-				name:'Periscope',
-				link:'javascript:void(0)'
+				title:'Periscope',
+				content:'Hello there world'
 			},
 			{
-				name:'LinkedIn',
-				link:'javascript:void(0)'
+				title:'LinkedIn',
+				content:'Hello there world'
 			},
 			{
-				name:'Speakeasy',
-				link:'javascript:void(0)'
+				title:'Speakeasy',
+				content:'Hello there world'
 			},
 			{
-				name:'FB Messenger',
-				link:'javascript:void(0)'
+				title:'FB Messenger',
+				content:'Hello there world'
 			},
 			{
-				name:'WhatsApp',
-				link:'javascript:void(0)'
+				title:'WhatsApp',
+				content:'Hello there world'
 			},
-		]
-	},
-	// {
-	// 	setname:'Advertising Platforms',
-	// 	setlist: [
-	// 		{
-	// 			name:'Google Ads',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'Facebook Ads',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'TikTok Ads',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 	]
-	// },
-	{
-		setname:'Days of the Week',
-		setlist: [
-			{
-				name:'Monday',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Tuesday',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Wednesday',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Thursday',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Friday',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Saturday',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Sunday',
-				link:'javascript:void(0)'
-			},
-		]
-	},
-	{
-		setname:'Seasons',
-		setlist: [
-			{
-				name:'Spring',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Summer',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Fall',
-				link:'javascript:void(0)'
-			},
-			{
-				name:'Winter',
-				link:'javascript:void(0)'
-			},
-		]
+		],
 	},
 	{
 		setname:'Months of the Year',
+		posttype:{
+			plural:'months',
+			singular:'month',
+		},
 		setlist: [
 			{
-				name:'January',
-				link:'javascript:void(0)'
+				title:'January',
+				content:'Hello there world'
 			},
 			{
-				name:'February',
-				link:'javascript:void(0)'
+				title:'February',
+				content:'Hello there world'
 			},
 			{
-				name:'March',
-				link:'javascript:void(0)'
+				title:'March',
+				content:'Hello there world'
 			},
 			{
-				name:'April',
-				link:'javascript:void(0)'
+				title:'April',
+				content:'Hello there world'
 			},
 			{
-				name:'May',
-				link:'javascript:void(0)'
+				title:'May',
+				content:'Hello there world'
 			},
 			{
-				name:'June',
-				link:'javascript:void(0)'
+				title:'June',
+				content:'Hello there world'
 			},
 			{
-				name:'July',
-				link:'javascript:void(0)'
+				title:'July',
+				content:'Hello there world'
 			},
 			{
-				name:'August',
-				link:'javascript:void(0)'
+				title:'August',
+				content:'Hello there world'
 			},
 			{
-				name:'September',
-				link:'javascript:void(0)'
+				title:'September',
+				content:'Hello there world'
 			},
 			{
-				name:'October',
-				link:'javascript:void(0)'
+				title:'October',
+				content:'Hello there world'
 			},
 			{
-				name:'November',
-				link:'javascript:void(0)'
+				title:'November',
+				content:'Hello there world'
 			},
 			{
-				name:'December',
-				link:'javascript:void(0)'
+				title:'December',
+				content:'Hello there world'
 			},
-		]
+		],
 	},
 	{
 		setname:'Astrological Zodiac Signs',
+		posttype:{
+			plural:'zodiac signs',
+			singular:'zodiac sign',
+		},
 		setlist: [
 			{
-				name:'Capricorn',
-				link:'javascript:void(0)'
+				title:'Capricorn',
+				content:'Hello there world'
 			},
 			{
-				name:'Aquarius',
-				link:'javascript:void(0)'
+				title:'Aquarius',
+				content:'Hello there world'
 			},
 			{
-				name:'Pisces',
-				link:'javascript:void(0)'
+				title:'Pisces',
+				content:'Hello there world'
 			},
 			{
-				name:'Aries',
-				link:'javascript:void(0)'
+				title:'Aries',
+				content:'Hello there world'
 			},
 			{
-				name:'Taurus',
-				link:'javascript:void(0)'
+				title:'Taurus',
+				content:'Hello there world'
 			},
 			{
-				name:'Gemini',
-				link:'javascript:void(0)'
+				title:'Gemini',
+				content:'Hello there world'
 			},
 			{
-				name:'Cancer',
-				link:'javascript:void(0)'
+				title:'Cancer',
+				content:'Hello there world'
 			},
 			{
-				name:'Leo',
-				link:'javascript:void(0)'
+				title:'Leo',
+				content:'Hello there world'
 			},
 			{
-				name:'Virgo',
-				link:'javascript:void(0)'
+				title:'Virgo',
+				content:'Hello there world'
 			},
 			{
-				name:'Libra',
-				link:'javascript:void(0)'
+				title:'Libra',
+				content:'Hello there world'
 			},
 			{
-				name:'Scorpio',
-				link:'javascript:void(0)'
+				title:'Scorpio',
+				content:'Hello there world'
 			},
 			{
-				name:'Saggitarius',
-				link:'javascript:void(0)'
+				title:'Saggitarius',
+				content:'Hello there world'
 			},
-		]
+		],
 	},
 	{
 		setname:'Numbers',
+		posttype:{
+			plural:'numbers',
+			singular:'number',
+		},
 		setlist: [
 			{
-				name:'One',
-				link:'javascript:void(0)'
+				title:'One',
+				content:'Hello there world'
 			},
 			{
-				name:'Two',
-				link:'javascript:void(0)'
+				title:'Two',
+				content:'Hello there world'
 			},
 			{
-				name:'Three',
-				link:'javascript:void(0)'
+				title:'Three',
+				content:'Hello there world'
 			},
 			{
-				name:'Four',
-				link:'javascript:void(0)'
+				title:'Four',
+				content:'Hello there world'
 			},
 			{
-				name:'Five',
-				link:'javascript:void(0)'
+				title:'Five',
+				content:'Hello there world'
 			},
 			{
-				name:'Six',
-				link:'javascript:void(0)'
+				title:'Six',
+				content:'Hello there world'
 			},
 			{
-				name:'Seven',
-				link:'javascript:void(0)'
+				title:'Seven',
+				content:'Hello there world'
 			},
 			{
-				name:'Eight',
-				link:'javascript:void(0)'
+				title:'Eight',
+				content:'Hello there world'
 			},
 			{
-				name:'Nine',
-				link:'javascript:void(0)'
+				title:'Nine',
+				content:'Hello there world'
 			},
 			{
-				name:'Ten',
-				link:'javascript:void(0)'
+				title:'Ten',
+				content:'Hello there world'
 			},
-		]
+		],
 	},
 	{
 		setname:'Planets',
+		posttype:{
+			plural:'planets',
+			singular:'planet',
+		},
 		setlist: [
 			{
-				name:'Mercury',
-				link:'javascript:void(0)'
+				title:'Mercury',
+				content:'Hello there world'
 			},
 			{
-				name:'Venus',
-				link:'javascript:void(0)'
+				title:'Venus',
+				content:'Hello there world'
 			},
 			{
-				name:'Earth',
-				link:'javascript:void(0)'
+				title:'Earth',
+				content:'Hello there world'
 			},
 			{
-				name:'Mars',
-				link:'javascript:void(0)'
+				title:'Mars',
+				content:'Hello there world'
 			},
 			{
-				name:'Jupiter',
-				link:'javascript:void(0)'
+				title:'Jupiter',
+				content:'Hello there world'
 			},
 			{
-				name:'Saturn',
-				link:'javascript:void(0)'
+				title:'Saturn',
+				content:'Hello there world'
 			},
 			{
-				name:'Uranus',
-				link:'javascript:void(0)'
+				title:'Uranus',
+				content:'Hello there world'
 			},
 			{
-				name:'Neptune',
-				link:'javascript:void(0)'
+				title:'Neptune',
+				content:'Hello there world'
 			},
 			{
-				name:'Pluto',
-				link:'javascript:void(0)'
+				title:'Pluto',
+				content:'Hello there world'
 			},
-		]
+		],
 	},
+	{
+		setname:'Days of the Week',
+		posttype:{
+			plural:'days',
+			singular:'day',
+		},
+		setlist: [
+			{
+				title:'Monday',
+				content:'Hello there world'
+			},
+			{
+				title:'Tuesday',
+				content:'Hello there world'
+			},
+			{
+				title:'Wednesday',
+				content:'Hello there world'
+			},
+			{
+				title:'Thursday',
+				content:'Hello there world'
+			},
+			{
+				title:'Friday',
+				content:'Hello there world'
+			},
+			{
+				title:'Saturday',
+				content:'Hello there world'
+			},
+			{
+				title:'Sunday',
+				content:'Hello there world'
+			},
+		],
+	},
+	{
+		setname:'Seasons',
+		posttype:{
+			plural:'seasons',
+			singular:'season',
+		},
+		setlist: [
+			{
+				title:'Spring',
+				content:'Hello there world'
+			},
+			{
+				title:'Summer',
+				content:'Hello there world'
+			},
+			{
+				title:'Fall',
+				content:'Hello there world'
+			},
+			{
+				title:'Winter',
+				content:'Hello there world'
+			},
+		],
+	},
+
 	// {
 	// 	setname:'Set Name',
 	// 	setlist: [
 	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
+	// 			title:'XyzResult',
+	// 			content:'Hello there world'
 	// 		},
 	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
+	// 			title:'XyzResult',
+	// 			content:'Hello there world'
 	// 		},
 	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
+	// 			title:'XyzResult',
+	// 			content:'Hello there world'
 	// 		},
 	// 	]
 	// },
 ];
+
+
+/*****/
+
+
+// Add additional result properties. 
+addResultProperties();
+// console.log(defaultResults);
+
+
+/*****/
+
+
+// Define additional result properties. 
+function addResultProperties() {
+
+	// Go thru all result sets. 
+	for(let resultSet of defaultResults) {
+
+		// Go thru all result items in current set. 
+		for(let resultitem of resultSet.setlist) {
+			
+			// Get searchable result data. 
+			resultitem.searchtags = getResultTags(resultitem);
+		}
+	}
+
+	/****/
+	
+	// Define searchable result tags. 
+	function getResultTags(resultitem) {
+	
+		// Compile components of searchable result tags. 
+		let result = [ resultitem.title, resultitem.content ];
+		
+		// 
+		return result.join(' ');
+	}
+}
