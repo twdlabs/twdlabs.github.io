@@ -7,6 +7,8 @@
 
 :root {
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+	--picsize:5rem;
+	--picspace:1rem;
 	--grey:#CCC;
 	--black:#444;
 	--darkgrey:#AAA;
@@ -26,19 +28,23 @@ div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;
 
 /* div#container main.user {display:none;} */
 div#container main.user {position:fixed; top:0; right:0; /* padding:1rem; */ border-radius:.5rem; margin:1rem;}
-div#container main.user {display:flex; flex-direction:column; align-items:flex-start; box-shadow:var(--boxshadow);}
-div#container main.user a.profile {width:4rem; border-radius:50%; overflow:hidden; margin:0 1rem; box-shadow:var(--boxshadow);}
+div#container main.user {display:flex; flex-direction:column; align-items:flex-end; /* box-shadow:var(--boxshadow); */}
+div#container main.user a.profile {width:var(--picsize); border-radius:50%; overflow:hidden; margin:var(--picspace); box-shadow:var(--boxshadow);}
 div#container main.user a.profile img.avatar {display:block; height:100%; width:100%; object-fit:cover;}
-div#container main.user nav.menu {background-color:white; position:relative; width:16rem; max-width:100%; padding:.5rem 1rem; border-radius:1rem; margin:.75rem 0 0;}
-div#container main.user nav.menu::after {content:''; position: absolute; bottom:100%; left:2.5rem; transform:translateX(50%); border:.75rem solid transparent; border-bottom-color:white;}
+div#container main.user nav.menu {background-color:white; position:relative; width:16rem; max-width:100%; padding:.5rem 1rem; border-radius:1rem; margin-top:var(--picspace);}
+div#container main.user nav.menu {opacity:0; visibility:hidden; pointer-events:none; transform:translateY(2rem); transition:.5s;}
+div#container main.user nav.menu.active {opacity:1; visibility:visible; pointer-events:initial; transform:none;}
+div#container main.user nav.menu::after {content:''; position: absolute; bottom:100%; right:calc(.5*var(--picsize) + var(--picspace)); transform:translateX(50%); border:.75rem solid transparent; border-bottom-color:white;}
 div#container main.user nav.menu h2.name {color:var(--black); text-align:center; font-size:1.5rem; font-weight:300; margin-top:1.75rem;}
 div#container main.user nav.menu p.subtitle {color:var(--darkgrey); text-align:center; font-weight:300;}
 div#container main.user nav.menu ul.navlist {list-style:none; margin-top:1.25rem;}
 div#container main.user nav.menu ul.navlist li.navitem {border-top: 1px solid var(--lightgrey);}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
 div#container main.user nav.menu ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; align-items:center; padding:.75rem 0;}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink svg.icon {color:var(--lightblack); font-size:1.625rem;}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink span.caption {color:var(--black); font-size:1.25rem; font-weight:300; margin-left:.75rem;}
+div#container main.user nav.menu ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container main.user nav.menu ul.navlist li.navitem a.navlink svg.icon {color:var(--lightblack); transition:.25s; font-size:1.625rem;}
+div#container main.user nav.menu ul.navlist li.navitem a.navlink span.caption {color:var(--black); transition:.25s; font-size:1.25rem; font-weight:300; margin-left:.75rem;}
+div#container main.user nav.menu ul.navlist li.navitem a.navlink:hover svg.icon {color:var(--black);}
+div#container main.user nav.menu ul.navlist li.navitem a.navlink:hover span.caption {color:navy;}
 
 
 /* Tablet Screen */
