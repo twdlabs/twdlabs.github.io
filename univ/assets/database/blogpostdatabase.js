@@ -9,7 +9,7 @@ const blogPostData = [
 
 	{
 		posttype:'post',
-		postid:-1,
+		postid:'001',
 		title: 'Hi world',
 		authorid:0,
 		postedtime:0,
@@ -25,7 +25,7 @@ const blogPostData = [
 	},
 	{
 		posttype:'post',
-		postid:-1,
+		postid:'002',
 		title: 'Hey world',
 		authorid:2,
 		postedtime:0,
@@ -41,7 +41,7 @@ const blogPostData = [
 	},
 	{
 		posttype:'post',
-		postid:-1,
+		postid:'003',
 		title: 'Hello world',
 		authorid:3,
 		postedtime:0,
@@ -57,7 +57,7 @@ const blogPostData = [
 	},
 	{
 		posttype:'post',
-		postid:-1,
+		postid:'004',
 		title: 'Greetings world',
 		authorid:0,
 		postedtime:0,
@@ -73,4 +73,41 @@ const blogPostData = [
 	},
 	
 ];
+
+
+/*****/
+
+
+// Add additional post properties. 
+addPostProperties();
+
+
+/*****/
+
+
+// Define additional post properties. 
+function addPostProperties() {
+
+	// Go thru all blog posts. 
+	for(let post of blogPostData) {
+		
+		// Get searchable post data. 
+		post.searchtags = getPostTags(post);
+	}
+
+	/****/
+	
+	// Define searchable post tags. 
+	function getPostTags(post) {
+
+		// Get post author. 
+		let author = userData[post.authorid];
+	
+		// Compile components of searchable post tags. 
+		let result = [ author.username, author.lastname, author.firstname, post.title, post.content ];
+		
+		// 
+		return result.join(' ');
+	}
+}
 

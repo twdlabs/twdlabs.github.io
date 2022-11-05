@@ -1,105 +1,66 @@
 
 
 // Define default search results, the basis of final search results. 
-const defaultResults = [
+const defaultResults = {
 
-	// {
+	// xyz: {
 	// 	setname:'Set Name',
 	// 	setlist: [
 	// 		{
 	// 			name:'XyzResult',
 	// 			link:'javascript:void(0)'
 	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
 	// 	]
 	// },
 
-	// {
-	// 	setname:'Courses',
-	// 	setlist: [
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 	]
-	// },
-	// {
-	// 	setname:'Students',
-	// 	setlist: [
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 	]
-	// },
-	// {
-	// 	setname:'Faculty',
-	// 	setlist: [
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 	]
-	// },
-	// {
-	// 	setname:'Programs',
-	// 	setlist: [
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 		{
-	// 			name:'XyzResult',
-	// 			link:'javascript:void(0)'
-	// 		},
-	// 	]
-	// },
-	// {
+	// blog: {
 	// 	setname:'Blog Posts',
 	// 	setlist: [
 	// 		{
 	// 			name:'XyzResult',
 	// 			link:'javascript:void(0)'
 	// 		},
+	// 	]
+	// },
+	// programs: {
+	// 	setname:'Programs',
+	// 	setlist: [
 	// 		{
 	// 			name:'XyzResult',
 	// 			link:'javascript:void(0)'
 	// 		},
+	// 	]
+	// },
+	// courses: {
+	// 	setname:'Courses',
+	// 	setlist: [
+	// 		{
+	// 			name:'XyzResult',
+	// 			link:'javascript:void(0)'
+	// 		},
+	// 	]
+	// },
+	// events: {
+	// 	setname:'Events',
+	// 	setlist: [
+	// 		{
+	// 			name:'XyzResult',
+	// 			link:'javascript:void(0)'
+	// 		},
+	// 	]
+	// },
+	// faculty: {
+	// 	setname:'Faculty',
+	// 	setlist: [
+	// 		{
+	// 			name:'XyzResult',
+	// 			link:'javascript:void(0)'
+	// 		},
+	// 	]
+	// },
+	// students: {
+	// 	setname:'Students',
+	// 	setlist: [
 	// 		{
 	// 			name:'XyzResult',
 	// 			link:'javascript:void(0)'
@@ -107,82 +68,76 @@ const defaultResults = [
 	// 	]
 	// },
 	
-];
+};
 
 
 
-// TODO: Add all other databases as components of results database. 
+// Add all other databases as components of results database. 
 
 // Add blog posts to list of default results. 
-defaultResults.push(
-	{
-		setname:'Blog Posts',
-		setlist:blogPostData,
-		posttype:{
-			sing:'blog post',
-			plural:'blog posts',
-		},
+defaultResults.blog = 
+{
+	setname:'Blog Posts',
+	setlist:blogPostData,
+	posttype:{
+		plural:'blog posts',
+		singular:'blog post',
 	},
-);
+};
 
 // Add programs to list of default results. 
-defaultResults.push(
-	{
-		setname:'Programs',
-		setlist:programData,
-		posttype:{
-			sing:'program',
-			plural:'programs',
-		},
+defaultResults.programs = 
+{
+	setname:'Programs',
+	setlist:programData,
+	posttype:{
+		plural:'programs',
+		singular:'program',
 	},
-);
+};
 
 // Add courses to list of default results. 
-defaultResults.push(
-	{
-		setname:'Courses',
-		setlist:courseData,
-		posttype:{
-			sing:'course',
-			plural:'courses',
-		},
+defaultResults.courses = 
+{
+	setname:'Courses',
+	setlist:courseData,
+	posttype:{
+		plural:'courses',
+		singular:'course',
 	},
-);
+};
 
 // Add events to list of default results. 
-defaultResults.push(
-	{
-		setname:'Events',
-		setlist:eventData,
-		posttype:{
-			sing:'event',
-			plural:'events',
-		},
+defaultResults.events = 
+{
+	setname:'Events',
+	setlist:eventData,
+	posttype:{
+		plural:'events',
+		singular:'event',
 	},
-);
+};
 
 // Add faculty to list of default results. 
-defaultResults.push(
-	{
-		setname:'Faculty',
-		setlist:facultyData,
-		posttype:{
-			sing:'faculty',
-			plural:'faculty',
-		},
+defaultResults.faculty = 
+{
+	setname:'Faculty',
+	setlist:facultyData,
+	posttype:{
+		plural:'faculty',
+		singular:'faculty',
 	},
-);
+};
 
 // Add students to list of default results. 
-defaultResults.push(
-	{
-		setname:'Students',
-		setlist:studentData,
-		posttype:{
-			sing:'student',
-			plural:'students',
-		},
+defaultResults.students = 
+{
+	setname:'Students',
+	setlist:studentData,
+	posttype:{
+		plural:'students',
+		singular:'student',
 	},
-);
+};
 
 

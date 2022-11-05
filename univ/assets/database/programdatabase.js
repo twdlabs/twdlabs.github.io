@@ -158,6 +158,37 @@ const programData = [
 /*****/
 
 
+// Add additional program properties. 
+addProgramProperties();
+
+
+/*****/
+
+
+// Define additional program properties. 
+function addProgramProperties() {
+
+	// Go thru all programs. 
+	for(let program of programData) {
+		
+		// Get searchable program data. 
+		program.searchtags = getProgramTags(program);
+	}
+
+	/****/
+	
+	// Define searchable program tags. 
+	function getProgramTags(program) {
+	
+		// Compile components of searchable program tags. 
+		let result = [ program.programid, program.title, program.content ];
+		
+		// 
+		return result.join(' ');
+	}
+}
+
+
 // Get program by id. 
 function getProgramById(programid) {
 
@@ -168,7 +199,7 @@ function getProgramById(programid) {
 	for(let program of programData) {
 
 		// Check for matching program. 
-		let matchingProgram = programid == program.programid;
+		let matchingProgram = (programid == program.programid);
 
 		// Return matching program if found. 
 		if( matchingProgram ) return program;

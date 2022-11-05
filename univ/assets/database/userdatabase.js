@@ -50,7 +50,7 @@ addUserProperties();
 // Define additional user properties. 
 function addUserProperties() {
 
-	// 
+	// Go thru all users. 
 	for(let user of userData) {
 	
 		// Get full name as title. 

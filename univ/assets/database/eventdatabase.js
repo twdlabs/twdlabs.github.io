@@ -5,7 +5,7 @@ const eventData = [
 
 	{
 		posttype:'event',
-		eventid:-1,
+		eventid:'001',
 		title: 'Accounting Conference',
 		eventtime:0,
 		postedtime:0,
@@ -21,7 +21,7 @@ const eventData = [
 	},
 	{
 		posttype:'event',
-		eventid:-1,
+		eventid:'002',
 		title: 'Mathematics Competition',
 		eventtime:0,
 		postedtime:0,
@@ -37,7 +37,7 @@ const eventData = [
 	},
 	{
 		posttype:'event',
-		eventid:-1,
+		eventid:'003',
 		title: 'Biology Experiment',
 		eventtime:0,
 		postedtime:0,
@@ -53,7 +53,7 @@ const eventData = [
 	},
 	{
 		posttype:'event',
-		eventid:-1,
+		eventid:'004',
 		title: 'Physics Expo',
 		eventtime:0,
 		postedtime:0,
@@ -69,4 +69,38 @@ const eventData = [
 	},
 	
 ];
+
+
+/*****/
+
+
+// Add additional event properties. 
+addEventProperties();
+
+
+/*****/
+
+
+// Define additional event properties. 
+function addEventProperties() {
+
+	// Go thru all events. 
+	for(let events of eventData) {
+		
+		// Get searchable event data. 
+		events.searchtags = getEventTags(events);
+	}
+
+	/****/
+	
+	// Define searchable event tags. 
+	function getEventTags(event) {
+	
+		// Compile components of searchable event tags. 
+		let result = [ event.title, event.content ];
+		
+		// 
+		return result.join(' ');
+	}
+}
 

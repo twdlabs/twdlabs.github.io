@@ -416,7 +416,7 @@ addCourseProperties();
 // Define additional course properties. 
 function addCourseProperties() {
 
-	// 
+	// Go thru all courses. 
 	for(let course of courseData) {
 	
 		// Get full course title. 
@@ -458,3 +458,23 @@ function addCourseProperties() {
 	}
 }
 
+
+// Get course by id. 
+function getCourseById(courseid) {
+
+	// Ensure capitalization of course id. 
+	courseid = courseid.toUpperCase();
+
+	// Go thru all course data items. 
+	for(let course of courseData) {
+
+		// Check for matching course. 
+		let matchingCourse = (courseid == (course.programid+' '+course.coursenumber));
+
+		// Return matching course if found. 
+		if( matchingCourse ) return course;
+	}
+
+	// Return nothing if course not found. 
+	return null;
+}
