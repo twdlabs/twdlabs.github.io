@@ -291,8 +291,8 @@ class Search {
 				// Get archive url. 
 				let archiveUrl = 'javascript:void(0)';
 
-				// Get post type name (plural). 
-				let postTypePlural = 'xyzposts';
+				// Get plural name of current post type. 
+				let postTypePlural = resultSet.posttype.plural;
 
 				// Create empty result set. 
 				finalSearchResults += `
