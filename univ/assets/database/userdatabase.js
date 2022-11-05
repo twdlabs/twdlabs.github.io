@@ -41,14 +41,14 @@ const userData = [
 
 
 // Add additional user properties. 
-addProperties();
+addUserProperties();
 
 
 /*****/
 
 
 // Define additional user properties. 
-function addProperties() {
+function addUserProperties() {
 
 	// 
 	for(let user of userData) {

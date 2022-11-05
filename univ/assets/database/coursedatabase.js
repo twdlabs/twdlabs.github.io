@@ -406,15 +406,15 @@ const courseData = [
 /*****/
 
 
-// Add additional user properties. 
-addProperties();
+// Add additional course properties. 
+addCourseProperties();
 
 
 /*****/
 
 
-// Define additional user properties. 
-function addProperties() {
+// Define additional course properties. 
+function addCourseProperties() {
 
 	// 
 	for(let course of courseData) {

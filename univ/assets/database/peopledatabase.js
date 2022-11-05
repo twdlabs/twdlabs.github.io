@@ -669,15 +669,15 @@ const studentData = [
 /*****/
 
 
-// Add additional user properties. 
-addProperties();
+// Add additional people properties. 
+addPeopleProperties();
 
 
 /*****/
 
 
-// Define additional user properties. 
-function addProperties() {
+// Define additional people properties. 
+function addPeopleProperties() {
 
 	// 
 	for(let faculty of facultyData) {
