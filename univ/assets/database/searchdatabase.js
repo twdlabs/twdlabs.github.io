@@ -79,6 +79,7 @@ defaultResults.blog =
 {
 	setname:'Blog Posts',
 	setlist:blogPostData,
+	foldername:'resources/blog',
 	posttype:{
 		plural:'blog posts',
 		singular:'blog post',
@@ -90,6 +91,7 @@ defaultResults.programs =
 {
 	setname:'Programs',
 	setlist:programData,
+	foldername:'resources/programs',
 	posttype:{
 		plural:'programs',
 		singular:'program',
@@ -101,6 +103,7 @@ defaultResults.courses =
 {
 	setname:'Courses',
 	setlist:courseData,
+	foldername:'resources/courses',
 	posttype:{
 		plural:'courses',
 		singular:'course',
@@ -112,6 +115,7 @@ defaultResults.events =
 {
 	setname:'Events',
 	setlist:eventData,
+	foldername:'resources/events',
 	posttype:{
 		plural:'events',
 		singular:'event',
@@ -123,6 +127,7 @@ defaultResults.faculty =
 {
 	setname:'Faculty',
 	setlist:facultyData,
+	foldername:'resources/faculty',
 	posttype:{
 		plural:'faculty',
 		singular:'faculty',
@@ -134,6 +139,7 @@ defaultResults.students =
 {
 	setname:'Students',
 	setlist:studentData,
+	foldername:'resources/students',
 	posttype:{
 		plural:'students',
 		singular:'student',
