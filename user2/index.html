@@ -12,7 +12,7 @@
 		<title>User Navigation</title>
 
 		<!-- Main Stylesheet -->
-		<link href="usernav.css" rel="stylesheet" type="text/css"/>
+		<link href="user.css" rel="stylesheet" type="text/css"/>
 		<style type="text/css"></style>
 	</head>
 
@@ -22,7 +22,7 @@
 		<div id="container">
 
 			<!-- nav -->
-			<main class="nav">
+			<nav class="nav">
 
 				<!-- top -->
 				<section class="top">
@@ -54,7 +54,7 @@
 					<!-- /userbox -->
 	
 					<!-- togglebox -->
-					<div class="togglebox box" onclick="document.querySelector('main.nav').classList.toggle('open') ">
+					<div class="togglebox box" onclick="document.querySelector('nav.nav').classList.toggle('open') ">
 	
 						<!-- bar -->
 						<span class="bar a"></span>
@@ -119,48 +119,19 @@
 				</section>
 				<!-- /bottom -->
 
-			</main>
+			</nav>
 			<!-- /nav -->
 
 		</div>
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
-		<script src="database.js" type="text/javascript"></script>
+		<!-- Menu Database Script -->
+		<script src="menudatabase.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
-		<!-- <script src="usernav.js" type="text/javascript"></script> -->
-		<script type="text/javascript">
-
-			// 
-			const userlist = document.querySelector('ul.userlist');
-
-			// 
-			let result = '';
-			for(let listitem of userlistdata) {
-				result += `
-						<!-- useritem -->
-						<li class="useritem">
-
-							<!-- icon -->
-							<svg class="icon user" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								${listitem.innersvg}
-							</svg>
-							<!-- /icon -->
-
-							<!-- caption -->
-							<span class="caption">${listitem.caption}</span>
-							<!-- /caption -->
-	
-						</li>
-						<!-- /useritem -->`;
-			}
-
-			// 
-			userlist.innerHTML = result;
-
-		</script>
+		<script src="user.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript"></script> -->
 
 	</body>
 
