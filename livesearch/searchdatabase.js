@@ -4,7 +4,7 @@
 const defaultResults = [
 	{
 		setname:'Alphabet',
-		posttype:{
+		searchlabel:{
 			plural:'letters',
 			singular:'letter',
 		},
@@ -117,7 +117,7 @@ const defaultResults = [
 	},
 	{
 		setname:'U.S. Presidents',
-		posttype:{
+		searchlabel:{
 			plural:'presidents',
 			singular:'president',
 		},
@@ -222,7 +222,7 @@ const defaultResults = [
 	},
 	{
 		setname:'American Universities',
-		posttype:{
+		searchlabel:{
 			plural:'universities',
 			singular:'university',
 		},
@@ -323,7 +323,7 @@ const defaultResults = [
 	},
 	{
 		setname:'Social Media Platforms',
-		posttype:{
+		searchlabel:{
 			plural:'platforms',
 			singular:'platform',
 		},
@@ -408,7 +408,7 @@ const defaultResults = [
 	},
 	{
 		setname:'Months of the Year',
-		posttype:{
+		searchlabel:{
 			plural:'months',
 			singular:'month',
 		},
@@ -465,7 +465,7 @@ const defaultResults = [
 	},
 	{
 		setname:'Astrological Zodiac Signs',
-		posttype:{
+		searchlabel:{
 			plural:'zodiac signs',
 			singular:'zodiac sign',
 		},
@@ -522,7 +522,7 @@ const defaultResults = [
 	},
 	{
 		setname:'Numbers',
-		posttype:{
+		searchlabel:{
 			plural:'numbers',
 			singular:'number',
 		},
@@ -571,7 +571,7 @@ const defaultResults = [
 	},
 	{
 		setname:'Planets',
-		posttype:{
+		searchlabel:{
 			plural:'planets',
 			singular:'planet',
 		},
@@ -616,7 +616,7 @@ const defaultResults = [
 	},
 	{
 		setname:'Days of the Week',
-		posttype:{
+		searchlabel:{
 			plural:'days',
 			singular:'day',
 		},
@@ -653,7 +653,7 @@ const defaultResults = [
 	},
 	{
 		setname:'Seasons',
-		posttype:{
+		searchlabel:{
 			plural:'seasons',
 			singular:'season',
 		},

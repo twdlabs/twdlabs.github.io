@@ -1,15 +1,33 @@
 
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
 
 
 /* General */
 
 
+
 * {box-sizing:border-box;}
 
 
-/* :root {
-} */
+
+:root {
+	--themecolor:dodgerblue;
+	--bgimg:linear-gradient(135deg, dodgerblue, white);
+	
+	--blue:#4e65ff;
+	--cyan:#92effd;
+	--purp:#8847FF;
+	--olive:#FFE091;
+	--lightpurp:#A26FFF;
+	--bgimg:linear-gradient(45deg,var(--blue),var(--cyan));
+	--themecolor:var(--blue);
+	
+	--btnbgcolor:var(--cyan);
+	--mainbgcolor:var(--themecolor);
+}
+
 
 
 body {font-family:Nunito,sans-serif; margin:0;}
@@ -18,8 +36,8 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 /* Main Container */
 
-div#container {background:linear-gradient(135deg, var(--themecolor), white); height:100vh;}
+div#container {background-color:var(--mainbgcolor); background-image:var(--bgimg); height:100vh;}
 div#container {position:relative;}
 div#container div.openbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-div#container div.openbtn {background-color:var(--themecolor); color:white; font-size:4rem; cursor:pointer; padding:.75em .875em; border-radius:.25em;}
+div#container div.openbtn {background-color:var(--btnbgcolor); background-color:#888; color:var(--btnbgcolor); font-size:4rem; cursor:pointer; padding:.75em .875em; border-radius:.25em;}
 div#container div.openbtn svg.icon {display:block;}

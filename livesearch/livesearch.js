@@ -127,45 +127,52 @@ class Search {
 
 	// Show all matching results for given search query. 
 	displaySearchResults() {
-		// console.log(this.resultsBox);
-
+		
 		// Get search query. 
 		let searchquery = this.searchField.value;
-
+		
 		// Get initial search results from post database. 
-		let resultList = defaultResults;
-		// console.log('Initial result list',defaultResults);
-		// console.log('Final result list',resultList);
-
-		// Initialize total number of matching items. 
+		let initialResultList = defaultResults;
+		// console.log('Initial result list:',initialResultList);
+		
+		// TODO: Add function for the following code part. 
+		// Send request for final search results. 
+		let finalResultList = getSearchResults(initialResultList);
+		// console.log('Final result list:',finalResultList);
+		
+		// Initialize total number of matching search results. 
 		let totalMatchingResults = 0;
-
-		// Initialize display for final search results. 
+		
+		// Create layout for final search results. 
 		let finalSearchResults = '';
-
-		// TODO: Send request for search results. Potentially add new function for the following code parts. 
-		// finalSearchResults += requestSearchResults();
-
 		// Add body of results. 
-		finalSearchResults += createResultBody();
-
+		finalSearchResults += createResultBody(finalResultList);
 		// Add results header. 
-		finalSearchResults += createResultHeader();
-
+		finalSearchResults += createResultHeader(finalResultList);
+		// console.log('Results:',finalSearchResults);
+		
 		// Display search results on page. 
-		this.resultsBox.innerHTML = finalSearchResults;
+		(this.resultsBox).innerHTML = finalSearchResults;
+		// console.log('Results box:',this.resultsBox);
 
 		// Hide loader icon. 
 		this.setWaitState(false);
 
+
 		/*****/
+
+
+		// TODO: Get matching search results. 
+		function getSearchResults(initialResultList) {
+			// 
+		}
 
 		// Create results header. 
 		function createResultHeader() {
 			// 
 			return `
 			<!-- resulthead -->
-			<h2 class="resulthead ${ (totalMatchingResults>0)?'':'empty' }">
+			<h2 class="resulthead ${ (totalMatchingResults>0) ? '' : 'empty' }">
 	
 				<!-- searchquery -->
 				<span class="searchquery">"${searchquery}"</span>
@@ -191,29 +198,30 @@ class Search {
 			<div class="resultbody">`;
 	
 			// Go thru all sets to find results that match search query. 
-			for(let key in resultList) {
+			// for(let currentSet of initialResultList) {
+			for(let key in initialResultList) {
 				// console.log('key:',key);
 				
 				// Get current result set. 
-				let resultSet = resultList[key]
-				console.log(`\tSearching ${resultSet.posttype.plural}...`);
-				// console.log('Result set:',resultSet);
+				let currentSet = initialResultList[key]
+				console.log(`\tSearching ${currentSet.searchlabel.plural}...`);
+				// console.log('Result set:',currentSet);
 	
 				// Initialize number of matching items in current set. 
 				let numResultsInSet = 0;
 	
 				// Initialize list of matching results for current set. 
-				let currentResultSet = '';
+				let currentSetLayout = '';
 	
 				// Go thru all items in current set. 
-				for(let currentResultItem of resultSet.setlist) {
-					// console.log('currentResultItem',currentResultItem);
+				for(let currentItem of currentSet.setlist) {
+					// console.log('Current result item',currentItem);
 	
 					// Initialize match indicator. 
 					let matchingResult = false;
 					
 					// Check for name match with search query (case insensitive). 
-					// matchingResult = ( (currentResultItem.name).toUpperCase() ).includes( searchquery.toUpperCase() );
+					// matchingResult = ( (currentItem.name).toUpperCase() ).includes( searchquery.toUpperCase() );
 	
 					// Determine current search mode. 
 					let thoroughSearchMode = false;
@@ -224,7 +232,7 @@ class Search {
 						// Check for match with search query (case insensitive). 
 					
 						// Get case-insensitive search check components: search tags, search query. 
-						let tagstring = (currentResultItem.searchtags).toUpperCase();
+						let tagstring = (currentItem.searchtags).toUpperCase();
 						let querystring = searchquery.toUpperCase();
 						// Check for match within search tags. 
 						matchingResult = ( tagstring ).includes( querystring );
@@ -234,11 +242,11 @@ class Search {
 					else {
 					
 						// Check for match with search query (any property, case insensitive). 
-						for(let key in currentResultItem) {
+						for(let key in currentItem) {
 							// console.log(key);
 		
 							// Get case-insensitive search check components. 
-							let keyvalue = ( currentResultItem[key].toString() ).toUpperCase()
+							let keyvalue = ( currentItem[key].toString() ).toUpperCase()
 							let querystring = searchquery.toUpperCase();
 	
 							// Check for any matching value inside result item. 
@@ -266,14 +274,12 @@ class Search {
 						totalMatchingResults += 1;
 	
 						// Add matching result item to current set of search results. 
-						let item = currentResultItem;
-						let set = resultSet;
-						currentResultSet += createResultItem(set,item);
+						currentSetLayout += createResultItem( currentSet, currentItem );
 					}
 				}
 	
 				// Log number of results found for current post type. 
-				console.log( `\t\t${numResultsInSet} ${resultSet.posttype.singular} results found` );
+				console.log( `\t\t${numResultsInSet} ${currentSet.searchlabel.singular} results found` );
 
 				// Include result set if contains at least one matching result. 
 				if(numResultsInSet>0) {
@@ -284,14 +290,14 @@ class Search {
 					<div class="resultset">
 					
 						<!-- resulthead -->
-						<h3 class="resulthead">${ resultSet.setname } (${ numResultsInSet })</h3>
+						<h3 class="resulthead">${ currentSet.setname } (${ numResultsInSet })</h3>
 						<!-- /resulthead -->
 				
 						<!-- resultlist -->
 						<ul class="resultlist">`;
 		
 					// Add matching items from current result set to final body of search results. 
-					finalResultBody += currentResultSet;
+					finalResultBody += currentSetLayout;
 		
 					// Close result set. 
 					finalResultBody += `
@@ -309,7 +315,7 @@ class Search {
 					let archiveUrl = 'javascript:void(0)';
 	
 					// Get plural name of current post type. 
-					let postTypePlural = resultSet.posttype.plural;
+					let postTypePlural = currentSet.searchlabel.plural;
 	
 					// Create empty result set. 
 					finalResultBody += `
@@ -317,7 +323,7 @@ class Search {
 					<div class="resultset">
 					
 						<!-- resulthead -->
-						<h3 class="resulthead">${resultSet.setname}</h3>
+						<h3 class="resulthead">${currentSet.setname}</h3>
 						<!-- /resulthead -->
 	
 						<!-- textcopy -->
@@ -352,57 +358,123 @@ class Search {
 			// Create result item. 
 			function createResultItem(set,item) {
 
-				// Get name for current result. 
-				let resultname = getResultName(item);
-
 				// Get folder name for current result set. 
 				let foldername = getFolderName(set);
 				
-				// Get post id for current result. 
-				let postid = getPostId(item);
-				
 				// Get link url for current result. 
-				let resulturl = getPostUrl(foldername, postid);
+				let resulturl = getResultUrl(foldername,item);
 
-				// Return result. 
-				return `
-				<!-- resultitem -->
-				<li class="resultitem">
-					
-					<!-- resultlink -->
-					<a class="resultlink" href="${getRelativeUrl(resulturl)}">${resultname}</a>
-					<!-- /resultlink -->
-					
-				</li>
-				<!-- /resultitem -->`;
+				// Get post name for current result. 
+				let resultname = getResultName(item);
+
+				// Create result for blog post. 
+				if(item.posttype=='post') {
+				
+					// Get link url for author of current result. 
+					let authorurl = getAuthorUrl(item);
+	
+					// Get author name for current result. 
+					let authorname = getAuthorName(item);
+
+					// Return result. 
+					return `
+					<!-- resultitem -->
+					<li class="resultitem">
+						
+						<!-- resultlink -->
+						<a class="resultlink" href="${ getRelativeUrl(resulturl) }">${ resultname }</a>
+						<!-- /resultlink -->
+						
+						<!-- caption -->
+						<span class="caption">by</span>
+						<!-- /caption -->
+						
+						
+						<!-- authorlink -->
+						<a class="authorlink" href="${ getRelativeUrl(authorurl) }">${ authorname }</a>
+						<!-- /authorlink -->
+						
+					</li>
+					<!-- /resultitem -->`;
+				}
+
+				// Create result for all other posts. 
+				else {
+
+					// Return result. 
+					return `
+					<!-- resultitem -->
+					<li class="resultitem">
+						
+						<!-- resultlink -->
+						<a class="resultlink" href="${ getRelativeUrl(resulturl) }">${ resultname }</a>
+						<!-- /resultlink -->
+						
+					</li>
+					<!-- /resultitem -->`;
+				}
 
 				/***/
+
+				// Get foler name of result set. 
+				function getFolderName(set) {
+					return set.foldername;
+				}
+				
+				// Get link url for given post (using folder name & post item). 
+				function getResultUrl(foldername,item) {
+
+					// Get post id. 
+					let id = getPostId(item);
+					// console.log('\t\tgetPostId(item):',id);
+
+					// Return general url for given post. 
+					if( foldername && id) return `${foldername}/index.html?id=${id}`;
+					// if( id && foldername) return `${foldername}?id=${id}`;
+
+					// Return empty url if missing any parameter(s). 
+					else return 'javascript:void(0)';
+
+					/***/
+					
+					// Get post id. 
+					function getPostId(item) {
+	
+						// Define post register. 
+						const postregister = {
+							'post': (item.postid),
+							'program': (item.programid),
+							'course': (`${ item.programid }${ item.coursenumber }`),
+							'event': (item.eventid),
+							'faculty': (item.facultyid),
+							'student': (item.studentid),
+							'course': (item.programid + item.coursenumber),
+						};
+						// console.log(`\t\t\tpostregister:`,postregister);
+						
+						// Get post id from post register. 
+						let id = postregister[ item.posttype ];
+						// console.log(`\t\t\tid: '${id}'`);
+						
+						// Handle registered post type. 
+						if( id || !isNaN(id) ) return id;
+	
+						// Handle unregistered post type. 
+						else console.warn('\t\t\tPost type not recognized:', item.posttype, id);
+					}
+				}
 
 				// Get search result name for given item. 
 				function getResultName(item) {
 		
 					// Get type of post. 
-					let type = item.posttype;
-		
-					// Get search result name for blog post. 
-					if(type=='post') {
-		
-						// Get post title. 
-						let title = item['title'];
-		
-						// Get author name. 
-						let authorid = item['authorid'];
-						let authorname = userData[authorid].title;
-		
-						// Create result name. 
-						return `${title} by ${authorname}`;
-					}
+					let type = item['posttype'];
 		
 					// Get search result name for courses. 
-					else if(type=='course') return item['fulltitle'];
+					if(type=='course') return item['fulltitle'];
 		
-					// Get search result name for programs, events, people. 
-					// else if(type=='program' || type=='event' || type=='faculty' || type=='student')
+					// Get search result name for: blog posts, programs, events, people. 
+					// else if(type=='post' || type=='program' || type=='event' || type=='faculty' || type=='student')
 					
 					// Use default name for miscellaneous results. 
 					else {
@@ -412,46 +484,38 @@ class Search {
 					}
 				}
 
-				// Get foler name of result set. 
-				function getFolderName(set) {
-					return set.foldername;
+				// Get link url for given author (using author id). 
+				function getAuthorUrl(item) {
+
+					// Get author id. 
+					let id = item['authorid'];
+					// console.log('\t\tAuthor id:',id);
+
+					// 
+					if( !isNaN(id) && id>=0 ) return `users/index.html?id=${id}`;
+					// return `authors/index.html?id=${id}`;
+
+					// Return empty url if missing any parameter(s). 
+					else return 'javascript:void(0)';
 				}
-				// Get post id. 
-				function getPostId(item) {
 
-					// Get id for blog post. 
-					if(item.posttype=='post') return item.postid;
+				// Get search result name for given item. 
+				function getAuthorName(item) {
 
-					// Get id for program. 
-					else if(item.posttype=='program') return item.programid;
+					// Get author id. 
+					let id = item['authorid'];
+					// console.log('\t\tAuthor id:',id);
 
-					// Get id for course. 
-					else if(item.posttype=='course') return `${item.programid}${item.coursenumber}`;
+					// Return nothing if invalid id. 
+					if(!id && isNaN(id)) return null;
 
-					// Get id for event. 
-					else if(item.posttype=='event') return item.eventid;
-
-					// Get id for faculty. 
-					else if(item.posttype=='faculty') return item.facultyid;
-
-					// Get id for student. 
-					else if(item.posttype=='student') return item.studentid;
-
-					// Handle error case. 
-					else {
-						console.error('No post type recognized')
-						return null;
-					}
-				}
-				// Get link url for given folder name and post id. 
-				function getPostUrl(foldername,id) {
-
-					// Return general url for given post. 
-					if( id && foldername) return `${foldername}/index.html?id=${id}`;
-					// if( id && foldername) return `${foldername}?id=${id}`;
-
-					// Return null url if missing parameter(s). 
-					else return ('javascript:void(0)');
+					// Get user item for given user id. 
+					let user = userData[id];
+					// console.log('\t\tUser:',user);
+					
+					// Return string of user's first and last name. 
+					let authorname = user['title'];
+					return authorname;
 				}
 			}
 		}

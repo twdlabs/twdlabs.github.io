@@ -3,14 +3,15 @@
 
 :root {
 	
-	--themecolor:dodgerblue;
-	
 	--orange:#ff8f1f;
 	--offwhite:#EEE;
 	--offwhite2:#E8E8E8;
 	--lightyellow:#ffe6cc;
 	--lightorange:#ffbf80;
 	--transparentwhite:#FFFFFF08;
+
+	--topbgcolor:var(--offwhite);
+	--bottombgcolor:var(--themecolor);
 }
 
 
@@ -32,7 +33,7 @@ div#container div#searchoverlay section.bottom {flex-grow:1; flex-shrink:1;}
 
 /* Query Section */
 
-div#container div#searchoverlay section.top {background-color:var(--offwhite); color:var(--themecolor); font-size:2rem; border-bottom:1px solid #0002;}
+div#container div#searchoverlay section.top {background-color:var(--topbgcolor); color:var(--themecolor); font-size:2rem; border-bottom:1px solid #0002;}
 div#container div#searchoverlay section.top div.input {position:relative; max-width:50rem; margin:auto;}
 div#container div#searchoverlay section.top div.input div.closebtn,
 div#container div#searchoverlay section.top div.input label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); cursor:pointer; user-select:none; margin:0 1rem;}
@@ -45,7 +46,7 @@ div#container div#searchoverlay section.top div.input input#searchquery {backgro
 
 /* Results Section */
 
-div#container div#searchoverlay section.bottom {background-color:var(--themecolor); position:relative; overflow:auto;}
+div#container div#searchoverlay section.bottom {background-color:var(--bottombgcolor); position:relative; overflow:auto;}
 
 div#container div#searchoverlay section.bottom:before {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2.5rem; height:2.5rem; border-radius:50%;}
 div#container div#searchoverlay section.bottom:before {background-color:transparent; content:''; border:.5rem solid var(--offwhite2); border-top-color:transparent;}
@@ -67,6 +68,7 @@ div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {color:var(--lightyellow); padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem {margin-top:.5rem;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.authorlink,
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.resultlink {color:var(--orange); color:var(--lightorange);}
 /* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy {text-align:center;} */
 /* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy span.caption {} */
