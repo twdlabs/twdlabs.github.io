@@ -247,34 +247,31 @@ class Search {
 				function checkForMatch(currentItem) {
 				
 					// Determine current search mode. 
-					let recklessSearchMode = false;
+					let carefulSearch = true;
 
 					// Do search only on selected tags. 
-					if(!recklessSearchMode) {
+					if(carefulSearch) {
 					
-						// This is the old one before data structure update (search tags of searchable post items). 
-
+						// Old implementation: before data structure update (search tags of searchable post items). 
 						// Get case-insensitive search check components: search tags, search query. 
-						let runontagstring = ( currentItem['searchtags'] ).toUpperCase();
+						// let runontagstring = ( currentItem['searchtags'] ).toUpperCase();
 						// Check for match within run-on search tag. 
-						return ( (runontagstring).includes( searchquery.toUpperCase() ) );
+						// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
 
-						// This will be the new one when data structure is updated (search tags of searchable post items). 
-
-						// TODO: Check for match within list of search tags. 
+						// New implementation: after data structure update (search tags of searchable post items). 
+						// Check for match within list of search tags. 
 						for(let tag of currentItem.searchtags) {
 
 							// Check for match between search query and current search tag. 
 							let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
-							// 
+							// Return true if any match found. 
 							if(matchOn) return true;
 						}
-
-						// 
+						// Return false if no match found. 
 						return false;
 					}
 	
-					// Otherwise, do all-out thorough search everywhere (on all item properties). 
+					// Otherwise, do all-out search on all properties of given item. 
 					else {
 					
 						// Check for match with search query (any property, case insensitive). 
@@ -468,21 +465,11 @@ class Search {
 					
 					// Get post id. 
 					function getPostId(item) {
-	
-						// Define post register. 
-						const postregister = {
-							'post': (item.postid),
-							'program': (item.programid),
-							'course': (`${ item.programid }${ item.coursenumber }`),
-							'event': (item.eventid),
-							'faculty': (item.facultyid),
-							'student': (item.studentid),
-							'course': (item.programid + item.coursenumber),
-						};
 						// console.log(`\t\t\tpostregister:`,postregister);
 						
 						// Get post id from post register. 
-						let id = postregister[ item.posttype ];
+						let idname = postregister[item.posttype];
+						let id = item[idname];
 						// console.log(`\t\t\tid: '${id}'`);
 						
 						// Handle registered post type. 
@@ -493,24 +480,17 @@ class Search {
 					}
 				}
 
-				// Get search result name for given item. 
+				// Get post title for given search result item. 
 				function getResultName(item) {
 		
 					// Get type of post. 
-					let type = item['posttype'];
+					// let type = item['posttype'];
 		
-					// Get search result name for courses. 
-					if(type=='course') return item['fulltitle'];
-		
-					// Get search result name for: blog posts, programs, events, people. 
-					// else if(type=='post' || type=='program' || type=='event' || type=='faculty' || type=='student')
+					// Get search result name for given post types: blog posts, programs, courses, events, people. 
+					// if(type=='post' || type=='program' || type=='course' || type=='event' || type=='faculty' || type=='student')
 					
-					// Use default name for miscellaneous results. 
-					else {
-		
-						// Get result name. 
-						return item['title'];
-					}
+					// Get result name. 
+					return item['title'];
 				}
 
 				// Get link url for given author (using author id). 

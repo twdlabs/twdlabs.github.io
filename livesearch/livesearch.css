@@ -24,7 +24,7 @@ body.freeze {overflow:hidden;}
 
 div#container div#searchoverlay {position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; z-index:100 /* overflow:auto; */;}
 div#container div#searchoverlay {opacity:0; visibility:hidden; transform:scale(1.05); transition:.25s;}
-div#container div#searchoverlay.active {opacity:.95; visibility:visible; transform:none;}
+div#container div#searchoverlay.active {opacity:.988; visibility:visible; transform:none;}
 
 div#container div#searchoverlay {display:flex; flex-direction:column; align-items:stretch;}
 div#container div#searchoverlay section.top {flex-grow:0; flex-shrink:0;}
@@ -40,8 +40,8 @@ div#container div#searchoverlay section.top div.input label.searchlabel {positio
 div#container div#searchoverlay section.top div.input div.closebtn {background-color:var(--themecolor); color:white; right:0; padding:0 .375em; border-radius:.25rem;}
 div#container div#searchoverlay section.top div.input label.searchlabel {font-size:.95em; left:0;}
 div#container div#searchoverlay section.top div.input label.searchlabel svg.icon {display:block;}
-div#container div#searchoverlay section.top div.input input#searchquery {display:block; width:100%; height:100%; padding:1rem 4rem; border:0 none; outline:none;}
-div#container div#searchoverlay section.top div.input input#searchquery {background-color:/* white */transparent; color:inherit; font-size:.75em;}
+div#container div#searchoverlay section.top div.input input#searchquery {display:block; width:100%; height:100%; padding:1.45rem 4rem; border:0 none; outline:none;}
+div#container div#searchoverlay section.top div.input input#searchquery {background-color:/* white */transparent; color:inherit; font-size:1.125em;}
 
 
 /* Results Section */
@@ -130,7 +130,7 @@ div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div
 	
 	/* Results Section */
 	div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead {font-size:1.25rem;}
-	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {grid-template-columns:repeat(1,1fr);} */
+	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {grid-template-columns:repeat(1,1fr);}
 	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset {} */
 	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {font-size:1.125rem; /* display:block; */}
 	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead span.count:before {content:' (';} */
