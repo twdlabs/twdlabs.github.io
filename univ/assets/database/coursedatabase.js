@@ -13,7 +13,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 116',
+			'CS116',
 		],
 	},
 	{
@@ -25,8 +25,8 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 216',
-			'CIS 255',
+			'CS216',
+			'CIS255',
 		],
 	},
 	{
@@ -38,7 +38,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 216',
+			'CS216',
 		],
 	},
 	
@@ -72,8 +72,8 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'MATH 103',
-			'CS 105',
+			'MATH103',
+			'CS105',
 		],
 	},
 	{
@@ -85,7 +85,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 105',
+			'CS105',
 		],
 	},
 	{
@@ -93,15 +93,15 @@ const courseData = [
 		programid:'CS',
 		coursenumber:'216',
 		title: 'Computer Programming II',
-		content: 'This course continues the development of computer programming techniques introduced in CS 116. Topics include data abstraction, object-oriented programming, linear and nonlinear data structures and analysis of sort and search routines including inheritance, polymorphism, recursion lists, linked-lists, stacks, queues and binary trees.',
+		content: 'This course continues the development of computer programming techniques introduced in CS116. Topics include data abstraction, object-oriented programming, linear and nonlinear data structures and analysis of sort and search routines including inheritance, polymorphism, recursion lists, linked-lists, stacks, queues and binary trees.',
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 116',
-			'MATH 120A',
-			'MATH 120B',
-			'MATH 140',
-			'MATH 161',
+			'CS116',
+			'MATH120A',
+			'MATH120B',
+			'MATH140',
+			'MATH161',
 		],
 	},
 	{
@@ -113,9 +113,9 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 116',
-			'MATH 120B',
-			'MATH 140',
+			'CS116',
+			'MATH120B',
+			'MATH140',
 		],
 	},
 	{
@@ -127,8 +127,8 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 216',
-			'MATH 300',
+			'CS216',
+			'MATH300',
 		],
 	},
 	{
@@ -140,7 +140,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 216',
+			'CS216',
 		],
 	},
 	{
@@ -152,7 +152,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 216',
+			'CS216',
 		],
 	},
 	{
@@ -164,7 +164,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CIS 357',
+			'CIS357',
 		],
 	},
 	{
@@ -176,8 +176,8 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CIS 355',
-			'CS 401',
+			'CIS355',
+			'CS401',
 		],
 	},
 	{
@@ -189,7 +189,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 216',
+			'CS216',
 		],
 	},
 	{
@@ -201,10 +201,10 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CIS 355',
-			'CIS 357',
-			'CS 401',
-			'CS 411',
+			'CIS355',
+			'CIS357',
+			'CS401',
+			'CS411',
 		],
 	},
 	{
@@ -216,8 +216,8 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 331',
-			'CIS 357',
+			'CS331',
+			'CIS357',
 		],
 	},
 	{
@@ -229,7 +229,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 316',
+			'CS316',
 		],
 	},
 	{
@@ -241,7 +241,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 316',
+			'CS316',
 		],
 	},
 	{
@@ -249,11 +249,11 @@ const courseData = [
 		programid:'CS',
 		coursenumber:'471',
 		title: 'Software Engineering II',
-		content: 'This course provides a continuation of the senior CS projects initiated in CS 421. Students will be required to implement and deliver a large scale system in a group-based project environment. Programming languages and coding, software maintenance, software quality, CASE and configuration management will be covered. This course will focus on the design, coding and testing phases of the software development lifecycle.',
+		content: 'This course provides a continuation of the senior CSprojects initiated in CS421. Students will be required to implement and deliver a large scale system in a group-based project environment. Programming languages and coding, software maintenance, software quality, CASE and configuration management will be covered. This course will focus on the design, coding and testing phases of the software development lifecycle.',
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'CS 421',
+			'CS421',
 		],
 	},
 	
@@ -296,7 +296,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'ENGL 080',
+			'ENGL080',
 		],
 	},
 	
@@ -309,7 +309,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'MATH 081',
+			'MATH081',
 		],
 	},
 	{
@@ -321,7 +321,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'MATH 140',
+			'MATH140',
 		],
 	},
 	{
@@ -333,7 +333,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'MATH 161',
+			'MATH161',
 		],
 	},
 	{
@@ -345,7 +345,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 4,
 		courseprereqs: [
-			'MATH 161',
+			'MATH161',
 		],
 	},
 	{
@@ -357,7 +357,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 3,
 		courseprereqs: [
-			'MATH 161',
+			'MATH161',
 		],
 	},
 	{
@@ -369,7 +369,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 3,
 		courseprereqs: [
-			'MATH 162',
+			'MATH162',
 		],
 	},
 	
@@ -382,7 +382,7 @@ const courseData = [
 		postedtime:0,
 		numcredits: 3,
 		courseprereqs: [
-			'ENGL 111',
+			'ENGL111',
 		],
 	},
 	
@@ -395,8 +395,8 @@ const courseData = [
 		postedtime:0,
 		numcredits: 3,
 		courseprereqs: [
-			'ENGL 111',
-			'PHIL 114',
+			'ENGL111',
+			'PHIL114',
 		],
 	},
 	
@@ -419,6 +419,9 @@ function addCourseProperties() {
 	// Go thru all courses. 
 	for(let course of courseData) {
 	
+		// Get course id. 
+		course.courseid = getCourseId(course);
+	
 		// Get full course title. 
 		course.fulltitle = getFullCourseTitle(course);
 	
@@ -430,6 +433,19 @@ function addCourseProperties() {
 	}
 
 	/****/
+
+	// Define course id. 
+	function getCourseId(course) {
+	
+		// Get program id. 
+		let prog = course.programid;
+	
+		// Get course number. 
+		let num = course.coursenumber;
+	
+		// Compile components of course id. 
+		return `${prog}${num}`;
+	}
 
 	// Define full course title. 
 	function getFullCourseTitle(course) {

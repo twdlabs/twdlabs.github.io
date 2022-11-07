@@ -78,72 +78,72 @@ const defaultResults = {
 defaultResults.blog = 
 {
 	setname:'Blog Posts',
-	setlist:blogPostData,
 	foldername:'resources/blog',
-	posttype:{
+	searchlabel: {
 		plural:'blog posts',
 		singular:'blog post',
 	},
+	setlist: blogPostData,
 };
 
 // Add programs to list of default results. 
 defaultResults.programs = 
 {
 	setname:'Programs',
-	setlist:programData,
 	foldername:'resources/programs',
-	posttype:{
+	searchlabel: {
 		plural:'programs',
 		singular:'program',
 	},
+	setlist: programData,
 };
 
 // Add courses to list of default results. 
 defaultResults.courses = 
 {
 	setname:'Courses',
-	setlist:courseData,
 	foldername:'resources/courses',
-	posttype:{
+	searchlabel: {
 		plural:'courses',
 		singular:'course',
 	},
+	setlist: courseData,
 };
 
 // Add events to list of default results. 
 defaultResults.events = 
 {
 	setname:'Events',
-	setlist:eventData,
 	foldername:'resources/events',
-	posttype:{
+	searchlabel: {
 		plural:'events',
 		singular:'event',
 	},
+	setlist: eventData,
 };
 
 // Add faculty to list of default results. 
 defaultResults.faculty = 
 {
 	setname:'Faculty',
-	setlist:facultyData,
 	foldername:'resources/faculty',
-	posttype:{
+	searchlabel: {
 		plural:'faculty',
 		singular:'faculty',
 	},
+	setlist: facultyData,
 };
 
 // Add students to list of default results. 
 defaultResults.students = 
 {
 	setname:'Students',
-	setlist:studentData,
 	foldername:'resources/students',
-	posttype:{
+	searchlabel: {
 		plural:'students',
 		singular:'student',
 	},
+	setlist: studentData,
 };
 
 
