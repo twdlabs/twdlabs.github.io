@@ -96,11 +96,11 @@ function addEventProperties() {
 	// Define searchable event tags. 
 	function getEventTags(event) {
 	
-		// Compile components of searchable event tags. 
-		let result = [ event.title, event.content ];
+		// Compile searchable components for this post type: event. 
+		let tagsources = [ event.title, event.content ];
 		
 		// 
-		return result.join(' ');
+		return tagsources.join(' ').split(' ');
 	}
 }
 

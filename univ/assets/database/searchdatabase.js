@@ -1,5 +1,16 @@
 
 
+// Define post register. 
+const postregister = {
+	'post':'postid',
+	'program':'programid',
+	'course':'courseid',
+	'event':'eventid',
+	'faculty':'facultyid',
+	'student':'studentid',
+};
+
+
 // Define default search results, the basis of final search results. 
 const defaultResults = {
 

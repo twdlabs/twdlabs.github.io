@@ -180,11 +180,11 @@ function addProgramProperties() {
 	// Define searchable program tags. 
 	function getProgramTags(program) {
 	
-		// Compile components of searchable program tags. 
-		let result = [ program.programid, program.title, program.content ];
+		// Compile searchable components for this post type: program. 
+		let tagsources = [ program.programid, program.title, program.content ];
 		
 		// 
-		return result.join(' ');
+		return tagsources.join(' ').split(' ');
 	}
 }
 

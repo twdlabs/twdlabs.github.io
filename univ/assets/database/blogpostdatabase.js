@@ -103,11 +103,11 @@ function addPostProperties() {
 		// Get post author. 
 		let author = userData[post.authorid];
 	
-		// Compile components of searchable post tags. 
-		let result = [ author.username, author.lastname, author.firstname, post.title, post.content ];
+		// Compile searchable components for this post type: post. 
+		let tagsources = [ author.username, author.lastname, author.firstname, post.title, post.content ];
 		
 		// 
-		return result.join(' ');
+		return tagsources.join(' ').split(' ');
 	}
 }
 

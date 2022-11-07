@@ -85,11 +85,11 @@ function addUserProperties() {
 	// Define searchable user tags. 
 	function getUserTags(user) {
 	
-		// Compile components of searchable user tags. 
-		let result = [ user.username, user.lastname, user.firstname, user.userbio ];
+		// Compile searchable components for this post type: user. 
+		let tagsources = [ user.username, user.lastname, user.firstname, user.userbio ];
 		
 		// Return string of tags. 
-		return result.join(' ');
+		return tagsources.join(' ').split(' ');
 	}
 }
 

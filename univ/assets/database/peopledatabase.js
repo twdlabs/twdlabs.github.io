@@ -739,21 +739,21 @@ function addPeopleProperties() {
 		// Get name of given program. 
 		let progname = getProgramById(progid).title;
 	
-		// Compile components of searchable person tags. 
-		let result = [ lname, fname, progid, progname ];
+		// Compile searchable components for this post type: person. 
+		let tagsources = [ lname, fname, progid, progname ];
 		
 		// Return string of tags. 
-		return result.join(' ');
+		return tagsources.join(' ').split(' ');
 	}
 	
 	// Define searchable faculty tags. 
 	function getFacultyTags(person) {
 	
-		// Compile components of searchable person tags. 
-		let result = [ person.lastname, person.firstname, person.programids.join(' '), person.programids.map( (progid)=>(getProgramById(progid).title) ).join(' ') ];
+		// Compile searchable components for this post type: person. 
+		let tagsources = [ person.lastname, person.firstname, person.programids.join(' '), person.programids.map( (progid)=>(getProgramById(progid).title) ).join(' ') ];
 		
 		// Return string of tags. 
-		return result.join(' ');
+		return tagsources.join(' ').split(' ');
 	}
 }
 
