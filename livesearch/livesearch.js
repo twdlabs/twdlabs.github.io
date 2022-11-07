@@ -141,7 +141,7 @@ class Search {
 		// console.log('Final result list:',finalResultList);
 		
 		// Initialize total number of matching search results. 
-		let totalMatchingResults = 0;
+		let totalNumMatchingResults = 0;
 		
 		// Create layout for final search results. 
 		let finalSearchResults = '';
@@ -172,14 +172,14 @@ class Search {
 			// 
 			return `
 			<!-- resulthead -->
-			<h2 class="resulthead ${ (totalMatchingResults>0) ? '' : 'empty' }">
+			<h2 class="resulthead ${ (totalNumMatchingResults>0) ? '' : 'empty' }">
 	
 				<!-- searchquery -->
 				<span class="searchquery">"${searchquery}"</span>
 				<!-- /searchquery -->
 	
 				<!-- resultcount -->
-				<span class="resultcount">${totalMatchingResults} results found</span>
+				<span class="resultcount">${totalNumMatchingResults} results found</span>
 				<!-- /resultcount -->
 	
 			</h2>
@@ -197,45 +197,81 @@ class Search {
 			<!-- resultbody -->
 			<div class="resultbody">`;
 	
-			// Go thru all sets to find results that match search query. 
-			// for(let currentSet of initialResultList) {
+			// Go thru all sets to find matching result sets. 
 			for(let key in initialResultList) {
-				// console.log('key:',key);
 				
 				// Get current result set. 
 				let currentSet = initialResultList[key]
-				console.log(`\tSearching ${currentSet.searchlabel.plural}...`);
-				// console.log('Result set:',currentSet);
+				console.log(`\tSearching ${ currentSet['searchlabel'].plural }...`);
+				// console.log('Result set:',key,currentSet);
 	
 				// Initialize number of matching items in current set. 
-				let numResultsInSet = 0;
+				let numMatchesInCurrentSet = 0;
 	
 				// Initialize list of matching results for current set. 
-				let currentSetLayout = '';
+				let currentSetResultItems = '';
 	
-				// Go thru all items in current set. 
+				// Accumulate matching items for current set. 
 				for(let currentItem of currentSet.setlist) {
 					// console.log('Current result item',currentItem);
-	
-					// Initialize match indicator. 
-					let matchingResult = false;
+
+					// Check for simple match (by title) with search query (case insensitive). 
+					// let currentItemMatchesQuery = ( (currentItem.title).toUpperCase() ).includes( searchquery.toUpperCase() );
 					
-					// Check for name match with search query (case insensitive). 
-					// matchingResult = ( (currentItem.name).toUpperCase() ).includes( searchquery.toUpperCase() );
+					// Check for match with search query. 
+					let currentItemMatchesQuery = checkForMatch(currentItem);
+					
+					// Include item in results if match for query. 
+					if(currentItemMatchesQuery) {
+						
+						// Increment number of matching results in current set. 
+						numMatchesInCurrentSet += 1;
+						
+						// Increment total number of matching results. 
+						totalNumMatchingResults += 1;
 	
+						// Add matching result item to current set of search results. 
+						currentSetResultItems += createResultItem( currentSet, currentItem );
+					}
+				}
+
+				// Add current set of results to final body of results. 
+				finalResultBody += createResultSet(currentSet,numMatchesInCurrentSet,currentSetResultItems);
+	
+				// Log number of results found for current post type. 
+				console.log( `\t\t${numMatchesInCurrentSet} ${currentSet['searchlabel'].singular} results found` );
+
+				/***/
+
+				// Check for match between current item and current search query (case insensitive).
+				function checkForMatch(currentItem) {
+				
 					// Determine current search mode. 
-					let thoroughSearchMode = false;
-	
+					let recklessSearchMode = false;
+
 					// Do search only on selected tags. 
-					if(!thoroughSearchMode) {
-	
-						// Check for match with search query (case insensitive). 
+					if(!recklessSearchMode) {
 					
+						// This is the old one before data structure update (search tags of searchable post items). 
+
 						// Get case-insensitive search check components: search tags, search query. 
-						let tagstring = (currentItem.searchtags).toUpperCase();
-						let querystring = searchquery.toUpperCase();
-						// Check for match within search tags. 
-						matchingResult = ( tagstring ).includes( querystring );
+						let runontagstring = ( currentItem['searchtags'] ).toUpperCase();
+						// Check for match within run-on search tag. 
+						return ( (runontagstring).includes( searchquery.toUpperCase() ) );
+
+						// This will be the new one when data structure is updated (search tags of searchable post items). 
+
+						// TODO: Check for match within list of search tags. 
+						for(let tag of currentItem.searchtags) {
+
+							// Check for match between search query and current search tag. 
+							let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+							// 
+							if(matchOn) return true;
+						}
+
+						// 
+						return false;
 					}
 	
 					// Otherwise, do all-out thorough search everywhere (on all item properties). 
@@ -247,101 +283,18 @@ class Search {
 		
 							// Get case-insensitive search check components. 
 							let keyvalue = ( currentItem[key].toString() ).toUpperCase()
-							let querystring = searchquery.toUpperCase();
+							let querystring = ( searchquery ).toUpperCase();
 	
-							// Check for any matching value inside result item. 
-							let foundMatch = ( keyvalue ).includes( querystring );
+							// Check for match in value of current property. 
+							let foundMatch = (keyvalue).includes(querystring);
 		
-							// Proceed to next search item when matching value found. 
-							if(foundMatch) {
-		
-								// Indicate that this result item is a match for the search. 
-								matchingResult = true;
-		
-								// End search for match on current item. 
-								break;
-							}
+							// End search upon finding match (proceeding to next post item). 
+							if(foundMatch) return true;
 						}
+						
+						// Return false if match not found. 
+						return false;
 					}
-					
-					// Include item in results if match for query. 
-					if(matchingResult) {
-						
-						// Increment number of matching items in current set. 
-						numResultsInSet += 1;
-						
-						// Increment total number of matching result items. 
-						totalMatchingResults += 1;
-	
-						// Add matching result item to current set of search results. 
-						currentSetLayout += createResultItem( currentSet, currentItem );
-					}
-				}
-	
-				// Log number of results found for current post type. 
-				console.log( `\t\t${numResultsInSet} ${currentSet.searchlabel.singular} results found` );
-
-				// Include result set if contains at least one matching result. 
-				if(numResultsInSet>0) {
-	
-					// Open result set. 
-					finalResultBody += `
-					<!-- resultset -->
-					<div class="resultset">
-					
-						<!-- resulthead -->
-						<h3 class="resulthead">${ currentSet.setname } (${ numResultsInSet })</h3>
-						<!-- /resulthead -->
-				
-						<!-- resultlist -->
-						<ul class="resultlist">`;
-		
-					// Add matching items from current result set to final body of search results. 
-					finalResultBody += currentSetLayout;
-		
-					// Close result set. 
-					finalResultBody += `
-						</ul>
-						<!-- /resultlist -->
-		
-					</div>
-					<!-- /resultset -->`;
-				}
-	
-				// Otherwise show message and archive link (if no matches found). 
-				else {
-	
-					// Get archive url. 
-					let archiveUrl = 'javascript:void(0)';
-	
-					// Get plural name of current post type. 
-					let postTypePlural = currentSet.searchlabel.plural;
-	
-					// Create empty result set. 
-					finalResultBody += `
-					<!-- resultset -->
-					<div class="resultset">
-					
-						<!-- resulthead -->
-						<h3 class="resulthead">${currentSet.setname}</h3>
-						<!-- /resulthead -->
-	
-						<!-- textcopy -->
-						<p class="textcopy">
-	
-							<!-- caption -->
-							<span class="caption">No ${postTypePlural} match that search.</span>
-							<!-- /caption -->
-							
-							<!-- archivelink -->
-							<a class="archivelink" href="${archiveUrl}">View all ${postTypePlural}</a>
-							<!-- /archivelink -->
-	
-						</p>
-						<!-- /textcopy -->
-						
-					</div>
-					<!-- /resultset -->`;
 				}
 			}
 	
@@ -354,6 +307,82 @@ class Search {
 			return finalResultBody;
 
 			/****/
+
+			// Create result set. 
+			function createResultSet(currentSet,numMatchesInCurrentSet,currentSetResultItems) {
+	
+				// Get archive url. 
+				let archiveUrl = 'javascript:void(0)';
+
+				// Get plural name of current post type. 
+				let searchlabel = currentSet['searchlabel'].plural;
+
+				// Initialize current set layout. 
+				let currentSetLayout = '';
+				
+				// Open result set. 
+				currentSetLayout += `
+				<!-- resultset -->
+				<div class="resultset">
+
+					<!-- resulthead -->
+					<h3 class="resulthead ${''}">
+						
+						<!-- caption -->
+						<span class="caption">${ currentSet.setname }</span>
+						<!-- /caption -->
+
+						<!-- count -->
+						<span class="count">${ numMatchesInCurrentSet }</span>
+						<!-- /count -->
+
+					</h3>
+					<!-- /resulthead -->
+			
+					<!-- resultlist -->
+					<ul class="resultlist">`;
+				
+				// Create layout for result set that contains matches. 
+				if(numMatchesInCurrentSet>0) {
+					currentSetLayout += currentSetResultItems;
+				}
+				// Create layout for empty result set (message and archive page link). 
+				else {
+					currentSetLayout += createEmptyResultItem();
+				}
+	
+				// Close result set. 
+				currentSetLayout += `
+					</ul>
+					<!-- /resultlist -->
+	
+				</div>
+				<!-- /resultset -->`;
+
+				// Return current set layout. 
+				return currentSetLayout;
+
+				/***/
+
+				// Create empty result item. 
+				function createEmptyResultItem() {
+					// 
+					return `
+					<!-- resultitem -->
+					<li class="resultitem">
+	
+						<!-- caption -->
+						<span class="caption">No ${searchlabel} match that search.</span>
+						<!-- /caption -->
+						
+						<!-- archivelink -->
+						<a class="archivelink" href="${archiveUrl}">View all ${searchlabel}</a>
+						<!-- /archivelink -->
+	
+					</li>
+					<!-- /resultitem -->`;
+				}
+			}
 
 			// Create result item. 
 			function createResultItem(set,item) {

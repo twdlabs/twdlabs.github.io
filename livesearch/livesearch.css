@@ -66,13 +66,16 @@ div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead.empt
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {display:grid; grid-template-columns:repeat(3,1fr);}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 3rem 0 0; /* text-align:center; */}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {color:var(--lightyellow); padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {display:flex; flex-direction:row; justify-content:space-between;}
+/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead span.caption {} */
+/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead span.count */
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem {margin-top:.5rem;}
+/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem span.caption {} */
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.archivelink,
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.authorlink,
 div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.resultlink {color:var(--orange); color:var(--lightorange);}
-/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy {text-align:center;} */
-/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy span.caption {} */
-div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset p.textcopy a.archivelink {display:block; /* color:var(--themecolor); */ text-decoration:underline;}
+div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.archivelink {display:block; text-decoration:underline;}
 
 
 
@@ -98,9 +101,10 @@ div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div
 	div#container div#searchoverlay section.top {font-size:1.75rem;}
 	
 	/* Results Section */
-	div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead {font-size:1.25rem;}
+	div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead {font-size:1.5rem;}
 	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {grid-template-columns:repeat(2,1fr);}
-	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {font-size:1.125rem;}
+	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset {} */
+	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {font-size:1.25rem;}
 }
 
 
@@ -112,7 +116,6 @@ div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div
 	/* Query Section */
 	
 	/* Results Section */
-	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {grid-template-columns:repeat(1,1fr);}
 }
 
 
@@ -126,8 +129,12 @@ div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div
 	div#container div#searchoverlay section.top {font-size:1.25rem;}
 	
 	/* Results Section */
-	div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead {font-size:1.125rem;}
-	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {font-size:1rem;}
+	div#container div#searchoverlay section.bottom div#resultsbox h2.resulthead {font-size:1.25rem;}
+	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody {grid-template-columns:repeat(1,1fr);} */
+	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset {} */
+	div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead {font-size:1.125rem; /* display:block; */}
+	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead span.count:before {content:' (';} */
+	/* div#container div#searchoverlay section.bottom div#resultsbox div.resultbody div.resultset h3.resulthead span.count::after {content:')';} */
 }
 
 
