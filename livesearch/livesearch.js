@@ -129,30 +129,38 @@ class Search {
 	displaySearchResults() {
 		
 		// Get search query. 
-		let searchquery = this.searchField.value;
+		let searchquery = (this.searchField).value;
+		// Get list of words in search query. 
+		// let searchquerylist = searchquery.split(' ');
+
+		// Check for multi-word search query. 
+		// let multiWordQuery = ( searchquerylist.length > 1 );
+		// 
+		// if(multiWordQuery) 
 		
 		// Get initial search results from post database. 
 		let initialResultList = defaultResults;
-		// console.log('Initial result list:',initialResultList);
+		console.log('Initial result list:',initialResultList);
 		
-		// TODO: Add function for the following code part. 
-		// Send request for final search results. 
+		// Send request for matching search results. 
 		let finalResultList = getSearchResults(initialResultList);
-		// console.log('Final result list:',finalResultList);
+		console.log('Final result list:',finalResultList);
 		
 		// Initialize total number of matching search results. 
 		let totalNumMatchingResults = 0;
+		// Get total number of matching search results. 
+		// let totalNumMatchingResults = countTotalResults(finalResultList);
 		
 		// Create layout for final search results. 
-		let finalSearchResults = '';
+		let finalResultsLayout = '';
 		// Add body of results. 
-		finalSearchResults += createResultBody(finalResultList);
+		finalResultsLayout += createResultBody(finalResultList);
 		// Add results header. 
-		finalSearchResults += createResultHeader(finalResultList);
-		// console.log('Results:',finalSearchResults);
+		finalResultsLayout += createResultHeader(totalNumMatchingResults);
+		// console.log('Results:',finalResultsLayout);
 		
 		// Display search results on page. 
-		(this.resultsBox).innerHTML = finalSearchResults;
+		(this.resultsBox).innerHTML = finalResultsLayout;
 		// console.log('Results box:',this.resultsBox);
 
 		// Hide loader icon. 
@@ -168,18 +176,18 @@ class Search {
 		}
 
 		// Create results header. 
-		function createResultHeader() {
+		function createResultHeader(numResultsFound) {
 			// 
 			return `
 			<!-- resulthead -->
-			<h2 class="resulthead ${ (totalNumMatchingResults>0) ? '' : 'empty' }">
+			<h2 class="resulthead ${ (numResultsFound>0) ? '' : 'empty' }">
 	
 				<!-- searchquery -->
 				<span class="searchquery">"${searchquery}"</span>
 				<!-- /searchquery -->
 	
 				<!-- resultcount -->
-				<span class="resultcount">${totalNumMatchingResults} results found</span>
+				<span class="resultcount">${numResultsFound} results found</span>
 				<!-- /resultcount -->
 	
 			</h2>
@@ -527,6 +535,11 @@ class Search {
 					return authorname;
 				}
 			}
+		}
+
+		// Count number of results in set list. 
+		function countTotalResults(resultList) {
+			// 
 		}
 	}
 
