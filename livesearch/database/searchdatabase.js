@@ -35,6 +35,7 @@ const defaultResults = [
 			singular:'president',
 		},
 		setlist: presidentData,
+		visual:true,
 	},
 	{
 		setname:'American Universities',

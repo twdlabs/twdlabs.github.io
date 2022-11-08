@@ -345,7 +345,7 @@ class Search {
 					<!-- /resulthead -->
 			
 					<!-- resultlist -->
-					<ul class="resultlist">`;
+					<ul class="resultlist ${ (currentSet.visual) ? ('visual') : ('') }">`;
 				
 				// Create layout for result set that contains matches. 
 				if(numMatchesInCurrentSet>0) {
@@ -427,6 +427,32 @@ class Search {
 						<!-- authorlink -->
 						<a class="authorlink" href="${ getRelativeUrl(authorurl) }">${ authorname }</a>
 						<!-- /authorlink -->
+						
+					</li>
+					<!-- /resultitem -->`;
+				}
+
+				// Create result for visual post. 
+				else if(item.visual) {
+
+					// Return result. 
+					return `
+					<!-- resultitem -->
+					<li class="resultitem">
+		
+						<!-- resultlink -->
+						<a class="resultlink" href="${ getRelativeUrl(resulturl) }">
+
+							<!-- photo -->
+							<img class="photo" src="${item.photourl}">
+							<!-- /photo -->
+
+							<!-- caption -->
+							<span class="caption">${resultname}</span>
+							<!-- /caption -->
+							
+						</a>
+						<!-- /resultlink -->
 						
 					</li>
 					<!-- /resultitem -->`;
