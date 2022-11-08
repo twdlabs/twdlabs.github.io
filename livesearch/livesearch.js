@@ -130,11 +130,13 @@ class Search {
 		
 		// Get search query. 
 		let searchquery = (this.searchField).value;
+		console.log(`searchquery: "${searchquery}"`);
+		
 		// Get list of words in search query. 
-		// let searchquerylist = searchquery.split(' ');
-
+		let searchquerylist = searchquery.split(' ');
+		console.log('searchquerylist:',searchquerylist);
 		// Check for multi-word search query. 
-		// let multiWordQuery = ( searchquerylist.length > 1 );
+		let multiWordQuery = ( searchquerylist.length > 1 );
 		// 
 		// if(multiWordQuery) 
 		
@@ -143,8 +145,8 @@ class Search {
 		console.log('Initial result list:',initialResultList);
 		
 		// Send request for matching search results. 
-		let finalResultList = getSearchResults(initialResultList);
-		console.log('Final result list:',finalResultList);
+		// let finalResultList = getSearchResults(initialResultList);
+		// console.log('Final result list:',finalResultList);
 		
 		// Initialize total number of matching search results. 
 		let totalNumMatchingResults = 0;
@@ -154,7 +156,7 @@ class Search {
 		// Create layout for final search results. 
 		let finalResultsLayout = '';
 		// Add body of results. 
-		finalResultsLayout += createResultBody(finalResultList);
+		finalResultsLayout += createResultBody(/* finalResultList */);
 		// Add results header. 
 		finalResultsLayout += createResultHeader(totalNumMatchingResults);
 		// console.log('Results:',finalResultsLayout);
@@ -172,7 +174,16 @@ class Search {
 
 		// TODO: Get matching search results. 
 		function getSearchResults(initialResultList) {
+
 			// 
+			return initialResultList.filter(checkForKeep);
+
+			/****/
+
+			// Check for keeping of current set. 
+			function checkForKeep() {
+				// 
+			}
 		}
 
 		// Create results header. 
@@ -222,9 +233,6 @@ class Search {
 				// Accumulate matching items for current set. 
 				for(let currentItem of currentSet.setlist) {
 					// console.log('Current result item',currentItem);
-
-					// Check for simple match (by title) with search query (case insensitive). 
-					// let currentItemMatchesQuery = ( (currentItem.title).toUpperCase() ).includes( searchquery.toUpperCase() );
 					
 					// Check for match with search query. 
 					let currentItemMatchesQuery = checkForMatch(currentItem);
@@ -255,10 +263,17 @@ class Search {
 				function checkForMatch(currentItem) {
 				
 					// Determine current search mode. 
+					let titleSearchOnly = false;
 					let carefulSearch = true;
 
+					// Check for simple match (by title) with search query (case insensitive). 
+					if(titleSearchOnly) {
+						// return ( currentItem.title.toUpperCase() ).includes( searchquery.toUpperCase() );
+						return matchesAllQueryWords(currentItem.title);
+					}
+
 					// Do search only on selected tags. 
-					if(carefulSearch) {
+					else if(carefulSearch) {
 					
 						// Old implementation: before data structure update (search tags of searchable post items). 
 						// Get case-insensitive search check components: search tags, search query. 
@@ -271,7 +286,8 @@ class Search {
 						for(let tag of currentItem.searchtags) {
 
 							// Check for match between search query and current search tag. 
-							let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+							// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+							let matchOn = matchesAllQueryWords(tag);
 							// Return true if any match found. 
 							if(matchOn) return true;
 						}
@@ -286,12 +302,12 @@ class Search {
 						for(let key in currentItem) {
 							// console.log(key);
 		
-							// Get case-insensitive search check components. 
-							let keyvalue = ( currentItem[key].toString() ).toUpperCase()
-							let querystring = ( searchquery ).toUpperCase();
+							// Get case-insensitive search check component. 
+							let keyvalue = currentItem[key].toString();
 	
 							// Check for match in value of current property. 
-							let foundMatch = (keyvalue).includes(querystring);
+							// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
+							let foundMatch = matchesAllQueryWords(keyvalue);
 		
 							// End search upon finding match (proceeding to next post item). 
 							if(foundMatch) return true;
@@ -299,6 +315,24 @@ class Search {
 						
 						// Return false if match not found. 
 						return false;
+					}
+
+					// Check for match with all query words. 
+					function matchesAllQueryWords(tag) {
+
+						// 
+						if(!multiWordQuery) return ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+						
+						// 
+						for(let queryword of searchquerylist) {
+
+							// Check if tag contains query word. 
+							let tagContainsQueryWord = ( tag.toUpperCase() ).includes( queryword.toUpperCase() );
+							if( !tagContainsQueryWord ) return false;
+						}
+
+						// Passed all tests (contins all words in search query). 
+						return true;
 					}
 				}
 			}
@@ -566,6 +600,19 @@ class Search {
 		// Count number of results in set list. 
 		function countTotalResults(resultList) {
 			// 
+			let total = 0;
+
+			// 
+			// for(let i in resultList) {
+			// 	let set = resultList[i];
+			for(let set of resultList) {
+				for(let item of set.setlist) {
+					total += 1;
+				}
+			}
+
+			// 
+			return total;
 		}
 	}
 

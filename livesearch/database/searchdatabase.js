@@ -26,6 +26,7 @@ const defaultResults = [
 			singular:'letter',
 		},
 		setlist: alphabetData,
+		visual:false,
 	},
 	{
 		setname:'U.S. Presidents',
@@ -45,6 +46,7 @@ const defaultResults = [
 			singular:'university',
 		},
 		setlist: universityData,
+		visual:false,
 	},
 	{
 		setname:'Social Media Platforms',
@@ -54,6 +56,7 @@ const defaultResults = [
 			singular:'social platform',
 		},
 		setlist: socialData,
+		visual:false,
 	},
 	{
 		setname:'Months of the Year',
@@ -63,6 +66,7 @@ const defaultResults = [
 			singular:'month',
 		},
 		setlist: monthData,
+		visual:false,
 	},
 	{
 		setname:'Astrological Zodiac Signs',
@@ -72,6 +76,7 @@ const defaultResults = [
 			singular:'zodiac sign',
 		},
 		setlist: zodiacData,
+		visual:false,
 	},
 	{
 		setname:'Numbers',
@@ -81,6 +86,7 @@ const defaultResults = [
 			singular:'number',
 		},
 		setlist: numberData,
+		visual:false,
 	},
 	{
 		setname:'Planets',
@@ -90,6 +96,7 @@ const defaultResults = [
 			singular:'planet',
 		},
 		setlist: planetData,
+		visual:false,
 	},
 	{
 		setname:'Days of the Week',
@@ -99,6 +106,7 @@ const defaultResults = [
 			singular:'day',
 		},
 		setlist: dayData,
+		visual:false,
 	},
 	{
 		setname:'Seasons',
@@ -108,6 +116,7 @@ const defaultResults = [
 			singular:'season',
 		},
 		setlist: seasonData,
+		visual:false,
 	},
 
 	// {
