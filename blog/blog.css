@@ -1,0 +1,30 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+:root {
+	--red:#ff0268;
+}
+
+body {font-family:sans-serif; display:grid; place-items:center; padding:1rem; margin:0; height:100vh;}
+
+div#container {max-width:30rem; padding:1rem; margin:0 auto;}
+
+div#container section.post {border:1px solid #0001; padding:1.5rem 1rem;}
+div#container section.post h2.head {margin:0;}
+
+div#container section.post p.textcopy {line-height:1.75;}
+div#container section.post p.textcopy span.excerpt {display:inline;}
+div#container section.post p.textcopy span.excerpt::after {content:'...';}
+div#container section.post p.textcopy span.more {display:none;}
+div#container section.post.active p.textcopy span.excerpt::after {content:'';}
+div#container section.post.active p.textcopy span.more {display:inline;}
+
+div#container section.post button.readbtn {background-color:var(--red); color:white; padding:.75rem 1rem; border:none; cursor:pointer;}
+div#container section.post button.readbtn span.expand {display:block;}
+div#container section.post button.readbtn span.collapse {display:none;}
+div#container section.post.active button.readbtn span.expand {display:none;}
+div#container section.post.active button.readbtn span.collapse {display:block;}
