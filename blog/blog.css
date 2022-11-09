@@ -22,7 +22,9 @@ div#container section.post p.textcopy span.excerpt {display:inline;}
 div#container section.post p.textcopy span.excerpt::after {content:'...';}
 div#container section.post p.textcopy span.more {display:none;}
 
-div#container section.post p.textcopy button.readbtn {display:inline; background-color:var(--red); color:white; cursor:pointer; padding:.25rem 1rem; border:none; border-radius:.25rem;}
+div#container section.post p.textcopy button.readbtn {display:inline; cursor:pointer; border:none; border-radius:.25rem;}
+div#container section.post p.textcopy button.readbtn {background-color:var(--red); color:white; padding:.25rem 1rem;}
+/* div#container section.post p.textcopy button.readbtn {background-color:initial; color:var(--red); font-size:inherit; padding:0;} */
 div#container section.post p.textcopy button.readbtn.hide {display:none;}
 div#container section.post p.textcopy button.readbtn span.expand {display:block;}
 div#container section.post p.textcopy button.readbtn span.collapse {display:none;}
@@ -35,6 +37,6 @@ div#container section.post p.textcopy button.readbtn span.collapse {display:none
 div#container section.post.active p.textcopy span.excerpt::after {content:'';}
 div#container section.post.active p.textcopy span.more {display:inline;}
 
-div#container section.post.active p.textcopy button.readbtn {display:block;}
+div#container section.post.active p.textcopy button.readbtn {display:block; margin-top:.5rem;}
 div#container section.post.active p.textcopy button.readbtn span.expand {display:none;}
 div#container section.post.active p.textcopy button.readbtn span.collapse {display:block;}
