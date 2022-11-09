@@ -29,35 +29,45 @@ function populateBlog() {
 		let postremainder = (post.content).slice(excerptcharlimit);
 		
 		// Open post. 
-		result += `
-		<!-- post -->
-		<section class="post">`;
-
-		// Add header. 
-		result += `
-			<!-- head -->
-			<h2 class="head">${post.title}</h2>
-			<!-- /head -->`;
-
-		// Add text content to result. 
-		result += `
-			<!-- textcopy -->
-			<p class="textcopy">
-				<span class="excerpt">${postexcerpt}</span><span class="more">${postremainder}</span>
-			</p>
-			<!-- /textcopy -->`;
-
+		// Add header and text content to result. 
 		// Add read button if any remainder of post. 
-		if(true||xyz) result += `
-			<!-- readbtn -->
-			<button class="readbtn">
-				<span class="caption expand">Read More</span>
-				<span class="caption collapse">Read Less</span>
-			</button>
-			<!-- /readbtn -->`;
-
 		// Close post. 
 		result += `
+		<!-- post -->
+		<section class="post ${ (postremainder) ? '' : 'active' }">
+		
+			<!-- head -->
+			<h2 class="head">${post.title}</h2>
+			<!-- /head -->
+			
+			<!-- textcopy -->
+			<p class="textcopy">
+
+				<!-- excerpt -->
+				<span class="excerpt">${postexcerpt}</span>
+				<!-- /excerpt -->
+
+				<!-- more -->
+				<span class="more">${postremainder}</span>
+				<!-- /more -->
+			
+				<!-- readbtn -->
+				<button class="readbtn ${ (postremainder) ? '' : 'hide' }">
+	
+					<!-- caption -->
+					<span class="caption expand">Read More</span>
+					<!-- /caption -->
+	
+					<!-- caption -->
+					<span class="caption collapse">Read Less</span>
+					<!-- /caption -->
+	
+				</button>
+				<!-- /readbtn -->
+
+			</p>
+			<!-- /textcopy -->
+			
 		</section>
 		<!-- /post -->`;
 
@@ -69,6 +79,9 @@ function populateBlog() {
 	// Add result to page. 
 	document.getElementById('container').innerHTML = result;
 
+	/****/
+
+	// 
 }
 
 
@@ -76,16 +89,25 @@ function populateBlog() {
 function activateButtons() {
 
 	// Get all read buttons. 
-	let readbtns = document.querySelectorAll('.readbtn');
-	console.log(readbtns);
+	// let readbtns = document.querySelectorAll('.readbtn');
+	let readbtns = document.querySelectorAll('div#container section.post p.textcopy button.readbtn');
+	console.log('readbtns:',readbtns);
 
 	// Add event handlers. 
 	for(let btn of readbtns) {
-		btn.addEventListener('click', function() {
-			let section = event.currentTarget.parentElement;
-			section.classList.toggle('active');
-		})
+		btn.addEventListener('click', togglePostContent);
 	}
-	
+
+	/****/
+
+	// Toggle post excerpt mode. 
+	function togglePostContent(event) {
+
+		// Get post. 
+		let post = (event.currentTarget).parentElement.parentElement;
+
+		// Toggle post. 
+		post.classList.toggle('active');
+	}
 }
 
