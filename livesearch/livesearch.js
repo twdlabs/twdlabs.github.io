@@ -450,7 +450,7 @@ class Search {
 					<li class="resultitem">
 						
 						<!-- resultlink -->
-						<a class="resultlink" href="${ getRelativeUrl(resulturl) }">${ resultname }</a>
+						<a class="resultlink" href="${ getRelativeUrl(resulturl) }" target="_blank">${ resultname }</a>
 						<!-- /resultlink -->
 						
 						<!-- caption -->
@@ -459,7 +459,7 @@ class Search {
 						
 						
 						<!-- authorlink -->
-						<a class="authorlink" href="${ getRelativeUrl(authorurl) }">${ authorname }</a>
+						<a class="authorlink" href="${ getRelativeUrl(authorurl) }" target="_blank">${ authorname }</a>
 						<!-- /authorlink -->
 						
 					</li>
@@ -475,7 +475,7 @@ class Search {
 					<li class="resultitem">
 		
 						<!-- resultlink -->
-						<a class="resultlink" href="${ getRelativeUrl(resulturl) }">
+						<a class="resultlink" href="${ getRelativeUrl(resulturl) }" target="_blank">
 
 							<!-- photo -->
 							<img class="photo" src="${item.photourl}">
@@ -501,7 +501,7 @@ class Search {
 					<li class="resultitem">
 						
 						<!-- resultlink -->
-						<a class="resultlink" href="${ getRelativeUrl(resulturl) }">${ resultname }</a>
+						<a class="resultlink" href="${ getRelativeUrl(resulturl) }" target="_blank">${ resultname }</a>
 						<!-- /resultlink -->
 						
 					</li>
