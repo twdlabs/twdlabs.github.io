@@ -78,7 +78,7 @@ div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.na
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnorange:hover {background:linear-gradient(180deg, var(--orange), orange);}
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.img,
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn img {height:2em;}
-div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.caption {display:inline-block; font-size:1.125rem; padding:0 1rem;}
+div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn span.caption {display:inline-block; font-size:1.125rem; white-space:nowrap; padding:0 1rem;}
 /* Navigation Menu: Account State (Logged in/out) */
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem.inside {display:none;}
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem.outside {display:block;}

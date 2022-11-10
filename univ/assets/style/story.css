@@ -11,9 +11,37 @@ div#container header#header {background-color:var(--fullnavy);}
 /* Content Section */
 
 /* div#container main#pagecontent {} */
-div#container main#pagecontent article.story {padding:0 4rem; margin-top:4rem;}
-div#container main#pagecontent article.story h2.head {text-align:center;}
-/* div#container main#pagecontent article.story p.textcopy {} */
+
+div#container main#pagecontent section {padding:0 4rem; margin-top:4rem;}
+
+/* div#container main#pagecontent section.story {} */
+/* div#container main#pagecontent section.story article.story {} */
+div#container main#pagecontent section.story article.story h1.head {text-align:center;}
+/* div#container main#pagecontent section.story article.story p.textcopy {} */
+
+div#container main#pagecontent section.archive ul.postlist {list-style:none; padding:0; margin:0;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem {} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post {padding:1rem; border-top:1px solid var(--fullnavy);}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post h1.title {line-height:2; margin:0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.75; margin:0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt::after {content:'...';}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.remainder {display:none;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn {display:inline; cursor:pointer; border:none; border-radius:.25rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn {background-color:var(--fullnavy); color:white;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn {background-color:white; color:var(--fullnavy);} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn span.expand {display:block;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn span.collapse {display:none;}
+
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active {} */
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content {} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt::after {content:'';}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt:empty::after {content:'[No content]';}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.remainder {display:inline;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn {display:block; margin-top:.5rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn.gone {display:none;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn span.expand {display:none;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn span.collapse {display:block;}
 
 
 
