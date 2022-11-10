@@ -46,7 +46,7 @@ defaultResults.blog =
 		singular:'blog post',
 	},
 	setlist: blogPostData,
-	foldername:'resources/blog',
+	foldername:'blog',
 };
 
 // Add programs to list of default results. 
@@ -59,7 +59,7 @@ defaultResults.programs =
 		singular:'program',
 	},
 	setlist: programData,
-	foldername:'resources/programs',
+	foldername:'programs',
 };
 
 // Add courses to list of default results. 
@@ -72,7 +72,7 @@ defaultResults.courses =
 		singular:'course',
 	},
 	setlist: courseData,
-	foldername:'resources/courses',
+	foldername:'courses',
 };
 
 // Add events to list of default results. 
@@ -85,7 +85,7 @@ defaultResults.events =
 		singular:'event',
 	},
 	setlist: eventData,
-	foldername:'resources/events',
+	foldername:'events',
 };
 
 // Add faculty to list of default results. 
@@ -98,7 +98,7 @@ defaultResults.faculty =
 		singular:'faculty',
 	},
 	setlist: facultyData,
-	foldername:'resources/faculty',
+	foldername:'faculty',
 };
 
 // Add students to list of default results. 
@@ -111,7 +111,7 @@ defaultResults.students =
 		singular:'student',
 	},
 	setlist: studentData,
-	foldername:'resources/students',
+	foldername:'students',
 };
 
 

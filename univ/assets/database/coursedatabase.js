@@ -514,7 +514,8 @@ function getCourseById(courseid) {
 	for(let course of courseData) {
 
 		// Check for matching course. 
-		let matchingCourse = (courseid == `${course.programid}${course.coursenumber}`);
+		// let matchingCourse = (courseid == `${course.programid}${course.coursenumber}`);
+		let matchingCourse = (courseid == course.courseid);
 
 		// Return matching course if found. 
 		if( matchingCourse ) return course;
