@@ -4,13 +4,12 @@
 // Define character limit for post excerpts. 
 const excerptcharlimit = 120;
 
+
 /*****/
+
 
 // Populate blog. 
 populateBlog();
-
-// Activate buttons. 
-activateButtons();
 
 
 /*****/
@@ -19,14 +18,16 @@ activateButtons();
 // Populate blog. 
 function populateBlog() {
 
-	// Create elements for blog posts. 
+	// Initialize result. 
 	let result = '';
+
+	// Create elements for blog posts. 
 	for(post of blogdata) {
 
 		// Get excerpt of post content. 
-		let postexcerpt = (post.content).slice(0,excerptcharlimit);
+		let postexcerpt = (post.content) ? (post.content).slice(0,excerptcharlimit) : '';
 		// Get remainder of post content. 
-		let postremainder = (post.content).slice(excerptcharlimit);
+		let postremainder = (post.content) ? (post.content).slice(excerptcharlimit) : '';
 		
 		// Open post. 
 		// Add header and text content to result. 
@@ -34,7 +35,7 @@ function populateBlog() {
 		// Close post. 
 		result += `
 		<!-- post -->
-		<section class="post ${ (postremainder) ? '' : 'active' }">
+		<section class="post ${ (!postremainder) ? 'active' : '' }">
 		
 			<!-- head -->
 			<h2 class="head">${post.title}</h2>
@@ -52,7 +53,7 @@ function populateBlog() {
 				<!-- /more -->
 			
 				<!-- readbtn -->
-				<button class="readbtn ${ (postremainder) ? '' : 'hide' }">
+				<button class="readbtn ${ (!postremainder) ? 'gone' : '' }">
 	
 					<!-- caption -->
 					<span class="caption expand">Read More</span>
@@ -79,35 +80,35 @@ function populateBlog() {
 	// Add result to page. 
 	document.getElementById('container').innerHTML = result;
 
-	/****/
-
-	// 
-}
-
-
-// Activate buttons. 
-function activateButtons() {
-
-	// Get all read buttons. 
-	// let readbtns = document.querySelectorAll('.readbtn');
-	let readbtns = document.querySelectorAll('div#container section.post p.textcopy button.readbtn');
-	console.log('readbtns:',readbtns);
-
-	// Add event handlers. 
-	for(let btn of readbtns) {
-		btn.addEventListener('click', togglePostContent);
-	}
+	// Activate buttons. 
+	activateButtons();
 
 	/****/
 
-	// Toggle post excerpt mode. 
-	function togglePostContent(event) {
-
-		// Get post. 
-		let post = (event.currentTarget).parentElement.parentElement;
-
-		// Toggle post. 
-		post.classList.toggle('active');
+	// Activate buttons. 
+	function activateButtons() {
+	
+		// Get all read buttons. 
+		const readbtns = document.querySelectorAll('div#container section.post p.textcopy button.readbtn');
+		console.log('readbtns:',readbtns);
+	
+		// Add event handlers. 
+		for(let btn of readbtns) {
+			btn.addEventListener('click', togglePostContent);
+		}
+	
+		/****/
+	
+		// Toggle post excerpt mode. 
+		function togglePostContent(event) {
+	
+			// Get post. 
+			let post = (event.currentTarget).parentElement.parentElement;
+	
+			// Toggle post. 
+			post.classList.toggle('active');
+		}
 	}
 }
+
 
