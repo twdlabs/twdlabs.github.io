@@ -101,26 +101,6 @@ function loadHeader() {
 					<li class="navitem">
 
 						<!-- navlink -->
-						<a class="navlink" href="./events">Events</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="./faculty">Faculty</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
 						<a class="navlink" href="./blog">Blog</a>
 						<!-- /navlink -->
 
@@ -308,26 +288,6 @@ function loadHeader() {
 
 						<!-- navlink -->
 						<a class="navlink" href="../programs">Programs</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="../events">Events</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="../faculty">Faculty</a>
 						<!-- /navlink -->
 
 					</li>
@@ -527,7 +487,7 @@ function loadFooter() {
 					<li class="navitem">
 
 						<!-- navlink -->
-						<a class="navlink" href="./story">Story</a>
+						<a class="navlink" href="./programs">Programs</a>
 						<!-- /navlink -->
 
 					</li>
@@ -537,7 +497,7 @@ function loadFooter() {
 					<li class="navitem">
 
 						<!-- navlink -->
-						<a class="navlink" href="./programs">Programs</a>
+						<a class="navlink" href="./courses">Courses</a>
 						<!-- /navlink -->
 
 					</li>
@@ -563,6 +523,16 @@ function loadFooter() {
 					</li>
 					<!-- /navitem -->
 					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
+						<a class="navlink" href="./students">Students</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
 				</ul>
 				<!-- /navlist -->
 				
@@ -583,6 +553,36 @@ function loadFooter() {
 					<li class="navitem">
 
 						<!-- navlink -->
+						<a class="navlink" href="./story">Story</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
+						<a class="navlink" href="./blog">Blog</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
+						<a class="navlink" href="javascript:void(0)">Careers</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
 						<a class="navlink" href="javascript:void(0)">Legal</a>
 						<!-- /navlink -->
 
@@ -594,16 +594,6 @@ function loadFooter() {
 
 						<!-- navlink -->
 						<a class="navlink" href="javascript:void(0)">Privacy</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="javascript:void(0)">Careers</a>
 						<!-- /navlink -->
 
 					</li>
@@ -778,7 +768,7 @@ function loadFooter() {
 					<li class="navitem">
 
 						<!-- navlink -->
-						<a class="navlink" href="../story">Story</a>
+						<a class="navlink" href="../programs">Programs</a>
 						<!-- /navlink -->
 
 					</li>
@@ -788,7 +778,7 @@ function loadFooter() {
 					<li class="navitem">
 
 						<!-- navlink -->
-						<a class="navlink" href="../programs">Programs</a>
+						<a class="navlink" href="../courses">Courses</a>
 						<!-- /navlink -->
 
 					</li>
@@ -814,6 +804,16 @@ function loadFooter() {
 					</li>
 					<!-- /navitem -->
 					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
+						<a class="navlink" href="../students">Students</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
 				</ul>
 				<!-- /navlist -->
 				
@@ -834,6 +834,36 @@ function loadFooter() {
 					<li class="navitem">
 
 						<!-- navlink -->
+						<a class="navlink" href="../story">Story</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
+						<a class="navlink" href="../blog">Blog</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
+						<a class="navlink" href="javascript:void(0)">Careers</a>
+						<!-- /navlink -->
+
+					</li>
+					<!-- /navitem -->
+					
+					<!-- navitem -->
+					<li class="navitem">
+
+						<!-- navlink -->
 						<a class="navlink" href="javascript:void(0)">Legal</a>
 						<!-- /navlink -->
 
@@ -845,16 +875,6 @@ function loadFooter() {
 
 						<!-- navlink -->
 						<a class="navlink" href="javascript:void(0)">Privacy</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="javascript:void(0)">Careers</a>
 						<!-- /navlink -->
 
 					</li>
@@ -999,3 +1019,4 @@ function activateLiveSearch() {
 	// Create new Search object. 
 	/* const s =  */new Search(openbtn,closebtn,searchOverlay,searchField,resultsBox);
 }
+

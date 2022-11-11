@@ -2,10 +2,8 @@
 
 
 
-:root {
-	--postwidth:30rem;
-	--articlewidth:48rem;
-}
+/* :root {
+} */
 
 
 
@@ -19,16 +17,17 @@ div#container header#header {background-color:var(--themecolor);}
 
 /* div#container main#pagecontent {} */
 
-div#container main#pagecontent section {padding:0 4rem; margin-top:4rem;}
+div#container main#pagecontent section {margin-top:4rem;}
 
-/* div#container main#pagecontent section.story {} */
+div#container main#pagecontent section.story {padding:0 6rem;}
 div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.story article.story h1.head {text-align:center;}
 /* div#container main#pagecontent section.story article.story p.textcopy {} */
 
+div#container main#pagecontent section.archive {padding:0 3rem;}
 div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--postwidth); padding:0; margin:0 auto;}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem {} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post {padding:1rem; border-top:1px solid var(--themecolor);}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post {padding:1rem; border-top:1px solid var(--trpnavy);}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post h1.title {line-height:2; margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.75; margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}
@@ -66,6 +65,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 	/* Header Section */
 
 	/* Content Section */
+	div#container main#pagecontent section.story {padding:0 4rem;}
 
 	/* Footer Section */
 }
@@ -77,6 +77,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 	/* Header Section */
 
 	/* Content Section */
+	div#container main#pagecontent section.story {padding:0 2rem;}
 
 	/* Footer Section */
 }

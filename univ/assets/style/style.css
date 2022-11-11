@@ -22,8 +22,12 @@
 
 	--navyblue:#0D3B66;
 	--fullnavy:rgb(13,55,94);
+	--trpnavy:rgba(13,55,94,0.5);
 	--lucentnavy:rgba(13,55,94,0.89);
 	
+	--pagewidth:60rem;
+	--postwidth:30rem;
+	--articlewidth:48rem;
 	--themecolor:var(--fullnavy);
 }
 
@@ -45,7 +49,7 @@ div#container a {text-decoration:none; color:inherit;}
 div#container header#header {position:static;}
 div#container header#header {background-color:#0004; min-height:4rem; padding:1.25rem 1rem;}
 div#container header#header main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:white;}
-div#container header#header main {max-width:75rem; margin:0 auto;}
+div#container header#header main {max-width:var(--pagewidth); margin:0 auto;}
 div#container header#header h1.navhead {flex-grow:0; order:10;}
 div#container header#header nav.navmenu.a {flex-grow:1; order:20;}
 div#container header#header nav.navmenu.b {flex-grow:0; order:30;}
@@ -106,7 +110,7 @@ div#container header#header.active nav.navmenu.b ul.navlist li.navitem a.navlink
 /* Footer Section */
 
 div#container footer#footer {background:linear-gradient(#FFF,#ECECEC); padding:4rem 1rem;}
-div#container footer#footer main {max-width:60rem; margin:0 auto;}
+div#container footer#footer main {max-width:var(--pagewidth); margin:0 auto;}
 div#container footer#footer main {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; flex-wrap:nowrap;}
 div#container footer#footer div.col {flex-grow:2; flex-basis:0; text-align:left; padding:1rem;}
 div#container footer#footer div.col.wide {flex-grow:3;}
