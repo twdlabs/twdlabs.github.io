@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<link href="../atgicon.ico" rel="apple-touch-icon"/>
+		<title>Calendar</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="template.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+
+				--calendarwidth:24rem;
+
+				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+				--grey:#AAA;
+				--themecolor:#9b59b6;
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+			}
+
+
+			html {background-color:var(--themecolor); background-image:var(--bgimg);}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			div#container main.main {background-color:white; width:100%; max-width:var(--calendarwidth); padding:1.5rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+
+			div#container main.main div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+			div#container main.main div.head h1.name {font-size:1.625rem; margin:0;}
+			div#container main.main div.head div.controller {display:flex; flex-direction:row; align-items:center;}
+			div#container main.main div.head div.controller div.btn {cursor:pointer; padding:.25rem .25rem; margin-left:1rem;}
+			div#container main.main div.head div.controller div.btn svg.icon {font-size:1.125rem; font-weight:bold;}
+
+			/* div#container main.main div.body {} */
+			div#container main.main div.body ul.daylist {list-style:none; padding:0; margin:0;}
+			div#container main.main div.body ul.daylist {display:flex; flex-direction:row; flex-wrap:wrap;}
+			div#container main.main div.body ul.daylist li.day {font-size:1.125rem; width:calc(100%/7); text-align:center; padding:.625rem 0; /* border:1px solid black; */ margin:.125rem 0;}
+			div#container main.main div.body ul.weekdays {font-weight:900;}
+			/* div#container main.main div.body ul.weekdays li.day {font-size:1.25rem;} */
+			/* div#container main.main div.body ul.monthdays {} */
+			div#container main.main div.body ul.monthdays li.day {color:black;}
+			div#container main.main div.body ul.monthdays li.day.on {background-color:var(--themecolor); color:white; border-radius:50%;}
+			div#container main.main div.body ul.monthdays li.day.off {color:var(--grey); /* color:grey; */}
+
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+			}
+			
+			/* Big Smartphone Screen */
+			@media screen and (max-width:48rem) {
+				/*  */
+			}
+			
+			/* Small Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- head -->
+				<div class="head">
+
+					<!-- name -->
+					<h1 class="name">November 2022</h1>
+					<!-- /name -->
+
+					<!-- controller -->
+					<div class="controller">
+
+						<!-- btn -->
+						<div class="btn">
+
+							<!-- icon -->
+							<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+							</svg>
+							<!-- /icon -->
+							
+						</div>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<div class="btn">
+
+							<!-- icon -->
+							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+							</svg>
+							<!-- /icon -->
+							
+						</div>
+						<!-- /btn -->
+
+					</div>
+					<!-- /controller -->
+					
+				</div>
+				<!-- /head -->
+
+				<!-- body -->
+				<div class="body">
+
+					<!-- weekdays -->
+					<ul class="daylist weekdays">
+
+						<!-- day -->
+						<li class="day">Sun</li>
+						<!-- /day -->
+
+						<!-- day -->
+						<li class="day">Mon</li>
+						<!-- /day -->
+
+						<!-- day -->
+						<li class="day">Tue</li>
+						<!-- /day -->
+
+						<!-- day -->
+						<li class="day">Wed</li>
+						<!-- /day -->
+
+						<!-- day -->
+						<li class="day">Thu</li>
+						<!-- /day -->
+
+						<!-- day -->
+						<li class="day">Fri</li>
+						<!-- /day -->
+
+						<!-- day -->
+						<li class="day">Sat</li>
+						<!-- /day -->
+						
+					</ul>
+					<!-- /weekdays -->
+
+					<!-- monthdays -->
+					<ul class="daylist monthdays">
+						
+						<!-- day -->
+						<li class="day off">31</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">1</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">2</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">3</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">4</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">5</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">6</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">7</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">8</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">9</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day on">10</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">11</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">12</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">13</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">14</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">15</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">16</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">17</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">18</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">19</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">20</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">21</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">22</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">23</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">24</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">25</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">26</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">27</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">28</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">29</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day">30</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day off">1</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day off">2</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day off">3</li>
+						<!-- /day -->
+						
+						<!-- day -->
+						<li class="day off">4</li>
+						<!-- /day -->
+
+					</ul>
+					<!-- /monthdays -->
+					
+				</div>
+				<!-- /body -->
+
+				<!-- item -->
+				<div class="item"></div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="template.js" type="text/javascript"></script> -->
+		<script type="text/javascript">
+
+			// 
+			const monthlength = [ 31,28,31, 30,31,30, 31,31,30, 31,30,31, ];
+			// 
+			const monthname = [ 
+				'Jan','Feb','Mar', 
+				'Apr','May','Jun', 
+				'Jul','Aug','Sep', 
+				'Oct','Nov','Dec', 
+			];
+			// 
+			const monthfullname = [ 
+				'January','February','March', 
+				'April','May','June', 
+				'July','August','September', 
+				'October','November','December', 
+			];
+
+			// 
+			const dayname = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat',];
+			// 
+			const dayfullname = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',];
+
+			// Define index of current month. 
+			let currentYear = 2022;
+			let currentMonthIndex = 10;
+			let currentDay = 10;
+			console.log( 'Current month:', currentYear, monthfullname[currentMonthIndex] );
+
+			// 
+
+		</script>
+
+	</body>
+
+</html>
