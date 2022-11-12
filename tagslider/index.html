@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<link href="../atgicon.ico" rel="apple-touch-icon"/>
+		<title>Tag Slider</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="template.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+				--grey:#F5F4FD;
+				/* --grey:#CCC; */
+				--grey2:#D8D5F2;
+				/* --grey2:#BBB; */
+				--darkgrey:#AAA;
+				--black:#444;
+				--themecolor:#5372F0;
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+			}
+
+
+			html {background-color:var(--themecolor); background-image:var(--bgimg);}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {background-color:white; width:100%; max-width:20rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+			/* div#container main.main {display:flex; flex-direction:row; align-items:stretch;} */
+			div#container main.main {position:relative; overflow:hidden; overflow-x:auto; scrollbar-width:none;}
+			div#container main.main ul.taglist {flex-grow:1; display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+			div#container main.main ul.taglist li.tagitem {background-color:var(--grey); font-size:.875rem; font-size:1.125rem; white-space:nowrap; user-select:none; cursor:pointer; padding:.25rem .75rem; border:1px solid var(--darkgrey); border-radius:10rem; margin:1rem .375rem;}
+			div#container main.main ul.taglist li.tagitem:hover {background-color:var(--grey2);}
+			div#container main.main ul.taglist li.tagitem.active {background-color:var(--themecolor); color:white;}
+			div#container main.main div.side {display:grid; place-items:center; position:absolute; height:100%; padding:.5rem;}
+			div#container main.main div.side {opacity:1; visibility:visible; transition:.5s;}
+			div#container main.main div.side.gone {opacity:0; visibility:hidden;}
+			div#container main.main div.side.left {left:0; background:linear-gradient(90deg,white 75%,transparent);}
+			div#container main.main div.side.right {right:0; background:linear-gradient(-90deg,white 75%,transparent);}
+			div#container main.main div.side div.slidebtn {color:var(--black); display:grid; place-items:center; height:1.625rem; width:1.625rem; cursor:pointer; border-radius:50%;}
+			div#container main.main div.side div.slidebtn/* :hover */ {background-color:var(--grey2);}
+			div#container main.main div.side div.slidebtn svg.icon {display:block; font-size:.75rem; font-weight:bold;}
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+			}
+			
+			/* Big Smartphone Screen */
+			@media screen and (max-width:48rem) {
+				/*  */
+			}
+			
+			/* Small Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- side -->
+				<div class="side left">
+
+					<!-- slidebtn -->
+					<div class="slidebtn">
+	
+						<!-- icon -->
+						<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+						</svg>
+						<!-- /icon -->
+	
+					</div>
+					<!-- /slidebtn -->
+
+				</div>
+				<!-- /side -->
+
+				<!-- taglist -->
+				<ul class="taglist">
+
+					<!-- tagitem -->
+					<li class="tagitem">Coding</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem active">JavaScript</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Podcasts</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Databases</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Web Dev</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Unboxing</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">History</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Programming</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Gadgets</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Algorithms</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Comedy</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Gaming</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Share Market</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Smartphones</li>
+					<!-- /tagitem -->
+
+					<!-- tagitem -->
+					<li class="tagitem">Data Structures</li>
+					<!-- /tagitem -->
+					
+				</ul>
+				<!-- /taglist -->
+
+				<!-- side -->
+				<div class="side right">
+
+					<!-- slidebtn -->
+					<div class="slidebtn">
+	
+						<!-- icon -->
+						<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+						</svg>
+						<!-- /icon -->
+	
+					</div>
+					<!-- /slidebtn -->
+					
+				</div>
+				<!-- /side -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="template.js" type="text/javascript"></script> -->
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
