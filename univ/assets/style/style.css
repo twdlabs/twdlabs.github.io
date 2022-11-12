@@ -117,7 +117,7 @@ div#container footer#footer div.col.wide {flex-grow:3;}
 div#container footer#footer div.col.break {display:none; flex:0 0 100%;}
 
 div#container footer#footer div.col h1.navhead {font-size:1.75rem; font-weight:100; color:var(--darkgrey); margin:0;}
-div#container footer#footer div.col h3.navhead {font-size:1.6875rem; font-weight:100; color:var(--darkgrey); margin:0;}
+div#container footer#footer div.col h3.navhead {font-size:1.375rem; font-weight:100; color:var(--darkgrey); margin:0;}
 div#container footer#footer div.col a.contactlink {font-size:.9rem; color:var(--grey);}
 
 div#container footer#footer div.col ul.navlist {list-style:none; margin:0; padding:0; margin-top:.75rem;}

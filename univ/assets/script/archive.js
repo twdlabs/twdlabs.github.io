@@ -2,7 +2,8 @@
 
 
 // Get destination for list of post items. 
-const destination = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
+const listdestination = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
+const postdestination = document.querySelector('div#container main#pagecontent');
 
 
 // Define character limit for post excerpts. 
@@ -24,11 +25,11 @@ function choosePageType() {
 
 	// Get search parameters from url. 
 	const params = new URLSearchParams(window.location.search);
-	console.log('params:',params);
+	// console.log('parameters:',params);
 
 	// Check for id parameter. 
-	let postId = 1 * params.get('id');
-	let weGotId = !!postId;		// Denies id=0 👎🏾. Denies id='' 👍. 
+	let postId = params.get('id');
+	let weGotId = !!postId;							// Denies id=0 👎🏾. Denies id='' 👍. 
 	// console.log('weGotId:',weGotId,postId);
 	// let weGotId = !!postId || !isNaN(postId);	// Allows id=0 👍. Allows id='' 👎🏾. 
 
@@ -45,10 +46,10 @@ function choosePageType() {
 	
 		// Get post item. 
 		let post = getPostById(id);
-		console.log('post:',post);
+		// console.log('post:',post);
 	
 		// Add post item to page. 
-		if(post) destination.innerHTML = createPostItem(post);
+		if(post) postdestination.innerHTML = createFullPost(post);
 		else loadArchivePage(archiveSource);
 
 		/***/
@@ -89,11 +90,11 @@ function choosePageType() {
 		for(let post of postlist) {
 	
 			// Create post item. 
-			result += createPostItem(post);
+			result += createPostPreview(post);
 		}
 	
 		// Add result to page. 
-		destination.innerHTML = result;
+		listdestination.innerHTML = result;
 	
 		// Activate buttons. 
 		activateButtons();
@@ -126,8 +127,8 @@ function choosePageType() {
 		}
 	}
 
-	// Create post item. 
-	function createPostItem(post) {
+	// Create full post item. 
+	function createFullPost(post) {
 	
 		// 
 		if(!post) {
@@ -135,11 +136,59 @@ function choosePageType() {
 			return '';
 		}
 	
+		// Get title of post. 
+		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
+	
+		// Get content of post. 
+		let content = (post.content) ? (post.content) : `[Empty ${post.posttype} content]`;
+	
+		// 
+		return `
+
+		<!-- story -->
+		<section class="story">
+	
+			<!-- story -->
+			<article class="story">
+				
+				<!-- title -->
+				<h1 class="title">${title}</h1>
+				<!-- /title -->
+	
+				<!-- content -->
+				<p class="content">${content}</p>
+				<!-- /content -->
+	
+			</article>
+			<!-- /story -->
+					
+		</section>
+		<!-- /story -->`;
+	}
+
+	// Create preview of post item. 
+	function createPostPreview(post) {
+		// console.log('post:',post);
+	
+		// 
+		if(!post) {
+			console.warn('Invalid post:',post);
+			return '';
+		}
+	
+		// Get title of post. 
+		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
+	
 		// Get excerpt of post content. 
 		let postexcerpt = (post.content) ? (post.content).slice(0,excerptcharlimit) : '';
 	
 		// Get remainder of post content. 
 		let postremainder = (post.content) ? (post.content).slice(excerptcharlimit) : '';
+	
+		// Get id of post. 
+		let type = post.posttype;
+		let id = post[type+'id'];
+		// console.log('id:',id);
 	
 		// 
 		return `
@@ -150,7 +199,7 @@ function choosePageType() {
 			<article class="post ${ (!postremainder) ? 'active' : '' }">
 				
 				<!-- title -->
-				<h1 class="title">${post.title}</h1>
+				<h1 class="title">${title}</h1>
 				<!-- /title -->
 	
 				<!-- content -->
@@ -165,17 +214,7 @@ function choosePageType() {
 					<!-- /remainder -->
 	
 					<!-- readbtn -->
-					<button class="readbtn ${ (!postremainder) ? 'gone' : '' }">
-	
-						<!-- expand -->
-						<span class="expand">Read More</span>
-						<!-- /expand -->
-	
-						<!-- collapse -->
-						<span class="collapse">Read Less</span>
-						<!-- /collapse -->
-	
-					</button>
+					<a class="readbtn" href="?id=${ id }">Read More</a>
 					<!-- /readbtn -->
 					
 				</p>

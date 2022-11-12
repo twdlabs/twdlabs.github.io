@@ -686,7 +686,7 @@ function addPeopleProperties() {
 		faculty.title = getFullName(faculty);
 	
 		// Create function for full name. 
-		// faculty.fulltitle = getFullName.bind(faculty);
+		// faculty.title = getFullName.bind(faculty);
 		
 		// Get searchable faculty data. 
 		faculty.searchtags = getFacultyTags(faculty);
@@ -699,7 +699,7 @@ function addPeopleProperties() {
 		student.title = getFullName(student);
 	
 		// Create function for full name. 
-		// student.fulltitle = getFullName.bind(student);
+		// student.title = getFullName.bind(student);
 		
 		// Get searchable student data. 
 		student.searchtags = getStudentTags(student);

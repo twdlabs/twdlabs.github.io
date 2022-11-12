@@ -33,21 +33,22 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt::after {content:'...';}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.remainder {display:none;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn {display:inline; cursor:pointer; border:none; border-radius:.25rem;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn {background-color:var(--themecolor); color:white;}
-/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn {background-color:white; color:var(--themecolor);} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn span.expand {display:block;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn span.collapse {display:none;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {display:inline-block; margin:.5rem 1rem;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {display:block; /* text-align:center; */ line-height:2;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {background-color:var(--themecolor); color:white; padding:0 .5rem; border-radius:.25rem;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {background-color:white; color:var(--themecolor); text-decoration:underline;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.expand {display:block;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.collapse {display:none;}
 
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active {} */
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content {} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt::after {content:'';}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt:empty::after {content:'[No content]';}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt:empty::after {content:'[No content]';} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.remainder {display:inline;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn {display:block; margin-top:.5rem;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn.gone {display:none;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn span.expand {display:none;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content button.readbtn span.collapse {display:block;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn {display:block; margin-top:.5rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn.gone {display:none;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.expand {display:none;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.collapse {display:block;}
 
 
 
