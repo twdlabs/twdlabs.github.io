@@ -5,6 +5,14 @@ const programData = [
 
 	{
 		posttype:'program',
+		programid:'XYZ',
+		title:'Default Program',
+		content:'',
+		postedtime:0,
+	},
+
+	{
+		posttype:'program',
 		programid:'ACCT',
 		title:'Accounting',
 		content:'',
@@ -140,14 +148,6 @@ const programData = [
 		posttype:'program',
 		programid:'RS',
 		title:'Religious Studies',
-		content:'',
-		postedtime:0,
-	},
-
-	{
-		posttype:'program',
-		programid:'XYZ',
-		title:'Default Program',
 		content:'',
 		postedtime:0,
 	},

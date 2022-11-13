@@ -22,7 +22,7 @@ div#container main#pagecontent section {margin-top:4rem;}
 div#container main#pagecontent section.story {padding:0 6rem;}
 div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.story article.story h1.head {text-align:center;}
-/* div#container main#pagecontent section.story article.story p.textcopy {} */
+div#container main#pagecontent section.story article.story p.textcopy {text-align:center;}
 
 div#container main#pagecontent section.archive {padding:0 3rem;}
 div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--postwidth); padding:0; margin:0 auto;}

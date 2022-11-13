@@ -685,8 +685,8 @@ function addPeopleProperties() {
 		// Get full name as title. 
 		faculty.title = getFullName(faculty);
 	
-		// Create function for full name. 
-		// faculty.title = getFullName.bind(faculty);
+		// Get email address. 
+		faculty.email = getEmailAddress(faculty);
 		
 		// Get searchable faculty data. 
 		faculty.searchtags = getFacultyTags(faculty);
@@ -698,14 +698,25 @@ function addPeopleProperties() {
 		// Get full name as title. 
 		student.title = getFullName(student);
 	
-		// Create function for full name. 
-		// student.title = getFullName.bind(student);
+		// Get email address. 
+		student.email = getEmailAddress(student);
 		
 		// Get searchable student data. 
 		student.searchtags = getStudentTags(student);
 	}
 
 	/****/
+
+	// Define email address of given person. 
+	function getEmailAddress(person) {
+		// Get first initial. 
+		let f = (person.firstname).charAt(0).toLowerCase();
+		// Get last name. 
+		let lname = (person.lastname).toLowerCase();
+
+		// Compile and return email address. 
+		return `${f}${lname}@true.edu`;
+	}
 
 	// Define full name of given person. 
 	function getFullName(person) {

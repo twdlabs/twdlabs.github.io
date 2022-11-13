@@ -135,6 +135,31 @@ function choosePageType() {
 			console.warn('Invalid post:',post);
 			return '';
 		}
+
+		// Create full program post. 
+		if(post.posttype=='program') {
+			return ``;
+		}
+
+		// Create full course post. 
+		if(post.posttype=='course') {
+			return ``;
+		}
+
+		// Create full event post. 
+		if(post.posttype=='event') {
+			return ``;
+		}
+
+		// Create full faculty post. 
+		if(post.posttype=='faculty') {
+			return ``;
+		}
+
+		// Create full student post. 
+		if(post.posttype=='student') {
+			return ``;
+		}
 	
 		// Get title of post. 
 		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
@@ -144,7 +169,6 @@ function choosePageType() {
 	
 		// 
 		return `
-
 		<!-- story -->
 		<section class="story">
 	

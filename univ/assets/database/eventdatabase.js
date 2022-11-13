@@ -6,6 +6,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'001',
+		programid:1,
 		title: 'Accounting Conference',
 		eventtime:0,
 		postedtime:0,
@@ -22,6 +23,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'002',
+		programid:12,
 		title: 'Mathematics Competition',
 		eventtime:0,
 		postedtime:0,
@@ -38,6 +40,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'003',
+		programid:3,
 		title: 'Biology Experiment',
 		eventtime:0,
 		postedtime:0,
@@ -54,6 +57,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'004',
+		programid:16,
 		title: 'Physics Expo',
 		eventtime:0,
 		postedtime:0,
