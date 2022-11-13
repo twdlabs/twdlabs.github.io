@@ -12,7 +12,7 @@ const overlayPopup = document.querySelector('div#overlay');
 const overlayScale = document.querySelector('div#overlay main.main div.scale');
 
 // Get piano in overlay popup window. 
-const overlayPiano = document.querySelector('div#overlay main.main div.pianokeys');
+const overlayPiano = document.querySelector('div#overlay main.main div.pianokeys div.inner');
 
 
 /*****/
