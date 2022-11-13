@@ -1,4 +1,4 @@
-
+// 'use strict';
 
 
 // Create new date item for current date time. 
@@ -180,7 +180,7 @@ function goToTodayMonth() {
 
 	// Reset current year. 
 	currentYear = todayYear;
-	
+
 	// Reset current month index. 
 	currentMonthIndex = todayMonthIndex;
 	
