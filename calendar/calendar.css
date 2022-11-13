@@ -1,0 +1,63 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	--calendarwidth:24rem;
+
+	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+	--grey:#AAA;
+	--ltgrey:#D0D0D0;
+	--themecolor:#9b59b6;
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+}
+
+
+html {background-color:var(--themecolor); background-image:var(--bgimg);}
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container main.calendar {background-color:white; width:100%; max-width:var(--calendarwidth); padding:1.5rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+
+div#container main.calendar div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container main.calendar div.head h1.name {font-size:1.625rem; cursor:pointer; user-select:none; margin:0;}
+div#container main.calendar div.head div.controller {display:flex; flex-direction:row; align-items:center;}
+div#container main.calendar div.head div.controller div.btn {cursor:pointer; padding:.25rem .25rem; margin-left:1rem;}
+div#container main.calendar div.head div.controller div.btn svg.icon {font-size:1.125rem; font-weight:bold;}
+
+/* div#container main.calendar div.body {} */
+div#container main.calendar div.body ul.daylist {list-style:none; padding:0; margin:0;}
+div#container main.calendar div.body ul.daylist {display:grid; grid-template-columns:repeat(7,1fr);}
+/* div#container main.calendar div.body ul.daylist {display:flex; flex-direction:row; flex-wrap:wrap;} */
+/* div#container main.calendar div.body ul.daylist li.day {width:calc(100%/7);} */
+div#container main.calendar div.body ul.daylist li.day {font-size:1.125rem; text-align:center; cursor:pointer; user-select:none; padding:.625rem 0; /* border:1px solid black; */ margin:.125rem 0;}
+div#container main.calendar div.body ul.weekdays {font-weight:900;}
+/* div#container main.calendar div.body ul.weekdays li.day {font-size:1.25rem;} */
+/* div#container main.calendar div.body ul.monthdays {} */
+div#container main.calendar div.body ul.monthdays li.day {color:black; border-radius:50%;}
+div#container main.calendar div.body ul.monthdays li.day:hover {background-color:var(--ltgrey); /* color:white; */}
+div#container main.calendar div.body ul.monthdays li.day.on {background-color:var(--themecolor); color:white;}
+div#container main.calendar div.body ul.monthdays li.day.off {color:var(--grey); /* color:grey; */}
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}

@@ -1,7 +1,7 @@
 
 
 
-// 
+// Define month lengths. 
 const monthlength = [ 31,28,31, 30,31,30, 31,31,30, 31,30,31, ];
 
 // Define month names. 
@@ -20,8 +20,8 @@ const monthfullname = [
 	'October','November','December', 
 ];
 
-// 
-const months = [
+// Define month data. 
+const monthData = [
 
 	{
 		name:'Jan',
@@ -91,13 +91,13 @@ const months = [
 
 
 
-// 
+// Define names for days of the week. 
 const dayname = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat',];
-// 
+// Define full names for days of the week. 
 const dayfullname = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',];
 
-// 
-const daysofweek = [
+// Define days of the week. 
+const weekDayData = [
 	{
 		name:'Sun',
 		fullname:'Sunday',
