@@ -26,10 +26,10 @@
 			<main class="calendar">
 
 				<!-- head -->
-				<div class="head">
+				<section class="head">
 
 					<!-- name -->
-					<h1 class="name" onclick="goToTodayMonth()">Xyz 0000</h1>
+					<h1 class="name" onclick="openSelector()">Xyz 0000</h1>
 					<!-- /name -->
 
 					<!-- controller -->
@@ -109,11 +109,11 @@
 					</div>
 					<!-- /controller -->
 					
-				</div>
+				</section>
 				<!-- /head -->
 
 				<!-- body -->
-				<div class="body">
+				<section class="body">
 
 					<!-- weekdays -->
 					<ul class="daylist weekdays">
@@ -351,11 +351,175 @@
 					</ul>
 					<!-- /monthdays -->
 					
-				</div>
+				</section>
 				<!-- /body -->
 
 				<!-- selector -->
 				<div class="selector">
+
+					<!-- head -->
+					<div class="head">
+
+						<!-- btn -->
+						<div class="btn" onclick="shiftSelectorYr(-1)">
+
+							<!-- icon -->
+							<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+							</svg>
+							<!-- /icon -->
+							
+						</div>
+						<!-- /btn -->
+
+						<!-- year -->
+						<h1 class="year">0000</h1>
+						<!-- /year -->
+
+						<!-- btn -->
+						<div class="btn" onclick="shiftSelectorYr(+1)">
+
+							<!-- icon -->
+							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+							</svg>
+							<!-- /icon -->
+							
+						</div>
+						<!-- /btn -->
+
+					</div>
+					<!-- /head -->
+
+					<!-- select -->
+					<ul class="select">
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+
+						<!-- month -->
+						<li class="month" data-yr="-1" data-mo="-1">
+
+							<!-- caption -->
+							<span class="caption">Xyz</span>
+							<!-- /caption -->
+
+						</li>
+						<!-- /month -->
+						
+					</ul>
+					<!-- /select -->
+
+					<!-- closebtn -->
+					<div class="closebtn" onclick="closeSelector()">&times;</div>
+					<!-- /closebtn -->
 					
 				</div>
 				<!-- /selector -->

@@ -11,7 +11,7 @@
 
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
 	--grey:#AAA;
-	--ltgrey:#D0D0D0;
+	--ltgrey:#E8E8E8;
 	--themecolor:#9b59b6;
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
@@ -25,29 +25,40 @@ body {font-family:Nunito,sans-serif; margin:0;}
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 div#container main.calendar {background-color:white; width:100%; max-width:var(--calendarwidth); position:relative; overflow:hidden; padding:1.5rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
 
-div#container main.calendar div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container main.calendar div.head h1.name {font-size:1.625rem; cursor:pointer; user-select:none; margin:0;}
-div#container main.calendar div.head div.controller {display:flex; flex-direction:row; align-items:center;}
-div#container main.calendar div.head div.controller div.btn {cursor:pointer; padding:.25rem .25rem; margin-left:.25rem;}
-div#container main.calendar div.head div.controller div.btn svg.icon {font-size:1.125rem; font-weight:bold;}
+div#container main.calendar section.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container main.calendar section.head h1.name {font-size:1.625rem; cursor:pointer; user-select:none; margin:0;}
+div#container main.calendar section.head div.controller {display:flex; flex-direction:row; align-items:center;}
+div#container main.calendar section.head div.controller div.btn {cursor:pointer; padding:.25rem .25rem; margin-left:.25rem;}
+div#container main.calendar section.head div.controller div.btn svg.icon {font-size:1.125rem; font-weight:bold;}
 
-/* div#container main.calendar div.body {} */
-div#container main.calendar div.body ul.daylist {list-style:none; padding:0; margin:0;}
-div#container main.calendar div.body ul.daylist {display:grid; grid-template-columns:repeat(7,1fr);}
-/* div#container main.calendar div.body ul.daylist {display:flex; flex-direction:row; flex-wrap:wrap;} */
-/* div#container main.calendar div.body ul.daylist li.day {width:calc(100%/7);} */
-div#container main.calendar div.body ul.daylist li.day {font-size:1.125rem; text-align:center; cursor:pointer; user-select:none; padding:.625rem 0; /* border:1px solid black; */ margin:.125rem 0;}
-div#container main.calendar div.body ul.weekdays {font-weight:900;}
-/* div#container main.calendar div.body ul.weekdays li.day {font-size:1.25rem;} */
-/* div#container main.calendar div.body ul.monthdays {} */
-div#container main.calendar div.body ul.monthdays li.day {color:black; border-radius:50%;}
-div#container main.calendar div.body ul.monthdays li.day:hover {background-color:var(--ltgrey); /* color:white; */}
-div#container main.calendar div.body ul.monthdays li.day.on {background-color:var(--themecolor); color:white;}
-div#container main.calendar div.body ul.monthdays li.day.off {color:var(--grey); /* color:grey; */}
+/* div#container main.calendar section.body {} */
+div#container main.calendar section.body ul.daylist {list-style:none; padding:0; margin:0;}
+div#container main.calendar section.body ul.daylist {display:grid; grid-template-columns:repeat(7,1fr);}
+/* div#container main.calendar section.body ul.daylist {display:flex; flex-direction:row; flex-wrap:wrap;} */
+/* div#container main.calendar section.body ul.daylist li.day {width:calc(100%/7);} */
+div#container main.calendar section.body ul.daylist li.day {font-size:1.125rem; text-align:center; cursor:pointer; user-select:none; padding:.625rem 0; /* border:1px solid black; */ margin:.125rem 0;}
+div#container main.calendar section.body ul.weekdays {font-weight:900;}
+/* div#container main.calendar section.body ul.weekdays li.day {font-size:1.25rem;} */
+/* div#container main.calendar section.body ul.monthdays {} */
+div#container main.calendar section.body ul.monthdays li.day {color:black; border-radius:50%;}
+div#container main.calendar section.body ul.monthdays li.day:hover {background-color:var(--ltgrey); /* color:white; */}
+div#container main.calendar section.body ul.monthdays li.day.on {background-color:var(--themecolor); color:white;}
+div#container main.calendar section.body ul.monthdays li.day.off {color:var(--grey); /* color:grey; */}
 
-div#container main.calendar div.selector {position:absolute; /* top:0; left:0; */ height:100%; width:100%;}
-div#container main.calendar div.selector {background-color:white; transform:scale(0);}
-div#container main.calendar div.selector.active {transform:none;}
+div#container main.calendar div.selector {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container main.calendar div.selector {background-color:white; display:flex; flex-direction:column; align-items:stretch; padding:2.5rem;}
+div#container main.calendar div.selector {transform:scale(0.5); opacity:0; visibility:hidden;}
+div#container main.calendar div.selector.active {transform:scale(1); opacity:1; visibility:visible; transition:.5s;}
+div#container main.calendar div.selector div.head {display:flex; flex-direction:row; align-items:center;}
+div#container main.calendar div.selector div.head h1.year {font-size:1.5rem; flex-grow:1; text-align:center; margin:0; margin-bottom:.75rem;}
+div#container main.calendar div.selector div.head div.btn {cursor:pointer; user-select:none;}
+div#container main.calendar div.selector ul.select {flex-grow:1;/* height:100%; width:100%; */}
+div#container main.calendar div.selector ul.select {display:grid; grid-template-columns:repeat(3,1fr); list-style:none; padding:0; margin:0;}
+div#container main.calendar div.selector ul.select li.month {display:grid; place-items:center; cursor:pointer; user-select:none; border-radius:1rem;}
+div#container main.calendar div.selector ul.select li.month:hover {background-color:var(--ltgrey);}
+/* div#container main.calendar div.selector ul.select li.month span.caption {} */
+div#container main.calendar div.selector div.closebtn {position:absolute; top:0; right:0;}
+div#container main.calendar div.selector div.closebtn {font-size:2rem; cursor:pointer; user-select:none; margin:0 .75rem;}
 
 
 
