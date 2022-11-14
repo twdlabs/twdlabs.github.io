@@ -37,9 +37,29 @@ console.log( 'Current month:', currentYear, monthfullname[currentMonthIndex] );
 // Update calendar. 
 updateCalendar();
 
+// Activate keyboard shortcuts. 
+activateShortcuts();
+
 
 /*****/
 
+
+// Activate keyboard shortcuts. 
+function activateShortcuts() {
+
+	// 
+	document.addEventListener('keyup',checkForShortcutKey);
+
+	/****/
+
+	// Check for shortcut key. 
+	function checkForShortcutKey(event) {
+		// 
+		console.log(event);
+		if(event.keyCode==37 || event.key=='ArrowLeft') goToPrevMonth();
+		if(event.keyCode==39 || event.key=='ArrowRight') goToNextMonth();
+	}
+}
 
 // Update calendar. 
 function updateCalendar() {
@@ -95,6 +115,7 @@ function updateCalendar() {
 	
 			// Get last day of last month. 
 			let lastMonthLastDay = new Date(currentYear,currentMonthIndex,0);
+			let lastMonthLastDayDate = lastMonthLastDay.getDate();
 			let lastMonthLastDayIndex = lastMonthLastDay.getDay();
 			console.log('\tlastMonthLastDay:',lastMonthLastDayIndex,lastMonthLastDay);
 	
@@ -104,10 +125,15 @@ function updateCalendar() {
 			console.log('\tcurrentMonthFirstDay:',currentMonthFirstDayIndex,currentMonthFirstDay);
 		
 			// Add days for previous month. 
-			for( let d=0 ; d<currentMonthFirstDayIndex ; d++ ) {
+			for( let d=1 ; d<=currentMonthFirstDayIndex ; d++ ) {
+
+				// Get current date. 
+				let currentDate = lastMonthLastDayDate - currentMonthFirstDayIndex + d;
+
+				// Create box for current date. 
 				result += `
 				<!-- day -->
-				<li class="day off">${d+1}</li>
+				<li class="day off">${currentDate}</li>
 				<!-- /day -->`;
 			}
 	
@@ -122,22 +148,19 @@ function updateCalendar() {
 			let result = '';
 	
 			// Get number of days in current month. 
-			let currentMonthLength = monthData[currentMonthIndex].length;
+			let currentMonthLength = new Date(currentYear,currentMonthIndex+1,0).getDate();
 			console.log('\tcurrentMonthLength:',currentMonthLength);
 	
 			// Add days for current month. 
 			for( let d=1 ; d<=currentMonthLength ; d++ ) {
-				// Check for today. 
+
+				// Check if current date is same as today. 
 				let isToday = ( d==todayDateOfMonth && currentMonthIndex==todayMonthIndex && currentYear==todayYear );
-				// 
-				if(isToday) result += `
+
+				// Create box for current date. 
+				result += `
 				<!-- day -->
-				<li class="day on">${d}</li>
-				<!-- /day -->`;
-				// 
-				else result += `
-				<!-- day -->
-				<li class="day">${d}</li>
+				<li class="day ${ (isToday)?'on':'' }">${d}</li>
 				<!-- /day -->`;
 			}
 	
@@ -162,10 +185,15 @@ function updateCalendar() {
 			console.log('\tnextMonthFirstDay:',nextMonthFirstDayIndex,nextMonthFirstDay);
 		
 			// Add days for following month. 
-			for( let d=nextMonthFirstDayIndex ; d<=6 ; d++ ) {
+			for( let d=currentMonthLastDayIndex+1 ; d<=6 ; d++ ) {
+
+				// Get current date. 
+				let currentDate = d - currentMonthLastDayIndex;
+
+				// Create box for current date. 
 				result += `
 				<!-- day -->
-				<li class="day off">${d-currentMonthLastDayIndex}</li>
+				<li class="day off">${currentDate}</li>
 				<!-- /day -->`;
 			}
 	

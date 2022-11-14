@@ -23,12 +23,12 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-div#container main.calendar {background-color:white; width:100%; max-width:var(--calendarwidth); padding:1.5rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.calendar {background-color:white; width:100%; max-width:var(--calendarwidth); position:relative; overflow:hidden; padding:1.5rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
 
 div#container main.calendar div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container main.calendar div.head h1.name {font-size:1.625rem; cursor:pointer; user-select:none; margin:0;}
 div#container main.calendar div.head div.controller {display:flex; flex-direction:row; align-items:center;}
-div#container main.calendar div.head div.controller div.btn {cursor:pointer; padding:.25rem .25rem; margin-left:1rem;}
+div#container main.calendar div.head div.controller div.btn {cursor:pointer; padding:.25rem .25rem; margin-left:.25rem;}
 div#container main.calendar div.head div.controller div.btn svg.icon {font-size:1.125rem; font-weight:bold;}
 
 /* div#container main.calendar div.body {} */
@@ -44,6 +44,10 @@ div#container main.calendar div.body ul.monthdays li.day {color:black; border-ra
 div#container main.calendar div.body ul.monthdays li.day:hover {background-color:var(--ltgrey); /* color:white; */}
 div#container main.calendar div.body ul.monthdays li.day.on {background-color:var(--themecolor); color:white;}
 div#container main.calendar div.body ul.monthdays li.day.off {color:var(--grey); /* color:grey; */}
+
+div#container main.calendar div.selector {position:absolute; /* top:0; left:0; */ height:100%; width:100%;}
+div#container main.calendar div.selector {background-color:white; transform:scale(0);}
+div#container main.calendar div.selector.active {transform:none;}
 
 
 
