@@ -425,11 +425,11 @@ function addCourseProperties() {
 		// Get course title. 
 		course.title = getCourseTitle(course);
 	
-		// Get course content. 
-		course.content = getCourseContent(course);
-	
 		// Get full course title. 
 		course.fulltitle = getFullCourseTitle(course);
+	
+		// Get course content. 
+		course.content = getCourseContent(course);
 		
 		// Get searchable course data. 
 		course.searchtags = getCourseTags(course);
@@ -523,4 +523,27 @@ function getCourseById(courseid) {
 
 	// Return nothing if course not found. 
 	return null;
+}
+
+// Get courses by program. 
+function getCoursesByProgram(programid) {
+
+	// Initialize result. 
+	let result = [];
+
+	// Ensure capitalization of program id. 
+	programid = programid.toUpperCase();
+
+	// Go thru all course data items. 
+	for(let course of courseData) {
+
+		// Check for matching course. 
+		let matchingCourse = (programid == course.programid);
+
+		// Return matching course if found. 
+		if( matchingCourse ) result.push(course);
+	}
+
+	// Return resulting list of matching courses. 
+	return result;
 }

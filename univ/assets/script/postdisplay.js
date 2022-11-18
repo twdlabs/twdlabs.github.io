@@ -49,7 +49,7 @@ function choosePageType() {
 		// console.log('post:',post);
 	
 		// Add post item to page. 
-		if(post) postdestination.innerHTML = createFullPost(post);
+		if(post) postdestination.innerHTML = createFullPostLayout(post);
 		else loadArchivePage(archiveSource);
 
 		/***/
@@ -90,7 +90,7 @@ function choosePageType() {
 		for(let post of postlist) {
 	
 			// Create post item. 
-			result += createPostPreview(post);
+			result += createPreviewPost(post);
 		}
 	
 		// Add result to page. 
@@ -127,71 +127,8 @@ function choosePageType() {
 		}
 	}
 
-	// Create full post item. 
-	function createFullPost(post) {
-	
-		// 
-		if(!post) {
-			console.warn('Invalid post:',post);
-			return '';
-		}
-
-		// Create full program post. 
-		if(post.posttype=='program') {
-			return ``;
-		}
-
-		// Create full course post. 
-		if(post.posttype=='course') {
-			return ``;
-		}
-
-		// Create full event post. 
-		if(post.posttype=='event') {
-			return ``;
-		}
-
-		// Create full faculty post. 
-		if(post.posttype=='faculty') {
-			return ``;
-		}
-
-		// Create full student post. 
-		if(post.posttype=='student') {
-			return ``;
-		}
-	
-		// Get title of post. 
-		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
-	
-		// Get content of post. 
-		let content = (post.content) ? (post.content) : `[Empty ${post.posttype} content]`;
-	
-		// 
-		return `
-		<!-- story -->
-		<section class="story">
-	
-			<!-- story -->
-			<article class="story">
-				
-				<!-- title -->
-				<h1 class="title">${title}</h1>
-				<!-- /title -->
-	
-				<!-- content -->
-				<p class="content">${content}</p>
-				<!-- /content -->
-	
-			</article>
-			<!-- /story -->
-					
-		</section>
-		<!-- /story -->`;
-	}
-
-	// Create preview of post item. 
-	function createPostPreview(post) {
+	// Create preview post item. 
+	function createPreviewPost(post) {
 		// console.log('post:',post);
 	
 		// 
@@ -249,6 +186,364 @@ function choosePageType() {
 	
 		</li>
 		<!-- /postitem -->`;
+	}
+
+	// Create full post layout. 
+	function createFullPostLayout(post) {
+	
+		// 
+		if(!post) {
+			console.warn('Invalid post:',post);
+			return '';
+		}
+	
+		
+		// Get title of post. 
+		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
+	
+		// Get content of post. 
+		let content = (post.content) ? (post.content) : `[Empty ${post.posttype} content]`;
+
+
+		// Create full program post. 
+		if(post.posttype=='program') return `
+		<!-- story -->
+		<section class="story">
+	
+			<!-- story -->
+			<article class="story">
+				
+				<!-- title -->
+				<h1 class="title">${title}</h1>
+				<!-- /title -->
+	
+				<!-- content -->
+				<p class="content">
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Program Description</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${content}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Related Courses</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${ getCoursesByProgram(post.programid).map( (c)=>c.title ).join('<br>') }</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+				
+				</p>
+				<!-- /content -->
+	
+			</article>
+			<!-- /story -->
+					
+		</section>
+		<!-- /story -->`;
+
+		// Create full course post. 
+		else if(post.posttype=='course') return `
+		<!-- story -->
+		<section class="story">
+	
+			<!-- story -->
+			<article class="story">
+				
+				<!-- title -->
+				<h1 class="title">${post.fulltitle}</h1>
+				<!-- /title -->
+	
+				<!-- content -->
+				<p class="content">
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Course Description</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${post.coursedescription}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Credits</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${post.numcredits}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Prerequisites</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${ (post.courseprereqs)/* .map( (id)=> getCourseById(id).title ) */.join('<br>') }</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+				
+				</p>
+				<!-- /content -->
+	
+			</article>
+			<!-- /story -->
+					
+		</section>
+		<!-- /story -->`;
+
+		// Create full event post. 
+		else if(post.posttype=='event') return `
+		<!-- story -->
+		<section class="story">
+	
+			<!-- story -->
+			<article class="story">
+				
+				<!-- title -->
+				<h1 class="title">${title}</h1>
+				<!-- /title -->
+	
+				<!-- content -->
+				<p class="content">
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">When</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${ new Date(post.eventtime).toLocaleString() }</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Where</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${post.location}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">What</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${content}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+				
+				</p>
+				<!-- /content -->
+	
+			</article>
+			<!-- /story -->
+					
+		</section>
+		<!-- /story -->`;
+
+		// Create full faculty post. 
+		else if(post.posttype=='faculty') return `
+		<!-- story -->
+		<section class="story">
+	
+			<!-- story -->
+			<article class="story">
+				
+				<!-- title -->
+				<h1 class="title">${title}</h1>
+				<!-- /title -->
+	
+				<!-- content -->
+				<p class="content">
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">ID#</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${post.facultyid}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Current Program(s)</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${ ( (post.programids).map( (id)=>getProgramById(id).title ) ).join(', ') }</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+				
+				</p>
+				<!-- /content -->
+	
+			</article>
+			<!-- /story -->
+					
+		</section>
+		<!-- /story -->`;
+
+		// Create full student post. 
+		else if(post.posttype=='student') return `
+		<!-- story -->
+		<section class="story">
+	
+			<!-- story -->
+			<article class="story">
+				
+				<!-- title -->
+				<h1 class="title">${title}</h1>
+				<!-- /title -->
+	
+				<!-- content -->
+				<p class="content">
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">ID#</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${post.studentid}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label">Current Program</span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${ getProgramById(post.programid).title }</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+					
+				</p>
+				<!-- /content -->
+	
+			</article>
+			<!-- /story -->
+					
+		</section>
+		<!-- /story -->`;
+	
+		// Create full blog post. 
+		else return `
+		<!-- story -->
+		<section class="story">
+	
+			<!-- story -->
+			<article class="story">
+				
+				<!-- title -->
+				<h1 class="title">${title}</h1>
+				<!-- /title -->
+	
+				<!-- content -->
+				<p class="content">
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label"></span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${ new Date(post.postedtime).toLocaleString() }</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+
+					<!-- item -->
+					<span class="item">
+
+						<!-- label -->
+						<span class="label"></span>
+						<!-- /label -->
+
+						<!-- value -->
+						<span class="value">${content}</span>
+						<!-- /value -->
+
+					</span>
+					<!-- /item -->
+				
+				</p>
+				<!-- /content -->
+	
+			</article>
+			<!-- /story -->
+					
+		</section>
+		<!-- /story -->`;
 	}
 }
 
