@@ -4,7 +4,7 @@
 const userData = [
 	{
 		userid:'000001',
-		registrationtime:0,
+		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		lastname:'Smith',
 		firstname:'John',
 		username:'jsmith1',
@@ -12,7 +12,7 @@ const userData = [
 	},
 	{
 		userid:'000002',
-		registrationtime:0,
+		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		lastname:'Smith',
 		firstname:'Jane',
 		username:'jsmith2',
@@ -20,7 +20,7 @@ const userData = [
 	},
 	{
 		userid:'000003',
-		registrationtime:0,
+		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		lastname:'Smith',
 		firstname:'Joe',
 		username:'jsmith3',
@@ -28,7 +28,7 @@ const userData = [
 	},
 	{
 		userid:'000004',
-		registrationtime:0,
+		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		lastname:'Smith',
 		firstname:'Bill',
 		username:'bsmith',

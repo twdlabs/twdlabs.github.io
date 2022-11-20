@@ -509,7 +509,7 @@ function getCourseById(courseid) {
 	// Ensure capitalization of course id. 
 	courseid = courseid.toUpperCase();
 
-	// Go thru all course data items. 
+	// Go thru all course items. 
 	for(let course of courseData) {
 
 		// Check for matching course. 
@@ -533,7 +533,7 @@ function getCoursesByProgram(programid) {
 	// Ensure capitalization of program id. 
 	programid = programid.toUpperCase();
 
-	// Go thru all course data items. 
+	// Go thru all course items. 
 	for(let course of courseData) {
 
 		// Check for matching course. 

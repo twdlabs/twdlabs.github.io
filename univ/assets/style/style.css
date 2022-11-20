@@ -113,7 +113,7 @@ div#container footer#footer {background:linear-gradient(#FFF,#ECECEC); padding:4
 div#container footer#footer main {max-width:var(--pagewidth); margin:0 auto;}
 div#container footer#footer main {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; flex-wrap:nowrap;}
 div#container footer#footer div.col {flex-grow:2; flex-basis:0; text-align:left; padding:1rem;}
-div#container footer#footer div.col.wide {flex-grow:3; /* flex-grow:5; */}
+div#container footer#footer div.col.wide,
 div#container footer#footer div.col.full {flex-grow:3; /* flex-grow:5; */}
 div#container footer#footer div.col.break {display:none; flex:0 0 100%;}
 
@@ -196,7 +196,7 @@ div#container div#searchoverlay {background-color:white;}
 
 	div#container footer#footer main {flex-wrap:wrap; align-items:center;}
 	div#container footer#footer div.col {flex-basis:50%; text-align:center;}
-	/* div#container footer#footer div.col.wide {flex:0 0 100%} */
+	/* div#container footer#footer div.col.wide {} */
 	div#container footer#footer div.col.full {flex:0 0 100%}
 	div#container footer#footer div.col.break {display:block;}
 	
