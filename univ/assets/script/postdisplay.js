@@ -23,18 +23,21 @@ choosePageType();
 // Choose page type. 
 function choosePageType() {
 
-	// Get search parameters from url. 
-	const params = new URLSearchParams(window.location.search);
-	// console.log('parameters:',params);
+	// Get search parameters from current url. 
+	const urlparams = new URLSearchParams(window.location.search);
+	// console.log('Url search parameters:',urlparams);
 
 	// Check for id parameter. 
-	let postId = params.get('id');
-	let weGotId = !!postId;							// Denies id=0 👎🏾. Denies id='' 👍. 
-	// console.log('weGotId:',weGotId,postId);
-	// let weGotId = !!postId || !isNaN(postId);	// Allows id=0 👍. Allows id='' 👎🏾. 
+	let postId = urlparams.get('id');
+	
+	// Check for valid id parameter ( denies id=0 👎🏾 / denies id='' 👍 ). 
+	let isValidId = !!postId;
+	// Check for valid id parameter ( allows id=0 👍 / allows id='' 👎🏾 ). 
+	// let isValidId = !!postId || !isNaN(postId);
+	// console.log('Valid id:', isValidId, postId);
 
 	// Load page for single post. 
-	if(weGotId) loadPostPage(postId);
+	if(isValidId) loadPostPage(postId);
 
 	// Load archive list of posts. 
 	else loadArchivePage(archiveSource);

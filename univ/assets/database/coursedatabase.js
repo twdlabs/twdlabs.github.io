@@ -503,7 +503,6 @@ function addCourseProperties() {
 	}
 }
 
-
 // Get course by id. 
 function getCourseById(courseid) {
 
