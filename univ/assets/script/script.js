@@ -3,6 +3,7 @@
 
 // Get main container. 
 const maincontainer = document.querySelector('div#container');
+// Get page content box. 
 const mainpagecontent = document.querySelector('div#container main#pagecontent');
 
 // Get open button. 
@@ -17,6 +18,9 @@ const searchField = document.querySelector('div#container div#searchoverlay sect
 // Get search results box. 
 const resultsBox = document.querySelector('div#container div#searchoverlay section.bottom div#resultsbox');
 
+// Get story article. 
+const storyarticle = document.querySelector('div#container main#pagecontent section.story article.story');
+
 
 /*****/
 
@@ -26,6 +30,9 @@ loadHeader();
 
 // Add footer. 
 loadFooter();
+
+// 
+storyarticle.classList.remove('gone');
 
 // Activate live search. 
 activateLiveSearch();
@@ -43,6 +50,190 @@ function loadHeader() {
 	// Define header location (before opening of main page content). 
 	let location = 'beforebegin';
 
+	// Define components of header. 
+	const navhead = `
+	<!-- navhead -->
+	<h1 class="navhead">
+
+		<!-- navlink -->
+		<a class="navlink head" href="${ getRelativeUrl('./') }">
+
+			<!-- logo -->
+			<svg class="logo icon awardfull" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+				<path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+				<path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+			</svg>
+			<!-- /logo -->
+
+			<!-- caption -->
+			<span class="caption">
+				<strong>True</strong>
+				University
+			</span>
+			<!-- /caption -->
+			
+		</a>
+		<!-- /navlink -->
+
+	</h1>
+	<!-- /navhead -->`;
+	const navmenuA = `
+	<!-- navmenu -->
+	<nav class="navmenu a">
+		
+		<!-- pagelist -->
+		<ul class="navlist pagelist">
+			
+			<!-- navitem -->
+			<li class="navitem">
+
+				<!-- navlink -->
+				<a class="navlink" href="${ getRelativeUrl('./story') }">Story</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+			<!-- navitem -->
+			<li class="navitem">
+
+				<!-- navlink -->
+				<a class="navlink" href="${ getRelativeUrl('./programs') }">Programs</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+			<!-- navitem -->
+			<li class="navitem">
+
+				<!-- navlink -->
+				<a class="navlink" href="${ getRelativeUrl('./blog') }">Blog</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+		</ul>
+		<!-- /pagelist -->
+		
+		<!-- accountlist -->
+		<ul class="navlist accountlist">
+			
+			<!-- navitem -->
+			<li class="navitem outside">
+
+				<!-- navlink -->
+				<a href="javascript:void(0)" class="navlink btn btnorange loginbtn">
+					<span class="img"></span>
+					<span class="caption">Login</span>
+				</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+			<!-- navitem -->
+			<li class="navitem inside">
+
+				<!-- navlink -->
+				<a href="javascript:void(0)" class="navlink btn btnorange">
+					<span class="img"></span>
+					<span class="caption">My Notes</span>
+				</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+			<!-- navitem -->
+			<li class="navitem inside">
+
+				<!-- navlink -->
+				<a href="javascript:void(0)" class="navlink btn btnred logoutbtn">
+					<span class="img"></span>
+					<img src="${ getRelativeUrl('./assets/media/avatar-m.png') }"/>
+					<span class="caption">Log out</span>
+				</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+			<!-- navitem -->
+			<li class="navitem outside">
+
+				<!-- navlink -->
+				<a href="javascript:void(0)" class="navlink btn btnred">
+					<span class="img"></span>
+					<span class="caption">Sign Up</span>
+				</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+		</ul>
+		<!-- /accountlist -->
+		
+	</nav>
+	<!-- /navmenu -->`;
+	const navmenuB = `
+	<!-- navmenu -->
+	<nav class="navmenu b">
+		
+		<!-- remotelist -->
+		<ul class="navlist remotelist">
+			
+			<!-- navitem -->
+			<li class="navitem">
+
+				<!-- navlink -->
+				<a href="javascript:void(0)" class="navlink toggler">
+
+					<!-- icon -->
+					<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- icon -->
+					<svg class="icon cross" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<!-- <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/> -->
+						<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+					</svg>
+					<!-- /icon -->
+
+				</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+			<!-- navitem -->
+			<li class="navitem">
+
+				<!-- navlink -->
+				<a href="javascript:void(0)" class="navlink search">
+
+					<!-- icon -->
+					<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+					</svg>
+					<!-- /icon -->
+
+				</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
+			
+		</ul>
+		<!-- /remotelist -->
+	
+	</nav>
+	<!-- /navmenu -->`;
+	
 	// Define general header. 
 	const header = `
 	<!-- #header -->
@@ -50,189 +241,11 @@ function loadHeader() {
 		
 		<!-- main -->
 		<main>
-			
-			<!-- navhead -->
-			<h1 class="navhead">
 
-				<!-- navlink -->
-				<a class="navlink head" href="${ getRelativeUrl('./') }">
+			${navhead}
+			${navmenuA}
+			${navmenuB}
 
-					<!-- logo -->
-					<svg class="logo icon awardfull" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-						<path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-					</svg>
-					<!-- /logo -->
-
-					<!-- caption -->
-					<span class="caption">
-						<strong>True</strong>
-						University
-					</span>
-					<!-- /caption -->
-					
-				</a>
-				<!-- /navlink -->
-
-			</h1>
-			<!-- /navhead -->
-			
-			<!-- navmenu -->
-			<nav class="navmenu a">
-				
-				<!-- pagelist -->
-				<ul class="navlist pagelist">
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="${ getRelativeUrl('./story') }">Story</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="${ getRelativeUrl('./programs') }">Programs</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a class="navlink" href="${ getRelativeUrl('./blog') }">Blog</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-				</ul>
-				<!-- /pagelist -->
-				
-				<!-- accountlist -->
-				<ul class="navlist accountlist">
-					
-					<!-- navitem -->
-					<li class="navitem outside">
-
-						<!-- navlink -->
-						<a href="javascript:void(0)" class="navlink btn btnorange" onclick="document.getElementById('container').classList.add('loggedin');">
-							<span class="img"></span>
-							<span class="caption">Login</span>
-						</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem inside">
-
-						<!-- navlink -->
-						<a href="javascript:void(0)" class="navlink btn btnorange">
-							<span class="img"></span>
-							<span class="caption">My Notes</span>
-						</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem inside">
-
-						<!-- navlink -->
-						<a href="javascript:void(0)" class="navlink btn btnred" onclick="document.getElementById('container').classList.remove('loggedin');">
-							<span class="img"></span>
-							<img src="${ getRelativeUrl('./../atgicon.ico') }"/>
-							<span class="caption">Log out</span>
-						</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem outside">
-
-						<!-- navlink -->
-						<a href="javascript:void(0)" class="navlink btn btnred">
-							<span class="img"></span>
-							<span class="caption">Sign Up</span>
-						</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-				</ul>
-				<!-- /accountlist -->
-				
-			</nav>
-			<!-- /navmenu -->
-			
-			<!-- navmenu -->
-			<nav class="navmenu b">
-				
-				<!-- remotelist -->
-				<ul class="navlist remotelist">
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a href="javascript:void(0)" class="navlink toggler" onclick="document.getElementById('header').classList.toggle('active');">
-
-							<!-- icon -->
-							<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-							</svg>
-							<!-- /icon -->
-
-							<!-- icon -->
-							<svg class="icon cross" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<!-- <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/> -->
-								<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
-							</svg>
-							<!-- /icon -->
-
-						</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-					<!-- navitem -->
-					<li class="navitem">
-
-						<!-- navlink -->
-						<a href="javascript:void(0)" class="navlink search">
-
-							<!-- icon -->
-							<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-							</svg>
-							<!-- /icon -->
-
-						</a>
-						<!-- /navlink -->
-
-					</li>
-					<!-- /navitem -->
-					
-				</ul>
-				<!-- /remotelist -->
-			
-			</nav>
-			<!-- /navmenu -->
-			
 		</main>
 		<!-- /main -->
 		
@@ -241,6 +254,53 @@ function loadHeader() {
 
 	// Load header onto page. 
 	mainpagecontent.insertAdjacentHTML(location,header);
+
+	// Activate header buttons. 
+	activateHeaderBtns();
+
+	/****/
+
+	// Activate header buttons. 
+	function activateHeaderBtns() {
+
+		// Get page header. 
+		const pageheader = document.querySelector('div#container header#header');
+
+		// Get toggler button. 
+		const toggler = document.querySelector('div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.toggler');
+		// Activate toggler button. 
+		toggler.addEventListener('click',toggleNavMenu);
+		
+		// Get login button. 
+		const loginbtn = document.querySelector('div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.loginbtn');
+		// Activate login button. 
+		loginbtn.addEventListener('click',loginUser);
+
+		// Get logout button. 
+		const logoutbtn = document.querySelector('div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.logoutbtn');
+		// Activate logout button. 
+		logoutbtn.addEventListener('click',logoutUser);
+
+		/***/
+
+		// Toggle nav menu. 
+		function toggleNavMenu() {
+			// 
+			pageheader.classList.toggle('active');
+		}
+
+		// Login user. 
+		function loginUser() {
+			// 
+			maincontainer.classList.add('loggedin');
+		}
+
+		// Logout user. 
+		function logoutUser() {
+			// 
+			maincontainer.classList.remove('loggedin');
+		}
+	}
 }
 
 // Load footer. 
@@ -545,12 +605,36 @@ function loadFooter() {
 		<!-- /col -->
 		
 	</main>
-	<!-- /main -->
-	`;
+	<!-- /main -->`;
 	const sitelocation = `
 	<!-- location -->
 	<aside class="location">
 
+		${ createLocationTrail() }
+
+	</aside>
+	<!-- /location -->`;
+
+	// Define general footer. 
+	const footer = `
+	<!-- #footer -->
+	<footer id="footer">
+
+		${sitelocation}
+		${footertable}
+		
+	</footer>
+	<!-- /#footer -->`;
+
+	// Load footer onto page. 
+	mainpagecontent.insertAdjacentHTML(location,footer);
+
+	/****/
+
+	// Create site location breadcrumbs section. 
+	function createLocationTrail() {
+		// 
+		return `
 		<!-- home -->
 		<a class="home" href="./">
 
@@ -572,27 +656,8 @@ function loadFooter() {
 
 		<!-- node -->
 		<a class="node" href="./">PageName</a>
-		<!-- /node -->
-
-	</aside>
-	<!-- /location -->
-	`;
-
-	// Define general footer. 
-	const footer = `
-	<!-- #footer -->
-	<footer id="footer">
-		${sitelocation}
-		${footertable}
-	</footer>
-	<!-- /#footer -->`;
-
-	// Load footer onto page. 
-	mainpagecontent.insertAdjacentHTML(location,footer);
-
-	/****/
-
-	// Create site loaction breadcrumbs section. 
+		<!-- /node -->`;
+	}
 }
 
 // Activate live search. 

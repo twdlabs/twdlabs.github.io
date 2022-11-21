@@ -138,7 +138,7 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
-					<span class="label"></span>
+					<span class="label">Posted</span>
 					<!-- /label -->
 
 					<!-- value -->
@@ -205,7 +205,7 @@ function loadPostPage(id) {
 
 					<!-- value -->
 					<span class="value">
-						${ relatedCourses.map( (c)=>`<a href="${ getRelativeUrl('./courses/post/?id='+c.courseid) }">${c.title}</a>` ).join('<br>') }
+						${ relatedCourses.map( (c)=>`<a class="postlink" href="${ getRelativeUrl('./courses/post/?id='+c.courseid) }">${c.title}</a>` ).join('') }
 					</span>
 					<!-- /value -->
 
@@ -235,20 +235,6 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
-					<span class="label">Course Description</span>
-					<!-- /label -->
-
-					<!-- value -->
-					<span class="value">${post.coursedescription}</span>
-					<!-- /value -->
-
-				</span>
-				<!-- /item -->
-
-				<!-- item -->
-				<span class="item">
-
-					<!-- label -->
 					<span class="label">Credits</span>
 					<!-- /label -->
 
@@ -263,11 +249,25 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
+					<span class="label">Course Description</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${post.coursedescription}</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
 					<span class="label">Prerequisites</span>
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ prereqidlist.map( (id)=> `<a href="${ getRelativeUrl('./courses/post/?id='+id) }">${id}</a>` ).join('<br>') }</span>
+					<span class="value">${ prereqidlist.map( (id)=> `<a class="postlink" href="${ getRelativeUrl('./courses/post/?id='+id) }">${id}</a>` ).join('') }</span>
 					<!-- /value -->
 
 				</span>
@@ -292,6 +292,20 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
+					<span class="label">Program</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${ programData[post.programid].title }</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
 					<span class="label">When</span>
 					<!-- /label -->
 
@@ -311,20 +325,6 @@ function loadPostPage(id) {
 
 					<!-- value -->
 					<span class="value">${post.location}</span>
-					<!-- /value -->
-
-				</span>
-				<!-- /item -->
-
-				<!-- item -->
-				<span class="item">
-
-					<!-- label -->
-					<span class="label">Program</span>
-					<!-- /label -->
-
-					<!-- value -->
-					<span class="value">${ programData[post.programid].title }</span>
 					<!-- /value -->
 
 				</span>

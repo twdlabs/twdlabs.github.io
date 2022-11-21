@@ -19,16 +19,20 @@ div#container header#header {background-color:var(--themecolor);}
 
 div#container main#pagecontent section {margin-top:4rem;}
 
-div#container main#pagecontent section.story {padding:0 6rem;}
+div#container main#pagecontent section.story {/* background-color:hotpink; */ padding:0 6rem;}
 div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
+div#container main#pagecontent section.story article.story {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
+div#container main#pagecontent section.story article.story.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
 div#container main#pagecontent section.story article.story h1.head {text-align:center;}
 /* div#container main#pagecontent section.story article.story p.content {} */
 div#container main#pagecontent section.story article.story p.content span.item {display:block; margin-top:1rem;}
-div#container main#pagecontent section.story article.story p.content span.item span.label {display:block;}
+div#container main#pagecontent section.story article.story p.content span.item span.label {display:block; font-weight:800;}
 div#container main#pagecontent section.story article.story p.content span.item span.label:empty {display:none;}
 div#container main#pagecontent section.story article.story p.content span.item span.label::after {content:': ';}
-/* div#container main#pagecontent section.story article.story p.content span.item span.value {} */
+div#container main#pagecontent section.story article.story p.content span.item span.value {display:block; font-weight:100;}
 div#container main#pagecontent section.story article.story p.content span.item span.value:empty::after {content:'[none]';}
+div#container main#pagecontent section.story article.story p.content span.item span.value a.postlink {display:inline-block; background-color:lightgrey; min-width:7rem; text-align:center; transition:.125s; padding:.5rem .25rem .375rem; border-radius:.5rem; margin:.5rem .5rem 0 0;}
+div#container main#pagecontent section.story article.story p.content span.item span.value a.postlink:hover {background-color:var(--themecolor); color:white;}
 div#container main#pagecontent section.story article.story p.textcopy {text-align:center;}
 
 div#container main#pagecontent section.archive {padding:0 3rem;}
