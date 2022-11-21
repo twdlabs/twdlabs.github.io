@@ -48,8 +48,9 @@ function showPostPreviews(postData, destination, foldername) {
 	
 		// Get post id. 
 		let type = post.posttype;
+		console.log('\ttype:',type);
 		let id = post[ `${type}id` ];
-		console.log(`${type} id:`, id );
+		console.log(`\t${type} id:`, id );
 
 		// Get post url. 
 		let url = `${foldername}/post/?id=${id}`;
@@ -58,7 +59,8 @@ function showPostPreviews(postData, destination, foldername) {
 		let postexcerpt = getPostExcerpt(post.content);
 
 		// Get date of post. 
-		let datetime = new Date( post['postedtime'] );
+		let datetime = (type=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
+		console.log('\tdatetime:',datetime);
 		let m = monthNames[ datetime.getMonth() ];
 		let d = datetime.getDate();
 

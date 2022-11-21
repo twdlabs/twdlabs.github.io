@@ -320,7 +320,21 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
-					<span class="label">What</span>
+					<span class="label">Program</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${ programData[post.programid].title }</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">Event Description</span>
 					<!-- /label -->
 
 					<!-- value -->
