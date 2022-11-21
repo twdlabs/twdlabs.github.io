@@ -98,3 +98,48 @@ const sitemapdata = [
 	// },
 
 ];
+
+
+/*****/
+
+
+const rightarrow = `
+<!-- icon -->
+<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+	<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+</svg>
+<!-- /icon -->`;
+
+
+/*****/
+
+
+// Initialize trail of breadcrumbs. 
+let trail = '';
+
+// Add current page to trail. 
+trail += createPageNode('./', 'PostName');
+
+// Add breadcrumbs for each level of hierarchy traversed. 
+while( hasValidParent(page) ) {
+	// Prepend current parent to trail. 
+	trail = createPageNode('./', 'ParentName') + rightarrow + trail;
+}
+
+
+/*****/
+
+
+// Check for valid parent. 
+function hasValidParent(page) {
+	return !isNaN(page.parentpageid)
+}
+
+// Create link for page node. 
+function createPageNode(url,pagename) {
+	// 
+	return `
+	<!-- node -->
+	<a class="node" href="${ getRelativeUrl(url) }">${pagename}</a>
+	<!-- /node -->`;
+}

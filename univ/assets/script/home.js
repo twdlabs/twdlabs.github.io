@@ -18,55 +18,41 @@ showEventPosts();
 /*****/
 
 
-// Show blog posts. 
-function showBlogPosts() {
-
-	// Get destination on page. 
-	let blogpostsDestination = 'section.preview div#blogposts ul.postlist';
-
-	// Show preview posts. 
-	showPostPreviews(blogPostData, numPreviewPosts, blogpostsDestination, 'blog' );
-}
-
-// Show event posts. 
-function showEventPosts() {
-
-	// Get destination on page. 
-	let eventsDestination = 'section.preview div#events ul.postlist';
-
-	// Show preview posts. 
-	showPostPreviews(eventData, numPreviewPosts, eventsDestination, 'events');
-}
-
 // Show preview of posts. 
-function showPostPreviews(postData, numPosts, destination,foldername) {
+function showPostPreviews(postData, destination, foldername) {
 	console.log('postData:',postData);
-	console.log('numPosts:',numPosts);
-	console.log('destination:',destination);
-	
-	// Use all posts if less posts than preview amount. 
-	if(postData.length < numPosts) {
-		numPosts = postData.length;
-	}
+	console.log('destination: ',destination);
+	console.log('foldername: ',foldername);
 
 	// Initialize list of posts. 
 	let result = '';
 
 	// Create post elements. 
-	for (let i=0 ; i<numPosts ; i++) {
+	for (let i=0 ; i<numPreviewPosts ; i++) {
 
 		// Get post item. 
-		let post = postData[i];
+		let postitem = postData[i];
+		if(!postitem) return;
+		
+		// Append post element. 
+		result += createPreviewPost(postitem);
+	}
 
-		// Get post type. 
-		let type = post.posttype;
+	// Add post elements to page. 
+	destination.innerHTML = result;
 
+	/****/
+
+	// Create layout for preview post. 
+	function createPreviewPost(post) {
+	
 		// Get post id. 
+		let type = post.posttype;
 		let id = post[ `${type}id` ];
 		console.log(`${type} id:`, id );
 
 		// Get post url. 
-		let url = `${foldername}/post/?id=${id}`
+		let url = `${foldername}/post/?id=${id}`;
 
 		// Get post excerpt. 
 		let postexcerpt = getPostExcerpt(post.content);
@@ -75,9 +61,9 @@ function showPostPreviews(postData, numPosts, destination,foldername) {
 		let datetime = new Date( post['postedtime'] );
 		let m = monthNames[ datetime.getMonth() ];
 		let d = datetime.getDate();
-		
-		// Append post element. 
-		result += `
+
+		// 
+		return `
 		<!-- post -->
 		<li class="post">
 			
@@ -130,7 +116,7 @@ function showPostPreviews(postData, numPosts, destination,foldername) {
 		</li>
 		<!-- /post -->`;
 
-		/*****/
+		/***/
 
 		// Get post excerpt. 
 		function getPostExcerpt(content) {
@@ -138,12 +124,12 @@ function showPostPreviews(postData, numPosts, destination,foldername) {
 			// Set excerpt word count. 
 			const excerptWordLimit = 18;
 			// const excerptWordLimit = 55;	// default excerpt length in WordPress
-
+	
 			// Get individual words of post content. 
 			let wordsFromPostContent = content.split(' ');
 			// Get number of words in post content. 
 			let numWordsInContent = wordsFromPostContent.length;
-
+	
 			// Check for post content overflow. 
 			let postContentOverflow = false;
 			if(numWordsInContent<excerptWordLimit) {
@@ -154,7 +140,7 @@ function showPostPreviews(postData, numPosts, destination,foldername) {
 			else {
 				postContentOverflow = true;
 			}
-
+	
 			// Create post content excerpt. 
 			let excerpt = '';
 			for (let j=0 ; j<excerptWordLimit ; j++) {
@@ -163,12 +149,29 @@ function showPostPreviews(postData, numPosts, destination,foldername) {
 			}
 			// Add ellipsis if some content is ommitted. 
 			if(postContentOverflow) excerpt += '...';
-
+	
 			// 
 			return excerpt;
 		}
 	}
+}
 
-	// Add post elements to page. 
-	document.querySelector(destination).innerHTML = result;
+// Show blog posts. 
+function showBlogPosts() {
+
+	// Get destination on page. 
+	const blogpostsDestination = document.querySelector('section.preview div#blogposts ul.postlist');
+
+	// Show preview posts. 
+	showPostPreviews(blogPostData, blogpostsDestination, 'blog' );
+}
+
+// Show event posts. 
+function showEventPosts() {
+
+	// Get destination on page. 
+	const eventsDestination = document.querySelector('section.preview div#events ul.postlist');
+
+	// Show preview posts. 
+	showPostPreviews(eventData, eventsDestination, 'events');
 }

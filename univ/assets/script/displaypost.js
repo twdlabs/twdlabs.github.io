@@ -38,7 +38,7 @@ function loadPostPage(id) {
 
 	// Add post item to page. 
 	if(post) postdestination.innerHTML = createFullPostLayout(post);
-	else loadArchivePage(archiveData);
+	else postdestination.innerHTML = '';
 
 	/****/
 
@@ -84,6 +84,48 @@ function loadPostPage(id) {
 	
 		// Create full blog post. 
 		if(post.posttype=='post') {
+			// 
+			return createBlogPostLayout();
+		}
+
+		// Create full program post. 
+		else if(post.posttype=='program') {
+			// 
+			return createProgramPostLayout();
+		}
+
+		// Create full course post. 
+		else if(post.posttype=='course') {
+			// 
+			return createCoursePostLayout();
+		}
+
+		// Create full event post. 
+		else if(post.posttype=='event') {
+			// 
+			return createEventPostLayout();
+		}
+
+		// Create full faculty post. 
+		else if(post.posttype=='faculty') {
+			// 
+			return createFacultyPostLayout();
+		}
+
+		// Create full student post. 
+		else if(post.posttype=='student') {
+			// 
+			return createStudentPostLayout();
+		}
+	
+		// Create miscellaneous post. 
+		else return '[Miscellaneous post type]';
+
+		/***/
+
+		// Create full layout for blog post. 
+		function createBlogPostLayout() {
+			// 
 			return `
 			<!-- title -->
 			<h1 class="title">${title}</h1>
@@ -124,8 +166,14 @@ function loadPostPage(id) {
 			<!-- /content -->`;
 		}
 
-		// Create full program post. 
-		else if(post.posttype=='program') {
+		// Create full layout for program post. 
+		function createProgramPostLayout() {
+
+			// Get related courses. 
+			let relatedCourses = getCoursesByProgram(post.programid);
+			console.log('relatedCourses:',relatedCourses);
+
+			// 
 			return `
 			<!-- title -->
 			<h1 class="title">${title}</h1>
@@ -156,7 +204,9 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ getCoursesByProgram(post.programid).map( (c)=>c.title ).join('<br>') }</span>
+					<span class="value">
+						${ relatedCourses.map( (c)=>`<a href="${ getRelativeUrl('./courses/post/?id='+c.courseid) }">${c.title}</a>` ).join('<br>') }
+					</span>
 					<!-- /value -->
 
 				</span>
@@ -166,8 +216,13 @@ function loadPostPage(id) {
 			<!-- /content -->`;
 		}
 
-		// Create full course post. 
-		else if(post.posttype=='course') {
+		// Create full layout for course post. 
+		function createCoursePostLayout() {
+
+			// Get course prereqs. 
+			let prereqidlist = post.courseprereqs;
+
+			// 
 			return `
 			<!-- title -->
 			<h1 class="title">${post.fulltitle}</h1>
@@ -212,7 +267,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ (post.courseprereqs)/* .map( (id)=> getCourseById(id).title ) */.join('<br>') }</span>
+					<span class="value">${ prereqidlist.map( (id)=> `<a href="${ getRelativeUrl('./courses/post/?id='+id) }">${id}</a>` ).join('<br>') }</span>
 					<!-- /value -->
 
 				</span>
@@ -222,8 +277,9 @@ function loadPostPage(id) {
 			<!-- /content -->`;
 		}
 
-		// Create full event post. 
-		else if(post.posttype=='event') {
+		// Create full layout for event post. 
+		function createEventPostLayout() {
+			// 
 			return `
 			<!-- title -->
 			<h1 class="title">${title}</h1>
@@ -278,8 +334,9 @@ function loadPostPage(id) {
 			<!-- /content -->`;
 		}
 
-		// Create full faculty post. 
-		else if(post.posttype=='faculty') {
+		// Create full layout for faculty post. 
+		function createFacultyPostLayout() {
+			// 
 			return `
 			<!-- title -->
 			<h1 class="title">${title}</h1>
@@ -320,8 +377,9 @@ function loadPostPage(id) {
 			<!-- /content -->`;
 		}
 
-		// Create full student post. 
-		else if(post.posttype=='student') {
+		// Create full layout for student post. 
+		function createStudentPostLayout() {
+			// 
 			return `
 			<!-- title -->
 			<h1 class="title">${title}</h1>
@@ -361,9 +419,6 @@ function loadPostPage(id) {
 			</p>
 			<!-- /content -->`;
 		}
-	
-		// Create miscellaneous post. 
-		else return '[Miscellaneous post type]';
 	}
 }
 
