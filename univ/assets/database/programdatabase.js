@@ -171,7 +171,7 @@ function addProgramProperties() {
 	// Go thru all programs. 
 	for(let program of programData) {
 		
-		// Get searchable program data. 
+		// Set searchable program data. 
 		program.searchtags = getProgramTags(program);
 	}
 

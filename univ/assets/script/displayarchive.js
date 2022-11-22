@@ -5,7 +5,8 @@
 const listdestination = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
 
 // Define character limit for post excerpts. 
-const excerptcharlimit = 240;
+const excerptcharlimit = 180;
+// const excerptcharlimit = 240;
 
 
 /*****/
@@ -13,6 +14,13 @@ const excerptcharlimit = 240;
 
 // Load archive list of posts. 
 loadArchivePage(archiveData);
+
+// Show current article. 
+showArticle();
+
+// Show current list of posts. 
+showPostList();
+// setTimeout(showPostList,100);
 
 
 /*****/

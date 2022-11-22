@@ -59,7 +59,7 @@ function addPostProperties() {
 	// Go thru all blog posts. 
 	for(let post of blogPostData) {
 		
-		// Get searchable post data. 
+		// Set searchable post data. 
 		post.searchtags = getPostTags(post);
 	}
 

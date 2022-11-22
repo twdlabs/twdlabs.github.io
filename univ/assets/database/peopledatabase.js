@@ -682,30 +682,42 @@ function addPeopleProperties() {
 	// 
 	for(let faculty of facultyData) {
 	
-		// Get full name as title. 
+		// Set full name as title. 
 		faculty.title = getFullName(faculty);
+
+		// Set bio. 
+		faculty.bio = getBio(faculty);
 	
-		// Get email address. 
+		// Set email address. 
 		faculty.email = getEmailAddress(faculty);
 		
-		// Get searchable faculty data. 
+		// Set searchable faculty data. 
 		faculty.searchtags = getFacultyTags(faculty);
 	}
 
 	// 
 	for(let student of studentData) {
 	
-		// Get full name as title. 
+		// Set full name as title. 
 		student.title = getFullName(student);
+
+		// Set bio. 
+		student.bio = getBio(student);
 	
-		// Get email address. 
+		// Set email address. 
 		student.email = getEmailAddress(student);
 		
-		// Get searchable student data. 
+		// Set searchable student data. 
 		student.searchtags = getStudentTags(student);
 	}
 
 	/****/
+
+	// Define bio of given person. 
+	function getBio(person) {
+		// 
+		return `This is a brief bio about ${person.title}. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, alias soluta, debitis dolore porro sapiente quae cumque saepe facere quaerat eius, itaque aspernatur eos repellat reprehenderit illo reiciendis tempora.`;
+	}
 
 	// Define email address of given person. 
 	function getEmailAddress(person) {

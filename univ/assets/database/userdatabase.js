@@ -53,13 +53,10 @@ function addUserProperties() {
 	// Go thru all users. 
 	for(let user of userData) {
 	
-		// Get full name as title. 
+		// Set full name as title. 
 		user.title = getFullName(user);
-	
-		// Create function for full name. 
-		// user.fulltitle = getFullName.bind(user);
 		
-		// Get searchable user data. 
+		// Set searchable user data. 
 		user.searchtags = getUserTags(user);
 	}
 

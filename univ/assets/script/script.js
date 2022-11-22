@@ -18,9 +18,6 @@ const searchField = document.querySelector('div#container div#searchoverlay sect
 // Get search results box. 
 const resultsBox = document.querySelector('div#container div#searchoverlay section.bottom div#resultsbox');
 
-// Get story article. 
-const storyarticle = document.querySelector('div#container main#pagecontent section.story article.story');
-
 
 /*****/
 
@@ -31,9 +28,6 @@ loadHeader();
 // Add footer. 
 loadFooter();
 
-// 
-storyarticle.classList.remove('gone');
-
 // Activate live search. 
 activateLiveSearch();
 
@@ -41,9 +35,35 @@ activateLiveSearch();
 /*****/
 
 
+// Show article. 
+function showArticle() {
+
+	// Get story article. 
+	const storyarticle = document.querySelector('div#container main#pagecontent section.story article.story');
+
+	// Un-hide current article. 
+	storyarticle.classList.remove('gone');
+}
+
+// Show article. 
+function showPostList() {
+
+	// Get post list (archive page). 
+	const postlist = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
+	// Un-hide current post list. 
+	if(postlist) postlist.classList.remove('gone');
+
+	// Get post lists (home page). 
+	const postlists = document.querySelectorAll('div#container section.preview div.half');
+	// Un-hide current post lists. 
+	for(let postlist of postlists) {
+		postlist.classList.remove('gone');
+	}
+}
+
 // Load header. 
 function loadHeader() {
-	console.log('Loading header...');
+	// console.log('Loading header...');
 
 	// Define header location (after opening of main container). 
 	// let location = 'afterbegin';
@@ -305,7 +325,7 @@ function loadHeader() {
 
 // Load footer. 
 function loadFooter() {
-	console.log('Loading footer...');
+	// console.log('Loading footer...');
 
 	// Define footer location (before closing of main container). 
 	// let location = 'beforeend';
@@ -462,7 +482,7 @@ function loadFooter() {
 				<li class="navitem">
 
 					<!-- navlink -->
-					<a class="navlink" href="javascript:void(0)">Careers</a>
+					<a class="navlink" href="${ getRelativeUrl('./careers') }">Careers</a>
 					<!-- /navlink -->
 
 				</li>
@@ -472,7 +492,7 @@ function loadFooter() {
 				<li class="navitem">
 
 					<!-- navlink -->
-					<a class="navlink" href="javascript:void(0)">Legal</a>
+					<a class="navlink" href="${ getRelativeUrl('./privacy') }">Privacy</a>
 					<!-- /navlink -->
 
 				</li>
@@ -482,7 +502,7 @@ function loadFooter() {
 				<li class="navitem">
 
 					<!-- navlink -->
-					<a class="navlink" href="javascript:void(0)">Privacy</a>
+					<a class="navlink" href="${ getRelativeUrl('./legal') }">Legal</a>
 					<!-- /navlink -->
 
 				</li>

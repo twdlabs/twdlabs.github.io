@@ -1871,19 +1871,19 @@ function addCourseProperties() {
 	// Go thru all courses. 
 	for(let course of courseData) {
 	
-		// Get course id. 
+		// Set course id. 
 		course.courseid = getCourseId(course);
 	
-		// Get course title. 
+		// Set course title. 
 		course.title = getCourseTitle(course);
 	
-		// Get full course title. 
+		// Set full course title. 
 		course.fulltitle = getFullCourseTitle(course);
 	
-		// Get course content. 
+		// Set course content. 
 		course.content = getCourseContent(course);
 		
-		// Get searchable course data. 
+		// Set searchable course data. 
 		course.searchtags = getCourseTags(course);
 	}
 

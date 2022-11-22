@@ -59,6 +59,13 @@ div#container section.preview div.half a.archivelink {font-size:1.125rem; paddin
 div#container section.preview div.half#events a.archivelink {background-color:var(--navyblue); color:white;}
 div#container section.preview div.half#blogposts a.archivelink {background-color:var(--yellow); color:white;}
 
+div#container section.preview div.half h2.headline,
+div#container section.preview div.half a.archivelink,
+div#container section.preview div.half ul.postlist {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
+div#container section.preview div.half.gone h2.headline,
+div#container section.preview div.half.gone a.archivelink,
+div#container section.preview div.half.gone ul.postlist {opacity:0; visibility:hidden; transform:translateY(-2rem);}
+
 
 
 /* Carousel Section */

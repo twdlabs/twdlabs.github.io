@@ -8,21 +8,24 @@ const numPreviewPosts = 3;
 /*****/
 
 
-// Show preview of blog posts. 
-showBlogPosts();
+// Load preview of blog posts. 
+loadBlogPosts();
 
-// Show preview of event posts. 
-showEventPosts();
+// Load preview of event posts. 
+loadEventPosts();
+
+// Show current list of posts. 
+showPostList();
 
 
 /*****/
 
 
-// Show preview of posts. 
-function showPostPreviews(postData, destination, foldername) {
-	console.log('postData:',postData);
-	console.log('destination: ',destination);
-	console.log('foldername: ',foldername);
+// Load preview of posts. 
+function loadPreviewPosts(postData, destination, foldername) {
+	// console.log('postData:',postData);
+	// console.log('destination: ',destination);
+	// console.log('foldername: ',foldername);
 
 	// Initialize list of posts. 
 	let result = '';
@@ -48,9 +51,9 @@ function showPostPreviews(postData, destination, foldername) {
 	
 		// Get post id. 
 		let type = post.posttype;
-		console.log('\ttype:',type);
+		// console.log('\ttype:',type);
 		let id = post[ `${type}id` ];
-		console.log(`\t${type} id:`, id );
+		// console.log(`\t${type} id:`, id );
 
 		// Get post url. 
 		let url = `${foldername}/post/?id=${id}`;
@@ -60,7 +63,7 @@ function showPostPreviews(postData, destination, foldername) {
 
 		// Get date of post. 
 		let datetime = (type=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
-		console.log('\tdatetime:',datetime);
+		// console.log('\tdatetime:',datetime);
 		let m = monthNames[ datetime.getMonth() ];
 		let d = datetime.getDate();
 
@@ -158,22 +161,22 @@ function showPostPreviews(postData, destination, foldername) {
 	}
 }
 
-// Show blog posts. 
-function showBlogPosts() {
+// Load blog posts. 
+function loadBlogPosts() {
 
 	// Get destination on page. 
 	const blogpostsDestination = document.querySelector('section.preview div#blogposts ul.postlist');
 
 	// Show preview posts. 
-	showPostPreviews(blogPostData, blogpostsDestination, 'blog' );
+	loadPreviewPosts(blogPostData, blogpostsDestination, 'blog' );
 }
 
-// Show event posts. 
-function showEventPosts() {
+// Load event posts. 
+function loadEventPosts() {
 
 	// Get destination on page. 
 	const eventsDestination = document.querySelector('section.preview div#events ul.postlist');
 
 	// Show preview posts. 
-	showPostPreviews(eventData, eventsDestination, 'events');
+	loadPreviewPosts(eventData, eventsDestination, 'events');
 }

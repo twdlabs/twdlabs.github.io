@@ -89,8 +89,15 @@ const sitemapdata = [
 		rootpageurl:'./students/post/?id=1',
 		parentpageid:7,
 	},
+	
+	{	// id:14
+		pagetitle:'Privacy Policy',
+		pagelevel:1,
+		rootpageurl:'./privacy',
+		parentpageid:0,
+	},
 
-	// {	// id:14
+	// {	// id:15
 	// 	pagetitle:'xyz',
 	// 	pagelevel:1,
 	// 	rootpageurl:'./xyz',

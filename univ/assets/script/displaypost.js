@@ -2,8 +2,9 @@
 
 
 // Get destination for post item. 
-// const postdestination = document.querySelector('div#container main#pagecontent');
-const postdestination = document.querySelector('div#container main#pagecontent section.story article.story');
+const postbox = document.querySelector('div#container main#pagecontent section.story article.story');
+const titlebox = document.querySelector('div#container main#pagecontent section.story article.story h1.title');
+const contentbox = document.querySelector('div#container main#pagecontent section.story article.story p.content');
 
 // Get search parameters from current url. 
 const urlparams = new URLSearchParams(window.location.search);
@@ -25,6 +26,9 @@ let isValidId = !!postId;
 // Load page for single post. 
 if(isValidId) loadPostPage(postId);
 
+// Show current article. 
+showArticle();
+
 
 /*****/
 
@@ -37,8 +41,8 @@ function loadPostPage(id) {
 	// console.log('post:',post);
 
 	// Add post item to page. 
-	if(post) postdestination.innerHTML = createFullPostLayout(post);
-	else postdestination.innerHTML = '';
+	if(post) postbox.innerHTML = createFullPostLayout(post);
+	else postbox.innerHTML = '';
 
 	/****/
 
@@ -76,44 +80,47 @@ function loadPostPage(id) {
 			return '';
 		}
 		
+		// Get type of post. 
+		let type = post.posttype;
+		
 		// Get title of post. 
-		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
+		let title = (post.title) ? (post.title) : `[Untitled ${type}]`;
 	
 		// Get content of post. 
-		let content = (post.content) ? (post.content) : `[Empty ${post.posttype} content]`;
+		let content = (post.content) ? (post.content) : `[Empty ${type} content]`;
 	
 		// Create full blog post. 
-		if(post.posttype=='post') {
+		if(type=='post') {
 			// 
 			return createBlogPostLayout();
 		}
 
 		// Create full program post. 
-		else if(post.posttype=='program') {
+		else if(type=='program') {
 			// 
 			return createProgramPostLayout();
 		}
 
 		// Create full course post. 
-		else if(post.posttype=='course') {
+		else if(type=='course') {
 			// 
 			return createCoursePostLayout();
 		}
 
 		// Create full event post. 
-		else if(post.posttype=='event') {
+		else if(type=='event') {
 			// 
 			return createEventPostLayout();
 		}
 
 		// Create full faculty post. 
-		else if(post.posttype=='faculty') {
+		else if(type=='faculty') {
 			// 
 			return createFacultyPostLayout();
 		}
 
 		// Create full student post. 
-		else if(post.posttype=='student') {
+		else if(type=='student') {
 			// 
 			return createStudentPostLayout();
 		}
@@ -125,6 +132,7 @@ function loadPostPage(id) {
 
 		// Create full layout for blog post. 
 		function createBlogPostLayout() {
+
 			// 
 			return `
 			<!-- title -->
@@ -142,7 +150,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ new Date(post.postedtime).toLocaleString() }</span>
+					<span class="value">${ new Date(post.postedtime).toDateString() }</span>
 					<!-- /value -->
 
 				</span>
@@ -205,7 +213,7 @@ function loadPostPage(id) {
 
 					<!-- value -->
 					<span class="value">
-						${ relatedCourses.map( (c)=>`<a class="postlink" href="${ getRelativeUrl('./courses/post/?id='+c.courseid) }">${c.title}</a>` ).join('') }
+						${ relatedCourses.map( createPostLink ).join('') }
 					</span>
 					<!-- /value -->
 
@@ -214,6 +222,18 @@ function loadPostPage(id) {
 			
 			</p>
 			<!-- /content -->`;
+
+			/**/
+
+			// Create post link for related course. 
+			function createPostLink(c) {
+
+				// 
+				return `
+				<!-- postlink -->
+				<a class="postlink" href="${ getRelativeUrl(`./courses/post/?id=${c.courseid}`) }">${c.title}</a>
+				<!-- /postlink -->`;
+			}
 		}
 
 		// Create full layout for course post. 
@@ -267,7 +287,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ prereqidlist.map( (id)=> `<a class="postlink" href="${ getRelativeUrl('./courses/post/?id='+id) }">${id}</a>` ).join('') }</span>
+					<span class="value">${ prereqidlist.map(createPostLink).join('') }</span>
 					<!-- /value -->
 
 				</span>
@@ -275,10 +295,27 @@ function loadPostPage(id) {
 			
 			</p>
 			<!-- /content -->`;
+
+			/**/
+
+			// Create post link for prerequisite course. 
+			function createPostLink(id) {
+
+				// Get course by id. 
+				let c = getCourseById(id);
+				console.log('Current course:',id,c);
+
+				// 
+				return `
+				<!-- postlink -->
+				<a class="postlink" href="${ getRelativeUrl(`./courses/post/?id=${id}`) }">${ c ? c.title : id }</a>
+				<!-- /postlink -->`;
+			}
 		}
 
 		// Create full layout for event post. 
 		function createEventPostLayout() {
+
 			// 
 			return `
 			<!-- title -->
@@ -350,6 +387,7 @@ function loadPostPage(id) {
 
 		// Create full layout for faculty post. 
 		function createFacultyPostLayout() {
+
 			// 
 			return `
 			<!-- title -->
@@ -386,6 +424,20 @@ function loadPostPage(id) {
 
 				</span>
 				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">About ${post.firstname}</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${post.bio}</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
 			
 			</p>
 			<!-- /content -->`;
@@ -393,6 +445,7 @@ function loadPostPage(id) {
 
 		// Create full layout for student post. 
 		function createStudentPostLayout() {
+			
 			// 
 			return `
 			<!-- title -->
@@ -425,6 +478,20 @@ function loadPostPage(id) {
 
 					<!-- value -->
 					<span class="value">${ getProgramById(post.programid).title }</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">About ${post.firstname}</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${post.bio}</span>
 					<!-- /value -->
 
 				</span>

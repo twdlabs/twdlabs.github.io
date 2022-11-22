@@ -83,7 +83,7 @@ function addEventProperties() {
 	// Go thru all events. 
 	for(let events of eventData) {
 		
-		// Get searchable event data. 
+		// Set searchable event data. 
 		events.searchtags = getEventTags(events);
 	}
 
