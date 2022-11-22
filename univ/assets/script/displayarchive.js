@@ -48,8 +48,8 @@ function loadArchivePage(postlist) {
 	// Add result to page. 
 	listdestination.innerHTML = result;
 
-	// Activate buttons. 
-	activateButtons();
+	// Activate read buttons. 
+	if(false) activateReadBtns();
 
 	/****/
 
@@ -93,6 +93,10 @@ function loadArchivePage(postlist) {
 					<a href="${url}">${title}</a>
 				</h1>
 				<!-- /title -->
+
+				<!-- posted -->
+				<p class="posted">${ ( new Date(post.postedtime) ).toDateString() }</p>
+				<!-- /posted -->
 	
 				<!-- content -->
 				<p class="content">
@@ -119,8 +123,8 @@ function loadArchivePage(postlist) {
 		<!-- /postitem -->`;
 	}
 
-	// Activate buttons. 
-	function activateButtons() {
+	// Activate read buttons. 
+	function activateReadBtns() {
 	
 		// Get all read buttons. 
 		const readbtns = document.querySelectorAll('main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn');
@@ -136,8 +140,9 @@ function loadArchivePage(postlist) {
 		// Toggle post excerpt mode. 
 		function togglePostContent(event) {
 	
-			// Get post. 
-			let post = (event.currentTarget).parentElement.parentElement;
+			// Get selected post. 
+			let readbtn = event.currentTarget;
+			let post = readbtn.parentElement.parentElement;
 	
 			// Toggle post. 
 			post.classList.toggle('active');

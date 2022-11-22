@@ -71,11 +71,15 @@ div#container header#header nav.navmenu ul.navlist li.navitem a.navlink.active {
 div#container header#header nav.navmenu ul.navlist li.navitem a.navlink.toggler {display:none;}
 
 /* Navigation Menu: Pages */
+/* div#container header#header nav.navmenu.a {} */
 /* div#container header#header nav.navmenu.a ul.navlist.pagelist {} */
 /* div#container header#header nav.navmenu.a ul.navlist.pagelist li.navitem {} */
 /* div#container header#header nav.navmenu.a ul.navlist.pagelist li.navitem a.navlink {} */
 
 /* Navigation Menu: Account */
+/* div#container header#header nav.navmenu.a {} */
+/* div#container header#header nav.navmenu.a ul.navlist.accountlist {} */
+/* div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem {} */
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred {background-color:var(--red);}
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred:hover {background:linear-gradient(180deg, var(--red), red);}

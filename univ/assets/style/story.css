@@ -17,17 +17,17 @@ div#container header#header {background-color:var(--themecolor);}
 
 /* div#container main#pagecontent {} */
 
-div#container main#pagecontent section {margin-top:3rem;}
+div#container main#pagecontent section {margin-top:4rem;}
 
 div#container main#pagecontent section.story {/* background-color:hotpink; */ padding:0 6rem;}
 div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.story article.story {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
 div#container main#pagecontent section.story article.story.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
-div#container main#pagecontent section.story article.story h1.head {text-align:center;}
+div#container main#pagecontent section.story article.story h1.head {font-size:1.5rem; text-align:center;}
 div#container main#pagecontent section.story article.story p.textcopy {line-height:1.75; text-align:center;}
-/* div#container main#pagecontent section.story article.story h1.title {text-align:center;} */
+div#container main#pagecontent section.story article.story h1.title {font-size:1.5rem; /* text-align:center; */}
 div#container main#pagecontent section.story article.story p.content {line-height:1.75;}
-div#container main#pagecontent section.story article.story p.content span.item {display:block; margin-top:1rem;}
+div#container main#pagecontent section.story article.story p.content span.item {display:block; margin-top:1.5rem;}
 div#container main#pagecontent section.story article.story p.content span.item span.label {font-weight:800;}
 div#container main#pagecontent section.story article.story p.content span.item/* .block */ span.label {display:block;}
 div#container main#pagecontent section.story article.story p.content span.item span.label:empty {display:none;}
@@ -42,16 +42,18 @@ div#container main#pagecontent section.archive {padding:0 3rem;}
 div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--postwidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.archive ul.postlist {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
 div#container main#pagecontent section.archive ul.postlist.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
-div#container main#pagecontent section.archive ul.postlist li.postitem {border-top:1px solid var(--trpnavy); padding:1rem 0;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); padding:.75rem 1.25rem; border-radius:1rem; /* border-top:1px solid var(--trpnavy); */}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post:hover {background-color:var(--trpnavy); cursor:pointer; transition:.25s;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem {border-top:1px solid var(--trpnavy);} */
+/* div#container main#pagecontent section.archive ul.postlist li.postitem a.postlink {} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); padding:.75rem 1.25rem; border-radius:1rem; margin:1rem 0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post:hover {background-color:var(--trpnavy); /* cursor:pointer; */ transition:.25s;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post h1.title {line-height:2; margin:0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.posted {margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.5; margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt::after {content:'...';}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.remainder {display:none;}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {display:inline-block; margin:.5rem 1rem;} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {display:block; /* text-align:center; */ line-height:2;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {display:block; /* display:none; */ /* text-align:center; */ line-height:2;}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {background-color:var(--themecolor); color:white; padding:0 .5rem; border-radius:.25rem;} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {background-color:transparent; color:var(--themecolor); text-decoration:underline;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.expand {display:block;}
@@ -59,6 +61,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active {} */
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content {} */
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt {} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt::after {content:'';}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt:empty::after {content:'[No content]';} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.remainder {display:inline;}
