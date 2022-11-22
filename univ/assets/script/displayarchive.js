@@ -48,9 +48,6 @@ function loadArchivePage(postlist) {
 	// Add result to page. 
 	listdestination.innerHTML = result;
 
-	// Activate read buttons. 
-	if(false) activateReadBtns();
-
 	/****/
 
 	// Create preview post item. 
@@ -70,7 +67,7 @@ function loadArchivePage(postlist) {
 		let postexcerpt = (post.content) ? (post.content).slice(0,excerptcharlimit) : '';
 	
 		// Get remainder of post content. 
-		let postremainder = (post.content) ? (post.content).slice(excerptcharlimit) : '';
+		// let postremainder = (post.content) ? (post.content).slice(excerptcharlimit) : '';
 	
 		// Get id of post. 
 		let type = post.posttype;
@@ -90,7 +87,7 @@ function loadArchivePage(postlist) {
 		<li class="postitem">
 	
 			<!-- post -->
-			<article class="post ${ (!postremainder) ? 'active' : '' }">
+			<article class="post">
 				
 				<!-- title -->
 				<h2 class="title">
@@ -105,10 +102,6 @@ function loadArchivePage(postlist) {
 					<span class="excerpt">${postexcerpt}</span>
 					<!-- /excerpt -->
 	
-					<!-- remainder -->
-					<span class="remainder">${postremainder}</span>
-					<!-- /remainder -->
-	
 					<!-- readbtn -->
 					<a class="readbtn" href="${url}">Read More</a>
 					<!-- /readbtn -->
@@ -121,31 +114,5 @@ function loadArchivePage(postlist) {
 	
 		</li>
 		<!-- /postitem -->`;
-	}
-
-	// Activate read buttons. 
-	function activateReadBtns() {
-	
-		// Get all read buttons. 
-		const readbtns = document.querySelectorAll('main#pagecontent section.archive ul.postlist li.postitem article.post p.content button.readbtn');
-		// console.log('readbtns:',readbtns);
-	
-		// Add event handlers. 
-		for(let btn of readbtns) {
-			btn.addEventListener('click', togglePostContent);
-		}
-	
-		/****/
-	
-		// Toggle post excerpt mode. 
-		function togglePostContent(event) {
-	
-			// Get selected post. 
-			let readbtn = event.currentTarget;
-			let post = readbtn.parentElement.parentElement;
-	
-			// Toggle post. 
-			post.classList.toggle('active');
-		}
 	}
 }
