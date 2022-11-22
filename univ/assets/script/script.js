@@ -35,32 +35,6 @@ activateLiveSearch();
 /*****/
 
 
-// Show article. 
-function showArticle() {
-
-	// Get story article. 
-	const storyarticle = document.querySelector('div#container main#pagecontent section.story article.story');
-
-	// Un-hide current article. 
-	storyarticle.classList.remove('gone');
-}
-
-// Show article. 
-function showPostList() {
-
-	// Get post list (archive page). 
-	const postlist = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
-	// Un-hide current post list. 
-	if(postlist) postlist.classList.remove('gone');
-
-	// Get post lists (home page). 
-	const postlists = document.querySelectorAll('div#container section.preview div.half');
-	// Un-hide current post lists. 
-	for(let postlist of postlists) {
-		postlist.classList.remove('gone');
-	}
-}
-
 // Load header. 
 function loadHeader() {
 	// console.log('Loading header...');
@@ -677,6 +651,32 @@ function loadFooter() {
 		<!-- node -->
 		<a class="node" href="./">PageName</a>
 		<!-- /node -->`;
+	}
+}
+
+// Show article. 
+function showArticle() {
+
+	// Get story article. 
+	const storyarticle = document.querySelector('div#container main#pagecontent section.story article.story');
+
+	// Un-hide current article. 
+	storyarticle.classList.remove('gone');
+}
+
+// Show article. 
+function showPostList() {
+
+	// Get post list (archive page). 
+	const postlist = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
+	// Un-hide current post list. 
+	if(postlist) postlist.classList.remove('gone');
+
+	// Get post lists (home page). 
+	const postlists = document.querySelectorAll('div#container section.preview div.group');
+	// Un-hide current post lists. 
+	for(let postlist of postlists) {
+		postlist.classList.remove('gone');
 	}
 }
 

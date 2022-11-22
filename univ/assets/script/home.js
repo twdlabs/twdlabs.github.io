@@ -48,6 +48,13 @@ function loadPreviewPosts(postData, destination, foldername) {
 
 	// Create layout for preview post. 
 	function createPreviewPost(post) {
+		// console.log('post:',post);
+	
+		// Check for valid post. 
+		if(!post) {
+			console.warn('Invalid post:',post);
+			return '';
+		}
 	
 		// Get post id. 
 		let type = post.posttype;
@@ -58,18 +65,86 @@ function loadPreviewPosts(postData, destination, foldername) {
 		// Get post url. 
 		let url = `${foldername}/post/?id=${id}`;
 
-		// Get post excerpt. 
-		let postexcerpt = getPostExcerpt(post.content);
+		// Get excerpt from post content. 
+		let postexcerpt = getExcerpt(post.content);
 
 		// Get date of post. 
-		let datetime = (type=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
+		let datetime = new Date( (type=='event') ? (post['eventtime']) : (post['postedtime']) );
+		// let datetime = (type=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
 		// console.log('\tdatetime:',datetime);
+		let y = datetime.getFullYear();
 		let m = monthNames[ datetime.getMonth() ];
 		let d = datetime.getDate();
 
 		// 
 		return `
-		<!-- post -->
+		<!-- postitem -->
+		<li class="postitem">
+
+			<!-- post -->
+			<article class="post">
+			
+				<!-- postdate -->
+				<div class="postdate">
+
+					<!-- date -->
+					<div class="date">
+		
+						<!-- year -->
+						<span class="year">2023</span>
+						<!-- /year -->
+
+						<!-- month -->
+						<span class="month">${m}</span>
+						<!-- /month -->
+
+						<!-- date -->
+						<span class="date">${ (d<10) ? `0${d}` : d }</span>
+						<!-- /date -->
+
+					</div>
+					<!-- /date -->
+					
+				</div>
+				<!-- /postdate -->
+				
+				<!-- postcontent -->
+				<div class="postcontent">
+				
+					<!-- postname -->
+					<h4 class="postname">
+
+						<!-- readlink -->
+						<a class="readlink" href="${url}">${post.title}</a>
+						<!-- /readlink -->
+						
+					</h4>
+					<!-- /postname -->
+					
+					<!-- postexcerpt -->
+					<p class="postexcerpt">
+						
+						<!-- excerpt -->
+						<span class="excerpt">${postexcerpt}</span>
+						<!-- /excerpt -->
+						
+						<!-- readlink -->
+						<a class="readlink" href="${url}">Learn More</a>
+						<!-- /readlink -->
+						
+					</p>
+					<!-- /postexcerpt -->
+					
+				</div>
+				<!-- /postcontent -->
+				
+			</article>
+			<!-- /post -->
+		
+		</li>
+		<!-- /postitem -->`;
+
+		return `<!-- post -->
 		<li class="post">
 			
 			<!-- postdate -->
@@ -79,11 +154,11 @@ function loadPreviewPosts(postData, destination, foldername) {
 				<div class="date">
 
 					<!-- month -->
-					<span class="month">${m}</span>
+					<span class="month"></span>
 					<!-- /month -->
 
 					<!-- date -->
-					<span class="date">${ (d<10) ? `0${d}` : d }</span>
+					<span class="date"></span>
 					<!-- /date -->
 
 				</div>
@@ -97,7 +172,7 @@ function loadPreviewPosts(postData, destination, foldername) {
 			
 				<!-- postname -->
 				<h4 class="postname">
-					<a href="${url}">${post.title}</a>
+					<a href=""></a>
 				</h4>
 				<!-- /postname -->
 				
@@ -105,11 +180,11 @@ function loadPreviewPosts(postData, destination, foldername) {
 				<p class="postexcerpt">
 					
 					<!-- excerpt -->
-					<span class="excerpt">${postexcerpt}</span>
+					<span class="excerpt"></span>
 					<!-- /excerpt -->
 					
 					<!-- readlink -->
-					<a href="${url}" class="readlink">Learn More</a>
+					<a href="" class="readlink">Learn More</a>
 					<!-- /readlink -->
 					
 				</p>
@@ -123,8 +198,8 @@ function loadPreviewPosts(postData, destination, foldername) {
 
 		/***/
 
-		// Get post excerpt. 
-		function getPostExcerpt(content) {
+		// Get excerpt from post content. 
+		function getExcerpt(content) {
 			
 			// Set excerpt word count. 
 			const excerptWordLimit = 18;
@@ -165,10 +240,10 @@ function loadPreviewPosts(postData, destination, foldername) {
 function loadBlogPosts() {
 
 	// Get destination on page. 
-	const blogpostsDestination = document.querySelector('section.preview div#blogposts ul.postlist');
+	const blogDestination = document.querySelector('section.preview div#blog ul.postlist');
 
 	// Show preview posts. 
-	loadPreviewPosts(blogPostData, blogpostsDestination, 'blog' );
+	loadPreviewPosts(blogPostData, blogDestination, 'blog' );
 }
 
 // Load event posts. 

@@ -46,7 +46,7 @@ div#container main#pagecontent section.archive ul.postlist.gone {opacity:0; visi
 /* div#container main#pagecontent section.archive ul.postlist li.postitem a.postlink {} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); padding:.75rem 1.25rem; border-radius:1rem; margin:1rem 0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post:hover {background-color:var(--trpnavy); /* cursor:pointer; */ transition:.25s;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post h1.title {line-height:2; margin:0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post h2.title {font-size:1.25rem; /* line-height:2; */ margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.posted {margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.5; margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}

@@ -32,39 +32,33 @@ div#container section.banner main a.archivelink {display:inline-block; font-size
 div#container section.preview {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
 div#container section.preview {background:linear-gradient(90deg,white 49%,var(--lightyellow) 51%);}
 
-div#container section.preview div.half {display:flex; flex-direction:column; align-items:center; padding:2.5rem;}
-div#container section.preview div.half#events {background-color:white;}
-div#container section.preview div.half#blogposts {background-color:var(--lightyellow);}
+div#container section.preview div.group {display:flex; flex-direction:column; align-items:center; padding:2.5rem;}
+div#container section.preview div.group#blog {background-color:var(--lightyellow); --darkbgcolor:var(--yellow);}
+div#container section.preview div.group#events {background-color:white; --darkbgcolor:var(--navyblue);}
 
-div#container section.preview div.half h2.headline {font-size:1.6875rem; font-weight:normal; margin:0; margin-bottom:1rem;}
+div#container section.preview div.group h2.head {font-size:1.6875rem; font-weight:normal; margin:0; margin-bottom:1rem;}
+div#container section.preview div.group ul.postlist {list-style:none; max-width:32rem; padding:0; margin:0;}
+/* div#container section.preview div.group ul.postlist li.postitem {} */
+div#container section.preview div.group ul.postlist li.postitem article.post {display:flex; flex-direction:row; margin-bottom:1rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:7rem; margin-right:1.5rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {text-align:center; padding-top:.625rem;}
+/* div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.year {display:none;} */
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.year {font-size:1rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.date {font-size:2rem; font-weight:800; margin-top:-.5rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent {flex-grow:1;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent h4.postname {font-size:1.375rem; font-weight:100; /* white-space:nowrap; */ margin:0;}
+/* div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent h4.postname a {color:initial; text-decoration:underline;} */
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt {font-weight:100; line-height:1.5em; margin:0; margin-top:.25rem;}
+/* div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt span.excerpt {} */
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
+div#container section.preview div.group a.archivelink {background-color:var(--darkbgcolor); color:white; font-size:1.125rem; padding:1.125rem 1.5rem 1rem; border-radius:.25rem;}
 
-div#container section.preview div.half ul.postlist {list-style:none; padding:0; margin:0;}
-div#container section.preview div.half ul.postlist li.post {display:flex; flex-direction:row; max-width:32rem; margin-bottom:1rem;}
-div#container section.preview div.half ul.postlist li.post div.postdate {flex-grow:0; margin-right:1.5rem;}
-div#container section.preview div.half ul.postlist li.post div.postdate div.date {color:white; min-width:5.25rem; min-height:5.25rem; border-radius:50%;}
-div#container section.preview div.half ul.postlist li.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container section.preview div.half#events ul.postlist li.post div.postdate div.date {background-color:var(--navyblue);}
-div#container section.preview div.half#blogposts ul.postlist li.post div.postdate div.date {background-color:var(--yellow);}
-div#container section.preview div.half ul.postlist li.post div.postdate div.date span.date {font-size:2rem; font-weight:800;}
-div#container section.preview div.half ul.postlist li.post div.postdate div.date span.month {font-size:1.5rem; font-weight:100; text-transform:uppercase; margin-top:.75rem;}
-div#container section.preview div.half ul.postlist li.post div.postcontent {flex-grow:1;}
-div#container section.preview div.half ul.postlist li.post div.postcontent h4.postname {font-size:1.375rem; font-weight:100; /* white-space:nowrap; */ margin:0;}
-/* div#container section.preview div.half ul.postlist li.post div.postcontent h4.postname a {color:initial; text-decoration:underline;} */
-div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt {font-weight:100; line-height:1.5em; margin:0; margin-top:.25rem;}
-/* div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt span.excerpt {} */
-div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
-div#container section.preview div.half ul.postlist li.post div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
-
-div#container section.preview div.half a.archivelink {font-size:1.125rem; padding:1.125rem 1.5rem 1rem; border-radius:.25rem;}
-div#container section.preview div.half#events a.archivelink {background-color:var(--navyblue); color:white;}
-div#container section.preview div.half#blogposts a.archivelink {background-color:var(--yellow); color:white;}
-
-div#container section.preview div.half h2.headline,
-div#container section.preview div.half a.archivelink,
-div#container section.preview div.half ul.postlist {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
-div#container section.preview div.half.gone h2.headline,
-div#container section.preview div.half.gone a.archivelink,
-div#container section.preview div.half.gone ul.postlist {opacity:0; visibility:hidden; transform:translateY(-2rem);}
+div#container section.preview div.group > * {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
+div#container section.preview div.group.gone > * {opacity:0; visibility:hidden; transform:translateY(-2rem);}
 
 
 
@@ -81,7 +75,7 @@ div#container section.carousel div.slide.b {background-image:url('../../assets/m
 div#container section.carousel div.slide.c {background-image:url('../../assets/media/bread.jpg');}
 
 div#container section.carousel div.slide div.bubble {background-color:rgba(0,0,0,0.68); color:white; padding:2rem; text-align:center;}
-div#container section.carousel div.slide div.bubble h2.headline {font-size:3rem; font-weight:100; margin:0;}
+div#container section.carousel div.slide div.bubble h2.head {font-size:3rem; font-weight:100; margin:0;}
 div#container section.carousel div.slide div.bubble p {margin:0; margin-top:1.5rem}
 /* div#container section.carousel div.slide div.bubble p.textcopy {}
 div#container section.carousel div.slide div.bubble p.action {} */

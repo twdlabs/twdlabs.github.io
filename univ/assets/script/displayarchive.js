@@ -81,6 +81,10 @@ function loadArchivePage(postlist) {
 		let url = `post/?id=${id}`;
 	
 		// 
+		// `
+		// 		<!-- posted -->
+		// 		<p class="posted">${ ( new Date(post.postedtime) ).toDateString() }</p>
+		// 		<!-- /posted -->`;
 		return `
 		<!-- postitem -->
 		<li class="postitem">
@@ -89,14 +93,10 @@ function loadArchivePage(postlist) {
 			<article class="post ${ (!postremainder) ? 'active' : '' }">
 				
 				<!-- title -->
-				<h1 class="title">
+				<h2 class="title">
 					<a href="${url}">${title}</a>
-				</h1>
+				</h2>
 				<!-- /title -->
-
-				<!-- posted -->
-				<p class="posted">${ ( new Date(post.postedtime) ).toDateString() }</p>
-				<!-- /posted -->
 	
 				<!-- content -->
 				<p class="content">
