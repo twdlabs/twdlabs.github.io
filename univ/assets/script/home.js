@@ -4,6 +4,10 @@
 // Define number of posts per preview. 
 const numPreviewPosts = 3;
 
+// Set excerpt word count. 
+const excerptWordLimit = 18;
+// const excerptWordLimit = 55;	// default excerpt length in WordPress
+
 
 /*****/
 
@@ -65,9 +69,6 @@ function loadPreviewPosts(postData, destination, foldername) {
 		// Get post url. 
 		let url = `${foldername}/post/?id=${id}`;
 
-		// Get excerpt from post content. 
-		let postexcerpt = getExcerpt(post.content);
-
 		// Get date of post. 
 		let datetime = new Date( (type=='event') ? (post['eventtime']) : (post['postedtime']) );
 		// let datetime = (type=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
@@ -75,6 +76,9 @@ function loadPreviewPosts(postData, destination, foldername) {
 		let y = datetime.getFullYear();
 		let m = monthNames[ datetime.getMonth() ];
 		let d = datetime.getDate();
+
+		// Get excerpt from post content. 
+		let postexcerpt = getExcerpt(post.content);
 
 		// 
 		return `
@@ -91,7 +95,7 @@ function loadPreviewPosts(postData, destination, foldername) {
 					<div class="date">
 		
 						<!-- year -->
-						<span class="year">2023</span>
+						<span class="year">${y}</span>
 						<!-- /year -->
 
 						<!-- month -->
@@ -144,66 +148,13 @@ function loadPreviewPosts(postData, destination, foldername) {
 		</li>
 		<!-- /postitem -->`;
 
-		return `<!-- post -->
-		<li class="post">
-			
-			<!-- postdate -->
-			<div class="postdate">
-
-				<!-- date -->
-				<div class="date">
-
-					<!-- month -->
-					<span class="month"></span>
-					<!-- /month -->
-
-					<!-- date -->
-					<span class="date"></span>
-					<!-- /date -->
-
-				</div>
-				<!-- /date -->
-				
-			</div>
-			<!-- /postdate -->
-			
-			<!-- postcontent -->
-			<div class="postcontent">
-			
-				<!-- postname -->
-				<h4 class="postname">
-					<a href=""></a>
-				</h4>
-				<!-- /postname -->
-				
-				<!-- postexcerpt -->
-				<p class="postexcerpt">
-					
-					<!-- excerpt -->
-					<span class="excerpt"></span>
-					<!-- /excerpt -->
-					
-					<!-- readlink -->
-					<a href="" class="readlink">Learn More</a>
-					<!-- /readlink -->
-					
-				</p>
-				<!-- /postexcerpt -->
-				
-			</div>
-			<!-- /postcontent -->
-		
-		</li>
-		<!-- /post -->`;
-
 		/***/
 
 		// Get excerpt from post content. 
 		function getExcerpt(content) {
-			
-			// Set excerpt word count. 
-			const excerptWordLimit = 18;
-			// const excerptWordLimit = 55;	// default excerpt length in WordPress
+
+			// Define word limit for current excerpt. 
+			let currentWordLimit = excerptWordLimit
 	
 			// Get individual words of post content. 
 			let wordsFromPostContent = content.split(' ');
@@ -212,9 +163,9 @@ function loadPreviewPosts(postData, destination, foldername) {
 	
 			// Check for post content overflow. 
 			let postContentOverflow = false;
-			if(numWordsInContent<excerptWordLimit) {
+			if(numWordsInContent<currentWordLimit) {
 				// Use all content if less words than excerpt limit. 
-				excerptWordLimit = numWordsInContent;
+				currentWordLimit = numWordsInContent;
 				postContentOverflow = false;
 			}
 			else {
@@ -223,7 +174,7 @@ function loadPreviewPosts(postData, destination, foldername) {
 	
 			// Create post content excerpt. 
 			let excerpt = '';
-			for (let j=0 ; j<excerptWordLimit ; j++) {
+			for (let j=0 ; j<currentWordLimit ; j++) {
 				// 
 				excerpt += wordsFromPostContent[j] + ' ';
 			}

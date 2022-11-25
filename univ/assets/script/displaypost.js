@@ -10,6 +10,10 @@ const contentbox = document.querySelector('div#container main#pagecontent sectio
 const urlparams = new URLSearchParams(window.location.search);
 // console.log('Url search parameters:',urlparams);
 
+// Set excerpt word count. 
+const excerptWordLimit = 24;
+// const excerptWordLimit = 55;	// default excerpt length in WordPress
+
 
 /*****/
 
@@ -140,7 +144,7 @@ function loadPostPage(id) {
 			<!-- /title -->
 
 			<!-- content -->
-			<p class="content">
+			<div class="content">
 
 				<!-- item -->
 				<span class="item">
@@ -170,7 +174,7 @@ function loadPostPage(id) {
 				</span>
 				<!-- /item -->
 			
-			</p>
+			</div>
 			<!-- /content -->`;
 		}
 
@@ -188,7 +192,7 @@ function loadPostPage(id) {
 			<!-- /title -->
 
 			<!-- content -->
-			<p class="content">
+			<div class="content">
 
 				<!-- item -->
 				<span class="item">
@@ -213,7 +217,7 @@ function loadPostPage(id) {
 
 					<!-- value -->
 					<span class="value">
-						${ relatedCourses.map( createPostLink ).join('') }
+						${ relatedCourses.map( createCourseLink ).join('') }
 					</span>
 					<!-- /value -->
 
@@ -252,29 +256,171 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
-					<span class="label">Upcoming ${post.title} Events</span>
+					<span class="label full">Upcoming ${post.title} Events</span>
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${''}</span>
+					<span class="value">${ getEventsByProgram(post.programid).map( /* createEventLink */ createEventPreviewPost ).join('') }</span>
 					<!-- /value -->
 
 				</span>
 				<!-- /item -->
 			
-			</p>
+			</div>
 			<!-- /content -->`;
 
 			/**/
 
 			// Create post link for related course. 
-			function createPostLink(c) {
+			function createCourseLink(c) {
+
+				// Define link url. 
+				let url = getRelativeUrl(`./courses/post/?id=${c.courseid}`);
+
+				// Define link caption. 
+				let caption = c.title;
+
+				// Define post link. 
+				return `
+				<!-- postlink -->
+				<a class="postlink" href="${url}">${caption}</a>
+				<!-- /postlink -->`;
+			}
+
+			// Create post link for related event. 
+			function createEventLink(e) {
+
+				// Define link url. 
+				let url = getRelativeUrl(`./events/post/?id=${e.eventid}`);
+
+				// Define link caption. 
+				let caption = `${e.title}<br>${ new Date(e.eventtime).toDateString() }<br>${e.location}`;
+
+				// Define post link. 
+				return `
+				<!-- postlink -->
+				<a class="postlink" href="${url}">${caption}</a>
+				<!-- /postlink -->`;
+			}
+
+			// Create post link for related event. 
+			function createEventPreviewPost(e) {
+	
+				// Get post id. 
+				let id = e.eventid;
+
+				// Get post url. 
+				let url = getRelativeUrl(`events/post/?id=${id}`);
+
+				// Get date of post. 
+				let datetime = new Date( e.eventtime );
+				// let datetime = (type=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
+				// console.log('\tdatetime:',datetime);
+				let y = datetime.getFullYear();
+				let m = monthNames[ datetime.getMonth() ];
+				let d = datetime.getDate();
+
+				// Get excerpt from post content. 
+				let postexcerpt = getExcerpt(e.content);
 
 				// 
 				return `
-				<!-- postlink -->
-				<a class="postlink" href="${ getRelativeUrl(`./courses/post/?id=${c.courseid}`) }">${c.title}</a>
-				<!-- /postlink -->`;
+				<!-- post -->
+				<article class="post">
+				
+					<!-- postdate -->
+					<div class="postdate">
+	
+						<!-- date -->
+						<div class="date">
+			
+							<!-- year -->
+							<span class="year">${y}</span>
+							<!-- /year -->
+	
+							<!-- month -->
+							<span class="month">${m}</span>
+							<!-- /month -->
+	
+							<!-- date -->
+							<span class="date">${ (d<10) ? `0${d}` : d }</span>
+							<!-- /date -->
+	
+						</div>
+						<!-- /date -->
+						
+					</div>
+					<!-- /postdate -->
+					
+					<!-- postcontent -->
+					<div class="postcontent">
+					
+						<!-- postname -->
+						<h4 class="postname">
+	
+							<!-- readlink -->
+							<a class="readlink" href="${url}">${e.title}</a>
+							<!-- /readlink -->
+							
+						</h4>
+						<!-- /postname -->
+						
+						<!-- postexcerpt -->
+						<p class="postexcerpt">
+							
+							<!-- excerpt -->
+							<span class="excerpt">${postexcerpt}</span>
+							<!-- /excerpt -->
+							
+							<!-- readlink -->
+							<a class="readlink" href="${url}">Learn More</a>
+							<!-- /readlink -->
+							
+						</p>
+						<!-- /postexcerpt -->
+						
+					</div>
+					<!-- /postcontent -->
+					
+				</article>
+				<!-- /post -->`;
+
+				/***/
+		
+				// Get excerpt from post content. 
+				function getExcerpt(content) {
+		
+					// Define word limit for current excerpt. 
+					let currentWordLimit = excerptWordLimit
+			
+					// Get individual words of post content. 
+					let wordsFromPostContent = content.split(' ');
+					// Get number of words in post content. 
+					let numWordsInContent = wordsFromPostContent.length;
+			
+					// Check for post content overflow. 
+					let postContentOverflow = false;
+					if(numWordsInContent<currentWordLimit) {
+						// Use all content if less words than excerpt limit. 
+						currentWordLimit = numWordsInContent;
+						postContentOverflow = false;
+					}
+					else {
+						postContentOverflow = true;
+					}
+			
+					// Create post content excerpt. 
+					let excerpt = '';
+					for (let j=0 ; j<currentWordLimit ; j++) {
+						// 
+						excerpt += wordsFromPostContent[j] + ' ';
+					}
+					// Add ellipsis if some content is ommitted. 
+					if(postContentOverflow) excerpt += '...';
+			
+					// 
+					return excerpt;
+				}
 			}
 		}
 
@@ -291,7 +437,7 @@ function loadPostPage(id) {
 			<!-- /title -->
 
 			<!-- content -->
-			<p class="content">
+			<div class="content">
 
 				<!-- item -->
 				<span class="item">
@@ -329,28 +475,34 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ prereqidlist.map(createPostLink).join('') }</span>
+					<span class="value">${ prereqidlist.map(createCourseLink).join('') }</span>
 					<!-- /value -->
 
 				</span>
 				<!-- /item -->
 			
-			</p>
+			</div>
 			<!-- /content -->`;
 
 			/**/
 
 			// Create post link for prerequisite course. 
-			function createPostLink(id) {
+			function createCourseLink(id) {
 
 				// Get course by id. 
 				let c = getCourseById(id);
-				console.log('Current course:',id,c);
+				// console.log('Current course:',id,c);
 
-				// 
+				// Define link url. 
+				let url = getRelativeUrl(`./courses/post/?id=${id}`);
+
+				// Define link caption. 
+				let caption = c ? c.title : id;
+
+				// Define post link. 
 				return `
 				<!-- postlink -->
-				<a class="postlink" href="${ getRelativeUrl(`./courses/post/?id=${id}`) }">${ c ? c.title : id }</a>
+				<a class="postlink" href="${url}">${caption}</a>
 				<!-- /postlink -->`;
 			}
 		}
@@ -369,7 +521,7 @@ function loadPostPage(id) {
 			<!-- /title -->
 
 			<!-- content -->
-			<p class="content">
+			<div class="content">
 
 				<!-- item -->
 				<span class="item">
@@ -433,7 +585,7 @@ function loadPostPage(id) {
 				</span>
 				<!-- /item -->
 			
-			</p>
+			</div>
 			<!-- /content -->`;
 		}
 
@@ -447,7 +599,7 @@ function loadPostPage(id) {
 			<!-- /title -->
 
 			<!-- content -->
-			<p class="content">
+			<div class="content">
 
 				<!-- item -->
 				<span class="item">
@@ -491,7 +643,7 @@ function loadPostPage(id) {
 				</span>
 				<!-- /item -->
 			
-			</p>
+			</div>
 			<!-- /content -->`;
 		}
 
@@ -505,7 +657,7 @@ function loadPostPage(id) {
 			<!-- /title -->
 
 			<!-- content -->
-			<p class="content">
+			<div class="content">
 
 				<!-- item -->
 				<span class="item">
@@ -549,7 +701,7 @@ function loadPostPage(id) {
 				</span>
 				<!-- /item -->
 				
-			</p>
+			</div>
 			<!-- /content -->`;
 		}
 	}

@@ -780,3 +780,39 @@ function addPeopleProperties() {
 	}
 }
 
+// Get faculty by program. 
+function getFacultyByProgram(programid) {
+	
+	// Initialize result. 
+	let result = [];
+
+	// 
+	for(let faculty of facultyData) {
+		// 
+		let matchingProgram = faculty['programids'].includes(programid);
+		// 
+		if(matchingProgram) result.push(faculty);
+	}
+
+	// Return result. 
+	return result;
+}
+
+// Get students by program. 
+function getStudentsByProgram(programid) {
+	
+	// Initialize result. 
+	let result = [];
+
+	// 
+	for(let student of studentData) {
+		// 
+		let matchingProgram = (student['programid']==programid);
+		// 
+		if(matchingProgram) result.push(student);
+	}
+
+	// Return result. 
+	return result;
+}
+
