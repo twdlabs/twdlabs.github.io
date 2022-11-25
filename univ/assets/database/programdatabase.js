@@ -193,7 +193,7 @@ function addProgramProperties() {
 function getProgramById(programid) {
 
 	// Ensure capitalization of program id. 
-	programid = programid.toUpperCase();
+	programid = (`${programid}`).toUpperCase();
 
 	// Go thru all program items. 
 	for(let program of programData) {

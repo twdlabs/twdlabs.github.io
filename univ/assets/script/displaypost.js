@@ -18,13 +18,13 @@ const urlparams = new URLSearchParams(window.location.search);
 let postId = urlparams.get('id');
 
 // Check for valid id parameter ( denies id=0 👎🏾 / denies id='' 👍 ). 
-let isValidId = !!postId;
+// let isValidId = !!postId;
 // Check for valid id parameter ( allows id=0 👍 / allows id='' 👎🏾 ). 
 // let isValidId = !!postId || !isNaN(postId);
 // console.log('Valid id:', isValidId, postId);
 
 // Load page for single post. 
-if(isValidId) loadPostPage(postId);
+/* if(isValidId) */ loadPostPage(postId);
 
 // Show current article. 
 showArticle();
@@ -38,7 +38,7 @@ function loadPostPage(id) {
 
 	// Get post item. 
 	let post = getPostById(id);
-	// console.log('post:',post);
+	console.log('post:',post);
 
 	// Add post item to page. 
 	if(post) postbox.innerHTML = createFullPostLayout(post);
@@ -219,6 +219,48 @@ function loadPostPage(id) {
 
 				</span>
 				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">${post.title} Faculty</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${''}</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">${post.title} Students</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${''}</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">Upcoming ${post.title} Events</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${''}</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
 			
 			</p>
 			<!-- /content -->`;
@@ -316,6 +358,10 @@ function loadPostPage(id) {
 		// Create full layout for event post. 
 		function createEventPostLayout() {
 
+			// Get associated program. 
+			// let program = programData[post.programid];
+			let program = getProgramById(post.programid);
+
 			// 
 			return `
 			<!-- title -->
@@ -331,9 +377,15 @@ function loadPostPage(id) {
 					<!-- label -->
 					<span class="label">Program</span>
 					<!-- /label -->
-
+			
 					<!-- value -->
-					<span class="value">${ programData[post.programid].title }</span>
+					<span class="value">
+
+						<!-- postlink -->
+						<a class="postlink" href="${ getRelativeUrl(`./programs/post/?id=${post.programid}`) }">${ program ? program.title : '' }</a>
+						<!-- /postlink -->
+
+					</span>
 					<!-- /value -->
 
 				</span>

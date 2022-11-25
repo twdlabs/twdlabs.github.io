@@ -6,7 +6,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'001',
-		programid:1,
+		programid:'ACCT',
 		title: 'Accounting Conference',
 		location:'President\'s Court',
 		eventtime:1672938000000,
@@ -16,7 +16,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'002',
-		programid:12,
+		programid:'MATH',
 		title: 'Actuarial Mathematics Competition',
 		location:'President\'s Court',
 		eventtime:1675616400000,
@@ -26,7 +26,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'003',
-		programid:3,
+		programid:'BIOL',
 		title: 'Biology Experiment Presentation',
 		location:'President\'s Court',
 		eventtime:1678035600000,
@@ -36,7 +36,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'004',
-		programid:16,
+		programid:'PHYS',
 		title: 'Physics Expo',
 		location:'President\'s Court',
 		eventtime:1680710400000,
@@ -46,7 +46,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'005',
-		programid:7,
+		programid:'CS',
 		title: 'Computer Programming Competition',
 		location:'Computer Lab',
 		eventtime:1680710400000,
@@ -56,7 +56,7 @@ const eventData = [
 	{
 		posttype:'event',
 		eventid:'006',
-		programid:15,
+		programid:'PHIL',
 		title: 'Grand Philosophy Conference',
 		location:'Main Conference Room',
 		eventtime:1680710400000,
