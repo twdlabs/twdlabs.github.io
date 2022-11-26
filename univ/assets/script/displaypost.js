@@ -63,7 +63,7 @@ function loadPostPage(id) {
 		// Set link. 
 		prevpostbtn.href = getRelativeUrl(`./blog/post/?id=${previd}`);
 
-		// Set hover label. 
+		// Set contents of hover label. 
 		prevpostbtn.title = 'xyz';
 	}
 	// Otherwise hide button (if no valid id). 
@@ -78,7 +78,7 @@ function loadPostPage(id) {
 		// Set link. 
 		nextpostbtn.href = getRelativeUrl(`./blog/post/?id=${nextid}`);
 
-		// Set hover label. 
+		// Set contents of hover label. 
 		nextpostbtn.title = 'xyz';
 	}
 	// Otherwise hide button (if no valid id). 
