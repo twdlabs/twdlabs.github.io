@@ -108,7 +108,12 @@ div#container header#header.active nav.navmenu.b ul.navlist li.navitem a.navlink
 
 /* Content Section */
 
+/* div#container main#pagecontent {color:var(--fullnavy);} */
 /* div#container main#pagecontent {padding-top:10rem;} */
+
+div#container footer#footer aside.location {max-width:var(--pagewidth); padding:1rem; margin:0 auto;}
+div#container footer#footer aside.location {display:flex; flex-direction:row; align-items:center;}
+div#container footer#footer aside.location svg.icon {display:block; font-size:1.5rem;}
 
 
 
@@ -141,10 +146,6 @@ div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ytb {
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.lin {--socialcolor:#0077b5; background-color:var(--socialcolor);}
 div#container footer#footer div.col ul.navlist.social li.navitem a.navlink.ig {--socialcolor:#d8226b; background-color:var(--socialcolor);}
 /* div#container footer#footer div.col ul.navlist.social li.navitem a.navlink svg.icon {} */
-
-div#container footer#footer aside.location {max-width:var(--pagewidth); padding:1rem; margin:0 auto;}
-div#container footer#footer aside.location {display:flex; flex-direction:row; align-items:center;}
-div#container footer#footer aside.location svg.icon {display:block; font-size:1.5rem;}
 
 
 

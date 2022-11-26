@@ -17,6 +17,7 @@ div#container header#header {background-color:var(--themecolor);}
 
 /* div#container main#pagecontent {} */
 
+div#container main#pagecontent aside,
 div#container main#pagecontent section {margin-top:4rem;}
 
 div#container main#pagecontent section.story {/* background-color:hotpink; */ padding:0 6rem;}
