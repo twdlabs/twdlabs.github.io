@@ -29,7 +29,7 @@ div#container main#pagecontent section.story article.story h1.title {font-size:1
 div#container main#pagecontent section.story article.story div.content {line-height:1.75; margin:1rem 0;}
 div#container main#pagecontent section.story article.story div.content span.item {display:block; margin-top:1.5rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.label {font-size:1.25rem; font-weight:800;}
-div#container main#pagecontent section.story article.story div.content span.item span.label.full {margin-bottom:.75rem;}
+/* div#container main#pagecontent section.story article.story div.content span.item span.label.full {margin-bottom:.75rem;} */
 div#container main#pagecontent section.story article.story div.content span.item/* .block */ span.label {display:block;}
 div#container main#pagecontent section.story article.story div.content span.item span.label:empty {display:none;}
 div#container main#pagecontent section.story article.story div.content span.item span.label::after {content:': ';}
@@ -39,7 +39,7 @@ div#container main#pagecontent section.story article.story div.content span.item
 div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink {display:inline-block; background-color:var(--trptrpnavy); min-width:5.75rem; text-align:center; transition:.125s; padding:.5rem .25rem .375rem; border-radius:.5rem; margin:.5rem .5rem 0 0;}
 div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink:hover {background-color:var(--themecolor); color:white;}
 /* Event Preview Post */
-div#container main#pagecontent section.story article.story div.content span.item span.value article.post {display:flex; flex-direction:row; max-width:28rem; margin-bottom:1rem;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post {display:flex; flex-direction:row; max-width:28rem; margin-top:.75rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; --darkbgcolor:var(--fullnavy); margin-right:1rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
@@ -87,6 +87,20 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn.gone {display:none;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.expand {display:none;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.collapse {display:block;}
+
+/* Pagination */
+div#container main#pagecontent section.pagination {padding:0 4rem;}
+div#container main#pagecontent section.pagination div.bar {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn {--btncolor:var(--trptrpnavy); background-color:var(--btncolor); --btnheight:2.5rem; height:var(--btnheight);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn {display:grid; place-items:center; position:relative; padding:.5rem; margin:0 calc(.5*var(--btnheight));}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.gone {display:none;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn::after {content:''; border:calc(.5*var(--btnheight)) solid transparent; position:absolute; top:0;}
+/* div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev {} */
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev::after {right:100%; border-right-color:var(--btncolor);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev span.caption {transform:translateX(-.25rem);}
+/* div#container main#pagecontent section.pagination div.bar a.postnavbtn.next {} */
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.next::after {left:100%; border-left-color:var(--btncolor);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.next span.caption {transform:translateX(.25rem);}
 
 
 

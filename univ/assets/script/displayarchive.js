@@ -2,7 +2,11 @@
 
 
 // Get destination for list of post items. 
-const listdestination = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
+const listbox = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
+
+// Get search parameters from current url. 
+const urlparams = new URLSearchParams(window.location.search);
+// console.log('Url search parameters:',urlparams);
 
 // Define character limit for post excerpts. 
 const excerptcharlimit = 180;
@@ -11,6 +15,13 @@ const excerptcharlimit = 180;
 
 /*****/
 
+
+// Check for page parameter (default to page 1). 
+const pagenumber = 1*urlparams.get('p') || 1;
+console.log('Archive page:',pagenumber);
+
+// TODO: Use page number. 
+// pagenumber;
 
 // Load archive list of posts. 
 loadArchivePage(archiveData);
@@ -45,8 +56,9 @@ function loadArchivePage(postlist) {
 		result += createPreviewPost(post);
 	}
 
-	// Add result to page. 
-	listdestination.innerHTML = result;
+	// Add to page: list of posts. 
+	if(postlist) listbox.innerHTML = result;
+	else listbox.innerHTML = '';
 
 	/****/
 
@@ -71,7 +83,7 @@ function loadArchivePage(postlist) {
 	
 		// Get id of post. 
 		let type = post.posttype;
-		let id = post[type+'id'];
+		let id = post[`${type}id`];
 		// console.log('id:',id);
 
 		// Get post url. 

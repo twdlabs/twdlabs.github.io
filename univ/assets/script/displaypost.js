@@ -1,10 +1,15 @@
 
 
 
-// Get destination for post item. 
+// Get destination for post content. 
 const postbox = document.querySelector('div#container main#pagecontent section.story article.story');
 const titlebox = document.querySelector('div#container main#pagecontent section.story article.story h1.title');
 const contentbox = document.querySelector('div#container main#pagecontent section.story article.story p.content');
+
+// Get button for prev post. 
+const prevpostbtn = document.querySelector('div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev');
+// Get button for next post. 
+const nextpostbtn = document.querySelector('div#container main#pagecontent section.pagination div.bar a.postnavbtn.next');
 
 // Get search parameters from current url. 
 const urlparams = new URLSearchParams(window.location.search);
@@ -20,15 +25,16 @@ const excerptWordLimit = 24;
 
 // Check for id parameter. 
 let postId = urlparams.get('id');
+console.log('id:',postId);
 
-// Check for valid id parameter ( denies id=0 👎🏾 / denies id='' 👍 ). 
-// let isValidId = !!postId;
-// Check for valid id parameter ( allows id=0 👍 / allows id='' 👎🏾 ). 
+// Check for valid id parameter ( allows id=0 👍 / allows id=null 👎🏾 / allows id='' 👎🏾 ). 
 // let isValidId = !!postId || !isNaN(postId);
-// console.log('Valid id:', isValidId, postId);
+// Check for valid id parameter ( denies id=0 👎🏾 / denies id=null 👍 / denies id='' 👍 ). 
+let isValidId = !!postId;
+console.log('Valid id:', isValidId, postId);
 
 // Load page for single post. 
-/* if(isValidId) */ loadPostPage(postId);
+loadPostPage(postId);
 
 // Show current article. 
 showArticle();
@@ -47,6 +53,36 @@ function loadPostPage(id) {
 	// Add post item to page. 
 	if(post) postbox.innerHTML = createFullPostLayout(post);
 	else postbox.innerHTML = '';
+
+	// TODO: Get id for prev post. 
+	const previd = 1;
+	
+	// Set state of pagination links for prev post button. 
+	if(previd) {
+
+		// Set link. 
+		prevpostbtn.href = getRelativeUrl(`./blog/post/?id=${previd}`);
+
+		// Set hover label. 
+		prevpostbtn.title = 'xyz';
+	}
+	// Otherwise hide button (if no valid id). 
+	// else prevpostbtn.classList.add('gone');
+	
+	// TODO: Get id for next post. 
+	const nextid = 1;
+	
+	// Set state of pagination links for next post button. 
+	if(nextid) {
+
+		// Set link. 
+		nextpostbtn.href = getRelativeUrl(`./blog/post/?id=${nextid}`);
+
+		// Set hover label. 
+		nextpostbtn.title = 'xyz';
+	}
+	// Otherwise hide button (if no valid id). 
+	// else nextpostbtn.classList.add('gone');
 
 	/****/
 
@@ -186,6 +222,50 @@ function loadPostPage(id) {
 			console.log('relatedCourses:',relatedCourses);
 
 			// 
+			if( post.programid && post.programid=='XYZ' ) return `
+			<!-- title -->
+			<h1 class="title">${title}</h1>
+			<!-- /title -->
+
+			<!-- content -->
+			<div class="content">
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">Program Description</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">
+						${content}
+					</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">${post.title} Students</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">
+						${ getStudentsByProgram(post.programid).map(createPersonLink).join('') }
+					</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+			
+			</div>
+			<!-- /content -->`;
+
+			// 
 			return `
 			<!-- title -->
 			<h1 class="title">${title}</h1>
@@ -202,7 +282,9 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${content}</span>
+					<span class="value">
+						${content}
+					</span>
 					<!-- /value -->
 
 				</span>
@@ -232,7 +314,9 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${''}</span>
+					<span class="value">
+						${ getFacultyByProgram(post.programid).map(createPersonLink).join('') }
+					</span>
 					<!-- /value -->
 
 				</span>
@@ -246,7 +330,9 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${''}</span>
+					<span class="value">
+						${ getStudentsByProgram(post.programid).map(createPersonLink).join('') }
+					</span>
 					<!-- /value -->
 
 				</span>
@@ -260,7 +346,9 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ getEventsByProgram(post.programid).map( /* createEventLink */ createEventPreviewPost ).join('') }</span>
+					<span class="value">
+						${ getEventsByProgram(post.programid).map( createEventPreviewPost ).join('') }
+					</span>
 					<!-- /value -->
 
 				</span>
@@ -288,18 +376,24 @@ function loadPostPage(id) {
 			}
 
 			// Create post link for related event. 
-			function createEventLink(e) {
+			function createPersonLink(p) {
+
+				// Get post typw. 
+				let type = p.posttype;
+
+				// Get post typw. 
+				let id = p[`${type}id`];
 
 				// Define link url. 
-				let url = getRelativeUrl(`./events/post/?id=${e.eventid}`);
+				let url = getRelativeUrl(`./person/post/?id=${id}`);
 
 				// Define link caption. 
-				let caption = `${e.title}<br>${ new Date(e.eventtime).toDateString() }<br>${e.location}`;
+				// let caption = `${p.title}`;
 
 				// Define post link. 
 				return `
 				<!-- postlink -->
-				<a class="postlink" href="${url}">${caption}</a>
+				<a class="postlink" href="${url}">${p.title}</a>
 				<!-- /postlink -->`;
 			}
 
