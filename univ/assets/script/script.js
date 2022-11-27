@@ -306,6 +306,10 @@ function loadFooter() {
 	// Define footer location (after closing of main page content). 
 	let location = 'afterend';
 
+	// Get breadcrumb trail data. 
+	const trailData = getTrailData();
+	// console.log('trailData:',trailData);
+
 	// Define components of footer. 
 	const footertable = `
 	<!-- main -->
@@ -600,21 +604,22 @@ function loadFooter() {
 		
 	</main>
 	<!-- /main -->`;
-	const sitelocation = `
+	const breadcrumblayout = `
 	<!-- location -->
 	<aside class="location">
 
-		${ createLocationTrail() }
+		${ createTrailLayout( trailData ) }
 
 	</aside>
 	<!-- /location -->`;
+	console.log('breadcrumblayout',breadcrumblayout);
 
 	// Define general footer. 
 	const footer = `
 	<!-- #footer -->
 	<footer id="footer">
 
-		${sitelocation}
+		${breadcrumblayout}
 		${footertable}
 		
 	</footer>
@@ -626,45 +631,94 @@ function loadFooter() {
 	/****/
 
 	// Create site location breadcrumbs section. 
-	function createLocationTrail() {
+	function createTrailLayout(pageIdList) {
+		console.log('pageIdList:',pageIdList);
 
-		// Initialize result. 
-		let result = ``;
+		// Define logo icon. 
+		const logoicon = `
+		<!-- logo -->
+		<svg class="logo icon awardfull" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+			<path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+			<path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+		</svg>
+		<!-- /logo -->`;
 
-		// Append piece. 
-		result += ``;
-
-		// Append home piece. 
-		result += `
-		<!-- home -->
-		<a class="home" href="./">
-
-			<!-- logo -->
-			<svg class="logo icon awardfull" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-				<path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-				<path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-			</svg>
-			<!-- /logo -->
-
-		</a>
-		<!-- /home -->`;
-
-		// Append arrow separator. 
-		result += `
+		// Define right arrow icon. 
+		const rightarrow = `
 		<!-- icon -->
 		<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 			<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
 		</svg>
 		<!-- /icon -->`;
 
-		// Append page piece. 
-		result += `
-		<!-- node -->
-		<a class="node" href="./">PageName</a>
-		<!-- /node -->`;
+		// // Go thru each page id in list. 
+		// for(let id of pageIdList) {
+		// 	// Append piece. 
+		// 	result += ``;
+		// }
 
-		// Return result. 
-		return result;
+		// Return compiled result. 
+		return pageIdList.map(createPageNodeById).join(rightarrow);
+
+		/***/
+
+		// Create link for page node. 
+		function createPageNodeById(pageid) {
+			console.log('pageid:',pageid);
+
+			// Get associated page. 
+			let page = getPageById(pageid);
+			console.log('page:',page);
+			// Return nothing if page not found. 
+			if(!page) return '';
+			
+			// Handle home page node. 
+			if(pageid==0) {
+				
+				// Get page url. 
+				let pageurl = getRelativeUrl('./');
+				
+				// Return compiled link for home page node. 
+				return `
+				<!-- home -->
+				<a class="node home" href="${pageurl}">${logoicon}</a>
+				<!-- /home -->`;
+			}
+
+			// Handle child page node. 
+			else {
+				
+				// Get page name. 
+				let pagename = page.pagetitle;
+				// let pagename = 'Xyz Page';
+				
+				// Get page url. 
+				let pageurl = getRelativeUrl(page.rootpageurl);
+				// let pageurl = 'javascript:void(0)';
+				
+				// Return compiled link for child page node. 
+				return `
+				<!-- node -->
+				<a class="node" href="${pageurl}">${pagename}</a>
+				<!-- /node -->`;
+			}
+
+			/**/
+
+			// Get page by id. 
+			function getPageById(id) {
+				console.log('id:',id);
+			
+				// Go thru each page until match found. 
+				for(let page of siteMapData) {
+					// Return page with matching id. 
+					if(page.pageid==id) return page;
+				}
+			
+				// Return nothing if match not found. 
+				return null;
+			}
+		}
 	}
 }
 

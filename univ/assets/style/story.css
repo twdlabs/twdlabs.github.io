@@ -89,7 +89,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.expand {display:none;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.collapse {display:block;}
 
-/* Pagination */
+/* Pagination Section */
 div#container main#pagecontent section.pagination {padding:0 4rem;}
 div#container main#pagecontent section.pagination div.bar {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container main#pagecontent section.pagination div.bar a.postnavbtn {--btncolor:var(--fullnavy); background-color:var(--btncolor); color:white; --btnheight:2.5rem; height:var(--btnheight); border-radius:.5rem;}
@@ -121,6 +121,9 @@ div#container main#pagecontent section.pagination div.bar a.postnavbtn.next span
 	/* Content Section */
 	div#container main#pagecontent section.story {padding:0 4rem;}
 
+	/* Pagination Section */
+	div#container main#pagecontent section.pagination {padding:0 2rem;}
+
 	/* Footer Section */
 }
 
@@ -132,6 +135,9 @@ div#container main#pagecontent section.pagination div.bar a.postnavbtn.next span
 
 	/* Content Section */
 	div#container main#pagecontent section.story {padding:0 2rem;}
+
+	/* Pagination Section */
+	div#container main#pagecontent section.pagination {padding:0 2rem;}
 
 	/* Footer Section */
 }

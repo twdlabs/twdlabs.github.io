@@ -18,7 +18,7 @@ const excerptcharlimit = 180;
 
 // Check for page parameter (default to page 1). 
 const pagenumber = 1*urlparams.get('p') || 1;
-console.log('Archive page:',pagenumber);
+// console.log('Archive page:',pagenumber);
 
 // TODO: Use page number. 
 // pagenumber;

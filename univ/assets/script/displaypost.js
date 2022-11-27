@@ -25,13 +25,13 @@ const excerptWordLimit = 24;
 
 // Check for id parameter. 
 let postId = urlparams.get('id');
-console.log('id:',postId);
+// console.log('id:',postId);
 
 // Check for valid id parameter ( allows id=0 👍 / allows id=null 👎🏾 / allows id='' 👎🏾 ). 
 // let isValidId = !!postId || !isNaN(postId);
 // Check for valid id parameter ( denies id=0 👎🏾 / denies id=null 👍 / denies id='' 👍 ). 
 let isValidId = !!postId;
-console.log('Valid id:', isValidId, postId);
+// console.log('Valid id:', isValidId, postId);
 
 // Load page for single post. 
 loadPostPage(postId);
@@ -48,7 +48,7 @@ function loadPostPage(id) {
 
 	// Get post item. 
 	let post = getPostById(id);
-	console.log('post:',post);
+	// console.log('post:',post);
 
 	// Add post item to page. 
 	if(post) postbox.innerHTML = createFullPostLayout(post);
@@ -219,7 +219,7 @@ function loadPostPage(id) {
 
 			// Get related courses. 
 			let relatedCourses = getCoursesByProgram(post.programid);
-			console.log('relatedCourses:',relatedCourses);
+			// console.log('relatedCourses:',relatedCourses);
 
 			// 
 			if( post.programid && post.programid=='XYZ' ) return `
