@@ -97,11 +97,11 @@ div#container main#pagecontent section.pagination div.bar a.postnavbtn {display:
 div#container main#pagecontent section.pagination div.bar a.postnavbtn.gone {display:none;}
 div#container main#pagecontent section.pagination div.bar a.postnavbtn::after {content:''; border:calc(.45*var(--btnheight)) solid transparent; position:absolute; top:50%; transform:translate(var(--dx),-50%);}
 /* div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev {} */
-div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev::after {right:100%; --dx:.125rem; border-right-color:var(--btncolor);}
-div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev span.caption {transform:translateX(-.125rem);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev::after {right:100%; --dx:.25rem; border-right-color:var(--btncolor);}
+/* div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev span.caption {transform:translateX(-.125rem);} */
 /* div#container main#pagecontent section.pagination div.bar a.postnavbtn.next {} */
-div#container main#pagecontent section.pagination div.bar a.postnavbtn.next::after {left:100%; --dx:-.125rem; border-left-color:var(--btncolor);}
-div#container main#pagecontent section.pagination div.bar a.postnavbtn.next span.caption {transform:translateX(.125rem);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.next::after {left:100%; --dx:-.25rem; border-left-color:var(--btncolor);}
+/* div#container main#pagecontent section.pagination div.bar a.postnavbtn.next span.caption {transform:translateX(.125rem);} */
 
 
 
@@ -122,7 +122,7 @@ div#container main#pagecontent section.pagination div.bar a.postnavbtn.next span
 	div#container main#pagecontent section.story {padding:0 4rem;}
 
 	/* Pagination Section */
-	div#container main#pagecontent section.pagination {padding:0 2rem;}
+	div#container main#pagecontent section.pagination {padding:0 4rem;}
 
 	/* Footer Section */
 }

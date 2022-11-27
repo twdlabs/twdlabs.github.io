@@ -612,7 +612,7 @@ function loadFooter() {
 
 	</aside>
 	<!-- /location -->`;
-	console.log('breadcrumblayout',breadcrumblayout);
+	// console.log('breadcrumblayout',breadcrumblayout);
 
 	// Define general footer. 
 	const footer = `
@@ -632,7 +632,7 @@ function loadFooter() {
 
 	// Create site location breadcrumbs section. 
 	function createTrailLayout(pageIdList) {
-		console.log('pageIdList:',pageIdList);
+		// console.log('pageIdList:',pageIdList);
 
 		// Define logo icon. 
 		const logoicon = `
@@ -664,50 +664,50 @@ function loadFooter() {
 
 		// Create link for page node. 
 		function createPageNodeById(pageid) {
-			console.log('pageid:',pageid);
+			// console.log('pageid:',pageid);
 
 			// Get associated page. 
 			let page = getPageById(pageid);
-			console.log('page:',page);
+			// console.log('page:',page);
 			// Return nothing if page not found. 
 			if(!page) return '';
+				
+			// Get caption for node link. 
+			let linkcaption = getNodeLinkCaption();
+				
+			// Get url for node link. 
+			let pageurl = getNodeLinkUrl();
 			
-			// Handle home page node. 
+			// Set link parameters for home page node. 
 			if(pageid==0) {
-				
-				// Get page url. 
-				let pageurl = getRelativeUrl('./');
-				
-				// Return compiled link for home page node. 
-				return `
-				<!-- home -->
-				<a class="node home" href="${pageurl}">${logoicon}</a>
-				<!-- /home -->`;
 			}
 
-			// Handle child page node. 
+			// Set link parameters for child page node. 
 			else {
-				
-				// Get page name. 
-				let pagename = page.pagetitle;
-				// let pagename = 'Xyz Page';
-				
-				// Get page url. 
-				let pageurl = getRelativeUrl(page.rootpageurl);
+
+				// Check if on post page. 
+				let onPostPage = pageid.includes('post');
+				// console.log('pageid',pageid,onPostPage);
+
+				// Add post id to url if necessary. 
+				if(onPostPage) {
+					let postid = 0;
+					pageurl += postid;
+				}
 				// let pageurl = 'javascript:void(0)';
-				
-				// Return compiled link for child page node. 
-				return `
-				<!-- node -->
-				<a class="node" href="${pageurl}">${pagename}</a>
-				<!-- /node -->`;
 			}
+				
+			// Return compiled link page node. 
+			return `
+			<!-- node -->
+			<a class="node" href="${pageurl}">${linkcaption}</a>
+			<!-- /node -->`;
 
 			/**/
 
 			// Get page by id. 
 			function getPageById(id) {
-				console.log('id:',id);
+				// console.log('id:',id);
 			
 				// Go thru each page until match found. 
 				for(let page of siteMapData) {
@@ -717,6 +717,26 @@ function loadFooter() {
 			
 				// Return nothing if match not found. 
 				return null;
+			}
+
+			// Get caption for node link. 
+			function getNodeLinkCaption() {
+			
+				// Set caption for home page node link: logo. 
+				if(pageid==0) return (logoicon);
+
+				// Set caption for child page node link: page name. 
+				else return (page.pagetitle);
+			}
+
+			// Get url for node link. 
+			function getNodeLinkUrl() {
+			
+				// Set page url for home page node link. 
+				if(pageid==0) return getRelativeUrl('./');
+
+				// Set page url for child page node link. 
+				else return getRelativeUrl(page.rootpageurl);
 			}
 		}
 	}
