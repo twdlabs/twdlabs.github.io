@@ -309,7 +309,7 @@ function loadTrail() {
 	const trailLayout = createTrailLayout( trailData );
 
 	// Load trail layout onto page (after opening of main page content). 
-	mainpagecontent.insertAdjacentHTML('afterbegin',trailLayout);
+	if(currentPageId!='home' && currentPageLevel!=0) mainpagecontent.insertAdjacentHTML('afterbegin',trailLayout);
 
 	/****/
 

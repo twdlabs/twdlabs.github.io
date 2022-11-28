@@ -109,7 +109,7 @@ div#container header#header.active nav.navmenu.b ul.navlist li.navitem a.navlink
 /* Content Section */
 
 /* div#container main#pagecontent {color:var(--fullnavy); padding-top:10rem;} */
-div#container main#pagecontent {padding:0 1rem;}
+/* div#container main#pagecontent {padding:0 1rem;} */
 div#container main#pagecontent aside.location {/* background-color:var(--trptrpnavy); */ max-width:var(--pagewidth); padding:1rem 4rem; border-radius:.5rem; margin:2rem auto 0;}
 div#container main#pagecontent aside.location {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
 div#container main#pagecontent aside.location a.node {font-size:1.125rem;}
