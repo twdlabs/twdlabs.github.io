@@ -39,11 +39,6 @@ activateLiveSearch();
 function loadHeader() {
 	// console.log('Loading header...');
 
-	// Define header location (after opening of main container). 
-	// let location = 'afterbegin';
-	// Define header location (before opening of main page content). 
-	let location = 'beforebegin';
-
 	// Define components of header. 
 	const navhead = `
 	<!-- navhead -->
@@ -246,8 +241,11 @@ function loadHeader() {
 	</header>
 	<!-- /#header -->`;
 
-	// Load header onto page. 
-	mainpagecontent.insertAdjacentHTML(location,header);
+	// Load header onto page (before opening of main page content). 
+	// mainpagecontent.insertAdjacentHTML('beforebegin',header);
+
+	// Load header onto page (after opening of main container). 
+	maincontainer.insertAdjacentHTML('afterbegin',header);
 
 	// Activate header buttons. 
 	activateHeaderBtns();
@@ -300,11 +298,6 @@ function loadHeader() {
 // Load footer. 
 function loadFooter() {
 	// console.log('Loading footer...');
-
-	// Define footer location (before closing of main container). 
-	// let location = 'beforeend';
-	// Define footer location (after closing of main page content). 
-	let location = 'afterend';
 
 	// Get breadcrumb trail data. 
 	const trailData = getTrailData();
@@ -625,8 +618,10 @@ function loadFooter() {
 	</footer>
 	<!-- /#footer -->`;
 
-	// Load footer onto page. 
-	mainpagecontent.insertAdjacentHTML(location,footer);
+	// Load footer onto page (after closing of main page content). 
+	// mainpagecontent.insertAdjacentHTML('afterend',footer);
+	// Load footer onto page (before closing of main container). 
+	maincontainer.insertAdjacentHTML('beforeend',footer);
 
 	/****/
 
@@ -651,12 +646,6 @@ function loadFooter() {
 		</svg>
 		<!-- /icon -->`;
 
-		// // Go thru each page id in list. 
-		// for(let id of pageIdList) {
-		// 	// Append piece. 
-		// 	result += ``;
-		// }
-
 		// Return compiled result. 
 		return pageIdList.map(createPageNodeById).join(rightarrow);
 
@@ -677,25 +666,6 @@ function loadFooter() {
 				
 			// Get url for node link. 
 			let pageurl = getNodeLinkUrl();
-			
-			// Set link parameters for home page node. 
-			if(pageid==0) {
-			}
-
-			// Set link parameters for child page node. 
-			else {
-
-				// Check if on post page. 
-				let onPostPage = pageid.includes('post');
-				// console.log('pageid',pageid,onPostPage);
-
-				// Add post id to url if necessary. 
-				if(onPostPage) {
-					let postid = 0;
-					pageurl += postid;
-				}
-				// let pageurl = 'javascript:void(0)';
-			}
 				
 			// Return compiled link page node. 
 			return `
@@ -731,9 +701,16 @@ function loadFooter() {
 
 			// Get url for node link. 
 			function getNodeLinkUrl() {
+
+				// Check for post page. 
+				let workingOnPostPage = pageid.includes('post');
+				// console.log('pageid',pageid,workingOnPostPage);
 			
 				// Set page url for home page node link. 
 				if(pageid==0) return getRelativeUrl('./');
+
+				// Add post id to url if necessary. 
+				else if(workingOnPostPage) return '';
 
 				// Set page url for child page node link. 
 				else return getRelativeUrl(page.rootpageurl);
