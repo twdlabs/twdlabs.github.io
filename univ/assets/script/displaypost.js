@@ -166,7 +166,7 @@ function loadPostPage(id) {
 		}
 	
 		// Create miscellaneous post. 
-		else return '[Miscellaneous post type]';
+		else return '[New post type]';
 
 		/***/
 

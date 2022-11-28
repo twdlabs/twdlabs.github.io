@@ -72,6 +72,14 @@ function loadArchivePage(postlist) {
 			return '';
 		}
 	
+		// Get id of post. 
+		let type = post.posttype;
+		let id = post[`${type}id`];
+		// console.log('id:',id);
+
+		// Get post url. 
+		let url = `post/?id=${id}`;
+	
 		// Get title of post. 
 		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
 	
@@ -81,50 +89,189 @@ function loadArchivePage(postlist) {
 		// Get remainder of post content. 
 		// let postremainder = (post.content) ? (post.content).slice(excerptcharlimit) : '';
 	
-		// Get id of post. 
-		let type = post.posttype;
-		let id = post[`${type}id`];
-		// console.log('id:',id);
+		
+		``;
 
-		// Get post url. 
-		let url = `post/?id=${id}`;
-	
-		// 
-		// `
-		// 		<!-- posted -->
-		// 		<p class="posted">${ ( new Date(post.postedtime) ).toDateString() }</p>
-		// 		<!-- /posted -->`;
-		return `
-		<!-- postitem -->
-		<li class="postitem">
-	
-			<!-- post -->
-			<article class="post">
-				
-				<!-- title -->
-				<h2 class="title">
-					<a href="${url}">${title}</a>
-				</h2>
-				<!-- /title -->
-	
-				<!-- content -->
-				<p class="content">
-	
-					<!-- excerpt -->
-					<span class="excerpt">${postexcerpt}</span>
-					<!-- /excerpt -->
-	
-					<!-- readbtn -->
-					<a class="readbtn" href="${url}">Read More</a>
-					<!-- /readbtn -->
+
+		// Create blog preview post. 
+		if(type=='post') {
+			// 
+			return createBlogPostLayout();
+		}
+
+		// Create program preview post. 
+		else if(type=='program') {
+			// 
+			return createProgramPostLayout();
+		}
+
+		// Create course preview post. 
+		else if(type=='course') {
+			// 
+			return createCoursePostLayout();
+		}
+
+		// Create event preview post. 
+		else if(type=='event') {
+			// 
+			return createEventPostLayout();
+		}
+
+		// Create faculty preview post. 
+		else if(type=='faculty') {
+			// 
+			return createFacultyPostLayout();
+		}
+
+		// Create student preview post. 
+		else if(type=='student') {
+			// 
+			return createStudentPostLayout();
+		}
+
+		// Create miscellaneous post. 
+		else return '[New post type]';
+
+		/***/
+
+		// Create preview layout for blog post. 
+		function createBlogPostLayout() {
+			return `
+			<!-- postitem -->
+			<li class="postitem">
+		
+				<!-- post -->
+				<article class="post">
 					
-				</p>
-				<!-- /content -->
-	
-			</article>
-			<!-- /post -->
-	
-		</li>
-		<!-- /postitem -->`;
+					<!-- title -->
+					<h2 class="title">
+						<a href="${url}">${title}</a>
+					</h2>
+					<!-- /title -->
+
+					<!-- posted -->
+					<p class="posted">${ ( new Date(post.postedtime) ).toDateString() }</p>
+					<!-- /posted -->
+		
+					<!-- content -->
+					<p class="content">
+		
+						<!-- excerpt -->
+						<span class="excerpt">${postexcerpt}</span>
+						<!-- /excerpt -->
+		
+						<!-- readbtn -->
+						<a class="readbtn" href="${url}">Read More</a>
+						<!-- /readbtn -->
+						
+					</p>
+					<!-- /content -->
+		
+				</article>
+				<!-- /post -->
+		
+			</li>
+			<!-- /postitem -->`;
+		}
+
+		// Create preview layout for program post. 
+		function createProgramPostLayout() {
+			// 
+			return createDefaultPostLayout();
+		}
+
+		// Create preview layout for course post. 
+		function createCoursePostLayout() {
+			// 
+			return createDefaultPostLayout();
+		}
+
+		// Create preview layout for event post. 
+		function createEventPostLayout() {
+			return `
+			<!-- postitem -->
+			<li class="postitem">
+		
+				<!-- post -->
+				<article class="post">
+					
+					<!-- title -->
+					<h2 class="title">
+						<a href="${url}">${title}</a>
+					</h2>
+					<!-- /title -->
+					
+					<!-- posted -->
+					<p class="posted">${ ( new Date(post.eventtime) ).toDateString() }</p>
+					<!-- /posted -->
+		
+					<!-- content -->
+					<p class="content">
+		
+						<!-- excerpt -->
+						<span class="excerpt">${postexcerpt}</span>
+						<!-- /excerpt -->
+		
+						<!-- readbtn -->
+						<a class="readbtn" href="${url}">Read More</a>
+						<!-- /readbtn -->
+						
+					</p>
+					<!-- /content -->
+		
+				</article>
+				<!-- /post -->
+		
+			</li>
+			<!-- /postitem -->`;
+		}
+
+		// Create preview layout for faculty post. 
+		function createFacultyPostLayout() {
+			// 
+			return createDefaultPostLayout();
+		}
+
+		// Create preview layout for student post. 
+		function createStudentPostLayout() {
+			// 
+			return createDefaultPostLayout();
+		}
+
+		// 
+		function createDefaultPostLayout() {
+			return `
+			<!-- postitem -->
+			<li class="postitem">
+		
+				<!-- post -->
+				<article class="post">
+					
+					<!-- title -->
+					<h2 class="title">
+						<a href="${url}">${title}</a>
+					</h2>
+					<!-- /title -->
+		
+					<!-- content -->
+					<p class="content">
+		
+						<!-- excerpt -->
+						<span class="excerpt">${postexcerpt}</span>
+						<!-- /excerpt -->
+		
+						<!-- readbtn -->
+						<a class="readbtn" href="${url}">Read More</a>
+						<!-- /readbtn -->
+						
+					</p>
+					<!-- /content -->
+		
+				</article>
+				<!-- /post -->
+		
+			</li>
+			<!-- /postitem -->`;
+		}
 	}
 }
