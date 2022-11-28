@@ -24,17 +24,17 @@ const excerptWordLimit = 24;
 
 
 // Check for id parameter. 
-let postId = urlparams.get('id');
-// console.log('id:',postId);
+let currentPostId = urlparams.get('id');
+// console.log('id:',currentPostId);
 
 // Check for valid id parameter ( allows id=0 👍 / allows id=null 👎🏾 / allows id='' 👎🏾 ). 
-// let isValidId = !!postId || !isNaN(postId);
+// let isValidId = !!currentPostId || !isNaN(currentPostId);
 // Check for valid id parameter ( denies id=0 👎🏾 / denies id=null 👍 / denies id='' 👍 ). 
-let isValidId = !!postId;
-// console.log('Valid id:', isValidId, postId);
+let isValidId = !!currentPostId;
+// console.log('Valid id:', isValidId, currentPostId);
 
 // Load page for single post. 
-loadPostPage(postId);
+loadPostPage(currentPostId);
 
 // Show current article. 
 showArticle();
@@ -50,44 +50,108 @@ function loadPostPage(id) {
 	let post = getPostById(id);
 	// console.log('post:',post);
 
+	// Get folder name for url. 
+	let foldername = postregister[currentPostType]['foldername'];
+
 	// Add post item to page. 
 	if(post) postbox.innerHTML = createFullPostLayout(post);
 	else postbox.innerHTML = '';
 
-	// TODO: Get id for prev post. 
-	const previd = 1;
+	// Get ids for adjacent posts. 
+	const adjIds = (currentPostType=='event') ?  getAdjacentIds('eventtime') : getAdjacentIds('postedtime');
+	console.log('adjIds:',adjIds);
+
+	// Get id for prev post. 
+	const previd = adjIds[0];
+
+	// Get id for next post. 
+	const nextid = adjIds[1];
 	
 	// Set state of pagination links for prev post button. 
 	if(previd) {
 
 		// Set link. 
-		prevpostbtn.href = getRelativeUrl(`./blog/post/?id=${previd}`);
+		prevpostbtn.href = getRelativeUrl(`./${foldername}/post/?id=${previd}`);
 
 		// Set contents of hover label. 
 		prevpostbtn.title = 'xyz';
 	}
 	// Otherwise hide button (if no valid id). 
-	// else prevpostbtn.classList.add('gone');
-	
-	// TODO: Get id for next post. 
-	const nextid = 1;
+	else prevpostbtn.classList.add('gone');
 	
 	// Set state of pagination links for next post button. 
 	if(nextid) {
 
 		// Set link. 
-		nextpostbtn.href = getRelativeUrl(`./blog/post/?id=${nextid}`);
+		nextpostbtn.href = getRelativeUrl(`./${foldername}/post/?id=${nextid}`);
 
 		// Set contents of hover label. 
 		nextpostbtn.title = 'xyz';
 	}
 	// Otherwise hide button (if no valid id). 
-	// else nextpostbtn.classList.add('gone');
+	else nextpostbtn.classList.add('gone');
 
 	/****/
 
+	// Get post ids of previous post and next post. 
+	function getAdjacentIds(orderProperty) {
+
+		// Set order property. 
+		// orderProperty = ;
+
+		// Get archive data. 
+		const archiveData = postregister[currentPostType]['archiveData'];
+
+		// Sort archive data in chronological order. 
+		archiveData.sort( (a,b) => ( a[orderProperty] - b[orderProperty]) );
+
+		// Initialize id of previous post -- null id (0) for if not found. 
+		let prevPostId = '';
+		// Initialize id of next post -- null id (0) for if not found. 
+		let nextPostId = '';
+
+		// Go thru posts to find current post. 
+		for(let i in archiveData) {
+
+			// Get post. 
+			let post = archiveData[i];
+
+			// Check for matching post. 
+			if(post[`${currentPostType}id`]==currentPostId) {
+				// Save position of current post in sorted archive data. 
+				let iCurrent = 1*i;
+				// console.log('iCurrent:',iCurrent);
+
+				// Use prev position in sorted archive data for chronologically prev post id. 
+				let iPrev = Math.max(-1,iCurrent - 1);
+				// console.log('iPrev:',iPrev);
+				
+				// Use next position in sorted archive data for chronologically next post id. 
+				let iNext = Math.max(-1,iCurrent + 1);
+				// console.log('iNext:',iNext);
+
+				// Get post id of prev post. 
+				prevPostId = archiveData[iPrev] ? archiveData[iPrev][`${currentPostType}id`] : '';
+				// console.log('prevPostId:',prevPostId);
+
+				// Get post id of next post. 
+				nextPostId = archiveData[iNext] ? archiveData[iNext][`${currentPostType}id`] : '';
+				// console.log('nextPostId:',nextPostId);
+
+				// End search for post. 
+				break;
+			}
+		}
+
+		// Return both ids. 
+		return [prevPostId,nextPostId];
+	}
+
 	// Get post by id. 
 	function getPostById(id) {
+
+		// Get archive data. 
+		const archiveData = postregister[currentPostType]['archiveData'];
 
 		// Ensure capitalization of course id. 
 		id = (`${id}`).toUpperCase();
@@ -101,7 +165,7 @@ function loadPostPage(id) {
 		for(let post of archiveData) {
 
 			// Check for matching post. 
-			let matchingPost = id==post[`${type}id`];
+			let matchingPost = (id == post[`${type}id`]);
 
 			// Return matching post if found. 
 			if(matchingPost) return post;
@@ -222,7 +286,9 @@ function loadPostPage(id) {
 			// console.log('relatedCourses:',relatedCourses);
 
 			// 
-			if( post.programid && post.programid=='XYZ' ) return `
+			let onUndecidedProgram = post.programid && post.programid=='XYZ';
+			// 
+			if( onUndecidedProgram ) return `
 			<!-- title -->
 			<h1 class="title">${title}</h1>
 			<!-- /title -->
@@ -282,7 +348,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">
+					<span class="value">hg
 						${content}
 					</span>
 					<!-- /value -->

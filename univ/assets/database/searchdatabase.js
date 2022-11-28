@@ -2,12 +2,36 @@
 
 // Define post register. 
 const postregister = {
-	'post':'postid',
-	'program':'programid',
-	'course':'courseid',
-	'event':'eventid',
-	'faculty':'facultyid',
-	'student':'studentid',
+	post:{
+		idname:'postid',
+		foldername:'blog',
+		archiveData:blogPostData,
+	},
+	program:{
+		idname:'programid',
+		foldername:'programs',
+		archiveData:programData,
+	},
+	course:{
+		idname:'courseid',
+		foldername:'courses',
+		archiveData:courseData,
+	},
+	event:{
+		idname:'eventid',
+		foldername:'events',
+		archiveData:eventData,
+	},
+	faculty:{
+		idname:'facultyid',
+		foldername:'faculty',
+		archiveData:facultyData,
+	},
+	student:{
+		idname:'studentid',
+		foldername:'students',
+		archiveData:studentData,
+	},
 };
 
 

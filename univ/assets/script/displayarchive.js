@@ -24,7 +24,7 @@ const pagenumber = 1*urlparams.get('p') || 1;
 // pagenumber;
 
 // Load archive list of posts. 
-loadArchivePage(archiveData);
+loadArchivePage( postregister[currentPostType]['archiveData'] );
 
 // Show current article. 
 showArticle();
@@ -73,8 +73,7 @@ function loadArchivePage(postlist) {
 		}
 	
 		// Get id of post. 
-		let type = post.posttype;
-		let id = post[`${type}id`];
+		let id = post[`${currentPostType}id`];
 		// console.log('id:',id);
 
 		// Get post url. 
@@ -94,37 +93,37 @@ function loadArchivePage(postlist) {
 
 
 		// Create blog preview post. 
-		if(type=='post') {
+		if(currentPostType=='post') {
 			// 
 			return createBlogPostLayout();
 		}
 
 		// Create program preview post. 
-		else if(type=='program') {
+		else if(currentPostType=='program') {
 			// 
 			return createProgramPostLayout();
 		}
 
 		// Create course preview post. 
-		else if(type=='course') {
+		else if(currentPostType=='course') {
 			// 
 			return createCoursePostLayout();
 		}
 
 		// Create event preview post. 
-		else if(type=='event') {
+		else if(currentPostType=='event') {
 			// 
 			return createEventPostLayout();
 		}
 
 		// Create faculty preview post. 
-		else if(type=='faculty') {
+		else if(currentPostType=='faculty') {
 			// 
 			return createFacultyPostLayout();
 		}
 
 		// Create student preview post. 
-		else if(type=='student') {
+		else if(currentPostType=='student') {
 			// 
 			return createStudentPostLayout();
 		}
@@ -188,37 +187,84 @@ function loadArchivePage(postlist) {
 
 		// Create preview layout for event post. 
 		function createEventPostLayout() {
+	
+			// Get post id. 
+			let id = post.eventid;
+
+			// Get post url. 
+			let url = getRelativeUrl(`events/post/?id=${id}`);
+
+			// Get date of post. 
+			let datetime = new Date( post.eventtime );
+			// let datetime = (currentPostType=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
+			// console.log('\tdatetime:',datetime);
+			let y = datetime.getFullYear();
+			let m = monthNames[ datetime.getMonth() ];
+			let d = datetime.getDate();
+
+			// 
 			return `
+			
 			<!-- postitem -->
 			<li class="postitem">
 		
 				<!-- post -->
-				<article class="post">
-					
-					<!-- title -->
-					<h2 class="title">
-						<a href="${url}">${title}</a>
-					</h2>
-					<!-- /title -->
-					
-					<!-- posted -->
-					<p class="posted">${ ( new Date(post.eventtime) ).toDateString() }</p>
-					<!-- /posted -->
-		
-					<!-- content -->
-					<p class="content">
-		
-						<!-- excerpt -->
-						<span class="excerpt">${postexcerpt}</span>
-						<!-- /excerpt -->
-		
-						<!-- readbtn -->
-						<a class="readbtn" href="${url}">Read More</a>
-						<!-- /readbtn -->
+				<article class="post event">
+				
+					<!-- postdate -->
+					<div class="postdate">
+	
+						<!-- date -->
+						<div class="date">
+			
+							<!-- year -->
+							<span class="year">${y}</span>
+							<!-- /year -->
+	
+							<!-- month -->
+							<span class="month">${m}</span>
+							<!-- /month -->
+	
+							<!-- date -->
+							<span class="date">${ (d<10) ? `0${d}` : d }</span>
+							<!-- /date -->
+	
+						</div>
+						<!-- /date -->
 						
-					</p>
-					<!-- /content -->
-		
+					</div>
+					<!-- /postdate -->
+					
+					<!-- postcontent -->
+					<div class="postcontent">
+					
+						<!-- postname -->
+						<h4 class="postname">
+	
+							<!-- readlink -->
+							<a class="readlink" href="${url}">${post.title}</a>
+							<!-- /readlink -->
+							
+						</h4>
+						<!-- /postname -->
+						
+						<!-- postexcerpt -->
+						<p class="postexcerpt">
+							
+							<!-- excerpt -->
+							<span class="excerpt">${postexcerpt}</span>
+							<!-- /excerpt -->
+							
+							<!-- readlink -->
+							<a class="readlink" href="${url}">Learn More</a>
+							<!-- /readlink -->
+							
+						</p>
+						<!-- /postexcerpt -->
+						
+					</div>
+					<!-- /postcontent -->
+					
 				</article>
 				<!-- /post -->
 		
