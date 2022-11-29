@@ -18,7 +18,7 @@ div#container header#header {background-color:var(--themecolor);}
 /* div#container main#pagecontent {} */
 
 div#container main#pagecontent aside,
-div#container main#pagecontent section {margin-top:4rem;}
+div#container main#pagecontent section {margin-top:1rem;}
 
 div#container main#pagecontent section.story {/* background-color:hotpink; */ padding:0 6rem;}
 div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
@@ -140,11 +140,11 @@ div#container main#pagecontent section.pagination div.bar a.postnavbtn span.capt
 
 
 /* Site Location Section */
-div#container main#pagecontent aside.location {max-width:var(--pagewidth); padding:1rem 6rem; border-radius:.5rem; margin:2rem auto 0;}
+div#container main#pagecontent aside.location {max-width:var(--pagewidth); padding:1rem 6rem; border-radius:.5rem; margin:1rem auto 0;}
 div#container main#pagecontent aside.location {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
-div#container main#pagecontent aside.location a.node {font-size:1.125rem;}
+div#container main#pagecontent aside.location a.node {background-color: var(--trptrpnavy); color:black; color:var(--fullnavy); display:grid; align-items:center; font-size:1.125rem; min-height:2rem; padding:.25rem .75rem; border-radius:10rem;}
 div#container main#pagecontent aside.location a.node:hover {text-decoration:underline;}
-div#container main#pagecontent aside.location svg.icon {display:block; color:var(--trpnavy); margin:0 .375rem;}
+div#container main#pagecontent aside.location svg.icon {display:block; margin:0 .375rem;}
 div#container main#pagecontent aside.location svg.icon.rightcaret {font-size:.625rem;}
 div#container main#pagecontent aside.location svg.icon.rightchevron {font-size:1.125rem;}
 

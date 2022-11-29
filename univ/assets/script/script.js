@@ -326,6 +326,15 @@ function loadTrail() {
 		</svg>
 		<!-- /logo -->`;
 
+		// Define house icon. 
+		const houseicon = `
+		<!-- logo -->
+		<svg class="icon house" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+			<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+			<path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+		</svg>
+		<!-- /logo -->`;
+
 		// Define right arrow icon. 
 		const rightcaret = `
 		<!-- icon -->
@@ -356,7 +365,7 @@ function loadTrail() {
 
 		// Create link for page node. 
 		function createPageNodeById(pageid) {
-			// console.log('pageid:',pageid);
+			console.log('pageid:',pageid);
 
 			// Check for post page node. 
 			let workingOnPostPageNode = pageid.includes('post');
@@ -364,15 +373,17 @@ function loadTrail() {
 
 			// Get associated page. 
 			let page = getPageById(pageid);
-			// console.log('page:',page);
+			console.log('page:',page);
 			// Return nothing if page not found. 
 			if(!page) return '';
 				
 			// Get caption for node link. 
 			let linkcaption = getNodeLinkCaption();
+			console.log('linkcaption:',linkcaption);
 				
 			// Get url for node link. 
 			let pageurl = getNodeLinkUrl();
+			console.log('pageurl:',pageurl);
 				
 			// Return compiled link page node. 
 			return `
@@ -400,7 +411,7 @@ function loadTrail() {
 			function getNodeLinkCaption() {
 			
 				// Set caption for home page node link: logo. 
-				if(pageid==0) return (logoicon);
+				if(pageid=='home') return (houseicon || logoicon);
 				
 				// Set caption for post page node link (maintains post id). 
 				else if(workingOnPostPageNode) {
