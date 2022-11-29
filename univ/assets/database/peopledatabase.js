@@ -709,6 +709,9 @@ function addPeopleProperties() {
 		
 		// Set searchable student data. 
 		student.searchtags = getStudentTags(student);
+
+		// Assign a random program to each student. 
+		student.programid = programData[Math.floor( (programData.length) * Math.random() )].programid;
 	}
 
 	/****/

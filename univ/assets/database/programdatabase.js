@@ -63,7 +63,7 @@ const programData = [
 	{
 		posttype:'program',
 		programid:'ECE',
-		title:'Electrical &amp; Computer Engineering',
+		title:'Electrical & Computer Engineering',
 		content:'',
 		postedtime:0,
 	},
@@ -140,7 +140,7 @@ const programData = [
 	{
 		posttype:'program',
 		programid:'RPW',
-		title:'Rhetoric &amp; Professional Writing',
+		title:'Rhetoric & Professional Writing',
 		content:'',
 		postedtime:0,
 	},

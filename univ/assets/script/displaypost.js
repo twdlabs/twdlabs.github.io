@@ -70,11 +70,17 @@ function loadPostPage(id) {
 	// Set state of pagination links for prev post button. 
 	if(previd) {
 
+		// Get prev post. 
+		let prevpost = getPostById(previd)
+
 		// Set link. 
 		prevpostbtn.href = getRelativeUrl(`./${foldername}/post/?id=${previd}`);
 
 		// Set contents of hover label. 
-		prevpostbtn.title = 'xyz';
+		prevpostbtn.title = prevpost.title;
+
+		// Set contents of hover label. 
+		// prevpostbtn.querySelector('span.caption').innerHTML = prevpost.title;
 	}
 	// Otherwise hide button (if no valid id). 
 	else prevpostbtn.classList.add('gone');
@@ -82,11 +88,17 @@ function loadPostPage(id) {
 	// Set state of pagination links for next post button. 
 	if(nextid) {
 
+		// Get next post. 
+		let nextpost = getPostById(nextid)
+
 		// Set link. 
 		nextpostbtn.href = getRelativeUrl(`./${foldername}/post/?id=${nextid}`);
 
 		// Set contents of hover label. 
-		nextpostbtn.title = 'xyz';
+		nextpostbtn.title = nextpost.title;
+
+		// Set contents of hover label. 
+		// nextpostbtn.querySelector('span.caption').innerHTML = nextpost.title;
 	}
 	// Otherwise hide button (if no valid id). 
 	else nextpostbtn.classList.add('gone');

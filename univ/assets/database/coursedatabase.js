@@ -325,7 +325,7 @@ const courseData = [
 		posttype:'course',
 		programid:'COMM',
 		coursenumber:'315',
-		coursename: 'Persuasion &amp; Attitude Change',
+		coursename: 'Persuasion & Attitude Change',
 		numcredits: 3,
 		coursedescription: 'Examines processes and theories of attitude change; susceptibilities and resistances to persuasion; audience analysis; message formulation and source credibility; verbal and non-verbal components of persuasive communication.',
 		postedtime:0,

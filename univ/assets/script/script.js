@@ -327,9 +327,17 @@ function loadTrail() {
 		<!-- /logo -->`;
 
 		// Define right arrow icon. 
-		const rightarrow = `
+		const rightcaret = `
 		<!-- icon -->
-		<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+		<svg class="icon rightcaret" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+			<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+		</svg>
+		<!-- /icon -->`;
+
+		// Define right arrow icon. 
+		const rightchevron = `
+		<!-- icon -->
+		<svg class="icon rightchevron" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 			<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
 		</svg>
 		<!-- /icon -->`;
@@ -339,7 +347,7 @@ function loadTrail() {
 		<!-- location -->
 		<aside class="location">
 	
-			${ pageIdList.map(createPageNodeById).join(rightarrow) }
+			${ pageIdList.map(createPageNodeById).join(rightcaret) }
 	
 		</aside>
 		<!-- /location -->`;
@@ -349,6 +357,10 @@ function loadTrail() {
 		// Create link for page node. 
 		function createPageNodeById(pageid) {
 			// console.log('pageid:',pageid);
+
+			// Check for post page node. 
+			let workingOnPostPageNode = pageid.includes('post');
+			// console.log('pageid',pageid,workingOnPostPageNode);
 
 			// Get associated page. 
 			let page = getPageById(pageid);
@@ -389,23 +401,64 @@ function loadTrail() {
 			
 				// Set caption for home page node link: logo. 
 				if(pageid==0) return (logoicon);
+				
+				// Set caption for post page node link (maintains post id). 
+				else if(workingOnPostPageNode) {
+
+					// Get search parameters from current url. 
+					const urlparams = new URLSearchParams(window.location.search);
+
+					// Check for id parameter. 
+					let currentPostId = urlparams.get('id');
+
+					// Get post item. 
+					let post = getPostById(currentPostId);
+
+					return '' || post.title;
+				}
 
 				// Set caption for child page node link: page name. 
 				else return (page.pagetitle);
+
+				/**/
+
+				// Get post by id. 
+				function getPostById(id) {
+			
+					// Get archive data. 
+					const archiveData = postregister[currentPostType]['archiveData'];
+			
+					// Ensure capitalization of course id. 
+					id = (`${id}`).toUpperCase();
+				
+					// Get post type. 
+					let type = currentPostType;
+					// console.log('type:',type,`${type}id`);
+					// console.log('Archive source:',archiveData);
+				
+					// Go thru all post items. 
+					for(let post of archiveData) {
+			
+						// Check for matching post. 
+						let matchingPost = (id == post[`${type}id`]);
+			
+						// Return matching post if found. 
+						if(matchingPost) return post;
+					}
+			
+					// Return nothing if post not found. 
+					return null;
+				}
 			}
 
 			// Get url for node link. 
 			function getNodeLinkUrl() {
-
-				// Check for post page. 
-				let workingOnPostPage = pageid.includes('post');
-				// console.log('pageid',pageid,workingOnPostPage);
 			
 				// Set page url for home page node link. 
 				if(pageid==0) return getRelativeUrl('./');
-
-				// Add post id to url if necessary. 
-				else if(workingOnPostPage) return '';
+				
+				// Set page url for post page node link (maintains post id). 
+				else if(workingOnPostPageNode) return '';
 
 				// Set page url for child page node link. 
 				else return getRelativeUrl(page.rootpageurl);
