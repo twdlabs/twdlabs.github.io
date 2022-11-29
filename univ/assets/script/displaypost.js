@@ -262,6 +262,20 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
+					<span class="label">Author</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">${ userData[post.authorid].title }</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
 					<span class="label">Posted</span>
 					<!-- /label -->
 

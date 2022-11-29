@@ -95,6 +95,16 @@ function loadHeader() {
 
 			</li>
 			<!-- /navitem -->
+
+			<!-- navitem -->
+			<li class="navitem">
+
+				<!-- navlink -->
+				<a class="navlink" href="${ getRelativeUrl('./events') }">Events</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->
 			
 			<!-- navitem -->
 			<li class="navitem">
