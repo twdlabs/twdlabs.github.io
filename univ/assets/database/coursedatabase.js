@@ -1925,7 +1925,8 @@ function addCourseProperties() {
 		let description = course.coursedescription;
 	
 		// Compile components of full course title. 
-		return `${name}\n<br>${description}`;
+		return `${name}
+<br>${description}`;
 	}
 
 	// Define full course title. 
