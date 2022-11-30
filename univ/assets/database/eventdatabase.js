@@ -177,7 +177,7 @@ function addEventProperties() {
 	function getEventTags(event) {
 	
 		// Compile searchable components for this post type: event. 
-		let tagsources = [ event.title, event.content ];
+		let tagsources = [ event.title, event.location, event.content ];
 		
 		// 
 		return tagsources.join(' ').split(' ');

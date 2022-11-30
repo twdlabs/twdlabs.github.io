@@ -58,7 +58,7 @@ div#container header#header nav.navmenu.b {flex-grow:0; order:30;}
 /* Header Logo */
 div#container header#header h1.navhead {font-size:1.75rem; font-weight:100; margin:0;}
 div#container header#header h1.navhead a.navlink {display:flex; flex-direction:row; align-items:center;}
-div#container header#header h1.navhead a.navlink svg.icon {margin-right:.25rem;}
+div#container header#header h1.navhead a.navlink svg.logo {margin-right:.25rem;}
 /* div#container header#header h1.navhead a.navlink span.caption {} */
 
 /* Navigation Menu: General */

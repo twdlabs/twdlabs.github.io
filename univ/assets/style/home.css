@@ -30,7 +30,7 @@ div#container section.banner main a.archivelink {display:inline-block; font-size
 /* Preview Section */
 
 div#container section.preview {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
-div#container section.preview {background:linear-gradient(90deg,white 49%,var(--lightyellow) 51%);}
+div#container section.preview {background:linear-gradient(90deg,white 49%,var(--lightyellow) 51%); color:initial;}
 
 div#container section.preview div.group {display:flex; flex-direction:column; align-items:center; padding:2.5rem;}
 div#container section.preview div.group#blog {background-color:var(--lightyellow); --darkbgcolor:var(--yellow);}

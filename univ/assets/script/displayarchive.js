@@ -284,7 +284,7 @@ function loadArchivePage(postlist) {
 			return createDefaultPostLayout();
 		}
 
-		// 
+		// Create default preview layout. 
 		function createDefaultPostLayout() {
 			return `
 			<!-- postitem -->

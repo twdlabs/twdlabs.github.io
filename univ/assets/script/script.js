@@ -311,6 +311,12 @@ function loadHeader() {
 // Load breadcrumb trail. 
 function loadTrail() {
 
+	// Disregard breadcrumb trail for home page. 
+	if(currentPageId=='home' /* || currentPageLevel==0 */) {
+		console.log('No breadcrumb trail at base level.');
+		return;
+	}
+
 	// Get breadcrumb trail data. 
 	const trailData = getTrailData();
 	// console.log('trailData:',trailData);
@@ -318,8 +324,8 @@ function loadTrail() {
 	// Get breadcrumb trail layout. 
 	const trailLayout = createTrailLayout( trailData );
 
-	// Load trail layout onto page (after opening of main page content). 
-	if(currentPageId!='home' && currentPageLevel!=0) mainpagecontent.insertAdjacentHTML('afterbegin',trailLayout);
+	// Load trail layout onto page (at start of main page content). 
+	mainpagecontent.insertAdjacentHTML('afterbegin',trailLayout);
 
 	/****/
 
@@ -375,25 +381,31 @@ function loadTrail() {
 
 		// Create link for page node. 
 		function createPageNodeById(pageid) {
-			console.log('pageid:',pageid);
+			// console.log('pageid:',pageid);
 
 			// Check for post page node. 
 			let workingOnPostPageNode = pageid.includes('post');
 			// console.log('pageid',pageid,workingOnPostPageNode);
 
+			// Check for error page node. 
+			let workingOnErrorPageNode = (pageid=='404');
+
+			// Check for home page node. 
+			let workingOnHomePageNode = (pageid=='home');
+
 			// Get associated page. 
 			let page = getPageById(pageid);
-			console.log('page:',page);
+			// console.log('page:',page);
 			// Return nothing if page not found. 
 			if(!page) return '';
 				
 			// Get caption for node link. 
 			let linkcaption = getNodeLinkCaption();
-			console.log('linkcaption:',linkcaption);
+			// console.log('linkcaption:',linkcaption);
 				
 			// Get url for node link. 
 			let pageurl = getNodeLinkUrl();
-			console.log('pageurl:',pageurl);
+			// console.log('pageurl:',pageurl);
 				
 			// Return compiled link page node. 
 			return `
@@ -403,25 +415,13 @@ function loadTrail() {
 
 			/**/
 
-			// Get page by id. 
-			function getPageById(id) {
-				// console.log('id:',id);
-			
-				// Go thru each page until match found. 
-				for(let page of siteMapData) {
-					// Return page with matching id. 
-					if(page.pageid==id) return page;
-				}
-			
-				// Return nothing if match not found. 
-				return null;
-			}
-
 			// Get caption for node link. 
 			function getNodeLinkCaption() {
 			
 				// Set caption for home page node link: logo. 
-				if(pageid=='home') return (houseicon || logoicon);
+				if(workingOnHomePageNode) {
+					return (houseicon || logoicon);
+				}
 				
 				// Set caption for post page node link (maintains post id). 
 				else if(workingOnPostPageNode) {
@@ -439,36 +439,8 @@ function loadTrail() {
 				}
 
 				// Set caption for child page node link: page name. 
-				else return (page.pagetitle);
-
-				/**/
-
-				// Get post by id. 
-				function getPostById(id) {
-			
-					// Get archive data. 
-					const archiveData = postregister[currentPostType]['archiveData'];
-			
-					// Ensure capitalization of course id. 
-					id = (`${id}`).toUpperCase();
-				
-					// Get post type. 
-					let type = currentPostType;
-					// console.log('type:',type,`${type}id`);
-					// console.log('Archive source:',archiveData);
-				
-					// Go thru all post items. 
-					for(let post of archiveData) {
-			
-						// Check for matching post. 
-						let matchingPost = (id == post[`${type}id`]);
-			
-						// Return matching post if found. 
-						if(matchingPost) return post;
-					}
-			
-					// Return nothing if post not found. 
-					return null;
+				else {
+					return (page.pagetitle);
 				}
 			}
 
@@ -476,13 +448,19 @@ function loadTrail() {
 			function getNodeLinkUrl() {
 			
 				// Set page url for home page node link. 
-				if(pageid==0) return getRelativeUrl('./');
+				if(workingOnErrorPageNode) {
+					return '#';
+				}
 				
 				// Set page url for post page node link (maintains post id). 
-				else if(workingOnPostPageNode) return '';
+				else if(workingOnPostPageNode) {
+					return '';
+				}
 
 				// Set page url for child page node link. 
-				else return getRelativeUrl(page.rootpageurl);
+				else {
+					return getRelativeUrl(page.rootpageurl);
+				}
 			}
 		}
 	}
@@ -824,6 +802,34 @@ function showPostList() {
 	for(let postlist of postlists) {
 		postlist.classList.remove('gone');
 	}
+}
+
+// Get post by id. 
+function getPostById(id) {
+
+	// Get archive data. 
+	const archiveData = postregister[currentPostType]['archiveData'];
+
+	// Ensure capitalization of course id. 
+	id = (`${id}`).toUpperCase();
+
+	// Get post type. 
+	let type = currentPostType;
+	// console.log('type:',type,`${type}id`);
+	// console.log('Archive source:',archiveData);
+
+	// Go thru all post items. 
+	for(let post of archiveData) {
+
+		// Check for matching post. 
+		let matchingPost = (id == post[`${type}id`]);
+
+		// Return matching post if found. 
+		if(matchingPost) return post;
+	}
+
+	// Return nothing if post not found. 
+	return null;
 }
 
 // Activate live search. 

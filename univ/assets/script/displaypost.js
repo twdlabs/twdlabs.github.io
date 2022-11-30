@@ -59,7 +59,7 @@ function loadPostPage(id) {
 
 	// Get ids for adjacent posts. 
 	const adjIds = (currentPostType=='event') ?  getAdjacentIds('eventtime') : getAdjacentIds('postedtime');
-	console.log('adjIds:',adjIds);
+	// console.log('adjIds:',adjIds);
 
 	// Get id for prev post. 
 	const previd = adjIds[0];
@@ -157,34 +157,6 @@ function loadPostPage(id) {
 
 		// Return both ids. 
 		return [prevPostId,nextPostId];
-	}
-
-	// Get post by id. 
-	function getPostById(id) {
-
-		// Get archive data. 
-		const archiveData = postregister[currentPostType]['archiveData'];
-
-		// Ensure capitalization of course id. 
-		id = (`${id}`).toUpperCase();
-	
-		// Get post type. 
-		let type = currentPostType;
-		// console.log('type:',type,`${type}id`);
-		// console.log('Archive source:',archiveData);
-	
-		// Go thru all post items. 
-		for(let post of archiveData) {
-
-			// Check for matching post. 
-			let matchingPost = (id == post[`${type}id`]);
-
-			// Return matching post if found. 
-			if(matchingPost) return post;
-		}
-
-		// Return nothing if post not found. 
-		return null;
 	}
 
 	// Create full post layout. 
@@ -823,7 +795,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${post.bio}</span>
+					<span class="value">${post.content}</span>
 					<!-- /value -->
 
 				</span>
@@ -881,7 +853,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${post.bio}</span>
+					<span class="value">${post.content}</span>
 					<!-- /value -->
 
 				</span>

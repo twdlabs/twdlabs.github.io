@@ -685,8 +685,8 @@ function addPeopleProperties() {
 		// Set full name as title. 
 		faculty.title = getFullName(faculty);
 
-		// Set bio. 
-		faculty.bio = getBio(faculty);
+		// Set bio as post content. 
+		faculty.content = getBio(faculty);
 	
 		// Set email address. 
 		faculty.email = getEmailAddress(faculty);
@@ -701,8 +701,8 @@ function addPeopleProperties() {
 		// Set full name as title. 
 		student.title = getFullName(student);
 
-		// Set bio. 
-		student.bio = getBio(student);
+		// Set bio as post content. 
+		student.content = getBio(student);
 	
 		// Set email address. 
 		student.email = getEmailAddress(student);
