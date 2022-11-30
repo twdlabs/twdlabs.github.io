@@ -1,0 +1,190 @@
+
+
+
+
+/* :root {
+} */
+
+
+
+/* Header Section */
+
+div#container header#header {background-color:var(--themecolor);}
+
+
+
+/* Main Content Section */
+
+/* div#container main#pagecontent {} */
+
+div#container main#pagecontent aside,
+div#container main#pagecontent section {margin-top:1rem;}
+
+div#container main#pagecontent section.story {/* background-color:hotpink; */ padding:0 6rem;}
+div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
+div#container main#pagecontent section.story article.story {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
+div#container main#pagecontent section.story article.story.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
+div#container main#pagecontent section.story article.story h1.head {font-size:1.5rem; text-align:center;}
+div#container main#pagecontent section.story article.story p.textcopy {line-height:1.75; text-align:center;}
+div#container main#pagecontent section.story article.story h1.title {font-size:1.5rem; /* text-align:center; */}
+div#container main#pagecontent section.story article.story div.content {line-height:1.75; margin:1rem 0;}
+div#container main#pagecontent section.story article.story div.content span.item {display:block; margin-top:1.5rem;}
+div#container main#pagecontent section.story article.story div.content span.item span.label {font-size:1.25rem; font-weight:800;}
+/* div#container main#pagecontent section.story article.story div.content span.item span.label.full {margin-bottom:.75rem;} */
+div#container main#pagecontent section.story article.story div.content span.item/* .block */ span.label {display:block;}
+div#container main#pagecontent section.story article.story div.content span.item span.label:empty {display:none;}
+div#container main#pagecontent section.story article.story div.content span.item span.label::after {content:': ';}
+div#container main#pagecontent section.story article.story div.content span.item span.value {font-weight:100;}
+div#container main#pagecontent section.story article.story div.content span.item/* .block */ span.value {display:block;}
+div#container main#pagecontent section.story article.story div.content span.item span.value:empty::after {content:'[none]';}
+div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink {display:inline-block; background-color:var(--trptrpnavy); min-width:5.75rem; text-align:center; transition:.125s; padding:1px .75rem 0; border-radius:10rem; margin:.5rem .5rem 0 0;}
+div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink:hover {background-color:var(--themecolor); color:white;}
+/* Event Preview Post */
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post {display:flex; flex-direction:row; max-width:28rem; margin-top:.75rem;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; --darkbgcolor:var(--fullnavy); margin-right:1rem;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date {text-align:center; padding-top:.625rem;}
+/* div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date span.year {display:none;} */
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date span.year {font-size:1rem; margin-bottom:-.75rem;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date span.date {font-size:1.75rem; font-weight:800; margin-top:-1.25rem;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent {flex-grow:1;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent h4.postname {font-size:1rem; font-weight:100; line-height:1.25; /* white-space:nowrap; */ margin:0; /* margin-top:.5rem; margin-bottom:.5rem; */}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent h4.postname a {color:initial; text-decoration:underline;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; line-height:1.15em; margin:0; /* margin-top:.125rem; */}
+/* div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt span.excerpt {} */
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
+
+div#container main#pagecontent section.archive {padding:0 3rem;}
+div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--postwidth); padding:0; margin:0 auto;}
+div#container main#pagecontent section.archive ul.postlist {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
+div#container main#pagecontent section.archive ul.postlist.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem {border-top:1px solid var(--trpnavy);} */
+/* div#container main#pagecontent section.archive ul.postlist li.postitem a.postlink {} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); padding:.75rem 1.25rem; border-radius:1rem; margin:1rem 0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post:hover {background-color:var(--trpnavy); /* cursor:pointer; */ transition:.25s;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post h2.title {font-size:1.25rem; /* line-height:2; */ margin:0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.posted {margin:0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.5; margin:0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt::after {content:'...';}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.remainder {display:none;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {display:inline-block; margin:.5rem 1rem;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {display:block; /* display:none; */ /* text-align:center; */ line-height:2;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {background-color:var(--themecolor); color:white; padding:0 .5rem; border-radius:.25rem;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {background-color:transparent; color:var(--themecolor); text-decoration:underline;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.expand {display:block;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.collapse {display:none;}
+/* Event Preview Post */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event {background-color:initial; display:flex; flex-direction:row; max-width:28rem; margin-top:.75rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; --darkbgcolor:var(--green); margin-right:1rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {text-align:center; padding-top:.625rem;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.year {display:none;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.year {font-size:1rem; margin-bottom:-.5rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.date {font-size:1.75rem; font-weight:800; margin-top:-.75rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent {flex-grow:1;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h4.postname {font-size:1rem; font-weight:100; line-height:1.25; /* white-space:nowrap; */ margin:0; /* margin-top:.5rem; margin-bottom:.5rem; */}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h4.postname a {color:initial; text-decoration:underline;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; line-height:1.15em; margin:0; /* margin-top:.125rem; */}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt span.excerpt {} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
+
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active {} */
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content {} */
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt {} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt::after {content:'';}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt:empty::after {content:'[No content]';} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.remainder {display:inline;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn {display:block; margin-top:.5rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn.gone {display:none;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.expand {display:none;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content a.readbtn span.collapse {display:block;}
+
+
+
+/* Footer Section */
+
+/* div#container footer#footer {} */
+
+
+
+/* Pagination Section */
+div#container main#pagecontent section.pagination {max-width:var(--pagewidth); padding:0 6rem; margin:0 auto; margin-top:8rem;}
+div#container main#pagecontent section.pagination div.bar {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn {--btncolor:var(--fullnavy); background-color:var(--btncolor); color:white; --btnheight:2.5rem; height:var(--btnheight); border-radius:.25rem;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn {display:grid; place-items:center; position:relative; min-width:4rem; padding:.5rem; margin:0 calc(.5*var(--btnheight));}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.gone {visibility:hidden;}
+/* div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev {} */
+/* div#container main#pagecontent section.pagination div.bar a.postnavbtn.next {} */
+div#container main#pagecontent section.pagination div.bar a.postnavbtn:before,
+div#container main#pagecontent section.pagination div.bar a.postnavbtn::after {position:absolute; top:50%; content:'';}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn:before {border:calc(.45*var(--btnheight)) solid transparent;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn:before {transform:translate(var(--dx),-50%);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn::after {background-color:var(--btncolor); background-color:var(--trpnavy); height:calc(var(--btnheight)/1.4142); width:calc(var(--btnheight)/1.4142);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn::after {border-radius:.25rem; z-index:-1;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev:before,
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev::after {right:100%;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev::after {transform:translate(50%,-50%) rotate(45deg);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.prev:before {--dx:.25rem; border-right-color:var(--btncolor);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.next:before,
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.next::after {left:100%;}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.next::after {transform:translate(-50%,-50%) rotate(45deg);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn.next:before {--dx:-.25rem; border-left-color:var(--btncolor);}
+div#container main#pagecontent section.pagination div.bar a.postnavbtn span.caption {/* visibility:hidden; */ white-space:nowrap;}
+
+
+/* Site Location Section */
+div#container main#pagecontent aside.location {max-width:var(--pagewidth); padding:1rem 6rem; border-radius:.5rem; margin:1rem auto 0;}
+div#container main#pagecontent aside.location {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+div#container main#pagecontent aside.location a.node {background-color: var(--trpgreen); color:var(--black); /* font-size:1.125rem; */}
+div#container main#pagecontent aside.location a.node {display:grid; align-items:center; min-height:2rem; padding:.25rem .75rem; border-radius:10rem;}
+div#container main#pagecontent aside.location a.node:hover {text-decoration:underline;}
+div#container main#pagecontent aside.location svg.icon {display:block; margin:0 .375rem;}
+div#container main#pagecontent aside.location svg.icon.rightcaret {font-size:.625rem;}
+div#container main#pagecontent aside.location svg.icon.rightchevron {font-size:1.125rem;}
+
+
+
+
+
+/* Medium screen (tablet) */
+@media screen and (max-width:60rem) {
+
+	/* Header Section */
+
+	/* Main Content Section */
+	div#container main#pagecontent section.story {padding:0 4rem;}
+
+	/* Footer Section */
+
+	/* Pagination Section */
+	div#container main#pagecontent section.pagination {padding:0 4rem;}
+
+	/* Site Location Section */
+	div#container main#pagecontent aside.location {padding:1rem 4rem;}
+}
+
+
+/* Small screen (mobile) */
+@media screen and (max-width:32rem) {
+
+	/* Header Section */
+
+	/* Main Content Section */
+	div#container main#pagecontent section.story {padding:0 2rem;}
+
+	/* Footer Section */
+
+	/* Pagination Section */
+	div#container main#pagecontent section.pagination {padding:0 2rem;}
+
+	/* Site Location Section */
+	div#container main#pagecontent aside.location {padding:1rem 2rem;}
+}
+

@@ -1,0 +1,139 @@
+
+
+
+
+/* Header Section */
+
+div#container header#header {position:fixed; position:absolute; background-color:transparent; top:0; left:0; right:0; width:100%; z-index:100;}
+
+
+
+/* Content Section */
+
+/* div#container main#pagecontent {} */
+
+
+
+/* Banner Section */
+
+div#container section.banner {background-color:#000; padding: 8rem 0 3.75rem; text-align:center; position:relative;}
+div#container section.banner div.bg {position:absolute; top:0; right:0; bottom:0; left:0; z-index:10;}
+div#container section.banner div.bg {background:rgb(141,74,2) url('../../assets/media/library.jpg'); background-size:cover; background-position:center; opacity:.33;}
+div#container section.banner main {color:white; position:relative; z-index:20;}
+div#container section.banner main h1.title {font-size:6.25rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main h2.subtitle {font-size:3.125rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main h3.subtitle {font-size:1.6875rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main a.archivelink {display:inline-block; font-size:1.9rem; background-color:var(--navyblue); border-radius:.5rem; padding:1.5rem 2rem 1.25rem; padding:.75em 1em .625em;}
+
+
+
+/* Preview Section */
+
+div#container section.preview {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
+div#container section.preview {background:linear-gradient(90deg,white 49%,var(--lightyellow) 51%); color:initial;}
+
+div#container section.preview div.group {display:flex; flex-direction:column; align-items:center; padding:2.5rem;}
+div#container section.preview div.group#blog {background-color:var(--lightyellow); --darkbgcolor:var(--yellow);}
+div#container section.preview div.group#events {background-color:white; --darkbgcolor:var(--navyblue);}
+
+div#container section.preview div.group h2.head {font-size:1.6875rem; font-weight:normal; margin:0; margin-bottom:1rem;}
+div#container section.preview div.group ul.postlist {list-style:none; max-width:32rem; padding:0; margin:0;}
+/* div#container section.preview div.group ul.postlist li.postitem {} */
+div#container section.preview div.group ul.postlist li.postitem article.post {display:flex; flex-direction:row; margin-bottom:1rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:7rem; margin-right:1.5rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {text-align:center; padding-top:.625rem;}
+/* div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.year {display:none;} */
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.year {font-size:1rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.date {font-size:2rem; font-weight:800; margin-top:-.5rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent {flex-grow:1;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent h4.postname {font-size:1.375rem; font-weight:100; /* white-space:nowrap; */ margin:0;}
+/* div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent h4.postname a {color:initial; text-decoration:underline;} */
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt {font-weight:100; line-height:1.5em; margin:0; margin-top:.25rem;}
+/* div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt span.excerpt {} */
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
+div#container section.preview div.group a.archivelink {background-color:var(--darkbgcolor); color:white; font-size:1.125rem; padding:1.125rem 1.5rem 1rem; border-radius:.25rem;}
+
+div#container section.preview div.group > * {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
+div#container section.preview div.group.gone > * {opacity:0; visibility:hidden; transform:translateY(-2rem);}
+
+
+
+/* Carousel Section */
+
+div#container section.carousel {/* width:100%; */ position:relative; overflow-x:hidden; scrollbar-width:none;}
+div#container section.carousel div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; overflow:visible;}
+div#container section.carousel div.inner {animation:deltaslide 16s infinite ease;}
+
+div#container section.carousel div.slide {flex:0 0 100%; width:100%; background-color:#000; background-size:cover; background-repeat:no-repeat;}
+div#container section.carousel div.slide {display:flex; flex-direction:column; justify-content:center; align-items:center; padding:6rem 4rem;}
+div#container section.carousel div.slide.a {background-image:url('../../assets/media/bus.jpg');}
+div#container section.carousel div.slide.b {background-image:url('../../assets/media/apples.jpg');}
+div#container section.carousel div.slide.c {background-image:url('../../assets/media/bread.jpg');}
+
+div#container section.carousel div.slide div.bubble {background-color:rgba(0,0,0,0.68); color:white; padding:2rem; text-align:center;}
+div#container section.carousel div.slide div.bubble h2.head {font-size:3rem; font-weight:100; margin:0;}
+div#container section.carousel div.slide div.bubble p {margin:0; margin-top:1.5rem}
+/* div#container section.carousel div.slide div.bubble p.textcopy {}
+div#container section.carousel div.slide div.bubble p.action {} */
+div#container section.carousel div.slide div.bubble p.action a.learnbtn {background-color:var(--navyblue); color:white; padding:1rem 1.5rem; display:inline-block; border-radius:.25rem;}
+
+div#container section.carousel div.remote {position:absolute; top:0; left:50%; transform:translateX(-50%);}
+div#container section.carousel div.remote {display:flex; flex-direction:row; align-items:center; margin:1.375rem 0;}
+div#container section.carousel div.remote span.dot {background-color:#999; --dotsize:.5rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; margin:0 .15rem;}
+div#container section.carousel div.remote span.dot.active {background-color:white; --dotsize:.625rem;}
+
+@keyframes deltaslide {
+	0%,28%	{transform:translateX(-000%);}
+	33%,62%	{transform:translateX(-100%);}
+	67%,95%	{transform:translateX(-200%);}
+	100%	{transform:translateX(-300%);}
+}
+
+
+
+
+
+/* Medium screen (tablet) */
+@media screen and (max-width:60rem) {
+
+	/* Header Section */
+	div#container header#header {background-color:transparent;}
+
+	/* Content Section */
+
+	/* Banner Section */
+	div#container section.banner main h1.title {font-size:4rem;}
+	div#container section.banner main h2.subtitle {font-size:2rem;}
+	div#container section.banner main h3.subtitle {font-size:1.125rem;}
+	div#container section.banner main a.archivelink {font-size:1.5rem;}
+
+	/* Preview Section */
+	div#container section.preview {flex-direction:column; align-items:stretch;}
+
+	/* Carousel Section */
+	div#container section.carousel div.slide {padding:3rem 1rem;}
+}
+
+
+/* Small screen (mobile) */
+@media screen and (max-width:32rem) {
+
+	/* Header Section */
+
+	/* Content Section */
+
+	/* Banner Section */
+	div#container section.banner {padding: 5rem 0 2.5rem;}
+	div#container section.banner h1.title {font-size:3.6rem;}
+	div#container section.banner h2.subtitle {font-size:1.9rem;}
+	div#container section.banner h3.subtitle {font-size:1.2rem;}
+	div#container section.banner a.archivelink {font-size:1.3rem;}
+
+	/* Preview Section */
+
+	/* Carousel Section */
+}

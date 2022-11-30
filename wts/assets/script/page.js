@@ -1,0 +1,4 @@
+
+
+// Show current article. 
+showArticle();
