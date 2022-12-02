@@ -95,12 +95,15 @@ div#container.loggedin header#header nav.navmenu.a ul.navlist.accountlist li.nav
 div#container.loggedin header#header nav.navmenu.a ul.navlist.accountlist li.navitem.outside {display:none;}
 
 /* Navigation Menu: Remote Controls */
-/* div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink {font-size:1.5rem;} */
-div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.search {font-size:1.125em; font-weight:bold; /* margin-top:.25rem; */}
-div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.toggler {font-size:1.75em;}
-div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink svg.icon {display:block;}
-div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink svg.bars {display:block;}
-div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink svg.cross {display:none;}
+/* div#container header#header nav.navmenu.b {} */
+/* div#container header#header nav.navmenu.b ul.navlist {} */
+/* div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem {} */
+/* div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem a.navlink {font-size:1.5rem;} */
+div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem a.navlink.search {font-size:1.125em; font-weight:bold; /* margin-top:.25rem; */}
+div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem a.navlink.toggler {font-size:1.75em;}
+div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem a.navlink svg.icon {display:block;}
+div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem a.navlink svg.bars {display:block;}
+div#container header#header nav.navmenu.b ul.navlist.remotelist li.navitem a.navlink svg.cross {display:none;}
 div#container header#header.active nav.navmenu.b ul.navlist li.navitem a.navlink svg.bars {display:none;}
 div#container header#header.active nav.navmenu.b ul.navlist li.navitem a.navlink svg.cross {display:block;}
 
