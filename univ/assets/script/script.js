@@ -367,12 +367,18 @@ function loadTrail() {
 		</svg>
 		<!-- /icon -->`;
 
+		// Create node connector. 
+		let connector = `
+		<!-- link -->
+		<span class="link">${rightcaret}</span>
+		<!-- /link -->`;
+
 		// Return compiled result. 
 		return `
 		<!-- location -->
 		<aside class="location">
 	
-			${ pageIdList.map(createPageNodeById).join(rightcaret) }
+			${ pageIdList.map(createPageNodeById).join(connector) }
 	
 		</aside>
 		<!-- /location -->`;
