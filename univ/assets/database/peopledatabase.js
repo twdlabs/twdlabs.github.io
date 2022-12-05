@@ -9,6 +9,7 @@ const facultyData = [
 		facultyid:'001',
 		lastname:'Jobs',
 		firstname:'Steve',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -21,6 +22,7 @@ const facultyData = [
 		facultyid:'002',
 		lastname:'Peterson',
 		firstname:'Jordan',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -34,6 +36,7 @@ const facultyData = [
 		facultyid:'003',
 		lastname:'Wozniak',
 		firstname:'Steve',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'CS',
 			'ECE',
@@ -45,6 +48,7 @@ const facultyData = [
 		facultyid:'004',
 		lastname:'Gates',
 		firstname:'Bill',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'CS',
 			'FIN',
@@ -56,6 +60,7 @@ const facultyData = [
 		facultyid:'005',
 		lastname:'Jackson',
 		firstname:'Curtis',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'FIN',
@@ -70,6 +75,7 @@ const facultyData = [
 		facultyid:'006',
 		lastname:'Tyson',
 		firstname:'Mike',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'KIN',
 			'PHIL',
@@ -81,6 +87,7 @@ const facultyData = [
 		facultyid:'007',
 		lastname:'Dupri',
 		firstname:'Jermaine',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'MKT',
 			'MUS',
@@ -92,6 +99,7 @@ const facultyData = [
 		facultyid:'008',
 		lastname:'Robbins',
 		firstname:'Anthony',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'PHIL',
@@ -104,6 +112,7 @@ const facultyData = [
 		facultyid:'009',
 		lastname:'Cook',
 		firstname:'Owen',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -116,6 +125,7 @@ const facultyData = [
 		facultyid:'010',
 		lastname:'Proctor',
 		firstname:'Bob',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -127,6 +137,7 @@ const facultyData = [
 		facultyid:'011',
 		lastname:'Dalio',
 		firstname:'Ray',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'FIN',
@@ -138,6 +149,7 @@ const facultyData = [
 		facultyid:'012',
 		lastname:'Tyson',
 		firstname:'Neil',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'PHYS',
@@ -149,6 +161,7 @@ const facultyData = [
 		facultyid:'013',
 		lastname:'Trump',
 		firstname:'Donald',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -161,6 +174,7 @@ const facultyData = [
 		facultyid:'014',
 		lastname:'Picasso',
 		firstname:'Pablo',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'ART',
 		],
@@ -171,6 +185,7 @@ const facultyData = [
 		facultyid:'015',
 		lastname:'Cochran',
 		firstname:'Johnny',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'CJ',
@@ -182,6 +197,7 @@ const facultyData = [
 		facultyid:'016',
 		lastname:'Kardashian',
 		firstname:'Robert',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'CJ',
@@ -193,6 +209,7 @@ const facultyData = [
 		facultyid:'017',
 		lastname:'Obama',
 		firstname:'Barack',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'PS',
@@ -204,6 +221,7 @@ const facultyData = [
 		facultyid:'018',
 		lastname:'Lopez',
 		firstname:'Taino',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'FIN',
@@ -216,6 +234,7 @@ const facultyData = [
 		facultyid:'019',
 		lastname:'Vaynerchuk',
 		firstname:'Gary',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -227,6 +246,7 @@ const facultyData = [
 		facultyid:'020',
 		lastname:'Belfort',
 		firstname:'Jordan',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -238,6 +258,7 @@ const facultyData = [
 		facultyid:'021',
 		lastname:'Jakes',
 		firstname:'TD',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'RS',
@@ -249,6 +270,7 @@ const facultyData = [
 		facultyid:'022',
 		lastname:'Covey',
 		firstname:'Stephen',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -260,6 +282,7 @@ const facultyData = [
 		facultyid:'023',
 		lastname:'Carter',
 		firstname:'Sean',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'FIN',
 			'MUS',
@@ -272,6 +295,7 @@ const facultyData = [
 		facultyid:'024',
 		lastname:'Cole',
 		firstname:'Jermaine',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'MUS',
 			'MKT',
@@ -283,6 +307,7 @@ const facultyData = [
 		facultyid:'025',
 		lastname:'Austin',
 		firstname:'Johnta',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'MUS',
 		],
@@ -293,6 +318,7 @@ const facultyData = [
 		facultyid:'026',
 		lastname:'Cox',
 		firstname:'Bryan-Michael',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'MUS',
 		],
@@ -303,6 +329,7 @@ const facultyData = [
 		facultyid:'027',
 		lastname:'Garrett',
 		firstname:'Sean',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'MUS',
 		],
@@ -313,6 +340,7 @@ const facultyData = [
 		facultyid:'028',
 		lastname:'Dean',
 		firstname:'Ester',
+		avatarurl:'./assets/media/avatar-f.png',
 		programids:[
 			'MUS',
 		],
@@ -323,6 +351,7 @@ const facultyData = [
 		facultyid:'029',
 		lastname:'Carter',
 		firstname:'Brandon',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'KIN',
 			'MKT',
@@ -334,6 +363,7 @@ const facultyData = [
 		facultyid:'030',
 		lastname:'Hulse',
 		firstname:'Elliott',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'KIN',
@@ -347,6 +377,7 @@ const facultyData = [
 		facultyid:'031',
 		lastname:'O\'Gallagher',
 		firstname:'Gregory',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'KIN',
@@ -359,6 +390,7 @@ const facultyData = [
 		facultyid:'032',
 		lastname:'Darwin',
 		firstname:'Charles',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'BIOL',
 			'COMM',
@@ -370,6 +402,7 @@ const facultyData = [
 		facultyid:'033',
 		lastname:'Einstein',
 		firstname:'Albert',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'PHYS',
@@ -381,6 +414,7 @@ const facultyData = [
 		facultyid:'034',
 		lastname:'Newton',
 		firstname:'Isaac',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'PHYS',
@@ -392,6 +426,7 @@ const facultyData = [
 		facultyid:'035',
 		lastname:'Faraday',
 		firstname:'Michael',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'PHYS',
 		],
@@ -402,6 +437,7 @@ const facultyData = [
 		facultyid:'036',
 		lastname:'Tesla',
 		firstname:'Nikola',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'PHYS',
 		],
@@ -412,6 +448,7 @@ const facultyData = [
 		facultyid:'037',
 		lastname:'One',
 		firstname:'KRS',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 		],
@@ -422,6 +459,7 @@ const facultyData = [
 		facultyid:'038',
 		lastname:'Tracy',
 		firstname:'Brian',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'COMM',
 			'MKT',
@@ -433,6 +471,7 @@ const facultyData = [
 		facultyid:'039',
 		lastname:'Buffett',
 		firstname:'Warren',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
 			'FIN',
 			'MKT',
@@ -444,9 +483,29 @@ const facultyData = [
 		facultyid:'040',
 		lastname:'Hormozi',
 		firstname:'Alex',
+		avatarurl:'./assets/media/avatar-m.png',
 		programids:[
+			'COMM',
 			'FIN',
+			'MATH',
 			'MKT',
+			'PHIL',
+			'PSYC',
+		],
+		postedtime:0,
+	},
+	{
+		posttype:'faculty',
+		facultyid:'041',
+		lastname:'Hormozi',
+		firstname:'Leila',
+		avatarurl:'./assets/media/avatar-f.png',
+		programids:[
+			'BL',
+			'COMM',
+			'FIN',
+			'KIN',
+			'PSYC',
 		],
 		postedtime:0,
 	},
@@ -456,6 +515,7 @@ const facultyData = [
 	// 	facultyid:'000',
 	// 	lastname:'LastName',
 	// 	firstname:'FirstName',
+	// 	avatarurl:'./assets/media/avatar-f.png',
 	// 	programids:[
 	// 		'XYZ',
 	// 	],
@@ -474,6 +534,7 @@ const studentData = [
 		studentid:'001',
 		lastname:'Washington',
 		firstname:'George',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -482,6 +543,7 @@ const studentData = [
 		studentid:'002',
 		lastname:'Adams',
 		firstname:'John',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -490,6 +552,7 @@ const studentData = [
 		studentid:'003',
 		lastname:'Jefferson',
 		firstname:'Thomas',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -498,6 +561,7 @@ const studentData = [
 		studentid:'006',
 		lastname:'Jackson',
 		firstname:'Andrew',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -506,6 +570,7 @@ const studentData = [
 		studentid:'007',
 		lastname:'Adams',
 		firstname:'John Quincy',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -514,6 +579,7 @@ const studentData = [
 		studentid:'009',
 		lastname:'Monroe',
 		firstname:'James',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -522,6 +588,7 @@ const studentData = [
 		studentid:'016',
 		lastname:'Lincoln',
 		firstname:'Abraham',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -530,6 +597,7 @@ const studentData = [
 		studentid:'017',
 		lastname:'Johnson',
 		firstname:'Andrew',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -538,6 +606,7 @@ const studentData = [
 		studentid:'021',
 		lastname:'Coolidge',
 		firstname:'Calvin',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -546,6 +615,7 @@ const studentData = [
 		studentid:'023',
 		lastname:'Cleveland',
 		firstname:'Grover',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -554,6 +624,7 @@ const studentData = [
 		studentid:'025',
 		lastname:'Wilson',
 		firstname:'Woodrow',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -562,6 +633,7 @@ const studentData = [
 		studentid:'032',
 		lastname:'Truman',
 		firstname:'Harry S.',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -570,6 +642,7 @@ const studentData = [
 		studentid:'036',
 		lastname:'F. Kennedy',
 		firstname:'John',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -578,6 +651,7 @@ const studentData = [
 		studentid:'037',
 		lastname:'B. Johnson',
 		firstname:'Lyndon',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -586,6 +660,7 @@ const studentData = [
 		studentid:'038',
 		lastname:'Nixon',
 		firstname:'Richard M.',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -594,6 +669,7 @@ const studentData = [
 		studentid:'039',
 		lastname:'Carter',
 		firstname:'James',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -602,6 +678,7 @@ const studentData = [
 		studentid:'040',
 		lastname:'Reagan',
 		firstname:'Ronald',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -610,6 +687,7 @@ const studentData = [
 		studentid:'041',
 		lastname:'Bush',
 		firstname:'George H.W.',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -618,6 +696,7 @@ const studentData = [
 		studentid:'042',
 		lastname:'Clinton',
 		firstname:'Bill',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -626,6 +705,7 @@ const studentData = [
 		studentid:'043',
 		lastname:'Bush',
 		firstname:'George W.',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -634,6 +714,7 @@ const studentData = [
 		studentid:'044',
 		lastname:'Obama',
 		firstname:'Barack',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -642,6 +723,7 @@ const studentData = [
 		studentid:'045',
 		lastname:'Trump',
 		firstname:'Donald',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -650,6 +732,7 @@ const studentData = [
 		studentid:'046',
 		lastname:'Biden',
 		firstname:'Joseph',
+		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -659,6 +742,7 @@ const studentData = [
 	// 	studentid:'000',
 	// 	lastname:'LastName',
 	// 	firstname:'FirstName',
+	// 	avatarurl:'./assets/media/avatar-f.png',
 	// 	programid:'',
 	// 	postedtime:0,
 	// },
@@ -690,6 +774,10 @@ function addPeopleProperties() {
 	
 		// Set email address. 
 		faculty.email = getEmailAddress(faculty);
+	
+		// Set phone number. 
+		faculty.phone = '2134567890';
+		faculty.phone = {countrycode:'1',areacode:'213',number:'4567890'};
 		
 		// Set searchable faculty data. 
 		faculty.searchtags = getFacultyTags(faculty);

@@ -188,6 +188,11 @@ div#container footer#footer main div.col ul.navlist.social li.navitem a.navlink.
 div#container footer#footer main div.col ul.navlist.social li.navitem a.navlink.ig {--socialcolor:#d8226b; background-color:var(--socialcolor);}
 /* div#container footer#footer main div.col ul.navlist.social li.navitem a.navlink svg.icon {} */
 
+div#container footer#footer main div.col form.contact {background-color:var(--trptrpnavy); display:flex; flex-direction:column; align-items:stretch; padding:.75rem; border-radius:.25rem;}
+div#container footer#footer main div.col form.contact .input {font-family:inherit; font-size:inherit; width:100%; padding:.625rem .75rem .5rem; border:0 none; border-radius:.25rem; margin-top:.75rem;}
+/* div#container footer#footer main div.col form.contact input.input {} */
+/* div#container footer#footer main div.col form.contact textarea.input {} */
+
 
 
 /* Search Overlay */

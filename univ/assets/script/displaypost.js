@@ -763,11 +763,57 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
-					<span class="label">ID#</span>
+					<span class="label"></span>
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${post.facultyid}</span>
+					<span class="value">
+
+						<!-- avatar -->
+						<img class="avatar" src="${ getRelativeUrl(post.avatarurl) }" alt="${title} photo">
+						<!-- /avatar -->
+
+					</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">Phone</span>
+					<!-- /label -->
+
+					<!-- value -->
+					<span class="value">
+
+						<!-- emaillink -->
+						<a class="emaillink" href="tel:${ getFullPhoneNumber(post.phone) }">${ formatPhoneNumber(post.phone) }</a>
+						<!-- /emaillink -->
+						
+					</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">Email</span>
+					<!-- /label -->
+			
+					<!-- value -->
+					<span class="value">
+
+						<!-- emaillink -->
+						<a class="emaillink" href="mailto:${post.email}">${post.email}</a>
+						<!-- /emaillink -->
+
+					</span>
 					<!-- /value -->
 
 				</span>
@@ -781,7 +827,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ ( (post.programids).map( (id)=>getProgramById(id).title ) ).join(', ') }</span>
+					<span class="value">${ ( (post.programids).map(createProgramLink) ).join('') }</span>
 					<!-- /value -->
 
 				</span>
@@ -803,6 +849,51 @@ function loadPostPage(id) {
 			
 			</div>
 			<!-- /content -->`;
+
+			/**/
+
+			// Create post link for associated program. 
+			function createProgramLink(id) {
+
+				// Get program by id. 
+				let p = getProgramById(id);
+				// console.log('Current program:',id,p);
+
+				// Define link url. 
+				let url = getRelativeUrl(`./program/post/?id=${id}`);
+
+				// Define link caption. 
+				let caption = p ? p.title : id;
+
+				// Define post link. 
+				return `
+				<!-- postlink -->
+				<a class="postlink" href="${url}">${caption}</a>
+				<!-- /postlink -->`;
+			}
+
+			// Get full phone number. 
+			function getFullPhoneNumber(number) {
+				// 
+				if((typeof number)=='object') {
+					return ( '+' + number.countrycode + number.areacode + number.number.slice(0,3) + number.number.slice(3,7) );
+				}
+				else {
+					return number;
+				}
+			}
+
+			// Format phone number. 
+			function formatPhoneNumber(number) {
+
+				// 
+				if((typeof number)=='object') {
+					return ( '+' + number.countrycode + ' (' + number.areacode + ') ' + number.number.slice(0,3) + '-' + number.number.slice(3,7) );
+				}
+				else {
+					return ( number.slice(0,3) + '.' + number.slice(3,6) + '.' + number.slice(6,10) );
+				}
+			}
 		}
 
 		// Create full layout for student post. 
@@ -821,11 +912,37 @@ function loadPostPage(id) {
 				<span class="item">
 
 					<!-- label -->
-					<span class="label">ID#</span>
+					<span class="label"></span>
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${post.studentid}</span>
+					<span class="value">
+
+						<!-- avatar -->
+						<img class="avatar" src="${ getRelativeUrl(post.avatarurl) }" alt="${title} photo">
+						<!-- /avatar -->
+
+					</span>
+					<!-- /value -->
+
+				</span>
+				<!-- /item -->
+
+				<!-- item -->
+				<span class="item">
+
+					<!-- label -->
+					<span class="label">Email</span>
+					<!-- /label -->
+			
+					<!-- value -->
+					<span class="value">
+
+						<!-- emaillink -->
+						<a class="emaillink" href="mailto:${post.email}">${post.email}</a>
+						<!-- /emaillink -->
+
+					</span>
 					<!-- /value -->
 
 				</span>
@@ -839,7 +956,7 @@ function loadPostPage(id) {
 					<!-- /label -->
 
 					<!-- value -->
-					<span class="value">${ getProgramById(post.programid).title }</span>
+					<span class="value">${ createProgramLink(post.programid) }</span>
 					<!-- /value -->
 
 				</span>
@@ -861,6 +978,28 @@ function loadPostPage(id) {
 				
 			</div>
 			<!-- /content -->`;
+
+			/**/
+
+			// Create post link for associated program. 
+			function createProgramLink(id) {
+
+				// Get program by id. 
+				let p = getProgramById(id);
+				// console.log('Current program:',id,p);
+
+				// Define link url. 
+				let url = getRelativeUrl(`./program/post/?id=${id}`);
+
+				// Define link caption. 
+				let caption = p ? p.title : id;
+
+				// Define post link. 
+				return `
+				<!-- postlink -->
+				<a class="postlink" href="${url}">${caption}</a>
+				<!-- /postlink -->`;
+			}
 		}
 	}
 }

@@ -39,6 +39,7 @@ div#container main#pagecontent section.story article.story div.content span.item
 div#container main#pagecontent section.story article.story div.content span.item span.value:empty::after {content:'[none]';}
 div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink {display:inline-block; background-color:var(--trptrpnavy); min-width:5.75rem; text-align:center; transition:.125s; padding:1px .75rem 0; border-radius:10rem; margin:.5rem .5rem 0 0;}
 div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink:hover {background-color:var(--themecolor); color:white;}
+div#container main#pagecontent section.story article.story div.content span.item span.value img.avatar {display:block; height:16rem;  max-width:100%; object-fit:cover;}
 /* Event Preview Post */
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post {display:flex; flex-direction:row; max-width:28rem; margin-top:.75rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; --darkbgcolor:var(--fullnavy); margin-right:1rem;}
@@ -141,6 +142,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 
 	/* Main Content Section */
 	div#container main#pagecontent section.story {padding:0 2rem;}
+	div#container main#pagecontent section.story article.story div.content span.item span.value img.avatar {width:100%;}
 
 	/* Main Content Section: Pagination Section */
 	div#container main#pagecontent section.pagination {padding:0 2rem;}

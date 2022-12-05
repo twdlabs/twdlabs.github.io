@@ -27,6 +27,14 @@ const siteMapData = [
 	},
 	
 	{
+		pageid:'contact',
+		pagetitle:'Contact Us',
+		breadcrumbpagelevel:1,
+		rootpageurl:'./contact',
+		parentpageid:'home',
+	},
+	
+	{
 		pageid:'blogarchive',
 		pagetitle:'Blog',
 		breadcrumbpagelevel:1,
