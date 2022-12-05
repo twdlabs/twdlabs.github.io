@@ -13,12 +13,15 @@ div#container header#header {background-color:var(--themecolor);}
 
 
 
-/* Main Content Section */
+/* Content Section */
 
 /* div#container main#pagecontent {} */
 
 div#container main#pagecontent aside,
 div#container main#pagecontent section {margin-top:1rem;}
+
+
+/* Content Section: Story */
 
 div#container main#pagecontent section.story {/* background-color:hotpink; */ padding:0 6rem;}
 div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
@@ -58,14 +61,20 @@ div#container main#pagecontent section.story article.story div.content span.item
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
 
+
+/* Content Section: Archive */
+
 div#container main#pagecontent section.archive {padding:0 3rem;}
-div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--postwidth); padding:0; margin:0 auto;}
+div#container main#pagecontent section.archive ul.postlist {}
+div#container main#pagecontent section.archive ul.postlist/* .grid */ {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.75rem;}
+div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--archivewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.archive ul.postlist {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
 div#container main#pagecontent section.archive ul.postlist.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
-/* div#container main#pagecontent section.archive ul.postlist li.postitem {border-top:1px solid var(--trpnavy);} */
+div#container main#pagecontent section.archive ul.postlist li.postitem {display:flex; justify-content:center; /* border-top:1px solid var(--trpnavy); */}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem a.postlink {} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); padding:.75rem 1.25rem; border-radius:1rem; margin:1rem 0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); padding:.75rem 1.25rem; border-radius:.5rem; margin:1rem 0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post:hover {background-color:var(--trpnavy); /* cursor:pointer; */ transition:.25s;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post img.avatar {height:12rem;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post h2.title {font-size:1.25rem; /* line-height:2; */ margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.posted {margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.5; margin:0;}
@@ -122,14 +131,12 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 
 	/* Header Section */
 
-	/* Main Content Section */
+	/* Content Section */
+	/* Content Section: Story */
 	div#container main#pagecontent section.story {padding:0 4rem;}
-
-	/* Main Content Section: Pagination Section */
-	div#container main#pagecontent section.pagination {padding:0 4rem;}
-
-	/* Main Content Section: Site Location Section */
-	div#container main#pagecontent aside.location {padding:1rem 4rem;}
+	/* Content Section: Archive */
+	/* div#container main#pagecontent section.archive {} */
+	div#container main#pagecontent section.archive ul.postlist {grid-template-columns:repeat(1,1fr);}
 
 	/* Footer Section */
 }
@@ -140,15 +147,17 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 
 	/* Header Section */
 
-	/* Main Content Section */
+	/* Content Section */
+	/* Content Section: Story */
 	div#container main#pagecontent section.story {padding:0 2rem;}
+	/* div#container main#pagecontent section.story article.story {} */
+	/* div#container main#pagecontent section.story article.story div.content {} */
+	/* div#container main#pagecontent section.story article.story div.content span.item {} */
+	/* div#container main#pagecontent section.story article.story div.content span.item span.value {} */
 	div#container main#pagecontent section.story article.story div.content span.item span.value img.avatar {width:100%;}
-
-	/* Main Content Section: Pagination Section */
-	div#container main#pagecontent section.pagination {padding:0 2rem;}
-
-	/* Main Content Section: Site Location Section */
-	div#container main#pagecontent aside.location {padding:1rem 2rem;}
+	/* Content Section: Archive */
+	/* div#container main#pagecontent section.archive {} */
+	/* div#container main#pagecontent section.archive ul.postlist {grid-template-columns:repeat(1,1fr);} */
 
 	/* Footer Section */
 }

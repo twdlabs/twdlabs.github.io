@@ -269,13 +269,53 @@ function loadArchivePage(postlist) {
 		// Create preview layout for faculty post. 
 		function createFacultyPostLayout() {
 			// 
-			return createDefaultPostLayout();
+			return createDefaultPersonLayout();
 		}
 
 		// Create preview layout for student post. 
 		function createStudentPostLayout() {
 			// 
-			return createDefaultPostLayout();
+			return createDefaultPersonLayout();
+		}
+
+		// Create default person layout. 
+		function createDefaultPersonLayout() {
+			return `
+			<!-- postitem -->
+			<li class="postitem">
+		
+				<!-- post -->
+				<article class="post">
+
+					<!-- avatar -->
+					<img class="avatar" src="${getRelativeUrl(post.avatarurl)}">
+					<!-- /avatar -->
+					
+					<!-- title -->
+					<h2 class="title">
+						<a href="${url}">${title}</a>
+					</h2>
+					<!-- /title -->
+		
+					<!-- content -->
+					<p class="content">
+		
+						<!-- excerpt -->
+						<span class="excerpt">${postexcerpt}</span>
+						<!-- /excerpt -->
+		
+						<!-- readbtn -->
+						<a class="readbtn" href="${url}">Read More</a>
+						<!-- /readbtn -->
+						
+					</p>
+					<!-- /content -->
+		
+				</article>
+				<!-- /post -->
+		
+			</li>
+			<!-- /postitem -->`;
 		}
 
 		// Create default preview layout. 

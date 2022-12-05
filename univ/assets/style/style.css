@@ -28,8 +28,8 @@
 	--lucentnavy:rgba(13,55,94,0.89);
 	
 	--pagewidth:60rem;
-	--postwidth:30rem;
 	--articlewidth:48rem;
+	--archivewidth:52rem;
 	--themecolor:var(--fullnavy);
 }
 
@@ -244,8 +244,10 @@ div#container div#searchoverlay {background-color:white;}
 	/* Content Section */
 
 	/* Content Section: Pagination Section */
+	div#container main#pagecontent section.pagination {padding:0 4rem;}
 
 	/* Content Section: Site Location Section */
+	div#container main#pagecontent aside.location {padding:1rem 4rem;}
 	div#container main#pagecontent aside.location a.node {display:none;}
 	div#container main#pagecontent aside.location a.node.up {display:flex; /* background-color:transparent; */}
 	div#container main#pagecontent aside.location a.node.up svg.icon.leftchevron {display:block; margin-right:.25rem;}
@@ -280,8 +282,10 @@ div#container div#searchoverlay {background-color:white;}
 	/* Content Section */
 
 	/* Content Section: Pagination Section */
+	div#container main#pagecontent section.pagination {padding:0 2rem;}
 
 	/* Content Section: Site Location Section */
+	div#container main#pagecontent aside.location {padding:1rem 2rem;}
 
 
 	/* Footer Section */
