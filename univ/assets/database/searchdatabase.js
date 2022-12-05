@@ -61,7 +61,7 @@ const defaultResults = {
 // Add all other databases as components of results database. 
 
 // Add blog posts to list of default results. 
-defaultResults.blog = 
+defaultResults['blog'] = 
 {
 	visual:false,
 	setname:'Blog Posts',
@@ -74,7 +74,7 @@ defaultResults.blog =
 };
 
 // Add programs to list of default results. 
-defaultResults.programs = 
+defaultResults['programs'] = 
 {
 	visual:false,
 	setname:'Programs',
@@ -87,7 +87,7 @@ defaultResults.programs =
 };
 
 // Add courses to list of default results. 
-defaultResults.courses = 
+defaultResults['courses'] = 
 {
 	visual:false,
 	setname:'Courses',
@@ -100,7 +100,7 @@ defaultResults.courses =
 };
 
 // Add events to list of default results. 
-defaultResults.events = 
+defaultResults['events'] = 
 {
 	visual:false,
 	setname:'Events',
@@ -113,7 +113,7 @@ defaultResults.events =
 };
 
 // Add faculty to list of default results. 
-defaultResults.faculty = 
+defaultResults['faculty'] = 
 {
 	visual:false,
 	setname:'Faculty',
@@ -126,7 +126,7 @@ defaultResults.faculty =
 };
 
 // Add students to list of default results. 
-defaultResults.students = 
+defaultResults['students'] = 
 {
 	visual:false,
 	setname:'Students',

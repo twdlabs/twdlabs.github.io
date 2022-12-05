@@ -143,25 +143,29 @@ function getTrailData() {
 	
 	// Start hieracrchy traversal with current page. 
 	let currentId = currentPageId;
-	let validParent = hasValidParent(currentId)
-	// console.log( 'Current id:', currentId );
-	// console.log( '\tGot parent:', validParent );
+	console.log( 'Original id:', currentId, currentPageId );
 	
 	// Add current page id to list. 
-	result.unshift(currentId);
+	result.push( {pageid:currentId, directparent:false,} );
+	
+	// Initialize page trail index. 
+	let index = 0;
 	
 	// Go up the hierarchy until home page. 
-	while(validParent) {
+	do {
 	
 		// Go to next parent page. 
 		currentId = getPageById(currentId).parentpageid;
-		validParent = hasValidParent(currentId);
-		// console.log( 'Current id:', currentId );
-		// console.log( '\tGot parent:', validParent );
+		hasValidParent = checkForValidParent(currentId);
+		console.log( 'Current id:', currentId );
+		// console.log( '\tGot parent:', hasValidParent );
 		
 		// Add current page id to list. 
-		result.unshift(currentId);
-	}
+		result.push( {pageid:currentId, directparent:(index==0),} );
+
+		// Increment page trail index. 
+		index++;
+	} while(hasValidParent);
 
 	// 
 	return result;
@@ -169,8 +173,8 @@ function getTrailData() {
 	/****/
 
 	// Check for valid parent given page id. 
-	function hasValidParent(id) {
-		// console.log('\thasValidParent');
+	function checkForValidParent(id) {
+		// console.log('\tcheckForValidParent');
 	
 		// Get page with given page id. 
 		let page = getPageById(id);

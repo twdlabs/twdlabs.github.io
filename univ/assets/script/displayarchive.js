@@ -40,12 +40,6 @@ showPostList();
 // Load page for archive of selected post type. 
 function loadArchivePage(postlist) {
 
-	// Get set name for page title. 
-	// const pagetitle = defaultResults[pagekey].setname;
-
-	// Get set list for list of posts. 
-	// const postlist = defaultResults[pagekey].setlist;
-
 	// Initialize result. 
 	let result = '';
 
