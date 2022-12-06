@@ -420,7 +420,7 @@ function loadArchivePage(postlist) {
 				console.log(tag);
 
 				// 
-				if( tag.includes(filterquery) ) return true;
+				if( ( tag.toUpperCase() ).includes( filterquery.toUpperCase() ) ) return true;
 			}
 
 			// 

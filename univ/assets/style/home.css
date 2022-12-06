@@ -29,7 +29,7 @@ div#container section.banner main a.archivelink {display:inline-block; font-size
 
 /* Feature Section */
 
-div#container section.feature {padding:2rem 0;}
+div#container section.feature {background-color:var(--navyblue); color:white; padding:2rem 0;}
 div#container section.feature div.panel {display:flex; flex-direction:row; justify-content:space-between; max-width:var(--pagewidth); margin:0 auto;}
 div#container section.feature div.panel div.item {display:flex; flex-direction:column; align-items:center; margin:0 1rem;}
 div#container section.feature div.panel div.item svg.icon {font-size:12rem;}
