@@ -162,7 +162,7 @@ div#container main#pagecontent aside.location span.link svg.icon.rightcaret {fon
 div#container footer#footer {background:linear-gradient(#FFF,#ECECEC); padding:4rem 1rem;}
 
 div#container footer#footer main {max-width:var(--pagewidth); margin:0 auto;}
-div#container footer#footer main {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; flex-wrap:nowrap;}
+div#container footer#footer main {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; flex-wrap:nowrap; flex-wrap:wrap;}
 div#container footer#footer main div.col {flex-grow:2; flex-basis:0; text-align:left; padding:1rem;}
 div#container footer#footer main div.col.wide,
 div#container footer#footer main div.col.full {flex-grow:3; /* flex-grow:5; */}
@@ -188,7 +188,7 @@ div#container footer#footer main div.col ul.navlist.social li.navitem a.navlink.
 div#container footer#footer main div.col ul.navlist.social li.navitem a.navlink.ig {--socialcolor:#d8226b; background-color:var(--socialcolor);}
 /* div#container footer#footer main div.col ul.navlist.social li.navitem a.navlink svg.icon {} */
 
-div#container footer#footer main div.col form.contact {background-color:var(--trptrpnavy); display:flex; flex-direction:column; align-items:stretch; padding:.75rem; border-radius:.25rem;}
+div#container footer#footer main div.col form.contact {background-color:var(--trptrpnavy); display:flex; flex-direction:column; align-items:stretch; max-width:calc(var(--archivewidth)/2); padding:.75rem; border-radius:.25rem; margin:0 auto;}
 div#container footer#footer main div.col form.contact .input {font-family:inherit; font-size:inherit; width:100%; padding:.625rem .75rem .5rem; border:0 none; border-radius:.25rem; margin-top:.75rem;}
 /* div#container footer#footer main div.col form.contact input.input {} */
 /* div#container footer#footer main div.col form.contact textarea.input {} */

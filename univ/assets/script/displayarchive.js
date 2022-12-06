@@ -237,13 +237,13 @@ function loadArchivePage(postlist) {
 					<div class="postcontent">
 					
 						<!-- postname -->
-						<h4 class="postname">
+						<h2 class="postname">
 	
 							<!-- readlink -->
 							<a class="readlink" href="${url}">${post.title}</a>
 							<!-- /readlink -->
 							
-						</h4>
+						</h2>
 						<!-- /postname -->
 						
 						<!-- postexcerpt -->

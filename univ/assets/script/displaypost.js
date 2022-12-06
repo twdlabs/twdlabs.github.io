@@ -514,13 +514,13 @@ function loadPostPage(id) {
 					<div class="postcontent">
 					
 						<!-- postname -->
-						<h4 class="postname">
+						<h2 class="postname">
 	
 							<!-- readlink -->
 							<a class="readlink" href="${url}">${e.title}</a>
 							<!-- /readlink -->
 							
-						</h4>
+						</h2>
 						<!-- /postname -->
 						
 						<!-- postexcerpt -->

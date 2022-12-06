@@ -813,6 +813,38 @@ function loadFooter() {
 				
 			</div>
 			<!-- /col -->
+					
+			<!-- break -->
+			<div class="col break"></div>
+			<!-- /break -->
+			
+			<!-- col -->
+			<div class="col full">
+
+				<!-- contact -->
+				<form action="" class="contact">
+				
+					<!-- navhead -->
+					<h3 class="navhead">Get In Touch</h3>
+					<!-- /navhead -->
+
+					<!-- name -->
+					<input class="input name" type="text" placeholder="Enter your name">
+					<!-- /name -->
+
+					<!-- message -->
+					<textarea class="input message" name="message" placeholder="Enter your message" id="message" rows="8"></textarea>
+					<!-- /message -->
+
+					<!-- sendbtn -->
+					<input class="input sendbtn" type="submit" value="Send Message">
+					<!-- /sendbtn -->
+
+				</form>
+				<!-- /contact -->
+
+			</div>
+			<!-- /col -->
 			
 		</main>
 		<!-- /main -->

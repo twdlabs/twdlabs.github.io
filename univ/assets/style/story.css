@@ -53,10 +53,11 @@ div#container main#pagecontent section.story article.story div.content span.item
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date span.year {font-size:1rem; margin-bottom:-.75rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date span.date {font-size:1.75rem; font-weight:800; margin-top:-1.25rem;}
-div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent {flex-grow:1;}
-div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent h4.postname {font-size:1rem; font-weight:100; line-height:1.25; /* white-space:nowrap; */ margin:0; /* margin-top:.5rem; margin-bottom:.5rem; */}
-div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent h4.postname a {color:initial; text-decoration:underline;}
-div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; line-height:1.15em; margin:0; /* margin-top:.125rem; */}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent {flex-grow:1; line-height:1.375;}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent h2.postname {font-size:1rem; font-weight:300; /* white-space:nowrap; */ margin:0; /* margin:.5rem 0; */}
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent h2.postname a.readlink {color:initial;}
+/* div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent h2.postname a.readlink:hover {text-decoration:underline;} */
+div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; margin:0; /* margin-top:.125rem; */}
 /* div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt span.excerpt {} */
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
@@ -92,7 +93,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.expand {display:block;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.collapse {display:none;}
 /* Event Preview Post */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event {background-color:initial; display:flex; flex-direction:row; max-width:28rem; margin-top:.75rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event {background-color:initial; display:flex; flex-direction:row; max-width:28rem; border-color:transparent; margin-top:.75rem;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; --darkbgcolor:var(--fullnavy); margin-right:1rem;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
@@ -101,10 +102,11 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.year {font-size:1rem; margin-bottom:-.5rem;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.date {font-size:1.75rem; font-weight:800; margin-top:-.75rem;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent {flex-grow:1;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h4.postname {font-size:1rem; font-weight:100; line-height:1.25; /* white-space:nowrap; */ margin:0; /* margin-top:.5rem; margin-bottom:.5rem; */}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h4.postname a {color:initial; text-decoration:underline;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; line-height:1.15em; margin:0; /* margin-top:.125rem; */}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent {flex-grow:1; line-height:1.375;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h2.postname {font-size:1rem; font-weight:300; /* white-space:nowrap; */ margin:0; /* margin:.5rem 0; */}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h2.postname a.readlink {color:initial;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h2.postname a.readlink:hover {text-decoration:underline;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; margin:0; /* margin-top:.125rem; */}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt span.excerpt {} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
