@@ -9,6 +9,7 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 
 
+/* Nav Section */
 nav#nav {position:fixed; top:0; width:100%; z-index:1; background-color:#FFF;}
 nav#nav {display:flex; flex-direction:row; justify-content:space-between; align-items:center; box-shadow:rgba(0,0,0,0.05) 0 0 20px 0; padding:1rem 2.25rem;}
 nav#nav h1.brand {margin:1rem 0; font-size:1.125rem; font-weight:bold;}
@@ -19,6 +20,7 @@ nav#nav ul.navlist li.navitem a.navlink {text-decoration:none; color:inherit; di
 nav#nav ul.navlist li.navitem a.navlink:hover {color:dodgerblue;}
 
 
+/* Content Section */
 div#container {background-color:#FFF; margin:4rem auto 10rem;}
 div#container main {max-width:45rem; margin:0 auto; padding:0 2rem;}
 div#container main h2 {font-size:2.5rem; margin:1em 0 2em;}
@@ -26,11 +28,12 @@ div#container main section {padding:.5rem 0;}
 div#container main section h3 {font-size:1.5rem; margin:1em 0;}
 div#container main section p.copy {font-size:1.125rem; font-weight:100; line-height:2em;}
 div#container main section div.panel {display:flex; flex-direction:row; justify-content:space-between;}
-div#container main section div.panel div.item {display:flex; flex-direction:column; align-items:center;}
+div#container main section div.panel div.item {display:flex; flex-direction:column; align-items:center; margin:0 1rem;}
 div#container main section div.panel div.item svg.icon {font-size:12rem;}
 div#container main section div.panel div.item span.caption {font-size:2rem; margin-top:1rem;}
 
 
+/* Footer Section */
 footer#footer {position:fixed; bottom:0; width:100%; z-index:-10;}
 footer#footer {text-align:center; font-size:.8rem; font-weight:100; background-color:#000; color:#FFF; padding:1.5rem;}
 footer#footer ul.navlist {list-style:none; font-size:.75rem; padding:.55rem 0; margin:0; display:flex; flex-direction:row; justify-content:center;}
@@ -41,18 +44,37 @@ footer#footer ul.navlist li.navitem a.navlink:hover {color:#888; text-decoration
 
 
 @media screen and (max-width:64rem) {
-	/*  */
+
+	/* Nav Section */
+
+	/* Content Section */
+
+	/* Footer Section */
 }
 
 @media screen and (max-width:50rem) {
+
+	/* Nav Section */
 	nav#nav {flex-direction:column; align-items:stretch;}
 	nav#nav div.toggle {display:block;}
 	nav#nav ul.navlist {flex-direction:column; align-items:flex-start;}
 	nav#nav ul.navlist li.navitem.search {display:none;}
+
+	/* Content Section */
+	div#container main section div.panel {flex-wrap:wrap; justify-content:center;}
+	div#container main section div.panel div.item {margin:1rem;}
+
+	/* Footer Section */
 }
 
 @media screen and (max-width:32rem) {
-	/*  */
+
+	/* Nav Section */
+
+	/* Content Section */
+div#container main section div.panel {flex-direction:column;}
+
+	/* Footer Section */
 }
 
 
