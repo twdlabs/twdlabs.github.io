@@ -27,6 +27,16 @@ div#container section.banner main a.archivelink {display:inline-block; font-size
 
 
 
+/* Feature Section */
+
+div#container section.feature {padding:2rem 0;}
+div#container section.feature div.panel {display:flex; flex-direction:row; justify-content:space-between; max-width:var(--pagewidth); margin:0 auto;}
+div#container section.feature div.panel div.item {display:flex; flex-direction:column; align-items:center; margin:0 1rem;}
+div#container section.feature div.panel div.item svg.icon {font-size:12rem;}
+div#container section.feature div.panel div.item span.caption {font-size:2rem; margin-top:1rem;}
+
+
+
 /* Preview Section */
 
 div#container section.preview {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
@@ -37,7 +47,7 @@ div#container section.preview div.group#blog {background-color:var(--lightyellow
 div#container section.preview div.group#events {background-color:white; --darkbgcolor:var(--navyblue);}
 
 div#container section.preview div.group h2.head {font-size:1.6875rem; font-weight:normal; margin:0; margin-bottom:.125rem;}
-div#container section.preview div.group ul.postlist {list-style:none; max-width:32rem; padding:0; margin:0;}
+div#container section.preview div.group ul.postlist {list-style:none; max-width:calc(var(--pagewidth)/2); padding:0; margin:0;}
 /* div#container section.preview div.group ul.postlist li.postitem {} */
 div#container section.preview div.group ul.postlist li.postitem article.post {display:flex; flex-direction:row; margin-top:1rem;}
 div#container section.preview div.group ul.postlist li.postitem article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:7rem; margin-right:1.5rem;}
@@ -111,6 +121,11 @@ div#container section.carousel div.remote span.dot.active {background-color:whit
 	div#container section.banner main h3.subtitle {font-size:1.125rem;}
 	div#container section.banner main a.archivelink {font-size:1.5rem;}
 
+	/* Feature Section */
+	/* div#container section.feature {} */
+	div#container section.feature div.panel {flex-wrap:wrap; justify-content:center;}
+	div#container section.feature div.panel div.item {margin:1rem;}
+
 	/* Preview Section */
 	div#container section.preview {flex-direction:column; align-items:stretch;}
 
@@ -133,6 +148,10 @@ div#container section.carousel div.remote span.dot.active {background-color:whit
 	div#container section.banner h2.subtitle {font-size:1.9rem;}
 	div#container section.banner h3.subtitle {font-size:1.2rem;}
 	div#container section.banner a.archivelink {font-size:1.3rem;}
+
+	/* Feature Section */
+	/* div#container section.feature {} */
+	div#container section.feature div.panel {flex-direction:column;}
 
 	/* Preview Section */
 	/* div#container section.preview {} */
