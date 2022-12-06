@@ -841,10 +841,10 @@ function addPeopleProperties() {
 	// Define searchable student tags. 
 	function getStudentTags(person) {
 	
-		// Get first name of person. 
+		// Get first name of student. 
 		let fname = person.firstname;
 	
-		// Get last name of person. 
+		// Get last name of student. 
 		let lname = person.lastname;
 
 		// Get id of given program. 
@@ -852,9 +852,12 @@ function addPeopleProperties() {
 
 		// Get name of given program. 
 		let progname = getProgramById(progid).title;
+
+		// Get bio of given student. 
+		let bio = person.content;
 	
 		// Compile searchable components for this post type: person. 
-		let tagsources = [ lname, fname, progid, progname ];
+		let tagsources = [ lname, fname, bio, progid, progname ];
 		
 		// Return string of tags. 
 		return tagsources.join(' ').split(' ');
@@ -863,8 +866,17 @@ function addPeopleProperties() {
 	// Define searchable faculty tags. 
 	function getFacultyTags(person) {
 	
+		// Get first name of faculty. 
+		let fname = person.firstname;
+	
+		// Get last name of faculty. 
+		let lname = person.lastname;
+
+		// Get bio of given faculty. 
+		let bio = person.content;
+	
 		// Compile searchable components for this post type: person. 
-		let tagsources = [ person.lastname, person.firstname, person.programids.join(' '), person.programids.map( (progid)=>(getProgramById(progid).title) ).join(' ') ];
+		let tagsources = [ lname, fname, bio, person.programids.join(' '), person.programids.map( (progid)=>(getProgramById(progid).title) ).join(' ') ];
 		
 		// Return string of tags. 
 		return tagsources.join(' ').split(' ');

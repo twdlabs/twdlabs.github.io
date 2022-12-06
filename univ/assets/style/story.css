@@ -65,17 +65,23 @@ div#container main#pagecontent section.story article.story div.content span.item
 /* Content Section: Archive */
 
 div#container main#pagecontent section.archive {padding:0 3rem;}
-div#container main#pagecontent section.archive ul.postlist {}
-div#container main#pagecontent section.archive ul.postlist/* .grid */ {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.75rem;}
+div#container main#pagecontent section.archive div.filter {max-width:calc(var(--archivewidth)/2); margin:1rem auto;}
+div#container main#pagecontent section.archive div.filter input#archivefilter {font-family:inherit; font-size:inherit; width:100%; padding:.625rem .75rem .5rem; border:.125rem solid var(--fullnavy); border-radius:.25rem; margin-top:.75rem;}
+/* div#container main#pagecontent section.archive ul.postlist {} */
+div#container main#pagecontent section.archive ul.postlist {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.75rem;}
+div#container main#pagecontent section.archive ul.postlist.visual {grid-template-columns:repeat(3,1fr);}
 div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--archivewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.archive ul.postlist {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
 div#container main#pagecontent section.archive ul.postlist.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
 div#container main#pagecontent section.archive ul.postlist li.postitem {display:flex; justify-content:center; /* border-top:1px solid var(--trpnavy); */}
+div#container main#pagecontent section.archive ul.postlist li.postitem.gone {display:none;}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem a.postlink {} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); padding:.75rem 1.25rem; border-radius:.5rem; margin:1rem 0;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); overflow:hidden; padding:1.25rem; border:.125rem solid var(--trptrpnavy); border-radius:.5rem; margin:1rem 0;}
+div#container main#pagecontent section.archive ul.postlist.visual li.postitem article.post {padding:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post:hover {background-color:var(--trpnavy); /* cursor:pointer; */ transition:.25s;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post img.avatar {height:12rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post img.avatar {height:12rem; /* border-radius:inherit; */}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post h2.title {font-size:1.25rem; /* line-height:2; */ margin:0;}
+div#container main#pagecontent section.archive ul.postlist.visual li.postitem article.post h2.title {text-align:center;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.posted {margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.5; margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}
@@ -137,6 +143,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 	/* Content Section: Archive */
 	/* div#container main#pagecontent section.archive {} */
 	div#container main#pagecontent section.archive ul.postlist {grid-template-columns:repeat(1,1fr);}
+	div#container main#pagecontent section.archive ul.postlist.visual {grid-template-columns:repeat(2,1fr);}
 
 	/* Footer Section */
 }
@@ -158,6 +165,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 	/* Content Section: Archive */
 	/* div#container main#pagecontent section.archive {} */
 	/* div#container main#pagecontent section.archive ul.postlist {grid-template-columns:repeat(1,1fr);} */
+	div#container main#pagecontent section.archive ul.postlist.visual {grid-template-columns:repeat(1,1fr);}
 
 	/* Footer Section */
 }

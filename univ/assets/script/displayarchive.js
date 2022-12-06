@@ -1,6 +1,9 @@
 
 
 
+// Get input box for archive filter. 
+const filterquerybox = document.querySelector('div#container main#pagecontent section.archive div.filter input#archivefilter');
+
 // Get destination for list of post items. 
 const listbox = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
 
@@ -54,6 +57,10 @@ function loadArchivePage(postlist) {
 	if(postlist) listbox.innerHTML = result;
 	else listbox.innerHTML = '';
 
+	// Activate input box for archive filter. 
+	filterquerybox.value = '';
+	filterquerybox.addEventListener('keyup',filterArchivePosts);
+
 	/****/
 
 	// Create preview post item. 
@@ -81,9 +88,6 @@ function loadArchivePage(postlist) {
 	
 		// Get remainder of post content. 
 		// let postremainder = (post.content) ? (post.content).slice(excerptcharlimit) : '';
-	
-		
-		``;
 
 
 		// Create blog preview post. 
@@ -122,8 +126,8 @@ function loadArchivePage(postlist) {
 			return createStudentPostLayout();
 		}
 
-		// Create miscellaneous post. 
-		else return '[New post type]';
+		// Create miscellaneous post for unregistered post type. 
+		else return '[Unregistered post type]';
 
 		/***/
 
@@ -134,7 +138,7 @@ function loadArchivePage(postlist) {
 			<li class="postitem">
 		
 				<!-- post -->
-				<article class="post">
+				<article class="post blogpost" data-id="${ post.postid }">
 					
 					<!-- title -->
 					<h2 class="title">
@@ -170,13 +174,13 @@ function loadArchivePage(postlist) {
 		// Create preview layout for program post. 
 		function createProgramPostLayout() {
 			// 
-			return createDefaultPostLayout();
+			return createDefaultPostLayout('program');
 		}
 
 		// Create preview layout for course post. 
 		function createCoursePostLayout() {
 			// 
-			return createDefaultPostLayout();
+			return createDefaultPostLayout('course');
 		}
 
 		// Create preview layout for event post. 
@@ -203,7 +207,7 @@ function loadArchivePage(postlist) {
 			<li class="postitem">
 		
 				<!-- post -->
-				<article class="post event">
+				<article class="post event" data-id="${ post.eventid }">
 				
 					<!-- postdate -->
 					<div class="postdate">
@@ -269,23 +273,30 @@ function loadArchivePage(postlist) {
 		// Create preview layout for faculty post. 
 		function createFacultyPostLayout() {
 			// 
-			return createDefaultPersonLayout();
+			return createDefaultPersonLayout('faculty');
 		}
 
 		// Create preview layout for student post. 
 		function createStudentPostLayout() {
 			// 
-			return createDefaultPersonLayout();
+			return createDefaultPersonLayout('student');
 		}
 
 		// Create default person layout. 
-		function createDefaultPersonLayout() {
+		function createDefaultPersonLayout(posttype) {
+			// console.log('posttype',posttype );
+			// console.log('id', post[`${posttype}id`],post );
+
+			// Get post id. 
+			let id = post[`${posttype}id`];
+
+			// 
 			return `
 			<!-- postitem -->
 			<li class="postitem">
 		
 				<!-- post -->
-				<article class="post">
+				<article class="post ${posttype}" data-id="${id}">
 
 					<!-- avatar -->
 					<img class="avatar" src="${getRelativeUrl(post.avatarurl)}">
@@ -297,20 +308,6 @@ function loadArchivePage(postlist) {
 					</h2>
 					<!-- /title -->
 		
-					<!-- content -->
-					<p class="content">
-		
-						<!-- excerpt -->
-						<span class="excerpt">${postexcerpt}</span>
-						<!-- /excerpt -->
-		
-						<!-- readbtn -->
-						<a class="readbtn" href="${url}">Read More</a>
-						<!-- /readbtn -->
-						
-					</p>
-					<!-- /content -->
-		
 				</article>
 				<!-- /post -->
 		
@@ -319,13 +316,20 @@ function loadArchivePage(postlist) {
 		}
 
 		// Create default preview layout. 
-		function createDefaultPostLayout() {
+		function createDefaultPostLayout(posttype) {
+			// console.log('posttype',posttype );
+			// console.log('id', post[`${posttype}id`],post );
+
+			// Get post id. 
+			let id = post[`${posttype}id`];
+
+			// 
 			return `
 			<!-- postitem -->
 			<li class="postitem">
 		
 				<!-- post -->
-				<article class="post">
+				<article class="post ${posttype}" data-id="${id}">
 					
 					<!-- title -->
 					<h2 class="title">
@@ -352,6 +356,75 @@ function loadArchivePage(postlist) {
 		
 			</li>
 			<!-- /postitem -->`;
+		}
+	}
+
+	// Filter posts shown in archive. 
+	function filterArchivePosts(event) {
+		
+		// Get current filter query. 
+		let filterquery = filterquerybox.value;
+		console.log('Now filtering archive posts:',filterquery);
+
+		// Get all archive posts. 
+		let allPosts = document.querySelectorAll('div#container main#pagecontent section.archive ul.postlist li.postitem article.post');
+
+		// TODO: Show matching posts. 
+		for(let post of allPosts) {
+
+			// Get list item. 
+			let li = post.parentElement;
+
+			// Get id of current post. 
+			let postid = post.getAttribute('data-id');
+
+			// Get post data item. 
+			let postDataItem = getPostDataItem(currentPostType,postid);
+
+			// Check if matches filter query. 
+			let matchesFilterQuery = checkForFilterMatch(postDataItem);
+
+			// 
+			if(matchesFilterQuery) li.classList.remove('gone');
+			else li.classList.add('gone');
+		}
+
+		/***/
+
+		// Get post data item. 
+		function getPostDataItem(type,id) {
+
+			// 
+			let archiveData = postregister[currentPostType].archiveData;
+
+			// 
+			for(let postItem of archiveData) {
+
+				// 
+				let matchFound = (postItem[`${type}id`]==id);
+
+				// 
+				if(matchFound) return postItem;
+			}
+
+			// 
+			return null;
+		}
+
+		// Check for filter match. 
+		function checkForFilterMatch(postDataItem) {
+			console.log(postDataItem.searchtags);
+			
+			// 
+			for(let tag of postDataItem.searchtags) {
+				console.log(tag);
+
+				// 
+				if( tag.includes(filterquery) ) return true;
+			}
+
+			// 
+			return false;
 		}
 	}
 }
