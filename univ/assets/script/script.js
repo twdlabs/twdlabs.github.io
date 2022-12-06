@@ -831,25 +831,25 @@ function loadFooter() {
 function showArticle() {
 
 	// Get story article. 
-	const storyarticle = document.querySelector('div#container main#pagecontent section.story article.story');
+	const storysection = document.querySelector('div#container main#pagecontent section.story');
 
 	// Un-hide current article. 
-	storyarticle.classList.remove('gone');
+	storysection.classList.remove('gone');
 }
 
 // Show article. 
 function showPostList() {
 
 	// Get post list (archive page). 
-	const postlist = document.querySelector('div#container main#pagecontent section.archive ul.postlist');
+	const archivesection = document.querySelector('div#container main#pagecontent section.archive');
 	// Un-hide current post list. 
-	if(postlist) postlist.classList.remove('gone');
+	if(archivesection) archivesection.classList.remove('gone');
 
 	// Get post lists (home page). 
-	const postlists = document.querySelectorAll('div#container section.preview div.group');
+	const postgroups = document.querySelectorAll('div#container section.preview div.group');
 	// Un-hide current post lists. 
-	for(let postlist of postlists) {
-		postlist.classList.remove('gone');
+	for(let group of postgroups) {
+		group.classList.remove('gone');
 	}
 }
 
