@@ -67,7 +67,7 @@ div#container main#pagecontent section.story article.story div.content span.item
 
 div#container main#pagecontent section.archive {padding:0 3rem;}
 div#container main#pagecontent section.archive div.filter {max-width:calc(var(--archivewidth)/2); margin:1rem auto;}
-div#container main#pagecontent section.archive div.filter input#archivefilter {font-family:inherit; font-size:inherit; width:100%; padding:.625rem .75rem .5rem; border:.125rem solid var(--fullnavy); border-radius:.25rem; margin-top:.75rem;}
+div#container main#pagecontent section.archive div.filter input#archivefilter {font-family:inherit; font-size:inherit; width:100%; padding:.625rem .75rem .5rem; border:.125rem solid var(--fullnavy); border-radius:.25rem; outline:none; margin-top:.75rem;}
 /* div#container main#pagecontent section.archive ul.postlist {} */
 div#container main#pagecontent section.archive ul.postlist {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.75rem;}
 div#container main#pagecontent section.archive.visual ul.postlist {grid-template-columns:repeat(3,1fr);}
