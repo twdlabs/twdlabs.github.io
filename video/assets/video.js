@@ -1,5 +1,40 @@
 
 
+
+// Get video box. 
+const vidbox = document.querySelector('section#body main.player div.vid');
+// Get title box. 
+const titlebox = document.getElementById('title');
+// Get box for view count. 
+const viewcountbox = document.getElementById('viewcount');
+
+// Get like button. 
+const likebtn = document.getElementById('likebtn');
+// Get dislike button. 
+const dislikebtn = document.getElementById('dislikebtn');
+// Get share button. 
+const sharebtn = document.getElementById('sharebtn');
+// Get download button. 
+const downloadbtn = document.getElementById('downloadbtn');
+// Get save button. 
+const savebtn = document.getElementById('savebtn');
+
+
+// Get box for channel name. 
+const channelnamebox = document.getElementById('channelname');
+// Get box for channel subscriber count.
+const channelsubcount = document.getElementById('channelsubcount');
+// Get box for channel avatar. 
+const avatarbox = document.getElementById('avatar');
+// Get subscribe button. 
+const subscribebtn = document.getElementById('subbtn');
+// Get notification bell button. 
+// const notifbtn = document.getElementById('notifbtn');
+
+
+/*****/
+
+
 // Get time value of starting moment. 
 let thismoment = new Date().valueOf();
 // console.log('thismoment:',thismoment);
@@ -41,58 +76,50 @@ function loadVideoById(vidid) {
 	let vidsrc = videoData[currentvideoid];
 
 	// Load video. 
-	document.querySelector('section#body main.player div.vid').innerHTML = `
-	<!-- video -->
-	<video src="${ vidsrc.vidurl }" autoplay muted controls></video>
-	<!-- /video -->`;
-
+	vidbox.innerHTML = createVideo();
 
 	// Get video author data. 
 	let author = userdata[vidsrc.authorid];
 
-
-
 	// Load video metadata. 
-	document.getElementById('title').innerHTML = vidsrc.title;
-	document.getElementById('viewcount').innerHTML = formatViewCount(vidsrc.viewcount,true);
+	titlebox.innerHTML = vidsrc.title;
+	viewcountbox.innerHTML = formatViewCount(vidsrc.viewcount,true);
 
 	
 	// Load video reaction: liked. 
 	let liked = userdata[currentuserid].likedIds.includes(currentvideoid);
-	if(liked) document.getElementById('likebtn').classList.add('active');
-	else document.getElementById('likebtn').classList.remove('active');
+	if(liked) likebtn.classList.add('active');
+	else likebtn.classList.remove('active');
 	// console.log('liked:',liked);
 
 	// Load video reaction: disliked. 
 	let disliked = userdata[currentuserid].dislikedIds.includes(currentvideoid);
-	if(disliked) document.getElementById('dislikebtn').classList.add('active');
-	else document.getElementById('dislikebtn').classList.remove('active');
+	if(disliked) dislikebtn.classList.add('active');
+	else dislikebtn.classList.remove('active');
 	// console.log('disliked:',disliked);
 	
 	// Load video reaction: downloaded / not downloaded. 
 	let downloaded = userdata[currentuserid].downloadedIds.includes(currentvideoid);
-	if(downloaded) document.getElementById('downloadbtn').classList.add('active');
-	else document.getElementById('downloadbtn').classList.remove('active');
+	if(downloaded) downloadbtn.classList.add('active');
+	else downloadbtn.classList.remove('active');
 	
 	// Load video reaction: saved / not saved. 
 	let saved = userdata[currentuserid].savedIds.includes(currentvideoid);
-	if(saved) document.getElementById('savebtn').classList.add('active');
-	else document.getElementById('savebtn').classList.remove('active');
+	if(saved) savebtn.classList.add('active');
+	else savebtn.classList.remove('active');
 
-	
 	// Load video author. 
-	document.getElementById('channelname').innerHTML = author.name;
-	document.getElementById('channelsubcount').innerHTML = formatSubCount(author.subscribercount);
-	document.getElementById('avatar').style.backgroundImage = `url('${author.photourl}')`;
+	channelnamebox.innerHTML = author.name;
+	channelsubcount.innerHTML = formatSubCount(author.subscribercount);
+	avatarbox.style.backgroundImage = `url('${author.photourl}')`;
 
 	// Load subscriber button status. 
 	let subscribed = userdata[currentuserid].subscriptions.includes(vidsrc.authorid);
-	if(subscribed) document.getElementById('subbtn').classList.add('active');
-	else document.getElementById('subbtn').classList.remove('active');
+	if(subscribed) subscribebtn.classList.add('active');
+	else subscribebtn.classList.remove('active');
 
 
 	// TODO: Load status of notification bell button. 
-	// let notifbtn = document.getElementById('notifbtn');
 	// let notifs = 2;
 	// if(notifs>=2) {
 	// 	notifbtn.classList.add('all');
@@ -105,11 +132,35 @@ function loadVideoById(vidid) {
 	// else notifbtn.classList.remove('all','on');
 
 	// Activate action upon video ending. 
-	document.querySelector('section#body main.player div.vid video').addEventListener('ended', selectNextVideo);
+	const video = document.querySelector('section#body main.player div.vid video');
+	video.addEventListener('ended', selectNextVideo);
 
 
-	/*****/
+	/****/
+	
 
+	// Create video. 
+	function createVideo() {
+
+		// 
+		let usePublicUrl = true;
+
+		// 
+		if(usePublicUrl) {
+			return `
+			<!-- video -->
+			<video src="${ vidsrc.publicvidurl }" autoplay muted controls></video>
+			<!-- /video -->`;
+		}
+
+		// 
+		else {
+			return `
+			<!-- video -->
+			<video src="${ vidsrc.vidurl }" autoplay muted controls></video>
+			<!-- /video -->`;
+		}
+	}
 	
 	// Highlight video by id. 
 	function highlightVideoById(id) {
@@ -178,21 +229,16 @@ function activateReactBtns() {
 	// }
 
 	// Activate like and dislike buttons. 
-	let likebtn = document.getElementById('likebtn');
 	likebtn.addEventListener('click',likeVideo);
-	let dislikebtn = document.getElementById('dislikebtn');
 	dislikebtn.addEventListener('click',dislikeVideo);
 
 	// TODO: Activate share button. 
-	let sharebtn = document.getElementById('sharebtn');
 	sharebtn.addEventListener('click',toggleVideoReaction);
 
 	// TODO: Activate download button. 
-	let downloadbtn = document.getElementById('downloadbtn');
 	downloadbtn.addEventListener('click',toggleVideoReaction);
 
 	// TODO: Activate save button. 
-	let savebtn = document.getElementById('savebtn');
 	savebtn.addEventListener('click',toggleVideoReaction);
 
 	/*****/
