@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./assets/chessicon.png" rel="apple-touch-icon"/>
+		<title>Chess Game</title>
+
+		<!-- Main Stylesheet -->
+		<link href="./assets/chess.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- board -->
+			<main class="board">
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- square -->
+					<div class="square" data-id="a1" title="A1">
+
+						<!-- caption -->
+						<span class="caption">A1</span>
+						<!-- /caption -->
+
+						<!-- piece -->
+						<div class="piece id clr" data-name="pawn" data-teamid="clr">P</div>
+						<!-- /piece -->
+
+					</div>
+					<!-- /square -->
+
+				</div>
+				<!-- /row -->
+
+			</main>
+			<!-- /board -->
+
+			<!-- turner -->
+			<aside class="turner">
+
+				<!-- indicator -->
+				<div class="indicator"></div>
+				<!-- /indicator -->
+
+			</aside>
+			<!-- /turner -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="./database.js" type="text/javascript"></script> -->
+
+		<!-- Piece Database Script -->
+		<script src="./assets/piecedatabase.js" type="text/javascript"></script>
+
+		<!-- Main Script -->
+		<script src="./assets/chess.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>
