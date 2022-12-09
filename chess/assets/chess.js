@@ -4,6 +4,9 @@
 // Get chess board container. 
 const boardContainer = document.querySelector('div#container main.board');
 
+// Initialize set all squares on board. 
+let allSquares;
+
 // Define board size. 
 const boardSize = 8;
 
@@ -51,9 +54,10 @@ function createBoard() {
 	// Show contents of chess board. 
 	boardContainer.innerHTML = boardContent;
 
+	// Get all squares on board. 
+	allSquares = document.querySelectorAll('div#container main.board div.row div.square');
 
 	/****/ 
-
 
 	// Create row. 
 	function createRow(rowId) {
@@ -106,79 +110,74 @@ function fillBoard() {
 	// Add chess pieces to board. 
 	for(let piece of boardData) {
 
-		// Get id of current piece. 
-		let id = (piece.pieceid) || 'null';
-		// console.log('id:',id);
+		// Get id for type of current piece. 
+		let piecetypeid = (piece.piecetype) || 'null';
+		// console.log('piecetypeid:',piecetypeid);
 
-		// 
-		let xyz = getPieceNameById(id);
+		// Get piece type using id. 
+		let piecetype = getPieceTypeById(piecetypeid);
 
 		// Get name of current piece. 
-		let name = xyz[1] || '[Unknown piece]';
-		// console.log('name:',name);
-
-		// Get label for current piece. 
-		let label = xyz[0] || 'xyz';
-		// console.log('label:',label);
+		let name = piecetype.name || 'unknownPiece';
+		// console.log('piece name:',name);
+		
+		// Get icon for current piece. 
+		// let icon = piecetype[`${piece.teamid}icon`];
+		// Get label icon for current piece. 
+		// let labelicon = icon.fileurl || 'x';
+		let labelicon = `${piecetype.id}`;
+		// let labelicon = `
+		// <!-- icon -->
+		// <svg class="icon ${icon.tag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+		// 	${icon.innersvg}
+		// </svg>
+		// <!-- /icon -->`;
+		// console.log('piece label icon:',labelicon);
 
 		// Get team id of current piece. 
 		let teamid = piece.teamid;
-		// console.log('teamid:',teamid);
+		// console.log('piece team:',teamid);
 
 		// Get board location for current piece. 
-		let location = piece.boardlocation;
-		// console.log('location:',location);
-
-		// Add piece to board. 
-		addPieceToBoard(name,label,teamid,location);
-	}
-
-	/****/
-	
-	// Add chess piece to board. 
-	function addPieceToBoard(piecename,piecelabel,teamid,locationid) {
-		// console.log('piece name:',piecename);
-		// console.log('piece label:',piecelabel);
-		// console.log('piece color:',teamid);
-		// console.log('location id:',locationid);
+		let boardlocationid = piece.boardlocation;
+		// console.log('piece location on board:',location);
 
 		// Get square where piece is to be located. 
-		let destination = getSquareById(locationid);
+		let destination = getSquareById(boardlocationid);
 		// console.log('destination:',destination);
 
 		// Create piece to be added. 
-		let piece = createPiece();
+		let pieceLayout = createPieceLayout(name,labelicon,teamid);
 
-		// Add piece to destination square. 
-		destination.insertAdjacentHTML('beforeend',piece);
-		
-		/***/
-
-		// Create piece. 
-		function createPiece() {
-
-			// 
-			return `
-			<!-- piece -->
-			<div class="piece ${piecename} ${teamid}" data-name="${piecename}" data-teamid="${teamid}">${piecelabel}</div>
-			<!-- /piece -->`;
-		}
+		// Add piece to destination square on board. 
+		destination.insertAdjacentHTML('beforeend',pieceLayout);
 	}
 
-	// Get piece name by id. 
-	function getPieceNameById(pieceid) {
+	/****/
+
+	// Create piece. 
+	function createPieceLayout(name,label,teamid) {
+		// 
+		return `
+		<!-- piece -->
+		<div class="piece ${name} ${teamid}" data-name="${name}" data-teamid="${teamid}">${label}</div>
+		<!-- /piece -->`;
+	}
+
+	// Get piece type by id. 
+	function getPieceTypeById(piecetypeid) {
 
 		// Return nothing if id not given. 
-		if(!pieceid) return null;
+		if(!piecetypeid) return null;
 
 		// Go thru all piece types. 
-		for(let piece of pieceData) {
+		for(let piecetype of pieceTypeData) {
 
 			// Check for matching piece type. 
-			let matchingPiece = ( (piece.id).toUpperCase() == pieceid.toUpperCase() );
+			let matchingPiece = ( (piecetype.id).toUpperCase() == piecetypeid.toUpperCase() );
 
 			// Return matching piece type if found. 
-			if(matchingPiece) return ([piece.id, piece.name]);
+			if(matchingPiece) return piecetype;
 		}
 
 		// Return nothing if not found. 
@@ -209,9 +208,6 @@ function activateCurrentPlayer() {
 
 // Get square by id. 
 function getSquareById(queryId) {
-
-	// Get all squares. 
-	let allSquares = document.querySelectorAll('div#container main.board div.row div.square');
 	
 	// Go thru all squares. 
 	for(let square of allSquares) {
@@ -261,23 +257,20 @@ function selectPiece(event) {
 		selectedSquare.classList.add('active');
 
 		// Allow movement of selected piece. 
-		enterMovingMode();
+		enterMoveMode();
 	}
-	// Leave all squares un-highlighted otherwise (if something was already selected). 
+	// Leave all squares un-highlighted otherwise (if piece was already selected). 
 	// else {
 
 	// 	// Dis-allow movement of any piece. 
-	// 	exitMovingMode();
+	// 	exitMoveMode();
 	// }
 
 	/****/
 
 	// Allow movement of selected piece. 
-	function enterMovingMode() {
+	function enterMoveMode() {
 		console.log('\tNow moving...');
-
-		// Get all squares on board. 
-		let allSquares = document.querySelectorAll('div#container main.board div.row div.square');
 		
 		// Go thru all squares on board. 
 		for(let sqr of allSquares) {
@@ -288,32 +281,21 @@ function selectPiece(event) {
 
 // Un-highlight all squares on board. 
 function unselectAllSquares() {
-
-	// Get all pieces on board. 
-	// let allPieces = document.querySelectorAll('div#container main.board div.row div.square div.piece');
-
-	// Get all squares that contain pieces. 
-	// let allOccupiedSquares = [...allPieces].map( p=>p.parentElement );
-
-		// Get all squares on board. 
-		let allSquares = document.querySelectorAll('div#container main.board div.row div.square');
+	console.log('Unselecting all squares');
 	
 	// Un-highlight all other squares. 
-	for(let sqr of allSquares/* allOccupiedSquares */) {
+	for(let sqr of allSquares) {
 		sqr.classList.remove('active');
 	}
 
 	// Dis-allow movement of any piece. 
-	exitMovingMode();
+	exitMoveMode();
 
 	/****/
 
 	// Dis-allow movement of any piece. 
-	function exitMovingMode() {
+	function exitMoveMode() {
 		console.log('\tDone moving.');
-
-		// Get all squares on board. 
-		let allSquares = document.querySelectorAll('div#container main.board div.row div.square');
 
 		// Go thru all squares on board. 
 		for(let sqr of allSquares) {
@@ -350,8 +332,10 @@ function movePiece(event) {
 		let opposingPiecePresent = (opposingPieces.length > 0);
 		console.log('\tOpposing piece present:',opposingPiecePresent/* ,opposingPieces */);
 
-		// TODO: Move selected piece to destination. 
-		selectedPiece.remove();
+		// TODO: Animate movement of piece. 
+		
+		// Move selected piece to destination. 
+		// selectedPiece.remove();
 		destinationSquare.insertAdjacentElement('beforeend',selectedPiece)
 
 		// Kill opponent piece if present. 

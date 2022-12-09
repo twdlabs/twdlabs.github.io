@@ -9,7 +9,7 @@
 :root {
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
 	--darkcolor:#888;
-	--lightcolor:#CCC;
+	--lightcolor:#DDD;
 	--themecolor:#E8E8E8;
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
@@ -31,10 +31,11 @@ div#container main.board div.row div.square:hover {border-color:#ffd70044; trans
 div#container main.board div.row div.square.active {border-color:gold; transition:.25s;}
 div#container main.board div.row div.square div.piece {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
 div#container main.board div.row div.square div.piece {display:grid; place-items:center; text-align:center; height:calc(var(--squaresize)/2); width:calc(var(--squaresize)/2); border-radius:50%;}
-div#container main.board div.row div.square div.piece {background-color:var(--piececolor,#FFF3); color:var(--textcolor,crimson); font-size:calc(var(--squaresize)/4); font-weight:900;}
-div#container main.board div.row div.square div.piece.pawn {height:calc(var(--squaresize)/2.5); width:calc(var(--squaresize)/2.5);}
-div#container main.board div.row div.square div.piece.dark {--piececolor:black; --textcolor:white;}
-div#container main.board div.row div.square div.piece.light {--piececolor:whitesmoke; --textcolor:black;}
+div#container main.board.raw div.row div.square div.piece {background-color:var(--piececolor,#FFF3); color:var(--textcolor,crimson); font-size:calc(var(--squaresize)/4); font-weight:900;}
+div#container main.board.raw div.row div.square div.piece.pawn {height:calc(var(--squaresize)/2.5); width:calc(var(--squaresize)/2.5);}
+div#container main.board.raw div.row div.square div.piece.dark {--piececolor:black; --textcolor:white;}
+div#container main.board.raw div.row div.square div.piece.light {--piececolor:whitesmoke; --textcolor:black;}
+div#container main.board div.row div.square div.piece svg.icon {font-size:1rem;}
 div#container main.board div.row div.square span.caption {position:absolute; top:0; left:0;}
 div#container main.board div.row div.square span.caption {font-size:calc(var(--squaresize)/6); font-weight:900; text-transform:uppercase;}
 /* div#container main.board div.row div.square span.caption {opacity:0; visibility:hidden;} */
