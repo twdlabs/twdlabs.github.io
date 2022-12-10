@@ -1,4 +1,4 @@
 
 
-// Show current article. 
+// Reveal current article. 
 showArticle();

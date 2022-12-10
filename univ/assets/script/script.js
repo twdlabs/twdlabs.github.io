@@ -22,52 +22,6 @@ const resultsBox = document.querySelector('div#container div#searchoverlay secti
 /*****/
 
 
-// Define logo icon. 
-const logoicon = `
-<!-- logo -->
-<svg class="logo icon awardfull" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-	<path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-	<path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
-</svg>
-<!-- /logo -->`;
-
-// Define house icon. 
-const houseicon = `
-<!-- logo -->
-<svg class="icon house" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-	<path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
-	<path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
-</svg>
-<!-- /logo -->`;
-
-// Define right caret icon. 
-const rightcaret = `
-<!-- icon -->
-<svg class="icon rightcaret" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-	<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-</svg>
-<!-- /icon -->`;
-
-// Define left chevron icon (wide). 
-const leftchevron = `
-<!-- icon -->
-<svg class="icon leftchevron" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-	<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-</svg>
-<!-- /icon -->`;
-
-// Define right chevron icon (narrow). 
-const rightchevron = `
-<!-- icon -->
-<svg class="icon rightchevron" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-	<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-</svg>
-<!-- /icon -->`;
-
-
-/*****/
-
-
 // Add header. 
 loadHeader();
 
@@ -359,13 +313,13 @@ function loadTrail() {
 
 	// Disregard breadcrumb trail for home page. 
 	if(currentPageId=='home' /* || currentPageLevel==0 */) {
-		console.log('No breadcrumb trail at base level.');
+		// console.log('No breadcrumb trail at base level.');
 		return;
 	}
 
 	// Get breadcrumb trail data. 
 	const trailData = getTrailData();
-	console.log('trailData:',trailData);
+	// console.log('trailData:',trailData);
 	
 	// Get breadcrumb trail layout. 
 	const trailLayout = createTrailLayout( trailData );
@@ -376,55 +330,58 @@ function loadTrail() {
 	/****/
 
 	// Create site location breadcrumbs section. 
-	function createTrailLayout(pageIdList) {
-		// console.log('pageIdList:',pageIdList);
+	function createTrailLayout(pageNodeList) {
+		console.log('Page node list:',pageNodeList);
 
 		// Create node connector. 
-		let connector = `
+		const connector = `
 		<!-- link -->
 		<span class="link">${rightcaret}</span>
 		<!-- /link -->`;
 
-		// Return compiled result. 
+		// Create node layouts. 
+		const nodeLayouts = pageNodeList.map(createPageNodeLayout);
+
+		// Return compiled breadcrumb result. 
 		return `
 		<!-- location -->
 		<aside class="location">
-			${ pageIdList.map(createPageNodeById).join(connector) }
+
+			${ nodeLayouts.join(connector) }
+
 		</aside>
 		<!-- /location -->`;
 
 		/***/
 
 		// Create link for page node. 
-		function createPageNodeById(xyz) {
-			// console.log('xyz:',xyz);
+		function createPageNodeLayout(pageNode) {
+			// console.log('Page node:',pageNode);
 
 			// Get page id. 
-			let pageid = xyz.pageid;
-			// console.log('pageid:',pageid);
-			
-			// Check for direct parent. 
-			let isDirectParent = xyz.directparent;
-			console.log('isDirectParent:',isDirectParent);
-
-			// Get associated page. 
-			let page = getPageById(pageid);
-			// console.log('page:',page);
-
-			// Return nothing if page not found. 
-			if(!page) return '';
+			let pageid = pageNode.pageid;
+			// console.log('Page id:',pageid);
 			
 			// Check for home page node. 
 			let onHomePage = (pageid=='home');
-			// console.log('onHomePage:',onHomePage);
-
+			// console.log('Home page?:',onHomePage);
 			// Check for post page node. 
 			let onPostPage = pageid.includes('post');
-			console.log('onPostPage:',onPostPage);
-			
+			// console.log('Post page?:',onPostPage);
 			// Check for error page node. 
 			let onErrorPage = (pageid=='404');
-			// console.log('onErrorPage:',onErrorPage);
+			// console.log('Error page?',onErrorPage);
+			
+			// Check for direct parent. 
+			let isDirectParent = pageNode.directparent;
+			// console.log('Direct parent?',isDirectParent);
+
+			// Get associated page. 
+			let page = getPageById(pageid);
+			console.log('Site map page:',page);
+
+			// Return nothing if page not found. 
+			if(!page) return '';
 
 			// Get url for node link. 
 			let pageurl = getNodeLinkUrl();
@@ -436,10 +393,11 @@ function loadTrail() {
 
 			// Return compiled link page node. 
 			if(currentPageId.includes('post') && isDirectParent) {
-				console.log();
+				// console.log();
 				return `
 				<!-- node -->
-				<a class="node up" href="${ pageurl }">
+				<a class="node back" href="${pageurl}">
+
 					${leftchevron}
 					
 					<!-- caption -->
@@ -453,7 +411,7 @@ function loadTrail() {
 			// Return compiled link page node. 
 			return `
 			<!-- node -->
-			<a class="node" href="${ pageurl }">
+			<a class="node" href="${pageurl}">
 
 				<!-- caption -->
 				<span class="caption">${linkcaption}</span>
@@ -859,7 +817,7 @@ function loadFooter() {
 	maincontainer.insertAdjacentHTML('beforeend',footer);
 }
 
-// Show article. 
+// Reveal current article. 
 function showArticle() {
 
 	// Get story article. 
@@ -869,7 +827,7 @@ function showArticle() {
 	storysection.classList.remove('gone');
 }
 
-// Show article. 
+// Reveal current list of posts. 
 function showPostList() {
 
 	// Get post list (archive page). 

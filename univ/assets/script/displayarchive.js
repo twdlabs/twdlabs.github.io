@@ -21,18 +21,21 @@ const excerptcharlimit = 180;
 
 // Check for page parameter (default to page 1). 
 const pagenumber = 1*urlparams.get('p') || 1;
-// console.log('Archive page:',pagenumber);
+console.log('Archive page number:',pagenumber);
 
 // TODO: Use page number. 
 // pagenumber;
 
-// Load archive list of posts. 
-loadArchivePage( postregister[currentPostType]['archiveData'] );
+// Get source of archive data. 
+let archiveData = postregister[currentPostType]['archiveData']
 
-// Show current article. 
+// Load archive of posts. 
+loadArchivePage( archiveData );
+
+// Reveal current article. 
 showArticle();
 
-// Show current list of posts. 
+// Reveal current list of posts. 
 showPostList();
 // setTimeout(showPostList,100);
 

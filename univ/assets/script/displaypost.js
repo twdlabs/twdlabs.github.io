@@ -36,7 +36,7 @@ let isValidId = !!currentPostId;
 // Load page for single post. 
 loadPostPage(currentPostId);
 
-// Show current article. 
+// Reveal current article. 
 showArticle();
 
 

@@ -18,7 +18,7 @@ loadBlogPosts();
 // Load preview of event posts. 
 loadEventPosts();
 
-// Show current list of posts. 
+// Reveal current list of posts. 
 showPostList();
 
 

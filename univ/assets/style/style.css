@@ -149,7 +149,8 @@ div#container main#pagecontent aside.location a.node {background-color: var(--tr
 div#container main#pagecontent aside.location a.node {display:flex; align-items:center; white-space:nowrap; min-height:2rem; padding:.25rem .75rem; border-radius:10rem;}
 div#container main#pagecontent aside.location a.node:hover {text-decoration:underline;}
 /* div#container main#pagecontent aside.location a.node span.caption {} */
-div#container main#pagecontent aside.location a.node.up svg.icon.leftchevron {display:none;}
+/* div#container main#pagecontent aside.location a.node.back {} */
+div#container main#pagecontent aside.location a.node.back svg.icon {display:none;}
 div#container main#pagecontent aside.location span.link {color:var(--ltgrey); margin-left:.375rem; margin-right:.375rem;}
 div#container main#pagecontent aside.location span.link svg.icon.rightcaret {font-size:.625rem;}
 /* div#container main#pagecontent aside.location span.link svg.icon.rightchevron {font-size:1.125rem;} */
@@ -249,10 +250,11 @@ div#container div#searchoverlay {background-color:white;}
 	/* Content Section: Site Location Section */
 	div#container main#pagecontent aside.location {padding:1rem 4rem;}
 	div#container main#pagecontent aside.location a.node {display:none;}
-	div#container main#pagecontent aside.location a.node.up {display:flex; /* background-color:transparent; */}
-	div#container main#pagecontent aside.location a.node.up svg.icon.leftchevron {display:block; margin-right:.25rem;}
-	div#container main#pagecontent aside.location a.node.up span.caption {padding:.375rem .5rem;}
-	div#container main#pagecontent aside.location a.node.up span.caption:before {content:'All ';}
+	div#container main#pagecontent aside.location a.node.back {display:flex; /* background-color:transparent; */}
+	div#container main#pagecontent aside.location a.node.back:hover {text-decoration:none;}
+	div#container main#pagecontent aside.location a.node.back span.caption {padding:.375rem .5rem;}
+	div#container main#pagecontent aside.location a.node.back span.caption:before {content:'All ';}
+	div#container main#pagecontent aside.location a.node.back svg.icon {display:block; margin-right:.25rem;}
 	div#container main#pagecontent aside.location span.link {display:none;}
 
 
