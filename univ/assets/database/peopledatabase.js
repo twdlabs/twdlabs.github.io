@@ -532,8 +532,8 @@ const studentData = [
 	{
 		posttype:'student',
 		studentid:'001',
-		lastname:'Washington',
-		firstname:'George',
+		lastname:'Doe',
+		firstname:'Andrew',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
@@ -541,160 +541,7 @@ const studentData = [
 	{
 		posttype:'student',
 		studentid:'002',
-		lastname:'Adams',
-		firstname:'John',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'003',
-		lastname:'Jefferson',
-		firstname:'Thomas',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'006',
-		lastname:'Jackson',
-		firstname:'Andrew',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'007',
-		lastname:'Adams',
-		firstname:'John Quincy',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'009',
-		lastname:'Monroe',
-		firstname:'James',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'016',
-		lastname:'Lincoln',
-		firstname:'Abraham',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'017',
-		lastname:'Johnson',
-		firstname:'Andrew',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'021',
-		lastname:'Coolidge',
-		firstname:'Calvin',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'023',
-		lastname:'Cleveland',
-		firstname:'Grover',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'025',
-		lastname:'Wilson',
-		firstname:'Woodrow',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'032',
-		lastname:'Truman',
-		firstname:'Harry S.',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'036',
-		lastname:'F. Kennedy',
-		firstname:'John',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'037',
-		lastname:'B. Johnson',
-		firstname:'Lyndon',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'038',
-		lastname:'Nixon',
-		firstname:'Richard M.',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'039',
-		lastname:'Carter',
-		firstname:'James',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'040',
-		lastname:'Reagan',
-		firstname:'Ronald',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'041',
-		lastname:'Bush',
-		firstname:'George H.W.',
-		avatarurl:'./assets/media/avatar-m.png',
-		programid:'XYZ',
-		postedtime:0,
-	},
-	{
-		posttype:'student',
-		studentid:'042',
-		lastname:'Clinton',
+		lastname:'Doe',
 		firstname:'Bill',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
@@ -702,37 +549,271 @@ const studentData = [
 	},
 	{
 		posttype:'student',
-		studentid:'043',
-		lastname:'Bush',
-		firstname:'George W.',
+		studentid:'003',
+		lastname:'Doe',
+		firstname:'Christine',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'004',
+		lastname:'Doe',
+		firstname:'David',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
 	{
 		posttype:'student',
-		studentid:'044',
-		lastname:'Obama',
-		firstname:'Barack',
+		studentid:'005',
+		lastname:'Doe',
+		firstname:'Eli',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
 	{
 		posttype:'student',
-		studentid:'045',
-		lastname:'Trump',
-		firstname:'Donald',
+		studentid:'006',
+		lastname:'Doe',
+		firstname:'Fred',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
 	{
 		posttype:'student',
-		studentid:'046',
-		lastname:'Biden',
-		firstname:'Joseph',
+		studentid:'007',
+		lastname:'Doe',
+		firstname:'George',
 		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'008',
+		lastname:'Doe',
+		firstname:'Hilary',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'009',
+		lastname:'Doe',
+		firstname:'Ian',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'010',
+		lastname:'Doe',
+		firstname:'Jane',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'011',
+		lastname:'Doe',
+		firstname:'Jay',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'012',
+		lastname:'Doe',
+		firstname:'Jenny',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'013',
+		lastname:'Doe',
+		firstname:'Jill',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'014',
+		lastname:'Doe',
+		firstname:'Jim',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'015',
+		lastname:'Doe',
+		firstname:'Joe',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'016',
+		lastname:'Doe',
+		firstname:'John',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'017',
+		lastname:'Doe',
+		firstname:'Kate',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'018',
+		lastname:'Doe',
+		firstname:'Leah',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'019',
+		lastname:'Doe',
+		firstname:'Mike',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'020',
+		lastname:'Doe',
+		firstname:'Nina',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'021',
+		lastname:'Doe',
+		firstname:'Oscar',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'022',
+		lastname:'Doe',
+		firstname:'Peter',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'023',
+		lastname:'Doe',
+		firstname:'Quinten',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'024',
+		lastname:'Doe',
+		firstname:'Rachel',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'025',
+		lastname:'Doe',
+		firstname:'Steve',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'026',
+		lastname:'Doe',
+		firstname:'Tim',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'027',
+		lastname:'Doe',
+		firstname:'Tori',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'028',
+		lastname:'Doe',
+		firstname:'Ursula',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'029',
+		lastname:'Doe',
+		firstname:'Victor',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'030',
+		lastname:'Doe',
+		firstname:'Wendy',
+		avatarurl:'./assets/media/avatar-f.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'031',
+		lastname:'Doe',
+		firstname:'Xavier',
+		avatarurl:'./assets/media/avatar-m.png',
+		programid:'XYZ',
+		postedtime:0,
+	},
+	{
+		posttype:'student',
+		studentid:'032',
+		lastname:'Doe',
+		firstname:'Yolanda',
+		avatarurl:'./assets/media/avatar-f.png',
 		programid:'XYZ',
 		postedtime:0,
 	},
@@ -743,11 +824,16 @@ const studentData = [
 	// 	lastname:'LastName',
 	// 	firstname:'FirstName',
 	// 	avatarurl:'./assets/media/avatar-f.png',
-	// 	programid:'',
+	// 	programid:'XYZ',
 	// 	postedtime:0,
 	// },
 
 ];
+
+
+
+// Create repository to check for duplicate ids. 
+const idRepository = [];
 
 
 /*****/
@@ -762,6 +848,9 @@ addPeopleProperties();
 
 // Define additional people properties. 
 function addPeopleProperties() {
+
+	// Create repository to check for duplicate emails. 
+	const emailRepository = [];
 
 	// 
 	for(let faculty of facultyData) {
@@ -799,7 +888,7 @@ function addPeopleProperties() {
 		student.searchtags = getStudentTags(student);
 
 		// Assign a random program to each student. 
-		student.programid = programData[Math.floor( (programData.length) * Math.random() )].programid;
+		student.programid = programData[ Math.floor( (programData.length) * Math.random() ) ].programid;
 	}
 
 	/****/
@@ -839,24 +928,24 @@ function addPeopleProperties() {
 	}
 	
 	// Define searchable student tags. 
-	function getStudentTags(person) {
+	function getStudentTags(student) {
 	
 		// Get first name of student. 
-		let fname = person.firstname;
+		let fname = student.firstname;
 	
 		// Get last name of student. 
-		let lname = person.lastname;
+		let lname = student.lastname;
 
 		// Get id of given program. 
-		let progid = person.programid; // console.log(progid);
+		let progid = student.programid; // console.log(progid);
 
 		// Get name of given program. 
 		let progname = getProgramById(progid).title;
 
 		// Get bio of given student. 
-		let bio = person.content;
+		let bio = student.content;
 	
-		// Compile searchable components for this post type: person. 
+		// Compile searchable components for this post type: student. 
 		let tagsources = [ lname, fname, bio, progid, progname ];
 		
 		// Return string of tags. 
@@ -864,19 +953,19 @@ function addPeopleProperties() {
 	}
 	
 	// Define searchable faculty tags. 
-	function getFacultyTags(person) {
+	function getFacultyTags(faculty) {
 	
 		// Get first name of faculty. 
-		let fname = person.firstname;
+		let fname = faculty.firstname;
 	
 		// Get last name of faculty. 
-		let lname = person.lastname;
+		let lname = faculty.lastname;
 
 		// Get bio of given faculty. 
-		let bio = person.content;
+		let bio = faculty.content;
 	
-		// Compile searchable components for this post type: person. 
-		let tagsources = [ lname, fname, bio, person.programids.join(' '), person.programids.map( (progid)=>(getProgramById(progid).title) ).join(' ') ];
+		// Compile searchable components for this post type: faculty. 
+		let tagsources = [ lname, fname, bio, faculty.programids.join(' '), faculty.programids.map( (progid)=>(getProgramById(progid).title) ).join(' ') ];
 		
 		// Return string of tags. 
 		return tagsources.join(' ').split(' ');

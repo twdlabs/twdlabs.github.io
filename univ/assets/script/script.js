@@ -331,7 +331,7 @@ function loadTrail() {
 
 	// Create site location breadcrumbs section. 
 	function createTrailLayout(pageNodeList) {
-		console.log('Page node list:',pageNodeList);
+		// console.log('Page node list:',pageNodeList);
 
 		// Create node connector. 
 		const connector = `
@@ -371,14 +371,10 @@ function loadTrail() {
 			// Check for error page node. 
 			let onErrorPage = (pageid=='404');
 			// console.log('Error page?',onErrorPage);
-			
-			// Check for direct parent. 
-			let isDirectParent = pageNode.directparent;
-			// console.log('Direct parent?',isDirectParent);
 
 			// Get associated page. 
 			let page = getPageById(pageid);
-			console.log('Site map page:',page);
+			// console.log('Site map page:',page);
 
 			// Return nothing if page not found. 
 			if(!page) return '';
@@ -391,14 +387,12 @@ function loadTrail() {
 			let linkcaption = getNodeLinkCaption();
 			// console.log('linkcaption:',linkcaption);
 
-			// Return compiled link page node. 
-			if(currentPageId.includes('post') && isDirectParent) {
+			// Return compiled node for current page link. 
+			if(pageNode.uplevels == 0 ) {
 				// console.log();
 				return `
 				<!-- node -->
-				<a class="node back" href="${pageurl}">
-
-					${leftchevron}
+				<a class="node here">
 					
 					<!-- caption -->
 					<span class="caption">${linkcaption}</span>
@@ -408,7 +402,29 @@ function loadTrail() {
 				<!-- /node -->`;
 			}
 
-			// Return compiled link page node. 
+			// 
+			// pageid.includes('archive') ? 'All' : '';
+
+			// Return compiled node for parent page link. 
+			else if( currentPageId.includes('post') && pageNode.uplevels == 1 ) {
+				// console.log();
+				return `
+				<!-- node -->
+				<a class="node back" href="${pageurl}">
+
+					${leftchevron}
+					
+					<!-- caption -->
+					<span class="caption">
+						${linkcaption}
+					</span>
+					<!-- /caption -->
+	
+				</a>
+				<!-- /node -->`;
+			}
+
+			// Return compiled node for further page links. 
 			return `
 			<!-- node -->
 			<a class="node" href="${pageurl}">
@@ -773,7 +789,7 @@ function loadFooter() {
 			<!-- /col -->
 					
 			<!-- break -->
-			<div class="col break"></div>
+			<div class="col break solid"></div>
 			<!-- /break -->
 			
 			<!-- col -->
@@ -803,6 +819,10 @@ function loadFooter() {
 
 			</div>
 			<!-- /col -->
+
+			<!-- break -->
+			<div class="col break solid"></div>
+			<!-- /break -->
 			
 		</main>
 		<!-- /main -->

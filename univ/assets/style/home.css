@@ -20,9 +20,9 @@ div#container section.banner {background-color:#000; padding: 8rem 0 3.75rem; te
 div#container section.banner div.bg {position:absolute; top:0; right:0; bottom:0; left:0; z-index:10;}
 div#container section.banner div.bg {background:rgb(141,74,2) url('../../assets/media/library.jpg'); background-size:cover; background-position:center; opacity:.33;}
 div#container section.banner main {color:white; position:relative; z-index:20; padding:0 .5rem;}
-div#container section.banner main h1.title {font-size:6.25rem; font-weight:100; margin:0; margin-bottom:1rem;}
-div#container section.banner main h2.subtitle {font-size:3.125rem; font-weight:100; margin:0; margin-bottom:1rem;}
-div#container section.banner main h3.subtitle {font-size:1.6875rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main h1.header {font-size:6.25rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main h2.subheader {font-size:3.125rem; font-weight:100; margin:0; margin-bottom:1rem;}
+div#container section.banner main h3.subheader {font-size:1.6875rem; font-weight:100; margin:0; margin-bottom:1rem;}
 div#container section.banner main a.archivelink {display:inline-block; font-size:1.9rem; background-color:var(--navyblue); border-radius:.5rem; padding:1.5rem 2rem 1.25rem; padding:.75em 1em .625em;}
 
 
@@ -116,9 +116,9 @@ div#container section.carousel div.remote span.dot.active {background-color:whit
 	/* Banner Section */
 	/* div#container section.banner {} */
 	/* div#container section.banner main {} */
-	div#container section.banner main h1.title {font-size:4rem;}
-	div#container section.banner main h2.subtitle {font-size:2rem;}
-	div#container section.banner main h3.subtitle {font-size:1.125rem;}
+	div#container section.banner main h1.header {font-size:4rem;}
+	div#container section.banner main h2.subheader {font-size:2rem;}
+	div#container section.banner main h3.subheader {font-size:1.125rem;}
 	div#container section.banner main a.archivelink {font-size:1.5rem;}
 
 	/* Feature Section */
@@ -144,9 +144,9 @@ div#container section.carousel div.remote span.dot.active {background-color:whit
 
 	/* Banner Section */
 	div#container section.banner {padding: 5rem 0 2.5rem;}
-	div#container section.banner h1.title {font-size:3.5rem;}
-	div#container section.banner h2.subtitle {font-size:1.9rem;}
-	div#container section.banner h3.subtitle {font-size:1.2rem;}
+	div#container section.banner h1.header {font-size:3.5rem;}
+	div#container section.banner h2.subheader {font-size:1.9rem;}
+	div#container section.banner h3.subheader {font-size:1.2rem;}
 	div#container section.banner a.archivelink {font-size:1.3rem;}
 
 	/* Feature Section */

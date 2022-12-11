@@ -82,6 +82,9 @@ function loadArchivePage(postlist) {
 
 		// Get post url. 
 		let url = `post/?id=${id}`;
+
+		// Get date of post. 
+		// let datetime = (currentPostType=='event') ? getDateComponents( post['eventtime'] ) : getDateComponents( post['postedtime'] );
 	
 		// Get title of post. 
 		let title = (post.title) ? (post.title) : `[Untitled ${post.posttype}]`;
@@ -92,80 +95,113 @@ function loadArchivePage(postlist) {
 		// Get remainder of post content. 
 		// let postremainder = (post.content) ? (post.content).slice(excerptcharlimit) : '';
 
-
 		// Create blog preview post. 
-		if(currentPostType=='post') {
-			// 
-			return createBlogPostLayout();
-		}
-
+		if(currentPostType=='post') return createBlogPostLayout();
 		// Create program preview post. 
-		else if(currentPostType=='program') {
-			// 
-			return createProgramPostLayout();
-		}
-
+		else if(currentPostType=='program') return createProgramPostLayout();
 		// Create course preview post. 
-		else if(currentPostType=='course') {
-			// 
-			return createCoursePostLayout();
-		}
-
+		else if(currentPostType=='course') return createCoursePostLayout();
 		// Create event preview post. 
-		else if(currentPostType=='event') {
-			// 
-			return createEventPostLayout();
-		}
-
+		else if(currentPostType=='event') return createEventPostLayout();
 		// Create faculty preview post. 
-		else if(currentPostType=='faculty') {
-			// 
-			return createFacultyPostLayout();
-		}
-
+		else if(currentPostType=='faculty') return createFacultyPostLayout();
 		// Create student preview post. 
-		else if(currentPostType=='student') {
-			// 
-			return createStudentPostLayout();
-		}
-
+		else if(currentPostType=='student') return createStudentPostLayout();
 		// Create miscellaneous post for unregistered post type. 
 		else return '[Unregistered post type]';
 
 		/***/
 
+		// Get date components. 
+		function getDateComponents(numms) {
+
+			// Create date object. 
+			let datetime = new Date(numms);
+			
+			// Get date components from date object. 
+			let y = datetime.getFullYear();
+			let m = monthNames[ datetime.getMonth() ];
+			let d = datetime.getDate();
+			let str = datetime.toDateString();
+
+			// Return date components in simplified form. 
+			return { y:y, m:m, d:d, str:str, };
+		}
+
 		// Create preview layout for blog post. 
 		function createBlogPostLayout() {
+	
+			// Get post id. 
+			let id = post.postid;
+
+			// Get post url. 
+			let url = getRelativeUrl(`blog/post/?id=${id}`);
+			
+			// Get date components. 
+			let datetime = getDateComponents(post.postedtime);
+			// console.log('\tdatetime:',datetime);
+
+			// 
 			return `
 			<!-- postitem -->
 			<li class="postitem">
 		
 				<!-- post -->
-				<article class="post blogpost" data-id="${ post.postid }">
-					
-					<!-- title -->
-					<h2 class="title">
-						<a href="${url}">${title}</a>
-					</h2>
-					<!-- /title -->
-
-					<!-- posted -->
-					<p class="posted">${ ( new Date(post.postedtime) ).toDateString() }</p>
-					<!-- /posted -->
-		
-					<!-- content -->
-					<p class="content">
-		
-						<!-- excerpt -->
-						<span class="excerpt">${postexcerpt}</span>
-						<!-- /excerpt -->
-		
-						<!-- readbtn -->
-						<a class="readbtn" href="${url}">Read More</a>
-						<!-- /readbtn -->
+				<article class="post dated blog" data-id="${id}">
+				
+					<!-- postdate -->
+					<div class="postdate">
+	
+						<!-- date -->
+						<div class="date">
+			
+							<!-- year -->
+							<span class="year">${datetime.y}</span>
+							<!-- /year -->
+	
+							<!-- month -->
+							<span class="month">${datetime.m}</span>
+							<!-- /month -->
+	
+							<!-- date -->
+							<span class="date">${ (datetime.d<10) ? `0${datetime.d}` : datetime.d }</span>
+							<!-- /date -->
+	
+						</div>
+						<!-- /date -->
 						
-					</p>
-					<!-- /content -->
+					</div>
+					<!-- /postdate -->
+					
+					<!-- postcontent -->
+					<div class="postcontent">
+					
+						<!-- postname -->
+						<h2 class="postname">
+	
+							<!-- readlink -->
+							<a class="readlink" href="${url}">${title}</a>
+							<!-- /readlink -->
+							
+						</h2>
+						<!-- /postname -->
+						
+						<!-- postexcerpt -->
+						<p class="postexcerpt">
+							
+							<!-- excerpt -->
+							<span class="excerpt">${postexcerpt}</span>
+							<!-- /excerpt -->
+							
+							<!-- readlink -->
+							<a class="readlink" href="${url}">Read More</a>
+							<!-- /readlink -->
+							
+						</p>
+						<!-- /postexcerpt -->
+						
+					</div>
+					<!-- /postcontent -->
 		
 				</article>
 				<!-- /post -->
@@ -194,23 +230,18 @@ function loadArchivePage(postlist) {
 
 			// Get post url. 
 			let url = getRelativeUrl(`events/post/?id=${id}`);
-
-			// Get date of post. 
-			let datetime = new Date( post.eventtime );
-			// let datetime = (currentPostType=='event') ? new Date( post['eventtime'] ) : new Date( post['postedtime'] );
+			
+			// Get date components. 
+			let datetime = getDateComponents(post.eventtime);
 			// console.log('\tdatetime:',datetime);
-			let y = datetime.getFullYear();
-			let m = monthNames[ datetime.getMonth() ];
-			let d = datetime.getDate();
 
 			// 
 			return `
-			
 			<!-- postitem -->
 			<li class="postitem">
 		
 				<!-- post -->
-				<article class="post event" data-id="${ post.eventid }">
+				<article class="post dated event" data-id="${id}">
 				
 					<!-- postdate -->
 					<div class="postdate">
@@ -219,15 +250,15 @@ function loadArchivePage(postlist) {
 						<div class="date">
 			
 							<!-- year -->
-							<span class="year">${y}</span>
+							<span class="year">${datetime.y}</span>
 							<!-- /year -->
 	
 							<!-- month -->
-							<span class="month">${m}</span>
+							<span class="month">${datetime.m}</span>
 							<!-- /month -->
 	
 							<!-- date -->
-							<span class="date">${ (d<10) ? `0${d}` : d }</span>
+							<span class="date">${ (datetime.d<10) ? `0${datetime.d}` : datetime.d }</span>
 							<!-- /date -->
 	
 						</div>
@@ -243,7 +274,7 @@ function loadArchivePage(postlist) {
 						<h2 class="postname">
 	
 							<!-- readlink -->
-							<a class="readlink" href="${url}">${post.title}</a>
+							<a class="readlink" href="${url}">${title}</a>
 							<!-- /readlink -->
 							
 						</h2>
@@ -372,24 +403,23 @@ function loadArchivePage(postlist) {
 		// Get all archive posts. 
 		let allPosts = document.querySelectorAll('div#container main#pagecontent section.archive ul.postlist li.postitem article.post');
 
-		// TODO: Show matching posts. 
+		// Show posts that match query. 
 		for(let post of allPosts) {
-
-			// Get list item. 
-			let li = post.parentElement;
 
 			// Get id of current post. 
 			let postid = post.getAttribute('data-id');
-
 			// Get post data item. 
 			let postDataItem = getPostDataItem(currentPostType,postid);
-
 			// Check if matches filter query. 
 			let matchesFilterQuery = checkForFilterMatch(postDataItem);
 
-			// 
-			if(matchesFilterQuery) li.classList.remove('gone');
-			else li.classList.add('gone');
+			// Get list item. 
+			let listitem = post.parentElement;
+
+			// Show matching post. 
+			if(matchesFilterQuery) listitem.classList.remove('gone');
+			// Hide non-matching post. 
+			else listitem.classList.add('gone');
 		}
 
 		/***/
@@ -397,20 +427,18 @@ function loadArchivePage(postlist) {
 		// Get post data item. 
 		function getPostDataItem(type,id) {
 
-			// 
+			// Get archive for current post type. 
 			let archiveData = postregister[currentPostType].archiveData;
 
-			// 
+			// Go thru post items in archive. 
 			for(let postItem of archiveData) {
-
-				// 
+				// Check for match. 
 				let matchFound = (postItem[`${type}id`]==id);
-
-				// 
+				// Return matching post item. 
 				if(matchFound) return postItem;
 			}
 
-			// 
+			// Return nothing if no match found. 
 			return null;
 		}
 
@@ -418,15 +446,15 @@ function loadArchivePage(postlist) {
 		function checkForFilterMatch(postDataItem) {
 			console.log(postDataItem.searchtags);
 			
-			// 
+			// Go thru search tags. 
 			for(let tag of postDataItem.searchtags) {
 				console.log(tag);
 
-				// 
+				// Return true if match found. 
 				if( ( tag.toUpperCase() ).includes( filterquery.toUpperCase() ) ) return true;
 			}
-
-			// 
+			
+			// Return false if no match found. 
 			return false;
 		}
 	}

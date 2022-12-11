@@ -15,21 +15,35 @@ div#container header#header {background-color:var(--themecolor);}
 
 /* Content Section */
 
-/* div#container main#pagecontent {} */
+div#container main#pagecontent {overflow-x:hidden;}
 
-div#container main#pagecontent aside,
-div#container main#pagecontent section {margin-top:1rem;}
-div#container main#pagecontent section {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
+/* div#container main#pagecontent aside, */
+div#container main#pagecontent section {margin-top:1.5rem;}
+div#container main#pagecontent section {opacity:1; visibility:visible; transform:none; transition:.5s;}
 div#container main#pagecontent section.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
+div#container main#pagecontent section.gone:nth-child(2n) {transform:translateX(100%);}
+div#container main#pagecontent section.gone:nth-child(2n+1) {transform:translateX(-100%);}
 
 
 /* Content Section: Story */
 
+/*  */
 div#container main#pagecontent section.story {/* background-color:hotpink; */ padding:0 6rem;}
 div#container main#pagecontent section.story article.story {max-width:var(--articlewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.story article.story h1.head {font-size:1.5rem; text-align:center;}
 div#container main#pagecontent section.story article.story p.textcopy {line-height:1.75; text-align:center;}
-div#container main#pagecontent section.story article.story h1.title {font-size:1.5rem; /* text-align:center; */}
+div#container main#pagecontent section.story article.story div.head {display:flex; justify-content:space-between; align-items:center;}
+div#container main#pagecontent section.story article.story div.head h1.title {font-size:1.5rem; /* text-align:center; */ margin:0;}
+div#container main#pagecontent section.story article.story div.head div.likebtn {background-color:var(--superltgrey); cursor:pointer; user-select:none; padding:.625rem .875rem; border-radius:.25rem;}
+div#container main#pagecontent section.story article.story div.head div.likebtn {display:flex; flex-direction:row; align-items:center;}
+div#container main#pagecontent section.story article.story div.head div.likebtn svg.icon {color:red; font-size:1.125rem; transition:.25s;}
+div#container main#pagecontent section.story article.story div.head div.likebtn span.count {margin-left:.5rem;}
+div#container main#pagecontent section.story article.story div.head div.likebtn svg.icon {display:block;}
+div#container main#pagecontent section.story article.story div.head div.likebtn svg.icon.fill {display:none;}
+div#container main#pagecontent section.story article.story div.head div.likebtn:active svg.icon {transform:scale(.75);}
+div#container main#pagecontent section.story article.story.liked div.head div.likebtn svg.icon {display:none;}
+div#container main#pagecontent section.story article.story.liked div.head div.likebtn svg.icon.fill {display:block;}
+div#container main#pagecontent section.story article.story.liked div.head div.likebtn:active svg.icon {transform:none;}
 div#container main#pagecontent section.story article.story div.content {line-height:1.75; margin:1rem 0;}
 div#container main#pagecontent section.story article.story div.content span.item {display:block; margin-top:1.5rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.label {font-size:1.25rem; font-weight:800;}
@@ -42,8 +56,12 @@ div#container main#pagecontent section.story article.story div.content span.item
 div#container main#pagecontent section.story article.story div.content span.item span.value:empty::after {content:'[none]';}
 div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink {display:inline-block; background-color:var(--trptrpnavy); min-width:5.75rem; text-align:center; transition:.125s; padding:1px .75rem 0; border-radius:10rem; margin:.5rem .5rem 0 0;}
 div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink:hover {background-color:var(--themecolor); color:white;}
+div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink.person {display:inline-flex; flex-direction:column; overflow:hidden; padding:0; border-radius:.5rem;}
+/* div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink.person:hover {} */
+div#container main#pagecontent section.story article.story div.content span.item span.value a.postlink.person img.avatar {height:8rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.value img.avatar {display:block; height:16rem;  max-width:100%; object-fit:cover;}
-/* Event Preview Post */
+
+/* Dated Preview Post */
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post {display:flex; flex-direction:row; max-width:28rem; margin-top:.75rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; --darkbgcolor:var(--fullnavy); margin-right:1rem;}
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
@@ -65,22 +83,19 @@ div#container main#pagecontent section.story article.story div.content span.item
 
 /* Content Section: Archive */
 
+/*  */
 div#container main#pagecontent section.archive {padding:0 3rem;}
 div#container main#pagecontent section.archive div.filter {max-width:calc(var(--archivewidth)/2); margin:1rem auto;}
 div#container main#pagecontent section.archive div.filter input#archivefilter {font-family:inherit; font-size:inherit; width:100%; padding:.625rem .75rem .5rem; border:.125rem solid var(--fullnavy); border-radius:.25rem; outline:none; margin-top:.75rem;}
 /* div#container main#pagecontent section.archive ul.postlist {} */
 div#container main#pagecontent section.archive ul.postlist {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.75rem;}
-div#container main#pagecontent section.archive.visual ul.postlist {grid-template-columns:repeat(3,1fr);}
 div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--archivewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.archive ul.postlist li.postitem {display:flex; justify-content:center; /* border-top:1px solid var(--trpnavy); */}
 div#container main#pagecontent section.archive ul.postlist li.postitem.gone {display:none;}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem a.postlink {} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post {background-color:var(--trptrpnavy); overflow:hidden; padding:1.25rem; border:.125rem solid var(--trptrpnavy); border-radius:.5rem; margin:1rem 0;}
-div#container main#pagecontent section.archive.visual ul.postlist li.postitem article.post {padding:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post:hover {background-color:var(--trpnavy); /* cursor:pointer; */ transition:.25s;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post img.avatar {height:12rem; /* border-radius:inherit; */}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post h2.title {font-size:1.25rem; /* line-height:2; */ margin:0;}
-div#container main#pagecontent section.archive.visual ul.postlist li.postitem article.post h2.title {text-align:center; margin:.25rem 0 .5rem;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.posted {margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content {line-height:1.5; margin:0;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content span.excerpt {display:inline;}
@@ -92,25 +107,35 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn {background-color:transparent; color:var(--themecolor); text-decoration:underline;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.expand {display:block;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post p.content a.readbtn span.collapse {display:none;}
-/* Event Preview Post */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event {background-color:initial; display:flex; flex-direction:row; max-width:28rem; border-color:transparent; margin-top:.75rem;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; --darkbgcolor:var(--fullnavy); margin-right:1rem;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date {text-align:center; padding-top:.625rem;}
-/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.year {display:none;} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.year {font-size:1rem; margin-bottom:-.5rem;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postdate div.date span.date {font-size:1.75rem; font-weight:800; margin-top:-.75rem;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent {flex-grow:1; line-height:1.375;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h2.postname {font-size:1rem; font-weight:300; /* white-space:nowrap; */ margin:0; /* margin:.5rem 0; */}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h2.postname a.readlink {color:initial;}
-/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent h2.postname a.readlink:hover {text-decoration:underline;} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; margin:0; /* margin-top:.125rem; */}
-/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt span.excerpt {} */
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.event div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
 
+/* Person Preview Post */
+div#container main#pagecontent section.archive.people ul.postlist {grid-template-columns:repeat(3,1fr);}
+div#container main#pagecontent section.archive.people ul.postlist li.postitem article.post {padding:0;}
+div#container main#pagecontent section.archive.people ul.postlist li.postitem article.post h2.title {text-align:center; margin:.25rem 0 .5rem;}
+div#container main#pagecontent section.archive.people ul.postlist li.postitem article.post img.avatar {height:12rem; /* border-radius:inherit; */}
+
+/* Dated Preview Post */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated {background-color:initial; display:flex; flex-direction:row; max-width:28rem; border-color:transparent; margin-top:.75rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:6.375rem; margin-right:1rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated.blog div.postdate {--darkbgcolor:var(--yellow); }
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated.event div.postdate {--darkbgcolor:var(--fullnavy); }
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date {text-align:center; padding-top:.625rem;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date span.year {display:none;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date span.year {font-size:1rem; margin-bottom:-.5rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date span.date {font-size:1.75rem; font-weight:800; margin-top:-.75rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent {flex-grow:1; line-height:1.375;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent h2.postname {font-size:1rem; font-weight:300; /* white-space:nowrap; */ margin:0; /* margin:.5rem 0; */}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent h2.postname a.readlink {color:initial;}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent h2.postname a.readlink:hover {text-decoration:underline;} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent p.postexcerpt {font-size:.875rem; font-weight:100; margin:0; /* margin-top:.125rem; */}
+/* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent p.postexcerpt span.excerpt {} */
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent p.postexcerpt span.excerpt.full::after {content:'...';}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
+
+/*  */
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active {} */
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content {} */
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.active p.content span.excerpt {} */
@@ -135,15 +160,20 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 /* Medium screen (tablet) */
 @media screen and (max-width:60rem) {
 
+
 	/* Header Section */
 
+
 	/* Content Section */
+
 	/* Content Section: Story */
 	div#container main#pagecontent section.story {padding:0 4rem;}
+
 	/* Content Section: Archive */
 	/* div#container main#pagecontent section.archive {} */
 	div#container main#pagecontent section.archive ul.postlist {grid-template-columns:repeat(1,1fr);}
-	div#container main#pagecontent section.archive.visual ul.postlist {grid-template-columns:repeat(2,1fr);}
+	/* Person Preview Post */
+	div#container main#pagecontent section.archive.people ul.postlist {grid-template-columns:repeat(2,1fr);}
 
 	/* Footer Section */
 }
@@ -152,9 +182,12 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 /* Small screen (mobile) */
 @media screen and (max-width:32rem) {
 
+
 	/* Header Section */
 
+
 	/* Content Section */
+
 	/* Content Section: Story */
 	div#container main#pagecontent section.story {padding:0 2rem;}
 	/* div#container main#pagecontent section.story article.story {} */
@@ -162,10 +195,13 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 	/* div#container main#pagecontent section.story article.story div.content span.item {} */
 	/* div#container main#pagecontent section.story article.story div.content span.item span.value {} */
 	div#container main#pagecontent section.story article.story div.content span.item span.value img.avatar {width:100%;}
+
 	/* Content Section: Archive */
 	/* div#container main#pagecontent section.archive {} */
 	/* div#container main#pagecontent section.archive ul.postlist {grid-template-columns:repeat(1,1fr);} */
-	div#container main#pagecontent section.archive.visual ul.postlist {grid-template-columns:repeat(1,1fr);}
+	/* Person Preview Post */
+	div#container main#pagecontent section.archive.people ul.postlist {grid-template-columns:repeat(1,1fr);}
+
 
 	/* Footer Section */
 }

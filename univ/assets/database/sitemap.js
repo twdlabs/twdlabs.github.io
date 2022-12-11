@@ -196,15 +196,18 @@ function getTrailData() {
 	// Initialize list of trail data for breadcrumbs. 
 	let result = [];
 	
+	// Initialize page trail index. 
+	let index = 0;
+	
 	// Start hieracrchy traversal with current page. 
 	let currentId = currentPageId;
 	// console.log( 'Original id:', currentId, currentPageId );
 	
 	// Add current page id to list. 
-	result.push( {pageid:currentId, directparent:false,} );
-	
-	// Initialize page trail index. 
-	let index = 0;
+	result.push( {pageid:currentId, uplevels:index,} );
+
+	// Increment page trail index. 
+	index++;
 	
 	// Go up the hierarchy until home page. 
 	do {
@@ -216,7 +219,7 @@ function getTrailData() {
 		// console.log( '\tGot parent:', hasValidParent );
 		
 		// Add current page id to list. 
-		result.push( {pageid:currentId, directparent:(index==0),} );
+		result.push( {pageid:currentId, uplevels:index,} );
 
 		// Increment page trail index. 
 		index++;
