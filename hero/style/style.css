@@ -28,20 +28,53 @@
 
 html {height:100vh; background-color:white;}
 html.dark {background-color:var(--lightblack);}
-
-
 body {min-height:100%; margin:0;}
+html,body {scroll-behavior:smooth; overflow-x:hidden;}
+
+
 
 
 /* General Container */
-html,body,
+
 div#container {scroll-behavior:smooth; overflow-x:hidden; /* user-select:none; */}
 div#container {background-color:white; color:var(--tpblack); font-family:Verdana,sans-serif;}
 div#container.navopen {overflow:hidden;}
 
 
+
+/* Nav Section */
+
+div#container nav {position:fixed; left:0; height:100%; /*width:100%;*/ transition:.5s; z-index:10;}
+div#container nav {display:flex; flex-direction:column; justify-content:center;}
+div#container nav main {padding:4rem .5rem; margin-bottom:4rem;}
+
+div#container nav main ul.navlist {list-style:none; padding:.5rem 0; margin:0; border-radius:.5rem; /* min-width:12rem; */}
+div#container nav main ul.navlist {display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+div#container nav main ul.navlist li.item {padding:.25rem .5rem;}
+div#container nav main ul.navlist li.item.gone {display:none;}
+/* div#container nav main ul.navlist li.item:hover {width:100%;} */
+div#container nav main ul.navlist li.item a.link {text-decoration:none; display:inline-block; background-color:#0001; color:inherit; border-radius:50rem; padding:.75rem 1.25rem; transition:.75s;}
+div#container nav main ul.navlist li.item a.link {display:flex; flex-direction:row; justify-content:center; justify-content:flex-start; align-items:center; min-width:4rem; min-height:4rem;}
+div#container.dark nav main ul.navlist li.item a.link {background-color:#FFF1;}
+div#container nav main ul.navlist li.item a.link:hover,
+div#container nav main ul.navlist li.item a.link.active {background-color:#0f48f8cc; color:#FFF;}
+div#container nav main ul.navlist li.item a.link span.icon {font-size:1.25rem; margin-left:2px; transform:translateY(2px);}
+div#container nav main ul.navlist li.item a.link span.caption {display:inline-block; max-width:0; margin-left:0; overflow:hidden; transition:.5s;}
+div#container nav main ul.navlist li.item a.link:hover span.caption {max-width:10rem; margin-left:.5rem;}
+
+div#container aside.overlay {visibility:hidden; opacity:0; position:fixed; top:0; left:0; height:100%; width:100%; background:#0008; z-index:9; cursor:pointer; transition:.25s;}
+div#container.dark aside.overlay {background-color:#FFF4;}
+
+
+div#container.debug nav {background-color:#0001;}
+div#container.debug nav main ul.navlist {background-color:#0001;}
+
+
+
 /* General Section */
-div#container section {min-height:25rem; border-bottom:1px solid var(--tptpblack); /* border-color:var(--lightlightblue); */ padding:.125rem; transition:.5s}
+
+/* div#container section {display:none !important;} */
+div#container section {/* min-height:25rem; */ border-bottom:1px solid var(--tptpblack); /* border-color:var(--lightlightblue); */ padding:.125rem; transition:.5s}
 div#container section h2.title {text-align:center; text-transform:uppercase; margin-top:2em; margin-bottom:0; font-size:2rem; font-weight:100; padding-bottom:.675em; position:relative;}
 div#container section h2.title {opacity:1; transform:none; transition:.75s;}
 div#container section h2.title:before {content:''; position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:6rem; height:1px; background-color:var(--tptpblack);}
@@ -49,8 +82,34 @@ div#container section h2.title::after {content:''; position:absolute; left:50%; 
 div#container section.shift {margin-left:6rem;}
 div#container section main {opacity:1; transform:none; transition:.75s;}
 div#container section main {max-width:75rem; margin:0 auto; padding:2rem 1rem;}
-div#container section.gone h2.title {opacity:0; transform:translateY(3rem);}
-div#container section.gone main {opacity:0; transform:translateY(3rem);}
+/* div#container section.gone h2.title {opacity:0; transform:translateY(3rem);} */
+/* div#container section.gone main {opacity:0; transform:translateY(3rem);} */
+
+
+
+/* Footer Section */
+
+div#container footer {background-color:#0004; text-align:center;}
+div#container footer main {padding:2rem; display:flex; flex-direction:column; justify-content:center; align-items:center;}
+
+div#container footer main h1.name {font-size:2.5rem; margin-bottom:1.25rem; font-weight:100;}
+div#container footer main div.social {display:flex; flex-direction:row; justify-content:flex-start;}
+div#container footer main div.social a.btn {position:relative; font-size:1.15rem; background-color:#0f48f8cc; color:#FFF; border-radius:50%; padding:1em; margin:0 .25em; transition:.5s color;}
+div#container footer main div.social a.btn:hover {background-color:#0f48f8AA; /*color:#0f48f8cc;*/}
+div#container footer main div.social a.btn .icon {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+
+/* div#container footer main div.nav {} */
+div#container footer main div.nav ul {list-style:none; margin:0; margin-top:2rem; padding:0; display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container footer main div.nav ul li {display:flex; font-size:.75rem; text-transform:uppercase;}
+div#container footer main div.nav ul li::after {content:'|'; font-size:1.375em;}
+div#container footer main div.nav ul li:last-child::after {content:'';}
+/*div#container footer main div.nav ul li:first-child::before {content:'|';}*/
+div#container footer main div.nav ul li a.link {color:#0f48f8cc; padding:.25rem .5rem; text-decoration:none; transition:.5s color;}
+div#container footer main div.nav ul li a.link:hover,
+div#container footer main div.nav ul li a.link:active {color:rgba(0,0,0,0.6);}
+
+div#container footer main p.copy {font-size:.75rem; margin-top:2rem;}
+
 
 
 /* Scroll Top Button */
@@ -64,19 +123,60 @@ div#container.navopen button.totop {transform:translateY(6rem);}
 
 
 
+
 @media screen and (max-width:62rem) {
+
+	/* Nav Section */
+	div#container nav {transform:translateX(-100%); background-color:#FFF;}
+	div#container.dark nav {background-color:#111E;}
+	div#container.navopen nav {transform:translateX(0);}
+	div#container nav main ul.navlist {border-radius:2.5rem; padding:1rem .5rem;}
+	div#container nav main ul.navlist li.item a.link {min-width:12rem; min-height:initial; justify-content:flex-start;}
+	div#container nav main ul.navlist li.item a.link.active {background-color:#0002; color:inherit;}
+	div#container nav main ul.navlist li.item a.link span.caption {max-width:none; display:inline-block; margin-left:.5rem;}
+	div#container.navopen aside.overlay.gone {visibility:visible; opacity:1;}
+
+	/* General Section */
 	.stuck {overflow:hidden;}
 	div#container section.shift {margin-left:0;}
 	div#container section main {padding:2rem 3.75rem;}
+
+	/* Footer Section */
+	div#container footer main h1.name {font-size:2rem;}
+	div#container footer main p.copy {font-size:.675rem;}
+}
+
+@media screen and (max-height:60rem) {
+
+	/* Nav Section */
+	/*div#container nav {justify-content:flex-start;}*/
 }
 
 @media screen and (max-width:40rem) {
+
+	/* Nav Section */
+
+	/* General Section */
 	/* div#container section main {padding:2rem 1rem;} */
 	div#container button.totop {font-size:1rem; margin:1rem; min-width:2.5rem; min-height:2.5rem;}
+
+	/* Footer Section */
 }
 
 @media screen and (max-width:30rem) {
+
+	/* Nav Section */
+
+	/* General Section */
+
+	/* Footer Section */
+	div#container footer main div.nav ul {flex-direction:column;}
+	/* div#container footer main div.nav ul li {font-size:1rem;} */
+	div#container footer main div.nav ul li::after {content:'';}
 }
+
+
+
 
 
 

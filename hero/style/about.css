@@ -15,7 +15,7 @@ div#container section#about main div.set p.motto span.phrase:last-child:after {c
 div#container section#about main div.set h3.title {font-size:1.5rem; font-weight:300; margin:0 0 1rem;}
 div#container section#about main div.set h3.title span.role::after {content:',';}
 div#container section#about main div.set h3.title span.role:last-child:after {content:'';}
-div#container section#about main div.set div.stats {display:flex; flex-direction:row; justify-content:flex-start; margin:0 auto 3rem;}
+div#container section#about main div.set div.stats {display:flex; flex-direction:row; justify-content:flex-start; margin:3rem auto;}
 div#container section#about main div.set div.stats div.col {flex:0 0 auto; margin-right:1rem;}
 div#container section#about main div.set div.stats div.col div.item {display:flex; flex-direction:row; justify-content:start; align-items:center; gap:.25rem;}
 div#container section#about main div.set div.stats div.col div.item.gone {display:none;}
@@ -23,7 +23,7 @@ div#container section#about main div.set div.stats div.col div.item svg.icon {co
 div#container section#about main div.set div.stats div.col div.item span.key {font-weight:600;}
 div#container section#about main div.set div.stats div.col div.item span.key:after {content:': ';}
 div#container section#about main div.set div.stats div.col div.item span.value {font-weight:200;}
-div#container section#about main div.set p.copy {font-size:1.25rem; margin:1rem 0;}
+div#container section#about main div.set p.copy {font-size:1.125rem; margin:1rem 0;}
 
 
 

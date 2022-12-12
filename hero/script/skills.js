@@ -1,5 +1,9 @@
 
 
+
+// Add skill items to page. 
+addSkills();
+
 // Get all skill items. 
 let allItemsInner = document.querySelectorAll('section#skills div.skills div.item div.inner');
 console.log('allItemsInner',allItemsInner);
@@ -18,6 +22,11 @@ closeBtn.addEventListener('click', deactivateSkillPopup);
 
 /*****/
 
+
+// TODO: Add skill items to page. 
+function addSkills() {
+	// 
+}
 
 // Toggle skill. 
 function toggleSkill(event) {

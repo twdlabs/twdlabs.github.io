@@ -13,6 +13,8 @@ div#container.dark section {border-color:var(--fadedwhite);}
 
 /* Hero Section */
 div#container.dark section#hero:before {background-color:#111E;}
+div#container.dark section#hero main div.scroll {border-color:var(--offwhite);}
+div#container.dark section#hero main div.scroll::after {background-color:var(--offwhite);}
 
 /* About Section */
 

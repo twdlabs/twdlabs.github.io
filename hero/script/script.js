@@ -7,14 +7,15 @@ var hiddenSectionScrollTops;
 
 
 // Setup page functionality when document is ready. 
-$(document).ready(function(event) {
+// $(document).ready(function(event) {
 
 	// Start repeating role-typewriter animation. 
 	setTimeout(startTypewriter, blinkTime);
 
 
 	// Highlight navbar item when clicked. 
-	$('nav main ul.navlist li.item a.link').click(highlightNavbarItem);
+	// $('nav main ul.navlist li.item a.link').click(highlightNavbarItem);
+	document.querySelector('nav main ul.navlist li.item a.link').addEventListener('click',highlightNavbarItem);
 
 
 	// Prepare section reveal data. 
@@ -27,8 +28,9 @@ $(document).ready(function(event) {
 	// $('html,body').scroll(handleScroll);	// why is this not functioning ???
 
 	// Activate contact form to update send link accordingly. 
-	$('section#contact form .forminput').on('input', updateSendLink);
-});
+	// $('section#contact form .forminput').on('input', updateSendLink);
+	document.querySelector('section#contact form .forminput').addEventListener('input', updateSendLink);
+// });
 
 
 
@@ -40,30 +42,40 @@ $(document).ready(function(event) {
 function prepareRevealData() {
 
 	// Get sections with hidden content to be revealed. 
-	let hiddenSections = $('section.gone');
-	// console.log('hiddenSections', hiddenSections);
+	// let hiddenSections = $('section.gone');
+	let hiddenSections = document.querySelectorAll('section.gone');
+	console.log('Hidden sections:', hiddenSections);
 	// hiddenSectionIds = hiddenSections.map( (section) => (section.id) );
-	// console.log('hiddenSectionIds', hiddenSectionIds);
+	// console.log('hiddenSectionIds:', hiddenSectionIds);
 
 	// Get ids of sections with hidden content. 
 	hiddenSectionIds = [];
 	for( let section of hiddenSections ) {
 		hiddenSectionIds.push(section.id);
 	}
-	// console.log('hiddenSectionIds', hiddenSectionIds);
+	console.log('Hidden section ids:', hiddenSectionIds);
 
 	// Get desired scroll level for each section (somewhere near section top). 
-	hiddenSectionScrollTops = hiddenSectionIds.map( id => $('#'+id)[0].offsetTop );
-	// console.log('hiddenSectionScrollTops', hiddenSectionScrollTops);
+	hiddenSectionScrollTops = hiddenSectionIds.map( getScrollTop );
+	console.log('Hidden section scroll tops:', hiddenSectionScrollTops);
 
 	// Handle initial scroll. 
-	handleScroll(event);
+	handleScroll(/* event */);
+
+	/****/
+
+	// Get scroll top. 
+	function getScrollTop(id) {
+		// 
+		// return $('#'+id)[0].offsetTop;
+		return document.querySelector('#'+id).offsetTop;
+	}
 }
 
 
 // Handle scroll. 
 function handleScroll(event) {
-	console.log('Scrolling...',event);
+	// console.log('Scrolling...',event);
 	// console.log('Scrolling...', event.target.scrollingElement);
 
 
@@ -74,11 +86,13 @@ function handleScroll(event) {
 	// console.log('scrollTopLevel', scrollTopLevel);
 
 	// Include half height of window to get mid scroll level. 
-	let scrollMidLevel = scrollTopLevel + ( .5*$(window).outerHeight() );
+	// let scrollMidLevel = scrollTopLevel + ( .5*$(window).outerHeight() );
+	let scrollMidLevel = scrollTopLevel + ( .5 * window.height );
 	// console.log('scrollMidLevel', scrollMidLevel);
 
 	// Include height of window to get bottom scroll level. 
-	let scrollBottomLevel = scrollTopLevel + $(window).outerHeight();
+	// let scrollBottomLevel = scrollTopLevel + $(window).outerHeight();
+	let scrollBottomLevel = scrollTopLevel + window.height;
 	// console.log('scrollBottomLevel', scrollBottomLevel);
 	
 	// Check for sections that have been scrolled past. 
@@ -95,25 +109,6 @@ function handleScroll(event) {
 
 	/*****/
 
-
-	// Highlight navbar item by scroll level (when passing mid-screen). 
-	function highlightNavbarItemByScrollLevel() {
-		// Deos this method have an infintie loop in it with the other method ???
-
-		// Get lowest scrolled section's id (largest value where --> scrollMiddle > section.offsetTop). 
-		let secId = 'hero';
-		for(let i=0 ; i<hiddenSectionIds.length ; i++) {	// hiddenSectionIds hiddenSectionScrollTops
-			if( scrollMidLevel > hiddenSectionScrollTops[i] ) 
-				secId = hiddenSectionIds[i];
-		}
-		// console.log('secId',secId);
-
-		// Un-highlight all other nav links. 
-		$('nav ul.navlist li.item a.link').removeClass('active');
-
-		// Highlight nav link for lowest scrolled section. 
-		$('nav ul.navlist li.item a.link.'+secId).addClass('active');
-	}
 
 	// Reveal scrolled sections. 
 	function revealScrolledSections(event) {
@@ -139,7 +134,35 @@ function handleScroll(event) {
 			// console.log(`Revealing section#${id}`);
 
 			// Remove 'gone' class from section. 
-			$('section#'+id).removeClass('gone')
+			// $('section#'+id).removeClass('gone');
+			document.querySelector('section#'+id).classList.remove('gone');
+		}
+	}
+
+	// Highlight navbar item by scroll level (when passing mid-screen). 
+	function highlightNavbarItemByScrollLevel() {
+		// Deos this method have an infintie loop in it with the other method ???
+
+		// Get lowest scrolled section's id (largest value where --> scrollMiddle > section.offsetTop). 
+		let secId = 'hero';
+		for(let i=0 ; i<hiddenSectionIds.length ; i++) {	// hiddenSectionIds hiddenSectionScrollTops
+			if( scrollMidLevel > hiddenSectionScrollTops[i] ) 
+				secId = hiddenSectionIds[i];
+		}
+		// console.log('secId',secId);
+
+		// Un-highlight all other nav links. 
+		// $('nav ul.navlist li.item a.link').removeClass('active');
+		xyz = document.querySelectorAll('nav ul.navlist li.item a.link');
+		for(let x of xyz) {
+			x.classList.remove('active');
+		}
+
+		// Highlight nav link for lowest scrolled section. 
+		// $('nav ul.navlist li.item a.link.'+secId).addClass('active');
+		xyz = document.querySelectorAll('nav ul.navlist li.item a.link.'+secId);
+		for(let x of xyz) {
+			x.classList.add('active');
 		}
 	}
 	
@@ -149,11 +172,13 @@ function handleScroll(event) {
 
 		// Show button when scrolled away from top. 
 		if(scrollTopLevel > 160) {
-			$('div#container button.totop').removeClass('gone');
+			// $('div#container button.totop').removeClass('gone');
+			document.querySelector('div#container button.totop').classList.remove('gone');
 		}
 		// Hide button when already at/near top. 
 		else {
-			$('div#container button.totop').addClass('gone');
+			// $('div#container button.totop').addClass('gone');
+			document.querySelector('div#container button.totop').classList.add('gone');
 		}
 	}
 

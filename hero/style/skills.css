@@ -19,7 +19,7 @@ div#container section#skills main div.skills div.item span.caption {flex-grow:0;
 div#container section#skills main div.skills div.closebtn {display:none; position:fixed; bottom:0; left:50%; transform:translateX(-50%); z-index:21; cursor:pointer;}
 div#container section#skills main div.skills div.closebtn {font-size:2rem; padding:1.5rem 2rem; margin:1rem; background-color:#0008; color:#FFF; border-radius:5rem;}
 
-/* div#container section#skills main article.skillset {display:none;} */
+div#container section#skills main article.skillset {display:none;}
 div#container section#skills main article.skillset {max-width:24rem; margin:0 auto; margin-top:1rem;}
 div#container section#skills main article.skillset {flex:0 0 48%;}
 div#container section#skills main article.skillset div.skill {border:1px solid #FFF8; border-radius:.25rem; padding:.25rem; margin-bottom:1rem;}

@@ -34,7 +34,7 @@ div#container section#hero main div.scroll::after {position:absolute; left:50%; 
 div#container section#hero main div.scroll::after {content:''; background-color:var(--tpblack); border-radius:inherit; min-width:.25rem; min-height:.65rem;}
 div#container section#hero main div.scroll svg.icon {font-size:2rem; display:none;}
 
-div#container section#hero.gone main {opacity:0; transform:scale(0);}
+/* div#container section#hero.gone main {opacity:0; transform:scale(0);} */
 
 
 @keyframes blinking {

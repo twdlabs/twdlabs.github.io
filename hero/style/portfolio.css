@@ -2,7 +2,7 @@
 
 /* Portfolio Section */
 
-/* div#container section#portfolio {} */
+div#container section#portfolio {display:none;}
 div#container section#portfolio main {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1rem;}
 div#container section#portfolio main div.item {background-color:#0001; padding-top:75%; overflow:hidden; position:relative; transition:.5s;}
 div#container section#portfolio main div.item {background-size:cover; background-position:center;}

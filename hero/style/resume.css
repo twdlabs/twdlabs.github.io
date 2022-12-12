@@ -17,11 +17,11 @@ div#container section#resume main article.exp div.details:before {content:''; po
 div#container.dark section#resume main article.exp div.details:before {border-color:var(--lightblack);}
 div#container section#resume main article.exp div.details::after {content:''; position:absolute; top:0; left:0; transform:translate( calc(-50% - 1px), 1.25rem ); background-color:#FFF; border:2px solid #0008; border-radius:50%; width:.75rem; height:.75rem;}
 div#container.dark section#resume main article.exp div.details::after {background-color:var(--dark); border-color:var(--lightblack);}
-/* div#container section#resume main article.exp div.details div.contact {} */
+/* div#container section#resume main article.exp div.details div.contact {display:none;} */
 div#container section#resume main article.exp div.details div.contact span {display:inline;}
 div#container section#resume main article.exp div.details div.contact span::after {content:' |';}
 div#container section#resume main article.exp div.details div.contact span:last-of-type::after {content:'';}
-/* div#container section#resume main article.exp div.details p.copy {} */
+/* div#container section#resume main article.exp div.details p.copy {display:none;} */
 div#container section#resume main article.exp div.details p.copy span {display:inline;}
 div#container section#resume main article.exp div.details p.copy span.comma {display:inline;}
 div#container section#resume main article.exp div.details div.time {display:inline-block; background-color:var(--tptpblack); padding:.35rem .75rem; text-transform:uppercase; font-size:.75rem; border-radius:.25rem;}

@@ -1,6 +1,9 @@
 
 // Set initial value of pause time between typed roles. 
-let blinkTime = 750;
+let blinkTime = 500;
+
+
+/*****/
 
 
 // Start repeating role-typewriter animation. 
@@ -27,8 +30,8 @@ function startTypewriter() {
 	function startTyping(txt) {
 		// console.log('Starting typing...');
 
-		// Define time differential (in milliseconds). 
-		let dtType = 150;
+		// Define time differential between letters typed (in milliseconds). 
+		let dtType = 50;
 
 		// Start typing letters.
 		typeLetter();
@@ -43,7 +46,8 @@ function startTypewriter() {
 			if (i < txt.length) {
 
 				// Add a letter. 
-				$('p.roles span.typed').append( txt.charAt(i) );
+				// $('p.roles span.typed').append( txt.charAt(i) );
+				document.querySelector('p.roles span.typed').insertAdjacentHTML( 'beforeend', txt.charAt(i) );
 
 				// Increment letter count. 
 				i++;
@@ -69,8 +73,8 @@ function startTypewriter() {
 	function startBackspace(txt) {
 		// console.log('Starting backspacing...');
 
-		// Define time differential (in milliseconds). 
-		let dtBack = 50;
+		// Define time differential between letters deleted (in milliseconds). 
+		let dtBack = 25;
 
 		// Start backspacing letters. 
 		backLetter();
@@ -85,8 +89,11 @@ function startTypewriter() {
 			if (i > 0) {
 
 				// Remove a letter. 
-				let prev = $('p.roles span.typed').html();	// console.log('prev', prev);
-				$('p.roles span.typed').html( prev.substr(0, prev.length-1) );
+				// let prev = $('p.roles span.typed').html();
+				let prev = document.querySelector('p.roles span.typed').innerHTML;
+				// console.log('prev', prev);
+				// $('p.roles span.typed').html( prev.substr(0, prev.length-1) );
+				document.querySelector('p.roles span.typed').innerHTML = prev.substr(0, prev.length-1);
 
 				// Decrement letter count. 
 				i--;
@@ -122,8 +129,14 @@ function startTypewriter() {
 		// console.log('Toggle blinking');
 
 		// Toggle 'blink' class. 
-		if(turnOn) $('p.roles span.typed').addClass('blink');
-		else $('p.roles span.typed').removeClass('blink');
+		if(turnOn) {
+			// $('p.roles span.typed').addClass('blink');
+			document.querySelector('p.roles span.typed').classList.add('blink');
+		}
+		else {
+			// $('p.roles span.typed').removeClass('blink');
+			document.querySelector('p.roles span.typed').classList.remove('blink');
+		}
 	}
 
 	// Stop all typing and/or backspacing animation(s). 
