@@ -5,10 +5,8 @@ const userData = [
 	{
 		userid:'000001',
 		usertype:'student',
-		studentid:'00000000000000',
+		studentid:'016',
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
-		lastname:'Smith',
-		firstname:'John',
 		username:'jsmith1',
 		userbio:'Lorem ipsum dolor imet',
 		avatarurl:'./assets/media/avatar-m.png',
@@ -24,10 +22,8 @@ const userData = [
 	{
 		userid:'000002',
 		usertype:'student',
-		studentid:'00000000000000',
+		studentid:'010',
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
-		lastname:'Smith',
-		firstname:'Jane',
 		username:'jsmith2',
 		userbio:'Lorem ipsum dolor imet',
 		avatarurl:'./assets/media/avatar-f.png',
@@ -43,10 +39,8 @@ const userData = [
 	{
 		userid:'000003',
 		usertype:'student',
-		studentid:'00000000000000',
+		studentid:'015',
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
-		lastname:'Smith',
-		firstname:'Joe',
 		username:'jsmith3',
 		userbio:'Lorem ipsum dolor imet',
 		avatarurl:'./assets/media/avatar-m.png',
@@ -62,10 +56,8 @@ const userData = [
 	{
 		userid:'000004',
 		usertype:'student',
-		studentid:'00000000000000',
+		studentid:'002',
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
-		lastname:'Smith',
-		firstname:'Bill',
 		username:'bsmith',
 		userbio:'Lorem ipsum dolor imet',
 		avatarurl:'./assets/media/avatar-m.png',
@@ -79,13 +71,6 @@ const userData = [
 		},
 	},
 ];
-
-
-/*****/
-
-
-// Add additional user properties. 
-addUserProperties();
 
 
 /*****/
@@ -108,15 +93,23 @@ function addUserProperties() {
 
 	// Define full name of given user. 
 	function getFullName(user) {
-	
-		// Get first name of user. 
-		let fname = user.firstname;
-	
-		// Get last name of user. 
-		let lname = user.lastname;
+
+		// Get user type. 
+		let type = user.usertype;
 	
 		// Get user id. 
-		let id = user.userid;
+		let id = user[`${type}id`];
+
+		// Get person file for user. 
+		let person = null;
+		if(type=='student') person = getStudentById(id);
+		else if(type=='faculty') person = getFacultyById(id);
+	
+		// Get last name of user. 
+		let lname = person.lastname;
+	
+		// Get first name of user. 
+		let fname = person.firstname;
 	
 		// Compile components of full name. 
 		return `${fname} ${lname}`;

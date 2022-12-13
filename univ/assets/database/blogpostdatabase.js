@@ -46,15 +46,8 @@ const blogPostData = [
 /*****/
 
 
-// Add additional post properties. 
-addPostProperties();
-
-
-/*****/
-
-
 // Define additional post properties. 
-function addPostProperties() {
+function addBlogPostProperties() {
 
 	// Go thru all blog posts. 
 	for(let post of blogPostData) {

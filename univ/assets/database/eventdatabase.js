@@ -140,13 +140,6 @@ const eventData = [
 /*****/
 
 
-// Add additional event properties. 
-addEventProperties();
-
-
-/*****/
-
-
 // Define additional event properties. 
 function addEventProperties() {
 

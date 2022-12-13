@@ -121,7 +121,7 @@ div#container main#pagecontent section.archive ul.postlist li.postitem article.p
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated.event div.postdate {--darkbgcolor:var(--fullnavy); }
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date {text-align:center; padding-top:.625rem;}
+div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date {cursor:pointer; text-align:center; padding-top:.625rem;}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date span.year {display:none;} */
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date span.year {font-size:1rem; margin-bottom:-.5rem;}
 div#container main#pagecontent section.archive ul.postlist li.postitem article.post.dated div.postdate div.date span.month {font-size:1.75rem; font-weight:100; text-transform:uppercase;}

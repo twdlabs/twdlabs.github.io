@@ -1858,13 +1858,6 @@ const courseData = [
 /*****/
 
 
-// Add additional course properties. 
-addCourseProperties();
-
-
-/*****/
-
-
 // Define additional course properties. 
 function addCourseProperties() {
 

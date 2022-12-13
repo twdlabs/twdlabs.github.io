@@ -158,13 +158,6 @@ const programData = [
 /*****/
 
 
-// Add additional program properties. 
-addProgramProperties();
-
-
-/*****/
-
-
 // Define additional program properties. 
 function addProgramProperties() {
 

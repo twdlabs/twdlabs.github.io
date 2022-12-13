@@ -16,7 +16,7 @@ div#container header#header {position:fixed; position:absolute; background-color
 
 /* Banner Section */
 
-div#container section.banner {background-color:#000; padding: 8rem 0 3.75rem; text-align:center; position:relative;}
+div#container section.banner {background-color:#000; display:grid; place-items:center; position:relative; text-align:center; min-height:80vh; padding: 8rem 0 /* 3.75rem */;}
 div#container section.banner div.bg {position:absolute; top:0; right:0; bottom:0; left:0; z-index:10;}
 div#container section.banner div.bg {background:rgb(141,74,2) url('../../assets/media/library.jpg'); background-size:cover; background-position:center; opacity:.33;}
 div#container section.banner main {color:white; position:relative; z-index:20; padding:0 .5rem;}
@@ -29,11 +29,13 @@ div#container section.banner main a.archivelink {display:inline-block; font-size
 
 /* Feature Section */
 
-div#container section.feature {background-color:var(--navyblue); color:white; padding:2rem 0;}
-div#container section.feature div.panel {display:flex; flex-direction:row; justify-content:space-between; max-width:var(--pagewidth); margin:0 auto;}
-div#container section.feature div.panel div.item {display:flex; flex-direction:column; align-items:center; margin:0 1rem;}
+div#container section.feature {background-color:var(--navyblue); color:white; padding:6rem 0;}
+div#container section.feature div.panel {display:flex; flex-direction:row; /* flex-wrap:wrap; */ justify-content:space-between; max-width:var(--pagewidth); margin:0 auto;}
+div#container section.feature div.panel div.item {flex:1 1 0; max-width:40vw;}
+div#container section.feature div.panel div.item {display:flex; flex-direction:column; align-items:center; padding:4rem 0; margin:0 1rem;}
 div#container section.feature div.panel div.item svg.icon {font-size:12rem;}
-div#container section.feature div.panel div.item span.caption {font-size:2rem; margin-top:1rem;}
+div#container section.feature div.panel div.item span.name {font-size:2rem; text-align:center; white-space:nowrap; margin-top:1rem;}
+div#container section.feature div.panel div.item p.textcopy {text-align:center;}
 
 
 
@@ -53,7 +55,7 @@ div#container section.preview div.group ul.postlist li.postitem article.post {di
 div#container section.preview div.group ul.postlist li.postitem article.post div.postdate {flex-grow:0; --bubblesize:5.25rem; --bubblesize:7rem; margin-right:1.5rem;}
 div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {background-color:var(--darkbgcolor); color:white; text-shadow:0 .125rem #0002; min-width:var(--bubblesize); min-height:var(--bubblesize); border-radius:50%;}
 div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {text-align:center; padding-top:.625rem;}
+div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date {cursor:pointer; text-align:center; padding-top:.625rem;}
 /* div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.year {display:none;} */
 div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.year {font-size:1rem;}
 div#container section.preview div.group ul.postlist li.postitem article.post div.postdate div.date span.date {font-size:2rem; font-weight:800; margin-top:-.5rem;}
@@ -75,8 +77,8 @@ div#container section.preview div.group.gone > * {opacity:0; visibility:hidden; 
 /* Carousel Section */
 
 div#container section.carousel {/* width:100%; */ position:relative; overflow-x:hidden; scrollbar-width:none;}
-div#container section.carousel div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch; overflow:visible;}
-div#container section.carousel div.inner {animation:deltaslide 16s infinite ease;}
+div#container section.carousel div.inner {display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
+div#container section.carousel div.inner {min-height:50rem; overflow:visible; animation:deltaslide 16s infinite ease;}
 
 div#container section.carousel div.slide {flex:0 0 100%; width:100%; background-color:#000; background-size:cover; background-repeat:no-repeat;}
 div#container section.carousel div.slide {display:flex; flex-direction:column; justify-content:center; align-items:center; padding:6rem 4rem;}
@@ -122,15 +124,16 @@ div#container section.carousel div.remote span.dot.active {background-color:whit
 	div#container section.banner main a.archivelink {font-size:1.5rem;}
 
 	/* Feature Section */
-	/* div#container section.feature {} */
+	div#container section.feature {padding:3rem 0;}
 	div#container section.feature div.panel {flex-wrap:wrap; justify-content:center;}
-	div#container section.feature div.panel div.item {margin:1rem;}
+	div#container section.feature div.panel div.item {padding:2rem 0; margin:1rem;}
 
 	/* Preview Section */
 	div#container section.preview {flex-direction:column; align-items:stretch;}
 
 	/* Carousel Section */
 	/* div#container section.carousel {} */
+	div#container section.carousel div.inner {min-height:80vh;}
 	div#container section.carousel div.slide {padding:3rem 1rem;}
 }
 
@@ -150,8 +153,9 @@ div#container section.carousel div.remote span.dot.active {background-color:whit
 	div#container section.banner a.archivelink {font-size:1.3rem;}
 
 	/* Feature Section */
-	/* div#container section.feature {} */
-	div#container section.feature div.panel {flex-direction:column;}
+	div#container section.feature {padding:2rem 0;}
+	div#container section.feature div.panel {flex-direction:column; /* justify-content:space-around; */}
+	div#container section.feature div.panel div.item {max-width:none; padding:.5rem 0; margin:1rem;}
 
 	/* Preview Section */
 	/* div#container section.preview {} */

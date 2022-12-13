@@ -307,6 +307,7 @@ div#container div#searchoverlay {background-color:white;}
 
 
 	/* Footer Section */
+	div#container footer#footer main div.col ul.navlist.social {width:100%;}
 	
 
 	/* Search Overlay */

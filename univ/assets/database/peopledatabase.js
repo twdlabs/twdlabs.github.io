@@ -541,7 +541,7 @@ const studentData = [
 	{
 		posttype:'student',
 		studentid:'002',
-		lastname:'Doe',
+		lastname:'Smith',
 		firstname:'Bill',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
@@ -613,7 +613,7 @@ const studentData = [
 	{
 		posttype:'student',
 		studentid:'010',
-		lastname:'Doe',
+		lastname:'Smith',
 		firstname:'Jane',
 		avatarurl:'./assets/media/avatar-f.png',
 		programid:'XYZ',
@@ -658,7 +658,7 @@ const studentData = [
 	{
 		posttype:'student',
 		studentid:'015',
-		lastname:'Doe',
+		lastname:'Smith',
 		firstname:'Joe',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
@@ -667,7 +667,7 @@ const studentData = [
 	{
 		posttype:'student',
 		studentid:'016',
-		lastname:'Doe',
+		lastname:'Smith',
 		firstname:'John',
 		avatarurl:'./assets/media/avatar-m.png',
 		programid:'XYZ',
@@ -833,24 +833,17 @@ const studentData = [
 
 
 // Create repository to check for duplicate ids. 
-const idRepository = [];
+// const idRepository = [];
 
 
 /*****/
 
 
-// Add additional people properties. 
-addPeopleProperties();
-
-
-/*****/
-
-
-// Define additional people properties. 
+// Define additional people properties (faculty and students). 
 function addPeopleProperties() {
 
 	// Create repository to check for duplicate emails. 
-	const emailRepository = [];
+	// const emailRepository = [];
 
 	// 
 	for(let faculty of facultyData) {
@@ -1006,5 +999,35 @@ function getStudentsByProgram(programid) {
 
 	// Return result. 
 	return result;
+}
+
+// Get faculty by id. 
+function getFacultyById(id) {
+
+	// Go thru all faculty. 
+	for(let faculty of facultyData) {
+
+		// Return faculty if match found. 
+		let matchFound = (faculty.facultyid==id);
+		if(matchFound) return faculty;
+	}
+
+	// Return nothing if no match found. 
+	return null;
+}
+
+// Get student by id. 
+function getStudentById(id) {
+
+	// Go thru all students. 
+	for(let student of studentData) {
+
+		// Return student if match found. 
+		let matchFound = (student.studentid==id);
+		if(matchFound) return student;
+	}
+
+	// Return nothing if no match found. 
+	return null;
 }
 

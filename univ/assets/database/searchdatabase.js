@@ -1,5 +1,6 @@
 
 
+
 // Define post register. 
 const postregister = {
 	post:{
@@ -55,7 +56,6 @@ const defaultResults = {
 	// },
 	
 };
-
 
 
 // Add all other databases as components of results database. 
@@ -137,5 +137,29 @@ defaultResults['students'] =
 	setlist: studentData,
 	foldername:'students',
 };
+
+
+
+/*****/
+
+
+
+// Add additional user properties. 
+addUserProperties();
+
+// Add additional blog post properties. 
+addBlogPostProperties();
+
+// Add additional program properties. 
+addProgramProperties();
+
+// Add additional course properties. 
+addCourseProperties();
+
+// Add additional event properties. 
+addEventProperties();
+
+// Add additional people properties (faculty and students). 
+addPeopleProperties();
 
 
