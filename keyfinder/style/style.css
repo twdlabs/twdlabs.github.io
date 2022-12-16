@@ -60,7 +60,6 @@ div#container main.main div.item div.input button.btn.go {background-color:var(-
 div#container main.main div.item div.input button.btn.go:hover {background-color:var(--darkblue2);}
 /* div#container main.main div.item div.input button.btn.go:active {background-color:var(--darkblue2);} */
 /* div#container main.main div.item div.output {width:100%;} */
-/* div#container main.main div.item div.output div.set {display:flex; flex-direction:row; justify-content:center; flex-wrap:wrap;} */
 div#container main.main div.item div.output div.set {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.5rem;}
 div#container main.main div.item div.output div.set div.scale {display:flex; flex-direction:column; align-items:center; padding:.125rem .25rem; border-radius:.25rem; /* margin:.25rem; */}
 div#container main.main div.item div.output div.set div.scale {background-color:var(--emptycolor2); cursor:pointer; font-size:1rem; text-align:center; width:100%; max-width:9rem;}
@@ -95,6 +94,7 @@ div#container.dark div.themebtn svg.icon.moonfill {display:block;}
 	div#container main.main div.item div.input {flex-direction:row; align-items:center; width:100%; padding:.125rem 0;}
 	div#container main.main div.item div.input input.key {flex:0 0 60%;}
 	div#container main.main div.item div.input label.label {flex:0 0 40%; padding-right:1rem;}
+	/* div#container main.main div.item div.input button.btn {} */
 	/* div#container main.main div.item div.output {} */
 	div#container main.main div.item div.output div.set {grid-template-columns:repeat(2,1fr);}
 }

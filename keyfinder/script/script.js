@@ -282,7 +282,7 @@ function showOutput() {
 
 				// Show selected scale result on scale display. 
 				openScaleDisplay(resultIndex);
-				console.log(`Selected result index: ${resultIndex}`);
+				// console.log(`Selected result index: ${resultIndex}`);
 			}
 		}
 	}

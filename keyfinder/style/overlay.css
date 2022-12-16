@@ -1,27 +1,27 @@
 
 
 
-/* Overlay Display */
+/* Overlay */
 
-div#overlay {opacity:0; visibility:hidden; transform:scale(1.125); transition:.25s;}
 div#overlay {position:fixed; top:0; right:0; bottom:0; left:0; height:100%; width:100%;}
-div#overlay {background-color:var(--emptycolor3); display:grid; place-items:center;}
+div#overlay {background-color:var(--emptycolor3); display:grid; place-items:center; padding:1rem;}
+div#overlay {opacity:0; visibility:hidden; transform:scale(1.125); transition:.25s;}
 div#overlay.active {opacity:1; visibility:visible; transform:none; transition:.5s;}
 
 div#overlay aside.bg {content:''; cursor:pointer; position:absolute; height:100%; width:100%; z-index:-1;}
-div#overlay main.main {background-color:var(--emptycolor); position:relative; padding:1.5rem .25rem; border-radius:var(--cornersize);}
-div#overlay main.main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; width:100%; max-width:32rem;}
+div#overlay main.main {background-color:var(--emptycolor); position:relative; padding:2rem .25rem; border-radius:var(--cornersize);}
+div#overlay main.main {display:flex; flex-direction:row; justify-content:space-between; align-items:center; grid-gap:1rem; /* height:80%; */ /* width:100%; */ max-width:32rem;}
 
-div#overlay main.main div.display {overflow-x:auto;}
 
-div#overlay main.main div.display div.scale {display:flex; flex-direction:column; align-items:center; overflow-x:auto; overflow-y:hidden;}
-div#overlay main.main div.display div.scale {/* cursor:pointer; */ font-size:1.875rem; text-align:center; /* width:100%; max-width:12rem; */}
-div#overlay main.main div.display div.scale span.scalename {font-weight:bold; margin-bottom:.125rem;}
-div#overlay main.main div.display div.scale span.scalekeys {display:flex; flex-direction:row; align-items:center; font-size:.75em; white-space:nowrap;}
-div#overlay main.main div.display div.scale span.scalekeys span.key {color:inherit; cursor:pointer; user-select:none; margin:0 .25rem; transition:.125s;}
-div#overlay main.main div.display div.scale span.scalekeys span.key.on {color:var(--blue); font-weight:bold; transform:scale(2); transition:.5s;;}
-/* div#overlay main.main div.display div.scale div.scalecopier {} */
-div#overlay main.main div.display div.scale div.scalecopier div.copybtn {background-color:grey; color:white; font-size:1rem; cursor:pointer; user-select:none; padding:.25rem .75rem; border-radius:.5rem;}
+/* Overlay Display */
+
+div#overlay main.main div.display {display:flex; flex-direction:column; align-items:center; overflow-x:auto; grid-gap:.25rem; text-align:center; /* width:100%; max-width:12rem; */}
+
+div#overlay main.main div.display span.scalename {font-size:1.875rem; font-weight:bold; /* margin-bottom:.125rem; */}
+
+div#overlay main.main div.display span.scalekeys {display:flex; flex-direction:row; align-items:center; font-size:1.375rem; /* font-size:.75em; */ white-space:nowrap;}
+div#overlay main.main div.display span.scalekeys span.key {color:inherit; /* cursor:pointer; */ user-select:none; margin:0 .25rem; transition:.125s;}
+div#overlay main.main div.display span.scalekeys span.key.on {color:var(--blue); font-weight:bold; transform:scale(2); transition:.5s;}
 
 div#overlay main.main div.display div.pianokeys {background-color:var(--blue); overflow-x:auto; /* padding:.25rem; */ border:.125rem solid var(--fillcolor2); margin-top:.5rem;}
 div#overlay main.main div.display div.pianokeys div.inner {display:flex; flex-direction:row; justify-content:center;}
@@ -44,7 +44,6 @@ div#overlay main.main div.display div.pianokeys div.octave div.key.black.on::aft
 div#overlay main.main div.display div.pianokeys div.octave div.key span.caption {position:absolute; bottom:0; left:50%; transform:translateX(-50%);}
 div#overlay main.main div.display div.pianokeys div.octave div.key span.caption {font-size:.625rem; /* opacity:.875; */ user-select:none;}
 div#overlay main.main div.display div.pianokeys div.octave div.key.black span.caption {visibility:hidden;}
-
 div#overlay main.main div.display div.pianokeys {perspective:100rem; transform-style:preserve-3d;}
 div#overlay main.main div.display div.pianokeys div.octave div.key {transform-origin:top; transition:.125s; --pressangle:-6deg;}
 div#overlay main.main div.display div.pianokeys div.octave div.key:active {background-color:var(--blue);}
@@ -54,6 +53,12 @@ div#overlay main.main div.display div.pianokeys div.octave div.key:active:after 
 div#overlay main.main div.display div.pianokeys div.octave div.key.white:active:after {opacity:.625;}
 div#overlay main.main div.display div.pianokeys div.octave div.key.black:active:after {opacity:.5;}
 
+div#overlay main.main div.display div.scalecopier {margin-top:1.25rem;}
+div#overlay main.main div.display div.scalecopier div.copybtn {background-color:grey; color:white; font-size:1rem; cursor:pointer; user-select:none; padding:.25rem .75rem; border-radius:.5rem;}
+
+
+/* Overlay Buttons */
+
 div#overlay main.main div.shiftbtn {cursor:pointer; display:flex; flex-direction:column; justify-content:center; height:10rem;}
 div#overlay main.main div.shiftbtn svg.icon {display:block; font-size:2.5rem;}
 
@@ -62,15 +67,29 @@ div#overlay main.main div.closebtn {cursor:pointer; font-size:2rem; font-weight:
 
 
 
+
+
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
-	/*  */
-	/* div#overlay main.main div.display div.scale {font-size:1.5rem;} */
+
+	/* Overlay */
+
+	/* Overlay Display */
+	/* div#overlay main.main div.display span.scalename {font-size:1.5rem;} */
+	/* div#overlay main.main div.display span.scalekeys {font-size:1.125rem;} */
+
+	/* Overlay Buttons */
 }
 
 /* Smartphone Screen */
 @media screen and (max-width:32rem) {
-	/*  */
-	div#overlay main.main div.display div.scale {font-size:1.375rem;}
+
+	/* Overlay */
+
+	/* Overlay Display */
+	div#overlay main.main div.display span.scalename {font-size:1.375rem;}
+	div#overlay main.main div.display span.scalekeys {font-size:1rem;}
 	div#overlay main.main div.display div.pianokeys div.octave div.key {font-size:.375rem;}
+
+	/* Overlay Buttons */
 }

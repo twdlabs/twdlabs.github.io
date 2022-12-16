@@ -239,7 +239,7 @@
 		<!-- /#container -->
 
 		<!-- #overlay -->
-		<div id="overlay">
+		<div id="overlay" class="activex">
 
 			<!-- bg -->
 			<aside class="bg" onclick="closeScaleDisplay()"></aside>
@@ -263,41 +263,39 @@
 				<!-- display -->
 				<div class="display">
 
-					<!-- scale -->
-					<div class="scale">
+					<!-- scalename -->
+					<span class="scalename">Scale Name</span>
+					<!-- /scalename -->
 
-						<!-- scalename -->
-						<span class="scalename">Name</span>
-						<!-- /scalename -->
+					<!-- scalekeys -->
+					<span class="scalekeys">
 
-						<!-- scalekeys -->
-						<span class="scalekeys">
+						<!-- key -->
+						<span class="key" data-keyindex="0">A</span>
+						<!-- /key -->
 
-							<!-- key -->
-							<span class="key" data-keyindex="0">X</span>
-							<!-- /key -->
+						<!-- key -->
+						<span class="key" data-keyindex="0">B</span>
+						<!-- /key -->
 
-						</span>
-						<!-- /scalekeys -->
+						<!-- key -->
+						<span class="key" data-keyindex="0">C</span>
+						<!-- /key -->
 
-						<!-- scalecopier -->
-						<div class="scalecopier">
+						<!-- key -->
+						<span class="key" data-keyindex="0">X</span>
+						<!-- /key -->
 
-							<!-- copybtn -->
-							<div class="copybtn">
+						<!-- key -->
+						<span class="key" data-keyindex="0">Y</span>
+						<!-- /key -->
 
-								<!-- caption -->
-								<span class="caption">Copy to Clipboard</span>
-								<!-- /caption -->
+						<!-- key -->
+						<span class="key" data-keyindex="0">Z</span>
+						<!-- /key -->
 
-							</div>
-							<!-- /copybtn -->
-
-						</div>
-						<!-- /scalecopier -->
-
-					</div>
-					<!-- /scale -->
+					</span>
+					<!-- /scalekeys -->
 	
 					<!-- pianokeys -->
 					<div class="pianokeys">
@@ -307,6 +305,26 @@
 	
 							<!-- octave -->
 							<div class="octave">
+		
+								<!-- key -->
+								<div class="key white" data-keyindex="0">
+		
+									<!-- caption -->
+									<span class="caption">X</span>
+									<!-- /caption -->
+									
+								</div>
+								<!-- /key -->
+		
+								<!-- key -->
+								<div class="key white" data-keyindex="0">
+		
+									<!-- caption -->
+									<span class="caption">X</span>
+									<!-- /caption -->
+									
+								</div>
+								<!-- /key -->
 		
 								<!-- key -->
 								<div class="key white" data-keyindex="0">
@@ -336,6 +354,22 @@
 	
 					</div>
 					<!-- /pianokeys -->
+
+					<!-- scalecopier -->
+					<div class="scalecopier">
+
+						<!-- copybtn -->
+						<div class="copybtn">
+
+							<!-- caption -->
+							<span class="caption">Copy to Clipboard</span>
+							<!-- /caption -->
+
+						</div>
+						<!-- /copybtn -->
+
+					</div>
+					<!-- /scalecopier -->
 
 				</div>
 				<!-- /display -->
