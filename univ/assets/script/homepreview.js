@@ -190,19 +190,25 @@ function loadPreviewPosts(postData, destination, foldername) {
 // Load blog posts. 
 function loadBlogPosts() {
 
+	// Define folder name. 
+	let foldername = 'blog';
+
 	// Get destination on page. 
 	const blogDestination = document.querySelector('section.preview div#blog ul.postlist');
 
 	// Show preview posts. 
-	loadPreviewPosts(blogPostData, blogDestination, 'blog' );
+	loadPreviewPosts( blogPostData, blogDestination, foldername );
 }
 
 // Load event posts. 
 function loadEventPosts() {
 
+	// Define folder name. 
+	let foldername = 'events';
+
 	// Get destination on page. 
 	const eventsDestination = document.querySelector('section.preview div#events ul.postlist');
 
 	// Show preview posts. 
-	loadPreviewPosts(eventData, eventsDestination, 'events');
+	loadPreviewPosts( eventData, eventsDestination, foldername );
 }
