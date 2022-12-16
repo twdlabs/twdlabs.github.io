@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./../atgicon.ico" rel="apple-touch-icon"/>
+		<title>Clipboard</title>
+
+		<!-- Main Stylesheet -->
+		<link href="./clipboard.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- text -->
+					<input type="text" class="text" placeholder="" value="Hello World">
+					<!-- /text -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- copybtn -->
+					<button class="copybtn" onclick="copyToClipboard()">
+
+						<!-- caption -->
+						<span class="caption">Copy text</span>
+						<!-- /caption -->
+
+						<!-- tooltip -->
+						<span class="tooltip">Copy to clipboard</span>
+						<!-- /tooltip -->
+
+					</button>
+					<!-- /copybtn -->
+
+				</div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="./database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="./clipboard.js" type="text/javascript"></script> -->
+		<script type="text/javascript">
+
+			// Get text field. 
+			const textbox = document.querySelector('input.text');
+			console.log('Text box:',textbox);
+
+			// Get copy button. 
+			const copybtn = document.querySelector('div#container main.main div.item button.copybtn');
+			console.log('Copy button:',copybtn);
+
+			// Get tooltip on copy button. 
+			const tooltip = document.querySelector('div#container main.main div.item button.copybtn span.tooltip');
+			console.log('Button tooltip:',tooltip);
+
+
+			/*****/
+
+
+			// Reset tooltip contents when mouse leaves. 
+			copybtn.addEventListener('mouseout',resetTooltip);
+
+
+			/*****/
+
+
+			// Copy text to clipboard. 
+			function copyToClipboard() {
+
+				// Select text in text field. 
+				textbox.select();
+				textbox.setSelectionRange(0,99999);
+
+				// Copy text from text field. 
+				navigator.clipboard.writeText(textbox.value);
+
+				// Update contents of tooltip. 
+				tooltip.innerHTML = `Copied: ${textbox.value}`;
+			}
+
+			// Reset tooltip. 
+			function resetTooltip() {
+				
+				// Reset contents of tooltip. 
+				tooltip.innerHTML = 'Copy to clipboard';
+			}
+		</script>
+
+	</body>
+
+</html>
