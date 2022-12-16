@@ -15,39 +15,46 @@ body {display:grid; place-items:center;}
 
 
 
-/*  */
-
+/* Main Container */
 /* div#container {} */
 
-div#container main.slideshow {border:1.25rem solid white; border-radius:.5rem; width:85vmin; overflow:hidden; position:relative;}
+
+/* Slideshow */
+div#container main.slideshow {position:relative; width:85vmin; overflow:hidden; transform:none; border:1.25rem solid white; border-radius:.5rem;}
 div#container main.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); transition:.5s;}
+div#container main.slideshow.devmode {width:50vw; overflow:visible; transform:scale(.5);}
 div#container main.slideshow div.inner {display:flex; flex-direction:row;}
 /* div#container main.slideshow div.inner {animation: slide4 15s ease-in-out 0s infinite forwards;} */
 div#container main.slideshow div.inner.smooth {transition:.5s;}
-div#container main.slideshow div.inner img.slide {width:100%; flex-shrink:0;}
+div#container main.slideshow div.inner div.slide {width:100%; flex-shrink:0;}
+div#container main.slideshow div.inner div.slide img.slide {display:block; height:100%; width:100%; object-fit:cover;}
 
+/* Remote Controller */
 div#container main.slideshow div.remote {position:absolute; bottom:0; left:50%; transform:translateX(-50%);}
 div#container main.slideshow div.remote {display:flex; flex-direction:row; align-items:center; margin:1.375rem 0;}
 div#container main.slideshow div.remote span.dot {background-color:var(--grey); cursor:pointer; --dotsize:.625rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; margin:0 .15rem;}
 div#container main.slideshow div.remote span.dot.active {background-color:white; --dotsize:.75rem;}
 
-div#container div#remote {position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%;}
-div#container div#remote {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1rem;}
-div#container div#remote button {cursor:pointer; padding:.5rem 1rem; border-radius:.5rem;}
-/* div#container div#remote button.zoomer {} */
-/* div#container div#remote button.playpauser {} */
-div#container div#remote button svg.icon {font-size:2rem;}
-div#container div#remote button.playpauser svg.icon.play {display:block;}
-div#container div#remote button.playpauser svg.icon.pause {display:none;}
-div#container main.slideshow.active + div#remote button.playpauser svg.icon.play {display:none;}
-div#container main.slideshow.active + div#remote button.playpauser svg.icon.pause {display:block;}
-div#container div#remote div#slideCounter {font-size:2rem; text-align:center; position:relative;}
-div#container div#remote div#slideCounter:before {content:'Slide index'; font-size:.5em; position:absolute; /* width:100%; */ bottom:100%; left:50%; transform:translateX(-50%);}
-div#container div#remote div#slideCounter:empty:after {content:'--';}
 
+/* Panel */
+div#container aside.panel {position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%;}
+div#container aside.panel {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1rem;}
 
-/*  */
-div#container.devmode main.slideshow {width:50vw; transform:scale(.25); overflow:visible;}
+/* Panel Buttons */
+div#container aside.panel button {cursor:pointer; padding:.5rem 1rem; border-radius:.5rem;}
+div#container aside.panel button svg.icon {font-size:2rem;}
+/* div#container aside.panel button.zoomer {} */
+/* div#container aside.panel button.playpauser {} */
+div#container aside.panel button.playpauser svg.icon.play {display:block;}
+div#container aside.panel button.playpauser svg.icon.pause {display:none;}
+div#container main.slideshow.active + aside.panel button.playpauser svg.icon.play {display:none;}
+div#container main.slideshow.active + aside.panel button.playpauser svg.icon.pause {display:block;}
+
+/* Slide Counter */
+div#container aside.panel div.slidecounter {font-size:2rem; text-align:center; position:relative;}
+div#container aside.panel div.slidecounter:before {content:'Slide index'; font-size:.5em; position:absolute; /* width:100%; */ bottom:100%; left:50%; transform:translateX(-50%);}
+div#container aside.panel div.slidecounter:empty:after {content:'--';}
+
 
 
 

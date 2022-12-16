@@ -18,7 +18,7 @@ const slideshowremote = document.querySelector('div#container main.slideshow div
 // console.log('slideshowremote:',slideshowremote);
 
 // Get slide counter box. 
-const slideCounter = document.getElementById('slideCounter');
+const slideCounter = document.querySelector('div#container aside.panel div.slidecounter');
 // console.log('slideCounter:',slideCounter);
 
 
@@ -306,4 +306,11 @@ function showSelectedSlide() {
 		// Show slide index in slide counter box. 
 		slideCounter.innerHTML = (currentSlideIndex/*  % numSlides */);
 	}
+}
+
+// Debug: Toggle developer mode. 
+function toggleDevMode() {
+
+	// 
+	container.classList.toggle('devmode');
 }
