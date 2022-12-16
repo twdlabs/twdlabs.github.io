@@ -354,7 +354,7 @@ function listAllKeyScales() {
 	// Add harmonic minor scales. 
 	addScales(minorTonicIndexList,'H-Minor','hMinor');
 
-	console.log('Scale list:',scaleList);
+	// console.log('Scale list:',scaleList);
 	
 	/****/
 

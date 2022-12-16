@@ -80,15 +80,19 @@ function openScaleDisplay(resultIndex, scaleListing='--') {
 
 		// Get scale name. 
 		let scalename = scaleList[scaleIndex].scalename;
+		// console.log('Scale name:',scalename);
 		
 		// Get scale naming indicator. 
 		let namingkey = scaleList[scaleIndex].namingkey;
+		// console.log('namingkey:',namingkey);
 
 		// Get list of key indexes for scale. 
 		let keyindexlist = scaleList[scaleIndex].keyindexlist;
-
+		// console.log('Key index list:',keyindexlist);
+		
 		// Get formatted list of keys for given scale. 
 		let scalekeyslist = formatKeyList( keyindexlist, namingkey );
+		// console.log('scalekeyslist:',scalekeyslist);
 
 		// Create corresponding scale data. 
 		return `
@@ -98,7 +102,23 @@ function openScaleDisplay(resultIndex, scaleListing='--') {
 
 		<!-- scalekeys -->
 		<span class="scalekeys">${ scalekeyslist.join(' ') }</span>
-		<!-- /scalekeys -->`;
+		<!-- /scalekeys -->
+
+		<!-- scalecopier -->
+		<div class="scalecopier">
+
+			<!-- copybtn -->
+			<div class="copybtn">
+
+				<!-- caption -->
+				<span class="caption">Copy to Clipboard</span>
+				<!-- /caption -->
+
+			</div>
+			<!-- /copybtn -->
+
+		</div>
+		<!-- /scalecopier -->`;
 
 		/***/
 
