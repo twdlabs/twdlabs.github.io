@@ -49,44 +49,55 @@ function openScaleDisplay(resultIndex) {
 	scaleIndex = matchingScaleResults[resultIndex];
 	// console.log('Scale index:',scaleIndex);
 
+	// Get selected scale. 
+	let selectedScale = scaleList[scaleIndex];
+
 	// Add attribute to scale display: result index. 
 	overlayDisplay.setAttribute('data-resultindex',resultIndex);
 
-	// Use scale index to get list of indexes for selected scale. 
-	let keyindexlist = scaleList[scaleIndex].keyindexlist;
-	// console.log( 'keyindexlist:', keyindexlist );
-
-	// Add to overlay display: scale listing, piano key buttons. 
+	// Add into scale display: scale listing, piano key buttons. 
 	overlayDisplay.innerHTML = createScaleDisplay();
 
 	// Show popup. 
 	overlayPopup.classList.add('active');
+
 	// Freeze background page scrolling. 
 	pageScrollFreeze(true);
 	
 	// Activate keys buttons. 
 	activateKeyBtns();
 
+	// Activate clipboard copy button. 
+	activateCopyBtn();
+
 	/****/
 
 	// Create display: piano keys, scale listing. 
 	function createScaleDisplay() {
 	
+		// Get scale id. 
+		let scaleid = selectedScale.scaleid;
+		// console.log('Scale id:', scaleid );
+	
 		// Get scale name. 
-		let scalename = scaleList[scaleIndex].scalename;
-		// console.log('Scale name:',scalename);
+		let scalename = selectedScale.scalename;
+		// console.log('Scale name:', scalename );
 		
 		// Get scale naming indicator. 
-		let namingkey = scaleList[scaleIndex].namingkey;
-		// console.log('namingkey:',namingkey);
+		let namingkey = selectedScale.namingkey;
+		// console.log('Naming key:', namingkey );
 
-		// Get list of key indexes for scale. 
-		let keyindexlist = scaleList[scaleIndex].keyindexlist;
-		// console.log('Key index list:',keyindexlist);
+		// Get list of key indexes for selected scale. 
+		let keyindexlist = selectedScale.keyindexlist;
+		console.log('Key index list:', keyindexlist );
 		
 		// Get formatted list of keys for given scale. 
 		let scalekeyslist = formatKeyList( keyindexlist, namingkey );
-		// console.log('scalekeyslist:',scalekeyslist);
+		// console.log('Scale keys list:', scalekeyslist );
+
+		// Add attribute to scale display: stringified scale. 
+		let scalecopy = `${scaleid} {${ (keyindexlist.map( i => keyList[i][namingkey] )).join(' ') }}`
+		overlayDisplay.setAttribute('data-scalecopy',scalecopy);
 
 		// Create display of scale listing and piano keys (based on scale index). 
 		return `
@@ -115,10 +126,21 @@ function openScaleDisplay(resultIndex) {
 	
 			<!-- copybtn -->
 			<div class="copybtn">
+
+				<!-- icon -->
+				<svg class="icon clipboard" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z"/>
+					<path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
+				</svg>
+				<!-- /icon -->
 	
 				<!-- caption -->
-				<span class="caption">Copy to Clipboard</span>
+				<span class="caption">Copy</span>
 				<!-- /caption -->
+
+				<!-- tooltip -->
+				<span class="tooltip">Copy to clipboard</span>
+				<!-- /tooltip -->
 	
 			</div>
 			<!-- /copybtn -->
@@ -268,6 +290,42 @@ function openScaleDisplay(resultIndex) {
 			}
 		}
 	}
+
+	// Activate clipboard copy button. 
+	function activateCopyBtn() {
+
+		// Get copy button. 
+		const copybtn = document.querySelector('div#overlay main.main div.display div.scalecopier div.copybtn');
+		const tooltip = document.querySelector('div#overlay main.main div.display div.scalecopier div.copybtn span.tooltip');
+
+		// Copy scale to clipboard upon mouse click. 
+		copybtn.addEventListener('click',copyScaleToClipboard);
+
+		// Reset tooltip contents upon mouse leaving button. 
+		copybtn.addEventListener('mouseleave',resetTooltip);
+
+		/***/
+
+		// Copy scale to clipboard. 
+		function copyScaleToClipboard(event) {
+
+			// Get stringified version of scale from ovelay display. 
+			let scalecopy = overlayDisplay.getAttribute('data-scalecopy');
+
+			// Copy scale onto clipboard. 
+			navigator.clipboard.writeText(scalecopy);
+
+			// Update contents of tooltip. 
+			tooltip.innerHTML = `Copied: "${scalecopy}"`;
+		}
+
+		// Reset tooltip. 
+		function resetTooltip() {
+			
+			// Reset contents of tooltip. 
+			tooltip.innerHTML = 'Copy to clipboard';
+		}
+	}
 }
 
 
@@ -333,6 +391,8 @@ function closeScaleDisplay() {
 	overlayPopup.removeAttribute('data-scaleindex');
 	// Clear attribute from scale: result index. 
 	overlayDisplay.removeAttribute('data-resultindex');
+	// Clear attribute from scale: scale copy. 
+	overlayDisplay.removeAttribute('data-scalecopy');
 
 	// Hide popup. 
 	overlayPopup.classList.remove('active');

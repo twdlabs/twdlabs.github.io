@@ -229,75 +229,89 @@ const scaleList = [
 	// Major key scales
 
 	// {
+	// 	scaleid:'C',
 	// 	scalename:'C Major',
 	// 	keyindexlist: [0,2,4,5, 7,9,11,0],
 	// 	namingkey:'keyid',
 	// },
 
 	// {
+	// 	scaleid:'G',
 	// 	scalename:'G Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keysharpname',
 	// },
 	// {
+	// 	scaleid:'D',
 	// 	scalename:'D Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keysharpname',
 	// },
 	// {
+	// 	scaleid:'A',
 	// 	scalename:'A Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keysharpname',
 	// },
 	// {
+	// 	scaleid:'E',
 	// 	scalename:'E Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keysharpname',
 	// },
 	// {
+	// 	scaleid:'B',
 	// 	scalename:'B Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keysharpname',
 	// },
 
 	// {
+	// 	scaleid:'FG',
 	// 	scalename:'FG Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keysharpname',
 	// },
 	// {
+	// 	scaleid:'FG',
 	// 	scalename:'FG Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keyflatname',
 	// },
 
 	// {
+	// 	scaleid:'CD',
 	// 	scalename:'CD Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keyflatname',
 	// },
 	// {
+	// 	scaleid:'GA',
 	// 	scalename:'GA Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keyflatname',
 	// },
 	// {
+	// 	scaleid:'DE',
 	// 	scalename:'DE Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keyflatname',
 	// },
 	// {
+	// 	scaleid:'AB',
 	// 	scalename:'AB Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keyflatname',
 	// },
 	// {
+	// 	scaleid:'F',
 	// 	scalename:'F Major',
 	// 	keyindexlist: [0,0,0,0, 0,0,0,0],
 	// 	namingkey:'keyflatname',
 	// },
 
 	// {
+	// 	scaleid:'C',
 	// 	scalename:'C Major',
 	// 	keyindexlist: [0,2,4,5, 7,9,11,0],
 	// 	namingkey:'keyid',
@@ -346,20 +360,20 @@ function listAllKeyScales() {
 	// console.log('Scale list:',scaleList);
 
 	// Add major scales. 
-	addScales(majorTonicIndexList,'Major','major');
+	addScales(majorTonicIndexList,'Major','major','');
 
 	// Add natural minor scales. 
-	addScales(minorTonicIndexList,'Minor','natMinor');
+	addScales(minorTonicIndexList,'Minor','natMinor','m');
 
 	// Add harmonic minor scales. 
-	addScales(minorTonicIndexList,'H-Minor','hMinor');
+	addScales(minorTonicIndexList,'H-Minor','hMinor','hm');
 
 	// console.log('Scale list:',scaleList);
 	
 	/****/
 
 	// Add scales. 
-	function addScales(tonicIndexList,keyTypeName,keyTypeIndicator) {
+	function addScales(tonicIndexList,keyTypeName,keyTypeIndicator,keyTypeId) {
 
 		// Go thru all keys (in 'circle of fifths' order). 
 		for(let i in tonicIndexList) {
@@ -374,6 +388,7 @@ function listAllKeyScales() {
 	
 			// Create new scale. 
 			let newScale = {
+				scaleid: `${tonicKeyName}${keyTypeId}`,
 				scalename: `${tonicKeyName} ${keyTypeName}`,
 				keyindexlist: createKeyIndexList( tonicKeyIndex, keyTypeIndicator ),
 				namingkey: namingKeys[i],

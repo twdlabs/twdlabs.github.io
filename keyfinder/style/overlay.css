@@ -54,7 +54,17 @@ div#overlay main.main div.display div.pianokeys div.octave div.key.white:active:
 div#overlay main.main div.display div.pianokeys div.octave div.key.black:active:after {opacity:.5;}
 
 div#overlay main.main div.display div.scalecopier {margin-top:1.25rem;}
-div#overlay main.main div.display div.scalecopier div.copybtn {background-color:grey; color:white; font-size:1rem; cursor:pointer; user-select:none; padding:.25rem .75rem; border-radius:.5rem;}
+div#overlay main.main div.display div.scalecopier div.copybtn {background-color:grey; color:white; font-size:1rem; cursor:pointer; user-select:none; padding:.5rem .75rem; border-radius:.5rem;}
+div#overlay main.main div.display div.scalecopier div.copybtn {display:flex; flex-direction:row; align-items:center; position:relative;}
+/* div#overlay main.main div.display div.scalecopier div.copybtn svg.icon {} */
+div#overlay main.main div.display div.scalecopier div.copybtn span.caption {margin-left:.25rem;}
+/* div#overlay main.main div.display div.scalecopier div.copybtn span.tooltip {display:none;} */
+div#overlay main.main div.display div.scalecopier div.copybtn span.tooltip {position:absolute; bottom:calc(100% + 1rem); left:50%; transform:translateX(-50%); padding:.375rem .75rem; border-radius:.5rem;}
+div#overlay main.main div.display div.scalecopier div.copybtn span.tooltip {--bgcolor:#555C; background-color:var(--bgcolor); color:white; font-size:.75rem; max-width:30rem; white-space:nowrap;}
+div#overlay main.main div.display div.scalecopier div.copybtn span.tooltip {visibility:hidden; opacity:0;}
+div#overlay main.main div.display div.scalecopier div.copybtn:hover span.tooltip {visibility:visible; opacity:1; transition:.125s;}
+div#overlay main.main div.display div.scalecopier div.copybtn span.tooltip::after {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
+div#overlay main.main div.display div.scalecopier div.copybtn span.tooltip::after {content:''; border:.375rem solid transparent; border-top-color:var(--bgcolor);}
 
 
 /* Overlay Buttons */
