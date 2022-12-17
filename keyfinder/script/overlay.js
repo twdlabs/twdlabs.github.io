@@ -316,7 +316,7 @@ function openScaleDisplay(resultIndex) {
 			navigator.clipboard.writeText(scalecopy);
 
 			// Update contents of tooltip. 
-			tooltip.innerHTML = `Copied: "${scalecopy}"`;
+			tooltip.innerHTML = `Copied<br>"${scalecopy}"`;
 		}
 
 		// Reset tooltip. 
