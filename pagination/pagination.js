@@ -1,18 +1,28 @@
 
 
 
-// Get main container. 
+// Get main page container. 
 const pagecontainer = document.querySelector('main.main div.inner');
-const paginatorinner = document.querySelector('main.main aside.paginator div.numlinks');
-
 // Initialize all page elements. 
 let allPages;
+
+// Get paginator container. 
+const paginator = document.querySelector('main.main aside.paginator');
+const paginatorinner = document.querySelector('main.main aside.paginator div.numlinks');
 // Initialize elements for links to all pages. 
 let allPageLinks;
+// Get delta page buttons. 
+const firstPageBtn = document.querySelector('main.main aside.paginator a.deltalink.firstpage');
+const prevPageBtn = document.querySelector('main.main aside.paginator a.deltalink.prevpage');
+const nextPageBtn = document.querySelector('main.main aside.paginator a.deltalink.nextpage');
+const lastPageBtn = document.querySelector('main.main aside.paginator a.deltalink.lastpage');
+
+
+/*****/
 
 
 // Define number of items per page. 
-const numPerPage = 4;
+const numPerPage = 10;
 
 // Get numebr of items. 
 const numItems = dataSource.length;
@@ -35,11 +45,11 @@ addPages();
 // Add page links. 
 addPageLinks();
 
-// Activate page links. 
-activatePageLinks();
-
 // Show currently selected page. 
 showSelectedPage();
+
+// Activate shortcut keys. 
+document.addEventListener('keyup',checkForShortcutKeys);
 
 
 /*****/
@@ -71,11 +81,11 @@ function addPages() {
 		// Add data item. 
 		result += `
 		<!-- item -->
-		<div class="item">${dataItem} (${pagenum})</div>
+		<div class="item">Item ${ dataItem.toUpperCase() }</div>
 		<!-- /item -->`;
 	
 		// Close finished page. Move to next page. 
-		if( (i%numPerPage) == (numPerPage-1) ) {
+		if( (i%numPerPage)==(numPerPage-1) || i==(dataSource.length-1) ) {
 	
 			// Add page number to page. 
 			result += `
@@ -92,6 +102,9 @@ function addPages() {
 	
 	// Display data items. 
 	pagecontainer.innerHTML = result;
+	
+	// Access all pages. 
+	allPages = document.querySelectorAll('main.main div.page');
 }
 
 // Add page links. 
@@ -116,6 +129,9 @@ function addPageLinks() {
 	// Display page links. 
 	paginatorinner.innerHTML = result;
 
+	// Activate page links. 
+	activatePageLinks();
+
 	/****/
 
 	// Create page link. 
@@ -127,94 +143,85 @@ function addPageLinks() {
 		<a class="pagelink" href="javascript:void(0)" data-pagenum="${n}">${n}</a>
 		<!-- /pagelink -->`;
 	}
-}
 
-// Activate page links. 
-function activatePageLinks() {
+	// Activate page links. 
+	function activatePageLinks() {
 
-	// Get all pages. 
-	allPages = document.querySelectorAll('div#container main.main div.page');
-	// Get all numbered page links. 
-	allPageLinks = document.querySelectorAll('div#container main.main aside.paginator div.numlinks a.pagelink');
-
-	// Get delta page buttons. 
-	const firstPageBtn = document.querySelector('div#container main.main aside.paginator a.deltalink.firstpage');
-	const prevPageBtn = document.querySelector('div#container main.main aside.paginator a.deltalink.prevpage');
-	const nextPageBtn = document.querySelector('div#container main.main aside.paginator a.deltalink.nextpage');
-	const lastPageBtn = document.querySelector('div#container main.main aside.paginator a.deltalink.lastpage');
-
+		// Access all numbered page links. 
+		allPageLinks = document.querySelectorAll('main.main aside.paginator div.numlinks a.pagelink');
+		
+		// Activate delta button: go to first page. 
+		firstPageBtn.addEventListener('click',goToFirstPage);
 	
-	// Activate delta button: go to first page. 
-	firstPageBtn.addEventListener('click',goToFirstPage);
-
-	// Activate delta button: go to previous page. 
-	prevPageBtn.addEventListener('click',goToPrevPage);
-
-	// Activate delta button: go to next page. 
-	nextPageBtn.addEventListener('click',goToNextPage);
-
-	// Activate delta button: go to last page. 
-	lastPageBtn.addEventListener('click',goToLastPage);
-
-	// Go thru all numbered page links. 
-	for(let pagelink of allPageLinks) {
-		// Activate page link. 
-		pagelink.addEventListener('click',selectPageNumber);
-	}
-
-	/****/
-
-	// Select page number. 
-	function selectPageNumber(event) {
-
-		// Get selected page link. 
-		let pagelink = event.currentTarget;
-
-		// Get selected page number. 
-		currentPageNumber = pagelink.getAttribute('data-pagenum');
-
-		// Show currently selected page. 
-		showSelectedPage();
-	}
-
-	// Go to first page. 
-	function goToFirstPage() {
-
-		// Set newly selected page number. 
-		currentPageNumber = 1;
-
-		// Show currently selected page. 
-		showSelectedPage();
-	}
-
-	// Go to previous page. 
-	function goToPrevPage() {
-
-		// Set newly selected page number. 
-		currentPageNumber--;
-
-		// Show currently selected page. 
-		showSelectedPage();
-	}
-
-	// Go to next page. 
-	function goToNextPage() {
-
-		// Set newly selected page number. 
-		currentPageNumber++;
-
-		// Show currently selected page. 
-		showSelectedPage();
-	}
-
-	// Go to last page. 
-	function goToLastPage() {
-
-		// Set newly selected page number. 
-		currentPageNumber = numPages;
-
-		// Show currently selected page. 
-		showSelectedPage();
+		// Activate delta button: go to previous page. 
+		prevPageBtn.addEventListener('click',goToPrevPage);
+	
+		// Activate delta button: go to next page. 
+		nextPageBtn.addEventListener('click',goToNextPage);
+	
+		// Activate delta button: go to last page. 
+		lastPageBtn.addEventListener('click',goToLastPage);
+	
+		// Go thru all numbered page links. 
+		for(let pagelink of allPageLinks) {
+			// Activate page link. 
+			pagelink.addEventListener('click',selectPageNumber);
+		}
+	
+		/***/
+	
+		// Select page number. 
+		function selectPageNumber(event) {
+	
+			// Get selected page link. 
+			let pagelink = event.currentTarget;
+	
+			// Get selected page number. 
+			currentPageNumber = pagelink.getAttribute('data-pagenum');
+	
+			// Show currently selected page. 
+			showSelectedPage();
+		}
+	
+		// Go to first page. 
+		function goToFirstPage() {
+	
+			// Set newly selected page number. 
+			currentPageNumber = 1;
+	
+			// Show currently selected page. 
+			showSelectedPage();
+		}
+	
+		// Go to previous page. 
+		function goToPrevPage() {
+	
+			// Set newly selected page number. 
+			currentPageNumber--;
+	
+			// Show currently selected page. 
+			showSelectedPage();
+		}
+	
+		// Go to next page. 
+		function goToNextPage() {
+	
+			// Set newly selected page number. 
+			currentPageNumber++;
+	
+			// Show currently selected page. 
+			showSelectedPage();
+		}
+	
+		// Go to last page. 
+		function goToLastPage() {
+	
+			// Set newly selected page number. 
+			currentPageNumber = numPages;
+	
+			// Show currently selected page. 
+			showSelectedPage();
+		}
 	}
 }
 
@@ -252,5 +259,44 @@ function showSelectedPage() {
 
 		// Hide other pages. 
 		else pagelink.classList.remove('active');
+	}
+
+	// 
+	if(currentPageNumber==1) {
+		// 
+		paginator.classList.add('f');
+	}
+	else if(currentPageNumber==numPages) {
+		// 
+		paginator.classList.add('l');
+	}
+	else {
+		paginator.classList.remove('f');
+		paginator.classList.remove('l');
+	}
+}
+
+// Check for shortcut keys. 
+function checkForShortcutKeys(event) {
+	console.log(event);
+
+	// 
+	if(event.keyCode==37 || event.key=='ArrowLeft') {
+
+		// Update crement current page number. 
+		currentPageNumber--;
+
+		// Show selected page. 
+		showSelectedPage();
+	}
+
+	// 
+	if(event.keyCode==39 || event.key=='ArrowRight') {
+
+		// Update crement current page number. 
+		currentPageNumber++;
+
+		// Show selected page. 
+		showSelectedPage();
 	}
 }
