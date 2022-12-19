@@ -9,11 +9,11 @@
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="../atgicon.ico" rel="icon"/>
-		<link href="./calendar.jpg" rel="apple-touch-icon"/>
+		<link href="./assets/calendar.jpg" rel="apple-touch-icon"/>
 		<title>Calendar</title>
 
 		<!-- Main Stylesheet -->
-		<link href="calendar.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/calendar.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -36,7 +36,7 @@
 					<div class="controller">
 
 						<!-- btn -->
-						<div class="btn" onclick="goToPrevMonth()">
+						<div class="btn prevmonthbtn" onclick="goToPrevMonth()">
 
 							<!-- icon -->
 							<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -48,7 +48,7 @@
 						<!-- /btn -->
 
 						<!-- btn -->
-						<div class="btn" onclick="goToNextMonth()">
+						<div class="btn nextmonthbtn" onclick="goToNextMonth()">
 
 							<!-- icon -->
 							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -60,47 +60,13 @@
 						<!-- /btn -->
 
 						<!-- btn -->
-						<div class="btn" onclick="goToTodayMonth()">
-
-							<!-- icon -->
-							<!-- <svg class="icon calendar" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-							</svg> -->
-							<!-- /icon -->
-
-							<!-- icon -->
-							<!-- <svg class="icon calendar" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1H2zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z"/>
-							</svg> -->
-							<!-- /icon -->
+						<div class="btn todaybtn" onclick="goToTodayMonth()">
 
 							<!-- icon -->
 							<svg class="icon calendar" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 								<path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
 								<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
 							</svg>
-							<!-- /icon -->
-
-							<!-- icon -->
-							<!-- <svg class="icon calendar" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-								<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
-								<path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
-							</svg> -->
-							<!-- /icon -->
-
-							<!-- icon -->
-							<!-- <svg class="icon calendar" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
-								<path d="M12 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-							</svg> -->
-							<!-- /icon -->
-
-							<!-- icon -->
-							<!-- <svg class="icon calendar" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1H2zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V5z"/>
-								<path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
-							</svg> -->
 							<!-- /icon -->
 							
 						</div>
@@ -403,116 +369,6 @@
 
 						</li>
 						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
-
-						<!-- month -->
-						<li class="month" data-yr="-1" data-mo="-1">
-
-							<!-- caption -->
-							<span class="caption">Xyz</span>
-							<!-- /caption -->
-
-						</li>
-						<!-- /month -->
 						
 					</ul>
 					<!-- /select -->
@@ -532,10 +388,10 @@
 
 
 		<!-- Database Script -->
-		<script src="database.js" type="text/javascript"></script>
+		<script src="./assets/database.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
-		<script src="calendar.js" type="text/javascript"></script>
+		<script src="./assets/calendar.js" type="text/javascript"></script>
 		<!-- <script type="text/javascript"></script> -->
 
 	</body>

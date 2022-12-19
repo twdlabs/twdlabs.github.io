@@ -2,38 +2,51 @@
 
 
 
+// Get month display window. 
+
+// Get head of month display window. 
+const calendarhead = document.querySelector('main.calendar section.head h1.name');
+// Get body of month display window. 
+const calendarbody = document.querySelector('main.calendar section.body ul.monthdays');
+
+
 // Get month selector window. 
-const selector = document.querySelector('div#container main.calendar div.selector');
-const selectorbody = document.querySelector('div#container main.calendar div.selector ul.select');
-const selectorhead = document.querySelector('div#container main.calendar div.selector div.head h1.year');
+const selector = document.querySelector('main.calendar div.selector');
+// Get body of month selector window. 
+const selectorbody = document.querySelector('main.calendar div.selector ul.select');
+// Get head of month selector window. 
+const selectorhead = document.querySelector('main.calendar div.selector div.head h1.year');
+
+// Initialize current year of month selector window. 
 let selectorCurrentYear;
+
 
 // Create new date item for current date time. 
 const now = new Date();
 // console.log('Now:',now);
 
 // Define today's year. 
-let todayYear = now.getFullYear();				// 2022;
-// console.log('todayYear:',todayYear);
+const todayYear = now.getFullYear();		// 2022;
+// console.log('Today year:', todayYear);
 
 // Define index of today's month. 
-let todayMonthIndex = now.getMonth();				// 10 (November);
-// console.log('todayMonthIndex:',todayMonthIndex);
+const todayMonthIndex = now.getMonth();		// 11 (December);
+// console.log('Today month index:', todayMonthIndex);
 
 // Define today's date. 
-let todayDateOfMonth = now.getDate();				// 12 (12th);
-// console.log('todayDateOfMonth:',todayDateOfMonth);
+const todayDateOfMonth = now.getDate();		// 17 (17th);
+// console.log('Today date of month:', todayDateOfMonth);
 
 console.log( 'Today\'s date:', todayYear, monthfullname[todayMonthIndex], todayDateOfMonth,'\n\n' );
 
 
 // Define current year. 
 let currentYear = todayYear;
-// console.log('currentYear:',currentYear);
+// console.log('Current year:',currentYear);
 
 // Define index of current month. 
 let currentMonthIndex = todayMonthIndex;
-// console.log('currentMonthIndex:',currentMonthIndex);
+// console.log('Current month index:',currentMonthIndex);
 
 
 /*****/
@@ -64,20 +77,14 @@ function updateCalendar() {
 
 	// Update calendar head. 
 	function updateCalendarHead() {
-		console.log( 'Current month:', currentYear, monthfullname[currentMonthIndex] );
-		
-		// Get destination. 
-		const destination = document.querySelector('main.calendar section.head h1.name');
+		console.log( 'Currently displayed month:', currentYear, monthfullname[currentMonthIndex] );
 	
 		// Update label for current month. 
-		destination.innerHTML = `${ monthfullname[currentMonthIndex] } ${currentYear}`;
+		calendarhead.innerHTML = `${ monthfullname[currentMonthIndex] } ${currentYear}`;
 	}
 	
 	// Update calendar body. 
 	function updateCalendarBody() {
-		
-		// Get destination. 
-		const destination = document.querySelector('div#container main.calendar section.body ul.monthdays');
 	
 		// Initialize result. 
 		let result = '';
@@ -92,7 +99,7 @@ function updateCalendar() {
 		result += addNextMonthDays();
 		
 		// Update days in calendar body. 
-		destination.innerHTML = result;
+		calendarbody.innerHTML = result;
 	
 		/***/
 	
@@ -106,12 +113,12 @@ function updateCalendar() {
 			let lastMonthLastDay = new Date(currentYear,currentMonthIndex,0);
 			let lastMonthLastDayDate = lastMonthLastDay.getDate();
 			let lastMonthLastDayIndex = lastMonthLastDay.getDay();
-			console.log('\tlastMonthLastDay:',lastMonthLastDayIndex,lastMonthLastDay);
+			// console.log('\tlastMonthLastDay:',lastMonthLastDayIndex,lastMonthLastDay);
 	
 			// Get first day of current month. 
 			let currentMonthFirstDay = new Date(currentYear,currentMonthIndex,1);
 			let currentMonthFirstDayIndex = currentMonthFirstDay.getDay();
-			console.log('\tcurrentMonthFirstDay:',currentMonthFirstDayIndex,currentMonthFirstDay);
+			// console.log('\tcurrentMonthFirstDay:',currentMonthFirstDayIndex,currentMonthFirstDay);
 		
 			// Add days for previous month. 
 			for( let d=1 ; d<=currentMonthFirstDayIndex ; d++ ) {
@@ -138,7 +145,7 @@ function updateCalendar() {
 	
 			// Get number of days in current month. 
 			let currentMonthLength = new Date(currentYear,currentMonthIndex+1,0).getDate();
-			console.log('\tcurrentMonthLength:',currentMonthLength);
+			// console.log('\tcurrentMonthLength:',currentMonthLength);
 	
 			// Add days for current month. 
 			for( let d=1 ; d<=currentMonthLength ; d++ ) {
@@ -166,12 +173,12 @@ function updateCalendar() {
 			// Get last day of current month. 
 			let currentMonthLastDay = new Date(currentYear,currentMonthIndex+1,0);
 			let currentMonthLastDayIndex = currentMonthLastDay.getDay();
-			console.log('\tcurrentMonthLastDay:',currentMonthLastDayIndex,currentMonthLastDay);
+			// console.log('\tcurrentMonthLastDay:',currentMonthLastDayIndex,currentMonthLastDay);
 			
 			// Get first day of next month. 
 			let nextMonthFirstDay = new Date(currentYear,currentMonthIndex+1,1);
 			let nextMonthFirstDayIndex = nextMonthFirstDay.getDay();
-			console.log('\tnextMonthFirstDay:',nextMonthFirstDayIndex,nextMonthFirstDay);
+			// console.log('\tnextMonthFirstDay:',nextMonthFirstDayIndex,nextMonthFirstDay);
 		
 			// Add days for following month. 
 			for( let d=currentMonthLastDayIndex+1 ; d<=6 ; d++ ) {
@@ -266,13 +273,14 @@ function updateSelector() {
 	// Fill head of selector. 
 	fillSelectorHead();
 
-	// Activate selector. 
+	// Activate selector buttons. 
 	activateSelector();
 
 	/****/
 
 	// Add to selector: current year. 
 	function fillSelectorHead() {
+		// Update current year. 
 		selectorhead.innerHTML = selectorCurrentYear;
 	}
 
@@ -282,13 +290,13 @@ function updateSelector() {
 		// Initialize result. 
 		let result = '';
 
-		// 
+		// Go thru all months. 
 		for(let i in monthData) {
 	
-			// 
+			// Get data for current month. 
 			let m = monthData[i];
 	
-			// 
+			// Add month button. 
 			result += `
 			<!-- month -->
 			<li class="month" data-yr="${selectorCurrentYear}" data-mo="${i}">
@@ -305,30 +313,33 @@ function updateSelector() {
 		selectorbody.innerHTML = result;
 	}
 
-	// Activate selector. 
+	// Activate selector buttons. 
 	function activateSelector() {
 		
-		// Get month buttons. 
-		const monthbtns = document.querySelectorAll('div#container main.calendar div.selector ul.select li.month');
+		// Get all month buttons. 
+		const monthbtns = document.querySelectorAll('main.calendar div.selector ul.select li.month');
 
-		// Go thru month buttons. 
+		// Go thru all month buttons. 
 		for(let btn of monthbtns) {
-			btn.addEventListener('click',selectMonth)
+			btn.addEventListener('click',selectMonth);
 		}
 
 		/***/
 
-		// Select month. 
+		// Select month to be dsiplayed. 
 		function selectMonth(event) {
-			// 
+
+			// Get selected month button. 
 			const btn = event.currentTarget;
 
-			// 
-			const yr = btn.getAttribute('data-yr');
+			// Get selected year. 
+			let yr = btn.getAttribute('data-yr');
+			// Save selected year. 
 			currentYear = 1*yr;
 
-			// 
-			const mo = btn.getAttribute('data-mo');
+			// Get selected month. 
+			let mo = btn.getAttribute('data-mo');
+			// Save selected month. 
 			currentMonthIndex = 1*mo;
 
 			// Update calendar. 
@@ -366,7 +377,7 @@ function closeSelector() {
 // Activate keyboard shortcuts. 
 function activateShortcuts() {
 
-	// 
+	// Check for shortcut key upon key press. 
 	document.addEventListener('keyup',checkForShortcutKey);
 
 	/****/
@@ -378,7 +389,7 @@ function activateShortcuts() {
 		// Check if selector window open. 
 		let selectorOpen = selector.classList.contains('active');
 
-		// 
+		// Check for special keys pressed. 
 		if(event.keyCode==83 || event.key=='s' || event.key=='S') openSelector();
 		else if(event.keyCode==27 || event.key=='Escape') closeSelector();
 		else if(event.keyCode==37 || event.key=='ArrowLeft') {

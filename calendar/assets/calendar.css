@@ -64,15 +64,34 @@ div#container main.calendar div.selector div.closebtn {font-size:2rem; cursor:po
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
+
 	/*  */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
+
+	/*  */
+}
+
+/* Medium Smartphone Screen */
+@media screen and (max-width:32rem) {
+
 	/*  */
 }
 
 /* Small Smartphone Screen */
-@media screen and (max-width:32rem) {
+@media screen and (max-width:20rem) {
+
 	/*  */
+	div#container main.calendar section.head {flex-direction:column;}
+	div#container main.calendar section.head h1.name {text-align:center;}
+	div#container main.calendar section.head div.controller {flex-wrap:wrap; justify-content:center;}
+	div#container main.calendar section.head div.controller div.btn.todaybtn {text-align:center; width:100%;}
+
+	/*  */
+	div#container main.calendar section.body ul.weekdays {display:none;}
+	div#container main.calendar section.body ul.monthdays {display:flex; flex-direction:column; align-items:center;}
+	div#container main.calendar section.body ul.monthdays li.day {padding:.25rem .375rem;}
+	div#container main.calendar section.body ul.monthdays li.day.off {display:none;}
 }
