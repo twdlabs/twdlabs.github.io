@@ -13,71 +13,8 @@
 		<title>Lander</title>
 
 		<!-- Main Stylesheet -->
-		<!-- <link href="./lander.css" rel="stylesheet" type="text/css"/> -->
-		<style type="text/css">
-			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
-
-
-			* {box-sizing:border-box; /* padding:0; margin:0; */}
-
-
-			:root {
-				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
-				--pagewidth:75rem;
-				--btncolor:rgb(51, 123, 239);
-				--themecolor:#CCC;
-				--boxshadow:0 0 1rem #0002;
-				--boxshadow:0 0 .25rem #0003;
-			}
-
-
-			html {background-color:var(--themecolor); background-image:var(--bgimg);}
-			body {font-family:Nunito,sans-serif; margin:0;}
-
-
-			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-			div#container main.main {background-color:white; width:100%; max-width:var(--pagewidth); padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-			/* div#container main.main section {} */
-			
-			div#container main.main section.head {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem;}
-			div#container main.main section.head div.side {display:flex; flex-direction:column; align-items:center;}
-			/* div#container main.main section.head div.side.left {} */
-			div#container main.main section.head div.side.right {justify-content:center;}
-			div#container main.main section.head div.side.left div.slot {position:relative; width:100%; padding-top:100%;}
-			div#container main.main section.head div.side.left div.slot img.stock {position:absolute; top:0; left:0;}
-			div#container main.main section.head div.side.left div.slot img.stock {display:block; object-fit:cover; height:100%; width:100%;}
-			div#container main.main section.head div.side.right h1.welcome {font-size:2.5rem; text-align:center; margin:0;}
-			/* div#container main.main section.head div.side.right p.textcopy {} */
-			div#container main.main section.head div.side.right div.ctabtn {background-color:var(--btncolor); color:white; /* display:flex; */ padding:.5rem 1rem; border-radius:.5rem;}
-
-			div#container main.main section {padding:1rem 0;}
-			div#container main.main section h2.head {font-size:2rem; text-align:center;}
-			div#container main.main section div.panel {display:grid; grid-template-columns:repeat(3,1fr);}
-			div#container main.main section div.panel div.item {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; grid-gap:.5rem; padding:1rem;}
-			div#container main.main section div.panel div.item svg.icon {font-size:8rem;}
-			div#container main.main section div.panel div.item svg.icon:nth-child(2) {display:none;}
-			div#container main.main section div.panel div.item span.title {font-size:1.5rem; text-align:center; /* white-space:nowrap; */ text-overflow:ellipsis;}
-			div#container main.main section div.panel div.item p.textcopy {text-align:center; margin:0;}
-
-			/* div#container main.main section.features {} */
-
-			
-			/* Tablet Screen */
-			@media screen and (max-width:64rem) {
-				/*  */
-				div#container main.main section div.panel {display:grid; grid-template-columns:repeat(2,1fr);}
-			}
-			
-			/* Big Smartphone Screen */
-			@media screen and (max-width:48rem) {
-				/*  */
-			}
-			
-			/* Small Smartphone Screen */
-			@media screen and (max-width:32rem) {
-				/*  */
-			}
-		</style>
+		<link href="./lander.css" rel="stylesheet" type="text/css"/>
+		<style type="text/css"></style>
 	</head>
 
 	<body>
