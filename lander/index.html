@@ -1,0 +1,1969 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./../atgicon.ico" rel="apple-touch-icon"/>
+		<title>Lander</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="./lander.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+				--pagewidth:75rem;
+				--btncolor:rgb(51, 123, 239);
+				--themecolor:#CCC;
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+			}
+
+
+			html {background-color:var(--themecolor); background-image:var(--bgimg);}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			div#container main.main {background-color:white; width:100%; max-width:var(--pagewidth); padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+			/* div#container main.main section {} */
+			
+			div#container main.main section.head {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem;}
+			div#container main.main section.head div.side {display:flex; flex-direction:column; align-items:center;}
+			/* div#container main.main section.head div.side.left {} */
+			div#container main.main section.head div.side.right {justify-content:center;}
+			div#container main.main section.head div.side.left div.slot {position:relative; width:100%; padding-top:100%;}
+			div#container main.main section.head div.side.left div.slot img.stock {position:absolute; top:0; left:0;}
+			div#container main.main section.head div.side.left div.slot img.stock {display:block; object-fit:cover; height:100%; width:100%;}
+			div#container main.main section.head div.side.right h1.welcome {font-size:2.5rem; text-align:center; margin:0;}
+			/* div#container main.main section.head div.side.right p.textcopy {} */
+			div#container main.main section.head div.side.right div.ctabtn {background-color:var(--btncolor); color:white; /* display:flex; */ padding:.5rem 1rem; border-radius:.5rem;}
+
+			div#container main.main section {padding:1rem 0;}
+			div#container main.main section h2.head {font-size:2rem; text-align:center;}
+			div#container main.main section div.panel {display:grid; grid-template-columns:repeat(3,1fr);}
+			div#container main.main section div.panel div.item {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; grid-gap:.5rem; padding:1rem;}
+			div#container main.main section div.panel div.item svg.icon {font-size:8rem;}
+			div#container main.main section div.panel div.item svg.icon:nth-child(2) {display:none;}
+			div#container main.main section div.panel div.item span.title {font-size:1.5rem; text-align:center; /* white-space:nowrap; */ text-overflow:ellipsis;}
+			div#container main.main section div.panel div.item p.textcopy {text-align:center; margin:0;}
+
+			/* div#container main.main section.features {} */
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+				div#container main.main section div.panel {display:grid; grid-template-columns:repeat(2,1fr);}
+			}
+			
+			/* Big Smartphone Screen */
+			@media screen and (max-width:48rem) {
+				/*  */
+			}
+			
+			/* Small Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- head -->
+				<section class="head">
+
+					<!-- left -->
+					<div class="side left">
+
+						<!-- slot -->
+						<div class="slot">
+
+							<!-- stock -->
+							<img class="stock" src="../autoslideshow/assets/images/1.jpg">
+							<!-- /stock -->
+
+						</div>
+						<!-- /slot -->
+
+						<!-- stock -->
+						<!-- <img class="stock" src="../autoslideshow/assets/images/7.jpg"> -->
+						<!-- /stock -->
+
+					</div>
+					<!-- /left -->
+
+					<!-- right -->
+					<div class="side right">
+
+						<!-- welcome -->
+						<h1 class="welcome">Welcome</h1>
+						<!-- /welcome -->
+
+						<!-- textcopy -->
+						<p class="textcopy">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia ex perferendis, ullam tenetur culpa voluptas praesentium? Eos, nemo blanditiis deleniti alias asperiores obcaecati excepturi labore, explicabo, debitis officiis voluptates cum!</p>
+						<!-- /textcopy -->
+
+						<!-- ctabtn -->
+						<div class="ctabtn">Get started</div>
+						<!-- /ctabtn -->
+						
+					</div>
+					<!-- /right -->
+
+				</section>
+				<!-- /head -->
+				
+				<!-- features -->
+				<section class="features">
+
+					<!-- head -->
+					<h2 class="head">Program Benefits</h2>
+					<!-- /head -->
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon infinity" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M5.68 5.792 7.345 7.75 5.681 9.708a2.75 2.75 0 1 1 0-3.916ZM8 6.978 6.416 5.113l-.014-.015a3.75 3.75 0 1 0 0 5.304l.014-.015L8 8.522l1.584 1.865.014.015a3.75 3.75 0 1 0 0-5.304l-.014.015L8 6.978Zm.656.772 1.663-1.958a2.75 2.75 0 1 1 0 3.916L8.656 7.75Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Endless Motivation</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon waterdrop" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+								<path fill-rule="evenodd" d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Sweat Equity</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon globe" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Global Access</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon megaphone" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49a68.14 68.14 0 0 0-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 74.663 74.663 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199V2.5zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0zm-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233c.18.01.359.022.537.036 2.568.189 5.093.744 7.463 1.993V3.85zm-9 6.215v-4.13a95.09 95.09 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A60.49 60.49 0 0 1 4 10.065zm-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68.019 68.019 0 0 0-1.722-.082z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Public Accountability</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon sunrise" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Gradual Progress</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon sun" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">New Visions</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon graphup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Consistent Progress</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon target" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+								<path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
+								<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+								<path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Goal Achievement</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon newspaper" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+								<path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Public Praise</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /features -->
+				
+				<!-- features -->
+				<section class="features">
+
+					<!-- head -->
+					<h2 class="head">Program Features</h2>
+					<!-- /head -->
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon fingerprint" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z"/>
+								<path d="M6.06 7a2 2 0 1 1 4 0 .5.5 0 1 1-1 0 1 1 0 1 0-2 0v.332c0 .409-.022.816-.066 1.221A.5.5 0 0 1 6 8.447c.04-.37.06-.742.06-1.115V7Zm3.509 1a.5.5 0 0 1 .487.513 11.5 11.5 0 0 1-.587 3.339l-1.266 3.8a.5.5 0 0 1-.949-.317l1.267-3.8a10.5 10.5 0 0 0 .535-3.048A.5.5 0 0 1 9.569 8Zm-3.356 2.115a.5.5 0 0 1 .33.626L5.24 14.939a.5.5 0 1 1-.955-.296l1.303-4.199a.5.5 0 0 1 .625-.329Z"/>
+								<path d="M4.759 5.833A3.501 3.501 0 0 1 11.559 7a.5.5 0 0 1-1 0 2.5 2.5 0 0 0-4.857-.833.5.5 0 1 1-.943-.334Zm.3 1.67a.5.5 0 0 1 .449.546 10.72 10.72 0 0 1-.4 2.031l-1.222 4.072a.5.5 0 1 1-.958-.287L4.15 9.793a9.72 9.72 0 0 0 .363-1.842.5.5 0 0 1 .546-.449Zm6 .647a.5.5 0 0 1 .5.5c0 1.28-.213 2.552-.632 3.762l-1.09 3.145a.5.5 0 0 1-.944-.327l1.089-3.145c.382-1.105.578-2.266.578-3.435a.5.5 0 0 1 .5-.5Z"/>
+								<path d="M3.902 4.222a4.996 4.996 0 0 1 5.202-2.113.5.5 0 0 1-.208.979 3.996 3.996 0 0 0-4.163 1.69.5.5 0 0 1-.831-.556Zm6.72-.955a.5.5 0 0 1 .705-.052A4.99 4.99 0 0 1 13.059 7v1.5a.5.5 0 1 1-1 0V7a3.99 3.99 0 0 0-1.386-3.028.5.5 0 0 1-.051-.705ZM3.68 5.842a.5.5 0 0 1 .422.568c-.029.192-.044.39-.044.59 0 .71-.1 1.417-.298 2.1l-1.14 3.923a.5.5 0 1 1-.96-.279L2.8 8.821A6.531 6.531 0 0 0 3.058 7c0-.25.019-.496.054-.736a.5.5 0 0 1 .568-.422Zm8.882 3.66a.5.5 0 0 1 .456.54c-.084 1-.298 1.986-.64 2.934l-.744 2.068a.5.5 0 0 1-.941-.338l.745-2.07a10.51 10.51 0 0 0 .584-2.678.5.5 0 0 1 .54-.456Z"/>
+								<path d="M4.81 1.37A6.5 6.5 0 0 1 14.56 7a.5.5 0 1 1-1 0 5.5 5.5 0 0 0-8.25-4.765.5.5 0 0 1-.5-.865Zm-.89 1.257a.5.5 0 0 1 .04.706A5.478 5.478 0 0 0 2.56 7a.5.5 0 0 1-1 0c0-1.664.626-3.184 1.655-4.333a.5.5 0 0 1 .706-.04ZM1.915 8.02a.5.5 0 0 1 .346.616l-.779 2.767a.5.5 0 1 1-.962-.27l.778-2.767a.5.5 0 0 1 .617-.346Zm12.15.481a.5.5 0 0 1 .49.51c-.03 1.499-.161 3.025-.727 4.533l-.07.187a.5.5 0 0 1-.936-.351l.07-.187c.506-1.35.634-2.74.663-4.202a.5.5 0 0 1 .51-.49Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Personalized Plans</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon activity" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Cardio & Heartrate Tracking</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon cart" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Team Shopping</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon compass" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 16.016a7.5 7.5 0 0 0 1.962-14.74A1 1 0 0 0 9 0H7a1 1 0 0 0-.962 1.276A7.5 7.5 0 0 0 8 16.016zm6.5-7.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+								<path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Daily Guidance</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon easel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M8 0a.5.5 0 0 1 .447.276L8.81 1h4.69A1.5 1.5 0 0 1 15 2.5V11h.5a.5.5 0 0 1 0 1h-2.86l.845 3.379a.5.5 0 0 1-.97.242L12.11 14H3.89l-.405 1.621a.5.5 0 0 1-.97-.242L3.36 12H.5a.5.5 0 0 1 0-1H1V2.5A1.5 1.5 0 0 1 2.5 1h4.691l.362-.724A.5.5 0 0 1 8 0ZM2 11h12V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5V11Zm9.61 1H4.39l-.25 1h7.72l-.25-1Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Monthly Presentations</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon envelopepaper" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2H4Zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6v-2.55Zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5.417Zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267v2.55Zm13 .566v5.734l-4.778-2.867L15 7.383Zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083l6.965 4.18ZM1 13.116V7.383l4.778 2.867L1 13.117Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Email Progress Updates</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon award" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+								<path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+							</svg>
+							<!-- /icon -->
+		
+							<!-- icon -->
+							<svg class="icon trophy" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Performance Awards</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon mortarboard" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"/>
+								<path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Program Graduation Ceremony</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon headset" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">24/7 Customer Service</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /features -->
+				
+				<!-- features -->
+				<section class="features">
+
+					<!-- head -->
+					<h2 class="head">Program Lessons</h2>
+					<!-- /head -->
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon code" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Crafty Coding</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon cloud" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Cloud Storage</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon fortress" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Strong Foundation</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon brickwall" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 .5A.5.5 0 0 1 .5 0h15a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5H2v-2H.5a.5.5 0 0 1-.5-.5v-3A.5.5 0 0 1 .5 6H2V4H.5a.5.5 0 0 1-.5-.5v-3zM3 4v2h4.5V4H3zm5.5 0v2H13V4H8.5zM3 10v2h4.5v-2H3zm5.5 0v2H13v-2H8.5zM1 1v2h3.5V1H1zm4.5 0v2h5V1h-5zm6 0v2H15V1h-3.5zM1 7v2h3.5V7H1zm4.5 0v2h5V7h-5zm6 0v2H15V7h-3.5zM1 13v2h3.5v-2H1zm4.5 0v2h5v-2h-5zm6 0v2H15v-2h-3.5z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Obstacle Removal</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon paintbrush" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04zM4.705 11.912a1.23 1.23 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.39 3.39 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3.122 3.122 0 0 0 .126-.75l-.793-.792zm1.44.026c.12-.04.277-.1.458-.183a5.068 5.068 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005a.031.031 0 0 1-.007.004zm3.582-3.043.002.001h-.002z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Picture Painting</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon database" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313ZM13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 5.698ZM14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13V4Zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A4.92 4.92 0 0 0 13 8.698Zm0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Database Management</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon bug" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4.355.522a.5.5 0 0 1 .623.333l.291.956A4.979 4.979 0 0 1 8 1c1.007 0 1.946.298 2.731.811l.29-.956a.5.5 0 1 1 .957.29l-.41 1.352A4.985 4.985 0 0 1 13 6h.5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 1 1 0v.5A1.5 1.5 0 0 1 13.5 7H13v1h1.5a.5.5 0 0 1 0 1H13v1h.5a1.5 1.5 0 0 1 1.5 1.5v.5a.5.5 0 1 1-1 0v-.5a.5.5 0 0 0-.5-.5H13a5 5 0 0 1-10 0h-.5a.5.5 0 0 0-.5.5v.5a.5.5 0 1 1-1 0v-.5A1.5 1.5 0 0 1 2.5 10H3V9H1.5a.5.5 0 0 1 0-1H3V7h-.5A1.5 1.5 0 0 1 1 5.5V5a.5.5 0 0 1 1 0v.5a.5.5 0 0 0 .5.5H3c0-1.364.547-2.601 1.432-3.503l-.41-1.352a.5.5 0 0 1 .333-.623zM4 7v4a4 4 0 0 0 3.5 3.97V7H4zm4.5 0v7.97A4 4 0 0 0 12 11V7H8.5zM12 6a3.989 3.989 0 0 0-1.334-2.982A3.983 3.983 0 0 0 8 2a3.983 3.983 0 0 0-2.667 1.018A3.989 3.989 0 0 0 4 6h8z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Bug Removal</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon cube" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001 6.971 2.789Zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Proper Packaging</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon box" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Proper Packaging</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon bandage" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M14.121 1.879a3 3 0 0 0-4.242 0L8.733 3.026l4.261 4.26 1.127-1.165a3 3 0 0 0 0-4.242ZM12.293 8 8.027 3.734 3.738 8.031 8 12.293 12.293 8Zm-5.006 4.994L3.03 8.737 1.879 9.88a3 3 0 0 0 4.241 4.24l.006-.006 1.16-1.121ZM2.679 7.676l6.492-6.504a4 4 0 0 1 5.66 5.653l-1.477 1.529-5.006 5.006-1.523 1.472a4 4 0 0 1-5.653-5.66l.001-.002 1.505-1.492.001-.002Z"/>
+								<path d="M5.56 7.646a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708Zm1.415-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707ZM8.39 4.818a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707Zm0 5.657a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707ZM9.803 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707Zm1.414-1.414a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708ZM6.975 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707ZM8.39 7.646a.5.5 0 1 1-.708.708.5.5 0 0 1 .707-.708Zm1.413-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Proper Solutions</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon miccrophone" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+								<path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Public Speaking Practice</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon magnet" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 1a7 7 0 0 0-7 7v3h4V8a3 3 0 0 1 6 0v3h4V8a7 7 0 0 0-7-7Zm7 11h-4v3h4v-3ZM5 12H1v3h4v-3ZM0 8a8 8 0 1 1 16 0v8h-6V8a2 2 0 1 0-4 0v8H0V8Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Making Magnetic Content</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon controller" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1v-1z"/>
+								<path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729c.14.09.266.19.373.297.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466.206.875.34 1.78.364 2.606.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527-1.627 0-2.496.723-3.224 1.527-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.34 2.34 0 0 1 .433-.335.504.504 0 0 1-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a13.748 13.748 0 0 0-.748 2.295 12.351 12.351 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.354 12.354 0 0 0-.339-2.406 13.753 13.753 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27-1.036 0-2.063.091-2.913.27z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Gamification</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon paintpalette" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+								<path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Self-Serving Creativity</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon boundingbox" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM0 2a2 2 0 0 1 3.937-.5h8.126A2 2 0 1 1 14.5 3.937v8.126a2 2 0 1 1-2.437 2.437H3.937A2 2 0 1 1 1.5 12.063V3.937A2 2 0 0 1 0 2zm2.5 1.937v8.126c.703.18 1.256.734 1.437 1.437h8.126a2.004 2.004 0 0 1 1.437-1.437V3.937A2.004 2.004 0 0 1 12.063 2.5H3.937A2.004 2.004 0 0 1 2.5 3.937zM14 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM2 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Size Precision</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon key" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
+								<path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Keys to Success</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon gem" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Priceless Jewels</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /features -->
+				
+				<!-- features -->
+				<section class="features">
+
+					<!-- head -->
+					<h2 class="head">Program Bonuses</h2>
+					<!-- /head -->
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon speaker" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+								<path d="M8 4.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5zM8 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-3.5 1.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Motivating Music</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon capsule" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Supplements</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon mughot" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6H.5ZM13 12.5a2.01 2.01 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5ZM2.64 13.825 1.123 7h11.754l-1.517 6.825A1.5 1.5 0 0 1 9.896 15H4.104a1.5 1.5 0 0 1-1.464-1.175Z"/>
+								<path d="m4.4.8-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 3.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8Zm3 0-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 6.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8Zm3 0-.003.004-.014.019a4.077 4.077 0 0 0-.204.31 2.337 2.337 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.198 3.198 0 0 1-.202.388 5.385 5.385 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 9.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Free Coffee</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon cursor" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M14.082 2.182a.5.5 0 0 1 .103.557L8.528 15.467a.5.5 0 0 1-.917-.007L5.57 10.694.803 8.652a.5.5 0 0 1-.006-.916l12.728-5.657a.5.5 0 0 1 .556.103zM2.25 8.184l3.897 1.67a.5.5 0 0 1 .262.263l1.67 3.897L12.743 3.52 2.25 8.184z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Free Navigation</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon car" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Free Driving Service</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon bell" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Phone Notifications</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon ticket" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4 4.85v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Z"/>
+								<path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3h-13ZM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9V4.5Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Raffle Winnings</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon wifi" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z"/>
+								<path d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.455 9.455 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091l.016-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Free Wi-Fi</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon battery" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2 6h10v4H2V6z"/>
+								<path d="M2 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2zm10 1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h10zm4 3a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Free Phone Chargers</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /features -->
+				
+				<!-- features -->
+				<section class="features">
+
+					<!-- head -->
+					<h2 class="head">Program Components</h2>
+					<!-- /head -->
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon journal" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+								<path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Progress Journal</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon building" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
+								<path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">In Person Meetings</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon broadcast" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Audio Broadcasts</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon cassette" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm9-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM7 6a1 1 0 0 0 0 2h2a1 1 0 1 0 0-2H7Z"/>
+								<path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13ZM1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-.691l-1.362-2.724A.5.5 0 0 0 12 10H4a.5.5 0 0 0-.447.276L2.19 13H1.5a.5.5 0 0 1-.5-.5v-9ZM11.691 11l1 2H3.309l1-2h7.382Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Lecture Recordings</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon image" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+								<path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Infographics</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon videocollection" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1zm2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848l-4-2.5z"/>
+								<path d="M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5h13z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Video Library</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon discord" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Group Chat</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon film" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1zm4 0v6h8V1H4zm8 8H4v6h8V9zM1 1v2h2V1H1zm2 3H1v2h2V4zM1 7v2h2V7H1zm2 3H1v2h2v-2zm-2 3v2h2v-2H1zM15 1h-2v2h2V1zm-2 3v2h2V4h-2zm2 3h-2v2h2V7zm-2 3v2h2v-2h-2zm2 3h-2v2h2v-2z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Game Tapes</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon earbuds" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M6.825 4.138c.596 2.141-.36 3.593-2.389 4.117a4.432 4.432 0 0 1-2.018.054c-.048-.01.9 2.778 1.522 4.61l.41 1.205a.52.52 0 0 1-.346.659l-.593.19a.548.548 0 0 1-.69-.34L.184 6.99c-.696-2.137.662-4.309 2.564-4.8 2.029-.523 3.402 0 4.076 1.948zm-.868 2.221c.43-.112.561-.993.292-1.969-.269-.975-.836-1.675-1.266-1.563-.43.112-.561.994-.292 1.969.269.975.836 1.675 1.266 1.563zm3.218-2.221c-.596 2.141.36 3.593 2.389 4.117a4.434 4.434 0 0 0 2.018.054c.048-.01-.9 2.778-1.522 4.61l-.41 1.205a.52.52 0 0 0 .346.659l.593.19c.289.092.6-.06.69-.34l2.536-7.643c.696-2.137-.662-4.309-2.564-4.8-2.029-.523-3.402 0-4.076 1.948zm.868 2.221c-.43-.112-.561-.993-.292-1.969.269-.975.836-1.675 1.266-1.563.43.112.561.994.292 1.969-.269.975-.836 1.675-1.266 1.563z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Audio Programs</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon chatbubble" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+								<path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Chat Support</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon screen" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+								<path d="M2 4.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H3v2.5a.5.5 0 0 1-1 0v-3zm12 7a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H13V8.5a.5.5 0 0 1 1 0v3z"/>
+								<!-- <path d="M0 12.5v-9A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5zM2.5 4a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 1 0V5h2.5a.5.5 0 0 0 0-1h-3zm11 8a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-1 0V11h-2.5a.5.5 0 0 0 0 1h3z"/> -->
+							</svg>
+							<!-- /icon -->
+		
+							<!-- icon -->
+							<svg class="icon tv" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zM13.991 3l.024.001a1.46 1.46 0 0 1 .538.143.757.757 0 0 1 .302.254c.067.1.145.277.145.602v5.991l-.001.024a1.464 1.464 0 0 1-.143.538.758.758 0 0 1-.254.302c-.1.067-.277.145-.602.145H2.009l-.024-.001a1.464 1.464 0 0 1-.538-.143.758.758 0 0 1-.302-.254C1.078 10.502 1 10.325 1 10V4.009l.001-.024a1.46 1.46 0 0 1 .143-.538.758.758 0 0 1 .254-.302C1.498 3.078 1.675 3 2 3h11.991zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">TV Screen Projection</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /features -->
+				
+				<!-- features -->
+				<section class="features">
+
+					<!-- head -->
+					<h2 class="head">Program Compatibility</h2>
+					<!-- /head -->
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon apple" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+								<path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">iPhone Compatible</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon android" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="m10.213 1.471.691-1.26c.046-.083.03-.147-.048-.192-.085-.038-.15-.019-.195.058l-.7 1.27A4.832 4.832 0 0 0 8.005.941c-.688 0-1.34.135-1.956.404l-.7-1.27C5.303 0 5.239-.018 5.154.02c-.078.046-.094.11-.049.193l.691 1.259a4.25 4.25 0 0 0-1.673 1.476A3.697 3.697 0 0 0 3.5 5.02h9c0-.75-.208-1.44-.623-2.072a4.266 4.266 0 0 0-1.664-1.476ZM6.22 3.303a.367.367 0 0 1-.267.11.35.35 0 0 1-.263-.11.366.366 0 0 1-.107-.264.37.37 0 0 1 .107-.265.351.351 0 0 1 .263-.11c.103 0 .193.037.267.11a.36.36 0 0 1 .112.265.36.36 0 0 1-.112.264Zm4.101 0a.351.351 0 0 1-.262.11.366.366 0 0 1-.268-.11.358.358 0 0 1-.112-.264c0-.103.037-.191.112-.265a.367.367 0 0 1 .268-.11c.104 0 .19.037.262.11a.367.367 0 0 1 .107.265c0 .102-.035.19-.107.264ZM3.5 11.77c0 .294.104.544.311.75.208.204.46.307.76.307h.758l.01 2.182c0 .276.097.51.292.703a.961.961 0 0 0 .7.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h1.343v2.182c0 .276.097.51.292.703a.972.972 0 0 0 .71.288.973.973 0 0 0 .71-.288.95.95 0 0 0 .292-.703v-2.182h.76c.291 0 .54-.103.749-.308.207-.205.311-.455.311-.75V5.365h-9v6.404Zm10.495-6.587a.983.983 0 0 0-.702.278.91.91 0 0 0-.293.685v4.063c0 .271.098.501.293.69a.97.97 0 0 0 .702.284c.28 0 .517-.095.712-.284a.924.924 0 0 0 .293-.69V6.146a.91.91 0 0 0-.293-.685.995.995 0 0 0-.712-.278Zm-12.702.283a.985.985 0 0 1 .712-.283c.273 0 .507.094.702.283a.913.913 0 0 1 .293.68v4.063a.932.932 0 0 1-.288.69.97.97 0 0 1-.707.284.986.986 0 0 1-.712-.284.924.924 0 0 1-.293-.69V6.146c0-.264.098-.491.293-.68Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Android Compatible</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon laptop" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">PC Compatible</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /features -->
+				
+				<!-- features -->
+				<section class="features">
+
+					<!-- head -->
+					<h2 class="head">Program Accolades</h2>
+					<!-- /head -->
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon cash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+								<path d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">$109,247 Generared</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon people" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">1,391 Users</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon checkmarkcircle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">879 Projects Completed</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon briefcase" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">330 Working Projects</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<!-- <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/> -->
+								<path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+								<path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">71 Apps Created</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon collection" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">18 Courses Created</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon balloon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M8.48 10.901C11.211 10.227 13 7.837 13 5A5 5 0 0 0 3 5c0 2.837 1.789 5.227 4.52 5.901l-.244.487a.25.25 0 1 0 .448.224l.04-.08c.009.17.024.315.051.45.068.344.208.622.448 1.102l.013.028c.212.422.182.85.05 1.246-.135.402-.366.751-.534 1.003a.25.25 0 0 0 .416.278l.004-.007c.166-.248.431-.646.588-1.115.16-.479.212-1.051-.076-1.629-.258-.515-.365-.732-.419-1.004a2.376 2.376 0 0 1-.037-.289l.008.017a.25.25 0 1 0 .448-.224l-.244-.487ZM4.352 3.356a4.004 4.004 0 0 1 3.15-2.325C7.774.997 8 1.224 8 1.5c0 .276-.226.496-.498.542-.95.162-1.749.78-2.173 1.617a.595.595 0 0 1-.52.341c-.346 0-.599-.329-.457-.644Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">19 Years Programming</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon employeebage" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M12 1a1 1 0 0 1 1 1v10.755S12 11 8 11s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+								<path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+							</svg>
+							<!-- /icon -->
+		
+							<!-- icon -->
+							<svg class="icon hierarchy" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">16 Employees</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">7 Physical Locations</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<!-- < -->
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Xyz</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /features -->
+				
+				<!-- panel -->
+				<section class="panel" style="margin-top:20rem;">
+
+					<!-- head -->
+					<h2 class="head">Program</h2>
+
+					<!-- panel -->
+					<div class="panel">
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon archive" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Lesson Archive</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon bag" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Clothes Shopping</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon barchart" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Progress Goals</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Phone Reception</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon boombox" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.5 5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm7.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Zm1.5.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Zm-7-1a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3Zm5.5 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/>
+								<path d="M11.5 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm0-1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3ZM5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/>
+								<path d="M7 10.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0Zm-1 0a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z"/>
+								<path d="M14 0a.5.5 0 0 1 .5.5V2h.5a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h12.5V.5A.5.5 0 0 1 14 0ZM1 3v3h14V3H1Zm14 4H1v7h14V7Z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Music Playlist Selection</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon camera" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+								<path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Progress Photos</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon clock" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+								<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Timing</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon cpu" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0zm-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3h-7zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">New Technology</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon tvscreen" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 4s0-2 2-2h12s2 0 2 2v6s0 2-2 2h-4c0 .667.083 1.167.25 1.5H11a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1h.75c.167-.333.25-.833.25-1.5H2s-2 0-2-2V4zm1.398-.855a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3H2c-.325 0-.502.078-.602.145z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Big Screen</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon images" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+								<path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Progress Pictures</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon layers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882l-7.5-4zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0l3.515-1.874zM8 9.433 1.562 6 8 2.567 14.438 6 8 9.433z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Layers of Interesting Content</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon smartwatch" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M9 5a.5.5 0 0 0-1 0v3H6a.5.5 0 0 0 0 1h2.5a.5.5 0 0 0 .5-.5V5z"/>
+								<path d="M4 1.667v.383A2.5 2.5 0 0 0 2 4.5v7a2.5 2.5 0 0 0 2 2.45v.383C4 15.253 4.746 16 5.667 16h4.666c.92 0 1.667-.746 1.667-1.667v-.383a2.5 2.5 0 0 0 2-2.45V8h.5a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5H14v-.5a2.5 2.5 0 0 0-2-2.45v-.383C12 .747 11.254 0 10.333 0H5.667C4.747 0 4 .746 4 1.667zM4.5 3h7A1.5 1.5 0 0 1 13 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 11.5v-7A1.5 1.5 0 0 1 4.5 3z"/>
+							</svg>
+							<!-- /icon -->
+		
+							<!-- icon -->
+							<svg class="icon stopwatch" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+								<path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Timed Exercises</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+	
+						<!-- item -->
+						<div class="item">
+		
+							<!-- icon -->
+							<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<!-- < -->
+							</svg>
+							<!-- /icon -->
+	
+							<!-- title -->
+							<span class="title">Xyz</span>
+							<!-- /title -->
+	
+							<!-- textcopy -->
+							<p class="textcopy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod saepe adipisci corporis ipsam obcaecati.</p>
+							<!-- /textcopy -->
+							
+						</div>
+						<!-- /item -->
+
+					</div>
+					<!-- /panel -->
+
+				</section>
+				<!-- /panel -->
+
+				<!-- item -->
+				<div class="item"></div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<!-- <script src="./database.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="./lander.js" type="text/javascript"></script> -->
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
