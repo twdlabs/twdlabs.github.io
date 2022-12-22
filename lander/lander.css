@@ -23,27 +23,34 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 div#container main.main {background-color:white; width:100%; max-width:var(--pagewidth); padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-/* div#container main.main section {} */
+div#container main.main section {margin-top:2rem;}
 
-div#container main.main section.head {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem;}
+div#container main.main section.head {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem; margin-top:0;}
 div#container main.main section.head div.side {display:flex; flex-direction:column; align-items:center;}
 /* div#container main.main section.head div.side.left {} */
-div#container main.main section.head div.side.right {justify-content:center;}
 div#container main.main section.head div.side.left div.slot {position:relative; width:100%; padding-top:100%;}
 div#container main.main section.head div.side.left div.slot img.stock {position:absolute; top:0; left:0;}
 div#container main.main section.head div.side.left div.slot img.stock {display:block; object-fit:cover; height:100%; width:100%;}
+div#container main.main section.head div.side.right {justify-content:center;}
 div#container main.main section.head div.side.right h1.welcome {font-size:2.5rem; text-align:center; margin:0;}
 /* div#container main.main section.head div.side.right p.textcopy {} */
 div#container main.main section.head div.side.right div.ctabtn {background-color:var(--btncolor); color:white; /* display:flex; */ padding:.5rem 1rem; border-radius:.5rem;}
 
-div#container main.main section {padding:1rem 0;}
-div#container main.main section h2.head {font-size:2rem; text-align:center;}
-div#container main.main section div.panel {display:grid; grid-template-columns:repeat(3,1fr);}
-div#container main.main section div.panel div.item {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; grid-gap:.5rem; padding:1rem;}
-div#container main.main section div.panel div.item svg.icon {font-size:8rem;}
-div#container main.main section div.panel div.item svg.icon:nth-child(2) {display:none;}
-div#container main.main section div.panel div.item span.title {font-size:1.5rem; text-align:center; /* white-space:nowrap; */ text-overflow:ellipsis;}
-div#container main.main section div.panel div.item p.textcopy {text-align:center; margin:0;}
+div#container main.main section.features {padding:1rem 0;}
+div#container main.main section.features h2.head {font-size:2rem; text-align:center;}
+div#container main.main section.features div.panel {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1rem 1.25rem; padding:1rem 2rem;}
+/* div#container main.main section.features div.panel div.item {} */
+/* div#container main.main section.features div.panel div.item svg.icon {} */
+div#container main.main section.features div.panel div.item svg.icon:nth-child(2) {display:none;}
+div#container main.main section.features div.panel div.item.t {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; grid-gap:.5rem; padding:1rem;}
+div#container main.main section.features div.panel div.item.t svg.icon {font-size:8rem;}
+div#container main.main section.features div.panel div.item.t span.title {font-size:1.5rem; text-align:center; /* white-space:nowrap; */ text-overflow:ellipsis;}
+div#container main.main section.features div.panel div.item.t p.textcopy {text-align:center; margin:0;}
+div#container main.main section.features div.panel div.item.n {display:flex; flex-direction:row; align-items:center; grid-gap:1rem; /* padding:1rem 2rem; */}
+div#container main.main section.features div.panel div.item.n svg.icon {font-size:8rem;}
+div#container main.main section.features div.panel div.item.n div.holder {flex-grow:1; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+div#container main.main section.features div.panel div.item.n div.holder span.number {font-size:2.5rem; font-weight:bold;}
+div#container main.main section.features div.panel div.item.n div.holder span.caption {font-size:1.5rem; /* white-space:nowrap; */}
 
 /* div#container main.main section.features {} */
 
@@ -51,7 +58,12 @@ div#container main.main section div.panel div.item p.textcopy {text-align:center
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
 	/*  */
-	div#container main.main section div.panel {display:grid; grid-template-columns:repeat(2,1fr);}
+	div#container main.main section.head {grid-template-columns:repeat(1,1fr);}
+	/* div#container main.main section.head {display:flex; flex-direction:column; align-items:stretch;} */
+	div#container main.main section.head div.side.left {max-width:30rem;/*  margin:0 auto; */}
+	/* div#container main.main section.head div.side.left div.slot img.stock {margin:0 auto;} */
+	/*  */
+	div#container main.main section.features div.panel {display:grid; grid-template-columns:repeat(2,1fr);}
 }
 
 /* Big Smartphone Screen */
@@ -62,7 +74,7 @@ div#container main.main section div.panel div.item p.textcopy {text-align:center
 /* Medium Smartphone Screen */
 @media screen and (max-width:40rem) {
 	/*  */
-	div#container main.main section div.panel {display:grid; grid-template-columns:repeat(1,1fr);}
+	div#container main.main section.features div.panel {display:grid; grid-template-columns:repeat(1,1fr);}
 }
 
 /* Small Smartphone Screen */
