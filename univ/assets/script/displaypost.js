@@ -970,7 +970,7 @@ function loadPostPage(id) {
 				// console.log('Current program:',id,p);
 
 				// Define link url. 
-				let url = getRelativeUrl(`./program/post/?id=${id}`);
+				let url = getRelativeUrl(`./programs/post/?id=${id}`);
 
 				// Define link caption. 
 				let caption = p ? p.title : id;
@@ -1129,7 +1129,7 @@ function loadPostPage(id) {
 				// console.log('Current program:',id,p);
 
 				// Define link url. 
-				let url = getRelativeUrl(`./program/post/?id=${id}`);
+				let url = getRelativeUrl(`./programs/post/?id=${id}`);
 
 				// Define link caption. 
 				let caption = p ? p.title : id;

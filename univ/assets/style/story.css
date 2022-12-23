@@ -15,7 +15,7 @@ div#container header#header {background-color:var(--themecolor);}
 
 /* Content Section */
 
-div#container main#pagecontent {overflow-x:hidden;}
+div#container main#pagecontent {background-color:white; overflow-x:hidden;}
 
 /* div#container main#pagecontent aside, */
 div#container main#pagecontent section {margin-top:1.5rem;}

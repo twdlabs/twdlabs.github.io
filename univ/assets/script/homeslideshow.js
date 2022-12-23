@@ -29,7 +29,7 @@ const slideData = [
 	},
 
 ];
-console.log('Slide data:',slideData);
+// console.log('Slide data:',slideData);
 
 
 /*****/
@@ -45,6 +45,9 @@ let s;
 // Activate automatic slideshow. 
 activateSlideshow();
 
+// Activate slideshow shortcuts. 
+activateSlideshowShortcuts();
+
 
 /*****/
 
@@ -57,15 +60,15 @@ function activateSlideshow() {
 
 	// Get slideshow container. 
 	const slideshow = document.querySelector('div#container section.carousel div.slideshow');
-	console.log('Slideshow:',slideshow);
+	// console.log('Slideshow:',slideshow);
 	
 	// Get slide container. 
 	const slidecontainer = document.querySelector('div#container section.carousel div.slideshow div.inner');
-	console.log('Slide container:',slidecontainer);
+	// console.log('Slide container:',slidecontainer);
 	
 	// Get slideshow remote. 
 	const slideshowremote = document.querySelector('div#container section.carousel div.slideshow div.remote');
-	console.log('Slideshow remote:',slideshowremote);
+	// console.log('Slideshow remote:',slideshowremote);
 
 	// Get slide counter box. 
 	// const slidecounter = document.getElementById('slidecounter');
@@ -89,7 +92,7 @@ function activateSlideshow() {
 		<div class="slide" data-slideindex="${index}">
 
 			<!-- slide -->
-			<img class="slide" src="${ slideItem.imageurl }" alt="${ slideItem.caption }">
+			<img class="slide" src="${ slideItem.imageurl }">
 			<!-- /slide -->
 			
 			<!-- bubble -->
@@ -112,5 +115,25 @@ function activateSlideshow() {
 			
 		</div>
 		<!-- /slide -->`;
+	}
+}
+
+// Activate slideshow shortcuts. 
+function activateSlideshowShortcuts() {
+
+	// Check for shortcut key upon key release. 
+	document.addEventListener('keyup',checkShortcutKey);
+
+	// Check for shortcut key. 
+	function checkShortcutKey(event) {
+		console.log(event);
+
+		// Press spacebar: Toggle slideshow play. 
+		if(event.keyCode==32 || event.key==' ') s.toggleSlideshow();
+		// Press P: Toggle slideshow play. 
+		if(event.keyCode==80 || event.key=='P' || event.key=='p') s.toggleSlideshow();
+
+		// Press D: Toggle developer mode. 
+		if(event.keyCode==68 || event.key=='D' || event.key=='d') s.toggleDevMode();
 	}
 }

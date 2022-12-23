@@ -444,11 +444,11 @@ function loadArchivePage(postlist) {
 
 		// Check for filter match. 
 		function checkForFilterMatch(postDataItem) {
-			console.log(postDataItem.searchtags);
+			// console.log(postDataItem.searchtags);
 			
 			// Go thru search tags. 
 			for(let tag of postDataItem.searchtags) {
-				console.log(tag);
+				// console.log(tag);
 
 				// Return true if match found. 
 				if( ( tag.toUpperCase() ).includes( filterquery.toUpperCase() ) ) return true;
