@@ -1,0 +1,117 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+	--blue:#1e90ff;
+	--pagewidth:60rem;
+	--themecolor:#CCC;
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+}
+
+
+html {background-color:var(--themecolor); background-image:var(--bgimg);}
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+/*  */
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+/* Desktop */
+div#container main.desktop {background-color:var(--blue); width:100%; max-width:var(--pagewidth); padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.desktop h1.head {text-align:center;}
+div#container main.desktop div.group {padding:0 2rem;}
+/* div#container main.desktop div.group div.ghead {} */
+div#container main.desktop div.group div.ghead h2.head {text-align:center; margin:0;}
+div#container main.desktop div.group div.gbody {display:grid; grid-template-columns:repeat(6,1fr); grid-gap:.875rem; padding:1.25rem 0 4rem;}
+div#container main.desktop div.group div.gbody a.item {color:inherit; cursor:pointer; padding:.25rem; border-radius:.5rem;}
+div#container main.desktop div.group div.gbody a.item {display:flex; flex-direction:column; align-items:center; text-decoration:none;}
+div#container main.desktop div.group div.gbody a.item:hover {background-color:#0001;}
+div#container main.desktop div.group div.gbody a.item svg.icon {font-size:4rem;}
+div#container main.desktop div.group div.gbody a.item span.caption {font-size:1.125rem; text-overflow:ellipsis;}
+
+/* Mini Frame */
+div#container figure.miniframe {position:fixed; top:0; left:0;}
+div#container figure.miniframe {background-color:white; width:24rem; max-width:100vw; padding:1rem; border-radius:.75rem; margin:0;/*  margin:1.25rem; */}
+div#container figure.miniframe {opacity:0; visibility:hidden; transition:.25s; transition-delay:.375s;}
+div#container figure.miniframe.active {opacity:1; visibility:visible;}
+div#container figure.miniframe::after {position:absolute; bottom:100%; left:50%; transform:translateX(-50%);}
+div#container figure.miniframe::after {content:''; border:.75rem solid transparent; border-bottom-color:white;}
+/* div#container figure.miniframe::after {background-color:white; height:2rem; width:2rem;} */
+div#container figure.miniframe iframe.page {background-color:#0004; display:block; width:100%; border:solid; border-radius:.5rem;}
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/*  */
+	/* div#container {} */
+
+	/* Desktop */
+	/* div#container main.desktop {} */
+	div#container main.desktop div.group {padding:0 3rem;}
+	div#container main.desktop div.group div.gbody {grid-template-columns:repeat(4,1fr);}
+
+	/* Mini Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/*  */
+	/* div#container {} */
+
+	/* Desktop */
+	/* div#container main.desktop {} */
+	/* div#container main.desktop div.group {} */
+	div#container main.desktop div.group div.gbody {grid-template-columns:repeat(3,1fr);}
+	div#container main.desktop div.group div.gbody a.item svg.icon {font-size:3rem;}
+	div#container main.desktop div.group div.gbody a.item span.caption {font-size:1rem;}
+
+	/* Mini Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Medium Smartphone Screen */
+@media screen and (max-width:36rem) {
+
+	/*  */
+	/* div#container {} */
+
+	/* Desktop */
+	/* div#container main.desktop {} */
+	/* div#container main.desktop div.group {} */
+	div#container main.desktop div.group div.gbody {grid-template-columns:repeat(2,1fr);}
+	div#container main.desktop div.group div.gbody a.item span.caption {font-size:.75rem;}
+
+	/* Mini Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:30rem) {
+
+	/*  */
+	/* div#container {} */
+
+	/* Desktop */
+	/* div#container main.desktop {} */
+	/* div#container main.desktop div.group {} */
+
+	/* Mini Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
