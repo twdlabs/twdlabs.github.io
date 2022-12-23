@@ -1,11 +1,21 @@
 
 
 
+// Get desktop. 
+const desktop = document.querySelector('div#container main.desktop');
+
 // Get mini frame. 
 const miniframe = document.querySelector('div#container figure.miniframe');
 
 // Get iframe of mini frame. 
 const miniframepage = document.querySelector('div#container figure.miniframe iframe.page');
+
+// Define group categories. 
+// const leadingLetters = ['0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+const leadingLetters = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+
+
+/*****/
 
 
 // Load desktop items. 
@@ -19,26 +29,23 @@ loadDesktopItems();
 function loadDesktopItems() {
 	// console.log(projectNames);
 
-	// Define group categories. 
-	const groupCategories = ['0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+	// Get groups of project names by category. 
+	let projectNameGroups = getNameGroups(projectNames);
+	console.log(projectNameGroups);
 
 	// Initialize result. 
 	let result = '';
-
-	// Open group. 
-	result += ``;
 	
-	// Add app link to result. 
-	for(let name of projectNames) {
-		// 
-		result += createLinkItem(name)
-	}
+	// Add project group to result. 
+	for(let i in projectNameGroups) {
+		// console.log(group);
 
-	// Close group. 
-	result += ``;
+		// Add layout for given project group. 
+		result += createGroupLayout(i);
+	}
 	
 	// Add result to page. 
-	document.querySelector('div#container main.desktop div.group div.gbody').innerHTML = result;
+	desktop.innerHTML = result;
 
 	// Activate mini frame. 
 	activateMiniFrame();
@@ -48,25 +55,138 @@ function loadDesktopItems() {
 
 	/****/
 
-	// Create link item. 
-	function createLinkItem(name) {
-		// 
+	// Group project names into categories. 
+	function getNameGroups(nameList) {
+
+		// Initialize result. 
+		let result = [ ];
+		for(let i in leadingLetters) result.push( [] );
+
+		// Go thru all names in list. 
+		for(let name of nameList) {
+
+			// Get category index of current name. 
+			let i = 1 * getCategoryIndex(name);
+			// console.log('Category index:',i);
+
+			// Add to result. 
+			result[i].push(name);
+		}
+
+		// Return result. 
+		return result;
+
+		/***/
+
+		// Get category index for given name. 
+		function getCategoryIndex(name) {
+
+			// Get leading letter of given name. 
+			let l = `${name}`.substring(0,1).toUpperCase();
+
+			// Go thru all potential leading letters. 
+			for(let i in leadingLetters) {
+
+				// Get letter to check for match. 
+				let letter = leadingLetters[i];
+
+				// Return current index if matching letter found. 
+				if(l==letter) return i;
+			}
+
+			// Return null index if not found. 
+			return -1;
+		}
+	}
+
+	// Create layout for project group. 
+	function createGroupLayout(index) {
+
+		// Get group. 
+		let group = projectNameGroups[index];
+
+		// Skip group if empty. 
+		if(!group.length) return '';
+
+		// Get group name. 
+		let groupname = leadingLetters[index];
+	
+		// Return result. 
 		return `
-		<!-- item -->
-		<a class="item" href="../${name}" target="_blank">
+		<!-- group -->
+		<div class="group activex">
+
+			<!-- ghead -->
+			<div class="ghead">
+				
+				<!-- icon -->
+				<svg class="icon plus open" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+				</svg>
+				<!-- /icon -->
+				
+				<!-- icon -->
+				<svg class="icon minus close" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+				</svg>
+				<!-- /icon -->
+
+				<!-- head -->
+				<h2 class="head">${ groupname }</h2>
+				<!-- /head -->
+				
+				<!-- icon -->
+				<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+				</svg>
+				<!-- /icon -->
+
+			</div>
+			<!-- /ghead -->
+
+			<!-- gbody -->
+			<div class="gbody">${ getProjectLinks(group) }</div>
+			<!-- /gbody -->
+
+		</div>
+		<!-- /group -->`;
+
+		/***/
+	
+		// Get project links for group body. 
+		function getProjectLinks(group) {
+	
+			// Initialize result. 
+			let result = '';
 		
-			<!-- icon -->
-			<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-				<path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/>
-			</svg>
-			<!-- /icon -->
-		
-			<!-- caption -->
-			<span class="caption">${name}</span>
-			<!-- /caption -->
+			// Add project link to result. 
+			for(let foldername of group) {
+				result += createLinkItem(foldername)
+			}
+	
+			// Return result. 
+			return result;
+		}
+
+		// Create link item. 
+		function createLinkItem(foldername) {
+			// Return result. 
+			return `
+			<!-- item -->
+			<a class="item" href="../${foldername}" target="_blank">
 			
-		</a>
-		<!-- /item -->`;
+				<!-- icon -->
+				<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/>
+				</svg>
+				<!-- /icon -->
+			
+				<!-- caption -->
+				<span class="caption">${foldername}</span>
+				<!-- /caption -->
+				
+			</a>
+			<!-- /item -->`;
+		}
 	}
 
 	// Activate mini frame. 
@@ -121,17 +241,17 @@ function loadDesktopItems() {
 	
 			// Set position of mini frame. 
 			function setFramePosition(x,y,dx,dy) {
-				console.log(x,y,dx,dy);
+				// console.log(x,y,dx,dy);
 	
 				// Set vertical position of mini frame. 
-				miniframe.style.top = `${y+dy}px`;
+				miniframe.style.top = `${ y+dy }px`;
 				console.log(miniframe.style.top);
 	
 				// Set horizontal position of mini frame. 
-				miniframe.style.left = `${x/* +dx */}px`;
+				miniframe.style.left = `${ x/* +dx */ }px`;
 				console.log(miniframe.style.left);
 	
-				// 
+				// Set horizontal offet for pointer tip of miniframe. 
 				miniframe.style.setProperty('--dx',`${dx/2}px`)
 			}
 		}

@@ -11,13 +11,13 @@
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
 	--blue:#1e90ff;
 	--pagewidth:60rem;
-	--themecolor:#CCC;
+	--themecolor:var(--blue);
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
 }
 
 
-html {background-color:var(--themecolor); background-image:var(--bgimg);}
+/* html {background-color:var(--themecolor); background-image:var(--bgimg);} */
 body {font-family:Nunito,sans-serif; margin:0;}
 .freeze {overflow:hidden;}
 
@@ -26,24 +26,27 @@ body {font-family:Nunito,sans-serif; margin:0;}
 div#container {display:grid; place-items:center; min-height:100vh; padding:2rem;}
 
 /* Desktop */
-div#container main.desktop {background-color:var(--blue); width:100%; max-width:var(--pagewidth); padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-div#container main.desktop h1.head {text-align:center;}
-div#container main.desktop div.group {padding:0 2rem 2rem;}
-div#container main.desktop div.group div.ghead {display:flex; flex-direction:row; justify-content:space-between; align-items:center; cursor:pointer; user-select:none;}
-div#container main.desktop div.group div.ghead h2.head {text-align:center; margin:0; margin-left:.5rem;}
+div#container main.desktop {background-color:var(--themecolor); width:100%; max-width:var(--pagewidth); padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.desktop {display:flex; flex-direction:column; grid-gap:.5rem;}
+div#container main.desktop h1.head {display:none; text-align:center;}
+div#container main.desktop div.group {background-color:#0001; /* padding:0 0 2rem; */ border-radius:.5rem;}
+div#container main.desktop div.group {display:flex; flex-direction:column; align-items:stretch; grid-gap:1rem;}
+div#container main.desktop div.group div.ghead {background-color:#00000008; cursor:pointer; user-select:none; padding:0 1rem; border-radius:.5rem;}
+div#container main.desktop div.group div.ghead {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container main.desktop div.group div.ghead h2.head {text-align:center; margin:0; margin:.5rem 0;}
 div#container main.desktop div.group div.ghead svg.icon {font-size:1rem;}
 div#container main.desktop div.group div.ghead svg.icon.open {display:block;}
 div#container main.desktop div.group div.ghead svg.icon.close {display:none;}
 div#container main.desktop div.group.active div.ghead svg.icon.open {display:none;}
 div#container main.desktop div.group.active div.ghead svg.icon.close {display:block;}
-div#container main.desktop div.group div.gbody {display:grid; grid-template-columns:repeat(6,1fr); grid-gap:.875rem; padding:1.25rem 0 2rem;}
+div#container main.desktop div.group div.gbody {display:grid; grid-template-columns:repeat(6,1fr); place-items:center; grid-gap:.875rem; padding:1.25rem 2rem 2rem;}
 div#container main.desktop div.group div.gbody {display:none;}
 div#container main.desktop div.group.active div.gbody {display:grid;}
-div#container main.desktop div.group div.gbody a.item {color:inherit; cursor:pointer; padding:.25rem; border-radius:.5rem;}
-div#container main.desktop div.group div.gbody a.item {display:flex; flex-direction:column; align-items:center; text-decoration:none;}
+div#container main.desktop div.group div.gbody a.item {color:inherit; cursor:pointer; /* max- */width:6rem; padding:.25rem; border-radius:.5rem;}
+div#container main.desktop div.group div.gbody a.item {display:flex; flex-direction:column; align-items:center; text-decoration:none; overflow:hidden;}
 div#container main.desktop div.group div.gbody a.item:hover {background-color:#0001;}
 div#container main.desktop div.group div.gbody a.item svg.icon {font-size:4rem;}
-div#container main.desktop div.group div.gbody a.item span.caption {font-size:1.125rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+div#container main.desktop div.group div.gbody a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 
 /* Mini Frame */
 div#container figure.miniframe {position:absolute; top:0; left:0; box-shadow:var(--boxshadow); --dx:0; transform:translateY(1rem);}
@@ -70,8 +73,11 @@ div#container figure.miniframe div.ratio iframe.page {background-color:#0004; di
 
 	/* Desktop */
 	/* div#container main.desktop {} */
-	div#container main.desktop div.group {padding:0 3rem;}
-	div#container main.desktop div.group div.gbody {grid-template-columns:repeat(4,1fr);}
+	/* div#container main.desktop div.group {} */
+	div#container main.desktop div.group div.gbody {grid-template-columns:repeat(4,1fr); padding:0 3rem 4rem;}
+	/* div#container main.desktop div.group div.gbody a.item {} */
+	/* div#container main.desktop div.group div.gbody a.item svg.icon {} */
+	div#container main.desktop div.group div.gbody a.item span.caption {font-size:1rem}
 
 	/* Mini Frame */
 	/* div#container figure.miniframe {} */
@@ -88,8 +94,9 @@ div#container figure.miniframe div.ratio iframe.page {background-color:#0004; di
 	/* div#container main.desktop {} */
 	/* div#container main.desktop div.group {} */
 	div#container main.desktop div.group div.gbody {grid-template-columns:repeat(3,1fr);}
+	/* div#container main.desktop div.group div.gbody a.item {} */
 	div#container main.desktop div.group div.gbody a.item svg.icon {font-size:3rem;}
-	div#container main.desktop div.group div.gbody a.item span.caption {font-size:1rem;}
+	div#container main.desktop div.group div.gbody a.item span.caption {font-size:.875rem;}
 
 	/* Mini Frame */
 	/* div#container figure.miniframe {} */
@@ -106,6 +113,8 @@ div#container figure.miniframe div.ratio iframe.page {background-color:#0004; di
 	/* div#container main.desktop {} */
 	/* div#container main.desktop div.group {} */
 	div#container main.desktop div.group div.gbody {grid-template-columns:repeat(2,1fr);}
+	/* div#container main.desktop div.group div.gbody a.item {} */
+	/* div#container main.desktop div.group div.gbody a.item svg.icon {} */
 	div#container main.desktop div.group div.gbody a.item span.caption {font-size:.75rem;}
 
 	/* Mini Frame */
@@ -122,6 +131,10 @@ div#container figure.miniframe div.ratio iframe.page {background-color:#0004; di
 	/* Desktop */
 	/* div#container main.desktop {} */
 	/* div#container main.desktop div.group {} */
+	/* div#container main.desktop div.group div.gbody {} */
+	/* div#container main.desktop div.group div.gbody a.item {} */
+	/* div#container main.desktop div.group div.gbody a.item svg.icon {} */
+	/* div#container main.desktop div.group div.gbody a.item span.caption {} */
 
 	/* Mini Frame */
 	/* div#container figure.miniframe {} */
