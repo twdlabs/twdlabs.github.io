@@ -54,7 +54,7 @@ const messageDataMatrix = [
 		[
 			{
 				timestamp:0000000000,
-				messagetext:'Hi Bill'
+				messagetext:'Bill'
 			},
 			{
 				timestamp:2000000000,
@@ -73,16 +73,20 @@ const messageDataMatrix = [
 		// RecipientID: 2
 		[
 			{
-				timestamp:1577854806,
-				messagetext:'Hi'
+				timestamp:1000000000,
+				messagetext:'Whats the word Chrissy'
 			},
 			{
-				timestamp:1577954806,
-				messagetext:'Hey'
+				timestamp:2500000000,
+				messagetext:'How you been'
 			},
 			{
-				timestamp:1578854806,
-				messagetext:'Hello'
+				timestamp:4000000000,
+				messagetext:'Word lets meet up today'
+			},
+			{
+				timestamp:600000000000,
+				messagetext:'8pm at Rally\'s'
 			},
 		], 
 	],
@@ -132,16 +136,16 @@ const messageDataMatrix = [
 		// RecipientID: 0
 		[
 			{
-				timestamp:1577854806,
-				messagetext:'Hi'
+				timestamp:2000000000,
+				messagetext:'Heyyyyy'
 			},
 			{
-				timestamp:1577954806,
-				messagetext:'Hey'
+				timestamp:3000000000,
+				messagetext:'I\'ve been thinking about what you said'
 			},
 			{
-				timestamp:1578854806,
-				messagetext:'Hello'
+				timestamp:5000000000,
+				messagetext:'Cool, what time did you have in mind?'
 			},
 		], 
 		// SenderID: 2

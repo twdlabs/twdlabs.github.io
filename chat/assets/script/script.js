@@ -317,7 +317,7 @@ function openMsgThread() {
 	newmsgfield.removeAttribute('disabled');
 
 	// Bring focus to input field in message composer box. 
-	newmsgfield.focus();
+	// newmsgfield.focus();
 }
 
 // Go to home page. 

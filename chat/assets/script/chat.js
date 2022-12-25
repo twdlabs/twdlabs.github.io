@@ -1,5 +1,13 @@
 
 
+// 
+const msghistorybox = document.getElementById('msghistory');
+const msghistorythread = document.querySelector('section#chat div#msghistory div.inner');
+
+
+/*****/
+
+
 // Send new message. 
 function sendNewMessage() {
 
@@ -37,7 +45,7 @@ function sendNewMessage() {
 		msgfield.value = '';
 	
 		// Return focus to text input field. 
-		msgfield.focus();
+		// msgfield.focus();
 
 		return newMsg;
 	}
@@ -65,7 +73,7 @@ function clearMsgHistory() {
 	console.log('Clearing message history...');
 
 	// Load message history blocks into thread. 
-	document.querySelector('section#chat div#msghistory div.inner').innerHTML = '';
+	msghistorythread.innerHTML = '';
 }
 
 // Refresh messages in thread. 
@@ -89,10 +97,9 @@ function refreshMsgHistory(myId,theirId) {
 	}
 
 	// Load message history blocks into thread. 
-	document.querySelector('section#chat div#msghistory div.inner').innerHTML = result;
+	msghistorythread.innerHTML = result;
 
 	// Scroll to bottom of message history thread box. 
-	let msghistorybox = document.getElementById('msghistory');
 	msghistorybox.scrollTop = msghistorybox.scrollHeight;
 
 
@@ -107,12 +114,15 @@ function refreshMsgHistory(myId,theirId) {
 	// Create chat bubble. 
 	function createChatBubble(msgitem) {
 
-		// 
-		let msgcontent = msgitem.messagetext;
+		// Get user identifying information. 
 		let senderid = msgitem.senderid;
-		let imageurl = userdata[senderid].avatarurl;
+		let avatarurl = userdata[senderid].avatarurl;
 
-		// 
+		// Get contents of  message. 
+		let timestamp = ( new Date(msgitem.timestamp) ).toUTCString();
+		let msgcontent = msgitem.messagetext;
+
+		// Create correspoonding message bubble block and return result. 
 		return `
 		<!-- msgblock -->
 		<div class="msgblock ${ (senderid==currentUserId) ? ('s') : ('r') }">
@@ -122,7 +132,7 @@ function refreshMsgHistory(myId,theirId) {
 					
 				<!-- avatar -->
 				<div class="avatar">
-					<img src="${imageurl}">
+					<img src="${ avatarurl }">
 				</div>
 				<!-- /avatar -->
 						
@@ -130,10 +140,10 @@ function refreshMsgHistory(myId,theirId) {
 				<div class="block">
 						
 					<!-- bubble -->
-					<div class="bubble">
+					<div class="bubble" title="${ timestamp }">
 			
 						<!-- caption -->
-						<span class="caption">${msgcontent}</span>
+						<span class="caption">${ msgcontent }</span>
 						<!-- /caption -->
 						
 					</div>

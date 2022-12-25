@@ -1,20 +1,22 @@
 
 
+const contactfilterbox = document.querySelector('section#list div#contacts form.search');
+const filterqueryfield = document.getElementById('searchquery');
+
 
 // Open search. 
 function openSearch() {
 	console.log('Opening chat search');
 
 	// Clear previous search query. 
-	document.getElementById('searchquery').value = '';
+	filterqueryfield.value = '';
 
 	// Activate search section. 
-	let search = document.querySelector('section#list div#contacts form.search');
-	search.classList.add('active');
-	// console.log(search);
+	contactfilterbox.classList.add('active');
+	// console.log(contactfilterbox);
 
 	// Bring focus to search box. 
-	document.getElementById('searchquery').focus();
+	filterqueryfield.focus();
 }
 
 // Filter contacts by query. 
@@ -22,11 +24,11 @@ function filterContacts() {
 	console.log('FIltering contacts by search query...');
 
 	// Get filter query. 
-	let query = document.getElementById('searchquery').value;
-	console.log('query:',query);
+	let filterquery = filterqueryfield.value;
+	console.log('Filter query:',filterquery);
 
 	// Apply filter to contact list. 
-	filterContactList(query);
+	filterContactList(filterquery);
 }
 
 // Close search. 
@@ -34,12 +36,11 @@ function closeSearch() {
 	console.log('Closing chat search');
 
 	// De-activate search section. 
-	let search = document.querySelector('section#list div#contacts form.search');
-	search.classList.remove('active');
-	// console.log(search);
+	contactfilterbox.classList.remove('active');
+	// console.log(contactfilterbox);
 
 	// Clear previous search query. 
-	document.getElementById('searchquery').value = '';
+	filterqueryfield.value = '';
 
 	// Remove filter from contact list. 
 	filterContactList('');

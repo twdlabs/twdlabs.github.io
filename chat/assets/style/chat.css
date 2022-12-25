@@ -56,7 +56,7 @@ div#container main section#chat div#msghistory div.inner div.msgblock.r div.cont
 div#container main section#chat div#msghistory div.inner div.msgblock.s div.content div.block {align-items:flex-end;}
 
 div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block div.bubble {display:grid; place-items:center; font-weight:200; min-height:2.25em; min-width:2.25em;}
-div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block div.bubble {border-radius:1.25rem; padding:.125rem .85rem; margin-top:.15rem;}
+div#container main section#chat div#msghistory div.inner div.msgblock div.content div.block div.bubble {cursor:pointer; user-select:none; border-radius:1.25rem; padding:.5rem .85rem; margin-top:.15rem;}
 div#container main section#chat div#msghistory div.inner div.msgblock.r div.content div.block div.bubble {background-color:white; color:black; border-radius:.25rem 1.25rem 1.25rem .25rem;}
 div#container main section#chat div#msghistory div.inner div.msgblock.r div.content div.block div.bubble:last-child {border-radius:.25rem 1.25rem 1.25rem 1.25rem;}
 div#container main section#chat div#msghistory div.inner div.msgblock.r div.content div.block div.bubble:first-child {border-radius:1.25rem 1.25rem 1.25rem .25rem;}
