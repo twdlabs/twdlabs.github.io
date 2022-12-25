@@ -94,7 +94,7 @@ div#container main#userchooser div.slider section.page div.input input#avatarfil
 
 div#container main#userchooser div.slider section.page div.input.msg {margin:1rem 0;}
 div#container main#userchooser div.slider section.page div.input span.message {display:flex; display:none; flex-direction:row; justify-content:flex-start; justify-content:center; align-items:center;}
-div#container main#userchooser div.slider section.page div.input span.message {font-size:1rem; text-align:center; white-space:nowrap; cursor:pointer; padding:.75rem 1rem; border-radius:.5rem;}
+div#container main#userchooser div.slider section.page div.input span.message {font-size:1rem; text-align:center; /* white-space:nowrap; */ cursor:pointer; padding:.75rem 1rem; border-radius:.5rem;}
 div#container main#userchooser div.slider section.page div.input span.message.error {background-color:#fadde0; color:#5f334f;}
 div#container main#userchooser div.slider section.page div.input span.message.success {background-color:#daf1e0; color:#496E59;}
 div#container main#userchooser div.slider section.page div.input span.message.active {display:flex;}
