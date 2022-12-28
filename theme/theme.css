@@ -21,9 +21,10 @@ div#container {display:grid; place-items:center; padding:2rem 1rem;}
 div#container.dark {background-color:#303230;}
 
 
-div#container main.main {background-color:white; padding:1.25rem; border-radius:.25rem; box-shadow:rgba(0,0,0,0.2) 0 .25rem .625rem 0; width:24rem; max-width:85vw;}
+div#container main.main {background-color:white; color:#444; padding:1.25rem; border-radius:.25rem; box-shadow:rgba(0,0,0,0.2) 0 .25rem .625rem 0; width:24rem; max-width:85vw; transition:.5s;}
+div#container.dark main.main {background-color:#222; color:white;}
 div#container main.main div.photo {background:black url('pic.jpg'); background-size:cover; background-position:center; width:100%; height:16rem; border-radius:.25rem; margin-bottom:1.5rem;}
-div#container main.main div.content {display:flex; flex-direction:column; align-items:center; color:#444; text-align:center;}
+div#container main.main div.content {display:flex; flex-direction:column; align-items:center; text-align:center;}
 div#container main.main div.content h2.head {font-weight:600; margin:0;}
 div#container main.main div.content p.textcopy {font-weight:100; line-height:2; margin:.75rem 0;}
 div#container main.main div.content button.readmore {background-color:dodgerblue; color:white; font-size:inherit; letter-spacing:1px; padding:.65rem 1.75rem; border:0 none; border-radius:.25rem; cursor:pointer; margin-top:.5rem; transition:.5s;}
@@ -77,6 +78,7 @@ div#container aside#bar div.inner button.closebtn {background-color:transparent;
 
 div#container div.overlay {position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; cursor:pointer;}
 div#container div.overlay {background-color:#0004; visibility:hidden; opacity:0; transition:.5s;}
+div#container.dark div.overlay {background-color:#FFF4;}
 div#container aside#bar.active + div.overlay {visibility:visible; opacity:1;}
 
 
