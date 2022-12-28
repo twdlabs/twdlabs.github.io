@@ -6,8 +6,8 @@ div#container main.main {background-color:white; /* width:100%; max-width:var(--
 div#container main.main article.post h1.title {margin:0;}
 div#container main.main article.post div.art {float:left; max-width:50%; margin-top:.5rem; margin-right:1rem;}
 div#container main.main article.post div.art img.art {display:block; width:100%; max-width:30rem; border-radius:var(--cornersize);}
-div#container main.main article.post div.content {max-width:40rem; margin-top:.25rem;}
-div#container main.main article.post div.content p.textcopy {margin:0;}
+div#container main.main article.post div.content {max-width:40rem; margin-top:1rem;}
+div#container main.main article.post div.content p.textcopy {margin:0; margin-top:.5rem;}
 
 
 /* Tablet Screen */

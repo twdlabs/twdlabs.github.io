@@ -59,7 +59,7 @@ function loadBlogPost() {
 		<!-- content -->
 		<div class="content">
 
-			${ (postdata.content).map(createParagraph).join('<br>') }
+			${ (postdata.content).map(createParagraph).join('') }
 
 		</div>
 		<!-- /content -->`;
