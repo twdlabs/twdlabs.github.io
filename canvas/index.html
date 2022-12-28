@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Canvas</title>
+
+		<style type="text/css">
+			div#container {border:1px dotted #000; text-align:center;}
+			div#container canvas {border:1px solid #000;}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="container">
+			<label for="mean">&mu;</label>
+			<input type="text" id="mean" value="0" onclick="this.select();" />
+			<br>
+			<label for="stdev">&sigma;</label>
+			<input type="text" id="stdev" value="1" onclick="this.select();" />
+			<br>
+			<button onclick="go()">Go</button>
+			<br>
+
+			<canvas id="normalChart"></canvas>
+		</div>
+
+		<!-- Chart JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.min.js" type="text/javascript"></script>
+
+		<script type="text/javascript">
+			// 
+			var canvas = document.getElementById('normalChart').getContext('2d');
+			var normalChart;
+			var N = 4;
+
+			// Initialize the chart data. 
+			var chart = {
+				type:'bar',
+				data:{
+					labels:[],
+					datasets:[
+						{
+							label:'Normal distribution',
+							backgroundColor:'rgba(0,137,255,0.625)',
+							data:[]
+						}
+					]
+				}
+			};
+			var chart2 = {
+				type:'line',
+				data:{
+					labels:[],
+					datasets:[
+						{
+							label:'Normal distribution',
+							backgroundColor:'rgba(0,137,255,0.625)',
+							data:[]
+						}
+					]
+				}
+			};
+			
+			function go() {
+				var mean = document.getElementById('mean').value;
+				var stdev = document.getElementById('stdev').value;
+
+				// Create data points. 
+				for (var i=1*mean-N ; i<=1*mean+N ; i++) {
+					chart.data.labels.push(i);
+					chart2.data.labels.push(i);
+					chart.data.datasets[0].data.push( pdf(i, mean,stdev) );
+					chart2.data.datasets[0].data.push( pdf(i, mean,stdev) );
+				}
+
+				// Remove any previously charted data. 
+				if(normalChart!=null) {
+					normalChart.destroy();
+				}
+
+				// Add charted data to canvas. 
+				// normalChart = new Chart(canvas,chart);
+				normalChart = new Chart(canvas,chart2);
+
+				/*****/
+
+				// Probability Density Function for Normal Distribution
+				function pdf(x, mu, s) {
+					let result = (1 / (Math.sqrt(2*Math.PI)*s) ) * Math.exp( (x-mu)*(x-mu) / (-2*s*s) );
+					console.log('pdf('+x+', '+mu+','+s+') =', result);
+					return result;
+				}
+			}
+		</script>
+
+	</body>
+
+</html>
