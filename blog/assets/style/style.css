@@ -1,0 +1,33 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+	--bgcolor:white;
+	--forecolor:#444;
+	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+	--pagewidth:60rem;
+	--cornersize:.25rem;
+	--themecolor:#CCC;
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+	--boxshadowx:rgba(0,0,0,0.2) 0 0/* .25rem */ .625rem 0;
+}
+
+body.dark {
+	--bgcolor:#222;
+	--forecolor:white;
+}
+
+
+html {background-color:var(--themecolor); background-image:var(--bgimg);}
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {display:flex; flex-direction:column; align-items:center; min-height:100vh; padding:1rem;}
+div#container {/* display:grid; place-items:center; */ min-height:100vh; padding:1rem;}
