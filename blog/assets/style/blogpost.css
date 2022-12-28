@@ -1,13 +1,28 @@
 
 
 
-div#container main.main {background-color:white; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main {background-color:white; /* width:100%; max-width:var(--pagewidth); */ padding:1.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
 /* div#container main.main article.post {} */
 div#container main.main article.post h1.title {margin:0;}
-div#container main.main article.post div.art {float:left; max-width:50%; margin-top:.5rem; margin-right:1rem;}
-div#container main.main article.post div.art img.art {display:block; width:100%; max-width:30rem; border-radius:var(--cornersize);}
+div#container main.main article.post div.art {float:left; width:50%; max-width:30rem; margin-top:.5rem; margin-right:1rem;}
+div#container main.main article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
 div#container main.main article.post div.content {max-width:40rem; margin-top:1rem;}
 div#container main.main article.post div.content p.textcopy {margin:0; margin-top:.5rem;}
+div#container main.main section.comments {max-width:40rem;}
+div#container main.main section.comments h2.head {font-size:1.25rem; margin:0; margin-top:1rem;}
+div#container main.main section.comments ul.commentlist {list-style:none; padding:0; margin:0;}
+div#container main.main section.comments ul.commentlist li.commentitem {background-color:#EEE; display:flex; flex-direction:row; align-items:stretch; padding:.5rem; border-radius:.125rem; margin-top:.25rem;}
+div#container main.main section.comments ul.commentlist li.commentitem div.left {margin-right:.5rem;}
+div#container main.main section.comments ul.commentlist li.commentitem div.left img.avatar {background-color:greenyellow; display:block; object-fit:cover; height:4rem; width:4rem; border:1px solid transparent; border-radius:50%;}
+div#container main.main section.comments ul.commentlist li.commentitem div.right {font-size:.875rem; margin-top:.125rem;}
+/* div#container main.main section.comments ul.commentlist li.commentitem div.right div.top {} */
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.top a.userlink {font-weight:900; text-decoration:none; margin-right:.25rem;}
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.top span.comment {font-weight:400;}
+/* div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom {} */
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.dot {color:grey;}
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom a.likebtn {font-weight:400; text-decoration:none;}
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.timestamp {color:grey; font-weight:400;}
+
 
 
 /* Tablet Screen */
@@ -23,5 +38,5 @@ div#container main.main article.post div.content p.textcopy {margin:0; margin-to
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 	/*  */
-	div#container main.main article.post div.art {float:none; max-width:100%;}
+	div#container main.main article.post div.art {float:none; width:100%;}
 }

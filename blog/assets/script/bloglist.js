@@ -1,6 +1,10 @@
 
 
 
+// Define character limit for post excerpts. 
+const excerptcharlimit = 150;
+
+
 // Get destination for list of posts. 
 const listdestination = document.querySelector('div#container main.main');
 
@@ -71,9 +75,9 @@ function loadBlogList() {
 		let postcontent = paragraphList.join(' ');
 
 		// Handle short post content. 
-		if(postcontent.length<160) return postcontent;
+		if(postcontent.length<excerptcharlimit) return postcontent;
 
 		// Handle long post content. 
-		else return postcontent.substr(0,150) + '...';
+		else return postcontent.substr(0,excerptcharlimit) + '...';
 	}
 }
