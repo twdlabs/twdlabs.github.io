@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<!-- <link href="./icon.png" rel="apple-touch-icon"/> -->
+		<title>Blog</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="./blog.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+				--bgcolor:white;
+				--forecolor:#444;
+				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+				--pagewidth:60rem;
+				--cornersize:.25rem;
+				--themecolor:#CCC;
+				--boxshadow:0 0 1rem 0 #0002;
+				--boxshadow:0 0 .25rem 0 #0003;
+				--boxshadowx:rgba(0,0,0,0.2) 0 0/* .25rem */ .625rem 0;
+			}
+
+			body.dark {
+				--bgcolor:#222;
+				--forecolor:white;
+			}
+
+
+			html {background-color:var(--themecolor); background-image:var(--bgimg);}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {background-color:white; padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+			div#container main.main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:1rem; width:100%; max-width:var(--pagewidth);}
+			div#container main.main div.item {background-color:var(--bgcolor); color:var(--forecolor); border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
+			/* div#container main.main div.item {display:flex; flex-direction:column; align-items:stretch;} */
+			/* div#container main.main div.item div.art {} */
+			div#container main.main div.item div.art img.preview {display:block; width:100%; border-radius:var(--cornersize);}
+			div#container main.main div.item div.content {display:flex; flex-direction:column; align-items:center; padding:1rem;}
+			div#container main.main div.item div.content h1.title {font-size:1.5rem; font-weight:900; /* text-transform:capitalize; */ text-align:center; padding:0 1rem; margin:0;}
+			div#container main.main div.item div.content p.textcopy {font-size:1rem; font-weight:100; text-align:center; padding:0 1rem; margin:0; margin-top:.125rem;}
+			div#container main.main div.item div.content a.readbtn {background-color:dodgerblue; padding:.375rem 1rem; border-radius:var(--cornersize); margin-top:.75rem;}
+			div#container main.main div.item div.content a.readbtn {color:white; font-weight:400; letter-spacing:.5px; text-align:center; text-decoration:none;}
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+				div#container main.main {grid-template-columns:repeat(3,1fr);}
+			}
+			
+			/* Big Smartphone Screen */
+			@media screen and (max-width:48rem) {
+				/*  */
+				div#container main.main {grid-template-columns:repeat(2,1fr);}
+			}
+			
+			/* Small Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+				div#container main.main {grid-template-columns:repeat(1,1fr);}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- art -->
+					<div class="art">
+
+						<!-- preview -->
+						<img class="preview" src="../theme/pic.jpg">
+						<!-- /preview -->
+
+					</div>
+					<!-- /art -->
+
+					<!-- content -->
+					<div class="content">
+
+						<!-- title -->
+						<h1 class="title">Title Goes Here</h1>
+						<!-- /title -->
+
+						<!-- textcopy -->
+						<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.</p>
+						<!-- /textcopy -->
+
+						<!-- readbtn -->
+						<a class="readbtn" href="javascript:void(0)">Read More</a>
+						<!-- /readbtn -->
+						
+					</div>
+					<!-- /content -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- art -->
+					<div class="art">
+
+						<!-- preview -->
+						<img class="preview" src="../theme/pic.jpg">
+						<!-- /preview -->
+
+					</div>
+					<!-- /art -->
+
+					<!-- content -->
+					<div class="content">
+
+						<!-- title -->
+						<h1 class="title">Title Goes Here</h1>
+						<!-- /title -->
+
+						<!-- textcopy -->
+						<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.</p>
+						<!-- /textcopy -->
+
+						<!-- readbtn -->
+						<a class="readbtn" href="javascript:void(0)">Read More</a>
+						<!-- /readbtn -->
+						
+					</div>
+					<!-- /content -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- art -->
+					<div class="art">
+
+						<!-- preview -->
+						<img class="preview" src="../theme/pic.jpg">
+						<!-- /preview -->
+
+					</div>
+					<!-- /art -->
+
+					<!-- content -->
+					<div class="content">
+
+						<!-- title -->
+						<h1 class="title">Title Goes Here</h1>
+						<!-- /title -->
+
+						<!-- textcopy -->
+						<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.</p>
+						<!-- /textcopy -->
+
+						<!-- readbtn -->
+						<a class="readbtn" href="javascript:void(0)">Read More</a>
+						<!-- /readbtn -->
+						
+					</div>
+					<!-- /content -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- art -->
+					<div class="art">
+
+						<!-- preview -->
+						<img class="preview" src="../theme/pic.jpg">
+						<!-- /preview -->
+
+					</div>
+					<!-- /art -->
+
+					<!-- content -->
+					<div class="content">
+
+						<!-- title -->
+						<h1 class="title">Title Goes Here</h1>
+						<!-- /title -->
+
+						<!-- textcopy -->
+						<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.</p>
+						<!-- /textcopy -->
+
+						<!-- readbtn -->
+						<a class="readbtn" href="javascript:void(0)">Read More</a>
+						<!-- /readbtn -->
+						
+					</div>
+					<!-- /content -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- art -->
+					<div class="art">
+
+						<!-- preview -->
+						<img class="preview" src="../theme/pic.jpg">
+						<!-- /preview -->
+
+					</div>
+					<!-- /art -->
+
+					<!-- content -->
+					<div class="content">
+
+						<!-- title -->
+						<h1 class="title">Title Goes Here</h1>
+						<!-- /title -->
+
+						<!-- textcopy -->
+						<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.</p>
+						<!-- /textcopy -->
+
+						<!-- readbtn -->
+						<a class="readbtn" href="javascript:void(0)">Read More</a>
+						<!-- /readbtn -->
+						
+					</div>
+					<!-- /content -->
+
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- art -->
+					<div class="art">
+
+						<!-- preview -->
+						<img class="preview" src="../theme/pic.jpg">
+						<!-- /preview -->
+
+					</div>
+					<!-- /art -->
+
+					<!-- content -->
+					<div class="content">
+
+						<!-- title -->
+						<h1 class="title">Title Goes Here</h1>
+						<!-- /title -->
+
+						<!-- textcopy -->
+						<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.</p>
+						<!-- /textcopy -->
+
+						<!-- readbtn -->
+						<a class="readbtn" href="javascript:void(0)">Read More</a>
+						<!-- /readbtn -->
+						
+					</div>
+					<!-- /content -->
+
+				</div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Database Script -->
+		<script src="../blogtoggler/database.js" type="text/javascript"></script>
+
+		<!-- Main Script -->
+		<!-- <script src="./blog.js" type="text/javascript"></script> -->
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
