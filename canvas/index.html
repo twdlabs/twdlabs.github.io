@@ -4,100 +4,85 @@
 
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link href="../atgicon.ico" rel="icon"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<!-- <link href="./icon.png" rel="apple-touch-icon"/> -->
 		<title>Canvas</title>
 
+		<!-- Main Stylesheet -->
+		<!-- <link href="./canvas.css" rel="stylesheet" type="text/css"/> -->
 		<style type="text/css">
-			div#container {border:1px dotted #000; text-align:center;}
-			div#container canvas {border:1px solid #000;}
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+			div#container {background-color:#CCC; display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+			div#container main.main {background-color:white; display:flex; flex-direction:column; align-items:stretch; padding:1rem; border:1px dotted #000; border-radius:.5rem;}
+			div#container main.main div.input {display:flex; flex-direction:row; justify-content:center; align-items:center; margin-top:.5rem;}
+			div#container main.main div.input input {/* text-align:center;  */padding:.5rem 1rem; border:1px solid #0002; border-radius:.5rem;}
+			div#container main.main div.input label {font-weight:500; margin-right:.5rem;}
+			div#container main.main div.input label::after {content:':';}
+			div#container main.main canvas {border:1px solid #0002; border-radius:.5rem; margin-top:.5rem;}
 		</style>
 	</head>
 
 	<body>
 
+		<!-- #container -->
 		<div id="container">
-			<label for="mean">&mu;</label>
-			<input type="text" id="mean" value="0" onclick="this.select();" />
-			<br>
-			<label for="stdev">&sigma;</label>
-			<input type="text" id="stdev" value="1" onclick="this.select();" />
-			<br>
-			<button onclick="go()">Go</button>
-			<br>
 
-			<canvas id="normalChart"></canvas>
+			<!-- main -->
+			<main class="main">
+
+				<!-- input -->
+				<div class="input">
+	
+					<!-- label -->
+					<label for="mean">&mu;</label>
+					<!-- /label -->
+		
+					<!-- #mean -->
+					<input type="text" id="mean" placeholder="0" onclick="this.select();" oninput="go()" />
+					<!-- /#mean -->
+	
+				</div>
+				<!-- /input -->
+	
+				<!-- input -->
+				<div class="input">
+	
+					<!-- label -->
+					<label for="stdev">&sigma;</label>
+					<!-- /label -->
+		
+					<!-- #stdev -->
+					<input type="text" id="stdev" placeholder="1" onclick="this.select();" oninput="go()" />
+					<!-- /#stdev -->
+					
+				</div>
+				<!-- /input -->
+	
+				<!-- #normalChart -->
+				<canvas id="normalChart"></canvas>
+				<!-- /#normalChart -->
+
+			</main>
+			<!-- /main -->
+
 		</div>
+		<!-- /#container -->
 
-		<!-- Chart JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.min.js" type="text/javascript"></script>
+		<!-- Chart Script -->
+		<script src="./Chart.min.js" type="text/javascript"></script>
 
-		<script type="text/javascript">
-			// 
-			var canvas = document.getElementById('normalChart').getContext('2d');
-			var normalChart;
-			var N = 4;
-
-			// Initialize the chart data. 
-			var chart = {
-				type:'bar',
-				data:{
-					labels:[],
-					datasets:[
-						{
-							label:'Normal distribution',
-							backgroundColor:'rgba(0,137,255,0.625)',
-							data:[]
-						}
-					]
-				}
-			};
-			var chart2 = {
-				type:'line',
-				data:{
-					labels:[],
-					datasets:[
-						{
-							label:'Normal distribution',
-							backgroundColor:'rgba(0,137,255,0.625)',
-							data:[]
-						}
-					]
-				}
-			};
-			
-			function go() {
-				var mean = document.getElementById('mean').value;
-				var stdev = document.getElementById('stdev').value;
-
-				// Create data points. 
-				for (var i=1*mean-N ; i<=1*mean+N ; i++) {
-					chart.data.labels.push(i);
-					chart2.data.labels.push(i);
-					chart.data.datasets[0].data.push( pdf(i, mean,stdev) );
-					chart2.data.datasets[0].data.push( pdf(i, mean,stdev) );
-				}
-
-				// Remove any previously charted data. 
-				if(normalChart!=null) {
-					normalChart.destroy();
-				}
-
-				// Add charted data to canvas. 
-				// normalChart = new Chart(canvas,chart);
-				normalChart = new Chart(canvas,chart2);
-
-				/*****/
-
-				// Probability Density Function for Normal Distribution
-				function pdf(x, mu, s) {
-					let result = (1 / (Math.sqrt(2*Math.PI)*s) ) * Math.exp( (x-mu)*(x-mu) / (-2*s*s) );
-					console.log('pdf('+x+', '+mu+','+s+') =', result);
-					return result;
-				}
-			}
-		</script>
+		<!-- Main Script -->
+		<script src="./canvas.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript"></script> -->
 
 	</body>
 
