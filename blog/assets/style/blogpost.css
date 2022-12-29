@@ -13,14 +13,14 @@ div#container main.main section.comments h2.head {font-size:1.25rem; margin:0; m
 div#container main.main section.comments ul.commentlist {list-style:none; padding:0; margin:0;}
 div#container main.main section.comments ul.commentlist li.commentitem {background-color:#EEE; display:flex; flex-direction:row; align-items:stretch; padding:.5rem; border-radius:.125rem; margin-top:.25rem;}
 div#container main.main section.comments ul.commentlist li.commentitem div.left {margin-right:.5rem;}
-div#container main.main section.comments ul.commentlist li.commentitem div.left img.avatar {background-color:greenyellow; display:block; object-fit:cover; height:4rem; width:4rem; border:1px solid transparent; border-radius:50%;}
+div#container main.main section.comments ul.commentlist li.commentitem div.left img.avatar {background-color:#0002; display:block; object-fit:cover; height:4rem; width:4rem; border:1px solid transparent; border-radius:50%;}
 div#container main.main section.comments ul.commentlist li.commentitem div.right {font-size:.875rem; margin-top:.125rem;}
 /* div#container main.main section.comments ul.commentlist li.commentitem div.right div.top {} */
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.top a.userlink {font-weight:900; text-decoration:none; margin-right:.25rem;}
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.top a.userlink {color:dodgerblue; font-weight:900; text-decoration:none; margin-right:.125rem;}
 div#container main.main section.comments ul.commentlist li.commentitem div.right div.top span.comment {font-weight:400;}
-/* div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom {} */
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.dot {color:grey;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom a.likebtn {font-weight:400; text-decoration:none;}
+/* div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom {display:flex; flex-direction:row; align-items:center;} */
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.dot {color:grey; /* margin:0 .25rem; */}
+div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom a.likebtn {color:dodgerblue; font-weight:400; text-decoration:none;}
 div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.timestamp {color:grey; font-weight:400;}
 
 
