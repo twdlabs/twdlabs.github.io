@@ -1,0 +1,48 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+	--pagewidth:60rem;
+	--cornersize:.25rem;
+	--themecolor:#CCC;
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+
+html {background-color:var(--themecolor); background-image:var(--bgimg);}
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.main {background-color:white; display:flex; flex-direction:column; align-items:stretch; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main div.input {margin-top:.5rem;}
+div#container main.main div.input input {width:100%;}
+div#container main.main button.cta {margin-top:.5rem;}
+div#container main.main div.output {background-color:#0002; display:flex; flex-direction:row; align-items:center; cursor:pointer; padding:.375rem .75rem; border-radius:.5rem; margin-top:.5rem;}
+div#container main.main div.output svg.icon {margin-right:.25rem;}
+div#container main.main div.output span.result {background-color:#0002; flex-grow:1; border-radius:inherit; padding:.25rem;}
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
