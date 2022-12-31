@@ -6,13 +6,18 @@ const userblock = document.querySelector('div#container main.user');
 
 // Get menu toggler button. 
 const menutogglerbtn = document.querySelector('div#container main.user a.menutoggler');
+// Get menu toggler avatar. 
+const menutoggleravatar = document.querySelector('div#container main.user a.menutoggler img.avatar');
+
+// Get menu profile avatar. 
+const profileavatar = document.querySelector('div#container main.user nav.menu div.profile img.avatar');
+// Get menu profile name box. 
+const profilenamebox = document.querySelector('div#container main.user nav.menu div.profile h1.name');
 
 // Get navigation menu. 
 const navmenu = document.querySelector('div#container main.user nav.menu');
-
 // Get user menu list. 
 const usermenulist = document.querySelector('div#container main.user nav.menu ul.navlist.userlist');
-
 // Get command menu list. 
 const commandmenulist = document.querySelector('div#container main.user nav.menu ul.navlist.commandlist');
 
@@ -20,18 +25,56 @@ const commandmenulist = document.querySelector('div#container main.user nav.menu
 /*****/
 
 
+// Define index of current user. 
+let currentUserIndex = 1;
+
+
+/*****/
+
+
+// Load profile of current user. 
+loadCurrentProfile();
+
 // Load user menu list. 
 loadUserMenuList();
 
 // Load command menu list. 
 loadCommandMenuList();
 
-// Activate menu toggler button. 
+// Activate menu toggler. 
 activateMenuToggler();
 
 
 /*****/
 
+
+// Load profile of current user. 
+function loadCurrentProfile() {
+	console.log('Current user index:',currentUserIndex);
+
+	// Check for valid user index. 
+	if( isNaN(currentUserIndex) ) return;
+
+	// Get data for current user. 
+	let currentUser = userDataList[currentUserIndex];
+	console.log('Current user:',currentUser);
+
+	// Get full name of current user. 
+	let fullname = `${currentUser.fname} ${currentUser.lname}`;
+
+	// Get avatar url for current user. 
+	let avatarurl = currentUser.avatarurl;
+	console.log('Avatar url:',avatarurl);
+
+	// Load avatar to menu profile. 
+	profileavatar.src = avatarurl;
+
+	// Load name to menu profile. 
+	profilenamebox.innerHTML = fullname;
+
+	// Load avatar to menu toggler. 
+	menutoggleravatar.src = avatarurl;
+}
 
 // Load user menu list. 
 function loadUserMenuList() {
@@ -40,24 +83,30 @@ function loadUserMenuList() {
 	let result = '';
 	
 	// Go thru all user items. 
-	for(let userItem of userDataList) {
+	for(let index in userDataList) {
 
 		// Add user layout to result. 
-		result += createUserItemLayout(userItem)
+		result += createUserItemLayout(index);
 	}
 	
 	// Add result to user list. 
 	usermenulist.innerHTML = result;
 
+	// Activate user links. 
+	activateUserLinks();
+
 	/****/
 
-	// Create layout for user item. 
-	function createUserItemLayout(user) {
+	// Create layout for user at given index. 
+	function createUserItemLayout(index) {
+
+		// Get data for user at given index. 
+		const user = userDataList[index];
 
 		// Compile components of user menu item. 
 		return `
 		<!-- navitem -->
-		<li class="navitem user">
+		<li class="navitem user" data-userindex="${index}">
 	
 			<!-- navlink -->
 			<a class="navlink" href="javascript:void(0)">
@@ -74,7 +123,7 @@ function loadUserMenuList() {
 					<!-- /name -->
 	
 					<!-- contact -->
-					<span class="contact">${ user.userid && '' }</span>
+					<span class="contact">${ user.userid }</span>
 					<!-- /contact -->
 
 				</div>
@@ -86,6 +135,36 @@ function loadUserMenuList() {
 		</li>
 		<!-- /navitem -->`;
 	}
+
+	// Select user link. 
+	function selectUserLink(event) {
+
+		// Get list item. 
+		const li = (event.currentTarget).parentElement;
+		
+		// Update current user index to that of selected user. 
+		currentUserIndex = li.getAttribute('data-userindex');
+
+		// Load profile for new user. 
+		loadCurrentProfile();
+
+		// Close navigation menu. 
+		closeNavigationMenu();
+	}
+
+	// Activate user links. 
+	function activateUserLinks() {
+	
+		// Get all user links. 
+		const allUserLinks = document.querySelectorAll('div#container main.user nav.menu ul.navlist.userlist li.navitem a.navlink');
+		
+		// Go thru all user links. 
+		for(let userlink of allUserLinks) {
+			
+			// Enable user link selection. 
+			userlink.addEventListener('click',selectUserLink);
+		}
+	}
 }
 
 // Load command menu list. 
@@ -95,39 +174,42 @@ function loadCommandMenuList() {
 	let result = '';
 	
 	// Go thru all command items. 
-	for(let commandItem of userCommandList) {
+	for(let index in userCommandList) {
 
 		// Add command layout to result. 
-		result += createCommandItemLayout(commandItem)
+		result += createCommandItemLayout(index)
 	}
 	
 	// Add result to command list. 
 	commandmenulist.innerHTML = result;
 
 	// Activate user command links. 
-	activateUserCommandLinks();
+	activateCommandLinks();
 
 	/****/
 
-	// Create layout for command item. 
-	function createCommandItemLayout(item) {
+	// Create layout for command at given index. 
+	function createCommandItemLayout(index) {
+
+		// Get data for command at given index. 
+		let command = userCommandList[index];
 
 		// Compile components of command menu item. 
 		return `
 		<!-- navitem -->
-		<li class="navitem command">
+		<li class="navitem command" data-commandindex="${index}">
 	
 			<!-- navlink -->
-			<a class="navlink" href="${item.url}">
+			<a class="navlink" href="${ command.url }">
 	
 				<!-- icon -->
-				<svg class="icon ${item.icon}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-					${ iconData[item.icon] }
+				<svg class="icon ${ command.icon }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					${ iconData[command.icon] }
 				</svg>
 				<!-- /icon -->
 	
 				<!-- caption -->
-				<span class="caption">${item.caption}</span>
+				<span class="caption">${ command.caption }</span>
 				<!-- /caption -->
 				
 			</a>
@@ -136,30 +218,39 @@ function loadCommandMenuList() {
 		</li>
 		<!-- /navitem -->`;
 	}
+	
+	// Select user command link. 
+	function selectCommandLink(event) {
+
+		// Get list item. 
+		const li = (event.currentTarget).parentElement;
+		
+		// Get index for selected command. 
+		let commandindex = li.getAttribute('data-commandindex');
+
+		// Take action on user command. 
+		actOnUserCommand(commandindex);
+
+		// Close navigation menu. 
+		closeNavigationMenu();
+	}
+
+	// TODO: Take action on user command. 
+	function actOnUserCommand(commandindex) {
+		console.log( 'Selected:',userCommandList[commandindex].caption );
+	}
 
 	// Activate user command links. 
-	function activateUserCommandLinks() {
+	function activateCommandLinks() {
 	
 		// Get all command links. 
 		const allUserCommandLinks = document.querySelectorAll('div#container main.user nav.menu ul.navlist.commandlist li.navitem a.navlink');
-		// const allUserCommandLinks = commandmenulist.querySelectorAll('li.navitem a.navlink');
 		
 		// Go thru all command links. 
 		for(let commandlink of allUserCommandLinks) {
 			
 			// Enable command link selection. 
 			commandlink.addEventListener('click',selectCommandLink);
-		}
-	
-		/***/
-	
-		// Select user command link. 
-		function selectCommandLink() {
-			
-			// TODO: Take action on user command. 
-
-			// Close navigation menu. 
-			closeNavigationMenu();
 		}
 	}
 }

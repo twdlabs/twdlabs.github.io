@@ -77,6 +77,8 @@ div#container main.user nav.menu div.slider ul.navlist li.navitem a.navlink {col
 div#container main.user nav.menu div.slider ul.navlist li.navitem a.navlink:hover {color:var(--black);}
 /* div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink {} */
 div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink div.badge {display:flex; flex-direction:column; /* justify-content:center; */ margin-left:.5rem;}
+/* div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink div.badge span.name {} */
+div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink div.badge span.contact {display:none;}
 div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink img.avatar {--picsize:2rem; height:var(--picsize); width:var(--picsize); border-radius:50%;}
 /* div#container main.user nav.menu div.slider ul.navlist li.navitem.command a.navlink {} */
 div#container main.user nav.menu div.slider ul.navlist li.navitem.command a.navlink svg.icon {font-size:1.25em;}
