@@ -25,8 +25,8 @@
 			<!-- user -->
 			<main class="user">
 
-				<!-- profile -->
-				<a class="profile" href="javascript:void(0)">
+				<!-- menutoggler -->
+				<a class="menutoggler" href="javascript:void(0)">
 
 					<!-- avatar -->
 					<img class="avatar" src="./avatar-m.png">
@@ -35,52 +35,111 @@
 					<span class="x">&times</span>
 
 				</a>
-				<!-- /profile -->
+				<!-- /menutoggler -->
 
 				<!-- menu -->
 				<nav class="menu">
 
-					<!-- avatar -->
-					<img class="avatar" src="./avatar-m.png">
-					<!-- /avatar -->
+					<!-- profile -->
+					<div class="profile">
 
-					<!-- name -->
-					<h1 class="name">John Doe Smith</h1>
-					<!-- /name -->
+						<!-- avatar -->
+						<img class="avatar" src="./avatar-m.png">
+						<!-- /avatar -->
+	
+						<!-- name -->
+						<h1 class="name">John Doe Smith</h1>
+						<!-- /name -->
+	
+						<!-- jobtitle -->
+						<h2 class="jobtitle">Website Designer</h2>
+						<!-- /jobtitle -->
 
-					<!-- jobtitle -->
-					<h2 class="jobtitle">Website Designer</h2>
-					<!-- /jobtitle -->
+						<!-- switchbtn -->
+						<div class="switchbtn" onclick="toggleUserSwitcher()">
+							Switch User
+						</div>
+						<!-- /switchbtn -->
 
-					<!-- navlist -->
-					<ul class="navlist">
-						
-						<!-- navitem -->
-						<li class="navitem">
-					
-							<!-- navlink -->
-							<a class="navlink" href="javascript:void(0)">
-					
-								<!-- icon -->
-								<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-								</svg>
-								<!-- /icon -->
-					
-								<!-- caption -->
-								<span class="caption">Caption</span>
-								<!-- /caption -->
+					</div>
+					<!-- /profile -->
+
+					<!-- slider -->
+					<div class="slider">
+
+						<!-- inner -->
+						<div class="inner">
+		
+							<!-- userlist -->
+							<ul class="navlist userlist">
 								
-							</a>
-							<!-- /navlink -->
-					
-						</li>
-						<!-- /navitem -->
-						
-					</ul>
-					<!-- /navlist -->
-					
+								<!-- navitem -->
+								<li class="navitem user">
+							
+									<!-- navlink -->
+									<a class="navlink" href="javascript:void(0)">
 
+										<!-- avatar -->
+										<img class="avatar" src="./avatar-f.png">
+										<!-- /avatar -->
+
+										<!-- badge -->
+										<div class="badge">
+							
+											<!-- name -->
+											<span class="name">FirstName LastName</span>
+											<!-- /name -->
+							
+											<!-- contact -->
+											<span class="contact">ContactInfo</span>
+											<!-- /contact -->
+
+										</div>
+										<!-- /badge -->
+										
+									</a>
+									<!-- /navlink -->
+							
+								</li>
+								<!-- /navitem -->
+								
+							</ul>
+							<!-- /userlist -->
+
+							<!-- commandlist -->
+							<ul class="navlist commandlist">
+								
+								<!-- navitem -->
+								<li class="navitem command">
+							
+									<!-- navlink -->
+									<a class="navlink" href="javascript:void(0)">
+							
+										<!-- icon -->
+										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+										</svg>
+										<!-- /icon -->
+							
+										<!-- caption -->
+										<span class="caption">Caption</span>
+										<!-- /caption -->
+										
+									</a>
+									<!-- /navlink -->
+							
+								</li>
+								<!-- /navitem -->
+								
+							</ul>
+							<!-- /commandlist -->
+
+						</div>
+						<!-- /inner -->
+
+					</div>
+					<!-- /slider -->
+					
 				</nav>
 				<!-- /menu -->
 
@@ -90,6 +149,8 @@
 
 			</main>
 			<!-- /user -->
+
+			<div style="background-color:#0001; padding:10rem;">Hi</div>
 
 		</div>
 		<!-- /#container -->

@@ -6,56 +6,81 @@
 
 
 :root {
+
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+	--space:1rem;
 	--picsize:3rem;
-	--picspace:1rem;
-	--largepicsize:5rem;
+	--bigpicsize:5rem;
+	--blockwidth:16rem;
+
 	--grey:#CCC;
 	--black:#444;
 	--darkgrey:#AAA;
 	--lightgrey:#DDD;
 	--lightblack:#888;
-	--themecolor:var(--grey);
+
+	--themecolor:white;
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
+
+	--itemcount:7;
+	--commanditemheight:2.5rem;
+	--commandlistheight:calc( var(--itemcount) * var(--commanditemheight) );
 }
 
 
 html {background-color:var(--themecolor); background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
+.freeze {overflow:hidden;}
 
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+body.freeze div#container::before {background-color:#0004; display:block; content:''; cursor:pointer;}
+body.freeze div#container::before {position:fixed; top:0; left:0; height:100%; width:100%; height:100vh; width:100vw;}
 
 /* div#container main.user {display:none;} */
-div#container main.user {position:fixed; top:0; right:0; padding:var(--picspace); border-radius:.5rem;}
+div#container main.user {position:fixed; top:0; right:0; border-radius:.5rem; padding:var(--space);}
 div#container main.user {display:flex; flex-direction:column; align-items:flex-end; max-height:100vh; /* box-shadow:var(--boxshadow); */}
-div#container main.user a.profile {background-color:var(--black); color:white; flex-shrink:0; position:relative; height:var(--picsize); width:var(--picsize); transition:.5s;}
-div#container main.user a.profile {overflow:hidden; border:0 solid transparent; border-radius:50%; /* margin:var(--picspace); */ box-shadow:var(--boxshadow);}
-div#container main.user.open a.profile {border-width:.25rem;}
-div#container main.user a.profile img.avatar {display:block; height:100%; width:100%; object-fit:cover; border-radius:inherit;}
-div#container main.user a.profile img.avatar {opacity:1; transition:.5s;}
-div#container main.user.open a.profile img.avatar {opacity:0;}
-div#container main.user a.profile span.x {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-div#container main.user a.profile span.x {font-size:calc(var(--picsize)/2); font-weight:100; opacity:0; visibility:hidden; transition:.5s;}
-div#container main.user.open a.profile span.x {opacity:.5; visibility:visible;}
-div#container main.user nav.menu {background-color:white; padding:.25rem 1rem; border-radius:.75rem; padding-top:1.25rem; margin-top:var(--picspace); box-shadow:var(--boxshadow);}
-div#container main.user nav.menu {display:flex; flex-direction:column; align-items:center; position:relative; width:16rem; max-width:100%; /* overflow:auto; */}
+div#container main.user a.menutoggler {background-color:var(--darkgrey); color:white;}
+div#container main.user a.menutoggler {background-color:var(--grey); color:var(--black); flex-shrink:0; position:relative; height:var(--picsize); width:var(--picsize); transition:.375s;}
+div#container main.user a.menutoggler {overflow:hidden; padding:0; border-radius:50%; /* margin:var(--space); */ box-shadow:var(--boxshadow);}
+div#container main.user.open a.menutoggler {padding:.375rem;}
+div#container main.user a.menutoggler img.avatar {display:block; height:100%; width:100%; object-fit:cover; border-radius:inherit;}
+div#container main.user a.menutoggler img.avatar {opacity:1; transition:.5s;}
+div#container main.user.open a.menutoggler img.avatar {opacity:0;}
+div#container main.user a.menutoggler span.x {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container main.user a.menutoggler span.x {font-size:calc(var(--picsize)/2); font-weight:400; opacity:0; visibility:hidden; transition:.5s;}
+div#container main.user.open a.menutoggler span.x {opacity:.5; visibility:visible;}
+div#container main.user nav.menu {background-color:white; border-radius:.75rem; margin-top:var(--space); box-shadow:var(--boxshadow);}
+div#container main.user nav.menu {position:relative; max-width:100%; overflow:auto;}
 div#container main.user nav.menu {opacity:0; visibility:hidden; pointer-events:none; transform:translateY(2rem);}
 div#container main.user.open nav.menu {opacity:1; visibility:visible; pointer-events:initial; transform:none; transition:.25s;}
-div#container main.user nav.menu::after {content:''; border:.75rem solid transparent; border-bottom-color:white; /* box-shadow:var(--boxshadow); */}
-div#container main.user nav.menu::after {position:absolute; bottom:100%; right:calc(.5*var(--picsize) + 0*var(--picspace)); transform:translateX(50%);}
-div#container main.user nav.menu img.avatar {display:block; height:var(--largepicsize); width:var(--largepicsize); object-fit:cover; border-radius:50%;}
-div#container main.user nav.menu h1.name {color:var(--black); text-align:center; font-size:1.375rem; font-weight:300; margin:0; margin-top:.375rem;}
-div#container main.user nav.menu h2.jobtitle {color:var(--darkgrey); font-size:1rem; text-align:center; font-weight:300; margin:0;}
-div#container main.user nav.menu ul.navlist {list-style:none;  width:100%; padding:0; margin:0; margin-top:1rem;}
-div#container main.user nav.menu ul.navlist li.navitem {border-top: 1px solid var(--lightgrey);}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; align-items:center; padding:.5rem 0;}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink {color:inherit; font-size:.875rem; text-decoration:none;}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink svg.icon {color:var(--lightblack); transition:.25s; font-size:1.25em;}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink span.caption {color:var(--black); transition:.25s; font-size:1.125em; font-weight:300; margin-left:.625rem;}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink:hover svg.icon {color:var(--black);}
-div#container main.user nav.menu ul.navlist li.navitem a.navlink:hover span.caption {color:navy;}
+/* div#container main.user nav.menu::after {position:absolute; bottom:100%; right:calc(.5*var(--picsize) + 0*var(--space)); transform:translateX(50%);} */
+/* div#container main.user nav.menu::after {content:''; border:.75rem solid transparent; border-bottom-color:white;} */
+div#container main.user nav.menu div.profile {display:flex; flex-direction:column; align-items:center; margin-top:1.25rem;}
+div#container main.user nav.menu div.profile img.avatar {display:block; height:var(--bigpicsize); width:var(--bigpicsize); object-fit:cover; border-radius:50%;}
+div#container main.user nav.menu div.profile h1.name {color:var(--black); text-align:center; font-size:1.375rem; font-weight:300; margin:0; margin-top:.375rem;}
+div#container main.user nav.menu div.profile h2.jobtitle {color:var(--darkgrey); color:var(--lightblack); font-size:1rem; text-align:center; font-weight:300; margin:0;}
+div#container main.user nav.menu div.profile div.switchbtn {background-color:var(--lightgrey); cursor:pointer; user-select:none; padding:.25rem .75rem; border-radius:5rem; margin-top:.5rem;}
+div#container main.user nav.menu div.slider {width:var(--blockwidth); overflow:auto; overflow:hidden;}
+div#container main.user nav.menu div.slider div.inner {display:flex; flex-direction:row; overflow:visible; transform:translateX(-100%); transition:.25s;}
+div#container main.user.switchuser nav.menu div.slider div.inner {transform:translateX(0);}
+div#container main.user nav.menu div.slider ul.navlist {width:100%; width:var(--blockwidth); flex-shrink:0;}
+div#container main.user nav.menu div.slider ul.navlist {list-style:none; padding:0; padding:0 1rem; margin:0; margin-top:1rem;}
+div#container main.user nav.menu div.slider ul.navlist.userlist {height:var(--commandlistheight); overflow:auto;}
+/* div#container main.user nav.menu div.slider ul.navlist.commandlist {} */
+div#container main.user nav.menu div.slider ul.navlist li.navitem {border-top: 1px solid var(--lightgrey);}
+/* div#container main.user nav.menu div.slider ul.navlist li.navitem.user {} */
+div#container main.user nav.menu div.slider ul.navlist li.navitem.command {height:var(--commanditemheight);}
+div#container main.user nav.menu div.slider ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; align-items:center; padding:.5rem 0;}
+div#container main.user nav.menu div.slider ul.navlist li.navitem a.navlink {color:var(--lightblack); font-size:.875rem; text-decoration:none; transition:.25s;}
+div#container main.user nav.menu div.slider ul.navlist li.navitem a.navlink:hover {color:var(--black);}
+/* div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink {} */
+div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink div.badge {display:flex; flex-direction:column; /* justify-content:center; */ margin-left:.5rem;}
+div#container main.user nav.menu div.slider ul.navlist li.navitem.user a.navlink img.avatar {--picsize:2rem; height:var(--picsize); width:var(--picsize); border-radius:50%;}
+/* div#container main.user nav.menu div.slider ul.navlist li.navitem.command a.navlink {} */
+div#container main.user nav.menu div.slider ul.navlist li.navitem.command a.navlink svg.icon {font-size:1.25em;}
+div#container main.user nav.menu div.slider ul.navlist li.navitem.command a.navlink span.caption {font-size:1.125em; font-weight:400; margin-left:.625rem;}
 
 
 /* Tablet Screen */

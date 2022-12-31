@@ -13,8 +13,8 @@ const iconData = {
 }
 
 
-// Define user list data. 
-const userListData = [
+// Define list of user commands. 
+const userCommandList = [
 	
 	{
 		caption:'My Profile',
