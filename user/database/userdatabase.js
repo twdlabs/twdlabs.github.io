@@ -249,11 +249,14 @@ function addUserData() {
 	// 
 	for(let user of userDataList) {
 
-		// Auto-generate email address. 
+		// Auto-generate default email address. 
 		let un = (user.fname).substring(0,1) + (user.lname);
 		user.email = `${ un.toLowerCase() }@mail.com`;
 
 		// Add default password. 
 		user.password = 'pw';
+
+		// Auto-generate default bio. 
+		user.bio = `This is a brief bio for ${un}. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint consequatur tempore! Doloremque est dolorum modi repellat aspernatur non consequatur quia, dignissimos optio nemo omnis quidem provident ipsam commodi animi.`;
 	}
 }

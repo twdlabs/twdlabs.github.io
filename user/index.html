@@ -60,91 +60,145 @@
 					</div>
 					<!-- /profile -->
 
-					<!-- switchbtn -->
-					<div class="switchbtn" onclick="toggleUserSwitcher()">
+					<!-- btnbox -->
+					<div class="btnbox">
 
-						<!-- caption -->
-						<span class="caption">Switch User</span>
-						<!-- /caption -->
+						<!-- switchbtn -->
+						<div class="btn switchbtn" onclick="toggleUserSwitcher()">
+	
+							<!-- caption -->
+							<span class="caption">Switch User</span>
+							<!-- /caption -->
+	
+						</div>
+						<!-- /switchbtn -->
 
+						<!-- biobtn -->
+						<div class="btn biobtn" onclick="toggleBioEditor()">
+	
+							<!-- caption -->
+							<span class="caption">See Bio</span>
+							<!-- /caption -->
+	
+						</div>
+						<!-- /biobtn -->
+						
 					</div>
-					<!-- /switchbtn -->
+					<!-- /btnbox -->
 
-					<!-- slider -->
-					<div class="slider">
+					<!-- menuslider -->
+					<div class="menuslider">
 
 						<!-- inner -->
 						<div class="inner">
+
+							<!-- slide -->
+							<div class="slide">
 		
-							<!-- userlist -->
-							<ul class="navlist userlist">
+								<!-- userlist -->
+								<ul class="navlist userlist">
+									
+									<!-- navitem -->
+									<li class="navitem user" data-userindex="index">
 								
-								<!-- navitem -->
-								<li class="navitem user" data-userindex="index">
-							
-									<!-- navlink -->
-									<a class="navlink" href="javascript:void(0)">
-
-										<!-- avatar -->
-										<img class="avatar" src="">
-										<!-- /avatar -->
-
-										<!-- badge -->
-										<div class="badge">
-							
-											<!-- name -->
-											<span class="name">FirstName LastName</span>
-											<!-- /name -->
-							
-											<!-- contact -->
-											<span class="contact">ContactInfo</span>
-											<!-- /contact -->
-
-										</div>
-										<!-- /badge -->
-										
-									</a>
-									<!-- /navlink -->
-							
-								</li>
-								<!-- /navitem -->
+										<!-- navlink -->
+										<a class="navlink" href="javascript:void(0)">
+	
+											<!-- avatar -->
+											<img class="avatar" src="">
+											<!-- /avatar -->
+	
+											<!-- badge -->
+											<div class="badge">
 								
-							</ul>
-							<!-- /userlist -->
+												<!-- name -->
+												<span class="name">FirstName LastName</span>
+												<!-- /name -->
+								
+												<!-- contact -->
+												<span class="contact">ContactInfo</span>
+												<!-- /contact -->
+	
+											</div>
+											<!-- /badge -->
+											
+										</a>
+										<!-- /navlink -->
+								
+									</li>
+									<!-- /navitem -->
+									
+								</ul>
+								<!-- /userlist -->
 
-							<!-- commandlist -->
-							<ul class="navlist commandlist">
+							</div>
+							<!-- /slide -->
+
+							<!-- slide -->
+							<div class="slide">
+
+								<!-- commandlist -->
+								<ul class="navlist commandlist">
+									
+									<!-- navitem -->
+									<li class="navitem command" data-commandindex="index">
 								
-								<!-- navitem -->
-								<li class="navitem command" data-commandindex="index">
-							
-									<!-- navlink -->
-									<a class="navlink" href="javascript:void(0)">
-							
-										<!-- icon -->
-										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-										</svg>
-										<!-- /icon -->
-							
-										<!-- caption -->
-										<span class="caption">Caption</span>
-										<!-- /caption -->
-										
-									</a>
-									<!-- /navlink -->
-							
-								</li>
-								<!-- /navitem -->
+										<!-- navlink -->
+										<a class="navlink" href="javascript:void(0)">
 								
-							</ul>
-							<!-- /commandlist -->
+											<!-- icon -->
+											<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+											</svg>
+											<!-- /icon -->
+								
+											<!-- caption -->
+											<span class="caption">Caption</span>
+											<!-- /caption -->
+											
+										</a>
+										<!-- /navlink -->
+								
+									</li>
+									<!-- /navitem -->
+									
+								</ul>
+								<!-- /commandlist -->
+								
+							</div>
+							<!-- /slide -->
+
+							<!-- slide -->
+							<div class="slide">
+
+								<!-- bioeditor -->
+								<div class="bioeditor">
+	
+									<!-- head -->
+									<h3 class="head">Brief Bio</h3>
+									<!-- /head -->
+	
+									<!-- editor -->
+									<textarea class="editor" disabled></textarea>
+									<!-- /editor -->
+									
+								</div>
+								<!-- /bioeditor -->
+								
+							</div>
+							<!-- /slide -->
+
+							<!-- slide -->
+							<div class="slide">
+								
+							</div>
+							<!-- /slide -->
 
 						</div>
 						<!-- /inner -->
 
 					</div>
-					<!-- /slider -->
+					<!-- /menuslider -->
 					
 				</nav>
 				<!-- /menu -->

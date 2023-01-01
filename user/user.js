@@ -17,6 +17,8 @@ const profilebox = document.querySelector('div#container main.user nav.menu div.
 const usermenulist = document.querySelector('div#container main.user nav.menu ul.navlist.userlist');
 // Get command menu list. 
 const commandmenulist = document.querySelector('div#container main.user nav.menu ul.navlist.commandlist');
+// Get bio editor field. 
+const bioeditor = document.querySelector('div#container main.user nav.menu div.bioeditor textarea.editor');
 
 
 /*****/
@@ -78,6 +80,9 @@ function loadCurrentProfile() {
 	<!-- jobtitle -->
 	<h2 class="jobtitle">${ email }</h2>
 	<!-- /jobtitle -->`;
+
+	// Load user bio into editor. 
+	bioeditor.value = currentUser.bio;
 
 	// Load avatar to menu toggler. 
 	menutoggleravatar.src = avatarurl;
@@ -338,7 +343,15 @@ function closeNavigationMenu() {
 }
 
 // Toggle user switcher. 
+function toggleBioEditor() {
+	// Toggle user switcher. 
+	userblock.classList.remove('switchuser');
+	userblock.classList.toggle('editbio');
+}
+
+// Toggle user switcher. 
 function toggleUserSwitcher() {
 	// Toggle user switcher. 
+	userblock.classList.remove('editbio');
 	userblock.classList.toggle('switchuser');
 }
