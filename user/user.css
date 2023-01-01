@@ -35,8 +35,10 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-body.freeze div#container::before {background-color:#0004; display:block; content:''; cursor:pointer;}
-body.freeze div#container::before {position:fixed; top:0; left:0; height:100%; width:100%; height:100vh; width:100vw;}
+div#container::before {position:fixed; top:0; left:0; height:100%; width:100%; height:100vh; width:100vw;}
+div#container::before {background-color:#0004; display:block; content:''; cursor:pointer;}
+div#container::before {opacity:0; visibility:hidden; transition:.375s;}
+body.freeze div#container::before {opacity:1; visibility:visible;}
 
 /* div#container main.user {display:none;} */
 div#container main.user {position:fixed; top:0; right:0; border-radius:.5rem; padding:var(--space);}
@@ -61,7 +63,7 @@ div#container main.user nav.menu div.profile {display:flex; flex-direction:colum
 div#container main.user nav.menu div.profile img.avatar {display:block; height:var(--bigpicsize); width:var(--bigpicsize); object-fit:cover; border-radius:50%;}
 div#container main.user nav.menu div.profile h1.name {color:var(--black); text-align:center; font-size:1.375rem; font-weight:300; margin:0; margin-top:.375rem;}
 div#container main.user nav.menu div.profile h2.jobtitle {color:var(--darkgrey); color:var(--lightblack); font-size:1rem; text-align:center; font-weight:300; margin:0;}
-div#container main.user nav.menu div.profile div.switchbtn {background-color:var(--lightgrey); cursor:pointer; user-select:none; padding:.25rem .75rem; border-radius:5rem; margin-top:.5rem;}
+div#container main.user nav.menu div.switchbtn {background-color:var(--lightgrey); cursor:pointer; user-select:none; text-align:center; width:8rem; padding:.25rem .75rem; border-radius:5rem; margin:0 auto; margin-top:.5rem;}
 div#container main.user nav.menu div.slider {width:var(--blockwidth); overflow:auto; overflow:hidden;}
 div#container main.user nav.menu div.slider div.inner {display:flex; flex-direction:row; overflow:visible; transform:translateX(-100%); transition:.25s;}
 div#container main.user.switchuser nav.menu div.slider div.inner {transform:translateX(0);}

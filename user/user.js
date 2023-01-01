@@ -9,13 +9,10 @@ const menutogglerbtn = document.querySelector('div#container main.user a.menutog
 // Get menu toggler avatar. 
 const menutoggleravatar = document.querySelector('div#container main.user a.menutoggler img.avatar');
 
-// Get menu profile avatar. 
-const profileavatar = document.querySelector('div#container main.user nav.menu div.profile img.avatar');
-// Get menu profile name box. 
-const profilenamebox = document.querySelector('div#container main.user nav.menu div.profile h1.name');
-
 // Get navigation menu. 
 const navmenu = document.querySelector('div#container main.user nav.menu');
+// Get menu profile box. 
+const profilebox = document.querySelector('div#container main.user nav.menu div.profile');
 // Get user menu list. 
 const usermenulist = document.querySelector('div#container main.user nav.menu ul.navlist.userlist');
 // Get command menu list. 
@@ -26,7 +23,7 @@ const commandmenulist = document.querySelector('div#container main.user nav.menu
 
 
 // Define index of current user. 
-let currentUserIndex = 1;
+let currentUserIndex = 16;
 
 
 /*****/
@@ -64,13 +61,23 @@ function loadCurrentProfile() {
 
 	// Get avatar url for current user. 
 	let avatarurl = currentUser.avatarurl;
-	console.log('Avatar url:',avatarurl);
 
-	// Load avatar to menu profile. 
-	profileavatar.src = avatarurl;
+	// Get email address of current user. 
+	let email = currentUser.email;
 
-	// Load name to menu profile. 
-	profilenamebox.innerHTML = fullname;
+	// Load user data into menu profile. 
+	profilebox.innerHTML = `
+	<!-- avatar -->
+	<img class="avatar" src="${ avatarurl }">
+	<!-- /avatar -->
+
+	<!-- name -->
+	<h1 class="name">${ fullname }</h1>
+	<!-- /name -->
+
+	<!-- jobtitle -->
+	<h2 class="jobtitle">${ email }</h2>
+	<!-- /jobtitle -->`;
 
 	// Load avatar to menu toggler. 
 	menutoggleravatar.src = avatarurl;
