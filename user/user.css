@@ -37,7 +37,7 @@ body {font-family:Nunito,sans-serif; margin:0;}
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 div#container::before {position:fixed; top:0; left:0; height:100%; width:100%; height:100vh; width:100vw;}
 div#container::before {background-color:#0004; display:block; content:''; cursor:pointer;}
-div#container::before {opacity:0; visibility:hidden; transition:.375s;}
+div#container::before {opacity:0; visibility:hidden; transition:.375s opacity,.375s visibility;;}
 body.freeze div#container::before {opacity:1; visibility:visible;}
 
 /* div#container main.user {display:none;} */
@@ -64,35 +64,45 @@ div#container main.user nav.menu div.profile img.avatar {display:block; height:v
 div#container main.user nav.menu div.profile h1.name {color:var(--black); text-align:center; font-size:1.375rem; font-weight:600; margin:0; margin-top:.375rem;}
 div#container main.user nav.menu div.profile h2.jobtitle {color:var(--darkgrey); color:var(--lightblack); font-size:1rem; text-align:center; font-weight:300; margin:0;}
 div#container main.user nav.menu div.btnbox {display:flex; flex-direction:column; justify-content:center; align-items:center; padding:0 .5rem; margin-top:.25rem;}
-div#container main.user nav.menu div.btnbox div.btn {background-color:var(--lightgrey); cursor:pointer; user-select:none; text-align:center; width:8rem; padding:.25rem .75rem; border-radius:5rem; margin-top:.25rem;}
+div#container main.user nav.menu div.btnbox div.btn {background-color:var(--lightgrey); cursor:pointer; user-select:none; text-align:center; min-width:8rem; padding:.25rem .75rem; border-radius:5rem; margin-top:.25rem;}
 div#container main.user nav.menu div.btnbox div.btn {white-space:nowrap;}
 /* div#container main.user nav.menu div.btnbox div.biobtn {} */
 /* div#container main.user nav.menu div.btnbox div.switchbtn {} */
 div#container main.user nav.menu div.menuslider {width:var(--blockwidth); overflow:auto; overflow:hidden;}
 div#container main.user nav.menu div.menuslider div.inner {display:flex; flex-direction:row; overflow:visible; transform:translateX(-100%); transition:.25s;}
+div#container main.user.notify nav.menu div.menuslider div.inner {transform:translateX(-300%);}
 div#container main.user.editbio nav.menu div.menuslider div.inner {transform:translateX(-200%);}
 div#container main.user.switchuser nav.menu div.menuslider div.inner {transform:translateX(0);}
 div#container main.user nav.menu div.menuslider div.inner div.slide {flex-shrink:0; width:100%; width:var(--blockwidth); overflow:auto; padding:0 1rem; margin-top:.5rem;}
+div#container main.user nav.menu div.menuslider div.slide h3.head {font-size:1.125rem; font-weight:400; margin:0; margin-top:.75rem;}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist {list-style:none; overflow:visible; padding:0; margin:0;}
-div#container main.user nav.menu div.menuslider div.slide ul.navlist.userlist {height:var(--commandlistheight); /* overflow:auto; */}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist {height:var(--commandlistheight); /* overflow:auto; */}
+/* div#container main.user nav.menu div.menuslider div.slide ul.navlist.userlist {} */
+/* div#container main.user nav.menu div.menuslider div.slide ul.navlist.notiflist {} */
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist.commandlist {} */
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem {border-top: 1px solid var(--lightgrey);}
-/* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user {} */
-div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command {height:var(--commanditemheight);}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; align-items:center; padding:.5rem 0;}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink {color:var(--lightblack); font-size:.875rem; text-decoration:none; transition:.25s;}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink:hover {color:var(--black);}
+/* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user {} */
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user a.navlink {} */
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user a.navlink div.badge {display:flex; flex-direction:column; /* justify-content:center; */ margin-left:.5rem;}
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user a.navlink div.badge span.name {} */
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user a.navlink div.badge span.contact {display:none;}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user a.navlink img.avatar {--picsize:2rem; height:var(--picsize); width:var(--picsize); border-radius:50%;}
+/* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.notif {} */
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.notif a.navlink {position:relative;}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.notif a.navlink svg.icon {font-size:1.25em;}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.notif.new a.navlink::after {content:''; position:absolute; left:.625rem; top:37.5%; transform:translateY(-50%);}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.notif.new a.navlink::after {background-color:crimson; --size:.375rem; height:var(--size); width:var(--size); border-radius:50%;}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.notif a.navlink span.caption {font-size:1.125em; font-weight:400; margin-left:.625rem;}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command {height:var(--commanditemheight);}
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command a.navlink {} */
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command a.navlink svg.icon {font-size:1.25em;}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command a.navlink span.caption {font-size:1.125em; font-weight:400; margin-left:.625rem;}
-div#container main.user nav.menu div.menuslider div.slide div.bioeditor {display:flex; flex-direction:column; height:100%;}
-div#container main.user nav.menu div.menuslider div.slide div.bioeditor h3.head {font-size:1.125rem; font-weight:400; margin:0;}
-div#container main.user nav.menu div.menuslider div.slide div.bioeditor textarea.editor {flex-grow:1; display:block; font-family:inherit; font-size:.875rem; height:100%; width:100%; resize:none; padding:.75rem; margin-bottom:1rem;}
+div#container main.user nav.menu div.menuslider div.slide div.profileeditor {display:flex; flex-direction:column; height:100%;}
+div#container main.user nav.menu div.menuslider div.slide div.profileeditor textarea.bioeditor {flex-grow:1; display:block; font-family:inherit; font-size:.875rem; height:100%; width:100%; resize:none; padding:.75rem; margin-bottom:1rem;}
+/* div#container main.user nav.menu div.menuslider div.slide div.notifications {} */
 
 
 

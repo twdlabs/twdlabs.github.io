@@ -15,10 +15,12 @@ const navmenu = document.querySelector('div#container main.user nav.menu');
 const profilebox = document.querySelector('div#container main.user nav.menu div.profile');
 // Get user menu list. 
 const usermenulist = document.querySelector('div#container main.user nav.menu ul.navlist.userlist');
+// Get notification list. 
+const notifmenulist = document.querySelector('div#container main.user nav.menu ul.navlist.notiflist');
 // Get command menu list. 
 const commandmenulist = document.querySelector('div#container main.user nav.menu ul.navlist.commandlist');
 // Get bio editor field. 
-const bioeditor = document.querySelector('div#container main.user nav.menu div.bioeditor textarea.editor');
+const bioeditor = document.querySelector('div#container main.user nav.menu div.profileeditor textarea.bioeditor');
 
 
 /*****/
@@ -31,8 +33,8 @@ let currentUserIndex = 16;
 /*****/
 
 
-// Load profile of current user. 
-loadCurrentProfile();
+// Load data for current user. 
+loadCurrentUser();
 
 // Load user menu list. 
 loadUserMenuList();
@@ -47,8 +49,8 @@ activateMenuToggler();
 /*****/
 
 
-// Load profile of current user. 
-function loadCurrentProfile() {
+// Load data for current user. 
+function loadCurrentUser() {
 	console.log('Current user index:',currentUserIndex);
 
 	// Check for valid user index. 
@@ -58,34 +60,103 @@ function loadCurrentProfile() {
 	let currentUser = userDataList[currentUserIndex];
 	console.log('Current user:',currentUser);
 
-	// Get full name of current user. 
-	let fullname = `${currentUser.fname} ${currentUser.lname}`;
+	// Load profile of current user. 
+	loadUserProfile();
 
-	// Get avatar url for current user. 
-	let avatarurl = currentUser.avatarurl;
+	// Load bio of current user. 
+	loadUserBio();
 
-	// Get email address of current user. 
-	let email = currentUser.email;
+	// Load notifications for current user. 
+	loadUserNotifications();
 
-	// Load user data into menu profile. 
-	profilebox.innerHTML = `
-	<!-- avatar -->
-	<img class="avatar" src="${ avatarurl }">
-	<!-- /avatar -->
+	/****/
 
-	<!-- name -->
-	<h1 class="name">${ fullname }</h1>
-	<!-- /name -->
+	// Load profile of current user. 
+	function loadUserProfile() {
 
-	<!-- jobtitle -->
-	<h2 class="jobtitle">${ email }</h2>
-	<!-- /jobtitle -->`;
+		// Get full name of current user. 
+		let fullname = `${currentUser.fname} ${currentUser.lname}`;
+	
+		// Get avatar url for current user. 
+		let avatarurl = currentUser.avatarurl;
+	
+		// Get email address of current user. 
+		let email = currentUser.email;
+	
+		// Compile user data into menu profile. 
+		profilebox.innerHTML = `
+		<!-- avatar -->
+		<img class="avatar" src="${ avatarurl }">
+		<!-- /avatar -->
+	
+		<!-- name -->
+		<h1 class="name">${ fullname }</h1>
+		<!-- /name -->
+	
+		<!-- jobtitle -->
+		<h2 class="jobtitle">${ email }</h2>
+		<!-- /jobtitle -->`;
 
-	// Load user bio into editor. 
-	bioeditor.value = currentUser.bio;
+		// Load avatar to menu toggler. 
+		menutoggleravatar.src = avatarurl;
+	}
 
-	// Load avatar to menu toggler. 
-	menutoggleravatar.src = avatarurl;
+	// Load bio of current user. 
+	function loadUserBio() {
+
+		// Load user bio into editor. 
+		bioeditor.value = currentUser.bio;
+	}
+
+	// Load notifications for current user. 
+	function loadUserNotifications() {
+
+		// Get user notifications. 
+		// x = getUserNotifications();
+	
+		// Initialize result. 
+		let result = '';
+
+		// Get list of notifications. 
+		// x.map( ()=>'' );
+
+		// Go thru notifications list. 
+		for(let i=0;i<10;i++) {
+			// Create layout of current notification. 
+			result += createNotificationLayout(/* notif */);
+		}
+		
+		// Load user notifications into list. 
+		notifmenulist.innerHTML = result;
+
+		// Create notification layout. 
+		function createNotificationLayout(/* notif */) {
+
+			// 
+			return `
+			<!-- navitem -->
+			<li class="navitem notif">
+		
+				<!-- navlink -->
+				<a class="navlink" href="javascript:void(0)">
+		
+					<!-- icon -->
+					<svg class="icon bell" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+					</svg>
+					<!-- /icon -->
+		
+					<!-- caption -->
+					<span class="caption">Caption</span>
+					<!-- /caption -->
+					
+				</a>
+				<!-- /navlink -->
+
+			</li>
+			<!-- /navitem -->`;
+		}
+	}
 }
 
 // Load user menu list. 
@@ -157,8 +228,8 @@ function loadUserMenuList() {
 		// Update current user index to that of selected user. 
 		currentUserIndex = li.getAttribute('data-userindex');
 
-		// Load profile for new user. 
-		loadCurrentProfile();
+		// Load data for current user. 
+		loadCurrentUser();
 
 		// Close navigation menu. 
 		closeNavigationMenu();
@@ -342,16 +413,20 @@ function closeNavigationMenu() {
 	userblock.classList.remove('switchuser');
 }
 
-// Toggle user switcher. 
+// Toggle bio editor. 
 function toggleBioEditor() {
-	// Toggle user switcher. 
-	userblock.classList.remove('switchuser');
+	userblock.classList.remove('switchuser','notify');
 	userblock.classList.toggle('editbio');
+}
+
+// Toggle notifications. 
+function toggleNotifications() {
+	userblock.classList.remove('editbio','switchuser');
+	userblock.classList.toggle('notify');
 }
 
 // Toggle user switcher. 
 function toggleUserSwitcher() {
-	// Toggle user switcher. 
-	userblock.classList.remove('editbio');
+	userblock.classList.remove('editbio','notify');
 	userblock.classList.toggle('switchuser');
 }
