@@ -10,91 +10,102 @@
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
 	--grey:#999;
 	--blue:dodgerblue;
+	--blue:var(--powderblue);
+	--powderblue:#03a9f4;
+	--midnightblue:#003147;
+	--themecolor:lightblue;
+	--themecolor:#DDD;
 	--spacing:2rem;
 	--maxwidth:60rem;
 	--lettergap:.125rem;
-	--themecolor:#DDD;
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
 }
 
 
-html {background-color:var(--themecolor); background-image:var(--bgimg);}
+html {background-color:var(--themecolor); background-color:lightblue; background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
 
 
 
 /*  */
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-div#container main.main {background-color:white; width:100%; max-width:var(--maxwidth); padding:var(--spacing); border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main {background-color:white; width:100%; max-width:var(--maxwidth); /* padding:var(--spacing); */ border-radius:.5rem; box-shadow:var(--boxshadow);}
 
 /*  */
 /* div#container main.main section {display:flex; flex-direction:row; align-items:center;} */
-div#container main.main section {display:grid; grid-template-columns: 1fr 2fr; grid-gap:var(--spacing);}
-/* div#container main.main section div.side {} */
+div#container main.main section {display:grid; grid-template-columns: 1fr 2fr; /* grid-gap:var(--spacing); */}
+div#container main.main section div.side {padding:var(--spacing);}
+div#container main.main section div.side.left {background-color:var(--midnightblue); color:white;}
+/* div#container main.main section div.side.right {} */
 
 
 /*  */
 /* div#container main.main section.head {} */
-div#container main.main section.head div.right {display:flex; flex-direction:column; justify-content:center;}
-div#container main.main section.head img.avatar {--imgsize:12rem; height:var(--imgsize); width:var(--imgsize); border-radius:50%;}
-div#container main.main section.head div.article {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
-div#container main.main section.head div.article h1.name {font-size:3rem; font-weight:800; letter-spacing:var(--lettergap); margin:0;}
-div#container main.main section.head div.article h2.jobtitle {font-weight:100; letter-spacing:var(--lettergap); margin:0;}
+/* div#container main.main section.body {} */
 
 /*  */
 /* div#container main.main section.body {} */
-div#container main.main section.body div.article {margin-top:3rem;}
-div#container main.main section.body div.article h3.header {font-weight:600; letter-spacing:var(--lettergap); padding-left:.75rem; border-left:.125rem solid hotpink; margin-bottom:1rem;}
-div#container main.main section.body div.article p.textcopy {font-weight:100;}
-div#container main.main section.body div.article ul.list {list-style:none;}
-div#container main.main section.body div.article ul.list li.listitem {display:flex; margin-top:1rem;}
-div#container main.main section.body div.article ul.list li.listitem svg.icon {color:var(--blue); margin-right:.5rem;}
-/* div#container main.main section.body div.article ul.list li.listitem span.caption {} */
+div#container main.main div.article {margin-top:3rem;}
+div#container main.main div.article h3.header {font-weight:600; letter-spacing:var(--lettergap); padding-left:.75rem; border-left:.125rem solid hotpink; margin-bottom:1rem;}
+div#container main.main div.article p.textcopy {font-weight:100;}
+div#container main.main div.article ul.list {list-style:none;}
+div#container main.main div.article ul.list li.listitem {display:flex; margin-top:1rem;}
+div#container main.main div.article ul.list li.listitem svg.icon {color:var(--blue); margin-right:.5rem;}
+/* div#container main.main div.article ul.list li.listitem span.caption {} */
 
 
 /*  */
-/* div#container main.main section.body div.article.contact {} */
-div#container main.main section.body div.article.contact ul.list li.listitem {flex-direction:row; align-items:center;}
+div#container main.main div.article.avatar {display:grid; place-items:center;}
+div#container main.main section/* .head */ div.article.avatar img.avatar {--imgsize:12rem; height:var(--imgsize); width:var(--imgsize); border-radius:50%;}
 
 /*  */
-/* div#container main.main section.body div.article.education {} */
-/* div#container main.main section.body div.article.education ul.list {} */
-div#container main.main section.body div.article.education ul.list li.listitem {flex-direction:column; align-items:flex-start;}
-div#container main.main section.body div.article.education ul.list li.listitem span.time {color:var(--blue); font-size:.875em;}
-/* div#container main.main section.body div.article.education ul.list li.listitem span.degree {} */
-div#container main.main section.body div.article.education ul.list li.listitem span.school {color:var(--grey);}
+div#container main.main div.article.name {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container main.main div.article h1.name {font-size:2.5rem; font-weight:800; letter-spacing:var(--lettergap); text-align:center; /* white-space:nowrap; */ margin:0;}
+div#container main.main div.article h2.jobtitle {font-weight:100; letter-spacing:var(--lettergap); margin:0;}
 
 /*  */
-/* div#container main.main section.body div.article.language {} */
-/* div#container main.main section.body div.article.language ul.list {} */
-div#container main.main section.body div.article.language ul.list li.listitem {flex-direction:column; align-items:stretch;}
+/* div#container main.main div.article.contact {} */
+div#container main.main div.article.contact ul.list li.listitem {flex-direction:row; align-items:center;}
 
 /*  */
-/* div#container main.main section.body div.article.interest {} */
-div#container main.main section.body div.article.interest ul.list {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.5rem;}
-/* div#container main.main section.body div.article.interest ul.list li.listitem {} */
-div#container main.main section.body div.article.interest ul.list li.listitem svg.icon {background-color:var(--blue); color:white; font-size:2rem; padding:.5rem; border-radius:.25rem;}
-/* div#container main.main section.body div.article.interest ul.list li.listitem span.caption {} */
+/* div#container main.main div.article.education {} */
+/* div#container main.main div.article.education ul.list {} */
+div#container main.main div.article.education ul.list li.listitem {flex-direction:column; align-items:flex-start;}
+div#container main.main div.article.education ul.list li.listitem span.time {color:var(--blue); font-size:.875em;}
+/* div#container main.main div.article.education ul.list li.listitem span.degree {} */
+div#container main.main div.article.education ul.list li.listitem span.school {color:var(--grey);}
 
 /*  */
-/* div#container main.main section.body div.article.profile {} */
-div#container main.main section.body div.article.profile p.textcopy {font-weight:100; margin-top:1rem;}
+/* div#container main.main div.article.language {} */
+/* div#container main.main div.article.language ul.list {} */
+div#container main.main div.article.language ul.list li.listitem {flex-direction:column; align-items:stretch;}
 
 /*  */
-/* div#container main.main section.body div.article.experience {} */
-/* div#container main.main section.body div.article.experience ul.list {} */
-div#container main.main section.body div.article.experience ul.list li.listitem {display:grid; grid-template-columns:1fr 2fr; grid-gap:.5rem;}
-div#container main.main section.body div.article.experience ul.list li.listitem div.xyz {display:flex; flex-direction:column; align-items:flex-start;}
-div#container main.main section.body div.article.experience ul.list li.listitem div.xyz span.time {color:var(--blue); font-size:.875em;}
-/* div#container main.main section.body div.article.experience ul.list li.listitem div.xyz span.companyname {} */
-div#container main.main section.body div.article.experience ul.list li.listitem div.xyz span.positionname {color:var(--blue);}
-/* div#container main.main section.body div.article.experience ul.list li.listitem div.xyz span.description {} */
+/* div#container main.main div.article.interest {} */
+div#container main.main div.article.interest ul.list {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.5rem;}
+/* div#container main.main div.article.interest ul.list li.listitem {} */
+div#container main.main div.article.interest ul.list li.listitem svg.icon {background-color:var(--blue); color:white; font-size:2rem; padding:.5rem; border-radius:.25rem;}
+/* div#container main.main div.article.interest ul.list li.listitem span.caption {} */
 
 /*  */
-/* div#container main.main section.body div.article.proskills {} */
-/* div#container main.main section.body div.article.proskills ul.list {} */
-div#container main.main section.body div.article.proskills ul.list li.listitem {display:grid; grid-template-columns:1fr 2fr; grid-gap:.5rem;}
+/* div#container main.main div.article.profile {} */
+div#container main.main div.article.profile p.textcopy {font-weight:100; margin-top:1rem;}
+
+/*  */
+/* div#container main.main div.article.experience {} */
+/* div#container main.main div.article.experience ul.list {} */
+div#container main.main div.article.experience ul.list li.listitem {display:grid; grid-template-columns:1fr 2fr; grid-gap:.5rem;}
+div#container main.main div.article.experience ul.list li.listitem div.xyz {display:flex; flex-direction:column; align-items:flex-start;}
+div#container main.main div.article.experience ul.list li.listitem div.xyz span.time {color:var(--blue); font-size:.875em;}
+/* div#container main.main div.article.experience ul.list li.listitem div.xyz span.companyname {} */
+div#container main.main div.article.experience ul.list li.listitem div.xyz span.positionname {color:var(--blue);}
+/* div#container main.main div.article.experience ul.list li.listitem div.xyz span.description {} */
+
+/*  */
+/* div#container main.main div.article.proskills {} */
+/* div#container main.main div.article.proskills ul.list {} */
+div#container main.main div.article.proskills ul.list li.listitem {display:grid; grid-template-columns:1fr 2fr; grid-gap:.5rem;}
 
 
 
@@ -109,13 +120,13 @@ div#container main.main section.body div.article.proskills ul.list li.listitem {
 
 	/*  */
 	div#container main.main section {display:flex; flex-direction:column; align-items:stretch;}
-	div#container main.main section.head {text-align:center;}
+	/* div#container main.main section.head {text-align:center;} */
 
 	/*  */
-	div#container main.main section.body div.article.experience ul.list li.listitem {display:flex; flex-direction:column;}
+	div#container main.main div.article.experience ul.list li.listitem {display:flex; flex-direction:column;}
 
 	/*  */
-	div#container main.main section.body div.article.language ul.list li.listitem {display:grid; grid-template-columns:1fr 2fr;}
+	div#container main.main div.article.language ul.list li.listitem {display:grid; grid-template-columns:1fr 2fr;}
 }
 
 /* Small Smartphone Screen */
