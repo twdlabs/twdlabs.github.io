@@ -6,7 +6,7 @@ const excerptcharlimit = 150;
 
 
 // Get destination for list of posts. 
-const listdestination = document.querySelector('div#container main.main');
+const listdestination = document.querySelector('div#container section.blog main.grid');
 
 
 /*****/
