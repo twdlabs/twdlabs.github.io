@@ -9,6 +9,9 @@ class TimeCalculator {
 		// Define whether logging details or not. 
 		this.loggingDetails = logDetails;
 
+		// Define month names. 
+		this.monthnames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 		// Define potential time units. 
 		this.suffix = ['ms','s','m','h','d','w','y','c'];
 
@@ -18,6 +21,29 @@ class TimeCalculator {
 		// Get number for current moment. 
 		this.now = Date.now();
 		if(this.loggingDetails) console.log('now:',this.now);
+	}
+
+	// Format time elapsed since given date/time. 
+	formatDate(num) {
+
+		// 
+		let dt = new Date(num);
+
+		// Get year. 
+		let y = dt.getFullYear();
+		console.log('y:',y);
+
+		// Get month. 
+		let m = dt.getMonth();
+		console.log('m:',m);
+		
+		// Get date. 
+		let d = dt.getDate();
+		console.log('d:',d);
+
+		// Compile date string. 
+		return `${ y }-${ this.monthnames[m] }-${ (d<10) ? `0${d}` : d }`;
+		// return `${ y }-${ (m+1<10) ? `0${m+1}` : (m+1) }-${ (d<10) ? `0${d}` : d }`;
 	}
 
 	// Format time elapsed since given date/time. 
