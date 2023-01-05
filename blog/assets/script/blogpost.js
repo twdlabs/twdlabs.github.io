@@ -91,7 +91,8 @@ function loadBlogPost() {
 		
 		// Get url for post art. 
 		let arturl = post ? getRelativeUrl(post.picurl) : '';
-		herosection.style.backgroundImage = `url(${arturl})`;
+		console.log(arturl);
+		herosection.style.backgroundImage = `url('${arturl}')`;
 		
 		// Get post content. 
 		let content = post ? (post.content).map(createParagraph).join('') : '' /* '[Empty content]' */;

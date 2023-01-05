@@ -6,6 +6,7 @@
 div#container section.hero main.grid {align-items:flex-start; padding:6rem 2rem;}
 div#container section.hero main.grid h1.head {font-size:3rem;}
 div#container section.hero main.grid h2.head {font-size:2rem;}
+/* div#container section.hero main.grid p.textcopy {} */
 
 /* Post Section */
 /* div#container section.post {} */
@@ -13,14 +14,16 @@ div#container section.hero main.grid h2.head {font-size:2rem;}
 div#container section.post {max-width:calc(var(--pagewidth)/1.5); max-width:var(--pagewidth); margin:0 auto;}
 /* div#container section.post article.post {} */
 /* div#container section.post aside.meta {} */
-/* div#container section.post aside.meta span.date {} */
+div#container section.post aside.meta span.date {font-weight:lighter;}
+div#container section.post aside.meta span.caption {font-weight:bold;}
 div#container section.post aside.meta span.caption::after {content:':';}
+div#container section.post article.post {margin-top:3rem;}
 div#container section.post article.post h1.title {display:none; margin:0;}
 div#container section.post article.post h1.title:empty::after {content:'[Untitled]';}
 div#container section.post article.post div.art {/* display:none; */ float:left; width:50%; max-width:30rem; margin-top:.5rem; margin-right:1rem;}
 div#container section.post article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
 div#container section.post article.post div.content {margin-top:1rem;}
-div#container section.post article.post div.content p.textcopy {margin:0; margin-top:.5rem;}
+div#container section.post article.post div.content p.textcopy {margin:0; margin-top:1.25rem;}
 div#container section.post article.post div.content:empty::after {content:'[Empty content]';}
 
 
