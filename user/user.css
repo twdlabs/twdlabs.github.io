@@ -1,13 +1,17 @@
 
+
+
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
 
 
 * {box-sizing:border-box; /* padding:0; margin:0; */}
 
 
+
 :root {
 
-	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+	--bgimg:linear-gradient(dodgerblue,wheat);
 	--space:1rem;
 	--picsize:3rem;
 	--bigpicsize:5rem;
@@ -19,7 +23,7 @@
 	--lightgrey:#DDD;
 	--lightblack:#888;
 
-	--themecolor:white;
+	--themecolor:dodgerblue;
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
 
@@ -29,20 +33,31 @@
 }
 
 
+
 html {background-color:var(--themecolor); background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
 .freeze {overflow:hidden;}
 
 
+
+/* Container */
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container {background-image:linear-gradient(-135deg,dodgerblue,white,wheat); height:10000vh;}
 div#container::before {position:fixed; top:0; left:0; height:100%; width:100%; height:100vh; width:100vw;}
 div#container::before {background-color:#0004; display:block; content:''; cursor:pointer;}
 div#container::before {opacity:0; visibility:hidden; transition:.375s opacity,.375s visibility;;}
 body.freeze div#container::before {opacity:1; visibility:visible;}
 
+
+
+/* User Area */
 /* div#container main.user {display:none;} */
 div#container main.user {position:fixed; top:0; right:0; border-radius:.5rem; padding:var(--space);}
 div#container main.user {display:flex; flex-direction:column; align-items:flex-end; max-height:100vh; /* box-shadow:var(--boxshadow); */}
+
+
+
+/* User Menu Toggler */
 div#container main.user a.menutoggler {background-color:var(--darkgrey); color:white;}
 div#container main.user a.menutoggler {background-color:var(--grey); color:var(--black); flex-shrink:0; position:relative; height:var(--picsize); width:var(--picsize); transition:.375s;}
 div#container main.user a.menutoggler {overflow:hidden; padding:0; border-radius:50%; /* margin:var(--space); */ box-shadow:var(--boxshadow);}
@@ -53,37 +68,58 @@ div#container main.user.open a.menutoggler img.avatar {opacity:0;}
 div#container main.user a.menutoggler span.x {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
 div#container main.user a.menutoggler span.x {font-size:calc(var(--picsize)/2); font-weight:400; opacity:0; visibility:hidden; transition:.5s;}
 div#container main.user.open a.menutoggler span.x {opacity:.5; visibility:visible;}
+
+
+
+/* User Navigation Menu */
 div#container main.user nav.menu {background-color:white; border-radius:.75rem; margin-top:var(--space); box-shadow:var(--boxshadow);}
 div#container main.user nav.menu {position:relative; max-width:100%; overflow:auto;}
 div#container main.user nav.menu {opacity:0; visibility:hidden; pointer-events:none; transform:translateY(2rem);}
 div#container main.user.open nav.menu {opacity:1; visibility:visible; pointer-events:initial; transform:none; transition:.25s;}
 /* div#container main.user nav.menu::after {position:absolute; bottom:100%; right:calc(.5*var(--picsize) + 0*var(--space)); transform:translateX(50%);} */
 /* div#container main.user nav.menu::after {content:''; border:.75rem solid transparent; border-bottom-color:white;} */
+
+
+/* User Navigation Menu Profile */
 div#container main.user nav.menu div.profile {display:flex; flex-direction:column; align-items:center; margin-top:1.25rem;}
 div#container main.user nav.menu div.profile img.avatar {display:block; height:var(--bigpicsize); width:var(--bigpicsize); object-fit:cover; border-radius:50%;}
+div#container main.user nav.menu div.profile img.avatar::after {content:'Hi';}
 div#container main.user nav.menu div.profile h1.name {color:var(--black); text-align:center; font-size:1.375rem; font-weight:600; margin:0; margin-top:.375rem;}
 div#container main.user nav.menu div.profile h2.jobtitle {color:var(--darkgrey); color:var(--lightblack); font-size:1rem; text-align:center; font-weight:300; margin:0;}
-div#container main.user nav.menu div.btnbox {display:flex; flex-direction:column; justify-content:center; align-items:center; padding:0 .5rem; margin-top:.25rem;}
-div#container main.user nav.menu div.btnbox div.btn {background-color:var(--lightgrey); cursor:pointer; user-select:none; text-align:center; min-width:8rem; padding:.25rem .75rem; border-radius:5rem; margin-top:.25rem;}
-div#container main.user nav.menu div.btnbox div.btn {white-space:nowrap;}
+
+
+/* User Navigation Menu Buttons */
+div#container main.user nav.menu div.btnbox {display:none;}
+div#container main.user nav.menu div.btnbox {max-width:var(--blockwidth); overflow:auto; scrollbar-width:none; padding:0 .5rem; margin-top:.25rem;}
+div#container main.user nav.menu div.btnbox div.in {display:flex; flex-direction:row; /* justify-content:center; */ align-items:center; overflow:visible;}
+div#container main.user nav.menu div.btnbox div.btn {background-color:var(--lightgrey); font-size:.75rem; cursor:pointer; user-select:none; text-align:center; white-space:nowrap;}
+div#container main.user nav.menu div.btnbox div.btn {min-width:6rem; padding:.25rem .75rem; border-radius:5rem; margin:0.25rem; /* margin-top:.25rem; */}
 /* div#container main.user nav.menu div.btnbox div.biobtn {} */
+/* div#container main.user nav.menu div.btnbox div.notifbtn {} */
 /* div#container main.user nav.menu div.btnbox div.switchbtn {} */
+
+
+/* User Navigation Menu Slide Pages */
 div#container main.user nav.menu div.menuslider {width:var(--blockwidth); overflow:auto; overflow:hidden;}
-div#container main.user nav.menu div.menuslider div.inner {display:flex; flex-direction:row; overflow:visible; transform:translateX(-100%); transition:.25s;}
-div#container main.user.notify nav.menu div.menuslider div.inner {transform:translateX(-300%);}
-div#container main.user.editbio nav.menu div.menuslider div.inner {transform:translateX(-200%);}
+div#container main.user nav.menu div.menuslider div.inner {display:flex; flex-direction:row; overflow:visible; transition:.25s;}
+div#container main.user nav.menu div.menuslider div.inner {transform:translateX(-100%);}
 div#container main.user.switchuser nav.menu div.menuslider div.inner {transform:translateX(0);}
-div#container main.user nav.menu div.menuslider div.inner div.slide {flex-shrink:0; width:100%; width:var(--blockwidth); overflow:auto; padding:0 1rem; margin-top:.5rem;}
+div#container main.user.profile nav.menu div.menuslider div.inner {transform:translateX(-200%);}
+div#container main.user.notify nav.menu div.menuslider div.inner {transform:translateX(-300%);}
+div#container main.user.settings nav.menu div.menuslider div.inner {transform:translateX(-400%);}
+div#container main.user nav.menu div.menuslider div.inner div.slide {flex-shrink:0; width:100%; width:var(--blockwidth); overflow:auto; margin-top:.5rem;}
 div#container main.user nav.menu div.menuslider div.slide h3.head {font-size:1.125rem; font-weight:400; margin:0; margin-top:.75rem;}
+
+/* User Navigation Menu List */
 div#container main.user nav.menu div.menuslider div.slide ul.navlist {list-style:none; overflow:visible; padding:0; margin:0;}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist {height:var(--commandlistheight); /* overflow:auto; */}
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist.userlist {} */
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist.notiflist {} */
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist.commandlist {} */
-div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem {border-top: 1px solid var(--lightgrey);}
-div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; align-items:center; padding:.5rem 0;}
-div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink {color:var(--lightblack); font-size:.875rem; text-decoration:none; transition:.25s;}
-div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink:hover {color:var(--black);}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem {color:var(--lightblack); /* padding:0 1rem; */ border-top: 1px solid var(--lightgrey);}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; align-items:center; padding:.5rem 1rem; /* border-radius:.5rem; */}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink {color:inherit; font-size:.875rem; text-decoration:none; height:100%; transition:.25s;}
+div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem a.navlink:hover {background-color:var(--lightgrey); color:var(--black);}
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user {} */
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user a.navlink {} */
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.user a.navlink div.badge {display:flex; flex-direction:column; /* justify-content:center; */ margin-left:.5rem;}
@@ -100,24 +136,50 @@ div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.
 /* div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command a.navlink {} */
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command a.navlink svg.icon {font-size:1.25em;}
 div#container main.user nav.menu div.menuslider div.slide ul.navlist li.navitem.command a.navlink span.caption {font-size:1.125em; font-weight:400; margin-left:.625rem;}
-div#container main.user nav.menu div.menuslider div.slide div.profileeditor {display:flex; flex-direction:column; height:100%;}
+
+/* User Navigation Menu Profile Editor */
+div#container main.user nav.menu div.menuslider div.slide div.profileeditor {display:flex; flex-direction:column; height:100%; padding:0 1rem;}
 div#container main.user nav.menu div.menuslider div.slide div.profileeditor textarea.bioeditor {flex-grow:1; display:block; font-family:inherit; font-size:.875rem; height:100%; width:100%; resize:none; padding:.75rem; margin-bottom:1rem;}
-/* div#container main.user nav.menu div.menuslider div.slide div.notifications {} */
+/* div#container main.user nav.menu div.menuslider div.slide div.profileeditor label.avatareditor {} */
+div#container main.user nav.menu div.menuslider div.slide div.profileeditor label.avatareditor img.avatar {background-color:#0002; height:var(--picsize); width:var(--picsize); border:0 none; border-radius:50%;}
+/* div#container main.user nav.menu div.menuslider div.slide div.profileeditor label.avatareditor input.fileupload {display:none;} */
+/* div#container main.user nav.menu div.menuslider div.slide div.xyz {} */
 
 
 
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
-	/*  */
+
+	/* Container */
+
+	/* User Area */
+
+	/* User Menu Toggler */
+
+	/* User Navigation Menu */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
-	/*  */
+
+	/* Container */
+
+	/* User Area */
+
+	/* User Menu Toggler */
+
+	/* User Navigation Menu */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
-	/*  */
+
+	/* Container */
+
+	/* User Area */
+
+	/* User Menu Toggler */
+
+	/* User Navigation Menu */
 }

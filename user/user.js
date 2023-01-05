@@ -19,15 +19,20 @@ const usermenulist = document.querySelector('div#container main.user nav.menu ul
 const notifmenulist = document.querySelector('div#container main.user nav.menu ul.navlist.notiflist');
 // Get command menu list. 
 const commandmenulist = document.querySelector('div#container main.user nav.menu ul.navlist.commandlist');
+// Get profile page. 
+const profilepage = document.querySelector('div#container main.user nav.menu div.profileeditor');
 // Get bio editor field. 
 const bioeditor = document.querySelector('div#container main.user nav.menu div.profileeditor textarea.bioeditor');
+// Get avatar editor fields. 
+const avataredit = document.querySelector('div#container main.user nav.menu div.profileeditor label.avatareditor img.avatar');
+const avatarupload = document.querySelector('div#container main.user nav.menu div.profileeditor label.avatareditor input.fileupload');
 
 
 /*****/
 
 
 // Define index of current user. 
-let currentUserIndex = 16;
+let currentUserIndex = 4;
 
 
 /*****/
@@ -99,6 +104,9 @@ function loadCurrentUser() {
 
 		// Load avatar to menu toggler. 
 		menutoggleravatar.src = avatarurl;
+
+		// 
+		avataredit.src = avatarurl;
 	}
 
 	// Load bio of current user. 
@@ -283,7 +291,7 @@ function loadCommandMenuList() {
 		<li class="navitem command" data-commandindex="${index}">
 	
 			<!-- navlink -->
-			<a class="navlink" href="${ command.url }">
+			<a class="navlink" href="${ command.url }" onclick="${ command.actionname }">
 	
 				<!-- icon -->
 				<svg class="icon ${ command.icon }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -301,6 +309,20 @@ function loadCommandMenuList() {
 		</li>
 		<!-- /navitem -->`;
 	}
+
+	// Activate user command links. 
+	function activateCommandLinks() {
+	
+		// Get all command links. 
+		const allUserCommandLinks = document.querySelectorAll('div#container main.user nav.menu ul.navlist.commandlist li.navitem a.navlink');
+		
+		// Go thru all command links. 
+		for(let commandlink of allUserCommandLinks) {
+			
+			// Enable command link selection. 
+			commandlink.addEventListener('click',selectCommandLink);
+		}
+	}
 	
 	// Select user command link. 
 	function selectCommandLink(event) {
@@ -315,26 +337,12 @@ function loadCommandMenuList() {
 		actOnUserCommand(commandindex);
 
 		// Close navigation menu. 
-		closeNavigationMenu();
+		// closeNavigationMenu();
 	}
 
 	// TODO: Take action on user command. 
 	function actOnUserCommand(commandindex) {
 		console.log( 'Selected:',userCommandList[commandindex].caption );
-	}
-
-	// Activate user command links. 
-	function activateCommandLinks() {
-	
-		// Get all command links. 
-		const allUserCommandLinks = document.querySelectorAll('div#container main.user nav.menu ul.navlist.commandlist li.navitem a.navlink');
-		
-		// Go thru all command links. 
-		for(let commandlink of allUserCommandLinks) {
-			
-			// Enable command link selection. 
-			commandlink.addEventListener('click',selectCommandLink);
-		}
 	}
 }
 
@@ -385,48 +393,88 @@ function activateMenuToggler() {
 	}
 }
 
+
 // Open navigation menu. 
 function openNavigationMenu() {
+
+	// Reset navigation menu. 
+	resetNavigationMenu();
 
 	// Freeze page scrollling. 
 	document.documentElement.classList.add('freeze');
 	document.body.classList.add('freeze');
 
-	// Hide user switcher. 
-	userblock.classList.remove('switchuser');
-
 	// Open menu block. 
 	userblock.classList.add('open');
+}
+
+// Reset navigation menu. 
+function resetNavigationMenu() {
+	// 
+	userblock.classList.remove('profile','notify','switchuser');
 }
 
 // Close navigation menu. 
 function closeNavigationMenu() {
 
+	// Close menu block. 
+	userblock.classList.remove('open');
+
 	// Un-freeze page scrollling. 
 	document.documentElement.classList.remove('freeze');
 	document.body.classList.remove('freeze');
 
-	// Close menu block. 
-	userblock.classList.remove('open');
-
-	// Hide user switcher. 
-	userblock.classList.remove('switchuser');
+	// Reset navigation menu. 
+	resetNavigationMenu();
 }
 
-// Toggle bio editor. 
-function toggleBioEditor() {
-	userblock.classList.remove('switchuser','notify');
-	userblock.classList.toggle('editbio');
+
+// Toggle profile editor. 
+function toggleProfile(editmodeon) {
+
+	// Reset navigation menu. 
+	resetNavigationMenu();
+
+	// 
+	if(editmodeon) {
+
+		// Enable bio editor. 
+		bioeditor.removeAttribute('disabled');
+
+		// Enable avatar editor. 
+		avatarupload.removeAttribute('disabled');
+	}
+
+	// 
+	else {
+
+		// Disable bio editor. 
+		bioeditor.setAttribute('disabled','');
+
+		// Disable avatar editor. 
+		avatarupload.setAttribute('disabled','');
+	}
+
+	// Toggle profile editor. 
+	userblock.classList.toggle('profile');
 }
 
 // Toggle notifications. 
 function toggleNotifications() {
-	userblock.classList.remove('editbio','switchuser');
+
+	// Reset navigation menu. 
+	resetNavigationMenu();
+
+	// Toggle notifications. 
 	userblock.classList.toggle('notify');
 }
 
 // Toggle user switcher. 
 function toggleUserSwitcher() {
-	userblock.classList.remove('editbio','notify');
+
+	// Reset navigation menu. 
+	resetNavigationMenu();
+
+	// Toggle user switcher. 
 	userblock.classList.toggle('switchuser');
 }

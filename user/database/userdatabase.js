@@ -249,9 +249,12 @@ function addUserData() {
 	// 
 	for(let user of userDataList) {
 
+		// Auto-generate full name. 
+		user.fullname = `${user.fname} ${user.lname}`
+
 		// Auto-generate user id. 
 		let userid = (user.fname).substring(0,1) + (user.lname);
-		userid = userid.toLowerCase();
+		user.userid = userid.toLowerCase();
 
 		// Auto-generate default email address. 
 		user.email = `${ userid }@mail.com`;
@@ -260,6 +263,20 @@ function addUserData() {
 		user.password = 'pw';
 
 		// Auto-generate default bio. 
-		user.bio = `This is a brief bio for ${userid}. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint consequatur tempore! Doloremque est dolorum modi repellat aspernatur non consequatur quia, dignissimos optio nemo omnis quidem provident ipsam commodi animi.`;
+		user.bio = `This is a brief bio for ${ user.fname } ${ user.lname }, whose username is ${userid}. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint consequatur tempore! Doloremque est dolorum modi repellat aspernatur non consequatur quia, dignissimos optio nemo omnis quidem provident ipsam commodi animi.`;
 	}
+}
+
+// Get user by id. 
+function getUserById(id) {
+
+	// Go thru all users. 
+	for(let user of userDataList) {
+
+		// Return user if found. 
+		if(user.userid==id) return user;
+	}
+
+	// Return nothing if user not found. 
+	return null;
 }
