@@ -1,12 +1,18 @@
 
 
 
+// Get destination for list of posts. 
+const listdestination = document.querySelector('div#container section.blog main.grid');
+
+
+/*****/
+
+
 // Define character limit for post excerpts. 
 const excerptcharlimit = 150;
 
-
-// Get destination for list of posts. 
-const listdestination = document.querySelector('div#container section.blog main.grid');
+// Create time calculator. 
+const t = new TimeCalculator();
 
 
 /*****/
@@ -81,7 +87,7 @@ function loadBlogList() {
 					<!-- /userbadge -->
 	
 					<!-- timestamp -->
-					<div class="timestamp">${ formatTimeSince(post.timeposted) }</div>
+					<div class="timestamp">${ t.formatTimeSince(post.timeposted) }</div>
 					<!-- /timestamp -->
 
 				</div>
@@ -111,18 +117,7 @@ function loadBlogList() {
 	// Add result to page. 
 	listdestination.innerHTML = result;
 
-	//
-
-	// Format time elapsed since given date/time. 
-	function formatTimeSince(dt) {
-
-		// Create new time calculator. 
-		let t = new TimeCalculator();
-
-		// 
-		return t.formatTimeSince(dt);
-		// return new Date(dt);
-	}
+	/****/
 
 	// Get excerpt of post content. 
 	function getExcerpt(paragraphList) {

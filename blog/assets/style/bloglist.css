@@ -1,6 +1,12 @@
 
 
 
+/* Hero Section */
+/* div#container section.hero {} */
+div#container section.hero main.grid {align-items:center; padding:12rem 2rem;}
+div#container section.hero main.grid h1.head {font-size:4rem;}
+div#container section.hero main.grid h2.head {font-size:2.5rem;}
+
 /* Blog Section */
 div#container section.blog {background-color:white; transition:.5s; /* background-image:linear-gradient(white,wheat); */ /* padding:1rem; */ /* border-radius:.5rem; */ margin-top:6rem;}
 div#container section.blog main.grid {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1rem; width:100%; max-width:var(--pagewidth); margin:0 auto;}

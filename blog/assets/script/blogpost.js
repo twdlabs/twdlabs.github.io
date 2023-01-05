@@ -1,17 +1,32 @@
 
 
 
+// Display art in hero section. 
+const herosection = document.querySelector('div#container section.hero');
+// Get title destination. 
+const titledestination = document.querySelector('div#container section.hero main.grid h1.head');
+// Get author destination. 
+const authordestination = document.querySelector('div#container section.hero main.grid h2.head');
+
+// Get date destination. 
+const datedestination = document.querySelector('div#container section.post aside.meta span.date');
 // Get destination for post. 
 const postdestination = document.querySelector('div#container section.post article.post');
 
 // Get destination for comments. 
 const commentdestination = document.querySelector('div#container section.comments ul.commentlist');
-
 // Get new comment editor. 
 const newcommenteditor = document.querySelector('div#container section.comments div.newcommentbox textarea#editor');
 
+
+/*****/
+
+
 // Initialize selected post id. 
 let selectedPostId;
+
+// Create time calculator. 
+const t = new TimeCalculator();
 
 
 /*****/
@@ -64,14 +79,19 @@ function loadBlogPost() {
 		// Get post title. 
 		let title = post ? post.title : '' /* '[Untitled Post]' */;
 		// Display title in hero section. 
-		const titledestination = document.querySelector('div#container section.hero main.grid h1.head');
 		titledestination.innerHTML = title;
+
+		// Get post author. 
+		let author = getUserById(post.authorid);
+		authordestination.innerHTML = author.fullname;
+
+		// Get post date/time. 
+		let datetime = post.timeposted;
+		datedestination.innerHTML = t.formatDate(datetime);
 		
-		// Get post art. 
-		let art = post ? getRelativeUrl(post.picurl) : '';
-		// Display art in hero section. 
-		const herosection = document.querySelector('div#container section.hero');
-		herosection.style.backgroundImage = `url(${art})`;
+		// Get url for post art. 
+		let arturl = post ? getRelativeUrl(post.picurl) : '';
+		herosection.style.backgroundImage = `url(${arturl})`;
 		
 		// Get post content. 
 		let content = post ? (post.content).map(createParagraph).join('') : '' /* '[Empty content]' */;
@@ -85,7 +105,7 @@ function loadBlogPost() {
 		<!-- art -->
 		<div class="art">
 			<!-- art -->
-			<img class="art" src="${ art }">
+			<img class="art" src="${ arturl }">
 			<!-- /art -->
 		</div>
 		<!-- /art -->
@@ -159,7 +179,7 @@ function createCommentLayout(commentdata) {
 	let commentcontent = commentdata.commentcontent;
 
 	// Get time since comment. 
-	let timesincecomment = formatTimeSince( 1 * commentdata.posted );
+	let timesincecomment = t.formatTimeSince( 1 * commentdata.posted );
 
 	// TODO: Get number of comment likes. 
 	let commentlikecount = 0;
@@ -239,48 +259,4 @@ function createCommentLayout(commentdata) {
 
 	</li>
 	<!-- /commentitem -->`;
-
-	/****/
-
-	// Format time elapsed since given date/time. 
-	function formatTimeSince(numms) {
-		console.log(numms);
-
-		// Define potential time suffixes. 
-		const suffix = ['ms','s','m','h','d','w','y','c'];
-		// Define coefficient divisors. 
-		const limits = [1000, 60, 60, 24, 7, 52, 100];
-
-		// Get number for current moment. 
-		let now = Date.now();
-		// console.log('now:',now);
-		// Get estimated time since upload date (ETS). 
-		let dt = now - 1*numms;
-		// console.log('dt:',dt);
-		// Treat non-positive ets numbers as right now. 
-		if(dt<=0) return 'now';
-	
-		// Initialize time coefficient. 
-		let coeff = dt;
-		// Initialize index for time suffix. 
-		let suffindex = 0;
-	
-		// Divide number while coefficient is larger than next unit... 
-		while(coeff>limits[suffindex]) {
-	
-			// Divide coefficient. 
-			coeff /= limits[suffindex];
-			// console.log('\tcoeff',coeff);
-	
-			// Increment suffix index. 
-			suffindex++;
-			// console.log('\tsuffindex',suffindex);
-		}
-	
-		// Add final formatting to number: remove decimals. 
-		coeff = coeff.toFixed(0);
-	
-		// Compile string representing time since. 
-		return ( coeff + suffix[suffindex] );
-	}
 }
