@@ -2,13 +2,13 @@
 
 
 // Get destination for post. 
-const postdestination = document.querySelector('div#container main.main article.post');
+const postdestination = document.querySelector('div#container section.post article.post');
 
 // Get destination for comments. 
-const commentdestination = document.querySelector('div#container main.main section.comments ul.commentlist');
+const commentdestination = document.querySelector('div#container section.comments ul.commentlist');
 
 // Get new comment editor. 
-const newcommenteditor = document.querySelector('div#container main.main section.comments div.newcommentbox textarea#editor');
+const newcommenteditor = document.querySelector('div#container section.comments div.newcommentbox textarea#editor');
 
 // Initialize selected post id. 
 let selectedPostId;
@@ -63,9 +63,15 @@ function loadBlogPost() {
 
 		// Get post title. 
 		let title = post ? post.title : '' /* '[Untitled Post]' */;
+		// Display title in hero section. 
+		const titledestination = document.querySelector('div#container section.hero main.grid h1.head');
+		titledestination.innerHTML = title;
 		
 		// Get post art. 
 		let art = post ? getRelativeUrl(post.picurl) : '';
+		// Display art in hero section. 
+		const herosection = document.querySelector('div#container section.hero');
+		herosection.style.backgroundImage = `url(${art})`;
 		
 		// Get post content. 
 		let content = post ? (post.content).map(createParagraph).join('') : '' /* '[Empty content]' */;

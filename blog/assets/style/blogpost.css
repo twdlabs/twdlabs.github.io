@@ -1,52 +1,54 @@
 
 
 
-div#container main.main {background-color:white; /* width:100%; max-width:var(--pagewidth); */ padding:1.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-
 /* Post Section */
-
-/* div#container main.main section.post {} */
-div#container main.main section.post article.post {max-width:40rem; margin:0 auto;}
-div#container main.main section.post article.post h1.title {margin:0;}
-div#container main.main section.post article.post h1.title:empty::after {content:'[Untitled]';}
-div#container main.main section.post article.post div.art {float:left; width:50%; max-width:30rem; margin-top:.5rem; margin-right:1rem;}
-div#container main.main section.post article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
-div#container main.main section.post article.post div.content {margin-top:1rem;}
-div#container main.main section.post article.post div.content p.textcopy {margin:0; margin-top:.5rem;}
-div#container main.main section.post article.post div.content:empty::after {content:'[Empty content]';}
+/* div#container section.post {} */
+/* div#container section.post main.grid {} */
+div#container section.post {max-width:calc(var(--pagewidth)/1.5); margin:0 auto;}
+/* div#container section.post article.post {} */
+div#container section.post article.post h1.title {display:none; margin:0;}
+div#container section.post article.post h1.title:empty::after {content:'[Untitled]';}
+div#container section.post article.post div.art {/* display:none; */ float:left; width:50%; max-width:30rem; margin-top:.5rem; margin-right:1rem;}
+div#container section.post article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
+div#container section.post article.post div.content {margin-top:1rem;}
+div#container section.post article.post div.content p.textcopy {margin:0; margin-top:.5rem;}
+div#container section.post article.post div.content:empty::after {content:'[Empty content]';}
 
 
 /* Comments Section */
+/* div#container section.comments {} */
+div#container section.comments main.grid {max-width:calc(var(--pagewidth)/2); margin:0 auto;}
+div#container section.comments main.grid h2.head {font-size:1.25rem; margin:0; margin-top:1rem;}
 
-div#container main.main section.comments {max-width:40rem; margin:0 auto;}
-div#container main.main section.comments h2.head {font-size:1.25rem; margin:0; margin-top:1rem;}
-div#container main.main section.comments ul.commentlist {list-style:none; padding:0; margin:0;}
-div#container main.main section.comments ul.commentlist li.commentitem {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:stretch; padding:.5rem; border-radius:.125rem; margin-top:.25rem;}
-div#container main.main section.comments ul.commentlist li.commentitem div.left {margin-right:.5rem;}
-div#container main.main section.comments ul.commentlist li.commentitem div.left img.avatar {background-color:#0002; display:block; object-fit:cover; height:4rem; width:4rem; border:.125rem solid transparent; border-radius:50%;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right {font-size:.875rem; margin-top:.125rem;}
-/* div#container main.main section.comments ul.commentlist li.commentitem div.right div.top {} */
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.top a.userlink {color:dodgerblue; font-weight:900; text-decoration:none; margin-right:.125rem;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.top span.comment {font-weight:400;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom {display:flex; flex-direction:row; align-items:center;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.dot {color:grey; margin:0 .3rem;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.dot.gone {display:none;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom a.likebtn {color:dodgerblue; font-weight:400; text-decoration:none;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom span.timestamp {color:grey; font-weight:400;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom div.likecounter {display:flex; flex-direction:row; align-items:center; cursor:pointer;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom div.likecounter.gone {display:none;}
-/* div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom div.likecounter svg.icon.thumbup {} */
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom div.likecounter span.count {margin-left:.125rem;}
-div#container main.main section.comments ul.commentlist li.commentitem div.right div.bottom div.likecounter span.count:empty::after {content:'0';}
+/* Comments Section: Comment List */
+div#container section.comments main.grid ul.commentlist {list-style:none; padding:0; margin:0;}
+div#container section.comments main.grid ul.commentlist li.commentitem {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:stretch; padding:.5rem; border-radius:.125rem; margin-top:.25rem;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.left {margin-right:.5rem;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.left img.avatar {background-color:#0002; display:block; object-fit:cover; height:4rem; width:4rem; border:.125rem solid transparent; border-radius:50%;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right {font-size:.875rem; margin-top:.125rem;}
+/* div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top {} */
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top a.userlink {color:dodgerblue; font-weight:900; text-decoration:none; margin-right:.125rem;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top span.comment {font-weight:400;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom {display:flex; flex-direction:row; align-items:center;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.dot {color:grey; margin:0 .3rem;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.dot.gone {display:none;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom a.likebtn {color:dodgerblue; font-weight:400; text-decoration:none;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.timestamp {color:grey; font-weight:400;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter {display:flex; flex-direction:row; align-items:center; cursor:pointer;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter.gone {display:none;}
+/* div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter svg.icon.thumbup {} */
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter span.count {margin-left:.125rem;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter span.count:empty::after {content:'0';}
 
-div#container main.main section.comments div.newcommentbox {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:var(--cornersize); margin-top:.5rem;}
-div#container main.main section.comments div.newcommentbox textarea#editor {background-color:transparent; font-family:inherit; resize:none; width:100%; padding-top:.25rem; border:0 none; outline:0 none;}
-div#container main.main section.comments div.newcommentbox div.btn {display:flex; flex-direction:column; justify-content:center; cursor:pointer; margin:0 .5rem;}
-div#container main.main section.comments div.newcommentbox div.sendbtn {margin-right:0;}
-div#container main.main section.comments div.newcommentbox div.emojibtn {margin-left:0;}
-div#container main.main section.comments div.newcommentbox div.btn svg.icon {display:block;}
-div#container main.main section.comments div.newcommentbox div.sendbtn svg.icon {font-size:1.75rem;}
-div#container main.main section.comments div.newcommentbox div.emojibtn svg.icon {font-size:1.625rem;}
+/* Comments Section: New Comment Box */
+div#container section.comments main.grid div.newcommentbox {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:var(--cornersize); margin-top:.5rem;}
+div#container section.comments main.grid div.newcommentbox textarea#editor {background-color:transparent; font-family:inherit; resize:none; width:100%; padding-top:.25rem; border:0 none; outline:0 none;}
+div#container section.comments main.grid div.newcommentbox div.btn {display:flex; flex-direction:column; justify-content:center; cursor:pointer; margin:0 .5rem;}
+div#container section.comments main.grid div.newcommentbox div.sendbtn {margin-right:0;}
+div#container section.comments main.grid div.newcommentbox div.emojibtn {margin-left:0;}
+div#container section.comments main.grid div.newcommentbox div.btn svg.icon {display:block;}
+div#container section.comments main.grid div.newcommentbox div.sendbtn svg.icon {font-size:1.75rem;}
+div#container section.comments main.grid div.newcommentbox div.emojibtn svg.icon {font-size:1.625rem;}
 
 
 
@@ -54,18 +56,27 @@ div#container main.main section.comments div.newcommentbox div.emojibtn svg.icon
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
-	/*  */
+
+	/* Post Section */
+
+	/* Comments Section */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
-	/*  */
+
+	/* Post Section */
+
+	/* Comments Section */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
-	/*  */
-	/* div#container main.main section.post {} */
-	/* div#container main.main section.post article.post {} */
-	div#container main.main section.post article.post div.art {float:none; width:100%;}
+
+	/* Post Section */
+	/* div#container section.post {} */
+	/* div#container section.post article.post {} */
+	div#container section.post article.post div.art {float:none; width:100%;}
+
+	/* Comments Section */
 }
