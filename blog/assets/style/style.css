@@ -63,9 +63,9 @@ div#container section.hero::before {position:absolute; top:0; left:0; height:100
 /* div#container section.hero main.grid {background-image:linear-gradient(white,dodgerblue,wheat,white);} */
 div#container section.hero main.grid {/* background-color:#FFF8; */ position:relative; border-radius:.5rem;}
 div#container section.hero main.grid {display:flex; flex-direction:column; justify-content:center; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
-div#container section.hero main.grid h1.head {font-size:4rem; font-weight:400; margin:0;}
-div#container section.hero main.grid h2.head {font-size:2.5rem; font-weight:300; margin:0;}
-div#container section.hero main.grid p.textcopy {font-size:1.75rem; font-weight:400; text-align:center; max-width:var(--pagewidth); margin:0 auto;}
+div#container section.hero main.grid h1.head {font-weight:400; margin:0;}
+div#container section.hero main.grid h2.head {font-weight:300; margin:0;}
+div#container section.hero main.grid p.textcopy {font-weight:400; text-align:center; max-width:var(--pagewidth); margin:0 auto;}
 /* div#container section.hero main.grid img.preview {width:100%; max-width:var(--pagewidth); margin-top:2rem;} */
 
 
@@ -84,8 +84,6 @@ div#container footer.footer {text-align:center; padding:2rem 0;}
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero main.grid {padding:8rem 2rem;} */
-	div#container section.hero main.grid h1.head {font-size:3rem;}
-	div#container section.hero main.grid h2.head {font-size:1.5rem;}
 }
 
 
@@ -96,8 +94,7 @@ div#container footer.footer {text-align:center; padding:2rem 0;}
 	div#container section {padding:1.5rem;}
 
 	/* Hero Section */
-	div#container section.hero h1.head {font-size:2rem;}
-	div#container section.hero p.textcopy {font-size:1rem;}
+	/* div#container section.hero {} */
 }
 
 

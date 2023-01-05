@@ -128,45 +128,6 @@ function loadBlogPost() {
 	}
 }
 
-// Load blog post comments. 
-function loadBlogPostComments() {
-
-	// Get list of comments. 
-	let commentDataList = getAllCommentsByPostId(selectedPostId);
-	console.log('Selected post:',commentDataList);
-
-	// Format comments. 
-	let commentLayoutList = commentDataList.map(createCommentLayout);
-
-	// Add formatted comments to page. 
-	commentdestination.innerHTML = commentLayoutList.join('');
-}
-
-// Add new comment. 
-function addNewComment() {
-
-	// Get contents of new comment. 
-	newcommentcontent = newcommenteditor.value;
-
-	// Clear contents of box for new comment. 
-	newcommenteditor.value = '';
-
-	// TODO: Define data for new comment. 
-	let newcommentdata = {
-		postid:selectedPostId,
-		authorid:'xyz',
-		commentcontent:newcommentcontent,
-	}
-
-	// Save data for new comment to list of comments. 
-	commentdata.push(newcommentdata);
-
-	// Create layout for new comment. 
-	let newcommentlayout = createCommentLayout(newcommentdata);
-	// Add new comment layout to page. 
-	commentdestination.insertAdjacentHTML('beforeend',newcommentlayout);
-}
-
 // Create comment layout. 
 function createCommentLayout(commentdata) {
 
@@ -174,7 +135,7 @@ function createCommentLayout(commentdata) {
 	let commentauthor = getUserById(commentdata.authorid);
 
 	// Get avatar url for comment author. 
-	let avatarurl = commentauthor ? getRelativeUrl(commentauthor.avatarurl) : '';
+	let avatarurl = commentauthor ? commentauthor.avatarurl : '';
 
 	// Get contents of comment. 
 	let commentcontent = commentdata.commentcontent;
@@ -194,7 +155,7 @@ function createCommentLayout(commentdata) {
 		<div class="left">
 			
 			<!-- avatar -->
-			<img class="avatar" src="${ avatarurl }">
+			<img class="avatar" src="${ (`../../user/${avatarurl}`) }">
 			<!-- /avatar -->
 
 		</div>
@@ -207,7 +168,7 @@ function createCommentLayout(commentdata) {
 			<div class="top">
 
 				<!-- userlink -->
-				<a class="userlink" href="javascript:void(0)">${ commentauthor ? commentauthor.username : '' }</a>
+				<a class="userlink" href="javascript:void(0)">${ commentauthor ? commentauthor.fullname : '' }</a>
 				<!-- /userlink -->
 
 				<!-- comment -->
@@ -260,4 +221,43 @@ function createCommentLayout(commentdata) {
 
 	</li>
 	<!-- /commentitem -->`;
+}
+
+// Load blog post comments. 
+function loadBlogPostComments() {
+
+	// Get list of comments. 
+	let commentDataList = getAllCommentsByPostId(selectedPostId);
+	console.log('Selected post:',commentDataList);
+
+	// Format comments. 
+	let commentLayoutList = commentDataList.map(createCommentLayout);
+
+	// Add formatted comments to page. 
+	commentdestination.innerHTML = commentLayoutList.join('');
+}
+
+// Add new comment. 
+function addNewComment() {
+
+	// Get contents of new comment. 
+	newcommentcontent = newcommenteditor.value;
+
+	// Clear contents of box for new comment. 
+	newcommenteditor.value = '';
+
+	// TODO: Define data for new comment. 
+	let newcommentdata = {
+		postid:selectedPostId,
+		authorid:'xyz',
+		commentcontent:newcommentcontent,
+	}
+
+	// Save data for new comment to list of comments. 
+	commentdata.push(newcommentdata);
+
+	// Create layout for new comment. 
+	let newcommentlayout = createCommentLayout(newcommentdata);
+	// Add new comment layout to page. 
+	commentdestination.insertAdjacentHTML('beforeend',newcommentlayout);
 }

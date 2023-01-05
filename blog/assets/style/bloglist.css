@@ -6,7 +6,7 @@
 div#container section.hero main.grid {align-items:center; padding:12rem 2rem;}
 div#container section.hero main.grid h1.head {font-size:4rem;}
 div#container section.hero main.grid h2.head {font-size:2.5rem;}
-/* div#container section.hero main.grid p.textcopy {} */
+div#container section.hero main.grid p.textcopy {font-size:1.75rem;}
 
 /* Blog Section */
 div#container section.blog {background-color:white; transition:.5s; /* background-image:linear-gradient(white,wheat); */ /* padding:1rem; */ /* border-radius:.5rem; */ margin-top:6rem;}
@@ -41,6 +41,8 @@ div#container section.blog main.grid div.item div.content div.ctabox a.readbtn {
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
 
+	/* Hero Section */
+
 	/* Blog Section */
 	div#container section.blog {margin-top:3rem;}
 	div#container section.blog main.grid {grid-template-columns:repeat(3,1fr);}
@@ -50,6 +52,13 @@ div#container section.blog main.grid div.item div.content div.ctabox a.readbtn {
 /* Big Smartphone Screen */
 @media screen and (max-width:56rem) {
 
+	/* Hero Section */
+	/* div#container section.hero {} */
+	div#container section.hero main.grid {padding:3rem 2rem;}
+	div#container section.hero main.grid h1.head {font-size:2.5rem;}
+	div#container section.hero main.grid h2.head {font-size:1.75rem;}
+	div#container section.hero main.grid p.textcopy {font-size:1rem;}
+
 	/* Blog Section */
 	div#container section.blog {margin-top:1.5rem;}
 	div#container section.blog main.grid {grid-template-columns:repeat(2,1fr);}
@@ -58,6 +67,8 @@ div#container section.blog main.grid div.item div.content div.ctabox a.readbtn {
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
+
+	/* Hero Section */
 
 	/* Blog Section */
 	/* div#container section.blog {margin-top:0;} */
