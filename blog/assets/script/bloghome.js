@@ -79,7 +79,7 @@ function loadBlogList() {
 				<div class="bar">
 
 					<!-- userbadge -->
-					<a class="userbadge" href="../user/" target="_blank">
+					<a class="userbadge ${ author.admin ? 'admin' : '' }" href="../user/" target="_blank">
 	
 						<!-- avatar -->
 						<img class="avatar" src="${ author ? `../user/${author.avatarurl}` : '' }" title="${ author ? author.userid : '' }">

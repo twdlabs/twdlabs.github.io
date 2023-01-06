@@ -24,8 +24,11 @@ const profilepage = document.querySelector('div#container main.user nav.menu div
 // Get bio editor field. 
 const bioeditor = document.querySelector('div#container main.user nav.menu div.profileeditor textarea.bioeditor');
 // Get avatar editor fields. 
-const avataredit = document.querySelector('div#container main.user nav.menu div.profileeditor label.avatareditor img.avatar');
+const avatareditor = document.querySelector('div#container main.user nav.menu div.profileeditor label.avatareditor img.avatar');
 const avatarupload = document.querySelector('div#container main.user nav.menu div.profileeditor label.avatareditor input.fileupload');
+
+// Get name block. 
+const nameblock = document.querySelector('div#container main.pagecontent h1.greeting span.name');
 
 
 /*****/
@@ -39,7 +42,7 @@ let currentUserIndex = 4;
 
 
 // Load data for current user. 
-loadCurrentUser();
+loadUser();
 
 // Load user menu list. 
 loadUserMenuList();
@@ -55,7 +58,7 @@ activateMenuToggler();
 
 
 // Load data for current user. 
-function loadCurrentUser() {
+function loadUser() {
 	console.log('Current user index:',currentUserIndex);
 
 	// Check for valid user index. 
@@ -63,6 +66,14 @@ function loadCurrentUser() {
 
 	// Get data for current user. 
 	let currentUser = userDataList[currentUserIndex];
+	
+	// Skip loading if user does not exist. 
+	if(!currentUser) {
+		console.warn('User not found:',currentUser);
+		return;
+	}
+
+	// Continue loading if user exists. 
 	console.log('Current user:',currentUser);
 
 	// Load profile of current user. 
@@ -74,6 +85,8 @@ function loadCurrentUser() {
 	// Load notifications for current user. 
 	loadUserNotifications();
 
+	nameblock.innerHTML = currentUser.fname
+
 	/****/
 
 	// Load profile of current user. 
@@ -83,10 +96,13 @@ function loadCurrentUser() {
 		let fullname = `${currentUser.fname} ${currentUser.lname}`;
 	
 		// Get avatar url for current user. 
-		let avatarurl = currentUser.avatarurl;
+		let avatarurl = (currentUser.avatarurl || '');
 	
 		// Get email address of current user. 
-		let email = currentUser.email;
+		let email = (currentUser.email || '');
+	
+		// Get position of current user. 
+		let position = (currentUser.position || '');
 	
 		// Compile user data into menu profile. 
 		profilebox.innerHTML = `
@@ -99,14 +115,18 @@ function loadCurrentUser() {
 		<!-- /name -->
 	
 		<!-- jobtitle -->
-		<h2 class="jobtitle">${ email }</h2>
-		<!-- /jobtitle -->`;
+		<h2 class="jobtitle">${ position }</h2>
+		<!-- /jobtitle -->
+
+		<!-- contact -->
+		<h2 class="contact">${ email }</h2>
+		<!-- /contact -->`;
 
 		// Load avatar to menu toggler. 
 		menutoggleravatar.src = avatarurl;
 
-		// 
-		avataredit.src = avatarurl;
+		// Update avatar editor. 
+		avatareditor.src = avatarurl;
 	}
 
 	// Load bio of current user. 
@@ -237,7 +257,7 @@ function loadUserMenuList() {
 		currentUserIndex = li.getAttribute('data-userindex');
 
 		// Load data for current user. 
-		loadCurrentUser();
+		loadUser();
 
 		// Close navigation menu. 
 		closeNavigationMenu();

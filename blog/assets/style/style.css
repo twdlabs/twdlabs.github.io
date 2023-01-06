@@ -55,7 +55,7 @@ div#container nav.navbar main.grid svg.icon.bars {font-size:2rem;}
 div#container section {padding:2rem; /* margin-bottom:2rem; */}
 
 /* Hero Section */
-div#container section.hero {background-color:var(--grey); color:black; /* min-height:99.9vh; */ padding:0;}
+div#container section.hero {background-color:var(--grey); color:black; /* min-height:99.9vh; */ padding:0 2rem;}
 div#container section.hero {background-size:cover; background-position:top center; transition:.5s;}
 /* div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;} */
 div#container section.hero {position:relative;}
@@ -71,7 +71,9 @@ div#container section.hero main.grid p.textcopy {font-weight:400; text-align:cen
 
 
 /* Footer Section */
+div#container footer.footer {display:flex; flex-direction:column; align-items:center;}
 div#container footer.footer {text-align:center; padding:2rem 0;}
+div#container footer.footer img.logo {width:10rem;}
 
 
 

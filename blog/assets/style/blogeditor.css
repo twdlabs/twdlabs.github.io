@@ -3,24 +3,17 @@
 
 /* Hero Section */
 /* div#container section.hero {} */
-div#container section.hero main.grid {align-items:flex-end; padding:12rem 2rem 2rem;}
-div#container section.hero main.grid label.uploadbtn {background-color:var(--black); color:white; cursor:pointer; padding:1.125rem; border-radius:5rem;}
+div#container section.hero main.grid {align-items:center; padding:4rem 2rem 2rem;}
+div#container section.hero main.grid input.title {font-family:inherit; font-size:2rem; width:100%; padding:.5em .75em; border:0 none; border-radius:.5rem;}
+div#container section.hero main.grid label.uploadbtn {background-color:var(--black); color:white; cursor:pointer; user-select:none; padding:1.125rem; border-radius:5rem; margin-top:3rem;}
 div#container section.hero main.grid label.uploadbtn svg.icon {display:block; color:var(--lightgrey); font-size:1.25rem; font-weight:800;}
 div#container section.hero main.grid input.bannerupload {display:none;}
 
 /* Post Section */
 /* div#container section.post {} */
-/* div#container section.post main.grid {} */
-div#container section.post {max-width:calc(var(--pagewidth)/1.5); max-width:var(--pagewidth); margin:0 auto;}
-/* div#container section.post article.post {} */
-div#container section.post article.post {margin-top:3rem;}
-div#container section.post article.post h1.title {display:none; margin:0;}
-div#container section.post article.post h1.title:empty::after {content:'[Untitled]';}
-div#container section.post article.post div.art {/* display:none; */ float:left; width:50%; max-width:30rem; margin-bottom:.5rem; margin-right:1rem;}
-div#container section.post article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
-div#container section.post article.post div.content {margin-top:1rem;}
-div#container section.post article.post div.content p.textcopy {margin:0; margin-top:1.25rem;}
-div#container section.post article.post div.content:empty::after {content:'[Empty content]';}
+div#container section.post main.grid {max-width:var(--pagewidth); margin:0 auto;}
+div#container section.post textarea.content {font-family:inherit; font-size:inherit; resize:none; width:100%; padding:1.5rem/*  .75em */; border:0 none; border-radius:.5rem;}
+div#container section.post div.publishbtn {background-color:var(--black); color:white; cursor:pointer; user-select:none; padding:.75rem 1.125rem; border-radius:1rem; margin-top:3rem;}
 
 
 

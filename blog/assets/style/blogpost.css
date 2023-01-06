@@ -3,14 +3,18 @@
 
 /* Hero Section */
 /* div#container section.hero {} */
-div#container section.hero main.grid {align-items:flex-start; padding:6rem 2rem;}
-div#container section.hero main.grid h1.head {font-size:3rem;}
-div#container section.hero main.grid h2.head {font-size:2rem;}
+div#container section.hero main.grid {align-items:flex-start; padding:6rem 0;}
+div#container section.hero main.grid h1.posttitle {font-size:3rem;}
+div#container section.hero main.grid h2.postauthor {font-size:2rem;}
+div#container section.hero main.grid h2.postauthor {display:flex; flex-direction:row; align-items:center;}
+div#container section.hero main.grid h2.postauthor svg.icon {display:none; color:dodgerblue; font-size:.75em; margin-left:.5rem;}
+/* div#container section.hero main.grid h2.postauthor span.caption {} */
+div#container section.hero main.grid h2.postauthor.admin svg.icon {display:block;}
 div#container section.hero main.grid p.textcopy {font-size:1.75rem;}
 
 /* Post Section */
 /* div#container section.post {} */
-div#container section.post main.grid {max-width:calc(var(--pagewidth)/1.5); max-width:var(--pagewidth); margin:0 auto;}
+div#container section.post main.grid {max-width:var(--pagewidth); margin:0 auto;}
 /* div#container section.post aside.meta {} */
 div#container section.post aside.meta span.date {font-weight:lighter;}
 div#container section.post aside.meta span.caption {font-weight:bold;}
@@ -27,7 +31,7 @@ div#container section.post article.post div.content:empty::after {content:'[Empt
 
 
 /* Comments Section */
-/* div#container section.comments {} */
+div#container section.comments {display:none;}
 div#container section.comments main.grid {max-width:calc(var(--pagewidth)/2); margin:0 auto;}
 div#container section.comments main.grid h2.head {font-size:1.25rem; margin:0; margin-top:1rem;}
 
@@ -80,9 +84,9 @@ div#container section.comments main.grid div.newcommentbox div.emojibtn svg.icon
 
 	/* Hero Section */
 	/* div#container section.hero {} */
-	div#container section.hero main.grid {padding:3rem 2rem;}
-	div#container section.hero main.grid h1.head {font-size:2.25rem;}
-	div#container section.hero main.grid h2.head {font-size:1.25rem;}
+	div#container section.hero main.grid {padding:3rem 0;}
+	div#container section.hero main.grid h1.posttitle {font-size:2.25rem;}
+	div#container section.hero main.grid h2.postauthor {font-size:1.25rem;}
 	div#container section.hero main.grid p.textcopy {font-size:1rem;}
 
 	/* Post Section */

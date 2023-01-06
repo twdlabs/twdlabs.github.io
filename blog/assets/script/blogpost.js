@@ -1,21 +1,25 @@
 
 
 
-// Display art in hero section. 
+// Get hero section. 
 const herosection = document.querySelector('div#container section.hero');
-// Get title destination. 
-const titledestination = document.querySelector('div#container section.hero main.grid h1.head');
-// Get author destination. 
-const authordestination = document.querySelector('div#container section.hero main.grid h2.head');
+// Get grid in hero section. 
+const herosectiongrid = document.querySelector('div#container section.hero main.grid');
+// Get destination for title in hero section. 
+const titledestination = document.querySelector('div#container section.hero main.grid h1.posttitle');
+// Get destination for author in hero section. 
+const authordestination = document.querySelector('div#container section.hero main.grid h2.postauthor');
+// Get destination for author name in hero section. 
+const authornamedestination = document.querySelector('div#container section.hero main.grid h2.postauthor span.caption');
 
-// Get date destination. 
+// Get destination for date in post section. 
 const datedestination = document.querySelector('div#container section.post aside.meta span.date');
-// Get destination for post. 
+// Get destination for post in post section. 
 const postdestination = document.querySelector('div#container section.post article.post');
 
-// Get destination for comments. 
+// Get destination for comments in comment section. 
 const commentdestination = document.querySelector('div#container section.comments ul.commentlist');
-// Get new comment editor. 
+// Get new comment editor in comment section. 
 const newcommenteditor = document.querySelector('div#container section.comments div.newcommentbox textarea#editor');
 
 
@@ -82,8 +86,10 @@ function loadBlogPost() {
 		// Get post title. 
 		let title = post ? post.title : '';
 		console.log('post title:',title);
+		// Get data for post author. 
+		let author = getUserById(post.authorid);
 		// Get name of post author. 
-		let authorname = post ? (getUserById(post.authorid)).fullname : '';
+		let authorname = post ? author.fullname : '';
 		console.log('author name:',authorname);
 		// Get post date/time. 
 		let datetime = post ? post.timeposted : '';
@@ -94,10 +100,25 @@ function loadBlogPost() {
 
 		// Display post art behind hero section. 
 		herosection.style.backgroundImage = `url('${arturl}')`;
+
+		// Display in hero section: title, author. 
+		// herosectiongrid.innerHTML = ``;
 		// Display title in hero section. 
 		titledestination.innerHTML = title;
 		// Display author in hero section. 
-		authordestination.innerHTML = authorname ? authorname : '';
+		authornamedestination.innerHTML = authorname ? authorname : '';
+
+		// 
+		if(author.admin) {
+			// 
+			authordestination.classList.add('admin');
+		}
+		// 
+		else {
+			// 
+			authordestination.classList.remove('admin');
+		}
+
 		// Display publish date under hero section. 
 		datedestination.innerHTML = datetime ? t.formatDate(datetime) : '';
 		
