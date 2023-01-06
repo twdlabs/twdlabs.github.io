@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Sign In</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+			
+			html {height:100%;}
+			body {background-color:dodgerblue; background-color:slateblue; font-family:sans-serif; height:100%; margin:0;}
+
+			div#container {height:100%; display:flex; flex-direction:column; justify-content:center; padding:1rem;}
+
+			div#container div.modal {text-align:center; background-color:#FFF; padding:2rem 3rem; box-shadow: 0 2px 4px #0008; border-radius:.25rem; width:100%; max-width:400px; margin:0 auto; transition:.5s padding;}
+
+			div#container div.modal h2 {margin-top:0;}
+
+			div#container div.modal form label {display:flex; flex-direction:row-reverse; margin:1rem auto;}
+
+			div#container div.modal form .label svg.icon {width:1rem; opacity:0; transform:translateX(-100%); transition:.2s;}
+			div#container div.modal form .label svg.icon path {stroke:slateblue; stroke-width:2px; fill:none;}
+
+			div#container div.modal form .label input {border:0 none; border-bottom:1px solid threedlightshadow; display:block; width:100%; padding:.5rem 0; font-size:20px; transition:.2s border-color;}
+			div#container div.modal form .label input:focus {outline:none; border-bottom-color:#000;}
+			div#container div.modal form .label input:focus + svg.icon {opacity:1; transform:translateX(0);}
+			div#container div.modal form .label input:valid {}
+			div#container div.modal form .label input:invalid {}
+
+			div#container div.modal form button {background-color:#FFF; border:1px solid threedlightshadow; border-radius:.25rem; padding:.5rem 1rem; margin-top:.5rem;}
+
+			@media screen and (max-width:400px) {
+				div#container div.modal {padding:2rem 1.5rem;}
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<div class="modal">
+
+				<h2>Sign In</h2>
+
+				<form class="form">
+
+					<label class="label">
+						<input type="text" placeholder="Username" name="username" autocomplete="off" required minlength="8">
+
+						<svg viewBox="0 0 20 20" class="icon">
+							<path d="M 0 0  L 10 10  L 0 20" fill="none"/>
+						</svg>
+					</label>
+
+					<label class="label">
+						<input type="password" placeholder="Password" name="password" required minlength="8">
+
+						<svg viewBox="0 0 20 20" class="icon">
+							<path d="M 0 0  L 10 10  L 0 20" fill="none"/>
+						</svg>
+					</label>
+
+					<button type="submit">Sign In</button>
+					
+				</form>
+				
+			</div>
+			
+		</div>
+		<!-- /#container -->
+
+	</body>
+	
+</html>
