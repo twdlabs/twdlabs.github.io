@@ -1,0 +1,61 @@
+
+
+
+/* Blog Table Section */
+div#container section.blogtable {background-color:white; transition:.5s; /* background-image:linear-gradient(white,wheat); */ /* padding:1rem; */ /* border-radius:.5rem; */ margin-top:6rem;}
+div#container section.blogtable main.grid {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1rem; width:100%;}
+div#container section.blogtable main.grid div.item {background-color:var(--bgcolor); color:var(--forecolor); overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
+/* div#container section.blogtable main.grid div.item {display:flex; flex-direction:column; align-items:stretch;} */
+
+/* Blog Table Section: Art */
+div#container section.blogtable main.grid div.item a.artlink {display:block; position:relative; overflow:hidden; padding-top:75%;}
+div#container section.blogtable main.grid div.item a.artlink img.preview {position:absolute; top:0; left:0;}
+div#container section.blogtable main.grid div.item a.artlink img.preview {display:block; height:100%; width:100%;/*  border-radius:var(--cornersize); */}
+
+/* Blog Table Section: Content */
+div#container section.blogtable main.grid div.item div.content {display:flex; flex-direction:column; align-items:center; align-items:stretch; padding:1.25rem 1.5rem;}
+div#container section.blogtable main.grid div.item div.content div.bar {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin-top:.375rem;}
+div#container section.blogtable main.grid div.item div.content h1.title {font-size:1.25rem; font-weight:900; /* text-transform:capitalize; */ /* text-align:center; *//*  padding:0 1rem; */ margin:0;}
+div#container section.blogtable main.grid div.item div.content h1.title a.titlelink {color:inherit; text-decoration:none;}
+div#container section.blogtable main.grid div.item div.content a.userbadge {color:var(--grey); text-decoration:none;}
+div#container section.blogtable main.grid div.item div.content a.userbadge {display:flex; flex-direction:row; align-items:center; position:relative;}
+div#container section.blogtable main.grid div.item div.content a.userbadge::after {position:absolute; top:0; left:0; --size:.5rem; height:var(--size); width:var(--size);}
+div#container section.blogtable main.grid div.item div.content a.userbadge::after {background-color:dodgerblue; border:.125rem solid white; border-radius:50%;}
+div#container section.blogtable main.grid div.item div.content a.userbadge.admin::after {content:'';}
+div#container section.blogtable main.grid div.item div.content a.userbadge img.avatar {--size:2rem; object-fit:cover; height:var(--size); width:var(--size); border:0 none; border-radius:50%;}
+div#container section.blogtable main.grid div.item div.content a.userbadge span.username {margin-left:.75rem;}
+div#container section.blogtable main.grid div.item div.content div.timestamp {color:var(--grey); /* font-size:.875rem; */ margin-left:1rem;}
+div#container section.blogtable main.grid div.item div.content p.textcopy {font-size:1rem; font-weight:100; /* text-align:center; *//*  padding:0 1rem; */ margin:0; margin-top:.375rem;}
+div#container section.blogtable main.grid div.item div.content div.ctabox {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+div#container section.blogtable main.grid div.item div.content div.ctabox {display:none;}
+div#container section.blogtable main.grid div.item div.content div.ctabox a.readbtn {background-color:dodgerblue; padding:.375rem 1rem; border-radius:var(--cornersize); margin-top:.75rem;}
+div#container section.blogtable main.grid div.item div.content div.ctabox a.readbtn {color:white; font-weight:400; letter-spacing:.5px; text-align:center; text-decoration:none;}
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Blog Table Section */
+	div#container section.blogtable {margin-top:3rem;}
+	div#container section.blogtable main.grid {grid-template-columns:repeat(3,1fr);}
+}
+
+
+/* Big Smartphone Screen */
+@media screen and (max-width:56rem) {
+
+	/* Blog Table Section */
+	div#container section.blogtable {margin-top:1.5rem;}
+	div#container section.blogtable main.grid {grid-template-columns:repeat(2,1fr);}
+}
+
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Blog Table Section */
+	/* div#container section.blogtable {margin-top:0;} */
+	div#container section.blogtable main.grid {grid-template-columns:repeat(1,1fr);}
+}

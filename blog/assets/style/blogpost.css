@@ -14,7 +14,7 @@ div#container section.hero main.grid p.textcopy {font-size:1.75rem;}
 
 /* Post Section */
 /* div#container section.post {} */
-div#container section.post main.grid {max-width:var(--pagewidth); margin:0 auto;}
+/* div#container section.post main.grid {} */
 /* div#container section.post aside.meta {} */
 div#container section.post aside.meta span.date {font-weight:lighter;}
 div#container section.post aside.meta span.caption {font-weight:bold;}
