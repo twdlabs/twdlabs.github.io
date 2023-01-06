@@ -47,7 +47,7 @@ function loadBlogList() {
 		<div class="item">
 	
 			<!-- artlink -->
-			<a class="artlink" href="./post/?id=${ post.postid }">
+			<a class="artlink" href="./post/?id=${ post.postid }" target="_blank">
 	
 				<!-- preview -->
 				<img class="preview" src="${ post.picurl }">
@@ -63,7 +63,13 @@ function loadBlogList() {
 				<h1 class="title">
 
 					<!-- titlelink -->
-					<a class="titlelink" href="./post/?id=${ post.postid }">${ post.title }</a>
+					<a class="titlelink" href="./post/?id=${ post.postid }" target="_blank">
+
+						<!-- caption -->
+						<span class="caption">${ post.title }</span>
+						<!-- /caption -->
+
+					</a>
 					<!-- /titlelink -->
 
 				</h1>
@@ -73,7 +79,7 @@ function loadBlogList() {
 				<div class="bar">
 
 					<!-- userbadge -->
-					<a class="userbadge" href="javascript:void(0)">
+					<a class="userbadge" href="../user/" target="_blank">
 	
 						<!-- avatar -->
 						<img class="avatar" src="${ author ? `../user/${author.avatarurl}` : '' }" title="${ author ? author.userid : '' }">
@@ -101,7 +107,13 @@ function loadBlogList() {
 				<div class="ctabox">
 	
 					<!-- readbtn -->
-					<a class="readbtn" href="./post/?id=${ post.postid }">Read More</a>
+					<a class="readbtn" href="./post/?id=${ post.postid }" target="_blank">
+
+						<!-- caption -->
+						<span class="caption">Read More</span>
+						<!-- /caption -->
+
+					</a>
 					<!-- /readbtn -->
 
 				</div>

@@ -15,7 +15,8 @@
 		<!-- Main Blog Stylesheet -->
 		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<!-- Blog List Stylesheet -->
-		<link href="./assets/style/bloglist.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/bloghome.css" rel="stylesheet" type="text/css"/>
+		
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -23,28 +24,6 @@
 
 		<!-- #container -->
 		<div id="container">
-
-			<!-- navbar -->
-			<nav class="navbar">
-
-				<!-- grid -->
-				<main class="grid">
-
-					<!-- icon -->
-					<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-					</svg>
-					<!-- /icon -->
-					
-					<!-- head -->
-					<h1 class="head">Xyzabcxyzabcxyz Blog</h1>
-					<!-- /head -->
-
-				</main>
-				<!-- /grid -->
-
-			</nav>
-			<!-- /navbar -->
 
 			<!-- hero -->
 			<section class="hero" style="background-image:url('../admin/barcelona.jpg')">
@@ -64,6 +43,15 @@
 					<h1 class="head">Welcome</h1>
 					<!-- /head -->
 	
+					<!-- head -->
+					<h2 class="head">to</h2>
+					<!-- /head -->
+					<!-- /head -->
+	
+					<!-- head -->
+					<h1 class="head">Blog Writing</h1>
+					<!-- /head -->
+	
 					<!-- textcopy -->
 					<p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae et sequi eveniet odio consequatur cumque sed similique corrupti quae, possimus accusamus repellat assumenda doloremque dolor. Neque soluta esse nostrum vero.</p>
 					<!-- /textcopy -->
@@ -71,6 +59,23 @@
 					<!-- textcopy -->
 					<!-- <p class="textcopy">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae et sequi eveniet odio consequatur cumque sed similique corrupti quae, possimus accusamus repellat assumenda doloremque dolor. Neque soluta esse nostrum vero.</p> -->
 					<!-- /textcopy -->
+
+					<!-- editbtn -->
+					<a class="btn editbtn" href="./editor" target="_blank">
+
+						<!-- icon -->
+						<svg class="icon pencil square" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+						</svg>
+						<!-- /icon -->
+
+						<!-- caption -->
+						<span class="caption">Write A Blog</span>
+						<!-- /caption -->
+						
+					</a>
+					<!-- /editbtn -->
 
 				</main>
 				<!-- /grid -->
@@ -88,7 +93,7 @@
 					<div class="item">
 	
 						<!-- artlink -->
-						<a class="artlink" href="javascript:void(0)">
+						<a class="artlink" href="javascript:void(0)" target="_blank">
 	
 							<!-- preview -->
 							<img class="preview" src="../theme/pic.jpg">
@@ -104,7 +109,13 @@
 							<h1 class="title">
 
 								<!-- titlelink -->
-								<a class="titlelink" href="./post/?id=0">Title Goes Here</a>
+								<a class="titlelink" href="./post/?id=0" target="_blank">
+
+									<!-- caption -->
+									<span class="caption">Title Goes Here</span>
+									<!-- /caption -->
+
+								</a>
 								<!-- /titlelink -->
 
 							</h1>
@@ -114,7 +125,7 @@
 							<div class="bar">
 
 								<!-- userbadge -->
-								<a class="userbadge" href="javascript:void(0)">
+								<a class="userbadge" href="../user/" target="_blank">
 	
 									<!-- avatar -->
 									<img class="avatar" src="" title="userid">
@@ -142,7 +153,13 @@
 							<div class="ctabox">
 	
 								<!-- readbtn -->
-								<a class="readbtn" href="javascript:void(0)">Read More</a>
+								<a class="readbtn" href="javascript:void(0)" target="_blank">
+
+									<!-- caption -->
+									<span class="caption">Read More</span>
+									<!-- /caption -->
+
+								</a>
 								<!-- /readbtn -->
 
 							</div>
@@ -159,6 +176,28 @@
 
 			</section>
 			<!-- /blog -->
+
+			<!-- navbar -->
+			<nav class="navbar">
+
+				<!-- grid -->
+				<main class="grid">
+
+					<!-- icon -->
+					<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+					</svg>
+					<!-- /icon -->
+					
+					<!-- head -->
+					<h1 class="head">Xyzabcxyzabcxyz Blog</h1>
+					<!-- /head -->
+
+				</main>
+				<!-- /grid -->
+
+			</nav>
+			<!-- /navbar -->
 
 			<!-- footer -->
 			<footer class="footer">
@@ -191,7 +230,7 @@
 		<script src="./../time/time.js" type="text/javascript"></script>
 
 		<!-- Blog List Script -->
-		<script src="./assets/script/bloglist.js" type="text/javascript"></script>
+		<script src="./assets/script/bloghome.js" type="text/javascript"></script>
 		
 		<!-- <script type="text/javascript"></script> -->
 

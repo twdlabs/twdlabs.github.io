@@ -56,8 +56,11 @@ function savePostId() {
 	// console.log('Url search parameters:',urlparams);
 	
 	// Get selected post id. 
-	selectedPostId = urlparams.get('id') || nullPostId;
+	selectedPostId = urlparams.get('id') /* || '' */;
 	console.log('Selected post id:',selectedPostId);
+
+	// Return parent page (home) if no valid id found. 
+	if(!selectedPostId) location.href = '../';
 }
 
 // Load blog post. 
@@ -77,25 +80,29 @@ function loadBlogPost() {
 		// break;
 
 		// Get post title. 
-		let title = post ? post.title : '' /* '[Untitled Post]' */;
-		// Display title in hero section. 
-		titledestination.innerHTML = title;
-
-		// Get post author. 
-		let author = getUserById(post.authorid);
-		authordestination.innerHTML = author.fullname;
-
+		let title = post ? post.title : '';
+		console.log('post title:',title);
+		// Get name of post author. 
+		let authorname = post ? (getUserById(post.authorid)).fullname : '';
+		console.log('author name:',authorname);
 		// Get post date/time. 
-		let datetime = post.timeposted;
-		datedestination.innerHTML = t.formatDate(datetime);
-		
+		let datetime = post ? post.timeposted : '';
+		console.log('datetime:',datetime);
 		// Get url for post art. 
 		let arturl = post ? getRelativeUrl(post.picurl) : '';
-		console.log(arturl);
+		console.log('art url:',arturl);
+
+		// Display post art behind hero section. 
 		herosection.style.backgroundImage = `url('${arturl}')`;
+		// Display title in hero section. 
+		titledestination.innerHTML = title;
+		// Display author in hero section. 
+		authordestination.innerHTML = authorname ? authorname : '';
+		// Display publish date under hero section. 
+		datedestination.innerHTML = datetime ? t.formatDate(datetime) : '';
 		
 		// Get post content. 
-		let content = post ? (post.content).map(createParagraph).join('') : '' /* '[Empty content]' */;
+		let content = post ? (post.content).map(createParagraph).join('') : '';
 
 		// Compile post layout. 
 		return `
@@ -122,7 +129,7 @@ function loadBlogPost() {
 			// Compile paragraph. 
 			return `
 			<!-- textcopy -->
-			<p class="textcopy">${paragraphtext}</p>
+			<p class="textcopy">${ paragraphtext }</p>
 			<!-- /textcopy -->`
 		}
 	}
