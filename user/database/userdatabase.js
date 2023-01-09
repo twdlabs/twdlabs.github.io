@@ -291,7 +291,7 @@ function addUserData() {
 		user.email = `${ user.userid }@mail.com`;
 
 		// Add default password. 
-		user.password = 'pw';
+		user.password = user.userid+'!';
 
 		// Auto-generate default bio. 
 		user.bio = `This is a brief bio for ${ user.fname } ${ user.lname }, whose username is ${ user.userid }. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint consequatur tempore! Doloremque est dolorum modi repellat aspernatur non consequatur quia, dignissimos optio nemo omnis quidem provident ipsam commodi animi.`;
