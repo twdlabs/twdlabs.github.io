@@ -35,7 +35,7 @@ function loadStoryPosts() {
 	let result = '';
 
 	// Go thru all post data items. 
-	for(let post of storyPostData) {
+	for(let post of blogdata) {
 		result += createStoryPostLayout(post);
 	}
 
@@ -66,7 +66,7 @@ function loadStoryPosts() {
 				<div class="content">
 
 					<!-- date -->
-					<span class="date">${ `${post.createdAt} ${t.formatTimeSince(1*post.createdAt)}` }</span>
+					<span class="date">${ t.formatTimeSince(1*post.timeposted) }</span>
 					<!-- /date -->
 
 					<!-- title -->
@@ -80,11 +80,11 @@ function loadStoryPosts() {
 				<div class="author">
 
 					<!-- avatar -->
-					<img class="avatar" src="${ `../user/${author.avatarurl}` }">
+					<img class="avatar" src="${ author ? `../user/${author.avatarurl}` : '' }">
 					<!-- /avatar -->
 
 					<!-- name -->
-					<span class="name">${ author.fullname }</span>
+					<span class="name">${ author ? author.fullname : '' }</span>
 					<!-- /name -->
 
 				</div>
