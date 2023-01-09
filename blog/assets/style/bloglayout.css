@@ -4,7 +4,7 @@
 /* Blog Table Section */
 div#container section.blogtable {background-color:white; transition:.5s; /* background-image:linear-gradient(white,wheat); */ /* padding:1rem; */ /* border-radius:.5rem; */ margin-top:6rem;}
 div#container section.blogtable main.grid {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1rem; width:100%;}
-div#container section.blogtable main.grid div.item {background-color:var(--bgcolor); color:var(--forecolor); overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
+div#container section.blogtable main.grid div.item {background-color:var(--bgcolor); color:var(--forecolor); overflow:hidden; position:relative; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
 /* div#container section.blogtable main.grid div.item {display:flex; flex-direction:column; align-items:stretch;} */
 
 /* Blog Table Section: Art */
@@ -25,11 +25,25 @@ div#container section.blogtable main.grid div.item div.content a.userbadge.admin
 div#container section.blogtable main.grid div.item div.content a.userbadge img.avatar {--size:2rem; object-fit:cover; height:var(--size); width:var(--size); border:0 none; border-radius:50%;}
 div#container section.blogtable main.grid div.item div.content a.userbadge span.username {margin-left:.75rem;}
 div#container section.blogtable main.grid div.item div.content div.timestamp {color:var(--grey); /* font-size:.875rem; */ margin-left:1rem;}
+div#container section.blogtable main.grid div.item div.content a.commentcount {display:flex; flex-direction:row; align-items:center; color:var(--darkgrey); text-decoration:none; margin-left:1rem;}
+/* div#container section.blogtable main.grid div.item div.content a.commentcount svg.icon {} */
+div#container section.blogtable main.grid div.item div.content a.commentcount span.count {margin-left:.375rem;}
 div#container section.blogtable main.grid div.item div.content p.textcopy {font-size:1rem; font-weight:100; /* text-align:center; *//*  padding:0 1rem; */ margin:0; margin-top:.375rem;}
 div#container section.blogtable main.grid div.item div.content div.ctabox {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
 div#container section.blogtable main.grid div.item div.content div.ctabox {display:none;}
 div#container section.blogtable main.grid div.item div.content div.ctabox a.readbtn {background-color:dodgerblue; padding:.375rem 1rem; border-radius:var(--cornersize); margin-top:.75rem;}
 div#container section.blogtable main.grid div.item div.content div.ctabox a.readbtn {color:white; font-weight:400; letter-spacing:.5px; text-align:center; text-decoration:none;}
+div#container section.blogtable main.grid div.item div.adminpanel {position:absolute; top:0; right:0; /* height:100%; */}
+div#container section.blogtable main.grid div.item div.adminpanel {display:flex; flex-direction:column; margin:.75rem;}
+div#container section.blogtable main.grid div.item div.adminpanel:hover {background-color:#0001;}
+div#container section.blogtable main.grid div.item div.adminpanel {display:none;}
+div#container section.blogtable main.grid.admincontrols div.item div.adminpanel {display:flex;}
+div#container section.blogtable main.grid div.item div.adminpanel a.btn {background-color:var(--black); color:white; transition:.125s; padding:.625rem; border-radius:.25rem; margin-top:.25rem;}
+div#container section.blogtable main.grid div.item div.adminpanel a.editbtn {margin-top:0;}
+div#container section.blogtable main.grid div.item div.adminpanel a.editbtn:hover {background-color:dodgerblue;}
+/* div#container section.blogtable main.grid div.item div.adminpanel a.deletebtn {} */
+div#container section.blogtable main.grid div.item div.adminpanel a.deletebtn:hover {background-color:red;}
+div#container section.blogtable main.grid div.item div.adminpanel a.btn svg.icon {display:block;}
 
 
 

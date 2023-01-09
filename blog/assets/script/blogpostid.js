@@ -27,7 +27,7 @@ function savePostId() {
 	
 	// Get selected post id. 
 	selectedPostId = urlparams.get('id') /* || '' */;
-	console.log('Selected post id:',selectedPostId);
+	// console.log('Selected post id:',selectedPostId);
 
 	// Return parent page (home) if no valid id found. 
 	// if(!selectedPostId) location.href = '../';

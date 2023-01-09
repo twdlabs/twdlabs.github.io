@@ -32,9 +32,9 @@ body.dark {
 
 
 
-html {background-color:white;}
+html {background-color:white; scroll-behavior:smooth;}
 /* html {background-color:var(--themecolor); background-image:var(--bgimg);} */
-body {font-family:Nunito,sans-serif; margin:0;}
+body {font-family:Nunito,sans-serif; scroll-behavior:smooth; margin:0;}
 
 
 /* Main Container */
@@ -43,7 +43,6 @@ div#container {/* display:grid; place-items:center; */ min-height:100vh; /* padd
 
 
 /* Navbar Section */
-/* div#container nav.navbar {display:none;} */
 div#container nav.navbar {position:fixed; top:0; left:0; width:100%; height:6rem; padding:0 1.5rem; z-index:100;}
 div#container nav.navbar {background-color:#0008; color:black;}
 div#container nav.navbar main.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center; height:100%; max-width:calc(1.125*var(--pagewidth)); margin:0 auto;}
@@ -56,6 +55,8 @@ div#container nav.navbar main.grid ul.navlist {list-style:none; padding:0; margi
 div#container nav.navbar main.grid ul.navlist {display:flex; flex-direction:row; align-items:center;}
 div#container nav.navbar main.grid ul.navlist li.navitem {font-size:1.25rem; padding:1rem;}
 div#container nav.navbar main.grid ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container nav.navbar {display:none;}
+/* div#container section.hero {margin-top:6rem;} */
 
 
 /* General Section */
@@ -65,7 +66,7 @@ div#container section > h2.head {font-size:2rem; text-align:center; margin-botto
 div#container section main.grid {max-width:var(--pagewidth); margin:0 auto;}
 
 /* Hero Section */
-div#container section.hero {background-color:var(--grey); color:black; /* min-height:99.9vh; */ padding:0 2rem; margin-top:6rem;}
+div#container section.hero {background-color:var(--grey); color:black; /* min-height:99.9vh; */ padding:0 2rem;}
 div#container section.hero {background-size:cover; background-position:top center; transition:.5s;}
 /* div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;} */
 div#container section.hero {position:relative;}

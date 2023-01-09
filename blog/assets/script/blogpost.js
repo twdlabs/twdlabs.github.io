@@ -46,7 +46,7 @@ function loadBlogPost() {
 	
 	// Get post data for selected post. 
 	const selectedPostData = getPostById(selectedPostId);
-	console.log('Selected post data:',selectedPostData);
+	// console.log('Selected post data:',selectedPostData);
 
 	// Display full post on page. 
 	postdestination.innerHTML = createFullPostLayout(selectedPostData);
@@ -66,4 +66,10 @@ function loadOtherBlogPosts() {
 
 	// Add result to page. 
 	otherpostsdestination.innerHTML = result;
+
+	// // 
+	// let currentUserId = 'aventura';
+	// let user = getUserById(currentUserId);
+	// if(user.admin) bloglistdestination.classList.add('admincontrols');
+	// else bloglistdestination.classList.remove('admincontrols');
 }

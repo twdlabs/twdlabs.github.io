@@ -1,64 +1,73 @@
 
 
-const commentdata = [
 
-	{
-		postid:'abc',
-		authorid:'aventura',
-		posted:164109380000,
-		commentcontent:'Hi, this is a commment that has been written in relation to a blog post.',
-	},
+// Define data for all blog comments. 
+const allCommentData = [
 
-	{
-		postid:'abc',
-		authorid:'aventura',
-		posted:164179380000,
-		commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
-	},
+	// {
+	// 	postid:'abc',
+	// 	authorid:'aventura',
+	// 	timeposted:164109380000,
+	// 	commentcontent:'Hi, this is a commment that has been written in relation to a blog post.',
+	// },
 
-	{
-		postid:'def',
-		authorid:'aventura',
-		posted:164107380000,
-		commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
-	},
+	// {
+	// 	postid:'abc',
+	// 	authorid:'aventura',
+	// 	timeposted:164179380000,
+	// 	commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
+	// },
 
-	{
-		postid:'ghi',
-		authorid:'aventura',
-		posted:164109380000,
-		commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
-	},
+	// {
+	// 	postid:'def',
+	// 	authorid:'aventura',
+	// 	timeposted:164107380000,
+	// 	commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
+	// },
 
-	{
-		postid:'jkl',
-		authorid:'aventura',
-		posted:164107938000,
-		commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
-	},
+	// {
+	// 	postid:'ghi',
+	// 	authorid:'aventura',
+	// 	timeposted:164109380000,
+	// 	commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
+	// },
 
-	{
-		postid:'def',
-		authorid:'aventura',
-		posted:1641079380000,
-		commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
-	},
+	// {
+	// 	postid:'jkl',
+	// 	authorid:'aventura',
+	// 	timeposted:164107938000,
+	// 	commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
+	// },
 
-	{
-		postid:'ghi',
-		authorid:'aventura',
-		posted:1641079380000,
-		commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
-	},
+	// {
+	// 	postid:'def',
+	// 	authorid:'aventura',
+	// 	timeposted:1641079380000,
+	// 	commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
+	// },
 
-	{
-		postid:'jkl',
-		authorid:'aventura',
-		posted:1641079380000,
-		commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
-	},
+	// {
+	// 	postid:'ghi',
+	// 	authorid:'aventura',
+	// 	timeposted:1641079380000,
+	// 	commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
+	// },
+
+	// {
+	// 	postid:'jkl',
+	// 	authorid:'aventura',
+	// 	timeposted:1641079380000,
+	// 	commentcontent:'Hello, this is a commment that has been written in relation to a blog post.',
+	// },
 
 ];
+
+
+/*****/
+
+
+// Generate data for 12 random comments on each post. 
+generateRandomCommentData();
 
 
 /*****/
@@ -71,7 +80,7 @@ function getAllCommentsByAuthorId(id) {
 	let matchingComments = [];
 
 	// Go thru all comments. 
-	for(let comment of commentdata) {
+	for(let comment of allCommentData) {
 
 		// Add comment to list if match found. 
 		if(comment.authorid==id) matchingComments.push(comment);
@@ -88,7 +97,7 @@ function getAllCommentsByPostId(id) {
 	let matchingComments = [];
 
 	// Go thru all comments. 
-	for(let comment of commentdata) {
+	for(let comment of allCommentData) {
 
 		// Add comment to list if match found. 
 		if(comment.postid==id) matchingComments.push(comment);

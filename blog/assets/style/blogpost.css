@@ -30,42 +30,6 @@ div#container section.post article.post div.content p.textcopy {margin:0; margin
 div#container section.post article.post div.content:empty::after {content:'[Empty content]';}
 
 
-/* Comments Section */
-div#container section.comments {display:none;}
-div#container section.comments main.grid {max-width:calc(var(--pagewidth)/2); margin:0 auto;}
-div#container section.comments main.grid h2.head {font-size:1.25rem; margin:0; margin-top:1rem;}
-
-/* Comments Section: Comment List */
-div#container section.comments main.grid ul.commentlist {list-style:none; padding:0; margin:0;}
-div#container section.comments main.grid ul.commentlist li.commentitem {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:stretch; padding:.5rem; border-radius:.125rem; margin-top:.25rem;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.left {margin-right:.5rem;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.left img.avatar {background-color:#0002; display:block; object-fit:cover; height:4rem; width:4rem; border:.125rem solid transparent; border-radius:50%;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right {font-size:.875rem; margin-top:.125rem;}
-/* div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top {} */
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top a.userlink {color:dodgerblue; font-weight:900; text-decoration:none; margin-right:.125rem;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top span.comment {font-weight:400;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom {display:flex; flex-direction:row; align-items:center;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.dot {color:grey; margin:0 .3rem;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.dot.gone {display:none;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom a.likebtn {color:dodgerblue; font-weight:400; text-decoration:none;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.timestamp {color:grey; font-weight:400;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter {display:flex; flex-direction:row; align-items:center; cursor:pointer;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter.gone {display:none;}
-/* div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter svg.icon.thumbup {} */
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter span.count {margin-left:.125rem;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter span.count:empty::after {content:'0';}
-
-/* Comments Section: New Comment Box */
-div#container section.comments main.grid div.newcommentbox {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:var(--cornersize); margin-top:.5rem;}
-div#container section.comments main.grid div.newcommentbox textarea#editor {background-color:transparent; font-family:inherit; font-size:inherit; resize:none; width:100%; padding-top:.25rem; border:0 none; outline:0 none;}
-div#container section.comments main.grid div.newcommentbox div.btn {display:flex; flex-direction:column; justify-content:center; cursor:pointer; margin:0 .5rem;}
-div#container section.comments main.grid div.newcommentbox div.sendbtn {margin-right:0;}
-div#container section.comments main.grid div.newcommentbox div.emojibtn {margin-left:0;}
-div#container section.comments main.grid div.newcommentbox div.btn svg.icon {display:block;}
-div#container section.comments main.grid div.newcommentbox div.sendbtn svg.icon {font-size:1.75rem;}
-div#container section.comments main.grid div.newcommentbox div.emojibtn svg.icon {font-size:1.625rem;}
-
-
 
 
 
@@ -75,8 +39,6 @@ div#container section.comments main.grid div.newcommentbox div.emojibtn svg.icon
 	/* Hero Section */
 
 	/* Post Section */
-
-	/* Comments Section */
 }
 
 /* Big Smartphone Screen */
@@ -90,8 +52,6 @@ div#container section.comments main.grid div.newcommentbox div.emojibtn svg.icon
 	div#container section.hero main.grid p.textcopy {font-size:1rem;}
 
 	/* Post Section */
-
-	/* Comments Section */
 }
 
 /* Small Smartphone Screen */
@@ -103,6 +63,4 @@ div#container section.comments main.grid div.newcommentbox div.emojibtn svg.icon
 	/* div#container section.post {} */
 	/* div#container section.post article.post {} */
 	div#container section.post article.post div.art {float:none; width:100%;}
-
-	/* Comments Section */
 }

@@ -3,8 +3,12 @@
 
 // Get destination for comments in comment section. 
 const commentdestination = document.querySelector('div#container section.comments ul.commentlist');
+
 // Get new comment editor in comment section. 
 const newcommenteditor = document.querySelector('div#container section.comments div.newcommentbox textarea#editor');
+
+// Get destination for comment count. 
+const commentcountdestination = document.querySelector('div#container section.comments h2.head span.commentcount');
 
 
 /*****/
@@ -16,6 +20,22 @@ loadBlogPostComments();
 
 /*****/
 
+
+// Load blog post comments. 
+function loadBlogPostComments() {
+
+	// Get list of comments. 
+	let commentDataList = getAllCommentsByPostId(selectedPostId);
+	console.log('Selected post comments:',commentDataList);
+
+	commentcountdestination.innerHTML = commentDataList.length;
+
+	// Format comments. 
+	let commentLayoutList = commentDataList.map(createCommentLayout);
+
+	// Add formatted comments to page. 
+	commentdestination.innerHTML = commentLayoutList.join('');
+}
 
 // Create comment layout. 
 function createCommentLayout(commentdata) {
@@ -30,7 +50,7 @@ function createCommentLayout(commentdata) {
 	let commentcontent = commentdata.commentcontent;
 
 	// Get time since comment. 
-	let timesincecomment = t.formatTimeSince( 1 * commentdata.posted );
+	let timesincecomment = t.formatTimeSince( 1 * commentdata.timeposted );
 
 	// TODO: Get number of comment likes. 
 	let commentlikecount = 0;
@@ -112,21 +132,7 @@ function createCommentLayout(commentdata) {
 	<!-- /commentitem -->`;
 }
 
-// Load blog post comments. 
-function loadBlogPostComments() {
-
-	// Get list of comments. 
-	let commentDataList = getAllCommentsByPostId(selectedPostId);
-	console.log('Selected post:',commentDataList);
-
-	// Format comments. 
-	let commentLayoutList = commentDataList.map(createCommentLayout);
-
-	// Add formatted comments to page. 
-	commentdestination.innerHTML = commentLayoutList.join('');
-}
-
-// Add new comment. 
+// TODO: Add new comment. 
 function addNewComment() {
 
 	// Get contents of new comment. 
@@ -143,7 +149,7 @@ function addNewComment() {
 	}
 
 	// Save data for new comment to list of comments. 
-	commentdata.push(newcommentdata);
+	allCommentData.push(newcommentdata);
 
 	// Create layout for new comment. 
 	let newcommentlayout = createCommentLayout(newcommentdata);

@@ -7,9 +7,10 @@ div#container section.hero main.grid {align-items:center; padding:12rem 0;}
 div#container section.hero main.grid h1.head {font-size:4rem;}
 div#container section.hero main.grid h2.head {font-size:2.5rem;}
 div#container section.hero main.grid p.textcopy {font-size:1.5rem;}
-div#container section.hero main.grid a.editbtn {background-color:var(--black); padding:.875rem 1rem; border-radius:var(--cornersize); margin-top:2rem;}
+div#container section.hero main.grid a.editbtn {background-color:var(--black); padding:.75rem; border-radius:var(--cornersize); margin-top:2rem;}
 div#container section.hero main.grid a.editbtn {display:flex; flex-direction:row; align-items:center;}
 div#container section.hero main.grid a.editbtn {color:white; text-decoration:none;}
+div#container section.hero main.grid a.editbtn {display:none;}
 div#container section.hero main.grid a.editbtn svg.icon {font-size:1.25rem;}
 div#container section.hero main.grid a.editbtn span.caption {display:none;}
 div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; margin-left:.5rem;}
@@ -32,7 +33,7 @@ div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; 
 	div#container section.hero main.grid {padding:3rem 0;}
 	div#container section.hero main.grid h1.head {font-size:2.5rem;}
 	div#container section.hero main.grid h2.head {font-size:1.75rem;}
-	div#container section.hero main.grid p.textcopy {font-size:1rem;}
+	div#container section.hero main.grid p.textcopy {font-size:1.25rem;}
 }
 
 
@@ -40,4 +41,5 @@ div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; 
 @media screen and (max-width:32rem) {
 
 	/* Hero Section */
+	div#container section.hero main.grid p.textcopy {font-size:1rem;}
 }

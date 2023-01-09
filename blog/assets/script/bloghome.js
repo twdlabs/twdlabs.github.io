@@ -39,4 +39,10 @@ function loadBlogList() {
 	
 	// Add result to page. 
 	bloglistdestination.innerHTML = result;
+
+	// // 
+	// let currentUserId = 'aventura';
+	// let user = getUserById(currentUserId);
+	// if(user.admin) bloglistdestination.classList.add('admincontrols');
+	// else bloglistdestination.classList.remove('admincontrols');
 }
