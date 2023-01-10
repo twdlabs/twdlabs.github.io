@@ -3,16 +3,17 @@
 
 /* Comments Section */
 /* div#container section.comments {display:none;} */
-div#container section.comments h2.head {font-size:1.5rem; max-width:calc(var(--pagewidth)/2); text-align:left; margin:0 auto; margin-top:1rem;}
-/* div#container section.comments h2.head span.caption {} */
-/* div#container section.comments h2.head span.commentcount {} */
-div#container section.comments main.grid {max-width:calc(var(--pagewidth)/2); margin:0 auto;}
+/* div#container section.comments {background-color:white;} */
+div#container section.comments main.grid {background-color:white; max-width:calc(var(--pagewidth)/2); padding:2rem; border-radius:var(--bigcornersize); margin:0 auto;}
+div#container section.comments main.grid h1.head {font-size:1.5rem; padding-bottom:.75rem; border-bottom:1px solid var(--blackglass); margin:0; margin-bottom:1.25rem;}
+/* div#container section.comments main.grid h1.head span.caption {} */
+/* div#container section.comments main.grid h1.head span.commentcount {} */
 
 /* Comments Section: Comment List */
-div#container section.comments main.grid ul.commentlist {list-style:none; padding:0; margin:0;}
-div#container section.comments main.grid ul.commentlist li.commentitem {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:stretch; padding:.5rem; border-radius:.125rem; margin-top:.25rem;}
+div#container section.comments main.grid ul.commentlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
+div#container section.comments main.grid ul.commentlist li.commentitem {background-color:var(--lightblackglass); display:flex; flex-direction:row; align-items:stretch; padding:.5rem; border-radius:var(--cornersize); margin-top:.375rem;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.left {margin-right:.5rem;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.left img.avatar {background-color:#0002; display:block; object-fit:cover; height:4rem; width:4rem; border:.125rem solid transparent; border-radius:50%;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.left img.avatar {background-color:var(--blackglass); display:block; object-fit:cover; height:4rem; width:4rem; border:.125rem solid transparent; border-radius:50%;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right {font-size:.875rem; margin-top:.125rem;}
 /* div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top {} */
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top a.userlink {color:dodgerblue; font-weight:900; text-decoration:none; margin-right:.125rem;}
@@ -29,7 +30,7 @@ div#container section.comments main.grid ul.commentlist li.commentitem div.right
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter span.count:empty::after {content:'0';}
 
 /* Comments Section: New Comment Box */
-div#container section.comments main.grid div.newcommentbox {background-color:var(--lightgrey); display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:var(--cornersize); margin-top:.5rem;}
+div#container section.comments main.grid div.newcommentbox {background-color:var(--lightblackglass); display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:var(--cornersize); margin-top:.5rem;}
 div#container section.comments main.grid div.newcommentbox textarea#editor {background-color:transparent; font-family:inherit; font-size:inherit; resize:none; width:100%; padding-top:.25rem; border:0 none; outline:0 none;}
 div#container section.comments main.grid div.newcommentbox div.btn {display:flex; flex-direction:column; justify-content:center; cursor:pointer; margin:0 .5rem;}
 div#container section.comments main.grid div.newcommentbox div.sendbtn {margin-right:0;}

@@ -66,8 +66,11 @@ function generateRandomCommentData() {
 	// Go thru each post. 
 	for(let post of blogdata) {
 
-		// Add 12 random comments for given post. 
-		for(let i=0;i<12;i++) {
+		// Define number of comments for given post. 
+		let numcomments = Math.floor(6*Math.random());
+
+		// Add random number of comments for given post. 
+		for(let i=0;i<numcomments;i++) {
 
 			let authorid = getRandomUserId();
 

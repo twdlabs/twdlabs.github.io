@@ -74,7 +74,7 @@ div#container main.pagecontent section.stories div.bin ul.postlist li.postitem a
 div#container main.pagecontent section.postfeed {display:grid; grid-template-columns:2fr 1fr; grid-gap:2.5rem; }
 /* div#container main.pagecontent section.postfeed div.side {background-color:dodgerblue;} */
 /* div#container main.pagecontent section.postfeed div.side.left {} */
-/* div#container main.pagecontent section.postfeed div.side.right {} */
+div#container main.pagecontent section.postfeed div.side.right {position:sticky; top:0;}
 div#container main.pagecontent section.postfeed div.side div.item {background-color:white; min-height:30rem; padding:1rem; border-radius:.5rem; margin-bottom:2rem; box-shadow:var(--boxshadow);}
 div#container main.pagecontent section.postfeed div.side div.item h2.head {font-size:1.25rem; font-weight:800; padding-bottom:.75rem; border-bottom:1px solid #0004; margin:0;}
 
@@ -90,6 +90,7 @@ div#container main.pagecontent section.postfeed div.side div.item h2.head {font-
 	/* Page Content: Story Section */
 
 	/* Page Content: Feed Section */
+	div#container main.pagecontent section.postfeed {grid-template-columns:1fr;}
 }
 
 /* Big Smartphone Screen */
@@ -115,5 +116,4 @@ div#container main.pagecontent section.postfeed div.side div.item h2.head {font-
 	/* Page Content: Story Section */
 
 	/* Page Content: Feed Section */
-	div#container main.pagecontent section.postfeed {grid-template-columns:1fr;}
 }

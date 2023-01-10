@@ -2,8 +2,10 @@
 
 
 /* Blog Table Section */
-div#container section.blogtable {background-color:white; transition:.5s; /* background-image:linear-gradient(white,wheat); */ /* padding:1rem; */ /* border-radius:.5rem; */ margin-top:6rem;}
-div#container section.blogtable main.grid {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1rem; width:100%;}
+div#container section.blogtable {/* background-color:white; */ /* background-image:linear-gradient(white,wheat); */ transition:.5s; /* padding:1rem; */ /* margin-top:6rem; */}
+div#container section.blogtable main.grid {background-color:white; width:100%; padding:2rem; border-radius:var(--bigcornersize);}
+div#container section.blogtable main.grid h1.head {padding-bottom:.75rem; border-bottom:1px solid var(--blackglass); margin:0; margin-bottom:1.25rem;}
+div#container section.blogtable main.grid ul.postlist {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:1.25rem; list-style:none; padding:0; margin:0;}
 div#container section.blogtable main.grid div.item {background-color:var(--bgcolor); color:var(--forecolor); overflow:hidden; position:relative; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
 /* div#container section.blogtable main.grid div.item {display:flex; flex-direction:column; align-items:stretch;} */
 
@@ -35,7 +37,7 @@ div#container section.blogtable main.grid div.item div.content div.ctabox a.read
 div#container section.blogtable main.grid div.item div.content div.ctabox a.readbtn {color:white; font-weight:400; letter-spacing:.5px; text-align:center; text-decoration:none;}
 div#container section.blogtable main.grid div.item div.adminpanel {position:absolute; top:0; right:0; /* height:100%; */}
 div#container section.blogtable main.grid div.item div.adminpanel {display:flex; flex-direction:column; margin:.75rem;}
-div#container section.blogtable main.grid div.item div.adminpanel:hover {background-color:#0001;}
+div#container section.blogtable main.grid div.item div.adminpanel:hover {background-color:var(--lightblackglass);}
 div#container section.blogtable main.grid div.item div.adminpanel {display:none;}
 div#container section.blogtable main.grid.admincontrols div.item div.adminpanel {display:flex;}
 div#container section.blogtable main.grid div.item div.adminpanel a.btn {background-color:var(--black); color:white; transition:.125s; padding:.625rem; border-radius:.25rem; margin-top:.25rem;}
@@ -52,8 +54,9 @@ div#container section.blogtable main.grid div.item div.adminpanel a.btn svg.icon
 @media screen and (max-width:64rem) {
 
 	/* Blog Table Section */
-	div#container section.blogtable {margin-top:3rem;}
-	div#container section.blogtable main.grid {grid-template-columns:repeat(3,1fr);}
+	/* div#container section.blogtable {margin-top:3rem;} */
+	/* div#container section.blogtable main.grid {} */
+	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(3,1fr);}
 }
 
 
@@ -61,8 +64,9 @@ div#container section.blogtable main.grid div.item div.adminpanel a.btn svg.icon
 @media screen and (max-width:56rem) {
 
 	/* Blog Table Section */
-	div#container section.blogtable {margin-top:1.5rem;}
-	div#container section.blogtable main.grid {grid-template-columns:repeat(2,1fr);}
+	/* div#container section.blogtable {margin-top:1.5rem;} */
+	/* div#container section.blogtable main.grid {} */
+	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(2,1fr);}
 }
 
 
@@ -71,5 +75,6 @@ div#container section.blogtable main.grid div.item div.adminpanel a.btn svg.icon
 
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:0;} */
-	div#container section.blogtable main.grid {grid-template-columns:repeat(1,1fr);}
+	/* div#container section.blogtable main.grid {} */
+	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(1,1fr);}
 }

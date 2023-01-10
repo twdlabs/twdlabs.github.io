@@ -9,15 +9,24 @@
 
 
 :root {
+
 	--bgcolor:white;
 	--forecolor:#444;
+	--blackglass:#0002;
+	--darkblackglass:#0006;
+	--lightblackglass:#0001;
+
 	--black:#444;
 	--grey:#999;
 	--lightgrey:#F4F4F4;
-	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
 	--pagewidth:75rem;
 	/* --pagewidth:100rem; */
+
 	--cornersize:.25rem;
+	--bigcornersize:calc(var(--cornersize)*2);
 	--themecolor:#CCC;
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
@@ -60,7 +69,7 @@ div#container nav.navbar {display:none;}
 
 
 /* General Section */
-div#container section {padding:2rem; /* margin-bottom:2rem; */}
+div#container section {transition:.5s; padding:0 2rem; margin-bottom:2.5rem;}
 div#container section > h2.head {font-size:2rem; text-align:center; margin-bottom:1rem;}
 /* div#container section > h2.head {max-width:var(--pagewidth); margin:0 auto 1rem;} */
 div#container section main.grid {max-width:var(--pagewidth); margin:0 auto;}
@@ -82,7 +91,7 @@ div#container section.hero main.grid p.textcopy {font-weight:400; text-align:cen
 
 
 /* Footer Section */
-div#container footer.footer {display:flex; flex-direction:column; align-items:center;}
+div#container footer.footer {background-color:white; display:flex; flex-direction:column; align-items:center;}
 div#container footer.footer {text-align:center; padding:2rem 0;}
 div#container footer.footer img.logo {width:10rem;}
 
@@ -105,7 +114,7 @@ div#container footer.footer img.logo {width:10rem;}
 @media screen and (max-width:56rem) {
 
 	/* General Section */
-	div#container section {padding:1.5rem;}
+	div#container section {padding:0 2rem; margin-bottom:2rem;}
 
 	/* Hero Section */
 	/* div#container section.hero {} */
@@ -116,7 +125,7 @@ div#container footer.footer img.logo {width:10rem;}
 @media screen and (max-width:32rem) {
 
 	/* General Section */
-	div#container section {padding:1rem;}
+	div#container section {padding:0 1.5rem; margin-bottom:1.5rem;}
 
 	/* Hero Section */
 }

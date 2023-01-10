@@ -29,9 +29,6 @@ activateBannerUpload();
 
 // Load blog post. 
 function loadBlogPost() {
-	
-	// Get post data for selected post. 
-	const selectedPostData = getPostById(selectedPostId);
 
 	// 
 	if(!selectedPostData) {

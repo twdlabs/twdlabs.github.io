@@ -2,7 +2,7 @@
 
 
 // Get destination for list of posts. 
-const bloglistdestination = document.querySelector('div#container section.allposts main.grid');
+const bloglistdestination = document.querySelector('div#container section.allposts main.grid ul.postlist');
 
 
 /*****/

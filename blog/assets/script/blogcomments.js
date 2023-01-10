@@ -8,7 +8,7 @@ const commentdestination = document.querySelector('div#container section.comment
 const newcommenteditor = document.querySelector('div#container section.comments div.newcommentbox textarea#editor');
 
 // Get destination for comment count. 
-const commentcountdestination = document.querySelector('div#container section.comments h2.head span.commentcount');
+const commentcountdestination = document.querySelector('div#container section.comments h1.head span.commentcount');
 
 
 /*****/
@@ -26,7 +26,7 @@ function loadBlogPostComments() {
 
 	// Get list of comments. 
 	let commentDataList = getAllCommentsByPostId(selectedPostId);
-	console.log('Selected post comments:',commentDataList);
+	// console.log('Selected post comments:',commentDataList);
 
 	commentcountdestination.innerHTML = commentDataList.length;
 

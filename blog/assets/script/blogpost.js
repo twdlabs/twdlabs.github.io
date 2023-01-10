@@ -17,8 +17,11 @@ const datedestination = document.querySelector('div#container section.post aside
 // Get destination for post in post section. 
 const postdestination = document.querySelector('div#container section.post article.post');
 
+// Get destination for author bio in author section. 
+const authorbiodestination = document.querySelector('div#container section.author main.grid');
+
 // Get destination for other post in other post section. 
-const otherpostsdestination = document.querySelector('div#container section.otherposts main.grid');
+const otherpostsdestination = document.querySelector('div#container section.otherposts main.grid ul.postlist');
 
 
 /*****/
@@ -34,6 +37,9 @@ const t = new TimeCalculator();
 // Load blog post. 
 loadBlogPost();
 
+// Load blog author. 
+loadBlogAuthor();
+
 // Load other blog posts. 
 loadOtherBlogPosts();
 
@@ -43,13 +49,41 @@ loadOtherBlogPosts();
 
 // Load blog post. 
 function loadBlogPost() {
-	
-	// Get post data for selected post. 
-	const selectedPostData = getPostById(selectedPostId);
-	// console.log('Selected post data:',selectedPostData);
 
 	// Display full post on page. 
 	postdestination.innerHTML = createFullPostLayout(selectedPostData);
+}
+
+// Load blog author. 
+function loadBlogAuthor() {
+	
+	// Get user data for author of selected post. 
+	const postauthor = getUserById(selectedPostData.authorid);
+	// console.log('Selected post author:',postauthor);
+
+	// Display author post on page. 
+	authorbiodestination.innerHTML = createAuthorLayout(postauthor);
+
+	/****/
+
+	// Create layout for author of selected post. 
+	function createAuthorLayout(user) {
+		console.log('Author:',user);
+
+		// 
+		return `
+		<!-- name -->
+		<h1 class="name">${ user.fullname }</h1>
+		<!-- /name -->
+
+		<!-- briefbio -->
+		<p class="briefbio">${ user.bio }</p>
+		<!-- /briefbio -->
+
+		<!-- avatar -->
+		<img class="avatar" src="${ `../../user/${user.avatarurl}` }">
+		<!-- /avatar -->`;
+	}
 }
 
 // Load other blog posts. 
