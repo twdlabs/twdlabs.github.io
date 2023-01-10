@@ -1,0 +1,59 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+
+:root {
+	--pagewidth:50rem;
+	--blackglass:#0004;
+}
+
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+
+div#container {background-color:#CCC; display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1rem;}
+
+div#container section {background-color:white; padding:1rem; border:1px dotted #0008; border-radius:.5rem; margin-bottom:.75rem;}
+/* div#container section.params {} */
+div#container section.params div.bar {display:flex; flex-direction:row; justify-content:space-around; align-items:center; grid-gap:.75rem;}
+div#container section.params div.page {background-color:var(--blackglass); display:flex; flex-direction:column; align-items:stretch; padding:1rem; border:1px dotted #0008; border-radius:.5rem;}
+div#container section.params div.page.a {background-color:rgba(255,107,140,0.625);}
+div#container section.params div.page.b {background-color:rgba(0,137,255,0.625);}
+div#container section.params div.page h2.head {text-align:center; margin:0;}
+div#container section.params div.page div.input {display:flex; flex-direction:row; justify-content:center; align-items:center; font-size:1.25rem; margin-top:.5rem;}
+div#container section.params div.page div.input input {font-size:inherit; text-align:right; width:6rem; padding:.5rem 1rem; border:1px solid #0002; border-radius:.5rem;}
+div#container section.params div.page div.input label {font-weight:500; cursor:pointer; margin-right:.5rem;}
+div#container section.params div.page div.input label::after {content:':';}
+div#container section.params div.input button.btn {/* background-color:#DDD; */ width:100%; padding:.375rem; margin-top:.625rem;}
+
+div#container section.output {--x:x; width:100%; max-width:var(--pagewidth);}
+div#container section.output canvas {width:100%; border:1px dashed #0002; border-radius:.5rem; margin-top:.5rem;}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+	div#container section.params {flex-direction:column;}
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
