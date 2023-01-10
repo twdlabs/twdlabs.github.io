@@ -103,9 +103,7 @@ function go() {
 	let xRightA = muA + N*sdA;
 	let xRightB = muB + N*sdB;
 
-	// Go thru each data point for graph A.
-
-	// Go thru each data point for graph B.
+	// Go thru each data point for graph A & graph B.
 	for (let x=Math.min(xLeftA,xLeftB) ; x<=Math.max(xRightA,xRightB) ; x+=dx) {
 
 		// Add label (horizontal) for data point. 
@@ -136,10 +134,33 @@ function go() {
 
 		// 
 		let result = (1 / (Math.sqrt(2*Math.PI)*s) ) * Math.exp( (x-mu)*(x-mu) / (-2*s*s) );
+		
+		// Get index of zero data point. 
+		let zeroIndex = getZeroIndex();
+
+		// 
+		let pareto = true;
+		if(pareto) result = result<=0 ? 0 : result;
 		// console.log(`pdf(${x},${mu},${s}) =`, result);
 
 		// Return result. 
 		return result;
+
+		// Get index of zero data point. 
+		function getZeroIndex() {
+
+			// 
+			for(let index in chartDetails.data.labels) {
+
+				// 
+				let point = chartDetails.data.labels[index];
+				// 
+				if(point==0) return index;
+			}
+
+			// 
+			return -1;
+		}
 	}
 
 	// 
