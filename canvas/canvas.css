@@ -30,7 +30,7 @@ div#container section.params div.page.a {background-color:rgba(255,107,140,0.625
 div#container section.params div.page.b {background-color:rgba(0,137,255,0.625);}
 div#container section.params div.page h2.head {text-align:center; margin:0;}
 div#container section.params div.page div.input {display:flex; flex-direction:row; justify-content:center; align-items:center; font-size:1.25rem; margin-top:.5rem;}
-div#container section.params div.page div.input input {font-size:inherit; text-align:right; width:6rem; padding:.5rem 1rem; border:1px solid #0002; border-radius:.5rem;}
+div#container section.params div.page div.input input {font-size:inherit; text-align:right; width:100%; max-width:6rem; padding:.5rem 1rem; border:1px solid #0002; border-radius:.5rem;}
 div#container section.params div.page div.input label {font-weight:500; cursor:pointer; margin-right:.5rem;}
 div#container section.params div.page div.input label::after {content:':';}
 div#container section.params div.input button.btn {/* background-color:#DDD; */ width:100%; padding:.375rem; margin-top:.625rem;}
@@ -56,4 +56,5 @@ div#container section.output canvas {width:100%; border:1px dashed #0002; border
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 	/*  */
+	div#container section.params div.bar {flex-direction:column;}
 }
