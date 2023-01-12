@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Data Clusterer - K-Means Clustering</title>
+
+		<!-- Bootstrap 4 -->
+		<link href="https://import.atgmedia.xyz/bs4/bootstrap.min.css" rel="stylesheet" type="text/css">
+		<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/bootstrap.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<!-- Toaster -->
+		<link href="../toast/toast.css" rel="stylesheet" type="text/css"/>
+		<script src="../toast/toast.js" type="text/javascript"></script>
+
+		<link href="cluster.css" rel="stylesheet" type="text/css"/>
+	</head>
+
+	<body>
+
+		<!-- container -->
+		<div id="container" class="container-fluid">
+
+			<!-- row -->
+			<div class="row">
+				<div class="col-12">
+					<div>Clusters</div>
+					<!-- numLine -->
+					<div id="numLine"></div>
+					<!-- /numLine -->
+				</div>
+			</div>
+			<!-- /row -->
+
+			<!-- row -->
+			<div class="row">
+				<!-- col -->
+				<div class="col-sm-5 col-12">
+					<h3>Steps</h3>
+					<ol>
+						<li>
+							Get data
+						</li>
+						<li>
+							Place centroids
+						</li>
+						<li>
+							Associate points to clusters (by proximity)
+						</li>
+						<li>
+							Repeat steps 2-3 until solution is stable
+						</li>
+					</ol>
+				</div>
+				<!-- /col -->
+				<!-- col -->
+				<div class="col-sm-7 col-12" style="text-align:left;">
+					<h3>Steps</h3>
+					<table style="height:100px;">
+
+						<tr>
+
+							<td>✅</td>
+							<td>1.</td>
+							<td class="name">New Data</td>
+
+							<td>
+								<button class="" onclick="getUserDataSet();">Add</button>
+							</td>
+							<td colspan="1">
+								<button class="primary btn-primary" onclick="createDataSet();">Create</button>
+							</td>
+							<td class="large" rowspan="3">
+								<button class="primary btn-success" style="font-size:1.5em;" onclick="repeatCenterAndCluster4()">Go</button>
+							</td>
+
+						</tr>
+
+						<tr>
+
+							<td>✅</td>
+							<td>2.</td>
+							<td class="name">Centroids</td>
+
+							<td>
+								<button class="primary btn-primary" onclick="createCentroids4();">Create</button>
+							</td>
+							<td>
+								<button class="primary btn-primary" onclick="centerCentroids4();">Center</button>
+							</td>
+
+						</tr>
+
+						<tr>
+
+							<td>✅</td>
+							<td>3.</td>
+							<td class="name">Clusters</td>
+
+							<td colspan="2">
+								<button class="primary btn-warning" onclick="clusterDataPoints4()">Associate</button>
+							</td>
+
+						</tr>
+
+						<tr>
+
+							<td>✅</td>
+							<td>4.</td>
+							<td class="name">Stability</td>
+
+							<td colspan="3">
+								<button class="primary btn-danger" style="font-size:1.5em;" onclick="stopRepeating();">Stop</button>
+							</td>
+
+							<td class="large" rowspan="2" style="display:none;">
+								<button onclick="runAll4();">All (4)</button>
+
+								<input type="number" id="numClusters" placeholder="k" min="0" max="12">
+								<button onclick="runAll();">All</button>
+							</td>
+
+						</tr>
+
+					</table>
+				</div>
+				<!-- /col -->
+				<!-- col -->
+				<div class="col-6 offset-3 col-sm-4 offset-sm-4">
+					<!-- legend -->
+					<div id="legend">
+						<div class="in"></div>
+					</div>
+					<!-- /legend -->
+				</div>
+				<!-- /col -->
+			</div>
+			<!-- /row -->
+
+		</div>
+		<!-- /container -->
+
+		<!-- legend -->
+		<!-- <div id="legend">
+			<div class="in"></div>
+		</div> -->
+		<!-- /legend -->
+
+
+		<script src="cluster4.js" type="text/javascript"></script>
+		<script src="cluster.js" type="text/javascript"></script>
+
+	</body>
+
+</html>
