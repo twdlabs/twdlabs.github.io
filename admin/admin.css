@@ -59,7 +59,7 @@ div#container {
 }
 /* Sidebar State: Open */
 div#container.open {
-	--sidebarsize:16rem;
+	--sidebarsize:14rem;
 	--captionwidth:auto;
 	--captionopacity:1;
 }
@@ -88,16 +88,17 @@ div#container nav.sidebar div.bin a.brand img.logo {background-color:var(--royal
 /* div#container nav.sidebar div.bin a.brand img.logo::after {content:'TWD';} */
 div#container nav.sidebar div.bin ul.list {flex-grow:1;}
 div#container nav.sidebar div.bin ul.list {display:flex; flex-direction:column; align-items:stretch; list-style:none; padding:0; margin:0; margin-top:1rem;}
-div#container nav.sidebar div.bin ul.list li.item {color:var(--forecolor); font-size:1.25rem; font-weight:300; overflow-x:visible; padding:.5rem; margin-top:1rem;}
+div#container nav.sidebar div.bin ul.list li.item {color:var(--forecolor); font-size:1.25rem; font-weight:300; overflow-x:visible; padding:.5rem 0; margin-top:1rem;}
 div#container nav.sidebar div.bin ul.list li.item {flex-grow:0; flex-shrink:0;}
 div#container nav.sidebar div.bin ul.list li.item a.link {display:flex; flex-direction:row; /* justify-content:center; */ align-items:center; position:relative;}
 div#container nav.sidebar div.bin ul.list li.item a.link {color:inherit; text-decoration:none;}
-div#container nav.sidebar div.bin ul.list li.item a.link.navlink:hover {color:var(--royal);}
+div#container nav.sidebar div.bin ul.list li.item a.link.navlink:hover {color:var(--ltgrey);}
+div#container nav.sidebar div.bin ul.list li.item a.link.navlink.active {color:var(--royal);}
 div#container nav.sidebar div.bin ul.list li.item a.link.navlink::after {background-color:var(--royal); height:var(--dotsize); width:var(--dotsize); border-radius:50%;}
-div#container nav.sidebar div.bin ul.list li.item a.link.navlink::after {position:absolute; right:100%; top:50%; transform:translateY(-50%); margin-right:.5rem;}
-div#container nav.sidebar div.bin ul.list li.item a.link.navlink:hover::after {content:'';}
-div#container nav.sidebar div.bin ul.list li.item a.link svg.icon {font-size:1.25em; min-width:1em;}
-div#container nav.sidebar div.bin ul.list li.item a.link span.caption {opacity:var(--captionopacity); width:var(--captionwidth); white-space:nowrap; transition:.5s; margin-left:0;}
+div#container nav.sidebar div.bin ul.list li.item a.link.navlink::after {position:absolute; right:100%; top:50%; transform:translateY(-50%); /* margin-right:.5rem; */}
+div#container nav.sidebar div.bin ul.list li.item a.link.navlink.active::after {content:'';}
+div#container nav.sidebar div.bin ul.list li.item a.link svg.icon {font-size:1.25em; min-width:var(--avatarsize); transition:.125s; /* margin:0 auto; transition:.5s margin; */}
+div#container nav.sidebar div.bin ul.list li.item a.link span.caption {opacity:var(--captionopacity); width:var(--captionwidth); white-space:nowrap; transition:.375s; margin-left:0;}
 /* div#container nav.sidebar div.bin ul.list li.item div.switch {display:none;} */
 div#container nav.sidebar div.bin ul.list li.item div.switch {position:absolute; top:50%; right:50%; transform:translate(50%,-50%);}
 div#container nav.sidebar div.bin ul.list li.item div.switch {background-color:var(--ltgrey); box-sizing:content-box; cursor:pointer; transition:.5s;}
@@ -105,7 +106,8 @@ div#container nav.sidebar div.bin ul.list li.item div.switch {--switchwidth:2.75
 div#container nav.sidebar div.bin ul.list li.item div.switch div.dot {background-color:white; height:100%; width:50%; border-radius:50%; transition:.125s;}
 div#container nav.sidebar div.bin ul.list li.space {flex-grow:1; flex-shrink:1;}
 /* div#container.open nav.sidebar div.bin ul.list li.item a.link {justify-content:flex-start;} */
-div#container.open nav.sidebar div.bin ul.list li.item a.link span.caption {margin-left:.75rem;}
+/* div#container.open nav.sidebar div.bin ul.list li.item a.link svg.icon {margin:0;} */
+/* div#container.open nav.sidebar div.bin ul.list li.item a.link span.caption {margin-left:.25rem;} */
 div#container.open nav.sidebar div.bin ul.list li.item div.switch {transform:translateY(-50%); right:0;}
 div#container.dark nav.sidebar div.bin ul.list li.item div.switch {background-color:var(--black);}
 div#container.dark nav.sidebar div.bin ul.list li.item div.switch div.dot {transform:translateX(100%);}
@@ -130,31 +132,33 @@ div#container main.main nav.headbar div.search input#searchquery {flex-grow:1; b
 div#container.dark main.main nav.headbar {background-color:var(--darkgrey);}
 div#container.dark main.main nav.headbar div.search {background-color:var(--darkgrey); background-color:var(--black); color:whitesmoke;}
 
-/* Main Content Sections */
+/* Main Content */
 div#container main.main section {padding:2rem; margin-top:2rem;}
 div#container main.main section h2.head {display:flex; flex-direction:row; align-items:center; font-weight:400; margin:0; margin-bottom:2rem;}
 div#container main.main section h2.head span.iconbox {flex-grow:0; flex-shrink:0; background-color:var(--royal); color:white; padding:.5rem; border-radius:.5rem; margin-right:.5rem;}
 div#container main.main section h2.head span.iconbox svg.icon {display:block;}
 div#container main.main section h2.head span.caption {flex-grow:1;}
 
-div#container main.main section#dash div.content {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.75rem 1.5rem;}
-/* div#container main.main section#dash div.content {grid-template-columns:repeat(2,1fr);} */
-/* div#container main.main section#dash div.content {grid-template-columns:repeat(1,1fr);} */
-div#container main.main section#dash div.content div.box {display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; padding:1.75rem; border-radius:.75rem;}
-div#container main.main section#dash div.content div.box.b {background-color:var(--blue);}
-div#container main.main section#dash div.content div.box.g {background-color:var(--yellow);}
-div#container main.main section#dash div.content div.box.m {background-color:var(--magenta);}
-div#container main.main section#dash div.content div.box svg.icon {font-size:1.875rem; display:block;}
-div#container main.main section#dash div.content div.box span.label {font-size:1rem; font-weight:400; margin-top:1.25rem;}
-div#container main.main section#dash div.content div.box span.number {font-size:2.5rem; font-weight:400; margin-top:.375rem;}
-div#container.dark main.main section#dash div.content div.box {background-color:var(--black);}
+/* Main Content: Summary */
+div#container main.main section.summary div.content {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.75rem 1.5rem;}
+/* div#container main.main section.summary div.content {grid-template-columns:repeat(2,1fr);} */
+/* div#container main.main section.summary div.content {grid-template-columns:repeat(1,1fr);} */
+div#container main.main section.summary div.content div.box {display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; padding:1.75rem; border-radius:.75rem;}
+div#container main.main section.summary div.content div.box.b {background-color:var(--blue);}
+div#container main.main section.summary div.content div.box.g {background-color:var(--yellow);}
+div#container main.main section.summary div.content div.box.m {background-color:var(--magenta);}
+div#container main.main section.summary div.content div.box svg.icon {font-size:1.875rem; display:block;}
+div#container main.main section.summary div.content div.box span.label {font-size:1rem; font-weight:400; margin-top:1.25rem;}
+div#container main.main section.summary div.content div.box span.number {font-size:2.5rem; font-weight:400; margin-top:.375rem;}
+div#container.dark main.main section.summary div.content div.box {background-color:var(--black);}
 
-div#container main.main section#recent div.content {overflow-x:auto;}
-div#container main.main section#recent div.content table.table {text-align:left; width:100%;}
-div#container main.main section#recent div.content table.table th.head,
-div#container main.main section#recent div.content table.table td.cell {padding-bottom:1rem;}
-div#container main.main section#recent div.content table.table th.head h3.head {font-size:1.25rem; font-weight:400; margin:0;}
-div#container main.main section#recent div.content table.table td.cell span.data {font-size:1rem; font-weight:300}
+/* Main Content: Data Grid */
+div#container main.main section.datagrid div.content {overflow-x:auto;}
+div#container main.main section.datagrid div.content table.table {text-align:left; width:100%;}
+div#container main.main section.datagrid div.content table.table th.head,
+div#container main.main section.datagrid div.content table.table td.cell {padding-bottom:1rem;}
+div#container main.main section.datagrid div.content table.table th.head h3.head {font-size:1.25rem; font-weight:400; margin:0;}
+div#container main.main section.datagrid div.content table.table td.cell span.data {font-size:1rem; font-weight:300}
 
 
 
@@ -162,15 +166,36 @@ div#container main.main section#recent div.content table.table td.cell span.data
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
 	/*  */
+	/* div#container {} */
+	/* div#container main.main {} */
+	/* div#container main.main section {} */
+	/* div#container main.main section.summary {} */
+	/* div#container main.main section.summary div.content {} */
+	/* div#container main.main section.summary div.content div.box {} */
+	div#container main.main section.summary div.content div.box span.number {font-size:2rem;}
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
 	/*  */
+	/* div#container {} */
+	/* div#container main.main {} */
+	div#container main.main section {padding:2rem 1.25rem;}
+	/* div#container main.main section {} */
+	/* div#container main.main section.summary {} */
+	div#container main.main section.summary div.content {grid-gap:.75rem 1rem;}
+	div#container main.main section.summary div.content div.box {padding:1rem .5rem;}
+	div#container main.main section.summary div.content div.box span.number {font-size:1.5rem;}
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 	/*  */
+	/* div#container {} */
+	/* div#container main.main {} */
+	/* div#container main.main section {} */
+	div#container main.main section h2.head {justify-content:center;}
+	/* div#container main.main section.summary {} */
+	div#container main.main section.summary div.content {grid-template-columns:1fr;}
 }
 
