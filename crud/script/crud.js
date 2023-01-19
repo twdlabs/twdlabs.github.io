@@ -1,47 +1,46 @@
 
 
-var userdata;
+
+// Get navbar. <-- Is this line needed for anything ?
+let navbar = document.querySelector('nav.navbar');
+// console.log('Navigation bar:',navbar);
+
+// Get overlay for item editor. 
+const overlay = document.querySelector('div.overlay');
+// console.log('Overlay:',overlay);
+
+// Get elements of item editor. 
+const inputname = document.getElementById('name');
+const inputemail = document.getElementById('email');
+const inputmobilenumber = document.getElementById('mobilenumber');
+// Get elements of item creator. 
+const inputnewname = document.getElementById('newname');
+const inputnewemail = document.getElementById('newemail');
+const inputnewmobilenumber = document.getElementById('newmobilenumber');
 
 
-// Load user data. 
+/*****/
+
+
+// Initialize database. 
+let userdata;
+
+
+/*****/
+
+
+// Display all items in database. 
 loadAllDataItems();
 
 
 /*****/
 
 
-// Get data from storage. 
-function getDataFromStorage() {
-
-	// Get string for user data. 
-	let str = localStorage.getItem('cruduserdata');
-
-	// Make user data available for use. 
-	temp = JSON.parse(str);
-	if(temp) userdata = temp;
-	else userdata = [];
-}
-
-// Save data to storage. 
-function saveDataToStorage() {
-	console.log('User data:',userdata);
-
-	// Create string for available user data. 
-	let str = JSON.stringify(userdata);
-
-	// Save string for user data. 
-	localStorage.setItem('cruduserdata',str);
-
-	// Load all data items on page. 
-	loadAllDataItems();
-}
-
-
-// Read: Load all data items. 
+// Read: Display all items in database. 
 function loadAllDataItems() {
 
-	// Get original data from storage. 
-	getDataFromStorage();
+	// Retrieve database from storage. 
+	userdata = getDatabaseFromStorage();
 
 	// Get rows in table body. 
 	let tbody = document.querySelector('main#table table.table tbody');
@@ -59,6 +58,16 @@ function loadAllDataItems() {
 		result += `
 		<!-- row -->
 		<tr class="row body">
+		
+			<!-- cell -->
+			<td class="cell">
+
+				<!-- data -->
+				<span class="data">${i}</span>
+				<!-- /data -->
+
+			</td>
+			<!-- /cell -->
 		
 			<!-- cell -->
 			<td class="cell">
@@ -188,9 +197,9 @@ function loadAllDataItems() {
 			let prevmobilenumber = ''+userdata[selectedIndex].mobilenumber;
 
 			// Get editor input boxes. 
-			let namebox = document.getElementById('name');
-			let emailbox = document.getElementById('email');
-			let mobilenumberbox = document.getElementById('mobilenumber');
+			let namebox = inputname;
+			let emailbox = inputemail;
+			let mobilenumberbox = inputmobilenumber;
 
 			// TODO: Place previous values as input placeholders (if valid). 
 			if(prevname.length>0) namebox.placeholder = prevname;
@@ -206,142 +215,122 @@ function loadAllDataItems() {
 	}
 }
 
-// Create: Add new data item. 
+// Create: Add new item to database. 
 function addNewDataItem() {
 
-	// Get data for new item. 
-	let n = document.getElementById('newname').value;
-	let e = document.getElementById('newemail').value;
-	let m = document.getElementById('newmobilenumber').value;
-
-	// Clear previous input. 
-	document.getElementById('newname').value = '';
-	document.getElementById('newemail').value = '';
-	document.getElementById('newmobilenumber').value = '';
-
-	// Create new item. 
+	// Get user input data and create new item. 
 	let newitem = {
-		name:n,
-		email:e,
-		mobilenumber:m
+		name:inputnewname.value,
+		email:inputnewemail.value,
+		mobilenumber:inputnewmobilenumber.value,
 	};
 	console.log('New item:',newitem);
+	// Clear previous editor input. 
+	clearEditorInput();
 
-	// Get original data from storage. 
-	getDataFromStorage();
+	// Retrieve database from storage. 
+	userdata = getDatabaseFromStorage();
 
-	// Add new data item to data list. 
+	// Add new item to database. 
 	userdata.push(newitem);
 
-	// Save updated data to storage. 
-	saveDataToStorage();
+	// Save updated database to storage. 
+	saveDatabaseToStorage();
+
+	/****/
+
+	// Clear editor input. 
+	function clearEditorInput() {
+		inputnewname.value = '';
+		inputnewemail.value = '';
+		inputnewmobilenumber.value = '';
+	}
 }
 
-// Update: Edit data item. 
+// Update: Edit item in database. 
 function updateDataItem(indexOfUpdate=-1) {
 	console.log('Index to update:',indexOfUpdate);
+
+	// Handle erroneous index of update. 
 	if(indexOfUpdate<0) {
-		console.error('Invalid Index Error: Index for userdata array is less than zero.',indexOfUpdate);
+		console.error('Invalid index: Index for database item is out of bounds.',indexOfUpdate);
 		return;
 	}
 
 	// Get data for updated item. 
-	let n = document.getElementById('name').value;
-	let e = document.getElementById('email').value;
-	let m = document.getElementById('mobilenumber').value;
+	let n = inputname.value;
+	let e = inputemail.value;
+	let m = inputmobilenumber.value;
+	// Clear previous editor input. 
+	clearEditorInput();
 
-	// Clear previous input. 
-	document.getElementById('name').value = '';
-	document.getElementById('email').value = '';
-	document.getElementById('mobilenumber').value = '';
+	// Retrieve database from storage. 
+	userdata = getDatabaseFromStorage();
 
-	// Get original data from storage. 
-	getDataFromStorage();
-
-	// Create updated item. 
-	// let updateditem = {
-	// 	name:n,
-	// 	email:e,
-	// 	mobilenumber:m
-	// };
-	// console.log('Updated item:',updateditem);
-
-	// Update data item in data list (using index). 
-	// userdata[indexOfUpdate] = updateditem;
+	// Update item in database. 
 	if(n.length>0) userdata[indexOfUpdate].name = n;
 	if(e.length>0) userdata[indexOfUpdate].email = e;
 	if(m.length>0) userdata[indexOfUpdate].mobilenumber = m;
 
-	// Save updated data to storage. 
-	saveDataToStorage();
+	// Save updated database to storage. 
+	saveDatabaseToStorage();
+
+	/****/
+
+	// Clear editor input. 
+	function clearEditorInput() {
+		inputname.value = '';
+		inputemail.value = '';
+		inputmobilenumber.value = '';
+	}
 }
 
-// Delete: Remove data item. 
+// Delete: Remove item from database. 
 function deleteDataItem(event) {
 
-	// Get delete button clicked. 
+	// Get selected delete button. 
 	let btn = event.currentTarget;
 
 	// Get index of deletion. 
 	let indexOfDeletion = btn.getAttribute('data-index');
 
 	// Confirm deletion. 
-	let deleteConfirmed = confirm('Are you sure you want to delete ?');
+	let doDelete = confirm('Are you sure you want to delete this item ?');
 
-	// Remove data item if confirmed. 
-	if(deleteConfirmed) {
+	// Remove item from database if confirmed. 
+	if(doDelete) {
 
-		// Get original data from storage. 
-		getDataFromStorage();
+		// Retrieve database from storage. 
+		userdata = getDatabaseFromStorage();
 	
-		// Remove selected data item from data list (using index). 
+		// Remove selected item from database. 
 		userdata.splice(indexOfDeletion, 1);
 	
-		// Save updated data to storage. 
-		saveDataToStorage();
+		// Save updated database to storage. 
+		saveDatabaseToStorage();
 	}
 }
 
-// Reset: Remove all user data items. 
-function clearAllData() {
+// Clear: Clear all items from database. 
+function clearDatabase() {
 
 	// Confirm deletion. 
-	let deleteConfirmed = confirm('Are you sure you want to delete all data !?');
+	let doDelete = confirm('Reset database ?');
 
-	// Remove data item if confirmed. 
-	if(deleteConfirmed) {
+	// Proceed if confirmed once. 
+	if(doDelete) {
 
-		// Reset original data. 
-		userdata = [];
+		// Confirm deletion again. 
+		let doDeleteConfirmed = confirm('Are you sure you want to delete all data !?');
 	
-		// Save updated data to storage. 
-		saveDataToStorage();
+		// Proceed if confirmed twice. 
+		if(doDeleteConfirmed) {
+
+			// Reset original data. 
+			userdata = [];
+		
+			// Save updated database to storage. 
+			saveDatabaseToStorage();
+		}
 	}
 }
-
-
-// Open overlay in proper mode. 
-function openOverlay(creatorMode=false) {
-
-	// Get overlay. 
-	let overlay = document.querySelector('div.overlay');
-	// console.log('Overlay:',overlay);
-
-	// Set creator or editor mode. 
-	if(creatorMode) overlay.classList.add('create');
-	else overlay.classList.remove('create');
-
-	// Activate overlay. 
-	overlay.classList.add('active');
-}
-
-// Close overlay. 
-function closeOverlay() {
-
-	// Get overlay. 
-	let overlay = document.querySelector('div.overlay'); 
-
-	// De-activate overlay. 
-	overlay.classList.remove('active');
-}
-

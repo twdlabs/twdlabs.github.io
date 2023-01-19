@@ -6,11 +6,12 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="../atgicon.ico" rel="icon"/>
+		<link href="./../atgicon.ico" rel="icon"/>
 		<title>CRUD Database</title>
 
 		<!-- Main Stylesheet -->
-		<link href="crud.css" rel="stylesheet" type="text/css"/>
+		<link href="./crud.css" rel="stylesheet" type="text/css"/>
+
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -27,7 +28,7 @@
 			<nav class="navbar">
 
 				<!-- head -->
-				<h1 class="head" onclick="let navbar = document.querySelector('nav.navbar'); navbar.classList.toggle('active');">CRUD Editor</h1>
+				<h1 class="head" onclick="navbar.classList.toggle('active');">CRUD Editor</h1>
 				<!-- /head -->
 
 				<!-- navlist -->
@@ -60,7 +61,7 @@
 					<li class="navitem">
 			
 						<!-- btn -->
-						<div class="btn emptybtn" onclick="clearAllData()">
+						<div class="btn emptybtn" onclick="clearDatabase()">
 		
 							<!-- icon -->
 							<svg class="icon trash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -91,30 +92,7 @@
 			<!-- /navbar -->
 			
 			<!-- #table -->
-			<main id="table" onclick="let navbar = document.querySelector('nav.navbar'); navbar.classList.remove('active');">
-
-				<script>
-					
-					// Open user creator form. 
-					function openUserCreator() {
-
-						// Put into creator mode. 
-						document.getElementById('overlay').classList.remove('edit');
-
-						// Open overlay for creator form. 
-						document.getElementById('overlay').classList.add('active');
-					}
-					
-					// Open user editor form. 
-					function openUserEditor() {
-
-						// Put into editor mode. 
-						document.getElementById('overlay').classList.add('edit');
-
-						// Open overlay for editor form. 
-						document.getElementById('overlay').classList.add('active');
-					}
-				</script>
+			<main id="table" onclick="navbar.classList.remove('active');">
 
 				<!-- table -->
 				<table class="table">
@@ -124,6 +102,12 @@
 
 						<!-- row -->
 						<tr class="row">
+	
+							<!-- head -->
+							<th class="head">
+								<h2 class="head">ID</h2>
+							</th>
+							<!-- /head -->
 	
 							<!-- head -->
 							<th class="head">
@@ -145,7 +129,7 @@
 	
 							<!-- head -->
 							<th class="head">
-								<h2 class="head">Action</h2>
+								<h2 class="head">Operations</h2>
 							</th>
 							<!-- /head -->
 	
@@ -160,6 +144,16 @@
 
 						<!-- row -->
 						<tr class="row body">
+	
+							<!-- cell -->
+							<td class="cell">
+
+								<!-- data -->
+								<span class="data">0</span>
+								<!-- /data -->
+
+							</td>
+							<!-- /cell -->
 	
 							<!-- cell -->
 							<td class="cell">
@@ -316,7 +310,8 @@
 					<!-- /input -->
 					
 					<!-- input -->
-					<div class="input">
+					<div class="input inputbtn">
+						<input class="btn cancelbtn" type="submit" value="Cancel" onclick="closeOverlay();"/>
 						<input class="btn updatebtn" type="submit" value="Update User" data-selectedindex="-1" onclick="let selectedindex = this.getAttribute('data-selectedindex'); updateDataItem(selectedindex); closeOverlay();"/>
 					</div>
 					<!-- /input -->
@@ -335,11 +330,17 @@
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
-		<!-- <script src="database.js" type="text/javascript"></script> -->
+		<!-- Database -->
+		<script src="./../user/database/userdatabase.js" type="text/javascript"></script>
 
+		<!-- Overlay Script -->
+		<script src="./script/overlay.js" type="text/javascript"></script>
+		<!-- Storage Script -->
+		<script src="./script/storage.js" type="text/javascript"></script>
+		<!-- CRUD Script -->
+		<script src="./script/crud.js" type="text/javascript"></script>
 		<!-- Main Script -->
-		<script src="crud.js" type="text/javascript"></script>
+		<script src="./script/script.js" type="text/javascript"></script>
 
 	</body>
 
