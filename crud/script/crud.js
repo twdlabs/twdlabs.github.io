@@ -3,12 +3,11 @@
 
 // Get navbar. <-- Is this line needed for anything ?
 let navbar = document.querySelector('nav.navbar');
-// console.log('Navigation bar:',navbar);
+// Get table body. 
+const tbody = document.querySelector('main#table table.table tbody');
 
 // Get overlay for item editor. 
 const overlay = document.querySelector('div.overlay');
-// console.log('Overlay:',overlay);
-
 // Get elements of item editor. 
 const inputname = document.getElementById('name');
 const inputemail = document.getElementById('email');
@@ -17,6 +16,8 @@ const inputmobilenumber = document.getElementById('mobilenumber');
 const inputnewname = document.getElementById('newname');
 const inputnewemail = document.getElementById('newemail');
 const inputnewmobilenumber = document.getElementById('newmobilenumber');
+// Get update button in item editor. 
+const editorupdatebtn = document.querySelector('div.overlay main#editor input.updatebtn');
 
 
 /*****/
@@ -53,9 +54,6 @@ function displayDatabase() {
 
 	// Retrieve database from storage. 
 	userdata = getDatabaseFromStorage();
-
-	// Get rows in table body. 
-	let tbody = document.querySelector('main#table table.table tbody');
 	
 	// Initiate result. 
 	let result = '';
@@ -218,11 +216,8 @@ function displayDatabase() {
 			let selectedIndex = editbtn.getAttribute('data-index');
 			console.log('Editing item at index:',selectedIndex);
 
-			// Get update button in item editor. 
-			let updatebtn = document.querySelector('div.overlay main#editor input.updatebtn');
-
 			// Attach selected index to update button in item editor. 
-			updatebtn.setAttribute('data-selectedindex',selectedIndex);
+			editorupdatebtn.setAttribute('data-selectedindex',selectedIndex);
 
 			// Get previous values of selected item. 
 			let prevname = ''+userdata[selectedIndex].name;
