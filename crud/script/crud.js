@@ -29,15 +29,27 @@ let userdata;
 /*****/
 
 
-// Display all items in database. 
-loadAllDataItems();
+// Display database on page. 
+displayDatabase();
 
 
 /*****/
 
 
+// Refill database. 
+function refillDatabase() {
+	// alert('Hi');
+
+	// 
+	userdata = userDataList.map(x=>x);
+	console.log(userdata);
+	
+	// Save updated database to storage. 
+	saveDatabaseToStorage();
+}
+
 // Read: Display all items in database. 
-function loadAllDataItems() {
+function displayDatabase() {
 
 	// Retrieve database from storage. 
 	userdata = getDatabaseFromStorage();
@@ -48,14 +60,29 @@ function loadAllDataItems() {
 	// Initiate result. 
 	let result = '';
 	
-	// Add previous data. 
+	// Go thru all items in database. 
 	for(i in userdata) {
+		// Add layout for given item. 
+		result += createItemLayout(i);
+	}
+	
+	// Add resulting layouts to table. 
+	tbody.innerHTML = result;
+
+	// Activate button clicks for new item operations. 
+	activateItemOperations();
+
+	/****/
+
+	// Create item layout. 
+	function createItemLayout(i) {
 		
 		// Get data for user. 
 		let user = userdata[i];
 		// console.log(i,`User item:`,user);
-	
-		result += `
+
+		// 
+		return `
 		<!-- row -->
 		<tr class="row body">
 		
@@ -63,7 +90,17 @@ function loadAllDataItems() {
 			<td class="cell">
 
 				<!-- data -->
-				<span class="data">${i}</span>
+				<span class="data">${ i }</span>
+				<!-- /data -->
+
+			</td>
+			<!-- /cell -->
+		
+			<!-- cell -->
+			<td class="cell">
+
+				<!-- data -->
+				<span class="data">${ user.userid || '' }</span>
 				<!-- /data -->
 
 			</td>
@@ -73,7 +110,7 @@ function loadAllDataItems() {
 			<td class="cell">
 	
 				<!-- data -->
-				<span class="data">${user.name}</span>
+				<span class="data">${ user.name || user.fullname || '' }</span>
 				<!-- /data -->
 	
 			</td>
@@ -83,7 +120,7 @@ function loadAllDataItems() {
 			<td class="cell">
 	
 				<!-- data -->
-				<span class="data">${user.email}</span>
+				<span class="data">${ user.email || '' }</span>
 				<!-- /data -->
 	
 			</td>
@@ -93,7 +130,7 @@ function loadAllDataItems() {
 			<td class="cell">
 	
 				<!-- data -->
-				<span class="data">${user.mobilenumber}</span>
+				<span class="data">${ user.mobilenumber || '' }</span>
 				<!-- /data -->
 	
 			</td>
@@ -147,38 +184,34 @@ function loadAllDataItems() {
 		</tr>
 		<!-- /row -->`;
 	}
-	
-	// Add new rows to table. 
-	tbody.innerHTML = result;
 
-	// Handle button clicks for new items. 
-	handleClicks();
-
-	/*****/
-
-	// Handle button clicks for new items. 
-	function handleClicks() {
+	// Activate button clicks for new item operations. 
+	function activateItemOperations() {
 
 		// Get all edit buttons. 
 		let editbtns = document.querySelectorAll('table.table td.cell div.panel div.editbtn');
+
+		// Go thru all edit buttons. 
 		for(let btn of editbtns) {
-			// 
-			btn.addEventListener('click',editHelper);
+			// Activate button click. 
+			btn.addEventListener('click',startEditingItem);
 		}
 
 		// Get all delete buttons. 
 		let deletebtns = document.querySelectorAll('table.table td.cell div.panel div.deletebtn');
+
+		// Go thru all delete buttons. 
 		for(let btn of deletebtns) {
-			// 
-			btn.addEventListener('click',deleteDataItem);
+			// Activate button click. 
+			btn.addEventListener('click',startDeletingItem);
 		}
 
-		/*****/
+		/***/
 
-		// 
-		function editHelper(event) {
+		// Start editing selected item. 
+		function startEditingItem(event) {
 
-			// Get edit button clicked. 
+			// Get selected edit button. 
 			let editbtn = event.currentTarget;
 
 			// Get index of selected item to edit. 
@@ -188,35 +221,45 @@ function loadAllDataItems() {
 			// Get update button in item editor. 
 			let updatebtn = document.querySelector('div.overlay main#editor input.updatebtn');
 
-			// Add selected index to attribute of update button. 
+			// Attach selected index to update button in item editor. 
 			updatebtn.setAttribute('data-selectedindex',selectedIndex);
 
-			// Get previous values. 
+			// Get previous values of selected item. 
 			let prevname = ''+userdata[selectedIndex].name;
 			let prevemail = ''+userdata[selectedIndex].email;
 			let prevmobilenumber = ''+userdata[selectedIndex].mobilenumber;
 
-			// Get editor input boxes. 
-			let namebox = inputname;
-			let emailbox = inputemail;
-			let mobilenumberbox = inputmobilenumber;
-
-			// TODO: Place previous values as input placeholders (if valid). 
-			if(prevname.length>0) namebox.placeholder = prevname;
-			else namebox.placeholder = namebox.getAttribute('data-default-placeholder');
-			if(prevemail.length>0) emailbox.placeholder = prevemail;
-			else emailbox.placeholder = emailbox.getAttribute('data-default-placeholder');
-			if(prevmobilenumber.length>0) mobilenumberbox.placeholder = prevmobilenumber;
-			else mobilenumberbox.placeholder = mobilenumberbox.getAttribute('data-default-placeholder');
+			// Place previous name value as input placeholder (if valid). 
+			if(prevname.length>0) inputname.placeholder = prevname;
+			else inputname.placeholder = inputname.getAttribute('data-default-placeholder');
+			// Place previous email value as input placeholder (if valid). 
+			if(prevemail.length>0) inputemail.placeholder = prevemail;
+			else inputemail.placeholder = inputemail.getAttribute('data-default-placeholder');
+			// Place previous mobilenumber value as input placeholder (if valid). 
+			if(prevmobilenumber.length>0) inputmobilenumber.placeholder = prevmobilenumber;
+			else inputmobilenumber.placeholder = inputmobilenumber.getAttribute('data-default-placeholder');
 
 			// Open overlay in editor mode. 
-			openOverlay();
+			openOverlay(false);
+		}
+
+		// Start deleting selected item. 
+		function startDeletingItem(event) {
+
+			// Get selected delete button. 
+			let deletebtn = event.currentTarget;
+		
+			// Get index of deletion. 
+			let indexOfDeletion = deletebtn.getAttribute('data-index');
+
+			// 
+			deleteItem(indexOfDeletion)
 		}
 	}
 }
 
 // Create: Add new item to database. 
-function addNewDataItem() {
+function createItem() {
 
 	// Get user input data and create new item. 
 	let newitem = {
@@ -248,7 +291,7 @@ function addNewDataItem() {
 }
 
 // Update: Edit item in database. 
-function updateDataItem(indexOfUpdate=-1) {
+function updateItem(indexOfUpdate=-1) {
 	console.log('Index to update:',indexOfUpdate);
 
 	// Handle erroneous index of update. 
@@ -286,13 +329,7 @@ function updateDataItem(indexOfUpdate=-1) {
 }
 
 // Delete: Remove item from database. 
-function deleteDataItem(event) {
-
-	// Get selected delete button. 
-	let btn = event.currentTarget;
-
-	// Get index of deletion. 
-	let indexOfDeletion = btn.getAttribute('data-index');
+function deleteItem(indexOfDeletion) {
 
 	// Confirm deletion. 
 	let doDelete = confirm('Are you sure you want to delete this item ?');
@@ -311,8 +348,8 @@ function deleteDataItem(event) {
 	}
 }
 
-// Clear: Clear all items from database. 
-function clearDatabase() {
+// Reset: Clear all items from database. 
+function resetDatabase() {
 
 	// Confirm deletion. 
 	let doDelete = confirm('Reset database ?');
