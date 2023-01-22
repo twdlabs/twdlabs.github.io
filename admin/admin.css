@@ -19,90 +19,103 @@
 	--yellow:#ffe6ac;
 	--magenta:#e7d1fc;
 	
-	--grey:#6f6f6f;
+	--gray:#AAA;
 	--black:#222;
-	--ltgrey:#CCC;
-	--darkgrey:#333;
-	--ltltgrey:#e6e5e5;
+	--ltgray:#CCC;
+	--ltblack:#383838;
+	--darkgray:#6f6f6f;
+	--ltltgray:#e6e5e5;
 	--whiteglass:#FFF4;
 
 	--dotsize:.375rem;
-	--avatarsize:3rem;
+	--avatarsize:2.5rem;
 	--headerheight:4rem;
+	--transitiontime:.5s;
+	
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
 }
 
 
 
-body {font-family:Nunito,Poppins,sans-serif; margin:0;}
-
-
+body {background-color:var(--backcolor);font-family:Nunito,Poppins,sans-serif; margin:0;}
 
 /* Light Color Theme */
-div#container {
+body {
 	--backcolor:white;
+	--backcolor2:var(--ltltgray);
 	--forecolor:var(--black);
-	--forecolorh:black;
-	--bordercolor:var(--ltltgrey);
+	--forecolorhead:black;
+	--hoverbackcolor:var(--ltltgray);
+	--hoverforecolor:var(--darkgray);
+	--bordercolor:var(--ltltgray);
 }
 /* Dark Color Theme */
-div#container.dark {
-	--backcolor:var(--darkgrey);
-	--forecolor:var(--ltgrey);
-	--forecolorh:white;
+body.dark {
+	--backcolor:var(--ltblack);
+	--backcolor2:var(--black);
+	--forecolor:var(--ltgray);
+	--forecolorhead:white;
+	--hoverbackcolor:var(--gray);
+	--hoverforecolor:var(--darkgray);
 	--bordercolor:var(--whiteglass);
 }
+
 /* Sidebar State */
 div#container {
 	--sidebarsize:var(--avatarsize);
-	--captionwidth:0;
 	--captionopacity:0;
 }
 /* Sidebar State: Open */
 div#container.open {
 	--sidebarsize:14rem;
-	--captionwidth:auto;
 	--captionopacity:1;
 }
 
 
 
 /* Main Container */
-div#container {background-color:var(--backcolor); color:var(--forecolor); transition:.5s;}
-div#container {display:flex; flex-direction:row; align-items:stretch; height:100vh; border:1px solid var(--bordercolor);}
+div#container {background-color:var(--backcolor); color:var(--forecolor); transition:var(--transitiontime);}
+div#container {display:flex; flex-direction:row; align-items:stretch; /* height:100vh; */ border:1px solid var(--bordercolor);}
+div#container.open {overflow-x:hidden;}
 div#container ::selection {background-color:var(--royal); color:white;}
-div#container main.main {flex-grow:1; flex-shrink:0; transition:.5s;}
-div#container nav.sidebar {flex-grow:0; flex-shrink:0; transition:.5s;}
+div#container main.main {flex-grow:1; flex-shrink:0; transition:var(--transitiontime);}
+div#container nav.sidebar {flex-grow:0; flex-shrink:0; transition:var(--transitiontime);}
 
 
 
 /* Nav Sidebar */
 /* div#container nav.sidebar {position:fixed; top:0; left:0; bottom:0; height:100%; z-index:100;} */
-div#container nav.sidebar {overflow-x:hidden; overflow-y:auto; padding:1rem 1rem; border-right:1px solid var(--bordercolor);}
+div#container nav.sidebar {background-color:var(--backcolor); overflow-x:hidden; overflow-y:auto; padding:1rem 1rem; border-right:1px solid var(--bordercolor); box-shadow:var(--boxshadow);}
 div#container nav.sidebar div.bin {display:flex; flex-direction:column; /* align-items:center; */}
-div#container nav.sidebar div.bin {height:100%; /* min- */width:var(--sidebarsize); overflow:visible; transition:.5s;}
+div#container nav.sidebar div.bin {height:100%; /* min- */width:var(--sidebarsize); overflow:visible; transition:var(--transitiontime);}
 div#container nav.sidebar div.bin a.brand {display:flex; flex-direction:row; align-items:center; text-decoration:none; /* margin-top:.5rem; */}
-div#container nav.sidebar div.bin a.brand h1.name {color:var(--forecolorh); font-size:1.75rem; font-weight:600; margin:0; margin-left:.375em;}
-div#container nav.sidebar div.bin a.brand h1.name span.caption {opacity:var(--captionopacity); width:var(--captionwidth); transition:.5s;}
+div#container nav.sidebar div.bin a.brand h1.name {color:var(--forecolorhead); font-size:1.75rem; font-weight:600; margin:0; margin-left:.375em;}
+div#container nav.sidebar div.bin a.brand h1.name span.caption {opacity:var(--captionopacity); transition:var(--transitiontime);}
 div#container nav.sidebar div.bin a.brand img.logo {background-color:var(--royal); object-fit:cover; height:var(--avatarsize); width:var(--avatarsize); border:0 none; border-radius:50%;}
-/* div#container nav.sidebar div.bin a.brand img.logo::after {content:'TWD';} */
-div#container nav.sidebar div.bin ul.list {display:flex; flex-direction:column; align-items:stretch; list-style:none; padding:0; margin:0;}
+div#container nav.sidebar div.bin ul.list {display:flex; flex-direction:column; align-items:stretch; list-style:none; padding:0; padding-top:1.5rem; margin:0; margin-top:1rem;}
 /* div#container nav.sidebar div.bin ul.list {} */
-div#container nav.sidebar div.bin ul.list.navlist {flex-grow:1; justify-content:flex-start; margin-top:1rem;}
-div#container nav.sidebar div.bin ul.list.statelist {justify-content:flex-end; padding-top:.5rem; border-top:1px solid var(--bordercolor);}
-div#container nav.sidebar div.bin ul.list li.item {color:var(--forecolor); font-size:1.25rem; font-weight:300; overflow-x:visible; padding:.5rem 0; margin-top:1rem;}
+div#container nav.sidebar div.bin ul.list.navlist {flex-grow:1; justify-content:flex-start;}
+div#container nav.sidebar div.bin ul.list.statelist {justify-content:flex-end; border-top:1px solid var(--bordercolor);}
+div#container nav.sidebar div.bin ul.list li.item {color:var(--forecolor); font-weight:300; overflow-x:visible; /* padding:.5rem 0; */ margin-bottom:1rem;}
 div#container nav.sidebar div.bin ul.list li.item {flex-grow:0; flex-shrink:0;}
 div#container nav.sidebar div.bin ul.list li.item a.link {display:flex; flex-direction:row; /* justify-content:center; */ align-items:center; position:relative;}
-div#container nav.sidebar div.bin ul.list li.item a.link {color:inherit; text-decoration:none;}
-div#container nav.sidebar div.bin ul.list li.item a.link.navlink:hover {color:var(--ltgrey);}
+div#container nav.sidebar div.bin ul.list li.item a.link {color:inherit; font-size:1.125rem; text-decoration:none; padding:.375em 0; border-radius:50rem;}
+div#container nav.sidebar div.bin ul.list li.item a.link.navlink:hover {/* background-color:var(--hoverbackcolor); */ color:var(--hoverforecolor);}
 div#container nav.sidebar div.bin ul.list li.item a.link.navlink.active {color:var(--royal);}
 div#container nav.sidebar div.bin ul.list li.item a.link.navlink::after {background-color:var(--royal); height:var(--dotsize); width:var(--dotsize); border-radius:50%;}
-div#container nav.sidebar div.bin ul.list li.item a.link.navlink::after {position:absolute; right:100%; top:50%; transform:translateY(-50%); /* margin-right:.5rem; */}
+div#container nav.sidebar div.bin ul.list li.item a.link.navlink::after {position:absolute; right:calc(100% + .125rem); top:50%; transform:translateY(-50%); /* margin-right:.5rem; */}
 div#container nav.sidebar div.bin ul.list li.item a.link.navlink.active::after {content:'';}
 div#container nav.sidebar div.bin ul.list li.item a.link svg.icon {font-size:1.25em; min-width:var(--avatarsize); transition:.125s; /* margin:0 auto; transition:.5s margin; */}
-div#container nav.sidebar div.bin ul.list li.item a.link span.caption {opacity:var(--captionopacity); width:var(--captionwidth); white-space:nowrap; transition:.375s; margin-left:0;}
+div#container nav.sidebar div.bin ul.list li.item a.link svg.icon.reg {display:block;}
+div#container nav.sidebar div.bin ul.list li.item a.link svg.icon.bold {display:none;}
+div#container nav.sidebar div.bin ul.list li.item a.link.active svg.icon.reg {display: none;}
+div#container nav.sidebar div.bin ul.list li.item a.link.active svg.icon.bold {display: block;}
+div#container nav.sidebar div.bin ul.list li.item a.link span.caption {opacity:var(--captionopacity); white-space:nowrap; transition:.375s; margin-left:0;}
+div#container nav.sidebar div.bin ul.list li.item a.link:hover svg.icon {transform:scale(1.15);}
 /* div#container nav.sidebar div.bin ul.list li.item div.switch {display:none;} */
 div#container nav.sidebar div.bin ul.list li.item div.switch {position:absolute; top:50%; right:50%; transform:translate(50%,-50%);}
-div#container nav.sidebar div.bin ul.list li.item div.switch {background-color:var(--ltgrey); box-sizing:content-box; cursor:pointer; transition:.5s;}
+div#container nav.sidebar div.bin ul.list li.item div.switch {background-color:var(--backcolor2); box-sizing:content-box; cursor:pointer; transition:var(--transitiontime);}
 div#container nav.sidebar div.bin ul.list li.item div.switch {--switchwidth:2.75rem; height:calc(var(--switchwidth)/2); width:var(--switchwidth); padding:.125rem; border-radius:4rem; border:1px solid var(--bordercolor); margin-left:auto;}
 div#container nav.sidebar div.bin ul.list li.item div.switch div.dot {background-color:white; height:100%; width:50%; border-radius:50%; transition:.125s;}
 /* div#container nav.sidebar div.bin ul.list li.space {flex-grow:1; flex-shrink:1;} */
@@ -110,112 +123,205 @@ div#container nav.sidebar div.bin ul.list li.item div.switch div.dot {background
 /* div#container.open nav.sidebar div.bin ul.list li.item a.link svg.icon {margin:0;} */
 /* div#container.open nav.sidebar div.bin ul.list li.item a.link span.caption {margin-left:.25rem;} */
 div#container.open nav.sidebar div.bin ul.list li.item div.switch {transform:translateY(-50%); right:0;}
-div#container.dark nav.sidebar div.bin ul.list li.item div.switch {background-color:var(--black);}
-div#container.dark nav.sidebar div.bin ul.list li.item div.switch div.dot {transform:translateX(100%);}
+.dark div#container nav.sidebar div.bin ul.list li.item div.switch div.dot {transform:translateX(100%);}
 
 
 
-/* Main Content */
-div#container main.main {position:relative; overflow-x:auto; overflow-y:auto; padding-top:var(--headerheight);}
-div#container main.main nav.headbar {background-color:white; transition:.5s; /* border-bottom:1px solid var(--ltltgrey); */ /* box-shadow:var(--thinshadow); */}
+/* Main Side */
+div#container main.main {background-color:var(--backcolor); position:relative; overflow-x:auto; overflow-y:auto;}
+/* Main Side: Headbar */
+div#container main.main nav.headbar {background-color:var(--backcolor); transition:var(--transitiontime); border-bottom:1px solid var(--bordercolor); /* box-shadow:var(--thinshadow); */}
 div#container main.main nav.headbar {position:absolute; top:0; right:0; left:0; width:100%; min-height:var(--headerheight);}
-div#container main.main nav.headbar {display:flex; flex-direction:row; align-items:center; overflow:hidden; padding:.75rem 1.375rem;}
-div#container main.main nav.headbar div.btn {flex-grow:0; flex-shrink:0; cursor:pointer; user-select:none;}
-div#container main.main nav.headbar div.navtoggler svg.icon {display:block; font-size:1.75rem;}
-div#container main.main nav.headbar div.accountbtn img.avatar {display:block; height:var(--avatarsize); width:var(--avatarsize); object-fit:cover; border-radius:50%;}
+div#container main.main nav.headbar {display:flex; flex-direction:row; align-items:center; /* overflow:hidden; */ padding:.75rem var(--headbarpadx); --headbarpadx:1.375rem;}
+div#container main.main nav.headbar a.brand {display:flex; flex-direction:row; align-items:center; text-decoration:none; /* margin-top:.5rem; */}
+div#container main.main nav.headbar a.brand {display:none;}
+div#container main.main nav.headbar a.brand h1.name {color:var(--forecolorhead); font-size:1.75rem; font-weight:600; margin:0; margin-left:.375em;}
+div#container main.main nav.headbar a.brand h1.name span.caption {display:none; /* opacity:var(--captionopacity); */ transition:var(--transitiontime);}
+div#container main.main nav.headbar a.brand img.logo {background-color:var(--royal); object-fit:cover; height:var(--avatarsize); width:var(--avatarsize); border:0 none; border-radius:50%;}
 div#container main.main nav.headbar div.space {flex-grow:1;}
 div#container main.main nav.headbar div.search {flex-grow:4;}
-div#container main.main nav.headbar div.search {background-color:var(--ltltgrey); /* height:100%; */ padding:.5rem .25rem; border:1px solid var(--bordercolor); border-radius:.25rem;}
-div#container main.main nav.headbar div.search {display:flex; flex-direction:row; align-items:center;}
-div#container main.main nav.headbar div.search span.iconbox {flex-grow:0; flex-shrink:0; padding:0 .75rem;}
-div#container main.main nav.headbar div.search span.iconbox svg.icon {display:block; font-size:1.25rem;}
-div#container main.main nav.headbar div.search input#searchquery {width:100%; flex-grow:1;}
-div#container main.main nav.headbar div.search input#searchquery {background-color:inherit; color:inherit; font-family:inherit; font-size:1.25rem; border:0 none; outline:none;}
-div#container.dark main.main nav.headbar {background-color:var(--darkgrey);}
-div#container.dark main.main nav.headbar div.search {background-color:var(--darkgrey); background-color:var(--black); color:whitesmoke;}
+/* Main Side: Headbar Nav Buttons */
+div#container main.main nav.headbar div.btn {flex-grow:0; flex-shrink:0; cursor:pointer; user-select:none; position:relative;}
+div#container main.main nav.headbar div.btn svg.icon {display:block;}
+/* Main Side: Headbar Nav Toggler */
+/* div#container main.main nav.headbar div.navtoggler {} */
+div#container main.main nav.headbar div.navtoggler svg.icon {font-size:1.75rem;}
+/* Main Side: Headbar Notification Center */
+div#container main.main nav.headbar div.notifcenter {display:flex; justify-content:center; min-width:var(--avatarsize); /* position:relative; */ margin-right:1.25rem;}
+/* div#container main.main nav.headbar div.notifcenter.active {} */
+div#container main.main nav.headbar div.notifcenter div.notifbtn svg.icon {font-size:calc(var(--avatarsize)/2);}
+div#container main.main nav.headbar div.notifcenter div.notifbtn span.count {position:absolute; top:0; right:0; transform:translate(50%,-50%);}
+div#container main.main nav.headbar div.notifcenter div.notifbtn span.count {display:grid; place-items:center; --size:1rem; min-height:var(--size); min-width:var(--size); transition:var(--transitiontime);}
+div#container main.main nav.headbar div.notifcenter div.notifbtn span.count {background-color:indianred; color:white; font-size:.75rem; padding:.125rem .25rem; border-radius:50rem; border:.125rem solid var(--backcolor);}
+div#container main.main nav.headbar div.notifcenter div.notifdrop {display:none; background-color:var(--backcolor2); padding:.125rem; border-radius:.25rem; border:1px solid var(--backcolor2); margin-top:1rem; margin-top:.125rem; box-shadow:var(--boxshadow);}
+div#container main.main nav.headbar div.notifcenter div.notifdrop {position:absolute; top:100%; right:0; width:100%;}
+div#container main.main nav.headbar div.notifcenter div.notifdrop::before {content:''; position:absolute; bottom:100%; right:calc(1.25rem + var(--headbarpadx) + 1.5*var(--avatarsize)); /* right:6.375rem; */ transform:translateX(50%); border:.75rem solid transparent; border-bottom-color:var(--backcolor2);}
+div#container main.main nav.headbar div.notifcenter.active div.notifdrop {display:block;}
+div#container main.main nav.headbar div.notifcenter.active div.notifdrop h1.head {font-size:1.25rem; padding:.75rem 1rem; border-bottom:1px solid var(--backcolor2); margin:0;}
+div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist {list-style:none; padding:0; margin:0;}
+/* div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem {} */
+div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem a.notiflink {background-color:var(--backcolor); min-width:12rem; padding:.875rem 1rem;}
+div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem a.notiflink {display:flex; align-items:center; color:inherit; text-decoration:none; position:relative;}
+div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem a.notiflink:hover {background-color:var(--backcolor2);}
+/* div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem a.notiflink::after {position:absolute; right:.75rem; top:50%; transform:translate(-50%,-50%);} */
+div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem a.notiflink::after {background-color:indianred; content:''; --dotsize:.375rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%;}
+/* div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem a.notiflink svg.icon {} */
+div#container main.main nav.headbar div.notifcenter div.notifdrop ul.notiflist li.notifitem a.notiflink span.caption {flex-grow:1; white-space:nowrap; margin-left:.5rem;}
+/* Main Side: Headbar Account Center */
+/* div#container main.main nav.headbar div.accountbtn {} */
+div#container main.main nav.headbar div.accountbtn img.avatar {display:block; height:var(--avatarsize); width:var(--avatarsize); object-fit:cover; border-radius:50%;}
+/* Main Side: Headbar Search Center */
+/* div#container main.main nav.headbar div.search {background-color:var(--backcolor);} */
+div#container main.main nav.headbar div.search div.searchbar {background-color:var(--backcolor2); /* height:100%; */ padding:.25rem; border:1px solid var(--bordercolor); border-radius:25rem;}
+div#container main.main nav.headbar div.search div.searchbar {display:flex; flex-direction:row; align-items:center; /* align-items:stretch; */ position:relative; overflow:hidden;}
+div#container main.main nav.headbar div.search div.searchbar label.icon {flex-grow:0; flex-shrink:0; cursor:pointer; padding:0 .75rem;}
+div#container main.main nav.headbar div.search div.searchbar label.icon svg.icon {display:block; font-size:1.25rem;}
+div#container main.main nav.headbar div.search div.searchbar input#searchquery {width:100%; flex-grow:1;}
+div#container main.main nav.headbar div.search div.searchbar input#searchquery {background-color:inherit; color:inherit; font-family:inherit; font-size:1.125rem; border:0 none; outline:none;}
+/* div#container main.main nav.headbar div.search div.searchbar div.sendbtn {position:absolute; right:0; height:100%; width:2.625rem;} */
+div#container main.main nav.headbar div.search div.searchbar div.sendbtn {background-color:var(--royal); color:white; display:grid; place-items:center; padding:.25rem; border-radius:20rem;}
+div#container main.main nav.headbar div.search div.searchbar div.sendbtn svg.icon {display:block; font-size:1.75rem;}
+div#container main.main nav.headbar div.searchbtn {display:none; margin-left:.75rem;}
+div#container main.main nav.headbar div.searchbtn svg.icon {font-size:calc(var(--avatarsize)/2);}
 
-/* Main Content: General Section */
-div#container main.main section {padding:2rem; margin-top:2rem;}
-div#container main.main section h2.head {display:flex; flex-direction:row; align-items:center; font-weight:400; margin:0; margin-bottom:2rem;}
-div#container main.main section h2.head span.iconbox {flex-grow:0; flex-shrink:0; background-color:var(--royal); color:white; padding:.5rem; border-radius:.5rem; margin-right:.5rem;}
-div#container main.main section h2.head span.iconbox svg.icon {display:block;}
-div#container main.main section h2.head span.caption {flex-grow:1;}
-
-/* Main Content: Summary Section */
-div#container main.main section.summary div.content {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.75rem 1.5rem;}
-/* div#container main.main section.summary div.content {grid-template-columns:repeat(2,1fr);} */
-/* div#container main.main section.summary div.content {grid-template-columns:repeat(1,1fr);} */
-div#container main.main section.summary div.content div.box {display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; padding:1.75rem; border-radius:.75rem; border:1px solid var(--bordercolor);}
-div#container main.main section.summary div.content div.box.b {background-color:var(--blue);}
-div#container main.main section.summary div.content div.box.g {background-color:var(--yellow);}
-div#container main.main section.summary div.content div.box.m {background-color:var(--magenta);}
-div#container main.main section.summary div.content div.box svg.icon {font-size:1.875rem; display:block;}
-div#container main.main section.summary div.content div.box span.label {font-size:1rem; font-weight:400; margin-top:1.25rem;}
-div#container main.main section.summary div.content div.box span.number {font-size:2.5rem; font-weight:400; margin-top:.375rem;}
-div#container.dark main.main section.summary div.content div.box {background-color:var(--black);}
-
-/* Main Content: Data Section */
-div#container main.main section.datagrid div.content {overflow-x:auto;}
-div#container main.main section.datagrid div.content table.table {text-align:left; width:100%;}
-div#container main.main section.datagrid div.content table.table th.head,
-div#container main.main section.datagrid div.content table.table td.cell {padding-bottom:1rem;}
-div#container main.main section.datagrid div.content table.table th.head h3.head {font-size:1.25rem; font-weight:400; margin:0;}
-div#container main.main section.datagrid div.content table.table td.cell span.data {font-size:1rem; font-weight:300}
+/* Page Content */
+div#container main.main main.pagecontent {margin-top:calc(var(--headerheight)*2);}
+/* Page Content: General Section */
+div#container main.main main.pagecontent section {padding:0 2rem; margin-top:4rem;}
+div#container main.main main.pagecontent section h2.head {display:flex; flex-direction:row; align-items:center; font-weight:400; margin:0; margin-bottom:2rem;}
+div#container main.main main.pagecontent section h2.head span.iconbox {flex-grow:0; flex-shrink:0; background-color:var(--royal); color:white; padding:.5rem; border-radius:.5rem; margin-right:.5rem;}
+div#container main.main main.pagecontent section h2.head span.iconbox svg.icon {display:block;}
+div#container main.main main.pagecontent section h2.head span.caption {flex-grow:1;}
+/* Page Content: Summary Section */
+/* div#container main.main main.pagecontent section.summary {} */
+div#container main.main main.pagecontent section.summary div.content {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.75rem;}
+/* div#container main.main main.pagecontent section.summary div.content {grid-template-columns:repeat(2,1fr);} */
+/* div#container main.main main.pagecontent section.summary div.content {grid-template-columns:repeat(1,1fr);} */
+div#container main.main main.pagecontent section.summary div.content div.box {background-color:var(--backcolor2); display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; padding:2.5rem 1.75rem; border-radius:.75rem; border:1px solid var(--bordercolor);}
+/* div#container main.main main.pagecontent section.summary div.content div.box.b {--backcolor2:var(--blue);} */
+/* div#container main.main main.pagecontent section.summary div.content div.box.g {--backcolor2:var(--yellow);} */
+/* div#container main.main main.pagecontent section.summary div.content div.box.m {--backcolor2:var(--magenta);} */
+div#container main.main main.pagecontent section.summary div.content div.box svg.icon {font-size:2.75rem; display:block; margin-bottom:.75rem;}
+div#container main.main main.pagecontent section.summary div.content div.box span.label {font-size:1.25rem; font-weight:400;}
+div#container main.main main.pagecontent section.summary div.content div.box span.number {font-size:2.5rem; font-weight:400; /* margin-top:.375rem; */}
+/* Page Content: Data Grid Section */
+/* div#container main.main main.pagecontent section.datagrid {} */
+div#container main.main main.pagecontent section.datagrid div.content {overflow-x:auto;}
+div#container main.main main.pagecontent section.datagrid div.content table.table {text-align:left; width:100%;}
+/* div#container main.main main.pagecontent section.datagrid div.content table.table th.head,
+div#container main.main main.pagecontent section.datagrid div.content table.table td.cell {padding-bottom:.5rem;} */
+div#container main.main main.pagecontent section.datagrid div.content table.table th.head h3.head {font-size:1.25rem; font-weight:400; margin:0;}
+div#container main.main main.pagecontent section.datagrid div.content table.table td.cell span.data {font-size:1rem; font-weight:300}
 
 
 
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
-
-	/* Main Container */
-	/* div#container {} */
-
+	
 	/* Nav Sidebar */
+	/* div#container nav.sidebar {} */
 
-	/* Main Content */
+	/* Main Side */
 	/* div#container main.main {} */
-	/* div#container main.main section {} */
-	/* div#container main.main section.summary {} */
-	/* div#container main.main section.summary div.content {} */
-	/* div#container main.main section.summary div.content div.box {} */
-	div#container main.main section.summary div.content div.box span.number {font-size:2rem;}
+	/* Main Side: Headbar */
+	/* div#container main.main nav.headbar {} */
+	
+	/* Page Content */
+	/* div#container main.main main.pagecontent {} */
+	/* Page Content: General Section */
+	/* div#container main.main main.pagecontent section {} */
+	/* Page Content: Summary Section */
+	/* div#container main.main main.pagecontent section.summary {} */
+	div#container main.main main.pagecontent section.summary div.content {grid-template-columns:repeat(2,1fr);}
+	/* div#container main.main main.pagecontent section.summary div.content div.box {} */
+	div#container main.main main.pagecontent section.summary div.content div.box span.number {font-size:2rem;}
+	/* Page Content: Data Grid Section */
+	/* div#container main.main main.pagecontent section.datagrid {} */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
 
-	/* Main Container */
-	/* div#container {} */
-
 	/* Nav Sidebar */
+	/* div#container nav.sidebar {} */
 
-	/* Main Content */
+	/* Main Side */
 	/* div#container main.main {} */
+	/* div#container main.main {margin-left:5rem;} */
+	/* Main Side: Headbar */
 	/* div#container main.main nav.headbar {} */
-	div#container main.main nav.headbar div.search {position:absolute; top:100%; left:50%; transform:translateX(-50%); width:85%; margin:0 auto;}
-	div#container main.main section {padding:2rem 1.25rem;}
-	/* div#container main.main section {} */
-	/* div#container main.main section.summary {} */
-	div#container main.main section.summary div.content {grid-gap:.75rem 1rem;}
-	div#container main.main section.summary div.content div.box {padding:1rem .5rem;}
-	div#container main.main section.summary div.content div.box span.number {font-size:1.5rem;}
+	div#container main.main nav.headbar div.search {position:absolute; top:100%; left:0; width:100%; z-index:1; margin:0 auto;}
+	div#container main.main nav.headbar div.search {display:flex; flex-direction:row; justify-content:center; padding:0 2rem;}
+	div#container main.main nav.headbar div.search {transform:translateY(-300%); transition:var(--transitiontime);}
+	div#container main.main nav.headbar div.search div.searchbar {width:100%; max-width:20rem; margin-top:1rem;}
+	div#container.search main.main nav.headbar div.search {transform:none;}
+	div#container main.main nav.headbar div.searchbtn {display:block;}
+
+	/* Page Content */
+	/* div#container main.main main.pagecontent {} */
+	/* Page Content: General Section */
+	div#container main.main main.pagecontent section {padding:0 1.25rem;}
+	/* Page Content: Summary Section */
+	/* div#container main.main main.pagecontent section.summary {} */
+	div#container main.main main.pagecontent section.summary div.content {grid-template-columns:1fr; grid-gap:.75rem 1rem;}
+	div#container main.main main.pagecontent section.summary div.content div.box {padding:1rem .5rem;}
+	div#container main.main main.pagecontent section.summary div.content div.box span.number {font-size:1.5rem;}
+	/* Page Content: Data Grid Section */
+	/* div#container main.main main.pagecontent section.datagrid {} */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 
-	/* Main Container */
-	/* div#container {} */
+	/* Nav Sidebar */
+	div#container nav.sidebar {position:fixed; top:0; left:0; height:100%; z-index:99; opacity:0.9375; border:1px solid var(--bordercolor);}
+	div#container nav.sidebar {transform:translateX(-100%);}
+	div#container.open nav.sidebar {transform:none;}
+
+	/* Main Side */
+	div#container main.main {margin-left:0;}
+	/* Main Side: Headbar */
+	div#container main.main nav.headbar {position:fixed; top:0; right:0; left:0; width:100%; --headbarpadx:1rem; border:1px solid var(--bordercolor);}
+	div#container main.main nav.headbar a.brand {display:flex;}
+	div#container main.main nav.headbar div.search {padding:0 1rem;}
+	
+	/* Page Content */
+	/* div#container main.main main.pagecontent {} */
+	/* Page Content: General Section */
+	/* div#container main.main main.pagecontent section {} */
+	div#container main.main main.pagecontent section h2.head {justify-content:center;}
+	/* Page Content: Summary Section */
+	/* div#container main.main main.pagecontent section.summary {} */
+	div#container main.main main.pagecontent section.summary div.content {grid-template-columns:1fr;}
+	/* div#container main.main main.pagecontent section.summary div.content div.box {} */
+	div#container main.main main.pagecontent section.summary div.content div.box svg.icon {font-size:2rem;}
+	/* Page Content: Data Grid Section */
+	/* div#container main.main main.pagecontent section.datagrid {} */
+}
+
+/* Tiny Smartphone Screen */
+@media screen and (max-width:24rem) {
 
 	/* Nav Sidebar */
-	/* div#container nav.sidebar {position:fixed; top:0; left:0; height:100%; z-index:99; background-color:var(--backcolor);} */
+	/* div#container nav.sidebar {} */
+	/* div#container nav.sidebar div.bin {} */
+	/* div#container nav.sidebar div.bin ul.list {} */
+	/* div#container nav.sidebar div.bin ul.list li.item {} */
+	div#container nav.sidebar div.bin ul.list li.item a.link {font-size:1rem;}
 
-	/* Main Content */
+	/* Main Side */
 	/* div#container main.main {} */
-	/* div#container main.main section {} */
-	div#container main.main section h2.head {justify-content:center;}
-	/* div#container main.main section.summary {} */
-	div#container main.main section.summary div.content {grid-template-columns:1fr;}
+	/* Main Side: Headbar */
+	/* div#container main.main nav.headbar {} */
+	
+	/* Page Content */
+	/* div#container main.main main.pagecontent {} */
+	/* Page Content: General Section */
+	/* div#container main.main main.pagecontent section {} */
+	/* Page Content: Summary Section */
+	/* div#container main.main main.pagecontent section.summary {} */
+	/* Page Content: Data Grid Section */
+	/* div#container main.main main.pagecontent section.datagrid {} */
 }
 
