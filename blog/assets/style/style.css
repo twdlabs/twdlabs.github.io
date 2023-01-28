@@ -10,15 +10,13 @@
 
 :root {
 
-	--bgcolor:white;
-	--forecolor:#444;
 	--whitesheet:#FFFA;
 	--blackglass:#0002;
 	--darkblackglass:#0006;
 	--lightblackglass:#0001;
 
-	--black:#444;
 	--grey:#999;
+	--black:#444;
 	--lightgrey:#F4F4F4;
 
 	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
@@ -27,14 +25,18 @@
 	/* --pagewidth:100rem; */
 	--cornersize:.25rem;
 	--headerheight:6rem;
-
 	--bigcornersize:calc(var(--cornersize)*2);
-	--themecolor:#CCC;
+
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
 	--boxshadowx:rgba(0,0,0,0.25) 0 0.25rem .75rem 0;
 }
 
+
+body {
+	--bgcolor:white;
+	--forecolor:#444;
+}
 
 body.dark {
 	--bgcolor:#222;
@@ -43,8 +45,7 @@ body.dark {
 
 
 
-html {background-color:white; scroll-behavior:smooth;}
-/* html {background-color:var(--themecolor); background-image:var(--bgimg);} */
+html {background-color:white; background-image:var(--bgimg); scroll-behavior:smooth;}
 body {font-family:Nunito,sans-serif; scroll-behavior:smooth; margin:0;}
 
 
@@ -128,6 +129,7 @@ div#container footer.footer img.logo {width:10rem;}
 @media screen and (max-width:48rem) {
 
 	/* Navbar */
+	div#container {--headerheight:5rem;}
 	/* div#container nav.navbar {} */
 	/* div#container nav.navbar main.grid {} */
 	div#container nav.navbar main.grid h1.head {font-size:2rem;}
