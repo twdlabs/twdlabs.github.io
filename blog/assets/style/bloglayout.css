@@ -15,10 +15,10 @@ div#container section.blogtable main.grid div.item div.preview a.artlink {displa
 div#container section.blogtable main.grid div.item div.preview a.artlink img.preview {position:absolute; top:0; left:0;}
 div#container section.blogtable main.grid div.item div.preview a.artlink img.preview {display:block; height:100%; width:100%;/*  border-radius:var(--cornersize); */}
 div#container section.blogtable main.grid div.item div.preview div.adminpanel {position:absolute; bottom:0; right:0; /* height:100%; */}
-div#container section.blogtable main.grid div.item div.preview div.adminpanel {display:flex; flex-direction:column; opacity:.75; margin:.75rem;}
-div#container section.blogtable main.grid div.item div.preview div.adminpanel:hover {background-color:var(--lightblackglass);}
-div#container section.blogtable main.grid div.item div.preview div.adminpanel a.btn {background-color:var(--black); color:white; transition:.125s; padding:.625rem; border-radius:.25rem; margin-top:.25rem;}
-div#container section.blogtable main.grid div.item div.preview div.adminpanel a.editbtn {margin-top:0;}
+div#container section.blogtable main.grid div.item div.preview div.adminpanel {background-color:var(--darkblackglass); display:flex; flex-direction:row; opacity:.75; padding:.125rem; border-radius:.375rem; margin:.75rem;}
+div#container section.blogtable main.grid div.item div.preview div.adminpanel:hover {background-color:var(--grey);}
+div#container section.blogtable main.grid div.item div.preview div.adminpanel a.btn {background-color:var(--black); color:white; transition:.125s; padding:.625rem; border-radius:.25rem; margin:.125rem;}
+/* div#container section.blogtable main.grid div.item div.preview div.adminpanel a.editbtn {} */
 div#container section.blogtable main.grid div.item div.preview div.adminpanel a.editbtn:hover {background-color:dodgerblue;}
 /* div#container section.blogtable main.grid div.item div.preview div.adminpanel a.deletebtn {} */
 div#container section.blogtable main.grid div.item div.preview div.adminpanel a.deletebtn:hover {background-color:red;}
