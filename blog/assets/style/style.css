@@ -12,6 +12,7 @@
 
 	--bgcolor:white;
 	--forecolor:#444;
+	--whitesheet:#FFFA;
 	--blackglass:#0002;
 	--darkblackglass:#0006;
 	--lightblackglass:#0001;
@@ -24,8 +25,9 @@
 
 	--pagewidth:75rem;
 	/* --pagewidth:100rem; */
-
 	--cornersize:.25rem;
+	--headerheight:6rem;
+
 	--bigcornersize:calc(var(--cornersize)*2);
 	--themecolor:#CCC;
 	--boxshadow:0 0 1rem 0 #0002;
@@ -51,21 +53,19 @@ div#container {display:flex; flex-direction:column; align-items:center; align-it
 div#container {/* display:grid; place-items:center; */ min-height:100vh; /* padding:1rem; */}
 
 
-/* Navbar Section */
-div#container nav.navbar {position:fixed; top:0; left:0; width:100%; height:6rem; padding:0 1.5rem; z-index:100;}
-div#container nav.navbar {background-color:#0008; color:black;}
+/* Navbar */
+div#container nav.navbar {position:absolute; top:0; left:0; width:100%; height:var(--headerheight); padding:0 1.5rem; z-index:100;}
+div#container nav.navbar {/* background-color:#0008; */ color:black;}
 div#container nav.navbar main.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center; height:100%; max-width:calc(1.125*var(--pagewidth)); margin:0 auto;}
-div#container nav.navbar main.grid h1.head {display:flex; flex-direction:row; align-items:center; font-size:2.5rem; margin-left:.5rem;}
-/* div#container nav.navbar main.grid h1.head svg.icon {} */
-div#container nav.navbar main.grid h1.head span.caption {margin-left:.75rem;}
-div#container nav.navbar main.grid svg.icon.bars {font-size:2.5rem;}
-div#container nav.navbar main.grid svg.icon.bars {display:none;}
+div#container nav.navbar main.grid h1.head {display:flex; flex-direction:row; align-items:center; align-items:flex-start; font-size:2.5rem; transition:.5s; margin:0;}
+div#container nav.navbar main.grid h1.head img.logo {height:1.25em;}
+/* div#container nav.navbar main.grid h1.head span.caption {margin-left:.75rem;} */
 div#container nav.navbar main.grid ul.navlist {list-style:none; padding:0; margin:0;}
-div#container nav.navbar main.grid ul.navlist {display:flex; flex-direction:row; align-items:center;}
+div#container nav.navbar main.grid ul.navlist {background-color:white; display:flex; flex-direction:row; align-items:center;}
 div#container nav.navbar main.grid ul.navlist li.navitem {font-size:1.25rem; padding:1rem;}
 div#container nav.navbar main.grid ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
-div#container nav.navbar {display:none;}
-/* div#container section.hero {margin-top:6rem;} */
+div#container nav.navbar main.grid div.navtoggler {display:none; cursor:pointer;}
+div#container nav.navbar main.grid div.navtoggler svg.icon.bars {display:block; font-size:2.5rem; transition:.5s;}
 
 
 /* General Section */
@@ -75,12 +75,12 @@ div#container section > h2.head {font-size:2rem; text-align:center; margin-botto
 div#container section main.grid {max-width:var(--pagewidth); margin:0 auto;}
 
 /* Hero Section */
-div#container section.hero {background-color:var(--grey); color:black; /* min-height:99.9vh; */ padding:0 2rem;}
-div#container section.hero {background-size:cover; background-position:top center; transition:.5s;}
+div#container section.hero {background-color:var(--grey); color:black; padding:0 2rem; margin-top:var(--headerheight);}
+div#container section.hero {background-size:cover; background-position:top center; position:relative; transition:.5s;}
+/* div#container section.hero {} */
 /* div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;} */
-div#container section.hero {position:relative;}
-div#container section.hero::before {background-color:#FFFA; content:'';}
 div#container section.hero::before {position:absolute; top:0; left:0; height:100%; width:100%; z-index:0;}
+div#container section.hero::before {background-color:var(--whitesheet); content:'';}
 /* div#container section.hero main.grid {background-image:linear-gradient(white,dodgerblue,wheat,white);} */
 div#container section.hero main.grid {/* background-color:#FFF8; */ position:relative; border-radius:.5rem;}
 div#container section.hero main.grid {display:flex; flex-direction:column; justify-content:center; align-items:center;}
@@ -100,6 +100,8 @@ div#container footer.footer img.logo {width:10rem;}
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
+	
+	/* Navbar */
 
 	/* General Section */
 	/* div#container section {} */
@@ -113,6 +115,8 @@ div#container footer.footer img.logo {width:10rem;}
 /* Big Smartphone Screen */
 @media screen and (max-width:56rem) {
 
+	/* Navbar */
+
 	/* General Section */
 	div#container section {/* padding:0 2rem;  */margin-bottom:2rem;}
 
@@ -120,12 +124,49 @@ div#container footer.footer img.logo {width:10rem;}
 	/* div#container section.hero {} */
 }
 
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar main.grid {} */
+	div#container nav.navbar main.grid h1.head {font-size:2rem;}
+	/* div#container nav.navbar main.grid ul.navlist {} */
+	/* div#container nav.navbar main.grid div.navtoggler {} */
+	div#container nav.navbar main.grid div.navtoggler svg.icon.bars {font-size:2rem;}
+
+	/* General Section */
+
+	/* Hero Section */
+}
+
+
+/* Medium Smartphone Screen */
+@media screen and (max-width:40rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar main.grid {} */
+	/* div#container nav.navbar main.grid h1.head {} */
+	div#container nav.navbar main.grid ul.navlist {position:absolute; top:100%; left:0; width:100%;}
+	div#container nav.navbar main.grid ul.navlist {flex-direction:column; max-height:0; overflow:hidden;}
+	div#container nav.navbar.active main.grid ul.navlist {max-height:none;}
+	div#container nav.navbar main.grid div.navtoggler {display:block;}
+	/* div#container nav.navbar main.grid div.navtoggler svg.icon.bars {} */
+
+	/* General Section */
+	div#container section {/* padding:0 1.5rem; */ margin-bottom:1.5rem;}
+
+	/* Hero Section */
+}
+
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 
+	/* Navbar */
+
 	/* General Section */
-	div#container section {/* padding:0 1.5rem; */ margin-bottom:1.5rem;}
 
 	/* Hero Section */
 }
