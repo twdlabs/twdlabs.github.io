@@ -69,7 +69,7 @@ div#container nav.navbar {display:none;}
 
 
 /* General Section */
-div#container section {transition:.5s; padding:0 2rem; margin-bottom:2.5rem;}
+div#container section {transition:.5s; /* padding:0 2rem;  */margin-bottom:2.5rem;}
 div#container section > h2.head {font-size:2rem; text-align:center; margin-bottom:1rem;}
 /* div#container section > h2.head {max-width:var(--pagewidth); margin:0 auto 1rem;} */
 div#container section main.grid {max-width:var(--pagewidth); margin:0 auto;}
@@ -114,7 +114,7 @@ div#container footer.footer img.logo {width:10rem;}
 @media screen and (max-width:56rem) {
 
 	/* General Section */
-	div#container section {padding:0 2rem; margin-bottom:2rem;}
+	div#container section {/* padding:0 2rem;  */margin-bottom:2rem;}
 
 	/* Hero Section */
 	/* div#container section.hero {} */
@@ -125,7 +125,7 @@ div#container footer.footer img.logo {width:10rem;}
 @media screen and (max-width:32rem) {
 
 	/* General Section */
-	div#container section {padding:0 1.5rem; margin-bottom:1.5rem;}
+	div#container section {/* padding:0 1.5rem; */ margin-bottom:1.5rem;}
 
 	/* Hero Section */
 }

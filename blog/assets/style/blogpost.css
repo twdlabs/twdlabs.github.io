@@ -12,6 +12,7 @@
 /* div#container section.hero {} */
 div#container section.hero main.grid {align-items:flex-start; padding:6rem 0;}
 div#container section.hero main.grid h1.posttitle {font-size:3rem;}
+div#container section.hero main.grid h1.posttitle:empty::after {content:'[Untitled]';}
 div#container section.hero main.grid h2.postauthor {font-size:2rem;}
 div#container section.hero main.grid h2.postauthor {display:flex; flex-direction:row; align-items:center;}
 div#container section.hero main.grid h2.postauthor svg.icon {display:none; color:dodgerblue; font-size:.75em; margin-left:.5rem;}
@@ -20,24 +21,22 @@ div#container section.hero main.grid h2.postauthor.admin svg.icon {display:block
 div#container section.hero main.grid p.textcopy {font-size:1.75rem;}
 
 /* Post Section */
-/* div#container section.post {} */
-div#container section.post main.grid {background-color:white; padding:2rem; border-radius:var(--bigcornersize);}
-/* div#container section.post main.grid aside.meta {} */
-div#container section.post main.grid aside.meta span.date {font-weight:lighter;}
-div#container section.post main.grid aside.meta span.caption {font-weight:bold;}
-div#container section.post main.grid aside.meta span.caption::after {content:':';}
-/* div#container section.post main.grid article.post {} */
-div#container section.post main.grid article.post {margin-top:3rem;}
-div#container section.post main.grid article.post h1.title {display:none; margin:0;}
-div#container section.post main.grid article.post h1.title:empty::after {content:'[Untitled]';}
-div#container section.post main.grid article.post div.art {/* display:none; */ float:left; width:50%; max-width:30rem; margin-bottom:.5rem; margin-right:1rem;}
-div#container section.post main.grid article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
-div#container section.post main.grid article.post div.content {margin-top:1rem;}
-div#container section.post main.grid article.post div.content p.textcopy {margin:0; margin-top:1.25rem;}
-div#container section.post main.grid article.post div.content:empty::after {content:'[Empty content]';}
+/* div#container section.body {} */
+div#container section.body main.grid {background-color:white; padding:2rem; border-radius:var(--bigcornersize);}
+/* div#container section.body main.grid aside.meta {} */
+div#container section.body main.grid aside.meta span.date {font-weight:lighter;}
+div#container section.body main.grid aside.meta span.caption {font-weight:bold;}
+div#container section.body main.grid aside.meta span.caption::after {content:':';}
+/* div#container section.body main.grid article.post {} */
+div#container section.body main.grid article.post {margin-top:3rem;}
+div#container section.body main.grid article.post div.art {/* display:none; */ float:left; width:50%; max-width:30rem; margin-bottom:.5rem; margin-right:1rem;}
+div#container section.body main.grid article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
+div#container section.body main.grid article.post div.content {margin-top:1rem;}
+div#container section.body main.grid article.post div.content p.textcopy {margin:0; margin-top:1.25rem;}
+div#container section.body main.grid article.post div.content:empty::after {content:'[Empty content]';}
 
 /* Author Section */
-div#container section.author {--avatarsize:6rem;}
+div#container section.author {--avatarsize:6rem; padding:0 2rem;}
 div#container section.author main.grid {background-color:var(--darkblackglass); color:white; position:relative; min-height:10rem; text-align:center; max-width:calc(var(--pagewidth)*.75);}
 div#container section.author main.grid {border-radius:var(--bigcornersize); padding:2rem; padding-top:calc(var(--avatarsize)*.625); margin-top:calc(var(--avatarsize)*.5);}
 div#container section.author main.grid h1.name {margin:0;}
@@ -68,8 +67,8 @@ div#container section.reply main.grid form.commentform textarea.comment {grid-ar
 	/* div#container section.hero main.grid {} */
 
 	/* Post Section */
-	/* div#container section.post {} */
-	/* div#container section.post main.grid {} */
+	/* div#container section.body {} */
+	/* div#container section.body main.grid {} */
 
 	/* Author Section */
 	/* div#container section.author {} */
@@ -91,8 +90,8 @@ div#container section.reply main.grid form.commentform textarea.comment {grid-ar
 	div#container section.hero main.grid p.textcopy {font-size:1rem;}
 
 	/* Post Section */
-	/* div#container section.post {} */
-	/* div#container section.post main.grid {} */
+	/* div#container section.body {} */
+	/* div#container section.body main.grid {} */
 
 	/* Author Section */
 	/* div#container section.author {} */
@@ -111,10 +110,10 @@ div#container section.reply main.grid form.commentform textarea.comment {grid-ar
 	/* div#container section.hero main.grid {} */
 
 	/* Post Section */
-	/* div#container section.post {} */
-	/* div#container section.post main.grid {} */
-	/* div#container section.post main.grid article.post {} */
-	div#container section.post main.grid article.post div.art {float:none; width:100%;}
+	/* div#container section.body {} */
+	/* div#container section.body main.grid {} */
+	/* div#container section.body main.grid article.post {} */
+	div#container section.body main.grid article.post div.art {float:none; width:100%;}
 
 	/* Author Section */
 	/* div#container section.author {} */

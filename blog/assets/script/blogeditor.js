@@ -8,10 +8,10 @@ const herosection = document.querySelector('div#container section.hero');
 const bannerUpload = document.querySelector('div#container section.hero main.grid input.bannerupload');
 
 // Get title field. 
-let titlefield = document.querySelector('div#container section.post main.grid input.title');
+let titlefield = document.querySelector('div#container section.body main.grid input.title');
 
 // Get content field. 
-let contentfield = document.querySelector('div#container section.post main.grid textarea.content');
+let contentfield = document.querySelector('div#container section.body main.grid textarea.content');
 
 
 /*****/
