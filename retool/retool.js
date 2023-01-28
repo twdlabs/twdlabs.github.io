@@ -18,7 +18,7 @@ for(let group of datasources) {
 		// 
 		cards += `
 		<!-- card -->
-		<div class="card">
+		<a class="card" href="javascript:void(0)">
 
 			<!-- icon -->
 			<img class="icon" src="${item.imageurl}" alt="${item.name}">
@@ -28,7 +28,7 @@ for(let group of datasources) {
 			<span class="caption">${item.name}</span>
 			<!-- /caption -->
 
-		</div>
+		</a>
 		<!-- /card -->`;
 	}
 
