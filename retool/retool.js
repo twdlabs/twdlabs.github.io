@@ -18,7 +18,7 @@ for(let group of datasources) {
 		// 
 		cards += `
 		<!-- card -->
-		<a class="card" href="javascript:void(0)">
+		<a class="card" href="${ item.linkurl ? item.linkurl : 'javascript:void(0)' }">
 
 			<!-- icon -->
 			<img class="icon" src="${item.imageurl}" alt="${item.name}">
