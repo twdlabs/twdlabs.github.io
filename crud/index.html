@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./crud.png" rel="icon"/>
+		<link href="./../atgicon.ico" rel="icon"/>
 		<link href="./crud.png" rel="apple-touch-icon"/>
 		<title>CRUD Database</title>
 
@@ -82,7 +82,7 @@
 					<!-- navitem -->
 					<li class="navitem">
 
-						<div class="btn fillbtn" onclick="refillDatabase()">
+						<div class="btn fillbtn" onclick="resetDatabase()">
 		
 							<!-- icon -->
 							<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -103,7 +103,7 @@
 					<li class="navitem">
 			
 						<!-- btn -->
-						<div class="btn emptybtn" onclick="resetDatabase()">
+						<div class="btn deleteallbtn" onclick="clearDatabase()">
 		
 							<!-- icon -->
 							<svg class="icon trash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -156,13 +156,13 @@
 		
 								<!-- head -->
 								<th class="head">
-									<h2 class="head">User ID</h2>
+									<h2 class="head">Username</h2>
 								</th>
 								<!-- /head -->
 		
 								<!-- head -->
 								<th class="head">
-									<h2 class="head">Name</h2>
+									<h2 class="head">Full Name</h2>
 								</th>
 								<!-- /head -->
 		
@@ -322,26 +322,55 @@
 					
 					<!-- input -->
 					<div class="input">
-						<input id="newname" type="text" placeholder="Enter name"/>
+
+						<!-- #newfname -->
+						<input id="newfname" type="text" placeholder="Enter first name"/>
+						<!-- /#newfname -->
+
 					</div>
 					<!-- /input -->
 					
 					<!-- input -->
 					<div class="input">
+
+						<!-- #newlname -->
+						<input id="newlname" type="text" placeholder="Enter last name"/>
+						<!-- /#newlname -->
+
+					</div>
+					<!-- /input -->
+					
+					<!-- input -->
+					<div class="input">
+
+						<!-- #newemail -->
 						<input id="newemail" type="email" placeholder="Enter email"/>
+						<!-- /#newemail -->
+
 					</div>
 					<!-- /input -->
 					
 					<!-- input -->
 					<div class="input">
+
+						<!-- #newmobilenumber -->
 						<input id="newmobilenumber" type="tel" placeholder="Enter mobile number"/>
+						<!-- /#newmobilenumber -->
+
 					</div>
 					<!-- /input -->
 					
 					<!-- input -->
-					<div class="input">
+					<div class="input grid">
+
+						<!-- cancelbtn -->
+						<input class="btn cancelbtn" type="submit" value="Cancel" onclick="closeOverlay();"/>
+						<!-- /cancelbtn -->
+
+						<!-- addbtn -->
 						<input class="btn addbtn" type="submit" value="Add User" onclick="createItem(); closeOverlay();"/>
-						<!-- <button class="addbtn btn">Add User</button> -->
+						<!-- /addbtn -->
+
 					</div>
 					<!-- /input -->
 					
@@ -357,26 +386,55 @@
 					
 					<!-- input -->
 					<div class="input">
-						<input id="name" type="text" placeholder="Enter name" data-default-placeholder="Enter name"/>
+
+						<!-- #fname -->
+						<input id="fname" type="text" placeholder="Enter name" data-default-placeholder="Enter first name"/>
+						<!-- /#fname -->
+
 					</div>
 					<!-- /input -->
 					
 					<!-- input -->
 					<div class="input">
+
+						<!-- #lname -->
+						<input id="lname" type="text" placeholder="Enter name" data-default-placeholder="Enter last name"/>
+						<!-- /#lname -->
+
+					</div>
+					<!-- /input -->
+					
+					<!-- input -->
+					<div class="input">
+
+						<!-- #email -->
 						<input id="email" type="email" placeholder="Enter email" data-default-placeholder="Enter email"/>
+						<!-- /#email -->
+
 					</div>
 					<!-- /input -->
 					
 					<!-- input -->
 					<div class="input">
+
+						<!-- #mobilenumber -->
 						<input id="mobilenumber" type="tel" placeholder="Enter mobile number" data-default-placeholder="Enter mobile number"/>
+						<!-- /#mobilenumber -->
+
 					</div>
 					<!-- /input -->
 					
 					<!-- input -->
-					<div class="input inputbtn">
+					<div class="input grid">
+
+						<!-- cancelbtn -->
 						<input class="btn cancelbtn" type="submit" value="Cancel" onclick="closeOverlay();"/>
-						<input class="btn updatebtn" type="submit" value="Update User" data-selectedindex="-1" onclick="let selectedindex = this.getAttribute('data-selectedindex'); updateItem(selectedindex); closeOverlay();"/>
+						<!-- /cancelbtn -->
+
+						<!-- updatebtn -->
+						<input class="btn updatebtn" type="submit" value="Update User" data-selectedindex="-1" onclick="updateItem(); closeOverlay();"/>
+						<!-- /updatebtn -->
+
 					</div>
 					<!-- /input -->
 					
@@ -404,7 +462,7 @@
 		<!-- CRUD Script -->
 		<script src="./script/crud.js" type="text/javascript"></script>
 		<!-- Main Script -->
-		<script src="./script/script.js" type="text/javascript"></script>
+		<!-- <script src="./script/script.js" type="text/javascript"></script> -->
 
 	</body>
 

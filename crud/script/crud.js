@@ -2,22 +2,24 @@
 
 
 // Get navbar. <-- Is this line needed for anything ?
-let navbar = document.querySelector('nav.navbar');
+let navbar = document.querySelector('div#container nav.navbar');
 // Get table body. 
-const tbody = document.querySelector('main#table table.table tbody');
+const tbody = document.querySelector('div#container main#table table.table tbody');
 
 // Get overlay for item editor. 
-const overlay = document.querySelector('div.overlay');
+const overlay = document.querySelector('div#container div.overlay');
 // Get elements of item editor. 
-const inputname = document.getElementById('name');
-const inputemail = document.getElementById('email');
-const inputmobilenumber = document.getElementById('mobilenumber');
+const inputfname = document.querySelector('input#fname');
+const inputlname = document.querySelector('input#lname');
+const inputemail = document.querySelector('input#email');
+const inputmobilenumber = document.querySelector('input#mobilenumber');
 // Get elements of item creator. 
-const inputnewname = document.getElementById('newname');
-const inputnewemail = document.getElementById('newemail');
-const inputnewmobilenumber = document.getElementById('newmobilenumber');
+const inputnewfname = document.querySelector('input#newfname');
+const inputnewlname = document.querySelector('input#newlname');
+const inputnewemail = document.querySelector('input#newemail');
+const inputnewmobilenumber = document.querySelector('input#newmobilenumber');
 // Get update button in item editor. 
-const editorupdatebtn = document.querySelector('div.overlay main#editor input.updatebtn');
+const editorupdatebtn = document.querySelector('div#container div.overlay main#editor input.updatebtn');
 
 
 /*****/
@@ -36,18 +38,6 @@ displayDatabase();
 
 /*****/
 
-
-// Refill database. 
-function refillDatabase() {
-	// alert('Hi');
-
-	// 
-	userdata = userDataList.map(x=>x);
-	console.log(userdata);
-	
-	// Save updated database to storage. 
-	saveDatabaseToStorage();
-}
 
 // Read: Display all items in database. 
 function displayDatabase() {
@@ -108,7 +98,7 @@ function displayDatabase() {
 			<td class="cell">
 	
 				<!-- data -->
-				<span class="data">${ user.name || user.fullname || '' }</span>
+				<span class="data">${ `${user.fname} ${user.lname}` || '' }</span>
 				<!-- /data -->
 	
 			</td>
@@ -219,14 +209,22 @@ function displayDatabase() {
 			// Attach selected index to update button in item editor. 
 			editorupdatebtn.setAttribute('data-selectedindex',selectedIndex);
 
+			// Get data for selected user. 
+			let selectedUser = userdata[selectedIndex];
 			// Get previous values of selected item. 
-			let prevname = ''+userdata[selectedIndex].name;
-			let prevemail = ''+userdata[selectedIndex].email;
-			let prevmobilenumber = ''+userdata[selectedIndex].mobilenumber;
+			let prevfname = `${selectedUser.fname}`;
+			let prevlname = `${selectedUser.lname}`;
+			console.log('prevname:',prevfname,prevlname);
+			let prevemail = `${selectedUser.email}`;
+			console.log('prevemail:',prevemail);
+			let prevmobilenumber = `${selectedUser.mobilenumber}`;
+			console.log('prevmobilenumber:',prevmobilenumber);
 
-			// Place previous name value as input placeholder (if valid). 
-			if(prevname.length>0) inputname.placeholder = prevname;
-			else inputname.placeholder = inputname.getAttribute('data-default-placeholder');
+			// Place previous name values as input placeholders (if valid). 
+			if(prevfname.length>0) inputfname.placeholder = prevfname;
+			else inputfname.placeholder = inputfname.getAttribute('data-default-placeholder');
+			if(prevlname.length>0) inputlname.placeholder = prevlname;
+			else inputlname.placeholder = inputlname.getAttribute('data-default-placeholder');
 			// Place previous email value as input placeholder (if valid). 
 			if(prevemail.length>0) inputemail.placeholder = prevemail;
 			else inputemail.placeholder = inputemail.getAttribute('data-default-placeholder');
@@ -243,12 +241,13 @@ function displayDatabase() {
 
 			// Get selected delete button. 
 			let deletebtn = event.currentTarget;
-		
-			// Get index of deletion. 
-			let indexOfDeletion = deletebtn.getAttribute('data-index');
+
+			// Get index of selected item to delete. 
+			let selectedIndex = deletebtn.getAttribute('data-index');
+			console.log('Deleting item at index:',selectedIndex);
 
 			// 
-			deleteItem(indexOfDeletion)
+			deleteItem(selectedIndex);
 		}
 	}
 }
@@ -258,7 +257,8 @@ function createItem() {
 
 	// Get user input data and create new item. 
 	let newitem = {
-		name:inputnewname.value,
+		fname:inputnewfname.value,
+		lname:inputnewlname.value,
 		email:inputnewemail.value,
 		mobilenumber:inputnewmobilenumber.value,
 	};
@@ -279,14 +279,18 @@ function createItem() {
 
 	// Clear editor input. 
 	function clearEditorInput() {
-		inputnewname.value = '';
+		inputnewfname.value = '';
+		inputnewlname.value = '';
 		inputnewemail.value = '';
 		inputnewmobilenumber.value = '';
 	}
 }
 
 // Update: Edit item in database. 
-function updateItem(indexOfUpdate=-1) {
+function updateItem() {
+
+	// Get index of update. 
+	let indexOfUpdate = editorupdatebtn.getAttribute('data-selectedindex');
 	console.log('Index to update:',indexOfUpdate);
 
 	// Handle erroneous index of update. 
@@ -296,9 +300,10 @@ function updateItem(indexOfUpdate=-1) {
 	}
 
 	// Get data for updated item. 
-	let n = inputname.value;
-	let e = inputemail.value;
-	let m = inputmobilenumber.value;
+	let fn = inputfname.value;
+	let ln = inputlname.value;
+	let eml = inputemail.value;
+	let mn = inputmobilenumber.value;
 	// Clear previous editor input. 
 	clearEditorInput();
 
@@ -306,9 +311,10 @@ function updateItem(indexOfUpdate=-1) {
 	userdata = getDatabaseFromStorage();
 
 	// Update item in database. 
-	if(n.length>0) userdata[indexOfUpdate].name = n;
-	if(e.length>0) userdata[indexOfUpdate].email = e;
-	if(m.length>0) userdata[indexOfUpdate].mobilenumber = m;
+	if(fn.length>0) userdata[indexOfUpdate].fname = fn;
+	if(ln.length>0) userdata[indexOfUpdate].lname = ln;
+	if(eml.length>0) userdata[indexOfUpdate].email = eml;
+	if(mn.length>0) userdata[indexOfUpdate].mobilenumber = mn;
 
 	// Save updated database to storage. 
 	saveDatabaseToStorage();
@@ -317,14 +323,22 @@ function updateItem(indexOfUpdate=-1) {
 
 	// Clear editor input. 
 	function clearEditorInput() {
-		inputname.value = '';
+		inputfname.value = '';
+		inputlname.value = '';
 		inputemail.value = '';
 		inputmobilenumber.value = '';
 	}
 }
 
 // Delete: Remove item from database. 
-function deleteItem(indexOfDeletion) {
+function deleteItem(indexOfDeletion=-1) {
+	console.log('Index to delete:',indexOfDeletion);
+
+	// Handle erroneous index of deletion. 
+	if(indexOfDeletion<0) {
+		console.error('Invalid index: Index for database item is out of bounds.',indexOfDeletion);
+		return;
+	}
 
 	// Confirm deletion. 
 	let doDelete = confirm('Are you sure you want to delete this item ?');
@@ -343,20 +357,20 @@ function deleteItem(indexOfDeletion) {
 	}
 }
 
-// Reset: Clear all items from database. 
-function resetDatabase() {
+// Clear: Delete all items from database. 
+function clearDatabase() {
 
 	// Confirm deletion. 
-	let doDelete = confirm('Reset database ?');
+	let doClear = confirm('Clear database ?');
 
 	// Proceed if confirmed once. 
-	if(doDelete) {
+	if(doClear) {
 
 		// Confirm deletion again. 
-		let doDeleteConfirmed = confirm('Are you sure you want to delete all data !?');
+		let doClearConfirmed = confirm('Are you sure you want to delete all data !?');
 	
 		// Proceed if confirmed twice. 
-		if(doDeleteConfirmed) {
+		if(doClearConfirmed) {
 
 			// Reset original data. 
 			userdata = [];
@@ -364,5 +378,23 @@ function resetDatabase() {
 			// Save updated database to storage. 
 			saveDatabaseToStorage();
 		}
+	}
+}
+
+// Reset database to default. 
+function resetDatabase() {
+
+	// Confirm deletion. 
+	let doReset = confirm('Reset database to default ?');
+
+	// Reset database if confirmed. 
+	if(doReset) {
+
+		// 
+		userdata = userDataList.map(x=>x);
+		console.log(userdata);
+		
+		// Save updated database to storage. 
+		saveDatabaseToStorage();
 	}
 }

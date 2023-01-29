@@ -40,7 +40,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Eli',
-		lname:'Doe',
+		lname:'Jah',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -48,7 +48,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Fred',
-		lname:'Doe',
+		lname:'Flinstone',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -72,7 +72,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Ian',
-		lname:'Doe',
+		lname:'Robertson',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -88,7 +88,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Jay',
-		lname:'Doe',
+		lname:'Jenkins',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -96,7 +96,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Jenny',
-		lname:'Doe',
+		lname:'Joe',
 		admin:false,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -104,7 +104,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Jill',
-		lname:'Doe',
+		lname:'Jackson',
 		admin:false,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -127,8 +127,8 @@ const userDataList = [
 	},
 	{
 		// userid:'xyzabcxyz',
-		fname:'John',
-		lname:'Doe Smith',
+		fname:'John Luke',
+		lname:'Smith',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -136,7 +136,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Kate',
-		lname:'Doe',
+		lname:'Croix',
 		admin:true,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -144,7 +144,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Leah',
-		lname:'Doe',
+		lname:'Lemons',
 		admin:false,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -152,7 +152,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Mike',
-		lname:'Doe',
+		lname:'Myers',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -160,7 +160,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Nina',
-		lname:'Doe',
+		lname:'Nash',
 		admin:false,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -168,7 +168,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Oscar',
-		lname:'Doe',
+		lname:'DeLaHoya',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -176,7 +176,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Peter',
-		lname:'Doe',
+		lname:'Pan',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -192,7 +192,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Rachel',
-		lname:'Doe',
+		lname:'Roy',
 		admin:false,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -200,7 +200,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Steve',
-		lname:'Doe',
+		lname:'Stephens',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -208,7 +208,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Tim',
-		lname:'Doe',
+		lname:'Tool',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -232,7 +232,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Victor',
-		lname:'Doe',
+		lname:'Victory',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -240,7 +240,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Wendy',
-		lname:'Doe',
+		lname:'Will',
 		admin:false,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -248,7 +248,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Xavier',
-		lname:'Doe',
+		lname:'Toven',
 		admin:false,
 		avatarurl:'./images/avatar-m.png',
 		position:'Website Designer',
@@ -256,7 +256,7 @@ const userDataList = [
 	{
 		// userid:'xyzabcxyz',
 		fname:'Yolanda',
-		lname:'Doe',
+		lname:'Yokes',
 		admin:false,
 		avatarurl:'./images/avatar-f.png',
 		position:'Website Designer',
@@ -281,14 +281,17 @@ function addUserData() {
 	// 
 	for(let user of userDataList) {
 
-		// Auto-generate full name. 
-		user.fullname = `${user.fname} ${user.lname}`
+		// Auto-generate user id from name. <--could be a function
+		user.userid = `${ (user.fname).substring(0,1) }${ user.lname }`.toLowerCase().replace(' ','');
 
-		// Auto-generate user id from name. 
-		user.userid = `${ (user.fname).substring(0,1) }${ user.lname }`.toLowerCase();
+		// Auto-generate full name. <--could be a function
+		user.fullname = `${user.fname} ${user.lname}`;
 
-		// Auto-generate default email address. 
+		// Auto-generate default email address. <--could be a function
 		user.email = `${ user.userid }@mail.com`;
+
+		// Add default mobile number. 
+		user.mobilenumber = '+1 (213) 456-7890';
 
 		// Add default password. 
 		user.password = user.userid+'!';

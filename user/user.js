@@ -35,7 +35,7 @@ const nameblock = document.querySelector('div#container main.pagecontent h1.gree
 
 
 // Define index of current user. 
-let currentUserIndex = 4;
+let currentUserIndex = -1;
 
 
 /*****/

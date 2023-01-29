@@ -10,6 +10,7 @@ function openOverlay(creatorMode=false) {
 
 	// Activate overlay. 
 	overlay.classList.add('active');
+	overlay.focus();
 }
 
 // Close overlay. 
@@ -17,4 +18,11 @@ function closeOverlay() {
 
 	// De-activate overlay. 
 	overlay.classList.remove('active');
+	overlay.blur();
+}
+
+// Check for shortcut key. 
+function checkForShortcutKey() {
+
+	// 
 }
