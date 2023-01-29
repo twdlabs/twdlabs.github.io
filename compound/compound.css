@@ -39,8 +39,9 @@ div#container main.main section h2.head {font-size:1.5rem; text-align:center; ma
 div#container main.main section h2.head svg.icon {font-size:1.25em; margin-right:.5rem;}
 div#container main.main section div.input {display:flex; flex-direction:row; align-items:center; grid-gap:.5rem; margin-top:1rem;}
 div#container main.main section div.input input {background-color:transparent; font-family:inherit; font-size:inherit; text-align:right; width:100%; padding:.125em /* .5em */; border:0 none; outline:none;}
+div#container main.main section div.input label.label {background-color:var(--themecolor); padding:.25rem; border-radius:.25rem;}
 div#container main.main section div.input label.label {display:flex; flex-direction:row; align-items:center; cursor:pointer; white-space:nowrap;}
-div#container main.main section div.input label.label svg.icon {display:block; background-color:var(--themecolor); font-size:1.5em;}
+div#container main.main section div.input label.label svg.icon {display:block; font-size:1.5em;}
 div#container main.main section div.input button.calculate {font-family:inherit; font-size:inherit; width:100%; padding:.125em .5em;}
 div#container main.main section div.output {text-align:center; white-space:pre-wrap; margin-top:1rem;}
 div#container main.main section div.output::before {content:'Future value\A';}

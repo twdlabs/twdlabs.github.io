@@ -49,23 +49,25 @@ function calculateFutureValue() {
 	console.log('periodiccontributionfrequencyperyear:',periodiccontributionfrequencyperyear);
 	
 	
-	// Calculate future value. 
-	let result = 0;
+	// Get components of future value calculation. 
 	let P = principalamount ? principalamount : 0;
 	let r = annualgrowthrate ? annualgrowthrate : 0.01;
 	let t = numberofyears ? numberofyears : 0;
 	let n = compoundingperiodsperyear ? compoundingperiodsperyear : 1;
-	let C = periodiccontribution ? periodiccontribution : 0;
-	let nC = periodiccontributionfrequencyperyear ? periodiccontributionfrequencyperyear : 0;
+	let c = periodiccontribution ? periodiccontribution : 0;
+	let f = periodiccontributionfrequencyperyear ? periodiccontributionfrequencyperyear : 0;
+	let C = c * f/n /* * n/f */;
 	
 	// Calculate future value. 
+	let result = 0;
 	let pow = Math.pow((1+r/n),(n*t));
 	result += P * pow;
 	result += C * [ pow - 1 ] / (r/n);
-	console.log('pow:',pow);
+	// console.log('pow:',pow);
 	console.log('result:',result);
 	
 	// Display future value. 
-	outputfuturevalue.innerHTML = dollarBrief(result);
+	outputfuturevalue.innerHTML = dollar(result);
+	// outputfuturevalue.innerHTML = dollarBrief(result);
 }
 
