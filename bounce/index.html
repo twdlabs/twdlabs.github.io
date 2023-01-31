@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<!-- <link href="./icon.png" rel="apple-touch-icon"/> -->
+		<title>Bounce</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="./template.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+
+				/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+				--themecolor:#CCC;
+
+				--pagewidth:60rem;
+				--cornersize:.25rem;
+				
+				--boxshadow:0 0 1rem 0 #0002;
+				--boxshadow:0 0 .25rem 0 #0003;
+			}
+
+
+			html {background-color:var(--themecolor); background-image:var(--bgimg); scroll-behavior:smooth;}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			/* div#container {} */
+			
+			div#container section.page {background-color:var(--themecolor); position:relative; min-height:100vh; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; box-shadow:var(--boxshadow);}
+			div#container section.page a.item {position:absolute; bottom:0; right:0; margin:2rem;}
+			div#container section.page a.item {color:inherit; text-decoration:none; animation:bounce 2s infinite;}
+			div#container section.page a.item svg.icon {font-size:2rem;}
+
+			@keyframes bounce {
+				15% {transform:translateY(0); /* box-shadow:none; */}
+				35% {transform:translateY(-35%); /* box-shadow:none; */}
+				45% {transform:translateY(0); /* box-shadow:none; */}
+				55% {transform:translateY(-20%); /* box-shadow:none; */}
+				70% {transform:translateY(0); /* box-shadow:none; */}
+				80% {transform:translateY(-10%); /* box-shadow:none; */}
+				90% {transform:translateY(0); /* box-shadow:none; */}
+				95% {transform:translateY(-2%); /* box-shadow:none; */}
+				99% {transform:translateY(0); /* box-shadow:none; */}
+				100% {transform:translateY(0); /* box-shadow:none; */}
+			}
+
+			@keyframes bounce {
+				0% {transform:translateY(0rem); animation-timing-function:cubic-bezier(.215,.61,.355,1);}
+				20% {transform:translateY(0rem); animation-timing-function:cubic-bezier(.215,.61,.355,1);}
+				40% {transform:translateY(-2rem); animation-timing-function:cubic-bezier(.755,.05,.855,.06);}
+				43% {transform:translateY(-2rem); animation-timing-function:cubic-bezier(.755,.05,.855,.06);}
+				53% {transform:translateY(0rem); animation-timing-function:cubic-bezier(.215,.61,.355,1);}
+				70% {transform:translateY(-1rem); animation-timing-function:cubic-bezier(.755,.05,.855,.06);}
+				80% {transform:translateY(0rem); animation-timing-function:cubic-bezier(.215,.61,.355,1);}
+				90% {transform:translateY(-.25rem); /* animation-timing-function:none; */}
+				100% {transform:translateY(0rem); animation-timing-function:cubic-bezier(.215,.61,.355,1);}
+			}
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+			}
+			
+			/* Big Smartphone Screen */
+			@media screen and (max-width:48rem) {
+				/*  */
+			}
+			
+			/* Small Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- page -->
+			<section class="page" id="page01">
+
+				<!-- item -->
+				<a class="item" href="#page02">
+
+					<!-- icon -->
+					<svg class="icon arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</a>
+				<!-- /item -->
+
+			</section>
+			<!-- /page -->
+
+			<!-- page -->
+			<section class="page" id="page02">
+
+				<!-- item -->
+				<a class="item" href="#page03">
+
+					<!-- icon -->
+					<svg class="icon arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</a>
+				<!-- /item -->
+
+			</section>
+			<!-- /page -->
+
+			<!-- page -->
+			<section class="page" id="page03">
+
+				<!-- item -->
+				<a class="item" href="#page04">
+
+					<!-- icon -->
+					<svg class="icon arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</a>
+				<!-- /item -->
+
+			</section>
+			<!-- /page -->
+
+			<!-- page -->
+			<section class="page" id="page04">
+
+				<!-- item -->
+				<a class="item" href="#page05">
+
+					<!-- icon -->
+					<svg class="icon arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</a>
+				<!-- /item -->
+
+			</section>
+			<!-- /page -->
+
+			<!-- page -->
+			<section class="page" id="page05">
+
+				<!-- item -->
+				<a class="item" href="#page06">
+
+					<!-- icon -->
+					<svg class="icon arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</a>
+				<!-- /item -->
+
+			</section>
+			<!-- /page -->
+
+			<!-- page -->
+			<section class="page" id="page06">
+
+				<!-- item -->
+				<a class="item" href="#page07">
+
+					<!-- icon -->
+					<svg class="icon arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</a>
+				<!-- /item -->
+
+			</section>
+			<!-- /page -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Xyz Database -->
+		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="./template.js" type="text/javascript"></script> -->
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
