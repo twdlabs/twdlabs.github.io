@@ -11,10 +11,31 @@
 	--red:#FB3F41;
 	--blue:#0179FF;
 	--green:#29AF60;
+	--trblue:#0179FF44;
+	--trtrblue:#0179FF11;
+	--offwhite:#EEE;
+	--darkgrey:#444;
+	--offwhite2:#EEEE;
+	--lightblack:#383838;
+	--blackglass:#0001;
 	--whiteglass:#FFF4;
 	
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+body {
+
+	--backcolor:white;
+	--backcolor2:var(--offwhite);
+	--forecolor:var(--darkgrey);
+}
+
+body.dark {
+
+	--backcolor:var(--darkgrey);
+	--backcolor2:var(--lightblack);
+	--forecolor:white;
 }
 
 
@@ -54,6 +75,13 @@ div#container nav.navbar ul.navlist {background-color:inherit; display:flex; fle
 div#container nav.navbar ul.navlist li.navitem {padding:0 .35rem;}
 div#container nav.navbar ul.navlist li.navitem div.btn {/* transition:.125s; */ padding:.5rem; border:1px solid var(--whiteglass);}
 div#container nav.navbar ul.navlist li.navitem div.addbtn {background-color:var(--green);}
+/* div#container nav.navbar ul.navlist li.navitem div.fillbtn {} */
+/* div#container nav.navbar ul.navlist li.navitem div.resetbtn {} */
+/* div#container nav.navbar ul.navlist li.navitem div.darkmodebtn {} */
+div#container nav.navbar ul.navlist li.navitem div.darkmodebtn svg.icon {display:block;}
+div#container nav.navbar ul.navlist li.navitem div.darkmodebtn svg.icon.solid {display:none;}
+.dark div#container nav.navbar ul.navlist li.navitem div.darkmodebtn svg.icon {display:none;}
+.dark div#container nav.navbar ul.navlist li.navitem div.darkmodebtn svg.icon.solid {display:block;}
 div#container nav.navbar ul.navlist li.navitem div.deleteallbtn {background-color:var(--red);}
 div#container nav.navbar ul.navlist li.navitem div.btn span.caption {display:none;}
 /* div#container nav.navbar.active ul.navlist {position:absolute; left:0; top:100%; width:100%;} */
@@ -65,22 +93,39 @@ div#container nav.navbar.active ul.navlist li.navitem div.btn span.caption {disp
 
 
 
-div#container main#table {background-color:white; color:#444; display:flex; width:100%; /* max-width:52rem; */ overflow-x:auto; text-align:center; margin:0 auto;}
+div#container main#table {background-color:var(--backcolor); color:var(--forecolor); transition:.5s;}
+div#container main#table {display:flex; width:100%; /* max-width:52rem; */ overflow-x:auto; text-align:center; margin:0 auto;}
 /* div#container main#table div.btn {} */
 div#container main#table div.bin {overflow-x:visible; margin:1.5rem auto;}
-div#container main#table table.table {border:1px solid #0001; /* margin:.5rem 0; */}
-div#container main#table table.table th.head {background-color:#EEE; padding:1rem .5rem; /* border:1px solid; */}
+div#container main#table table.table {border:1px solid var(--blackglass); /* margin:.5rem 0; */}
+div#container main#table table.table th.head {background-color:var(--backcolor2); color:var(--forecolor); transition:.5s; padding:1rem .5rem; /* border:1px solid; */}
 div#container main#table table.table th.head h2.head {font-size:1.125rem; font-weight:700; text-align:center; margin:0;}
-div#container main#table table.table td.cell {/* font-size:1.25em; */ height:4rem; text-align:center; padding:.75rem; border:1px solid #0001;}
-/* div#container main#table table.table td.cell img.data {height:6rem; width:100%; object-fit:cover;} */
-div#container main#table table.table td.cell span.data {font-weight:300; white-space:nowrap; cursor:pointer; user-select:all;}
-div#container main#table table.table td.cell div.panel div.btn {display:flex; /* justify-content:space-between; */ margin:.125rem;}
-div#container main#table table.table td.cell div.panel div.editbtn {background-color:var(--blue);}
-div#container main#table table.table td.cell div.panel div.deletebtn {background-color:var(--red);}
-div#container main#table table.table td.cell div.panel div.btn span.caption {flex-grow:1; text-align:center;}
-div#container main#table table.table td.cell div.panel.compact {display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container main#table table.table td.cell div.panel.compact div.btn {display:grid; place-items:center;}
-div#container main#table table.table td.cell div.panel.compact div.btn span.caption {display:none;}
+div#container main#table table.table tr.row {position:relative;}
+div#container main#table table.table tr.row:hover {background-color:var(--trtrblue);}
+div#container main#table table.table tr.row.active {background-color:var(--trblue);}
+div#container main#table table.table tr.row td.cell {height:4rem; text-align:center; padding:.75rem; border:.125rem solid var(--blackglass); border-radius:.125rem;}
+div#container main#table table.table tr.row.active td.cell {/* font-size:1.25em; */ border-color:var(--blue);}
+div#container main#table table.table tr.row.addentry td.cell {height:auto; padding:0;}
+div#container main#table table.table tr.row.addentry td.cell div.addbtn {cursor:pointer; padding:.75rem;}
+div#container main#table table.table tr.row.addentry td.cell div.addbtn {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container main#table table.table tr.row.addentry td.cell div.addbtn svg.icon {font-size:2rem;}
+div#container main#table table.table tr.row.addentry td.cell div.addbtn span.caption {font-size:1.125rem; margin-left:.5rem;}
+/* div#container main#table table.table tr.row td.cell img.data {height:6rem; width:100%; object-fit:cover;} */
+div#container main#table table.table tr.row td.cell span.data {font-weight:300; white-space:nowrap; cursor:pointer; /* user-select:all; */}
+div#container main#table table.table tr.row td.cell span.data:empty::after {content:'[Empty]';}
+div#container main#table table.table tr.row td.cell div.panel div.btn {display:flex; /* justify-content:space-between; */ margin:.125rem;}
+div#container main#table table.table tr.row td.cell div.panel div.editbtn {background-color:var(--blue);}
+div#container main#table table.table tr.row td.cell div.panel div.deletebtn {background-color:var(--red);}
+div#container main#table table.table tr.row td.cell div.panel div.btn span.caption {flex-grow:1; text-align:center;}
+div#container main#table table.table tr.row td.cell div.panel.compact {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container main#table table.table tr.row td.cell div.panel.compact div.btn {display:grid; place-items:center;}
+div#container main#table table.table tr.row td.cell div.panel.compact div.btn span.caption {display:none;}
+div#container main#table table.table tr.row.entry::after {background-color:var(--trblue); content:'Select'; /* visibility:hidden; */ opacity:0;}
+div#container main#table table.table tr.row.entry::after {display:grid; place-items:center; transition:.125s;}
+div#container main#table table.table tr.row.entry::after {position:absolute; top:0; right:100%; height:100%; width:4rem;}
+div#container main#table table.table tr.row.entry:hover::after {background-color:var(--blue); color:white; /* visibility:visible; */ opacity:1;}
+/* div#container main#table table.table tr.row.active:hover::after {background-color:var(--trblue); color:initial;} */
+/* div#container main#table table.table tr.row.active:hover::after {visibility:hidden; opacity:0;} */
 
 
 div#container div.overlay {position:fixed; top:0; left:0; height:100%; width:100%;}
@@ -89,7 +134,7 @@ div#container div.overlay {opacity:0; visibility:hidden;}
 div#container div.overlay.active {opacity:1; visibility:visible;}
 div#container div.overlay div.bg {position:absolute; top:0; left:0; height:100%; width:100%; z-index:-1;}
 div#container div.overlay div.bg {background-color:#0008; cursor:pointer;}
-div#container div.overlay main {background-color:#EEE; color:#444; width:100%; max-width:18rem; padding:1rem; border-radius:.25rem; margin:1rem auto;}
+div#container div.overlay main {background-color:var(--offwhite); color:#444; width:100%; max-width:18rem; padding:1rem; border-radius:.25rem; margin:1rem auto;}
 div#container div.overlay main h1.head {font-size:1.5rem; font-weight:500; text-transform:uppercase; text-align:center; margin:0; margin-top:.5rem;}
 div#container div.overlay main div.input {margin-top:.375rem;}
 div#container div.overlay main div.input.grid {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.5rem; margin-top:.625rem;}
@@ -105,7 +150,7 @@ div#container div.overlay div.closebtn {position:absolute; top:0; right:0; font-
 
 div#container aside#snackbar {display:none;}
 div#container aside#snackbar {position:absolute; top:0; right:0; left:0; z-index:100;}
-div#container aside#snackbar {background-color:#EEEE; width:100%; text-align:center; padding:.75rem;}
+div#container aside#snackbar {background-color:var(--offwhite2); width:100%; text-align:center; padding:.75rem;}
 
 
 @media screen and (max-width:64rem) {
@@ -125,7 +170,8 @@ div#container aside#snackbar {background-color:#EEEE; width:100%; text-align:cen
 
 	/* div#container main#table {} */
 	/* div#container main#table table.table {} */
-	/* div#container main#table table.table td.cell {} */
-	div#container main#table table.table td.cell div.btn {font-size:.75rem;}
+	/* div#container main#table table.table tr.row {} */
+	/* div#container main#table table.table tr.row td.cell {} */
+	div#container main#table table.table tr.row td.cell div.btn {font-size:.75rem;}
 }
 

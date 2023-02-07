@@ -1,8 +1,35 @@
 
 
 
+// Get overlay for item creator/editor. 
+const overlay = document.querySelector('div#container div.overlay');
+
+// Get overlay creator. 
+// const overlaycreator = document.querySelector('div#container div.overlay main#creator');
+// Get elements of item creator. 
+const inputnewfname = document.querySelector('div#container div.overlay div.input input#newfname');
+const inputnewlname = document.querySelector('div#container div.overlay div.input input#newlname');
+const inputnewemail = document.querySelector('div#container div.overlay div.input input#newemail');
+const inputnewmobilenumber = document.querySelector('div#container div.overlay div.input input#newmobilenumber');
+// Get add button in item creator. 
+// const editoraddbtn = document.querySelector('div#container div.overlay main#creator input.addbtn');
+
+// Get overlay editor. 
+// const overlayeditor = document.querySelector('div#container div.overlay main#editor');
+// Get elements of item editor. 
+const inputfname = document.querySelector('div#container div.overlay div.input input#fname');
+const inputlname = document.querySelector('div#container div.overlay div.input input#lname');
+const inputemail = document.querySelector('div#container div.overlay div.input input#email');
+const inputmobilenumber = document.querySelector('div#container div.overlay div.input input#mobilenumber');
+// Get update button in item editor. 
+const editorupdatebtn = document.querySelector('div#container div.overlay main#editor input.updatebtn');
+
+
+/*****/
+
+
 // Open overlay in proper mode. 
-function openOverlay(creatorMode=false) {
+function openOverlay(creatorMode) {
 
 	// Set creator or editor mode. 
 	if(creatorMode) overlay.classList.add('create');
@@ -19,10 +46,4 @@ function closeOverlay() {
 	// De-activate overlay. 
 	overlay.classList.remove('active');
 	overlay.blur();
-}
-
-// Check for shortcut key. 
-function checkForShortcutKey() {
-
-	// 
 }
