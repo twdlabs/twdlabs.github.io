@@ -3,6 +3,7 @@
 
 // Get navbar. 
 const navbar = document.querySelector('div#container nav.navbar');
+
 // Get table body. 
 const tbody = document.querySelector('div#container main#table table.table tbody');
 
@@ -62,7 +63,7 @@ function displayDatabase() {
 		// 
 		return `
 		<!-- row -->
-		<tr class="row entry" data-index="${ i }">
+		<tr class="row entry" data-index="${ i }" draggable="true">
 		
 			<!-- cell -->
 			<td class="cell">

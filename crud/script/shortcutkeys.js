@@ -10,7 +10,7 @@ document.addEventListener('keydown',checkForShortcutKey)
 
 // Check for shortcut key. 
 function checkForShortcutKey(event) {
-	// console.log('event:',event);
+	console.log('event:',event);
 
 	// Get code for selected key. 
 	let keycode = event.keyCode;
@@ -49,9 +49,14 @@ function checkForShortcutKey(event) {
 	// Handle table shortcuts if overlay not open. 
 	else {
 
-		// TODO: Enter key: Open selected entry. 
+		// Enter key: Open selected entry. 
 		if(keycode==13) {
 			editItem(currentlyselectedindex);
+		}
+
+		// 'N' key: Create new entry. 
+		if(keycode==78) {
+			openOverlay(1);
 		}
 
 		// Up key: Decrement index of selected entry. 

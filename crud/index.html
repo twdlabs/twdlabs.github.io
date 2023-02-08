@@ -33,8 +33,20 @@
 				<!-- grid -->
 				<main class="grid">
 
+					<!-- navtoggler -->
+					<div class="btn navtoggler" onclick="navbar.classList.toggle('active');">
+				
+						<!-- icon -->
+						<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+						</svg>
+						<!-- /icon -->
+
+					</div>
+					<!-- /navtoggler -->
+
 					<!-- head -->
-					<h1 class="head" onclick="navbar.classList.toggle('active');">
+					<h1 class="head">
 				
 						<!-- icon -->
 						<!-- <svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -104,7 +116,7 @@
 									<!-- /icon -->
 					
 									<!-- caption -->
-									<span class="caption">Add User</span>
+									<span class="caption">Add Entry</span>
 									<!-- /caption -->
 					
 								</div>
@@ -116,7 +128,7 @@
 							<!-- navitem -->
 							<li class="navitem">
 		
-								<div class="btn fillbtn" onclick="resetDatabase()">
+								<div class="btn resetbtn" onclick="resetDatabase()">
 				
 									<!-- icon -->
 									<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -125,7 +137,7 @@
 									<!-- /icon -->
 				
 									<!-- caption -->
-									<span class="caption">Fill</span>
+									<span class="caption">Reset Database</span>
 									<!-- /caption -->
 		
 								</div>
@@ -146,7 +158,7 @@
 									<!-- /icon -->
 				
 									<!-- caption -->
-									<span class="caption">Delete All</span>
+									<span class="caption">Empty Database</span>
 									<!-- /caption -->
 				
 								</div>
@@ -234,7 +246,7 @@
 						<tbody>
 	
 							<!-- row -->
-							<tr class="row entry" data-index="0">
+							<tr class="row entry" data-index="0" draggable="true">
 		
 								<!-- cell -->
 								<td class="cell">

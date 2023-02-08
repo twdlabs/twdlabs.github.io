@@ -66,6 +66,7 @@ div#container nav.navbar {background-color:var(--blue); position:relative; paddi
 div#container nav.navbar main.grid {display:flex; flex-direction:row; align-items:center; /* align-items:flex-start; */ max-width:var(--pagewidth); margin:0 auto;}
 div#container nav.navbar main.grid h1.head {flex-grow:0;}
 div#container nav.navbar main.grid div.navmenu {flex-grow:1;}
+div#container nav.navbar main.grid div.navtoggler {flex-grow:0;}
 
 div#container nav.navbar main.grid h1.head {font-size:1.75rem; font-weight:900; cursor:pointer; user-select:none; margin:0;}
 div#container nav.navbar main.grid h1.head {display:flex; flex-direction:row; align-items:center; /* align-items:flex-end; */}
@@ -77,7 +78,6 @@ div#container nav.navbar main.grid div.navmenu ul.navlist {background-color:inhe
 div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem {padding:0 .35rem;}
 div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn {/* transition:.125s; */ padding:.75rem; border:1px solid var(--whiteglass);}
 div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.addbtn {background-color:var(--green);}
-/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.fillbtn {} */
 /* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.resetbtn {} */
 div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.darkmodebtn {background-color:var(--lightblack);}
 div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.darkmodebtn svg.icon {display:block;}
@@ -92,6 +92,8 @@ div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn spa
 /* div#container nav.navbar.active main.grid div.navmenu ul.navlist li.navitem {padding:.25rem .5rem 1rem;} */
 /* div#container nav.navbar.active main.grid div.navmenu ul.navlist li.navitem div.btn {padding:.5rem .75rem;} */
 div#container nav.navbar.active main.grid div.navmenu ul.navlist li.navitem div.btn span.caption {display:block;}
+div#container nav.navbar main.grid div.navtoggler {color:inherit;}
+div#container nav.navbar main.grid div.navtoggler svg.icon {font-size:2.5rem;}
 
 
 
@@ -166,11 +168,12 @@ div#container aside#snackbar {background-color:var(--offwhite2); width:100%; tex
 	/* div#container nav.navbar main.grid h1.head {} */
 	/* div#container nav.navbar main.grid h1.head span.caption {display:none;} */
 	div#container nav.navbar main.grid div.navmenu {position:absolute; top:100%; left:0; right:0; width:100%; z-index:10;}
-	div#container nav.navbar main.grid div.navmenu {background-color:var(--blue); overflow:hidden; max-height:0; transition:.5s;}
+	div#container nav.navbar main.grid div.navmenu {background-color:var(--blue); max-width:calc(var(--pagewidth)/3); overflow:hidden; max-height:0; transition:.5s; margin:0 auto;}
 	div#container nav.navbar.active main.grid div.navmenu {max-height:none;}
 	div#container nav.navbar main.grid div.navmenu ul.navlist {flex-direction:column; align-items:stretch; grid-gap:.75rem; padding:2rem 1.5rem;}
 	/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem {} */
-	/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn {} */
+	div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn {justify-content:space-between; padding:.75rem 1.25rem;}
+	div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn::after {content:''; width:1rem;}
 	div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn span.caption {display:block;}
 
 	/* div#container main#table {} */
@@ -186,13 +189,15 @@ div#container aside#snackbar {background-color:var(--offwhite2); width:100%; tex
 	/* div#container nav.navbar {} */
 	/* div#container nav.navbar main.grid {} */
 	/* div#container nav.navbar main.grid h1.head {} */
-	div#container nav.navbar main.grid h1.head span.caption {display:none;}
+	/* div#container nav.navbar main.grid h1.head span.caption {display:none;} */
 	/* div#container nav.navbar main.grid div.navmenu ul.navlist {} */
 
 	/* div#container main#table {} */
 	/* div#container main#table table.table {} */
 	/* div#container main#table table.table tr.row {} */
+	/* div#container main#table table.table tr.row.entry {} */
 	/* div#container main#table table.table tr.row td.cell {} */
 	div#container main#table table.table tr.row td.cell div.btn {font-size:.75rem;}
+	div#container main#table table.table tr.row.entry::after {display:none;}
 }
 
