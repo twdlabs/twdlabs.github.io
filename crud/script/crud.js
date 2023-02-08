@@ -313,6 +313,9 @@ function selectItem(event) {
 	// Highlight selected row. 
 	selectedentryrow.classList.add('active');
 
+	// Bring page focus to selected entry row. 
+	selectedentryrow.focus();
+
 	// Save index of selected entry row. 
 	currentlyselectedindex = selectedentryrow.getAttribute('data-index') * 1;
 }
