@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<!-- <link href="./icon.png" rel="apple-touch-icon"/> -->
+		<title>Step Progress</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="./stepprogress.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+
+				/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+				--blue:dodgerblue;
+				--grey:#CCC;
+				--darkgrey:#888;
+
+				--pagewidth:60rem;
+				--cornersize:.5rem;
+
+				--bubblegap:5rem;
+				--bubblesize:4.5rem;
+				--bubbleedgewidth:.25rem;
+				
+				--boxshadow:0 0 1rem 0 #0002;
+				--boxshadow:0 0 .25rem 0 #0003;
+			}
+
+
+			html {background-color:var(--grey); background-image:var(--bgimg);}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {background-color:white; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+			div#container main.main div.row {display:flex; flex-direction:row; align-items:center; gap:var(--bubblegap);}
+			div#container main.main div.row div.item {background-color:white; width: var(--bubblesize); height:var(--bubblesize); border:var(--bubbleedgewidth) solid var(--grey); border-radius:50%;}
+			div#container main.main div.row div.item {display:grid; place-items:center; position:relative; color:var(--darkgrey); opacity:.75; font-size:2rem;}
+			div#container main.main div.row div.item.active {color:var(--blue); opacity:1; border-color:var(--blue);}
+			div#container main.main div.row div.item::after {position:absolute; right:100%; top:50%; transform:translateY(-50%);}
+			div#container main.main div.row div.item::after {background-color:var(--grey); content:''; height:var(--bubbleedgewidth); width:calc(var(--bubblegap) + var(--bubbleedgewidth));}
+			div#container main.main div.row div.item.active::after {background-color:var(--blue);}
+			div#container main.main div.row div.item:first-child::after {display:none;}
+			div#container main.main div.controller {display:flex; flex-direction:row; justify-content:center; align-items:center; gap:3rem; margin-top:1.5rem;}
+			div#container main.main div.controller div.btn {background-color:var(--blue); color:white; font-size:1.5rem; cursor:pointer; user-select:none; padding:.5rem 2rem; border-radius:var(--cornersize);}
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+			}
+			
+			/* Big Smartphone Screen */
+			@media screen and (max-width:48rem) {
+				/*  */
+			}
+			
+			/* Small Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- item -->
+					<div class="item active">1</div>
+					<!-- /item -->
+	
+					<!-- item -->
+					<div class="item active">2</div>
+					<!-- /item -->
+	
+					<!-- item -->
+					<div class="item">3</div>
+					<!-- /item -->
+	
+					<!-- item -->
+					<div class="item">4</div>
+					<!-- /item -->
+					
+				</div>
+				<!-- /row -->
+
+				<!-- controller -->
+				<div class="controller">
+
+					<!-- btn -->
+					<div class="btn prev">Prev</div>
+					<!-- /btn -->
+
+					<!-- btn -->
+					<div class="btn next">Next</div>
+					<!-- /btn -->
+
+				</div>
+				<!-- /controller -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Xyz Database -->
+		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<!-- <script src="./stepprogress.js" type="text/javascript"></script> -->
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
