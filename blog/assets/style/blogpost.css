@@ -20,23 +20,76 @@ div#container section.hero main.grid h2.postauthor svg.icon {display:none; color
 div#container section.hero main.grid h2.postauthor.admin svg.icon {display:block;}
 div#container section.hero main.grid p.textcopy {font-size:1.75rem;}
 
-/* Post Section */
+/* Post Body Section */
 /* div#container section.body {} */
-div#container section.body main.grid {background-color:white; padding:2rem; border-radius:var(--bigcornersize);}
+/* div#container section.body main.grid {background-color:white; padding:2rem; border-radius:var(--bigcornersize);} */
+/* Post Body Section: Metadata */
 /* div#container section.body main.grid aside.meta {} */
 div#container section.body main.grid aside.meta span.date {font-weight:lighter;}
 div#container section.body main.grid aside.meta span.caption {font-weight:bold;}
 div#container section.body main.grid aside.meta span.caption::after {content:':';}
-/* div#container section.body main.grid article.post {} */
-div#container section.body main.grid article.post {margin-top:3rem;}
-div#container section.body main.grid article.post div.art {/* display:none; */ float:left; width:50%; max-width:30rem; margin-bottom:.5rem; margin-right:1rem;}
-div#container section.body main.grid article.post div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
-div#container section.body main.grid article.post div.content {margin-top:1rem;}
+/* Post Body Section: Media */
+div#container section.body main.grid article.media {display:grid; grid-template-columns:repeat(3,1fr); grid-template-areas: 'vid vid pl' 'nav nav nav'; margin-top:2rem;}
+div#container section.body main.grid article.media div.vid {grid-area:vid;}
+div#container section.body main.grid article.media div.vid {position:relative; padding-top:56.25%;}
+div#container section.body main.grid article.media div.vid video.video {position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;}
+div#container section.body main.grid article.media div.playlist {grid-area:pl;}
+div#container section.body main.grid article.media div.playlist {background-color:var(--black); color:white; height:30rem; overflow:auto;}
+div#container section.body main.grid article.media div.playlist ul.list {list-style:none; counter-reset:playlistindex; padding:0; margin:0; margin-bottom:.75rem;}
+div#container section.body main.grid article.media div.playlist ul.list li.item {counter-increment:playlistindex;}
+div#container section.body main.grid article.media div.playlist ul.list li.item.on {background-color:var(--whiteglass);}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link {color:inherit; text-decoration:none;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link svg.icon {color:dodgerblue;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link svg.play {display:none; font-size:1.75rem; width:1.75rem;}
+div#container section.body main.grid article.media div.playlist ul.list li.item.on a.link svg.play {display:block;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.index {display:block; font-size:.875rem; width:1.75rem; text-align:center;}
+div#container section.body main.grid article.media div.playlist ul.list li.item.on a.link span.index {display:none;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.index:empty:after {content:counter(playlistindex);}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link img.preview {height:3rem; width:5rem; object-fit:cover; margin:0 .75rem;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.caption {flex-grow:1; font-size:1rem;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.completion {display:none;}
+div#container section.body main.grid article.media div.playlist ul.list li.item.done a.link span.completion {display:block;}
+div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.completion svg.check {display:block; font-size:2rem;}
+div#container section.body main.grid article.media div.playlist div.listhead {background-color:var(--blackglass); display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1.5rem 2rem 1.375rem; margin-bottom:.75rem;}
+div#container section.body main.grid article.media div.playlist div.listhead h1.listtitle {font-size:1.25rem; margin:0;}
+div#container section.body main.grid article.media div.playlist div.listhead h2.listcount {font-size:1.125rem; margin:0;}
+div#container section.body main.grid article.media div.playlist div.listfoot {background-color:var(--blackglass); display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.625rem 2rem;}
+div#container section.body main.grid article.media div.playlist div.listfoot {display:none;}
+div#container section.body main.grid article.media div.playlist div.listfoot a.navlink {background-color:var(--blackglass); color:white; text-decoration:none; padding:.625rem 1rem; border-radius:.125rem;}
+div#container section.body main.grid article.media div.playlist div.listfoot a.navlink:hover {background-color:var(--whiteglass);}
+div#container section.body main.grid article.media div.navigator {grid-area:nav;}
+div#container section.body main.grid article.media div.navigator {background-color:white; display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1.375rem; border-radius:0 0 var(--bigcornersize) var(--bigcornersize);}
+div#container section.body main.grid article.media div.navigator a.navlink {color:inherit; text-decoration:none;}
+div#container section.body main.grid article.media div.navigator a.navlink {background-color:dodgerblue; color:white; padding:1rem 1.5rem; border-radius:.125rem;}
+div#container section.body main.grid article.media div.navigator a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section.body main.grid article.media div.navigator a.navlink svg.icon {font-size:1.25em;}
+div#container section.body main.grid article.media div.navigator a.navlink span.caption {margin:0 .25rem;}
+/* div#container section.body main.grid article.media div.navigator span.position {} */
+/* div#container section.body main.grid article.media div.navigator span.position span.caption {} */
+/* div#container section.body main.grid article.media div.navigator span.position span.caption {} */
+/* Post Body Section: Article */
+div#container section.body main.grid article.post {display:grid; grid-template-columns:2fr 1fr; grid-gap:2rem; margin-top:2rem;}
+div#container section.body main.grid article.post div.content {background-color:white; padding:2rem; border-radius:var(--bigcornersize); /* margin-top:1rem; */}
+div#container section.body main.grid article.post div.content div.art {display:none; float:left; width:50%; max-width:30rem; margin-bottom:.5rem; margin-right:1rem;}
+div#container section.body main.grid article.post div.content div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
 div#container section.body main.grid article.post div.content p.textcopy {margin:0; margin-top:1.25rem;}
-div#container section.body main.grid article.post div.content:empty::after {content:'[Empty content]';}
+/* div#container section.body main.grid article.post div.content:empty::after {content:'[Empty content]';} */
+div#container section.body main.grid article.post div.sidepanel {background-color:white; position:relative; height:fit-content; padding:2rem; border-radius:var(--bigcornersize); /* margin-top:1rem; */}
+div#container section.body main.grid article.post div.sidepanel h1.head {font-size:1.25rem; margin:0; }
+div#container section.body main.grid article.post div.sidepanel img.avatar {--size:4rem; height:var(--size); width:var(--size); object-fit:cover; border-radius:50%;}
+div#container section.body main.grid article.post div.sidepanel img.avatar.float {display:none;}
+div#container section.body main.grid article.post div.sidepanel img.avatar.float {position:absolute; bottom:100%; left:50%; transform:translate(-50%,50%);}
+div#container section.body main.grid article.post div.sidepanel div.userbadge {display:flex; flex-direction:row; align-items:center; margin-top:1rem;}
+/* div#container section.body main.grid article.post div.sidepanel div.userbadge {display:grid; grid-template-columns:auto 1fr; grid-template-areas: 'img nam' 'img pos';} */
+/* div#container section.body main.grid article.post div.sidepanel div.userbadge img.avatar {} */
+div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption {display:flex; flex-direction:column; justify-content:center; align-items:flex-start; margin-left:.5rem;}
+div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption span.name {font-weight:1000;}
+div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption span.position {color:dodgerblue; font-weight:200;}
+div#container section.body main.grid article.post div.sidepanel p.briefbio {font-weight:200; text-align:justify; margin:0; margin-top:1rem;}
 
 /* Author Section */
-div#container section.author {--avatarsize:6rem; padding:0 2rem;}
+div#container section.author {display:none; --avatarsize:6rem; padding:0 2rem;}
 div#container section.author main.grid {background-color:var(--darkblackglass); color:white; position:relative; min-height:10rem; text-align:center; max-width:calc(var(--pagewidth)*.75);}
 div#container section.author main.grid {border-radius:var(--bigcornersize); padding:2rem; padding-top:calc(var(--avatarsize)*.625); margin-top:calc(var(--avatarsize)*.5);}
 div#container section.author main.grid h1.name {margin:0;}
@@ -45,12 +98,12 @@ div#container section.author main.grid img.avatar {background-color:black; objec
 div#container section.author main.grid img.avatar {position:absolute; top:0; left:50%; transform:translate(-50%,-50%);}
 
 /* Reply Section */
-/* div#container section.reply {} */
-div#container section.reply main.grid {background-color:white; max-width:calc(var(--pagewidth)*.625); min-height:20rem; padding:2rem; border-radius:var(--bigcornersize);}
+/* div#container section.reply {display:none;} */
+div#container section.reply main.grid {background-color:white; max-width:calc(.625*var(--pagewidth)); padding:2rem; border-radius:var(--bigcornersize);}
 div#container section.reply main.grid h1.head {padding-bottom:.75rem; border-bottom:1px solid var(--blackglass); margin:0; margin-bottom:1.25rem;}
 div#container section.reply main.grid form.commentform {display:grid; grid-template-areas:'comment comment''name email'; grid-gap:1rem; /* margin-top:2rem; */}
 div#container section.reply main.grid form.commentform textarea,
-div#container section.reply main.grid form.commentform input {background-color:var(--lightblackglass); font-family:inherit; font-size:inherit; resize:none; width:100%; padding:1rem; border:0 none; border-radius:var(--cornersize);}
+div#container section.reply main.grid form.commentform input {background-color:var(--lightblackglass); font-family:inherit; font-size:inherit; resize:none; width:100%; padding:.625rem 1rem; border:0 none; border-radius:var(--cornersize);}
 div#container section.reply main.grid form.commentform input.name {grid-area:name;}
 div#container section.reply main.grid form.commentform input.email {grid-area:email;}
 div#container section.reply main.grid form.commentform textarea.comment {grid-area:comment;}
@@ -66,9 +119,13 @@ div#container section.reply main.grid form.commentform textarea.comment {grid-ar
 	/* div#container section.hero {} */
 	/* div#container section.hero main.grid {} */
 
-	/* Post Section */
+	/* Post Body Section */
 	/* div#container section.body {} */
 	/* div#container section.body main.grid {} */
+	div#container section.body main.grid article.post {grid-template-columns:1fr;}
+	div#container section.body main.grid article.media {grid-template-columns:1fr;}
+	div#container section.body main.grid article.media div.playlist {display:none;}
+	/* div#container section.body main.grid article.media div.navigator {display:flex;} */
 
 	/* Author Section */
 	/* div#container section.author {} */
@@ -89,7 +146,7 @@ div#container section.reply main.grid form.commentform textarea.comment {grid-ar
 	div#container section.hero main.grid h2.postauthor {font-size:1.25rem;}
 	div#container section.hero main.grid p.textcopy {font-size:1rem;}
 
-	/* Post Section */
+	/* Post Body Section */
 	/* div#container section.body {} */
 	/* div#container section.body main.grid {} */
 
@@ -109,11 +166,12 @@ div#container section.reply main.grid form.commentform textarea.comment {grid-ar
 	/* div#container section.hero {} */
 	/* div#container section.hero main.grid {} */
 
-	/* Post Section */
+	/* Post Body Section */
 	/* div#container section.body {} */
 	/* div#container section.body main.grid {} */
 	/* div#container section.body main.grid article.post {} */
-	div#container section.body main.grid article.post div.art {float:none; width:100%;}
+	/* div#container section.body main.grid article.post div.content {} */
+	div#container section.body main.grid article.post div.content div.art {float:none; width:100%;}
 
 	/* Author Section */
 	/* div#container section.author {} */

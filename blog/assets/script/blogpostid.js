@@ -4,6 +4,9 @@
 // Initialize selected post id. 
 let selectedPostId;
 
+// Get index of currently selected post. 
+let selectedPostIndex;
+
 // Initialize data for selected post. 
 let selectedPostData;
 
@@ -25,12 +28,17 @@ function savePostId() {
 	const urlparams = new URLSearchParams(window.location.search);
 	// console.log('Url search parameters:',urlparams);
 	
-	// Get selected post id. 
-	selectedPostId = urlparams.get('id') /* || '' */;
-	// console.log('Selected post id:',selectedPostId);
+	// Get id of selected post. 
+	selectedPostId = urlparams.get('id');
 	
-	// Get post data for selected post. 
-	selectedPostData = getPostById(selectedPostId);
+	// Get index of selected post. 
+	selectedPostIndex = selectedPostId ? getPostIndexById(selectedPostId) : -1;
+	
+	// Get data for selected post. 
+	selectedPostData = selectedPostId ? getPostById(selectedPostId) : null;
+
+	// console.log('Selected post id:',selectedPostId);
+	// console.log('Selected post index:',selectedPostIndex);
 	// console.log('Selected post data:',selectedPostData);
 
 	// Return parent page (home) if no valid id found. 

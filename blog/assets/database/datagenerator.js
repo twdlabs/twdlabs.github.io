@@ -28,7 +28,10 @@ function generateRandomPostData() {
 		post.authorid = getRandomUserId();
 
 		// Assign random picture url. 
-		post.picurl = getRandomPhotoUrl();
+		// post.imgurl = getRandomImageUrl();
+
+		// Assign random video url. 
+		// post.vidurl = getRandomVideoUrl();
 
 		// Assign random time posted. 
 		post.timeposted = getRandomTimeAfter(t0);
@@ -37,19 +40,19 @@ function generateRandomPostData() {
 		post.content = [
 			'This is the first paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
 			'This is the second paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
-			'This is the third paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
-			'This is the fourth paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
-			'This is the fifth paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
-			'This is the sixth paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
+			// 'This is the third paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
+			// 'This is the fourth paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
+			// 'This is the fifth paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
+			// 'This is the sixth paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',
 		];
 	}
 
 	/****/
 
 	// Get random url for blog post image. 
-	function getRandomPhotoUrl() {
+	function getRandomImageUrl() {
 
-		// Get number of images. 
+		// Get number of images available. 
 		let n = imageData.length;
 
 		// Choose random image index. 
@@ -57,6 +60,19 @@ function generateRandomPostData() {
 
 		// 
 		return `../gallery/assets/images/full/${ imageData[randomimageindex].imageurl }`;
+	}
+
+	// Get random url for blog post video. 
+	function getRandomVideoUrl() {
+
+		// Get number of videos available. 
+		let n = videoData.length;
+
+		// Choose random video index. 
+		let randomvideoindex = Math.floor( n * Math.random() );
+
+		// 
+		return `../video/${ videoData[randomvideoindex].vidurl }`;
 	}
 }
 
@@ -91,7 +107,7 @@ function generateRandomCommentData() {
 // Get random id for post author. 
 function getRandomUserId() {
 
-	// Get number of users. 
+	// Get number of users available. 
 	let n = userDataList.length;
 
 	// Choose random user index. 
@@ -101,7 +117,7 @@ function getRandomUserId() {
 	return userDataList[randomuserindex].userid;
 }
 
-// Get random time integer between two given boundary integers. 
+// Get random time integer after given boundary integer. 
 function getRandomTimeAfter(a) {
 
 	// Get time difference. 

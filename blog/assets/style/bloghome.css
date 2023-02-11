@@ -18,6 +18,28 @@ div#container section.hero main.grid a.editbtn svg.icon {font-size:1.25rem;}
 div#container section.hero main.grid a.editbtn span.caption {display:none;}
 div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; margin-left:.5rem;}
 
+/* Contributors Section */
+/* div#container section.contributors {} */
+div#container section.contributors main.grid {max-width:calc( .5 * var(--pagewidth) ); position:relative; overflow:hidden;}
+div#container section.contributors main.grid:before,
+div#container section.contributors main.grid::after {background-color:inherit; content:''; position:absolute; top:0; height:100%; width:15%; z-index:10;}
+div#container section.contributors main.grid:before {left:0; background-image:linear-gradient(-90deg,transparent,var(--bgcolor));}
+div#container section.contributors main.grid::after {right:0; background-image:linear-gradient(90deg,transparent,var(--bgcolor));}
+div#container section.contributors main.grid div.row {display:flex; flex-direction:row; width:fit-content; margin-bottom:.75rem;}
+div#container section.contributors main.grid div.row {filter:drop-shadow(rgba(0, 0, 0, 0.1) 0px 4px 6px);}
+div#container section.contributors main.grid div.row {animation:slide 30s linear infinite;}
+div#container section.contributors main.grid div.row a.card {background-color:white; padding:.25rem; border-radius:10rem; margin-right:.75rem;}
+div#container section.contributors main.grid div.row a.card {display:flex; flex-direction:row; align-items:center; color:inherit; text-decoration:none;}
+div#container section.contributors main.grid div.row a.card {flex-direction:column; min-width:9rem; border-radius:1rem;}
+div#container section.contributors main.grid div.row a.card img.avatar {height:2em; height:3em; border-radius:5em; /* margin-right:.45rem; */ margin-bottom:.25rem;}
+div#container section.contributors main.grid div.row a.card span.username {font-size:.875rem; white-space:nowrap; /* margin-right:.5rem; */}
+
+
+@keyframes slide {
+	0% {transform:translateX(0);}
+	100% {transform:translateX(-50%);}
+}
+
 
 
 
@@ -25,6 +47,10 @@ div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; 
 @media screen and (max-width:64rem) {
 
 	/* Hero Section */
+	/* div#container section.hero {} */
+
+	/* Contributors Section */
+	/* div#container section.contributors {} */
 }
 
 
@@ -37,6 +63,9 @@ div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; 
 	div#container section.hero main.grid h1.head {font-size:2.5rem;}
 	div#container section.hero main.grid h2.head {font-size:1.75rem;}
 	div#container section.hero main.grid p.textcopy {font-size:1.25rem;}
+
+	/* Contributors Section */
+	/* div#container section.contributors {} */
 }
 
 
@@ -44,5 +73,10 @@ div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; 
 @media screen and (max-width:32rem) {
 
 	/* Hero Section */
+	/* div#container section.hero {} */
+	/* div#container section.hero main.grid {} */
 	div#container section.hero main.grid p.textcopy {font-size:1rem;}
+
+	/* Contributors Section */
+	/* div#container section.contributors {} */
 }

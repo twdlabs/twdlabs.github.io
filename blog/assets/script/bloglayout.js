@@ -41,7 +41,7 @@ function createBlogPostLayout(post) {
 			<a class="artlink" href="${ getRelativeUrl(`./post/?id=${post.postid}`) }" target="_blank">
 	
 				<!-- preview -->
-				<img class="preview" src="${ getRelativeUrl(post.picurl) }">
+				<img class="preview" src="${ getRelativeUrl(post.imgurl) }">
 				<!-- /preview -->
 	
 			</a>
@@ -127,7 +127,7 @@ function createBlogPostLayout(post) {
 			<div class="bar">
 
 				<!-- userbadge -->
-				<a class="userbadge ${ author ? (author.admin ? 'admin' : '') : '' }" href="${ getRelativeUrl(`../user/?id=${ author.userid }`) }" target="_blank">
+				<a class="userbadge ${ author ? (author.admin ? 'admin' : '') : '' }" href="${ getRelativeUrl(`../user/?id=${ author ? author.userid : '' }`) }" target="_blank">
 
 					<!-- avatar -->
 					<img class="avatar" src="${ author ? getRelativeUrl(`../user/${author.avatarurl}`) : '' }" title="${ author ? author.userid : '' }">

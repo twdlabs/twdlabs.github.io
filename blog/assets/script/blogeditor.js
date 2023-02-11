@@ -40,7 +40,7 @@ function loadBlogPost() {
 	console.log('Selected post data:',selectedPostData);
 
 	// 
-	herosection.style.backgroundImage = `url('${ getRelativeUrl(selectedPostData.picurl) }')`;
+	herosection.style.backgroundImage = `url('${ getRelativeUrl(selectedPostData.imgurl) }')`;
 
 	// 
 	titlefield.value = selectedPostData.title;
