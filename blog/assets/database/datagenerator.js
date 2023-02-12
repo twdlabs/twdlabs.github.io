@@ -3,6 +3,8 @@
 
 // Set boundary for randomly-generated dates. 
 const earliestDate = '2023-1-6';
+// Get date of origin. 
+const t0 = new Date(earliestDate).valueOf();
 
 // Get late date. 
 const now = Date.now();
@@ -17,9 +19,6 @@ const commentoverflow = 'Lorem ipsum dolor sit amet consectetur adipisicing elit
 
 // Generate additional random data for all blog posts. 
 function generateRandomPostData() {
-	
-	// Get date of origin. 
-	let t0 = new Date(earliestDate).valueOf();
 
 	// Go thru all post data items. 
 	for(let post of blogdata) {

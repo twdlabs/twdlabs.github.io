@@ -344,6 +344,9 @@ const blogdata2 = [
 /*****/
 
 
+// Use default user data. 
+userDataList = defaultUserDataList;
+
 // Get saved database from storage. 
 let savedDB = getDatabaseFromStorage();
 
