@@ -79,7 +79,7 @@ function loadVideoById(vidid) {
 	vidbox.innerHTML = createVideo();
 
 	// Get video author data. 
-	let author = userdata[vidsrc.authorid];
+	let author = userDataList[vidsrc.authorid];
 
 	// Load video metadata. 
 	titlebox.innerHTML = vidsrc.title;
@@ -87,24 +87,24 @@ function loadVideoById(vidid) {
 
 	
 	// Load video reaction: liked. 
-	let liked = userdata[currentuserid].likedIds.includes(currentvideoid);
+	let liked = userDataList[currentuserid].likedIds.includes(currentvideoid);
 	if(liked) likebtn.classList.add('active');
 	else likebtn.classList.remove('active');
 	// console.log('liked:',liked);
 
 	// Load video reaction: disliked. 
-	let disliked = userdata[currentuserid].dislikedIds.includes(currentvideoid);
+	let disliked = userDataList[currentuserid].dislikedIds.includes(currentvideoid);
 	if(disliked) dislikebtn.classList.add('active');
 	else dislikebtn.classList.remove('active');
 	// console.log('disliked:',disliked);
 	
 	// Load video reaction: downloaded / not downloaded. 
-	let downloaded = userdata[currentuserid].downloadedIds.includes(currentvideoid);
+	let downloaded = userDataList[currentuserid].downloadedIds.includes(currentvideoid);
 	if(downloaded) downloadbtn.classList.add('active');
 	else downloadbtn.classList.remove('active');
 	
 	// Load video reaction: saved / not saved. 
-	let saved = userdata[currentuserid].savedIds.includes(currentvideoid);
+	let saved = userDataList[currentuserid].savedIds.includes(currentvideoid);
 	if(saved) savebtn.classList.add('active');
 	else savebtn.classList.remove('active');
 
@@ -114,7 +114,7 @@ function loadVideoById(vidid) {
 	avatarbox.style.backgroundImage = `url('${author.photourl}')`;
 
 	// Load subscriber button status. 
-	let subscribed = userdata[currentuserid].subscriptions.includes(vidsrc.authorid);
+	let subscribed = userDataList[currentuserid].subscriptions.includes(vidsrc.authorid);
 	if(subscribed) subscribebtn.classList.add('active');
 	else subscribebtn.classList.remove('active');
 
@@ -262,7 +262,7 @@ function activateReactBtns() {
 
 		// Save video like reaction to database. 
 		let alreadySaved = likedIds.includes(currentvideoid);
-		if(!alreadySaved) userdata[currentuserid].likedIds.push(currentvideoid);
+		if(!alreadySaved) userDataList[currentuserid].likedIds.push(currentvideoid);
 
 		// Activate 'like' button. 
 		likebtn.classList.add('active');
@@ -280,7 +280,7 @@ function activateReactBtns() {
 
 		// Save video dislike reaction to database. 
 		let alreadySaved = dislikedIds.includes(currentvideoid);
-		if(!alreadySaved) userdata[currentuserid].dislikedIds.push(currentvideoid);
+		if(!alreadySaved) userDataList[currentuserid].dislikedIds.push(currentvideoid);
 
 		// Activate 'dislike' button. 
 		dislikebtn.classList.add('active');
@@ -330,7 +330,7 @@ function loadVideoLinks() {
 						<div class="metadata">
 
 							<!-- vidauthor -->
-							<span class="vidauthor">${ userdata[vid.authorid].name }</span>
+							<span class="vidauthor">${ userDataList[vid.authorid].name }</span>
 							<!-- /vidauthor -->
 
 							<!-- dot -->

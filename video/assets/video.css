@@ -58,6 +58,7 @@ div#container section#body main.player div.channel {display:flex; flex-direction
 div#container section#body main.player div.channel div.brand {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; cursor:pointer; user-select:none;}
 div#container section#body main.player div.channel div.brand div#avatar {border-radius:50%; min-width:1.75rem; min-height:1.75rem;}
 div#container section#body main.player div.channel div.brand div#avatar {background-color:#0001; background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container section#body main.player div.channel div.brand div#avatar {background-image:url('../assets/images/avatar-m.png');}
 div#container section#body main.player div.channel div.brand div.details {margin-left:.375rem;}
 div#container section#body main.player div.channel div.brand div.details div#channelname {color:black; font-size:.75rem;}
 div#container section#body main.player div.channel div.brand div.details div#channelsubcount {color:#AAA; font-size:.65rem;}
@@ -128,6 +129,7 @@ div#container section#body aside.playlist ul.vidlist li.viditem:hover a.vidlink 
 div#container section#body aside.playlist ul.vidlist li.viditem.active a.vidlink {background-color:#1e90ffCC; color:white;}
 div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo {flex-grow:0; min-width:6rem; max-width:100%; border:1px solid #0002; border-radius:.25rem;}
 div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-color:#0004; background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-image:url('../assets/images/0000001.png');}
 div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo::after {content:''; display:block; padding-top:62.5%;}
 div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content {flex-grow:1; padding-left:.5rem;}
 div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content {display:flex; flex-direction:row; justify-content:flex-start; align-items:flex-start; align-items:center;}
