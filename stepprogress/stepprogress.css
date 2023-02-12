@@ -12,18 +12,20 @@
 	--blue:dodgerblue;
 	--blue:#4070f4;
 	--grey:#CCC;
+	--white:#f6f7fb;
 	--darkgrey:#888;
 
 	--pagewidth:60rem;
 	--cornersize:.5rem;
 	--transitiontime:.5s;
 
-	--bubblegap:5rem;
-	--bubblesize:4.5rem;
+	--bubblegap:3rem;
+	--bubblesize:4rem;
 	--bubbleedgewidth:.25rem;
 	
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
+	--btnboxshadow:0 .25rem .625rem 0 #0001;
 }
 
 
@@ -33,18 +35,20 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
-div#container main.main {background-color:white; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
-div#container main.main div.row {display:flex; flex-direction:row; align-items:center; gap:var(--bubblegap); position:relative;}
-div#container main.main div.row div.item {background-color:white; width: var(--bubblesize); height:var(--bubblesize); border:var(--bubbleedgewidth) solid var(--grey); border-radius:50%;}
-div#container main.main div.row div.item {display:grid; place-items:center; color:var(--darkgrey); opacity:.75; font-size:2rem; transition:var(--transitiontime);}
-div#container main.main div.row div.item.active {color:var(--blue); opacity:1; border-color:var(--blue);}
-div#container main.main div.row div.item.active::after {background-color:var(--blue);}
-div#container main.main div.row div.item:first-child::after {display:none;}
-div#container main.main div.row div.progressbar {position:absolute; left:0; top:50%; transform:translateY(-50%);}
+div#container main.main {background-color:var(--white); /* width:100%; max-width:var(--pagewidth); */ padding:3rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container main.main div.row {display:flex; flex-direction:row; justify-content:space-between; align-items:center; gap:var(--bubblegap); position:relative;}
+div#container main.main div.row div.bubble {background-color:var(--white); width: var(--bubblesize); height:var(--bubblesize); border:var(--bubbleedgewidth) solid var(--grey); border-radius:50%;}
+div#container main.main div.row div.bubble {display:grid; place-items:center; color:var(--darkgrey); font-size:2rem; cursor:pointer; user-select:none; /* opacity:.75; */ transition:var(--transitiontime); z-index:1;}
+div#container main.main div.row div.bubble.active {color:var(--blue); border-color:var(--blue);}
+div#container main.main div.row div.bubble.active::after {background-color:var(--blue);}
+div#container main.main div.row div.bubble:first-child::after {display:none;}
+div#container main.main div.row div.progressbar {position:absolute; left:0; top:50%; transform:translateY(-50%); z-index:0;}
 div#container main.main div.row div.progressbar {background-color:var(--grey); display:flex; flex-direction:row; justify-content:flex-start; align-items:stretch; height:var(--bubbleedgewidth); width:100%;}
 div#container main.main div.row div.progressbar span.bar {background-color:var(--blue); height:100%; width:0%; transition:var(--transitiontime);}
 div#container main.main div.controller {display:flex; flex-direction:row; justify-content:center; align-items:center; gap:3rem; margin-top:1.5rem;}
-div#container main.main div.controller div.btn {background-color:var(--blue); color:white; font-size:1.5rem; cursor:pointer; user-select:none; padding:.5rem 2rem; border-radius:var(--cornersize);}
+div#container main.main div.controller div.btn {background-color:var(--blue); color:white; font-size:1.25rem; cursor:pointer; user-select:none; padding:.5rem 2rem; border-radius:var(--cornersize); box-shadow:var(--btnboxshadow);}
+div#container main.main div.controller div.btn.prev {}
+div#container main.main div.controller div.btn.next {}
 
 
 /* Tablet Screen */
