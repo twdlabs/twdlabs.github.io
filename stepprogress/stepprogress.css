@@ -47,8 +47,9 @@ div#container main.main div.row div.progressbar {background-color:var(--grey); d
 div#container main.main div.row div.progressbar span.bar {background-color:var(--blue); height:100%; width:0%; transition:var(--transitiontime);}
 div#container main.main div.controller {display:flex; flex-direction:row; justify-content:center; align-items:center; gap:3rem; margin-top:1.5rem;}
 div#container main.main div.controller div.btn {background-color:var(--blue); color:white; font-size:1.25rem; cursor:pointer; user-select:none; padding:.5rem 2rem; border-radius:var(--cornersize); box-shadow:var(--btnboxshadow);}
-div#container main.main div.controller div.btn.prev {}
-div#container main.main div.controller div.btn.next {}
+/* div#container main.main div.controller div.btn.prev {} */
+/* div#container main.main div.controller div.btn.next {} */
+div#container main.main div.controller div.btn.disabled {opacity:.75;}
 
 
 /* Tablet Screen */

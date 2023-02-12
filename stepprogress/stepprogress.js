@@ -99,16 +99,9 @@ function addStepBubbles() {
 // Go to previous step. 
 function goToPrevStep() {
 
-	// Ensure step number within range. 
-	if(currentStep<=minStep) return;
-
-	// Decrement current step. 
-	currentStep--;
+	// Decrement current step (within range). 
+	if(currentStep > minStep) currentStep--;
 	console.log('Current step:',currentStep);
-
-	// 
-	if(currentStep<=minStep) prevbtn.setAttribute('disabled','');
-	else prevbtn.removeAttribute('disabled');
 
 	// Update progress display. 
 	updateProgressDisplay();
@@ -117,16 +110,9 @@ function goToPrevStep() {
 // Go to next step. 
 function goToNextStep() {
 
-	// Ensure step number within range. 
-	if(currentStep>=numberOfSteps) return;
-
-	// Increment current step. 
-	currentStep++;
+	// Increment current step (within range). 
+	if(currentStep < numberOfSteps) currentStep++;
 	console.log('Current step:',currentStep);
-
-	// 
-	if(currentStep>=numberOfSteps) nextbtn.setAttribute('disabled','');
-	else nextbtn.removeAttribute('disabled');
 
 	// Update progress display. 
 	updateProgressDisplay();
@@ -153,4 +139,12 @@ function updateProgressDisplay() {
 		// Un-highlight follwoing steps. 
 		else bubble.classList.remove('active');
 	}
+
+	// Update state of prev button. 
+	if(currentStep<=minStep) prevbtn.classList.add('disabled');
+	else prevbtn.classList.remove('disabled');
+
+	// Update state of next button. 
+	if(currentStep>=numberOfSteps) nextbtn.classList.add('disabled');
+	else nextbtn.classList.remove('disabled');
 }
