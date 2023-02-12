@@ -32,7 +32,7 @@ function createBlogPostLayout(post) {
 	// Compile layout for given post. 
 	return `
 	<!-- item -->
-	<div class="item ${ currentUser.admin ? 'controls' : '' }">
+	<div class="item ${ currentUser ? (currentUser.admin ? 'controls' : '') : '' }">
 
 		<!-- preview -->
 		<div class="preview">

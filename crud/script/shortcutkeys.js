@@ -88,7 +88,7 @@ function checkForShortcutKey(event) {
 		// Check for index overflow. 
 		let overflow = (currentlyselectedindex < 0);
 		// Readjust index if overflowed. 
-		if(overflow) currentlyselectedindex = userdata.length-1;
+		if(overflow) currentlyselectedindex = userDataList.length-1;
 	}
 
 	// Increment index of selected entry. 
@@ -98,7 +98,7 @@ function checkForShortcutKey(event) {
 		currentlyselectedindex++;
 		
 		// Check for index overflow. 
-		let overflow = (currentlyselectedindex >= userdata.length);
+		let overflow = (currentlyselectedindex >= userDataList.length);
 		// Readjust index if overflowed. 
 		if(overflow) currentlyselectedindex = 0;
 	}

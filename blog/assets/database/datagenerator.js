@@ -89,13 +89,14 @@ function generateRandomCommentData() {
 		for(let i=0;i<numcomments;i++) {
 
 			let authorid = getRandomUserId();
+			let authordata = getUserById(authorid);
 
 			// Define comment data. 
 			let c = {
 				postid:post.postid,
 				authorid:authorid,
 				timeposted:getRandomTimeAfter(post.timeposted),
-				commentcontent:`Hi, my name is ${ getUserById(authorid).fname }. This is a randomly generated commment I'm writing in relation to this blog post. ${ commentoverflow/* .split(' ') */ }`,
+				commentcontent:`Hi, my name is ${ authordata ? authordata.fname : '[null user]' }. This is a randomly generated commment I'm writing in relation to this blog post. ${ commentoverflow/* .split(' ') */ }`,
 			};
 
 			// Add comment data to list. 
@@ -106,6 +107,7 @@ function generateRandomCommentData() {
 
 // Get random id for post author. 
 function getRandomUserId() {
+	if(!userDataList.length) return '';
 
 	// Get number of users available. 
 	let n = userDataList.length;

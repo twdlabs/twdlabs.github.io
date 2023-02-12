@@ -11,9 +11,6 @@ const tbody = document.querySelector('div#container main#table table.table tbody
 /*****/
 
 
-// Initialize database. 
-let userdata;
-
 // Initialize index of selected entry row. 
 let currentlyselectedindex = -1;
 
@@ -32,13 +29,13 @@ displayDatabase();
 function displayDatabase() {
 
 	// Retrieve database from storage. 
-	userdata = getDatabaseFromStorage();
+	userDataList = getDatabaseFromStorage();
 	
 	// Initiate result. 
 	let result = '';
 	
 	// Go thru all items in database. 
-	for(i in userdata) {
+	for(i in userDataList) {
 		// Add layout for given item. 
 		result += createItemLayout(i);
 	}
@@ -57,7 +54,7 @@ function displayDatabase() {
 	function createItemLayout(i) {
 		
 		// Get data for user. 
-		let user = userdata[i];
+		let user = userDataList[i];
 		// console.log(i,`User item:`,user);
 
 		// 
@@ -278,10 +275,10 @@ function createItem() {
 	clearEditorInput();
 
 	// Retrieve database from storage. 
-	userdata = getDatabaseFromStorage();
+	userDataList = getDatabaseFromStorage();
 
 	// Add new item to database. 
-	userdata.push(newitem);
+	userDataList.push(newitem);
 
 	// Save updated database to storage. 
 	saveDatabaseToStorage();
@@ -331,7 +328,7 @@ function editItem(indexOfEdit=-1) {
 	}
 
 	// Get data for selected user entry. 
-	let selectedUser = userdata[indexOfEdit];
+	let selectedUser = userDataList[indexOfEdit];
 	// Get previous values of selected item. 
 	let prevfname = `${selectedUser.fname}`;
 	let prevlname = `${selectedUser.lname}`;
@@ -379,13 +376,13 @@ function updateItem() {
 	clearEditorInput();
 
 	// Retrieve database from storage. 
-	userdata = getDatabaseFromStorage();
+	userDataList = getDatabaseFromStorage();
 
 	// Update item in database. 
-	if(fn.length>0) userdata[indexOfUpdate].fname = fn;
-	if(ln.length>0) userdata[indexOfUpdate].lname = ln;
-	if(eml.length>0) userdata[indexOfUpdate].email = eml;
-	if(mn.length>0) userdata[indexOfUpdate].mobilenumber = mn;
+	if(fn.length>0) userDataList[indexOfUpdate].fname = fn;
+	if(ln.length>0) userDataList[indexOfUpdate].lname = ln;
+	if(eml.length>0) userDataList[indexOfUpdate].email = eml;
+	if(mn.length>0) userDataList[indexOfUpdate].mobilenumber = mn;
 
 	// Save updated database to storage. 
 	saveDatabaseToStorage();
@@ -418,10 +415,10 @@ function deleteItem(indexOfDeletion=-1) {
 	if(doDelete) {
 
 		// Retrieve database from storage. 
-		userdata = getDatabaseFromStorage();
+		userDataList = getDatabaseFromStorage();
 	
 		// Remove selected item from database. 
-		userdata.splice(indexOfDeletion, 1);
+		userDataList.splice(indexOfDeletion, 1);
 	
 		// Save updated database to storage. 
 		saveDatabaseToStorage();
@@ -449,7 +446,7 @@ function clearDatabase() {
 		if(doClearConfirmed) {
 
 			// Reset original data. 
-			userdata = [];
+			userDataList = [];
 		
 			// Save updated database to storage. 
 			saveDatabaseToStorage();
@@ -467,8 +464,8 @@ function resetDatabase() {
 	if(doReset) {
 
 		// 
-		userdata = userDataList.map(x=>x);
-		console.log(userdata);
+		userDataList = defaultUserDataList.map(x=>x);
+		console.log(userDataList);
 		
 		// Save updated database to storage. 
 		saveDatabaseToStorage();

@@ -16,10 +16,10 @@ function getDatabaseFromStorage() {
 
 // Save database to storage. 
 function saveDatabaseToStorage() {
-	console.log('Saving database:',userdata);
+	console.log('Saving database:',userDataList);
 
 	// Check for empty database. 
-	let isEmptyDatabase = !(userdata.length);
+	let isEmptyDatabase = !(userDataList.length);
 
 	// Handle empty database. 
 	if(isEmptyDatabase) {
@@ -32,7 +32,7 @@ function saveDatabaseToStorage() {
 	else {
 
 		// Create string version of database. 
-		let str = JSON.stringify(userdata);
+		let str = JSON.stringify(userDataList);
 	
 		// Save to storage: string version of database. 
 		localStorage.setItem('cruduserdata',str);
