@@ -146,27 +146,49 @@ div#container aside#sidebar.active::after {opacity:1; visibility:visible;}
 
 
 
+/* Large Smartphone */
 @media screen and (max-width:60rem) {
 
+	/* Head Section */
+
+	/* Tags Section */
+
+	/* Gallery Section */
 	div#container section#gallery main {grid-template-columns:repeat(3,1fr);}
+
+	/* Sidebar Section */
 }
 
 
+/* Medium Smartphone */
 @media screen and (max-width:48rem) {
 
+	/* Head Section */
+
+	/* Tags Section */
+
+	/* Gallery Section */
 	div#container section#gallery main {grid-template-columns:repeat(2,1fr);}
+
+	/* Sidebar Section */
 }
 
 
+/* Small Smartphone */
 @media screen and (max-width:32rem) {
 
+	/* Head Section */
 	div#container section#head {padding-left:1rem; padding-right:1rem;}
 	div#container section#head main h1.head {font-size:1.5rem;}
 	div#container section#head main div.btn {font-size:1.5rem;}
 
+	/* Tags Section */
+
+	/* Gallery Section */
 	div#container section#gallery {padding:1rem;}
 	div#container section#gallery main {grid-template-columns:repeat(1,1fr);}
 
+	/* Sidebar Section */
 	div#container aside#sidebar div.closebtn {font-size:1.5rem; padding:1rem 1rem 0 0;}
 }
 
