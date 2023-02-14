@@ -12,7 +12,12 @@ const miniframepage = document.querySelector('div#container figure.miniframe ifr
 
 // Define group categories. 
 // const leadingLetters = ['0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
-const leadingLetters = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+// const leadingLetters = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+const leadingLetters = [
+	['A'],['B'],['C'],['D','E'],['F','G'],['H','I','J','K'],['L','M'],['N','O'],['P','Q','R'],['S'],['T'],
+	['U','V','W','X','Y','Z'],
+	['0','1','2','3','4','5','6','7','8','9'],
+];
 
 
 /*****/
@@ -45,7 +50,7 @@ function loadDesktopItems() {
 	}
 	
 	// Add result to page. 
-	desktop.innerHTML = result;
+	desktop.insertAdjacentHTML('beforeend',result);
 
 	// Activate mini frame. 
 	activateMiniFrame();
@@ -70,7 +75,8 @@ function loadDesktopItems() {
 			// console.log('Category index:',i);
 
 			// Add to result. 
-			result[i].push(name);
+			if(i>=0) result[i].push(name);
+			else console.warn('Category index out of bounds:',i);
 		}
 
 		// Return result. 
@@ -82,16 +88,13 @@ function loadDesktopItems() {
 		function getCategoryIndex(name) {
 
 			// Get leading letter of given name. 
-			let l = `${name}`.substring(0,1).toUpperCase();
+			let letter = `${name}`.substring(0,1).toUpperCase();
 
 			// Go thru all potential leading letters. 
 			for(let i in leadingLetters) {
 
-				// Get letter to check for match. 
-				let letter = leadingLetters[i];
-
 				// Return current index if matching letter found. 
-				if(l==letter) return i;
+				if( leadingLetters[i].includes(letter) ) return i;
 			}
 
 			// Return null index if not found. 
@@ -109,12 +112,12 @@ function loadDesktopItems() {
 		if(!group.length) return '';
 
 		// Get group name. 
-		let groupname = leadingLetters[index];
+		let groupname = leadingLetters[index].join(' ');
 	
 		// Return result. 
 		return `
 		<!-- group -->
-		<div class="group activex">
+		<div class="group active">
 
 			<!-- ghead -->
 			<div class="ghead">
