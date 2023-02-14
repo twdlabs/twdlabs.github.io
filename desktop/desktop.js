@@ -117,7 +117,7 @@ function loadDesktopItems() {
 		// Return result. 
 		return `
 		<!-- group -->
-		<div class="group active">
+		<div class="group ${ false ? 'active' : '' }">
 
 			<!-- ghead -->
 			<div class="ghead">
@@ -147,7 +147,15 @@ function loadDesktopItems() {
 			<!-- /ghead -->
 
 			<!-- gbody -->
-			<div class="gbody">${ getProjectLinks(group) }</div>
+			<div class="gbody">
+
+				<!-- bin -->
+				<div class="bin">
+					${ getProjectLinks(group) }
+				</div>
+				<!-- /bin -->
+
+			</div>
 			<!-- /gbody -->
 
 		</div>
@@ -288,9 +296,23 @@ function loadDesktopItems() {
 	
 			// Get selected group. 
 			let selectedGroup = event.currentTarget.parentElement;
+			let selectedGroupBody = selectedGroup.querySelector('div.gbody');
+
+			// 
+			let groupIsActive = selectedGroup.classList.contains('active');
 			
 			// Toggle selected group. 
-			selectedGroup.classList.toggle('active');
+			// selectedGroup.classList.toggle('active');
+			if(groupIsActive) {
+
+				selectedGroupBody.style.maxHeight = '';
+				selectedGroup.classList.remove('active');
+			}
+			else {
+
+				selectedGroupBody.style.maxHeight = `${selectedGroupBody.scrollHeight}px`;
+				selectedGroup.classList.add('active');
+			}
 		}
 	}
 }
