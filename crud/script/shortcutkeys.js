@@ -10,7 +10,7 @@ document.addEventListener('keydown',checkForShortcutKey)
 
 // Check for shortcut key. 
 function checkForShortcutKey(event) {
-	console.log('event:',event);
+	// console.log('Key event:',event);
 
 	// Get code for selected key. 
 	let keycode = event.keyCode;
@@ -63,12 +63,18 @@ function checkForShortcutKey(event) {
 		else if(keycode==38) {
 			decrSelectedIndex();
 			refreshSelectedEntry();
+
+			// Stop scroll behavior when cycling thru data items. 
+			event.preventDefault();
 		}
 
 		// Down key: Increment index of selected entry. 
 		else if(keycode==40) {
 			incrSelectedIndex();
 			refreshSelectedEntry();
+
+			// Stop scroll behavior when cycling thru data items. 
+			event.preventDefault();
 		}
 
 		// Delete key: Delete selected entry. 

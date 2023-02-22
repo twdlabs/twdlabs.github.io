@@ -1,8 +1,18 @@
 
 
 
+// 
+let crudDataSources = {
+	// 
+	users:'cruduserdata',
+	blogposts:'crudblogdata',
+	blogcomments:'crudblogcommentdata',
+};
+
+
 // Retrieve database from storage. 
 function getDatabaseFromStorage() {
+	console.log('Retrieving database:',userDataList);
 
 	// Get from storage: string represntation of database. 
 	let str = localStorage.getItem('cruduserdata');

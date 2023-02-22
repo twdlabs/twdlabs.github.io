@@ -6,6 +6,15 @@ const navbar = document.querySelector('div#container nav.navbar');
 
 // Get table body. 
 const tbody = document.querySelector('div#container main#table table.table tbody');
+// Intialize all entry rows. 
+let allentryrows;
+// Initialize all edit entry buttons. 
+let alleditentrybtns;
+// Initialize all delete entry buttons. 
+let alldeleteentrybtns;
+
+// 
+const contextmenu = document.querySelector('div#container main#table div.contextmenu');
 
 
 /*****/
@@ -31,26 +40,26 @@ function displayDatabase() {
 	// Retrieve database from storage. 
 	userDataList = getDatabaseFromStorage();
 	
-	// Initiate result. 
-	let result = '';
+	// Initiate contents of table body. 
+	let tbodycontents = '';
 	
 	// Go thru all items in database. 
 	for(i in userDataList) {
-		// Add layout for given item. 
-		result += createItemLayout(i);
+		// Add row layout for given data entry. 
+		tbodycontents += createItemLayout(i);
 	}
-	// Add layout for new entry. 
-	result += createItemLayout2();
+	// Add row button layout for new entry. 
+	tbodycontents += createNewItemLayout();
 	
-	// Add resulting layouts to table. 
-	tbody.innerHTML = result;
+	// Add resulting contents to table body. 
+	tbody.innerHTML = tbodycontents;
 
 	// Activate button clicks for new item operations. 
 	activateItemOperations();
 
 	/****/
 
-	// Create item layout. 
+	// Create layout for existing entry. 
 	function createItemLayout(i) {
 		
 		// Get data for user. 
@@ -60,7 +69,7 @@ function displayDatabase() {
 		// 
 		return `
 		<!-- row -->
-		<tr class="row entry" data-index="${ i }" draggable="true">
+		<tr class="row entry" data-index="${ i }" draggable="false">
 		
 			<!-- cell -->
 			<td class="cell">
@@ -116,7 +125,38 @@ function displayDatabase() {
 			<td class="cell">
 
 				<!-- panel -->
-				<div class="panel compact">
+				<div class="panel mini">
+		
+					<!-- btn -->
+					<div class="btn editbtn" data-index="${ i }" title="Edit User">
+		
+						<!-- icon -->
+						<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+						</svg>
+						<!-- /icon -->
+		
+					</div>
+					<!-- /btn -->
+		
+					<!-- btn -->
+					<div class="btn deletebtn" data-index="${ i }" title="Delete User">
+		
+						<!-- icon -->
+						<svg class="icon trash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+						</svg>
+						<!-- /icon -->
+		
+					</div>
+					<!-- /btn -->
+					
+				</div>
+				<!-- /panel -->
+
+				<!-- panel -->
+				<div class="panel full">
 		
 					<!-- btn -->
 					<div class="btn editbtn" data-index="${ i }" title="Edit User">
@@ -161,13 +201,13 @@ function displayDatabase() {
 		<!-- /row -->`;
 	}
 
-	// Create item layout. 
-	function createItemLayout2() {
+	// Create layout for new entry. 
+	function createNewItemLayout() {
 
 		// 
 		return `
 		<!-- row -->
-		<tr class="row addentry">
+		<tr class="row newentry">
 	
 			<!-- cell -->
 			<td class="cell" colspan="6">
@@ -198,29 +238,28 @@ function displayDatabase() {
 	// Activate button clicks for new item operations. 
 	function activateItemOperations() {
 
-		// Get all data entry rows. 
-		let allentryrows = document.querySelectorAll('table.table tr.row.entry');
+		// Get all entry rows. 
+		allentryrows = document.querySelectorAll('div#container main#table table.table tbody tr.row.entry');
+		// Get all edit entry buttons. 
+		alleditentrybtns = document.querySelectorAll('div#container main#table table.table td.cell div.panel div.editbtn');
+		// Get all delete entry buttons. 
+		alldeleteentrybtns = document.querySelectorAll('div#container main#table table.table td.cell div.panel div.deletebtn');
 
 		// Go thru all data entry rows. 
 		for(let entryrow of allentryrows) {
 			// Activate button click. 
 			entryrow.addEventListener('click',selectItem);
+			entryrow.addEventListener('contextmenu',openContextMenu);
 		}
 
-		// Get all edit buttons. 
-		let editbtns = document.querySelectorAll('table.table td.cell div.panel div.editbtn');
-
-		// Go thru all edit buttons. 
-		for(let btn of editbtns) {
+		// Go thru all edit entry buttons. 
+		for(let btn of alleditentrybtns) {
 			// Activate button click. 
 			btn.addEventListener('click',startEditingItem);
 		}
 
-		// Get all delete buttons. 
-		let deletebtns = document.querySelectorAll('table.table td.cell div.panel div.deletebtn');
-
-		// Go thru all delete buttons. 
-		for(let btn of deletebtns) {
+		// Go thru all delete entry buttons. 
+		for(let btn of alldeleteentrybtns) {
 			// Activate button click. 
 			btn.addEventListener('click',startDeletingItem);
 		}
@@ -300,8 +339,6 @@ function selectItem(event) {
 	// Get selected entry row. 
 	const selectedentryrow = event.currentTarget;
 
-	// Get all entry rows. 
-	let allentryrows = document.querySelectorAll('table.table tr.row.entry');
 	// Go thru all entry rows. 
 	for(let entryrow of allentryrows) {
 		// Unselect row. 
