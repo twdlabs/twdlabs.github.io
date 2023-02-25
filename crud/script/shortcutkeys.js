@@ -32,15 +32,15 @@ function checkForShortcutKey(event) {
 			// Check if in creator mode. 
 			let inCreatorMode = overlay.classList.contains('create');
 
-			// Xyz if in creator mode. 
+			// Create entry if in creator mode. 
 			if(inCreatorMode) {
-				createItem();
+				createEntry();
 				closeOverlay();
 			}
 
-			// Xyz if not in creator mode. 
+			// Update entry if not in creator mode. 
 			else {
-				updateItem();
+				updateEntry();
 				closeOverlay();
 			}
 		}
@@ -51,7 +51,7 @@ function checkForShortcutKey(event) {
 
 		// Enter key: Open selected entry. 
 		if(keycode==13) {
-			editItem(currentlyselectedindex);
+			editEntry(currentlyselectedindex);
 		}
 
 		// 'N' key: Create new entry. 
@@ -79,7 +79,7 @@ function checkForShortcutKey(event) {
 
 		// Delete key: Delete selected entry. 
 		else if(keycode==8 || keycode==46) {
-			deleteItem(currentlyselectedindex);
+			deleteEntry(currentlyselectedindex);
 		}
 	}
 

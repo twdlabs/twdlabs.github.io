@@ -1,0 +1,84 @@
+
+
+
+/* Navbar */
+
+div#container nav.navbar {position:fixed; top:0; left:0; right:0; width:100%; z-index:100;}
+div#container nav.navbar {background-color:transparent; background-image:linear-gradient(var(--blue),var(--tlblue)); /* position:relative; */ padding:.875rem 1.5rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar main.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center; /* align-items:flex-start; */ max-width:var(--pagewidth); margin:0 auto;}
+div#container nav.navbar main.grid h1.head {flex-grow:0;}
+div#container nav.navbar main.grid div.navmenu {flex-grow:1;}
+div#container nav.navbar main.grid div.navtoggler {flex-grow:0;}
+
+div#container nav.navbar main.grid h1.head {font-size:1.75rem; font-weight:900; cursor:pointer; user-select:none; margin:0;}
+div#container nav.navbar main.grid h1.head {display:flex; flex-direction:row; align-items:center; /* align-items:flex-end; */}
+div#container nav.navbar main.grid h1.head svg.icon {font-size:1.5em;}
+div#container nav.navbar main.grid h1.head span.caption {white-space:nowrap; margin-left:.375rem; /* margin-bottom:-.5rem; */}
+div#container nav.navbar main.grid div.navmenu {border-radius:.375rem;}
+/* div#container nav.navbar main.grid div.navmenu.sources {} */
+/* div#container nav.navbar main.grid div.navmenu.operations {} */
+div#container nav.navbar main.grid div.navmenu ul.navlist {display:flex; flex-direction:row; grid-gap:.25rem; overflow:hidden; }
+div#container nav.navbar main.grid div.navmenu ul.navlist {background-color:inherit; list-style:none; padding:0; padding:0 .5rem; margin:0;}
+div#container nav.navbar main.grid div.navmenu.sources ul.navlist {justify-content:flex-start; }
+div#container nav.navbar main.grid div.navmenu.operations ul.navlist {justify-content:flex-end; }
+/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem {padding:0 .35rem;} */
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn {font-size:1.25rem; /* transition:.125s; */ padding:.625rem; border:1px solid var(--whiteglass);}
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.addbtn {background-color:var(--green);}
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.resetbtn {background-color:var(--blue);}
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.sourcebtn {background-color:var(--lightblack);}
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.darkmodebtn {display:inline-flex; background-color:var(--lightblack); color:white;}
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.lightmodebtn {display:inline-flex; background-color:var(--offwhite); color:var(--lightblack);}
+/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.darkmodebtn svg.icon {display:none;} */
+/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.darkmodebtn svg.icon.solid {display:block;} */
+/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.lightmodebtn svg.icon {display:none;} */
+/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.lightmodebtn svg.icon.solid {display:block;} */
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.deleteallbtn {background-color:var(--red);}
+div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn span.caption {display:none; font-size:.75em;}
+div#container nav.navbar.sources main.grid div.navmenu.sources ul.navlist li.navitem div.btn span.caption {display:block;}
+div#container nav.navbar.operations main.grid div.navmenu.operations ul.navlist li.navitem div.btn span.caption {display:block;}
+/* .dark div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.darkmodebtn {display:none;} */
+/* .dark div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.lightmodebtn {display:flex;} */
+div#container nav.navbar main.grid div.navtoggler {background-color:var(--lightblack); color:white; cursor:pointer; padding:.375rem; border-radius:.25rem;}
+div#container nav.navbar main.grid div.navtoggler svg.icon {display:block; font-size:1.625rem;}
+
+
+
+
+@media screen and (max-width:64rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar main.grid {} */
+	/* div#container nav.navbar main.grid h1.head {} */
+	/* div#container nav.navbar main.grid h1.head span.caption {} */
+	div#container nav.navbar main.grid div.navmenu {background-color:var(--tlblue2); overflow:hidden; max-height:0; transition:.5s;}
+	div#container nav.navbar main.grid div.navmenu {position:absolute; top:100%; left:0; right:0; width:100%; z-index:10; margin:1rem .75rem;}
+	div#container nav.navbar main.grid div.navmenu {max-width:calc(var(--pagewidth)/3);}
+	div#container nav.navbar main.grid div.navmenu.sources {margin-right:auto;}
+	div#container nav.navbar main.grid div.navmenu.operations {margin-left:auto;}
+	div#container nav.navbar.sources main.grid div.navmenu.sources {max-height:none;}
+	div#container nav.navbar.operations main.grid div.navmenu.operations {max-height:none;}
+	div#container nav.navbar main.grid div.navmenu ul.navlist {flex-direction:column; align-items:stretch; grid-gap:1rem; padding:2rem 1.5rem; padding:1.5rem 1.375rem;}
+	div#container nav.navbar main.grid div.navmenu ul.navlist::after {display:block; content:''; position:absolute; bottom:100%; border:1rem solid transparent; border-bottom-color:var(--blue);}
+	div#container nav.navbar main.grid div.navmenu.sources ul.navlist::after {left:0;}
+	div#container nav.navbar main.grid div.navmenu.operations ul.navlist::after {right:0;}
+	/* div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem {} */
+	div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn {justify-content:space-between; padding:.625rem 1.25rem;}
+	div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn::after {content:''; width:1rem;}
+	div#container nav.navbar main.grid div.navmenu ul.navlist li.navitem div.btn span.caption {display:block;}
+}
+
+
+
+@media screen and (max-width:36rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar main.grid {} */
+	/* div#container nav.navbar main.grid h1.head {} */
+	/* div#container nav.navbar main.grid h1.head span.caption {} */
+	/* div#container nav.navbar main.grid div.navmenu {} */
+	/* div#container nav.navbar main.grid div.navmenu ul.navlist {} */
+}
+
+

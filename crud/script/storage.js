@@ -1,13 +1,16 @@
 
 
 
-// 
+// Define names for data sources. 
 let crudDataSources = {
 	// 
 	users:'cruduserdata',
 	blogposts:'crudblogdata',
 	blogcomments:'crudblogcommentdata',
 };
+
+
+/*****/
 
 
 // Retrieve database from storage. 

@@ -4,16 +4,28 @@
 // Get navbar. 
 const navbar = document.querySelector('div#container nav.navbar');
 
+
+// Get table. 
+// const table = document.querySelector('div#container main#table table.table');
+
+// Get table head. 
+const thead = document.querySelector('div#container main#table table.table thead');
+
 // Get table body. 
 const tbody = document.querySelector('div#container main#table table.table tbody');
+
 // Intialize all entry rows. 
 let allentryrows;
 // Initialize all edit entry buttons. 
 let alleditentrybtns;
 // Initialize all delete entry buttons. 
 let alldeleteentrybtns;
+// Initialize all row copy buttons. 
+let allcopyrowbtns;
+// Initialize all cell copy buttons. 
+let allcopycellbtns;
 
-// 
+// Get context menu. 
 const contextmenu = document.querySelector('div#container main#table div.contextmenu');
 
 
@@ -46,10 +58,10 @@ function displayDatabase() {
 	// Go thru all items in database. 
 	for(i in userDataList) {
 		// Add row layout for given data entry. 
-		tbodycontents += createItemLayout(i);
+		tbodycontents += createEntryLayout(i);
 	}
 	// Add row button layout for new entry. 
-	tbodycontents += createNewItemLayout();
+	tbodycontents += createNewEntryLayout();
 	
 	// Add resulting contents to table body. 
 	tbody.innerHTML = tbodycontents;
@@ -59,150 +71,8 @@ function displayDatabase() {
 
 	/****/
 
-	// Create layout for existing entry. 
-	function createItemLayout(i) {
-		
-		// Get data for user. 
-		let user = userDataList[i];
-		// console.log(i,`User item:`,user);
-
-		// 
-		return `
-		<!-- row -->
-		<tr class="row entry" data-index="${ i }" draggable="false">
-		
-			<!-- cell -->
-			<td class="cell">
-
-				<!-- data -->
-				<span class="data">${ i }</span>
-				<!-- /data -->
-
-			</td>
-			<!-- /cell -->
-		
-			<!-- cell -->
-			<td class="cell">
-
-				<!-- data -->
-				<span class="data">${ user.userid || '' }</span>
-				<!-- /data -->
-
-			</td>
-			<!-- /cell -->
-		
-			<!-- cell -->
-			<td class="cell">
-	
-				<!-- data -->
-				<span class="data">${ `${user.fname} ${user.lname}` || '' }</span>
-				<!-- /data -->
-	
-			</td>
-			<!-- /cell -->
-	
-			<!-- cell -->
-			<td class="cell">
-	
-				<!-- data -->
-				<span class="data">${ user.email || '' }</span>
-				<!-- /data -->
-	
-			</td>
-			<!-- /cell -->
-	
-			<!-- cell -->
-			<td class="cell">
-	
-				<!-- data -->
-				<span class="data">${ user.mobilenumber || '' }</span>
-				<!-- /data -->
-	
-			</td>
-			<!-- /cell -->
-	
-			<!-- cell -->
-			<td class="cell">
-
-				<!-- panel -->
-				<div class="panel mini">
-		
-					<!-- btn -->
-					<div class="btn editbtn" data-index="${ i }" title="Edit User">
-		
-						<!-- icon -->
-						<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-						</svg>
-						<!-- /icon -->
-		
-					</div>
-					<!-- /btn -->
-		
-					<!-- btn -->
-					<div class="btn deletebtn" data-index="${ i }" title="Delete User">
-		
-						<!-- icon -->
-						<svg class="icon trash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-						</svg>
-						<!-- /icon -->
-		
-					</div>
-					<!-- /btn -->
-					
-				</div>
-				<!-- /panel -->
-
-				<!-- panel -->
-				<div class="panel full">
-		
-					<!-- btn -->
-					<div class="btn editbtn" data-index="${ i }" title="Edit User">
-		
-						<!-- icon -->
-						<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-						</svg>
-						<!-- /icon -->
-		
-						<!-- caption -->
-						<span class="caption">Edit</span>
-						<!-- /caption -->
-		
-					</div>
-					<!-- /btn -->
-		
-					<!-- btn -->
-					<div class="btn deletebtn" data-index="${ i }" title="Delete User">
-		
-						<!-- icon -->
-						<svg class="icon trash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-						</svg>
-						<!-- /icon -->
-		
-						<!-- caption -->
-						<span class="caption">Delete</span>
-						<!-- /caption -->
-		
-					</div>
-					<!-- /btn -->
-					
-				</div>
-				<!-- /panel -->
-	
-			</td>
-			<!-- /cell -->
-	
-		</tr>
-		<!-- /row -->`;
-	}
-
 	// Create layout for new entry. 
-	function createNewItemLayout() {
+	function createNewEntryLayout() {
 
 		// 
 		return `
@@ -235,72 +105,347 @@ function displayDatabase() {
 		<!-- /row -->`;
 	}
 
+	// Create layout for existing entry. 
+	function createEntryLayout(i) {
+		
+		// Get data for user. 
+		let user = userDataList[i];
+		// console.log(i,`User item:`,user);
+
+		// 
+		return `
+		<!-- row -->
+		<tr class="row entry" data-index="${ i }" draggable="false">
+		
+			<!-- cell -->
+			<td class="cell">
+
+				<!-- data -->
+				<span class="data">${ i }</span>
+				<!-- /data -->
+
+				<!-- copier -->
+				<div class="btn copier">
+
+					<!-- icon -->
+					<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /copier -->
+
+			</td>
+			<!-- /cell -->
+		
+			<!-- cell -->
+			<td class="cell">
+
+				<!-- data -->
+				<span class="data">${ user.userid || '' }</span>
+				<!-- /data -->
+
+				<!-- copier -->
+				<div class="btn copier">
+
+					<!-- icon -->
+					<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /copier -->
+
+			</td>
+			<!-- /cell -->
+		
+			<!-- cell -->
+			<td class="cell">
+	
+				<!-- data -->
+				<span class="data">${ `${user.fname} ${user.lname}` || '' }</span>
+				<!-- /data -->
+
+				<!-- copier -->
+				<div class="btn copier">
+
+					<!-- icon -->
+					<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /copier -->
+	
+			</td>
+			<!-- /cell -->
+	
+			<!-- cell -->
+			<td class="cell">
+	
+				<!-- data -->
+				<span class="data">${ user.email || '' }</span>
+				<!-- /data -->
+
+				<!-- copier -->
+				<div class="btn copier">
+
+					<!-- icon -->
+					<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /copier -->
+	
+			</td>
+			<!-- /cell -->
+	
+			<!-- cell -->
+			<td class="cell">
+	
+				<!-- data -->
+				<span class="data">${ user.mobilenumber || '' }</span>
+				<!-- /data -->
+
+				<!-- copier -->
+				<div class="btn copier">
+
+					<!-- icon -->
+					<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /copier -->
+	
+			</td>
+			<!-- /cell -->
+	
+			<!-- cell -->
+			<td class="cell">
+
+				<!-- opmenu -->
+				<div class="opmenu mini">
+
+					<!-- copybtn -->
+					<div class="btn copybtn" data-index="${ i }" title="Copy Entry">
+
+						<!-- icon -->
+						<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+						</svg>
+						<!-- /icon -->
+						
+					</div>
+					<!-- /copybtn -->
+		
+					<!-- editbtn -->
+					<div class="btn editbtn" data-index="${ i }" title="Edit Entry">
+		
+						<!-- icon -->
+						<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+						</svg>
+						<!-- /icon -->
+		
+					</div>
+					<!-- /editbtn -->
+		
+					<!-- deletebtn -->
+					<div class="btn deletebtn" data-index="${ i }" title="Delete Entry">
+		
+						<!-- icon -->
+						<svg class="icon trash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+						</svg>
+						<!-- /icon -->
+		
+					</div>
+					<!-- /deletebtn -->
+					
+				</div>
+				<!-- /opmenu -->
+
+				<!-- opmenu -->
+				<div class="opmenu full">
+
+					<!-- copybtn -->
+					<div class="btn copybtn" data-index="${ i }" title="Copy Entry">
+
+						<!-- icon -->
+						<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+						</svg>
+						<!-- /icon -->
+
+						<!-- caption -->
+						<span class="caption">Copy</span>
+						<!-- /caption -->
+						
+					</div>
+					<!-- /copybtn -->
+		
+					<!-- editbtn -->
+					<div class="btn editbtn" data-index="${ i }" title="Edit Entry">
+		
+						<!-- icon -->
+						<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+						</svg>
+						<!-- /icon -->
+		
+						<!-- caption -->
+						<span class="caption">Edit</span>
+						<!-- /caption -->
+		
+					</div>
+					<!-- /editbtn -->
+		
+					<!-- deletebtn -->
+					<div class="btn deletebtn" data-index="${ i }" title="Delete Entry">
+		
+						<!-- icon -->
+						<svg class="icon trash" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+						</svg>
+						<!-- /icon -->
+		
+						<!-- caption -->
+						<span class="caption">Delete</span>
+						<!-- /caption -->
+		
+					</div>
+					<!-- /deletebtn -->
+					
+				</div>
+				<!-- /opmenu -->
+	
+			</td>
+			<!-- /cell -->
+	
+		</tr>
+		<!-- /row -->`;
+	}
+
 	// Activate button clicks for new item operations. 
 	function activateItemOperations() {
 
 		// Get all entry rows. 
-		allentryrows = document.querySelectorAll('div#container main#table table.table tbody tr.row.entry');
+		allentryrows = document.querySelectorAll('div#container main#table table.table tr.row.entry');
+		// Get all cell copy buttons. 
+		allcopycellbtns = document.querySelectorAll('div#container main#table table.table tr.row.entry td.cell div.copier');
 		// Get all edit entry buttons. 
-		alleditentrybtns = document.querySelectorAll('div#container main#table table.table td.cell div.panel div.editbtn');
+		alleditentrybtns = document.querySelectorAll('div#container main#table table.table tr.row.entry td.cell div.opmenu div.editbtn');
 		// Get all delete entry buttons. 
-		alldeleteentrybtns = document.querySelectorAll('div#container main#table table.table td.cell div.panel div.deletebtn');
+		alldeleteentrybtns = document.querySelectorAll('div#container main#table table.table tr.row.entry td.cell div.opmenu div.deletebtn');
+		// Get all row copy buttons. 
+		allcopyrowbtns = document.querySelectorAll('div#container main#table table.table tr.row.entry td.cell div.opmenu div.copybtn');
 
 		// Go thru all data entry rows. 
 		for(let entryrow of allentryrows) {
 			// Activate button click. 
-			entryrow.addEventListener('click',selectItem);
-			entryrow.addEventListener('contextmenu',openContextMenu);
+			entryrow.addEventListener('click',selectEntry);
+			// entryrow.addEventListener('contextmenu',openEntryMenu);
 		}
 
 		// Go thru all edit entry buttons. 
 		for(let btn of alleditentrybtns) {
 			// Activate button click. 
-			btn.addEventListener('click',startEditingItem);
+			btn.addEventListener('click',startEditingEntry);
 		}
 
 		// Go thru all delete entry buttons. 
 		for(let btn of alldeleteentrybtns) {
 			// Activate button click. 
-			btn.addEventListener('click',startDeletingItem);
+			btn.addEventListener('click',startDeletingEntry);
+		}
+
+		// Go thru all row copy buttons. 
+		for(let btn of allcopyrowbtns) {
+			// Activate button click. 
+			btn.addEventListener('click',copyRowData);
+		}
+
+		// Go thru all cell copy buttons. 
+		for(let btn of allcopycellbtns) {
+			// Activate button click. 
+			btn.addEventListener('click',copyCellData);
 		}
 
 		/***/
 
-		// Start editing selected item. 
-		function startEditingItem(event) {
+		// Start editing selected entry. 
+		function startEditingEntry(event) {
 
 			// Get selected edit button. 
 			let editbtn = event.currentTarget;
 
 			// Get index of selected item to edit. 
 			let selectedIndex = editbtn.getAttribute('data-index');
-			console.log('Editing item at index:',selectedIndex);
+			// console.log('Editing entry at index:',selectedIndex);
 
 			// Attach selected index to update button in item editor. 
 			editorupdatebtn.setAttribute('data-selectedindex',selectedIndex);
 
-			// Edit item in database. 
-			editItem(selectedIndex);
+			// Edit entry in database. 
+			editEntry(selectedIndex);
 		}
 
-		// Start deleting selected item. 
-		function startDeletingItem(event) {
+		// Start deleting selected entry. 
+		function startDeletingEntry(event) {
 
 			// Get selected delete button. 
 			let deletebtn = event.currentTarget;
 
 			// Get index of selected item to delete. 
 			let selectedIndex = deletebtn.getAttribute('data-index');
-			console.log('Deleting item at index:',selectedIndex);
+			// console.log('Deleting entry at index:',selectedIndex);
 
-			// 
-			deleteItem(selectedIndex);
+			// Delete entry in database. 
+			deleteEntry(selectedIndex);
+		}
+
+		// Copy data from selected row. 
+		function copyRowData(event) {
+
+			// Get selected copy button. 
+			let copyrowbtn = event.currentTarget;
+
+			// Get index of selected item to copy. 
+			let selectedIndex = copyrowbtn.getAttribute('data-index');
+			// console.log('Copying entry at index:',selectedIndex);
+
+			// Copy entry from database. 
+			copyEntry(selectedIndex);
+		}
+
+		// Copy data from selected cell. 
+		function copyCellData(event) {
+
+			// Get selected copy button. 
+			let copycellbtn = event.currentTarget;
+			
+			// Get selected cell. 
+			let selectedcell = copycellbtn.parentElement;
+			let celldata = selectedcell.querySelector('span.data').innerText;
+
+			// Copy data onto clipboard. 
+			navigator.clipboard.writeText(celldata);
+			console.log(`Copied: "${celldata}"`);
 		}
 	}
 }
 
-// Create: Add new item to database. 
-function createItem() {
+// Create: Add new entry to database. 
+function createEntry() {
 
 	// Get user input data and create new item. 
 	let newitem = {
@@ -310,6 +455,7 @@ function createItem() {
 		mobilenumber:inputnewmobilenumber.value,
 	};
 	console.log('New item:',newitem);
+	
 	// Clear previous editor input. 
 	clearEditorInput();
 
@@ -333,8 +479,8 @@ function createItem() {
 	}
 }
 
-// Select item. 
-function selectItem(event) {
+// Select: Select entry. 
+function selectEntry(event) {
 
 	// Get selected entry row. 
 	const selectedentryrow = event.currentTarget;
@@ -355,8 +501,37 @@ function selectItem(event) {
 	currentlyselectedindex = selectedentryrow.getAttribute('data-index') * 1;
 }
 
-// Edit: Edit item in database. 
-function editItem(indexOfEdit=-1) {
+// Copy: Copy entry from database. 
+function copyEntry(indexOfCopy=-1) {
+
+	// Handle erroneous index of copy. 
+	if(indexOfCopy<0) {
+		console.error('Invalid index: Index for database item is out of bounds.',indexOfCopy);
+		return;
+	}
+
+	// Get data for selected user entry. 
+	let selectedUser = userDataList[indexOfCopy];
+	// Get values of selected item. 
+	let fname = `${selectedUser.fname}`;
+	let lname = `${selectedUser.lname}`;
+	// console.log('name:',fname,lname);
+	let email = `${selectedUser.email}`;
+	// console.log('email:',email);
+	let mobilenumber = `${selectedUser.mobilenumber}`;
+	// console.log('mobilenumber:',mobilenumber);
+
+	// Create comma-separated list. 
+	let result = `${fname},${lname},${email},${mobilenumber}`;
+	// console.log('result:',result);
+	
+	// Copy all data cells to clipboard. 
+	navigator.clipboard.writeText(result);
+	console.log(`Copied: "${result}"`);
+}
+
+// Edit: Edit entry in database. 
+function editEntry(indexOfEdit=-1) {
 
 	// Handle erroneous index of edit. 
 	if(indexOfEdit<0) {
@@ -391,8 +566,8 @@ function editItem(indexOfEdit=-1) {
 	openOverlay(0);
 }
 
-// Update: Update item in database. 
-function updateItem() {
+// Update: Update entry in database. 
+function updateEntry() {
 
 	// Get index of update. 
 	let indexOfUpdate = editorupdatebtn.getAttribute('data-selectedindex');
@@ -435,8 +610,8 @@ function updateItem() {
 	}
 }
 
-// Delete: Remove item from database. 
-function deleteItem(indexOfDeletion=-1) {
+// Delete: Remove entry from database. 
+function deleteEntry(indexOfDeletion=-1) {
 	console.log('Index to delete:',indexOfDeletion);
 
 	// Handle erroneous index of deletion. 
@@ -467,7 +642,7 @@ function deleteItem(indexOfDeletion=-1) {
 	// refreshSelectedEntry();
 }
 
-// Clear: Delete all items from database. 
+// Clear: Delete all entries from database. 
 function clearDatabase() {
 
 	// Confirm deletion. 
@@ -491,7 +666,7 @@ function clearDatabase() {
 	}
 }
 
-// Reset database to default. 
+// Reset: Reset database to default. 
 function resetDatabase() {
 
 	// Confirm deletion. 

@@ -2,16 +2,16 @@
 
 
 // Set conditions for closure of context menu. 
-document.body.addEventListener('scroll',closeContextMenu);
-document.documentElement.addEventListener('scroll',closeContextMenu);
-document.scrollingElement.addEventListener('scroll',closeContextMenu);
+document.body.addEventListener('scroll',closeEntryMenu);
+document.documentElement.addEventListener('scroll',closeEntryMenu);
+document.scrollingElement.addEventListener('scroll',closeEntryMenu);
 
 
 /*****/
 
 
 // Open context menu. 
-function openContextMenu(event) {
+function openEntryMenu(event) {
 	console.log('Opening context menu:',event);
 
 	// Prevent opening of default context menu. 
@@ -38,7 +38,7 @@ function openContextMenu(event) {
 	contextmenu.classList.add('open');
 	
 	// Get context menu for selected entry row. 
-	let crudmenu = selectedrow.querySelector('.panel.full');
+	let crudmenu = selectedrow.querySelector('.opmenu.full');
 	// Set position of context menu. 
 	crudmenu.style.left = 0;
 	// crudmenu.style.top = `${ y }px`;
@@ -60,7 +60,7 @@ function openContextMenu(event) {
 }
 
 // Close context menu. 
-function closeContextMenu() {
+function closeEntryMenu() {
 	console.log('Closing context menu:',event);
 
 	// 
@@ -101,7 +101,7 @@ function clickChecker(event) {
 		let clickedWithinContextMenu = contextmenu.contains(clicktarget);
 
 		// Close context menu if its already open and user clicks outside it. 
-		if(contextMenuOpen && !clickedWithinContextMenu) closeContextMenu();
+		if(contextMenuOpen && !clickedWithinContextMenu) closeEntryMenu();
 	}
 
 	// Check if clicked within an entry row. 
