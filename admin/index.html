@@ -8,8 +8,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../718852.png" rel="icon"/>
-		<link href="./../718852.png" rel="apple-touch-icon"/>
+		<link href="./books.png" rel="icon"/>
+		<link href="./books.png" rel="apple-touch-icon"/>
 		<title>Admin Dashboard</title>
 
 		<!-- Main Stylesheet -->
@@ -17,7 +17,7 @@
 		<!-- <style type="text/css"></style> -->
 	</head>
 
-	<body class="dark">
+	<body class="darkx">
 
 		<!-- #container -->
 		<div id="container">
@@ -29,10 +29,10 @@
 				<div class="bin">
 
 					<!-- brand -->
-					<a class="brand" href="javascript:void(0)" onclick="document.getElementById('container').classList.toggle('open')">
+					<a class="brand" href="javascript:void(0)" onclick="toggleSidebarState()">
 	
 						<!-- logo -->
-						<img src="../718852.png" alt="" class="logo">
+						<img src="./books.png" alt="" class="logo">
 						<!-- /logo -->
 	
 						<!-- name -->
@@ -394,7 +394,7 @@
 						<!-- /item -->
 	
 						<!-- item -->
-						<li class="item" onclick="document.body.classList.toggle('dark')">
+						<li class="item" onclick="toggleDarkMode()">
 	
 							<!-- link -->
 							<a class="link" href="javascript:void(0)">
@@ -447,10 +447,10 @@
 				<nav class="headbar">
 
 					<!-- brand -->
-					<a class="brand" href="javascript:void(0)" onclick="document.getElementById('container').classList.toggle('open')">
+					<a class="brand" href="javascript:void(0)" onclick="toggleSidebarState()">
 	
 						<!-- logo -->
-						<img src="../718852.png" alt="" class="logo">
+						<img src="./books.png" alt="" class="logo">
 						<!-- /logo -->
 	
 						<!-- name -->
@@ -467,7 +467,7 @@
 					<!-- /brand -->
 
 					<!-- btn -->
-					<div class="navtoggler btn" onclick="document.getElementById('container').classList.toggle('open')">
+					<div class="navtoggler btn" onclick="toggleSidebarState()">
 
 						<!-- icon -->
 						<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -527,7 +527,7 @@
 					<!-- /space -->
 
 					<!-- btn -->
-					<div class="searchbtn btn" onclick="document.getElementById('container').classList.toggle('search')">
+					<div class="searchbtn btn" onclick="toggleSearchCenter()">
 	
 						<!-- icon -->
 						<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -542,7 +542,7 @@
 					<div class="notifcenter">
 
 						<!-- btn -->
-						<div class="notifbtn btn" onclick="this.parentElement.classList.toggle('active')">
+						<div class="notifbtn btn" onclick="toggleNotificationCenter()">
 	
 							<!-- icon -->
 							<svg class="icon bell" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -1643,8 +1643,9 @@
 		<!-- <script src="database.js" type="text/javascript"></script> -->
 
 		<!-- Main Script -->
-		<!-- <script src="admin.js" type="text/javascript"></script> -->
-		<script type="text/javascript"></script>
+		<script src="./admin.js" type="text/javascript"></script>
+
+		<!-- <script type="text/javascript"></script> -->
 
 	</body>
 
