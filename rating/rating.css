@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+
+:root {
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+
+
+* {box-sizing:border-box;}
+body {font-family:Nunito,sans-serif; margin:0;}
+div#container {background:dodgerblue linear-gradient(135deg,orange,dodgerblue); height:100vh;}
+div#container {display:grid; place-items:center;}
+
+
+div#container main.main {background-color:white; user-select:none; padding:1.5rem 1.25rem; border-radius:.75rem; box-shadow:var(--boxshadow);}
+/* div#container main.main {width:100%; max-width:30rem; height:7.5rem;} */
+
+div#container main.main div.msg {margin-bottom:1rem;}
+div#container main.main div.msg span.textcopy {color:darkgrey; font-size:1.875rem; text-align:center;}
+
+div#container main.main div.bar {display:flex; flex-direction:row; justify-content:center; align-items:center; cursor:pointer;}
+div#container main.main div.bar {padding-left:1.25rem; margin-left:-1.25rem;}
+div#container main.main div.bar span.star {color:lightgrey; font-size:3rem; cursor:pointer; padding:0 .5rem;}
+div#container main.main div.bar span.star.active {color:orange;}
+div#container main.main div.bar span.star svg.icon {display:block;}
+
+div#container main.main div.num {display:flex; flex-direction:row; justify-content:center; align-items:center; margin-top:1rem;}
+div#container main.main div.num {color:darkgrey; font-size:1.5rem;}
+div#container main.main div.num span.rating {font-size:1.125em;}
+/* div#container main.main div.num span.rating:empty {display:none;} */
+div#container main.main div.num span.rating::after {content:'/5';}
+div#container main.main div.num span.caption {margin-right:.25rem;}
+div#container main.main div.num span.caption::after {content:':';}
+
