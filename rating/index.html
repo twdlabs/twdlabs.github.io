@@ -13,12 +13,13 @@
 
 			* {box-sizing:border-box;}
 			body {font-family:sans-serif; margin:0;}
-			div#container {background:linear-gradient(135deg,gold,white); height:100vh;}
+			div#container {background:dodgerblue linear-gradient(135deg,gold,dodgerblue); height:100vh;}
 			div#container {display:grid; place-items:center;}
-			div#container main {background-color:white; padding:2rem; /* width:100%; max-width:30rem; height:7.5rem; */}
-			div#container main {display:flex; flex-direction:row; justify-content:center; align-items:center;}
-			div#container main span.star {color:black; font-size:3rem; cursor:pointer;}
-			div#container main span.star.active {color:gold;}
+			div#container main.main {background-color:white; /* width:100%; max-width:30rem; height:7.5rem; */ padding:1rem 1.25rem; border-radius:.75rem;}
+			div#container main.main {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+			div#container main.main span.star {color:lightgrey; font-size:3rem; cursor:pointer;}
+			div#container main.main span.star.active {color:gold;}
+			div#container main.main span.star svg.icon {display:block;}
 			
 		</style>
 	</head>
@@ -33,41 +34,61 @@
 
 				<!-- star -->
 				<span class="star" data-rating="1">
-					<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+
+					<!-- icon -->
+					<svg class="icon star" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 					</svg>
+					<!-- /icon -->
+
 				</span>
 				<!-- /star -->
 
 				<!-- star -->
 				<span class="star" data-rating="2">
-					<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+
+					<!-- icon -->
+					<svg class="icon star" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 					</svg>
+					<!-- /icon -->
+
 				</span>
 				<!-- /star -->
 
 				<!-- star -->
 				<span class="star" data-rating="3">
-					<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+
+					<!-- icon -->
+					<svg class="icon star" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 					</svg>
+					<!-- /icon -->
+
 				</span>
 				<!-- /star -->
 
 				<!-- star -->
 				<span class="star" data-rating="4">
-					<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+
+					<!-- icon -->
+					<svg class="icon star" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 					</svg>
+					<!-- /icon -->
+
 				</span>
 				<!-- /star -->
 
 				<!-- star -->
 				<span class="star" data-rating="5">
-					<svg width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+
+					<!-- icon -->
+					<svg class="icon star" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 						<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
 					</svg>
+					<!-- /icon -->
+
 				</span>
 				<!-- /star -->
 				
@@ -81,33 +102,45 @@
 		<script type="text/javascript">
 
 			// Get all star elements. 
-			const allstars = document.querySelectorAll('div#container main span.star');
+			const allstars = document.querySelectorAll('div#container main.main span.star');
 
-			// Set initial rating. 
-			let rating = 0;
+			// Set initial rating level. 
+			let currentRatingLevel = 0;
+
 
 			/*****/
+
 
 			// Handle events. 
 			for(let star of allstars) {
 				star.addEventListener('click', updateRating);
 			}
 
+
 			/*****/
+
 
 			// Update rating on page. 
 			function updateRating(event) {
 
-				// Get star. 
+				// Get selected star. 
 				let selectedStar = event.currentTarget;
 
-				// Update saved rating. 
-				rating = 1*selectedStar.getAttribute('data-rating');
+				// Update saved rating lavel. 
+				currentRatingLevel = 1*selectedStar.getAttribute('data-rating');
 
-				// Update rating on page. 
-				for(let i in allstars) {
-					if(i<rating) allstars[i].classList.add('active');
-					else allstars[i].classList.remove('active');
+				// Display rating. 
+				for(let star of allstars) {
+
+					// Get position of current star. 
+					let i = 1*star.getAttribute('data-rating');
+					// console.log(i,star);
+
+					// Highlight stars up to current star. 
+					if(i<=currentRatingLevel) star.classList.add('active');
+
+					// Un-highlight all other stars after current star. 
+					else star.classList.remove('active');
 				}
 			}
 		</script>
