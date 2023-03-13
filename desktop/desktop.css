@@ -12,10 +12,12 @@
 	--offwhite:#E7E9EB;
 	--royalblue:#2E61E0;
 	--lightblack:#333;
-	--whiteglass:#FFF4;
 	--whitesheet:#FFFA;
-	--blackglass:#0003;
+	--whiteglass:#FFF4;
+	--whiteglasss:#FFF2;
 	--blacksheet:#000C;
+	--blackglass:#0003;
+	--blackglasss:#0002;
 
 	--pagewidth:60rem;
 	
@@ -27,26 +29,34 @@
 
 body {
 
-	--navcolor:var(--blackglass);
-	--backcolor:white;
+	--backcolor:var(--offwhite);
 	--forecolor:var(--lightblack);
-	--gbodycolor:var(--whitesheet);
-	--gbodylinkbackcolor:var(--offwhite);
-	--gbodylinkforecolor:var(--lightblack);
-	--gbodyhoverlinkbackcolor:var(--blacksheet);
-	--gbodyhoverlinkforecolor:white;
+	--forecolor2:grey;
+
+	--navcolor:var(--blackglass);
+	--themebtnhovercolor:var(--blackglasss);
+
+	--grpbackcolor:var(--whitesheet);
+	--linkbackcolor:var(--offwhite);
+	--linkbackcolorhover:var(--blacksheet);
+	--linkforecolor:var(--lightblack);
+	--linkforecolorhover:white;
 }
 
 body.dark {
-
-	--navcolor:var(--whiteglass);
+	
 	--backcolor:var(--lightblack);
 	--forecolor:white;
-	--gbodycolor:var(--blackglass);
-	--gbodylinkbackcolor:var(--lightblack);
-	--gbodylinkforecolor:var(--offwhite);
-	--gbodyhoverlinkbackcolor:white;
-	--gbodyhoverlinkforecolor:var(--blacksheet);
+	--forecolor2:lightgrey;
+
+	--navcolor:var(--whiteglass);
+	--themebtnhovercolor:var(--whiteglasss);
+
+	--grpbackcolor:var(--blackglass);
+	--linkbackcolor:var(--lightblack);
+	--linkbackcolorhover:white;
+	--linkforecolor:var(--offwhite);
+	--linkforecolorhover:var(--blacksheet);
 }
 
 /* html {background-image:var(--bgimg);} */
@@ -58,50 +68,65 @@ body {background-color:var(--backcolor); color:var(--forecolor); font-family:Nun
 div#container {background-color:var(--backcolor); color:var(--forecolor); display:flex; flex-direction:column; justify-content:flex-start; align-items:center; min-height:100vh;}
 
 /* Navbar */
-div#container nav.navbar {background-color:var(--navcolor); width:100%; padding:0 1rem;}
-div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; height:4rem; max-width:var(--pagewidth); margin:0 auto;}
-div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; font-size:2rem; margin:0;}
-/* div#container nav.navbar div.bin h1.head svg.icon {} */
-div#container nav.navbar div.bin h1.head span.caption {display:none; margin-left:.375rem;}
-div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
-div#container nav.navbar div.bin ul.navlist li.navitem {margin:1rem;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit; font-size:1.375rem; text-decoration:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler {position:relative;}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler div.themebtn {cursor:pointer; user-select:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler div.themebtn svg.icon {}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist {display:none; position:absolute; right:0; top:100%;}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist {background-color:var(--backcolor); list-style:none; padding:0; padding:.25rem; border-radius:.5rem; margin:0; margin-top:.5rem;}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist.open {display:block;}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem {}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink {display:flex; flex-direction:row; align-items:center; color:inherit; text-decoration:none; height:2.25em; padding:0 1rem; border-radius:.375rem;}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink:hover {background-color:var(--forecolor); color:var(--backcolor);}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink svg.icon {}
-div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink span.caption {margin-left:.25rem;}
+div#container nav.navbar {background-color:var(--navcolor); background-color:var(--royalblue); color:white; width:100%; padding:.75rem 1.5rem;}
+div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; /* min-height:4rem; */ max-width:var(--pagewidth); margin:0 auto;}
+div#container nav.navbar div.bin div.panel {display:flex; flex-direction:row; align-items:center;}
+/* div#container nav.navbar div.bin div.panel.l {} */
+div#container nav.navbar div.bin div.panel a.brand {display:flex; flex-direction:row; align-items:center; font-size:2rem; margin:0;}
+div#container nav.navbar div.bin div.panel a.brand svg.icon {display:none;}
+div#container nav.navbar div.bin div.panel a.brand img.logo {height:1.5em;}
+div#container nav.navbar div.bin div.panel a.brand span.caption {display:none; margin-left:.375rem;}
+/* div#container nav.navbar div.bin div.panel.r {} */
+div#container nav.navbar div.bin div.panel ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem {margin-left:1rem;}
+/* div#container nav.navbar div.bin div.panel ul.navlist li.navitem {margin:0 .5rem;} */
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem.divider {height:2rem; opacity:.25; border:1px solid white;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem a.navlink {color:inherit; font-size:1.125rem; text-decoration:none;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler {position:relative;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler div.themebtn {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
+/* div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler div.themebtn svg.icon {} */
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler div.themebtn svg.icon.arrowdown {font-size:.625em; margin-left:.25rem;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist {display:none; position:absolute; right:0; top:100%;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist {background-color:var(--backcolor); list-style:none; padding:0; padding:.25rem; border-radius:.5rem; margin:0; margin-top:.5rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist.open {display:block;}
+/* div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem {} */
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink {font-size:.875rem; height:2.375em; width:8em; padding:0 1rem; border-radius:.375rem;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink {color:inherit; color:var(--forecolor); text-decoration:none; display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink:hover {background-color:var(--themebtnhovercolor);}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink.active {background-color:var(--forecolor); color:var(--backcolor);}
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink.active {background-color:var(--royalblue); color:white; font-weight:bold;}
+/* div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink svg.icon {} */
+div#container nav.navbar div.bin div.panel ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink span.caption {margin-left:.75rem;}
 
 /* Desktop */
-div#container main.desktop {background-color:var(--royalblue); /* color:white; */ width:100%; max-width:var(--pagewidth); transition:.5s;}
-div#container main.desktop {display:flex; flex-direction:column; padding:1rem; border-radius:.5rem; margin-top:3rem; box-shadow:var(--boxshadow);}
-div#container main.desktop h1.head {/* display:none; */ font-size:2rem; text-align:center; margin:0; /* margin-bottom:1rem; */}
-div#container main.desktop div.group {background-color:var(--gbodycolor); overflow:hidden; border-radius:.5rem; margin-top:.875rem;}
-div#container main.desktop div.group {display:flex; flex-direction:column; align-items:stretch;}
-div#container main.desktop div.group.x {display:none;}
-div#container main.desktop div.group div.ghead {background-color:var(--gbodycolor); /* color:white; font-weight:100; */ cursor:pointer; user-select:none; padding:0 1rem; /* border-radius:.5rem; */}
-div#container main.desktop div.group div.ghead {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container main.desktop div.group div.ghead h2.head {font-size:1.75rem; text-align:center; margin:0; margin:.5rem 0;}
-div#container main.desktop div.group div.ghead svg.icon {font-size:1.375rem;}
-div#container main.desktop div.group div.ghead svg.icon.open {display:block;}
-div#container main.desktop div.group div.ghead svg.icon.close {display:none;}
-div#container main.desktop div.group.active div.ghead svg.icon.open {display:none;}
-div#container main.desktop div.group.active div.ghead svg.icon.close {display:block;}
-div#container main.desktop div.group div.gbody {/* display:none; */ /* background-color:var(--gbodycolor); */ overflow:hidden; max-height:0; transition:.5s;}
-/* div#container main.desktop div.group.active div.gbody {display:block;} */
-div#container main.desktop div.group div.gbody div.bin {display:grid; grid-template-columns:repeat(6,1fr); place-items:center; grid-gap:.875rem; padding:2rem;}
-div#container main.desktop div.group div.gbody div.bin a.item {background-color:var(--gbodylinkbackcolor); color:var(--gbodylinkforecolor); cursor:pointer; font-size:1.125rem; width:100%/* 6rem */; padding:.5rem; border-radius:.5rem;}
-div#container main.desktop div.group div.gbody div.bin a.item {display:flex; flex-direction:column; align-items:center; text-decoration:none; overflow:hidden; transition:.25s;}
-div#container main.desktop div.group div.gbody div.bin a.item:hover {background-color:var(--gbodyhoverlinkbackcolor); color:var(--gbodyhoverlinkforecolor);}
-div#container main.desktop div.group div.gbody div.bin a.item svg.icon {display:none;}
-div#container main.desktop div.group div.gbody div.bin a.item svg.icon {font-size:4rem;}
-div#container main.desktop div.group div.gbody div.bin a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+div#container section {width:100%; max-width:var(--pagewidth); padding:1.75rem; border-radius:.5rem; margin-top:3rem; box-shadow:var(--boxshadow);}
+div#container section.hero {display:grid; grid-template-columns:8fr 4fr; align-items:center;}
+/* div#container section.hero div.col {} */
+div#container section.hero h1.head {/* display:none; */ font-size:3rem; text-align:center; margin:0; /* margin-bottom:1rem; */}
+div#container section.hero img.logo {display:block; width:100%;/*  max-width:16rem; */ margin:1rem auto;}
+div#container section.hero p.textcopy {color:var(--forecolor2); font-size:1.5rem; font-weight:200; text-align:center; margin:0 2rem;}
+div#container section.desktop {/* background-color:var(--royalblue); */ /* color:white; */ transition:.5s;}
+div#container section.desktop {display:flex; flex-direction:column;}
+div#container section.desktop div.group {background-color:var(--grpbackcolor); overflow:hidden; border-radius:.5rem; margin-top:.875rem;}
+div#container section.desktop div.group {display:flex; flex-direction:column; align-items:stretch;}
+div#container section.desktop div.group.x {display:none;}
+div#container section.desktop div.group div.ghead {background-color:var(--grpbackcolor); /* color:white; font-weight:100; */ cursor:pointer; user-select:none; padding:0 1rem; /* border-radius:.5rem; */}
+div#container section.desktop div.group div.ghead {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container section.desktop div.group div.ghead h2.head {font-size:1.75rem; text-align:center; margin:0; margin:.5rem 0;}
+div#container section.desktop div.group div.ghead svg.icon {font-size:1.375rem;}
+div#container section.desktop div.group div.ghead svg.icon.open {display:block;}
+div#container section.desktop div.group div.ghead svg.icon.close {display:none;}
+div#container section.desktop div.group.active div.ghead svg.icon.open {display:none;}
+div#container section.desktop div.group.active div.ghead svg.icon.close {display:block;}
+div#container section.desktop div.group div.gbody {/* display:none; */ /* background-color:var(--grpbackcolor); */ overflow:hidden; max-height:0; transition:.5s;}
+/* div#container section.desktop div.group.active div.gbody {display:block;} */
+div#container section.desktop div.group div.gbody div.bin {display:grid; grid-template-columns:repeat(6,1fr); place-items:center; grid-gap:.875rem; padding:2rem;}
+div#container section.desktop div.group div.gbody div.bin a.item {background-color:var(--linkbackcolor); color:var(--linkforecolor); cursor:pointer; font-size:1.125rem; width:100%/* 6rem */; padding:.5rem; border-radius:.5rem;}
+div#container section.desktop div.group div.gbody div.bin a.item {display:flex; flex-direction:column; align-items:center; text-decoration:none; overflow:hidden; transition:.25s;}
+div#container section.desktop div.group div.gbody div.bin a.item:hover {background-color:var(--linkbackcolorhover); color:var(--linkforecolorhover);}
+div#container section.desktop div.group div.gbody div.bin a.item svg.icon {display:none;}
+div#container section.desktop div.group div.gbody div.bin a.item svg.icon {font-size:4rem;}
+div#container section.desktop div.group div.gbody div.bin a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 
 /* Mini Frame */
 div#container figure.miniframe {position:absolute; top:0; left:0; box-shadow:var(--boxshadow); --dx:0; transform:translateY(1rem);}
@@ -127,14 +152,14 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container {} */
 
 	/* Desktop */
-	/* div#container main.desktop {} */
-	div#container main.desktop {margin-top:0;}
-	/* div#container main.desktop div.group {} */
-	/* div#container main.desktop div.group div.gbody {padding-left:3rem; padding-right:3rem;} */
-	div#container main.desktop div.group div.gbody div.bin {grid-template-columns:repeat(4,1fr); }
-	/* div#container main.desktop div.group div.gbody div.bin a.item {} */
-	/* div#container main.desktop div.group div.gbody div.bin a.item svg.icon {} */
-	div#container main.desktop div.group div.gbody div.bin a.item span.caption {font-size:1rem}
+	/* div#container section.desktop {} */
+	/* div#container section.desktop {margin-top:0;} */
+	/* div#container section.desktop div.group {} */
+	/* div#container section.desktop div.group div.gbody {padding-left:3rem; padding-right:3rem;} */
+	div#container section.desktop div.group div.gbody div.bin {grid-template-columns:repeat(4,1fr); }
+	/* div#container section.desktop div.group div.gbody div.bin a.item {} */
+	/* div#container section.desktop div.group div.gbody div.bin a.item svg.icon {} */
+	div#container section.desktop div.group div.gbody div.bin a.item span.caption {font-size:1rem}
 
 	/* Mini Frame */
 	/* div#container figure.miniframe {} */
@@ -148,13 +173,16 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container {} */
 
 	/* Desktop */
-	/* div#container main.desktop {} */
-	/* div#container main.desktop div.group {} */
-	/* div#container main.desktop div.group div.gbody {} */
-	div#container main.desktop div.group div.gbody div.bin {grid-template-columns:repeat(3,1fr);}
-	/* div#container main.desktop div.group div.gbody div.bin a.item {} */
-	div#container main.desktop div.group div.gbody div.bin a.item svg.icon {font-size:3rem;}
-	div#container main.desktop div.group div.gbody div.bin a.item span.caption {font-size:.875rem;}
+	div#container section.hero {display:flex; flex-direction:column-reverse; align-items:center;}
+	/* div#container section.hero img.logo {max-width:12rem; margin:0 auto 1.5rem;} */
+	div#container section.hero p.textcopy {margin-bottom:1rem;}
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.group {} */
+	/* div#container section.desktop div.group div.gbody {} */
+	div#container section.desktop div.group div.gbody div.bin {grid-template-columns:repeat(3,1fr);}
+	/* div#container section.desktop div.group div.gbody div.bin a.item {} */
+	div#container section.desktop div.group div.gbody div.bin a.item svg.icon {font-size:3rem;}
+	div#container section.desktop div.group div.gbody div.bin a.item span.caption {font-size:.875rem;}
 
 	/* Mini Frame */
 	/* div#container figure.miniframe {} */
@@ -168,13 +196,13 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container {} */
 
 	/* Desktop */
-	/* div#container main.desktop {} */
-	/* div#container main.desktop div.group {} */
-	/* div#container main.desktop div.group div.gbody {} */
-	div#container main.desktop div.group div.gbody div.bin {grid-template-columns:repeat(2,1fr);}
-	/* div#container main.desktop div.group div.gbody div.bin a.item {} */
-	/* div#container main.desktop div.group div.gbody div.bin a.item svg.icon {} */
-	div#container main.desktop div.group div.gbody div.bin a.item span.caption {font-size:.75rem;}
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.group {} */
+	/* div#container section.desktop div.group div.gbody {} */
+	div#container section.desktop div.group div.gbody div.bin {grid-template-columns:repeat(2,1fr);}
+	/* div#container section.desktop div.group div.gbody div.bin a.item {} */
+	/* div#container section.desktop div.group div.gbody div.bin a.item svg.icon {} */
+	div#container section.desktop div.group div.gbody div.bin a.item span.caption {font-size:.75rem;}
 
 	/* Mini Frame */
 	/* div#container figure.miniframe {} */
@@ -188,13 +216,13 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container {} */
 
 	/* Desktop */
-	/* div#container main.desktop {} */
-	/* div#container main.desktop div.group {} */
-	/* div#container main.desktop div.group div.gbody {} */
-	/* div#container main.desktop div.group div.gbody div.bin {} */
-	/* div#container main.desktop div.group div.gbody div.bin a.item {} */
-	/* div#container main.desktop div.group div.gbody div.bin a.item svg.icon {} */
-	/* div#container main.desktop div.group div.gbody div.bin a.item span.caption {} */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.group {} */
+	/* div#container section.desktop div.group div.gbody {} */
+	/* div#container section.desktop div.group div.gbody div.bin {} */
+	/* div#container section.desktop div.group div.gbody div.bin a.item {} */
+	/* div#container section.desktop div.group div.gbody div.bin a.item svg.icon {} */
+	/* div#container section.desktop div.group div.gbody div.bin a.item span.caption {} */
 
 	/* Mini Frame */
 	/* div#container figure.miniframe {} */

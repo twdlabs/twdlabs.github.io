@@ -8,7 +8,7 @@ const miniframe = document.querySelector('div#container figure.miniframe');
 const miniframepage = document.querySelector('div#container figure.miniframe iframe.page');
 
 // Get all link items. 
-const allLinkItems = document.querySelectorAll('div#container main.desktop div.group div.gbody a.item');
+const allLinkItems = document.querySelectorAll('div#container section.desktop div.group div.gbody a.item');
 
 
 /*****/
