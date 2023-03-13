@@ -139,12 +139,12 @@ function loadBlogPost() {
 			let vidurl = post ? getRelativeUrl(post.vidurl) : '';
 
 			// Sort list of blog posts chronologically. 
-			console.log('blog data list:', blogdata.map(x=>x.postid) );
-			blogdata.sort( (a,b) => b.timeposted-a.timeposted );
-			console.log('blog data list:', blogdata.map(x=>x.postid) );
+			console.log('blog data list:', blogDataList.map(x=>x.postid) );
+			blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
+			console.log('blog data list:', blogDataList.map(x=>x.postid) );
 		
 			// Get content of playlist. 
-			let playlistcontent = createPlayListLayout(blogdata);
+			let playlistcontent = createPlayListLayout(blogDataList);
 
 			// 
 			return `
@@ -175,7 +175,7 @@ function loadBlogPost() {
 						<h2 class="listcount">
 	
 							<!-- count -->
-							<span class="count">${ blogdata.length }</span>
+							<span class="count">${ blogDataList.length }</span>
 							<!-- /count -->
 	
 							<!-- caption -->
@@ -244,7 +244,7 @@ function loadBlogPost() {
 						<!-- /caption -->
 	
 						<!-- num -->
-						<span class="num">${ blogdata.length }</span>
+						<span class="num">${ blogDataList.length }</span>
 						<!-- /num -->
 						
 					</span>
@@ -362,8 +362,8 @@ function loadBlogPost() {
 
 				// Get id of previous post. 
 				function getPrevPostId() {
-					console.log('blogdata:',blogdata.map(x=>x.postid) );
-					return ( selectedPostId && blogdata[selectedPostIndex*1-1] ) ? blogdata[selectedPostIndex*1-1].postid : '';
+					console.log('blogDataList:',blogDataList.map(x=>x.postid) );
+					return ( selectedPostId && blogDataList[selectedPostIndex*1-1] ) ? blogDataList[selectedPostIndex*1-1].postid : '';
 				}
 			}
 
@@ -381,8 +381,8 @@ function loadBlogPost() {
 
 				// Get id of following post. 
 				function getNextPostId() {
-					console.log('blogdata:',blogdata.map(x=>x.postid) );
-					return ( selectedPostId && blogdata[selectedPostIndex*1+1] ) ? blogdata[selectedPostIndex*1+1].postid : '';
+					console.log('blogDataList:',blogDataList.map(x=>x.postid) );
+					return ( selectedPostId && blogDataList[selectedPostIndex*1+1] ) ? blogDataList[selectedPostIndex*1+1].postid : '';
 				}
 			}
 		}
@@ -395,6 +395,7 @@ function loadBlogPost() {
 		
 			// Get post content. 
 			let content = post ? (post.content).map(createParagraphLayout).join('') : '';
+			// console.log( post ? (post.content) : '' );
 
 			// Get author data. 
 			let authordata = post ? getUserById(post.authorid) : null;
@@ -520,14 +521,14 @@ function loadOtherBlogPosts() {
 	let result = '';
 
 	// Sort list of blog posts chronologically. 
-	console.log('blog data list:', blogdata.map(x=>x.postid) );
-	blogdata.sort( (a,b) => b.timeposted-a.timeposted );
-	console.log('blog data list:', blogdata.map(x=>x.postid) );
+	console.log('blog data list:', blogDataList.map(x=>x.postid) );
+	blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
+	console.log('blog data list:', blogDataList.map(x=>x.postid) );
 
 	// Intialize number of posts loaded. 
 	let postcount = 0;
 	// Go thru all posts. 
-	for(let post of blogdata) {
+	for(let post of blogDataList) {
 
 		// Add layout for given post. 
 		result += createBlogPostLayout(post);

@@ -1,8 +1,40 @@
 
 
 
-// Define data matches. 
-const blogdata = [
+// Define metadata for list of blog post data. 
+const blogListMetaData = {
+	title:{
+		label:'Post Title',
+		visible:true,
+	},
+	postid:{
+		label:'Post ID',
+		visible:true,
+	},
+	authorid:{
+		label:'Author ID',
+		visible:true,
+	},
+	imgurl:{
+		label:'Image URL',
+		visible:true,
+	},
+	vidurl:{
+		label:'Video URL',
+		visible:true,
+	},
+	content:{
+		label:'Content',
+		visible:true,
+	},
+	timeposted:{
+		label:'Time Posted',
+		visible:true,
+	},
+};
+
+// Define list of blog post data. 
+const blogDataList = [
 
 	{
 		title:'Beach Life',
@@ -92,8 +124,8 @@ const blogdata = [
 ];
 
 
-// Define blog post data. 
-const blogdata2 = [
+// Define sample blog post data. 
+const blogDataList2 = [
 
 	{
 		title:'Blog Post A',
@@ -344,31 +376,14 @@ const blogdata2 = [
 /*****/
 
 
-// Use default user data. 
-userDataList = defaultUserDataList;
-
-// Get saved database from storage. 
-let savedDB = getDatabaseFromStorage();
-
-// Check if database has any contents. 
-let savedDBExists = !!(savedDB.length);
-console.log('Saved DB:',savedDBExists);
-
-// Generate additional random data for all blog posts. 
-if(savedDBExists) generateRandomPostData();
-
-
-/*****/
-
-
 // Get post index by post id. 
 function getPostIndexById(id) {
 
 	// Go thru all posts. 
-	for(let i in blogdata) {
+	for(let i in blogDataList) {
 
 		// Get current post. 
-		let post = blogdata[i];
+		let post = blogDataList[i];
 
 		// Return index if post found. 
 		if(post.postid==id) return i;
@@ -382,7 +397,7 @@ function getPostIndexById(id) {
 function getPostById(id) {
 
 	// Go thru all posts. 
-	for(let post of blogdata) {
+	for(let post of blogDataList) {
 
 		// Return post if found. 
 		if(post.postid==id) return post;
@@ -396,43 +411,18 @@ function getPostById(id) {
 /*****/
 
 
-// Retrieve database from storage. 
-function getDatabaseFromStorage() {
+// // Get saved blog database from storage. 
+// let savedDB = getBlogDatabaseFromStorage();
+// console.log('Saved DB:',savedDB);
 
-	// Get from storage: string represntation of database. 
-	let str = localStorage.getItem('blogdata');
+// // Check if database has any contents. 
+// let savedDBExists = !!(savedDB.length);
+// console.log('Saved DB exists:',savedDBExists);
 
-	// Parse data string into array form. 
-	temp = JSON.parse(str);
+// // Generate additional random data for all blog posts. 
+// if(savedDBExists) ;
 
-	// Return database. 
-	return temp ? temp : [];
-}
 
-// Save database to storage. 
-function saveDatabaseToStorage() {
-	console.log('Saving database:',blogdata);
-
-	// Check for empty database. 
-	let isEmptyDatabase = !(blogdata.length);
-
-	// Handle empty database. 
-	if(isEmptyDatabase) {
-	
-		// Remove database from storage. 
-		localStorage.removeItem('blogdata');
-	}
-
-	// Handle non-empty database. 
-	else {
-
-		// Create string version of database. 
-		let str = JSON.stringify(blogdata);
-	
-		// Save to storage: string version of database. 
-		localStorage.setItem('blogdata',str);
-	}
-	
-	// Display all items in database. 
-	displayDatabase();
-}
+// Use default user data. 
+// userDataList = defaultUserDataList;
+userDataList = JSON.parse( localStorage.getItem('cruduserdata') ) || [];

@@ -18,10 +18,20 @@ const commentoverflow = 'Lorem ipsum dolor sit amet consectetur adipisicing elit
 
 
 // Generate additional random data for all blog posts. 
-function generateRandomPostData() {
+generatePostData();
+
+// Generate data for 12 random comments on each post. 
+generateRandomCommentData();
+
+
+/*****/
+
+
+// Generate additional random data for all blog posts. 
+function generatePostData() {
 
 	// Go thru all post data items. 
-	for(let post of blogdata) {
+	for(let post of blogDataList) {
 
 		// Assign random post author. 
 		post.authorid = getRandomUserId();
@@ -79,7 +89,7 @@ function generateRandomPostData() {
 function generateRandomCommentData() {
 
 	// Go thru each post. 
-	for(let post of blogdata) {
+	for(let post of blogDataList) {
 
 		// Define number of comments for given post. 
 		let numcomments = Math.floor(6*Math.random());
@@ -99,7 +109,7 @@ function generateRandomCommentData() {
 			};
 
 			// Add comment data to list. 
-			allCommentData.push(c);
+			blogCommentDataList.push(c);
 		}
 	}
 }

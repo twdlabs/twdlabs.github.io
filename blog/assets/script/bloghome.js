@@ -35,12 +35,12 @@ function loadBlogList() {
 	let result = '';
 
 	// Sort list of blog posts chronologically. 
-	console.log('blog data list:', blogdata.map(x=>x.postid) );
-	blogdata.sort( (a,b) => b.timeposted-a.timeposted );
-	console.log('blog data list:', blogdata.map(x=>x.postid) );
+	// console.log('Blog data list (pre-sort):', blogDataList.map(x=>x.postid) );
+	blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
+	// console.log('Blog data list (post-sort):', blogDataList.map(x=>x.postid) );
 	
 	// Go thru all posts. 
-	for(let post of blogdata) {
+	for(let post of blogDataList) {
 		
 		// Add layout for given post. 
 		result += createBlogPostLayout(post);

@@ -1,8 +1,28 @@
 
 
 
+// Define metadata for list of blog post data. 
+const blogCommentListMetaData = {
+	postid:{
+		label:'Post ID',
+		visible:true,
+	},
+	authorid:{
+		label:'Author ID',
+		visible:true,
+	},
+	timeposted:{
+		label:'Time Posted',
+		visible:true,
+	},
+	commentcontent:{
+		label:'Comment',
+		visible:true,
+	},
+};
+
 // Define data for all blog comments. 
-const allCommentData = [
+const blogCommentDataList = [
 
 	// {
 	// 	postid:'abc',
@@ -66,13 +86,6 @@ const allCommentData = [
 /*****/
 
 
-// Generate data for 12 random comments on each post. 
-generateRandomCommentData();
-
-
-/*****/
-
-
 // Get all comments by author. 
 function getAllCommentsByAuthorId(id) {
 
@@ -80,7 +93,7 @@ function getAllCommentsByAuthorId(id) {
 	let matchingComments = [];
 
 	// Go thru all comments. 
-	for(let comment of allCommentData) {
+	for(let comment of blogCommentDataList) {
 
 		// Add comment to list if match found. 
 		if(comment.authorid==id) matchingComments.push(comment);
@@ -97,7 +110,7 @@ function getAllCommentsByPostId(id) {
 	let matchingComments = [];
 
 	// Go thru all comments. 
-	for(let comment of allCommentData) {
+	for(let comment of blogCommentDataList) {
 
 		// Add comment to list if match found. 
 		if(comment.postid==id) matchingComments.push(comment);

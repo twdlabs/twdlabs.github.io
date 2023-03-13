@@ -149,7 +149,7 @@ function addNewComment() {
 	}
 
 	// Save data for new comment to list of comments. 
-	allCommentData.push(newcommentdata);
+	blogCommentDataList.push(newcommentdata);
 
 	// Create layout for new comment. 
 	let newcommentlayout = createCommentLayout(newcommentdata);
