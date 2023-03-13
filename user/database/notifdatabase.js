@@ -5,7 +5,7 @@
 const notifList = [
 
 	{
-		userid:'aventura',
+		username:'aventura',
 		content:'Hello',
 	},
 

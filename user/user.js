@@ -35,7 +35,7 @@ const nameblock = document.querySelector('div#container main.pagecontent h1.gree
 
 
 // Define index of current user. 
-let currentUserIndex = -1;
+let currentUserIndex = 0;
 
 
 /*****/
@@ -234,7 +234,7 @@ function loadUserMenuList() {
 					<!-- /name -->
 	
 					<!-- contact -->
-					<span class="contact">${ user.userid }</span>
+					<span class="contact">${ user.username }</span>
 					<!-- /contact -->
 
 				</div>
