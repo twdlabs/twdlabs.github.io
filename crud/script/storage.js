@@ -2,12 +2,37 @@
 
 
 // Define names for data sources. 
-let crudDataSources = {
+const crudDataSources = [
 	// 
-	users:'cruduserdata',
-	blogposts:'crudblogdata',
-	blogcomments:'crudblogcommentdata',
-};
+
+	/* Users */
+	{
+		databasename:'cruduserdata',
+		dataorigin:defaultUserDataList,
+		keymetadata:userListMetaData,
+	},
+
+	/* Blog Posts */
+	{
+		databasename:'crudblogdata',
+		dataorigin:blogDataList,
+		keymetadata:blogListMetaData,
+	},
+
+	/* Blog Post Comments */
+	{
+		databasename:'crudblogcommentdata',
+		dataorigin:blogCommentDataList,
+		keymetadata:blogCommentListMetaData,
+	},
+];
+
+// Define index of currenly selected data source. 
+let dataSourceIndex = 0;
+
+// Initialize crud data list. 
+let crudDataList;
+// console.log('crudDataList:',crudDataList);
 
 
 /*****/
@@ -15,41 +40,43 @@ let crudDataSources = {
 
 // Retrieve database from storage. 
 function getDatabaseFromStorage() {
-	console.log('Retrieving database:',userDataList);
+	console.log('Retrieving database...');
 
 	// Get from storage: string represntation of database. 
-	let str = localStorage.getItem('cruduserdata');
+	let str = localStorage.getItem( crudDataSources[dataSourceIndex]['databasename'] );
 
 	// Parse data string into array form. 
-	temp = JSON.parse(str);
+	let result = JSON.parse(str);
 
 	// Return database. 
-	return temp ? temp : [];
+	crudDataList = result ? result : [];
+	console.log('Retrieved database:',crudDataList);
 }
 
 // Save database to storage. 
 function saveDatabaseToStorage() {
-	console.log('Saving database:',userDataList);
+	console.log('Saving database...');
 
 	// Check for empty database. 
-	let isEmptyDatabase = !(userDataList.length);
+	let isEmptyDatabase = !(crudDataList.length);
 
 	// Handle empty database. 
 	if(isEmptyDatabase) {
 	
 		// Remove database from storage. 
-		localStorage.removeItem('cruduserdata');
+		localStorage.removeItem( crudDataSources[dataSourceIndex]['databasename'] );
 	}
 
 	// Handle non-empty database. 
 	else {
 
 		// Create string version of database. 
-		let str = JSON.stringify(userDataList);
+		let str = JSON.stringify(crudDataList);
 	
 		// Save to storage: string version of database. 
-		localStorage.setItem('cruduserdata',str);
+		localStorage.setItem( crudDataSources[dataSourceIndex]['databasename'] ,str);
 	}
+	console.log('Saved database:',crudDataList);
 	
 	// Display all items in database. 
 	displayDatabase();

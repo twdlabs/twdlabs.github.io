@@ -4,7 +4,8 @@
 /* Navbar */
 
 div#container nav.navbar {position:fixed; top:0; left:0; right:0; width:100%; z-index:100;}
-div#container nav.navbar {background-color:transparent; background-image:linear-gradient(var(--blue),var(--tlblue)); /* position:relative; */ padding:.875rem 1.5rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar {background-color:transparent; background-image:linear-gradient(var(--blue),var(--tlblue)); background-image:linear-gradient(var(--royalblue),var(--tlroyalblue));}
+div#container nav.navbar {/* position:relative; */ padding:.625rem 1.5rem; box-shadow:var(--boxshadow);}
 div#container nav.navbar main.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center; /* align-items:flex-start; */ max-width:var(--pagewidth); margin:0 auto;}
 div#container nav.navbar main.grid h1.head {flex-grow:0;}
 div#container nav.navbar main.grid div.navmenu {flex-grow:1;}
@@ -12,7 +13,7 @@ div#container nav.navbar main.grid div.navtoggler {flex-grow:0;}
 
 div#container nav.navbar main.grid h1.head {font-size:1.75rem; font-weight:900; cursor:pointer; user-select:none; margin:0;}
 div#container nav.navbar main.grid h1.head {display:flex; flex-direction:row; align-items:center; /* align-items:flex-end; */}
-div#container nav.navbar main.grid h1.head svg.icon {font-size:1.5em;}
+div#container nav.navbar main.grid h1.head svg.icon {font-size:1.25em;}
 div#container nav.navbar main.grid h1.head span.caption {white-space:nowrap; margin-left:.375rem; /* margin-bottom:-.5rem; */}
 div#container nav.navbar main.grid div.navmenu {border-radius:.375rem;}
 /* div#container nav.navbar main.grid div.navmenu.sources {} */

@@ -1,7 +1,7 @@
 
 
 
-// 
+// Check for shortcut key upon key press. 
 document.addEventListener('keydown',checkForShortcutKey)
 
 
@@ -94,7 +94,7 @@ function checkForShortcutKey(event) {
 		// Check for index overflow. 
 		let overflow = (currentlyselectedindex < 0);
 		// Readjust index if overflowed. 
-		if(overflow) currentlyselectedindex = userDataList.length-1;
+		if(overflow) currentlyselectedindex = crudDataList.length-1;
 	}
 
 	// Increment index of selected entry. 
@@ -104,7 +104,7 @@ function checkForShortcutKey(event) {
 		currentlyselectedindex++;
 		
 		// Check for index overflow. 
-		let overflow = (currentlyselectedindex >= userDataList.length);
+		let overflow = (currentlyselectedindex >= crudDataList.length);
 		// Readjust index if overflowed. 
 		if(overflow) currentlyselectedindex = 0;
 	}

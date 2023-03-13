@@ -334,11 +334,11 @@
 				<!-- bin -->
 				<div class="bin">
 
-					<!-- dbtabs -->
-					<nav class="dbtabs">
+					<!-- dblist -->
+					<ul class="dblist">
 
 						<!-- tab -->
-						<div class="tab active" data-dbindex="0" data-dbname="cruduserdata">
+						<li class="dbtab active" data-dbindex="0" data-dbname="cruduserdata" onclick="selectDatabase(this)">
 					
 							<!-- icon -->
 							<svg class="icon userlist" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -350,11 +350,11 @@
 							<span class="caption">Users</span>
 							<!-- /caption -->
 
-						</div>
+						</li>
 						<!-- /tab -->
 
 						<!-- tab -->
-						<div class="tab" data-dbindex="1" data-dbname="crudblogdata">
+						<li class="dbtab" data-dbindex="1" data-dbname="crudblogdata" onclick="selectDatabase(this)">
 					
 							<!-- icon -->
 							<svg class="icon article solid" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -366,11 +366,11 @@
 							<span class="caption">Blog Posts</span>
 							<!-- /caption -->
 
-						</div>
+						</li>
 						<!-- /tab -->
 
 						<!-- tab -->
-						<div class="tab" data-dbindex="2" data-dbname="crudblogcommentdata">
+						<li class="dbtab" data-dbindex="2" data-dbname="crudblogcommentdata" onclick="selectDatabase(this)">
 					
 							<!-- icon -->
 							<svg class="icon chatbubble solid" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -382,11 +382,11 @@
 							<span class="caption">Blog Comments</span>
 							<!-- /caption -->
 
-						</div>
+						</li>
 						<!-- /tab -->
 
-					</nav>
-					<!-- /dbtabs -->
+					</ul>
+					<!-- /dblist -->
 
 					<!-- table -->
 					<table class="table">
@@ -471,7 +471,7 @@
 								<td class="cell">
 	
 									<!-- data -->
-									<span class="data">xyzabcxyz</span>
+									<span class="data">xyzdata</span>
 									<!-- /data -->
 
 									<!-- copier -->

@@ -15,6 +15,9 @@
 	--tlblue2:#0179FFBB;
 	--trpblue:#0179FF44;
 	--trptrpblue:#0179FF18;
+	--royalblue:#2E61E0;
+	--tlroyalblue:#2E61E0CC;
+	--trproyalblue:#2E61E044;
 	--offwhite:#EEE;
 	--darkgrey:#444;
 	--offwhite2:#EEEE;
@@ -75,9 +78,10 @@ div#container main#table div.bin {overflow-x:visible; margin:1.5rem auto;}
 div#container main#table table.table {border:.125rem solid var(--backcolor2); /* margin:.5rem 0; */}
 /* Data Table Row */
 div#container main#table table.table tr.row {border-radius:.125rem;}
-div#container main#table table.table tr.row th.head {background-color:var(--backcolor2); color:var(--forecolor); transition:.5s; padding:1rem .5rem; /* border:1px solid; */}
+div#container main#table table.table tr.row th.head {background-color:var(--backcolor2); color:var(--forecolor); white-space:nowrap; transition:.5s; padding:1rem .5rem; /* border:1px solid; */}
 div#container main#table table.table tr.row th.head h2.head {font-size:1rem; font-weight:700; /* text-align:center; */ margin:0;}
 div#container main#table table.table tr.row td.cell {/* text-align:center; */ transition:.5s; border:.125rem solid var(--blackglass); border-radius:inherit;}
+div#container main#table table.table tr.row td.cell.gone {display:none;}
 
 /* Data Table Entry Row */
 div#container main#table table.table tr.row.entry {font-size:.875rem; font-weight:300; position:relative;}
@@ -95,7 +99,11 @@ div#container main#table table.table tr.row.entry td.cell:hover div.copier {opac
 div#container main#table table.table tr.row.entry td.cell div.copier svg.icon {display:block;}
 /* div#container main#table table.table tr.row.entry td.cell div.opmenu {} */
 div#container main#table table.table tr.row.entry td.cell div.opmenu div.btn {font-size:1rem; margin:.125rem;}
-div#container main#table table.table tr.row.entry td.cell div.opmenu div.copybtn {background-color:var(--backcolor2); color:var(--forecolor); transition:.25s;}
+div#container main#table table.table tr.row.entry td.cell div.opmenu div.copybtn {background-color:var(--backcolor2); color:var(--forecolor); position:relative; transition:.25s;}
+div#container main#table table.table tr.row.entry td.cell div.opmenu div.copybtn::after {position:absolute; top:50%; right:100%; transform:translateY(-50%);}
+div#container main#table table.table tr.row.entry td.cell div.opmenu div.copybtn::after {display:block; background-color:inherit; content:'Copied!'; font-size:.875rem; border-radius:.25rem; padding:.125rem .5rem;}
+div#container main#table table.table tr.row.entry td.cell div.opmenu div.copybtn::after {opacity:0; visibility:hidden; transition:.125s; /* transition-delay:.5s; */}
+div#container main#table table.table tr.row.entry td.cell div.opmenu div.copybtn:active:after {opacity:1; visibility:visible; /* transition-delay:0; */}
 div#container main#table table.table tr.row.entry td.cell div.opmenu div.editbtn {background-color:var(--blue);}
 div#container main#table table.table tr.row.entry td.cell div.opmenu div.deletebtn {background-color:var(--red);}
 /* div#container main#table table.table tr.row.entry td.cell div.opmenu div.btn svg.icon {} */
@@ -128,13 +136,13 @@ div#container main#table table.table tr.row.newentry td.cell div.addbtn span.cap
 
 
 /* Database Tabs */
-div#container main#table nav.dbtabs {display:flex; flex-direction:row; /* margin-bottom:.125rem; */}
-div#container main#table nav.dbtabs {display:none;}
-div#container main#table nav.dbtabs div.tab {background-color:var(--backcolor); font-size:1.125rem; display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
-div#container main#table nav.dbtabs div.tab {padding:.625rem 1rem .5rem; border:.125rem solid var(--blackglass); border-bottom:0 none; border-radius:.75rem .75rem 0 0 ; margin-left:.125rem;}
-div#container main#table nav.dbtabs div.tab.active {background-color:var(--backcolor2);}
-/* div#container main#table nav.dbtabs div.tab svg.icon {} */
-div#container main#table nav.dbtabs div.tab span.caption {/* display:none; */ margin-left:.5rem;}
+div#container main#table ul.dblist {display:flex; flex-direction:row; list-style:none; padding:0; margin:0; /* margin-bottom:.125rem; */}
+/* div#container main#table ul.dblist {display:none;} */
+div#container main#table ul.dblist li.dbtab {display:flex; flex-direction:row; align-items:center; padding:.625rem 1rem .5rem; border:.125rem solid var(--blackglass); border-bottom:0 none; border-radius:.75rem .75rem 0 0 ; margin-left:.125rem;}
+div#container main#table ul.dblist li.dbtab {background-color:var(--backcolor); font-size:1rem; opacity:.75; transition:.25s; cursor:pointer; user-select:none;}
+div#container main#table ul.dblist li.dbtab.active {background-color:var(--backcolor2); font-size:1.125rem; opacity:1;}
+/* div#container main#table ul.dblist li.dbtab svg.icon {} */
+div#container main#table ul.dblist li.dbtab span.caption {/* display:none; */ margin-left:.5em;}
 
 
 /* Context Menu */
