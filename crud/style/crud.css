@@ -73,10 +73,20 @@ div#container div.btn span.caption {margin-top:.125rem; margin-left:.375rem;}
 /* Data Table */
 div#container main#table {/* background-color:var(--backcolor); */ color:var(--forecolor); transition:.5s;}
 div#container main#table {display:flex; width:100%; /* max-width:52rem; */ overflow-x:auto; text-align:center; position:relative; margin:0 auto; margin-top:5rem;}
-/* div#container main#table div.btn {} */
 div#container main#table div.bin {overflow-x:visible; margin:1.5rem auto;}
+/* div#container main#table div.btn {} */
+
+/* Database Tabs */
+div#container main#table ul.dblist {display:flex; flex-direction:row; list-style:none; padding:0; margin:0; /* margin-bottom:.125rem; */}
+/* div#container main#table ul.dblist {display:none;} */
+div#container main#table ul.dblist li.dbtab {display:flex; flex-direction:row; align-items:center; padding:.625rem 1rem .5rem; border:.125rem solid var(--blackglass); border-bottom:0 none; border-radius:.75rem .75rem 0 0 ; margin-left:.125rem;}
+div#container main#table ul.dblist li.dbtab {background-color:var(--backcolor); font-size:1rem; opacity:.75; transition:.25s; cursor:pointer; user-select:none;}
+div#container main#table ul.dblist li.dbtab.active {background-color:var(--backcolor2); font-size:1.05rem; opacity:1;}
+/* div#container main#table ul.dblist li.dbtab svg.icon {} */
+div#container main#table ul.dblist li.dbtab span.caption {/* display:none; */ margin-left:.5em;}
+
+/* Data Table Rows */
 div#container main#table table.table {border:.125rem solid var(--backcolor2); /* margin:.5rem 0; */}
-/* Data Table Row */
 div#container main#table table.table tr.row {border-radius:.125rem;}
 div#container main#table table.table tr.row th.head {background-color:var(--backcolor2); color:var(--forecolor); white-space:nowrap; transition:.5s; padding:1rem .5rem; /* border:1px solid; */}
 div#container main#table table.table tr.row th.head h2.head {font-size:1rem; font-weight:700; /* text-align:center; */ margin:0;}
@@ -135,16 +145,6 @@ div#container main#table table.table tr.row.newentry td.cell div.addbtn svg.icon
 div#container main#table table.table tr.row.newentry td.cell div.addbtn span.caption {font-size:1.125rem; margin-left:.5rem;}
 
 
-/* Database Tabs */
-div#container main#table ul.dblist {display:flex; flex-direction:row; list-style:none; padding:0; margin:0; /* margin-bottom:.125rem; */}
-/* div#container main#table ul.dblist {display:none;} */
-div#container main#table ul.dblist li.dbtab {display:flex; flex-direction:row; align-items:center; padding:.625rem 1rem .5rem; border:.125rem solid var(--blackglass); border-bottom:0 none; border-radius:.75rem .75rem 0 0 ; margin-left:.125rem;}
-div#container main#table ul.dblist li.dbtab {background-color:var(--backcolor); font-size:1rem; opacity:.75; transition:.25s; cursor:pointer; user-select:none;}
-div#container main#table ul.dblist li.dbtab.active {background-color:var(--backcolor2); font-size:1.125rem; opacity:1;}
-/* div#container main#table ul.dblist li.dbtab svg.icon {} */
-div#container main#table ul.dblist li.dbtab span.caption {/* display:none; */ margin-left:.5em;}
-
-
 /* Context Menu */
 div#container main#table div.contextmenu {position:absolute; top:0; left:0;}
 div#container main#table div.contextmenu {display:none; background-color:var(--backcolor2); border:.25rem solid var(--backcolor2); border-radius:.25rem;}
@@ -166,11 +166,11 @@ div#container div.overlay div.bg {position:absolute; top:0; left:0; height:100%;
 div#container div.overlay div.bg {background-color:#0008; cursor:pointer;}
 div#container div.overlay main {background-color:var(--offwhite); color:#444; width:100%; max-width:18rem; padding:1rem; border-radius:.25rem; margin:1rem auto;}
 div#container div.overlay main h1.head {font-size:1.5rem; font-weight:500; text-transform:uppercase; text-align:center; margin:0; margin-top:.5rem;}
-div#container div.overlay main div.input {margin-top:.375rem;}
-div#container div.overlay main div.input.grid {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.5rem; margin-top:.625rem;}
-div#container div.overlay main div.input input {background-color:white; font-family:inherit; width:100%; padding:.5rem 1rem; border:0 none; border-radius:.25rem;}
-div#container div.overlay main div.input input.btn {background-color:var(--blue); color:white; font-size:inherit; cursor:pointer; transition:.125s;}
-div#container div.overlay main div.input input.btn:hover {background-color:#333;}
+div#container div.overlay main div.field {margin-top:.375rem;}
+div#container div.overlay main div.field.grid {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.5rem; margin-top:.625rem;}
+div#container div.overlay main div.field input {background-color:white; font-family:inherit; width:100%; padding:.5rem 1rem; border:0 none; border-radius:.25rem;}
+div#container div.overlay main div.field input.btn {background-color:var(--blue); color:white; font-size:inherit; cursor:pointer; transition:.125s;}
+div#container div.overlay main div.field input.btn:hover {background-color:#333;}
 div#container div.overlay main#editor {display:block;}
 div#container div.overlay main#creator {display:none;}
 div#container div.overlay.create main#editor {display:none;}

@@ -28,7 +28,7 @@ const crudDataSources = [
 ];
 
 // Define index of currenly selected data source. 
-let dataSourceIndex = 0;
+let dataSourceIndex = 1;
 
 // Initialize crud data list. 
 let crudDataList;
@@ -40,7 +40,7 @@ let crudDataList;
 
 // Retrieve database from storage. 
 function getDatabaseFromStorage() {
-	console.log('Retrieving database...');
+	console.log('Retrieving database...',dataSourceIndex);
 
 	// Get from storage: string represntation of database. 
 	let str = localStorage.getItem( crudDataSources[dataSourceIndex]['databasename'] );
@@ -78,6 +78,6 @@ function saveDatabaseToStorage() {
 	}
 	console.log('Saved database:',crudDataList);
 	
-	// Display all items in database. 
-	displayDatabase();
+	// Display items in selected database. 
+	displaySelectedDatabase();
 }

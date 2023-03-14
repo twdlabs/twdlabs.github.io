@@ -17,6 +17,9 @@ const thead = document.querySelector('div#container main#table table.table thead
 // Get table body. 
 const tbody = document.querySelector('div#container main#table table.table tbody');
 
+// Get database table tabs. 
+const dbtabletabs = document.querySelectorAll('div#container main#table ul.dblist li.dbtab');
+
 // Intialize all entry rows. 
 let allentryrows;
 // Initialize all edit entry buttons. 
@@ -42,30 +45,64 @@ let currentlyselectedindex = -1;
 /*****/
 
 
-// Display database on page. 
-displayDatabase();
+// Select database. 
+selectDatabase();
 
 
 /*****/
 
 
-// TODO: Select database. 
-function selectDatabase(li) {
+// Select database tab. 
+function selectDatabaseTab(li) {
+
+	// Get selected tab. 
+	// let li = event.currentTarget;
 
 	// Save index of selected database. 
-	dataSourceIndex = li.getAttribute('data-dbindex');
-	// let dbname = li.getAttribute('data-dbname');
-
-	// Display all items in database. 
-	displayDatabase();
+	dataSourceIndex = 1 * li.getAttribute('data-dbindex');
+	
+	// Select database. 
+	selectDatabase();
 }
 
+// Select database. 
+function selectDatabase() {
 
-// Read: Display all items in database. 
-function displayDatabase() {
+	// Display items in selected database. 
+	displaySelectedDatabase();
+
+	// Highlight tab for selected database. 
+	highlightSelectedTab();
+
+	/****/
+
+	// Highlight tab for selected database. 
+	function highlightSelectedTab() {
+
+		// Go thru table tabs. 
+		for(let tab of dbtabletabs) {
+
+			// Get index of selected database. 
+			let dbindex = tab.getAttribute('data-dbindex');
+			
+			// Activate selected tab. 
+			if(dbindex==dataSourceIndex) tab.classList.add('active');
+
+			// De-activate other tabs. 
+			else tab.classList.remove('active');
+		}
+	}
+}
+
+// Read: Display items in selected database. 
+// TODO: Dynamize this. 
+function displaySelectedDatabase() {
 
 	// Retrieve database from storage. 
 	getDatabaseFromStorage();
+
+	// Get metadata for keys of given database. 
+	let keymetadata = crudDataSources[dataSourceIndex]['keymetadata'];
 	
 	// Create contents of table head. 
 	let theadcontents = `
@@ -81,7 +118,7 @@ function displayDatabase() {
 		tbodycontents += createEntryRow(i);
 	}
 	// Add row button layout for new entry. 
-	tbodycontents += createNewEntryBtnLayout();
+	tbodycontents += createNewEntryBtnRowLayout();
 	
 	// Add resulting contents to table head. 
 	thead.innerHTML = theadcontents;
@@ -99,29 +136,28 @@ function displayDatabase() {
 		// Initialize result. 
 		let result = '';
 
-		// Add cell for index column. 
-		result += createHeadCell('Index');
+		// Add header cell for index column. 
+		result += createHeaderCell('Index');
 		
 		// Go thru all properties in first item. 
-		let metadata = crudDataSources[dataSourceIndex]['keymetadata'];
-		for(key in metadata /* crudDataList[0] */) {
+		for(key in keymetadata) {
 
 			// Check if column is included. 
-			let columnincluded = metadata[key].visible;
+			let columnincluded = keymetadata[key].visible;
 			if(!columnincluded) continue;
 
-			// Add cell for given data column. 
-			result += createHeadCell( metadata[key].label );
+			// Add header cell for given data column. 
+			result += createHeaderCell( keymetadata[key].label );
 		}
 		
-		// Add cell for operations column. 
-		result += createHeadCell('Operations');
+		// Add header cell for operations column. 
+		result += createHeaderCell('Operations');
 
 		// Return result. 
 		return result;
 
 		// Create head cell. 
-		function createHeadCell(contents) {
+		function createHeaderCell(contents) {
 			// 
 			return `
 			<!-- head -->
@@ -135,33 +171,32 @@ function displayDatabase() {
 		
 		// Get entry data at given index. 
 		let entrydata = crudDataList[i];
-		// console.log(i,`Data item:`,entrydata);
+		// console.log(i,`Data entry:`,entrydata);
 
 		// Create table row with entry values. 
 		return `
 		<!-- row -->
 		<tr class="row entry" data-index="${ i }" draggable="false">
-			${ fillEntryRow() }
+			${ fillEntryRow(i) }
 		</tr>
 		<!-- /row -->`;
 
 		/***/
 
-		// Fill table row with entry values. 
-		function fillEntryRow() {
+		// Fill table row with entry values (dynamized). 
+		function fillEntryRow(i) {
 
 			// Initialize contents of row. 
 			let rowcontents = '';
 
 			// Add table cell: entry index. 
 			rowcontents += createDataCell(i);
-			
+
 			// Go thru data points for given entry. 
-			let metadata = crudDataSources[dataSourceIndex]['keymetadata'];
 			for(let key in entrydata) {
 
 				// Check if column is included. 
-				let columnincluded = metadata[key].visible;
+				let columnincluded = keymetadata[key].visible;
 				if(!columnincluded) continue;
 
 				// Get value of given property by current key. 
@@ -320,7 +355,8 @@ function displayDatabase() {
 	}
 
 	// Create row layout for new entry button. 
-	function createNewEntryBtnLayout() {
+	// TODO: Dynamize this. 
+	function createNewEntryBtnRowLayout() {
 
 		// 
 		return `
@@ -355,6 +391,7 @@ function displayDatabase() {
 		/***/
 
 		// Count number of data columns. 
+		// TODO: Dynamize this. 
 		function countColumns() {
 			return 11;
 		}
@@ -469,7 +506,9 @@ function displayDatabase() {
 	}
 }
 
+
 // Create: Add new entry to database. 
+// TODO: Dynamize this. 
 function createEntry() {
 
 	// Get user input data and create new item. 
@@ -526,6 +565,7 @@ function selectEntry(event) {
 	currentlyselectedindex = selectedentryrow.getAttribute('data-index') * 1;
 }
 
+// TODO: Dynamize this. 
 // Copy: Copy entry from database. 
 function copyEntry(indexOfCopy=-1) {
 
@@ -543,6 +583,8 @@ function copyEntry(indexOfCopy=-1) {
 
 	// Get data values for selected entry. 
 	// for() {}
+	// How do I generalize this ?
+	// Everytime you open the editor, fill it with new inputs that are named dynamicallly. 
 	entrydatalist.push(selectedUser.fname);
 	entrydatalist.push(selectedUser.lname);
 	entrydatalist.push(selectedUser.mobilenumber);
@@ -554,6 +596,7 @@ function copyEntry(indexOfCopy=-1) {
 	console.log(`Copied: "${entrydatalist}"`);
 }
 
+// TODO: Dynamize this. 
 // Edit: Edit entry in database. 
 function editEntry(indexOfEdit=-1) {
 
@@ -591,6 +634,7 @@ function editEntry(indexOfEdit=-1) {
 }
 
 // Update: Update entry in database. 
+// TODO: Dynamize this. 
 function updateEntry() {
 
 	// Get index of update. 
@@ -691,7 +735,7 @@ function clearDatabase() {
 }
 
 // Reset: Reset database to default. 
-function resetDatabase() {
+function resetToDefaultDatabase() {
 
 	// Confirm deletion. 
 	let doReset = confirm('Reset database to default ?');

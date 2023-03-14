@@ -54,7 +54,7 @@
 							<li class="navitem">
 				
 								<!-- btn -->
-								<div class="btn sourcebtn" title="Users">
+								<div class="btn sourcebtn" title="Users" data-dbindex="0" onclick="selectDatabaseTab(this)">
 					
 									<!-- icon -->
 									<!-- <svg class="icon people" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -88,7 +88,7 @@
 							<li class="navitem">
 				
 								<!-- btn -->
-								<div class="btn sourcebtn" title="Blog Posts">
+								<div class="btn sourcebtn" title="Blog Posts" data-dbindex="1" onclick="selectDatabaseTab(this)">
 					
 									<!-- icon -->
 									<!-- <svg class="icon postcard" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -123,7 +123,7 @@
 							<li class="navitem">
 				
 								<!-- btn -->
-								<div class="btn sourcebtn" title="Blog Comments">
+								<div class="btn sourcebtn" title="Blog Comments" data-dbindex="2" onclick="selectDatabaseTab(this)">
 					
 									<!-- icon -->
 									<!-- <svg class="icon chatbubble" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -259,7 +259,7 @@
 							<!-- navitem -->
 							<li class="navitem">
 		
-								<div class="btn resetbtn" onclick="resetDatabase()">
+								<div class="btn resetbtn" onclick="resetToDefaultDatabase()">
 				
 									<!-- icon -->
 									<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -338,7 +338,7 @@
 					<ul class="dblist">
 
 						<!-- tab -->
-						<li class="dbtab active" data-dbindex="0" data-dbname="cruduserdata" onclick="selectDatabase(this)">
+						<li class="dbtab active" data-dbindex="0" onclick="selectDatabaseTab(this)">
 					
 							<!-- icon -->
 							<svg class="icon userlist" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -354,7 +354,7 @@
 						<!-- /tab -->
 
 						<!-- tab -->
-						<li class="dbtab" data-dbindex="1" data-dbname="crudblogdata" onclick="selectDatabase(this)">
+						<li class="dbtab" data-dbindex="1" onclick="selectDatabaseTab(this)">
 					
 							<!-- icon -->
 							<svg class="icon article solid" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -370,7 +370,7 @@
 						<!-- /tab -->
 
 						<!-- tab -->
-						<li class="dbtab" data-dbindex="2" data-dbname="crudblogcommentdata" onclick="selectDatabase(this)">
+						<li class="dbtab" data-dbindex="2" onclick="selectDatabaseTab(this)">
 					
 							<!-- icon -->
 							<svg class="icon chatbubble solid" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -792,51 +792,57 @@
 				<main id="creator">
 					
 					<!-- head -->
-					<h1 class="head">Add New User</h1>
+					<h1 class="head">Add New Entry</h1>
 					<!-- /head -->
-					
-					<!-- input -->
-					<div class="input">
 
-						<!-- #newfname -->
-						<input id="newfname" type="text" placeholder="Enter first name"/>
-						<!-- /#newfname -->
+					<!-- fieldbox -->
+					<div class="fieldbox">
+					
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #newfname -->
+							<input id="newfname" type="text" placeholder="Enter first name"/>
+							<!-- /#newfname -->
+	
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #newlname -->
+							<input id="newlname" type="text" placeholder="Enter last name"/>
+							<!-- /#newlname -->
+	
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #newemail -->
+							<input id="newemail" type="email" placeholder="Enter email"/>
+							<!-- /#newemail -->
+	
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #newmobilenumber -->
+							<input id="newmobilenumber" type="tel" placeholder="Enter mobile number"/>
+							<!-- /#newmobilenumber -->
+	
+						</div>
+						<!-- /field -->
 
 					</div>
-					<!-- /input -->
+					<!-- /fieldbox -->
 					
-					<!-- input -->
-					<div class="input">
-
-						<!-- #newlname -->
-						<input id="newlname" type="text" placeholder="Enter last name"/>
-						<!-- /#newlname -->
-
-					</div>
-					<!-- /input -->
-					
-					<!-- input -->
-					<div class="input">
-
-						<!-- #newemail -->
-						<input id="newemail" type="email" placeholder="Enter email"/>
-						<!-- /#newemail -->
-
-					</div>
-					<!-- /input -->
-					
-					<!-- input -->
-					<div class="input">
-
-						<!-- #newmobilenumber -->
-						<input id="newmobilenumber" type="tel" placeholder="Enter mobile number"/>
-						<!-- /#newmobilenumber -->
-
-					</div>
-					<!-- /input -->
-					
-					<!-- input -->
-					<div class="input grid">
+					<!-- field -->
+					<div class="field grid">
 
 						<!-- cancelbtn -->
 						<input class="btn cancelbtn" type="submit" value="Cancel" onclick="closeOverlay();"/>
@@ -847,7 +853,7 @@
 						<!-- /addbtn -->
 
 					</div>
-					<!-- /input -->
+					<!-- /field -->
 					
 				</main>
 				<!-- /#creator -->
@@ -856,51 +862,57 @@
 				<main id="editor">
 					
 					<!-- head -->
-					<h1 class="head">Edit User</h1>
+					<h1 class="head">Edit Entry</h1>
 					<!-- /head -->
-					
-					<!-- input -->
-					<div class="input">
 
-						<!-- #fname -->
-						<input id="fname" type="text" placeholder="Enter name" data-default-placeholder="Enter first name"/>
-						<!-- /#fname -->
+					<!-- fieldbox -->
+					<div class="fieldbox">
+					
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #fname -->
+							<input id="fname" type="text" placeholder="Enter name" data-default-placeholder="Enter first name"/>
+							<!-- /#fname -->
+	
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #lname -->
+							<input id="lname" type="text" placeholder="Enter name" data-default-placeholder="Enter last name"/>
+							<!-- /#lname -->
+	
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #email -->
+							<input id="email" type="email" placeholder="Enter email" data-default-placeholder="Enter email"/>
+							<!-- /#email -->
+	
+						</div>
+						<!-- /field -->
+						
+						<!-- field -->
+						<div class="field">
+	
+							<!-- #mobilenumber -->
+							<input id="mobilenumber" type="tel" placeholder="Enter mobile number" data-default-placeholder="Enter mobile number"/>
+							<!-- /#mobilenumber -->
+	
+						</div>
+						<!-- /field -->
 
 					</div>
-					<!-- /input -->
+					<!-- /fieldbox -->
 					
-					<!-- input -->
-					<div class="input">
-
-						<!-- #lname -->
-						<input id="lname" type="text" placeholder="Enter name" data-default-placeholder="Enter last name"/>
-						<!-- /#lname -->
-
-					</div>
-					<!-- /input -->
-					
-					<!-- input -->
-					<div class="input">
-
-						<!-- #email -->
-						<input id="email" type="email" placeholder="Enter email" data-default-placeholder="Enter email"/>
-						<!-- /#email -->
-
-					</div>
-					<!-- /input -->
-					
-					<!-- input -->
-					<div class="input">
-
-						<!-- #mobilenumber -->
-						<input id="mobilenumber" type="tel" placeholder="Enter mobile number" data-default-placeholder="Enter mobile number"/>
-						<!-- /#mobilenumber -->
-
-					</div>
-					<!-- /input -->
-					
-					<!-- input -->
-					<div class="input grid">
+					<!-- field -->
+					<div class="field grid">
 
 						<!-- cancelbtn -->
 						<input class="btn cancelbtn" type="submit" value="Cancel" onclick="closeOverlay();"/>
@@ -911,7 +923,7 @@
 						<!-- /updatebtn -->
 
 					</div>
-					<!-- /input -->
+					<!-- /field -->
 					
 				</main>
 				<!-- /#editor -->
