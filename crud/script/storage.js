@@ -27,9 +27,6 @@ const crudDataSources = [
 	},
 ];
 
-// Define index of currenly selected data source. 
-let dataSourceIndex = 1;
-
 // Initialize crud data list. 
 let crudDataList;
 // console.log('crudDataList:',crudDataList);
@@ -40,10 +37,10 @@ let crudDataList;
 
 // Retrieve database from storage. 
 function getDatabaseFromStorage() {
-	console.log('Retrieving database...',dataSourceIndex);
+	console.log('Retrieving database...',currenttableindex);
 
 	// Get from storage: string represntation of database. 
-	let str = localStorage.getItem( crudDataSources[dataSourceIndex]['databasename'] );
+	let str = localStorage.getItem( crudDataSources[currenttableindex]['databasename'] );
 
 	// Parse data string into array form. 
 	let result = JSON.parse(str);
@@ -64,7 +61,7 @@ function saveDatabaseToStorage() {
 	if(isEmptyDatabase) {
 	
 		// Remove database from storage. 
-		localStorage.removeItem( crudDataSources[dataSourceIndex]['databasename'] );
+		localStorage.removeItem( crudDataSources[currenttableindex]['databasename'] );
 	}
 
 	// Handle non-empty database. 
@@ -74,7 +71,7 @@ function saveDatabaseToStorage() {
 		let str = JSON.stringify(crudDataList);
 	
 		// Save to storage: string version of database. 
-		localStorage.setItem( crudDataSources[dataSourceIndex]['databasename'] ,str);
+		localStorage.setItem( crudDataSources[currenttableindex]['databasename'] ,str);
 	}
 	console.log('Saved database:',crudDataList);
 	

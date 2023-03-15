@@ -38,8 +38,11 @@ const contextmenu = document.querySelector('div#container main#table div.context
 /*****/
 
 
-// Initialize index of selected entry row. 
-let currentlyselectedindex = -1;
+// Initialize index of currenly selected data table. 
+let currenttableindex = 0;
+
+// Initialize index of currenly selected row. 
+let currentrowindex = -1;
 
 
 /*****/
@@ -59,7 +62,7 @@ function selectDatabaseTab(li) {
 	// let li = event.currentTarget;
 
 	// Save index of selected database. 
-	dataSourceIndex = 1 * li.getAttribute('data-dbindex');
+	currenttableindex = 1 * li.getAttribute('data-dbindex');
 	
 	// Select database. 
 	selectDatabase();
@@ -86,7 +89,7 @@ function selectDatabase() {
 			let dbindex = tab.getAttribute('data-dbindex');
 			
 			// Activate selected tab. 
-			if(dbindex==dataSourceIndex) tab.classList.add('active');
+			if(dbindex==currenttableindex) tab.classList.add('active');
 
 			// De-activate other tabs. 
 			else tab.classList.remove('active');
@@ -102,7 +105,7 @@ function displaySelectedDatabase() {
 	getDatabaseFromStorage();
 
 	// Get metadata for keys of given database. 
-	let keymetadata = crudDataSources[dataSourceIndex]['keymetadata'];
+	let keymetadata = crudDataSources[currenttableindex]['keymetadata'];
 	
 	// Create contents of table head. 
 	let theadcontents = `
@@ -203,7 +206,7 @@ function displaySelectedDatabase() {
 				let datavalue = entrydata[key]/*  || '' */;
 				
 				// Add table cell for given entry value. 
-				rowcontents += createDataCell(datavalue);
+				rowcontents += createDataCell(datavalue,keymetadata[key].showimage);
 			}
 			
 			// Add table cell: data operations menu. 
@@ -215,10 +218,34 @@ function displaySelectedDatabase() {
 			/**/
 
 			// Create table cell with entry value. 
-			function createDataCell(cellvalue) {
+			function createDataCell(cellvalue,showimage) {
 
 				// 
-				return `
+				if(showimage) return `
+				<!-- cell -->
+				<td class="cell">
+
+					<!-- data -->
+					<img class="data" src="${ cellvalue }" alt="${ cellvalue }">
+					<!-- /data -->
+	
+					<!-- copier -->
+					<div class="btn copier">
+	
+						<!-- icon -->
+						<svg class="icon papers" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
+						</svg>
+						<!-- /icon -->
+						
+					</div>
+					<!-- /copier -->
+	
+				</td>
+				<!-- /cell -->`;
+
+				// 
+				else return `
 				<!-- cell -->
 				<td class="cell">
 	
@@ -367,7 +394,7 @@ function displaySelectedDatabase() {
 			<td class="cell" colspan="${ countColumns()+2 }">
 
 				<!-- addbtn -->
-				<div class="addbtn" onclick="openOverlay(1)">
+				<div class="addbtn" onclick="openOverlay(0)">
 
 					<!-- icon -->
 					<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -512,16 +539,11 @@ function displaySelectedDatabase() {
 function createEntry() {
 
 	// Get user input data and create new item. 
-	let newitem = {
-		fname:inputnewfname.value,
-		lname:inputnewlname.value,
-		email:inputnewemail.value,
-		mobilenumber:inputnewmobilenumber.value,
-	};
+	let newitem = getCreatorInput();
 	console.log('New item:',newitem);
 	
-	// Clear previous editor input. 
-	clearEditorInput();
+	// Clear previous creator input. 
+	clearCreatorInput();
 
 	// Retrieve database from storage. 
 	getDatabaseFromStorage();
@@ -534,12 +556,30 @@ function createEntry() {
 
 	/****/
 
-	// Clear editor input. 
-	function clearEditorInput() {
-		inputnewfname.value = '';
-		inputnewlname.value = '';
-		inputnewemail.value = '';
-		inputnewmobilenumber.value = '';
+	// Get creator input. 
+	function getCreatorInput() {
+
+		// Initialize result. 
+		let result = {};
+
+		// 
+		for(key in userListMetaData) {
+	
+			// 
+			result[key] = creatorinputs[key].value;
+			// result['fname'] = creatorinputs['fname'].value;
+		}
+
+		// Return result. 
+		return result;
+	}
+
+	// Clear creator input. 
+	function clearCreatorInput() {
+		creatorinputs['fname'].value = '';
+		creatorinputs['lname'].value = '';
+		creatorinputs['email'].value = '';
+		creatorinputs['mobilenumber'].value = '';
 	}
 }
 
@@ -562,7 +602,7 @@ function selectEntry(event) {
 	selectedentryrow.focus();
 
 	// Save index of selected entry row. 
-	currentlyselectedindex = selectedentryrow.getAttribute('data-index') * 1;
+	currentrowindex = selectedentryrow.getAttribute('data-index') * 1;
 }
 
 // TODO: Dynamize this. 
@@ -576,7 +616,7 @@ function copyEntry(indexOfCopy=-1) {
 	}
 
 	// Get data for selected user entry. 
-	let selectedUser = crudDataList[indexOfCopy];
+	let selectedEntry = crudDataList[indexOfCopy];
 
 	// Initialize list of data values for selected entry. 
 	let entrydatalist = [];
@@ -585,10 +625,10 @@ function copyEntry(indexOfCopy=-1) {
 	// for() {}
 	// How do I generalize this ?
 	// Everytime you open the editor, fill it with new inputs that are named dynamicallly. 
-	entrydatalist.push(selectedUser.fname);
-	entrydatalist.push(selectedUser.lname);
-	entrydatalist.push(selectedUser.mobilenumber);
-	entrydatalist.push(selectedUser.email);
+	entrydatalist.push(selectedEntry.fname);
+	entrydatalist.push(selectedEntry.lname);
+	entrydatalist.push(selectedEntry.mobilenumber);
+	entrydatalist.push(selectedEntry.email);
 	// console.log('Entry data list:',entrydatalist);
 	
 	// Copy list of data cells to clipboard. 
@@ -606,31 +646,40 @@ function editEntry(indexOfEdit=-1) {
 		return;
 	}
 
-	// Get data for selected user entry. 
-	let selectedUser = crudDataList[indexOfEdit];
-	// Get previous values of selected item. 
-	let prevfname = `${selectedUser.fname}`;
-	let prevlname = `${selectedUser.lname}`;
+	// Get data for selected entry. 
+	let selectedEntry = crudDataList[indexOfEdit];
+
+	// Get previous values of selected entry. 
+	let prevfname = `${selectedEntry.fname}`;
+	let prevlname = `${selectedEntry.lname}`;
+	let prevemail = `${selectedEntry.email}`;
+	let prevmobilenumber = `${selectedEntry.mobilenumber}`;
 	// console.log('prevname:',prevfname,prevlname);
-	let prevemail = `${selectedUser.email}`;
 	// console.log('prevemail:',prevemail);
-	let prevmobilenumber = `${selectedUser.mobilenumber}`;
 	// console.log('prevmobilenumber:',prevmobilenumber);
 
-	// Place previous name values as input placeholders (if valid). 
+	// Place previous xyz value as input placeholders (if valid). 
+	let inputfname = editorinputs['fname'];
 	if(prevfname.length>0) inputfname.placeholder = prevfname;
 	else inputfname.placeholder = inputfname.getAttribute('data-default-placeholder');
+
+	// Place previous xyz value as input placeholders (if valid). 
+	let inputlname = editorinputs['lname'];
 	if(prevlname.length>0) inputlname.placeholder = prevlname;
 	else inputlname.placeholder = inputlname.getAttribute('data-default-placeholder');
+
 	// Place previous email value as input placeholder (if valid). 
+	let inputemail = editorinputs['email'];
 	if(prevemail.length>0) inputemail.placeholder = prevemail;
 	else inputemail.placeholder = inputemail.getAttribute('data-default-placeholder');
+
 	// Place previous mobilenumber value as input placeholder (if valid). 
+	let inputmobilenumber = editorinputs['mobilenumber'];
 	if(prevmobilenumber.length>0) inputmobilenumber.placeholder = prevmobilenumber;
 	else inputmobilenumber.placeholder = inputmobilenumber.getAttribute('data-default-placeholder');
 
 	// Open overlay in editor mode. 
-	openOverlay(0);
+	openOverlay(1);
 }
 
 // Update: Update entry in database. 
@@ -705,7 +754,7 @@ function deleteEntry(indexOfDeletion=-1) {
 	}
 
 	// Reset index for currently selected entry. 
-	currentlyselectedindex = -1;
+	currentrowindex = -1;
 	// Refresh selection based on currently selected index. 
 	// refreshSelectedEntry();
 }
@@ -744,7 +793,7 @@ function resetToDefaultDatabase() {
 	if(doReset) {
 
 		// 
-		crudDataList = crudDataSources[dataSourceIndex]['dataorigin'].map(x=>x);
+		crudDataList = crudDataSources[currenttableindex]['dataorigin'].map(x=>x);
 		console.log(crudDataList);
 		
 		// Save updated database to storage. 

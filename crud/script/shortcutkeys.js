@@ -30,15 +30,15 @@ function checkForShortcutKey(event) {
 		else if(keycode==13) {
 
 			// Check if in creator mode. 
-			let inCreatorMode = overlay.classList.contains('create');
+			let inEditorMode = overlay.classList.contains('edit');
 
 			// Create entry if in creator mode. 
-			if(inCreatorMode) {
+			if(!inEditorMode) {
 				createEntry();
 				closeOverlay();
 			}
 
-			// Update entry if not in creator mode. 
+			// Update entry if in editor mode. 
 			else {
 				updateEntry();
 				closeOverlay();
@@ -51,12 +51,12 @@ function checkForShortcutKey(event) {
 
 		// Enter key: Open selected entry. 
 		if(keycode==13) {
-			editEntry(currentlyselectedindex);
+			editEntry(currentrowindex);
 		}
 
 		// 'N' key: Create new entry. 
 		if(keycode==78) {
-			openOverlay(1);
+			openOverlay(0);
 		}
 
 		// Up key: Decrement index of selected entry. 
@@ -79,7 +79,7 @@ function checkForShortcutKey(event) {
 
 		// Delete key: Delete selected entry. 
 		else if(keycode==8 || keycode==46) {
-			deleteEntry(currentlyselectedindex);
+			deleteEntry(currentrowindex);
 		}
 	}
 
@@ -89,24 +89,24 @@ function checkForShortcutKey(event) {
 	function decrSelectedIndex() {
 
 		// Decrement index. 
-		currentlyselectedindex--;
+		currentrowindex--;
 		
 		// Check for index overflow. 
-		let overflow = (currentlyselectedindex < 0);
+		let overflow = (currentrowindex < 0);
 		// Readjust index if overflowed. 
-		if(overflow) currentlyselectedindex = crudDataList.length-1;
+		if(overflow) currentrowindex = crudDataList.length-1;
 	}
 
 	// Increment index of selected entry. 
 	function incrSelectedIndex() {
 
 		// Increment index. 
-		currentlyselectedindex++;
+		currentrowindex++;
 		
 		// Check for index overflow. 
-		let overflow = (currentlyselectedindex >= crudDataList.length);
+		let overflow = (currentrowindex >= crudDataList.length);
 		// Readjust index if overflowed. 
-		if(overflow) currentlyselectedindex = 0;
+		if(overflow) currentrowindex = 0;
 	}
 
 	// Refresh selection based on currently selected index. 
@@ -122,7 +122,7 @@ function checkForShortcutKey(event) {
 			let index = entryrow.getAttribute('data-index');
 
 			// Select row. 
-			if(index==currentlyselectedindex) {
+			if(index==currentrowindex) {
 				entryrow.classList.add('active');
 			}
 			// Unselect row. 
