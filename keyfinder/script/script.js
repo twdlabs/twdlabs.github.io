@@ -9,12 +9,65 @@ const keyInputBox3 = document.getElementById('keyInputBox3');
 const keyInputBox4 = document.getElementById('keyInputBox4');
 const keyInputBox5 = document.getElementById('keyInputBox5');
 const keyInputBox6 = document.getElementById('keyInputBox6');
+const inputBoxList = [keyInputBox0,keyInputBox1,keyInputBox2,keyInputBox3,keyInputBox4,keyInputBox5,keyInputBox6,];
 
 // Get main output box. 
 const ouputBox = document.getElementById('outputBox');
 
 
 /*****/
+
+
+// Handle events. 
+handleEvents();
+
+
+/*****/
+
+
+// Handle events. 
+function handleEvents() {
+
+	// Respond to press of quick buttons. 
+	const quickbtns = document.querySelectorAll('div#container main.main div.item div.field div.quickbtn');
+	for(let btn of quickbtns) {
+		btn.addEventListener('click',respondToQuickBtn);
+	}
+
+	// Respond to key press. 
+	for(let inputBox of inputBoxList) {
+		inputBox.addEventListener('keyup', respondToKey);
+	}
+
+	/****/
+
+	// Respond to press of quick button. 
+	function respondToQuickBtn(event) {
+
+		// Get selected quick button. 
+		let quickbtn = event.currentTarget;
+
+		// Get key value from button. 
+		let keyvalue = quickbtn.getAttribute('data-keyvalue');
+
+		// Get adjacent input box. 
+		let keyinputbox = quickbtn.parentElement.querySelector('input.key');
+
+		// Add key value tp input box. 
+		keyinputbox.value = keyvalue;
+
+		// Show running output. 
+		showOutput();
+	}
+
+	// Respond to key press. 
+	function respondToKey(event) {
+		// console.log('Responding to key',event.keyCode,event.key);
+
+		// Check if enter key pressed. 
+		if(event.keyCode==13 || event.key=='Enter') showOutput();
+	}
+}
 
 
 // Clear form. 
@@ -287,5 +340,3 @@ function showOutput() {
 		}
 	}
 }
-
-

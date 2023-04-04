@@ -45,20 +45,42 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
+div#container nav.navbar {position:absolute; top:0; right:0; left:0; width:100%;}
+div#container nav.navbar {background-color:var(--emptycolor); color:var(--fillcolor); /* min-height:4rem; */ padding:.75rem 1.5rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
+div#container nav.navbar div.bin h1.head svg.icon {}
+div#container nav.navbar div.bin h1.head span.caption {margin-left:.5em;}
+div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+/* div#container nav.navbar div.bin ul.navlist li.navitem {} */
+/* div#container nav.navbar div.bin ul.navlist li.navitem div.themebtn {position:fixed; top:0; right:0;} */
+div#container nav.navbar div.bin ul.navlist li.navitem div.themebtn {background-color:var(--fillcolor); color:var(--emptycolor); cursor:pointer; padding:.75rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin ul.navlist li.navitem div.themebtn svg.icon {font-size:1rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem div.themebtn svg.icon.sun {display:none;}
+div#container nav.navbar div.bin ul.navlist li.navitem div.themebtn svg.icon.moon {display:block;}
+/* div#container.dark nav.navbar div.bin ul.navlist li.navitem div.themebtn {} */
+div#container.dark nav.navbar div.bin ul.navlist li.navitem div.themebtn svg.icon.sun {display:block;}
+div#container.dark nav.navbar div.bin ul.navlist li.navitem div.themebtn svg.icon.moon {display:none;}
+
+
+/* Main Window */
 div#container main.main {background-color:var(--emptycolor); color:var(--fillcolor); min-width:12rem; /* width:100%; */ max-width:40rem; padding:.75rem .875rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container main.main div.item {display:flex; flex-direction:row; justify-content:center; align-items:center; padding-top:.75rem;}
 div#container main.main div.item.btns {grid-gap:.5rem;}
-div#container main.main div.item div.input {display:flex; flex-direction:column; align-items:stretch; padding:0 .125rem;}
-div#container main.main div.item div.input input.key {background-color:var(--fillcolor2); color:var(--fillcolor); font-size:1.125rem; text-align:center;}
-div#container main.main div.item div.input input.key {padding:.25rem 0; border:.125rem solid var(--fillcolor2); border-radius:.25rem; /* margin-top:.5rem; */}
-div#container main.main div.item div.input label.label {/* display:none; */ cursor:pointer; font-size:1.125rem; text-align:center;}
-div#container main.main div.item div.input button.btn {color:var(--fillcolor); font-size:1rem; font-weight:500; letter-spacing:1px; cursor:pointer; transition:.125s;}
-div#container main.main div.item div.input button.btn {background-color:var(--fillcolor2); width:100%; min-width:6rem; padding:.5rem 1.5rem; border: 1px solid var(--fillcolor); border-radius:.25rem;}
-div#container main.main div.item div.input button.btn.go {background-color:var(--darkblue); color:white;}
-/* div#container main.main div.item div.input button.btn.clear {} */
-/* div#container main.main div.item div.input button.btn:hover {transform:scale(1.03);} */
-div#container main.main div.item div.input button.btn.go:hover {background-color:var(--darkblue2);}
-/* div#container main.main div.item div.input button.btn.go:active {background-color:var(--darkblue2);} */
+div#container main.main div.item div.field {display:flex; flex-direction:column; align-items:stretch; padding:0 .125rem;}
+div#container main.main div.item div.field input.key {background-color:var(--emptycolor3); color:var(--fillcolor); font-size:1.125rem; text-align:center;}
+div#container main.main div.item div.field input.key {padding:.25rem 0; border:.125rem solid var(--fillcolor2); border-radius:.25rem; /* margin-top:.5rem; */}
+div#container main.main div.item div.field label.label {display:none; cursor:pointer; font-size:1.125rem; text-align:center;}
+div#container main.main div.item div.field div.quickbtn {background-color:var(--fillcolor3); text-align:center; cursor:pointer; user-select:none; padding:.25rem; border-radius:.25rem; border:.125rem solid var(--fillcolor2); margin-top:.25rem;}
+div#container main.main div.item div.field div.quickbtn:hover {background-color:var(--fillcolor2);;}
+/* div#container main.main div.item div.field div.quickbtn span.caption {display:flex; justify-content:center; align-items:flex-start;} */
+div#container main.main div.item div.field button.btn {color:var(--fillcolor); font-size:1rem; font-weight:500; letter-spacing:1px; cursor:pointer; transition:.125s;}
+div#container main.main div.item div.field button.btn {background-color:var(--fillcolor2); width:100%; min-width:6rem; padding:.5rem 1.5rem; border: 1px solid var(--fillcolor); border-radius:.25rem;}
+div#container main.main div.item div.field button.btn.go {background-color:var(--darkblue); color:white;}
+/* div#container main.main div.item div.field button.btn.clear {} */
+/* div#container main.main div.item div.field button.btn:hover {transform:scale(1.03);} */
+div#container main.main div.item div.field button.btn.go:hover {background-color:var(--darkblue2);}
+/* div#container main.main div.item div.field button.btn.go:active {background-color:var(--darkblue2);} */
 /* div#container main.main div.item div.output {width:100%;} */
 div#container main.main div.item div.output div.set {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.5rem;}
 div#container main.main div.item div.output div.set div.scale {display:flex; flex-direction:column; align-items:center; padding:.125rem .25rem; border-radius:.25rem; /* margin:.25rem; */}
@@ -66,16 +88,6 @@ div#container main.main div.item div.output div.set div.scale {background-color:
 div#container main.main div.item div.output div.set div.scale:hover {background-color:var(--emptycolor3); transition:.25s;}
 div#container main.main div.item div.output div.set div.scale span.scalename {font-weight:bold;}
 div#container main.main div.item div.output div.set div.scale span.scalekeys {font-size:.75em; font-style:italic;}
-
-/* Theme Button */
-div#container div.themebtn {position:fixed; top:0; right:0; box-shadow:var(--boxshadow);}
-div#container div.themebtn {background-color:var(--emptycolor); color:var(--fillcolor); cursor:pointer; padding:1rem; border-radius:var(--cornersize); margin:.5rem;}
-div#container div.themebtn svg.icon {font-size:1.25rem;}
-div#container div.themebtn svg.icon.moon {display:block;}
-div#container div.themebtn svg.icon.moonfill {display:none;}
-/* div#container.dark div.themebtn {} */
-div#container.dark div.themebtn svg.icon.moon {display:none;}
-div#container.dark div.themebtn svg.icon.moonfill {display:block;}
 
 
 
@@ -87,14 +99,15 @@ div#container.dark div.themebtn svg.icon.moonfill {display:block;}
 /* Smartphone Screen */
 @media screen and (max-width:32rem) {
 	/*  */
-	/* div#container main.main {} */
+	div#container main.main {width:100%;}
 	div#container main.main div.item {flex-direction:column; padding-top:.5rem;}
 	/* div#container main.main div.item {} */
 	div#container main.main div.item.btns {flex-direction:row; grid-gap:.5rem;}
-	div#container main.main div.item div.input {flex-direction:row; align-items:center; width:100%; padding:.125rem 0;}
-	div#container main.main div.item div.input input.key {flex:0 0 60%;}
-	div#container main.main div.item div.input label.label {flex:0 0 40%; padding-right:1rem;}
-	/* div#container main.main div.item div.input button.btn {} */
+	div#container main.main div.item div.field {flex-direction:row; align-items:center; width:100%; padding:.125rem 0;}
+	div#container main.main div.item div.field input.key {flex:0 0 60%;}
+	div#container main.main div.item div.field label.label {flex:0 0 40%; padding-right:1rem;}
+	div#container main.main div.item div.field div.quickbtn {min-width:2em; margin-top:0; margin-left:.25rem;}
+	/* div#container main.main div.item div.field button.btn {} */
 	/* div#container main.main div.item div.output {} */
 	div#container main.main div.item div.output div.set {grid-template-columns:repeat(2,1fr);}
 }
