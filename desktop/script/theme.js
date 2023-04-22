@@ -2,13 +2,13 @@
 
 
 // Get theme list. 
-const themeList = document.querySelector('div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist');
+const themeList = document.querySelector('div#container nav.navbar div.bin div.themetoggler ul.themelist');
 
 // Get all theme links. 
-const allThemeLinks = document.querySelectorAll('div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler ul.themelist li.themeitem a.themelink');
+const allThemeLinks = document.querySelectorAll('div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themelink');
 
 // Get theme toggler button icon. 
-const themeToggleBtnIcon = document.querySelector('div#container nav.navbar div.bin ul.navlist li.navitem div.themetoggler div.themebtn svg.icon.selected');
+const themeToggleBtnIcon = document.querySelector('div#container nav.navbar div.bin div.themetoggler div.themebtn svg.icon.selected');
 
 
 /*****/

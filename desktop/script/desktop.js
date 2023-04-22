@@ -1,8 +1,8 @@
 
 
 
-// Get desktop. 
-const desktop = document.querySelector('div#container section.desktop');
+// Get desktop destination. 
+const desktopDestination = document.querySelector('div#container section.desktop div.grid');
 
 // Define group categories. 
 // const leadingLetters = ['0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
@@ -18,14 +18,14 @@ const leadingLetters = [
 
 
 // Load desktop items. 
-loadDesktopItems();
+loadDesktop();
 
 
 /*****/
 
 
 // Load desktop items. 
-function loadDesktopItems() {
+function loadDesktop() {
 	// console.log(projectNames);
 
 	// Get groups of project names by category. 
@@ -44,7 +44,7 @@ function loadDesktopItems() {
 	}
 	
 	// Add result to page. 
-	desktop.insertAdjacentHTML('beforeend',result);
+	desktopDestination.insertAdjacentHTML('beforeend',result);
 
 	// Activate group headers. 
 	activateGroupHeaders();
@@ -195,7 +195,7 @@ function loadDesktopItems() {
 	function activateGroupHeaders() {
 
 		// Get all group headers. 
-		let allGroupHeaders = document.querySelectorAll('div#container section.desktop div.group div.ghead');
+		let allGroupHeaders = document.querySelectorAll('div#container section.desktop div.grid div.group div.ghead');
 	
 		// Go thru all group headers. 
 		for(let groupheader of allGroupHeaders) {
