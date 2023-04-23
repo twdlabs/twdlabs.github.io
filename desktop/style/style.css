@@ -9,23 +9,30 @@
 
 :root {
 
+	/* Theme Color */
+	--royalblue:#2E61E0;
+
+	/* Light Colors */
 	--white:#F8F8F8;
 	--offwhite:#E7E9EB;
-	--royalblue:#2E61E0;
+	--whitesheet:#F8F8F8AA;
+	--whiteglass:#F8F8F844;
+	--whiteglasss:#F8F8F822;
+
+	/* Dark Colors */
 	--lightblack:#333;
 	--lightblack2:#222;
-	--whitesheet:#FFFA;
-	--whiteglass:#FFF4;
-	--whiteglasss:#FFF2;
 	--blacksheet:#222C;
 	--blackglass:#2223;
 	--blackglasss:#2222;
 
+	/* Page Sizes */
 	--pagewidth:75rem;
 	/* --pagewidth:100rem; */
 	--cornersize:.5rem;
 	--headerheight:5rem;
 
+	/* Box Shadows */
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
 	--boxshadowx:rgba(0,0,0,0.25) 0 0.25rem .75rem 0;
@@ -78,7 +85,8 @@ body {background-color:var(--backcolor2); color:var(--forecolor); font-family:Nu
 
 
 /* Main Container */
-div#container {/* background-color:var(--backcolor); color:var(--forecolor); */ display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch; min-height:100vh;}
+div#container {background-color:var(--backcolor); color:var(--forecolor);}
+div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch; min-height:100vh;}
 
 
 
@@ -93,7 +101,7 @@ div#container nav.navbar div.bin a.brand span.caption {display:none; margin-left
 div#container nav.navbar div.bin div.navmenu {flex-grow:1;}
 div#container nav.navbar div.bin div.navmenu {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 /* div#container nav.navbar div.bin div.navmenu ul.navlist.l {} */
-div#container nav.navbar div.bin div.navmenu ul.navlist.m {flex-grow:1; justify-content:flex-end;}
+div#container nav.navbar div.bin div.navmenu ul.navlist.m {/* flex-grow:1; */ justify-content:flex-end;}
 /* div#container nav.navbar div.bin div.navmenu ul.navlist.r {border-left:1px solid var(--whiteglass);} */
 div#container nav.navbar div.bin div.navmenu ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0; margin-left:1.25rem;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {font-size:1.25rem; margin-left:1rem;}
@@ -132,7 +140,7 @@ div#container section.hero {display:flex; flex-direction:column; justify-content
 div#container section.hero::before {background-color:var(--sheetcolor); content:'';}
 div#container section.hero::before {position:absolute; top:0; left:0; height:100%; width:100%; z-index:0;}
 /* div#container section.hero div.grid {display:grid; grid-template-columns:4fr 3fr; align-items:center;} */
-div#container section.hero div.grid {position:relative; padding:12rem 0;}
+div#container section.hero div.grid {position:relative; max-width:calc(var(--pagewidth)*.65); padding:12rem 0;}
 div#container section.hero div.grid div.col.a {text-align:center;}
 div#container section.hero div.grid div.col.b {display:none;}
 /* div#container section.hero div.grid div.col {text-align:center;} */
@@ -153,8 +161,9 @@ div#container section.blog div.grid ul.postlist li.postcard a.namelink {display:
 div#container section.blog div.grid ul.postlist li.postcard div.preview {background-color:var(--backcolor); position:relative; width:100%; padding-top:75%;}
 div#container section.blog div.grid ul.postlist li.postcard div.preview a.previewlink {background-color:var(--blackglass);}
 div#container section.blog div.grid ul.postlist li.postcard div.preview a.previewlink {position:absolute; top:0; left:0; height:100%; width:100%; z-index:20;}
-div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {display:none;}
-div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {position:absolute; top:0; left:0; height:100%; width:100%; overflow:hidden; z-index:10; border:0 none; /* border:.25rem solid; */}
+/* div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {display:none;} */
+div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {background-color:var(--forecolor); border:0 none; /* border:.25rem solid; */}
+div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {position:absolute; top:0; left:0; height:100%; width:100%; overflow:hidden; z-index:10;}
 div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x1 {--xyz:1; scale:calc(1/xyz); height:calc(xyz*100%); width:calc(xyz*100%); transform:translate( calc(-50%) , calc(-50%) );}
 div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x1 {--xyz:2; scale:.5; height:200%; width:200%; transform:translate(-50%,-50%);}
 div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x2 {--xyz:3; scale:.25; height:400%; width:400%; transform:translate(-150%,-150%);}
@@ -163,8 +172,7 @@ div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.p
 div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x5 {--xyz:6; scale:.03125; height:3200%; width:3200%; transform:translate(-1550%,-1550%);}
 
 /* Desktop Section */
-div#container section.desktop {background-color:var(--lightblack); /* color:white; */ transition:.5s;}
-div#container section.desktop {display:flex; flex-direction:column;}
+div#container section.desktop {display:flex; flex-direction:column;  transition:.5s;}
 /* div#container section.desktop div.grid {} */
 div#container section.desktop div.grid div.group {background-color:var(--grpbackcolor); overflow:hidden; border-radius:.5rem; margin-top:.875rem;}
 div#container section.desktop div.grid div.group {display:flex; flex-direction:column; align-items:stretch;}
@@ -209,6 +217,7 @@ div#container footer.footer {background-color:var(--backcolor2); width:100%; pad
 div#container footer.footer div.bin {display:flex; flex-direction:row; max-width:var(--pagewidth); margin:0 auto;}
 div#container footer.footer div.bin div.listbox {flex-basis:0; flex-grow:1; flex-shrink:0; padding:1rem;}
 div#container footer.footer div.bin div.listbox.g {flex-grow:2;}
+div#container footer.footer div.bin div.listbox.x {display:none;}
 div#container footer.footer div.bin div.listbox h1.head {color:var(--forecolor); font-size:1.75rem; margin:0;}
 div#container footer.footer div.bin div.listbox h2.head {color:var(--forecolor); font-size:1.375rem; margin:0;}
 div#container footer.footer div.bin div.listbox p.textcopy {color:var(--forecolor2); margin:0; margin-top:.5rem;}
