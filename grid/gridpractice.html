@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../atgicon.ico" rel="icon"/>
+		<title>Grid Practice</title>
+
+		<style type="text/css">
+			* {box-sizing:border-box;}
+
+			body {min-height:100vh; margin:0;}
+
+			div#container {display:grid; height:100vh; background-color:#FFF; padding:.5rem; grid-gap:.5rem; grid-template-areas: 'p1 g1 g1 r1' 'b1 r2 y1 r1' 'b1 r2 g2 g2' 'b1 b2 b2 b2';}
+
+			div#container div.item {}
+			div#container div.item.r1 {grid-area: r1;}
+			div#container div.item.r2 {grid-area: r2;}
+			div#container div.item.b1 {grid-area: b1;}
+			div#container div.item.b2 {grid-area: b2;}
+			div#container div.item.p1 {grid-area: p1;}
+			div#container div.item.g1 {grid-area: g1;}
+			div#container div.item.g2 {grid-area: g2;}
+			div#container div.item.y1 {grid-area: y1;}
+			div#container div.item.red {background-color:#E94B35;}
+			div#container div.item.blue {background-color:#2D97DE;}
+			div#container div.item.purp {background-color:#8F3FB0;} 
+			div#container div.item.green {background-color:#1FCE6D;}
+			div#container div.item.yellow {background-color:#F3C501;}
+
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- item -->
+			<div class="item red r1"></div>
+			<!-- /item -->
+
+			<!-- item -->
+			<div class="item red r2"></div>
+			<!-- /item -->
+			
+			<!-- item -->
+			<div class="item blue b1"></div>
+			<!-- /item -->
+			
+			<!-- item -->
+			<div class="item blue b2"></div>
+			<!-- /item -->
+			
+			<!-- item -->
+			<div class="item purp p1"></div>
+			<!-- /item -->
+			
+			<!-- item -->
+			<div class="item green g1"></div>
+			<!-- /item -->
+			
+			<!-- item -->
+			<div class="item green g2"></div>
+			<!-- /item -->
+			
+			<!-- item -->
+			<div class="item yellow y1"></div>
+			<!-- /item -->
+
+		</div>
+		<!-- /#container -->
+
+	</body>
+
+</html>
+
