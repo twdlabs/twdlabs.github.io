@@ -12,53 +12,8 @@
 		<title>Word Switcher</title>
 
 		<!-- Main Stylesheet -->
-		<!-- <link href="wordswitcher.css" rel="stylesheet" type="text/css"/> -->
-		<style type="text/css">
-			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
-
-
-			* {box-sizing:border-box; /* padding:0; margin:0; */}
-
-
-			:root {
-				--themecolor:#0e6ffc;
-				--boxshadow:0 0 1rem #0002;
-				--boxshadow:0 0 .25rem #0003;
-				--boxshadow:0 1.25rem 1.5rem #0003;
-			}
-
-
-			body {font-family:Nunito,sans-serif; margin:0;}
-
-
-			div#container {background-color:var(--themecolor);}
-			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-			
-			div#container main.main {background-color:white; display:flex; flex-direction:row; height:4rem; box-sizing:content-box;}
-			div#container main.main {font-size:3rem; font-weight:bold; white-space:nowrap;}
-			div#container main.main {/* width:100%; max-width:20rem; */ padding:3rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-			div#container main.main div.item {display:flex; flex-direction:column; justify-content:center;}
-			div#container main.main div.wordbox {color:var(--themecolor); overflow:hidden;}
-			div#container main.main div.wordbox span.adj {display:flex; flex-direction:column; justify-content:center; height:100%;}
-			div#container main.main div.wordbox span.adj {animation:spinwords 4s ease infinite;}
-
-			@keyframes spinwords {
-				0% {transform:translateY(0);}
-
-				10% {transform:translateY(-112%);}
-				25% {transform:translateY(-100%);}
-				
-				35% {transform:translateY(-212%);}
-				50% {transform:translateY(-200%);}
-				
-				60% {transform:translateY(-312%);}
-				75% {transform:translateY(-300%);}
-				
-				85% {transform:translateY(-412%);}
-				100% {transform:translateY(-400%);}
-			}
-			
-		</style>
+		<link href="wordswitcher.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
@@ -112,7 +67,7 @@
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
+		<!-- Database -->
 		<!-- <script src="database.js" type="text/javascript"></script> -->
 
 		<!-- Main Script -->
