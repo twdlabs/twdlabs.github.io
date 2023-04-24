@@ -3,11 +3,11 @@
 
 // Get head navigation destination. 
 const headnavDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu');
-console.log(headnavDestination);
+// console.log(headnavDestination);
 
 // Get footer destination. 
-const footerDestination = document.querySelector('div#container footer.footer div.bin');
-console.log(footerDestination);
+const footerDestination = document.querySelector('div#container footer.footer div.grid');
+// console.log(footerDestination);
 
 
 /*****/
@@ -32,7 +32,7 @@ function loadHeadNavLinks() {
 	let result = '';
 
 	// Get list of links. 
-	linklist = linkData[0].grouplist;
+	linklist = navLinkData[0].grouplist;
 
 	// Add list of links to result. 
 	result += `
@@ -43,7 +43,7 @@ function loadHeadNavLinks() {
 	<!-- /navlist -->`;
 
 	// Get list of links. 
-	linklist = linkData[linkData.length-1].grouplist;
+	linklist = socialLinkData[0].grouplist;
 
 	// Add list of links to result. 
 	result += `
@@ -103,10 +103,17 @@ function loadFooterNavLinks() {
 	let result = '';
 
 	// Accumulate list boxes. 
-	for(let linkgroup of linkData) {
-
+	for(let linkgroupset of footerLinkData) {
+	
 		// Add list box. 
-		result += createListBox(linkgroup);
+		result += createListBox(linkgroupset);
+
+		// // Accumulate list boxes. 
+		// for(let linkgroup of linkgroupset) {
+	
+		// 	// Add list box. 
+		// 	result += createListBox(linkgroup);
+		// }
 	}
 
 	// Add result to page. 
@@ -115,54 +122,72 @@ function loadFooterNavLinks() {
 	/****/
 
 	// Create list box. 
-	function createListBox(group) {
+	function createListBox(groupset) {
 
 		// 
 		return `
 		<!-- listbox -->
 		<div class="listbox">
 
-			<!-- head -->
-			<h2 class="head">${ group.groupname }</h2>
-			<!-- /head -->
-
-			<!-- navlist -->
-			<ul class="navlist">
-
-				${ createListOfLinks(group.grouplist) }
-
-			</ul>
-			<!-- /navlist -->
+			${ createSetOfLinkLists(groupset) }
 
 		</div>
 		<!-- /listbox -->`;
 
 		/***/
 	
-		// Create list of links. 
-		function createListOfLinks(linklist) {
+		// Create sets of link lists. 
+		function createSetOfLinkLists(linklistset) {
 
-			// Initialize list of items. 
-			let list = '';
+			// Initialize result. 
+			let result = '';
 
-			// Accumulate list of items. 
-			for(link of linklist) {
-
-				// 
-				list += `
-				<!-- navitem -->
-				<li class="navitem">
+			// 
+			for(let linklist of linklistset) {
+				result += `
+				<!-- head -->
+				<h2 class="head">${ linklist.groupname }</h2>
+				<!-- /head -->
 	
-					<!-- navlink -->
-					<a class="navlink" href="${ link.linkurl }">${ link.linkname }</a>
-					<!-- /navlink -->
+				<!-- navlist -->
+				<ul class="navlist">
 	
-				</li>
-				<!-- /navitem -->`;
+					${ createLinkList(linklist.grouplist) }
+	
+				</ul>
+				<!-- /navlist -->`;
 			}
+			
+			// Return result. 
+			return result;
 
-			// Return list of items. 
-			return list;
+			/**/
+	
+			// Create list of links. 
+			function createLinkList(linklist) {
+	
+				// Initialize list of items. 
+				let list = '';
+	
+				// Accumulate list of items. 
+				for(link of linklist) {
+	
+					// 
+					list += `
+					<!-- navitem -->
+					<li class="navitem">
+		
+						<!-- navlink -->
+						<a class="navlink" href="${ link.linkurl }">${ link.linkname }</a>
+						<!-- /navlink -->
+		
+					</li>
+					<!-- /navitem -->`;
+				}
+	
+				// Return list of items. 
+				return list;
+			}
 		}
 	}
 }

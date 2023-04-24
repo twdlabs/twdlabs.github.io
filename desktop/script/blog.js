@@ -7,6 +7,9 @@ const blogDestination = document.querySelector('div#container section.blog div.g
 // Initialize source of blog post cards. 
 let blogpostcards;
 
+// Get input field for filter query. 
+const postfilterfield = document.querySelector('div#container section.blog div.grid div.filter input#postfilter');
+
 
 /*****/
 
@@ -30,25 +33,30 @@ loadBlog();
 
 // Load blog posts. 
 function loadBlog() {
-	console.log('Loading blog...');
+	// console.log('Loading blog...');
 
 	// Initialize result. 
 	let result = '';
+	
+	// Initialize number of posts added. 
 	let n = 0;
 	
 	// Add project group to result. 
 	for(let i in projectNames) {
+
+		// Limit number of posts. 
 		if(n>=numPosts) break;
 		// console.log(i);
 
-		// 
+		// Get folder name for given post. 
 		let foldername = projectNames[i]
-
-		// Skip infinite recursion. 
-		if(foldername=='desktop') continue;
+		// Skip current page (no infinite recursion). 
+		// if(foldername=='desktop') continue;
 
 		// Add blog card to result. 
 		result += createBlogCard(foldername);
+
+		// Increment number of posts added. 
 		n++;
 	}
 	
@@ -56,14 +64,71 @@ function loadBlog() {
 	blogDestination.innerHTML = result;
 	// blogDestination.insertAdjacentHTML('beforeend',result);
 
+	// Get blog post cards. 
+	blogpostcards = document.querySelectorAll('div#container section.blog div.grid ul.postlist li.postcard');
+
 	// Activate preview panels for blog post cards. 
 	activatePreviewPanels();
 
+	// Activate blog post filter. 
+	activateBlogFilter();
+
+	/****/
+
+	// Create blog card. 
+	function createBlogCard(foldername,previewIncluded) {
+
+		// 
+		if(!previewIncluded) return `
+		<!-- postcard -->
+		<li class="postcard" data-foldername="${foldername}">
+
+			<!-- preview -->
+			<div class="preview">
+
+				<!-- previewlink -->
+				<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
+				<!-- /previewlink -->
+
+			</div>
+			<!-- /preview -->
+
+			<!-- namelink -->
+			<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
+			<!-- /namelink -->
+
+		</li>
+		<!-- /postcard -->`;
+
+		// 
+		return `
+		<!-- postcard -->
+		<li class="postcard" data-foldername="${foldername}">
+
+			<!-- preview -->
+			<div class="preview">
+
+				<!-- preview -->
+				<iframe class="preview x3" src="../${foldername}/index.html"></iframe>
+				<!-- /preview -->
+
+				<!-- previewlink -->
+				<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
+				<!-- /previewlink -->
+
+			</div>
+			<!-- /preview -->
+
+			<!-- namelink -->
+			<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
+			<!-- /namelink -->
+
+		</li>
+		<!-- /postcard -->`;
+	}
+
 	// Activate preview panels for blog post cards. 
 	function activatePreviewPanels() {
-
-		// Get blog post cards. 
-		blogpostcards = document.querySelectorAll('div#container section.blog div.grid ul.postlist li.postcard');
 		
 		// Go thru blog post cards. 
 		for(let card of blogpostcards) {
@@ -111,83 +176,68 @@ function loadBlog() {
 		}
 	}
 
-	/****/
+	// Activate blog post filter. 
+	function activateBlogFilter() {
 
-	// Create blog card. 
-	function createBlogCard(foldername) {
+		// Activate input field to filter blog posts. 
+		postfilterfield.addEventListener('keyup',filterBlogPosts);
 
-		// 
-		if(true) return `
-		<!-- postcard -->
-		<li class="postcard" data-foldername="${foldername}">
+		/***/
 
-			<!-- preview -->
-			<div class="preview">
+		// Filter blog posts. 
+		function filterBlogPosts(event) {
 
-				<!-- previewlink -->
-				<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
-				<!-- /previewlink -->
+			// Get filter query. 
+			let filterquery = (postfilterfield.value).toUpperCase();
+			
+			// Get list of filter queries. 
+			let filterquerywords = filterquery.split(' ')
+			console.log('Filtering...', filterquery, filterquerywords);
+		
+			// Go thru all blog posts. 
+			for(let postcard of blogpostcards) {
 
-			</div>
-			<!-- /preview -->
+				// Get folder name of given post. 
+				let foldername = postcard.getAttribute('data-foldername').toUpperCase();
 
-			<!-- namelink -->
-			<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
-			<!-- /namelink -->
+				// Check for matching post (by full query). 
+				let matchesFullQuery = checkForMatchFullQuery(foldername,filterquery);
 
-		</li>
-		<!-- /postcard -->`;
+				// Check for matching post (by each word). 
+				let matchesEveryWord = checkForMatchEachWord(foldername,filterquerywords);
 
-		// 
-		if(true) return `
-		<!-- postcard -->
-		<li class="postcard" data-foldername="${foldername}">
+				// Show matching post. 
+				if(matchesFullQuery || matchesEveryWord) {
+					postcard.classList.remove('x');
+				}
+				// Hide non-matching post. 
+				else {
+					postcard.classList.add('x');
+				}
+			}
 
-			<!-- preview -->
-			<div class="preview">
+			// Check for matching post (by full query). 
+			function checkForMatchFullQuery(foldername,filterquery) {
 
-				<!-- preview -->
-				<iframe class="preview x3" src=""></iframe>
-				<!-- /preview -->
+				// 
+				return foldername.includes(filterquery)
+			}
 
-				<!-- previewlink -->
-				<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
-				<!-- /previewlink -->
+			// Check for matching post (by each word). 
+			function checkForMatchEachWord(foldername,filterquerywords) {
+		
+				// Go thru all words in filter query. 
+				for(let word of filterquerywords) {
 
-			</div>
-			<!-- /preview -->
+					let wordPresent = foldername.includes(word);
 
-			<!-- namelink -->
-			<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
-			<!-- /namelink -->
+					// Return false if any query word is missing. 
+					if(!wordPresent) return false;
+				}
 
-		</li>
-		<!-- /postcard -->`;
-
-		// 
-		return `
-		<!-- postcard -->
-		<li class="postcard" data-foldername="${foldername}">
-
-			<!-- preview -->
-			<div class="preview">
-
-				<!-- preview -->
-				<iframe class="preview x3" src="../${foldername}/index.html"></iframe>
-				<!-- /preview -->
-
-				<!-- previewlink -->
-				<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
-				<!-- /previewlink -->
-
-			</div>
-			<!-- /preview -->
-
-			<!-- namelink -->
-			<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
-			<!-- /namelink -->
-
-		</li>
-		<!-- /postcard -->`;
+				// Return true if passed (no query words missing). 
+				return true;
+			}
+		}
 	}
 }

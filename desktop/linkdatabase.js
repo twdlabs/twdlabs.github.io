@@ -10,9 +10,8 @@ const iconData = {
 };
 
 
-// Define link data. 
-const linkData = [
-
+// Define navugation link data. 
+const navLinkData = [
 	
 	{
 		groupname:'Links',
@@ -34,57 +33,22 @@ const linkData = [
 				linkurl:'javascript:void(0)',
 				linkname:'LinkD',
 			},
-		],
-	},
-
-	
-	{
-		groupname:'Projects',
-		
-		grouplist:[
 			{
 				linkurl:'javascript:void(0)',
-				linkname:'LinkW',
+				linkname:'LinkE',
 			},
 			{
 				linkurl:'javascript:void(0)',
-				linkname:'LinkX',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkY',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkZ',
+				linkname:'LinkF',
 			},
 		],
 	},
 
-	
-	{
-		groupname:'Widgets',
-		
-		grouplist:[
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkW',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkX',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkY',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkZ',
-			},
-		],
-	},
+];
 
+
+// Define social link data. 
+const socialLinkData = [
 	
 	{
 		groupname:'Community',
@@ -118,8 +82,208 @@ const linkData = [
 		],
 	},
 
-
 ];
 
 
-/*****/
+// Define footer link data. 
+const footerLinkData = [
+
+	[
+		{
+			groupname:'Coding Lessons',
+			
+			grouplist:[
+				{
+					linkurl:'../boxshadow',
+					linkname:'Box Shadow',
+				},
+				{
+					linkurl:'../clearfix',
+					linkname:'Clear Fix',
+				},
+				{
+					linkurl:'../flex',
+					linkname:'Flex Box',
+				},
+				{
+					linkurl:'../overflow',
+					linkname:'Overflow',
+				},
+				{
+					linkurl:'../timing',
+					linkname:'Timing Functions',
+				},
+				{
+					linkurl:'../touch',
+					linkname:'Touch Sensor',
+				},
+				{
+					linkurl:'../urlparams',
+					linkname:'URL Search Parameters',
+				},
+			],
+		},
+	],
+
+	[
+		{
+			groupname:'Sample Sites',
+			
+			grouplist:[
+				{
+					linkurl:'../blog',
+					linkname:'Sample Blog Site',
+				},
+				{
+					linkurl:'../merch',
+					linkname:'Sample Merch Store',
+				},
+				{
+					linkurl:'../univ',
+					linkname:'Sample University',
+				},
+			],
+		},
+		{
+			groupname:'App Prototypes',
+			
+			grouplist:[
+				{
+					linkurl:'../chat',
+					linkname:'Chat Messenger',
+				},
+				{
+					linkurl:'../compound',
+					linkname:'Compound Interest',
+				},
+				{
+					linkurl:'../cluster',
+					linkname:'K-Means Clustering',
+				},
+				{
+					linkurl:'../keyfinder',
+					linkname:'Piano Key Scale Finder',
+				},
+				{
+					linkurl:'../musicplayer',
+					linkname:'Music Player',
+				},
+				{
+					linkurl:'../pinyin',
+					linkname:'Pinyin Soundboard',
+				},
+				{
+					linkurl:'../pixelart',
+					linkname:'Pixel Art Generator',
+				},
+				{
+					linkurl:'../solarsystem',
+					linkname:'Solar System',
+				},
+				{
+					linkurl:'../throttle',
+					linkname:'Input Controller',
+				},
+				{
+					linkurl:'../time',
+					linkname:'Time Calculator',
+				},
+				{
+					linkurl:'../typer',
+					linkname:'Type Counter',
+				},
+				{
+					linkurl:'../360finance',
+					linkname:'Personal Finance',
+				},
+			],
+		},
+	],
+
+	[
+		{
+			groupname:'Widgets',
+			
+			grouplist:[
+				{
+					linkurl:'../accordion',
+					linkname:'Sliding Accordion',
+				},
+				{
+					linkurl:'../autoslideshow',
+					linkname:'Automatic Slideshow',
+				},
+				{
+					linkurl:'../banner',
+					linkname:'Scrolling Banner',
+				},
+				{
+					linkurl:'../gallery',
+					linkname:'Image Gallery',
+				},
+				{
+					linkurl:'../loader',
+					linkname:'Page Loader',
+				},
+				{
+					linkurl:'../login',
+					linkname:'User Access',
+				},
+				{
+					linkurl:'../livesearch',
+					linkname:'Live Search',
+				},
+				{
+					linkurl:'../megamenu',
+					linkname:'Mega Menu',
+				},
+				{
+					linkurl:'../profilecard',
+					linkname:'Dynamic Profile Card',
+				},
+				{
+					linkurl:'../rolodex',
+					linkname:'Contact Rolodex',
+				},
+				{
+					linkurl:'../skeleton',
+					linkname:'Content Skeleton',
+				},
+				{
+					linkurl:'../slideshow',
+					linkname:'Manual Slideshow',
+				},
+				{
+					linkurl:'../stepprogress',
+					linkname:'Step Progress Bar',
+				},
+				{
+					linkurl:'../switcher',
+					linkname:'Tab Switcher',
+				},
+				{
+					linkurl:'../toastprogress',
+					linkname:'Toast Progress Bar',
+				},
+				{
+					linkurl:'../typewriter',
+					linkname:'Counter Typewriter',
+				},
+				{
+					linkurl:'../upload',
+					linkname:'Image Uploader',
+				},
+				{
+					linkurl:'../video',
+					linkname:'Video Gallery',
+				},
+				{
+					linkurl:'../wordswitcher',
+					linkname:'Word Switcher',
+				},
+			],
+		},
+	],
+
+];
+
