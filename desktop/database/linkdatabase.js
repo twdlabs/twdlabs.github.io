@@ -1,15 +1,6 @@
 
 
 
-// Define icon data. 
-const iconData = {
-	github:'<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>',
-	twitter:'<path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>',
-	instagram:'<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>',
-	linkedin:'<path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>',
-};
-
-
 // Define navugation link data. 
 const navLinkData = [
 	
@@ -17,30 +8,30 @@ const navLinkData = [
 		groupname:'Links',
 		
 		grouplist:[
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkA',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkB',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkC',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkD',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkE',
-			},
-			{
-				linkurl:'javascript:void(0)',
-				linkname:'LinkF',
-			},
+			// {
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'LinkA',
+			// },
+			// {
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'LinkB',
+			// },
+			// {
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'LinkC',
+			// },
+			// {
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'LinkD',
+			// },
+			// {
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'LinkE',
+			// },
+			// {
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'LinkF',
+			// },
 		],
 	},
 
@@ -85,14 +76,23 @@ const socialLinkData = [
 ];
 
 
-// Define footer link data. 
-const footerLinkData = [
+// Define project link data. 
+const projectLinkData = [
 
 	[
 		{
-			groupname:'Coding Lessons',
+			groupid:'cl',
+			groupname:'CSS Lessons',
 			
 			grouplist:[
+				{
+					linkurl:'../anime',
+					linkname:'Square Animation',
+				},
+				{
+					linkurl:'../aspectratio',
+					linkname:'Aspect Ratio',
+				},
 				{
 					linkurl:'../boxshadow',
 					linkname:'Box Shadow',
@@ -102,20 +102,99 @@ const footerLinkData = [
 					linkname:'Clear Fix',
 				},
 				{
+					linkurl:'../cutout',
+					linkname:'Text Cutout',
+				},
+				{
 					linkurl:'../flex',
 					linkname:'Flex Box',
+				},
+				{
+					linkurl:'../flexbreak',
+					linkname:'Flex Break',
+				},
+				{
+					linkurl:'../format',
+					linkname:'Text Formatter',
+				},
+				{
+					linkurl:'../grid',
+					linkname:'CSS Grid',
+				},
+				{
+					linkurl:'../keyframes',
+					linkname:'Key Frames',
+				},
+				{
+					linkurl:'../macbook',
+					linkname:'Macbook Animation',
+				},
+				{
+					linkurl:'../maskimage',
+					linkname:'Image Masking',
 				},
 				{
 					linkurl:'../overflow',
 					linkname:'Overflow',
 				},
 				{
+					linkurl:'../perspective',
+					linkname:'Perspective',
+				},
+				{
+					linkurl:'../scrollsnap',
+					linkname:'Scroll Snap',
+				},
+				{
+					linkurl:'../smoothscroll',
+					linkname:'Smooth Scroll',
+				},
+				{
 					linkurl:'../timing',
 					linkname:'Timing Functions',
 				},
 				{
-					linkurl:'../touch',
-					linkname:'Touch Sensor',
+					linkurl:'../zbar',
+					linkname:'Z-Index Bar',
+				},
+			],
+		},
+		{
+			groupid:'jl',
+			groupname:'JS Lessons',
+			
+			grouplist:[
+				{
+					linkurl:'../audio',
+					linkname:'Audio Player',
+				},
+				{
+					linkurl:'../colorpicker',
+					linkname:'Color Picker',
+				},
+				{
+					linkurl:'../cookie',
+					linkname:'Web Cookies',
+				},
+				{
+					linkurl:'../enter',
+					linkname:'Action on Enter',
+				},
+				{
+					linkurl:'../event',
+					linkname:'Event Listeners',
+				},
+				{
+					linkurl:'../filter',
+					linkname:'List Filter',
+				},
+				{
+					linkurl:'../keypress',
+					linkname:'Key Press',
+				},
+				{
+					linkurl:'../storage',
+					linkname:'Local Storage',
 				},
 				{
 					linkurl:'../urlparams',
@@ -127,102 +206,80 @@ const footerLinkData = [
 
 	[
 		{
-			groupname:'Sample Sites',
+			groupid:'aw',
+			groupname:'App Widgets',
 			
 			grouplist:[
 				{
-					linkurl:'../blog',
-					linkname:'Sample Blog Site',
+					linkurl:'../analogclock',
+					linkname:'Analog Clock',
 				},
 				{
-					linkurl:'../merch',
-					linkname:'Sample Merch Store',
+					linkurl:'../bell',
+					linkname:'Notification Bell',
 				},
 				{
-					linkurl:'../univ',
-					linkname:'Sample University',
-				},
-			],
-		},
-		{
-			groupname:'App Prototypes',
-			
-			grouplist:[
-				{
-					linkurl:'../chat',
-					linkname:'Chat Messenger',
+					linkurl:'../blogtoggler',
+					linkname:'Blog Toggler',
 				},
 				{
-					linkurl:'../compound',
-					linkname:'Compound Interest',
+					linkurl:'../bookmark',
+					linkname:'Bookmark Button',
 				},
 				{
-					linkurl:'../cluster',
-					linkname:'K-Means Clustering',
+					linkurl:'../calendar',
+					linkname:'Calendar',
 				},
 				{
-					linkurl:'../keyfinder',
-					linkname:'Piano Key Scale Finder',
+					linkurl:'../canvas',
+					linkname:'Chart Canvas',
 				},
 				{
-					linkurl:'../musicplayer',
-					linkname:'Music Player',
+					linkurl:'../chart',
+					linkname:'Chart',
 				},
 				{
-					linkurl:'../pinyin',
-					linkname:'Pinyin Soundboard',
+					linkurl:'../clipboard',
+					linkname:'Clipboard Copier',
 				},
 				{
-					linkurl:'../pixelart',
-					linkname:'Pixel Art Generator',
+					linkurl:'../clock',
+					linkname:'Clock Counter',
 				},
 				{
-					linkurl:'../solarsystem',
-					linkname:'Solar System',
+					linkurl:'../contextmenu',
+					linkname:'Context Menu',
 				},
 				{
-					linkurl:'../throttle',
-					linkname:'Input Controller',
+					linkurl:'../delta',
+					linkname:'Number Delta Clicker',
 				},
 				{
-					linkurl:'../time',
-					linkname:'Time Calculator',
+					linkurl:'../devices',
+					linkname:'Devices',
 				},
 				{
-					linkurl:'../typer',
-					linkname:'Type Counter',
+					linkurl:'../floatmenu',
+					linkname:'Floating Menu',
 				},
 				{
-					linkurl:'../360finance',
-					linkname:'Personal Finance',
-				},
-			],
-		},
-	],
-
-	[
-		{
-			groupname:'Widgets',
-			
-			grouplist:[
-				{
-					linkurl:'../accordion',
-					linkname:'Sliding Accordion',
+					linkurl:'../gitcalendar',
+					linkname:'Git Calendar',
 				},
 				{
-					linkurl:'../autoslideshow',
-					linkname:'Automatic Slideshow',
+					linkurl:'../graph',
+					linkname:'Bar Graph',
 				},
 				{
-					linkurl:'../banner',
-					linkname:'Scrolling Banner',
-				},
-				{
-					linkurl:'../gallery',
-					linkname:'Image Gallery',
+					linkurl:'../lightSwitch',
+					linkname:'Light Switch',
 				},
 				{
 					linkurl:'../loader',
+					linkname:'Page Loader',
+				},
+				{
+					linkurl:'../loading',
 					linkname:'Page Loader',
 				},
 				{
@@ -230,28 +287,20 @@ const footerLinkData = [
 					linkname:'User Access',
 				},
 				{
-					linkurl:'../livesearch',
-					linkname:'Live Search',
+					linkurl:'../message',
+					linkname:'Text Messages',
 				},
 				{
-					linkurl:'../megamenu',
-					linkname:'Mega Menu',
+					linkurl:'../pagination',
+					linkname:'Pagination',
 				},
 				{
-					linkurl:'../profilecard',
-					linkname:'Dynamic Profile Card',
+					linkurl:'../rating',
+					linkname:'Rating Bar',
 				},
 				{
 					linkurl:'../rolodex',
 					linkname:'Contact Rolodex',
-				},
-				{
-					linkurl:'../skeleton',
-					linkname:'Content Skeleton',
-				},
-				{
-					linkurl:'../slideshow',
-					linkname:'Manual Slideshow',
 				},
 				{
 					linkurl:'../stepprogress',
@@ -262,20 +311,349 @@ const footerLinkData = [
 					linkname:'Tab Switcher',
 				},
 				{
+					linkurl:'../tags',
+					linkname:'Tag Typer',
+				},
+				{
+					linkurl:'../tagslider',
+					linkname:'Tag Slider',
+				},
+				{
+					linkurl:'../throttle',
+					linkname:'Input Controller',
+				},
+				{
+					linkurl:'../ticker',
+					linkname:'News Ticker',
+				},
+				{
+					linkurl:'../time',
+					linkname:'Time Calculator',
+				},
+				{
+					linkurl:'../timeline',
+					linkname:'Timeline',
+				},
+				{
+					linkurl:'../timeline2',
+					linkname:'Timeline',
+				},
+				{
 					linkurl:'../toastprogress',
 					linkname:'Toast Progress Bar',
 				},
 				{
-					linkurl:'../typewriter',
-					linkname:'Counter Typewriter',
+					linkurl:'../typer',
+					linkname:'Type Counter',
 				},
 				{
 					linkurl:'../upload',
 					linkname:'Image Uploader',
 				},
 				{
+					linkurl:'../user',
+					linkname:'User Profile',
+				},
+				{
+					linkurl:'../user2',
+					linkname:'User Profile',
+				},
+				{
+					linkurl:'../valueslider',
+					linkname:'Value Slider',
+				},
+				{
+					linkurl:'../viewport',
+					linkname:'Viewport Sizer',
+				},
+			],
+		},
+	],
+
+	[
+		{
+			groupid:'fw',
+			groupname:'Form Widgets',
+			
+			grouplist:[
+				{
+					linkurl:'../charlimit',
+					linkname:'Input Limiter',
+				},
+				{
+					linkurl:'../checkout',
+					linkname:'Checkout',
+				},
+				{
+					linkurl:'../checkout2',
+					linkname:'Checkout',
+				},
+				{
+					linkurl:'../form3d',
+					linkname:'Lead Form (3D)',
+				},
+				{
+					linkurl:'../input',
+					linkname:'Input Counter',
+				},
+				{
+					linkurl:'../livesearch',
+					linkname:'Live Search',
+				},
+			],
+		},
+		{
+			groupid:'gw',
+			groupname:'Game Widgets',
+			
+			grouplist:[
+				{
+					linkurl:'../3d',
+					linkname:'Card Controller (3D)',
+				},
+				{
+					linkurl:'../animation',
+					linkname:'Scroll Animation',
+				},
+				{
+					linkurl:'../blockmenu',
+					linkname:'Block Menu',
+				},
+				{
+					linkurl:'../cardflipgallery3d',
+					linkname:'Card Flip Gallery (3D)',
+				},
+				{
+					linkurl:'../carousel3d',
+					linkname:'Slide Carousel (3D)',
+				},
+				{
+					linkurl:'../clockspinner',
+					linkname:'Clock Spinner',
+				},
+				{
+					linkurl:'../cubecarousel',
+					linkname:'Morphing Cube',
+				},
+				{
+					linkurl:'../draggable',
+					linkname:'Draggable Element',
+				},
+				{
+					linkurl:'../dragndrop',
+					linkname:'Drag n Drop',
+				},
+				{
+					linkurl:'../dragndrop1',
+					linkname:'Drag n Drop',
+				},
+				{
+					linkurl:'../flashlight',
+					linkname:'Flashlight Page',
+				},
+				{
+					linkurl:'../gallerywalk',
+					linkname:'Moving Gallery (3D)',
+				},
+				{
+					linkurl:'../gameboard',
+					linkname:'Game Board',
+				},
+				{
+					linkurl:'../hexagon',
+					linkname:'Lit Hexagon',
+				},
+				{
+					linkurl:'../minion',
+					linkname:'Minion',
+				},
+				{
+					linkurl:'../orbit',
+					linkname:'Orbiter',
+				},
+				{
+					linkurl:'../safari',
+					linkname:'Safari Compass',
+				},
+				{
+					linkurl:'../shape',
+					linkname:'Rotating Shape',
+				},
+				{
+					linkurl:'../splash',
+					linkname:'Splash Page',
+				},
+				{
+					linkurl:'../soundfx',
+					linkname:'Sound FX',
+				},
+				{
+					linkurl:'../thermometer',
+					linkname:'Thermometer',
+				},
+				{
+					linkurl:'../touch',
+					linkname:'Touch Sensor',
+				},
+				{
+					linkurl:'../traffic',
+					linkname:'Traffic Light',
+				},
+				{
+					linkurl:'../trifold3d',
+					linkname:'Trifold Gallery (3D)',
+				},
+				{
+					linkurl:'../wordcube',
+					linkname:'Word Cube',
+				},
+			],
+		},
+		{
+			groupid:'mw',
+			groupname:'Media Widgets',
+			
+			grouplist:[
+				{
+					linkurl:'../autoslideshow',
+					linkname:'Automatic Slideshow',
+				},
+				{
+					linkurl:'../gallery',
+					linkname:'Image Gallery',
+				},
+				{
+					linkurl:'../slideshow',
+					linkname:'Manual Slideshow',
+				},
+				{
+					linkurl:'../slideshow2',
+					linkname:'Simple Slideshow',
+				},
+				{
 					linkurl:'../video',
 					linkname:'Video Gallery',
+				},
+			],
+		},
+	],
+
+	[
+		{
+			groupid:'nw',
+			groupname:'Navigation Widgets',
+			
+			grouplist:[
+				{
+					linkurl:'../backToTop',
+					linkname:'Back To Top',
+				},
+				{
+					linkurl:'../breadcrumbs',
+					linkname:'Navigation Breadcrumbs',
+				},
+				{
+					linkurl:'../dotnav',
+					linkname:'Dot Navigation',
+				},
+				{
+					linkurl:'../hamburger',
+					linkname:'Nav Toggler',
+				},
+				{
+					linkurl:'../megamenu',
+					linkname:'Mega Menu',
+				},
+			],
+		},
+		{
+			groupid:'ww',
+			groupname:'Website Widgets',
+			
+			grouplist:[
+				{
+					linkurl:'../accordion',
+					linkname:'Sliding Accordion',
+				},
+				{
+					linkurl:'../accordion2',
+					linkname:'Sliding Accordion',
+				},
+				{
+					linkurl:'../banner',
+					linkname:'Scrolling Banner',
+				},
+				{
+					linkurl:'../big3dcard',
+					linkname:'Rotating Card (3D)',
+				},
+				{
+					linkurl:'../bounce',
+					linkname:'Bouncing Arrow',
+				},
+				{
+					linkurl:'../buttonpress',
+					linkname:'Button Press',
+				},
+				{
+					linkurl:'../cardstacks',
+					linkname:'Card Stacks',
+				},
+				{
+					linkurl:'../collapsible',
+					linkname:'Collapsible',
+				},
+				{
+					linkurl:'../contact',
+					linkname:'Contact Form',
+				},
+				{
+					linkurl:'../contactform',
+					linkname:'Contact Form',
+				},
+				{
+					linkurl:'../countdown',
+					linkname:'Countdown',
+				},
+				{
+					linkurl:'../hovercard',
+					linkname:'Hover Cards (3D)',
+				},
+				{
+					linkurl:'../image',
+					linkname:'Image Modal',
+				},
+				{
+					linkurl:'../pricing',
+					linkname:'Price Packages',
+				},
+				{
+					linkurl:'../profilecard',
+					linkname:'Dynamic Profile Card',
+				},
+				{
+					linkurl:'../retool',
+					linkname:'Sliding Multi-Ticker',
+				},
+				{
+					linkurl:'../scrollProgressBar',
+					linkname:'Scroll Progress Bar',
+				},
+				{
+					linkurl:'../skeleton',
+					linkname:'Content Skeleton',
+				},
+				{
+					linkurl:'../testimonial',
+					linkname:'Testimonial Slider',
+				},
+				{
+					linkurl:'../typewriter',
+					linkname:'Counter Typewriter',
+				},
+				{
+					linkurl:'../vidbg',
+					linkname:'Video Background',
 				},
 				{
 					linkurl:'../wordswitcher',
@@ -284,6 +662,326 @@ const footerLinkData = [
 			],
 		},
 	],
+
+	[
+		{
+			groupid:'ap',
+			groupname:'App Prototypes',
+			
+			grouplist:[
+				{
+					linkurl:'../bizmath',
+					linkname:'Business Math',
+				},
+				{
+					linkurl:'../blogsocial',
+					linkname:'Social Blog',
+				},
+				{
+					linkurl:'../book',
+					linkname:'Reading Book',
+				},
+				{
+					linkurl:'../calc',
+					linkname:'Calculator',
+				},
+				{
+					linkurl:'../calculator',
+					linkname:'Calculator',
+				},
+				{
+					linkurl:'../chat',
+					linkname:'Chat Messenger',
+				},
+				{
+					linkurl:'../cluster1d',
+					linkname:'K-Means Clustering',
+				},
+				{
+					linkurl:'../cluster',
+					linkname:'K-Means Clustering (2D)',
+				},
+				{
+					linkurl:'../compound',
+					linkname:'Compound Interest',
+				},
+				{
+					linkurl:'../fam',
+					linkname:'Family Tree Diagram',
+				},
+				{
+					linkurl:'../keyfinder',
+					linkname:'Piano Key Finder',
+				},
+				{
+					linkurl:'../laundry',
+					linkname:'Laundry Timer',
+				},
+				{
+					linkurl:'../matrix',
+					linkname:'Matrix Operations',
+				},
+				{
+					linkurl:'../musicplayer',
+					linkname:'Music Player',
+				},
+				{
+					linkurl:'../musicplaylist',
+					linkname:'Music Playlist',
+				},
+				{
+					linkurl:'../netflix',
+					linkname:'TV Show Site',
+				},
+				{
+					linkurl:'../pinyin',
+					linkname:'Pinyin Soundboard',
+				},
+				{
+					linkurl:'../podcast',
+					linkname:'Podcast Site',
+				},
+				{
+					linkurl:'../tasks',
+					linkname:'Task Manager',
+				},
+				{
+					linkurl:'../waves',
+					linkname:'Wave Generator',
+				},
+			],
+		},
+		{
+			groupid:'gp',
+			groupname:'Game Prototypes',
+			
+			grouplist:[
+				{
+					linkurl:'../chess',
+					linkname:'Chess',
+				},
+				{
+					linkurl:'../dice',
+					linkname:'Dice n Cards',
+				},
+				{
+					linkurl:'../learner',
+					linkname:'Learner Bug',
+				},
+				{
+					linkurl:'../igt',
+					linkname:'Iowa Gambling Test',
+				},
+				{
+					linkurl:'../pixelart',
+					linkname:'Pixel Art Generator',
+				},
+				{
+					linkurl:'../pong',
+					linkname:'Awesome Pong',
+				},
+				{
+					linkurl:'../solarsystem',
+					linkname:'Solar System',
+				},
+				{
+					linkurl:'../typetest',
+					linkname:'Typing Test',
+				},
+			],
+		},
+		{
+			groupid:'dp',
+			groupname:'Dashboard Prototypes',
+			
+			grouplist:[
+				{
+					linkurl:'../admin',
+					linkname:'Admin Dashboard',
+				},
+				{
+					linkurl:'../admin2',
+					linkname:'Admin Dashboard',
+				},
+				{
+					linkurl:'../cms',
+					linkname:'CMS',
+				},
+				{
+					linkurl:'../crm',
+					linkname:'CRM',
+				},
+				{
+					linkurl:'../crud',
+					linkname:'CRUD Database Manager',
+				},
+				{
+					linkurl:'../crud2',
+					linkname:'CRUD Inventory Manager',
+				},
+				{
+					linkurl:'../dotcollector',
+					linkname:'Dalio Dot Collector',
+				},
+				{
+					linkurl:'../grocery',
+					linkname:'Grocery Manager',
+				},
+				{
+					linkurl:'../inventory',
+					linkname:'Inventory Manager',
+				},
+			],
+		},
+	],
+
+	[
+		{
+			groupid:'ssd',
+			groupname:'Sample Site Designs',
+			
+			grouplist:[
+				{
+					linkurl:'../angeldemon',
+					linkname:'Sample Site Design',
+				},
+				{
+					linkurl:'../comingsoon',
+					linkname:'Coming Soon Page',
+				},
+				{
+					linkurl:'../cis255',
+					linkname:'Coding Class',
+				},
+				{
+					linkurl:'../hero2',
+					linkname:'Sample Hero Page',
+				},
+			],
+		},
+		{
+			groupid:'sbs',
+			groupname:'Sample Branding Sites',
+			
+			grouplist:[
+				{
+					linkurl:'../band',
+					linkname:'Sample Band Site',
+				},
+				{
+					linkurl:'../blog',
+					linkname:'Sample Blog Site',
+				},
+				{
+					linkurl:'../books',
+					linkname:'Sample Book List',
+				},
+				{
+					linkurl:'../resume',
+					linkname:'Simple Resume',
+				},
+				{
+					linkurl:'../univ',
+					linkname:'Sample University',
+				},
+			],
+		},
+		{
+			groupid:'sss',
+			groupname:'Sample Sales Sites',
+			
+			grouplist:[
+				{
+					linkurl:'../land',
+					linkname:'Sample Landing Page',
+				},
+				{
+					linkurl:'../lander',
+					linkname:'Sample Landing Page',
+				},
+				{
+					linkurl:'../merch',
+					linkname:'Sample Merch Store',
+				},
+			],
+		},
+		// {
+		// 	groupid:'esp',
+		// 	groupname:'External Site Projects',
+			
+		// 	grouplist:[
+		// 		{
+		// 			linkurl:'../cali',
+		// 			linkname:'CaliIsMe',
+		// 		},
+		// 		{
+		// 			linkurl:'../caliB',
+		// 			linkname:'CaliIsMe',
+		// 		},
+		// 		{
+		// 			linkurl:'../carnell',
+		// 			linkname:'Carnell Tate',
+		// 		},
+		// 		{
+		// 			linkurl:'../carnell2',
+		// 			linkname:'Carnell Tate',
+		// 		},
+		// 		{
+		// 			linkurl:'../chadpiff',
+		// 			linkname:'Chad Piff',
+		// 		},
+		// 		{
+		// 			linkurl:'../mandorespect',
+		// 			linkname:'Mando Respect',
+		// 		},
+		// 		{
+		// 			linkurl:'../smosa',
+		// 			linkname:'Smosa USA',
+		// 		},
+		// 		{
+		// 			linkurl:'../superforg',
+		// 			linkname:'Superforg USA',
+		// 		},
+		// 		{
+		// 			linkurl:'../unseenstrts',
+		// 			linkname:'Unseen Streets',
+		// 		},
+		// 		{
+		// 			linkurl:'../wts1',
+		// 			linkname:'Watch The Screen',
+		// 		},
+		// 		{
+		// 			linkurl:'../100pure',
+		// 			linkname:'100% Pure Music',
+		// 		},
+		// // 	],
+		// // },
+		// // {
+		// // 	groupid:'eap',
+		// // 	groupname:'External App Projects',
+			
+		// // 	grouplist:[
+		// 		{
+		// 			linkurl:'../360finance',
+		// 			linkname:'360 Finance',
+		// 		},
+		// 	],
+		// },
+	],
+
+	// [
+	// 	{
+	// 		groupid:'xyz',
+	// 		groupname:'XyzGroupName',
+			
+	// 		grouplist:[
+	// 			{
+	// 				linkurl:'../xyz',
+	// 				linkname:'XyzLinkName',
+	// 			},
+	// 		],
+	// 	},
+	// ],
 
 ];
 
