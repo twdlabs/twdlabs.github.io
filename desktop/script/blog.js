@@ -3,22 +3,17 @@
 
 // Get blog destination. 
 const blogDestination = document.querySelector('div#container section.blog div.grid ul.postlist');
+const blogArchiveDestination = document.querySelector('div#container section.blog div.grid ul.postlist.archive');
 
 // Initialize source of blog post cards. 
 let blogpostcards;
 
 // Get input field for filter query. 
 const postfilterfield = document.querySelector('div#container section.blog div.grid div.filter input#postfilter');
+const postfilterfieldclearbtn = document.querySelector('div#container section.blog div.grid div.filter label.clearbtn');
 
-
-/*****/
-
-
-// Define number of posts. 
-let numPosts = 60;
-// numPosts = 25;
-numPosts = 240;
-numPosts = 480;
+// Get label for empty search results. 
+const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.emptylabel');
 
 
 /*****/
@@ -35,36 +30,52 @@ loadBlog();
 function loadBlog() {
 	// console.log('Loading blog...');
 
-	// Initialize result. 
-	let result = '';
+	// Initialize layout results. 
+	let postLayout = '';
+	let archiveLayout = '';
 	
-	// Initialize number of posts added. 
-	let n = 0;
-	
-	// Add project group to result. 
-	for(let i in projectNames) {
+	// Get full list of selected posts. 
+	// let selectedPosts = projectNames;
+	let selectedPosts = getPrimaryLinks();
+	console.log('Selected posts', selectedPosts.length, selectedPosts);
 
-		// Limit number of posts. 
-		if(n>=numPosts) break;
-		// console.log(i);
+	// Add project group to layout result. 
+	for(let i in selectedPosts) {
 
 		// Get folder name for given post. 
-		let foldername = projectNames[i]
+		let foldername = selectedPosts[i]
 		// Skip current page (no infinite recursion). 
 		// if(foldername=='desktop') continue;
 
-		// Add blog card to result. 
-		result += createBlogCard(foldername);
-
-		// Increment number of posts added. 
-		n++;
+		// Add blog card to layout result. 
+		postLayout += createBlogCard(foldername);
 	}
 	
-	// Add result to page. 
-	blogDestination.innerHTML = result;
-	// blogDestination.insertAdjacentHTML('beforeend',result);
+	// Get full list of archive posts. 
+	// let archivePosts = projectNames;
+	let archivePosts = getRemainingLinks();
+	console.log('Archive posts', archivePosts.length, archivePosts);
 
-	// Get blog post cards. 
+	// Add project group to layout result. 
+	for(let i in archivePosts) {
+
+		// Get folder name for given post. 
+		let foldername = archivePosts[i]
+		// Skip current page (no infinite recursion). 
+		// if(foldername=='desktop') continue;
+
+		// Add blog card to layout result. 
+		archiveLayout += createBlogCard(foldername);
+	}
+	
+	// Add layout to blog section. 
+	blogDestination.innerHTML = postLayout;
+	// blogDestination.insertAdjacentHTML('beforeend',postLayout);
+	// Add layout to blog archive section. 
+	blogArchiveDestination.innerHTML = archiveLayout;
+	// blogArchiveDestination.insertAdjacentHTML('beforeend',archiveLayout);
+
+	// Get blog post cards (after loaded). 
 	blogpostcards = document.querySelectorAll('div#container section.blog div.grid ul.postlist li.postcard');
 
 	// Activate preview panels for blog post cards. 
@@ -74,6 +85,55 @@ function loadBlog() {
 	activateBlogFilter();
 
 	/****/
+	
+	// Get list of primary links from link matrix. 
+	function getPrimaryLinks() {
+
+		// Get original link matrix. 
+		let linkmatrix = projectLinkData.map(   ( groupset ) => (  groupset.map( (group)=>(group.grouplist) )  )   );
+
+		// Initialize list of primary links. 
+		let linklist = [];
+		
+		// Go thru each group set in link matrix. 
+		for(let groupset of linkmatrix) {
+			// Go thru each group in set of groups. 
+			for(let group of groupset) {
+				// Go thru each link in group list. 
+				for(let linkitem of group) {
+
+					// Get folder name from link item. 
+					let foldername = linkitem.linkurl.substring(3);
+					
+					// Add folder name of link to list of primary links. 
+					linklist.push( foldername );
+				}
+			}
+		}
+
+		// Return sorted list of primary links. 
+		return linklist.sort();
+	}
+	
+	// Get list of remaining links. 
+	function getRemainingLinks() {
+
+		// Initialize result list. 
+		let result = [];
+
+		// Go thru all project folder names. 
+		for(let foldername of projectNames) {
+
+			// Check for primary project. 
+			let isPrimaryPost = selectedPosts.includes(foldername);
+
+			// Add non-primary project to result list. 
+			if(!isPrimaryPost) result.push(foldername);
+		}
+
+		// Return result list. 
+		return result;
+	}
 
 	// Create blog card. 
 	function createBlogCard(foldername,previewIncluded) {
@@ -180,18 +240,22 @@ function loadBlog() {
 	function activateBlogFilter() {
 
 		// Activate input field to filter blog posts. 
-		postfilterfield.addEventListener('keyup',filterBlogPosts);
+		postfilterfield.value = '';
+		postfilterfield.addEventListener('input',filterBlogPosts);
+		postfilterfieldclearbtn.addEventListener('click',filterBlogPosts);
 
 		/***/
 
 		// Filter blog posts. 
 		function filterBlogPosts(event) {
 
+			// Initialize number of matching posts. 
+			let numMatchingPosts = 0;
+
 			// Get filter query. 
 			let filterquery = (postfilterfield.value).toUpperCase();
-			
 			// Get list of filter queries. 
-			let filterquerywords = filterquery.split(' ')
+			let filterquerywords = filterquery.split(' ');
 			console.log('Filtering...', filterquery, filterquerywords);
 		
 			// Go thru all blog posts. 
@@ -202,19 +266,22 @@ function loadBlog() {
 
 				// Check for matching post (by full query). 
 				let matchesFullQuery = checkForMatchFullQuery(foldername,filterquery);
-
 				// Check for matching post (by each word). 
 				let matchesEveryWord = checkForMatchEachWord(foldername,filterquerywords);
+				// Compile match criteria. 
+				let matchCriteriaMet = matchesFullQuery || matchesEveryWord;
+				if(matchCriteriaMet) numMatchingPosts++;
 
-				// Show matching post. 
-				if(matchesFullQuery || matchesEveryWord) {
-					postcard.classList.remove('x');
-				}
-				// Hide non-matching post. 
-				else {
-					postcard.classList.add('x');
-				}
+				// Update visibility state of post based on match. 
+				updatePostState(postcard, matchCriteriaMet);
 			}
+
+			// Show label if no search results found. 
+			if(numMatchingPosts==0) emptysearchlabel.classList.add('on');
+			// Hide label if search results found. 
+			else emptysearchlabel.classList.remove('on');
+
+			/**/
 
 			// Check for matching post (by full query). 
 			function checkForMatchFullQuery(foldername,filterquery) {
@@ -238,6 +305,48 @@ function loadBlog() {
 				// Return true if passed (no query words missing). 
 				return true;
 			}
+
+			// Update visibility state of post based on match. 
+			function updatePostState(postcard,matched) {
+
+				// Show matching post. 
+				if(matched) {
+					postcard.classList.remove('x');
+				}
+
+				// Hide non-matching post. 
+				else {
+					postcard.classList.add('x');
+				}
+			}
 		}
 	}
+}
+
+// Toggle section like accordion. 
+function toggleLikeAccordion(section) {
+
+	// Check if section already open. 
+	let alreadyOpen = !section.classList.contains('gone');
+	console.log('alreadyOpen:',alreadyOpen);
+
+	// Get full height of section. 
+	let h = section.scrollHeight;
+	// console.log('h:',h);
+
+	// Close if already open
+	if(alreadyOpen) {
+		section.style.maxHeight = 0;
+		section.classList.add('gone');
+	}
+	
+	// Open if not already open
+	else {
+		section.style.maxHeight = `${h}px`;
+		section.classList.remove('gone');
+	}
+
+	// Check if section already open. 
+	alreadyOpen = !section.classList.contains('gone');
+	console.log('alreadyOpen:',alreadyOpen);
 }

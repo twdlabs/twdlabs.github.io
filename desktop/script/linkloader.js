@@ -101,93 +101,88 @@ function loadFooterNavLinks() {
 
 	// Initialize result. 
 	let result = '';
+	// Initialize total number of footer links. 
+	// let totalNumFootLinks = 0;
 
 	// Accumulate list boxes. 
-	for(let linkgroupset of footerLinkData) {
+	// for(let linkgroupset of projectLinkData) {
+	for(let i in projectLinkData) {
+
+		// Get set of link groups. 
+		let linkgroupset = projectLinkData[i];
 	
 		// Add list box. 
-		result += createListBox(linkgroupset);
+		// result += createListBox(linkgroupset);
+		result += `
+		<!-- listbox -->
+		<div class="listbox box${i}">
 
-		// // Accumulate list boxes. 
-		// for(let linkgroup of linkgroupset) {
-	
-		// 	// Add list box. 
-		// 	result += createListBox(linkgroup);
-		// }
+			${ createSetOfLinkLists(linkgroupset) }
+
+		</div>
+		<!-- /listbox -->`;
 	}
 
 	// Add result to page. 
 	footerDestination.insertAdjacentHTML('beforeend',result);
+	// console.log('Total number of footer links:',totalNumFootLinks);
 
 	/****/
 
-	// Create list box. 
-	function createListBox(groupset) {
+	// Create sets of link lists. 
+	function createSetOfLinkLists(linklistset) {
+
+		// Initialize result. 
+		let result = '';
 
 		// 
-		return `
-		<!-- listbox -->
-		<div class="listbox">
+		for(let linklist of linklistset) {
+			result += `
+			<!-- head -->
+			<h2 class="head">${ linklist.groupname }</h2>
+			<!-- /head -->
 
-			${ createSetOfLinkLists(groupset) }
+			<!-- navlist -->
+			<ul class="navlist">
 
-		</div>
-		<!-- /listbox -->`;
+				${ createLinkList(linklist.grouplist) }
+
+			</ul>
+			<!-- /navlist -->`;
+		}
+		
+		// Return result. 
+		return result;
 
 		/***/
-	
-		// Create sets of link lists. 
-		function createSetOfLinkLists(linklistset) {
 
-			// Initialize result. 
-			let result = '';
+		// Create list of links. 
+		function createLinkList(linklist) {
 
-			// 
-			for(let linklist of linklistset) {
-				result += `
-				<!-- head -->
-				<h2 class="head">${ linklist.groupname }</h2>
-				<!-- /head -->
+			// Initialize list of items. 
+			let list = '';
+
+			// Accumulate list of items. 
+			for(link of linklist) {
+
+				// Increment total number of footer links. 
+				// totalNumFootLinks++;
+
+				// 
+				list += `
+				<!-- navitem -->
+				<li class="navitem">
 	
-				<!-- navlist -->
-				<ul class="navlist">
+					<!-- navlink -->
+					<a class="navlink" href="${ link.linkurl }" target="_blank">${ link.linkname }</a>
+					<!-- /navlink -->
 	
-					${ createLinkList(linklist.grouplist) }
-	
-				</ul>
-				<!-- /navlist -->`;
+				</li>
+				<!-- /navitem -->`;
 			}
-			
-			// Return result. 
-			return result;
 
-			/**/
-	
-			// Create list of links. 
-			function createLinkList(linklist) {
-	
-				// Initialize list of items. 
-				let list = '';
-	
-				// Accumulate list of items. 
-				for(link of linklist) {
-	
-					// 
-					list += `
-					<!-- navitem -->
-					<li class="navitem">
-		
-						<!-- navlink -->
-						<a class="navlink" href="${ link.linkurl }">${ link.linkname }</a>
-						<!-- /navlink -->
-		
-					</li>
-					<!-- /navitem -->`;
-				}
-	
-				// Return list of items. 
-				return list;
-			}
+			// Return list of items. 
+			return list;
 		}
 	}
 }

@@ -4,13 +4,17 @@
 // Get desktop destination. 
 const desktopDestination = document.querySelector('div#container section.desktop div.grid');
 
-// Define group categories. 
-// const leadingLetters = ['0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
-// const leadingLetters = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
-const leadingLetters = [
-	['A'],['B'],['C'],['D','E'],['F','G'],['H','I','J','K'],['L','M'],['N','O'],['P','Q','R'],['S'],['T'],
-	['U','V','W','X','Y','Z'],
+// Define group categories by initial character. 
+// const initialCharGroups = ['0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+// const initialCharGroups = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+let initialCharGroups = [
 	['0','1','2','3','4','5','6','7','8','9'],
+	['A'],['B'],['C'],['D','E'],['F','G'],['H','I','J','K'],['L','M'],
+	['N','O'],['P','Q','R'],['S'],['T'],['U','V','W','X','Y','Z'],
+];
+initialCharGroups = [
+	['0','1','2','3','4','5','6','7','8','9'],
+	['A','B','C'],['D','E','F','G','H','I'],['J','K','L','M','N','O','P','Q','R'],['S','T','U','V','W','X','Y','Z'],
 ];
 
 
@@ -56,7 +60,7 @@ function loadDesktop() {
 
 		// Initialize result. 
 		let result = [ ];
-		for(let i in leadingLetters) result.push( [] );
+		for(let i in initialCharGroups) result.push( [] );
 
 		// Go thru all names in list. 
 		for(let name of nameList) {
@@ -82,10 +86,10 @@ function loadDesktop() {
 			let letter = `${name}`.substring(0,1).toUpperCase();
 
 			// Go thru all potential leading letters. 
-			for(let i in leadingLetters) {
+			for(let i in initialCharGroups) {
 
 				// Return current index if matching letter found. 
-				if( leadingLetters[i].includes(letter) ) return i;
+				if( initialCharGroups[i].includes(letter) ) return i;
 			}
 
 			// Return null index if not found. 
@@ -103,7 +107,7 @@ function loadDesktop() {
 		if(!group.length) return '';
 
 		// Get group name. 
-		let groupname = leadingLetters[index].join(' ');
+		let groupname = initialCharGroups[index].join(' ');
 	
 		// Return result. 
 		return `
@@ -130,7 +134,7 @@ function loadDesktop() {
 				<!-- /head -->
 				
 				<!-- icon -->
-				<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+				<svg class="icon empty" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 				</svg>
 				<!-- /icon -->
 
