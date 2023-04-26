@@ -856,7 +856,9 @@ const projectLinkData = [
 				},
 			],
 		},
-	]\
+	],
+
+	[
 		{
 			groupid:'sbs',
 			groupname:'Sample Branding Sites',
