@@ -47,6 +47,7 @@ const socialLinkData = [
 		grouplist:[
 			{
 				linkurl:'javascript:void(0)',
+				linkurl:'https://github.com/twdlabs/twdlabs.github.io',
 				linkname:'GitHub',
 				icontag:'github',
 			},
@@ -57,11 +58,13 @@ const socialLinkData = [
 			},
 			{
 				linkurl:'javascript:void(0)',
+				linkurl:'https://www.instagram.com/titusgzz/',
 				linkname:'Instagram',
 				icontag:'instagram',
 			},
 			{
 				linkurl:'javascript:void(0)',
+				linkurl:'https://www.linkedin.com/in/alextg/',
 				linkname:'LinkedIn',
 				icontag:'linkedin',
 			},
