@@ -202,6 +202,33 @@ const projectLinkData = [
 				},
 			],
 		},
+		{
+			groupid:'nw',
+			groupname:'Navigation Widgets',
+			
+			grouplist:[
+				{
+					linkurl:'../backToTop',
+					linkname:'Back To Top',
+				},
+				{
+					linkurl:'../breadcrumbs',
+					linkname:'Navigation Breadcrumbs',
+				},
+				{
+					linkurl:'../dotnav',
+					linkname:'Dot Navigation',
+				},
+				{
+					linkurl:'../hamburger',
+					linkname:'Nav Toggler',
+				},
+				{
+					linkurl:'../megamenu',
+					linkname:'Mega Menu',
+				},
+			],
+		},
 	],
 
 	[
@@ -409,33 +436,6 @@ const projectLinkData = [
 				{
 					linkurl:'../video',
 					linkname:'Video Gallery',
-				},
-			],
-		},
-		{
-			groupid:'nw',
-			groupname:'Navigation Widgets',
-			
-			grouplist:[
-				{
-					linkurl:'../backToTop',
-					linkname:'Back To Top',
-				},
-				{
-					linkurl:'../breadcrumbs',
-					linkname:'Navigation Breadcrumbs',
-				},
-				{
-					linkurl:'../dotnav',
-					linkname:'Dot Navigation',
-				},
-				{
-					linkurl:'../hamburger',
-					linkname:'Nav Toggler',
-				},
-				{
-					linkurl:'../megamenu',
-					linkname:'Mega Menu',
 				},
 			],
 		},
@@ -833,9 +833,6 @@ const projectLinkData = [
 				},
 			],
 		},
-	// ],
-
-	// [
 		{
 			groupid:'ssd',
 			groupname:'Sample Site Designs',
@@ -859,6 +856,7 @@ const projectLinkData = [
 				},
 			],
 		},
+	]\
 		{
 			groupid:'sbs',
 			groupname:'Sample Branding Sites',
