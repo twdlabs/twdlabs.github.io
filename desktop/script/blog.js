@@ -30,52 +30,28 @@ loadBlog();
 function loadBlog() {
 	// console.log('Loading blog...');
 
-	// Initialize layout results. 
-	let postLayout = '';
-	let archiveLayout = '';
-	
-	// Get full list of selected posts. 
-	// let selectedPosts = projectNames;
-	let selectedPosts = getPrimaryLinks();
-	console.log('Selected posts', selectedPosts.length, selectedPosts);
-
-	// Add project group to layout result. 
-	for(let i in selectedPosts) {
-
-		// Get folder name for given post. 
-		let foldername = selectedPosts[i]
-		// Skip current page (no infinite recursion). 
-		// if(foldername=='desktop') continue;
-
-		// Add blog card to layout result. 
-		postLayout += createBlogCard(foldername);
-	}
-	
-	// Get full list of archive posts. 
-	// let archivePosts = projectNames;
+	// Get list of primary posts. 
+	let primaryPosts = getPrimaryLinks();
+	// Get list of remaining archive posts. 
 	let archivePosts = getRemainingLinks();
-	console.log('Archive posts', archivePosts.length, archivePosts);
+	// console.log('Primary posts', primaryPosts.length, primaryPosts);
+	// console.log('Remaining posts', archivePosts.length, archivePosts);
 
-	// Add project group to layout result. 
-	for(let i in archivePosts) {
-
-		// Get folder name for given post. 
-		let foldername = archivePosts[i]
-		// Skip current page (no infinite recursion). 
-		// if(foldername=='desktop') continue;
-
-		// Add blog card to layout result. 
-		archiveLayout += createBlogCard(foldername);
-	}
+	// Get layout for primary posts. 
+	let primaryLayout = createBlogPostsLayout(primaryPosts);
+	// Get layout for archive posts. 
+	let archiveLayout = createBlogPostsLayout(archivePosts);
 	
 	// Add layout to blog section. 
-	blogDestination.innerHTML = postLayout;
-	// blogDestination.insertAdjacentHTML('beforeend',postLayout);
+	blogDestination.innerHTML = primaryLayout;
+	// blogDestination.insertAdjacentHTML('beforeend',primaryLayout);
+
 	// Add layout to blog archive section. 
 	blogArchiveDestination.innerHTML = archiveLayout;
 	// blogArchiveDestination.insertAdjacentHTML('beforeend',archiveLayout);
 
-	// Get blog post cards (after loaded). 
+
+	// Get all blog post cards (after loading). 
 	blogpostcards = document.querySelectorAll('div#container section.blog div.grid ul.postlist li.postcard');
 
 	// Activate preview panels for blog post cards. 
@@ -90,24 +66,24 @@ function loadBlog() {
 	function getPrimaryLinks() {
 
 		// Get original link matrix. 
-		let linkmatrix = projectLinkData.map(   ( groupset ) => (  groupset.map( (group)=>(group.grouplist) )  )   );
+		// let linkmatrix = projectLinkData.map(   ( groupset ) => (  groupset.map( (group)=>(group.grouplist) )  )   );
+		let linkgroups = projectLinkData.map( group => group.grouplist );
+		// console.log('linkgroups:',linkgroups);
 
 		// Initialize list of primary links. 
 		let linklist = [];
-		
-		// Go thru each group set in link matrix. 
-		for(let groupset of linkmatrix) {
-			// Go thru each group in set of groups. 
-			for(let group of groupset) {
-				// Go thru each link in group list. 
-				for(let linkitem of group) {
 
-					// Get folder name from link item. 
-					let foldername = linkitem.linkurl.substring(3);
-					
-					// Add folder name of link to list of primary links. 
-					linklist.push( foldername );
-				}
+		// Go thru each link group. 
+		for(let linkgroup of linkgroups) {
+
+			// Go thru each link in group list. 
+			for(let linkitem of linkgroup) {
+
+				// Get folder name from link item. 
+				let foldername = linkitem.linkurl.substring(3);
+				
+				// Add folder name of link to list of primary links. 
+				linklist.push( foldername );
 			}
 		}
 
@@ -115,7 +91,7 @@ function loadBlog() {
 		return linklist.sort();
 	}
 	
-	// Get list of remaining links. 
+	// Get list of remaining links for archive. 
 	function getRemainingLinks() {
 
 		// Initialize result list. 
@@ -125,7 +101,7 @@ function loadBlog() {
 		for(let foldername of projectNames) {
 
 			// Check for primary project. 
-			let isPrimaryPost = selectedPosts.includes(foldername);
+			let isPrimaryPost = primaryPosts.includes(foldername);
 
 			// Add non-primary project to result list. 
 			if(!isPrimaryPost) result.push(foldername);
@@ -135,56 +111,80 @@ function loadBlog() {
 		return result;
 	}
 
-	// Create blog card. 
-	function createBlogCard(foldername,previewIncluded) {
+	// Create layout for blog posts. 
+	function createBlogPostsLayout(postlist) {
 
-		// 
-		if(!previewIncluded) return `
-		<!-- postcard -->
-		<li class="postcard" data-foldername="${foldername}">
+		// Initialize resulting layout. 
+		let result = '';
 
-			<!-- preview -->
-			<div class="preview">
+		// Add project link to layout result. 
+		for(let i in postlist) {
+	
+			// Get folder name for given post. 
+			let foldername = postlist[i]
+			// Skip current page (no infinite recursion). 
+			// if(foldername=='desktop') continue;
+	
+			// Add blog card to layout result. 
+			result += createBlogCard(foldername);
+		}
 
-				<!-- previewlink -->
-				<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
-				<!-- /previewlink -->
+		// Return resulting layout. 
+		return result;
 
-			</div>
-			<!-- /preview -->
+		/***/
 
-			<!-- namelink -->
-			<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
-			<!-- /namelink -->
-
-		</li>
-		<!-- /postcard -->`;
-
-		// 
-		return `
-		<!-- postcard -->
-		<li class="postcard" data-foldername="${foldername}">
-
-			<!-- preview -->
-			<div class="preview">
-
+		// Create blog card. 
+		function createBlogCard(foldername,previewIncluded) {
+	
+			// 
+			if(!previewIncluded) return `
+			<!-- postcard -->
+			<li class="postcard" data-foldername="${foldername}">
+	
 				<!-- preview -->
-				<iframe class="preview x3" src="../${foldername}/index.html"></iframe>
+				<div class="preview">
+	
+					<!-- previewlink -->
+					<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
+					<!-- /previewlink -->
+	
+				</div>
 				<!-- /preview -->
-
-				<!-- previewlink -->
-				<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
-				<!-- /previewlink -->
-
-			</div>
-			<!-- /preview -->
-
-			<!-- namelink -->
-			<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
-			<!-- /namelink -->
-
-		</li>
-		<!-- /postcard -->`;
+	
+				<!-- namelink -->
+				<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
+				<!-- /namelink -->
+	
+			</li>
+			<!-- /postcard -->`;
+	
+			// 
+			return `
+			<!-- postcard -->
+			<li class="postcard" data-foldername="${foldername}">
+	
+				<!-- preview -->
+				<div class="preview">
+	
+					<!-- preview -->
+					<iframe class="preview x3" src="../${foldername}/index.html"></iframe>
+					<!-- /preview -->
+	
+					<!-- previewlink -->
+					<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
+					<!-- /previewlink -->
+	
+				</div>
+				<!-- /preview -->
+	
+				<!-- namelink -->
+				<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
+				<!-- /namelink -->
+	
+			</li>
+			<!-- /postcard -->`;
+		}
 	}
 
 	// Activate preview panels for blog post cards. 
@@ -327,15 +327,15 @@ function loadBlog() {
 function toggleLikeAccordion(section) {
 
 	// Check if section already open. 
-	let alreadyOpen = !section.classList.contains('gone');
-	console.log('alreadyOpen:',alreadyOpen);
+	let sectionOpen = !section.classList.contains('gone');
+	// console.log('Section open:',sectionOpen);
 
 	// Get full height of section. 
 	let h = section.scrollHeight;
 	// console.log('h:',h);
 
 	// Close if already open
-	if(alreadyOpen) {
+	if(sectionOpen) {
 		section.style.maxHeight = 0;
 		section.classList.add('gone');
 	}
@@ -347,6 +347,6 @@ function toggleLikeAccordion(section) {
 	}
 
 	// Check if section already open. 
-	alreadyOpen = !section.classList.contains('gone');
-	console.log('alreadyOpen:',alreadyOpen);
+	sectionOpen = !section.classList.contains('gone');
+	// console.log('Section open:',sectionOpen);
 }

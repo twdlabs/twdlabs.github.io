@@ -1,13 +1,13 @@
 
 
 
-// Get head navigation destination. 
-const headnavDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu');
-// console.log(headnavDestination);
+// Get destination for head navigation. 
+const headNavDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu');
+// console.log(headNavDestination);
 
-// Get footer destination. 
-const footerDestination = document.querySelector('div#container footer.footer div.grid');
-// console.log(footerDestination);
+// Get destination for foot matrix. 
+const footMatrixDestination = document.querySelector('div#container footer.footer div.grid');
+// console.log(footMatrixDestination);
 
 
 /*****/
@@ -54,7 +54,7 @@ function loadHeadNavLinks() {
 	<!-- /navlist -->`;
 
 	// Add result to page. 
-	headnavDestination.innerHTML = result;
+	headNavDestination.innerHTML = result;
 
 	/****/
 
@@ -105,11 +105,13 @@ function loadFooterNavLinks() {
 	// let totalNumFootLinks = 0;
 
 	// Accumulate list boxes. 
-	// for(let linkgroupset of projectLinkData) {
-	for(let i in projectLinkData) {
+	// for(let i in projectLinkData) {
+	for(let i in projectLinkMatrix) {
 
 		// Get set of link groups. 
-		let linkgroupset = projectLinkData[i];
+		// let linkgroupset = projectLinkData[i];
+		let linkgroupset = projectLinkMatrix[i].map( getLinkGroupById );
+		// console.log('linkgroupset:',linkgroupset);
 	
 		// Add list box. 
 		// result += createListBox(linkgroupset);
@@ -117,38 +119,43 @@ function loadFooterNavLinks() {
 		<!-- listbox -->
 		<div class="listbox box${i}">
 
-			${ createSetOfLinkLists(linkgroupset) }
+			${ createBoxOfLinkGroups(linkgroupset) }
 
 		</div>
 		<!-- /listbox -->`;
 	}
 
 	// Add result to page. 
-	footerDestination.insertAdjacentHTML('beforeend',result);
+	footMatrixDestination.insertAdjacentHTML('beforeend',result);
 	// console.log('Total number of footer links:',totalNumFootLinks);
 
 	/****/
 
-	// Create sets of link lists. 
-	function createSetOfLinkLists(linklistset) {
+	// Create column of link groups. 
+	function createBoxOfLinkGroups(linkgroupset) {
+		// console.log('linkgroupset:',linkgroupset);
 
 		// Initialize result. 
 		let result = '';
 
-		// 
-		for(let linklist of linklistset) {
-			result += `
-			<!-- head -->
-			<h2 class="head">${ linklist.groupname }</h2>
-			<!-- /head -->
+		// Go thru each link group. 
+		for(let linkgroup of linkgroupset) {
 
-			<!-- navlist -->
-			<ul class="navlist">
-
-				${ createLinkList(linklist.grouplist) }
-
-			</ul>
-			<!-- /navlist -->`;
+			// Proceed if link group exists. 
+			if(linkgroup) {
+				result += `
+				<!-- head -->
+				<h2 class="head">${ linkgroup.groupname }</h2>
+				<!-- /head -->
+	
+				<!-- navlist -->
+				<ul class="navlist">
+	
+					${ createLinkList(linkgroup.grouplist) }
+	
+				</ul>
+				<!-- /navlist -->`;
+			}
 		}
 		
 		// Return result. 
