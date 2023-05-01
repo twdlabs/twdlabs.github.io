@@ -1,0 +1,99 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--navy:#11101d;
+	--blue:#4070f4;
+	--white:#e7f2fd;
+	--lightgrey:#CCC;
+	--whiteglass:#e7f2fd33;
+	--blueglass:#4070f488;
+	
+	/* Gradient Background Image */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
+	/* Page Sizes */
+	--menuwidth:24rem;
+	--pagewidth:60rem;
+	--sidemargin:.75rem;
+	--cornersize:.5rem;
+	--levelsdeep:0;
+	--dt:.5s;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	/* --boxshadow:0 0 .25rem 0 #0003; */
+	--boxshadowx:rgba(0,0,0,0.25) 0 0.25rem .75rem 0;
+	--boxshadowxx:rgba(0,0,0,0.25) 0 0.75rem .75rem 0;
+}
+
+body {
+
+	--backcolor:white;
+	--backcolor:var(--lightgrey);
+	--forecolor:black;
+}
+
+/* body.dark {
+
+	--backcolor:black;
+	--forecolor:white;
+} */
+
+
+/* html {background-image:var(--bgimg);} */
+body {background-color:var(--backcolor); color:var(--forecolor); font-family:Nunito,sans-serif; margin:0;}
+/* .freeze {overflow:hidden;} */
+
+
+div#container {background-color:var(--backcolor); color:var(--forecolor);}
+div#container {display:flex; flex-direction:row; min-height:100vh;}
+
+div#container main.main {background-color:var(--white);}
+div#container nav.headbar {background-color:var(--blue);}
+div#container nav.sidebar {position:fixed; top:0; bottom:0; left:0; overflow:hidden;}
+div#container nav.sidebar {background-color:var(--navy); color:white; width:var(--menuwidth); box-shadow:var(--boxshadow);}
+div#container nav.sidebar h1.head {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:0 var(--sidemargin); margin:0;}
+div#container nav.sidebar h1.head {font-size:2.25rem; cursor:pointer; padding-right:1em; margin:1.125em var(--sidemargin) .75em;}
+div#container nav.sidebar h1.head img.logo {height:1.375em;}
+div#container nav.sidebar h1.head span.caption {font-size:1em; margin-left:.375em;}
+div#container nav.sidebar div.navmenu {background-color:var(--navy); width:100%; width:var(--menuwidth); /* height:100%; overflow:auto; */ padding:var(--sidemargin); border-radius:1.25rem;}
+div#container nav.sidebar div.navmenu.home {position:relative; transform:translateX(-100%); transform:translateX(calc( var(--levelsdeep) * -100% )); transition:var(--dt);}
+div#container nav.sidebar div.navmenu h2.head {background-color:var(--blueglass); display:flex; flex-direction:row; align-items:center; font-size:1.5rem; cursor:pointer; user-select:none; padding:1rem; border-radius:var(--cornersize); margin:0; /* margin-bottom:1.5em; */}
+div#container nav.sidebar div.navmenu h2.head svg.icon {font-size:1em;}
+div#container nav.sidebar div.navmenu h2.head span.caption {font-size:1em; margin-left:.75em;}
+div#container nav.sidebar div.navmenu ul.navlist {list-style:none; width:100%; padding:0; margin:0; margin-top:var(--sidemargin);}
+div#container nav.sidebar div.navmenu ul.navlist li.navitem {font-size:1.5rem; /* position:relative; */}
+div#container nav.sidebar div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:inherit; text-decoration:none; padding:1rem; border-radius:.75rem;}
+div#container nav.sidebar div.navmenu ul.navlist li.navitem a.navlink:hover {background-color:var(--whiteglass);}
+div#container nav.sidebar div.navmenu ul.navlist li.navitem a.navlink span.caption {margin-left:.5rem;}
+div#container nav.sidebar div.navmenu ul.navlist li.navitem div.navmenu {position:absolute; left:100%; top:0; /* margin-left:var(--sidemargin); */}
+div#container nav.sidebar div.navmenu ul.navlist li.navitem > div.navmenu {opacity:0; visibility:hidden; transition:var(--dt);}
+div#container nav.sidebar div.navmenu ul.navlist li.navitem.showsub > div.navmenu {opacity:1; visibility:visible;}
+/* div#container nav.sidebar div.navmenu ul.navlist li.navitem ul.navlist li.navitem {} */
+/* div#container nav.sidebar div.destination {} */
+div#container.debug nav.sidebar {overflow:visible;}
+div#container.debug nav.sidebar div.navmenu {opacity:.5;}
+div#container.debug nav.sidebar div.navmenu ul.navlist li.navitem > div.navmenu {opacity:.5; visibility:visible; transition:var(--dt);}
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
