@@ -87,6 +87,7 @@ div#container main.calendar div.selector div.closebtn {font-size:2rem; cursor:po
 	div#container main.calendar section.head {flex-direction:column;}
 	div#container main.calendar section.head h1.name {text-align:center;}
 	div#container main.calendar section.head div.controller {flex-wrap:wrap; justify-content:center;}
+	/* div#container main.calendar section.head div.controller div.btn {} */
 	div#container main.calendar section.head div.controller div.btn.todaybtn {text-align:center; width:100%;}
 
 	/*  */
