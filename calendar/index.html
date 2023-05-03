@@ -29,14 +29,14 @@
 				<section class="head">
 
 					<!-- name -->
-					<h1 class="name" onclick="openSelector()">Xyz 0000</h1>
+					<h1 class="name" onclick="openMonthSelector()">Xyz 0000</h1>
 					<!-- /name -->
 
 					<!-- controller -->
 					<div class="controller">
 
 						<!-- btn -->
-						<div class="btn prevmonthbtn" onclick="goToPrevMonth()">
+						<div class="btn prevmonthbtn" onclick="shiftDisplayMonth(-1)">
 
 							<!-- icon -->
 							<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -48,7 +48,7 @@
 						<!-- /btn -->
 
 						<!-- btn -->
-						<div class="btn nextmonthbtn" onclick="goToNextMonth()">
+						<div class="btn nextmonthbtn" onclick="shiftDisplayMonth(+1)">
 
 							<!-- icon -->
 							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -327,7 +327,7 @@
 					<div class="head">
 
 						<!-- btn -->
-						<div class="btn" onclick="shiftSelectorYr(-1)">
+						<div class="btn" onclick="shiftMonthSelectorYear(-1)">
 
 							<!-- icon -->
 							<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -343,7 +343,7 @@
 						<!-- /year -->
 
 						<!-- btn -->
-						<div class="btn" onclick="shiftSelectorYr(+1)">
+						<div class="btn" onclick="shiftMonthSelectorYear(+1)">
 
 							<!-- icon -->
 							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -374,7 +374,7 @@
 					<!-- /select -->
 
 					<!-- closebtn -->
-					<div class="closebtn" onclick="closeSelector()">&times;</div>
+					<div class="closebtn" onclick="closeMonthSelector()">&times;</div>
 					<!-- /closebtn -->
 					
 				</div>
@@ -387,7 +387,7 @@
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
+		<!-- Database -->
 		<script src="./assets/database.js" type="text/javascript"></script>
 
 		<!-- Main Script -->

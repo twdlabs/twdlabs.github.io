@@ -11,14 +11,14 @@ const calendarbody = document.querySelector('main.calendar section.body ul.month
 
 
 // Get month selector window. 
-const selector = document.querySelector('main.calendar div.selector');
+const monthselector = document.querySelector('main.calendar div.selector');
 // Get body of month selector window. 
-const selectorbody = document.querySelector('main.calendar div.selector ul.select');
+const monthselectorbody = document.querySelector('main.calendar div.selector ul.select');
 // Get head of month selector window. 
-const selectorhead = document.querySelector('main.calendar div.selector div.head h1.year');
+const monthselectorhead = document.querySelector('main.calendar div.selector div.head h1.year');
 
 // Initialize current year of month selector window. 
-let selectorCurrentYear;
+let monthselectorcurrentyear;
 
 
 // Create new date item for current date time. 
@@ -52,18 +52,18 @@ let currentMonthIndex = todayMonthIndex;
 /*****/
 
 
-// Update calendar. 
-updateCalendar();
+// Update display calendar. 
+updateDisplayCalendar();
 
 // Activate keyboard shortcuts. 
-activateShortcuts();
+activateShortcutKeys();
 
 
 /*****/
 
 
-// Update calendar. 
-function updateCalendar() {
+// Update contents of display calendar. 
+function updateDisplayCalendar() {
 	
 	// Update calendar head. 
 	updateCalendarHead();
@@ -75,7 +75,7 @@ function updateCalendar() {
 	/****/
 
 
-	// Update calendar head. 
+	// Update contents of calendar head. 
 	function updateCalendarHead() {
 		console.log( 'Currently displayed month:', currentYear, monthfullname[currentMonthIndex] );
 	
@@ -83,7 +83,7 @@ function updateCalendar() {
 		calendarhead.innerHTML = `${ monthfullname[currentMonthIndex] } ${currentYear}`;
 	}
 	
-	// Update calendar body. 
+	// Update contents of calendar body. 
 	function updateCalendarBody() {
 	
 		// Initialize result. 
@@ -208,32 +208,12 @@ function goToTodayMonth() {
 	// Reset current month index. 
 	currentMonthIndex = todayMonthIndex;
 	
-	// Update calendar. 
-	updateCalendar();
+	// Update display calendar. 
+	updateDisplayCalendar();
 }
 
-// Go to previous month. 
-function goToPrevMonth() {
-
-	// Decrement current month index. 
-	deltaMonth(-1);
-	
-	// Update calendar. 
-	updateCalendar();
-}
-
-// Go to next month. 
-function goToNextMonth() {
-
-	// Increment current month index. 
-	deltaMonth(+1);
-
-	// Update calendar. 
-	updateCalendar();
-}
-
-// Delta month index. 
-function deltaMonth(delta) {
+// Change displayed month by given amount of months. 
+function shiftDisplayMonth(delta) {
 
 	// Change month index. 
 	currentMonthIndex += delta;
@@ -249,43 +229,46 @@ function deltaMonth(delta) {
 		currentMonthIndex += 12;
 		currentYear -= 1;
 	}
+	
+	// Update display calendar. 
+	updateDisplayCalendar();
 }
 
 // Open month selector window. 
-function openSelector() {
+function openMonthSelector() {
 
 	// Get current year for newly opened selector. 
-	selectorCurrentYear = currentYear;
+	monthselectorcurrentyear = currentYear;
 
-	// Update selector. 
-	updateSelector();
+	// Update month selector. 
+	updateMonthSelector();
 
-	// Activate selector. 
-	selector.classList.add('active');
+	// Activate month selector window. 
+	monthselector.classList.add('active');
 }
 
-// Update selector. 
-function updateSelector() {
+// Update month selector. 
+function updateMonthSelector() {
 
-	// Fill body of selector. 
-	fillSelectorBody();
+	// Fill body of month selector. 
+	fillMonthSelectorBody();
 
-	// Fill head of selector. 
-	fillSelectorHead();
+	// Fill head of month selector. 
+	fillMonthSelectorHead();
 
-	// Activate selector buttons. 
-	activateSelector();
+	// Activate month selector buttons. 
+	activateMonthSelector();
 
 	/****/
 
-	// Add to selector: current year. 
-	function fillSelectorHead() {
+	// Add to month selector: current year. 
+	function fillMonthSelectorHead() {
 		// Update current year. 
-		selectorhead.innerHTML = selectorCurrentYear;
+		monthselectorhead.innerHTML = monthselectorcurrentyear;
 	}
 
-	// Add to selector: month data for current year. 
-	function fillSelectorBody() {
+	// Add to month selector: month data for current year. 
+	function fillMonthSelectorBody() {
 		
 		// Initialize result. 
 		let result = '';
@@ -299,7 +282,7 @@ function updateSelector() {
 			// Add month button. 
 			result += `
 			<!-- month -->
-			<li class="month" data-yr="${selectorCurrentYear}" data-mo="${i}">
+			<li class="month" data-yr="${monthselectorcurrentyear}" data-mo="${i}">
 	
 				<!-- caption -->
 				<span class="caption">${m.name}</span>
@@ -310,23 +293,24 @@ function updateSelector() {
 		}
 
 		// Add result to selector body
-		selectorbody.innerHTML = result;
+		monthselectorbody.innerHTML = result;
 	}
 
-	// Activate selector buttons. 
-	function activateSelector() {
+	// Activate month selector buttons. 
+	function activateMonthSelector() {
 		
 		// Get all month buttons. 
 		const monthbtns = document.querySelectorAll('main.calendar div.selector ul.select li.month');
 
 		// Go thru all month buttons. 
 		for(let btn of monthbtns) {
+			// Activate click of month button. 
 			btn.addEventListener('click',selectMonth);
 		}
 
 		/***/
 
-		// Select month to be dsiplayed. 
+		// Select month to be displayed. 
 		function selectMonth(event) {
 
 			// Get selected month button. 
@@ -342,63 +326,70 @@ function updateSelector() {
 			// Save selected month. 
 			currentMonthIndex = 1*mo;
 
-			// Update calendar. 
-			updateCalendar();
+			// Update display calendar. 
+			updateDisplayCalendar();
 
 			// Close month selector window. 
-			closeSelector();
+			closeMonthSelector();
 		}
 	}
 }
 
-// Shift current year of selector. 
-function shiftSelectorYr(delta) {
+// Shift year of month selector. 
+function shiftMonthSelectorYear(delta) {
 
 	// Increment current selector year by delta. 
-	selectorCurrentYear += delta;
+	monthselectorcurrentyear += delta;
 
-	// Update selector. 
-	updateSelector();
+	// Update month selector. 
+	updateMonthSelector();
 }
 
 // Close month selector window. 
-function closeSelector() {
+function closeMonthSelector() {
 
-	// De-activate selector. 
-	selector.classList.remove('active');
+	// De-activate month selector window. 
+	monthselector.classList.remove('active');
 	
-	// Clear body of selector. 
-	selectorbody.innerHTML = '';
+	// Clear body of month selector. 
+	monthselectorbody.innerHTML = '';
 	
-	// Clear head of selector. 
-	selectorhead.innerHTML = '';
+	// Clear head of month selector. 
+	monthselectorhead.innerHTML = '';
 }
 
 // Activate keyboard shortcuts. 
-function activateShortcuts() {
+function activateShortcutKeys() {
 
 	// Check for shortcut key upon key press. 
-	document.addEventListener('keyup',checkForShortcutKey);
+	// document.addEventListener('keyup',checkForShortcutKey);
+	document.addEventListener('keydown',checkForShortcutKey);
 
 	/****/
 
-	// Check for shortcut key. 
+	// Check for press of special shortcut keys. 
 	function checkForShortcutKey(event) {
 		// console.log(event);
 
 		// Check if selector window open. 
-		let selectorOpen = selector.classList.contains('active');
+		let selectorOpen = monthselector.classList.contains('active');
 
-		// Check for special keys pressed. 
-		if(event.keyCode==83 || event.key=='s' || event.key=='S') openSelector();
-		else if(event.keyCode==27 || event.key=='Escape') closeSelector();
+		// Press 'S': Open month selector. 
+		if(event.keyCode==83 || event.key=='s' || event.key=='S') openMonthSelector();
+
+		// Press 'Esc': Close month selector. 
+		else if(event.keyCode==27 || event.key=='Escape') closeMonthSelector();
+		
+		// Press left arrow: Decrement month or year. 
 		else if(event.keyCode==37 || event.key=='ArrowLeft') {
-			if(selectorOpen) shiftSelectorYr(-1);
-			else goToPrevMonth();
+			if(selectorOpen) shiftMonthSelectorYear(-1);
+			else shiftDisplayMonth(-1);
 		}
+		
+		// Press right arrow: Increment month or year. 
 		else if(event.keyCode==39 || event.key=='ArrowRight') {
-			if(selectorOpen) shiftSelectorYr(+1);
-			else goToNextMonth();
+			if(selectorOpen) shiftMonthSelectorYear(+1);
+			else shiftDisplayMonth(+1);
 		}
 	}
 }
