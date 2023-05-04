@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
 
 
+
 * {box-sizing:border-box; /* padding:0; margin:0; */}
+
 
 
 :root {
@@ -12,87 +14,169 @@
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
 	--grey:#AAA;
 	--ltgrey:#E8E8E8;
-	--themecolor:#9b59b6;
-	--boxshadow:0 0 1rem #0002;
-	--boxshadow:0 0 .25rem #0003;
+	--purple:#9b59b6;
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+	--boxshadowx:rgba(0,0,0,0.25) 0 0.25rem .75rem 0;
+	--boxshadowxx:rgba(0,0,0,0.25) 0 0.75rem .75rem 0;
 }
 
 
-html {background-color:var(--themecolor); background-image:var(--bgimg);}
+
+html {background-color:var(--purple); background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
 
 
-div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-div#container main.calendar {background-color:white; width:100%; max-width:var(--calendarwidth); position:relative; overflow:hidden; padding:1.5rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
 
+/* Main Container */
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+
+
+/* Display Calendar */
+div#container main.calendar {background-color:white; width:100%; max-width:var(--calendarwidth); position:relative; overflow:hidden; padding:1.5rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadowxx);}
+
+/* Display Calendar: Head */
 div#container main.calendar section.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container main.calendar section.head h1.name {font-size:1.625rem; cursor:pointer; user-select:none; margin:0;}
+div#container main.calendar section.head {display:grid; grid-template-columns:1fr 4fr 1fr;}
+div#container main.calendar section.head h1.name {font-size:1.625rem; text-align:center; cursor:pointer; user-select:none; white-space:nowrap; margin:0;}
 div#container main.calendar section.head div.controller {display:flex; flex-direction:row; align-items:center;}
 div#container main.calendar section.head div.controller div.btn {cursor:pointer; padding:.25rem .25rem; margin-left:.25rem;}
-div#container main.calendar section.head div.controller div.btn svg.icon {font-size:1.125rem; font-weight:bold;}
+div#container main.calendar section.head div.controller div.btn svg.icon {font-size:1.5rem; font-weight:bold;}
 
+/* Display Calendar: Body */
 /* div#container main.calendar section.body {} */
 div#container main.calendar section.body ul.daylist {list-style:none; padding:0; margin:0;}
-div#container main.calendar section.body ul.daylist {display:grid; grid-template-columns:repeat(7,1fr);}
+div#container main.calendar section.body ul.daylist {display:grid; grid-template-columns:repeat(7,1fr); grid-gap:.125rem .25rem;}
 /* div#container main.calendar section.body ul.daylist {display:flex; flex-direction:row; flex-wrap:wrap;} */
 /* div#container main.calendar section.body ul.daylist li.day {width:calc(100%/7);} */
 div#container main.calendar section.body ul.daylist li.day {font-size:1.125rem; text-align:center; cursor:pointer; user-select:none; padding:.625rem 0; /* border:1px solid black; */ margin:.125rem 0;}
 div#container main.calendar section.body ul.weekdays {font-weight:900;}
-/* div#container main.calendar section.body ul.weekdays li.day {font-size:1.25rem;} */
+/* div#container main.calendar section.body ul.weekdays li.day {} */
 /* div#container main.calendar section.body ul.monthdays {} */
-div#container main.calendar section.body ul.monthdays li.day {color:black; border-radius:50%;}
-div#container main.calendar section.body ul.monthdays li.day:hover {background-color:var(--ltgrey); /* color:white; */}
-div#container main.calendar section.body ul.monthdays li.day.on {background-color:var(--themecolor); color:white;}
-div#container main.calendar section.body ul.monthdays li.day.off {color:var(--grey); /* color:grey; */}
+div#container main.calendar section.body ul.monthdays li.day {border-radius:50%;}
+div#container main.calendar section.body ul.monthdays li.day.on {color:black;}
+div#container main.calendar section.body ul.monthdays li.day.off {color:var(--grey,grey);}
+div#container main.calendar section.body ul.monthdays li.day.on:hover {background-color:var(--ltgrey); /* box-shadow:var(--boxshadow); */}
+div#container main.calendar section.body ul.monthdays li.day.on.today {background-color:var(--purple); color:white; box-shadow:var(--boxshadow);}
+/* div#container main.calendar section.body ul.monthdays li.day.on.today:hover {} */
 
-div#container main.calendar div.selector {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container main.calendar div.selector {background-color:white; display:flex; flex-direction:column; align-items:stretch; padding:2.5rem;}
-div#container main.calendar div.selector {transform:scale(0.5); opacity:0; visibility:hidden;}
-div#container main.calendar div.selector.active {transform:scale(1); opacity:1; visibility:visible; transition:.5s;}
-div#container main.calendar div.selector div.head {display:flex; flex-direction:row; align-items:center;}
-div#container main.calendar div.selector div.head h1.year {font-size:1.5rem; flex-grow:1; text-align:center; margin:0; margin-bottom:.75rem;}
-div#container main.calendar div.selector div.head div.btn {cursor:pointer; user-select:none;}
-div#container main.calendar div.selector ul.select {flex-grow:1;/* height:100%; width:100%; */}
-div#container main.calendar div.selector ul.select {display:grid; grid-template-columns:repeat(3,1fr); list-style:none; padding:0; margin:0;}
-div#container main.calendar div.selector ul.select li.month {display:grid; place-items:center; cursor:pointer; user-select:none; border-radius:1rem;}
-div#container main.calendar div.selector ul.select li.month:hover {background-color:var(--ltgrey);}
-/* div#container main.calendar div.selector ul.select li.month span.caption {} */
-div#container main.calendar div.selector div.closebtn {position:absolute; top:0; right:0;}
-div#container main.calendar div.selector div.closebtn {font-size:2rem; cursor:pointer; user-select:none; margin:0 .75rem;}
+
+/* General Window */
+div#container main.calendar .window {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container main.calendar .window {background-color:white; display:flex; flex-direction:column; align-items:stretch; padding:2.5rem;}
+div#container main.calendar .window {transform:scale(0); opacity:0; visibility:hidden; transition:.375s;}
+div#container main.calendar .window.active {transform:scale(1); opacity:1; visibility:visible; transition:.5s;}
+div#container main.calendar .window div.closebtn {position:absolute; top:0; right:0;}
+div#container main.calendar .window div.closebtn {font-size:2rem; cursor:pointer; user-select:none; margin:0 .75rem;}
+
+
+/* Month Selector */
+/* div#container main.calendar nav.monthselector {} */
+
+/* Month Selector: Head */
+div#container main.calendar nav.monthselector div.head {display:flex; flex-direction:row; align-items:center;}
+div#container main.calendar nav.monthselector div.head h1.year {flex-grow:1;}
+div#container main.calendar nav.monthselector div.head h1.year {font-size:1.875rem; cursor:pointer; user-select:none; text-align:center; margin:0; margin-bottom:.75rem;}
+div#container main.calendar nav.monthselector div.head div.btn {cursor:pointer; user-select:none;}
+div#container main.calendar nav.monthselector div.head div.btn svg.icon {font-size:1.5rem;}
+
+/* Month Selector: Body */
+div#container main.calendar nav.monthselector div.body {flex-grow:1;}
+div#container main.calendar nav.monthselector div.body ul.monthlist {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.25rem; height:100%; width:100%;}
+div#container main.calendar nav.monthselector div.body ul.monthlist {list-style:none; padding:0; margin:0;}
+div#container main.calendar nav.monthselector div.body ul.monthlist li.month {display:grid; place-items:center; cursor:pointer; user-select:none; border-radius:1rem;}
+div#container main.calendar nav.monthselector div.body ul.monthlist li.month:hover {background-color:var(--ltgrey);}
+div#container main.calendar nav.monthselector div.body ul.monthlist li.month.current {background-color:var(--purple); color:white;}
+div#container main.calendar nav.monthselector div.body ul.monthlist li.month span.caption {font-size:1.375rem;}
+
+
+/* Day Reader */
+/* div#container main.calendar article.dayreader {} */
+div#container main.calendar article.dayreader div.content {text-align:center;}
+
+
+
 
 
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
 
-	/*  */
+	/* Display Calendar */
+	/* div#container main.calendar {} */
+
+	/* General Window */
+	/* div#container main.calendar .window {} */
+
+	/* Month Selector */
+	/* div#container main.calendar nav.monthselector {} */
+
+	/* Day Reader */
+	/* div#container main.calendar article.dayreader {} */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
 
-	/*  */
+	/* Display Calendar */
+	/* div#container main.calendar {} */
+
+	/* General Window */
+	/* div#container main.calendar .window {} */
+
+	/* Month Selector */
+	/* div#container main.calendar nav.monthselector {} */
+
+	/* Day Reader */
+	/* div#container main.calendar article.dayreader {} */
 }
 
 /* Medium Smartphone Screen */
 @media screen and (max-width:32rem) {
 
-	/*  */
+	/* Display Calendar */
+	/* div#container main.calendar {} */
+
+	/* General Window */
+	/* div#container main.calendar .window {} */
+
+	/* Month Selector */
+	/* div#container main.calendar nav.monthselector {} */
+
+	/* Day Reader */
+	/* div#container main.calendar article.dayreader {} */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:20rem) {
 
-	/*  */
+
+	/* Display Calendar */
+	/* div#container main.calendar {} */
+
+	/* Display Calendar: Head */
 	div#container main.calendar section.head {flex-direction:column;}
 	div#container main.calendar section.head h1.name {text-align:center;}
 	div#container main.calendar section.head div.controller {flex-wrap:wrap; justify-content:center;}
 	/* div#container main.calendar section.head div.controller div.btn {} */
 	div#container main.calendar section.head div.controller div.btn.todaybtn {text-align:center; width:100%;}
 
-	/*  */
+	/* Display Calendar: Body */
 	div#container main.calendar section.body ul.weekdays {display:none;}
 	div#container main.calendar section.body ul.monthdays {display:flex; flex-direction:column; align-items:center;}
 	div#container main.calendar section.body ul.monthdays li.day {padding:.25rem .375rem;}
 	div#container main.calendar section.body ul.monthdays li.day.off {display:none;}
+
+
+	/* General Window */
+	/* div#container main.calendar .window {} */
+
+
+	/* Month Selector */
+	/* div#container main.calendar nav.monthselector {} */
+
+
+	/* Day Reader */
+	/* div#container main.calendar article.dayreader {} */
 }
