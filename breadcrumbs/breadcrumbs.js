@@ -44,10 +44,10 @@ function clickLink(event) {
 		console.log('Breadcrumbs:', ancestors);
 
 		// Create string of names. 
-		let breadcrumbs = 'Home';
+		let breadcrumbs = '<a class="navlink" href="javascript:void(0)">Home</a>';
 		for(let item of ancestors) {
 			// Add connecting arrow with item name. 
-			breadcrumbs += ' > '+`<a class="navlink" href="${item.url}">${item.name}</a>`;
+			breadcrumbs += ' / '+`<a class="navlink" href="${item.url}">${item.name}</a>`;
 		}
 		// console.log('Breadcrumbs:', breadcrumbs);
 
