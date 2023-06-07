@@ -8,9 +8,23 @@
 
 :root {
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
-	--darkcolor:#888;
-	--lightcolor:#DDD;
 	--themecolor:#E8E8E8;
+
+	/* Board Metrics */
+	--squaresize:6rem;
+	/* Board Colors */
+	--darkboardcolor:#888;
+	--lightboardcolor:#DDD;
+	--highlightboardcolor:#ffd70033;
+	--highlightboardfullcolor:gold;
+
+	/* Piece Colors */
+	--darkpiecebackcolor:#3A2EFF;
+	--darkpieceforecolor:whitesmoke;
+	--lightpiecebackcolor:#1e90ff;
+	--lightpieceforecolor:black;
+	
+	/* Box Shadows */
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
 }
@@ -20,36 +34,45 @@ html {background-color:var(--themecolor); background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
 
 
-div#container {display:grid; place-items:center; min-height:100vh; --squaresize:6rem; padding:1rem;}
+div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1rem;}
 
 /* Board Squares */
 div#container main.board {background-color:white; /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
 div#container main.board div.row {display:grid; grid-template-columns:repeat(8,1fr);}
-div#container main.board div.row div.square {background-color:var(--squarecolor); cursor:pointer; user-select:none; border:.125rem solid var(--squarecolor); border-width:calc(var(--squaresize)/16);}
+div#container main.board div.row {display:flex; flex-direction:row; justify-content:center;}
+div#container main.board div.row div.square {background-color:var(--squarecolor); user-select:none; border:.125rem solid var(--squarecolor); border-width:calc(var(--squaresize)/16);}
 div#container main.board div.row div.square {display:grid; place-items:center; height:var(--squaresize); width:var(--squaresize); position:relative; transition:.25s;}
-div#container main.board div.row div.square:hover {border-color:#ffd70044; transition:.25s;}
-div#container main.board div.row div.square.active {border-color:gold; transition:.25s;}
+div#container main.board div.row div.square.eligible {cursor:pointer;}
+div#container main.board div.row div.square::after {background-color:var(--highlightboardcolor); height:100%; width:100%; transition:.25s;}
 div#container main.board div.row div.square div.piece {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-div#container main.board div.row div.square div.piece {display:grid; place-items:center; text-align:center; height:calc(var(--squaresize)/2); width:calc(var(--squaresize)/2); border-radius:50%;}
-div#container main.board.raw div.row div.square div.piece {background-color:var(--piececolor,#FFF3); color:var(--textcolor,crimson); font-size:calc(var(--squaresize)/4); font-weight:900;}
-div#container main.board.raw div.row div.square div.piece.pawn {height:calc(var(--squaresize)/2.5); width:calc(var(--squaresize)/2.5);}
-div#container main.board.raw div.row div.square div.piece.dark {--piececolor:black; --textcolor:white;}
-div#container main.board.raw div.row div.square div.piece.light {--piececolor:whitesmoke; --textcolor:black;}
-div#container main.board div.row div.square div.piece svg.icon {font-size:1rem;}
+div#container main.board div.row div.square div.piece {display:grid; place-items:center; text-align:center; height:calc(var(--squaresize)/2); width:calc(var(--squaresize)/2); border-radius:1rem;}
+div#container main.board/* .raw */ div.row div.square div.piece {font-size:calc(var(--squaresize)/5); font-weight:900; cursor:pointer;}
+div#container main.board/* .raw */ div.row div.square div.piece.pawn {height:calc(var(--squaresize)/2.5); width:calc(var(--squaresize)/2.5);}
+div#container main.board/* .raw */ div.row div.square div.piece.dark {background-color:var(--darkpiecebackcolor); color:var(--darkpieceforecolor);}
+div#container main.board/* .raw */ div.row div.square div.piece.light {background-color:var(--lightpiecebackcolor); color:var(--lightpieceforecolor);}
+/* div#container main.board div.row div.square div.piece span.label {} */
+/* div#container main.board div.row div.square div.piece span.label svg.icon {font-size:1rem;} */
+div#container main.board div.row div.square div.piece span.label img.icon {display:block; height:2rem;}
 div#container main.board div.row div.square span.caption {position:absolute; top:0; left:0;}
-div#container main.board div.row div.square span.caption {font-size:calc(var(--squaresize)/6); font-weight:900; text-transform:uppercase;}
+div#container main.board div.row div.square span.caption {font-size:calc(var(--squaresize)/8); font-weight:900; /* opacity:.125; */ text-transform:uppercase;}
 /* div#container main.board div.row div.square span.caption {opacity:0; visibility:hidden;} */
 /* div#container main.board div.row div.square:hover span.caption {opacity:.25; visibility:visible; transition:.5s;} */
+div#container main.board div.row div.square:hover {border-color:var(--highlightboardcolor); transition:.25s;}
+div#container main.board div.row div.square:hover::after {content:'';}
+div#container main.board div.row div.square.active {border-color:var(--highlightboardfullcolor); transition:.25s;}
+div#container main.board div.row div.square.active::after {content:'';}
+div#container main.board div.row div.square:hover div.piece span.label,
+div#container main.board div.row div.square.active div.piece span.label {color:var(--highlightboardfullcolor);}
 
 /* Board Square Colors */
-div#container main.board div.row:nth-child(2n) div.square:nth-child(2n) {--squarecolor:var(--darkcolor);}
-div#container main.board div.row:nth-child(2n) div.square:nth-child(2n+1) {--squarecolor:var(--lightcolor);}
-div#container main.board div.row:nth-child(2n+1) div.square:nth-child(2n) {--squarecolor:var(--lightcolor);}
-div#container main.board div.row:nth-child(2n+1) div.square:nth-child(2n+1) {--squarecolor:var(--darkcolor);}
+div#container main.board div.row:nth-child(2n) div.square:nth-child(2n) {--squarecolor:var(--darkboardcolor);}
+div#container main.board div.row:nth-child(2n) div.square:nth-child(2n+1) {--squarecolor:var(--lightboardcolor);}
+div#container main.board div.row:nth-child(2n+1) div.square:nth-child(2n) {--squarecolor:var(--lightboardcolor);}
+div#container main.board div.row:nth-child(2n+1) div.square:nth-child(2n+1) {--squarecolor:var(--darkboardcolor);}
 
 
 /* Xyz */
-div#container aside.turner {--turncolor:limegreen;}
+div#container aside.turner {background-color:var(--turncolor); width:100%; max-width:calc(var(--squaresize)*8); height:1rem; border-radius:10rem; margin-bottom:1rem; --turncolor:limegreen;}
 div#container aside.turner div.indicator {position:fixed; top:0; right:0; margin:2rem;}
 div#container aside.turner div.indicator {background-color:var(--turncolor); height:var(--squaresize); width:var(--squaresize); border-radius:50%;}
 

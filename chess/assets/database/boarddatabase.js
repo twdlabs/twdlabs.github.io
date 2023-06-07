@@ -5,91 +5,91 @@ const boardData = [
 	
 	{
 		teamid:'light',
-		piecetype:'r',
-		boardlocation:'a1',
+		piecetypeid:'rk',
+		boardlocationid:'a1',
 	},
 	
 	{
 		teamid:'light',
-		piecetype:'n',
-		boardlocation:'b1',
+		piecetypeid:'kn',
+		boardlocationid:'b1',
 	},
 	
 	{
 		teamid:'light',
-		piecetype:'b',
-		boardlocation:'c1',
+		piecetypeid:'bi',
+		boardlocationid:'c1',
 	},
 
 	{
 		teamid:'light',
-		piecetype:'k',
-		boardlocation:'d1',
+		piecetypeid:'k',
+		boardlocationid:'d1',
 	},
 	
 	{
 		teamid:'light',
-		piecetype:'q',
-		boardlocation:'e1',
+		piecetypeid:'q',
+		boardlocationid:'e1',
 	},
 	
 	{
 		teamid:'light',
-		piecetype:'b',
-		boardlocation:'f1',
+		piecetypeid:'bi',
+		boardlocationid:'f1',
 	},
 	
 	{
 		teamid:'light',
-		piecetype:'n',
-		boardlocation:'g1',
+		piecetypeid:'kn',
+		boardlocationid:'g1',
 	},
 	
 	{
 		teamid:'light',
-		piecetype:'r',
-		boardlocation:'h1',
+		piecetypeid:'rk',
+		boardlocationid:'h1',
 	},
 	
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'a2',
+		piecetypeid:'pn',
+		boardlocationid:'a2',
 	},
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'b2',
+		piecetypeid:'pn',
+		boardlocationid:'b2',
 	},
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'c2',
+		piecetypeid:'pn',
+		boardlocationid:'c2',
 	},
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'d2',
+		piecetypeid:'pn',
+		boardlocationid:'d2',
 	},
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'e2',
+		piecetypeid:'pn',
+		boardlocationid:'e2',
 	},
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'f2',
+		piecetypeid:'pn',
+		boardlocationid:'f2',
 	},
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'g2',
+		piecetypeid:'pn',
+		boardlocationid:'g2',
 	},
 	{
 		teamid:'light',
-		piecetype:'p',
-		boardlocation:'h2',
+		piecetypeid:'pn',
+		boardlocationid:'h2',
 	},
 
 
@@ -97,91 +97,91 @@ const boardData = [
 	
 	{
 		teamid:'dark',
-		piecetype:'r',
-		boardlocation:'a8',
+		piecetypeid:'rk',
+		boardlocationid:'a8',
 	},
 	
 	{
 		teamid:'dark',
-		piecetype:'n',
-		boardlocation:'b8',
+		piecetypeid:'kn',
+		boardlocationid:'b8',
 	},
 	
 	{
 		teamid:'dark',
-		piecetype:'b',
-		boardlocation:'c8',
+		piecetypeid:'bi',
+		boardlocationid:'c8',
 	},
 	
 	{
 		teamid:'dark',
-		piecetype:'q',
-		boardlocation:'d8',
+		piecetypeid:'q',
+		boardlocationid:'d8',
 	},
 
 	{
 		teamid:'dark',
-		piecetype:'k',
-		boardlocation:'e8',
+		piecetypeid:'k',
+		boardlocationid:'e8',
 	},
 	
 	{
 		teamid:'dark',
-		piecetype:'b',
-		boardlocation:'f8',
+		piecetypeid:'bi',
+		boardlocationid:'f8',
 	},
 	
 	{
 		teamid:'dark',
-		piecetype:'n',
-		boardlocation:'g8',
+		piecetypeid:'kn',
+		boardlocationid:'g8',
 	},
 	
 	{
 		teamid:'dark',
-		piecetype:'r',
-		boardlocation:'h8',
+		piecetypeid:'rk',
+		boardlocationid:'h8',
 	},
 	
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'a7',
+		piecetypeid:'pn',
+		boardlocationid:'a7',
 	},
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'b7',
+		piecetypeid:'pn',
+		boardlocationid:'b7',
 	},
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'c7',
+		piecetypeid:'pn',
+		boardlocationid:'c7',
 	},
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'d7',
+		piecetypeid:'pn',
+		boardlocationid:'d7',
 	},
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'e7',
+		piecetypeid:'pn',
+		boardlocationid:'e7',
 	},
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'f7',
+		piecetypeid:'pn',
+		boardlocationid:'f7',
 	},
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'g7',
+		piecetypeid:'pn',
+		boardlocationid:'g7',
 	},
 	{
 		teamid:'dark',
-		piecetype:'p',
-		boardlocation:'h7',
+		piecetypeid:'pn',
+		boardlocationid:'h7',
 	},
 
 ];
