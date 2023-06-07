@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--lightgrey:#CCC;
+	
+	/* Gradient Background Image */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
+	/* Node Sizes */
+	--nodegap:.75rem;
+	--nodewidth:4rem;
+	--nodeheight:calc(.75*var(--nodewidth));
+	--nodecornersize:.75rem;
+	/* Page Sizes */
+	--dt:.5s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+body {
+
+	--backcolor:white;
+	--backcolor:var(--lightgrey);
+	--forecolor:black;
+}
+
+/* body.dark {
+
+	--backcolor:black;
+	--forecolor:white;
+} */
+
+
+/* html {background-image:var(--bgimg);} */
+body {background-color:var(--backcolor); color:var(--forecolor); font-family:Nunito,sans-serif; margin:0;}
+/* .freeze {overflow:hidden;} */
+
+
+div#container {background-color:var(--backcolor); color:var(--forecolor); display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container nav.navbar {position:absolute; top:0; right:0; left:0; width:100%;}
+div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:1rem 2rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
+div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
+div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+div#container nav.navbar div.bin ul.navlist li.navitem {padding:.5rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+
+div#container main.main {background-color:white; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+/* div#container main.main {width:100%; max-width:var(--pagewidth);} */
+div#container main.main div.tree {display:flex; flex-direction:column; align-items:center; position:relative;}
+div#container main.main div.tree {--treeheight:3; --treewidth:calc( var(--nodewidth) * pow(2, var(--treeheight)) ); /* max-height:calc(var(--treeheight)*var(--nodewidth)); */}
+div#container main.main div.tree::after {background-color:limegreen; content:''; border-radius:1rem;}
+div#container main.main div.tree::after {position:absolute; bottom:100%; left:50%; transform:translateX(-50%); width:1px;}
+div#container main.main div.tree::after {height:calc(var(--nodegap) + .2*var(--nodeheight));}
+div#container main.main div.tree.root::after {height:0;}
+div#container main.main div.tree div.node {background-color:#0004; height:var(--nodeheight); width:var(--nodewidth); border-radius:.875rem; border:.1rem solid;}
+div#container main.main div.tree div.node div.value {display:grid; place-items:center; height:60%; border-bottom:1px solid;}
+div#container main.main div.tree div.node div.value span.caption {font-size:.875rem;}
+div#container main.main div.tree div.node div.childrefs {display:grid; grid-template-columns:repeat(2,1fr); height:40%; /* position:relative; */ /* overflow:hidden; */}
+/* div#container main.main div.tree div.node div.childrefs::after {background-color:black; content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); height:100%; width:1px;} */
+div#container main.main div.tree div.node div.childrefs div.child {position:relative;}
+div#container main.main div.tree div.node div.childrefs div.child.left {border-right:.5px solid;}
+div#container main.main div.tree div.node div.childrefs div.child.right {border-left:.5px solid;}
+div#container main.main div.tree div.node div.childrefs div.child::after {background-color:black; content:'';}
+div#container main.main div.tree div.node div.childrefs div.child::after {position:absolute; top:50%; height:1px; border-radius:1rem;}
+div#container main.main div.tree div.node div.childrefs div.child::after {width:calc( (.25*var(--treewidth)) - (.25*var(--nodewidth)) ); width:calc( .25*var(--nodewidth) );}
+div#container main.main div.tree div.node div.childrefs div.child.left::after {background-color:dodgerblue; right:50%; transform:translateY(50%);}
+div#container main.main div.tree div.node div.childrefs div.child.right::after {background-color:coral; left:50%; transform:translateY(-50%);}
+div#container main.main div.tree div.children {display:grid; grid-template-columns:repeat(2,1fr); /* grid-gap:var(--nodegap); */ margin-top:var(--nodegap);}
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
