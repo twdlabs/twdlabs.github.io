@@ -9,7 +9,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="./../atgicon.ico" rel="icon"/>
-		<link href="./assets/chessicon.png" rel="apple-touch-icon"/>
+		<link href="./assets/images/chessicon.png" rel="apple-touch-icon"/>
 		<title>Chess Game</title>
 
 		<!-- Main Stylesheet -->
@@ -22,8 +22,18 @@
 		<!-- #container -->
 		<div id="container">
 
+			<!-- turner -->
+			<aside class="turner">
+
+				<!-- indicator -->
+				<div class="indicator"></div>
+				<!-- /indicator -->
+
+			</aside>
+			<!-- /turner -->
+
 			<!-- board -->
-			<main class="board">
+			<main class="board raw">
 
 				<!-- row -->
 				<div class="row">
@@ -36,7 +46,19 @@
 						<!-- /caption -->
 
 						<!-- piece -->
-						<div class="piece id clr" data-name="pawn" data-teamid="clr">P</div>
+						<div class="piece piecetypeid teamid" data-piecetype="piecetypeid" data-teamid="teamid" draggable="true">
+
+							<!-- label -->
+							<span class="label">
+
+								<!-- icon -->
+								<img class="icon" src="" draggable="false">
+								<!-- /icon -->
+
+							</span>
+							<!-- /label -->
+
+						</div>
 						<!-- /piece -->
 
 					</div>
@@ -48,28 +70,24 @@
 			</main>
 			<!-- /board -->
 
-			<!-- turner -->
-			<aside class="turner">
-
-				<!-- indicator -->
-				<div class="indicator"></div>
-				<!-- /indicator -->
-
-			</aside>
-			<!-- /turner -->
-
 		</div>
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
+		<!-- Database -->
 		<!-- <script src="./database.js" type="text/javascript"></script> -->
 
-		<!-- Piece Database Script -->
-		<script src="./assets/piecedatabase.js" type="text/javascript"></script>
+		<!-- Piece Type Database -->
+		<script src="./assets/database/piecedatabase.js" type="text/javascript"></script>
+
+		<!-- Board Layout Database -->
+		<script src="./assets/database/boarddatabase.js" type="text/javascript"></script>
+
+		<!-- Game Board Script -->
+		<script src="./assets/script/gameboard.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
-		<script src="./assets/chess.js" type="text/javascript"></script>
+		<script src="./assets/script/chessgame.js" type="text/javascript"></script>
 		<!-- <script type="text/javascript"></script> -->
 
 	</body>
