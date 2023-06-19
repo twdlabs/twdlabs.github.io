@@ -25,11 +25,11 @@
 			<!-- main -->
 			<main class="main">
 
-				<!-- side -->
-				<div class="side gone left">
+				<!-- edge -->
+				<div class="edge left">
 
 					<!-- slidebtn -->
-					<div class="slidebtn" onclick="slideLeft()">
+					<div class="slidebtn gone" onclick="slideLeft()">
 	
 						<!-- icon -->
 						<svg class="icon leftarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -41,13 +41,17 @@
 					<!-- /slidebtn -->
 
 				</div>
-				<!-- /side -->
+				<!-- /edge -->
 
 				<!-- slider -->
-				<div class="slider">
+				<div class="slider" onscroll="updateBtnVisibility()">
 
 					<!-- taglist -->
 					<ul class="taglist">
+	
+						<!-- tagitem -->
+						<li class="tagitem active">All</li>
+						<!-- /tagitem -->
 	
 						<!-- tagitem -->
 						<li class="tagitem">Coding</li>
@@ -78,7 +82,7 @@
 						<!-- /tagitem -->
 	
 						<!-- tagitem -->
-						<li class="tagitem active">JavaScript</li>
+						<li class="tagitem">JavaScript</li>
 						<!-- /tagitem -->
 	
 						<!-- tagitem -->
@@ -95,11 +99,11 @@
 				</div>
 				<!-- /slider -->
 
-				<!-- side -->
-				<div class="side gone right">
+				<!-- edge -->
+				<div class="edge right">
 
 					<!-- slidebtn -->
-					<div class="slidebtn" onclick="slideRight()">
+					<div class="slidebtn gone" onclick="slideRight()">
 	
 						<!-- icon -->
 						<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -111,7 +115,7 @@
 					<!-- /slidebtn -->
 					
 				</div>
-				<!-- /side -->
+				<!-- /edge -->
 
 			</main>
 			<!-- /main -->
