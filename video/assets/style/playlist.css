@@ -1,0 +1,80 @@
+
+
+
+/* Video Playlist */
+
+div#container section#body aside.playlist {height:100%; width:100%; max-width:18rem; transition:.25s;}
+div#container section#body aside.playlist {overflow:auto; scrollbar-width:none; padding:.25rem; box-shadow:var(--boxshadow);}
+div#container section#body aside.playlist ul.vidlist {display:grid; grid-template-columns:1fr; grid-gap:.5rem; height:100%; overflow:auto; scrollbar-width:none;}
+div#container section#body aside.playlist ul.vidlist {list-style:none; padding:0; padding:.25rem; margin:0;}
+/* div#container section#body aside.playlist ul.vidlist li.viditem {margin-bottom:.25rem;} */
+/* div#container section#body aside.playlist ul.vidlist li.viditem:last-child {margin-bottom:0;} */
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink {/* background-color:#0001; */ display:flex; flex-direction:row; justify-content:stretch; align-items:stretch;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink {color:inherit; text-decoration:none; padding:.25rem; /* border:1px solid #0002; */ border-radius:.375rem; box-shadow:var(--boxshadow);}
+div#container section#body aside.playlist ul.vidlist li.viditem:hover a.vidlink {background-color:#EEE; color:black; transition:.5s;}
+div#container section#body aside.playlist ul.vidlist li.viditem.active a.vidlink {background-color:#1e90ffCC; color:white;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo {flex-grow:0; min-width:6rem; max-width:100%; border:1px solid #0002; border-radius:.25rem;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-color:#0004; background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-image:url('../assets/images/0000001.png');}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo::after {content:''; display:block; padding-top:62.5%;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content {flex-grow:1; padding-left:.5rem;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content {display:flex; flex-direction:row; justify-content:flex-start; align-items:flex-start; align-items:center;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {display:none;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {background-color:#0004; border-radius:50%; min-width:2.5rem; min-height:2.5rem; margin-right:.4rem;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta {flex-grow:1;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.vidtitle {font-size:.875rem; line-height:1.25;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata {color:#AAA; font-size:.8rem; line-height:1.25; /* margin-top:.25rem; */ transition:.25s;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata {display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.dot {margin:-1rem 3px;}
+/* div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.vidauthor {} */
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.dot.a {display:none;}
+div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+/* div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata span.viewcount {} */
+/* div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata span.dot.b {} */
+/* div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata div.viddata span.timesince {} */
+
+div#container section#body aside.playlist ul.vidlist li.viditem.active a.vidlink div.content span.author,
+div#container section#body aside.playlist ul.vidlist li.viditem.active a.vidlink div.content div.details {color:#606060;}
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Video Playlist */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* Video Playlist */
+	div#container section#body aside.playlist {flex-grow:1;}
+	div#container section#body aside.playlist {max-width:none; margin:.5rem auto 0;}
+	/* div#container section#body aside.playlist ul.vidlist {display:flex; flex-flow:row wrap; justify-content:flex-start;} */
+	div#container section#body aside.playlist ul.vidlist {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.5rem;}
+	/* div#container section#body aside.playlist ul.vidlist li.viditem {flex-basis:33.33%; flex-grow:0;} */
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink {flex-direction:column;}
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content {padding:.5rem;}
+}
+@media screen and (max-width:40rem) {
+
+	/* Video Playlist */
+	div#container section#body aside.playlist ul.vidlist li.viditem {flex-basis:50%;}
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Video Playlist */
+	div#container section#body aside.playlist {border-radius:0; padding:0;}
+	/* div#container section#body aside.playlist ul.vidlist {} */
+	div#container section#body aside.playlist ul.vidlist li.viditem {flex-basis:100%;}
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink {border-radius:0; padding:0; padding-bottom:.35rem;}
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.photo {border-radius:0;}
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {display:block;}
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata {flex-direction:row; flex-wrap:wrap; align-items:center; margin-top:0;}
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata >* {flex-grow:0;}
+	div#container section#body aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.metadata span.dot.a {display:block;}
+}
