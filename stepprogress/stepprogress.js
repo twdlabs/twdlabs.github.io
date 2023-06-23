@@ -4,8 +4,11 @@
 // Get row of steps. 
 const stepsRow = document.querySelector('div#container main.main div.row');
 
+// Get bubble set. 
+const bubbleset = document.querySelector('div#container main.main div.row div.bubbleset');
+
 // Get all bubbles. 
-let allBubbles = document.querySelectorAll('div#container main.main div.row div.bubble');
+let allBubbles = document.querySelectorAll('div#container main.main div.row div.bubbleset div.bubble');
 
 // Get progress inner bar. 
 const progressinnerbar = document.querySelector('div#container main.main div.row div.progressbar span.bar');
@@ -45,22 +48,20 @@ updateProgressDisplay();
 // Add step bubbles. 
 function addStepBubbles() {
 
-	// Remove any previous bubbles. 
-	for(let bubble of allBubbles) {
-		bubble.remove();
-	}
+	// Initialize result.
+	let result = '';
 
 	// Create new bubbles. 
-	let result = '';
 	for(let i=1 ; i<=numberOfSteps ; i++) {
-
-		// 
 		result += `
 		<!-- bubble -->
 		<div class="bubble" data-step="${ i }">${ i }</div>
 		<!-- /bubble -->`;
 	}
-	stepsRow.insertAdjacentHTML('beforeend',result);
+
+	// Show result.
+	bubbleset.innerHTML = result;
+	console.log(result,bubbleset);
 
 	// Activate new bubbles. 
 	activateNewBubbles();
@@ -71,12 +72,10 @@ function addStepBubbles() {
 	function activateNewBubbles() {
 
 		// Get all bubbles. 
-		allBubbles = document.querySelectorAll('div#container main.main div.row div.bubble');
+		allBubbles = document.querySelectorAll('div#container main.main div.row div.bubbleset div.bubble');
 
 		// Activate bubble clicks. 
 		for(let bubble of allBubbles) {
-
-			// 
 			bubble.addEventListener('click',selectBubble);
 		}
 	}
