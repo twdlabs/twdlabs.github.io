@@ -1,167 +1,188 @@
 
 
 
-// Get tag list slider. 
-const slider = document.querySelector('div#container main.main div.slider');
+// Define tag slider object. 
+class TagSlider {
 
-// Get tag list slider bin. 
-const tagbox = document.querySelector('div#container main.main div.slider ul.taglist');
+	// Create new tag slider. 
+	constructor(slider,tagbox,tagitems,leftedge,rightedge,leftslidebtn,rightslidebtn) {
+		let anythingMissing = ( slider==null || tagbox==null || tagitems==null || leftedge==null || rightedge==null || leftslidebtn==null || rightslidebtn==null );
+		if(anythingMissing) {
+			console.error('Missing element for TagSlider');
+			return;
+		}
 
-// Get tag list slider bin. 
-const tagitems = document.querySelectorAll('div#container main.main div.slider ul.taglist li.tagitem');
+		// Initialize dragging state of tag list bin. 
+		this.isCurrentlyDragging = false;
+		
+		// Define edge width (rem to px). 
+		this.edgewidth = 4*16;
 
-// Get slider edges. 
-const leftedge = document.querySelector('div#container main.main div.edge.left');
-const rightedge = document.querySelector('div#container main.main div.edge.right');
+		// Get page elements for tag slider. 
+		this.slider = slider;
+		this.tagbox = tagbox;
+		this.tagitems = tagitems;
+		// Get page elements for tag slider edge. 
+		this.leftedge = leftedge;
+		this.rightedge = rightedge;
+		this.leftslidebtn = leftslidebtn;
+		this.rightslidebtn = rightslidebtn;
 
-// Get slide buttons. 
-// const slidebtns = document.querySelectorAll('div#container main.main div.edge div.slidebtn');
-const leftslidebtn = document.querySelector('div#container main.main div.edge.left div.slidebtn');
-const rightslidebtn = document.querySelector('div#container main.main div.edge.right div.slidebtn');
+		// Handle events. 
+		this.handleEvents();
 
-// Initialize dragging state of tag list bin. 
-let isCurrentlyDragging = false;
+		// Reset slider position. 
+		this.slider.scrollLeft = 0;
 
-// Define edge width (in rem). 
-let edgewidth = 4*16;
-
-
-/*****/
-
-
-// Activate tags. 
-activateTags();
-
-// Activate tag slider. 
-activateTagSlider();
-
-// Reset slider position. 
-slider.scrollLeft = 0;
-updateBtnVisibility();
-
-
-/*****/
-
-
-// Activate tags. 
-function activateTags() {
-
-	// Activate tags. 
-	for(let tag of tagitems) {
-		// Select tag. 
-		tag.addEventListener('click',selectTag);
+		// Update button states. 
+		this.updateBtnStates();
 	}
 
-	/****/
-	
-	// Select tag. 
-	function selectTag(event) {
+	/*****/
 
-		// Un-highlight previously selected tag. 
-		tagbox.querySelector('.active').classList.remove('active');
+	// Handle events. 
+	handleEvents() {
+		// console.log('handleEvents',this);
 
-		// Highlight newly selected tag. 
-		tag = event.currentTarget;
-		tag.classList.add('active');
-		console.log('New tag selected:',tag.innerText);
+		// Activate tags. 
+		activateTags.bind(this)();
+		
+		// Activate tag slider. 
+		activateTagSlider.bind(this)();
+
+		/*****/
+		
+		// Activate tags. 
+		function activateTags() {
+		
+			// Go thru all tags. 
+			for(let tag of this.tagitems) {
+
+				// Activate tag: Select tag upon click. 
+				tag.addEventListener('click', selectTag.bind(this) );
+			}
+		
+			/****/
+			
+			// Select tag. 
+			function selectTag(event) {
+		
+				// Get previously selected tag. 
+				let oldtag = this.tagbox.querySelector('.active');
+				// Get newly selected tag. 
+				let newtag = event.currentTarget;
+
+				// Un-highlight previously selected tag. 
+				oldtag.classList.remove('active');
+
+				// Highlight newly selected tag. 
+				newtag.classList.add('active');
+				console.log('New tag selected:',newtag.innerText);
+			}
+		}
+		
+		// Activate tag slider. 
+		function activateTagSlider() {
+		
+			// Respond to normal scroll. 
+			this.slider.addEventListener('scroll', this.updateBtnStates.bind(this) );
+			// Respond to scroll button clicks. 
+			this.leftslidebtn.addEventListener('click', slideLeft.bind(this) );
+			this.rightslidebtn.addEventListener('click', slideRight.bind(this) );
+		
+			// Start dragging. 
+			this.tagbox.addEventListener('mousedown', startDragging.bind(this) );
+			// Ccontinue dragging. 
+			this.tagbox.addEventListener('mousemove', continueDragging.bind(this) );
+			// Finish dragging. 
+			document.addEventListener('mouseup', finishDragging.bind(this) );
+		
+			/****/
+		
+			// Show more tags from leftward direction. 
+			function slideLeft() {
+			
+				// Decrement scroll position. 
+				this.scrollDelta(-1);
+			}
+			// Show more tags from rightward direction. 
+			function slideRight() {
+			
+				// Increment scroll position. 
+				this.scrollDelta(+1);
+			}
+		
+			// Start dragging. 
+			function startDragging(event) {
+				// console.log('Drag start:',event);
+		
+				// Turn on drag mode. 
+				this.isCurrentlyDragging = true;
+			}
+			// Ccontinue dragging. 
+			function continueDragging(event) {
+		
+				// Ignore mouse movement when not in drag mode. 
+				if(!this.isCurrentlyDragging) return;
+				// console.log('Dragging:',event);
+		
+				// Allow insta-movement of slider. Prevent tag clicks. 
+				this.slider.classList.add('dragmode');
+			
+				// Get horizontal movement. 
+				let dx = event.movementX;
+				// console.log('\tdx:',dx);
+			
+				// Apply horizontal offset. 
+				// console.log('\tscrollLeft b:', this.slider.scrollLeft);
+				this.slider.scrollLeft -= dx;
+				// console.log('\tscrollLeft a:', this.slider.scrollLeft);
+			}
+			// Finish dragging. 
+			function finishDragging(event) {
+				// console.log('Drag done:',event);
+		
+				// Turn off drag mode. 
+				this.isCurrentlyDragging = false;
+				this.slider.classList.remove('dragmode');
+		
+				// Update button states. 
+				this.updateBtnStates();
+			}
+		}
 	}
-}
 
-// Activate tag slider. 
-function activateTagSlider() {
+	/*****/
 
-	// Respond to normal scroll. 
-	slider.addEventListener('scroll', updateBtnVisibility );
-	// Respond to scroll button clicks. 
-	leftslidebtn.addEventListener('click', slideLeft );
-	rightslidebtn.addEventListener('click', slideRight );
-
-	// Start dragging. 
-	tagbox.addEventListener('mousedown', startDragging );
-	// Ccontinue dragging. 
-	tagbox.addEventListener('mousemove', continueDragging );
-	// Finish dragging. 
-	document.addEventListener('mouseup', finishDragging );
-
-	/****/
-
-	// Show more tags from leftward direction. 
-	function slideLeft() {
-	
-		// Decrement scroll position. 
-		scrollDelta(-1);
-	}
-	// Show more tags from rightward direction. 
-	function slideRight() {
-	
-		// Increment scroll position. 
-		scrollDelta(+1);
-	}
 	// Change scroll position of slider. 
-	function scrollDelta(delta) {
+	scrollDelta(delta) {
 	
 		// Update scroll position. 
-		slider.scrollLeft += delta * (slider.clientWidth - edgewidth);
+		this.slider.scrollLeft += delta * (this.slider.clientWidth - this.edgewidth);
 	
-		// Update button visibility. 
-		updateBtnVisibility();
+		// Update button states. 
+		this.updateBtnStates();
 	}
 
-	// Start dragging. 
-	function startDragging(event) {
-		// console.log('Drag start:',event);
-
-		// Turn on drag mode. 
-		isCurrentlyDragging = true;
-	}
-	// Ccontinue dragging. 
-	function continueDragging(event) {
-
-		// Ignore mouse movement when not in drag mode. 
-		if(!isCurrentlyDragging) return;
-		// console.log('Dragging:',event);
-
-		// Allow insta-movement of slider. Prevent tag clicks. 
-		slider.classList.add('dragmode');
+	// Update button states. 
+	updateBtnStates() {
+		// console.log('updateBtnStates',this);
 	
-		// Get horizontal movement. 
-		let dx = event.movementX;
-		// console.log('\tdx:',dx);
+		// Check current scroll status. 
+		let allWayLeft = (this.slider.scrollLeft == 0);
+		// console.log('allWayLeft:',allWayLeft);
+		let allWayRight = (this.slider.scrollLeft == this.slider.scrollLeftMax);
+		// console.log('allWayRight:',allWayRight);
 	
-		// Apply horizontal offset. 
-		// console.log('\tscrollLeft b:',slider.scrollLeft);
-		slider.scrollLeft -= dx;
-		// console.log('\tscrollLeft a:',slider.scrollLeft);
-	}
-	// Finish dragging. 
-	function finishDragging(event) {
-		// console.log('Drag done:',event);
-
-		// Turn off drag mode. 
-		isCurrentlyDragging = false;
-		slider.classList.remove('dragmode');
-
-		// Update button visibility. 
-		updateBtnVisibility();
+		// Hide left button if all the way left. 
+		if(allWayLeft) this.leftedge.classList.add('gone');
+		// Show left button otherwise. 
+		else this.leftedge.classList.remove('gone');
+	
+		// Hide right button if all the way right. 
+		if(allWayRight) this.rightedge.classList.add('gone');
+		// Show right button otherwise. 
+		else this.rightedge.classList.remove('gone');
 	}
 }
 
-// Update button visibility. 
-function updateBtnVisibility() {
-
-	// Check current scroll status. 
-	let allWayLeft = (slider.scrollLeft == 0);
-	// console.log('allWayLeft:',allWayLeft);
-	let allWayRight = (slider.scrollLeft == slider.scrollLeftMax);
-	// console.log('allWayRight:',allWayRight);
-
-	// Hide left button if all the way left. 
-	if(allWayLeft) leftedge.classList.add('gone');
-	// Show left button otherwise. 
-	else leftedge.classList.remove('gone');
-
-	// Hide right button if all the way right. 
-	if(allWayRight) rightedge.classList.add('gone');
-	// Show right button otherwise. 
-	else rightedge.classList.remove('gone');
-}
