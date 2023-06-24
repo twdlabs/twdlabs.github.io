@@ -1,8 +1,8 @@
 
 
 
-// Search Overlay Object
-class Search {
+// Define search overlay object. 
+class SearchOverlay {
 
 	// 1. Describe and create / initiate object. 
 
@@ -50,7 +50,6 @@ class Search {
 
 		// Handle keyboard shortcuts. 
 		document.documentElement.addEventListener( 'keyup', this.dispatchKeyPress.bind(this) );
-
 	}
 
 
@@ -435,6 +434,8 @@ class Search {
 				// Get post name for current result. 
 				let resultname = getResultName(item);
 
+				// TODO: Create functions for these 3 post types (blog, reg, visual). 
+
 				// Create result for blog post. 
 				if(item.posttype=='post') {
 				
@@ -523,8 +524,8 @@ class Search {
 					// console.log('\t\tgetPostId(item):',id);
 
 					// Return general url for given post. 
-					if( foldername && id) return `${foldername}/index.html?id=${id}`;
-					// if( id && foldername) return `${foldername}?id=${id}`;
+					// if(foldername && id) return `${foldername}/post/index.html?id=${id}`;
+					if(foldername && id) return `${foldername}/post/?id=${id}`;
 
 					// Return empty url if missing any parameter(s). 
 					else return 'javascript:void(0)';
@@ -569,8 +570,10 @@ class Search {
 					// console.log('\t\tAuthor id:',id);
 
 					// 
-					if( !isNaN(id) && id>=0 ) return `users/index.html?id=${id}`;
-					// return `authors/index.html?id=${id}`;
+					if( !isNaN(id) && id>=0 ) return `users/post/?id=${id}`;
+					// if( !isNaN(id) && id>=0 ) return `users/post/index.html?id=${id}`;
+					// if( !isNaN(id) && id>=0 ) return `authors/post/?id=${id}`;
+					// if( !isNaN(id) && id>=0 ) return `authors/post/index.html?id=${id}`;
 
 					// Return empty url if missing any parameter(s). 
 					else return 'javascript:void(0)';
@@ -674,4 +677,3 @@ class Search {
 	}
 
 }
-
