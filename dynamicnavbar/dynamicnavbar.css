@@ -1,0 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--black:#262626;
+	--ltblack:#333;
+	--ltltblack:#444;
+	--lightgrey:#CCC;
+	
+	/* Page Sizes */
+	--dt:.375s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+
+body {background-color:var(--black); font-family:Nunito,sans-serif; margin:0;}
+div#container {min-height:100vh;/*  padding:1rem; */}
+
+/* Navbar */
+div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%;}
+div#container nav.navbar {background-color:white; color:var(--ltblack); transition:var(--dt); /* min-height:4rem; */ padding:1rem 2rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
+div#container nav.navbar div.bin a.brand {color:inherit; text-decoration:none;}
+div#container nav.navbar div.bin a.brand h1.head {display:flex; flex-direction:row; align-items:center; position:relative; overflow:hidden; margin:0;}
+div#container nav.navbar div.bin a.brand h1.head svg.icon {position:absolute; bottom:100%;}
+div#container nav.navbar div.bin a.brand h1.head svg.icon {font-size:1.5em; transition:var(--dt);}
+div#container nav.navbar div.bin a.brand h1.head span.caption {font-size:1.75rem; font-weight:bold; margin-left:.375rem; transition:var(--dt);}
+div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+div#container nav.navbar div.bin ul.navlist li.navitem {padding:.5rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden; padding:.25rem 1.125rem; padding:.25rem .25rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink svg.icon {position:absolute; top:100%;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink svg.icon {font-size:1.5rem; --delay:calc(60ms * var(--i)); transition:var(--dt), transform var(--dt) var(--delay);}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink span.caption {font-size:1.125rem; font-weight:bold; --delay:calc(50ms * var(--i)); transition:var(--dt), transform var(--dt) var(--delay);}
+div#container nav.navbar.iconmode {background-color:var(--ltltblack); color:white;}
+
+/* Navbar: Icon Mode */
+/* div#container nav.navbar.iconmode div.bin {} */
+/* div#container nav.navbar.iconmode div.bin h1.head {} */
+div#container nav.navbar.iconmode div.bin h1.head svg.icon {transform:translateY(100%);}
+div#container nav.navbar.iconmode div.bin h1.head span.caption {transform:translateY(100%);}
+/* div#container nav.navbar.iconmode div.bin ul.navlist {} */
+/* div#container nav.navbar.iconmode div.bin ul.navlist li.navitem {} */
+/* div#container nav.navbar.iconmode div.bin ul.navlist li.navitem a.navlink {} */
+div#container nav.navbar.iconmode div.bin ul.navlist li.navitem a.navlink svg.icon {transform:translateY(-100%);}
+div#container nav.navbar.iconmode div.bin ul.navlist li.navitem a.navlink span.caption {transform:translateY(-100%);}
+div#container nav.navbar.iconmode div.bin ul.navlist li.navitem a.navlink:hover svg.icon {color:lime;}
+/* div#container nav.navbar.iconmode div.bin ul.navlist li.navitem a.navlink:hover span.caption {} */
+
+/* Main Content */
+div#container main.main {background-color:var(--black); padding:3rem; margin-top:4rem;}
+div#container main.main article.content {max-width:var(--pagewidth); margin:0 auto;}
+div#container main.main article.content h1.head {color:lime; font-size:3rem;}
+/* div#container main.main article.content h1.head span.caption {} */
+div#container main.main article.content p.textcopy {color:white; line-height:1.625;}
