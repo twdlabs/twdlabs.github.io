@@ -17,11 +17,11 @@ const blogListMetaData = {
 	},
 	imgurl:{
 		label:'Image URL',
-		visible:true,
+		visible:false,
 	},
 	vidurl:{
 		label:'Video URL',
-		visible:true,
+		visible:false,
 	},
 	content:{
 		label:'Content',

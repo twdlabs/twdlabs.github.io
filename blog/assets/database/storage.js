@@ -38,6 +38,6 @@ function saveBlogDatabaseToStorage() {
 		localStorage.setItem('blogdata',str);
 	}
 	
-	// Display all items in database. 
-	displayDatabase();
+	// Display items in selected database. 
+	// displaySelectedDatabase();
 }
