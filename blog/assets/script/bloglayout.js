@@ -16,7 +16,7 @@ function createBlogPostLayout(post) {
 
 	// Get author of post. 
 	let author = getUserById(post.authorid);
-	// console.log('Author:',post.authorid,author);
+	console.log('Author:',post.authorid,author);
 	// if(!author) return '';
 
 	// Get list of matching comments. 
@@ -31,8 +31,8 @@ function createBlogPostLayout(post) {
 
 	// Compile layout for given post. 
 	return `
-	<!-- item -->
-	<div class="item ${ currentUser ? (currentUser.admin ? 'controls' : '') : '' }">
+	<!-- postcard -->
+	<li class="postcard ${ currentUser ? (currentUser.admin ? 'controls' : '') : '' }">
 
 		<!-- preview -->
 		<div class="preview">
@@ -170,8 +170,8 @@ function createBlogPostLayout(post) {
 		</div>
 		<!-- /content -->
 
-	</div>
-	<!-- /item -->`;
+	</li>
+	<!-- /postcard -->`;
 
 	/***/
 

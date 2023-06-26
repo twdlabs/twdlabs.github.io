@@ -69,7 +69,7 @@ function loadBlogContibutors() {
 		let cards = '';
 		
 		// Create individual cards. 
-		for(let item of userDataList.sort( (x,y)=>(Math.random()-Math.random()) ) ) {
+		for(let item of userDataList.sort(sortRandom) ) {
 	
 			// Compile card contents. 
 			cards += `
@@ -104,4 +104,10 @@ function loadBlogContibutors() {
 	
 	// Load to destination. 
 	contributorsdestination.innerHTML = result;
+
+	// Sort randomly. 
+	function sortRandom(a,b) {
+		// 
+		return ( Math.random() - Math.random() );
+	}
 }

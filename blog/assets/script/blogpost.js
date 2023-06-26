@@ -188,13 +188,13 @@ function loadBlogPost() {
 					</div>
 					<!-- /listhead -->
 	
-					<!-- list -->
-					<ul class="list">
+					<!-- postlist -->
+					<ul class="postlist">
 	
 						${ playlistcontent }
 	
 					</ul>
-					<!-- /list -->
+					<!-- /postlist -->
 
 					<!-- listfoot -->
 					<div class="listfoot">
@@ -298,8 +298,8 @@ function loadBlogPost() {
 					
 					// 
 					return `
-					<!-- item -->
-					<li class="item ${ (i==selectedPostIndex)?'on':'' } ${ (playlistitem.completed)?'done':'' }">
+					<!-- postitem -->
+					<li class="postitem ${ (i==selectedPostIndex)?'on':'' } ${ (playlistitem.completed)?'done':'' }">
 	
 						<!-- link -->
 						<a class="link" href="../post/?id=${ playlistitem.postid }">
@@ -338,7 +338,7 @@ function loadBlogPost() {
 						<!-- /link -->
 	
 					</li>
-					<!-- /item -->`;
+					<!-- /postitem -->`;
 				}
 			}
 
