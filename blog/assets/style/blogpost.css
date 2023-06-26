@@ -35,22 +35,22 @@ div#container section.body main.grid article.media div.vid {position:relative; p
 div#container section.body main.grid article.media div.vid video.video {position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;}
 div#container section.body main.grid article.media div.playlist {grid-area:pl;}
 div#container section.body main.grid article.media div.playlist {background-color:var(--black); color:white; height:30rem; overflow:auto;}
-div#container section.body main.grid article.media div.playlist ul.list {list-style:none; counter-reset:playlistindex; padding:0; margin:0; margin-bottom:.75rem;}
-div#container section.body main.grid article.media div.playlist ul.list li.item {counter-increment:playlistindex;}
-div#container section.body main.grid article.media div.playlist ul.list li.item.on {background-color:var(--whiteglass);}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link {color:inherit; text-decoration:none;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link svg.icon {color:dodgerblue;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link svg.play {display:none; font-size:1.75rem; width:1.75rem;}
-div#container section.body main.grid article.media div.playlist ul.list li.item.on a.link svg.play {display:block;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.index {display:block; font-size:.875rem; width:1.75rem; text-align:center;}
-div#container section.body main.grid article.media div.playlist ul.list li.item.on a.link span.index {display:none;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.index:empty:after {content:counter(playlistindex);}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link img.preview {height:3rem; width:5rem; object-fit:cover; margin:0 .75rem;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.caption {flex-grow:1; font-size:1rem;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.completion {display:none;}
-div#container section.body main.grid article.media div.playlist ul.list li.item.done a.link span.completion {display:block;}
-div#container section.body main.grid article.media div.playlist ul.list li.item a.link span.completion svg.check {display:block; font-size:2rem;}
+div#container section.body main.grid article.media div.playlist ul.postlist {list-style:none; counter-reset:playlistindex; padding:0; margin:0; margin-bottom:.75rem;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem {counter-increment:playlistindex;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.on {background-color:var(--whiteglass);}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link {color:inherit; text-decoration:none;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link svg.icon {color:dodgerblue;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link svg.play {display:none; font-size:1.75rem; width:1.75rem;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.on a.link svg.play {display:block;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.index {display:block; font-size:.875rem; width:1.75rem; text-align:center;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.on a.link span.index {display:none;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.index:empty:after {content:counter(playlistindex);}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link img.preview {height:3rem; width:5rem; object-fit:cover; margin:0 .75rem;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.caption {flex-grow:1; font-size:1rem;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion {display:none;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.done a.link span.completion {display:block;}
+div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion svg.check {display:block; font-size:2rem;}
 div#container section.body main.grid article.media div.playlist div.listhead {background-color:var(--blackglass); display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1.5rem 2rem 1.375rem; margin-bottom:.75rem;}
 div#container section.body main.grid article.media div.playlist div.listhead h1.listtitle {font-size:1.25rem; margin:0;}
 div#container section.body main.grid article.media div.playlist div.listhead h2.listcount {font-size:1.125rem; margin:0;}
@@ -77,7 +77,7 @@ div#container section.body main.grid article.post div.content p.textcopy {margin
 /* div#container section.body main.grid article.post div.content:empty::after {content:'[Empty content]';} */
 div#container section.body main.grid article.post div.sidepanel {background-color:white; position:relative; height:fit-content; padding:2rem; border-radius:var(--bigcornersize); /* margin-top:1rem; */}
 div#container section.body main.grid article.post div.sidepanel h1.head {font-size:1.25rem; margin:0; }
-div#container section.body main.grid article.post div.sidepanel img.avatar {--size:4rem; height:var(--size); width:var(--size); object-fit:cover; border-radius:50%;}
+div#container section.body main.grid article.post div.sidepanel img.avatar {background-color:gainsboro; --size:4rem; height:var(--size); width:var(--size); object-fit:cover; border-radius:50%; border:.125rem solid transparent;}
 div#container section.body main.grid article.post div.sidepanel img.avatar.float {display:none;}
 div#container section.body main.grid article.post div.sidepanel img.avatar.float {position:absolute; bottom:100%; left:50%; transform:translate(-50%,50%);}
 div#container section.body main.grid article.post div.sidepanel div.userbadge {display:flex; flex-direction:row; align-items:center; margin-top:1rem;}
@@ -85,7 +85,9 @@ div#container section.body main.grid article.post div.sidepanel div.userbadge {d
 /* div#container section.body main.grid article.post div.sidepanel div.userbadge img.avatar {} */
 div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption {display:flex; flex-direction:column; justify-content:center; align-items:flex-start; margin-left:.5rem;}
 div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption span.name {font-weight:1000;}
+div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption span.name:empty {background-color:gainsboro; height:1em; width:10em; border-radius:1em;}
 div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption span.position {color:dodgerblue; font-weight:200;}
+div#container section.body main.grid article.post div.sidepanel div.userbadge span.caption span.position:empty {background-color:gainsboro; height:1em; width:10em; border-radius:1em; margin-top:.25rem;}
 div#container section.body main.grid article.post div.sidepanel p.briefbio {font-weight:200; text-align:justify; margin:0; margin-top:1rem;}
 
 /* Author Section */

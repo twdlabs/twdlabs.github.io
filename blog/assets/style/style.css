@@ -24,7 +24,7 @@
 
 	--pagewidth:80rem;
 	/* --pagewidth:100rem; */
-	--cornersize:.25rem;
+	--cornersize:.75rem;
 	--headerheight:6rem;
 	--bigcornersize:calc(var(--cornersize)*2);
 
