@@ -97,7 +97,7 @@ function activateToaster() {
 				// Return message layout. 
 				return `
 				<!-- toastitem -->
-				<li class="toastitem" id="${toastid}">
+				<li class="toastitem gone" id="${toastid}" style="--i:${toastcount};">
 
 					<!-- toast -->
 					<div class="toast ${msgtypeid}">
@@ -161,43 +161,43 @@ function activateToaster() {
 				setTimeout(slideToastIn,100);
 				// slideToastIn();
 		
-				// // Create new toast timer (for inner line animation). 
-				// newtoastitem.style.setProperty('--toastduration',`${toastduration}ms`);
+				// Create new toast timer (for inner line animation). 
+				newtoastitem.style.setProperty('--toastduration',`${toastduration}ms`);
 	
-				// // TODO: Create new toast timer (for outer window animation). 
-				// let newtoasttimer = setTimeout(closeToast, toastduration);
-				// // console.log('newtoasttimer:',newtoasttimer);
+				// Create new toast timer (for outer window animation). 
+				setTimeout(slideToastOut, toastduration);
+				// console.log('newtoasttimer:',newtoasttimer);
 		
-				// // Enable close button for new toast. 
-				// let newtoastclosebtn = newtoastitem.querySelector('div.closebtn')
-				// newtoastclosebtn.addEventListener('click',closeToast);
+				// Enable close button for new toast. 
+				let newtoastclosebtn = newtoastitem.querySelector('div.closebtn')
+				newtoastclosebtn.addEventListener('click',slideToastOut);
 	
 				/****/
 			
 				// Reveal selected toast item. 
 				function slideToastIn() {
-		
 					// Allow view of new toast message. 
 					newtoastitem.classList.add('active');
+					newtoastitem.classList.remove('gone');
 				}
-			}
-		}
 	
-		// Close selected toast. 
-		function closeToast() {
+				// Close selected toast item. 
+				function slideToastOut() {
+				
+					// Hide selected toast item. 
+					newtoastitem.classList.remove('active');
+				
+					// Remove selected toast item (after delay). 
+					setTimeout(removeToast,4000);
 		
-			// Hide selected toast item. 
-			newtoastitem.classList.remove('active');
-		
-			// Remove selected toast item (after delay). 
-			setTimeout(removeToast,dt);
-
-			/****/
-		
-			// Remove selected toast item. 
-			function removeToast() {
-				// 
-				newtoastitem.remove();
+					/****/
+				
+					// Remove selected toast item. 
+					function removeToast() {
+						// Remove from page. 
+						newtoastitem.remove();
+					}
+				}
 			}
 		}
 	}
