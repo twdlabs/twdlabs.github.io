@@ -8,11 +8,25 @@
 
 
 :root {
-	--themecolor:#4070f4;
-	--period:4s;
+
+	/* General Colors */
+	--dark:#34495e;
+	--dgrey:#555;
+	--lightgrey:#EEE;
+	--deepblue:#0e4bf1;
+	--fadedblue:#4070f4;
+	--blackglass:#0003;
+
+	/* Specific Colors */
+	--red:#e24d4c;
+	--lightblue:#3498db;
+	--green:#0abf30;
+	--yellow:#e9bd0c;
+
+	/* Numbers */
 	--shadow:0 .25rem .125rem #0004;
 	--thinshadow:0 .125rem .125rem #0004;
-	--edge:.375rem solid var(--themecolor);
+	--toastduration:12s;
 }
 
 
@@ -20,54 +34,116 @@
 body {font-family:Nunito,sans-serif; margin:0;}
 
 
-
-div#container {background-color:var(--themecolor); background-color:#555;}
-div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-div#container div.btn {cursor:pointer; user-select:none;}
-
-
-div#container main.main {position:fixed; top:0; right:0; bottom:auto; left:auto; overflow:hidden; /* max-width:20rem; */ box-shadow:var(--shadow);}
-div#container main.main {background-color:white; display:flex; flex-direction:row; align-items:stretch;}
-div#container main.main {padding-bottom:.25rem; border-radius:.5rem; border-left:var(--edge); margin:1rem 2rem;}
-div#container main.main {transform:translateX(200%); transition:.5s cubic-bezier(.68,-.55,.265,1.35);}
-div#container main.main.active {transform:translateX(0);}
-
-div#container main.main div.seg {padding:.625rem .75rem;}
-div#container main.main div.side {display:grid; place-items:center;}
-/* div#container main.main div.left {} */
-div#container main.main div.left span.icon {background-color:var(--themecolor); color:white;}
-div#container main.main div.left span.icon {display:grid; place-items:center; min-height:2em; min-width:2em; border-radius:50%;}
-/* div#container main.main div.left span.icon svg.icon {} */
-/* div#container main.main div.right {} */
-div#container main.main div.right div.closebtn {height:100%;}
-/* div#container main.main div.right div.closebtn {transition:.375s;} */
-div#container main.main div.right div.closebtn:hover {background-color:whitesmoke;}
-/* div#container main.main div.right div.closebtn {height:100%; width:100%;} */
-/* div#container main.main div.right div.closebtn span.icon {} */
-div#container main.main div.center {flex-grow:1; display:flex; flex-direction:column; align-items:stretch;}
-div#container main.main div.center p.textcopy {font-weight:100; white-space:nowrap; margin:0;}
-div#container main.main div.center p.textcopy.h {font-size:1.125rem; font-weight:800;}
-
-div#container main.main div.progress {position:absolute; bottom:0; left:0;}
-div#container main.main div.progress {background-color:var(--themecolor); height:.125rem; width:0;}
-div#container main.main.active div.progress {animation:progress 1 linear var(--period);}
+/* Container */
+div#container {background-color:var(--dark); /* background-color:#555; */}
+div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1rem;}
 
 
+/* User Input */
+div#container main.main {background-color:var(--blackglass); display:flex; flex-direction:column; align-items:center; padding:.875rem; border-radius:.75rem; margin-top:1rem; box-shadow:var(--shadow);}
+div#container main.main.x {display:none;}
+div#container main.main h1.head {color:white; font-size:1.625rem; margin:0; margin-top:.125em;}
+/* div#container main.main div.grid {display:flex; flex-direction:row; grid-gap:.625rem;} */
+div#container main.main div.grid {display:grid; width:100%; grid-gap:0 .625rem;}
+div#container main.main div.grid.e {grid-template-columns:repeat(2,1fr);}
+div#container main.main div.grid.h {grid-template-columns:1fr 5em;}
+div#container main.main input.input {font-family:inherit; font-size:inherit;}
+div#container main.main input.input {width:100%; resize:none; padding:.625rem 1rem; border-radius:.5rem; border:0 none; outline:none; margin-top:.625rem; box-shadow:var(--thinshadow);}
+/* div#container main.main input.header {font-size:1.125rem;} */
+/* div#container main.main textarea.message {font-size:1rem;} */
+div#container main.main div.showbtn {color:white; white-space:nowrap; width:100%; text-align:center; padding:.5rem 1rem; border-radius:.5rem; margin-top:.625rem; box-shadow:var(--thinshadow);}
+div#container main.main div.showbtn {cursor:pointer; user-select:none;}
+/* div#container main.main.r div.showbtn {margin:.625rem .375rem 0;} */
+div#container main.main div.showbtn.c {background-color:var(--fadedblue);}
+div#container main.main div.showbtn.s {background-color:var(--green);}
+div#container main.main div.showbtn.i {background-color:var(--lightblue);}
+div#container main.main div.showbtn.w {background-color:var(--yellow);}
+div#container main.main div.showbtn.e {background-color:var(--red);}
+div#container main.main div.showbtn.c:hover {background-color:var(--deepblue);}
+div#container main.main div.showbtn span.caption {font-weight:100; letter-spacing:1px; /* margin-top:1rem; */}
 
-div#container div.showbtn {background-color:var(--themecolor); color:white; padding:.5rem 1rem; border-radius:.25rem; box-shadow:var(--thinshadow);}
-div#container div.showbtn:hover {background-color:var(--themecolor);}
-div#container div.showbtn span.caption {font-weight:100; letter-spacing:1px; /* margin-top:1rem; */}
 
+/* Toaster List */
+div#container ul.toasterlist {list-style:none; padding:0; padding:.5rem 0 1rem; margin:0;}
+div#container ul.toasterlist {position:fixed; top:0; right:0; bottom:auto; left:auto; width:100%;;}
+div#container ul.toasterlist {display:flex; flex-direction:column; align-items:flex-end; height:100%; overflow-y:auto; scrollbar-width:none; pointer-events:none;}
 
+/* Toast Item */
+div#container ul.toasterlist li.toastitem {width:100%; max-width:20rem; margin:.5rem 1rem 0;}
+div#container ul.toasterlist li.toastitem {max-height:0; opacity:0; transform:translateX(200%); transition:transform .5s cubic-bezier(.68,-.55,.265,1.35);}
+div#container ul.toasterlist li.toastitem.x {display:none;}
+/* div#container ul.toasterlist li.toastitem.gone {} */
+div#container ul.toasterlist li.toastitem.active {max-height:50vh; opacity:1; transform:none;}
+div#container ul.toasterlist li.toastitem div.toast {background-color:white; /* height:100%; */ position:relative; pointer-events:initial;/*  margin:1rem 2rem 0; */}
+div#container ul.toasterlist li.toastitem div.toast {display:flex; flex-direction:row; align-items:stretch; overflow:hidden;}
+div#container ul.toasterlist li.toastitem div.toast {/* padding-bottom:.25rem; */ border-left:.375rem solid var(--displaycolor); border-radius:.5rem; box-shadow:var(--shadow);}
+div#container ul.toasterlist li.toastitem div.toast.c {--displaycolor:var(--fadedblue)}
+div#container ul.toasterlist li.toastitem div.toast.i {--displaycolor:var(--lightblue)}
+div#container ul.toasterlist li.toastitem div.toast.e {--displaycolor:var(--red)}
+div#container ul.toasterlist li.toastitem div.toast.w {--displaycolor:var(--yellow)}
+div#container ul.toasterlist li.toastitem div.toast.s {--displaycolor:var(--green)}
 
-@keyframes progress {
+/* Toast Image */
+div#container ul.toasterlist li.toastitem div.toast div.image {display:flex; justify-content:center; align-items:center; padding-left:.75rem; margin:1rem 0;}
+div#container ul.toasterlist li.toastitem div.toast div.image svg.icon {font-size:2.25rem;}
+div#container ul.toasterlist li.toastitem div.toast.i div.image svg.icon {color:var(--lightblue);}
+div#container ul.toasterlist li.toastitem div.toast.e div.image svg.icon {color:var(--red);}
+div#container ul.toasterlist li.toastitem div.toast.w div.image svg.icon {color:var(--yellow);}
+div#container ul.toasterlist li.toastitem div.toast.s div.image svg.icon {color:var(--green);}
+div#container ul.toasterlist li.toastitem div.toast.c div.image svg.icon {color:var(--fadedblue);}
+/* div#container ul.toasterlist li.toastitem div.toast div.image span.bubble {background-color:var(--fadedblue); color:white;} */
+/* div#container ul.toasterlist li.toastitem div.toast div.image span.bubble {display:grid; place-items:center; min-height:2em; min-width:2em; border-radius:50%;} */
+/* div#container ul.toasterlist li.toastitem div.toast div.image span.bubble svg.icon {} */
+
+/* Toast Message */
+div#container ul.toasterlist li.toastitem div.toast div.message {flex-grow:1; display:flex; flex-direction:column; justify-content:center; align-items:stretch; padding:.625rem .75rem;}
+div#container ul.toasterlist li.toastitem div.toast div.message h1.head {font-size:1.125rem; font-weight:800; margin:0;}
+div#container ul.toasterlist li.toastitem div.toast div.message p.textcopy {font-weight:100; line-height:1.25; /* white-space:nowrap; */ margin:0;}
+
+/* Toast Controls */
+div#container ul.toasterlist li.toastitem div.toast div.controls {display:flex; justify-content:center; align-items:center;}
+div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {background-color:whitesmoke; transition:.125s;}
+div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {display:grid; place-items:center; cursor:pointer; user-select:none; --size:2.25rem; width:var(--size); height:var(--size); border-radius:50%; margin:0 .5rem;}
+div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn.fill {--size:100%; padding:.375rem .625rem .5rem; border-radius:initial; margin:0;}
+div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn:hover {background-color:var(--lightgrey);}
+/* div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {height:100%; width:100%;} */
+div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn span.icon {font-size:1.5rem;}
+
+/* Toast Progress Bar */
+div#container ul.toasterlist li.toastitem div.toast::after {background-color:var(--displaycolor); content:'';}
+div#container ul.toasterlist li.toastitem div.toast::after {position:absolute; left:0; bottom:0; height:.125rem; width:0; width:100%;}
+div#container ul.toasterlist li.toastitem.active div.toast::after {width:0; transition:var(--toastduration) linear;}
+/* div#container ul.toasterlist li.toastitem.active div.toast::after {animation:progress 1 linear var(--toastduration);} */
+
+/* Toaster Progress Bar Animation */
+/* @keyframes progress {
 	from {width:100%;} to {width:0;}
-}
+} */
 
-@media screen and (max-width:30rem) {
-	div#container main.main {top:auto; right:0; bottom:0; left:0; transform:translateY(200%);}
-	div#container main.main {text-align:center; border-left:none; border-top:var(--edge);}
-	div#container main.main div.seg {padding:.5rem .625rem;}
-	div#container main.main div.right {padding-top:0;}
-	div#container main.main div.center p.textcopy {margin:0;}
+
+
+
+
+@media screen and (max-width:32rem) {
+
+	/* Toaster List */
+	div#container ul.toasterlist {top:0; right:1rem; bottom:auto; left:1rem; width:auto; margin:0 auto;}
+
+	/* Toast Item */
+	div#container ul.toasterlist li.toastitem {transform:translateY(-200%);}
+	div#container ul.toasterlist li.toastitem div.toast {flex-direction:column; text-align:center; /* border:none; */ /* border-top:.375rem solid var(--displaycolor); */}
+
+	/* Toast Image */
+	div#container ul.toasterlist li.toastitem div.toast div.image {padding:0; padding-top:.75rem; margin:0;}
+
+	/* Toast Message */
+	/* div#container ul.toasterlist li.toastitem div.toast div.message {} */
+	div#container ul.toasterlist li.toastitem div.toast div.message p.textcopy {margin:0;}
+
+	/* Toast Controls */
+	div#container ul.toasterlist li.toastitem div.toast div.controls {padding-top:0;}
+	div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {position:absolute; top:0; right:0; height:2rem; width:2rem; border-radius:.5rem; margin:.125rem;}
+
+	/* Toast Progress Bar */
+	/* div#container ul.toasterlist li.toastitem div.toast::after {} */
 }

@@ -4,13 +4,16 @@
 
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="../atgicon.ico" rel="icon"/>
+		<!-- <link href="./icon.png" rel="apple-touch-icon"/> -->
 		<title>Toast w/ Progress Bar</title>
 
 		<!-- Main Stylesheet -->
-		<link href="toastprogress.css" rel="stylesheet" type="text/css"/>
+		<link href="./toastprogress.css" rel="stylesheet" type="text/css"/>
 	</head>
 
 	<body>
@@ -19,79 +22,371 @@
 		<div id="container">
 			
 			<!-- main -->
-			<main id="toaster" class="main">
+			<main class="main xyz">
 
-				<!-- left -->
-				<div class="seg side left">
+				<!-- head -->
+				<h1 class="head">Toast</h1>
+				<!-- /head -->
 
-					<!-- icon -->
-					<span class="icon">
-						<svg class="icon check" width="1.25em" height="1.25em" fill="currentColor" viewBox="0 0 16 16">
-							<!-- <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/> -->
-							<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-						</svg>
-					</span>
-					<!-- /icon -->
+				<!-- grid -->
+				<div class="grid h">
 
-				</div>
-				<!-- /left -->
-
-				<!-- center -->
-				<div class="seg center">
-
-					<!-- textcopy -->
-					<p class="h textcopy">Success</p>
-					<!-- /textcopy -->
-
-					<!-- textcopy -->
-					<p class="textcopy">Your changes have been saved</p>
-					<!-- /textcopy -->
+					<!-- message -->
+					<input class="input message" type="text" placeholder="Type message here...">
+					<!-- <textarea class="input message" rows="2" placeholder="Type message here..."></textarea> -->
+					<!-- /message -->
+	
+					<!-- duration -->
+					<input class="input duration" type="number" placeholder="Time" min="1" max="60" minlength="2">
+					<!-- /duration -->
 
 				</div>
-				<!-- /center -->
+				<!-- /grid -->
+	
+				<!-- btn -->
+				<div class="showbtn btn c" data-msgtypeid="c">
+	
+					<!-- caption -->
+					<span class="caption">Display</span>
+					<!-- /caption -->
+	
+				</div>
+				<!-- /btn -->
 
-				<!-- right -->
-				<div class="seg side right">
-
-					<!-- closebtn -->
-					<div class="closebtn btn">
-
-						<!-- icon -->
-						<span class="icon">&times;</span>
-						<!-- /icon -->
-
+				<!-- grid -->
+				<div class="grid e">
+	
+					<!-- btn -->
+					<div class="showbtn btn i" data-msgtypeid="i">
+		
+						<!-- caption -->
+						<span class="caption">Info</span>
+						<!-- /caption -->
+		
 					</div>
-					<!-- /closebtn -->
+					<!-- /btn -->
+		
+					<!-- btn -->
+					<div class="showbtn btn e" data-msgtypeid="e">
+		
+						<!-- caption -->
+						<span class="caption">Error</span>
+						<!-- /caption -->
+		
+					</div>
+					<!-- /btn -->
+		
+					<!-- btn -->
+					<div class="showbtn btn w" data-msgtypeid="w">
+		
+						<!-- caption -->
+						<span class="caption">Warning</span>
+						<!-- /caption -->
+		
+					</div>
+					<!-- /btn -->
+		
+					<!-- btn -->
+					<div class="showbtn btn s" data-msgtypeid="s">
+		
+						<!-- caption -->
+						<span class="caption">Success</span>
+						<!-- /caption -->
+		
+					</div>
+					<!-- /btn -->
 
 				</div>
-				<!-- /right -->
-
-				<!-- progress -->
-				<div class="progress"></div>
-				<!-- /progress -->
+				<!-- /grid -->
 
 			</main>
 			<!-- /main -->
 
-			<!-- btn -->
-			<div class="showbtn btn">
+			<!-- toasterlist -->
+			<ul class="toasterlist">
 
-				<!-- caption -->
-				<span class="caption">Show Toast</span>
-				<!-- /caption -->
+				<!-- toastitem -->
+				<li class="toastitem x" id="toast0">
 
-			</div>
-			<!-- /btn -->
+					<!-- toast -->
+					<div class="toast c">
+	
+						<!-- image -->
+						<div class="image">
+		
+							<!-- icon -->
+							<svg class="icon checkcircle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+							<!-- /icon -->
+		
+						</div>
+						<!-- /image -->
+		
+						<!-- message -->
+						<div class="message">
+		
+							<!-- head -->
+							<h1 class="head">Message</h1>
+							<!-- /head -->
+		
+							<!-- textcopy -->
+							<p class="textcopy">Your changes have been saved</p>
+							<!-- /textcopy -->
+		
+						</div>
+						<!-- /message -->
+		
+						<!-- controls -->
+						<div class="controls">
+		
+							<!-- closebtn -->
+							<div class="closebtn btn">
+		
+								<!-- icon -->
+								<span class="icon">&times;</span>
+								<!-- /icon -->
+		
+							</div>
+							<!-- /closebtn -->
+		
+						</div>
+						<!-- /controls -->
+						
+					</div>
+					<!-- /toast -->
+
+				</li>
+				<!-- /toastitem -->
+
+				<!-- toastitem -->
+				<li class="toastitem x" id="toast0">
+
+					<!-- toast -->
+					<div class="toast i">
+	
+						<!-- image -->
+						<div class="image">
+		
+							<!-- icon -->
+							<svg class="icon infocircle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+							</svg>
+							<!-- /icon -->
+		
+						</div>
+						<!-- /image -->
+		
+						<!-- message -->
+						<div class="message">
+		
+							<!-- head -->
+							<h1 class="head">Info</h1>
+							<!-- /head -->
+		
+							<!-- textcopy -->
+							<p class="textcopy">Your changes have been saved</p>
+							<!-- /textcopy -->
+		
+						</div>
+						<!-- /message -->
+		
+						<!-- controls -->
+						<div class="controls">
+		
+							<!-- closebtn -->
+							<div class="closebtn btn">
+		
+								<!-- icon -->
+								<span class="icon">&times;</span>
+								<!-- /icon -->
+		
+							</div>
+							<!-- /closebtn -->
+		
+						</div>
+						<!-- /controls -->
+						
+					</div>
+					<!-- /toast -->
+
+				</li>
+				<!-- /toastitem -->
+
+				<!-- toastitem -->
+				<li class="toastitem x" id="toast0">
+
+					<!-- toast -->
+					<div class="toast e">
+	
+						<!-- image -->
+						<div class="image">
+		
+							<!-- icon -->
+							<svg class="icon crosscircle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+							</svg>
+							<!-- /icon -->
+		
+						</div>
+						<!-- /image -->
+		
+						<!-- message -->
+						<div class="message">
+		
+							<!-- head -->
+							<h1 class="head">Error</h1>
+							<!-- /head -->
+		
+							<!-- textcopy -->
+							<p class="textcopy">Your changes have been saved</p>
+							<!-- /textcopy -->
+		
+						</div>
+						<!-- /message -->
+		
+						<!-- controls -->
+						<div class="controls">
+		
+							<!-- closebtn -->
+							<div class="closebtn btn">
+		
+								<!-- icon -->
+								<span class="icon">&times;</span>
+								<!-- /icon -->
+		
+							</div>
+							<!-- /closebtn -->
+		
+						</div>
+						<!-- /controls -->
+						
+					</div>
+					<!-- /toast -->
+
+				</li>
+				<!-- /toastitem -->
+
+				<!-- toastitem -->
+				<li class="toastitem x" id="toast0">
+
+					<!-- toast -->
+					<div class="toast w">
+	
+						<!-- image -->
+						<div class="image">
+		
+							<!-- icon -->
+							<svg class="icon exclamationtriangle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+							</svg>
+							<!-- /icon -->
+		
+						</div>
+						<!-- /image -->
+		
+						<!-- message -->
+						<div class="message">
+		
+							<!-- head -->
+							<h1 class="head">Warning</h1>
+							<!-- /head -->
+		
+							<!-- textcopy -->
+							<p class="textcopy">Your changes have been saved</p>
+							<!-- /textcopy -->
+		
+						</div>
+						<!-- /message -->
+		
+						<!-- controls -->
+						<div class="controls">
+		
+							<!-- closebtn -->
+							<div class="closebtn btn">
+		
+								<!-- icon -->
+								<span class="icon">&times;</span>
+								<!-- /icon -->
+		
+							</div>
+							<!-- /closebtn -->
+		
+						</div>
+						<!-- /controls -->
+						
+					</div>
+					<!-- /toast -->
+
+				</li>
+				<!-- /toastitem -->
+
+				<!-- toastitem -->
+				<li class="toastitem x" id="toast0">
+
+					<!-- toast -->
+					<div class="toast s">
+	
+						<!-- image -->
+						<div class="image">
+		
+							<!-- icon -->
+							<svg class="icon checkcircle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+							<!-- /icon -->
+		
+						</div>
+						<!-- /image -->
+		
+						<!-- message -->
+						<div class="message">
+		
+							<!-- head -->
+							<h1 class="head">Success</h1>
+							<!-- /head -->
+		
+							<!-- textcopy -->
+							<p class="textcopy">Your changes have been saved</p>
+							<!-- /textcopy -->
+		
+						</div>
+						<!-- /message -->
+		
+						<!-- controls -->
+						<div class="controls">
+		
+							<!-- closebtn -->
+							<div class="closebtn btn">
+		
+								<!-- icon -->
+								<span class="icon">&times;</span>
+								<!-- /icon -->
+		
+							</div>
+							<!-- /closebtn -->
+		
+						</div>
+						<!-- /controls -->
+						
+					</div>
+					<!-- /toast -->
+
+				</li>
+				<!-- /toastitem -->
+
+			</ul>
+			<!-- /toasterlist -->
 
 		</div>
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
-		<!-- <script src="database.js" type="text/javascript"></script> -->
+		<!-- Message Database -->
+		<script src="./msgdatabase.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
-		<script src="toastprogress.js" type="text/javascript"></script>
+		<script src="./toastprogress.js" type="text/javascript"></script>
 
 	</body>
 
