@@ -17,12 +17,6 @@ const inputduration = document.querySelector('div#container main.main input.dura
 // Get toaster list. 
 const toasterlist = document.querySelector('div#container ul.toasterlist');
 
-// Get contents of toast. 
-// const toasteritem = document.querySelector('div#container ul.toasterlist li.toast');
-// const toasterheader = document.querySelector('div#container ul.toasterlist li.toast div.message h1.head');
-// const toastercontent = document.querySelector('div#container ul.toasterlist li.toast div.message p.textcopy');
-// const toasterclosebtn = document.querySelector('div#container ul.toasterlist li.toast div.closebtn');
-
 
 /*****/
 
