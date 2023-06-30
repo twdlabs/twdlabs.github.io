@@ -69,13 +69,13 @@ div#container ul.toasterlist {position:fixed; top:0; right:0; bottom:auto; left:
 div#container ul.toasterlist {display:flex; flex-direction:column; align-items:flex-end; height:100%; overflow-y:auto; scrollbar-width:none; pointer-events:none;}
 
 /* Toast Item */
-div#container ul.toasterlist li.toastitem {width:100%; max-width:20rem; z-index:var(--i); margin:.5rem 1rem 0;}
-div#container ul.toasterlist li.toastitem {max-height:0; opacity:0; transform:translateX(200%); transition:max-height 1s, opacity .5s, transform .5s cubic-bezier(.68,-.55,.265,1.35);}
+div#container ul.toasterlist li.toastitem {width:100%; max-width:24rem; z-index:var(--i); margin:.5rem 1rem 0;}
+div#container ul.toasterlist li.toastitem {max-height:0; opacity:0; transform:translateX(200%); transition:max-height 2s, opacity .5s, transform .5s cubic-bezier(.68,-.55,.265,1.35);}
 div#container ul.toasterlist li.toastitem.x {display:none;}
 div#container ul.toasterlist li.toastitem.active {max-height:50vh; opacity:1; transform:none;}
 div#container ul.toasterlist li.toastitem.active.gone {max-height:0;}
-div#container ul.toasterlist li.toastitem div.toast {background-color:white; /* height:100%; */ position:relative; pointer-events:initial;/*  margin:1rem 2rem 0; */}
-div#container ul.toasterlist li.toastitem div.toast {display:flex; flex-direction:row; align-items:stretch; overflow:hidden;}
+div#container ul.toasterlist li.toastitem div.toast {background-color:white; /* height:100%; */ position:relative; pointer-events:initial;}
+div#container ul.toasterlist li.toastitem div.toast {display:flex; flex-direction:row; align-items:center; overflow:hidden; padding:0 .5rem;/*  margin:1rem 2rem 0; */}
 div#container ul.toasterlist li.toastitem div.toast {/* padding-bottom:.25rem; */ border-left:.375rem solid var(--displaycolor); border-radius:.5rem; box-shadow:var(--shadow);}
 div#container ul.toasterlist li.toastitem div.toast.c {--displaycolor:var(--fadedblue)}
 div#container ul.toasterlist li.toastitem div.toast.i {--displaycolor:var(--lightblue)}
@@ -84,7 +84,7 @@ div#container ul.toasterlist li.toastitem div.toast.w {--displaycolor:var(--yell
 div#container ul.toasterlist li.toastitem div.toast.s {--displaycolor:var(--green)}
 
 /* Toast Image */
-div#container ul.toasterlist li.toastitem div.toast div.image {display:flex; justify-content:center; align-items:center; padding-left:.75rem; margin:1rem 0;}
+div#container ul.toasterlist li.toastitem div.toast div.image {display:flex; justify-content:center; align-items:center; margin:1rem 0; margin-left:.25rem;}
 div#container ul.toasterlist li.toastitem div.toast div.image svg.icon {font-size:2.25rem;}
 div#container ul.toasterlist li.toastitem div.toast.i div.image svg.icon {color:var(--lightblue);}
 div#container ul.toasterlist li.toastitem div.toast.e div.image svg.icon {color:var(--red);}
@@ -98,13 +98,12 @@ div#container ul.toasterlist li.toastitem div.toast.c div.image svg.icon {color:
 /* Toast Message */
 div#container ul.toasterlist li.toastitem div.toast div.message {flex-grow:1; display:flex; flex-direction:column; justify-content:center; align-items:stretch; padding:.625rem .75rem;}
 div#container ul.toasterlist li.toastitem div.toast div.message h1.head {font-size:1.125rem; font-weight:800; margin:0;}
-div#container ul.toasterlist li.toastitem div.toast div.message p.textcopy {font-weight:100; line-height:1.25; /* white-space:nowrap; */ margin:0;}
+div#container ul.toasterlist li.toastitem div.toast div.message span.caption {font-weight:100; line-height:1.25; /* white-space:nowrap; */ margin:0;}
 
 /* Toast Controls */
-div#container ul.toasterlist li.toastitem div.toast div.controls {display:flex; justify-content:center; align-items:center;}
+div#container ul.toasterlist li.toastitem div.toast div.controls {display:flex; justify-content:center; align-items:center;/*  margin-left:.5rem; */}
 div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {background-color:whitesmoke; transition:.125s;}
-div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {display:grid; place-items:center; cursor:pointer; user-select:none; --size:2.25rem; width:var(--size); height:var(--size); border-radius:50%; margin:0 .5rem;}
-div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn.fill {--size:100%; padding:.375rem .625rem .5rem; border-radius:initial; margin:0;}
+div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {display:grid; place-items:center; cursor:pointer; user-select:none; --size:2.25rem; width:var(--size); height:var(--size); border-radius:50%;}
 div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn:hover {background-color:var(--lightgrey);}
 /* div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {height:100%; width:100%;} */
 div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn span.icon {font-size:1.5rem;}
@@ -124,6 +123,46 @@ div#container ul.toasterlist li.toastitem.active div.toast::after {width:0; tran
 
 
 
+@media screen and (min-width:32rem) {
+
+	/* Toaster List */
+
+	/* Toast Item */
+
+	/* Toast Image */
+
+	/* Toast Message */
+
+	/* Toast Controls */
+
+	/* Toast Progress Bar */
+}
+
+@media screen and (min-width:32rem) {
+	
+	/* Toaster List */
+	/* div#container ul.toasterlist {} */
+	
+	/* Toast Item */
+	/* div#container ul.toasterlist li.toastitem {} */
+	/* div#container ul.toasterlist li.toastitem div.toast {} */
+	div#container ul.toasterlist li.toastitem div.toast.fill {align-items:stretch;}
+
+	/* Toast Image */
+	/* div#container ul.toasterlist li.toastitem div.toast div.image {} */
+
+	/* Toast Message */
+	/* div#container ul.toasterlist li.toastitem div.toast div.message {} */
+
+	/* Toast Controls */
+	/* div#container ul.toasterlist li.toastitem div.toast.fill div.controls {} */
+	div#container ul.toasterlist li.toastitem div.toast.fill div.controls div.closebtn {--size:100%; padding:.375rem .625rem .5rem; border-radius:initial; margin:0;}
+
+	/* Toast Progress Bar */
+	/* div#container ul.toasterlist li.toastitem div.toast::after {} */
+}
+
+
 @media screen and (max-width:32rem) {
 
 	/* Toaster List */
@@ -139,7 +178,7 @@ div#container ul.toasterlist li.toastitem.active div.toast::after {width:0; tran
 
 	/* Toast Message */
 	/* div#container ul.toasterlist li.toastitem div.toast div.message {} */
-	div#container ul.toasterlist li.toastitem div.toast div.message p.textcopy {margin:0;}
+	div#container ul.toasterlist li.toastitem div.toast div.message span.caption {margin:0;}
 
 	/* Toast Controls */
 	div#container ul.toasterlist li.toastitem div.toast div.controls {padding-top:0;}
