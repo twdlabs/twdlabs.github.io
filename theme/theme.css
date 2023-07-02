@@ -1,4 +1,7 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
 :root {
 	--b:#1E7CBC;
 	--g:#249D5E;
@@ -9,10 +12,12 @@
 	--r:#FB1A2E;
 	--m:#F45690;
 }
+
+
 * {box-sizing:border-box;}
 
 
-body {font-family:Verdana,sans-serif; margin:0;}
+body {font-family:/* Nunito, */Verdana,sans-serif; margin:0;}
 
 
 
