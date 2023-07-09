@@ -19,10 +19,10 @@
 	<body>
 
 		<!-- #container -->
-		<div id="container" class="on">
+		<div id="container" class="">
 
 			<!-- sharebtn -->
-			<a class="sharebtn" href="javascript:void(0)" onclick="container.classList.add('on');">
+			<a class="sharebtn" href="javascript:void(0)">
 
 				<!-- icon -->
 				<svg class="icon paperplane" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="display:none;">
@@ -40,7 +40,7 @@
 			<!-- /sharebtn -->
 
 			<!-- back -->
-			<aside class="back" onclick="container.classList.remove('on');"></aside>
+			<aside class="back"></aside>
 			<!-- /back -->
 
 			<!-- main -->
@@ -54,7 +54,7 @@
 					<!-- /head -->
 
 					<!-- closebtn -->
-					<a class="closebtn" href="javascript:void(0)" onclick="container.classList.remove('on');">
+					<a class="closebtn" href="javascript:void(0)">
 	
 						<!-- icon -->
 						<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -187,7 +187,17 @@
 					<!-- /link -->
 
 					<!-- copybtn -->
-					<div class="copybtn">Copy</div>
+					<div class="copybtn">
+
+						<!-- caption -->
+						<span class="caption">Copy</span>
+						<!-- /caption -->
+
+						<!-- caption -->
+						<span class="caption on">Copied</span>
+						<!-- /caption -->
+
+					</div>
 					<!-- /copybtn -->
 
 				</div>
