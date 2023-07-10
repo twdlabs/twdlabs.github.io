@@ -15,20 +15,22 @@
 	--blackglass:#0008;
 
 	/* General Colors */
-	--grey:#CCC;
+	/* --grey:#CCC; */
 	--grey:#F5F4FD;
 	--black:#444;
 	--darkgrey:#D8D5F2;
-	/* Theme Colors */
 	--royalblue:#5372F0;
-	--themecolor:dodgerblue;
+	--royalbluetr:#5372F044;
+	/* Theme Colors */
 	--themecolor:var(--royalblue);
+	--themecolortr:var(--royalbluetr);
 
 	/* Number Values */
 	--dt:.125s;
 
 	/* Page Sizes */
 	--edgesize:4rem;
+	--pagewidth:80rem;
 	--slidebtnsize:2rem;
 	--slidebtniconsize:1.125rem;
 	--slidebtniconsize:.875rem;
@@ -54,7 +56,7 @@ div#container {background:linear-gradient(135deg,#F0F0F0,white); min-height:100v
 
 
 /* Navbar */
-div#container nav.navbar {padding:1.25rem 2rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar {grid-area:navbar; padding:1.25rem 2rem; box-shadow:var(--boxshadow);}
 div#container nav.navbar main {max-width:78rem; margin:0 auto;}
 div#container nav.navbar h1.head {flex-grow:0;}
 div#container nav.navbar h1.head {display:flex; flex-direction:row; align-items:center;}
@@ -64,9 +66,9 @@ div#container nav.navbar h1.head svg.icon {margin-right:.5rem;}
 
 
 /* Main Layout */
-div#container div.layout {display:flex; flex-direction:row; justify-content:center; max-width:80rem; transition:.25s; padding:.75rem; margin:0 auto;}
-div#container div.layout main.player {flex-grow:1; background-color:white; border-radius:.25rem; max-width:60rem;}
-div#container div.layout aside.playlist {flex-grow:0; background-color:white; border-radius:.25rem; margin-left:.75rem;}
+div#container div.layout {display:grid; grid-template-columns:1fr auto; grid-template-areas:'navbar navbar''player playlist'; max-width:var(--pagewidth); transition:padding .25s; padding:.75rem; margin:0 auto;}
+div#container div.layout main.player {background-color:white; grid-area:player; border-radius:.25rem;}
+div#container div.layout aside.playlist {background-color:white; grid-area:playlist; border-radius:.25rem; margin-left:.75rem;}
 
 
 
@@ -90,7 +92,7 @@ div#container div.layout aside.playlist {flex-grow:0; background-color:white; bo
 	/* div#container nav.navbar {} */
 	
 	/* Main Layout */
-	div#container div.layout {flex-direction:column; justify-content:flex-start; align-items:stretch;}
+	div#container div.layout {grid-template-columns:1fr; grid-template-areas:'navbar''player''playlist';}
 	/* div#container div.layout main.player {} */
 	/* div#container div.layout aside.playlist {} */
 }

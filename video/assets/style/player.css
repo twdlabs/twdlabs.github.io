@@ -42,7 +42,7 @@ div#container div.layout main.player div.vid.hi div.volumebtn svg.icon.high {dis
 
 div#container div.layout main.player div.metadata {margin:.75rem; user-select:none;}
 div#container div.layout main.player div.metadata h2#title {font-size:1.25rem; font-weight:100; margin:0; margin:.25rem 0;}
-div#container div.layout main.player div.metadata div#viewcount {color:#AAA; font-size:.65rem;}
+div#container div.layout main.player div.metadata div#viewcount {color:#AAA; font-size:.75rem;}
 
 div#container div.layout main.player div.reaction {display:flex; flex-direction:row; justify-content:center; align-items:center; margin:.75rem 0; padding:0 1.25rem;}
 div#container div.layout main.player div.reaction {overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
@@ -63,12 +63,12 @@ div#container div.layout main.player div.channel div.brand div#avatar {border-ra
 div#container div.layout main.player div.channel div.brand div#avatar {background-color:#0001; background-size:cover; background-position:center; background-repeat:no-repeat;}
 div#container div.layout main.player div.channel div.brand div#avatar {background-image:url('../assets/images/avatar-m.png');}
 div#container div.layout main.player div.channel div.brand div.details {margin-left:.375rem;}
-div#container div.layout main.player div.channel div.brand div.details div#channelname {color:black; font-size:.75rem;}
-div#container div.layout main.player div.channel div.brand div.details div#channelsubcount {color:#AAA; font-size:.65rem;}
-div#container div.layout main.player div.channel div.subbtns {display:flex; flex-direction:row; align-items:center; align-items:flex-end;}
+div#container div.layout main.player div.channel div.brand div.details div#channelname {color:black; font-size:.875rem;}
+div#container div.layout main.player div.channel div.brand div.details div#channelsubcount {color:#AAA; font-size:.75rem;}
+div#container div.layout main.player div.channel div.subbtns {display:flex; flex-direction:row; align-items:center; /* align-items:flex-end; */}
 div#container div.layout main.player div.channel div.subbtns {color:#AAA; text-transform:uppercase;}
 div#container div.layout main.player div.channel div.subbtns >div {display:flex; flex-direction:column;}
-div#container div.layout main.player div.channel div.subbtns div#subbtn {font-size:.75rem; cursor:pointer; user-select:none;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn {font-size:.875rem; cursor:pointer; user-select:none;}
 div#container div.layout main.player div.channel div.subbtns div#subbtn span.caption {font-weight:normal;}
 div#container div.layout main.player div.channel div.subbtns div#subbtn span.caption.no {display:block; color:red; opacity:.75;}
 div#container div.layout main.player div.channel div.subbtns div#subbtn span.caption.yes {display:none;}
@@ -112,7 +112,7 @@ div#container div.layout main.player div.channel div.subbtns div#subbtn.active +
 	div#container div.layout main.player {padding:0;}
 	div#container div.layout main.player div.vid {border-radius:0;}
 	/* div#container div.layout main.player div.metadata {margin:.5rem;} */
-	div#container div.layout main.player div.metadata h2#title {font-size:.875rem;}
+	div#container div.layout main.player div.metadata h2#title {font-size:1.125rem;}
 }
 @media screen and (max-width:22rem) {
 	div#container div.layout main.player div.reaction {justify-content:flex-start;}

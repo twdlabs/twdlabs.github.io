@@ -140,7 +140,7 @@ function activateVideoPlayer() {
 			vidplayer.addEventListener('ended', selectNextVideo);
 
 			// Save current state of autoplay. 
-			vidplayer.setAttribute('autoplay','');
+			// vidplayer.setAttribute('autoplay','');
 			autoplayOn = true;
 		}
 
@@ -235,6 +235,9 @@ function loadCurrentVideo() {
 
 	// Load state of video reaction buttons. 
 	loadReactBtnStates();
+
+	// Play video after loading if autoplay on. 
+	if(autoplayOn) vidplayer.play();
 
 
 	/****/
