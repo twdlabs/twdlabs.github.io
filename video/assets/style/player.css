@@ -5,17 +5,40 @@
 
 div#container div.layout main.player {transition:.25s; padding:.5rem; box-shadow:var(--boxshadow);}
 
-div#container div.layout main.player div.vid {background-color:#0002; padding-top:62.5%; border-radius:.25rem; overflow: hidden; position:relative;}
+div#container div.layout main.player div.vid {background-color:#0002; color:white; padding-top:62.5%; border-radius:.25rem; overflow: hidden; position:relative;}
 div#container div.layout main.player div.vid video {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
-div#container div.layout main.player div.vid div.playbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-div#container div.layout main.player div.vid div.playbtn {background-color:#0004; cursor:pointer; user-select:none; padding:.25rem; border-radius:50%;}
-div#container div.layout main.player div.vid div.playbtn {opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s;}
-div#container div.layout main.player div.vid:hover div.playbtn {opacity:1; visibility:visible;}
-div#container div.layout main.player div.vid div.playbtn svg.icon {color:white; font-size:4rem;}
-div#container div.layout main.player div.vid div.playbtn svg.icon.play {display:block; transform:translateX(.25rem);}
+div#container div.layout main.player div.vid div.btn {cursor:pointer; user-select:none;}
+div#container div.layout main.player div.vid div.topper {opacity:0; visibility:hidden; transition:opacity .5s, visibility .5s;}
+div#container div.layout main.player div.vid:hover div.topper {opacity:1; visibility:visible;}
+div#container div.layout main.player div.vid div.dashboard {position:absolute; right:0; bottom:0; left:0; width:100%;}
+div#container div.layout main.player div.vid div.dashboard {background-color:var(--blackglass); color:white;}
+div#container div.layout main.player div.vid div.dashboard {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:.5rem;}
+div#container div.layout main.player div.vid div.dashboard div.autoplaybtn {font-size:.5rem; font-weight:bold; text-align:center;}
+div#container div.layout main.player div.vid div.dashboard div.autoplaybtn span.caption {text-transform:uppercase;}
+div#container div.layout main.player div.vid.ap div.dashboard div.autoplaybtn span.caption {color:var(--themecolor);}
+div#container div.layout main.player div.vid div.dashboard div.panel {display:flex; flex-direction:row; align-items:center;}
+div#container div.layout main.player div.vid div.dashboard div.panel.bar {flex-grow:1; padding:0 .5rem;}
+div#container div.layout main.player div.vid div.dashboard div.panel div.btn {display:flex; margin:0 .25rem;}
+div#container div.layout main.player div.vid div.dashboard div.panel div.playbtn {font-size:1.5rem;}
+div#container div.layout main.player div.vid div.dashboard div.panel div.volumebtn {font-size:1rem;}
+div#container div.layout main.player div.vid div.dashboard div.panel div.fullscreenbtn {font-size:1rem;}
+div#container div.layout main.player div.vid div.dashboard div.panel.bar div.pbar {background-color:var(--grey); height:.25rem; width:100%; border-radius:1rem;}
+div#container div.layout main.player div.vid div.topper.playbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div.layout main.player div.vid div.topper.playbtn {background-color:var(--blackglass); font-size:3rem; padding:.75rem; border-radius:50%;}
+/* div#container div.layout main.player div.vid div.topper.playbtn:active {scale:1.75;} */
+div#container div.layout main.player div.vid div.playbtn svg.icon.play {display:block; transform:translateX(.0625em);}
 div#container div.layout main.player div.vid div.playbtn svg.icon.pause {display:none;}
 div#container div.layout main.player div.vid.active div.playbtn svg.icon.play {display:none;}
 div#container div.layout main.player div.vid.active div.playbtn svg.icon.pause {display:block;}
+div#container div.layout main.player div.vid div.volumebtn svg.icon.off {display:block;}
+div#container div.layout main.player div.vid div.volumebtn svg.icon.low {display:none;}
+div#container div.layout main.player div.vid div.volumebtn svg.icon.high {display:none;}
+div#container div.layout main.player div.vid.lo div.volumebtn svg.icon.off {display:none;}
+div#container div.layout main.player div.vid.lo div.volumebtn svg.icon.low {display:block;}
+div#container div.layout main.player div.vid.lo div.volumebtn svg.icon.high {display:none;}
+div#container div.layout main.player div.vid.hi div.volumebtn svg.icon.off {display:none;}
+div#container div.layout main.player div.vid.hi div.volumebtn svg.icon.low {display:none;}
+div#container div.layout main.player div.vid.hi div.volumebtn svg.icon.high {display:block;}
 
 div#container div.layout main.player div.metadata {margin:.75rem; user-select:none;}
 div#container div.layout main.player div.metadata h2#title {font-size:1.25rem; font-weight:100; margin:0; margin:.25rem 0;}

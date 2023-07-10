@@ -3,35 +3,44 @@
 
 // Get video box. 
 const vidbox = document.querySelector('main.player div.vid');
-const vidplayervideo = document.querySelector('main.player div.vid video');
-const vidplayerplaybtn = document.querySelector('main.player div.vid div.playbtn');
+// Get video player. 
+const vidplayer = document.querySelector('main.player div.vid video');
+// Get video play buttons. 
+const vidboxplaybtns = document.querySelectorAll('main.player div.vid div.playbtn');
+// Get video play button. 
+const vidboxautoplaybtn = document.querySelector('main.player div.vid div.dashboard div.panel div.autoplaybtn');
+// Get video volume button. 
+const vidboxvolumebtn = document.querySelector('main.player div.vid div.dashboard div.panel div.volumebtn');
+// Get video skip button. 
+const vidboxnextbtn = document.querySelector('main.player div.vid div.dashboard div.panel div.nextbtn');
+
 // Get title box. 
-const titlebox = document.getElementById('title');
+const titlebox = document.querySelector('main.player div.metadata h2#title');
 // Get box for view count. 
-const viewcountbox = document.getElementById('viewcount');
+const viewcountbox = document.querySelector('main.player div.metadata div#viewcount');
 
 // Get like button. 
-const likebtn = document.getElementById('likebtn');
+const likebtn = document.querySelector('main.player div.reaction div.btn#likebtn');
 // Get dislike button. 
-const dislikebtn = document.getElementById('dislikebtn');
+const dislikebtn = document.querySelector('main.player div.reaction div.btn#dislikebtn');
 // Get share button. 
-const sharebtn = document.getElementById('sharebtn');
+const sharebtn = document.querySelector('main.player div.reaction div.btn#sharebtn');
 // Get download button. 
-const downloadbtn = document.getElementById('downloadbtn');
+const downloadbtn = document.querySelector('main.player div.reaction div.btn#downloadbtn');
 // Get save button. 
-const savebtn = document.getElementById('savebtn');
+const savebtn = document.querySelector('main.player div.reaction div.btn#savebtn');
 
 
 // Get box for channel name. 
-const channelnamebox = document.getElementById('channelname');
+const channelnamebox = document.querySelector('main.player div.channel div.brand div.details div#channelname');
 // Get box for channel subscriber count.
-const channelsubcount = document.getElementById('channelsubcount');
+const channelsubcount = document.querySelector('main.player div.channel div.brand div.details div#channelsubcount');
 // Get box for channel avatar. 
-const avatarbox = document.getElementById('avatar');
+const avatarbox = document.querySelector('main.player div.channel div.brand div#avatar');
 // Get subscribe button. 
-const subscribebtn = document.getElementById('subbtn');
+const subscribebtn = document.querySelector('main.player div.channel div.subbtns div#subbtn');
 // Get notification bell button. 
-// const notifbtn = document.getElementById('notifbtn');
+const notifbtn = document.querySelector('main.player div.channel div.subbtns div#notifbtn');
 
 
 /*****/
@@ -44,6 +53,9 @@ let thismoment = new Date().valueOf();
 // Define id of initial video. 
 let currentvideoid = 0;
 // console.log('currentvideoid:',currentvideoid);
+
+// Define initial state of autoplay. 
+let autoplayOn = true;
 
 
 /*****/
@@ -62,69 +74,143 @@ loadCurrentVideo();
 // Activate video player. 
 function activateVideoPlayer() {
 
-	// 
-	vidplayerplaybtn.addEventListener('click',togglePlayState);
+	// Activate video play buttons. 
+	for(let btn of vidboxplaybtns) {
+		btn.addEventListener('click',togglePlayState);
+	}
 
-	// Select next video (upon video ending). 
-	vidplayervideo.addEventListener('ended', selectNextVideo);
+	// Activate video autoplay button. 
+	vidboxautoplaybtn.addEventListener('click',toggleAutoplayState);
 
-	// Update state of play button. 
-	updatePlayBtn();
+	// Activate video volume button. 
+	vidboxvolumebtn.addEventListener('click',toggleVolumeState);
+	vidplayer.addEventListener('volumechange',updatePlayerState);
+
+	// Activate video volume button. 
+	vidboxnextbtn.addEventListener('click',selectNextVideo);
+
+	// Update state of video player. 
+	updatePlayerState();
 
 	/****/
 
 	// Toggle play state of video. 
-	function togglePlayState(event) {
+	function togglePlayState() {
 
 		// Check initial play state. 
-		// console.log('Previously playing:',!(vidplayervideo.paused));
+		// console.log('Previously playing:',!(vidplayer.paused));
 
 		// Play if not already playing. 
-		if(vidplayervideo.paused) {
-			vidplayervideo.play();
-			vidbox.classList.add('active');
+		// Shift play state: paused -> playing. 
+		if(vidplayer.paused) {
+			vidplayer.play();
 		}
 
 		// Pause if already playing. 
+		// Shift play state: playing -> paused. 
 		else {
-			vidplayervideo.pause();
-			vidbox.classList.remove('active');
+			vidplayer.pause();
 		}
 
 		// Check new play state. 
-		// console.log('Now playing:',!(vidplayervideo.paused));
+		// console.log('Now playing:',!(vidplayer.paused));
 
-		// Update state of play button. 
-		updatePlayBtn();
+		// Update state of video player. 
+		updatePlayerState();
 	}
 
-	// Update state of play button. 
-	function updatePlayBtn() {
+	// Toggle play state of video autoplay. 
+	function toggleAutoplayState() {
 
-		// Set off current playing. 
-		if(vidplayervideo.paused) {
-			vidbox.classList.remove('active');
+		// Shift autoplay state: on -> off. 
+		if(autoplayOn) {
+
+			// Don't select next video (upon video ending). 
+			vidplayer.removeEventListener('ended', selectNextVideo);
+
+			// Save current state of autoplay. 
+			vidplayer.removeAttribute('autoplay');
+			autoplayOn = false;
 		}
 
-		// Set on if current playing. 
+		// Shift autoplay state: off -> on. 
+		else {
+
+			// Select next video (upon video ending). 
+			vidplayer.addEventListener('ended', selectNextVideo);
+
+			// Save current state of autoplay. 
+			vidplayer.setAttribute('autoplay','');
+			autoplayOn = true;
+		}
+
+		// Update state of video player. 
+		updatePlayerState();
+	}
+
+	// Toggle play state of video volume. 
+	function toggleVolumeState() {
+
+		// Shift volume state: muted -> volume. 
+		if(vidplayer.muted) {
+			vidplayer.muted = false;
+		}
+
+		// Shift volume state: volume -> muted. 
+		else {
+			vidplayer.muted = true;
+		}
+
+		// Update state of video player. 
+		updatePlayerState();
+	}
+
+	// Update state of video player. 
+	function updatePlayerState() {
+
+		// Update current play state. 
+		if(vidplayer.paused) {
+			vidbox.classList.remove('active');
+		}
 		else {
 			vidbox.classList.add('active');
+		}
+
+		// Update current autoplay state. 
+		if(autoplayOn) {
+			vidbox.classList.add('ap');
+		}
+		else {
+			vidbox.classList.remove('ap');
+		}
+
+		// Update current volume state. 
+		if(vidplayer.muted) {
+			vidbox.classList.remove('lo','hi');
+		}
+		else {
+			if(vidplayer.volume<.5) vidbox.classList.add('lo');
+			else vidbox.classList.add('hi');
 		}
 	}
 
 	// Select next video (if available). 
-	function selectNextVideo(event) {
+	function selectNextVideo() {
 		// console.log('\nLoading next video...',event);
 	
 		// Increment video index. 
 		currentvideoid++;
 
-		// Adjust video index (to beginning) if out of bounds. 
+		// Adjust video index to beginning if out of bounds. 
 		if(currentvideoid >= videoData.length) currentvideoid = 0;
 	
 		// Load next video. 
 		loadCurrentVideo();
+
+		// Update state of video player. 
+		updatePlayerState();
 	}
+	// TODO: Implement playlist functionality here. 
 }
 
 // Load video on page (given video id). 
@@ -134,12 +220,11 @@ function loadCurrentVideo() {
 	// Highlight video by id. 
 	highlightVideoById(currentvideoid);
 
-	// Get video data. 
+	// Get video source data. 
 	let vidsrc = videoData[currentvideoid];
 
-	// Load video. 
-	// vidbox.innerHTML = createVideo();
-	vidplayervideo.src = vidsrc.vidurl || vidsrc.publicvidurl;
+	// Load video source data. 
+	vidplayer.src = vidsrc.vidurl || vidsrc.publicvidurl;
 
 	// Load video metadata. 
 	titlebox.innerHTML = vidsrc.title;
@@ -154,29 +239,6 @@ function loadCurrentVideo() {
 
 	/****/
 	
-
-	// Create video layout. 
-	function createVideo() {
-
-		// Determine whether or not to use url for published videos. 
-		let usePublishedVidUrl = true;
-
-		// Create video layout with published url. 
-		if(usePublishedVidUrl) {
-			return `
-			<!-- video -->
-			<video src="${ vidsrc.publicvidurl }" autoplay muted controls></video>
-			<!-- /video -->`;
-		}
-
-		// Create video layout with local url. 
-		else {
-			return `
-			<!-- video -->
-			<video src="${ vidsrc.vidurl }" autoplay muted controls></video>
-			<!-- /video -->`;
-		}
-	}
 	
 	// Highlight video by id. 
 	function highlightVideoById(id) {
