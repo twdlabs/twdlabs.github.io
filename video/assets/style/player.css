@@ -3,58 +3,68 @@
 
 /* Video Player */
 
-div#container section#body main.player {transition:.25s; padding:.5rem; box-shadow:var(--boxshadow);}
+div#container div.layout main.player {transition:.25s; padding:.5rem; box-shadow:var(--boxshadow);}
 
-div#container section#body main.player div.vid {background-color:#0002; padding-top:62.5%; border-radius:.25rem; position:relative;}
-div#container section#body main.player div.vid video {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
+div#container div.layout main.player div.vid {background-color:#0002; padding-top:62.5%; border-radius:.25rem; overflow: hidden; position:relative;}
+div#container div.layout main.player div.vid video {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
+div#container div.layout main.player div.vid div.playbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div.layout main.player div.vid div.playbtn {background-color:#0004; cursor:pointer; user-select:none; padding:.25rem; border-radius:50%;}
+div#container div.layout main.player div.vid div.playbtn {opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s;}
+div#container div.layout main.player div.vid:hover div.playbtn {opacity:1; visibility:visible;}
+div#container div.layout main.player div.vid div.playbtn svg.icon {color:white; font-size:4rem;}
+div#container div.layout main.player div.vid div.playbtn svg.icon.play {display:block; transform:translateX(.25rem);}
+div#container div.layout main.player div.vid div.playbtn svg.icon.pause {display:none;}
+div#container div.layout main.player div.vid.active div.playbtn svg.icon.play {display:none;}
+div#container div.layout main.player div.vid.active div.playbtn svg.icon.pause {display:block;}
 
-div#container section#body main.player div.metadata {margin:.75rem; user-select:none;}
-div#container section#body main.player div.metadata h2#title {font-size:1.25rem; font-weight:100; margin:0; margin:.25rem 0;}
-div#container section#body main.player div.metadata div#viewcount {color:#AAA; font-size:.65rem;}
+div#container div.layout main.player div.metadata {margin:.75rem; user-select:none;}
+div#container div.layout main.player div.metadata h2#title {font-size:1.25rem; font-weight:100; margin:0; margin:.25rem 0;}
+div#container div.layout main.player div.metadata div#viewcount {color:#AAA; font-size:.65rem;}
 
-div#container section#body main.player div.reaction {display:flex; flex-direction:row; justify-content:center; align-items:center; margin:.75rem 0; padding:0 1.25rem;}
-div#container section#body main.player div.reaction {overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
-div#container section#body main.player div.reaction::-webkit-scrollbar {display:none;}
-div#container section#body main.player div.reaction div.btn {display:flex; flex-direction:column; align-items:center; min-width:2rem; margin:0 .875rem; cursor:pointer; user-select:none; position:relative;}
-div#container section#body main.player div.reaction div.btn svg.icon {font-size:1rem;}
-div#container section#body main.player div.reaction div.btn span.caption {font-size:.6rem; margin-top:.35rem;}
-div#container section#body main.player div.reaction div.btn svg.icon.priori {display:block;}
-div#container section#body main.player div.reaction div.btn svg.icon.posteriori {display:none;}
-div#container section#body main.player div.reaction div.btn.active svg.icon.priori {display:none;}
-div#container section#body main.player div.reaction div.btn.active svg.icon.posteriori {display:block;}
+div#container div.layout main.player div.reaction {display:flex; flex-direction:row; justify-content:center; align-items:center; margin:.75rem 0; padding:0 1.25rem;}
+div#container div.layout main.player div.reaction {overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
+div#container div.layout main.player div.reaction::-webkit-scrollbar {display:none;}
+div#container div.layout main.player div.reaction div.btn {display:flex; flex-direction:column; align-items:center; min-width:2rem; margin:0 .875rem; cursor:pointer; user-select:none; position:relative;}
+div#container div.layout main.player div.reaction div.btn svg.icon {font-size:1rem;}
+div#container div.layout main.player div.reaction div.btn span.caption {font-size:.6rem; margin-top:.35rem;}
+div#container div.layout main.player div.reaction div.btn svg.icon.priori {display:block;}
+div#container div.layout main.player div.reaction div.btn svg.icon.posteriori {display:none;}
+div#container div.layout main.player div.reaction div.btn.active svg.icon.priori {display:none;}
+div#container div.layout main.player div.reaction div.btn.active svg.icon.posteriori {display:block;}
+div#container div.layout main.player div.reaction {display:none;}
 
-div#container section#body main.player div.channel {padding:.5rem; border-top:1px solid #0002;}
-div#container section#body main.player div.channel {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section#body main.player div.channel div.brand {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; cursor:pointer; user-select:none;}
-div#container section#body main.player div.channel div.brand div#avatar {border-radius:50%; min-width:1.75rem; min-height:1.75rem;}
-div#container section#body main.player div.channel div.brand div#avatar {background-color:#0001; background-size:cover; background-position:center; background-repeat:no-repeat;}
-div#container section#body main.player div.channel div.brand div#avatar {background-image:url('../assets/images/avatar-m.png');}
-div#container section#body main.player div.channel div.brand div.details {margin-left:.375rem;}
-div#container section#body main.player div.channel div.brand div.details div#channelname {color:black; font-size:.75rem;}
-div#container section#body main.player div.channel div.brand div.details div#channelsubcount {color:#AAA; font-size:.65rem;}
-div#container section#body main.player div.channel div.subbtns {display:flex; flex-direction:row; align-items:center; align-items:flex-end;}
-div#container section#body main.player div.channel div.subbtns {color:#AAA; text-transform:uppercase;}
-div#container section#body main.player div.channel div.subbtns >div {display:flex; flex-direction:column;}
-div#container section#body main.player div.channel div.subbtns div#subbtn {font-size:.75rem; cursor:pointer; user-select:none;}
-div#container section#body main.player div.channel div.subbtns div#subbtn span.caption {font-weight:normal;}
-div#container section#body main.player div.channel div.subbtns div#subbtn span.caption.no {display:block; color:red; opacity:.75;}
-div#container section#body main.player div.channel div.subbtns div#subbtn span.caption.yes {display:none;}
-div#container section#body main.player div.channel div.subbtns div#subbtn.active span.caption.no {display:none;}
-div#container section#body main.player div.channel div.subbtns div#subbtn.active span.caption.yes {display:block;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn {display:none;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn {font-size:1rem; margin-left:.5rem; cursor:pointer; user-select:none;}
-/* div#container section#body main.player div.channel div.subbtns div#notifbtn svg.icon {} */
-div#container section#body main.player div.channel div.subbtns div#notifbtn svg.icon.all {display:none;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn svg.icon.some {display:none;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn svg.icon.none {display:block;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn.on svg.icon.all {display:none;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn.on svg.icon.some {display:block;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn.on svg.icon.none {display:none;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.all {display:block;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.some {display:none;}
-div#container section#body main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.none {display:none;}
-div#container section#body main.player div.channel div.subbtns div#subbtn + div#notifbtn {display:none;}
-div#container section#body main.player div.channel div.subbtns div#subbtn.active + div#notifbtn {display:block;}
+div#container div.layout main.player div.channel {padding:.5rem; border-top:1px solid #0002;}
+div#container div.layout main.player div.channel {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container div.layout main.player div.channel div.brand {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; cursor:pointer; user-select:none;}
+div#container div.layout main.player div.channel div.brand div#avatar {border-radius:50%; min-width:1.75rem; min-height:1.75rem;}
+div#container div.layout main.player div.channel div.brand div#avatar {background-color:#0001; background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container div.layout main.player div.channel div.brand div#avatar {background-image:url('../assets/images/avatar-m.png');}
+div#container div.layout main.player div.channel div.brand div.details {margin-left:.375rem;}
+div#container div.layout main.player div.channel div.brand div.details div#channelname {color:black; font-size:.75rem;}
+div#container div.layout main.player div.channel div.brand div.details div#channelsubcount {color:#AAA; font-size:.65rem;}
+div#container div.layout main.player div.channel div.subbtns {display:flex; flex-direction:row; align-items:center; align-items:flex-end;}
+div#container div.layout main.player div.channel div.subbtns {color:#AAA; text-transform:uppercase;}
+div#container div.layout main.player div.channel div.subbtns >div {display:flex; flex-direction:column;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn {font-size:.75rem; cursor:pointer; user-select:none;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn span.caption {font-weight:normal;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn span.caption.no {display:block; color:red; opacity:.75;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn span.caption.yes {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn.active span.caption.no {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn.active span.caption.yes {display:block;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn {font-size:1rem; margin-left:.5rem; cursor:pointer; user-select:none;}
+/* div#container div.layout main.player div.channel div.subbtns div#notifbtn svg.icon {} */
+div#container div.layout main.player div.channel div.subbtns div#notifbtn svg.icon.all {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn svg.icon.some {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn svg.icon.none {display:block;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn.on svg.icon.all {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn.on svg.icon.some {display:block;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn.on svg.icon.none {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.all {display:block;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.some {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#notifbtn.on.all svg.icon.none {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn + div#notifbtn {display:none;}
+div#container div.layout main.player div.channel div.subbtns div#subbtn.active + div#notifbtn {display:block;}
 
 
 
@@ -69,17 +79,18 @@ div#container section#body main.player div.channel div.subbtns div#subbtn.active
 @media screen and (max-width:48rem) {
 
 	/* Video Player */
-	div#container section#body main.player {flex-grow:0;}
+	div#container div.layout main.player {flex-grow:0;}
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 
 	/* Video Player */
-	div#container section#body main.player {padding:0;}
-	/* div#container section#body main.player div.metadata {margin:.5rem;} */
-	div#container section#body main.player div.metadata h2#title {font-size:.875rem;}
+	div#container div.layout main.player {padding:0;}
+	div#container div.layout main.player div.vid {border-radius:0;}
+	/* div#container div.layout main.player div.metadata {margin:.5rem;} */
+	div#container div.layout main.player div.metadata h2#title {font-size:.875rem;}
 }
 @media screen and (max-width:22rem) {
-	div#container section#body main.player div.reaction {justify-content:flex-start;}
+	div#container div.layout main.player div.reaction {justify-content:flex-start;}
 }
