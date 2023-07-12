@@ -13,12 +13,15 @@
 	/* Glass Colors */
 	--glass:transparent;
 	--blackglass:#0008;
+	--ltblackglass:#0003;
 
 	/* General Colors */
-	/* --grey:#CCC; */
-	--grey:#F5F4FD;
-	--black:#444;
-	--darkgrey:#D8D5F2;
+	--black:#222;
+	--ltblack:#444;
+	--ltgrey:#F5F4FD;
+	--midgrey:#D8D5F2;
+	/* --drkgrey:#b4b4b4; */
+	--drkgrey:#999;
 	--royalblue:#5372F0;
 	--royalbluetr:#5372F044;
 	/* Theme Colors */
@@ -40,6 +43,7 @@
 	--boxshadow:0 0 .25rem #0003;
 
 	/* Edge Gradients */
+	--bggradient:linear-gradient(135deg,#F0F0F0,white);
 	--leftgradient:linear-gradient(90deg, white 50%, var(--glass));
 	--rightgradient:linear-gradient(-90deg, white 50%, var(--glass));
 }
@@ -47,12 +51,12 @@
 
 
 
-body {font-family:Nunito,sans-serif; margin:0;}
+body {background:var(--bggradient); font-family:Nunito,sans-serif; margin:0;}
 
 
 
 /* Container */
-div#container {background:linear-gradient(135deg,#F0F0F0,white); min-height:100vh;}
+div#container {min-height:100vh;}
 
 
 /* Navbar */
