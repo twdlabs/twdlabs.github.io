@@ -30,25 +30,26 @@ div#container {background-color:var(--themecolor); /* background-color:whitesmok
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
 /* Container */
-div#container nav.navcircle {position:absolute; top:50%; right:0; transform:translateY(-50%);}
-div#container nav.navcircle {/* width:100%; max-width:20rem; */ /* position:relative; */ padding:var(--radius); border-radius:50%; transition:.5s;}
+div#container nav.navcircle {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container nav.navcircle {/* width:100%; max-width:20rem; */ /* position:relative; */ padding:var(--radius); border-radius:50%;/*  transition:.5s; */}
 div#container nav.navcircle.c {background-color:var(--themecolor); border:.875rem solid var(--themecolor); box-shadow:var(--boxshadow);}
 
 /* Nav Circle List */
 /* div#container nav.navcircle ul.navlist {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);} */
 div#container nav.navcircle ul.navlist {list-style:none; padding:0; margin:0;}
 div#container nav.navcircle ul.navlist li.navitem {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); transition:transform .5s;}
-div#container nav.navcircle.left ul.navlist.on li.navitem {transform:translate(-50%,-50%) rotate( calc(45deg * var(--i)) ) translateY( var(--radius) ) rotate( calc(-45deg * var(--i)) );}
-div#container nav.navcircle.below ul.navlist.on li.navitem {transform:translate(-50%,-50%) rotate( calc(45deg * var(--i)) ) translateX( var(--radius) ) rotate( calc(-45deg * var(--i)) );}
+div#container nav.navcircle.on ul.navlist li.navitem {transform:translate(-50%,-50%) rotate( calc(45deg * var(--i)) ) translateX( var(--radius) ) rotate( calc(-45deg * var(--i)) );}
+div#container nav.navcircle.on ul.navlist li.navitem {transform:translate(-50%,-50%) rotate( calc(45deg * var(--i)) ) translateY( var(--radius) ) rotate( calc(-45deg * var(--i)) );}
 
 /* Nav Circle Links */
 div#container nav.navcircle ul.navlist li.navitem a.navlink {display:grid; place-items:center; color:inherit; text-decoration:none; scale:.75; box-shadow:none; transition:box-shadow .5s;}
 div#container nav.navcircle ul.navlist li.navitem a.navlink {background-color:white; height:var(--btnsize); width:var(--btnsize); /* padding:1rem; */ border-radius:50%;}
-div#container nav.navcircle ul.navlist.on li.navitem a.navlink {scale:1; box-shadow:var(--boxshadow); transition:box-shadow .5s .25s;}
+div#container nav.navcircle.on ul.navlist li.navitem a.navlink {scale:1; box-shadow:var(--boxshadow); transition:box-shadow .5s .25s;}
 div#container nav.navcircle ul.navlist li.navitem a.navlink svg.icon {font-size:calc(var(--btnsize)/2);}
 
 /* Toggle Button */
 div#container nav.navcircle div.togglebtn {background-color:white; color:black; font-size:calc(var(--btnsize)*.95); cursor:pointer; user-select:none; border-radius:50%; box-shadow:var(--boxshadow);}
-div#container nav.navcircle div.togglebtn {position:relative;}
+div#container nav.navcircle div.togglebtn {position:relative; transition:.5s;}
+div#container nav.navcircle.on  div.togglebtn {transform:rotate(225deg);}
 div#container nav.navcircle div.togglebtn svg.icon {display:block;}
 
