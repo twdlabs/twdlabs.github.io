@@ -70,9 +70,11 @@ div#container nav.navbar h1.head svg.icon {margin-right:.5rem;}
 
 
 /* Main Layout */
-div#container div.layout {display:grid; grid-template-columns:1fr auto; grid-template-areas:'navbar navbar''player playlist'; max-width:var(--pagewidth); transition:padding .25s; padding:.75rem; margin:0 auto;}
-div#container div.layout main.player {background-color:white; grid-area:player; border-radius:.25rem;}
-div#container div.layout aside.playlist {background-color:white; grid-area:playlist; border-radius:.25rem; margin-left:.75rem;}
+div#container div.layout {background-color:white; max-width:var(--pagewidth); transition:padding .25s; padding:.75rem; margin:0 auto;}
+div#container div.layout {display:grid; grid-template-columns:1fr auto; grid-template-areas:'navbar navbar''player playlist';}
+div#container div.layout main.player {grid-area:player;}
+div#container div.layout aside.playlist {grid-area:playlist; margin-left:.75rem;}
+div#container div.layout aside.playlist {height:100%; width:100%; max-width:18rem;}
 
 
 
@@ -98,7 +100,8 @@ div#container div.layout aside.playlist {background-color:white; grid-area:playl
 	/* Main Layout */
 	div#container div.layout {grid-template-columns:1fr; grid-template-areas:'navbar''player''playlist';}
 	/* div#container div.layout main.player {} */
-	/* div#container div.layout aside.playlist {} */
+	/* div#container div.layout aside.playlist {flex-grow:1;} */
+	div#container div.layout aside.playlist {max-width:none; /* margin:.75rem auto 0; */ margin-left:0; margin-top:.75rem;}
 }
 
 /* Small Smartphone Screen */

@@ -129,7 +129,7 @@ function activateVideoPlayer() {
 			vidplayer.removeEventListener('ended', selectNextVideo);
 
 			// Save current state of autoplay. 
-			vidplayer.removeAttribute('autoplay');
+			// vidplayer.removeAttribute('autoplay');
 			autoplayOn = false;
 		}
 
@@ -223,8 +223,13 @@ function loadCurrentVideo() {
 	// Get video source data. 
 	let vidsrc = videoData[currentvideoid];
 
+	// Check if video exists. 
+	let vidExists = true;
+
 	// Load video source data. 
-	vidplayer.src = vidsrc.vidurl || vidsrc.publicvidurl;
+	// if(vidExists) vidplayer.src = vidsrc.vidurl || vidsrc.publicvidurl;
+	// Load video source data. 
+	if(vidExists) vidplayer.innerHTML = `<source src="${vidsrc.vidurl || vidsrc.publicvidurl}">` || '';
 
 	// Load video metadata. 
 	titlebox.innerHTML = vidsrc.title;

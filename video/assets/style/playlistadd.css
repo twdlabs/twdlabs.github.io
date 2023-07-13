@@ -9,7 +9,7 @@ div#container div#playlistList {visibility:hidden; opacity:0; transform:translat
 div#container div#playlistList.active {visibility:visible; opacity:1; transform:translateX(-50%);}
 
 div#container div#playlistList {position:fixed; bottom:0; left:50%; width:100%; max-width:20rem;}
-div#container div#playlistList {background-color:#222; color:white; font-size:.75rem; user-select:none;}
+div#container div#playlistList {background-color:var(--black); color:white; font-size:.75rem; user-select:none;}
 div#container div#playlistList section {padding:1rem; border-top:.5px solid #FFF3;}
 
 div#container div#playlistList section.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1rem;}

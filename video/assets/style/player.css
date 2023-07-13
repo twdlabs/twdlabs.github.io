@@ -3,9 +3,9 @@
 
 /* Video Player */
 
-div#container div.layout main.player {transition:.25s; padding:.5rem; box-shadow:var(--boxshadow);}
+div#container div.layout main.player {transition:.25s; padding:.5rem; border-radius:.25rem; box-shadow:var(--boxshadow);}
 
-div#container div.layout main.player div.vid {background-color:#0002; color:white; padding-top:62.5%; border-radius:.25rem; overflow: hidden; position:relative;}
+div#container div.layout main.player div.vid {background-color:var(--ltblackglass); color:white; padding-top:62.5%; border-radius:.25rem; overflow: hidden; position:relative;}
 div#container div.layout main.player div.vid video {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
 div#container div.layout main.player div.vid div.btn {cursor:pointer; user-select:none;}
 div#container div.layout main.player div.vid div.topper {opacity:0; visibility:hidden; transition:opacity .5s, visibility .5s;}
@@ -22,10 +22,12 @@ div#container div.layout main.player div.vid div.dashboard div.panel div.btn {di
 div#container div.layout main.player div.vid div.dashboard div.panel div.playbtn {font-size:1.5rem;}
 div#container div.layout main.player div.vid div.dashboard div.panel div.volumebtn {font-size:1rem;}
 div#container div.layout main.player div.vid div.dashboard div.panel div.fullscreenbtn {font-size:1rem;}
-div#container div.layout main.player div.vid div.dashboard div.panel.bar div.pbar {background-color:var(--grey); height:.25rem; width:100%; border-radius:1rem;}
+div#container div.layout main.player div.vid div.dashboard div.panel.bar div.pbar {background-color:var(--ltgrey); height:.25rem; width:100%; border-radius:1rem;}
 div#container div.layout main.player div.vid div.topper.playbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
 div#container div.layout main.player div.vid div.topper.playbtn {background-color:var(--blackglass); font-size:3rem; padding:.75rem; border-radius:50%;}
 /* div#container div.layout main.player div.vid div.topper.playbtn:active {scale:1.75;} */
+
+/* General Play Button */
 div#container div.layout main.player div.vid div.playbtn svg.icon.play {display:block; transform:translateX(.0625em);}
 div#container div.layout main.player div.vid div.playbtn svg.icon.pause {display:none;}
 div#container div.layout main.player div.vid.active div.playbtn svg.icon.play {display:none;}
@@ -42,7 +44,7 @@ div#container div.layout main.player div.vid.hi div.volumebtn svg.icon.high {dis
 
 div#container div.layout main.player div.metadata {margin:.75rem; user-select:none;}
 div#container div.layout main.player div.metadata h2#title {font-size:1.25rem; font-weight:100; margin:0; margin:.25rem 0;}
-div#container div.layout main.player div.metadata div#viewcount {color:#AAA; font-size:.75rem;}
+div#container div.layout main.player div.metadata div#viewcount {color:var(--drkgrey); font-size:.75rem;}
 
 div#container div.layout main.player div.reaction {display:flex; flex-direction:row; justify-content:center; align-items:center; margin:.75rem 0; padding:0 1.25rem;}
 div#container div.layout main.player div.reaction {overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none;}
@@ -56,17 +58,17 @@ div#container div.layout main.player div.reaction div.btn.active svg.icon.priori
 div#container div.layout main.player div.reaction div.btn.active svg.icon.posteriori {display:block;}
 div#container div.layout main.player div.reaction {display:none;}
 
-div#container div.layout main.player div.channel {padding:.5rem; border-top:1px solid #0002;}
+div#container div.layout main.player div.channel {padding:.5rem; border-top:1px solid var(--ltblackglass);}
 div#container div.layout main.player div.channel {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container div.layout main.player div.channel div.brand {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; cursor:pointer; user-select:none;}
 div#container div.layout main.player div.channel div.brand div#avatar {border-radius:50%; min-width:1.75rem; min-height:1.75rem;}
-div#container div.layout main.player div.channel div.brand div#avatar {background-color:#0001; background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container div.layout main.player div.channel div.brand div#avatar {background-color:var(--ltblackglass); background-size:cover; background-position:center; background-repeat:no-repeat;}
 div#container div.layout main.player div.channel div.brand div#avatar {background-image:url('../assets/images/avatar-m.png');}
 div#container div.layout main.player div.channel div.brand div.details {margin-left:.375rem;}
 div#container div.layout main.player div.channel div.brand div.details div#channelname {color:black; font-size:.875rem;}
-div#container div.layout main.player div.channel div.brand div.details div#channelsubcount {color:#AAA; font-size:.75rem;}
+div#container div.layout main.player div.channel div.brand div.details div#channelsubcount {color:var(--drkgrey); font-size:.75rem;}
 div#container div.layout main.player div.channel div.subbtns {display:flex; flex-direction:row; align-items:center; /* align-items:flex-end; */}
-div#container div.layout main.player div.channel div.subbtns {color:#AAA; text-transform:uppercase;}
+div#container div.layout main.player div.channel div.subbtns {color:var(--drkgrey); text-transform:uppercase;}
 div#container div.layout main.player div.channel div.subbtns >div {display:flex; flex-direction:column;}
 div#container div.layout main.player div.channel div.subbtns div#subbtn {font-size:.875rem; cursor:pointer; user-select:none;}
 div#container div.layout main.player div.channel div.subbtns div#subbtn span.caption {font-weight:normal;}
