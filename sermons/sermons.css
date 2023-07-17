@@ -1,0 +1,76 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+:root {
+
+	/* Xyz */
+	--pagewidth:50rem;
+	
+		/* Xyz */
+	--themecolor:whitesmoke;
+	--whiteglass:#FFF6;
+	--blackglass:#0006;
+	--boxshadow:0 0 .25rem #0003;
+}
+body {background-color:dodgerblue; font-family:Nunito,sans-serif; margin:0;}
+div#container {min-height:100vh;/*  padding:1rem; */}
+div#container header.hero {background-image:url('./../gallery/assets/images/full/library.jpg'); position:relative; padding:10rem 0;}
+div#container header.hero::before {background-color:var(--blackglass); content:''; position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container header.hero div.grid {position:relative; text-align:center; max-width:var(--pagewidth); margin:0 auto;}
+div#container header.hero div.grid h1.head {color:white; font-size:1.875rem; font-weight:bold; margin:0;}
+div#container header.hero div.grid p.textcopy {color:white; font-size:1.25rem; font-weight:100; margin:0;}
+
+/* Month List */
+div#container ul.monthlist {list-style:none; padding:0; margin:0;}
+div#container ul.monthlist li.monthblock {max-width:var(--pagewidth); margin:0 auto; margin-top:1.25rem;}
+div#container ul.monthlist li.monthblock h2.monthhead {font-size:1.5rem; cursor:pointer; user-select:none;}
+div#container ul.monthlist li.monthblock h2.monthhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin:0;}
+div#container ul.monthlist li.monthblock h2.monthhead span.caption {}
+div#container ul.monthlist li.monthblock h2.monthhead svg.icon.plus {display:block;}
+div#container ul.monthlist li.monthblock h2.monthhead svg.icon.dash {display:none;}
+div#container ul.monthlist li.monthblock.on h2.monthhead svg.icon.plus {display:none;}
+div#container ul.monthlist li.monthblock.on h2.monthhead svg.icon.dash {display:block;}
+
+/* Lecture List */
+div#container ul.monthlist li.monthblock ul.lecturelist {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:0 .75rem;}
+div#container ul.monthlist li.monthblock ul.lecturelist {list-style:none; padding:0; margin:0;}
+div#container ul.monthlist li.monthblock.on ul.lecturelist {max-height:none;}
+div#container ul.monthlist li.monthblock ul.lecturelist {max-height:0; overflow:hidden;}
+div#container ul.monthlist li.monthblock ul.lecturelist li.lectureitem {margin-top:.5rem;}
+
+/* Video */
+div#container ul.monthlist li.monthblock ul.lecturelist li.lectureitem h3.vidhead {font-size:1.25rem; margin:0;}
+div#container ul.monthlist li.monthblock ul.lecturelist li.lectureitem div.video {background-color:var(--blackglass); position:relative; overflow:hidden; width:100%; padding-top:62.50%; border-radius:.375rem;}
+/* div#container ul.monthlist li.monthblock ul.lecturelist li.lectureitem div.video iframe.youtube {display:none;} */
+div#container ul.monthlist li.monthblock ul.lecturelist li.lectureitem div.video iframe.youtube {position:absolute; top:0; left:0; height:100%; width:100%;}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/*  */
+	div#container ul.monthlist {}
+	div#container ul.monthlist li.monthblock {}
+	div#container ul.monthlist li.monthblock ul.lecturelist {grid-template-columns:repeat(2,1fr);}
+}
+
+/* Medium Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/*  */
+	div#container ul.monthlist {}
+	div#container ul.monthlist li.monthblock {}
+	div#container ul.monthlist li.monthblock ul.lecturelist {grid-template-columns:1fr;}
+}
