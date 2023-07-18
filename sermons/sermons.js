@@ -9,39 +9,45 @@ const monthnames = [
 	'October','November','December', 
 ];
 
-// Get destination for list of lectures. 
-let lecturesdestination = document.querySelector('div#container ul.monthlist');
-
-// Load list of lectures. 
-loadLectures();
-
+// Get destination for list of sermon categories. 
+let lecturesdestination = document.querySelector('div#container ul.categorylist');
 
 
 /****/
 
 
+// Load list of sermons. 
+loadSermonsByMonth();
 
-// Load list of lectures. 
-function loadLectures() {
+
+/****/
+
+
+// Load list of sermons by month. 
+function loadSermonsByMonth() {
 
 	// Initialize result. 
 	let result = '';
 
+	// TODO: Sort sermon data in reverse chronological order (recent first). 
+	sermonData.sort( (a,b)=>(b.monthid-a.monthid) );
+
 	// Compile result. 
-	for(let month of sermonData) {
+	for(let monthdata of sermonData) {
+		if(monthdata.videolist.length==0) continue;
 
-		// Open month block. 
+		// Open category block. 
 		result += `
-		<!-- monthblock -->
-		<li class="monthblock">`;
+		<!-- categoryblock -->
+		<li class="categoryblock">`;
 
-		// Add month header. 
+		// Add category header. 
 		result += `
-		<!-- monthhead -->
-		<h2 class="monthhead">
+		<!-- categoryhead -->
+		<h2 class="categoryhead">
 
 			<!-- caption -->
-			<span class="caption">${ getMonthName(month.monthid) }</span>
+			<span class="caption">${ getMonthName(monthdata) }</span>
 			<!-- /caption -->
 
 			<!-- toggleindicator -->
@@ -63,48 +69,42 @@ function loadLectures() {
 			<!-- /toggleindicator -->
 
 		</h2>
-		<!-- /monthhead -->`;
+		<!-- /categoryhead -->`;
 
-		// Open month list. 
+		// Open category list. 
 		result += `
 		<!-- lecturelist -->
 		<ul class="lecturelist">`;
 
-		// Compile result. 
-		for(let video of month.videolist) {
+		// Compile list of sermons. 
+		for(let video of monthdata.videolist) {
 	
 			// 
 			if(video.videoid!='abcd1234') result += `
 			<!-- lectureitem -->
-			<li class="lectureitem">
+			<li class="lectureitem" data-year="${monthdata.year}" data-month="${1*monthdata.month}" data-date="${video.date}">
 
 				<!-- vidhead -->
-				<h3 class="vidhead" title="${video.videoid}">${video.day} ${video.date}</h2>
+				<h3 class="vidhead" title="${video.videoid}">${video.day} ${video.date*1}</h2>
 				<!-- /vidhead -->
-
-				<!-- video -->
-				<div class="video">
-
-					<!-- youtube -->
-					<iframe class="youtube" src="https://www.youtube-nocookie.com/embed/${video.videoid}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-					<!-- /youtube -->
-
-				</div>
-				<!-- /video -->
+				
+				<!-- thumbnail -->
+				<a class="thumbnail" href="https://www.youtube-nocookie.com/embed/${video.videoid}" target="youtube" style="background-image:url('https://i.ytimg.com/vi/${video.videoid}/maxresdefault.jpg');"></a>
+				<!-- /thumbnail -->
 
 			</li>
 			<!-- /lectureitem -->`;
 		}
 
-		// Close month list. 
+		// Close category list. 
 		result += `
 		</ul>
 		<!-- /lecturelist -->`;
 
-		// Close month block. 
+		// Close category block. 
 		result += `
 		</li>
-		<!-- /monthblock -->`;
+		<!-- /categoryblock -->`;
 	}
 
 	// Return result. 
@@ -116,42 +116,118 @@ function loadLectures() {
 	/****/
 
 	// Get month name. 
-	function getMonthName(monthid) {
+	function getMonthName(monthdata) {
 
 		// Get year. 
-		year = monthid.substr(0,4);
+		year = monthdata.year;
 
 		// Get month number. 
-		let monthindex = monthid.substr(4,2) - 1;
+		let monthindex = monthdata.month*1 - 1;
 
 		// 
 		return `${monthnames[monthindex]} ${year}`;
 	}
+}
+
+// Load list of sermons by category. 
+function loadSermonsByCategory() {
+
+	// Initialize result. 
+	let result = '';
+
+	// TODO: Compile result. 
+
+	// Return result. 
+	lecturesdestination.innerHTML = result;
 
 	// Activate list togglers. 
-	function activateListTogglers() {
+	activateListTogglers();
+}
+
+// Load list of sermons by book reference. 
+function loadSermonsByBook() {
+
+	// Initialize result. 
+	let result = '';
+
+	// TODO: Compile result. 
+
+	// Return result. 
+	lecturesdestination.innerHTML = result;
+
+	// Activate list togglers. 
+	activateListTogglers();
+}
+
+// Activate list togglers. 
+function activateListTogglers() {
+	
+	// Get list togglers. 
+	const listtogglers = document.querySelectorAll('div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead');
+	
+	// Go thru list togglers. 
+	for(let toggler of listtogglers) {
+		toggler.addEventListener('click',toggleSelectedList);
+	}
+
+	/****/
+
+	// Toggle selected list. 
+	function toggleSelectedList(event) {
+
+		// Get selected category block. 
+		let selectedblock = event.currentTarget.parentElement;
+		console.log(selectedblock.style.maxHeight);
+		console.log(selectedblock.scrollHeight);
+
+		// Get selected list. 
+		let selectedlist = selectedblock.querySelector('ul.lecturelist');
+
+		// Check if selected list is already open. 
+		let isAlreadyOpen = selectedlist.style.maxHeight || selectedblock.classList.contains('open');
+
+		// Toggle state of selected list. 
+		if(isAlreadyOpen) {
+			closeSelectedList();
+		}
+		else {
+			openSelectedList();
+		}
 		
-		// Get list togglers. 
-		const listtogglers = document.querySelectorAll('div#container ul.monthlist li.monthblock h2.monthhead');
-		
-		// Go thru list of list togglers. 
-		for(let toggler of listtogglers) {
-			toggler.addEventListener('click',toggleSelectedList);
+		/***/
+
+		// Open selected category list. 
+		function openSelectedList() {
+			console.log('Opening...');
+			
+			// Toggle height of list (to full size). 
+			selectedlist.style.maxHeight = `${selectedlist.scrollHeight}px`;
+
+			// Toggle state of list (to open). 
+			selectedblock.classList.add('open');
 		}
 
-		/****/
+		// Close selected category list. 
+		function closeSelectedList() {
+			console.log('Closing...');
+			
+			// Toggle height of list (to zero). 
+			selectedlist.style.maxHeight = null;
 
-		// Toggle selected list. 
-		function toggleSelectedList(event) {
-
-			// Get selected list. 
-			// let selectedlist = event.currentTarget.nextElementSibling;
-
-			// Get selected block. 
-			let selectedblock = event.currentTarget.parentElement;
-
-			// Toggle state of list. 
-			selectedblock.classList.toggle('on');
+			// Toggle state of list (to closed). 
+			selectedblock.classList.remove('open');
 		}
 	}
+}
+
+// Open sermon. 
+function openSermon(event) {
+
+	// Get selected sermon link. 
+	let selectedLink = event.currentTarget;
+
+	// Highlight selected sermon link. 
+	selectedLink.classList.add('active');
+
+	// Scroll to video player. 
 }
