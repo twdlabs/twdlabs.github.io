@@ -9,6 +9,7 @@
 :root {
 
 	/* Numbers */
+	--edgewidth:2rem;
 	--pagewidth:60rem;
 	--cornersize:.375rem;
 	--aspectratio:62.5%;
@@ -17,10 +18,33 @@
 	--blue:dodgerblue;
 	--pink:deeppink;
 	--white:whitesmoke;
-	--dkpurple:#120415;
+	/* Theme Colors */
+	--purple:#370c40;
+	--ltpurple:#c554de;
+	/* Theme Colors */
+	--purple05:#120415;
+	--purple10:#24082b;
+	--purple15:#370c40;
+	--purple20:#491056;
+	--purple25:#5b146b;
+	--purple30:#6d1881;
+	--purple35:#801d96;
+	--purple40:#9221ab;
+	--purple45:#a425c1;
+	--purple50:#b629d6;
+	--purple55:#be3eda;
+	--purple60:#c554de;
+	--purple65:#cc69e2;
+	--purple70:#d37ee7;
+	--purple75:#db94eb;
+	--purple80:#e2a9ef;
+	--purple85:#e9bff3;
+	--purple90:#f0d4f7;
+	--purple95:#f8eafb;
+	/* Glass Colors */
 	--whiteglass:#FFF6;
 	--blackglass:#0004;
-	--dkpurpleglass:#12041599;
+	--purple05glass:#12041555;
 
 	/* Box Shadows */
 	--boxshadow:0 0 .25rem #0003;
@@ -28,16 +52,17 @@
 
 
 
-body {background-color:var(--dkpurple); font-family:Nunito,sans-serif; margin:0;}
-div#container {background-color:var(--blue); min-height:100vh;/*  padding:1rem; */}
+html,
+body {background-color:var(--purple05); font-family:Nunito,sans-serif; scroll-behavior:smooth; margin:0;}
+div#container {background-color:var(--purple95); min-height:100vh;/*  padding:1rem; */}
 
 
 
 
 /* Navbar */
-div#container nav.navbar {display:none;}
-div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; height:5rem; z-index:100;}
-div#container nav.navbar {background-color:var(--dkpurple); opacity:.75;}
+/* div#container nav.navbar {display:none;} */
+div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; height:4rem; z-index:100;}
+div#container nav.navbar {background-color:var(--purple05); opacity:.75;}
 div#container nav.navbar div.grid {max-width:var(--pagewidth); margin:0 auto;}
 /* div#container nav.navbar div.grid {} */
 
@@ -49,19 +74,19 @@ div#container header.hero {background-image:url('./images/vbmwelcome.jpg'); back
 div#container header.hero {position:relative; padding:32rem 0; transition:padding .5s;}
 /* div#container header.hero::before {background-color:var(--blackglass); content:''; position:absolute; top:0; left:0; height:100%; width:100%;} */
 div#container header.hero div.grid {display:none;}
-div#container header.hero div.grid {position:relative; text-align:center; max-width:var(--pagewidth); margin:0 auto;}
+div#container header.hero div.grid {position:relative; text-align:center; max-width:var(--pagewidth); padding:0 var(--edgewidth); margin:0 auto;}
 div#container header.hero div.grid h1.head {color:white; font-size:1.875rem; font-weight:bold; margin:0;}
 div#container header.hero div.grid p.textcopy {color:white; font-size:1.25rem; font-weight:100; margin:0;}
 
 
 /* General Section */
-/* div#container section {} */
-div#container section div.grid {max-width:var(--pagewidth); padding:0 1rem; margin:0 auto; margin-top:1rem;}
+div#container section {margin-top:var(--edgewidth);}
+div#container section div.grid {max-width:var(--pagewidth); padding:0 var(--edgewidth); margin:0 auto;}
 
 
 /* Media Player */
 /* div#container section.player {} */
-div#container section.player div.video {background-color:var(--dkpurpleglass); position:relative; overflow:hidden; width:100%; padding-top:var(--aspectratio); border-radius:var(--cornersize);}
+div#container section.player div.video {background-color:var(--purple05glass); position:relative; overflow:hidden; width:100%; padding-top:var(--aspectratio); border-radius:var(--cornersize);}
 /* div#container section.player div.video iframe.youtube {display:none;} */
 div#container section.player div.video iframe.youtube {position:absolute; top:0; left:0; height:100%; width:100%;}
 
@@ -71,11 +96,11 @@ div#container section.player div.video iframe.youtube {position:absolute; top:0;
 
 /* Media Playlist: Month List */
 div#container section.playlist ul.categorylist {list-style:none; padding:0; /* padding:1rem; */ margin:0;}
-div#container section.playlist ul.categorylist li.categoryblock {/* background-color:var(--dkpurpleglass); */ max-width:var(--pagewidth); padding:1rem; border-radius:calc(var(--cornersize)*2); margin:0 auto; margin-top:.25rem; box-shadow:var(--boxshadow);}
-div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead {color:var(--white); font-size:1.5rem; cursor:pointer; user-select:none;}
+div#container section.playlist ul.categorylist li.categoryblock {background-color:var(--purple05glass); max-width:var(--pagewidth); padding:.75rem; border-radius:calc(var(--cornersize)*2); margin:0 auto; margin-top:.5rem; box-shadow:var(--boxshadow);}
+div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead {color:var(--white); font-size:1.25rem; cursor:pointer; user-select:none;}
 div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin:0;}
 div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead span.caption {flex-grow:1; text-align:center;}
-div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead svg.icon {font-size:2rem;}
+div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead svg.icon {font-size:1.5rem;}
 div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead svg.icon.plus {display:block;}
 div#container section.playlist ul.categorylist li.categoryblock h2.categoryhead svg.icon.dash {display:none;}
 div#container section.playlist ul.categorylist li.categoryblock.open h2.categoryhead svg.icon.plus {display:none;}
@@ -86,16 +111,17 @@ div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist {
 div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist {list-style:none; padding:0; margin:0;}
 div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist {max-height:0; transition:.375s ease-in-out;}
 /* div#container section.playlist ul.categorylist li.categoryblock.on ul.lecturelist {max-height:none;} */
-div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist li.lectureitem {background-color:var(--dkpurpleglass); color:white; padding:.5rem; border-radius:var(--cornersize); margin-top:.75rem; box-shadow:var(--boxshadow);}
+div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist li.lectureitem {background-color:var(--purple05glass); color:white; padding:.5rem; border-radius:var(--cornersize); margin-top:.75rem; box-shadow:var(--boxshadow);}
 
 /* Media Playlist: Video */
 div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist li.lectureitem h3.vidhead {font-size:1.25rem; text-align:center; margin:0; margin-top:.25rem;}
 div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist li.lectureitem a.thumbnail {background-image:url('./../gallery/assets/images/thumbnail/Squarespace+Learning+-+Forum+Banner.jpg'); background-repeat:no-repeat; background-size:cover;}
-div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist li.lectureitem a.thumbnail {background-color:var(--dkpurpleglass); display: block; width:100%; padding-top:var(--aspectratio); border-radius:var(--cornersize); margin-top:.5rem;}
+div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist li.lectureitem a.thumbnail {background-color:var(--purple05glass); display: block; width:100%; padding-top:var(--aspectratio); border-radius:var(--cornersize); border:.25rem solid transparent; margin-top:.5rem;}
+div#container section.playlist ul.categorylist li.categoryblock ul.lecturelist li.lectureitem a.thumbnail.active {border-color:var(--whiteglass);}
 
 /* Footer */
-div#container footer.footer {background-color:var(--dkpurpleglass); min-height:30rem; padding:4rem 0; margin-top:4rem;}
-div#container footer.footer div.grid {max-width:var(--pagewidth); margin:0 auto;}
+div#container footer.footer {background-color:var(--purple05glass); min-height:30rem; padding:4rem 0; margin-top:4rem;}
+div#container footer.footer div.grid {max-width:var(--pagewidth); padding:0 var(--edgewidth); margin:0 auto;}
 div#container footer.footer div.grid img.banner {object-fit:cover; width:100%; border-radius:var(--cornersize);}
 
 
@@ -121,6 +147,9 @@ div#container footer.footer div.grid img.banner {object-fit:cover; width:100%; b
 
 /* Medium Smartphone Screen */
 @media screen and (max-width:32rem) {
+	
+	/*  */
+	div#container header.hero {/* background-position-y:center; */ padding:12rem 0;}
 
 	/*  */
 	/* div#container section.playlist {} */
