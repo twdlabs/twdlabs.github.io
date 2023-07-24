@@ -22,8 +22,8 @@
 	--shadow:0 .125rem .25rem #0003;
 }
 
+html {background-image:url('./../gallery/assets/images/full/starry-sky-wallpaper-dark.jpg'); background-attachment:fixed;}
 body {font-family:Nunito,sans-serif; margin:0;}
-body {background-image:url('./../gallery/assets/images/full/starry-sky-wallpaper-dark.jpg'); background-attachment:fixed;}
 
 
 div#container {/* background-color:whitesmoke; */ min-height:100vh; padding:1rem;}
