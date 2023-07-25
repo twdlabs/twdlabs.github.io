@@ -11,6 +11,12 @@
 :root {
 
 	/* Colors */
+	--red:#F4615A;
+	--darkred:#800000;
+	--yellow:#F8BF2F;
+	--darkyellow:#995700;
+	--green:#42CF42;
+	--darkgreen:#1B6400;
 	--blue:dodgerblue;
 	--white:#f5f5f5;
 	--greyglass:#888A;
@@ -18,7 +24,7 @@
 	
 	/* Numbers */
 	/* font-size:2rem; */
-	--cornersize:1rem;
+	--cornersize:.5rem;
 	--shadow:0 .125rem .25rem #0003;
 }
 
@@ -47,24 +53,32 @@ div#container div.desktop {z-index:10;}
 
 /* Drag Item */
 div#container div.desktop div.window {display:inline-block;}
-div#container div.desktop div.window {position:absolute; top:10rem; left:0; /* transform:translateY(10rem); */ width:100%; max-width:20rem; /* overflow:hidden; */ z-index:var(--i);}
+div#container div.desktop div.window {position:absolute; top:10rem; left:0; /* transform:translateY(10rem); */ width:100%; max-width:20rem; overflow:hidden; z-index:var(--i);}
 div#container div.desktop div.window {text-align:center; /* padding-bottom:3rem; */ border-radius:var(--cornersize);}
 div#container div.desktop div.window {background-color:transparent; transition:background-color .125s, backdrop-filter .125s, box-shadow .125s;}
-div#container div.desktop div.window:hover {background-color:var(--greyglass); backdrop-filter:blur(.375rem); box-shadow:var(--shadow);}
+div#container div.desktop div.window/* :hover */ {background-color:var(--greyglass); backdrop-filter:blur(.375rem); box-shadow:var(--shadow);}
 div#container div.desktop div.window.moving {z-index:999;}
 /* div#container div.desktop div.window {display:none;} */
 
 /* Drag Item Head */
-div#container div.desktop div.window div.headbar {display:flex; flex-direction:column; align-items:center; cursor:pointer; user-select:none; z-index:20; padding:.75rem 1rem;}
-div#container div.desktop div.window div.headbar {pointer-events:none; opacity:0; transition:opacity .5s; }
+div#container div.desktop div.window div.headbar {display:flex; flex-direction:row; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; z-index:20; padding:.5rem 1rem;}
+div#container div.desktop div.window div.headbar {pointer-events:none; /* opacity:0; */ transition:opacity .5s; }
 div#container div.desktop div.window:hover div.headbar {pointer-events:initial; opacity:1;}
 div#container div.desktop div.window div.headbar:active {cursor:move;}
+div#container div.desktop div.window div.headbar div.controls {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+div#container div.desktop div.window div.headbar div.controls div.dot {background-color:white; font-size:var(--dotsize); font-weight:bold;}
+div#container div.desktop div.window div.headbar div.controls div.dot {position:relative; --dotsize:.75rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; margin-right:.375rem;}
+div#container div.desktop div.window div.headbar div.controls div.dot.r {background-color:var(--red); color:var(--darkred);}
+div#container div.desktop div.window div.headbar div.controls div.dot.y {background-color:var(--yellow); color:var(--darkyellow);}
+div#container div.desktop div.window div.headbar div.controls div.dot.g {background-color:var(--green); color:var(--darkgreen);}
+div#container div.desktop div.window div.headbar div.controls div.dot span.icon {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+/* div#container div.desktop div.window div.headbar div.controls div.dot span.icon {font-size:calc(var(--dotsize) * .875);} */
 div#container div.desktop div.window div.headbar span.caption {color:white; font-size:1.125rem; font-weight:600; white-space:nowrap; margin:0 1rem;}
 div#container div.desktop div.window div.headbar div.dotmatrix {display:grid; grid-template-columns:repeat(12,1fr);}
-div#container div.desktop div.window div.headbar div.dotmatrix span.dot {background-color:#FFF8; --size:.125rem; --size:.1875rem; height:var(--size); width:var(--size); border-radius:50%; margin:1.5px;}
+div#container div.desktop div.window div.headbar div.dotmatrix span.dot {background-color:#FFF8; --size:.125rem; --size:.1875rem; height:var(--size); width:var(--size); border-radius:50%; margin:1px;}
 
 /* Drag Item Content */
-div#container div.desktop div.window div.bodycontent {background-color:white; overflow:hidden; border-radius:var(--cornersize);}
+div#container div.desktop div.window div.bodycontent {background-color:white; overflow:hidden; /* border-radius:var(--cornersize); */}
 div#container div.desktop div.window div.bodycontent.x {display:none;}
 div#container div.desktop div.window/* :hover */ div.bodycontent {box-shadow:var(--shadow);}
 div#container div.desktop div.window div.bodycontent p.copy {font-size:1.125rem; padding:.5rem 2rem;}
@@ -84,6 +98,8 @@ div#container div.desktop div.window div.bodycontent div.vidbox video.vid {posit
 	/*  */
 	/* div#container div.desktop {} */
 	div#container div.desktop div.window {position:static; transform:none; max-width:none;}
+	/* div#container div.desktop div.window div.headbar {padding:0;} */
+	div#container div.desktop div.window div.headbar div.dotmatrix {opacity:0;}
 }
 
 /* Small Smartphone Screen */

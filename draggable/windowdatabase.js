@@ -1,46 +1,38 @@
 
 
 
-// // Define desktop window data. 
-// const desktopData = [
+// Define types of desktop windows. 
+const windowTypeData = [
 
-// 	// 
-// 	{
-// 		// windowname:'',
-// 		desklevel:0,
-// 		domelement:null,
-// 	},
+	// 
+	{
+		id:'video',
+		markup:'',
+	},
 
-// ];
+];
 
 
 /*****/
 
 
-// Get highest desk level. 
-function getTopLevel() {
+// Create new desktop window for text. 
+function createTextWindow(url) {
 
-	// Initialize result. 
-	let result = 0;
-
-	// Go thru all windows. 
-	for(let window of desktopData) {
-
-		// Get desk level of current window. 
-		let level = 1 * window.desklevel;
-
-		// Compare desk level of current window. 
-		if(level > result) {
-			// Save desk level of current window (if higher than result). 
-			result = level;
-		}
-	}
-	
-	// Return result. 
-	return result;
+	// Return layout. 
+	return ``;
 }
 
-// Get new level above highest desk level. 
-function getNewTopLevel() {
-	return getTopLevel() + 1;
+// Create new desktop window for video. 
+function createVideoWindow(url) {
+
+	// Return layout. 
+	return ``;
+}
+
+// Create new desktop window for file folder. 
+function createFolderWindow(url) {
+
+	// Return layout. 
+	return ``;
 }
