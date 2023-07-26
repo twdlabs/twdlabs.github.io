@@ -64,11 +64,13 @@ div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem a.navlink:hover {background-color:var(--blackglass); color:white;}
 
 /* Desktop */
-div#container div.desktop {/* background-color:whitesmoke; */ margin-top:4rem;}
+div#container div.desktop {/* background-color:whitesmoke; */ margin-top:6rem;}
 div#container div.desktop {z-index:10;}
 /* div#container div.desktop {display:flex; flex-direction:row; align-items:center; position:relative;} */
 
 /* Desktop Window */
+div#container div.desktop h1.head {margin:0;}
+div#container div.desktop p.textcopy {margin:0;}
 div#container div.desktop div.window {display:inline-block;}
 div#container div.desktop div.window {position:absolute; top:10rem; left:0; /* transform:translateY(10rem); */ width:100%; max-width:20rem; overflow:hidden; z-index:var(--i);}
 div#container div.desktop div.window {text-align:center; /* padding-bottom:3rem; */ border-radius:var(--cornersize);}
@@ -106,6 +108,7 @@ div#container div.desktop div.window div.headbar div.dotmatrix span.dot {backgro
 
 /* Desktop Window Body */
 div#container div.desktop div.window div.bodycontent {background-color:white; overflow:hidden;}
+div#container div.desktop div.window.min div.bodycontent {height:0;}
 div#container div.desktop div.window div.bodycontent.x {display:none;}
 /* Desktop Window Body (Text) */
 div#container div.desktop div.window div.bodycontent p.copy {font-size:1.125rem; padding:.5rem 2rem;}

@@ -29,20 +29,40 @@ console.log('Window count:',windowcount);
 /*****/
 
 
-// Make desktop windows movable. 
-for(let dw of desktopwindows) {
-	
-	// Activate movement of desktop window. 
-	makeMovable(dw,'div.headbar');
-}
+// Activate desktop. 
+activateDesktop();
 
 
 /*****/
 
 
+// Activate desktop. 
+function activateDesktop() {
+
+	// Go thru original desktop windows. 
+	for(let dw of desktopwindows) {
+		// Activate desktop window. 
+		activateDesktopWindow(dw);
+	}
+
+	/****/
+
+	// Activate desktop window. 
+	function activateDesktopWindow(dw) {
+		console.log('Now activating:',dw);
+			
+		// Activate movement of desktop window. 
+		makeMovable(dw,'div.headbar');
+			
+		// Activate controls of desktop window. 
+		makeControllable(dw);
+
+	}
+}
+
 // Activate movement of given desktop window. 
 function makeMovable(desktopwindow,draghookselector) {
-	console.log('Desktop window:',desktopwindow);
+	// console.log('\tActivating movement:',desktopwindow);
 
 	// Cancel default dragging functionality. 
 	desktopwindow.setAttribute('draggable',false);
@@ -65,7 +85,6 @@ function makeMovable(desktopwindow,draghookselector) {
 
 	// Handle mouse movement events. 
 	function handleMouseEvents() {
-		console.log(desktopwindow);
 
 		// Allow initiation of window movement. 
 		draghook.addEventListener('mousedown', hookToPointer );
@@ -79,7 +98,6 @@ function makeMovable(desktopwindow,draghookselector) {
 
 	// Handle touch movement events. 
 	function handleTouchEvents() {
-		console.log(desktopwindow);
 	
 		// Allow initiation of window movement. 
 		draghook.addEventListener('touchstart', hookToPointer );
@@ -177,7 +195,13 @@ function makeMovable(desktopwindow,draghookselector) {
 
 	// Bring selected desktop window to top layer of stack. 
 	function bringWindowToTop(event) {
-		// console.log(desktopwindow);
+		
+		// Check if selected desktop window already on top. 
+		let alreadyOnTop = desktopwindow.classList.contains('top');
+		if(alreadyOnTop) {
+			console.log('Already on top!',desktopwindow);
+			return;
+		}
 
 		// Get new z-index value. 
 		let newtoplevel = getNewTopLevel();
@@ -202,6 +226,7 @@ function makeMovable(desktopwindow,draghookselector) {
 
 // Activate controls for given desktop window. 
 function makeControllable(desktopwindow) {
+	// console.log('\tActivating controls:',desktopwindow);
 
 	// Get control dot buttons. 
 	let dotbtnred = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.r');
