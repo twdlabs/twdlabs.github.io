@@ -15,11 +15,11 @@ const desktopwindows = document.querySelectorAll('div#container div.desktop div.
 const numdotsperrow = 12;
 const numrowsperdotmatrix = 3;
 
-// Initialize window count. 
+// Initialize count of desktop windows. 
 let windowcount = 0;
 console.log('Window count:',windowcount);
 
-// Increment window count. 
+// Increment count of desktop windows. 
 windowcount++;
 windowcount++;
 windowcount++;
@@ -80,6 +80,7 @@ function makeMovable(deskwindow,draghookselector) {
 	
 		// Allow initiation of window movement. 
 		draghook.addEventListener('touchstart',hookToPointer);
+		deskwindow.addEventListener('touchstart',bringWindowToTop);
 		
 		// Allow ending of window movement. 
 		document.addEventListener('touchcancel',unHookFromPointer);
@@ -88,7 +89,7 @@ function makeMovable(deskwindow,draghookselector) {
 
 	// Hook desktop window to pointer to begin movement. 
 	function hookToPointer(event) {
-		// console.log(event,deskwindow);
+		console.log(event,deskwindow);
 		// console.log('Target clicked:',event.target);
 		// console.log('Target hit:',event.currentTarget);
 
@@ -205,7 +206,7 @@ function createDotMatrix() {
 	return dots;
 }
 
-// TODO: Create control panel for window header. 
+// Create control panel for window header. 
 function createControlPanel() {
 
 	// Return control panel dots. 
@@ -267,10 +268,17 @@ function requestNewWindow() {
 	// Ask user for type of desktop window. 
 	let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
 
-	// Create new desktop window. 
-	createNewWindow(windowtype);
+	// Get newly created desktop window. 
+	let newdeskwindowlayout = createNewWindow(windowtype);
+	// Add new desktop window to page. 
+	desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
 
 	// TODO: Make new desktop window movable. 
+
+	// TODO: Make new desktop window controllable. 
+
+	// Increment count of desktop windows. 
+	windowcount++;
 
 	/****/
 
@@ -278,8 +286,8 @@ function requestNewWindow() {
 	function createNewWindow(type) {
 		console.log('New window type:',type);
 	
-		// TODO: Create layout for new desktop window. 
-		let newdesktopwindow = `
+		// Compile layout for new desktop window. 
+		return `
 		<!-- window -->
 		<div id="window${windowcount}" class="window" style="--i:${ getNewTopLevel() };">
 	
@@ -309,10 +317,5 @@ function requestNewWindow() {
 			
 		</div>
 		<!-- /window -->`;
-	
-		// Add new desktop window. 
-		desktop.insertAdjacentHTML('beforeend',newdesktopwindow);
-
-		// Increment window count. 
 	}
 }
