@@ -15,9 +15,11 @@ const desktopwindows = document.querySelectorAll('div#container div.desktop div.
 const numdotsperrow = 12;
 const numrowsperdotmatrix = 3;
 
-// Define window counter. 
+// Initialize window count. 
 let windowcount = 0;
 console.log('Window count:',windowcount);
+
+// Increment window count. 
 windowcount++;
 windowcount++;
 windowcount++;
@@ -49,6 +51,7 @@ function makeMovable(deskwindow,draghookselector) {
 
 	// Allow for initiation of drag movement. 
 	draghook.addEventListener('mousedown',hookToPointer);
+	deskwindow.addEventListener('mousedown',bringWindowToTop);
 
 	// Allow for ending of drag movement. 
 	document.addEventListener('mouseup',unHookFromPointer);
@@ -64,7 +67,15 @@ function makeMovable(deskwindow,draghookselector) {
 
 	// Hook desktop window to pointer to begin movement. 
 	function hookToPointer(event) {
-		console.log(event,deskwindow);
+		// console.log(event,deskwindow);
+		// console.log('Target clicked:',event.target);
+		// console.log('Target hit:',event.currentTarget);
+
+		// Check if clicked target is within dot button. 
+		let clickedInDotBtn = (event.target).closest('div#container div.desktop div.window div.headbar div.controls div.dot');
+		// console.log('Clicked in dot button:',!!clickedInDotBtn);
+		// Ignore move attempts from dot buttons. 
+		if(clickedInDotBtn) return;
 
 		// Set as currently moving. 
 		deskwindow.classList.add('moving');
@@ -73,31 +84,30 @@ function makeMovable(deskwindow,draghookselector) {
 		// document.addEventListener('mousemove',moveToPointer);
 		deskwindow.addEventListener('mousemove',moveToPointer);
 
-		// Reorder layers of movable desktop windows. 
-		bringWindowToTop(deskwindow);
-
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
 	}
 
 	// Move desktop window to position of pointer. 
 	function moveToPointer(event) {
-		console.log(event,deskwindow);
+		// console.log(event,deskwindow);
+		// console.log('Target clicked:',event.target);
+		// console.log('Target hit:',event.currentTarget);
 		
 		// Get original position of desktop window. 
-		let getStyle = window.getComputedStyle(deskwindow);
-		let x0 = parseInt(getStyle.left);
-		let y0 = parseInt(getStyle.top);
-		console.log('(x0,y0):',x0,y0);
-
+		let deskwindowstyle = window.getComputedStyle(deskwindow);
+		let x0 = parseInt(deskwindowstyle.left);
+		let y0 = parseInt(deskwindowstyle.top);
+		// console.log('(x0,y0):',x0,y0);
+		
 		// Get movement of pointer. 
 		let dx = event.movementX;
 		let dy = event.movementY;
-		console.log('(dx,dy):',dx,dy);
 		// Get new position of pointer. 
 		let x1 = x0 + dx;
 		let y1 = y0 + dy;
-		console.log('(x1,y1):',x1,y1);
+		// console.log('(dx,dy):',dx,dy);
+		// console.log('(x1,y1):',x1,y1);
 		
 		// Set new position to desktop window. 
 		deskwindow.style.left = `${x1}px`;
@@ -107,11 +117,15 @@ function makeMovable(deskwindow,draghookselector) {
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
+		console.log('x:',x0,dx,x1);
+		console.log('y:',y0,dy,y1);
 	}
 
 	// Un-hook desktop window from pointer to finish movement. 
 	function unHookFromPointer(event) {
-		console.log(event,deskwindow);
+		// console.log(event,deskwindow);
+		// console.log('Target clicked:',event.target);
+		// console.log('Target hit:',event.currentTarget);
 
 		// Set as not currently moving. 
 		deskwindow.classList.remove('moving');
@@ -133,18 +147,16 @@ function makeMovable(deskwindow,draghookselector) {
 		event.preventDefault();
 	}
 
-	// Bring selected desktop window to top of stack (above all others). 
-	function bringWindowToTop(deskwindow) {
+	// Bring selected desktop window to top layer of stack. 
+	function bringWindowToTop() {
+		// console.log(this);
+		let deskwindow = this;
 
-		// Set new desk level for each desktop window. 
-		for(let deskwindow of desktopwindows) {
+		// Get new z-index value. 
+		let newtoplevel = getNewTopLevel();
 
-			// Get new z-index value. 
-			let newindex = getNewTopLevel();
-
-			// 
-			deskwindow.style.setProperty('--i',newindex);
-		}
+		// Set new desk level for desktop window. 
+		deskwindow.style.setProperty('--i',newtoplevel);
 	}
 }
 
@@ -242,7 +254,7 @@ function requestNewWindow() {
 		// TODO: Create layout for new desktop window. 
 		let newdesktopwindow = `
 		<!-- window -->
-		<div class="window" style="--i:${ getNewTopLevel() };">
+		<div id="window${windowcount}" class="window" style="--i:${ getNewTopLevel() };">
 	
 			<!-- headbar -->
 			<div class="headbar">
@@ -273,5 +285,7 @@ function requestNewWindow() {
 	
 		// Add new desktop window. 
 		desktop.insertAdjacentHTML('beforeend',newdesktopwindow);
+
+		// Increment window count. 
 	}
 }
