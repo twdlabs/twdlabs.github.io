@@ -30,10 +30,10 @@ console.log('Window count:',windowcount);
 
 
 // Make desktop windows movable. 
-for(let deskwindow of desktopwindows) {
+for(let dw of desktopwindows) {
 	
 	// Activate movement of desktop window. 
-	makeMovable(deskwindow,'div.headbar');
+	makeMovable(dw,'div.headbar');
 }
 
 
@@ -41,13 +41,14 @@ for(let deskwindow of desktopwindows) {
 
 
 // Activate movement of given desktop window. 
-function makeMovable(deskwindow,draghookselector) {
+function makeMovable(desktopwindow,draghookselector) {
+	console.log('Desktop window:',desktopwindow);
 
 	// Cancel default dragging functionality. 
-	deskwindow.setAttribute('draggable',false);
+	desktopwindow.setAttribute('draggable',false);
 
 	// Get drag hook of desktop window. 
-	let draghook = deskwindow.querySelector(draghookselector) || deskwindow;
+	let draghook = desktopwindow.querySelector(draghookselector) || desktopwindow;
 
 	// Handle mouse movement events. 
 	handleMouseEvents();
@@ -64,32 +65,34 @@ function makeMovable(deskwindow,draghookselector) {
 
 	// Handle mouse movement events. 
 	function handleMouseEvents() {
+		console.log(desktopwindow);
 
 		// Allow initiation of window movement. 
-		draghook.addEventListener('mousedown',hookToPointer);
-		deskwindow.addEventListener('mousedown',bringWindowToTop);
+		draghook.addEventListener('mousedown', hookToPointer );
+		desktopwindow.addEventListener('mousedown', bringWindowToTop );
 	
 		// Allow ending of window movement. 
-		document.addEventListener('mouseup',unHookFromPointer);
-		desktop.addEventListener('mouseleave',unHookFromPointer);
-		deskwindow.addEventListener('mouseleave',unHookFromPointer);
+		document.addEventListener('mouseup', unHookFromPointer );
+		desktop.addEventListener('mouseleave', unHookFromPointer );
+		desktopwindow.addEventListener('mouseleave', unHookFromPointer );
 	}
 
 	// Handle touch movement events. 
 	function handleTouchEvents() {
+		console.log(desktopwindow);
 	
 		// Allow initiation of window movement. 
-		draghook.addEventListener('touchstart',hookToPointer);
-		deskwindow.addEventListener('touchstart',bringWindowToTop);
+		draghook.addEventListener('touchstart', hookToPointer );
+		desktopwindow.addEventListener('touchstart', bringWindowToTop );
 		
 		// Allow ending of window movement. 
-		document.addEventListener('touchcancel',unHookFromPointer);
-		document.addEventListener('touchend',unHookFromPointer);
+		document.addEventListener('touchcancel', unHookFromPointer );
+		document.addEventListener('touchend', unHookFromPointer );
 	}
 
 	// Hook desktop window to pointer to begin movement. 
 	function hookToPointer(event) {
-		console.log(event,deskwindow);
+		// console.log(event,desktopwindow);
 		// console.log('Target clicked:',event.target);
 		// console.log('Target hit:',event.currentTarget);
 
@@ -100,12 +103,12 @@ function makeMovable(deskwindow,draghookselector) {
 		if(clickedInDotBtn) return;
 
 		// Set as currently moving. 
-		deskwindow.classList.add('moving');
+		desktopwindow.classList.add('moving');
 		
 		// Start tracking mouse with desktop window (when mouse button pressed). 
-		deskwindow.addEventListener('mousemove',moveToPointer);
+		desktopwindow.addEventListener('mousemove',moveToPointer);
 		// Start tracking touch with desktop window (when mouse button pressed). 
-		deskwindow.addEventListener('touchmove',moveToPointer);
+		desktopwindow.addEventListener('touchmove',moveToPointer);
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
@@ -113,12 +116,12 @@ function makeMovable(deskwindow,draghookselector) {
 
 	// Move desktop window to position of pointer. 
 	function moveToPointer(event) {
-		// console.log(event,deskwindow);
+		// console.log(event,desktopwindow);
 		// console.log('Target clicked:',event.target);
 		// console.log('Target hit:',event.currentTarget);
 		
 		// Get original position of desktop window. 
-		let deskwindowstyle = window.getComputedStyle(deskwindow);
+		let deskwindowstyle = window.getComputedStyle(desktopwindow);
 		let x0 = parseInt(deskwindowstyle.left);
 		let y0 = parseInt(deskwindowstyle.top);
 		// console.log('(x0,y0):',x0,y0);
@@ -133,10 +136,10 @@ function makeMovable(deskwindow,draghookselector) {
 		// console.log('(x1,y1):',x1,y1);
 		
 		// Set new position to desktop window. 
-		deskwindow.style.left = `${x1}px`;
-		deskwindow.style.top = `${y1}px`;
-		// deskwindow.style.left = `${deskwindow.offsetLeft-dx}px`;
-		// deskwindow.style.top = `${deskwindow.offsetTop-dy}px`;
+		desktopwindow.style.left = `${x1}px`;
+		desktopwindow.style.top = `${y1}px`;
+		// desktopwindow.style.left = `${desktopwindow.offsetLeft-dx}px`;
+		// desktopwindow.style.top = `${desktopwindow.offsetTop-dy}px`;
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
@@ -146,17 +149,17 @@ function makeMovable(deskwindow,draghookselector) {
 
 	// Un-hook desktop window from pointer to finish movement. 
 	function unHookFromPointer(event) {
-		// console.log(event,deskwindow);
+		// console.log(event,desktopwindow);
 		// console.log('Target clicked:',event.target);
 		// console.log('Target hit:',event.currentTarget);
 
 		// Set as not currently moving. 
-		deskwindow.classList.remove('moving');
+		desktopwindow.classList.remove('moving');
 		
 		// Stop tracking mouse with desktop window (when mouse button released). 
-		deskwindow.removeEventListener('mousemove',moveToPointer);
+		desktopwindow.removeEventListener('mousemove',moveToPointer);
 		// Stop tracking touch with desktop window (when mouse button released). 
-		deskwindow.removeEventListener('touchmove',moveToPointer);
+		desktopwindow.removeEventListener('touchmove',moveToPointer);
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
@@ -174,14 +177,23 @@ function makeMovable(deskwindow,draghookselector) {
 
 	// Bring selected desktop window to top layer of stack. 
 	function bringWindowToTop(event) {
-		// console.log(this);
-		let deskwindow = this;
+		// console.log(desktopwindow);
 
 		// Get new z-index value. 
 		let newtoplevel = getNewTopLevel();
 
-		// Set new desk level for desktop window. 
-		deskwindow.style.setProperty('--i',newtoplevel);
+		// Set new level for desktop window. 
+		desktopwindow.style.setProperty('--i',newtoplevel);
+
+		for(let dw of desktopwindows) {
+			// Set only current desktop window as active. 
+			if(dw==desktopwindow) {
+				dw.classList.add('top');
+			}
+			else {
+				dw.classList.remove('top');
+			}
+		}
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
@@ -191,61 +203,55 @@ function makeMovable(deskwindow,draghookselector) {
 // Activate controls for given desktop window. 
 function makeControllable(desktopwindow) {
 
-	// 
-}
+	// Get control dot buttons. 
+	let dotbtnred = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.r');
+	let dotbtnyellow = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.y');
+	let dotbtngreen = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.g');
 
-// Create dot matrix for drag hook. 
-function createDotMatrix() {
+	// Activate control dot buttons. 
+	dotbtnred.addEventListener('click',closeWindow);
+	dotbtnyellow.addEventListener('click',toggleMinimize);
+	dotbtngreen.addEventListener('click',toggleMaximize);
 
-	// Initialize list of dots. 
-	let dots = '';
+	/****/
 
-	// Fill list of dots. 
-	for(let i=0 ; i<(numrowsperdotmatrix*numdotsperrow) ; i++) {
-		dots += `
-		<!-- dot -->
-		<span class="dot"></span>
-		<!-- /dot -->`;
+	// TODO: Toggle window minimization. 
+	function toggleMinimize() {
+
+		// Check if already minimized. 
+		let alreadyMinimized = desktopwindow.classList.contains('min');
+
+		// Un-minimize if already minimized. 
+		if(alreadyMinimized) {
+			desktopwindow.classList.remove('min');
+		}
+		// Minimize if not already minimized. 
+		else {
+			desktopwindow.classList.add('min');
+		}
 	}
 
-	// Return list of dots. 
-	return dots;
-}
+	// TODO: Toggle window maximization. 
+	function toggleMaximize() {
 
-// Create control panel for window header. 
-function createControlPanel() {
+		// Check if already maximized. 
+		let alreadyMaximized = desktopwindow.classList.contains('max');
 
-	// Return control panel dots. 
-	return `
-	<!-- dot -->
-	<div class="dot r">
+		// Un-maximize if already maximized. 
+		if(alreadyMaximized) {
+			desktopwindow.classList.remove('max');
+		}
+		// Maximize if not already maximized. 
+		else {
+			desktopwindow.classList.add('max');
+		}
+	}
 
-		<!-- icon -->
-		<span class="icon">&times;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
+	// TODO: Close window. 
+	function closeWindow() {
 
-	<!-- dot -->
-	<div class="dot y">
-
-		<!-- icon -->
-		<span class="icon">&minus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
-
-	<!-- dot -->
-	<div class="dot g">
-
-		<!-- icon -->
-		<span class="icon">&plus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->`;
+		// 
+	}
 }
 
 // Get new level above highest desk level. 
@@ -255,10 +261,10 @@ function getNewTopLevel() {
 	let maxlevel = 0;
 
 	// Go thru each desktop window. 
-	for(let deskwindow of desktopwindows) {
+	for(let dw of desktopwindows) {
 
 		// Get desk level of current window. 
-		let windowlevel = deskwindow.style.getPropertyValue('--i') * 1;
+		let windowlevel = dw.style.getPropertyValue('--i') * 1;
 
 		// Save level as maximum if greater than maximum. 
 		if(windowlevel>maxlevel) maxlevel = windowlevel;
@@ -266,67 +272,4 @@ function getNewTopLevel() {
 
 	// Get current max z-index. 
 	return (maxlevel + 1);
-}
-
-// Request creation of new desktop window. 
-function requestNewWindow() {
-
-	// Ask user for type of desktop window. 
-	let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
-
-	// Get newly created desktop window. 
-	let newdeskwindowlayout = createNewWindow(windowtype);
-	// Add new desktop window to page. 
-	desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
-
-	// Get new desktop window. 
-	let newdesktopwindow = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
-
-	// Make new desktop window movable. 
-	makeMovable(newdesktopwindow,'div.headbar');
-	
-	// TODO: Make new desktop window controllable. 
-	// makeControllable(newdesktopwindow);
-
-	// Increment count of desktop windows. 
-	windowcount++;
-
-	/****/
-
-	// Create new desktop window. 
-	function createNewWindow(type) {
-		console.log('New window type:',type);
-	
-		// Compile layout for new desktop window. 
-		return `
-		<!-- window -->
-		<div id="window${windowcount}" class="window" style="--i:${ getNewTopLevel() };">
-	
-			<!-- headbar -->
-			<div class="headbar">
-
-				<!-- controls -->
-				<div class="controls">${ createControlPanel() }</div>
-				<!-- /controls -->
-	
-				<!-- dotmatrix -->
-				<div class="dotmatrix">${ createDotMatrix() }</div>
-				<!-- /dotmatrix -->
-	
-			</div>
-			<!-- /headbar -->
-	
-			<!-- bodycontent -->
-			<div class="bodycontent">
-			
-				<!-- copy -->
-				<p class="copy">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda nemo incidunt a nam dolorum voluptates nulla perspiciatis adipisci deserunt minima quibusdam, sapiente illo blanditiis magnam deleniti tenetur hic laboriosam expedita! </p>
-				<!-- /copy -->
-	
-			</div>
-			<!-- /bodycontent -->
-			
-		</div>
-		<!-- /window -->`;
-	}
 }
