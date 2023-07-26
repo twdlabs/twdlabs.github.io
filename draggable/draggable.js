@@ -49,14 +49,11 @@ function makeMovable(deskwindow,draghookselector) {
 	// Get drag hook of desktop window. 
 	let draghook = deskwindow.querySelector(draghookselector) || deskwindow;
 
-	// Allow for initiation of drag movement. 
-	draghook.addEventListener('mousedown',hookToPointer);
-	deskwindow.addEventListener('mousedown',bringWindowToTop);
+	// Handle mouse movement events. 
+	handleMouseEvents();
 
-	// Allow for ending of drag movement. 
-	document.addEventListener('mouseup',unHookFromPointer);
-	desktop.addEventListener('mouseleave',unHookFromPointer);
-	deskwindow.addEventListener('mouseleave',unHookFromPointer);
+	// Handle touch movement events. 
+	handleTouchEvents();
 
 	// Get container for dot matrix in drag hook. 
 	let dotmatrix = draghook.querySelector('div.dotmatrix');
@@ -64,6 +61,30 @@ function makeMovable(deskwindow,draghookselector) {
 	if(dotmatrix) dotmatrix.innerHTML = createDotMatrix();
 
 	/****/
+
+	// Handle mouse movement events. 
+	function handleMouseEvents() {
+
+		// Allow initiation of window movement. 
+		draghook.addEventListener('mousedown',hookToPointer);
+		deskwindow.addEventListener('mousedown',bringWindowToTop);
+	
+		// Allow ending of window movement. 
+		document.addEventListener('mouseup',unHookFromPointer);
+		desktop.addEventListener('mouseleave',unHookFromPointer);
+		deskwindow.addEventListener('mouseleave',unHookFromPointer);
+	}
+
+	// Handle touch movement events. 
+	function handleTouchEvents() {
+	
+		// Allow initiation of window movement. 
+		draghook.addEventListener('touchstart',hookToPointer);
+		
+		// Allow ending of window movement. 
+		document.addEventListener('touchcancel',unHookFromPointer);
+		document.addEventListener('touchend',unHookFromPointer);
+	}
 
 	// Hook desktop window to pointer to begin movement. 
 	function hookToPointer(event) {
@@ -81,8 +102,9 @@ function makeMovable(deskwindow,draghookselector) {
 		deskwindow.classList.add('moving');
 		
 		// Start tracking mouse with desktop window (when mouse button pressed). 
-		// document.addEventListener('mousemove',moveToPointer);
 		deskwindow.addEventListener('mousemove',moveToPointer);
+		// Start tracking touch with desktop window (when mouse button pressed). 
+		deskwindow.addEventListener('touchmove',moveToPointer);
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
@@ -132,6 +154,8 @@ function makeMovable(deskwindow,draghookselector) {
 		
 		// Stop tracking mouse with desktop window (when mouse button released). 
 		deskwindow.removeEventListener('mousemove',moveToPointer);
+		// Stop tracking touch with desktop window (when mouse button released). 
+		deskwindow.removeEventListener('touchmove',moveToPointer);
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
@@ -148,7 +172,7 @@ function makeMovable(deskwindow,draghookselector) {
 	}
 
 	// Bring selected desktop window to top layer of stack. 
-	function bringWindowToTop() {
+	function bringWindowToTop(event) {
 		// console.log(this);
 		let deskwindow = this;
 
@@ -157,6 +181,9 @@ function makeMovable(deskwindow,draghookselector) {
 
 		// Set new desk level for desktop window. 
 		deskwindow.style.setProperty('--i',newtoplevel);
+
+		// Cancel default drag/drop behavior. 
+		// cancelDefault(event);
 	}
 }
 

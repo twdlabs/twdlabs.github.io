@@ -49,12 +49,12 @@ div#container nav.navbar div.bin ul.navlist li.navitem {padding:.5rem;}
 div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
 
-/* Drag Arena */
+/* Desktop */
 div#container div.desktop {/* background-color:whitesmoke; */ margin-top:4rem;}
 div#container div.desktop {z-index:10;}
 /* div#container div.desktop {display:flex; flex-direction:row; align-items:center; position:relative;} */
 
-/* Drag Item */
+/* Desktop Window */
 div#container div.desktop div.window {display:inline-block;}
 div#container div.desktop div.window {position:absolute; top:10rem; left:0; /* transform:translateY(10rem); */ width:100%; max-width:20rem; overflow:hidden; z-index:var(--i);}
 div#container div.desktop div.window {text-align:center; /* padding-bottom:3rem; */ border-radius:var(--cornersize);}
@@ -63,7 +63,7 @@ div#container div.desktop div.window/* :hover */ {background-color:var(--greygla
 div#container div.desktop div.window.moving {z-index:999;}
 /* div#container div.desktop div.window {display:none;} */
 
-/* Drag Item Head */
+/* Desktop Window Headbar */
 div#container div.desktop div.window div.headbar {display:flex; flex-direction:row; align-items:center; justify-content:space-between; justify-content:center;}
 div#container div.desktop div.window div.headbar {position:relative; z-index:20; padding:.375rem .5rem;}
 div#container div.desktop div.window div.headbar {pointer-events:none; /* opacity:0; */ transition:opacity .5s; }
@@ -83,12 +83,17 @@ div#container div.desktop div.window div.headbar span.caption {color:white; font
 div#container div.desktop div.window div.headbar div.dotmatrix {display:grid; grid-template-columns:repeat(12,1fr);}
 div#container div.desktop div.window div.headbar div.dotmatrix span.dot {background-color:#FFF8; --size:.125rem; --size:.1875rem; height:var(--size); width:var(--size); border-radius:50%; margin:1px;}
 
-/* Drag Item Content */
+/* Desktop Window Body */
 div#container div.desktop div.window div.bodycontent {background-color:white; overflow:hidden;}
 div#container div.desktop div.window div.bodycontent.x {display:none;}
+/* Desktop Window Body (Text) */
 div#container div.desktop div.window div.bodycontent p.copy {font-size:1.125rem; padding:.5rem 2rem;}
+/* Desktop Window Body (Image) */
+/* Desktop Window Body (Audio) */
+/* Desktop Window Body (Video) */
 div#container div.desktop div.window div.bodycontent div.vidbox {position:relative; padding-top:56.25%;}
 div#container div.desktop div.window div.bodycontent div.vidbox video.vid {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
+/* Desktop Window Body (File Folder) */
 
 
 
