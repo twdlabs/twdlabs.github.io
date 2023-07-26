@@ -40,7 +40,7 @@ for(let deskwindow of desktopwindows) {
 /*****/
 
 
-// Activate movement of desktop window. 
+// Activate movement of given desktop window. 
 function makeMovable(deskwindow,draghookselector) {
 
 	// Cancel default dragging functionality. 
@@ -188,6 +188,12 @@ function makeMovable(deskwindow,draghookselector) {
 	}
 }
 
+// Activate controls for given desktop window. 
+function makeControllable(desktopwindow) {
+
+	// 
+}
+
 // Create dot matrix for drag hook. 
 function createDotMatrix() {
 
@@ -273,9 +279,14 @@ function requestNewWindow() {
 	// Add new desktop window to page. 
 	desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
 
-	// TODO: Make new desktop window movable. 
+	// Get new desktop window. 
+	let newdesktopwindow = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
 
+	// Make new desktop window movable. 
+	makeMovable(newdesktopwindow,'div.headbar');
+	
 	// TODO: Make new desktop window controllable. 
+	// makeControllable(newdesktopwindow);
 
 	// Increment count of desktop windows. 
 	windowcount++;
