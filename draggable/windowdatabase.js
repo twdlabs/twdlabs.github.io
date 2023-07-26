@@ -16,27 +16,6 @@
 /*****/
 
 
-// TODO: Create new desktop window for text. 
-function createTextWindow(url) {
-
-	// Return layout. 
-	return ``;
-}
-
-// TODO: Create new desktop window for video. 
-function createVideoWindow(url) {
-
-	// Return layout. 
-	return ``;
-}
-
-// TODO: Create new desktop window for file folder. 
-function createFolderWindow(url) {
-
-	// Return layout. 
-	return ``;
-}
-
 // Create dot matrix for drag hook. 
 function createDotMatrix() {
 
@@ -92,24 +71,18 @@ function createControlPanel() {
 }
 
 // Request creation of new desktop window. 
-function requestNewWindow() {
+function requestNewWindow(windowtype) {
 
 	// Ask user for type of desktop window. 
-	let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
+	// let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
 
 	// Get newly created desktop window. 
 	let newdeskwindowlayout = createNewWindow(windowtype);
 	// Add new desktop window to page. 
 	desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
 
-	// Get new desktop window. 
-	let newdesktopwindow = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
-
-	// Make new desktop window movable. 
-	makeMovable(newdesktopwindow,'div.headbar');
-	
-	// Make new desktop window controllable. 
-	makeControllable(newdesktopwindow);
+	// Activate new desktop window. 
+	activateNewWindow();
 
 	// Increment count of desktop windows. 
 	windowcount++;
@@ -151,5 +124,41 @@ function requestNewWindow() {
 			
 		</div>
 		<!-- /window -->`;
+
+		/***/
+
+		// TODO: Create text content for new desktop window. 
+		function createTextWindow(url) {
+		
+			// Return layout. 
+			return ``;
+		}
+		
+		// TODO: Create video content for new desktop window. 
+		function createVideoWindow(url) {
+		
+			// Return layout. 
+			return ``;
+		}
+		
+		// TODO: Create file folder content for new desktop window. 
+		function createFolderWindow(url) {
+		
+			// Return layout. 
+			return ``;
+		}
+	}
+
+	// Activate new desktop window. 
+	function activateNewWindow() {
+
+		// Get new desktop window. 
+		let newdesktopwindow = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
+	
+		// Make new desktop window movable. 
+		makeMovable(newdesktopwindow,'div.headbar');
+		
+		// Make new desktop window controllable. 
+		makeControllable(newdesktopwindow);
 	}
 }

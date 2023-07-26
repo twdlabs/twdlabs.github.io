@@ -49,9 +49,19 @@ div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; alig
 /* div#container nav.navbar div.bin h1.head svg.icon {} */
 div#container nav.navbar div.bin h1.head span.caption {margin-left:.5rem;}
 div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
-div#container nav.navbar div.bin ul.navlist li.navitem {padding:.5rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem {position:relative; padding:.5rem;}
 div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink:hover {box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink svg.icon {display:block;}
+div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {position:absolute; top:100%; left:50%; transform:translateX(-50%); box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {background-color:white; list-style:none; padding:0; padding:.125rem; border-radius:10rem; margin:0;}
+div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {opacity:0; visibility:hidden; transition:.25s;}
+div#container nav.navbar div.bin ul.navlist li.navitem:hover ul.navdrop {opacity:1; visibility:visible;}
+/* div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem {} */
+div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem.x {display:none;}
+div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem a.navlink {display:grid; place-items:center; transition:.125s; padding:.5rem; border-radius:5rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem a.navlink:hover {background-color:var(--blackglass); color:white;}
 
 /* Desktop */
 div#container div.desktop {/* background-color:whitesmoke; */ margin-top:4rem;}
@@ -72,14 +82,14 @@ div#container div.desktop div.window.moving {transition:none;/* z-index:999; */}
 
 /* Desktop Window Headbar */
 div#container div.desktop div.window div.headbar {display:flex; flex-direction:row; align-items:center; justify-content:space-between; justify-content:center;}
-div#container div.desktop div.window div.headbar {position:relative; z-index:20; padding:.375rem .5rem;}
+div#container div.desktop div.window div.headbar {cursor:initial; user-select:none; position:relative; z-index:20; padding:.375rem .5rem;}
 /* div#container div.desktop div.window div.headbar {pointer-events:none; opacity:0; transition:opacity .5s; } */
 /* div#container div.desktop div.window:hover div.headbar {pointer-events:initial; opacity:1;} */
 div#container div.desktop div.window div.headbar:active {cursor:move;}
 div#container div.desktop div.window div.headbar div.controls {position:absolute; left:0; top:50%; transform:translateY(-50%); margin-left:.125rem; margin-left:.5625rem;}
 div#container div.desktop div.window div.headbar div.controls {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
 div#container div.desktop div.window div.headbar div.controls {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.4375rem;}
-div#container div.desktop div.window div.headbar div.controls div.dot {background-color:var(--whiteglass); font-size:var(--dotsize); font-weight:bold; cursor:pointer; user-select:none;}
+div#container div.desktop div.window div.headbar div.controls div.dot {background-color:var(--whiteglass); font-size:var(--dotsize); font-weight:bold; cursor:pointer; user-select:none; box-shadow:var(--boxshadow);}
 div#container div.desktop div.window div.headbar div.controls div.dot {position:relative; --dotsize:.75rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; /* margin-left:.4375rem; */}
 div#container div.desktop div.window div.headbar div.controls:hover div.dot.r,
 div#container div.desktop div.window.top div.headbar div.controls div.dot.r {background-color:var(--red); color:var(--darkred);}
