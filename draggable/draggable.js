@@ -4,9 +4,6 @@
 // Get desktop window container. 
 const desktop = document.querySelector('div#container div.desktop');
 
-// Get all pre-existing desktop windows. 
-const desktopwindows = document.querySelectorAll('div#container div.desktop div.window');
-
 
 /*****/
 
@@ -39,10 +36,20 @@ activateDesktop();
 // Activate desktop. 
 function activateDesktop() {
 
-	// Go thru original desktop windows. 
-	for(let dw of desktopwindows) {
+	// Get all current desktop windows. 
+	let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
+
+	// Go thru all desktop windows. 
+	for(let dw of alldesktopwindows) {
 		// Activate desktop window. 
 		activateDesktopWindow(dw);
+
+		// Get desk level of current window. 
+		let index = dw.style.getPropertyValue('--i') * 1;
+
+		// Position desktop window. 
+		dw.style.top = `${index*32}px`;
+		dw.style.left = `${index*32}px`;
 	}
 
 	/****/
@@ -193,7 +200,7 @@ function makeMovable(desktopwindow,draghookselector) {
 		event.preventDefault();
 	}
 
-	// Bring selected desktop window to top layer of stack. 
+	// Bring selected desktop window to top layer. 
 	function bringWindowToTop(event) {
 		
 		// Check if selected desktop window already on top. 
@@ -209,7 +216,11 @@ function makeMovable(desktopwindow,draghookselector) {
 		// Set new level for desktop window. 
 		desktopwindow.style.setProperty('--i',newtoplevel);
 
-		for(let dw of desktopwindows) {
+		// Get all current desktop windows. 
+		let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
+
+		// Go thru all desktop windows. 
+		for(let dw of alldesktopwindows) {
 			// Set only current desktop window as active. 
 			if(dw==desktopwindow) {
 				dw.classList.add('top');
@@ -240,7 +251,7 @@ function makeControllable(desktopwindow) {
 
 	/****/
 
-	// TODO: Toggle window minimization. 
+	// Toggle window minimization. 
 	function toggleMinimize() {
 
 		// Check if already minimized. 
@@ -248,15 +259,19 @@ function makeControllable(desktopwindow) {
 
 		// Un-minimize if already minimized. 
 		if(alreadyMinimized) {
+			// 
 			desktopwindow.classList.remove('min');
 		}
 		// Minimize if not already minimized. 
 		else {
+			// 
 			desktopwindow.classList.add('min');
+			// Ensure exclusivity of max/min. 
+			desktopwindow.classList.remove('max');
 		}
 	}
 
-	// TODO: Toggle window maximization. 
+	// Toggle window maximization. 
 	function toggleMaximize() {
 
 		// Check if already maximized. 
@@ -264,18 +279,22 @@ function makeControllable(desktopwindow) {
 
 		// Un-maximize if already maximized. 
 		if(alreadyMaximized) {
+			// 
 			desktopwindow.classList.remove('max');
 		}
 		// Maximize if not already maximized. 
 		else {
+			// 
 			desktopwindow.classList.add('max');
+			// Ensure exclusivity of max/min. 
+			desktopwindow.classList.remove('min');
 		}
 	}
 
-	// TODO: Close window. 
+	// Close window. 
 	function closeWindow() {
-
-		// 
+		// Remove element from page. 
+		desktopwindow.remove();
 	}
 }
 
@@ -285,8 +304,11 @@ function getNewTopLevel() {
 	// Initialize max desk level. 
 	let maxlevel = 0;
 
+	// Get all current desktop windows. 
+	let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
+
 	// Go thru each desktop window. 
-	for(let dw of desktopwindows) {
+	for(let dw of alldesktopwindows) {
 
 		// Get desk level of current window. 
 		let windowlevel = dw.style.getPropertyValue('--i') * 1;

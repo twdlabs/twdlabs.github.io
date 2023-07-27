@@ -160,5 +160,66 @@ function requestNewWindow(windowtype) {
 		
 		// Make new desktop window controllable. 
 		makeControllable(newdesktopwindow);
+
+		// Bring new desktop window to top layer. 
+		bringWindowToTop(newdesktopwindow);
+
+		/***/
+
+		// Bring selected desktop window to top layer of stack. 
+		function bringWindowToTop(desktopwindow) {
+
+			// Get new z-index value. 
+			let newtoplevel = getNewTopLevel();
+	
+			// Set new level for desktop window. 
+			desktopwindow.style.setProperty('--i',newtoplevel);
+
+			// Get all current desktop windows. 
+			let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
+	
+			for(let dw of alldesktopwindows) {
+				// Set only current desktop window as active. 
+				if(dw==desktopwindow) {
+					dw.classList.add('top');
+				}
+				else {
+					dw.classList.remove('top');
+				}
+			}
+		}
 	}
+}
+
+// Minimize all desktop windows. 
+function minimizeAll() {
+	console.log('Minimizing all windows...');
+
+	// Get all current desktop windows. 
+	let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
+
+	// Go thru all desktop windows. 
+	for(let dw of alldesktopwindows) {
+
+		// Minimize desktop window. 
+		dw.classList.remove('max');
+		dw.classList.add('min');
+	}
+	console.log('DONE');
+}
+
+// Close all desktop windows. 
+function closeAll() {
+	console.log('Closing all windows...');
+
+	// Get all current desktop windows. 
+	let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
+
+	// Go thru all desktop windows. 
+	for(let dw of alldesktopwindows) {
+
+		// Close desktop window. 
+		dw.remove();
+	}
+	console.log('DONE');
 }

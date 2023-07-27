@@ -52,11 +52,10 @@
 						<li class="navitem">
 
 							<!-- navlink -->
-							<a class="navlink" href="javascript:void(0)" title="New window">
+							<a class="navlink add" href="javascript:void(0)" title="New window">
 	
 								<!-- icon -->
 								<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<!-- <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/> -->
 									<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
 								</svg>
 								<!-- /icon -->
@@ -164,20 +163,38 @@
 						<!-- /navitem -->
 	
 						<!-- navitem -->
-						<li class="navitem x">
+						<li class="navitem">
 
 							<!-- navlink -->
-							<a class="navlink" href="javascript:void(0)">Minimize all</a>
+							<a class="navlink min" href="javascript:void(0)" title="Minimize all" onclick="minimizeAll()">
+	
+								<!-- icon -->
+								<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<!-- <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/> -->
+									<path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8Z"/>
+								</svg>
+								<!-- /icon -->
+
+							</a>
 							<!-- /navlink -->
 
 						</li>
 						<!-- /navitem -->
 	
 						<!-- navitem -->
-						<li class="navitem x">
+						<li class="navitem">
 
 							<!-- navlink -->
-							<a class="navlink" href="javascript:void(0)">Close all</a>
+							<a class="navlink clear" href="javascript:void(0)" title="Close all" onclick="closeAll()">
+	
+								<!-- icon -->
+								<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="scale:.875;">
+									<!-- <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/> -->
+									<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+								</svg>
+								<!-- /icon -->
+								
+							</a>
 							<!-- /navlink -->
 
 						</li>
@@ -316,10 +333,30 @@
 	
 					<!-- bodycontent -->
 					<div class="bodycontent">
-					
-						<!-- copy -->
-						<p class="copy">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda nemo incidunt a nam dolorum voluptates nulla perspiciatis adipisci deserunt minima quibusdam, sapiente illo blanditiis magnam deleniti tenetur hic laboriosam expedita! </p>
-						<!-- /copy -->
+	
+						<!-- vidbox -->
+						<div class="vidbox">
+	
+							<!-- vid -->
+							<video class="vid" src="./../video/assets/videos/0000001.mp4" controls></video>
+							<!-- /vid -->
+
+							<!-- cover -->
+							<label class="cover">
+	
+								<!-- icon -->
+								<svg class="icon speaker" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+									<path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+									<path d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z"/>
+								</svg>
+								<!-- /icon -->
+								
+							</label>
+							<!-- /cover -->
+	
+						</div>
+						<!-- /vidbox -->
 	
 					</div>
 					<!-- /bodycontent -->
@@ -378,30 +415,10 @@
 	
 					<!-- bodycontent -->
 					<div class="bodycontent">
-	
-						<!-- vidbox -->
-						<div class="vidbox">
-	
-							<!-- vid -->
-							<video class="vid" src="./../video/assets/videos/0000001.mp4" controls></video>
-							<!-- /vid -->
-
-							<!-- cover -->
-							<label class="cover">
-	
-								<!-- icon -->
-								<svg class="icon speaker" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
-									<path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
-									<path d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z"/>
-								</svg>
-								<!-- /icon -->
-								
-							</label>
-							<!-- /cover -->
-	
-						</div>
-						<!-- /vidbox -->
+					
+						<!-- copy -->
+						<p class="copy">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda nemo incidunt a nam dolorum voluptates nulla perspiciatis adipisci deserunt minima quibusdam, sapiente illo blanditiis magnam deleniti tenetur hic laboriosam expedita! </p>
+						<!-- /copy -->
 	
 					</div>
 					<!-- /bodycontent -->
