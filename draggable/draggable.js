@@ -44,12 +44,8 @@ function activateDesktop() {
 		// Activate desktop window. 
 		activateDesktopWindow(dw);
 
-		// Get desk level of current window. 
-		let index = dw.style.getPropertyValue('--i') * 1;
-
 		// Position desktop window. 
-		dw.style.top = `${index*32}px`;
-		dw.style.left = `${index*32}px`;
+		positionDesktopWindow(dw);
 	}
 
 	/****/
@@ -65,6 +61,21 @@ function activateDesktop() {
 		makeControllable(dw);
 
 	}
+
+	// Position desktop window. 
+	function positionDesktopWindow(dw) {
+
+		// Define positioning differential. 
+		let dx = 32;
+		let dy = 48;
+
+		// Get desk level of current window. 
+		let index = dw.style.getPropertyValue('--i') * 1;
+
+		// Position desktop window. 
+		dw.style.top = `${index*dy}px`;
+		dw.style.left = `${index*dx}px`;
+	}
 }
 
 // Activate movement of given desktop window. 
@@ -77,16 +88,16 @@ function makeMovable(desktopwindow,draghookselector) {
 	// Get drag hook of desktop window. 
 	let draghook = desktopwindow.querySelector(draghookselector) || desktopwindow;
 
+	// Get container for dot matrix in drag hook. 
+	let dotmatrix = draghook.querySelector('div.dotmatrix');
+	// Create dot matrix for drag hook. 
+	if(dotmatrix) dotmatrix.innerHTML = createDotMatrix();
+
 	// Handle mouse movement events. 
 	handleMouseEvents();
 
 	// Handle touch movement events. 
 	handleTouchEvents();
-
-	// Get container for dot matrix in drag hook. 
-	let dotmatrix = draghook.querySelector('div.dotmatrix');
-	// Create dot matrix for drag hook. 
-	if(dotmatrix) dotmatrix.innerHTML = createDotMatrix();
 
 	/****/
 

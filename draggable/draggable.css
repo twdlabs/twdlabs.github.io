@@ -20,11 +20,12 @@
 	--blue:dodgerblue;
 	--white:#f5f5f5;
 	--greyglass:#888A;
-	--whiteglass:#FFF6;
+	--whiteglass:#FFF5;
 	--blackglass:#0008;
 	
 	/* Numbers */
 	/* font-size:2rem; */
+	--navheight:3.5rem;
 	--cornersize:.375rem;
 	--shadow:0 .125rem .25rem #0003;
 	--boxshadow:0 0 1rem 0 #0002;
@@ -37,14 +38,16 @@ html {background-attachment:fixed; background-position:center; background-repeat
 html {background-image:url('./../gallery/assets/images/full/starry-sky-wallpaper-dark.jpg');}
 html {background-image:url('./../gallery/assets/images/full/ze0NeqF.jpg');}
 html {background-image:url('./../gallery/assets/images/full/Navagio.jpg');}
-body {background-color:var(--whiteglass); background-attachment:fixed; font-family:Nunito,sans-serif; margin:0;}
+/* html {background-color:var(--whiteglass);} */
+body {background-color:var(--whiteglass);}
+body {background-attachment:fixed; font-family:Nunito,sans-serif; margin:0;}
 
 
-div#container {/* background-color:whitesmoke; */ min-height:100vh; padding:1rem;}
+/* div#container {background-color:whitesmoke; min-height:100vh;} */
 
 /* Navbar */
 div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:20;}
-div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:1rem 2rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:.5rem 1.5rem; box-shadow:var(--boxshadow);}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
 div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
 /* div#container nav.navbar div.bin h1.head svg.icon {} */
@@ -52,7 +55,7 @@ div#container nav.navbar div.bin h1.head span.caption {margin-left:.5rem;}
 div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
 div#container nav.navbar div.bin ul.navlist li.navitem {position:relative; padding:.25rem;}
 div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:block; color:inherit; text-decoration:none; padding:.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:block; color:inherit; text-decoration:none; padding:.5rem; border-radius:5rem; box-shadow:var(--boxshadow);}
 div#container nav.navbar div.bin ul.navlist li.navitem a.navlink.add {background-color:var(--green); color:white; }
 div#container nav.navbar div.bin ul.navlist li.navitem a.navlink.min {background-color:var(--yellow); color:white;}
 div#container nav.navbar div.bin ul.navlist li.navitem a.navlink.clear {background-color:var(--red); color:white;}
@@ -63,27 +66,28 @@ div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {background-co
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {opacity:0; visibility:hidden; transition:.25s;}
 div#container nav.navbar div.bin ul.navlist li.navitem:hover ul.navdrop {opacity:1; visibility:visible;}
 /* div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem {} */
-div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem.x {display:none;}
+div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop  li.navdropitem.x {display:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem a.navlink {display:grid; place-items:center; transition:.125s; padding:.5rem; border-radius:5rem; box-shadow:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem a.navlink:hover {background-color:var(--blackglass); color:white;}
 
 /* Desktop */
-div#container div.desktop {/* background-color:whitesmoke; */ position:relative; min-height:85vh; margin-top:6rem;}
+div#container div.desktop {/* background-color:whitesmoke; */ position:relative; min-height:calc(100vh - var(--navheight)); padding:1.5rem; margin-top:var(--navheight);}
 div#container div.desktop {z-index:10;}
 /* div#container div.desktop {display:flex; flex-direction:row; align-items:center; position:relative;} */
 
 /* Desktop Window */
 div#container div.desktop h1.head {margin:0;}
 /* div#container div.desktop p.textcopy {margin:0;} */
-div#container div.desktop div.window {position:absolute; top:0; left:0; /* transform:translateY(8rem); */ width:100%; max-width:20rem; overflow:hidden; z-index:var(--i);}
-/* div#container div.desktop div.window {display:inline-block; top:var(--i); left:var(--i);} */
-div#container div.desktop div.window {text-align:center; /* padding-bottom:3rem; */ border-radius:var(--cornersize);}
-div#container div.desktop div.window {background-color:transparent; background-color:var(--greyglass); backdrop-filter:blur(.375rem); transition: background-color .125s, backdrop-filter .125s, box-shadow .25s;}
-div#container div.desktop div.window {box-shadow:var(--boxshadow);}
-div#container div.desktop div.window.max {position:absolute; top:0 !important; right:0; bottom:0; left:0 !important; height:100%; width:100%; max-width:none; z-index:9999;}
-div#container div.desktop div.window.top {box-shadow:var(--boxshadowx);}
+div#container div.desktop div.window {position:absolute; top:0; left:0; width:20rem; overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container div.desktop div.window {background-color:transparent; background-color:var(--greyglass); backdrop-filter:blur(.375rem); text-align:center; z-index:var(--i);}
+div#container div.desktop div.window {transition: background-color .125s, backdrop-filter .125s, box-shadow .25s;}
+/* div#container div.desktop div.window {width:100%; max-width:20rem;} */
+/* div#container div.desktop div.window {max-width:100%; width:20rem;} */
+div#container div.desktop div.window.x {display:none;}
 /* div#container div.desktop div.window.min {} */
-/* div#container div.desktop div.window.max {} */
+div#container div.desktop div.window.max {position:absolute; top:0 !important; right:0; bottom:0; left:0 !important; z-index:15;}
+div#container div.desktop div.window.max {height:100%; width:100%; max-width:none; box-shadow:none;}
+div#container div.desktop div.window.top {box-shadow:var(--boxshadowx);}
 div#container div.desktop div.window.moving {transition:none;/* z-index:999; */}
 /* div#container div.desktop div.window {display:none;} */
 
@@ -98,12 +102,15 @@ div#container div.desktop div.window div.headbar div.controls {display:flex; fle
 div#container div.desktop div.window div.headbar div.controls {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.4375rem;}
 div#container div.desktop div.window div.headbar div.controls div.dot {background-color:var(--whiteglass); font-size:var(--dotsize); font-weight:bold; cursor:pointer; user-select:none; box-shadow:var(--boxshadow);}
 div#container div.desktop div.window div.headbar div.controls div.dot {position:relative; --dotsize:.75rem; height:var(--dotsize); width:var(--dotsize); border-radius:50%; /* margin-left:.4375rem; */}
-div#container div.desktop div.window div.headbar div.controls:hover div.dot.r,
-div#container div.desktop div.window.top div.headbar div.controls div.dot.r {background-color:var(--red); color:var(--darkred);}
-div#container div.desktop div.window div.headbar div.controls:hover div.dot.y,
-div#container div.desktop div.window.top div.headbar div.controls div.dot.y {background-color:var(--yellow); color:var(--darkyellow);}
-div#container div.desktop div.window div.headbar div.controls:hover div.dot.g,
-div#container div.desktop div.window.top div.headbar div.controls div.dot.g {background-color:var(--green); color:var(--darkgreen);}
+div#container div.desktop div.window div.headbar div.controls div.dot.r {color:var(--darkred);}
+div#container div.desktop div.window.top div.headbar div.controls div.dot.r,
+div#container div.desktop div.window div.headbar div.controls:hover div.dot.r {background-color:var(--red);}
+div#container div.desktop div.window div.headbar div.controls div.dot.y {color:var(--darkyellow);}
+div#container div.desktop div.window.top div.headbar div.controls div.dot.y,
+div#container div.desktop div.window div.headbar div.controls:hover div.dot.y {background-color:var(--yellow);}
+div#container div.desktop div.window div.headbar div.controls div.dot.g {color:var(--darkgreen);}
+div#container div.desktop div.window.top div.headbar div.controls div.dot.g,
+div#container div.desktop div.window div.headbar div.controls:hover div.dot.g {background-color:var(--green);}
 div#container div.desktop div.window div.headbar div.controls div.dot span.icon {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
 div#container div.desktop div.window div.headbar div.controls div.dot span.icon {visibility:hidden;}
 div#container div.desktop div.window div.headbar div.controls:hover div.dot span.icon {visibility:visible;}
@@ -118,16 +125,25 @@ div#container div.desktop div.window.min div.bodycontent {height:0; transition:h
 /* Desktop Window Body (Text) */
 div#container div.desktop div.window div.bodycontent p.copy {font-size:1.125rem; padding:.5rem 2rem;}
 /* Desktop Window Body (Image) */
+div#container div.desktop div.window div.bodycontent img.pic {display:block; width:100%;}
 /* Desktop Window Body (Audio) */
+div#container div.desktop div.window div.bodycontent div.clipbox {position:relative; padding-top:8rem;}
+div#container div.desktop div.window div.bodycontent div.clipbox audio.clip {display:block; width:100%;}
 /* Desktop Window Body (Video) */
 div#container div.desktop div.window div.bodycontent div.vidbox {position:relative; padding-top:56.25%;}
 div#container div.desktop div.window div.bodycontent div.vidbox video.vid {position:absolute; top:0; left:0; height:100%; width:100%; object-fit:cover;}
 div#container div.desktop div.window div.bodycontent label.cover {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container div.desktop div.window div.bodycontent label.cover {background-color:var(--blackglass); display:grid; place-items:center;}
+div#container div.desktop div.window div.bodycontent label.cover {background-color:var(--blackglass); display:grid; place-items:center; overflow:hidden;}
 div#container div.desktop div.window div.bodycontent label.cover {opacity:1; visibility:visible; transition:.25s;}
 div#container div.desktop div.window.top div.bodycontent label.cover {opacity:0; visibility:hidden;}
 div#container div.desktop div.window div.bodycontent label.cover svg.icon {color:limegreen; font-size:5rem; opacity:.625;}
 /* Desktop Window Body (File Folder) */
+div#container div.desktop div.window div.bodycontent ul.filelist {list-style:none; padding:0; padding:.5rem; margin:0;}
+div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem {padding:0 .25rem;}
+div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink {display:flex; flex-direction:row; align-items:center;}
+div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink {color:inherit; text-decoration:none;}
+/* div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink svg.icon {} */
+div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink span.caption {margin-left:.375rem;}
 
 
 
@@ -147,7 +163,7 @@ div#container div.desktop div.window div.bodycontent label.cover svg.icon {color
 	/*  */
 	/* div#container div.desktop {} */
 	div#container div.desktop div.window {position:static; transform:none; max-width:none; margin-top:2rem; transition:margin .25s;}
-	div#container div.desktop div.window.min {margin-top:0;}
+	div#container div.desktop div.window.min {margin-top:.5rem;}
 	/* div#container div.desktop div.window div.headbar {padding:0;} */
 	div#container div.desktop div.window div.headbar div.dotmatrix {opacity:.25;}
 }

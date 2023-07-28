@@ -1,21 +1,6 @@
 
 
 
-// // Define types of desktop windows. 
-// const windowTypeData = [
-
-// 	// 
-// 	{
-// 		id:'video',
-// 		markup:'',
-// 	},
-
-// ];
-
-
-/*****/
-
-
 // Create dot matrix for drag hook. 
 function createDotMatrix() {
 
@@ -126,23 +111,37 @@ function requestNewWindow(windowtype) {
 		<!-- /window -->`;
 
 		/***/
+		
+		// TODO: Create file folder content for new desktop window. 
+		function createFolderContent(url) {
+		
+			// Return layout. 
+			return ``;
+		}
 
 		// TODO: Create text content for new desktop window. 
-		function createTextWindow(url) {
+		function createTextContent(url) {
+		
+			// Return layout. 
+			return ``;
+		}
+
+		// TODO: Create image content for new desktop window. 
+		function createImageContent(url) {
+		
+			// Return layout. 
+			return ``;
+		}
+
+		// TODO: Create audio content for new desktop window. 
+		function createAudioContent(url) {
 		
 			// Return layout. 
 			return ``;
 		}
 		
 		// TODO: Create video content for new desktop window. 
-		function createVideoWindow(url) {
-		
-			// Return layout. 
-			return ``;
-		}
-		
-		// TODO: Create file folder content for new desktop window. 
-		function createFolderWindow(url) {
+		function createVideoContent(url) {
 		
 			// Return layout. 
 			return ``;
