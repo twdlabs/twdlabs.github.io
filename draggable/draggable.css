@@ -138,12 +138,18 @@ div#container div.desktop div.window div.bodycontent label.cover {opacity:1; vis
 div#container div.desktop div.window.top div.bodycontent label.cover {opacity:0; visibility:hidden;}
 div#container div.desktop div.window div.bodycontent label.cover svg.icon {color:limegreen; font-size:5rem; opacity:.625;}
 /* Desktop Window Body (File Folder) */
-div#container div.desktop div.window div.bodycontent ul.filelist {list-style:none; padding:0; padding:.5rem; margin:0;}
-div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem {padding:0 .25rem;}
-div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink {display:flex; flex-direction:row; align-items:center;}
-div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink {color:inherit; text-decoration:none;}
-/* div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink svg.icon {} */
-div#container div.desktop div.window div.bodycontent ul.filelist li.fileitem a.filelink span.caption {margin-left:.375rem;}
+div#container div.desktop div.window div.bodycontent div.head {display:flex; flex-direction:row; align-items:center; min-height:2.5rem; padding:.5rem;}
+div#container div.desktop div.window div.bodycontent div.head div.btn {background-color:var(--white); cursor:pointer; padding:.25rem; border-radius:.25rem; margin-right:.25rem; box-shadow: var(--boxshadowx);}
+div#container div.desktop div.window div.bodycontent div.head div.btn svg.icon {display:block; font-size:1.5rem;}
+div#container div.desktop div.window div.bodycontent div.head label.foldername {font-size:1.5rem; margin-left:.5rem;}
+/* div#container div.desktop div.window div.bodycontent div.body {} */
+div#container div.desktop div.window div.bodycontent div.body ul.filelist {list-style:none; padding:0; padding:.5rem; margin:0;}
+div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem {padding:0 .25rem;}
+div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem a.filelink {display:flex; flex-direction:row; align-items:center;}
+div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem a.filelink {color:inherit; text-decoration:none;}
+/* div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem a.filelink svg.icon {} */
+div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem a.filelink span.caption {margin-left:.375rem;}
+/* div#container div.desktop div.window div.bodycontent div.body div.filepreview {} */
 
 
 

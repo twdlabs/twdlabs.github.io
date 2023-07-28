@@ -1,62 +1,71 @@
 
 
 
-// Create dot matrix for drag hook. 
-function createDotMatrix() {
+// Activate controls for given desktop window. 
+function makeControllable(desktopwindow) {
+	// console.log('\tActivating controls:',desktopwindow);
 
-	// Initialize list of dots. 
-	let dots = '';
+	// Get control dot buttons. 
+	let dotbtnred = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.r');
+	let dotbtnyellow = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.y');
+	let dotbtngreen = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.g');
 
-	// Fill list of dots. 
-	for(let i=0 ; i<(numrowsperdotmatrix*numdotsperrow) ; i++) {
-		dots += `
-		<!-- dot -->
-		<span class="dot"></span>
-		<!-- /dot -->`;
+	// Activate control dot buttons. 
+	dotbtnred.addEventListener('click',closeWindow);
+	dotbtnyellow.addEventListener('click',toggleMinimize);
+	dotbtngreen.addEventListener('click',toggleMaximize);
+
+	/****/
+
+	// Toggle window maximization. 
+	function toggleMaximize() {
+
+		// Check if already maximized. 
+		let alreadyMaximized = desktopwindow.classList.contains('max');
+
+		// Un-maximize if already maximized. 
+		if(alreadyMaximized) {
+			// 
+			desktopwindow.classList.remove('max');
+		}
+		// Maximize if not already maximized. 
+		else {
+			// 
+			desktopwindow.classList.add('max');
+			// Ensure exclusivity of max/min. 
+			desktopwindow.classList.remove('min');
+		}
 	}
 
-	// Return list of dots. 
-	return dots;
-}
+	// Toggle window minimization. 
+	function toggleMinimize() {
 
-// Create control panel for window header. 
-function createControlPanel() {
+		// Check if already minimized. 
+		let alreadyMinimized = desktopwindow.classList.contains('min');
 
-	// Return control panel dots. 
-	return `
-	<!-- dot -->
-	<div class="dot r">
+		// Un-minimize if already minimized. 
+		if(alreadyMinimized) {
+			// 
+			desktopwindow.classList.remove('min');
+		}
+		// Minimize if not already minimized. 
+		else {
+			// 
+			desktopwindow.classList.add('min');
+			// Ensure exclusivity of max/min. 
+			desktopwindow.classList.remove('max');
+		}
+	}
 
-		<!-- icon -->
-		<span class="icon">&times;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
-
-	<!-- dot -->
-	<div class="dot y">
-
-		<!-- icon -->
-		<span class="icon">&minus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
-
-	<!-- dot -->
-	<div class="dot g">
-
-		<!-- icon -->
-		<span class="icon">&plus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->`;
+	// Close window. 
+	function closeWindow() {
+		// Remove element from page. 
+		desktopwindow.remove();
+	}
 }
 
 // Request creation of new desktop window. 
-function requestNewWindow(windowtype) {
+function addNewWindow(windowtype) {
 
 	// Ask user for type of desktop window. 
 	// let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
