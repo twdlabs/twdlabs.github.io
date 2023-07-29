@@ -111,13 +111,7 @@ function addNewWindow(windowtype) {
 			<!-- /headbar -->
 	
 			<!-- bodycontent -->
-			<div class="bodycontent">
-			
-				<!-- copy -->
-				<p class="copy">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda nemo incidunt a nam dolorum voluptates nulla perspiciatis adipisci deserunt minima quibusdam, sapiente illo blanditiis magnam deleniti tenetur hic laboriosam expedita! </p>
-				<!-- /copy -->
-	
-			</div>
+			<div class="bodycontent">${ xyz() }</div>
 			<!-- /bodycontent -->
 			
 		</div>
@@ -136,7 +130,10 @@ function addNewWindow(windowtype) {
 		function createTextContent(url) {
 		
 			// Return layout. 
-			return ``;
+			return `
+			<!-- copy -->
+			<p class="copy">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+			<!-- /copy -->`;
 		}
 
 		// TODO: Create image content for new desktop window. 

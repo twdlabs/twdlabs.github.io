@@ -1,6 +1,14 @@
 
 
 
+// Define dimensions of dot matrix (in drag hook). 
+const numdotsperrow = 12;
+const numrowsperdotmatrix = 3;
+
+
+/*****/
+
+
 // Activate movement of given desktop window. 
 function makeMovable(desktopwindow,draghookselector='div.headbar') {
 	// console.log('\tActivating movement:',desktopwindow);

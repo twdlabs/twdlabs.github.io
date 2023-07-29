@@ -7,11 +7,6 @@ const desktop = document.querySelector('div#container div.desktop');
 
 /*****/
 
-
-// Define dimensions of dot matrix (in drag hook). 
-const numdotsperrow = 12;
-const numrowsperdotmatrix = 3;
-
 // Initialize count of desktop windows. 
 let windowcount = 0;
 console.log('Window count:',windowcount);
