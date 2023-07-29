@@ -53,7 +53,7 @@ function activateDesktop() {
 		console.log('Now activating:',dw);
 
 		// Activate movement of desktop window. 
-		makeMovable(dw,'div.headbar');
+		makeMovable(dw/* ,'div.headbar' */);
 
 		// Activate controls of desktop window. 
 		makeControllable(dw);
@@ -77,58 +77,4 @@ function activateDesktop() {
 		dw.style.top = `${index*dy}px`;
 		dw.style.left = `${index*dx}px`;
 	}
-}
-
-// Create dot matrix for drag hook. 
-function createDotMatrix() {
-
-	// Initialize list of dots. 
-	let dots = '';
-
-	// Fill list of dots. 
-	for(let i=0 ; i<(numrowsperdotmatrix*numdotsperrow) ; i++) {
-		dots += `
-		<!-- dot -->
-		<span class="dot"></span>
-		<!-- /dot -->`;
-	}
-
-	// Return list of dots. 
-	return dots;
-}
-
-// Create control panel for window header. 
-function createControlPanel() {
-
-	// Return control panel dots. 
-	return `
-	<!-- dot -->
-	<div class="dot r">
-
-		<!-- icon -->
-		<span class="icon">&times;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
-
-	<!-- dot -->
-	<div class="dot y">
-
-		<!-- icon -->
-		<span class="icon">&minus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
-
-	<!-- dot -->
-	<div class="dot g">
-
-		<!-- icon -->
-		<span class="icon">&plus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->`;
 }

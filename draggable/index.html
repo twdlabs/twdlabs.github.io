@@ -49,10 +49,10 @@
 					<ul class="navlist">
 	
 						<!-- navitem -->
-						<li class="navitem">
+						<li class="navitem dropdown">
 
 							<!-- navlink -->
-							<a class="navlink add" href="javascript:void(0)" title="New window">
+							<a class="navlink add" href="javascript:void(0)" title="New window" onclick="this.parentElement.classList.toggle('active')">
 	
 								<!-- icon -->
 								<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -64,7 +64,7 @@
 							<!-- /navlink -->
 
 							<!-- navdrop -->
-							<ul class="navdrop">
+							<ul class="navdrop" onclick="this.parentElement.classList.remove('active')">
 
 								<!-- navdropitem -->
 								<li class="navdropitem">
@@ -260,107 +260,13 @@
 				<!-- /textcopy -->
 
 				<!-- window -->
-				<div id="window" class="window x" style="--i:0;">
+				<div id="window" class="window x" style="--i:-1;">
 	
 					<!-- headbar -->
 					<div class="headbar">
 
 						<!-- controls -->
-						<div class="controls">
-
-							<!-- dot -->
-							<div class="dot r">
-
-								<!-- icon -->
-								<span class="icon">&times;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot y">
-
-								<!-- icon -->
-								<span class="icon">&minus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot g">
-
-								<!-- icon -->
-								<span class="icon">&plus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-						</div>
-						<!-- /controls -->
-	
-						<!-- caption -->
-						<span class="caption">Click here to move</span>
-						<!-- /caption -->
-	
-					</div>
-					<!-- /headbar -->
-	
-					<!-- bodycontent -->
-					<div class="bodycontent">
-	
-						<p>Move</p>
-						<p>this</p>
-						<p>DIV</p>
-	
-					</div>
-					<!-- /bodycontent -->
-					
-				</div>
-				<!-- /window -->
-	
-				<!-- window -->
-				<div id="window0" class="window folder" style="--i:0;">
-	
-					<!-- headbar -->
-					<div class="headbar">
-
-						<!-- controls -->
-						<div class="controls">
-
-							<!-- dot -->
-							<div class="dot r">
-
-								<!-- icon -->
-								<span class="icon">&times;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot y">
-
-								<!-- icon -->
-								<span class="icon">&minus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot g">
-
-								<!-- icon -->
-								<span class="icon">&plus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-						</div>
+						<div class="controls"></div>
 						<!-- /controls -->
 	
 						<!-- dotmatrix -->
@@ -426,7 +332,7 @@
 										<!-- /icon -->
 	
 										<!-- caption -->
-										<span class="caption">folder</span>
+										<span class="caption">xyz</span>
 										<!-- /caption -->
 	
 									</a>
@@ -449,7 +355,7 @@
 										<!-- /icon -->
 	
 										<!-- caption -->
-										<span class="caption">text</span>
+										<span class="caption">xyz.txt</span>
 										<!-- /caption -->
 	
 									</a>
@@ -472,7 +378,7 @@
 										<!-- /icon -->
 	
 										<!-- caption -->
-										<span class="caption">image</span>
+										<span class="caption">xyz.png</span>
 										<!-- /caption -->
 	
 									</a>
@@ -495,7 +401,7 @@
 										<!-- /icon -->
 	
 										<!-- caption -->
-										<span class="caption">audio</span>
+										<span class="caption">xyz.mp3</span>
 										<!-- /caption -->
 	
 									</a>
@@ -518,7 +424,7 @@
 										<!-- /icon -->
 	
 										<!-- caption -->
-										<span class="caption">video</span>
+										<span class="caption">xyz.mp4</span>
 										<!-- /caption -->
 	
 									</a>
@@ -541,7 +447,11 @@
 
 						<!-- foot -->
 						<div class="foot">
-							
+
+							<!-- caption -->
+							<span class="caption">Hello</span>
+							<!-- /caption -->
+
 						</div>
 						<!-- /foot -->
 	
@@ -558,39 +468,7 @@
 					<div class="headbar">
 
 						<!-- controls -->
-						<div class="controls">
-
-							<!-- dot -->
-							<div class="dot r">
-
-								<!-- icon -->
-								<span class="icon">&times;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot y">
-
-								<!-- icon -->
-								<span class="icon">&minus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot g">
-
-								<!-- icon -->
-								<span class="icon">&plus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-						</div>
+						<div class="controls"></div>
 						<!-- /controls -->
 	
 						<!-- dotmatrix -->
@@ -620,39 +498,7 @@
 					<div class="headbar">
 
 						<!-- controls -->
-						<div class="controls">
-
-							<!-- dot -->
-							<div class="dot r">
-
-								<!-- icon -->
-								<span class="icon">&times;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot y">
-
-								<!-- icon -->
-								<span class="icon">&minus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot g">
-
-								<!-- icon -->
-								<span class="icon">&plus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-						</div>
+						<div class="controls"></div>
 						<!-- /controls -->
 	
 						<!-- dotmatrix -->
@@ -682,39 +528,7 @@
 					<div class="headbar">
 
 						<!-- controls -->
-						<div class="controls">
-
-							<!-- dot -->
-							<div class="dot r">
-
-								<!-- icon -->
-								<span class="icon">&times;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot y">
-
-								<!-- icon -->
-								<span class="icon">&minus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot g">
-
-								<!-- icon -->
-								<span class="icon">&plus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-						</div>
+						<div class="controls"></div>
 						<!-- /controls -->
 	
 						<!-- dotmatrix -->
@@ -764,39 +578,7 @@
 					<div class="headbar">
 
 						<!-- controls -->
-						<div class="controls">
-
-							<!-- dot -->
-							<div class="dot r">
-
-								<!-- icon -->
-								<span class="icon">&times;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot y">
-
-								<!-- icon -->
-								<span class="icon">&minus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-							<!-- dot -->
-							<div class="dot g">
-
-								<!-- icon -->
-								<span class="icon">&plus;</span>
-								<!-- /icon -->
-								
-							</div>
-							<!-- /dot -->
-
-						</div>
+						<div class="controls"></div>
 						<!-- /controls -->
 	
 						<!-- dotmatrix -->

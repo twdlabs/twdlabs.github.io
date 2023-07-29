@@ -70,13 +70,17 @@ function addNewWindow(windowtype) {
 	// Ask user for type of desktop window. 
 	// let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
 
-	// Get newly created desktop window. 
+	// Get layout for new desktop window. 
 	let newdeskwindowlayout = createNewWindow(/* windowtype */);
 	// Add new desktop window to page. 
 	desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
 
+	// Get new desktop window. 
+	let newdw = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
+	console.log('New desktop window:',windowcount,newdw);
+
 	// Activate new desktop window. 
-	activateNewWindow();
+	activateNewWindow(newdw);
 
 	// Increment count of desktop windows. 
 	windowcount++;
@@ -158,17 +162,16 @@ function addNewWindow(windowtype) {
 	}
 
 	// Activate new desktop window. 
-	function activateNewWindow() {
-
-		// Get new desktop window. 
-		let newdw = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
-		console.log('New desktop window:',windowcount,newdw);
+	function activateNewWindow(newdw) {
 	
-		// Make new desktop window movable. 
-		makeMovable(newdw,'div.headbar');
+		// Activate movement of new desktop window. 
+		makeMovable(newdw/* ,'div.headbar' */);
 		
-		// Make new desktop window controllable. 
+		// Activate controls of new desktop window. 
 		makeControllable(newdw);
+
+		// Activate levels of new desktop window. 
+		makeLevelable(dw);
 
 		// Bring new desktop window to top layer. 
 		// bringWindowToTop(newdw);
@@ -206,4 +209,40 @@ function closeAll() {
 		dw.remove();
 	}
 	console.log('DONE');
+}
+
+// Create control panel for window header. 
+function createControlPanel() {
+
+	// Return control panel dots. 
+	return `
+	<!-- dot -->
+	<div class="dot r">
+
+		<!-- icon -->
+		<span class="icon">&times;</span>
+		<!-- /icon -->
+		
+	</div>
+	<!-- /dot -->
+
+	<!-- dot -->
+	<div class="dot y">
+
+		<!-- icon -->
+		<span class="icon">&minus;</span>
+		<!-- /icon -->
+		
+	</div>
+	<!-- /dot -->
+
+	<!-- dot -->
+	<div class="dot g">
+
+		<!-- icon -->
+		<span class="icon">&plus;</span>
+		<!-- /icon -->
+		
+	</div>
+	<!-- /dot -->`;
 }

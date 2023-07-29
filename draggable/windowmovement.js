@@ -2,7 +2,7 @@
 
 
 // Activate movement of given desktop window. 
-function makeMovable(desktopwindow,draghookselector) {
+function makeMovable(desktopwindow,draghookselector='div.headbar') {
 	// console.log('\tActivating movement:',desktopwindow);
 
 	// Cancel default dragging functionality. 
@@ -15,6 +15,11 @@ function makeMovable(desktopwindow,draghookselector) {
 	let dotmatrix = draghook.querySelector('div.dotmatrix');
 	// Create dot matrix for drag hook. 
 	if(dotmatrix) dotmatrix.innerHTML = createDotMatrix();
+
+	// Get container for dot matrix in drag hook. 
+	let controlpanel = draghook.querySelector('div.controls');
+	// Create dot matrix for drag hook. 
+	if(controlpanel) controlpanel.innerHTML = createControlPanel();
 
 	// Handle mouse movement events. 
 	handleMouseEvents();
@@ -131,4 +136,22 @@ function makeMovable(desktopwindow,draghookselector) {
 	// 	// Cancel default drag/drop behavior. 
 	// 	event.preventDefault();
 	// }
+}
+
+// Create dot matrix for drag hook. 
+function createDotMatrix() {
+
+	// Initialize list of dots. 
+	let dots = '';
+
+	// Fill list of dots. 
+	for(let i=0 ; i<(numrowsperdotmatrix*numdotsperrow) ; i++) {
+		dots += `
+		<!-- dot -->
+		<span class="dot"></span>
+		<!-- /dot -->`;
+	}
+
+	// Return list of dots. 
+	return dots;
 }
