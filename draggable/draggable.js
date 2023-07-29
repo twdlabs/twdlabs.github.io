@@ -17,9 +17,7 @@ let windowcount = 0;
 console.log('Window count:',windowcount);
 
 // Increment count of desktop windows. 
-windowcount++;
-windowcount++;
-windowcount++;
+windowcount+=5;
 console.log('Window count:',windowcount);
 
 
@@ -53,12 +51,15 @@ function activateDesktop() {
 	// Activate desktop window. 
 	function activateDesktopWindow(dw) {
 		console.log('Now activating:',dw);
-			
+
 		// Activate movement of desktop window. 
 		makeMovable(dw,'div.headbar');
-			
+
 		// Activate controls of desktop window. 
 		makeControllable(dw);
+
+		// Activate levels of desktop window. 
+		makeLevelable(dw);
 
 	}
 
@@ -76,29 +77,6 @@ function activateDesktop() {
 		dw.style.top = `${index*dy}px`;
 		dw.style.left = `${index*dx}px`;
 	}
-}
-
-// Get new level above highest desk level. 
-function getNewTopLevel() {
-
-	// Initialize max desk level. 
-	let maxlevel = 0;
-
-	// Get all current desktop windows. 
-	let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
-
-	// Go thru each desktop window. 
-	for(let dw of alldesktopwindows) {
-
-		// Get desk level of current window. 
-		let windowlevel = dw.style.getPropertyValue('--i') * 1;
-
-		// Save level as maximum if greater than maximum. 
-		if(windowlevel>maxlevel) maxlevel = windowlevel;
-	}
-
-	// Get current max z-index. 
-	return (maxlevel + 1);
 }
 
 // Create dot matrix for drag hook. 

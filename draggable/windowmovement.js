@@ -27,11 +27,10 @@ function makeMovable(desktopwindow,draghookselector) {
 	// Handle mouse movement events. 
 	function handleMouseEvents() {
 
-		// Allow initiation of window movement. 
+		// Allow start of window movement. 
 		draghook.addEventListener('mousedown', hookToPointer );
-		desktopwindow.addEventListener('mousedown', bringWindowToTop );
 	
-		// Allow ending of window movement. 
+		// Allow finish of window movement. 
 		document.addEventListener('mouseup', unHookFromPointer );
 		desktop.addEventListener('mouseleave', unHookFromPointer );
 		desktopwindow.addEventListener('mouseleave', unHookFromPointer );
@@ -39,12 +38,11 @@ function makeMovable(desktopwindow,draghookselector) {
 
 	// Handle touch movement events. 
 	function handleTouchEvents() {
-	
-		// Allow initiation of window movement. 
+
+		// Allow start of window movement. 
 		draghook.addEventListener('touchstart', hookToPointer );
-		desktopwindow.addEventListener('touchstart', bringWindowToTop );
 		
-		// Allow ending of window movement. 
+		// Allow finish of window movement. 
 		document.addEventListener('touchcancel', unHookFromPointer );
 		document.addEventListener('touchend', unHookFromPointer );
 	}
@@ -75,7 +73,7 @@ function makeMovable(desktopwindow,draghookselector) {
 
 	// Move desktop window to position of pointer. 
 	function moveToPointer(event) {
-		// console.log(event,desktopwindow);
+		console.log(event,desktopwindow);
 		// console.log('Target clicked:',event.target);
 		// console.log('Target hit:',event.currentTarget);
 		
@@ -107,7 +105,7 @@ function makeMovable(desktopwindow,draghookselector) {
 	}
 
 	// Un-hook desktop window from pointer to finish movement. 
-	function unHookFromPointer(event) {
+	function unHookFromPointer(/* event */) {
 		// console.log(event,desktopwindow);
 		// console.log('Target clicked:',event.target);
 		// console.log('Target hit:',event.currentTarget);
@@ -124,47 +122,13 @@ function makeMovable(desktopwindow,draghookselector) {
 		// cancelDefault(event);
 	}
 
-	// Cancel default drag/drop behavior. 
-	function cancelDefault(event) {
+	// // Cancel default drag/drop behavior. 
+	// function cancelDefault(event) {
 
-		// Use default event or window event. 
-		event = event || window.event;
+	// 	// Use default event or window event. 
+	// 	event = event || window.event;
 
-		// Cancel default drag/drop behavior. 
-		event.preventDefault();
-	}
-
-	// Bring selected desktop window to top layer. 
-	function bringWindowToTop(event) {
-		
-		// Check if selected desktop window already on top. 
-		let alreadyOnTop = desktopwindow.classList.contains('top');
-		if(alreadyOnTop) {
-			console.log('Already on top!',desktopwindow);
-			return;
-		}
-
-		// Get new z-index value. 
-		let newtoplevel = getNewTopLevel();
-
-		// Set new level for desktop window. 
-		desktopwindow.style.setProperty('--i',newtoplevel);
-
-		// Get all current desktop windows. 
-		let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
-
-		// Go thru all desktop windows. 
-		for(let dw of alldesktopwindows) {
-			// Set only current desktop window as active. 
-			if(dw==desktopwindow) {
-				dw.classList.add('top');
-			}
-			else {
-				dw.classList.remove('top');
-			}
-		}
-
-		// Cancel default drag/drop behavior. 
-		// cancelDefault(event);
-	}
+	// 	// Cancel default drag/drop behavior. 
+	// 	event.preventDefault();
+	// }
 }

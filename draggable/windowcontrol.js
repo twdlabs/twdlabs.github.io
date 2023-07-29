@@ -71,7 +71,7 @@ function addNewWindow(windowtype) {
 	// let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
 
 	// Get newly created desktop window. 
-	let newdeskwindowlayout = createNewWindow(windowtype);
+	let newdeskwindowlayout = createNewWindow(/* windowtype */);
 	// Add new desktop window to page. 
 	desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
 
@@ -84,13 +84,13 @@ function addNewWindow(windowtype) {
 	/****/
 
 	// Create new desktop window. 
-	function createNewWindow(type) {
-		console.log('New window type:',type);
+	function createNewWindow(/* windowtype */) {
+		console.log('New window type:',windowtype);
 	
 		// Compile layout for new desktop window. 
 		return `
 		<!-- window -->
-		<div id="window${windowcount}" class="window" style="--i:${ getNewTopLevel() };">
+		<div id="window${windowcount}" class="window ${windowtype}" style="--i:${ getNewTopLevel() };">
 	
 			<!-- headbar -->
 			<div class="headbar">
@@ -161,41 +161,17 @@ function addNewWindow(windowtype) {
 	function activateNewWindow() {
 
 		// Get new desktop window. 
-		let newdesktopwindow = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
+		let newdw = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
+		console.log('New desktop window:',windowcount,newdw);
 	
 		// Make new desktop window movable. 
-		makeMovable(newdesktopwindow,'div.headbar');
+		makeMovable(newdw,'div.headbar');
 		
 		// Make new desktop window controllable. 
-		makeControllable(newdesktopwindow);
+		makeControllable(newdw);
 
 		// Bring new desktop window to top layer. 
-		bringWindowToTop(newdesktopwindow);
-
-		/***/
-
-		// Bring selected desktop window to top layer of stack. 
-		function bringWindowToTop(desktopwindow) {
-
-			// Get new z-index value. 
-			let newtoplevel = getNewTopLevel();
-	
-			// Set new level for desktop window. 
-			desktopwindow.style.setProperty('--i',newtoplevel);
-
-			// Get all current desktop windows. 
-			let alldesktopwindows = document.querySelectorAll('div#container div.desktop div.window');
-	
-			for(let dw of alldesktopwindows) {
-				// Set only current desktop window as active. 
-				if(dw==desktopwindow) {
-					dw.classList.add('top');
-				}
-				else {
-					dw.classList.remove('top');
-				}
-			}
-		}
+		// bringWindowToTop(newdw);
 	}
 }
 
