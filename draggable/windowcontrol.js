@@ -67,9 +67,6 @@ function makeControllable(desktopwindow) {
 // Request creation of new desktop window. 
 function addNewWindow(windowtype) {
 
-	// Ask user for type of desktop window. 
-	// let windowtype = window.prompt('What kind of desktop window ?', 'xyz');
-
 	// Get layout for new desktop window. 
 	let newdeskwindowlayout = createNewWindow(/* windowtype */);
 	// Add new desktop window to page. 
@@ -90,6 +87,15 @@ function addNewWindow(windowtype) {
 	// Create new desktop window. 
 	function createNewWindow(/* windowtype */) {
 		console.log('New window type:',windowtype);
+
+		// Define window creation methods. 
+		let windowmethods = {
+			folder:createFolderContent,
+			text:createTextContent,
+			image:createImageContent,
+			audio:createAudioContent,
+			video:createVideoContent,
+		}
 	
 		// Compile layout for new desktop window. 
 		return `
@@ -111,7 +117,7 @@ function addNewWindow(windowtype) {
 			<!-- /headbar -->
 	
 			<!-- bodycontent -->
-			<div class="bodycontent">${ xyz() }</div>
+			<div class="bodycontent">${ windowmethods[windowtype]() }</div>
 			<!-- /bodycontent -->
 			
 		</div>
@@ -123,7 +129,182 @@ function addNewWindow(windowtype) {
 		function createFolderContent(url) {
 		
 			// Return layout. 
-			return ``;
+			return `
+			<!-- head -->
+			<div class="head">
+
+				<!-- backbtn -->
+				<div class="backbtn btn">
+
+					<!-- icon -->
+					<svg class="icon caretleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="scale:.875;">
+						<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /backbtn -->
+
+				<!-- fwdbtn -->
+				<div class="fwdbtn btn">
+
+					<!-- icon -->
+					<svg class="icon caretright" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="scale:.875;">
+						<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /fwdbtn -->
+
+				<!-- foldername -->
+				<label class="foldername">Xyz</label>
+				<!-- /foldername -->
+
+			</div>
+			<!-- /head -->
+
+			<!-- body -->
+			<div class="body">
+
+				<!-- filelist -->
+				<ul class="filelist">
+
+					<!-- fileitem -->
+					<li class="fileitem">
+
+						<!-- filelink -->
+						<a class="filelink" href="javascript:void(0)">
+
+							<!-- icon -->
+							<svg class="icon filefolder" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">xyz</span>
+							<!-- /caption -->
+
+						</a>
+						<!-- /filelink -->
+						
+					</li>
+					<!-- /fileitem -->
+
+					<!-- fileitem -->
+					<li class="fileitem">
+
+						<!-- filelink -->
+						<a class="filelink" href="javascript:void(0)">
+
+							<!-- icon -->
+							<svg class="icon textfile" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+								<path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">xyz.txt</span>
+							<!-- /caption -->
+
+						</a>
+						<!-- /filelink -->
+						
+					</li>
+					<!-- /fileitem -->
+
+					<!-- fileitem -->
+					<li class="fileitem">
+
+						<!-- filelink -->
+						<a class="filelink" href="javascript:void(0)">
+
+							<!-- icon -->
+							<svg class="icon imagefile" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M8.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+								<path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v8l-2.083-2.083a.5.5 0 0 0-.76.063L8 11 5.835 9.7a.5.5 0 0 0-.611.076L3 12V2z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">xyz.png</span>
+							<!-- /caption -->
+
+						</a>
+						<!-- /filelink -->
+						
+					</li>
+					<!-- /fileitem -->
+
+					<!-- fileitem -->
+					<li class="fileitem">
+
+						<!-- filelink -->
+						<a class="filelink" href="javascript:void(0)">
+
+							<!-- icon -->
+							<svg class="icon audiofile" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M10.304 3.13a1 1 0 0 1 1.196.98v1.8l-2.5.5v5.09c0 .495-.301.883-.662 1.123C7.974 12.866 7.499 13 7 13c-.5 0-.974-.134-1.338-.377-.36-.24-.662-.628-.662-1.123s.301-.883.662-1.123C6.026 10.134 6.501 10 7 10c.356 0 .7.068 1 .196V4.41a1 1 0 0 1 .804-.98l1.5-.3z"/>
+								<path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">xyz.mp3</span>
+							<!-- /caption -->
+
+						</a>
+						<!-- /filelink -->
+						
+					</li>
+					<!-- /fileitem -->
+
+					<!-- fileitem -->
+					<li class="fileitem">
+
+						<!-- filelink -->
+						<a class="filelink" href="javascript:void(0)">
+
+							<!-- icon -->
+							<svg class="icon videofile" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M6 10.117V5.883a.5.5 0 0 1 .757-.429l3.528 2.117a.5.5 0 0 1 0 .858l-3.528 2.117a.5.5 0 0 1-.757-.43z"/>
+								<path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+							</svg>
+							<!-- /icon -->
+
+							<!-- caption -->
+							<span class="caption">xyz.mp4</span>
+							<!-- /caption -->
+
+						</a>
+						<!-- /filelink -->
+						
+					</li>
+					<!-- /fileitem -->
+					
+				</ul>
+				<!-- /filelist -->
+
+				<!-- filepreview -->
+				<div class="filepreview">
+
+				</div>
+				<!-- /filepreview -->
+
+			</div>
+			<!-- /body -->
+
+			<!-- foot -->
+			<div class="foot">
+
+				<!-- caption -->
+				<span class="caption">Hello</span>
+				<!-- /caption -->
+
+			</div>
+			<!-- /foot -->`;
 		}
 
 		// TODO: Create text content for new desktop window. 
@@ -140,21 +321,70 @@ function addNewWindow(windowtype) {
 		function createImageContent(url) {
 		
 			// Return layout. 
-			return ``;
+			return `
+			<!-- pic -->
+			<img class="pic" src="./../gallery/assets/images/full/1.jpg">
+			<!-- /pic -->`;
 		}
 
 		// TODO: Create audio content for new desktop window. 
 		function createAudioContent(url) {
 		
 			// Return layout. 
-			return ``;
+			return `
+			<!-- clipbox -->
+			<div class="clipbox">
+		
+				<!-- clip -->
+				<audio class="clip" src="./../musicplayer/media/CircleOfLife.mp3" controls></audio>
+				<!-- /clip -->
+
+				<!-- cover -->
+				<label class="cover">
+
+					<!-- icon -->
+					<svg class="icon speaker" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+						<path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+						<path d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</label>
+				<!-- /cover -->
+
+			</div>
+			<!-- /clipbox -->`;
 		}
 		
 		// TODO: Create video content for new desktop window. 
 		function createVideoContent(url) {
 		
 			// Return layout. 
-			return ``;
+			return `
+			<!-- vidbox -->
+			<div class="vidbox">
+
+				<!-- vid -->
+				<video class="vid" src="./../video/assets/videos/0000001.mp4" controls></video>
+				<!-- /vid -->
+
+				<!-- cover -->
+				<label class="cover">
+
+					<!-- icon -->
+					<svg class="icon speaker" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+						<path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+						<path d="M10.025 8a4.486 4.486 0 0 1-1.318 3.182L8 10.475A3.489 3.489 0 0 0 9.025 8c0-.966-.392-1.841-1.025-2.475l.707-.707A4.486 4.486 0 0 1 10.025 8zM7 4a.5.5 0 0 0-.812-.39L3.825 5.5H1.5A.5.5 0 0 0 1 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 7 12V4zM4.312 6.39 6 5.04v5.92L4.312 9.61A.5.5 0 0 0 4 9.5H2v-3h2a.5.5 0 0 0 .312-.11z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</label>
+				<!-- /cover -->
+
+			</div>
+			<!-- /vidbox -->`;
 		}
 	}
 
@@ -168,7 +398,10 @@ function addNewWindow(windowtype) {
 		makeControllable(newdw);
 
 		// Activate levels of new desktop window. 
-		makeLevelable(dw);
+		makeLevelable(newdw);
+
+		// Position desktop window. 
+		positionDesktopWindow(newdw);
 
 		// Bring new desktop window to top layer. 
 		// bringWindowToTop(newdw);

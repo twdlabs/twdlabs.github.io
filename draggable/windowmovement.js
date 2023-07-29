@@ -163,3 +163,18 @@ function createDotMatrix() {
 	// Return list of dots. 
 	return dots;
 }
+
+// Position desktop window by index. 
+function positionDesktopWindow(dw) {
+
+	// Define positioning differential. 
+	let dx = 32;
+	let dy = 48;
+
+	// Get desk level of current window. 
+	let index = dw.style.getPropertyValue('--i') * 1;
+
+	// Position desktop window. 
+	dw.style.top = `${index*dy}px`;
+	dw.style.left = `${index*dx}px`;
+}

@@ -36,9 +36,6 @@ function activateDesktop() {
 	for(let dw of alldesktopwindows) {
 		// Activate desktop window. 
 		activateDesktopWindow(dw);
-
-		// Position desktop window. 
-		positionDesktopWindow(dw);
 	}
 
 	/****/
@@ -56,20 +53,7 @@ function activateDesktop() {
 		// Activate levels of desktop window. 
 		makeLevelable(dw);
 
-	}
-
-	// Position desktop window. 
-	function positionDesktopWindow(dw) {
-
-		// Define positioning differential. 
-		let dx = 32;
-		let dy = 48;
-
-		// Get desk level of current window. 
-		let index = dw.style.getPropertyValue('--i') * 1;
-
 		// Position desktop window. 
-		dw.style.top = `${index*dy}px`;
-		dw.style.left = `${index*dx}px`;
+		positionDesktopWindow(dw);
 	}
 }
