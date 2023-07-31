@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<title>Notification Bell</title>
+
+		<style type="text/css">
+
+			* {box-sizing:border-box;}
+			body {font-family:sans-serif; margin:0;}
+			div#container {background-color:#e5e5fa; display:grid; place-items:center; height:100vh;}
+			div#container div.btn {background:linear-gradient(#8A82FB,#407ED7); min-width:8rem; min-height:8rem; border-radius:50%; cursor:pointer;}
+			div#container div.btn {display:grid; place-items:center; position:relative; z-index:2;}
+			div#container div.btn:before,
+			div#container div.btn::after {content:''; background-color:#8A82FB; opacity:.35; position:absolute; width:100%; height:100%; border-radius:50%; z-index:-1;}
+			div#container div.btn:before {animation:pulse 2s infinite; animation-delay:0;}
+			div#container div.btn::after {animation:pulse 2s infinite; animation-delay:1s;}
+			div#container div.btn svg.icon {color:white; font-size:3rem;}
+
+			@keyframes pulse {
+				100% {transform:scale(2.5); opacity:0;}
+			}
+			
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- btn -->
+			<div class="btn">
+
+				<!-- icon -->
+				<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
+				</svg>
+				<!-- /icon -->
+
+			</div>
+			<!-- /btn -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<script type="text/javascript"></script>
+
+	</body>
+
+</html>
