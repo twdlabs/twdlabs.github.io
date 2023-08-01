@@ -26,6 +26,7 @@
 	
 	/* Numbers */
 	/* font-size:2rem; */
+	--pagewidth:75rem;
 	--navheight:3.5rem;
 	--cornersize:.375rem;
 	--shadow:0 .125rem .25rem #0003;
@@ -46,6 +47,8 @@ body {background-attachment:fixed; font-family:Nunito,sans-serif; margin:0;}
 
 /* div#container {background-color:whitesmoke; min-height:100vh;} */
 
+
+
 /* Navbar */
 div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:20;}
 div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:.5rem 1.5rem; box-shadow:var(--boxshadow);}
@@ -65,27 +68,45 @@ div#container nav.navbar div.bin ul.navlist li.navitem a.navlink svg.icon {displ
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {position:absolute; top:100%; left:50%; transform:translateX(-50%); box-shadow:var(--boxshadow);}
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {background-color:white; list-style:none; padding:0; padding:.125rem; border-radius:10rem; margin:0;}
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop {opacity:0; visibility:hidden; transition:.25s;}
-/* div#container nav.navbar div.bin ul.navlist li.navitem:hover ul.navdrop {opacity:1; visibility:visible;} */
+div#container nav.navbar div.bin ul.navlist li.navitem:hover ul.navdrop {opacity:1; visibility:visible;}
 div#container nav.navbar div.bin ul.navlist li.navitem.active ul.navdrop {opacity:1; visibility:visible;}
 /* div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem {} */
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop  li.navdropitem.x {display:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem a.navlink {display:grid; place-items:center; transition:.125s; padding:.5rem; border-radius:5rem; box-shadow:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem ul.navdrop li.navdropitem a.navlink:hover {background-color:var(--blackglass); color:white;}
 
+
+
 /* Desktop */
-div#container div.desktop {/* background-color:whitesmoke; */ position:relative; min-height:calc(100vh - var(--navheight)); padding:1.5rem; margin-top:var(--navheight);}
-div#container div.desktop {z-index:10;}
+div#container div.desktop {/* background-color:whitesmoke; */ min-height:calc(100vh - var(--navheight)); overflow:auto; padding:1.5rem; margin-top:var(--navheight);}
+div#container div.desktop {position:relative; z-index:10;}
 /* div#container div.desktop {display:flex; flex-direction:row; align-items:center; position:relative;} */
 
+
+/* Desktop Display */
+div#container div.desktop div.display {max-width:var(--pagewidth); margin:0 auto;}
+div#container div.desktop div.display h1.head {margin:0;}
+/* div#container div.desktop div.display p.textcopy {margin:0;} */
+
+
+/* Desktop Link Grid */
+div#container div.desktop div.linkgrid {margin-top:1.25rem;}
+div#container div.desktop div.linkgrid ul.linklist {list-style:none; padding:0; margin:0;}
+div#container div.desktop div.linkgrid ul.linklist {display:grid; grid-template-columns:repeat(12,1fr); grid-gap:.25rem; max-width:var(--pagewidth); margin:0 auto;}
+div#container div.desktop div.linkgrid ul.linklist li.linkitem {margin-top:.625rem;}
+div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link {display:flex; flex-direction:column; align-items:center;}
+div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link {color:inherit; text-decoration:none; /* user-select:none; */}
+div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link svg.icon {font-size:2.75rem;}
+div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link span.caption {font-size:.875rem; margin-top:.125rem;}
+
+
 /* Desktop Window */
-div#container div.desktop h1.head {margin:0;}
-/* div#container div.desktop p.textcopy {margin:0;} */
 div#container div.desktop div.window {position:absolute; top:0; left:0; width:24rem; overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container div.desktop div.window {background-color:transparent; background-color:var(--greyglass); backdrop-filter:blur(.375rem); text-align:center; z-index:var(--i);}
 div#container div.desktop div.window {transition: background-color .125s, backdrop-filter .125s, box-shadow .25s;}
 /* div#container div.desktop div.window {width:100%; max-width:20rem;} */
 /* div#container div.desktop div.window {max-width:100%; width:20rem;} */
-div#container div.desktop div.window.x {display:none;}
+/* div#container div.desktop div.window.x {display:none;} */
 /* div#container div.desktop div.window.min {} */
 div#container div.desktop div.window.max {position:absolute; top:0 !important; right:0; bottom:0; left:0 !important; z-index:15;}
 div#container div.desktop div.window.max {height:100%; width:100%; max-width:none; box-shadow:none;}
@@ -96,9 +117,7 @@ div#container div.desktop div.window.moving {transition:none;/* z-index:999; */}
 /* Desktop Window Headbar */
 div#container div.desktop div.window div.headbar {display:flex; flex-direction:row; align-items:center; justify-content:space-between; justify-content:center;}
 div#container div.desktop div.window div.headbar {cursor:initial; user-select:none; position:relative; z-index:20; padding:.375rem .5rem;}
-/* div#container div.desktop div.window div.headbar {pointer-events:none; opacity:0; transition:opacity .5s; } */
-/* div#container div.desktop div.window:hover div.headbar {pointer-events:initial; opacity:1;} */
-div#container div.desktop div.window div.headbar:active {cursor:move;}
+div#container div.desktop div.window.moving div.headbar/* :active */ {cursor:move;}
 div#container div.desktop div.window div.headbar div.controls {position:absolute; left:0; top:50%; transform:translateY(-50%); margin-left:.125rem; margin-left:.5625rem;}
 div#container div.desktop div.window div.headbar div.controls {display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
 div#container div.desktop div.window div.headbar div.controls {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.4375rem;}
@@ -146,6 +165,7 @@ div#container div.desktop div.window div.bodycontent div.head div.btn svg.icon {
 div#container div.desktop div.window div.bodycontent div.head label.foldername {color:white; font-size:1.5rem; margin-left:.75rem;}
 div#container div.desktop div.window div.bodycontent div.body {display:flex; flex-direction:row;}
 /* div#container div.desktop div.window div.bodycontent div.body {flex-direction:column;} */
+div#container div.desktop div.window div.bodycontent div.body ul.filelist {flex-grow:1;}
 div#container div.desktop div.window div.bodycontent div.body ul.filelist {list-style:none; padding:0; /* padding:.5rem; */ margin:0; margin-top:.375rem;}
 div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem {padding:.25rem .75rem;padding-right:3rem;}
 div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem:nth-child(2n+1) {background-color:var(--ltblackglass);}
@@ -153,29 +173,110 @@ div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fil
 div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem a.filelink {color:inherit; text-decoration:none;}
 /* div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem a.filelink svg.icon {} */
 div#container div.desktop div.window div.bodycontent div.body ul.filelist li.fileitem a.filelink span.caption {margin-left:.375rem;}
-/* div#container div.desktop div.window div.bodycontent div.body div.filepreview {width:10rem;} */
+div#container div.desktop div.window div.bodycontent div.body div.filepreview {width:10rem;}
 div#container div.desktop div.window div.bodycontent div.foot {background-color:var(--blackglass); padding:.25rem 1rem;}
 div#container div.desktop div.window div.bodycontent div.foot span.caption {color:white;}
+
+/* xyz */
+/* div#container div.desktop div.window {overflow:visible;} */
+div#container div.desktop div.window.resizing {transition:none;}
+div#container div.desktop div.window div.resizer {position:absolute; bottom:0; right:0; /* --size:2rem; height:var(--size); width:var(--size); */}
+div#container div.desktop div.window div.resizer {/* background-color:limegreen; */ color:#0006; font-size:1.5rem; cursor:nwse-resize; overflow:visible; transform:rotate(-45deg) translateY(.5em);}
+div#container div.desktop div.window div.resizer {opacity:0; visibility:hidden; transition:opacity 75ms;}
+div#container div.desktop div.window:hover div.resizer {opacity:1; visibility:visible;}
+div#container div.desktop div.window div.resizer svg.icon {display:block; /* transform-origin:bottom right; */}
 
 
 
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
-	/*  */
+
+	/* Navbar */
+	
+	/* Desktop */
+	/* div#container div.desktop {} */
+
+	/* Desktop Display */
+	
+	/* Desktop Link Grid */
+	/* div#container div.desktop div.linkgrid {} */
+	div#container div.desktop div.linkgrid ul.linklist {grid-template-columns:repeat(8,1fr);}
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem {} */
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link {} */
+
+	/* Desktop Window */
+	/* Desktop Window Headbar */
+	/* Desktop Window Body */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
-	/*  */
+
+	/* Navbar */
+	
+	/* Desktop */
+	/* div#container div.desktop {} */
+
+	/* Desktop Display */
+	
+	/* Desktop Link Grid */
+	/* div#container div.desktop div.linkgrid {} */
+	div#container div.desktop div.linkgrid ul.linklist {grid-template-columns:repeat(6,1fr);}
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem {} */
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link {} */
+
+	/* Desktop Window */
+	/* Desktop Window Headbar */
+	/* Desktop Window Body */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
-	/*  */
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar div.bin {} */
+	/* div#container nav.navbar div.bin h1.head {} */
+	div#container nav.navbar div.bin h1.head span.caption {display:none;}
+	
+	/* Desktop */
 	/* div#container div.desktop {} */
+
+	/* Desktop Display */
+	
+	/* Desktop Link Grid */
+	/* div#container div.desktop div.linkgrid {} */
+	div#container div.desktop div.linkgrid ul.linklist {grid-template-columns:repeat(4,1fr);}
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem {} */
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link {} */
+
+	/* Desktop Window */
 	div#container div.desktop div.window {position:static; transform:none; max-width:none; margin-top:2rem; transition:margin .25s;}
 	div#container div.desktop div.window.min {margin-top:.5rem;}
+	/* Desktop Window Headbar */
 	/* div#container div.desktop div.window div.headbar {padding:0;} */
 	div#container div.desktop div.window div.headbar div.dotmatrix {opacity:.25;}
+	/* Desktop Window Body */
+}
+
+/* Tiny Smartphone Screen */
+@media screen and (max-width:24rem) {
+	
+	/* Navbar */
+	
+	/* Desktop */
+	/* div#container div.desktop {} */
+
+	/* Desktop Display */
+	
+	/* Desktop Link Grid */
+	/* div#container div.desktop div.linkgrid {} */
+	div#container div.desktop div.linkgrid ul.linklist {grid-template-columns:repeat(3,1fr);}
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem {} */
+	/* div#container div.desktop div.linkgrid ul.linklist li.linkitem a.link {} */
+
+	/* Desktop Window */
+	/* Desktop Window Headbar */
+	/* Desktop Window Body */
 }

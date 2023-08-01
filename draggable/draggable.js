@@ -3,6 +3,8 @@
 
 // Get desktop window container. 
 const desktop = document.querySelector('div#container div.desktop');
+// Get desktop link grid. 
+const desktoplinkgrid = document.querySelector('div#container div.desktop div.linkgrid');
 
 
 /*****/
@@ -22,6 +24,9 @@ console.log('Window count:',windowcount);
 // Activate desktop. 
 activateDesktop();
 
+// Close all previous desktop windows. 
+// closeAll();
+
 
 /*****/
 
@@ -37,23 +42,24 @@ function activateDesktop() {
 		// Activate desktop window. 
 		activateDesktopWindow(dw);
 	}
+}
 
-	/****/
+// Activate desktop window. 
+function activateDesktopWindow(dw) {
+	console.log('Now activating:',dw);
 
-	// Activate desktop window. 
-	function activateDesktopWindow(dw) {
-		console.log('Now activating:',dw);
+	// Activate movement of desktop window. 
+	makeMovable(dw/* ,'div.headbar' */);
 
-		// Activate movement of desktop window. 
-		makeMovable(dw/* ,'div.headbar' */);
+	// Activate controls of desktop window. 
+	makeControllable(dw);
 
-		// Activate controls of desktop window. 
-		makeControllable(dw);
+	// Activate levels of desktop window. 
+	makeLevelable(dw);
 
-		// Activate levels of desktop window. 
-		makeLevelable(dw);
+	// Activate resizability of desktop window. 
+	makeResizable(dw);
 
-		// Position desktop window. 
-		positionDesktopWindow(dw);
-	}
+	// Position desktop window. 
+	positionDesktopWindow(dw);
 }

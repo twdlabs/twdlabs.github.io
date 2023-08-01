@@ -1,6 +1,42 @@
 
 
 
+// Create control panel for window header. 
+function createControlPanel() {
+
+	// Return control panel dots. 
+	return `
+	<!-- dot -->
+	<div class="dot r">
+
+		<!-- icon -->
+		<span class="icon">&times;</span>
+		<!-- /icon -->
+		
+	</div>
+	<!-- /dot -->
+
+	<!-- dot -->
+	<div class="dot y">
+
+		<!-- icon -->
+		<span class="icon">&minus;</span>
+		<!-- /icon -->
+		
+	</div>
+	<!-- /dot -->
+
+	<!-- dot -->
+	<div class="dot g">
+
+		<!-- icon -->
+		<span class="icon">&plus;</span>
+		<!-- /icon -->
+		
+	</div>
+	<!-- /dot -->`;
+}
+
 // Activate controls for given desktop window. 
 function makeControllable(desktopwindow) {
 	// console.log('\tActivating controls:',desktopwindow);
@@ -9,6 +45,11 @@ function makeControllable(desktopwindow) {
 	let dotbtnred = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.r');
 	let dotbtnyellow = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.y');
 	let dotbtngreen = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.g');
+
+	// Get headbar of desktop window. 
+	let headbar = desktopwindow.querySelector('div.headbar');
+	// Activate double click of headbar. 
+	headbar.addEventListener('dblclick',toggleMaximize);
 
 	// Activate control dot buttons. 
 	dotbtnred.addEventListener('click',closeWindow);
@@ -70,14 +111,15 @@ function addNewWindow(windowtype) {
 	// Get layout for new desktop window. 
 	let newdeskwindowlayout = createNewWindow(/* windowtype */);
 	// Add new desktop window to page. 
-	desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
+	// desktop.insertAdjacentHTML('beforeend',newdeskwindowlayout);
+	desktoplinkgrid.insertAdjacentHTML('beforebegin',newdeskwindowlayout);
 
 	// Get new desktop window. 
 	let newdw = document.querySelector(`div#container div.desktop div.window#window${windowcount}`);
 	console.log('New desktop window:',windowcount,newdw);
 
 	// Activate new desktop window. 
-	activateNewWindow(newdw);
+	activateDesktopWindow(newdw);
 
 	// Increment count of desktop windows. 
 	windowcount++;
@@ -119,6 +161,18 @@ function addNewWindow(windowtype) {
 			<!-- bodycontent -->
 			<div class="bodycontent">${ windowmethods[windowtype]() }</div>
 			<!-- /bodycontent -->
+
+			<!-- resizer -->
+			<div class="resizer">
+
+				<!-- icon -->
+				<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+				</svg>
+				<!-- /icon -->
+				
+			</div>
+			<!-- /resizer -->
 			
 		</div>
 		<!-- /window -->`;
@@ -387,25 +441,6 @@ function addNewWindow(windowtype) {
 			<!-- /vidbox -->`;
 		}
 	}
-
-	// Activate new desktop window. 
-	function activateNewWindow(newdw) {
-	
-		// Activate movement of new desktop window. 
-		makeMovable(newdw/* ,'div.headbar' */);
-		
-		// Activate controls of new desktop window. 
-		makeControllable(newdw);
-
-		// Activate levels of new desktop window. 
-		makeLevelable(newdw);
-
-		// Position desktop window. 
-		positionDesktopWindow(newdw);
-
-		// Bring new desktop window to top layer. 
-		// bringWindowToTop(newdw);
-	}
 }
 
 // Minimize all desktop windows. 
@@ -439,40 +474,4 @@ function closeAll() {
 		dw.remove();
 	}
 	console.log('DONE');
-}
-
-// Create control panel for window header. 
-function createControlPanel() {
-
-	// Return control panel dots. 
-	return `
-	<!-- dot -->
-	<div class="dot r">
-
-		<!-- icon -->
-		<span class="icon">&times;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
-
-	<!-- dot -->
-	<div class="dot y">
-
-		<!-- icon -->
-		<span class="icon">&minus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->
-
-	<!-- dot -->
-	<div class="dot g">
-
-		<!-- icon -->
-		<span class="icon">&plus;</span>
-		<!-- /icon -->
-		
-	</div>
-	<!-- /dot -->`;
 }

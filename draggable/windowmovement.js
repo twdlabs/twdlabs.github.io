@@ -33,7 +33,7 @@ function makeMovable(desktopwindow,draghookselector='div.headbar') {
 	handleMouseEvents();
 
 	// Handle touch movement events. 
-	handleTouchEvents();
+	// handleTouchEvents();
 
 	/****/
 
@@ -78,7 +78,7 @@ function makeMovable(desktopwindow,draghookselector='div.headbar') {
 		// Start tracking mouse with desktop window (when mouse button pressed). 
 		desktopwindow.addEventListener('mousemove',moveToPointer);
 		// Start tracking touch with desktop window (when mouse button pressed). 
-		desktopwindow.addEventListener('touchmove',moveToPointer);
+		// desktopwindow.addEventListener('touchmove',moveToPointer);
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
@@ -129,7 +129,7 @@ function makeMovable(desktopwindow,draghookselector='div.headbar') {
 		// Stop tracking mouse with desktop window (when mouse button released). 
 		desktopwindow.removeEventListener('mousemove',moveToPointer);
 		// Stop tracking touch with desktop window (when mouse button released). 
-		desktopwindow.removeEventListener('touchmove',moveToPointer);
+		// desktopwindow.removeEventListener('touchmove',moveToPointer);
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
