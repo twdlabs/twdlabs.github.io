@@ -138,6 +138,12 @@ function addNewWindow(windowtype) {
 			audio:createAudioContent,
 			video:createVideoContent,
 		}
+
+		// Get icon tag for given window type. 
+		let icontag = fileTypeData[windowtype];
+		
+		// Get icon path. 
+		let iconpath = iconData[icontag];
 	
 		// Compile layout for new desktop window. 
 		return `
@@ -154,6 +160,18 @@ function addNewWindow(windowtype) {
 				<!-- dotmatrix -->
 				<div class="dotmatrix">${ createDotMatrix() }</div>
 				<!-- /dotmatrix -->
+
+				<!-- windowtype -->
+				<div class="windowtype">
+
+					<!-- icon -->
+					<svg class="icon ${icontag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						${iconpath}
+					</svg>
+					<!-- /icon -->
+
+				</div>
+				<!-- /windowtype -->
 	
 			</div>
 			<!-- /headbar -->
@@ -371,17 +389,17 @@ function addNewWindow(windowtype) {
 			<!-- /copy -->`;
 		}
 
-		// TODO: Create image content for new desktop window. 
+		// Create image content for new desktop window. 
 		function createImageContent(url) {
 		
 			// Return layout. 
 			return `
 			<!-- pic -->
-			<img class="pic" src="./../gallery/assets/images/full/1.jpg">
+			<img class="pic" src="${url}">
 			<!-- /pic -->`;
 		}
 
-		// TODO: Create audio content for new desktop window. 
+		// Create audio content for new desktop window. 
 		function createAudioContent(url) {
 		
 			// Return layout. 
@@ -390,7 +408,7 @@ function addNewWindow(windowtype) {
 			<div class="clipbox">
 		
 				<!-- clip -->
-				<audio class="clip" src="./../musicplayer/media/CircleOfLife.mp3" controls></audio>
+				<audio class="clip" src="${url}" controls></audio>
 				<!-- /clip -->
 
 				<!-- cover -->
@@ -411,7 +429,7 @@ function addNewWindow(windowtype) {
 			<!-- /clipbox -->`;
 		}
 		
-		// TODO: Create video content for new desktop window. 
+		// Create video content for new desktop window. 
 		function createVideoContent(url) {
 		
 			// Return layout. 
@@ -420,7 +438,7 @@ function addNewWindow(windowtype) {
 			<div class="vidbox">
 
 				<!-- vid -->
-				<video class="vid" src="./../video/assets/videos/0000001.mp4" controls></video>
+				<video class="vid" src="${url}" controls></video>
 				<!-- /vid -->
 
 				<!-- cover -->
@@ -441,6 +459,26 @@ function addNewWindow(windowtype) {
 			<!-- /vidbox -->`;
 		}
 	}
+}
+
+// Activate desktop window. 
+function activateDesktopWindow(dw) {
+	console.log('Now activating:',dw);
+
+	// Activate movement of desktop window. 
+	makeMovable(dw/* ,'div.headbar' */);
+
+	// Activate controls of desktop window. 
+	makeControllable(dw);
+
+	// Activate levels of desktop window. 
+	makeLevelable(dw);
+
+	// Activate resizability of desktop window. 
+	makeResizable(dw);
+
+	// Position desktop window. 
+	positionDesktopWindow(dw);
 }
 
 // Minimize all desktop windows. 

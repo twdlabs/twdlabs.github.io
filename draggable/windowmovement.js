@@ -8,10 +8,16 @@ const numrowsperdotmatrix = 3;
 
 /*****/
 
+// Define previous touch. 
+var prevTouch;
+
 
 // Activate movement of given desktop window. 
 function makeMovable(desktopwindow,draghookselector='div.headbar') {
 	// console.log('\tActivating movement:',desktopwindow);
+
+	// Check if window is currently movable. 
+	if( isNotMovable(desktopwindow) ) return;
 
 	// Cancel default dragging functionality. 
 	desktopwindow.setAttribute('draggable',false);
@@ -33,7 +39,7 @@ function makeMovable(desktopwindow,draghookselector='div.headbar') {
 	handleMouseEvents();
 
 	// Handle touch movement events. 
-	// handleTouchEvents();
+	handleTouchEvents(); 
 
 	/****/
 
@@ -67,10 +73,10 @@ function makeMovable(desktopwindow,draghookselector='div.headbar') {
 		// console.log('Target hit:',event.currentTarget);
 
 		// Check if clicked target is within dot button. 
-		let clickedInDotBtn = (event.target).closest('div#container div.desktop div.window div.headbar div.controls div.dot');
-		// console.log('Clicked in dot button:',!!clickedInDotBtn);
-		// Ignore move attempts from dot buttons. 
-		if(clickedInDotBtn) return;
+		let onDotBtn = (event.target).closest('div#container div.desktop div.window div.headbar div.controls div.dot');
+		// console.log('Clicked in dot button:',!!onDotBtn);
+		// Ignore window movement attempts from dot buttons. 
+		if(onDotBtn) return;
 
 		// Set as currently moving. 
 		desktopwindow.classList.add('moving');
@@ -94,27 +100,36 @@ function makeMovable(desktopwindow,draghookselector='div.headbar') {
 		let deskwindowstyle = window.getComputedStyle(desktopwindow);
 		let x0 = parseInt(deskwindowstyle.left);
 		let y0 = parseInt(deskwindowstyle.top);
-		// console.log('(x0,y0):',x0,y0);
 		
 		// Get movement of pointer. 
-		let dx = event.movementX;
-		let dy = event.movementY;
+		let dx = getMovementX();
+		let dy = getMovementY();
 		// Get new position of pointer. 
 		let x1 = x0 + dx;
 		let y1 = y0 + dy;
-		// console.log('(dx,dy):',dx,dy);
-		// console.log('(x1,y1):',x1,y1);
 		
 		// Set new position to desktop window. 
 		desktopwindow.style.left = `${x1}px`;
 		desktopwindow.style.top = `${y1}px`;
-		// desktopwindow.style.left = `${desktopwindow.offsetLeft-dx}px`;
-		// desktopwindow.style.top = `${desktopwindow.offsetTop-dy}px`;
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
 		console.log('x:',x0,dx,x1);
 		console.log('y:',y0,dy,y1);
+		
+		// Get horizontal movement of pointer. 
+		function getMovementX() {
+
+			// 
+			return event.movementX;
+		}
+		
+		// Get vertical movement of pointer. 
+		function getMovementY() {
+
+			// 
+			return event.movementY;
+		}
 	}
 
 	// Un-hook desktop window from pointer to finish movement. 
@@ -133,6 +148,16 @@ function makeMovable(desktopwindow,draghookselector='div.headbar') {
 
 		// Cancel default drag/drop behavior. 
 		// cancelDefault(event);
+	}
+
+	// Check if window is currently movable. 
+	function isNotMovable(desktopwindow) {
+
+		// Get class list of desktop window. 
+		let cl = desktopwindow.classList;
+
+		// Check if window is either minimized or minimized. 
+		return ( cl.contains('min') ) || ( cl.contains('max') );
 	}
 
 	// // Cancel default drag/drop behavior. 

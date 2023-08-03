@@ -1,31 +1,14 @@
 
 
 
-// Define types of files. 
-const fileTypeData = [
-
-	{
-		filetype:'folder',
-		icontag:'filefolder',
-	},
-	{
-		filetype:'text',
-		icontag:'paragraph',
-	},
-	{
-		filetype:'image',
-		icontag:'image',
-	},
-	{
-		filetype:'audio',
-		icontag:'speaker',
-	},
-	{
-		filetype:'video',
-		icontag:'film',
-	},
-
-];
+// Define icon tags for different file types. 
+const fileTypeData = {
+	folder:'filefolder',
+	text:'paragraph',
+	image:'imagelandscape',
+	audio:'speaker',
+	video:'film',
+};
 
 
 // Define file data hierarchy. 
