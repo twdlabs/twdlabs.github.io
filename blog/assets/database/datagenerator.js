@@ -21,7 +21,7 @@ const commentoverflow = 'Lorem ipsum dolor sit amet consectetur adipisicing elit
 generatePostData();
 
 // Generate data for 12 random comments on each post. 
-generateRandomCommentData();
+// generateRandomCommentData();
 
 
 /*****/
@@ -34,7 +34,7 @@ function generatePostData() {
 	for(let post of blogDataList) {
 
 		// Assign random post author. 
-		post.authorid = getRandomUserId();
+		// post.authorid = getRandomUserId();
 
 		// Assign random picture url. 
 		// post.imgurl = getRandomImageUrl();
@@ -43,7 +43,7 @@ function generatePostData() {
 		// post.vidurl = getRandomVideoUrl();
 
 		// Assign random time posted. 
-		post.timeposted = getRandomTimeAfter(t0);
+		// post.timeposted = getRandomTimeAfter(t0);
 
 		// Assign fixed post content. 
 		post.content = [

@@ -1,8 +1,20 @@
 
 
 
+/* Reply Section */
+div#container section.reply {display:none;}
+div#container section.reply main.grid {background-color:white; max-width:calc(.625*var(--pagewidth)); padding:2rem; border-radius:var(--bigcornersize);}
+div#container section.reply main.grid h1.head {padding-bottom:.75rem; border-bottom:1px solid var(--blackglass); margin:0; margin-bottom:1.25rem;}
+div#container section.reply main.grid form.commentform {display:grid; grid-template-areas:'comment comment''name email'; grid-gap:1rem; /* margin-top:2rem; */}
+div#container section.reply main.grid form.commentform textarea,
+div#container section.reply main.grid form.commentform input {background-color:var(--lightblackglass); font-family:inherit; font-size:inherit; resize:none; width:100%; padding:.625rem 1rem; border:0 none; border-radius:var(--cornersize);}
+div#container section.reply main.grid form.commentform input.name {grid-area:name;}
+div#container section.reply main.grid form.commentform input.email {grid-area:email;}
+div#container section.reply main.grid form.commentform textarea.comment {grid-area:comment;}
+
+
 /* Comments Section */
-/* div#container section.comments {display:none;} */
+div#container section.comments {display:none;}
 /* div#container section.comments {background-color:white;} */
 div#container section.comments main.grid {background-color:white; max-width:calc(.625*var(--pagewidth)); padding:2rem; border-radius:var(--bigcornersize); margin:0 auto;}
 div#container section.comments main.grid h1.head {font-size:1.5rem; padding-bottom:.75rem; border-bottom:1px solid var(--blackglass); margin:0; margin-bottom:1.25rem;}
@@ -16,12 +28,12 @@ div#container section.comments main.grid ul.commentlist li.commentitem div.left 
 div#container section.comments main.grid ul.commentlist li.commentitem div.left img.avatar {background-color:var(--blackglass); display:block; object-fit:cover; height:4rem; width:4rem; border:.125rem solid transparent; border-radius:50%;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right {font-size:.875rem; margin-top:.125rem;}
 /* div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top {} */
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top a.userlink {color:dodgerblue; font-weight:900; text-decoration:none; margin-right:.125rem;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top a.userlink {color:var(--themecolor); font-weight:900; text-decoration:none; margin-right:.125rem;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.top span.comment {font-weight:400;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom {display:flex; flex-direction:row; align-items:center;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.dot {color:grey; margin:0 .3rem;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.dot.gone {display:none;}
-div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom a.likebtn {color:dodgerblue; font-weight:400; text-decoration:none;}
+div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom a.likebtn {color:var(--themecolor); font-weight:400; text-decoration:none;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom span.timestamp {color:grey; font-weight:400;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter {display:flex; flex-direction:row; align-items:center; cursor:pointer;}
 div#container section.comments main.grid ul.commentlist li.commentitem div.right div.bottom div.likecounter.gone {display:none;}
@@ -46,17 +58,36 @@ div#container section.comments main.grid div.newcommentbox div.emojibtn svg.icon
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
 
+	/* Reply Section */
+	/* div#container section.reply {} */
+	/* div#container section.reply main.grid {} */
+
 	/* Comments Section */
+	/* div#container section.comments {} */
+	/* div#container section.comments main.grid {} */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
 
+	/* Reply Section */
+	/* div#container section.reply {} */
+	/* div#container section.reply main.grid {} */
+
 	/* Comments Section */
+	/* div#container section.comments {} */
+	/* div#container section.comments main.grid {} */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 
+	/* Reply Section */
+	/* div#container section.reply {} */
+	/* div#container section.reply main.grid {} */
+	div#container section.reply main.grid form.commentform {grid-template-areas:'comment''name''email';}
+
 	/* Comments Section */
+	/* div#container section.comments {} */
+	/* div#container section.comments main.grid {} */
 }

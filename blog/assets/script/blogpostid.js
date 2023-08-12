@@ -14,33 +14,32 @@ let selectedPostData;
 /*****/
 
 
-// Save id of current post. 
-savePostId();
+// Save info for current post. 
+savePostInfo();
 
 
 /*****/
 
 
-// Save id of current post. 
-function savePostId() {
+// Save info for current post. 
+function savePostInfo() {
 
 	// Get search parameters from current url. 
 	const urlparams = new URLSearchParams(window.location.search);
 	// console.log('Url search parameters:',urlparams);
 	
 	// Get id of selected post. 
-	selectedPostId = urlparams.get('id');
+	selectedPostId = urlparams.get('bpid');
+	// console.log('Selected post id:',selectedPostId);
 	
 	// Get index of selected post. 
 	selectedPostIndex = selectedPostId ? getPostIndexById(selectedPostId) : -1;
+	// console.log('Selected post index:',selectedPostIndex);
 	
 	// Get data for selected post. 
 	selectedPostData = selectedPostId ? getPostById(selectedPostId) : null;
-
-	// console.log('Selected post id:',selectedPostId);
-	// console.log('Selected post index:',selectedPostIndex);
 	// console.log('Selected post data:',selectedPostData);
 
-	// Return parent page (home) if no valid id found. 
-	// if(!selectedPostId) location.href = '../';
+	// Return to parent page (home) if no valid post id found. 
+	if(!selectedPostId) location.href = '../';
 }

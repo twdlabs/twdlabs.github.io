@@ -1,6 +1,9 @@
 
 
 
+// Get destination for featured post. 
+const featuredestination = document.querySelector('div#container section.feature main.grid ul.postlist');
+
 // Get destination for list of posts. 
 const bloglistdestination = document.querySelector('div#container section.allposts main.grid ul.postlist');
 
@@ -18,8 +21,8 @@ const t = new TimeCalculator();
 /*****/
 
 
-// Load list of blog posts. 
-loadBlogList();
+// Load blog posts. 
+loadBlogPosts();
 
 // Load list of blog contributors. 
 loadBlogContibutors();
@@ -29,7 +32,7 @@ loadBlogContibutors();
 
 
 // Load list of blog posts. 
-function loadBlogList() {
+function loadBlogPosts() {
 
 	// Initialize result. 
 	let result = '';
@@ -65,13 +68,13 @@ function loadBlogContibutors() {
 		// Initialize number of cards in row. 
 		// let n = 0;
 		
-		// Initialize list of cards. 
+		// Initialize list of contributor cards. 
 		let cards = '';
 		
-		// Create individual cards. 
+		// Create layout for list of contributor cards. 
 		for(let item of userDataList.sort(sortRandom) ) {
 	
-			// Compile card contents. 
+			// Compile individual card. 
 			cards += `
 			<!-- card -->
 			<a class="card" href="${ item.linkurl ? item.linkurl : 'javascript:void(0)' }">
@@ -92,7 +95,7 @@ function loadBlogContibutors() {
 			// if(n>=l) break;
 		}
 	
-		// Compile contents of row. 
+		// Compile contents of card slider row. 
 		result += `
 		<!-- row -->
 		<div class="row">

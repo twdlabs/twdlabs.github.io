@@ -122,6 +122,7 @@ const blogDataList = [
 	// },
 
 ];
+// console.log('Blog data list:',blogDataList);
 
 
 // Define sample blog post data. 
