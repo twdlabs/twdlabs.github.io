@@ -1,61 +1,135 @@
 
 
+
+// Get container for inventory keys. 
+let inventorykeysbox = document.querySelector('select#inventorykeys');
+
+// Get container for inventory values. 
+let inventoryvaluesbox = document.querySelector('textarea#inventoryvalues');
+
+// Get click counter box. 
+let clickcountbox = document.querySelector('div#clickcount');
+
+// Define not supported message. 
 var notSupported = "Sorry, your browser does not support web storage..."
 
 
+/*****/
 
-function showAll() {
-	if( localStorage.length==0 ) document.getElementById("inventory").innerHTML += '[empty]';
 
+// Show all contents of local storage. 
+window.onload = showStorage;
+
+
+/*****/
+
+
+// Show all contents of local storage. 
+function showStorage() {
+
+	// Initialize list of full inventory. 
+	let fullinventory = '';
+
+	// Initialize list of inventory keys. 
+	let inventorykeys = '';
+
+	// Go thru contents of local storage. 
 	for(let i=0 ; i<localStorage.length ; i++) {
-		var dataKey = localStorage.key(i);
-		var dataValue = localStorage.getItem(dataKey);
-		document.getElementById("inventory").innerHTML += '<br>'+i+': ' + dataKey + ' = ' + dataValue;
+
+		// Get key for current item. 
+		var key = localStorage.key(i);
+		inventorykeys += `<option value="${key}">${key}</option>`;
+
+		// Get value for current item. 
+		var value = localStorage.getItem(key);
+
+		// 
+		fullinventory += `[${i}] ${key}: ${value}\n`;
 	}
+
+	// Reset displayed contents. 
+	inventorykeysbox.innerHTML = inventorykeys;
+	inventoryvaluesbox.innerHTML = fullinventory;
 }
 
-window.onload = showAll;
+// Display value of selected key. 
+function displayKeyValue(event) {
 
+	// Get selected key. 
+	let key = event.currentTarget.value; 
+	// console.log('Selected key:',key);
 
+	// Get value for selected key. 
+	let value = localStorage.getItem(key)
+
+	// 
+	inventoryvaluesbox.innerHTML = value;
+}
+
+// Add to click count. 
 function clickCounter() {
+
 	// Check browser support for localStorage and sessionStorage. 
-	if(typeof(Storage) !== "undefined") {
-		if (localStorage.getItem('clickcount')) {
-			localStorage.setItem('clickcount', Number(localStorage.clickcount) + 1);
-		} else {
-			localStorage.setItem('clickcount', 1);
-		}
-		document.getElementById("result").innerHTML = "Click count: " + localStorage.getItem('clickcount') + " time(s)";
-	} else {
-		document.getElementById("result").innerHTML = notSupported;
+	if( typeof(Storage)=='undefined' ) {
+		clickcountbox.innerHTML = notSupported;
+		return;
 	}
+
+	// Increment click count if already exists. 
+	if (localStorage.getItem('clickcount')) {
+		localStorage.setItem('clickcount', Number(localStorage.clickcount) + 1);
+	}
+
+	// Initialize click count if not. 
+	else localStorage.setItem('clickcount', 1);
+
+	// Update displayed click count. 
+	updateClickCountDisplay( localStorage.getItem('clickcount') );
 }
 
+// Add to click count. 
 function clickCounter2() {
+
 	// Check browser support for localStorage and sessionStorage. 
-	if(typeof(Storage) !== "undefined") {
-		if (localStorage.clickcount) {
-			localStorage.clickcount = Number(localStorage.clickcount) + 1;
-		} else {
-			localStorage.clickcount = 1;
-		}
-		document.getElementById("result").innerHTML = "Click count: " + localStorage.clickcount + " time(s)";
-	} else {
-		document.getElementById("result").innerHTML = notSupported;
+	if( typeof(Storage)=='undefined' ) {
+		clickcountbox.innerHTML = notSupported;
+		return;
 	}
+
+	// Increment click count if already exists. 
+	if (localStorage.clickcount) {
+		localStorage.clickcount = Number(localStorage.clickcount) + 1;
+	}
+
+	// Initialize click count if not. 
+	else localStorage.clickcount = 1;
+
+	// Update displayed click count. 
+	updateClickCountDisplay( localStorage.clickcount );
 }
 
+// Add to click count. 
 function clickCounter3() {
+
 	// Check browser support for localStorage and sessionStorage. 
-	if(typeof(Storage) !== "undefined") {
-		if (localStorage['clickcount']) {
-			localStorage['clickcount'] = Number(localStorage['clickcount']) + 1;
-		} else {
-			localStorage['clickcount'] = 1;
-		}
-		document.getElementById("result").innerHTML = "Click count: " + localStorage['clickcount'] + " time(s)";
-	} else {
-		document.getElementById("result").innerHTML = notSupported;
+	if( typeof(Storage)=='undefined' ) {
+		clickcountbox.innerHTML = notSupported;
+		return;
 	}
+
+	// Increment click count if already exists. 
+	if (localStorage['clickcount']) {
+		localStorage['clickcount'] = Number(localStorage['clickcount']) + 1;
+	}
+
+	// Initialize click count if not. 
+	else localStorage['clickcount'] = 1;
+
+	// Update displayed click count. 
+	updateClickCountDisplay( localStorage['clickcount'] );
 }
 
+// Update displayed click count. 
+function updateClickCountDisplay(clickcount) {
+	clickcountbox.innerHTML = `Click count: ${clickcount} time(s)`;
+}
