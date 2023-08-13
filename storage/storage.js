@@ -18,7 +18,7 @@ var notSupported = "Sorry, your browser does not support web storage..."
 
 
 // Show all contents of local storage. 
-window.onload = showStorage;
+showStorage();
 
 
 /*****/
@@ -34,20 +34,24 @@ function showStorage() {
 	let inventorykeys = '';
 
 	// Go thru contents of local storage. 
-	for(let i=0 ; i<localStorage.length ; i++) {
+	for(var i=0 ; i<localStorage.length ; i++) {
 
 		// Get key for current item. 
 		var key = localStorage.key(i);
-		inventorykeys += `<option value="${key}">${key}</option>`;
+		inventorykeys += `<option value="${key}">${i}: ${key}</option>`;
 
 		// Get value for current item. 
 		var value = localStorage.getItem(key);
 
-		// 
-		fullinventory += `[${i}] ${key}: ${value}\n`;
+		// Add item to full inventory. 
+		fullinventory += `\n[${i}] ${key}: ${value}\n`;
 	}
 
-	// Reset displayed contents. 
+	// Update size of key selection box. 
+	inventorykeysbox.size = i;
+	// console.log(i);
+
+	// Reset displayed inventory contents. 
 	inventorykeysbox.innerHTML = inventorykeys;
 	inventoryvaluesbox.innerHTML = fullinventory;
 }
