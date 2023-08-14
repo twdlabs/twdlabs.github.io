@@ -40,6 +40,10 @@ div#container section.inventory div.inventory textarea#inventoryvalues {display:
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
 
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar h1.head {} */
+
 	/* Click Count Section */
 	/* div#container section.clickcount {} */
 
@@ -49,6 +53,10 @@ div#container section.inventory div.inventory textarea#inventoryvalues {display:
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar h1.head {} */
 
 	/* Click Count Section */
 	/* div#container section.clickcount {} */
@@ -60,6 +68,10 @@ div#container section.inventory div.inventory textarea#inventoryvalues {display:
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	div#container nav.navbar h1.head {font-size:1.875rem;}
 
 	/* Click Count Section */
 	/* div#container section.clickcount {} */

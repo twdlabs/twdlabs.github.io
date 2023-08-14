@@ -26,6 +26,7 @@ showStorage();
 
 // Show all contents of local storage. 
 function showStorage() {
+	console.log('showStorage');
 
 	// Initialize list of full inventory. 
 	let fullinventory = '';
@@ -38,7 +39,10 @@ function showStorage() {
 
 		// Get key for current item. 
 		var key = localStorage.key(i);
-		inventorykeys += `<option value="${key}">${i}: ${key}</option>`;
+		inventorykeys += `
+		<!-- option -->
+		<option value="${key}">${i}: ${key}</option>
+		<!-- /option -->`;
 
 		// Get value for current item. 
 		var value = localStorage.getItem(key);
@@ -58,6 +62,7 @@ function showStorage() {
 
 // Display value of selected key. 
 function displayKeyValue(event) {
+	console.log('displayKeyValue');
 
 	// Get selected key. 
 	let key = event.currentTarget.value; 
@@ -135,5 +140,10 @@ function clickCounter3() {
 
 // Update displayed click count. 
 function updateClickCountDisplay(clickcount) {
+
+	// 
 	clickcountbox.innerHTML = `Click count: ${clickcount} time(s)`;
+
+	// Show all contents of local storage. 
+	showStorage();
 }
