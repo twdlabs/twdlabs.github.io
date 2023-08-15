@@ -4,9 +4,6 @@
 // Define character limit for post excerpts. 
 const excerptcharlimit = 150;
 
-// Define maximum amount of more posts. 
-const maxmoreposts = 4;
-
 
 /*****/
 

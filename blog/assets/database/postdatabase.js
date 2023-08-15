@@ -84,8 +84,8 @@ const blogDataList = [
 		timeposted:0,
 	},
 	{
-		title:'Brown',
-		postid:'brown',
+		title:'Brown Office',
+		postid:'brownoffice',
 		authorid:'aventura',
 		imgurl:'../../gallery/assets/images/full/Squarespace+Learning+-+Forum+Banner.jpg',
 		vidurl:'../../video/assets/videos/0000001.mp4',
@@ -107,6 +107,87 @@ const blogDataList = [
 		authorid:'aventura',
 		imgurl:'../../gallery/assets/images/full/2 2.jpg',
 		vidurl:'../../video/assets/videos/1583096.mp4',
+		content:[],
+		timeposted:0,
+	},
+	{
+		title:'Scenery',
+		postid:'scenery',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/np3.jpg',
+		vidurl:'../../video/assets/videos/2231485.mp4',
+		content:[],
+		timeposted:0,
+	},
+	{
+		title:'Park',
+		postid:'park',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/3.jpg',
+		vidurl:'../../video/assets/videos/0000002.mp4',
+		content:[],
+		timeposted:0,
+	},
+	{
+		title:'Real Estate',
+		postid:'reast',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/a.jpg',
+		vidurl:'../../video/assets/videos/1644693.mp4',
+		content:[],
+		timeposted:0,
+	},
+	{
+		title:'Matrix',
+		postid:'matrix',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/code.jpg',
+		vidurl:'../../video/assets/videos/1654216.mp4',
+		content:[],
+		timeposted:0,
+	},
+	{
+		title:'Island Life',
+		postid:'island',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/ze0NeqF.jpg',
+		vidurl:'../../video/assets/videos/2231485.mp4',
+		content:[],
+		timeposted:0,
+	},
+	// {
+	// 	title:'Earth Zoom',
+	// 	postid:'earthzoom',
+	// 	authorid:'aventura',
+	// 	imgurl:'../../gallery/assets/images/full/earthmap.jpg',
+	// 	vidurl:'../../video/assets/videos/1654216.mp4',
+	// 	content:[],
+	// 	timeposted:0,
+	// },
+	{
+		title:'Sky Light',
+		postid:'skylight',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
+		vidurl:'../../video/assets/videos/1654216.mp4',
+		content:[],
+		timeposted:0,
+	},
+	{
+		title:'Water Life',
+		postid:'waterlife',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/Navagio.jpg',
+		vidurl:'../../video/assets/videos/2231485.mp4',
+		content:[],
+		timeposted:0,
+	},
+	{
+		title:'Device Work',
+		postid:'devicework',
+		authorid:'aventura',
+		imgurl:'../../gallery/assets/images/full/devicework.jpg',
+		vidurl:'../../video/assets/videos/0000001.mp4',
 		content:[],
 		timeposted:0,
 	},
@@ -377,6 +458,28 @@ const blogDataList2 = [
 /*****/
 
 
+// Sort list of blog posts chronologically. 
+// console.log('Blog post list (unsorted):', blogDataList.map(x=>x.postid) );
+blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
+// console.log('Blog post list (sorted by time):', blogDataList.map(x=>x.postid) );
+
+
+// // Get saved blog database from storage. 
+// let savedDB = getBlogDatabaseFromStorage();
+// console.log('Saved DB:',savedDB);
+
+// // Check if database has any contents. 
+// let savedDBExists = !!(savedDB.length);
+// console.log('Saved DB exists:',savedDBExists);
+
+// Use default user data. 
+// userDataList = defaultUserDataList;
+// userDataList = JSON.parse( localStorage.getItem('cruduserdata') ) || [];
+
+
+/*****/
+
+
 // Get post index by post id. 
 function getPostIndexById(id) {
 
@@ -407,23 +510,3 @@ function getPostById(id) {
 	// Return nothing if post not found. 
 	return null;
 }
-
-
-/*****/
-
-
-// // Get saved blog database from storage. 
-// let savedDB = getBlogDatabaseFromStorage();
-// console.log('Saved DB:',savedDB);
-
-// // Check if database has any contents. 
-// let savedDBExists = !!(savedDB.length);
-// console.log('Saved DB exists:',savedDBExists);
-
-// // Generate additional random data for all blog posts. 
-// if(savedDBExists) ;
-
-
-// Use default user data. 
-// userDataList = defaultUserDataList;
-userDataList = JSON.parse( localStorage.getItem('cruduserdata') ) || [];

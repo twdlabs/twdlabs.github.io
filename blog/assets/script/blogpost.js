@@ -23,8 +23,8 @@ const otherpostsdestination = document.querySelector('div#container section.othe
 // Create time calculator. 
 const t = new TimeCalculator();
 
-// Define site title. 
-const sitetitle = 'TWDLabs';
+// Define maximum amount of more posts. 
+const maxmoreposts = 4;
 
 
 /*****/
@@ -95,7 +95,7 @@ function loadBlogPostContent() {
 
 	// Load full layout for given post. 
 	function loadPostLayout(post) {
-		// console.log('Current post data:',post);
+		console.log('Current post data:',post);
 	
 		// Get post publish date/time. 
 		let datetime = post ? post.timeposted : '';
@@ -122,11 +122,6 @@ function loadBlogPostContent() {
 		
 			// Get url for post video. 
 			let vidurl = post ? getRelativeUrl(post.vidurl) : '';
-
-			// Sort list of blog posts chronologically. 
-			// console.log('Blog post list (unsorted):', blogDataList.map(x=>x.postid) );
-			blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
-			// console.log('Blog post list (sorted by time):', blogDataList.map(x=>x.postid) );
 		
 			// Get content of playlist. 
 			let playlistcontent = createPlayListLayout(blogDataList);
@@ -543,11 +538,6 @@ function loadOtherBlogPosts() {
 	// Intialize result. 
 	let result = '';
 
-	// Sort list of blog posts chronologically. 
-	// console.log('Blog post list:', blogDataList.map(x=>x.postid) );
-	blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
-	// console.log('Blog post list:', blogDataList.map(x=>x.postid) );
-
 	// Intialize number of posts loaded. 
 	let postcount = 0;
 	// Go thru all posts. 
@@ -562,6 +552,7 @@ function loadOtherBlogPosts() {
 
 		// Increment number of posts loaded. 
 		postcount ++;
+
 		// Limit number of posts to predefined amount. 
 		if(postcount>=maxmoreposts) break;
 	}

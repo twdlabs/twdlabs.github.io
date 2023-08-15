@@ -5,17 +5,19 @@
 /* div#container {background-color:var(--themecolor);} */
 
 /* Hero Section */
-/* div#container section.hero {} */
+/* div#container section.hero {display:none;} */
+/* div#container section.hero::before {backdrop-filter:blur(.25rem);} */
 div#container section.hero main.grid {align-items:center; padding:12rem 0; padding:9rem 0;}
-div#container section.hero main.grid h1.head {font-size:4rem;}
+/* div#container section.hero main.grid {padding:4rem 0;} */
+/* div#container section.hero main.grid h2.head {display:none;} */
 div#container section.hero main.grid h2.head {font-size:2.5rem;}
+div#container section.hero main.grid h1.head {font-size:4rem;}
 div#container section.hero main.grid p.textcopy {font-size:1.5rem;}
-div#container section.hero main.grid a.editbtn {background-color:var(--black); padding:.75rem; border-radius:var(--cornersize); margin-top:2rem;}
+div#container section.hero main.grid a.editbtn {background-color:var(--black); padding:.75rem 1.5rem; border-radius:var(--cornersize); margin-top:2rem;}
 div#container section.hero main.grid a.editbtn {display:flex; flex-direction:row; align-items:center;}
 div#container section.hero main.grid a.editbtn {color:white; text-decoration:none;}
 div#container section.hero main.grid a.editbtn {display:none;}
 div#container section.hero main.grid a.editbtn svg.icon {font-size:1.25rem;}
-div#container section.hero main.grid a.editbtn span.caption {display:none;}
 div#container section.hero main.grid a.editbtn span.caption {font-size:1.25rem; margin-left:.5rem;}
 
 /* Featured Media Section */
@@ -24,7 +26,7 @@ div#container section.feature h2.head {display:none;}
 /* div#container section.feature main.grid {} */
 /* Featured Media Section: Media Player */
 div#container section.feature main.grid article.media {position:relative; overflow:hidden; border-radius:var(--cornersize); margin-top:var(--sectionspacing); box-shadow:var(--boxshadow);}
-div#container section.feature main.grid article.media div.vid {position:relative; padding-top:56.25%; }
+div#container section.feature main.grid article.media div.vid {position:relative; padding-top:56.25%;}
 div#container section.feature main.grid article.media div.vid video.video {position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 div#container section.feature main.grid article.media div.cover {position:absolute; inset:0; width:100%; height:100%;}
 div#container section.feature main.grid article.media div.cover div.bgpic {position:absolute; inset:0; width:100%; height:100%; z-index:1;}
@@ -34,17 +36,24 @@ div#container section.feature main.grid article.media div.cover div.contents {po
 div#container section.feature main.grid article.media div.cover div.contents {background-color:var(--darkblackglass); color:white; font-weight:bold; display:flex; flex-direction:column; justify-content:flex-end; align-items:flex-start; padding:1rem 1.5rem;}
 div#container section.feature main.grid article.media div.cover div.contents div.tag {background-color:var(--whiteglass); font-size:.75rem; padding:.125rem .75rem; border-radius:10rem;}
 div#container section.feature main.grid article.media div.cover div.contents h1.head {font-size:2rem; margin:0; margin-bottom:.25rem;}
-div#container section.feature main.grid article.media div.cover div.contents h1.head:empty {background-color:gainsboro; height:1em; width:10em; border-radius:10em; margin:.375rem 0;}
+div#container section.feature main.grid article.media div.cover div.contents h1.head:empty {background-color:gainsboro; height:1em; width:10em; max-width:100%; border-radius:10em; margin:.375rem 0;}
 div#container section.feature main.grid article.media div.cover div.contents ul.linkbox {list-style:none; padding:0; margin:0;}
 div#container section.feature main.grid article.media div.cover div.contents ul.linkbox {display:flex; flex-direction:row; align-items:center; grid-gap:.875rem;}
 /* div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem {margin:0; margin-right:.875rem;} */
-div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link {color:inherit; display:block; text-decoration:none; text-align:center; min-width:11rem; padding:.5rem; border-radius:1rem;}
+div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link {color:inherit; text-decoration:none; text-align:center;}
+div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link {display:block; min-width:11rem; transition:background-color .125s; padding:.5rem; border-radius:1rem;}
 div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link.p {background-color:var(--themecolor); color:white;}
+div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link.p:hover {background-color:var(--drkthemecolor);}
 div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link.s {background-color:white; color:black;}
+div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link.s:hover {background-color:whitesmoke;}
+
+/* Blog Table Section */
+/* div#container section.blogtable {} */
+/* div#container section.blogtable main.grid {} */
 
 /* Contributors Section */
 /* div#container section.contributors {} */
-div#container section.contributors main.grid {max-width:calc( .5 * var(--pagewidth) ); position:relative; overflow:hidden;}
+div#container section.contributors main.grid {max-width:var(--pagewidth); position:relative; overflow:hidden;}
 div#container section.contributors main.grid:before,
 div#container section.contributors main.grid::after {background-color:inherit; content:''; position:absolute; top:0; height:100%; width:15%; z-index:10;}
 div#container section.contributors main.grid:before {left:0; background-image:linear-gradient(-90deg,transparent,var(--bgcolor));}
@@ -75,6 +84,9 @@ div#container section.contributors main.grid div.row a.card span.username {font-
 
 	/* Featured Media Section */
 	/* div#container section.feature {} */
+	/* div#container section.feature main.grid {} */
+	/* div#container section.feature main.grid article.media {} */
+	/* div#container section.feature main.grid article.media div.vid {min-height:100vw;} */
 
 	/* Contributors Section */
 	/* div#container section.contributors {} */

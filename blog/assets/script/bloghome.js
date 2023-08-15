@@ -2,7 +2,7 @@
 
 
 // Get destination for featured post. 
-const featuredestination = document.querySelector('div#container section.feature main.grid ul.postlist');
+const featuredestination = document.querySelector('div#container section.feature main.grid article.media');
 
 // Get destination for list of posts. 
 const bloglistdestination = document.querySelector('div#container section.allposts main.grid ul.postlist');
@@ -21,6 +21,9 @@ const t = new TimeCalculator();
 /*****/
 
 
+// Load featured blog post. 
+loadFeaturedPost();
+
 // Load blog posts. 
 loadBlogPosts();
 
@@ -31,16 +34,98 @@ loadBlogContibutors();
 /*****/
 
 
+// Load featured blog post. 
+function loadFeaturedPost() {
+
+	// Initialize result. 
+	let result = '';
+
+	// Get url of video source. 
+	let vidsrcurl = './../../video/assets/videos/0000001.mp4';
+
+	// Get url of video image placeholder. 
+	let vidplaceholderurl = './../video/assets/images/0000001.png';
+
+	// Check if latest post. 
+	let isLatestPost = true;
+
+	// Get title of featured post. 
+	let posttitle = 'Title of Featured Post';
+
+	// Get id of featured post. 
+	let featuredbpid = '0';
+
+	// Compile result. 
+	result += `
+	<!-- vid -->
+	<div class="vid">
+
+		<!-- video -->
+		<video class="video" src="${ vidsrcurl }" controls autoplay muted loop></video>
+		<!-- /video -->
+
+	</div>
+	<!-- /vid -->
+
+	<!-- cover -->
+	<div class="cover">
+
+		<!-- bgpic -->
+		<div class="bgpic" style="background-image:url('${ vidplaceholderurl }');"></div>
+		<!-- /bgpic -->
+		
+		<!-- contents -->
+		<div class="contents">
+
+			<!-- tag -->
+			<div class="tag">${ isLatestPost ? 'Latest Post' : 'Featured Post' }</div>
+			<!-- /tag -->
+
+			<!-- head -->
+			<h1 class="head">${ posttitle ? posttitle : '' }</h1>
+			<!-- /head -->
+
+			<!-- linkbox -->
+			<ul class="linkbox">
+
+				<!-- linkitem -->
+				<li class="linkitem">
+
+					<!-- link -->
+					<a class="link p" href="./post/?bpid=${featuredbpid}">See Post</a>
+					<!-- /link -->
+
+				</li>
+				<!-- /linkitem -->
+
+				<!-- linkitem -->
+				<li class="linkitem">
+
+					<!-- link -->
+					<a class="link s" href="./allposts">View More Posts</a>
+					<!-- /link -->
+
+				</li>
+				<!-- /linkitem -->
+
+			</ul>
+			<!-- /linkbox -->
+			
+		</div>
+		<!-- /contents -->
+
+	</div>
+	<!-- /cover -->`;
+
+	// Add result to page. 
+	featuredestination.innerHTML = result;
+}
+
 // Load list of blog posts. 
 function loadBlogPosts() {
 
 	// Initialize result. 
 	let result = '';
-
-	// Sort list of blog posts chronologically. 
-	// console.log('Blog data list (pre-sort):', blogDataList.map(x=>x.postid) );
-	blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
-	// console.log('Blog data list (post-sort):', blogDataList.map(x=>x.postid) );
 	
 	// Go thru all posts. 
 	for(let post of blogDataList) {
@@ -55,21 +140,12 @@ function loadBlogPosts() {
 
 // Load list of blog contributors. 
 function loadBlogContibutors() {
-
-	// Initialize result. 
-	let result = '';
+		
+	// Initialize list of contributor cards. 
+	let cards = '';
 	
 	// Go thru multiple rows. 
-	// for(let i=0 ; i<4 ; i++) {
-
-		// Get random number of cards to include in row. 
-		// let l = Math.floor( userDataList.length * Math.random() );
-
-		// Initialize number of cards in row. 
-		// let n = 0;
-		
-		// Initialize list of contributor cards. 
-		let cards = '';
+	for(let i=0 ; i<1 ; i++) {
 		
 		// Create layout for list of contributor cards. 
 		for(let item of userDataList.sort(sortRandom) ) {
@@ -80,7 +156,7 @@ function loadBlogContibutors() {
 			<a class="card" href="${ item.linkurl ? item.linkurl : 'javascript:void(0)' }">
 	
 				<!-- avatar -->
-				<img class="avatar" src="${ `../user/${item.avatarurl}` }" alt="${ item.userid }">
+				<img class="avatar" src="${ `./../user/${item.avatarurl}` }" alt="${ item.userid }">
 				<!-- /avatar -->
 	
 				<!-- username -->
@@ -89,27 +165,17 @@ function loadBlogContibutors() {
 	
 			</a>
 			<!-- /card -->`;
-
-			// Limit number of cards to randomly generated number. 
-			// n++;
-			// if(n>=l) break;
 		}
+	}
 	
-		// Compile contents of card slider row. 
-		result += `
-		<!-- row -->
-		<div class="row">
-			${cards}
-			${cards}
-		</div>
-		<!-- /row -->`;
-	// }
-	
-	// Load to destination. 
-	contributorsdestination.innerHTML = result;
+	// Compile contents of card slider row. Load to destination. 
+	contributorsdestination.innerHTML = `
+	<!-- row -->
+	<div class="row">${cards}</div>
+	<!-- /row -->`;
 
 	// Sort randomly. 
-	function sortRandom(a,b) {
+	function sortRandom(/* a,b */) {
 		// 
 		return ( Math.random() - Math.random() );
 	}

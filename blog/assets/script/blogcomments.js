@@ -154,5 +154,6 @@ function addNewComment() {
 	// Create layout for new comment. 
 	let newcommentlayout = createCommentLayout(newcommentdata);
 	// Add new comment layout to page. 
-	commentdestination.insertAdjacentHTML('beforeend',newcommentlayout);
+	commentdestination.insertAdjacentHTML('afterbegin',newcommentlayout);
+	// commentdestination.insertAdjacentHTML('beforeend',newcommentlayout);
 }

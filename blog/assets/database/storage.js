@@ -37,7 +37,4 @@ function saveBlogDatabaseToStorage() {
 		// Save to storage: string version of database. 
 		localStorage.setItem('blogdata',str);
 	}
-	
-	// Display items in selected database. 
-	// displaySelectedDatabase();
 }
