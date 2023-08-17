@@ -36,7 +36,7 @@
 	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
 
 	--pagewidth:80rem;
-	/* --pagewidth:100rem; */
+	--pagewidth:100rem;
 	--headerheight:6rem;
 	--cornersize:.75rem;
 	--bigcornersize:calc(var(--cornersize)*2);

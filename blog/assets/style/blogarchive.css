@@ -14,10 +14,18 @@ div#container section.hero main.grid h1.head:empty {background-color:gainsboro; 
 
 /* Blog Table Section */
 /* div#container section.blogtable {} */
-div#container section.blogtable main.grid {display:grid; grid-template-columns:1fr 3fr; grid-gap:2rem;}
+div#container section.blogtable main.grid {display:grid; grid-template-columns:2fr 5fr; grid-gap:2rem; transition:.5s;}
 div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(3,1fr);}
-div#container section.blogtable main.grid ul.postfilter {list-style:none; padding:0; margin:0;}
-div#container section.blogtable main.grid ul.postfilter li.criterion {border-bottom:1px solid; margin-bottom:2rem;}
+div#container section.blogtable main.grid ul.filterlist {list-style:none; padding:0; margin:0;}
+div#container section.blogtable main.grid ul.filterlist li.filter {padding-bottom:1rem;border-bottom:1px solid; margin-bottom:2rem;}
+div#container section.blogtable main.grid ul.filterlist li.filter h3.head {font-size:1.375rem; margin:0;}
+div#container section.blogtable main.grid ul.filterlist li.filter ul.criterialist {display:flex; flex-wrap:wrap; font-size:.875rem; font-weight:200;}
+div#container section.blogtable main.grid ul.filterlist li.filter ul.criterialist {list-style:none; padding:0; margin:0;}
+div#container section.blogtable main.grid ul.filterlist li.filter ul.criterialist li.criterion {background-color:var(--bgcolor); color:var(--forecolor); cursor:pointer; user-select:none; padding:.25rem .625rem .125rem; border-radius:1rem; margin-right:.25em; margin-top:.5em;}
+div#container section.blogtable main.grid ul.filterlist li.filter ul.criterialist li.criterion:hover {background-color:var(--drkwhite);}
+div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafilter {display:grid; grid-template-columns:1fr auto; align-items:center; border-bottom:1px solid;}
+div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafilter svg.icon {font-size:1rem;}
+div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafilter input.criteriafilterquery {font-family:inherit; font-size:1.25rem; width:100%; padding:.75rem 1rem; border:0 none; outline:none;}
 
 
 
@@ -31,7 +39,7 @@ div#container section.blogtable main.grid ul.postfilter li.criterion {border-bot
 
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:3rem;} */
-	/* div#container section.blogtable main.grid {} */
+	/* div#container section.blogtable main.grid {grid-template-columns:2fr 5fr;} */
 	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(2,1fr);}
 }
 
@@ -44,7 +52,8 @@ div#container section.blogtable main.grid ul.postfilter li.criterion {border-bot
 
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:1.5rem;} */
-	/* div#container section.blogtable main.grid {} */
+	div#container section.blogtable main.grid {grid-template-columns:4fr 5fr;}
+	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(1,1fr);}
 }
 
 
@@ -56,8 +65,7 @@ div#container section.blogtable main.grid ul.postfilter li.criterion {border-bot
 
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:1.5rem;} */
-	/* div#container section.blogtable main.grid {} */
-	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(1,1fr);}
+	div#container section.blogtable main.grid {grid-template-columns:3fr 4fr;}
 }
 
 
@@ -69,5 +77,5 @@ div#container section.blogtable main.grid ul.postfilter li.criterion {border-bot
 
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:0;} */
-	/* div#container section.blogtable main.grid {} */
+	div#container section.blogtable main.grid {grid-template-columns:1fr;}
 }
