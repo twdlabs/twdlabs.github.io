@@ -11,68 +11,11 @@ const filterlistdestination = document.querySelector('div#container section.blog
 /*****/
 
 
-// Define post filters and criteria. 
-const postFilters = [
-	{
-		title:'X Authors',
-		criteria:[
-			'Ace Ventura',
-			'Bill Diamond',
-			'Christine Brophy',
-			'David Doe',
-			'Eli Jah',
-			'Fred Flinstone',
-			'George Doe',
-			'Hilary Doe',
-			'Ian Robertson',
-		],
-	},
-	{
-		title:'Y Authors',
-		criteria:[
-			'Jane Doe',
-			'Jay Jenkins',
-			'Jenny Joe',
-			'Jill Jackson',
-			'Jim Doe',
-			'Joe Doe',
-			'John Luke Smith',
-			'Kate Croix',
-			'Leah Lloyd',
-			'Mike Myers',
-		],
-	},
-	{
-		title:'Z Authors',
-		criteria:[
-			'Nina Nash',
-			'Oscar DeLaHoya',
-			'Peter Pan',
-			'Quinten Doe',
-			'Rachel Roy',
-			'Steve Stephens',
-			'Tim Toole',
-			'Tori Doe',
-			'Ursula Doe',
-			'Victor Victorian',
-			'Wendy Will',
-			'Xavier Toven',
-			'Yolanda Yokes',
-		],
-	},
-];
-// Define post filters and criteria. 
-// postFilters = {
-// 	author:[
-		
-// 	],
-// };
-
 // Load blog posts. 
 loadBlogPosts();
 
 // Load blog post filters. 
-// loadBlogPostFilters();
+loadBlogPostFilters();
 
 
 /*****/

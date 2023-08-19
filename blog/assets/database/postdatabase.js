@@ -27,14 +27,41 @@ const blogListMetaData = {
 		label:'Content',
 		visible:true,
 	},
-	timeposted:{
-		label:'Time Posted',
+	published:{
+		label:'Published',
 		visible:true,
 	},
 };
 
 // Define list of blog post data. 
 const blogDataList = [
+
+	// {
+	// 	title:'xyz',
+	// 	postid:'xyz',
+	// 	authorid:'xyz',
+	// 	imgurl:'',
+	// 	vidurl:'',
+	// 	content:[],
+	// 	published:{
+	// 		year:9999,
+	// 		month:99,
+	// 		date:99,
+	// 	},
+	// },
+	// {
+	// 	title:'Post Title',
+	// 	postid:'posttag',
+	// 	authorid:'authortag',
+	// 	imgurl:'../../gallery/assets/images/full/xyz.jpg',
+	// 	vidurl:'../../video/assets/videos/xyz.mp4',
+	// 	content:[],
+	// 	published:{
+	// 		year:9999,
+	// 		month:99,
+	// 		date:99,
+	// 	},
+	// },
 
 	{
 		title:'Beach Life',
@@ -43,7 +70,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/fd21366fc13ca502751ebb8f7d18f2dd.jpg',
 		vidurl:'../../video/assets/videos/2231485.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:1,
+			date:31,
+		},
 	},
 	{
 		title:'Metropolis',
@@ -52,7 +83,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/b.jpeg',
 		vidurl:'../../video/assets/videos/1436812.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:1,
+			date:31,
+		},
 	},
 	{
 		title:'Green',
@@ -62,7 +97,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/2.jpg',
 		vidurl:'../../video/assets/videos/0000002.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:2,
+			date:31,
+		},
 	},
 	{
 		title:'City Life',
@@ -72,7 +111,11 @@ const blogDataList = [
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		vidurl:'../../video/assets/videos/2818546.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:2,
+			date:31,
+		},
 	},
 	{
 		title:'Island City',
@@ -81,7 +124,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/1.jpg',
 		vidurl:'../../video/assets/videos/1436812.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:3,
+			date:31,
+		},
 	},
 	{
 		title:'Brown Office',
@@ -90,7 +137,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/Squarespace+Learning+-+Forum+Banner.jpg',
 		vidurl:'../../video/assets/videos/0000001.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:3,
+			date:31,
+		},
 	},
 	{
 		title:'City Buildings',
@@ -99,7 +150,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/Dubai.jpg',
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:4,
+			date:31,
+		},
 	},
 	{
 		title:'Warm Color Terrain',
@@ -108,7 +163,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/2 2.jpg',
 		vidurl:'../../video/assets/videos/1583096.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:4,
+			date:31,
+		},
 	},
 	{
 		title:'Scenery',
@@ -117,7 +176,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/np3.jpg',
 		vidurl:'../../video/assets/videos/2231485.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:5,
+			date:31,
+		},
 	},
 	{
 		title:'Park',
@@ -126,7 +189,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/3.jpg',
 		vidurl:'../../video/assets/videos/0000002.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:5,
+			date:31,
+		},
 	},
 	{
 		title:'Real Estate',
@@ -135,7 +202,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/a.jpg',
 		vidurl:'../../video/assets/videos/1644693.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:6,
+			date:31,
+		},
 	},
 	{
 		title:'Matrix',
@@ -144,7 +215,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/code.jpg',
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:6,
+			date:31,
+		},
 	},
 	{
 		title:'Island Life',
@@ -153,17 +228,12 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/ze0NeqF.jpg',
 		vidurl:'../../video/assets/videos/2231485.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:7,
+			date:31,
+		},
 	},
-	// {
-	// 	title:'Earth Zoom',
-	// 	postid:'earthzoom',
-	// 	authorid:'aventura',
-	// 	imgurl:'../../gallery/assets/images/full/earthmap.jpg',
-	// 	vidurl:'../../video/assets/videos/1654216.mp4',
-	// 	content:[],
-	// 	timeposted:0,
-	// },
 	{
 		title:'Sky Light',
 		postid:'skylight',
@@ -171,7 +241,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:7,
+			date:31,
+		},
 	},
 	{
 		title:'Water Life',
@@ -180,7 +254,11 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/Navagio.jpg',
 		vidurl:'../../video/assets/videos/2231485.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:8,
+			date:31,
+		},
 	},
 	{
 		title:'Device Work',
@@ -189,269 +267,65 @@ const blogDataList = [
 		imgurl:'../../gallery/assets/images/full/devicework.jpg',
 		vidurl:'../../video/assets/videos/0000001.mp4',
 		content:[],
-		timeposted:0,
+		published:{
+			year:2023,
+			month:8,
+			date:31,
+		},
 	},
-
-	// {
-		// 	title:'xyz',
-	// 	postid:'xyz',
-	// 	authorid:'xyz',
-	// 	imgurl:'',
-	// 	vidurl:'',
-	// 	content:[],
-	// 	timeposted:0,
-	// },
 
 ];
 // console.log('Blog data list:',blogDataList);
 
-
-// Define sample blog post data. 
-const blogDataList2 = [
-
+// Define post filters and criteria. 
+const postFilters = [
 	{
-		title:'Blog Post A',
-		postid:'abc',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:1672870380000,
+		title:'X Authors',
+		criteria:[
+			'Ace Ventura',
+			'Bill Diamond',
+			'Christine Brophy',
+			'David Doe',
+			'Eli Jah',
+			'Fred Flinstone',
+			'George Doe',
+			'Hilary Doe',
+			'Ian Robertson',
+		],
 	},
 	{
-		title:'Blog Post B',
-		postid:'def',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:1659561180000,
+		title:'Y Authors',
+		criteria:[
+			'Jane Doe',
+			'Jay Jenkins',
+			'Jenny Joe',
+			'Jill Jackson',
+			'Jim Doe',
+			'Joe Doe',
+			'John Luke Smith',
+			'Kate Croix',
+			'Leah Lloyd',
+			'Mike Myers',
+		],
 	},
 	{
-		title:'Blog Post C',
-		postid:'ghi',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:1665004380000,
+		title:'Z Authors',
+		criteria:[
+			'Nina Nash',
+			'Oscar DeLaHoya',
+			'Peter Pan',
+			'Quinten Doe',
+			'Rachel Roy',
+			'Steve Stephens',
+			'Tim Toole',
+			'Tori Doe',
+			'Ursula Doe',
+			'Victor Victorian',
+			'Wendy Will',
+			'Xavier Toven',
+			'Yolanda Yokes',
+		],
 	},
-
-	{
-		title:'Blog Post D',
-		postid:'jkl',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:1670451180000,
-	},
-	{
-		title:'Blog Post E',
-		postid:'mno',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:1667423580000,
-	},
-	{
-		title:'Blog Post F',
-		postid:'pqr',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:1662585180000,
-	},
-
-	{
-		title:'Blog Post G',
-		postid:'stu',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post H',
-		postid:'vwx',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post I',
-		postid:'yza',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-
-	{
-		title:'Blog Post J',
-		postid:'bcd',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post K',
-		postid:'efg',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post L',
-		postid:'hij',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-
-	{
-		title:'Blog Post M',
-		postid:'klm',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post N',
-		postid:'nop',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post O',
-		postid:'qrs',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-
-	{
-		title:'Blog Post P',
-		postid:'tuv',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post Q',
-		postid:'wxy',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post R',
-		postid:'zab',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-
-	{
-		title:'Blog Post S',
-		postid:'cde',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post T',
-		postid:'fgh',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post U',
-		postid:'ijk',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-
-	{
-		title:'Blog Post V',
-		postid:'lmn',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post W',
-		postid:'opq',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post X',
-		postid:'rst',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	
-	{
-		title:'Blog Post Y',
-		postid:'uvw',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-	{
-		title:'Blog Post Z',
-		postid:'xyz',
-		authorid:'',
-		imgurl:'',
-		vidurl:'',
-		content:[],
-		timeposted:0,
-	},
-
 ];
 
 
@@ -460,9 +334,15 @@ const blogDataList2 = [
 
 // Sort list of blog posts chronologically. 
 // console.log('Blog post list (unsorted):', blogDataList.map(x=>x.postid) );
-blogDataList.sort( (a,b) => b.timeposted-a.timeposted );
-// console.log('Blog post list (sorted by time):', blogDataList.map(x=>x.postid) );
+blogDataList.sort( sortPosts );
+// console.log('Blog post list (sorted by date):', blogDataList.map(x=>x.postid) );
 
+// Save post filter for xyz. 
+// let xyz = getPostFilter('xyztagname','xyztagtitle');
+let authorfilter = getPostFilter('authorid','Author');
+postFilters.push(authorfilter);
+
+/****/
 
 // // Get saved blog database from storage. 
 // let savedDB = getBlogDatabaseFromStorage();
@@ -509,4 +389,42 @@ function getPostById(id) {
 
 	// Return nothing if post not found. 
 	return null;
+}
+
+// Define sort function. 
+function sortPosts(a,b) {
+
+	// Initialize result. 
+	let result = 0;
+
+	// 
+	let pA = a.published;
+	let pB = b.published;
+
+	// Add year differential. 
+	result += 366 * (pB.year-pA.year);
+
+	// Add month differential. 
+	result += 31 * (pB.month-pA.month);
+
+	// Add date differential. 
+	result += (pB.date-pA.date);
+
+	// Return result. 
+	return result;
+}
+
+// TODO: Get post filter for given tag. 
+function getPostFilter(tagname,tagtitle) {
+
+	// 
+	let result = {
+		title:tagtitle,
+		criteria:[
+			'tagtitle',
+		],
+	};
+
+	// 
+	for(let blogpost of blogDataList) result.criteria
 }

@@ -12,6 +12,14 @@ div#container section.hero main.grid {align-items:flex-start; padding:4rem 0;}
 div#container section.hero main.grid h1.head {font-size:3rem;}
 div#container section.hero main.grid h1.head:empty {background-color:gainsboro; display:block; height:1em; width:10em; border-radius:10em;}
 
+/* Headbar Section */
+/* div#container section.headbar {} */
+div#container section.headbar main.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+/* div#container section.headbar main.grid h2.head {} */
+div#container section.headbar main.grid div.titlefilter {display:grid; grid-template-columns:1fr auto; align-items:center; padding:.125rem 1rem; border-radius:.5rem; box-shadow:var(--boxshadowx);}
+div#container section.headbar main.grid div.titlefilter svg.icon {font-size:1rem;}
+div#container section.headbar main.grid div.titlefilter input.titlefilterquery {font-family:inherit; font-size:1.25rem; width:100%; padding:.75rem 1rem; border:0 none; outline:none;}
+
 /* Blog Table Section */
 /* div#container section.blogtable {} */
 div#container section.blogtable main.grid {display:grid; grid-template-columns:2fr 5fr; grid-gap:2rem; transition:.5s;}

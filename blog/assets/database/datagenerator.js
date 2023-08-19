@@ -42,9 +42,6 @@ function generatePostData() {
 		// Assign random video url. 
 		// post.vidurl = getRandomVideoUrl();
 
-		// Assign random time posted. 
-		// post.timeposted = getRandomTimeAfter(t0);
-
 		// Assign fixed post content. 
 		post.content = [
 			'This is the first paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae incidunt dolores aut optio labore amet ut recusandae doloremque quia asperiores quidem mollitia nesciunt ipsa, cumque totam vel dicta beatae harum.',

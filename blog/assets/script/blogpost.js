@@ -98,7 +98,8 @@ function loadBlogPostContent() {
 		console.log('Current post data:',post);
 	
 		// Get post publish date/time. 
-		let datetime = post ? post.timeposted : '';
+		let pdt = post ? post.published : '';
+		let datetime = publishtime ? new Date(pdt.year,pdt.month,pdt.date,0,0,0,0).valueOf() : '';
 	
 		// Compile post layout: date, media, article content. Display in post body section. 
 		postbodydestination.innerHTML = `

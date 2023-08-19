@@ -86,6 +86,8 @@ function createBlogPostLayout(post) {
 	// Compile full layout for given post. 
 	function compileFullPostLayout() {
 
+		let pdt = post.published;
+
 		// 
 		return `
 		<!-- postcard -->
@@ -192,7 +194,7 @@ function createBlogPostLayout(post) {
 					<!-- /userbadge -->
 	
 					<!-- timestamp -->
-					<span class="timestamp">${ t.formatTimeSince(post.timeposted) }</span>
+					<span class="timestamp">${ t.formatTimeSinceDate(pdt.year,pdt.month,pdt.date) }</span>
 					<!-- /timestamp -->
 	
 				</div>
