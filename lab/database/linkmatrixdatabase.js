@@ -1,24 +1,13 @@
 
 
 
-// Define organization of link matrix. 
+// Define organization of link matrix by group ids. 
 const projectLinkMatrix = [
 
 	[
 		'cl',
 		'jl',
-		'nw',
-	],
-	
-	[
-		'gw',
-		'gp',
-	],
-	
-	[
-		'fw',
-		'mw',
-		'ww',
+		'ssc',
 	],
 	
 	[
@@ -26,14 +15,30 @@ const projectLinkMatrix = [
 	],
 	
 	[
-		'ap',
-		'dp',
-		'ssd',
+		'fw',
+		'gw',
+		'mw',
 	],
 	
 	[
+		'nw',
+		'ww',
+		'ld',
+	],
+	
+	[
+		'ap',
+		'gp',
+		'dp',
+	],
+	
+	[
+		'sac',
+		'ssd',
 		'sbs',
 		'sss',
+		'pbs',
+		'esp',
 	],
 	
 ];

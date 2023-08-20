@@ -31,23 +31,34 @@ function loadBlog() {
 	// console.log('Loading blog...');
 
 	// Get list of primary posts. 
-	let primaryPosts = getPrimaryLinks();
-	// Get list of remaining archive posts. 
-	let archivePosts = getRemainingLinks();
+	let primaryPosts = getPrimaryPosts();
 	// console.log('Primary posts', primaryPosts.length, primaryPosts);
+
+	// Get list of secondary posts. 
+	let secondaryPosts = getSecondaryPosts();
+	// console.log('Secondary posts', secondaryPosts.length, secondaryPosts);
+
+	// Get list of remaining archive posts. 
+	let archivePosts = getRemainingPosts();
 	// console.log('Remaining posts', archivePosts.length, archivePosts);
 
 	// Get layout for primary posts. 
 	let primaryLayout = createBlogPostsLayout(primaryPosts);
+	// Get layout for secondary posts. 
+	let secondaryLayout = createBlogPostsLayout(secondaryPosts);
 	// Get layout for archive posts. 
 	let archiveLayout = createBlogPostsLayout(archivePosts);
 	
-	// Add layout to blog section. 
+	// Add primary layout to blog section. 
 	blogDestination.innerHTML = primaryLayout;
 	// blogDestination.insertAdjacentHTML('beforeend',primaryLayout);
 
-	// Add layout to blog archive section. 
-	blogArchiveDestination.innerHTML = archiveLayout;
+	// Add secondary layout to blog archive section. 
+	blogArchiveDestination.innerHTML = secondaryLayout;
+	// blogArchiveDestination.insertAdjacentHTML('beforeend',secondaryLayout);
+
+	// Add remaining layout to blog archive section. 
+	// blogArchiveDestination.innerHTML = archiveLayout;
 	// blogArchiveDestination.insertAdjacentHTML('beforeend',archiveLayout);
 
 
@@ -63,15 +74,50 @@ function loadBlog() {
 	/****/
 	
 	// Get list of primary links from link matrix. 
-	function getPrimaryLinks() {
+	function getPrimaryPosts() {
+
+		// Get group of links. 
+		// let linkgrouplist = getLinkGroupById('pp').grouplist;
+		let linkgrouplist = ( primaryProjectIds.sort() ).map(getProjectLinkById);
+
+		// Initialize list of primary links. 
+		let postresultlist = [];
+
+		// Go thru each link in group list. 
+		for(let linkitem of linkgrouplist) {
+
+			// Get project id of link item. 
+			let projectid = (linkitem.linkurl).substring(3);
+
+			// Get link description from link item. 
+			let linkdescription = linkitem.linkname;
+			
+			// Create post item. 
+			let post = {
+				projectid:projectid,
+				hovercaption:linkdescription,
+			};
+
+			// Add project to list of primary posts. 
+			postresultlist.push( post );
+		}
+
+		// Return list of primary links. 
+		return postresultlist;
+	}
+	
+	// Get list of primary links from link matrix. 
+	function getSecondaryPosts() {
 
 		// Get original link matrix. 
 		// let linkmatrix = projectLinkData.map(   ( groupset ) => (  groupset.map( (group)=>(group.grouplist) )  )   );
+
+		// Get groups of links. 
 		let linkgroups = projectLinkData.map( group => group.grouplist );
 		// console.log('linkgroups:',linkgroups);
 
 		// Initialize list of primary links. 
-		let linklist = [];
+		let postresultlist = [];
 
 		// Go thru each link group. 
 		for(let linkgroup of linkgroups) {
@@ -79,36 +125,74 @@ function loadBlog() {
 			// Go thru each link in group list. 
 			for(let linkitem of linkgroup) {
 
-				// Get folder name from link item. 
-				let foldername = linkitem.linkurl.substring(3);
+				// Get project id of link item. 
+				let projectid = (linkitem.linkurl).substring(3);
+
+				// Get link description from link item. 
+				let linkdescription = linkitem.linkname;
 				
-				// Add folder name of link to list of primary links. 
-				linklist.push( foldername );
+				// Create post item. 
+				let post = {
+					projectid:projectid,
+					hovercaption:linkdescription,
+				};
+
+				// Check if project already in primary list. 
+				let inPrimaryList = /* false &&  */primaryProjectIds.includes(projectid)
+
+				// Add project to list of primary posts. 
+				if(!inPrimaryList) postresultlist.push( post );
 			}
 		}
 
+		// Sort list of primary links. 
+		postresultlist.sort(sortPosts);
+
 		// Return sorted list of primary links. 
-		return linklist.sort();
+		console.log(postresultlist);
+		return postresultlist;
+
+		/***/
+
+		// Define sort function for post items. 
+		function sortPosts(a,b) {
+			// console.log('Sorting posts...');
+			// return (a.projectid - b.projectid);
+
+			if(a.projectid < b.projectid) return -1;
+			else if(a.projectid > b.projectid) return 1;
+			else return 0;
+		}
 	}
 	
 	// Get list of remaining links for archive. 
-	function getRemainingLinks() {
+	function getRemainingPosts() {
 
-		// Initialize result list. 
-		let result = [];
+		// Initialize list of remaining links. 
+		let postresultlist = [];
 
-		// Go thru all project folder names. 
-		for(let foldername of projectNames) {
+		// Go thru all project ids. 
+		for(let projectid of projectNames) {
 
 			// Check for primary project. 
-			let isPrimaryPost = primaryPosts.includes(foldername);
+			let isPrimaryPost = primaryPosts.includes(projectid);
 
-			// Add non-primary project to result list. 
-			if(!isPrimaryPost) result.push(foldername);
+			// Add project to list of remaining (non-primary) links. 
+			if(!isPrimaryPost) {
+
+				// Create post item. 
+				let post = {
+					projectid:projectid,
+					hovercaption:projectid,
+				};
+
+				// Add project to list of remaining (non-primary) links. 
+				postresultlist.push( post );
+			}
 		}
 
-		// Return result list. 
-		return result;
+		// Return pre-sorted list of remaining links. 
+		return postresultlist;
 	}
 
 	// Create layout for blog posts. 
@@ -118,15 +202,10 @@ function loadBlog() {
 		let result = '';
 
 		// Add project link to layout result. 
-		for(let i in postlist) {
-	
-			// Get folder name for given post. 
-			let foldername = postlist[i]
-			// Skip current page (no infinite recursion). 
-			// if(foldername=='desktop') continue;
+		for(let post of postlist) {
 	
 			// Add blog card to layout result. 
-			result += createBlogCard(foldername);
+			result += createBlogCard(post);
 		}
 
 		// Return resulting layout. 
@@ -135,25 +214,30 @@ function loadBlog() {
 		/***/
 
 		// Create blog card. 
-		function createBlogCard(foldername,previewIncluded) {
+		function createBlogCard(post,previewIncluded) {
+	
+			// Get project id of given post. 
+			let projectid = post.projectid;
+			// Get description of given post. 
+			let hovercaption = post.hovercaption;
 	
 			// 
 			if(!previewIncluded) return `
 			<!-- postcard -->
-			<li class="postcard" data-foldername="${foldername}">
+			<li class="postcard" data-projectid="${ projectid }" title="${ hovercaption }">
 	
 				<!-- preview -->
 				<div class="preview">
 	
 					<!-- previewlink -->
-					<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
+					<a class="previewlink" href="../${projectid}/index.html" target="_blank"></a>
 					<!-- /previewlink -->
 	
 				</div>
 				<!-- /preview -->
 	
 				<!-- namelink -->
-				<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
+				<a class="namelink" href="../${projectid}/index.html" target="_blank">${ projectid }</a>
 				<!-- /namelink -->
 	
 			</li>
@@ -162,24 +246,24 @@ function loadBlog() {
 			// 
 			return `
 			<!-- postcard -->
-			<li class="postcard" data-foldername="${foldername}">
+			<li class="postcard" data-projectid="${ projectid }" title="${ hovercaption }">
 	
 				<!-- preview -->
 				<div class="preview">
 	
 					<!-- preview -->
-					<iframe class="preview x3" src="../${foldername}/index.html"></iframe>
+					<iframe class="preview x3" src="../${projectid}/index.html"></iframe>
 					<!-- /preview -->
 	
 					<!-- previewlink -->
-					<a class="previewlink" href="../${foldername}/index.html" target="_blank"></a>
+					<a class="previewlink" href="../${projectid}/index.html" target="_blank"></a>
 					<!-- /previewlink -->
 	
 				</div>
 				<!-- /preview -->
 	
 				<!-- namelink -->
-				<a class="namelink" href="../${foldername}/index.html" target="_blank">${foldername}</a>
+				<a class="namelink" href="../${projectid}/index.html" target="_blank">${ projectid }</a>
 				<!-- /namelink -->
 	
 			</li>
@@ -206,18 +290,18 @@ function loadBlog() {
 		function openPreview(event) {
 			// console.log('Opening preview...',event.target);
 
-			// Get post card. 
-			let postcard = event.currentTarget;
-			// Get folder name of post. 
-			let foldername = postcard.getAttribute('data-foldername');
+			// Get selected card. 
+			let selectedCard = event.currentTarget;
+			// Get project id of selected post. 
+			let projectid = selectedCard.getAttribute('data-projectid');
 
 			// Get preview panel. 
-			let previewpanel = postcard.querySelector('div.preview');
+			let previewpanel = selectedCard.querySelector('div.preview');
 
 			// Add preview iframe to preview panel.
 			previewpanel.insertAdjacentHTML('afterbegin',`
 			<!-- preview -->
-			<iframe class="preview x3" src="../${foldername}/index.html"></iframe>
+			<iframe class="preview x3" src="../${projectid}/index.html"></iframe>
 			<!-- /preview -->`);
 		}
 
@@ -261,13 +345,13 @@ function loadBlog() {
 			// Go thru all blog posts. 
 			for(let postcard of blogpostcards) {
 
-				// Get folder name of given post. 
-				let foldername = postcard.getAttribute('data-foldername').toUpperCase();
+				// Get project id of given post. 
+				let projectid = postcard.getAttribute('data-projectid').toUpperCase();
 
 				// Check for matching post (by full query). 
-				let matchesFullQuery = checkForMatchFullQuery(foldername,filterquery);
+				let matchesFullQuery = checkForMatchFullQuery(projectid,filterquery);
 				// Check for matching post (by each word). 
-				let matchesEveryWord = checkForMatchEachWord(foldername,filterquerywords);
+				let matchesEveryWord = checkForMatchEachWord(projectid,filterquerywords);
 				// Compile match criteria. 
 				let matchCriteriaMet = matchesFullQuery || matchesEveryWord;
 				if(matchCriteriaMet) numMatchingPosts++;
@@ -284,19 +368,19 @@ function loadBlog() {
 			/**/
 
 			// Check for matching post (by full query). 
-			function checkForMatchFullQuery(foldername,filterquery) {
+			function checkForMatchFullQuery(projectid,filterquery) {
 
 				// 
-				return foldername.includes(filterquery)
+				return projectid.includes(filterquery)
 			}
 
 			// Check for matching post (by each word). 
-			function checkForMatchEachWord(foldername,filterquerywords) {
+			function checkForMatchEachWord(projectid,filterquerywords) {
 		
 				// Go thru all words in filter query. 
 				for(let word of filterquerywords) {
 
-					let wordPresent = foldername.includes(word);
+					let wordPresent = projectid.includes(word);
 
 					// Return false if any query word is missing. 
 					if(!wordPresent) return false;

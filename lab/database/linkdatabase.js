@@ -46,37 +46,65 @@ const socialLinkData = [
 		
 		grouplist:[
 			{
-				linkurl:'javascript:void(0)',
+				icontag:'github',
 				linkurl:'https://github.com/twdlabs/twdlabs.github.io',
 				linkname:'GitHub',
-				icontag:'github',
 			},
 			{
-				linkurl:'javascript:void(0)',
-				// linkurl:'javascript:void(0)',
-				linkname:'Twitter',
 				icontag:'twitter',
+				linkurl:'javascript:void(0)',
+				linkname:'Twitter',
 			},
 			{
-				linkurl:'javascript:void(0)',
+				icontag:'instagram',
 				linkurl:'https://www.instagram.com/titusgzz/',
 				linkname:'Instagram',
-				icontag:'instagram',
 			},
 			{
-				linkurl:'javascript:void(0)',
+				icontag:'linkedin',
 				linkurl:'https://www.linkedin.com/in/alextg/',
 				linkname:'LinkedIn',
-				icontag:'linkedin',
 			},
 			// {
+			// 	icontag:'xyz',
 			// 	linkurl:'javascript:void(0)',
 			// 	linkname:'Link',
-			// 	icontag:'xyz',
 			// },
 		],
 	},
 
+];
+
+
+// Define primary projects by project id. 
+const primaryProjectIds = [
+	'gallery',
+	'musicplayer',
+	'video',
+	'merch',
+	'chat',
+	'keyfinder',
+	'cluster',
+	'compound',
+	'chess',
+	'device',
+	'calendar',
+	'analogclock',
+	'crud',
+	'livesearch',
+	'toastprogress',
+	'univ',
+	'bizmath',
+	'pixelart',
+	'pong',
+	'pinyin',
+	'resume',
+	'tasks',
+	'blockmenu',
+	'autoslideshow',
+	'3dnav',
+	// 'xyz',
+	// 'xyz',
 ];
 
 
@@ -377,7 +405,7 @@ const projectLinkData = [
 				linkname:'Number Delta Clicker',
 			},
 			{
-				linkurl:'../devices',
+				linkurl:'../device',
 				linkname:'Devices',
 			},
 			{
@@ -487,6 +515,10 @@ const projectLinkData = [
 			{
 				linkurl:'../viewport',
 				linkname:'Viewport Sizer',
+			},
+			{
+				linkurl:'../3dnav',
+				linkname:'3D Navigation',
 			},
 		],
 	},
@@ -1117,14 +1149,36 @@ const projectLinkData = [
 /*****/
 
 
+// Get project link by id. 
+function getProjectLinkById(pid) {
+
+	// Go thru all link groups. 
+	for(let linkgroup of projectLinkData) {
+
+		// Go thru all links in link group list. 
+		for(let linkitem of linkgroup.grouplist) {
+
+			// 
+			let matchFound = (linkitem.linkurl.substring(3) == pid);
+
+			// 
+			if(matchFound) return linkitem;
+		}
+	}
+
+	// 
+	return null;
+}
+
+
 // Get link group by id. 
-function getLinkGroupById(id) {
+function getLinkGroupById(pgid) {
 
 	// Go thru all link groups. 
 	for(let linkgroup of projectLinkData) {
 
 		// Check if link group matches query id. 
-		let matchFound = (linkgroup.groupid == id);
+		let matchFound = (linkgroup.groupid == pgid);
 
 		// Return matching link group if found. 
 		if(matchFound) return linkgroup;

@@ -165,8 +165,8 @@ function loadDesktop() {
 			let result = '';
 		
 			// Add project link to result. 
-			for(let foldername of group) {
-				result += createLinkItem(foldername)
+			for(let projectid of group) {
+				result += createLinkItem(projectid)
 			}
 	
 			// Return result. 
@@ -174,11 +174,11 @@ function loadDesktop() {
 		}
 
 		// Create link item. 
-		function createLinkItem(foldername) {
+		function createLinkItem(projectid) {
 			// Return result. 
 			return `
 			<!-- item -->
-			<a class="item" href="../${foldername}" target="_blank">
+			<a class="item" href="../${projectid}" target="_blank">
 			
 				<!-- icon -->
 				<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -187,7 +187,7 @@ function loadDesktop() {
 				<!-- /icon -->
 			
 				<!-- caption -->
-				<span class="caption">${foldername}</span>
+				<span class="caption">${projectid}</span>
 				<!-- /caption -->
 				
 			</a>

@@ -3,6 +3,8 @@
 
 // Get destination for head navigation. 
 const headNavDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu');
+const headNavListLDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.l');
+const headNavListRDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.r');
 // console.log(headNavDestination);
 
 // Get destination for foot matrix. 
@@ -26,46 +28,25 @@ loadFooterNavLinks();
 // Add links to head navigation. 
 function loadHeadNavLinks() {
 
-	// Initialize list of links. 
-	let linklist;
-	// Initialize result. 
-	let result = '';
-
-	// Get list of links. 
-	linklist = navLinkData[0].grouplist;
-
-	// Add list of links to result. 
-	result += `
-	<!-- navlist -->
-	<ul class="navlist l">
-		${ createListOfLinks(linklist,false) }
-	</ul>
-	<!-- /navlist -->`;
-
-	// Get list of links. 
-	linklist = socialLinkData[0].grouplist;
-
-	// Add list of links to result. 
-	result += `
-	<!-- navlist -->
-	<ul class="navlist m">
-		${ createListOfLinks(linklist,true) }
-	</ul>
-	<!-- /navlist -->`;
-
 	// Add result to page. 
-	headNavDestination.innerHTML = result;
+	// headNavDestination.innerHTML = result;
+
+	// Add list of links to page. 
+	headNavListLDestination.innerHTML = createListOfLinks( navLinkData[0].grouplist ,false);
+
+	// Add list of links to page. 
+	headNavListRDestination.innerHTML = createListOfLinks( socialLinkData[0].grouplist ,true);
 
 	/****/
 
 	// Create list of links. 
-	function createListOfLinks(linklist, useicon) {
+	function createListOfLinks(linklist, useicons) {
 
 		// Initialize list of items. 
 		let list = '';
 
 		// Accumulate list of items. 
-		for(link of linklist) {
+		for(link of linklist) {  
 
 			// 
 			list += `
@@ -73,7 +54,7 @@ function loadHeadNavLinks() {
 			<li class="navitem">
 
 				<!-- navlink -->
-				<a class="navlink" href="${ link.linkurl }">${ useicon ? createIcon(link.icontag) : link.linkname }</a>
+				<a class="navlink" href="${ link.linkurl }">${ useicons ? createIcon(link.icontag) : link.linkname }</a>
 				<!-- /navlink -->
 
 			</li>
