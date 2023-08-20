@@ -45,16 +45,16 @@ function loadBlogPostFilters() {
 	let result = '';
 
 	// Accumulate filter items. 
-	for(let filter of postFilters) {
+	for(let filter of postFilterList) {
 	
 		// Open filter. 
 		result += `
 		<!-- filter -->
 		<li class="filter">
 
-			<!-- head -->
-			<h3 class="head">${filter.title}</h3>
-			<!-- /head -->`;
+		<!-- head -->
+		<h3 class="head">${filter.title}</h3>
+		<!-- /head -->`;
 	
 		// Open criteria list. 
 		result += `
@@ -65,10 +65,10 @@ function loadBlogPostFilters() {
 		for(let criterion of filter.criteria) {
 	
 			// Add individual filter criterion. 
-			result += `
-				<!-- criterion -->
-				<li class="criterion">${criterion}</li>
-				<!-- /criterion -->`;
+			if(criterion) result += `
+			<!-- criterion -->
+			<li class="criterion">${criterion}</li>
+			<!-- /criterion -->`;
 		}
 	
 		// Close criteria list. 
@@ -97,9 +97,11 @@ function loadBlogPostFilters() {
 
 	/****/
 
-	// TODO: Toggle selected filter criterion for list of posts. 
+	// Toggle selected filter criterion for list of posts. 
 	function toggleFilterCriterion() {
 	
-		// 
+		// TODO: Toggle element highlight for selected filter tag. 
+	
+		// TODO: Toggle post results that match selected filter tag. 
 	}
 }

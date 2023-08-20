@@ -99,7 +99,7 @@ function loadBlogPostContent() {
 	
 		// Get post publish date/time. 
 		let pdt = post ? post.published : '';
-		let datetime = publishtime ? new Date(pdt.year,pdt.month,pdt.date,0,0,0,0).valueOf() : '';
+		let datetime = pdt ? new Date(pdt.year,pdt.month,pdt.date,0,0,0,0).valueOf() : '';
 	
 		// Compile post layout: date, media, article content. Display in post body section. 
 		postbodydestination.innerHTML = `
