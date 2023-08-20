@@ -39,12 +39,15 @@ function createControlPanel() {
 
 // Activate controls for given desktop window. 
 function makeControllable(desktopwindow) {
-	// console.log('\tActivating controls:',desktopwindow);
+	console.log('\tActivating controls:',desktopwindow);
 
 	// Get control dot buttons. 
-	let dotbtnred = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.r');
-	let dotbtnyellow = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.y');
-	let dotbtngreen = desktopwindow.querySelector('div#container div.desktop div.window div.headbar div.controls div.dot.g');
+	let dotbtnred = desktopwindow.querySelector('div.headbar div.controls div.dot.r');
+	// console.log('dotbtnred:',dotbtnred);
+	let dotbtnyellow = desktopwindow.querySelector('div.headbar div.controls div.dot.y');
+	// console.log('dotbtnyellow:',dotbtnyellow);
+	let dotbtngreen = desktopwindow.querySelector('div.headbar div.controls div.dot.g');
+	// console.log('dotbtngreen:',dotbtngreen);
 
 	// Get headbar of desktop window. 
 	let headbar = desktopwindow.querySelector('div.headbar');
@@ -132,7 +135,7 @@ function addNewWindow(windowtype) {
 
 		// Define window creation methods. 
 		let windowmethods = {
-			folder:createFolderContent,
+			// folder:createFolderContent,
 			text:createTextContent,
 			image:createImageContent,
 			audio:createAudioContent,
@@ -177,14 +180,14 @@ function addNewWindow(windowtype) {
 			<!-- /headbar -->
 	
 			<!-- bodycontent -->
-			<div class="bodycontent">${ windowmethods[windowtype]() }</div>
+			<div class="bodycontent">${ (windowtype=='folder') ? createFolderContent(/* file */) : windowmethods[windowtype](fileurl) }</div>
 			<!-- /bodycontent -->
 
 			<!-- resizer -->
 			<div class="resizer">
 
 				<!-- icon -->
-				<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+				<svg class="icon lines" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 					<path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
 				</svg>
 				<!-- /icon -->
@@ -198,9 +201,19 @@ function addNewWindow(windowtype) {
 		/***/
 		
 		// TODO: Create file folder content for new desktop window. 
-		function createFolderContent(url) {
+		function createFolderContent(folderfile={}) {
+
+
+			// TODO: Get name of given folder. 
+			let foldername = folderfile.filename || '';
+
+			// TODO: Get list of files for given folder. 
+			let filelist = folderfile.foldercontents || [];
+
+			// TODO: Get file count for given folder. 
+			let filecount = filelist.length || 0;
 		
-			// Return layout. 
+			// Compile folder layout. 
 			return `
 			<!-- head -->
 			<div class="head">
@@ -230,18 +243,51 @@ function addNewWindow(windowtype) {
 				<!-- /fwdbtn -->
 
 				<!-- foldername -->
-				<label class="foldername">Xyz</label>
+				<label class="foldername">${ foldername }</label>
 				<!-- /foldername -->
 
 			</div>
 			<!-- /head -->
-
+			`+`
 			<!-- body -->
 			<div class="body">
 
 				<!-- filelist -->
 				<ul class="filelist">
+					${ getFileListLayout(filelist) }
+				</ul>
+				<!-- /filelist -->
 
+				<!-- filepreview -->
+				<div class="filepreview"></div>
+				<!-- /filepreview -->
+
+			</div>
+			<!-- /body -->
+			`+`
+			<!-- foot -->
+			<div class="foot">
+
+				<!-- caption -->
+				<span class="caption">${filecount} item${ (filecount==1) ? '' : 's'}</span>
+				<!-- /caption -->
+
+			</div>
+			<!-- /foot -->`;
+
+			/**/
+
+			// TODO: Get layout of included file list. 
+			function getFileListLayout(filelist) {
+
+				// Initialize result. 
+				let result = '';
+
+				// Compile result. 
+				for(let file of filelist) {
+
+					// Add list item for file. 
+					result += `
 					<!-- fileitem -->
 					<li class="fileitem">
 
@@ -262,8 +308,10 @@ function addNewWindow(windowtype) {
 						<!-- /filelink -->
 						
 					</li>
-					<!-- /fileitem -->
+					<!-- /fileitem -->`;
 
+					// Add list item for file. 
+					result += `
 					<!-- fileitem -->
 					<li class="fileitem">
 
@@ -285,8 +333,10 @@ function addNewWindow(windowtype) {
 						<!-- /filelink -->
 						
 					</li>
-					<!-- /fileitem -->
+					<!-- /fileitem -->`;
 
+					// Add list item for file. 
+					result += `
 					<!-- fileitem -->
 					<li class="fileitem">
 
@@ -308,8 +358,10 @@ function addNewWindow(windowtype) {
 						<!-- /filelink -->
 						
 					</li>
-					<!-- /fileitem -->
+					<!-- /fileitem -->`;
 
+					// Add list item for file. 
+					result += `
 					<!-- fileitem -->
 					<li class="fileitem">
 
@@ -331,8 +383,10 @@ function addNewWindow(windowtype) {
 						<!-- /filelink -->
 						
 					</li>
-					<!-- /fileitem -->
+					<!-- /fileitem -->`;
 
+					// Add list item for file. 
+					result += `
 					<!-- fileitem -->
 					<li class="fileitem">
 
@@ -354,39 +408,22 @@ function addNewWindow(windowtype) {
 						<!-- /filelink -->
 						
 					</li>
-					<!-- /fileitem -->
-					
-				</ul>
-				<!-- /filelist -->
+					<!-- /fileitem -->`;
+				}
 
-				<!-- filepreview -->
-				<div class="filepreview">
-
-				</div>
-				<!-- /filepreview -->
-
-			</div>
-			<!-- /body -->
-
-			<!-- foot -->
-			<div class="foot">
-
-				<!-- caption -->
-				<span class="caption">Hello</span>
-				<!-- /caption -->
-
-			</div>
-			<!-- /foot -->`;
+				// Return result. 
+				return result;
+			}
 		}
 
-		// TODO: Create text content for new desktop window. 
+		// Create text content for new desktop window. 
 		function createTextContent(url) {
 		
 			// Return layout. 
 			return `
-			<!-- copy -->
-			<p class="copy">Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-			<!-- /copy -->`;
+			<!-- text -->
+			<iframe class="text" src="${url}" frameborder="0"></iframe>
+			<!-- /text -->`;
 		}
 
 		// Create image content for new desktop window. 

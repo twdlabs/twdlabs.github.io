@@ -94,3 +94,10 @@ const fileData = [
 	},
 
 ];
+
+
+// TODO: Get file by path. 
+function getFileByPath() {
+
+	// 
+}
