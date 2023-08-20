@@ -428,13 +428,19 @@ console.log('Author filter:',authorfilter);
 // Save post filter for xyz. 
 postFilters.push(authorfilter);
 
+// Get post filter for tags. 
+let tagfilter = getPostTagListFilter('taglist','Tags');
+console.log('Tag filter:',tagfilter);
+// Save post filter for publish year. 
+postFilters.push(tagfilter);
+
 // Get post filter for publish year. 
 let yrfilter = getPostTimeFilter('year','Year');
 console.log('Year filter:',yrfilter);
 // Save post filter for publish year. 
 postFilters.push(yrfilter);
 
-// Get post filter for publish year. 
+// Get post filter for publish month. 
 let monthfilter = getPostTimeFilter('month','Month');
 console.log('Month filter:',monthfilter);
 // Save post filter for publish year. 
@@ -498,12 +504,12 @@ function sortPosts(a,b) {
 	return result;
 }
 
-// Get post filter for given tag. 
-function getPostFilter(tag,tagtitle) {
+// Get post filter for given property. 
+function getPostFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
-		title:tagtitle,
+		title:propertytitle,
 		criteria:[
 			// 'tagtitle',
 		],
@@ -513,7 +519,7 @@ function getPostFilter(tag,tagtitle) {
 	for(let blogpost of blogDataList) {
 
 		// Get value of tag for given post. 
-		let value = blogpost[tag];
+		let value = blogpost[propertytag];
 
 		// Check if already there. 
 		let alreadyThere = result['criteria'].includes(value);
@@ -525,12 +531,12 @@ function getPostFilter(tag,tagtitle) {
 	return result;
 }
 
-// Get post filter for given tag. 
-function getPostTimeFilter(tag,tagtitle) {
+// Get post filter for given time property. 
+function getPostTimeFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
-		title:tagtitle,
+		title:propertytitle,
 		criteria:[
 			// 'tagtitle',
 		],
@@ -540,12 +546,42 @@ function getPostTimeFilter(tag,tagtitle) {
 	for(let blogpost of blogDataList) {
 
 		// Get value of tag for given post. 
-		let value = blogpost.published[tag];
+		let value = blogpost.published[propertytag];
 
 		// Check if already there. 
 		let alreadyThere = result['criteria'].includes(value);
 		// Save value for given post if not already there. 
 		if(!alreadyThere) result['criteria'].push(value);
+	}
+
+	// Return result. 
+	return result;
+}
+
+// Get post filter for given tag list. 
+function getPostTagListFilter(propertytag,propertytitle) {
+
+	// Initialize result. 
+	let result = {
+		title:propertytitle,
+		criteria:[
+			// 'tagtitle',
+		],
+	};
+
+	// Save distinct values for given tag from blog post data to filtercriteria list. 
+	for(let blogpost of blogDataList) {
+
+		// Get tag list for given post. 
+		let taglist = blogpost[propertytag];
+		// Go thru tag list for given post. 
+		for(let tag of taglist) {
+
+			// Check if already there. 
+			let alreadyThere = result['criteria'].includes(tag);
+			// Save value for given post if not already there. 
+			if(!alreadyThere) result['criteria'].push(tag);
+		}
 	}
 
 	// Return result. 
