@@ -422,16 +422,16 @@ const postFilters = [
 blogDataList.sort( sortPosts );
 // console.log('Blog post list (sorted by date):', blogDataList.map(x=>x.postid) );
 
-// Get post filter for xyz. 
+// Get post filter for author. 
 let authorfilter = getPostFilter('authorid','Authors');
 console.log('Author filter:',authorfilter);
-// Save post filter for xyz. 
+// Save post filter for author. 
 postFilters.push(authorfilter);
 
-// Get post filter for tags. 
-let tagfilter = getPostTagListFilter('taglist','Tags');
+// Get post filter for series tag. 
+let tagfilter = getPostTagListFilter('taglist','Series');
 console.log('Tag filter:',tagfilter);
-// Save post filter for publish year. 
+// Save post filter for series tag. 
 postFilters.push(tagfilter);
 
 // Get post filter for publish year. 

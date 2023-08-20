@@ -44,36 +44,40 @@ function loadBlogPostFilters() {
 	// Initialize list of filter criterion items. 
 	let result = '';
 
-	// TODO: Accumulate filter criterion items. 
+	// Accumulate filter items. 
 	for(let filter of postFilters) {
 	
-		// 
+		// Open filter. 
 		result += `
 		<!-- filter -->
 		<li class="filter">
 
 			<!-- head -->
 			<h3 class="head">${filter.title}</h3>
-			<!-- /head -->
+			<!-- /head -->`;
+	
+		// Open criteria list. 
+		result += `
+		<!-- criterialist -->
+		<ul class="criterialist">`;
 
-			<!-- criterialist -->
-			<ul class="criterialist">`;
-
-		// TODO: Accumulate filter criterion items. 
+		// Accumulate filter criterion items. 
 		for(let criterion of filter.criteria) {
 	
-			// 
+			// Add individual filter criterion. 
 			result += `
 				<!-- criterion -->
 				<li class="criterion">${criterion}</li>
 				<!-- /criterion -->`;
 		}
 	
-		// 
+		// Close criteria list. 
 		result += `
-			</ul>
-			<!-- /criterialist -->
-
+		</ul>
+		<!-- /criterialist -->`;
+	
+		// Close filter. 
+		result += `
 		</li>
 		<!-- /filter -->`;
 	}
