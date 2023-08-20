@@ -1,6 +1,22 @@
 
 
 
+// // Get saved blog database from storage. 
+// let savedDB = getBlogDatabaseFromStorage();
+// console.log('Saved DB:',savedDB);
+
+// // Check if database has any contents. 
+// let savedDBExists = !!(savedDB.length);
+// console.log('Saved DB exists:',savedDBExists);
+
+// Use default user data. 
+// userDataList = defaultUserDataList;
+// userDataList = JSON.parse( localStorage.getItem('cruduserdata') ) || [];
+
+
+/*****/
+
+
 // Retrieve blog database from storage. 
 function getBlogDatabaseFromStorage() {
 

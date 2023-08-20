@@ -37,19 +37,6 @@ const blogListMetaData = {
 const blogDataList = [
 
 	// {
-	// 	title:'xyz',
-	// 	postid:'xyz',
-	// 	authorid:'xyz',
-	// 	imgurl:'',
-	// 	vidurl:'',
-	// 	content:[],
-	// 	published:{
-	// 		year:9999,
-	// 		month:99,
-	// 		date:99,
-	// 	},
-	// },
-	// {
 	// 	title:'Post Title',
 	// 	postid:'posttag',
 	// 	authorid:'authortag',
@@ -61,6 +48,10 @@ const blogDataList = [
 	// 		month:99,
 	// 		date:99,
 	// 	},
+	// 	taglist:[
+	// 		'xyz',
+	// 		'',
+	// 	],
 	// },
 
 	{
@@ -75,6 +66,12 @@ const blogDataList = [
 			month:1,
 			date:31,
 		},
+		taglist:[
+			'beach',
+			'water',
+			'sky',
+			'',
+		],
 	},
 	{
 		title:'Metropolis',
@@ -88,12 +85,17 @@ const blogDataList = [
 			month:1,
 			date:31,
 		},
+		taglist:[
+			'city',
+			'trees',
+			'streets',
+			'',
+		],
 	},
 	{
 		title:'Green',
 		postid:'green',
 		authorid:'aventura',
-		imgurl:'../../gallery/assets/images/full/Navagio.jpg',
 		imgurl:'../../gallery/assets/images/full/2.jpg',
 		vidurl:'../../video/assets/videos/0000002.mp4',
 		content:[],
@@ -102,6 +104,12 @@ const blogDataList = [
 			month:2,
 			date:31,
 		},
+		taglist:[
+			'water',
+			'mountain',
+			'sky',
+			'',
+		],
 	},
 	{
 		title:'City Life',
@@ -116,6 +124,13 @@ const blogDataList = [
 			month:2,
 			date:31,
 		},
+		taglist:[
+			'city',
+			'trees',
+			'buildings',
+			'streets',
+			'',
+		],
 	},
 	{
 		title:'Island City',
@@ -129,6 +144,11 @@ const blogDataList = [
 			month:3,
 			date:31,
 		},
+		taglist:[
+			'city',
+			'water',
+			'',
+		],
 	},
 	{
 		title:'Brown Office',
@@ -142,6 +162,11 @@ const blogDataList = [
 			month:3,
 			date:31,
 		},
+		taglist:[
+			'device',
+			'desk',
+			'',
+		],
 	},
 	{
 		title:'City Buildings',
@@ -155,6 +180,12 @@ const blogDataList = [
 			month:4,
 			date:31,
 		},
+		taglist:[
+			'sky',
+			'city',
+			'buildings',
+			'',
+		],
 	},
 	{
 		title:'Warm Color Terrain',
@@ -168,6 +199,10 @@ const blogDataList = [
 			month:4,
 			date:31,
 		},
+		taglist:[
+			'mountain',
+			'',
+		],
 	},
 	{
 		title:'Scenery',
@@ -181,6 +216,13 @@ const blogDataList = [
 			month:5,
 			date:31,
 		},
+		taglist:[
+			'beach',
+			'mountain',
+			'water',
+			'sky',
+			'',
+		],
 	},
 	{
 		title:'Park',
@@ -194,6 +236,12 @@ const blogDataList = [
 			month:5,
 			date:31,
 		},
+		taglist:[
+			'dog',
+			'grass',
+			'park',
+			'',
+		],
 	},
 	{
 		title:'Real Estate',
@@ -207,6 +255,13 @@ const blogDataList = [
 			month:6,
 			date:31,
 		},
+		taglist:[
+			'buildings',
+			'water',
+			'sky',
+			'grass',
+			'',
+		],
 	},
 	{
 		title:'Matrix',
@@ -220,6 +275,10 @@ const blogDataList = [
 			month:6,
 			date:31,
 		},
+		taglist:[
+			'code',
+			'',
+		],
 	},
 	{
 		title:'Island Life',
@@ -233,6 +292,14 @@ const blogDataList = [
 			month:7,
 			date:31,
 		},
+		taglist:[
+			'beach',
+			'mountain',
+			'water',
+			'sky',
+			'trees',
+			'',
+		],
 	},
 	{
 		title:'Sky Light',
@@ -246,6 +313,11 @@ const blogDataList = [
 			month:7,
 			date:31,
 		},
+		taglist:[
+			'sky',
+			'stars',
+			'',
+		],
 	},
 	{
 		title:'Water Life',
@@ -259,6 +331,13 @@ const blogDataList = [
 			month:8,
 			date:31,
 		},
+		taglist:[
+			'beach',
+			'mountain',
+			'water',
+			'sky',
+			'',
+		],
 	},
 	{
 		title:'Device Work',
@@ -268,10 +347,16 @@ const blogDataList = [
 		vidurl:'../../video/assets/videos/0000001.mp4',
 		content:[],
 		published:{
-			year:2023,
+			year:2022,
 			month:8,
 			date:31,
 		},
+		taglist:[
+			'device',
+			'hands',
+			'suit',
+			'',
+		],
 	},
 
 ];
@@ -279,53 +364,53 @@ const blogDataList = [
 
 // Define post filters and criteria. 
 const postFilters = [
-	{
-		title:'X Authors',
-		criteria:[
-			'Ace Ventura',
-			'Bill Diamond',
-			'Christine Brophy',
-			'David Doe',
-			'Eli Jah',
-			'Fred Flinstone',
-			'George Doe',
-			'Hilary Doe',
-			'Ian Robertson',
-		],
-	},
-	{
-		title:'Y Authors',
-		criteria:[
-			'Jane Doe',
-			'Jay Jenkins',
-			'Jenny Joe',
-			'Jill Jackson',
-			'Jim Doe',
-			'Joe Doe',
-			'John Luke Smith',
-			'Kate Croix',
-			'Leah Lloyd',
-			'Mike Myers',
-		],
-	},
-	{
-		title:'Z Authors',
-		criteria:[
-			'Nina Nash',
-			'Oscar DeLaHoya',
-			'Peter Pan',
-			'Quinten Doe',
-			'Rachel Roy',
-			'Steve Stephens',
-			'Tim Toole',
-			'Tori Doe',
-			'Ursula Doe',
-			'Victor Victorian',
-			'Wendy Will',
-			'Xavier Toven',
-			'Yolanda Yokes',
-		],
-	},
+	// {
+	// 	title:'X Authors',
+	// 	criteria:[
+	// 		'Ace Ventura',
+	// 		'Bill Diamond',
+	// 		'Christine Brophy',
+	// 		'David Doe',
+	// 		'Eli Jah',
+	// 		'Fred Flinstone',
+	// 		'George Doe',
+	// 		'Hilary Doe',
+	// 		'Ian Robertson',
+	// 	],
+	// },
+	// {
+	// 	title:'Y Authors',
+	// 	criteria:[
+	// 		'Jane Doe',
+	// 		'Jay Jenkins',
+	// 		'Jenny Joe',
+	// 		'Jill Jackson',
+	// 		'Jim Doe',
+	// 		'Joe Doe',
+	// 		'John Luke Smith',
+	// 		'Kate Croix',
+	// 		'Leah Lloyd',
+	// 		'Mike Myers',
+	// 	],
+	// },
+	// {
+	// 	title:'Z Authors',
+	// 	criteria:[
+	// 		'Nina Nash',
+	// 		'Oscar DeLaHoya',
+	// 		'Peter Pan',
+	// 		'Quinten Doe',
+	// 		'Rachel Roy',
+	// 		'Steve Stephens',
+	// 		'Tim Toole',
+	// 		'Tori Doe',
+	// 		'Ursula Doe',
+	// 		'Victor Victorian',
+	// 		'Wendy Will',
+	// 		'Xavier Toven',
+	// 		'Yolanda Yokes',
+	// 	],
+	// },
 ];
 
 
@@ -337,24 +422,23 @@ const postFilters = [
 blogDataList.sort( sortPosts );
 // console.log('Blog post list (sorted by date):', blogDataList.map(x=>x.postid) );
 
+// Get post filter for xyz. 
+let authorfilter = getPostFilter('authorid','Authors');
+console.log('Author filter:',authorfilter);
 // Save post filter for xyz. 
-// let xyz = getPostFilter('xyztagname','xyztagtitle');
-let authorfilter = getPostFilter('authorid','Author');
 postFilters.push(authorfilter);
 
-/****/
+// Get post filter for publish year. 
+let yrfilter = getPostTimeFilter('year','Year');
+console.log('Year filter:',yrfilter);
+// Save post filter for publish year. 
+postFilters.push(yrfilter);
 
-// // Get saved blog database from storage. 
-// let savedDB = getBlogDatabaseFromStorage();
-// console.log('Saved DB:',savedDB);
-
-// // Check if database has any contents. 
-// let savedDBExists = !!(savedDB.length);
-// console.log('Saved DB exists:',savedDBExists);
-
-// Use default user data. 
-// userDataList = defaultUserDataList;
-// userDataList = JSON.parse( localStorage.getItem('cruduserdata') ) || [];
+// Get post filter for publish year. 
+let monthfilter = getPostTimeFilter('month','Month');
+console.log('Month filter:',monthfilter);
+// Save post filter for publish year. 
+postFilters.push(monthfilter);
 
 
 /*****/
@@ -414,17 +498,56 @@ function sortPosts(a,b) {
 	return result;
 }
 
-// TODO: Get post filter for given tag. 
-function getPostFilter(tagname,tagtitle) {
+// Get post filter for given tag. 
+function getPostFilter(tag,tagtitle) {
 
-	// 
+	// Initialize result. 
 	let result = {
 		title:tagtitle,
 		criteria:[
-			'tagtitle',
+			// 'tagtitle',
 		],
 	};
 
-	// 
-	for(let blogpost of blogDataList) result.criteria
+	// Save distinct values for given tag from blog post data to filtercriteria list. 
+	for(let blogpost of blogDataList) {
+
+		// Get value of tag for given post. 
+		let value = blogpost[tag];
+
+		// Check if already there. 
+		let alreadyThere = result['criteria'].includes(value);
+		// Save value for given post if not already there. 
+		if(!alreadyThere) result['criteria'].push(value);
+	}
+
+	// Return result. 
+	return result;
+}
+
+// Get post filter for given tag. 
+function getPostTimeFilter(tag,tagtitle) {
+
+	// Initialize result. 
+	let result = {
+		title:tagtitle,
+		criteria:[
+			// 'tagtitle',
+		],
+	};
+
+	// Save distinct values for given tag from blog post data to filtercriteria list. 
+	for(let blogpost of blogDataList) {
+
+		// Get value of tag for given post. 
+		let value = blogpost.published[tag];
+
+		// Check if already there. 
+		let alreadyThere = result['criteria'].includes(value);
+		// Save value for given post if not already there. 
+		if(!alreadyThere) result['criteria'].push(value);
+	}
+
+	// Return result. 
+	return result;
 }

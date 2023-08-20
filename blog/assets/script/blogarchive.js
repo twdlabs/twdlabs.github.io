@@ -21,6 +21,23 @@ loadBlogPostFilters();
 /*****/
 
 
+// Load list of blog posts. 
+function loadBlogPosts() {
+
+	// Initialize result. 
+	let result = '';
+	
+	// Go thru all posts. 
+	for(let post of blogDataList) {
+		
+		// Add layout for given post. 
+		result += createBlogPostLayout(post);
+	}
+	
+	// Add result to page. 
+	bloglistdestination.innerHTML = result;
+}
+
 // Load blog post filters. 
 function loadBlogPostFilters() {
 
@@ -81,21 +98,4 @@ function loadBlogPostFilters() {
 	
 		// 
 	}
-}
-
-// Load list of blog posts. 
-function loadBlogPosts() {
-
-	// Initialize result. 
-	let result = '';
-	
-	// Go thru all posts. 
-	for(let post of blogDataList) {
-		
-		// Add layout for given post. 
-		result += createBlogPostLayout(post);
-	}
-	
-	// Add result to page. 
-	bloglistdestination.innerHTML = result;
 }
