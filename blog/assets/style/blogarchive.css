@@ -33,7 +33,7 @@ div#container section.blogtable main.grid ul.filterlist li.filter ul.criterialis
 div#container section.blogtable main.grid ul.filterlist li.filter ul.criterialist li.criterion:hover {background-color:var(--drkwhite);}
 div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafilter {display:grid; grid-template-columns:1fr auto; align-items:center; border-bottom:1px solid;}
 div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafilter svg.icon {font-size:1rem;}
-div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafilter input.criteriafilterquery {font-family:inherit; font-size:1.25rem; width:100%; padding:.75rem 1rem; border:0 none; outline:none;}
+div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafilter input.criteriafilterquery {font-family:inherit; font-size:1.125rem; width:100%; padding:.75rem 1rem; border:0 none; outline:none;}
 
 
 

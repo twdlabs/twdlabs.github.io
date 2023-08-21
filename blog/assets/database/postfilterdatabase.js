@@ -5,95 +5,100 @@
 const postFilterList = [
 	// {
 	// 	title:'X Authors',
-	// 	criteria:[
-	// 		'Ace Ventura',
-	// 		'Bill Diamond',
-	// 		'Christine Brophy',
-	// 		'David Doe',
-	// 		'Eli Jah',
-	// 		'Fred Flinstone',
-	// 		'George Doe',
-	// 		'Hilary Doe',
-	// 		'Ian Robertson',
+	// 	criterionidlist:[
+	// 		'AVentura',
+	// 		'BDiamond',
+	// 		'CBrophy',
+	// 		'DDoe',
+	// 		'EJah',
+	// 		'FFlinstone',
+	// 		'GDoe',
+	// 		'HDoe',
+	// 		'IRobertson',
 	// 	],
 	// },
 	// {
 	// 	title:'Y Authors',
-	// 	criteria:[
-	// 		'Jane Doe',
-	// 		'Jay Jenkins',
-	// 		'Jenny Joe',
-	// 		'Jill Jackson',
-	// 		'Jim Doe',
-	// 		'Joe Doe',
-	// 		'John Luke Smith',
-	// 		'Kate Croix',
-	// 		'Leah Lloyd',
-	// 		'Mike Myers',
+	// 	criterionidlist:[
+	// 		'JDoe',
+	// 		'JJenkins',
+	// 		'JJoe',
+	// 		'JJackson',
+	// 		'JDoe',
+	// 		'JDoe',
+	// 		'JSmith',
+	// 		'KCroix',
+	// 		'LLloyd',
+	// 		'MMyers',
 	// 	],
 	// },
 	// {
 	// 	title:'Z Authors',
-	// 	criteria:[
-	// 		'Nina Nash',
-	// 		'Oscar DeLaHoya',
-	// 		'Peter Pan',
-	// 		'Quinten Doe',
-	// 		'Rachel Roy',
-	// 		'Steve Stephens',
-	// 		'Tim Toole',
-	// 		'Tori Doe',
-	// 		'Ursula Doe',
-	// 		'Victor Victorian',
-	// 		'Wendy Will',
-	// 		'Xavier Toven',
-	// 		'Yolanda Yokes',
+	// 	criterionidlist:[
+	// 		'NNash',
+	// 		'ODeLaHoya',
+	// 		'PPan',
+	// 		'QDoe',
+	// 		'RRoy',
+	// 		'SStephens',
+	// 		'TToole',
+	// 		'TDoe',
+	// 		'UDoe',
+	// 		'VVictorian',
+	// 		'WWill',
+	// 		'XToven',
+	// 		'YYokes',
 	// 	],
 	// },
 ];
 // console.log('Post filter list:',postFilterList);
 
-
-/*****/
-
-
-// Get post filter for author. 
-let authorfilter = getPostFilter('authorid','Authors');
-console.log('Author filter:',authorfilter);
-// Save post filter for author. 
-postFilterList.push(authorfilter);
-
-// Get post filter for series tag. 
-let tagfilter = getPostTagListFilter('taglist','Series');
-console.log('Tag filter:',tagfilter);
-// Save post filter for series tag. 
-postFilterList.push(tagfilter);
-
-// Get post filter for publish year. 
-let yearfilter = getPostTimeFilter('year','Year');
-console.log('Year filter:',yearfilter);
-// Save post filter for publish year. 
-postFilterList.push(yearfilter);
-
-// Get post filter for publish month. 
-let monthfilter = getPostTimeFilter('month','Month');
-console.log('Month filter:',monthfilter);
-// Save post filter for publish year. 
-postFilterList.push(monthfilter);
+// Define list of active post filters for adjacent post list. 
+const activePostFilterList = [];
+// console.log('Active post filter list:',activePostFilterList);
 
 
 /*****/
 
 
-// Get post filter for given property. 
-function getPostFilter(propertytag,propertytitle) {
+// Add post filter for author. 
+addNewFilter('authorid','Authors');
+// console.log('Author filter:',authorfilter);
+
+// Add post filter for series tag. 
+addNewTagListFilter('taglist','Series');
+// console.log('Tag filter:',tagfilter);
+
+// Add post filter for publish year. 
+addNewTimeFilter('year','Year');
+// console.log('Year filter:',yearfilter);
+
+// Add post filter for publish month. 
+addNewTimeFilter('month','Month');
+// console.log('Month filter:',monthfilter);
+
+// console.log('Post filter list:',postFilterList);
+// console.log('Active post filter list:',activePostFilterList);
+
+
+/*****/
+
+
+// Add post filter for given property. 
+function addNewFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
 		title:propertytitle,
-		criteria:[
+		criterionidlist:[
 			// 'tagtitle',
 		],
+	};
+
+	// Create empty result. 
+	let emptyresult = {
+		title:propertytitle,
+		criterionindexlist:[],
 	};
 
 	// Save distinct values for given tag from blog post data to filtercriteria list. 
@@ -103,24 +108,33 @@ function getPostFilter(propertytag,propertytitle) {
 		let value = blogpost[propertytag];
 
 		// Check if already there. 
-		let alreadyThere = result['criteria'].includes(value);
+		let alreadyThere = result['criterionidlist'].includes(value);
 		// Save value for given post if not already there. 
-		if(!alreadyThere) result['criteria'].push(value);
+		if(!alreadyThere) result['criterionidlist'].push(value);
 	}
 
-	// Return result. 
-	return result;
+	// Add full filter to main list. 
+	postFilterList.push(result);
+
+	// Add empty filter to active list. 
+	activePostFilterList.push(emptyresult);
 }
 
-// Get post filter for given time property. 
-function getPostTimeFilter(propertytag,propertytitle) {
+// Add post filter for given time property. 
+function addNewTimeFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
 		title:propertytitle,
-		criteria:[
+		criterionidlist:[
 			// 'tagtitle',
 		],
+	};
+
+	// Create empty result. 
+	let emptyresult = {
+		title:propertytitle,
+		criterionindexlist:[],
 	};
 
 	// Save distinct values for given tag from blog post data to filtercriteria list. 
@@ -130,24 +144,33 @@ function getPostTimeFilter(propertytag,propertytitle) {
 		let value = blogpost.published[propertytag];
 
 		// Check if already there. 
-		let alreadyThere = result['criteria'].includes(value);
+		let alreadyThere = result['criterionidlist'].includes(value);
 		// Save value for given post if not already there. 
-		if(!alreadyThere) result['criteria'].push(value);
+		if(!alreadyThere) result['criterionidlist'].push(value);
 	}
 
-	// Return result. 
-	return result;
+	// Add full filter to main list. 
+	postFilterList.push(result);
+
+	// Add empty filter to active list. 
+	activePostFilterList.push(emptyresult);
 }
 
-// Get post filter for given tag list. 
-function getPostTagListFilter(propertytag,propertytitle) {
+// Add post filter for given tag list. 
+function addNewTagListFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
 		title:propertytitle,
-		criteria:[
+		criterionidlist:[
 			// 'tagtitle',
 		],
+	};
+
+	// Create empty result. 
+	let emptyresult = {
+		title:propertytitle,
+		criterionindexlist:[],
 	};
 
 	// Save distinct values for given tag from blog post data to filtercriteria list. 
@@ -159,12 +182,15 @@ function getPostTagListFilter(propertytag,propertytitle) {
 		for(let tag of taglist) {
 
 			// Check if already there. 
-			let alreadyThere = result['criteria'].includes(tag);
+			let alreadyThere = result['criterionidlist'].includes(tag);
 			// Save value for given post if not already there. 
-			if(!alreadyThere) result['criteria'].push(tag);
+			if(!alreadyThere) result['criterionidlist'].push(tag);
 		}
 	}
 
-	// Return result. 
-	return result;
+	// Add full filter to main list. 
+	postFilterList.push(result);
+
+	// Add empty filter to active list. 
+	activePostFilterList.push(emptyresult);
 }
