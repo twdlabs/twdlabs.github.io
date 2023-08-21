@@ -48,11 +48,11 @@ div#container section.feature main.grid article.media div.cover div.contents ul.
 div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link.s:hover {background-color:whitesmoke;}
 
 /* Blog Table Section */
-div#container section.blogtable {display:none;}
+/* div#container section.blogtable {display:none;} */
 /* div#container section.blogtable main.grid {} */
 
 /* Contributors Section */
-/* div#container section.contributors {} */
+div#container section.contributors {display:none;}
 div#container section.contributors main.grid {max-width:var(--pagewidth); position:relative; overflow:hidden;}
 div#container section.contributors main.grid:before,
 div#container section.contributors main.grid::after {background-color:inherit; content:''; position:absolute; top:0; height:100%; width:15%; z-index:10;}

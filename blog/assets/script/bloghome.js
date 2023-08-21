@@ -17,6 +17,12 @@ const contributorsdestination = document.querySelector('div#container section.co
 // Create time calculator. 
 const t = new TimeCalculator();
 
+// Define maximum amount of more posts. 
+const maxmoreposts = 12;
+
+// Initialize id for featured post. 
+let featuredpostid;
+
 
 /*****/
 
@@ -51,6 +57,7 @@ function loadFeaturedPost() {
 	
 	// Get data for featured post. 
 	let featuredpost = blogDataList[featuredpostindex];
+	featuredpostid = featuredpost.postid;
 	console.log('Featured post:',featuredpostindex,featuredpost);
 
 	// Get url of video source. 
@@ -138,14 +145,25 @@ function loadFeaturedPost() {
 // Load list of blog posts. 
 function loadBlogPosts() {
 
+	// Intialize number of posts loaded. 
+	let n = 0;
 	// Initialize result. 
 	let result = '';
 	
 	// Go thru all posts. 
 	for(let post of blogDataList) {
+
+		// Skip for featured post. 
+		let onFeaturedPost = post.postid==featuredpostid;
+		if(onFeaturedPost) continue;
 		
 		// Add layout for given post. 
 		result += createBlogPostLayout(post);
+		// Increment number of posts loaded. 
+		n++;
+
+		// Limit number of posts to predefined amount. 
+		if(n>=maxmoreposts) break;
 	}
 	
 	// Add result to page. 

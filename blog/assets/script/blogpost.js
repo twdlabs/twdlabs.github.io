@@ -24,7 +24,7 @@ const otherpostsdestination = document.querySelector('div#container section.othe
 const t = new TimeCalculator();
 
 // Define maximum amount of more posts. 
-const maxmoreposts = 4;
+const maxmoreposts = 12;
 
 
 /*****/
@@ -511,26 +511,25 @@ function loadBlogPostAuthor() {
 // Load list of other blog posts. 
 function loadOtherBlogPosts() {
 
+	// Intialize number of posts loaded. 
+	let n = 0;
 	// Intialize result. 
 	let result = '';
 
-	// Intialize number of posts loaded. 
-	let postcount = 0;
 	// Go thru all posts. 
 	for(let post of blogDataList) {
 
-		// Check if other post is same post. 
-		let onSamePost = post.postid == selectedPostId;
+		// Skip for same post. 
+		let onSamePost = post.postid==selectedPostId;
+		if(onSamePost) continue;
 
 		// Add layout for given post. 
-		if(onSamePost) continue;
-		else result += createBlogPostLayout(post);
-
+		result += createBlogPostLayout(post);
 		// Increment number of posts loaded. 
-		postcount ++;
+		n++;
 
 		// Limit number of posts to predefined amount. 
-		if(postcount>=maxmoreposts) break;
+		if(n>=maxmoreposts) break;
 	}
 
 	// Add result to page. 

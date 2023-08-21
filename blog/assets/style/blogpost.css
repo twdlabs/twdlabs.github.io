@@ -146,16 +146,6 @@ div#container section.author main.grid img.avatar {background-color:var(--blackg
 div#container section.author main.grid img.avatar.float {position:absolute; top:0; left:50%; transform:translate(-50%,-50%);}
 
 
-/* Blog Table Section */
-/* div#container section.blogtable {} */
-/* div#container section.blogtable main.grid {} */
-div#container section.blogtable main.grid div.more {display:flex; flex-direction:column; align-items:center; padding:2rem 0;}
-div#container section.blogtable main.grid div.more a.morebtn {background-color:var(--forecolor); color:inherit; color:var(--bgcolor); text-decoration:none;}
-div#container section.blogtable main.grid div.more a.morebtn {display:flex; align-items:center; padding:.5rem 2rem; border-radius:.5rem;}
-div#container section.blogtable main.grid div.more a.morebtn svg.icon {margin-left:.5rem;}
-/* div#container section.blogtable main.grid div.more a.morebtn span.caption {} */
-
-
 
 
 

@@ -64,6 +64,15 @@ div#container section.blogtable main.grid ul.postlist li.postcard.full div.conte
 div#container section.blogtable main.grid ul.postlist li.postcard.full div.content div.ctabox a.readbtn {background-color:var(--themecolor); padding:.375rem 1rem; border-radius:var(--cornersize); margin-top:.75rem;}
 div#container section.blogtable main.grid ul.postlist li.postcard.full div.content div.ctabox a.readbtn {color:white; font-weight:400; letter-spacing:.5px; text-align:center; text-decoration:none;}
 
+/* Blog Table Section: More */
+/* div#container section.blogtable {} */
+/* div#container section.blogtable main.grid {} */
+div#container section.blogtable main.grid div.more {display:flex; flex-direction:column; align-items:center; padding:2rem 0;}
+div#container section.blogtable main.grid div.more a.morebtn {background-color:var(--forecolor); color:inherit; color:var(--bgcolor); text-decoration:none;}
+div#container section.blogtable main.grid div.more a.morebtn {display:flex; align-items:center; padding:.5rem 2rem; border-radius:.5rem;}
+div#container section.blogtable main.grid div.more a.morebtn svg.icon {margin-left:.5rem;}
+/* div#container section.blogtable main.grid div.more a.morebtn span.caption {} */
+
 
 
 
