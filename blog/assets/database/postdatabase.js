@@ -76,7 +76,7 @@ const blogDataList = [
 	{
 		title:'Metropolis',
 		postid:'metropolis',
-		authorid:'aventura',
+		authorid:'irobertson',
 		imgurl:'../../gallery/assets/images/full/b.jpeg',
 		vidurl:'../../video/assets/videos/1436812.mp4',
 		content:[],
@@ -95,7 +95,7 @@ const blogDataList = [
 	{
 		title:'Green',
 		postid:'green',
-		authorid:'aventura',
+		authorid:'jjenkins',
 		imgurl:'../../gallery/assets/images/full/2.jpg',
 		vidurl:'../../video/assets/videos/0000002.mp4',
 		content:[],
@@ -114,7 +114,7 @@ const blogDataList = [
 	{
 		title:'City Life',
 		postid:'citylife',
-		authorid:'aventura',
+		authorid:'rroy',
 		imgurl:'../../gallery/assets/images/full/city.jpg',
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		vidurl:'../../video/assets/videos/2818546.mp4',
@@ -135,7 +135,7 @@ const blogDataList = [
 	{
 		title:'Island City',
 		postid:'islandcity',
-		authorid:'aventura',
+		authorid:'xtoven',
 		imgurl:'../../gallery/assets/images/full/1.jpg',
 		vidurl:'../../video/assets/videos/1436812.mp4',
 		content:[],
@@ -171,7 +171,7 @@ const blogDataList = [
 	{
 		title:'City Buildings',
 		postid:'citybuildings',
-		authorid:'aventura',
+		authorid:'qdoe',
 		imgurl:'../../gallery/assets/images/full/Dubai.jpg',
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		content:[],
@@ -207,7 +207,7 @@ const blogDataList = [
 	{
 		title:'Scenery',
 		postid:'scenery',
-		authorid:'aventura',
+		authorid:'jjenkins',
 		imgurl:'../../gallery/assets/images/full/np3.jpg',
 		vidurl:'../../video/assets/videos/2231485.mp4',
 		content:[],
@@ -246,7 +246,7 @@ const blogDataList = [
 	{
 		title:'Real Estate',
 		postid:'reast',
-		authorid:'aventura',
+		authorid:'irobertson',
 		imgurl:'../../gallery/assets/images/full/a.jpg',
 		vidurl:'../../video/assets/videos/1644693.mp4',
 		content:[],
@@ -266,7 +266,7 @@ const blogDataList = [
 	{
 		title:'Matrix',
 		postid:'matrix',
-		authorid:'aventura',
+		authorid:'kcroix',
 		imgurl:'../../gallery/assets/images/full/code.jpg',
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		content:[],
@@ -304,7 +304,7 @@ const blogDataList = [
 	{
 		title:'Sky Light',
 		postid:'skylight',
-		authorid:'aventura',
+		authorid:'ejah',
 		imgurl:'../../gallery/assets/images/full/wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
 		vidurl:'../../video/assets/videos/1654216.mp4',
 		content:[],
@@ -322,7 +322,7 @@ const blogDataList = [
 	{
 		title:'Water Life',
 		postid:'waterlife',
-		authorid:'aventura',
+		authorid:'ddoe',
 		imgurl:'../../gallery/assets/images/full/Navagio.jpg',
 		vidurl:'../../video/assets/videos/2231485.mp4',
 		content:[],
@@ -342,7 +342,7 @@ const blogDataList = [
 	{
 		title:'Device Work',
 		postid:'devicework',
-		authorid:'aventura',
+		authorid:'mmyers',
 		imgurl:'../../gallery/assets/images/full/devicework.jpg',
 		vidurl:'../../video/assets/videos/0000001.mp4',
 		content:[],

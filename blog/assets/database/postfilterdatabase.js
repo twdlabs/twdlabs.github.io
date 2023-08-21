@@ -51,7 +51,7 @@ const postFilterList = [
 	// 	],
 	// },
 ];
-// console.log('Blog data list:',postFilterList);
+// console.log('Post filter list:',postFilterList);
 
 
 /*****/

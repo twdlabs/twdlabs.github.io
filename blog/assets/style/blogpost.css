@@ -81,7 +81,7 @@ div#container section.body main.grid article.post div.transcript div.art {displa
 div#container section.body main.grid article.post div.transcript div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
 div#container section.body main.grid article.post div.transcript p.textcopy {margin:0; margin-top:1.25rem;}
 div#container section.body main.grid article.post div.transcript aside.meta {display:flex; align-items:center; margin-top:1rem;}
-div#container section.body main.grid article.post div.transcript aside.meta {display:none;}
+/* div#container section.body main.grid article.post div.transcript aside.meta {display:none;} */
 div#container section.body main.grid article.post div.transcript aside.meta span.date {font-weight:lighter; margin-left:.5em;}
 div#container section.body main.grid article.post div.transcript aside.meta span.date:empty {background-color:gainsboro; display:inline-block; height:1em; width:4rem; border-radius:10rem;}
 div#container section.body main.grid article.post div.transcript aside.meta span.caption {font-weight:bold;}
@@ -109,12 +109,15 @@ div#container section.body main.grid article.post div.authorbio p.briefbio {font
 /* Body Section: Navigator */
 div#container section.body main.grid div.navigator {background-color:white; display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container section.body main.grid div.navigator {/* grid-area:nav; */ padding:1.25rem; border-radius:var(--cornersize); margin-top:var(--sectionspacing); box-shadow:var(--boxshadow);}
-div#container section.body main.grid div.navigator {display:none;}
+/* div#container section.body main.grid div.navigator {display:none;} */
 div#container section.body main.grid div.navigator a.navlink {color:inherit; text-decoration:none;}
 div#container section.body main.grid div.navigator a.navlink {background-color:var(--themecolor); color:white; padding:1rem 1.5rem; border-radius:.375rem;}
-div#container section.body main.grid div.navigator a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section.body main.grid div.navigator a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center; position:relative; overflow:hidden;}
 div#container section.body main.grid div.navigator a.navlink.x {visibility:hidden;}
+div#container section.body main.grid div.navigator a.navlink * {position:relative; z-index:1;}
 div#container section.body main.grid div.navigator a.navlink svg.icon {font-size:1.25em;}
+div#container section.body main.grid div.navigator a.navlink img.preview {position:absolute; height:100%; width:100%; object-fit:cover; opacity:.1; z-index:0;}
+/* div#container section.body main.grid div.navigator a.navlink img.preview {--size:3rem; height:var(--size); width:var(--size);} */
 div#container section.body main.grid div.navigator a.navlink span.caption {margin:0 .25rem;}
 /* div#container section.body main.grid div.navigator div.position {display:none;} */
 div#container section.body main.grid div.navigator div.position {font-size:1.125rem; text-align:center;}

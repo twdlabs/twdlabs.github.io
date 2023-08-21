@@ -41,7 +41,7 @@ function savePostInfo() {
 	// console.log('Selected post data:',selectedPostData);
 
 	// Return to parent page (home) if no valid post id found. 
-	if(!selectedPostId) location.href = '../';
+	if(!selectedPostId) location.href = './../';
 
 	/****/
 

@@ -37,26 +37,40 @@ loadBlogContibutors();
 // Load featured blog post. 
 function loadFeaturedPost() {
 
-	// Initialize result. 
-	let result = '';
+	// Set if latest post. 
+	let isLatestPost = false;
+	isLatestPost = true;
+
+	// Default to latest post. 
+	let featuredpostindex = 0;
+	// Otherwise, choose featured post. 
+	if(!isLatestPost) {
+		let r = Math.random();
+		featuredpostindex = Math.floor(r*blogDataList.length);
+	}
+	
+	// Get data for featured post. 
+	let featuredpost = blogDataList[featuredpostindex];
+	console.log('Featured post:',featuredpostindex,featuredpost);
 
 	// Get url of video source. 
 	let vidsrcurl = './../../video/assets/videos/0000001.mp4';
+	vidsrcurl = featuredpost.vidurl;
 
 	// Get url of video image placeholder. 
 	let vidplaceholderurl = './../video/assets/images/0000001.png';
-
-	// Check if latest post. 
-	let isLatestPost = true;
+	vidplaceholderurl = featuredpost.imgurl;
 
 	// Get title of featured post. 
 	let posttitle = 'Title of Featured Post';
+	posttitle = featuredpost.title;
 
 	// Get id of featured post. 
 	let featuredbpid = '0';
+	featuredbpid = featuredpost.postid;
 
 	// Compile result. 
-	result += `
+	let result = `
 	<!-- vid -->
 	<div class="vid">
 

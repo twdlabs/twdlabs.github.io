@@ -95,7 +95,7 @@ function loadBlogPostContent() {
 
 	// Load full layout for given post. 
 	function loadPostLayout(post) {
-		console.log('Current post data:',post);
+		// console.log('Current post data:',post);
 	
 		// Get post publish date/time. 
 		let pdt = post ? post.published : '';
@@ -103,20 +103,12 @@ function loadBlogPostContent() {
 	
 		// Compile post layout: date, media, article content. Display in post body section. 
 		postbodydestination.innerHTML = `
-		${ createHeadLayout() }
 		${ createMediaLayout() }
 		${ createArticleLayout() }
 		${ createNavigatorLayout() }
 		`;
 	
 		/***/
-
-		// Create layout for post head. 
-		function createHeadLayout() {
-
-			// 
-			return ``;
-		}
 
 		// Create layout for post media. 
 		function createMediaLayout() {
@@ -127,7 +119,7 @@ function loadBlogPostContent() {
 			// Get content of playlist. 
 			let playlistcontent = createPlayListLayout(blogDataList);
 
-			// 
+			// Compile layout for post media. 
 			return `
 			<!-- media -->
 			<article class="media full">
@@ -232,7 +224,7 @@ function loadBlogPostContent() {
 							<!-- /icon -->
 	
 							<!-- index -->
-							<span class="index">${ (i*1+1) }</span>
+							<span class="index">${ (1*i + 1) }</span>
 							<!-- /index -->
 	
 							<!-- preview -->
@@ -378,17 +370,32 @@ function loadBlogPostContent() {
 		// Create layout for post navigator. 
 		function createNavigatorLayout() {
 
-			// Get url of previous post. 
-			let prevposturl = getPrevPostUrl();
-
 			// Get number of current post. 
-			let postnum = (selectedPostIndex*1) + 1;
-
+			let postnum = (1*selectedPostIndex) + 1;
 			// Get total number of posts. 
 			let postcount = blogDataList.length;
-
-			// Get url of following post. 
-			let nextposturl = getNextPostUrl();
+			
+			// Get index of previous post. 
+			let prevpostindex = 1*selectedPostIndex - 1;
+			// Get data for previous post. 
+			let prevpost = blogDataList[prevpostindex];
+			// Get id of previous post. 
+			let prevpostid = ( selectedPostId && prevpost ) ? prevpost.postid : '';
+			// Get url of previous post (if valid id). 
+			let prevposturl = ( prevpostid ? `./?bpid=${ prevpostid }` : 'javascript:void(0)' );
+			// Get image url of previous post (if valid id). 
+			let prevpostimgurl = ( prevpostid ? prevpost.imgurl : '' );
+			
+			// Get index of following post. 
+			let nextpostindex = 1*selectedPostIndex + 1;
+			// Get data for following post. 
+			let nextpost = blogDataList[nextpostindex];
+			// Get id of following post. 
+			let nextpostid = ( selectedPostId && nextpost ) ? nextpost.postid : '';
+			// Get url of following post (if valid id). 
+			let nextposturl = ( nextpostid ? `./?bpid=${ nextpostid }` : 'javascript:void(0)' );
+			// Get image url of following post (if valid id). 
+			let nextpostimgurl = ( nextpostid ? nextpost.imgurl : '' );
 
 			// 
 			return `
@@ -396,7 +403,7 @@ function loadBlogPostContent() {
 			<div class="navigator">
 
 				<!-- navlink -->
-				<a class="navlink ${ prevposturl ? '' : 'x' }" href="${ prevposturl }">
+				<a class="navlink ${ !prevpostid ? 'x' : '' }" href="${ prevposturl }">
 
 					<!-- icon -->
 					<svg class="icon arrowleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -407,6 +414,10 @@ function loadBlogPostContent() {
 					<!-- caption -->
 					<span class="caption">Back</span>
 					<!-- /caption -->
+
+					<!-- preview -->
+					<img class="preview" src="${ prevpostimgurl }" title="${ prevpostid }">
+					<!-- /preview -->
 					
 				</a>
 				<!-- /navlink -->
@@ -440,7 +451,11 @@ function loadBlogPostContent() {
 				<!-- /position -->
 
 				<!-- navlink -->
-				<a class="navlink ${ nextposturl ? '' : 'x' }" href="${ nextposturl }">
+				<a class="navlink ${ !nextpostid ? 'x' : '' }" href="${ nextposturl }">
+
+					<!-- preview -->
+					<img class="preview" src="${ nextpostimgurl }" title="${ nextpostid }">
+					<!-- /preview -->
 
 					<!-- caption -->
 					<span class="caption">Next</span>
@@ -457,46 +472,6 @@ function loadBlogPostContent() {
 
 			</div>
 			<!-- /navigator -->`;
-	
-			/**/
-
-			// TODO: Get url of given post. 
-			function getPostUrl() {
-
-				// 
-			}
-
-			// Get url of previous post. 
-			function getPrevPostUrl() {
-
-				// Get id of previous post. 
-				let postid = getPrevPostId();
-
-				// Return url if post id valid, otherwise return nothing. 
-				return ( postid ? `../post/?bpid=${ postid }` : '' );
-
-				// Get id of previous post. 
-				function getPrevPostId() {
-					// console.log('Blog post ids:', blogDataList.map(x=>x.postid) );
-					return ( selectedPostId && blogDataList[selectedPostIndex*1-1] ) ? blogDataList[selectedPostIndex*1-1].postid : '';
-				}
-			}
-
-			// Get url of following post. 
-			function getNextPostUrl() {
-
-				// Get id of following post. 
-				let postid = getNextPostId();
-
-				// Return url if post id valid, otherwise return nothing. 
-				return ( postid ? `../post/?bpid=${ postid }` : '' );
-
-				// Get id of following post. 
-				function getNextPostId() {
-					// console.log('Blog post ids:', blogDataList.map(x=>x.postid) );
-					return ( selectedPostId && blogDataList[selectedPostIndex*1+1] ) ? blogDataList[selectedPostIndex*1+1].postid : '';
-				}
-			}
 		}
 	}
 }

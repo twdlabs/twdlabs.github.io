@@ -7,7 +7,7 @@
 /* Hero Section */
 /* div#container section.hero {display:none;} */
 /* div#container section.hero::before {backdrop-filter:blur(.25rem);} */
-div#container section.hero main.grid {align-items:center; padding:12rem 0; padding:9rem 0;}
+div#container section.hero main.grid {align-items:center; padding:12rem 0; padding:9rem 0; padding:10vw 0;}
 /* div#container section.hero main.grid {padding:4rem 0;} */
 /* div#container section.hero main.grid h2.head {display:none;} */
 div#container section.hero main.grid h2.head {font-size:2.5rem;}
@@ -26,7 +26,7 @@ div#container section.feature h2.head {display:none;}
 /* div#container section.feature main.grid {} */
 /* Featured Media Section: Media Player */
 div#container section.feature main.grid article.media {position:relative; min-height:32rem; overflow:hidden; border-radius:var(--cornersize); margin-top:var(--sectionspacing); box-shadow:var(--boxshadow);}
-div#container section.feature main.grid article.media div.vid {position:relative; padding-top:56.25%;}
+div#container section.feature main.grid article.media div.vid {position:relative; height:100%; padding-top:56.25%;}
 div#container section.feature main.grid article.media div.vid video.video {position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
 div#container section.feature main.grid article.media div.cover {position:absolute; inset:0; width:100%; height:100%;}
 div#container section.feature main.grid article.media div.cover div.bgpic {position:absolute; inset:0; width:100%; height:100%; z-index:1;}
@@ -48,7 +48,7 @@ div#container section.feature main.grid article.media div.cover div.contents ul.
 div#container section.feature main.grid article.media div.cover div.contents ul.linkbox li.linkitem a.link.s:hover {background-color:whitesmoke;}
 
 /* Blog Table Section */
-/* div#container section.blogtable {} */
+div#container section.blogtable {display:none;}
 /* div#container section.blogtable main.grid {} */
 
 /* Contributors Section */
@@ -105,6 +105,8 @@ div#container section.contributors main.grid div.row a.card span.username {font-
 
 	/* Featured Media Section */
 	/* div#container section.feature {} */
+	/* div#container section.feature main.grid {} */
+	div#container section.feature main.grid article.media {height:32rem;}
 
 	/* Contributors Section */
 	/* div#container section.contributors {} */

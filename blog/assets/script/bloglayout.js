@@ -47,7 +47,7 @@ function createBlogPostLayout(post) {
 			<div class="preview">
 
 				<!-- artlink -->
-				<a class="artlink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }" target="_blank">
+				<a class="artlink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }">
 
 					<!-- preview -->
 					<img class="preview" src="${ getRelativeUrl(post.imgurl) }">
@@ -63,7 +63,7 @@ function createBlogPostLayout(post) {
 			<div class="content">
 
 				<!-- textlink -->
-				<a class="textlink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }" target="_blank">
+				<a class="textlink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }">
 
 					<!-- title -->
 					<h1 class="title">${ post.title }</h1>
@@ -97,7 +97,7 @@ function createBlogPostLayout(post) {
 			<div class="preview">
 	
 				<!-- artlink -->
-				<a class="artlink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }" target="_blank">
+				<a class="artlink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }">
 		
 					<!-- preview -->
 					<img class="preview" src="${ getRelativeUrl(post.imgurl) }">
@@ -110,7 +110,7 @@ function createBlogPostLayout(post) {
 				<div class="adminpanel">
 		
 					<!-- editbtn -->
-					<a class="btn editbtn" href="./editor?id=0" target="_blank">
+					<a class="btn editbtn" href="./editor?id=0">
 		
 						<!-- icon -->
 						<svg class="icon pencilsquare" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -147,7 +147,7 @@ function createBlogPostLayout(post) {
 				<div class="bar">
 		
 					<!-- titlelink -->
-					<a class="titlelink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }" target="_blank">
+					<a class="titlelink" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }">
 
 						<!-- title -->
 						<h1 class="title">${ post.title }</h1>
@@ -157,7 +157,7 @@ function createBlogPostLayout(post) {
 					<!-- /titlelink -->
 	
 					<!-- commentcount -->
-					<a class="commentcount" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }#comments" target="_blank">
+					<a class="commentcount" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }#comments">
 	
 						<!-- icon -->
 						<svg class="icon commentbubble" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -180,7 +180,7 @@ function createBlogPostLayout(post) {
 				<div class="bar">
 	
 					<!-- userbadge -->
-					<a class="userbadge ${ author ? (author.admin ? 'admin' : '') : '' }" href="${ getRelativeUrl(`../user/?id=${ author ? author.userid : '' }`) }" target="_blank">
+					<a class="userbadge ${ author ? (author.admin ? 'admin' : '') : '' }" href="${ getRelativeUrl(`../user/?id=${ author ? author.userid : '' }`) }">
 	
 						<!-- avatar -->
 						<img class="avatar" src="${ author ? getRelativeUrl(`../user/${author.avatarurl}`) : '' }" title="${ author ? author.userid : '' }">
@@ -208,7 +208,7 @@ function createBlogPostLayout(post) {
 				<div class="ctabox">
 	
 					<!-- readbtn -->
-					<a class="readbtn" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }" target="_blank">
+					<a class="readbtn" href="${ getRelativeUrl(`./post/?bpid=${post.postid}`) }">
 	
 						<!-- caption -->
 						<span class="caption">Read More</span>
