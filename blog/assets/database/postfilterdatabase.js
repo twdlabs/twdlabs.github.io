@@ -184,7 +184,7 @@ function addNewTagListFilter(propertytag,propertytitle) {
 			// Check if already there. 
 			let alreadyThere = result['criterionidlist'].includes(tag);
 			// Save value for given post if not already there. 
-			if(!alreadyThere) result['criterionidlist'].push(tag);
+			if(tag && !alreadyThere) result['criterionidlist'].push(tag);
 		}
 	}
 

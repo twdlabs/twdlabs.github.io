@@ -20,6 +20,10 @@ loadBlogPostFilters();
 // Activate blog post filters. 
 activateBlogPostFilters();
 
+// Show blog post filters. 
+console.log('Post filter list:',postFilterList);
+console.log('Active post filter list:',activePostFilterList);
+
 
 /*****/
 
@@ -53,6 +57,9 @@ function loadBlogPostFilters() {
 
 		// Get filter item. 
 		let filter = postFilterList[index];
+
+		// Get filter name. 
+		let filtername = (filter.title).toLowerCase()
 	
 		// Add filter item and criteria list. 
 		result += `
@@ -67,14 +74,20 @@ function loadBlogPostFilters() {
 			<div class="criteriafilter">
 
 				<!-- criteriafilterquery -->
-				<input type="text" class="criteriafilterquery" placeholder="Search ${ (filter.title).toLowerCase() }...">
+				<input type="text" class="criteriafilterquery" id="${ filtername }filterquery" placeholder="Search ${ filtername }...">
 				<!-- /criteriafilterquery -->
 
-				<!-- icon -->
-				<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-				</svg>
-				<!-- /icon -->
+				<!-- searchlabel -->
+				<label class="searchlabel" for="${ filtername }filterquery">
+
+					<!-- icon -->
+					<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+					</svg>
+					<!-- /icon -->
+					
+				</label>
+				<!-- /searchlabel -->
 
 			</div>
 			<!-- /criteriafilter -->
@@ -141,8 +154,8 @@ function activateBlogPostFilters() {
 	
 		// Get selected filter criterion item. 
 		let selectedcriterion = event.currentTarget;
-		// Get selected filter item. 
-		let selectedfilter = selectedcriterion.parentElement.parentElement;
+		// // Get selected filter item. 
+		// let selectedfilter = selectedcriterion.parentElement.parentElement;
 	
 		// Get index of selected filter. 
 		let selectedfilterindex = selectedcriterion.getAttribute('data-filterindex') * 1;
@@ -211,8 +224,54 @@ function activateBlogPostFilters() {
 	
 		// TODO: Refresh matching post results for active filter tags. 
 		function refreshMatchingPostResults() {
+
+			// Get all blog post items. 
+			let allpostitems = document.querySelectorAll('div#container section.blogtable main.grid ul.postlist li.postcard');
+			
+			// Go thru blog post items. 
+			for(let item of allpostitems) {
+
+				// Check if post matches any filter criteria. 
+				let isMatchingPost = checkForMatchingPost(item);
+
+				// Set post to appropriate state. 
+				if(isMatchingPost) item.classList.remove('x');
+				else item.classList.add('x');
+			}
+
+			/**/
+
+			// Check for matching post. 
+			function checkForMatchingPost(item) {
+
+				// Go thru active post filters. 
+				for(let filterindex in activePostFilterList) {
+
+					// Get filter category. 
+					let filtercategory = activePostFilterList[filterindex];
+					// console.log('Filter category:',filtercategory);
+
+					// Go thru active post filters. 
+					for(let criterionindex of filtercategory.criterionindexlist) {
+						// console.log('Criterion index:',criterionindex);
+						
+						// Get filter using filter index. 
+						let filter = postFilterList[filterindex];
+						// console.log('Filter:',filter);
+						
+						// Get criterion using criterion index. 
+						let criterion = filter[criterionindex];
+						// console.log('Criterion:',criterion);
 	
-			// 
+						// Assume match if any match found. 
+						let xyz = filter[criterionindex];
+						if( xyz ) return true;
+					}
+				}
+
+				// Assume no match if none found. 
+				return false;
+			}
 		}
 	}
 }
