@@ -190,8 +190,8 @@ function activateBlogPostFilters() {
 				let isCriterionActive = checkIfCriterionActive(item);
 
 				// Set proper state for criterion item. 
-				if(isCriterionActive) item.classList.add('dark');
-				else item.classList.remove('dark');
+				if(isCriterionActive) item.classList.add('active');
+				else item.classList.remove('active');
 			}
 	
 			/**/
