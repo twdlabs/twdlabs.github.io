@@ -22,7 +22,6 @@ activateBlogPostFilters();
 
 // Show blog post filters. 
 console.log('Post filter list:',postFilterList);
-console.log('Active post filter list:',activePostFilterList);
 
 
 /*****/
@@ -163,26 +162,26 @@ function activateBlogPostFilters() {
 		let selectedcriterionindex = selectedcriterion.getAttribute('data-criterionindex') * 1;
 	
 		// Check if selected filter criterion already in active list. 
-		let alreadyActiveTag = activePostFilterList[selectedfilterindex]['criterionindexlist'].includes(selectedcriterionindex);
+		let alreadyActiveTag = postFilterList[selectedfilterindex]['activecriterionindexlist'].includes(selectedcriterionindex);
 		
 		// Toggle selected filter criterion in active list. 
 		console.log('Selected filter criterion:',`(${selectedfilterindex},${selectedcriterionindex})`,selectedcriterion);
 		if(alreadyActiveTag) {
 	
 			// Get index of selected criterion in active list. 
-			let selectedcriterionactiveindex = activePostFilterList[selectedfilterindex]['criterionindexlist'].indexOf(selectedcriterionindex);
+			let selectedcriterionactiveindex = postFilterList[selectedfilterindex]['activecriterionindexlist'].indexOf(selectedcriterionindex);
 	
 			// Remove index of criterion from active list. 
-			console.log( activePostFilterList[selectedfilterindex] );
-			activePostFilterList[selectedfilterindex]['criterionindexlist'].splice(selectedcriterionactiveindex,1);
-			console.log( activePostFilterList[selectedfilterindex] );
+			console.log( postFilterList[selectedfilterindex] );
+			postFilterList[selectedfilterindex]['activecriterionindexlist'].splice(selectedcriterionactiveindex,1);
+			console.log( postFilterList[selectedfilterindex] );
 		}
 		else {
 	
 			// Add index of criterion to active list. 
-			console.log( activePostFilterList[selectedfilterindex],activePostFilterList );
-			activePostFilterList[selectedfilterindex]['criterionindexlist'].push(selectedcriterionindex);
-			console.log( activePostFilterList[selectedfilterindex],activePostFilterList );
+			console.log( postFilterList[selectedfilterindex],postFilterList );
+			postFilterList[selectedfilterindex]['activecriterionindexlist'].push(selectedcriterionindex);
+			console.log( postFilterList[selectedfilterindex],postFilterList );
 		}
 	
 		// Refresh highlights for filter tag elements. 
@@ -218,7 +217,7 @@ function activateBlogPostFilters() {
 				let criterionindex = criterionitem.getAttribute('data-criterionindex') * 1;
 
 				// Assume active if found in active list. 
-				return activePostFilterList[filterindex]['criterionindexlist'].includes(criterionindex);
+				return postFilterList[filterindex]['activecriterionindexlist'].includes(criterionindex);
 			}
 		}
 	
@@ -231,8 +230,8 @@ function activateBlogPostFilters() {
 			// Go thru blog post items. 
 			for(let item of allpostitems) {
 
-				// Check if post matches any filter criteria. 
-				let isMatchingPost = checkForMatchingPost(item);
+				// Check if post matches filter criteria. 
+				let isMatchingPost = checkForMatch(item);
 
 				// Set post to appropriate state. 
 				if(isMatchingPost) item.classList.remove('x');
@@ -241,30 +240,28 @@ function activateBlogPostFilters() {
 
 			/**/
 
-			// Check for matching post. 
-			function checkForMatchingPost(item) {
+			// Check if post matches filter criteria. 
+			function checkForMatch(item) {
 
-				// Go thru active post filters. 
-				for(let filterindex in activePostFilterList) {
+				// Go thru each post filter category. 
+				for(let filterindex in postFilterList) {
 
 					// Get filter category. 
-					let filtercategory = activePostFilterList[filterindex];
+					let filtercategory = postFilterList[filterindex];
 					// console.log('Filter category:',filtercategory);
 
-					// Go thru active post filters. 
-					for(let criterionindex of filtercategory.criterionindexlist) {
+					// Go thru each active criterion. 
+					for(let criterionindex of filtercategory['activecriterionindexlist']) {
 						// console.log('Criterion index:',criterionindex);
 						
-						// Get filter using filter index. 
-						let filter = postFilterList[filterindex];
-						// console.log('Filter:',filter);
-						
-						// Get criterion using criterion index. 
-						let criterion = filter[criterionindex];
-						// console.log('Criterion:',criterion);
+						// Get active criterion id (using criterion index). -
+						let activecriterionid = filtercategory['criterionidlist'][criterionindex];
+						console.log('Active criterion id:',activecriterionid);
+
+						// 
 	
-						// Assume match if any match found. 
-						let xyz = filter[criterionindex];
+						// TODO: Assume match if any match found. 
+						let xyz = filtercategory[criterionindex];
 						if( xyz ) return true;
 					}
 				}

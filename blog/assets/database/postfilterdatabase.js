@@ -1,61 +1,20 @@
 
 
 
-// Define list of post filters, each with list of criteria. 
+// Define list of post filters, each with: list of criteria, list of active criteria indexes. 
 const postFilterList = [
 	// {
-	// 	title:'X Authors',
-	// 	criterionidlist:[
-	// 		'AVentura',
-	// 		'BDiamond',
-	// 		'CBrophy',
-	// 		'DDoe',
-	// 		'EJah',
-	// 		'FFlinstone',
-	// 		'GDoe',
-	// 		'HDoe',
-	// 		'IRobertson',
+	// 	tags:[
+	// 		'xyz',
 	// 	],
-	// },
-	// {
-	// 	title:'Y Authors',
+	// 	title:'Title',
 	// 	criterionidlist:[
-	// 		'JDoe',
-	// 		'JJenkins',
-	// 		'JJoe',
-	// 		'JJackson',
-	// 		'JDoe',
-	// 		'JDoe',
-	// 		'JSmith',
-	// 		'KCroix',
-	// 		'LLloyd',
-	// 		'MMyers',
+	// 		'xyz',
 	// 	],
-	// },
-	// {
-	// 	title:'Z Authors',
-	// 	criterionidlist:[
-	// 		'NNash',
-	// 		'ODeLaHoya',
-	// 		'PPan',
-	// 		'QDoe',
-	// 		'RRoy',
-	// 		'SStephens',
-	// 		'TToole',
-	// 		'TDoe',
-	// 		'UDoe',
-	// 		'VVictorian',
-	// 		'WWill',
-	// 		'XToven',
-	// 		'YYokes',
-	// 	],
+	// 	activecriterionindexlist:[],
 	// },
 ];
 // console.log('Post filter list:',postFilterList);
-
-// Define list of active post filters for adjacent post list. 
-const activePostFilterList = [];
-// console.log('Active post filter list:',activePostFilterList);
 
 
 /*****/
@@ -78,7 +37,6 @@ addNewTimeFilter('month','Month');
 // console.log('Month filter:',monthfilter);
 
 // console.log('Post filter list:',postFilterList);
-// console.log('Active post filter list:',activePostFilterList);
 
 
 /*****/
@@ -89,16 +47,12 @@ function addNewFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
+		tags:[],
 		title:propertytitle,
 		criterionidlist:[
 			// 'tagtitle',
 		],
-	};
-
-	// Create empty result. 
-	let emptyresult = {
-		title:propertytitle,
-		criterionindexlist:[],
+		activecriterionindexlist:[],
 	};
 
 	// Save distinct values for given tag from blog post data to filtercriteria list. 
@@ -113,11 +67,8 @@ function addNewFilter(propertytag,propertytitle) {
 		if(!alreadyThere) result['criterionidlist'].push(value);
 	}
 
-	// Add full filter to main list. 
+	// Add filter to post filter list. 
 	postFilterList.push(result);
-
-	// Add empty filter to active list. 
-	activePostFilterList.push(emptyresult);
 }
 
 // Add post filter for given time property. 
@@ -125,16 +76,12 @@ function addNewTimeFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
+		tags:[],
 		title:propertytitle,
 		criterionidlist:[
 			// 'tagtitle',
 		],
-	};
-
-	// Create empty result. 
-	let emptyresult = {
-		title:propertytitle,
-		criterionindexlist:[],
+		activecriterionindexlist:[],
 	};
 
 	// Save distinct values for given tag from blog post data to filtercriteria list. 
@@ -149,11 +96,8 @@ function addNewTimeFilter(propertytag,propertytitle) {
 		if(!alreadyThere) result['criterionidlist'].push(value);
 	}
 
-	// Add full filter to main list. 
+	// Add filter to post filter list. 
 	postFilterList.push(result);
-
-	// Add empty filter to active list. 
-	activePostFilterList.push(emptyresult);
 }
 
 // Add post filter for given tag list. 
@@ -161,16 +105,12 @@ function addNewTagListFilter(propertytag,propertytitle) {
 
 	// Initialize result. 
 	let result = {
+		tags:[],
 		title:propertytitle,
 		criterionidlist:[
 			// 'tagtitle',
 		],
-	};
-
-	// Create empty result. 
-	let emptyresult = {
-		title:propertytitle,
-		criterionindexlist:[],
+		activecriterionindexlist:[],
 	};
 
 	// Save distinct values for given tag from blog post data to filtercriteria list. 
@@ -188,9 +128,6 @@ function addNewTagListFilter(propertytag,propertytitle) {
 		}
 	}
 
-	// Add full filter to main list. 
+	// Add filter to post filter list. 
 	postFilterList.push(result);
-
-	// Add empty filter to active list. 
-	activePostFilterList.push(emptyresult);
 }

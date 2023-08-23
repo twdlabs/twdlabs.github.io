@@ -68,7 +68,7 @@ div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafi
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:1.5rem;} */
 	div#container section.blogtable main.grid {grid-template-columns:4fr 5fr;}
-	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(1,1fr);}
+	div#container section.blogtable main.grid ul.postlist {grid-template-columns:1fr;}
 }
 
 
@@ -80,7 +80,7 @@ div#container section.blogtable main.grid ul.filterlist li.filter div.criteriafi
 
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:1.5rem;} */
-	div#container section.blogtable main.grid {grid-template-columns:3fr 4fr;}
+	div#container section.blogtable main.grid {grid-template-columns:repeat(2,1fr);}
 }
 
 
