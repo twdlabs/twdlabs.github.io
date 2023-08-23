@@ -48,7 +48,7 @@ const blogDataList = [
 	// 		month:99,
 	// 		date:99,
 	// 	},
-	// 	taglist:[
+	// 	keywords:[
 	// 		'xyz',
 	// 		'',
 	// 	],
@@ -66,7 +66,7 @@ const blogDataList = [
 			month:1,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'beach',
 			'water',
 			'sky',
@@ -85,7 +85,7 @@ const blogDataList = [
 			month:1,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'city',
 			'trees',
 			'streets',
@@ -104,7 +104,7 @@ const blogDataList = [
 			month:2,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'water',
 			'mountain',
 			'sky',
@@ -124,7 +124,7 @@ const blogDataList = [
 			month:2,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'city',
 			'trees',
 			'buildings',
@@ -144,7 +144,7 @@ const blogDataList = [
 			month:3,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'city',
 			'water',
 			'',
@@ -162,7 +162,7 @@ const blogDataList = [
 			month:3,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'device',
 			'desk',
 			'',
@@ -180,7 +180,7 @@ const blogDataList = [
 			month:4,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'sky',
 			'city',
 			'buildings',
@@ -199,7 +199,7 @@ const blogDataList = [
 			month:4,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'mountain',
 			'',
 		],
@@ -216,7 +216,7 @@ const blogDataList = [
 			month:5,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'beach',
 			'mountain',
 			'water',
@@ -236,7 +236,7 @@ const blogDataList = [
 			month:5,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'dog',
 			'grass',
 			'park',
@@ -255,7 +255,7 @@ const blogDataList = [
 			month:6,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'buildings',
 			'water',
 			'sky',
@@ -275,7 +275,7 @@ const blogDataList = [
 			month:6,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'code',
 			'',
 		],
@@ -292,7 +292,7 @@ const blogDataList = [
 			month:7,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'beach',
 			'mountain',
 			'water',
@@ -313,7 +313,7 @@ const blogDataList = [
 			month:7,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'sky',
 			'stars',
 			'',
@@ -331,7 +331,7 @@ const blogDataList = [
 			month:8,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'beach',
 			'mountain',
 			'water',
@@ -351,7 +351,7 @@ const blogDataList = [
 			month:8,
 			date:31,
 		},
-		taglist:[
+		keywords:[
 			'device',
 			'hands',
 			'suit',

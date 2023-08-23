@@ -259,10 +259,6 @@ function activateBlogPostFilters() {
 						console.log('Active criterion id:',activecriterionid);
 
 						// 
-	
-						// TODO: Assume match if any match found. 
-						let xyz = filtercategory[criterionindex];
-						if( xyz ) return true;
 					}
 				}
 

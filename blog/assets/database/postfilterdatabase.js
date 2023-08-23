@@ -20,21 +20,21 @@ const postFilterList = [
 /*****/
 
 
-// Add post filter for author. 
-addNewFilter('authorid','Authors');
+// Add post filter for authors. 
+addNewFilter('Authors','authorid', ['authorid']);
 // console.log('Author filter:',authorfilter);
 
-// Add post filter for series tag. 
-addNewTagListFilter('taglist','Series');
-// console.log('Tag filter:',tagfilter);
-
-// Add post filter for publish year. 
-addNewTimeFilter('year','Year');
+// Add post filter for year of publish date. 
+addNewFilter('Year','year', ['published','year']);
 // console.log('Year filter:',yearfilter);
 
-// Add post filter for publish month. 
-addNewTimeFilter('month','Month');
+// Add post filter for year/month of publish date. 
+addNewFilter('Month','month', ['published','month']);
 // console.log('Month filter:',monthfilter);
+
+// Add post filter for keywords. 
+addNewTagListFilter('Keywords','keywords', ['keywordlist']);
+// console.log('Tag filter:',tagfilter);
 
 // console.log('Post filter list:',postFilterList);
 
@@ -43,91 +43,83 @@ addNewTimeFilter('month','Month');
 
 
 // Add post filter for given property. 
-function addNewFilter(propertytag,propertytitle) {
+function addNewFilter(propertytitle,propertytag,propertytagsequence) {
 
-	// Initialize result. 
-	let result = {
-		tags:[],
+	// Initialize filter result. 
+	let resultfilter = {
+		// propertytags:propertytagsequence,
 		title:propertytitle,
 		criterionidlist:[
-			// 'tagtitle',
+			// 'criterionid',
 		],
 		activecriterionindexlist:[],
 	};
 
-	// Save distinct values for given tag from blog post data to filtercriteria list. 
+	// Save all distinct values for given property (from blog post list to filter criteria list). 
 	for(let blogpost of blogDataList) {
 
-		// Get value of tag for given post. 
-		let value = blogpost[propertytag];
+		// Get value of property for given post. 
+		let value = getPropertyValue(blogpost);
+		// let value = blogpost[propertytag];
 
-		// Check if already there. 
-		let alreadyThere = result['criterionidlist'].includes(value);
-		// Save value for given post if not already there. 
-		if(!alreadyThere) result['criterionidlist'].push(value);
+		// Check if already saved. 
+		let alreadySaved = resultfilter['criterionidlist'].includes(value);
+		// Save value for given post if not already saved. 
+		if(!alreadySaved) resultfilter['criterionidlist'].push(value);
 	}
 
 	// Add filter to post filter list. 
-	postFilterList.push(result);
-}
+	postFilterList.push(resultfilter);
 
-// Add post filter for given time property. 
-function addNewTimeFilter(propertytag,propertytitle) {
+	/****/
 
-	// Initialize result. 
-	let result = {
-		tags:[],
-		title:propertytitle,
-		criterionidlist:[
-			// 'tagtitle',
-		],
-		activecriterionindexlist:[],
-	};
+	// Get value of property. 
+	function getPropertyValue(initial) {
 
-	// Save distinct values for given tag from blog post data to filtercriteria list. 
-	for(let blogpost of blogDataList) {
+		// Initialize result. 
+		let result = initial;
 
-		// Get value of tag for given post. 
-		let value = blogpost.published[propertytag];
+		// Go thru sequence of property tags. 
+		for(let tag of propertytagsequence) {
 
-		// Check if already there. 
-		let alreadyThere = result['criterionidlist'].includes(value);
-		// Save value for given post if not already there. 
-		if(!alreadyThere) result['criterionidlist'].push(value);
+			// Add next property tag in sequence. 
+			result = result[tag];
+		}
+
+		// Return result. 
+		return result;
 	}
-
-	// Add filter to post filter list. 
-	postFilterList.push(result);
 }
 
 // Add post filter for given tag list. 
-function addNewTagListFilter(propertytag,propertytitle) {
+function addNewTagListFilter(propertytitle,propertytag,propertytagsequence) {
 
-	// Initialize result. 
-	let result = {
-		tags:[],
+	// Initialize filter result. 
+	let resultfilter = {
+		// propertytags:propertytagsequence,
 		title:propertytitle,
 		criterionidlist:[
-			// 'tagtitle',
+			// 'criterionid',
 		],
 		activecriterionindexlist:[],
 	};
 
-	// Save distinct values for given tag from blog post data to filtercriteria list. 
+	// Save all distinct values for given property (from blog post list to filter criteria list). 
 	for(let blogpost of blogDataList) {
 
-		// Get tag list for given post. 
-		let taglist = blogpost[propertytag];
-		// Go thru tag list for given post. 
-		for(let tag of taglist) {
+		// Get value of property list for given post. 
+		let propertylist = blogpost[propertytag];
 
-			// Check if already there. 
-			let alreadyThere = result['criterionidlist'].includes(tag);
-			// Save value for given post if not already there. 
-			if(tag && !alreadyThere) result['criterionidlist'].push(tag);
+		// Go thru values in property list for given post. 
+		for(let tag of propertylist) {
+
+			// Check if already saved. 
+			let alreadySaved = resultfilter['criterionidlist'].includes(tag);
+			// Save value for given post if not already saved. 
+			if(tag && !alreadySaved) resultfilter['criterionidlist'].push(tag);
 		}
 	}
 
 	// Add filter to post filter list. 
-	postFilterList.push(result);
+	postFilterList.push(resultfilter);
 }
