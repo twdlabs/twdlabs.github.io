@@ -221,7 +221,7 @@ function activateBlogPostFilters() {
 			}
 		}
 	
-		// TODO: Refresh matching post results for active filter tags. 
+		// Refresh matching post results for active filter tags. 
 		function refreshMatchingPostResults() {
 
 			// Get all blog post items. 
@@ -258,7 +258,9 @@ function activateBlogPostFilters() {
 						let activecriterionid = filtercategory['criterionidlist'][criterionindex];
 						console.log('Active criterion id:',activecriterionid);
 
-						// 
+						// TODO: Check if item matches any one criteria. 
+						let foundOne = xyz==xyz;
+						if(foundOne) return true;
 					}
 				}
 

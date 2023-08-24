@@ -30,11 +30,13 @@ function toggleNavbar() {
 
 	// Open nav if not already open. 
 	else {
+		console.log('Nav height:', navbarlist.scrollHeight);
 
 		// Open nav. 
 		navbar.classList.add('active');
 
 		// Set max height. 
-		navbarlist.style.maxHeight = navbarlist.scrollHeight;
+		navbarlist.style.maxHeight = `${navbarlist.scrollHeight}px`;
+		// navbarlist.style.maxHeight = '100vh';
 	}
 }
