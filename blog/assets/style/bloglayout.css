@@ -7,63 +7,63 @@ div#container section.blogtable {background-color:var(--bgcolor); color:var(--fo
 div#container section.blogtable main.grid {margin-top:1.25rem;}
 /* div#container section.blogtable main.grid {background-color:white; width:100%; padding:2rem 1.75rem; border-radius:var(--bigcornersize);} */
 /* div#container section.blogtable main.grid h1.head {padding-bottom:.75rem; border-bottom:1px solid; margin:0;} */
-div#container section.blogtable main.grid ul.postlist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:1.25rem; list-style:none; padding:0; margin:0;}
-div#container section.blogtable main.grid ul.postlist.x {display:none;}
-div#container section.blogtable main.grid ul.postlist li.postcard {background-color:var(--bgcolor); color:var(--forecolor); overflow:hidden; position:relative; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
-/* div#container section.blogtable main.grid ul.postlist li.postcard {display:flex; flex-direction:column; align-items:stretch;} */
+div#container section.blogtable main.grid div.posts ul.postlist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:1.25rem; list-style:none; padding:0; margin:0;}
+div#container section.blogtable main.grid div.posts ul.postlist.x {display:none;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard {background-color:var(--bgcolor); color:var(--forecolor); overflow:hidden; position:relative; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard {display:flex; flex-direction:column; align-items:stretch;} */
 
 /* Blog Table Section: Art */
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview {position:relative;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview a.artlink {display:block; position:relative; overflow:hidden; padding-top:62.5%;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview a.artlink img.preview {position:absolute; top:0; left:0;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview a.artlink img.preview {display:block; object-fit:cover; height:100%; width:100%;/*  border-radius:var(--cornersize); */}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel {position:absolute; bottom:0; right:0; /* height:100%; */}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel {background-color:var(--darkblackglass); display:flex; flex-direction:row; opacity:.75; padding:.125rem; border-radius:.375rem; margin:.75rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel {display:none;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel:hover {background-color:var(--grey);}
-/* div#container section.blogtable main.grid ul.postlist li.postcard.controls div.preview div.adminpanel {display:flex;} */
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel a.btn {background-color:var(--black); color:white; transition:.125s; padding:.625rem; border-radius:.25rem; margin:.125rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel a.btn svg.icon {display:block;}
-/* div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel a.editbtn {} */
-/* div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel a.editbtn:hover {background-color:dodgerblue;} */
-/* div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel a.deletebtn {} */
-/* div#container section.blogtable main.grid ul.postlist li.postcard div.preview div.adminpanel a.deletebtn:hover {background-color:red;} */
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview {position:relative;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview a.artlink {display:block; position:relative; overflow:hidden; padding-top:62.5%;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview a.artlink img.preview {position:absolute; top:0; left:0;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview a.artlink img.preview {display:block; object-fit:cover; height:100%; width:100%;/*  border-radius:var(--cornersize); */}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel {position:absolute; bottom:0; right:0; /* height:100%; */}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel {background-color:var(--darkblackglass); display:flex; flex-direction:row; opacity:.75; padding:.125rem; border-radius:.375rem; margin:.75rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel {display:none;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel:hover {background-color:var(--grey);}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.controls div.preview div.adminpanel {display:flex;} */
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel a.btn {background-color:var(--black); color:white; transition:.125s; padding:.625rem; border-radius:.25rem; margin:.125rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel a.btn svg.icon {display:block;}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel a.editbtn {} */
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel a.editbtn:hover {background-color:dodgerblue;} */
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel a.deletebtn {} */
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.preview div.adminpanel a.deletebtn:hover {background-color:red;} */
 
 /* Blog Table Section: Content */
-div#container section.blogtable main.grid ul.postlist li.postcard div.content {background-color:var(--bgcolor); display:flex; flex-direction:column; align-items:center; align-items:stretch;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.content a.textlink {color:inherit; text-decoration:none; padding:1.25rem 1.5rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.content a.textlink h1.title {font-size:1.25rem; font-weight:900; margin:0;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.content a.textlink h1.title:empty {background-color:gainsboro; height:.875em; width:75%; border-radius:10rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.content a.textlink h2.username {color:var(--grey); font-size:1.125rem; font-weight:900; margin:0;}
-div#container section.blogtable main.grid ul.postlist li.postcard div.content a.textlink h2.username:empty {background-color:gainsboro; height:.875em; width:37.5%; border-radius:10rem; margin-top:.25em;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content {padding:1.25rem 1.875rem 1.75rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content div.bar {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin-top:.375rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.titlelink {color:inherit; text-decoration:none;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.titlelink h1.title {font-size:1.25rem; font-weight:900; /* padding:0 1rem; */ margin:0;}
-/* div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.titlelink h1.title {text-align:center; text-transform:capitalize;} */
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.titlelink h1.title:empty {background-color:gainsboro; height:1em; width:12em; border-radius:1em;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge {color:var(--grey); font-size:1.125rem; text-decoration:none;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge {display:flex; flex-direction:row; align-items:center; position:relative;}
-/* div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge::after {position:absolute; top:0; left:0; --size:.5rem; height:var(--size); width:var(--size);} */
-/* div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge::after {background-color:var(--themecolor); border:.125rem solid white; border-radius:50%;} */
-/* div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge.admin::after {content:'';} */
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge img.avatar {background-color:gainsboro; display:block; --size:2rem; object-fit:cover; height:var(--size); width:var(--size); border:.125rem solid transparent; border-radius:50%;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge img.avatar {margin-right:.75rem;}
-/* div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge span.username {margin-left:.75rem;} */
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.userbadge span.username:empty {background-color:gainsboro; height:1em; width:6em; border-radius:1em;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content span.timestamp {color:var(--grey); /* font-size:.875rem; */ margin-left:1rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content span.timestamp:empty {background-color:gainsboro; height:1em; width:2.5em; border-radius:1em;}
-div#container section.blogtable.basic main.grid ul.postlist li.postcard div.content span.timestamp {display:none; visibility:hidden;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.commentcount {display:flex; flex-direction:row; align-items:center; color:var(--darkgrey); text-decoration:none; margin-left:1rem;}
-div#container section.blogtable.basic main.grid ul.postlist li.postcard div.content a.commentcount {display:none; visibility:hidden;}
-/* div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.commentcount svg.icon {} */
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.commentcount span.count {margin-left:.375rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content a.commentcount span.count:empty {background-color:gainsboro; height:1em; width:1.25em; border-radius:1em;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content p.textcopy {font-size:1rem; font-weight:100; /* text-align:center; *//*  padding:0 1rem; */ margin:0; margin-top:.375rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content div.ctabox {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
-/* div#container section.blogtable main.grid ul.postlist li.postcard.full div.content div.ctabox {display:none;} */
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content div.ctabox a.readbtn {background-color:var(--themecolor); padding:.375rem 1rem; border-radius:var(--cornersize); margin-top:.75rem;}
-div#container section.blogtable main.grid ul.postlist li.postcard.full div.content div.ctabox a.readbtn {color:white; font-weight:400; letter-spacing:.5px; text-align:center; text-decoration:none;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.content {background-color:var(--bgcolor); display:flex; flex-direction:column; align-items:center; align-items:stretch;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.content a.textlink {color:inherit; text-decoration:none; padding:1.25rem 1.5rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.content a.textlink h1.title {font-size:1.25rem; font-weight:900; margin:0;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.content a.textlink h1.title:empty {background-color:gainsboro; height:.875em; width:75%; border-radius:10rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.content a.textlink h2.username {color:var(--grey); font-size:1.125rem; font-weight:900; margin:0;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard div.content a.textlink h2.username:empty {background-color:gainsboro; height:.875em; width:37.5%; border-radius:10rem; margin-top:.25em;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content {padding:1.25rem 1.875rem 1.75rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content div.bar {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin-top:.375rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.titlelink {color:inherit; text-decoration:none;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.titlelink h1.title {font-size:1.25rem; font-weight:900; /* padding:0 1rem; */ margin:0;}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.titlelink h1.title {text-align:center; text-transform:capitalize;} */
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.titlelink h1.title:empty {background-color:gainsboro; height:1em; width:12em; border-radius:1em;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge {color:var(--grey); font-size:1.125rem; text-decoration:none;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge {display:flex; flex-direction:row; align-items:center; position:relative;}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge::after {position:absolute; top:0; left:0; --size:.5rem; height:var(--size); width:var(--size);} */
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge::after {background-color:var(--themecolor); border:.125rem solid white; border-radius:50%;} */
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge.admin::after {content:'';} */
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge img.avatar {background-color:gainsboro; display:block; --size:2rem; object-fit:cover; height:var(--size); width:var(--size); border:.125rem solid transparent; border-radius:50%;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge img.avatar {margin-right:.75rem;}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge span.username {margin-left:.75rem;} */
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.userbadge span.username:empty {background-color:gainsboro; height:1em; width:6em; border-radius:1em;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content span.timestamp {color:var(--grey); /* font-size:.875rem; */ margin-left:1rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content span.timestamp:empty {background-color:gainsboro; height:1em; width:2.5em; border-radius:1em;}
+div#container section.blogtable.basic main.grid div.posts ul.postlist li.postcard div.content span.timestamp {display:none; visibility:hidden;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.commentcount {display:flex; flex-direction:row; align-items:center; color:var(--darkgrey); text-decoration:none; margin-left:1rem;}
+div#container section.blogtable.basic main.grid div.posts ul.postlist li.postcard div.content a.commentcount {display:none; visibility:hidden;}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.commentcount svg.icon {} */
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.commentcount span.count {margin-left:.375rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content a.commentcount span.count:empty {background-color:gainsboro; height:1em; width:1.25em; border-radius:1em;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content p.textcopy {font-size:1rem; font-weight:100; /* text-align:center; *//*  padding:0 1rem; */ margin:0; margin-top:.375rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content div.ctabox {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+/* div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content div.ctabox {display:none;} */
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content div.ctabox a.readbtn {background-color:var(--themecolor); padding:.375rem 1rem; border-radius:var(--cornersize); margin-top:.75rem;}
+div#container section.blogtable main.grid div.posts ul.postlist li.postcard.full div.content div.ctabox a.readbtn {color:white; font-weight:400; letter-spacing:.5px; text-align:center; text-decoration:none;}
 
 /* Blog Table Section: More */
 /* div#container section.blogtable {} */
@@ -83,7 +83,7 @@ div#container section.blogtable main.grid div.more a.morebtn svg.icon {margin-le
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:3rem;} */
 	/* div#container section.blogtable main.grid {} */
-	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(3,1fr);}
+	div#container section.blogtable main.grid div.posts ul.postlist {grid-template-columns:repeat(3,1fr);}
 }
 
 
@@ -93,7 +93,7 @@ div#container section.blogtable main.grid div.more a.morebtn svg.icon {margin-le
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:1.5rem;} */
 	/* div#container section.blogtable main.grid {} */
-	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(2,1fr);}
+	div#container section.blogtable main.grid div.posts ul.postlist {grid-template-columns:repeat(2,1fr);}
 }
 
 
@@ -112,5 +112,5 @@ div#container section.blogtable main.grid div.more a.morebtn svg.icon {margin-le
 	/* Blog Table Section */
 	/* div#container section.blogtable {margin-top:0;} */
 	/* div#container section.blogtable main.grid {} */
-	div#container section.blogtable main.grid ul.postlist {grid-template-columns:repeat(1,1fr);}
+	div#container section.blogtable main.grid div.posts ul.postlist {grid-template-columns:repeat(1,1fr);}
 }

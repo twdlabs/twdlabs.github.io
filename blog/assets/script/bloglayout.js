@@ -10,6 +10,7 @@ const excerptcharlimit = 150;
 
 // Create blog post layout. 
 function createBlogPostLayout(post) {
+	// console.log('post:',post);
 
 	// Choose whether or not to use full layout. 
 	let useFullLayout = false;
@@ -41,7 +42,7 @@ function createBlogPostLayout(post) {
 		// 
 		return `
 		<!-- postcard -->
-		<li class="postcard">
+		<li class="postcard" data-postid="${ post.postid }">
 
 			<!-- preview -->
 			<div class="preview">
@@ -91,7 +92,7 @@ function createBlogPostLayout(post) {
 		// 
 		return `
 		<!-- postcard -->
-		<li class="postcard full ${ currentUser ? (currentUser.admin ? 'controls' : '') : '' }">
+		<li class="postcard full ${ currentUser ? (currentUser.admin ? 'controls' : '') : '' }" data-postid="${ post.postid }">
 	
 			<!-- preview -->
 			<div class="preview">

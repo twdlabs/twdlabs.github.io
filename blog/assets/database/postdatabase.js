@@ -375,6 +375,23 @@ blogDataList.sort( sortPosts );
 /*****/
 
 
+// Get post by id. 
+function getPostById(querypostid) {
+
+	// Go thru blog post data items. 
+	for(let postitem of blogDataList) {
+
+		// Check if match found. 
+		let matchFound = (postitem.postid==querypostid);
+
+		// Return post item if found. 
+		if(matchFound) return postitem;
+	}
+
+	// Return nothing if not found. 
+	return null;
+}
+
 // Define sort function by publish date. 
 function sortPosts(a,b) {
 

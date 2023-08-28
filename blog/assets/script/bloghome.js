@@ -5,7 +5,7 @@
 const featuredestination = document.querySelector('div#container section.feature main.grid article.media');
 
 // Get destination for list of posts. 
-const bloglistdestination = document.querySelector('div#container section.allposts main.grid ul.postlist');
+const bloglistdestination = document.querySelector('div#container section.allposts main.grid div.posts ul.postlist');
 
 // Get destination for block of blog contributors. 
 const contributorsdestination = document.querySelector('div#container section.contributors main.grid');

@@ -21,6 +21,7 @@
 	--black:#222;
 	--ltblack:#444;
 	--lightgrey:#F4F4F4;
+	--lightgrey:#e8e8e8;
 	--themecolor:dodgerblue;
 	--themecolor:var(--green);
 	--drkthemecolor:var(--drkgreen);
@@ -33,18 +34,21 @@
 	--darkblackglass:#0006;
 	--lightblackglass:#0001;
 
-	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
-
+	/* Numbers */
 	--pagewidth:80rem;
 	--pagewidth:100rem;
 	--headerheight:6rem;
 	--cornersize:.75rem;
 	--bigcornersize:calc(var(--cornersize)*2);
-	--sectionspacing:1.5rem;
+	--gridspacing:1.5rem;
+	--sectionspacing:3rem;
 
+	/* Box Shadow */
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
 	--boxshadowx:rgba(0,0,0,0.25) 0 0.25rem .75rem 0;
+
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
 }
 
 
@@ -95,7 +99,7 @@ div#container nav.navbar main.grid div.navtoggler svg.icon.bars {display:block; 
 
 
 /* General Section */
-div#container section {transition:.5s; padding:0 var(--sectionspacing); /* padding-bottom:2.5rem; */ margin-bottom:3rem;}
+div#container section {transition:.5s; padding:0 var(--gridspacing); /* padding-bottom:2.5rem; */ margin-bottom:var(--sectionspacing);}
 div#container section > h2.head {font-size:2rem; text-align:center; margin-bottom:1rem;}
 /* div#container section > h2.head {max-width:var(--pagewidth); margin:0 auto 1rem;} */
 div#container section main.grid {max-width:var(--pagewidth); /* padding:0 2rem; */ margin:0 auto;}
@@ -104,7 +108,7 @@ div#container section main.grid {max-width:var(--pagewidth); /* padding:0 2rem; 
 /* div#container section.hero {display:none;} */
 div#container section.hero {background-image:linear-gradient(dodgerblue,wheat); padding:0 2rem; /* margin-bottom:0; */ box-shadow:var(--boxshadow);}
 div#container/* .f */ section.hero {margin-top:var(--headerheight);}
-div#container section.hero {background-size:cover; background-position:top center; position:relative; transition:.5s;}
+div#container section.hero {background-size:cover; background-position:top center; background-repeat:no-repeat; position:relative; transition:.5s;}
 /* div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;} */
 div#container section.hero::before {position:absolute; top:0; left:0; height:100%; width:100%; z-index:0;}
 div#container section.hero::before {background-color:var(--whitesheet); content:'';}

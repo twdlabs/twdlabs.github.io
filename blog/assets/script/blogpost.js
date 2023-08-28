@@ -14,7 +14,7 @@ const postbodydestination = document.querySelector('div#container section.body m
 const authorbiodestination = document.querySelector('div#container section.author main.grid');
 
 // Get destination for list of other posts. 
-const otherpostsdestination = document.querySelector('div#container section.otherposts main.grid ul.postlist');
+const otherpostsdestination = document.querySelector('div#container section.otherposts main.grid div.posts ul.postlist');
 
 
 /*****/
@@ -130,6 +130,18 @@ function loadBlogPostContent() {
 					<!-- video -->
 					<video class="video" src="${ vidurl }" controls autoplay muted loop></video>
 					<!-- /video -->
+
+					<!-- listtogglerbtn -->
+					<div class="listtogglerbtn">
+
+						<!-- icon -->
+						<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+						</svg>
+						<!-- /icon -->
+						
+					</div>
+					<!-- /listtogglerbtn -->
 	
 				</div>
 				<!-- /vid -->

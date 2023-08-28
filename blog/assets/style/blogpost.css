@@ -26,20 +26,24 @@ div#container section.body {background-color:var(--bgcolor);}
 
 /* Body Section: Media */
 div#container section.body main.grid article.media {display:grid; grid-template-columns:repeat(3,1fr); grid-template-areas:'vid vid plist';}
-div#container section.body main.grid article.media {position:relative; overflow:hidden; border-radius:var(--cornersize); margin-top:var(--sectionspacing); box-shadow:var(--boxshadow);}
+div#container section.body main.grid article.media {position:relative; overflow:hidden; border-radius:var(--cornersize); margin-top:var(--gridspacing); box-shadow:var(--boxshadow);}
 div#container section.body main.grid article.media.full {grid-template-columns:1fr;}
 /* Body Section: Media Player */
 div#container section.body main.grid article.media div.vid {grid-area:vid;}
 div#container section.body main.grid article.media div.vid {position:relative; padding-top:56.25%;}
 div#container section.body main.grid article.media div.vid video.video {position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+div#container section.body main.grid article.media div.vid div.listtogglerbtn {background-color:var(--black); color:white; cursor:pointer; opacity:0; transition:.25s; padding:.375rem .375rem; border-radius:.5rem;}
+div#container section.body main.grid article.media div.vid div.listtogglerbtn {position:absolute; left:1rem; top:50%; transform:translateY(-50%);}
+div#container section.body main.grid article.media div.vid:hover div.listtogglerbtn {opacity:1;}
+div#container section.body main.grid article.media div.vid div.listtogglerbtn svg.icon {display:block; font-size:2rem;}
 /* Body Section: Media Playlist */
-div#container section.body main.grid article.media div.playlist {background-color:var(--black); color:white; height:100%; overflow:auto;}
 div#container section.body main.grid article.media div.playlist {grid-area:plist;}
+div#container section.body main.grid article.media div.playlist {background-color:var(--black); color:white; height:100%; overflow:auto; opacity:0; transition:.25s;}
 div#container section.body main.grid article.media.full div.playlist {position:absolute; top:0; right:0; bottom:0; height:100%; width:24rem; opacity:.75;}
 div#container section.body main.grid article.media.full div.playlist {transform:translateX(100%); box-shadow:var(--boxshadow); transition:.5s;}
-div#container section.body main.grid article.media.full:hover div.playlist {overflow:visible;}
+div#container section.body main.grid article.media.full:hover div.playlist {overflow:visible; opacity:1;}
 div#container section.body main.grid article.media.full div.playlist:hover {transform:translateX(0); overflow:auto;}
-div#container section.body main.grid article.media.full:hover div.playlist::after {background-color:inherit; content:''; border-radius:10rem 0 0 10rem;}
+div#container section.body main.grid article.media.full div.playlist::after {background-color:inherit; content:''; border-radius:10rem 0 0 10rem;}
 div#container section.body main.grid article.media.full:hover div.playlist::after {position:absolute; top:0; bottom:0; right:100%; width:1.5rem;}
 div#container section.body main.grid article.media div.playlist ul.postlist {list-style:none; counter-reset:playlistindex; padding:0; margin:0; margin-bottom:.75rem;}
 div#container section.body main.grid article.media div.playlist ul.postlist li.postitem {counter-increment:playlistindex;}
@@ -59,7 +63,8 @@ div#container section.body main.grid article.media div.playlist ul.postlist li.p
 div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion {display:none;}
 /* div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.done a.link span.completion {display:block;} */
 div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion svg.check {display:block; font-size:2rem;}
-div#container section.body main.grid article.media div.playlist div.listhead {background-color:var(--blackglass); display:flex; flex-direction:row; justify-content:space-between; align-items:center; padding:1.5rem 2rem 1.375rem; margin-bottom:.75rem;}
+div#container section.body main.grid article.media div.playlist div.listhead {background-color:var(--blackglass); padding:1.5rem 2rem 1.375rem; /* margin-bottom:.75rem; */}
+div#container section.body main.grid article.media div.playlist div.listhead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:center;}
 div#container section.body main.grid article.media div.playlist div.listhead h1.listtitle {font-size:1.25rem; margin:0;}
 div#container section.body main.grid article.media div.playlist div.listhead h2.listcount {font-size:1.125rem; margin:0;}
 div#container section.body main.grid article.media div.playlist div.listfoot {background-color:var(--blackglass); display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.625rem 2rem;}
@@ -68,8 +73,8 @@ div#container section.body main.grid article.media div.playlist div.listfoot a.n
 div#container section.body main.grid article.media div.playlist div.listfoot a.navlink:hover {background-color:var(--whiteglasss);}
 
 /* Body Section: Post */
-div#container section.body main.grid article.post {display:grid; grid-template-columns:2fr 1fr; grid-template-areas:'transcript authorbio'; grid-gap:var(--sectionspacing);}
-div#container section.body main.grid article.post {padding-bottom:var(--sectionspacing); margin-top:var(--sectionspacing);}
+div#container section.body main.grid article.post {display:grid; grid-template-columns:2fr 1fr; grid-template-areas:'transcript authorbio'; grid-gap:var(--gridspacing);}
+div#container section.body main.grid article.post {/* padding-bottom:var(--gridspacing); */ margin-top:var(--gridspacing);}
 div#container section.body main.grid article.post > * {box-shadow:var(--boxshadow);}
 div#container section.body main.grid article.post::after {grid-area:pseudo;}
 /* Body Section: Post Transcript */
@@ -108,7 +113,7 @@ div#container section.body main.grid article.post div.authorbio p.briefbio {font
 
 /* Body Section: Navigator */
 div#container section.body main.grid div.navigator {background-color:white; display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section.body main.grid div.navigator {/* grid-area:nav; */ padding:1.25rem; border-radius:var(--cornersize); margin-top:var(--sectionspacing); box-shadow:var(--boxshadow);}
+div#container section.body main.grid div.navigator {/* grid-area:nav; */ padding:1.25rem; border-radius:var(--cornersize); margin-top:var(--gridspacing); box-shadow:var(--boxshadow);}
 /* div#container section.body main.grid div.navigator {display:none;} */
 div#container section.body main.grid div.navigator a.navlink {color:inherit; text-decoration:none;}
 div#container section.body main.grid div.navigator a.navlink {background-color:var(--themecolor); color:white; padding:1rem 1.5rem; border-radius:.375rem;}

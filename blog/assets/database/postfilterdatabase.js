@@ -4,14 +4,17 @@
 // Define list of post filters, each with: list of criteria, list of active criteria indexes. 
 const postFilterList = [
 	// {
-	// 	tags:[
+	// 	filtertitle:'Filter Title',
+	// 	propertytags:[
 	// 		'xyz',
 	// 	],
-	// 	title:'Title',
-	// 	criterionidlist:[
-	// 		'xyz',
+	// 	criterialist:[
+	// 		{
+	// 			criterionid:'xyz',
+	// 			criteriontitle:'xyz',
+	// 		},
 	// 	],
-	// 	activecriterionindexlist:[],
+	// 	criterionindexactivelist:[],
 	// },
 ];
 // console.log('Post filter list:',postFilterList);
@@ -21,19 +24,19 @@ const postFilterList = [
 
 
 // Add post filter for authors. 
-addNewFilter('Authors','authorid', ['authorid']);
+addNewFilter('Authors', ['authorid'] );
 // console.log('Author filter:',authorfilter);
 
 // Add post filter for year of publish date. 
-addNewFilter('Year','year', ['published','year']);
+addNewFilter('Year', ['published','year'] );
 // console.log('Year filter:',yearfilter);
 
 // Add post filter for year/month of publish date. 
-addNewFilter('Month','month', ['published','month']);
+addNewFilter('Month', ['published','month'] );
 // console.log('Month filter:',monthfilter);
 
 // Add post filter for keywords. 
-addNewTagListFilter('Keywords','keywords', ['keywordlist']);
+addNewTagListFilter('Keywords', ['keywords'] );
 // console.log('Tag filter:',tagfilter);
 
 // console.log('Post filter list:',postFilterList);
@@ -43,29 +46,46 @@ addNewTagListFilter('Keywords','keywords', ['keywordlist']);
 
 
 // Add post filter for given property. 
-function addNewFilter(propertytitle,propertytag,propertytagsequence) {
+function addNewFilter(propertytitle,propertytagsequence) {
 
 	// Initialize filter result. 
 	let resultfilter = {
+		filtertitle:propertytitle,
+		// propertytag:propertytag,
 		// propertytags:propertytagsequence,
-		title:propertytitle,
-		criterionidlist:[
-			// 'criterionid',
+		criterialist:[
+			// {
+			// 	criterionid:'xyz',
+			// 	criteriontitle:'xyz',
+			// 	filtertagsequence:[
+			// 		'xyz',
+			// 	],
+			// },
 		],
-		activecriterionindexlist:[],
+		criterionindexactivelist:[],
 	};
 
 	// Save all distinct values for given property (from blog post list to filter criteria list). 
 	for(let blogpost of blogDataList) {
 
-		// Get value of property for given post. 
-		let value = getPropertyValue(blogpost);
-		// let value = blogpost[propertytag];
+		// Get id for given post and filter criterion. 
+		let criterionid = getPropertyValueByTagSequence(blogpost,propertytagsequence);
+		// console.log('id:',criterionid);
 
-		// Check if already saved. 
-		let alreadySaved = resultfilter['criterionidlist'].includes(value);
-		// Save value for given post if not already saved. 
-		if(!alreadySaved) resultfilter['criterionidlist'].push(value);
+		// Check if criterion already saved. 
+		let criterionAlreadySaved = false;
+		// let criterionAlreadySaved = resultfilter['criterialist'].includes(criterionid);
+		// let criterionAlreadySaved = checkIfCriterionAlreadySaved(criterionid);
+
+		// Create new criterion item. 
+		let newcriterionitem = 
+		{
+			criterionid:criterionid,
+			criteriontitle:getCriterionTitle(criterionid),
+			filtertagsequence:propertytagsequence,
+		};
+		// Save value for given post and filter criterion (if not already saved). 
+		if(!criterionAlreadySaved) resultfilter['criterialist'].push(newcriterionitem);
 	}
 
 	// Add filter to post filter list. 
@@ -73,53 +93,107 @@ function addNewFilter(propertytitle,propertytag,propertytagsequence) {
 
 	/****/
 
-	// Get value of property. 
-	function getPropertyValue(initial) {
+	// TODO: Check if criterion already saved. 
+	function checkIfCriterionAlreadySaved(value) {
 
-		// Initialize result. 
-		let result = initial;
+		// GO thru result filter. 
+		for(let xyz of resultfilter) {
 
-		// Go thru sequence of property tags. 
-		for(let tag of propertytagsequence) {
-
-			// Add next property tag in sequence. 
-			result = result[tag];
+			// 
 		}
+	}
 
-		// Return result. 
-		return result;
+	// TODO: Get criterion title by criterion id. 
+	function getCriterionTitle(criterionid) {
+
+		// 
+		return `criterion for id: ${criterionid}`;
 	}
 }
 
 // Add post filter for given tag list. 
-function addNewTagListFilter(propertytitle,propertytag,propertytagsequence) {
+function addNewTagListFilter(propertytitle,propertytagsequence) {
 
 	// Initialize filter result. 
 	let resultfilter = {
+		filtertitle:propertytitle,
+		// propertytag:propertytag,
 		// propertytags:propertytagsequence,
-		title:propertytitle,
-		criterionidlist:[
-			// 'criterionid',
+		criterialist:[
+			// {
+			// 	criterionid:'xyz',
+			// 	criteriontitle:'xyz',
+			// 	filtertagsequence:[
+			// 		'xyz',
+			// 	],
+			// },
 		],
-		activecriterionindexlist:[],
+		criterionindexactivelist:[],
 	};
 
 	// Save all distinct values for given property (from blog post list to filter criteria list). 
 	for(let blogpost of blogDataList) {
 
-		// Get value of property list for given post. 
-		let propertylist = blogpost[propertytag];
+		// Get list of ids for given post and filter criterion. 
+		let criterionidslist = getPropertyValueByTagSequence(blogpost,propertytagsequence);
 
 		// Go thru values in property list for given post. 
-		for(let tag of propertylist) {
+		for(let criterionid of criterionidslist) {
 
-			// Check if already saved. 
-			let alreadySaved = resultfilter['criterionidlist'].includes(tag);
-			// Save value for given post if not already saved. 
-			if(tag && !alreadySaved) resultfilter['criterionidlist'].push(tag);
+			// Check if criterion already saved. 
+			let criterionAlreadySaved = false;
+			// let criterionAlreadySaved = resultfilter['criterialist'].includes(criterionid);
+
+			// Create new criterion item. 
+			let newcriterionitem = 
+			{
+				criterionid:criterionid,
+				criteriontitle:getCriterionTitle(criterionid),
+				filtertagsequence:propertytagsequence,
+			};
+			// Save value for given post and filter criterion (if not already saved). 
+			if(criterionid && !criterionAlreadySaved) resultfilter['criterialist'].push(newcriterionitem);
 		}
 	}
 
 	// Add filter to post filter list. 
 	postFilterList.push(resultfilter);
+
+	/****/
+
+	// TODO: Check if criterion already saved. 
+	function checkIfCriterionAlreadySaved(value) {
+
+		// GO thru result filter. 
+		for(let xyz of resultfilter) {
+
+			// 
+		}
+	}
+
+	// TODO: Get criterion title by criterion id. 
+	function getCriterionTitle(criterionid) {
+
+		// 
+		return `criterion for id: ${criterionid}`;
+	}
+}
+
+// Get value of property by tag sequence. 
+function getPropertyValueByTagSequence(initial,propertytags) {
+	// console.log('initial:',initial);
+	// console.log('propertytags:',propertytags);
+
+	// Initialize result. 
+	let result = initial;
+
+	// Go thru sequence of property tags. 
+	for(let tag of propertytags) {
+
+		// Add next property tag in sequence. 
+		result = result[tag];
+	}
+
+	// Return result. 
+	return result;
 }
