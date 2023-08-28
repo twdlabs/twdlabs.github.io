@@ -8,15 +8,15 @@
 /* Hero Section */
 /* div#container section.hero {} */
 div#container section.hero::before {backdrop-filter:blur(.5rem);}
-div#container section.hero main.grid {align-items:flex-start; padding:4rem 0;}
-div#container section.hero main.grid h1.title {font-size:3rem;}
-div#container section.hero main.grid h1.title:empty {background-color:gainsboro; display:block; height:1em; width:10em; border-radius:10em;}
-div#container section.hero main.grid h2.author {font-size:2rem; margin-top:.625rem;}
-div#container section.hero main.grid h2.author {display:flex; flex-direction:row; align-items:center;}
-div#container section.hero main.grid h2.author svg.icon {display:none; color:dodgerblue; font-size:.75em; margin-left:.5rem;}
-/* div#container section.hero main.grid h2.author span.caption {} */
-div#container section.hero main.grid h2.author span.caption:empty {background-color:gainsboro; height:1em; width:10em; border-radius:10em;}
-div#container section.hero main.grid h2.author.admin svg.icon {display:block;}
+div#container section.hero main.grid {align-items:flex-start;}
+div#container section.hero main.grid h1.head {font-size:3rem;}
+div#container section.hero main.grid h1.head:empty {background-color:gainsboro; display:block; height:1em; width:10em; border-radius:10em;}
+div#container section.hero main.grid h2.head {font-size:2rem; margin-top:.25rem;}
+div#container section.hero main.grid h2.head {display:flex; flex-direction:row; align-items:center;}
+div#container section.hero main.grid h2.head svg.icon {display:none; color:dodgerblue; font-size:.75em; margin-left:.5rem;}
+/* div#container section.hero main.grid h2.head span.caption {} */
+div#container section.hero main.grid h2.head span.caption:empty {background-color:gainsboro; height:1em; width:10em; border-radius:10em;}
+div#container section.hero main.grid h2.head.admin svg.icon {display:block;}
 div#container section.hero main.grid p.textcopy {font-size:1.75rem;}
 
 
@@ -181,9 +181,9 @@ div#container section.author main.grid img.avatar.float {position:absolute; top:
 
 	/* Hero Section */
 	/* div#container section.hero {} */
-	div#container section.hero main.grid {padding:3rem 0;}
-	div#container section.hero main.grid h1.title {font-size:2.25rem;}
-	div#container section.hero main.grid h2.author {font-size:1.5rem;}
+	/* div#container section.hero main.grid {} */
+	div#container section.hero main.grid h1.head {font-size:2.25rem;}
+	div#container section.hero main.grid h2.head {font-size:1.5rem;}
 	div#container section.hero main.grid p.textcopy {font-size:1rem;}
 
 	/* Body Section */

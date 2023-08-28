@@ -81,8 +81,9 @@ div#container {/* display:grid; place-items:center; */ min-height:100vh; /* padd
 /* Navbar */
 div#container nav.navbar {background-color:white; color:black; width:100%; height:var(--headerheight); padding:0 1.5rem; box-shadow:var(--boxshadowx);}
 div#container/* .f */ nav.navbar {position:absolute; position:fixed; top:0; left:0; z-index:100;}
-div#container nav.navbar main.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center; height:100%; max-width:calc(1.125*var(--pagewidth)); margin:0 auto;}
-div#container nav.navbar main.grid h1.head {display:flex; flex-direction:row; align-items:center; align-items:flex-start; font-size:2.5rem; transition:.5s; margin:0;}
+div#container nav.navbar main.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container nav.navbar main.grid {height:100%; max-width:calc(1.125*var(--pagewidth)); margin:0 auto;}
+div#container nav.navbar main.grid h1.head {display:flex; flex-direction:row; align-items:center; align-items:flex-start; font-size:2.5rem; transition:.25s; margin:0;}
 div#container nav.navbar main.grid h1.head img.logo {height:1.25em;}
 /* div#container nav.navbar main.grid h1.head span.caption {margin-left:.75rem;} */
 div#container nav.navbar main.grid h1.head span.caption:empty {background-color:gainsboro; height:1em; width:5em; border-radius:10em;}
@@ -112,10 +113,10 @@ div#container section.hero {background-size:cover; background-position:top cente
 /* div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;} */
 div#container section.hero::before {position:absolute; top:0; left:0; height:100%; width:100%; z-index:0;}
 div#container section.hero::before {background-color:var(--whitesheet); content:'';}
-div#container section.hero main.grid {/* background-color:#FFF8; */ position:relative; border-radius:.5rem;}
+div#container section.hero main.grid {/* background-color:#FFF8; */ position:relative; transition:.25s; padding:3rem 0; border-radius:.5rem;}
 div#container section.hero main.grid {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container section.hero main.grid h1.head {font-weight:400; margin:0;}
-div#container section.hero main.grid h2.head {font-weight:300; margin:0;}
+div#container section.hero main.grid h1.head {font-weight:400; transition:.25s; margin:0;}
+div#container section.hero main.grid h2.head {font-weight:300; transition:.25s; margin:0;}
 div#container section.hero main.grid p.textcopy {font-weight:400; text-align:center;}
 /* div#container section.hero main.grid img.preview {width:100%; max-width:var(--pagewidth); margin-top:2rem;} */
 
@@ -133,9 +134,15 @@ div#container footer.footer img.logo {width:10rem; border-radius:.5rem;}
 @media screen and (max-width:64rem) {
 	
 	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar main.grid {} */
+	/* div#container nav.navbar main.grid h1.head {} */
+	/* div#container nav.navbar main.grid ul.navlist {} */
+	/* div#container nav.navbar main.grid div.navtoggler {} */
 
 	/* General Section */
 	/* div#container section {} */
+	/* div#container section main.grid {} */
 
 	/* Hero Section */
 	/* div#container section.hero {} */
@@ -147,12 +154,19 @@ div#container footer.footer img.logo {width:10rem; border-radius:.5rem;}
 @media screen and (max-width:56rem) {
 
 	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar main.grid {} */
+	/* div#container nav.navbar main.grid h1.head {} */
+	/* div#container nav.navbar main.grid ul.navlist {} */
+	/* div#container nav.navbar main.grid div.navtoggler {} */
 
 	/* General Section */
 	div#container section {margin-bottom:2rem;}
+	/* div#container section main.grid {} */
 
 	/* Hero Section */
 	/* div#container section.hero {} */
+	/* div#container section.hero main.grid {} */
 }
 
 /* Big Smartphone Screen */
@@ -168,8 +182,12 @@ div#container footer.footer img.logo {width:10rem; border-radius:.5rem;}
 	div#container nav.navbar main.grid div.navtoggler svg.icon.bars {font-size:2rem;}
 
 	/* General Section */
+	/* div#container section {} */
+	/* div#container section main.grid {} */
 
 	/* Hero Section */
+	/* div#container section.hero {} */
+	div#container section.hero main.grid {padding:2rem 0;}
 }
 
 
@@ -189,8 +207,11 @@ div#container footer.footer img.logo {width:10rem; border-radius:.5rem;}
 
 	/* General Section */
 	/* div#container section {padding:0 1.5rem; margin-bottom:1.5rem;} */
+	/* div#container section main.grid {} */
 
 	/* Hero Section */
+	/* div#container section.hero {} */
+	/* div#container section.hero main.grid {} */
 }
 
 
@@ -198,8 +219,17 @@ div#container footer.footer img.logo {width:10rem; border-radius:.5rem;}
 @media screen and (max-width:32rem) {
 
 	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar main.grid {} */
+	/* div#container nav.navbar main.grid h1.head {} */
+	/* div#container nav.navbar main.grid ul.navlist {} */
+	/* div#container nav.navbar main.grid div.navtoggler {} */
 
 	/* General Section */
+	/* div#container section {} */
+	/* div#container section main.grid {} */
 
 	/* Hero Section */
+	/* div#container section.hero {} */
+	/* div#container section.hero main.grid {} */
 }

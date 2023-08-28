@@ -9,9 +9,9 @@
 /* div#container section.hero::before {backdrop-filter:blur(.25rem);} */
 div#container section.hero main.grid {align-items:center; padding:12rem 0; padding:9rem 0; padding:10vw 0;}
 /* div#container section.hero main.grid {padding:4rem 0;} */
-/* div#container section.hero main.grid h2.head {display:none;} */
-div#container section.hero main.grid h2.head {font-size:2.5rem;}
 div#container section.hero main.grid h1.head {font-size:4rem;}
+div#container section.hero main.grid h2.head {font-size:2.5rem;}
+/* div#container section.hero main.grid h2.head {display:none;} */
 div#container section.hero main.grid p.textcopy {font-size:1.5rem;}
 div#container section.hero main.grid a.editbtn {background-color:var(--black); padding:.75rem 1.5rem; border-radius:var(--cornersize); margin-top:2rem;}
 div#container section.hero main.grid a.editbtn {display:flex; flex-direction:row; align-items:center;}
