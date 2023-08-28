@@ -274,6 +274,9 @@ function activateBlogPostFilters() {
 			function checkForMatchingPost(postitem) {
 				console.log('Checking for matching post:',postitem);
 
+				// Check if any criteria selected. 
+				let noCriteriaSelected = true;
+
 				// Go thru each post filter category. 
 				for(let filterindex in postFilterList) {
 					// Get filter category. 
@@ -283,6 +286,9 @@ function activateBlogPostFilters() {
 					// Go thru each active criterion. 
 					for(let criterionindex of filtercategory['criterionindexactivelist']) {
 						// console.log('Criterion index:',criterionindex);
+
+						// Check if any criteria selected. 
+						noCriteriaSelected = false;
 						
 						// Get active criterion item. -
 						let activecriterionitem = filtercategory['criterialist'][criterionindex];
@@ -290,7 +296,10 @@ function activateBlogPostFilters() {
 						
 						// Get active criterion id. -
 						let activecriterionid = activecriterionitem.criterionid;
-						// console.log('\tActive criterion id:',activecriterionid);
+						console.log('\tActive criterion id:',activecriterionid);
+
+						// Check if keyword associated with post. 
+						// let keywordMatchFound = xyz.includes(activecriterionid);
 						
 						// TODO: Get property tag sequence for active criterion (or current filter). 
 						let activecriteriontagsequence = activecriterionitem.filtertagsequence;
@@ -300,8 +309,16 @@ function activateBlogPostFilters() {
 						// Get post id. 
 						let postid = postitem.getAttribute('data-postid');
 
+						// Get property value for criterion. 
+						let propertyvalue = getPropertyValueByTagSequence( getPostById(postid) ,activecriteriontagsequence);
+						console.log('\tProperty value:',propertyvalue);
+
+						// 
+						if( !Array.isArray(propertyvalue) ) propertyvalue = `${propertyvalue}`;
+
 						// TODO: Check if post item matches criterion. 
-						let matchesOne = getPropertyValueByTagSequence( getPostById(postid) ,activecriteriontagsequence) == activecriterionid;
+						// let matchesOne = Array.isArray() ? propertyvalue.includes(activecriterionid) : (propertyvalue==activecriterionid);
+						let matchesOne = propertyvalue.includes(activecriterionid);
 						// let matchesOne = postitem['authorid'] == activecriterionid;
 						// let matchesOne = Math.random()<=Math.random();
 
@@ -312,6 +329,9 @@ function activateBlogPostFilters() {
 						// function getPostById(querypostid)
 					}
 				}
+
+				// 
+				if(noCriteriaSelected) return true;
 
 				// Assume no match if none found. 
 				return false;

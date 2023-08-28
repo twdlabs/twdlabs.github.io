@@ -32,21 +32,21 @@ addNewFilter('Year', ['published','year'] );
 // console.log('Year filter:',yearfilter);
 
 // Add post filter for year/month of publish date. 
-addNewFilter('Month', ['published','month'] );
+// addNewFilter('Month', ['published','month'] );
 // console.log('Month filter:',monthfilter);
 
 // Add post filter for keywords. 
 addNewTagListFilter('Keywords', ['keywords'] );
 // console.log('Tag filter:',tagfilter);
 
-// console.log('Post filter list:',postFilterList);
+console.log('Post filter list:',postFilterList);
 
 
 /*****/
 
 
 // Add post filter for given property. 
-function addNewFilter(propertytitle,propertytagsequence) {
+function addNewFilter(propertytitle,propertytagsequence,propertylabel) {
 
 	// Initialize filter result. 
 	let resultfilter = {
@@ -74,8 +74,8 @@ function addNewFilter(propertytitle,propertytagsequence) {
 
 		// Check if criterion already saved. 
 		let criterionAlreadySaved = false;
-		// let criterionAlreadySaved = resultfilter['criterialist'].includes(criterionid);
-		// let criterionAlreadySaved = checkIfCriterionAlreadySaved(criterionid);
+		// criterionAlreadySaved = resultfilter['criterialist'].includes(criterionid);
+		criterionAlreadySaved = checkIfCriterionAlreadySaved(resultfilter,criterionid);
 
 		// Create new criterion item. 
 		let newcriterionitem = 
@@ -93,26 +93,17 @@ function addNewFilter(propertytitle,propertytagsequence) {
 
 	/****/
 
-	// TODO: Check if criterion already saved. 
-	function checkIfCriterionAlreadySaved(value) {
-
-		// GO thru result filter. 
-		for(let xyz of resultfilter) {
-
-			// 
-		}
-	}
-
 	// TODO: Get criterion title by criterion id. 
 	function getCriterionTitle(criterionid) {
 
 		// 
-		return `criterion for id: ${criterionid}`;
+		return criterionid;
+		return `criterion: ${criterionid}`;
 	}
 }
 
 // Add post filter for given tag list. 
-function addNewTagListFilter(propertytitle,propertytagsequence) {
+function addNewTagListFilter(propertytitle,propertytagsequence,propertylabel) {
 
 	// Initialize filter result. 
 	let resultfilter = {
@@ -142,7 +133,8 @@ function addNewTagListFilter(propertytitle,propertytagsequence) {
 
 			// Check if criterion already saved. 
 			let criterionAlreadySaved = false;
-			// let criterionAlreadySaved = resultfilter['criterialist'].includes(criterionid);
+			// criterionAlreadySaved = resultfilter['criterialist'].includes(criterionid);
+			criterionAlreadySaved = checkIfCriterionAlreadySaved(resultfilter,criterionid);
 
 			// Create new criterion item. 
 			let newcriterionitem = 
@@ -161,21 +153,12 @@ function addNewTagListFilter(propertytitle,propertytagsequence) {
 
 	/****/
 
-	// TODO: Check if criterion already saved. 
-	function checkIfCriterionAlreadySaved(value) {
-
-		// GO thru result filter. 
-		for(let xyz of resultfilter) {
-
-			// 
-		}
-	}
-
 	// TODO: Get criterion title by criterion id. 
 	function getCriterionTitle(criterionid) {
 
 		// 
-		return `criterion for id: ${criterionid}`;
+		return criterionid;
+		return `criterion: ${criterionid}`;
 	}
 }
 
@@ -196,4 +179,21 @@ function getPropertyValueByTagSequence(initial,propertytags) {
 
 	// Return result. 
 	return result;
+}
+
+// Check if criterion already saved. 
+function checkIfCriterionAlreadySaved(filter,querycriterionid) {
+
+	// GO thru result filter. 
+	for(let criterion of filter.criterialist) {
+
+		// Check if found. 
+		let matchFound = (criterion.criterionid==querycriterionid);
+
+		// Assume true if found. 
+		if(matchFound) return true;
+	}
+
+	// Assume false if not found. 
+	return false;
 }
