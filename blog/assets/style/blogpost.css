@@ -11,7 +11,7 @@ div#container section.hero::before {backdrop-filter:blur(.5rem);}
 div#container section.hero main.grid {align-items:flex-start;}
 div#container section.hero main.grid h1.head {font-size:3rem;}
 div#container section.hero main.grid h1.head:empty {background-color:gainsboro; display:block; height:1em; width:10em; border-radius:10em;}
-div#container section.hero main.grid h2.head {font-size:2rem; margin-top:.25rem;}
+div#container section.hero main.grid h2.head {font-size:2rem; /* margin-top:.25rem; */}
 div#container section.hero main.grid h2.head {display:flex; flex-direction:row; align-items:center;}
 div#container section.hero main.grid h2.head svg.icon {display:none; color:dodgerblue; font-size:.75em; margin-left:.5rem;}
 /* div#container section.hero main.grid h2.head span.caption {} */
@@ -76,7 +76,7 @@ div#container section.body main.grid article.media div.playlist div.listfoot a.n
 div#container section.body main.grid article.post {display:grid; grid-template-columns:2fr 1fr; grid-template-areas:'transcript authorbio'; grid-gap:var(--gridspacing);}
 div#container section.body main.grid article.post {/* padding-bottom:var(--gridspacing); */ margin-top:var(--gridspacing);}
 div#container section.body main.grid article.post > * {box-shadow:var(--boxshadow);}
-div#container section.body main.grid article.post::after {grid-area:pseudo;}
+/* div#container section.body main.grid article.post::after {grid-area:pseudo;} */
 /* Body Section: Post Transcript */
 div#container section.body main.grid article.post div.transcript {grid-area:transcript;}
 div#container section.body main.grid article.post div.transcript {background-color:white; padding:2rem; border-radius:var(--cornersize); /* margin-top:1rem; */}
@@ -134,7 +134,7 @@ div#container section.body main.grid div.navigator div.position div.caption span
 
 
 /* Author Section */
-div#container section.author {display:none;}
+/* div#container section.author {display:none;} */
 div#container section.author {--avatarsize:6rem; padding:0 2rem;}
 div#container section.author main.grid {background-color:var(--blackglass); /* color:white;  */position:relative; min-height:10rem; text-align:center; max-width:calc(var(--pagewidth)*.75);}
 div#container section.author main.grid {display:flex; flex-direction:column; align-items:center;}

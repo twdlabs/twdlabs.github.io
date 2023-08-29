@@ -14,7 +14,7 @@ div#container section.reply main.grid form.commentform textarea.comment {grid-ar
 
 
 /* Comments Section */
-div#container section.comments {display:none;}
+/* div#container section.comments {display:none;} */
 /* div#container section.comments {background-color:white;} */
 div#container section.comments main.grid {background-color:white; max-width:calc(.625*var(--pagewidth)); padding:2rem; border-radius:var(--bigcornersize); margin:0 auto;}
 div#container section.comments main.grid h1.head {font-size:1.5rem; padding-bottom:.75rem; border-bottom:1px solid var(--blackglass); margin:0; margin-bottom:1.25rem;}
