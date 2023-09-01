@@ -19,12 +19,12 @@ div#container section.blogtable main.grid {display:grid; grid-template-columns:2
 div#container section.blogtable main.grid div.headbar {grid-area:headbar;}
 div#container section.blogtable main.grid div.headbar {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container section.blogtable main.grid div.headbar h2.head {font-size:2rem; display:none;}
-div#container section.blogtable main.grid div.headbar div.titlefilter {display:grid; grid-template-columns:auto 1fr; align-items:center; width:100%; padding:.125rem 1rem; border-radius:.5rem; box-shadow:var(--boxshadowx);}
+div#container section.blogtable main.grid div.headbar div.titlefilter {display:grid; grid-template-columns:auto 1fr; align-items:center; width:100%; padding:.125rem 1rem; border-radius:5rem; box-shadow:var(--boxshadowx);}
 div#container section.blogtable main.grid div.headbar div.titlefilter label.searchlabel {cursor:pointer; user-select:none;}
 div#container section.blogtable main.grid div.headbar div.titlefilter label.searchlabel svg.icon {display:block; font-size:1rem;}
 div#container section.blogtable main.grid div.headbar div.titlefilter input.titlefilterquery {background-color:transparent; font-family:inherit; font-size:1.25rem; width:100%; padding:.75rem 1rem; border:0 none; outline:none;}
-div#container section.blogtable main.grid div.headbar div.filtertogglebtn {display:none; cursor:pointer; transition:.5s; padding:0 .25rem; border-radius:.25rem; margin-left:1rem;}
-div#container section.blogtable main.grid div.headbar div.filtertogglebtn:hover {box-shadow:var(--boxshadow);}
+div#container section.blogtable main.grid div.headbar div.filtertogglebtn {display:none; cursor:pointer; transition:.5s; padding:.375rem .5rem; border-radius:.25rem; margin-left:1rem;}
+/* div#container section.blogtable main.grid div.headbar div.filtertogglebtn:hover {box-shadow:var(--boxshadow);} */
 div#container section.blogtable main.grid div.headbar div.filtertogglebtn svg.icon {display:block; font-size:2rem;}
 div#container section.blogtable main.grid div.posts {grid-area:blogpostblock;}
 div#container section.blogtable main.grid div.posts ul.postlist {grid-template-columns:repeat(3,1fr);}
@@ -105,4 +105,5 @@ div#container section.blogtable main.grid div.filters ul.filterlist li.filter di
 	div#container section.blogtable main.grid {grid-template-columns:1fr; grid-template-areas:'headbar''filterblock''blogpostblock';}
 	/* div#container section.blogtable main.grid div.headbar {flex-direction:column; align-items:stretch;} */
 	div#container section.blogtable main.grid div.headbar div.filtertogglebtn {display:block;}
+	div#container section.blogtable main.grid div.filters {max-height:0; overflow:hidden; transition:.375s;}
 }

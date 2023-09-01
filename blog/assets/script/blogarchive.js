@@ -339,3 +339,29 @@ function activateBlogPostFilters() {
 		}
 	}
 }
+
+// Toggle blog post filters. 
+function toggleBlogPostFilters() {
+
+	// Get filter section. 
+	let filtersection = document.querySelector('div#container section.blogtable main.grid div.filters');
+
+	// Check if filter section already open. 
+	let alreadyOpen = filtersection.classList.contains('active');
+
+	// Close filter section if already open. 
+	if(alreadyOpen) {
+
+		// Reset max height to 0. 
+		filtersection.style.maxHeight = '';
+		filtersection.classList.remove('active');
+	}
+
+	// Open filter section if not already open. 
+	else {
+
+		// Reset max height to full height. 
+		filtersection.style.maxHeight = `${filtersection.scrollHeight}px`;
+		filtersection.classList.add('active');
+	}
+}

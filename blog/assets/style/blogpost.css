@@ -5,6 +5,7 @@
 /* div#container {background-color:var(--themecolor);} */
 
 
+
 /* Hero Section */
 /* div#container section.hero {} */
 div#container section.hero::before {backdrop-filter:blur(.5rem);}
@@ -20,164 +21,202 @@ div#container section.hero main.grid h2.head.admin svg.icon {display:block;}
 div#container section.hero main.grid p.textcopy {font-size:1.75rem;}
 
 
-/* Body Section */
-div#container section.body {background-color:var(--bgcolor);}
-/* div#container section.body main.grid {background-color:white; padding:2rem; border-radius:var(--bigcornersize);} */
 
-/* Body Section: Media */
-div#container section.body main.grid article.media {display:grid; grid-template-columns:repeat(3,1fr); grid-template-areas:'vid vid plist';}
-div#container section.body main.grid article.media {position:relative; overflow:hidden; border-radius:var(--cornersize); margin-top:var(--gridspacing); box-shadow:var(--boxshadow);}
-div#container section.body main.grid article.media.full {grid-template-columns:1fr;}
-/* Body Section: Media Player */
-div#container section.body main.grid article.media div.vid {grid-area:vid;}
-div#container section.body main.grid article.media div.vid {position:relative; padding-top:56.25%;}
-div#container section.body main.grid article.media div.vid video.video {position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
-div#container section.body main.grid article.media div.vid div.listtogglerbtn {background-color:var(--black); color:white; cursor:pointer; opacity:0; transition:.25s; padding:.375rem .375rem; border-radius:.5rem;}
-div#container section.body main.grid article.media div.vid div.listtogglerbtn {position:absolute; left:1rem; top:50%; transform:translateY(-50%);}
-div#container section.body main.grid article.media div.vid:hover div.listtogglerbtn {opacity:1;}
-div#container section.body main.grid article.media div.vid div.listtogglerbtn svg.icon {display:block; font-size:2rem;}
-/* Body Section: Media Playlist */
-div#container section.body main.grid article.media div.playlist {grid-area:plist;}
-div#container section.body main.grid article.media div.playlist {background-color:var(--black); color:white; height:100%; overflow:auto; opacity:0; transition:.25s;}
-div#container section.body main.grid article.media.full div.playlist {position:absolute; top:0; right:0; bottom:0; height:100%; width:24rem; opacity:.75;}
-div#container section.body main.grid article.media.full div.playlist {transform:translateX(100%); box-shadow:var(--boxshadow); transition:.5s;}
-div#container section.body main.grid article.media.full:hover div.playlist {overflow:visible; opacity:1;}
-div#container section.body main.grid article.media.full div.playlist:hover {transform:translateX(0); overflow:auto;}
-div#container section.body main.grid article.media.full div.playlist::after {background-color:inherit; content:''; border-radius:10rem 0 0 10rem;}
-div#container section.body main.grid article.media.full:hover div.playlist::after {position:absolute; top:0; bottom:0; right:100%; width:1.5rem;}
-div#container section.body main.grid article.media div.playlist ul.postlist {list-style:none; counter-reset:playlistindex; padding:0; margin:0; margin-bottom:.75rem;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem {counter-increment:playlistindex;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.on {background-color:var(--whiteglasss);}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link {color:inherit; text-decoration:none;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link svg.icon {color:var(--themecolor);}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link svg.play {display:none; font-size:1.75rem; width:1.75rem;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.on a.link svg.play {display:block;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.index {display:block; font-size:.875rem; width:1.75rem; text-align:center;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.on a.link span.index {display:none;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.index:empty:after {content:counter(playlistindex);}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link img.preview {height:3rem; width:5rem; object-fit:cover; margin:0 .75rem;}
-/* div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.caption {flex-grow:1;} */
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.caption {font-size:1rem;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.caption:empty {background-color:var(--blackglass); height:1em; width:8em; border-radius:10em;}
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion {display:none;}
-/* div#container section.body main.grid article.media div.playlist ul.postlist li.postitem.done a.link span.completion {display:block;} */
-div#container section.body main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion svg.check {display:block; font-size:2rem;}
-div#container section.body main.grid article.media div.playlist div.listhead {background-color:var(--blackglass); padding:1.5rem 2rem 1.375rem; /* margin-bottom:.75rem; */}
-div#container section.body main.grid article.media div.playlist div.listhead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:center;}
-div#container section.body main.grid article.media div.playlist div.listhead h1.listtitle {font-size:1.25rem; margin:0;}
-div#container section.body main.grid article.media div.playlist div.listhead h2.listcount {font-size:1.125rem; margin:0;}
-div#container section.body main.grid article.media div.playlist div.listfoot {background-color:var(--blackglass); display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.625rem 2rem;}
-div#container section.body main.grid article.media div.playlist div.listfoot {display:none;}
-div#container section.body main.grid article.media div.playlist div.listfoot a.navlink {background-color:var(--blackglass); color:white; text-decoration:none; padding:.625rem 1rem; border-radius:.125rem;}
-div#container section.body main.grid article.media div.playlist div.listfoot a.navlink:hover {background-color:var(--whiteglasss);}
-
-/* Body Section: Post */
-div#container section.body main.grid article.post {display:grid; grid-template-columns:2fr 1fr; grid-template-areas:'transcript authorbio'; grid-gap:var(--gridspacing);}
-div#container section.body main.grid article.post {/* padding-bottom:var(--gridspacing); */ margin-top:var(--gridspacing);}
-div#container section.body main.grid article.post > * {box-shadow:var(--boxshadow);}
-/* div#container section.body main.grid article.post::after {grid-area:pseudo;} */
-/* Body Section: Post Transcript */
-div#container section.body main.grid article.post div.transcript {grid-area:transcript;}
-div#container section.body main.grid article.post div.transcript {background-color:white; padding:2rem; border-radius:var(--cornersize); /* margin-top:1rem; */}
-div#container section.body main.grid article.post div.transcript h1.title {font-size:2rem; margin:0; /* margin-top:.5em; */}
-div#container section.body main.grid article.post div.transcript h1.title:empty {background-color:gainsboro; height:1em; width:10em; border-radius:10em;}
-div#container section.body main.grid article.post div.transcript div.art {display:none; float:left; width:50%; max-width:30rem; margin-bottom:.5rem; margin-right:1rem;}
-div#container section.body main.grid article.post div.transcript div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
-div#container section.body main.grid article.post div.transcript p.textcopy {margin:0; margin-top:1.25rem;}
-div#container section.body main.grid article.post div.transcript aside.meta {display:flex; align-items:center; margin-top:1rem;}
-/* div#container section.body main.grid article.post div.transcript aside.meta {display:none;} */
-div#container section.body main.grid article.post div.transcript aside.meta span.date {font-weight:lighter; margin-left:.5em;}
-div#container section.body main.grid article.post div.transcript aside.meta span.date:empty {background-color:gainsboro; display:inline-block; height:1em; width:4rem; border-radius:10rem;}
-div#container section.body main.grid article.post div.transcript aside.meta span.caption {font-weight:bold;}
-div#container section.body main.grid article.post div.transcript aside.meta span.caption::after {content:':';}
-div#container section.body main.grid article.post div.transcript:empty::after {content:'[Empty content]';}
-/* Body Section: Post Author Bio */
-div#container section.body main.grid article.post div.authorbio {grid-area:authorbio;}
-div#container section.body main.grid article.post div.authorbio {background-color:white; position:relative; height:fit-content; padding:2rem; border-radius:var(--cornersize); /* margin-top:1rem; */}
-div#container section.body main.grid article.post div.authorbio h1.head {display:none;}
-div#container section.body main.grid article.post div.authorbio h1.head {font-size:1.25rem; margin:0; margin-bottom:1rem;}
-div#container section.body main.grid article.post div.authorbio img.avatar {background-color:var(--blackglass); --size:4rem; height:var(--size); width:var(--size); object-fit:cover; border-radius:50%; border:.125rem solid transparent;}
-div#container section.body main.grid article.post div.authorbio img.avatar.float {position:absolute; bottom:100%; left:50%; transform:translate(-50%,50%);}
-div#container section.body main.grid article.post div.authorbio img.avatar.float {display:none;}
-div#container section.body main.grid article.post div.authorbio div.userbadge {display:flex; flex-direction:row; align-items:center;}
-/* div#container section.body main.grid article.post div.authorbio div.userbadge {display:grid; grid-template-columns:auto 1fr; grid-template-areas: 'img nam' 'img pos';} */
-/* div#container section.body main.grid article.post div.authorbio div.userbadge img.avatar {} */
-/* div#container section.body main.grid article.post div.authorbio div.userbadge span.caption {flex-grow:1;} */
-div#container section.body main.grid article.post div.authorbio div.userbadge span.caption {display:flex; flex-direction:column; justify-content:center; align-items:flex-start; margin-left:.5rem;}
-div#container section.body main.grid article.post div.authorbio div.userbadge span.caption span.name {font-weight:1000;}
-div#container section.body main.grid article.post div.authorbio div.userbadge span.caption span.name:empty {background-color:gainsboro; height:1em; width:10em; border-radius:1em;}
-div#container section.body main.grid article.post div.authorbio div.userbadge span.caption span.position {color:var(--themecolor); font-weight:200;}
-div#container section.body main.grid article.post div.authorbio div.userbadge span.caption span.position:empty {background-color:gainsboro; height:1em; width:6em; border-radius:1em; margin-top:.25rem;}
-div#container section.body main.grid article.post div.authorbio p.briefbio {font-weight:200; text-align:justify; margin:0; margin-top:1rem;}
-
-/* Body Section: Navigator */
-div#container section.body main.grid div.navigator {background-color:white; display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section.body main.grid div.navigator {/* grid-area:nav; */ padding:1.25rem; border-radius:var(--cornersize); margin-top:var(--gridspacing); box-shadow:var(--boxshadow);}
-/* div#container section.body main.grid div.navigator {display:none;} */
-div#container section.body main.grid div.navigator a.navlink {color:inherit; text-decoration:none;}
-div#container section.body main.grid div.navigator a.navlink {background-color:var(--themecolor); color:white; padding:1rem 1.5rem; border-radius:.375rem;}
-div#container section.body main.grid div.navigator a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center; position:relative; overflow:hidden;}
-div#container section.body main.grid div.navigator a.navlink.x {visibility:hidden;}
-div#container section.body main.grid div.navigator a.navlink * {position:relative; z-index:1;}
-div#container section.body main.grid div.navigator a.navlink svg.icon {font-size:1.25em;}
-div#container section.body main.grid div.navigator a.navlink img.preview {position:absolute; height:100%; width:100%; object-fit:cover; opacity:.1; z-index:0;}
-/* div#container section.body main.grid div.navigator a.navlink img.preview {--size:3rem; height:var(--size); width:var(--size);} */
-div#container section.body main.grid div.navigator a.navlink span.caption {margin:0 .25rem;}
-/* div#container section.body main.grid div.navigator div.position {display:none;} */
-div#container section.body main.grid div.navigator div.position {font-size:1.125rem; text-align:center;}
-div#container section.body main.grid div.navigator div.position div.caption {display:flex; align-items:center;}
-div#container section.body main.grid div.navigator div.position div.caption span.num {font-weight:bold;}
-div#container section.body main.grid div.navigator div.position div.caption span.num:empty {background-color:gainsboro; display:inline-block; height:1em; width:1.5em; border-radius:10rem;}
-div#container section.body main.grid div.navigator div.position div.caption span.caption {margin:0 .25rem;}
-/* div#container section.body main.grid div.navigator div.position span.caption {font-size:1rem;} */
+/* Post Body Section */
+div#container section.postbody {background-color:var(--bgcolor);}
+/* div#container section.postbody main.grid {background-color:white; padding:2rem; border-radius:var(--bigcornersize);} */
+div#container section.postbody main.grid {display:grid; grid-template-columns:2fr 1fr; grid-template-areas:'media media' 'transcript authorbio' 'nav nav'; grid-gap:var(--gridspacing);}
 
 
-/* Author Section */
-/* div#container section.author {display:none;} */
-div#container section.author {--avatarsize:6rem; padding:0 2rem;}
-div#container section.author main.grid {background-color:var(--blackglass); /* color:white;  */position:relative; min-height:10rem; text-align:center; max-width:calc(var(--pagewidth)*.75);}
-div#container section.author main.grid {display:flex; flex-direction:column; align-items:center;}
-div#container section.author main.grid {border-radius:var(--bigcornersize); padding:2rem; padding-top:calc(var(--avatarsize)*.625); margin-top:calc(var(--avatarsize)*.75); box-shadow:var(--boxshadow);}
-div#container section.author main.grid h1.name {margin:0;}
-div#container section.author main.grid h1.name:empty {background-color:whitesmoke; height:1em; width:6em; border-radius:10em;}
-/* div#container section.author main.grid p.briefbio {} */
-div#container section.author main.grid p.briefbio:empty {display:flex; flex-direction:column; align-items:center; width:100%;}
-div#container section.author main.grid p.briefbio:empty:before,
-div#container section.author main.grid p.briefbio:empty::after {background-color:whitesmoke; display:block; content:''; height:1em; width:80%; text-align:center; border-radius:10em;}
-div#container section.author main.grid p.briefbio:empty:before {width:80%;}
-div#container section.author main.grid p.briefbio:empty::after {width:60%; margin-top:.5em;}
-div#container section.author main.grid img.avatar {background-color:var(--blackglass); object-fit:cover; height:var(--avatarsize); width:var(--avatarsize); border-radius:50%; border:1px solid var(--blackglass);}
-div#container section.author main.grid img.avatar.float {position:absolute; top:0; left:50%; transform:translate(-50%,-50%);}
+/* Post Body Section: Media */
+div#container section.postbody main.grid article.media {grid-area:media;}
+div#container section.postbody main.grid article.media {display:grid; grid-template-columns:repeat(3,1fr); grid-template-areas:'vid vid plist';}
+div#container section.postbody main.grid article.media {position:relative; overflow:hidden; border-radius:var(--cornersize); /* margin-bottom:var(--gridspacing); */ box-shadow:var(--boxshadow);}
+div#container section.postbody main.grid article.media.full {grid-template-columns:1fr;}
+
+/* Post Body Section: Media Player */
+div#container section.postbody main.grid article.media div.vid {grid-area:vid;}
+div#container section.postbody main.grid article.media div.vid {position:relative; padding-top:56.25%;}
+div#container section.postbody main.grid article.media div.vid video.video {position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+div#container section.postbody main.grid article.media div.vid div.listtogglerbtn {background-color:var(--black); color:white; cursor:pointer; opacity:0; transition:.25s; padding:.375rem .375rem; border-radius:.5rem;}
+div#container section.postbody main.grid article.media div.vid div.listtogglerbtn {position:absolute; left:1rem; top:50%; transform:translateY(-50%);}
+div#container section.postbody main.grid article.media div.vid:hover div.listtogglerbtn {opacity:1;}
+div#container section.postbody main.grid article.media div.vid div.listtogglerbtn svg.icon {display:block; font-size:2rem;}
+
+/* Post Body Section: Media Playlist */
+div#container section.postbody main.grid article.media div.playlist {grid-area:plist;}
+div#container section.postbody main.grid article.media div.playlist {background-color:var(--black); color:white; height:100%; overflow:auto; opacity:0; transition:.25s;}
+div#container section.postbody main.grid article.media.full div.playlist {position:absolute; top:0; right:0; bottom:0; height:100%; width:24rem; opacity:.75;}
+div#container section.postbody main.grid article.media.full div.playlist {transform:translateX(100%); box-shadow:var(--boxshadow); transition:.5s;}
+div#container section.postbody main.grid article.media.full:hover div.playlist {overflow:visible; opacity:1;}
+div#container section.postbody main.grid article.media.full div.playlist:hover {transform:translateX(0); overflow:auto;}
+div#container section.postbody main.grid article.media.full div.playlist::after {background-color:inherit; content:''; border-radius:10rem 0 0 10rem;}
+div#container section.postbody main.grid article.media.full:hover div.playlist::after {position:absolute; top:0; bottom:0; right:100%; width:1.5rem;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist {list-style:none; counter-reset:playlistindex; padding:0; margin:0; margin-bottom:.75rem;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem {counter-increment:playlistindex;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem.on {background-color:var(--whiteglasss);}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link {color:inherit; text-decoration:none;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link svg.icon {color:var(--themecolor);}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link svg.play {display:none; font-size:1.75rem; width:1.75rem;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem.on a.link svg.play {display:block;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link span.index {display:block; font-size:.875rem; width:1.75rem; text-align:center;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem.on a.link span.index {display:none;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link span.index:empty:after {content:counter(playlistindex);}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link img.preview {height:3rem; width:5rem; object-fit:cover; margin:0 .75rem;}
+/* div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link span.caption {flex-grow:1;} */
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link span.caption {font-size:1rem;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link span.caption:empty {background-color:var(--blackglass); height:1em; width:8em; border-radius:10em;}
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion {display:none;}
+/* div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem.done a.link span.completion {display:block;} */
+div#container section.postbody main.grid article.media div.playlist ul.postlist li.postitem a.link span.completion svg.check {display:block; font-size:2rem;}
+div#container section.postbody main.grid article.media div.playlist div.listhead {background-color:var(--blackglass); padding:1.5rem 2rem 1.375rem; /* margin-bottom:.75rem; */}
+div#container section.postbody main.grid article.media div.playlist div.listhead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:center;}
+div#container section.postbody main.grid article.media div.playlist div.listhead h1.listtitle {font-size:1.25rem; margin:0;}
+div#container section.postbody main.grid article.media div.playlist div.listhead h2.listcount {font-size:1.125rem; margin:0;}
+div#container section.postbody main.grid article.media div.playlist div.listfoot {background-color:var(--blackglass); display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.625rem 2rem;}
+div#container section.postbody main.grid article.media div.playlist div.listfoot {display:none;}
+div#container section.postbody main.grid article.media div.playlist div.listfoot a.navlink {background-color:var(--blackglass); color:white; text-decoration:none; padding:.625rem 1rem; border-radius:.125rem;}
+div#container section.postbody main.grid article.media div.playlist div.listfoot a.navlink:hover {background-color:var(--whiteglasss);}
+
+
+/* Post Body Section: Transcript */
+div#container section.postbody main.grid article.transcript {grid-area:transcript;}
+div#container section.postbody main.grid article.transcript {background-color:white; padding:2rem; border-radius:var(--cornersize); /* margin-top:1rem; */ box-shadow:var(--boxshadow);}
+div#container section.postbody main.grid article.transcript h1.title {font-size:2rem; margin:0; /* margin-top:.5em; */}
+div#container section.postbody main.grid article.transcript h1.title:empty {background-color:gainsboro; height:1em; width:10em; border-radius:10em;}
+div#container section.postbody main.grid article.transcript div.art {display:none; float:left; width:50%; max-width:30rem; margin-bottom:.5rem; margin-right:1rem;}
+div#container section.postbody main.grid article.transcript div.art img.art {display:block; width:100%; border-radius:var(--cornersize);}
+div#container section.postbody main.grid article.transcript p.textcopy {margin:0; margin-top:1.25rem;}
+div#container section.postbody main.grid article.transcript aside.meta {display:flex; align-items:center; margin-top:1rem;}
+/* div#container section.postbody main.grid article.transcript aside.meta {display:none;} */
+div#container section.postbody main.grid article.transcript aside.meta span.date {font-weight:lighter; margin-left:.5em;}
+div#container section.postbody main.grid article.transcript aside.meta span.date:empty {background-color:gainsboro; display:inline-block; height:1em; width:4rem; border-radius:10rem;}
+div#container section.postbody main.grid article.transcript aside.meta span.caption {font-weight:bold;}
+div#container section.postbody main.grid article.transcript aside.meta span.caption::after {content:':';}
+div#container section.postbody main.grid article.transcript:empty::after {content:'[Empty content]';}
+
+
+/* Post Body Section: Author Bio */
+div#container section.postbody main.grid article.authorbio {grid-area:authorbio;}
+div#container section.postbody main.grid article.authorbio {background-color:white; background-color:var(--blackglass); position:relative;}
+div#container section.postbody main.grid article.authorbio {height:fit-content; padding:2rem; border-radius:var(--cornersize); /* margin-top:1rem; */ box-shadow:var(--boxshadow);}
+/* div#container section.postbody main.grid article.authorbio {padding-top:calc(var(--avatarsize)*.625); margin-top:calc(var(--avatarsize)*.75);} */
+div#container section.postbody main.grid article.authorbio h1.head {display:none;}
+div#container section.postbody main.grid article.authorbio h1.head {font-size:1.25rem; margin:0; margin-bottom:1rem;}
+div#container section.postbody main.grid article.authorbio p.briefbio {font-weight:200; text-align:justify; margin:0; margin-top:1rem;}
+div#container section.postbody main.grid article.authorbio p.briefbio:empty {display:flex; flex-direction:column; /* align-items:center; */ width:100%;}
+div#container section.postbody main.grid article.authorbio p.briefbio:empty:before,
+div#container section.postbody main.grid article.authorbio p.briefbio:empty::after {background-color:gainsboro; display:block; content:''; height:1em; width:80%; text-align:center; border-radius:10em;}
+div#container section.postbody main.grid article.authorbio p.briefbio:empty:before {width:80%;}
+div#container section.postbody main.grid article.authorbio p.briefbio:empty::after {width:60%; margin-top:.5em;}
+div#container section.postbody main.grid article.authorbio div.userbadge {display:flex; flex-direction:row; align-items:center; --avatarsize:4rem;}
+/* div#container section.postbody main.grid article.authorbio div.userbadge {display:grid; grid-template-columns:auto 1fr; grid-template-areas: 'img nam' 'img pos';} */
+div#container section.postbody main.grid article.authorbio div.userbadge img.avatar {background-color:var(--blackglass); height:var(--avatarsize); width:var(--avatarsize);}
+div#container section.postbody main.grid article.authorbio div.userbadge img.avatar {object-fit:cover; border-radius:50%; border:.125rem solid transparent; margin-right:.5rem;}
+/* div#container section.postbody main.grid article.authorbio div.userbadge span.caption {flex-grow:1;} */
+div#container section.postbody main.grid article.authorbio div.userbadge span.caption {display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.name {font-weight:1000;}
+div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.name:empty {background-color:gainsboro; height:1em; width:10em; border-radius:1em;}
+div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.position {color:var(--themecolor); font-weight:200;}
+div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.position:empty {background-color:gainsboro; height:1em; width:6em; border-radius:1em; margin-top:.25rem;}
+
+
+/* Post Body Section: Navigator */
+div#container section.postbody main.grid nav.navigator {grid-area:nav; /* display:none; */}
+div#container section.postbody main.grid nav.navigator {background-color:white; display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container section.postbody main.grid nav.navigator {padding:1.25rem; border-radius:var(--cornersize); /* margin-top:var(--gridspacing); */ box-shadow:var(--boxshadow);}
+div#container section.postbody main.grid nav.navigator a.navlink {color:inherit; text-decoration:none;}
+div#container section.postbody main.grid nav.navigator a.navlink {background-color:var(--themecolor); color:white; padding:1rem 1.5rem; border-radius:.375rem;}
+div#container section.postbody main.grid nav.navigator a.navlink {display:flex; flex-direction:row; justify-content:center; align-items:center; position:relative; overflow:hidden;}
+div#container section.postbody main.grid nav.navigator a.navlink.x {visibility:hidden;}
+div#container section.postbody main.grid nav.navigator a.navlink * {position:relative; z-index:1;}
+div#container section.postbody main.grid nav.navigator a.navlink svg.icon {font-size:1.25em;}
+div#container section.postbody main.grid nav.navigator a.navlink img.preview {position:absolute; height:100%; width:100%; object-fit:cover; opacity:.1; z-index:0;}
+/* div#container section.postbody main.grid nav.navigator a.navlink img.preview {--size:3rem; height:var(--size); width:var(--size);} */
+div#container section.postbody main.grid nav.navigator a.navlink span.caption {margin:0 .25rem;}
+/* div#container section.postbody main.grid nav.navigator div.position {display:none;} */
+div#container section.postbody main.grid nav.navigator div.position {font-size:1.125rem; text-align:center;}
+div#container section.postbody main.grid nav.navigator div.position div.caption {display:flex; align-items:center;}
+div#container section.postbody main.grid nav.navigator div.position div.caption span.num {font-weight:bold;}
+div#container section.postbody main.grid nav.navigator div.position div.caption span.num:empty {background-color:gainsboro; display:inline-block; height:1em; width:1.5em; border-radius:10rem;}
+div#container section.postbody main.grid nav.navigator div.position div.caption span.caption {margin:0 .25rem;}
+/* div#container section.postbody main.grid nav.navigator div.position span.caption {font-size:1rem;} */
 
 
 
 
 
 /* Tablet Screen */
-@media screen and (max-width:64rem) {
+@media screen and (max-width:80rem) {
 	
+
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero main.grid {} */
 
-	/* Body Section */
-	/* div#container section.body {} */
-	/* div#container section.body main.grid {} */
-	/* div#container section.body main.grid div.navigator {display:flex;} */
-	div#container section.body main.grid article.media {grid-template-columns:1fr; grid-template-areas:'vid''plist';}
-	div#container section.body main.grid article.media div.playlist {/* display:none; */ height:30rem; height:56.25vw;}
-	div#container section.body main.grid article.media.full div.playlist {position:static; height:56.25vw; width:auto; transform:none; box-shadow:none;}
-	div#container section.body main.grid article.media.full div.playlist {overflow:auto;}
-	div#container section.body main.grid article.post {grid-template-columns:1fr; grid-template-areas:'transcript''authorbio';}
 
-	/* Author Section */
-	/* div#container section.author {} */
-	/* div#container section.author main.grid {} */
+	/* Post Body Section */
+	/* div#container section.postbody {} */
+	/* div#container section.postbody main.grid {} */
+
+	/* Post Body Section: Media */
+	/* div#container section.postbody main.grid article.media {} */
+
+	/* Post Body Section: Transcript */
+	/* div#container section.postbody main.grid article.transcript {} */
+
+	/* Post Body Section: Author Bio */
+	/* div#container section.postbody main.grid article.authorbio {} */
+	
+	/* Post Body Section: Navigator */
+	/* div#container section.postbody main.grid nav.navigator {} */
+}
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+
+	/* Hero Section */
+	/* div#container section.hero {} */
+	/* div#container section.hero main.grid {} */
+
+
+	/* Post Body Section */
+	/* div#container section.postbody {} */
+	div#container section.postbody main.grid {grid-template-columns:1fr; grid-template-areas:'media''transcript''authorbio''nav';}
+
+	/* Post Body Section: Media */
+	div#container section.postbody main.grid article.media {grid-template-columns:1fr; grid-template-areas:'vid''plist'; overflow:visible;}
+	div#container section.postbody main.grid article.media div.playlist {/* display:none; */ height:30rem; height:56.25vw;}
+	div#container section.postbody main.grid article.media.full div.playlist {/* position:static; */ top:100%; right:0; bottom:auto; left:0; width:100%;}
+	div#container section.postbody main.grid article.media.full div.playlist {height:56.25vw; width:auto; transform:none; /* box-shadow:none; */}
+	div#container section.postbody main.grid article.media.full div.playlist {overflow:auto;}
+	div#container section.postbody main.grid article.media.full div.playlist,
+	div#container section.postbody main.grid article.media.full div.playlist::after {display:none;}
+
+	/* Post Body Section: Transcript */
+	/* div#container section.postbody main.grid article.transcript {} */
+
+	/* Post Body Section: Author Bio */
+	div#container section.postbody main.grid article.authorbio {display:grid; grid-template-columns:1fr 2fr; align-items:center;}
+	div#container section.postbody main.grid article.authorbio p.briefbio {text-align:center; margin-top:0;}
+	div#container section.postbody main.grid article.authorbio p.briefbio:empty {align-items:center;}
+	div#container section.postbody main.grid article.authorbio div.userbadge {flex-direction:column; align-items:center;}
+	div#container section.postbody main.grid article.authorbio div.userbadge img.avatar {--avatarsize:6rem; margin-right:0; margin-bottom:.5rem;}
+	/* div#container section.postbody main.grid article.authorbio div.userbadge img.avatar.float {position:absolute; bottom:100%; left:50%; transform:translate(-50%,50%);} */
+	/* div#container section.postbody main.grid article.authorbio div.userbadge img.avatar.float {position:absolute; top:0; left:50%; transform:translate(-50%,-50%);} */
+	div#container section.postbody main.grid article.authorbio div.userbadge span.caption {align-items:center; text-align:center; white-space:nowrap;}
+	div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.name {font-size:1.5rem;}
+	div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.position {font-size:1.25rem;}
+
+	/* Post Body Section: Navigator */
+	/* div#container section.postbody main.grid nav.navigator {display:flex;} */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
+
 
 	/* Hero Section */
 	/* div#container section.hero {} */
@@ -186,34 +225,55 @@ div#container section.author main.grid img.avatar.float {position:absolute; top:
 	div#container section.hero main.grid h2.head {font-size:1.5rem;}
 	div#container section.hero main.grid p.textcopy {font-size:1rem;}
 
-	/* Body Section */
-	/* div#container section.body {} */
-	/* div#container section.body main.grid {} */
-	/* Body Section: Navigator */
-	/* div#container section.body main.grid div.navigator {} */
-	div#container section.body main.grid div.navigator a.navlink {padding:.625rem .875rem;}
-	div#container section.body main.grid div.navigator a.navlink svg.icon {font-size:1em;}
 
-	/* Author Section */
-	/* div#container section.author {} */
-	/* div#container section.author main.grid {} */
+	/* Post Body Section */
+	/* div#container section.postbody {} */
+	/* div#container section.postbody main.grid {} */
+
+	/* Post Body Section: Media */
+	/* div#container section.postbody main.grid article.media {} */
+
+	/* Post Body Section: Transcript */
+	/* div#container section.postbody main.grid article.transcript {} */
+
+	/* Post Body Section: Author Bio */
+	/* div#container section.postbody main.grid article.authorbio {} */
+
+	/* Post Body Section: Navigator */
+	/* div#container section.postbody main.grid nav.navigator {} */
+	div#container section.postbody main.grid nav.navigator a.navlink {padding:.625rem .875rem;}
+	div#container section.postbody main.grid nav.navigator a.navlink svg.icon {font-size:1em;}
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 
+
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero main.grid {} */
 
-	/* Body Section */
-	/* div#container section.body {} */
-	/* div#container section.body main.grid {} */
-	/* div#container section.body main.grid article.post {} */
-	/* div#container section.body main.grid article.post div.transcript {} */
-	div#container section.body main.grid article.post div.transcript div.art {float:none; width:100%;}
 
-	/* Author Section */
-	/* div#container section.author {} */
-	/* div#container section.author main.grid {} */
+	/* Post Body Section */
+	/* div#container section.postbody {} */
+	/* div#container section.postbody main.grid {} */
+
+	/* Post Body Section: Media */
+	/* div#container section.postbody main.grid article.media {} */
+
+	/* Post Body Section: Transcript */
+	/* div#container section.postbody main.grid article.transcript {} */
+	div#container section.postbody main.grid article.transcript div.art {float:none; width:100%;}
+
+	/* Post Body Section: Author Bio */
+	div#container section.postbody main.grid article.authorbio {grid-template-columns:1fr;}
+	div#container section.postbody main.grid article.authorbio p.briefbio {margin-top:.5rem;}
+	/* div#container section.postbody main.grid article.authorbio div.userbadge {} */
+	div#container section.postbody main.grid article.authorbio div.userbadge img.avatar {--avatarsize:5rem;}
+	/* div#container section.postbody main.grid article.authorbio div.userbadge span.caption {} */
+	div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.name {font-size:1.25rem;}
+	div#container section.postbody main.grid article.authorbio div.userbadge span.caption span.position {font-size:1.125rem;}
+
+	/* Post Body Section: Navigator */
+	/* div#container section.postbody main.grid nav.navigator {} */
 }

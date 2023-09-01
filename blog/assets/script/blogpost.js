@@ -8,10 +8,7 @@ const herosection = document.querySelector('div#container section.hero');
 const postherodestination = document.querySelector('div#container section.hero main.grid');
 
 // Get destination for post body. 
-const postbodydestination = document.querySelector('div#container section.body main.grid');
-
-// Get destination for author bio. 
-const authorbiodestination = document.querySelector('div#container section.author main.grid');
+const postbodydestination = document.querySelector('div#container section.postbody main.grid');
 
 // Get destination for list of other posts. 
 const otherpostsdestination = document.querySelector('div#container section.otherposts main.grid div.posts ul.postlist');
@@ -32,9 +29,6 @@ const maxmoreposts = 12;
 
 // Load contents of blog post. 
 loadBlogPostContent();
-
-// Load author of blog post. 
-loadBlogPostAuthor();
 
 // Load other blog posts. 
 loadOtherBlogPosts();
@@ -105,6 +99,7 @@ function loadBlogPostContent() {
 		postbodydestination.innerHTML = `
 		${ createMediaLayout() }
 		${ createArticleLayout() }
+		${ createAuthorLayout() }
 		${ createNavigatorLayout() }
 		`;
 	
@@ -278,94 +273,41 @@ function loadBlogPostContent() {
 			let textcontent = post ? (post.content).map(createParagraphLayout).join('') : '';
 			// console.log( post ? (post.content) : '' );
 
-			// Get author data. 
-			let authordata = post ? getUserById(post.authorid) : null;
-
-			// 
+			// Compile layout for post article. 
 			return `
-			<!-- post -->
-			<article class="post">
-			
-				<!-- transcript -->
-				<div class="transcript">
-	
-					<!-- title -->
-					<h1 class="head title">${ post.title }</h1>
-					<!-- /title -->
+			<!-- transcript -->
+			<article class="transcript">
 
-					<!-- meta -->
-					<aside class="meta">
-			
-						<!-- caption -->
-						<span class="caption">Published</span>
-						<!-- /caption -->
-			
-						<!-- date -->
-						<span class="date">${ datetime ? t.formatDate(datetime) : '' }</span>
-						<!-- /date -->
-			
-					</aside>
-					<!-- /meta -->
-	
+				<!-- title -->
+				<h1 class="head title">${ post.title }</h1>
+				<!-- /title -->
+
+				<!-- meta -->
+				<aside class="meta">
+		
+					<!-- caption -->
+					<span class="caption">Published</span>
+					<!-- /caption -->
+		
+					<!-- date -->
+					<span class="date">${ datetime ? t.formatDate(datetime) : '' }</span>
+					<!-- /date -->
+		
+				</aside>
+				<!-- /meta -->
+
+				<!-- art -->
+				<div class="art">
 					<!-- art -->
-					<div class="art">
-						<!-- art -->
-						<img class="art" src="${ arturl }">
-						<!-- /art -->
-					</div>
+					<img class="art" src="${ arturl }">
 					<!-- /art -->
-	
-					${ textcontent ? textcontent : '' }
-				
 				</div>
-				<!-- /transcript -->
-	
-				<!-- authorbio -->
-				<div class="authorbio">
+				<!-- /art -->
 
-					<!-- head -->
-					<h1 class="head">Author</h1>
-					<!-- /head -->
-
-					<!-- userbadge -->
-					<div class="userbadge">
-
-						<!-- avatar -->
-						<img class="avatar" src="${ authordata ? getRelativeUrl(`../user/${authordata.avatarurl}`) : '' }">
-						<!-- /avatar -->
-
-						<!-- caption -->
-						<span class="caption">
-
-							<!-- name -->
-							<span class="name">${ authordata ? authordata.fullname : '' }</span>
-							<!-- /name -->
-	
-							<!-- position -->
-							<span class="position">${ authordata ? authordata.position : '' }</span>
-							<!-- /position -->
-
-						</span>
-						<!-- /caption -->
-
-					</div>
-					<!-- /userbadge -->
-	
-					<!-- briefbio -->
-					<p class="briefbio">
-						${ authordata ? authordata.bio : '' }
-					</p>
-					<!-- /briefbio -->
-	
-					<!-- avatar -->
-					<img class="avatar float" src="${ authordata ? getRelativeUrl(`../user/${authordata.avatarurl}`) : '' }">
-					<!-- /avatar -->
-	
-				</div>
-				<!-- /authorbio -->
-				
+				${ textcontent ? textcontent : '' }
+			
 			</article>
-			<!-- /post -->`;
+			<!-- /transcript -->`;
 	
 			/**/
 	
@@ -377,6 +319,55 @@ function loadBlogPostContent() {
 				<p class="textcopy">${ paragraphtext }</p>
 				<!-- /textcopy -->`
 			}
+		}
+
+		// Create layout for post author. 
+		function createAuthorLayout() {
+
+			// Get author data. 
+			let authordata = post ? getUserById(post.authorid) : null;
+
+			// Compile layout for post author. 
+			return `
+			<!-- authorbio -->
+			<article class="authorbio">
+
+				<!-- head -->
+				<h1 class="head">Author</h1>
+				<!-- /head -->
+
+				<!-- userbadge -->
+				<div class="userbadge">
+
+					<!-- avatar -->
+					<img class="avatar" src="${ authordata ? getRelativeUrl(`../user/${authordata.avatarurl}`) : '' }">
+					<!-- /avatar -->
+
+					<!-- caption -->
+					<span class="caption">
+
+						<!-- name -->
+						<span class="name">${ authordata ? authordata.fullname : '' }</span>
+						<!-- /name -->
+
+						<!-- position -->
+						<span class="position">${ authordata ? authordata.position : '' }</span>
+						<!-- /position -->
+
+					</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /userbadge -->
+
+				<!-- briefbio -->
+				<p class="briefbio">
+					${ authordata ? authordata.bio : '' }
+				</p>
+				<!-- /briefbio -->
+
+			</article>
+			<!-- /authorbio -->`;
 		}
 
 		// Create layout for post navigator. 
@@ -409,10 +400,10 @@ function loadBlogPostContent() {
 			// Get image url of following post (if valid id). 
 			let nextpostimgurl = ( nextpostid ? nextpost.imgurl : '' );
 
-			// 
+			// Compile layout for post navigator. 
 			return `
 			<!-- navigator -->
-			<div class="navigator">
+			<nav class="navigator">
 
 				<!-- navlink -->
 				<a class="navlink ${ !prevpostid ? 'x' : '' }" href="${ prevposturl }">
@@ -482,41 +473,9 @@ function loadBlogPostContent() {
 				</a>
 				<!-- /navlink -->
 
-			</div>
+			</nav>
 			<!-- /navigator -->`;
 		}
-	}
-}
-
-// Load author of blog post. 
-function loadBlogPostAuthor() {
-	
-	// Get user data for author of selected post. 
-	const postauthor = selectedPostData ? getUserById(selectedPostData.authorid) : null;
-	// console.log('Selected post author:',postauthor);
-
-	// Display author post on page. 
-	if(postauthor) authorbiodestination.innerHTML = createAuthorLayout(postauthor);
-
-	/****/
-
-	// Create layout for author of selected post. 
-	function createAuthorLayout(user) {
-		// console.log('Author data:',user);
-
-		// 
-		return user ? `
-		<!-- name -->
-		<h1 class="name">${ user.fullname }</h1>
-		<!-- /name -->
-
-		<!-- briefbio -->
-		<p class="briefbio">${ user.bio }</p>
-		<!-- /briefbio -->
-
-		<!-- avatar -->
-		<img class="avatar float" src="${ `../../user/${user.avatarurl}` }">
-		<!-- /avatar -->` : '';
 	}
 }
 
