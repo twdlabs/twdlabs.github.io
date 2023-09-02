@@ -17,11 +17,11 @@ div#container section.hero div.grid div.col h1.head {/* display:none; */ font-si
 div#container section.hero div.grid div.col img.code {display:block; width:100%;/*  max-width:16rem; */ margin:1rem auto;}
 div#container section.hero div.grid div.col p.textcopy {color:var(--forecolor2); font-size:1.75rem; font-weight:200; /* margin:0; */}
 div#container section.hero div.grid div.col a.contactlink {display:inline-block; font-size:1.5rem; text-decoration:none; min-width:12rem; opacity:.9; transition:.125s; padding:.625rem 2rem; border-radius:var(--cornersize); border:.25rem solid; margin:.5em .5rem 0; box-shadow:var(--boxshadowxx);}
-div#container section.hero div.grid div.col a.contactlink.a {background-color:var(--royalblue); color:white; border-color:var(--royalblue);}
-div#container section.hero div.grid div.col a.contactlink.b {background-color:transparent; color:var(--royalblue);}
+div#container section.hero div.grid div.col a.contactlink.a {background-color:var(--themecolor); color:white; border-color:var(--themecolor);}
+div#container section.hero div.grid div.col a.contactlink.b {background-color:transparent; color:var(--themecolor);}
 div#container section.hero div.grid div.col a.contactlink.b {background-color:var(--forecolor); color:var(--backcolor); border-color:var(--forecolor);}
 div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;}
-/* div#container section.hero div.grid div.col a.contactlink.a:hover {background-color:var(--royalbluedark); border-color:var(--royalbluedark);} */
+/* div#container section.hero div.grid div.col a.contactlink.a:hover {background-color:var(--drkthemecolor); border-color:var(--drkthemecolor);} */
 /* div#container section.hero div.grid div.col a.contactlink.b:hover {background-color:var(--backcolor); color:var(--forecolor); border-color:var(--backcolor);} */
 
 
@@ -31,7 +31,7 @@ div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;}
 div#container section.blocks div.grid ul.blocklist {display:grid; grid-template-columns:repeat(3,1fr);}
 div#container section.blocks div.grid ul.blocklist {list-style:none; padding:0; margin:0;}
 div#container section.blocks div.grid ul.blocklist li.blockitem {display:flex; flex-direction:column; align-items:center; grid-gap:.5rem; text-align:center; margin-top:4rem;}
-div#container section.blocks div.grid ul.blocklist li.blockitem svg.icon {color:var(--royalblue); font-size:4rem; opacity:.875;}
+div#container section.blocks div.grid ul.blocklist li.blockitem svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875;}
 div#container section.blocks div.grid ul.blocklist li.blockitem h1.blockhead {color:var(--forecolor); font-size:2rem; margin:0; margin-top:.5rem;}
 div#container section.blocks div.grid ul.blocklist li.blockitem p.blockdescription {color:var(--forecolor2); font-size:1.5rem; font-weight:100; margin:0;}
 
