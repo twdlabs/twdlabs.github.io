@@ -183,6 +183,11 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
 	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {} */
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:3rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1.25rem;}
 
 	/* Blog Section */
 	/* div#container section.blog {} */
@@ -219,7 +224,7 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
-	div#container section.blocks div.grid ul.blocklist {grid-template-columns:1fr; /* grid-gap:4rem; */}
+	div#container section.blocks div.grid ul.blocklist {grid-template-columns:1fr; grid-gap:0; margin-top:1rem;}
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:1fr;}
 	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:1fr;}
 	
@@ -281,7 +286,7 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
-	div#container section.hero div.grid div.col p.textcopy {font-size:1rem;}
+	/* div#container section.hero div.grid div.col p.textcopy {font-size:1rem;} */
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */

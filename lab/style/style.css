@@ -234,11 +234,17 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 
 	/* General Section */
 	/* div#container section {} */
+	/* div#container section div.grid {} */
+	div#container section div.grid h1.head {font-size:2rem;}
 
 	/* Footer */
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {grid-template-columns:repeat(3,1fr);} */
 	div#container footer.footer div.grid {grid-template-areas:'brand brand brand' 'box0 box1 box2' 'box3 box4 box5'/*  'box6 x box7' */;}
+	/* div#container footer.footer div.grid div.listbox {} */
+	/* div#container footer.footer div.grid div.listbox ul.navlist {} */
+	/* div#container footer.footer div.grid div.listbox ul.navlist li.navitem {} */
+	div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink {font-size:1.125rem;}
 }
 
 /* Big Smartphone Screen */
@@ -288,5 +294,5 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 	div#container footer.footer {padding:4rem 1.5rem 6rem;}
 	/* div#container footer.footer div.grid {} */
 	div#container footer.footer div.grid {display:flex; flex-direction:column;}
-	div#container footer.footer div.grid div.listbox {text-align:center; margin-right:0;}
+	div#container footer.footer div.grid div.listbox {text-align:center; margin-right:0; margin-top:0;}
 }
