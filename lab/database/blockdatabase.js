@@ -2,46 +2,154 @@
 
 
 // Define block data. 
-const blockData = [
+const blockData = {
 
-	{
-		icontag:'piechart',
-		header:'Statistics',
-		description:'Applying concepts of probability thoery descriptive statistics, and inferential statistics',
-	},
 
-	{
-		icontag:'calculator',
-		icontag:'keyboard',
-		header:'Programming',
-		description:'Using computer programming and concepts of applied mathematics to build models of the real world',
-	},
+	// Define data for method blocks. 
+	methods:[
 
-	{
-		icontag:'paintbrush',
-		header:'Design',
-		description:'Using best practice design principles for optimal user experience',
-	},
+		{
+			icontag:'piechart',
+			header:'Statistics',
+			description:'Applying concepts of probability thoery descriptive statistics, and inferential statistics',
+		},
+	
+		{
+			icontag:'calculator',
+			icontag:'keyboard',
+			header:'Programming',
+			description:'Using computer programming and concepts of applied mathematics to build models of the real world',
+		},
+	
+		{
+			icontag:'paintbrush',
+			header:'Design',
+			description:'Using best practice design principles for optimal user experience',
+		},
+	
+		{
+			icontag:'bricks',
+			header:'HTML',
+			// description:'HyperText Markup Language',
+			description:'Establishing and building page structure with hypertext markup language',
+		},
+	
+		{
+			icontag:'paintpalette',
+			header:'CSS',
+			// description:'Cascading Style Sheets',
+			description:'Decorating page aesthetics and adding beauty with cascading style sheets',
+		},
+	
+		{
+			icontag:'gear',
+			header:'JS',
+			// description:'JavaScript',
+			description:'Adding page changes, movement, and functionality with JavaScript',
+		},
+		
+	],
 
-	// {
-	// 	icontag:'xyz',
-	// 	header:'HTML',
-	// 	description:'HyperText Markup Language',
-	// 	description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea illum eum explicabo?  Eaque dolorum omnis vitae!',
-	// },
 
-	// {
-	// 	icontag:'xyz',
-	// 	header:'CSS',
-	// 	description:'Cascading Style Sheets',
-	// 	description:'Lorem ipsum consectetur. Explicabo iusto, ex dicta earum deleniti aliquid laboriosam similique expedita.',
-	// },
+	// Define data for category blocks. 
+	// categories:[
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+	
+	// 	{
+	// 		icontag:'xyz',
+	// 		header:'xyz',
+	// 		description:'Lorem ipsum consectetur',
+	// 	},
+		
+	// ],
 
-	// {
-	// 	icontag:'xyz',
-	// 	header:'JS',
-	// 	description:'JavaScript',
-	// 	description:'Lorem ipsum consectetur. Officiis eaque nam quidem facilis pariatur voluptatibus sed asperiores labore.',
-	// },
-
-];
+};

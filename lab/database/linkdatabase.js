@@ -113,7 +113,9 @@ const projectLinkData = [
 
 	{
 		groupid:'cl',
+		icontag:'paintpalette',
 		groupname:'CSS Lessons',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -192,7 +194,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'jl',
+		icontag:'gear',
 		groupname:'JS Lessons',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -235,7 +239,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'sac',
+		icontag:'app',
 		groupname:'Sample App Clones',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -262,7 +268,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'ssc',
+		icontag:'tv',
 		groupname:'Sample Site Clones',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -305,7 +313,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'ld',
+		icontag:'oldpc',
 		groupname:'Legacy Dashboards',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -357,7 +367,9 @@ const projectLinkData = [
 
 	{
 		groupid:'aw',
+		icontag:'motherboard',
 		groupname:'App Widgets',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -524,7 +536,10 @@ const projectLinkData = [
 	},
 	{
 		groupid:'fw',
+		icontag:'pencileditor',
+		icontag:'clipboard',
 		groupname:'Form Widgets',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -555,7 +570,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'gw',
+		icontag:'joystick',
 		groupname:'Game Widgets',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -662,7 +679,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'mw',
+		icontag:'mediacollection',
 		groupname:'Media Widgets',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -689,7 +708,10 @@ const projectLinkData = [
 	},
 	{
 		groupid:'nw',
+		icontag:'dropmenu',
+		icontag:'signpost',
 		groupname:'Navigation Widgets',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -716,7 +738,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'ww',
+		icontag:'dpad',
 		groupname:'Website Widgets',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -812,7 +836,9 @@ const projectLinkData = [
 
 	{
 		groupid:'ap',
+		icontag:'smartphone',
 		groupname:'App Prototypes',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -899,7 +925,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'dp',
+		icontag:'speedometer',
 		groupname:'Dashboard Prototypes',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -942,7 +970,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'gp',
+		icontag:'gamepad',
 		groupname:'Game Prototypes',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -982,7 +1012,9 @@ const projectLinkData = [
 
 	{
 		groupid:'ssd',
+		icontag:'paintbrush',
 		groupname:'Sample Site Designs',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -1005,7 +1037,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'sbs',
+		icontag:'tv',
 		groupname:'Sample Branding Sites',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -1028,7 +1062,10 @@ const projectLinkData = [
 	},
 	{
 		groupid:'sss',
+		icontag:'receipt',
+		icontag:'money',
 		groupname:'Sample Sales Sites',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -1047,7 +1084,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'pbs',
+		icontag:'person',
 		groupname:'Personal Brand Sites',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -1070,7 +1109,9 @@ const projectLinkData = [
 	},
 	{
 		groupid:'esp',
+		icontag:'door',
 		groupname:'External Site Projects',
+		groupdescription:'This is currently serving as a sample group description.',
 		
 		grouplist:[
 			{
@@ -1121,6 +1162,7 @@ const projectLinkData = [
 	// },
 	// {
 	// 	groupid:'eap',
+	// 	icontag:'xyzabcxyz',
 	// 	groupname:'External App Projects',
 		
 	// 	grouplist:[
@@ -1133,7 +1175,9 @@ const projectLinkData = [
 
 	// {
 	// 	groupid:'xyz',
+	// 	icontag:'xyzabcxyz',
 	// 	groupname:'XyzGroupName',
+	// 	groupdescription:'This is currently serving as a sample group description.',
 		
 	// 	grouplist:[
 	// 		{
