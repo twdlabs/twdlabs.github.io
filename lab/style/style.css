@@ -101,14 +101,14 @@ div#container {display:flex; flex-direction:column; justify-content:flex-start; 
 
 /* Navbar */
 div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; min-height:var(--headerheight); z-index:30; box-shadow:var(--boxshadowxx);}
-div#container nav.navbar {/* background-color:var(--navcolor); */ background-color:var(--themecolor); color:white; width:100%; padding:.75rem 2.5rem; padding:1rem 2.5rem;}
+div#container nav.navbar {/* background-color:var(--navcolor); */ background-color:var(--themecolor); color:white; width:100%; padding:1rem 2.5rem;}
 div#container.babybar nav.navbar {max-width:var(--pagewidth); border-radius:var(--cornersize); margin:0 auto;}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; height:100%; max-width:var(--pagewidth); margin:0 auto;}
-div#container nav.navbar div.bin a.brand {color:inherit; text-decoration:none;}
-div#container nav.navbar div.bin a.brand {display:flex; flex-direction:row; align-items:center; font-size:2rem; margin:0;}
+div#container nav.navbar div.bin a.brand {color:inherit; font-size:2rem; text-decoration:none;}
+div#container nav.navbar div.bin a.brand {display:flex; flex-direction:row; align-items:center; margin:0;}
 div#container nav.navbar div.bin a.brand img.logo {height:1.75em; border-radius:50%; box-shadow:var(--boxshadowx);}
 div#container nav.navbar div.bin a.brand svg.icon {display:none;}
-div#container nav.navbar div.bin a.brand span.caption {/* display:none; */ margin-left:.375em;}
+div#container nav.navbar div.bin a.brand span.caption {margin-left:.375em;}
 div#container nav.navbar div.bin div.navmenu {flex-grow:1;}
 div#container nav.navbar div.bin div.navmenu {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container nav.navbar div.bin div.navmenu a.brand {display:none; justify-content:center;}
@@ -159,7 +159,7 @@ div#container nav.navbar div.bin div.navtoggler svg.icon {display:block; font-si
 /* div#container section {background-color:#FFF1;} */
 div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:3rem; /* box-shadow:var(--boxshadow); */}
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
-div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; text-align:center; margin:0;}
+div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; margin:0;}
 
 
 /* Footer */
@@ -207,9 +207,11 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 @media screen and (max-width:64rem) {
 	
 	/* Navbar */
-	div#container nav.navbar {/* position:relative; */ padding:1.125rem 2rem;}
+	div#container nav.navbar {/* position:relative; */ padding:.75rem 2rem;}
 	/* div#container nav.navbar div.bin {display:grid; grid-template-columns:repeat(3,1fr);} */
 	/* div#container nav.navbar div.bin > * {flex-basis:0; flex-grow:1;} */
+	div#container nav.navbar div.bin a.brand {font-size:1.75rem;}
+	div#container nav.navbar div.bin a.brand span.caption {display:none;}
 	/* div#container nav.navbar div.bin div.navmenu {flex-direction:row; flex-wrap:wrap;} */
 	/* div#container nav.navbar div.bin div.navmenu {position:absolute; top:100%; left:0; width:100%; max-width:var(--pagewidth); margin:0 auto;} */
 	div#container nav.navbar div.bin div.navmenu {background-color:var(--drkthemecolor); flex-direction:column; align-items:stretch; /* justify-content:center; */ z-index:1;}
@@ -218,6 +220,7 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 	div#container nav.navbar div.bin div.navmenu {opacity:0; visibility:hidden; /* transform:translateY(-2rem); */ transform:translateX(-100%); transition:.25s;}
 	div#container nav.navbar div.bin div.navmenu.active {opacity:1; visibility:visible; transform:translateY(0); transform:translateX(0);}
 	div#container nav.navbar div.bin div.navmenu a.brand {display:flex; /* margin-bottom:3rem; */}
+	div#container nav.navbar div.bin div.navmenu a.brand span.caption {display:block;}
 	div#container nav.navbar div.bin div.navmenu ul.navlist {margin:0;}
 	div#container nav.navbar div.bin div.navmenu ul.navlist.l {order:2; flex-grow:1; flex-direction:column; /* justify-content:flex-start; */ width:100%;}
 	div#container nav.navbar div.bin div.navmenu ul.navlist.r {order:3; justify-content:center; margin:.5rem auto;}
