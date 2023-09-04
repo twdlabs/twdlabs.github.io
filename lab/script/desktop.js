@@ -217,19 +217,29 @@ function loadDesktop() {
 			let selectedGroup = event.currentTarget.parentElement;
 			let selectedGroupBody = selectedGroup.querySelector('div.gbody');
 
-			// 
+			// Check if group is already active. 
 			let groupIsActive = selectedGroup.classList.contains('active');
 			
-			// Toggle selected group. 
+			// Toggle group. 
 			// selectedGroup.classList.toggle('active');
+
+			// Close group if already open. 
 			if(groupIsActive) {
 
+				// Set height. 
 				selectedGroupBody.style.maxHeight = '';
+
+				// Set active state. 
 				selectedGroup.classList.remove('active');
 			}
+
+			// Open group if not already open. 
 			else {
 
+				// Set height. 
 				selectedGroupBody.style.maxHeight = `${selectedGroupBody.scrollHeight}px`;
+
+				// Set active state. 
 				selectedGroup.classList.add('active');
 			}
 		}

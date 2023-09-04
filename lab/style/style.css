@@ -159,15 +159,18 @@ div#container nav.navbar div.bin div.navtoggler svg.icon {display:block; font-si
 /* div#container section {background-color:#FFF1;} */
 div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:3rem; /* box-shadow:var(--boxshadow); */}
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
+div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container section div.grid div.head {flex-direction:column; grid-gap:1.5rem;}
+div#container footer div.grid h1.head ,
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; margin:0;}
 
 
 /* Footer */
-div#container footer.footer {background-color:var(--backcolor2); width:100%; padding:5rem 2.5rem 10rem; margin-top:4rem;}
+div#container footer.footer {background-color:var(--backcolor2); width:100%; padding:2.5rem 2.5rem 8rem; margin-top:4rem;}
 /* div#container footer.footer div.grid {display:flex; flex-direction:row;} */
 div#container footer.footer div.grid {display:grid; /* grid-template-columns:repeat(6,1fr); */ max-width:var(--pagewidth); margin:0 auto;}
 div#container footer.footer div.grid {grid-template-areas:'brand brand brand brand brand brand' 'box0 box1 box2 box3 box4 box5'/*  'box6 box7' */;}
-div#container footer.footer div.grid div.listbox {flex-basis:0; flex-grow:1; flex-shrink:0; /* padding:1rem; */ margin-right:2rem; margin-top:2.75rem;}
+div#container footer.footer div.grid div.listbox {flex-basis:0; flex-grow:1; flex-shrink:0; text-align:left; /* padding:1rem; */ margin-right:2rem; margin-top:2.75rem;}
 div#container footer.footer div.grid div.listbox.x {display:none;}
 div#container footer.footer div.grid div.listbox.box0 {grid-area:box0;}
 div#container footer.footer div.grid div.listbox.box1 {grid-area:box1;}
@@ -177,7 +180,7 @@ div#container footer.footer div.grid div.listbox.box4 {grid-area:box4;}
 div#container footer.footer div.grid div.listbox.box5 {grid-area:box5;}
 div#container footer.footer div.grid div.listbox.box6 {grid-area:box6;}
 div#container footer.footer div.grid div.listbox.brand {grid-area:brand; /* grid-column:1/span6; */ /* grid-area:b; flex-grow:2; */}
-div#container footer.footer div.grid div.listbox h1.head {color:var(--forecolor); font-size:1.75rem; margin:0; margin-top:3rem;}
+div#container footer.footer div.grid div.listbox h1.head {color:var(--forecolor); font-size:1.75rem; text-align:inherit; margin:0; margin-top:3rem;}
 div#container footer.footer div.grid div.listbox h2.head {color:var(--forecolor); font-size:1.375rem; /* white-space:nowrap; */ margin:0; margin-top:2rem; margin-top:2.75rem; /* margin-bottom:1.25rem; */}
 div#container footer.footer div.grid div.listbox p.textcopy {color:var(--forecolor2); margin:0; margin-top:.5rem;}
 div#container footer.footer div.grid div.listbox ul.navlist {list-style:none; padding:0; margin:0;}
@@ -242,6 +245,7 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 	/* div#container footer.footer div.grid {grid-template-columns:repeat(3,1fr);} */
 	div#container footer.footer div.grid {grid-template-areas:'brand brand brand' 'box0 box1 box2' 'box3 box4 box5'/*  'box6 x box7' */;}
 	/* div#container footer.footer div.grid div.listbox {} */
+	div#container footer.footer div.grid div.listbox h2.head {margin-top:1.5rem;}
 	/* div#container footer.footer div.grid div.listbox ul.navlist {} */
 	/* div#container footer.footer div.grid div.listbox ul.navlist li.navitem {} */
 	div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink {font-size:1.125rem;}
@@ -257,7 +261,7 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 	/* div#container section {} */
 
 	/* Footer */
-	/* div#container footer.footer {} */
+	div#container footer.footer {padding:0 2.5rem 7rem;}
 	/* div#container footer.footer div.grid {flex-direction:column; align-items:center; text-align:center;} */
 	/* div#container footer.footer div.grid {grid-template-columns:repeat(2,1fr);} */
 	div#container footer.footer div.grid {grid-template-areas:'brand brand' 'box0 box1' 'box2 box3' 'box4 box5'/*  'box6 box7' */;}
@@ -295,4 +299,7 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 	/* div#container footer.footer div.grid {} */
 	div#container footer.footer div.grid {display:flex; flex-direction:column;}
 	div#container footer.footer div.grid div.listbox {text-align:center; margin-right:0; margin-top:0;}
+	div#container footer.footer.compact div.grid div.listbox h2.head {font-weight:200; margin-top:.375rem;}
+	div#container footer.footer.compact div.grid div.listbox ul.navlist {max-height:0; overflow:hidden;}
+	div#container footer.footer.compact div.grid div.listbox p.textcopy {margin-bottom:1rem;}
 }

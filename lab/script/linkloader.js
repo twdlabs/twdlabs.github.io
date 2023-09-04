@@ -32,33 +32,30 @@ function loadHeadNavLinks() {
 	// headNavDestination.innerHTML = result;
 
 	// Add list of links to page. 
-	headNavListLDestination.innerHTML = createListOfLinks( navLinkData[0].grouplist ,false);
+	headNavListLDestination.innerHTML = createListOfLinks( navLinkData.grouplist, false);
 
 	// Add list of links to page. 
-	headNavListRDestination.innerHTML = createListOfLinks( socialLinkData[0].grouplist ,true);
+	headNavListRDestination.innerHTML = createListOfLinks( socialLinkData.grouplist, true);
 
 	/****/
 
-	// Create list of links. 
+	// Create layout for list of links. 
 	function createListOfLinks(linklist, useicons) {
 
 		// Initialize list of items. 
 		let list = '';
 
 		// Accumulate list of items. 
-		for(link of linklist) {  
+		for(link of linklist) {
 
-			// 
-			list += `
-			<!-- navitem -->
-			<li class="navitem">
+			// Get link url. 
+			let url = link.linkurl;
 
-				<!-- navlink -->
-				<a class="navlink" href="${ link.linkurl }">${ useicons ? createIcon(link.icontag) : link.linkname }</a>
-				<!-- /navlink -->
+			// Get link caption. 
+			let caption = useicons ? createIcon(link.icontag) : link.linkname;
 
-			</li>
-			<!-- /navitem -->`;
+			// Compile navigation item. 
+			list += createNavItem(url,caption,false);
 		}
 
 		// Return list of items. 
@@ -68,14 +65,15 @@ function loadHeadNavLinks() {
 	
 		// Create link icon. 
 		function createIcon(icontag) {
+			
+			// Compile link icon. 
 			return `
-			<svg class="icon twitter" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+			<svg class="icon ${icontag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 				${ iconData[icontag] }
 			</svg>`;
 		}
 	}
 }
-
 
 // Add links to footer. 
 function loadFooterNavLinks() {
@@ -86,11 +84,11 @@ function loadFooterNavLinks() {
 	// let totalNumFootLinks = 0;
 
 	// Accumulate list boxes. 
-	// for(let i in projectLinkData) {
+	// for(let i in projectGroupData) {
 	for(let i in projectLinkMatrix) {
 
 		// Get set of link groups. 
-		// let linkgroupset = projectLinkData[i];
+		// let linkgroupset = projectGroupData[i];
 		let linkgroupset = projectLinkMatrix[i].map( getLinkGroupById );
 		// console.log('linkgroupset:',linkgroupset);
 	
@@ -132,7 +130,7 @@ function loadFooterNavLinks() {
 				<!-- navlist -->
 				<ul class="navlist">
 	
-					${ createLinkList(linkgroup.grouplist) }
+					${ createListOfLinks(linkgroup.grouplist) }
 	
 				</ul>
 				<!-- /navlist -->`;
@@ -144,8 +142,8 @@ function loadFooterNavLinks() {
 
 		/***/
 
-		// Create list of links. 
-		function createLinkList(linklist) {
+		// Create layout for list of links. 
+		function createListOfLinks(linklist) {
 
 			// Initialize list of items. 
 			let list = '';
@@ -156,21 +154,34 @@ function loadFooterNavLinks() {
 				// Increment total number of footer links. 
 				// totalNumFootLinks++;
 
-				// 
-				list += `
-				<!-- navitem -->
-				<li class="navitem">
-	
-					<!-- navlink -->
-					<a class="navlink" href="${ link.linkurl }" target="_blank">${ link.linkname }</a>
-					<!-- /navlink -->
-	
-				</li>
-				<!-- /navitem -->`;
+				// Get link url. 
+				let url = link.linkurl;
+
+				// Get link caption. 
+				let caption = link.linkname;
+
+				// Compile navigation item. 
+				list += createNavItem(url,caption,true);
 			}
 
 			// Return list of items. 
 			return list;
 		}
 	}
+}
+
+// Create navigation item. 
+function createNavItem(url,caption,newwindow) {
+
+	// Compile navigation item. 
+	return `
+	<!-- navitem -->
+	<li class="navitem">
+
+		<!-- navlink -->
+		<a class="navlink" href="${ url }" ${ newwindow ? 'target="_blank"' : '' }>${ caption }</a>
+		<!-- /navlink -->
+
+	</li>
+	<!-- /navitem -->`;
 }

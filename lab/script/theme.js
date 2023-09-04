@@ -116,6 +116,5 @@ function activateThemeList() {
 
 // Toggle theme list. 
 function toggleThemeList() {
-	// 
 	themeList.classList.toggle('open');
 }

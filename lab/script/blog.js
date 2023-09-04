@@ -19,6 +19,14 @@ const emptysearchlabel = document.querySelector('div#container section.blog div.
 /*****/
 
 
+// Set flag memory comfort (for previews being on by default). 
+let tooHeavy = true;
+// tooHeavy = false;
+
+
+/*****/
+
+
 // Load blog posts. 
 loadBlog();
 
@@ -32,22 +40,22 @@ function loadBlog() {
 
 	// Get list of primary posts. 
 	let primaryPosts = getPrimaryPosts();
-	// console.log('Primary posts', primaryPosts.length, primaryPosts);
+	console.log('Primary posts', primaryPosts.length, primaryPosts);
 
 	// Get list of secondary posts. 
 	let secondaryPosts = getSecondaryPosts();
-	// console.log('Secondary posts', secondaryPosts.length, secondaryPosts);
+	console.log('Secondary posts', secondaryPosts.length, secondaryPosts);
 
 	// Get list of remaining archive posts. 
 	let archivePosts = getRemainingPosts();
-	// console.log('Remaining posts', archivePosts.length, archivePosts);
+	console.log('Remaining posts', archivePosts.length, archivePosts);
 
 	// Get layout for primary posts. 
-	let primaryLayout = createBlogPostsLayout(primaryPosts);
+	let primaryLayout = createBlogPostsLayout(primaryPosts, true && !tooHeavy);
 	// Get layout for secondary posts. 
-	let secondaryLayout = createBlogPostsLayout(secondaryPosts);
+	let secondaryLayout = createBlogPostsLayout(secondaryPosts, false && !tooHeavy);
 	// Get layout for archive posts. 
-	let archiveLayout = createBlogPostsLayout(archivePosts);
+	let archiveLayout = createBlogPostsLayout(archivePosts, false && !tooHeavy);
 	
 	// Add primary layout to blog section. 
 	blogDestination.innerHTML = primaryLayout;
@@ -60,96 +68,97 @@ function loadBlog() {
 	// Add remaining layout to blog archive section. 
 	// blogArchiveDestination.innerHTML = archiveLayout;
 	// blogArchiveDestination.insertAdjacentHTML('beforeend',archiveLayout);
+	// blogDestination.insertAdjacentHTML('beforeend',archiveLayout);
 
 
 	// Get all blog post cards (after loading). 
 	blogpostcards = document.querySelectorAll('div#container section.blog div.grid ul.postlist li.postcard');
+	console.log('\n\n\n\n\n\n');
 
-	// Activate preview panels for blog post cards. 
-	activatePreviewPanels();
+	// Activate previews for blog post cards. 
+	activatePostPreviews();
 
 	// Activate blog post filter. 
 	activateBlogFilter();
 
 	/****/
 	
-	// Get list of primary links from link matrix. 
+	// Get primary list of links from link matrix. 
 	function getPrimaryPosts() {
+
+		// Sort list of primary project ids. 
+		primaryProjectIds.sort();
 
 		// Get group of links. 
 		// let linkgrouplist = getLinkGroupById('pp').grouplist;
-		let linkgrouplist = ( primaryProjectIds.sort() ).map(getProjectLinkById);
+		let linkgrouplist = primaryProjectIds.map(getProjectLinkById);
+		// console.log('linkgrouplist:',linkgrouplist);
 
 		// Initialize list of primary links. 
 		let postresultlist = [];
 
 		// Go thru each link in group list. 
 		for(let linkitem of linkgrouplist) {
+			// console.log('Link item:',linkitem);
 
 			// Get project id of link item. 
-			let projectid = (linkitem.linkurl).substring(3);
-
-			// Get link description from link item. 
-			let linkdescription = linkitem.linkname;
+			let pid = (linkitem.linkurl).substring(3);
 			
-			// Create post item. 
-			let post = {
-				projectid:projectid,
-				hovercaption:linkdescription,
+			// Create new post item. 
+			let newpost = {
+				projectid:pid,
+				hovercaption:linkitem.linkname,
 			};
 
-			// Add project to list of primary posts. 
-			postresultlist.push( post );
+			// Add project to primary list of posts. 
+			postresultlist.push( newpost );
 		}
 
-		// Return list of primary links. 
+		// Return primary list of links. 
 		return postresultlist;
 	}
 	
-	// Get list of primary links from link matrix. 
+	// Get secondary list of links from link matrix. 
 	function getSecondaryPosts() {
 
 		// Get original link matrix. 
-		// let linkmatrix = projectLinkData.map(   ( groupset ) => (  groupset.map( (group)=>(group.grouplist) )  )   );
+		// let linkmatrix = projectGroupData.map(   ( groupset ) => (  groupset.map( (group)=>(group.grouplist) )  )   );
 
 		// Get groups of links. 
-		let linkgroups = projectLinkData.map( group => group.grouplist );
-		// console.log('linkgroups:',linkgroups);
+		let alllinkgroups = projectGroupData.map( group => group.grouplist );
+		// console.log('All link groups:',alllinkgroups);
 
-		// Initialize list of primary links. 
+		// Initialize list of secondary links. 
 		let postresultlist = [];
 
 		// Go thru each link group. 
-		for(let linkgroup of linkgroups) {
+		for(let linkgroup of alllinkgroups) {
 
 			// Go thru each link in group list. 
 			for(let linkitem of linkgroup) {
 
 				// Get project id of link item. 
 				let projectid = (linkitem.linkurl).substring(3);
-
-				// Get link description from link item. 
-				let linkdescription = linkitem.linkname;
 				
-				// Create post item. 
-				let post = {
+				// Create new post item. 
+				let newpost = {
 					projectid:projectid,
-					hovercaption:linkdescription,
+					hovercaption:linkitem.linkname,
 				};
 
 				// Check if project already in primary list. 
 				let inPrimaryList = /* false &&  */primaryProjectIds.includes(projectid)
 
-				// Add project to list of primary posts. 
-				if(!inPrimaryList) postresultlist.push( post );
+				// Add project to secondary list of posts. 
+				if(!inPrimaryList) postresultlist.push( newpost );
 			}
 		}
 
-		// Sort list of primary links. 
+		// Sort secondary list of links. 
 		postresultlist.sort(sortPosts);
 
-		// Return sorted list of primary links. 
-		console.log(postresultlist);
+		// Return secondary list of links. 
+		// console.log(postresultlist);
 		return postresultlist;
 
 		/***/
@@ -165,7 +174,7 @@ function loadBlog() {
 		}
 	}
 	
-	// Get list of remaining links for archive. 
+	// Get list of remaining links leftover for archive. 
 	function getRemainingPosts() {
 
 		// Initialize list of remaining links. 
@@ -174,29 +183,59 @@ function loadBlog() {
 		// Go thru all project ids. 
 		for(let projectid of projectNames) {
 
-			// Check for primary project. 
-			let isPrimaryPost = primaryPosts.includes(projectid);
+			// Check if already in other list. 
+			let isAlreadyListed = checkIfAlreadyListed(projectid);
+			// primaryPosts.includes(projectid) || secondaryPosts.includes(projectid);
 
 			// Add project to list of remaining (non-primary) links. 
-			if(!isPrimaryPost) {
+			if(!isAlreadyListed) {
 
-				// Create post item. 
-				let post = {
+				// Create new post item. 
+				let newpost = {
 					projectid:projectid,
 					hovercaption:projectid,
 				};
 
 				// Add project to list of remaining (non-primary) links. 
-				postresultlist.push( post );
+				postresultlist.push( newpost );
 			}
 		}
 
 		// Return pre-sorted list of remaining links. 
 		return postresultlist;
+
+		/***/
+
+		// Check if already in other list. 
+		function checkIfAlreadyListed(projectid) {
+
+			// Go thru primary posts. 
+			for(let postitem of primaryPosts) {
+
+				// Check for match. 
+				let matchFound = postitem.projectid==projectid;
+
+				// Assume listed if found. 
+				if(matchFound) return true;
+			}
+
+			// Go thru secondary posts. 
+			for(let postitem of secondaryPosts) {
+
+				// Check for match. 
+				let matchFound = postitem.projectid==projectid;
+
+				// Assume listed if found. 
+				if(matchFound) return true;
+			}
+
+			// Assume not listed if not found. 
+			return false;
+		}
 	}
 
 	// Create layout for blog posts. 
-	function createBlogPostsLayout(postlist) {
+	function createBlogPostsLayout(postlist,previewsOn) {
 
 		// Initialize resulting layout. 
 		let result = '';
@@ -214,36 +253,14 @@ function loadBlog() {
 		/***/
 
 		// Create blog card. 
-		function createBlogCard(post,previewIncluded) {
+		function createBlogCard(post) {
 	
 			// Get project id of given post. 
 			let projectid = post.projectid;
 			// Get description of given post. 
 			let hovercaption = post.hovercaption;
 	
-			// 
-			if(!previewIncluded) return `
-			<!-- postcard -->
-			<li class="postcard" data-projectid="${ projectid }" title="${ hovercaption }">
-	
-				<!-- preview -->
-				<div class="preview">
-	
-					<!-- previewlink -->
-					<a class="previewlink" href="../${projectid}/index.html" target="_blank"></a>
-					<!-- /previewlink -->
-	
-				</div>
-				<!-- /preview -->
-	
-				<!-- namelink -->
-				<a class="namelink" href="../${projectid}/index.html" target="_blank">${ projectid }</a>
-				<!-- /namelink -->
-	
-			</li>
-			<!-- /postcard -->`;
-	
-			// 
+			// Compile post card. 
 			return `
 			<!-- postcard -->
 			<li class="postcard" data-projectid="${ projectid }" title="${ hovercaption }">
@@ -251,9 +268,7 @@ function loadBlog() {
 				<!-- preview -->
 				<div class="preview">
 	
-					<!-- preview -->
-					<iframe class="preview x3" src="../${projectid}/index.html"></iframe>
-					<!-- /preview -->
+					${ previewsOn ? createPreviewPanel(projectid) : '' }
 	
 					<!-- previewlink -->
 					<a class="previewlink" href="../${projectid}/index.html" target="_blank"></a>
@@ -271,17 +286,17 @@ function loadBlog() {
 		}
 	}
 
-	// Activate preview panels for blog post cards. 
-	function activatePreviewPanels() {
+	// Activate previews for blog post cards. 
+	function activatePostPreviews() {
 		
 		// Go thru blog post cards. 
 		for(let card of blogpostcards) {
 
-			// Activate mouse events for given card (w/ no up/down propagation). 
+			// Activate mouse events for given card (without up/down propagation). 
 			card.addEventListener('mouseenter',openPreview);
 			card.addEventListener('mouseleave',closePreview);
 
-			// Activate mouse events for given card (w/ up/down propagation). 
+			// Activate mouse events for given card (with up/down propagation). 
 			// card.addEventListener('mouseover',openPreview);
 			// card.addEventListener('mouseout',closePreview);
 		}
@@ -299,10 +314,7 @@ function loadBlog() {
 			let previewpanel = selectedCard.querySelector('div.preview');
 
 			// Add preview iframe to preview panel.
-			previewpanel.insertAdjacentHTML('afterbegin',`
-			<!-- preview -->
-			<iframe class="preview x3" src="../${projectid}/index.html"></iframe>
-			<!-- /preview -->`);
+			previewpanel.insertAdjacentHTML('afterbegin', createPreviewPanel(projectid) );
 		}
 
 		// Close preview of blog post. 
@@ -318,6 +330,16 @@ function loadBlog() {
 			// Remove preview iframe from preview panel.
 			previewpaneliframe.remove();
 		}
+	}
+
+	// Create preview panel for blog post card. 
+	function createPreviewPanel(projectid) {
+
+		// Compile preview panel. 
+		return `
+		<!-- preview -->
+		<iframe class="preview" src="../${projectid}/index.html"></iframe>
+		<!-- /preview -->`
 	}
 
 	// Activate blog post filter. 
@@ -369,8 +391,6 @@ function loadBlog() {
 
 			// Check for matching post (by full query). 
 			function checkForMatchFullQuery(projectid,filterquery) {
-
-				// 
 				return projectid.includes(filterquery)
 			}
 
@@ -415,8 +435,8 @@ function toggleLikeAccordion(section) {
 	// console.log('Section open:',sectionOpen);
 
 	// Get full height of section. 
-	let h = section.scrollHeight;
-	// console.log('h:',h);
+	let fullheight = section.scrollHeight;
+	// console.log('Full height:',fullheight);
 
 	// Close if already open
 	if(sectionOpen) {
@@ -426,7 +446,7 @@ function toggleLikeAccordion(section) {
 	
 	// Open if not already open
 	else {
-		section.style.maxHeight = `${h}px`;
+		section.style.maxHeight = `${fullheight}px`;
 		section.classList.remove('gone');
 	}
 

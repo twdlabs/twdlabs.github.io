@@ -30,14 +30,20 @@ div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;}
 /* div#container section.blocks {} */
 /* div#container section.blocks div.grid {} */
 div#container section.blocks div.grid ul.blocklist {list-style:none; padding:0; margin:0;}
-div#container section.blocks div.grid ul.blocklist {display:grid; grid-template-columns:repeat(6,1fr); grid-gap:1rem;}
-div#container section.blocks div.grid ul.blocklist li.blockitem {text-align:center; margin-top:2.5rem;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {background-color:transparent; color:inherit; text-decoration:none; transition:.125s;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {display:flex; flex-direction:column; align-items:center; grid-gap:.5rem; padding:1.5rem .5rem; border-radius:var(--cornersize);}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hover {background-color:var(--blackglass);}
+div#container section.blocks div.grid ul.blocklist {display:grid; grid-template-columns:repeat(6,1fr); grid-gap:0 1rem; margin-top:3rem;}
+div#container section.blocks div.grid ul.blocklist li.blockitem {text-align:center; /* margin-top:1.5rem; */}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {background-color:transparent; color:inherit; text-decoration:none; transition:.25s;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {--fillcolor:gainsboro;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {display:flex; flex-direction:column; align-items:center; grid-gap:.5rem; padding:1.5rem 1rem; padding:3rem 1rem 2rem; border-radius:var(--cornersize);}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hover {background-color:var(--blackglass); --fillcolor:whitesmoke;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.5rem;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon:empty {background-color:var(--themecolor); border-radius:.375em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {color:var(--forecolor); font-size:2rem; margin:0;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {color:var(--forecolor2); font-size:1.5rem; font-weight:100; margin:0;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:empty {background-color:var(--fillcolor); height:1em; width:7em; border-radius:1em;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {color:var(--forecolor2); font-size:1.5rem; font-weight:100; width:100%; margin:0;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty {display:flex; flex-direction:column; align-items:center; opacity:.625;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty:before {background-color:var(--fillcolor); display:block; content:''; height:1em; width:85%; border-radius:1em;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty::after {background-color:var(--fillcolor); display:block; content:''; height:1em; width:60%; border-radius:1em; margin-top:.25em;}
 
 /* Method Blocks Section */
 /* div#container section.blocks.methods {} */
@@ -47,13 +53,13 @@ div#container section.blocks.methods div.grid ul.blocklist {grid-template-column
 /* Category Blocks Section */
 /* div#container section.blocks.categories {} */
 /* div#container section.blocks.categories div.grid {} */
-div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);}
+div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(5,1fr);}
 
 
 /* Blog Section */
 /* div#container section.blog {} */
 /* div#container section.blog div.grid {} */
-div#container section.blog div.grid div.filter {position:relative; overflow:hidden; max-width:calc(var(--pagewidth)/3); border-radius:var(--cornersize); margin:2rem auto; box-shadow:var(--boxshadowx);}
+div#container section.blog div.grid div.filter {position:relative; overflow:hidden; max-width:calc(var(--pagewidth)/3); border-radius:var(--cornersize);/*  margin:2rem auto; */ box-shadow:var(--boxshadowx);}
 /* div#container section.blog div.grid div.filter label.label {background-color:var(--forecolor2); color:var(--backcolor); padding:0 1.125rem;} */
 div#container section.blog div.grid div.filter label.label {display:flex; flex-direction:column; justify-content:center; cursor:pointer;}
 div#container section.blog div.grid div.filter label.label {position:absolute; left:0; top:0; height:100%; padding:0 1.125rem;}
@@ -74,25 +80,27 @@ div#container section.blog div.grid ul.postlist li.postcard {background-color:va
 div#container section.blog div.grid ul.postlist li.postcard.x {display:none;}
 div#container section.blog div.grid ul.postlist.archive li.postcard {box-shadow:none;}
 /* div#container section.blog div.grid ul.postlist li.postcard a.namelink {display:flex; flex-direction:column; align-items:center;} */
-div#container section.blog div.grid ul.postlist li.postcard a.namelink {display:block; color:inherit; font-size:1.25rem; text-decoration:none; text-align:center; padding:.75rem 1rem;}
+div#container section.blog div.grid ul.postlist li.postcard a.namelink {display:block; font-size:1.25rem; text-align:center; padding:.75rem 1rem;}
+div#container section.blog div.grid ul.postlist li.postcard a.namelink {color:inherit; text-decoration:none; overflow:hidden; text-overflow:ellipsis;}
 div#container section.blog div.grid ul.postlist li.postcard div.preview {background-color:var(--backcolor); position:relative; width:100%; padding-top:75%;}
 div#container section.blog div.grid ul.postlist li.postcard div.preview a.previewlink {background-color:var(--blackglass);}
 div#container section.blog div.grid ul.postlist li.postcard div.preview a.previewlink {position:absolute; top:0; left:0; height:100%; width:100%; z-index:20;}
 /* div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {display:none;} */
 div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {background-color:var(--forecolor); border:0 none; /* border:.25rem solid; */}
 div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {position:absolute; top:0; left:0; height:100%; width:100%; overflow:hidden; z-index:10;}
-/* div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x1 {--xyz:1; scale:calc(1/xyz); height:calc(xyz*100%); width:calc(xyz*100%); transform:translate( calc(-50%) , calc(-50%) );} */
-div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x1 {--xyz:2; scale:.5; height:200%; width:200%; transform:translate(-50%,-50%);}
-div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x2 {--xyz:3; scale:.25; height:400%; width:400%; transform:translate(-150%,-150%);}
-div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x3 {--xyz:4; scale:.125; height:800%; width:800%; transform:translate(-350%,-350%);}
-div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x4 {--xyz:5; scale:.0625; height:1600%; width:1600%; transform:translate(-750%,-750%);}
-div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview.x5 {--xyz:6; scale:.03125; height:3200%; width:3200%; transform:translate(-1550%,-1550%);}
+div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {--ml:1; scale:1; height:100%; width:100%; transform:none;}
+div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {--ml:2; scale:.5; height:200%; width:200%; transform:translate(-50%,-50%);}
+div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {--ml:3; scale:.25; height:400%; width:400%; transform:translate(-150%,-150%);}
+div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {--ml:4; scale:.125; height:800%; width:800%; transform:translate(-350%,-350%);}
+/* div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {--ml:5; scale:.0625; height:1600%; width:1600%; transform:translate(-750%,-750%);} */
+/* div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {--ml:6; scale:.03125; height:3200%; width:3200%; transform:translate(-1550%,-1550%);} */
+/* div#container section.blog div.grid ul.postlist li.postcard div.preview iframe.preview {--ml:10; scale:calc( 1 / pow( 2, var(--ml) ) ); height:calc( pow( 2, var(--ml) ) * 100% ); width:calc( pow( 2, var(--ml) ) * 100% ); --trvalue:calc( -50% + 100% * pow( 2, (var(--ml) - 1) ) ); transform:translate( var(--trvalue) , var(--trvalue) );} */
 div#container section.blog div.grid div.emptylabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
 div#container section.blog div.grid div.emptylabel.on {display:block;}
-/* div#container section.blog div.grid div.zoomer {display:none !important;} */
 div#container section.blog div.grid div.zoomer {display:flex; align-items:center; justify-content:center; margin:2rem 0;}
 div#container section.blog div.grid div.zoomer div.zoombtn {font-size:3rem; cursor:pointer; user-select:none;}
 div#container section.blog div.grid div.zoomer div.zoombtn {display:grid; place-items:center; width:100%; padding:.5rem 2rem; border-radius:var(--cornersize); /* margin:0 auto; */ box-shadow:var(--boxshadow);}
+/* div#container section.blog div.grid div.zoomer {display:none;} */
 
 
 /* Desktop Section */
@@ -118,6 +126,7 @@ div#container section.desktop div.grid div.group div.gbody div.bin a.item:hover 
 div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {display:none;}
 div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {font-size:4rem;}
 div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+/* div#container section.desktop {display:none;} */
 
 
 /* Desktop Mini-Frame */
@@ -130,9 +139,9 @@ div#container figure.miniframe.active {opacity:1; visibility:visible;}
 div#container figure.miniframe::after {position:absolute; bottom:100%; left:var(--dx); transform:translateX(-50%);}
 div#container figure.miniframe::after {content:''; border:.75rem solid transparent; border-bottom-color:white;}
 /* div#container figure.miniframe::after {background-color:white; height:2rem; width:2rem;} */
-div#container figure.miniframe div.ratio {position:relative; padding-top:100%;}
-div#container figure.miniframe div.ratio iframe.page {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container figure.miniframe div.ratio iframe.page {background-color:var(--blacksheet); display:block; width:100%; border:solid; border-radius:.5rem;}
+div#container figure.miniframe div.bin {position:relative; padding-top:100%;}
+div#container figure.miniframe div.bin iframe.page {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container figure.miniframe div.bin iframe.page {background-color:var(--blacksheet); display:block; width:100%; border:solid; border-radius:.5rem;}
 
 
 
@@ -150,7 +159,7 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container section.blocks div.grid {} */
 	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
-	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
+	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);}
 
 	/* Blog Section */
 	/* div#container section.blog {} */
@@ -166,7 +175,35 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container figure.miniframe iframe.page {} */
 }
 
-/* Tablet Screen */
+/* Medium Tablet Screen */
+@media screen and (max-width:88rem) {
+	
+	/* Hero Section */
+	/* div#container section.hero {} */
+	/* div#container section.hero div.grid {} */
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
+
+	/* Blog Section */
+	/* div#container section.blog {} */
+	/* div#container section.blog div.grid {} */
+	/* div#container section.blog div.grid ul.postlist {} */
+	/* div#container section.blog div.grid ul.postlist li.postcard {} */
+	div#container section.blog div.grid ul.postlist li.postcard a.namelink {font-size:1.125rem;}
+	
+	/* Desktop Section */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.grid {} */
+
+	/* Desktop Mini-Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Small Tablet Screen */
 @media screen and (max-width:64rem) {
 	
 	/* Hero Section */
@@ -185,7 +222,7 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
 	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
 	/* div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {} */
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:3rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:3.5rem;}
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;}
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1.25rem;}
 
@@ -193,6 +230,8 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
 	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(5,1fr);}
+	/* div#container section.blog div.grid ul.postlist li.postcard {} */
+	div#container section.blog div.grid ul.postlist li.postcard a.namelink {font-size:1.0625rem;}
 	
 	/* Desktop Section */
 	/* div#container section.desktop {} */
@@ -232,6 +271,8 @@ div#container figure.miniframe div.ratio iframe.page {background-color:var(--bla
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
 	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(4,1fr);}
+	/* div#container section.blog div.grid ul.postlist li.postcard {} */
+	div#container section.blog div.grid ul.postlist li.postcard a.namelink {font-size:1rem;}
 	
 	/* Desktop Section */
 	/* div#container section.desktop {} */
