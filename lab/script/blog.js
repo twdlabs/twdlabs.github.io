@@ -265,21 +265,29 @@ function loadBlog() {
 			<!-- postcard -->
 			<li class="postcard" data-projectid="${ projectid }" title="${ hovercaption }">
 	
-				<!-- preview -->
-				<div class="preview">
+				<!-- projectlink -->
+				<a class="projectlink" href="../${projectid}/index.html" target="_blank">
 	
-					${ previewsOn ? createPreviewPanel(projectid) : '' }
+					<!-- preview -->
+					<div class="preview">
+		
+						${ previewsOn ? createPreviewPanel(projectid) : '' }
+		
+					</div>
+					<!-- /preview -->
+
+					<!-- name -->
+					<div class="name">
 	
-					<!-- previewlink -->
-					<a class="previewlink" href="../${projectid}/index.html" target="_blank"></a>
-					<!-- /previewlink -->
-	
-				</div>
-				<!-- /preview -->
-	
-				<!-- namelink -->
-				<a class="namelink" href="../${projectid}/index.html" target="_blank">${ projectid }</a>
-				<!-- /namelink -->
+						<!-- caption -->
+						<span class="caption">${projectid}</span>
+						<!-- /caption -->
+
+					</div>
+					<!-- /name -->
+
+				</a>
+				<!-- /projectlink -->
 	
 			</li>
 			<!-- /postcard -->`;
