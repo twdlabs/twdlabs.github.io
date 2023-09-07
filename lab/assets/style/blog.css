@@ -28,10 +28,11 @@ div#container section.blog div.grid ul.postlist li.postcard.x {display:none;}
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}
 div#container section.blog div.grid ul.postlist.archive li.postcard a.projectlink {box-shadow:none;}
-/* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption {display:flex; flex-direction:column; align-items:center;} */
+div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption {display:flex; justify-content:center; align-items:center;}
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption {font-size:1.25rem; /* text-align:center; */ padding:.75rem 1rem;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption span.name {background-color:var(--backcolor); display:block; /* width:fit-content; */ overflow:hidden; text-overflow:ellipsis;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption span.name:empty {background-color:gainsboro; display:block; height:1em; width:6em; border-radius:1em; margin:0 auto;}
+div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption span.name {/* background-color:var(--backcolor); */ display:block; padding:0 .5rem; border-radius:1em; margin:0 auto;}
+div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption span.name {width:fit-content; max-width:100%; overflow:hidden; text-overflow:ellipsis;}
+div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.caption span.name:empty {background-color:gainsboro; height:1em; width:6em;}
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview {background-color:var(--backcolor); position:relative; width:100%; padding-top:75%; /* margin-bottom:2em; */}
 /* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview:empty {background-color:limegreen;} */
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview::after {background-color:var(--blackglass); content:'';}
