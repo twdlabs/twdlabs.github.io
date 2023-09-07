@@ -70,7 +70,10 @@ function createBlockSet(datasource, a,b,c) {
 	/****/
 
 	// Create layout for block item. 
-	function createBlockItem(icontag,name,description) {
+	function createBlockItem(icontag,name,description,linkurl='javascript:void(0)') {
+
+		// Add id to url. 
+		if(linkurl) console.log(linkurl);
 	
 		// Compile layout for block item. 
 		return `
@@ -78,7 +81,7 @@ function createBlockSet(datasource, a,b,c) {
 		<li class="blockitem">
 	
 			<!-- blocklink -->
-			<a href="javascript:void(0)" class="blocklink">
+			<a href="${linkurl}" class="blocklink">
 	
 				<!-- icon -->
 				<svg class="icon ${ icontag }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

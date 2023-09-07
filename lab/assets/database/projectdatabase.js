@@ -855,6 +855,10 @@ const projectGroupData = [
 				linkname:'Task Manager',
 			},
 			{
+				linkurl:'../typetest',
+				linkname:'Typing Test',
+			},
+			{
 				linkurl:'../waves',
 				linkname:'Wave Generator',
 			},
@@ -939,10 +943,6 @@ const projectGroupData = [
 			{
 				linkurl:'../solarsystem',
 				linkname:'Solar System',
-			},
-			{
-				linkurl:'../typetest',
-				linkname:'Typing Test',
 			},
 		],
 	},
@@ -1129,13 +1129,14 @@ const projectGroupData = [
 
 // Define primary projects by project id. 
 const primaryProjectIds = [
-	'analogclock','autoslideshow',
+	'analogclock','autoslideshow','admin',
 	'banner','bizmath','blockmenu','blog',
-	'calendar','chat','chess','cluster','compound','crud',
-	'desktop','device','gallery','keyfinder','livesearch',
+	'calendar','canvas','chat','chess','cluster','compound','crud',
+	'desktop','device','dragndrop','gallery','keyfinder','livesearch',
 	'merch','musicplayer','pinyin','pixelart','pong',
-	'resume','storage','tasks','toastprogress',
-	'univ','video','wts1','100pure','3dnav',
+	'resume','rolodex','storage','tasks','toastprogress',
+	'univ','video','wts1',
+	'100pure','360finance','3dnav',
 	// 'xyz','xyz','xyz',
 ];
 // console.log('Primary projects:',primaryProjectIds);
@@ -1143,44 +1144,12 @@ const primaryProjectIds = [
 
 // Define organization of link matrix by group ids. 
 const projectLinkMatrix = [
-
-	[
-		'cl',
-		'jl',
-		'ssc',
-	],
-	
-	[
-		'aw',
-	],
-	
-	[
-		'fw',
-		'gw',
-		'mw',
-	],
-	
-	[
-		'nw',
-		'ww',
-		'ld',
-	],
-	
-	[
-		'ap',
-		'gp',
-		'dp',
-	],
-	
-	[
-		'sac',
-		'ssd',
-		'sbs',
-		'sss',
-		'pbs',
-		'esp',
-	],
-	
+	['cl','jl','ssc',],
+	['aw',],
+	['fw','gw','mw',],
+	['nw','ww','ld',],
+	['ap','gp','dp',],
+	['sac','ssd','sbs','sss','pbs','esp',],
 ];
 
 

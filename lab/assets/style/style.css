@@ -38,7 +38,7 @@
 	/* --pagewidth:100rem; */
 	--pagewidth:125rem;
 	--cornersize:.5rem;
-	--headerheight:5rem;
+	--headerheight:4rem;
 
 	/* Box Shadows */
 	--boxshadow:0 0 1rem 0 #0002;
@@ -101,10 +101,10 @@ div#container {display:flex; flex-direction:column; justify-content:flex-start; 
 
 /* Navbar */
 div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; min-height:var(--headerheight); z-index:30; box-shadow:var(--boxshadowxx);}
-div#container nav.navbar {/* background-color:var(--navcolor); */ background-color:var(--themecolor); color:white; width:100%; padding:1rem 2.5rem;}
+div#container nav.navbar {/* background-color:var(--navcolor); */ background-color:var(--themecolor); color:white; width:100%; padding:.75rem 2.5rem;}
 div#container.babybar nav.navbar {max-width:var(--pagewidth); border-radius:var(--cornersize); margin:0 auto;}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; height:100%; max-width:var(--pagewidth); margin:0 auto;}
-div#container nav.navbar div.bin a.brand {color:inherit; font-size:2rem; text-decoration:none;}
+div#container nav.navbar div.bin a.brand {color:inherit; font-size:1.75rem; text-decoration:none;}
 div#container nav.navbar div.bin a.brand {display:flex; flex-direction:row; align-items:center; margin:0;}
 div#container nav.navbar div.bin a.brand img.logo {height:1.75em; border-radius:50%; box-shadow:var(--boxshadowx);}
 div#container nav.navbar div.bin a.brand svg.icon {display:none;}
@@ -116,27 +116,27 @@ div#container nav.navbar div.bin div.navmenu a.brand {display:none; justify-cont
 div#container nav.navbar div.bin div.navmenu ul.navlist.r {/* flex-grow:1; */ justify-content:flex-end;}
 /* div#container nav.navbar div.bin div.navmenu ul.navlist.r {border-left:1px solid var(--whiteglass);} */
 div#container nav.navbar div.bin div.navmenu ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0; margin-left:1.25rem;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {font-size:1.25rem; margin-left:1rem;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {font-size:1.125rem; margin-left:1rem;}
 /* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {margin:0 .5rem;} */
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink:hover {color:var(--forecolor2);}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {display:block;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {display:block; font-size:1.125em;}
 div#container nav.navbar div.bin div.navmenu div.livesearch {flex-grow:1; max-width:40rem;}
 div#container nav.navbar div.bin div.navmenu div.livesearch {position:relative; margin-left:2rem;}
-div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery {position:relative;}
-div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery input.searchquery {background-color:var(--backcolor2); color:var(--forecolor); font-family:inherit; font-size:1.375rem; font-weight:300;}
-div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery input.searchquery {width:100%; padding:1rem 3.75rem .875rem; border-radius:var(--cornersize); border-radius:10rem; border:0 none; outline:none; box-shadow:var(--boxshadowx);}
+div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery {position:relative; font-size:1.125rem;}
+div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery input.searchquery {background-color:var(--backcolor2); color:var(--forecolor); font-family:inherit; font-size:inherit; font-weight:300;}
+div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery input.searchquery {width:100%; padding:1rem 3.75rem .875rem; padding:.5rem 3.25rem; border-radius:var(--cornersize); border-radius:10rem; border:0 none; outline:none; box-shadow:var(--boxshadowx);}
 div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery div.expandbtn {position:absolute; top:50%; right:0; transform:translateY(-50%);}
 div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery div.expandbtn {display:grid; place-items:center; cursor:pointer; height:100%; padding:0 .625rem;}
-div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery div.expandbtn svg.icon {display:block; color:grey; margin-right:.375rem;}
-div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery label.searchlabel {position:absolute; top:50%; left:0; transform:translateY(-50%);}
-div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery label.searchlabel svg.icon.search {display:block; color:grey; font-size:1.5em; margin-left:1.25rem;}
+div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery div.expandbtn svg.icon {display:block; color:grey; font-size:.75rem; margin-right:.375rem;}
+div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery label.searchlabel {position:absolute; top:50%; left:0; transform:translateY(-50%); margin-left:1.125rem;}
+div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery label.searchlabel svg.icon.search {display:block; color:grey; font-size:1.375rem;}
 div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults {position:absolute; top:100%; left:0; right:0; width:100%; height:16rem; max-height:0; transition:.5s;}
 div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults {width:calc(100% - 2.5rem); margin:0 auto; margin-top:.25rem;}
 div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults {background-color:var(--backcolor2); color:grey; border-radius:var(--cornersize); margin-top:.125rem;}
 /* div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults {background-color:var(--themecolor);} */
 div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults.active {max-height:16rem; padding:.5rem 1rem; box-shadow:var(--boxshadowxx);}
-div#container nav.navbar div.bin div.themetoggler {position:relative; font-size:1.25rem; height:100%; padding-left:2rem; border-left:1px solid #FFF4; margin-left:2rem;}
+div#container nav.navbar div.bin div.themetoggler {position:relative; font-size:1.125rem; height:100%; padding-left:2rem; border-left:1px solid #FFF4; margin-left:2rem;}
 div#container nav.navbar div.bin div.themetoggler div.themebtn {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
 /* div#container nav.navbar div.bin div.themetoggler div.themebtn svg.icon {} */
 div#container nav.navbar div.bin div.themetoggler div.themebtn svg.icon.arrowdown {font-size:.625em; margin-left:.25rem;}
@@ -152,7 +152,7 @@ div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.th
 /* div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themelink svg.icon {} */
 div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themelink span.caption {margin-left:.75rem;}
 div#container nav.navbar div.bin div.navtoggler {display:none; cursor:pointer;}
-div#container nav.navbar div.bin div.navtoggler svg.icon {display:block; font-size:2.5rem;}
+div#container nav.navbar div.bin div.navtoggler svg.icon {display:block; font-size:2.25rem;}
 
 
 /* General Section */
@@ -161,8 +161,11 @@ div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
 div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container section div.grid div.head {flex-direction:column; grid-gap:1.5rem;}
-div#container footer div.grid h1.head ,
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; margin:0;}
+
+
+/* Hero Section */
+div#container section.hero {margin-top:var(--headerheight);}
 
 
 /* Footer */
@@ -170,6 +173,7 @@ div#container footer.footer {background-color:var(--backcolor2); width:100%; pad
 /* div#container footer.footer div.grid {display:flex; flex-direction:row;} */
 div#container footer.footer div.grid {display:grid; /* grid-template-columns:repeat(6,1fr); */ max-width:var(--pagewidth); margin:0 auto;}
 div#container footer.footer div.grid {grid-template-areas:'brand brand brand brand brand brand' 'box0 box1 box2 box3 box4 box5'/*  'box6 box7' */;}
+div#container footer.footer div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; margin:0;}
 div#container footer.footer div.grid div.listbox {flex-basis:0; flex-grow:1; flex-shrink:0; text-align:left; /* padding:1rem; */ margin-right:2rem; margin-top:2.75rem;}
 div#container footer.footer div.grid div.listbox.x {display:none;}
 div#container footer.footer div.grid div.listbox.box0 {grid-area:box0;}
@@ -203,7 +207,7 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 	/* Footer */
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {grid-template-columns:repeat(3,1fr);} */
-	div#container footer.footer div.grid {grid-template-areas:'brand brand brand brand' 'box0 box1 box2 box3' 'x box4 box5 x'/*  'box6 box7' */;}
+	div#container footer.footer div.grid {grid-template-areas:'brand brand brand brand' 'box0 box1 box2 box3' 'xyz box4 box5 xyz'/*  'box6 box7' */;}
 }
 
 /* Tablet Screen */
@@ -228,7 +232,7 @@ div#container footer.footer div.grid div.listbox ul.navlist li.navitem a.navlink
 	div#container nav.navbar div.bin div.navmenu ul.navlist.l {order:2; flex-grow:1; flex-direction:column; /* justify-content:flex-start; */ width:100%;}
 	div#container nav.navbar div.bin div.navmenu ul.navlist.r {order:3; justify-content:center; margin:.5rem auto;}
 	/* div#container nav.navbar div.bin div.navmenu ul.navlist.r {justify-content:flex-end; border-left:0 none;} */
-	div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {font-size:2rem; padding:.75rem; margin:0;}
+	div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {font-size:1.5rem; padding:.75rem; margin:0;}
 	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {} */
 	div#container nav.navbar div.bin div.navmenu div.livesearch {order:1; flex-grow:0; margin:3rem 0;}
 	/* div#container nav.navbar div.bin div.navmenu div.livesearch input.searchquery {} */

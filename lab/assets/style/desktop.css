@@ -1,0 +1,143 @@
+
+
+
+/* Desktop Section */
+div#container section.desktop {display:flex; flex-direction:column;  transition:.5s;}
+div#container section.desktop div.grid {max-width:calc(var(--pagewidth)/2);}
+div#container section.desktop div.grid div.group {background-color:var(--grpbackcolor); overflow:hidden; border-radius:.5rem; margin-top:.875rem;}
+div#container section.desktop div.grid div.group {display:flex; flex-direction:column; align-items:stretch; box-shadow:var(--boxshadow);}
+div#container section.desktop div.grid div.group.x {display:none;}
+div#container section.desktop div.grid div.group div.ghead {background-color:var(--grpbackcolor); /* color:white; font-weight:100; */ cursor:pointer; user-select:none; padding:0 1rem; /* border-radius:.5rem; */}
+div#container section.desktop div.grid div.group div.ghead {display:flex; flex-direction:row; justify-content:space-between; align-items:center; box-shadow:var(--boxshadow);}
+div#container section.desktop div.grid div.group div.ghead h2.head {font-size:1.75rem; text-align:center; margin:0; margin:.5rem 0;}
+div#container section.desktop div.grid div.group div.ghead svg.icon {font-size:1.375rem;}
+div#container section.desktop div.grid div.group div.ghead svg.icon.open {display:block;}
+div#container section.desktop div.grid div.group div.ghead svg.icon.close {display:none;}
+div#container section.desktop div.grid div.group.active div.ghead svg.icon.open {display:none;}
+div#container section.desktop div.grid div.group.active div.ghead svg.icon.close {display:block;}
+div#container section.desktop div.grid div.group div.gbody {/* display:none; */ /* background-color:var(--grpbackcolor); */ overflow:hidden; max-height:0; transition:.5s;}
+/* div#container section.desktop div.grid div.group.active div.gbody {display:block;} */
+div#container section.desktop div.grid div.group div.gbody div.bin {display:grid; grid-template-columns:repeat(6,1fr); place-items:center; grid-gap:.875rem; padding:2rem;}
+div#container section.desktop div.grid div.group div.gbody div.bin a.item {background-color:var(--linkbackcolor); color:var(--linkforecolor); cursor:pointer; font-size:1.125rem; width:100%/* 6rem */; padding:.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container section.desktop div.grid div.group div.gbody div.bin a.item {display:flex; flex-direction:column; align-items:center; text-decoration:none; overflow:hidden; transition:.25s;}
+div#container section.desktop div.grid div.group div.gbody div.bin a.item:hover {background-color:var(--linkbackcolorhover); color:var(--linkforecolorhover);}
+div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {display:none;}
+div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {font-size:4rem;}
+div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+/* div#container section.desktop {display:none;} */
+
+
+/* Desktop Mini-Frame */
+div#container figure.miniframe {position:absolute; top:0; left:0; box-shadow:var(--boxshadow); --dx:0; transform:translateY(1rem);}
+/* div#container figure.miniframe {top:2rem; left:2rem; transform:translate(10rem,10rem);} */
+div#container figure.miniframe {background-color:white; width:100%; max-width:32rem; padding:.25rem; border:.25rem solid white; border-radius:.75rem; margin:0;}
+div#container figure.miniframe {opacity:0; visibility:hidden; transition:.25s; transition-delay:.375s;}
+div#container figure.miniframe:hover {opacity:1; visibility:visible;}
+div#container figure.miniframe.active {opacity:1; visibility:visible;}
+div#container figure.miniframe::after {position:absolute; bottom:100%; left:var(--dx); transform:translateX(-50%);}
+div#container figure.miniframe::after {content:''; border:.75rem solid transparent; border-bottom-color:white;}
+/* div#container figure.miniframe::after {background-color:white; height:2rem; width:2rem;} */
+div#container figure.miniframe div.bin {position:relative; padding-top:100%;}
+div#container figure.miniframe div.bin iframe.page {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container figure.miniframe div.bin iframe.page {background-color:var(--blacksheet); display:block; width:100%; border:solid; border-radius:.5rem;}
+
+
+
+
+
+/* Large Tablet Screen */
+@media screen and (max-width:125rem) {
+	
+	/* Desktop Section */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.grid {} */
+
+	/* Desktop Mini-Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Medium Tablet Screen */
+@media screen and (max-width:88rem) {
+	
+	/* Desktop Section */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.grid {} */
+
+	/* Desktop Mini-Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Small Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* Desktop Section */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop {margin-top:0;} */
+	/* div#container section.desktop div.grid {} */
+	/* div#container section.desktop div.grid div.group {} */
+	/* div#container section.desktop div.grid div.group div.gbody {padding-left:3rem; padding-right:3rem;} */
+	div#container section.desktop div.grid div.group div.gbody div.bin {grid-template-columns:repeat(4,1fr); }
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {} */
+	div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:1rem}
+
+	/* Desktop Mini-Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/* Desktop Section */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.grid {} */
+	/* div#container section.desktop div.grid div.group {} */
+	/* div#container section.desktop div.grid div.group div.gbody {} */
+	div#container section.desktop div.grid div.group div.gbody div.bin {grid-template-columns:repeat(3,1fr);}
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
+	div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {font-size:3rem;}
+	div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:.875rem;}
+
+	/* Desktop Mini-Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Medium Smartphone Screen */
+@media screen and (max-width:36rem) {
+	
+	/* Desktop Section */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.grid {} */
+	/* div#container section.desktop div.grid div.group {} */
+	/* div#container section.desktop div.grid div.group div.gbody {} */
+	div#container section.desktop div.grid div.group div.gbody div.bin {grid-template-columns:repeat(2,1fr);}
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {} */
+	div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:.75rem;}
+
+	/* Desktop Mini-Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:30rem) {
+
+	/* Desktop Section */
+	/* div#container section.desktop {} */
+	/* div#container section.desktop div.grid {} */
+	/* div#container section.desktop div.grid div.group {} */
+	/* div#container section.desktop div.grid div.group div.gbody {} */
+	/* div#container section.desktop div.grid div.group div.gbody div.bin {} */
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {} */
+	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {} */
+
+	/* Desktop Mini-Frame */
+	/* div#container figure.miniframe {} */
+	/* div#container figure.miniframe iframe.page {} */
+}

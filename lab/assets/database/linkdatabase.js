@@ -2,8 +2,7 @@
 
 
 // Define navugation link data. 
-const navLinkData = 
-{
+const navLinkData = {
 	groupname:'Links',
 	grouplist:[
 		{

@@ -58,11 +58,11 @@ function loadBlog() {
 	let archiveLayout = createBlogPostsLayout(archivePosts, false && !tooHeavy);
 	
 	// Add primary layout to blog section. 
-	blogDestination.innerHTML = primaryLayout;
+	if(blogDestination) blogDestination.innerHTML = primaryLayout;
 	// blogDestination.insertAdjacentHTML('beforeend',primaryLayout);
 
 	// Add secondary layout to blog archive section. 
-	blogArchiveDestination.innerHTML = secondaryLayout;
+	if(blogArchiveDestination) blogArchiveDestination.innerHTML = secondaryLayout;
 	// blogArchiveDestination.insertAdjacentHTML('beforeend',secondaryLayout);
 
 	// Add remaining layout to blog archive section. 
@@ -79,7 +79,7 @@ function loadBlog() {
 	activatePostPreviews();
 
 	// Activate blog post filter. 
-	activateBlogFilter();
+	if(postfilterfield) activateBlogFilter();
 
 	/****/
 	
@@ -259,32 +259,31 @@ function loadBlog() {
 			let projectid = post.projectid;
 			// Get description of given post. 
 			let hovercaption = post.hovercaption;
+
+			// Get url of page to be added. 
+			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
 	
 			// Compile post card. 
 			return `
 			<!-- postcard -->
-			<li class="postcard" data-projectid="${ projectid }" title="${ hovercaption }">
+			<li class="postcard" data-projectid="${projectid}" title="${hovercaption}">
 	
 				<!-- projectlink -->
-				<a class="projectlink" href="../${projectid}/index.html" target="_blank">
+				<a class="projectlink" href="${pageurl}" target="_blank">
 	
 					<!-- preview -->
-					<div class="preview">
-		
-						${ previewsOn ? createPreviewPanel(projectid) : '' }
-		
-					</div>
+					<div class="preview">${ previewsOn ? createPreviewPanel(projectid) : '' }</div>
 					<!-- /preview -->
 
-					<!-- name -->
-					<div class="name">
-	
-						<!-- caption -->
-						<span class="caption">${projectid}</span>
-						<!-- /caption -->
+					<!-- caption -->
+					<div class="caption">
+
+						<!-- name -->
+						<span class="name">${projectid}</span>
+						<!-- /name -->
 
 					</div>
-					<!-- /name -->
+					<!-- /caption -->
 
 				</a>
 				<!-- /projectlink -->
@@ -343,10 +342,13 @@ function loadBlog() {
 	// Create preview panel for blog post card. 
 	function createPreviewPanel(projectid) {
 
+		// Get url of page to be previewed. 
+		let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+
 		// Compile preview panel. 
 		return `
 		<!-- preview -->
-		<iframe class="preview" src="../${projectid}/index.html"></iframe>
+		<iframe class="preview" src="${pageurl}"></iframe>
 		<!-- /preview -->`
 	}
 

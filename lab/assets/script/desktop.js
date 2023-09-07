@@ -34,7 +34,7 @@ function loadDesktop() {
 
 	// Get groups of project names by category. 
 	let projectNameGroups = getNameGroups(projectNames);
-	// console.log(projectNameGroups);
+	console.log('Project name groups:',projectNameGroups);
 
 	// Initialize result. 
 	let result = '';
@@ -166,19 +166,23 @@ function loadDesktop() {
 		
 			// Add project link to result. 
 			for(let projectid of group) {
-				result += createLinkItem(projectid)
+				result += createProjectLink(projectid)
 			}
 	
 			// Return result. 
 			return result;
 		}
 
-		// Create link item. 
-		function createLinkItem(projectid) {
+		// Create project link. 
+		function createProjectLink(projectid) {
+
+			// Get url of page to be added. 
+			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+
 			// Return result. 
 			return `
 			<!-- item -->
-			<a class="item" href="../${projectid}" target="_blank">
+			<a class="item" href="${pageurl}" target="_blank">
 			
 				<!-- icon -->
 				<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

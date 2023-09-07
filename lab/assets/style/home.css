@@ -2,8 +2,8 @@
 
 
 /* Hero Section */
-div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../admin/images/barcelona.jpg'); background-size:cover; background-position:center 25%;}
-div#container section.hero {position:relative; min-height:75vh; margin-top:var(--headerheight);}
+div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../admin/images/barcelona.jpg'); background-size:cover; background-position:center 25%;}
+div#container section.hero {position:relative; min-height:75vh;}
 div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;}
 div#container.babybar section.hero {margin-top:0;}
 div#container section.hero::before {background-color:var(--sheetcolor); content:'';}
@@ -24,66 +24,6 @@ div#container section.hero div.grid div.col a.contactlink.b {background-color:va
 div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;}
 /* div#container section.hero div.grid div.col a.contactlink.a:hover {background-color:var(--drkthemecolor); border-color:var(--drkthemecolor);} */
 /* div#container section.hero div.grid div.col a.contactlink.b:hover {background-color:var(--backcolor); color:var(--forecolor); border-color:var(--backcolor);} */
-
-
-/* Blog Section */
-/* div#container section.blog {} */
-/* div#container section.blog div.grid {} */
-/* Blog Section: Filter */
-div#container section.blog div.grid div.filter {position:relative; overflow:hidden; max-width:calc(var(--pagewidth)/3); border-radius:var(--cornersize);/*  margin:2rem auto; */ box-shadow:var(--boxshadowx);}
-/* div#container section.blog div.grid div.filter label.label {background-color:var(--forecolor2); color:var(--backcolor); padding:0 1.125rem;} */
-div#container section.blog div.grid div.filter label.label {display:flex; flex-direction:column; justify-content:center; cursor:pointer;}
-div#container section.blog div.grid div.filter label.label {position:absolute; left:0; top:0; height:100%; padding:0 1.125rem;}
-div#container section.blog div.grid div.filter label.label svg.icon {display:block; font-size:1.75rem;}
-div#container section.blog div.grid div.filter label.clearbtn {position:absolute; right:0; top:50%; transform:translateY(-50%);height:var(--btnsize); width:var(--btnsize);}
-div#container section.blog div.grid div.filter label.clearbtn {/* background-color:#FFFFFF08; color:black; */ --btnsize:2rem; opacity:.375; cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.filter label.clearbtn {display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1.125rem; margin-right:.5rem;}
-div#container section.blog div.grid div.filter label.clearbtn svg.icon {font-size:1.75rem;}
-div#container section.blog div.grid div.filter input#postfilter {background-color:var(--backcolor2); color:var(--forecolor);}
-div#container section.blog div.grid div.filter input#postfilter {font-family:inherit; font-size:1.375rem; font-weight:300; width:100%; padding:.875rem 3.25rem .875rem 3.5rem;}
-div#container section.blog div.grid div.filter input#postfilter {border:.125rem solid var(--backcolor2); outline:none;}
-/* Blog Section: Post List */
-div#container section.blog div.grid ul.postlist {display:grid; grid-template-columns:repeat(8,1fr)/*  !important */; grid-gap:1.25rem; list-style:none; padding:0; margin:0; margin-top:1.5rem;}
-div#container section.blog div.grid ul.postlist.archive {opacity:.375; overflow:hidden; transition:.375s;}
-div#container section.blog div.grid ul.postlist.archive.gone {max-height:0; visibility:hidden; opacity:0;}
-/* div#container section.blog div.grid ul.postlist:empty {background-color:greenyellow; padding:4rem;} */
-/* div#container section.blog div.grid ul.postlist:empty::after {content:'No matching posts found';} */
-div#container section.blog div.grid ul.postlist li.postcard {overflow:hidden;}
-div#container section.blog div.grid ul.postlist li.postcard.x {display:none;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
-div#container section.blog div.grid ul.postlist.archive li.postcard a.projectlink {box-shadow:none;}
-/* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.name {display:flex; flex-direction:column; align-items:center;} */
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.name {font-size:1.25rem; text-align:center; padding:.75rem 1rem;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.name span.caption {display:block; overflow:hidden; text-overflow:ellipsis;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.name span.caption:empty {background-color:gainsboro; display:block; height:1em; width:6em; border-radius:1em; margin:0 auto;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview {background-color:var(--backcolor); position:relative; width:100%; padding-top:75%; /* margin-bottom:2em; */}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview::after {background-color:var(--blackglass); content:'';}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview::after {position:absolute; top:0; left:0; height:100%; width:100%; z-index:20;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {background-color:var(--forecolor); /* display:none; */ border:0 none; /* border:.25rem solid; */}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {position:absolute; top:0; left:0; height:100%; width:100%; overflow:hidden; z-index:10;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:1; scale:1; height:100%; width:100%; transform:none;}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:2; scale:.5; height:200%; width:200%; transform:translate(-50%,-50%);}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:3; scale:.25; height:400%; width:400%; transform:translate(-150%,-150%);}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:4; scale:.125; height:800%; width:800%; transform:translate(-350%,-350%);}
-/* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:5; scale:.0625; height:1600%; width:1600%; transform:translate(-750%,-750%);} */
-/* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:6; scale:.03125; height:3200%; width:3200%; transform:translate(-1550%,-1550%);} */
-/* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:10; scale:calc( 1 / pow( 2, var(--ml) ) ); height:calc( pow( 2, var(--ml) ) * 100% ); width:calc( pow( 2, var(--ml) ) * 100% ); --trvalue:calc( -50% + 100% * pow( 2, (var(--ml) - 1) ) ); transform:translate( var(--trvalue) , var(--trvalue) );} */
-div#container section.blog div.grid div.emptylabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
-div#container section.blog div.grid div.emptylabel.on {display:block;}
-/* Blog Section: Zoomer */
-div#container section.blog div.grid div.zoomer {display:flex; align-items:center; justify-content:center; margin:2rem 0;}
-div#container section.blog div.grid div.zoomer div.zoombtn {font-size:3rem; cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.zoomer div.zoombtn {display:grid; place-items:center; width:100%; padding:.5rem 2rem; border-radius:var(--cornersize); /* margin:0 auto; */ box-shadow:var(--boxshadow);}
-/* div#container section.blog div.grid div.zoomer {display:none;} */
-/* Blog Section: More */
-/* div#container section.blog div.grid div.more {} */
-div#container section.blog div.grid div.more {display:flex; flex-direction:column; align-items:center; padding:2rem 0;}
-div#container section.blog div.grid div.more a.morebtn {background-color:var(--backcolor2); color:inherit; color:var(--forecolor); text-decoration:none;}
-div#container section.blog div.grid div.more a.morebtn {display:flex; align-items:center; padding:.75rem 2rem; border-radius:.5rem;}
-div#container section.blog div.grid div.more a.morebtn svg.icon {margin-left:.5rem;}
-/* div#container section.blog div.grid div.more a.morebtn span.caption {} */
-/* div#container section.blog div.grid div.more {display:none;} */
 
 
 /* Blocks Section */
@@ -116,47 +56,6 @@ div#container section.blocks.methods div.grid ul.blocklist {grid-template-column
 div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(5,1fr);}
 
 
-/* Desktop Section */
-div#container section.desktop {display:flex; flex-direction:column;  transition:.5s;}
-div#container section.desktop div.grid {max-width:calc(var(--pagewidth)/2);}
-div#container section.desktop div.grid div.group {background-color:var(--grpbackcolor); overflow:hidden; border-radius:.5rem; margin-top:.875rem;}
-div#container section.desktop div.grid div.group {display:flex; flex-direction:column; align-items:stretch; box-shadow:var(--boxshadow);}
-div#container section.desktop div.grid div.group.x {display:none;}
-div#container section.desktop div.grid div.group div.ghead {background-color:var(--grpbackcolor); /* color:white; font-weight:100; */ cursor:pointer; user-select:none; padding:0 1rem; /* border-radius:.5rem; */}
-div#container section.desktop div.grid div.group div.ghead {display:flex; flex-direction:row; justify-content:space-between; align-items:center; box-shadow:var(--boxshadow);}
-div#container section.desktop div.grid div.group div.ghead h2.head {font-size:1.75rem; text-align:center; margin:0; margin:.5rem 0;}
-div#container section.desktop div.grid div.group div.ghead svg.icon {font-size:1.375rem;}
-div#container section.desktop div.grid div.group div.ghead svg.icon.open {display:block;}
-div#container section.desktop div.grid div.group div.ghead svg.icon.close {display:none;}
-div#container section.desktop div.grid div.group.active div.ghead svg.icon.open {display:none;}
-div#container section.desktop div.grid div.group.active div.ghead svg.icon.close {display:block;}
-div#container section.desktop div.grid div.group div.gbody {/* display:none; */ /* background-color:var(--grpbackcolor); */ overflow:hidden; max-height:0; transition:.5s;}
-/* div#container section.desktop div.grid div.group.active div.gbody {display:block;} */
-div#container section.desktop div.grid div.group div.gbody div.bin {display:grid; grid-template-columns:repeat(6,1fr); place-items:center; grid-gap:.875rem; padding:2rem;}
-div#container section.desktop div.grid div.group div.gbody div.bin a.item {background-color:var(--linkbackcolor); color:var(--linkforecolor); cursor:pointer; font-size:1.125rem; width:100%/* 6rem */; padding:.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-div#container section.desktop div.grid div.group div.gbody div.bin a.item {display:flex; flex-direction:column; align-items:center; text-decoration:none; overflow:hidden; transition:.25s;}
-div#container section.desktop div.grid div.group div.gbody div.bin a.item:hover {background-color:var(--linkbackcolorhover); color:var(--linkforecolorhover);}
-div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {display:none;}
-div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {font-size:4rem;}
-div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-/* div#container section.desktop {display:none;} */
-
-
-/* Desktop Mini-Frame */
-div#container figure.miniframe {position:absolute; top:0; left:0; box-shadow:var(--boxshadow); --dx:0; transform:translateY(1rem);}
-/* div#container figure.miniframe {top:2rem; left:2rem; transform:translate(10rem,10rem);} */
-div#container figure.miniframe {background-color:white; width:100%; max-width:32rem; padding:.25rem; border:.25rem solid white; border-radius:.75rem; margin:0;}
-div#container figure.miniframe {opacity:0; visibility:hidden; transition:.25s; transition-delay:.375s;}
-div#container figure.miniframe:hover {opacity:1; visibility:visible;}
-div#container figure.miniframe.active {opacity:1; visibility:visible;}
-div#container figure.miniframe::after {position:absolute; bottom:100%; left:var(--dx); transform:translateX(-50%);}
-div#container figure.miniframe::after {content:''; border:.75rem solid transparent; border-bottom-color:white;}
-/* div#container figure.miniframe::after {background-color:white; height:2rem; width:2rem;} */
-div#container figure.miniframe div.bin {position:relative; padding-top:100%;}
-div#container figure.miniframe div.bin iframe.page {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container figure.miniframe div.bin iframe.page {background-color:var(--blacksheet); display:block; width:100%; border:solid; border-radius:.5rem;}
-
-
 
 
 
@@ -167,25 +66,12 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
 
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(6,1fr);}
-
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
 	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);}
-	
-	/* Desktop Section */
-	/* div#container section.desktop {} */
-	/* div#container section.desktop div.grid {} */
-
-	/* Desktop Mini-Frame */
-	/* div#container figure.miniframe {} */
-	/* div#container figure.miniframe iframe.page {} */
 }
 
 /* Medium Tablet Screen */
@@ -195,25 +81,10 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
 
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	/* div#container section.blog div.grid ul.postlist {} */
-	/* div#container section.blog div.grid ul.postlist li.postcard {} */
-	div#container section.blog div.grid ul.postlist li.postcard a.namelink {font-size:1.125rem;}
-
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
 	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
-	
-	/* Desktop Section */
-	/* div#container section.desktop {} */
-	/* div#container section.desktop div.grid {} */
-
-	/* Desktop Mini-Frame */
-	/* div#container figure.miniframe {} */
-	/* div#container figure.miniframe iframe.page {} */
 }
 
 /* Small Tablet Screen */
@@ -227,13 +98,6 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.5rem;}
 	div#container section.hero div.grid div.col a.contactlink {font-size:1.125rem;}
 
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(5,1fr);}
-	/* div#container section.blog div.grid ul.postlist li.postcard {} */
-	div#container section.blog div.grid ul.postlist li.postcard a.namelink {font-size:1.0625rem;}
-
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
@@ -245,21 +109,6 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:3.5rem;}
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;}
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1.25rem;}
-	
-	/* Desktop Section */
-	/* div#container section.desktop {} */
-	/* div#container section.desktop {margin-top:0;} */
-	/* div#container section.desktop div.grid {} */
-	/* div#container section.desktop div.grid div.group {} */
-	/* div#container section.desktop div.grid div.group div.gbody {padding-left:3rem; padding-right:3rem;} */
-	div#container section.desktop div.grid div.group div.gbody div.bin {grid-template-columns:repeat(4,1fr); }
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {} */
-	div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:1rem}
-
-	/* Desktop Mini-Frame */
-	/* div#container figure.miniframe {} */
-	/* div#container figure.miniframe iframe.page {} */
 }
 
 /* Big Smartphone Screen */
@@ -272,13 +121,6 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	/* div#container section.hero div.grid div.col img.logo {max-width:12rem; margin:0 auto 1.5rem;} */
 	/* div#container section.hero div.grid div.col p.textcopy {margin-bottom:1rem;} */
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.375rem;}
-	
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(4,1fr);}
-	/* div#container section.blog div.grid ul.postlist li.postcard {} */
-	div#container section.blog div.grid ul.postlist li.postcard a.namelink {font-size:1rem;}
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -286,20 +128,6 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	div#container section.blocks div.grid ul.blocklist {grid-template-columns:1fr; grid-gap:0; margin-top:1rem;}
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:1fr;}
 	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:1fr;}
-	
-	/* Desktop Section */
-	/* div#container section.desktop {} */
-	/* div#container section.desktop div.grid {} */
-	/* div#container section.desktop div.grid div.group {} */
-	/* div#container section.desktop div.grid div.group div.gbody {} */
-	div#container section.desktop div.grid div.group div.gbody div.bin {grid-template-columns:repeat(3,1fr);}
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
-	div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {font-size:3rem;}
-	div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:.875rem;}
-
-	/* Desktop Mini-Frame */
-	/* div#container figure.miniframe {} */
-	/* div#container figure.miniframe iframe.page {} */
 }
 
 /* Medium Smartphone Screen */
@@ -310,28 +138,9 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	/* div#container section.hero div.grid {} */
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.25rem;}
 
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(3,1fr);}
-
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
-	
-	/* Desktop Section */
-	/* div#container section.desktop {} */
-	/* div#container section.desktop div.grid {} */
-	/* div#container section.desktop div.grid div.group {} */
-	/* div#container section.desktop div.grid div.group div.gbody {} */
-	div#container section.desktop div.grid div.group div.gbody div.bin {grid-template-columns:repeat(2,1fr);}
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {} */
-	div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {font-size:.75rem;}
-
-	/* Desktop Mini-Frame */
-	/* div#container figure.miniframe {} */
-	/* div#container figure.miniframe iframe.page {} */
 }
 
 /* Small Smartphone Screen */
@@ -342,26 +151,7 @@ div#container figure.miniframe div.bin iframe.page {background-color:var(--black
 	/* div#container section.hero div.grid {} */
 	/* div#container section.hero div.grid div.col p.textcopy {font-size:1rem;} */
 
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(2,1fr);}
-
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
-
-	/* Desktop Section */
-	/* div#container section.desktop {} */
-	/* div#container section.desktop div.grid {} */
-	/* div#container section.desktop div.grid div.group {} */
-	/* div#container section.desktop div.grid div.group div.gbody {} */
-	/* div#container section.desktop div.grid div.group div.gbody div.bin {} */
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item {} */
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item svg.icon {} */
-	/* div#container section.desktop div.grid div.group div.gbody div.bin a.item span.caption {} */
-
-	/* Desktop Mini-Frame */
-	/* div#container figure.miniframe {} */
-	/* div#container figure.miniframe iframe.page {} */
 }
