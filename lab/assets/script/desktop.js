@@ -2,7 +2,10 @@
 
 
 // Get desktop destination. 
-const desktopDestination = document.querySelector('div#container section.desktop div.grid');
+// const desktopDestination = document.querySelector('div#container section.desktop div.grid');
+
+// Get destination for desktop groups. 
+const desktopGroupsDestination = document.querySelector('div#container section.desktop div.grid ul.grouplist');
 
 // Define group categories by initial character. 
 // const initialCharGroups = ['0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
@@ -48,7 +51,8 @@ function loadDesktop() {
 	}
 	
 	// Add result to page. 
-	desktopDestination.insertAdjacentHTML('beforeend',result);
+	// desktopDestination.insertAdjacentHTML('beforeend',result);
+	desktopGroupsDestination.innerHTML = result;
 
 	// Activate group headers. 
 	activateGroupHeaders();
@@ -112,7 +116,7 @@ function loadDesktop() {
 		// Return result. 
 		return `
 		<!-- group -->
-		<div class="group ${ false ? 'active' : '' }">
+		<li class="group ${ false ? 'active' : '' }">
 
 			<!-- ghead -->
 			<div class="ghead">
@@ -153,7 +157,7 @@ function loadDesktop() {
 			</div>
 			<!-- /gbody -->
 
-		</div>
+		</li>
 		<!-- /group -->`;
 
 		/***/
@@ -203,7 +207,7 @@ function loadDesktop() {
 	function activateGroupHeaders() {
 
 		// Get all group headers. 
-		let allGroupHeaders = document.querySelectorAll('div#container section.desktop div.grid div.group div.ghead');
+		let allGroupHeaders = document.querySelectorAll('div#container section.desktop div.grid ul.grouplist li.group div.ghead');
 	
 		// Go thru all group headers. 
 		for(let groupheader of allGroupHeaders) {

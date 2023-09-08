@@ -25,7 +25,7 @@ loadCategoryBlocks();
 // Load blocks for development methods. 
 function loadMethodBlocks() {
 
-	// Initialuze result. 
+	// Initialize result. 
 	let result = createBlockSet(methodData, 'icontag','header','description');
 
 	// Add result to page destination. 
@@ -35,33 +35,36 @@ function loadMethodBlocks() {
 // Load blocks for project categories. 
 function loadCategoryBlocks() {
 
-	// Initialuze result. 
-	let result = createBlockSet(projectGroupData, 'icontag','groupname','groupdescription');
+	// Initialize result. 
+	let result = createBlockSet(projectGroupData, 'icontag','groupname','groupdescription', './category?gid=','groupid');
 
 	// Add result to page destination. 
 	categoryblocksdestination.innerHTML = result;
 }
 
 // Create layout for set of block items. 
-function createBlockSet(datasource, a,b,c) {
+function createBlockSet(datasource, t,n,d, urlprefix,idtag) {
 
-	// Initialuze result layout. 
+	// Initialize result layout. 
 	let result = '';
 	
 	// Go thru data for each block. 
 	for(let block of datasource) {
 
 		// Get icon tag. 
-		let tag = block[a];
+		let tag = block[t];
 
 		// Get name. 
-		let name = block[b];
+		let name = block[n];
 
 		// Get description. 
-		let description = block[c];
+		let description = block[d];
+
+		// Get id of post. 
+		let id = block[idtag];
 
 		// Add layout for block item. 
-		result += createBlockItem(tag,name,description);
+		result += createBlockItem(tag,name,description,id);
 	}
 
 	// Return result layout. 
@@ -70,10 +73,11 @@ function createBlockSet(datasource, a,b,c) {
 	/****/
 
 	// Create layout for block item. 
-	function createBlockItem(icontag,name,description,linkurl='javascript:void(0)') {
+	function createBlockItem(icontag,name,description,id) {
 
-		// Add id to url. 
-		if(linkurl) console.log(linkurl);
+		// Get link url. 
+		let linkurl = (urlprefix&&id) ? (urlprefix+id) : ('javascript:void(0)');
+		console.log('Link url:',linkurl);
 	
 		// Compile layout for block item. 
 		return `

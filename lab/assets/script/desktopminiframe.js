@@ -2,13 +2,13 @@
 
 
 // Get mini frame. 
-const miniframe = document.querySelector('div#container figure.miniframe');
+const miniframe = document.querySelector('div#container section.desktop div.grid figure.miniframe');
 
 // Get iframe of mini frame. 
-const miniframepage = document.querySelector('div#container figure.miniframe iframe.page');
+const miniframepage = document.querySelector('div#container section.desktop div.grid figure.miniframe iframe.page');
 
 // Get all link items. 
-const allLinkItems = document.querySelectorAll('div#container section.desktop div.grid div.group div.gbody a.item');
+const allLinkItems = document.querySelectorAll('div#container section.desktop div.grid ul.grouplist li.group div.gbody a.item');
 
 
 /*****/
