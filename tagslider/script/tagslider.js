@@ -168,18 +168,35 @@ class TagSlider {
 	updateEdgeBtns() {
 		// console.log('updateEdgeBtns',this);
 		let asideconsole = document.querySelector('div#container aside.console span.caption');
+
+		// Check if slider horizontally scrollable. 
+		let notScrollableX = this.slider.scrollLeftMax == 0;
 		
-		// Get scroll percentage. 
-		let px = (this.slider.scrollLeft / this.slider.scrollLeftMax);
-		if(asideconsole) asideconsole.innerHTML = `${ (px*100).toFixed(1) }%`;
-	
-		// Check scroll status of slider. 
-		let scrolledLeft = px < .025;
-		console.log('Scrolled left:',scrolledLeft,px);
-	
-		// Check scroll status of slider. 
-		let scrolledRight = px > .975;
-		console.log('Scrolled right:',scrolledRight,px);
+		// Set initial scroll status of slider. 
+		let scrolledLeft = true;
+		let scrolledRight = true;
+		console.log('Scrolled left:',scrolledLeft);
+		console.log('Scrolled right:',scrolledRight);
+
+		// Xyz if slider not horizontally scrollable. 
+		if(notScrollableX) {
+			if(asideconsole) asideconsole.innerHTML = `n/a`;
+		}
+
+		// Xyz if slider horizontally scrollable. 
+		else {
+		
+			// Get scroll percentage. 
+			let px = (this.slider.scrollLeft / this.slider.scrollLeftMax);
+			// console.log('px:',px, this.slider.scrollLeft, this.slider.scrollLeftMax);
+			if(asideconsole) asideconsole.innerHTML = `${ (px*100).toFixed(1) }%`;
+		
+			// Check scroll status of slider. 
+			scrolledLeft = px < .025;
+			scrolledRight = px > .975;
+			console.log('Scrolled left:',scrolledLeft,px);
+			console.log('Scrolled right:',scrolledRight,px);
+		}
 	
 		// Hide left button if scrolled to left edge. 
 		if(scrolledLeft) (this.leftedge).classList.add('gone');
