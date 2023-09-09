@@ -34,8 +34,8 @@ class TagSlider {
 		// Reset slider position. 
 		this.slider.scrollLeft = 0;
 
-		// Update button states. 
-		this.updateBtnStates();
+		// Update state of edge buttons. 
+		this.updateEdgeBtns();
 	}
 
 	/*****/
@@ -85,7 +85,7 @@ class TagSlider {
 		function activateTagSlider() {
 		
 			// Respond to normal scroll. 
-			this.slider.addEventListener('scroll', this.updateBtnStates.bind(this) );
+			this.slider.addEventListener('scroll', this.updateEdgeBtns.bind(this) );
 			// Respond to scroll button clicks. 
 			this.leftslidebtn.addEventListener('click', slideLeft.bind(this) );
 			this.rightslidebtn.addEventListener('click', slideRight.bind(this) );
@@ -146,8 +146,8 @@ class TagSlider {
 				this.isCurrentlyDragging = false;
 				this.slider.classList.remove('dragmode');
 		
-				// Update button states. 
-				this.updateBtnStates();
+				// Update state of edge buttons. 
+				this.updateEdgeBtns();
 			}
 		}
 	}
@@ -160,19 +160,27 @@ class TagSlider {
 		// Update scroll position. 
 		this.slider.scrollLeft += delta * (this.slider.clientWidth - this.edgewidth);
 	
-		// Update button states. 
-		this.updateBtnStates();
+		// Update state of edge buttons. 
+		this.updateEdgeBtns();
 	}
 
-	// Update button states. 
-	updateBtnStates() {
-		// console.log('updateBtnStates',this);
+	// Update state of edge buttons. 
+	updateEdgeBtns() {
+		// console.log('updateEdgeBtns',this);
+		let px = (this.slider.scrollLeft / this.slider.scrollLeftMax);
+		console.log('px:',px);
 	
-		// Check current scroll status. 
-		let allWayLeft = (this.slider.scrollLeft == 0);
-		// console.log('allWayLeft:',allWayLeft);
-		let allWayRight = (this.slider.scrollLeft == this.slider.scrollLeftMax);
-		// console.log('allWayRight:',allWayRight);
+		// Check scroll status of slider. 
+		// let dxLeft = Math.abs(this.slider.scrollLeft - 0);
+		// let allWayLeft = (this.slider.scrollLeft == 0);
+		let allWayLeft = px < .01;
+		console.log('All way left:',allWayLeft);
+	
+		// Check scroll status of slider. 
+		// let dxRight = Math.abs(this.slider.scrollLeft - this.slider.scrollLeftMax);
+		// let allWayRight = (this.slider.scrollLeft == this.slider.scrollLeftMax);
+		let allWayRight = px > .99;
+		console.log('All way right:',allWayRight);
 	
 		// Hide left button if all the way left. 
 		if(allWayLeft) this.leftedge.classList.add('gone');
