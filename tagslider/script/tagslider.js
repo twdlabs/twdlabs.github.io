@@ -167,30 +167,29 @@ class TagSlider {
 	// Update state of edge buttons. 
 	updateEdgeBtns() {
 		// console.log('updateEdgeBtns',this);
+		let asideconsole = document.querySelector('div#container aside.console span.caption');
+		
+		// Get scroll percentage. 
 		let px = (this.slider.scrollLeft / this.slider.scrollLeftMax);
-		console.log('px:',px);
+		if(asideconsole) asideconsole.innerHTML = `${ (px*100).toFixed(1) }%`;
 	
 		// Check scroll status of slider. 
-		// let dxLeft = Math.abs(this.slider.scrollLeft - 0);
-		// let allWayLeft = (this.slider.scrollLeft == 0);
-		let allWayLeft = px < .01;
-		console.log('All way left:',allWayLeft);
+		let scrolledLeft = px < .025;
+		console.log('Scrolled left:',scrolledLeft,px);
 	
 		// Check scroll status of slider. 
-		// let dxRight = Math.abs(this.slider.scrollLeft - this.slider.scrollLeftMax);
-		// let allWayRight = (this.slider.scrollLeft == this.slider.scrollLeftMax);
-		let allWayRight = px > .99;
-		console.log('All way right:',allWayRight);
+		let scrolledRight = px > .975;
+		console.log('Scrolled right:',scrolledRight,px);
 	
-		// Hide left button if all the way left. 
-		if(allWayLeft) this.leftedge.classList.add('gone');
+		// Hide left button if scrolled to left edge. 
+		if(scrolledLeft) (this.leftedge).classList.add('gone');
 		// Show left button otherwise. 
-		else this.leftedge.classList.remove('gone');
+		else (this.leftedge).classList.remove('gone');
 	
-		// Hide right button if all the way right. 
-		if(allWayRight) this.rightedge.classList.add('gone');
+		// Hide right button if scrolled to right edge. 
+		if(scrolledRight) (this.rightedge).classList.add('gone');
 		// Show right button otherwise. 
-		else this.rightedge.classList.remove('gone');
+		else (this.rightedge).classList.remove('gone');
 	}
 }
 

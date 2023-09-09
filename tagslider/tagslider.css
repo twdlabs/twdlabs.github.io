@@ -76,6 +76,15 @@ div#container main.main div.edge div.slidebtn svg.icon {display:block; font-size
 div#container main.main div.edge.left div.slidebtn svg.icon {transform:translateX(-6.25%);}
 div#container main.main div.edge.right div.slidebtn svg.icon {transform:translateX(6.25%);}
 
+/* Console */
+div#container aside.console {position:absolute; top:0; right:0;}
+div#container aside.console {background-color:white; padding:.75rem 1rem; border-radius:.5rem; margin:1rem;}
+div#container aside.console span.caption {display:block;}
+div#container aside.console span.caption:empty {background-color:gainsboro; height:1em; width:6em; border-radius:inherit;}
+
+
+
+
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
