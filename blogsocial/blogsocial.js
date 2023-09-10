@@ -5,7 +5,7 @@
 const recentdestination = document.querySelector('xyz');
 
 // Get destination for story posts. 
-const storiesdestination = document.querySelector('div#container main.pagecontent section.stories ul.postlist');
+const storiesdestination = document.querySelector('div#container section.stories ul.postlist');
 
 
 /*****/
@@ -35,7 +35,7 @@ function loadStoryPosts() {
 	let result = '';
 
 	// Go thru all post data items. 
-	for(let post of blogdata) {
+	for(let post of blogDataList) {
 		result += createStoryPostLayout(post);
 	}
 
@@ -49,6 +49,11 @@ function loadStoryPosts() {
 
 		// Get data for author. 
 		let author = getUserById(post.authorid);
+	
+		// Get post publish date/time. 
+		let pdt = post ? post.published : '';
+		let dobj = new Date(pdt.year,pdt.month,pdt.date,0,0,0,0);
+		let datetime = pdt ? dobj.valueOf() : '';
 
 		// Compile layout for story post. 
 		return `
@@ -56,17 +61,13 @@ function loadStoryPosts() {
 		<li class="postitem">
 
 			<!-- postlink -->
-			<a class="postlink" href="javascript:void(0)">
+			<a class="postlink" href="javascript:void(0)" style="background-image:url('${ post.imgurl }');">
 
-				<!-- space -->
-				<div class="space"></div>
-				<!-- /space -->
-
-				<!-- content -->
-				<div class="content">
+				<!-- meta -->
+				<div class="meta">
 
 					<!-- date -->
-					<span class="date">${ t.formatTimeSince(1*post.timeposted) }</span>
+					<span class="date">${ true ? t.formatDate(1*datetime) : t.formatTimeSince(1*datetime) }</span>
 					<!-- /date -->
 
 					<!-- title -->
@@ -74,7 +75,7 @@ function loadStoryPosts() {
 					<!-- /title -->
 
 				</div>
-				<!-- /content -->
+				<!-- /meta -->
 
 				<!-- author -->
 				<div class="author">
