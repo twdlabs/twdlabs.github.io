@@ -47,8 +47,8 @@ const tagdata = [
 		caption:'Programming',
 		selected:false,
 	},
-	{
-		caption:'xyz',
-		selected:false,
-	},
+	// {
+	// 	caption:'xyz',
+	// 	selected:false,
+	// },
 ];
