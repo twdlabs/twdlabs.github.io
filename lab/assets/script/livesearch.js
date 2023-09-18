@@ -7,11 +7,11 @@ const openbtn = document.querySelector('div#container nav.navbar div.bin div.nav
 const closebtn = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery label.searchlabel');
 
 // Get search overlay window. 
-const searchOverlay = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch');
+const searchoverlay = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch');
 // Get search query field. 
-const searchField = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery input.searchquery');
+const searchfield = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch div.searchquery input.searchquery');
 // Get search results box. 
-const resultsBox = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults');
+const searchresultsbox = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults');
 
 
 /*****/
@@ -28,14 +28,12 @@ activateLiveSearch();
 function activateLiveSearch() {
 
 	// Create new Search object. 
-	/* const s =  */new SearchOverlay(openbtn,closebtn,searchOverlay,searchField,resultsBox);
+	const s = new SearchOverlay(openbtn,closebtn,searchoverlay,searchfield,searchresultsbox);
+	// console.log('Search overlay:',s);
 }
 
 // Toggle search results. 
 function toggleSearchResults() {
-
-	// Get search results box. 
-	let searchresultsbox = document.querySelector('div#container nav.navbar div.bin div.navmenu div.livesearch div.searchresults');
 	
 	// Toggle search results box. 
 	searchresultsbox.classList.toggle('active');

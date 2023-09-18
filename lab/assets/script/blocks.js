@@ -36,14 +36,14 @@ function loadMethodBlocks() {
 function loadCategoryBlocks() {
 
 	// Initialize result. 
-	let result = createBlockSet(projectGroupData, 'icontag','groupname','groupdescription', './category?gid=','groupid');
+	let result = createBlockSet(projectGroupData, 'groupicontag','groupname','groupdescription', './category/?gid=','groupid', true);
 
 	// Add result to page destination. 
 	categoryblocksdestination.innerHTML = result;
 }
 
 // Create layout for set of block items. 
-function createBlockSet(datasource, t,n,d, urlprefix,idtag) {
+function createBlockSet(datasource, t,n,d, urlprefix,idtag, openLinksInNewTab) {
 
 	// Initialize result layout. 
 	let result = '';
@@ -75,9 +75,12 @@ function createBlockSet(datasource, t,n,d, urlprefix,idtag) {
 	// Create layout for block item. 
 	function createBlockItem(icontag,name,description,id) {
 
+		// Set whether or not to open link in new tab. 
+		// let openLinksInNewTab = true;
+
 		// Get link url. 
 		let linkurl = (urlprefix&&id) ? (urlprefix+id) : ('javascript:void(0)');
-		console.log('Link url:',linkurl);
+		// console.log('Link url:',linkurl);
 	
 		// Compile layout for block item. 
 		return `
@@ -85,7 +88,7 @@ function createBlockSet(datasource, t,n,d, urlprefix,idtag) {
 		<li class="blockitem">
 	
 			<!-- blocklink -->
-			<a href="${linkurl}" class="blocklink">
+			<a class="blocklink" href="${linkurl}" ${ openLinksInNewTab ? 'target="_blank"' : '' }>
 	
 				<!-- icon -->
 				<svg class="icon ${ icontag }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

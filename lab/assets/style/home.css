@@ -26,6 +26,12 @@ div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;}
 /* div#container section.hero div.grid div.col a.contactlink.b:hover {background-color:var(--backcolor); color:var(--forecolor); border-color:var(--backcolor);} */
 
 
+/* Blog Section */
+/* div#container section.blog {display:none;} */
+/* div#container section.blog div.grid {} */
+div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(5,1fr);}
+
+
 /* Blocks Section */
 /* div#container section.blocks {} */
 /* div#container section.blocks div.grid {} */
@@ -36,7 +42,7 @@ div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {bac
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {--fillcolor:gainsboro;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {display:flex; flex-direction:column; align-items:center; grid-gap:.5rem; padding:1.5rem 1rem; padding:3rem 1rem 2rem; border-radius:var(--cornersize);}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hover {background-color:var(--blackglass); --fillcolor:whitesmoke;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.5rem;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.125em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon:empty {background-color:var(--themecolor); border-radius:.375em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {color:var(--forecolor); font-size:2rem; margin:0;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:empty {background-color:var(--fillcolor); height:1em; width:7em; border-radius:1em;}
@@ -66,6 +72,11 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
 
+	/* Blog Section */
+	/* div#container section.blog {} */
+	/* div#container section.blog div.grid {} */
+	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(4,1fr);}
+
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
@@ -80,6 +91,11 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
+
+	/* Blog Section */
+	/* div#container section.blog {} */
+	/* div#container section.blog div.grid {} */
+	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(3,1fr);}
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -97,6 +113,11 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	div#container section.hero div.grid div.col h1.head {font-size:2.375rem;}
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.5rem;}
 	div#container section.hero div.grid div.col a.contactlink {font-size:1.125rem;}
+
+	/* Blog Section */
+	/* div#container section.blog {} */
+	/* div#container section.blog div.grid {} */
+	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(2,1fr);}
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -122,6 +143,11 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* div#container section.hero div.grid div.col p.textcopy {margin-bottom:1rem;} */
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.375rem;}
 
+	/* Blog Section */
+	/* div#container section.blog {} */
+	/* div#container section.blog div.grid {} */
+	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(1,1fr);}
+
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
@@ -138,6 +164,11 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* div#container section.hero div.grid {} */
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.25rem;}
 
+	/* Blog Section */
+	/* div#container section.blog {} */
+	/* div#container section.blog div.grid {} */
+	/* div#container section.blog div.grid ul.postlist {} */
+
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
@@ -151,7 +182,18 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* div#container section.hero div.grid {} */
 	/* div#container section.hero div.grid div.col p.textcopy {font-size:1rem;} */
 
+	/* Blog Section */
+	/* div#container section.blog {} */
+	/* div#container section.blog div.grid {} */
+	/* div#container section.blog div.grid ul.postlist {} */
+
 	/* Blocks Section */
 	/* div#container section.blocks {} */
 	/* div#container section.blocks div.grid {} */
+	/* div#container section.blocks div.grid ul.blocklist {} */
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {padding:3rem 1rem 1rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:2.75rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.375rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1rem;}
 }

@@ -4,11 +4,17 @@
 // Get theme list. 
 const themeList = document.querySelector('div#container nav.navbar div.bin div.themetoggler ul.themelist');
 
-// Get all theme links. 
-const allThemeLinks = document.querySelectorAll('div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themelink');
+// Get all theme buttons. 
+const allThemeBtns = document.querySelectorAll('div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn');
+
+// Get theme toggler button. 
+const themeToggleBtn = document.querySelector('div#container nav.navbar div.bin div.themetoggler div.themebtn');
 
 // Get theme toggler button icon. 
 const themeToggleBtnIcon = document.querySelector('div#container nav.navbar div.bin div.themetoggler div.themebtn svg.icon.selected');
+
+// Initialize theme time checker. 
+let themeTimer;
 
 
 /*****/
@@ -17,8 +23,8 @@ const themeToggleBtnIcon = document.querySelector('div#container nav.navbar div.
 // Load previously selected theme. 
 loadPrevTheme();
 
-// Activate theme list. 
-activateThemeList();
+// Activate theme selector. 
+activateThemeSelector();
 
 
 /*****/
@@ -27,30 +33,70 @@ activateThemeList();
 // Load previously selected theme. 
 function loadPrevTheme() {
 
-	// Get previously selected theme id from memory. 
-	let themeid = localStorage.getItem('savedthemeid');
+	// Get from memory: id of previously selected theme. 
+	let savedthemeid = localStorage.getItem('savedthemeid');
 
-	// Load theme by id. 
-	loadThemeById(themeid);
+	// Load theme using saved id. 
+	loadThemeById(savedthemeid);
 }
 
-// TODO: Load theme by id. 
+// Load theme by id. 
 function loadThemeById(themeid) {
 
 	// Apply selected theme: light. 
 	if(themeid=='light') {
+
 		// Load light theme. 
-		document.body.classList.remove('dark');
+		loadLightTheme();
+
+		// End theme timer if running. 
+		clearInterval(themeTimer);
+		themeTimer = null;
+		// console.log('Theme timer:',themeTimer);
 	}
 
 	// Apply selected theme: dark. 
 	else if(themeid=='dark') {
+
 		// Load dark theme. 
-		document.body.classList.add('dark');
+		loadDarkTheme();
+
+		// End theme timer if running. 
+		clearInterval(themeTimer);
+		themeTimer = null;
+		// console.log('Theme timer:',themeTimer);
 	}
 
 	// Apply default theme: automatic. 
 	else {
+
+		// Check time to update theme. 
+		checkTimeForTheme();
+
+		// Check once per minute. 
+		let dt = 60000;
+		// Start theme timer. 
+		themeTimer = setInterval(checkTimeForTheme,dt);
+		// console.log('Theme timer:',themeTimer);
+	}
+
+	// Update status of theme buttons. 
+	updateThemeBtns();
+
+	/****/
+
+	// Load light theme. 
+	function loadLightTheme() {
+		document.body.classList.remove('dark');
+	}
+
+	// Load dark theme. 
+	function loadDarkTheme() {
+		document.body.classList.add('dark');
+	}
+
+	// Check time to update theme. 
+	function checkTimeForTheme() {
 
 		// Get current time of day. 
 		let currentHour = ( new Date() ).getHours();
@@ -58,63 +104,78 @@ function loadThemeById(themeid) {
 		let atNight = (currentHour<6) || (currentHour>18);
 
 		// Load dark theme at night. 
-		if(atNight) document.body.classList.add('dark');
+		if(atNight) loadDarkTheme();
 		// Load light theme during day. 
-		else document.body.classList.remove('dark');
+		else loadLightTheme();
 	}
+
+	// Update status of theme buttons. 
+	function updateThemeBtns() {
 	
-	// Go thru all theme links. 
-	for(let themelink of allThemeLinks) {
+		// Go thru each theme button. 
+		for(let themebtn of allThemeBtns) {
 
-		// Handle selected theme link. 
-		if( themelink.getAttribute('data-themeid')==themeid ) {
+			// Check if on selected theme button. 
+			let onSelectedBtn = themebtn.getAttribute('data-themeid')==themeid;
+	
+			// Activate selected theme button. 
+			if(onSelectedBtn) {
+	
+				// Activate selected theme button. 
+				themebtn.classList.add('active');
+	
+				// Get icon from selected theme button. 
+				let selectedthemeicon = themebtn.querySelector('svg');
+				// Refresh icon in theme toggler button. 
+				themeToggleBtnIcon.innerHTML = selectedthemeicon.innerHTML;
+			}
+	
+			// De-activate other theme buttons. 
+			else {
 
-			// Activate selected theme link. 
-			themelink.classList.add('active');
-
-			// Get icon of selected theme. 
-			let themeicon = themelink.querySelector('svg');
-			// Refresh icon in theme toggler button. 
-			themeToggleBtnIcon.innerHTML = themeicon.innerHTML;
+				// De-activate theme button. 
+				themebtn.classList.remove('active');
+			}
 		}
-
-		// De-activate all other theme links. 
-		else themelink.classList.remove('active');
 	}
 }
 
-// Activate theme list. 
-function activateThemeList() {
+// Activate theme selector. 
+function activateThemeSelector() {
 
-	// Go thru all theme links. 
-	for(let themelink of allThemeLinks) {
-		themelink.addEventListener('click',selectTheme);
+	// Activate theme toggler button. 
+	themeToggleBtn.addEventListener('click',toggleThemeList);
+
+	// Go thru all theme buttons. 
+	for(let themebtn of allThemeBtns) {
+		// Activate clicks of theme button. 
+		themebtn.addEventListener('click',selectTheme);
 	}
 
 	/****/
+
+	// Toggle theme list. 
+	function toggleThemeList() {
+		themeList.classList.toggle('open');
+	}
 
 	// Select theme. 
 	function selectTheme(event) {
 		// console.log(event);
 
 		// Get selected theme button. 
-		const selectedThemeLink = event.currentTarget;
+		const selectedthemebtn = event.currentTarget;
 
 		// Get id of selected theme. 
-		let themeid = selectedThemeLink.getAttribute('data-themeid');
+		let selectedthemeid = selectedthemebtn.getAttribute('data-themeid');
 
 		// Load theme by id. 
-		loadThemeById(themeid);
+		loadThemeById(selectedthemeid);
 
 		// Close theme list after selection. 
 		themeList.classList.remove('open');
 
-		// Save selected theme to memory. 
-		localStorage.setItem('savedthemeid',themeid);
+		// Save to memory: id of selected theme. 
+		localStorage.setItem('savedthemeid',selectedthemeid);
 	}
-}
-
-// Toggle theme list. 
-function toggleThemeList() {
-	themeList.classList.toggle('open');
 }

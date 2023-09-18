@@ -219,7 +219,7 @@ function loadDesktop() {
 
 		// Toggle selected group. 
 		function toggleGroup(event) {
-			console.log(event);
+			// console.log(event);
 	
 			// Get selected group. 
 			let selectedGroup = event.currentTarget.parentElement;

@@ -44,7 +44,7 @@ div#container section.desktop div.grid figure.miniframe.active {opacity:1; visib
 /* div#container section.desktop div.grid figure.miniframe::after {background-color:white; height:2rem; width:2rem;} */
 div#container section.desktop div.grid figure.miniframe div.bin {position:relative; padding-top:100%; padding-top:56.25%;}
 div#container section.desktop div.grid figure.miniframe div.bin iframe.page {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container section.desktop div.grid figure.miniframe div.bin iframe.page {background-color:var(--blacksheet); display:block; width:100%; border:solid; border-radius:.5rem;}
+div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* background-color:var(--blacksheet); */ display:block; width:100%; border:solid; border-radius:.5rem;}
 
 
 

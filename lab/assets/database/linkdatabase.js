@@ -1,33 +1,29 @@
 
 
 
-// Define navugation link data. 
+// Define navigation link data. 
 const navLinkData = {
 	groupname:'Links',
 	grouplist:[
 		{
-			linkurl:'javascript:void(0)',
-			linkname:'LinkA',
+			icontag:'profile',
+			linkurl:'./about',
+			linkname:'About',
 		},
 		{
-			linkurl:'javascript:void(0)',
-			linkname:'LinkB',
+			icontag:'list',
+			linkurl:'./projects',
+			linkname:'Projects',
 		},
 		{
-			linkurl:'javascript:void(0)',
-			linkname:'LinkC',
+			icontag:'envelope',
+			linkurl:'./contact',
+			linkname:'Contact',
 		},
 		// {
+		// 	icontag:'xyz',
 		// 	linkurl:'javascript:void(0)',
-		// 	linkname:'LinkD',
-		// },
-		// {
-		// 	linkurl:'javascript:void(0)',
-		// 	linkname:'LinkE',
-		// },
-		// {
-		// 	linkurl:'javascript:void(0)',
-		// 	linkname:'LinkF',
+		// 	linkname:'Link',
 		// },
 	],
 };
@@ -37,11 +33,6 @@ const navLinkData = {
 const socialLinkData = {
 	groupname:'Community',
 	grouplist:[
-		{
-			icontag:'github',
-			linkurl:'https://github.com/twdlabs/twdlabs.github.io',
-			linkname:'GitHub',
-		},
 		{
 			icontag:'twitter',
 			linkurl:'javascript:void(0)',
@@ -53,9 +44,19 @@ const socialLinkData = {
 			linkname:'Instagram',
 		},
 		{
+			icontag:'github',
+			linkurl:'https://github.com/twdlabs/twdlabs.github.io',
+			linkname:'GitHub',
+		},
+		{
 			icontag:'linkedin',
 			linkurl:'https://www.linkedin.com/in/alextg/',
 			linkname:'LinkedIn',
+		},
+		{
+			icontag:'envelope',
+			linkurl:'mailto:tituswebdev+lab@gmail.com',
+			linkname:'Email',
 		},
 		// {
 		// 	icontag:'xyz',

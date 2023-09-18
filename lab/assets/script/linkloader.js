@@ -1,140 +1,141 @@
 
 
 
-// Get destination for head navigation. 
-const headNavDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu');
-const headNavListLDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.l');
-const headNavListRDestination = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.r');
-// console.log(headNavDestination);
 
-// Get destination for foot matrix. 
-const footMatrixDestination = document.querySelector('div#container footer.footer div.grid');
+// Get navigation menu. 
+const headnavmenu = document.querySelector('div#container nav.navbar div.bin div.navmenu');
+// Get list destinations for header navigation. 
+const headnavlistdestinationL = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.l');
+const headnavlistdestinationR = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.r');
+// console.log(headnavmenu);
+
+// Get matrix destination for footer navigation. 
+const footMatrixDestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix');
 // console.log(footMatrixDestination);
 
 
 /*****/
 
 
-// Add links to head navigation. 
-loadHeadNavLinks();
+// Add navigation links to header. 
+loadNavLinks();
 
-// Add links to footer. 
-loadFooterNavLinks();
+// Add matrix of project links to footer. 
+loadProjectGroupMatrix();
 
 
 /*****/
 
 
-// Add links to head navigation. 
-function loadHeadNavLinks() {
+// Add navigation links to header. 
+function loadNavLinks() {
 
 	// Add result to page. 
-	// headNavDestination.innerHTML = result;
+	// headnavmenu.innerHTML = result;
 
 	// Add list of links to page. 
-	headNavListLDestination.innerHTML = createListOfLinks( navLinkData.grouplist, false);
+	headnavlistdestinationL.innerHTML = createLinkList(navLinkData.grouplist);
 
 	// Add list of links to page. 
-	headNavListRDestination.innerHTML = createListOfLinks( socialLinkData.grouplist, true);
+	headnavlistdestinationR.innerHTML = createLinkList(socialLinkData.grouplist);
 
 	/****/
 
-	// Create layout for list of links. 
-	function createListOfLinks(linklist, useicons) {
+	// Create layout for list of navigation links. 
+	function createLinkList(linklist) {
 
 		// Initialize list of items. 
 		let list = '';
 
+		// Set target of links. 
+		let newwindow = true;
+
 		// Accumulate list of items. 
 		for(link of linklist) {
 
-			// Get link url. 
+			// Get url for link. 
 			let url = link.linkurl;
 
-			// Get link caption. 
-			let caption = useicons ? createIcon(link.icontag) : link.linkname;
+			// Get caption for link. 
+			let caption = link.linkname;
+
+			// Get icon tag for link. 
+			let icontag = link.icontag;
 
 			// Compile navigation item. 
-			list += createNavItem(url,caption,false);
+			list += createNavLink(url,caption,icontag,newwindow);
 		}
 
 		// Return list of items. 
 		return list;
-
-		/****/
-	
-		// Create link icon. 
-		function createIcon(icontag) {
-			
-			// Compile link icon. 
-			return `
-			<svg class="icon ${icontag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-				${ iconData[icontag] }
-			</svg>`;
-		}
 	}
 }
 
-// Add links to footer. 
-function loadFooterNavLinks() {
 
-	// Initialize result. 
-	let result = '';
-	// Initialize total number of footer links. 
-	// let totalNumFootLinks = 0;
+// Add matrix of project links to footer. 
+function loadProjectGroupMatrix() {
 
-	// Accumulate list boxes. 
-	// for(let i in projectGroupData) {
-	for(let i in projectLinkMatrix) {
+	// Initialize matrix layout. 
+	let matrixlayout = '';
 
-		// Get set of link groups. 
-		// let linkgroupset = projectGroupData[i];
-		let linkgroupset = projectLinkMatrix[i].map( getLinkGroupById );
-		// console.log('linkgroupset:',linkgroupset);
+	// Initialize total number of project links in matrix. 
+	// let totalMatrixLinks = 0;
 	
-		// Add list box. 
-		// result += createListBox(linkgroupset);
-		result += `
+	for(let i in projectGroupMatrixData) {
+
+		// Get set of project groups. 
+		let projectgroupset = projectGroupMatrixData[i].map( getProjectGroupById );
+		// console.log('Project group set:',projectgroupset);
+	
+		// Add list box to matrix layout. 
+		matrixlayout += `
 		<!-- listbox -->
 		<div class="listbox box${i}">
-
-			${ createBoxOfLinkGroups(linkgroupset) }
-
+			${ createProjectGroupSet(projectgroupset) }
 		</div>
 		<!-- /listbox -->`;
 	}
 
-	// Add result to page. 
-	footMatrixDestination.insertAdjacentHTML('beforeend',result);
-	// console.log('Total number of footer links:',totalNumFootLinks);
+	// Add matrix layout to page. 
+	footMatrixDestination.innerHTML = matrixlayout;
+	// footMatrixDestination.insertAdjacentHTML('beforeend',matrixlayout);
+	// console.log('Total number of matrix project links:',totalMatrixLinks);
+
+	// // Accumulate list boxes. 
+	// for(let i in projectGroupData) {
+	// 	// Get project group. 
+	// 	let projectgroup = projectGroupData[i];
+	// }
 
 	/****/
 
-	// Create column of link groups. 
-	function createBoxOfLinkGroups(linkgroupset) {
-		// console.log('linkgroupset:',linkgroupset);
+	// Create layout for column of project groups. 
+	function createProjectGroupSet(projectgroupset) {
+		// console.log('projectgroupset:',projectgroupset);
 
 		// Initialize result. 
 		let result = '';
 
-		// Go thru each link group. 
-		for(let linkgroup of linkgroupset) {
+		// Go thru each project group in set. 
+		for(let projectgroup of projectgroupset) {
 
-			// Proceed if link group exists. 
-			if(linkgroup) {
-				result += `
-				<!-- head -->
-				<h2 class="head">${ linkgroup.groupname }</h2>
-				<!-- /head -->
-	
-				<!-- navlist -->
-				<ul class="navlist">
-	
-					${ createListOfLinks(linkgroup.grouplist) }
-	
-				</ul>
-				<!-- /navlist -->`;
-			}
+			// // Proceed if project group exists. 
+			// if(projectgroup) {
+			// }
+
+			// Add header for current project group. 
+			result += `
+			<!-- head -->
+			<h2 class="head">${ projectgroup.groupname }</h2>
+			<!-- /head -->`;
+
+			// Add list for current project group. 
+			result += `
+			<!-- navlist -->
+			<ul class="navlist">
+				${ createProjectGroup(projectgroup.grouplist) }
+			</ul>
+			<!-- /navlist -->`;
 		}
 		
 		// Return result. 
@@ -142,46 +143,89 @@ function loadFooterNavLinks() {
 
 		/***/
 
-		// Create layout for list of links. 
-		function createListOfLinks(linklist) {
+		// Create layout for group of projects. 
+		function createProjectGroup(projectgroupidlist) {
+			// console.log('Project group id list:',projectgroupidlist);
 
-			// Initialize list of items. 
-			let list = '';
+			// Set window target for project links. 
+			let newwindow = true;
 
-			// Accumulate list of items. 
-			for(link of linklist) {
+			// Initialize layout for project list. 
+			let projectgrouplayout = '';
 
-				// Increment total number of footer links. 
-				// totalNumFootLinks++;
+			// Accumulate layout for project list. 
+			for(let projectid of projectgroupidlist) {
 
-				// Get link url. 
-				let url = link.linkurl;
+				// Get project. 
+				let project = getProjectById(projectid);
 
-				// Get link caption. 
-				let caption = link.linkname;
+				// Increment total number of project links in matrix. 
+				// totalMatrixLinks++;
+
+				// Get url for project. 
+				let url = getRelativeUrl(`../${project.projectid}`);
+				// console.log('\turl:',url);
+	
+				// Get caption for project. 
+				let caption = project.projectname;
+				// console.log('\tcaption:',caption);
+	
+				// Get icon tag for project. 
+				let icontag = project.icontag;
+				// console.log('\ticontag:',icontag);
 
 				// Compile navigation item. 
-				list += createNavItem(url,caption,true);
+				projectgrouplayout += createNavLink(url,caption,icontag,newwindow);
 			}
 
-			// Return list of items. 
-			return list;
+			// Return layout for project list. 
+			return projectgrouplayout;
 		}
 	}
 }
 
-// Create navigation item. 
-function createNavItem(url,caption,newwindow) {
 
-	// Compile navigation item. 
+// Create navigation item. 
+function createNavLink(url,caption,icontag,newwindow) {
+
+	// Compile layout for navigation item. 
 	return `
 	<!-- navitem -->
 	<li class="navitem">
-
+	
 		<!-- navlink -->
-		<a class="navlink" href="${ url }" ${ newwindow ? 'target="_blank"' : '' }>${ caption }</a>
+		<a class="navlink" href="${url}" ${ newwindow ? 'target="_blank"' : '' }>
+
+			${ icontag ? createIcon(icontag) : '' }
+
+			<!-- caption -->
+			<span class="caption">${caption}</span>
+			<!-- /caption -->
+			
+		</a>
 		<!-- /navlink -->
 
 	</li>
 	<!-- /navitem -->`;
+
+	/****/
+
+	// Create layout for link icon. 
+	function createIcon(icontag) {
+		
+		// Compile link icon. 
+		return `
+		<!-- icon -->
+		<svg class="icon ${icontag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+			${ iconData[icontag] }
+		</svg>
+		<!-- /icon -->`;
+	}
+}
+
+// Toggle navigation menu. 
+function toggleNavMenu() {
+
+	// Toggle state of navigation menu. 
+	headnavmenu.classList.toggle('active');
 }

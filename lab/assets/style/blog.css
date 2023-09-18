@@ -18,13 +18,11 @@ div#container section.blog div.grid div.filter input#postfilter {background-colo
 div#container section.blog div.grid div.filter input#postfilter {font-family:inherit; font-size:1.375rem; font-weight:300; width:100%; padding:.875rem 3.25rem .875rem 3.5rem;}
 div#container section.blog div.grid div.filter input#postfilter {border:.125rem solid var(--backcolor2); outline:none;}
 /* Blog Section: Post List */
-div#container section.blog div.grid ul.postlist {display:grid; grid-template-columns:repeat(8,1fr)/*  !important */; grid-gap:1.25rem; list-style:none; padding:0; margin:0; margin-top:1.5rem;}
-div#container section.blog div.grid ul.postlist.archive {opacity:.375; overflow:hidden; transition:.375s;}
-div#container section.blog div.grid ul.postlist.archive.gone {max-height:0; visibility:hidden; opacity:0;}
-/* div#container section.blog div.grid ul.postlist:empty {background-color:greenyellow; padding:4rem;} */
-/* div#container section.blog div.grid ul.postlist:empty::after {content:'No matching posts found';} */
+div#container section.blog div.grid ul.postlist {display:grid; grid-template-columns:repeat(8,1fr); grid-gap:1.25rem; list-style:none; padding:0; margin:0; margin-top:1.5rem;}
+/* div#container section.blog div.grid ul.postlist.archive {overflow:hidden;} */
 div#container section.blog div.grid ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
-div#container section.blog div.grid ul.postlist li.postcard.x {display:none;}
+div#container section.blog div.grid ul.postlist li.postcard.gone {opacity:.375; transition:.375s;}
+/* div#container section.blog div.grid ul.postlist li.postcard.gone {display:none;} */
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}
 div#container section.blog div.grid ul.postlist.archive li.postcard a.projectlink {box-shadow:none;}
@@ -42,7 +40,7 @@ div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.pr
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:1; scale:1; height:100%; width:100%; transform:none;}
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:2; scale:.5; height:200%; width:200%; transform:translate(-50%,-50%);}
 div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:3; scale:.25; height:400%; width:400%; transform:translate(-150%,-150%);}
-div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:4; scale:.125; height:800%; width:800%; transform:translate(-350%,-350%);}
+/* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:4; scale:.125; height:800%; width:800%; transform:translate(-350%,-350%);} */
 /* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:5; scale:.0625; height:1600%; width:1600%; transform:translate(-750%,-750%);} */
 /* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:6; scale:.03125; height:3200%; width:3200%; transform:translate(-1550%,-1550%);} */
 /* div#container section.blog div.grid ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:10; scale:calc( 1 / pow( 2, var(--ml) ) ); height:calc( pow( 2, var(--ml) ) * 100% ); width:calc( pow( 2, var(--ml) ) * 100% ); --trvalue:calc( -50% + 100% * pow( 2, (var(--ml) - 1) ) ); transform:translate( var(--trvalue) , var(--trvalue) );} */
@@ -52,12 +50,12 @@ div#container section.blog div.grid div.emptylabel.on {display:block;}
 div#container section.blog div.grid div.zoomer {display:flex; align-items:center; justify-content:center; margin:2rem 0;}
 div#container section.blog div.grid div.zoomer div.zoombtn {font-size:3rem; cursor:pointer; user-select:none;}
 div#container section.blog div.grid div.zoomer div.zoombtn {display:grid; place-items:center; width:100%; padding:.5rem 2rem; border-radius:var(--cornersize); /* margin:0 auto; */ box-shadow:var(--boxshadow);}
-/* div#container section.blog div.grid div.zoomer {display:none;} */
+div#container section.blog div.grid div.zoomer {display:none;}
 /* Blog Section: More */
 /* div#container section.blog div.grid div.more {} */
 div#container section.blog div.grid div.more {display:flex; flex-direction:column; align-items:center; padding:2rem 0;}
 div#container section.blog div.grid div.more a.morebtn {background-color:var(--backcolor2); color:inherit; color:var(--forecolor); text-decoration:none;}
-div#container section.blog div.grid div.more a.morebtn {display:flex; align-items:center; padding:.75rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.more a.morebtn {display:flex; align-items:center; padding:1rem 2rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
 div#container section.blog div.grid div.more a.morebtn svg.icon {margin-left:.5rem;}
 /* div#container section.blog div.grid div.more a.morebtn span.caption {} */
 /* div#container section.blog div.grid div.more {display:none;} */
