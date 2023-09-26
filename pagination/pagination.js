@@ -18,9 +18,6 @@ let allPages;
 // Initialize elements for links to all pages. 
 let allPageLinks;
 
-// Define number of items shown per page. 
-let numPerPage = 10;
-
 // Initialize number of currently selected page. 
 let currentPageNumber = 1;
 
@@ -64,29 +61,35 @@ function addPages() {
 	
 	// Add data to pages. 
 	for(let i=0 ; i<numItems ; i++) {
-	// for(let dataItem of dataSource) {
+	// for(let itemdata of dataSource) {
 
 		// Get current page number. 
 		let pagenum = Math.floor(i/numPerPage) + 1;
 	
 		// Open new page. 
-		if( (i%numPerPage)==0 ) {
-			result += `
-			<!-- page -->
-			<div class="page" data-pagenum="${pagenum}">`;
-		}
+		if( (i%numPerPage)==0 ) result += createPageOpener();
 	
-		// 
-		dataItem = dataSource[i];
+		// Get data for current item. 
+		itemdata = `${dataSource[i].fname} ${dataSource[i].lname}`;
 	
-		// Add data item. 
+		// Add current item to layout. 
 		result += `
 		<!-- item -->
-		<div class="item">Item ${ dataItem.toUpperCase() }</div>
+		<div class="item">${ itemdata }</div>
 		<!-- /item -->`;
 	
-		// Close finished page. Move to next page. 
-		if( (i%numPerPage)==(numPerPage-1) || i==(numItems-1) ) {
+		// Check if at end of page. 
+		let atEndOfPage = (i%numPerPage) == (numPerPage-1);
+		// Check if on last item. 
+		let onLastItem = i == (numItems-1);
+		
+		// Add remaining items. 
+		if( onLastItem ) {
+			// 
+		}
+		
+		// Close finished page. 
+		if( atEndOfPage || onLastItem ) {
 	
 			// Add page number to page. 
 			result += `
@@ -95,9 +98,7 @@ function addPages() {
 			<!-- /pagenum -->`;
 
 			// Close finished page. 
-			result += `
-			</div>
-			<!-- /page -->`;
+			result += createPageCloser();
 		}
 	}
 	
@@ -106,6 +107,22 @@ function addPages() {
 	
 	// Save all page elements. 
 	allPages = document.querySelectorAll('main.main div.page');
+
+	// 
+
+	// Create page opener. 
+	function createPageOpener() {
+		return `
+		<!-- page -->
+		<div class="page" data-pagenum="${pagenum}">`;
+	}
+
+	// Create page closer. 
+	function createPageCloser() {
+		return `
+		</div>
+		<!-- /page -->`;
+	}
 }
 
 // Add page links. 
@@ -260,15 +277,19 @@ function showSelectedPage() {
 		else pagelink.classList.remove('active');
 	}
 
-	// 
+	// Indicate first page. 
 	if(currentPageNumber==1) {
-		// 
 		paginator.classList.add('f');
+		paginator.classList.remove('l');
 	}
+
+	// Indicate last page. 
 	else if(currentPageNumber==numPages) {
-		// 
 		paginator.classList.add('l');
+		paginator.classList.remove('f');
 	}
+	
+	// Indicate middle page. 
 	else {
 		paginator.classList.remove('f');
 		paginator.classList.remove('l');
