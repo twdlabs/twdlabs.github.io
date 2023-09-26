@@ -8,30 +8,50 @@
 
 
 :root {
+
+	/* Theme Colors */
+	--ltgrey:#CCC;
+	--drkgrey:#BBB;
+	--ttipbgcolor:#555C;
+	--ttipforecolor:white;
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
-	--themecolor:#CCC;
+
+	/* Box Shadow */
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;
 }
 
 
-html {background-color:var(--themecolor); background-image:var(--bgimg);}
+html {background-color:var(--ltgrey); background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
 
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
-div#container main.main {background-color:white; display:flex; /* flex-direction:column; */ grid-gap:.875rem; padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main {flex-direction:row;}
+div#container main.main {background-color:white; display:flex; align-items:stretch; grid-gap:.625rem; padding:.875rem; border-radius:.875rem; box-shadow:var(--boxshadow);}
 /* div#container main.main div.item {} */
-div#container main.main div.item input.text {font-size:inherit; width:100%; padding:.75rem; border:1px solid #BBB; border-radius:.5rem;}
+div#container main.main div.item input.text {font-size:inherit; height:100%; width:100%; padding:.5rem .875rem; border:1px solid var(--drkgrey); border-radius:.5rem;}
 div#container main.main div.item input.text:focus {outline:solid dodgerblue;}
-div#container main.main div.item button.copybtn {font-size:inherit; cursor:pointer; position:relative; width:100%; padding:.75rem; border:1px solid #BBB; border-radius:.5rem;}
-/* div#container main.main div.item button.copybtn span.caption {} */
+div#container main.main div.item button.copybtn {font-size:inherit; cursor:pointer;}
+div#container main.main div.item button.copybtn {position:relative; height:100%; width:100%;}
+div#container main.main div.item button.copybtn {display:grid; place-items:center; padding:.25rem .75rem; border:1px solid #BBB; border-radius:.5rem;}
+div#container main.main div.item button.copybtn span.caption {display:block;}
+div#container main.main div.item button.copybtn span.caption svg.icon {display:block; font-size:1.5em;}
+div#container main.main div.item button.copybtn span.caption svg.icon.link {opacity:1; visibility:visible; transition:.25s;}
+div#container main.main div.item button.copybtn.done span.caption svg.icon.link {opacity:0; visibility:hidden; transition:none;}
+div#container main.main div.item button.copybtn span.caption svg.icon.check {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container main.main div.item button.copybtn span.caption svg.icon.check {opacity:0; visibility:hidden; transition:.25s;}
+div#container main.main div.item button.copybtn.done span.caption svg.icon.check {opacity:1; visibility:visible; transition:none;}
 div#container main.main div.item button.copybtn span.tooltip {position:absolute; bottom:calc(100% + 1rem); left:50%; transform:translateX(-50%); padding:.625rem 1rem; border-radius:.5rem;}
-div#container main.main div.item button.copybtn span.tooltip {--bgcolor:#555/* C */; background-color:var(--bgcolor); color:white; white-space:nowrap; visibility:hidden; opacity:0;}
-div#container main.main div.item button.copybtn span.tooltip::after {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
-div#container main.main div.item button.copybtn span.tooltip::after {content:''; border:.375rem solid transparent; border-top-color:var(--bgcolor);}
+div#container main.main div.item button.copybtn span.tooltip {background-color:var(--ttipbgcolor); color:var(--ttipforecolor); font-size:.75rem; min-width:8rem; max-width:30rem; white-space:nowrap;}
+div#container main.main div.item button.copybtn span.tooltip {visibility:hidden; opacity:0;}
 div#container main.main div.item button.copybtn:hover span.tooltip {visibility:visible; opacity:1; transition:.125s;}
+div#container main.main div.item button.copybtn span.tooltip::after {position:absolute; content:''; left:50%; transform:translateX(-50%);}
+div#container main.main div.item button.copybtn span.tooltip::after {top:100%; bottom:auto; border:.375rem solid transparent; border-top-color:var(--ttipbgcolor);}
+
+
+
 
 
 /* Tablet Screen */
@@ -45,6 +65,10 @@ div#container main.main div.item button.copybtn:hover span.tooltip {visibility:v
 }
 
 /* Small Smartphone Screen */
-@media screen and (max-width:32rem) {
+@media screen and (max-width:24rem) {
 	/*  */
+	div#container main.main {flex-direction:column;}
+	/* div#container main.main div.item button.copybtn {padding:.375rem .75rem;} */
+	div#container main.main div.item button.copybtn span.tooltip {bottom:auto; top:calc(100% + 1rem);}
+	div#container main.main div.item button.copybtn span.tooltip::after {top:auto; bottom:100%; border:.375rem solid transparent; border-bottom-color:var(--ttipbgcolor);}
 }
