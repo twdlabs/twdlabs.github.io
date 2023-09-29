@@ -1160,7 +1160,6 @@ const projectData = [
 	},
 	
 	
-	
 	{
 		projectid:'chooser',
 		projectname:'Page Chooser',
@@ -1195,6 +1194,7 @@ const projectData = [
 		projectid:'stocks',
 		projectname:'Stocks Dashboard',
 	},
+	
 	
 ];
 console.log('Projects:',projectData);

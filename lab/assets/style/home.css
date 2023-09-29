@@ -29,7 +29,7 @@ div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;}
 /* Blog Section */
 /* div#container section.blog {display:none;} */
 /* div#container section.blog div.grid {} */
-div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(5,1fr);}
+div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(5,1fr);}
 
 
 /* Blocks Section */
@@ -75,7 +75,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(4,1fr);}
+	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(4,1fr);}
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -95,7 +95,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(3,1fr);}
+	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(3,1fr);}
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -117,7 +117,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(2,1fr);}
+	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(2,1fr);}
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -146,7 +146,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid ul.postlist {grid-template-columns:repeat(1,1fr);}
+	/* div#container section.blog div.grid div.posts ul.postlist {} */
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -167,7 +167,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	/* div#container section.blog div.grid ul.postlist {} */
+	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(1,1fr);}
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */
@@ -185,7 +185,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	/* div#container section.blog div.grid ul.postlist {} */
+	/* div#container section.blog div.grid div.posts ul.postlist {} */
 
 	/* Blocks Section */
 	/* div#container section.blocks {} */

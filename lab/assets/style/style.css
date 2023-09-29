@@ -27,8 +27,9 @@
 	--whiteglasss:#F8F8F822;
 
 	/* Dark Colors */
-	--lightblack:#333;
-	--lightblack2:#222;
+	--lightblack:#222;
+	--lightblack2:#111;
+	--lighterblack:#626262;
 	--blacksheet:#222C;
 	--blackglass:#2223;
 	--blackglasss:#2222;
@@ -54,7 +55,7 @@ body {
 	--backcolor:var(--white);
 	--backcolor2:var(--offwhite);
 	--forecolor:var(--lightblack);
-	--forecolor2:grey;
+	--forecolor2:var(--lighterblack);
 	--sheetcolor:var(--whitesheet);
 
 	--navcolor:var(--blackglass);
@@ -172,9 +173,8 @@ div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.th
 /* div#container section {background-color:#FFF1;} */
 div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:3rem; /* box-shadow:var(--boxshadow); */}
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
-div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section div.grid div.head {flex-direction:column; grid-gap:1.5rem;}
-div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; margin:0;}
+div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center; grid-gap:1.5rem;}
+div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
 
 
 /* Hero Section */
