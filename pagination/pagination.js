@@ -19,7 +19,7 @@ let allPages;
 let allPageLinks;
 
 // Initialize number of currently selected page. 
-let currentPageNumber = 1;
+let currentPageNumber = 0;
 
 
 /*****/
@@ -27,11 +27,12 @@ let currentPageNumber = 1;
 
 // Get number of data items. 
 const numItems = dataSource.length;
-console.log('Number of items:',numItems);
+console.log('Item count:',numItems);
+console.log('Page capacity:',numPerPage);
 
 // Get number of pages. 
 const numPages = Math.ceil(numItems/numPerPage);
-console.log('Number of pages:',numPages);
+console.log('Page count:',numPages);
 
 
 /*****/
@@ -66,8 +67,10 @@ function addPages() {
 		// Get current page number. 
 		let pagenum = Math.floor(i/numPerPage) + 1;
 	
-		// Open new page. 
-		if( (i%numPerPage)==0 ) result += createPageOpener();
+		// Check if on first item of page. 
+		let onFirstItem = (i%numPerPage)==0;
+		// Open new page if on first item. 
+		if(onFirstItem) result += openPage(pagenum);
 	
 		// Get data for current item. 
 		itemdata = `${dataSource[i].fname} ${dataSource[i].lname}`;
@@ -78,16 +81,15 @@ function addPages() {
 		<div class="item">${ itemdata }</div>
 		<!-- /item -->`;
 	
-		// Check if at end of page. 
-		let atEndOfPage = (i%numPerPage) == (numPerPage-1);
 		// Check if on last item. 
 		let onLastItem = i == (numItems-1);
-		
 		// Add remaining items. 
-		if( onLastItem ) {
+		if(onLastItem) {
 			// 
 		}
 		
+		// Check if at end of page. 
+		let atEndOfPage = (i%numPerPage) == (numPerPage-1);
 		// Close finished page. 
 		if( atEndOfPage || onLastItem ) {
 	
@@ -98,7 +100,7 @@ function addPages() {
 			<!-- /pagenum -->`;
 
 			// Close finished page. 
-			result += createPageCloser();
+			result += closePage();
 		}
 	}
 	
@@ -108,17 +110,17 @@ function addPages() {
 	// Save all page elements. 
 	allPages = document.querySelectorAll('main.main div.page');
 
-	// 
+	/****/
 
 	// Create page opener. 
-	function createPageOpener() {
+	function openPage(n) {
 		return `
 		<!-- page -->
-		<div class="page" data-pagenum="${pagenum}">`;
+		<div class="page" data-pagenum="${n}">`;
 	}
 
 	// Create page closer. 
-	function createPageCloser() {
+	function closePage() {
 		return `
 		</div>
 		<!-- /page -->`;
@@ -154,8 +156,6 @@ function addPageLinks() {
 
 	// Create page link. 
 	function createPageLink(n) {
-
-		// 
 		return `
 		<!-- pagelink -->
 		<a class="pagelink" href="javascript:void(0)" data-pagenum="${n}">${n}</a>
@@ -244,55 +244,87 @@ function addPageLinks() {
 // Show currently selected page. 
 function showSelectedPage() {
 
-	// Go to first page if below range. 
-	if(currentPageNumber<1) currentPageNumber = 1;
-	// Go to last page if above range. 
-	else if(currentPageNumber>numPages) currentPageNumber = numPages;
+	// Confirm valid page. 
+	confirmValidPage();
 
-	console.log('Page selected:',currentPageNumber);
+	console.log('Current page:',currentPageNumber);
+	console.log('Current items:',currentPageNumber);
+
+	// Update pages. 
+	updatePages();
+
+	// Update page links. 
+	updatePageLinks();
+
+	// Update status of paginator. 
+	updatePaginator();
+
+	/****/
+
+	// Confirm valid page is selected. 
+	function confirmValidPage() {
+
+		// Go to first page if below range. 
+		if(currentPageNumber<0) currentPageNumber = 0;
+
+		// Go to last page if above range. 
+		else if(currentPageNumber>=numPages) currentPageNumber = numPages-1;
+	}
+
+	// Update pages. 
+	function updatePages() {
 	
-	// Go thru each page. 
-	for(let page of allPages) {
-
-		// Check for matching page. 
-		let matchFound = ( 1*page.getAttribute('data-pagenum') ) == 1*currentPageNumber;
-
-		// Show selected page. 
-		if(matchFound) page.classList.add('active');
-
-		// Hide other pages. 
-		else page.classList.remove('active');
-	}
+		// Go thru each page. 
+		for(let page of allPages) {
 	
-	// Go thru each page link. 
-	for(let pagelink of allPageLinks) {
-
-		// Check for matching page. 
-		let matchFound = ( 1*pagelink.getAttribute('data-pagenum') ) == 1*currentPageNumber;
-
-		// Show selected page. 
-		if(matchFound) pagelink.classList.add('active');
-
-		// Hide other pages. 
-		else pagelink.classList.remove('active');
-	}
-
-	// Indicate first page. 
-	if(currentPageNumber==1) {
-		paginator.classList.add('f');
-		paginator.classList.remove('l');
-	}
-
-	// Indicate last page. 
-	else if(currentPageNumber==numPages) {
-		paginator.classList.add('l');
-		paginator.classList.remove('f');
-	}
+			// Check for matching page. 
+			let matchFound = ( 1*page.getAttribute('data-pagenum') ) == 1*currentPageNumber;
 	
-	// Indicate middle page. 
-	else {
-		paginator.classList.remove('f');
-		paginator.classList.remove('l');
+			// Show selected page. 
+			if(matchFound) page.classList.add('active');
+	
+			// Hide other pages. 
+			else page.classList.remove('active');
+		}
+	}
+
+	// Update page links. 
+	function updatePageLinks() {
+	
+		// Go thru each page link. 
+		for(let pagelink of allPageLinks) {
+	
+			// Check for matching page. 
+			let matchFound = ( 1*pagelink.getAttribute('data-pagenum') ) == 1*currentPageNumber;
+	
+			// Show selected page. 
+			if(matchFound) pagelink.classList.add('active');
+	
+			// Hide other pages. 
+			else pagelink.classList.remove('active');
+		}
+	}
+
+	// Update status of paginator. 
+	function updatePaginator() {
+
+		// Indicate first page. 
+		if(currentPageNumber==1) {
+			paginator.classList.add('f');
+			paginator.classList.remove('l');
+		}
+	
+		// Indicate last page. 
+		else if(currentPageNumber==numPages) {
+			paginator.classList.add('l');
+			paginator.classList.remove('f');
+		}
+		
+		// Indicate middle page. 
+		else {
+			paginator.classList.remove('f');
+			paginator.classList.remove('l');
+		}
 	}
 }
 
@@ -300,12 +332,12 @@ function showSelectedPage() {
 function activateShortcutKeys() {
 	
 	// Activate shortcut keys. 
-	document.addEventListener('keyup',checkForShortcutKeys);
+	document.addEventListener('keyup',checkForShortcutKey);
 
 	/****/
 
-	// Check for shortcut keys. 
-	function checkForShortcutKeys(event) {
+	// Check if shortcut key selected. 
+	function checkForShortcutKey(event) {
 		console.log(event);
 	
 		// Respond to left arrow key. 
