@@ -23,7 +23,7 @@ const emptysearchlabel = document.querySelector('div#container section.blog div.
 
 
 // Set flag for memory load (previews on by default). 
-let blockPreviews = true;
+let blockPreviews = false;
 
 
 /*****/
@@ -127,7 +127,7 @@ function loadBlog() {
 		console.log('Featured projects:', featuredProjects.length, featuredProjectIdList, featuredProjects);
 		
 		// Get layout for featured posts. 
-		let featuredLayout = createBlogPostsLayout(featuredProjects, true&&!blockPreviews);
+		let featuredLayout = createBlogPostsLayout(featuredProjects, !blockPreviews);
 		
 		// Add featured layout to blog section. 
 		featuredPostsDestination.innerHTML = featuredLayout;
@@ -139,12 +139,11 @@ function loadBlog() {
 		console.log('Loading category posts...');
 	
 		// Get list of category projects (sorted by project id). 
-		let projectgrouplist = projectgroup.grouplist;
-		let categoryProjects = ( projectgrouplist.sort() ).map(getProjectById);
+		let categoryProjects = ( projectgroup.grouplist.sort() ).map(getProjectById);
 		console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Get layout for category posts. 
-		let categoryLayout = createBlogPostsLayout(categoryProjects, true&&!blockPreviews);
+		let categoryLayout = createBlogPostsLayout(categoryProjects, !blockPreviews);
 		
 		// Add category layout to blog section. 
 		categoryPostsDestination.innerHTML = categoryLayout;
@@ -160,7 +159,7 @@ function loadBlog() {
 		console.log('Archive projects:', archiveProjects.length, archiveProjects);
 		
 		// Get layout for archive posts. 
-		let archiveLayout = createBlogPostsLayout(archiveProjects, false&&!blockPreviews);
+		let archiveLayout = createBlogPostsLayout(archiveProjects, false);
 		
 		// Add archive layout to blog section. 
 		archivePostsDestination.innerHTML = archiveLayout;

@@ -270,6 +270,7 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* General Section */
 	/* div#container section {} */
 	/* div#container section div.grid {} */
+	div#container section div.grid div.head {flex-direction:column; align-items:stretch;}
 	div#container section div.grid h1.head {font-size:2rem;}
 
 	/* Footer */

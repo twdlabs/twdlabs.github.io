@@ -15,6 +15,7 @@ div#container section.hero div.grid div.col.b {display:none;}
 /* div#container section.hero div.grid div.col {text-align:center;} */
 div#container section.hero div.grid div.col h1.head {/* display:none; */ font-size:3rem; margin:0; /* margin-bottom:1rem; */}
 div#container section.hero div.grid div.col img.code {display:block; width:100%;/*  max-width:16rem; */ margin:1rem auto;}
+div#container section.hero div.grid div.col img.icon {display:block; width:100%; max-width:12rem; margin:1rem auto;}
 div#container section.hero div.grid div.col p.textcopy {color:var(--forecolor2); font-size:1.75rem; font-weight:200; /* margin:0; */}
 div#container section.hero div.grid div.col a.contactlink {display:inline-block; font-size:1.5rem; text-decoration:none; min-width:9em; opacity:.9; transition:.125s; padding:.375em 1.5em; border-radius:var(--cornersize); border-radius:1.125em; border:.25rem solid; margin:.5em .5rem 0; box-shadow:var(--boxshadowxx);}
 div#container section.hero div.grid div.col a.contactlink {font-size:1.25rem;}

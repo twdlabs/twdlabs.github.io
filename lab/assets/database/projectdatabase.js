@@ -46,15 +46,11 @@ const methodData = [
 
 // Define ids for featured projects. 
 const featuredProjectIdList = [
-	'analogclock','autoslideshow','admin',
-	'band','banner','bizmath','blockmenu','blog',
-	'calendar','canvas','chat','chess','chooser','cluster','compound','crud',
-	'desktop','device','dragndrop','gallery','keyfinder','lander','livesearch',
-	'merch','musicplayer','pagination','pinyin','pixelart','pong',
-	'resume','rolodex','storage','tasks','toastprogress',
-	'univ','video','wts1',
-	'100pure','360finance','3dnav',
-	// 'xyz','xyz','xyz','xyz','xyz',
+	'admin',/* 'autoslideshow', *//* 'analogclock', */'blog',
+	'calendar','chat','cluster','compound','crud',
+	'desktop','gallery','keyfinder',/* 'livesearch', */
+	'merch',/* 'musicplayer', *//* 'pong', */'resume','rolodex',
+	'toastprogress','univ','video',
 ];
 // console.log('Featured project ids:',featuredProjectIdList);
 
@@ -76,12 +72,29 @@ const projectGroupData = [
 
 	// {
 	// 	groupid:'xyz',
-	// 	groupname:'XyzGroupName',
+	// 	groupname:'XyzName',
 	// 	groupicontag:'xyzabcxyz',
 	// 	groupdescription:'This is currently serving as a sample group description.',
 	// 	grouplist:[
 	// 	],
 	// },
+
+	{
+		groupid:'ni',
+		groupname:'New Ideas',
+		groupicontag:'lightbulb',
+		groupdescription:'This is currently serving as a sample group description.',
+		grouplist:[
+			'analogclock','autoslideshow','admin',
+			'band','banner','bizmath','blockmenu','blog',
+			'calendar','canvas','chat','chess','chooser','cluster','compound','crud',
+			'desktop','device','dragndrop','gallery','keyfinder','lander','livesearch',
+			'merch','musicplayer','pagination','pinyin','pixelart','pong',
+			'resume','rolodex','storage','tasks','toastprogress',
+			'univ','video','wts1',
+			'100pure','360finance','3dnav',
+		],
+	},
 
 	{
 		groupid:'cl',
