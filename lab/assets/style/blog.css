@@ -22,6 +22,10 @@ div#container section.blog div.grid div.filter label.clearbtn svg.icon {font-siz
 div#container section.blog div.grid div.filter input#postfilter {background-color:var(--backcolor2); color:var(--forecolor);}
 div#container section.blog div.grid div.filter input#postfilter {font-family:inherit; font-size:1.375rem; font-weight:300; width:100%; padding:.875rem 3.25rem .875rem 3.5rem;}
 div#container section.blog div.grid div.filter input#postfilter {border:.125rem solid var(--backcolor2); outline:none;}
+/* Blog Section: Filter Tabs */
+div#container section.blog div.grid div.filtertabs {max-height:0; transition:.5s;}
+div#container section.blog div.grid div.filtertabs.active {max-height:fit-content;}
+div#container section.blog div.grid div.filtertabs div.filterpiece {height:40rem;}
 /* Blog Section: Post List */
 /* div#container section.blog div.grid div.posts {} */
 div#container section.blog div.grid div.posts ul.postlist {display:grid; grid-template-columns:repeat(8,1fr); grid-gap:1.25rem; list-style:none; padding:0; margin:0; margin-top:1.5rem;}

@@ -44,7 +44,7 @@ const methodData = [
 ];
 
 
-// Define primary projects by project id. 
+// Define ids for featured projects. 
 const featuredProjectIdList = [
 	'analogclock','autoslideshow','admin',
 	'band','banner','bizmath','blockmenu','blog',

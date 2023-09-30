@@ -28,7 +28,7 @@ div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a
 div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item svg.icon {display:none;}
 div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item svg.icon {font-size:4rem;}
 div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-/* div#container section.desktop {display:none;} */
+div#container section.desktop {display:none;}
 
 
 /* Desktop Section: Mini-Frame */

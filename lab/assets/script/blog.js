@@ -1,8 +1,12 @@
 
 
 
-// Get blog destination. 
-const blogDestination = document.querySelector('div#container section.blog div.grid div.posts ul.postlist');
+// Get destination for featured posts. 
+const featuredPostsDestination = document.querySelector('div#container section.blog div.grid div.posts ul.postlist.featured');
+// Get destination for category posts. 
+const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.posts ul.postlist.category');
+// Get destination for archive posts. 
+const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.posts ul.postlist.archive');
 
 // Initialize source of blog post cards. 
 let blogpostcards;
@@ -18,9 +22,8 @@ const emptysearchlabel = document.querySelector('div#container section.blog div.
 /*****/
 
 
-// Set flag for memory comfort (for previews being on by default). 
-let tooHeavy = true;
-// tooHeavy = false;
+// Set flag for memory load (previews on by default). 
+let blockPreviews = true;
 
 
 /*****/
@@ -37,13 +40,12 @@ loadBlog();
 function loadBlog() {
 	console.log('Loading blog...');
 
-	// Check if currently on home page. 
-	let atHome = (currentPageLevel <= 0);
-
-	// Load mini blog if on home page. 
-	if(atHome) loadMiniBlog();
-	// Load full blog if not on home page. 
-	else loadArchiveBlog();
+	// Load featured posts (if on home page). 
+	loadFeaturedPosts();
+	// Load category posts. 
+	loadCategoryPosts();
+	// Load archive posts (if not on home page). 
+	loadArchivePosts();
 
 	// Activate blog functionality. 
 	activateBlog();
@@ -115,34 +117,53 @@ function loadBlog() {
 		}
 	}
 
-	// Load featured blog posts. 
-	function loadMiniBlog() {
-		console.log('Loading featured blog...');
+	// Load featured posts. 
+	function loadFeaturedPosts() {
+		if(!featuredPostsDestination) return;
+		console.log('Loading featured posts...');
 	
 		// Get list of featured projects (sorted by project id). 
 		let featuredProjects = ( featuredProjectIdList.sort() ).map(getProjectById);
 		console.log('Featured projects:', featuredProjects.length, featuredProjectIdList, featuredProjects);
 		
 		// Get layout for featured posts. 
-		let featuredLayout = createBlogPostsLayout(featuredProjects, true && !tooHeavy);
+		let featuredLayout = createBlogPostsLayout(featuredProjects, true&&!blockPreviews);
 		
 		// Add featured layout to blog section. 
-		if(blogDestination) blogDestination.innerHTML = featuredLayout;
+		featuredPostsDestination.innerHTML = featuredLayout;
 	}
 	
-	// Load archive blog posts. 
-	function loadArchiveBlog() {
-		console.log('Loading archive blog...');
+	// Load category posts. 
+	function loadCategoryPosts() {
+		if(!categoryPostsDestination) return;
+		console.log('Loading category posts...');
+	
+		// Get list of category projects (sorted by project id). 
+		let projectgrouplist = projectgroup.grouplist;
+		let categoryProjects = ( projectgrouplist.sort() ).map(getProjectById);
+		console.log('Category projects:', categoryProjects.length, categoryProjects);
+		
+		// Get layout for category posts. 
+		let categoryLayout = createBlogPostsLayout(categoryProjects, true&&!blockPreviews);
+		
+		// Add category layout to blog section. 
+		categoryPostsDestination.innerHTML = categoryLayout;
+	}
+	
+	// Load archive posts. 
+	function loadArchivePosts() {
+		if(!archivePostsDestination) return;
+		console.log('Loading archive posts...');
 	
 		// Get list of archive projects (sorted by project id). 
 		let archiveProjects = projectData.sort(sortByProjectId);
 		console.log('Archive projects:', archiveProjects.length, archiveProjects);
 		
 		// Get layout for archive posts. 
-		let archiveLayout = createBlogPostsLayout(archiveProjects, false && !tooHeavy);
+		let archiveLayout = createBlogPostsLayout(archiveProjects, false&&!blockPreviews);
 		
 		// Add archive layout to blog section. 
-		if(blogDestination) blogDestination.innerHTML = archiveLayout;
+		archivePostsDestination.innerHTML = archiveLayout;
 	
 		/****/
 	
