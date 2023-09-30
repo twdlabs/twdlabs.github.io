@@ -19,7 +19,7 @@ let allPages;
 let allPageLinks;
 
 // Initialize number of currently selected page. 
-let currentPageNumber = 0;
+let currentPageIndex = 0;
 
 
 /*****/
@@ -54,55 +54,81 @@ activateShortcutKeys();
 /*****/
 
 
-// Add pages. 
+// Add pages of data. 
 function addPages() {
 	
 	// Initialize result. 
 	let result = ``;
 	
-	// Add data to pages. 
-	for(let i=0 ; i<numItems ; i++) {
-	// for(let itemdata of dataSource) {
+	// Go thru each page. 
+	for(let pageindex in pagesData) {
+		let pagedata = 
 
-		// Get current page number. 
-		let pagenum = Math.floor(i/numPerPage) + 1;
+		// Open new page. 
+		result += openPage(pageindex);
 	
-		// Check if on first item of page. 
-		let onFirstItem = (i%numPerPage)==0;
-		// Open new page if on first item. 
-		if(onFirstItem) result += openPage(pagenum);
+		// Go thru each item on page. 
+		for(let itemdata of pagedata) {
 	
-		// Get data for current item. 
-		itemdata = `${dataSource[i].fname} ${dataSource[i].lname}`;
-	
-		// Add current item to layout. 
-		result += `
-		<!-- item -->
-		<div class="item">${ itemdata }</div>
-		<!-- /item -->`;
-	
-		// Check if on last item. 
-		let onLastItem = i == (numItems-1);
-		// Add remaining items. 
-		if(onLastItem) {
-			// 
-		}
-		
-		// Check if at end of page. 
-		let atEndOfPage = (i%numPerPage) == (numPerPage-1);
-		// Close finished page. 
-		if( atEndOfPage || onLastItem ) {
-	
-			// Add page number to page. 
+			// Add current item to layout. 
 			result += `
-			<!-- pagenum -->
-			<div class="pagenum">${pagenum}</div>
-			<!-- /pagenum -->`;
-
-			// Close finished page. 
-			result += closePage();
+			<!-- item -->
+			<div class="item">${ itemdata }</div>
+			<!-- /item -->`;
 		}
+	
+		// Add page number to page. 
+		result += `
+		<!-- pagenum -->
+		<div class="pagenum">${pageindex}</div>
+		<!-- /pagenum -->`;
+
+		// Close finished page. 
+		result += closePage();
 	}
+	// // Add data to pages. 
+	// for(let i=0 ; i<numItems ; i++) {
+	// // for(let itemdata of dataSource) {
+
+	// 	// Get current page number. 
+	// 	let pageindex = Math.floor(i/numPerPage);
+	
+	// 	// Check if on first item of page. 
+	// 	let onFirstItem = (i%numPerPage)==0;
+	// 	// Open new page if on first item. 
+	// 	if(onFirstItem) result += openPage(pageindex);
+	
+	// 	// Get data for current item. 
+	// 	itemdata = `${dataSource[i].fname} ${dataSource[i].lname}`;
+	
+	// 	// Add current item to layout. 
+	// 	result += `
+	// 	<!-- item -->
+	// 	<div class="item">${ itemdata }</div>
+	// 	<!-- /item -->`;
+	
+	// 	// Check if on last item. 
+	// 	let onLastItem = i == (numItems-1);
+	// 	// Add remaining items. 
+	// 	if(onLastItem) {
+	// 		// 
+	// 	}
+		
+	// 	// Check if at end of page. 
+	// 	let atEndOfPage = (i%numPerPage) == (numPerPage-1);
+	// 	// Close finished page. 
+	// 	if( atEndOfPage || onLastItem ) {
+	
+	// 		// Add page number to page. 
+	// 		result += `
+	// 		<!-- pagenum -->
+	// 		<div class="pagenum">${pageindex}</div>
+	// 		<!-- /pagenum -->`;
+
+	// 		// Close finished page. 
+	// 		result += closePage();
+	// 	}
+	// }
 	
 	// Display data items. 
 	pagecontainer.innerHTML = result;
@@ -116,7 +142,7 @@ function addPages() {
 	function openPage(n) {
 		return `
 		<!-- page -->
-		<div class="page" data-pagenum="${n}">`;
+		<div class="page" data-pageindex="${n}">`;
 	}
 
 	// Create page closer. 
@@ -137,7 +163,7 @@ function addPageLinks() {
 	result += ``;
 
 	// Go thru all page numbers. 
-	for(let i=1 ; i<=numPages ; i++) {
+	for(let i=0 ; i<numPages ; i++) {
 	
 		// Add page number to paginator. 
 		result += createPageLink(i);
@@ -158,7 +184,7 @@ function addPageLinks() {
 	function createPageLink(n) {
 		return `
 		<!-- pagelink -->
-		<a class="pagelink" href="javascript:void(0)" data-pagenum="${n}">${n}</a>
+		<a class="pagelink" href="javascript:void(0)" data-pageindex="${n}">${n+1}</a>
 		<!-- /pagelink -->`;
 	}
 
@@ -195,14 +221,14 @@ function addPageLinks() {
 			let pagelink = event.currentTarget;
 
 			// Check for valid page link. 
-			let isValidPageLink = pagelink.hasAttribute('data-pagenum');
+			let isValidPageLink = pagelink.hasAttribute('data-pageindex');
 			if(!isValidPageLink) {
 				console.warn('Invalid page link selected',pagelink);
 				return;
 			}
 	
 			// Get number of selected page. 
-			currentPageNumber = pagelink.getAttribute('data-pagenum') * 1;
+			currentPageIndex = pagelink.getAttribute('data-pageindex') * 1;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
@@ -210,7 +236,7 @@ function addPageLinks() {
 		// Go to first page. 
 		function goToTopPage() {
 			// Set newly selected page number. 
-			currentPageNumber = 1;
+			currentPageIndex = 1;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
@@ -218,7 +244,7 @@ function addPageLinks() {
 		// Go to previous page. 
 		function goToPrevPage() {
 			// Set newly selected page number. 
-			currentPageNumber--;
+			currentPageIndex--;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
@@ -226,7 +252,7 @@ function addPageLinks() {
 		// Go to next page. 
 		function goToNextPage() {
 			// Set newly selected page number. 
-			currentPageNumber++;
+			currentPageIndex++;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
@@ -234,7 +260,7 @@ function addPageLinks() {
 		// Go to last page. 
 		function goToLastPage() {
 			// Set newly selected page number. 
-			currentPageNumber = numPages;
+			currentPageIndex = numPages;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
@@ -247,8 +273,8 @@ function showSelectedPage() {
 	// Confirm valid page. 
 	confirmValidPage();
 
-	console.log('Current page:',currentPageNumber);
-	console.log('Current items:',currentPageNumber);
+	console.log('Current page:',currentPageIndex);
+	console.log('Current items:',currentPageIndex);
 
 	// Update pages. 
 	updatePages();
@@ -265,10 +291,10 @@ function showSelectedPage() {
 	function confirmValidPage() {
 
 		// Go to first page if below range. 
-		if(currentPageNumber<0) currentPageNumber = 0;
+		if(currentPageIndex<0) currentPageIndex = 0;
 
 		// Go to last page if above range. 
-		else if(currentPageNumber>=numPages) currentPageNumber = numPages-1;
+		else if(currentPageIndex>=numPages) currentPageIndex = numPages-1;
 	}
 
 	// Update pages. 
@@ -278,7 +304,7 @@ function showSelectedPage() {
 		for(let page of allPages) {
 	
 			// Check for matching page. 
-			let matchFound = ( 1*page.getAttribute('data-pagenum') ) == 1*currentPageNumber;
+			let matchFound = ( 1*page.getAttribute('data-pageindex') ) == 1*currentPageIndex;
 	
 			// Show selected page. 
 			if(matchFound) page.classList.add('active');
@@ -295,7 +321,7 @@ function showSelectedPage() {
 		for(let pagelink of allPageLinks) {
 	
 			// Check for matching page. 
-			let matchFound = ( 1*pagelink.getAttribute('data-pagenum') ) == 1*currentPageNumber;
+			let matchFound = ( 1*pagelink.getAttribute('data-pageindex') ) == 1*currentPageIndex;
 	
 			// Show selected page. 
 			if(matchFound) pagelink.classList.add('active');
@@ -309,13 +335,13 @@ function showSelectedPage() {
 	function updatePaginator() {
 
 		// Indicate first page. 
-		if(currentPageNumber==1) {
+		if(currentPageIndex==1) {
 			paginator.classList.add('f');
 			paginator.classList.remove('l');
 		}
 	
 		// Indicate last page. 
-		else if(currentPageNumber==numPages) {
+		else if(currentPageIndex==numPages) {
 			paginator.classList.add('l');
 			paginator.classList.remove('f');
 		}
@@ -344,7 +370,7 @@ function activateShortcutKeys() {
 		if(event.keyCode==37 || event.key=='ArrowLeft') {
 	
 			// Update crement current page number. 
-			currentPageNumber--;
+			currentPageIndex--;
 	
 			// Show selected page. 
 			showSelectedPage();
@@ -354,7 +380,7 @@ function activateShortcutKeys() {
 		if(event.keyCode==39 || event.key=='ArrowRight') {
 	
 			// Update crement current page number. 
-			currentPageNumber++;
+			currentPageIndex++;
 	
 			// Show selected page. 
 			showSelectedPage();
