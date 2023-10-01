@@ -45,6 +45,10 @@ function paginateData() {
 		// Add data point to list for current page. 
 		result[pageindex].push(datapoint);
 	}
+	console.log('Page index:',pageindex);
+
+	// Fill data for last page. 
+	while( result[pageindex].length<numPerPage ) result[pageindex].push( {} );
 
 	// Return result. 
 	return result;

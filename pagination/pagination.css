@@ -37,21 +37,21 @@ div#container main.main div.grid div.page {display:none;}
 /* div#container main.main div.grid div.page.active {opacity:1;} */
 div#container main.main div.grid div.page.active {display:block;}
 div#container main.main div.grid div.page div.bin {display:flex; flex-direction:column; align-items:center; align-items:stretch;}
-div#container main.main div.grid div.page div.bin div.item {cursor:pointer; font-size:1.25rem; /* width:100%; */}
+div#container main.main div.grid div.page div.bin div.item {cursor:pointer; font-size:1.25rem;}
+div#container main.main div.grid div.page div.bin div.item.xyz {opacity:0; visibility:hidden;}
 div#container main.main div.grid div.page div.pagenum {position:absolute; bottom:0; right:0;}
 div#container main.main div.grid div.page div.pagenum {margin:.5rem;}
 
 /* Page Navigator */
 div#container main.main nav.paginator {display:flex; flex-direction:row; justify-content:center; align-items:center; /* grid-gap:.5rem; */ margin-top:.75rem;}
-/* div#container main.main nav.paginator.f {} */
-/* div#container main.main nav.paginator.l {} */
 /* div#container main.main nav.paginator a {display:flex; flex-direction:row; align-items:center;} */
 /* Page Navigator: Delta Links */
-div#container main.main nav.paginator.f a.deltalink.toppage {visibility:hidden;}
-div#container main.main nav.paginator.f a.deltalink.prevpage {visibility:hidden;}
-div#container main.main nav.paginator.l a.deltalink.nextpage {visibility:hidden;}
-div#container main.main nav.paginator.l a.deltalink.lastpage {visibility:hidden;}
 div#container main.main nav.paginator a.deltalink {color:inherit; text-decoration:none;}
+div#container main.main nav.paginator.f a.deltalink.top {visibility:hidden;}
+div#container main.main nav.paginator.f a.deltalink.prev {visibility:hidden;}
+div#container main.main nav.paginator.l a.deltalink.next {visibility:hidden;}
+div#container main.main nav.paginator.l a.deltalink.last {visibility:hidden;}
+/* Page Navigator: Delta Link Contents */
 div#container main.main nav.paginator a.deltalink svg.icon {display:none;}
 /* div#container main.main nav.paginator a.deltalink svg.icon.arrow {display:block;} */
 div#container main.main nav.paginator a.deltalink svg.icon.caret {display:block;}

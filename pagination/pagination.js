@@ -7,10 +7,10 @@ const pagecontainer = document.querySelector('main.main div.grid');
 // Get page navigator. 
 const paginator = document.querySelector('main.main nav.paginator');
 // Get page delta links. 
-const topPageBtn = document.querySelector('main.main nav.paginator a.deltalink.toppage');
-const prevPageBtn = document.querySelector('main.main nav.paginator a.deltalink.prevpage');
-const nextPageBtn = document.querySelector('main.main nav.paginator a.deltalink.nextpage');
-const lastPageBtn = document.querySelector('main.main nav.paginator a.deltalink.lastpage');
+const topPageBtn = document.querySelector('main.main nav.paginator a.deltalink.top');
+const prevPageBtn = document.querySelector('main.main nav.paginator a.deltalink.prev');
+const nextPageBtn = document.querySelector('main.main nav.paginator a.deltalink.next');
+const lastPageBtn = document.querySelector('main.main nav.paginator a.deltalink.last');
 // Get destination for page number links. 
 const numlinksdestination = document.querySelector('main.main nav.paginator ul.numlist');
 
@@ -105,13 +105,16 @@ function addPages() {
 		// Go thru each item on page. 
 		for(let itemdata of pagedata) {
 
+			// Check for valid data item. 
+			let isvaliddata = itemdata.fname && itemdata.lname;
+
 			// Get item caption. 
-			let itemcaption = `${itemdata.fname} ${itemdata.lname}`;
+			let itemcaption = isvaliddata ? `${itemdata.fname} ${itemdata.lname}` : 'xyz';
 	
 			// Add current item to layout. 
 			result += `
 			<!-- item -->
-			<div class="item">${ itemcaption }</div>
+			<div class="item ${ isvaliddata ? '' : 'xyz' }">${ itemcaption }</div>
 			<!-- /item -->`;
 		}
 	
