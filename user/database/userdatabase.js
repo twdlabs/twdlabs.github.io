@@ -38,7 +38,8 @@ const userListMetaData =
 	},
 	avatarurl:{
 		label:'Avatar',
-		visible:false,
+		visible:true,
+		showimage:true,
 	},
 	position:{
 		label:'Position',
@@ -50,432 +51,78 @@ const userListMetaData =
 	},
 };
 
+
+// Define user constructor function. 
+function User(fname,lname,admin,avatarurl) {
+
+	// 
+	this.fname = fname;
+	this.lname = lname;
+	// this.fullname = fullname;
+
+	// 
+	this.admin = admin;
+	this.avatarurl = avatarurl;
+
+	// // 
+	// this.email = email;
+	// this.username = username;
+	// this.password = password;
+	// this.mobilenumber = mobilenumber;
+	// this.position = position;
+	// this.bio = bio;
+}
+
+
+// Define list of positions. 
+// const positionList = ['Lawyer','Accountant','Chairman','CFO','CFO',];
+const positionList = ['UX Designer','UI Designer','Website Developer','Quality Assurance Tester',];
+
+// Get avatar urls. 
+let avatarm = './../user/images/avatar-m.png';
+let avatarf = './../user/images/avatar-f.png';
+
+
 // Define default list of user data. 
-const defaultUserDataList = [
-
-	{
-		username:'',
-		fname:'Ace',
-		lname:'Ventura',
-		fullname:'',
-		admin:true,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Bill',
-		lname:'Diamond',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Christine',
-		lname:'Brophy',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	
-	{
-		username:'',
-		fname:'David',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Eli',
-		lname:'Jah',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Fred',
-		lname:'Flinstone',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'George',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Hilary',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Ian',
-		lname:'Robertson',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Jane',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Jay',
-		lname:'Jenkins',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Jenny',
-		lname:'Joe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Jill',
-		lname:'Jackson',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Jim',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Joe',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'John Luke',
-		lname:'Smith',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Kate',
-		lname:'Croix',
-		fullname:'',
-		admin:true,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Leah',
-		lname:'Lloyd',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Mike',
-		lname:'Myers',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Nina',
-		lname:'Nash',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Oscar',
-		lname:'DeLaHoya',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Peter',
-		lname:'Pan',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Quinten',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Rachel',
-		lname:'Roy',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Steve',
-		lname:'Stephens',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Tim',
-		lname:'Toole',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Tori',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Ursula',
-		lname:'Doe',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Victor',
-		lname:'Victorian',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Wendy',
-		lname:'Will',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Xavier',
-		lname:'Toven',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-m.png',
-		position:'',
-		bio:'',
-	},
-	{
-		username:'',
-		fname:'Yolanda',
-		lname:'Yokes',
-		fullname:'',
-		admin:false,
-		mobilenumber:'',
-		email:'',
-		password:'',
-		avatarurl:'./../user/images/avatar-f.png',
-		position:'',
-		bio:'',
-	},
-
+const defaultUserData = [
+	new User('Ace','Ventura',true,avatarm,),
+	new User('Bill','Diamond',false,avatarm,),
+	new User('Christine','Brophy',false,avatarf,),
+	new User('David','Doe',false,avatarm,),
+	new User('Eli','Jah',false,avatarm,),
+	new User('Fred','Flinstone',false,avatarm,),
+	new User('George','Doe',false,avatarm,),
+	new User('Hilary','Doe',false,avatarf,),
+	new User('Ian','Robertson',false,avatarm,),
+	new User('Jane','Doe',false,avatarf,),
+	new User('Jay','Jenkins',false,avatarm,),
+	new User('Jenny','Joe',false,avatarf,),
+	new User('Jill','Jackson',false,avatarf,),
+	new User('Jim','Doe',false,avatarm,),
+	new User('Joe','Doe',false,avatarm,),
+	new User('John Luke','Smith',false,avatarm,),
+	new User('Kate','Croix',true,avatarf,),
+	new User('Leah','Lloyd',false,avatarf,),
+	new User('Mike','Myers',false,avatarm,),
+	new User('Nina','Nash',false,avatarf,),
+	new User('Oscar','DeLaHoya',false,avatarm,),
+	new User('Peter','Pan',false,avatarm,),
+	new User('Quinten','Doe',false,avatarm,),
+	new User('Rachel','Roy',false,avatarf,),
+	new User('Steve','Stephens',false,avatarm,),
+	new User('Tim','Toole',false,avatarm,),
+	new User('Tori','Doe',false,avatarf,),
+	new User('Ursula','Doe',false,avatarf,),
+	new User('Victor','Victorian',false,avatarm,),
+	new User('Wendy','Will',false,avatarf,),
+	new User('Xavier','Toven',false,avatarm,),
+	new User('Yolanda','Yokes',false,avatarf,),
 ];
+console.log('Default user data:',defaultUserData);
 
 // Initialize list of user data. 
 let userDataList = [];
-userDataList = defaultUserDataList;
+userDataList = defaultUserData;
 
 
 /*****/
@@ -483,6 +130,7 @@ userDataList = defaultUserDataList;
 
 // Add supplemental user data to default list. 
 completeDefaultUserData();
+// console.log('User list:', userDataList.map( (u)=>(u.username) ) );
 
 
 /*****/
@@ -490,24 +138,25 @@ completeDefaultUserData();
 
 // Add supplemental user data to default list. 
 function completeDefaultUserData() {
+	// console.log('Completing default user data...');
 
 	// Go thru all user data in default list. 
-	for(let user of defaultUserDataList) {
+	for(let user of defaultUserData) {
 
-		// Auto-generate user id from name. <--could be a function
-		user.username = `${ (user.fname).substring(0,1) }${ user.lname }`.toLowerCase().replace(' ','');
-		// Auto-generate full name. <--could be a function
-		user.fullname = `${user.fname} ${user.lname}`;
-
-		// Auto-generate default email address. <--could be a function
-		user.email = `${ user.username }@chat.com`;
+		// Auto-generate full name. 
+		user.fullname = generateFullName(user);
+		// Auto-generate user id from name. 
+		user.username = generateUsername(user);
+		// Auto-generate default email address. 
+		user.email = generateEmailAddress(user.username);
 		// Add default password. 
-		user.password = `#${ user.username }!`;
+		user.password = generatePassword(user.username);
 		// Add default mobile number. 
 		user.mobilenumber = createPhoneNumber();
 
+		// Auto-generate random position. 
+		user.position = positionList[Math.floor( Math.random() * (positionList.length) )];
 		// Auto-generate default bio. 
-		user.position = 'Website Designer';
 		user.bio = `This is a brief bio of ${ user.fullname }, a ${ user.position } who has the username \'${ user.username }\'. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint consequatur tempore! Doloremque est dolorum modi repellat aspernatur non consequatur quia, dignissimos optio nemo omnis quidem provident ipsam commodi animi.`;
 	}
 
@@ -573,11 +222,13 @@ function completeDefaultUserData() {
 		}
 	}
 
-	// Generate username using first and last name. 
+	// Generate username using first initial and last name. 
 	function generateUsername(user) {
 
 		// Combine first initial with last name. 
-		let result = `${ (user.fname).substring(0,1) }${ (user.lname) }`;
+		let f = (user.fname).substring(0,1);
+		let ln = user.lname;
+		let result = `${f}${ln}`;
 
 		// Convert to all lowercase letters. 
 		result = result.toLowerCase()
@@ -589,6 +240,27 @@ function completeDefaultUserData() {
 		return result;
 	}
 	// () => `${ (user.fname).substring(0,1) }${ (user.lname) }`.toLowerCase().replace(' ','')
+
+	// Generate full name using first name and last name. 
+	function generateFullName(user) {
+
+		// Compile result. 
+		return `${user.fname} ${user.lname}`;
+	}
+
+	// Generate email address using username. 
+	function generateEmailAddress(uname) {
+
+		// Compile result. 
+		return `${uname}@chat.com`;
+	}
+
+	// Generate default password using username. 
+	function generatePassword(uname) {
+
+		// Compile result. 
+		return `#${uname}!`;
+	}
 }
 
 // Get user by id. 
