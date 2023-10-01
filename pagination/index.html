@@ -8,8 +8,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./6209826.png" rel="icon"/>
-		<link href="./6209826.png" rel="apple-touch-icon"/>
+		<link href="./6209833.png" rel="icon"/>
+		<link href="./6209833.png" rel="apple-touch-icon"/>
 		<title>Pagination</title>
 
 		<!-- Main Stylesheet -->
@@ -30,18 +30,84 @@
 
 					<!-- page -->
 					<div class="page" data-pageindex="0">
+
+						<!-- bin -->
+						<div class="bin">
 	
-						<!-- item -->
-						<div class="item">a</div>
-						<!-- /item -->
-		
-						<!-- item -->
-						<div class="item">b</div>
-						<!-- /item -->
-		
-						<!-- item -->
-						<div class="item">c</div>
-						<!-- /item -->
+							<!-- item -->
+							<div class="item">a</div>
+							<!-- /item -->
+			
+							<!-- item -->
+							<div class="item">b</div>
+							<!-- /item -->
+			
+							<!-- item -->
+							<div class="item">c</div>
+							<!-- /item -->
+
+						</div>
+						<!-- /bin -->
+			
+						<!-- pagenum -->
+						<div class="pagenum">1</div>
+						<!-- /pagenum -->
+	
+					</div>
+					<!-- /page -->
+
+					<!-- page -->
+					<div class="page" data-pageindex="1">
+
+						<!-- bin -->
+						<div class="bin">
+	
+							<!-- item -->
+							<div class="item">d</div>
+							<!-- /item -->
+			
+							<!-- item -->
+							<div class="item">e</div>
+							<!-- /item -->
+			
+							<!-- item -->
+							<div class="item">f</div>
+							<!-- /item -->
+
+						</div>
+						<!-- /bin -->
+			
+						<!-- pagenum -->
+						<div class="pagenum">2</div>
+						<!-- /pagenum -->
+	
+					</div>
+					<!-- /page -->
+
+					<!-- page -->
+					<div class="page" data-pageindex="2">
+
+						<!-- bin -->
+						<div class="bin">
+	
+							<!-- item -->
+							<div class="item">g</div>
+							<!-- /item -->
+			
+							<!-- item -->
+							<div class="item">h</div>
+							<!-- /item -->
+			
+							<!-- item -->
+							<!-- <div class="item">i</div> -->
+							<!-- /item -->
+
+						</div>
+						<!-- /bin -->
+			
+						<!-- pagenum -->
+						<div class="pagenum">3</div>
+						<!-- /pagenum -->
 	
 					</div>
 					<!-- /page -->
@@ -50,7 +116,7 @@
 				<!-- /grid -->
 				
 				<!-- paginator -->
-				<aside class="paginator">
+				<nav class="paginator">
 
 					<!-- deltalink -->
 					<a class="deltalink toppage" href="javascript:void(0)">
@@ -110,15 +176,21 @@
 					</a>
 					<!-- /deltalink -->
 
-					<!-- numlinks -->
-					<div class="numlinks">
+					<!-- numlist -->
+					<ul class="numlist">
 
-						<!-- pagelink -->
-						<a class="pagelink" href="javascript:void(0)" data-pageindex="0">xyz</a>
-						<!-- /pagelink -->
+						<!-- numitem -->
+						<li class="numitem">
 
-					</div>
-					<!-- /numlinks -->
+							<!-- pagelink -->
+							<a class="pagelink" href="javascript:void(0)" data-pageindex="0"></a>
+							<!-- /pagelink -->
+
+						</li>
+						<!-- /numitem -->
+
+					</ul>
+					<!-- /numlist -->
 
 					<!-- deltalink -->
 					<a class="deltalink nextpage" href="javascript:void(0)">
@@ -178,7 +250,7 @@
 					</a>
 					<!-- /deltalink -->
 
-				</aside>
+				</nav>
 				<!-- /paginator -->
 
 			</main>

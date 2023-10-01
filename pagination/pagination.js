@@ -4,22 +4,23 @@
 // Get main page container. 
 const pagecontainer = document.querySelector('main.main div.grid');
 
-// Get paginator container. 
-const paginator = document.querySelector('main.main aside.paginator');
-const paginatorinner = document.querySelector('main.main aside.paginator div.numlinks');
-// Get delta page buttons. 
-const topPageBtn = document.querySelector('main.main aside.paginator a.deltalink.toppage');
-const prevPageBtn = document.querySelector('main.main aside.paginator a.deltalink.prevpage');
-const nextPageBtn = document.querySelector('main.main aside.paginator a.deltalink.nextpage');
-const lastPageBtn = document.querySelector('main.main aside.paginator a.deltalink.lastpage');
+// Get page navigator. 
+const paginator = document.querySelector('main.main nav.paginator');
+// Get page delta links. 
+const topPageBtn = document.querySelector('main.main nav.paginator a.deltalink.toppage');
+const prevPageBtn = document.querySelector('main.main nav.paginator a.deltalink.prevpage');
+const nextPageBtn = document.querySelector('main.main nav.paginator a.deltalink.nextpage');
+const lastPageBtn = document.querySelector('main.main nav.paginator a.deltalink.lastpage');
+// Get destination for page number links. 
+const numlinksdestination = document.querySelector('main.main nav.paginator ul.numlist');
 
-// Initialize all page elements. 
-let allPages;
-// Initialize elements for links to all pages. 
-let allPageLinks;
+// Initialize element references for all pages. 
+let allpages;
+// Initialize element references for all page number links. 
+let pagenumberlinks;
 
-// Initialize number of currently selected page. 
-let currentPageIndex = 0;
+// Initialize index of currently selected page. 
+let currentpageindex = 0;
 
 
 /*****/
@@ -48,7 +49,7 @@ addPageLinks();
 showSelectedPage();
 
 // Activate shortcut keys. 
-activateShortcutKeys();
+// activateShortcutKeys();
 
 
 /*****/
@@ -60,96 +61,62 @@ function addPages() {
 	// Initialize result. 
 	let result = ``;
 	
-	// Go thru each page. 
-	for(let pageindex in pagesData) {
-		let pagedata = 
+	// Go thru data for each page. 
+	for(let pageindex in pagedData) {
 
-		// Open new page. 
-		result += openPage(pageindex);
-	
-		// Go thru each item on page. 
-		for(let itemdata of pagedata) {
-	
-			// Add current item to layout. 
-			result += `
-			<!-- item -->
-			<div class="item">${ itemdata }</div>
-			<!-- /item -->`;
-		}
-	
-		// Add page number to page. 
+		// Get page data. 
+		let pagedata = pagedData[pageindex];
+		console.log('Page data:',pageindex,pagedata);
+
+		// Add layout for new page. 
 		result += `
-		<!-- pagenum -->
-		<div class="pagenum">${pageindex}</div>
-		<!-- /pagenum -->`;
+		<!-- page -->
+		<div class="page" data-pageindex="${pageindex}">
 
-		// Close finished page. 
-		result += closePage();
+			<!-- bin -->
+			<div class="bin">
+				${ createPageContent(pagedata) }
+			</div>
+			<!-- /bin -->
+			
+			<!-- pagenum -->
+			<div class="pagenum">${ (1*pageindex + 1) }</div>
+			<!-- /pagenum -->
+
+		</div>
+		<!-- /page -->`;
 	}
-	// // Add data to pages. 
-	// for(let i=0 ; i<numItems ; i++) {
-	// // for(let itemdata of dataSource) {
-
-	// 	// Get current page number. 
-	// 	let pageindex = Math.floor(i/numPerPage);
-	
-	// 	// Check if on first item of page. 
-	// 	let onFirstItem = (i%numPerPage)==0;
-	// 	// Open new page if on first item. 
-	// 	if(onFirstItem) result += openPage(pageindex);
-	
-	// 	// Get data for current item. 
-	// 	itemdata = `${dataSource[i].fname} ${dataSource[i].lname}`;
-	
-	// 	// Add current item to layout. 
-	// 	result += `
-	// 	<!-- item -->
-	// 	<div class="item">${ itemdata }</div>
-	// 	<!-- /item -->`;
-	
-	// 	// Check if on last item. 
-	// 	let onLastItem = i == (numItems-1);
-	// 	// Add remaining items. 
-	// 	if(onLastItem) {
-	// 		// 
-	// 	}
-		
-	// 	// Check if at end of page. 
-	// 	let atEndOfPage = (i%numPerPage) == (numPerPage-1);
-	// 	// Close finished page. 
-	// 	if( atEndOfPage || onLastItem ) {
-	
-	// 		// Add page number to page. 
-	// 		result += `
-	// 		<!-- pagenum -->
-	// 		<div class="pagenum">${pageindex}</div>
-	// 		<!-- /pagenum -->`;
-
-	// 		// Close finished page. 
-	// 		result += closePage();
-	// 	}
-	// }
 	
 	// Display data items. 
 	pagecontainer.innerHTML = result;
 	
 	// Save all page elements. 
-	allPages = document.querySelectorAll('main.main div.page');
+	allpages = document.querySelectorAll('main.main div.page');
+	return;
 
 	/****/
 
-	// Create page opener. 
-	function openPage(n) {
-		return `
-		<!-- page -->
-		<div class="page" data-pageindex="${n}">`;
-	}
+	// Create contents of page. 
+	function createPageContent(pagedata) {
+	
+		// Initialize result. 
+		let result = ``;
+	
+		// Go thru each item on page. 
+		for(let itemdata of pagedata) {
 
-	// Create page closer. 
-	function closePage() {
-		return `
-		</div>
-		<!-- /page -->`;
+			// Get item caption. 
+			let itemcaption = `${itemdata.fname} ${itemdata.lname}`;
+	
+			// Add current item to layout. 
+			result += `
+			<!-- item -->
+			<div class="item">${ itemcaption }</div>
+			<!-- /item -->`;
+		}
+	
+		// Return result. 
+		return result;
 	}
 }
 
@@ -159,45 +126,45 @@ function addPageLinks() {
 	// Initialize result. 
 	let result = ``;
 
-	// Add prev button. 
-	result += ``;
-
 	// Go thru all page numbers. 
 	for(let i=0 ; i<numPages ; i++) {
 	
 		// Add page number to paginator. 
-		result += createPageLink(i);
+		result += createPageNumber(i);
 	}
 
-	// Add next button. 
-	result += ``;
-
 	// Display page links. 
-	paginatorinner.innerHTML = result;
+	numlinksdestination.innerHTML = result;
 
 	// Activate page links. 
 	activatePageLinks();
 
 	/****/
 
-	// Create page link. 
-	function createPageLink(n) {
+	// Create page number item. 
+	function createPageNumber(index) {
 		return `
-		<!-- pagelink -->
-		<a class="pagelink" href="javascript:void(0)" data-pageindex="${n}">${n+1}</a>
-		<!-- /pagelink -->`;
+		<!-- numitem -->
+		<li class="numitem">
+
+			<!-- pagelink -->
+			<a class="pagelink" href="javascript:void(0)" data-pageindex="${ (1*index) }">${ (1*index + 1) }</a>
+			<!-- /pagelink -->
+
+		</li>
+		<!-- /numitem -->`;
 	}
 
 	// Activate page links. 
 	function activatePageLinks() {
 
-		// Access all numbered page links. 
-		allPageLinks = document.querySelectorAll('main.main aside.paginator div.numlinks a.pagelink');
+		// Get all page number links. 
+		pagenumberlinks = document.querySelectorAll('main.main nav.paginator ul.numlist li.numitem a.pagelink');
 	
-		// Go thru each numbered page link. 
-		for(let pagelink of allPageLinks) {
+		// Go thru each page number link. 
+		for(let link of pagenumberlinks) {
 			// Activate page link. 
-			pagelink.addEventListener('click',selectPageNumber);
+			link.addEventListener('click',selectPageNumber);
 		}
 		
 		// Activate delta button: go to first page. 
@@ -214,53 +181,51 @@ function addPageLinks() {
 	
 		/***/
 	
-		// Select page by numbered page link. 
+		// Select page by page number link. 
 		function selectPageNumber(event) {
 	
-			// Get selected page link. 
-			let pagelink = event.currentTarget;
+			// Get selected page number link. 
+			let selectedpagenumberlink = event.currentTarget;
+			console.log('Selected page number link:',selectedpagenumberlink);
 
-			// Check for valid page link. 
-			let isValidPageLink = pagelink.hasAttribute('data-pageindex');
-			if(!isValidPageLink) {
-				console.warn('Invalid page link selected',pagelink);
-				return;
-			}
+			// Check if valid page number link selected. 
+			let selectedValidLink = selectedpagenumberlink.hasAttribute('data-pageindex');
+			if(!selectedValidLink) return;
 	
-			// Get number of selected page. 
-			currentPageIndex = pagelink.getAttribute('data-pageindex') * 1;
+			// Update index of selected page. 
+			currentpageindex = selectedpagenumberlink.getAttribute('data-pageindex') * 1;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
 	
 		// Go to first page. 
 		function goToTopPage() {
-			// Set newly selected page number. 
-			currentPageIndex = 1;
+			// Update index of selected page. 
+			currentpageindex = 0;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
 	
 		// Go to previous page. 
 		function goToPrevPage() {
-			// Set newly selected page number. 
-			currentPageIndex--;
+			// Update index of selected page. 
+			currentpageindex--;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
 	
 		// Go to next page. 
 		function goToNextPage() {
-			// Set newly selected page number. 
-			currentPageIndex++;
+			// Update index of selected page. 
+			currentpageindex++;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
 	
 		// Go to last page. 
 		function goToLastPage() {
-			// Set newly selected page number. 
-			currentPageIndex = numPages;
+			// Update index of selected page. 
+			currentpageindex = numPages-1;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
@@ -272,9 +237,7 @@ function showSelectedPage() {
 
 	// Confirm valid page. 
 	confirmValidPage();
-
-	console.log('Current page:',currentPageIndex);
-	console.log('Current items:',currentPageIndex);
+	console.log('Current page number:', (currentpageindex+1) );
 
 	// Update pages. 
 	updatePages();
@@ -287,29 +250,29 @@ function showSelectedPage() {
 
 	/****/
 
-	// Confirm valid page is selected. 
+	// Confirm valid page selected. 
 	function confirmValidPage() {
 
 		// Go to first page if below range. 
-		if(currentPageIndex<0) currentPageIndex = 0;
+		if(currentpageindex<0) currentpageindex = 0;
 
 		// Go to last page if above range. 
-		else if(currentPageIndex>=numPages) currentPageIndex = numPages-1;
+		else if(currentpageindex>=numPages) currentpageindex = numPages-1;
 	}
 
 	// Update pages. 
 	function updatePages() {
 	
-		// Go thru each page. 
-		for(let page of allPages) {
+		// Go thru each page element. 
+		for(let page of allpages) {
 	
 			// Check for matching page. 
-			let matchFound = ( 1*page.getAttribute('data-pageindex') ) == 1*currentPageIndex;
+			let matchFound = ( 1*page.getAttribute('data-pageindex') ) == 1*currentpageindex;
 	
 			// Show selected page. 
 			if(matchFound) page.classList.add('active');
 	
-			// Hide other pages. 
+			// Hide non-selected page. 
 			else page.classList.remove('active');
 		}
 	}
@@ -317,31 +280,36 @@ function showSelectedPage() {
 	// Update page links. 
 	function updatePageLinks() {
 	
-		// Go thru each page link. 
-		for(let pagelink of allPageLinks) {
+		// Go thru each page number link. 
+		for(let link of pagenumberlinks) {
 	
 			// Check for matching page. 
-			let matchFound = ( 1*pagelink.getAttribute('data-pageindex') ) == 1*currentPageIndex;
+			let matchFound = ( 1*link.getAttribute('data-pageindex') ) == 1*currentpageindex;
 	
 			// Show selected page. 
-			if(matchFound) pagelink.classList.add('active');
+			if(matchFound) link.classList.add('active');
 	
 			// Hide other pages. 
-			else pagelink.classList.remove('active');
+			else link.classList.remove('active');
 		}
 	}
 
-	// Update status of paginator. 
+	// Update status of page navigator. 
 	function updatePaginator() {
-
+		
+		// Check if on first page. 
+		let onFirstPage = currentpageindex == 0;
+		// Check if on last page. 
+		let onLastPage = currentpageindex == (numPages-1);
+		
 		// Indicate first page. 
-		if(currentPageIndex==1) {
+		if(onFirstPage) {
 			paginator.classList.add('f');
 			paginator.classList.remove('l');
 		}
-	
+		
 		// Indicate last page. 
-		else if(currentPageIndex==numPages) {
+		else if(onLastPage) {
 			paginator.classList.add('l');
 			paginator.classList.remove('f');
 		}
@@ -369,8 +337,8 @@ function activateShortcutKeys() {
 		// Respond to left arrow key. 
 		if(event.keyCode==37 || event.key=='ArrowLeft') {
 	
-			// Update crement current page number. 
-			currentPageIndex--;
+			// Decrement current page index. 
+			currentpageindex--;
 	
 			// Show selected page. 
 			showSelectedPage();
@@ -379,8 +347,8 @@ function activateShortcutKeys() {
 		// Respond to right arrow key. 
 		if(event.keyCode==39 || event.key=='ArrowRight') {
 	
-			// Update crement current page number. 
-			currentPageIndex++;
+			// Increment current page index. 
+			currentpageindex++;
 	
 			// Show selected page. 
 			showSelectedPage();
