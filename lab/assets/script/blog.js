@@ -2,21 +2,21 @@
 
 
 // Get destination for featured posts. 
-const featuredPostsDestination = document.querySelector('div#container section.blog div.grid div.posts ul.postlist.featured');
+const featuredPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured');
 // Get destination for category posts. 
-const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.posts ul.postlist.category');
+const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.category');
 // Get destination for archive posts. 
-const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.posts ul.postlist.archive');
+const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.archive');
 
 // Initialize source of blog post cards. 
 let blogpostcards;
 
 // Get input field for filter query. 
-const postfilterfield = document.querySelector('div#container section.blog div.grid div.filter input#postfilter');
-const postfilterfieldclearbtn = document.querySelector('div#container section.blog div.grid div.filter label.clearbtn');
+const postfilterfield = document.querySelector('div#container section.blog div.grid div.head div.filter input#postfilter');
+const postfilterfieldclearbtn = document.querySelector('div#container section.blog div.grid div.head div.filter label.clearbtn');
 
 // Get label for empty search results. 
-const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.posts div.emptylabel');
+const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel');
 
 
 /*****/
@@ -138,15 +138,15 @@ function loadBlog() {
 		if(!categoryPostsDestination) return;
 		console.log('Loading category posts...');
 	
-		// Get list of category projects (sorted by project id). 
+		// Get custom list of projects for current category (sorted by project id). 
 		let categoryProjects = ( projectgroup.grouplist.sort() ).map(getProjectById);
 		console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Get layout for category posts. 
-		let categoryLayout = createBlogPostsLayout(categoryProjects, !blockPreviews);
+		let categoryPostsLayout = createBlogPostsLayout(categoryProjects, !blockPreviews);
 		
-		// Add category layout to blog section. 
-		categoryPostsDestination.innerHTML = categoryLayout;
+		// Add layout to blog section. 
+		categoryPostsDestination.innerHTML = categoryPostsLayout;
 	}
 	
 	// Load archive posts. 
@@ -182,7 +182,7 @@ function loadBlog() {
 	function activateBlog() {
 
 		// Get access to all previously loaded blog post cards. 
-		blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.posts ul.postlist li.postcard');
+		blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.postlist li.postcard');
 	
 		// Activate previews for loaded blog post cards. 
 		activatePostPreviews();

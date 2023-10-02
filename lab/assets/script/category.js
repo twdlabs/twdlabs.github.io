@@ -1,12 +1,12 @@
 
 
 
-// Get id of given project group. 
+// Get id of current project group. 
 const urlparams = new URLSearchParams(window.location.search);
 const projectgroupid = urlparams.get('gid');
 // console.log('Project group id:',projectgroupid);
 
-// Get name of given project group. 
+// Get name of current project group. 
 const projectgroup = getProjectGroupById(projectgroupid);
 console.log('Project group:',projectgroup);
 const projectgroupname = projectgroup.groupname;
@@ -16,25 +16,25 @@ console.log('Project group name:',projectgroupname);
 /*****/
 
 
-// Update titles. 
-updateTitles();
+// Customize headers. 
+customizeHeaders();
 
 
 /*****/
 
 
-// Update titles. 
-function updateTitles() {
+// Customize headers. 
+function customizeHeaders() {
 
-	// Set document title. 
+	// Set custom document title. 
 	document.title = `${projectgroupname} | Lab Experiments`;
 	
-	// Get page titles. 
-	const pageheaders = document.querySelectorAll('section div.grid h1.head');
-	console.log('Page headers:',pageheaders);
+	// Get custom page headers. 
+	const custompageheaders = document.querySelectorAll('section div.grid h1.head.custom');
+	console.log('Page headers:', [...custompageheaders].map( h => h.parentElement.parentElement) );
 	
-	// Set page titles. 
-	for(let header of pageheaders) {
+	// Set custom page headers. 
+	for(let header of custompageheaders) {
 		header.innerHTML = projectgroupname;
 	}
 }

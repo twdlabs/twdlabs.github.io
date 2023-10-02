@@ -2,65 +2,33 @@
 
 
 /* Hero Section */
-div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../admin/images/barcelona.jpg'); background-size:cover; background-position:center 25%;}
-div#container section.hero {position:relative; min-height:75vh;}
+div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../admin/images/barcelona.jpg'); background-size:cover;}
+div#container section.hero {background-position:center 25%; min-height:50vh; position:relative;}
 div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;}
 div#container.babybar section.hero {margin-top:0;}
 div#container section.hero::before {background-color:var(--sheetcolor); content:'';}
 div#container section.hero::before {position:absolute; top:0; left:0; height:100%; width:100%; z-index:0;}
 /* div#container section.hero div.grid {display:grid; grid-template-columns:4fr 3fr; align-items:center;} */
-div#container section.hero div.grid {position:relative; max-width:calc(var(--pagewidth)*.5); padding:7rem 0;}
-div#container section.hero div.grid div.col.a {text-align:center;}
-div#container section.hero div.grid div.col.b {display:none;}
-/* div#container section.hero div.grid div.col {text-align:center;} */
+div#container section.hero div.grid {position:relative; text-align:center; max-width:calc(var(--pagewidth)*.5); padding:4rem 0;}
+div#container section.hero div.grid div.col {display:flex; flex-direction:column; align-items:center;}
 div#container section.hero div.grid div.col h1.head {/* display:none; */ font-size:3rem; margin:0; /* margin-bottom:1rem; */}
-div#container section.hero div.grid div.col img.code {display:block; width:100%;/*  max-width:16rem; */ margin:1rem auto;}
-div#container section.hero div.grid div.col img.icon {display:block; width:100%; max-width:12rem; margin:1rem auto;}
-div#container section.hero div.grid div.col p.textcopy {color:var(--forecolor2); font-size:1.75rem; font-weight:200; /* margin:0; */}
-div#container section.hero div.grid div.col a.contactlink {display:inline-block; font-size:1.5rem; text-decoration:none; min-width:9em; opacity:.9; transition:.125s; padding:.375em 1.5em; border-radius:var(--cornersize); border-radius:1.125em; border:.25rem solid; margin:.5em .5rem 0; box-shadow:var(--boxshadowxx);}
-div#container section.hero div.grid div.col a.contactlink {font-size:1.25rem;}
+div#container section.hero div.grid div.col img.logo {display:block; width:100%; max-width:12rem; margin:1rem;}
+div#container section.hero div.grid div.col p.textcopy {color:var(--forecolor2); font-size:1.75rem; font-weight:200; margin:0; margin:1rem 0;}
+div#container section.hero div.grid div.col a.contactlink {font-size:1.5rem; text-decoration:none; min-width:9em;}
+div#container section.hero div.grid div.col a.contactlink {display:inline-block; padding:.375em 1.5em; border-radius:1.125em; border:.25rem solid; margin:.5em .5rem 0; box-shadow:var(--boxshadowxx);}
+/* div#container section.hero div.grid div.col a.contactlink {opacity:.9; transition:.125s;} */
 div#container section.hero div.grid div.col a.contactlink.a {background-color:var(--themecolor); color:white; border-color:var(--themecolor);}
 div#container section.hero div.grid div.col a.contactlink.b {background-color:transparent; color:var(--themecolor);}
 div#container section.hero div.grid div.col a.contactlink.b {background-color:var(--forecolor); color:var(--backcolor); border-color:var(--forecolor);}
-div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;}
-/* div#container section.hero div.grid div.col a.contactlink.a:hover {background-color:var(--drkthemecolor); border-color:var(--drkthemecolor);} */
+/* div#container section.hero div.grid div.col a.contactlink:hover {opacity:1;} */
+div#container section.hero div.grid div.col a.contactlink.a:hover {background-color:var(--drkthemecolor); border-color:var(--drkthemecolor);}
 /* div#container section.hero div.grid div.col a.contactlink.b:hover {background-color:var(--backcolor); color:var(--forecolor); border-color:var(--backcolor);} */
 
 
 /* Blog Section */
 /* div#container section.blog {display:none;} */
 /* div#container section.blog div.grid {} */
-div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(5,1fr);}
-
-
-/* Blocks Section */
-/* div#container section.blocks {} */
-/* div#container section.blocks div.grid {} */
-div#container section.blocks div.grid ul.blocklist {list-style:none; padding:0; margin:0;}
-div#container section.blocks div.grid ul.blocklist {display:grid; grid-template-columns:repeat(6,1fr); grid-gap:0 1rem; margin-top:3rem;}
-div#container section.blocks div.grid ul.blocklist li.blockitem {text-align:center; /* margin-top:1.5rem; */}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {background-color:transparent; color:inherit; text-decoration:none; transition:.25s;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {--fillcolor:gainsboro;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {display:flex; flex-direction:column; align-items:center; grid-gap:.5rem; padding:1.5rem 1rem; padding:3rem 1rem 2rem; border-radius:var(--cornersize);}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hover {background-color:var(--blackglass); --fillcolor:whitesmoke;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.125em;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon:empty {background-color:var(--themecolor); border-radius:.375em;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {color:var(--forecolor); font-size:2rem; margin:0;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:empty {background-color:var(--fillcolor); height:1em; width:7em; border-radius:1em;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {color:var(--forecolor2); font-size:1.5rem; font-weight:100; width:100%; margin:0;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty {display:flex; flex-direction:column; align-items:center; opacity:.625;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty:before {background-color:var(--fillcolor); display:block; content:''; height:1em; width:85%; border-radius:1em;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty::after {background-color:var(--fillcolor); display:block; content:''; height:1em; width:60%; border-radius:1em; margin-top:.25em;}
-
-/* Method Blocks Section */
-/* div#container section.blocks.methods {} */
-/* div#container section.blocks.methods div.grid {} */
-div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(6,1fr);}
-
-/* Category Blocks Section */
-/* div#container section.blocks.categories {} */
-/* div#container section.blocks.categories div.grid {} */
-div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(5,1fr);}
+div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(5,1fr);}
 
 
 
@@ -76,14 +44,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(4,1fr);}
-
-	/* Blocks Section */
-	/* div#container section.blocks {} */
-	/* div#container section.blocks div.grid {} */
-	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
-	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
-	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);}
+	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(4,1fr);}
 }
 
 /* Medium Tablet Screen */
@@ -96,19 +57,14 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(3,1fr);}
-
-	/* Blocks Section */
-	/* div#container section.blocks {} */
-	/* div#container section.blocks div.grid {} */
-	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
+	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(3,1fr);}
 }
 
 /* Small Tablet Screen */
 @media screen and (max-width:64rem) {
 	
 	/* Hero Section */
-	/* div#container section.hero {} */
+	div#container section.hero {background-position-x:75%;}
 	/* div#container section.hero div.grid {} */
 	/* div#container section.hero div.grid div.col {} */
 	div#container section.hero div.grid div.col h1.head {font-size:2.375rem;}
@@ -118,19 +74,7 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(2,1fr);}
-
-	/* Blocks Section */
-	/* div#container section.blocks {} */
-	/* div#container section.blocks div.grid {} */
-	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
-	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
-	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
-	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
-	/* div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {} */
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:3.5rem;}
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;}
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1.25rem;}
+	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(2,1fr);}
 }
 
 /* Big Smartphone Screen */
@@ -143,18 +87,12 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* div#container section.hero div.grid div.col img.logo {max-width:12rem; margin:0 auto 1.5rem;} */
 	/* div#container section.hero div.grid div.col p.textcopy {margin-bottom:1rem;} */
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.375rem;}
+	div#container section.hero div.grid div.col img.logo {max-width:10rem;}
 
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	/* div#container section.blog div.grid div.posts ul.postlist {} */
-
-	/* Blocks Section */
-	/* div#container section.blocks {} */
-	/* div#container section.blocks div.grid {} */
-	div#container section.blocks div.grid ul.blocklist {grid-template-columns:1fr; grid-gap:0; margin-top:1rem;}
-	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:1fr;}
-	div#container section.blocks.categories div.grid ul.blocklist {grid-template-columns:1fr;}
+	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
 }
 
 /* Medium Smartphone Screen */
@@ -163,16 +101,13 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
+	div#container section.hero div.grid div.col img.logo {max-width:8rem;}
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.25rem;}
 
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.posts ul.postlist {grid-template-columns:repeat(1,1fr);}
-
-	/* Blocks Section */
-	/* div#container section.blocks {} */
-	/* div#container section.blocks div.grid {} */
+	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(1,1fr);}
 }
 
 /* Small Smartphone Screen */
@@ -186,15 +121,5 @@ div#container section.blocks.categories div.grid ul.blocklist {grid-template-col
 	/* Blog Section */
 	/* div#container section.blog {} */
 	/* div#container section.blog div.grid {} */
-	/* div#container section.blog div.grid div.posts ul.postlist {} */
-
-	/* Blocks Section */
-	/* div#container section.blocks {} */
-	/* div#container section.blocks div.grid {} */
-	/* div#container section.blocks div.grid ul.blocklist {} */
-	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {padding:3rem 1rem 1rem;}
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:2.75rem;}
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.375rem;}
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1rem;}
+	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
 }

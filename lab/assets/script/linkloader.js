@@ -77,24 +77,19 @@ function loadProjectGroupMatrix() {
 
 	// Initialize matrix layout. 
 	let matrixlayout = '';
+	let addExtras = true;
 
 	// Initialize total number of project links in matrix. 
 	// let totalMatrixLinks = 0;
-	
-	for(let i in projectGroupMatrixData) {
 
-		// Get set of project groups. 
-		let projectgroupset = projectGroupMatrixData[i].map( getProjectGroupById );
-		// console.log('Project group set:',projectgroupset);
-	
-		// Add list box to matrix layout. 
-		matrixlayout += `
-		<!-- listbox -->
-		<div class="listbox box${i}">
-			${ createProjectGroupSet(projectgroupset) }
-		</div>
-		<!-- /listbox -->`;
-	}
+	// Add grouped projects to matrix layout. 
+	matrixlayout += createGroupedProjects();
+
+	// Add orphan projects to matrix layout. 
+	if(addExtras) matrixlayout += createOrphanProjects();
+
+	// Add missing projects to matrix layout. 
+	if(addExtras) matrixlayout += createMissingProjects();
 
 	// Add matrix layout to page. 
 	footMatrixDestination.innerHTML = matrixlayout;
@@ -163,15 +158,15 @@ function loadProjectGroupMatrix() {
 				// totalMatrixLinks++;
 
 				// Get url for project. 
-				let url = getRelativeUrl(`../${project.projectid}`);
+				let url = getRelativeUrl(`../${projectid}`);
 				// console.log('\turl:',url);
 	
 				// Get caption for project. 
-				let caption = project.projectname;
+				let caption = project ? project.projectname : projectid;
 				// console.log('\tcaption:',caption);
 	
 				// Get icon tag for project. 
-				let icontag = project.icontag;
+				let icontag = project ? project.icontag : '';
 				// console.log('\ticontag:',icontag);
 
 				// Compile navigation item. 
@@ -181,6 +176,72 @@ function loadProjectGroupMatrix() {
 			// Return layout for project list. 
 			return projectgrouplayout;
 		}
+	}
+
+	// Create box layout for grouped projects. 
+	function createGroupedProjects() {
+
+		// Initialize result. 
+		let result = '';
+	
+		// Go thru each set of project groups. 
+		for(let i in projectGroupMatrixData) {
+	
+			// Get set of project groups. 
+			let projectgroupset = projectGroupMatrixData[i].map( getProjectGroupById );
+			console.log('Project group set:',projectgroupset);
+		
+			// Add list box to result layout. 
+			result += `
+			<!-- listbox -->
+			<div class="listbox b${i}">
+				${ createProjectGroupSet(projectgroupset) }
+			</div>
+			<!-- /listbox -->`;
+		}
+
+		// Return result layout. 
+		return result;
+	}
+
+	// Create box layout for missing projects. 
+	function createMissingProjects() {
+
+		// Get set of project groups. 
+		let projectgroupset = [
+			{
+				groupname:'Missing Projects',
+				grouplist:missingProjectIds,
+			},
+		];
+		
+		// Return result layout. 
+		return `
+		<!-- listbox -->
+		<div class="listbox missing">
+			${ createProjectGroupSet(projectgroupset) }
+		</div>
+		<!-- /listbox -->`;
+	}
+
+	// Create box layout for orphan projects. 
+	function createOrphanProjects() {
+
+		// Get set of project groups. 
+		let projectgroupset = [
+			{
+				groupname:'Orphan Projects',
+				grouplist:orphanProjectIds,
+			},
+		];
+		
+		// Return result layout. 
+		return `
+		<!-- listbox -->
+		<div class="listbox orphans">
+			${ createProjectGroupSet(projectgroupset) }
+		</div>
+		<!-- /listbox -->`;
 	}
 }
 

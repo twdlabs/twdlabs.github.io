@@ -4,9 +4,11 @@
 // Get destination for method blocks. 
 const methodblocksdestination = document.querySelector('div#container section.blocks.methods div.grid ul.blocklist');
 
-
 // Get destination for category blocks. 
-const categoryblocksdestination = document.querySelector('div#container section.blocks.categories div.grid ul.blocklist');
+const categoryblocksdestination = document.querySelector('div#container section.blocks.categories.all div.grid ul.blocklist');
+
+// Get destination for meta-category blocks. 
+const metacategoryblocksdestination = document.querySelector('div#container section.blocks.categories.meta div.grid ul.blocklist');
 
 
 /*****/
@@ -18,12 +20,16 @@ loadMethodBlocks();
 // Load blocks for project categories. 
 loadCategoryBlocks();
 
+// Load blocks for project meta-categories. 
+loadMetaCategoryBlocks();
+
 
 /*****/
 
 
 // Load blocks for development methods. 
 function loadMethodBlocks() {
+	if(!methodblocksdestination) return;
 
 	// Initialize result. 
 	let result = createBlockSet(methodData, 'icontag','header','description');
@@ -34,12 +40,30 @@ function loadMethodBlocks() {
 
 // Load blocks for project categories. 
 function loadCategoryBlocks() {
+	if(!categoryblocksdestination) return;
+
+	// Get url prefix for blocks. 
+	let urlprefix = getRelativeUrl('./category/?gid=');
 
 	// Initialize result. 
-	let result = createBlockSet(projectGroupData, 'groupicontag','groupname','groupdescription', './category/?gid=','groupid', true);
+	let result = createBlockSet(projectGroupData, 'groupicontag','groupname','groupdescription', urlprefix,'groupid', true);
 
 	// Add result to page destination. 
 	categoryblocksdestination.innerHTML = result;
+}
+
+// Load blocks for project meta-categories. 
+function loadMetaCategoryBlocks() {
+	if(!metacategoryblocksdestination) return;
+
+	// Get url prefix for blocks. 
+	let urlprefix = getRelativeUrl('./metacategory/?gid=');
+
+	// Initialize result. 
+	let result = createBlockSet(projectMetaGroupData, 'groupicontag','groupname','groupdescription', urlprefix,'groupid', true);
+
+	// Add result to page destination. 
+	metacategoryblocksdestination.innerHTML = result;
 }
 
 // Create layout for set of block items. 

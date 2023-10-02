@@ -16,6 +16,8 @@
 		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<!-- Blog Posts Stylesheet -->
 		<link href="./assets/style/blog.css" rel="stylesheet" type="text/css"/>
+		<!-- Blocks Posts Stylesheet -->
+		<link href="./assets/style/blocks.css" rel="stylesheet" type="text/css"/>
 		<!-- Desktop Posts Stylesheet -->
 		<!-- <link href="./assets/style/desktop.css" rel="stylesheet" type="text/css"/> -->
 		<!-- Home Page Stylesheet -->
@@ -451,14 +453,14 @@
 				<div class="grid">
 
 					<!-- col -->
-					<div class="col a">
+					<div class="col">
+
+						<!-- logo -->
+						<img class="logo" src="./../flaskicon.png">
+						<!-- /logo -->
 	
 						<!-- head -->
 						<h1 class="head">
-
-							<!-- icon -->
-							<img class="icon" src="./../flaskicon.png">
-							<!-- /icon -->
 
 							<!-- caption -->
 							<span class="caption">Lab Experiments</span>
@@ -493,18 +495,6 @@
 						</p>
 						<!-- /textcopy -->
 	
-					</div>
-					<!-- /col -->
-	
-					<!-- col -->
-					<div class="col b">
-	
-						<!-- logo -->
-						<img class="code" src="./../gallery/assets/images/full/code.jpg">
-						<!-- <img class="logo" src="./../gallery/assets/images/full/codecode.jpg"> -->
-						<!-- <img class="logo" src="./../gallery/assets/images/full/devicework.jpg"> -->
-						<!-- /logo -->
-						
 					</div>
 					<!-- /col -->
 
@@ -570,81 +560,87 @@
 					<h1 class="head">Featured Projects</h1>
 					<!-- /head -->
 
-					<!-- posts -->
-					<div class="posts">
+					<!-- body -->
+					<div class="body">
 
-						<!-- emptylabel -->
-						<div class="emptylabel">
+						<!-- posts -->
+						<div class="posts">
 	
-							<!-- textcopy -->
-							<p class="textcopy">No matches found.</p>
-							<!-- /textcopy -->
-	
-						</div>
-						<!-- /emptylabel -->
-	
-						<!-- postlist -->
-						<ul class="postlist featured">
-	
-							<!-- postcard -->
-							<li class="postcard" data-projectid="desktop" title="Description goes here">
+							<!-- emptylabel -->
+							<div class="emptylabel">
 		
-								<!-- projectlink -->
-								<a class="projectlink" href="../xyzprojectid/index.html" target="_blank">
-				
-									<!-- preview -->
-									<div class="preview">
+								<!-- textcopy -->
+								<p class="textcopy">No matches found.</p>
+								<!-- /textcopy -->
 		
+							</div>
+							<!-- /emptylabel -->
+		
+							<!-- postlist -->
+							<ul class="postlist featured">
+		
+								<!-- postcard -->
+								<li class="postcard" data-projectid="desktop" title="Description goes here">
+			
+									<!-- projectlink -->
+									<a class="projectlink" href="../xyzprojectid/index.html" target="_blank">
+					
 										<!-- preview -->
-										<iframe class="preview" src="../xyzprojectid/index.html"></iframe>
+										<div class="preview">
+			
+											<!-- preview -->
+											<iframe class="preview" src="../xyzprojectid/index.html"></iframe>
+											<!-- /preview -->
+			
+										</div>
 										<!-- /preview -->
 		
-									</div>
-									<!-- /preview -->
-	
-									<!-- caption -->
-									<div class="caption">
+										<!-- caption -->
+										<div class="caption">
+			
+											<!-- name -->
+											<span class="name"></span>
+											<!-- /name -->
 		
-										<!-- name -->
-										<span class="name"></span>
-										<!-- /name -->
+										</div>
+										<!-- /caption -->
+		
+									</a>
+									<!-- /projectlink -->
+		
+								</li>
+								<!-- /postcard -->
+		
+							</ul>
+							<!-- /postlist -->
 	
-									</div>
-									<!-- /caption -->
+						</div>
+						<!-- /posts -->
 	
-								</a>
-								<!-- /projectlink -->
+						<!-- more -->
+						<div class="more">
 	
-							</li>
-							<!-- /postcard -->
+							<!-- morebtn -->
+							<a class="morebtn" href="./projects" target="_blank">
+		
+								<!-- caption -->
+								<span class="caption">View More Projects</span>
+								<!-- /caption -->
+		
+								<!-- icon -->
+								<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+								</svg>
+								<!-- /icon -->
+		
+							</a>
+							<!-- /morebtn -->
 	
-						</ul>
-						<!-- /postlist -->
+						</div>
+						<!-- /more -->
 
 					</div>
-					<!-- /posts -->
-
-					<!-- more -->
-					<div class="more">
-
-						<!-- morebtn -->
-						<a class="morebtn" href="./projects" target="_blank">
-	
-							<!-- caption -->
-							<span class="caption">View More Projects</span>
-							<!-- /caption -->
-	
-							<!-- icon -->
-							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-							</svg>
-							<!-- /icon -->
-	
-						</a>
-						<!-- /morebtn -->
-
-					</div>
-					<!-- /more -->
+					<!-- /body -->
 
 				</div>
 				<!-- /grid -->
@@ -653,7 +649,53 @@
 			<!-- /blog -->
 
 			<!-- blocks -->
-			<section class="categories blocks">
+			<section class="categories meta blocks">
+
+				<!-- grid -->
+				<div class="grid">
+
+					<!-- head -->
+					<h1 class="head">Project Meta-Categories</h1>
+					<!-- /head -->
+
+					<!-- blocklist -->
+					<ul class="blocklist">
+
+						<!-- blockitem -->
+						<li class="blockitem">
+
+							<!-- blocklink -->
+							<a class="blocklink" href="javascript:void(0)" target="_blank">
+
+								<!-- icon -->
+								<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"></svg>
+								<!-- /icon -->
+	
+								<!-- blockhead -->
+								<h1 class="blockhead"></h1>
+								<!-- /blockhead -->
+	
+								<!-- blockdescription -->
+								<p class="blockdescription"></p>
+								<!-- /blockdescription -->
+
+							</a>
+							<!-- /blocklink -->
+							
+						</li>
+						<!-- /blockitem -->
+
+					</ul>
+					<!-- /blocklist -->
+
+				</div>
+				<!-- /grid -->
+				
+			</section>
+			<!-- /blocks -->
+
+			<!-- blocks -->
+			<section class="categories all blocks">
 
 				<!-- grid -->
 				<div class="grid">
@@ -706,6 +748,10 @@
 
 					<!-- brand -->
 					<div class="brand">
+
+						<!-- logo -->
+						<img class="logo" src="./../flaskicon.png">
+						<!-- /logo -->
 
 						<!-- head -->
 						<h1 class="head">Lab Experiments</h1>

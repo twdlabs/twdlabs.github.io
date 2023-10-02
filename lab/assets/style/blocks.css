@@ -1,0 +1,130 @@
+
+
+
+/* Blocks Section */
+/* div#container section.blocks {} */
+/* div#container section.blocks div.grid {} */
+div#container section.blocks div.grid ul.blocklist {list-style:none; padding:0; margin:0;}
+div#container section.blocks div.grid ul.blocklist {display:grid; grid-template-columns:repeat(6,1fr); grid-gap:.125rem; margin-top:3rem;}
+div#container section.blocks div.grid ul.blocklist li.blockitem {background-color:var(--backcolor); text-align:center; /* margin-top:1.5rem; */}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {background-color:transparent; color:inherit; text-decoration:none; transition:.25s;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {--fillcolor:gainsboro;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {display:flex; flex-direction:column; align-items:center; grid-gap:.5rem; padding:1.5rem 1rem; padding:3rem 1rem /* 2rem */; /* border-radius:var(--cornersize); */}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hover {background-color:var(--ltglasshovercolor); --fillcolor:whitesmoke;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.125em;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon:empty {background-color:var(--themecolor); border-radius:.375em;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {color:var(--forecolor); font-size:2rem; font-weight:bold; line-height:1.375; border-bottom:.125rem solid var(--tpthemecolor); margin:0;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:empty {background-color:var(--fillcolor); height:1em; width:7em; border-radius:1em;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {color:var(--forecolor2); font-size:1.5rem; font-weight:100; width:100%; margin:0; margin-top:.75rem;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty {display:flex; flex-direction:column; align-items:center; opacity:.625;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty:before {background-color:var(--fillcolor); display:block; content:''; height:1em; width:85%; border-radius:1em;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty::after {background-color:var(--fillcolor); display:block; content:''; height:1em; width:60%; border-radius:1em; margin-top:.25em;}
+
+
+/* Method Blocks Section */
+/* div#container section.blocks.methods {} */
+/* div#container section.blocks.methods div.grid {} */
+div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(6,1fr);}
+
+
+/* Category Blocks Section */
+/* div#container section.blocks.categories {} */
+/* div#container section.blocks.categories div.grid {} */
+/* div#container section.blocks.categories div.grid ul.blocklist {} */
+
+/* Category Blocks Section */
+/* div#container section.blocks.categories.all {} */
+/* div#container section.blocks.categories.all div.grid {} */
+div#container section.blocks.categories.all div.grid ul.blocklist {background-color:var(--backcolor2); grid-template-columns:repeat(5,1fr);}
+/* div#container section.blocks.categories.all div.grid ul.blocklist {border:1px solid var(--glasshovercolor);} */
+/* div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem {border:1px solid var(--glasshovercolor);} */
+
+/* Category Blocks Section */
+/* div#container section.blocks.categories.meta {} */
+/* div#container section.blocks.categories.meta div.grid {} */
+div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(5,1fr);}
+
+
+
+
+
+/* Large Tablet Screen */
+@media screen and (max-width:125rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
+	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
+	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);}
+	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
+}
+
+/* Medium Tablet Screen */
+@media screen and (max-width:100rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
+}
+
+/* Medium Tablet Screen */
+@media screen and (max-width:88rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
+}
+
+/* Small Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
+	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
+	/* div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
+	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {} */
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:3.5rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1.25rem;}
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	div#container section.blocks div.grid ul.blocklist {grid-template-columns:1fr; grid-gap:0; margin-top:1rem;}
+	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:1fr;}
+	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:1fr;}
+	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:1fr;}
+}
+
+/* Medium Smartphone Screen */
+@media screen and (max-width:36rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:30rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	/* div#container section.blocks div.grid ul.blocklist {} */
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {padding:3rem 1rem 1rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:2.75rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.375rem;}
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1rem;}
+}

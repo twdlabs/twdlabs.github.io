@@ -16,8 +16,12 @@
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<!-- Blog Posts Stylesheet -->
 		<link href="../assets/style/blog.css" rel="stylesheet" type="text/css"/>
+		<!-- Blocks Posts Stylesheet -->
+		<!-- <link href="../assets/style/blocks.css" rel="stylesheet" type="text/css"/> -->
 		<!-- Desktop Posts Stylesheet -->
 		<!-- <link href="../assets/style/desktop.css" rel="stylesheet" type="text/css"/> -->
+		<!-- Projects Page Stylesheet -->
+		<!-- <link href="./assets/style/projects.css" rel="stylesheet" type="text/css"/> -->
 
 		<!-- <style type="text/css"></style> -->
 	</head>
@@ -483,7 +487,7 @@
 							<!-- /filterquery -->
 
 							<!-- filterbtn -->
-							<div class="filterbtn" onclick="document.querySelector('div#container section.blog div.grid div.filtertabs').classList.toggle('active')">
+							<div class="filterbtn" onclick="document.querySelector('div#container section.blog div.grid div.body div.filtertabs').classList.toggle('active')">
 		
 								<!-- icon -->
 								<svg class="icon funnel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -512,95 +516,101 @@
 					</div>
 					<!-- /head -->
 
-					<!-- filtertabs -->
-					<div class="filtertabs">
+					<!-- body -->
+					<div class="body">
 
-						<!-- filterpiece -->
-						<div class="filterpiece">
-							<!--  -->
-						</div>
-						<!-- /filterpiece -->
-
-					</div>
-					<!-- /filtertabs -->
-
-					<!-- posts -->
-					<div class="posts">
-
-						<!-- emptylabel -->
-						<div class="emptylabel">
+						<!-- filtertabs -->
+						<div class="filtertabs">
 	
-							<!-- textcopy -->
-							<p class="textcopy">No matches found.</p>
-							<!-- /textcopy -->
+							<!-- filterpiece -->
+							<div class="filterpiece">
+								<!--  -->
+							</div>
+							<!-- /filterpiece -->
 	
 						</div>
-						<!-- /emptylabel -->
+						<!-- /filtertabs -->
 	
-						<!-- postlist -->
-						<ul class="postlist archive">
+						<!-- posts -->
+						<div class="posts">
 	
-							<!-- postcard -->
-							<li class="postcard" data-projectid="desktop" title="Description goes here">
+							<!-- emptylabel -->
+							<div class="emptylabel">
 		
-								<!-- projectlink -->
-								<a class="projectlink" href="../xyzprojectid/index.html" target="_blank">
-				
-									<!-- preview -->
-									<div class="preview">
+								<!-- textcopy -->
+								<p class="textcopy">No matches found.</p>
+								<!-- /textcopy -->
 		
+							</div>
+							<!-- /emptylabel -->
+		
+							<!-- postlist -->
+							<ul class="postlist archive">
+		
+								<!-- postcard -->
+								<li class="postcard" data-projectid="desktop" title="Description goes here">
+			
+									<!-- projectlink -->
+									<a class="projectlink" href="../xyzprojectid/index.html" target="_blank">
+					
 										<!-- preview -->
-										<iframe class="preview" src="../xyzprojectid/index.html"></iframe>
+										<div class="preview">
+			
+											<!-- preview -->
+											<iframe class="preview" src="../xyzprojectid/index.html"></iframe>
+											<!-- /preview -->
+			
+										</div>
 										<!-- /preview -->
 		
-									</div>
-									<!-- /preview -->
-	
-									<!-- caption -->
-									<div class="caption">
+										<!-- caption -->
+										<div class="caption">
+			
+											<!-- name -->
+											<span class="name"></span>
+											<!-- /name -->
 		
-										<!-- name -->
-										<span class="name"></span>
-										<!-- /name -->
+										</div>
+										<!-- /caption -->
+		
+									</a>
+									<!-- /projectlink -->
+		
+								</li>
+								<!-- /postcard -->
+		
+							</ul>
+							<!-- /postlist -->
 	
-									</div>
-									<!-- /caption -->
-	
-								</a>
-								<!-- /projectlink -->
-	
-							</li>
-							<!-- /postcard -->
-	
-						</ul>
-						<!-- /postlist -->
-
-					</div>
-					<!-- /posts -->
-
-					<!-- zoomer -->
-					<div class="zoomer">
-						
-						<!-- zoombtn -->
-						<div class="zoombtn">
-							
-							<!-- icon -->
-							<svg class="icon hdots" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-							</svg>
-							<!-- /icon -->
-							
-							<!-- icon -->
-							<svg class="icon vdots" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-							</svg>
-							<!-- /icon -->
-							
 						</div>
-						<!-- /zoombtn -->
+						<!-- /posts -->
+	
+						<!-- zoomer -->
+						<div class="zoomer">
+							
+							<!-- zoombtn -->
+							<div class="zoombtn">
+								
+								<!-- icon -->
+								<svg class="icon hdots" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+								</svg>
+								<!-- /icon -->
+								
+								<!-- icon -->
+								<svg class="icon vdots" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+								</svg>
+								<!-- /icon -->
+								
+							</div>
+							<!-- /zoombtn -->
+	
+						</div>
+						<!-- /zoomer -->
 
 					</div>
-					<!-- /zoomer -->
+					<!-- /body -->
 
 				</div>
 				<!-- /grid -->
@@ -616,6 +626,10 @@
 
 					<!-- brand -->
 					<div class="brand">
+
+						<!-- logo -->
+						<img class="logo" src="./../../flaskicon.png">
+						<!-- /logo -->
 
 						<!-- head -->
 						<h1 class="head">Lab Experiments</h1>
