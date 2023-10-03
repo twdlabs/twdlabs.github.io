@@ -3,10 +3,13 @@
 
 // Get destination for featured posts. 
 const featuredPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured');
+console.log('featuredPostsDestination:',featuredPostsDestination);
 // Get destination for category posts. 
 const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.category');
+console.log('categoryPostsDestination:',categoryPostsDestination);
 // Get destination for archive posts. 
 const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.archive');
+console.log('archivePostsDestination:',archivePostsDestination);
 
 // Initialize source of blog post cards. 
 let blogpostcards;
@@ -342,6 +345,16 @@ function loadBlog() {
 		<!-- /preview -->`;
 	}
 }
+
+// Toggle filter fields. 
+function toggleFilterFields() {
+
+	// 
+	let filtertabs = document.querySelector('div#container section.blog div.grid div.body div.filtertabs')
+	filtertabs.classList.toggle('active');
+	archivePostsDestination.classList.toggle('big');
+}
+
 
 // // Toggle section like accordion. 
 // function toggleLikeAccordion(section) {

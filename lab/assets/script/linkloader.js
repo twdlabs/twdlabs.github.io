@@ -255,7 +255,7 @@ function createNavLink(url,caption,icontag,newwindow) {
 	<li class="navitem">
 	
 		<!-- navlink -->
-		<a class="navlink" href="${url}" ${ newwindow ? 'target="_blank"' : '' }>
+		<a class="navlink" href="${ getRelativeUrl(url) }" ${ newwindow ? 'target="_blank"' : '' }>
 
 			${ icontag ? createIcon(icontag) : '' }
 

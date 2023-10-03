@@ -14,6 +14,7 @@ div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hove
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.125em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon:empty {background-color:var(--themecolor); border-radius:.375em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {color:var(--forecolor); font-size:2rem; font-weight:bold; line-height:1.375; border-bottom:.125rem solid var(--tpthemecolor); margin:0;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:hover {color:var(--themecolor);}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:empty {background-color:var(--fillcolor); height:1em; width:7em; border-radius:1em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {color:var(--forecolor2); font-size:1.5rem; font-weight:100; width:100%; margin:0; margin-top:.75rem;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription:empty {display:flex; flex-direction:column; align-items:center; opacity:.625;}

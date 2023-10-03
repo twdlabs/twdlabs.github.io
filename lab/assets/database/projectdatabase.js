@@ -118,7 +118,7 @@ const projectMetaGroupData = [
 	},
 	{
 		groupid:'s',
-		groupname:'Sites',
+		groupname:'Sample Sites',
 		groupicontag:'tv',
 		groupdescription:'Larger site projects created for other people',
 		grouplist:[

@@ -25,11 +25,6 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 /* div#container section.hero div.grid div.col a.contactlink.b:hover {background-color:var(--backcolor); color:var(--forecolor); border-color:var(--backcolor);} */
 
 
-/* Blog Section */
-/* div#container section.blog {display:none;} */
-/* div#container section.blog div.grid {} */
-div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(5,1fr);}
-
 
 
 
@@ -40,11 +35,6 @@ div#container section.blog div.grid div.body div.posts ul.postlist {grid-templat
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
-
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(4,1fr);}
 }
 
 /* Medium Tablet Screen */
@@ -53,11 +43,6 @@ div#container section.blog div.grid div.body div.posts ul.postlist {grid-templat
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
-
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(3,1fr);}
 }
 
 /* Small Tablet Screen */
@@ -70,11 +55,6 @@ div#container section.blog div.grid div.body div.posts ul.postlist {grid-templat
 	div#container section.hero div.grid div.col h1.head {font-size:2.375rem;}
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.5rem;}
 	div#container section.hero div.grid div.col a.contactlink {font-size:1.125rem;}
-
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(2,1fr);}
 }
 
 /* Big Smartphone Screen */
@@ -88,11 +68,6 @@ div#container section.blog div.grid div.body div.posts ul.postlist {grid-templat
 	/* div#container section.hero div.grid div.col p.textcopy {margin-bottom:1rem;} */
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.375rem;}
 	div#container section.hero div.grid div.col img.logo {max-width:10rem;}
-
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
 }
 
 /* Medium Smartphone Screen */
@@ -103,11 +78,6 @@ div#container section.blog div.grid div.body div.posts ul.postlist {grid-templat
 	/* div#container section.hero div.grid {} */
 	div#container section.hero div.grid div.col img.logo {max-width:8rem;}
 	div#container section.hero div.grid div.col p.textcopy {font-size:1.25rem;}
-
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {grid-template-columns:repeat(1,1fr);}
 }
 
 /* Small Smartphone Screen */
@@ -117,9 +87,4 @@ div#container section.blog div.grid div.body div.posts ul.postlist {grid-templat
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
 	/* div#container section.hero div.grid div.col p.textcopy {font-size:1rem;} */
-
-	/* Blog Section */
-	/* div#container section.blog {} */
-	/* div#container section.blog div.grid {} */
-	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
 }

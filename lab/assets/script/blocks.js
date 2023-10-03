@@ -43,7 +43,7 @@ function loadCategoryBlocks() {
 	if(!categoryblocksdestination) return;
 
 	// Get url prefix for blocks. 
-	let urlprefix = getRelativeUrl('./category/?gid=');
+	let urlprefix = './category/?gid=';
 
 	// Initialize result. 
 	let result = createBlockSet(projectGroupData, 'groupicontag','groupname','groupdescription', urlprefix,'groupid', true);
@@ -57,7 +57,7 @@ function loadMetaCategoryBlocks() {
 	if(!metacategoryblocksdestination) return;
 
 	// Get url prefix for blocks. 
-	let urlprefix = getRelativeUrl('./metacategory/?gid=');
+	let urlprefix = './metacategory/?gid=';
 
 	// Initialize result. 
 	let result = createBlockSet(projectMetaGroupData, 'groupicontag','groupname','groupdescription', urlprefix,'groupid', true);
@@ -103,7 +103,7 @@ function createBlockSet(datasource, t,n,d, urlprefix,idtag, openLinksInNewTab) {
 		// let openLinksInNewTab = true;
 
 		// Get link url. 
-		let linkurl = (urlprefix&&id) ? (urlprefix+id) : ('javascript:void(0)');
+		let linkurl = (urlprefix && id) ? getRelativeUrl(urlprefix + id) : 'javascript:void(0)';
 		// console.log('Link url:',linkurl);
 	
 		// Compile layout for block item. 
