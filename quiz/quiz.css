@@ -1,0 +1,82 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+	--rylblue:#007bff;
+	--grey:#CCC;
+	--red:#a42834;
+	--whitered:#f8d7da;
+	--green:#23903c;
+	--whitegreen:#d4edda;
+	--blue:#84c5fe;
+	--drkblue:#004085;
+	--whiteblue:aliceblue;
+	/* --whiteblue:#d4edda; */
+	--lightblack:#333;
+
+	--pagewidth:60rem;
+	--pagewidth:40rem;
+	--cornersize:.5rem;
+	
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+
+html {background-color:dodgerblue; background-color:var(--rylblue); background-image:var(--bgimg);}
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.main {background-color:white; width:100%; max-width:var(--pagewidth); padding:.25rem 1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container main.main section {/* min-height:8rem; */ padding:1.5rem 0;}
+div#container main.main section.top {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
+div#container main.main section.top h1.head {font-size:2.5em; margin:0;}
+div#container main.main section.top h1.head:empty {background-color:gainsboro; height:1em; width:100%; max-width:8em; border-radius:1em;}
+div#container main.main section.top div.timer {font-size:1.25em;}
+div#container main.main section.top div.timer {background-color:dodgerblue; display:flex; flex-direction:row; align-items:center; padding:.5rem; border-radius:.5rem;}
+div#container main.main section.top div.timer span {display:block;}
+div#container main.main section.top div.timer span.timer {background-color:var(--lightblack); padding:.5em; border-radius:.5rem;}
+/* div#container main.main section.top div.timer span.timer span.time {} */
+div#container main.main section.top div.timer span.timer span.time:empty {background-color:gainsboro; height:1em; width:1.5em; border-radius:1em;}
+div#container main.main section.top div.timer span.caption {white-space:nowrap; margin-right:0.5rem;}
+div#container main.main section.middle {border-top:1px solid var(--grey);}
+div#container main.main section.middle h1.question {font-size:2rem; margin:0;}
+div#container main.main section.middle h1.question:empty {background-color:gainsboro; height:1em; width:100%; max-width:16em; border-radius:1em;}
+div#container main.main section.middle ul.answerlist {list-style:none; padding:0; margin:0; margin-top:2rem;}
+div#container main.main section.middle ul.answerlist li.answeritem {display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:.5rem 1.125rem; border-radius:.25em; border:1px solid; margin-top:1rem;}
+div#container main.main section.middle ul.answerlist li.answeritem {background-color:var(--whiteblue); color:black; font-size:1.5rem; cursor:pointer; border:.125rem solid var(--blue);}
+div#container main.main section.middle ul.answerlist li.answeritem:hover {color:var(--drkblue);}
+div#container main.main section.middle ul.answerlist li.answeritem svg.icon {display:none; flex-shrink:0;}
+div#container main.main section.middle ul.answerlist li.answeritem svg.icon {background-color:var(--grey); font-size:1.25em; border-radius:50%;}
+div#container main.main section.middle ul.answerlist li.answeritem svg.icon.x {display:block;}
+div#container main.main section.middle ul.answerlist li.answeritem svg.icon.x {background-color:var(--whitered); color:var(--red);}
+div#container main.main section.middle ul.answerlist li.answeritem svg.icon.check {display:block;}
+div#container main.main section.middle ul.answerlist li.answeritem svg.icon.check {background-color:var(--whitegreen); color:var(--green);}
+/* div#container main.main section.middle ul.answerlist li.answeritem span.caption {} */
+div#container main.main section.middle ul.answerlist li.answeritem span.caption:empty {background-color:gainsboro; height:1em; width:100%; max-width:16em; border-radius:1em;}
+div#container main.main section.bottom {border-top:1px solid var(--grey);}
+/* div#container main.main div.item {} */
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
