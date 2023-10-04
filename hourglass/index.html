@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<!-- <link href="./../atgicon.ico" rel="apple-touch-icon"/> -->
+		<title>Hour Glass</title>
+
+		<!-- Main Stylesheet -->
+		<!-- <link href="./hourglass.css" rel="stylesheet" type="text/css"/> -->
+		<style type="text/css">
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+			:root {
+
+				/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+				/* --themecolor:#CCC; */
+
+				--pagewidth:60rem;
+				--cornersize:.5rem;
+				
+				--boxshadow:0 0 1rem 0 #0002;
+				--boxshadow:0 0 .25rem 0 #0003;
+			}
+
+
+			html {background-color:dodgerblue; background-image:var(--bgimg);}
+			body {font-family:Nunito,sans-serif; margin:0;}
+
+
+			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+			
+			div#container main.main {background-color:white; display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.375rem; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+			div#container main.main input {display:none;}
+			div#container main.main input.char {font-size:1.25rem; text-align:center; width:100%; /* max-width:3em; */ padding:.5em;}
+			div#container main.main input.size {font-size:1.25rem; text-align:center; width:100%; /* max-width:8em; */ padding:.5em;}
+			div#container main.main input.size {grid-column-start:1; grid-column-end:span 2;}
+			div#container main.main button.btn {grid-column-start:1; grid-column-end:span 2;}
+			div#container main.main button.btn {font-size:1.5rem; cursor:pointer; padding:.625em 1em;}
+			/* div#container main.main div.item {} */
+			div#container main.main div.item svg.icon {display:none;}
+
+			
+			/* Tablet Screen */
+			@media screen and (max-width:64rem) {
+				/*  */
+			}
+			
+			/* Big Smartphone Screen */
+			@media screen and (max-width:48rem) {
+				/*  */
+			}
+			
+			/* Small Smartphone Screen */
+			@media screen and (max-width:32rem) {
+				/*  */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main">
+
+				<!-- size -->
+				<input class="size" type="number" maxlength="3" placeholder="5">
+				<!-- /size -->
+
+				<!-- char -->
+				<input class="char o" type="text" maxlength="1" placeholder="#">
+				<!-- /char -->
+
+				<!-- char -->
+				<input class="char i" type="text" maxlength="1" placeholder="*">
+				<!-- /char -->
+
+				<!-- btn -->
+				<button class="btn" onclick="printHourGlass()">Go</button>
+				<!-- /btn -->
+
+				<!-- item -->
+				<!-- <div class="item"></div> -->
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- icon -->
+					<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<!-- < -->
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Xyz Database -->
+		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<script src="./hourglass.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>
