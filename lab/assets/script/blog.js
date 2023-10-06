@@ -127,6 +127,7 @@ function loadBlog() {
 	
 		// Get list of featured projects (sorted by project id). 
 		let featuredProjects = ( featuredProjectIdList.sort() ).map(getProjectById);
+		// featuredProjects = ( featuredProjectIdListX.sort() ).map(getProjectById);
 		console.log('Featured projects:', featuredProjects.length, featuredProjectIdList, featuredProjects);
 		
 		// Get layout for featured posts. 

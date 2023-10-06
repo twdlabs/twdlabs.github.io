@@ -185,6 +185,7 @@ div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
 div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center; grid-gap:1.5rem;}
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
+div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center;}
 
 
 /* Hero Section */
@@ -204,8 +205,8 @@ div#container footer.footer div.grid div.brand img.logo {height:6rem; margin-top
 /* div#container footer.footer div.grid div.brand p.textcopy {grid-area:textcopy;} */
 div#container footer.footer div.grid div.brand p.textcopy {color:var(--forecolor2); margin:0; margin-top:.5rem;}
 div#container footer.footer div.grid div.social {display:none;}
-div#container footer.footer div.grid div.linkmatrix {display:grid; /* grid-template-columns:repeat(6,1fr); */}
-div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2 box3 box4 box5' 'missing missing missing orphans orphans orphans';}
+div#container footer.footer div.grid div.linkmatrix {display:grid; /* grid-template-columns:repeat(5,1fr); */}
+div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2 box3 box4' 'missing orphans xyz xyz xyz';}
 /* div#container footer.footer div.grid div.linkmatrix div.listbox {flex-basis:0; flex-grow:1; flex-shrink:0;} */
 div#container footer.footer div.grid div.linkmatrix div.listbox {text-align:left; /* padding:1rem; */ margin-right:2rem; margin-top:1.5rem;}
 div#container footer.footer div.grid div.linkmatrix div.listbox.x {display:none;}
@@ -214,7 +215,6 @@ div#container footer.footer div.grid div.linkmatrix div.listbox.b1 {grid-area:bo
 div#container footer.footer div.grid div.linkmatrix div.listbox.b2 {grid-area:box2;}
 div#container footer.footer div.grid div.linkmatrix div.listbox.b3 {grid-area:box3;}
 div#container footer.footer div.grid div.linkmatrix div.listbox.b4 {grid-area:box4;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.b5 {grid-area:box5;}
 div#container footer.footer div.grid div.linkmatrix div.listbox.orphans {grid-area:orphans;}
 div#container footer.footer div.grid div.linkmatrix div.listbox.missing {grid-area:missing;}
 div#container footer.footer div.grid div.linkmatrix div.listbox.brand {grid-area:brand; /* grid-column:1/span6; */ /* grid-area:b; flex-grow:2; */}
@@ -241,7 +241,7 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {} */
 	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(3,1fr);} */
-	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2 box3' 'box4 box5 orphans orphans' 'missing missing missing missing';}
+	/* div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2 box3' 'box4 orphans orphans orphans' 'missing missing missing missing';} */
 }
 
 /* Tablet Screen */
@@ -293,7 +293,7 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {} */
 	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(3,1fr);} */
-	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2' 'box3 box4 box5' 'missing missing orphans';}
+	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2' 'box3 box4 orphans' 'missing missing missing';}
 	/* div#container footer.footer div.grid div.linkmatrix div.listbox {} */
 	div#container footer.footer div.grid div.linkmatrix div.listbox h2.head {margin-top:1.5rem;}
 	/* div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist {} */
@@ -323,7 +323,7 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* div#container footer.footer div.grid {} */
 	/* div#container footer.footer div.grid {flex-direction:column; align-items:center; text-align:center;} */
 	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(2,1fr);} */
-	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1' 'box2 box3' 'box4 box5' 'orphans orphans' 'missing missing';}
+	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1' 'box2 box3' 'box4 orphans' 'missing missing';}
 }
 
 /* Medium Smartphone Screen */

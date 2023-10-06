@@ -1,60 +1,6 @@
 
 
 
-// Define data for development tools and methods. 
-const methodData = [
-
-	{
-		icontag:'piechart',
-		header:'Statistics',
-		description:'Applying concepts of probability thoery descriptive statistics, and inferential statistics',
-	},
-
-	{
-		icontag:'keyboard',
-		header:'Programming',
-		description:'Using concepts of programming and applied mathematics to build models of the real world',
-	},
-
-	{
-		icontag:'easel',
-		header:'Design',
-		description:'Using best practice design principles to create aesthetic user interfaces and optimal user experiences',
-	},
-
-	{
-		icontag:'bricks',
-		header:'HTML',
-		description:'Establishing hierarchichally arranged page structures and building layers with hypertext markup',
-	},
-
-	{
-		icontag:'paintbrush',
-		header:'CSS',
-		description:'Decorating, smoothing transformations, and adding aesthetic beauty with cascading style sheets',
-	},
-
-	{
-		icontag:'gear',
-		header:'JavaScript',
-		description:'Enabling dynamic page movements, and practical functionality with the engine of JavaScript',
-	},
-
-	// {
-	// 	icontag:'calculator',
-	// 	header:'',
-	// 	description:'',
-	// },
-
-	// {
-	// 	icontag:'paintpalette',
-	// 	header:'',
-	// 	description:'',
-	// },
-	
-];
-
-
 // Define ids for featured projects. 
 const featuredProjectIdList = [
 	'admin','autoslideshow','analogclock','blog',
@@ -63,493 +9,14 @@ const featuredProjectIdList = [
 	'merch','musicplayer',/* 'pong', */'resume','rolodex',
 	'toastprogress','univ','video',
 ];
+const featuredProjectIdListX = [
+	'band','banner','bizmath','blockmenu',
+	'canvas','chess','chooser',
+	'device','dragndrop','lander',
+	'pagination','pinyin','pixelart','pong',
+	'storage','tasks','3dnav',
+];
 // console.log('Featured project ids:',featuredProjectIdList);
-
-
-// Define sets of project groups in matrix. 
-const projectGroupMatrixData = [
-	['cl','jl','ssc',],
-	['aw',],
-	['fw','gw','mw',],
-	['nw','ww','ld',],
-	['ap','gp','dp',],
-	['sac','ssd','sbs','sss','pbs','esp',/* 'eap', */],
-];
-console.log('Project group sets:',projectGroupMatrixData);
-
-
-// Define groups of groups of projects. 
-const projectMetaGroupData = [
-	{
-		groupid:'l',
-		groupname:'Lessons',
-		groupicontag:'lightbulb',
-		groupdescription:'Learning new concepts in web development',
-		grouplist:[
-			'cl','jl',
-		],
-	},
-	{
-		groupid:'c',
-		groupname:'Clones',
-		groupicontag:'copy',
-		groupdescription:'Inspired heavily by designs of other sites',
-		grouplist:[
-			'ssc','sac',
-		],
-	},
-	{
-		groupid:'w',
-		groupname:'Widgets',
-		groupicontag:'motherboard',
-		groupdescription:'Reusable sub-components for other projects',
-		grouplist:[
-			'aw','fw','gw','mw','nw','ww',
-		],
-	},
-	{
-		groupid:'p',
-		groupname:'Prototypes',
-		groupicontag:'smartphone',
-		groupdescription:'Seeds of potential stand-alone applications',
-		grouplist:[
-			'ap','gp','dp','ld',
-		],
-	},
-	{
-		groupid:'s',
-		groupname:'Sample Sites',
-		groupicontag:'tv',
-		groupdescription:'Larger site projects created for other people',
-		grouplist:[
-			'ssd','sbs','sss','pbs','esp',/* 'eap', */
-		],
-	},
-];
-console.log('Project meta-groups:',projectMetaGroupData);
-
-
-// Define groups of projects. 
-const projectGroupData = [
-
-	// {
-	// 	groupid:'xyz',
-	// 	groupname:'XyzName',
-	// 	groupicontag:'xyzabcxyz',
-	// 	groupdescription:'',
-	// 	grouplist:[
-	// 	],
-	// },
-
-	{
-		groupid:'ni',
-		groupname:'New Ideas',
-		groupicontag:'lightbulb',
-		groupdescription:'Currently work in progress',
-		grouplist:[
-			'analogclock','autoslideshow','admin',
-			'band','banner','bizmath','blockmenu','blog',
-			'calendar','canvas','chat','chess','chooser','cluster','compound','crud',
-			'desktop','device','dragndrop','gallery','keyfinder','lander','livesearch',
-			'merch','musicplayer','pagination','pinyin','pixelart','pong',
-			'resume','rolodex','storage','tasks','toastprogress',
-			'univ','video','wts1',
-			'100pure','360finance','3dnav',
-		],
-	},
-
-	{
-		groupid:'cl',
-		groupname:'CSS Lessons',
-		groupicontag:'paintpalette',
-		groupdescription:'Page design lessons in CSS',
-		grouplist:[
-			'anime',
-			'aspectratio',
-			'boxshadow',
-			'clearfix',
-			'cutout',
-			'flex',
-			'flexbreak',
-			'format',
-			'grid',
-			'keyframes',
-			'macbook',
-			'maskimage',
-			'overflow',
-			'perspective',
-			'scrollsnap',
-			'smoothscroll',
-			'timing',
-			'zbar',
-		],
-	},
-	{
-		groupid:'jl',
-		groupname:'JS Lessons',
-		groupicontag:'gear',
-		groupdescription:'Page functionality lessons in JavaScript',
-		grouplist:[
-			'audio',
-			'colorpicker',
-			'cookie',
-			'enter',
-			'event',
-			'filter',
-			'keypress',
-			'storage',
-			'urlparams',
-		],
-	},
-	{
-		groupid:'sac',
-		groupname:'Sample App Clones',
-		groupicontag:'app',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'clubhouse',
-			'iglive',
-			'igprofile',
-			'instagram',
-			'voisey',
-		],
-	},
-
-	{
-		groupid:'ssc',
-		groupname:'Sample Site Clones',
-		groupicontag:'tv',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'10000cards',
-			'apple',
-			'application',
-			'bodyshop',
-			'jenna',
-			'leads',
-			'neuro67',
-			'travel',
-			'tropicalghana',
-		],
-	},
-	{
-		groupid:'ld',
-		groupname:'Legacy Dashboards',
-		groupicontag:'oldpc',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'chooser',
-			'clone',
-			'evolution',
-			'fitness',
-			'finance',
-			'layouts',
-			'math',
-			'music',
-			'probability',
-			'reast',
-			'stocks',
-		],
-	},
-
-	{
-		groupid:'aw',
-		groupname:'App Widgets',
-		groupicontag:'motherboard',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'analogclock',
-			'bell',
-			'blogtoggler',
-			'bookmark',
-			'calendar',
-			'canvas',
-			'chart',
-			'clipboard',
-			'clock',
-			'contextmenu',
-			'delta',
-			'device',
-			'floatmenu',
-			'gitcalendar',
-			'graph',
-			'lightSwitch',
-			'loader',
-			'loading',
-			'login',
-			'message',
-			'pagination',
-			'rating',
-			'rolodex',
-			'stepprogress',
-			'switcher',
-			'tags',
-			'tagslider',
-			'throttle',
-			'ticker',
-			'time',
-			'timeline',
-			'timeline2',
-			'toastprogress',
-			'typer',
-			'upload',
-			'user',
-			'user2',
-			'valueslider',
-			'viewport',
-			'3dnav',
-		],
-	},
-
-	{
-		groupid:'fw',
-		groupicontag:'pencileditor',
-		groupname:'Form Widgets',
-		groupicontag:'clipboard',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'charlimit',
-			'checkout',
-			'checkout2',
-			'form3d',
-			'input',
-			'livesearch',
-		],
-	},
-	{
-		groupid:'gw',
-		groupname:'Game Widgets',
-		groupicontag:'joystick',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'3d',
-			'animation',
-			'blockmenu',
-			'cardflipgallery3d',
-			'carousel3d',
-			'clockspinner',
-			'cubecarousel',
-			'desktop',
-			'dragndrop',
-			'dragndrop1',
-			'flashlight',
-			'gallerywalk',
-			'gameboard',
-			'hexagon',
-			'minion',
-			'orbit',
-			'safari',
-			'shape',
-			'splash',
-			'soundfx',
-			'thermometer',
-			'touch',
-			'traffic',
-			'trifold3d',
-			'wordcube',
-		],
-	},
-	{
-		groupid:'mw',
-		groupname:'Media Widgets',
-		groupicontag:'mediacollection',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'autoslideshow',
-			'gallery',
-			'slideshow',
-			'slideshow2',
-			'video',
-		],
-	},
-
-	{
-		groupid:'nw',
-		groupicontag:'dropmenu',
-		groupname:'Navigation Widgets',
-		groupicontag:'signpost',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'backToTop',
-			'breadcrumbs',
-			'dotnav',
-			'hamburger',
-			'megamenu',
-		],
-	},
-	{
-		groupid:'ww',
-		groupname:'Website Widgets',
-		groupicontag:'dpad',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'accordion',
-			'accordion2',
-			'banner',
-			'big3dcard',
-			'bounce',
-			'buttonpress',
-			'cardstacks',
-			'collapsible',
-			'contact',
-			'contactform',
-			'countdown',
-			'hovercard',
-			'image',
-			'pricing',
-			'profilecard',
-			'retool',
-			'scrollProgressBar',
-			'skeleton',
-			'testimonial',
-			'typewriter',
-			'vidbg',
-			'wordswitcher',
-		],
-	},
-	{
-		groupid:'ap',
-		groupname:'App Prototypes',
-		groupicontag:'smartphone',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'bizmath',
-			'blogsocial',
-			'book',
-			'calc',
-			'calculator',
-			'chat',
-			'cluster1d',
-			'cluster',
-			'compound',
-			'fam',
-			'keyfinder',
-			'laundry',
-			'matrix',
-			'musicplayer',
-			'musicplaylist',
-			'netflix',
-			'pinyin',
-			'podcast',
-			'tasks',
-			'typetest',
-			'waves',
-		],
-	},
-
-	{
-		groupid:'dp',
-		groupname:'Dashboard Prototypes',
-		groupicontag:'speedometer',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'admin',
-			'admin2',
-			'cms',
-			'crm',
-			'crud',
-			'crud2',
-			'dotcollector',
-			'grocery',
-			'inventory',
-		],
-	},
-	{
-		groupid:'gp',
-		groupname:'Game Prototypes',
-		groupicontag:'gamepad',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'chess',
-			'dice',
-			'learner',
-			'igt',
-			'pixelart',
-			'pong',
-			'solarsystem',
-		],
-	},
-	{
-		groupid:'ssd',
-		groupname:'Sample Site Designs',
-		groupicontag:'paintbrush',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'angeldemon',
-			'comingsoon',
-			'cis255',
-			'hero2',
-		],
-	},
-
-	{
-		groupid:'sbs',
-		groupname:'Sample Branding Sites',
-		groupicontag:'tv',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'band',
-			'blog',
-			'books',
-			'univ',
-		],
-	},
-	{
-		groupid:'sss',
-		groupicontag:'receipt',
-		groupname:'Sample Sales Sites',
-		groupicontag:'money',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'land',
-			'lander',
-			'merch',
-		],
-	},
-	{
-		groupid:'pbs',
-		groupname:'Personal Brand Sites',
-		groupicontag:'person',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'atg',
-			'hero',
-			'resume',
-			'linktree',
-		],
-	},
-	
-	{
-		groupid:'esp',
-		groupname:'External Site Projects',
-		groupicontag:'door',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
-			'cali',
-			'caliB',
-			'carnell',
-			'carnell2',
-			'chadpiff',
-			'mandorespect',
-			'smosa',
-			'superforg',
-			'unseenstrts',
-			'wts1',
-			'100pure',
-	// 	],
-	// },
-	// {
-	// 	groupid:'eap',
-	// 	groupname:'External App Projects',
-	// 	groupicontag:'xyzabcxyz',
-	// 	groupdescription:'',
-	// 	grouplist:[
-			'360finance',
-		],
-	},
-
-];
-console.log('Project groups:',projectGroupData);
 
 
 // Define project data. 
@@ -558,7 +25,7 @@ const projectData = [
 
 	// {
 	// 	created:'xyz',
-	// 	authorid:'atg',
+	// 	authorid:'twd',
 	// 	projectid:'xyz',
 	// 	projectname:'XyzLinkName',
 	// },
@@ -566,1153 +33,1153 @@ const projectData = [
 
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'accordion',
 		projectname:'Sliding Accordion',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'accordion2',
 		projectname:'Sliding Accordion',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'admin',
 		projectname:'Admin Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'admin2',
 		projectname:'Admin Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'analogclock',
 		projectname:'Analog Clock',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'angeldemon',
 		projectname:'Sample Site Design',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'animation',
 		projectname:'Scroll Animation',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'anime',
 		projectname:'Square Animation',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'apple',
 		projectname:'E-Commerce',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'application',
 		projectname:'Application Site',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'aspectratio',
 		projectname:'Aspect Ratio',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'atg',
 		projectname:'Personal Brands',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'audio',
 		projectname:'Audio Player',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'autoslideshow',
 		projectname:'Automatic Slideshow',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'backToTop',
 		projectname:'Back To Top',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'w3s',
 		projectid:'band',
 		projectname:'Sample Band Site',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'banner',
 		projectname:'Scrolling Banner',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'bell',
 		projectname:'Notification Bell',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'big3dcard',
 		projectname:'Rotating Card (3D)',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'bizmath',
 		projectname:'Business Math',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'blockmenu',
 		projectname:'Block Menu',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'blog',
 		projectname:'Sample Blog Site',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'blogsocial',
 		projectname:'Social Blog',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'blogtoggler',
 		projectname:'Blog Toggler',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'bodyshop',
 		projectname:'Fitness Launch Site',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'book',
 		projectname:'Reading Book',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'bookmark',
 		projectname:'Bookmark Button',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'books',
 		projectname:'Sample Book List',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'bounce',
 		projectname:'Bouncing Arrow',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'boxshadow',
 		projectname:'Box Shadow',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'breadcrumbs',
 		projectname:'Navigation Breadcrumbs',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'bubblesort',
 		projectname:'Bubble Sort',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'buttonpress',
 		projectname:'Button Press',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'calc',
 		projectname:'Calculator',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'calculator',
 		projectname:'Calculator',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'calendar',
 		projectname:'Calendar',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cali',
 		projectname:'CaliIsMe',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'caliB',
 		projectname:'CaliIsMe',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'canvas',
 		projectname:'Chart Canvas',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cardflipgallery3d',
 		projectname:'Card Flip Gallery (3D)',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cardstacks',
 		projectname:'Card Stacks',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'carnell',
 		projectname:'Carnell Tate',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'carnell2',
 		projectname:'Carnell Tate',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'carousel3d',
 		projectname:'Slide Carousel (3D)',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'chadpiff',
 		projectname:'Chad Piff',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'charlimit',
 		projectname:'Input Limiter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'chart',
 		projectname:'Chart',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'chat',
 		projectname:'Chat Messenger',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'checkout',
 		projectname:'Checkout',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'checkout2',
 		projectname:'Checkout',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'chess',
 		projectname:'Chess',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cis255',
 		projectname:'Coding Class',
 	},{
 		created:'xyz',
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'clearfix',
 		projectname:'Clear Fix',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'clipboard',
 		projectname:'Clipboard Copier',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'clock',
 		projectname:'Clock Counter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'clockspinner',
 		projectname:'Clock Spinner',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'clubhouse',
 		projectname:'Clubhouse',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cluster1d',
 		projectname:'K-Means Clustering',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cluster',
 		projectname:'K-Means Clustering (2D)',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cms',
 		projectname:'CMS',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'collapsible',
 		projectname:'Collapsible',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'colorpicker',
 		projectname:'Color Picker',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'w3s',
 		projectid:'comingsoon',
 		projectname:'Coming Soon Page',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'compound',
 		projectname:'Compound Interest',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'contact',
 		projectname:'Contact Form',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'contactform',
 		projectname:'Contact Form',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'contextmenu',
 		projectname:'Context Menu',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cookie',
 		projectname:'Web Cookies',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'countdown',
 		projectname:'Countdown',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'crm',
 		projectname:'CRM',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'crud',
 		projectname:'CRUD Database Manager',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'crud2',
 		projectname:'CRUD Inventory Manager',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'cubecarousel',
 		projectname:'Morphing Cube',
 	},{
 		created:'xyz',
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'cutout',
 		projectname:'Text Cutout',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'delta',
 		projectname:'Number Delta Clicker',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'desktop',
 		projectname:'Draggable Element Arena',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'device',
 		projectname:'Devices',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'diagram',
 		projectname:'Code Diagram',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'dice',
 		projectname:'Dice n Cards',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'dotcollector',
 		projectname:'Dalio Dot Collector',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'dotnav',
 		projectname:'Dot Navigation',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'dragndrop',
 		projectname:'Drag n Drop',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'dragndrop1',
 		projectname:'Drag n Drop',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'dynamicnavbar',
 		projectname:'Dynamic Navbar',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'enter',
 		projectname:'Action on Enter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'essay',
 		projectname:'Essay Writing Guide',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'event',
 		projectname:'Event Listeners',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'fam',
 		projectname:'Family Tree Diagram',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'filter',
 		projectname:'List Filter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'flashlight',
 		projectname:'Flashlight Page',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'flex',
 		projectname:'Flex Box',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'flexbreak',
 		projectname:'Flex Break',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'floatmenu',
 		projectname:'Floating Menu',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'format',
 		projectname:'Text Formatter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'form3d',
 		projectname:'Lead Form (3D)',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'gallery',
 		projectname:'Image Gallery',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'gallerywalk',
 		projectname:'Moving Gallery (3D)',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'gameboard',
 		projectname:'Game Board',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'gitcalendar',
 		projectname:'Git Calendar',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'codepen',
 		projectid:'graph',
 		projectname:'Bar Graph',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'grid',
 		projectname:'CSS Grid',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'grocery',
 		projectname:'Grocery Manager',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'hamburger',
 		projectname:'Nav Toggler',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'hero',
 		projectname:'Hero Resume',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'w3s',
 		projectid:'hero2',
 		projectname:'Sample Hero Page',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'hexagon',
 		projectname:'Lit Hexagon',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'hovercard',
 		projectname:'Hover Cards (3D)',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'iglive',
 		projectname:'Instagram Live',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'igprofile',
 		projectname:'Instagram Profile',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'igt',
 		projectname:'Iowa Gambling Test',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'image',
 		projectname:'Image Modal',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'input',
 		projectname:'Input Counter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'instagram',
 		projectname:'Instagram Feed',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'inventory',
 		projectname:'Inventory Manager',
 	},
 
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'jenna',
 		projectname:'Fitness Launch Site',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'keyfinder',
 		projectname:'Piano Key Finder',
 	},{
 		created:'xyz',
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'keyframes',
 		projectname:'Key Frames',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'keypress',
 		projectname:'Key Press',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'land',
 		projectname:'Sample Landing Page',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'lander',
 		projectname:'Sample Landing Page',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'laundry',
 		projectname:'Laundry Timer',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'leads',
 		projectname:'Sample Lead Generator',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'learner',
 		projectname:'Learner Bug',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'lightSwitch',
 		projectname:'Light Switch',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'linktree',
 		projectname:'Link Tree',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'livesearch',
 		projectname:'Live Search',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'loader',
 		projectname:'Page Loader',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'loading',
 		projectname:'Page Loader',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'login',
 		projectname:'User Access',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'xyz',
+		authorid:'codepen',
 		projectid:'macbook',
 		projectname:'Macbook Animation',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'mandorespect',
 		projectname:'Mando Respect',
 	},{
 		created:'xyz',
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'maskimage',
 		projectname:'Image Masking',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'matrix',
 		projectname:'Matrix Operations',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'megamenu',
 		projectname:'Mega Menu',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'merch',
 		projectname:'Sample Merch Store',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'message',
 		projectname:'Text Messages',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'minion',
 		projectname:'Minion',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'musicplayer',
 		projectname:'Music Player',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'musicplaylist',
 		projectname:'Music Playlist',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'multimenu',
 		projectname:'Multi-Level Menu',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'navcircle',
 		projectname:'Circular Navigation',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'netflix',
 		projectname:'TV Show Site',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'neuro67',
 		projectname:'Neuro67',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'orbit',
 		projectname:'Orbiter',
 	},{
 		created:'xyz',
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'overflow',
 		projectname:'Overflow',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'pagination',
 		projectname:'Pagination',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'periodictable',
 		projectname:'Periodic Table of Elements',
 	},{
 		created:'xyz',
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'perspective',
 		projectname:'Perspective',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'pinyin',
 		projectname:'Pinyin Soundboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'pixelart',
 		projectname:'Pixel Art Generator',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'podcast',
 		projectname:'Podcast Site',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'popup',
 		projectname:'Popup',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'pong',
 		projectname:'Awesome Pong',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'pricing',
 		projectname:'Price Packages',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'profilecard',
 		projectname:'Dynamic Profile Card',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'resume',
 		projectname:'Simple Resume',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'retool',
 		projectname:'Sliding Multi-Ticker',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'rating',
 		projectname:'Rating Bar',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'rolodex',
 		projectname:'Contact Rolodex',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'safari',
 		projectname:'Safari Compass',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'scrollProgressBar',
 		projectname:'Scroll Progress Bar',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'scrollsnap',
 		projectname:'Scroll Snap',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'shape',
 		projectname:'Rotating Shape',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'skeleton',
 		projectname:'Content Skeleton',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'slideshow',
 		projectname:'Manual Slideshow',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'slideshow2',
 		projectname:'Simple Slideshow',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'smoothscroll',
 		projectname:'Smooth Scroll',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'smosa',
 		projectname:'Smosa USA',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'solarsystem',
 		projectname:'Solar System',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'sort',
 		projectname:'List Sorter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'soundfx',
 		projectname:'Sound FX',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'spinner',
 		projectname:'Menu Spinner',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'splash',
 		projectname:'Splash Page',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'stepprogress',
 		projectname:'Step Progress Bar',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'storage',
 		projectname:'Local Storage',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'superforg',
 		projectname:'Superforg USA',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'switcher',
 		projectname:'Tab Switcher',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'syntax',
 		projectname:'Syntax Highlighter',
 	},
 
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'tags',
 		projectname:'Tag Typer',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'tagslider',
 		projectname:'Tag Slider',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'tasks',
 		projectname:'Task Manager',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'testimonial',
 		projectname:'Testimonial Slider',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'theme',
 		projectname:'Theme Switcher',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'thermometer',
 		projectname:'Thermometer',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'throttle',
 		projectname:'Input Controller',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'ticker',
 		projectname:'News Ticker',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'time',
 		projectname:'Time Calculator',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'timeline',
 		projectname:'Timeline',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'timeline2',
 		projectname:'Timeline',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'timing',
 		projectname:'Timing Functions',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'toastprogress',
 		projectname:'Toast Progress Bar',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'touch',
 		projectname:'Touch Sensor',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'traffic',
 		projectname:'Traffic Light',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'travel',
 		projectname:'Travel Site',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'trifold3d',
 		projectname:'Trifold Gallery (3D)',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'tropicalghana',
 		projectname:'Tropical Ghana',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'typer',
 		projectname:'Type Counter',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'typetest',
 		projectname:'Typing Test',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'typewriter',
 		projectname:'Counter Typewriter',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'univ',
 		projectname:'Sample University',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'unseenstrts',
 		projectname:'Unseen Streets',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'upload',
 		projectname:'Image Uploader',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'urlparams',
 		projectname:'URL Search Parameters',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'user',
 		projectname:'User Profile',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'user2',
 		projectname:'User Profile',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'valueslider',
 		projectname:'Value Slider',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'vanilla',
 		projectname:'Vanilla Scroll Parallax',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'vidbg',
 		projectname:'Video Background',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'video',
 		projectname:'Video Gallery',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'viewport',
 		projectname:'Viewport Sizer',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'voisey',
 		projectname:'Voisey',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'waves',
 		projectname:'Wave Generator',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'wordcube',
 		projectname:'Word Cube',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'wordswitcher',
 		projectname:'Word Switcher',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'wts1',
 		projectname:'Watch The Screen',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'zbar',
 		projectname:'Z-Index Bar',
 	},
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'10000cards',
 		projectname:'Social Profile',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'100pure',
 		projectname:'100% Pure Music',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'360finance',
 		projectname:'360 Finance',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'3d',
 		projectname:'Card Controller (3D)',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'3dnav',
 		projectname:'3D Navigation',
 	},
@@ -1720,57 +1187,57 @@ const projectData = [
 	
 	{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'chooser',
 		projectname:'Page Chooser',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'clone',
 		projectname:'App Clone Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'evolution',
 		projectname:'Evolutionary Game Theory',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'fitness',
 		projectname:'Fitness Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'finance',
 		projectname:'Finance Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'layouts',
 		projectname:'Layout Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'math',
 		projectname:'Math Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'music',
 		projectname:'Music Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'probability',
 		projectname:'Probability Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'reast',
 		projectname:'Real Estate Dashboard',
 	},{
 		created:'xyz',
-		authorid:'atg',
+		authorid:'twd',
 		projectid:'stocks',
 		projectname:'Stocks Dashboard',
 	},
@@ -1778,21 +1245,6 @@ const projectData = [
 	
 ];
 console.log('Projects:',projectData);
-
-
-/*****/
-
-
-// Check sizes of project groups. 
-// checkProjectGroupSizes();
-
-// Get projects missing from database. 
-let missingProjectIds = getMissingProjects();
-console.log('Missing project ids:',missingProjectIds);
-
-// Get projects missing from project groups. 
-let orphanProjectIds = getOrphanProjects();
-console.log('Orphan project ids:',orphanProjectIds);
 
 
 /*****/
@@ -1815,52 +1267,6 @@ function getProjectById(pid) {
 	return null;
 }
 
-// Get project group by id. 
-function getProjectGroupById(pgid) {
-
-	// Go thru each project groups. 
-	for(let projectgroup of projectGroupData) {
-
-		// Check if project group matches query id. 
-		let matchFound = (projectgroup.groupid == pgid);
-
-		// Return matching project group if found. 
-		if(matchFound) return projectgroup;
-	}
-
-	// Return nothing if project group not found. 
-	return null;
-}
-
-// Check sizes of project groups. 
-function checkProjectGroupSizes() {
-
-	// Go thru each project meta-group. 
-	for(let projectmetagroup of projectMetaGroupData) {
-
-		// Get id of project meta-group. 
-		let mgid = projectmetagroup.groupid;
-
-		// Initialize size of project meta-group. 
-		let metagroupsize = 0;
-
-		// Get list of project groups for project meta-group. 
-		let projectmetagrouplist = projectmetagroup.grouplist;
-
-		// Go thru each project group. 
-		for(let pgid of projectmetagrouplist) {
-
-			// Get size of current project group. 
-			let groupsize = getProjectGroupById(pgid).grouplist.length;
-			console.log('\t',pgid,groupsize);
-
-			// Add size of current project group to size of project meta-group. 
-			metagroupsize += groupsize;
-		}
-		console.log(mgid,metagroupsize);
-	}
-}
-
 // Get projects missing from database. 
 function getMissingProjects() {
 
@@ -1875,38 +1281,6 @@ function getMissingProjects() {
 
 		// Save id if project not found. 
 		if (!projectFound) result.push(pid);
-	}
-
-	// Return result. 
-	return result;
-}
-
-// Get projects missing from project groups. 
-function getOrphanProjects() {
-
-	// Initialize result. 
-	let result = [];
-
-	// Go thru each project. 
-	for(let p of projectData) {
-
-		// Get id of project. 
-		let pid = p.projectid;
-
-		// Initialize if project found in any group. 
-		let projectFoundInGroup = false;
-
-		// Go thru each project group to find project id. 
-		for(let pg of projectGroupData) {
-
-			// Check if project found in group. 
-			projectFoundInGroup = pg.grouplist.includes(pid);
-			// End search if project found in group. 
-			if(projectFoundInGroup) break;
-		}
-
-		// Save id if project not found in any group. 
-		if (!projectFoundInGroup) result.push(pid);
 	}
 
 	// Return result. 

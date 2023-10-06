@@ -17,6 +17,18 @@ const footMatrixDestination = document.querySelector('div#container footer.foote
 /*****/
 
 
+// Get projects missing from project database. 
+let nullProjectIds = getMissingProjects();
+// console.log('Missing project ids:',nullProjectIds);
+
+// Get projects missing from project group database. 
+let orphanProjectIds = getOrphanProjects();
+// console.log('Orphan project ids:',orphanProjectIds);
+
+
+/*****/
+
+
 // Add navigation links to header. 
 loadNavLinks();
 
@@ -105,7 +117,7 @@ function loadProjectGroupMatrix() {
 	/****/
 
 	// Create layout for column of project groups. 
-	function createProjectGroupSet(projectgroupset) {
+	function createGroupSet(projectgroupset) {
 		// console.log('projectgroupset:',projectgroupset);
 
 		// Initialize result. 
@@ -121,14 +133,14 @@ function loadProjectGroupMatrix() {
 			// Add header for current project group. 
 			result += `
 			<!-- head -->
-			<h2 class="head">${ projectgroup.groupname }</h2>
+			<h2 class="head">${ projectgroup ? projectgroup.groupname : '' }</h2>
 			<!-- /head -->`;
 
 			// Add list for current project group. 
 			result += `
 			<!-- navlist -->
 			<ul class="navlist">
-				${ createProjectGroup(projectgroup.grouplist) }
+				${ projectgroup ? createProjectGroup(projectgroup.grouplist) : '' }
 			</ul>
 			<!-- /navlist -->`;
 		}
@@ -195,7 +207,7 @@ function loadProjectGroupMatrix() {
 			result += `
 			<!-- listbox -->
 			<div class="listbox b${i}">
-				${ createProjectGroupSet(projectgroupset) }
+				${ createGroupSet(projectgroupset) }
 			</div>
 			<!-- /listbox -->`;
 		}
@@ -211,7 +223,7 @@ function loadProjectGroupMatrix() {
 		let projectgroupset = [
 			{
 				groupname:'Missing Projects',
-				grouplist:missingProjectIds,
+				grouplist:nullProjectIds,
 			},
 		];
 		
@@ -219,7 +231,7 @@ function loadProjectGroupMatrix() {
 		return `
 		<!-- listbox -->
 		<div class="listbox missing">
-			${ createProjectGroupSet(projectgroupset) }
+			${ createGroupSet(projectgroupset) }
 		</div>
 		<!-- /listbox -->`;
 	}
@@ -239,7 +251,7 @@ function loadProjectGroupMatrix() {
 		return `
 		<!-- listbox -->
 		<div class="listbox orphans">
-			${ createProjectGroupSet(projectgroupset) }
+			${ createGroupSet(projectgroupset) }
 		</div>
 		<!-- /listbox -->`;
 	}

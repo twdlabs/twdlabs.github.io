@@ -31,9 +31,11 @@ div#container section.blog div.grid div.head div.filter input#postfilter {border
 div#container section.blog div.grid div.body.split {display:grid; grid-template-columns:auto 1fr;}
 
 /* Blog Section: Posts */
-/* div#container section.blog div.grid div.body div.posts {} */
+div#container section.blog div.grid div.body div.posts {margin-top:3rem;}
 div#container section.blog div.grid div.body div.posts ul.postlist {display:grid; grid-template-columns:repeat(8,1fr); grid-gap:1.25rem; list-style:none; padding:0; margin:0; margin-top:1.5rem;}
+/* div#container section.blog div.grid div.body div.posts ul.postlist {display:flex; flex-wrap:wrap; justify-content:center;} */
 div#container section.blog div.grid div.body div.posts ul.postlist.big {grid-template-columns:repeat(5,1fr);}
+/* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.gone {opacity:.375; transition:.375s;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.gone {display:none;} */
