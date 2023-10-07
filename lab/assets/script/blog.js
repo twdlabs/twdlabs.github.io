@@ -350,9 +350,13 @@ function loadBlog() {
 // Toggle filter fields. 
 function toggleFilterFields() {
 
-	// 
+	// Get filter tabs section. 
 	let filtertabs = document.querySelector('div#container section.blog div.grid div.body div.filtertabs')
+
+	// Toggle filter tabs section. 
 	filtertabs.classList.toggle('active');
+
+	// Toggle state of posts section. 
 	archivePostsDestination.classList.toggle('big');
 }
 

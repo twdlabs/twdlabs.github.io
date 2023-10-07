@@ -392,6 +392,23 @@ const projectGroupData = [
 		],
 	},
 
+	{
+		groupid:'orphans',
+		groupname:'Orphan Projects',
+		groupicontag:'clipboard',
+		groupdescription:'',
+		grouplist:[
+		],
+	},
+	{
+		groupid:'missing',
+		groupname:'Missing Projects',
+		groupicontag:'clipboard',
+		groupdescription:'',
+		grouplist:[
+		],
+	},
+
 ];
 // console.log('Project groups:',projectGroupData);
 
@@ -440,12 +457,30 @@ const projectMetaGroupData = [
 
 // Define sets of project groups in matrix. 
 const projectGroupMatrixData = [
-	['cl','jl','cp',],
-	['aw',],
-	['gw','mw','nw',],
-	['cw','dc','ld',],
-	['ap','ds',],
-	// ['gp','dp','sac','sbs','sss',],
+	{
+		setid:'set0',
+		setlist:['cl','jl','nw',],
+	},
+	{
+		setid:'set1',
+		setlist:['aw',],
+	},
+	{
+		setid:'set2',
+		setlist:['cp','ds','gw',],
+	},
+	{
+		setid:'set3',
+		setlist:['cw','dc','ld',],
+	},
+	{
+		setid:'set4',
+		setlist:['mw','ap','orphans',],
+	},
+	{
+		setid:'missing',
+		setlist:['missing',],
+	},
 ];
 // console.log('Project group sets:',projectGroupMatrixData);
 
@@ -455,6 +490,19 @@ const projectGroupMatrixData = [
 
 // Check sizes of project groups. 
 // checkProjectGroupSizes();
+
+
+// Save list of projects missing from project database. 
+let nullGroup = getProjectGroupById('missing');
+// console.log('Missing projects:',nullGroup);
+nullGroup.grouplist = getMissingProjectIds();
+// console.log('Missing projects:',nullGroup);
+
+// Save list of projects missing from project group database. 
+let orphanGroup = getProjectGroupById('orphans');
+// console.log('Orphan projects:',orphanGroup);
+orphanGroup.grouplist = getOrphanProjectIds();
+// console.log('Orphan projects:',orphanGroup);
 
 
 /*****/
@@ -507,7 +555,7 @@ function checkProjectGroupSizes() {
 }
 
 // Get projects that do not belong to any project group. 
-function getOrphanProjects() {
+function getOrphanProjectIds() {
 
 	// Initialize result. 
 	let result = [];

@@ -15,55 +15,71 @@ const metacategoryblocksdestination = document.querySelector('div#container sect
 
 
 // Load blocks for development methods. 
-loadMethodBlocks();
+loadMethodBlockSet();
 
 // Load blocks for project categories. 
-loadCategoryBlocks();
+loadCategoryBlockSet();
 
 // Load blocks for project meta-categories. 
-loadMetaCategoryBlocks();
+loadMetaCategoryBlockSet();
 
 
 /*****/
 
 
 // Load blocks for development methods. 
-function loadMethodBlocks() {
+function loadMethodBlockSet() {
 	if(!methodblocksdestination) return;
 
-	// Initialize result. 
-	let result = createBlockSet(methodData, 'icontag','header','description');
+	// Get key for icon tag. 
+	let t = 'icontag';
+	// Get key for name. 
+	let n = 'header';
+	// Get key for description. 
+	let d = 'description';
 
-	// Add result to page destination. 
-	methodblocksdestination.innerHTML = result;
+	// Add block set to page destination. 
+	methodblocksdestination.innerHTML = createBlockSet(methodData, t,n,d);
 }
 
 // Load blocks for project categories. 
-function loadCategoryBlocks() {
+function loadCategoryBlockSet() {
 	if(!categoryblocksdestination) return;
+
+	// Get key for icon tag. 
+	let t = 'groupicontag';
+	// Get key for name. 
+	let n = 'groupname';
+	// Get key for description. 
+	let d = 'groupdescription';
+	// Get key for id. 
+	let idkey = 'groupid';
 
 	// Get url prefix for blocks. 
 	let urlprefix = './category/?gid=';
 
-	// Initialize result. 
-	let result = createBlockSet(projectGroupData, 'groupicontag','groupname','groupdescription', urlprefix,'groupid', true);
-
-	// Add result to page destination. 
-	categoryblocksdestination.innerHTML = result;
+	// Add block set to page destination. 
+	categoryblocksdestination.innerHTML = createBlockSet(projectGroupData, t,n,d, idkey,urlprefix,true);
 }
 
 // Load blocks for project meta-categories. 
-function loadMetaCategoryBlocks() {
+function loadMetaCategoryBlockSet() {
 	if(!metacategoryblocksdestination) return;
+
+	// Get key for icon tag. 
+	let t = 'groupicontag';
+	// Get key for name. 
+	let n = 'groupname';
+	// Get key for description. 
+	let d = 'groupdescription';
+	// Get key for id. 
+	let idkey = 'groupid';
 
 	// Get url prefix for blocks. 
 	let urlprefix = './metacategory/?gid=';
 
-	// Initialize result. 
-	let result = createBlockSet(projectMetaGroupData, 'groupicontag','groupname','groupdescription', urlprefix,'groupid', true);
-
-	// Add result to page destination. 
-	metacategoryblocksdestination.innerHTML = result;
+	// Add block set to page destination. 
+	metacategoryblocksdestination.innerHTML = createBlockSet(projectMetaGroupData, t,n,d, idkey,urlprefix,true);
 }
 
 // Create layout for set of block items. 

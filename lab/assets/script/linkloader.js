@@ -10,20 +10,11 @@ const headnavlistdestinationR = document.querySelector('div#container nav.navbar
 // console.log(headnavmenu);
 
 // Get matrix destination for footer navigation. 
-const footMatrixDestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix');
-// console.log(footMatrixDestination);
+const linkmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix');
+// console.log(linkmatrixdestination);
 
 
 /*****/
-
-
-// Get projects missing from project database. 
-let nullProjectIds = getMissingProjects();
-// console.log('Missing project ids:',nullProjectIds);
-
-// Get projects missing from project group database. 
-let orphanProjectIds = getOrphanProjects();
-// console.log('Orphan project ids:',orphanProjectIds);
 
 
 /*****/
@@ -38,6 +29,44 @@ loadProjectGroupMatrix();
 
 /*****/
 
+
+// Create navigation item. 
+function createNavLink(url,caption,icontag,newwindowmode) {
+
+	// Compile layout for navigation item. 
+	return `
+	<!-- navitem -->
+	<li class="navitem">
+	
+		<!-- navlink -->
+		<a class="navlink" href="${ getRelativeUrl(url) }" ${ newwindowmode ? 'target="_blank"' : '' }>
+
+			${ icontag ? createIcon(icontag) : '' }
+
+			<!-- caption -->
+			<span class="caption">${caption}</span>
+			<!-- /caption -->
+			
+		</a>
+		<!-- /navlink -->
+
+	</li>
+	<!-- /navitem -->`;
+
+	/****/
+
+	// Create layout for link icon. 
+	function createIcon(icontag) {
+		
+		// Compile link icon. 
+		return `
+		<!-- icon -->
+		<svg class="icon ${icontag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+			${ iconData[icontag] }
+		</svg>
+		<!-- /icon -->`;
+	}
+}
 
 // Add navigation links to header. 
 function loadNavLinks() {
@@ -59,8 +88,8 @@ function loadNavLinks() {
 		// Initialize list of items. 
 		let list = '';
 
-		// Set target of links. 
-		let newwindow = true;
+		// Set state of new window mode. 
+		let newwindowmode = true;
 
 		// Accumulate list of items. 
 		for(link of linklist) {
@@ -75,7 +104,7 @@ function loadNavLinks() {
 			let icontag = link.icontag;
 
 			// Compile navigation item. 
-			list += createNavLink(url,caption,icontag,newwindow);
+			list += createNavLink(url,caption,icontag,newwindowmode);
 		}
 
 		// Return list of items. 
@@ -83,13 +112,11 @@ function loadNavLinks() {
 	}
 }
 
-
 // Add matrix of project links to footer. 
 function loadProjectGroupMatrix() {
 
 	// Initialize matrix layout. 
 	let matrixlayout = '';
-	let addExtras = true;
 
 	// Initialize total number of project links in matrix. 
 	// let totalMatrixLinks = 0;
@@ -97,15 +124,8 @@ function loadProjectGroupMatrix() {
 	// Add grouped projects to matrix layout. 
 	matrixlayout += createGroupedProjects();
 
-	// Add orphan projects to matrix layout. 
-	if(addExtras) matrixlayout += createOrphanProjects();
-
-	// Add missing projects to matrix layout. 
-	if(addExtras) matrixlayout += createMissingProjects();
-
 	// Add matrix layout to page. 
-	footMatrixDestination.innerHTML = matrixlayout;
-	// footMatrixDestination.insertAdjacentHTML('beforeend',matrixlayout);
+	linkmatrixdestination.innerHTML = matrixlayout;
 	// console.log('Total number of matrix project links:',totalMatrixLinks);
 
 	// // Accumulate list boxes. 
@@ -116,15 +136,15 @@ function loadProjectGroupMatrix() {
 
 	/****/
 
-	// Create layout for column of project groups. 
-	function createGroupSet(projectgroupset) {
-		// console.log('projectgroupset:',projectgroupset);
+	// Create layout for set of project lists. 
+	function createProjectListSet(projectgroupslist) {
+		// console.log('Project group set:',projectgroupslist);
 
 		// Initialize result. 
 		let result = '';
 
 		// Go thru each project group in set. 
-		for(let projectgroup of projectgroupset) {
+		for(let projectgroup of projectgroupslist) {
 
 			// // Proceed if project group exists. 
 			// if(projectgroup) {
@@ -140,7 +160,7 @@ function loadProjectGroupMatrix() {
 			result += `
 			<!-- navlist -->
 			<ul class="navlist">
-				${ projectgroup ? createProjectGroup(projectgroup.grouplist) : '' }
+				${ projectgroup ? createProjectList(projectgroup.grouplist) : '' }
 			</ul>
 			<!-- /navlist -->`;
 		}
@@ -150,12 +170,13 @@ function loadProjectGroupMatrix() {
 
 		/***/
 
-		// Create layout for group of projects. 
-		function createProjectGroup(projectgroupidlist) {
+		// Create layout for list of projects. 
+		function createProjectList(projectgroupidlist) {
 			// console.log('Project group id list:',projectgroupidlist);
 
 			// Set window target for project links. 
-			let newwindow = true;
+			// Set state of new window mode. 
+			let newwindowmode = true;
 
 			// Initialize layout for project list. 
 			let projectgrouplayout = '';
@@ -182,7 +203,7 @@ function loadProjectGroupMatrix() {
 				// console.log('\ticontag:',icontag);
 
 				// Compile navigation item. 
-				projectgrouplayout += createNavLink(url,caption,icontag,newwindow);
+				projectgrouplayout += createNavLink(url,caption,icontag,newwindowmode);
 			}
 
 			// Return layout for project list. 
@@ -198,101 +219,29 @@ function loadProjectGroupMatrix() {
 	
 		// Go thru each set of project groups. 
 		for(let i in projectGroupMatrixData) {
+
+			// Get project group set. 
+			let set = projectGroupMatrixData[i];
+
+			// Get list of ids for project groups. 
+			let projectgroupidslist = set.setlist;
+			console.log('Project group ids:',projectgroupidslist);
 	
-			// Get set of project groups. 
-			let projectgroupset = projectGroupMatrixData[i].map( getProjectGroupById );
-			console.log('Project group set:',projectgroupset);
+			// Get list of project groups. 
+			let projectgroupslist = projectgroupidslist.map( getProjectGroupById );
+			console.log('Project groups:',projectgroupslist);
 		
 			// Add list box to result layout. 
 			result += `
-			<!-- listbox -->
-			<div class="listbox b${i}">
-				${ createGroupSet(projectgroupset) }
+			<!-- listset -->
+			<div class="listset ${ set.setid }">
+				${ createProjectListSet(projectgroupslist) }
 			</div>
-			<!-- /listbox -->`;
+			<!-- /listset -->`;
 		}
 
 		// Return result layout. 
 		return result;
-	}
-
-	// Create box layout for missing projects. 
-	function createMissingProjects() {
-
-		// Get set of project groups. 
-		let projectgroupset = [
-			{
-				groupname:'Missing Projects',
-				grouplist:nullProjectIds,
-			},
-		];
-		
-		// Return result layout. 
-		return `
-		<!-- listbox -->
-		<div class="listbox missing">
-			${ createGroupSet(projectgroupset) }
-		</div>
-		<!-- /listbox -->`;
-	}
-
-	// Create box layout for orphan projects. 
-	function createOrphanProjects() {
-
-		// Get set of project groups. 
-		let projectgroupset = [
-			{
-				groupname:'Orphan Projects',
-				grouplist:orphanProjectIds,
-			},
-		];
-		
-		// Return result layout. 
-		return `
-		<!-- listbox -->
-		<div class="listbox orphans">
-			${ createGroupSet(projectgroupset) }
-		</div>
-		<!-- /listbox -->`;
-	}
-}
-
-
-// Create navigation item. 
-function createNavLink(url,caption,icontag,newwindow) {
-
-	// Compile layout for navigation item. 
-	return `
-	<!-- navitem -->
-	<li class="navitem">
-	
-		<!-- navlink -->
-		<a class="navlink" href="${ getRelativeUrl(url) }" ${ newwindow ? 'target="_blank"' : '' }>
-
-			${ icontag ? createIcon(icontag) : '' }
-
-			<!-- caption -->
-			<span class="caption">${caption}</span>
-			<!-- /caption -->
-			
-		</a>
-		<!-- /navlink -->
-
-	</li>
-	<!-- /navitem -->`;
-
-	/****/
-
-	// Create layout for link icon. 
-	function createIcon(icontag) {
-		
-		// Compile link icon. 
-		return `
-		<!-- icon -->
-		<svg class="icon ${icontag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-			${ iconData[icontag] }
-		</svg>
-		<!-- /icon -->`;
 	}
 }
 

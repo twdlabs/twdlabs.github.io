@@ -1268,7 +1268,7 @@ function getProjectById(pid) {
 }
 
 // Get projects missing from database. 
-function getMissingProjects() {
+function getMissingProjectIds() {
 
 	// Initialize result. 
 	let result = [];

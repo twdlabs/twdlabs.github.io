@@ -206,24 +206,25 @@ div#container footer.footer div.grid div.brand img.logo {height:6rem; margin-top
 div#container footer.footer div.grid div.brand p.textcopy {color:var(--forecolor2); margin:0; margin-top:.5rem;}
 div#container footer.footer div.grid div.social {display:none;}
 div#container footer.footer div.grid div.linkmatrix {display:grid; /* grid-template-columns:repeat(5,1fr); */}
-div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2 box3 box4' 'missing orphans xyz xyz xyz';}
-/* div#container footer.footer div.grid div.linkmatrix div.listbox {flex-basis:0; flex-grow:1; flex-shrink:0;} */
-div#container footer.footer div.grid div.linkmatrix div.listbox {text-align:left; /* padding:1rem; */ margin-right:2rem; margin-top:1.5rem;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.x {display:none;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.b0 {grid-area:box0;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.b1 {grid-area:box1;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.b2 {grid-area:box2;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.b3 {grid-area:box3;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.b4 {grid-area:box4;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.orphans {grid-area:orphans;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.missing {grid-area:missing;}
-div#container footer.footer div.grid div.linkmatrix div.listbox.brand {grid-area:brand; /* grid-column:1/span6; */ /* grid-area:b; flex-grow:2; */}
-div#container footer.footer div.grid div.linkmatrix div.listbox h2.head {color:var(--forecolor); font-size:1.375rem; font-weight:500; /* white-space:nowrap; */ margin:0; margin-top:2.5rem;}
-div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist {list-style:none; padding:0; margin:0; /* margin-top:1.25rem; */}
-div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.navitem {color:var(--forecolor2); margin-top:.5rem;}
-div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.navitem a.navlink {color:inherit; font-size:1.25rem; text-decoration:none; /* white-space:nowrap; */}
-/* div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.navitem a.navlink svg.icon {display:none;} */
-/* div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.navitem a.navlink span.caption {} */
+div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'set0 set1 set2 set3 set4' 'missing missing missing missing missing';}
+/* div#container footer.footer div.grid div.linkmatrix div.listset {flex-basis:0; flex-grow:1; flex-shrink:0;} */
+div#container footer.footer div.grid div.linkmatrix div.listset {text-align:left; /* padding:1rem; */ margin-right:2rem; margin-top:1.5rem;}
+div#container footer.footer div.grid div.linkmatrix div.listset.x {display:none;}
+div#container footer.footer div.grid div.linkmatrix div.listset.set0 {grid-area:set0;}
+div#container footer.footer div.grid div.linkmatrix div.listset.set1 {grid-area:set1;}
+div#container footer.footer div.grid div.linkmatrix div.listset.set2 {grid-area:set2;}
+div#container footer.footer div.grid div.linkmatrix div.listset.set3 {grid-area:set3;}
+div#container footer.footer div.grid div.linkmatrix div.listset.set4 {grid-area:set4;}
+div#container footer.footer div.grid div.linkmatrix div.listset.orphans {grid-area:orphans;}
+div#container footer.footer div.grid div.linkmatrix div.listset.missing {grid-area:missing;}
+div#container footer.footer div.grid div.linkmatrix div.listset.brand {grid-area:brand; /* grid-column:1/span6; */ /* grid-area:b; flex-grow:2; */}
+div#container footer.footer div.grid div.linkmatrix div.listset h2.head {color:var(--forecolor); font-size:1.375rem; font-weight:500; /* white-space:nowrap; */ margin:0; margin-top:2.5rem;}
+div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {list-style:none; padding:0; margin:0; /* margin-top:1.25rem; */}
+div#container footer.footer div.grid div.linkmatrix div.listset.missing ul.navlist {display:grid; grid-template-columns:repeat(5,1fr);}
+div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem {color:var(--forecolor2); margin-top:.5rem;}
+div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink {color:inherit; font-size:1.25rem; text-decoration:none; /* white-space:nowrap; */}
+/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink svg.icon {display:none;} */
+/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink span.caption {} */
 
 
 
@@ -240,8 +241,12 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* Footer */
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {} */
-	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(3,1fr);} */
-	/* div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2 box3' 'box4 orphans orphans orphans' 'missing missing missing missing';} */
+	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(4,1fr);} */
+	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'set0 set1 set2 set3' 'set4 missing missing missing';}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {} */
+	div#container footer.footer div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(3,1fr);}
 }
 
 /* Tablet Screen */
@@ -293,12 +298,13 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {} */
 	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(3,1fr);} */
-	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1 box2' 'box3 box4 orphans' 'missing missing missing';}
-	/* div#container footer.footer div.grid div.linkmatrix div.listbox {} */
-	div#container footer.footer div.grid div.linkmatrix div.listbox h2.head {margin-top:1.5rem;}
-	/* div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist {} */
-	/* div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.navitem {} */
-	div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.navitem a.navlink {font-size:1.125rem;}
+	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'set0 set1 set2' 'set3 set4 orphans' 'missing missing missing';}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	div#container footer.footer div.grid div.linkmatrix div.listset h2.head {margin-top:1.5rem;}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {} */
+	div#container footer.footer div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(4,1fr);}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem {} */
+	div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink {font-size:1.125rem;}
 }
 
 /* Big Smartphone Screen */
@@ -322,8 +328,7 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	div#container footer.footer {padding:1.5rem 2.5rem 6rem;}
 	/* div#container footer.footer div.grid {} */
 	/* div#container footer.footer div.grid {flex-direction:column; align-items:center; text-align:center;} */
-	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(2,1fr);} */
-	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'box0 box1' 'box2 box3' 'box4 orphans' 'missing missing';}
+	/* div#container footer.footer div.grid div.linkmatrix {} */
 }
 
 /* Medium Smartphone Screen */
@@ -349,7 +354,11 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* Footer */
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {} */
-	/* div#container footer.footer div.grid div.linkmatrix {} */
+	/* div#container footer.footer div.grid div.linkmatrix {grid-template-columns:repeat(2,1fr);} */
+	div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'set0 set1' 'set2 set3' 'set4 xyz' 'missing missing';}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	div#container footer.footer div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(3,1fr);}
 }
 
 /* Small Smartphone Screen */
@@ -377,9 +386,10 @@ div#container footer.footer div.grid div.linkmatrix div.listbox ul.navlist li.na
 	/* div#container footer.footer div.grid div.brand {display:flex; flex-direction:column; align-items:center;} */
 	/* div#container footer.footer div.grid div.brand img.logo {margin:0; margin-top:.5rem;} */
 	div#container footer.footer div.grid div.linkmatrix {display:flex; flex-direction:column;}
-	div#container footer.footer div.grid div.linkmatrix div.listbox {text-align:center; margin-right:0; margin-top:0;}
+	div#container footer.footer div.grid div.linkmatrix div.listset {text-align:center; margin-right:0; margin-top:0;}
 	div#container footer.footer div.grid div.linkmatrix.compact {margin-top:2rem;}
-	div#container footer.footer div.grid div.linkmatrix.compact div.listbox h2.head {font-weight:200; margin-top:.375rem;}
-	div#container footer.footer div.grid div.linkmatrix.compact div.listbox ul.navlist {max-height:0; overflow:hidden;}
-	/* div#container footer.footer div.grid div.linkmatrix.compact div.listbox ul.navlist.active {} */
+	div#container footer.footer div.grid div.linkmatrix.compact div.listset h2.head {font-weight:200; margin-top:.375rem;}
+	div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist {max-height:0; overflow:hidden;}
+	div#container footer.footer div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(2,1fr);}
+	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist.active {} */
 }
