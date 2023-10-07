@@ -83,7 +83,7 @@ function loadMetaCategoryBlockSet() {
 }
 
 // Create layout for set of block items. 
-function createBlockSet(datasource, t,n,d, urlprefix,idtag, openLinksInNewTab) {
+function createBlockSet(datasource, t,n,d, idtag,urlprefix,openLinksInNewTab) {
 
 	// Initialize result layout. 
 	let result = '';
