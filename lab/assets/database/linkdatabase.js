@@ -4,7 +4,7 @@
 // Define navigation link data. 
 const navLinkData = {
 	groupname:'Links',
-	grouplist:[
+	groupidlist:[
 		{
 			icontag:'profile',
 			linkurl:'./about',
@@ -32,7 +32,7 @@ const navLinkData = {
 // Define social link data. 
 const socialLinkData = {
 	groupname:'Community',
-	grouplist:[
+	groupidlist:[
 		{
 			icontag:'twitter',
 			linkurl:'javascript:void(0)',

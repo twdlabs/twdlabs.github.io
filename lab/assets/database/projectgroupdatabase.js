@@ -66,7 +66,7 @@ const projectGroupData = [
 	// 	groupicontag:'motherboard',
 	// 	groupicontag:'clipboard',
 	// 	groupdescription:'',
-	// 	grouplist:[
+	// 	groupidlist:[
 	// 	],
 	// },
 
@@ -75,7 +75,7 @@ const projectGroupData = [
 		groupname:'Legacy Dashboards',
 		groupicontag:'oldpc',
 		groupdescription:'Old dashboard projects integrated as one application',
-		grouplist:[
+		groupidlist:[
 			'chooser',
 			'clone',
 			'evolution',
@@ -94,7 +94,7 @@ const projectGroupData = [
 		groupname:'CSS Lessons',
 		groupicontag:'paintpalette',
 		groupdescription:'Practice in design and animation using cascading style sheets',
-		grouplist:[
+		groupidlist:[
 			'anime',
 			'aspectratio',
 			'banner',
@@ -131,7 +131,7 @@ const projectGroupData = [
 		groupname:'JS Lessons',
 		groupicontag:'gear',
 		groupdescription:'Practice in dynamic app functionality using JavaScript',
-		grouplist:[
+		groupidlist:[
 			'audio',
 			'colorpicker',
 			'cookie',
@@ -148,8 +148,8 @@ const projectGroupData = [
 		groupid:'aw',
 		groupname:'App Widgets',
 		groupicontag:'app',
-		groupdescription:'Various widgets to enhance design and/or functionality of apps',
-		grouplist:[
+		groupdescription:'Various tools and widgets to enhance app design and functionality',
+		groupidlist:[
 			'accordion',
 			'accordion2',
 			'analogclock',
@@ -207,7 +207,7 @@ const projectGroupData = [
 		groupname:'Commerce Widgets',
 		groupicontag:'money',
 		groupdescription:'Web components to support ecommerce web development',
-		grouplist:[
+		groupidlist:[
 			'admin',
 			'admin2',
 			'checkout',
@@ -228,7 +228,7 @@ const projectGroupData = [
 		groupname:'Game Widgets',
 		groupicontag:'joystick',
 		groupdescription:'Web components for use in game design and game development',
-		grouplist:[
+		groupidlist:[
 			'3d',
 			'animation',
 			'blockmenu',
@@ -260,8 +260,8 @@ const projectGroupData = [
 		groupid:'mw',
 		groupname:'Media Widgets',
 		groupicontag:'mediacollection',
-		groupdescription:'Presentations for various forms of communication media',
-		grouplist:[
+		groupdescription:'Seamless presentations for various forms of communication media',
+		groupidlist:[
 			'autoslideshow',
 			'cardflipgallery3d',
 			'carousel3d',
@@ -281,8 +281,8 @@ const projectGroupData = [
 		groupicontag:'dropmenu',
 		groupname:'Navigation Widgets',
 		groupicontag:'signpost',
-		groupdescription:'Lorem ipsum dolor emet',
-		grouplist:[
+		groupdescription:'Web components and tools to facilitate smooth web navigation',
+		groupidlist:[
 			'backToTop',
 			'breadcrumbs',
 			'dotnav',
@@ -300,7 +300,7 @@ const projectGroupData = [
 		groupname:'Design Clones',
 		groupicontag:'tv',
 		groupdescription:'Various design ideas for arranging apps and landing pages',
-		grouplist:[
+		groupidlist:[
 			'10000cards',
 			'apple',
 			'application',
@@ -328,7 +328,7 @@ const projectGroupData = [
 		groupname:'Design Samples',
 		groupicontag:'paintbrush',
 		groupdescription:'Design ideas from various apps and websites',
-		grouplist:[
+		groupidlist:[
 			'angeldemon',
 			'atg',
 			'band',
@@ -345,7 +345,7 @@ const projectGroupData = [
 		groupname:'App Prototypes',
 		groupicontag:'smartphone',
 		groupdescription:'Seeds of potential stand-alone applications and websites',
-		grouplist:[
+		groupidlist:[
 			'bizmath',
 			'blogsocial',
 			'calculator',
@@ -375,7 +375,7 @@ const projectGroupData = [
 		groupname:'Client Projects',
 		groupicontag:'receipt',
 		groupdescription:'Website projects completed for various clients',
-		grouplist:[
+		groupidlist:[
 			'blog',
 			'cali',
 			'caliB',
@@ -397,16 +397,18 @@ const projectGroupData = [
 		groupname:'Orphan Projects',
 		groupicontag:'clipboard',
 		groupdescription:'',
-		grouplist:[
+		groupidlist:[
 		],
+		ghostblock:true,
 	},
 	{
 		groupid:'missing',
 		groupname:'Missing Projects',
 		groupicontag:'clipboard',
 		groupdescription:'',
-		grouplist:[
+		groupidlist:[
 		],
+		ghostblock:true,
 	},
 
 ];
@@ -420,7 +422,7 @@ const projectMetaGroupData = [
 		groupname:'Dev Lessons',
 		groupicontag:'lightbulb',
 		groupdescription:'Learning new concepts in web development',
-		grouplist:[
+		groupidlist:[
 			'cl','jl',
 		],
 	},
@@ -429,7 +431,7 @@ const projectMetaGroupData = [
 		groupname:'Designs',
 		groupicontag:'copy',
 		groupdescription:'Various designs for apps, dashboards, and websites',
-		grouplist:[
+		groupidlist:[
 			'dc','ds',
 		],
 	},
@@ -438,7 +440,7 @@ const projectMetaGroupData = [
 		groupname:'Widgets',
 		groupicontag:'motherboard',
 		groupdescription:'Reusable sub-components for other projects',
-		grouplist:[
+		groupidlist:[
 			'aw','cw','gw','mw','nw',
 		],
 	},
@@ -447,7 +449,7 @@ const projectMetaGroupData = [
 		groupname:'Prototypes',
 		groupicontag:'smartphone',
 		groupdescription:'Stand-alone applications and websites',
-		grouplist:[
+		groupidlist:[
 			'ap','ld','cp',
 		],
 	},
@@ -492,21 +494,30 @@ const projectGroupMatrixData = [
 // checkProjectGroupSizes();
 
 
-// Save list of projects missing from project database. 
-let nullGroup = getProjectGroupById('missing');
-// console.log('Missing projects:',nullGroup);
-nullGroup.grouplist = getMissingProjectIds();
-// console.log('Missing projects:',nullGroup);
-
-// Save list of projects missing from project group database. 
-let orphanGroup = getProjectGroupById('orphans');
-// console.log('Orphan projects:',orphanGroup);
-orphanGroup.grouplist = getOrphanProjectIds();
-// console.log('Orphan projects:',orphanGroup);
+// Add extra project groups. 
+addExtraProjectGroups();
 
 
 /*****/
 
+
+// Add extra project groups. 
+function addExtraProjectGroups() {
+
+	// Save list of projects missing from project database. 
+	let nullGroup = getProjectGroupById('missing');
+	
+	// Save list of projects missing from project group database. 
+	let orphanGroup = getProjectGroupById('orphans');
+
+	// console.log('Missing projects:',nullGroup);
+	nullGroup.groupidlist = getMissingProjectIds();
+	// console.log('Missing projects:',nullGroup);
+	
+	// console.log('Orphan projects:',orphanGroup);
+	orphanGroup.groupidlist = getOrphanProjectIds();
+	// console.log('Orphan projects:',orphanGroup);
+}
 
 // Get project group by id. 
 function getProjectGroupById(pgid) {
@@ -538,13 +549,13 @@ function checkProjectGroupSizes() {
 		let metagroupsize = 0;
 
 		// Get list of project groups for project meta-group. 
-		let projectmetagrouplist = projectmetagroup.grouplist;
+		let projectmetagroupidlist = projectmetagroup.groupidlist;
 
 		// Go thru each project group. 
-		for(let pgid of projectmetagrouplist) {
+		for(let pgid of projectmetagroupidlist) {
 
 			// Get size of current project group. 
-			let groupsize = getProjectGroupById(pgid).grouplist.length;
+			let groupsize = getProjectGroupById(pgid).groupidlist.length;
 			console.log('\t',pgid,groupsize);
 
 			// Add size of current project group to size of project meta-group. 
@@ -573,7 +584,7 @@ function getOrphanProjectIds() {
 		for(let pg of projectGroupData) {
 
 			// Check if project found in group. 
-			projectFoundInGroup = pg.grouplist.includes(pid);
+			projectFoundInGroup = pg.groupidlist.includes(pid);
 			// End search if project found in group. 
 			if(projectFoundInGroup) break;
 		}

@@ -32,9 +32,11 @@ div#container section.blog div.grid div.body.split {display:grid; grid-template-
 
 /* Blog Section: Posts */
 div#container section.blog div.grid div.body div.posts {margin-top:3rem;}
-div#container section.blog div.grid div.body div.posts ul.postlist {display:grid; grid-template-columns:repeat(8,1fr); grid-gap:1.25rem; list-style:none; padding:0; margin:0; margin-top:1.5rem;}
+div#container section.blog div.grid div.body div.posts ul.postlist {display:grid; grid-template-columns:repeat(8,1fr); grid-gap:1.25rem; transition:.25s;}
+div#container section.blog div.grid div.body div.posts ul.postlist {list-style:none; overflow:hidden; padding:0; margin:0; margin-top:1.5rem;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist {display:flex; flex-wrap:wrap; justify-content:center;} */
-div#container section.blog div.grid div.body div.posts ul.postlist.big {grid-template-columns:repeat(5,1fr);}
+div#container section.blog div.grid div.body div.posts ul.postlist.big {grid-template-columns:repeat(6,1fr);}
+div#container section.blog div.grid div.body div.posts ul.postlist.featured.b {max-height:0;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.gone {opacity:.375; transition:.375s;}
@@ -68,10 +70,16 @@ div#container section.blog div.grid div.body.split div.filtertabs.active {max-he
 div#container section.blog div.grid div.body.split div.filtertabs div.filterpiece {height:40rem;}
 
 /* Blog Section: Zoomer */
-div#container section.blog div.grid div.body div.zoomer {display:flex; align-items:center; justify-content:center; margin:2rem 0;}
-div#container section.blog div.grid div.body div.zoomer div.zoombtn {font-size:3rem; cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.body div.zoomer div.zoombtn {display:grid; place-items:center; width:100%; padding:.5rem 2rem; border-radius:var(--cornersize); /* margin:0 auto; */ box-shadow:var(--boxshadow);}
-div#container section.blog div.grid div.body div.zoomer {display:none;}
+div#container section.blog div.grid div.body div.posts div.zoomer {display:flex; flex-direction:column; align-items:center; justify-content:center; margin:2rem 0;}
+div#container section.blog div.grid div.body div.posts div.zoomer.x {display:none;}
+div#container section.blog div.grid div.body div.posts div.zoomer.grow {display:none;}
+div#container section.blog div.grid div.body div.posts div.zoomer.shrink {display:block;}
+div#container section.blog div.grid div.body div.posts.mini div.zoomer.grow {display:block;}
+div#container section.blog div.grid div.body div.posts.mini div.zoomer.shrink {display:none;}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {font-size:1rem; cursor:pointer; user-select:none;}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {display:flex; flex-direction:column; align-items:center; /* width:100%; */ padding:.5rem 2rem; border-radius:var(--cornersize); /* margin:0 auto; */ box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon:only-child {font-size:3rem;}
+/* div#container section.blog div.grid div.body div.posts div.zoomer {display:none;} */
 
 /* Blog Section: More */
 div#container section.blog div.grid div.body div.more {display:flex; flex-direction:column; align-items:center; padding:2rem 0; margin-top:1rem;}
@@ -109,7 +117,7 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
 
 	/* Blog Section: Zoomer */
-	/* div#container section.blog div.grid div.body div.zoomer {} */
+	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: More */
 	/* div#container section.blog div.grid div.body div.more {} */
@@ -139,7 +147,7 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
 
 	/* Blog Section: Zoomer */
-	/* div#container section.blog div.grid div.body div.zoomer {} */
+	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: More */
 	/* div#container section.blog div.grid div.body div.more {} */
@@ -169,7 +177,7 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
 
 	/* Blog Section: Zoomer */
-	/* div#container section.blog div.grid div.body div.zoomer {} */
+	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: More */
 	/* div#container section.blog div.grid div.body div.more {} */
@@ -199,7 +207,7 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
 
 	/* Blog Section: Zoomer */
-	/* div#container section.blog div.grid div.body div.zoomer {} */
+	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: More */
 	/* div#container section.blog div.grid div.body div.more {} */
@@ -227,7 +235,7 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
 
 	/* Blog Section: Zoomer */
-	/* div#container section.blog div.grid div.body div.zoomer {} */
+	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: More */
 	/* div#container section.blog div.grid div.body div.more {} */
@@ -255,7 +263,7 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
 
 	/* Blog Section: Zoomer */
-	/* div#container section.blog div.grid div.body div.zoomer {} */
+	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: More */
 	/* div#container section.blog div.grid div.body div.more {} */

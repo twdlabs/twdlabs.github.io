@@ -38,7 +38,7 @@
 				<div class="bin">
 
 					<!-- navtoggler -->
-					<div class="navtoggler" onclick="toggleNavMenu()">
+					<div class="navtoggler" onclick="toggleSidebar()">
 
 						<!-- icon -->
 						<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -79,14 +79,14 @@
 					</a>
 					<!-- /brand -->
 
-					<!-- navmenu -->
-					<div class="navmenu">
+					<!-- sidebar -->
+					<div class="sidebar">
 
 						<!-- headbar -->
 						<div class="headbar">
 
 							<!-- brand -->
-							<a class="brand" href="#top" onclick="toggleNavMenu()">
+							<a class="brand" href="#top" onclick="toggleSidebar()">
 		
 								<!-- logo -->
 								<img class="logo" src="./../admin/images/libraryicon.png">
@@ -116,7 +116,7 @@
 							<!-- /brand -->
 
 							<!-- navtoggler -->
-							<div class="navtoggler" onclick="toggleNavMenu()">
+							<div class="navtoggler" onclick="toggleSidebar()">
 		
 								<!-- icon -->
 								<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -131,7 +131,7 @@
 						<!-- /headbar -->
 
 						<!-- navlist -->
-						<ul class="navlist l">
+						<ul class="navlist a">
 	
 							<!-- navitem -->
 							<li class="navitem">
@@ -246,7 +246,7 @@
 						<!-- /livesearch -->
 
 						<!-- navlist -->
-						<ul class="navlist r">
+						<ul class="navlist b">
 	
 							<!-- navitem -->
 							<li class="navitem">
@@ -340,7 +340,7 @@
 						<!-- /navlist -->
 
 					</div>
-					<!-- /navmenu -->
+					<!-- /sidebar -->
 								
 					<!-- themetoggler -->
 					<div class="themetoggler">
@@ -576,20 +576,10 @@
 					<div class="body">
 
 						<!-- posts -->
-						<div class="posts">
-	
-							<!-- emptylabel -->
-							<div class="emptylabel">
-		
-								<!-- textcopy -->
-								<p class="textcopy">No matches found.</p>
-								<!-- /textcopy -->
-		
-							</div>
-							<!-- /emptylabel -->
+						<div class="posts mini">
 		
 							<!-- postlist -->
-							<ul class="postlist featured big">
+							<ul class="postlist featured a big">
 		
 								<!-- postcard -->
 								<li class="postcard" data-projectid="desktop" title="Description goes here">
@@ -625,6 +615,118 @@
 		
 							</ul>
 							<!-- /postlist -->
+		
+							<!-- postlist -->
+							<ul class="postlist featured b big">
+		
+								<!-- postcard -->
+								<li class="postcard" data-projectid="desktop" title="Description goes here">
+			
+									<!-- projectlink -->
+									<a class="projectlink" href="../xyzprojectid/index.html" target="_blank">
+					
+										<!-- preview -->
+										<div class="preview">
+			
+											<!-- preview -->
+											<iframe class="preview" src="../xyzprojectid/index.html"></iframe>
+											<!-- /preview -->
+			
+										</div>
+										<!-- /preview -->
+		
+										<!-- caption -->
+										<div class="caption">
+			
+											<!-- name -->
+											<span class="name"></span>
+											<!-- /name -->
+		
+										</div>
+										<!-- /caption -->
+		
+									</a>
+									<!-- /projectlink -->
+		
+								</li>
+								<!-- /postcard -->
+		
+							</ul>
+							<!-- /postlist -->
+	
+							<!-- zoomer -->
+							<div class="zoomer grow">
+								
+								<!-- zoombtn -->
+								<div class="zoombtn growbtn" onclick="toggleLikeAccordion(postssection,featuredpostsdestinationB)">
+
+									<!-- caption -->
+									<span class="caption">See More</span>
+									<!-- /caption -->
+									
+									<!-- icon -->
+									<svg class="icon chevrondown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+									</svg>
+									<!-- /icon -->
+									
+								</div>
+								<!-- /zoombtn -->
+		
+							</div>
+							<!-- /zoomer -->
+	
+							<!-- zoomer -->
+							<div class="zoomer shrink">
+								
+								<!-- zoombtn -->
+								<div class="zoombtn shrinkbtn" onclick="toggleLikeAccordion(postssection,featuredpostsdestinationB)">
+									
+									<!-- icon -->
+									<svg class="icon chevronup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+									</svg>
+									<!-- /icon -->
+
+									<!-- caption -->
+									<span class="caption">See less</span>
+									<!-- /caption -->
+									
+								</div>
+								<!-- /zoombtn -->
+		
+							</div>
+							<!-- /zoomer -->
+	
+							<!-- zoomer -->
+							<div class="zoomer x">
+								
+								<!-- zoombtn -->
+								<div class="zoombtn">
+									
+									<!-- icon -->
+									<svg class="icon hdots" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+									</svg>
+									<!-- /icon -->
+									
+								</div>
+								<!-- /zoombtn -->
+								
+								<!-- zoombtn -->
+								<div class="zoombtn">
+									
+									<!-- icon -->
+									<svg class="icon vdots" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+									</svg>
+									<!-- /icon -->
+									
+								</div>
+								<!-- /zoombtn -->
+		
+							</div>
+							<!-- /zoomer -->
 	
 							<!-- more -->
 							<div class="more">

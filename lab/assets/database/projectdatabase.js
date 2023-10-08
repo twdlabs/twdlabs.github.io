@@ -2,21 +2,37 @@
 
 
 // Define ids for featured projects. 
-const featuredProjectIdList = [
-	'admin','autoslideshow','analogclock','blog',
-	'calendar','chat','cluster','compound','crud',
-	'desktop','gallery','keyfinder','livesearch',
-	'merch','musicplayer',/* 'pong', */'resume','rolodex',
-	'toastprogress','univ','video',
+const featuredProjectIdListA = [
+	'blog',
+	'gallery',
+	'video',
+	'resume',
+	'rolodex',
+	'desktop',
+	'calendar',
+	'merch',
+	'toastprogress',
+	'crud',
+	'univ',
+	'pinyin',
+];
+const featuredProjectIdListB = [
+	'analogclock',
+	'admin','autoslideshow',
+	'band','banner','bizmath','blockmenu',
+	'chess',
+	'keyfinder','livesearch',
+	'musicplayer',
+	'3dnav',
 ];
 const featuredProjectIdListX = [
-	'band','banner','bizmath','blockmenu',
-	'canvas','chess','chooser',
+	'canvas','chat','chooser','cluster','compound',
 	'device','dragndrop','lander',
-	'pagination','pinyin','pixelart','pong',
-	'storage','tasks','3dnav',
+	'pagination','pixelart','pong',
+	'storage','tasks',
 ];
-// console.log('Featured project ids:',featuredProjectIdList);
+// console.log('Featured project ids:',featuredProjectIdListA);
+// console.log('Featured project ids:',featuredProjectIdListB);
 
 
 // Define project data. 
@@ -324,12 +340,12 @@ const projectData = [
 		created:'xyz',
 		authorid:'twd',
 		projectid:'cluster1d',
-		projectname:'K-Means Clustering',
+		projectname:'Data Clustering',
 	},{
 		created:'xyz',
 		authorid:'twd',
 		projectid:'cluster',
-		projectname:'K-Means Clustering (2D)',
+		projectname:'Data Clustering (2D)',
 	},{
 		created:'xyz',
 		authorid:'twd',

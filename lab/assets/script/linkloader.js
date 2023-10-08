@@ -2,12 +2,12 @@
 
 
 
-// Get navigation menu. 
-const headnavmenu = document.querySelector('div#container nav.navbar div.bin div.navmenu');
+// Get navigation sidebar. 
+const headsidebar = document.querySelector('div#container nav.navbar div.bin div.sidebar');
+// console.log(headsidebar);
 // Get list destinations for header navigation. 
-const headnavlistdestinationL = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.l');
-const headnavlistdestinationR = document.querySelector('div#container nav.navbar div.bin div.navmenu ul.navlist.r');
-// console.log(headnavmenu);
+const headnavlistdestinationA = document.querySelector('div#container nav.navbar div.bin div.sidebar ul.navlist.a');
+const headnavlistdestinationB = document.querySelector('div#container nav.navbar div.bin div.sidebar ul.navlist.b');
 
 // Get matrix destination for footer navigation. 
 const linkmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix');
@@ -72,13 +72,13 @@ function createNavLink(url,caption,icontag,newwindowmode) {
 function loadNavLinks() {
 
 	// Add result to page. 
-	// headnavmenu.innerHTML = result;
+	// headsidebar.innerHTML = result;
 
 	// Add list of links to page. 
-	headnavlistdestinationL.innerHTML = createLinkList(navLinkData.grouplist);
+	headnavlistdestinationA.innerHTML = createLinkList(navLinkData.groupidlist);
 
 	// Add list of links to page. 
-	headnavlistdestinationR.innerHTML = createLinkList(socialLinkData.grouplist);
+	headnavlistdestinationB.innerHTML = createLinkList(socialLinkData.groupidlist);
 
 	/****/
 
@@ -160,7 +160,7 @@ function loadProjectGroupMatrix() {
 			result += `
 			<!-- navlist -->
 			<ul class="navlist">
-				${ projectgroup ? createProjectList(projectgroup.grouplist) : '' }
+				${ projectgroup ? createProjectList(projectgroup.groupidlist) : '' }
 			</ul>
 			<!-- /navlist -->`;
 		}
@@ -245,9 +245,7 @@ function loadProjectGroupMatrix() {
 	}
 }
 
-// Toggle navigation menu. 
-function toggleNavMenu() {
-
-	// Toggle state of navigation menu. 
-	headnavmenu.classList.toggle('active');
+// Toggle state of navigation sidebar. 
+function toggleSidebar() {
+	headsidebar.classList.toggle('active');
 }

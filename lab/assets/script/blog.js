@@ -1,15 +1,18 @@
 
 
 
+// Get posts section. 
+const postssection = document.querySelector('div#container section.blog div.grid div.body div.posts');
 // Get destination for featured posts. 
-const featuredPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured');
-console.log('featuredPostsDestination:',featuredPostsDestination);
+const featuredpostsdestinationA = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.a');
+const featuredpostsdestinationB = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.b');
+console.log('Featured posts destination:',featuredpostsdestinationA,featuredpostsdestinationB);
 // Get destination for category posts. 
 const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.category');
-console.log('categoryPostsDestination:',categoryPostsDestination);
+console.log('Category posts destination:',categoryPostsDestination);
 // Get destination for archive posts. 
 const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.archive');
-console.log('archivePostsDestination:',archivePostsDestination);
+console.log('Archive posts destination:',archivePostsDestination);
 
 // Initialize source of blog post cards. 
 let blogpostcards;
@@ -122,19 +125,23 @@ function loadBlog() {
 
 	// Load featured posts. 
 	function loadFeaturedPosts() {
-		if(!featuredPostsDestination) return;
+		if(!featuredpostsdestinationA) return;
+		if(!featuredpostsdestinationB) return;
 		console.log('Loading featured posts...');
 	
 		// Get list of featured projects (sorted by project id). 
-		let featuredProjects = ( featuredProjectIdList.sort() ).map(getProjectById);
-		// featuredProjects = ( featuredProjectIdListX.sort() ).map(getProjectById);
-		console.log('Featured projects:', featuredProjects.length, featuredProjectIdList, featuredProjects);
+		let featuredProjectsA = ( featuredProjectIdListA/* .sort() */ ).map(getProjectById);
+		let featuredProjectsB = ( featuredProjectIdListB/* .sort() */ ).map(getProjectById);
+		console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIdListA, featuredProjectsA);
+		console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIdListB, featuredProjectsB);
 		
 		// Get layout for featured posts. 
-		let featuredLayout = createBlogPostsLayout(featuredProjects, !blockPreviews);
+		let featuredLayoutA = createBlogPostsLayout(featuredProjectsA, !blockPreviews);
+		let featuredLayoutB = createBlogPostsLayout(featuredProjectsB, !blockPreviews);
 		
 		// Add featured layout to blog section. 
-		featuredPostsDestination.innerHTML = featuredLayout;
+		featuredpostsdestinationA.innerHTML = featuredLayoutA;
+		featuredpostsdestinationB.innerHTML = featuredLayoutB;
 	}
 	
 	// Load category posts. 
@@ -143,7 +150,7 @@ function loadBlog() {
 		console.log('Loading category posts...');
 	
 		// Get custom list of projects for current category (sorted by project id). 
-		let categoryProjects = ( projectgroup.grouplist.sort() ).map(getProjectById);
+		let categoryProjects = ( projectgroup.groupidlist.sort() ).map(getProjectById);
 		console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Get layout for category posts. 
@@ -360,34 +367,30 @@ function toggleFilterFields() {
 	archivePostsDestination.classList.toggle('big');
 }
 
+// Toggle section like accordion. 
+function toggleLikeAccordion(section,sectionbin) {
 
-// // Toggle section like accordion. 
-// function toggleLikeAccordion(section) {
+	// Check if section already open. 
+	let sectionOpen = !section.classList.contains('mini');
+	// console.log('Section open:',sectionOpen);
 
-// 	// Check if section already open. 
-// 	let sectionOpen = !section.classList.contains('gone');
-// 	// console.log('Section open:',sectionOpen);
+	// Get full height of section bin. 
+	let fullheight = sectionbin.scrollHeight;
+	// console.log('Full height:',fullheight);
 
-// 	// Get full height of section. 
-// 	let fullheight = section.scrollHeight;
-// 	// console.log('Full height:',fullheight);
-
-// 	// Close if already open
-// 	if(sectionOpen) {
-// 		section.style.maxHeight = 0;
-// 		section.classList.add('gone');
-// 	}
+	// Close if already open. 
+	if(sectionOpen) {
+		section.classList.add('mini');
+		sectionbin.style.maxHeight = 0;
+	}
 	
-// 	// Open if not already open
-// 	else {
-// 		section.style.maxHeight = `${fullheight}px`;
-// 		section.classList.remove('gone');
-// 	}
+	// Open if not already open. 
+	else {
+		section.classList.remove('mini');
+		sectionbin.style.maxHeight = `${fullheight}px`;
+	}
+}
 
-// 	// Check if section already open. 
-// 	sectionOpen = !section.classList.contains('gone');
-// 	// console.log('Section open:',sectionOpen);
-// }
 
 // // Define sort function for post items. 
 // function sortPosts(a,b) {

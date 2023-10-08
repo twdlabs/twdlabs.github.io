@@ -91,6 +91,9 @@ function createBlockSet(datasource, t,n,d, idtag,urlprefix,openLinksInNewTab) {
 	// Go thru data for each block. 
 	for(let block of datasource) {
 
+		// Skip ghost blocks. 
+		if(block.ghostblock) continue;
+
 		// Get icon tag. 
 		let tag = block[t];
 
