@@ -6,8 +6,8 @@
 const headsidebar = document.querySelector('div#container nav.navbar div.bin div.sidebar');
 // console.log(headsidebar);
 // Get list destinations for header navigation. 
-const headnavlistdestinationA = document.querySelector('div#container nav.navbar div.bin div.sidebar ul.navlist.a');
-const headnavlistdestinationB = document.querySelector('div#container nav.navbar div.bin div.sidebar ul.navlist.b');
+const headnavlistdestinationA = document.querySelector('div#container nav.navbar div.bin div.sidebar div.navmenu.a ul.navlist');
+const headnavlistdestinationB = document.querySelector('div#container nav.navbar div.bin div.sidebar div.navmenu.b ul.navlist');
 
 // Get matrix destination for footer navigation. 
 const linkmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix');

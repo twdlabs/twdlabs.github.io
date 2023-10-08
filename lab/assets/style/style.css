@@ -113,7 +113,7 @@ div#container {display:flex; flex-direction:column; justify-content:flex-start; 
 /* Navbar */
 div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; min-height:var(--headerheight); z-index:30; box-shadow:var(--boxshadowxx);}
 div#container nav.navbar {/* background-color:var(--glasshovercolor); */ background-color:var(--themecolor); color:white; width:100%; padding:.75rem 2.5rem;}
-div#container.babybar nav.navbar {max-width:var(--pagewidth); border-radius:var(--cornersize); margin:0 auto;}
+div#container/* .babybar */ nav.navbar {max-width:var(--pagewidth); border-radius:var(--cornersize); margin:0 auto;}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; height:100%; max-width:var(--pagewidth); margin:0 auto;}
 div#container nav.navbar div.bin a.brand {color:inherit; font-size:1.75rem; text-decoration:none;}
 div#container nav.navbar div.bin a.brand {display:flex; flex-direction:row; align-items:center; margin:0;}
@@ -121,26 +121,31 @@ div#container nav.navbar div.bin a.brand img.logo {height:1.75em; border-radius:
 div#container nav.navbar div.bin a.brand svg.icon {display:none;}
 div#container nav.navbar div.bin a.brand span.caption {margin-left:.375em;}
 
-/* Navbar: Navigation Menu */
+/* Navbar: Sidebar */
 /* div#container nav.navbar div.bin div.sidebar {flex-grow:1;} */
 div#container nav.navbar div.bin div.sidebar {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container nav.navbar div.bin div.sidebar div.headbar {display:none; position:relative;}
 div#container nav.navbar div.bin div.sidebar div.headbar a.brand {display:flex; justify-content:center;}
 /* div#container nav.navbar div.bin div.sidebar div.headbar div.navtoggler {display:none;} */
 div#container nav.navbar div.bin div.sidebar div.headbar div.navtoggler {position:absolute; left:0; top:50%; transform:translateY(-50%);}
-div#container nav.navbar div.bin div.sidebar ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0; margin-left:1.25rem;}
-div#container nav.navbar div.bin div.sidebar ul.navlist {display:none;}
-/* div#container nav.navbar div.bin div.sidebar ul.navlist.a {} */
-div#container nav.navbar div.bin div.sidebar ul.navlist.b {/* flex-grow:1; */ justify-content:flex-end; /* border-left:1px solid var(--whiteglass); */}
-div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem {font-size:1.125rem; margin-left:1rem;}
-/* div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem {margin:0 .5rem;} */
-div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem a.navlink {display:flex; align-items:center; grid-gap:.5rem;}
-div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
-div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem a.navlink:hover {color:var(--forecolor2);}
-div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem a.navlink svg.icon {font-size:1.125em;}
-div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem a.navlink span.caption {display:none;}
 
-/* Navbar: Live Search */
+/* Navbar: Sidebar Menu */
+div#container nav.navbar div.bin div.sidebar div.navmenu {display:none;}
+/* div#container nav.navbar div.bin div.sidebar div.navmenu.a {} */
+/* div#container nav.navbar div.bin div.sidebar div.navmenu.b {} */
+div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0; margin-left:1.25rem;}
+/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {} */
+/* div#container nav.navbar div.bin div.sidebar div.navmenu.a ul.navlist {} */
+div#container nav.navbar div.bin div.sidebar div.navmenu.b ul.navlist {/* flex-grow:1; */ justify-content:flex-end; /* border-left:1px solid var(--whiteglass); */}
+div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {font-size:1.125rem; margin-left:1rem;}
+/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {margin:0 .5rem;} */
+div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem a.navlink {display:flex; align-items:center; grid-gap:.5rem;}
+div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem a.navlink:hover {color:var(--forecolor2);}
+div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem a.navlink svg.icon {font-size:1.125em;}
+div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem a.navlink span.caption {display:none;}
+
+/* Navbar: Sidebar Search */
 div#container nav.navbar div.bin div.sidebar div.livesearch {flex-grow:1; max-width:40rem;}
 div#container nav.navbar div.bin div.sidebar div.livesearch {position:relative; margin-left:2rem;}
 div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery {position:relative; font-size:1.125rem;}
@@ -234,9 +239,30 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 	/* Navbar */
 	/* div#container nav.navbar {} */
+	/* div#container nav.navbar div.bin {} */
+	
+	/* Navbar: Sidebar */
+	/* div#container nav.navbar div.bin div.sidebar {} */
+
+	/* Navbar: Sidebar Menu */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {} */
+	
+	/* Navbar: Sidebar Search */
+	/* div#container nav.navbar div.bin div.sidebar div.livesearch {} */
+	
+	/* Navbar: Navigation Toggler */
+	/* div#container nav.navbar div.bin div.navtoggler {} */
+	
+	/* Navbar: Theme Toggler */
+	/* div#container nav.navbar div.bin div.themetoggler {} */
+
 
 	/* General Section */
 	/* div#container section {} */
+	/* div#container section div.grid {} */
+
 
 	/* Footer */
 	/* div#container footer.footer {} */
@@ -258,40 +284,51 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container nav.navbar div.bin > * {flex-basis:0; flex-grow:1;} */
 	div#container nav.navbar div.bin a.brand {font-size:1.75rem;}
 	div#container nav.navbar div.bin a.brand span.caption {display:none;}
-	/* Navbar: Navigation Menu */
+	
+	/* Navbar: Sidebar */
 	/* div#container nav.navbar div.bin div.sidebar {flex-direction:row; flex-wrap:wrap;} */
 	/* div#container nav.navbar div.bin div.sidebar {position:absolute; top:100%; left:0; width:100%; max-width:var(--pagewidth); margin:0 auto;} */
-	div#container nav.navbar div.bin div.sidebar {background-color:var(--drkthemecolor); flex-direction:column; align-items:stretch; /* justify-content:center; */ z-index:1;}
+	div#container nav.navbar div.bin div.sidebar {background-color:var(--drkthemecolor); flex-direction:column; align-items:stretch; justify-content:flex-start; z-index:1;}
 	div#container nav.navbar div.bin div.sidebar {position:fixed; top:0; left:0; bottom:0; height:100%; width:100%; max-width:calc(var(--pagewidth)/4);}
 	div#container nav.navbar div.bin div.sidebar {padding:.75rem 2rem; /* padding-top:calc(var(--headerheight)*1.5); */ margin:0 auto; box-shadow:var(--boxshadowxx);}
 	div#container nav.navbar div.bin div.sidebar {opacity:0; visibility:hidden; /* transform:translateY(-2rem); */ transform:translateX(-100%); transition:.25s;}
 	div#container nav.navbar div.bin div.sidebar.active {opacity:1; visibility:visible; transform:translateY(0); transform:translateX(0);}
-	div#container nav.navbar div.bin div.sidebar div.headbar {display:block;}
+	div#container nav.navbar div.bin div.sidebar div.headbar {order:0;display:block;}
 	/* div#container nav.navbar div.bin div.sidebar div.headbar a.brand {margin-bottom:3rem;} */
 	/* div#container nav.navbar div.bin div.sidebar div.headbar a.brand span.caption {display:block;} */
-	div#container nav.navbar div.bin div.sidebar ul.navlist {margin:0;}
-	div#container nav.navbar div.bin div.sidebar ul.navlist.a {order:2; flex-grow:1; flex-direction:column; /* justify-content:flex-start; */ width:100%;}
-	div#container nav.navbar div.bin div.sidebar ul.navlist.b {order:3; justify-content:center; /* justify-content:flex-end; */ /* border-left:0 none; */ margin:.5rem auto;}
-	div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem {font-size:1.5rem; padding:.75rem; margin:0;}
-	/* div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem a.navlink {} */
-	div#container nav.navbar div.bin div.sidebar ul.navlist.a li.navitem a.navlink svg.icon {display:none;}
-	div#container nav.navbar div.bin div.sidebar ul.navlist.b li.navitem a.navlink svg.icon {display:block;}
-	div#container nav.navbar div.bin div.sidebar ul.navlist.a li.navitem a.navlink span.caption {display:block;}
-	div#container nav.navbar div.bin div.sidebar ul.navlist.b li.navitem a.navlink span.caption {display:none;}
-	div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem a.navlink span.caption:empty {background-color:gainsboro; height:1em; width:6em; border-radius:1em;}
-	/* Navbar: Live Search */
+
+	/* Navbar: Sidebar Menu */
+	div#container nav.navbar div.bin div.sidebar div.navmenu {display:block;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu.a {order:2; flex-grow:1;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu.b {order:3;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {width:100%; margin:0;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu.a ul.navlist {flex-direction:column; justify-content:flex-start;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu.b ul.navlist {flex-direction:row; justify-content:center; margin:.5rem auto;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {font-size:1.5rem; padding:.75rem; margin:0;}
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem a.navlink {} */
+	div#container nav.navbar div.bin div.sidebar div.navmenu.a ul.navlist li.navitem a.navlink svg.icon {display:none;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu.b ul.navlist li.navitem a.navlink svg.icon {display:block;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu.a ul.navlist li.navitem a.navlink span.caption {display:block;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu.b ul.navlist li.navitem a.navlink span.caption {display:none;}
+	div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem a.navlink span.caption:empty {background-color:gainsboro; height:1em; width:6em; border-radius:1em;}
+	
+	/* Navbar: Sidebar Search */
 	div#container nav.navbar div.bin div.sidebar div.livesearch {order:1; flex-grow:0; margin:3rem 0;}
 	/* div#container nav.navbar div.bin div.sidebar div.livesearch input.searchquery {} */
+	
 	/* Navbar: Navigation Toggler */
 	div#container nav.navbar div.bin div.navtoggler {display:block;}
+	
 	/* Navbar: Theme Toggler */
 	div#container nav.navbar div.bin div.themetoggler {padding-left:0; border-left:0 none; margin-left:0;}
+
 
 	/* General Section */
 	/* div#container section {} */
 	/* div#container section div.grid {} */
 	div#container section div.grid div.head {flex-direction:column; align-items:stretch;}
 	div#container section div.grid h1.head {font-size:2rem;}
+
 
 	/* Footer */
 	/* div#container footer.footer {} */
@@ -311,17 +348,30 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 	/* Navbar */
 	/* div#container nav.navbar {} */
-	/* Navbar: Navigation Menu */
+	/* div#container nav.navbar div.bin {} */
+	
+	/* Navbar: Sidebar */
 	/* div#container nav.navbar div.bin div.sidebar {} */
-	/* Navbar: Live Search */
+
+	/* Navbar: Sidebar Menu */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {} */
+	
+	/* Navbar: Sidebar Search */
 	/* div#container nav.navbar div.bin div.sidebar div.livesearch {} */
+	
 	/* Navbar: Navigation Toggler */
 	/* div#container nav.navbar div.bin div.navtoggler {} */
+	
 	/* Navbar: Theme Toggler */
 	/* div#container nav.navbar div.bin div.themetoggler {} */
 
+
 	/* General Section */
 	/* div#container section {} */
+	/* div#container section div.grid {} */
+
 
 	/* Footer */
 	div#container footer.footer {padding:1.5rem 2.5rem 6rem;}
@@ -336,20 +386,30 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* Navbar */
 	/* div#container nav.navbar {} */
 	/* div#container nav.navbar div.bin {} */
-	/* Navbar: Navigation Menu */
+	
+	/* Navbar: Sidebar */
 	/* div#container nav.navbar div.bin div.sidebar {} */
-	/* div#container nav.navbar div.bin div.sidebar ul.navlist {} */
-	div#container nav.navbar div.bin div.sidebar ul.navlist li.navitem {font-size:1.75rem;}
-	/* Navbar: Live Search */
+
+	/* Navbar: Sidebar Menu */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {} */
+	div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {font-size:1.75rem;}
+	
+	/* Navbar: Sidebar Search */
 	/* div#container nav.navbar div.bin div.sidebar div.livesearch {} */
+	
 	/* Navbar: Navigation Toggler */
 	/* div#container nav.navbar div.bin div.navtoggler {} */
+	
 	/* Navbar: Theme Toggler */
 	/* div#container nav.navbar div.bin div.themetoggler {} */
 
+
 	/* General Section */
 	/* div#container section {} */
+	/* div#container section div.grid {} */
 	
+
 	/* Footer */
 	/* div#container footer.footer {} */
 	/* div#container footer.footer div.grid {} */
@@ -365,18 +425,31 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 	/* Navbar */
 	/* div#container nav.navbar {} */
-	/* Navbar: Navigation Menu */
+	/* div#container nav.navbar div.bin {} */
+	
+	/* Navbar: Sidebar */
 	/* div#container nav.navbar div.bin div.sidebar {} */
-	/* Navbar: Live Search */
+
+	/* Navbar: Sidebar Menu */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {} */
+	
+	/* Navbar: Sidebar Search */
 	/* div#container nav.navbar div.bin div.sidebar div.livesearch {} */
+	
 	/* Navbar: Navigation Toggler */
 	/* div#container nav.navbar div.bin div.navtoggler {} */
+	
 	/* Navbar: Theme Toggler */
 	/* div#container nav.navbar div.bin div.themetoggler {} */
 
+
 	/* General Section */
 	/* div#container section {} */
+	/* div#container section div.grid {} */
 	div#container section div.grid h1.head {font-size:1.75rem;}
+
 
 	/* Footer */
 	div#container footer.footer {padding:4rem 1.5rem 6rem;}
@@ -390,5 +463,5 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container footer.footer div.grid div.linkmatrix.compact div.listset h2.head {font-weight:200; margin-top:.375rem;}
 	div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist {max-height:0; overflow:hidden;}
 	div#container footer.footer div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(2,1fr);}
-	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist.active {} */
+	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset div.navmenu.a ul.navlistctive {} */
 }
