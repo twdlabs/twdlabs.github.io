@@ -45,6 +45,7 @@
 	--pagewidth:125rem;
 	--cornersize:.5rem;
 	--headerheight:4.5rem;
+	--sectionspacing:4rem;
 
 	/* Box Shadows */
 	--boxshadow:0 0 1rem 0 #0002;
@@ -151,7 +152,7 @@ div#container nav.navbar div.bin div.sidebar div.livesearch {flex-grow:1; max-wi
 div#container nav.navbar div.bin div.sidebar div.livesearch {position:relative; margin-left:2rem;}
 div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery {position:relative; font-size:1.125rem;}
 div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery input.searchquery {background-color:var(--backcolor2); color:var(--forecolor); font-family:inherit; font-size:inherit; font-weight:300;}
-div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery input.searchquery {width:100%; padding:1rem 3.75rem .875rem; padding:.5rem 3.25rem; border-radius:var(--cornersize); border-radius:10rem; border:0 none; outline:none; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery input.searchquery {width:100%; padding:1rem 3.75rem .875rem; padding:.625rem 3.25rem; border-radius:var(--cornersize); border-radius:10rem; border:0 none; outline:none; box-shadow:var(--boxshadow);}
 div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery div.expandbtn {position:absolute; top:50%; right:0; transform:translateY(-50%);}
 div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery div.expandbtn {display:grid; place-items:center; cursor:pointer; height:100%; padding:0 .625rem;}
 div#container nav.navbar div.bin div.sidebar div.livesearch div.searchquery div.expandbtn svg.icon {display:block; color:grey; font-size:.75rem; margin-right:.375rem;}
@@ -187,7 +188,7 @@ div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.th
 
 /* General Section */
 /* div#container section {background-color:#FFF1;} */
-div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:4rem; /* box-shadow:var(--boxshadow); */}
+div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:var(--sectionspacing); /* box-shadow:var(--boxshadow); */}
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
 div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center; grid-gap:1.5rem;}
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
@@ -208,9 +209,11 @@ div#container section.hero {margin-top:var(--headerheight);}
 
 
 /* Footer */
-div#container footer.footer {background-color:var(--backcolor2); width:100%; padding:5rem 2.5rem 8rem; margin-top:4rem;}
+div#container footer.footer {background-color:var(--backcolor2); width:100%; padding:5rem 2.5rem 8rem; margin-top:var(--sectionspacing);}
 /* div#container footer.footer div.grid {display:flex; flex-direction:row;} */
 div#container footer.footer div.grid {max-width:var(--pagewidth); margin:0 auto;}
+
+/* Footer: Brand */
 /* div#container footer.footer div.grid div.brand {display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto 1fr; grid-template-areas:'logo head''logo textcopy'; margin-top:3rem;} */
 div#container footer.footer div.grid div.brand {display:flex; flex-direction:column; align-items:center;}
 /* div#container footer.footer div.grid div.brand h1.head {grid-area:head;} */
@@ -219,7 +222,8 @@ div#container footer.footer div.grid div.brand h1.head {color:var(--forecolor); 
 div#container footer.footer div.grid div.brand img.logo {height:6rem; margin-top:.5rem;}
 /* div#container footer.footer div.grid div.brand p.textcopy {grid-area:textcopy;} */
 div#container footer.footer div.grid div.brand p.textcopy {color:var(--forecolor2); margin:0; margin-top:.5rem;}
-div#container footer.footer div.grid div.social {display:none;}
+
+/* Footer: Link Matrix */
 div#container footer.footer div.grid div.linkmatrix {display:grid; /* grid-template-columns:repeat(5,1fr); */ margin-top:2rem;}
 div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'set0 set1 set2 set3 set4' 'missing missing missing missing missing';}
 /* div#container footer.footer div.grid div.linkmatrix div.listset {flex-basis:0; flex-grow:1; flex-shrink:0;} */
@@ -240,6 +244,9 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink {color:inherit; font-size:1.25rem; text-decoration:none; /* white-space:nowrap; */}
 /* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink svg.icon {display:none;} */
 /* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink span.caption {} */
+
+/* Footer: Social */
+div#container footer.footer div.grid div.social {display:none;}
 
 
 

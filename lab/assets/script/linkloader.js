@@ -140,7 +140,7 @@ function loadLinkMatrix() {
 			result += `
 			<!-- listset -->
 			<div class="listset ${ set.setid }">
-				${ createProjectListSet(projectgroupslist) }
+				${ createSet(projectgroupslist) }
 			</div>
 			<!-- /listset -->`;
 		}
@@ -151,7 +151,7 @@ function loadLinkMatrix() {
 		/***/
 
 		// Create layout for set of project lists. 
-		function createProjectListSet(projectgroupslist) {
+		function createSet(projectgroupslist) {
 			// console.log('Project group set:',projectgroupslist);
 	
 			// Initialize result. 

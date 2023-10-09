@@ -77,7 +77,9 @@ div#container section.blog div.grid div.body div.posts div.zoomer.shrink {displa
 div#container section.blog div.grid div.body div.posts.mini div.zoomer.grow {display:block;}
 div#container section.blog div.grid div.body div.posts.mini div.zoomer.shrink {display:none;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {font-size:1.25rem; cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {display:flex; flex-direction:column; align-items:center; /* width:100%; */ padding:.5rem 2rem; border-radius:var(--cornersize); /* margin:0 auto; */ box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {background-color:var(--backcolor); display:flex; flex-direction:column; align-items:center; width:fit-content; transition:.125s;}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {padding:.5rem 1.5rem; border-radius:var(--cornersize); margin:0 auto;}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn:hover {/* background-color:var(--backcolor2); */ box-shadow:var(--boxshadow);}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon {font-size:1.25em;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon:only-child {font-size:3rem;}
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:none;} */
