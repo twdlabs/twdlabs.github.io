@@ -1,7 +1,6 @@
 
 
 
-
 // Get navigation sidebar. 
 const headsidebar = document.querySelector('div#container nav.navbar div.bin div.sidebar');
 // console.log(headsidebar);
@@ -17,14 +16,11 @@ const linkmatrixdestination = document.querySelector('div#container footer.foote
 /*****/
 
 
-/*****/
-
-
 // Add navigation links to header. 
 loadNavLinks();
 
 // Add matrix of project links to footer. 
-loadProjectGroupMatrix();
+loadLinkMatrix();
 
 
 /*****/
@@ -113,106 +109,15 @@ function loadNavLinks() {
 }
 
 // Add matrix of project links to footer. 
-function loadProjectGroupMatrix() {
+function loadLinkMatrix() {
 
-	// Initialize matrix layout. 
-	let matrixlayout = '';
-
-	// Initialize total number of project links in matrix. 
-	// let totalMatrixLinks = 0;
-
-	// Add grouped projects to matrix layout. 
-	matrixlayout += createGroupedProjects();
-
-	// Add matrix layout to page. 
-	linkmatrixdestination.innerHTML = matrixlayout;
-	// console.log('Total number of matrix project links:',totalMatrixLinks);
-
-	// // Accumulate list boxes. 
-	// for(let i in projectGroupData) {
-	// 	// Get project group. 
-	// 	let projectgroup = projectGroupData[i];
-	// }
+	// Add layout for link matrix to page. 
+	linkmatrixdestination.innerHTML = createLinkMatrix();
 
 	/****/
 
-	// Create layout for set of project lists. 
-	function createProjectListSet(projectgroupslist) {
-		// console.log('Project group set:',projectgroupslist);
-
-		// Initialize result. 
-		let result = '';
-
-		// Go thru each project group in set. 
-		for(let projectgroup of projectgroupslist) {
-
-			// // Proceed if project group exists. 
-			// if(projectgroup) {
-			// }
-
-			// Add header for current project group. 
-			result += `
-			<!-- head -->
-			<h2 class="head">${ projectgroup ? projectgroup.groupname : '' }</h2>
-			<!-- /head -->`;
-
-			// Add list for current project group. 
-			result += `
-			<!-- navlist -->
-			<ul class="navlist">
-				${ projectgroup ? createProjectList(projectgroup.groupidlist) : '' }
-			</ul>
-			<!-- /navlist -->`;
-		}
-		
-		// Return result. 
-		return result;
-
-		/***/
-
-		// Create layout for list of projects. 
-		function createProjectList(projectgroupidlist) {
-			// console.log('Project group id list:',projectgroupidlist);
-
-			// Set window target for project links. 
-			// Set state of new window mode. 
-			let newwindowmode = true;
-
-			// Initialize layout for project list. 
-			let projectgrouplayout = '';
-
-			// Accumulate layout for project list. 
-			for(let projectid of projectgroupidlist) {
-
-				// Get project. 
-				let project = getProjectById(projectid);
-
-				// Increment total number of project links in matrix. 
-				// totalMatrixLinks++;
-
-				// Get url for project. 
-				let url = getRelativeUrl(`../${projectid}`);
-				// console.log('\turl:',url);
-	
-				// Get caption for project. 
-				let caption = project ? project.projectname : projectid;
-				// console.log('\tcaption:',caption);
-	
-				// Get icon tag for project. 
-				let icontag = project ? project.icontag : '';
-				// console.log('\ticontag:',icontag);
-
-				// Compile navigation item. 
-				projectgrouplayout += createNavLink(url,caption,icontag,newwindowmode);
-			}
-
-			// Return layout for project list. 
-			return projectgrouplayout;
-		}
-	}
-
 	// Create box layout for grouped projects. 
-	function createGroupedProjects() {
+	function createLinkMatrix() {
 
 		// Initialize result. 
 		let result = '';
@@ -242,6 +147,80 @@ function loadProjectGroupMatrix() {
 
 		// Return result layout. 
 		return result;
+
+		/***/
+
+		// Create layout for set of project lists. 
+		function createProjectListSet(projectgroupslist) {
+			// console.log('Project group set:',projectgroupslist);
+	
+			// Initialize result. 
+			let result = '';
+	
+			// Go thru each project group in set. 
+			for(let projectgroup of projectgroupslist) {
+	
+				// // Proceed if project group exists. 
+				// if(projectgroup) {
+				// }
+	
+				// Add header for current project group. 
+				result += `
+				<!-- head -->
+				<h2 class="head">${ projectgroup ? projectgroup.groupname : '' }</h2>
+				<!-- /head -->`;
+	
+				// Add list for current project group. 
+				result += `
+				<!-- navlist -->
+				<ul class="navlist">
+					${ projectgroup ? createProjectList(projectgroup.groupidlist) : '' }
+				</ul>
+				<!-- /navlist -->`;
+			}
+			
+			// Return result. 
+			return result;
+	
+			/***/
+	
+			// Create layout for list of projects. 
+			function createProjectList(projectgroupidlist) {
+				// console.log('Project group id list:',projectgroupidlist);
+	
+				// Set window target for project links. 
+				// Set state of new window mode. 
+				let newwindowmode = true;
+	
+				// Initialize layout for project list. 
+				let projectgrouplayout = '';
+	
+				// Accumulate layout for project list. 
+				for(let projectid of projectgroupidlist) {
+	
+					// Get data item for current project. 
+					let project = getProjectById(projectid);
+	
+					// Get url for current project. 
+					let url = getRelativeUrl(`../${projectid}`);
+					// console.log('\turl:',url);
+		
+					// Get caption for current project. 
+					let caption = project ? project.projectname : projectid;
+					// console.log('\tcaption:',caption);
+		
+					// Get icon tag for current project. 
+					let icontag = project ? project.icontag : '';
+					// console.log('\ticontag:',icontag);
+	
+					// Compile navigation item. 
+					projectgrouplayout += createNavLink(url,caption,icontag,newwindowmode);
+				}
+	
+				// Return layout for project list. 
+				return projectgrouplayout;
+			}
+		}
 	}
 }
 

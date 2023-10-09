@@ -10,7 +10,7 @@ div#container section.blocks div.grid ul.blocklist li.blockitem {background-colo
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {color:inherit; text-decoration:none;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {background-color:transparent; height:100%; transition:.25s;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {display:flex; flex-direction:column; /* justify-content:center; */ align-items:center; grid-gap:.5rem;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {--fillcolor:gainsboro; padding:1.5rem 1rem; padding:3rem 2rem /* 2rem */; /* border-radius:var(--cornersize); */}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {--fillcolor:gainsboro; padding:1.5rem 1rem; padding:4rem 2rem 2.5rem /* 2rem */; /* border-radius:var(--cornersize); */}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hover {background-color:var(--ltglasshovercolor); --fillcolor:whitesmoke;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.125em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon:empty {background-color:var(--themecolor); border-radius:.375em;}

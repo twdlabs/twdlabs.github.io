@@ -27,11 +27,11 @@ div#container section.blog div.grid div.head div.filter input#postfilter {border
 
 
 /* Blog Section: Body */
-/* div#container section.blog div.grid div.body {} */
+div#container section.blog div.grid div.body {margin-top:3rem;}
 div#container section.blog div.grid div.body.split {display:grid; grid-template-columns:auto 1fr;}
 
 /* Blog Section: Posts */
-div#container section.blog div.grid div.body div.posts {margin-top:3rem;}
+/* div#container section.blog div.grid div.body div.posts {} */
 div#container section.blog div.grid div.body div.posts ul.postlist {display:grid; grid-template-columns:repeat(8,1fr); grid-gap:1.25rem; transition:.25s;}
 div#container section.blog div.grid div.body div.posts ul.postlist {list-style:none; overflow:hidden; padding:0; margin:0; margin-top:1.5rem;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist {display:flex; flex-wrap:wrap; justify-content:center;} */
@@ -76,19 +76,11 @@ div#container section.blog div.grid div.body div.posts div.zoomer.grow {display:
 div#container section.blog div.grid div.body div.posts div.zoomer.shrink {display:block;}
 div#container section.blog div.grid div.body div.posts.mini div.zoomer.grow {display:block;}
 div#container section.blog div.grid div.body div.posts.mini div.zoomer.shrink {display:none;}
-div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {font-size:1rem; cursor:pointer; user-select:none;}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {font-size:1.25rem; cursor:pointer; user-select:none;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {display:flex; flex-direction:column; align-items:center; /* width:100%; */ padding:.5rem 2rem; border-radius:var(--cornersize); /* margin:0 auto; */ box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon {font-size:1.25em;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon:only-child {font-size:3rem;}
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:none;} */
-
-/* Blog Section: More */
-div#container section.blog div.grid div.body div.more {display:flex; flex-direction:column; align-items:center; padding:2rem 0; margin-top:1rem;}
-div#container section.blog div.grid div.body div.more a.morebtn {background-color:var(--backcolor2); color:var(--forecolor); font-size:1.5rem; text-decoration:none;}
-div#container section.blog div.grid div.body div.more a.morebtn {background-color:var(--forecolor); color:var(--backcolor);}
-div#container section.blog div.grid div.body div.more a.morebtn {display:flex; justify-content:center; align-items:center; min-width:14em; padding:.75em 1em; border-radius:1.5em; box-shadow:var(--boxshadow);}
-div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin-left:.5rem;}
-/* div#container section.blog div.grid div.body div.more a.morebtn span.caption {} */
-/* div#container section.blog div.grid div.body div.more {display:none;} */
 
 
 
@@ -118,9 +110,6 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
-
-	/* Blog Section: More */
-	/* div#container section.blog div.grid div.body div.more {} */
 }
 
 /* Medium Tablet Screen */
@@ -148,9 +137,6 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
-
-	/* Blog Section: More */
-	/* div#container section.blog div.grid div.body div.more {} */
 }
 
 /* Small Tablet Screen */
@@ -178,9 +164,6 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
-
-	/* Blog Section: More */
-	/* div#container section.blog div.grid div.body div.more {} */
 }
 
 /* Big Smartphone Screen */
@@ -208,9 +191,7 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
-
-	/* Blog Section: More */
-	/* div#container section.blog div.grid div.body div.more {} */
+	div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {font-size:1rem;}
 }
 
 /* Medium Smartphone Screen */
@@ -236,9 +217,6 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
-
-	/* Blog Section: More */
-	/* div#container section.blog div.grid div.body div.more {} */
 }
 
 /* Small Smartphone Screen */
@@ -264,7 +242,4 @@ div#container section.blog div.grid div.body div.more a.morebtn svg.icon {margin
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
-
-	/* Blog Section: More */
-	/* div#container section.blog div.grid div.body div.more {} */
 }

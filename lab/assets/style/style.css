@@ -26,6 +26,7 @@
 	/* Light Colors */
 	--white:#F8F8F8;
 	--offwhite:#E7E9EB;
+	--offwhite:#D7D9DB;
 	--whitesheet:#F8F8F8AA;
 	--whiteglass:#F8F8F844;
 	--whiteglasss:#F8F8F822;
@@ -186,11 +187,20 @@ div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.th
 
 /* General Section */
 /* div#container section {background-color:#FFF1;} */
-div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:3rem; /* box-shadow:var(--boxshadow); */}
+div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:4rem; /* box-shadow:var(--boxshadow); */}
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
 div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center; grid-gap:1.5rem;}
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
 div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center;}
+
+/* General Section: More Projects */
+div#container section div.grid div.more {display:flex; flex-direction:column; align-items:center; margin-top:1.25em;}
+div#container section div.grid div.more a.morebtn {background-color:var(--backcolor2); color:var(--forecolor); font-size:1.5rem; text-decoration:none;}
+div#container section div.grid div.more a.morebtn {background-color:var(--forecolor); color:var(--backcolor);}
+div#container section div.grid div.more a.morebtn {display:flex; justify-content:center; align-items:center; min-width:14em; padding:.75em 1em; border-radius:1.5em; box-shadow:var(--boxshadow);}
+div#container section div.grid div.more a.morebtn svg.icon {margin-left:.5rem;}
+/* div#container section div.grid div.more a.morebtn span.caption {} */
+/* div#container section div.grid div.more {display:none;} */
 
 
 /* Hero Section */
@@ -198,19 +208,19 @@ div#container section.hero {margin-top:var(--headerheight);}
 
 
 /* Footer */
-div#container footer.footer {background-color:var(--backcolor2); width:100%; padding:2.5rem 2.5rem 8rem; margin-top:4rem;}
+div#container footer.footer {background-color:var(--backcolor2); width:100%; padding:5rem 2.5rem 8rem; margin-top:4rem;}
 /* div#container footer.footer div.grid {display:flex; flex-direction:row;} */
 div#container footer.footer div.grid {max-width:var(--pagewidth); margin:0 auto;}
 /* div#container footer.footer div.grid div.brand {display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto 1fr; grid-template-areas:'logo head''logo textcopy'; margin-top:3rem;} */
 div#container footer.footer div.grid div.brand {display:flex; flex-direction:column; align-items:center;}
 /* div#container footer.footer div.grid div.brand h1.head {grid-area:head;} */
-div#container footer.footer div.grid div.brand h1.head {color:var(--forecolor); font-size:1.75rem; font-weight:300; text-align:inherit; margin:0; margin-top:.5rem;}
+div#container footer.footer div.grid div.brand h1.head {color:var(--forecolor); font-size:1.75rem; font-weight:300; text-align:inherit; margin:0; margin-top:.875rem;}
 /* div#container footer.footer div.grid div.brand img.logo {grid-area:logo;} */
 div#container footer.footer div.grid div.brand img.logo {height:6rem; margin-top:.5rem;}
 /* div#container footer.footer div.grid div.brand p.textcopy {grid-area:textcopy;} */
 div#container footer.footer div.grid div.brand p.textcopy {color:var(--forecolor2); margin:0; margin-top:.5rem;}
 div#container footer.footer div.grid div.social {display:none;}
-div#container footer.footer div.grid div.linkmatrix {display:grid; /* grid-template-columns:repeat(5,1fr); */}
+div#container footer.footer div.grid div.linkmatrix {display:grid; /* grid-template-columns:repeat(5,1fr); */ margin-top:2rem;}
 div#container footer.footer div.grid div.linkmatrix {grid-template-areas:'set0 set1 set2 set3 set4' 'missing missing missing missing missing';}
 /* div#container footer.footer div.grid div.linkmatrix div.listset {flex-basis:0; flex-grow:1; flex-shrink:0;} */
 div#container footer.footer div.grid div.linkmatrix div.listset {text-align:left; /* padding:1rem; */ margin-right:2rem; margin-top:1.5rem;}
@@ -263,6 +273,9 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container section {} */
 	/* div#container section div.grid {} */
 
+	/* More Projects */
+	/* div#container section div.grid div.more {} */
+
 
 	/* Footer */
 	/* div#container footer.footer {} */
@@ -275,7 +288,46 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container footer.footer div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(3,1fr);}
 }
 
-/* Tablet Screen */
+/* Medium Tablet Screen */
+@media screen and (max-width:88rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar div.bin {} */
+	
+	/* Navbar: Sidebar */
+	/* div#container nav.navbar div.bin div.sidebar {} */
+
+	/* Navbar: Sidebar Menu */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist {} */
+	/* div#container nav.navbar div.bin div.sidebar div.navmenu ul.navlist li.navitem {} */
+	
+	/* Navbar: Sidebar Search */
+	/* div#container nav.navbar div.bin div.sidebar div.livesearch {} */
+	
+	/* Navbar: Navigation Toggler */
+	/* div#container nav.navbar div.bin div.navtoggler {} */
+	
+	/* Navbar: Theme Toggler */
+	/* div#container nav.navbar div.bin div.themetoggler {} */
+
+
+	/* General Section */
+	/* div#container section {} */
+	/* div#container section div.grid {} */
+
+	/* More Projects */
+	/* div#container section div.grid div.more {} */
+
+
+	/* Footer */
+	/* div#container footer.footer {} */
+	/* div#container footer.footer div.grid {} */
+	/* div#container footer.footer div.grid div.linkmatrix {} */
+}
+
+/* Small Tablet Screen */
 @media screen and (max-width:60rem) {
 	
 	/* Navbar */
@@ -329,6 +381,9 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container section div.grid div.head {flex-direction:column; align-items:stretch;}
 	div#container section div.grid h1.head {font-size:2rem;}
 
+	/* More Projects */
+	/* div#container section div.grid div.more {} */
+
 
 	/* Footer */
 	/* div#container footer.footer {} */
@@ -372,6 +427,10 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container section {} */
 	/* div#container section div.grid {} */
 
+	/* More Projects */
+	/* div#container section div.grid div.more {} */
+	div#container section div.grid div.more a.morebtn {font-size:1.25rem;}
+
 
 	/* Footer */
 	div#container footer.footer {padding:1.5rem 2.5rem 6rem;}
@@ -408,6 +467,9 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* General Section */
 	/* div#container section {} */
 	/* div#container section div.grid {} */
+
+	/* More Projects */
+	/* div#container section div.grid div.more {} */
 	
 
 	/* Footer */
@@ -449,6 +511,10 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container section {} */
 	/* div#container section div.grid {} */
 	div#container section div.grid h1.head {font-size:1.75rem;}
+
+	/* More Projects */
+	/* div#container section div.grid div.more {} */
+	div#container section div.grid div.more a.morebtn {font-size:1rem;}
 
 
 	/* Footer */

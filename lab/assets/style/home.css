@@ -3,8 +3,8 @@
 
 /* Hero Section */
 div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../admin/images/barcelona.jpg'); background-size:cover;}
-div#container section.hero {background-position:center 25%; min-height:50vh; position:relative;}
-div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container section.hero {background-position:center 25%; min-height:50vh; position:relative; transition:.25s margin;}
+div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:6rem;}
 div#container.babybar section.hero {margin-top:0;}
 div#container section.hero::before {background-color:var(--sheetcolor); content:'';}
 div#container section.hero::before {position:absolute; top:0; left:0; height:100%; width:100%; z-index:0;}
@@ -49,7 +49,7 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 @media screen and (max-width:64rem) {
 	
 	/* Hero Section */
-	div#container section.hero {background-position-x:75%;}
+	div#container section.hero {background-position-x:75%; margin-bottom:4rem;}
 	/* div#container section.hero div.grid {} */
 	/* div#container section.hero div.grid div.col {} */
 	div#container section.hero div.grid div.col h1.head {font-size:2.375rem;}
@@ -61,7 +61,7 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 @media screen and (max-width:48rem) {
 
 	/* Hero Section */
-	/* div#container section.hero {} */
+	div#container section.hero {margin-bottom:2rem;}
 	/* div#container section.hero div.grid {display:flex; flex-direction:column-reverse; align-items:center;} */
 	/* div#container section.hero div.grid div.col {text-align:center;} */
 	/* div#container section.hero div.grid div.col img.logo {max-width:12rem; margin:0 auto 1.5rem;} */
