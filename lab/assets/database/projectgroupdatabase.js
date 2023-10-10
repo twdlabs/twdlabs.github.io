@@ -432,7 +432,7 @@ const projectMetaGroupData = [
 		groupicontag:'copy',
 		groupdescription:'Various designs for apps, dashboards, and websites',
 		groupidlist:[
-			'dc','ds',
+			'dc','ds','nw',
 		],
 	},
 	{
@@ -441,16 +441,16 @@ const projectMetaGroupData = [
 		groupicontag:'motherboard',
 		groupdescription:'Reusable sub-components for other projects',
 		groupidlist:[
-			'aw','cw','gw','mw','nw',
+			'aw','cw','gw','mw',
 		],
 	},
 	{
 		groupid:'p',
-		groupname:'Prototypes',
+		groupname:'Project Samples',
 		groupicontag:'smartphone',
 		groupdescription:'Stand-alone applications and websites',
 		groupidlist:[
-			'ap','ld','cp',
+			'cp','ap','ld',
 		],
 	},
 ];
@@ -491,15 +491,19 @@ const projectGroupMatrixData = [
 const projectMetaGroupMatrixData = [
 	{
 		setid:'setA',
-		setlist:['p',],
+		setlist:['l',],
 	},
 	{
 		setid:'setB',
-		setlist:['d','l',],
+		setlist:['d',],
 	},
 	{
 		setid:'setC',
 		setlist:['w',],
+	},
+	{
+		setid:'setD',
+		setlist:['p',],
 	},
 ];
 // console.log('Project meta-group sets:',projectMetaGroupMatrixData);
@@ -548,6 +552,23 @@ function getProjectGroupById(pgid) {
 
 		// Return matching project group if found. 
 		if(matchFound) return projectgroup;
+	}
+
+	// Return nothing if project group not found. 
+	return null;
+}
+
+// Get project meta group by id. 
+function getProjectMetaGroupById(pmgid) {
+
+	// Go thru each project groups. 
+	for(let projectmetagroup of projectMetaGroupData) {
+
+		// Check if project group matches query id. 
+		let matchFound = (projectmetagroup.groupid == pmgid);
+
+		// Return matching project group if found. 
+		if(matchFound) return projectmetagroup;
 	}
 
 	// Return nothing if project group not found. 

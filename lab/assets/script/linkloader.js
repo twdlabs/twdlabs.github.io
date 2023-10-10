@@ -8,9 +8,12 @@ const headsidebar = document.querySelector('div#container nav.navbar div.bin div
 const headnavlistdestinationA = document.querySelector('div#container nav.navbar div.bin div.sidebar div.navmenu.a ul.navlist');
 const headnavlistdestinationB = document.querySelector('div#container nav.navbar div.bin div.sidebar div.navmenu.b ul.navlist');
 
-// Get matrix destination for footer navigation. 
-const linkmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix');
-// console.log(linkmatrixdestination);
+// Get destination for matrix of group links in footer. 
+const grouplinksmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
+console.log('grouplinksmatrixdestination:',grouplinksmatrixdestination);
+// Get destination for matrix of project links in footer. 
+const projectlinksmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects');
+console.log('projectlinksmatrixdestination:',projectlinksmatrixdestination);
 
 
 /*****/
@@ -112,28 +115,39 @@ function loadNavLinks() {
 function loadLinkMatrix() {
 
 	// Add layout for link matrix to page. 
-	linkmatrixdestination.innerHTML = createLinkMatrix();
+	console.log('grouplinksmatrixdestination:',grouplinksmatrixdestination);
+	if(grouplinksmatrixdestination) {
+		let matrixlayout = createLinkMatrix(projectMetaGroupMatrixData,getProjectGroupById,getProjectMetaGroupById,'./category/?gid=','groupname');
+		grouplinksmatrixdestination.innerHTML = matrixlayout;
+	}
+
+	// Add layout for link matrix to page. 
+	console.log('projectlinksmatrixdestination:',projectlinksmatrixdestination);
+	if(projectlinksmatrixdestination) {
+		let matrixlayout = createLinkMatrix(projectGroupMatrixData,getProjectById,getProjectGroupById,'../','projectname');
+		projectlinksmatrixdestination.innerHTML = matrixlayout;
+	}
 
 	/****/
 
 	// Create box layout for grouped projects. 
-	function createLinkMatrix() {
+	function createLinkMatrix(matrixData,getItemById,getMetaById,urlprefix,namekey) {
 
 		// Initialize result. 
 		let result = '';
 	
 		// Go thru each set of project groups. 
-		for(let i in projectGroupMatrixData) {
+		for(let i in matrixData) {
 
 			// Get project group set. 
-			let set = projectGroupMatrixData[i];
+			let set = matrixData[i];
 
 			// Get list of ids for project groups. 
 			let projectgroupidslist = set.setlist;
 			console.log('Project group ids:',projectgroupidslist);
 	
 			// Get list of project groups. 
-			let projectgroupslist = projectgroupidslist.map( getProjectGroupById );
+			let projectgroupslist = projectgroupidslist.map( getMetaById );
 			console.log('Project groups:',projectgroupslist);
 		
 			// Add list box to result layout. 
@@ -174,7 +188,7 @@ function loadLinkMatrix() {
 				result += `
 				<!-- navlist -->
 				<ul class="navlist">
-					${ projectgroup ? createProjectList(projectgroup.groupidlist) : '' }
+					${ projectgroup ? createList(projectgroup.groupidlist) : '' }
 				</ul>
 				<!-- /navlist -->`;
 			}
@@ -184,9 +198,9 @@ function loadLinkMatrix() {
 	
 			/***/
 	
-			// Create layout for list of projects. 
-			function createProjectList(projectgroupidlist) {
-				// console.log('Project group id list:',projectgroupidlist);
+			// Create layout for list of items. 
+			function createList(itemidlist) {
+				// console.log('Project group id list:',itemidlist);
 	
 				// Set window target for project links. 
 				// Set state of new window mode. 
@@ -196,21 +210,25 @@ function loadLinkMatrix() {
 				let projectgrouplayout = '';
 	
 				// Accumulate layout for project list. 
-				for(let projectid of projectgroupidlist) {
+				for(let itemid of itemidlist) {
 	
 					// Get data item for current project. 
-					let project = getProjectById(projectid);
+					let project = getItemById(itemid);
 	
 					// Get url for current project. 
-					let url = getRelativeUrl(`../${projectid}`);
+					let url = getRelativeUrl(`${urlprefix}${itemid}`);
+					// let url = getRelativeUrl(`./category/?gid=${itemid}`);
+					// let url = getRelativeUrl(`../${itemid}`);
 					// console.log('\turl:',url);
 		
 					// Get caption for current project. 
-					let caption = project ? project.projectname : projectid;
+					let caption = project ? project[namekey] : itemid;
+					// let caption = project ? project['groupname'] : itemid;
+					// let caption = project ? project['projectname'] : itemid;
 					// console.log('\tcaption:',caption);
 		
 					// Get icon tag for current project. 
-					let icontag = project ? project.icontag : '';
+					let icontag = project ? project['icontag'] : '';
 					// console.log('\ticontag:',icontag);
 	
 					// Compile navigation item. 

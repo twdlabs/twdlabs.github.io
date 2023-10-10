@@ -125,8 +125,7 @@ function loadBlog() {
 
 	// Load featured posts. 
 	function loadFeaturedPosts() {
-		if(!featuredpostsdestinationA) return;
-		if(!featuredpostsdestinationB) return;
+		if(!featuredpostsdestinationA || !featuredpostsdestinationB) return;
 		console.log('Loading featured posts...');
 	
 		// Get list of featured projects (sorted by project id). 
@@ -358,13 +357,13 @@ function loadBlog() {
 function toggleFilterFields() {
 
 	// Get filter tabs section. 
-	let filtertabs = document.querySelector('div#container section.blog div.grid div.body div.filtertabs')
+	let filtertabs = document.querySelector('div#container section.blog div.grid div.body div.filtertabs');
 
 	// Toggle filter tabs section. 
 	filtertabs.classList.toggle('active');
 
 	// Toggle state of posts section. 
-	archivePostsDestination.classList.toggle('big');
+	// archivePostsDestination.classList.toggle('big');
 }
 
 // Toggle section like accordion. 
