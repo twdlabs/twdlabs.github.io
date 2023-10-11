@@ -707,6 +707,22 @@ const projectData = [
 		projectname:'Pixel Art Generator',
 	},{
 		authorid:'twd',
+		projectid:'plax/parallax',
+		projectname:'Pretty Parallax',
+	},{
+		authorid:'twd',
+		projectid:'plax/parallax2',
+		projectname:'Parallax',
+	},{
+		authorid:'twd',
+		projectid:'plax/parallax3',
+		projectname:'Parallax',
+	},{
+		authorid:'twd',
+		projectid:'plax/parallax4',
+		projectname:'Parallax',
+	},{
+		authorid:'twd',
 		projectid:'podcast',
 		projectname:'Podcast Site',
 	},{

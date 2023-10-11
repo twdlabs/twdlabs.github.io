@@ -7,19 +7,19 @@ const methodData = [
 	{
 		icontag:'piechart',
 		header:'Statistics',
-		description:'Applying probability thoery, descriptive statistics, and inferential statistics',
+		description:'Applying concepts from probability thoery, using descriptive statistics and inferential statistics',
 	},
 
 	{
 		icontag:'keyboard',
 		header:'Programming',
-		description:'Using mathematics and programming to build useful models of the world',
+		description:'Building useful models of real world phenomena using mathematics, statistics, and programming ',
 	},
 
 	{
 		icontag:'easel',
 		header:'Design',
-		description:'Best practice design principles used to create aesthetic user interfaces and seamless user experiences',
+		description:'Creating aesthetic user interfaces and seamless user experiences while using best practice design principles',
 	},
 
 	{

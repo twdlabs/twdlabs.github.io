@@ -2,8 +2,8 @@
 
 
 /* Hero Section */
-div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../admin/images/barcelona.jpg'); background-size:cover;}
-div#container section.hero {background-position:center 25%; min-height:50vh; position:relative; transition:.25s margin;}
+div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../admin/images/barcelona.jpg'); background-size:cover; background-repeat:no-repeat;}
+div#container section.hero {background-position:center 40%; height:100vw; max-height:99vh; position:relative; transition:.25s margin;}
 div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:6rem;}
 div#container.babybar section.hero {margin-top:0;}
 div#container section.hero::before {background-color:var(--sheetcolor); content:'';}

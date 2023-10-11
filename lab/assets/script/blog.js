@@ -6,7 +6,7 @@ const postssection = document.querySelector('div#container section.blog div.grid
 // Get destination for featured posts. 
 const featuredpostsdestinationA = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.a');
 const featuredpostsdestinationB = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.b');
-console.log('Featured posts destination:',featuredpostsdestinationA,featuredpostsdestinationB);
+console.log('Featured posts destinations:',featuredpostsdestinationA,featuredpostsdestinationB);
 // Get destination for category posts. 
 const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.category');
 console.log('Category posts destination:',categoryPostsDestination);
@@ -14,12 +14,9 @@ console.log('Category posts destination:',categoryPostsDestination);
 const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.archive');
 console.log('Archive posts destination:',archivePostsDestination);
 
-// Initialize source of blog post cards. 
-let blogpostcards;
-
 // Get input field for filter query. 
-const postfilterfield = document.querySelector('div#container section.blog div.grid div.head div.filter input#postfilter');
-const postfilterfieldclearbtn = document.querySelector('div#container section.blog div.grid div.head div.filter label.clearbtn');
+const filterqueryfield = document.querySelector('div#container section.blog div.grid div.head div.filter input#postfilter');
+const filterqueryclearbtn = document.querySelector('div#container section.blog div.grid div.head div.filter label.clearbtn');
 
 // Get label for empty search results. 
 const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel');
@@ -191,22 +188,67 @@ function loadBlog() {
 	// Activate blog functionality. 
 	function activateBlog() {
 
-		// Get access to all previously loaded blog post cards. 
-		blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.postlist li.postcard');
+		// Access previously loaded blog post cards. 
+		let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.postlist li.postcard');
 	
 		// Activate previews for loaded blog post cards. 
 		activatePostPreviews();
 	
 		// Activate blog post filter. 
-		if(postfilterfield) activateBlogFilter();
+		if(filterqueryfield) activateBlogFilter();
+
+		// Activate previews for blog post cards. 
+		function activatePostPreviews() {
+			
+			// Go thru blog post cards. 
+			for(let card of blogpostcards) {
+		
+				// Activate mouse events for given card (without up/down propagation). 
+				card.addEventListener('mouseenter',openPreview);
+				card.addEventListener('mouseleave',closePreview);
+		
+				// Activate mouse events for given card (with up/down propagation). 
+				// card.addEventListener('mouseover',openPreview);
+				// card.addEventListener('mouseout',closePreview);
+			}
+		
+			// Open preview of blog post. 
+			function openPreview(event) {
+				// console.log('Opening preview...',event.target);
+		
+				// Get card for selected post. 
+				let selectedcard = event.currentTarget;
+				// Get project id of selected post. 
+				let projectid = selectedcard.getAttribute('data-projectid');
+		
+				// Get card's preview panel. 
+				let previewpanel = selectedcard.querySelector('div.preview');
+		
+				// Add preview iframe to preview panel.
+				previewpanel.insertAdjacentHTML('afterbegin', createPreviewPanel(projectid) );
+			}
+		
+			// Close preview of blog post. 
+			function closePreview(event) {
+				// console.log('Closing preview.',event.target);
+		
+				// Get card for selected post. 
+				let selectedcard = event.currentTarget;
+		
+				// Get iframe in card's preview panel. 
+				let previewpaneliframe = selectedcard.querySelector('div.preview iframe.preview');
+		
+				// Remove iframe from preview panel.
+				previewpaneliframe.remove();
+			}
+		}
 
 		// Activate blog post filter. 
 		function activateBlogFilter() {
 	
 			// Activate input field to filter blog posts. 
-			postfilterfield.addEventListener('input',filterBlogPosts);
-			postfilterfieldclearbtn.addEventListener('click',filterBlogPosts);
-			postfilterfieldclearbtn.addEventListener('click',clearFilterQuery);
+			filterqueryfield.addEventListener('input',filterBlogPosts);
+			filterqueryclearbtn.addEventListener('click',clearFilterQuery);
 	
 			// Clear any previous filter query. 
 			clearFilterQuery();
@@ -220,7 +262,7 @@ function loadBlog() {
 				let numMatchingPosts = 0;
 	
 				// Get filter query. 
-				let filterquery = (postfilterfield.value).toUpperCase();
+				let filterquery = (filterqueryfield.value).toUpperCase();
 				// Get list of filter queries. 
 				let filterquerywords = filterquery.split(' ');
 				console.log('Filtering...', filterquery, filterquerywords);
@@ -272,10 +314,10 @@ function loadBlog() {
 				}
 	
 				// Update visibility state of post based on match. 
-				function updatePostState(postcard,matched) {
+				function updatePostState(postcard,matchesQuery) {
 	
 					// Show matching post. 
-					if(matched) {
+					if(matchesQuery) {
 						postcard.classList.remove('gone');
 					}
 	
@@ -288,53 +330,12 @@ function loadBlog() {
 	
 			// Clear filter query. 
 			function clearFilterQuery() {
-				postfilterfield.value = '';
-			}
-		}
 
-		// Activate previews for blog post cards. 
-		function activatePostPreviews() {
-			
-			// Go thru blog post cards. 
-			for(let card of blogpostcards) {
-		
-				// Activate mouse events for given card (without up/down propagation). 
-				card.addEventListener('mouseenter',openPreview);
-				card.addEventListener('mouseleave',closePreview);
-		
-				// Activate mouse events for given card (with up/down propagation). 
-				// card.addEventListener('mouseover',openPreview);
-				// card.addEventListener('mouseout',closePreview);
-			}
-		
-			// Open preview of blog post. 
-			function openPreview(event) {
-				// console.log('Opening preview...',event.target);
-		
-				// Get selected card. 
-				let selectedCard = event.currentTarget;
-				// Get project id of selected post. 
-				let projectid = selectedCard.getAttribute('data-projectid');
-		
-				// Get preview panel. 
-				let previewpanel = selectedCard.querySelector('div.preview');
-		
-				// Add preview iframe to preview panel.
-				previewpanel.insertAdjacentHTML('afterbegin', createPreviewPanel(projectid) );
-			}
-		
-			// Close preview of blog post. 
-			function closePreview(event) {
-				// console.log('Closing preview.',event.target);
-		
-				// Get post card. 
-				let postcard = event.currentTarget;
-		
-				// Get iframe in preview panel. 
-				let previewpaneliframe = postcard.querySelector('div.preview iframe.preview');
-		
-				// Remove preview iframe from preview panel.
-				previewpaneliframe.remove();
+				// Clear filter query. 
+				filterqueryfield.value = '';
+	
+				// Filter blog posts. 
+				filterBlogPosts();
 			}
 		}
 	}

@@ -6,6 +6,12 @@ const navLinkData = {
 	groupname:'Links',
 	groupidlist:[
 		{
+			icontag:'door',
+			// icontag:'house',
+			linkurl:'./',
+			linkname:'Home',
+		},
+		{
 			icontag:'profile',
 			linkurl:'./about',
 			linkname:'About',
@@ -19,6 +25,11 @@ const navLinkData = {
 			icontag:'envelope',
 			linkurl:'./contact',
 			linkname:'Contact',
+		},
+		{
+			icontag:'hierarchy',
+			linkurl:'./sitemap',
+			linkname:'Site Map',
 		},
 		// {
 		// 	icontag:'xyz',

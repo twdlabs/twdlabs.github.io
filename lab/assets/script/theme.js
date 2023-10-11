@@ -2,16 +2,16 @@
 
 
 // Get theme list. 
-const themeList = document.querySelector('div#container nav.navbar div.bin div.themetoggler ul.themelist');
+const themeList = document.querySelector('div#container header.navbar div.bin div.themetoggler ul.themelist');
 
 // Get all theme buttons. 
-const allThemeBtns = document.querySelectorAll('div#container nav.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn');
+const allThemeBtns = document.querySelectorAll('div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn');
 
 // Get theme toggler button. 
-const themeToggleBtn = document.querySelector('div#container nav.navbar div.bin div.themetoggler div.themebtn');
+const themeToggleBtn = document.querySelector('div#container header.navbar div.bin div.themetoggler div.themebtn');
 
 // Get theme toggler button icon. 
-const themeToggleBtnIcon = document.querySelector('div#container nav.navbar div.bin div.themetoggler div.themebtn svg.icon.selected');
+const themeToggleBtnIcon = document.querySelector('div#container header.navbar div.bin div.themetoggler div.themebtn svg.icon.selected');
 
 // Initialize theme time checker. 
 let themeTimer;

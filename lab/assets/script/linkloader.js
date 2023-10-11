@@ -2,11 +2,11 @@
 
 
 // Get navigation sidebar. 
-const headsidebar = document.querySelector('div#container nav.navbar div.bin div.sidebar');
+const headsidebar = document.querySelector('div#container header.navbar div.bin div.sidebar');
 // console.log(headsidebar);
 // Get list destinations for header navigation. 
-const headnavlistdestinationA = document.querySelector('div#container nav.navbar div.bin div.sidebar div.navmenu.a ul.navlist');
-const headnavlistdestinationB = document.querySelector('div#container nav.navbar div.bin div.sidebar div.navmenu.b ul.navlist');
+const headnavlistdestinationA = document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.a ul.navlist');
+const headnavlistdestinationB = document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.b ul.navlist');
 
 // Get destination for matrix of group links in footer. 
 const grouplinksmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
@@ -30,7 +30,7 @@ loadLinkMatrix();
 
 
 // Create navigation item. 
-function createNavLink(url,caption,icontag,newwindowmode) {
+function createNavLink(url,caption,icontag,newwindowmode,relativeurl) {
 
 	// Compile layout for navigation item. 
 	return `
@@ -38,7 +38,7 @@ function createNavLink(url,caption,icontag,newwindowmode) {
 	<li class="navitem">
 	
 		<!-- navlink -->
-		<a class="navlink" href="${ getRelativeUrl(url) }" ${ newwindowmode ? 'target="_blank"' : '' }>
+		<a class="navlink" href="${ relativeurl ? getRelativeUrl(url) : url }" ${ newwindowmode ? 'target="_blank"' : '' }>
 
 			${ icontag ? createIcon(icontag) : '' }
 
@@ -70,25 +70,19 @@ function createNavLink(url,caption,icontag,newwindowmode) {
 // Add navigation links to header. 
 function loadNavLinks() {
 
-	// Add result to page. 
-	// headsidebar.innerHTML = result;
+	// Add page links to social. 
+	headnavlistdestinationA.innerHTML = createLinkList(navLinkData.groupidlist,false,true);
 
-	// Add list of links to page. 
-	headnavlistdestinationA.innerHTML = createLinkList(navLinkData.groupidlist);
-
-	// Add list of links to page. 
-	headnavlistdestinationB.innerHTML = createLinkList(socialLinkData.groupidlist);
+	// Add social links to social. 
+	headnavlistdestinationB.innerHTML = createLinkList(socialLinkData.groupidlist,true,false);
 
 	/****/
 
 	// Create layout for list of navigation links. 
-	function createLinkList(linklist) {
+	function createLinkList(linklist,newwindowmode,relativeurl) {
 
 		// Initialize list of items. 
 		let list = '';
-
-		// Set state of new window mode. 
-		let newwindowmode = true;
 
 		// Accumulate list of items. 
 		for(link of linklist) {
@@ -103,7 +97,7 @@ function loadNavLinks() {
 			let icontag = link.icontag;
 
 			// Compile navigation item. 
-			list += createNavLink(url,caption,icontag,newwindowmode);
+			list += createNavLink(url,caption,icontag,newwindowmode,relativeurl);
 		}
 
 		// Return list of items. 
@@ -202,10 +196,6 @@ function loadLinkMatrix() {
 			function createList(itemidlist) {
 				// console.log('Project group id list:',itemidlist);
 	
-				// Set window target for project links. 
-				// Set state of new window mode. 
-				let newwindowmode = true;
-	
 				// Initialize layout for project list. 
 				let projectgrouplayout = '';
 	
@@ -216,7 +206,7 @@ function loadLinkMatrix() {
 					let project = getItemById(itemid);
 	
 					// Get url for current project. 
-					let url = getRelativeUrl(`${urlprefix}${itemid}`);
+					let url = `${urlprefix}${itemid}`;
 					// let url = getRelativeUrl(`./category/?gid=${itemid}`);
 					// let url = getRelativeUrl(`../${itemid}`);
 					// console.log('\turl:',url);
@@ -232,7 +222,7 @@ function loadLinkMatrix() {
 					// console.log('\ticontag:',icontag);
 	
 					// Compile navigation item. 
-					projectgrouplayout += createNavLink(url,caption,icontag,newwindowmode);
+					projectgrouplayout += createNavLink(url,caption,icontag,false,true);
 				}
 	
 				// Return layout for project list. 
@@ -244,5 +234,21 @@ function loadLinkMatrix() {
 
 // Toggle state of navigation sidebar. 
 function toggleSidebar() {
-	headsidebar.classList.toggle('active');
+
+	// Check if sidebar already open. 
+	let alreadyopen = headsidebar.classList.contains('active');
+
+	// Close sidebar if already open. 
+	if(alreadyopen) {
+		headsidebar.classList.remove('active');
+		document.body.classList.remove('freeze');
+		document.documentElement.classList.remove('freeze');
+	}
+
+	// Open sidebar if not already open. 
+	else {
+		headsidebar.classList.add('active');
+		document.body.classList.add('freeze');
+		document.documentElement.classList.add('freeze');
+	}
 }

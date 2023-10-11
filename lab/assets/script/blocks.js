@@ -32,14 +32,14 @@ function loadMethodBlockSet() {
 	if(!methodblocksdestination) return;
 
 	// Get key for icon tag. 
-	let t = 'icontag';
+	let tk = 'icontag';
 	// Get key for name. 
-	let n = 'header';
+	let nk = 'header';
 	// Get key for description. 
-	let d = 'description';
+	let dk = 'description';
 
 	// Add block set to page destination. 
-	methodblocksdestination.innerHTML = createBlockSet(methodData, t,n,d);
+	methodblocksdestination.innerHTML = createBlockSet(methodData, tk,nk,dk, false);
 }
 
 // Load blocks for project categories. 
@@ -47,11 +47,11 @@ function loadCategoryBlockSet() {
 	if(!categoryblocksdestination) return;
 
 	// Get key for icon tag. 
-	let t = 'groupicontag';
+	let tk = 'groupicontag';
 	// Get key for name. 
-	let n = 'groupname';
+	let nk = 'groupname';
 	// Get key for description. 
-	let d = 'groupdescription';
+	let dk = 'groupdescription';
 	// Get key for id. 
 	let idkey = 'groupid';
 
@@ -59,7 +59,7 @@ function loadCategoryBlockSet() {
 	let urlprefix = './category/?gid=';
 
 	// Add block set to page destination. 
-	categoryblocksdestination.innerHTML = createBlockSet(projectGroupData, t,n,d, idkey,urlprefix,true);
+	categoryblocksdestination.innerHTML = createBlockSet(projectGroupData, tk,nk,dk, true,idkey,urlprefix);
 }
 
 // Load blocks for project meta-categories. 
@@ -67,11 +67,11 @@ function loadMetaCategoryBlockSet() {
 	if(!metacategoryblocksdestination) return;
 
 	// Get key for icon tag. 
-	let t = 'groupicontag';
+	let tk = 'groupicontag';
 	// Get key for name. 
-	let n = 'groupname';
+	let nk = 'groupname';
 	// Get key for description. 
-	let d = 'groupdescription';
+	let dk = 'groupdescription';
 	// Get key for id. 
 	let idkey = 'groupid';
 
@@ -79,11 +79,11 @@ function loadMetaCategoryBlockSet() {
 	let urlprefix = './metacategory/?gid=';
 
 	// Add block set to page destination. 
-	metacategoryblocksdestination.innerHTML = createBlockSet(projectMetaGroupData, t,n,d, idkey,urlprefix,true);
+	metacategoryblocksdestination.innerHTML = createBlockSet(projectMetaGroupData, tk,nk,dk, true,idkey,urlprefix);
 }
 
 // Create layout for set of block items. 
-function createBlockSet(datasource, t,n,d, idtag,urlprefix,openLinksInNewTab) {
+function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode,idkey,urlprefix) {
 
 	// Initialize result layout. 
 	let result = '';
@@ -94,17 +94,14 @@ function createBlockSet(datasource, t,n,d, idtag,urlprefix,openLinksInNewTab) {
 		// Skip ghost blocks. 
 		if(block.ghostblock) continue;
 
-		// Get icon tag. 
-		let tag = block[t];
-
-		// Get name. 
-		let name = block[n];
-
-		// Get description. 
-		let description = block[d];
-
-		// Get id of post. 
-		let id = block[idtag];
+		// Get icon tag for current block. 
+		let tag = block[tagkey];
+		// Get name for current block. 
+		let name = block[namekey];
+		// Get description for current block. 
+		let description = block[descriptionkey];
+		// Get id of current block. 
+		let id = block[idkey];
 
 		// Add layout for block item. 
 		result += createBlockItem(tag,name,description,id);
@@ -119,7 +116,7 @@ function createBlockSet(datasource, t,n,d, idtag,urlprefix,openLinksInNewTab) {
 	function createBlockItem(icontag,name,description,id) {
 
 		// Set whether or not to open link in new tab. 
-		// let openLinksInNewTab = true;
+		// let newwindowmode = true;
 
 		// Get link url. 
 		let linkurl = (urlprefix && id) ? getRelativeUrl(urlprefix + id) : 'javascript:void(0)';
@@ -131,7 +128,7 @@ function createBlockSet(datasource, t,n,d, idtag,urlprefix,openLinksInNewTab) {
 		<li class="blockitem">
 	
 			<!-- blocklink -->
-			<a class="blocklink" href="${linkurl}" ${ openLinksInNewTab ? 'target="_blank"' : '' }>
+			<a class="blocklink" href="${linkurl}" ${ newwindowmode ? 'target="_blank"' : '' }>
 	
 				<!-- icon -->
 				<svg class="icon ${ icontag }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
