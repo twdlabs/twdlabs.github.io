@@ -2,16 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
 
 
+
 * {box-sizing:border-box; transition:.5s; /* padding:0; margin:0; */}
 /* Everything changes smoothly */
+
 
 
 :root {
 
 	/* Base Colors */
 	--lightblack:#444;
+	--whitesheet:#FFFA;
 	--lnrgrdnt:linear-gradient( var(--yg1) , var(--yg7) );
-	background:var(--lnrgrdnt);
+	
 
 	/* Theme Colors */
 	--yg1:rgb(102,204,102);
@@ -24,61 +27,71 @@
 }
 
 
-html,
-body {font-family:Nunito,sans-serif; margin:0; overflow:hidden; /*border:.5rem solid transparent;*/}
 
+/* Container */
+/* html {} */
+body {background:var(--lnrgrdnt); font-family:Nunito,sans-serif; margin:0; overflow:hidden; /*border:.5rem solid transparent;*/}
 div#container {perspective:300px; perspective-origin:center; height:100vh;}
 div#container {overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:touch;}
+div#container.debug {/* perspective:400px; transform:scale(1); */ border:.375rem solid;}
+
+/* Parallax Group */
 div#container div.plaxgroup {position:relative; height:100%; transform-style:preserve-3d; /*transition:.5s transform-style;*/}
-div#container div.plaxgroup#group1 {z-index:5;}
-div#container div.plaxgroup#group2 {z-index:3;}
-div#container div.plaxgroup#group3 {z-index:4;}
-div#container div.plaxgroup#group4 {z-index:2;}
-div#container div.plaxgroup#group5 {z-index:3;}
-div#container div.plaxgroup#group6 {z-index:2;}
-div#container div.plaxgroup#group7 {z-index:3;}
+div#container div.plaxgroup#group1 {--bgcolor:var(--yg1); z-index:5;}	/* slide over group 2 */
+div#container div.plaxgroup#group2 {--bgcolor:var(--yg2); z-index:3;}	/* slide under groups 1 & 3 */
+div#container div.plaxgroup#group3 {--bgcolor:var(--yg3); z-index:4;}	/* slide over group 2 & 4 */
+div#container div.plaxgroup#group4 {--bgcolor:var(--yg4); z-index:2;}	/* slide under group 3 & 5 */
+div#container div.plaxgroup#group5 {--bgcolor:var(--yg5); z-index:3;}	/* slide over group 4 & 6 */
+div#container div.plaxgroup#group6 {--bgcolor:var(--yg6); z-index:2;}	/* slide under group 5 & 7 */
+div#container div.plaxgroup#group7 {--bgcolor:var(--yg7); z-index:3;}	/* slide over group 6 */
+div#container.debug div.plaxgroup {transform:translate3d(200px,0,-3000px) rotateY(45deg); transform:translate3d(200px,-2000px,-2000px) rotateY(45deg); transform-style:preserve-3d; border:.375rem solid;}
 
+/* Parallax Group Layer */
+div#container div.plaxgroup div.layer {position:absolute; top:0; right:0; bottom:0; left:0;}
+div#container div.plaxgroup div.layer {display:grid; place-items:center; padding:2rem; /*padding-bottom:75rem;*/ /*border:1px solid black;*/ box-shadow:0 0 0 2px black;}
+div#container div.plaxgroup div.layer.fore {transform:translateZ(150px) scale(0.5); /*z-index:1;*/}
+div#container div.plaxgroup div.layer.base {transform:translateZ(0) scale(1); /*z-index:4;*/}
+div#container div.plaxgroup div.layer.back {transform:translateZ(-300px) scale(2); /*z-index:3;*/}
+div#container div.plaxgroup div.layer.deep {transform:translateZ(-600px) scale(3); /*z-index:2;*/}
+div#container div.plaxgroup div.layer:first-child {background-color:var(--bgcolor);}
+div#container.debug div.plaxgroup div.layer {opacity:0.9; border:.5rem solid;}
+div#container.debug div.plaxgroup div.layer.fore {transform:translateZ(150px);}
+div#container.debug div.plaxgroup div.layer.base {transform:translateZ(0px);}
+div#container.debug div.plaxgroup div.layer.back {transform:translateZ(-300px);}
+div#container.debug div.plaxgroup div.layer.deep {transform:translateZ(-600px);}
+/* Scale factor  =  1 - (translateZ)/(perspective) */
 
-div#container div.plaxgroup div.parallax_layer {position:absolute; top:0; right:0; bottom:0; left:0; /*padding-bottom:1200px;*/ /*border:1px solid #000;*/ box-shadow:0 0 0 2px #000;}
-div#container div.plaxgroup div.parallax_layer.fore {transform:translateZ(150px) scale(0.5); /*z-index:1;*/}
-div#container div.plaxgroup div.parallax_layer.base {transform:translateZ(0) scale(1); /*z-index:4;*/}
-div#container div.plaxgroup div.parallax_layer.back {transform:translateZ(-300px) scale(2); /*z-index:3;*/}
-div#container div.plaxgroup div.parallax_layer.deep {transform:translateZ(-600px) scale(3); /*z-index:2;*/}
-/* Factor of scale  =  [ 1 - (translateZ)/(perspective) ] */
-div#container div.plaxgroup#group1 div.parallax_layer:first-child {background-color:var(--yg1);}
-div#container div.plaxgroup#group2 div.parallax_layer:first-child {background-color:var(--yg2);}
-div#container div.plaxgroup#group3 div.parallax_layer:first-child {background-color:var(--yg3);}
-div#container div.plaxgroup#group4 div.parallax_layer:first-child {background-color:var(--yg4);}
-div#container div.plaxgroup#group5 div.parallax_layer:first-child {background-color:var(--yg5);}
-div#container div.plaxgroup#group6 div.parallax_layer:first-child {background-color:var(--yg6);}
-div#container div.plaxgroup#group7 div.parallax_layer:first-child {background-color:var(--yg7);}
-div#container div.plaxgroup div.parallax_layer {display:grid; place-items:center; padding:2rem;}
-div#container div.plaxgroup div.parallax_layer span.caption {background-color:#FFFA; max-width:100%; user-select:none; border-radius:5rem; border:solid; padding:.5em 1em .4em;}
-div#container div.plaxgroup div.parallax_layer span.caption {font-size:2em; text-transform:capitalize; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+/* Parallax Group Layer Caption */
+div#container div.plaxgroup div.layer span.caption {background-color:var(--whitesheet); max-width:100%; user-select:none; border-radius:5rem; border:.125rem solid; padding:.5em 1em .4em;}
+div#container div.plaxgroup div.layer span.caption {font-size:1rem; text-transform:capitalize; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+div#container div.plaxgroup div.layer span.caption::after {content:' layer';}
+div#container.debug div.plaxgroup div.layer span.caption {font-size:3em;}
+/* div#container.debug div.plaxgroup div.layer.fore span.caption {transform:xyz;} */
+/* div#container.debug div.plaxgroup div.layer.base span.caption {transform:xyz;} */
+/* div#container.debug div.plaxgroup div.layer.back span.caption {transform:xyz;} */
+/* div#container.debug div.plaxgroup div.layer.deep span.caption {transform:xyz;} */
+
 
 /* Debugger */
-div#debugger {position:fixed; top:1vh; right:1vh; z-index:100; user-select:none;}
-div#debugger {background-color:var(--lightblack); color:white; font-size:.75rem; font-weight:bold; padding:.625rem .625rem; border-radius:.5rem;}
-div#debugger div.row {margin-top:.375rem; text-align:center;}
-div#debugger div.row label {margin-left:0;}
-div#debugger div.row button {cursor:pointer; border-radius:.5rem; padding:1px .5rem; font-weight:600; border:0 none;}
-div#debugger div.row button.wide {width:100%;}
-div#debugger div.row button.debugbtn {padding:2px .5rem; margin-top:2px;}
-div#debugger div.row button svg {display:block; font-size:1rem;}
-div#debugger div#modeA {display:block;}
-div#debugger div#modeB {display:none;}
-div#debugger.alt div#modeA {display:none;}
-div#debugger.alt div#modeB {display:block;}
-/*div#debugger span {padding:3px 4px 3px 0px;}*/
+div.debugger {position:fixed; top:1vh; z-index:100; user-select:none;}
+div.debugger {background-color:var(--lightblack); padding:.625rem .625rem; border-radius:.5rem;}
+div.debugger {color:white; font-size:.75rem; font-weight:bold;}
+div.debugger.l {left:1vh;}
+div.debugger.r {right:1vh;}
+div.debugger.c {left:50%; transform:translateX(-50%);}
+div.debugger button {cursor:pointer; border-radius:.5rem; border:0 none;}
+div.debugger button.ctrl {font-size:1.125rem; font-weight:400; padding:.375rem .75rem;}
+div.debugger div.mode {display:flex; flex-direction:column; align-items:center; grid-gap:.375rem;}
+div.debugger div.mode div.row {display:flex; flex-direction:row; justify-content:space-between; align-items:center; grid-gap:.25rem; /* margin-top:.375rem; */}
+div.debugger div.mode div.row label.label {font-weight:100; margin-right:.125rem;}
+div.debugger div.mode div.row label.label::after {content:'-axis';}
+div.debugger div.mode div.row button.deltabtn {font-weight:100; padding:.25rem .375rem;}
+div.debugger div.mode div.row button.deltabtn svg.icon {display:block; font-size:1rem;}
+/* div.debugger div.mode div.row button.deltabtn span.caption {display:none; font-size:1rem;} */
 
-
-/* Debug Mode */
-
-div#container.debug {/* perspective:400px; transform:scale(1); */ border:.5rem solid;}
-div#container.debug div.plaxgroup {transform:translate3d(200px,0,-3000px) rotateY(45deg); transform:translate3d(200px,-2000px,-2000px) rotateY(45deg); transform-style:preserve-3d; border:.375rem solid;}
-div#container.debug div.plaxgroup div.parallax_layer {opacity:0.9; border:.5rem solid;}
-div#container.debug div.plaxgroup div.parallax_layer.fore {transform:translateZ(150px);}
-div#container.debug div.plaxgroup div.parallax_layer.base {transform:translateZ(0px);}
-div#container.debug div.plaxgroup div.parallax_layer.back {transform:translateZ(-300px);}
-div#container.debug div.plaxgroup div.parallax_layer.deep {transform:translateZ(-600px);}
-div#container.debug div.plaxgroup div.parallax_layer span.caption {font-size:3em;}
+/* Debugger Modes */
+/* div.debugger div#modeA {display:block;} */
+/* div.debugger div#modeB {display:none;} */
+/* div.debugger.alt div#modeA {display:none;} */
+/* div.debugger.alt div#modeB {display:block;} */
+/*div.debugger span {padding:3px 4px 3px 0px;}*/

@@ -23,192 +23,24 @@
 
 	<body>
 
-		<!-- #container -->
-		<div id="container" class="parallax">
-
-			<!-- plaxgroup -->
-			<div id="group1" class="plaxgroup">
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer base">
-
-					<!-- caption -->
-					<span class="caption">base layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-			</div>
-			<!-- /plaxgroup -->
-
-			<!-- plaxgroup -->
-			<div id="group2" class="plaxgroup">
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer back">
-
-					<!-- caption -->
-					<span class="caption">background layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer base">
-
-					<!-- caption -->
-					<span class="caption">base layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-			</div>
-			<!-- /plaxgroup -->
-
-			<!-- plaxgroup -->
-			<div id="group3" class="plaxgroup">
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer base">
-
-					<!-- caption -->
-					<span class="caption">base layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer fore">
-
-					<!-- caption -->
-					<span class="caption">foreground layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-			</div>
-			<!-- /plaxgroup -->
-
-			<!-- plaxgroup -->
-			<div id="group4" class="plaxgroup">
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer deep">
-
-					<!-- caption -->
-					<span class="caption">deep background layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer back">
-
-					<!-- caption -->
-					<span class="caption">background layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer base">
-
-					<!-- caption -->
-					<span class="caption">base layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-			</div>
-			<!-- /plaxgroup -->
-
-			<!-- plaxgroup -->
-			<div id="group5" class="plaxgroup">
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer base">
-
-					<!-- caption -->
-					<span class="caption">base layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer fore">
-
-					<!-- caption -->
-					<span class="caption">foreground layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-			</div>
-			<!-- /plaxgroup -->
-
-			<!-- plaxgroup -->
-			<div id="group6" class="plaxgroup">
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer back">
-
-					<!-- caption -->
-					<span class="caption">background layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer base">
-
-					<!-- caption -->
-					<span class="caption">base layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-			</div>
-			<!-- /plaxgroup -->
-
-			<!-- plaxgroup -->
-			<div id="group7" class="plaxgroup">
-
-				<!-- parallax_layer -->
-				<div class="parallax_layer base">
-
-					<!-- caption -->
-					<span class="caption">base layer</span>
-					<!-- /caption -->
-
-				</div>
-				<!-- /parallax_layer -->
-
-			</div>
-			<!-- /plaxgroup -->
-
-		</div>
-		<!-- /#container -->
-
-		<!-- #debugger -->
-		<div id="debugger">
+		<!-- debugger -->
+		<div class="debugger c">
 
 			<!-- row -->
 			<div class="row">
 
+				<!-- debugbtn -->
+				<button class="debugbtn ctrl" onclick="toggleDebugger();">
+
+					<!-- caption -->
+					<span class="caption">Debug</span>
+					<!-- /caption -->
+
+				</button>
+				<!-- /debugbtn -->
+
 				<!-- modebtn -->
-				<button class="modebtn wide" onclick="$('#debugger').toggleClass('alt');">
+				<button class="modebtn ctrl" onclick="$('div.debugger').toggleClass('alt');" style="display:none;">
 
 					<!-- caption -->
 					<span class="caption">Mode</span>
@@ -220,6 +52,12 @@
 			</div>
 			<!-- /row -->
 
+		</div>
+		<!-- /debugger -->
+
+		<!-- debugger -->
+		<div class="debugger r">
+
 			<!-- mode -->
 			<div class="mode" id="modeA">
 
@@ -227,24 +65,54 @@
 				<div class="row">
 
 					<!-- deltabtn -->
-					<button class="deltabtn ccw" onclick="deltaPhi(22.5)">
+					<button class="deltabtn back" onclick="deltaZ(-250)">
 
 						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-							<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+						<svg class="icon arrowback" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 						</svg>
 						<!-- /icon -->
 
 					</button>
 					<!-- /deltabtn -->
 
+					<!-- deltabtn -->
+					<button class="deltabtn fwd" onclick="deltaZ(250)">
+
+						<!-- icon -->
+						<svg class="icon arrowfwd" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
+							<path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- deltabtn -->
+					<button class="deltabtn cw" onclick="deltaPhi(-22.5)">
+
+						<!-- icon -->
+						<svg class="icon arrowcw" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+							<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
 
 					<!-- deltabtn -->
 					<button class="deltabtn up" onclick="deltaY(-250)">
 
 						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<svg class="icon arrowup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
 						</svg>
 						<!-- /icon -->
@@ -252,14 +120,13 @@
 					</button>
 					<!-- /deltabtn -->
 
-
 					<!-- deltabtn -->
-					<button class="deltabtn cw" onclick="deltaPhi(-22.5)">
+					<button class="deltabtn ccw" onclick="deltaPhi(22.5)">
 
 						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-							<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+						<svg class="icon arrowccw" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+							<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
 						</svg>
 						<!-- /icon -->
 
@@ -276,7 +143,7 @@
 					<button class="deltabtn left" onclick="deltaX(-250)">
 
 						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<svg class="icon arrowleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
 						</svg>
 						<!-- /icon -->
@@ -284,12 +151,11 @@
 					</button>
 					<!-- /deltabtn -->
 
-
 					<!-- deltabtn -->
 					<button class="deltabtn down" onclick="deltaY(250)">
 
 						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<svg class="icon arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
 						</svg>
 						<!-- /icon -->
@@ -297,12 +163,11 @@
 					</button>
 					<!-- /deltabtn -->
 
-
 					<!-- deltabtn -->
 					<button class="deltabtn right" onclick="deltaX(250)">
 
 						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<svg class="icon arrowright" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
 						</svg>
 						<!-- /icon -->
@@ -312,41 +177,15 @@
 
 				</div>
 				<!-- /row -->
-
-				<!-- row -->
-				<div class="row">
-
-					<!-- deltabtn -->
-					<button class="deltabtn back" onclick="deltaZ(-250)">
-
-						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-
-					<!-- deltabtn -->
-					<button class="deltabtn fwd" onclick="deltaZ(250)">
-
-						<!-- icon -->
-						<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1A5 5 0 1 0 8 3a5 5 0 0 0 0 10z"/>
-							<path d="M10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-				</div>
-				<!-- /row -->
 				
 			</div>
 			<!-- /mode -->
+
+		</div>
+		<!-- /debugger -->
+
+		<!-- debugger -->
+		<div class="debugger l">
 
 			<!-- mode -->
 			<div class="mode" id="modeB">
@@ -355,88 +194,322 @@
 				<!-- row -->
 				<div class="row">
 
+					<!-- label -->
+					<label class="label">x</label>
+					<!-- /label -->
+
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaX(-250)">&minus;</button>
+					<button class="deltabtn" onclick="deltaX(-250)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaX(250)">&plus;</button>
+					<button class="deltabtn" onclick="deltaX(250)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-					<label>X</label>
 				</div>
 				<!-- /row -->
 
 				<!-- row -->
 				<div class="row">
 
+					<!-- label -->
+					<label class="label">y</label>
+					<!-- /label -->
+
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaY(-250)">&minus;</button>
+					<button class="deltabtn" onclick="deltaY(-250)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaY(250)">&plus;</button>
+					<button class="deltabtn" onclick="deltaY(250)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-					<label>Y</label>
 				</div>
 				<!-- /row -->
 
 				<!-- row -->
 				<div class="row">
 
+					<!-- label -->
+					<label class="label">z</label>
+					<!-- /label -->
+
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaZ(-250)">&minus;</button>
+					<button class="deltabtn" onclick="deltaZ(-250)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaZ(250)">&plus;</button>
+					<button class="deltabtn" onclick="deltaZ(250)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-					<label>Z</label>
 				</div>
 				<!-- /row -->
 
 				<!-- row -->
 				<div class="row">
 
+					<!-- label -->
+					<label class="label">&phi;</label>
+					<!-- /label -->
+
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaPhi(-22.5)">&minus;</button>
+					<button class="deltabtn" onclick="deltaPhi(-22.5)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-
 					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaPhi(22.5)">&plus;</button>
+					<button class="deltabtn" onclick="deltaPhi(22.5)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
 					<!-- /deltabtn -->
 
-					<label>&phi;</label>
 				</div>
 				<!-- /row -->
 				
 			</div>
 			<!-- /mode -->
 
-			<!-- row -->
-			<div class="row">
+		</div>
+		<!-- /debugger -->
 
-				<!-- debugbtn -->
-				<button class="debugbtn wide" onclick="toggleDebugger();">
+		<!-- #container -->
+		<div id="container" class="parallax">
+
+			<!-- plaxgroup -->
+			<div id="group1" class="plaxgroup">
+
+				<!-- layer -->
+				<div class="layer base">
 
 					<!-- caption -->
-					<span class="caption">Debug</span>
+					<span class="caption">base</span>
 					<!-- /caption -->
 
-				</button>
-				<!-- /debugbtn -->
+				</div>
+				<!-- /layer -->
 
 			</div>
-			<!-- /row -->
+			<!-- /plaxgroup -->
+
+			<!-- plaxgroup -->
+			<div id="group2" class="plaxgroup">
+
+				<!-- layer -->
+				<div class="layer back">
+
+					<!-- caption -->
+					<span class="caption">background</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+				<!-- layer -->
+				<div class="layer base">
+
+					<!-- caption -->
+					<span class="caption">base</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+			</div>
+			<!-- /plaxgroup -->
+
+			<!-- plaxgroup -->
+			<div id="group3" class="plaxgroup">
+
+				<!-- layer -->
+				<div class="layer base">
+
+					<!-- caption -->
+					<span class="caption">base</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+				<!-- layer -->
+				<div class="layer fore">
+
+					<!-- caption -->
+					<span class="caption">foreground</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+			</div>
+			<!-- /plaxgroup -->
+
+			<!-- plaxgroup -->
+			<div id="group4" class="plaxgroup">
+
+				<!-- layer -->
+				<div class="layer deep">
+
+					<!-- caption -->
+					<span class="caption">deep background</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+				<!-- layer -->
+				<div class="layer back">
+
+					<!-- caption -->
+					<span class="caption">background</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+				<!-- layer -->
+				<div class="layer base">
+
+					<!-- caption -->
+					<span class="caption">base</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+			</div>
+			<!-- /plaxgroup -->
+
+			<!-- plaxgroup -->
+			<div id="group5" class="plaxgroup">
+
+				<!-- layer -->
+				<div class="layer base">
+
+					<!-- caption -->
+					<span class="caption">base</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+				<!-- layer -->
+				<div class="layer fore">
+
+					<!-- caption -->
+					<span class="caption">foreground</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+			</div>
+			<!-- /plaxgroup -->
+
+			<!-- plaxgroup -->
+			<div id="group6" class="plaxgroup">
+
+				<!-- layer -->
+				<div class="layer back">
+
+					<!-- caption -->
+					<span class="caption">background</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+				<!-- layer -->
+				<div class="layer base">
+
+					<!-- caption -->
+					<span class="caption">base</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+			</div>
+			<!-- /plaxgroup -->
+
+			<!-- plaxgroup -->
+			<div id="group7" class="plaxgroup">
+
+				<!-- layer -->
+				<div class="layer base">
+
+					<!-- caption -->
+					<span class="caption">base</span>
+					<!-- /caption -->
+
+				</div>
+				<!-- /layer -->
+
+			</div>
+			<!-- /plaxgroup -->
 
 		</div>
-		<!-- /#debugger -->
+		<!-- /#container -->
 
 
 		<!-- Xyz Database -->
