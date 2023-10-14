@@ -65,7 +65,7 @@ div#container.debug div.plaxgroup div.layer.deep {transform:translateZ(-600px);}
 div#container div.plaxgroup div.layer span.caption {background-color:var(--whitesheet); max-width:100%; user-select:none; border-radius:5rem; border:.125rem solid; padding:.5em 1em .4em;}
 div#container div.plaxgroup div.layer span.caption {font-size:1rem; text-transform:capitalize; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 div#container div.plaxgroup div.layer span.caption::after {content:' layer';}
-div#container.debug div.plaxgroup div.layer span.caption {font-size:3em;}
+div#container.debug div.plaxgroup div.layer span.caption {font-size:2.5rem;}
 /* div#container.debug div.plaxgroup div.layer.fore span.caption {transform:xyz;} */
 /* div#container.debug div.plaxgroup div.layer.base span.caption {transform:xyz;} */
 /* div#container.debug div.plaxgroup div.layer.back span.caption {transform:xyz;} */
@@ -89,9 +89,67 @@ div.debugger div.mode div.row button.deltabtn {font-weight:100; padding:.25rem .
 div.debugger div.mode div.row button.deltabtn svg.icon {display:block; font-size:1rem;}
 /* div.debugger div.mode div.row button.deltabtn span.caption {display:none; font-size:1rem;} */
 
-/* Debugger Modes */
-/* div.debugger div#modeA {display:block;} */
-/* div.debugger div#modeB {display:none;} */
-/* div.debugger.alt div#modeA {display:none;} */
-/* div.debugger.alt div#modeB {display:block;} */
-/*div.debugger span {padding:3px 4px 3px 0px;}*/
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* Container */
+	/* div#container {} */
+
+	/* Parallax Group */
+	/* div#container div.plaxgroup {} */
+
+	/* Parallax Group Layer */
+	/* div#container div.plaxgroup div.layer {} */
+	
+	/* Parallax Group Layer Caption */
+	/* div#container div.plaxgroup div.layer span.caption {} */
+	
+
+	/* Debugger */
+	/* div.debugger {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/* Container */
+	/* div#container {} */
+
+	/* Parallax Group */
+	/* div#container div.plaxgroup {} */
+
+	/* Parallax Group Layer */
+	/* div#container div.plaxgroup div.layer {} */
+	
+	/* Parallax Group Layer Caption */
+	/* div#container div.plaxgroup div.layer span.caption {} */
+	
+
+	/* Debugger */
+	/* div.debugger {} */
+	div.debugger.c {top:auto; bottom:1vh;}
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	
+	/* Container */
+	/* div#container {} */
+
+	/* Parallax Group */
+	/* div#container div.plaxgroup {} */
+
+	/* Parallax Group Layer */
+	/* div#container div.plaxgroup div.layer {} */
+	
+	/* Parallax Group Layer Caption */
+	/* div#container div.plaxgroup div.layer span.caption {} */
+	
+
+	/* Debugger */
+	/* div.debugger {} */
+}
+
