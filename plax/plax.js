@@ -5,7 +5,10 @@
 const container = document.querySelector('div#container');
 
 // Get all parallax groups. 
-const plaxgroups = document.querySelectorAll('div#container div.plaxgroup');
+const plaxgroups = document.querySelectorAll('div#container section.plaxgroup');
+
+// Get automatic debug controllers. 
+let autodebugcontrollers = document.querySelectorAll('div.debugger.auto');
 
 
 /*****/
@@ -36,6 +39,13 @@ let dRho = 0;
 /*****/
 
 
+// 
+for(let dc of autodebugcontrollers) {
+	dc.addEventListener('mouseenter',openDebugMode);
+	dc.addEventListener('mouseleave',closeDebugMode);
+}
+
+
 /*****/
 
 
@@ -50,8 +60,26 @@ function toggleDebugger() {
 
 	// Turn on debug mode if not already on. 
 	else openDebugMode();
+}
 
-	/*****/
+// Open debug mode. 
+function openDebugMode() {
+	// Update mode. 
+	container.classList.add('debug');
+	// Apply current transform values. 
+	goTransform();
+}
+
+// Close debug mode. 
+function closeDebugMode() {
+	// Update mode. 
+	container.classList.remove('debug');
+	// Reset transform values to default. 
+	resetTransformValues();
+	// Apply current transform values. 
+	goTransform();
+
+	/****/
 
 	// Reset transform values to default. 
 	function resetTransformValues() {
@@ -59,24 +87,6 @@ function toggleDebugger() {
 		dY = -2000;
 		dZ = -2000;
 		dPhi = 45;
-	}
-
-	// Open debug mode. 
-	function openDebugMode() {
-		// Update mode. 
-		container.classList.add('debug');
-		// Apply current transform values. 
-		goTransform();
-	}
-
-	// Close debug mode. 
-	function closeDebugMode() {
-		// Update mode. 
-		container.classList.remove('debug');
-		// Reset transform values to default. 
-		resetTransformValues();
-		// Apply current transform values. 
-		goTransform();
 	}
 }
 
@@ -126,14 +136,15 @@ function goTransform() {
 	if(debugOn && validTr) {
 
 		if(transformWhole) {
-			container.style.transform += `translate3d( ${dX}px, ${dY}px, ${dZ}px ) rotateX( ${dTheta}deg ) rotateY( ${dPhi}deg ) rotateZ( ${dRho}deg )`;
+			// Apply transformation. 
+			container.style.transform = `translate3d( ${dX}px, ${dY}px, ${dZ}px ) rotateX( ${dTheta}deg ) rotateY( ${dPhi}deg ) rotateZ( ${dRho}deg )`;
 			return;
 		}
 
 		// Go thru each parallax group. 
 		for(let pg of plaxgroups) {
 			// Apply transformation. 
-			pg.style.transform += `translate3d( ${dX}px, ${dY}px, ${dZ}px ) rotateX( ${dTheta}deg ) rotateY( ${dPhi}deg ) rotateZ( ${dRho}deg )`;
+			pg.style.transform = `translate3d( ${dX}px, ${dY}px, ${dZ}px ) rotateX( ${dTheta}deg ) rotateY( ${dPhi}deg ) rotateZ( ${dRho}deg )`;
 		}
 	}
 

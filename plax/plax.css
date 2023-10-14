@@ -36,40 +36,40 @@ div#container {overflow-x:hidden; overflow-y:auto; -webkit-overflow-scrolling:to
 div#container.debug {/* perspective:400px; transform:scale(1); */ border:.375rem solid;}
 
 /* Parallax Group */
-div#container div.plaxgroup {position:relative; height:100%; transform-style:preserve-3d; /*transition:.5s transform-style;*/}
-div#container div.plaxgroup#group1 {--bgcolor:var(--yg1); z-index:5;}	/* slide over group 2 */
-div#container div.plaxgroup#group2 {--bgcolor:var(--yg2); z-index:3;}	/* slide under groups 1 & 3 */
-div#container div.plaxgroup#group3 {--bgcolor:var(--yg3); z-index:4;}	/* slide over group 2 & 4 */
-div#container div.plaxgroup#group4 {--bgcolor:var(--yg4); z-index:2;}	/* slide under group 3 & 5 */
-div#container div.plaxgroup#group5 {--bgcolor:var(--yg5); z-index:3;}	/* slide over group 4 & 6 */
-div#container div.plaxgroup#group6 {--bgcolor:var(--yg6); z-index:2;}	/* slide under group 5 & 7 */
-div#container div.plaxgroup#group7 {--bgcolor:var(--yg7); z-index:3;}	/* slide over group 6 */
-div#container.debug div.plaxgroup {transform:translate3d(200px,0,-3000px) rotateY(45deg); transform:translate3d(200px,-2000px,-2000px) rotateY(45deg); transform-style:preserve-3d; border:.375rem solid;}
+div#container section.plaxgroup {position:relative; height:100%; transform-style:preserve-3d; /*transition:.5s transform-style;*/}
+div#container section.plaxgroup#group1 {--bgcolor:var(--yg1); z-index:5;}	/* slide over group 2 */
+div#container section.plaxgroup#group2 {--bgcolor:var(--yg2); z-index:3;}	/* slide under groups 1 & 3 */
+div#container section.plaxgroup#group3 {--bgcolor:var(--yg3); z-index:4;}	/* slide over group 2 & 4 */
+div#container section.plaxgroup#group4 {--bgcolor:var(--yg4); z-index:2;}	/* slide under group 3 & 5 */
+div#container section.plaxgroup#group5 {--bgcolor:var(--yg5); z-index:3;}	/* slide over group 4 & 6 */
+div#container section.plaxgroup#group6 {--bgcolor:var(--yg6); z-index:2;}	/* slide under group 5 & 7 */
+div#container section.plaxgroup#group7 {--bgcolor:var(--yg7); z-index:3;}	/* slide over group 6 */
+div#container.debug section.plaxgroup {transform:translate3d(200px,0,-3000px) rotateY(45deg); transform:translate3d(200px,-2000px,-2000px) rotateY(45deg); transform-style:preserve-3d; border:.375rem solid;}
 
 /* Parallax Group Layer */
-div#container div.plaxgroup div.layer {position:absolute; top:0; right:0; bottom:0; left:0;}
-div#container div.plaxgroup div.layer {display:grid; place-items:center; padding:2rem; /*padding-bottom:75rem;*/ /*border:1px solid black;*/ box-shadow:0 0 0 2px black;}
-div#container div.plaxgroup div.layer.fore {transform:translateZ(150px) scale(0.5); /*z-index:1;*/}
-div#container div.plaxgroup div.layer.base {transform:translateZ(0) scale(1); /*z-index:4;*/}
-div#container div.plaxgroup div.layer.back {transform:translateZ(-300px) scale(2); /*z-index:3;*/}
-div#container div.plaxgroup div.layer.deep {transform:translateZ(-600px) scale(3); /*z-index:2;*/}
-div#container div.plaxgroup div.layer:first-child {background-color:var(--bgcolor);}
-div#container.debug div.plaxgroup div.layer {opacity:0.9; border:.5rem solid;}
-div#container.debug div.plaxgroup div.layer.fore {transform:translateZ(150px);}
-div#container.debug div.plaxgroup div.layer.base {transform:translateZ(0px);}
-div#container.debug div.plaxgroup div.layer.back {transform:translateZ(-300px);}
-div#container.debug div.plaxgroup div.layer.deep {transform:translateZ(-600px);}
+div#container section.plaxgroup div.layer {position:absolute; top:0; right:0; bottom:0; left:0;}
+div#container section.plaxgroup div.layer {display:grid; place-items:center; padding:2rem; /*padding-bottom:75rem;*/ /*border:1px solid black;*/ box-shadow:0 0 0 2px black;}
+div#container section.plaxgroup div.layer.fore {transform:translateZ(150px) scale(0.5); /*z-index:1;*/}
+div#container section.plaxgroup div.layer.base {transform:translateZ(0) scale(1); /*z-index:4;*/}
+div#container section.plaxgroup div.layer.back {transform:translateZ(-300px) scale(2); /*z-index:3;*/}
+div#container section.plaxgroup div.layer.deep {transform:translateZ(-600px) scale(3); /*z-index:2;*/}
+div#container section.plaxgroup div.layer:first-child {background-color:var(--bgcolor);}
+div#container.debug section.plaxgroup div.layer {opacity:0.75; border:.5rem solid;}
+div#container.debug section.plaxgroup div.layer.fore {transform:translateZ(150px);}
+div#container.debug section.plaxgroup div.layer.base {transform:translateZ(0px);}
+div#container.debug section.plaxgroup div.layer.back {transform:translateZ(-300px);}
+div#container.debug section.plaxgroup div.layer.deep {transform:translateZ(-600px);}
 /* Scale factor  =  1 - (translateZ)/(perspective) */
 
 /* Parallax Group Layer Caption */
-div#container div.plaxgroup div.layer span.caption {background-color:var(--whitesheet); max-width:100%; user-select:none; border-radius:5rem; border:.125rem solid; padding:.5em 1em .4em;}
-div#container div.plaxgroup div.layer span.caption {font-size:1rem; text-transform:capitalize; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-div#container div.plaxgroup div.layer span.caption::after {content:' layer';}
-div#container.debug div.plaxgroup div.layer span.caption {font-size:2.5rem;}
-/* div#container.debug div.plaxgroup div.layer.fore span.caption {transform:xyz;} */
-/* div#container.debug div.plaxgroup div.layer.base span.caption {transform:xyz;} */
-/* div#container.debug div.plaxgroup div.layer.back span.caption {transform:xyz;} */
-/* div#container.debug div.plaxgroup div.layer.deep span.caption {transform:xyz;} */
+div#container section.plaxgroup div.layer span.caption {background-color:var(--whitesheet); max-width:100%; user-select:none; border-radius:5rem; border:.125rem solid; padding:.5em 1em .4em;}
+div#container section.plaxgroup div.layer span.caption {font-size:1rem; text-transform:capitalize; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+div#container section.plaxgroup div.layer span.caption::after {content:' layer';}
+div#container.debug section.plaxgroup div.layer span.caption {font-size:2.5rem;}
+/* div#container.debug section.plaxgroup div.layer.fore span.caption {transform:xyz;} */
+/* div#container.debug section.plaxgroup div.layer.base span.caption {transform:xyz;} */
+/* div#container.debug section.plaxgroup div.layer.back span.caption {transform:xyz;} */
+/* div#container.debug section.plaxgroup div.layer.deep span.caption {transform:xyz;} */
 
 
 /* Debug Controller */
@@ -101,13 +101,13 @@ div.debugger div.bin div.row button.deltabtn svg.icon {display:block; font-size:
 	/* div#container {} */
 
 	/* Parallax Group */
-	/* div#container div.plaxgroup {} */
+	/* div#container section.plaxgroup {} */
 
 	/* Parallax Group Layer */
-	/* div#container div.plaxgroup div.layer {} */
+	/* div#container section.plaxgroup div.layer {} */
 	
 	/* Parallax Group Layer Caption */
-	/* div#container div.plaxgroup div.layer span.caption {} */
+	/* div#container section.plaxgroup div.layer span.caption {} */
 	
 
 	/* Debug Controller */
@@ -121,13 +121,13 @@ div.debugger div.bin div.row button.deltabtn svg.icon {display:block; font-size:
 	/* div#container {} */
 
 	/* Parallax Group */
-	/* div#container div.plaxgroup {} */
+	/* div#container section.plaxgroup {} */
 
 	/* Parallax Group Layer */
-	/* div#container div.plaxgroup div.layer {} */
+	/* div#container section.plaxgroup div.layer {} */
 	
 	/* Parallax Group Layer Caption */
-	/* div#container div.plaxgroup div.layer span.caption {} */
+	/* div#container section.plaxgroup div.layer span.caption {} */
 	
 
 	/* Debug Controller */
@@ -142,13 +142,13 @@ div.debugger div.bin div.row button.deltabtn svg.icon {display:block; font-size:
 	/* div#container {} */
 
 	/* Parallax Group */
-	/* div#container div.plaxgroup {} */
+	/* div#container section.plaxgroup {} */
 
 	/* Parallax Group Layer */
-	/* div#container div.plaxgroup div.layer {} */
+	/* div#container section.plaxgroup div.layer {} */
 	
 	/* Parallax Group Layer Caption */
-	/* div#container div.plaxgroup div.layer span.caption {} */
+	/* div#container section.plaxgroup div.layer span.caption {} */
 	
 
 	/* Debug Controller */
