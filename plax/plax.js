@@ -1,84 +1,149 @@
 
-var trX = 200;		// value of translateX distance
-var trY = -2000;	// value of translateY distance
-var trZ = -2000;	// value of translateZ distance
-var trphi = 45;		// value of rotateY angle
+
+
+// Get main container. 
+const container = document.querySelector('div#container');
+
+// Get all parallax groups. 
+const plaxgroups = document.querySelectorAll('div#container div.plaxgroup');
+
+
+/*****/
+
+
+// Determine if transformations applied individually. 
+let transformWhole = false;
+
+// Initialize value of horizontal left/right offset (aka translateX). 
+let dX = 200;
+
+// Initialize value of vertical up/down offset (aka translateY). 
+let dY = -2000;
+
+// Initialize value of forward/backward offset (aka translateZ). 
+let dZ = -2000;
+
+// Initialize value of x-axis rotation angle (aka rotateX). 
+let dTheta = 0;
+
+// Initialize value of y-axis rotation angle (aka rotateY). 
+let dPhi = 45;
+
+// Initialize value of z-axis rotation angle (aka rotateZ). 
+let dRho = 0;
+
+
+/*****/
+
+
+/*****/
+
 
 // Toggle debugger. 
 function toggleDebugger() {
+
 	// Check for debug mode. 
-	let debugOn = $('#container').hasClass('debug');
+	let alreadyOn = container.classList.contains('debug');
 
-	// Toggle debug mode. 
-	// document.getElementById('container').classList.toggle('debug');
-	// $('#container').toggleClass('debug');
-	if(debugOn) {
-		// Turn it off. 
-		$('#container').removeClass('debug');
+	// Turn off debug mode if already on. 
+	if(alreadyOn) closeDebugMode();
 
-		// Reset transform values to default. 
-		resetTransformValues();
-
-		// Apply current transform values. 
-		goTransform();
-	}
-	else {
-		// Turn it on. 
-		$('#container').addClass('debug');
-
-		// Apply current transform values. 
-		goTransform();
-	}
+	// Turn on debug mode if not already on. 
+	else openDebugMode();
 
 	/*****/
 
 	// Reset transform values to default. 
 	function resetTransformValues() {
-		trX = 200;
-		trY = -2000;
-		trZ = -2000;
-		trphi = 45;
+		dX = 200;
+		dY = -2000;
+		dZ = -2000;
+		dPhi = 45;
+	}
+
+	// Open debug mode. 
+	function openDebugMode() {
+		// Update mode. 
+		container.classList.add('debug');
+		// Apply current transform values. 
+		goTransform();
+	}
+
+	// Close debug mode. 
+	function closeDebugMode() {
+		// Update mode. 
+		container.classList.remove('debug');
+		// Reset transform values to default. 
+		resetTransformValues();
+		// Apply current transform values. 
+		goTransform();
 	}
 }
 
-// Change value of translateX distance. 
+// Update value of horizontal left/right offset (translateX). 
 function deltaX(amt) {
-	trX += amt;
+	dX += amt;
 	goTransform();
 }
-// Change value of translateY distance. 
+// Update value of vertical up/down offset (translateY). 
 function deltaY(amt) {
-	trY += amt;
+	dY += amt;
 	goTransform();
 }
-// Change value of translateZ distance. 
+// Update value of forward/backward offset (translateZ). 
 function deltaZ(amt) {
-	trZ += amt;
+	dZ += amt;
 	goTransform();
 }
-// Change value of rotateY angle. 
+// Update value of rotateX angle. 
+function deltaTheta(amt) {
+	dTheta += amt;
+	goTransform();
+}
+// Update value of rotateY angle. 
 function deltaPhi(amt) {
-	trphi += amt;
+	dPhi += amt;
 	goTransform();
 }
-// Show the 3D transformation. 
+// Update value of rotateZ angle. 
+function deltaRho(amt) {
+	dRho += amt;
+	goTransform();
+}
+
+// Display current 3D transformation. 
 function goTransform() {
+
 	// Check for debug mode. 
-	let debugOn = $('#container').hasClass('debug');
-	console.log('debugOn',debugOn);
+	let debugOn = container.classList.contains('debug');
+	console.log('Debug mode on:',debugOn);
 
 	// Check for valid values. 
-	let validTr = (trX || trY || trZ || trphi);
-	console.log('validTr',validTr);
+	let validTr = (dX || dY || dZ || dPhi);
+	console.log('Valid transformation:',validTr);
 
 	// When appropriate, apply custom transform values. 
 	if(debugOn && validTr) {
-		$('div#container.debug div.plaxgroup')
-		.css('transform','translate3d('+trX+'px,'+trY+'px,'+trZ+'px) rotateY('+trphi+'deg)');
+
+		if(transformWhole) {
+			container.style.transform += `translate3d( ${dX}px, ${dY}px, ${dZ}px ) rotateX( ${dTheta}deg ) rotateY( ${dPhi}deg ) rotateZ( ${dRho}deg )`;
+			return;
+		}
+
+		// Go thru each parallax group. 
+		for(let pg of plaxgroups) {
+			// Apply transformation. 
+			pg.style.transform += `translate3d( ${dX}px, ${dY}px, ${dZ}px ) rotateX( ${dTheta}deg ) rotateY( ${dPhi}deg ) rotateZ( ${dRho}deg )`;
+		}
 	}
 
 	// Otherwise, revert to default mode. 
 	else {
-		$('div#container div.plaxgroup').css('transform','');
+
+		// Go thru each parallax group. 
+		for(let pg of plaxgroups) {
+			// Remove transformation. 
+			pg.style.transform = '';
+		}
 	}
 }

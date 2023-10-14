@@ -17,7 +17,7 @@
 		<!-- <style type="text/css"></style> -->
 
 		<!-- jQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
 
 	</head>
 
@@ -26,31 +26,235 @@
 		<!-- debugger -->
 		<div class="debugger c">
 
-			<!-- row -->
-			<div class="row">
+			<!-- debugbtn -->
+			<button class="debugbtn" onclick="toggleDebugger();">
 
-				<!-- debugbtn -->
-				<button class="debugbtn ctrl" onclick="toggleDebugger();">
+				<!-- caption -->
+				<span class="caption">Debug</span>
+				<!-- /caption -->
 
-					<!-- caption -->
-					<span class="caption">Debug</span>
-					<!-- /caption -->
+			</button>
+			<!-- /debugbtn -->
 
-				</button>
-				<!-- /debugbtn -->
+		</div>
+		<!-- /debugger -->
 
-				<!-- modebtn -->
-				<button class="modebtn ctrl" onclick="$('div.debugger').toggleClass('alt');" style="display:none;">
+		<!-- debugger -->
+		<div class="debugger l">
 
-					<!-- caption -->
-					<span class="caption">Mode</span>
-					<!-- /caption -->
+			<!-- bin -->
+			<div class="bin">
 
-				</button>
-				<!-- /modebtn -->
+				<!-- head -->
+				<h1 class="head">Advanced</h1>
+				<!-- /head -->
 
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label class="label">x</label>
+					<!-- /label -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaX(-250)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaX(250)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label class="label">y</label>
+					<!-- /label -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaY(-250)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaY(250)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label class="label">z</label>
+					<!-- /label -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaZ(-250)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaZ(250)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label class="label">&theta;</label>
+					<!-- /label -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaTheta(-22.5)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaTheta(22.5)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label class="label">&phi;</label>
+					<!-- /label -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaPhi(-22.5)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaPhi(22.5)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+				</div>
+				<!-- /row -->
+
+				<!-- row -->
+				<div class="row">
+
+					<!-- label -->
+					<label class="label">&rho;</label>
+					<!-- /label -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaRho(-22.5)">
+
+						<!-- icon -->
+						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+					<!-- deltabtn -->
+					<button class="deltabtn" onclick="deltaRho(22.5)">
+
+						<!-- icon -->
+						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+						</svg>
+						<!-- /icon -->
+
+					</button>
+					<!-- /deltabtn -->
+
+				</div>
+				<!-- /row -->
+				
 			</div>
-			<!-- /row -->
+			<!-- /bin -->
 
 		</div>
 		<!-- /debugger -->
@@ -58,8 +262,12 @@
 		<!-- debugger -->
 		<div class="debugger r">
 
-			<!-- mode -->
-			<div class="mode" id="modeA">
+			<!-- bin -->
+			<div class="bin">
+
+				<!-- head -->
+				<h1 class="head">Simple</h1>
+				<!-- /head -->
 
 				<!-- row -->
 				<div class="row">
@@ -179,156 +387,7 @@
 				<!-- /row -->
 				
 			</div>
-			<!-- /mode -->
-
-		</div>
-		<!-- /debugger -->
-
-		<!-- debugger -->
-		<div class="debugger l">
-
-			<!-- mode -->
-			<div class="mode" id="modeB">
-
-
-				<!-- row -->
-				<div class="row">
-
-					<!-- label -->
-					<label class="label">x</label>
-					<!-- /label -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaX(-250)">
-
-						<!-- icon -->
-						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaX(250)">
-
-						<!-- icon -->
-						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-				</div>
-				<!-- /row -->
-
-				<!-- row -->
-				<div class="row">
-
-					<!-- label -->
-					<label class="label">y</label>
-					<!-- /label -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaY(-250)">
-
-						<!-- icon -->
-						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaY(250)">
-
-						<!-- icon -->
-						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-				</div>
-				<!-- /row -->
-
-				<!-- row -->
-				<div class="row">
-
-					<!-- label -->
-					<label class="label">z</label>
-					<!-- /label -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaZ(-250)">
-
-						<!-- icon -->
-						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaZ(250)">
-
-						<!-- icon -->
-						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-				</div>
-				<!-- /row -->
-
-				<!-- row -->
-				<div class="row">
-
-					<!-- label -->
-					<label class="label">&phi;</label>
-					<!-- /label -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaPhi(-22.5)">
-
-						<!-- icon -->
-						<svg class="icon minus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-					<!-- deltabtn -->
-					<button class="deltabtn" onclick="deltaPhi(22.5)">
-
-						<!-- icon -->
-						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-						</svg>
-						<!-- /icon -->
-
-					</button>
-					<!-- /deltabtn -->
-
-				</div>
-				<!-- /row -->
-				
-			</div>
-			<!-- /mode -->
+			<!-- /bin -->
 
 		</div>
 		<!-- /debugger -->
