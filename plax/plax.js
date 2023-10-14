@@ -73,12 +73,12 @@ function goTransform() {
 
 	// When appropriate, apply custom transform values. 
 	if(debugOn && validTr) {
-		$('div#container.debug div.parallax_group')
+		$('div#container.debug div.plaxgroup')
 		.css('transform','translate3d('+trX+'px,'+trY+'px,'+trZ+'px) rotateY('+trphi+'deg)');
 	}
 
 	// Otherwise, revert to default mode. 
 	else {
-		$('div#container div.parallax_group').css('transform','');
+		$('div#container div.plaxgroup').css('transform','');
 	}
 }
