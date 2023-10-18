@@ -44,7 +44,7 @@ div#container section.blocks.categories.all div.grid ul.blocklist {background-co
 /* Category Blocks Section */
 /* div#container section.blocks.categories.meta {} */
 /* div#container section.blocks.categories.meta div.grid {} */
-div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);}
+div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 
 
 
@@ -63,7 +63,7 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 
 	/* Category Blocks Section */
 	/* div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);} */
-	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);}
+	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 }
 
 /* Medium Tablet Screen */
@@ -90,7 +90,7 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 
 	/* Category Blocks Section */
 	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
-	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
+	/* div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
 }
 
 /* Small Tablet Screen */

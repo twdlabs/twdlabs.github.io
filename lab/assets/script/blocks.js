@@ -76,7 +76,7 @@ function loadMetaCategoryBlockSet() {
 	let idkey = 'groupid';
 
 	// Get url prefix for blocks. 
-	let urlprefix = './metacategory/?gid=';
+	let urlprefix = './collection/?gid=';
 
 	// Add block set to page destination. 
 	metacategoryblocksdestination.innerHTML = createBlockSet(projectMetaGroupData, tk,nk,dk, true,idkey,urlprefix);

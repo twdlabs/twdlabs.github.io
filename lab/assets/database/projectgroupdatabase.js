@@ -66,7 +66,7 @@ const projectGroupData = [
 	// 	groupicontag:'motherboard',
 	// 	groupicontag:'clipboard',
 	// 	groupdescription:'',
-	// 	groupidlist:[
+	// 	groupitemsidlist:[
 	// 	],
 	// },
 
@@ -74,8 +74,11 @@ const projectGroupData = [
 		groupid:'ld',
 		groupname:'Legacy Dashboards',
 		groupicontag:'oldpc',
-		groupdescription:'Old dashboard projects integrated as one application',
-		groupidlist:[
+		groupdescription:'Old dashboard projects and design ideas from various apps and websites',
+		groupitemsidlist:[
+			'atg',
+			'cis255',
+			'linktree',
 			'chooser',
 			'clone',
 			'evolution',
@@ -94,7 +97,7 @@ const projectGroupData = [
 		groupname:'CSS Lessons',
 		groupicontag:'paintpalette',
 		groupdescription:'Practice in design and animation using cascading style sheets',
-		groupidlist:[
+		groupitemsidlist:[
 			'anime',
 			'aspectratio',
 			'banner',
@@ -130,8 +133,8 @@ const projectGroupData = [
 		groupid:'jl',
 		groupname:'JS Lessons',
 		groupicontag:'gear',
-		groupdescription:'Practice in dynamic app functionality using JavaScript',
-		groupidlist:[
+		groupdescription:'Local client-side functionality using JavaScript',
+		groupitemsidlist:[
 			'audio',
 			'colorpicker',
 			'cookie',
@@ -139,8 +142,20 @@ const projectGroupData = [
 			'event',
 			'filter',
 			'keypress',
+			'sort',
 			'storage',
+			'syntax',
 			'urlparams',
+		],
+	},
+	{
+		groupid:'bl',
+		groupname:'Back-end Lessons',
+		groupicontag:'paintbrush',
+		groupdescription:'Dynamic server-side functionality using XML, HTTP, JSON, APIs',
+		groupitemsidlist:[
+			'json',
+			'xhr',
 		],
 	},
 
@@ -149,7 +164,7 @@ const projectGroupData = [
 		groupname:'App Widgets',
 		groupicontag:'app',
 		groupdescription:'Various tools and widgets to enhance app design and functionality',
-		groupidlist:[
+		groupitemsidlist:[
 			'accordion',
 			'accordion2',
 			'analogclock',
@@ -168,6 +183,7 @@ const projectGroupData = [
 			'countdown',
 			'delta',
 			'device',
+			'essay',
 			'form3d',
 			'gitcalendar',
 			'input',
@@ -176,7 +192,9 @@ const projectGroupData = [
 			'loader',
 			'loading',
 			'login',
+			'overlay',
 			'pagination',
+			'progressbar',
 			'rating',
 			'rolodex',
 			'scrollProgressBar',
@@ -207,7 +225,7 @@ const projectGroupData = [
 		groupname:'Commerce Widgets',
 		groupicontag:'money',
 		groupdescription:'Web components to support ecommerce web development',
-		groupidlist:[
+		groupitemsidlist:[
 			'admin',
 			'admin2',
 			'checkout',
@@ -219,7 +237,9 @@ const projectGroupData = [
 			'land',
 			'lander',
 			'merch',
+			'payment',
 			'pricing',
+			'stepprogressbar',
 			'testimonial',
 		],
 	},
@@ -228,7 +248,7 @@ const projectGroupData = [
 		groupname:'Game Widgets',
 		groupicontag:'joystick',
 		groupdescription:'Web components for use in game design and game development',
-		groupidlist:[
+		groupitemsidlist:[
 			'3d',
 			'animation',
 			'blockmenu',
@@ -246,13 +266,16 @@ const projectGroupData = [
 			'minion',
 			'orbit',
 			'pixelart',
+			'pokeball',
 			'pong',
 			'shape',
 			'solarsystem',
+			'sphere',
 			'splash',
 			'thermometer',
 			'touch',
 			'traffic',
+			'wavyloader',
 			'wordcube',
 		],
 	},
@@ -261,7 +284,7 @@ const projectGroupData = [
 		groupname:'Media Widgets',
 		groupicontag:'mediacollection',
 		groupdescription:'Seamless presentations for various forms of communication media',
-		groupidlist:[
+		groupitemsidlist:[
 			'autoslideshow',
 			'cardflipgallery3d',
 			'carousel3d',
@@ -271,7 +294,9 @@ const projectGroupData = [
 			'image',
 			'slideshow',
 			'slideshow2',
+			'snapslider',
 			'soundfx',
+			'upload1',
 			'vidbg',
 			'video',
 		],
@@ -282,10 +307,11 @@ const projectGroupData = [
 		groupname:'Navigation Widgets',
 		groupicontag:'signpost',
 		groupdescription:'Web components and tools to facilitate smooth web navigation',
-		groupidlist:[
+		groupitemsidlist:[
 			'backToTop',
 			'breadcrumbs',
 			'dotnav',
+			'dynamicnavbar',
 			'floatmenu',
 			'hamburger',
 			'megamenu',
@@ -294,19 +320,34 @@ const projectGroupData = [
 			'spinner',
 		],
 	},
+	{
+		groupid:'sw',
+		groupname:'Social Widgets',
+		groupicontag:'people',
+		groupdescription:'Web components and tools for social media sharing and profile links',
+		groupitemsidlist:[
+			'share',
+			'socialbtns',
+			'socialmedia',
+		],
+	},
 	
 	{
 		groupid:'dc',
-		groupname:'Design Clones',
+		groupname:'Design Seeds',
 		groupicontag:'tv',
 		groupdescription:'Various design ideas for arranging apps and landing pages',
-		groupidlist:[
+		groupitemsidlist:[
 			'10000cards',
+			'3dnav',
 			'apple',
 			'application',
+			'band',
 			'bodyshop',
 			'calc',
 			'dotcollector',
+			'font',
+			'hero2',
 			'jenna',
 			'leads',
 			'neuro67',
@@ -314,30 +355,29 @@ const projectGroupData = [
 			'tropicalghana',
 			'voisey',
 			'clubhouse',
+			'comingsoon',
 			'iglive',
 			'igprofile',
 			'instagram',
+			'masonry',
+			'mementomori',
 			'message',
 			'netflix',
+			'pagenexter',
+			'plax',
+			'plax1',
+			'plax2',
+			'plax3',
 			'retool',
-			'3dnav',
-		],
-	},
-	{
-		groupid:'ds',
-		groupname:'Design Samples',
-		groupicontag:'paintbrush',
-		groupdescription:'Design ideas from various apps and websites',
-		groupidlist:[
+			'skills',
+			'theme',
+			'theme1',
+			'theme2',
 			'angeldemon',
-			'atg',
-			'band',
-			'carnell2',
-			'cis255',
-			'comingsoon',
-			'hero2',
-			'linktree',
 			'mandorespect',
+			'periodictable',
+			'wave',
+			'ytblp',
 		],
 	},
 	{
@@ -345,7 +385,7 @@ const projectGroupData = [
 		groupname:'App Prototypes',
 		groupicontag:'smartphone',
 		groupdescription:'Seeds of potential stand-alone applications and websites',
-		groupidlist:[
+		groupitemsidlist:[
 			'bizmath',
 			'blogsocial',
 			'calculator',
@@ -375,11 +415,12 @@ const projectGroupData = [
 		groupname:'Client Projects',
 		groupicontag:'receipt',
 		groupdescription:'Website projects completed for various clients',
-		groupidlist:[
+		groupitemsidlist:[
 			'blog',
 			'cali',
 			'caliB',
 			'carnell',
+			'carnell2',
 			'chadpiff',
 			'resume',
 			'smosa',
@@ -394,19 +435,18 @@ const projectGroupData = [
 
 	{
 		groupid:'orphans',
-		groupname:'Orphan Projects',
+		groupname:'Misc Projects',
 		groupicontag:'clipboard',
-		groupdescription:'',
-		groupidlist:[
+		groupdescription:'Projects not included in any other category groups',
+		groupitemsidlist:[
 		],
-		ghostblock:true,
 	},
 	{
 		groupid:'missing',
 		groupname:'Missing Projects',
 		groupicontag:'clipboard',
 		groupdescription:'',
-		groupidlist:[
+		groupitemsidlist:[
 		],
 		ghostblock:true,
 	},
@@ -417,42 +457,57 @@ const projectGroupData = [
 
 // Define groups of groups of projects. 
 const projectMetaGroupData = [
+
+	// {
+	// 	groupid:'x',
+	// 	groupname:'',
+	// 	groupicontag:'copy',
+	// 	groupdescription:'',
+	// 	groupitemsidlist:[
+	// 		'',
+	// 	],
+	// },
+
 	{
 		groupid:'l',
 		groupname:'Dev Lessons',
 		groupicontag:'lightbulb',
 		groupdescription:'Learning new concepts in web development',
-		groupidlist:[
-			'cl','jl',
+		groupitemsidlist:[
+			'cl',
+			'jl',
+			'dc',
+			'bl',
 		],
 	},
-	{
-		groupid:'d',
-		groupname:'Designs',
-		groupicontag:'copy',
-		groupdescription:'Various designs for apps, dashboards, and websites',
-		groupidlist:[
-			'dc','ds','nw',
-		],
-	},
+
 	{
 		groupid:'w',
 		groupname:'Widgets',
 		groupicontag:'motherboard',
-		groupdescription:'Reusable sub-components for other projects',
-		groupidlist:[
-			'aw','cw','gw','mw',
+		groupdescription:'Reusable sub-components for apps, dashboards, and websites',
+		groupitemsidlist:[
+			'aw',
+			'cw',
+			'gw',
+			'mw',
+			'nw',
+			'sw',
 		],
 	},
+
 	{
 		groupid:'p',
 		groupname:'Project Samples',
 		groupicontag:'smartphone',
-		groupdescription:'Stand-alone applications and websites',
-		groupidlist:[
-			'cp','ap','ld',
+		groupdescription:'Various project designs, applications, and websites',
+		groupitemsidlist:[
+			'cp',
+			'ap',
+			'ld',
 		],
 	},
+
 ];
 // console.log('Project meta-groups:',projectMetaGroupData);
 
@@ -461,7 +516,7 @@ const projectMetaGroupData = [
 const projectGroupMatrixData = [
 	{
 		setid:'set0',
-		setlist:['cl','jl','nw',],
+		setlist:['cl','jl','bl','sw',],
 	},
 	{
 		setid:'set1',
@@ -469,19 +524,19 @@ const projectGroupMatrixData = [
 	},
 	{
 		setid:'set2',
-		setlist:['cp','ds','gw',],
+		setlist:['cw','gw','nw',],
 	},
 	{
 		setid:'set3',
-		setlist:['cw','dc','ld',],
+		setlist:['dc','mw',],
 	},
 	{
 		setid:'set4',
-		setlist:['mw','ap','orphans',],
+		setlist:['ap','ld','cp',],
 	},
 	{
 		setid:'missing',
-		setlist:['missing',],
+		setlist:['orphans','missing',],
 	},
 ];
 // console.log('Project group sets:',projectGroupMatrixData);
@@ -489,13 +544,13 @@ const projectGroupMatrixData = [
 
 // Define sets of project meta-groups in matrix. 
 const projectMetaGroupMatrixData = [
-	{
-		setid:'setA',
-		setlist:['l',],
-	},
+	// {
+	// 	setid:'setA',
+	// 	setlist:['x',],
+	// },
 	{
 		setid:'setB',
-		setlist:['d',],
+		setlist:['l',],
 	},
 	{
 		setid:'setC',
@@ -533,11 +588,11 @@ function addExtraProjectGroups() {
 	let orphanGroup = getProjectGroupById('orphans');
 
 	// console.log('Missing projects:',nullGroup);
-	nullGroup.groupidlist = getMissingProjectIds();
+	nullGroup.groupitemsidlist = getMissingProjectIds();
 	// console.log('Missing projects:',nullGroup);
 	
 	// console.log('Orphan projects:',orphanGroup);
-	orphanGroup.groupidlist = getOrphanProjectIds();
+	orphanGroup.groupitemsidlist = getOrphanProjectIds();
 	// console.log('Orphan projects:',orphanGroup);
 }
 
@@ -588,13 +643,13 @@ function checkProjectGroupSizes() {
 		let metagroupsize = 0;
 
 		// Get list of project groups for project meta-group. 
-		let projectmetagroupidlist = projectmetagroup.groupidlist;
+		let projectmetagroupitemsidlist = projectmetagroup.groupitemsidlist;
 
 		// Go thru each project group. 
-		for(let pgid of projectmetagroupidlist) {
+		for(let pgid of projectmetagroupitemsidlist) {
 
 			// Get size of current project group. 
-			let groupsize = getProjectGroupById(pgid).groupidlist.length;
+			let groupsize = getProjectGroupById(pgid).groupitemsidlist.length;
 			console.log('\t',pgid,groupsize);
 
 			// Add size of current project group to size of project meta-group. 
@@ -623,7 +678,7 @@ function getOrphanProjectIds() {
 		for(let pg of projectGroupData) {
 
 			// Check if project found in group. 
-			projectFoundInGroup = pg.groupidlist.includes(pid);
+			projectFoundInGroup = pg.groupitemsidlist.includes(pid);
 			// End search if project found in group. 
 			if(projectFoundInGroup) break;
 		}

@@ -19,11 +19,14 @@ console.log('projectlinksmatrixdestination:',projectlinksmatrixdestination);
 /*****/
 
 
-// Add navigation links to header. 
+// Load navigation links in header. 
 loadNavLinks();
 
-// Add matrix of project links to footer. 
-loadLinkMatrix();
+// Load matrix of project links in footer. 
+loadSiteMap();
+
+// Activate navigation sidebar. 
+activateSidebar();
 
 
 /*****/
@@ -67,14 +70,14 @@ function createNavLink(url,caption,icontag,newwindowmode,relativeurl) {
 	}
 }
 
-// Add navigation links to header. 
+// Load navigation links in header. 
 function loadNavLinks() {
 
 	// Add page links to social. 
-	headnavlistdestinationA.innerHTML = createLinkList(navLinkData.groupidlist,false,true);
+	headnavlistdestinationA.innerHTML = createLinkList(navLinkData.groupitemsidlist,true,true);
 
 	// Add social links to social. 
-	headnavlistdestinationB.innerHTML = createLinkList(socialLinkData.groupidlist,true,false);
+	headnavlistdestinationB.innerHTML = createLinkList(socialLinkData.groupitemsidlist,true,false);
 
 	/****/
 
@@ -105,8 +108,8 @@ function loadNavLinks() {
 	}
 }
 
-// Add matrix of project links to footer. 
-function loadLinkMatrix() {
+// Load matrix of project links in footer. 
+function loadSiteMap() {
 
 	// Add layout for link matrix to page. 
 	console.log('grouplinksmatrixdestination:',grouplinksmatrixdestination);
@@ -182,7 +185,7 @@ function loadLinkMatrix() {
 				result += `
 				<!-- navlist -->
 				<ul class="navlist">
-					${ projectgroup ? createList(projectgroup.groupidlist) : '' }
+					${ projectgroup ? createList(projectgroup.groupitemsidlist) : '' }
 				</ul>
 				<!-- /navlist -->`;
 			}
@@ -222,7 +225,7 @@ function loadLinkMatrix() {
 					// console.log('\ticontag:',icontag);
 	
 					// Compile navigation item. 
-					projectgrouplayout += createNavLink(url,caption,icontag,false,true);
+					projectgrouplayout += createNavLink(url,caption,icontag,true,true);
 				}
 	
 				// Return layout for project list. 
@@ -232,23 +235,38 @@ function loadLinkMatrix() {
 	}
 }
 
-// Toggle state of navigation sidebar. 
-function toggleSidebar() {
+// Activate navigation sidebar. 
+function activateSidebar() {
 
-	// Check if sidebar already open. 
-	let alreadyopen = headsidebar.classList.contains('active');
+	// Get all navigation togglers. 
+	let allnavtogglers = document.querySelectorAll('.navtoggler');
+	console.log('All nav togglers:',allnavtogglers);
 
-	// Close sidebar if already open. 
-	if(alreadyopen) {
-		headsidebar.classList.remove('active');
-		document.body.classList.remove('freeze');
-		document.documentElement.classList.remove('freeze');
+	// Activate each navigation toggler. 
+	for(let navtoggler of allnavtogglers) {
+		navtoggler.addEventListener('click',toggleSidebar);
 	}
 
-	// Open sidebar if not already open. 
-	else {
-		headsidebar.classList.add('active');
-		document.body.classList.add('freeze');
-		document.documentElement.classList.add('freeze');
+	/****/
+
+	// Toggle state of navigation sidebar. 
+	function toggleSidebar() {
+	
+		// Check if sidebar already open. 
+		let alreadyopen = headsidebar.classList.contains('active');
+	
+		// Close sidebar if already open. 
+		if(alreadyopen) {
+			headsidebar.classList.remove('active');
+			document.body.classList.remove('freeze');
+			document.documentElement.classList.remove('freeze');
+		}
+	
+		// Open sidebar if not already open. 
+		else {
+			headsidebar.classList.add('active');
+			document.body.classList.add('freeze');
+			document.documentElement.classList.add('freeze');
+		}
 	}
 }

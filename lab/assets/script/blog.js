@@ -7,16 +7,24 @@ const postssection = document.querySelector('div#container section.blog div.grid
 const featuredpostsdestinationA = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.a');
 const featuredpostsdestinationB = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.b');
 console.log('Featured posts destinations:',featuredpostsdestinationA,featuredpostsdestinationB);
+
 // Get destination for category posts. 
 const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.category');
 console.log('Category posts destination:',categoryPostsDestination);
+
+// Get destination for collection posts. 
+const collectionPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.collection');
+console.log('Collection posts destination:',collectionPostsDestination);
+
 // Get destination for archive posts. 
 const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.archive');
 console.log('Archive posts destination:',archivePostsDestination);
 
 // Get input field for filter query. 
 const filterqueryfield = document.querySelector('div#container section.blog div.grid div.head div.filter input#postfilter');
+console.log('filterqueryfield:',filterqueryfield);
 const filterqueryclearbtn = document.querySelector('div#container section.blog div.grid div.head div.filter label.clearbtn');
+console.log('filterqueryclearbtn:',filterqueryclearbtn);
 
 // Get label for empty search results. 
 const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel');
@@ -43,11 +51,16 @@ loadBlog();
 function loadBlog() {
 	console.log('Loading blog...');
 
-	// Load featured posts (if on home page). 
+	// Load featured posts. 
 	loadFeaturedPosts();
+	
+	// Load collection posts. 
+	loadCollectionPosts();
+	
 	// Load category posts. 
 	loadCategoryPosts();
-	// Load archive posts (if not on home page). 
+	
+	// Load archive posts. 
 	loadArchivePosts();
 
 	// Activate blog functionality. 
@@ -122,7 +135,10 @@ function loadBlog() {
 
 	// Load featured posts. 
 	function loadFeaturedPosts() {
-		if(!featuredpostsdestinationA || !featuredpostsdestinationB) return;
+		if(!featuredpostsdestinationA || !featuredpostsdestinationB) {
+			console.log('No featured posts...');
+			return;
+		}
 		console.log('Loading featured posts...');
 	
 		// Get list of featured projects (sorted by project id). 
@@ -140,13 +156,54 @@ function loadBlog() {
 		featuredpostsdestinationB.innerHTML = featuredLayoutB;
 	}
 	
+	// Load collection posts. 
+	function loadCollectionPosts() {
+		if(!collectionPostsDestination) {
+			console.log('No collection posts...');
+			return;
+		}
+		console.log('Loading collection posts...');
+	
+		// Get custom list of projects for current collection. 
+		let collectionCategories = ( projectmetagroup.groupitemsidlist ).map(getProjectGroupById);
+		console.log('Collection categories:', collectionCategories);
+		let collectionProjects3d = collectionCategories.map(x=>x.groupitemsidlist);
+		let collectionProjects = ( flatten(collectionProjects3d).sort() ).map(getProjectById);
+		console.log('Collection projects:', collectionProjects.length, collectionProjects);
+		
+		// Get layout for collection posts. 
+		let collectionPostsLayout = createBlogPostsLayout(collectionProjects, !blockPreviews);
+		
+		// Add layout to blog section. 
+		collectionPostsDestination.innerHTML = collectionPostsLayout;
+
+		// 
+
+		// 
+		function flatten(datamatrix) {
+			// 
+			let result = [];
+			// 
+			for(let datalist of datamatrix) {
+				for(let datapoint of datalist) {
+					result.push(datapoint);
+				}
+			}
+			// 
+			return result;
+		}
+	}
+	
 	// Load category posts. 
 	function loadCategoryPosts() {
-		if(!categoryPostsDestination) return;
+		if(!categoryPostsDestination) {
+			console.log('No category posts...');
+			return;
+		}
 		console.log('Loading category posts...');
 	
 		// Get custom list of projects for current category (sorted by project id). 
-		let categoryProjects = ( projectgroup.groupidlist.sort() ).map(getProjectById);
+		let categoryProjects = ( projectgroup.groupitemsidlist.sort() ).map(getProjectById);
 		console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Get layout for category posts. 
@@ -158,7 +215,10 @@ function loadBlog() {
 	
 	// Load archive posts. 
 	function loadArchivePosts() {
-		if(!archivePostsDestination) return;
+		if(!archivePostsDestination) {
+			console.log('No archive posts...');
+			return;
+		}
 		console.log('Loading archive posts...');
 	
 		// Get list of archive projects (sorted by project id). 

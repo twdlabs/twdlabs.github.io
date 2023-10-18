@@ -294,7 +294,7 @@ const projectData = [
 	},{
 		authorid:'twd',
 		projectid:'cms',
-		projectname:'CMS',
+		projectname:'Content Manager',
 	},{
 		authorid:'twd',
 		projectid:'collapsible',
@@ -334,7 +334,7 @@ const projectData = [
 	},{
 		authorid:'twd',
 		projectid:'crm',
-		projectname:'CRM',
+		projectname:'Sales Manager',
 	},{
 		authorid:'twd',
 		projectid:'crud',
@@ -533,6 +533,10 @@ const projectData = [
 		authorid:'twd',
 		projectid:'jenna',
 		projectname:'Fitness Launch Site',
+	},{
+		authorid:'twd',
+		projectid:'json',
+		projectname:'JSON Practice Test',
 	},
 	
 	{
@@ -707,19 +711,19 @@ const projectData = [
 		projectname:'Pixel Art Generator',
 	},{
 		authorid:'twd',
-		projectid:'plax/parallax',
+		projectid:'plax',
 		projectname:'Pretty Parallax',
 	},{
 		authorid:'twd',
-		projectid:'plax/parallax2',
+		projectid:'plax1',
 		projectname:'Parallax',
 	},{
 		authorid:'twd',
-		projectid:'plax/parallax3',
+		projectid:'plax2',
 		projectname:'Parallax',
 	},{
 		authorid:'twd',
-		projectid:'plax/parallax4',
+		projectid:'plax3',
 		projectname:'Parallax',
 	},{
 		authorid:'twd',

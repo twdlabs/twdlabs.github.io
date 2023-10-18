@@ -4,10 +4,10 @@
 // Define navigation link data. 
 const navLinkData = {
 	groupname:'Links',
-	groupidlist:[
+	groupitemsidlist:[
 		{
-			icontag:'door',
-			// icontag:'house',
+			// icontag:'door',
+			icontag:'house',
 			linkurl:'./',
 			linkname:'Home',
 		},
@@ -20,6 +20,16 @@ const navLinkData = {
 			icontag:'list',
 			linkurl:'./projects',
 			linkname:'Projects',
+		},
+		// {
+		// 	icontag:'xyz',
+		// 	linkurl:'javascript:void(0)',
+		// 	linkname:'Services',
+		// },
+		{
+			icontag:'money',
+			linkurl:'./donate',
+			linkname:'Donate',
 		},
 		{
 			icontag:'envelope',
@@ -43,7 +53,7 @@ const navLinkData = {
 // Define social link data. 
 const socialLinkData = {
 	groupname:'Community',
-	groupidlist:[
+	groupitemsidlist:[
 		{
 			icontag:'twitter',
 			linkurl:'javascript:void(0)',
