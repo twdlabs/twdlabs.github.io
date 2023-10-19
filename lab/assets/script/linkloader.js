@@ -3,17 +3,19 @@
 
 // Get navigation sidebar. 
 const headsidebar = document.querySelector('div#container header.navbar div.bin div.sidebar');
-// console.log(headsidebar);
+// console.log('headsidebar:',headsidebar);
 // Get list destinations for header navigation. 
 const headnavlistdestinationA = document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.a ul.navlist');
+// console.log('headnavlistdestinationA:',headnavlistdestinationA);
 const headnavlistdestinationB = document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.b ul.navlist');
+// console.log('headnavlistdestinationB:',headnavlistdestinationB);
 
 // Get destination for matrix of group links in footer. 
 const grouplinksmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
-console.log('grouplinksmatrixdestination:',grouplinksmatrixdestination);
+// console.log('grouplinksmatrixdestination:',grouplinksmatrixdestination);
 // Get destination for matrix of project links in footer. 
 const projectlinksmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects');
-console.log('projectlinksmatrixdestination:',projectlinksmatrixdestination);
+// console.log('projectlinksmatrixdestination:',projectlinksmatrixdestination);
 
 
 /*****/
@@ -41,7 +43,7 @@ function createNavLink(url,caption,icontag,newwindowmode,relativeurl) {
 	<li class="navitem">
 	
 		<!-- navlink -->
-		<a class="navlink" href="${ relativeurl ? getRelativeUrl(url) : url }" ${ newwindowmode ? 'target="_blank"' : '' }>
+		<a class="navlink" href="${ relativeurl ? getRelativeUrl(url) : url }" title="${caption}" ${ newwindowmode ? 'target="_blank"' : '' }>
 
 			${ icontag ? createIcon(icontag) : '' }
 

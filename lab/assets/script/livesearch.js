@@ -32,12 +32,13 @@ activateSearchBar();
 // Activate search bar. 
 function activateSearchBar() {
 
-	// 
+	// Activate search query field. 
 	searchqueryfield.addEventListener('input',updateSearchBtn);
+	searchqueryfield.addEventListener('keyup',checkForShortcut);
 
 	/****/
 
-	// Update url of search button. 
+	// Update search button. 
 	function updateSearchBtn() {
 
 		// Get search query. 
@@ -63,6 +64,18 @@ function activateSearchBar() {
 			// De-activate search button. 
 			searchquerybtn.classList.remove('on');
 		}
+	}
+
+	// Check for shortcut key in search field. 
+	function checkForShortcut(event) {
+		console.log('Event:',event);
+
+		// Get key code of selected key. 
+		let keycode = event.keyCode;
+		console.log('Selected key code:',keycode);
+
+		// 
+		if(keycode==13) searchquerybtn.click();
 	}
 }
 
