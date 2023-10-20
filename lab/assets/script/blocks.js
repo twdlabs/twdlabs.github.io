@@ -56,7 +56,7 @@ function loadCategoryBlockSet() {
 	let idkey = 'groupid';
 
 	// Get url prefix for blocks. 
-	let urlprefix = './category/?gid=';
+	let urlprefix = './category/?cid=';
 
 	// Add block set to page destination. 
 	categoryblocksdestination.innerHTML = createBlockSet(projectGroupData, tk,nk,dk, true,idkey,urlprefix);
@@ -76,7 +76,7 @@ function loadMetaCategoryBlockSet() {
 	let idkey = 'groupid';
 
 	// Get url prefix for blocks. 
-	let urlprefix = './collection/?gid=';
+	let urlprefix = './collection/?cid=';
 
 	// Add block set to page destination. 
 	metacategoryblocksdestination.innerHTML = createBlockSet(projectMetaGroupData, tk,nk,dk, true,idkey,urlprefix);

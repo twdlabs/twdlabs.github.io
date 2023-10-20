@@ -545,20 +545,20 @@ const projectGroupMatrixData = [
 // Define sets of project meta-groups in matrix. 
 const projectMetaGroupMatrixData = [
 	// {
-	// 	setid:'setA',
+	// 	setid:'setX',
 	// 	setlist:['x',],
 	// },
 	{
-		setid:'setB',
-		setlist:['l',],
+		setid:'setA',
+		setlist:['p',],
 	},
 	{
-		setid:'setC',
+		setid:'setB',
 		setlist:['w',],
 	},
 	{
-		setid:'setD',
-		setlist:['p',],
+		setid:'setC',
+		setlist:['l',],
 	},
 ];
 // console.log('Project meta-group sets:',projectMetaGroupMatrixData);

@@ -3,31 +3,34 @@
 
 // Get id of current project meta-group. 
 const urlparams = new URLSearchParams(window.location.search);
-const projectmetagroupid = urlparams.get('gid');
+const projectmetagroupid = urlparams.get('cid');
 // console.log('Project meta group id:',projectmetagroupid);
 
 // Get current project meta-group. 
 const projectmetagroup = getProjectMetaGroupById(projectmetagroupid);
 console.log('Project meta-group:',projectmetagroup);
+
 // Get name of current project meta-group. 
 const projectmetagroupname = projectmetagroup.groupname;
 console.log('Project meta-group name:',projectmetagroupname);
+
 // Get description of current project meta-group. 
 const projectmetagroupdesc = projectmetagroup.groupdescription;
 console.log('Project meta-group description:',projectmetagroupdesc);
 
 
+
 /*****/
 
 
-// Customize headers. 
+// Customize collection headers. 
 customizeHeaders();
 
 
 /*****/
 
 
-// Customize headers. 
+// Customize collection headers. 
 function customizeHeaders() {
 
 	// Set custom document title. 

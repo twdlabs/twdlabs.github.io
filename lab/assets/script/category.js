@@ -3,31 +3,34 @@
 
 // Get id of current project group. 
 const urlparams = new URLSearchParams(window.location.search);
-const projectgroupid = urlparams.get('gid');
+const projectgroupid = urlparams.get('cid');
 // console.log('Project group id:',projectgroupid);
 
 // Get current project group. 
 const projectgroup = getProjectGroupById(projectgroupid);
 console.log('Project group:',projectgroup);
+
 // Get name of current project group. 
 const projectgroupname = projectgroup.groupname;
 console.log('Project group name:',projectgroupname);
+
 // Get description of current project group. 
 const projectgroupdesc = projectgroup.groupdescription;
 console.log('Project group description:',projectgroupdesc);
 
 
+
 /*****/
 
 
-// Customize headers. 
+// Customize category headers. 
 customizeHeaders();
 
 
 /*****/
 
 
-// Customize headers. 
+// Customize category headers. 
 function customizeHeaders() {
 
 	// Set custom document title. 
