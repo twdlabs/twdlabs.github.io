@@ -1,33 +1,23 @@
 
 
 
-// Handle events. 
-handleEvents();
-
-// Switch to login form. 
-toggleUserForm(newuser=false);
-
-// Clear all user forms. 
-clearUserForms();
+// Initialize id for currently logged in user. 
+var currentUserId = -1;
 
 
 /*****/
 
 
-// Handle events. 
-function handleEvents() {
-
-	// 
-	let vistogs = document.querySelectorAll('.visibilitytoggler.btn');
-	for(let toggler of vistogs) {
-
-		// 
-		toggler.addEventListener('click',togglePasswordVisibility);
-	}
-}
+// Run test login. 
+// runTestLogin();
+// Run test login upon clicking test button. 
+const testbtn = document.querySelector('div#container main#userchooser div.slider section.page div.input label.label');
+testbtn.addEventListener('dblclick',runTestLogin);
 
 
-// Login existing user. 
+/*****/
+
+// Attempt to login existing user. 
 function loginUser(
 	email = document.getElementById('emailaddy').value, 
 	pword = document.getElementById('password').value
@@ -39,7 +29,7 @@ function loginUser(
 		// 
 		currentUserId = -1;
 
-		// 
+		// Notify user of missing fields. 
 		setLoginSuccess(null);
 		setLoginError('All fields required!');
 
@@ -82,7 +72,7 @@ function loginUser(
 		currentUserId = getUserIndex(un);
 	
 		// Check for matching username (case insensitive) and password (case sensitive). 
-		return ( (currentUserId >= 0) && (pw==userdata[currentUserId].password) );
+		return ( (currentUserId >= 0) && (pw==userDataList[currentUserId].password) );
 	
 		/****/
 	
@@ -96,10 +86,10 @@ function loginUser(
 			if(!username) return nullIndex;
 	
 			// Search thru users, looking for first matching username. 
-			for(let i in userdata) {
+			for(let i in userDataList) {
 	
 				// Check for matching username/email (case insensitive). 
-				if( username.toUpperCase() == userdata[i].username.toUpperCase() ){
+				if( username.toUpperCase() == userDataList[i].username.toUpperCase() ){
 					return i;
 				}
 			}
@@ -116,26 +106,26 @@ function loginUser(
 		if(isCredentialsValid) {
 
 			// Hide user chooser. 
-			document.getElementById('userchooser').classList.add('gone');
+			userchooserbox.classList.add('gone');
 			// Show chat app. 
-			document.getElementById('chatlist').classList.remove('gone');
+			chatlistbox.classList.remove('gone');
 		}
 
 		// Show appropriate windows for unsuccessful login. 
 		else {
 
 			// Hide chat app. 
-			document.getElementById('chatlist').classList.add('gone');
+			chatlistbox.classList.add('gone');
 			// Show user chooser. 
-			document.getElementById('userchooser').classList.remove('gone');
+			userchooserbox.classList.remove('gone');
 		}
 	}
 }
 
 // Register new user. 
 function registerUser(
-	fn = document.getElementById('fname').value, 
-	ln = document.getElementById('lname').value, 
+	fn = document.getElementById('newfname').value, 
+	ln = document.getElementById('newlname').value, 
 	un = document.getElementById('newemailaddy').value, 
 	pw0 = document.getElementById('newpassword').value, 
 	pw1 = document.getElementById('passwordconfirm').value, 
@@ -179,7 +169,7 @@ function registerUser(
 		let isUsernameUnique = false;
 
 		// Ensure username is not already in use (no duplicate usernames). 
-		for(let user of userdata) {
+		for(let user of userDataList) {
 
 			// Invalidate input if duplicate username found. 
 			if(un==user.username) {
@@ -217,7 +207,7 @@ function registerUser(
 	function createNewUser(fn,ln,un,pw,avurl) {
 
 		// Add validated user data to list. 
-		userdata.push({
+		userDataList.push({
 			fname:fn,
 			lname:ln,
 			username:un,
@@ -239,7 +229,6 @@ function registerUser(
 	}
 }
 
-
 // Logout current user. 
 function logoutUser() {
 
@@ -258,10 +247,9 @@ function logoutUser() {
 	function switchWindows() {
 
 		// Hide chat app. 
-		document.getElementById('chatlist').classList.add('gone');
+		chatlistbox.classList.add('gone');
 	
 		// Show user chooser (in login mode). 
-		let userchooserbox = document.getElementById('userchooser');
 		userchooserbox.classList.remove('gone');
 		userchooserbox.classList.remove('newuser');
 
@@ -272,3 +260,21 @@ function logoutUser() {
 	}
 }
 
+// Run test login. 
+function runTestLogin() {
+
+	// Define test login credentials. 
+	let un = 'UserA@mail.com';
+	let pw = 'password';
+	
+	// Define lag time. 
+	let dt = 2000;
+	
+	// Login user immeidately. 
+	loginUser(un,pw);
+	// Login user after a few seconds. 
+	// setTimeout(function() {
+	// 	// 
+	// 	loginUser(un,pw);
+	// }, dt);
+}

@@ -4,150 +4,114 @@
 
 
 
-* {box-sizing:border-box;}
+* {box-sizing:border-box; /* padding:0; margin:0; */}
 
 
 
 :root {
 	
-	--black:#333;
-	--darkgrey:#999;
+	/* Theme Colors */
 	--grey:#AAA;
-	--lightgrey:#CCC;
+	--white:#f8f8f8;
+	--darkgrey:#999;
 	--offwhite:#E8E8E8CC;
+	--lightgrey:#CCC;
+	--black:#2c2c2c;
+	--lightblack:#333;
 
-	/* Radius of circle of dots */
-	--circleradius:2rem;
+	/* Gradient Background Image */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
 
-	/* Period of oscillation around circle of dots */
-	--cycleperiod:.75s;
-
-	/* Nummber of dots in loader */
-	--numloaderdots:15;
-
-	/* Differential angle btwn dots */
-	--dphi: calc( 360deg / var(--numloaderdots) );
+	/* Page Sizes */
+	--pagewidth:75rem;
+	--cornersize:.5rem;
+	--lilpagewidth:36rem;
+	--minipagewidth:24rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+	--boxshadow:0 .5rem 3rem #0005;
+	--lilboxshadow:0 .125rem .125rem #0002;
 }
 
 
 
-body {color:#333; font-family:Montserrat,Nunito,sans-serif; margin:0; /* overflow:hidden; */}
+body {
+
+	/* --backcolor:var(--offwhite); */
+	--backcolor:white;
+	--backcolor2:whitesmoke;
+	/* --backcolor2:var(--white); */
+	--forecolor:var(--lightblack);
+	--forecolor2:var(--darkgrey);
+}
+
+body.dark {
+	
+	--backcolor:var(--lightblack);
+	--backcolor2:var(--black);
+	--forecolor:white;
+	--forecolor2:var(--darkgrey);
+}
 
 
 
-div#container {background-color:var(--offwhite); height:100vh; /* padding:1rem; */}
-/* div#container {height:-webkit-fill-available; height:-moz-fill-available; height:fill-available;} */
-div#container {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+/* body {background-color:var(--backcolor); color:var(--forecolor); background-image:var(--bgimg);} */
+body {font-family:/* Montserrat, */Nunito,sans-serif; margin:0; /* overflow:hidden; */}
+/* .freeze {overflow:hidden;} */
+
+
+
+/* Main */
 /* div#container {display:grid; place-items:center;} */
+div#container {background-color:var(--backcolor); color:var(--forecolor); display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:2rem;}
+/* div#container {height:-webkit-fill-available; height:-moz-fill-available; height:fill-available;} */
 
-div#container main {background-color:white; max-height:100%; overflow:hidden; border-radius:.5rem; margin:0 auto; box-shadow:0 .5rem 3rem #0005;}
-div#container main.gone {display:none;}
-div#container main#chatlist {width:100%; max-width:60rem; height:100%;}
-div#container main#userchooser {width:100%; max-width:36rem;}
-/* div#container main {display:block;} */
-/* div#container main#chatlist {display:none;} */
-/* div#container.user main#chatlist {display:block;} */
-/* div#container main#userchooser {display:block; display:none;} */
-/* div#container.user main#userchooser {display:none;} */
+div#container main {background-color:var(--backcolor); width:100%; max-width:var(--pagewidth); height:100%; max-height:100%; overflow:hidden;}
+div#container main {/* padding:1rem; */ /* border-radius:var(--cornersize); */ margin:0 auto; box-shadow:var(--boxshadow);}
+div#container main {/* display:block; */ opacity:1; z-index:99;}
+div#container main.gone {/* display:none; */ opacity:.25; z-index:1;}
+/* div#container main#chatlist {} */
+div#container main#userchooser {max-width:var(--lilpagewidth);}
 
-div#container main#chatlist div.slider {height:100%; display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
-div#container main#chatlist div.slider {width:100%; /* transition:.5s transform; */}
+/* Two-Pager */
+div#container main#chatlist div.slider {display:flex; flex-direction:row; justify-content:center; align-items:stretch;}
+div#container main#chatlist div.slider {height:100%; width:100%; /* transition:.5s transform; */}
 div#container main#chatlist div.slider section.page {/* height:100%; */ max-height:100%; width:50%; /* max-width:24rem; */ overflow:hidden;}
-/* div#container main#chatlist div.slider section#list {} */
-/* div#container main#chatlist div.slider section#chat {} */
-
-/* div#container main#userchooser div.slider {display:flex; flex-direction:row; align-items:center;} */
-div#container main#userchooser div.slider {display:grid; grid-template-columns:repeat(2,1fr); height:100%; width:200%;}
-div#container main#userchooser div.slider {transform:translateX(0); transition:.25s;}
-div#container main#userchooser.newuser div.slider {transform:translateX(-50%);}
-
-div#container main#userchooser div.slider section.page {display:flex; flex-direction:column; justify-content:space-between; overflow-y:auto; padding:2rem;}
-/* div#container main#userchooser div.slider section#login {display:none;} */
-/* div#container main#userchooser div.slider section#registration {display:block;} */
-
-div#container main#userchooser div.slider section.page h2.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container main#userchooser div.slider section.page h2.head {font-size:2rem; font-weight:600; margin:0; margin-bottom:1rem;}
-div#container main#userchooser div.slider section.page h2.head svg.icon {font-size:1.25em;}
-div#container main#userchooser div.slider section.page h2.head span.caption {margin-left:.25em;}
-
-/* div#container main#userchooser div.slider section.page div.bar {display:flex; flex-direction:row;} */
-div#container main#userchooser div.slider section.page div.bar {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1.25rem; margin:.5rem 0;}
-div#container main#userchooser div.slider section.page div.bar div.input {margin:0;}
-
-div#container main#userchooser div.slider section.page div.input {display:flex; flex-direction:column; align-items:stretch; position:relative;}
-div#container main#userchooser div.slider section.page div.input {font-size:1.125rem; font-weight:300; /* padding:0 .5rem; */ margin:.5rem 0;}
-div#container main#userchooser div.slider section.page div.input.avi {align-items:center; margin-bottom:1rem;}
-
-div#container main#userchooser div.slider section.page div.input input {font-size:inherit; width:100%; padding:.75rem 1rem; padding-right:3rem; border:1px solid #0003; border-radius:.375rem;}
-div#container main#userchooser div.slider section.page div.input label.label {cursor:pointer; user-select:none; white-space:nowrap; margin-bottom:.125rem;}
-div#container main#userchooser div.slider section.page div.input label.label.avatar {background-color:whitesmoke; --size:8rem; height:var(--size); width:var(--size);}
-div#container main#userchooser div.slider section.page div.input label.label.avatar {border:.125rem solid whitesmoke; border-radius:50%; box-shadow: 0 .125rem .125rem #0002;}
-div#container main#userchooser div.slider section.page div.input label.label.avatar {position:relative;}
-div#container main#userchooser div.slider section.page div.input label.label.avatar.full {background-image:linear-gradient(dodgerblue,purple); border-width:.25rem; border-color:dodgerblue;}
-div#container main#userchooser div.slider section.page div.input label.label.avatar.full img.upload {object-fit:cover; height: 100%; width:100%; border-radius:50%}
-div#container main#userchooser div.slider section.page div.input label.label.avatar span.icon {position:absolute; display:grid; place-items:center; height:100%; width:100%; overflow:hidden; border-radius:50%;}
-div#container main#userchooser div.slider section.page div.input label.label.avatar span.icon svg.icon {position:absolute; font-size:9rem; transform:translateY(.625rem);}
-div#container main#userchooser div.slider section.page div.input label.label.avatar div.plusbtn {position:absolute; --corner:14%; bottom:var(--corner); right:var(--corner); transform:translate(50%,50%); --size:2rem; height:var(--size); width:var(--size); border-radius:50%;}
-div#container main#userchooser div.slider section.page div.input label.label.avatar div.plusbtn {background-color:dodgerblue; color:white; display:grid; place-items:center; font-size:1.5rem; font-weight:900; border:2px solid white;}
-div#container main#userchooser div.slider section.page div.input label.label.avatar div.plusbtn::after {content:'+'; position:absolute;}
-div#container main#userchooser div.slider section.page div.input input#avatarfile {display:none; font-size:initial;}
-
-div#container main#userchooser div.slider section.page div.input.msg {margin:1rem 0;}
-div#container main#userchooser div.slider section.page div.input span.message {display:flex; display:none; flex-direction:row; justify-content:flex-start; justify-content:center; align-items:center;}
-div#container main#userchooser div.slider section.page div.input span.message {font-size:1rem; text-align:center; /* white-space:nowrap; */ cursor:pointer; padding:.75rem 1rem; border-radius:.5rem;}
-div#container main#userchooser div.slider section.page div.input span.message.error {background-color:#fadde0; color:#5f334f;}
-div#container main#userchooser div.slider section.page div.input span.message.success {background-color:#daf1e0; color:#496E59;}
-div#container main#userchooser div.slider section.page div.input span.message.active {display:flex;}
-div#container main#userchooser div.slider section.page div.input span.message svg.icon {flex-grow:0; flex-shrink:0; font-size:1.375rem;}
-div#container main#userchooser div.slider section.page div.input span.message span.caption {/* flex-grow:1; */ margin-left:.5rem;}
-
-div#container main#userchooser div.slider section.page div.input.check {display:none;}
-div#container main#userchooser div.slider section.page div.input.check {flex-direction:row; align-items:center; font-size:1rem;}
-div#container main#userchooser div.slider section.page div.input.check input {max-width:2rem;}
-div#container main#userchooser div.slider section.page div.input.check label.label {padding-top:3px;}
-div#container main#userchooser div.slider section.page div.input.check label.label a.link {text-decoration:none;}
-div#container main#userchooser div.slider section.page div.input button.btn {background-color:#333; color:white; font-size:1.375rem; letter-spacing:1px; cursor:pointer; padding:.75rem 1rem; border:1px solid #0003; border-radius:.375rem; margin-top:.5rem;}
-
-div#container main#userchooser div.slider section.page div.input div.visibilitytoggler {position:absolute; top:50%; right:0; cursor:pointer; padding:.25rem 1.125rem;}
-div#container main#userchooser div.slider section.page div.input div.visibilitytoggler svg.icon {display:none;}
-div#container main#userchooser div.slider section.page div.input input[type="password"] + div.visibilitytoggler svg.eye {display:block; color:#CCC;}
-div#container main#userchooser div.slider section.page div.input input[type="text"] + div.visibilitytoggler svg.eyeslash {display:block; color:#333;}
-
-div#container main#userchooser div.slider section.page p.textcopy {text-align:center;}
-div#container main#userchooser div.slider section.page p.textcopy a.link {/* display:block; */ text-decoration:none;}
+/* div#container main#chatlist div.slider section.page#list {} */
+/* div#container main#chatlist div.slider section.page#chat {} */
 
 
-div#container > * {opacity:1; transition:.5s;}
-div#container.loading > * {opacity:.5;}
-div#container div#loadspinner {position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);}
-div#container div#loadspinner {opacity:0; transition:.5s;}
-div#container div#loadspinner.loading {opacity:1;}
-div#container div#loadspinner span.dot {position:absolute; height:.625rem; width:.625rem;}
-div#container div#loadspinner span.dot {background-color:black; opacity:0; border-radius:50%;}
-div#container div#loadspinner span.dot {transform:rotate( calc( var(--i) * var(--dphi) ) ) translateY( var(--circleradius) );}
-div#container div#loadspinner span.dot {animation:cycle var(--cycleperiod) linear infinite; /* animation-play-state:paused; */ animation-delay:calc( var(--cycleperiod) / var(--numloaderdots) * var(--i) );}
-/* div#container div#loadspinner span.dot {animation-play-state:running;} */
 
-@keyframes cycle {
-	from {opacity:1;} to {opacity:0;}
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/*  */
 }
 
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
 
-
-
-
-@media screen and (max-width:40rem) {
-
-	div#container {padding:0;}
-	div#container main#chatlist {max-width:32rem;}
-	div#container main#userchooser {max-width:32rem;}
+	/* Main */
+	div#container main {--pagewidth:var(--minipagewidth); padding:1rem;}
+	/* div#container main#chatlist {max-width:var(--minipagewidth);} */
+	/* div#container main#userchooser {max-width:var(--minipagewidth);} */
 
 	/* One-Pager */
 	div#container main#chatlist div.slider {width:200%; transform:translateX(0); /* transition:5ms transform; */}
 	div#container main#chatlist div.slider.open {transform:translateX(-50%);}
 	div#container main#chatlist div.slider section.page {width:100%;}
 
+	/*  */
 	div#container main#userchooser div.slider section.page div.bar.sep {display:block;}
 	div#container main#userchooser div.slider section.page div.bar.sep div.input {margin:.5rem 0;}
 }
 
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/*  */
+}

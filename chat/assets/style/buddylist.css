@@ -1,69 +1,90 @@
 
 
 
-/* Contact List Page */
+/* Buddy List Page */
 
-
-div#container main section#list {background-color:white; display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch;}
+div#container main#chatlist section#list {/* background-color:white; */ display:flex; flex-direction:column; justify-content:flex-start; align-items:stretch;}
 
 
 /* Header Section */
 
-div#container main section#list header.header {flex-shrink:0; padding:0 2rem; margin-top:.25rem;}
-div#container main section#list header.header div.inner {display:flex; flex-direction:row; align-items:center; padding:1rem 0;}
-/* div#container main section#list header.header div.inner {border-bottom:1px solid var(--offwhite);} */
-div#container main section#list header.header div.inner div.user {flex-grow:1; display:flex; flex-direction:row; align-items:center;}
-div#container main section#list header.header div.inner div.user div.avatar {background-color:#0004; flex-grow:0; height:4rem; width:4rem; border-radius:50%; overflow:hidden;}
-div#container main section#list header.header div.inner div.user div.avatar img {height:100%; width:100%; object-fit:cover;}
-div#container main section#list header.header div.inner div.user div.remainder {flex-grow:1; margin-left:.75rem;}
-div#container main section#list header.header div.inner div.user div.remainder div.name {color:var(--black); font-size:1.25rem; font-weight:400;}
-div#container main section#list header.header div.inner div.user div.remainder div.status {color:var(--black); font-size:1rem; font-weight:300; margin-top:.375rem;}
+div#container main#chatlist section#list header.header {flex-shrink:0; padding:0 2rem; margin-top:.25rem;}
+div#container main#chatlist section#list header.header div.inner {display:flex; flex-direction:row; align-items:center; padding:1rem 0;}
+/* div#container main#chatlist section#list header.header div.inner {border-bottom:1px solid var(--offwhite);} */
+div#container main#chatlist section#list header.header div.inner div.user {flex-grow:1; display:flex; flex-direction:row; align-items:center;}
+div#container main#chatlist section#list header.header div.inner div.user div.avatar {background-color:#0004; flex-grow:0; height:4rem; width:4rem; border-radius:50%; overflow:hidden;}
+div#container main#chatlist section#list header.header div.inner div.user div.avatar img {height:100%; width:100%; object-fit:cover;}
+div#container main#chatlist section#list header.header div.inner div.user div.remainder {flex-grow:1; margin-left:.75rem;}
+div#container main#chatlist section#list header.header div.inner div.user div.remainder div.name {color:var(--forecolor); font-size:1.25rem; font-weight:400;}
+div#container main#chatlist section#list header.header div.inner div.user div.remainder div.status {color:var(--forecolor); font-size:1rem; font-weight:300; margin-top:.375rem;}
 
-div#container main section#list header.header div.inner div.user div.remainder div.status:before {content:''; display:inline-block; min-height:.75rem; min-width:.75rem; border-radius:50%; background-color:var(--offwhite); margin-right:.45rem;}
-div#container main section#list header.header div.inner div.user.online div.remainder div.status:before {background-color:forestgreen;}
-div#container main section#list header.header div.inner div.user div.remainder div.status::after {content:'Offline';}
-div#container main section#list header.header div.inner div.user.online div.remainder div.status::after {content:'Online';}
+div#container main#chatlist section#list header.header div.inner div.user div.remainder div.status:before {content:''; display:inline-block; min-height:.75rem; min-width:.75rem; border-radius:50%; background-color:var(--offwhite); margin-right:.45rem;}
+div#container main#chatlist section#list header.header div.inner div.user.online div.remainder div.status:before {background-color:forestgreen;}
+div#container main#chatlist section#list header.header div.inner div.user div.remainder div.status::after {content:'Offline';}
+div#container main#chatlist section#list header.header div.inner div.user.online div.remainder div.status::after {content:'Online';}
 
-div#container main section#list header.header div.inner div.logoutbtn {background-color:var(--black); color:white; font-size:1rem; padding:.65rem 1rem; border-radius:.5rem;}
-div#container main section#list header.header div.inner div.logoutbtn {cursor:pointer; user-select:none;}
-div#container main section#list header.header div.inner div.logoutbtn span.caption {display:block; margin-top:.125rem;}
+div#container main#chatlist section#list header.header div.inner div.logoutbtn {background-color:var(--forecolor); color:var(--backcolor,white); font-size:1rem; padding:.65rem 1rem; border-radius:.5rem;}
+div#container main#chatlist section#list header.header div.inner div.logoutbtn {cursor:pointer; user-select:none;}
+div#container main#chatlist section#list header.header div.inner div.logoutbtn span.caption {display:block; margin-top:.125rem;}
 
 
-/* Contact List */
+/* Buddy List */
 
-div#container main section#list div#contacts {padding:0 2rem; overflow:auto;}
+div#container main#chatlist section#list div#contacts {padding:0 2rem; overflow:auto;}
 
-div#container main section#list div#contacts form.search {display:flex; flex-direction:row; align-items:stretch; overflow:hidden; /* padding:0 2rem; */ border-top:1px solid var(--offwhite); margin:.75rem 0 .125rem; position:relative;}
-div#container main section#list div#contacts form.search input#searchquery {flex-grow:1; font-family:inherit; font-size:inherit; padding:.5rem 1rem .375rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
-div#container main section#list div#contacts form.search div.btn.closebtn {flex-grow:0; display:grid; place-items:center; background-color:var(--black); color:white; cursor:pointer;}
-div#container main section#list div#contacts form.search div.btn.closebtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
+div#container main#chatlist section#list div#contacts form.search {display:flex; flex-direction:row; align-items:stretch; overflow:hidden; /* padding:0 2rem; */ border-top:1px solid var(--backcolor2); margin:.75rem 0 .125rem; position:relative;}
+div#container main#chatlist section#list div#contacts form.search input#searchquery {flex-grow:1; font-family:inherit; font-size:inherit; padding:.5rem 1rem .375rem; border:1px solid var(--darkgrey); border-radius:.5rem 0 0 .5rem; outline:none;}
+div#container main#chatlist section#list div#contacts form.search div.btn.closebtn {flex-grow:0; display:grid; place-items:center; background-color:var(--forecolor); color:var(--backcolor,white); cursor:pointer;}
+div#container main#chatlist section#list div#contacts form.search div.btn.closebtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
 
-div#container main section#list div#contacts form.search div.overlay {position:absolute; top:0; left:0; height:100%; width:100%; background-color:#FFF; /* padding:0 2rem; */}
-div#container main section#list div#contacts form.search div.overlay {display:flex; flex-direction:row; align-items:center;}
-div#container main section#list div#contacts form.search div.overlay {visibility:visible; opacity:1; transition:.125s;}
-div#container main section#list div#contacts form.search.active div.overlay {visibility:hidden; opacity:0;}
-div#container main section#list div#contacts form.search div.overlay div.message {flex-grow:1; font-size:1rem; font-weight:200; padding:.5rem .25rem .375rem; user-select:none;}
-div#container main section#list div#contacts form.search div.overlay div.btn.searchbtn {flex-grow:0; display:grid; place-items:center; background-color:white; color:var(--black); cursor:pointer;}
-div#container main section#list div#contacts form.search div.overlay div.btn.searchbtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
+div#container main#chatlist section#list div#contacts form.search div.overlay {position:absolute; top:0; left:0; height:100%; width:100%; /* padding:0 2rem; */}
+div#container main#chatlist section#list div#contacts form.search div.overlay {background-color:var(--backcolor); display:flex; flex-direction:row; align-items:center;}
+div#container main#chatlist section#list div#contacts form.search div.overlay {visibility:visible; opacity:1; transition:.125s;}
+div#container main#chatlist section#list div#contacts form.search.active div.overlay {visibility:hidden; opacity:0;}
+div#container main#chatlist section#list div#contacts form.search div.overlay div.message {flex-grow:1; font-size:1rem; font-weight:200; padding:.5rem .25rem .375rem; user-select:none;}
+div#container main#chatlist section#list div#contacts form.search div.overlay div.btn.searchbtn {flex-grow:0; display:grid; place-items:center; background-color:var(--backcolor,white); color:var(--forecolor); cursor:pointer;}
+div#container main#chatlist section#list div#contacts form.search div.overlay div.btn.searchbtn {min-width:2.75rem; min-height:2.5rem; border-radius:0 .5rem .5rem 0;}
 
-div#container main section#list div#contacts ul.contactlist {list-style:none; padding:0; margin:0;}
-div#container main section#list div#contacts ul.contactlist::after {content:''; display:block; margin-bottom:1.25rem;}
-div#container main section#list div#contacts ul.contactlist:empty::after {content:'No users are available to chat'; content:'No one has signed up yet except you. Once someone signs up, they will appear here.';}
-div#container main section#list div#contacts ul.contactlist:empty::after {padding:1rem 0; border-top:1px solid var(--offwhite);}
-div#container main section#list div#contacts ul.contactlist li.contactitem {display:flex; flex-direction:row; align-items:stretch; cursor:pointer; user-select:none;}
-div#container main section#list div#contacts ul.contactlist li.contactitem {background-color:white; padding:.75rem 1rem; border-bottom:1px solid var(--offwhite); transition:.125s;}
-div#container main section#list div#contacts ul.contactlist li.contactitem.gone {max-height:0; padding:0; border-width:0; overflow:hidden;}
-div#container main section#list div#contacts ul.contactlist li.contactitem:hover {background-color:#f8f8f8;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.avatar {flex-grow:0; flex-shrink:0; min-height:3rem; height:3rem; min-width:3rem; width:3rem; /* overflow:hidden; */ position:relative;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.avatar:empty {background-color:#0004; border-radius:50%;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.avatar img {height:100%; width:100%; border-radius:50%; object-fit:cover;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.remainder {flex-grow:1; margin-left:.75rem;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.remainder div.name {color:var(--black); font-size:1rem; font-weight:400;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.remainder div.preview {color:var(--darkgrey); font-size:.875rem; font-weight:300; line-height:1.25; margin-top:.25rem;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.remainder div.preview:empty::after {content:'Click here to start chat';}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.status {flex-grow:0; display:grid; place-items:center; margin-left:.5rem;}
-div#container main section#list div#contacts ul.contactlist li.contactitem div.status::after {content:''; display:block; min-height:.75rem; min-width:.75rem; border-radius:50%; background-color:var(--offwhite);}
+div#container main#chatlist section#list div#contacts ul.contactlist {list-style:none; padding:0; margin:0;}
+div#container main#chatlist section#list div#contacts ul.contactlist::after {content:''; display:block; margin-bottom:1.25rem;}
+div#container main#chatlist section#list div#contacts ul.contactlist:empty::after {content:'No users are available to chat'; content:'No one has signed up yet except you. Once someone signs up, they will appear here.';}
+div#container main#chatlist section#list div#contacts ul.contactlist:empty::after {padding:1rem 0; border-top:1px solid var(--offwhite);}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem {display:flex; flex-direction:row; align-items:stretch; cursor:pointer; user-select:none;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem {/* background-color:white; */ padding:.75rem 1rem; border-bottom:1px solid var(--backcolor2); transition:.125s;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem.gone {max-height:0; padding:0; border-width:0; overflow:hidden;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem:hover {background-color:var(--backcolor2);}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.avatar {flex-grow:0; flex-shrink:0; min-height:3rem; height:3rem; min-width:3rem; width:3rem; /* overflow:hidden; */ position:relative;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.avatar:empty {background-color:#0004; border-radius:50%;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.avatar img {height:100%; width:100%; border-radius:50%; object-fit:cover;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.remainder {flex-grow:1; margin-left:.75rem;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.remainder div.name {color:var(--forecolor); font-size:1rem; font-weight:400;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.remainder div.preview {color:var(--forecolor2); font-size:.875rem; font-weight:300; line-height:1.25; margin-top:.25rem;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.remainder div.preview:empty::after {content:'Click here to start chat';}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.status {flex-grow:0; display:grid; place-items:center; margin-left:.5rem;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem div.status::after {content:''; display:block; min-height:.75rem; min-width:.75rem; border-radius:50%; background-color:var(--offwhite);}
 
-div#container main section#list div#contacts ul.contactlist li.contactitem.active div.avatar::after {position:absolute; bottom:0; right:0;}
-div#container main section#list div#contacts ul.contactlist li.contactitem.active div.avatar::after {content:''; display:block; background-color:forestgreen; min-height:.65rem; min-width:.65rem; border-radius:50%; border:.125rem solid white;}
-div#container main section#list div#contacts ul.contactlist li.contactitem.active div.status::after {background-color:forestgreen;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem.active div.avatar::after {position:absolute; bottom:0; right:0;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem.active div.avatar::after {content:''; display:block; background-color:forestgreen; min-height:.65rem; min-width:.65rem; border-radius:50%; border:.125rem solid white;}
+div#container main#chatlist section#list div#contacts ul.contactlist li.contactitem.active div.status::after {background-color:forestgreen;}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/*  */
+}

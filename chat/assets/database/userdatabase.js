@@ -1,7 +1,8 @@
 
 
-// Initialize user data. 
-const userdata = [
+
+// Initialize list of user data. 
+const userDataList2 = [
 	{
 		fname:'Ace',
 		lname:'Ventura',
@@ -202,4 +203,3 @@ const userdata = [
 	// 	online:true,
 	// },
 ];
-

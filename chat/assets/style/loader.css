@@ -1,0 +1,63 @@
+
+
+
+:root {
+
+	/* Radius of circle of dots */
+	--circleradius:2rem;
+
+	/* Period of oscillation around circle of dots */
+	--cycleperiod:.75s;
+
+	/* Nummber of dots in loader */
+	--numloaderdots:15;
+
+	/* Differential angle btwn dots */
+	--dphi: calc( 360deg / var(--numloaderdots) );
+}
+
+
+div#container > * {opacity:1; transition:.5s;}
+div#container.loading > * {opacity:.5;}
+div#container div#darkbtn {position:absolute; top:0; right:0; box-shadow:var(--lilboxshadow); z-index:100;}
+div#container div#darkbtn {background-color:var(--forecolor); color:var(--backcolor); display:grid; place-items:center; cursor:pointer; padding:.75rem; border-radius:.5rem; margin:.5rem;}
+div#container div#darkbtn svg.icon {display:none;}
+div#container div#darkbtn svg.icon.sun {display:none;}
+div#container div#darkbtn svg.icon.moon {display:block;}
+.dark div#container div#darkbtn svg.icon.sun {display:block;}
+.dark div#container div#darkbtn svg.icon.moon {display:none;}
+div#container div#loadspinner {position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div#loadspinner {opacity:0; transition:.5s;}
+div#container div#loadspinner.loading {opacity:1;}
+div#container div#loadspinner span.dot {position:absolute; height:.625rem; width:.625rem;}
+div#container div#loadspinner span.dot {background-color:black; opacity:0; border-radius:50%;}
+div#container div#loadspinner span.dot {transform:rotate( calc( var(--i) * var(--dphi) ) ) translateY( var(--circleradius) );}
+div#container div#loadspinner span.dot {animation:spincycle var(--cycleperiod) linear infinite; /* animation-play-state:paused; */ animation-delay:calc( var(--cycleperiod) / var(--numloaderdots) * var(--i) );}
+/* div#container div#loadspinner span.dot {animation-play-state:running;} */
+
+@keyframes spincycle {
+	from {opacity:1;} to {opacity:0;}
+}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/*  */
+}
+

@@ -1,26 +1,35 @@
 
 
+
 // Get main container of load spinner. 
-// let loadspinner = document.querySelector('div#loadspinner');
-let loadspinner = document.getElementById('loadspinner');
+let loadspinner = document.querySelector('div#loadspinner');
 
 // Get number of loader dots. 
 let numloaderdots = getComputedStyle(document.documentElement).getPropertyValue('--numloaderdots');
 
-// Add loader dots to page. 
-addLoaderDots(numloaderdots);
+// Define load time. 
+let loadertime = 750;
+loadertime = 2500;
 
-// Handle events. 
-// handleEvents();
 
 /*****/
 
-// Add number of loader dots to page. 
-function addLoaderDots(n) {
 
-	// Create dots. 
+// Add loader dots to page. 
+addLoaderDots();
+
+
+/*****/
+
+
+// Add loader dots to page. 
+function addLoaderDots() {
+
+	// Initialize result. 
 	result = '';
-	for(let i=0;i<n;i++) {
+	
+	// Create number of dots. 
+	for(let i=0;i<numloaderdots;i++) {
 		result += `
 		<!-- dot -->
 		<span class="dot" style="--i:${i}"></span>
@@ -32,13 +41,13 @@ function addLoaderDots(n) {
 	// console.log(loadspinner);
 }
 
-// Start loading. 
-function startLoading() {
+// Start loading animation. 
+function startLoader() {
 	loadspinner.classList.add('loading');
 	container.classList.add('loading');
 }
-// Finish loading. 
-function finishLoading() {
+// End loading animation. 
+function endLoader() {
 	loadspinner.classList.remove('loading');
 	container.classList.remove('loading');
 }
@@ -46,13 +55,10 @@ function finishLoading() {
 // Load into function. 
 function loadIntoFunction(fn) {
 
-	// Define load time. 
-	let dt = 750;
+	// Start loader. 
+	startLoader();
 
-	// Start loading. 
-	startLoading();
-
-	// Run function at end of load time. 
-	setTimeout(finishLoading, dt);
-	setTimeout(fn, dt);
+	// End loader and run function at end of load time. 
+	setTimeout(fn, loadertime);
+	setTimeout(endLoader, loadertime);
 }

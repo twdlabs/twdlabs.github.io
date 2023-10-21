@@ -1,19 +1,56 @@
 
 
+
+// Get header box for recipient. 
+const recipientbox = document.querySelector('#recipient');
+
+// Get name box for recipient. 
+const recipientnamebox = document.querySelector('#recipientname');
+
+// Get avatar box for recipient. 
+const recipientavatarbox =  document.querySelector('#recipientavatar');
+
 // 
-const msghistorybox = document.getElementById('msghistory');
+const msghistorybox = document.querySelector('#msghistory');
+
+// 
 const msghistorythread = document.querySelector('section#chat div#msghistory div.inner');
+
+// Get text input field for new message composition. 
+const newmsgfield = document.querySelector('#newmessage');
 
 
 /*****/
 
+
+// Prepare composer field for sending new messages. 
+prepareComposerField();
+
+
+/*****/
+
+
+// Prepare composer field for sending new messages. 
+function prepareComposerField() {
+
+	// Activate enter key to send message. 
+	newmsgfield.addEventListener('keyup',checkForEnter);
+
+	/*****/
+
+	// Check for enter on key press within message input text field. 
+	function checkForEnter(event) {
+		// console.log(event);
+		if(event.keyCode==13 || event.key=='Enter') sendNewMessage();
+	}
+}
 
 // Send new message. 
 function sendNewMessage() {
 
 	// Get new message. 
 	let newMessage = getNewMessage();
-	console.log(`Sending message to ${ userdata[selectedRecipientId] }:`, newMessage);
+	console.log(`Sending message to ${ userDataList[selectedRecipientId] }:`, newMessage);
 
 	// Skip sending empty messages. 
 	if(!newMessage) {
@@ -36,7 +73,7 @@ function sendNewMessage() {
 	function getNewMessage() {
 
 		// Get text input field. 
-		let msgfield = document.getElementById('newmessage');
+		let msgfield = document.querySelector('#newmessage');
 	
 		// Save message from text input field. 
 		let newMsg = msgfield.value;
@@ -66,7 +103,6 @@ function sendNewMessage() {
 		});
 	}
 }
-
 
 // Clear messages in thread. 
 function clearMsgHistory() {
@@ -116,7 +152,7 @@ function refreshMsgHistory(myId,theirId) {
 
 		// Get user identifying information. 
 		let senderid = msgitem.senderid;
-		let avatarurl = userdata[senderid].avatarurl;
+		let avatarurl = userDataList[senderid].avatarurl;
 
 		// Get contents of  message. 
 		let timestamp = ( new Date(msgitem.timestamp) ).toUTCString();
