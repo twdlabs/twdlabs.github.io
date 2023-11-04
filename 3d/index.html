@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./assets/3d-icon-png-17.jpg" rel="apple-touch-icon"/>
+		<title>3D Simulator</title>
+
+		<!-- Main Stylesheet -->
+		<link href="./3d.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
+	</head>
+
+	<body class="dark">
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- main -->
+			<main class="main" onclick="this.classList.toggle('sideview')">
+
+				<!-- item -->
+				<div class="item">
+
+					<!-- icon -->
+					<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<!-- < -->
+					</svg>
+					<!-- /icon -->
+					
+				</div>
+				<!-- /item -->
+
+				<!-- item -->
+				<div class="item"></div>
+				<!-- /item -->
+
+			</main>
+			<!-- /main -->
+
+			<!-- controller -->
+			<main class="controller">
+
+				<!-- panel -->
+				<div class="panel">
+
+					<!-- manual -->
+					<div class="manual">
+	
+						<!-- label -->
+						<label class="label">
+		
+							<!-- caption -->
+							<span class="caption">Perspective</span>
+							<!-- /caption -->
+		
+							<!-- value -->
+							<span class="value length perspective"></span>
+							<!-- /value -->
+		
+						</label>
+						<!-- /label -->
+			
+						<!-- angle -->
+						<input class="slider perspective" type="range" min="2" max="100" value="0" oninput="updatePerspective()">
+						<!-- /angle -->
+	
+					</div>
+					<!-- /manual -->
+
+				</div>
+				<!-- /panel -->
+
+				<!-- panel -->
+				<div class="panel">
+
+					<!-- manual -->
+					<div class="manual">
+	
+						<!-- label -->
+						<label class="label">
+		
+							<!-- caption -->
+							<span class="caption">X-Axis Rotation</span>
+							<!-- /caption -->
+		
+							<!-- value -->
+							<span class="value angle" id="angleX">0</span>
+							<!-- /value -->
+		
+						</label>
+						<!-- /label -->
+		
+						<!-- angle -->
+						<input class="slider angle" id="anglesliderX" type="range" min="0" max="360" value="0" oninput="updateAngleX()">
+						<!-- /angle -->
+	
+					</div>
+					<!-- /manual -->
+	
+					<!-- autorotatebtn -->
+					<div class="autorotatebtn" id="autoRotateX" onclick="toggleAutoRotateX()">
+	
+						<!-- icon -->
+						<svg class="icon repeat" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+							<path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+						</svg>
+						<!-- /icon -->
+						
+					</div>
+					<!-- /autorotatebtn -->
+
+				</div>
+				<!-- /panel -->
+
+				<!-- panel -->
+				<div class="panel">
+
+					<!-- manual -->
+					<div class="manual">
+	
+						<!-- label -->
+						<label class="label">
+		
+							<!-- caption -->
+							<span class="caption">Y-Axis Rotation</span>
+							<!-- /caption -->
+		
+							<!-- value -->
+							<span class="value angle" id="angleY">0</span>
+							<!-- /value -->
+		
+						</label>
+						<!-- /label -->
+		
+						<!-- angle -->
+						<input class="slider angle" id="anglesliderY" type="range" min="0" max="360" value="0" oninput="updateAngleY()">
+						<!-- /angle -->
+	
+					</div>
+					<!-- /manual -->
+	
+					<!-- autorotatebtn -->
+					<div class="autorotatebtn" id="autoRotateY" onclick="toggleAutoRotateY()">
+	
+						<!-- icon -->
+						<svg class="icon repeat" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+							<path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+						</svg>
+						<!-- /icon -->
+						
+					</div>
+					<!-- /autorotatebtn -->
+					
+				</div>
+				<!-- /panel -->
+
+				<!-- panel -->
+				<div class="panel">
+
+					<!-- manual -->
+					<div class="manual">
+	
+						<!-- label -->
+						<label class="label">
+		
+							<!-- caption -->
+							<span class="caption">Z-Axis Rotation</span>
+							<!-- /caption -->
+		
+							<!-- value -->
+							<span class="value angle" id="angleZ">0</span>
+							<!-- /value -->
+		
+						</label>
+						<!-- /label -->
+		
+						<!-- angle -->
+						<input class="slider angle" id="anglesliderZ" type="range" min="0" max="360" value="0" oninput="updateAngleZ()">
+						<!-- /angle -->
+	
+					</div>
+					<!-- /manual -->
+	
+					<!-- autorotatebtn -->
+					<div class="autorotatebtn" id="autoRotateZ" onclick="toggleAutoRotateZ()">
+	
+						<!-- icon -->
+						<svg class="icon repeat" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+							<path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+						</svg>
+						<!-- /icon -->
+						
+					</div>
+					<!-- /autorotatebtn -->
+					
+				</div>
+				<!-- /panel -->
+
+			</main>
+			<!-- /controller -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- Xyz Database -->
+		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
+
+		<!-- Main Script -->
+		<script src="./3d.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>

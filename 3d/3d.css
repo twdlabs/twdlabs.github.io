@@ -1,0 +1,128 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--ltgrey:#CCC;
+	--drkgrey:#444;
+	
+	/* Gradient Background Image */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
+	/* Perspective Sizes */
+	--perspectiveX:50rem;
+	--perspective:100rem;
+	--perspective:50rem;
+	--perspective:25rem;
+	/* --perspective:12.5rem; */
+	/* --perspective:6.25rem; */
+
+	/* Page Sizes */
+	--dt:.5s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+body {
+
+	--backcolor:#FFFFFFaa;
+	--backcolor2:var(--ltgrey);
+	--forecolor:black;
+}
+
+body.dark {
+
+	--backcolor:#181818aa;
+	--backcolor2:var(--drkgrey);
+	--forecolor:white;
+}
+
+
+/* html {background-image:var(--bgimg);} */
+body {background-color:var(--backcolor); color:var(--forecolor); font-family:Nunito,sans-serif; margin:0;}
+/* .freeze {overflow:hidden;} */
+
+
+/* Container */
+div#container {background-color:var(--backcolor2); color:var(--forecolor); min-height:100vh; padding:1rem;}
+div#container {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container {perspective:var(--perspectiveX); /* transform-style:preserve-3d; */}
+
+/* Window */
+/* div#container main {width:100%; max-width:var(--pagewidth);} */
+div#container main.main {background-color:var(--backcolor); border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container main.main {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.25rem; padding:1rem;}
+div#container main.main {perspective:var(--perspective); transform-style:preserve-3d; transition:.5s;}
+div#container main.main.sideview {transform:rotateY(90deg) translateZ(-16rem);}
+div#container main.main div.item {background-color:#0004; display:grid; place-items:center; --size:5rem; height:var(--size); width:var(--size);}
+div#container.x main.main div.item {animation:spinX linear infinite 5s;}
+div#container.y main.main div.item {animation:spinY linear infinite 5s;}
+div#container.z main.main div.item {animation:spinZ linear infinite 5s;}
+
+/* Controller */
+div#container main.controller {margin-top:2rem;}
+div#container main.controller div.panel {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem; margin-top:.5rem;}
+div#container main.controller div.panel {background-color:var(--backcolor); border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container main.controller div.panel div.manual {display:flex; flex-direction:column; justify-content:center; align-items:center;}
+div#container main.controller div.panel div.manual input.slider {cursor:pointer; width:100%; width:12rem;}
+/* div#container main.controller div.panel div.manual input.slider.angle {} */
+/* div#container main.controller div.panel div.manual input.slider.perspective {} */
+div#container main.controller div.panel div.manual label.label {cursor:pointer; user-select:none;}
+/* div#container main.controller div.panel div.manual label.label span.value {} */
+div#container main.controller div.panel div.manual label.label span.value.angle::after {content:'º';}
+div#container main.controller div.panel div.manual label.label span.value.length::after {content:'rem';}
+div#container main.controller div.panel div.manual label.label span.value.length:empty:after {content:'--';}
+/* div#container main.controller div.panel div.manual label.label span.caption {} */
+div#container main.controller div.panel div.manual label.label span.caption::after {content:':';}
+div#container main.controller div.panel div.autorotatebtn {cursor:pointer; font-size:1.25rem;}
+div#container main.controller div.panel div.autorotatebtn {display:grid; place-items:center; padding:.375em; border-radius:.375em; margin-left:.25rem;}
+div#container main.controller div.panel div.autorotatebtn svg.icon {display:block;}
+div#container.x main.controller div.panel div.autorotatebtn#autoRotateX,
+div#container.y main.controller div.panel div.autorotatebtn#autoRotateY,
+div#container.z main.controller div.panel div.autorotatebtn#autoRotateZ {background-color:rgb(8, 9, 9); color:white;}
+
+
+
+/* Animations */
+@keyframes spinX {
+	0% {transform:rotateX(0deg);}
+	50% {transform:rotateX(180deg);}
+	100% {transform:rotateX(360deg);}
+}
+@keyframes spinY {
+	0% {transform:rotateY(0deg);}
+	50% {transform:rotateY(180deg);}
+	100% {transform:rotateY(360deg);}
+}
+@keyframes spinZ {
+	0% {transform:rotateZ(0deg);}
+	50% {transform:rotateZ(180deg);}
+	100% {transform:rotateZ(360deg);}
+}
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
