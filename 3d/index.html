@@ -23,23 +23,15 @@
 		<div id="container">
 
 			<!-- main -->
-			<main class="main" onclick="this.classList.toggle('sideview')">
+			<main class="main" onclick="this.classList.toggle('sideview')" ondblclick="this.classList.toggle('topsideview')">
 
 				<!-- item -->
-				<div class="item">
-
-					<!-- icon -->
-					<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<!-- < -->
-					</svg>
-					<!-- /icon -->
-					
-				</div>
+				<div class="item x"></div>
 				<!-- /item -->
 
-				<!-- item -->
-				<div class="item"></div>
-				<!-- /item -->
+				<!-- dot -->
+				<div class="dot"></div>
+				<!-- /dot -->
 
 			</main>
 			<!-- /main -->
@@ -57,22 +49,136 @@
 						<label class="label">
 		
 							<!-- caption -->
-							<span class="caption">Perspective</span>
+							<span class="caption">Outer Perspective</span>
 							<!-- /caption -->
 		
 							<!-- value -->
-							<span class="value length perspective"></span>
+							<span class="value length perspective outer"></span>
 							<!-- /value -->
 		
 						</label>
 						<!-- /label -->
 			
 						<!-- angle -->
-						<input class="slider perspective" type="range" min="2" max="100" value="0" oninput="updatePerspective()">
+						<input class="slider perspective outer" type="range" min="2" max="125" value="50" oninput="updateOuterPerspective()">
 						<!-- /angle -->
 	
 					</div>
 					<!-- /manual -->
+
+					<!-- originmatrix -->
+					<div class="originmatrix">
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+					</div>
+					<!-- /originmatrix -->
+
+				</div>
+				<!-- /panel -->
+
+				<!-- panel -->
+				<div class="panel">
+
+					<!-- manual -->
+					<div class="manual">
+	
+						<!-- label -->
+						<label class="label">
+		
+							<!-- caption -->
+							<span class="caption">Inner Perspective</span>
+							<!-- /caption -->
+		
+							<!-- value -->
+							<span class="value length perspective inner"></span>
+							<!-- /value -->
+		
+						</label>
+						<!-- /label -->
+			
+						<!-- angle -->
+						<input class="slider perspective inner" type="range" min="2" max="125" value="50" oninput="updateInnerPerspective()">
+						<!-- /angle -->
+	
+					</div>
+					<!-- /manual -->
+
+					<!-- originmatrix -->
+					<div class="originmatrix">
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+						<!-- originbtn -->
+						<button class="originbtn">⋅</button>
+						<!-- /originbtn -->
+
+					</div>
+					<!-- /originmatrix -->
 
 				</div>
 				<!-- /panel -->

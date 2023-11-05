@@ -15,12 +15,8 @@
 	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
 
 	/* Perspective Sizes */
-	--perspectiveX:50rem;
-	--perspective:100rem;
-	--perspective:50rem;
-	--perspective:25rem;
-	/* --perspective:12.5rem; */
-	/* --perspective:6.25rem; */
+	--perspectiveouter:50rem;
+	--perspectiveinner:50rem;
 
 	/* Page Sizes */
 	--dt:.5s;
@@ -52,30 +48,51 @@ body {background-color:var(--backcolor); color:var(--forecolor); font-family:Nun
 /* .freeze {overflow:hidden;} */
 
 
+
+
 /* Container */
 div#container {background-color:var(--backcolor2); color:var(--forecolor); min-height:100vh; padding:1rem;}
 div#container {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container {perspective:var(--perspectiveX); /* transform-style:preserve-3d; */}
+div#container {perspective:var(--perspectiveouter); perspective-origin:center; /* transform-style:preserve-3d; */}
+
+
 
 /* Window */
 /* div#container main {width:100%; max-width:var(--pagewidth);} */
 div#container main.main {background-color:var(--backcolor); border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container main.main {display:grid; grid-template-columns:repeat(3,1fr); grid-gap:.25rem; padding:1rem;}
-div#container main.main {perspective:var(--perspective); transform-style:preserve-3d; transition:.5s;}
-div#container main.main.sideview {transform:rotateY(90deg) translateZ(-16rem);}
+div#container main.main {perspective:var(--perspectiveinner); perspective-origin:center; transform-style:preserve-3d; transition:.5s transform;}
+div#container main.main.sideview {transform:rotateY(85deg) translateZ(-25vw);}
+div#container main.main.topsideview {transform:rotateY(85deg) translateZ(-25vw) rotateZ(-90deg);}
+
+/* Window: Perspective Dot */
+div#container main.main div.dot {background-color:palevioletred; --size:.5rem; height:var(--size); width:var(--size); border-radius:50%;}
+div#container main.main div.dot {position:absolute; inset:50%; transform:translate(-50%,-50%); transition:.25s transform;}
+div#container main.main.sideview div.dot {transform:translate(-50%,-50%) translateZ(25vw) rotateY(90deg);}
+div#container main.main.topsideview div.dot {transform:translate(-50%,-50%) translateZ(25vw) rotateX(90deg);}
+
+/* Window: Window Item */
 div#container main.main div.item {background-color:#0004; display:grid; place-items:center; --size:5rem; height:var(--size); width:var(--size);}
+div#container main.main div.item.x {display:none;}
 div#container.x main.main div.item {animation:spinX linear infinite 5s;}
 div#container.y main.main div.item {animation:spinY linear infinite 5s;}
 div#container.z main.main div.item {animation:spinZ linear infinite 5s;}
+
+
 
 /* Controller */
 div#container main.controller {margin-top:2rem;}
 div#container main.controller div.panel {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem; margin-top:.5rem;}
 div#container main.controller div.panel {background-color:var(--backcolor); border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
-div#container main.controller div.panel div.manual {display:flex; flex-direction:column; justify-content:center; align-items:center;}
-div#container main.controller div.panel div.manual input.slider {cursor:pointer; width:100%; width:12rem;}
+div#container main.controller div.panel div.manual {flex-grow:1;}
+div#container main.controller div.panel div.manual {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-right:.75rem;}
+
+/* Controller: Input Slider */
+div#container main.controller div.panel div.manual input.slider {cursor:pointer; width:100%; /* width:12rem; */}
 /* div#container main.controller div.panel div.manual input.slider.angle {} */
 /* div#container main.controller div.panel div.manual input.slider.perspective {} */
+
+/* Controller: Slider Label */
 div#container main.controller div.panel div.manual label.label {cursor:pointer; user-select:none;}
 /* div#container main.controller div.panel div.manual label.label span.value {} */
 div#container main.controller div.panel div.manual label.label span.value.angle::after {content:'º';}
@@ -83,8 +100,14 @@ div#container main.controller div.panel div.manual label.label span.value.length
 div#container main.controller div.panel div.manual label.label span.value.length:empty:after {content:'--';}
 /* div#container main.controller div.panel div.manual label.label span.caption {} */
 div#container main.controller div.panel div.manual label.label span.caption::after {content:':';}
+
+/* Controller: Origin Matrix */
+div#container main.controller div.panel div.originmatrix {display:grid; grid-template-columns:repeat(3,1fr);}
+div#container main.controller div.panel div.originmatrix button.originbtn {cursor:pointer;}
+
+/* Controller: Auto-Rotate */
 div#container main.controller div.panel div.autorotatebtn {cursor:pointer; font-size:1.25rem;}
-div#container main.controller div.panel div.autorotatebtn {display:grid; place-items:center; padding:.375em; border-radius:.375em; margin-left:.25rem;}
+div#container main.controller div.panel div.autorotatebtn {display:grid; place-items:center; padding:.375em; border-radius:.375em;}
 div#container main.controller div.panel div.autorotatebtn svg.icon {display:block;}
 div#container.x main.controller div.panel div.autorotatebtn#autoRotateX,
 div#container.y main.controller div.panel div.autorotatebtn#autoRotateY,

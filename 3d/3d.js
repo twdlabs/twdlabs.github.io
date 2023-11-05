@@ -10,35 +10,41 @@ let allelements;
 
 // Get angle slider for x-axis. 
 const anglesliderX = document.querySelector('div#container main.controller div.manual input.angle#anglesliderX');
-console.log('anglesliderX:',anglesliderX);
+// console.log('anglesliderX:',anglesliderX);
 
 // Get angle slider for y-axis. 
 const anglesliderY = document.querySelector('div#container main.controller div.manual input.angle#anglesliderY');
-console.log('anglesliderY:',anglesliderY);
+// console.log('anglesliderY:',anglesliderY);
 
 // Get angle slider for z-axis. 
 const anglesliderZ = document.querySelector('div#container main.controller div.manual input.angle#anglesliderZ');
-console.log('anglesliderZ:',anglesliderZ);
+// console.log('anglesliderZ:',anglesliderZ);
 
 // Get angle display for x-axis. 
 const angledisplayX = document.querySelector('div#container main.controller div.manual label.label span.value#angleX');
-console.log('angledisplayX:',angledisplayX);
+// console.log('angledisplayX:',angledisplayX);
 
 // Get angle display for y-axis. 
 const angledisplayY = document.querySelector('div#container main.controller div.manual label.label span.value#angleY');
-console.log('angledisplayY:',angledisplayY);
+// console.log('angledisplayY:',angledisplayY);
 
 // Get angle display for z-axis. 
 const angledisplayZ = document.querySelector('div#container main.controller div.manual label.label span.value#angleZ');
-console.log('angledisplayZ:',angledisplayZ);
+// console.log('angledisplayZ:',angledisplayZ);
 
-// Get perspective slider. 
-const perspectiveslider = document.querySelector('div#container main.controller div.panel div.manual input.perspective');
-console.log('perspectiveslider:',perspectiveslider);
+// Get controls for outer perspective. 
+const outerperspective = {
+	slider:document.querySelector('div#container main.controller div.panel div.manual input.perspective.outer'),
+	display:document.querySelector('div#container main.controller div.panel div.manual label.label span.perspective.outer'),
+}
+// console.log('outerperspective:',outerperspective);
 
-// Get perspective display. 
-const perspectivedisplay = document.querySelector('div#container main.controller div.panel div.manual label.label span.value.length');
-console.log('perspectiveslider:',perspectiveslider);
+// Get controls for inner perspective. 
+const innerperspective = {
+	slider:document.querySelector('div#container main.controller div.panel div.manual input.perspective.inner'),
+	display:document.querySelector('div#container main.controller div.panel div.manual label.label span.perspective.inner'),
+}
+// console.log('innerperspective:',innerperspective);
 
 
 /*****/
@@ -66,7 +72,9 @@ function addElements() {
 	}
 	
 	// Display result. 
-	main.innerHTML = result;
+	// main.innerHTML = result;
+	// main.insertAdjacentHTML('beforeend',result);
+	main.insertAdjacentHTML('afterbegin',result);
 
 	// Access all elements. 
 	allelements = document.querySelectorAll('div#container main.main div.item');
@@ -75,18 +83,39 @@ function addElements() {
 	anglesliderX.value = 0;
 	anglesliderY.value = 0;
 	anglesliderZ.value = 0;
+
+	// Clear manual angle transformations (on all axes). 
+	clearManualAngles();
+
+	// Clear manual perspectives. 
+	clearPerspectives();
 }
 
 
-// Change 3d perspective. 
-function updatePerspective() {
+// Change outer 3d perspective. 
+function updateOuterPerspective() {
+	console.log('updateOuterPerspective');
 
 	// Get selected perspective. 
-	let selectedperspective = perspectiveslider.value * 1;
+	let selectedperspective = outerperspective['slider'].value * 1;
 	console.log('selectedperspective:',selectedperspective);
 
 	// Display selected angle. 
-	perspectivedisplay.textContent = selectedperspective;
+	outerperspective['display'].textContent = selectedperspective;
+	// Apply selected perspective. 
+	container.style.perspective = `${selectedperspective}rem`;
+}
+
+// Change inner 3d perspective. 
+function updateInnerPerspective() {
+	console.log('updateInnerPerspective');
+
+	// Get selected perspective. 
+	let selectedperspective = innerperspective['slider'].value * 1;
+	console.log('selectedperspective:',selectedperspective);
+
+	// Display selected angle. 
+	innerperspective['display'].textContent = selectedperspective;
 	// Apply selected perspective. 
 	main.style.perspective = `${selectedperspective}rem`;
 }
@@ -230,7 +259,13 @@ function toggleAutoRotateZ() {
 }
 
 
-// Clear manual angles (on all axes). 
+// Clear manual perspectives. 
+function clearPerspectives() {
+	outerperspective['slider'].value = 50;
+	innerperspective['slider'].value = 50;
+}
+
+// Clear manual angle transformations (on all axes). 
 function clearManualAngles() {
 
 	// Clear manual angle on x axis. 
