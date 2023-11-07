@@ -9,16 +9,15 @@
 :root {
 
 	/* Numbers */
-	--size:200px;
 	--size:12.5rem;
 }
 /* html, */
-body {height:100%; margin:0; font-family:Verdana,Arial,sans-serif; background:#000 radial-gradient(circle at 50% 50%, rgba(255,255,255,.3),rgba(255,255,255,0)); background-repeat:no-repeat; color:#FFF;}
+body {height:100vh; margin:0; font-family:Verdana,Arial,sans-serif; background:#000 radial-gradient(circle at 50% 50%, rgba(255,255,255,.3),rgba(255,255,255,0)); background-repeat:no-repeat; color:#FFF;}
 
 
 
 /* Container */
-div#container {min-height:100%; perspective:1000px; perspective-origin:50% 225px; transition:1s; text-align:center;}
+div#container {min-height:100%; perspective:100rem; perspective-origin:50% 225px; transition:1s; text-align:center;}
 
 
 
