@@ -1,0 +1,21 @@
+
+* {box-sizing:border-box;}
+
+body {min-height:100vh; margin:0; background-color:#F5D60E;}
+
+body {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+
+div#container {height:4rem; width:100%; background-color:#231D1D; overflow:visible;}
+div#container {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+
+div#container div.bar {background-color:#A8A7AC; height:150%; /*min-width:50%;*/ padding:0 2rem;}
+div#container div.bar {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+
+div#container div.bar div.eye {background-color:#FFF; border:.75rem solid #A6A4AD; border-radius:50%; min-width:10rem; min-height:10rem;}
+div#container div.bar div.eye {display:flex; flex-direction:row; justify-content:center; align-items:flex-start; /*align-items:center;*/ padding:.25rem;}
+
+div#container div.bar div.eye div.iris {background:#985818 radial-gradient(#271e1e 35%, #935a29 40%); border-radius:50%; min-width:3.25rem; min-height:3.25rem;}
+div#container div.bar div.eye div.iris {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+
+div#container div.bar div.eye div.iris div.pupil {background-color:#000; border-radius:50%; min-width:1.5rem; min-height:1.5rem;}
+div#container div.bar div.eye div.iris div.pupil::after {content:''; background-color:#FFF; height:.75rem; width:.52rem; position:absolute; transform:rotate(45deg) translateX(2px); border-radius:50%;}
