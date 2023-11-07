@@ -6,7 +6,7 @@ let eyeballs = document.querySelectorAll('.eye');
 // console.log('eyeballs:',eyeballs);
 
 // List event types to watch for. 
-let events = ['mousemove','touchmove'];
+let events = ['mousemove','touchmove','mousedown','touchstart',];
 // console.log('events:',events);
 
 
