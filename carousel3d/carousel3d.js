@@ -1,15 +1,30 @@
 
-$(document).ready(function(){
-	var currdeg = 0;
 
-	$('.prev').on('click',{direction:'prev'},rotate);
-	$('.next').on('click',{direction:'next'},rotate);
+
+// Initialize current angle. 
+var currentangle = 0;
+
+// Activate direction buttons. 
+activateDirectionBtns();
+
+
+/*****/
+
+
+// Activate direction buttons. 
+function activateDirectionBtns() {
 	
-	function rotate(event){
-		if(event.data.direction=='prev') currdeg += 20;
-		if(event.data.direction=='next') currdeg -= 20;
-		$('.carousel').css('transform','rotateY('+currdeg+'deg)');
-	}
+	// Activate back button. 
+	$('.prev').on('click',{direction:'prev'},rotate);
+	
+	// Activate next button. 
+	$('.next').on('click',{direction:'next'},rotate);
+}
 
-	$('.item').removeClass('untouched');
-});
+function rotate(event){
+	if(event.data.direction=='prev') currentangle += 20;
+	if(event.data.direction=='next') currentangle -= 20;
+	$('.carousel').css('transform','rotateY('+currentangle+'deg)');
+}
+
+$('.item').removeClass('seed');

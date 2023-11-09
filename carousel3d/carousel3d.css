@@ -26,7 +26,7 @@ div#container div.carousel-container div.carousel div.item.o {transform:rotateY(
 div#container div.carousel-container div.carousel div.item.p {transform:rotateY(300deg) translateZ(37.5rem);}
 div#container div.carousel-container div.carousel div.item.q {transform:rotateY(320deg) translateZ(37.5rem);}
 div#container div.carousel-container div.carousel div.item.r {transform:rotateY(340deg) translateZ(37.5rem);}
-div#container div.carousel-container div.carousel div.item.untouched {transform:none;}
+div#container div.carousel-container div.carousel div.item.seed {transform:none;}
 div#container div.carousel-container div.carousel div.item:nth-of-type(6n+1) {background-color:#ed1c24;}
 div#container div.carousel-container div.carousel div.item:nth-of-type(6n+2) {background-color:#0072bc;}
 div#container div.carousel-container div.carousel div.item:nth-of-type(6n+3) {background-color:#39b54a;}
