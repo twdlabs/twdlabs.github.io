@@ -1,27 +1,31 @@
 
-html,body {height:100%; margin:0;}
-div#container {min-height:100%; box-sizing:border-box; background-color:#333; /*padding:70px 0;*/ font:15px/20px Arial,sans-serif; overflow:hidden;}
-div#container div.carousel-container {margin:0 auto; width:200px; height:200px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); perspective:2400px;}
-div#container div.carousel-container div.carousel {height:100%; width:100%; position:absolute; transform-style:preserve-3d; transition:1s;}
-div#container div.carousel-container div.carousel div.item {display:block; position:absolute; background-color:#000; width:100%; height:100%; line-height:200px; font-size:5em; text-align:center; color:#FFF; opacity:.75; border-radius:10px; transition:transform 1s; /*border:4px solid #000;*/}
-div#container div.carousel-container div.carousel div.item.a {transform:rotateY(0deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.b {transform:rotateY(20deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.c {transform:rotateY(40deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.d {transform:rotateY(60deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.e {transform:rotateY(80deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.f {transform:rotateY(100deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.g {transform:rotateY(120deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.h {transform:rotateY(140deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.i {transform:rotateY(160deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.j {transform:rotateY(180deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.k {transform:rotateY(200deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.l {transform:rotateY(220deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.m {transform:rotateY(240deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.n {transform:rotateY(260deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.o {transform:rotateY(280deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.p {transform:rotateY(300deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.q {transform:rotateY(320deg) translateZ(600px);}
-div#container div.carousel-container div.carousel div.item.r {transform:rotateY(340deg) translateZ(600px);}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+div#container {min-height:100vh; box-sizing:border-box; background-color:#333; /*padding:70px 0;*/ font:15px/20px Arial,sans-serif; overflow:hidden;}
+div#container div.carousel-container {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
+div#container div.carousel-container {perspective:150rem; --size:12.5rem; height:var(--size); width:var(--size); margin:0 auto;}
+div#container div.carousel-container div.carousel {height:100%; width:100%; position:absolute; transform-style:preserve-3d; transition:.5s;}
+div#container div.carousel-container div.carousel div.item {display:block; color:#FFF; font-size:5em; text-align:center;}
+div#container div.carousel-container div.carousel div.item {position:absolute; background-color:#000; height:100%; width:100%; line-height:var(--size); opacity:.75; border-radius:.625rem; transition:transform 1s; /*border:4px solid #000;*/}
+div#container div.carousel-container div.carousel div.item.a {transform:rotateY(0deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.b {transform:rotateY(20deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.c {transform:rotateY(40deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.d {transform:rotateY(60deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.e {transform:rotateY(80deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.f {transform:rotateY(100deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.g {transform:rotateY(120deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.h {transform:rotateY(140deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.i {transform:rotateY(160deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.j {transform:rotateY(180deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.k {transform:rotateY(200deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.l {transform:rotateY(220deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.m {transform:rotateY(240deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.n {transform:rotateY(260deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.o {transform:rotateY(280deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.p {transform:rotateY(300deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.q {transform:rotateY(320deg) translateZ(37.5rem);}
+div#container div.carousel-container div.carousel div.item.r {transform:rotateY(340deg) translateZ(37.5rem);}
 div#container div.carousel-container div.carousel div.item.untouched {transform:none;}
 div#container div.carousel-container div.carousel div.item:nth-of-type(6n+1) {background-color:#ed1c24;}
 div#container div.carousel-container div.carousel div.item:nth-of-type(6n+2) {background-color:#0072bc;}
