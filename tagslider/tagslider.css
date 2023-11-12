@@ -1,0 +1,111 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+	
+	/* General Colors */
+	--grey:#CCC;
+	--grey:#F5F4FD;
+	--black:#444;
+	--blackglass:#4448;
+	--darkgrey:#D8D5F2;
+
+	/* Theme Colors */
+	--royalblue:#5372F0;
+	--royalgreen:#32cd32;
+	--themecolor:var(--royalblue);
+	/* --themecolor:var(--royalgreen); */
+
+	/* Page Sizes */
+	--cycletime:8s;
+	--cycletimefast:5s;
+	--cycletimeslow:12s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	--bigcornersize:.875rem;
+	
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+
+html {background-color:var(--themecolor);}
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+/* Container */
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container main.main {background-color:white; /* position:relative; */ overflow:hidden; /* padding:0 .75rem; */}
+div#container main.main {width:100%; max-width:var(--pagewidth); border-radius:var(--bigcornersize); box-shadow:var(--boxshadow);}
+
+/* Slider */
+div#container main.main div.slider {transition:var(--dt); /* border:solid lawngreen; */}
+div#container main.main div.slider.motion {scroll-behavior:smooth; scrollbar-width:none; overflow-x:hidden;}
+div#container main.main div.slider.motion {mask:linear-gradient(to right, transparent,lime 10%,lime 90%, transparent);}
+div#container main.main div.slider ul.taglist {list-style:none; padding:0; margin:0;}
+div#container main.main div.slider ul.taglist {display:flex; flex-direction:row; align-items:center; /* grid-gap:.75rem; */ transition:var(--dt); padding:.875rem 0;}
+div#container main.main div.slider ul.taglist {width:fit-content; flex-wrap:wrap; justify-content:center;}
+div#container main.main div.slider.motion ul.taglist {flex-wrap:nowrap; justify-content:initial;}
+div#container main.main div.slider.motion ul.taglist {animation:marquee var(--cycletime) infinite linear; overflow-x:visible;}
+div#container main.main div.slider.motion.fast ul.taglist {animation-duration:var(--cycletimefast);}
+div#container main.main div.slider.motion.slow ul.taglist {animation-duration:var(--cycletimeslow);}
+div#container main.main div.slider.motion ul.taglist:hover {animation-play-state:paused; transition:4s;}
+div#container main.main div.slider ul.taglist li.tagitem {font-size:1.125rem; white-space:nowrap; user-select:none; cursor:pointer; box-shadow: 0 .5rem 1rem -.25rem var(--blackglass);}
+div#container main.main div.slider ul.taglist li.tagitem {background-color:var(--grey); padding:.5em 1.25em; border:1px solid var(--darkgrey); border-radius:.875em; margin:0 .125rem;}
+div#container main.main div.slider ul.taglist li.tagitem:hover {background-color:var(--darkgrey);}
+div#container main.main div.slider ul.taglist li.tagitem.active {background-color:var(--themecolor); color:white;}
+div#container main.main div.slider ul.taglist li.tagitem span.caption {display:block;}
+div#container main.main div.slider ul.taglist li.tagitem span.caption:empty {background-color:gainsboro; opacity:.5; height:1em; width:4em; border-radius:1em;}
+
+@keyframes marquee {
+
+	0% {transform:translateX(0%);}
+	100% {transform:translateX(-50%);}
+}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* Container */
+	/* div#container {} */
+	/* div#container main.main {} */
+
+	/* Slider */
+	/* div#container main.main div.slider {} */
+	/* div#container main.main div.slider ul.taglist {} */
+	div#container main.main div.slider ul.taglist li.tagitem {font-size:.875rem;}
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/* Container */
+	/* div#container {} */
+	/* div#container main.main {} */
+
+	/* Slider */
+	/* div#container main.main div.slider {} */
+	/* div#container main.main div.slider ul.taglist {} */
+	/* div#container main.main div.slider ul.taglist li.tagitem {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	
+	/* Container */
+	/* div#container {} */
+	/* div#container main.main {} */
+
+	/* Slider */
+	/* div#container main.main div.slider {} */
+	/* div#container main.main div.slider ul.taglist {} */
+	/* div#container main.main div.slider ul.taglist li.tagitem {} */
+}
