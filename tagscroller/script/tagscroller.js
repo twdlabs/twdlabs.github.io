@@ -1,10 +1,10 @@
 
 
 
-// Define tag slider object. 
+// Define tag scroller object. 
 class TagSlider {
 
-	// Create new tag slider. 
+	// Create new tag scroller. 
 	constructor(slider,tagbox,tagitems,leftedge,rightedge,leftslidebtn,rightslidebtn) {
 		let anythingMissing = ( slider==null || tagbox==null || tagitems==null || leftedge==null || rightedge==null || leftslidebtn==null || rightslidebtn==null );
 		if(anythingMissing) {
@@ -18,11 +18,11 @@ class TagSlider {
 		// Define edge width (rem to px). 
 		this.edgewidth = 4*16;
 
-		// Get page elements for tag slider. 
+		// Get page elements for tag scroller. 
 		this.slider = slider;
 		this.tagbox = tagbox;
 		this.tagitems = tagitems;
-		// Get page elements for tag slider edge. 
+		// Get page elements for tag scroller edge. 
 		this.leftedge = leftedge;
 		this.rightedge = rightedge;
 		this.leftslidebtn = leftslidebtn;
@@ -47,7 +47,7 @@ class TagSlider {
 		// Activate tags. 
 		activateTags.bind(this)();
 		
-		// Activate tag slider. 
+		// Activate tag scroller. 
 		activateTagSlider.bind(this)();
 
 		/*****/
@@ -81,7 +81,7 @@ class TagSlider {
 			}
 		}
 		
-		// Activate tag slider. 
+		// Activate tag scroller. 
 		function activateTagSlider() {
 		
 			// Respond to normal scroll. 
@@ -170,7 +170,8 @@ class TagSlider {
 		let asideconsole = document.querySelector('div#container aside.console span.caption');
 
 		// Check if slider horizontally scrollable. 
-		let notScrollableX = this.slider.scrollLeftMax == 0;
+		let notScrollableX = (this.slider.scrollLeftMax == 0) || (this.slider.clientWidth >= this.slider.scrollWidth);
+		console.log('notScrollableX:',notScrollableX);
 		
 		// Set initial scroll status of slider. 
 		let scrolledLeft = true;
@@ -178,12 +179,12 @@ class TagSlider {
 		console.log('Scrolled left:',scrolledLeft);
 		console.log('Scrolled right:',scrolledRight);
 
-		// Xyz if slider not horizontally scrollable. 
+		// Note if slider not horizontally scrollable. 
 		if(notScrollableX) {
 			if(asideconsole) asideconsole.innerHTML = `n/a`;
 		}
 
-		// Xyz if slider horizontally scrollable. 
+		// Note if slider horizontally scrollable. 
 		else {
 		
 			// Get scroll percentage. 

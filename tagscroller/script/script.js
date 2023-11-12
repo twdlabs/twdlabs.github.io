@@ -22,7 +22,7 @@ const rightslidebtn = document.querySelector('div#container main.main div.edge.r
 // Populate slider with tags. 
 populateSliderTags();
 
-// Create tag slider. 
+// Create tag scroller. 
 const ts = new TagSlider(slider,tagbox,tagitems,leftedge,rightedge,leftslidebtn,rightslidebtn);
 
 
