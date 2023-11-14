@@ -49,7 +49,7 @@ function activateSearchBar() {
 		if(searchquery) {
 
 			// Update url of search button. 
-			searchquerybtn.href = getRelativeUrl(`./projects/?q=${searchquery}`);
+			searchquerybtn.href = getRelativeUrl(`./projects/?q=${ sanitizeSearchQuery(searchquery) }`);
 
 			// Activate search button. 
 			searchquerybtn.classList.add('on');
@@ -63,6 +63,15 @@ function activateSearchBar() {
 
 			// De-activate search button. 
 			searchquerybtn.classList.remove('on');
+		}
+
+		/****/
+
+		// Sanitize search query. 
+		function sanitizeSearchQuery(searchquery) {
+
+			// Replace spaces with plus signs. 
+			return searchquery.split(' ').join('+');
 		}
 	}
 

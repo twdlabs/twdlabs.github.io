@@ -11,11 +11,11 @@ const navLinkData = {
 			linkurl:'./',
 			linkname:'Home',
 		},
-		{
-			icontag:'profile',
-			linkurl:'./about',
-			linkname:'About',
-		},
+		// {
+		// 	icontag:'profile',
+		// 	linkurl:'./about',
+		// 	linkname:'About',
+		// },
 		{
 			icontag:'list',
 			linkurl:'./projects',
@@ -26,16 +26,16 @@ const navLinkData = {
 		// 	linkurl:'javascript:void(0)',
 		// 	linkname:'Services',
 		// },
-		{
-			icontag:'money',
-			linkurl:'./donate',
-			linkname:'Donate',
-		},
-		{
-			icontag:'envelope',
-			linkurl:'./contact',
-			linkname:'Contact',
-		},
+		// {
+		// 	icontag:'money',
+		// 	linkurl:'./donate',
+		// 	linkname:'Donate',
+		// },
+		// {
+		// 	icontag:'envelope',
+		// 	linkurl:'./contact',
+		// 	linkname:'Contact',
+		// },
 		{
 			icontag:'hierarchy',
 			linkurl:'./sitemap',
@@ -48,6 +48,62 @@ const navLinkData = {
 		// },
 	],
 };
+// console.log('Navigation link data:',navLinkData);
+
+
+// Define data for development tools and methods. 
+const methodData = [
+
+	{
+		icontag:'piechart',
+		header:'Statistics',
+		description:'Applying concepts from probability thoery, using descriptive statistics and inferential statistics',
+	},
+
+	{
+		icontag:'keyboard',
+		header:'Programming',
+		description:'Building useful models of real world phenomena using mathematics, statistics, and programming ',
+	},
+
+	{
+		icontag:'easel',
+		header:'Design',
+		description:'Creating aesthetic user interfaces and seamless user experiences while using best practice design principles',
+	},
+
+	{
+		icontag:'bricks',
+		header:'HTML',
+		description:'Establishing hierarchichally arranged page structures and building layers with hypertext markup',
+	},
+
+	{
+		icontag:'paintbrush',
+		header:'CSS',
+		description:'Decorating, smoothing transformations, and adding aesthetic beauty with cascading style sheets',
+	},
+
+	{
+		icontag:'gear',
+		header:'JavaScript',
+		description:'Enabling dynamic page movements, and practical functionality with the engine of JavaScript',
+	},
+
+	// {
+	// 	icontag:'calculator',
+	// 	header:'',
+	// 	description:'',
+	// },
+
+	// {
+	// 	icontag:'paintpalette',
+	// 	header:'',
+	// 	description:'',
+	// },
+	
+];
+// console.log('Method data:',methodData);
 
 
 // Define social link data. 
@@ -86,3 +142,4 @@ const socialLinkData = {
 		// },
 	],
 };
+// console.log('Social link data:',socialLinkData);

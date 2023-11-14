@@ -33,10 +33,10 @@ loadDesktop();
 
 // Load desktop items. 
 function loadDesktop() {
-	// console.log(projectNames);
+	// console.log(allProjectIds);
 
 	// Get groups of project names by category. 
-	let projectNameGroups = getNameGroups(projectNames);
+	let projectNameGroups = getNameGroups(allProjectIds);
 	console.log('Project name groups:',projectNameGroups);
 
 	// Initialize result. 

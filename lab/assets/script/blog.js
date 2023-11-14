@@ -142,10 +142,10 @@ function loadBlog() {
 		console.log('Loading featured posts...');
 	
 		// Get list of featured projects (sorted by project id). 
-		let featuredProjectsA = ( featuredProjectIdListA/* .sort() */ ).map(getProjectById);
-		let featuredProjectsB = ( featuredProjectIdListB/* .sort() */ ).map(getProjectById);
-		console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIdListA, featuredProjectsA);
-		console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIdListB, featuredProjectsB);
+		let featuredProjectsA = ( featuredProjectIds['a']/* .sort() */ ).map(getProjectById);
+		let featuredProjectsB = ( featuredProjectIds['b']/* .sort() */ ).map(getProjectById);
+		console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIds['a'], featuredProjectsA);
+		console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
 		
 		// Get layout for featured posts. 
 		let featuredLayoutA = createBlogPostsLayout(featuredProjectsA, !blockPreviews);

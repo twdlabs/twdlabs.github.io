@@ -2,46 +2,48 @@
 
 
 // Get destination for matrix of group links in footer. 
-const groupmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
-// console.log('groupmatrixdestination:',groupmatrixdestination);
+const groupmatrixfooterdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
+// console.log('groupmatrixfooterdestination:',groupmatrixfooterdestination);
 
 // Get destination for matrix of project links in footer. 
-const projectmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects');
-// console.log('projectmatrixdestination:',projectmatrixdestination);
+const projectmatrixfooterdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects');
+// console.log('projectmatrixfooterdestination:',projectmatrixfooterdestination);
 
-// Get destination for matrix of project links in footer. 
-const projectmatrixdestinationX = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.projects');
-// console.log('projectmatrixdestination:',projectmatrixdestination);
+// Get destination for matrix of project links on site map page. 
+const projectmatrixpagedestination = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.projects');
+// console.log('projectmatrixpagedestination:',projectmatrixpagedestination);
 
 
 /*****/
 
 
-// Load matrix of project links in footer. 
+// Load site map link matrices. 
 loadSiteMap();
 
 
 /*****/
 
 
-// Load matrix of project links in footer. 
+// Load site map link matrices. 
 function loadSiteMap() {
 
-	// Create layout for group link matrix. 
-	let groupmatrixlayout = createLinkMatrix(projectMetaGroupMatrixData,getProjectGroupById,getProjectMetaGroupById,'./category/?cid=','groupname');
+	// Create layout for group matrix. 
+	console.log('\nProject group matrix');
+	let groupmatrixlayout = createLinkMatrix( projectMetaGroupMatrixData, getProjectGroupById,getProjectMetaGroupById, './category/?cid=','groupname' );
 	// console.log('groupmatrixlayout:',groupmatrixlayout);
 
-	// Create layout for project link matrix. 
-	let projectmatrixlayout = createLinkMatrix(projectGroupMatrixData,getProjectById,getProjectGroupById,'../','projectname');
+	// Create layout for project matrix. 
+	console.log('\nProject matrix');
+	let projectmatrixlayout = createLinkMatrix( projectGroupMatrixData, getProjectById,getProjectGroupById, '../','projectname' );
 	// console.log('projectmatrixlayout:',projectmatrixlayout);
 
-	// Add layout for project link matrix. 
-	if(projectmatrixdestinationX) projectmatrixdestinationX.innerHTML = projectmatrixlayout;
+	// Add layout for project matrix to site map page. 
+	if(projectmatrixpagedestination) projectmatrixpagedestination.innerHTML = projectmatrixlayout;
 
-	// Add layout for group link matrix. 
-	if(groupmatrixdestination) groupmatrixdestination.innerHTML = groupmatrixlayout;
-	// Add layout for project link matrix. 
-	// if(projectmatrixdestination) projectmatrixdestination.innerHTML = projectmatrixlayout;
+	// Add layout for group matrix to footer. 
+	if(groupmatrixfooterdestination) groupmatrixfooterdestination.innerHTML = groupmatrixlayout;
+	// Add layout for project matrix to footer. 
+	if(projectmatrixfooterdestination) projectmatrixfooterdestination.innerHTML = projectmatrixlayout;
 
 	/****/
 
@@ -63,7 +65,7 @@ function loadSiteMap() {
 	
 			// Get list of project groups. 
 			let projectgroupslist = projectgroupidslist.map( getMetaById );
-			console.log('Project groups:',projectgroupslist);
+			// console.log('Project group set:',projectgroupslist);
 		
 			// Add list box to result layout. 
 			result += `
@@ -125,13 +127,14 @@ function loadSiteMap() {
 	
 					// Get data item for current project. 
 					let project = getItemById(itemid);
+					if(!project) console.debug('\tProject absent from database:',itemid);
 	
 					// Get url for current project. 
 					let url = `${urlprefix}${itemid}`;
 					// console.log('\turl:',url);
 		
 					// Get caption for current project. 
-					let caption = project ? project[namekey] : itemid;
+					let caption = project ? project[namekey] : `* ${itemid}`;
 					// let caption = project ? project['groupname'] : itemid;
 					// let caption = project ? project['projectname'] : itemid;
 					// console.log('\tcaption:',caption);

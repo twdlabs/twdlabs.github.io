@@ -1,0 +1,118 @@
+
+
+
+/* Footer: Link Matrix */
+div#container /* footer.footer */ div.grid div.linkmatrix {display:grid; /* margin-top:1.5rem; */}
+div#container footer.footer div.grid div.linkmatrix.groups {grid-area:groups;}
+div#container /* footer.footer */ div.grid div.linkmatrix.groups {grid-template-columns:repeat(3,1fr); grid-template-areas:none;}	/* inner */
+/* div#container footer.footer div.grid div.linkmatrix.projects {display:none;} */
+div#container footer.footer div.grid div.linkmatrix.projects {grid-area:projects;}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(6,1fr); grid-template-areas:'a b c d e m';}
+/* Footer: Link Matrix Sets */
+/* div#container footer.footer div.grid div.linkmatrix div.listset {flex-basis:0; flex-grow:1; flex-shrink:0;} */
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset {text-align:left; /* padding:1rem; */ margin-right:2rem;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.x {display:none;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set0 {grid-area:a;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set1 {grid-area:b;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set2 {grid-area:c;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set3 {grid-area:d;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set4 {grid-area:e;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing {grid-area:m; margin-right:0;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {color:var(--forecolor); font-size:1.25rem; font-weight:500; /* white-space:nowrap; */ margin:0; margin-top:2rem;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist {list-style:none; padding:0; margin:0; /* margin-top:1.25rem; */}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {display:grid; grid-template-columns:repeat(2,1fr);}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem {color:var(--forecolor2); margin-top:.5rem;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink {color:inherit; /* font-size:1.125rem; */ text-decoration:none; /* white-space:nowrap; */}
+/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink svg.icon {display:none;} */
+/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink span.caption {} */
+
+
+
+
+/* Large Tablet Screen */
+@media screen and (max-width:125rem) {
+
+	/* Footer: Link Matrix */
+	/* div#container footer.footer div.grid div.linkmatrix {} */
+	/* div#container footer.footer div.grid div.linkmatrix.groups {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(5,1fr); grid-template-areas:'a b c d e' 'm m m m m';}
+	/* Footer: Link Matrix Sets */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(7,1fr);}
+}
+
+/* Medium Tablet Screen */
+@media screen and (max-width:88rem) {
+	
+	/* Footer: Link Matrix */
+	/* div#container footer.footer div.grid div.linkmatrix {} */
+	/* div#container footer.footer div.grid div.linkmatrix.groups {grid-template-columns:repeat(3,1fr);} */
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(4,1fr); grid-template-areas:'a b c d' 'e m m m';}
+	/* Footer: Link Matrix Sets */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(3,1fr);}
+}
+
+/* Small Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* Footer: Link Matrix */
+	/* div#container footer.footer div.grid div.linkmatrix {} */
+	/* div#container footer.footer div.grid div.linkmatrix.groups {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(3,1fr); grid-template-areas:'a b c' 'd e o' 'm m m';}
+	/* Footer: Link Matrix Sets */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {margin-top:1.5rem;}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(4,1fr);}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink {font-size:1.125rem;}
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/* Footer: Link Matrix */
+	/* div#container footer.footer div.grid div.linkmatrix {} */
+	/* div#container footer.footer div.grid div.linkmatrix.groups {grid-template-columns:repeat(2,1fr);} */
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(2,1fr); grid-template-areas:'a b' 'c d' 'e o' 'm m';}
+	/* Footer: Link Matrix Sets */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(3,1fr);}
+}
+
+/* Medium Smartphone Screen */
+@media screen and (max-width:36rem) {
+	
+	/* Footer: Link Matrix */
+	div#container /* footer.footer */ div.grid div.linkmatrix {display:flex; flex-direction:column;}
+	/* div#container footer.footer div.grid div.linkmatrix.groups {} */
+	/* div#container footer.footer div.grid div.linkmatrix.projects {} */
+	/* Footer: Link Matrix Sets */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset {text-align:center; margin:0;}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(2,1fr);}
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:24rem) {
+	
+	/* Footer: Link Matrix */
+	/* div#container footer.footer div.grid div.linkmatrix {} */
+	/* div#container footer.footer div.grid div.linkmatrix.groups {} */
+	/* div#container footer.footer div.grid div.linkmatrix.projects {} */
+	/* Footer: Link Matrix Sets */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing {margin-top:2rem;}
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:1fr;}
+	/* div#container footer.footer div.grid div.linkmatrix.compact {margin-top:2rem;} */
+	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset {} */
+	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset h2.head {font-weight:200; margin-top:.375rem;} */
+	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist {max-height:0; overflow:hidden;} */
+	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist.active {max-height:none;} */
+}
