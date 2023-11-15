@@ -1,0 +1,125 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--lightgrey:#CCC;
+	--lightblack:#333;
+	
+	/* Gradient Colors */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
+	/* Page Sizes */
+	--dt:.5s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadowx:0 0 .25rem 0 #0003;
+}
+
+body {
+
+	--backcolor:white;
+	--backcolor:var(--lightgrey);
+	--forecolor:black;
+}
+
+/* body.dark {
+
+	--backcolor:black;
+	--forecolor:white;
+} */
+
+
+/* html {background-image:var(--bgimg);} */
+body {background-color:var(--backcolor); color:var(--forecolor); font-family:Nunito,sans-serif; margin:0;}
+/* .freeze {overflow:hidden;} */
+
+
+/* Container */
+div#container {background-color:var(--backcolor); color:var(--forecolor); display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+
+/* Navbar */
+div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%; z-index:100;}
+div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:1rem 2rem; box-shadow:var(--boxshadowx);}
+div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
+div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
+/* div#container nav.navbar div.bin h1.head svg.icon {} */
+div#container nav.navbar div.bin h1.head span.caption {margin-left:.375rem;}
+div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+div#container nav.navbar div.bin ul.navlist li.navitem {padding:.5rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+
+
+/* App */
+div#container main.main {background-color:var(--lightblack); /* min-height:85vh; */ padding:1.5rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow); margin-top:5rem;}
+div#container main.main {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1.25rem; width:100%; max-width:var(--pagewidth);}
+
+/* App Item */
+div#container main.main div.item {display:flex; flex-direction:column; align-items:center; grid-gap:.75rem;}
+div#container main.main div.item.input {grid-column:1 / span 2;}
+/* div#container main.main div.item.output {} */
+
+/* App Button */
+div#container main.main div.item button.btn {cursor:pointer; padding:.375rem .5rem; /* border-radius:.75rem; */ margin-top:.5rem;}
+div#container main.main div.item button.btn svg.icon {display:block; font-size:1.5rem;}
+
+/* App List Field */
+div#container main.main div.item div.listfield {position:relative; width:100%; box-shadow:var(--boxshadow); margin-top:.5rem;}
+div#container main.main div.item div.listfield textarea.list {font-family:inherit; font-size:inherit; resize:none; height:100%; width:100%; padding:1rem; border:1px solid #0004; border-radius:.375rem;}
+div#container main.main div.item div.listfield button.btn {position:absolute; bottom:0; right:0; margin:.75rem .625rem;}
+div#container main.main div.item div.listfield button.paste svg.icon.clipboard {display:block;}
+div#container main.main div.item div.listfield button.paste svg.icon.clipboardcheck {display:none;}
+div#container main.main div.item div.listfield button.paste.yes svg.icon.clipboard {display:none;}
+div#container main.main div.item div.listfield button.paste.yes svg.icon.clipboardcheck {display:block;}
+
+/* App List Field Label */
+div#container main.main div.item label.fieldlabel {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none; margin-top:.5rem;}
+div#container main.main div.item label.fieldlabel.add {font-size:1.25rem;}
+div#container main.main div.item label.fieldlabel.remove {font-size:1.25rem;}
+div#container main.main div.item label.fieldlabel.folder {font-size:1.5rem;}
+div#container main.main div.item label.fieldlabel div.bar {display:flex; flex-direction:row; align-items:center;}
+div#container main.main div.item label.fieldlabel div.bar span.count {background-color:gainsboro; font-size:.75em; text-align:center; min-height:1em; min-width:2em; padding:0 .375em; border-radius:.25em; margin-left:.5rem;}
+div#container main.main div.item label.fieldlabel div.bar span.count:empty::after {content:'--';}
+div#container main.main div.item label.fieldlabel div.bar span.caption {color:white; margin-left:.5rem;}
+div#container main.main div.item label.fieldlabel svg.icon {font-size:2rem;}
+div#container main.main div.item label.fieldlabel.add svg.icon {color:limegreen;}
+div#container main.main div.item label.fieldlabel.remove svg.icon {color:crimson;}
+div#container main.main div.item label.fieldlabel.folder svg.icon {color:navajowhite;}
+div#container main.main div.item label.fieldlabel svg.icon.add {color:limegreen;}
+div#container main.main div.item label.fieldlabel svg.icon.remove {color:crimson;}
+div#container main.main div.item label.fieldlabel svg.icon.folderx {color:black;}
+
+/* div#container main.main div.item {background-color:#0004; display:grid; place-items:center; --size:4rem; height:var(--size); width:var(--size);} */
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/* div#container main.main div.item label.fieldlabel {flex-direction:column;} */
+	/* div#container main.main div.item label.fieldlabel svg.icon {font-size:4rem;} */
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Navbar */
+	div#container nav.navbar div.bin h1.head span.caption {white-space:nowrap;}
+
+	/* App */
+	div#container main.main {grid-template-columns:1fr;}
+	div#container main.main div.item {grid-column:1 / span 2;}
+}
