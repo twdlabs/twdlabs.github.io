@@ -14,7 +14,7 @@
 	--blue:#84c5fe;
 	--drkblue:#004085;
 	--whiteblue:aliceblue;
-	--fillcolor:#CCC6;
+	--fillcolor:#CCC;
 	/* --whiteblue:#d4edda; */
 	
 	/* Glass Colors */
@@ -107,7 +107,7 @@ div#container main.questions header.top div.timer span.time {background-color:va
 div#container main.questions header.top div.timer span.time {color:var(--grey); font-weight:bold; letter-spacing:1px;}
 div#container main.questions header.top div.timer span.time:empty::after {content:'--'; height:1em; width:1.5em; border-radius:.25em;}
 div#container main.questions header.top div.timer span.caption {color:var(--drkblue); white-space:nowrap; margin-right:.5rem;}
-div#container main.questions section.middle h1.question {font-size:2rem; margin:0;}
+div#container main.questions section.middle h1.question {font-size:1.5rem; margin:0;}
 div#container main.questions section.middle h1.question:empty {background-color:var(--fillcolor); height:1em; width:100%; max-width:16em; border-radius:.25em;}
 div#container main.questions section.middle ul.answerlist {list-style:none; padding:0; margin:0; margin-top:2rem;}
 div#container main.questions section.middle ul.answerlist li.answeritem {background-color:var(--whiteblue); color:black; font-size:1.5rem; cursor:pointer;}

@@ -6,7 +6,7 @@ const quizdata = {
 
 	assertiveness:{
 		quizname:'Assertiveness',
-		quizquestions:assertivenessdata,
+		quizitems:assertivenessdata,
 		quizrules:[
 			'mno',
 			'pqr',
@@ -15,10 +15,21 @@ const quizdata = {
 		],
 	},
 
-	big5:{
+	motivations:{
+		quizname:'Motivations',
+		quizitems:motivationsdata,
+		quizrules:[
+			'abc',
+			'def',
+			'ghi',
+			'jkl',
+		],
+	},
+
+	personality:{
 		quizname:'Personality',
-		quizquestions:big5data,
-		quizquestions:descriptordata,
+		quizitems:big5data,
+		quizitems:descriptordata,
 		quizrules:[
 			'abc',
 			'def',
@@ -33,7 +44,7 @@ const quizdata = {
 /*****/
 
 
-// Add launch buttons. 
+// Add quiz launcher buttons. 
 function addLaunchBtns() {
 
 	// Initialize result. 
@@ -48,7 +59,7 @@ function addLaunchBtns() {
 		// Comple launch button for quiz item. 
 		result += `
 		<!-- launchbtn -->
-		<div class="launchbtn" onclick="launchQuizById('${quizid}')">
+		<div class="launchbtn" data-quizindex="${quizid}" onclick="launchQuizById('${quizid}')">
 
 			<!-- caption -->
 			<span class="caption">${quizitem.quizname} Quiz</span>

@@ -36,13 +36,13 @@ let currentquestionnumberdestination = document.querySelector('div#container mai
 let currentquizid = '';
 
 // Initialize question index. 
-let currentquestionindex = -1;
+let currentquizitemindex = -1;
 
 
 /*****/
 
 
-// Add quiz launch buttons. 
+// Add quiz launcher buttons. 
 addLaunchBtns();
 
 
@@ -127,14 +127,14 @@ function goToRules() {
 }
 
 
-// Go to quiz questions. 
+// Go to quiz items. 
 function goToQuestions() {
 
-	// Load question count. 
-	loadQuestionCount();
+	// Load item count for currently selected quiz. 
+	loadItemCount();
 
-	// Load initial quiz question. 
-	loadNextQuestion();
+	// Load initial item from currently selected quiz. 
+	loadNextQuizItem();
 
 	// Activate questions page. 
 	container.classList.add('active');
@@ -143,52 +143,60 @@ function goToQuestions() {
 	
 	/****/
 
-	// Load question count. 
-	function loadQuestionCount() {
+	// Load item count for currently selected quiz. 
+	function loadItemCount() {
 
 		// Get data for currently selected quiz. 
 		let selectedquiz = quizdata[currentquizid];
 
-		// Get question count. 
-		let questioncount = selectedquiz['quizquestions'].length;
+		// Get item count for currently selected quiz. 
+		let itemcount = selectedquiz['quizitems'].length;
 
 		// Display question count. 
-		questioncountdestination.innerHTML = questioncount;
+		questioncountdestination.innerHTML = itemcount;
 	}
 }
-// Load next quiz question. 
-function loadNextQuestion() {
+// Load next quiz item. 
+function loadNextQuizItem() {
 
 	// Increment question index. 
-	currentquestionindex++;
+	currentquizitemindex++;
 
 	// 
 
 	// Get data for currently selected quiz. 
 	let selectedquiz = quizdata[currentquizid];
-	// Get list of quiz questions. 
-	let quizquestions = selectedquiz.quizquestions;
 	
-	// Check if questions finished. 
-	let questionsfinished = currentquestionindex >= quizquestions.length;
+	// Get list of items for currently selected quiz. 
+	let selectedquizitems = selectedquiz.quizitems;
+	
+	// Check if quiz items finished. 
+	let quizitemsfinished = currentquizitemindex >= selectedquizitems.length;
 
-	// Go to quiz assessment (if questions finished). 
-	if(questionsfinished) goToAssessment();
+	// Go to quiz assessment (if quiz items finished). 
+	if(quizitemsfinished) goToAssessment();
 
 	// Load question at current index. 
-	loadQuestionByIndex(currentquestionindex);
+	loadQuestionByIndex(currentquizitemindex);
 
 	// Load question at current index. 
 	function loadQuestionByIndex(questionindex) {
 
 		// Load question contents. 
-		questioncontentdestination.innerHTML = '';
+		questioncontentdestination.innerHTML = createQuestionLayout();
 
 		// TODO: Load answer contents. 
 		questionanswersdestination.innerHTML = createAnswersLayout();
 
 		// Load question number. 
 		currentquestionnumberdestination.innerHTML = 1 + 1*questionindex;
+
+		// Create question layout. 
+		function createQuestionLayout() {
+			// Get data for currently selected quiz. 
+			let selectedquiz = getQuizDataById(currentquizid);
+			return selectedquiz['quizitems'][questionindex]['question'];
+		}
 
 		// Create answers layout. 
 		function createAnswersLayout() {
@@ -205,9 +213,9 @@ function loadNextQuestion() {
 			// Go thru each rule for selected quiz. 
 			for(let rule of selectedquizrules) {
 				result += `
-				<!-- ruleitem -->
-				<li class="ruleitem">${rule}</li>
-				<!-- /ruleitem -->`;
+				<!-- answeritem -->
+				<li class="answeritem">${rule}</li>
+				<!-- /answeritem -->`;
 			}
 	
 			// Display result on page. 
@@ -224,7 +232,7 @@ function loadNextQuestion() {
 function goToAssessment() {
 
 	// Reset question index. 
-	currentquestionindex = -1;
+	currentquizitemindex = -1;
 
 	// Activate assessment page. 
 	container.classList.add('active');
@@ -250,10 +258,16 @@ function closeQuiz() {
 	currentquizid = '';
 
 	// Reset question index. 
-	currentquestionindex = -1;
+	currentquizitemindex = -1;
 
 	// De-activate all pages. 
 	container.classList.remove('active');
 	container.classList.remove('q');
 	container.classList.remove('a');
+}
+
+// Get quiz data by id. 
+function getQuizDataById(quizid) {
+	if(quizid) return quizdata[quizid];
+	else return null;
 }

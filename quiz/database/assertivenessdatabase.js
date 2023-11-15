@@ -4,7 +4,7 @@
 // Define assertiveness questionnaire data. 
 const assertivenessdata = [
 	{
-		question:`You feel you deserve the corner office that has Judy become available. What would you do?`,
+		question:`You feel you deserve the corner office that has just become available. What would you do?`,
 		answers:[
 			`Stay quiet and hope the boss realizes that you deserve the office. `,
 			`Hint around that you have outgrown your cubicle. `,
