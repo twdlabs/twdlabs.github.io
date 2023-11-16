@@ -45,8 +45,11 @@ function showDiffs() {
 	origcountfield.textContent = fullfolderlist.length;
 	console.log('Full folder list:',fullfolderlist);
 
+	// Get list of project folders. 
+	let projectfolderlist = getDiffs(fullfolderlist,nullProjectIds);
+
 	// Get list of ids to add (project folder w/o id listing). 
-	let idaddlist = getDiffs(fullfolderlist,allProjectIds);
+	let idaddlist = getDiffs(projectfolderlist,allProjectIds);
 	let idaddhead = `${idaddlist.length} project id(s) missing. \nAdd project ids:`;
 	addcountfield.textContent = idaddlist.length;
 	console.log(idaddhead,idaddlist);
