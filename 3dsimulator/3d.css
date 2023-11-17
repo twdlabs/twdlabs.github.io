@@ -81,8 +81,8 @@ div#container.z main.main div.item {animation:spinZ linear infinite 5s;}
 
 
 /* Controller */
-div#container main.controller {margin-top:2rem;}
-div#container main.controller div.panel {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem; margin-top:.5rem;}
+div#container main.controller {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:.5rem 1.5rem; margin-top:2rem;}
+div#container main.controller div.panel {display:flex; flex-direction:row; align-items:center; padding:.625rem .75rem; /* margin-top:.5rem; */}
 div#container main.controller div.panel {background-color:var(--backcolor); border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container main.controller div.panel div.manual {flex-grow:1;}
 div#container main.controller div.panel div.manual {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-right:.75rem;}
