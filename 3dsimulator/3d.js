@@ -8,29 +8,6 @@ const main = document.querySelector('div#container main.main');
 // Get all elements. 
 let allelements;
 
-// Get angle slider for x-axis. 
-const anglesliderX = document.querySelector('div#container main.controller div.manual input.angle#anglesliderX');
-// console.log('anglesliderX:',anglesliderX);
-
-// Get angle slider for y-axis. 
-const anglesliderY = document.querySelector('div#container main.controller div.manual input.angle#anglesliderY');
-// console.log('anglesliderY:',anglesliderY);
-
-// Get angle slider for z-axis. 
-const anglesliderZ = document.querySelector('div#container main.controller div.manual input.angle#anglesliderZ');
-// console.log('anglesliderZ:',anglesliderZ);
-
-// Get angle display for x-axis. 
-const angledisplayX = document.querySelector('div#container main.controller div.manual label.label span.value#angleX');
-// console.log('angledisplayX:',angledisplayX);
-
-// Get angle display for y-axis. 
-const angledisplayY = document.querySelector('div#container main.controller div.manual label.label span.value#angleY');
-// console.log('angledisplayY:',angledisplayY);
-
-// Get angle display for z-axis. 
-const angledisplayZ = document.querySelector('div#container main.controller div.manual label.label span.value#angleZ');
-// console.log('angledisplayZ:',angledisplayZ);
 
 // Get controls for outer perspective. 
 const outerperspective = {
@@ -39,12 +16,40 @@ const outerperspective = {
 }
 // console.log('outerperspective:',outerperspective);
 
+// Get controls for angle of outer x-axis. 
+
+// Get controls for angle of outer y-axis. 
+
+// Get controls for angle of outer z-axis. 
+
+
 // Get controls for inner perspective. 
 const innerperspective = {
 	slider:document.querySelector('div#container main.controller div.panel div.manual input.perspective.inner'),
 	display:document.querySelector('div#container main.controller div.panel div.manual label.label span.perspective.inner'),
 }
 // console.log('innerperspective:',innerperspective);
+
+// Get controls for angle of inner x-axis. 
+const angleX = {
+	slider:document.querySelector('div#container main.controller div.manual input.angle#anglesliderX'),
+	display:document.querySelector('div#container main.controller div.manual label.label span.value#angleX'),
+};
+// console.log('angleX:',angleX);
+
+// Get controls for angle of inner y-axis. 
+const angleY = {
+	slider:document.querySelector('div#container main.controller div.manual input.angle#anglesliderY'),
+	display:document.querySelector('div#container main.controller div.manual label.label span.value#angleY'),
+};
+// console.log('angleY:',angleY);
+
+// Get controls for angle of inner z-axis. 
+const angleZ = {
+	slider:document.querySelector('div#container main.controller div.manual input.angle#anglesliderZ'),
+	display:document.querySelector('div#container main.controller div.manual label.label span.value#angleZ'),
+};
+// console.log('angleZ:',angleZ);
 
 
 /*****/
@@ -80,9 +85,9 @@ function addElements() {
 	allelements = document.querySelectorAll('div#container main.main div.item');
 
 	// Clear transformations on all axes. 
-	anglesliderX.value = 0;
-	anglesliderY.value = 0;
-	anglesliderZ.value = 0;
+	angleX['slider'].value = 0;
+	angleY['slider'].value = 0;
+	angleZ['slider'].value = 0;
 
 	// Clear manual angle transformations (on all axes). 
 	clearManualAngles();
@@ -123,14 +128,14 @@ function updateInnerPerspective() {
 
 // Clear angle on x-axis. 
 function clearAngleX() {
-	anglesliderX.value = 0;
-	angledisplayX.textContent = 0;
+	angleX['slider'].value = 0;
+	angleX['display'].textContent = 0;
 }
 // Change angle of elements (on x-axis). 
 function updateAngleX() {
 
 	// Get selected angle. 
-	let selectedangle = anglesliderX.value * 1;
+	let selectedangle = angleX['slider'].value * 1;
 	console.log('selectedangle:',selectedangle);
 	
 	// Clear auto-rotate (on all axes). 
@@ -140,7 +145,7 @@ function updateAngleX() {
 	clearAngleZ();
 
 	// Display selected angle. 
-	angledisplayX.textContent = selectedangle;
+	angleX['display'].textContent = selectedangle;
 	// Apply selected angle transformation to each element. 
 	for(let element of allelements) {
 		element.style.transform = `rotateX(${selectedangle}deg)`;
@@ -169,14 +174,14 @@ function toggleAutoRotateX() {
 
 // Clear angle on y-axis. 
 function clearAngleY() {
-	anglesliderY.value = 0;
-	angledisplayY.textContent = 0;
+	angleY['slider'].value = 0;
+	angleY['display'].textContent = 0;
 }
 // Change angle of elements (on y-axis). 
 function updateAngleY() {
 
 	// Get selected angle. 
-	let selectedangle = anglesliderY.value * 1;
+	let selectedangle = angleY['slider'].value * 1;
 	console.log('selectedangle:',selectedangle);
 	
 	// Clear auto-rotate (on all axes). 
@@ -186,7 +191,7 @@ function updateAngleY() {
 	clearAngleZ();
 
 	// Display selected angle. 
-	angledisplayY.textContent = selectedangle;
+	angleY['display'].textContent = selectedangle;
 	// Apply selected angle transformation to each element. 
 	for(let element of allelements) {
 		element.style.transform = `rotateY(${selectedangle}deg)`;
@@ -215,14 +220,14 @@ function toggleAutoRotateY() {
 
 // Clear angle on z-axis. 
 function clearAngleZ() {
-	anglesliderZ.value = 0;
-	angledisplayZ.textContent = 0;
+	angleZ['slider'].value = 0;
+	angleZ['display'].textContent = 0;
 }
 // Change angle of elements (on z-axis). 
 function updateAngleZ() {
 
 	// Get selected angle. 
-	let selectedangle = anglesliderZ.value * 1;
+	let selectedangle = angleZ['slider'].value * 1;
 	console.log('selectedangle:',selectedangle);
 	
 	// Clear auto-rotate (on all axes). 
@@ -232,7 +237,7 @@ function updateAngleZ() {
 	clearAngleY();
 
 	// Display selected angle. 
-	angledisplayZ.textContent = selectedangle;
+	angleZ['display'].textContent = selectedangle;
 	// Apply selected angle transformation to each element. 
 	for(let element of allelements) {
 		element.style.transform = `rotateZ(${selectedangle}deg)`;
