@@ -61,7 +61,7 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 @media screen and (max-width:48rem) {
 
 	/* Hero Section */
-	div#container section.hero {margin-bottom:2rem;}
+	div#container section.hero {height:auto; margin-bottom:2rem;}
 	/* div#container section.hero div.grid {display:flex; flex-direction:column-reverse; align-items:center;} */
 	/* div#container section.hero div.grid div.col {text-align:center;} */
 	/* div#container section.hero div.grid div.col img.logo {max-width:12rem; margin:0 auto 1.5rem;} */
