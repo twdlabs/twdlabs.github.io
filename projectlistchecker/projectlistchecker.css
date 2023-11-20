@@ -67,10 +67,20 @@ div#container main.main {display:grid; grid-template-columns:repeat(2,1fr); grid
 div#container main.main div.item {display:flex; flex-direction:column; align-items:center; grid-gap:.75rem;}
 div#container main.main div.item.input {grid-column:1 / span 2;}
 /* div#container main.main div.item.output {} */
+div#container main.main div.item.indicator {grid-column:1 / span 2;}
+div#container main.main div.item.indicator {display:grid; place-items:center; --size:3rem; height:0; transition:.5s;}
+div#container.done main.main div.item.indicator {height:var(--size);}
 
 /* App Button */
 div#container main.main div.item button.btn {cursor:pointer; padding:.375rem .5rem; /* border-radius:.75rem; */ margin-top:.5rem;}
 div#container main.main div.item button.btn svg.icon {display:block; font-size:1.5rem;}
+div#container main.main div.item div.signal {font-size:var(--size);}
+div#container main.main div.item div.signal {position:absolute; transform:scale(0); transition:transform .5s;}
+div#container.warn main.main div.item div.signal.y {transform:none;}
+div#container.good main.main div.item div.signal.g {transform:none;}
+div#container main.main div.item div.signal svg.icon {display:block;}
+div#container main.main div.item div.signal.y svg.icon {color:orange;}
+div#container main.main div.item div.signal.g svg.icon {color:limegreen;}
 
 /* App List Field */
 div#container main.main div.item div.listfield {position:relative; width:100%; box-shadow:var(--boxshadow); margin-top:.5rem;}
