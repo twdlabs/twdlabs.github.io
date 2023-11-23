@@ -1,66 +1,120 @@
 
-// Run on page load. 
-$(document).ready(function() {
+
+
+// Get flex container. 
+const flexbox = document.querySelector('div#container div.flex');
+
+// Get items of flex container. 
+const flexitems = document.querySelector('div#container div.flex div.item');
+
+// Get width setter. 
+let widthSetter = document.querySelector('div#container div.controller div.panel input#widthSetter');
+
+// Get all panel buttons. 
+const panelbtns = document.querySelectorAll('div#container div.controller div.panel button');
+
+// Get default panel buttons. 
+const defaultpanelbtns = document.querySelectorAll('div#container div.controller div.panel button.default');
+
+
+/*****/
+
+
+// 
+start();
+
+
+/*****/
+
+
+// 
+function start() {
+
 	// Reset range slider input to full. 
-	$('input#widthSetter').val('100');
+	widthSetter.value = 100;
 
-	// 
-	$('button').on('click',clickBtn);
+	// Go thru panel buttons. 
+	for(let btn of panelbtns) {
+		// Enable panel button. 
+		btn.addEventListener('click',clickBtn);
+	}
 
-	// Activate defaults. 
-	$('button.default').addClass('active');
-});
+	// Go thru default panel buttons. 
+	for(let btn of defaultpanelbtns) {
+		// Activate default button. 
+		btn.classList.add('active');
+	}
+}
 
 
 // 
 function clickBtn(event) {
-	// Get clicked button. 
-	let btn = event.target;
-	let btnBox = btn.parentElement;
 
-	// De-activate all buttons in the same box. 
-	$(btnBox).children('button').removeClass('active');
+	// Get selected button. 
+	let selectedbtn = event.target;
+
+	// Get panel for selected button. 
+	let selectedpanel = selectedbtn.parentElement;
+
+	// Get all buttons within selected panel. 
+	let siblingbtns = selectedpanel.querySelectorAll('button');
+
+	// Go thru buttons in selected panel. 
+	for(let btn of siblingbtns) {
+		// De-activate button. 
+		btn.classList.remove('active');
+	}
 
 	// Activate selected button. 
-	$(btn).addClass('active');
+	selectedbtn.classList.add('active');
 }
 
 
 // Set flex container width.
 function adjustWidth(value) {
 	console.log('value',value);
-	$('.container').css('width',value+'%');
+	flexbox.style.width = `${value}%`;
 }
 
 // Flex Direction: Set flex direction.
 function setFlexDirection(value) {
-	$('.container').css('flex-direction',value);
+	flexbox.style.flexDirection = value;
 }
 
 // Main Axis: Set flex justification (main axis).
 function setJustification(value) {
-	$('.container').css('justify-content',value);
+	flexbox.style.justifyContent = value;
 }
 
 // Cross Axis: Set flex alignment (cross axis).
 function setAlignment(value) {
-	$('.container').css('align-items',value);
+	flexbox.style.alignItems = value;
 }
 
 // Wrap Status: Set flex wrap status.
 function setWrapStatus(value) {
-	$('.container').css('flex-wrap',value);
+	flexbox.style.flexWrap = value;
 }
 
 // Cross Axis: Set flex overflow alignment (cross axis).
 function setOverflowAlignment(value) {
-	$('.container').css('align-content',value);
+	flexbox.style.alignContent = value;
 }
 
+// 
 function setGrowth(value) {
-	$('.container .item').css('flex-grow',value);
+
+	// Go thru each item. 
+	for(let item of flexitems) {
+		item.style.flexGrow = value;
+	}
 }
 
+// 
 function setShrinkth(value) {
-	$('.container .item').css('flex-shrink',value);
+
+	// Go thru each item. 
+	for(let item of flexitems) {
+		item.style.flexShrink = value;
+	}
 }
