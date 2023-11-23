@@ -56,11 +56,12 @@ function displayDeck(deck) {
 	for(let card of deck) {
 
 		// Get card details. 
-		let cardsuit = cardSuits[card.suitid];
+		let cardsuitid = card.suitid;
+		let cardsuit = cardSuits[cardsuitid];
 		let cardrank = cardRanks[card.cardrankindex];
 		
 		// Add layout for card. 
-		cardslayout += createCardLayout(cardsuit,cardrank);
+		cardslayout += createCardLayout(/* cardsuitid, */cardsuit,cardrank);
 	}
 
 	// Display layout of cards. 
@@ -69,25 +70,15 @@ function displayDeck(deck) {
 	/****/
 
 	// Create layout for card. 
-	function createCardLayout(cardsuit,cardrank) {
+	function createCardLayout(/* cardsuitid, */cardsuit,cardrank) {
 
 		// Get card caption. 
 		let cardcaption = cardrank.caption;
 		
 		// Create layout for card center. 
-		let cardcenterlayout = '';
+		let cardcenterlayout = createCardCenterLayout(/* suitid */);
 
-		// Acumulate icons for card center. 
-		for(let i=0 ; i<cardrank.iconcount ; i++) {
-			cardcenterlayout += `
-			<!-- icon -->
-			<svg class="icon ${ cardsuit.suitname }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-				${ cardsuit.iconpath }
-			</svg>
-			<!-- /icon -->`;
-		}
-
-		// 
+		// Return layout result. 
 		return `
 		<!-- card -->
 		<div class="card ${ cardsuit.suitcolor } ${ (cardrank.iconcount==1) ? 'lg' : '' }">
@@ -130,6 +121,31 @@ function displayDeck(deck) {
 			
 		</div>
 		<!-- /card -->`;
+
+		/***/
+
+		// Create layout for card center. 
+		function createCardCenterLayout() {
+		
+			// Initialize layout for card center. 
+			let result = '';
+
+			// Test unicode character. 
+			// result += cardrank.unicode[cardsuitid];
+
+			// Acumulate icons for card center. 
+			for(let i=0 ; i<cardrank.iconcount ; i++) {
+				result += `
+				<!-- icon -->
+				<svg class="icon ${ cardsuit.suitname }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					${ cardsuit.iconpath }
+				</svg>
+				<!-- /icon -->`;
+			}
+
+			// Return layout result. 
+			return result;
+		}
 	}
 }
 

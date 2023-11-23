@@ -31,66 +31,170 @@ const cardRanks = [
 	{
 		caption:'A',
 		iconcount:1,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'🂡',
+			h:'🂱',
+			d:'🃁',
+			c:'🃑',
+		},
 	},
 	{
 		caption:'2',
 		iconcount:2,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'3',
 		iconcount:3,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'4',
 		iconcount:4,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'5',
 		iconcount:5,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'6',
 		iconcount:6,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'7',
 		iconcount:7,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'8',
 		iconcount:8,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'9',
 		iconcount:9,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'10',
 		iconcount:10,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'J',
 		iconcount:1,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'Q',
 		iconcount:1,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 	{
 		caption:'K',
 		iconcount:1,
-		xyz:'xyz',
+		centerlayout:[
+			// 
+		],
+		unicode:{
+			s:'xyz',
+			h:'xyz',
+			d:'xyz',
+			c:'xyz',
+		},
 	},
 ];

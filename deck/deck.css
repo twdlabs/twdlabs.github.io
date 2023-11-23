@@ -81,12 +81,19 @@ div#container main.main div.card.lg div.center svg.icon {font-size:4em;}
 	/*  */
 }
 
-/* Big Smartphone Screen */
+/* Small Tablet Screen */
 @media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:36rem) {
+	div#container main.main {grid-template-columns:repeat(3,1fr);}
 	/*  */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 	/*  */
+	div#container main.main {grid-template-columns:repeat(2,1fr);}
 }
