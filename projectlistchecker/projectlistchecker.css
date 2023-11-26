@@ -64,72 +64,73 @@ div#container main.main {background-color:var(--lightblack); /* min-height:85vh;
 div#container main.main {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1.25rem; width:100%; max-width:var(--pagewidth);}
 
 /* App Item */
-div#container main.main div.item {display:flex; flex-direction:column; align-items:center; grid-gap:.75rem;}
-div#container main.main div.item.input {grid-column:1 / span 2;}
-/* div#container main.main div.item.output {} */
-div#container main.main div.item.indicator {grid-column:1 / span 2;}
-div#container main.main div.item.indicator {display:grid; place-items:center; --size:3rem; height:0; transition:.5s;}
-div#container.done main.main div.item.indicator {height:var(--size);}
+div#container main.main section.item {display:flex; flex-direction:column; align-items:center; grid-gap:.75rem;}
+div#container main.main section.item.input {grid-column:1 / span 2;}
+/* div#container main.main section.item.output {} */
+div#container main.main section.item.indicator {grid-column:1 / span 2;}
+div#container main.main section.item.indicator {display:grid; place-items:center; --size:3rem; height:0; transition:.5s;}
+div#container.done main.main section.item.indicator {height:var(--size);}
 
 /* App Button */
-div#container main.main div.item button.btn {cursor:pointer; padding:.375rem .5rem; /* border-radius:.75rem; */ margin-top:.5rem;}
-div#container main.main div.item button.btn svg.icon {display:block; font-size:1.5rem;}
-div#container main.main div.item div.signal {font-size:var(--size);}
-div#container main.main div.item div.signal {position:absolute; transform:scale(0); transition:transform .5s;}
-div#container.warn main.main div.item div.signal.y {transform:none;}
-div#container.good main.main div.item div.signal.g {transform:none;}
-div#container main.main div.item div.signal svg.icon {display:block;}
-div#container main.main div.item div.signal.y svg.icon {color:orange;}
-div#container main.main div.item div.signal.g svg.icon {color:limegreen;}
+div#container main.main section.item button.btn {cursor:pointer; padding:.375rem .5rem; /* border-radius:.75rem; */ margin-top:.5rem;}
+div#container main.main section.item button.btn svg.icon {display:block; font-size:1.5rem;}
+div#container main.main section.item div.signal {font-size:var(--size);}
+div#container main.main section.item div.signal {position:absolute; transform:scale(0); transition:transform .5s;}
+div#container.warn main.main section.item div.signal.y {transform:none;}
+div#container.good main.main section.item div.signal.g {transform:none;}
+div#container main.main section.item div.signal svg.icon {display:block;}
+div#container main.main section.item div.signal.y svg.icon {color:orange;}
+div#container main.main section.item div.signal.g svg.icon {color:limegreen;}
 
 /* App List Field */
-div#container main.main div.item div.listfield {position:relative; width:100%; box-shadow:var(--boxshadow); margin-top:.5rem;}
-div#container main.main div.item div.listfield textarea.list {font-family:inherit; font-size:inherit; resize:none; height:100%; width:100%; padding:1rem; border:1px solid #0004; border-radius:.375rem;}
-div#container main.main div.item div.listfield button.btn {position:absolute; bottom:0; right:0; margin:.75rem .625rem;}
-div#container main.main div.item div.listfield button.paste svg.icon.clipboard {display:block;}
-div#container main.main div.item div.listfield button.paste svg.icon.clipboardcheck {display:none;}
-div#container main.main div.item div.listfield button.paste.yes svg.icon.clipboard {display:none;}
-div#container main.main div.item div.listfield button.paste.yes svg.icon.clipboardcheck {display:block;}
+div#container main.main section.item div.listfield {position:relative; width:100%; box-shadow:var(--boxshadow); margin-top:.5rem;}
+div#container main.main section.item div.listfield textarea.list {font-family:inherit; font-size:inherit; resize:none; height:100%; width:100%; padding:1rem; border:1px solid #0004; border-radius:.375rem;}
+div#container main.main section.item div.listfield button.btn {position:absolute; bottom:0; right:0; margin:.75rem .625rem;}
+div#container main.main section.item div.listfield button.paste svg.icon.clipboard {display:block;}
+div#container main.main section.item div.listfield button.paste svg.icon.clipboardcheck {display:none;}
+div#container main.main section.item div.listfield button.paste.yes svg.icon.clipboard {display:none;}
+div#container main.main section.item div.listfield button.paste.yes svg.icon.clipboardcheck {display:block;}
 
 /* App List Field Label */
-div#container main.main div.item label.fieldlabel {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none; margin-top:.5rem;}
-div#container main.main div.item label.fieldlabel.add {font-size:1.25rem;}
-div#container main.main div.item label.fieldlabel.remove {font-size:1.25rem;}
-div#container main.main div.item label.fieldlabel.folder {font-size:1.5rem;}
-div#container main.main div.item label.fieldlabel div.bar {display:flex; flex-direction:row; align-items:center;}
-div#container main.main div.item label.fieldlabel div.bar span.count {background-color:gainsboro; font-size:.75em; text-align:center; min-height:1em; min-width:2em; padding:0 .375em; border-radius:.25em; margin-left:.5rem;}
-div#container main.main div.item label.fieldlabel div.bar span.count:empty::after {content:'--';}
-div#container main.main div.item label.fieldlabel div.bar span.caption {color:white; margin-left:.5rem;}
-div#container main.main div.item label.fieldlabel svg.icon {font-size:2rem;}
-div#container main.main div.item label.fieldlabel.add svg.icon {color:limegreen;}
-div#container main.main div.item label.fieldlabel.remove svg.icon {color:crimson;}
-div#container main.main div.item label.fieldlabel.folder svg.icon {color:navajowhite;}
-div#container main.main div.item label.fieldlabel svg.icon.add {color:limegreen;}
-div#container main.main div.item label.fieldlabel svg.icon.remove {color:crimson;}
-div#container main.main div.item label.fieldlabel svg.icon.folderx {color:black;}
+div#container main.main section.item label.fieldlabel {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none; margin-top:.5rem;}
+div#container main.main section.item label.fieldlabel {font-size:1.25rem;}
+div#container main.main section.item label.fieldlabel.lg {font-size:1.5rem;}
+div#container main.main section.item label.fieldlabel div.bar {display:flex; flex-direction:row; align-items:center;}
+div#container main.main section.item label.fieldlabel div.bar span.count {background-color:gainsboro; font-size:.75em; text-align:center; min-height:1em; min-width:2em; padding:0 .375em; border-radius:.25em; margin-left:.5rem;}
+div#container main.main section.item label.fieldlabel div.bar span.count:empty::after {content:'--';}
+div#container main.main section.item label.fieldlabel div.bar span.caption {color:white; margin-left:.5rem;}
+div#container main.main section.item label.fieldlabel svg.icon {font-size:2rem;}
+div#container main.main section.item label.fieldlabel.add svg.icon {color:limegreen;}
+div#container main.main section.item label.fieldlabel.remove svg.icon {color:crimson;}
+div#container main.main section.item label.fieldlabel.folder svg.icon {color:navajowhite;}/* 
+div#container main.main section.item label.fieldlabel svg.icon.add {color:limegreen;}
+div#container main.main section.item label.fieldlabel svg.icon.remove {color:crimson;}
+div#container main.main section.item label.fieldlabel svg.icon.folderx {color:black;} */
 
-/* div#container main.main div.item {background-color:#0004; display:grid; place-items:center; --size:4rem; height:var(--size); width:var(--size);} */
+/* div#container main.main section.item {background-color:#0004; display:grid; place-items:center; --size:4rem; height:var(--size); width:var(--size);} */
 
 
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
-	/* div#container main.main div.item label.fieldlabel {flex-direction:column;} */
-	/* div#container main.main div.item label.fieldlabel svg.icon {font-size:4rem;} */
-	/*  */
+	/* div#container main.main section.item label.fieldlabel {flex-direction:column;} */
+	/* div#container main.main section.item label.fieldlabel svg.icon {font-size:4rem;} */
+}
+
+/* Small Tablet Screen */
+@media screen and (max-width:48rem) {
 }
 
 /* Big Smartphone Screen */
-@media screen and (max-width:48rem) {
-	/*  */
-}
-
-/* Small Smartphone Screen */
-@media screen and (max-width:32rem) {
+@media screen and (max-width:40rem) {
 
 	/* Navbar */
 	div#container nav.navbar div.bin h1.head span.caption {white-space:nowrap;}
 
 	/* App */
 	div#container main.main {grid-template-columns:1fr;}
-	div#container main.main div.item {grid-column:1 / span 2;}
+	div#container main.main section.item {grid-column:1 / span 2;}
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
 }

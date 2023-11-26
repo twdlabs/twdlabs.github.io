@@ -8,8 +8,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../atgicon.ico" rel="icon"/>
-		<link href="./../atgicon.ico" rel="apple-touch-icon"/>
+		<link href="./icons/checklist_icon_129185.png" rel="icon"/>
+		<link href="./icons/checklist_icon_129185.png" rel="apple-touch-icon"/>
 		<title>Project List Checker</title>
 
 		<!-- Main Stylesheet -->
@@ -32,8 +32,14 @@
 					<h1 class="head">
 	
 						<!-- icon -->
-						<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<>
+						<!-- <svg class="icon code" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+						</svg> -->
+						<!-- /icon -->
+	
+						<!-- icon -->
+						<svg class="icon detaillist" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 0 .5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 2h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 4h10a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 6h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 8h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z"/>
 						</svg>
 						<!-- /icon -->
 						
@@ -90,10 +96,10 @@
 			<main class="main">
 
 				<!-- item -->
-				<div class="item input">
+				<section class="item input" id="orig">
 
 					<!-- fieldlabel -->
-					<label class="fieldlabel folder" for="listpaster" title="Original list">
+					<label class="fieldlabel folder lg" for="idoriglist" title="Original list">
 
 						<!-- icon -->
 						<svg class="icon folder" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -121,9 +127,9 @@
 					<!-- listfield -->
 					<div class="listfield">
 
-						<!-- listpaster -->
-						<textarea class="list listpaster" name="listpaster" id="listpaster" rows="10" placeholder="Paste here list of project ids from Experiments folder" required></textarea>
-						<!-- /listpaster -->
+						<!-- idoriglist -->
+						<textarea class="list" id="idoriglist" rows="10" placeholder="Paste here list of project ids from Experiments folder" required></textarea>
+						<!-- /idoriglist -->
 	
 						<!-- paste -->
 						<button class="btn paste" onclick="pasteFolderList()">
@@ -161,14 +167,14 @@
 					</button>
 					<!-- /go -->
 					
-				</div>
+				</section>
 				<!-- /item -->
 
 				<!-- item -->
-				<div class="item output">
+				<section class="item output" id="idadd">
 
 					<!-- fieldlabel -->
-					<label class="fieldlabel add" for="addlist" title="Add list">
+					<label class="fieldlabel add" for="idaddlist" title="Add project id">
 
 						<!-- icon -->
 						<svg class="icon folderadd" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -181,7 +187,7 @@
 						<div class="bar">
 
 							<!-- caption -->
-							<span class="caption">Add id</span>
+							<span class="caption">Add project ids</span>
 							<!-- /caption -->
 	
 							<!-- count -->
@@ -198,7 +204,7 @@
 					<div class="listfield">
 
 						<!-- listresult -->
-						<textarea class="list listresult" name="listresult" id="addlist" rows="20" placeholder="See here project ids to add" disabled></textarea>
+						<textarea class="list" id="idaddlist" rows="20" placeholder="See here project ids to add" disabled></textarea>
 						<!-- /listresult -->
 	
 						<!-- copy -->
@@ -216,14 +222,14 @@
 					</div>
 					<!-- /listfield -->
 					
-				</div>
+				</section>
 				<!-- /item -->
 
 				<!-- item -->
-				<div class="item output">
+				<section class="item output" id="idremove">
 
 					<!-- fieldlabel -->
-					<label class="fieldlabel remove" for="removelist" title="Remove list">
+					<label class="fieldlabel remove" for="idremovelist" title="Remove project id">
 	
 						<!-- icon -->
 						<svg class="icon folderremove" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -236,7 +242,7 @@
 						<div class="bar">
 
 							<!-- caption -->
-							<span class="caption">Remove id</span>
+							<span class="caption">Remove project ids</span>
 							<!-- /caption -->
 	
 							<!-- count -->
@@ -253,7 +259,7 @@
 					<div class="listfield">
 
 						<!-- listresult -->
-						<textarea class="list listresult" name="listresult" id="removelist" rows="20" placeholder="See here project ids to remove" disabled></textarea>
+						<textarea class="list" id="idremovelist" rows="20" placeholder="See here project ids to remove" disabled></textarea>
 						<!-- /listresult -->
 	
 						<!-- copy -->
@@ -271,18 +277,18 @@
 					</div>
 					<!-- /listfield -->
 					
-				</div>
+				</section>
 				<!-- /item -->
 
 				<!-- item -->
-				<div class="item output">
+				<section class="item output" id="projectadd">
 
 					<!-- fieldlabel -->
-					<label class="fieldlabel add" for="addlist" title="Add list">
+					<label class="fieldlabel add" for="projectaddlist" title="Add project details">
 
 						<!-- icon -->
-						<svg class="icon detailadd" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M0 .5A.5.5 0 0 1 .5 0h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 0 .5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 2h8a.5.5 0 0 1 0 1h-8a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 4h10a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 6h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2A.5.5 0 0 1 .5 8h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-13 2a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5Zm13 0a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z"/>
+						<svg class="icon code" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
 						</svg>
 						<!-- /icon -->
 
@@ -307,7 +313,7 @@
 					<div class="listfield">
 
 						<!-- listresult -->
-						<textarea class="list listresult" name="listresult" id="xyzlist" rows="20" placeholder="See here projects to add details for" disabled></textarea>
+						<textarea class="list" id="projectaddlist" rows="20" placeholder="See here projects to add details for" disabled></textarea>
 						<!-- /listresult -->
 	
 						<!-- copy -->
@@ -325,14 +331,14 @@
 					</div>
 					<!-- /listfield -->
 					
-				</div>
+				</section>
 				<!-- /item -->
 
 				<!-- item -->
-				<div class="item output">
+				<section class="item output" id="projectgroupadd">
 
 					<!-- fieldlabel -->
-					<label class="fieldlabel add" for="addlist" title="Add list">
+					<label class="fieldlabel add" for="projectgroupaddlist" title="Add to project group">
 
 						<!-- icon -->
 						<svg class="icon groupadd" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -344,7 +350,7 @@
 						<div class="bar">
 
 							<!-- caption -->
-							<span class="caption">Add project to group</span>
+							<span class="caption">Add to project group</span>
 							<!-- /caption -->
 	
 							<!-- count -->
@@ -361,7 +367,7 @@
 					<div class="listfield">
 
 						<!-- listresult -->
-						<textarea class="list listresult" name="listresult" id="xyzlist" rows="20" placeholder="See here projects to add to project group" disabled></textarea>
+						<textarea class="list" id="projectgroupaddlist" rows="20" placeholder="See here projects to add to project group" disabled></textarea>
 						<!-- /listresult -->
 	
 						<!-- copy -->
@@ -379,11 +385,11 @@
 					</div>
 					<!-- /listfield -->
 					
-				</div>
+				</section>
 				<!-- /item -->
 
 				<!-- item -->
-				<div class="item indicator">
+				<section class="item indicator">
 
 					<!-- signal -->
 					<div class="signal g">
@@ -409,7 +415,7 @@
 					</div>
 					<!-- /signal -->
 					
-				</div>
+				</section>
 				<!-- /item -->
 
 			</main>
