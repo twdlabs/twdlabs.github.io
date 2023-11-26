@@ -7,8 +7,8 @@ const flexbox = document.querySelector('div#container div.flex');
 // Get items of flex container. 
 const flexitems = document.querySelector('div#container div.flex div.item');
 
-// Get width setter. 
-let widthSetter = document.querySelector('div#container div.controller div.panel input#widthSetter');
+// Get width controller for flex container. 
+const widthcontroller = document.querySelector('div#container div.controller div.panel input#widthSetter');
 
 // Get all panel buttons. 
 const panelbtns = document.querySelectorAll('div#container div.controller div.panel button');
@@ -27,11 +27,11 @@ start();
 /*****/
 
 
-// 
+// Start up xyz. 
 function start() {
 
 	// Reset range slider input to full. 
-	widthSetter.value = 100;
+	widthcontroller.value = 100;
 
 	// Go thru panel buttons. 
 	for(let btn of panelbtns) {
@@ -47,7 +47,7 @@ function start() {
 }
 
 
-// 
+// Select panel button. 
 function clickBtn(event) {
 
 	// Get selected button. 
@@ -70,7 +70,7 @@ function clickBtn(event) {
 }
 
 
-// Set flex container width.
+// Set width of flex container.
 function adjustWidth(value) {
 	console.log('value',value);
 	flexbox.style.width = `${value}%`;
