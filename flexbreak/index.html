@@ -1,28 +1,31 @@
 
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link href="../atgicon.ico" rel="icon"/>
+		<link href="./..//flex/assets/icons/9340661.png" rel="icon"/>
 		<title>Flex Break</title>
 		
-		<style type="text/css">
-			div#container {background-color:#f7f7f7; border-radius:.5rem; padding:2rem; display:flex; flex-direction:row; flex-wrap:wrap; gap:.5rem; align-items:stretch; align-content:center;}
-			div#container.c {flex-direction:column; height:10rem;}
-			div#container div.br {flex-basis:100%; flex-shrink:0; border:1px solid #CCC;}
-			div#container div.item {flex-grow:1; height:3rem; width:auto; background-color:#A2CBFA; border:1px solid #4390E1;}
-			div#container div.item {box-shadow: 0 2px 2px rgba(0,90,250,0.05), 0 4px 4px rgba(0,90,250,0.05), 0 8px 8px rgba(0,90,250,0.05), 0 16px 16px rgba(0,90,250,0.05);}
-			div#container.c div.item {width:3rem; height:auto;}
-		</style>
-		<link rel="stylesheet" type="text/css" href="">
-		<script type="text/javascript"></script>
+		<!-- Main Stylesheet -->
+		<link href="./flexbreak.css" type="text/css" rel="stylesheet">
+		<!-- <style type="text/css"></style> -->
 	</head>
+
 	<body>
 
 		<!-- #container -->
-		<div id="container" onclick="this.classList.toggle('c');">
+		<div id="container" class="h" onclick="this.classList.toggle('v'); this.classList.toggle('h');">
+			
+			<!-- item -->
+			<div class="item"></div>
+			<!-- /item -->
+			
+			<!-- br -->
+			<div class="br"></div>
+			<!-- /br -->
 
 			<!-- item -->
 			<div class="item"></div>
@@ -63,11 +66,30 @@
 			<div class="br"></div>
 			<!-- /br -->
 
+			<!-- item -->
+			<div class="item"></div>
+			
+			<!-- br -->
+			<div class="br"></div>
+			<!-- /br -->
+
+			<!-- item -->
+			<div class="item"></div>
+			<!-- /item -->
+			
+			<!-- item -->
+			<div class="item"></div>
+			<!-- /item -->
+			
 			<!-- item -->
 			<div class="item"></div>
 
 		</div>
 		<!-- /#container -->
 
+		<!-- Main Script -->
+		<!-- <script type="text/javascript"></script> -->
+
 	</body>
+
 </html>
