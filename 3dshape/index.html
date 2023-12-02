@@ -13,79 +13,7 @@
 
 		<!-- Main Stylesheet -->
 		<link href="./3dshape.css" rel="stylesheet" type="text/css"/>
-		<style type="text/css">
-			html,body {height:100%; margin:0;}
-			div#container {min-height:100%; position:relative; font-family:Verdana,sans-serif;}
-			div#container div.scene {width:200px; height:260px; perspective:600px; position:absolute; transform:translate(-50%,-50%);}
-			div#container div.scene.cards {top:50%; left:33%;}
-			div#container div.scene.cubes {top:50%; left:67%; height:200px;}
-
-
-			div#container div.scene div.shape {width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 1s; cursor:pointer;}
-			div#container div.scene div.shape div.face {position:absolute; width:100%; height:100%; box-sizing:border-box; border:2px solid #000; border-radius:inherit; background-color:rgba(30,144,255,0.5);}
-			div#container div.scene div.shape div.face label {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:800; color:#FFF; font-size:32px; cursor:pointer;}
-
-
-			div#container div.scene div.card {box-shadow:0 0 4px 1px rgba(0,0,0,1.5); border-radius:80px; /*transform-origin:right;*/}
-			/*div#container div.scene div.card.flipped {transform:translateX(-100%) rotateY(-180deg);}*/
-			div#container div.scene div.card.spin {animation:spinning 3s infinite linear;}
-			div#container div.scene div.card div.face {backface-visibility:hidden;}
-			div#container div.scene div.card div.face.front {background-color:red;}
-			div#container div.scene div.card div.face.back {background-color:blue; transform:rotateY(180deg);}
-
-			@keyframes spinning {
-				5% {transform:rotateY(0deg);}
-				50% {transform:rotateY(180deg);}
-				55% {transform:rotateY(180deg);}
-				100% {transform:rotateY(360deg);}
-			}
-
-			div#container div.scene div.cube {border-radius:20px; transform:translateZ(-100px);}
-			div#container div.scene div.cube div.face {transform-origin:center;}
-
-			div#container div.scene div.cube.show-front {transform:translateZ(-100px) rotateY(0deg);}
-			div#container div.scene div.cube div.face.front {background-color:hsla(0,100%,50%,0.75);}
-			div#container div.scene div.cube div.face.front {transform:rotateY(0deg) translateZ(100px);}
-			/*div#container div.scene div.cube div.face.front {transform:translateZ(100px) rotate(0);}*/
-
-			div#container div.scene div.cube.show-back {transform:translateZ(-100px) rotateY(-180deg);}
-			div#container div.scene div.cube div.face.back {background-color:hsla(120,100%,50%,0.75);}
-			div#container div.scene div.cube div.face.back {transform:rotateY(180deg) translateZ(100px);}
-			/*div#container div.scene div.cube div.face.back {transform:translateZ(-100px) rotateY(180deg);}*/
-
-			div#container div.scene div.cube.show-right {transform:translateZ(-100px) rotateY(-90deg);}
-			div#container div.scene div.cube div.face.right {background-color:hsla( 60,100%,50%,0.75);}
-			div#container div.scene div.cube div.face.right {transform:rotateY(90deg) translateZ(100px);}
-			/*div#container div.scene div.cube div.face.right {transform:translateZ(-100px) rotateY(90deg); transform-origin:right;}*/
-
-			div#container div.scene div.cube.show-left {transform:translateZ(-100px) rotateY(90deg);}
-			div#container div.scene div.cube div.face.left {background-color:hsla(180,100%,50%,0.75);}
-			div#container div.scene div.cube div.face.left {transform:rotateY(-90deg) translateZ(100px);}
-			/*div#container div.scene div.cube div.face.left {transform:translateZ(-100px) rotateY(-90deg); transform-origin:left;}*/
-
-			div#container div.scene div.cube.show-top {transform:translateZ(-100px) rotateX(-90deg);}
-			div#container div.scene div.cube div.face.top {background-color:hsla(240,100%,50%,0.75);}
-			div#container div.scene div.cube div.face.top {transform:rotateX(90deg) translateZ(100px);}
-			/*div#container div.scene div.cube div.face.top {transform:translateZ(-100px) rotateX(90deg); transform-origin:top;}*/
-
-			div#container div.scene div.cube.show-bottom {transform:translateZ(-100px) rotateX(90deg);}
-			div#container div.scene div.cube div.face.bottom {background-color:hsla(300,100%,50%,0.75);}
-			div#container div.scene div.cube div.face.bottom {transform:rotateX(-90deg) translateZ(100px);}
-			/*div#container div.scene div.cube div.face.bottom {transform:translateZ(-100px) rotateX(-90deg); transform-origin:bottom;}*/
-
-			div#container div.scene div.cube.show-spin {transform:translateZ(-100px) rotateY(0deg) rotateX(0deg) rotateZ(0deg); animation:roundnround 5s infinite linear;}
-
-			@keyframes roundnround {
-				0% {transform:translateZ(-100px) rotateY(0deg) rotateX(0deg) rotateZ(0deg);}
-				50% {transform:translateZ(-100px) rotateY(180deg) rotateX(180deg) rotateZ(180deg);}
-				100% {transform:translateZ(-100px) rotateY(359deg) rotateX(359deg) rotateZ(359deg);}
-			}
-
-			div#container div.selectBox {margin-top:120px; text-align:center;}
-			div#container div.selectBox label {display:inline-block; cursor:pointer; padding:6px; border-radius:4px; min-width:40px; background-color:#EEE; margin:3px 0;}
-			div#container div.selectBox input[type=radio] {display:none;}
-			div#container div.selectBox input[type=radio]:checked+label {background-color:dodgerblue;}
-		</style>
+		<!-- <style type="text/css"></style> -->
 		
 		<!-- jQuery -->
 		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
@@ -160,20 +88,10 @@
 		</div>
 		<!-- /#container -->
 
-		<script type="text/javascript">
-			window.onload = go;
 
-			function go() {
-				var radio = $('input[type=radio]');
-
-				for(var i=0 ; i<radio.length ; i++){
-					radio[i].onclick = function(){
-						var cls = 'show-' + this.value;
-						$('.cube').removeClass().addClass('object cube '+cls)
-					}
-				}
-			}
-		</script>
+		<!-- Main Script -->
+		<script src="./3dshape.js" type="text/javascript"></script>
+		<!-- <script type="text/javascript"></script> -->
 
 	</body>
 </html>
