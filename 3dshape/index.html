@@ -3,27 +3,27 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./../3dsimulator/assets/3d-icon-png-17.jpg" rel="apple-touch-icon"/>
 		<title>Flipping Card | Rotating Cube</title>
-		
-		<!-- jQuery -->
-		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
-		<script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script>
-		<script src="../../import/bs4/jquery.min.js" type="text/javascript"></script>
 
+		<!-- Main Stylesheet -->
+		<link href="./3dshape.css" rel="stylesheet" type="text/css"/>
 		<style type="text/css">
 			html,body {height:100%; margin:0;}
 			div#container {min-height:100%; position:relative; font-family:Verdana,sans-serif;}
 			div#container div.scene {width:200px; height:260px; perspective:600px; position:absolute; transform:translate(-50%,-50%);}
-			div#container div.cardScene {top:50%; left:33%;}
-			div#container div.cubeScene {top:50%; left:67%; height:200px;}
+			div#container div.scene.cards {top:50%; left:33%;}
+			div#container div.scene.cubes {top:50%; left:67%; height:200px;}
 
 
-			div#container div.scene div.object {width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 1s; cursor:pointer;}
-			div#container div.scene div.object div.face {position:absolute; width:100%; height:100%; box-sizing:border-box; border:2px solid #000; border-radius:inherit; background-color:rgba(30,144,255,0.5);}
-			div#container div.scene div.object div.face label {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:800; color:#FFF; font-size:32px; cursor:pointer;}
+			div#container div.scene div.shape {width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 1s; cursor:pointer;}
+			div#container div.scene div.shape div.face {position:absolute; width:100%; height:100%; box-sizing:border-box; border:2px solid #000; border-radius:inherit; background-color:rgba(30,144,255,0.5);}
+			div#container div.scene div.shape div.face label {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-weight:800; color:#FFF; font-size:32px; cursor:pointer;}
 
 
 			div#container div.scene div.card {box-shadow:0 0 4px 1px rgba(0,0,0,1.5); border-radius:80px; /*transform-origin:right;*/}
@@ -35,8 +35,9 @@
 
 			@keyframes spinning {
 				5% {transform:rotateY(0deg);}
-				50%,55% {transform:rotateY(180deg);}
-				100% {transform:rotateY(359deg);}
+				50% {transform:rotateY(180deg);}
+				55% {transform:rotateY(180deg);}
+				100% {transform:rotateY(360deg);}
 			}
 
 			div#container div.scene div.cube {border-radius:20px; transform:translateZ(-100px);}
@@ -85,14 +86,22 @@
 			div#container div.selectBox input[type=radio] {display:none;}
 			div#container div.selectBox input[type=radio]:checked+label {background-color:dodgerblue;}
 		</style>
+		
+		<!-- jQuery -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="https://import.atgmedia.xyz/bs4/jquery.min.js" type="text/javascript"></script> -->
+		<!-- <script src="../../import/bs4/jquery.min.js" type="text/javascript"></script> -->
 	</head>
 	<body>
 
+		<!-- #container -->
 		<div id="container">
 
-			<div class="cardScene scene">
+			<!-- scene -->
+			<div class="scene cards">
 
-				<div class="object card spin" onclick="$(this).toggleClass('flipped');">
+				<!-- shape -->
+				<div class="shape card spin" onclick="$(this).toggleClass('flipped');">
 					<div class="face front">
 						<label>front</label>
 					</div>
@@ -100,12 +109,16 @@
 						<label>back</label>
 					</div>
 				</div>
+				<!-- /shape -->
 
 			</div>
+			<!-- /scene -->
 
-			<div class="cubeScene scene">
+			<!-- scene -->
+			<div class="scene cubes">
 
-				<div class="object cube show-spin">
+				<!-- shape -->
+				<div class="shape cube show-spin">
 					<div class="face front">
 						<label>front</label>
 					</div>
@@ -125,6 +138,7 @@
 						<label>bottom</label>
 					</div>
 				</div>
+				<!-- /shape -->
 
 				<div class="selectBox" style="">
 					<input type="radio" name="sideToShow" value="spin" id="spin" checked><label for="spin">spin</label>
@@ -141,8 +155,10 @@
 				</div>
 
 			</div>
+			<!-- /scene -->
 
 		</div>
+		<!-- /#container -->
 
 		<script type="text/javascript">
 			window.onload = go;
