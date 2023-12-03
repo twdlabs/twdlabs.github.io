@@ -1,6 +1,18 @@
 
 
 
+:root {
+
+	/* Cube Colors */
+	--red:hsla(0,100%,50%,0.75);;
+	--green:hsla(120,100%,50%,0.75);;
+	--yellow:hsla( 60,100%,50%,0.75);;
+	--cyan:hsla(180,100%,50%,0.75);;
+	--blue:hsla(240,100%,50%,0.75);
+	--magenta:hsla(300,100%,50%,0.75);
+	/* --xyz:xyz; */
+}
+
 body {font-family:Verdana,sans-serif; margin:0;}
 div#container {display:flex; justify-content:space-between; flex-wrap:wrap; min-height:100vh;}
 
@@ -37,32 +49,32 @@ div#container div.scene div.cube {border-radius:20px; transform:translateZ(-100p
 div#container div.scene div.cube div.face {transform-origin:center;}
 
 div#container div.scene div.cube.front {transform:translateZ(-100px) rotateY(0deg);}
-div#container div.scene div.cube div.face.front {background-color:hsla(0,100%,50%,0.75);}
+div#container div.scene div.cube div.face.front {background-color:var(--red)}
 div#container div.scene div.cube div.face.front {transform:rotateY(0deg) translateZ(100px);}
 /*div#container div.scene div.cube div.face.front {transform:translateZ(100px) rotate(0);}*/
 
 div#container div.scene div.cube.back {transform:translateZ(-100px) rotateY(-180deg);}
-div#container div.scene div.cube div.face.back {background-color:hsla(120,100%,50%,0.75);}
+div#container div.scene div.cube div.face.back {background-color:var(--green)}
 div#container div.scene div.cube div.face.back {transform:rotateY(180deg) translateZ(100px);}
 /*div#container div.scene div.cube div.face.back {transform:translateZ(-100px) rotateY(180deg);}*/
 
 div#container div.scene div.cube.right {transform:translateZ(-100px) rotateY(-90deg);}
-div#container div.scene div.cube div.face.right {background-color:hsla( 60,100%,50%,0.75);}
+div#container div.scene div.cube div.face.right {background-color:var(--yellow)}
 div#container div.scene div.cube div.face.right {transform:rotateY(90deg) translateZ(100px);}
 /*div#container div.scene div.cube div.face.right {transform:translateZ(-100px) rotateY(90deg); transform-origin:right;}*/
 
 div#container div.scene div.cube.left {transform:translateZ(-100px) rotateY(90deg);}
-div#container div.scene div.cube div.face.left {background-color:hsla(180,100%,50%,0.75);}
+div#container div.scene div.cube div.face.left {background-color:var(--cyan)}
 div#container div.scene div.cube div.face.left {transform:rotateY(-90deg) translateZ(100px);}
 /*div#container div.scene div.cube div.face.left {transform:translateZ(-100px) rotateY(-90deg); transform-origin:left;}*/
 
 div#container div.scene div.cube.top {transform:translateZ(-100px) rotateX(-90deg);}
-div#container div.scene div.cube div.face.top {background-color:hsla(240,100%,50%,0.75);}
+div#container div.scene div.cube div.face.top {background-color:var(--blue);}
 div#container div.scene div.cube div.face.top {transform:rotateX(90deg) translateZ(100px);}
 /*div#container div.scene div.cube div.face.top {transform:translateZ(-100px) rotateX(90deg); transform-origin:top;}*/
 
 div#container div.scene div.cube.bottom {transform:translateZ(-100px) rotateX(90deg);}
-div#container div.scene div.cube div.face.bottom {background-color:hsla(300,100%,50%,0.75);}
+div#container div.scene div.cube div.face.bottom {background-color:var(--magenta);}
 div#container div.scene div.cube div.face.bottom {transform:rotateX(-90deg) translateZ(100px);}
 /*div#container div.scene div.cube div.face.bottom {transform:translateZ(-100px) rotateX(-90deg); transform-origin:bottom;}*/
 
