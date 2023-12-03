@@ -37,13 +37,6 @@ div#container div.scene div.card div.face {backface-visibility:hidden;}
 div#container div.scene div.card div.face.front {background-color:red;}
 div#container div.scene div.card div.face.back {background-color:blue; transform:rotateY(180deg);}
 
-@keyframes spinning {
-	5% {transform:rotateY(0deg);}
-	50% {transform:rotateY(180deg);}
-	55% {transform:rotateY(180deg);}
-	100% {transform:rotateY(360deg);}
-}
-
 /* Scene Cube Shape */
 div#container div.scene div.cube {border-radius:20px; transform:translateZ(-100px);}
 div#container div.scene div.cube div.face {transform-origin:center;}
@@ -80,17 +73,27 @@ div#container div.scene div.cube div.face.bottom {transform:rotateX(-90deg) tran
 
 div#container div.scene div.cube.spin {transform:translateZ(-100px) rotateY(0deg) rotateX(0deg) rotateZ(0deg); animation:roundnround 5s infinite linear;}
 
-@keyframes roundnround {
-	0% {transform:translateZ(-100px) rotateY(0deg) rotateX(0deg) rotateZ(0deg);}
-	50% {transform:translateZ(-100px) rotateY(180deg) rotateX(180deg) rotateZ(180deg);}
-	100% {transform:translateZ(-100px) rotateY(359deg) rotateX(359deg) rotateZ(359deg);}
-}
-
 /* Cube Face Controller */
 div#container div.showcontroller {margin-top:120px; text-align:center;}
 div#container div.showcontroller label {display:inline-block; cursor:pointer; font-size:.75rem; padding:.75em; border-radius:4px; min-width:40px; background-color:#EEE; margin:3px 0;}
 div#container div.showcontroller input[type=radio] {display:none;}
 div#container div.showcontroller input[type=radio]:checked+label {background-color:dodgerblue; color:white;}
+
+
+/* Card Spinning Animation */
+@keyframes spinning {
+	5% {transform:rotateY(0deg);}
+	50% {transform:rotateY(180deg);}
+	55% {transform:rotateY(180deg);}
+	100% {transform:rotateY(360deg);}
+}
+
+/* Cube Spinning Animation */
+@keyframes roundnround {
+	0% {transform:translateZ(-100px) rotateY(0deg) rotateX(0deg) rotateZ(0deg);}
+	50% {transform:translateZ(-100px) rotateY(180deg) rotateX(180deg) rotateZ(180deg);}
+	100% {transform:translateZ(-100px) rotateY(359deg) rotateX(359deg) rotateZ(359deg);}
+}
 
 
 
