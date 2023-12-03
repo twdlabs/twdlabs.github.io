@@ -29,7 +29,7 @@
 			<div class="scene cardscene">
 
 				<!-- shape -->
-				<div class="shape card spin" onclick="$(this).toggleClass('flipped');">
+				<div class="shape card spin" onclick="this.classList.toggle('flip');">
 
 					<!-- face -->
 					<div class="face front">
@@ -94,38 +94,82 @@
 				</div>
 				<!-- /shape -->
 
-				<div class="showcontroller">
+				<!-- facecontroller -->
+				<div class="facecontroller">
 
-					<input type="radio" name="showside" value="spin" id="spin" checked>
-					<label for="spin">spin</label>
+					<!-- facechoice -->
+					<div class="facechoice">
+
+						<input type="radio" name="showside" value="spin" id="spin" checked>
+						<label for="spin">spin</label>
+						
+					</div>
+					<!-- /facechoice -->
 					
 					<br/>
 
-					<input type="radio" name="showside" value="top" id="top">
-					<label for="top">top</label>
+					<!-- facechoice -->
+					<div class="facechoice">
+
+						<input type="radio" name="showside" value="top" id="top">
+						<label for="top">top</label>
+						
+					</div>
+					<!-- /facechoice -->
 					
 					<br/>
 
-					<input type="radio" name="showside" value="left" id="left">
-					<label for="left">left</label>
+					<!-- facechoice -->
+					<div class="facechoice">
+
+						<input type="radio" name="showside" value="left" id="left">
+						<label for="left">left</label>
+						
+					</div>
+					<!-- /facechoice -->
+
+					<!-- facechoice -->
+					<div class="facechoice">
 					
-					<input type="radio" name="showside" value="front" id="front">
-					<label for="front">front</label>
+						<input type="radio" name="showside" value="front" id="front">
+						<label for="front">front</label>
+						
+					</div>
+					<!-- /facechoice -->
+
+					<!-- facechoice -->
+					<div class="facechoice">
 					
-					<input type="radio" name="showside" value="right" id="right">
-					<label for="right">right</label>
+						<input type="radio" name="showside" value="right" id="right">
+						<label for="right">right</label>
+
+					</div>
+					<!-- /facechoice -->
 					
 					<br/>
 
-					<input type="radio" name="showside" value="bottom" id="bottom">
-					<label for="bottom">bottom</label>
+					<!-- facechoice -->
+					<div class="facechoice">
+
+						<input type="radio" name="showside" value="bottom" id="bottom">
+						<label for="bottom">bottom</label>
+						
+					</div>
+					<!-- /facechoice -->
 					
 					<br/>
 
-					<input type="radio" name="showside" value="back" id="back">
-					<label for="back">back</label>
+					<!-- facechoice -->
+					<div class="facechoice">
+
+						<input type="radio" name="showside" value="back" id="back">
+						<label for="back">back</label>
+						
+					</div>
+					<!-- /facechoice -->
 
 				</div>
+				<!-- /facecontroller -->
 
 			</div>
 			<!-- /scene -->
