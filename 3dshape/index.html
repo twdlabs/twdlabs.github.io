@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="./../atgicon.ico" rel="icon"/>
 		<link href="./../3dsimulator/assets/3d-icon-png-17.jpg" rel="apple-touch-icon"/>
-		<title>Flipping Card | Rotating Cube</title>
+		<title>3D Shapes: Flipping Card | Rotating Cube</title>
 
 		<!-- Main Stylesheet -->
 		<link href="./3dshape.css" rel="stylesheet" type="text/css"/>
@@ -26,16 +26,23 @@
 		<div id="container">
 
 			<!-- scene -->
-			<div class="scene cards">
+			<div class="scene cardscene">
 
 				<!-- shape -->
 				<div class="shape card spin" onclick="$(this).toggleClass('flipped');">
+
+					<!-- face -->
 					<div class="face front">
 						<label>front</label>
 					</div>
+					<!-- /face -->
+
+					<!-- face -->
 					<div class="face back">
 						<label>back</label>
 					</div>
+					<!-- /face -->
+
 				</div>
 				<!-- /shape -->
 
@@ -43,43 +50,81 @@
 			<!-- /scene -->
 
 			<!-- scene -->
-			<div class="scene cubes">
+			<div class="scene cubescene">
 
 				<!-- shape -->
 				<div class="shape cube show-spin">
+
+					<!-- face -->
 					<div class="face front">
 						<label>front</label>
 					</div>
+					<!-- /face -->
+
+					<!-- face -->
 					<div class="face back">
 						<label>back</label>
 					</div>
+					<!-- /face -->
+
+					<!-- face -->
 					<div class="face right">
 						<label>right</label>
 					</div>
+					<!-- /face -->
+
+					<!-- face -->
 					<div class="face left">
 						<label>left</label>
 					</div>
+					<!-- /face -->
+
+					<!-- face -->
 					<div class="face top">
 						<label>top</label>
 					</div>
+					<!-- /face -->
+
+					<!-- face -->
 					<div class="face bottom">
 						<label>bottom</label>
 					</div>
+					<!-- /face -->
+
 				</div>
 				<!-- /shape -->
 
-				<div class="selectBox" style="">
-					<input type="radio" name="sideToShow" value="spin" id="spin" checked><label for="spin">spin</label>
+				<div class="showcontroller">
+
+					<input type="radio" name="showside" value="spin" id="spin" checked>
+					<label for="spin">spin</label>
+					
 					<br/>
-					<input type="radio" name="sideToShow" value="top" id="top"><label for="top">top</label>
+
+					<input type="radio" name="showside" value="top" id="top">
+					<label for="top">top</label>
+					
 					<br/>
-					<input type="radio" name="sideToShow" value="left" id="left"><label for="left">left</label>
-					<input type="radio" name="sideToShow" value="front" id="front"><label for="front">front</label>
-					<input type="radio" name="sideToShow" value="right" id="right"><label for="right">right</label>
+
+					<input type="radio" name="showside" value="left" id="left">
+					<label for="left">left</label>
+					
+					<input type="radio" name="showside" value="front" id="front">
+					<label for="front">front</label>
+					
+					<input type="radio" name="showside" value="right" id="right">
+					<label for="right">right</label>
+					
 					<br/>
-					<input type="radio" name="sideToShow" value="bottom" id="bottom"><label for="bottom">bottom</label>
+
+					<input type="radio" name="showside" value="bottom" id="bottom">
+					<label for="bottom">bottom</label>
+					
 					<br/>
-					<input type="radio" name="sideToShow" value="back" id="back"><label for="back">back</label>
+
+					<input type="radio" name="showside" value="back" id="back">
+					<label for="back">back</label>
+
 				</div>
 
 			</div>
