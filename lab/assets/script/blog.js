@@ -135,6 +135,8 @@ function loadBlog() {
 
 	// Load featured posts. 
 	function loadFeaturedPosts() {
+
+		// Check if loading featured posts. 
 		if(!featuredpostsdestinationA || !featuredpostsdestinationB) {
 			console.log('No featured posts...');
 			return;
@@ -158,6 +160,8 @@ function loadBlog() {
 	
 	// Load collection posts. 
 	function loadCollectionPosts() {
+
+		// Check if loading collection posts. 
 		if(!collectionPostsDestination) {
 			console.log('No collection posts...');
 			return;
@@ -177,25 +181,31 @@ function loadBlog() {
 		// Add layout to blog section. 
 		collectionPostsDestination.innerHTML = collectionPostsLayout;
 
-		// 
+		/****/
 
-		// 
+		// Flatten 3d data matrix into 2d data list. 
 		function flatten(datamatrix) {
-			// 
+
+			// Initialize result. 
 			let result = [];
-			// 
+
+			// Accumulate result. 
 			for(let datalist of datamatrix) {
+				// result = result.concat(datalist);
 				for(let datapoint of datalist) {
 					result.push(datapoint);
 				}
 			}
-			// 
+
+			// Return result. 
 			return result;
 		}
 	}
 	
 	// Load category posts. 
 	function loadCategoryPosts() {
+
+		// Check if loading category posts. 
 		if(!categoryPostsDestination) {
 			console.log('No category posts...');
 			return;
@@ -215,8 +225,10 @@ function loadBlog() {
 	
 	// Load archive posts. 
 	function loadArchivePosts() {
+
+		// Check if loading archive posts. 
 		if(!archivePostsDestination) {
-			console.log('No archive posts...');
+			console.log('Bypass archive posts...');
 			return;
 		}
 		console.log('Loading archive posts...');

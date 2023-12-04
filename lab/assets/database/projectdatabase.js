@@ -36,722 +36,11 @@ const featuredProjectIds = {
 // console.log('Featured project ids:',featuredProjectIds);
 
 
-// Define new project data. 
-const newProjectData = [
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'affirm',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'agency',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'article',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'atm',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'autocomplete',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'battlerap',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'bloglist',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'box',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'bs5',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'buy',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'calendar2',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'carousel',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'chooser-old',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'code',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'cognitivebias',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'colorpicker2',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'copyright',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'course',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'covid',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'cv',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'dashboard',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'db',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'decision',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'deck',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'depth',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'dollar',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'dragndroplist',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'editor',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'education',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'ezdev',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'family',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'form',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'formvalidation',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'funnel',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'gametapes',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'glow',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'gooey',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'gradient',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'grocery2',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'guess',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'hourglass',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'imagefilter',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'jay',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'keygenius',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'kumba',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'lab',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'levels',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'login1',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'login2',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'logo',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'medialibrary',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'mentalmodels',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'mousetrail',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'navbar',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'news',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'notepad',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'notes',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'notesquares',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'online',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'pageslider',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'personality',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'pgi',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'phonecall',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'portfolio',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'portfolio1',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'prime',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'prototype',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'rating2',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'regexp',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'relativelink',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'resume2',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'robinhood',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'scale3d',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'scroller',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'searchbar',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'select',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'shape',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'sidenav',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'sliderboard',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'spades',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'storybrand',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'student',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'svsu',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'tabs',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'tabs3d',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'tagboard',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'taxes',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'team',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'template',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'toast',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'todo',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'topnav',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'travisscott',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'urlparams2',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'video2',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'vidbg2',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'vsl',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'wts',
-		projectname:'[Project Name Here]',
-	},
-	
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'wts0',
-		projectname:'[Project Name Here]',
-	},
-
-	{
-		created:'xyz',
-		authorid:'twd',
-		projectid:'wts2',
-		projectname:'[Project Name Here]',
-	},
-	
-	
-
-	
-
-];
-
-
 // Define project data. 
 const projectData = [
 	
 	
 	// {
-	// 	created:'xyz',
 	// 	authorid:'twd',
 	// 	projectid:'projectid',
 	// 	projectname:'[Project Name Here]',
@@ -767,7 +56,6 @@ const projectData = [
 		projectid:'accordion2',
 		projectname:'Sliding Accordion',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'adepa',
 		projectname:'Adepa Organization',
@@ -780,7 +68,6 @@ const projectData = [
 		projectid:'admin2',
 		projectname:'Admin Dashboard',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'affiliate',
 		projectname:'Affiliate Blog',
@@ -858,6 +145,10 @@ const projectData = [
 		authorid:'twd',
 		projectid:'blog',
 		projectname:'Sample Blog Site',
+	},{
+		authorid:'twd',
+		projectid:'bloglist',
+		projectname:'Sample Blog List',
 	},{
 		authorid:'twd',
 		projectid:'blogsocial',
@@ -950,7 +241,7 @@ const projectData = [
 		projectname:'Carnell Tate',
 	},{
 		authorid:'twd',
-		projectid:'carousel3d',
+		projectid:'3dcarousel',
 		projectname:'Slide Carousel (3D)',
 	},{
 		authorid:'twd',
@@ -969,7 +260,6 @@ const projectData = [
 		projectid:'chat',
 		projectname:'Chat Messenger',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'chatpopup',
 		projectname:'Chat Popup',
@@ -1066,7 +356,6 @@ const projectData = [
 		projectid:'crm',
 		projectname:'Sales Manager',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'cruchcalhoun',
 		projectname:'Cruch Calhoun',
@@ -1139,7 +428,6 @@ const projectData = [
 		projectid:'enter',
 		projectname:'Action on Enter',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'escapebrand',
 		projectname:'Fire Escape Brand',
@@ -1212,6 +500,10 @@ const projectData = [
 		projectid:'goodz',
 		projectname:'Slick Talk Cologne',
 	},{
+		authorid:'w3',
+		projectid:'gradient',
+		projectname:'Scrolling Gradient',
+	},{
 		authorid:'codepen',
 		projectid:'graph',
 		projectname:'Bar Graph',
@@ -1237,6 +529,10 @@ const projectData = [
 		authorid:'w3s',
 		projectid:'hero2',
 		projectname:'Sample Hero Page',
+	},{
+		authorid:'twd',
+		projectid:'herotrack',
+		projectname:'Pointer Track Hero',
 	},{
 		authorid:'twd',
 		projectid:'hexagon',
@@ -1300,7 +596,6 @@ const projectData = [
 		projectid:'keypress',
 		projectname:'Key Press',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'koan',
 		projectname:'Koan Enterprise',
@@ -1492,12 +787,20 @@ const projectData = [
 		projectname:'Pokeball',
 	},{
 		authorid:'twd',
+		projectid:'pong',
+		projectname:'Awesome Pong',
+	},{
+		authorid:'twd',
 		projectid:'popup',
 		projectname:'Popup',
 	},{
 		authorid:'twd',
-		projectid:'pong',
-		projectname:'Awesome Pong',
+		projectid:'portfolio',
+		projectname:'Portfolio Sample',
+	},{
+		authorid:'twd',
+		projectid:'portfolio0',
+		projectname:'Feaux Portfolio',
 	},{
 		authorid:'twd',
 		projectid:'postercircle',
@@ -1519,14 +822,12 @@ const projectData = [
 		projectid:'progressbar',
 		projectname:'Progress Bars',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'projectlistchecker',
 		projectname:'Project List Checker',
 	},
 
 	{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'quiz',
 		projectname:'Quiz',
@@ -1567,7 +868,10 @@ const projectData = [
 		projectid:'scrollsnap',
 		projectname:'Scroll Snap',
 	},{
-		created:'xyz',
+		authorid:'twd',
+		projectid:'searchbar',
+		projectname:'Responsive Search Bar',
+	},{
 		authorid:'twd',
 		projectid:'sermons',
 		projectname:'Church Sermons',
@@ -1595,6 +899,10 @@ const projectData = [
 		authorid:'twd',
 		projectid:'slideshow2',
 		projectname:'Simple Slideshow',
+	},{
+		authorid:'twd',
+		projectid:'smartphone',
+		projectname:'Smartphone',
 	},{
 		authorid:'twd',
 		projectid:'smoothscroll',
@@ -1670,7 +978,6 @@ const projectData = [
 		projectid:'tags',
 		projectname:'Tag Typer',
 	},{
-		created:'xyz',
 		authorid:'twd',
 		projectid:'tagscroller',
 		projectname:'Tag Scroller',
@@ -1878,10 +1185,6 @@ const projectData = [
 		projectname:'360 Finance',
 	},{
 		authorid:'twd',
-		projectid:'3d',
-		projectname:'3D Simulator',
-	},{
-		authorid:'twd',
 		projectid:'3dbox',
 		projectname:'Pulsating 3D Box',
 	},{
@@ -1896,6 +1199,10 @@ const projectData = [
 		authorid:'twd',
 		projectid:'3dshape',
 		projectname:'3D Rotating Shapes',
+	},{
+		authorid:'twd',
+		projectid:'3dsimulator',
+		projectname:'3D Simulator',
 	},{
 		authorid:'twd',
 		projectid:'3dtrifold',
@@ -1951,9 +1258,383 @@ const projectData = [
 	
 	
 ];
-console.log('Projects:',projectData);
-// projectData = projectData.concat(newProjectData);
 // console.log('Projects:',projectData);
+
+
+// Define new project data. 
+const newProjectData = [
+	{
+		authorid:'twd',
+		projectid:'affirm',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'agency',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'article',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'atm',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'autocomplete',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'battlerap',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'box',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'bs5',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'calendar2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'carousel',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'chooser-old',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'code',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'cognitivebias',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'colorpicker2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'copyright',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'course',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'covid',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'cv',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'dashboard',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'db',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'decision',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'deck',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'depth',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'dollar',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'dragndroplist',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'editor',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'education',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'ezdev',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'family',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'form',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'formvalidation',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'funnel',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'gametapes',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'glow',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'gooey',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'gradient',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'grocery2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'guess',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'hourglass',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'imagefilter',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'jay',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'keygenius',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'kumba',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'lab',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'levels',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'login1',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'login2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'logo',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'medialibrary',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'mentalmodels',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'mousetrail',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'navbar',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'news',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'notepad',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'notes',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'notesquares',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'online',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'pageslider',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'personality',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'pgi',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'prime',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'prototype',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'rating2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'regexp',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'resume2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'robinhood',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'scale3d',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'scroller',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'select',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'shape',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'sidenav',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'sliderboard',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'spades',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'storybrand',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'student',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'svsu',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'tabs',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'tabs3d',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'tagboard',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'team',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'template',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'toast',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'todo',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'topnav',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'travisscott',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'urlparams2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'video2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'vidbg2',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'vsl',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'wts',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'wts0',
+		projectname:'[Project Name Here]',
+	},{
+		authorid:'twd',
+		projectid:'wts2',
+		projectname:'[Project Name Here]',
+	},
+];
+// projectData = projectData.concat(newProjectData);
+// console.log('New projects:',newProjectData);
 
 
 /*****/

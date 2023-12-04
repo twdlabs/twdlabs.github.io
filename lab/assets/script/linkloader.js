@@ -10,6 +10,9 @@ const headnavlistdestinationA = document.querySelector('div#container header.nav
 // console.log('headnavlistdestinationA:',headnavlistdestinationA);
 const headnavlistdestinationB = document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.b ul.navlist');
 // console.log('headnavlistdestinationB:',headnavlistdestinationB);
+// Get list destinations for footer navigation. 
+const footnavlistdestination = document.querySelector('div#container footer.footer div.grid div.linkline ul.navlist');
+// console.log('footnavlistdestination:',footnavlistdestination);
 
 
 /*****/
@@ -26,7 +29,7 @@ activateSidebar();
 
 
 // Create navigation item. 
-function createNavLink(url,caption,icontag,newwindowmode,relativeurl) {
+function createNavLink(url,caption,icontag,usenewwindow,userelativeurl) {
 
 	// Compile layout for navigation item. 
 	return `
@@ -34,7 +37,7 @@ function createNavLink(url,caption,icontag,newwindowmode,relativeurl) {
 	<li class="navitem">
 	
 		<!-- navlink -->
-		<a class="navlink" href="${ relativeurl ? getRelativeUrl(url) : url }" title="${caption}" ${ newwindowmode ? 'target="_blank"' : '' }>
+		<a class="navlink" href="${ userelativeurl ? getRelativeUrl(url) : url }" title="${caption}" ${ usenewwindow ? 'target="_blank"' : '' }>
 
 			${ icontag ? createIcon(icontag) : '' }
 
@@ -63,19 +66,22 @@ function createNavLink(url,caption,icontag,newwindowmode,relativeurl) {
 	}
 }
 
-// Load navigation links in header. 
+// Load navigation links. 
 function loadNavLinks() {
 
-	// Add page links to social. 
-	headnavlistdestinationA.innerHTML = createLinkList(navLinkData.groupitemsidlist,true,true);
+	// Add page links in header. 
+	headnavlistdestinationA.innerHTML = createLinkList(linkData['nav']['groupitems'],true,true) + createLinkList(linkData['foot']['groupitems'],true,true);
 
-	// Add social links to social. 
-	headnavlistdestinationB.innerHTML = createLinkList(socialLinkData.groupitemsidlist,true,false);
+	// Add social links in header. 
+	headnavlistdestinationB.innerHTML = createLinkList(linkData['social']['groupitems'],true,false);
+
+	// Add page links in footer. 
+	footnavlistdestination.innerHTML = createLinkList(linkData['foot']['groupitems'],true,true);
 
 	/****/
 
 	// Create layout for list of navigation links. 
-	function createLinkList(linklist,newwindowmode,relativeurl) {
+	function createLinkList(linklist,usenewwindow,userelativeurl) {
 
 		// Initialize list of items. 
 		let list = '';
@@ -93,7 +99,7 @@ function loadNavLinks() {
 			let icontag = link.icontag;
 
 			// Compile navigation item. 
-			list += createNavLink(url,caption,icontag,newwindowmode,relativeurl);
+			list += createNavLink(url,caption,icontag,usenewwindow,userelativeurl);
 		}
 
 		// Return list of items. 

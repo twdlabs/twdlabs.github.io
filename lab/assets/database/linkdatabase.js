@@ -2,53 +2,117 @@
 
 
 // Define navigation link data. 
-const navLinkData = {
-	groupname:'Links',
-	groupitemsidlist:[
-		{
-			// icontag:'door',
-			icontag:'house',
-			linkurl:'./',
-			linkname:'Home',
-		},
-		// {
-		// 	icontag:'profile',
-		// 	linkurl:'./about',
-		// 	linkname:'About',
-		// },
-		{
-			icontag:'list',
-			linkurl:'./projects',
-			linkname:'Projects',
-		},
-		// {
-		// 	icontag:'xyz',
-		// 	linkurl:'javascript:void(0)',
-		// 	linkname:'Services',
-		// },
-		// {
-		// 	icontag:'money',
-		// 	linkurl:'./donate',
-		// 	linkname:'Donate',
-		// },
-		// {
-		// 	icontag:'envelope',
-		// 	linkurl:'./contact',
-		// 	linkname:'Contact',
-		// },
-		{
-			icontag:'hierarchy',
-			linkurl:'./sitemap',
-			linkname:'Site Map',
-		},
-		// {
-		// 	icontag:'xyz',
-		// 	linkurl:'javascript:void(0)',
-		// 	linkname:'Link',
-		// },
-	],
+const linkData = {
+
+	// Define navigation link data. 
+	nav:{
+		groupname:'Links',
+		groupitems:[
+			{
+				// icontag:'door',
+				icontag:'house',
+				linkurl:'./',
+				linkname:'Home',
+			},
+			// {
+			// 	icontag:'profile',
+			// 	linkurl:'./about',
+			// 	linkname:'About',
+			// },
+			{
+				icontag:'list',
+				linkurl:'./projects',
+				linkname:'Projects',
+			},
+			{
+				icontag:'magnet',
+				linkurl:'./magnet',
+				linkname:'Magnet',
+			},
+			// {
+			// 	icontag:'xyz',
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'Services',
+			// },
+			{
+				icontag:'backpack',
+				linkurl:'./donate',
+				linkname:'Donate',
+			},
+			// {
+			// 	icontag:'envelope',
+			// 	linkurl:'./contact',
+			// 	linkname:'Contact',
+			// },
+			// {
+			// 	icontag:'xyz',
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'Link',
+			// },
+		],
+	},
+
+	// Define social link data. 
+	social:{
+		groupname:'Community',
+		groupitems:[
+			{
+				icontag:'twitter',
+				linkurl:'javascript:void(0)',
+				linkname:'Twitter',
+			},
+			{
+				icontag:'instagram',
+				linkurl:'https://www.instagram.com/titusgzz/',
+				linkname:'Instagram',
+			},
+			{
+				icontag:'github',
+				linkurl:'https://github.com/twdlabs/twdlabs.github.io',
+				linkname:'GitHub',
+			},
+			{
+				icontag:'linkedin',
+				linkurl:'https://www.linkedin.com/in/alextg/',
+				linkname:'LinkedIn',
+			},
+			{
+				icontag:'envelope',
+				linkurl:'mailto:tituswebdev+lab@gmail.com',
+				linkname:'Email',
+			},
+			// {
+			// 	icontag:'xyz',
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'Link',
+			// },
+		],
+	},
+
+	// Define navigation link data. 
+	foot:{
+		groupname:'Community',
+		groupitems:[
+			{
+				icontag:'hierarchy',
+				linkurl:'./sitemap',
+				linkname:'Site Map',
+			},
+			{
+				icontag:'translate',
+				linkurl:'./language',
+				linkurl:'javascript:void(0)',
+				linkname:'Language',
+			},
+			// {
+			// 	icontag:'xyz',
+			// 	linkurl:'javascript:void(0)',
+			// 	linkname:'Link',
+			// },
+		],
+	},
 };
-// console.log('Navigation link data:',navLinkData);
+// console.log('Navigation link data:',linkData);
 
 
 // Define data for development tools and methods. 
@@ -104,42 +168,3 @@ const methodData = [
 	
 ];
 // console.log('Method data:',methodData);
-
-
-// Define social link data. 
-const socialLinkData = {
-	groupname:'Community',
-	groupitemsidlist:[
-		{
-			icontag:'twitter',
-			linkurl:'javascript:void(0)',
-			linkname:'Twitter',
-		},
-		{
-			icontag:'instagram',
-			linkurl:'https://www.instagram.com/titusgzz/',
-			linkname:'Instagram',
-		},
-		{
-			icontag:'github',
-			linkurl:'https://github.com/twdlabs/twdlabs.github.io',
-			linkname:'GitHub',
-		},
-		{
-			icontag:'linkedin',
-			linkurl:'https://www.linkedin.com/in/alextg/',
-			linkname:'LinkedIn',
-		},
-		{
-			icontag:'envelope',
-			linkurl:'mailto:tituswebdev+lab@gmail.com',
-			linkname:'Email',
-		},
-		// {
-		// 	icontag:'xyz',
-		// 	linkurl:'javascript:void(0)',
-		// 	linkname:'Link',
-		// },
-	],
-};
-// console.log('Social link data:',socialLinkData);
