@@ -430,7 +430,7 @@ function loadBlog() {
 function toggleFilterFields() {
 
 	// Get filter tabs section. 
-	let filtertabs = document.querySelector('div#container section.blog div.grid div.body div.filtertabs');
+	const filtertabs = document.querySelector('div#container section.blog div.grid div.body div.filtertabs');
 
 	// Toggle filter tabs section. 
 	filtertabs.classList.toggle('active');

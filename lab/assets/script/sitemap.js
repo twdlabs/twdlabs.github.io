@@ -1,17 +1,17 @@
 
 
 
+// Get destination for matrix of project links on site map page. 
+const pageprojectmatrixdestination = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.projects');
+// console.log('pageprojectmatrixdestination:',pageprojectmatrixdestination);
+
 // Get destination for matrix of group links in footer. 
-const groupmatrixfooterdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
-// console.log('groupmatrixfooterdestination:',groupmatrixfooterdestination);
+const footergroupmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
+// console.log('footergroupmatrixdestination:',footergroupmatrixdestination);
 
 // Get destination for matrix of project links in footer. 
-const projectmatrixfooterdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects');
-// console.log('projectmatrixfooterdestination:',projectmatrixfooterdestination);
-
-// Get destination for matrix of project links on site map page. 
-const projectmatrixpagedestination = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.projects');
-// console.log('projectmatrixpagedestination:',projectmatrixpagedestination);
+const footerprojectmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects');
+// console.log('footerprojectmatrixdestination:',footerprojectmatrixdestination);
 
 
 /*****/
@@ -38,12 +38,12 @@ function loadSiteMap() {
 	// console.log('projectmatrixlayout:',projectmatrixlayout);
 
 	// Add layout for project matrix to site map page. 
-	if(projectmatrixpagedestination) projectmatrixpagedestination.innerHTML = projectmatrixlayout;
+	if(pageprojectmatrixdestination) pageprojectmatrixdestination.innerHTML = projectmatrixlayout;
 
 	// Add layout for group matrix to footer. 
-	if(groupmatrixfooterdestination) groupmatrixfooterdestination.innerHTML = groupmatrixlayout;
+	if(footergroupmatrixdestination) footergroupmatrixdestination.innerHTML = groupmatrixlayout;
 	// Add layout for project matrix to footer. 
-	if(projectmatrixfooterdestination) projectmatrixfooterdestination.innerHTML = projectmatrixlayout;
+	if(footerprojectmatrixdestination) footerprojectmatrixdestination.innerHTML = projectmatrixlayout;
 
 	/****/
 
@@ -125,25 +125,25 @@ function loadSiteMap() {
 				// Accumulate layout for project list. 
 				for(let itemid of itemidlist) {
 	
-					// Get data item for current project. 
-					let project = getItemById(itemid);
-					if(!project) console.debug('\tProject absent from database:',itemid);
+					// Get data item for current item (i.e. group, project). 
+					let item = getItemById(itemid);
+					if(!item) console.debug('\tItem absent from database:',itemid);
 	
-					// Get url for current project. 
+					// Get url for current item (i.e. group, project). 
 					let url = `${urlprefix}${itemid}`;
 					// console.log('\turl:',url);
 		
-					// Get caption for current project. 
-					let caption = project ? project[namekey] : `* ${itemid}`;
-					// let caption = project ? project['groupname'] : itemid;
-					// let caption = project ? project['projectname'] : itemid;
+					// Get caption for current item (i.e. group, project). 
+					let caption = item ? item[namekey] : `⋅ ${itemid} ⋅`;
+					// let caption = item ? item['groupname'] : itemid;
+					// let caption = item ? item['projectname'] : itemid;
 					// console.log('\tcaption:',caption);
 		
-					// Get icon tag for current project. 
-					let icontag = project ? project['icontag'] : '';
+					// Get icon tag for current item (i.e. group, project). 
+					let icontag = item ? item['icontag'] : '';
 					// console.log('\ticontag:',icontag);
 	
-					// Compile navigation item. 
+					// Compile navigation link for current item. 
 					projectgrouplayout += createNavLink(url,caption,icontag,true,true);
 				}
 	

@@ -234,6 +234,7 @@ div#container footer.footer div.grid {grid-template-columns:repeat(6,1fr); grid-
 /* Footer: Brand */
 div#container footer.footer div.grid div.brand {grid-area:brand;}
 div#container footer.footer div.grid div.brand {display:grid; grid-template-columns:auto 1fr; grid-template-rows:auto 1fr; grid-template-areas:'logo head''logo textcopy'; grid-gap:0 1rem;}
+div#container footer.footer div.grid div.brand {margin-right:5rem;}
 /* div#container footer.footer div.grid div.brand {display:flex; flex-direction:column; align-items:flex-start;} */
 div#container footer.footer div.grid div.brand {margin-top:var(--sectionspacing); margin-top:3rem; margin-right:2rem; margin-top:2rem;}
 div#container footer.footer div.grid div.brand h1.head {grid-area:head;}
@@ -247,6 +248,8 @@ div#container footer.footer div.grid div.brand p.textcopy {color:var(--forecolor
 div#container footer.footer div.grid div.linkline {grid-area:linkline;}
 div#container footer.footer div.grid div.linkline ul.navlist {display:flex; flex-direction:row; justify-content:center;}
 div#container footer.footer div.grid div.linkline ul.navlist {list-style:none; padding:0; margin:0; margin-top:2rem;}
+div#container footer.footer div.grid div.linkline ul.navlist span.space {margin:0 .5rem;}
+div#container footer.footer div.grid div.linkline ul.navlist span.space::after {content:'|';}
 div#container footer.footer div.grid div.linkline ul.navlist li.navitem {margin:0 .375rem;}
 /* div#container footer.footer div.grid div.linkline ul.navlist li.navitem::after {content:'|';} */
 div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink {display:inline-flex; align-items:center;}
@@ -256,8 +259,12 @@ div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlin
 /* div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink span.caption {} */
 
 /* Footer: Link Matrix */
+/* div#container footer.footer div.grid div.linkmatrix {} */
 div#container footer.footer div.grid div.linkmatrix.groups {grid-area:groups;}
 div#container footer.footer div.grid div.linkmatrix.projects {display:none; grid-area:projects;}
+/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
+/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {margin-top:1.5rem;} */
+div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem {margin-top:.75rem;}
 
 
 
@@ -302,7 +309,7 @@ div#container footer.footer div.grid div.linkmatrix.projects {display:none; grid
 
 	/* Footer: Brand */
 	/* div#container footer.footer div.grid div.brand {} */
-	div#container footer.footer div.grid div.brand {margin-right:5rem;}
+	div#container footer.footer div.grid div.brand {margin-right:3rem;}
 
 	/* Footer: Link Line */
 
@@ -356,7 +363,7 @@ div#container footer.footer div.grid div.linkmatrix.projects {display:none; grid
 }
 
 /* Small Tablet Screen */
-@media screen and (max-width:64rem) {
+@media screen and (max-width:72rem) {
 	
 	/* Navbar */
 	div#container header.navbar {/* position:relative; */ padding:.75rem 2rem;}
@@ -431,6 +438,8 @@ div#container footer.footer div.grid div.linkmatrix.projects {display:none; grid
 
 	/* Footer: Link Matrix */
 	div#container footer.footer div.grid div.linkmatrix {margin-top:4rem;}
+}
+@media screen and (max-width:64rem) {
 }
 
 /* Big Smartphone Screen */

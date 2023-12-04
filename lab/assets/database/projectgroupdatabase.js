@@ -17,9 +17,9 @@ const projectGroupData = [
 
 	{
 		groupid:'cl',
-		groupname:'CSS Lessons',
+		groupname:'CSS Examples',
 		groupicontag:'paintpalette',
-		groupdescription:'Practice in design and animation using cascading style sheets',
+		groupdescription:'Various concepts and tools to facilitate design process using design seeds and animations in cascading style sheets',
 		groupitemsidlist:[
 			'anime',
 			'aspectratio',
@@ -49,17 +49,21 @@ const projectGroupData = [
 	},
 	{
 		groupid:'fl',
-		groupname:'Front-end Lessons',
-		groupicontag:'gear',
-		groupdescription:'Local client-side functionality using JavaScript',
+		groupname:'Front-end Tools',
+		groupicontag:'paintbrush',
+		groupicontag:'tools',
+		groupdescription:'Tools on the local client-side to facilitate design and development process using JavaScript',
 		groupitemsidlist:[
 			'audio',
+			'bubblesort',
 			'colorpicker',
 			'cookie',
+			'coordinates',
 			'enter',
 			'event',
 			'filter',
 			'keypress',
+			'projectlistchecker',
 			'sort',
 			'storage',
 			'syntax',
@@ -68,9 +72,9 @@ const projectGroupData = [
 	},
 	{
 		groupid:'bl',
-		groupname:'Back-end Lessons',
-		groupicontag:'paintbrush',
-		groupdescription:'Dynamic server-side functionality using XML, HTTP, JSON, APIs',
+		groupname:'Back-end Tools',
+		groupicontag:'gear',
+		groupdescription:'Tools on the dynamic server-side to facilitate design and development process using XML, HTTP, JSON, APIs',
 		groupitemsidlist:[
 			'json',
 			'xhr',
@@ -80,7 +84,7 @@ const projectGroupData = [
 		groupid:'3d',
 		groupname:'3D Widgets',
 		groupicontag:'dpad',
-		groupdescription:'Web components exploring three-dimensional capabilities',
+		groupdescription:'Web components and tools exploring three-dimensional capabilities',
 		groupitemsidlist:[
 			'3dbox',
 			'3dcard',
@@ -107,6 +111,7 @@ const projectGroupData = [
 			'3dshape',
 			'solarsystem',
 			'sphere',
+			'vanilla',
 			'wavyloader',
 			'zbar',
 		],
@@ -114,9 +119,9 @@ const projectGroupData = [
 
 	{
 		groupid:'aw',
-		groupname:'App Widgets',
+		groupname:'General App Widgets',
 		groupicontag:'app',
-		groupdescription:'Various tools and widgets to enhance app design and functionality',
+		groupdescription:'Web components and tools developed to enhance app design and functionality',
 		groupitemsidlist:[
 			'accordion',
 			'accordion2',
@@ -146,6 +151,7 @@ const projectGroupData = [
 			'login',
 			'overlay',
 			'pagination',
+			'popup',
 			'progressbar',
 			'rating',
 			'rolodex',
@@ -154,6 +160,7 @@ const projectGroupData = [
 			'stepprogress',
 			'switcher',
 			'tags',
+			'tagscroller',
 			'tagslider',
 			'tasks',
 			'throttle',
@@ -176,7 +183,7 @@ const projectGroupData = [
 		groupid:'cw',
 		groupname:'Commerce Widgets',
 		groupicontag:'money',
-		groupdescription:'Web components to support ecommerce web development',
+		groupdescription:'Web components and tools developed to support ecommerce process',
 		groupitemsidlist:[
 			'admin',
 			'admin2',
@@ -196,10 +203,24 @@ const projectGroupData = [
 		],
 	},
 	{
+		groupid:'sw',
+		groupname:'Communication Widgets',
+		groupicontag:'people',
+		groupdescription:'Web components and tools developed for social media sharing and social communication',
+		groupitemsidlist:[
+			'bloglist',
+			'chatpopup',
+			'message',
+			'share',
+			'socialbtns',
+			'socialmedia',
+		],
+	},
+	{
 		groupid:'gw',
 		groupname:'Game Widgets',
 		groupicontag:'joystick',
-		groupdescription:'Web components for use in game design and game development',
+		groupdescription:'Web components and tools developed for use in game design and game development',
 		groupitemsidlist:[
 			'animation',
 			'chess',
@@ -226,7 +247,7 @@ const projectGroupData = [
 		groupid:'mw',
 		groupname:'Media Widgets',
 		groupicontag:'mediacollection',
-		groupdescription:'Seamless presentations for various forms of communication media',
+		groupdescription:'Web components and tools developed for seamless presentations of various communication media',
 		groupitemsidlist:[
 			'autoslideshow',
 			'desktop',
@@ -248,7 +269,7 @@ const projectGroupData = [
 		groupicontag:'dropmenu',
 		groupname:'Navigation Widgets',
 		groupicontag:'signpost',
-		groupdescription:'Web components and tools to facilitate smooth web navigation',
+		groupdescription:'Web components and tools developed to facilitate smooth navigation bewteen pages',
 		groupitemsidlist:[
 			'3dnav',
 			'backToTop',
@@ -260,20 +281,9 @@ const projectGroupData = [
 			'megamenu',
 			'multimenu',
 			'navcircle',
+			'navorbit',
+			'searchbar',
 			'spinner',
-		],
-	},
-	{
-		groupid:'sw',
-		groupname:'Social Widgets',
-		groupicontag:'people',
-		groupdescription:'Web components and tools for social media sharing and profile links',
-		groupitemsidlist:[
-			'bloglist',
-			'message',
-			'share',
-			'socialbtns',
-			'socialmedia',
 		],
 	},
 	
@@ -281,7 +291,7 @@ const projectGroupData = [
 		groupid:'dc',
 		groupname:'Design Seeds',
 		groupicontag:'tv',
-		groupdescription:'Various design ideas for arranging apps and landing pages',
+		groupdescription:'Various design ideas for visual arrangement of applications and landing pages',
 		groupitemsidlist:[
 			'10000cards',
 			'angeldemon',
@@ -289,6 +299,7 @@ const projectGroupData = [
 			'application',
 			'band',
 			'bodyshop',
+			'bst',
 			'calc',
 			'clubhouse',
 			'comingsoon',
@@ -310,10 +321,12 @@ const projectGroupData = [
 			'periodictable',
 			'retool',
 			'skills',
+			'sky',
 			'theme',
 			'theme1',
 			'theme2',
 			'travel',
+			'trig',
 			'tropicalghana',
 			'voisey',
 			'wave',
@@ -321,20 +334,10 @@ const projectGroupData = [
 		],
 	},
 	{
-		groupid:'dt',
-		groupname:'Dev Tools',
-		groupicontag:'tools',
-		groupdescription:'Various tools to facilitate web design and development process',
-		groupitemsidlist:[
-			'coordinates',
-			'projectlistchecker',
-		],
-	},
-	{
 		groupid:'ap',
 		groupname:'App Prototypes',
 		groupicontag:'smartphone',
-		groupdescription:'Seeds of potential stand-alone applications and websites',
+		groupdescription:'Design seeds developed for future potential stand-alone applications and websites',
 		groupitemsidlist:[
 			'bizmath',
 			'blogsocial',
@@ -355,6 +358,8 @@ const projectGroupData = [
 			'musicplaylist',
 			'pinyin',
 			'podcast',
+			'quiz',
+			'smartphone',
 			'typetest',
 			'waves',
 		],
@@ -363,7 +368,7 @@ const projectGroupData = [
 		groupid:'ld',
 		groupname:'Legacy Dashboards',
 		groupicontag:'oldpc',
-		groupdescription:'Old dashboard projects and design ideas from various apps and websites',
+		groupdescription:'Remainder of original dashboard projects and various design ideas from apps and websites',
 		groupitemsidlist:[
 			'atg',
 			'cis255',
@@ -385,7 +390,7 @@ const projectGroupData = [
 		groupid:'cp',
 		groupname:'Client Projects',
 		groupicontag:'receipt',
-		groupdescription:'Website projects completed for various clients',
+		groupdescription:'Projects for websites and applications developed for various clients',
 		groupitemsidlist:[
 			'adepa',
 			'affiliate',
@@ -400,6 +405,8 @@ const projectGroupData = [
 			'escapebrand',
 			'goodz',
 			'koan',
+			'portfolio',
+			'portfolio0',
 			'resume',
 			'sermons',
 			'smosa',
@@ -411,23 +418,31 @@ const projectGroupData = [
 			'360finance',
 		],
 	},
+	// {
+	// 	groupid:'xyz',
+	// 	groupname:'Xyz Group',
+	// 	groupicontag:'xyz',
+	// 	groupdescription:'',
+	// 	groupitemsidlist:[
+	// 	],
+	// },
 
 	{
 		groupid:'orphans',
-		groupname:'Misc Projects',
+		groupname:'Other Projects',
 		groupicontag:'clipboard',
-		groupdescription:'Projects not included in any other category groups',
+		groupdescription:'Various uncategorized projects that are not already included in any other groups',
 		groupitemsidlist:[
 		],
 	},
 	{
 		groupid:'missing',
-		groupname:'Missing Projects',
+		groupname:'Miscellaneous',
 		groupicontag:'clipboard',
 		groupdescription:'',
 		groupitemsidlist:[
 		],
-		ghostblock:true,
+		// ghostblock:true,
 	},
 
 ];
@@ -448,17 +463,16 @@ const projectMetaGroupData = [
 	// },
 
 	{
-		groupid:'l',
-		groupname:'Dev Lessons',
-		groupicontag:'lightbulb',
-		groupdescription:'Learning new concepts in web development',
+		groupid:'p',
+		groupname:'Project Samples',
+		groupname:'Compilations',
+		groupicontag:'smartphone',
+		groupdescription:'Project designs and outcomes for various application and website ideas',
 		groupitemsidlist:[
-			'cl',
-			'fl',
+			'cp',
+			'ap',
+			'ld',
 			'dc',
-			'bl',
-			'3d',
-			'dt',
 		],
 	},
 
@@ -468,24 +482,26 @@ const projectMetaGroupData = [
 		groupicontag:'motherboard',
 		groupdescription:'Reusable sub-components for apps, dashboards, and websites',
 		groupitemsidlist:[
-			'aw',
-			'cw',
+			'sw',
 			'gw',
 			'mw',
 			'nw',
-			'sw',
+			'cw',
+			'aw',
 		],
 	},
 
 	{
-		groupid:'p',
-		groupname:'Project Samples',
-		groupicontag:'smartphone',
-		groupdescription:'Various project designs, applications, and websites',
+		groupid:'l',
+		groupname:'Dev Examples',
+		groupicontag:'lightbulb',
+		groupdescription:'Basic tools and concepts in web / software development',
 		groupitemsidlist:[
-			'cp',
-			'ap',
-			'ld',
+			'cl',
+			'fl',
+			'bl',
+			'3d',
+			// 'xyz',
 		],
 	},
 
@@ -497,27 +513,27 @@ const projectMetaGroupData = [
 const projectGroupMatrixData = [
 	{
 		setid:'set0',
-		setlist:['cl','3d','dt','fl',],
+		setlist:['cl','fl','nw','dt',],
 	},
 	{
 		setid:'set1',
-		setlist:['aw','sw','bl',],
+		setlist:['bl','aw',],
 	},
 	{
 		setid:'set2',
-		setlist:['cw','gw','mw','nw',],
+		setlist:['cw','gw','mw','sw',],
 	},
 	{
 		setid:'set3',
-		setlist:['dc','orphans',],
+		setlist:['3d','dc',],
 	},
 	{
 		setid:'set4',
-		setlist:['ap','ld','cp',],
+		setlist:['ld','ap','cp',],
 	},
 	{
 		setid:'missing',
-		setlist:['missing',],
+		setlist:['orphans','missing',],
 	},
 ];
 // console.log('Project group sets:',projectGroupMatrixData);

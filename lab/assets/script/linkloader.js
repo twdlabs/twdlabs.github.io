@@ -37,7 +37,7 @@ function createNavLink(url,caption,icontag,usenewwindow,userelativeurl) {
 	<li class="navitem">
 	
 		<!-- navlink -->
-		<a class="navlink" href="${ userelativeurl ? getRelativeUrl(url) : url }" title="${caption}" ${ usenewwindow ? 'target="_blank"' : '' }>
+		<a class="navlink" href="${ url ? ( userelativeurl ? getRelativeUrl(url) : url ) : 'javascript:void(0)' }" title="${caption}" ${ url&&usenewwindow ? 'target="_blank"' : '' }>
 
 			${ icontag ? createIcon(icontag) : '' }
 
@@ -70,13 +70,14 @@ function createNavLink(url,caption,icontag,usenewwindow,userelativeurl) {
 function loadNavLinks() {
 
 	// Add page links in header. 
-	headnavlistdestinationA.innerHTML = createLinkList(linkData['nav']['groupitems'],true,true) + createLinkList(linkData['foot']['groupitems'],true,true);
+	headnavlistdestinationA.innerHTML = createLinkList(linkData['nav']['groupitems'],true,true) /* + createLinkList(linkData['foot']['groupitems'],true,true) */;
 
 	// Add social links in header. 
 	headnavlistdestinationB.innerHTML = createLinkList(linkData['social']['groupitems'],true,false);
 
 	// Add page links in footer. 
-	footnavlistdestination.innerHTML = createLinkList(linkData['foot']['groupitems'],true,true);
+	// let space = '<span class="space"></span>';
+	footnavlistdestination.innerHTML = /* createLinkList(linkData['nav']['groupitems'],true,true) + space + *//* createLinkList(linkData['social']['groupitems'],true,false) + space + */ createLinkList(linkData['foot']['groupitems'],true,true);
 
 	/****/
 

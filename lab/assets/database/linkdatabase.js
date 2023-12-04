@@ -1,12 +1,12 @@
 
 
 
-// Define navigation link data. 
+// Define data for navigation link data. 
 const linkData = {
 
-	// Define navigation link data. 
+	// Define data for main navigation links. 
 	nav:{
-		groupname:'Links',
+		groupname:'Site Navigation',
 		groupitems:[
 			{
 				// icontag:'door',
@@ -14,51 +14,74 @@ const linkData = {
 				linkurl:'./',
 				linkname:'Home',
 			},
-			// {
-			// 	icontag:'profile',
-			// 	linkurl:'./about',
-			// 	linkname:'About',
-			// },
-			{
-				icontag:'list',
-				linkurl:'./projects',
-				linkname:'Projects',
-			},
 			{
 				icontag:'magnet',
 				linkurl:'./magnet',
-				linkname:'Magnet',
+				linkurl:'',
+				linkname:'Free Guide',
 			},
-			// {
-			// 	icontag:'xyz',
-			// 	linkurl:'javascript:void(0)',
-			// 	linkname:'Services',
-			// },
 			{
-				icontag:'backpack',
-				linkurl:'./donate',
-				linkname:'Donate',
+				icontag:'shopwindow',
+				linkurl:'./services',
+				linkurl:'',
+				linkname:'Services',
 			},
-			// {
-			// 	icontag:'envelope',
-			// 	linkurl:'./contact',
-			// 	linkname:'Contact',
-			// },
-			// {
-			// 	icontag:'xyz',
-			// 	linkurl:'javascript:void(0)',
-			// 	linkname:'Link',
-			// },
+			{
+				icontag:'list',
+				icontag:'briefcase',
+				linkurl:'./projects',
+				linkname:'Portfolio',
+			},
+			{
+				icontag:'profile',
+				linkurl:'./about',
+				linkname:'About',
+			},
+			{
+				icontag:'chatbubble',
+				linkurl:'./blog',
+				linkurl:'',
+				linkname:'Blog',
+			},
 		],
 	},
 
-	// Define social link data. 
+	// Define data for misc navigation links. 
+	foot:{
+		groupname:'Misc Navigation',
+		groupitems:[
+			// {
+			// 	icontag:'backpack',
+			// 	linkurl:'./donate',
+			// 	linkurl:'',
+			// 	linkname:'Contributions',
+			// },
+			{
+				icontag:'translate',
+				linkurl:'./language',
+				linkurl:'',
+				linkname:'Language',
+			},
+			{
+				icontag:'hierarchy',
+				linkurl:'./sitemap',
+				linkname:'Site Map',
+			},
+			{
+				icontag:'envelope',
+				linkurl:'./contact',
+				linkname:'Support',
+			},
+		],
+	},
+
+	// Define data for social navigation links. 
 	social:{
 		groupname:'Community',
 		groupitems:[
 			{
 				icontag:'twitter',
-				linkurl:'javascript:void(0)',
+				linkurl:'',
 				linkname:'Twitter',
 			},
 			{
@@ -81,34 +104,18 @@ const linkData = {
 				linkurl:'mailto:tituswebdev+lab@gmail.com',
 				linkname:'Email',
 			},
-			// {
-			// 	icontag:'xyz',
-			// 	linkurl:'javascript:void(0)',
-			// 	linkname:'Link',
-			// },
 		],
 	},
 
-	// Define navigation link data. 
-	foot:{
-		groupname:'Community',
+	// Define xyz link data. 
+	xyz:{
+		groupname:'Xyz Navigation',
 		groupitems:[
 			{
-				icontag:'hierarchy',
-				linkurl:'./sitemap',
-				linkname:'Site Map',
+				icontag:'xyz',
+				linkurl:'',
+				linkname:'Link',
 			},
-			{
-				icontag:'translate',
-				linkurl:'./language',
-				linkurl:'javascript:void(0)',
-				linkname:'Language',
-			},
-			// {
-			// 	icontag:'xyz',
-			// 	linkurl:'javascript:void(0)',
-			// 	linkname:'Link',
-			// },
 		],
 	},
 };

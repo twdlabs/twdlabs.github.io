@@ -65,6 +65,7 @@ div#container section.blog div.grid div.body div.posts div.emptylabel {display:n
 div#container section.blog div.grid div.body div.posts div.emptylabel.on {display:block;}
 
 /* Blog Section: Filters */
+div#container section.blog div.grid div.body.split div.filtertabs {display:flex; flex-direction:row; align-items:flex-start; justify-content:space-between;}
 div#container section.blog div.grid div.body.split div.filtertabs {max-height:0; max-width:0; overflow:auto; transition:.5s;}
 div#container section.blog div.grid div.body.split div.filtertabs.active {max-height:fit-content; max-width:fit-content;}
 div#container section.blog div.grid div.body.split div.filtertabs div.filterpiece {background-color:limegreen; min-height:40rem; min-width:40rem;}

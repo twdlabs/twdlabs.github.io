@@ -14,7 +14,7 @@ div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {--f
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink:hover {background-color:var(--ltglasshovercolor); --fillcolor:whitesmoke;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {color:var(--themecolor); font-size:4rem; opacity:.875; margin-bottom:.125em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon:empty {background-color:var(--themecolor); border-radius:.375em;}
-div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {color:var(--forecolor); font-size:2rem; font-weight:bold; line-height:1.375; border-bottom:.125rem solid var(--tpthemecolor); margin:0;}
+div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {color:var(--forecolor); font-size:2rem; font-weight:bold; line-height:1.375; white-space:nowrap; border-bottom:.125rem solid var(--tpthemecolor); margin:0;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:hover {color:var(--themecolor);}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead:empty {background-color:var(--fillcolor); height:1em; width:7em; border-radius:1em;}
 div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {color:var(--forecolor2); font-size:1.5rem; font-weight:100; width:100%; margin:0; margin-top:.75rem;}
@@ -112,6 +112,7 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* Category Blocks Section */
 	/* div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
 	/* div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
+	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:1fr;}
 }
 
 /* Big Smartphone Screen */

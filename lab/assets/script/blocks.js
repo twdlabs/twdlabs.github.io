@@ -39,7 +39,7 @@ function loadMethodBlockSet() {
 	let dk = 'description';
 
 	// Add block set to page destination. 
-	methodblocksdestination.innerHTML = createBlockSet(methodData, tk,nk,dk, false);
+	methodblocksdestination.innerHTML = createBlockSet(methodData, tk,nk,dk);
 }
 
 // Load blocks for project categories. 
@@ -113,13 +113,11 @@ function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode
 	/****/
 
 	// Create layout for block item. 
-	function createBlockItem(icontag,name,description,id) {
-
-		// Set whether or not to open link in new tab. 
-		// let newwindowmode = true;
+	function createBlockItem(icontag,name,description,urlid) {
 
 		// Get link url. 
-		let linkurl = (urlprefix && id) ? getRelativeUrl(urlprefix + id) : 'javascript:void(0)';
+		let uselink = (urlprefix && urlid);
+		let linkurl = uselink ? getRelativeUrl(urlprefix + urlid) : 'javascript:void(0)';
 		// console.log('Link url:',linkurl);
 	
 		// Compile layout for block item. 
@@ -128,7 +126,7 @@ function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode
 		<li class="blockitem">
 	
 			<!-- blocklink -->
-			<a class="blocklink" href="${linkurl}" ${ newwindowmode ? 'target="_blank"' : '' }>
+			<a class="blocklink" href="${linkurl}" ${ (uselink && newwindowmode) ? 'target="_blank"' : '' }>
 	
 				<!-- icon -->
 				<svg class="icon ${ icontag }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
