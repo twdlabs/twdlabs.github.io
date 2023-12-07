@@ -30,6 +30,7 @@ const projectGroupData = [
 			'buttonpress',
 			'clearfix',
 			'cutout',
+			'diagram',
 			'flex',
 			'flexbreak',
 			'format',
@@ -236,6 +237,7 @@ const projectGroupData = [
 			'pixelart',
 			'pokeball',
 			'pong',
+			'refresh',
 			'splash',
 			'thermometer',
 			'touch',
@@ -356,6 +358,7 @@ const projectGroupData = [
 			'matrix',
 			'musicplayer',
 			'musicplaylist',
+			'notepad',
 			'pinyin',
 			'podcast',
 			'quiz',
@@ -385,6 +388,7 @@ const projectGroupData = [
 			'reast',
 			'stocks',
 		],
+		ghostblock:true,
 	},
 	{
 		groupid:'cp',
@@ -417,6 +421,7 @@ const projectGroupData = [
 			'100pure',
 			'360finance',
 		],
+		wideblock:true,
 	},
 	// {
 	// 	groupid:'xyz',
@@ -434,6 +439,7 @@ const projectGroupData = [
 		groupdescription:'Various uncategorized projects that are not already included in any other groups',
 		groupitemsidlist:[
 		],
+		ghostblock:true,
 	},
 	{
 		groupid:'missing',
@@ -442,7 +448,7 @@ const projectGroupData = [
 		groupdescription:'',
 		groupitemsidlist:[
 		],
-		// ghostblock:true,
+		ghostblock:true,
 	},
 
 ];
@@ -512,28 +518,28 @@ const projectMetaGroupData = [
 // Define sets of project groups in matrix. 
 const projectGroupMatrixData = [
 	{
-		setid:'set0',
+		setid:'setA',
 		setlist:['cl','fl','nw','dt',],
 	},
 	{
-		setid:'set1',
+		setid:'setB',
 		setlist:['bl','aw',],
 	},
 	{
-		setid:'set2',
+		setid:'setC',
 		setlist:['cw','gw','mw','sw',],
 	},
 	{
-		setid:'set3',
+		setid:'setD',
 		setlist:['3d','dc',],
 	},
 	{
-		setid:'set4',
+		setid:'setE',
 		setlist:['ld','ap','cp',],
 	},
 	{
-		setid:'missing',
-		setlist:['orphans','missing',],
+		setid:'setX',
+		setlist:[/* 'orphans', */'missing',],
 	},
 ];
 // console.log('Project group sets:',projectGroupMatrixData);

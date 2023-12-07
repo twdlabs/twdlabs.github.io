@@ -6,13 +6,19 @@ const headsidebar = document.querySelector('div#container header.navbar div.bin 
 // console.log('headsidebar:',headsidebar);
 
 // Get list destinations for header navigation. 
-const headnavlistdestinationA = document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.a ul.navlist');
-// console.log('headnavlistdestinationA:',headnavlistdestinationA);
-const headnavlistdestinationB = document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.b ul.navlist');
-// console.log('headnavlistdestinationB:',headnavlistdestinationB);
+const headnavdestination = {
+	navlistA:document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.a ul.navlist'),
+	navlistB:document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.b ul.navlist'),
+};
+// console.log('headnavdestination:',headnavdestination);
+
 // Get list destinations for footer navigation. 
-const footnavlistdestination = document.querySelector('div#container footer.footer div.grid div.linkline ul.navlist');
-// console.log('footnavlistdestination:',footnavlistdestination);
+const footnavdestination = {
+	navlistA:document.querySelector('div#container footer.footer div.grid div.linkline.a ul.navlist'),
+	navlistB:document.querySelector('div#container footer.footer div.grid div.linkline.b ul.navlist'),
+	navlistC:document.querySelector('div#container footer.footer div.grid div.linkline.c ul.navlist'),
+};
+// console.log('footnavdestination:',footnavdestination);
 
 
 /*****/
@@ -69,15 +75,23 @@ function createNavLink(url,caption,icontag,usenewwindow,userelativeurl) {
 // Load navigation links. 
 function loadNavLinks() {
 
+	let navlinks = createLinkList(linkData['nav']['groupitems'],true,true);
+	let sociallinks = createLinkList(linkData['social']['groupitems'],true,false);
+	let xyzlinks = createLinkList(linkData['foot']['groupitems'],true,true);
+
 	// Add page links in header. 
-	headnavlistdestinationA.innerHTML = createLinkList(linkData['nav']['groupitems'],true,true) /* + createLinkList(linkData['foot']['groupitems'],true,true) */;
+	headnavdestination['navlistA'].innerHTML = navlinks /* + xyzlinks */;
 
 	// Add social links in header. 
-	headnavlistdestinationB.innerHTML = createLinkList(linkData['social']['groupitems'],true,false);
+	// headnavdestination['navlistB'].innerHTML = sociallinks;
+	headnavdestination['navlistB'].innerHTML = xyzlinks;
 
 	// Add page links in footer. 
-	// let space = '<span class="space"></span>';
-	footnavlistdestination.innerHTML = /* createLinkList(linkData['nav']['groupitems'],true,true) + space + *//* createLinkList(linkData['social']['groupitems'],true,false) + space + */ createLinkList(linkData['foot']['groupitems'],true,true);
+	let space = '<span class="space"></span>';
+	// footnavdestination['navlistA'].innerHTML = navlinks + space + xyzlinks;
+	footnavdestination['navlistA'].innerHTML = navlinks;
+	footnavdestination['navlistB'].innerHTML = sociallinks;
+	footnavdestination['navlistC'].innerHTML = xyzlinks;
 
 	/****/
 

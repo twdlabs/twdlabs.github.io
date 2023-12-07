@@ -104,7 +104,7 @@ function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode
 		let id = block[idkey];
 
 		// Add layout for block item. 
-		result += createBlockItem(tag,name,description,id);
+		result += createBlockItem(tag,name,description,id,block.wideblock);
 	}
 
 	// Return result layout. 
@@ -113,7 +113,7 @@ function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode
 	/****/
 
 	// Create layout for block item. 
-	function createBlockItem(icontag,name,description,urlid) {
+	function createBlockItem(icontag,name,description,urlid,onwideblock) {
 
 		// Get link url. 
 		let uselink = (urlprefix && urlid);
@@ -123,7 +123,7 @@ function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode
 		// Compile layout for block item. 
 		return `
 		<!-- blockitem -->
-		<li class="blockitem">
+		<li class="blockitem ${ onwideblock ? 'wide' : '' }">
 	
 			<!-- blocklink -->
 			<a class="blocklink" href="${linkurl}" ${ (uselink && newwindowmode) ? 'target="_blank"' : '' }>

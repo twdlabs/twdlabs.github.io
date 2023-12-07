@@ -34,14 +34,15 @@ div#container section.blocks.methods div.grid ul.blocklist {grid-template-column
 /* div#container section.blocks.categories div.grid {} */
 /* div#container section.blocks.categories div.grid ul.blocklist {} */
 
-/* Category Blocks Section */
+/* Category Blocks Section: All */
 /* div#container section.blocks.categories.all {} */
 /* div#container section.blocks.categories.all div.grid {} */
 div#container section.blocks.categories.all div.grid ul.blocklist {background-color:var(--backcolor2); grid-template-columns:repeat(4,1fr);}
 /* div#container section.blocks.categories.all div.grid ul.blocklist {border:1px solid var(--glasshovercolor);} */
 /* div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem {border:1px solid var(--glasshovercolor);} */
+div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column:1 / span 4;}
 
-/* Category Blocks Section */
+/* Category Blocks Section: Meta */
 /* div#container section.blocks.categories.meta {} */
 /* div#container section.blocks.categories.meta div.grid {} */
 div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
@@ -62,7 +63,11 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 
 	/* Category Blocks Section */
+	/* div#container section.blocks.categories div.grid ul.blocklist {} */
+	/* Category Blocks Section: All */
 	/* div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);} */
+	/* div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column:1 / span 4;} */
+	/* Category Blocks Section: Meta */
 	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 }
 
@@ -76,7 +81,12 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* Method Blocks Section */
 
 	/* Category Blocks Section */
+	/* div#container section.blocks.categories div.grid ul.blocklist {} */
+	/* Category Blocks Section: All */
 	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(3,1fr); grid-gap:0;}
+	div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column:1 / span 3;}
+	/* Category Blocks Section: Meta */
+	/* div#container section.blocks.categories.meta div.grid ul.blocklist {} */
 }
 
 /* Medium Tablet Screen */
@@ -89,7 +99,11 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* Method Blocks Section */
 
 	/* Category Blocks Section */
+	/* div#container section.blocks.categories div.grid ul.blocklist {} */
+	/* Category Blocks Section: All */
 	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
+	div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column:1 / span 2;}
+	/* Category Blocks Section: Meta */
 	/* div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
 }
 
@@ -110,7 +124,10 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
 
 	/* Category Blocks Section */
+	/* div#container section.blocks.categories div.grid ul.blocklist {} */
+	/* Category Blocks Section: All */
 	/* div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
+	/* Category Blocks Section: Meta */
 	/* div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
 	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:1fr;}
 }
@@ -127,7 +144,11 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:1fr;}
 
 	/* Category Blocks Section */
+	/* div#container section.blocks.categories div.grid ul.blocklist {} */
+	/* Category Blocks Section: All */
 	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:1fr;}
+	div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column:1 / span 1;}
+	/* Category Blocks Section: Meta */
 	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:1fr;}
 }
 
@@ -141,6 +162,8 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* Method Blocks Section */
 
 	/* Category Blocks Section */
+	/* Category Blocks Section: All */
+	/* Category Blocks Section: Meta */
 }
 
 /* Small Smartphone Screen */
@@ -159,4 +182,6 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* Method Blocks Section */
 
 	/* Category Blocks Section */
+	/* Category Blocks Section: All */
+	/* Category Blocks Section: Meta */
 }

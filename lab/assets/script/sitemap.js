@@ -2,6 +2,10 @@
 
 
 // Get destination for matrix of project links on site map page. 
+const pagegroupmatrixdestination = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.groups');
+// console.log('pagegroupmatrixdestination:',pagegroupmatrixdestination);
+
+// Get destination for matrix of project links on site map page. 
 const pageprojectmatrixdestination = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.projects');
 // console.log('pageprojectmatrixdestination:',pageprojectmatrixdestination);
 
@@ -28,22 +32,29 @@ loadSiteMap();
 function loadSiteMap() {
 
 	// Create layout for group matrix. 
-	console.log('\nProject group matrix');
+	console.log('\nMatrix: Project category by collection grouping');
 	let groupmatrixlayout = createLinkMatrix( projectMetaGroupMatrixData, getProjectGroupById,getProjectMetaGroupById, './category/?cid=','groupname' );
 	// console.log('groupmatrixlayout:',groupmatrixlayout);
 
 	// Create layout for project matrix. 
-	console.log('\nProject matrix');
-	let projectmatrixlayout = createLinkMatrix( projectGroupMatrixData, getProjectById,getProjectGroupById, '../','projectname' );
-	// console.log('projectmatrixlayout:',projectmatrixlayout);
+	console.log('\nMatrix: Project items by category by arbitrary grouping');
+	let projectmatrixlayoutA = createLinkMatrix( projectGroupMatrixData, getProjectById,getProjectGroupById, '../','projectname' );
+	// console.log('projectmatrixlayoutA:',projectmatrixlayoutA);
 
+	// Create layout for project matrix. 
+	console.log('\nMatrix: Project items by category by collection grouping');
+	let projectmatrixlayoutB = createLinkMatrix( projectGroupMatrixData, getProjectById,getProjectGroupById, '../','projectname' );
+	// console.log('projectmatrixlayoutB:',projectmatrixlayoutB);
+
+	// Add layout for group matrix to footer. 
+	if(pagegroupmatrixdestination) pagegroupmatrixdestination.innerHTML = groupmatrixlayout;
 	// Add layout for project matrix to site map page. 
-	if(pageprojectmatrixdestination) pageprojectmatrixdestination.innerHTML = projectmatrixlayout;
+	if(pageprojectmatrixdestination) pageprojectmatrixdestination.innerHTML = projectmatrixlayoutA + projectmatrixlayoutB;
 
 	// Add layout for group matrix to footer. 
 	if(footergroupmatrixdestination) footergroupmatrixdestination.innerHTML = groupmatrixlayout;
 	// Add layout for project matrix to footer. 
-	if(footerprojectmatrixdestination) footerprojectmatrixdestination.innerHTML = projectmatrixlayout;
+	if(footerprojectmatrixdestination) footerprojectmatrixdestination.innerHTML = projectmatrixlayoutA + projectmatrixlayoutB;
 
 	/****/
 

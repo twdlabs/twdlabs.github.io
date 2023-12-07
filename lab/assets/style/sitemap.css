@@ -2,25 +2,26 @@
 
 
 /* Footer: Link Matrix */
-div#container /* footer.footer */ div.grid div.linkmatrix {display:grid; /* margin-top:1.5rem; */}
-div#container /* footer.footer */ div.grid div.linkmatrix.groups {grid-template-columns:repeat(3,1fr); grid-template-areas:none;}	/* inner */
+div#container /* footer.footer */ div.grid div.linkmatrix {display:grid; grid-template-areas:none; /* margin-top:1.5rem; */}
+div#container /* footer.footer */ div.grid div.linkmatrix.groups {grid-template-columns:repeat(3,1fr);}
 div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(6,1fr); grid-template-areas:'a b c d e m';}
 /* Footer: Link Matrix Sets */
 /* div#container footer.footer div.grid div.linkmatrix div.listset {flex-basis:0; flex-grow:1; flex-shrink:0;} */
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset {text-align:left; /* padding:1rem; */ margin-right:2rem;}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset.x {display:none;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set0 {grid-area:a;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set1 {grid-area:b;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set2 {grid-area:c;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set3 {grid-area:d;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset.set4 {grid-area:e;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing {grid-area:m; margin-right:0;}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setA {grid-area:a;}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setB {grid-area:b;}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setC {grid-area:c;}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setD {grid-area:d;}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setE {grid-area:e;}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX {grid-area:m; margin-right:0;}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {color:var(--forecolor); font-size:1.25rem; font-weight:500; white-space:nowrap; margin:0; margin-top:2rem;}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {padding:0 .75rem; border:solid transparent; border-width:0 .25rem; border-left-color:var(--themecolor);}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist {list-style:none; padding:0; margin:0; margin-top:.625rem;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {display:grid; grid-template-columns:repeat(2,1fr);}
+div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {display:grid; grid-template-columns:repeat(2,1fr);}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem {color:var(--forecolor2); margin-left:1rem; margin-top:.25rem;}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink {color:inherit; /* font-size:1.125rem; */ text-decoration:none; /* white-space:nowrap; */}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink:hover {color:var(--drkthemecolor);}
 /* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink svg.icon {display:none;} */
 /* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink span.caption {} */
 
@@ -36,9 +37,9 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(5,1fr); grid-template-areas:'a b c d e' 'm m m m m';}
 	/* Footer: Link Matrix Sets */
 	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
-	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.setX {} */
 	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {} */
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(5,1fr);}
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:repeat(5,1fr);}
 }
 
 /* Medium Tablet Screen */
@@ -50,8 +51,8 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(4,1fr); grid-template-areas:'a b c d' 'e m m m';}
 	/* Footer: Link Matrix Sets */
 	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
-	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(3,1fr);}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.setX {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:repeat(3,1fr);}
 }
 
 /* Small Tablet Screen */
@@ -65,7 +66,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset {display:flex; flex-direction:column; align-items:center; margin-right:0;}
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {text-align:center; border-width:0; border-bottom:1px solid var(--themecolor); padding:0 .375rem; padding-bottom:.375rem; margin-top:1.5rem; /* margin-bottom:.5rem; */}
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist {text-align:center;}
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(2,1fr);}
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:repeat(2,1fr);}
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem {margin-left:0;}
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem a.navlink {font-size:1.125rem;}
 }
@@ -81,9 +82,9 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(2,1fr); grid-template-areas:'a b' 'c d' 'e o' 'm m';}
 	/* Footer: Link Matrix Sets */
 	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
-	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.setX {} */
 	/* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {} */
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(3,1fr);}
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:repeat(3,1fr);}
 }
 
 /* Medium Smartphone Screen */
@@ -95,8 +96,8 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	/* div#container footer.footer div.grid div.linkmatrix.projects {} */
 	/* Footer: Link Matrix Sets */
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset {text-align:center; margin:0;}
-	/* div#container footer.footer div.grid div.linkmatrix div.listset.missing {} */
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:repeat(2,1fr);}
+	/* div#container footer.footer div.grid div.linkmatrix div.listset.setX {} */
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:repeat(2,1fr);}
 }
 
 /* Small Smartphone Screen */
@@ -108,8 +109,8 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	/* div#container footer.footer div.grid div.linkmatrix.projects {} */
 	/* Footer: Link Matrix Sets */
 	/* div#container footer.footer div.grid div.linkmatrix div.listset {} */
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing {margin-top:2rem;}
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset.missing ul.navlist {grid-template-columns:1fr;}
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX {margin-top:2rem;}
+	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:1fr;}
 	/* div#container footer.footer div.grid div.linkmatrix.compact {margin-top:2rem;} */
 	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset {} */
 	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset h2.head {font-weight:200; margin-top:.375rem;} */
