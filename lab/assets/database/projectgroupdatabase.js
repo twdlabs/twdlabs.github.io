@@ -552,12 +552,12 @@ const projectMetaGroupMatrixData = [
 		setlist:['p',],
 	},
 	{
-		setid:'setB',
-		setlist:['w',],
-	},
-	{
 		setid:'setC',
 		setlist:['l',],
+	},
+	{
+		setid:'setB',
+		setlist:['w',],
 	},
 	// {
 	// 	setid:'setX',
