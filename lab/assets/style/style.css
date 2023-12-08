@@ -200,7 +200,7 @@ div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist 
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--forecolor); color:var(--backcolor);}
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--themecolor); color:white; font-weight:bold;}
 /* div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn svg.icon {} */
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.color {background-color:black; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.25rem solid white;}
+div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.color {background-color:black; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.125rem solid white;}
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.color.b {background-color:var(--royalblue);}
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.color.g {background-color:var(--green);}
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.caption {margin-left:.75rem;}
