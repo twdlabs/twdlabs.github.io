@@ -238,7 +238,19 @@ function activateThemeSelectors() {
 
 	// Toggle color theme list. 
 	function toggleColorThemeList() {
-		colorswitcher['themeselectorlist'].classList.toggle('open');
+
+		// Check if already open. 
+		let alreadyopen = colorswitcher['themeselectorlist'].classList.contains('open');
+
+		// Close if already open. 
+		if(alreadyopen) {
+			colorswitcher['themeselectorlist'].classList.remove('open');
+		}
+		// Open if not already open. 
+		else {
+			colorswitcher['themeselectorlist'].classList.add('open');
+			ltdrkswitcher['themeselectorlist'].classList.remove('open');
+		}
 	}
 
 	// Select new color theme. 
@@ -264,7 +276,19 @@ function activateThemeSelectors() {
 
 	// Toggle light/dark theme list. 
 	function toggleLtDrkThemeList() {
-		ltdrkswitcher['themeselectorlist'].classList.toggle('open');
+
+		// Check if already open. 
+		let alreadyopen = ltdrkswitcher['themeselectorlist'].classList.contains('open');
+
+		// Close if already open. 
+		if(alreadyopen) {
+			ltdrkswitcher['themeselectorlist'].classList.remove('open');
+		}
+		// Open if not already open. 
+		else {
+			ltdrkswitcher['themeselectorlist'].classList.add('open');
+			colorswitcher['themeselectorlist'].classList.remove('open');
+		}
 	}
 
 	// Select new light/dark theme. 

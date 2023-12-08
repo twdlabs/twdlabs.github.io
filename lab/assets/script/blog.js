@@ -98,10 +98,12 @@ function loadBlog() {
 			// Define whether or not to use id as name. 
 			// let useidasname = true;
 	
-			// Get project id of given post. 
+			// Get project id for given post. 
 			let projectid = post.projectid;
-			// Get project name of given post. 
+			// Get project name for given post. 
 			let projectname = post.projectname;
+			// Get category name for given post. 
+			let categoryname = getCategoryName(projectid);
 	
 			// Get url of page to be added. 
 			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
@@ -109,7 +111,7 @@ function loadBlog() {
 			// Compile post card. 
 			return `
 			<!-- postcard -->
-			<li class="postcard" data-projectid="${projectid}" title="${projectname}">
+			<li class="postcard" data-projectid="${projectid}" title="${projectid}">
 	
 				<!-- projectlink -->
 				<a class="projectlink" href="${pageurl}" target="_blank">
@@ -130,7 +132,7 @@ function loadBlog() {
 						<!-- /name -->
 			
 						<!-- category -->
-						<span class="category">Category Name</span>
+						<span class="category">${ categoryname }</span>
 						<!-- /category -->
 	
 					</div>
@@ -141,6 +143,25 @@ function loadBlog() {
 	
 			</li>
 			<!-- /postcard -->`;
+
+			/**/
+	
+			// TODO: Get category name for given project. 
+			function getCategoryName(projectid) {
+	
+				// Go thru each project category. 
+				for(let projectcategory of projectCategoryData) {
+
+					// Check if project found in current category. 
+					let projectfound = projectcategory.groupitemsidlist.includes(projectid);
+
+					// Return name of current category if project found. 
+					if(projectfound) return projectcategory.groupname;
+				}
+
+				// Return nothing if project not found in any category. 
+				return '';
+			}
 		}
 	}
 
@@ -353,7 +374,7 @@ function loadBlog() {
 				// Go thru all blog posts. 
 				for(let postcard of blogpostcards) {
 	
-					// Get project id of given post. 
+					// Get project id for given post. 
 					let projectid = postcard.getAttribute('data-projectid').toUpperCase();
 	
 					// Check for matching post (by full query). 
