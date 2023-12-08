@@ -1,47 +1,119 @@
 
 
 
-// Get theme switcher list. 
-const themeList = document.querySelector('div#container header.navbar div.bin div.themeswitcher ul.themelist');
+// Get elements of light/dark theme selector. 
+const ltdrkswitcher = {
 
-// Get all theme selector buttons. 
-const allthemeselectorbtns = document.querySelectorAll('div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn');
+	// Get toggle button for theme selector list. 
+	togglerbtn:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk div.togglebtn'),
 
-// Get toggle button for theme switcher list. 
-const themelisttoggler = document.querySelector('div#container header.navbar div.bin div.themeswitcher div.togglebtn');
+	// Get icon of toggle button for theme selector list. 
+	togglericon:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk div.togglebtn svg.icon.selection'),
 
-// Get icon of toggle button for theme switcher list. 
-const themelisttogglericon = document.querySelector('div#container header.navbar div.bin div.themeswitcher div.togglebtn svg.icon.selection');
+	// Get theme selector list. 
+	themeselectorlist:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist'),
 
-// Initialize timer for periodic theme check. 
-let themechecktimer;
+	// Get all theme selector buttons. 
+	themeselectorbtns:document.querySelectorAll('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn'),
+
+	// Initialize timer for periodic theme check. 
+	themechecktimer:null,
+};
+
+// Get elements of color theme selector. 
+const colorswitcher = {
+
+	// Get toggle button for theme selector list. 
+	togglerbtn:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.color div.togglebtn'),
+
+	// Get icon of toggle button for theme selector list. 
+	togglericon:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.color div.togglebtn span.color.selection'),
+
+	// Get theme selector list. 
+	themeselectorlist:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist'),
+
+	// Get all theme selector buttons. 
+	themeselectorbtns:document.querySelectorAll('div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn'),
+};
 
 
 /*****/
 
 
-// Load previously selected theme. 
-loadPrevTheme();
+// Load previously selected themes. 
+loadPrevThemes();
 
-// Activate theme switcher. 
-activateThemeSwitcher();
+// Activate theme selectors. 
+activateThemeSelectors();
 
 
 /*****/
 
 
-// Load previously selected theme. 
-function loadPrevTheme() {
+// Load previously selected themes. 
+function loadPrevThemes() {
 
-	// Get from memory: id of previously selected theme. 
-	let savedthemeid = localStorage.getItem('savedthemeid');
+	// Get from memory: ids of previously selected themes. 
+	let savedcolorthemeid = localStorage.getItem('savedcolorthemeid');
+	let savedltdrkthemeid = localStorage.getItem('savedltdrkthemeid');
 
-	// Load theme using saved id. 
-	loadThemeById(savedthemeid);
+	// Load themes using saved ids. 
+	loadColorThemeById(savedcolorthemeid);
+	loadLtDrkThemeById(savedltdrkthemeid);
 }
 
 // Load theme by id. 
-function loadThemeById(themeid) {
+function loadColorThemeById(themeid) {
+
+	// Apply selected theme: blue. 
+	if(themeid=='b') loadBlueTheme();
+
+	// Apply selected theme: green. 
+	else if(themeid=='g') loadGreenTheme();
+
+	// Update state of theme buttons. 
+	updateThemeBtns();
+
+	/****/
+
+	// Load blue theme. 
+	function loadBlueTheme() {
+		document.body.classList.add('b');
+	}
+
+	// Load green theme. 
+	function loadGreenTheme() {
+		document.body.classList.remove('b');
+	}
+
+	// Update state of theme selector buttons. 
+	function updateThemeBtns() {
+	
+		// Go thru each theme selector button. 
+		for(let themebtn of colorswitcher['themeselectorbtns']) {
+
+			// Check if on selected theme button. 
+			let onSelectedBtn = themebtn.getAttribute('data-colorthemeid')==themeid;
+	
+			// Activate selected theme button. 
+			if(onSelectedBtn) {
+	
+				// Activate selected theme button. 
+				themebtn.classList.add('active');
+			}
+	
+			// De-activate other theme buttons. 
+			else {
+
+				// De-activate theme button. 
+				themebtn.classList.remove('active');
+			}
+		}
+	}
+}
+
+// Load theme by id. 
+function loadLtDrkThemeById(themeid) {
 
 	// Apply selected theme: light. 
 	if(themeid=='light') {
@@ -50,9 +122,9 @@ function loadThemeById(themeid) {
 		loadLightTheme();
 
 		// End theme check timer if running. 
-		clearInterval(themechecktimer);
-		themechecktimer = null;
-		// console.log('Theme timer:',themechecktimer);
+		clearInterval(ltdrkswitcher['themechecktimer']);
+		ltdrkswitcher['themechecktimer'] = null;
+		// console.log('Theme timer:',ltdrkswitcher['themechecktimer']);
 	}
 
 	// Apply selected theme: dark. 
@@ -62,9 +134,9 @@ function loadThemeById(themeid) {
 		loadDarkTheme();
 
 		// End theme check timer if running. 
-		clearInterval(themechecktimer);
-		themechecktimer = null;
-		// console.log('Theme timer:',themechecktimer);
+		clearInterval(ltdrkswitcher['themechecktimer']);
+		ltdrkswitcher['themechecktimer'] = null;
+		// console.log('Theme timer:',ltdrkswitcher['themechecktimer']);
 	}
 
 	// Apply default theme: automatic. 
@@ -76,11 +148,11 @@ function loadThemeById(themeid) {
 		// Check once per minute. 
 		let dt = 60000;
 		// Start theme check timer. 
-		themechecktimer = setInterval(checkTimeForTheme,dt);
-		// console.log('Theme timer:',themechecktimer);
+		ltdrkswitcher['themechecktimer'] = setInterval(checkTimeForTheme,dt);
+		// console.log('Theme timer:',ltdrkswitcher['themechecktimer']);
 	}
 
-	// Update status of theme buttons. 
+	// Update state of theme buttons. 
 	updateThemeBtns();
 
 	/****/
@@ -113,10 +185,10 @@ function loadThemeById(themeid) {
 	function updateThemeBtns() {
 	
 		// Go thru each theme selector button. 
-		for(let themebtn of allthemeselectorbtns) {
+		for(let themebtn of ltdrkswitcher['themeselectorbtns']) {
 
 			// Check if on selected theme button. 
-			let onSelectedBtn = themebtn.getAttribute('data-themeid')==themeid;
+			let onSelectedBtn = themebtn.getAttribute('data-ltdrkthemeid')==themeid;
 	
 			// Activate selected theme button. 
 			if(onSelectedBtn) {
@@ -125,9 +197,10 @@ function loadThemeById(themeid) {
 				themebtn.classList.add('active');
 	
 				// Get icon from selected theme button. 
-				let selectedthemeicon = themebtn.querySelector('svg');
-				// Update icon in theme switcher button. 
-				themelisttogglericon.innerHTML = selectedthemeicon.innerHTML;
+				let selectedthemeicon = themebtn.querySelector('svg.icon');
+
+				// Update icon contents for selector list toggle button. 
+				ltdrkswitcher['togglericon'].innerHTML = selectedthemeicon.innerHTML;
 			}
 	
 			// De-activate other theme buttons. 
@@ -140,42 +213,78 @@ function loadThemeById(themeid) {
 	}
 }
 
-// Activate theme switcher. 
-function activateThemeSwitcher() {
+// Activate theme selectors. 
+function activateThemeSelectors() {
 
-	// Activate theme switcher toggle button. 
-	themelisttoggler.addEventListener('click',toggleThemeList);
+	// Activate toggle button for color theme selector. 
+	colorswitcher['togglerbtn'].addEventListener('click',toggleColorThemeList);
 
-	// Go thru all theme selector buttons. 
-	for(let themebtn of allthemeselectorbtns) {
+	// Go thru all color theme selector buttons. 
+	for(let themebtn of colorswitcher['themeselectorbtns']) {
 		// Activate click of theme selector button. 
-		themebtn.addEventListener('click',selectNewTheme);
+		themebtn.addEventListener('click',selectNewColorTheme);
+	}
+
+	// Activate toggle button for light/dark theme selector. 
+	ltdrkswitcher['togglerbtn'].addEventListener('click',toggleLtDrkThemeList);
+
+	// Go thru all light/dark theme selector buttons. 
+	for(let themebtn of ltdrkswitcher['themeselectorbtns']) {
+		// Activate click of theme selector button. 
+		themebtn.addEventListener('click',selectNewLtDrkTheme);
 	}
 
 	/****/
 
-	// Toggle theme list. 
-	function toggleThemeList() {
-		themeList.classList.toggle('open');
+	// Toggle color theme list. 
+	function toggleColorThemeList() {
+		colorswitcher['themeselectorlist'].classList.toggle('open');
 	}
 
-	// Select new theme. 
-	function selectNewTheme(event) {
-		// console.log(event);
-
+	// Select new color theme. 
+	function selectNewColorTheme(event) {
+		
 		// Get selected theme button. 
 		const selectedthemebtn = event.currentTarget;
-
+		console.log('Selected color theme button:',selectedthemebtn);
+		
 		// Get id of selected theme. 
-		let selectedthemeid = selectedthemebtn.getAttribute('data-themeid');
+		let selectedthemeid = selectedthemebtn.getAttribute('data-colorthemeid');
+		console.log('Selected color theme:',selectedthemeid);
 
 		// Load theme by id. 
-		loadThemeById(selectedthemeid);
+		loadColorThemeById(selectedthemeid);
 
 		// Close theme list after selection made. 
-		themeList.classList.remove('open');
+		colorswitcher['themeselectorlist'].classList.remove('open');
 
 		// Save to memory: id of selected theme. 
-		localStorage.setItem('savedthemeid',selectedthemeid);
+		localStorage.setItem('savedcolorthemeid',selectedthemeid);
+	}
+
+	// Toggle light/dark theme list. 
+	function toggleLtDrkThemeList() {
+		ltdrkswitcher['themeselectorlist'].classList.toggle('open');
+	}
+
+	// Select new light/dark theme. 
+	function selectNewLtDrkTheme(event) {
+		
+		// Get selected theme button. 
+		const selectedthemebtn = event.currentTarget;
+		console.log('Selected light/dark theme button:',selectedthemebtn);
+		
+		// Get id of selected theme. 
+		let selectedthemeid = selectedthemebtn.getAttribute('data-ltdrkthemeid');
+		console.log('Selected light/dark theme:',selectedthemeid);
+
+		// Load theme by id. 
+		loadLtDrkThemeById(selectedthemeid);
+
+		// Close theme list after selection made. 
+		ltdrkswitcher['themeselectorlist'].classList.remove('open');
+
+		// Save to memory: id of selected theme. 
+		localStorage.setItem('savedltdrkthemeid',selectedthemeid);
 	}
 }
