@@ -2,7 +2,7 @@
 
 
 // Define groups of projects. 
-const projectGroupData = [
+const projectCategoryData = [
 
 	// {
 	// 	groupid:'xyz',
@@ -452,7 +452,7 @@ const projectGroupData = [
 	},
 
 ];
-// console.log('Project groups:',projectGroupData);
+// console.log('Project categories:',projectCategoryData);
 
 
 // Define groups of groups of projects. 
@@ -512,7 +512,7 @@ const projectMetaGroupData = [
 	},
 
 ];
-// console.log('Project meta-groups:',projectMetaGroupData);
+// console.log('Project collections:',projectMetaGroupData);
 
 
 // Define sets of project groups in matrix. 
@@ -547,10 +547,6 @@ const projectGroupMatrixData = [
 
 // Define sets of project meta-groups in matrix. 
 const projectMetaGroupMatrixData = [
-	// {
-	// 	setid:'setX',
-	// 	setlist:['x',],
-	// },
 	{
 		setid:'setA',
 		setlist:['p',],
@@ -563,6 +559,10 @@ const projectMetaGroupMatrixData = [
 		setid:'setC',
 		setlist:['l',],
 	},
+	// {
+	// 	setid:'setX',
+	// 	setlist:['x',],
+	// },
 ];
 // console.log('Project meta-group sets:',projectMetaGroupMatrixData);
 
@@ -603,13 +603,13 @@ function addExtraProjectGroups() {
 function getProjectGroupById(pgid) {
 
 	// Go thru each project groups. 
-	for(let projectgroup of projectGroupData) {
+	for(let projectcategory of projectCategoryData) {
 
 		// Check if project group matches query id. 
-		let matchFound = (projectgroup.groupid == pgid);
+		let matchFound = (projectcategory.groupid == pgid);
 
 		// Return matching project group if found. 
-		if(matchFound) return projectgroup;
+		if(matchFound) return projectcategory;
 	}
 
 	// Return nothing if project group not found. 
@@ -678,7 +678,7 @@ function getOrphanProjectIds() {
 		let projectFoundInGroup = false;
 
 		// Go thru each project group to find project id. 
-		for(let pg of projectGroupData) {
+		for(let pg of projectCategoryData) {
 
 			// Check if project found in group. 
 			projectFoundInGroup = pg.groupitemsidlist.includes(pid);

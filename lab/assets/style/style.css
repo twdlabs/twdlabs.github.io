@@ -179,21 +179,21 @@ div#container header.navbar div.bin div.navtoggler {display:none; cursor:pointer
 div#container header.navbar div.bin div.navtoggler svg.icon {display:block; font-size:1.875rem;}
 
 /* Navbar: Theme Toggler */
-div#container header.navbar div.bin div.themetoggler {position:relative; font-size:1.125rem; height:100%; padding-left:2rem; border-left:1px solid #FFF4; margin-left:2rem;}
-div#container header.navbar div.bin div.themetoggler div.themebtn {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
-/* div#container header.navbar div.bin div.themetoggler div.themebtn svg.icon {} */
-div#container header.navbar div.bin div.themetoggler div.themebtn svg.icon.arrowdown {font-size:.625em; margin-left:.25rem;}
-div#container header.navbar div.bin div.themetoggler ul.themelist {display:none; position:absolute; right:0; top:100%;}
-div#container header.navbar div.bin div.themetoggler ul.themelist {background-color:var(--backcolor); list-style:none; padding:0; padding:.125rem .25rem; border-radius:.5rem; margin:0; margin-top:.5rem; box-shadow:var(--boxshadow);}
-div#container header.navbar div.bin div.themetoggler ul.themelist.open {display:block;}
-/* div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem {} */
-div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn {font-size:.875rem; height:2.375em; width:8em; padding:0 1rem; border-radius:.375rem; margin:.125rem 0;}
-div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn {color:inherit; color:var(--forecolor); text-decoration:none; display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
-div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn:hover {background-color:var(--ltglasshovercolor);}
-div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn.active {background-color:var(--forecolor); color:var(--backcolor);}
-div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn.active {background-color:var(--themecolor); color:white; font-weight:bold;}
-/* div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn svg.icon {} */
-div#container header.navbar div.bin div.themetoggler ul.themelist li.themeitem a.themebtn span.caption {margin-left:.75rem;}
+div#container header.navbar div.bin div.themeswitcher {position:relative; font-size:1.125rem; height:100%; padding-left:2rem; border-left:1px solid #FFF4; margin-left:2rem;}
+div#container header.navbar div.bin div.themeswitcher ul.themelist {display:none; position:absolute; right:0; top:100%;}
+div#container header.navbar div.bin div.themeswitcher ul.themelist {background-color:var(--backcolor); list-style:none; padding:0; padding:.125rem .25rem; border-radius:.5rem; margin:0; margin-top:.5rem; box-shadow:var(--boxshadow);}
+div#container header.navbar div.bin div.themeswitcher ul.themelist.open {display:block;}
+/* div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem {} */
+div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn {font-size:.875rem; height:2.375em; width:8em; padding:0 1rem; border-radius:.375rem; margin:.125rem 0;}
+div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn {color:inherit; color:var(--forecolor); text-decoration:none; display:flex; flex-direction:row; justify-content:flex-start; align-items:center;}
+div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn:hover {background-color:var(--ltglasshovercolor);}
+div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--forecolor); color:var(--backcolor);}
+div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--themecolor); color:white; font-weight:bold;}
+/* div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn svg.icon {} */
+div#container header.navbar div.bin div.themeswitcher ul.themelist li.themeitem a.themebtn span.caption {margin-left:.75rem;}
+div#container header.navbar div.bin div.themeswitcher div.togglebtn {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
+/* div#container header.navbar div.bin div.themeswitcher div.togglebtn svg.icon {} */
+div#container header.navbar div.bin div.themeswitcher div.togglebtn svg.icon.arrowdown {font-size:.625em; margin-left:.25rem;}
 
 
 
@@ -205,6 +205,7 @@ div#container section div.grid div.head {display:flex; flex-direction:row; justi
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
 /* div#container section div.grid h1.head:empty {display:flex; justify-content:center;} */
 div#container section div.grid h1.head:empty::after {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:10em; border-radius:1em; margin:0 auto;}
+div#container section div.grid h2.head {font-size:1.75rem; font-weight:300; line-height:1; /* text-align:center; */ white-space:nowrap; margin:0;}
 div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center;}
 /* div#container section div.grid p.textcopy:empty {display:flex; justify-content:center;} */
 div#container section div.grid p.textcopy:empty:before {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:80%; border-radius:1em; margin:0 auto;}
@@ -246,6 +247,9 @@ div#container footer.footer div.grid div.brand p.textcopy {color:var(--forecolor
 
 /* Footer: Link Line */
 div#container footer.footer div.grid div.linkline {margin-top:2rem;}
+/* div#container footer.footer div.grid div.linkline.a {} */
+/* div#container footer.footer div.grid div.linkline.b {} */
+/* div#container footer.footer div.grid div.linkline.c {} */
 div#container footer.footer div.grid div.linkline ul.navlist {display:flex; flex-direction:row; justify-content:center; flex-wrap:wrap;}
 div#container footer.footer div.grid div.linkline ul.navlist {list-style:none; padding:0; margin:0;}
 div#container footer.footer div.grid div.linkline ul.navlist span.space {color:var(--drkthemecolor); margin:0 .75rem;}
@@ -257,10 +261,22 @@ div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlin
 div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink:hover {color:var(--themecolor);}
 /* div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink svg.icon {margin-right:.375em;} */
 /* div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink span.caption {} */
+/* Footer: Link Line A */
+/* div#container footer.footer div.grid div.linkline.a ul.navlist {} */
+/* div#container footer.footer div.grid div.linkline.a ul.navlist li.navitem {} */
+/* div#container footer.footer div.grid div.linkline.a ul.navlist li.navitem a.navlink {} */
 div#container footer.footer div.grid div.linkline.a ul.navlist li.navitem a.navlink svg.icon {display:none;}
 /* div#container footer.footer div.grid div.linkline.a ul.navlist li.navitem a.navlink span.caption {} */
+/* Footer: Link Line B */
+/* div#container footer.footer div.grid div.linkline.b ul.navlist {} */
+/* div#container footer.footer div.grid div.linkline.b ul.navlist li.navitem {} */
+/* div#container footer.footer div.grid div.linkline.b ul.navlist li.navitem a.navlink {} */
 div#container footer.footer div.grid div.linkline.b ul.navlist li.navitem a.navlink svg.icon {font-size:1.75rem; margin:0 .25rem;}
 div#container footer.footer div.grid div.linkline.b ul.navlist li.navitem a.navlink span.caption {display:none;}
+/* Footer: Link Line C */
+/* div#container footer.footer div.grid div.linkline.c ul.navlist {} */
+/* div#container footer.footer div.grid div.linkline.c ul.navlist li.navitem {} */
+/* div#container footer.footer div.grid div.linkline.c ul.navlist li.navitem a.navlink {} */
 div#container footer.footer div.grid div.linkline.c ul.navlist li.navitem a.navlink svg.icon {display:none;}
 /* div#container footer.footer div.grid div.linkline.c ul.navlist li.navitem a.navlink span.caption {} */
 
@@ -298,7 +314,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Toggler */
-	/* div#container header.navbar div.bin div.themetoggler {} */
+	/* div#container header.navbar div.bin div.themeswitcher {} */
 
 
 	/* General Section */
@@ -345,7 +361,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Toggler */
-	/* div#container header.navbar div.bin div.themetoggler {} */
+	/* div#container header.navbar div.bin div.themeswitcher {} */
 
 
 	/* General Section */
@@ -417,7 +433,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container header.navbar div.bin div.navtoggler {display:block;}
 	
 	/* Navbar: Theme Toggler */
-	div#container header.navbar div.bin div.themetoggler {padding-left:0; border-left:0 none; margin-left:0;}
+	div#container header.navbar div.bin div.themeswitcher {padding-left:0; border-left:0 none; margin-left:0;}
 
 
 	/* General Section */
@@ -472,7 +488,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Toggler */
-	/* div#container header.navbar div.bin div.themetoggler {} */
+	/* div#container header.navbar div.bin div.themeswitcher {} */
 
 
 	/* General Section */
@@ -519,7 +535,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Toggler */
-	/* div#container header.navbar div.bin div.themetoggler {} */
+	/* div#container header.navbar div.bin div.themeswitcher {} */
 
 
 	/* General Section */
@@ -540,6 +556,9 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container footer.footer div.grid div.brand {display:flex; flex-direction:column; align-items:center; text-align:center; margin:0;}
 
 	/* Footer: Link Line */
+	/* Footer: Link Line A */
+	div#container footer.footer div.grid div.linkline.a ul.navlist {flex-direction:column; align-items:center;}
+	div#container footer.footer div.grid div.linkline.a ul.navlist li.navitem {margin-top:.75rem;}
 
 	/* Footer: Link Matrix */
 }
@@ -566,7 +585,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Toggler */
-	/* div#container header.navbar div.bin div.themetoggler {} */
+	/* div#container header.navbar div.bin div.themeswitcher {} */
 
 
 	/* General Section */

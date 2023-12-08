@@ -2,7 +2,7 @@
 
 
 /* Footer: Link Matrix */
-div#container /* footer.footer */ div.grid div.linkmatrix {display:grid; grid-template-areas:none; /* margin-top:1.5rem; */}
+div#container /* footer.footer */ div.grid div.linkmatrix {display:grid; grid-template-areas:none; /* margin-top:1.5rem; */ margin-bottom:4rem;}
 div#container /* footer.footer */ div.grid div.linkmatrix.groups {grid-template-columns:repeat(3,1fr);}
 div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(6,1fr); grid-template-areas:'a b c d e m';}
 /* Footer: Link Matrix Sets */
@@ -15,8 +15,8 @@ div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.s
 div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setD {grid-area:d;}
 div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setE {grid-area:e;}
 div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX {grid-area:m; margin-right:0;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {color:var(--forecolor); font-size:1.25rem; font-weight:500; white-space:nowrap; margin:0; margin-top:2rem;}
-div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {padding:0 .75rem; border:solid transparent; border-width:0 .25rem; border-left-color:var(--themecolor);}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset h3.head {color:var(--forecolor); font-size:1.25rem; font-weight:500; white-space:nowrap; margin:0; margin-top:2rem;}
+div#container /* footer.footer */ div.grid div.linkmatrix div.listset h3.head {padding:0 .75rem; border:solid transparent; border-width:0 .25rem; border-left-color:var(--themecolor);}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist {list-style:none; padding:0; margin:0; margin-top:.625rem;}
 div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {display:grid; grid-template-columns:repeat(2,1fr);}
 div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem {color:var(--forecolor2); margin-left:1rem; margin-top:.25rem;}
@@ -64,7 +64,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(3,1fr); grid-template-areas:'a b c' 'd e m'/*  'm m m' */;}
 	/* Footer: Link Matrix Sets */
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset {display:flex; flex-direction:column; align-items:center; margin-right:0;}
-	div#container /* footer.footer */ div.grid div.linkmatrix div.listset h2.head {text-align:center; border-width:0; border-bottom:1px solid var(--themecolor); padding:0 .375rem; padding-bottom:.375rem; margin-top:1.5rem; /* margin-bottom:.5rem; */}
+	div#container /* footer.footer */ div.grid div.linkmatrix div.listset h3.head {text-align:center; border-width:0; border-bottom:1px solid var(--themecolor); padding:0 .375rem; padding-bottom:.375rem; margin-top:1.5rem; /* margin-bottom:.5rem; */}
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist {text-align:center;}
 	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:repeat(2,1fr);}
 	div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist li.navitem {margin-left:0;}
@@ -113,7 +113,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 	div#container /* footer.footer */ div.grid div.linkmatrix.projects div.listset.setX ul.navlist {grid-template-columns:1fr;}
 	/* div#container footer.footer div.grid div.linkmatrix.compact {margin-top:2rem;} */
 	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset {} */
-	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset h2.head {font-weight:200; margin-top:.375rem;} */
+	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset h3.head {font-weight:200; margin-top:.375rem;} */
 	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist {max-height:0; overflow:hidden;} */
 	/* div#container footer.footer div.grid div.linkmatrix.compact div.listset ul.navlist.active {max-height:none;} */
 }

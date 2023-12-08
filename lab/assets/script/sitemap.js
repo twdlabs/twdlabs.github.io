@@ -43,18 +43,20 @@ function loadSiteMap() {
 
 	// Create layout for project matrix. 
 	console.log('\nMatrix: Project items by category by collection grouping');
-	let projectmatrixlayoutB = createLinkMatrix( projectGroupMatrixData, getProjectById,getProjectGroupById, '../','projectname' );
+	let xyz = projectMetaGroupData.map( collection => { return { setid:'abc', setlist:collection.groupitemsidlist } } );
+	console.log(xyz);
+	let projectmatrixlayoutB = createLinkMatrix( xyz, getProjectById,getProjectGroupById, '../','projectname' );
 	// console.log('projectmatrixlayoutB:',projectmatrixlayoutB);
 
 	// Add layout for group matrix to footer. 
-	if(pagegroupmatrixdestination) pagegroupmatrixdestination.innerHTML = groupmatrixlayout;
+	if(pagegroupmatrixdestination) pagegroupmatrixdestination.innerHTML = groupmatrixlayout + projectmatrixlayoutB;
 	// Add layout for project matrix to site map page. 
-	if(pageprojectmatrixdestination) pageprojectmatrixdestination.innerHTML = projectmatrixlayoutA + projectmatrixlayoutB;
+	if(pageprojectmatrixdestination) pageprojectmatrixdestination.innerHTML = projectmatrixlayoutA;
 
 	// Add layout for group matrix to footer. 
 	if(footergroupmatrixdestination) footergroupmatrixdestination.innerHTML = groupmatrixlayout;
 	// Add layout for project matrix to footer. 
-	if(footerprojectmatrixdestination) footerprojectmatrixdestination.innerHTML = projectmatrixlayoutA + projectmatrixlayoutB;
+	if(footerprojectmatrixdestination) footerprojectmatrixdestination.innerHTML = projectmatrixlayoutA;
 
 	/****/
 
@@ -109,7 +111,7 @@ function loadSiteMap() {
 				// Add header for current project group. 
 				result += `
 				<!-- head -->
-				<h2 class="head">${ projectgroup ? projectgroup.groupname : '' }</h2>
+				<h3 class="head">${ projectgroup ? projectgroup.groupname : '' }</h3>
 				<!-- /head -->`;
 	
 				// Add list for current project group. 

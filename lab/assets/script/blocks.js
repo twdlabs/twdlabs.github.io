@@ -59,7 +59,7 @@ function loadCategoryBlockSet() {
 	let urlprefix = './category/?cid=';
 
 	// Add block set to page destination. 
-	categoryblocksdestination.innerHTML = createBlockSet(projectGroupData, tk,nk,dk, true,idkey,urlprefix);
+	categoryblocksdestination.innerHTML = createBlockSet(projectCategoryData, tk,nk,dk, true,idkey,urlprefix);
 }
 
 // Load blocks for project meta-categories. 
