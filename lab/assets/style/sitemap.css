@@ -2,7 +2,8 @@
 
 
 /* Footer: Link Matrix */
-div#container /* footer.footer */ div.grid div.linkmatrix {display:grid; grid-template-areas:none; /* margin-top:1.5rem; */ margin-bottom:4rem;}
+div#container /* footer.footer */ div.grid h2.head {}
+div#container /* footer.footer */ div.grid div.linkmatrix {display:grid; grid-template-areas:none; /* margin-top:1.5rem; */}
 div#container /* footer.footer */ div.grid div.linkmatrix.groups {grid-template-columns:repeat(3,1fr);}
 div#container /* footer.footer */ div.grid div.linkmatrix.projects {grid-template-columns:repeat(6,1fr); grid-template-areas:'a b c d e m';}
 /* Footer: Link Matrix Sets */

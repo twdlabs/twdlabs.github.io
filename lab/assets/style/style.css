@@ -223,7 +223,7 @@ div#container section div.grid div.head {display:flex; flex-direction:row; justi
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
 /* div#container section div.grid h1.head:empty {display:flex; justify-content:center;} */
 div#container section div.grid h1.head:empty::after {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:10em; border-radius:1em; margin:0 auto;}
-div#container section div.grid h2.head {font-size:1.75rem; font-weight:300; line-height:1; /* text-align:center; */ white-space:nowrap; margin:0;}
+div#container section div.grid h2.head {font-size:1.75rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0; margin-top:3rem;}
 div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center;}
 /* div#container section div.grid p.textcopy:empty {display:flex; justify-content:center;} */
 div#container section div.grid p.textcopy:empty:before {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:80%; border-radius:1em; margin:0 auto;}

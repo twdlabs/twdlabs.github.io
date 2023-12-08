@@ -94,6 +94,9 @@ function loadBlog() {
 	
 		// Create blog card. 
 		function createBlogCard(post) {
+
+			// Define whether or not to use id as name. 
+			// let useidasname = true;
 	
 			// Get project id of given post. 
 			let projectid = post.projectid;
@@ -117,10 +120,18 @@ function loadBlog() {
 	
 					<!-- caption -->
 					<div class="caption">
+			
+						<!-- id -->
+						<span class="id">${ projectid }</span>
+						<!-- /id -->
 	
 						<!-- name -->
-						<span class="name">${projectid}</span>
+						<span class="name">${ projectname }</span>
 						<!-- /name -->
+			
+						<!-- category -->
+						<span class="category">Category Name</span>
+						<!-- /category -->
 	
 					</div>
 					<!-- /caption -->
