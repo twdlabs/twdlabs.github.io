@@ -5,10 +5,11 @@
 const container = document.querySelector('div#container');
 
 // Get all windows. 
-const allwindows = document.querySelectorAll('div#container main');
+// const allwindows = document.querySelectorAll('div#container main');
 
 // Get quiz launcher. 
 const quizlauncher = document.querySelector('div#container nav.quizlauncher');
+
 
 // Get quiz name headers-. 
 const quiznameheaders = document.querySelectorAll('div#container main header.top h1.head span.quizname');
@@ -16,17 +17,18 @@ const quiznameheaders = document.querySelectorAll('div#container main header.top
 // Get destination for rules list. 
 const ruleslistdestination = document.querySelector('div#container main.rules section.middle ol.ruleslist');
 
-// Get destination for question content. 
-let questioncontentdestination = document.querySelector('div#container main.questions section.middle h1.question');
-
-// Get destination for question content. 
-let questionanswersdestination = document.querySelector('div#container main.questions section.middle ul.answerlist');
-
 // Get destination for question count. 
-let questioncountdestination = document.querySelector('div#container main.questions footer.bottom div.counter span.num.qcount');
+const questioncountdestination = document.querySelector('div#container main.questions footer.bottom div.counter span.num.qcount');
 
-// Get destination for question number. 
-let currentquestionnumberdestination = document.querySelector('div#container main.questions footer.bottom div.counter span.num.qnum');
+
+// Get destination for question content. 
+const questioncontentdestination = document.querySelector('div#container main.questions section.middle h1.question');
+
+// Get destination for answer list content. 
+const questionanswersdestination = document.querySelector('div#container main.questions section.middle ul.answerlist');
+
+// Get destination for item number. 
+const currentitemnumberdestination = document.querySelector('div#container main.questions footer.bottom div.counter span.num.qnum');
 
 
 /*****/
@@ -108,7 +110,7 @@ function goToRules() {
 		// Get data for selected quiz. 
 		let selectedquiz = quizdata[currentquizid];
 		// Get rules for selected quiz. 
-		let selectedquizrules = selectedquiz.quizrules;
+		let selectedquizrules = selectedquiz['quizrules'];
 
 		// Initialize result. 
 		let result = '';
@@ -133,7 +135,7 @@ function goToQuestions() {
 	// Load item count for currently selected quiz. 
 	loadItemCount();
 
-	// Load initial item from currently selected quiz. 
+	// Load initial item of currently selected quiz. 
 	loadNextQuizItem();
 
 	// Activate questions page. 
@@ -156,73 +158,72 @@ function goToQuestions() {
 		questioncountdestination.innerHTML = itemcount;
 	}
 }
-// Load next quiz item. 
+// Load next quiz component. 
 function loadNextQuizItem() {
 
 	// Increment question index. 
 	currentquizitemindex++;
 
-	// 
-
 	// Get data for currently selected quiz. 
 	let selectedquiz = quizdata[currentquizid];
-	
-	// Get list of items for currently selected quiz. 
-	let selectedquizitems = selectedquiz.quizitems;
+
+	// Get all items for currently selected quiz. 
+	let selectedquizitems = selectedquiz['quizitems'];
 	
 	// Check if quiz items finished. 
-	let quizitemsfinished = currentquizitemindex >= selectedquizitems.length;
+	let quizfinished = currentquizitemindex >= selectedquizitems.length;
+	// Go to quiz assessment (if finished). 
+	if(quizfinished) goToAssessment();
+	// Load quiz item at current index. 
+	else loadCurrentQuizItem(currentquizitemindex);
 
-	// Go to quiz assessment (if quiz items finished). 
-	if(quizitemsfinished) goToAssessment();
+	/****/
 
-	// Load question at current index. 
-	loadQuestionByIndex(currentquizitemindex);
+	// Load quiz item at current index. 
+	function loadCurrentQuizItem(questionitemindex) {
 
-	// Load question at current index. 
-	function loadQuestionByIndex(questionindex) {
+		// Load number of current item. 
+		loadNumber();
 
-		// Load question contents. 
-		questioncontentdestination.innerHTML = createQuestionLayout();
+		// Load question for current item. 
+		loadQuestion();
 
-		// TODO: Load answer contents. 
-		questionanswersdestination.innerHTML = createAnswersLayout();
+		// Load list of responses for current item. 
+		loadResponseList();
 
-		// Load question number. 
-		currentquestionnumberdestination.innerHTML = 1 + 1*questionindex;
+		/***/
 
-		// Create question layout. 
-		function createQuestionLayout() {
-			// Get data for currently selected quiz. 
-			let selectedquiz = getQuizDataById(currentquizid);
-			return selectedquiz['quizitems'][questionindex]['question'];
+		// Load number for current item. 
+		function loadNumber() {
+			currentitemnumberdestination.innerHTML = 1*questionitemindex + 1;
 		}
 
-		// Create answers layout. 
-		function createAnswersLayout() {
-			console.log('Loading answers...');
-	
-			// Get data for selected quiz. 
-			let selectedquiz = quizdata[currentquizid];
-			// Get rules for selected quiz. 
-			let selectedquizrules = selectedquiz.quizrules;
+		// Load question for current item. 
+		function loadQuestion() {
+			questioncontentdestination.innerHTML = selectedquizitems[questionitemindex]['question'];
+		}
+
+		// Load list of responses for current item. 
+		function loadResponseList() {
+			console.log('Loading responses...');
+
+			// Get list of responses for selected quiz item. 
+			let selecteditemanswers = selectedquizitems[questionitemindex]['answers'];
+			// console.log('selecteditemanswers:',selecteditemanswers);
 	
 			// Initialize result. 
 			let result = '';
 	
-			// Go thru each rule for selected quiz. 
-			for(let rule of selectedquizrules) {
+			// Go thru each answer for selected quiz item. 
+			for(let answer of selecteditemanswers) {
 				result += `
 				<!-- answeritem -->
-				<li class="answeritem">${rule}</li>
+				<li class="answeritem">${answer}</li>
 				<!-- /answeritem -->`;
 			}
 	
-			// Display result on page. 
-			ruleslistdestination.innerHTML = result;
-
-			// 
-			
+			// Display answers on page. 
+			questionanswersdestination.innerHTML = result;
 		}
 	}
 }

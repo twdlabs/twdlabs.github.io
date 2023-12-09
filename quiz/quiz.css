@@ -31,7 +31,7 @@
 
 	/* Numbers */
 	--pagewidth:60rem;
-	--pagewidth:40rem;
+	/* --pagewidth:40rem; */
 	--cornersize:.5rem;
 	
 	/* Box Shadows */
@@ -110,7 +110,7 @@ div#container main.questions header.top div.timer span.caption {color:var(--drkb
 div#container main.questions section.middle h1.question {font-size:1.5rem; margin:0;}
 div#container main.questions section.middle h1.question:empty {background-color:var(--fillcolor); height:1em; width:100%; max-width:16em; border-radius:.25em;}
 div#container main.questions section.middle ul.answerlist {list-style:none; padding:0; margin:0; margin-top:2rem;}
-div#container main.questions section.middle ul.answerlist li.answeritem {background-color:var(--whiteblue); color:black; font-size:1.5rem; cursor:pointer;}
+div#container main.questions section.middle ul.answerlist li.answeritem {background-color:var(--whiteblue); color:black; font-size:1.25rem; cursor:pointer;}
 div#container main.questions section.middle ul.answerlist li.answeritem {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
 div#container main.questions section.middle ul.answerlist li.answeritem {padding:.5rem 1.125rem; border:.125rem solid transparent; border-color:#0000000C; border-radius:.25em; margin-top:1rem;}
 div#container main.questions section.middle ul.answerlist li.answeritem:hover {color:var(--drkblue); border-color:var(--blue);}
