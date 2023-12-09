@@ -34,7 +34,7 @@ customizeHeaders();
 function customizeHeaders() {
 
 	// Set custom document title. 
-	document.title = `${projectmetagroupname} | Lab Experiments`;
+	document.title = `${projectmetagroupname} | TWD Labs`;
 	
 	// Get custom headers for category name. 
 	const custompageheaders = document.querySelectorAll('section div.grid h1.head.custom');
