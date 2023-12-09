@@ -46,6 +46,7 @@ const projectCategoryData = [
 			'scrollsnap',
 			'smoothscroll',
 			'timing',
+			'viewport',
 		],
 	},
 	{
@@ -78,6 +79,8 @@ const projectCategoryData = [
 		groupdescription:'Tools on the dynamic server-side to facilitate design and development process using XML, HTTP, JSON, APIs',
 		groupitemsidlist:[
 			'json',
+			'loader',
+			'loading',
 			'xhr',
 		],
 	},
@@ -126,7 +129,6 @@ const projectCategoryData = [
 		groupitemsidlist:[
 			'accordion',
 			'accordion2',
-			'analogclock',
 			'bell',
 			'blogtoggler',
 			'book',
@@ -135,20 +137,12 @@ const projectCategoryData = [
 			'canvas',
 			'charlimit',
 			'chart',
-			'clipboard',
-			'clock',
 			'collapsible',
 			'contextmenu',
-			'countdown',
 			'delta',
 			'device',
-			'essay',
-			'gitcalendar',
-			'input',
 			'lightSwitch',
 			'livesearch',
-			'loader',
-			'loading',
 			'login',
 			'overlay',
 			'pagination',
@@ -164,19 +158,16 @@ const projectCategoryData = [
 			'tagscroller',
 			'tagslider',
 			'tasks',
+			'theme',
+			'theme1',
+			'theme2',
 			'throttle',
 			'ticker',
-			'time',
-			'timeline',
-			'timeline2',
 			'toastprogress',
-			'typer',
-			'typewriter',
 			'upload',
 			'user',
 			'user2',
 			'valueslider',
-			'viewport',
 			'wordswitcher',
 		],
 	},
@@ -210,6 +201,7 @@ const projectCategoryData = [
 		groupdescription:'Web components and tools developed for social media sharing and social communication',
 		groupitemsidlist:[
 			'bloglist',
+			'chat',
 			'chatpopup',
 			'message',
 			'share',
@@ -243,6 +235,49 @@ const projectCategoryData = [
 			'touch',
 			'traffic',
 			'wordcube',
+		],
+	},
+	{
+		groupid:'mt',
+		groupname:'Math Tools',
+		groupicontag:'calculator',
+		groupdescription:'Tools for understanding and applying various principles in mathematics, statsistics, and finance',
+		groupitemsidlist:[
+			'bizmath',
+			'calc',
+			'calculator',
+			'cluster1d',
+			'cluster',
+			'matrix',
+			'trig',
+		],
+	},
+	{
+		groupid:'wt',
+		groupname:'Writing Tools',
+		groupicontag:'pencileditor',
+		groupdescription:'Web components and tools to facilitate various types of short-form and long-form writing endeavors',
+		groupitemsidlist:[
+			'clipboard',
+			'essay',
+			'input',
+			'typer',
+			'typewriter',
+		],
+	},
+	{
+		groupid:'tw',
+		groupname:'Time Widgets',
+		groupicontag:'clock',
+		groupdescription:'Web components and tools for various representations of time and dates',
+		groupitemsidlist:[
+			'analogclock',
+			'clock',
+			'countdown',
+			'gitcalendar',
+			'time',
+			'timeline',
+			'timeline2',
 		],
 	},
 	{
@@ -284,6 +319,7 @@ const projectCategoryData = [
 			'multimenu',
 			'navcircle',
 			'navorbit',
+			'pagenexter',
 			'searchbar',
 			'spinner',
 		],
@@ -302,7 +338,6 @@ const projectCategoryData = [
 			'band',
 			'bodyshop',
 			'bst',
-			'calc',
 			'clubhouse',
 			'comingsoon',
 			'dotcollector',
@@ -319,16 +354,12 @@ const projectCategoryData = [
 			'mementomori',
 			'netflix',
 			'neuro67',
-			'pagenexter',
 			'periodictable',
+			'podcast',
 			'retool',
 			'skills',
 			'sky',
-			'theme',
-			'theme1',
-			'theme2',
 			'travel',
-			'trig',
 			'tropicalghana',
 			'voisey',
 			'wave',
@@ -341,12 +372,7 @@ const projectCategoryData = [
 		groupicontag:'smartphone',
 		groupdescription:'Design seeds developed for future potential stand-alone applications and websites',
 		groupitemsidlist:[
-			'bizmath',
 			'blogsocial',
-			'calculator',
-			'chat',
-			'cluster1d',
-			'cluster',
 			'compound',
 			'crud',
 			'crud2',
@@ -355,40 +381,18 @@ const projectCategoryData = [
 			'inventory',
 			'keyfinder',
 			'laundry',
-			'matrix',
 			'musicplayer',
 			'musicplaylist',
 			'notepad',
+			'notes',
+			'notesquares',
 			'pinyin',
-			'podcast',
 			'quiz',
 			'smartphone',
 			'typetest',
 			'waves',
 		],
-	},
-	{
-		groupid:'ld',
-		groupname:'Legacy Dashboards',
-		groupicontag:'oldpc',
-		groupdescription:'Remainder of original dashboard projects and various design ideas from apps and websites',
-		groupitemsidlist:[
-			'atg',
-			'cis255',
-			'linktree',
-			'chooser',
-			'clone',
-			'evolution',
-			'fitness',
-			'finance',
-			'layouts',
-			'math',
-			'music',
-			'probability',
-			'reast',
-			'stocks',
-		],
-		ghostblock:true,
+		// wideblock:true,
 	},
 	{
 		groupid:'cp',
@@ -423,15 +427,30 @@ const projectCategoryData = [
 		],
 		wideblock:true,
 	},
-	// {
-	// 	groupid:'xyz',
-	// 	groupname:'Xyz Group',
-	// 	groupicontag:'xyz',
-	// 	groupdescription:'',
-	// 	groupitemsidlist:[
-	// 	],
-	// },
 
+	{
+		groupid:'ld',
+		groupname:'Legacy Dashboards',
+		groupicontag:'oldpc',
+		groupdescription:'Remainder of original dashboard projects and various design ideas from apps and websites',
+		groupitemsidlist:[
+			'atg',
+			'cis255',
+			'linktree',
+			'chooser',
+			'clone',
+			'evolution',
+			'fitness',
+			'finance',
+			'layouts',
+			'math',
+			'music',
+			'probability',
+			'reast',
+			'stocks',
+		],
+		ghostblock:true,
+	},
 	{
 		groupid:'orphans',
 		groupname:'Other Projects',
@@ -451,79 +470,28 @@ const projectCategoryData = [
 		ghostblock:true,
 	},
 
-];
-// console.log('Project categories:',projectCategoryData);
-
-
-// Define groups of groups of projects. 
-const projectMetaGroupData = [
-
 	// {
-	// 	groupid:'x',
-	// 	groupname:'',
-	// 	groupicontag:'copy',
+	// 	groupid:'xyz',
+	// 	groupname:'Xyz Group',
+	// 	groupicontag:'xyz',
 	// 	groupdescription:'',
 	// 	groupitemsidlist:[
-	// 		'',
 	// 	],
 	// },
 
-	{
-		groupid:'p',
-		groupname:'Project Samples',
-		groupname:'Compilations',
-		groupicontag:'smartphone',
-		groupdescription:'Project designs and outcomes for various application and website ideas',
-		groupitemsidlist:[
-			'cp',
-			'ap',
-			'ld',
-			'dc',
-		],
-	},
-
-	{
-		groupid:'w',
-		groupname:'Widgets',
-		groupicontag:'motherboard',
-		groupdescription:'Reusable sub-components for apps, dashboards, and websites',
-		groupitemsidlist:[
-			'sw',
-			'gw',
-			'mw',
-			'nw',
-			'cw',
-			'aw',
-		],
-	},
-
-	{
-		groupid:'l',
-		groupname:'Dev Examples',
-		groupicontag:'lightbulb',
-		groupdescription:'Basic tools and concepts in web / software development',
-		groupitemsidlist:[
-			'cl',
-			'fl',
-			'bl',
-			'3d',
-			// 'xyz',
-		],
-	},
-
 ];
-// console.log('Project collections:',projectMetaGroupData);
+// console.log('Project categories:',projectCategoryData);
 
 
 // Define sets of project groups in matrix. 
 const projectGroupMatrixData = [
 	{
 		setid:'setA',
-		setlist:['cl','fl','nw','dt',],
+		setlist:['cl','fl','nw','tw',],
 	},
 	{
 		setid:'setB',
-		setlist:['bl','aw',],
+		setlist:['bl','aw','mt','wt',],
 	},
 	{
 		setid:'setC',
@@ -539,32 +507,10 @@ const projectGroupMatrixData = [
 	},
 	{
 		setid:'setX',
-		setlist:[/* 'orphans', */'missing',],
+		setlist:['orphans','missing',],
 	},
 ];
 // console.log('Project group sets:',projectGroupMatrixData);
-
-
-// Define sets of project meta-groups in matrix. 
-const projectMetaGroupMatrixData = [
-	{
-		setid:'setA',
-		setlist:['p',],
-	},
-	{
-		setid:'setC',
-		setlist:['l',],
-	},
-	{
-		setid:'setB',
-		setlist:['w',],
-	},
-	// {
-	// 	setid:'setX',
-	// 	setlist:['x',],
-	// },
-];
-// console.log('Project meta-group sets:',projectMetaGroupMatrixData);
 
 
 /*****/
@@ -610,23 +556,6 @@ function getProjectGroupById(pgid) {
 
 		// Return matching project group if found. 
 		if(matchFound) return projectcategory;
-	}
-
-	// Return nothing if project group not found. 
-	return null;
-}
-
-// Get project meta group by id. 
-function getProjectMetaGroupById(pmgid) {
-
-	// Go thru each project groups. 
-	for(let projectmetagroup of projectMetaGroupData) {
-
-		// Check if project group matches query id. 
-		let matchFound = (projectmetagroup.groupid == pmgid);
-
-		// Return matching project group if found. 
-		if(matchFound) return projectmetagroup;
 	}
 
 	// Return nothing if project group not found. 

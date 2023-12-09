@@ -102,6 +102,8 @@ function loadBlog() {
 			let projectid = post.projectid;
 			// Get project name for given post. 
 			let projectname = post.projectname;
+			// Get project name for given post. 
+			let projectauthorid = post.authorid;
 			// Get category name for given post. 
 			let categoryname = getCategoryName(projectid);
 	

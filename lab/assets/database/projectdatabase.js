@@ -717,6 +717,18 @@ const projectData = [
 		authorid:'twd',
 		projectid:'neuro67',
 		projectname:'Neuro67',
+	},{
+		authorid:'twd',
+		projectid:'notepad',
+		projectname:'Notepad',
+	},{
+		authorid:'twd',
+		projectid:'notes',
+		projectname:'Notes',
+	},{
+		authorid:'twd',
+		projectid:'notesquares',
+		projectname:'Note Squares',
 	},
 	
 	{
@@ -1474,18 +1486,6 @@ const newProjectData = [
 	},{
 		authorid:'twd',
 		projectid:'news',
-		projectname:'[Project Name Here]',
-	},{
-		authorid:'twd',
-		projectid:'notepad',
-		projectname:'[Project Name Here]',
-	},{
-		authorid:'twd',
-		projectid:'notes',
-		projectname:'[Project Name Here]',
-	},{
-		authorid:'twd',
-		projectid:'notesquares',
 		projectname:'[Project Name Here]',
 	},{
 		authorid:'twd',

@@ -49,7 +49,7 @@ function loadSiteMap() {
 	// console.log('projectmatrixlayoutB:',projectmatrixlayoutB);
 
 	// Add layout for group matrix to footer. 
-	if(pagegroupmatrixdestination) pagegroupmatrixdestination.innerHTML = groupmatrixlayout + projectmatrixlayoutB;
+	if(pagegroupmatrixdestination) pagegroupmatrixdestination.innerHTML = groupmatrixlayout/*  + projectmatrixlayoutB */;
 	// Add layout for project matrix to site map page. 
 	if(pageprojectmatrixdestination) pageprojectmatrixdestination.innerHTML = projectmatrixlayoutA;
 
