@@ -50,120 +50,115 @@ function loadNavLinks() {
 // Activate navigation links. 
 function activateLinks() {
 
-	// Go thru all navigation links. 
+	// Go thru each navigation link. 
 	for(let link of navlinks) {
 	
-		// Activate link click for navigation link. 
-		// link.addEventListener('mouseenter', showBreadcrumbs);
-		link.addEventListener('click', showBreadcrumbs);
+		// Enable navigation link to show breadcrumbs. 
+		// link.addEventListener('mouseenter', showBreadcrumbLayout);
+		link.addEventListener('click', showBreadcrumbLayout);
 	}
 	
 	/****/
 
-	// Display hierarchical order of pages for selected link. 
-	function showBreadcrumbs(event) {
-	
+	// Show breadcrumb layout on display: hierarchical order of pages for selected link. 
+	function showBreadcrumbLayout(event) {
+		console.log('Now creating breadcrumb layout...');
+
 		// Get selected navigation link. 
 		let selectednavlink = event.currentTarget;
-	
+
+		// Get list of ancestor items. 
+		let ancestoritems = getAncestorLine();
+		console.log('List of ancestor links:', ancestoritems);
+
+		// Initialize breadcrumb layout. 
+		let breadcrumblayout = '';
+
+		// Add house icon to breadcrumb layout. 
+		breadcrumblayout += createNavLink('', getIconByTag('house') );
+		// Add navigation link to breadcrumb layout. 
+		breadcrumblayout += createNavLink('','Home');
+
+		// Go thru list of ancestor items. 
+		for(let navitem of ancestoritems) {
+
+			// Add connecting arrow icon to breadcrumb layout. 
+			breadcrumblayout += getIconByTag('rightcaret');
+
+			// Add navigation link to breadcrumb layout for current item. 
+			breadcrumblayout += createNavLink(navitem.url,navitem.caption)
+		}
+		// console.log('Breadcrumbs:', breadcrumblayout);
+
 		// Show breadcrumb layout on display. 
-		breadcrumbdisplay.innerHTML = createBreadcrumbLayout();
-	
+		breadcrumbdisplay.innerHTML = breadcrumblayout;
+
 		/***/
+
+		// Get list of ancestor items. 
+		function getAncestorLine() {
+			console.log('Now getting list of ancestor items...');
+
+			// Initialize list of ancestor items. 
+			let ancestorline = [];
 	
-		// Get breadcrumb layout: hierarchical order of pages. 
-		function createBreadcrumbLayout() {
-			console.log('Now creating breadcrumb layout...');
+			// Start with list item for selected navigation link. 
+			let currentnavitem = selectednavlink.parentElement;
+			console.log('Child navigation item:',currentnavitem);
+
+			// Initialize continuation marker for hierarchical climb. 
+			let continueclimbing = true;
 	
-			// Get list of ancestor links. 
-			let ancestorlinks = getAncestorLine();
-			console.log('List of ancestor links:', ancestorlinks);
+			// Continue climb till current item is outside navigation menu. 
+			while( continueclimbing ) {
 	
-			// Initialize breadcrumb layout of ancestor name links. 
-			let breadcrumblayout = `
-			<!-- navlink -->
-			<a class="navlink" href="javascript:void(0)">Home</a>
-			<!-- /navlink -->`;
+				// Get link associated to current navigation item. 
+				let navlink = currentnavitem.children[0];
+				// Get url and caption of current item. 
+				let url = navlink.href;
+				let caption = navlink.innerText;
 	
-			// Add icon to breadcrumb layout of ancestor name links. 
-			// breadcrumblayout = `
-			// <!-- navlink -->
-			// <a class="navlink" href="javascript:void(0)">${ getIconByTag('house') }</a>
-			// <!-- /navlink -->`;
+				// Save current link at top of ancestor line. 
+				ancestorline.unshift({
+					url:url,
+					caption:caption,
+				});
 	
-			// Go thru list of ancestor link items. 
-			for(let navitem of ancestorlinks) {
-	
-				// Add connecting arrow. 
-				breadcrumblayout += getIconByTag('rightcaret');
-	
-				// Add link for current navigation item. 
-				breadcrumblayout += `
-				<!-- navlink -->
-				<a class="navlink" href="${navitem.url}">${navitem.name}</a>
-				<!-- /navlink -->`;
+				// Move to parent of current item. 
+				currentnavitem = getParentItem(currentnavitem);
+				console.log('Current item:',currentnavitem);
+
+				// Check if good to continue hierarchical climb. 
+				continueclimbing = checkForNavItem(currentnavitem);
 			}
-			// console.log('Breadcrumbs:', breadcrumblayout);
-	
-			// Return breadcrumb layout of ancestor name links. 
-			return breadcrumblayout;
-	
+
+			// Return list of ancestor items. 
+			return ancestorline;
+
 			/**/
-	
-			// Get list of ancestor links. 
-			function getAncestorLine() {
-				console.log('Now getting list of ancestor links...');
-	
-				// Initialize list of ancestor links. 
-				let result = [];
-		
-				// Start at selected navigation item. 
-				let currentItem = selectednavlink.parentElement;
-				console.log('Selected navigation item:',currentItem);
-	
-				// Check if good to continue going. 
-				let continueGoing = isValidNavItem(currentItem);
-		
-				// Continue while item is valid navigation item. 
-				while( continueGoing ) {
-		
-					// Get associated navigation link. 
-					let navlink = currentItem.children[0];
-					// Get name and url of current item. 
-					let name = navlink.innerText;
-					let url = navlink.href;
-		
-					// Save link at top of ancestor list. 
-					result.unshift({
-						name:name,
-						url:url,
-					});
-		
-					// Move to next potential ancestor item. 
-					currentItem = getParentItem(currentItem);
-					console.log('Current item:',currentItem);
-				}
-	
-				// Return list of ancestor links. 
-				return result;
-	
-				/**/
-	
-				// Get parent item of given navigation item. 
-				function getParentItem(navitem) {
-					return navitem.parentElement.parentElement;
-				}
-		
-				// Check for valid navigation item. 
-				function isValidNavItem(item) {
-					return item.classList.contains('navitem');
-				}
+
+			// Get parent item of given navigation item. 
+			function getParentItem(navitem) {
+				return navitem.parentElement.parentElement;
 			}
 	
-			// Get icon by tag. 
-			function getIconByTag(tag) {
-				return `<svg class="icon ${tag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">${ iconData[tag] }</svg>`;
+			// Check for navigation menu item. 
+			function checkForNavItem(item) {
+				return item.classList.contains('navitem');
 			}
+		}
+
+		// Create navigation link. 
+		function createNavLink(url,caption) {
+			return `
+			<!-- navlink -->
+			<a class="navlink" href="${ url ? url : 'javascript:void(0)' }">${ caption }</a>
+			<!-- /navlink -->`;
+		}
+
+		// Get icon by tag. 
+		function getIconByTag(tag) {
+			return `<svg class="icon ${tag}" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">${ iconData[tag] }</svg>`;
 		}
 	}
 }

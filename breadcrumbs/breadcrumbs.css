@@ -22,6 +22,7 @@ div#container main.main nav.navmenu ol.navlist > li.navitem > a.navlink {font-we
 /* div#container main.main nav.navmenu ol.navlist li.navitem ul.navlist {} */
 
 div#container div#display {background-color:var(--lightblack); color:white; display:flex; align-items:center; padding:1rem;}
-/* div#container div#display:before {content:'Syllabus: ';} */
-div#container div#display svg.icon {font-size:.5em; margin:0 .25rem;}
+div#container div#display:before {content:'Syllabus: '; margin-right:.375rem;}
+div#container div#display svg.icon {/* font-size:.875em; */ margin:0 .125rem;}
+div#container div#display svg.icon.rightcaret {font-size:.625em; margin:0 .375rem;}
 div#container div#display a.navlink {color:inherit; text-decoration:underline;}
