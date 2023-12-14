@@ -2,80 +2,96 @@
 
 
 // Define hierarchy of links for site map. 
-const linkData = [
+const siteMapData = [
 	{
+		linkurl:'',
 		linkname:'Home',
-		linkurl:'javascript:void(0)',
 		sublinks:[
 			{
+				linkurl:'',
 				linkname:'Searching',
-				linkurl:'javascript:void(0)',
 				sublinks:[
 					{
+						linkurl:'',
 						linkname:'Linear Search',
-						linkurl:'javascript:void(0)',
 						sublinks:[],
 					},
 					{
+						linkurl:'',
 						linkname:'Binary Search',
-						linkurl:'javascript:void(0)',
 						sublinks:[],
 					},
 				],
 			},
 			{
+				linkurl:'',
 				linkname:'Sorting',
-				linkurl:'javascript:void(0)',
 				sublinks:[
 					{
+						linkurl:'',
 						linkname:'Bubble Sort',
-						linkurl:'javascript:void(0)',
 						sublinks:[],
 					},
 					{
+						linkurl:'',
 						linkname:'Merge Sort',
-						linkurl:'javascript:void(0)',
 						sublinks:[
 							{
+								linkurl:'',
 								linkname:'Recursive Merge Sort',
-								linkurl:'javascript:void(0)',
 								sublinks:[],
 							},
 							{
+								linkurl:'',
 								linkname:'Iterative Merge Sort',
-								linkurl:'javascript:void(0)',
 								sublinks:[],
 							},
 						],
 					},
 					{
+						linkurl:'',
 						linkname:'Selection Sort',
-						linkurl:'javascript:void(0)',
 						sublinks:[],
 					},
 					{
+						linkurl:'',
 						linkname:'Insertion Sort',
-						linkurl:'javascript:void(0)',
 						sublinks:[],
 					},
 				],
 			},
 			{
+				linkurl:'',
 				linkname:'Tree',
-				linkurl:'javascript:void(0)',
 				sublinks:[
 					{
+						linkurl:'',
 						linkname:'Binary Tree',
-						linkurl:'javascript:void(0)',
-						sublinks:[],
+						sublinks:[
+							{
+								linkurl:'',
+								linkname:'Binary Search Tree',
+								sublinks:[],
+							},
+						],
 					},
 					{
-						linkname:'Binary Search Tree',
-						linkurl:'javascript:void(0)',
-						sublinks:[],
+						linkurl:'',
+						linkname:'Multiway Tree',
+						sublinks:[
+							{
+								linkurl:'',
+								linkname:'Multiway Search Tree',
+								sublinks:[],
+							},
+						],
 					},
 				],
 			},
 		],
 	},
 ];
+
+
+// 
+// siteMapData
