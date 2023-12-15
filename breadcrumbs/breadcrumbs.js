@@ -21,7 +21,7 @@ const navlinks = document.querySelectorAll('div#container main.main nav.navmenu 
 // loadNavLinks();
 
 // Activate navigation links. 
-activateLinks();
+activateNavLinks();
 
 
 /*****/
@@ -48,7 +48,7 @@ function loadNavLinks() {
 }
 
 // Activate navigation links. 
-function activateLinks() {
+function activateNavLinks() {
 
 	// Go thru each navigation link. 
 	for(let link of navlinks) {
@@ -75,11 +75,13 @@ function activateLinks() {
 		let breadcrumblayout = '';
 
 		// Add house icon to breadcrumb layout. 
-		breadcrumblayout += createNavLink('', getIconByTag('house') );
+		breadcrumblayout += getIconByTag('house');
+		// breadcrumblayout += createNavLink('', getIconByTag('house') );
+
 		// Add navigation link to breadcrumb layout. 
 		breadcrumblayout += createNavLink('','Home');
 
-		// Go thru list of ancestor items. 
+		// Go thru each ancestor item. 
 		for(let navitem of ancestoritems) {
 
 			// Add connecting arrow icon to breadcrumb layout. 
@@ -104,7 +106,7 @@ function activateLinks() {
 	
 			// Start with list item for selected navigation link. 
 			let currentnavitem = selectednavlink.parentElement;
-			console.log('Child navigation item:',currentnavitem);
+			console.log('Selected navigation item:',currentnavitem);
 
 			// Initialize continuation marker for hierarchical climb. 
 			let continueclimbing = true;
@@ -118,18 +120,18 @@ function activateLinks() {
 				let url = navlink.href;
 				let caption = navlink.innerText;
 	
-				// Save current link at top of ancestor line. 
+				// Save current link to top of ancestor line. 
 				ancestorline.unshift({
 					url:url,
 					caption:caption,
 				});
 	
 				// Move to parent of current item. 
-				currentnavitem = getParentItem(currentnavitem);
-				console.log('Current item:',currentnavitem);
+				currentnavitem = getParentNavItem(currentnavitem);
+				console.log('Current navigation item:',currentnavitem);
 
 				// Check if good to continue hierarchical climb. 
-				continueclimbing = checkForNavItem(currentnavitem);
+				continueclimbing = checkIfNavItem(currentnavitem);
 			}
 
 			// Return list of ancestor items. 
@@ -138,12 +140,14 @@ function activateLinks() {
 			/**/
 
 			// Get parent item of given navigation item. 
-			function getParentItem(navitem) {
+			function getParentNavItem(navitem) {
+
+				// Go up two levels: from child navigation item to navigation list, navigation list to parent navigation item. 
 				return navitem.parentElement.parentElement;
 			}
 	
 			// Check for navigation menu item. 
-			function checkForNavItem(item) {
+			function checkIfNavItem(item) {
 				return item.classList.contains('navitem');
 			}
 		}
