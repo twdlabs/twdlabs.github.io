@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<title>Typewriter</title>
+
+		<!-- Bootstrap 3 -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<!-- <link href="https://import.atgmedia.xyz/bs3/bootstrap.min.css" rel="stylesheet" type="text/css"/> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+		<!-- <script src="https://import.atgmedia.xyz/bs3/jquery.min.js" type="text/javascript"></script> -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+		<!-- <script src="https://import.atgmedia.xyz/bs3/bootstrap.min.js" type="text/javascript"></script> -->
+
+		<!-- Main CSS Stylesheet -->
+		<link href="typewriter.css" type="text/css" rel="stylesheet"/>
+	</head>
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- #typewriter -->
+			<div id="typewriter" class="col-50">
+
+				<!-- h3 -->
+				<h3>Typewriter</h3>
+				<!-- /h3 -->
+
+				<!-- #text -->
+				<div id="text" class="blink"></div>
+				<!-- /#text -->
+
+				<!-- button -->
+				<button onclick="startTyping();">Type</button>
+				<!-- /button -->
+
+				<!-- button -->
+				<button onclick="stop();">Stop</button>
+				<!-- /button -->
+
+				<!-- button -->
+				<button onclick="startBackspace();">Delete</button>
+				<!-- /button -->
+
+			</div>
+			<!-- /#typewriter -->
+
+			<!-- #counter -->
+			<div id="counter" class="col-50">
+
+				<!-- h3 -->
+				<h3>Counter</h3>
+				<!-- /h3 -->
+
+				<main>
+
+					<div>
+						<!-- #num -->
+						<input id="numA" class="num" type="number" value="500" min="0" />
+						<!-- /#num -->
+
+						<!-- #numDisplay -->
+						<div id="numDisplayA" class="numDisplay">0</div>
+						<!-- /#numDisplay -->
+					</div>
+
+					<div>
+						<!-- #num -->
+						<input id="numB" class="num" type="number" value="100" min="0" />
+						<!-- /#num -->
+
+						<!-- #numDisplay -->
+						<div id="numDisplayB" class="numDisplay">0</div>
+						<!-- /#numDisplay -->
+					</div>
+					
+				</main>
+
+				<!-- button -->
+				<button onclick="startCounting()">Count</button>
+				<!-- /button -->
+
+			</div>
+			<!-- /#counter -->
+
+		</div>
+		<!-- /#container -->
+
+
+
+		<!-- Main JS Scripts -->
+		<script type="text/javascript">
+			var dt = 50;	// num of milliseconds between changes
+		</script>
+
+		<!-- Typewriter Script -->
+		<script src="type.js" type="text/javascript"></script>
+
+		<!-- Counter Script -->
+		<script src="count.js" type="text/javascript"></script>
+		
+	</body>
+</html>

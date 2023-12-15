@@ -1,0 +1,22 @@
+
+html,body {background-color:#0008; color:#FFF; height:100%; margin:0;}
+
+div#container {min-height:100%; text-align:center;}
+div#container {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container div.col-50 {width:50%; height:100%; display:inline-block;}
+div#container div.col-50 button {margin-top:24px; color:#000; padding:.5rem 1rem;}
+
+div#container div#typewriter {}
+div#container div#typewriter div#text {}
+div#container div#typewriter div#text:after {content:'|'; margin-left:.25rem; opacity:1;}
+div#container div#typewriter div#text.blink:after {animation:blinking 0.75s infinite;}
+@keyframes blinking {
+	0% {opacity:1;}
+	50% {opacity:0;}
+	100% {opacity:1;}
+}
+
+div#container div#counter {}
+div#container div#counter main {display:flex; flex-direction:row; justify-content:center;}
+div#container div#counter input.num {border-radius:5px; border:1px solid #888; width:4em; padding:.5rem 1rem; text-align:right; color:#000;}
+div#container div#counter div.numDisplay {font-size:40px;}
