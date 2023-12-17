@@ -1071,7 +1071,7 @@ const projectData = [
 		projectname:'Tropical Ghana',
 	},{
 		authorid:'twd',
-		projectid:'typer',
+		projectid:'typecounter',
 		projectname:'Type Counter',
 	},{
 		authorid:'twd',

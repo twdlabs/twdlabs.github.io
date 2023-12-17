@@ -126,15 +126,15 @@ const linkData = {
 const methodData = [
 
 	{
-		icontag:'piechart',
-		header:'Statistics',
-		description:'Applying concepts from probability thoery, using descriptive statistics and inferential statistics',
+		icontag:'calculator',
+		header:'Mathematics',
+		description:'Building useful mathematical models using algebra, geometry, trigonometry, and calculus',
 	},
 
 	{
-		icontag:'keyboard',
-		header:'Programming',
-		description:'Building useful models of real world phenomena using mathematics, statistics, and programming ',
+		icontag:'piechart',
+		header:'Statistics',
+		description:'Applying concepts from probability thoery, descriptive statistics, and inferential statistics',
 	},
 
 	{
@@ -162,9 +162,9 @@ const methodData = [
 	},
 
 	// {
-	// 	icontag:'calculator',
-	// 	header:'',
-	// 	description:'',
+	// 	icontag:'keyboard',
+	// 	header:'Programming',
+	// 	description:'Building useful models of real world phenomena using mathematics, statistics, and programming',
 	// },
 
 	// {
