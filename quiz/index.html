@@ -25,15 +25,27 @@
 			<!-- quizlauncher -->
 			<nav class="quizlauncher">
 
-				<!-- launchbtn -->
-				<div class="launchbtn" data-quizindex="xyz" onclick="launchQuizById('xyz')">
-	
-					<!-- caption -->
-					<span class="caption">Start Quiz</span>
-					<!-- /caption -->
-	
-				</div>
-				<!-- /launchbtn -->
+				<!-- quizlist -->
+				<ul class="quizlist">
+
+					<!-- quizitem -->
+					<li class="quizitem">
+
+						<!-- launchbtn -->
+						<div class="launchbtn" data-quizindex="xyz" onclick="launchQuizById('xyz')">
+			
+							<!-- caption -->
+							<span class="caption">Start Quiz</span>
+							<!-- /caption -->
+			
+						</div>
+						<!-- /launchbtn -->
+
+					</li>
+					<!-- /quizitem -->
+
+				</ul>
+				<!-- /quizlist -->
 
 			</nav>
 			<!-- /quizlauncher -->
@@ -85,7 +97,7 @@
 					<!-- /btn -->
 
 					<!-- btn -->
-					<div class="btn p" onclick="goToQuestions()">Continue</div>
+					<div class="btn p" onclick="goToQuizItems()">Continue</div>
 					<!-- /btn -->
 
 				</footer>

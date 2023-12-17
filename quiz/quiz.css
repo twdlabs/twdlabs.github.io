@@ -52,15 +52,18 @@ div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;
 
 
 /* Quiz Launcher */
-/* div#container nav.quizlauncher {background-color:var(--whiteglass); position:fixed; top:0; left:0; right:0; width:100%;} */
-div#container nav.quizlauncher {display:flex; flex-direction:row; grid-gap:.75rem; padding:.75rem 1rem;}
+div#container nav.quizlauncher {padding:.75rem 1rem;}
 div#container.active nav.quizlauncher {display:none;}
 div#container.active.q nav.quizlauncher {display:none;}
 div#container.active.a nav.quizlauncher {display:none;}
-div#container nav.quizlauncher div.launchbtn {background-color:white; display:grid; place-items:center; text-align:center; padding:.5rem 1rem; border-radius:var(--cornersize);/*  margin-top:1rem; */ box-shadow:var(--boxshadow);}
-div#container nav.quizlauncher div.launchbtn {font-weight:bold; width:auto; cursor:pointer; user-select:none;}
-/* div#container.active nav.quizlauncher div.launchbtn {display:none;} */
-/* div#container nav.quizlauncher div.launchbtn span.caption {margin:.75rem 0;} */
+/* Quiz Launcher Contents */
+/* div#container nav.quizlauncher {} */
+div#container nav.quizlauncher ul.quizlist {display:flex; flex-direction:row; grid-gap:.75rem; list-style:none; padding:0; margin:0;}
+/* div#container nav.quizlauncher ul.quizlist li.quizitem {} */
+div#container nav.quizlauncher ul.quizlist li.quizitem div.launchbtn {background-color:white; display:grid; place-items:center; text-align:center; padding:.5rem 1rem; border-radius:var(--cornersize);/*  margin-top:1rem; */ box-shadow:var(--boxshadow);}
+div#container nav.quizlauncher ul.quizlist li.quizitem div.launchbtn {font-weight:bold; width:auto; cursor:pointer; user-select:none;}
+/* div#container.active nav.quizlauncher ul.quizlist li.quizitem div.launchbtn {display:none;} */
+/* div#container nav.quizlauncher ul.quizlist li.quizitem div.launchbtn span.caption {margin:.75rem 0;} */
 
 
 
@@ -86,6 +89,7 @@ div#container main.rules {display:none;}
 div#container.active main.rules {display:block;}
 div#container.active.q main.rules {display:none;}
 div#container.active.a main.rules {display:none;}
+/* Rules Page Contents */
 /* div#container main.rules header.top {} */
 /* div#container main.rules section.middle {} */
 div#container main.rules section.middle ol.ruleslist {padding:0 1.5rem; /* margin:0; margin-top:2rem; */}
@@ -100,6 +104,7 @@ div#container main.questions {display:none;}
 div#container.active main.questions {display:none;}
 div#container.active.q main.questions {display:block;}
 div#container.active.a main.questions {display:none;}
+/* Questions Page Contents */
 div#container main.questions header.top div.timer {background-color:var(--whiteblue); font-size:1.25em; padding:.375rem .5rem; border-radius:.5rem; border:.125rem solid var(--blue);}
 div#container main.questions header.top div.timer {display:flex; flex-direction:row; align-items:center;}
 /* div#container main.questions header.top div.timer span {display:block;} */
@@ -135,6 +140,7 @@ div#container main.assessment {display:none;}
 div#container.active main.assessment {display:none;}
 div#container.active.q main.assessment {display:none;}
 div#container.active.a main.assessment {display:block;}
+/* Assessment Page Contents */
 /* div#container main.assessment header.top {} */
 div#container main.assessment section.middle {text-align:center; border:0 none;}
 div#container main.assessment section.middle p.textcopy {font-size:1.5rem; font-weight:100; margin:0; margin-top:1rem;}
@@ -151,15 +157,26 @@ div#container main.assessment footer.bottom {justify-content:center; border:0 no
 
 
 	/* Quiz Launcher */
+	/* div#container nav.quizlauncher {} */
 
 	
 	/* General Page */
+	/* div#container main {} */
 
 	/* Rules Page */
+	/* div#container main.rules {} */
 
 	/* Questions Page */
+	/* div#container main.questions {} */
+	/* div#container main.questions section.middle {} */
+	div#container main.questions section.middle h1.question {font-size:1.25rem;}
+	/* div#container main.questions section.middle ul.answerlist {} */
+	div#container main.questions section.middle ul.answerlist li.answeritem {font-size:1.125rem;}
+	/* div#container main.questions footer.bottom {} */
+	div#container main.questions footer.bottom div.counter {font-size:1.125rem;}
 
 	/* Assessment Page */
+	/* div#container main.assessment {} */
 }
 
 /* Big Smartphone Screen */
@@ -167,15 +184,26 @@ div#container main.assessment footer.bottom {justify-content:center; border:0 no
 
 
 	/* Quiz Launcher */
+	/* div#container nav.quizlauncher {} */
 
 	
 	/* General Page */
+	/* div#container main {} */
 
 	/* Rules Page */
+	/* div#container main.rules {} */
 
 	/* Questions Page */
+	/* div#container main.questions {} */
+	/* div#container main.questions section.middle {} */
+	div#container main.questions section.middle h1.question {font-size:1.125rem;}
+	/* div#container main.questions section.middle ul.answerlist {} */
+	div#container main.questions section.middle ul.answerlist li.answeritem {font-size:1rem;}
+	/* div#container main.questions footer.bottom {} */
+	div#container main.questions footer.bottom div.counter {font-size:1rem;}
 
 	/* Assessment Page */
+	/* div#container main.assessment {} */
 }
 
 /* Small Smartphone Screen */
@@ -183,16 +211,22 @@ div#container main.assessment footer.bottom {justify-content:center; border:0 no
 
 
 	/* Quiz Launcher */
-	div#container nav.quizlauncher {flex-direction:column;}
+	div#container nav.quizlauncher {background-color:var(--whiteglass); position:fixed; top:0; left:0; right:0; width:100%;}
+	div#container nav.quizlauncher ul.quizlist {flex-direction:column;}
 
 	
 	/* General Page */
+	/* div#container main {} */
 	div#container main header.top {flex-direction:column;}
 
 	/* Rules Page */
+	/* div#container main.rules {} */
 
 	/* Questions Page */
+	/* div#container main.questions {} */
+	/* div#container main.questions header.top {} */
 	div#container main.questions header.top div.timer {margin-top:.5rem;}
 
 	/* Assessment Page */
+	/* div#container main.assessment {} */
 }

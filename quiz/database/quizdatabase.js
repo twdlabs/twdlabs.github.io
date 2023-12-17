@@ -58,17 +58,23 @@ function addLaunchBtns() {
 
 		// Comple launch button for quiz item. 
 		result += `
-		<!-- launchbtn -->
-		<div class="launchbtn" data-quizindex="${quizid}" onclick="launchQuizById('${quizid}')">
+		<!-- quizitem -->
+		<li class="quizitem">
 
-			<!-- caption -->
-			<span class="caption">${quizitem.quizname} Quiz</span>
-			<!-- /caption -->
+			<!-- launchbtn -->
+			<div class="launchbtn" data-quizindex="${quizid}" onclick="launchQuizById('${quizid}')">
+	
+				<!-- caption -->
+				<span class="caption">${quizitem.quizname} Quiz</span>
+				<!-- /caption -->
+	
+			</div>
+			<!-- /launchbtn -->
 
-		</div>
-		<!-- /launchbtn -->`
+		</li>
+		<!-- /quizitem -->`;
 	}
 
 	// Display result. 
-	quizlauncher.innerHTML = result;
+	quizlauncherlistdestination.innerHTML = result;
 }

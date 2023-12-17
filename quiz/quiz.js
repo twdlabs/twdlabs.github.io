@@ -7,8 +7,8 @@ const container = document.querySelector('div#container');
 // Get all windows. 
 // const allwindows = document.querySelectorAll('div#container main');
 
-// Get quiz launcher. 
-const quizlauncher = document.querySelector('div#container nav.quizlauncher');
+// Get list for quiz launchers. 
+const quizlauncherlistdestination = document.querySelector('div#container nav.quizlauncher ul.quizlist');
 
 
 // Get quiz name headers-. 
@@ -95,11 +95,9 @@ function goToRules() {
 	
 	// Load quiz rules. 
 	loadRules();
-
-	// Activate instructions page. 
-	container.classList.add('active');
-	container.classList.remove('q');
-	container.classList.remove('a');
+	
+	// Show quiz rules. 
+	showRules();
 
 	/****/
 
@@ -126,11 +124,20 @@ function goToRules() {
 		// Display result on page. 
 		ruleslistdestination.innerHTML = result;
 	}
+
+	// Show instructions for selected quiz. 
+	function showRules() {
+
+		// Activate instructions page. 
+		container.classList.add('active');
+		container.classList.remove('q');
+		container.classList.remove('a');
+	}
 }
 
 
 // Go to quiz items. 
-function goToQuestions() {
+function goToQuizItems() {
 
 	// Load item count for currently selected quiz. 
 	loadItemCount();
@@ -138,10 +145,8 @@ function goToQuestions() {
 	// Load initial item of currently selected quiz. 
 	loadNextQuizItem();
 
-	// Activate questions page. 
-	container.classList.add('active');
-	container.classList.remove('a');
-	container.classList.add('q');
+	// Show quiz items. 
+	showQuizItems();
 	
 	/****/
 
@@ -156,6 +161,15 @@ function goToQuestions() {
 
 		// Display question count. 
 		questioncountdestination.innerHTML = itemcount;
+	}
+
+	// Show quiz items. 
+	function showQuizItems() {
+
+		// Activate questions page. 
+		container.classList.add('active');
+		container.classList.remove('a');
+		container.classList.add('q');
 	}
 }
 // Load next quiz component. 
@@ -232,8 +246,12 @@ function loadNextQuizItem() {
 // Go to quiz assessment. 
 function goToAssessment() {
 
-	// Reset question index. 
+	// Reset index for quiz items. 
 	currentquizitemindex = -1;
+
+	// TODO: Present contents of assessment. 
+	// const xyz = document.querySelector('xyz');
+	// xyz.innerHTML = '';
 
 	// Activate assessment page. 
 	container.classList.add('active');
@@ -245,11 +263,11 @@ function goToAssessment() {
 // Replay current quiz. 
 function replayQuiz() {
 
-	// Go to quiz questions. 
-	// goToQuestions();
-
 	// Display quiz rules. 
 	goToRules();
+
+	// Go to quiz items. 
+	// goToQuizItems();
 }
 
 // Close quiz. 
