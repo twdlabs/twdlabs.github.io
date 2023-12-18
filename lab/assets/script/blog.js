@@ -22,10 +22,10 @@ console.log('Archive posts destination:',archivePostsDestination);
 
 
 // Get filter panel. 
-const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filterpanel');
+const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filters div.filterpanel');
 console.log('filterpanel:',filterpanel);
 // Get group headers in filter panel. 
-const filterpanelheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead');
+const filterpanelheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead');
 console.log('filterpanelheaders:',filterpanelheaders);
 
 
@@ -112,10 +112,10 @@ function loadBlog() {
 			let projectid = post.projectid;
 			// Get project name for given post. 
 			let projectname = post.projectname;
-			// Get project name for given post. 
-			let projectauthorid = post.authorid;
 			// Get category name for given post. 
 			let categoryname = getCategoryName(projectid);
+			// Get author name for given post. 
+			let authorname = getAuthorName(post.authorid);
 	
 			// Get url of page to be added. 
 			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
@@ -146,6 +146,10 @@ function loadBlog() {
 						<!-- category -->
 						<span class="category">${ categoryname }</span>
 						<!-- /category -->
+			
+						<!-- author -->
+						<span class="author">${ authorname }</span>
+						<!-- /author -->
 	
 					</div>
 					<!-- /caption -->
@@ -158,7 +162,7 @@ function loadBlog() {
 
 			/**/
 	
-			// TODO: Get category name for given project. 
+			// Get category name for given project. 
 			function getCategoryName(projectid) {
 	
 				// Go thru each project category. 
@@ -169,6 +173,24 @@ function loadBlog() {
 
 					// Return name of current category if project found. 
 					if(projectfound) return projectcategory.groupname;
+				}
+
+				// Return nothing if project not found in any category. 
+				return '';
+			}
+	
+			// TODO: Get author name for given project. 
+			function getAuthorName(authorid) {
+				return authorid;
+	
+				// Go thru each project category. 
+				for(let projectauthor of projectAuthorData) {
+
+					// Check if project found in current category. 
+					let projectfound = projectauthor.authorid == authorid;
+
+					// Return name of current category if project found. 
+					if(projectfound) return projectauthor.authorname;
 				}
 
 				// Return nothing if project not found in any category. 
@@ -310,8 +332,10 @@ function loadBlog() {
 		// Activate previews for loaded blog post cards. 
 		activatePostPreviews();
 	
-		// Activate blog post filter. 
-		if(searchqueryfield) activateBlogFilter();
+		// Activate blog post search. 
+		if(searchqueryfield) activateBlogSearch();
+
+		/***/
 
 		// Activate previews for blog post cards. 
 		function activatePostPreviews() {
@@ -359,29 +383,29 @@ function loadBlog() {
 			}
 		}
 
-		// Activate blog post filter. 
-		function activateBlogFilter() {
+		// Activate blog post search. 
+		function activateBlogSearch() {
 	
-			// Activate input field to filter blog posts. 
+			// Activate input field to search blog posts. 
 			searchqueryfield.addEventListener('input',searchBlogPosts);
-			searchclearbtn.addEventListener('click',clearFilterQuery);
+			searchclearbtn.addEventListener('click',clearSearchQuery);
 	
-			// Clear any previous filter query. 
-			clearFilterQuery();
+			// Clear any previous search query. 
+			clearSearchQuery();
 	
-			/***/
+			/**/
 	
-			// Search blog posts by query. 
+			// Show blog posts that match given search query. 
 			function searchBlogPosts() {
 	
 				// Initialize number of matching posts. 
 				let numMatchingPosts = 0;
 	
-				// Get filter query. 
-				let searchquery = (searchqueryfield.value).toUpperCase();
-				// Get list of filter queries. 
+				// Get search query. 
+				let searchquery = searchqueryfield.value.toUpperCase();
+				// Get list of words in search query. 
 				let searchquerywords = searchquery.split(' ');
-				console.log('Filtering...', searchquery, searchquerywords);
+				console.log('Searching posts...', searchquery, searchquerywords);
 			
 				// Go thru all blog posts. 
 				for(let postcard of blogpostcards) {
@@ -390,9 +414,9 @@ function loadBlog() {
 					let projectid = postcard.getAttribute('data-projectid').toUpperCase();
 	
 					// Check for matching post (by full query). 
-					let matchesFullQuery = checkForMatchFullQuery(projectid,searchquery);
+					let matchesFullQuery = checkForMatchByFullQuery(projectid,searchquery);
 					// Check for matching post (by each word). 
-					let matchesEveryWord = checkForMatchEachWord(projectid,searchquerywords);
+					let matchesEveryWord = checkForMatchByEachWord(projectid,searchquerywords);
 					// Compile match criteria. 
 					let matchCriteriaMet = matchesFullQuery || matchesEveryWord;
 					if(matchCriteriaMet) numMatchingPosts++;
@@ -409,14 +433,14 @@ function loadBlog() {
 				/**/
 	
 				// Check for matching post (by full query). 
-				function checkForMatchFullQuery(projectid,searchquery) {
+				function checkForMatchByFullQuery(projectid,searchquery) {
 					return projectid.includes(searchquery)
 				}
 	
 				// Check for matching post (by each word). 
-				function checkForMatchEachWord(projectid,searchquerywords) {
+				function checkForMatchByEachWord(projectid,searchquerywords) {
 			
-					// Go thru all words in filter query. 
+					// Go thru all words in search query. 
 					for(let word of searchquerywords) {
 	
 						let wordPresent = projectid.includes(word);
@@ -444,13 +468,13 @@ function loadBlog() {
 				}
 			}
 	
-			// Clear filter query. 
-			function clearFilterQuery() {
+			// Clear search query. 
+			function clearSearchQuery() {
 
-				// Clear filter query. 
+				// Clear search query. 
 				searchqueryfield.value = '';
 	
-				// Search blog posts by query. 
+				// Show all blog posts. 
 				searchBlogPosts();
 			}
 		}
@@ -470,25 +494,31 @@ function loadBlog() {
 	}
 }
 
+// Toggle post size. 
+function togglePostSize(togglebtn) {
+
+	// Toggle size of posts in archive section. 
+	archivePostsDestination.classList.toggle('big');
+
+	// Toggle state of size toggler button. 
+	togglebtn.classList.toggle('on');
+}
+
 // Toggle filter panel. 
 function toggleFilterPanel() {
 
 	// Toggle filter panel. 
-	filterpanel.classList.toggle('active');
-
-	// Toggle state of posts section. 
-	// archivePostsDestination.classList.toggle('big');
+	filterpanel.classList.toggle('open');
 }
 
 // Toggle filter group. 
 function toggleFilterGroup(header) {
 
-	// Toggle filter panel. 
+	// Get filter group. 
 	let filtergroup = header.parentElement;
-	filtergroup.classList.toggle('open');
 
-	// Toggle state of posts section. 
-	// archivePostsDestination.classList.toggle('big');
+	// Toggle filter group. 
+	filtergroup.classList.toggle('open');
 }
 
 // Toggle section like accordion. 

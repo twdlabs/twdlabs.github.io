@@ -482,7 +482,7 @@
 								<!-- /searchlabel -->
 		
 								<!-- searchquery -->
-								<input class="searchquery" id="searchquery" type="text" placeholder="Filter posts...">
+								<input class="searchquery" id="searchquery" type="text" placeholder="Search posts...">
 								<!-- /searchquery -->
 		
 								<!-- searchclearbtn -->
@@ -507,29 +507,53 @@
 							</div>
 							<!-- /searchquery -->
 
-							<!-- filterbtn -->
-							<div class="filterbtn" onclick="toggleFilterPanel()">
+							<!-- togglers -->
+							<div class="togglers">
+
+								<!-- sizerbtn -->
+								<div class="sizerbtn btn" onclick="togglePostSize(this)">
+			
+									<!-- icon -->
+									<svg class="icon gridbig" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
+									</svg>
+									<!-- /icon -->
+			
+									<!-- icon -->
+									<svg class="icon gridsmall" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+									</svg>
+									<!-- /icon -->
 		
-								<!-- icon -->
-								<svg class="icon funnel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
-								</svg>
-								<!-- /icon -->
+								</div>
+								<!-- /sizerbtn -->
+
+								<!-- filterbtn -->
+								<div class="filterbtn btn" onclick="toggleFilterPanel()">
+			
+									<!-- icon -->
+									<svg class="icon funnel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+									</svg>
+									<!-- /icon -->
+			
+									<!-- icon -->
+									<!-- <svg class="icon funnel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
+									</svg> -->
+									<!-- /icon -->
+			
+									<!-- icon -->
+									<!-- <svg class="icon filter" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+									</svg> -->
+									<!-- /icon -->
 		
-								<!-- icon -->
-								<!-- <svg class="icon funnel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"/>
-								</svg> -->
-								<!-- /icon -->
-		
-								<!-- icon -->
-								<!-- <svg class="icon filter" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-								</svg> -->
-								<!-- /icon -->
-	
+								</div>
+								<!-- /filterbtn -->
+
 							</div>
-							<!-- /filterbtn -->
+							<!-- /togglers -->
 	
 						</div>
 						<!-- /filter -->
@@ -540,191 +564,333 @@
 					<!-- body -->
 					<div class="body split">
 
-						<!-- filterpanel -->
-						<div class="filterpanel">
+						<!-- filters -->
+						<div class="filters">
 
-							<!-- panelhead -->
-							<h2 class="panelhead">
+							<!-- already -->
+							<div class="already">
 
-								<!-- caption -->
-								<span class="caption">Filter Results</span>
-								<!-- /caption -->
+								<!-- listhead -->
+								<h2 class="listhead">Filters Applied:</h2>
+								<!-- /listhead -->
 
-							</h2>
-							<!-- /panelhead -->
+								<!-- filterlist -->
+								<ul class="filterlist">
 
-							<!-- filterlist -->
-							<ul class="filterlist">
-	
-								<!-- filtergroup -->
-								<li class="filtergroup open">
-
-									<!-- filterhead -->
-									<h3 class="filterhead" onclick="toggleFilterGroup(this)">
+									<!-- filteritem -->
+									<li class="filteritem">
 
 										<!-- caption -->
-										<span class="caption">Category</span>
+										<span class="caption">Criterion A</span>
 										<!-- /caption -->
-
+		
 										<!-- icon -->
-										<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 										</svg>
 										<!-- /icon -->
 
-										<!-- icon -->
-										<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-										</svg>
-										<!-- /icon -->
+									</li>
+									<!-- /filteritem -->
 
-									</h3>
-									<!-- /filterhead -->
-
-									<!-- filterbody -->
-									<div class="filterbody">
-
-										<!-- criterialist -->
-										<ul class="criterialist">
-				
-											<!-- criterion -->
-											<li class="criterion">
-	
-												<!-- checkbox -->
-												<input class="checkbox" type="checkbox" name="xyz" id="xyz">
-												<!-- /checkbox -->
-	
-												<!-- caption -->
-												<label class="caption" for="xyz">Criterion</label>
-												<!-- /caption -->
-												
-											</li>
-											<!-- /criterion -->
-				
-											<!-- criterion -->
-											<li class="criterion">
-	
-												<!-- checkbox -->
-												<input class="checkbox" type="checkbox" name="xyz" id="xyz">
-												<!-- /checkbox -->
-	
-												<!-- caption -->
-												<label class="caption" for="xyz">Criterion</label>
-												<!-- /caption -->
-												
-											</li>
-											<!-- /criterion -->
-				
-											<!-- criterion -->
-											<li class="criterion">
-	
-												<!-- checkbox -->
-												<input class="checkbox" type="checkbox" name="xyz" id="xyz">
-												<!-- /checkbox -->
-	
-												<!-- caption -->
-												<label class="caption" for="xyz">Criterion</label>
-												<!-- /caption -->
-												
-											</li>
-											<!-- /criterion -->
-											
-										</ul>
-										<!-- /criterialist -->
-										
-									</div>
-									<!-- /filterbody -->
-									
-								</li>
-								<!-- /filtergroup -->
-	
-								<!-- filtergroup -->
-								<li class="filtergroup open">
-
-									<!-- filterhead -->
-									<h3 class="filterhead" onclick="toggleFilterGroup(this)">
+									<!-- filteritem -->
+									<li class="filteritem">
 
 										<!-- caption -->
-										<span class="caption">Category</span>
+										<span class="caption">Criterion B</span>
 										<!-- /caption -->
-
+		
 										<!-- icon -->
-										<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 										</svg>
 										<!-- /icon -->
 
+									</li>
+									<!-- /filteritem -->
+
+									<!-- filteritem -->
+									<li class="filteritem">
+
+										<!-- caption -->
+										<span class="caption">Criterion C</span>
+										<!-- /caption -->
+		
 										<!-- icon -->
-										<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 										</svg>
 										<!-- /icon -->
 
-									</h3>
-									<!-- /filterhead -->
-
-									<!-- filterbody -->
-									<div class="filterbody">
-
-										<!-- criterialist -->
-										<ul class="criterialist">
-				
-											<!-- criterion -->
-											<li class="criterion">
-	
-												<!-- checkbox -->
-												<input class="checkbox" type="checkbox" name="xyz" id="xyz">
-												<!-- /checkbox -->
-	
-												<!-- caption -->
-												<label class="caption" for="xyz">Criterion</label>
-												<!-- /caption -->
-												
-											</li>
-											<!-- /criterion -->
-				
-											<!-- criterion -->
-											<li class="criterion">
-	
-												<!-- checkbox -->
-												<input class="checkbox" type="checkbox" name="xyz" id="xyz">
-												<!-- /checkbox -->
-	
-												<!-- caption -->
-												<label class="caption" for="xyz">Criterion</label>
-												<!-- /caption -->
-												
-											</li>
-											<!-- /criterion -->
-				
-											<!-- criterion -->
-											<li class="criterion">
-	
-												<!-- checkbox -->
-												<input class="checkbox" type="checkbox" name="xyz" id="xyz">
-												<!-- /checkbox -->
-	
-												<!-- caption -->
-												<label class="caption" for="xyz">Criterion</label>
-												<!-- /caption -->
-												
-											</li>
-											<!-- /criterion -->
-											
-										</ul>
-										<!-- /criterialist -->
-										
-									</div>
-									<!-- /filterbody -->
+									</li>
+									<!-- /filteritem -->
 									
-								</li>
-								<!-- /filtergroup -->
-								
-							</ul>
-							<!-- /filterlist -->
+								</ul>
+								<!-- /filterlist -->
+
+							</div>
+							<!-- /already -->
+
+							<!-- filterpanel -->
+							<div class="filterpanel">
 	
+								<!-- panelhead -->
+								<h2 class="panelhead">
+	
+									<!-- caption -->
+									<span class="caption">Filter Results</span>
+									<!-- /caption -->
+	
+								</h2>
+								<!-- /panelhead -->
+	
+								<!-- filterlist -->
+								<ul class="filterlist">
+		
+									<!-- filtergroup -->
+									<li class="filtergroup open">
+	
+										<!-- filterhead -->
+										<h3 class="filterhead" onclick="toggleFilterGroup(this)">
+	
+											<!-- caption -->
+											<span class="caption">Category</span>
+											<!-- /caption -->
+	
+											<!-- icon -->
+											<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+											</svg>
+											<!-- /icon -->
+	
+											<!-- icon -->
+											<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+											</svg>
+											<!-- /icon -->
+	
+										</h3>
+										<!-- /filterhead -->
+	
+										<!-- filterbody -->
+										<div class="filterbody">
+	
+											<!-- criterialist -->
+											<ul class="criterialist">
+					
+												<!-- criterion -->
+												<li class="criterion">
+		
+													<!-- checkbox -->
+													<input class="checkbox" type="checkbox" name="xyz" id="xyz">
+													<!-- /checkbox -->
+		
+													<!-- front -->
+													<label class="front" for="xyz">
+		
+														<!-- icon -->
+														<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+															<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+														</svg>
+														<!-- /icon -->
+
+														<!-- caption -->
+														<span class="caption">Criterion</span>
+														<!-- /caption -->
+
+													</label>
+													<!-- /front -->
+													
+												</li>
+												<!-- /criterion -->
+					
+												<!-- criterion -->
+												<li class="criterion">
+		
+													<!-- checkbox -->
+													<input class="checkbox" type="checkbox" name="xyz" id="xyz">
+													<!-- /checkbox -->
+		
+													<!-- front -->
+													<label class="front" for="xyz">
+		
+														<!-- icon -->
+														<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+															<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+														</svg>
+														<!-- /icon -->
+
+														<!-- caption -->
+														<span class="caption">Criterion</span>
+														<!-- /caption -->
+
+													</label>
+													<!-- /front -->
+													
+												</li>
+												<!-- /criterion -->
+					
+												<!-- criterion -->
+												<li class="criterion">
+		
+													<!-- checkbox -->
+													<input class="checkbox" type="checkbox" name="xyz" id="xyz">
+													<!-- /checkbox -->
+		
+													<!-- front -->
+													<label class="front" for="xyz">
+		
+														<!-- icon -->
+														<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+															<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+														</svg>
+														<!-- /icon -->
+
+														<!-- caption -->
+														<span class="caption">Criterion</span>
+														<!-- /caption -->
+
+													</label>
+													<!-- /front -->
+													
+												</li>
+												<!-- /criterion -->
+												
+											</ul>
+											<!-- /criterialist -->
+											
+										</div>
+										<!-- /filterbody -->
+										
+									</li>
+									<!-- /filtergroup -->
+		
+									<!-- filtergroup -->
+									<li class="filtergroup open">
+	
+										<!-- filterhead -->
+										<h3 class="filterhead" onclick="toggleFilterGroup(this)">
+	
+											<!-- caption -->
+											<span class="caption">Category</span>
+											<!-- /caption -->
+	
+											<!-- icon -->
+											<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+											</svg>
+											<!-- /icon -->
+	
+											<!-- icon -->
+											<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+											</svg>
+											<!-- /icon -->
+	
+										</h3>
+										<!-- /filterhead -->
+	
+										<!-- filterbody -->
+										<div class="filterbody">
+	
+											<!-- criterialist -->
+											<ul class="criterialist">
+					
+												<!-- criterion -->
+												<li class="criterion">
+		
+													<!-- checkbox -->
+													<input class="checkbox" type="checkbox" name="xyz" id="xyz">
+													<!-- /checkbox -->
+		
+													<!-- front -->
+													<label class="front" for="xyz">
+		
+														<!-- icon -->
+														<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+															<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+														</svg>
+														<!-- /icon -->
+
+														<!-- caption -->
+														<span class="caption">Criterion</span>
+														<!-- /caption -->
+
+													</label>
+													<!-- /front -->
+													
+												</li>
+												<!-- /criterion -->
+					
+												<!-- criterion -->
+												<li class="criterion">
+		
+													<!-- checkbox -->
+													<input class="checkbox" type="checkbox" name="xyz" id="xyz">
+													<!-- /checkbox -->
+		
+													<!-- front -->
+													<label class="front" for="xyz">
+		
+														<!-- icon -->
+														<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+															<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+														</svg>
+														<!-- /icon -->
+
+														<!-- caption -->
+														<span class="caption">Criterion</span>
+														<!-- /caption -->
+
+													</label>
+													<!-- /front -->
+													
+												</li>
+												<!-- /criterion -->
+					
+												<!-- criterion -->
+												<li class="criterion">
+		
+													<!-- checkbox -->
+													<input class="checkbox" type="checkbox" name="xyz" id="xyz">
+													<!-- /checkbox -->
+		
+													<!-- front -->
+													<label class="front" for="xyz">
+		
+														<!-- icon -->
+														<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+															<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+														</svg>
+														<!-- /icon -->
+
+														<!-- caption -->
+														<span class="caption">Criterion</span>
+														<!-- /caption -->
+
+													</label>
+													<!-- /front -->
+													
+												</li>
+												<!-- /criterion -->
+												
+											</ul>
+											<!-- /criterialist -->
+											
+										</div>
+										<!-- /filterbody -->
+										
+									</li>
+									<!-- /filtergroup -->
+									
+								</ul>
+								<!-- /filterlist -->
+		
+							</div>
+							<!-- /filterpanel -->
+							
 						</div>
-						<!-- /filterpanel -->
+						<!-- /filters -->
 	
 						<!-- posts -->
 						<div class="posts">
@@ -772,6 +938,10 @@
 											<!-- category -->
 											<span class="category"></span>
 											<!-- /category -->
+			
+											<!-- author -->
+											<span class="author"></span>
+											<!-- /author -->
 		
 										</div>
 										<!-- /caption -->
