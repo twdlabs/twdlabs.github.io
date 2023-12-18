@@ -3,31 +3,41 @@
 
 // Get posts section. 
 const postssection = document.querySelector('div#container section.blog div.grid div.body div.posts');
+console.log('postssection:',postssection);
+
+
 // Get destination for featured posts. 
 const featuredpostsdestinationA = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.a');
 const featuredpostsdestinationB = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.b');
 console.log('Featured posts destinations:',featuredpostsdestinationA,featuredpostsdestinationB);
-
 // Get destination for category posts. 
 const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.category');
 console.log('Category posts destination:',categoryPostsDestination);
-
 // Get destination for collection posts. 
 const collectionPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.collection');
 console.log('Collection posts destination:',collectionPostsDestination);
-
 // Get destination for archive posts. 
 const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.archive');
 console.log('Archive posts destination:',archivePostsDestination);
 
-// Get input field for filter query. 
-const filterqueryfield = document.querySelector('div#container section.blog div.grid div.head div.filter input#postfilter');
-console.log('filterqueryfield:',filterqueryfield);
-const filterqueryclearbtn = document.querySelector('div#container section.blog div.grid div.head div.filter label.clearbtn');
-console.log('filterqueryclearbtn:',filterqueryclearbtn);
 
+// Get filter panel. 
+const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filterpanel');
+console.log('filterpanel:',filterpanel);
+// Get group headers in filter panel. 
+const filterpanelheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead');
+console.log('filterpanelheaders:',filterpanelheaders);
+
+
+// Get input field for search query. 
+const searchqueryfield = document.querySelector('div#container section.blog div.grid div.head div.filter input#searchquery');
+console.log('searchqueryfield:',searchqueryfield);
+// Get clear button for search query. 
+const searchclearbtn = document.querySelector('div#container section.blog div.grid div.head div.filter label.searchclearbtn');
+console.log('searchclearbtn:',searchclearbtn);
 // Get label for empty search results. 
 const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel');
+console.log('emptysearchlabel:',emptysearchlabel);
 
 
 /*****/
@@ -301,7 +311,7 @@ function loadBlog() {
 		activatePostPreviews();
 	
 		// Activate blog post filter. 
-		if(filterqueryfield) activateBlogFilter();
+		if(searchqueryfield) activateBlogFilter();
 
 		// Activate previews for blog post cards. 
 		function activatePostPreviews() {
@@ -353,25 +363,25 @@ function loadBlog() {
 		function activateBlogFilter() {
 	
 			// Activate input field to filter blog posts. 
-			filterqueryfield.addEventListener('input',filterBlogPosts);
-			filterqueryclearbtn.addEventListener('click',clearFilterQuery);
+			searchqueryfield.addEventListener('input',searchBlogPosts);
+			searchclearbtn.addEventListener('click',clearFilterQuery);
 	
 			// Clear any previous filter query. 
 			clearFilterQuery();
 	
 			/***/
 	
-			// Filter blog posts. 
-			function filterBlogPosts() {
+			// Search blog posts by query. 
+			function searchBlogPosts() {
 	
 				// Initialize number of matching posts. 
 				let numMatchingPosts = 0;
 	
 				// Get filter query. 
-				let filterquery = (filterqueryfield.value).toUpperCase();
+				let searchquery = (searchqueryfield.value).toUpperCase();
 				// Get list of filter queries. 
-				let filterquerywords = filterquery.split(' ');
-				console.log('Filtering...', filterquery, filterquerywords);
+				let searchquerywords = searchquery.split(' ');
+				console.log('Filtering...', searchquery, searchquerywords);
 			
 				// Go thru all blog posts. 
 				for(let postcard of blogpostcards) {
@@ -380,9 +390,9 @@ function loadBlog() {
 					let projectid = postcard.getAttribute('data-projectid').toUpperCase();
 	
 					// Check for matching post (by full query). 
-					let matchesFullQuery = checkForMatchFullQuery(projectid,filterquery);
+					let matchesFullQuery = checkForMatchFullQuery(projectid,searchquery);
 					// Check for matching post (by each word). 
-					let matchesEveryWord = checkForMatchEachWord(projectid,filterquerywords);
+					let matchesEveryWord = checkForMatchEachWord(projectid,searchquerywords);
 					// Compile match criteria. 
 					let matchCriteriaMet = matchesFullQuery || matchesEveryWord;
 					if(matchCriteriaMet) numMatchingPosts++;
@@ -399,15 +409,15 @@ function loadBlog() {
 				/**/
 	
 				// Check for matching post (by full query). 
-				function checkForMatchFullQuery(projectid,filterquery) {
-					return projectid.includes(filterquery)
+				function checkForMatchFullQuery(projectid,searchquery) {
+					return projectid.includes(searchquery)
 				}
 	
 				// Check for matching post (by each word). 
-				function checkForMatchEachWord(projectid,filterquerywords) {
+				function checkForMatchEachWord(projectid,searchquerywords) {
 			
 					// Go thru all words in filter query. 
-					for(let word of filterquerywords) {
+					for(let word of searchquerywords) {
 	
 						let wordPresent = projectid.includes(word);
 	
@@ -438,10 +448,10 @@ function loadBlog() {
 			function clearFilterQuery() {
 
 				// Clear filter query. 
-				filterqueryfield.value = '';
+				searchqueryfield.value = '';
 	
-				// Filter blog posts. 
-				filterBlogPosts();
+				// Search blog posts by query. 
+				searchBlogPosts();
 			}
 		}
 	}
@@ -460,14 +470,22 @@ function loadBlog() {
 	}
 }
 
-// Toggle filter fields. 
-function toggleFilterFields() {
+// Toggle filter panel. 
+function toggleFilterPanel() {
 
-	// Get filter tabs section. 
-	const filtertabs = document.querySelector('div#container section.blog div.grid div.body div.filtertabs');
+	// Toggle filter panel. 
+	filterpanel.classList.toggle('active');
 
-	// Toggle filter tabs section. 
-	filtertabs.classList.toggle('active');
+	// Toggle state of posts section. 
+	// archivePostsDestination.classList.toggle('big');
+}
+
+// Toggle filter group. 
+function toggleFilterGroup(header) {
+
+	// Toggle filter panel. 
+	let filtergroup = header.parentElement;
+	filtergroup.classList.toggle('open');
 
 	// Toggle state of posts section. 
 	// archivePostsDestination.classList.toggle('big');

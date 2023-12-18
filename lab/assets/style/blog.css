@@ -12,22 +12,22 @@ div#container section.blog div.grid div.head div.filter {display:flex; flex-dire
 div#container section.blog div.grid div.head div.filter div.filterbtn {display:grid; place-items:center; cursor:pointer; transition:.125s; padding:.75rem .875rem; border-radius:5rem; box-shadow:var(--boxshadowx);}
 div#container section.blog div.grid div.head div.filter div.filterbtn:hover {background-color:var(--forecolor); color:var(--backcolor2);}
 div#container section.blog div.grid div.head div.filter div.filterbtn svg.icon {font-size:1.5rem;}
-div#container section.blog div.grid div.head div.filter div.filterquery {position:relative; overflow:hidden; width:100%; max-width:calc(var(--pagewidth)/3); border-radius:5rem;/*  margin:2rem auto; */ margin-right:1rem; box-shadow:var(--boxshadowx);}
-/* div#container section.blog div.grid div.head div.filter label.label {background-color:var(--forecolor2); color:var(--backcolor); padding:0 1.125rem;} */
-div#container section.blog div.grid div.head div.filter label.label {display:flex; flex-direction:column; justify-content:center; cursor:pointer;}
-div#container section.blog div.grid div.head div.filter label.label {position:absolute; left:0; top:0; height:100%; padding:0 1.125rem;}
-div#container section.blog div.grid div.head div.filter label.label svg.icon {font-size:1.375rem;}
-div#container section.blog div.grid div.head div.filter label.clearbtn {position:absolute; right:0; top:50%; transform:translateY(-50%);height:var(--btnsize); width:var(--btnsize);}
-div#container section.blog div.grid div.head div.filter label.clearbtn {/* background-color:#FFFFFF08; color:black; */ --btnsize:2rem; opacity:.375; cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.head div.filter label.clearbtn {display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1.125rem; margin-right:.5rem;}
-div#container section.blog div.grid div.head div.filter label.clearbtn svg.icon {font-size:1.375rem;}
-div#container section.blog div.grid div.head div.filter input#postfilter {background-color:var(--backcolor2); color:var(--forecolor);}
-div#container section.blog div.grid div.head div.filter input#postfilter {font-family:inherit; font-size:1.25rem; font-weight:300; width:100%; padding:.625rem 3.25rem .625rem 3.5rem;}
-div#container section.blog div.grid div.head div.filter input#postfilter {border:.125rem solid var(--backcolor2); outline:none;}
+div#container section.blog div.grid div.head div.filter div.searchquery {position:relative; overflow:hidden; width:100%; /* max-width:calc(var(--pagewidth)/3); */ border-radius:5rem; /* margin:2rem auto; */ margin-right:1rem; box-shadow:var(--boxshadowx);}
+/* div#container section.blog div.grid div.head div.filter div.searchquery label.searchlabel {background-color:var(--forecolor2); color:var(--backcolor);} */
+div#container section.blog div.grid div.head div.filter div.searchquery label.searchlabel {display:flex; flex-direction:column; justify-content:center; cursor:pointer; padding:0 1.125rem;}
+div#container section.blog div.grid div.head div.filter div.searchquery label.searchlabel {position:absolute; left:0; top:0; height:100%;}
+div#container section.blog div.grid div.head div.filter div.searchquery label.searchlabel svg.icon {font-size:1.375rem;}
+div#container section.blog div.grid div.head div.filter div.searchquery input#searchquery {background-color:var(--backcolor2); color:var(--forecolor);}
+div#container section.blog div.grid div.head div.filter div.searchquery input#searchquery {font-family:inherit; font-size:1.25rem; font-weight:300; width:100%; padding:.625rem 3.25rem .625rem 3.5rem;}
+div#container section.blog div.grid div.head div.filter div.searchquery input#searchquery {border:.125rem solid var(--backcolor2); border:0 none; outline:none;}
+div#container section.blog div.grid div.head div.filter div.searchquery label.searchclearbtn {position:absolute; right:0; top:50%; transform:translateY(-50%);height:var(--btnsize); width:var(--btnsize);}
+div#container section.blog div.grid div.head div.filter div.searchquery label.searchclearbtn {/* background-color:#FFFFFF08; color:black; */ --btnsize:2rem; opacity:.375; cursor:pointer; user-select:none;}
+div#container section.blog div.grid div.head div.filter div.searchquery label.searchclearbtn {display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1.125rem; margin-right:.5rem;}
+div#container section.blog div.grid div.head div.filter div.searchquery label.searchclearbtn svg.icon {font-size:1.375rem;}
 
 
 /* Blog Section: Body */
-div#container section.blog div.grid div.body {margin-top:3rem;}
+div#container section.blog div.grid div.body {position:relative; margin-top:1rem;}
 div#container section.blog div.grid div.body.split {display:grid; grid-template-columns:1fr auto;}
 
 /* Blog Section: Posts */
@@ -61,7 +61,7 @@ div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:1; scale:1; height:100%; width:100%; transform:none;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:2; scale:.5; height:200%; width:200%; transform:translate(-50%,-50%);}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:3; scale:.25; height:400%; width:400%; transform:translate(-150%,-150%);}
-/* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:4; scale:.125; height:800%; width:800%; transform:translate(-350%,-350%);} */
+div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:4; scale:.125; height:800%; width:800%; transform:translate(-350%,-350%);}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:5; scale:.0625; height:1600%; width:1600%; transform:translate(-750%,-750%);} */
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:6; scale:.03125; height:3200%; width:3200%; transform:translate(-1550%,-1550%);} */
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:10; scale:calc( 1 / pow( 2, var(--ml) ) ); height:calc( pow( 2, var(--ml) ) * 100% ); width:calc( pow( 2, var(--ml) ) * 100% ); --trvalue:calc( -50% + 100% * pow( 2, (var(--ml) - 1) ) ); transform:translate( var(--trvalue) , var(--trvalue) );} */
@@ -69,10 +69,30 @@ div#container section.blog div.grid div.body div.posts div.emptylabel {display:n
 div#container section.blog div.grid div.body div.posts div.emptylabel.on {display:block;}
 
 /* Blog Section: Filters */
-div#container section.blog div.grid div.body.split div.filtertabs {display:flex; flex-direction:row; align-items:flex-start; justify-content:space-between;}
-div#container section.blog div.grid div.body.split div.filtertabs {max-height:0; max-width:0; overflow:auto; transition:.5s;}
-div#container section.blog div.grid div.body.split div.filtertabs.active {max-height:fit-content; max-width:fit-content;}
-div#container section.blog div.grid div.body.split div.filtertabs div.filterpiece {background-color:var(--themecolor); min-height:40rem; width:40rem;}
+div#container section.blog div.grid div.body.split div.filterpanel {position:absolute; width:100%; max-width:20rem; max-height:20rem; z-index:25;}
+div#container section.blog div.grid div.body.split div.filterpanel {background-color:var(--backcolor); display:flex; flex-direction:column; /* border-radius:var(--cornersize); */ border:1px solid var(--backcolor2); box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body.split div.filterpanel {/* max-height:0; max-width:0; */ overflow:auto; transition:.5s;}
+div#container section.blog div.grid div.body.split div.filterpanel.active {display:none; /* max-height:fit-content; max-width:fit-content; */}
+div#container section.blog div.grid div.body.split div.filterpanel h2.panelhead {font-size:1.375rem; font-weight:500; padding:.625em 1rem; margin:0;}
+div#container section.blog div.grid div.body.split div.filterpanel h2.panelhead span.caption {}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist {display:flex; flex-direction:column; list-style:none; padding:0; border:.125rem solid var(--backcolor2); margin:0; /* margin-top:.25rem; */}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup {user-select:none;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup h3.filterhead {background-color:var(--backcolor2); color:var(--themecolor); cursor:pointer; font-size:1.125rem; font-weight:500; padding:.75em 1rem; margin:0;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup h3.filterhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon {font-size:1rem;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon.dn {display:block;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon.up {display:none;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup h3.filterhead span.caption {}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup div.filterbody {max-height:0; overflow:hidden;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist {display:flex; flex-direction:column; list-style:none; padding:0; padding:.5rem 0; margin:0;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.caption {cursor:pointer; display:flex; align-items:center;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.caption::before {background-color:var(--backcolor); display:block; content:''; --size:1.25rem; height:var(--size); width:var(--size); border:1px solid var(--forecolor2); border-radius:.25rem; margin-right:.25rem;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox {display:none; opacity:.125;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox:checked + label.caption::before {background-color:var(--themecolor);}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.dn {display:none;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.up {display:block;}
+div#container section.blog div.grid div.body.split div.filterpanel ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
 
 /* Blog Section: Zoomer */
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:flex; flex-direction:column; align-items:center; justify-content:center;} */
@@ -114,7 +134,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 	div#container section.blog div.grid div.body div.posts ul.postlist.big {grid-template-columns:repeat(4,1fr);}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
+	/* div#container section.blog div.grid div.body.split div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -141,7 +161,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 	div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.namelink {font-size:1.125rem;}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
+	/* div#container section.blog div.grid div.body.split div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -168,7 +188,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 	div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.namelink {font-size:1.0625rem;}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
+	/* div#container section.blog div.grid div.body.split div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -195,7 +215,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 	div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.namelink {font-size:1rem;}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
+	/* div#container section.blog div.grid div.body.split div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -221,7 +241,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 	div#container section.blog div.grid div.body div.posts ul.postlist.big {grid-template-columns:repeat(1,1fr);}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
+	/* div#container section.blog div.grid div.body.split div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -246,7 +266,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 	/* div#container section.blog div.grid div.body div.posts ul.postlist.big {} */
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body.split div.filtertabs {} */
+	/* div#container section.blog div.grid div.body.split div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
