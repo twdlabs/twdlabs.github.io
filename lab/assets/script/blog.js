@@ -494,14 +494,28 @@ function loadBlog() {
 	}
 }
 
-// Toggle post size. 
-function togglePostSize(togglebtn) {
+// Toggle post style. 
+// Toggle style of posts in archive section. 
+function togglePostStyle(togglebtn) {
 
-	// Toggle size of posts in archive section. 
-	archivePostsDestination.classList.toggle('big');
+	// Define style ids. 
+	const styleids = ['small','large','list',];
+
+	// Go thru each style id. 
+	for(let id of styleids) {
+		
+		// Turn off style id. 
+		archivePostsDestination.classList.remove(id);
+	}
+	
+	// Get selected style id. 
+	let styleid = togglebtn.getAttribute('data-styleid');
+	
+	// Turn on selected style id. 
+	archivePostsDestination.classList.add(styleid);
 
 	// Toggle state of size toggler button. 
-	togglebtn.classList.toggle('on');
+	// togglebtn.classList.toggle('on');
 }
 
 // Toggle filter panel. 
@@ -542,6 +556,44 @@ function toggleLikeAccordion(section,sectionbin) {
 	else {
 		section.classList.remove('mini');
 		sectionbin.style.maxHeight = `${fullheight}px`;
+	}
+}
+
+// Add filter. 
+function addFilter() {
+
+	// Update blog posts. 
+
+	// Update filter items. 
+}
+
+// Remove filter. 
+function removeFilter(filteritem) {
+
+	// Update blog posts. 
+
+	// Update filter items. 
+}
+
+// Show blog posts that match given filter query. 
+function filterBlogPosts() {
+
+	// 
+
+	/**/
+
+	// Update visibility state of post based on match. 
+	function updatePostState(postcard,matchesQuery) {
+
+		// Show matching post. 
+		if(matchesQuery) {
+			postcard.classList.remove('gone');
+		}
+
+		// Hide non-matching post. 
+		else {
+			postcard.classList.add('gone');
+		}
 	}
 }
 

@@ -511,10 +511,10 @@
 							<div class="togglers">
 
 								<!-- sizerbtn -->
-								<div class="sizerbtn btn" onclick="togglePostSize(this)">
+								<div class="sizerbtn btn" data-styleid="" onclick="togglePostStyle(this)" style="display:none;">
 			
 									<!-- icon -->
-									<svg class="icon gridbig" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<svg class="icon gridlarge" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 										<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
 									</svg>
 									<!-- /icon -->
@@ -522,6 +522,42 @@
 									<!-- icon -->
 									<svg class="icon gridsmall" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 										<path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+									</svg>
+									<!-- /icon -->
+		
+								</div>
+								<!-- /sizerbtn -->
+
+								<!-- sizerbtn -->
+								<div class="sizerbtn btn" data-styleid="small" title="Small grid" onclick="togglePostStyle(this)">
+			
+									<!-- icon -->
+									<svg class="icon gridsmall" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/>
+									</svg>
+									<!-- /icon -->
+		
+								</div>
+								<!-- /sizerbtn -->
+
+								<!-- sizerbtn -->
+								<div class="sizerbtn btn" data-styleid="large" title="Large grid" onclick="togglePostStyle(this)">
+			
+									<!-- icon -->
+									<svg class="icon gridlarge" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+									</svg>
+									<!-- /icon -->
+		
+								</div>
+								<!-- /sizerbtn -->
+
+								<!-- sizerbtn -->
+								<div class="sizerbtn btn" data-styleid="list" title="List" onclick="togglePostStyle(this)">
+			
+									<!-- icon -->
+									<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
 									</svg>
 									<!-- /icon -->
 		
@@ -578,7 +614,7 @@
 								<ul class="filterlist">
 
 									<!-- filteritem -->
-									<li class="filteritem">
+									<li class="filteritem" onclick="removeFilter(this)">
 
 										<!-- caption -->
 										<span class="caption">Criterion A</span>
@@ -594,7 +630,7 @@
 									<!-- /filteritem -->
 
 									<!-- filteritem -->
-									<li class="filteritem">
+									<li class="filteritem" onclick="removeFilter(this)">
 
 										<!-- caption -->
 										<span class="caption">Criterion B</span>
@@ -610,7 +646,7 @@
 									<!-- /filteritem -->
 
 									<!-- filteritem -->
-									<li class="filteritem">
+									<li class="filteritem" onclick="removeFilter(this)">
 
 										<!-- caption -->
 										<span class="caption">Criterion C</span>
@@ -906,7 +942,7 @@
 							<!-- /emptylabel -->
 		
 							<!-- postlist -->
-							<ul class="postlist archive">
+							<ul class="postlist archive large">
 		
 								<!-- postcard -->
 								<li class="postcard" data-projectid="desktop" title="Description goes here">
