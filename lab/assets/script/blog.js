@@ -22,10 +22,10 @@ console.log('Archive posts destination:',archivePostsDestination);
 
 
 // Get filter panel. 
-const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filters div.filterpanel');
+const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filterpanel');
 console.log('filterpanel:',filterpanel);
 // Get group headers in filter panel. 
-const filterpanelheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead');
+const filterpanelheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead');
 console.log('filterpanelheaders:',filterpanelheaders);
 
 
@@ -182,6 +182,8 @@ function loadBlog() {
 			// TODO: Get author name for given project. 
 			function getAuthorName(authorid) {
 				return authorid;
+
+				// TODO: Create data space for author names. 
 	
 				// Go thru each project category. 
 				for(let projectauthor of projectAuthorData) {
@@ -499,20 +501,23 @@ function loadBlog() {
 function togglePostStyle(togglebtn) {
 
 	// Define style ids. 
-	const styleids = ['small','large','list',];
+	const styleids = ['small','large','listed',];
+
+	// Get archive posts section. 
+	let archivePostsSection = archivePostsDestination.parentElement;
 
 	// Go thru each style id. 
 	for(let id of styleids) {
 		
 		// Turn off style id. 
-		archivePostsDestination.classList.remove(id);
+		archivePostsSection.classList.remove(id);
 	}
 	
 	// Get selected style id. 
 	let styleid = togglebtn.getAttribute('data-styleid');
 	
 	// Turn on selected style id. 
-	archivePostsDestination.classList.add(styleid);
+	archivePostsSection.classList.add(styleid);
 
 	// Toggle state of size toggler button. 
 	// togglebtn.classList.toggle('on');
@@ -523,6 +528,12 @@ function toggleFilterPanel() {
 
 	// Toggle filter panel. 
 	filterpanel.classList.toggle('open');
+}
+
+// TODO: Add filter groups. 
+function addFilterGroups() {
+
+	// 
 }
 
 // Toggle filter group. 

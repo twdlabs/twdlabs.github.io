@@ -11,8 +11,8 @@
 div#container section.blog div.grid div.head div.filter {display:flex; flex-direction:row; align-items:center;}
 div#container section.blog div.grid div.head div.filter div.togglers {display:flex; flex-direction:row; align-items:center;}
 div#container section.blog div.grid div.head div.filter div.togglers div.btn {display:grid; place-items:center; cursor:pointer; transition:.125s; padding:.75rem .875rem; border-radius:5rem; margin-left:.75rem; box-shadow:var(--boxshadow);}
-div#container section.blog div.grid div.head div.filter div.togglers div.sizerbtn {}
-div#container section.blog div.grid div.head div.filter div.togglers div.filterbtn {}
+/* div#container section.blog div.grid div.head div.filter div.togglers div.sizerbtn {} */
+/* div#container section.blog div.grid div.head div.filter div.togglers div.filterbtn {} */
 div#container section.blog div.grid div.head div.filter div.togglers div.btn:hover {background-color:var(--forecolor); color:var(--backcolor2);}
 div#container section.blog div.grid div.head div.filter div.togglers div.btn svg.icon {font-size:1.5rem;}
 /* div#container section.blog div.grid div.head div.filter div.togglers div.sizerbtn svg.icon.gridlarge {display:block;} */
@@ -32,60 +32,19 @@ div#container section.blog div.grid div.head div.filter div.searchquery label.se
 div#container section.blog div.grid div.head div.filter div.searchquery label.searchclearbtn {display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1.125rem; margin-right:.5rem;}
 div#container section.blog div.grid div.head div.filter div.searchquery label.searchclearbtn svg.icon {font-size:1.375rem;}
 
-div#container section.blog div.grid div.head div.filter {flex-direction:column;}
-div#container section.blog div.grid div.head div.filter div.searchquery {margin-right:0; margin-bottom:1rem;}
-
 
 /* Blog Section: Body */
-div#container section.blog div.grid div.body {margin-top:1rem;}
+div#container section.blog div.grid div.body {position:relative; margin-top:1rem;}
 /* div#container section.blog div.grid div.body.split {display:grid; grid-template-columns:1fr auto;} */
-
-/* Blog Section: Filters */
-div#container section.blog div.grid div.body div.filters {position:relative; padding-bottom:.75rem; margin-top:.375rem;}
-div#container section.blog div.grid div.body div.filters div.already {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap;}
-div#container section.blog div.grid div.body div.filters div.already h2.listhead {font-size:1.125rem; font-size:1rem; font-weight:normal; white-space:nowrap; margin:0; margin-right:.25rem;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */ list-style:none; padding:0; margin:0;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem {background-color:var(--backcolor2); font-size:.875rem; cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em; border-radius:5em; margin:.25rem 0; margin-left:.5rem;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem svg.icon {font-size:1.5em; margin-left:.25rem;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem span.caption {white-space:nowrap;}
-div#container section.blog div.grid div.body div.filters div.filterpanel {position:absolute; top:100%; left:0; width:100%; max-width:20rem; max-height:20rem; overflow:auto; z-index:25;}
-div#container section.blog div.grid div.body div.filters div.filterpanel {background-color:var(--backcolor); /* border-radius:var(--cornersize); */ border:1px solid var(--backcolor2); box-shadow:var(--boxshadowx);}
-div#container section.blog div.grid div.body div.filters div.filterpanel {display:none;}
-/* div#container section.blog div.grid div.body div.filters div.filterpanel {max-height:0; max-width:0; transition:.5s;} */
-div#container section.blog div.grid div.body div.filters div.filterpanel.open {display:block;}
-/* div#container section.blog div.grid div.body div.filters div.filterpanel.active {max-height:fit-content; max-width:fit-content;} */
-div#container section.blog div.grid div.body div.filters div.filterpanel h2.panelhead {font-size:1.375rem; font-weight:500; padding:.625em 1rem; margin:0;}
-div#container section.blog div.grid div.body div.filters div.filterpanel h2.panelhead span.caption {}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist {display:flex; flex-direction:column; list-style:none; padding:0; border:.125rem solid var(--backcolor2); margin:0; /* margin-top:.25rem; */}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup {user-select:none;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead {background-color:var(--backcolor2); color:var(--themecolor); cursor:pointer; font-size:1.125rem; font-weight:500; padding:.75em 1rem; margin:0;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon {font-size:1rem;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon.dn {display:block;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon.up {display:none;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup h3.filterhead span.caption {}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody {max-height:0; overflow:hidden;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist {display:flex; flex-direction:column; list-style:none; padding:0; padding:.5rem 0; margin:0;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front {display:flex; align-items:center; cursor:pointer; --size:1.25rem;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.caption {font-size:.875rem;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {/* display:block;  */height:var(--size); width:var(--size); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem; margin-right:.25rem;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor);}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox {display:none; opacity:.125;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox:checked + label.front svg.icon.check {background-color:var(--themecolor); color:white;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.dn {display:none;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.up {display:block;}
-div#container section.blog div.grid div.body div.filters div.filterpanel ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
 
 /* Blog Section: Posts */
 /* div#container section.blog div.grid div.body div.posts {} */
 div#container section.blog div.grid div.body div.posts ul.postlist {display:grid; grid-template-columns:repeat( var(--gridcolumns), 1fr); transition:.25s;}
-div#container section.blog div.grid div.body div.posts ul.postlist {list-style:none; /* overflow:hidden; */ padding:0; margin:0; margin-top:.75rem;}
+div#container section.blog div.grid div.body div.posts ul.postlist {list-style:none; overflow:hidden; padding:0; padding:1rem; margin:0; margin-top:.75rem;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist {display:flex; flex-wrap:wrap; justify-content:center;} */
-div#container section.blog div.grid div.body div.posts ul.postlist.list {display:flex; flex-direction:column; grid-gap:1.25rem;}
-div#container section.blog div.grid div.body div.posts ul.postlist.large {--gridcolumns:6; grid-gap:1.25rem;}
-div#container section.blog div.grid div.body div.posts ul.postlist.small {--gridcolumns:8; grid-gap:.875rem;}
+div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:8; grid-gap:.875rem;}
+div#container section.blog div.grid div.body div.posts.large ul.postlist {--gridcolumns:6; grid-gap:1.25rem;}
+div#container section.blog div.grid div.body div.posts.listed ul.postlist {display:flex; flex-direction:column; grid-gap:1.25rem;}
 div#container section.blog div.grid div.body div.posts ul.postlist.featured.b {max-height:0;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
@@ -105,7 +64,7 @@ div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.author {display:none;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.author {color:var(--forecolor2); font-weight:100;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview {background-color:var(--backcolor); position:relative; width:100%; padding-top:75%; /* margin-bottom:2em; */}
-div#container section.blog div.grid div.body div.posts ul.postlist.list li.postcard a.projectlink div.preview {padding-top:50%;}
+div#container section.blog div.grid div.body div.posts.listed ul.postlist li.postcard a.projectlink div.preview {padding-top:50%;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview:empty {background-color:var(--themecolor); opacity:.5;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview::after {background-color:var(--blackglass); content:'';}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview::after {position:absolute; top:0; left:0; height:100%; width:100%; z-index:20;}
@@ -137,6 +96,47 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon:only-child {font-size:3rem;}
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:none;} */
 
+/* Blog Section: Filters */
+div#container section.blog div.grid div.body div.filters {/* position:relative; */ padding-bottom:.75rem; margin-top:.375rem;}
+div#container section.blog div.grid div.body div.filters div.already {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap;}
+div#container section.blog div.grid div.body div.filters div.already h2.listhead {font-size:1.125rem; font-size:1rem; font-weight:normal; white-space:nowrap; margin:0; margin-right:.25rem;}
+div#container section.blog div.grid div.body div.filters div.already ul.filterlist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */ list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem {background-color:var(--backcolor2); font-size:.875rem; cursor:pointer; user-select:none; box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em; border-radius:5em; margin:.25rem 0; margin-left:.5rem;}
+div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem svg.icon {font-size:1.5em; margin-left:.25rem;}
+div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem span.caption {white-space:nowrap;}
+
+/* Blog Section: Filter Panel */
+div#container section.blog div.grid div.body div.filterpanel {position:absolute; /* top:100%; */ top:0; left:0; width:100%; max-width:20rem; max-height:20rem; overflow:auto; z-index:25;}
+div#container section.blog div.grid div.body div.filterpanel {background-color:var(--backcolor); /* border-radius:var(--cornersize); */ border:1px solid var(--backcolor2); margin-top:3rem; box-shadow:var(--boxshadowx);}
+div#container section.blog div.grid div.body div.filterpanel {display:none;}
+/* div#container section.blog div.grid div.body div.filterpanel {max-height:0; max-width:0; transition:.5s;} */
+div#container section.blog div.grid div.body div.filterpanel.open {display:block;}
+/* div#container section.blog div.grid div.body div.filterpanel.active {max-height:fit-content; max-width:fit-content;} */
+div#container section.blog div.grid div.body div.filterpanel h2.panelhead {font-size:1.375rem; font-weight:500; padding:.625em 1rem; margin:0;}
+/* div#container section.blog div.grid div.body div.filterpanel h2.panelhead span.caption {} */
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist {display:flex; flex-direction:column; list-style:none; padding:0; border:.125rem solid var(--backcolor2); margin:0; /* margin-top:.25rem; */}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup {user-select:none;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead {background-color:var(--backcolor2); color:var(--themecolor); cursor:pointer; font-size:1.125rem; font-weight:500; padding:.75em 1rem; margin:0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon {font-size:1rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon.dn {display:block;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon.up {display:none;}
+/* div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead span.caption {} */
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody {max-height:0; overflow:hidden;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist {display:flex; flex-direction:column; list-style:none; padding:0; padding:.5rem 0; margin:0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front {display:flex; align-items:center; cursor:pointer; --size:1.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.caption {font-size:.875rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {/* display:block;  */height:var(--size); width:var(--size); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem; margin-right:.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor);}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox {display:none; opacity:.125;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox:checked + label.front svg.icon.check {background-color:var(--themecolor); color:white;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.dn {display:none;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.up {display:block;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
+
+
 
 
 
@@ -157,13 +157,13 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 
 	/* Blog Section: Posts */
 	/* div#container section.blog div.grid div.body div.posts {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.list {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.large {--gridcolumns:4;}
-	div#container section.blog div.grid div.body div.posts ul.postlist.small {--gridcolumns:6;}
+	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
+	div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:6;}
+	div#container section.blog div.grid div.body div.posts.large ul.postlist {--gridcolumns:4;}
+	/* div#container section.blog div.grid div.body div.posts.listed ul.postlist {} */
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body div.filters div.filterpanel {} */
+	/* div#container section.blog div.grid div.body div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -185,14 +185,14 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 	/* Blog Section: Posts */
 	/* div#container section.blog div.grid div.body div.posts {} */
 	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist.list {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.large {--gridcolumns:3;}
-	div#container section.blog div.grid div.body div.posts ul.postlist.small {--gridcolumns:5;}
+	div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:5;}
+	div#container section.blog div.grid div.body div.posts.large ul.postlist {--gridcolumns:3;}
+	/* div#container section.blog div.grid div.body div.posts.listed ul.postlist {} */
 	/* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {} */
 	div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.namelink {font-size:1.125rem;}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body div.filters div.filterpanel {} */
+	/* div#container section.blog div.grid div.body div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -213,15 +213,15 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 
 	/* Blog Section: Posts */
 	/* div#container section.blog div.grid div.body div.posts {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.list {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.large {--gridcolumns:2;}
-	div#container section.blog div.grid div.body div.posts ul.postlist.small {--gridcolumns:4;}
+	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
+	div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:4;}
+	div#container section.blog div.grid div.body div.posts.large ul.postlist {--gridcolumns:2;}
+	/* div#container section.blog div.grid div.body div.posts.listed ul.postlist {} */
 	/* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {} */
 	div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.namelink {font-size:1.0625rem;}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body div.filters div.filterpanel {} */
+	/* div#container section.blog div.grid div.body div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -236,21 +236,23 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 
 	/* Blog Section: Head */
 	/* div#container section.blog div.grid div.head {} */
+	div#container section.blog div.grid div.head div.filter {flex-direction:column;}
+	div#container section.blog div.grid div.head div.filter div.searchquery {margin-right:0; margin-bottom:1rem;}
 
 	/* Blog Section: Body */
 	/* div#container section.blog div.grid div.body {} */
 
 	/* Blog Section: Posts */
 	/* div#container section.blog div.grid div.body div.posts {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.list {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.large {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.small {--gridcolumns:3;}
+	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
+	div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:3;}
+	/* div#container section.blog div.grid div.body div.posts.large ul.postlist {} */
+	/* div#container section.blog div.grid div.body div.posts.listed ul.postlist {} */
 	/* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {} */
 	div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.namelink {font-size:1rem;}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body div.filters div.filterpanel {} */
+	/* div#container section.blog div.grid div.body div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -272,14 +274,16 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 
 	/* Blog Section: Posts */
 	/* div#container section.blog div.grid div.body div.posts {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.list {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.large {--gridcolumns:1;}
-	div#container section.blog div.grid div.body div.posts ul.postlist.small {--gridcolumns:2;}
-	div#container section.blog div.grid div.body div.posts ul.postlist.large li.postcard a.projectlink div.preview {padding-top:50%;}
+	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
+	div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:2;}
+	div#container section.blog div.grid div.body div.posts.large ul.postlist {--gridcolumns:1;}
+	/* div#container section.blog div.grid div.body div.posts.listed ul.postlist {} */
+	/* div#container section.blog div.grid div.body div.posts.large ul.postlist li.postcard {} */
+	/* div#container section.blog div.grid div.body div.posts.large ul.postlist li.postcard a.projectlink {} */
+	div#container section.blog div.grid div.body div.posts.large ul.postlist li.postcard a.projectlink div.preview {padding-top:50%;}
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body div.filters div.filterpanel {} */
+	/* div#container section.blog div.grid div.body div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
@@ -300,13 +304,13 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn sv
 
 	/* Blog Section: Posts */
 	/* div#container section.blog div.grid div.body div.posts {} */
-	div#container section.blog div.grid div.body div.posts ul.postlist {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.list {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.large {}
-	div#container section.blog div.grid div.body div.posts ul.postlist.small {}
+	/* div#container section.blog div.grid div.body div.posts ul.postlist {} */
+	/* div#container section.blog div.grid div.body div.posts.small ul.postlist {} */
+	/* div#container section.blog div.grid div.body div.posts.large ul.postlist {} */
+	/* div#container section.blog div.grid div.body div.posts.listed ul.postlist {} */
 
 	/* Blog Section: Filters */
-	/* div#container section.blog div.grid div.body div.filters div.filterpanel {} */
+	/* div#container section.blog div.grid div.body div.filterpanel {} */
 
 	/* Blog Section: Zoomer */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
