@@ -1,23 +1,22 @@
 
 
 
-// Get id of current project meta-group. 
+// Get id of current project collection. 
 const urlparams = new URLSearchParams(window.location.search);
 const projectmetagroupid = urlparams.get('cid');
-// console.log('Project meta group id:',projectmetagroupid);
+// console.log('Project collection id:',projectmetagroupid);
 
-// Get current project meta-group. 
+// Get current project collection. 
 const projectmetagroup = getProjectMetaGroupById(projectmetagroupid);
-console.log('Project meta-group:',projectmetagroup);
+console.log('Project collection:',projectmetagroup);
 
-// Get name of current project meta-group. 
-const projectmetagroupname = projectmetagroup.groupname;
-console.log('Project meta-group name:',projectmetagroupname);
+// Get name of current project collection. 
+const projectcollectionname = projectmetagroup ? projectmetagroup.groupname : '';
+console.log('Project collection name:',projectcollectionname);
 
-// Get description of current project meta-group. 
-const projectmetagroupdesc = projectmetagroup.groupdescription;
-console.log('Project meta-group description:',projectmetagroupdesc);
-
+// Get description of current project collection. 
+const projectcollectiondesc = projectmetagroup ? projectmetagroup.groupdescription : '';
+console.log('Project collection description:',projectcollectiondesc);
 
 
 /*****/
@@ -34,7 +33,7 @@ customizeHeaders();
 function customizeHeaders() {
 
 	// Set custom document title. 
-	document.title = `${projectmetagroupname} | TWD Labs`;
+	document.title = `${projectcollectionname} | TWD Labs`;
 	
 	// Get custom headers for category name. 
 	const custompageheaders = document.querySelectorAll('section div.grid h1.head.custom');
@@ -42,12 +41,12 @@ function customizeHeaders() {
 	
 	// Set custom headers. 
 	for(let header of custompageheaders) {
-		header.innerHTML = projectmetagroupname;
+		header.innerHTML = projectcollectionname;
 	}
 	
 	// Get custom paragraph for category description. 
 	const custompageparagraph = document.querySelector('section div.grid p.textcopy.custom');
 
 	// Set custom paragraph to category description. 
-	custompageparagraph.innerHTML = projectmetagroupdesc;
+	custompageparagraph.innerHTML = projectcollectiondesc;
 }

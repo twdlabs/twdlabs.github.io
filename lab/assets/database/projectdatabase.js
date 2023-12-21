@@ -29,7 +29,7 @@ const featuredProjectIds = {
 	x:[
 		'canvas','chat','chooser','cluster','compound',
 		'device','dragndrop','lander',
-		'pagination','pixelart','pong',
+		'paginator','pixelart','pong',
 		'storage','tasks',
 	],
 };
@@ -751,7 +751,7 @@ const projectData = [
 		projectname:'Page Nexter',
 	},{
 		authorid:'twd',
-		projectid:'pagination',
+		projectid:'paginator',
 		projectname:'Pagination',
 	},{
 		authorid:'twd',

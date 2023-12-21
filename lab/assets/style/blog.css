@@ -49,10 +49,10 @@ div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.g
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption {display:flex; flex-direction:column; justify-content:center; align-items:center; align-items:flex-start;}
-div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption {font-size:1rem; /* text-align:center; */ padding:.625rem .125rem;}
-div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span {/* background-color:var(--backcolor); */ display:block; padding:0 .5rem; border-radius:1em; /* margin:0 auto; */}
+div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption {font-size:1rem; /* text-align:center; */ padding:.625rem/*  .125rem */;}
+div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span {/* background-color:var(--backcolor); */ display:block; /* padding:0 .5rem; */ border-radius:1em; /* margin:0 auto; */}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span {width:fit-content; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span:empty {background-color:var(--forecolor2); height:1em; width:6em; margin-top:.125em;}
+div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span:empty {background-color:var(--forecolor2); height:1em; width:6em; margin-top:.375em;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.id {display:none;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.id {font-size:1.125rem; font-weight:500;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.name {color:var(--forecolor); font-weight:300;}

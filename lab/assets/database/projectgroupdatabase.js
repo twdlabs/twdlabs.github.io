@@ -145,7 +145,7 @@ const projectCategoryData = [
 			'livesearch',
 			'login',
 			'overlay',
-			'pagination',
+			'paginator',
 			'popup',
 			'progressbar',
 			'rating',
