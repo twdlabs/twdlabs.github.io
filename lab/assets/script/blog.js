@@ -85,10 +85,16 @@ function loadBlog() {
 	/****/
 
 	// Create layout for blog posts. 
-	function createBlogPostsLayout(postlist,previewsOn) {
+	function createBlogPostsLayout(postlist,previewsOn,paginationOn) {
 	
 		// Initialize resulting layout. 
 		let result = '';
+
+		// Define number of posts per page. 
+		const postsperpage = 120;
+
+		// 
+		if(paginationOn) result += openPage();
 	
 		// Add project link to layout result. 
 		for(let post of postlist) {
@@ -100,11 +106,36 @@ function loadBlog() {
 			}
 	
 			// Add blog card to layout result. 
-			result += createBlogCard(post);
+			result += createBlogCard(post,previewsOn);
 		}
+
+		// 
+		if(paginationOn) result += closePage();
 	
 		// Return resulting layout. 
 		return result;
+
+		/***/
+
+		// Open page. 
+		function openPage() {
+			return `
+			<!-- postpage -->
+			<div class="postpage">
+
+				<!-- postlist -->
+				<ul class="postlist">`;
+		}
+
+		// Close page. 
+		function closePage() {
+			return `
+				</ul>
+				<!-- /postlist -->
+
+			</div>
+			<!-- /postpage -->`;
+		}
 	}
 
 	// Load featured posts. 
@@ -124,8 +155,8 @@ function loadBlog() {
 		console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
 		
 		// Get layout for featured posts. 
-		let featuredLayoutA = createBlogPostsLayout(featuredProjectsA, !blockPreviews);
-		let featuredLayoutB = createBlogPostsLayout(featuredProjectsB, !blockPreviews);
+		let featuredLayoutA = createBlogPostsLayout(featuredProjectsA, true && !blockPreviews);
+		let featuredLayoutB = createBlogPostsLayout(featuredProjectsB, true && !blockPreviews);
 		
 		// Add featured layout to blog section. 
 		featuredpostsdestinationA.innerHTML = featuredLayoutA;
@@ -150,7 +181,7 @@ function loadBlog() {
 		console.log('Collection projects:', collectionProjects.length, collectionProjects);
 		
 		// Get layout for collection posts. 
-		let collectionPostsLayout = createBlogPostsLayout(collectionProjects, !blockPreviews);
+		let collectionPostsLayout = createBlogPostsLayout(collectionProjects, true && !blockPreviews);
 		
 		// Add layout to blog section. 
 		collectionPostsDestination.innerHTML = collectionPostsLayout;
@@ -191,7 +222,7 @@ function loadBlog() {
 		console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Get layout for category posts. 
-		let categoryPostsLayout = createBlogPostsLayout(categoryProjects, !blockPreviews);
+		let categoryPostsLayout = createBlogPostsLayout(categoryProjects, true && !blockPreviews);
 		
 		// Add layout to blog section. 
 		categoryPostsDestination.innerHTML = categoryPostsLayout;
@@ -212,10 +243,11 @@ function loadBlog() {
 		console.log('Archive projects:', archiveProjects.length, archiveProjects);
 		
 		// Get layout for archive posts. 
-		let archiveLayout = createBlogPostsLayout(archiveProjects, false);
+		let archiveLayout = createBlogPostsLayout(archiveProjects, false, true);
 		
 		// Add archive layout to blog section. 
-		archivePostsDestination.innerHTML = archiveLayout;
+		archivePagesDestination.innerHTML = archiveLayout;
+		// archivePostsDestination.innerHTML = archiveLayout;
 	
 		/****/
 	
@@ -283,10 +315,13 @@ function loadBlog() {
 				// Get card for selected post. 
 				let selectedcard = event.currentTarget;
 		
-				// Get iframe in card's preview panel. 
+				// Get preview panel of selected card. 
+				// let previewpanel = selectedcard.querySelector('div.preview');
+				// Get iframe inside preview panel. 
 				let previewpaneliframe = selectedcard.querySelector('div.preview iframe.preview');
 		
 				// Remove iframe from preview panel.
+				// previewpanel.innerHTML = '';
 				previewpaneliframe.remove();
 			}
 		}
@@ -402,7 +437,7 @@ function loadBlog() {
 	}
 	
 	// Create blog card. 
-	function createBlogCard(post) {
+	function createBlogCard(post,previewsOn) {
 
 		// Define whether or not to use id as name. 
 		// let useidasname = true;
