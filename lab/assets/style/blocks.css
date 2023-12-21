@@ -29,12 +29,12 @@ div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.bl
 div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 
 
-/* Category Blocks Section */
+/* Group Blocks Section */
 /* div#container section.blocks.categories {} */
 /* div#container section.blocks.categories div.grid {} */
 /* div#container section.blocks.categories div.grid ul.blocklist {} */
 
-/* Category Blocks Section: All */
+/* Category Blocks Section */
 /* div#container section.blocks.categories.all {} */
 /* div#container section.blocks.categories.all div.grid {} */
 div#container section.blocks.categories.all div.grid ul.blocklist {background-color:var(--backcolor2); grid-template-columns:repeat(4,1fr);}
@@ -42,7 +42,7 @@ div#container section.blocks.categories.all div.grid ul.blocklist {background-co
 /* div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem {border:1px solid var(--glasshovercolor);} */
 /* div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column-end:span 2;} */
 
-/* Category Blocks Section: Meta */
+/* Collection Blocks Section */
 /* div#container section.blocks.categories.meta {} */
 /* div#container section.blocks.categories.meta div.grid {} */
 div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
@@ -60,14 +60,16 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	div#container section.blocks div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 
 	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 
-	/* Category Blocks Section */
+	/* Group Blocks Section */
 	/* div#container section.blocks.categories div.grid ul.blocklist {} */
-	/* Category Blocks Section: All */
+	/* Category Blocks Section */
 	/* div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(4,1fr);} */
 	/* div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column-end:span 4;} */
-	/* Category Blocks Section: Meta */
+	/* Collection Blocks Section */
 	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(3,1fr);}
 }
 
@@ -79,13 +81,15 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* div#container section.blocks div.grid {} */
 
 	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
 
-	/* Category Blocks Section */
+	/* Group Blocks Section */
 	/* div#container section.blocks.categories div.grid ul.blocklist {} */
-	/* Category Blocks Section: All */
+	/* Category Blocks Section */
 	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(3,1fr); grid-gap:0;}
 	div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column-end:span 3;}
-	/* Category Blocks Section: Meta */
+	/* Collection Blocks Section */
 	/* div#container section.blocks.categories.meta div.grid ul.blocklist {} */
 }
 
@@ -97,14 +101,36 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* div#container section.blocks div.grid {} */
 
 	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
 
-	/* Category Blocks Section */
+	/* Group Blocks Section */
 	/* div#container section.blocks.categories div.grid ul.blocklist {} */
-	/* Category Blocks Section: All */
+	/* Category Blocks Section */
 	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
 	div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column-end:span 1;}
-	/* Category Blocks Section: Meta */
+	/* Collection Blocks Section */
 	/* div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
+}
+
+/* Small Tablet Screen */
+@media screen and (max-width:72rem) {
+
+	/* Blocks Section */
+	/* div#container section.blocks {} */
+	/* div#container section.blocks div.grid {} */
+	/* div#container section.blocks div.grid ul.blocklist {} */
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {} */
+	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;}
+
+	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
+
+	/* Group Blocks Section */
+	/* Category Blocks Section */
+	/* Collection Blocks Section */
 }
 
 /* Small Tablet Screen */
@@ -117,17 +143,19 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* div#container section.blocks div.grid ul.blocklist li.blockitem {} */
 	/* div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink {} */
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink svg.icon {font-size:3.5rem;}
-	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;}
+	/* div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink h1.blockhead {font-size:1.625rem;} */
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1.25rem;}
 
 	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);}
 
-	/* Category Blocks Section */
+	/* Group Blocks Section */
 	/* div#container section.blocks.categories div.grid ul.blocklist {} */
-	/* Category Blocks Section: All */
+	/* Category Blocks Section */
 	/* div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
-	/* Category Blocks Section: Meta */
+	/* Collection Blocks Section */
 	/* div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:repeat(2,1fr);} */
 	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:1fr;}
 }
@@ -141,14 +169,16 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	div#container section.blocks div.grid ul.blocklist {grid-template-columns:1fr; grid-gap:0; margin-top:1rem;}
 
 	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
 	div#container section.blocks.methods div.grid ul.blocklist {grid-template-columns:1fr;}
 
-	/* Category Blocks Section */
+	/* Group Blocks Section */
 	/* div#container section.blocks.categories div.grid ul.blocklist {} */
-	/* Category Blocks Section: All */
+	/* Category Blocks Section */
 	div#container section.blocks.categories.all div.grid ul.blocklist {grid-template-columns:1fr;}
 	div#container section.blocks.categories.all div.grid ul.blocklist li.blockitem.wide {grid-column-end:span 1;}
-	/* Category Blocks Section: Meta */
+	/* Collection Blocks Section */
 	div#container section.blocks.categories.meta div.grid ul.blocklist {grid-template-columns:1fr;}
 }
 
@@ -160,10 +190,12 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	/* div#container section.blocks div.grid {} */
 
 	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
 
+	/* Group Blocks Section */
 	/* Category Blocks Section */
-	/* Category Blocks Section: All */
-	/* Category Blocks Section: Meta */
+	/* Collection Blocks Section */
 }
 
 /* Small Smartphone Screen */
@@ -180,8 +212,10 @@ div#container section.blocks.categories.meta div.grid ul.blocklist {grid-templat
 	div#container section.blocks div.grid ul.blocklist li.blockitem a.blocklink p.blockdescription {font-size:1rem;}
 
 	/* Method Blocks Section */
+	/* div#container section.blocks.methods {} */
+	/* div#container section.blocks.methods div.grid {} */
 
+	/* Group Blocks Section */
 	/* Category Blocks Section */
-	/* Category Blocks Section: All */
-	/* Category Blocks Section: Meta */
+	/* Collection Blocks Section */
 }

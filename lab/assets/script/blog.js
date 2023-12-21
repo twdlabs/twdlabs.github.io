@@ -7,17 +7,23 @@ console.log('postssection:',postssection);
 
 
 // Get destination for featured posts. 
-const featuredpostsdestinationA = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.a');
-const featuredpostsdestinationB = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.featured.b');
+const featuredpostsdestinationA = document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.postlist.a');
+const featuredpostsdestinationB = document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.postlist.b');
 console.log('Featured posts destinations:',featuredpostsdestinationA,featuredpostsdestinationB);
 // Get destination for category posts. 
-const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.category');
+const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.postlist');
 console.log('Category posts destination:',categoryPostsDestination);
 // Get destination for collection posts. 
-const collectionPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.collection');
+const collectionPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.postlist');
 console.log('Collection posts destination:',collectionPostsDestination);
+// Get archive section. 
+const archiveSection = document.querySelector('div#container section.blog div.grid div.body div.posts#archive');
+console.log('Archive section:',archiveSection);
+// Get destination for archive post pages. 
+const archivePagesDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#archive div.paginator');
+console.log('Archive pages destination:',archivePagesDestination);
 // Get destination for archive posts. 
-const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts ul.postlist.archive');
+const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.postlist');
 console.log('Archive posts destination:',archivePostsDestination);
 
 
@@ -99,106 +105,6 @@ function loadBlog() {
 	
 		// Return resulting layout. 
 		return result;
-	
-		/***/
-	
-		// Create blog card. 
-		function createBlogCard(post) {
-
-			// Define whether or not to use id as name. 
-			// let useidasname = true;
-	
-			// Get project id for given post. 
-			let projectid = post.projectid;
-			// Get project name for given post. 
-			let projectname = post.projectname;
-			// Get category name for given post. 
-			let categoryname = getCategoryName(projectid);
-			// Get author name for given post. 
-			let authorname = getAuthorName(post.authorid);
-	
-			// Get url of page to be added. 
-			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
-	
-			// Compile post card. 
-			return `
-			<!-- postcard -->
-			<li class="postcard" data-projectid="${projectid}" title="${projectid}">
-	
-				<!-- projectlink -->
-				<a class="projectlink" href="${pageurl}" target="_blank">
-	
-					<!-- preview -->
-					<div class="preview">${ previewsOn ? createPreviewPanel(projectid) : '' }</div>
-					<!-- /preview -->
-	
-					<!-- caption -->
-					<div class="caption">
-			
-						<!-- id -->
-						<span class="id">${ projectid }</span>
-						<!-- /id -->
-	
-						<!-- name -->
-						<span class="name">${ projectname }</span>
-						<!-- /name -->
-			
-						<!-- category -->
-						<span class="category">${ categoryname }</span>
-						<!-- /category -->
-			
-						<!-- author -->
-						<span class="author">${ authorname }</span>
-						<!-- /author -->
-	
-					</div>
-					<!-- /caption -->
-	
-				</a>
-				<!-- /projectlink -->
-	
-			</li>
-			<!-- /postcard -->`;
-
-			/**/
-	
-			// Get category name for given project. 
-			function getCategoryName(projectid) {
-	
-				// Go thru each project category. 
-				for(let projectcategory of projectCategoryData) {
-
-					// Check if project found in current category. 
-					let projectfound = projectcategory.groupitemsidlist.includes(projectid);
-
-					// Return name of current category if project found. 
-					if(projectfound) return projectcategory.groupname;
-				}
-
-				// Return nothing if project not found in any category. 
-				return '';
-			}
-	
-			// TODO: Get author name for given project. 
-			function getAuthorName(authorid) {
-				return authorid;
-
-				// TODO: Create data space for author names. 
-	
-				// Go thru each project category. 
-				for(let projectauthor of projectAuthorData) {
-
-					// Check if project found in current category. 
-					let projectfound = projectauthor.authorid == authorid;
-
-					// Return name of current category if project found. 
-					if(projectfound) return projectauthor.authorname;
-				}
-
-				// Return nothing if project not found in any category. 
-				return '';
-			}
-		}
 	}
 
 	// Load featured posts. 
@@ -494,33 +400,124 @@ function loadBlog() {
 		<iframe class="preview" src="${pageurl}"></iframe>
 		<!-- /preview -->`;
 	}
+	
+	// Create blog card. 
+	function createBlogCard(post) {
+
+		// Define whether or not to use id as name. 
+		// let useidasname = true;
+
+		// Get project id for given post. 
+		let projectid = post.projectid;
+		// Get project name for given post. 
+		let projectname = post.projectname;
+		// Get category name for given post. 
+		let categoryname = getCategoryName(projectid);
+		// Get author name for given post. 
+		let authorname = getAuthorName(post.authorid);
+
+		// Get url of page to be added. 
+		let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+
+		// Compile post card. 
+		return `
+		<!-- postcard -->
+		<li class="postcard" data-projectid="${projectid}" title="${projectid}">
+
+			<!-- projectlink -->
+			<a class="projectlink" href="${pageurl}" target="_blank">
+
+				<!-- preview -->
+				<div class="preview">${ previewsOn ? createPreviewPanel(projectid) : '' }</div>
+				<!-- /preview -->
+
+				<!-- caption -->
+				<div class="caption">
+		
+					<!-- id -->
+					<span class="id">${ projectid }</span>
+					<!-- /id -->
+
+					<!-- name -->
+					<span class="name">${ projectname }</span>
+					<!-- /name -->
+		
+					<!-- category -->
+					<span class="category">${ categoryname }</span>
+					<!-- /category -->
+		
+					<!-- author -->
+					<span class="author">${ authorname }</span>
+					<!-- /author -->
+
+				</div>
+				<!-- /caption -->
+
+			</a>
+			<!-- /projectlink -->
+
+		</li>
+		<!-- /postcard -->`;
+
+		/***/
+
+		// Get category name for given project. 
+		function getCategoryName(projectid) {
+
+			// Go thru each project category. 
+			for(let projectcategory of projectCategoryData) {
+
+				// Check if project found in current category. 
+				let projectfound = projectcategory.groupitemsidlist.includes(projectid);
+
+				// Return name of current category if project found. 
+				if(projectfound) return projectcategory.groupname;
+			}
+
+			// Return nothing if project not found in any category. 
+			return '';
+		}
+
+		// TODO: Get author name for given project. 
+		function getAuthorName(authorid) {
+			return authorid;
+
+			// TODO: Create data space for author names. 
+
+			// Go thru each project category. 
+			for(let projectauthor of projectAuthorData) {
+
+				// Check if project found in current category. 
+				let projectfound = projectauthor.authorid == authorid;
+
+				// Return name of current category if project found. 
+				if(projectfound) return projectauthor.authorname;
+			}
+
+			// Return nothing if project not found in any category. 
+			return '';
+		}
+	}
 }
 
-// Toggle post style. 
 // Toggle style of posts in archive section. 
 function togglePostStyle(togglebtn) {
 
 	// Define style ids. 
 	const styleids = ['small','large','listed',];
 
-	// Get archive posts section. 
-	let archivePostsSection = archivePostsDestination.parentElement;
-
 	// Go thru each style id. 
 	for(let id of styleids) {
 		
 		// Turn off style id. 
-		archivePostsSection.classList.remove(id);
+		archiveSection.classList.remove(id);
 	}
 	
 	// Get selected style id. 
 	let styleid = togglebtn.getAttribute('data-styleid');
 	
 	// Turn on selected style id. 
-	archivePostsSection.classList.add(styleid);
-
-	// Toggle state of size toggler button. 
-	// togglebtn.classList.toggle('on');
+	archiveSection.classList.add(styleid);
 }
 
 // Toggle filter panel. 
@@ -549,28 +546,28 @@ function toggleFilterGroup(header) {
 // Toggle section like accordion. 
 function toggleLikeAccordion(section,sectionbin) {
 
-	// Check if section already open. 
-	let sectionOpen = !section.classList.contains('mini');
-	// console.log('Section open:',sectionOpen);
+	// Check if section already folded. 
+	let sectionfolded = section.classList.contains('folded');
+	// console.log('Section folded:',sectionfolded);
 
 	// Get full height of section bin. 
 	let fullheight = sectionbin.scrollHeight;
 	// console.log('Full height:',fullheight);
-
-	// Close if already open. 
-	if(sectionOpen) {
-		section.classList.add('mini');
-		sectionbin.style.maxHeight = 0;
-	}
 	
-	// Open if not already open. 
-	else {
-		section.classList.remove('mini');
+	// Open if already folded. 
+	if(sectionfolded) {
+		section.classList.remove('folded');
 		sectionbin.style.maxHeight = `${fullheight}px`;
+	}
+
+	// Close if not already folded. 
+	else {
+		section.classList.add('folded');
+		sectionbin.style.maxHeight = 0;
 	}
 }
 
-// Add filter. 
+// TODO: Apply filter. 
 function addFilter() {
 
 	// Update blog posts. 
@@ -578,7 +575,7 @@ function addFilter() {
 	// Update filter items. 
 }
 
-// Remove filter. 
+// TODO: Un-apply filter. 
 function removeFilter(filteritem) {
 
 	// Update blog posts. 
@@ -586,7 +583,7 @@ function removeFilter(filteritem) {
 	// Update filter items. 
 }
 
-// Show blog posts that match given filter query. 
+// TODO: Show blog posts that match given filter query. 
 function filterBlogPosts() {
 
 	// 

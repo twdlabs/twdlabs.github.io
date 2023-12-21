@@ -15,10 +15,6 @@ div#container section.blog div.grid div.head div.filter div.togglers div.btn {di
 /* div#container section.blog div.grid div.head div.filter div.togglers div.filterbtn {} */
 div#container section.blog div.grid div.head div.filter div.togglers div.btn:hover {background-color:var(--forecolor); color:var(--backcolor2);}
 div#container section.blog div.grid div.head div.filter div.togglers div.btn svg.icon {font-size:1.5rem;}
-/* div#container section.blog div.grid div.head div.filter div.togglers div.sizerbtn svg.icon.gridlarge {display:block;} */
-/* div#container section.blog div.grid div.head div.filter div.togglers div.sizerbtn svg.icon.gridsmall {display:none;} */
-/* div#container section.blog div.grid div.head div.filter div.togglers div.sizerbtn.on svg.icon.gridlarge {display:none;} */
-/* div#container section.blog div.grid div.head div.filter div.togglers div.sizerbtn.on svg.icon.gridsmall {display:block;} */
 div#container section.blog div.grid div.head div.filter div.searchquery {position:relative; overflow:hidden; width:100%; /* max-width:calc(var(--pagewidth)/3); */ border-radius:5rem; /* margin:2rem auto; */ margin-right:.75rem; box-shadow:var(--boxshadow);}
 /* div#container section.blog div.grid div.head div.filter div.searchquery label.searchlabel {background-color:var(--forecolor2); color:var(--backcolor);} */
 div#container section.blog div.grid div.head div.filter div.searchquery label.searchlabel {display:flex; flex-direction:column; justify-content:center; cursor:pointer; padding:0 1.125rem;}
@@ -45,7 +41,7 @@ div#container section.blog div.grid div.body div.posts ul.postlist {list-style:n
 div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:8; grid-gap:.875rem;}
 div#container section.blog div.grid div.body div.posts.large ul.postlist {--gridcolumns:6; grid-gap:1.25rem;}
 div#container section.blog div.grid div.body div.posts.listed ul.postlist {display:flex; flex-direction:column; grid-gap:1.25rem;}
-div#container section.blog div.grid div.body div.posts ul.postlist.featured.b {max-height:0;}
+div#container section.blog div.grid div.body div.posts#featured ul.postlist.b {max-height:0;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.gone {opacity:.375; transition:.375s;}
@@ -80,14 +76,19 @@ div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a
 div#container section.blog div.grid div.body div.posts div.emptylabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
 div#container section.blog div.grid div.body div.posts div.emptylabel.on {display:block;}
 
+/* Blog Section: Post Paginator */
+/* div#container section.blog div.grid div.body div.posts {} */
+/* div#container section.blog div.grid div.body div.posts div.paginator {} */
+div#container section.blog div.grid div.body div.posts div.paginator div.postpage {display:none;}
+div#container section.blog div.grid div.body div.posts div.paginator div.postpage {display:block;}
+
 /* Blog Section: Zoomer */
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:flex; flex-direction:column; align-items:center; justify-content:center;} */
 div#container section.blog div.grid div.body div.posts div.zoomer {margin-top:1rem;}
-div#container section.blog div.grid div.body div.posts div.zoomer.x {display:none;}
 div#container section.blog div.grid div.body div.posts div.zoomer.grow {display:none;}
 div#container section.blog div.grid div.body div.posts div.zoomer.shrink {display:block;}
-div#container section.blog div.grid div.body div.posts.mini div.zoomer.grow {display:block;}
-div#container section.blog div.grid div.body div.posts.mini div.zoomer.shrink {display:none;}
+div#container section.blog div.grid div.body div.posts.folded div.zoomer.grow {display:block;}
+div#container section.blog div.grid div.body div.posts.folded div.zoomer.shrink {display:none;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {font-size:1.25rem; cursor:pointer; user-select:none;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {background-color:var(--backcolor); display:flex; flex-direction:column; align-items:center; width:fit-content; transition:.125s;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {padding:.5rem 1.5rem; border-radius:var(--cornersize); margin:0 auto;}
