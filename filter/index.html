@@ -7,65 +7,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../atgicon.ico" rel="icon"/>
-		<!-- <link href="./assets/icons/5804803.png" rel="apple-touch-icon"/> -->
+		<link href="./icon/filter_icon_155401.png" rel="icon"/>
+		<link href="./icon/filter_icon_155401.png" rel="apple-touch-icon"/>
 		<title>Filter</title>
 
 		<!-- Main Stylesheet -->
 		<link href="./filter.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
-		<style>
-
-
-			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
-			
-			
-			* {box-sizing:border-box; /* padding:0; margin:0; */}
-			
-			
-			:root {
-			
-				/* xyz */
-				--grey:#CCC;
-				--ltgrey:#DDD;
-				--blackglass:#0006;
-			
-				/* xyz */
-				--boxshadow:0 0 1rem #0002;
-				--boxshadow:0 0 .25rem #0003;
-				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
-			}
-			
-			
-			/* html {} */
-			body {font-family: Arial, Helvetica, sans-serif;}
-
-
-			/* Xyz */
-			/* div#container {} */
-			div#container div.grid {max-width:60rem; margin:0 auto;}
-
-			/* Create a column layout with Flexbox */
-			div#container div.grid div.row {display:flex;}
-
-
-			/* Left column (menu) */
-			div#container div.grid div.row div.colA {background-color:#bbb; flex:35%; padding:15px 0;}
-			div#container div.grid div.row div.colA h2 {padding-left:8px;}
-
-			/* Style the search box */
-			div#container div.grid div.row div.colA input#filterBox {width:100%; font-size:18px; padding:11px; border:1px solid #ddd;}
-
-			/* Style the navigation menu inside the left column */
-			div#container div.grid div.row div.colA ul#menuList {list-style-type:none; padding:0; margin:0;}
-			/* div#container div.grid div.row div.colA ul#menuList li {} */
-			div#container div.grid div.row div.colA ul#menuList li a {padding:12px; text-decoration:none; color:black; display:block}
-			div#container div.grid div.row div.colA ul#menuList li a:hover {background-color:#eee;}
-
-
-			/* Right column (page content) */
-			div#container div.grid div.row div.colB {background-color:#ddd; flex:65%; padding:15px;}
-		</style>
 	</head>
 	<body>
 
@@ -89,22 +37,68 @@
 						<!-- /head -->
 		
 						<!-- #filterBox -->
-						<input type="text" id="filterBox" onkeyup="refresh()" placeholder="Search.." title="Type in a category">
+						<input type="text" id="filterBox" placeholder="Search.." title="Type in a category">
 						<!-- /#filterBox -->
 		
-						<!-- #menuList -->
-						<ul id="menuList">
-							<li><a href="#">HTML</a></li>
-							<li><a href="#">CSS</a></li>
-							<li><a href="#">JavaScript</a></li>
-							<li><a href="#">PHP</a></li>
-							<li><a href="#">Python</a></li>
-							<li><a href="#">jQuery</a></li>
-							<li><a href="#">SQL</a></li>
-							<li><a href="#">Bootstrap</a></li>
-							<li><a href="#">Node.js</a></li>
+						<!-- menulist -->
+						<ul class="menulist">
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">HTML</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">CSS</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">JavaScript</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">PHP</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">Python</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">jQuery</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">SQL</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">Bootstrap</a>
+							</li>
+							<!-- /menuitem -->
+
+							<!-- menuitem -->
+							<li class="menuitem">
+								<a href="#">Node.js</a>
+							</li>
+							<!-- /menuitem -->
+
 						</ul>
-						<!-- /#menuList -->
+						<!-- /menulist -->
 		
 					</div>
 					<!-- /colA -->
@@ -137,26 +131,6 @@
 		<!-- Main Script -->
 		<script src="./filter.js" type="text/javascript"></script>
 		<!-- <script type="text/javascript"></script> -->
-		<script>
-
-			// Refresh items. 
-			function refresh() {
-				var filter, li, a;
-				filter = document.getElementById("filterBox").value.toUpperCase();
-				li = document.getElementById("menuList").getElementsByTagName("li");
-
-				for (var i=0 ; i<li.length ; i++) {
-					a = li[i].getElementsByTagName("a")[0];
-
-					if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-						li[i].style.display = "";
-					} 
-					else {
-						li[i].style.display = "none";
-					}
-				}
-			}
-		</script>
 
 	</body>
 </html>

@@ -1,0 +1,51 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+			
+			
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* xyz */
+	--grey:#CCC;
+	--ltgrey:#DDD;
+	--blackglass:#0006;
+
+	/* xyz */
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+}
+
+
+/* html {} */
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+/* Xyz */
+/* div#container {} */
+div#container div.grid {max-width:60rem; margin:0 auto;}
+
+/* Create a column layout with Flexbox */
+div#container div.grid div.row {display:flex;}
+
+
+/* Left column (menu) */
+div#container div.grid div.row div.colA {background-color:#bbb; flex:35%; padding:15px 0;}
+div#container div.grid div.row div.colA h2 {padding-left:8px;}
+
+/* Style the search box */
+div#container div.grid div.row div.colA input#filterBox {width:100%; font-size:18px; padding:11px; border:1px solid #ddd;}
+
+/* Style the navigation menu inside the left column */
+div#container div.grid div.row div.colA ul.menulist {list-style-type:none; padding:0; margin:0;}
+/* div#container div.grid div.row div.colA ul.menulist li.menuitem {} */
+div#container div.grid div.row div.colA ul.menulist li.menuitem a {padding:12px; text-decoration:none; color:black; display:block}
+div#container div.grid div.row div.colA ul.menulist li.menuitem a:hover {background-color:#eee;}
+
+
+/* Right column (page content) */
+div#container div.grid div.row div.colB {background-color:#ddd; flex:65%; padding:15px;}
