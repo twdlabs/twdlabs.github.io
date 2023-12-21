@@ -30,7 +30,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 div#container div.grid {max-width:60rem; margin:0 auto;}
 
 /* Create a column layout with Flexbox */
-div#container div.grid div.row {display:flex;}
+div#container div.grid div.row {display:flex; flex-direction:row;}
 
 
 /* Left column (menu) */
@@ -49,3 +49,22 @@ div#container div.grid div.row div.colA ul.menulist li.menuitem a:hover {backgro
 
 /* Right column (page content) */
 div#container div.grid div.row div.colB {background-color:#ddd; flex:65%; padding:15px;}
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+	div#container div.grid div.row {flex-direction:column;}
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
