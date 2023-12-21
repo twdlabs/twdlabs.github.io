@@ -3,61 +3,139 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="./../atgicon.ico" rel="icon"/>
+		<!-- <link href="./assets/icons/5804803.png" rel="apple-touch-icon"/> -->
 		<title>Filter</title>
 
+		<!-- Main Stylesheet -->
+		<link href="./pagination.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
 		<style>
+
+
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+			
+			
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+			
+			
+			:root {
+			
+				/* xyz */
+				--grey:#CCC;
+				--ltgrey:#DDD;
+				--blackglass:#0006;
+			
+				/* xyz */
+				--boxshadow:0 0 1rem #0002;
+				--boxshadow:0 0 .25rem #0003;
+				/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
+			}
+			
+			
+			/* html {} */
 			body {font-family: Arial, Helvetica, sans-serif;}
-			* {box-sizing:border-box;}
-			.row {display:flex;} /* Create a column layout with Flexbox */
 
-			.colA {flex:35%; padding:15px 0;} /* Left column (menu) */
-			.colA h2 {padding-left:8px;}
 
-			.colB {flex:65%; padding:15px;} /* Right column (page content) */
+			/* Xyz */
+			div#container {}
+			div#container div.grid {max-width:60rem; margin:0 auto;}
 
-			#filterBox {width:100%; font-size:18px; padding:11px; border:1px solid #ddd;} /* Style the search box */
-			#menuList {list-style-type:none; padding:0; margin:0;} /* Style the navigation menu inside the left column */
-			#menuList li a {padding:12px; text-decoration:none; color:black; display:block}
-			#menuList li a:hover {background-color:#eee;}
+			/* Create a column layout with Flexbox */
+			div#container div.grid div.row {display:flex;}
+
+
+			/* Left column (menu) */
+			div#container div.grid div.row div.colA {background-color:#bbb; flex:35%; padding:15px 0;}
+			div#container div.grid div.row div.colA h2 {padding-left:8px;}
+
+			/* Style the search box */
+			div#container div.grid div.row div.colA input#filterBox {width:100%; font-size:18px; padding:11px; border:1px solid #ddd;}
+
+			/* Style the navigation menu inside the left column */
+			div#container div.grid div.row div.colA ul#menuList {list-style-type:none; padding:0; margin:0;}
+			/* div#container div.grid div.row div.colA ul#menuList li {} */
+			div#container div.grid div.row div.colA ul#menuList li a {padding:12px; text-decoration:none; color:black; display:block}
+			div#container div.grid div.row div.colA ul#menuList li a:hover {background-color:#eee;}
+
+
+			/* Right column (page content) */
+			div#container div.grid div.row div.colB {background-color:#ddd; flex:65%; padding:15px;}
 		</style>
 	</head>
 	<body>
 
-		<h2>Menu Filter</h2>
-		<p>Start typing a specific category to "filter" the search options.</p>
+		<!-- #container -->
+		<div id="container">
+	
+			<!-- grid -->
+			<div class="grid">
 
-		<div class="row">
-			<div class="colA" style="background-color:#bbb;">
-				<h2>Menu</h2>
-				<input type="text" id="filterBox" onkeyup="refresh()" placeholder="Search.." title="Type in a category">
-				<ul id="menuList">
-					<li><a href="#">HTML</a></li>
-					<li><a href="#">CSS</a></li>
-					<li><a href="#">JavaScript</a></li>
-					<li><a href="#">PHP</a></li>
-					<li><a href="#">Python</a></li>
-					<li><a href="#">jQuery</a></li>
-					<li><a href="#">SQL</a></li>
-					<li><a href="#">Bootstrap</a></li>
-					<li><a href="#">Node.js</a></li>
-				</ul>
+				<h2>Menu Filter</h2>
+				<p>Start typing a specific category to "filter" the search options.</p>
+		
+				<!-- row -->
+				<div class="row">
+		
+					<!-- colA -->
+					<div class="colA">
+		
+						<!-- head -->
+						<h2 class="head">Menu</h2>
+						<!-- /head -->
+		
+						<!-- #filterBox -->
+						<input type="text" id="filterBox" onkeyup="refresh()" placeholder="Search.." title="Type in a category">
+						<!-- /#filterBox -->
+		
+						<!-- #menuList -->
+						<ul id="menuList">
+							<li><a href="#">HTML</a></li>
+							<li><a href="#">CSS</a></li>
+							<li><a href="#">JavaScript</a></li>
+							<li><a href="#">PHP</a></li>
+							<li><a href="#">Python</a></li>
+							<li><a href="#">jQuery</a></li>
+							<li><a href="#">SQL</a></li>
+							<li><a href="#">Bootstrap</a></li>
+							<li><a href="#">Node.js</a></li>
+						</ul>
+						<!-- /#menuList -->
+		
+					</div>
+					<!-- /colA -->
+		
+					<!-- colB -->
+					<div class="colB">
+		
+						<!-- head -->
+						<h2 class="head">Page Content</h2>
+						<!-- /head -->
+		
+						<p>Start typing a specific category to "filter" the search options.
+						</p>
+		
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
+					<!-- /colB -->
+		
+				</div>
+				<!-- /row -->
+	
 			</div>
+			<!-- /grid -->
 
-			<div class="colB" style="background-color:#ddd;">
-				<h2>Page Content</h2>
-
-				<p>Start typing a specific category to "filter" the search options.
-				</p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-			</div>
 		</div>
+		<!-- /#container -->
 
 		<script>
+
+			// Refresh items. 
 			function refresh() {
 				var filter, li, a;
 				filter = document.getElementById("filterBox").value.toUpperCase();
