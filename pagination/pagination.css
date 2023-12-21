@@ -27,7 +27,7 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
-div#container main.main {background-color:white; width:100%; max-width:16rem; padding:1.25rem 1.375rem .5rem; border-radius:.875rem; box-shadow:var(--boxshadow);}
+div#container main.main {background-color:white; width:100%; max-width:20rem; padding:1.25rem 1.375rem .5rem; border-radius:.875rem; box-shadow:var(--boxshadow);}
 div#container main.main div.grid {display:flex; flex-direction:row; justify-content:center; /* grid-gap:.25rem; */}
 
 div#container main.main div.grid div.page {background-color:var(--ltgrey); font-size:1rem; width:100%; /* max-width:8.5em; */ padding:1.25rem; border-radius:.5rem; counter-increment:pagenum;}
@@ -39,35 +39,34 @@ div#container main.main div.grid div.page.active {display:block;}
 div#container main.main div.grid div.page div.bin {display:flex; flex-direction:column; align-items:center; align-items:stretch;}
 div#container main.main div.grid div.page div.bin div.item {cursor:pointer; font-size:1.25rem;}
 div#container main.main div.grid div.page div.bin div.item.xyz {opacity:0; visibility:hidden;}
+div#container main.main div.grid div.page div.bin div.item:empty {content:'xyz';}
 div#container main.main div.grid div.page div.pagenum {position:absolute; bottom:0; right:0;}
 div#container main.main div.grid div.page div.pagenum {margin:.5rem;}
 
 /* Page Navigator */
-div#container main.main nav.paginator {display:flex; flex-direction:row; justify-content:center; align-items:center; /* grid-gap:.5rem; */ margin-top:.75rem;}
-/* div#container main.main nav.paginator a {display:flex; flex-direction:row; align-items:center;} */
+div#container main.main nav.pagenav {display:flex; flex-direction:row; justify-content:center; align-items:center; /* grid-gap:.5rem; */ margin-top:.75rem;}
+/* div#container main.main nav.pagenav a {display:flex; flex-direction:row; align-items:center;} */
 /* Page Navigator: Delta Links */
-div#container main.main nav.paginator a.deltalink {color:inherit; text-decoration:none;}
-div#container main.main nav.paginator.f a.deltalink.top {visibility:hidden;}
-div#container main.main nav.paginator.f a.deltalink.prev {visibility:hidden;}
-div#container main.main nav.paginator.l a.deltalink.next {visibility:hidden;}
-div#container main.main nav.paginator.l a.deltalink.last {visibility:hidden;}
+div#container main.main nav.pagenav a.deltalink {color:inherit; text-decoration:none;}
+div#container main.main nav.pagenav.f a.deltalink.b {visibility:hidden;}
+div#container main.main nav.pagenav.l a.deltalink.f {visibility:hidden;}
 /* Page Navigator: Delta Link Contents */
-div#container main.main nav.paginator a.deltalink svg.icon {display:none;}
-/* div#container main.main nav.paginator a.deltalink svg.icon.arrow {display:block;} */
-div#container main.main nav.paginator a.deltalink svg.icon.caret {display:block;}
-/* div#container main.main nav.paginator a.deltalink svg.icon.chevron {display:block;} */
-/* div#container main.main nav.paginator a.deltalink svg.icon.arrowshort {display:block;} */
-/* div#container main.main nav.paginator a.deltalink svg.icon.chevrondouble {display:block;} */
-div#container main.main nav.paginator a.deltalink span.caption {display:none;}
+div#container main.main nav.pagenav a.deltalink svg.icon {display:none;}
+/* div#container main.main nav.pagenav a.deltalink svg.icon.arrow {display:block;} */
+div#container main.main nav.pagenav a.deltalink svg.icon.caret {display:block;}
+/* div#container main.main nav.pagenav a.deltalink svg.icon.chevron {display:block;} */
+/* div#container main.main nav.pagenav a.deltalink svg.icon.arrowshort {display:block;} */
+/* div#container main.main nav.pagenav a.deltalink svg.icon.chevrondouble {display:block;} */
+div#container main.main nav.pagenav a.deltalink span.caption {display:none;}
 /* Page Navigator: Number Links */
-div#container main.main nav.paginator ul.numlist {display:flex; flex-direction:row; justify-content:center; align-items:center; grid-gap:.125rem; margin:0 .625rem;}
-div#container main.main nav.paginator ul.numlist {list-style:none; padding:0; margin:0;}
-div#container main.main nav.paginator ul.numlist li.numitem {font-size:1.25rem;}
-div#container main.main nav.paginator ul.numlist li.numitem a.pagelink {background-color:var(--ltgrey); display:block; padding:0 .5rem; border:1px solid; border-radius:.25rem;}
-div#container main.main nav.paginator ul.numlist li.numitem a.pagelink {color:inherit; text-decoration:none;}
-div#container main.main nav.paginator ul.numlist li.numitem a.pagelink:hover {background-color:var(--grey);}
-div#container main.main nav.paginator ul.numlist li.numitem a.pagelink:empty {background-color:gainsboro; height:1em; width:1em;}
-div#container main.main nav.paginator ul.numlist li.numitem a.pagelink.active {color:var(--blackglass); font-size:1.05em; /* font-weight:900; */}
+div#container main.main nav.pagenav ul.numlist {display:flex; flex-direction:row; justify-content:center; align-items:center; grid-gap:.125rem; margin:0 .625rem;}
+div#container main.main nav.pagenav ul.numlist {list-style:none; padding:0; margin:0;}
+div#container main.main nav.pagenav ul.numlist li.numitem {font-size:1.25rem;}
+div#container main.main nav.pagenav ul.numlist li.numitem a.pagelink {background-color:var(--ltgrey); display:block; padding:0 .5rem; border:1px solid; border-radius:.25rem;}
+div#container main.main nav.pagenav ul.numlist li.numitem a.pagelink {color:inherit; text-decoration:none;}
+div#container main.main nav.pagenav ul.numlist li.numitem a.pagelink:hover {background-color:var(--grey);}
+div#container main.main nav.pagenav ul.numlist li.numitem a.pagelink:empty {background-color:gainsboro; height:1em; width:1em;}
+div#container main.main nav.pagenav ul.numlist li.numitem a.pagelink.active {color:var(--blackglass); font-size:1.05em; /* font-weight:900; */}
 
 
 /* Tablet Screen */

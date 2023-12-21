@@ -2,24 +2,41 @@
 
 
 // Define number of items shown per page. 
-const numPerPage = 10;
+const numPerPage = 15;
 
 
 // Define data source. 
-let dataSource = defaultUserData;
-console.log('Data source:',dataSource);
+const dataSource = {
+	raw:defaultUserData,
+	paged:paginateData(defaultUserData),
+	// xyz:xyz,
+};
+
+// Define data source. 
+// let dataSource = defaultUserData;
+// console.log('Data source:',defaultUserData);
+
+// Get number of data items. 
+const numItems = dataSource.length;
+console.log('Item count:',numItems);
+console.log('Page capacity:',numPerPage);
 
 
 // Create paginated data. 
-const pagedData = paginateData();
+const pagedData = paginateData(defaultUserData);
 console.log('Pages of data:',pagedData);
+
+
+// Get number of pages. 
+const numPages = Math.ceil(numItems/numPerPage);
+console.log('Page count:',numPages);
 
 
 /*****/
 
 
 // Create paginated version of data. 
-function paginateData() {
+function paginateData(dataSource) {
 
 	// Initialize result. 
 	let result = [];
@@ -45,7 +62,7 @@ function paginateData() {
 		// Add data point to list for current page. 
 		result[pageindex].push(datapoint);
 	}
-	console.log('Page index:',pageindex);
+	// console.log('Last page index:',pageindex);
 
 	// Fill data for last page. 
 	while( result[pageindex].length<numPerPage ) result[pageindex].push( {} );

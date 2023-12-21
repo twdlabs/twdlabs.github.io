@@ -5,14 +5,14 @@
 const pagecontainer = document.querySelector('main.main div.grid');
 
 // Get page navigator. 
-const paginator = document.querySelector('main.main nav.paginator');
+const paginator = document.querySelector('main.main nav.pagenav');
 // Get page delta links. 
-const topPageBtn = document.querySelector('main.main nav.paginator a.deltalink.top');
-const prevPageBtn = document.querySelector('main.main nav.paginator a.deltalink.prev');
-const nextPageBtn = document.querySelector('main.main nav.paginator a.deltalink.next');
-const lastPageBtn = document.querySelector('main.main nav.paginator a.deltalink.last');
+const topPageBtn = document.querySelector('main.main nav.pagenav a.deltalink.top');
+const prevPageBtn = document.querySelector('main.main nav.pagenav a.deltalink.prev');
+const nextPageBtn = document.querySelector('main.main nav.pagenav a.deltalink.next');
+const lastPageBtn = document.querySelector('main.main nav.pagenav a.deltalink.last');
 // Get destination for page number links. 
-const numlinksdestination = document.querySelector('main.main nav.paginator ul.numlist');
+const numlinksdestination = document.querySelector('main.main nav.pagenav ul.numlist');
 
 // Initialize element references for all pages. 
 let allpages;
@@ -24,16 +24,6 @@ let currentpageindex = 0;
 
 
 /*****/
-
-
-// Get number of data items. 
-const numItems = dataSource.length;
-console.log('Item count:',numItems);
-console.log('Page capacity:',numPerPage);
-
-// Get number of pages. 
-const numPages = Math.ceil(numItems/numPerPage);
-console.log('Page count:',numPages);
 
 
 /*****/
@@ -66,7 +56,7 @@ function addPages() {
 
 		// Get page data. 
 		let pagedata = pagedData[pageindex];
-		console.log('Page data:',pageindex,pagedata);
+		console.log('Page',1*pageindex,pagedata);
 
 		// Add layout for new page. 
 		result += `
@@ -109,7 +99,8 @@ function addPages() {
 			let isvaliddata = itemdata.fname && itemdata.lname;
 
 			// Get item caption. 
-			let itemcaption = isvaliddata ? `${itemdata.fname} ${itemdata.lname}` : 'xyz';
+			let itemcaption = isvaliddata ? itemdata.username : '';
+			// let itemcaption = isvaliddata ? `${itemdata.fname} ${itemdata.lname}` : '';
 	
 			// Add current item to layout. 
 			result += `
@@ -162,7 +153,7 @@ function addPageLinks() {
 	function activatePageLinks() {
 
 		// Get all page number links. 
-		pagenumberlinks = document.querySelectorAll('main.main nav.paginator ul.numlist li.numitem a.pagelink');
+		pagenumberlinks = document.querySelectorAll('main.main nav.pagenav ul.numlist li.numitem a.pagelink');
 	
 		// Go thru each page number link. 
 		for(let link of pagenumberlinks) {
@@ -248,7 +239,7 @@ function showSelectedPage() {
 	// Update page links. 
 	updatePageLinks();
 
-	// Update status of paginator. 
+	// Update status of page navigator. 
 	updatePaginator();
 
 	/****/
@@ -313,8 +304,8 @@ function showSelectedPage() {
 		
 		// Indicate last page. 
 		else if(onLastPage) {
-			paginator.classList.add('l');
 			paginator.classList.remove('f');
+			paginator.classList.add('l');
 		}
 		
 		// Indicate middle page. 
