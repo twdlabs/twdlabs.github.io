@@ -8,7 +8,7 @@ const pagecontainer = document.querySelector('div#container main.main div.grid')
 // Get page navigator. 
 const pagenavigator = document.querySelector('div#container main.main nav.pagenav');
 
-// Get destination for page number links. 
+// Get destination for page links. 
 const numlinksdestination = document.querySelector('div#container main.main nav.pagenav ul.numlist');
 
 // Get page delta link buttons. 
@@ -23,7 +23,7 @@ const deltabtn = {
 // Initialize element references for all pages. 
 let allpages;
 
-// Initialize element references for all page number links. 
+// Initialize element references for all page links. 
 let pagenumberlinks;
 
 
@@ -43,24 +43,145 @@ loadPaginator();
 
 // Load paginator. 
 function loadPaginator() {
-
-	// Add pages. 
-	addPages();
 	
 	// Add page links. 
 	addPageLinks();
+
+	// Add page displays. 
+	addPageDisplays();
 	
 	// Show currently selected page. 
 	showSelectedPage();
 	
 	// Activate shortcut keys. 
 	activateShortcutKeys();
-
-	/****/
 }
 
-// Add pages of data. 
-function addPages() {
+// Add page links. 
+function addPageLinks() {
+
+	// Initialize result. 
+	let result = '';
+
+	// Go thru all page numbers. 
+	for(let i=0 ; i<pagecount ; i++) {
+	
+		// Add numbered page link. 
+		result += createPageLink(i);
+	}
+
+	// Display page links in page navigator. 
+	numlinksdestination.innerHTML = result;
+
+	// Activate page links. 
+	activatePageLinks();
+
+	/****/
+
+	// Create numbered page link. 
+	function createPageLink(index) {
+		return `
+		<!-- numitem -->
+		<li class="numitem">
+
+			<!-- pagelink -->
+			<a class="pagelink" href="javascript:void(0)" data-pageindex="${index}">${ (1*index + 1) }</a>
+			<!-- /pagelink -->
+
+		</li>
+		<!-- /numitem -->`;
+	}
+
+	// Activate page links. 
+	function activatePageLinks() {
+
+		// Get all page links. 
+		pagenumberlinks = document.querySelectorAll('main.main nav.pagenav ul.numlist li.numitem a.pagelink');
+	
+		// Go thru each page link. 
+		for(let link of pagenumberlinks) {
+			// Activate page link. 
+			link.addEventListener('click',selectPageNumber);
+		}
+		
+		// Activate delta button: go to first page. 
+		deltabtn['top'].addEventListener('click',goToTopPage);
+	
+		// Activate delta button: go to previous page. 
+		deltabtn['prev'].addEventListener('click',goToPrevPage);
+	
+		// Activate delta button: go to next page. 
+		deltabtn['next'].addEventListener('click',goToNextPage);
+	
+		// Activate delta button: go to last page. 
+		deltabtn['last'].addEventListener('click',goToLastPage);
+	
+		/***/
+	
+		// Select page by page link. 
+		function selectPageNumber(event) {
+	
+			// Get selected page link. 
+			let selectedpagelink = event.currentTarget;
+			console.log('Selected page link:',selectedpagelink);
+
+			// Check if valid page link selected. 
+			let validpagelinkselected = selectedpagelink.hasAttribute('data-pageindex');
+			if(!validpagelinkselected) {
+				console.warn('Invalid page link selected:',selectedpagelink);
+				return;
+			}
+	
+			// Get index of selected page. 
+			let pageindex = selectedpagelink.getAttribute('data-pageindex') * 1;
+			// Go to page by index. 
+			goToPageByIndex(pageindex);
+		}
+	
+		// Go to first page. 
+		function goToTopPage() {
+			// Get index of selected page. 
+			let pageindex = 0;
+			// Go to page by index. 
+			goToPageByIndex(pageindex);
+		}
+	
+		// Go to previous page. 
+		function goToPrevPage() {
+			// Update index of selected page. 
+			currentpageindex--;
+			// Show currently selected page. 
+			showSelectedPage();
+		}
+	
+		// Go to next page. 
+		function goToNextPage() {
+			// Update index of selected page. 
+			currentpageindex++;
+			// Show currently selected page. 
+			showSelectedPage();
+		}
+	
+		// Go to last page. 
+		function goToLastPage() {
+			// Get index of selected page. 
+			let pageindex = 1*pagecount - 1;
+			// Go to page by index. 
+			goToPageByIndex(pageindex);
+		}
+	
+		// Go to page by index. 
+		function goToPageByIndex(queryindex) {
+			// Update index of currently selected page. 
+			currentpageindex = queryindex * 1;
+			// Show currently selected page. 
+			showSelectedPage();
+		}
+	}
+}
+
+// Add page displays. 
+function addPageDisplays() {
 	
 	// Initialize result. 
 	let result = ``;
@@ -131,118 +252,6 @@ function addPages() {
 	}
 }
 
-// Add page links. 
-function addPageLinks() {
-
-	// Initialize result. 
-	let result = '';
-
-	// Go thru all page numbers. 
-	for(let i=0 ; i<pagecount ; i++) {
-	
-		// Add page number. 
-		result += createPageNumber(i);
-	}
-
-	// Display page links in page navigator. 
-	numlinksdestination.innerHTML = result;
-
-	// Activate page links. 
-	activatePageLinks();
-
-	/****/
-
-	// Create page number item. 
-	function createPageNumber(index) {
-		return `
-		<!-- numitem -->
-		<li class="numitem">
-
-			<!-- pagelink -->
-			<a class="pagelink" href="javascript:void(0)" data-pageindex="${ (1*index) }">${ (1*index + 1) }</a>
-			<!-- /pagelink -->
-
-		</li>
-		<!-- /numitem -->`;
-	}
-
-	// Activate page links. 
-	function activatePageLinks() {
-
-		// Get all page number links. 
-		pagenumberlinks = document.querySelectorAll('main.main nav.pagenav ul.numlist li.numitem a.pagelink');
-	
-		// Go thru each page number link. 
-		for(let link of pagenumberlinks) {
-			// Activate page link. 
-			link.addEventListener('click',selectPageNumber);
-		}
-		
-		// Activate delta button: go to first page. 
-		deltabtn['top'].addEventListener('click',goToTopPage);
-	
-		// Activate delta button: go to previous page. 
-		deltabtn['prev'].addEventListener('click',goToPrevPage);
-	
-		// Activate delta button: go to next page. 
-		deltabtn['next'].addEventListener('click',goToNextPage);
-	
-		// Activate delta button: go to last page. 
-		deltabtn['last'].addEventListener('click',goToLastPage);
-	
-		/***/
-	
-		// Select page by page number link. 
-		function selectPageNumber(event) {
-	
-			// Get selected page link. 
-			let selectedpagelink = event.currentTarget;
-			console.log('Selected page link:',selectedpagelink);
-
-			// Check if valid page link selected. 
-			let selectedValidLink = selectedpagelink.hasAttribute('data-pageindex');
-			if(!selectedValidLink) return;
-	
-			// Update index of currently selected page. 
-			currentpageindex = selectedpagelink.getAttribute('data-pageindex') * 1;
-			// Show currently selected page. 
-			showSelectedPage();
-		}
-	
-		// Go to first page. 
-		function goToTopPage() {
-			// Update index of selected page. 
-			currentpageindex = 0;
-			// Show currently selected page. 
-			showSelectedPage();
-		}
-	
-		// Go to previous page. 
-		function goToPrevPage() {
-			// Update index of selected page. 
-			currentpageindex--;
-			// Show currently selected page. 
-			showSelectedPage();
-		}
-	
-		// Go to next page. 
-		function goToNextPage() {
-			// Update index of selected page. 
-			currentpageindex++;
-			// Show currently selected page. 
-			showSelectedPage();
-		}
-	
-		// Go to last page. 
-		function goToLastPage() {
-			// Update index of selected page. 
-			currentpageindex = 1*pagecount - 1;
-			// Show currently selected page. 
-			showSelectedPage();
-		}
-	}
-}
-
 // Show currently selected page. 
 function showSelectedPage() {
 
@@ -302,7 +311,7 @@ function showSelectedPage() {
 		// Update page links. 
 		function updatePageLinks() {
 		
-			// Go thru each page number link. 
+			// Go thru each page link. 
 			for(let link of pagenumberlinks) {
 
 				// Get index of current page. 

@@ -40,7 +40,7 @@ div#container main.main div.grid div.page ul.datalist {display:flex; flex-direct
 div#container main.main div.grid div.page ul.datalist {list-style:none; padding:0; margin:0;}
 div#container main.main div.grid div.page ul.datalist li.dataitem {display:flex; align-items:center;}
 div#container main.main div.grid div.page ul.datalist li.dataitem {cursor:pointer; font-size:1.25rem; min-height:2em; padding:0 .5em; border:1px solid; border-radius:.5rem; margin-top:.25em;}
-/* div#container main.main div.grid div.page ul.datalist li.dataitem.x {opacity:0; visibility:hidden;} */
+div#container main.main div.grid div.page ul.datalist li.dataitem.x {opacity:0.125; /* visibility:hidden; */}
 div#container main.main div.grid div.page ul.datalist li.dataitem:empty {content:'abcxyz';}
 div#container main.main div.grid div.page div.pagenum {position:absolute; bottom:0; right:0;}
 div#container main.main div.grid div.page div.pagenum {margin:.5rem;}

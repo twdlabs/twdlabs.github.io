@@ -39,13 +39,15 @@ function paginateData(/* rawdatasource */) {
 	// Go thru each data point in given data source. 
 	for(let dataindex in rawdatasource) {
 
-		// Check if starting new page. 
-		let startNewPage = (dataindex%pagecapacity) == 0;
+		// Check if current page at capacity. 
+		let atpagecapacity = (dataindex%pagecapacity) == 0;
 	
-		// Shift to next data set if at start of new page. 
-		if(startNewPage) {
-			// Add data list for new page. 
+		// Start to new page if current page at capacity. 
+		if(atpagecapacity) {
+
+			// Add list for new page. 
 			result.push( [] );
+
 			// Increment page index. 
 			pageindex++;
 		}
@@ -58,7 +60,8 @@ function paginateData(/* rawdatasource */) {
 	// console.log('Last page index:',pageindex);
 
 	// Fill data for last page. 
-	while( result[pageindex].length<pagecapacity ) result[pageindex].push( {} );
+	while( result[pageindex].length<pagecapacity ) result[pageindex].push( '' );
+	// while( result[pageindex].length<pagecapacity ) result[pageindex].push( {} );
 
 	// Return result. 
 	return result;
