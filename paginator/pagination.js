@@ -195,16 +195,16 @@ function addPageLinks() {
 		// Select page by page number link. 
 		function selectPageNumber(event) {
 	
-			// Get selected page number link. 
-			let selectedpagenumberlink = event.currentTarget;
-			console.log('Selected page number link:',selectedpagenumberlink);
+			// Get selected page link. 
+			let selectedpagelink = event.currentTarget;
+			console.log('Selected page link:',selectedpagelink);
 
-			// Check if valid page number link selected. 
-			let selectedValidLink = selectedpagenumberlink.hasAttribute('data-pageindex');
+			// Check if valid page link selected. 
+			let selectedValidLink = selectedpagelink.hasAttribute('data-pageindex');
 			if(!selectedValidLink) return;
 	
-			// Update index of selected page. 
-			currentpageindex = selectedpagenumberlink.getAttribute('data-pageindex') * 1;
+			// Update index of currently selected page. 
+			currentpageindex = selectedpagelink.getAttribute('data-pageindex') * 1;
 			// Show currently selected page. 
 			showSelectedPage();
 		}
@@ -248,7 +248,7 @@ function showSelectedPage() {
 
 	// Confirm valid page. 
 	confirmValidPage();
-	console.log('Current page number:', (currentpageindex+1) );
+	console.log('Current page index:', currentpageindex );
 
 	// Update page navigator. 
 	updatePageNav();
@@ -349,12 +349,15 @@ function activateShortcutKeys() {
 
 	// Check if shortcut key selected. 
 	function checkForShortcutKey(event) {
-		console.log(event);
+		// console.log(event);
+
+		// Respond to space bar. 
+		if(event.keyCode==32 || event.key==' ') showSelectedPage();
 	
 		// Respond to up arrow key. 
-		if(event.keyCode==38 || event.key=='ArrowUp') {
+		else if(event.keyCode==38 || event.key=='ArrowUp') {
 	
-			// Increment current page index. 
+			// Decrement page index to first. 
 			currentpageindex = 0;
 	
 			// Show selected page. 
@@ -362,9 +365,9 @@ function activateShortcutKeys() {
 		}
 	
 		// Respond to left arrow key. 
-		if(event.keyCode==37 || event.key=='ArrowLeft') {
+		else if(event.keyCode==37 || event.key=='ArrowLeft') {
 	
-			// Decrement current page index. 
+			// Decrement page index by one. 
 			currentpageindex--;
 	
 			// Show selected page. 
@@ -372,9 +375,9 @@ function activateShortcutKeys() {
 		}
 	
 		// Respond to right arrow key. 
-		if(event.keyCode==39 || event.key=='ArrowRight') {
+		else if(event.keyCode==39 || event.key=='ArrowRight') {
 	
-			// Increment current page index. 
+			// Increment page index by one. 
 			currentpageindex++;
 	
 			// Show selected page. 
@@ -382,10 +385,10 @@ function activateShortcutKeys() {
 		}
 	
 		// Respond to down arrow key. 
-		if(event.keyCode==40 || event.key=='ArrowDown') {
+		else if(event.keyCode==40 || event.key=='ArrowDown') {
 	
-			// TODO: Increment current page index. 
-			currentpageindex = pagecount-1;
+			// Increment page index to last. 
+			currentpageindex = 1*pagecount - 1;
 	
 			// Show selected page. 
 			showSelectedPage();
