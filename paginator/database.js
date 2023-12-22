@@ -2,52 +2,45 @@
 
 
 // Define number of items shown per page. 
-const numPerPage = 15;
+const pagecapacity = 10;
+console.log('Page capacity:',pagecapacity);
 
 
-// Define data source. 
-const dataSource = {
-	raw:defaultUserData,
-	paged:paginateData(defaultUserData),
-	// xyz:xyz,
-};
+// Define source of raw data. 
+const rawdatasource = defaultUserData.map( x => x.username );
+console.log('Raw data:',rawdatasource);
 
-// Define data source. 
-// let dataSource = defaultUserData;
-// console.log('Data source:',defaultUserData);
-
-// Get number of data items. 
-const numItems = dataSource.length;
-console.log('Item count:',numItems);
-console.log('Page capacity:',numPerPage);
+// Create source of paged data. 
+const pageddatasource = paginateData(/* rawdatasource */);
+console.log('Paged data:',pageddatasource);
 
 
-// Create paginated data. 
-const pagedData = paginateData(defaultUserData);
-console.log('Pages of data:',pagedData);
+// Get total number of data items. 
+const dataitemcount = rawdatasource.length;
+console.log('Item count:',dataitemcount);
 
-
-// Get number of pages. 
-const numPages = Math.ceil(numItems/numPerPage);
-console.log('Page count:',numPages);
+// Get total number of pages. 
+const pagecount = Math.ceil(dataitemcount/pagecapacity);
+console.log('Page count:',pagecount);
 
 
 /*****/
 
 
-// Create paginated version of data. 
-function paginateData(dataSource) {
+// Create paginated version of given data. 
+function paginateData(/* rawdatasource */) {
 
-	// Initialize result. 
+	// Initialize data result. 
 	let result = [];
-	// Initialize page index. 
+
+	// Initialize page index below zero as baseline. 
 	let pageindex = -1;
 	
-	// Go thru each data point. 
-	for(let dataindex in dataSource) {
+	// Go thru each data point in given data source. 
+	for(let dataindex in rawdatasource) {
 
-		// Check if at start of new page. 
-		let startNewPage = (dataindex%numPerPage) == 0;
+		// Check if starting new page. 
+		let startNewPage = (dataindex%pagecapacity) == 0;
 	
 		// Shift to next data set if at start of new page. 
 		if(startNewPage) {
@@ -58,14 +51,14 @@ function paginateData(dataSource) {
 		}
 	
 		// Get current data point. 
-		let datapoint = dataSource[dataindex];
+		let datapoint = rawdatasource[dataindex];
 		// Add data point to list for current page. 
 		result[pageindex].push(datapoint);
 	}
 	// console.log('Last page index:',pageindex);
 
 	// Fill data for last page. 
-	while( result[pageindex].length<numPerPage ) result[pageindex].push( {} );
+	while( result[pageindex].length<pagecapacity ) result[pageindex].push( {} );
 
 	// Return result. 
 	return result;
