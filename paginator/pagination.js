@@ -27,8 +27,14 @@ let allpages;
 let pagenumberlinks;
 
 
+/*****/
+
+
+// Get requested page number (if any). 
+const urlparams = new URLSearchParams(window.location.search);
+
 // Initialize index of currently selected page. 
-let currentpageindex = 0;
+let currentpageindex = urlparams.has('p') ? urlparams.get('p')*1 : 0;
 
 
 /*****/
