@@ -140,7 +140,7 @@ function loadSiteMap() {
 	
 					// Get data item for current item (i.e. group, project). 
 					let item = getItemById(itemid);
-					if(!item) console.debug('\tItem absent from database:',itemid);
+					// if(!item) console.debug('\tItem absent from database:',itemid);
 	
 					// Get url for current item (i.e. group, project). 
 					let url = `${urlprefix}${itemid}`;

@@ -3,7 +3,7 @@
 
 // Get posts section. 
 const postssection = document.querySelector('div#container section.blog div.grid div.body div.posts');
-console.log('postssection:',postssection);
+console.log('Posts section:',postssection);
 
 
 // Get destination for featured posts. 
@@ -23,7 +23,7 @@ console.log('Archive section:',archiveSection);
 const archivePagesDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#archive div.paginator');
 console.log('Archive pages destination:',archivePagesDestination);
 // Get destination for archive posts. 
-const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.postlist');
+const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#archive div.paginator ul.postlist');
 console.log('Archive posts destination:',archivePostsDestination);
 
 
@@ -85,32 +85,68 @@ function loadBlog() {
 	/****/
 
 	// Create layout for blog posts. 
-	function createBlogPostsLayout(postlist,previewsOn,paginationOn) {
+	function createBlogPostsLayout(rawpostlist,previewsOn,paginationOn) {
+		console.log('\trawpostlist:',rawpostlist);
+		console.log('\tpreviewsOn:',previewsOn);
+		console.log('\tpaginationOn:',paginationOn);
 	
 		// Initialize resulting layout. 
 		let result = '';
 
-		// Define number of posts per page. 
-		const postsperpage = 120;
+		// Deal with 3d data matrix. 
+		if(paginationOn) {
 
-		// 
-		if(paginationOn) result += openPage();
+			// Define number of posts per page. 
+			// const pagepostcapacity = 120;
+			const pagepostcapacity = 60;
+
+			// Get paginated post matrix. 
+			let postmatrix = paginateData(rawpostlist,pagepostcapacity);
+			console.log('\tpostmatrix:',postmatrix);
 	
-		// Add project link to layout result. 
-		for(let post of postlist) {
+			// Go thru each list in matrix. 
+			for(let pageindex in postmatrix) {
+
+				// Get post list for currrent page. 
+				let postlist = postmatrix[pageindex];
+
+				// Open page. 
+				result += openPage(pageindex);
 	
-			// Show message for invalid project. 
-			if(!post) {
-				console.warn('No project post found for given project');
-				continue;
+				// Go thru each post in list. 
+				for(let post of postlist) {
+		
+					// Show message for invalid project post. 
+					if(!post) {
+						console.warn('Null project post found', post);
+						// continue;
+					}
+			
+					// Add to layout result: blog post card with project link. 
+					result += createBlogCard(post,previewsOn);
+				}
+
+				// Close page. 
+				result += closePage();
 			}
-	
-			// Add blog card to layout result. 
-			result += createBlogCard(post,previewsOn);
 		}
 
-		// 
-		if(paginationOn) result += closePage();
+		// Deal with 2d data list. 
+		else {
+	
+			// Go thru each post in list. 
+			for(let post of rawpostlist) {
+		
+				// Show message for invalid project post. 
+				if(!post) {
+					console.warn('Null project post found', post);
+					continue;
+				}
+		
+				// Add to layout result: blog post card with project link. 
+				result += createBlogCard(post,previewsOn);
+			}
+		}
 	
 		// Return resulting layout. 
 		return result;
@@ -118,10 +154,10 @@ function loadBlog() {
 		/***/
 
 		// Open page. 
-		function openPage() {
+		function openPage(pageindex) {
 			return `
 			<!-- postpage -->
-			<div class="postpage">
+			<div class="postpage ${ 1*pageindex ? '' : 'active' }" data-pageindex="${pageindex}">
 
 				<!-- postlist -->
 				<ul class="postlist">`;
@@ -136,6 +172,12 @@ function loadBlog() {
 			</div>
 			<!-- /postpage -->`;
 		}
+
+		// // TODO: Create paginated version of given data. 
+		// function paginateData(rawdatasource, pagecapacity) {
+
+		// 	// 
+		// }
 	}
 
 	// Load featured posts. 
@@ -155,8 +197,8 @@ function loadBlog() {
 		console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
 		
 		// Get layout for featured posts. 
-		let featuredLayoutA = createBlogPostsLayout(featuredProjectsA, true && !blockPreviews);
-		let featuredLayoutB = createBlogPostsLayout(featuredProjectsB, true && !blockPreviews);
+		let featuredLayoutA = createBlogPostsLayout(featuredProjectsA, true && !blockPreviews, false);
+		let featuredLayoutB = createBlogPostsLayout(featuredProjectsB, true && !blockPreviews, false);
 		
 		// Add featured layout to blog section. 
 		featuredpostsdestinationA.innerHTML = featuredLayoutA;
@@ -181,7 +223,7 @@ function loadBlog() {
 		console.log('Collection projects:', collectionProjects.length, collectionProjects);
 		
 		// Get layout for collection posts. 
-		let collectionPostsLayout = createBlogPostsLayout(collectionProjects, true && !blockPreviews);
+		let collectionPostsLayout = createBlogPostsLayout(collectionProjects, true && !blockPreviews, false);
 		
 		// Add layout to blog section. 
 		collectionPostsDestination.innerHTML = collectionPostsLayout;
@@ -222,7 +264,7 @@ function loadBlog() {
 		console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Get layout for category posts. 
-		let categoryPostsLayout = createBlogPostsLayout(categoryProjects, true && !blockPreviews);
+		let categoryPostsLayout = createBlogPostsLayout(categoryProjects, true && !blockPreviews, false);
 		
 		// Add layout to blog section. 
 		categoryPostsDestination.innerHTML = categoryPostsLayout;
@@ -241,13 +283,16 @@ function loadBlog() {
 		// Get list of archive projects (sorted by project id). 
 		let archiveProjects = projectData.sort(sortByProjectId);
 		console.log('Archive projects:', archiveProjects.length, archiveProjects);
+
+		// Define if pagination on. 
+		let paginationOn = true;
 		
 		// Get layout for archive posts. 
-		let archiveLayout = createBlogPostsLayout(archiveProjects, false, true);
+		let archiveLayout = createBlogPostsLayout(archiveProjects, false, paginationOn);
 		
 		// Add archive layout to blog section. 
-		archivePagesDestination.innerHTML = archiveLayout;
-		// archivePostsDestination.innerHTML = archiveLayout;
+		if(paginationOn) archivePagesDestination.innerHTML = archiveLayout;
+		else archivePostsDestination.innerHTML = archiveLayout;
 	
 		/****/
 	

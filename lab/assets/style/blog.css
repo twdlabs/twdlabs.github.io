@@ -38,7 +38,7 @@ div#container section.blog div.grid div.body {position:relative; margin-top:1rem
 div#container section.blog div.grid div.body div.posts ul.postlist {display:grid; grid-template-columns:repeat( var(--gridcolumns), 1fr); transition:.25s;}
 div#container section.blog div.grid div.body div.posts ul.postlist {list-style:none; overflow:hidden; padding:0; /* padding:1rem; */ margin:0; margin-top:.75rem;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist {display:flex; flex-wrap:wrap; justify-content:center;} */
-div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:8; grid-gap:.875rem;}
+div#container section.blog div.grid div.body div.posts.small ul.postlist {--gridcolumns:10; grid-gap:.875rem;}
 div#container section.blog div.grid div.body div.posts.large ul.postlist {--gridcolumns:6; grid-gap:1.25rem;}
 div#container section.blog div.grid div.body div.posts.listed ul.postlist {display:flex; flex-direction:column; grid-gap:1.25rem;}
 div#container section.blog div.grid div.body div.posts#featured ul.postlist.b {max-height:0;}
@@ -80,7 +80,7 @@ div#container section.blog div.grid div.body div.posts div.emptylabel.on {displa
 /* div#container section.blog div.grid div.body div.posts {} */
 /* div#container section.blog div.grid div.body div.posts div.paginator {} */
 div#container section.blog div.grid div.body div.posts div.paginator div.postpage {display:none;}
-div#container section.blog div.grid div.body div.posts div.paginator div.postpage/* .active */ {display:block;}
+div#container section.blog div.grid div.body div.posts div.paginator div.postpage.active {display:block;}
 
 /* Blog Section: Zoomer */
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:flex; flex-direction:column; align-items:center; justify-content:center;} */
