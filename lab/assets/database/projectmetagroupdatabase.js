@@ -1,8 +1,8 @@
 
 
 
-// Define groups of groups of projects. 
-const projectMetaGroupData = [
+// Define collections of categories of projects. 
+const projectCollectionData = [
 
 	// {
 	// 	groupid:'x',
@@ -61,11 +61,11 @@ const projectMetaGroupData = [
 	},
 
 ];
-// console.log('Project collections:',projectMetaGroupData);
+// console.log('Project collections:',projectCollectionData);
 
 
-// Define sets of project meta-groups in matrix. 
-const projectMetaGroupMatrixData = [
+// Define sets of project collections in matrix. 
+const projectCollectionMatrixData = [
 	{
 		setid:'setA',
 		setlist:['p',],
@@ -83,29 +83,61 @@ const projectMetaGroupMatrixData = [
 	// 	setlist:['x',],
 	// },
 ];
-// console.log('Project meta-group sets:',projectMetaGroupMatrixData);
+// console.log('Project collection matrix:',projectCollectionMatrixData);
 
 
 /*****/
 
 
+// Check sizes of project collections. 
+// checkProjectGroupSizes();
+
 
 /*****/
 
 
-// Get project meta group by id. 
-function getProjectMetaGroupById(pmgid) {
+// Get project collection by id. 
+function getProjectCollectionById(collectionid) {
 
-	// Go thru each project groups. 
-	for(let projectmetagroup of projectMetaGroupData) {
+	// Go thru each project collection. 
+	for(let projectcollection of projectCollectionData) {
 
-		// Check if project group matches query id. 
-		let matchFound = (projectmetagroup.groupid == pmgid);
+		// Check if project collection matches query id. 
+		let matchFound = (projectcollection.groupid == collectionid);
 
-		// Return matching project group if found. 
-		if(matchFound) return projectmetagroup;
+		// Return matching project collection if found. 
+		if(matchFound) return projectcollection;
 	}
 
-	// Return nothing if project group not found. 
+	// Return nothing if project collection not found. 
 	return null;
+}
+
+// Check sizes of each project collection. 
+function checkProjectGroupSizes() {
+
+	// Go thru each project collection. 
+	for(let projectcollection of projectCollectionData) {
+
+		// Get id of project collection. 
+		let collectionid = projectcollection.groupid;
+
+		// Initialize size of project collection. 
+		let collectionsize = 0;
+
+		// Get list of project category ids in project collection. 
+		let projectcollectionitemsidlist = projectcollection.groupitemsidlist;
+
+		// Go thru each project category in collection. 
+		for(let categoryid of projectcollectionitemsidlist) {
+
+			// Get size of current project category. 
+			let categorysize = getProjectCategoryById(categoryid).groupitemsidlist.length;
+			console.log('\t',categoryid,categorysize);
+
+			// Add size of current project category to size of project collection. 
+			collectionsize += categorysize;
+		}
+		console.log(collectionid,collectionsize);
+	}
 }

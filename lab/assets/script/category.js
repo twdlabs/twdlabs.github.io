@@ -3,11 +3,11 @@
 
 // Get id of current project category. 
 const urlparams = new URLSearchParams(window.location.search);
-const projectgroupid = urlparams.get('cid');
-// console.log('Project category id:',projectgroupid);
+const projectcategoryid = urlparams.get('cid');
+// console.log('Project category id:',projectcategoryid);
 
 // Get current project category. 
-const projectgroup = getProjectGroupById(projectgroupid);
+const projectgroup = getProjectCategoryById(projectcategoryid);
 console.log('Project category:',projectgroup);
 
 // Get name of current project category. 

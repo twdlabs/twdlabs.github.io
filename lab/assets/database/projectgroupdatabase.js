@@ -1,7 +1,7 @@
 
 
 
-// Define groups of projects. 
+// Define categories of projects. 
 const projectCategoryData = [
 
 	// {
@@ -483,8 +483,8 @@ const projectCategoryData = [
 // console.log('Project categories:',projectCategoryData);
 
 
-// Define sets of project groups in matrix. 
-const projectGroupMatrixData = [
+// Define sets of project categories in matrix. 
+const projectCategoryMatrixData = [
 	{
 		setid:'setA',
 		setlist:['cl','fl','nw','tw',],
@@ -510,88 +510,37 @@ const projectGroupMatrixData = [
 		setlist:['orphans','missing',],
 	},
 ];
-// console.log('Project group sets:',projectGroupMatrixData);
+// console.log('Project category matrix:',projectCategoryMatrixData);
 
 
 /*****/
 
 
-// Check sizes of project groups. 
-// checkProjectGroupSizes();
-
-
-// Add extra project groups. 
+// Add extra project categories. 
 addExtraProjectGroups();
 
 
 /*****/
 
 
-// Add extra project groups. 
-function addExtraProjectGroups() {
+// Get project category by id. 
+function getProjectCategoryById(categoryid) {
 
-	// Save list of projects missing from project database. 
-	let nullGroup = getProjectGroupById('missing');
-	
-	// Save list of projects missing from project group database. 
-	let orphanGroup = getProjectGroupById('orphans');
-
-	// console.log('Missing projects:',nullGroup);
-	nullGroup.groupitemsidlist = getMissingProjectIds();
-	// console.log('Missing projects:',nullGroup);
-	
-	// console.log('Orphan projects:',orphanGroup);
-	orphanGroup.groupitemsidlist = getOrphanProjectIds();
-	// console.log('Orphan projects:',orphanGroup);
-}
-
-// Get project group by id. 
-function getProjectGroupById(pgid) {
-
-	// Go thru each project groups. 
+	// Go thru each project category. 
 	for(let projectcategory of projectCategoryData) {
 
-		// Check if project group matches query id. 
-		let matchFound = (projectcategory.groupid == pgid);
+		// Check if project category matches query id. 
+		let matchFound = (projectcategory.groupid == categoryid);
 
-		// Return matching project group if found. 
+		// Return matching project category if found. 
 		if(matchFound) return projectcategory;
 	}
 
-	// Return nothing if project group not found. 
+	// Return nothing if project category not found. 
 	return null;
 }
 
-// Check sizes of project groups. 
-function checkProjectGroupSizes() {
-
-	// Go thru each project meta-group. 
-	for(let projectmetagroup of projectMetaGroupData) {
-
-		// Get id of project meta-group. 
-		let mgid = projectmetagroup.groupid;
-
-		// Initialize size of project meta-group. 
-		let metagroupsize = 0;
-
-		// Get list of project groups for project meta-group. 
-		let projectmetagroupitemsidlist = projectmetagroup.groupitemsidlist;
-
-		// Go thru each project group. 
-		for(let pgid of projectmetagroupitemsidlist) {
-
-			// Get size of current project group. 
-			let groupsize = getProjectGroupById(pgid).groupitemsidlist.length;
-			console.log('\t',pgid,groupsize);
-
-			// Add size of current project group to size of project meta-group. 
-			metagroupsize += groupsize;
-		}
-		console.log(mgid,metagroupsize);
-	}
-}
-
-// Get projects that do not belong to any project group. 
+// Get projects that do not belong to any project category. 
 function getOrphanProjectIds() {
 
 	// Initialize result. 
@@ -603,22 +552,40 @@ function getOrphanProjectIds() {
 		// Get id of project. 
 		let pid = p.projectid;
 
-		// Initialize if project found in any group. 
+		// Initialize if project found in any category. 
 		let projectFoundInGroup = false;
 
-		// Go thru each project group to find project id. 
-		for(let pg of projectCategoryData) {
+		// Go thru each project category to find project id. 
+		for(let category of projectCategoryData) {
 
-			// Check if project found in group. 
-			projectFoundInGroup = pg.groupitemsidlist.includes(pid);
-			// End search if project found in group. 
+			// Check if project found in category. 
+			projectFoundInGroup = category.groupitemsidlist.includes(pid);
+			// End search if project found in category. 
 			if(projectFoundInGroup) break;
 		}
 
-		// Save id if project not found in any group. 
+		// Save id if project not found in any category. 
 		if (!projectFoundInGroup) result.push(pid);
 	}
 
 	// Return result. 
 	return result;
+}
+
+// Add extra project categories. 
+function addExtraProjectGroups() {
+
+	// Save list of projects missing from project database. 
+	let nullCategory = getProjectCategoryById('missing');
+	
+	// Save list of projects missing from project category database. 
+	let orphanCategory = getProjectCategoryById('orphans');
+
+	// console.log('Missing projects:',nullCategory);
+	nullCategory.groupitemsidlist = getMissingProjectIds();
+	// console.log('Missing projects:',nullCategory);
+	
+	// console.log('Orphan projects:',orphanCategory);
+	orphanCategory.groupitemsidlist = getOrphanProjectIds();
+	// console.log('Orphan projects:',orphanCategory);
 }

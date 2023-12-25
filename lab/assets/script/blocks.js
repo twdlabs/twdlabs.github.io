@@ -79,7 +79,7 @@ function loadMetaCategoryBlockSet() {
 	let urlprefix = './collection/?cid=';
 
 	// Add block set to page destination. 
-	metacategoryblocksdestination.innerHTML = createBlockSet(projectMetaGroupData, tk,nk,dk, true,idkey,urlprefix);
+	metacategoryblocksdestination.innerHTML = createBlockSet(projectCollectionData, tk,nk,dk, true,idkey,urlprefix);
 }
 
 // Create layout for set of block items. 

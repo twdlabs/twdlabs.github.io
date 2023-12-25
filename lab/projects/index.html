@@ -671,7 +671,7 @@
 						<!-- /filters -->
 	
 						<!-- posts -->
-						<div class="posts large" id="archive">
+						<div class="posts small" id="archive">
 	
 							<!-- emptylabel -->
 							<div class="emptylabel">
@@ -683,11 +683,11 @@
 							</div>
 							<!-- /emptylabel -->
 
-							<!-- paginator -->
-							<div class="paginator">
+							<!-- pagelist -->
+							<ul class="pagelist">
 
 								<!-- postpage -->
-								<div class="postpage" data-pageindex="0">
+								<li class="postpage" data-pageindex="-1">
 			
 									<!-- postlist -->
 									<ul class="postlist">
@@ -739,11 +739,103 @@
 									</ul>
 									<!-- /postlist -->
 	
-								</div>
+								</li>
 								<!-- /postpage -->
 
-							</div>
-							<!-- /paginator -->
+							</ul>
+							<!-- /pagelist -->
+
+							<!-- pagepanel -->
+							<nav class="pagepanel">
+			
+								<!-- dotpanel -->
+								<ul class="dotpanel">
+			
+									<!-- dotitem -->
+									<li class="dotitem">
+			
+										<!-- pagelink -->
+										<a class="pagelink" href="javascript:void(0)" data-pageindex="0"></a>
+										<!-- /pagelink -->
+			
+									</li>
+									<!-- /dotitem -->
+			
+									<!-- dotitem -->
+									<li class="dotitem">
+			
+										<!-- pagelink -->
+										<a class="pagelink" href="javascript:void(0)" data-pageindex="0"></a>
+										<!-- /pagelink -->
+			
+									</li>
+									<!-- /dotitem -->
+			
+									<!-- dotitem -->
+									<li class="dotitem">
+			
+										<!-- pagelink -->
+										<a class="pagelink" href="javascript:void(0)" data-pageindex="0"></a>
+										<!-- /pagelink -->
+			
+									</li>
+									<!-- /dotitem -->
+			
+								</ul>
+								<!-- /dotpanel -->
+
+								<!-- numpanel -->
+								<div class="numpanel">
+
+									<!-- deltalink -->
+									<a class="deltalink b prev" href="javascript:void(0)" title="Go to previous page" onclick="goPrevPage()">
+				
+										<!-- icon -->
+										<svg class="icon chevron left" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+										</svg>
+										<!-- /icon -->
+				
+										<!-- caption -->
+										<span class="caption">Prev</span>
+										<!-- /caption -->
+										
+									</a>
+									<!-- /deltalink -->
+
+									<!-- pagenum -->
+									<span class="pagenum num"></span>
+									<!-- /pagenum -->
+
+									<!-- caption -->
+									<span class="caption">of</span>
+									<!-- /caption -->
+
+									<!-- pagecount -->
+									<span class="pagecount num"></span>
+									<!-- /pagecount -->
+			
+									<!-- deltalink -->
+									<a class="deltalink f next" href="javascript:void(0)" title="Go to next page" onclick="goNextPage()">
+				
+										<!-- icon -->
+										<svg class="icon chevron right" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+										</svg>
+										<!-- /icon -->
+				
+										<!-- caption -->
+										<span class="caption">Next</span>
+										<!-- /caption -->
+										
+									</a>
+									<!-- /deltalink -->
+
+								</div>
+								<!-- /numpanel -->
+
+							</nav>
+							<!-- /pagepanel -->
 	
 						</div>
 						<!-- /posts -->
@@ -1056,13 +1148,13 @@
 			<!-- /blog -->
 
 			<!-- blocks -->
-			<section class="categories all blocks">
+			<section class="categories meta blocks">
 
 				<!-- grid -->
 				<div class="grid">
 
 					<!-- head -->
-					<h1 class="head">View By Category</h1>
+					<h1 class="head">View By Collection</h1>
 					<!-- /head -->
 
 					<!-- blocklist -->
@@ -1102,13 +1194,13 @@
 			<!-- /blocks -->
 
 			<!-- blocks -->
-			<section class="categories meta blocks">
+			<section class="categories all blocks">
 
 				<!-- grid -->
 				<div class="grid">
 
 					<!-- head -->
-					<h1 class="head">View By Collection</h1>
+					<h1 class="head">View By Category</h1>
 					<!-- /head -->
 
 					<!-- blocklist -->
@@ -1333,6 +1425,7 @@
 		<script src="../../relativelink/relativelink.js" type="text/javascript"></script>
 		<!-- Paginator Script -->
 		<script src="../../paginator/paginator.js" type="text/javascript"></script>
+		<script src="../assets/script/blogpaginator.js" type="text/javascript"></script>
 
 		<!-- Projects Page Script -->
 		<script src="../assets/script/projects.js" type="text/javascript"></script>
@@ -1341,6 +1434,7 @@
 		<script src="../assets/script/blocks.js" type="text/javascript"></script>
 		<!-- Blog Script -->
 		<script src="../assets/script/blog.js" type="text/javascript"></script>
+		<script src="../assets/script/blogfilter.js" type="text/javascript"></script>
 		<!-- Desktop Script -->
 		<!-- <script src="../assets/script/desktop.js" type="text/javascript"></script> -->
 		<!-- Desktop Mini-Frame Script -->

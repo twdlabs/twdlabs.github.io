@@ -33,6 +33,35 @@ div#container section.blog div.grid div.head div.filter div.searchquery label.se
 div#container section.blog div.grid div.body {position:relative; margin-top:1rem;}
 /* div#container section.blog div.grid div.body.split {display:grid; grid-template-columns:1fr auto;} */
 
+/* Blog Section: Post Paginator */
+/* div#container section.blog div.grid div.body div.posts {} */
+/* div#container section.blog div.grid div.body div.posts#archive {} */
+/* div#container section.blog div.grid div.body div.posts#category {} */
+/* div#container section.blog div.grid div.body div.posts#collection {} */
+div#container section.blog div.grid div.body div.posts ul.pagelist {list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage {display:none;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage.active {display:block;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-top:1.5rem;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel {list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel li.dotitem {font-size:var(--dotsize); --dotsize:.75rem; padding:0 .25em;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel li.dotitem a.pagelink {display:block;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel li.dotitem a.pagelink:empty {background-color:var(--forecolor2); height:var(--dotsize); width:var(--dotsize); border-radius:1rem;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel li.dotitem.active a.pagelink:empty {background-color:var(--forecolor);}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel {display:flex; flex-direction:row; align-items:center; font-size:1.75rem; user-select:none;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel span.num {font-size:1.125em;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel span.num:empty {background-color:gainsboro; height:1em; width:1.25em; border-radius:.25em;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink {display:flex; flex-direction:column; align-items:center; position:relative;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink {color:inherit; text-decoration:none;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink.b {margin-right:1rem;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink.f {margin-left:1rem;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink svg.icon {font-size:1.5rem; /* font-size:.875rem; */}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink span.caption {position:absolute; bottom:100%;/*  left:100%; */ box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink span.caption {background-color:var(--lightblack); color:white; font-size:1rem; padding:.25em .625em; border-radius:.25em; margin:.5rem;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink span.caption {opacity:0; visibility:hidden; pointer-events:none; transition:.25s;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel a.deltalink:hover span.caption {opacity:1; visibility:visible;}
+div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel span.caption {margin:0 .375em;}
+
 /* Blog Section: Posts */
 /* div#container section.blog div.grid div.body div.posts {} */
 div#container section.blog div.grid div.body div.posts ul.postlist {display:grid; grid-template-columns:repeat( var(--gridcolumns), 1fr); transition:.25s;}
@@ -44,20 +73,21 @@ div#container section.blog div.grid div.body div.posts.listed ul.postlist {displ
 div#container section.blog div.grid div.body div.posts#featured ul.postlist.b {max-height:0;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
+div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.x {opacity:0; visibility:hidden; pointer-events:none;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.gone {opacity:.375; transition:.375s;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard.gone {display:none;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption {display:flex; flex-direction:column; justify-content:center; align-items:center; align-items:flex-start;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption {font-size:1rem; /* text-align:center; */ padding:.625rem/*  .125rem */;}
-div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span {/* background-color:var(--backcolor); */ display:block; /* padding:0 .5rem; */ border-radius:1em; /* margin:0 auto; */}
+div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span {/* background-color:var(--backcolor); */ display:block; /* padding:0 .5rem; */ /* margin:0 auto; */}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span {width:fit-content; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span:empty {background-color:var(--forecolor2); height:1em; width:6em; margin-top:.375em;}
+div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span:empty {background-color:var(--forecolor2); height:1em; width:6em; border-radius:1em; margin-top:.375em;}
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.id {display:none;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.id {font-size:1.125rem; font-weight:500;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.name {color:var(--forecolor); font-weight:300;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.category {color:var(--forecolor2); font-weight:100;}
-div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.author {display:none;}
+/* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.author {display:none;} */
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.caption span.author {color:var(--forecolor2); font-weight:100;}
 div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview {background-color:var(--backcolor); position:relative; width:100%; padding-top:75%; /* margin-bottom:2em; */}
 div#container section.blog div.grid div.body div.posts.listed ul.postlist li.postcard a.projectlink div.preview {padding-top:50%;}
@@ -73,14 +103,6 @@ div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:5; scale:.0625; height:1600%; width:1600%; transform:translate(-750%,-750%);} */
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:6; scale:.03125; height:3200%; width:3200%; transform:translate(-1550%,-1550%);} */
 /* div#container section.blog div.grid div.body div.posts ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:10; scale:calc( 1 / pow( 2, var(--ml) ) ); height:calc( pow( 2, var(--ml) ) * 100% ); width:calc( pow( 2, var(--ml) ) * 100% ); --trvalue:calc( -50% + 100% * pow( 2, (var(--ml) - 1) ) ); transform:translate( var(--trvalue) , var(--trvalue) );} */
-div#container section.blog div.grid div.body div.posts div.emptylabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
-div#container section.blog div.grid div.body div.posts div.emptylabel.on {display:block;}
-
-/* Blog Section: Post Paginator */
-/* div#container section.blog div.grid div.body div.posts {} */
-/* div#container section.blog div.grid div.body div.posts div.paginator {} */
-div#container section.blog div.grid div.body div.posts div.paginator div.postpage {display:none;}
-div#container section.blog div.grid div.body div.posts div.paginator div.postpage.active {display:block;}
 
 /* Blog Section: Zoomer */
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:flex; flex-direction:column; align-items:center; justify-content:center;} */
@@ -96,6 +118,10 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn:ho
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon {font-size:1.25em;}
 div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn svg.icon:only-child {font-size:3rem;}
 /* div#container section.blog div.grid div.body div.posts div.zoomer {display:none;} */
+
+/* Empty Label */
+div#container section.blog div.grid div.body div.posts div.emptylabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
+div#container section.blog div.grid div.body div.posts div.emptylabel.on {display:block;}
 
 /* Blog Section: Filters */
 div#container section.blog div.grid div.body div.filters {/* position:relative; */ padding-bottom:.75rem; margin-top:.375rem;}
@@ -127,9 +153,9 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody {max-height:0; overflow:hidden;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist {display:flex; flex-direction:column; list-style:none; padding:0; padding:.5rem 0; margin:0;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front {display:flex; align-items:center; cursor:pointer; --size:1.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front {display:flex; align-items:center; cursor:pointer; --checksize:1.25rem;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.caption {font-size:.875rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {/* display:block;  */height:var(--size); width:var(--size); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem; margin-right:.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {/* display:block;  */height:var(--checksize); width:var(--checksize); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem; margin-right:.25rem;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor);}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox {display:none; opacity:.125;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox:checked + label.front svg.icon.check {background-color:var(--themecolor); color:white;}

@@ -32,20 +32,20 @@ loadSiteMap();
 function loadSiteMap() {
 
 	// Create layout for group matrix. 
-	console.log('\nMatrix: Project category by collection grouping');
-	let groupmatrixlayout = createLinkMatrix( projectMetaGroupMatrixData, getProjectGroupById,getProjectMetaGroupById, './category/?cid=','groupname' );
+	// console.log('\nMatrix: Project category by collection grouping');
+	let groupmatrixlayout = createLinkMatrix( projectCollectionMatrixData, getProjectCategoryById,getProjectCollectionById, './category/?cid=','groupname' );
 	// console.log('groupmatrixlayout:',groupmatrixlayout);
 
 	// Create layout for project matrix. 
-	console.log('\nMatrix: Project items by category by arbitrary grouping');
-	let projectmatrixlayoutA = createLinkMatrix( projectGroupMatrixData, getProjectById,getProjectGroupById, '../','projectname' );
+	// console.log('\nMatrix: Project items by category by arbitrary grouping');
+	let projectmatrixlayoutA = createLinkMatrix( projectCategoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' );
 	// console.log('projectmatrixlayoutA:',projectmatrixlayoutA);
 
 	// Create layout for project matrix. 
-	console.log('\nMatrix: Project items by category by collection grouping');
-	let xyz = projectMetaGroupData.map( collection => { return { setid:'abc', setlist:collection.groupitemsidlist } } );
+	// console.log('\nMatrix: Project items by category by collection grouping');
+	let xyz = projectCollectionData.map( collection => { return { setid:'abc', setlist:collection.groupitemsidlist } } );
 	console.log(xyz);
-	let projectmatrixlayoutB = createLinkMatrix( xyz, getProjectById,getProjectGroupById, '../','projectname' );
+	let projectmatrixlayoutB = createLinkMatrix( xyz, getProjectById,getProjectCategoryById, '../','projectname' );
 	// console.log('projectmatrixlayoutB:',projectmatrixlayoutB);
 
 	// Add layout for group matrix to footer. 
@@ -74,7 +74,7 @@ function loadSiteMap() {
 
 			// Get list of ids for project groups. 
 			let projectgroupidslist = set.setlist;
-			console.log('Project group ids:',projectgroupidslist);
+			// console.log('Project group ids:',projectgroupidslist);
 	
 			// Get list of project groups. 
 			let projectgroupslist = projectgroupidslist.map( getMetaById );

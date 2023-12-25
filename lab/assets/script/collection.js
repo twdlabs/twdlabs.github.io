@@ -3,11 +3,11 @@
 
 // Get id of current project collection. 
 const urlparams = new URLSearchParams(window.location.search);
-const projectmetagroupid = urlparams.get('cid');
-// console.log('Project collection id:',projectmetagroupid);
+const projectcollectionid = urlparams.get('cid');
+// console.log('Project collection id:',projectcollectionid);
 
 // Get current project collection. 
-const projectmetagroup = getProjectMetaGroupById(projectmetagroupid);
+const projectmetagroup = getProjectCollectionById(projectcollectionid);
 console.log('Project collection:',projectmetagroup);
 
 // Get name of current project collection. 

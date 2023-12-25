@@ -446,7 +446,7 @@ const projectData = [
 		projectid:'fam',
 		projectname:'Family Tree Diagram',
 	},{
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'filter',
 		projectname:'List Filter',
 	},{
@@ -500,7 +500,7 @@ const projectData = [
 		projectid:'goodz',
 		projectname:'Slick Talk Cologne',
 	},{
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'gradient',
 		projectname:'Scrolling Gradient',
 	},{
