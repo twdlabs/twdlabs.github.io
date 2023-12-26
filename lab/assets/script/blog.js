@@ -1,11 +1,6 @@
 
 
 
-// Get posts section. 
-const postssection = document.querySelector('div#container section.blog div.grid div.body div.posts');
-console.log('Posts section:',postssection);
-
-
 // Get featured section. 
 const featured = {
 	section:document.querySelector('div#container section.blog div.grid div.body div.posts#featured'),
@@ -51,25 +46,6 @@ console.log('Collection section:',collection);
 const collectionSection = collection.section;
 const collectionPagesDestination = collection.pagesdestination;
 const collectionPostsDestination = collection.postsdestination;
-
-
-// Get filter panel. 
-const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filterpanel');
-// console.log('filterpanel:',filterpanel);
-// Get group headers in filter panel. 
-const filterpanelheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead');
-// console.log('filterpanelheaders:',filterpanelheaders);
-
-
-// Get input field for search query. 
-const searchqueryfield = document.querySelector('div#container section.blog div.grid div.head div.modpanel input#searchquery');
-// console.log('searchqueryfield:',searchqueryfield);
-// Get clear button for search query. 
-const searchclearbtn = document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn');
-// console.log('searchclearbtn:',searchclearbtn);
-// Get label for empty search results. 
-const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel');
-// console.log('emptysearchlabel:',emptysearchlabel);
 
 
 /*****/
@@ -460,65 +436,6 @@ function loadBlog() {
 				console.warn('Questionable comparison', a.projectid,b.projectid, a,b);
 				return 0;
 			}
-		}
-	}
-}
-
-// Toggle style of posts. 
-function togglePostStyle(togglebtn) {
-	
-	// Get selected style id. 
-	let styleid = togglebtn.getAttribute('data-styleid');
-
-	// Toggle style of posts by id. 
-	togglePostStyleById(styleid);
-}
-
-// Toggle style of posts by id. 
-function togglePostStyleById(plstyleid) {
-	// Disregard if no style id. 
-	if(!plstyleid) {
-		console.warn('No style id provided',plstyleid);
-		return;
-	}
-
-	// Get posts section. 
-	// const availablesection = postssection/*  || featuredSection || archiveSection || categorySection || collectionSection */;
-	// Disregard if no posts section. 
-	if(!postssection) {
-		console.warn('No posts section to style',postssection);
-		return;
-	}
-	console.log('Posts section:',postssection);
-
-	// Define style ids for body layout. 
-	const bodylayoutids = ['','','split',];
-	// Define style ids for posts layout. 
-	const postlayoutids = ['small','large','listed',];
-
-	// Get index of given style id. 
-	let styleindex = postlayoutids.indexOf(plstyleid);
-	console.log('Style index:',styleindex);
-
-	// Go thru each style id. 
-	for(let index in postlayoutids) {
-
-		// Get current post layout style id. 
-		let plid = postlayoutids[index];
-
-		// Get current body layout style id. 
-		let blid = bodylayoutids[index];
-	
-		// Turn on selected style ids. 
-		if(plid==plstyleid) {
-			postssection.classList.add(plid);
-			if(blid) postssection.parentElement.classList.add(blid);
-		}
-		
-		// Turn off non-selected style ids. 
-		else {
-			postssection.classList.remove(plid);
-			if(blid) postssection.parentElement.classList.remove(blid);
 		}
 	}
 }
