@@ -12,7 +12,7 @@ activateBlog();
 function activateBlog() {
 
 	// Access previously loaded blog post cards. 
-	let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.postlist li.postcard');
+	let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
 
 	// Activate previews for loaded blog post cards. 
 	activatePostPreviews();
@@ -23,7 +23,7 @@ function activateBlog() {
 	// Activate keyboard shortcuts. 
 	activateShortcuts();
 
-	/***/
+	/****/
 
 	// Activate previews for blog post cards. 
 	function activatePostPreviews() {
@@ -40,7 +40,7 @@ function activateBlog() {
 			// card.addEventListener('mouseout',closePreview);
 		}
 
-		/**/
+		/***/
 
 		// Create preview panel for blog post card. 
 		function createPreviewPanel(projectid) {
@@ -69,8 +69,6 @@ function activateBlog() {
 	
 			// Add preview iframe to preview panel.
 			previewpanel.insertAdjacentHTML('afterbegin', createPreviewPanel(projectid) );
-
-			/**/
 		}
 	
 		// Close preview of blog post. 
@@ -103,7 +101,7 @@ function activateBlog() {
 		// Clear any previous search query. 
 		clearSearchQuery();
 
-		/**/
+		/***/
 
 		// Show blog posts that match given search query. 
 		function searchBlogPosts() {
@@ -191,7 +189,7 @@ function activateBlog() {
 		// Enable respons to keys pressed on page. 
 		document.addEventListener('keyup',checkKeys);
 	
-		/**/
+		/***/
 	
 		// Check keys. 
 		function checkKeys(event) {
@@ -199,9 +197,10 @@ function activateBlog() {
 
 			// Get focal point of event. 
 			let eventlocation = event.target;
-	
+			// Check if typing in text field. 
+			let istypingtext = eventlocation.tagName.toLowerCase()=='input';
 			// Disregard when typing in text field. 
-			if(eventlocation.tagName.toLowerCase()=='input') return;
+			if(istypingtext) return;
 	
 			// Respond to 'S' key. 
 			else if(event.keyCode==83) togglePostStyleById('small');
@@ -221,17 +220,17 @@ function activateBlog() {
 	}
 }
 
+// TODO: Add filter groups. 
+function addFilterGroups() {
+
+	// 
+}
+
 // Toggle filter panel. 
 function toggleFilterPanel() {
 
 	// Toggle filter panel. 
 	filterpanel.classList.toggle('open');
-}
-
-// TODO: Add filter groups. 
-function addFilterGroups() {
-
-	// 
 }
 
 // Toggle filter group. 
@@ -289,7 +288,7 @@ function filterBlogPosts() {
 
 	// 
 
-	/**/
+	/****/
 
 	// Update visibility state of post based on match. 
 	function updatePostState(postcard,matchesQuery) {

@@ -75,12 +75,6 @@ function displaySelectedPage() {
 	// Update page navigator. 
 	function updatePageNavigator() {
 
-		// Display currently selected page number. 
-		if(pagenumdestination) pagenumdestination.textContent = (1*selectedpageindex + 1);
-	
-		// Display total number of post pages. 
-		if(pagecountdestination) pagecountdestination.textContent = pagecount;
-
 		// Get all page link dots. 
 		const pagelinkdots = document.querySelectorAll('div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel li.dotitem a.pagelink');
 		console.log('pagelinkdots:',pagelinkdots);
@@ -98,5 +92,11 @@ function displaySelectedPage() {
 			// Un-highlight non-selected page link. 
 			else pagelink.parentElement.classList.remove('active');
 		}
+
+		// Display currently selected page number. 
+		if(pagenumdestination) pagenumdestination.textContent = (1*selectedpageindex + 1);
+	
+		// Display total number of post pages. 
+		if(pagecountdestination) pagecountdestination.textContent = pagecount;
 	}
 }

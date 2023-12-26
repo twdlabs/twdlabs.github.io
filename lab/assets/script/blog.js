@@ -6,32 +6,51 @@ const postssection = document.querySelector('div#container section.blog div.grid
 console.log('Posts section:',postssection);
 
 
-// Get destination for featured posts. 
-const featuredpostsdestinationA = document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.postlist.a');
-const featuredpostsdestinationB = document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.postlist.b');
-// console.log('Featured posts destinations:',featuredpostsdestinationA,featuredpostsdestinationB);
+// Get featured section. 
+const featured = {
+	section:document.querySelector('div#container section.blog div.grid div.body div.posts#featured'),
+	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist'),
+	postsdestinationa:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage ul.postlist.a'),
+	postsdestinationb:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage ul.postlist.b'),
+};
+console.log('Featured section:',featured);
+const featuredSection = featured.section;
+const featuredPagesDestination = featured.pagesdestination;
+const featuredpostsdestinationA = featured.postsdestinationa;
+const featuredpostsdestinationB = featured.postsdestinationb;
 
 // Get archive section. 
-const archiveSection = document.querySelector('div#container section.blog div.grid div.body div.posts#archive');
-// console.log('Archive section:',archiveSection);
-// Get destination for archive post pages. 
-const archivePagesDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist');
-// console.log('Archive pages destination:',archivePagesDestination);
-// Get destination for archive posts. 
-const archivePostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.postlist');
-// console.log('Archive posts destination:',archivePostsDestination);
+const archive = {
+	section:document.querySelector('div#container section.blog div.grid div.body div.posts#archive'),
+	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist'),
+	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist li.postpage ul.postlist'),
+};
+console.log('Archive section:',archive);
+const archiveSection = archive.section;
+const archivePagesDestination = archive.pagesdestination;
+const archivePostsDestination = archive.postsdestination;
 
 // Get category section. 
-const categorySection = document.querySelector('div#container section.blog div.grid div.body div.posts#category');
-// Get destination for category posts. 
-const categoryPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.postlist');
-// console.log('Category posts destination:',categoryPostsDestination);
+const category = {
+	section:document.querySelector('div#container section.blog div.grid div.body div.posts#category'),
+	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist'),
+	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist li.postpage ul.postlist'),
+};
+console.log('Category section:',category);
+const categorySection = category.section;
+const categoryPagesDestination = category.pagesdestination;
+const categoryPostsDestination = category.postsdestination;
 
 // Get collection section. 
-const collectionSection = document.querySelector('div#container section.blog div.grid div.body div.posts#collection');
-// Get destination for collection posts. 
-const collectionPostsDestination = document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.postlist');
-// console.log('Collection posts destination:',collectionPostsDestination);
+const collection = {
+	section:document.querySelector('div#container section.blog div.grid div.body div.posts#collection'),
+	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist'),
+	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist li.postpage ul.postlist'),
+};
+console.log('Collection section:',collection);
+const collectionSection = collection.section;
+const collectionPagesDestination = collection.pagesdestination;
+const collectionPostsDestination = collection.postsdestination;
 
 
 // Get filter panel. 
@@ -43,10 +62,10 @@ const filterpanelheaders = document.querySelectorAll('div#container section.blog
 
 
 // Get input field for search query. 
-const searchqueryfield = document.querySelector('div#container section.blog div.grid div.head div.filter input#searchquery');
+const searchqueryfield = document.querySelector('div#container section.blog div.grid div.head div.modpanel input#searchquery');
 // console.log('searchqueryfield:',searchqueryfield);
 // Get clear button for search query. 
-const searchclearbtn = document.querySelector('div#container section.blog div.grid div.head div.filter label.searchclearbtn');
+const searchclearbtn = document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn');
 // console.log('searchclearbtn:',searchclearbtn);
 // Get label for empty search results. 
 const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel');
@@ -456,20 +475,52 @@ function togglePostStyle(togglebtn) {
 }
 
 // Toggle style of posts by id. 
-function togglePostStyleById(styleid) {
+function togglePostStyleById(plstyleid) {
+	// Disregard if no style id. 
+	if(!plstyleid) {
+		console.warn('No style id provided',plstyleid);
+		return;
+	}
 
-	// Define style ids. 
-	const styleids = ['small','large','listed',];
+	// Get posts section. 
+	// const availablesection = postssection/*  || featuredSection || archiveSection || categorySection || collectionSection */;
+	// Disregard if no posts section. 
+	if(!postssection) {
+		console.warn('No posts section to style',postssection);
+		return;
+	}
+	console.log('Posts section:',postssection);
+
+	// Define style ids for body layout. 
+	const bodylayoutids = ['','','split',];
+	// Define style ids for posts layout. 
+	const postlayoutids = ['small','large','listed',];
+
+	// Get index of given style id. 
+	let styleindex = postlayoutids.indexOf(plstyleid);
+	console.log('Style index:',styleindex);
 
 	// Go thru each style id. 
-	for(let id of styleids) {
-		
-		// Turn off style id. 
-		archiveSection.classList.remove(id);
-	}
+	for(let index in postlayoutids) {
+
+		// Get current post layout style id. 
+		let plid = postlayoutids[index];
+
+		// Get current body layout style id. 
+		let blid = bodylayoutids[index];
 	
-	// Turn on selected style id. 
-	archiveSection.classList.add(styleid);
+		// Turn on selected style ids. 
+		if(plid==plstyleid) {
+			postssection.classList.add(plid);
+			if(blid) postssection.parentElement.classList.add(blid);
+		}
+		
+		// Turn off non-selected style ids. 
+		else {
+			postssection.classList.remove(plid);
+			if(blid) postssection.parentElement.classList.remove(blid);
+		}
+	}
 }
 
 
