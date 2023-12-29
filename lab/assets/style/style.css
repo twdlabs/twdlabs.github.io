@@ -220,12 +220,12 @@ div#container header.navbar div.bin div.themebar div.themeswitcher.color {--dots
 /* div#container section {background-color:#FFF1;} */
 div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:var(--sectionspacing); /* box-shadow:var(--boxshadow); */}
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
-div#container section div.grid div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center; grid-gap:1.5rem;}
+div#container section div.grid div.head {display:grid; grid-template-columns:repeat(2,auto); justify-content:space-between; align-items:center; grid-gap:1.5rem;}
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
 /* div#container section div.grid h1.head:empty {display:flex; justify-content:center;} */
 div#container section div.grid h1.head:empty::after {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:10em; border-radius:1em; margin:0 auto;}
 div#container section div.grid h2.head {font-size:1.75rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0; margin-top:3rem;}
-div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center;}
+div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center; margin:0;}
 /* div#container section div.grid p.textcopy:empty {display:flex; justify-content:center;} */
 div#container section div.grid p.textcopy:empty:before {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:80%; border-radius:1em; margin:0 auto;}
 div#container section div.grid p.textcopy:empty::after {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:60%; border-radius:1em; margin:0 auto; margin-top:.375em;}
@@ -340,6 +340,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* General Section */
 	/* div#container section {} */
 	/* div#container section div.grid {} */
+	div#container section div.grid div.head {grid-template-columns:1fr;}
 
 	/* More Projects */
 	/* div#container section div.grid div.more {} */
