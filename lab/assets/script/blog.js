@@ -54,6 +54,10 @@ const collectionPostsDestination = collection.postsdestination;
 // Set flag for memory load (previews on by default). 
 let blockPreviews = false;
 
+// Define if pagination on. 
+let paginationOn = false;
+paginationOn = true;
+
 
 /*****/
 
@@ -84,271 +88,283 @@ function loadBlog() {
 	/****/
 
 	// Create layout for blog posts. 
-	function createBlogPostsLayout(rawpostlist,previewsOn,paginationOn) {
-		console.log('\trawpostlist:',rawpostlist);
-		console.log('\tpreviewsOn:',previewsOn);
-		console.log('\tpaginationOn:',paginationOn);
+	function createBlogLayout(rawpostlist,previewsOn) {
+		console.log('\t\tRaw post list:',rawpostlist);
+		console.log('\t\tPreviews on:',previewsOn);
 	
 		// Initialize resulting layout. 
 		let result = '';
 
-		// Deal with 3d data matrix. 
-		if(paginationOn) {
+		// Create single-page layout (2d data list). 
+		if(!paginationOn) {
 
-			// Define number of posts per page. 
-			// const pagepostcapacity = 120;
-			const pagepostcapacity = 60;
+			// Add page of posts. 
+			result += createBlogPage(0,rawpostlist,previewsOn);
 
-			// Get paginated post matrix. 
+			// Save page count. 
+			pagecount = 1;
+		}
+
+		// Create multi-page layout (3d data matrix). 
+		else {
+
+			// Paginate post data into post matrix. 
 			let postmatrix = paginateData(rawpostlist,pagepostcapacity);
-			console.log('\tpostmatrix:',postmatrix);
+			console.log('\t\tPaginated post matrix:',postmatrix);
 	
-			// Go thru each list in matrix. 
+			// Go thru each page in post matrix. 
 			for(let pageindex in postmatrix) {
 
-				// Get post list for currrent page. 
+				// Get list of posts for currrent page. 
 				let postlist = postmatrix[pageindex];
 
-				// Open page. 
-				result += openPage(pageindex);
-	
-				// Go thru each post in list. 
-				for(let post of postlist) {
-					// console.log('Post:',post);
-		
-					// Show message for invalid project post. 
-					if(!post) {
-						console.warn('Null project post', post);
-						// continue;
-					}
-			
-					// Add to layout result: blog post card with project link. 
-					result += createBlogCard(post,previewsOn);
-				}
-
-				// Close page. 
-				result += closePage();
+				// Add page of posts. 
+				result += createBlogPage(pageindex,postlist,previewsOn);
 			}
 
 			// Save page count. 
 			pagecount = postmatrix.length;
-			console.log('Page count:',pagecount);
 		}
-
-		// Deal with 2d data list. 
-		else {
-	
-			// Go thru each post in list. 
-			for(let post of rawpostlist) {
-				// console.log('Post:',post);
-		
-				// Show message for invalid project post. 
-				if(!post) {
-					console.warn('Null project post found', post);
-					continue;
-				}
-		
-				// Add to layout result: blog post card with project link. 
-				result += createBlogCard(post,previewsOn);
-			}
-
-			// Save page count. 
-			pagecount = 1;
-			console.log('Page count:',pagecount);
-		}
-
-		// Activate page navigator. 
-		activatePageNav();
 	
 		// Return resulting layout. 
 		return result;
 
 		/***/
 
-		// Open page. 
-		function openPage(pageindex) {
-			return `
+		// Create page for blog posts layout. 
+		function createBlogPage(pageindex,pagepostlist,previewsOn) {
+	
+			// Initialize page layout. 
+			let pagelayout = '';
+
+			// Open page. 
+			pagelayout += `
 			<!-- postpage -->
 			<li class="postpage" data-pageindex="${pageindex}">
 
 				<!-- postlist -->
 				<ul class="postlist">`;
-			// return `
-			// <!-- postpage -->
-			// <li class="postpage${ 1*pageindex ? '' : ' active' }" data-pageindex="${pageindex}">
+	
+			// Go thru each post in list. 
+			for(let post of pagepostlist) {
+				// console.log('Post:',post);
+	
+				// Show message for invalid project post. 
+				if(!post) {
+					console.warn('\t\tNull project post', post);
+					continue;
+				}
+		
+				// Add to page layout: blog post card with project link. 
+				pagelayout += createBlogCard(post,previewsOn);
+			}
 
-			// 	<!-- postlist -->
-			// 	<ul class="postlist">`;
-		}
-
-		// Close page. 
-		function closePage() {
-			return `
+			// Close page. 
+			pagelayout += `
 				</ul>
 				<!-- /postlist -->
 
 			</li>
 			<!-- /postpage -->`;
-		}
 	
-		// Create blog card. 
-		function createBlogCard(post,previewsOn) {
-	
-			// Get project id for given post. 
-			let projectid = post.projectid;
-			// Get project name for given post. 
-			let projectname = post.projectname;
-			// Get category name for given post. 
-			let categoryname = getCategoryName(projectid);
-			// Get author name for given post. 
-			let authorname = getAuthorName(post.authorid);
-	
-			// Get url of page to be added. 
-			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
-	
-			// Compile post card. 
-			return `
-			<!-- postcard -->
-			<li class="postcard${ !post ? ' x' : '' }" data-projectid="${projectid}" title="${projectid}">
-	
-				<!-- projectlink -->
-				<a class="projectlink" href="${pageurl}" target="_blank">
-	
-					<!-- preview -->
-					<div class="preview">${ /* previewsOn ? createPreviewPanel(projectid) : */ '' }</div>
-					<!-- /preview -->
-	
-					<!-- caption -->
-					<div class="caption">
-			
-						<!-- id -->
-						<span class="id">${ projectid }</span>
-						<!-- /id -->
-	
-						<!-- name -->
-						<span class="name">${ projectname }</span>
-						<!-- /name -->
-			
-						<!-- category -->
-						<span class="category">${ categoryname }</span>
-						<!-- /category -->
-			
-						<!-- author -->
-						<span class="author">${ authorname }</span>
-						<!-- /author -->
-	
-					</div>
-					<!-- /caption -->
-	
-				</a>
-				<!-- /projectlink -->
-	
-			</li>
-			<!-- /postcard -->`;
-	
+			// Return page layout. 
+			return pagelayout;
+		
 			/**/
 	
-			// Get category name for given project. 
-			function getCategoryName(projectid) {
-	
-				// Go thru each project category. 
-				for(let projectcategory of projectCategoryData) {
-	
-					// Check if project found in current category. 
-					let projectfound = projectcategory.groupitemsidlist.includes(projectid);
-	
-					// Return name of current category if project found. 
-					if(projectfound) return projectcategory.groupname;
+			// Create card for blog post. 
+			function createBlogCard(post,previewsOn) {
+		
+				// Get project id for given post. 
+				let projectid = post.projectid;
+				// Get project name for given post. 
+				let projectname = post.projectname;
+				// Get category name for given post. 
+				let categoryname = getCategoryName(projectid);
+				// Get author name for given post. 
+				let authorname = getAuthorName(post.authorid);
+		
+				// Get url of page to be added. 
+				let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+		
+				// Compile post card. 
+				return `
+				<!-- postcard -->
+				<li class="postcard${ !post ? ' x' : '' }" data-projectid="${projectid}" title="${projectid}">
+		
+					<!-- projectlink -->
+					<a class="projectlink" href="${pageurl}" target="_blank">
+		
+						<!-- preview -->
+						<div class="preview">${ previewsOn ? createPreviewPanel(projectid) : '' }</div>
+						<!-- /preview -->
+		
+						<!-- caption -->
+						<div class="caption">
+				
+							<!-- id -->
+							<span class="id">${ projectid }</span>
+							<!-- /id -->
+		
+							<!-- name -->
+							<span class="name">${ projectname }</span>
+							<!-- /name -->
+				
+							<!-- category -->
+							<span class="category">${ categoryname }</span>
+							<!-- /category -->
+				
+							<!-- author -->
+							<span class="author">${ authorname }</span>
+							<!-- /author -->
+		
+						</div>
+						<!-- /caption -->
+		
+					</a>
+					<!-- /projectlink -->
+		
+				</li>
+				<!-- /postcard -->`;
+		
+				/**/
+		
+				// Get category name for given project. 
+				function getCategoryName(projectid) {
+		
+					// Go thru each project category. 
+					for(let projectcategory of projectCategoryData) {
+		
+						// Check if project found in current category. 
+						let projectfound = projectcategory.groupitemsidlist.includes(projectid);
+		
+						// Return name of current category if project found. 
+						if(projectfound) return projectcategory.groupname;
+					}
+		
+					// Return nothing if project not found in any category. 
+					return '';
 				}
-	
-				// Return nothing if project not found in any category. 
-				return '';
+		
+				// Get author name for given project. 
+				function getAuthorName(queryid) {
+		
+					// Go thru each project category. 
+					for(let authorid in authorData) {
+		
+						// Check if author found. 
+						let authorfound = /* author. */authorid == queryid;
+		
+						// Return name of author if found. 
+						if(authorfound) return authorData[authorid];
+						// if(authorfound) return author.authorname;
+					}
+		
+					// Return nothing if author not found. 
+					return '';
+				}
 			}
-	
-			// Get author name for given project. 
-			function getAuthorName(queryid) {
-	
-				// Create data space for author names. 
-				const authorData = {
-					twd:'TWD Labs',
-					w3s:'W3 Schools',
-					codepen:'Code Pen',
-				}
-	
-				// Go thru each project category. 
-				for(let authorid in authorData) {
-	
-					// Check if author found. 
-					let authorfound = /* author. */authorid == queryid;
-	
-					// Return name of author if found. 
-					if(authorfound) return authorData[authorid];
-					// if(authorfound) return author.authorname;
-				}
-	
-				// Return nothing if author not found. 
-				return '';
-			}
-		}
-
-		// TODO: Activate page navigator. 
-		function activatePageNav() {
-
-			// Display currently selected page. 
-			displaySelectedPage();
 		}
 	}
+	
+	// Load archive posts. 
+	function loadArchivePosts() {
 
-	// Load featured posts. 
-	function loadFeaturedPosts() {
-
-		// Check if loading featured posts. 
-		if(!featuredpostsdestinationA || !featuredpostsdestinationB) {
-			console.log('No featured posts...');
+		// Check if loading archive posts. 
+		if(!archivePagesDestination) {
+			console.log('\tBypass archive posts...');
 			return;
 		}
-		console.log('Loading featured posts...');
+		console.log('\tLoading archive posts...');
 	
-		// Get list of featured projects (sorted by project id). 
-		let featuredProjectsA = ( featuredProjectIds['a']/* .sort() */ ).map(getProjectById);
-		let featuredProjectsB = ( featuredProjectIds['b']/* .sort() */ ).map(getProjectById);
-		// console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIds['a'], featuredProjectsA);
-		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
+		// Get list of archive projects (sorted by project id). 
+		let archiveProjects = projectData.sort(sortByProjectId);
+		console.log('Archive projects:', archiveProjects.length, archiveProjects);
 		
-		// Get layout for featured posts. 
-		let featuredLayoutA = createBlogPostsLayout(featuredProjectsA, true && !blockPreviews, false);
-		let featuredLayoutB = createBlogPostsLayout(featuredProjectsB, true && !blockPreviews, false);
+		// Get layout for archive posts. 
+		let archiveLayout = createBlogLayout(archiveProjects, false);
 		
-		// Add featured layout to blog section. 
-		featuredpostsdestinationA.innerHTML = featuredLayoutA;
-		featuredpostsdestinationB.innerHTML = featuredLayoutB;
+		// Display archive posts in blog section. 
+		archivePagesDestination.innerHTML = archiveLayout;
+
+		// Load dot panel in page navigator. 
+		loadDotNavigator();
+
+		// Display currently selected page. 
+		displaySelectedPage();
+	
+		/****/
+	
+		// Sort projects by project id. 
+		function sortByProjectId(a,b) {
+			if(a.projectid == b.projectid) return 0;
+			else if(a.projectid < b.projectid) return -1;
+			else if(a.projectid > b.projectid) return 1;
+			else {
+				console.warn('Questionable comparison', a.projectid,b.projectid, a,b);
+				return 0;
+			}
+		}
+	}
+	
+	// Load category posts. 
+	function loadCategoryPosts() {
+
+		// Check if loading category posts. 
+		if(!categoryPagesDestination) {
+			console.log('\tBypass category posts...');
+			return;
+		}
+		console.log('\tLoading category posts...');
+	
+		// Get custom list of projects for current category (sorted by project id). 
+		let categoryProjects = ( projectcategory.groupitemsidlist.sort() ).map(getProjectById);
+		console.log('Category projects:', categoryProjects.length, categoryProjects);
+		
+		// Get layout for category posts. 
+		let categoryLayout = createBlogLayout(categoryProjects, true && !blockPreviews);
+		
+		// Display category posts in blog section. 
+		categoryPagesDestination.innerHTML = categoryLayout;
+
+		// Load dot panel in page navigator. 
+		loadDotNavigator();
+
+		// Display currently selected page. 
+		displaySelectedPage();
 	}
 	
 	// Load collection posts. 
 	function loadCollectionPosts() {
 
 		// Check if loading collection posts. 
-		if(!collectionPostsDestination) {
-			console.log('No collection posts...');
+		if(!collectionPagesDestination) {
+			console.log('\tBypass collection posts...');
 			return;
 		}
-		console.log('Loading collection posts...');
+		console.log('\tLoading collection posts...');
 	
 		// Get custom list of projects for current collection. 
-		let collectionCategories = ( projectmetagroup.groupitemsidlist ).map(getProjectCategoryById);
+		let collectionCategories = ( projectcollection.groupitemsidlist ).map(getProjectCategoryById);
 		// console.log('Collection categories:', collectionCategories);
-		let collectionProjectIdsMatrix = collectionCategories.map(x=>x.groupitemsidlist);
+		let collectionProjectIdsMatrix = collectionCategories.map( category => category.groupitemsidlist );
 		// console.log('Collection project ids matrix:',collectionProjectIdsMatrix);
 		let collectionProjectIds = flatten(collectionProjectIdsMatrix).sort()
 		// console.log('Collection project ids:',collectionProjectIds);
 		let collectionProjects = collectionProjectIds.map(getProjectById);
-		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
+		console.log('Collection projects:', collectionProjects.length, collectionProjects);
 		
 		// Get layout for collection posts. 
-		let collectionPostsLayout = createBlogPostsLayout(collectionProjects, true && !blockPreviews, false);
+		let collectionLayout = createBlogLayout(collectionProjects, true && !blockPreviews);
 		
-		// Add layout to blog section. 
-		collectionPostsDestination.innerHTML = collectionPostsLayout;
+		// Display collection posts in blog section. 
+		collectionPagesDestination.innerHTML = collectionLayout;
+
+		// Load dot panel in page navigator. 
+		loadDotNavigator();
+
+		// Display currently selected page. 
+		displaySelectedPage();
 
 		/****/
 
@@ -370,71 +386,107 @@ function loadBlog() {
 			return result;
 		}
 	}
-	
-	// Load category posts. 
-	function loadCategoryPosts() {
 
-		// Check if loading category posts. 
-		if(!categoryPostsDestination) {
-			console.log('No category posts...');
+	// Load featured posts. 
+	function loadFeaturedPosts() {
+
+		// Check if loading featured posts. 
+		// if(!featuredpostsdestinationA || !featuredpostsdestinationB) {
+		if(!featuredPagesDestination) {
+			console.log('\tBypass featured posts...');
 			return;
 		}
-		console.log('Loading category posts...');
+		console.log('\tLoading featured posts...');
 	
-		// Get custom list of projects for current category (sorted by project id). 
-		let categoryProjects = ( projectgroup.groupitemsidlist.sort() ).map(getProjectById);
-		// console.log('Category projects:', categoryProjects.length, categoryProjects);
+		// Get list of featured projects (sorted by project id). 
+		let xyz = featuredProjectIds['a'].concat( featuredProjectIds['b'] );
+		let featuredProjects = xyz.map(getProjectById);
+		console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
+		// let featuredProjectsA = ( featuredProjectIds['a'] ).map(getProjectById);
+		// let featuredProjectsB = ( featuredProjectIds['b'] ).map(getProjectById);
+		// console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIds['a'], featuredProjectsA);
+		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
 		
-		// Get layout for category posts. 
-		let categoryPostsLayout = createBlogPostsLayout(categoryProjects, true && !blockPreviews, false);
+		// Get layout for featured posts. 
+		let featuredLayout = createBlogLayout(featuredProjects, true && !blockPreviews);
+		console.log(featuredLayout);
+		// let featuredLayoutA = createBlogLayout(featuredProjectsA, true && !blockPreviews);
+		// let featuredLayoutB = createBlogLayout(featuredProjectsB, true && !blockPreviews);
+		// console.log(featuredLayoutA);
+		// console.log(featuredLayoutB);
 		
-		// Add layout to blog section. 
-		categoryPostsDestination.innerHTML = categoryPostsLayout;
-	}
-	
-	// Load archive posts. 
-	function loadArchivePosts() {
+		// Add featured layout to blog section. 
+		featuredPagesDestination.innerHTML = featuredLayout;
+		// featuredpostsdestinationA.innerHTML = featuredLayoutA;
+		// featuredpostsdestinationB.innerHTML = featuredLayoutB;
 
-		// Check if loading archive posts. 
-		if(!archivePostsDestination) {
-			console.log('Bypass archive posts...');
-			return;
-		}
-		console.log('Loading archive posts...');
-	
-		// Get list of archive projects (sorted by project id). 
-		let archiveProjects = projectData.sort(sortByProjectId);
-		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
-
-		// Define if pagination on. 
-		let paginationOn = false;
-		paginationOn = true;
-		
-		// Get layout for archive posts. 
-		let archiveLayout = createBlogPostsLayout(archiveProjects, false, paginationOn);
-		
-		// Add archive layout to blog section. 
-		if(paginationOn) {
-			// archivePagesDestination.insertAdjacentHTML('afterbegin',archiveLayout);
-			archivePagesDestination.innerHTML = archiveLayout;
-		}
-		else {
-			archivePostsDestination.innerHTML = archiveLayout;
-		}
+		// Load dot panel in page navigator. 
+		loadDotNavigator();
 
 		// Display currently selected page. 
-		if(paginationOn) displaySelectedPage();
-	
-		/****/
-	
-		// Sort projects by project id. 
-		function sortByProjectId(a,b) {
-			if(a.projectid == b.projectid) return 0;
-			else if(a.projectid < b.projectid) return -1;
-			else if(a.projectid > b.projectid) return 1;
-			else {
-				console.warn('Questionable comparison', a.projectid,b.projectid, a,b);
-				return 0;
+		displaySelectedPage();
+	}
+
+	// Load dot panel in page navigator. 
+	function loadDotNavigator() {
+		console.log('Page count:',pagecount,dotpaneldestination);
+		if(!dotpaneldestination) return;
+
+		// Initialize layout for dot panel. 
+		let dotpanellayout = ''
+
+		// Go thru each page. 
+		for(let pageindex=0 ; pageindex<pagecount ; pageindex++) {
+
+			// 
+			dotpanellayout += `
+			<!-- dotitem -->
+			<li class="dotitem">
+
+				<!-- pagelink -->
+				<a class="pagelink" href="javascript:void(0)" data-pageindex="${pageindex}"></a>
+				<!-- /pagelink -->
+
+			</li>
+			<!-- /dotitem -->`;
+		}
+
+		// Display layout for dot panel. 
+		dotpaneldestination.innerHTML = dotpanellayout;
+
+		// Activate page links in dot panel. 
+		activatePageLinks();
+
+		/***/
+
+		// Activate page links in dot panel. 
+		function activatePageLinks() {
+
+			// Get page links in dot panel. 
+			const dotpanelpagelinks = document.querySelectorAll('div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink');
+
+			// Go thru each page link. 
+			for(let pagelink of dotpanelpagelinks) {
+
+				// 
+				pagelink.addEventListener('click',selectPage)
+			}
+
+			/**/
+
+			// Select page by index. 
+			function selectPage(event) {
+
+				// Get selected page link. 
+				let pagelink = event.currentTarget;
+				console.log('pagelink:',pagelink);
+
+				// Get index of selected page. 
+				let selectedindex = pagelink.getAttribute('data-pageindex');
+				console.log('selectedindex:',selectedindex);
+
+				// Select page by index. 
+				selectPageByIndex(selectedindex);
 			}
 		}
 	}

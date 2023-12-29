@@ -88,3 +88,27 @@ function setLayoutStyleById(styleindex) {
 		}
 	}
 }
+
+// Toggle section like accordion. 
+function toggleLikeAccordion(section,sectionbin) {
+
+	// Check if section already folded. 
+	let sectionfolded = section.classList.contains('folded');
+	// console.log('Section folded:',sectionfolded);
+
+	// Get full height of section bin. 
+	let fullheight = sectionbin.scrollHeight;
+	// console.log('Full height:',fullheight);
+	
+	// Open if already folded. 
+	if(sectionfolded) {
+		section.classList.remove('folded');
+		sectionbin.style.maxHeight = `${fullheight}px`;
+	}
+
+	// Close if not already folded. 
+	else {
+		section.classList.add('folded');
+		sectionbin.style.maxHeight = 0;
+	}
+}

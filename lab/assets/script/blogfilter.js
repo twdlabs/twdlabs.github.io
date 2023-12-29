@@ -39,14 +39,17 @@ const postFilterGroups = [
 			{
 				criterionid:'authora',
 				criterionname:'Author A',
+				criterioncount:0,
 			},
 			{
 				criterionid:'authorb',
 				criterionname:'Author B',
+				criterioncount:0,
 			},
 			{
 				criterionid:'authorc',
 				criterionname:'Author C',
+				criterioncount:0,
 			},
 		],
 	},
@@ -57,14 +60,17 @@ const postFilterGroups = [
 			{
 				criterionid:'categorya',
 				criterionname:'Category A',
+				criterioncount:0,
 			},
 			{
 				criterionid:'categoryb',
 				criterionname:'Category B',
+				criterioncount:0,
 			},
 			{
 				criterionid:'categoryc',
 				criterionname:'Category C',
+				criterioncount:0,
 			},
 		],
 	},
@@ -75,14 +81,17 @@ const postFilterGroups = [
 			{
 				criterionid:'collectiona',
 				criterionname:'Collection A',
+				criterioncount:0,
 			},
 			{
 				criterionid:'collectionb',
 				criterionname:'Collection B',
+				criterioncount:0,
 			},
 			{
 				criterionid:'collectionc',
 				criterionname:'Collection C',
+				criterioncount:0,
 			},
 		],
 	},
@@ -93,14 +102,17 @@ const postFilterGroups = [
 			{
 				criterionid:'datecreateda',
 				criterionname:'Started A',
+				criterioncount:0,
 			},
 			{
 				criterionid:'datecreatedb',
 				criterionname:'Started B',
+				criterioncount:0,
 			},
 			{
 				criterionid:'datecreatedc',
 				criterionname:'Started C',
+				criterioncount:0,
 			},
 		],
 	},
@@ -115,21 +127,15 @@ const postFilterGroups = [
 /*****/
 
 
-// Activate blog functionality. 
-activateBlog();
+// Activate blog post filtering. 
+activateBlogFilters();
 
 
 /*****/
 
 
-// Activate blog functionality. 
-function activateBlog() {
-
-	// Access previously loaded blog post cards. 
-	let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
-
-	// Activate previews for loaded blog post cards. 
-	activatePostPreviews();
+// Activate blog post filtering. 
+function activateBlogFilters() {
 
 	// Activate blog post search. 
 	if(searchqueryfield) activateBlogSearch();
@@ -141,72 +147,6 @@ function activateBlog() {
 	enableShortcutKeys();
 
 	/****/
-
-	// Activate previews for blog post cards. 
-	function activatePostPreviews() {
-		
-		// Go thru blog post cards. 
-		for(let card of blogpostcards) {
-	
-			// Activate mouse events for given card (without up/down propagation). 
-			card.addEventListener('mouseenter',openPreview);
-			card.addEventListener('mouseleave',closePreview);
-	
-			// Activate mouse events for given card (with up/down propagation). 
-			// card.addEventListener('mouseover',openPreview);
-			// card.addEventListener('mouseout',closePreview);
-		}
-
-		/***/
-
-		// Create preview panel for blog post card. 
-		function createPreviewPanel(projectid) {
-		
-			// Get url of page to be previewed. 
-			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
-		
-			// Compile preview panel. 
-			return `
-			<!-- preview -->
-			<iframe class="preview" src="${pageurl}"></iframe>
-			<!-- /preview -->`;
-		}
-	
-		// Open preview of blog post. 
-		function openPreview(event) {
-			// console.log('Opening preview...',event.target);
-	
-			// Get card for selected post. 
-			let selectedcard = event.currentTarget;
-			// Get project id of selected post. 
-			let projectid = selectedcard.getAttribute('data-projectid');
-	
-			// Get card's preview panel. 
-			let previewpanel = selectedcard.querySelector('div.preview');
-	
-			// Add preview iframe to preview panel.
-			previewpanel.insertAdjacentHTML('afterbegin', createPreviewPanel(projectid) );
-		}
-	
-		// Close preview of blog post. 
-		function closePreview(event) {
-			// console.log('Closing preview.',event.target);
-	
-			// Get card for selected post. 
-			let selectedcard = event.currentTarget;
-	
-			// Get preview panel of selected card. 
-			let previewpanel = selectedcard.querySelector('div.preview');
-			// console.log('previewpanel:',previewpanel);
-			// Get iframe inside preview panel. 
-			let previewpaneliframe = previewpanel.querySelector('iframe.preview');
-			// console.log('previewpaneliframe:',previewpaneliframe);
-	
-			// Remove iframe from preview panel.
-			previewpanel.innerHTML = '';
-			// previewpaneliframe.remove();
-		}
-	}
 
 	// Activate blog post search. 
 	function activateBlogSearch() {
@@ -222,6 +162,10 @@ function activateBlog() {
 
 		// Show blog posts that match given search query. 
 		function searchBlogPosts() {
+
+			// Access loaded blog post cards. 
+			let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
+			console.log('Blog post cards:',blogpostcards);
 
 			// Initialize number of matching posts. 
 			let numMatchingPosts = 0;
@@ -239,11 +183,13 @@ function activateBlog() {
 				let projectid = postcard.getAttribute('data-projectid').toUpperCase();
 
 				// Check for matching post (by full query). 
-				let matchesFullQuery = checkForMatchByFullQuery(projectid,searchquery);
+				let matchFullQuery = checkForMatchByFullQuery(projectid,searchquery);
 				// Check for matching post (by each word). 
-				let matchesEveryWord = checkForMatchByEachWord(projectid,searchquerywords);
+				let matchEveryWord = checkForMatchByEachWord(projectid,searchquerywords);
 				// Compile match criteria. 
-				let matchCriteriaMet = matchesFullQuery || matchesEveryWord;
+				let matchCriteriaMet = matchFullQuery || matchEveryWord;
+
+				// Increment number of matching posts. 
 				if(matchCriteriaMet) numMatchingPosts++;
 
 				// Update visibility state of post based on match. 
@@ -256,6 +202,12 @@ function activateBlog() {
 			else emptysearchlabel.classList.remove('on');
 
 			/**/
+
+			// Check for matching post. 
+			function checkForMatch(projectid,searchquery) {
+
+				// 
+			}
 
 			// Check for matching post (by full query). 
 			function checkForMatchByFullQuery(projectid,searchquery) {
@@ -424,7 +376,7 @@ function loadFilterGroups() {
 					<!-- /caption -->
 	
 					<!-- matchcount -->
-					<span class="matchcount"></span>
+					<span class="matchcount">${criterion.criterioncount}</span>
 					<!-- /matchcount -->
 	
 				</label>
@@ -454,30 +406,6 @@ function toggleFilterGroup(header) {
 
 	// Toggle filter group. 
 	filtergroup.classList.toggle('open');
-}
-
-// Toggle section like accordion. 
-function toggleLikeAccordion(section,sectionbin) {
-
-	// Check if section already folded. 
-	let sectionfolded = section.classList.contains('folded');
-	// console.log('Section folded:',sectionfolded);
-
-	// Get full height of section bin. 
-	let fullheight = sectionbin.scrollHeight;
-	// console.log('Full height:',fullheight);
-	
-	// Open if already folded. 
-	if(sectionfolded) {
-		section.classList.remove('folded');
-		sectionbin.style.maxHeight = `${fullheight}px`;
-	}
-
-	// Close if not already folded. 
-	else {
-		section.classList.add('folded');
-		sectionbin.style.maxHeight = 0;
-	}
 }
 
 // TODO: Apply filter. 

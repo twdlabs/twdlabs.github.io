@@ -1,15 +1,25 @@
 
 
 
+// Get list for post pages. 
+const postpageslist = document.querySelector('div#container section.blog div.grid div.body div.posts ul.pagelist');
+
+// Get destination for dot panel. 
+const dotpaneldestination = document.querySelector('div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel');
+
 // Get destination for page number. 
-const pagenumdestination = document.querySelector('div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel span.pagenum');
+const pagenumdestination = document.querySelector('div#container section.blog div.grid div.body nav.pagepanel div.numpanel span.pagenum');
 
 // Get destination for page count. 
-const pagecountdestination = document.querySelector('div#container section.blog div.grid div.body div.posts nav.pagepanel div.numpanel span.pagecount');
+const pagecountdestination = document.querySelector('div#container section.blog div.grid div.body nav.pagepanel div.numpanel span.pagecount');
 
 
 /*****/
 
+
+// Define maximum number of posts per page. 
+// const pagepostcapacity = 12;
+const pagepostcapacity = 30;
 
 // Define total number of post pages. 
 let pagecount = undefined;
@@ -41,6 +51,20 @@ function goNextPage() {
 	displaySelectedPage();
 }
 
+// Select page by index. 
+function selectPageByIndex(queryindex) {
+	console.log('Query index:',queryindex);
+
+	// Disregard non-numbers. 
+	if( isNaN(queryindex) ) return;
+
+	// Save index of selected page. 
+	selectedpageindex = queryindex;
+
+	// Display newly selected page. 
+	displaySelectedPage();
+}
+
 // Display currently selected page. 
 function displaySelectedPage() {
 	
@@ -48,6 +72,9 @@ function displaySelectedPage() {
 	if(selectedpageindex<0) selectedpageindex = 0;
 	else if(selectedpageindex>=pagecount) selectedpageindex = pagecount - 1;
 	console.log('Selected page index:',selectedpageindex);
+
+	// Shift page list to selected page. 
+	postpageslist.style.transform = `translateX(${selectedpageindex * -100}%)`;
 
 	// Get all post pages. 
 	const allpostpages = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage');
@@ -67,24 +94,24 @@ function displaySelectedPage() {
 		else page.classList.remove('active');
 	}
 
-	// Update page navigator. 
+	// Highlight currently selected page in page navigator. 
 	updatePageNavigator();
 
 	/****/
 
-	// Update page navigator. 
+	// Highlight currently selected page in page navigator. 
 	function updatePageNavigator() {
 
-		// Get all page link dots. 
-		const pagelinkdots = document.querySelectorAll('div#container section.blog div.grid div.body div.posts nav.pagepanel ul.dotpanel li.dotitem a.pagelink');
-		console.log('pagelinkdots:',pagelinkdots);
+		// Get all page links in dot panel. 
+		const pagenavdots = document.querySelectorAll('div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink');
+		console.log('Page navigator dots:',pagenavdots);
 
 		// Go thru each page link dot. 
-		for(let pagelink of pagelinkdots) {
+		for(let pagelink of pagenavdots) {
 
 			// Check if on link for selected page. 
 			let onselectedpagelink = pagelink.getAttribute('data-pageindex') * 1 == 1*selectedpageindex;
-			console.log('onselectedpagelink:',onselectedpagelink);
+			console.log('\tonselectedpagelink:',onselectedpagelink);
 
 			// Highlight selected page link. 
 			if(onselectedpagelink) pagelink.parentElement.classList.add('active');

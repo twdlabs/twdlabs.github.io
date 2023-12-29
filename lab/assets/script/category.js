@@ -7,15 +7,15 @@ const projectcategoryid = urlparams.get('cid');
 // console.log('Project category id:',projectcategoryid);
 
 // Get current project category. 
-const projectgroup = getProjectCategoryById(projectcategoryid);
-console.log('Project category:',projectgroup);
+const projectcategory = getProjectCategoryById(projectcategoryid);
+console.log('Project category:',projectcategory);
 
 // Get name of current project category. 
-const projectcategoryname = projectgroup ? projectgroup.groupname : '';
+const projectcategoryname = projectcategory ? projectcategory.groupname : '';
 console.log('Project category name:',projectcategoryname);
 
 // Get description of current project category. 
-const projectcategorydesc = projectgroup ? projectgroup.groupdescription : '';
+const projectcategorydesc = projectcategory ? projectcategory.groupdescription : '';
 console.log('Project category description:',projectcategorydesc);
 
 

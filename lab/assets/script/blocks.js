@@ -7,8 +7,8 @@ const methodblocksdestination = document.querySelector('div#container section.bl
 // Get destination for category blocks. 
 const categoryblocksdestination = document.querySelector('div#container section.blocks.categories.all div.grid ul.blocklist');
 
-// Get destination for meta-category blocks. 
-const metacategoryblocksdestination = document.querySelector('div#container section.blocks.categories.meta div.grid ul.blocklist');
+// Get destination for collection blocks. 
+const collectionblocksdestination = document.querySelector('div#container section.blocks.categories.meta div.grid ul.blocklist');
 
 
 /*****/
@@ -20,8 +20,8 @@ loadMethodBlockSet();
 // Load blocks for project categories. 
 loadCategoryBlockSet();
 
-// Load blocks for project meta-categories. 
-loadMetaCategoryBlockSet();
+// Load blocks for project collections. 
+loadCollectionBlockSet();
 
 
 /*****/
@@ -62,9 +62,9 @@ function loadCategoryBlockSet() {
 	categoryblocksdestination.innerHTML = createBlockSet(projectCategoryData, tk,nk,dk, true,idkey,urlprefix);
 }
 
-// Load blocks for project meta-categories. 
-function loadMetaCategoryBlockSet() {
-	if(!metacategoryblocksdestination) return;
+// Load blocks for project collections. 
+function loadCollectionBlockSet() {
+	if(!collectionblocksdestination) return;
 
 	// Get key for icon tag. 
 	let tk = 'groupicontag';
@@ -79,7 +79,7 @@ function loadMetaCategoryBlockSet() {
 	let urlprefix = './collection/?cid=';
 
 	// Add block set to page destination. 
-	metacategoryblocksdestination.innerHTML = createBlockSet(projectCollectionData, tk,nk,dk, true,idkey,urlprefix);
+	collectionblocksdestination.innerHTML = createBlockSet(projectCollectionData, tk,nk,dk, true,idkey,urlprefix);
 }
 
 // Create layout for set of block items. 

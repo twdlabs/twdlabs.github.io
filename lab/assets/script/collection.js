@@ -7,15 +7,15 @@ const projectcollectionid = urlparams.get('cid');
 // console.log('Project collection id:',projectcollectionid);
 
 // Get current project collection. 
-const projectmetagroup = getProjectCollectionById(projectcollectionid);
-console.log('Project collection:',projectmetagroup);
+const projectcollection = getProjectCollectionById(projectcollectionid);
+console.log('Project collection:',projectcollection);
 
 // Get name of current project collection. 
-const projectcollectionname = projectmetagroup ? projectmetagroup.groupname : '';
+const projectcollectionname = projectcollection ? projectcollection.groupname : '';
 console.log('Project collection name:',projectcollectionname);
 
 // Get description of current project collection. 
-const projectcollectiondesc = projectmetagroup ? projectmetagroup.groupdescription : '';
+const projectcollectiondesc = projectcollection ? projectcollection.groupdescription : '';
 console.log('Project collection description:',projectcollectiondesc);
 
 
