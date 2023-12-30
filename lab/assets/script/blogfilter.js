@@ -72,12 +72,6 @@ function activateBlogFilters() {
 
 			// Initialize number of matching posts. 
 			let numMatchingPosts = 0;
-
-			// Get search query. 
-			let searchquery = searchqueryfield.value.toUpperCase();
-			// Get list of words in search query. 
-			let searchquerywords = searchquery.split(' ');
-			// console.log('Searching posts...', searchquery, searchquerywords);
 		
 			// Go thru all blog posts. 
 			for(let postcard of blogpostcards) {
@@ -85,18 +79,14 @@ function activateBlogFilters() {
 				// Get project id for given post. 
 				let projectid = postcard.getAttribute('data-projectid').toUpperCase();
 
-				// Check for matching post (by full query). 
-				let matchFullQuery = checkForMatchByFullQuery(projectid,searchquery);
-				// Check for matching post (by each word). 
-				let matchEveryWord = checkForMatchByEachWord(projectid,searchquerywords);
-				// Compile match criteria. 
-				let matchCriteriaMet = matchFullQuery || matchEveryWord;
+				// Check for matching post. 
+				let matchFound = checkForMatch(projectid);
 
 				// Increment number of matching posts. 
-				if(matchCriteriaMet) numMatchingPosts++;
+				if(matchFound) numMatchingPosts++;
 
 				// Update visibility state of post based on match. 
-				updatePostState(postcard, matchCriteriaMet);
+				updatePostState(postcard, matchFound);
 			}
 
 			// Show label if no search results found. 
@@ -107,30 +97,39 @@ function activateBlogFilters() {
 			/**/
 
 			// Check for matching post. 
-			function checkForMatch(projectid,searchquery) {
+			function checkForMatch(projectid) {
 
-				// 
-			}
+				// Get search query. 
+				let searchquery = searchqueryfield.value.toUpperCase();
+				// Get list of words in search query. 
+				let searchquerywords = searchquery.split(' ');
+				// console.log('Searching posts...', searchquery, searchquerywords);
 
-			// Check for matching post (by full query). 
-			function checkForMatchByFullQuery(projectid,searchquery) {
-				return projectid.includes(searchquery)
-			}
+				// Check for matching post (by full query). 
+				let matchFullQuery = projectid.includes(searchquery);
+				// Check for matching post (by each word). 
+				let matchEveryWord = checkForMatchEveryWord(projectid,searchquerywords);
 
-			// Check for matching post (by each word). 
-			function checkForMatchByEachWord(projectid,searchquerywords) {
-		
-				// Go thru all words in search query. 
-				for(let word of searchquerywords) {
+				// Compile match criteria. 
+				return (matchFullQuery || matchEveryWord);
 
-					let wordPresent = projectid.includes(word);
+				/**/
 
-					// Return false if any query word is missing. 
-					if(!wordPresent) return false;
+				// Check for matching post (by each word). 
+				function checkForMatchEveryWord(projectid,searchquerywords) {
+			
+					// Go thru each word in search query. 
+					for(let word of searchquerywords) {
+	
+						let wordPresent = projectid.includes(word);
+	
+						// Return false if any query word is missing. 
+						if(!wordPresent) return false;
+					}
+	
+					// Return true if passed (no query words missing). 
+					return true;
 				}
-
-				// Return true if passed (no query words missing). 
-				return true;
 			}
 
 			// Update visibility state of post based on match. 
@@ -233,9 +232,9 @@ function loadFilterGroups() {
 			<!-- filterbody -->
 			<div class="filterbody">
 
-				<!-- criterialist -->
-				<ul class="criterialist">${ createCriteriaLayout(filtergroup.filteritems) }</ul>
-				<!-- /criterialist -->
+				<!-- itemslist -->
+				<ul class="itemslist">${ createCriteriaListLayout(filtergroup.filteritems) }</ul>
+				<!-- /itemslist -->
 				
 			</div>
 			<!-- /filterbody -->
@@ -247,67 +246,16 @@ function loadFilterGroups() {
 	// Display filter groups in filter panel. 
 	filtergroupsdestination.innerHTML = filtergrouplayout;
 
-	// Activate filter groups in filter panel. 
-	activateFilterGroups();
+	// Activate filter group headers in filter panel. 
+	activateFilterHeads();
 
-	// Activate filter items in filter panel. 
+	// Activate filter group items in filter panel. 
 	activateFilterItems();
 
 	/****/
 
-	// Create layout for criteria list. 
-	function createCriteriaLayout(criterialist,getNameById) {
-		// console.log('Creating layout for criteria list',criterialist);
-
-		// Initialize layout for criteria list. 
-		let criterialistlayout = '';
-
-		// Go thru each criterion in given list. 
-		for(let criterionid of criterialist) {
-			// console.log('Criterion id:',criterionid);
-
-			// Get caption for criterion. 
-			let criterionname = criterionid;
-
-			// Add criterion to layout. 
-			criterialistlayout += `
-			<!-- criterion -->
-			<li class="criterion" data-criterionid="${criterionid}">
-	
-				<!-- checkbox -->
-				<input class="checkbox" type="checkbox" id="${criterionid}">
-				<!-- /checkbox -->
-	
-				<!-- front -->
-				<label class="front" for="${criterionid}">
-	
-					<!-- icon -->
-					<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
-					</svg>
-					<!-- /icon -->
-	
-					<!-- caption -->
-					<span class="caption">${criterionname}</span>
-					<!-- /caption -->
-	
-					<!-- matchcount -->
-					<span class="matchcount">${ 0 /* criterion.matchingpostscount */}</span>
-					<!-- /matchcount -->
-	
-				</label>
-				<!-- /front -->
-				
-			</li>
-			<!-- /criterion -->`;
-		}
-
-		// Return layout for criteria list. 
-		return criterialistlayout;
-	}
-
-	// Activate filter groups in filter panel. 
-	function activateFilterGroups() {
+	// Activate filter group headers in filter panel. 
+	function activateFilterHeads() {
 
 		// Get loaded headers in filter panel. 
 		let filterpanelheaders = filtergroupsdestination.querySelectorAll('li.filtergroup h3.filterhead');
@@ -318,13 +266,28 @@ function loadFilterGroups() {
 			// Enable header clicks to toggle group in filter panel. 
 			header.addEventListener('click',toggleFilterGroup);
 		}
+
+		/***/
+
+		// Toggle group in post filter panel. 
+		function toggleFilterGroup(event) {
+		
+			// Get filter group header. 
+			let filtergroupheader = event.currentTarget;
+		
+			// Get filter group. 
+			let filtergroup = filtergroupheader.parentElement;
+		
+			// Toggle filter group. 
+			filtergroup.classList.toggle('open');
+		}
 	}
 
-	// Activate filter items in filter panel. 
+	// Activate filter group items in filter panel. 
 	function activateFilterItems() {
 
 		// Get loaded items in filter panel. 
-		let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox');
+		let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
 	
 		// Go thru each item in filter panel. 
 		for(let inputitems of filterpanelitems) {
@@ -345,23 +308,25 @@ function loadFilterGroups() {
 			let checkboxOn = checkbox.checked;
 			console.log('Checkbox on:',checkboxOn,checkbox);
 
-			// 
+			// Apply filter item (if checkbox on). 
 			if(checkboxOn) applyFilterItem();
 
-			// 
+			// Un-apply filter item (if checkbox not on). 
 			else unapplyFilterItem();
 
 			/**/
 
-			// TODO: Apply post filter item. 
+			// TODO: Apply filter item to blog posts. 
 			function applyFilterItem() {
+
+				// TODO: Get value of filter item. 
 			
 				// TODO: Update blog posts. 
 			
 				// TODO: Update filter items. 
 			}
 			
-			// TODO: Un-apply post filter item. 
+			// TODO: Un-apply filter item to blog posts. 
 			function unapplyFilterItem(filteritem) {
 			
 				// TODO: Update blog posts. 
@@ -371,17 +336,56 @@ function loadFilterGroups() {
 		}
 	}
 
-	// Toggle group in post filter panel. 
-	function toggleFilterGroup(event) {
+	// Create layout for filter items list. 
+	function createCriteriaListLayout(filteritemslist/* ,getNameById */) {
+		// console.log('Creating layout for filter items list',filteritemslist);
+
+		// Initialize layout for filter items list. 
+		let filteritemslistlayout = '';
+
+		// Go thru each filter item in given list. 
+		for(let filteritem of filteritemslist) {
+			// console.log('Filter item:',filteritem);
+
+			// Get value of current filter item. 
+			let itemvalue = filteritem.value;
+			// console.log('Filter item value:',itemvalue);
+
+			// Add filter item to layout. 
+			filteritemslistlayout += `
+			<!-- filteritem -->
+			<li class="filteritem" data-value="${itemvalue}">
 	
-		// Get filter group header. 
-		let filtergroupheader = event.currentTarget;
+				<!-- checkbox -->
+				<input class="checkbox" type="checkbox" id="${itemvalue}">
+				<!-- /checkbox -->
 	
-		// Get filter group. 
-		let filtergroup = filtergroupheader.parentElement;
+				<!-- front -->
+				<label class="front" for="${itemvalue}">
 	
-		// Toggle filter group. 
-		filtergroup.classList.toggle('open');
+					<!-- icon -->
+					<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+					</svg>
+					<!-- /icon -->
+	
+					<!-- caption -->
+					<span class="caption">${itemvalue}</span>
+					<!-- /caption -->
+	
+					<!-- matchcount -->
+					<span class="matchcount">${ filteritem.frequency}</span>
+					<!-- /matchcount -->
+	
+				</label>
+				<!-- /front -->
+				
+			</li>
+			<!-- /filteritem -->`;
+		}
+
+		// Return layout for criteria list. 
+		return filteritemslistlayout;
 	}
 }
 
@@ -390,26 +394,4 @@ function toggleFilterPanel() {
 
 	// Toggle filter panel. 
 	filterpanel.classList.toggle('open');
-}
-
-// TODO: Show blog posts that match given filter query. 
-function filterBlogPosts() {
-
-	// 
-
-	/****/
-
-	// Update visibility state of post based on match. 
-	function updatePostState(postcard,matchesQuery) {
-
-		// Show matching post. 
-		if(matchesQuery) {
-			postcard.classList.remove('gone');
-		}
-
-		// Hide non-matching post. 
-		else {
-			postcard.classList.add('gone');
-		}
-	}
 }

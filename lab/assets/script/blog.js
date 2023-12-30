@@ -52,8 +52,8 @@ const collectionPostsDestination = collection.postsdestination;
 
 
 // Set flag for memory load (previews on by default). 
-let blockPreviews = false;
-// blockPreviews = true;
+let blockAutoPreviews = false;
+// blockAutoPreviews = true;
 
 // Define if pagination on. 
 let paginationOn = false;
@@ -271,7 +271,7 @@ function loadBlog() {
 	
 		// Get list of archive projects (sorted by project id). 
 		let archiveProjects = projectData.sort(sortByProjectId);
-		console.log('Archive projects:', archiveProjects.length, archiveProjects);
+		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
 		
 		// Get layout for archive posts. 
 		let archiveLayout = createBlogLayout(archiveProjects, false);
@@ -311,10 +311,10 @@ function loadBlog() {
 	
 		// Get custom list of projects for current category (sorted by project id). 
 		let categoryProjects = ( projectcategory.groupitemsidlist.sort() ).map(getProjectById);
-		console.log('Category projects:', categoryProjects.length, categoryProjects);
+		// console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Get layout for category posts. 
-		let categoryLayout = createBlogLayout(categoryProjects, true && !blockPreviews);
+		let categoryLayout = createBlogLayout(categoryProjects, true && !blockAutoPreviews);
 		
 		// Display category posts in blog section. 
 		categoryPagesDestination.innerHTML = categoryLayout;
@@ -344,10 +344,10 @@ function loadBlog() {
 		let collectionProjectIds = flatten(collectionProjectIdsMatrix).sort()
 		// console.log('Collection project ids:',collectionProjectIds);
 		let collectionProjects = collectionProjectIds.map(getProjectById);
-		console.log('Collection projects:', collectionProjects.length, collectionProjects);
+		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
 		
 		// Get layout for collection posts. 
-		let collectionLayout = createBlogLayout(collectionProjects, true && !blockPreviews);
+		let collectionLayout = createBlogLayout(collectionProjects, true && !blockAutoPreviews);
 		
 		// Display collection posts in blog section. 
 		collectionPagesDestination.innerHTML = collectionLayout;
@@ -393,17 +393,17 @@ function loadBlog() {
 		// Get list of featured projects (sorted by project id). 
 		let xyz = featuredProjectIds['a'].concat( featuredProjectIds['b'] );
 		let featuredProjects = xyz.map(getProjectById);
-		console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
+		// console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
 		// let featuredProjectsA = ( featuredProjectIds['a'] ).map(getProjectById);
 		// let featuredProjectsB = ( featuredProjectIds['b'] ).map(getProjectById);
 		// console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIds['a'], featuredProjectsA);
 		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
 		
 		// Get layout for featured posts. 
-		let featuredLayout = createBlogLayout(featuredProjects, true && !blockPreviews);
+		let featuredLayout = createBlogLayout(featuredProjects, true && !blockAutoPreviews);
 		// console.log(featuredLayout);
-		// let featuredLayoutA = createBlogLayout(featuredProjectsA, true && !blockPreviews);
-		// let featuredLayoutB = createBlogLayout(featuredProjectsB, true && !blockPreviews);
+		// let featuredLayoutA = createBlogLayout(featuredProjectsA, true && !blockAutoPreviews);
+		// let featuredLayoutB = createBlogLayout(featuredProjectsB, true && !blockAutoPreviews);
 		// console.log(featuredLayoutA);
 		// console.log(featuredLayoutB);
 		

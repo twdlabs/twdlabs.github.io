@@ -15,16 +15,6 @@ const postFilterData = [
 	},
 
 	{
-		filtername:'Category',
-		filterid:'categoryid',
-		filteritems:[
-			'categorya',
-			'categoryb',
-			'categoryc',
-		],
-	},
-
-	{
 		filtername:'Collection',
 		filterid:'collectionid',
 		filteritems:[
@@ -34,56 +24,66 @@ const postFilterData = [
 		],
 	},
 
+	{
+		filtername:'Category',
+		filterid:'categoryid',
+		filteritems:[
+			'categorya',
+			'categoryb',
+			'categoryc',
+		],
+	},
+
 	// {
 	// 	filtername:'Started',
 	// 	filterid:'datecreated',
 	// 	filteritems:[
 	// 		{
-	// 			criterionid:'authora',
+	// 			value:'authora',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'authorb',
+	// 			value:'authorb',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'authorc',
+	// 			value:'authorc',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'categorya',
+	// 			value:'categorya',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'categoryb',
+	// 			value:'categoryb',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'categoryc',
+	// 			value:'categoryc',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'collectiona',
+	// 			value:'collectiona',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'collectionb',
+	// 			value:'collectionb',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'collectionc',
+	// 			value:'collectionc',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'datecreateda',
+	// 			value:'datecreateda',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'datecreatedb',
+	// 			value:'datecreatedb',
 	// 			matchingpostscount:0,
 	// 		},
 	// 		{
-	// 			criterionid:'datecreatedc',
+	// 			value:'datecreatedc',
 	// 			matchingpostscount:0,
 	// 		},
 	// 	],
@@ -134,25 +134,29 @@ function loadFilter(filtergroupid) {
 		return;
 	}
 
-	// Initialize list of values for filter criterion. 
+	// Initialize list of filter items. 
 	let filteritems = [];
 
-	// TOOD: Go thru each project to collect distinct criterion values. 
+	// TOOD: Go thru each project to collect distinct filter item values. 
 	for(let project of projectData) {
 
 		// Get value of filter item from current project. 
 		let filteritemvalue = project[filtergroupid];
 
-		// Check if distinct criterion value. 
-		// let alreadysaved = filteritems.includes(filteritemvalue);
+		// Get filter item associated with value (if exists). 
+		let filteritem = getFilterItemByValue(filteritemvalue);
 
-		// TOOD: Increment count of matching posts (if already saved). 
-		// if(alreadysaved) ;
-		// TODO: Save new criterion value (if not already saved). 
-		// else ;
+		// Check if current value is distinct. 
+		// let gotdistinctvalue = !filteritems.includes(filteritemvalue);
+		let gotdistinctvalue = !filteritem;
 
-		// Save new value (if valid). 
-		if(filteritemvalue) filteritems.push(filteritemvalue);
+		// Save new filter item value (if distinct). 
+		// if(gotdistinctvalue) filteritems.push(filteritemvalue);
+		// Save new filter item (if distinct). 
+		if(gotdistinctvalue) filteritems.push( {value:filteritemvalue,frequency:1,} );
+
+		// Increment value frequency (if not distinct). 
+		else filteritem.frequency++;
 	}
 	console.log('Filter items:',filteritems);
 
@@ -162,11 +166,22 @@ function loadFilter(filtergroupid) {
 
 	/****/
 
-	// Get filter item by xyz. 
-	// function getFilterItemByXyz(xyz) {
+	// TODO: Get filter item by value. 
+	function getFilterItemByValue(value) {
 
-	// 	// 
-	// }
+		// Go thru each existing filter item. 
+		for(let item of filteritems) {
+
+			// Check for matching value. 
+			let matchfound = item.value == value;
+
+			// Return matching item if found. 
+			if(matchfound) return item;
+		}
+
+		// Return nothing if not found. 
+		return null;
+	}
 }
 
 // Get filter group by id. 

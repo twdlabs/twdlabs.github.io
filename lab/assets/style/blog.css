@@ -62,8 +62,7 @@ div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.pos
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {/* display:none; */ opacity:.125; /* visibility:hidden; */ pointer-events:none;}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {opacity:.375; transition:.375s;}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {display:none;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {/* display:none; */ opacity:.375; transition:.375s;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}
 div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {display:grid; grid-template-columns:2fr 1fr;}
@@ -172,20 +171,20 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead svg.icon.up {display:none;}
 /* div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead span.caption {} */
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody {max-height:0; overflow:hidden;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist {display:flex; flex-direction:column; list-style:none; padding:0; padding:.5rem 0; margin:0;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front {display:flex; align-items:center; cursor:pointer; /* font-size:.875rem; */ --checksize:1.25rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.caption {margin-left:.375rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.matchcount {margin-left:.25rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.matchcount:empty {/* display:none; */ background-color:gainsboro; height:1em; width:1em; border-radius:.125em; margin-left:.375rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.matchcount:before {content:'(';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.matchcount:empty:before {content:'';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.matchcount::after {content:')';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front span.matchcount:empty::after {content:'';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {/* display:block;  */height:var(--checksize); width:var(--checksize); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor);}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox {display:none; opacity:.125;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox:checked + label.front svg.icon.check {background-color:var(--themecolor); color:white;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist {display:flex; flex-direction:column; list-style:none; padding:0; padding:.5rem 0; margin:0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front {display:flex; align-items:center; cursor:pointer; /* font-size:.875rem; */ --checksize:1.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.caption {margin-left:.375rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount {margin-left:.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty {/* display:none; */ background-color:gainsboro; height:1em; width:1em; border-radius:.125em; margin-left:.375rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:before {content:'(';}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty:before {content:'';}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount::after {content:')';}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty::after {content:'';}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {/* display:block;  */height:var(--checksize); width:var(--checksize); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor);}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox {display:none; opacity:.125;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox:checked + label.front svg.icon.check {background-color:var(--themecolor); color:white;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.dn {display:none;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.up {display:block;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
@@ -380,8 +379,8 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 	/* div#container section.blog div.grid div.body div.filters {} */
 	div#container section.blog div.grid div.body.split div.filters {grid-column-end:span 1;}
 	/* Blog Section: Filter Panel */
-	div#container section.blog div.grid div.body.split div.filterpanel {max-height:0; overflow:hidden; box-shadow:none;}
-	div#container section.blog div.grid div.body.split div.filterpanel.open {max-height:fit-content; max-height:calc( 100vh - var(--headerheight) ); overflow:auto; box-shadow:var(--boxshadowx);}
+	div#container section.blog div.grid div.body.split div.filterpanel {max-height:0; overflow:hidden; border-width:0; box-shadow:none;}
+	div#container section.blog div.grid div.body.split div.filterpanel.open {max-height:fit-content; max-height:calc( 100vh - var(--headerheight) ); overflow:auto; border-width:1px; box-shadow:var(--boxshadowx);}
 }
 
 /* Medium Smartphone Screen */
