@@ -127,7 +127,7 @@ function activateSidebar() {
 
 	// Get all navigation togglers. 
 	let allnavtogglers = document.querySelectorAll('.navtoggler');
-	console.log('All nav togglers:',allnavtogglers);
+	// console.log('All nav togglers:',allnavtogglers);
 
 	// Activate each navigation toggler. 
 	for(let navtoggler of allnavtogglers) {

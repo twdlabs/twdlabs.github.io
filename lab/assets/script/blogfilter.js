@@ -68,7 +68,7 @@ function activateBlogFilters() {
 
 			// Access loaded blog post cards. 
 			let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
-			console.log('Blog post cards:',blogpostcards);
+			// console.log('Blog post cards:',blogpostcards);
 
 			// Initialize number of matching posts. 
 			let numMatchingPosts = 0;
@@ -77,7 +77,7 @@ function activateBlogFilters() {
 			let searchquery = searchqueryfield.value.toUpperCase();
 			// Get list of words in search query. 
 			let searchquerywords = searchquery.split(' ');
-			console.log('Searching posts...', searchquery, searchquerywords);
+			// console.log('Searching posts...', searchquery, searchquerywords);
 		
 			// Go thru all blog posts. 
 			for(let postcard of blogpostcards) {
@@ -194,14 +194,14 @@ function activateBlogFilters() {
 
 // Load list of post filter groups. 
 function loadFilterGroups() {
-	console.log('Loading list of post filter groups');
+	// console.log('Loading list of post filter groups');
 
 	// Initialize layout for filter groups. 
 	let filtergrouplayout = '';
 
 	// Go thru each filter group. 
 	for(let filtergroup of postFilterData) {
-		console.log('Filter group:',filtergroup);
+		// console.log('Filter group:',filtergroup);
 		
 		// Add filter group to layout. 
 		filtergrouplayout += `
@@ -234,7 +234,7 @@ function loadFilterGroups() {
 			<div class="filterbody">
 
 				<!-- criterialist -->
-				<ul class="criterialist">${ createCriteriaLayout(filtergroup.filtercriterionvalues) }</ul>
+				<ul class="criterialist">${ createCriteriaLayout(filtergroup.filteritems) }</ul>
 				<!-- /criterialist -->
 				
 			</div>
@@ -257,32 +257,29 @@ function loadFilterGroups() {
 
 	// Create layout for criteria list. 
 	function createCriteriaLayout(criterialist,getNameById) {
-		console.log('Creating layout for criteria list',criterialist);
+		// console.log('Creating layout for criteria list',criterialist);
 
 		// Initialize layout for criteria list. 
 		let criterialistlayout = '';
 
 		// Go thru each criterion in given list. 
-		for(let criterion of criterialist) {
-			console.log('Criterion:',criterion);
-
-			// Get id of criterion. 
-			let cid = criterion.criterionid;
+		for(let criterionid of criterialist) {
+			// console.log('Criterion id:',criterionid);
 
 			// Get caption for criterion. 
-			let criterionname = /* getNameById */(cid);
+			let criterionname = criterionid;
 
 			// Add criterion to layout. 
 			criterialistlayout += `
 			<!-- criterion -->
-			<li class="criterion" data-criterionid="${cid}">
+			<li class="criterion" data-criterionid="${criterionid}">
 	
 				<!-- checkbox -->
-				<input class="checkbox" type="checkbox" id="${cid}">
+				<input class="checkbox" type="checkbox" id="${criterionid}">
 				<!-- /checkbox -->
 	
 				<!-- front -->
-				<label class="front" for="${cid}">
+				<label class="front" for="${criterionid}">
 	
 					<!-- icon -->
 					<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -295,7 +292,7 @@ function loadFilterGroups() {
 					<!-- /caption -->
 	
 					<!-- matchcount -->
-					<span class="matchcount">${criterion.matchingpostscount}</span>
+					<span class="matchcount">${ 0 /* criterion.matchingpostscount */}</span>
 					<!-- /matchcount -->
 	
 				</label>

@@ -11,9 +11,12 @@ activateBlogPreviews();
 // Activate blog previews. 
 function activateBlogPreviews() {
 
+	// TODO: Check if previews already present. 
+	// if(xyz) return;
+
 	// Access loaded blog post cards. 
 	let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
-	console.log('Blog post cards:',blogpostcards);
+	// console.log('Blog post cards:',blogpostcards);
 		
 	// Go thru blog post cards. 
 	for(let card of blogpostcards) {
@@ -63,17 +66,4 @@ function activateBlogPreviews() {
 		previewpanel.innerHTML = '';
 		// previewpaneliframe.remove();
 	}
-}
-
-// Create preview panel for blog post card. 
-function createPreviewPanel(projectid) {
-
-	// Get url of page to be previewed. 
-	let pageurl = getRelativeUrl(`../${projectid}/index.html`);
-
-	// Compile preview panel. 
-	return `
-	<!-- preview -->
-	<iframe class="preview" src="${pageurl}"></iframe>
-	<!-- /preview -->`;
 }

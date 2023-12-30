@@ -43,9 +43,9 @@ function loadSiteMap() {
 
 	// Create layout for project matrix. 
 	// console.log('\nMatrix: Project items by category by collection grouping');
-	let xyz = projectCollectionData.map( collection => { return { setid:'abc', setlist:collection.groupitemsidlist } } );
-	console.log(xyz);
-	let projectmatrixlayoutB = createLinkMatrix( xyz, getProjectById,getProjectCategoryById, '../','projectname' );
+	// let xyz = projectCollectionData.map( collection => { return { setid:'abc', setlist:collection.groupitemsidlist } } );
+	// console.log(xyz);
+	// let projectmatrixlayoutB = createLinkMatrix( xyz, getProjectById,getProjectCategoryById, '../','projectname' );
 	// console.log('projectmatrixlayoutB:',projectmatrixlayoutB);
 
 	// Add layout for group matrix to footer. 

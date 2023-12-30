@@ -8,7 +8,7 @@ const featured = {
 	postsdestinationa:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage ul.postlist.a'),
 	postsdestinationb:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage ul.postlist.b'),
 };
-console.log('Featured section:',featured);
+// console.log('Featured section:',featured);
 const featuredSection = featured.section;
 const featuredPagesDestination = featured.pagesdestination;
 const featuredpostsdestinationA = featured.postsdestinationa;
@@ -20,7 +20,7 @@ const archive = {
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist li.postpage ul.postlist'),
 };
-console.log('Archive section:',archive);
+// console.log('Archive section:',archive);
 const archiveSection = archive.section;
 const archivePagesDestination = archive.pagesdestination;
 const archivePostsDestination = archive.postsdestination;
@@ -31,7 +31,7 @@ const category = {
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist li.postpage ul.postlist'),
 };
-console.log('Category section:',category);
+// console.log('Category section:',category);
 const categorySection = category.section;
 const categoryPagesDestination = category.pagesdestination;
 const categoryPostsDestination = category.postsdestination;
@@ -42,7 +42,7 @@ const collection = {
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist li.postpage ul.postlist'),
 };
-console.log('Collection section:',collection);
+// console.log('Collection section:',collection);
 const collectionSection = collection.section;
 const collectionPagesDestination = collection.pagesdestination;
 const collectionPostsDestination = collection.postsdestination;
@@ -53,6 +53,7 @@ const collectionPostsDestination = collection.postsdestination;
 
 // Set flag for memory load (previews on by default). 
 let blockPreviews = false;
+// blockPreviews = true;
 
 // Define if pagination on. 
 let paginationOn = false;
@@ -71,7 +72,7 @@ loadBlog();
 
 // Load blog posts. 
 function loadBlog() {
-	console.log('Loading blog...');
+	// console.log('Loading blog...');
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -89,8 +90,8 @@ function loadBlog() {
 
 	// Create layout for blog posts. 
 	function createBlogLayout(rawpostlist,previewsOn) {
-		console.log('\t\tRaw post list:',rawpostlist);
-		console.log('\t\tPreviews on:',previewsOn);
+		// console.log('\t\tRaw post list:',rawpostlist);
+		// console.log('\t\tPreviews on:',previewsOn);
 	
 		// Initialize resulting layout. 
 		let result = '';
@@ -110,7 +111,7 @@ function loadBlog() {
 
 			// Paginate post data into post matrix. 
 			let postmatrix = paginateData(rawpostlist,pagepostcapacity);
-			console.log('\t\tPaginated post matrix:',postmatrix);
+			// console.log('\t\tPaginated post matrix:',postmatrix);
 	
 			// Go thru each page in post matrix. 
 			for(let pageindex in postmatrix) {
@@ -149,11 +150,8 @@ function loadBlog() {
 			for(let post of pagepostlist) {
 				// console.log('Post:',post);
 	
-				// Show message for invalid project post. 
-				if(!post) {
-					console.warn('\t\tNull project post', post);
-					continue;
-				}
+				// Disregard invalid project post. 
+				// if(!post) continue;
 		
 				// Add to page layout: blog post card with project link. 
 				pagelayout += createBlogCard(post,previewsOn);
@@ -174,15 +172,16 @@ function loadBlog() {
 	
 			// Create card for blog post. 
 			function createBlogCard(post,previewsOn) {
+				// if(!post) console.warn('\t\tNull project post', post);
 		
 				// Get project id for given post. 
-				let projectid = post.projectid;
+				let projectid = post ? post.projectid : null;
 				// Get project name for given post. 
-				let projectname = post.projectname;
+				let projectname = post ? post.projectname : null;
 				// Get category name for given post. 
 				let categoryname = getCategoryName(projectid);
 				// Get author name for given post. 
-				let authorname = getAuthorName(post.authorid);
+				let authorname = post ? getAuthorName(post.authorid) : '';
 		
 				// Get url of page to be added. 
 				let pageurl = getRelativeUrl(`../${projectid}/index.html`);
@@ -231,6 +230,7 @@ function loadBlog() {
 		
 				// Get category name for given project. 
 				function getCategoryName(projectid) {
+					if(!projectid) return '';
 		
 					// Go thru each project category. 
 					for(let projectcategory of projectCategoryData) {
@@ -247,21 +247,13 @@ function loadBlog() {
 				}
 		
 				// Get author name for given project. 
-				function getAuthorName(queryid) {
-		
-					// Go thru each project category. 
-					for(let authorid in authorData) {
-		
-						// Check if author found. 
-						let authorfound = /* author. */authorid == queryid;
-		
-						// Return name of author if found. 
-						if(authorfound) return authorData[authorid];
-						// if(authorfound) return author.authorname;
-					}
-		
+				function getAuthorName(authorid) {
+
+					// Get author name. 
+					let authorname = authorData[authorid];
+
 					// Return nothing if author not found. 
-					return '';
+					return (authorname ? authorname : '');
 				}
 			}
 		}
@@ -272,10 +264,10 @@ function loadBlog() {
 
 		// Check if loading archive posts. 
 		if(!archivePagesDestination) {
-			console.log('\tBypass archive posts...');
+			// console.log('\tBypass archive posts...');
 			return;
 		}
-		console.log('\tLoading archive posts...');
+		console.log('Loading archive posts...');
 	
 		// Get list of archive projects (sorted by project id). 
 		let archiveProjects = projectData.sort(sortByProjectId);
@@ -312,10 +304,10 @@ function loadBlog() {
 
 		// Check if loading category posts. 
 		if(!categoryPagesDestination) {
-			console.log('\tBypass category posts...');
+			// console.log('\tBypass category posts...');
 			return;
 		}
-		console.log('\tLoading category posts...');
+		console.log('Loading category posts...');
 	
 		// Get custom list of projects for current category (sorted by project id). 
 		let categoryProjects = ( projectcategory.groupitemsidlist.sort() ).map(getProjectById);
@@ -339,10 +331,10 @@ function loadBlog() {
 
 		// Check if loading collection posts. 
 		if(!collectionPagesDestination) {
-			console.log('\tBypass collection posts...');
+			// console.log('\tBypass collection posts...');
 			return;
 		}
-		console.log('\tLoading collection posts...');
+		console.log('Loading collection posts...');
 	
 		// Get custom list of projects for current collection. 
 		let collectionCategories = ( projectcollection.groupitemsidlist ).map(getProjectCategoryById);
@@ -393,10 +385,10 @@ function loadBlog() {
 		// Check if loading featured posts. 
 		// if(!featuredpostsdestinationA || !featuredpostsdestinationB) {
 		if(!featuredPagesDestination) {
-			console.log('\tBypass featured posts...');
+			// console.log('\tBypass featured posts...');
 			return;
 		}
-		console.log('\tLoading featured posts...');
+		console.log('Loading featured posts...');
 	
 		// Get list of featured projects (sorted by project id). 
 		let xyz = featuredProjectIds['a'].concat( featuredProjectIds['b'] );
@@ -409,7 +401,7 @@ function loadBlog() {
 		
 		// Get layout for featured posts. 
 		let featuredLayout = createBlogLayout(featuredProjects, true && !blockPreviews);
-		console.log(featuredLayout);
+		// console.log(featuredLayout);
 		// let featuredLayoutA = createBlogLayout(featuredProjectsA, true && !blockPreviews);
 		// let featuredLayoutB = createBlogLayout(featuredProjectsB, true && !blockPreviews);
 		// console.log(featuredLayoutA);
@@ -429,7 +421,7 @@ function loadBlog() {
 
 	// Load dot panel in page navigator. 
 	function loadDotNavigator() {
-		console.log('Page count:',pagecount,dotpaneldestination);
+		// console.log('Page count:',pagecount,dotpaneldestination);
 		if(!dotpaneldestination) return;
 
 		// Initialize layout for dot panel. 
@@ -490,6 +482,19 @@ function loadBlog() {
 			}
 		}
 	}
+}
+
+// Create preview panel for blog post card. 
+function createPreviewPanel(projectid) {
+
+	// Get url of page to be previewed. 
+	let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+
+	// Compile preview panel. 
+	return `
+	<!-- preview -->
+	<iframe class="preview" src="${pageurl}"></iframe>
+	<!-- /preview -->`;
 }
 
 

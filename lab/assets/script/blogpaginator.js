@@ -71,7 +71,7 @@ function displaySelectedPage() {
 	// Assert page index within bounds of validity. 
 	if(selectedpageindex<0) selectedpageindex = 0;
 	else if(selectedpageindex>=pagecount) selectedpageindex = pagecount - 1;
-	console.log('Selected page index:',selectedpageindex);
+	// console.log('Selected page index:',selectedpageindex);
 
 	// Shift page list to selected page. 
 	postpageslist.style.transform = `translateX(${selectedpageindex * -100}%)`;
@@ -104,14 +104,14 @@ function displaySelectedPage() {
 
 		// Get all page links in dot panel. 
 		const pagenavdots = document.querySelectorAll('div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink');
-		console.log('Page navigator dots:',pagenavdots);
+		// console.log('Page navigator dots:',pagenavdots);
 
 		// Go thru each page link dot. 
 		for(let pagelink of pagenavdots) {
 
 			// Check if on link for selected page. 
 			let onselectedpagelink = pagelink.getAttribute('data-pageindex') * 1 == 1*selectedpageindex;
-			console.log('\tonselectedpagelink:',onselectedpagelink);
+			// console.log('\tonselectedpagelink:',onselectedpagelink);
 
 			// Highlight selected page link. 
 			if(onselectedpagelink) pagelink.parentElement.classList.add('active');

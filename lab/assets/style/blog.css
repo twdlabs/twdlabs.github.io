@@ -8,7 +8,7 @@
 
 
 /* Blog Section: Head */
-/* div#container section.blog div.grid div.head {} */
+div#container section.blog div.grid div.head {display:grid; grid-template-columns:repeat(2,auto); justify-content:space-between; align-items:center; grid-gap:1.5rem;}
 div#container section.blog div.grid div.head div.modpanel {grid-column-end:span 2;}
 div#container section.blog div.grid div.head div.modpanel {display:flex; flex-direction:row; align-items:center; max-width:calc(var(--pagewidth) / 3); margin:0 auto;}
 div#container section.blog div.grid div.head div.modpanel div.togglers {display:flex; flex-direction:row; align-items:center;}
@@ -61,7 +61,7 @@ div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.pos
 /* div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage.b ul.postlist {max-height:0;} */
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {opacity:0; visibility:hidden; pointer-events:none;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {/* display:none; */ opacity:.125; /* visibility:hidden; */ pointer-events:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {opacity:.375; transition:.375s;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {display:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
@@ -205,7 +205,7 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 
 
 	/* Blog Section: Head */
-	/* div#container section.blog div.grid div.head {} */
+	div#container section.blog div.grid div.head {grid-template-columns:1fr;}
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	div#container section.blog div.grid div.head div.modpanel {grid-column-end:span 1;}
 	/* div#container section.blog div.grid div.head div.modpanel div.togglers {} */
@@ -380,8 +380,8 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 	/* div#container section.blog div.grid div.body div.filters {} */
 	div#container section.blog div.grid div.body.split div.filters {grid-column-end:span 1;}
 	/* Blog Section: Filter Panel */
-	div#container section.blog div.grid div.body.split div.filterpanel {max-height:0; overflow:hidden;}
-	div#container section.blog div.grid div.body.split div.filterpanel.open {max-height:fit-content; max-height:calc( 100vh - var(--headerheight) ); overflow:auto;}
+	div#container section.blog div.grid div.body.split div.filterpanel {max-height:0; overflow:hidden; box-shadow:none;}
+	div#container section.blog div.grid div.body.split div.filterpanel.open {max-height:fit-content; max-height:calc( 100vh - var(--headerheight) ); overflow:auto; box-shadow:var(--boxshadowx);}
 }
 
 /* Medium Smartphone Screen */

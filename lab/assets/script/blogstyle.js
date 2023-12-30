@@ -3,15 +3,15 @@
 
 // Get body section. 
 const bodysection = document.querySelector('div#container section.blog div.grid div.body');
-console.log('Body section:',bodysection);
+// console.log('Body section:',bodysection);
 
 // Get posts section. 
 const postssection = document.querySelector('div#container section.blog div.grid div.body div.posts');
-console.log('Posts section:',postssection);
+// console.log('Posts section:',postssection);
 
 // Get posts section. 
 // postssection = featured.section || archive.section || category.section || collection.section;
-console.log('Posts section:',postssection);
+// console.log('Posts section:',postssection);
 
 
 /*****/
