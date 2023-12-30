@@ -61,7 +61,7 @@ div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.pos
 /* div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage.b ul.postlist {max-height:0;} */
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {/* display:none; */ opacity:.125; /* visibility:hidden; */ pointer-events:none;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {/* display:none; */ opacity:.25; /* visibility:hidden; */ pointer-events:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {/* display:none; */ opacity:.375; transition:.375s;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}
@@ -175,12 +175,9 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front {display:flex; align-items:center; cursor:pointer; /* font-size:.875rem; */ --checksize:1.25rem;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.caption {margin-left:.375rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount {margin-left:.25rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty {/* display:none; */ background-color:gainsboro; height:1em; width:1em; border-radius:.125em; margin-left:.375rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:before {content:'(';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty:before {content:'';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount::after {content:')';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty::after {content:'';}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount {color:var(--forecolor2); font-size:.75em; text-align:center;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount {background-color:var(--backcolor2); min-height:1em; min-width:1.25em; padding:0 .25rem; border-radius:.125em; margin-left:.125rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty {/* display:none; */ margin-left:.375rem;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {/* display:block;  */height:var(--checksize); width:var(--checksize); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor);}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox {display:none; opacity:.125;}

@@ -15,7 +15,7 @@ const projectCollectionData = [
 	// },
 
 	{
-		groupid:'p',
+		groupid:'c',
 		groupname:'Project Samples',
 		groupname:'Compilations',
 		groupicontag:'smartphone',
@@ -111,6 +111,16 @@ function getProjectCollectionById(collectionid) {
 
 	// Return nothing if project collection not found. 
 	return null;
+}
+
+// Get name of project collection by id. 
+function getProjectCollectionNameById(collectionid) {
+
+	// Get collection. 
+	let collection = getProjectCollectionById(collectionid);
+
+	// Return name if project collection found. 
+	return collection ? collection.groupname : '[none]';
 }
 
 // Check sizes of each project collection. 

@@ -175,16 +175,16 @@ function loadBlog() {
 				// if(!post) console.warn('\t\tNull project post', post);
 		
 				// Get project id for given post. 
-				let projectid = post ? post.projectid : null;
+				let projectid = post ? post.projectid : '';
 				// Get project name for given post. 
-				let projectname = post ? post.projectname : null;
+				let projectname = post ? post.projectname : '';
 				// Get category name for given post. 
 				let categoryname = getCategoryName(projectid);
 				// Get author name for given post. 
 				let authorname = post ? getAuthorName(post.authorid) : '';
 		
 				// Get url of page to be added. 
-				let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+				let pageurl = projectid ? getRelativeUrl(`../${projectid}/index.html`) : 'javascript:void(0)';
 		
 				// Compile post card. 
 				return `
@@ -195,7 +195,7 @@ function loadBlog() {
 					<a class="projectlink" href="${pageurl}" target="_blank">
 		
 						<!-- preview -->
-						<div class="preview">${ previewsOn ? createPreviewPanel(projectid) : '' }</div>
+						<div class="preview">${ (previewsOn&&projectid) ? createPreviewPanel(projectid) : '' }</div>
 						<!-- /preview -->
 		
 						<!-- caption -->
@@ -488,7 +488,7 @@ function loadBlog() {
 function createPreviewPanel(projectid) {
 
 	// Get url of page to be previewed. 
-	let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+	let pageurl = projectid ? getRelativeUrl(`../${projectid}/index.html`) : 'javascript:void(0)';
 
 	// Compile preview panel. 
 	return `

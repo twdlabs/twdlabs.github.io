@@ -540,6 +540,16 @@ function getProjectCategoryById(categoryid) {
 	return null;
 }
 
+// Get name of project category by id. 
+function getProjectCategoryNameById(categoryid) {
+
+	// Get category. 
+	let category = getProjectCategoryById(categoryid);
+
+	// Return name if project category found. 
+	return category ? category.groupname : '[none]';
+}
+
 // Get projects that do not belong to any project category. 
 function getOrphanProjectIds() {
 

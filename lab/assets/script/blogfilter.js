@@ -233,7 +233,7 @@ function loadFilterGroups() {
 			<div class="filterbody">
 
 				<!-- itemslist -->
-				<ul class="itemslist">${ createCriteriaListLayout(filtergroup.filteritems) }</ul>
+				<ul class="itemslist">${ createCriteriaListLayout(filtergroup) }</ul>
 				<!-- /itemslist -->
 				
 			</div>
@@ -328,6 +328,8 @@ function loadFilterGroups() {
 			
 			// TODO: Un-apply filter item to blog posts. 
 			function unapplyFilterItem(filteritem) {
+
+				// TODO: Get value of filter item. 
 			
 				// TODO: Update blog posts. 
 			
@@ -337,7 +339,13 @@ function loadFilterGroups() {
 	}
 
 	// Create layout for filter items list. 
-	function createCriteriaListLayout(filteritemslist/* ,getNameById */) {
+	function createCriteriaListLayout(filtergroup) {
+
+		// Get filter id. 
+		let filterid = filtergroup.filterid;
+
+		// Get list of filter items. 
+		let filteritemslist = filtergroup.filteritems;
 		// console.log('Creating layout for filter items list',filteritemslist);
 
 		// Initialize layout for filter items list. 
@@ -349,19 +357,26 @@ function loadFilterGroups() {
 
 			// Get value of current filter item. 
 			let itemvalue = filteritem.value;
-			// console.log('Filter item value:',itemvalue);
+			console.log('Filter item value:',itemvalue);
+
+			// Get name of current filter item. 
+			let itemname = filtergroup.filteritemnamer(itemvalue);
+			console.log('Filter item name:',itemname);
+
+			// Create unique id for current filter item. 
+			let uniqueitemid = filterid + itemvalue;
 
 			// Add filter item to layout. 
 			filteritemslistlayout += `
 			<!-- filteritem -->
-			<li class="filteritem" data-value="${itemvalue}">
+			<li class="filteritem" data-value="${itemvalue}" title="${itemvalue}">
 	
 				<!-- checkbox -->
-				<input class="checkbox" type="checkbox" id="${itemvalue}">
+				<input class="checkbox" type="checkbox" id="${uniqueitemid}">
 				<!-- /checkbox -->
 	
 				<!-- front -->
-				<label class="front" for="${itemvalue}">
+				<label class="front" for="${uniqueitemid}">
 	
 					<!-- icon -->
 					<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -370,7 +385,7 @@ function loadFilterGroups() {
 					<!-- /icon -->
 	
 					<!-- caption -->
-					<span class="caption">${itemvalue}</span>
+					<span class="caption">${itemname}</span>
 					<!-- /caption -->
 	
 					<!-- matchcount -->

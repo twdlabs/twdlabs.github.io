@@ -8,90 +8,88 @@ const postFilterData = [
 		filtername:'Author',
 		filterid:'authorid',
 		filteritems:[
-			'authora',
-			'authorb',
-			'authorc',
+			{
+				value:'authora',
+				frequency:0,
+			},
+			{
+				value:'authorb',
+				frequency:0,
+			},
+			{
+				value:'authorc',
+				frequency:0,
+			},
 		],
+		filteritemnamer:(authorid)=>( authorData[authorid] ),
 	},
 
 	{
 		filtername:'Collection',
 		filterid:'collectionid',
 		filteritems:[
-			'collectiona',
-			'collectionb',
-			'collectionc',
+			{
+				value:'collectiona',
+				frequency:0,
+			},
+			{
+				value:'collectionb',
+				frequency:0,
+			},
+			{
+				value:'collectionc',
+				frequency:0,
+			},
 		],
+		filteritemnamer:getProjectCollectionNameById,
 	},
 
 	{
 		filtername:'Category',
 		filterid:'categoryid',
 		filteritems:[
-			'categorya',
-			'categoryb',
-			'categoryc',
+			{
+				value:'categorya',
+				frequency:0,
+			},
+			{
+				value:'categoryb',
+				frequency:0,
+			},
+			{
+				value:'categoryc',
+				frequency:0,
+			},
 		],
+		filteritemnamer:getProjectCategoryNameById,
+	},
+
+	{
+		filtername:'Created',
+		filterid:'yearcreated',
+		filteritems:[
+			{
+				value:2001,
+				frequency:0,
+			},
+			{
+				value:2002,
+				frequency:0,
+			},
+			{
+				value:2003,
+				frequency:0,
+			},
+		],
+		filteritemnamer:(value)=>(value),
 	},
 
 	// {
-	// 	filtername:'Started',
-	// 	filterid:'datecreated',
-	// 	filteritems:[
-	// 		{
-	// 			value:'authora',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'authorb',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'authorc',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'categorya',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'categoryb',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'categoryc',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'collectiona',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'collectionb',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'collectionc',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'datecreateda',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'datecreatedb',
-	// 			matchingpostscount:0,
-	// 		},
-	// 		{
-	// 			value:'datecreatedc',
-	// 			matchingpostscount:0,
-	// 		},
-	// 	],
-	// },
-	// {
 	// 	filtername:'Xyz',
 	// 	filterid:'xyz',
-	// 	filteritems:[],
+	// 	filteritems:[
+	// 	],
+	// 	filteritemnamer:(value)=>(value),
 	// },
 ];
 // console.log('Post filter data:',postFilterData);
@@ -103,17 +101,17 @@ const postFilterData = [
 // Augment project data. 
 augmentProjectData();
 
-// Load values for filter: authors. 
-loadFilter('authorid');
+// Create item values for filter group: authors. 
+createFilterValues('authorid');
 
-// Load values for filter: categories. 
-loadFilter('categoryid');
+// Create item values for filter group: categories. 
+createFilterValues('categoryid');
 
-// Load values for filter: collections. 
-loadFilter('collectionid');
+// Create item values for filter group: collections. 
+createFilterValues('collectionid');
 
-// Load values for filter: start date. 
-// loadFilter('datecreated');
+// Create item values for filter group: creation year. 
+createFilterValues('yearcreated');
 
 // console.log('Post filter data:',postFilterData);
 
@@ -121,8 +119,8 @@ loadFilter('collectionid');
 /*****/
 
 
-// Load values for given filter group. 
-function loadFilter(filtergroupid) {
+// Create item values for given filter group. 
+function createFilterValues(filtergroupid) {
 	
 	// Get filter group by id. 
 	let filtergroup = getFilterById(filtergroupid);
@@ -160,13 +158,27 @@ function loadFilter(filtergroupid) {
 	}
 	console.log('Filter items:',filteritems);
 
-	// Save list of filter criterion values. 
-	filtergroup.filteritems = filteritems;
+	// Save sorted list of filter items. 
+	filtergroup.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
 	// console.log('Filter criteria list (new):',filtergroup.filteritems);
 
 	/****/
 
-	// TODO: Get filter item by value. 
+	// Get filter group by id. 
+	function getFilterById(filterid) {
+	
+		// Go thru each filter group. 
+		for(let filtergroup of postFilterData) {
+	
+			// Check for match. 
+			if(filtergroup.filterid==filterid) return filtergroup;
+		}
+	
+		// Return nothing if not found. 
+		return null;
+	}
+
+	// Get filter item by value. 
 	function getFilterItemByValue(value) {
 
 		// Go thru each existing filter item. 
@@ -182,20 +194,6 @@ function loadFilter(filtergroupid) {
 		// Return nothing if not found. 
 		return null;
 	}
-}
-
-// Get filter group by id. 
-function getFilterById(filterid) {
-
-	// Go thru each filter group. 
-	for(let filtergroup of postFilterData) {
-
-		// Check for match. 
-		if(filtergroup.filterid==filterid) return filtergroup;
-	}
-
-	// Return nothing if not found. 
-	return null;
 }
 
 // Augment project data for easy filtering. 
@@ -217,10 +215,27 @@ function augmentProjectData() {
 				let project = getProjectById(projectid);
 		
 				// Augment project data. 
-				project.categoryid = category.groupid;
-				project.collectionid = projectcollection.groupid;
+				if(project) {
+					project.categoryid = category.groupid;
+					project.collectionid = projectcollection.groupid;
+				}
 			}
 		}
 	}
-	// console.log('Augmented projects:',projectData);
+
+	// Go thru each project collection. 
+	for(let yearblock of projectYearData) {
+
+		// Go thru each project in year block. 
+		for(let projectid of yearblock.groupitemsidlist) {
+
+			// Get project. 
+			let project = getProjectById(projectid);
+		
+			// Augment project data. 
+			if(project) project.yearcreated = yearblock.year;
+		}
+	}
+
+	console.log('Augmented project data:',projectData);
 }
