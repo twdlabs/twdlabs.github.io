@@ -30,103 +30,6 @@ const filtergroupsdestination = document.querySelector('div#container section.bl
 /*****/
 
 
-// Define post filter groups. 
-const postFilterGroups = [
-	{
-		filterid:'authorid',
-		filtername:'Author',
-		filtercriteria:[
-			{
-				criterionid:'authora',
-				criterionname:'Author A',
-				criterioncount:0,
-			},
-			{
-				criterionid:'authorb',
-				criterionname:'Author B',
-				criterioncount:0,
-			},
-			{
-				criterionid:'authorc',
-				criterionname:'Author C',
-				criterioncount:0,
-			},
-		],
-	},
-	{
-		filterid:'categoryid',
-		filtername:'Category',
-		filtercriteria:[
-			{
-				criterionid:'categorya',
-				criterionname:'Category A',
-				criterioncount:0,
-			},
-			{
-				criterionid:'categoryb',
-				criterionname:'Category B',
-				criterioncount:0,
-			},
-			{
-				criterionid:'categoryc',
-				criterionname:'Category C',
-				criterioncount:0,
-			},
-		],
-	},
-	{
-		filterid:'collectionid',
-		filtername:'Collection',
-		filtercriteria:[
-			{
-				criterionid:'collectiona',
-				criterionname:'Collection A',
-				criterioncount:0,
-			},
-			{
-				criterionid:'collectionb',
-				criterionname:'Collection B',
-				criterioncount:0,
-			},
-			{
-				criterionid:'collectionc',
-				criterionname:'Collection C',
-				criterioncount:0,
-			},
-		],
-	},
-	{
-		filterid:'datecreated',
-		filtername:'Started',
-		filtercriteria:[
-			{
-				criterionid:'datecreateda',
-				criterionname:'Started A',
-				criterioncount:0,
-			},
-			{
-				criterionid:'datecreatedb',
-				criterionname:'Started B',
-				criterioncount:0,
-			},
-			{
-				criterionid:'datecreatedc',
-				criterionname:'Started C',
-				criterioncount:0,
-			},
-		],
-	},
-	// {
-	// 	filterid:'xyz',
-	// 	filtername:'Xyz',
-	// 	filtercriteria:[],
-	// },
-];
-
-
-/*****/
-
-
 // Activate blog post filtering. 
 activateBlogFilters();
 
@@ -291,12 +194,14 @@ function activateBlogFilters() {
 
 // Load list of post filter groups. 
 function loadFilterGroups() {
+	console.log('Loading list of post filter groups');
 
 	// Initialize layout for filter groups. 
 	let filtergrouplayout = '';
 
-	// Add each filter group to layout. 
-	for(let filtergroup of postFilterGroups) {
+	// Go thru each filter group. 
+	for(let filtergroup of postFilterData) {
+		console.log('Filter group:',filtergroup);
 		
 		// Add filter group to layout. 
 		filtergrouplayout += `
@@ -304,7 +209,7 @@ function loadFilterGroups() {
 		<li class="filtergroup open" data-filterid="${filtergroup.filterid}">
 
 			<!-- filterhead -->
-			<h3 class="filterhead" onclick="toggleFilterGroup(this)">
+			<h3 class="filterhead">
 
 				<!-- caption -->
 				<span class="caption">${filtergroup.filtername}</span>
@@ -329,7 +234,7 @@ function loadFilterGroups() {
 			<div class="filterbody">
 
 				<!-- criterialist -->
-				<ul class="criterialist">${ createCriteriaLayout(filtergroup.filtercriteria) }</ul>
+				<ul class="criterialist">${ createCriteriaLayout(filtergroup.filtercriterionvalues) }</ul>
 				<!-- /criterialist -->
 				
 			</div>
@@ -342,28 +247,42 @@ function loadFilterGroups() {
 	// Display filter groups in filter panel. 
 	filtergroupsdestination.innerHTML = filtergrouplayout;
 
+	// Activate filter groups in filter panel. 
+	activateFilterGroups();
+
+	// Activate filter items in filter panel. 
+	activateFilterItems();
+
 	/****/
 
 	// Create layout for criteria list. 
-	function createCriteriaLayout(criterialist) {
+	function createCriteriaLayout(criterialist,getNameById) {
+		console.log('Creating layout for criteria list',criterialist);
 
 		// Initialize layout for criteria list. 
 		let criterialistlayout = '';
 
 		// Go thru each criterion in given list. 
 		for(let criterion of criterialist) {
+			console.log('Criterion:',criterion);
+
+			// Get id of criterion. 
+			let cid = criterion.criterionid;
+
+			// Get caption for criterion. 
+			let criterionname = /* getNameById */(cid);
 
 			// Add criterion to layout. 
 			criterialistlayout += `
 			<!-- criterion -->
-			<li class="criterion" data-criterionid="${criterion.criterionid}">
+			<li class="criterion" data-criterionid="${cid}">
 	
 				<!-- checkbox -->
-				<input class="checkbox" type="checkbox" id="${criterion.criterionid}">
+				<input class="checkbox" type="checkbox" id="${cid}">
 				<!-- /checkbox -->
 	
 				<!-- front -->
-				<label class="front" for="${criterion.criterionid}">
+				<label class="front" for="${cid}">
 	
 					<!-- icon -->
 					<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -372,11 +291,11 @@ function loadFilterGroups() {
 					<!-- /icon -->
 	
 					<!-- caption -->
-					<span class="caption">${criterion.criterionname}</span>
+					<span class="caption">${criterionname}</span>
 					<!-- /caption -->
 	
 					<!-- matchcount -->
-					<span class="matchcount">${criterion.criterioncount}</span>
+					<span class="matchcount">${criterion.matchingpostscount}</span>
 					<!-- /matchcount -->
 	
 				</label>
@@ -389,6 +308,84 @@ function loadFilterGroups() {
 		// Return layout for criteria list. 
 		return criterialistlayout;
 	}
+
+	// Activate filter groups in filter panel. 
+	function activateFilterGroups() {
+
+		// Get loaded headers in filter panel. 
+		let filterpanelheaders = filtergroupsdestination.querySelectorAll('li.filtergroup h3.filterhead');
+	
+		// Go thru each header in filter panel. 
+		for(let header of filterpanelheaders) {
+	
+			// Enable header clicks to toggle group in filter panel. 
+			header.addEventListener('click',toggleFilterGroup);
+		}
+	}
+
+	// Activate filter items in filter panel. 
+	function activateFilterItems() {
+
+		// Get loaded items in filter panel. 
+		let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.criterialist li.criterion input.checkbox');
+	
+		// Go thru each item in filter panel. 
+		for(let inputitems of filterpanelitems) {
+	
+			// Enable header clicks to toggle group in filter panel. 
+			inputitems.addEventListener('input',checkFilterItem);
+		}
+
+		/***/
+
+		// Check post filter item. 
+		function checkFilterItem(event) {
+
+			// Get input checkbox. 
+			let checkbox = event.currentTarget;
+
+			// Check if checkbox is on. 
+			let checkboxOn = checkbox.checked;
+			console.log('Checkbox on:',checkboxOn,checkbox);
+
+			// 
+			if(checkboxOn) applyFilterItem();
+
+			// 
+			else unapplyFilterItem();
+
+			/**/
+
+			// TODO: Apply post filter item. 
+			function applyFilterItem() {
+			
+				// TODO: Update blog posts. 
+			
+				// TODO: Update filter items. 
+			}
+			
+			// TODO: Un-apply post filter item. 
+			function unapplyFilterItem(filteritem) {
+			
+				// TODO: Update blog posts. 
+			
+				// TODO: Update filter items. 
+			}
+		}
+	}
+
+	// Toggle group in post filter panel. 
+	function toggleFilterGroup(event) {
+	
+		// Get filter group header. 
+		let filtergroupheader = event.currentTarget;
+	
+		// Get filter group. 
+		let filtergroup = filtergroupheader.parentElement;
+	
+		// Toggle filter group. 
+		filtergroup.classList.toggle('open');
+	}
 }
 
 // Toggle post filter panel. 
@@ -396,32 +393,6 @@ function toggleFilterPanel() {
 
 	// Toggle filter panel. 
 	filterpanel.classList.toggle('open');
-}
-
-// Toggle post filter group. 
-function toggleFilterGroup(header) {
-
-	// Get filter group. 
-	let filtergroup = header.parentElement;
-
-	// Toggle filter group. 
-	filtergroup.classList.toggle('open');
-}
-
-// TODO: Apply filter. 
-function addFilter() {
-
-	// Update blog posts. 
-
-	// Update filter items. 
-}
-
-// TODO: Un-apply filter. 
-function removeFilter(filteritem) {
-
-	// Update blog posts. 
-
-	// Update filter items. 
 }
 
 // TODO: Show blog posts that match given filter query. 

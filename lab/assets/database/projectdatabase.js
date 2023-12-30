@@ -4,33 +4,18 @@
 // Define ids for featured projects. 
 const featuredProjectIds = {
 	a:[
-		'blog',
-		'gallery',
-		'video',
-		'resume',
-		'rolodex',
-		'desktop',
-		'calendar',
-		'merch',
-		'toastprogress',
-		'crud',
-		'univ',
-		'pinyin',
+		'blog','gallery','video','resume','rolodex','desktop',
+		'calendar','merch','toastprogress','crud','univ','pinyin',
 	],
 	b:[
-		'analogclock',
-		'admin','autoslideshow',
-		'band','banner','bizmath','blockmenu',
-		'chess',
-		'keyfinder','livesearch',
-		'musicplayer',
-		'3dnav',
+		'analogclock','admin','autoslideshow','band','banner','bizmath',
+		'blockmenu','chess','keyfinder','livesearch','musicplayer','3dnav',
 	],
 	x:[
-		'canvas','chat','chooser','cluster','compound',
-		'device','dragndrop','lander',
-		'paginator','pixelart','pong',
-		'storage','tasks',
+		'canvas','chat','chooser',
+		'cluster','compound','device',
+		'dragndrop','lander','paginator',
+		'pixelart','pong','storage','tasks',
 	],
 };
 // console.log('Featured project ids:',featuredProjectIds);

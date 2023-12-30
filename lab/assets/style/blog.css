@@ -96,9 +96,9 @@ div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage u
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink div.preview iframe.preview {--ml:10; scale:calc( 1 / pow( 2, var(--ml) ) ); height:calc( pow( 2, var(--ml) ) * 100% ); width:calc( pow( 2, var(--ml) ) * 100% ); --trvalue:calc( -50% + 100% * pow( 2, (var(--ml) - 1) ) ); transform:translate( var(--trvalue) , var(--trvalue) );} */
 /* Blog Section: Overlay Panel */
 /* div#container section.blog div.grid div.body div.posts nav.overlaypanel {position:absolute; top:0; left:0; width:100%;} */
-div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {background-color:var(--backcolor); display:grid; place-items:center; width:var(--panelmargin); padding:1rem 0;}
+div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {background-color:var(--backcolor); display:grid; place-items:center; width:var(--panelmargin); padding:1rem 0; border-radius:.75rem;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {cursor:pointer; font-size:4rem;}
-div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {position:absolute; top:0; height:100%; opacity:.5; transition:.25s;}
+div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {position:absolute; top:0; height:100%; opacity:.375; transition:.25s;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn.b {left:0;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn.f {right:0;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn:hover {opacity:1;}
@@ -230,7 +230,7 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 	/* div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.postpage ul.postlist {} */
 	/* Blog Section: Overlay Panel */
 	/* div#container section.blog div.grid div.body div.posts nav.overlaypanel {} */
-	div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {top:50%; transform:translateY(-50%); height:auto;}
+	div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {top:50%; transform:translateY(-50%); height:auto; margin:0 .5rem;}
 	/* Blog Section: Page Panel */
 	/* div#container section.blog div.grid div.body nav.pagepanel {} */
 	/* Blog Section: Page Toggler */
@@ -418,7 +418,7 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 	/* div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {} */
 	div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist li.postcard a.projectlink div.preview {padding-top:50%;}
 	/* Blog Section: Overlay Panel */
-	/* div#container section.blog div.grid div.body div.posts nav.overlaypanel {} */
+	div#container section.blog div.grid div.body div.posts nav.overlaypanel {display:none;}
 	/* div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {} */
 	/* Blog Section: Page Panel */
 	/* div#container section.blog div.grid div.body nav.pagepanel {} */
