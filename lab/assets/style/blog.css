@@ -185,6 +185,8 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.dn {display:none;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open h3.filterhead svg.icon.up {display:block;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
+div#container section.blog div.grid div.body div.filterpanel div.btnpanel {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.625em 1rem;}
+div#container section.blog div.grid div.body div.filterpanel div.btnpanel div.btn {background-color:var(--themecolor); color:white; cursor:pointer; user-select:none; font-size:1.25rem; font-weight:500; padding:.375em 1.5rem; border-radius:1em; margin:0 .5em;}
 
 
 

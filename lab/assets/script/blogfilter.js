@@ -319,21 +319,21 @@ function loadFilterGroups() {
 			// TODO: Apply filter item to blog posts. 
 			function applyFilterItem() {
 
-				// TODO: Get value of filter item. 
+				// Get value of filter item. 
 			
-				// TODO: Update blog posts. 
+				// Update blog posts. 
 			
-				// TODO: Update filter items. 
+				// Update filter items. 
 			}
 			
 			// TODO: Un-apply filter item to blog posts. 
 			function unapplyFilterItem(filteritem) {
 
-				// TODO: Get value of filter item. 
+				// Get value of filter item. 
 			
-				// TODO: Update blog posts. 
+				// Update blog posts. 
 			
-				// TODO: Update filter items. 
+				// Update filter items. 
 			}
 		}
 	}
