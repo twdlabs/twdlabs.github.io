@@ -1,52 +1,32 @@
 
+:root {
+	--blue:#7aacff;
+}
+
+
 * {box-sizing:border-box;}
 
 
-body {background-color:#7aacff; margin:0; height:100vh;}
+body {background-color:var(--blue); margin:0; height:100vh;}
 body {display:grid; place-items:center;}
 
 
 /* div#container {} */
-div#container div.slideshow {border:1.25rem solid white; border-radius:.5rem; width:85vmin; overflow:hidden; position:relative;}
-div#container div.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); transition:.5s;}
-div#container.devmode div.slideshow {width:50vw; overflow:visible;}
-div#container div.slideshow div.inner {display:flex; flex-direction:row; transition:.5s;}
-/* div#container div.slideshow div.inner {animation: slide4 15s ease-in-out 0s infinite forwards;} */
-div#container div.slideshow div.inner img {object-fit:cover; width:100%; flex-shrink:0;}
-div#container div.slideshow a.delta {position:absolute; top:50%; transform:translateY(-50%); font-size:3rem; color:white; padding:1rem .25rem; cursor:pointer; transition:.5s;}
-div#container div.slideshow a.delta:hover {background-color:#0004;}
-div#container div.slideshow a.delta svg.icon {display:block;}
-div#container div.slideshow a.delta.prev {left:0; border-radius: 0 .5rem .5rem 0;}
-div#container div.slideshow a.delta.next {right:0; border-radius: .5rem 0 0 .5rem;}
-div#container div.slideshow div.controls {position:absolute; bottom:0; width:100%;}
-div#container div.slideshow div.controls {display:flex; flex-direction:row; justify-content:center; background-color:#0004; padding:1rem 0 .9rem;}
-div#container div.slideshow div.controls span.dot {background-color:#BBB; min-width:.75rem; min-height:.75rem; border-radius:50%; margin:0 .25rem; cursor:pointer; transition:.5s;}
-div#container div.slideshow div.controls span.dot.active,
-div#container div.slideshow div.controls span.dot:hover {background-color:#717171;}
+div#container main.slideshow {border:1rem solid white; border-radius:.5rem; width:85vmin; overflow:hidden; position:relative;}
+div#container main.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); transition:.5s;}
+div#container.devmode main.slideshow {width:25vmin; overflow:visible;}
+div#container main.slideshow div.inner {display:flex; flex-direction:row; transition:.25s;}
+div#container main.slideshow div.inner img {object-fit:cover; width:100%; flex-shrink:0;}
+div#container main.slideshow a.delta {position:absolute; top:50%; transform:translateY(-50%); font-size:3rem; color:white; padding:1rem .25rem; cursor:pointer; transition:.5s;}
+div#container main.slideshow a.delta:hover {background-color:#0004;}
+div#container main.slideshow a.delta svg.icon {display:block;}
+div#container main.slideshow a.delta.prev {left:0; border-radius: 0 .5rem .5rem 0;}
+div#container main.slideshow a.delta.next {right:0; border-radius: .5rem 0 0 .5rem;}
+div#container main.slideshow div.controls {position:absolute; bottom:0; width:100%;}
+div#container main.slideshow div.controls {display:flex; flex-direction:row; justify-content:center; /* background-color:#0004; */ padding:1rem 0 .9rem;}
+div#container main.slideshow div.controls span.dot {background-color:#BBB; background-color:#717171; /* border:.125rem solid var(--blue); border-color:white; */}
+div#container main.slideshow div.controls span.dot {--dotsize:.75rem; font-size:var(--dotsize); min-width:var(--dotsize); min-height:var(--dotsize); border-radius:50%; margin:0 .25em; cursor:pointer; transition:.5s;}
+/* div#container main.slideshow div.controls span.dot:hover {} */
+div#container main.slideshow div.controls span.dot.active {background-color:var(--blue); background-color:white;}
 div#container button.toggle {position:absolute; bottom:0; left:50%; transform:translateX(-50%); padding:.5rem 1rem; margin:1rem;}
 
-
-@keyframes slide4 {
-
-	0% {transform:translateX(0%);}
-
-	/* Pic A */
-
-	20% {transform:translateX(0%);}
-	25% {transform:translateX(-100%);}
-
-	/* Pic B */
-
-	45% {transform:translateX(-100%);}
-	50% {transform:translateX(-200%);}
-
-	/* Pic C */
-
-	70% {transform:translateX(-200%);}
-	75% {transform:translateX(-300%);}
-
-	/* Pic D */
-
-	95% {transform:translateX(-300%);}
-	100% {transform:translateX(-400%);}
-}

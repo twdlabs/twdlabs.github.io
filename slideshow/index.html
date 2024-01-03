@@ -4,13 +4,16 @@
 	
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link href="../atgicon.ico" rel="icon"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./../atgicon.ico" rel="apple-touch-icon"/>
 		<title>Slideshow</title>
 
 		<!-- Main Stylesheet -->
-		<link href="slideshow.css" rel="stylesheet" type="text/css">
+		<link href="./slideshow.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -19,31 +22,31 @@
 		<div id="container">
 				
 			<!-- slideshow -->
-			<div class="slideshow">
+			<main class="slideshow">
 
 				<!-- inner -->
-				<div class="inner" id="slideinner">
+				<div class="inner">
 
 					<!-- img -->
-					<img src="images/img_5terre.jpg" alt="a">
+					<img src="./images/img_lights.jpg" alt="d" title="d">
 					<!-- /img -->
 
 					<!-- img -->
-					<img src="images/img_mountains.jpg" alt="b">
+					<img src="./images/img_5terre.jpg" alt="a" title="a">
+					<!-- /img -->
+
+					<!-- img -->
+					<img src="./images/img_mountains.jpg" alt="b" title="b">
 					<!-- /img -->
 
 				</div>
 				<!-- /inner -->
 
 				<!-- controls -->
-				<div class="controls" id="controls">
+				<div class="controls">
 
 					<!-- dot -->
-					<span class="dot" onclick="openSlide(0)"></span>
-					<!-- /dot -->
-
-					<!-- dot -->
-					<span class="dot" onclick="openSlide(1)"></span>
+					<span class="dot" onclick="selectSlideByIndex(0)"></span>
 					<!-- /dot -->
 
 				</div>
@@ -65,7 +68,7 @@
 				</a>
 				<!-- /next -->
 				
-			</div>
+			</main>
 			<!-- /slideshow -->
 
 			<!-- toggle -->
@@ -74,10 +77,13 @@
 			
 		</div>
 		<!-- /#container -->
-		
+
+
+		<!-- Xyz Database -->
+		<script src="./slidedatabase.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
-		<script src="slideshow.js" type="text/javascript"></script>
+		<script src="./slideshow.js" type="text/javascript"></script>
 
 	</body>
 

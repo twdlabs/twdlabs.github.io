@@ -1,122 +1,139 @@
 
 
-// Define slide data. 
-const slideData = [
-	{
-		caption:'a',
-		imageurl:'images/img_5terre.jpg'
-	},
-	{
-		caption:'b',
-		imageurl:'images/img_mountains.jpg'
-	},
-	{
-		caption:'c',
-		imageurl:'images/img_snow.jpg'
-	},
-	{
-		caption:'d',
-		imageurl:'images/img_lights.jpg'
-	},
-];
+
+// Get destination for slide images. 
+const slidesdestination = document.querySelector('div#container main.slideshow div.inner');
+
+// Get destination for controls. 
+const controllerdestination = document.querySelector('div#container main.slideshow div.controls');
 
 
 /*****/
 
 
-// Load initial slide data. 
-loadSlideData();
+// Define automatic time per slide (in ms). 
+const dt = 1500;
 
-// Open first slide. 
-let currentIndex = 0;
-openSlide(currentIndex);
-
-// Start animation of switch to new slide every few seconds. 
-// let dt = 2000;
-// let slideSwitcher = setInterval(nextSlide,dt);
+// Initialize slide index. 
+let currentslideindex = 0;
 
 
 /*****/
 
 
-// Load initial slide data. 
-function loadSlideData() {
+// Load slideshow controller. 
+loadSlideControls();
 
+// Select initial slide. 
+selectSlideByIndex(currentslideindex);
+
+// Start slide motion. 
+// startSlideMotion();
+
+
+/*****/
+
+
+// Load slideshow controller. 
+function loadSlideControls() {
+	
 	// Initialize result. 
-	let resultA = '';
-	let resultB = '';
+	let controldots = '';
 
 	// Add slides and dot controls. 
-	for(i in slideData) {
-		
-		resultA += `
-		<!-- img -->
-		<img src="${ slideData[i].imageurl }" alt="${ slideData[i].caption }">
-		<!-- /img -->`;
+	for(i in slideshowdata) {
 
-		resultB += `
+		controldots += `
 		<!-- dot -->
-		<span class="dot" onclick="openSlide(${i})"></span>
+		<span class="dot" onclick="selectSlideByIndex(${i})"></span>
 		<!-- /dot -->`;
 	}
-	
-	// Add extra copy of first slide (for smooth transition from last back to first slide). 
-	resultA += `
-	<!-- img -->
-	<img src="${ slideData[0].imageurl }" alt="${ slideData[0].caption }">
-	<!-- /img -->`;
 
 	// Add result to page. 
-	document.getElementById('slideinner').innerHTML = resultA;
-	document.getElementById('controls').innerHTML = resultB;
+	controllerdestination.innerHTML = controldots;
 }
 
-// Go to adjacent (prev/next) slide. 
-function deltaSlide(dn) {
+// Load data for currently selected slide and both adjacent slides. 
+function loadSelectedSlideData() {
 
-	// Increment current index. 
-	currentIndex += dn;
-	normalizeCicrularIndex();
+	// Initialize result. 
+	let slideresults = '';
 
-	// Show slide at new index. 
-	openSlide(currentIndex);
+	// Get index for prev slide. 
+	let previndex = getDeltaSlideIndex(-1);
+	// Get index for next slide. 
+	let nextindex = getDeltaSlideIndex(+1);
 
-	// Reset interval timer. 
-	// clearInterval(slideSwitcher);
+	// Create layout for prev slide. 
+	slideresults += createSlideLayout(previndex);
+	// Create layout for current slide. 
+	slideresults += createSlideLayout(currentslideindex);
+	// Create layout for next slide. 
+	slideresults += createSlideLayout(nextindex);
 
-	/*****/
+	// Display results on page. 
+	slidesdestination.innerHTML = slideresults;
 
-	// Correct index when out of bounds. 
-	function normalizeCicrularIndex() {
-		if(currentIndex<0) currentIndex = slideData.length-1;
-		if(currentIndex>=slideData.length) currentIndex = 0;
+	/****/
+
+	// Create layout for slide. 
+	function createSlideLayout(index) {
+
+		// Get data for current slide. 
+		let slidedata = slideshowdata[index];
+		// Get image url for current slide. 
+		let imgurl = slidedata.imageurl;
+		// Get caption for current slide. 
+		let caption = slidedata.caption;
+
+		// Compile layout for slide. 
+		return `
+		<!-- img -->
+		<img src="${imgurl}" alt="${caption}" title="${caption}">
+		<!-- /img -->`;
+	}
+
+	// Get delta slide index. 
+	function getDeltaSlideIndex(diff) {
+
+		// Get total number of slides. 
+		let totalslidecount = slideshowdata.length;
+
+		// Initialize new index. 
+		let newindex = currentslideindex + diff;
+
+		// Check new index. 
+		if(newindex<0) newindex += totalslidecount;
+		if(newindex>=totalslidecount) newindex -= totalslidecount;
+
+		// Return new index. 
+		return newindex;
 	}
 }
 
-// Select a slide by index. 
-function openSlide(index) {
+// Select slide by index. 
+function selectSlideByIndex(index) {
 	// console.log('Opening slide at:',index);
 	
 	// Show selected slide image. 
 	showSlideImage();
 
-	// Highlight selected dot controller. 
+	// Highlight selected dot in controller. 
 	highlightDot();
+
+	// Load data for selected slide. 
+	loadSelectedSlideData();
 	
-	/*****/
+	/****/
 
 	// Show selected slide image. 
 	function showSlideImage() {
-		
-		// Get slide holder. 
-		let innerslidecontainer = document.querySelector('div#container div.slideshow div.inner');
-		// console.log('innerslidecontainer',innerslidecontainer);
 
 		// Get horizontal offset using index. 
 		let dx = -100*index;
 
 		// Show selected slide by applying horizontal offset to inner slide container. 
-		innerslidecontainer.style.transform = `translateX(${dx}%)`;
+		slidesdestination.style.transform = `translateX(${dx}%)`;
 	}
 
 	// Highlight selected dot controller. 
@@ -134,4 +151,36 @@ function openSlide(index) {
 			else dot.classList.remove('active');
 		}
 	}
+}
+
+// Go to adjacent (prev/next) slide. 
+function deltaSlide(dn) {
+
+	// Increment current index. 
+	currentslideindex += dn;
+	normalizeCicrularIndex();
+
+	// Show slide at new index. 
+	selectSlideByIndex(currentslideindex);
+
+	// Reset interval timer. 
+	clearTimeout(slideSwitcher);
+	slideSwitcher = setTimeout(function() {
+		deltaSlide(1);
+	},dt);
+
+	/****/
+
+	// Correct index when out of bounds. 
+	function normalizeCicrularIndex() {
+		if(currentslideindex<0) currentslideindex = slideshowdata.length-1;
+		if(currentslideindex>=slideshowdata.length) currentslideindex = 0;
+	}
+}
+
+// Start slide motion: cascade of animated switch to new slide every few seconds. 
+function startSlideMotion() {
+	let slideSwitcher = setTimeout(function() {
+		deltaSlide(1);
+	},dt);
 }
