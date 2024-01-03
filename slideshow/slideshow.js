@@ -2,10 +2,10 @@
 
 
 // Get destination for slide images. 
-const slidesdestination = document.querySelector('div#container main.slideshow div.inner');
+const slidesdestination = document.querySelector('div#container main.slideshow div.grid ul.slidelist');
 
-// Get destination for controls. 
-const controllerdestination = document.querySelector('div#container main.slideshow div.controls');
+// Get destination for control dots. 
+const controldotsdestination = document.querySelector('div#container main.slideshow div.grid div.controls ul.dotlist');
 
 
 /*****/
@@ -45,110 +45,166 @@ function loadSlideControls() {
 
 		controldots += `
 		<!-- dot -->
-		<span class="dot" onclick="selectSlideByIndex(${i})"></span>
+		<li class="dot" data-slideindex="${i}"></li>
 		<!-- /dot -->`;
 	}
 
 	// Add result to page. 
-	controllerdestination.innerHTML = controldots;
-}
+	controldotsdestination.innerHTML = controldots;
 
-// Load data for currently selected slide and both adjacent slides. 
-function loadSelectedSlideData() {
-
-	// Initialize result. 
-	let slideresults = '';
-
-	// Get index for prev slide. 
-	let previndex = getDeltaSlideIndex(-1);
-	// Get index for next slide. 
-	let nextindex = getDeltaSlideIndex(+1);
-
-	// Create layout for prev slide. 
-	slideresults += createSlideLayout(previndex);
-	// Create layout for current slide. 
-	slideresults += createSlideLayout(currentslideindex);
-	// Create layout for next slide. 
-	slideresults += createSlideLayout(nextindex);
-
-	// Display results on page. 
-	slidesdestination.innerHTML = slideresults;
+	// Activate slideshow controller. 
+	activateSlideControls();
 
 	/****/
 
-	// Create layout for slide. 
-	function createSlideLayout(index) {
+	// Activate slideshow controller. 
+	function activateSlideControls() {
 
-		// Get data for current slide. 
-		let slidedata = slideshowdata[index];
-		// Get image url for current slide. 
-		let imgurl = slidedata.imageurl;
-		// Get caption for current slide. 
-		let caption = slidedata.caption;
+		// Get all control dots. 
+		const controldots = document.querySelectorAll('div#container main.slideshow div.grid div.controls ul.dotlist li.dot');
+		// console.log('Control dots:',controldots);
 
-		// Compile layout for slide. 
-		return `
-		<!-- img -->
-		<img src="${imgurl}" alt="${caption}" title="${caption}">
-		<!-- /img -->`;
-	}
+		// Go thru each control dot. 
+		for(let dot of controldots) {
 
-	// Get delta slide index. 
-	function getDeltaSlideIndex(diff) {
+			// Activate control dot. 
+			dot.addEventListener('click',selectDot);
+		}
 
-		// Get total number of slides. 
-		let totalslidecount = slideshowdata.length;
+		/***/
 
-		// Initialize new index. 
-		let newindex = currentslideindex + diff;
+		// Select dot. 
+		function selectDot(event) {
+			// console.log('Selecting dot...');
 
-		// Check new index. 
-		if(newindex<0) newindex += totalslidecount;
-		if(newindex>=totalslidecount) newindex -= totalslidecount;
-
-		// Return new index. 
-		return newindex;
+			// Get selected dot. 
+			let dot = event.currentTarget;
+			
+			// Get index of selected dot. 
+			let index = dot.getAttribute('data-slideindex');
+			
+			// Select slide by given index. 
+			selectSlideByIndex(index);
+		}
 	}
 }
 
 // Select slide by index. 
-function selectSlideByIndex(index) {
-	// console.log('Opening slide at:',index);
+function selectSlideByIndex(selectedindex) {
+	console.log('Selected slide index:',1*selectedindex);
 	
-	// Show selected slide image. 
-	showSlideImage();
+	// Show selected slide position. 
+	// showSelectedSlide();
+	loadSelectedSlide();
 
 	// Highlight selected dot in controller. 
-	highlightDot();
-
-	// Load data for selected slide. 
-	loadSelectedSlideData();
+	highlightSelectedDot();
 	
 	/****/
 
-	// Show selected slide image. 
-	function showSlideImage() {
+	// Highlight selected dot in controller. 
+	function highlightSelectedDot() {
+		// console.log('Highlighting selected dot...');
 
-		// Get horizontal offset using index. 
-		let dx = -100*index;
+		// Get all control dots. 
+		const controldots = document.querySelectorAll('div#container main.slideshow div.grid div.controls ul.dotlist li.dot');
+		// console.log('Control dots:',controldots);
+
+		// Go thru each control dot. 
+		for(let dot of controldots) {
+			// console.log('dot',i,dot);
+
+			// Get index of current dot. 
+			let index = dot.getAttribute('data-slideindex');
+
+			// Highlight selected dot. 
+			if(index==selectedindex) dot.classList.add('active');
+
+			// Un-highlight non-selected dot. 
+			else dot.classList.remove('active');
+		}
+	}
+
+	// Show selected slide position. 
+	function showSelectedSlide() {
+
+		// TODO: Add prev slide. 
+
+		// TODO: Add selected slide. 
+
+		// TODO: Add next slide. 
+
+		// Get horizontal offset using selected index. 
+		let dx = -100*selectedindex;
 
 		// Show selected slide by applying horizontal offset to inner slide container. 
 		slidesdestination.style.transform = `translateX(${dx}%)`;
 	}
 
-	// Highlight selected dot controller. 
-	function highlightDot() {
-
-		// Get dot controllers. 
-		let dots = document.querySelectorAll('div.controls span.dot');
-		// console.log('dots',dots);
-
-		// Highlight selected dot and un-highlight other dots. 
-		for(let i=0 ; i<dots.length ; i++) {
-			dot = dots[i];
-			// console.log('dot',i,dot);
-			if(i==index) dot.classList.add('active');
-			else dot.classList.remove('active');
+	// Load data for currently selected slide and both adjacent slides. 
+	function loadSelectedSlide() {
+	
+		// Initialize result. 
+		let slideresults = '';
+	
+		// Get index for prev slide. 
+		let previndex = getDeltaSlideIndex(-1);
+		console.log('previndex:',previndex);
+		console.log('currentindex:',currentslideindex);
+		// Get index for next slide. 
+		let nextindex = getDeltaSlideIndex(+1);
+		console.log('nextindex:',nextindex);
+	
+		// Create layout for prev slide. 
+		slideresults += createSlideLayout(previndex,'prev');
+		// Create layout for current slide. 
+		slideresults += createSlideLayout(currentslideindex,'');
+		// Create layout for next slide. 
+		slideresults += createSlideLayout(nextindex,'next');
+	
+		// Display results on page. 
+		slidesdestination.innerHTML = slideresults;
+	
+		/***/
+	
+		// Create layout for slide at given index. 
+		function createSlideLayout(index,note) {
+	
+			// Get data for current slide. 
+			let slidedata = slideshowdata[index];
+			// Get image url for current slide. 
+			let imgurl = slidedata.imageurl;
+			// Get caption for current slide. 
+			let caption = slidedata.caption;
+	
+			// Compile layout for given slide. 
+			return `
+			<!-- slideitem -->
+			<li class="slideitem ${note}" data-slideindex="${index}">
+	
+				<!-- img -->
+				<img class="img" src="${imgurl}" alt="${caption}" title="${caption}">
+				<!-- /img -->
+	
+			</li>
+			<!-- /slideitem -->`;
+		}
+	
+		// Get delta slide index. 
+		function getDeltaSlideIndex(diff) {
+	
+			// Get total number of slides. 
+			let totalslidecount = slideshowdata.length;
+	
+			// Initialize new index. 
+			let newindex = currentslideindex + diff;
+	
+			// Check new index. 
+			if(newindex<0) newindex += totalslidecount;
+			if(newindex>=totalslidecount) newindex -= totalslidecount;
+	
+			// Return new index. 
+			return newindex;
 		}
 	}
 }

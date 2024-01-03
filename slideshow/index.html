@@ -24,55 +24,93 @@
 			<!-- slideshow -->
 			<main class="slideshow">
 
-				<!-- inner -->
-				<div class="inner">
+				<!-- grid -->
+				<div class="grid">
 
-					<!-- img -->
-					<img src="./images/img_lights.jpg" alt="d" title="d">
-					<!-- /img -->
+					<!-- slidelist -->
+					<ul class="slidelist">
 
-					<!-- img -->
-					<img src="./images/img_5terre.jpg" alt="a" title="a">
-					<!-- /img -->
+						<!-- slideitem -->
+						<li class="slideitem" data-slideindex="0">
 
-					<!-- img -->
-					<img src="./images/img_mountains.jpg" alt="b" title="b">
-					<!-- /img -->
+							<!-- img -->
+							<img class="img" src="./images/xyz.jpg" alt="d" title="d">
+							<!-- /img -->
+
+						</li>
+						<!-- /slideitem -->
+
+						<!-- slideitem -->
+						<li class="slideitem" data-slideindex="0">
+
+							<!-- img -->
+							<img class="img" src="./images/xyz.jpg" alt="a" title="a">
+							<!-- /img -->
+
+						</li>
+						<!-- /slideitem -->
+
+						<!-- slideitem -->
+						<li class="slideitem" data-slideindex="0">
+
+							<!-- img -->
+							<img class="img" src="./images/xyz.jpg" alt="b" title="b">
+							<!-- /img -->
+
+						</li>
+						<!-- /slideitem -->
+
+					</ul>
+					<!-- /slidelist -->
+
+					<!-- controls -->
+					<div class="controls">
+
+						<!-- dotlist -->
+						<ul class="dotlist">
+	
+							<!-- dot -->
+							<li class="dot" data-slideindex="0"></li>
+							<!-- /dot -->
+
+						</ul>
+						<!-- /dotlist -->
+	
+						<!-- prev -->
+						<a class="delta prev" onclick="console.log('Prev slide'); deltaSlide(-1);">
+		
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
+							</svg>
+							<!-- /icon -->
+		
+						</a>
+						<!-- /prev -->
+		
+						<!-- next -->
+						<a class="delta next" onclick="console.log('Next slide'); deltaSlide(1);">
+		
+							<!-- icon -->
+							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
+							</svg>
+							<!-- /icon -->
+		
+						</a>
+						<!-- /next -->
+	
+					</div>
+					<!-- /controls -->
 
 				</div>
-				<!-- /inner -->
-
-				<!-- controls -->
-				<div class="controls">
-
-					<!-- dot -->
-					<span class="dot" onclick="selectSlideByIndex(0)"></span>
-					<!-- /dot -->
-
-				</div>
-				<!-- /controls -->
-
-				<!-- prev -->
-				<a class="delta prev" onclick="console.log('Prev slide'); deltaSlide(-1);">
-					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path fill-rule="evenodd" d="M9.224 1.553a.5.5 0 0 1 .223.67L6.56 8l2.888 5.776a.5.5 0 1 1-.894.448l-3-6a.5.5 0 0 1 0-.448l3-6a.5.5 0 0 1 .67-.223z"/>
-					</svg>
-				</a>
-				<!-- /prev -->
-
-				<!-- next -->
-				<a class="delta next" onclick="console.log('Next slide'); deltaSlide(1);">
-					<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path fill-rule="evenodd" d="M6.776 1.553a.5.5 0 0 1 .671.223l3 6a.5.5 0 0 1 0 .448l-3 6a.5.5 0 1 1-.894-.448L9.44 8 6.553 2.224a.5.5 0 0 1 .223-.671z"/>
-					</svg>
-				</a>
-				<!-- /next -->
+				<!-- /grid -->
 				
 			</main>
 			<!-- /slideshow -->
 
 			<!-- toggle -->
-			<button class="toggle" onclick="document.getElementById('container').classList.toggle('devmode')">Zoom</button>
+			<button class="toggle" onclick="document.getElementById('container').classList.toggle('zoom')">Zoom</button>
 			<!-- /toggle -->
 			
 		</div>
