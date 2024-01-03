@@ -67,19 +67,19 @@ const projectCollectionData = [
 // Define sets of project collections in matrix. 
 const projectCollectionMatrixData = [
 	{
-		setid:'setA',
-		setlist:['p',],
+		setid:'collectionsetA',
+		setlist:['c',],
 	},
 	{
-		setid:'setC',
+		setid:'collectionsetB',
 		setlist:['l',],
 	},
 	{
-		setid:'setB',
+		setid:'collectionsetC',
 		setlist:['w',],
 	},
 	// {
-	// 	setid:'setX',
+	// 	setid:'collectionsetX',
 	// 	setlist:['x',],
 	// },
 ];

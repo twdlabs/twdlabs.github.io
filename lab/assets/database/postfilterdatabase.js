@@ -157,7 +157,7 @@ function createFilterValues(filtergroupid) {
 		// Increment value frequency (if not distinct). 
 		else filteritem.frequency++;
 	}
-	console.log('Filter items:',filteritems);
+	// console.log('Filter items:',filteritems);
 
 	// Save sorted list of filter items. 
 	filtergroup.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );

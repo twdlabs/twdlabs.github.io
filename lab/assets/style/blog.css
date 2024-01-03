@@ -33,8 +33,9 @@ div#container section.blog div.grid div.head div.modpanel div.searchquery label.
 
 
 /* Blog Section: Body */
-div#container section.blog div.grid div.body {position:relative; margin-top:1rem;}
-div#container section.blog div.grid div.body.split {display:grid; grid-template-columns:24rem 1fr; grid-gap:1rem; align-items:flex-start; transition:.25s;}
+div#container section.blog div.grid div.body {position:relative; margin-top:1.5rem;}
+div#container section.blog div.grid div.body {display:grid; grid-gap:1rem; align-items:flex-start; transition:.25s;}
+div#container section.blog div.grid div.body.split {grid-template-columns:24rem 1fr;}
 div#container section.blog div.grid div.body div.posts {position:relative; overflow:hidden; --panelmargin:5rem;}
 /* div#container section.blog div.grid div.body div.posts#featured {} */
 /* div#container section.blog div.grid div.body div.posts#archive {} */
@@ -48,20 +49,21 @@ div#container section.blog div.grid div.body div.posts div.emptylabel.on {displa
 /* Blog Section: Pages */
 div#container section.blog div.grid div.body div.posts ul.pagelist {display:flex; flex-direction:row; overflow:visible; transform:none; transition:.25s;}
 div#container section.blog div.grid div.body div.posts ul.pagelist {list-style:none; padding:0; margin:0; margin:0 var(--panelmargin);}
+/* div#container section.blog div.grid div.body div.posts ul.pagelist {margin-top:.75rem;} */
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage {/* display:none; */ width:100%; flex-shrink:0; opacity:0; visibility:hidden; transition:1s; transition-delay:.25s;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage.active {/* display:block; */ opacity:1; visibility:visible;}
 
 /* Blog Section: Page Posts */
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {display:grid; grid-template-columns:repeat( var(--gridcolumns), 1fr); transition:.25s;}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {list-style:none; overflow:hidden; padding:0; /* padding:1rem; */ margin:0; margin-top:.75rem;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {display:grid; grid-template-columns:repeat( var(--gridcolumns), 1fr); grid-gap:0 var(--gapsize); transition:.25s;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {list-style:none; /* overflow:hidden; */ padding:0; padding:0 1rem; margin:0;}
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {display:flex; flex-wrap:wrap; justify-content:center;} */
-div#container section.blog div.grid div.body div.posts.small ul.pagelist li.postpage ul.postlist {--gridcolumns:10; grid-gap:.875rem;}
-div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist {--gridcolumns:6; grid-gap:1.25rem;}
-div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.postpage ul.postlist {display:flex; flex-direction:column; grid-gap:1.25rem;}
+div#container section.blog div.grid div.body div.posts.small ul.pagelist li.postpage ul.postlist {--gridcolumns:10; --gapsize:.875rem;}
+div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist {--gridcolumns:6; --gapsize:1.25rem;}
+div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.postpage ul.postlist {display:flex; flex-direction:column; --gapsize:1.25rem;}
 /* div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage.b ul.postlist {max-height:0;} */
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {flex-basis:20%;} */
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); box-shadow:var(--boxshadowx);}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {/* display:none; */ opacity:.25; /* visibility:hidden; */ pointer-events:none;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); margin-bottom:var(--gapsize); box-shadow:var(--boxshadowx);}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {/* display:none; */ opacity:.125; /* visibility:hidden; */ pointer-events:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {/* display:none; */ opacity:.375; transition:.375s;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}
@@ -97,7 +99,7 @@ div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage u
 /* div#container section.blog div.grid div.body div.posts nav.overlaypanel {position:absolute; top:0; left:0; width:100%;} */
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {background-color:var(--backcolor); display:grid; place-items:center; width:var(--panelmargin); padding:1rem 0; border-radius:.75rem;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {cursor:pointer; font-size:4rem;}
-div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {position:absolute; top:0; height:100%; opacity:.375; transition:.25s;}
+div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {position:absolute; top:0; height:100%; transition:.25s;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn.b {left:0;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn.f {right:0;}
 div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn:hover {opacity:1;}
@@ -142,7 +144,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 
 
 /* Blog Section: Applied Filters */
-div#container section.blog div.grid div.body div.filters {/* position:relative; */ padding-bottom:.75rem; margin-top:.375rem;}
+div#container section.blog div.grid div.body div.filters {/* position:relative; */ /* padding-bottom:.75rem; */ margin-top:.375rem;}
 div#container section.blog div.grid div.body.split div.filters {grid-column-end:span 2;}
 div#container section.blog div.grid div.body div.filters div.already {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap;}
 div#container section.blog div.grid div.body div.filters div.already h2.listhead {font-size:1.125rem; font-size:1rem; font-weight:normal; white-space:nowrap; margin:0; margin-right:.25rem;}
@@ -228,7 +230,7 @@ div#container section.blog div.grid div.body div.filterpanel div.btnpanel div.bt
 	/* div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.postpage ul.postlist {} */
 	/* Blog Section: Overlay Panel */
 	/* div#container section.blog div.grid div.body div.posts nav.overlaypanel {} */
-	div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {top:50%; transform:translateY(-50%); height:auto; margin:0 .5rem;}
+	div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {top:50%; transform:translateY(-50%); height:auto; opacity:.375; margin:0 .5rem;}
 	/* Blog Section: Page Panel */
 	/* div#container section.blog div.grid div.body nav.pagepanel {} */
 	/* Blog Section: Page Toggler */

@@ -357,11 +357,11 @@ function loadFilterGroups() {
 
 			// Get value of current filter item. 
 			let itemvalue = filteritem.value;
-			console.log('Filter item value:',itemvalue);
+			// console.log('Filter item value:',itemvalue);
 
 			// Get name of current filter item. 
 			let itemname = filtergroup.filteritemnamer(itemvalue);
-			console.log('Filter item name:',itemname);
+			// console.log('Filter item name:',itemname);
 
 			// Create unique id for current filter item. 
 			let uniqueitemid = filterid + itemvalue;

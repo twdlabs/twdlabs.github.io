@@ -34,8 +34,8 @@ const linkData = {
 			},
 			{
 				icontag:'profile',
-				linkurl:'./about',
-				linkname:'About',
+				linkurl:'./bio',
+				linkname:'Brief Bio',
 			},
 			{
 				icontag:'chatbubble',
