@@ -19,7 +19,7 @@
 	<body>
 
 		<!-- #container -->
-		<div id="container">
+		<div id="container" class="zoom">
 				
 			<!-- slideshow -->
 			<main class="slideshow">
@@ -27,41 +27,31 @@
 				<!-- grid -->
 				<div class="grid">
 
-					<!-- slidelist -->
-					<ul class="slidelist">
+					<!-- slides -->
+					<div class="slides">
 
-						<!-- slideitem -->
-						<li class="slideitem" data-slideindex="0">
+						<!-- slidelist -->
+						<ul class="slidelist">
+	
+							<!-- slideitem -->
+							<li class="slideitem" data-slideindex="0">
+	
+								<!-- img -->
+								<img class="img" src="./images/xyz.jpg" alt="a" title="a">
+								<!-- /img -->
+	
+								<!-- caption -->
+								<span class="caption">caption</span>
+								<!-- /caption -->
+	
+							</li>
+							<!-- /slideitem -->
+	
+						</ul>
+						<!-- /slidelist -->
 
-							<!-- img -->
-							<img class="img" src="./images/xyz.jpg" alt="d" title="d">
-							<!-- /img -->
-
-						</li>
-						<!-- /slideitem -->
-
-						<!-- slideitem -->
-						<li class="slideitem" data-slideindex="0">
-
-							<!-- img -->
-							<img class="img" src="./images/xyz.jpg" alt="a" title="a">
-							<!-- /img -->
-
-						</li>
-						<!-- /slideitem -->
-
-						<!-- slideitem -->
-						<li class="slideitem" data-slideindex="0">
-
-							<!-- img -->
-							<img class="img" src="./images/xyz.jpg" alt="b" title="b">
-							<!-- /img -->
-
-						</li>
-						<!-- /slideitem -->
-
-					</ul>
-					<!-- /slidelist -->
+					</div>
+					<!-- /slides -->
 
 					<!-- controls -->
 					<div class="controls">
@@ -77,7 +67,7 @@
 						<!-- /dotlist -->
 	
 						<!-- prev -->
-						<a class="delta prev" onclick="console.log('Prev slide'); deltaSlide(-1);">
+						<a class="delta prev" onclick="displaceSlide(-1)">
 		
 							<!-- icon -->
 							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -89,7 +79,7 @@
 						<!-- /prev -->
 		
 						<!-- next -->
-						<a class="delta next" onclick="console.log('Next slide'); deltaSlide(1);">
+						<a class="delta next" onclick="displaceSlide(+1)">
 		
 							<!-- icon -->
 							<svg class="icon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -110,7 +100,7 @@
 			<!-- /slideshow -->
 
 			<!-- toggle -->
-			<button class="toggle" onclick="document.getElementById('container').classList.toggle('zoom')">Zoom</button>
+			<button class="toggle" onclick="toggleZoom()">Zoom</button>
 			<!-- /toggle -->
 			
 		</div>

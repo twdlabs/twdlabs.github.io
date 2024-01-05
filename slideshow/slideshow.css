@@ -44,15 +44,20 @@ div#container main.slideshow {box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200
 div#container.zoom main.slideshow {width:25vmin; overflow:visible;}
 div#container main.slideshow div.grid {position:relative;}
 
+/* Slideshow: Slide Controls */
+/* div#container main.slideshow div.grid div.slides {} */
 /* Slideshow: Slide List */
-div#container main.slideshow div.grid ul.slidelist {display:flex; flex-direction:row; transition:.25s;}
-div#container main.slideshow div.grid ul.slidelist {list-style:none; padding:0; padding-top:var(--aspectratio); margin:0;}
-div#container main.slideshow div.grid ul.slidelist li.slideitem {position:relative; width:100%; flex-shrink:0; padding-top:var(--aspectratio);}
-div#container main.slideshow div.grid ul.slidelist li.slideitem {position:absolute; top:0; left:0;}
-div#container main.slideshow div.grid ul.slidelist li.slideitem.prev {transform:translateX(-100%);}
-div#container main.slideshow div.grid ul.slidelist li.slideitem.next {transform:translateX(100%);}
-div#container main.slideshow div.grid ul.slidelist li.slideitem img.img {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container main.slideshow div.grid ul.slidelist li.slideitem img.img {background-color:limegreen; display:block; object-fit:cover;}
+div#container main.slideshow div.grid div.slides ul.slidelist {display:flex; flex-direction:row;}
+div#container main.slideshow div.grid div.slides ul.slidelist {list-style:none; padding:0; padding-top:var(--aspectratio); margin:0;}
+div#container main.slideshow div.grid div.slides ul.slidelist/* .smooth */ {transition:1s;}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem {position:relative; display:grid; place-items:center; width:100%; flex-shrink:0; padding-top:var(--aspectratio);}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem {position:absolute; top:0; left:0;}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem.prev {transform:translateX(-100%);}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem.next {transform:translateX(100%);}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem img.img {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem img.img {background-color:limegreen; display:block; object-fit:cover;}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem span.caption {position:absolute;}
+div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem span.caption {background-color:var(--blackglass); color:white; padding:.5rem 1rem; border-radius:.25rem;}
 
 /* Slideshow: Slide Controls */
 /* div#container main.slideshow div.grid div.controls {} */

@@ -2,20 +2,33 @@
 
 
 // Get destination for slide images. 
-const slidesdestination = document.querySelector('div#container main.slideshow div.grid ul.slidelist');
+const container = document.querySelector('div#container');
+console.log('container:',container);
+
+// Get box for slides. 
+const slidebox = document.querySelector('div#container main.slideshow div.grid div.slides');
+console.log('slidebox:',slidebox);
+
+// Get destination for slide images. 
+let slidelistdestination = document.querySelector('div#container main.slideshow div.grid div.slides ul.slidelist');
+console.log('slidelistdestination:',slidelistdestination);
 
 // Get destination for control dots. 
 const controldotsdestination = document.querySelector('div#container main.slideshow div.grid div.controls ul.dotlist');
+console.log('controldotsdestination:',controldotsdestination);
 
 
 /*****/
 
 
 // Define automatic time per slide (in ms). 
-const dt = 1500;
+const dt = 12000;
+
+// Define slide transition time. 
+const ddt = 1000;
 
 // Initialize slide index. 
-let currentslideindex = 0;
+let currentslideindex = -1;
 
 
 /*****/
@@ -25,14 +38,22 @@ let currentslideindex = 0;
 loadSlideControls();
 
 // Select initial slide. 
-selectSlideByIndex(currentslideindex);
+selectSlideByIndex(0,true);
 
-// Start slide motion. 
-// startSlideMotion();
+// Start auto-slide mode. 
+// startAutoSlide();
+
+// Activate slideshow shortcuts. 
+activateSlideshowShortcuts();
 
 
 /*****/
 
+
+// Toggle zoomed out mode. 
+function toggleZoom() {
+	container.classList.toggle('zoom');
+}
 
 // Load slideshow controller. 
 function loadSlideControls() {
@@ -89,17 +110,117 @@ function loadSlideControls() {
 	}
 }
 
-// Select slide by index. 
-function selectSlideByIndex(selectedindex) {
-	console.log('Selected slide index:',1*selectedindex);
+// Go to adjacent (prev/next) slide. 
+function displaceSlide(diff) {
+
+	// Initialize new index. 
+	let newindex = currentslideindex + diff;
+	// console.log('New index:',newindex);
+
+	// Check new index. 
+	newindex = checkIndex(newindex);
+	// console.log('New index:',newindex);
+
+	// Show slide at new index. 
+	selectSlideByIndex(newindex);
+
+	/****/
+
+	// Reset interval timer. 
+	// clearTimeout(slideSwitcher);
+	// slideSwitcher = setTimeout(function() {
+	// 	displaceSlide(1);
+	// },dt);
+}
+
+// Check index. 
+function checkIndex(newindex) {
 	
-	// Show selected slide position. 
-	// showSelectedSlide();
-	loadSelectedSlide();
+	// Get total number of slides. 
+	let totalslidecount = slideshowdata.length;
+	// console.log('totalslidecount:',totalslidecount);
+
+	// Handle index underflow. 
+	if(newindex<0) {
+		// console.log('Underflow');
+		newindex += totalslidecount;
+	}
+
+	// Handle index overflow. 
+	if(newindex>=totalslidecount) {
+		// console.log('Overflow');
+		newindex -= totalslidecount;
+	}
+
+	// Return new index. 
+	return newindex;
+}
+
+// Activate slideshow shortcuts. 
+function activateSlideshowShortcuts() {
+
+	// Check for shortcut key upon key release. 
+	document.addEventListener('keyup',checkShortcutKey);
+
+	/****/
+
+	// Check for shortcut key. 
+	function checkShortcutKey(event) {
+		// console.log(event);
+
+		// Press spacebar: Toggle zoomed out dev mode. 
+		if(event.keyCode==32 || event.key==' ') toggleZoom();
+		// Press left arrow: Toggle slideshow play. 
+		if(event.keyCode==37) displaceSlide(-1);
+		// Press right arrow: Toggle developer mode. 
+		if(event.keyCode==39) displaceSlide(+1);
+	}
+}
+
+// Select slide by index. 
+function selectSlideByIndex(selectedindex,justStarted) {
+	console.log('Selected slide index:',selectedindex);
+
+	// 
+	let goingfwd = true;
+	let xfactor = +1;
+
+	// // Check if going backward. 
+	// if(selectedindex < currentslideindex) {
+	// 	goingfwd = false;
+	// 	xfactor = -1;
+	// 	// console.log('Back');
+	// }
+	// // Check if going forward. 
+	// if(selectedindex > currentslideindex) {
+	// 	goingfwd = true;
+	// 	xfactor = +1;
+	// 	// console.log('Forward');
+	// }
+
+	// Save index of newly selected slide. 
+	currentslideindex = 1*selectedindex;
+
+	// Load instantly if just started. 
+	if(justStarted) {
+
+		// Load newly selected slide. 
+		loadSelectedSlide();
+	}
+
+	// Load smoothly if not just started. 
+	else {
+
+		// Move smoothly to newly selected slide. 
+		glideToNewSlide();
+
+		// Reload selected slide. 
+		setTimeout(loadSelectedSlide,ddt);
+	}
 
 	// Highlight selected dot in controller. 
 	highlightSelectedDot();
-	
+
 	/****/
 
 	// Highlight selected dot in controller. 
@@ -125,118 +246,167 @@ function selectSlideByIndex(selectedindex) {
 		}
 	}
 
-	// Show selected slide position. 
-	function showSelectedSlide() {
+	// Glide to new slide. 
+	function glideToNewSlide() {
 
-		// TODO: Add prev slide. 
+		// Get index for newly selected slide. 
+		let newslideindex = currentslideindex;
 
-		// TODO: Add selected slide. 
+		// Create layout for new slide. 
+		let newslidelayout = createSlideLayout(newslideindex, goingfwd?'next':'prev');
 
-		// TODO: Add next slide. 
+		// Load adjacent slide. 
+		slidelistdestination.insertAdjacentHTML('beforeend',newslidelayout);
 
-		// Get horizontal offset using selected index. 
-		let dx = -100*selectedindex;
-
-		// Show selected slide by applying horizontal offset to inner slide container. 
-		slidesdestination.style.transform = `translateX(${dx}%)`;
+		// Move smoothly to adjacent slide. 
+		slidelistdestination.style.transform = `translateX(${-100*xfactor}%)`;
 	}
 
-	// Load data for currently selected slide and both adjacent slides. 
+	// Load currently selected slide. 
 	function loadSelectedSlide() {
+		console.log('Selected slide index:',currentslideindex);
 	
 		// Initialize result. 
 		let slideresults = '';
 	
 		// Get index for prev slide. 
-		let previndex = getDeltaSlideIndex(-1);
-		console.log('previndex:',previndex);
-		console.log('currentindex:',currentslideindex);
-		// Get index for next slide. 
-		let nextindex = getDeltaSlideIndex(+1);
-		console.log('nextindex:',nextindex);
-	
+		// let previndex = getDeltaSlideIndex(-1);
+		// console.log('previndex:',previndex);
 		// Create layout for prev slide. 
-		slideresults += createSlideLayout(previndex,'prev');
+		// slideresults += createSlideLayout(previndex,'prev');
+	
 		// Create layout for current slide. 
 		slideresults += createSlideLayout(currentslideindex,'');
+
+		// Get index for next slide. 
+		// let nextindex = getDeltaSlideIndex(+1);
+		// console.log('nextindex:',nextindex);
 		// Create layout for next slide. 
-		slideresults += createSlideLayout(nextindex,'next');
+		// slideresults += createSlideLayout(nextindex,'next');
+
+		// console.log('Slides:',previndex,currentslideindex,nextindex);
+
+		// Load new version of slide list. 
+		loadNewSlideList();
+
+		// Save new destination for slide list. 
+		saveNewSlideList();
+
+		/***/
+
+		// Load new version of slide list. 
+		function loadNewSlideList() {
+
+			// Reset position to center slide. 
+			slidebox.innerHTML = `
+			<!-- slidelist -->
+			<ul class="slidelist">${slideresults}</ul>
+			<!-- /slidelist -->`;
 	
-		// Display results on page. 
-		slidesdestination.innerHTML = slideresults;
+			// Display results on page. 
+			// slidelistdestination.innerHTML = slideresults;
+	
+			// Reset position to center slide. 
+			// slidelistdestination.style.transform = '';
+		}
+
+		// Save new destination for slide list. 
+		function saveNewSlideList() {
+			// Refresh destination for slide images. 
+			slidelistdestination = document.querySelector('div#container main.slideshow div.grid div.slides ul.slidelist');
+		}
+	}
+	
+	// Create layout for slide at given index. 
+	function createSlideLayout(index,slideposition) {
+
+		// Get data for current slide. 
+		let slidedata = slideshowdata[index];
+		// Get image url for current slide. 
+		let imgurl = slidedata.imageurl;
+		// Get caption for current slide. 
+		let caption = slidedata.caption;
+
+		// Compile layout for given slide. 
+		return `
+		<!-- slideitem -->
+		<li class="slideitem ${slideposition}" data-slideindex="${index}">
+
+			<!-- img -->
+			<img class="img" src="${imgurl}" alt="${caption}" title="${caption}">
+			<!-- /img -->
+
+			<!-- caption -->
+			<span class="caption">${caption}</span>
+			<!-- /caption -->
+
+		</li>
+		<!-- /slideitem -->`;
+	}
+}
+
+
+
+
+/*****/
+
+
+
+
+
+// Select slide by index. 
+function selectSlideByIndex000(selectedindex,justStarted) {
+	
+	// Show selected slide position. 
+	// showSelectedSlide();
+	
+	/****/
+
+	// Load currently selected slide. 
+	function loadSelectedSlide() {
+
+		// 
 	
 		/***/
 	
-		// Create layout for slide at given index. 
-		function createSlideLayout(index,note) {
+		// // Get index of adjacent slide. 
+		// function getDeltaSlideIndex(diff) {
 	
-			// Get data for current slide. 
-			let slidedata = slideshowdata[index];
-			// Get image url for current slide. 
-			let imgurl = slidedata.imageurl;
-			// Get caption for current slide. 
-			let caption = slidedata.caption;
+		// 	// Initialize new index. 
+		// 	let newindex = currentslideindex + diff;
+		// 	// console.log('New index:',newindex);
+
+		// 	// Check new index. 
+		// 	newindex = checkIndex(newindex);
+		// 	// console.log('New index:',newindex);
 	
-			// Compile layout for given slide. 
-			return `
-			<!-- slideitem -->
-			<li class="slideitem ${note}" data-slideindex="${index}">
-	
-				<!-- img -->
-				<img class="img" src="${imgurl}" alt="${caption}" title="${caption}">
-				<!-- /img -->
-	
-			</li>
-			<!-- /slideitem -->`;
-		}
-	
-		// Get delta slide index. 
-		function getDeltaSlideIndex(diff) {
-	
-			// Get total number of slides. 
-			let totalslidecount = slideshowdata.length;
-	
-			// Initialize new index. 
-			let newindex = currentslideindex + diff;
-	
-			// Check new index. 
-			if(newindex<0) newindex += totalslidecount;
-			if(newindex>=totalslidecount) newindex -= totalslidecount;
-	
-			// Return new index. 
-			return newindex;
-		}
+		// 	// Return new index. 
+		// 	return newindex;
+		// }
 	}
 }
 
-// Go to adjacent (prev/next) slide. 
-function deltaSlide(dn) {
 
-	// Increment current index. 
-	currentslideindex += dn;
-	normalizeCicrularIndex();
 
-	// Show slide at new index. 
-	selectSlideByIndex(currentslideindex);
+// // Start slide motion: cascade of animated switch to new slide every few seconds. 
+// function startAutoSlide() {
+// 	let slideSwitcher = setTimeout(function() {
+// 		displaceSlide(1);
+// 	},dt);
+// }
 
-	// Reset interval timer. 
-	clearTimeout(slideSwitcher);
-	slideSwitcher = setTimeout(function() {
-		deltaSlide(1);
-	},dt);
+// // Show selected slide position. 
+// function showSelectedSlide() {
 
-	/****/
+// 	// TODO: Add prev slide. 
 
-	// Correct index when out of bounds. 
-	function normalizeCicrularIndex() {
-		if(currentslideindex<0) currentslideindex = slideshowdata.length-1;
-		if(currentslideindex>=slideshowdata.length) currentslideindex = 0;
-	}
-}
+// 	// TODO: Add selected slide. 
 
-// Start slide motion: cascade of animated switch to new slide every few seconds. 
-function startSlideMotion() {
-	let slideSwitcher = setTimeout(function() {
-		deltaSlide(1);
-	},dt);
-}
+// 	// TODO: Add next slide. 
+
+// 	// Get horizontal offset using selected index. 
+// 	let dx = -100*selectedindex;
+
+// 	// Show selected slide by applying horizontal offset to inner slide container. 
+// 	slidelistdestination.style.transform = `translateX(${dx}%)`;
+// }
