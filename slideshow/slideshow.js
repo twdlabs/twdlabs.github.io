@@ -22,13 +22,19 @@ console.log('controldotsdestination:',controldotsdestination);
 
 
 // Define automatic time per slide (in ms). 
-const dt = 12000;
+const dt = 5000;
 
 // Define slide transition time. 
 const ddt = 1000;
 
 // Initialize slide index. 
 let currentslideindex = -1;
+
+// Set state of slide movement. 
+let currentlyMoving = false;
+
+// Initialize automatic slide shifter. 
+let autoSlideShifter;
 
 
 /*****/
@@ -40,11 +46,11 @@ loadSlideControls();
 // Select initial slide. 
 selectSlideByIndex(0,true);
 
-// Start auto-slide mode. 
-// startAutoSlide();
-
 // Activate slideshow shortcuts. 
 activateSlideshowShortcuts();
+
+// Start automatic slide shifter. 
+startAutoSlide();
 
 
 /*****/
@@ -124,13 +130,9 @@ function displaceSlide(diff) {
 	// Show slide at new index. 
 	selectSlideByIndex(newindex);
 
-	/****/
-
-	// Reset interval timer. 
-	// clearTimeout(slideSwitcher);
-	// slideSwitcher = setTimeout(function() {
-	// 	displaceSlide(1);
-	// },dt);
+	// Reset automatic slide shifter. 
+	clearTimeout(autoSlideShifter);
+	startAutoSlide();
 }
 
 // Check index. 
@@ -156,29 +158,12 @@ function checkIndex(newindex) {
 	return newindex;
 }
 
-// Activate slideshow shortcuts. 
-function activateSlideshowShortcuts() {
-
-	// Check for shortcut key upon key release. 
-	document.addEventListener('keyup',checkShortcutKey);
-
-	/****/
-
-	// Check for shortcut key. 
-	function checkShortcutKey(event) {
-		// console.log(event);
-
-		// Press spacebar: Toggle zoomed out dev mode. 
-		if(event.keyCode==32 || event.key==' ') toggleZoom();
-		// Press left arrow: Toggle slideshow play. 
-		if(event.keyCode==37) displaceSlide(-1);
-		// Press right arrow: Toggle developer mode. 
-		if(event.keyCode==39) displaceSlide(+1);
-	}
-}
-
 // Select slide by index. 
 function selectSlideByIndex(selectedindex,justStarted) {
+	if(currentlyMoving) {
+		console.log('Still moving from last operation...');
+		return;
+	}
 	console.log('Selected slide index:',selectedindex);
 
 	// 
@@ -249,6 +234,9 @@ function selectSlideByIndex(selectedindex,justStarted) {
 	// Glide to new slide. 
 	function glideToNewSlide() {
 
+		// Set state of slide movement. 
+		currentlyMoving = true;
+
 		// Get index for newly selected slide. 
 		let newslideindex = currentslideindex;
 
@@ -291,6 +279,9 @@ function selectSlideByIndex(selectedindex,justStarted) {
 
 		// Save new destination for slide list. 
 		saveNewSlideList();
+
+		// Set state of slide movement. 
+		currentlyMoving = false;
 
 		/***/
 
@@ -345,6 +336,27 @@ function selectSlideByIndex(selectedindex,justStarted) {
 	}
 }
 
+// Activate slideshow shortcuts. 
+function activateSlideshowShortcuts() {
+
+	// Check for shortcut key upon key release. 
+	document.addEventListener('keyup',checkShortcutKey);
+
+	/****/
+
+	// Check for shortcut key. 
+	function checkShortcutKey(event) {
+		// console.log(event);
+
+		// Press spacebar: Toggle zoomed out dev mode. 
+		if(event.keyCode==32 || event.key==' ') toggleZoom();
+		// Press left arrow: Toggle slideshow play. 
+		if(event.keyCode==37) displaceSlide(-1);
+		// Press right arrow: Toggle developer mode. 
+		if(event.keyCode==39) displaceSlide(+1);
+	}
+}
+
 
 
 
@@ -353,60 +365,8 @@ function selectSlideByIndex(selectedindex,justStarted) {
 
 
 
-
-// Select slide by index. 
-function selectSlideByIndex000(selectedindex,justStarted) {
-	
-	// Show selected slide position. 
-	// showSelectedSlide();
-	
-	/****/
-
-	// Load currently selected slide. 
-	function loadSelectedSlide() {
-
-		// 
-	
-		/***/
-	
-		// // Get index of adjacent slide. 
-		// function getDeltaSlideIndex(diff) {
-	
-		// 	// Initialize new index. 
-		// 	let newindex = currentslideindex + diff;
-		// 	// console.log('New index:',newindex);
-
-		// 	// Check new index. 
-		// 	newindex = checkIndex(newindex);
-		// 	// console.log('New index:',newindex);
-	
-		// 	// Return new index. 
-		// 	return newindex;
-		// }
-	}
+// Start automatic slide shifter. 
+function startAutoSlide() {
+	// Start slide motion: cascade of animated switch to new slide every few seconds. 
+	autoSlideShifter = setTimeout( ()=>{ displaceSlide(+1) } ,dt);
 }
-
-
-
-// // Start slide motion: cascade of animated switch to new slide every few seconds. 
-// function startAutoSlide() {
-// 	let slideSwitcher = setTimeout(function() {
-// 		displaceSlide(1);
-// 	},dt);
-// }
-
-// // Show selected slide position. 
-// function showSelectedSlide() {
-
-// 	// TODO: Add prev slide. 
-
-// 	// TODO: Add selected slide. 
-
-// 	// TODO: Add next slide. 
-
-// 	// Get horizontal offset using selected index. 
-// 	let dx = -100*selectedindex;
-
-// 	// Show selected slide by applying horizontal offset to inner slide container. 
-// 	slidelistdestination.style.transform = `translateX(${dx}%)`;
-// }
