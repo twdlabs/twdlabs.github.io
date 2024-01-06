@@ -190,7 +190,7 @@ class SearchOverlay {
 			// 
 			return `
 			<!-- resulthead -->
-			<h2 class="resulthead ${ (numResultsFound>0) ? '' : 'empty' }">
+			<h1 class="resulthead ${ (numResultsFound>0) ? '' : 'empty' }">
 	
 				<!-- searchquery -->
 				<span class="searchquery">"${searchquery}"</span>
@@ -200,7 +200,7 @@ class SearchOverlay {
 				<span class="resultcount">${numResultsFound} results found</span>
 				<!-- /resultcount -->
 	
-			</h2>
+			</h1>
 			<!-- /resulthead -->`;
 		}
 
@@ -364,7 +364,7 @@ class SearchOverlay {
 				<div class="resultset">
 
 					<!-- resulthead -->
-					<h3 class="resulthead ${''}">
+					<h2 class="resulthead ${''}">
 						
 						<!-- caption -->
 						<span class="caption">${ currentSet.setname }</span>
@@ -374,7 +374,7 @@ class SearchOverlay {
 						<span class="count">${ numMatchesInCurrentSet }</span>
 						<!-- /count -->
 
-					</h3>
+					</h2>
 					<!-- /resulthead -->
 			
 					<!-- resultlist -->

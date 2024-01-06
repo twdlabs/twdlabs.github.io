@@ -42,7 +42,7 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 /* Main Container */
 
-div#container {background-color:var(--mainbgcolor); background-image:var(--bgimg); height:100vh;}
+div#container {background-color:var(--mainbgcolor); background-image:var(--bgimg); min-height:100vh;}
 div#container {position:relative;}
 div#container div.openbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
 div#container div.openbtn {background-color:var(--btnbgcolor); background-color:#888; color:var(--btnbgcolor); font-size:4rem; cursor:pointer; padding:.75em .875em; border-radius:.25em; box-shadow:var(--boxshadowx);}
