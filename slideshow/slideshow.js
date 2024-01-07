@@ -108,7 +108,7 @@ function loadSlideControls() {
 			let dot = event.currentTarget;
 			
 			// Get index of selected dot. 
-			let index = dot.getAttribute('data-slideindex');
+			let index = dot.getAttribute('data-slideindex') * 1;
 			
 			// Select slide by given index. 
 			selectSlideByIndex(index);
@@ -120,7 +120,7 @@ function loadSlideControls() {
 function displaceSlide(diff) {
 
 	// Initialize new index. 
-	let newindex = currentslideindex + diff;
+	let newindex = 1*currentslideindex + 1*diff;
 	// console.log('New index:',newindex);
 
 	// Check new index. 
@@ -137,6 +137,12 @@ function displaceSlide(diff) {
 
 // Check index. 
 function checkIndex(newindex) {
+
+	// Check if going backward. 
+	if(newindex < currentslideindex) goingfwd = false;
+	// Check if going forward. 
+	if(newindex > currentslideindex) goingfwd = true;
+	console.log( goingfwd ? 'Forward' : 'Back' );
 	
 	// Get total number of slides. 
 	let totalslidecount = slideshowdata.length;
@@ -166,22 +172,8 @@ function selectSlideByIndex(selectedindex,justStarted) {
 	}
 	console.log('Selected slide index:',selectedindex);
 
-	// 
-	let goingfwd = true;
-	let xfactor = +1;
-
-	// // Check if going backward. 
-	// if(selectedindex < currentslideindex) {
-	// 	goingfwd = false;
-	// 	xfactor = -1;
-	// 	// console.log('Back');
-	// }
-	// // Check if going forward. 
-	// if(selectedindex > currentslideindex) {
-	// 	goingfwd = true;
-	// 	xfactor = +1;
-	// 	// console.log('Forward');
-	// }
+	// Check if staying put (selected slide already in place). 
+	if(selectedindex == currentslideindex) return;
 
 	// Save index of newly selected slide. 
 	currentslideindex = 1*selectedindex;
@@ -196,7 +188,7 @@ function selectSlideByIndex(selectedindex,justStarted) {
 	// Load smoothly if not just started. 
 	else {
 
-		// Move smoothly to newly selected slide. 
+		// Glide smoothly to newly selected slide. 
 		glideToNewSlide();
 
 		// Reload selected slide. 
@@ -231,7 +223,7 @@ function selectSlideByIndex(selectedindex,justStarted) {
 		}
 	}
 
-	// Glide to new slide. 
+	// Glide smoothly to new slide. 
 	function glideToNewSlide() {
 
 		// Set state of slide movement. 
@@ -246,8 +238,12 @@ function selectSlideByIndex(selectedindex,justStarted) {
 		// Load adjacent slide. 
 		slidelistdestination.insertAdjacentHTML('beforeend',newslidelayout);
 
+		// Determine x-factor. 
+		let xfactor = goingfwd ? +1 : -1;
+		let dx = -100 * xfactor;
+
 		// Move smoothly to adjacent slide. 
-		slidelistdestination.style.transform = `translateX(${-100*xfactor}%)`;
+		slidelistdestination.style.transform = `translateX(${dx}%)`;
 	}
 
 	// Load currently selected slide. 
@@ -258,19 +254,19 @@ function selectSlideByIndex(selectedindex,justStarted) {
 		let slideresults = '';
 	
 		// Get index for prev slide. 
-		// let previndex = getDeltaSlideIndex(-1);
+		let previndex = checkIndex(currentslideindex - 1);
 		// console.log('previndex:',previndex);
 		// Create layout for prev slide. 
-		// slideresults += createSlideLayout(previndex,'prev');
+		slideresults += createSlideLayout(previndex,'prev');
 	
 		// Create layout for current slide. 
 		slideresults += createSlideLayout(currentslideindex,'');
 
 		// Get index for next slide. 
-		// let nextindex = getDeltaSlideIndex(+1);
+		let nextindex = checkIndex(currentslideindex + 1);
 		// console.log('nextindex:',nextindex);
 		// Create layout for next slide. 
-		// slideresults += createSlideLayout(nextindex,'next');
+		slideresults += createSlideLayout(nextindex,'next');
 
 		// console.log('Slides:',previndex,currentslideindex,nextindex);
 
@@ -356,14 +352,6 @@ function activateSlideshowShortcuts() {
 		if(event.keyCode==39) displaceSlide(+1);
 	}
 }
-
-
-
-
-/*****/
-
-
-
 
 // Start automatic slide shifter. 
 function startAutoSlide() {
