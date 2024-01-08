@@ -71,6 +71,9 @@ function loadColorThemeById(themeid) {
 	// Apply selected theme: green. 
 	else if(themeid=='g') loadGreenTheme();
 
+	// Apply selected theme: green. 
+	else if(themeid=='o') loadOrangeTheme();
+
 	// Update state of theme buttons. 
 	updateThemeBtns();
 
@@ -79,11 +82,22 @@ function loadColorThemeById(themeid) {
 	// Load blue theme. 
 	function loadBlueTheme() {
 		document.body.classList.add('b');
+		document.body.classList.remove('g');
+		document.body.classList.remove('o');
 	}
 
 	// Load green theme. 
 	function loadGreenTheme() {
+		document.body.classList.add('g');
 		document.body.classList.remove('b');
+		document.body.classList.remove('o');
+	}
+
+	// Load orange theme. 
+	function loadOrangeTheme() {
+		document.body.classList.add('o');
+		document.body.classList.remove('b');
+		document.body.classList.remove('g');
 	}
 
 	// Update state of theme selector buttons. 

@@ -7,6 +7,7 @@ div#container section.desktop {display:flex; flex-direction:column;  transition:
 
 
 /* Desktop Section: Group */
+div#container section.desktop div.grid ul.grouplist {display:none;}
 div#container section.desktop div.grid ul.grouplist {list-style:none; padding:0; margin:0; margin-top:2rem;}
 div#container section.desktop div.grid ul.grouplist li.group {background-color:var(--grpbackcolor); overflow:hidden; border-radius:.5rem; margin-top:.875rem;}
 div#container section.desktop div.grid ul.grouplist li.group {display:flex; flex-direction:column; align-items:stretch; box-shadow:var(--boxshadow);}
@@ -28,23 +29,24 @@ div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a
 div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item svg.icon {display:none;}
 div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item svg.icon {font-size:4rem;}
 div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item span.caption {font-size:1.125rem; max-width:100%; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-div#container section.desktop {display:none;}
+/* div#container section.desktop {display:none;} */
 
 
 /* Desktop Section: Mini-Frame */
-/* div#container section.desktop div.grid figure.miniframe {position:absolute; top:0; left:0; max-width:32rem; transform:translateY(1rem);} */
-/* div#container section.desktop div.grid figure.miniframe {top:2rem; left:2rem; transform:translate(10rem,10rem);} */
-div#container section.desktop div.grid figure.miniframe {background-color:white; width:100%; --dx:0;}
-div#container section.desktop div.grid figure.miniframe {padding:.25rem; border:.25rem solid white; border-radius:.75rem; margin:0; margin-top:2rem; box-shadow:var(--boxshadow);}
-/* div#container section.desktop div.grid figure.miniframe {opacity:0; visibility:hidden; transition:.25s; transition-delay:.375s;} */
-div#container section.desktop div.grid figure.miniframe:hover {opacity:1; visibility:visible;}
-div#container section.desktop div.grid figure.miniframe.active {opacity:1; visibility:visible;}
-/* div#container section.desktop div.grid figure.miniframe::after {position:absolute; bottom:100%; left:var(--dx); transform:translateX(-50%);} */
-/* div#container section.desktop div.grid figure.miniframe::after {content:''; border:.75rem solid transparent; border-bottom-color:white;} */
-/* div#container section.desktop div.grid figure.miniframe::after {background-color:white; height:2rem; width:2rem;} */
-div#container section.desktop div.grid figure.miniframe div.bin {position:relative; padding-top:100%; padding-top:56.25%;}
-div#container section.desktop div.grid figure.miniframe div.bin iframe.page {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* background-color:var(--blacksheet); */ display:block; width:100%; border:solid; border-radius:.5rem;}
+/* div#container section.desktop div.grid figure.previewer {position:absolute; top:0; left:0; max-width:32rem; transform:translateY(1rem);} */
+/* div#container section.desktop div.grid figure.previewer {top:2rem; left:2rem; transform:translate(10rem,10rem);} */
+div#container section.desktop div.grid figure.previewer {background-color:white; width:100%; --dx:0;}
+div#container section.desktop div.grid figure.previewer {padding:.25rem; border:.25rem solid white; border-radius:.75rem; margin:0; margin-top:2rem; box-shadow:var(--boxshadow);}
+/* div#container section.desktop div.grid figure.previewer {opacity:0; visibility:hidden; transition:.25s; transition-delay:.375s;} */
+div#container section.desktop div.grid figure.previewer:hover {opacity:1; visibility:visible;}
+div#container section.desktop div.grid figure.previewer.active {opacity:1; visibility:visible;}
+/* div#container section.desktop div.grid figure.previewer::after {position:absolute; bottom:100%; left:var(--dx); transform:translateX(-50%);} */
+/* div#container section.desktop div.grid figure.previewer::after {content:''; border:.75rem solid transparent; border-bottom-color:white;} */
+/* div#container section.desktop div.grid figure.previewer::after {background-color:white; height:2rem; width:2rem;} */
+div#container section.desktop div.grid figure.previewer div.bin {--aspectratio:100%; --aspectratio:87.5%; --aspectratio:75%; --aspectratio:62.5%; --aspectratio:56.25%; --aspectratio:50%;}
+div#container section.desktop div.grid figure.previewer div.bin {position:relative; padding-top:var(--aspectratio);}
+div#container section.desktop div.grid figure.previewer div.bin iframe.page {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container section.desktop div.grid figure.previewer div.bin iframe.page {/* background-color:var(--blacksheet); */ display:block; width:100%; border:solid; border-radius:.5rem;}
 
 
 
@@ -58,8 +60,8 @@ div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* 
 	/* div#container section.desktop div.grid {} */
 
 	/* Desktop Section: Mini-Frame */
-	/* div#container section.desktop div.grid figure.miniframe {} */
-	/* div#container section.desktop div.grid figure.miniframe iframe.page {} */
+	/* div#container section.desktop div.grid figure.previewer {} */
+	/* div#container section.desktop div.grid figure.previewer iframe.page {} */
 }
 
 /* Medium Tablet Screen */
@@ -70,8 +72,8 @@ div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* 
 	/* div#container section.desktop div.grid {} */
 
 	/* Desktop Section: Mini-Frame */
-	/* div#container section.desktop div.grid figure.miniframe {} */
-	/* div#container section.desktop div.grid figure.miniframe iframe.page {} */
+	/* div#container section.desktop div.grid figure.previewer {} */
+	/* div#container section.desktop div.grid figure.previewer iframe.page {} */
 }
 
 /* Small Tablet Screen */
@@ -92,8 +94,8 @@ div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* 
 	div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item span.caption {font-size:1rem}
 
 	/* Desktop Section: Mini-Frame */
-	/* div#container section.desktop div.grid figure.miniframe {} */
-	/* div#container section.desktop div.grid figure.miniframe iframe.page {} */
+	/* div#container section.desktop div.grid figure.previewer {} */
+	/* div#container section.desktop div.grid figure.previewer iframe.page {} */
 }
 
 /* Big Smartphone Screen */
@@ -113,8 +115,8 @@ div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* 
 	div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item span.caption {font-size:.875rem;}
 
 	/* Desktop Section: Mini-Frame */
-	/* div#container section.desktop div.grid figure.miniframe {} */
-	/* div#container section.desktop div.grid figure.miniframe iframe.page {} */
+	/* div#container section.desktop div.grid figure.previewer {} */
+	/* div#container section.desktop div.grid figure.previewer iframe.page {} */
 }
 
 /* Medium Smartphone Screen */
@@ -134,8 +136,8 @@ div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* 
 	div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item span.caption {font-size:.75rem;}
 
 	/* Desktop Section: Mini-Frame */
-	/* div#container section.desktop div.grid figure.miniframe {} */
-	/* div#container section.desktop div.grid figure.miniframe iframe.page {} */
+	/* div#container section.desktop div.grid figure.previewer {} */
+	/* div#container section.desktop div.grid figure.previewer iframe.page {} */
 }
 
 /* Small Smartphone Screen */
@@ -155,6 +157,6 @@ div#container section.desktop div.grid figure.miniframe div.bin iframe.page {/* 
 	/* div#container section.desktop div.grid ul.grouplist li.group div.gbody div.bin a.item span.caption {} */
 
 	/* Desktop Section: Mini-Frame */
-	/* div#container section.desktop div.grid figure.miniframe {} */
-	/* div#container section.desktop div.grid figure.miniframe iframe.page {} */
+	/* div#container section.desktop div.grid figure.previewer {} */
+	/* div#container section.desktop div.grid figure.previewer iframe.page {} */
 }

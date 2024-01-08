@@ -6,7 +6,7 @@ const postFilterData = [
 
 	{
 		filtername:'Author',
-		filterid:'authorid',
+		filtergroupid:'authorid',
 		filteritems:[
 			{
 				value:'authora',
@@ -26,7 +26,7 @@ const postFilterData = [
 
 	{
 		filtername:'Collection',
-		filterid:'collectionid',
+		filtergroupid:'collectionid',
 		filteritems:[
 			{
 				value:'collectiona',
@@ -46,7 +46,7 @@ const postFilterData = [
 
 	{
 		filtername:'Category',
-		filterid:'categoryid',
+		filtergroupid:'categoryid',
 		filteritems:[
 			{
 				value:'categorya',
@@ -67,7 +67,7 @@ const postFilterData = [
 	{
 		filtername:'Created',
 		filtername:'Year',
-		filterid:'yearcreated',
+		filtergroupid:'yearcreated',
 		filteritems:[
 			{
 				value:2001,
@@ -87,7 +87,7 @@ const postFilterData = [
 
 	// {
 	// 	filtername:'Xyz',
-	// 	filterid:'xyz',
+	// 	filtergroupid:'xyz',
 	// 	filteritems:[
 	// 	],
 	// 	filteritemnamer:(value)=>(value),
@@ -124,7 +124,7 @@ createFilterValues('yearcreated');
 function createFilterValues(filtergroupid) {
 	
 	// Get filter group by id. 
-	let filtergroup = getFilterById(filtergroupid);
+	let filtergroup = getFilterGroupById(filtergroupid);
 	// console.log('Filter criteria list (old):',filtergroup.filteritems);
 	
 	// Disregard if not valid filter group. 
@@ -166,13 +166,13 @@ function createFilterValues(filtergroupid) {
 	/****/
 
 	// Get filter group by id. 
-	function getFilterById(filterid) {
+	function getFilterGroupById(filtergroupid) {
 	
 		// Go thru each filter group. 
 		for(let filtergroup of postFilterData) {
 	
 			// Check for match. 
-			if(filtergroup.filterid==filterid) return filtergroup;
+			if(filtergroup.filtergroupid==filtergroupid) return filtergroup;
 		}
 	
 		// Return nothing if not found. 

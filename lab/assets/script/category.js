@@ -31,12 +31,13 @@ customizeHeaders();
 
 // Customize category headers. 
 function customizeHeaders() {
+	if(!projectcategoryname) return;
 
 	// Set custom document title. 
 	document.title = `${projectcategoryname} | TWD Labs`;
 	
 	// Get custom headers for category name. 
-	const custompageheaders = document.querySelectorAll('section div.grid h1.head.custom');
+	const custompageheaders = document.querySelectorAll('div#container section div.grid h1.head.custom');
 	// console.log('Page headers:', [...custompageheaders].map( h => h.parentElement.parentElement) );
 	
 	// Set custom headers. 

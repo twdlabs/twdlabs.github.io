@@ -19,12 +19,12 @@ const filterpanel = document.querySelector('div#container section.blog div.grid 
 // console.log('filterpanel:',filterpanel);
 
 // Get destination for filter groups in filter panel. 
-const filtergroupsdestination = document.querySelector('div#container section.blog div.grid div.body div.filterpanel ul.filterlist');
+const filtergroupsdestination = document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist');
 // console.log('filtergroupsdestination:',filtergroupsdestination);
 
 // Get group headers in filter panel. 
-// const filterpanelheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtergroup h3.filterhead');
-// console.log('filterpanelheaders:',filterpanelheaders);
+// const filtergroupheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup h2.filterhead');
+// console.log('filtergroupheaders:',filtergroupheaders);
 
 
 /*****/
@@ -205,10 +205,10 @@ function loadFilterGroups() {
 		// Add filter group to layout. 
 		filtergrouplayout += `
 		<!-- filtergroup -->
-		<li class="filtergroup open" data-filterid="${filtergroup.filterid}">
+		<li class="filtergroup open" data-filtergroupid="${filtergroup.filtergroupid}">
 
 			<!-- filterhead -->
-			<h3 class="filterhead">
+			<h2 class="filterhead">
 
 				<!-- caption -->
 				<span class="caption">${filtergroup.filtername}</span>
@@ -226,7 +226,7 @@ function loadFilterGroups() {
 				</svg>
 				<!-- /icon -->
 
-			</h3>
+			</h2>
 			<!-- /filterhead -->
 
 			<!-- filterbody -->
@@ -258,10 +258,10 @@ function loadFilterGroups() {
 	function activateFilterHeads() {
 
 		// Get loaded headers in filter panel. 
-		let filterpanelheaders = filtergroupsdestination.querySelectorAll('li.filtergroup h3.filterhead');
+		let filtergroupheaders = filtergroupsdestination.querySelectorAll('li.filtergroup h2.filterhead');
 	
 		// Go thru each header in filter panel. 
-		for(let header of filterpanelheaders) {
+		for(let header of filtergroupheaders) {
 	
 			// Enable header clicks to toggle group in filter panel. 
 			header.addEventListener('click',toggleFilterGroup);
@@ -341,8 +341,8 @@ function loadFilterGroups() {
 	// Create layout for filter items list. 
 	function createCriteriaListLayout(filtergroup) {
 
-		// Get filter id. 
-		let filterid = filtergroup.filterid;
+		// Get filter group id. 
+		let filtergroupid = filtergroup.filtergroupid;
 
 		// Get list of filter items. 
 		let filteritemslist = filtergroup.filteritems;
@@ -364,7 +364,7 @@ function loadFilterGroups() {
 			// console.log('Filter item name:',itemname);
 
 			// Create unique id for current filter item. 
-			let uniqueitemid = filterid + itemvalue;
+			let uniqueitemid = filtergroupid + itemvalue;
 
 			// Add filter item to layout. 
 			filteritemslistlayout += `

@@ -11,8 +11,8 @@ activateBlogPreviews();
 // Activate blog previews. 
 function activateBlogPreviews() {
 
-	// TODO: Check if previews already present. 
-	// if(xyz) return;
+	// Disregard outside of archive section of projects page (where previews already present). 
+	if(!archive.section) return;
 
 	// Access loaded blog post cards. 
 	let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');

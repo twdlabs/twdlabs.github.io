@@ -89,7 +89,7 @@ function loadBlog() {
 	/****/
 
 	// Create layout for blog posts. 
-	function createBlogLayout(rawpostlist,previewsOn) {
+	function createBlogLayout(rawpostlist,previewsOn,doMinimalPage) {
 		// console.log('\t\tRaw post list:',rawpostlist);
 		// console.log('\t\tPreviews on:',previewsOn);
 	
@@ -120,7 +120,7 @@ function loadBlog() {
 				let postlist = postmatrix[pageindex];
 
 				// Add page of posts. 
-				result += createBlogPage(pageindex,postlist,previewsOn);
+				result += createBlogPage(pageindex,postlist,previewsOn,doMinimalPage);
 			}
 
 			// Save page count. 
@@ -133,33 +133,18 @@ function loadBlog() {
 		/***/
 
 		// Create page for blog posts layout. 
-		function createBlogPage(pageindex,pagepostlist,previewsOn) {
+		function createBlogPage(pageindex,pagepostlist,previewsOn,doMinimalPage) {
 	
 			// Initialize page layout. 
 			let pagelayout = '';
 
-			// Open page. 
+			// Compile blog page. 
 			pagelayout += `
 			<!-- postpage -->
-			<li class="postpage" data-pageindex="${pageindex}">
+			<li class="postpage${ doMinimalPage ? ' m' : ''}" data-pageindex="${pageindex}">
 
 				<!-- postlist -->
-				<ul class="postlist">`;
-	
-			// Go thru each post in list. 
-			for(let post of pagepostlist) {
-				// console.log('Post:',post);
-	
-				// Disregard invalid project post. 
-				// if(!post) continue;
-		
-				// Add to page layout: blog post card with project link. 
-				pagelayout += createBlogCard(post,previewsOn);
-			}
-
-			// Close page. 
-			pagelayout += `
-				</ul>
+				<ul class="postlist">${ createBlogList() }</ul>
 				<!-- /postlist -->
 
 			</li>
@@ -169,6 +154,27 @@ function loadBlog() {
 			return pagelayout;
 		
 			/**/
+	
+			// Create list of blog posts. 
+			function createBlogList() {
+	
+				// Initialize list layout. 
+				let listlayout = '';
+	
+				// Go thru each post in list. 
+				for(let post of pagepostlist) {
+					// console.log('Post:',post);
+		
+					// Disregard invalid project post. 
+					// if(!post) continue;
+			
+					// Add to page layout: blog post card with project link. 
+					listlayout += createBlogCard(post,previewsOn);
+				}
+	
+				// Return list layout. 
+				return listlayout;
+			}
 	
 			// Create card for blog post. 
 			function createBlogCard(post,previewsOn) {
@@ -263,7 +269,7 @@ function loadBlog() {
 	function loadArchivePosts() {
 
 		// Check if loading archive posts. 
-		if(!archivePagesDestination) {
+		if(!archive.pagesdestination) {
 			// console.log('\tBypass archive posts...');
 			return;
 		}
@@ -277,10 +283,10 @@ function loadBlog() {
 		let archiveLayout = createBlogLayout(archiveProjects, false);
 		
 		// Display archive posts in blog section. 
-		archivePagesDestination.innerHTML = archiveLayout;
+		archive.pagesdestination.innerHTML = archiveLayout;
 
 		// Load dot panel in page navigator. 
-		loadDotNavigator();
+		loadPageNavigator(archive.section);
 
 		// Display currently selected page. 
 		displaySelectedPage();
@@ -303,7 +309,7 @@ function loadBlog() {
 	function loadCategoryPosts() {
 
 		// Check if loading category posts. 
-		if(!categoryPagesDestination) {
+		if(!category.pagesdestination) {
 			// console.log('\tBypass category posts...');
 			return;
 		}
@@ -317,10 +323,10 @@ function loadBlog() {
 		let categoryLayout = createBlogLayout(categoryProjects, true && !blockAutoPreviews);
 		
 		// Display category posts in blog section. 
-		categoryPagesDestination.innerHTML = categoryLayout;
+		category.pagesdestination.innerHTML = categoryLayout;
 
 		// Load dot panel in page navigator. 
-		loadDotNavigator();
+		loadPageNavigator(category.section);
 
 		// Display currently selected page. 
 		displaySelectedPage();
@@ -330,7 +336,7 @@ function loadBlog() {
 	function loadCollectionPosts() {
 
 		// Check if loading collection posts. 
-		if(!collectionPagesDestination) {
+		if(!collection.pagesdestination) {
 			// console.log('\tBypass collection posts...');
 			return;
 		}
@@ -350,10 +356,10 @@ function loadBlog() {
 		let collectionLayout = createBlogLayout(collectionProjects, true && !blockAutoPreviews);
 		
 		// Display collection posts in blog section. 
-		collectionPagesDestination.innerHTML = collectionLayout;
+		collection.pagesdestination.innerHTML = collectionLayout;
 
 		// Load dot panel in page navigator. 
-		loadDotNavigator();
+		loadPageNavigator(collection.section);
 
 		// Display currently selected page. 
 		displaySelectedPage();
@@ -383,8 +389,8 @@ function loadBlog() {
 	function loadFeaturedPosts() {
 
 		// Check if loading featured posts. 
-		// if(!featuredpostsdestinationA || !featuredpostsdestinationB) {
-		if(!featuredPagesDestination) {
+		// if(!featured.postsdestinationa || !featured.postsdestinationb) {
+		if(!featured.pagesdestination) {
 			// console.log('\tBypass featured posts...');
 			return;
 		}
@@ -400,7 +406,7 @@ function loadBlog() {
 		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
 		
 		// Get layout for featured posts. 
-		let featuredLayout = createBlogLayout(featuredProjects, true && !blockAutoPreviews);
+		let featuredLayout = createBlogLayout(featuredProjects, true && !blockAutoPreviews, true);
 		// console.log(featuredLayout);
 		// let featuredLayoutA = createBlogLayout(featuredProjectsA, true && !blockAutoPreviews);
 		// let featuredLayoutB = createBlogLayout(featuredProjectsB, true && !blockAutoPreviews);
@@ -408,21 +414,24 @@ function loadBlog() {
 		// console.log(featuredLayoutB);
 		
 		// Add featured layout to blog section. 
-		featuredPagesDestination.innerHTML = featuredLayout;
-		// featuredpostsdestinationA.innerHTML = featuredLayoutA;
-		// featuredpostsdestinationB.innerHTML = featuredLayoutB;
+		featured.pagesdestination.innerHTML = featuredLayout;
+		// featured.postsdestinationa.innerHTML = featuredLayoutA;
+		// featured.postsdestinationb.innerHTML = featuredLayoutB;
 
 		// Load dot panel in page navigator. 
-		loadDotNavigator();
+		loadPageNavigator(featured.section);
 
 		// Display currently selected page. 
 		displaySelectedPage();
 	}
 
 	// Load dot panel in page navigator. 
-	function loadDotNavigator() {
+	function loadPageNavigator(section) {
 		// console.log('Page count:',pagecount,dotpaneldestination);
-		if(!dotpaneldestination) return;
+		if(!dotpaneldestination) {
+			console.warn('No page navigator present');
+			return;
+		}
 
 		// Initialize layout for dot panel. 
 		let dotpanellayout = ''
@@ -448,6 +457,9 @@ function loadBlog() {
 
 		// Activate page links in dot panel. 
 		activatePageLinks();
+
+		// Turn on page shifter buttons in given section (if needed). 
+		if(pagecount>1) section.classList.add('multipage');
 
 		/***/
 

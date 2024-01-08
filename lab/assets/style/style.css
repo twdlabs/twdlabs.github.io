@@ -13,6 +13,9 @@
 	--green:#2ECC71;
 	--tpgreen:#2ECC7188;
 	--drkgreen:#27AE60;
+	--orange:#FDA201;
+	--tporange:#FDA20188;
+	--drkorange:#e49101;
 	--royalblue:#2E61E0;
 	--tproyalblue:#2E61E088;
 	--drkroyalblue:#1e4ec8;
@@ -64,6 +67,13 @@ body.b {
 	--themecolor:var(--royalblue);
 	--tpthemecolor:var(--tproyalblue);
 	--drkthemecolor:var(--drkroyalblue);
+}
+body.o {
+
+	/* Theme Colors */
+	--themecolor:var(--orange);
+	--tpthemecolor:var(--tporange);
+	--drkthemecolor:var(--drkorange);
 }
 
 body {
@@ -200,19 +210,26 @@ div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist 
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn:hover {background-color:var(--ltglasshovercolor);}
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--forecolor); color:var(--backcolor);}
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--themecolor); color:white; font-weight:bold;}
-/* div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn svg.icon {} */
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.color {background-color:black; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.125rem solid white;}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.color.b {background-color:var(--royalblue);}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.color.g {background-color:var(--green);}
 div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.caption {margin-left:.75rem;}
 div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
 div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn svg.icon.arrowdown {font-size:.625em; margin-left:.25rem;}
 /* div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn svg.icon.selection {} */
-div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn span.color.selection {background-color:transparent; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.25rem solid white;}
+div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn span.color.selection {background-color:transparent; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.125rem solid white;}
 /* Navbar: Color Theme Switcher */
-div#container header.navbar div.bin div.themebar div.themeswitcher.color {--dotsize:1.5rem; }
+div#container header.navbar div.bin div.themebar div.themeswitcher.color {--dotsize:1.375rem; }
+/* div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist {} */
+/* div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem {} */
+/* div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn {} */
+div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color {background-color:black; flex-shrink:0; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.125rem solid white;}
+div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.b {background-color:var(--royalblue);}
+div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.g {background-color:var(--green);}
+div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.o {background-color:var(--orange);}
 /* Navbar: Light/Dark Theme Switcher */
 /* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk {} */
+/* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist {} */
+/* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem {} */
+/* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn {} */
+div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn svg.icon {flex-shrink:0;}
 
 
 
@@ -224,7 +241,7 @@ div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-
 /* div#container section div.grid h1.head:empty {display:flex; justify-content:center;} */
 div#container section div.grid h1.head:empty::after {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:10em; border-radius:1em; margin:0 auto;}
 div#container section div.grid h2.head {font-size:1.75rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0; margin-top:3rem;}
-div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center; max-width:calc(var(--pagewidth)/2); margin:1em auto;}
+div#container section div.grid p.textcopy {color:var(--forecolor2); font-size:1.625rem; text-align:center; max-width:calc(var(--pagewidth)*.75); margin:1em auto;}
 /* div#container section div.grid p.textcopy:empty {display:flex; justify-content:center;} */
 div#container section div.grid p.textcopy:empty:before {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:80%; border-radius:1em; margin:0 auto;}
 div#container section div.grid p.textcopy:empty::after {background-color:var(--forecolor2); content:''; display:block; height:1em; width:100%; max-width:60%; border-radius:1em; margin:0 auto; margin-top:.375em;}
