@@ -14,6 +14,10 @@ const emptysearchlabel = document.querySelector('div#container section.blog div.
 // console.log('emptysearchlabel:',emptysearchlabel);
 
 
+// Get destination for list of applied filters. 
+const appliedfilterslistdestination = document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist');
+// console.log('appliedfilterslistdestination:',appliedfilterslistdestination);
+
 // Get filter panel. 
 const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filterpanel');
 // console.log('filterpanel:',filterpanel);
@@ -45,9 +49,6 @@ function activateBlogFilters() {
 
 	// Load groups of post filters. 
 	if(filterpanel) loadFilterGroups();
-
-	// Enable keyboard shortcuts. 
-	enableShortcutKeys();
 
 	/****/
 
@@ -153,42 +154,6 @@ function activateBlogFilters() {
 			searchBlogPosts();
 		}
 	}
-
-	// Enable keyboard shortcuts. 
-	function enableShortcutKeys() {
-	
-		// Enable respons to keys pressed on page. 
-		document.addEventListener('keyup',checkKeys);
-	
-		/***/
-	
-		// Check keys. 
-		function checkKeys(event) {
-			console.log(event);
-
-			// Get focal point of event. 
-			let eventlocation = event.target;
-			// Check if typing in text field. 
-			let istypingtext = eventlocation.tagName.toLowerCase()=='input';
-			// Disregard when typing in text field. 
-			if(istypingtext) return;
-	
-			// Respond to 'S' key. 
-			else if(event.keyCode==83) setLayoutStyleById(0);
-	
-			// Respond to 'B' key. 
-			else if(event.keyCode==66) setLayoutStyleById(1);
-	
-			// Respond to 'L' key. 
-			else if(event.keyCode==76) setLayoutStyleById(2);
-	
-			// Respond to left arrow key. 
-			else if(event.keyCode==37) goPrevPage();
-	
-			// Respond to right arrow key. 
-			else if(event.keyCode==39) goNextPage();
-		}
-	}
 }
 
 // Load list of post filter groups. 
@@ -233,7 +198,7 @@ function loadFilterGroups() {
 			<div class="filterbody">
 
 				<!-- itemslist -->
-				<ul class="itemslist">${ createCriteriaListLayout(filtergroup) }</ul>
+				<ul class="itemslist">${ createFilterItemsListLayout(filtergroup) }</ul>
 				<!-- /itemslist -->
 				
 			</div>
@@ -250,7 +215,7 @@ function loadFilterGroups() {
 	activateFilterHeads();
 
 	// Activate filter group items in filter panel. 
-	activateFilterItems();
+	// activateFilterItems();
 
 	/****/
 
@@ -290,10 +255,10 @@ function loadFilterGroups() {
 		let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
 	
 		// Go thru each item in filter panel. 
-		for(let inputitems of filterpanelitems) {
+		for(let checkbox of filterpanelitems) {
 	
 			// Enable header clicks to toggle group in filter panel. 
-			inputitems.addEventListener('input',checkFilterItem);
+			checkbox.addEventListener('input',checkFilterItem);
 		}
 
 		/***/
@@ -339,7 +304,7 @@ function loadFilterGroups() {
 	}
 
 	// Create layout for filter items list. 
-	function createCriteriaListLayout(filtergroup) {
+	function createFilterItemsListLayout(filtergroup) {
 
 		// Get filter group id. 
 		let filtergroupid = filtergroup.filtergroupid;
@@ -355,6 +320,18 @@ function loadFilterGroups() {
 		for(let filteritem of filteritemslist) {
 			// console.log('Filter item:',filteritem);
 
+			// Add filter item to layout. 
+			filteritemslistlayout += createFilterItemLayout(filteritem);
+		}
+
+		// Return layout for criteria list. 
+		return filteritemslistlayout;
+
+		/***/
+
+		// Create layout for given filter item. 
+		function createFilterItemLayout(filteritem) {
+
 			// Get value of current filter item. 
 			let itemvalue = filteritem.value;
 			// console.log('Filter item value:',itemvalue);
@@ -366,8 +343,8 @@ function loadFilterGroups() {
 			// Create unique id for current filter item. 
 			let uniqueitemid = filtergroupid + itemvalue;
 
-			// Add filter item to layout. 
-			filteritemslistlayout += `
+			// Compile layout for filter item. 
+			return `
 			<!-- filteritem -->
 			<li class="filteritem" data-value="${itemvalue}" title="${itemvalue}">
 	
@@ -398,9 +375,6 @@ function loadFilterGroups() {
 			</li>
 			<!-- /filteritem -->`;
 		}
-
-		// Return layout for criteria list. 
-		return filteritemslistlayout;
 	}
 }
 
@@ -409,4 +383,102 @@ function toggleFilterPanel() {
 
 	// Toggle filter panel. 
 	filterpanel.classList.toggle('open');
+}
+
+// Clear all applied filter items. 
+function clearAllAppliedFilters() {
+
+	// Get loaded items in filter panel. 
+	let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+
+	// Go thru each item in filter panel. 
+	for(let checkbox of filterpanelitems) {
+
+		// Uncheck checkbox for current filter item. 
+		checkbox.checked = false;
+	}
+
+	// Apply selected filter items to blog posts. 
+	applySelectedFilters();
+}
+
+// TODO: Remove selected filter value. 
+function removeFilterValue(filtervaluebox) {
+	console.log('this:',filtervaluebox);
+
+	// 
+}
+
+// TODO: Apply selected filter items. 
+function applySelectedFilters() {
+
+	// Initialize list of selected filter values. 
+	let selectedfiltervalues = [];
+
+	// Get loaded items in filter panel. 
+	let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+
+	// Go thru each item in filter panel. 
+	for(let checkbox of filterpanelitems) {
+
+		// Check if filter item selected. 
+		let itemselected = checkbox.checked;
+
+		// Apply filter item (if selected). 
+		if(itemselected) {
+
+			// Get selected filter item. 
+			let filteritem = checkbox.parentElement;
+			let filteritemcaption = filteritem.querySelector('span.caption').innerHTML;
+			console.log('Filter item:',filteritem,filteritemcaption);
+
+			// Get id of selected filter item. 
+			let filteritemid = filteritem.getAttribute('data-value');
+			console.log('Filter item value:',filteritemid,checkbox.id);
+
+			// Save to list: details of selected filter item. 
+			selectedfiltervalues.push({id:filteritemid, caption:filteritemcaption,});
+			// console.log('selectedfiltervalue:',filteritemid);
+		}
+	}
+
+	// Create layout for list of selected filter items. 
+	let selectedfiltervalueslayout = selectedfiltervalues.map(createFilterValueLayout).join('');
+	// console.log('selectedfiltervalueslayout:',selectedfiltervalueslayout);
+
+	// Display layout for list of selected filter values. 
+	appliedfilterslistdestination.innerHTML = selectedfiltervalueslayout;
+	console.log('selectedfiltervalues:',selectedfiltervalues);
+
+	// TODO: Apply selected filter values to loaded blog posts. 
+
+	/****/
+
+	// TODO: Create layout for applied filter value. 
+	function createFilterValueLayout(filteritem) {
+
+		// Get id of selected filter item. 
+		let filteritemid = filteritem.id;
+
+		// Get caption for selected filter item. 
+		let filteritemcaption = filteritem.caption;
+
+		// 
+		return `
+		<!-- filtervalue -->
+		<li class="filtervalue" data-filteritemid="${filteritemid}" onclick="removeFilterValue(this)">
+
+			<!-- caption -->
+			<span class="caption">${filteritemcaption}</span>
+			<!-- /caption -->
+
+			<!-- icon -->
+			<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+				<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+			</svg>
+			<!-- /icon -->
+
+		</li>
+		<!-- /filtervalue -->`;
+	}
 }

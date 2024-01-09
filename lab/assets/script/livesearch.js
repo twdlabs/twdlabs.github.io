@@ -49,7 +49,7 @@ function activateSearchBar() {
 		// Update url of search button w/ search query. 
 		if(searchquery) {
 
-			// Update url of search button. 
+			// TODO: Update url of search button. 
 			livesearchgobtn.href = getRelativeUrl(`./search/?q=${ sanitizeSearchQuery(searchquery) }`);
 
 			// Activate search button. 

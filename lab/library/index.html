@@ -628,75 +628,37 @@
 					<!-- body -->
 					<div class="body">
 
-						<!-- filters -->
-						<div class="filters">
+						<!-- appliedfilters -->
+						<div class="appliedfilters">
 
-							<!-- already -->
-							<div class="already">
+							<!-- listhead -->
+							<h2 class="listhead">Filters Applied:</h2>
+							<!-- /listhead -->
 
-								<!-- listhead -->
-								<h2 class="listhead">Filters Applied:</h2>
-								<!-- /listhead -->
+							<!-- filtervaluelist -->
+							<ul class="filtervaluelist">
 
-								<!-- filterlist -->
-								<ul class="filterlist">
+								<!-- filtervalue -->
+								<li class="filtervalue x" data-filteritemid="xyzabcxyz" onclick="removeFilterValue(this)">
 
-									<!-- filteritem -->
-									<li class="filteritem" data-uniqueitemid="xyzabcxyz" onclick="removeFilter(this)">
+									<!-- caption -->
+									<span class="caption">Criterion X</span>
+									<!-- /caption -->
+	
+									<!-- icon -->
+									<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+									</svg>
+									<!-- /icon -->
 
-										<!-- caption -->
-										<span class="caption">Criterion A</span>
-										<!-- /caption -->
-		
-										<!-- icon -->
-										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-										</svg>
-										<!-- /icon -->
-
-									</li>
-									<!-- /filteritem -->
-
-									<!-- filteritem -->
-									<li class="filteritem" data-uniqueitemid="xyzabcxyz" onclick="removeFilter(this)">
-
-										<!-- caption -->
-										<span class="caption">Criterion B</span>
-										<!-- /caption -->
-		
-										<!-- icon -->
-										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-										</svg>
-										<!-- /icon -->
-
-									</li>
-									<!-- /filteritem -->
-
-									<!-- filteritem -->
-									<li class="filteritem" data-uniqueitemid="xyzabcxyz" onclick="removeFilter(this)">
-
-										<!-- caption -->
-										<span class="caption">Criterion C</span>
-										<!-- /caption -->
-		
-										<!-- icon -->
-										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-										</svg>
-										<!-- /icon -->
-
-									</li>
-									<!-- /filteritem -->
-									
-								</ul>
-								<!-- /filterlist -->
-
-							</div>
-							<!-- /already -->
+								</li>
+								<!-- /filtervalue -->
+								
+							</ul>
+							<!-- /filtervaluelist -->
 							
 						</div>
-						<!-- /filters -->
+						<!-- /appliedfilters -->
 
 						<!-- filterpanel -->
 						<div class="filterpanel">
@@ -813,11 +775,11 @@
 								<div class="btnpanel">
 	
 									<!-- clearbtn -->
-									<div class="btn clearbtn">Clear</div>
+									<div class="btn clearbtn" onclick="clearAllAppliedFilters()">Clear</div>
 									<!-- /clearbtn -->
 		
 									<!-- applybtn -->
-									<div class="btn applybtn">Apply</div>
+									<div class="btn applybtn" onclick="applySelectedFilters()">Apply</div>
 									<!-- /applybtn -->
 	
 								</div>
@@ -1314,6 +1276,7 @@
 		<script src="../assets/script/blogstyle.js" type="text/javascript"></script>
 		<script src="../assets/script/blogfilter.js" type="text/javascript"></script>
 		<script src="../assets/script/blogpreview.js" type="text/javascript"></script>
+		<script src="../assets/script/blogshortcuts.js" type="text/javascript"></script>
 		<!-- Theme Script -->
 		<script src="../assets/script/theme.js" type="text/javascript"></script>
 		<!-- Link Loader Script -->

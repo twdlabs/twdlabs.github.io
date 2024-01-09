@@ -189,8 +189,9 @@ function loadBlog() {
 				// Get author name for given post. 
 				let authorname = post ? getAuthorName(post.authorid) : '';
 		
-				// Get url of page to be added. 
-				let pageurl = projectid ? getRelativeUrl(`../${projectid}/index.html`) : 'javascript:void(0)';
+				// Get url of project to be added. 
+				// let projecturl = projectid ? getRelativeUrl(`./../${projectid}/index.html`) : 'javascript:void(0)';
+				let projecturl = projectid ? getRelativeUrl(`./library/project/?pid=${projectid}`) : 'javascript:void(0)';
 		
 				// Compile post card. 
 				return `
@@ -198,7 +199,7 @@ function loadBlog() {
 				<li class="postcard${ !post ? ' x' : '' }" data-projectid="${projectid}" title="${projectid}">
 		
 					<!-- projectlink -->
-					<a class="projectlink" href="${pageurl}" target="_blank">
+					<a class="projectlink" href="${projecturl}" target="_blank">
 		
 						<!-- preview -->
 						<div class="preview">${ (previewsOn&&projectid) ? createPreviewPanel(projectid) : '' }</div>
@@ -500,7 +501,7 @@ function loadBlog() {
 function createPreviewPanel(projectid) {
 
 	// Get url of page to be previewed. 
-	let pageurl = projectid ? getRelativeUrl(`../${projectid}/index.html`) : 'javascript:void(0)';
+	let pageurl = projectid ? getRelativeUrl(`./../${projectid}/index.html`) : 'javascript:void(0)';
 
 	// Compile preview panel. 
 	return `

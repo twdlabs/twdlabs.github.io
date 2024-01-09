@@ -149,16 +149,17 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 
 
 /* Blog Section: Applied Filters */
-div#container section.blog div.grid div.body div.filters {/* position:relative; */ /* padding-bottom:.75rem; */ margin-top:.375rem;}
-div#container section.blog div.grid div.body.split div.filters {grid-column-end:span 2;}
-div#container section.blog div.grid div.body div.filters div.already {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap;}
-div#container section.blog div.grid div.body div.filters div.already h2.listhead {font-size:1.125rem; font-size:1rem; font-weight:normal; white-space:nowrap; margin:0; margin-right:.25rem;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */ list-style:none; padding:0; margin:0;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist:empty::after {content:'None';}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem {background-color:var(--backcolor2); font-size:.875rem; cursor:pointer; user-select:none; box-shadow:var(--boxshadow);}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em; border-radius:5em; margin:.25rem 0; margin-left:.5rem;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem svg.icon {font-size:1.5em; margin-left:.25rem;}
-div#container section.blog div.grid div.body div.filters div.already ul.filterlist li.filteritem span.caption {white-space:nowrap;}
+div#container section.blog div.grid div.body div.appliedfilters {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; margin-top:.375rem;}
+/* div#container section.blog div.grid div.body div.appliedfilters {position:relative; padding-bottom:.75rem;} */
+div#container section.blog div.grid div.body.split div.appliedfilters {grid-column-end:span 2;}
+div#container section.blog div.grid div.body div.appliedfilters h2.listhead {font-size:1.125rem; font-size:1rem; font-weight:normal; white-space:nowrap; margin:0; margin-right:.25rem;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */ list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist:empty::after {content:'None';}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue {background-color:var(--backcolor2); font-size:.875rem; cursor:pointer; user-select:none; box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em; border-radius:5em; margin:.25rem 0; margin-left:.5rem;}
+/* div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue.x {display:none;} */
+div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue svg.icon {font-size:1.5em; margin-left:.25rem;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue span.caption {white-space:nowrap;}
 
 /* Blog Section: Filter Panel */
 div#container section.blog div.grid div.body div.filterpanel {background-color:var(--backcolor); transition:.5s; /* border-radius:var(--cornersize); */ border:1px solid var(--backcolor2);}
@@ -249,7 +250,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: Applied Filters */
-	/* div#container section.blog div.grid div.body div.filters {} */
+	/* div#container section.blog div.grid div.body div.appliedfilters {} */
 	/* Blog Section: Filter Panel */
 	/* div#container section.blog div.grid div.body div.filterpanel {} */
 }
@@ -296,7 +297,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: Applied Filters */
-	/* div#container section.blog div.grid div.body div.filters {} */
+	/* div#container section.blog div.grid div.body div.appliedfilters {} */
 	/* Blog Section: Filter Panel */
 	/* div#container section.blog div.grid div.body div.filterpanel {} */
 }
@@ -343,7 +344,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: Applied Filters */
-	/* div#container section.blog div.grid div.body div.filters {} */
+	/* div#container section.blog div.grid div.body div.appliedfilters {} */
 	/* Blog Section: Filter Panel */
 	/* div#container section.blog div.grid div.body div.filterpanel {} */
 }
@@ -391,8 +392,8 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {font-size:1rem;}
 
 	/* Blog Section: Applied Filters */
-	/* div#container section.blog div.grid div.body div.filters {} */
-	div#container section.blog div.grid div.body.split div.filters {grid-column-end:span 1;}
+	/* div#container section.blog div.grid div.body div.appliedfilters {} */
+	div#container section.blog div.grid div.body.split div.appliedfilters {grid-column-end:span 1;}
 	/* Blog Section: Filter Panel */
 	div#container section.blog div.grid div.body.split div.filterpanel {max-height:0; overflow:hidden; border-width:0; box-shadow:none;}
 	div#container section.blog div.grid div.body.split div.filterpanel.open {max-height:fit-content; max-height:calc( 100vh - var(--headerheight) ); overflow:auto; border-width:1px; box-shadow:var(--boxshadowx);}
@@ -440,7 +441,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: Applied Filters */
-	/* div#container section.blog div.grid div.body div.filters {} */
+	/* div#container section.blog div.grid div.body div.appliedfilters {} */
 	/* Blog Section: Filter Panel */
 	/* div#container section.blog div.grid div.body div.filterpanel {} */
 }
@@ -486,7 +487,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 
 	/* Blog Section: Applied Filters */
-	/* div#container section.blog div.grid div.body div.filters {} */
+	/* div#container section.blog div.grid div.body div.appliedfilters {} */
 	/* Blog Section: Filter Panel */
 	/* div#container section.blog div.grid div.body div.filterpanel {} */
 }
