@@ -181,7 +181,7 @@ function loadDesktop() {
 		function createProjectLink(projectid) {
 
 			// Get url of page to be added. 
-			let pageurl = getRelativeUrl(`../${projectid}/index.html`);
+			let pageurl = getRelativeUrl(`./../${projectid}/index.html`);
 
 			// Return result. 
 			return `

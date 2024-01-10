@@ -21,6 +21,10 @@ console.log('Project name:',projectname);
 const projectdesc = projectdata ? projectdata.projectdescription : '';
 console.log('Project description:',projectdesc);
 
+// Get more button. 
+const morebtn = document.querySelector('div#container section div.grid div.more a.morebtn');
+console.log('More button:',morebtn);
+
 
 /*****/
 
@@ -60,6 +64,14 @@ function customizeHeaders() {
 
 // Load post details in page previewer. 
 function loadSelectedPost() {
+
+	// Get project url. 
 	let validproject = projectid && getProjectById(projectid);
-	pagepreviewer.src = validproject ? getRelativeUrl(`../${projectid}`) : '';
+	let projecturl = validproject ? getRelativeUrl(`./../${projectid}`) : '';
+
+	// Assign project url to previewer. 
+	pagepreviewer.src = projecturl;
+
+	// Assign project url to more button. 
+	morebtn.href = projecturl;
 }

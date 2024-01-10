@@ -15,8 +15,8 @@ const emptysearchlabel = document.querySelector('div#container section.blog div.
 
 
 // Get destination for list of applied filters. 
-const appliedfilterslistdestination = document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist');
-// console.log('appliedfilterslistdestination:',appliedfilterslistdestination);
+const filtertaglistdestination = document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist');
+// console.log('filtertaglistdestination:',filtertaglistdestination);
 
 // Get filter panel. 
 const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filterpanel');
@@ -161,14 +161,14 @@ function loadFilterGroups() {
 	// console.log('Loading list of post filter groups');
 
 	// Initialize layout for filter groups. 
-	let filtergrouplayout = '';
+	let filtergroupslayout = '';
 
 	// Go thru each filter group. 
 	for(let filtergroup of postFilterData) {
 		// console.log('Filter group:',filtergroup);
 		
 		// Add filter group to layout. 
-		filtergrouplayout += `
+		filtergroupslayout += `
 		<!-- filtergroup -->
 		<li class="filtergroup open" data-filtergroupid="${filtergroup.filtergroupid}">
 
@@ -209,99 +209,15 @@ function loadFilterGroups() {
 	}
 
 	// Display filter groups in filter panel. 
-	filtergroupsdestination.innerHTML = filtergrouplayout;
+	filtergroupsdestination.innerHTML = filtergroupslayout;
 
-	// Activate filter group headers in filter panel. 
+	// Activate filter headers in filter panel. 
 	activateFilterHeads();
 
-	// Activate filter group items in filter panel. 
-	// activateFilterItems();
+	// Activate filter items in filter panel. 
+	activateFilterItems();
 
 	/****/
-
-	// Activate filter group headers in filter panel. 
-	function activateFilterHeads() {
-
-		// Get loaded headers in filter panel. 
-		let filtergroupheaders = filtergroupsdestination.querySelectorAll('li.filtergroup h2.filterhead');
-	
-		// Go thru each header in filter panel. 
-		for(let header of filtergroupheaders) {
-	
-			// Enable header clicks to toggle group in filter panel. 
-			header.addEventListener('click',toggleFilterGroup);
-		}
-
-		/***/
-
-		// Toggle group in post filter panel. 
-		function toggleFilterGroup(event) {
-		
-			// Get filter group header. 
-			let filtergroupheader = event.currentTarget;
-		
-			// Get filter group. 
-			let filtergroup = filtergroupheader.parentElement;
-		
-			// Toggle filter group. 
-			filtergroup.classList.toggle('open');
-		}
-	}
-
-	// Activate filter group items in filter panel. 
-	function activateFilterItems() {
-
-		// Get loaded items in filter panel. 
-		let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
-	
-		// Go thru each item in filter panel. 
-		for(let checkbox of filterpanelitems) {
-	
-			// Enable header clicks to toggle group in filter panel. 
-			checkbox.addEventListener('input',checkFilterItem);
-		}
-
-		/***/
-
-		// Check post filter item. 
-		function checkFilterItem(event) {
-
-			// Get input checkbox. 
-			let checkbox = event.currentTarget;
-
-			// Check if checkbox is on. 
-			let checkboxOn = checkbox.checked;
-			console.log('Checkbox on:',checkboxOn,checkbox);
-
-			// Apply filter item (if checkbox on). 
-			if(checkboxOn) applyFilterItem();
-
-			// Un-apply filter item (if checkbox not on). 
-			else unapplyFilterItem();
-
-			/**/
-
-			// TODO: Apply filter item to blog posts. 
-			function applyFilterItem() {
-
-				// Get value of filter item. 
-			
-				// Update blog posts. 
-			
-				// Update filter items. 
-			}
-			
-			// TODO: Un-apply filter item to blog posts. 
-			function unapplyFilterItem(filteritem) {
-
-				// Get value of filter item. 
-			
-				// Update blog posts. 
-			
-				// Update filter items. 
-			}
-		}
-	}
 
 	// Create layout for filter items list. 
 	function createFilterItemsListLayout(filtergroup) {
@@ -376,6 +292,49 @@ function loadFilterGroups() {
 			<!-- /filteritem -->`;
 		}
 	}
+
+	// Activate filter group headers in filter panel. 
+	function activateFilterHeads() {
+
+		// Get loaded headers in filter panel. 
+		let filtergroupheaders = filtergroupsdestination.querySelectorAll('li.filtergroup h2.filterhead');
+	
+		// Go thru each header in filter panel. 
+		for(let header of filtergroupheaders) {
+	
+			// Enable header clicks to toggle group in filter panel. 
+			header.addEventListener('click',toggleFilterGroup);
+		}
+
+		/***/
+
+		// Toggle group in post filter panel. 
+		function toggleFilterGroup(event) {
+		
+			// Get filter group header. 
+			let filtergroupheader = event.currentTarget;
+		
+			// Get filter group. 
+			let filtergroup = filtergroupheader.parentElement;
+		
+			// Toggle filter group. 
+			filtergroup.classList.toggle('open');
+		}
+	}
+
+	// Activate filter group items in filter panel. 
+	function activateFilterItems() {
+	
+		// Get loaded items in filter panel. 
+		let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+	
+		// Go thru each item in filter panel. 
+		for(let checkbox of filterpanelitems) {
+	
+			// Enable header clicks to toggle group in filter panel. 
+			checkbox.addEventListener('input',applySelectedFilters);
+		}
+	}
 }
 
 // Toggle post filter panel. 
@@ -389,10 +348,10 @@ function toggleFilterPanel() {
 function clearAllAppliedFilters() {
 
 	// Get loaded items in filter panel. 
-	let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+	let filterpanelcheckboxes = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
 
 	// Go thru each item in filter panel. 
-	for(let checkbox of filterpanelitems) {
+	for(let checkbox of filterpanelcheckboxes) {
 
 		// Uncheck checkbox for current filter item. 
 		checkbox.checked = false;
@@ -402,83 +361,127 @@ function clearAllAppliedFilters() {
 	applySelectedFilters();
 }
 
-// TODO: Remove selected filter value. 
-function removeFilterValue(filtervaluebox) {
-	console.log('this:',filtervaluebox);
-
-	// 
-}
-
-// TODO: Apply selected filter items. 
+// Apply selected filter items. 
 function applySelectedFilters() {
 
-	// Initialize list of selected filter values. 
-	let selectedfiltervalues = [];
+	// Initialize list of selected filter items. 
+	let selectedfilteritems = [];
 
-	// Get loaded items in filter panel. 
-	let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+	// Get checkboxes for loaded filter items in filter panel. 
+	let filterpanelcheckboxes = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
 
-	// Go thru each item in filter panel. 
-	for(let checkbox of filterpanelitems) {
+	// Go thru each checkbox in filter panel. 
+	for(let checkbox of filterpanelcheckboxes) {
 
 		// Check if filter item selected. 
-		let itemselected = checkbox.checked;
+		if(checkbox.checked) {
+			
+			// Get box for filter item. 
+			let filteritembox = checkbox.parentElement;
+			console.log('Filter item box:',filteritembox);
+			console.log('Filter item checkbox:',checkbox);
 
-		// Apply filter item (if selected). 
-		if(itemselected) {
+			// Get caption for selected filter item. 
+			let filteritemcaption = filteritembox.querySelector('span.caption').innerText;
+			console.log('Filter item caption:',filteritemcaption);
 
-			// Get selected filter item. 
-			let filteritem = checkbox.parentElement;
-			let filteritemcaption = filteritem.querySelector('span.caption').innerHTML;
-			console.log('Filter item:',filteritem,filteritemcaption);
-
-			// Get id of selected filter item. 
-			let filteritemid = filteritem.getAttribute('data-value');
-			console.log('Filter item value:',filteritemid,checkbox.id);
+			// Get unique id for selected filter item. 
+			// let filteritemuniqueid = filteritembox.getAttribute('data-value');
+			let filteritemuniqueid = checkbox.id;
+			console.log('Filter item unique id:',filteritemuniqueid);
 
 			// Save to list: details of selected filter item. 
-			selectedfiltervalues.push({id:filteritemid, caption:filteritemcaption,});
-			// console.log('selectedfiltervalue:',filteritemid);
+			selectedfilteritems.push({uniqueid:filteritemuniqueid, caption:filteritemcaption,});
+			// console.log('filteritemuniqueid:',filteritemuniqueid);
 		}
 	}
 
-	// Create layout for list of selected filter items. 
-	let selectedfiltervalueslayout = selectedfiltervalues.map(createFilterValueLayout).join('');
-	// console.log('selectedfiltervalueslayout:',selectedfiltervalueslayout);
+	// Create layout for list of filter tags. 
+	let filtertaglistlayout = selectedfilteritems.map(createFilterTagLayout).join('');
+	// console.log('filtertaglistlayout:',filtertaglistlayout);
 
-	// Display layout for list of selected filter values. 
-	appliedfilterslistdestination.innerHTML = selectedfiltervalueslayout;
-	console.log('selectedfiltervalues:',selectedfiltervalues);
+	// Display layout for list of filter tags. 
+	filtertaglistdestination.innerHTML = filtertaglistlayout;
+	console.log('selectedfilteritems:',selectedfilteritems);
 
 	// TODO: Apply selected filter values to loaded blog posts. 
 
 	/****/
 
-	// TODO: Create layout for applied filter value. 
-	function createFilterValueLayout(filteritem) {
+	// Create layout for filter tag. 
+	function createFilterTagLayout(filteritem) {
 
-		// Get id of selected filter item. 
-		let filteritemid = filteritem.id;
+		// Get unique id of selected filter item. 
+		let filteritemuniqueid = filteritem.uniqueid;
 
 		// Get caption for selected filter item. 
 		let filteritemcaption = filteritem.caption;
 
 		// 
 		return `
-		<!-- filtervalue -->
-		<li class="filtervalue" data-filteritemid="${filteritemid}" onclick="removeFilterValue(this)">
+		<!-- filtertag -->
+		<li class="filtertag">
 
-			<!-- caption -->
-			<span class="caption">${filteritemcaption}</span>
-			<!-- /caption -->
+			<!-- removebtn -->
+			<label class="removebtn" for="${filteritemuniqueid}">
 
-			<!-- icon -->
-			<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-				<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-			</svg>
-			<!-- /icon -->
+				<!-- caption -->
+				<span class="caption">${filteritemcaption}</span>
+				<!-- /caption -->
+
+				<!-- icon -->
+				<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+				</svg>
+				<!-- /icon -->
+
+			</label>
+			<!-- /removebtn -->
 
 		</li>
-		<!-- /filtervalue -->`;
+		<!-- /filtertag -->`;
 	}
 }
+
+
+/*****/
+
+
+// // Check post filter item. 
+// function checkFilterItem(event) {
+
+// 	// Get input checkbox. 
+// 	let checkbox = event.currentTarget;
+
+// 	// Check if checkbox is on. 
+// 	let checkboxOn = checkbox.checked;
+// 	console.log('Checkbox on:',checkboxOn,checkbox);
+
+// 	// Apply filter item (if checkbox on). 
+// 	if(checkboxOn) applyFilterItem();
+
+// 	// Un-apply filter item (if checkbox not on). 
+// 	else unapplyFilterItem();
+
+// 	/**/
+
+// 	// TODO: Apply filter item to blog posts. 
+// 	function applyFilterItem() {
+
+// 		// Get value of filter item. 
+	
+// 		// Update blog posts. 
+	
+// 		// Update filter items. 
+// 	}
+	
+// 	// TODO: Un-apply filter item to blog posts. 
+// 	function unapplyFilterItem(filteritem) {
+
+// 		// Get value of filter item. 
+	
+// 		// Update blog posts. 
+	
+// 		// Update filter items. 
+// 	}
+// }

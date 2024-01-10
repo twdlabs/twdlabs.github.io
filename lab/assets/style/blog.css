@@ -153,13 +153,14 @@ div#container section.blog div.grid div.body div.appliedfilters {display:flex; f
 /* div#container section.blog div.grid div.body div.appliedfilters {position:relative; padding-bottom:.75rem;} */
 div#container section.blog div.grid div.body.split div.appliedfilters {grid-column-end:span 2;}
 div#container section.blog div.grid div.body div.appliedfilters h2.listhead {font-size:1.125rem; font-size:1rem; font-weight:normal; white-space:nowrap; margin:0; margin-right:.25rem;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */ list-style:none; padding:0; margin:0;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist:empty::after {content:'None';}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue {background-color:var(--backcolor2); font-size:.875rem; cursor:pointer; user-select:none; box-shadow:var(--boxshadow);}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em; border-radius:5em; margin:.25rem 0; margin-left:.5rem;}
-/* div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue.x {display:none;} */
-div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue svg.icon {font-size:1.5em; margin-left:.25rem;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtervaluelist li.filtervalue span.caption {white-space:nowrap;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */ list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist:empty::after {content:'None'; margin-left:.5rem;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag {background-color:var(--backcolor2); font-size:.875rem; border-radius:5em; margin:.25rem 0; margin-left:.5rem; box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag.x {display:none;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn {cursor:pointer; user-select:none;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn svg.icon {font-size:1.5em; margin-left:.25rem;}
+div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn span.caption {white-space:nowrap;}
 
 /* Blog Section: Filter Panel */
 div#container section.blog div.grid div.body div.filterpanel {background-color:var(--backcolor); transition:.5s; /* border-radius:var(--cornersize); */ border:1px solid var(--backcolor2);}
@@ -200,6 +201,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.fi
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.625em 1rem;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.btn {background-color:var(--drkthemecolor); background-color:var(--themecolor); color:white; cursor:pointer; user-select:none; font-size:1.25rem; font-weight:500; padding:.375em 1.5rem; border-radius:1em; margin:0 .5em;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.applybtn {display:none;}
 
 
 
