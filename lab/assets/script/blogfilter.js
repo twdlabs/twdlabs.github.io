@@ -170,7 +170,7 @@ function loadFilterGroups() {
 		// Add filter group to layout. 
 		filtergroupslayout += `
 		<!-- filtergroup -->
-		<li class="filtergroup open" data-filtergroupid="${filtergroup.filtergroupid}">
+		<li class="filtergroup open" data-filtertypeid="${filtergroup.filtergroupid}">
 
 			<!-- filterhead -->
 			<h2 class="filterhead">
@@ -262,7 +262,7 @@ function loadFilterGroups() {
 			// Compile layout for filter item. 
 			return `
 			<!-- filteritem -->
-			<li class="filteritem" data-value="${itemvalue}" title="${itemvalue}">
+			<li class="filteritem" data-filteritemvalueid="${itemvalue}" title="${itemvalue}">
 	
 				<!-- checkbox -->
 				<input class="checkbox" type="checkbox" id="${uniqueitemid}">
@@ -378,20 +378,32 @@ function applySelectedFilters() {
 			
 			// Get box for filter item. 
 			let filteritembox = checkbox.parentElement;
-			console.log('Filter item box:',filteritembox);
+			let filtergroupbox = filteritembox.parentElement.parentElement.parentElement;
+			// console.log('Filter group box:',filtergroupbox);
+			// console.log('Filter item box:',filteritembox);
 			console.log('Filter item checkbox:',checkbox);
 
+			// Get ids for selected filter item. 
+			let filtertypeid = filtergroupbox.getAttribute('data-filtertypeid');
+			let filtervalueid = filteritembox.getAttribute('data-filteritemvalueid');
+			console.log('Filter item ids:',filtertypeid,filtervalueid);
+
 			// Get caption for selected filter item. 
-			let filteritemcaption = filteritembox.querySelector('span.caption').innerText;
-			console.log('Filter item caption:',filteritemcaption);
+			let filteritemcaptionbox = filteritembox.querySelector('span.caption');
+			let filteritemcaption = filteritemcaptionbox.textContent;
+			console.log('Filter item caption:',filteritemcaption,filteritemcaptionbox);
 
 			// Get unique id for selected filter item. 
-			// let filteritemuniqueid = filteritembox.getAttribute('data-value');
-			let filteritemuniqueid = checkbox.id;
-			console.log('Filter item unique id:',filteritemuniqueid);
+			// let filteritemuniqueid = checkbox.id;
+			// let filteritemuniqueid = filtertypeid + filtervalueid;
+			// console.log('Filter item unique id:',filteritemuniqueid);
 
 			// Save to list: details of selected filter item. 
-			selectedfilteritems.push({uniqueid:filteritemuniqueid, caption:filteritemcaption,});
+			selectedfilteritems.push({
+				filtertypeid:filtertypeid,
+				filtervalueid:filtervalueid,
+				caption:filteritemcaption,
+			});
 			// console.log('filteritemuniqueid:',filteritemuniqueid);
 		}
 	}
@@ -402,9 +414,10 @@ function applySelectedFilters() {
 
 	// Display layout for list of filter tags. 
 	filtertaglistdestination.innerHTML = filtertaglistlayout;
-	console.log('selectedfilteritems:',selectedfilteritems);
+	console.log('Selected filter items:',selectedfilteritems);
 
-	// TODO: Apply selected filter values to loaded blog posts. 
+	// Apply selected filter values to loaded blog posts. 
+	loadBlog(selectedfilteritems);
 
 	/****/
 
@@ -412,7 +425,7 @@ function applySelectedFilters() {
 	function createFilterTagLayout(filteritem) {
 
 		// Get unique id of selected filter item. 
-		let filteritemuniqueid = filteritem.uniqueid;
+		let filteritemuniqueid = filteritem.filtertypeid + filteritem.filtervalueid;
 
 		// Get caption for selected filter item. 
 		let filteritemcaption = filteritem.caption;
@@ -446,6 +459,17 @@ function applySelectedFilters() {
 
 /*****/
 
+
+// // TODO: Remove given filter tag from list of applied filter items. 
+// function removeFilterTag(/* filteritemtag */) {
+// 	// console.log('filteritemtag:',filteritemtag);
+
+// 	// TODO: Uncheck associated item in fiter panel. 
+// 	// selectedfilteritems.remove;
+
+// 	// Apply selected filter items. 
+// 	applySelectedFilters();
+// }
 
 // // Check post filter item. 
 // function checkFilterItem(event) {
