@@ -30,6 +30,10 @@ const filtergroupsdestination = document.querySelector('div#container section.bl
 // const filtergroupheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup h2.filterhead');
 // console.log('filtergroupheaders:',filtergroupheaders);
 
+// Get checkbox in any/all switch. 
+const anyallswitchcheckbox = document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb');
+// console.log('anyallswitchcheckbox:',anyallswitchcheckbox);
+
 
 /*****/
 
@@ -381,17 +385,17 @@ function applySelectedFilters() {
 			let filtergroupbox = filteritembox.parentElement.parentElement.parentElement;
 			// console.log('Filter group box:',filtergroupbox);
 			// console.log('Filter item box:',filteritembox);
-			console.log('Filter item checkbox:',checkbox);
+			// console.log('Filter item checkbox:',checkbox);
 
 			// Get ids for selected filter item. 
 			let filtertypeid = filtergroupbox.getAttribute('data-filtertypeid');
 			let filtervalueid = filteritembox.getAttribute('data-filteritemvalueid');
-			console.log('Filter item ids:',filtertypeid,filtervalueid);
+			// console.log('Filter item ids:',filtertypeid,filtervalueid);
 
 			// Get caption for selected filter item. 
 			let filteritemcaptionbox = filteritembox.querySelector('span.caption');
 			let filteritemcaption = filteritemcaptionbox.textContent;
-			console.log('Filter item caption:',filteritemcaption,filteritemcaptionbox);
+			// console.log('Filter item caption:',filteritemcaption,filteritemcaptionbox);
 
 			// Get unique id for selected filter item. 
 			// let filteritemuniqueid = checkbox.id;
@@ -414,7 +418,7 @@ function applySelectedFilters() {
 
 	// Display layout for list of filter tags. 
 	filtertaglistdestination.innerHTML = filtertaglistlayout;
-	console.log('Selected filter items:',selectedfilteritems);
+	// console.log('Selected filter items:',selectedfilteritems);
 
 	// Apply selected filter values to loaded blog posts. 
 	loadBlog(selectedfilteritems);

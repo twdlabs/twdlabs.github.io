@@ -57,7 +57,7 @@ loadBlog( [] );
 
 // Load blog posts. 
 function loadBlog(selectedfilteritems) {
-	// console.log('Loading blog...',selectedfilteritems);
+	console.log('Loading blog...',selectedfilteritems);
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -72,6 +72,61 @@ function loadBlog(selectedfilteritems) {
 	loadArchivePosts();
 
 	/****/
+
+	// Check if post passes filter criteria. 
+	function checkFilterPass(projectitem) {
+	
+		// Pass filter if no filter items selected. 
+		if(!selectedfilteritems.length) return true;
+
+		// Check if switch checkbox checked. 
+		if(anyallswitchcheckbox.checked) return checkFilterPassAll();
+		else return checkFilterPassAny();
+
+		/***/
+
+		// Check if post passes all given filter criteria. 
+		function checkFilterPassAll(/* projectitem */) {
+	
+			// Go thru each selected filter item. 
+			for(let filteritem of selectedfilteritems) {
+	
+				// Get xyz. 
+				let typeid = filteritem.filtertypeid;
+				let valueid = filteritem.filtervalueid;
+	
+				// Check for match btwn given project and current filter item. 
+				let passed = (projectitem[typeid] == valueid);
+	
+				// Return false if any mismatch found. 
+				if(!passed) return false;
+			}
+	
+			// Return true if no mismatch found. 
+			return true;
+		}
+	
+		// Check if post passes any given filter criteria. 
+		function checkFilterPassAny(/* projectitem */) {
+	
+			// Go thru each selected filter item. 
+			for(let filteritem of selectedfilteritems) {
+	
+				// Get xyz. 
+				let typeid = filteritem.filtertypeid;
+				let valueid = filteritem.filtervalueid;
+	
+				// Check for match btwn given project and current filter item. 
+				let passed = (projectitem[typeid] == valueid);
+	
+				// Return true if any match found. 
+				if(passed) return true;
+			}
+	
+			// Return false if no match found. 
+			return false;
+		}
+	}
 
 	// Create layout for blog posts. 
 	function createBlogLayout(rawpostlist,previewsOn,doMinimalPage) {
@@ -265,6 +320,10 @@ function loadBlog(selectedfilteritems) {
 		let archiveProjects = getArchiveProjects();
 		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
 		
+		// Filter projects. 
+		archiveProjects = archiveProjects.filter(checkFilterPass);
+		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
+		
 		// Display layout for archive posts in blog section. 
 		archive.pagesdestination.innerHTML = createBlogLayout(archiveProjects, false, false);
 
@@ -294,8 +353,12 @@ function loadBlog(selectedfilteritems) {
 		}
 		console.log('Loading category posts...');
 	
-		// Get custom list of projects for current category (sorted by project id). 
+		// Get list of projects for given category. 
 		let categoryProjects = getCategoryProjects();
+		// console.log('Category projects:', categoryProjects.length, categoryProjects);
+		
+		// Filter projects. 
+		categoryProjects = categoryProjects.filter(checkFilterPass);
 		// console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
 		// Display layout for category posts in blog section. 
@@ -333,7 +396,12 @@ function loadBlog(selectedfilteritems) {
 		}
 		console.log('Loading collection posts...');
 	
+		// Get list of projects for given collection. 
 		let collectionProjects = getCollectionProjects();
+		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
+		
+		// Filter projects. 
+		collectionProjects = collectionProjects.filter(checkFilterPass);
 		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
 		
 		// Display layout for collection posts in blog section. 
@@ -346,24 +414,6 @@ function loadBlog(selectedfilteritems) {
 		displaySelectedPage();
 
 		/***/
-
-		// Flatten 3d data matrix into 2d data list. 
-		function flatten(datamatrix) {
-
-			// Initialize result. 
-			let result = [];
-
-			// Accumulate result. 
-			for(let datalist of datamatrix) {
-				// result = result.concat(datalist);
-				for(let datapoint of datalist) {
-					result.push(datapoint);
-				}
-			}
-
-			// Return result. 
-			return result;
-		}
 	
 		// Get collection projects. 
 		function getCollectionProjects() {
@@ -378,7 +428,7 @@ function loadBlog(selectedfilteritems) {
 			let collectionprojectidsmatrix = collectioncategories.map( category => category.groupitemsidlist );
 
 			// Get list of project ids for collection. 
-			let collectionprojectids = flatten(collectionprojectidsmatrix);
+			let collectionprojectids = flattenMatrixToList(collectionprojectidsmatrix);
 
 			// Get list of collection projects. 
 			let collectionprojects = collectionprojectids.map(getProjectById);
@@ -399,18 +449,16 @@ function loadBlog(selectedfilteritems) {
 		}
 		console.log('Loading featured posts...');
 	
-		// Get list of featured projects (sorted by project id). 
+		// Get list of featured projects. 
 		let featuredProjects = getFeaturedProjects();
-		// let featuredProjectsA = ( featuredProjectIds['a'] ).map(getProjectById);
-		// let featuredProjectsB = ( featuredProjectIds['b'] ).map(getProjectById);
 		// console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
-		// console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIds['a'], featuredProjectsA);
-		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
+		
+		// Filter projects. 
+		featuredProjects = featuredProjects.filter(checkFilterPass);
+		// console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
 		
 		// Add layout for featured posts to blog section. 
 		featured.pagesdestination.innerHTML = createBlogLayout(featuredProjects, allowPreview, true);
-		// featured.postsdestinationa.innerHTML = createBlogLayout(featuredProjectsA, allowPreview, false);
-		// featured.postsdestinationb.innerHTML = createBlogLayout(featuredProjectsB, allowPreview, false);
 
 		// Load dot panel in page navigator. 
 		loadPageNavigator(featured.section);
@@ -432,6 +480,16 @@ function loadBlog(selectedfilteritems) {
 			// Return list of featured projects. 
 			return featuredprojects;
 		}
+
+		// Get list of featured projects. 
+		// let featuredProjectsA = ( featuredProjectIds['a'] ).map(getProjectById);
+		// let featuredProjectsB = ( featuredProjectIds['b'] ).map(getProjectById);
+		// console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIds['a'], featuredProjectsA);
+		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
+
+		// Add layout for featured posts to blog section. 
+		// featured.postsdestinationa.innerHTML = createBlogLayout(featuredProjectsA, allowPreview, false);
+		// featured.postsdestinationb.innerHTML = createBlogLayout(featuredProjectsB, allowPreview, false);
 	}
 
 	// Load dot panel in page navigator. 
@@ -514,6 +572,24 @@ function sortByProjectId(a,b) {
 		console.warn('Questionable comparison', a.projectid,b.projectid, a,b);
 		return 0;
 	}
+}
+
+// Flatten 3d data matrix into 2d data list. 
+function flattenMatrixToList(datamatrix) {
+
+	// Initialize result. 
+	let result = [];
+
+	// Accumulate result. 
+	for(let datalist of datamatrix) {
+		// result = result.concat(datalist);
+		for(let datapoint of datalist) {
+			result.push(datapoint);
+		}
+	}
+
+	// Return result. 
+	return result;
 }
 
 // Create preview panel for blog post card. 

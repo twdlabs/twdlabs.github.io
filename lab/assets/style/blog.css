@@ -208,7 +208,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row {display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice {margin:0 .5rem;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {background-color:var(--forecolor); display:block; cursor:pointer; position:relative; padding:.125rem; border:1px solid var(--backcolor2); border-radius:3rem;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {box-sizing:content-box; --ballsize:2rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {box-sizing:content-box; --ballsize:1.5rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch div.ball {background-color:var(--backcolor2); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch div.ball {transform:none; transition:.5s;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb {position:absolute; top:0; left:0; display:none;}
