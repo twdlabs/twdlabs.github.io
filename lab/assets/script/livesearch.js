@@ -2,24 +2,24 @@
 
 
 // Get live search overlay window. 
-const livesearchoverlay = document.querySelector('div#container header.navbar div.bin div.sidebar div.livesearch');
+const livesearchoverlay = document.querySelector('div#container header.navbar div.bin div.drawer div.livesearch');
 // console.log('livesearchoverlay:',livesearchoverlay);
 
 // Get open button for live search. 
-const livesearchopenbtn = document.querySelector('div#container header.navbar div.bin div.sidebar div.livesearch div.searchquery label.searchlabel');
+const livesearchopenbtn = document.querySelector('div#container header.navbar div.bin div.drawer div.livesearch div.searchquery label.searchlabel');
 // console.log('livesearchopenbtn:',livesearchopenbtn);
 // Get close button for live search. 
-const livesearchclosebtn = document.querySelector('div#container header.navbar div.bin div.sidebar div.livesearch div.searchquery label.searchlabel');
+const livesearchclosebtn = document.querySelector('div#container header.navbar div.bin div.drawer div.livesearch div.searchquery label.searchlabel');
 // console.log('livesearchclosebtn:',livesearchclosebtn);
 
 // Get live search go button. 
-const livesearchgobtn = document.querySelector('div#container header.navbar div.bin div.sidebar div.livesearch div.searchquery a.gobtn');
+const livesearchgobtn = document.querySelector('div#container header.navbar div.bin div.drawer div.livesearch div.searchquery a.gobtn');
 // console.log('livesearchgobtn:',livesearchgobtn);
 // Get live search query field. 
-const livesearchqueryfield = document.querySelector('div#container header.navbar div.bin div.sidebar div.livesearch div.searchquery input.searchquery');
+const livesearchqueryfield = document.querySelector('div#container header.navbar div.bin div.drawer div.livesearch div.searchquery input.searchquery');
 // console.log('livesearchqueryfield:',livesearchqueryfield);
 // Get live search results box. 
-const livesearchresultsbox = document.querySelector('div#container header.navbar div.bin div.sidebar div.livesearch div.searchresults');
+const livesearchresultsbox = document.querySelector('div#container header.navbar div.bin div.drawer div.livesearch div.searchresults');
 // console.log('livesearchresultsbox:',livesearchresultsbox);
 
 
@@ -90,7 +90,7 @@ function activateSearchBar() {
 		let keycode = event.keyCode;
 		console.log('Selected key code:',keycode);
 
-		// 
+		// Submit search upon enter key press. 
 		if(keycode==13) livesearchgobtn.click();
 	}
 }

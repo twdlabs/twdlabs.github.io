@@ -67,7 +67,7 @@ const postFilterData = [
 	{
 		filtername:'Created',
 		filtername:'Year',
-		filtergroupid:'yearcreated',
+		filtergroupid:'createdyear',
 		filteritems:[
 			{
 				value:2001,
@@ -84,6 +84,30 @@ const postFilterData = [
 		],
 		filteritemnamer:(value)=>(value),
 	},
+
+	// {
+	// 	filtername:'Year Quarter',
+	// 	filtergroupid:'createdquarter',
+	// 	filteritems:[
+	// 		{
+	// 			value:'2001 Q1',
+	// 			frequency:0,
+	// 		},
+	// 		{
+	// 			value:'2001 Q3',
+	// 			frequency:0,
+	// 		},
+	// 		{
+	// 			value:'2001 Q3',
+	// 			frequency:0,
+	// 		},
+	// 		{
+	// 			value:'2001 Q4',
+	// 			frequency:0,
+	// 		},
+	// 	],
+	// 	filteritemnamer:(value)=>(value),
+	// },
 
 	// {
 	// 	filtername:'Xyz',
@@ -112,7 +136,10 @@ createFilterValues('categoryid');
 createFilterValues('collectionid');
 
 // Create item values for filter group: creation year. 
-createFilterValues('yearcreated');
+createFilterValues('createdyear');
+
+// Create item values for filter group: creation quarter. 
+// createFilterValues('createdquarter');
 
 // console.log('Post filter data:',postFilterData);
 
@@ -200,11 +227,11 @@ function createFilterValues(filtergroupid) {
 // Augment project data for easy filtering. 
 function augmentProjectData() {
 
-	// Go thru each project collection. 
-	for(let projectcollection of projectCollectionData) {
+	// Go thru each collection. 
+	for(let collection of projectCollectionData) {
 
 		// Go thru each category in collection. 
-		for(let categoryid of projectcollection.groupitemsidlist) {
+		for(let categoryid of collection.groupitemsidlist) {
 
 			// Get category by id. 
 			let category = getProjectCategoryById(categoryid);
@@ -218,23 +245,59 @@ function augmentProjectData() {
 				// Augment project data. 
 				if(project) {
 					project.categoryid = category.groupid;
-					project.collectionid = projectcollection.groupid;
+					project.collectionid = collection.groupid;
 				}
+
+				// 
+				else console.warn('Null project:', project);
 			}
 		}
 	}
 
-	// Go thru each project collection. 
-	for(let yearblock of projectYearData) {
-
-		// Go thru each project in year block. 
-		for(let projectid of yearblock.groupitemsidlist) {
-
-			// Get project. 
-			let project = getProjectById(projectid);
+	// Go thru each project. 
+	for(let project of projectData) {
 		
-			// Augment project data. 
-			if(project) project.yearcreated = yearblock.year;
+		// Check if project missing project category. 
+		if(!project.categoryid || !project.collectionid) {
+			console.warn('Project missing category/collection:', project);
+
+			// Add null parameter for missing project category. 
+			project.categoryid = '';
+			// Add null parameter for missing project collection. 
+			project.collectionid = '';
+		}
+	}
+
+	// Define roman numerals for yearly quarter labels. 
+	const roman = ['I','II','III','IV',];
+
+	// Go thru each project year block. 
+	for(let yearblock of projectTimeData) {
+		// console.log('yearblock:',yearblock);
+
+		// Go thru each quarter in year block. 
+		for(let qindex in yearblock.quarterlyidlists) {
+
+			// Create label for current quarter. 
+			let qlabel = `${yearblock.year} Q${1*qindex+1}`;
+			// let qlabel = `${yearblock.year} Q-${roman[qindex]}`;
+
+			// Get list of ids for current quarter. 
+			let quarteridlist = yearblock.quarterlyidlists[qindex];
+			// console.log('quarteridlist:',quarteridlist);
+
+			// Go thru each project in quarter block. 
+			for(let projectid of quarteridlist) {
+
+				// Get project. 
+				let project = getProjectById(projectid);
+			
+				// Augment project data. 
+				if(project) {
+					project.createdyear = yearblock.year;
+					project.createdquarter = qlabel;
+				}
+			}
 		}
 	}
 

@@ -41,7 +41,7 @@ const layoutstyle = [
 function setLayoutStyle(togglebtn) {
 	
 	// Get selected style index. 
-	let styleindex = togglebtn.getAttribute('data-styleindex');
+	let styleindex = togglebtn.getAttribute('data-styleindex') * 1;
 
 	// Toggle style of posts by index. 
 	setLayoutStyleById(styleindex);

@@ -118,6 +118,7 @@ function getProjectCollectionNameById(collectionid) {
 
 	// Get collection. 
 	let collection = getProjectCollectionById(collectionid);
+	// if(!collection) console.log(collectionid);
 
 	// Return name if project collection found. 
 	return collection ? collection.groupname : '[none]';

@@ -2,13 +2,13 @@
 
 
 // Get navigation sidebar. 
-const headsidebar = document.querySelector('div#container header.navbar div.bin div.sidebar');
+const headsidebar = document.querySelector('div#container header.navbar div.bin div.drawer');
 // console.log('headsidebar:',headsidebar);
 
 // Get list destinations for header navigation. 
 const headnavdestination = {
-	navlistA:document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.a ul.navlist'),
-	navlistB:document.querySelector('div#container header.navbar div.bin div.sidebar div.navmenu.b ul.navlist'),
+	navlistA:document.querySelector('div#container header.navbar div.bin div.drawer div.navmenu.a ul.navlist'),
+	navlistB:document.querySelector('div#container header.navbar div.bin div.drawer div.navmenu.b ul.navlist'),
 };
 // console.log('headnavdestination:',headnavdestination);
 

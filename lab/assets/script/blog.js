@@ -94,6 +94,7 @@ function loadBlog(selectedfilteritems) {
 				// Get xyz. 
 				let typeid = filteritem.filtertypeid;
 				let valueid = filteritem.filtervalueid;
+				/* if(!valueid) */ console.log('value id:',valueid,undefined);
 	
 				// Check for match btwn given project and current filter item. 
 				let passed = (projectitem[typeid] == valueid);
@@ -115,6 +116,7 @@ function loadBlog(selectedfilteritems) {
 				// Get xyz. 
 				let typeid = filteritem.filtertypeid;
 				let valueid = filteritem.filtervalueid;
+				/* if(!valueid) */ console.log('value id:',valueid,undefined);
 	
 				// Check for match btwn given project and current filter item. 
 				let passed = (projectitem[typeid] == valueid);
@@ -494,29 +496,24 @@ function loadBlog(selectedfilteritems) {
 
 	// Load dot panel in page navigator. 
 	function loadPageNavigator(section) {
-		// console.log('Page count:',pagecount,dotpaneldestination);
+
+		// Check if loading page navigator. 
 		if(!dotpaneldestination) {
 			console.warn('No page navigator present');
 			return;
 		}
 
+		// Check if any matches found. 
+		// console.log('Page count:',pagecount,dotpaneldestination);
+
 		// Initialize layout for dot panel. 
-		let dotpanellayout = ''
+		let dotpanellayout = '';
 
 		// Go thru each page. 
-		for(let pageindex=0 ; pageindex<pagecount ; pageindex++) {
+		for(let i=0 ; i<pagecount ; i++) {
 
-			// 
-			dotpanellayout += `
-			<!-- dotitem -->
-			<li class="dotitem">
-
-				<!-- pagelink -->
-				<a class="pagelink" href="javascript:void(0)" data-pageindex="${pageindex}"></a>
-				<!-- /pagelink -->
-
-			</li>
-			<!-- /dotitem -->`;
+			// Add layout for page link. 
+			dotpanellayout += createPageLinkLayout(i);
 		}
 
 		// Display layout for dot panel. 
@@ -529,6 +526,20 @@ function loadBlog(selectedfilteritems) {
 		if(pagecount>1) section.classList.add('multipage');
 
 		/***/
+
+		// Create layout for page link. 
+		function createPageLinkLayout(pageindex) {
+			return `
+			<!-- dotitem -->
+			<li class="dotitem">
+
+				<!-- pagelink -->
+				<a class="pagelink" href="javascript:void(0)" data-pageindex="${pageindex}"></a>
+				<!-- /pagelink -->
+
+			</li>
+			<!-- /dotitem -->`;
+		}
 
 		// Activate page links in dot panel. 
 		function activatePageLinks() {

@@ -893,9 +893,9 @@ const projectData = [
 		projectid:'slideshow',
 		projectname:'Smooth Slideshow',
 	},{
-		authorid:'w3',
+		authorid:'w3s',
 		projectid:'slideshow2',
-		projectname:'Simple Slideshow',
+		projectname:'Slideshow Compilation',
 	},{
 		authorid:'twd',
 		projectid:'smartphone',

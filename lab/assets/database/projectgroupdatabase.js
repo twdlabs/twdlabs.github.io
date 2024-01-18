@@ -69,6 +69,7 @@ const projectCategoryData = [
 			'sort',
 			'storage',
 			'syntax',
+			'uitest',
 			'urlparams',
 		],
 	},
@@ -248,6 +249,7 @@ const projectCategoryData = [
 			'calculator',
 			'cluster1d',
 			'cluster',
+			'compound',
 			'matrix',
 			'trig',
 		],
@@ -374,7 +376,6 @@ const projectCategoryData = [
 		groupdescription:'Design seeds developed for future potential stand-alone applications and websites',
 		groupitemsidlist:[
 			'blogsocial',
-			'compound',
 			'crud',
 			'crud2',
 			'grocery',
@@ -422,6 +423,7 @@ const projectCategoryData = [
 			'unseenstrts',
 			'univ',
 			'wts1',
+			'www',
 			'100pure',
 			'360finance',
 		],
@@ -545,6 +547,7 @@ function getProjectCategoryNameById(categoryid) {
 
 	// Get category. 
 	let category = getProjectCategoryById(categoryid);
+	// if(!category) console.log(categoryid);
 
 	// Return name if project category found. 
 	return category ? category.groupname : '[none]';

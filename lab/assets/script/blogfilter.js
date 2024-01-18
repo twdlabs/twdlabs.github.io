@@ -254,7 +254,7 @@ function loadFilterGroups() {
 
 			// Get value of current filter item. 
 			let itemvalue = filteritem.value;
-			// console.log('Filter item value:',itemvalue);
+			if(!itemvalue) console.log('Filter item value:',itemvalue);
 
 			// Get name of current filter item. 
 			let itemname = filtergroup.filteritemnamer(itemvalue);
