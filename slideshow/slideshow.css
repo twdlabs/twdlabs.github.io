@@ -64,13 +64,13 @@ div#container main.slideshow div.grid div.controls {display:grid; place-items:ce
 /* Slideshow: Slide Control Dots */
 div#container main.slideshow div.grid div.controls ul.dotlist {position:absolute; bottom:0; /* width:100%; */}
 div#container main.slideshow div.grid div.controls ul.dotlist {background-color:var(--blackglass); list-style:none; padding:0; margin:0;}
-div#container main.slideshow div.grid div.controls ul.dotlist {display:flex; flex-direction:row; justify-content:center; padding:.5em;}
+div#container main.slideshow div.grid div.controls ul.dotlist {display:flex; flex-direction:row; justify-content:center; padding:.375em .25em;}
 div#container main.slideshow div.grid div.controls ul.dotlist {width:100%;}
-div#container main.slideshow div.grid div.controls ul.dotlist.round {width:auto; border-radius:1em; margin:1em;}
+div#container main.slideshow div.grid div.controls ul.dotlist.round {width:auto; padding:.5em; border-radius:1em; margin:1em;}
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot {background-color:#BBB; background-color:#717171; /* border:.125rem solid var(--blue); border-color:white; */}
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot {font-size:var(--dotsize); min-width:var(--dotsize); margin:0 .125em; cursor:pointer; transition:.5s;}
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot {flex-grow:1; min-height:.2rem; border-radius:1em;}
-div#container main.slideshow div.grid div.controls ul.dotlist.round li.dot {flex-grow:0; min-height:var(--dotsize); border-radius:50%;}
+div#container main.slideshow div.grid div.controls ul.dotlist.round li.dot {flex-grow:0; min-height:var(--dotsize); border-radius:50%; margin:0 .25em;}
 /* div#container main.slideshow div.grid div.controls ul.dotlist li.dot:hover {} */
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot.active {background-color:white;}
 /* Slideshow: Slide Control Deltas */
