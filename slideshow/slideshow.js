@@ -1,31 +1,31 @@
 
 
 
-// Get destination for slide images. 
+// Get main container. 
 const container = document.querySelector('div#container');
-console.log('container:',container);
+// console.log('container:',container);
 
-// Get box for slides. 
-const slidebox = document.querySelector('div#container main.slideshow div.grid div.slides');
-console.log('slidebox:',slidebox);
+// Get slideshow stage. 
+const slideshowstage = document.querySelector('div#container main.slideshow div.grid div.stage');
+// console.log('Slideshow stage:',slideshowstage);
 
-// Get destination for slide images. 
-let slidelistdestination = document.querySelector('div#container main.slideshow div.grid div.slides ul.slidelist');
-console.log('slidelistdestination:',slidelistdestination);
+// Get destination for slide set. 
+let slidesetdestination = document.querySelector('div#container main.slideshow div.grid div.stage ul.slideset');
+// console.log('Slide set destination:',slidesetdestination);
 
 // Get destination for control dots. 
 const controldotsdestination = document.querySelector('div#container main.slideshow div.grid div.controls ul.dotlist');
-console.log('controldotsdestination:',controldotsdestination);
+// console.log('Control dots destination:',controldotsdestination);
 
 
 /*****/
 
 
 // Define automatic time per slide (in ms). 
-const dt = 5000;
+const dt = 8000;
 
 // Define slide transition time. 
-const ddt = 1000;
+const ddt = 500;
 
 // Initialize slide index. 
 let currentslideindex = -1;
@@ -36,30 +36,34 @@ let currentlyMoving = false;
 // Initialize automatic slide shifter. 
 let autoSlideShifter;
 
-
-/*****/
-
-
-// Load slideshow controller. 
-loadSlideControls();
-
-// Select initial slide. 
-selectSlideByIndex(0,true);
-
-// Activate slideshow shortcuts. 
-activateSlideshowShortcuts();
-
-// Start automatic slide shifter. 
-startAutoSlide();
+// 
+let goingfwd = true;
 
 
 /*****/
 
 
-// Toggle zoomed out mode. 
-function toggleZoom() {
-	container.classList.toggle('zoom');
+// Check for slideshow stage. 
+if(slideshowstage) {
+
+	// Select initial slide. 
+	selectSlideByIndex(0,true);
+	
+	// Start automatic slide shifter. 
+	startAutoSlide();
+
+	// Load slideshow controller. 
+	if(controldotsdestination) loadSlideControls();
+	else console.warn('Missing slideshow controller');
+
+	// Activate slideshow shortcuts. 
+	activateSlideshowShortcuts();
 }
+else console.warn('Missing slideshow stage');
+
+
+/*****/
+
 
 // Load slideshow controller. 
 function loadSlideControls() {
@@ -72,7 +76,7 @@ function loadSlideControls() {
 
 		controldots += `
 		<!-- dot -->
-		<li class="dot" data-slideindex="${i}"></li>
+		<li class="dot${ i==currentslideindex ? ' active' : ''}" data-slideindex="${i}"></li>
 		<!-- /dot -->`;
 	}
 
@@ -119,49 +123,19 @@ function loadSlideControls() {
 // Go to adjacent (prev/next) slide. 
 function displaceSlide(diff) {
 
-	// Initialize new index. 
-	let newindex = 1*currentslideindex + 1*diff;
+	// Get index for newly selected slide. 
+	let newindextemp = 1*currentslideindex + 1*diff;
+	// console.log('New index:',newindextemp);
+	// Check validity of index for newly selected slide. 
+	let newindex = checkNewIndex(newindextemp);
 	// console.log('New index:',newindex);
 
-	// Check new index. 
-	newindex = checkIndex(newindex);
-	// console.log('New index:',newindex);
-
-	// Show slide at new index. 
+	// Show newly selected slide. 
 	selectSlideByIndex(newindex);
 
 	// Reset automatic slide shifter. 
 	clearTimeout(autoSlideShifter);
 	startAutoSlide();
-}
-
-// Check index. 
-function checkIndex(newindex) {
-
-	// Check if going backward. 
-	if(newindex < currentslideindex) goingfwd = false;
-	// Check if going forward. 
-	if(newindex > currentslideindex) goingfwd = true;
-	console.log( goingfwd ? 'Forward' : 'Back' );
-	
-	// Get total number of slides. 
-	let totalslidecount = slideshowdata.length;
-	// console.log('totalslidecount:',totalslidecount);
-
-	// Handle index underflow. 
-	if(newindex<0) {
-		// console.log('Underflow');
-		newindex += totalslidecount;
-	}
-
-	// Handle index overflow. 
-	if(newindex>=totalslidecount) {
-		// console.log('Overflow');
-		newindex -= totalslidecount;
-	}
-
-	// Return new index. 
-	return newindex;
 }
 
 // Select slide by index. 
@@ -174,6 +148,10 @@ function selectSlideByIndex(selectedindex,justStarted) {
 
 	// Check if staying put (selected slide already in place). 
 	if(selectedindex == currentslideindex) return;
+
+	// Show selected direction. 
+	let selecteddirection = (goingfwd ? 'Forward' : 'Back');
+	console.log( 'Selected direction:', selecteddirection );
 
 	// Save index of newly selected slide. 
 	currentslideindex = 1*selectedindex;
@@ -232,75 +210,85 @@ function selectSlideByIndex(selectedindex,justStarted) {
 		// Get index for newly selected slide. 
 		let newslideindex = currentslideindex;
 
+		// TODO: 
+
 		// Create layout for new slide. 
 		let newslidelayout = createSlideLayout(newslideindex, goingfwd?'next':'prev');
 
-		// Load adjacent slide. 
-		slidelistdestination.insertAdjacentHTML('beforeend',newslidelayout);
+		// Load new slide adjacent to current slide. 
+		slidesetdestination.insertAdjacentHTML('beforeend',newslidelayout);
 
-		// Determine x-factor. 
+		// Get horizontal offset for slide set. 
 		let xfactor = goingfwd ? +1 : -1;
 		let dx = -100 * xfactor;
 
-		// Move smoothly to adjacent slide. 
-		slidelistdestination.style.transform = `translateX(${dx}%)`;
+		// Glide smoothly to adjacent slide. 
+		slidesetdestination.style.transform = `translateX(${dx}%)`;
 	}
 
 	// Load currently selected slide. 
 	function loadSelectedSlide() {
-		console.log('Selected slide index:',currentslideindex);
-	
-		// Initialize result. 
-		let slideresults = '';
-	
-		// Get index for prev slide. 
-		let previndex = checkIndex(currentslideindex - 1);
-		// console.log('previndex:',previndex);
-		// Create layout for prev slide. 
-		slideresults += createSlideLayout(previndex,'prev');
-	
-		// Create layout for current slide. 
-		slideresults += createSlideLayout(currentslideindex,'');
+		// console.log('Selected slide index:',currentslideindex);
 
-		// Get index for next slide. 
-		let nextindex = checkIndex(currentslideindex + 1);
-		// console.log('nextindex:',nextindex);
-		// Create layout for next slide. 
-		slideresults += createSlideLayout(nextindex,'next');
+		// Load new slide set (resetting position to center slide). 
+		loadNewSlideSet();
 
-		// console.log('Slides:',previndex,currentslideindex,nextindex);
-
-		// Load new version of slide list. 
-		loadNewSlideList();
-
-		// Save new destination for slide list. 
-		saveNewSlideList();
+		// Refresh destination for slide list items. 
+		refreshSlideSetDestination();
 
 		// Set state of slide movement. 
 		currentlyMoving = false;
 
 		/***/
 
-		// Load new version of slide list. 
-		function loadNewSlideList() {
+		// Load new slide set (resetting position to center slide). 
+		function loadNewSlideSet() {
 
-			// Reset position to center slide. 
-			slidebox.innerHTML = `
-			<!-- slidelist -->
-			<ul class="slidelist">${slideresults}</ul>
-			<!-- /slidelist -->`;
+			// Display new slide set. 
+			slideshowstage.innerHTML = `
+			<!-- slideset -->
+			<ul class="slideset">${ createSlideSet() }</ul>
+			<!-- /slideset -->`;
 	
-			// Display results on page. 
-			// slidelistdestination.innerHTML = slideresults;
+			// Display new slide set. 
+			// slidesetdestination.innerHTML = createSlideSet();
 	
 			// Reset position to center slide. 
-			// slidelistdestination.style.transform = '';
+			// slidesetdestination.style.transform = '';
+
+			/**/
+
+			// Create set of slides. 
+			function createSlideSet() {
+		
+				// Initialize set of slides. 
+				let slideset = '';
+			
+				// Get index for prev slide. 
+				let previndex = checkNewIndex(currentslideindex - 1);
+				// console.log('previndex:',previndex);
+				// Add to slide set: layout for prev slide. 
+				slideset += createSlideLayout(previndex,'prev');
+			
+				// Add to slide set: layout for current slide. 
+				slideset += createSlideLayout(currentslideindex,'');
+		
+				// Get index for next slide. 
+				let nextindex = checkNewIndex(currentslideindex + 1);
+				// console.log('nextindex:',nextindex);
+				// Add to slide set: layout for next slide. 
+				slideset += createSlideLayout(nextindex,'next');
+		
+				// console.log('Slides:',previndex,currentslideindex,nextindex);
+	
+				// Return set of slides. 
+				return slideset;
+			}
 		}
 
-		// Save new destination for slide list. 
-		function saveNewSlideList() {
-			// Refresh destination for slide images. 
-			slidelistdestination = document.querySelector('div#container main.slideshow div.grid div.slides ul.slidelist');
+		// Refresh destination for slide set. 
+		function refreshSlideSetDestination() {
+			slidesetdestination = document.querySelector('div#container main.slideshow div.grid div.stage ul.slideset');
 		}
 	}
 	
@@ -320,7 +308,7 @@ function selectSlideByIndex(selectedindex,justStarted) {
 		<li class="slideitem ${slideposition}" data-slideindex="${index}">
 
 			<!-- img -->
-			<img class="img" src="${imgurl}" alt="${caption}" title="${caption}">
+			<img class="background" src="${imgurl}">
 			<!-- /img -->
 
 			<!-- caption -->
@@ -330,6 +318,44 @@ function selectSlideByIndex(selectedindex,justStarted) {
 		</li>
 		<!-- /slideitem -->`;
 	}
+}
+
+// Check validity of new index (and adjust as needed). 
+function checkNewIndex(newindex) {
+
+	// Check if going backward. 
+	if(newindex < currentslideindex) goingfwd = false;
+	// Check if going forward. 
+	if(newindex > currentslideindex) goingfwd = true;
+	
+	// Get total number of slides. 
+	let totalslidecount = slideshowdata.length;
+	// console.log('totalslidecount:',totalslidecount);
+
+	// Handle index underflow. 
+	if(newindex<0) {
+		// console.log('Underflow');
+		newindex += totalslidecount;
+	}
+
+	// Handle index overflow. 
+	if(newindex>=totalslidecount) {
+		// console.log('Overflow');
+		newindex -= totalslidecount;
+	}
+
+	// Return new index. 
+	return newindex;
+}
+
+
+/*****/
+
+
+// Start automatic slide shifter. 
+function startAutoSlide() {
+	// Start slide motion: cascade of animated switch to new slide every few seconds. 
+	autoSlideShifter = setTimeout( ()=>{ displaceSlide(+1) } ,dt);
 }
 
 // Activate slideshow shortcuts. 
@@ -353,8 +379,7 @@ function activateSlideshowShortcuts() {
 	}
 }
 
-// Start automatic slide shifter. 
-function startAutoSlide() {
-	// Start slide motion: cascade of animated switch to new slide every few seconds. 
-	autoSlideShifter = setTimeout( ()=>{ displaceSlide(+1) } ,dt);
+// Toggle zoomed out mode. 
+function toggleZoom() {
+	container.classList.toggle('zoom');
 }

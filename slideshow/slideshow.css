@@ -6,11 +6,11 @@
 	--blackglass:#0004;
 
 	/* Numbers */
-	--dotsize:.75rem; 
-
-	/* Aspect Ratios */
+	--dotsize:.75rem;
+	--changetime:1s;
+	--changetime:500ms;
 	/* 1:1 */
-	/* --aspectratio:100%; */
+	--aspectratio:100%;
 	/* 8:7 */
 	/* --aspectratio:87.5%; */
 	/* 4:3 */
@@ -20,7 +20,7 @@
 	/* 8:5 */
 	/* --aspectratio:62.5%; */
 	/* 16:9 */
-	--aspectratio:56.25%;
+	/* --aspectratio:56.25%; */
 	/* 2:1 */
 	/* --aspectratio:50%; */
 }
@@ -45,28 +45,32 @@ div#container.zoom main.slideshow {width:25vmin; overflow:visible;}
 div#container main.slideshow div.grid {position:relative;}
 
 /* Slideshow: Slide Controls */
-/* div#container main.slideshow div.grid div.slides {} */
+/* div#container main.slideshow div.grid div.stage {} */
 /* Slideshow: Slide List */
-div#container main.slideshow div.grid div.slides ul.slidelist {display:flex; flex-direction:row;}
-div#container main.slideshow div.grid div.slides ul.slidelist {list-style:none; padding:0; padding-top:var(--aspectratio); margin:0;}
-div#container main.slideshow div.grid div.slides ul.slidelist/* .smooth */ {transition:1s;}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem {position:relative; display:grid; place-items:center; width:100%; flex-shrink:0; padding-top:var(--aspectratio);}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem {position:absolute; top:0; left:0;}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem.prev {transform:translateX(-100%);}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem.next {transform:translateX(100%);}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem img.img {position:absolute; top:0; left:0; height:100%; width:100%;}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem img.img {background-color:limegreen; display:block; object-fit:cover;}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem span.caption {position:absolute;}
-div#container main.slideshow div.grid div.slides ul.slidelist li.slideitem span.caption {background-color:var(--blackglass); color:white; padding:.5rem 1rem; border-radius:.25rem;}
+div#container main.slideshow div.grid div.stage ul.slideset {display:flex; flex-direction:row;}
+div#container main.slideshow div.grid div.stage ul.slideset {list-style:none; padding:0; padding-top:var(--aspectratio); margin:0;}
+div#container main.slideshow div.grid div.stage ul.slideset/* .smooth */ {transition:var(--changetime);}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem {position:relative; display:grid; place-items:center; width:100%; flex-shrink:0; padding-top:var(--aspectratio);}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem {position:absolute; top:0; left:0;}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem.prev {transform:translateX(-100%);}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem.next {transform:translateX(100%);}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem img.background {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem img.background {background-color:limegreen; display:block; object-fit:cover;}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem span.caption {position:absolute; display:none;}
+div#container main.slideshow div.grid div.stage ul.slideset li.slideitem span.caption {background-color:var(--blackglass); color:white; padding:.5rem 1rem; border-radius:.25rem;}
 
 /* Slideshow: Slide Controls */
-/* div#container main.slideshow div.grid div.controls {} */
+div#container main.slideshow div.grid div.controls {display:grid; place-items:center;}
 /* Slideshow: Slide Control Dots */
-div#container main.slideshow div.grid div.controls ul.dotlist {position:absolute; bottom:0; width:100%;}
+div#container main.slideshow div.grid div.controls ul.dotlist {position:absolute; bottom:0; /* width:100%; */}
 div#container main.slideshow div.grid div.controls ul.dotlist {background-color:var(--blackglass); list-style:none; padding:0; margin:0;}
-div#container main.slideshow div.grid div.controls ul.dotlist {display:flex; flex-direction:row; justify-content:center; padding:1rem 0 .9rem;}
+div#container main.slideshow div.grid div.controls ul.dotlist {display:flex; flex-direction:row; justify-content:center; padding:.5em;}
+div#container main.slideshow div.grid div.controls ul.dotlist {width:100%;}
+div#container main.slideshow div.grid div.controls ul.dotlist.round {width:auto; border-radius:1em; margin:1em;}
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot {background-color:#BBB; background-color:#717171; /* border:.125rem solid var(--blue); border-color:white; */}
-div#container main.slideshow div.grid div.controls ul.dotlist li.dot {font-size:var(--dotsize); min-width:var(--dotsize); min-height:var(--dotsize); border-radius:50%; margin:0 .25em; cursor:pointer; transition:.5s;}
+div#container main.slideshow div.grid div.controls ul.dotlist li.dot {font-size:var(--dotsize); min-width:var(--dotsize); margin:0 .25em; cursor:pointer; transition:.5s;}
+div#container main.slideshow div.grid div.controls ul.dotlist li.dot {flex-grow:1; min-height:.2rem; border-radius:1em;}
+div#container main.slideshow div.grid div.controls ul.dotlist.round li.dot {flex-grow:0; min-height:var(--dotsize); border-radius:50%;}
 /* div#container main.slideshow div.grid div.controls ul.dotlist li.dot:hover {} */
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot.active {background-color:white;}
 /* Slideshow: Slide Control Deltas */
