@@ -68,7 +68,7 @@ div#container main.slideshow div.grid div.controls ul.dotlist {display:flex; fle
 div#container main.slideshow div.grid div.controls ul.dotlist {width:100%;}
 div#container main.slideshow div.grid div.controls ul.dotlist.round {width:auto; border-radius:1em; margin:1em;}
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot {background-color:#BBB; background-color:#717171; /* border:.125rem solid var(--blue); border-color:white; */}
-div#container main.slideshow div.grid div.controls ul.dotlist li.dot {font-size:var(--dotsize); min-width:var(--dotsize); margin:0 .25em; cursor:pointer; transition:.5s;}
+div#container main.slideshow div.grid div.controls ul.dotlist li.dot {font-size:var(--dotsize); min-width:var(--dotsize); margin:0 .125em; cursor:pointer; transition:.5s;}
 div#container main.slideshow div.grid div.controls ul.dotlist li.dot {flex-grow:1; min-height:.2rem; border-radius:1em;}
 div#container main.slideshow div.grid div.controls ul.dotlist.round li.dot {flex-grow:0; min-height:var(--dotsize); border-radius:50%;}
 /* div#container main.slideshow div.grid div.controls ul.dotlist li.dot:hover {} */
