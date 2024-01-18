@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link href="../../atgicon.ico" rel="icon"/>
-		<title>Gallery | Merch</title>
+		<title>Product Gallery | Merch</title>
 		
 
 		<!-- Main Site Stylesheet -->
@@ -41,8 +41,15 @@
 
 				<!-- refine -->
 				<aside class="refine">
-					<button class="sort">Sort</button>
-					<button class="filter">Filter</button>
+
+					<!-- sortbtn -->
+					<button class="sortbtn">Sort</button>
+					<!-- /sortbtn -->
+
+					<!-- filterbtn -->
+					<button class="filterbtn">Filter</button>
+					<!-- /filterbtn -->
+
 				</aside>
 				<!-- /refine -->
 
@@ -56,7 +63,7 @@
 						<div class="top">
 
 							<!-- photo -->
-							<a class="photo" href="javascript:void(0)"></a>
+							<a class="photo" href="../product/?pid=-1" style="background-image:url('');"></a>
 							<!-- /photo -->
 
 							<!-- panel -->
@@ -110,7 +117,11 @@
 
 							<!-- productname -->
 							<h3 class="productname">
-								<a class="name" href="product/">Lorem Ipsum Dolor</a>
+
+								<!-- name -->
+								<a class="name" href="../product/?pid=-1">Lorem Ipsum Dolor</a>
+								<!-- /name -->
+								
 							</h3>
 							<!-- /productname -->
 
@@ -152,12 +163,17 @@
 							<div class="productprice">
 
 								<!-- price -->
-								<a class="price" href="product/">99.99</a>
-								<!-- /price -->
+								<a class="price" href="../product/?pid=-1" style="background-image:url('');">
 
-								<!-- exprice -->
-								<a class="price exprice" href="product/">149.99</a>
-								<!-- /exprice -->
+									<!-- price -->
+									<span class="price">99.99</span>
+									<!-- /price -->
+
+									<!-- exprice -->
+									<span class="price exprice">149.99</span>
+									<!-- /exprice -->
+								</a>
+								<!-- /price -->
 
 							</div>
 							<!-- /productprice -->
@@ -210,7 +226,8 @@
 			</section>
 			<!-- #listings -->
 
-			<main>
+			<!-- refuse -->
+			<main class="refuse">
 
 				<!-- product -->
 				<div class="product">
@@ -251,6 +268,7 @@
 				<!-- /product -->
 				
 			</main>
+			<!-- /refuse -->
 
 			<!-- #footer -->
 			<footer id="footer"></footer>
@@ -266,9 +284,25 @@
 		<!-- /#snackbar -->
 
 
-		
-		<!-- Database Script -->
-		<script src="../assets/database.js" type="text/javascript"></script>
+
+		<!-- Main Database -->
+		<script src="../assets/database/database.js" type="text/javascript"></script>
+		<!-- Nav Link Database -->
+		<script src="../assets/database/navdatabase.js" type="text/javascript"></script>
+		<!-- User Database -->
+		<!-- <script src="../assets/database/userdatabase.js" type="text/javascript"></script> -->
+		<!-- Product Database -->
+		<!-- <script src="../assets/database/productdatabase.js" type="text/javascript"></script> -->
+		<!-- Icon Database -->
+		<script src="../assets/database/icondatabase.js" type="text/javascript"></script>
+
+		<!-- Project Page Level -->
+		<script type="text/javascript">
+			// Define page level relative to project home. 
+			const projectPageLevel = 1;
+		</script>
+		<!-- Relative Link Script -->
+		<script src="../../relativelink/relativelink.js" type="text/javascript"></script>
 
 		<!-- Main Site Scripts -->
 		<script src="../assets/script/module/search.js" type="text/javascript"></script>
@@ -280,7 +314,6 @@
 		<script src="../assets/script/module/toast.js" type="text/javascript"></script>
 
 		<!-- Main Site Script -->
-		<script>const atRootDir = false;</script>
 		<script src="../assets/script/module/index.js" type="text/javascript"></script>
 
 		<!-- Specific Page Script -->
