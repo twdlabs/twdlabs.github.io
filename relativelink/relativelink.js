@@ -3,16 +3,20 @@
 // Get relative url for given link url. 
 function getRelativeUrl(url) {
 
-	// Initialize page level tracker. 
-	let level = currentPageLevel;
-
 	// Initialize link prefix. 
-	let prefix = '';
+	let prefix = './';
 
-	// Create link prefix. 
-	while(level > 0) {
+	// Initialize tracker for current page level. 
+	let currentlevel = projectPageLevel ? projectPageLevel : currentPageLevel;
+
+	// Compile link prefix. 
+	while(currentlevel > 0) {
+
+		// Add parent jumper to url prefix. 
 		prefix += '../';
-		level -= 1;
+
+		// Decrement current level. 
+		currentlevel -= 1;
 	}
 
 	// Return relative url. 
