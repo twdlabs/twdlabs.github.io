@@ -7,7 +7,7 @@ function getRelativeUrl(url) {
 	let prefix = './';
 
 	// Initialize tracker for current page level. 
-	let currentlevel = projectPageLevel ? projectPageLevel : currentPageLevel;
+	let currentlevel = projectPageLevel;
 
 	// Compile link prefix. 
 	while(currentlevel > 0) {
