@@ -47,7 +47,7 @@ div#container section#product div.row div.details div.productpricing table.prici
 div#container section#product div.row div.details div.productpricing table.pricing span {display:block; width:100%;}
 div#container section#product div.row div.details div.productpricing table.pricing span.key {white-space:nowrap;}
 div#container section#product div.row div.details div.productpricing table.pricing span.key::after {content:':';}
-div#container section#product div.row div.details div.productpricing table.pricing span.value {text-align:right;}￼
+div#container section#product div.row div.details div.productpricing table.pricing span.value {text-align:right;}
 div#container section#product div.row div.details div.productpricing table.pricing span.value:before {content:'$';}
 div#container section#product div.row div.details div.productpricing table.pricing span.value#retailprice {text-decoration:line-through;}
 /* div#container section#product div.row div.details div.productpricing table.pricing span.value#dealprice {} */
@@ -86,19 +86,19 @@ div#container section#product div.row div.description div.content p.textcopy {ma
 div#container section#featured div.row div.suggestions {overflow:hidden; padding:0;}
 div#container section#featured div.row div.suggestions h3.head {margin:0;}
 div#container section#featured div.row div.suggestions div.content {max-width:100%; white-space:nowrap; overflow-x:scroll; scrollbar-width:none; -webkit-overflow-scrolling:touch;}
-div#container section#featured div.row div.suggestions div.content div.product {display:inline-flex; flex-direction:column; align-items:stretch; padding:.5rem;}
-div#container section#featured div.row div.suggestions div.content div.product div.pic {background-color:#0004; padding-top:80%;}
-div#container section#featured div.row div.suggestions div.content div.product div.pic img {display:none;}
-div#container section#featured div.row div.suggestions div.content div.product div.textcopy {padding:.75rem; text-align:center;}
-div#container section#featured div.row div.suggestions div.content div.product div.textcopy > div {margin-top:.5rem;}
-/* div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.name {} */
-div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.rating {display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.rating svg.star {color:orange;}
-/* div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.dealprice {} */
-div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.dealprice:before {content:'$';}
-/* div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.actionbtns {} */
-div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.actionbtns button.addcartbtn {background-color:orange; color:black;}
-div#container section#featured div.row div.suggestions div.content div.product div.textcopy div.actionbtns button {white-space:nowrap; padding:.5rem 1rem; border:0 none; border-radius:.25rem; cursor:pointer;}
+div#container section#featured div.row div.suggestions div.content div.item {display:inline-flex; flex-direction:column; align-items:stretch; padding:.5rem;}
+div#container section#featured div.row div.suggestions div.content div.item div.pic {background-color:#0004; padding-top:80%;}
+div#container section#featured div.row div.suggestions div.content div.item div.pic img {display:none;}
+div#container section#featured div.row div.suggestions div.content div.item div.textcopy {padding:.75rem; text-align:center;}
+div#container section#featured div.row div.suggestions div.content div.item div.textcopy > div {margin-top:.5rem;}
+/* div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.name {} */
+div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.rating {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.rating svg.star {color:orange;}
+/* div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.dealprice {} */
+div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.dealprice:before {content:'$';}
+/* div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.actionbtns {} */
+div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.actionbtns button.addcartbtn {background-color:orange; color:black;}
+div#container section#featured div.row div.suggestions div.content div.item div.textcopy div.actionbtns button {white-space:nowrap; padding:.5rem 1rem; border:0 none; border-radius:.25rem; cursor:pointer;}
 
 
 

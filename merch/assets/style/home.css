@@ -1,34 +1,45 @@
 
 
 
-/* Carousel Section */
+/* Slideshow Section */
 
-/* div#container section#carousel {display:none;} */
-div#container section#carousel {/* height:40rem; */ overflow:hidden; padding-top:40rem; position:relative;}
-div#container section#carousel main {max-width:none; position:absolute; top:0; left:0; width:100%; height:100%; user-select:none;}
-/* div#container section#carousel main {background:var(--grey) url('../images/product/sunglasses.jpg'); background-size:cover; background-position:center;} */
-div#container section#carousel main {display:flex; flex-direction:row; animation:slide 15s ease-in-out 0s infinite forwards;}
-/* div#container section#carousel main {display:none;} */
-div#container section#carousel main img.slide {width:100%; flex-shrink:0; object-fit:cover; object-position:center center;}
-div#container section#carousel aside.panel {position:absolute; bottom:0; right:0; margin:2rem;}
-div#container section#carousel aside.panel {display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container section#carousel aside.panel div.btn {display:grid; place-items:center;}
-div#container section#carousel aside.panel div.btn {background-color:white; border:1px solid black; border-radius:.25rem; font-size:1.15rem; min-width:1.75rem; min-height:2rem; margin:0 .125rem; cursor:pointer;}
-@keyframes slide {
-	0% {transform:translateX(0%);}
+/* div#container section.slideshow {} */
+div#container section.slideshow {padding:0; border:1rem solid white; border:0 none; /* border-radius:.5rem; */ overflow:hidden;}
+div#container section.slideshow {/* box-shadow: .625rem 1.5rem 2.875rem rgba(30,30,200,.3); */ transition:.5s;}
+div#container section.slideshow div.grid {position:relative; max-width:100vw; transition:.5s;}
 
-	23% {transform:translateX(0%);}
-	25% {transform:translateX(-100%);}
+/* Slideshow: Stage */
+/* div#container section.slideshow div.grid div.stage {} */
+/* Slideshow: Slide List */
+div#container section.slideshow div.grid div.stage ul.slideset {display:flex; flex-direction:row;}
+div#container section.slideshow div.grid div.stage ul.slideset {list-style:none; padding:0; padding-top:var(--aspectratio); margin:0;}
+div#container section.slideshow div.grid div.stage ul.slideset/* .smooth */ {transition:var(--changetime);}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem {position:relative; display:grid; place-items:center; width:100%; flex-shrink:0; padding-top:var(--aspectratio);}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem {position:absolute; top:0; left:0;}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem.prev {transform:translateX(-100%);}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem.next {transform:translateX(100%);}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem img.background {position:absolute; top:0; left:0; height:100%; width:100%;}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem img.background {background-color:limegreen; display:block; object-fit:cover;}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem span.caption {position:absolute; display:none;}
+div#container section.slideshow div.grid div.stage ul.slideset li.slideitem span.caption {background-color:var(--blackglass); color:white; padding:.5rem 1rem; border-radius:.25rem;}
 
-	48% {transform:translateX(-100%);}
-	50% {transform:translateX(-200%);}
-
-	73% {transform:translateX(-200%);}
-	75% {transform:translateX(-300%);}
-
-	98% {transform:translateX(-300%);}
-	100% {transform:translateX(-400%);}
-}
+/* Slideshow: Slide Controls */
+div#container section.slideshow div.grid div.controls {display:grid; place-items:center;}
+/* Slideshow: Slide Control Dots */
+div#container section.slideshow div.grid div.controls ul.dotlist {position:absolute; bottom:0; /* width:100%; */}
+div#container section.slideshow div.grid div.controls ul.dotlist {background-color:var(--blackglass); list-style:none; padding:0; margin:0;}
+div#container section.slideshow div.grid div.controls ul.dotlist {display:flex; flex-direction:row; justify-content:center; padding:.5em; border-radius:1em; margin:1em;}
+div#container section.slideshow div.grid div.controls ul.dotlist li.dot {background-color:#BBB; background-color:#717171; /* border:.125rem solid var(--blue); border-color:white; */}
+div#container section.slideshow div.grid div.controls ul.dotlist li.dot {font-size:var(--dotsize); min-width:var(--dotsize); min-height:var(--dotsize); border-radius:50%; margin:0 .25em; cursor:pointer; transition:.5s;}
+/* div#container section.slideshow div.grid div.controls ul.dotlist li.dot:hover {} */
+div#container section.slideshow div.grid div.controls ul.dotlist li.dot.active {background-color:white;}
+/* Slideshow: Slide Control Deltas */
+div#container section.slideshow div.grid div.controls a.delta {position:absolute; top:50%; transform:translateY(-50%); font-size:3rem; color:white; padding:1rem .25rem; cursor:pointer; transition:.5s;}
+div#container section.slideshow div.grid div.controls a.delta:hover {background-color:var(--blackglass);}
+div#container section.slideshow div.grid div.controls a.delta svg.icon {display:block;}
+div#container section.slideshow div.grid div.controls a.delta.prev {left:0; border-radius: 0 .5rem .5rem 0;}
+div#container section.slideshow div.grid div.controls a.delta.next {right:0; border-radius: .5rem 0 0 .5rem;}
+/* div#container section#carousel main {background-color:var(--grey); background-size:cover; background-position:center;} */
 
 
 /* Categories Section */
@@ -39,10 +50,10 @@ div#container section#categories main {display:grid; grid-template-areas: 'a b c
 div#container section#categories a.item {display:grid; place-items:center; position:relative;}
 div#container section#categories a.item {background-color:var(--blue); background-size:cover; background-position:center;}
 
-div#container section#categories a.item.a {grid-area:a; background-image:url('../images/product/shoes.jpg');}
-div#container section#categories a.item.b {grid-area:b; background-image:url('../images/product/hat.jpg');}
-div#container section#categories a.item.c {grid-area:c; background-image:url('../images/product/tshirt.jpg');}
-div#container section#categories a.item.d {grid-area:d; background-image:url('../images/product/sunglasses.jpg');}
+div#container section#categories a.item.a {grid-area:a; background-image:url('../../../resources/images/merch/shoes.jpg');}
+div#container section#categories a.item.b {grid-area:b; background-image:url('../../../resources/images/merch/hat.jpg');}
+div#container section#categories a.item.c {grid-area:c; background-image:url('../../../resources/images/merch/tshirt.jpg');}
+div#container section#categories a.item.d {grid-area:d; background-image:url('../../../resources/images/merch/sunglasses.jpg');}
 
 div#container section#categories a.item div.caption {background-color:#000; color:#FFF; font-size:1.5rem; font-weight:bold; text-transform:uppercase; padding:.5em .5em .25em; border-radius:.5rem; white-space:nowrap;}
 div#container section#categories a.item div.caption {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}

@@ -19,23 +19,23 @@ showFeaturedProducts();
 function showProductDetails() {
 
 	// Get query value from search parameters. 
-	let productid = params.get('id');
+	let productid = params.get('pid');
 	if(!productid) productid = '';
 	console.log('Product ID:', productid);
 
 	// Get product details. 
-	let atHome = atRootDir;
 	let product = productdata[productid];
-	let photourl = `${ (atHome) ? ('') : ('../') }${product.photourl}`;
+	let photourl = product ? getRelativeUrl(product.photourl) : '';
+
 	// Show product details. 
 	document.getElementById('productpic').style.backgroundImage = `url('${photourl}')`;
-	document.getElementById('name').innerHTML = product.name;
-	document.getElementById('rating').innerHTML = getRatingStars(product.rating.average);
-	document.getElementById('retailprice').innerHTML = (1*product.exprice).toFixed(2);
-	document.getElementById('dealprice').innerHTML = (1*product.price).toFixed(2);
-	document.getElementById('savedamount').innerHTML = (1*product.exprice - 1*product.price).toFixed(2);
+	document.getElementById('name').innerHTML = product ? product.productname : '';
+	document.getElementById('rating').innerHTML = product ? getRatingStars(product.rating.average) : '';
+	document.getElementById('retailprice').innerHTML = product ? (1*product.exprice).toFixed(2) : '';
+	document.getElementById('dealprice').innerHTML = product ? (1*product.price).toFixed(2) : '';
+	document.getElementById('savedamount').innerHTML = product ? (1*product.exprice - 1*product.price).toFixed(2) : '';
 	// document.getElementById('quantity').innerHTML = xyzabcxyz;
-	document.getElementById('description').innerHTML = product.description;
+	document.getElementById('description').innerHTML = product ? product.description : '';
 	// document.getElementById('xyzabcxyz').innerHTML = xyzabcxyz;
 	// document.getElementById('xyzabcxyz').innerHTML = xyzabcxyz;
 
@@ -77,7 +77,7 @@ function showFeaturedProducts() {
 			<div class="textcopy">
 			
 				<!-- name -->
-				<div class="name">${item.name}</div>
+				<div class="name">${item.productname}</div>
 				<!-- /name -->
 				
 				<!-- rating -->

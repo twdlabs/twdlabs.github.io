@@ -1,27 +1,21 @@
 
 
-// Set status of navigation links. 
-let activeUrlLinks = false;
+
+// Load universal page components. 
+startItUp();
 
 
 /*****/
 
 
 // Load universal page components. 
-startItUp(atRootDir);
-
-
-/*****/
-
-
-// Load universal page components. 
-function startItUp(atHome=false) {
+function startItUp() {
 	
 	// Load site navbar header. 
-	loadNav(atHome);
+	loadNav();
 
 	// Load site footer. 
-	loadFooter(atHome);
+	loadFooter();
 
 
 	/*****/
@@ -61,12 +55,11 @@ function startItUp(atHome=false) {
 	}
 	
 	// Load head navigation bar from file. 
-	function loadNav(atHome) {
+	function loadNav() {
 	
 		// Get relative url of navbar file. 
-		// let navurl = ( (atHome) ? ('../') : ('../../') ) + 'navbar.html';
-		let navurl = ( (atHome) ? ('./') : ('../') ) + 'navbar.html';
-		// console.log('Load navbar from:',navurl);
+		let navurl = getRelativeUrl('./navbar.html');
+		console.log('Load navbar from:',navurl);
 	
 		// Load default navbar. Load header navigation and user data. 
 		// $('#navbar').load(navurl, loadBoth);
@@ -96,7 +89,7 @@ function startItUp(atHome=false) {
 				<li class="navitem">
 		
 					<!-- navlink -->
-					<a class="navlink page" href="${ (activeUrlLinks) ? (item.url) : ('javascript:void(0)') }">${item.name}</a>
+					<a class="navlink page" href="${ (item.url) ? (item.url) : 'javascript:void(0)' }">${item.name}</a>
 					<!-- /navlink -->
 		
 				</li>
@@ -142,12 +135,11 @@ function startItUp(atHome=false) {
 	}
 	
 	// Load footer bar from file. 
-	function loadFooter(atHome) {
+	function loadFooter() {
 	
 		// Get relative url of navbar file. 
-		// let footerurl = ( (atHome) ? ('../') : ('../../') ) + 'footer.html';
-		let footerurl = ( (atHome) ? ('./') : ('../') ) + 'footer.html';
-		// console.log('Load footer from:',footerurl);
+		let footerurl = getRelativeUrl('./footer.html');
+		console.log('Load footer from:',footerurl);
 	
 		// Load default footer. Load footer navigation. 
 		// $('footer#footer').load(footerurl, loadNavLists);
@@ -189,7 +181,7 @@ function startItUp(atHome=false) {
 					// console.log('\tnavitem', navitem);
 	
 					// Get parameters for result string. 
-					let url = (activeUrlLinks) ? (navitem.url) : ('javascript:void(0)');
+					let url = (navitem.url) ? (navitem.url) : 'javascript:void(0)';
 					let innersvg = (navitem.innersvg) ? (navitem.innersvg) : (`<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>`);
 					let iconclass = (navitem.innersvg)?(''):('arrow');
 	

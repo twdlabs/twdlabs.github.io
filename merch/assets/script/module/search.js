@@ -30,7 +30,7 @@ function searchForProduct() {
 		product = productdata[index];
 
 		// Check if product name or description matches search query (case insensitive). 
-		let n = product.name.toUpperCase();
+		let n = product.productname.toUpperCase();
 		let d = product.description.toUpperCase();
 		let q = query.toUpperCase();
 		let weGotAMatch = n.includes(q) || d.includes(q);

@@ -27,8 +27,7 @@ function updateAccounts() {
 		let user = userdata[i];
 
 		// Get user photo url. 
-		let atHome = atRootDir;
-		let photourl = `${ (atHome) ? ('') : ('../') }${user.photourl}`;
+		let photourl = getRelativeUrl(user.photourl);
 
 		// Create special account element for active user. 
 		if(i==currentuserid) {
@@ -126,18 +125,18 @@ function userLogin() {
 	console.log('input',input);
 	
 	// Get user id. 
-	let id = 1*input;
-	console.log('id',id);
+	let userid = 1*input;
+	console.log('User id:',userid);
 
 	// Check if user id is valid. 
-	let userIdValid = (input.length>0) && (id>-1) && (id<userdata.length);
+	let userIdValid = (input.length>0) && (userid>-1) && (userid<userdata.length);
 	console.log('userIdValid',userIdValid);
 
 	// Login if user id valid. 
 	if(userIdValid) {
 
 		// Save user id. 
-		currentuserid = id;
+		currentuserid = userid;
 
 		// Check if user requested to save user id. 
 		let saveId = document.getElementById('saveid').checked;

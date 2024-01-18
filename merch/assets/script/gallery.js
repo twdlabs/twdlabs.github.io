@@ -53,10 +53,8 @@ function createProductElement(productid) {
 	let product = productdata[productid];
 
 	// Get product urls. 
-	let atHome = atRootDir;
-	// let url = `${ (atHome) ? ('') : ('../') }${product.producturl}`;
-	let url = `${ (atHome) ? ('') : ('../') }product/index.html?id=${productid}`;
-	let photourl = `${ (atHome) ? ('') : ('../') }${product.photourl}`;
+	let producturl = getRelativeUrl(`./product/?pid=${productid}`);
+	let photourl = getRelativeUrl(product.photourl);
 
 	return `
 	<!-- item -->
@@ -66,7 +64,7 @@ function createProductElement(productid) {
 		<div class="top">
 
 			<!-- photo -->
-			<a class="photo" href="${ url }" style="background-image:url('${ photourl }')"></a>
+			<a class="photo" href="${ producturl }" style="background-image:url('${ photourl }')"></a>
 			<!-- /photo -->
 
 			<!-- panel -->
@@ -122,7 +120,7 @@ function createProductElement(productid) {
 			<h3 class="productname">
 
 				<!-- name -->
-				<a class="name" href="${ url }">${ product.name }</a>
+				<a class="name" href="${ producturl }">${ product.productname }</a>
 				<!-- /name -->
 
 			</h3>
@@ -150,7 +148,7 @@ function createProductElement(productid) {
 			<div class="productprice">
 
 				<!-- price -->
-				<a class="price" href="${ url }" style="background-image:url('');">
+				<a class="price" href="${ producturl }" style="background-image:url('');">
 
 					<!-- price -->
 					<span class="price">${ (1*product.price).toFixed(2) }</span>

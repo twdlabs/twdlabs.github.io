@@ -20,8 +20,7 @@ function updateFavs() {
 		let product = productdata[id];
 
 		// Get product photo url. 
-		let atHome = atRootDir;
-		let photourl = `${ (atHome) ? ('') : ('../') }${product.photourl}`;
+		let photourl = getRelativeUrl(product.photourl);
 
 		// Add item's page elements. 
 		result += `
@@ -36,7 +35,7 @@ function updateFavs() {
 			<div class="content">
 
 				<!-- name -->
-				<div class="name">${product.name}</div>
+				<div class="name">${product.productname}</div>
 				<!-- /name -->
 
 				<!-- desc -->

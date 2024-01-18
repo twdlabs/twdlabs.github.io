@@ -10,7 +10,7 @@ if(!snackbar) addSnackbar();
 // Define default time delay before toast messages. 
 const delay = 0;
 // Define default time duration of toast messages. 
-const dt = 3000;
+const dtToast = 3000;
 
 // Test the toaster. 
 // passTheToast('Testing 123');
@@ -48,7 +48,7 @@ function passTheToast(msg) {
 		snackbar.classList.add('active');
 
 		// Call ender function after time duration.
-		setTimeout(endTheToast, dt);
+		setTimeout(endTheToast, dtToast);
 
 	}, delay );
 }
