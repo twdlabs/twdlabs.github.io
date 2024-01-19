@@ -8,7 +8,7 @@ const presidentData = [
 		title:'George Washington',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/01.jpg',
+		photourl:'./../resources/images/presidents/01.jpg',
 	},
 	{
 		posttype:'president',
@@ -16,7 +16,7 @@ const presidentData = [
 		title:'John Adams',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/02.jpg',
+		photourl:'./../resources/images/presidents/02.jpg',
 	},
 	{
 		posttype:'president',
@@ -24,7 +24,7 @@ const presidentData = [
 		title:'Thomas Jefferson',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/03.jpg',
+		photourl:'./../resources/images/presidents/03.jpg',
 	},
 	{
 		posttype:'president',
@@ -32,7 +32,7 @@ const presidentData = [
 		title:'James Monroe',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/05.jpg',
+		photourl:'./../resources/images/presidents/05.jpg',
 	},
 	{
 		posttype:'president',
@@ -40,7 +40,7 @@ const presidentData = [
 		title:'John Quincy Adams',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/06.jpg',
+		photourl:'./../resources/images/presidents/06.jpg',
 	},
 	{
 		posttype:'president',
@@ -48,7 +48,7 @@ const presidentData = [
 		title:'Andrew Jackson',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/07.jpg',
+		photourl:'./../resources/images/presidents/07.jpg',
 	},
 	{
 		posttype:'president',
@@ -56,7 +56,7 @@ const presidentData = [
 		title:'James K. Polk',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/11.jpg',
+		photourl:'./../resources/images/presidents/11.jpg',
 	},
 	{
 		posttype:'president',
@@ -64,7 +64,7 @@ const presidentData = [
 		title:'Abraham Lincoln',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/16.jpg',
+		photourl:'./../resources/images/presidents/16.jpg',
 	},
 	{
 		posttype:'president',
@@ -72,7 +72,7 @@ const presidentData = [
 		title:'Andrew Johnson',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/17.jpg',
+		photourl:'./../resources/images/presidents/17.jpg',
 	},
 	{
 		posttype:'president',
@@ -80,7 +80,7 @@ const presidentData = [
 		title:'James A. Garfield',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/xy.jpg',
+		photourl:'./../resources/images/presidents/20.jpg',
 	},
 	{
 		posttype:'president',
@@ -88,7 +88,7 @@ const presidentData = [
 		title:'Calvin Coolidge',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/xy.jpg',
+		photourl:'./../resources/images/presidents/21.jpg',
 	},
 	{
 		posttype:'president',
@@ -97,7 +97,7 @@ const presidentData = [
 		title:'Grover Cleveland',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/22.jpg',
+		photourl:'./../resources/images/presidents/22.jpg',
 	},
 	{
 		posttype:'president',
@@ -105,7 +105,7 @@ const presidentData = [
 		title:'Benjamin Harrison',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/xy.jpg',
+		photourl:'./../resources/images/presidents/23.jpg',
 	},
 	{
 		posttype:'president',
@@ -113,7 +113,7 @@ const presidentData = [
 		title:'Woodrow Wilson',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/28.jpg',
+		photourl:'./../resources/images/presidents/28.jpg',
 	},
 	{
 		posttype:'president',
@@ -121,7 +121,7 @@ const presidentData = [
 		title:'Theodoore Roosevelt',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/26.jpg',
+		photourl:'./../resources/images/presidents/26.jpg',
 	},
 	{
 		posttype:'president',
@@ -129,7 +129,7 @@ const presidentData = [
 		title:'Franklin D. Roosevelt',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/32.jpg',
+		photourl:'./../resources/images/presidents/32.jpg',
 	},
 	{
 		posttype:'president',
@@ -137,7 +137,7 @@ const presidentData = [
 		title:'Harry S. Truman',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/33.jpg',
+		photourl:'./../resources/images/presidents/33.jpg',
 	},
 	{
 		posttype:'president',
@@ -145,7 +145,7 @@ const presidentData = [
 		title:'John F. Kennedy',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/35.jpg',
+		photourl:'./../resources/images/presidents/35.jpg',
 	},
 	{
 		posttype:'president',
@@ -153,7 +153,7 @@ const presidentData = [
 		title:'Lyndon B. Johnson',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/36.jpg',
+		photourl:'./../resources/images/presidents/36.jpg',
 	},
 	{
 		posttype:'president',
@@ -161,7 +161,7 @@ const presidentData = [
 		title:'Richard M. Nixon',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/37.jpg',
+		photourl:'./../resources/images/presidents/37.jpg',
 	},
 	{
 		posttype:'president',
@@ -169,7 +169,7 @@ const presidentData = [
 		title:'Gerald R. Ford',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/38.jpg',
+		photourl:'./../resources/images/presidents/38.jpg',
 	},
 	{
 		posttype:'president',
@@ -177,7 +177,7 @@ const presidentData = [
 		title:'James Carter',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/39.jpg',
+		photourl:'./../resources/images/presidents/39.jpg',
 	},
 	{
 		posttype:'president',
@@ -185,7 +185,7 @@ const presidentData = [
 		title:'Ronald Reagan',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/40.jpg',
+		photourl:'./../resources/images/presidents/40.jpg',
 	},
 	{
 		posttype:'president',
@@ -193,7 +193,7 @@ const presidentData = [
 		title:'George H.W. Bush',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/41.jpg',
+		photourl:'./../resources/images/presidents/41.jpg',
 	},
 	{
 		posttype:'president',
@@ -201,7 +201,7 @@ const presidentData = [
 		title:'Bill Clinton',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/42.jpg',
+		photourl:'./../resources/images/presidents/42.jpg',
 	},
 	{
 		posttype:'president',
@@ -209,7 +209,7 @@ const presidentData = [
 		title:'George W. Bush',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/43.jpg',
+		photourl:'./../resources/images/presidents/43.jpg',
 	},
 	{
 		posttype:'president',
@@ -217,7 +217,7 @@ const presidentData = [
 		title:'Barack Obama',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/44.jpg',
+		photourl:'./../resources/images/presidents/44.jpg',
 	},
 	{
 		posttype:'president',
@@ -225,7 +225,7 @@ const presidentData = [
 		title:'Donald Trump',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/45.jpg',
+		photourl:'./../resources/images/presidents/45.jpg',
 	},
 	{
 		posttype:'president',
@@ -233,7 +233,7 @@ const presidentData = [
 		title:'Joseph Biden',
 		content:'Hello there world',
 		visual:true,
-		photourl:'./media/presidents/46.jpg',
+		photourl:'./../resources/images/presidents/46.jpg',
 	},
 ];
 
