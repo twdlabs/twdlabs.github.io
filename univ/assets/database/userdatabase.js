@@ -9,7 +9,7 @@ const userData = [
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		username:'jsmith1',
 		userbio:'Lorem ipsum dolor imet',
-		avatarurl:'./assets/media/avatar-m.png',
+		avatarurl:'./../resources/images/user/avatar-m.png',
 		likedposts:{
 			blog:[],
 			program:[],
@@ -26,7 +26,7 @@ const userData = [
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		username:'jsmith2',
 		userbio:'Lorem ipsum dolor imet',
-		avatarurl:'./assets/media/avatar-f.png',
+		avatarurl:'./../resources/images/user/avatar-f.png',
 		likedposts:{
 			blog:[],
 			program:[],
@@ -43,7 +43,7 @@ const userData = [
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		username:'jsmith3',
 		userbio:'Lorem ipsum dolor imet',
-		avatarurl:'./assets/media/avatar-m.png',
+		avatarurl:'./../resources/images/user/avatar-m.png',
 		likedposts:{
 			blog:[],
 			program:[],
@@ -60,7 +60,7 @@ const userData = [
 		registrationtime:1577854800000,	// 2020-01-01 0:00:00
 		username:'bsmith',
 		userbio:'Lorem ipsum dolor imet',
-		avatarurl:'./assets/media/avatar-m.png',
+		avatarurl:'./../resources/images/user/avatar-m.png',
 		likedposts:{
 			blog:[],
 			program:[],

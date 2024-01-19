@@ -19,7 +19,7 @@ div#container header#header {position:fixed; position:absolute; background-color
 div#container main#pagecontent section.banner {background-color:#000; text-align:center; min-height:99vh; padding: 8rem 0 /* 3.75rem */;}
 div#container main#pagecontent section.banner {display:grid; place-items:center; position:relative; transition:.5s;}
 div#container main#pagecontent section.banner div.bg {position:absolute; top:0; right:0; bottom:0; left:0; z-index:10;}
-div#container main#pagecontent section.banner div.bg {background:rgb(141,74,2) url('../../assets/media/library.jpg'); background-size:cover; background-position:center; opacity:.33;}
+div#container main#pagecontent section.banner div.bg {background:rgb(141,74,2) url('../../../resources/images/univ/library.jpg'); background-size:cover; background-position:center; opacity:.33;}
 div#container main#pagecontent section.banner main {color:white; position:relative; z-index:20; padding:0 .5rem;}
 div#container main#pagecontent section.banner main h1.header {font-size:6.25rem; font-weight:100; margin:0; margin-bottom:1rem;}
 div#container main#pagecontent section.banner main h2.subheader {font-size:3.125rem; font-weight:100; margin:0; margin-bottom:1rem;}

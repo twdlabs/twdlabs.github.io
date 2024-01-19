@@ -132,7 +132,7 @@ function loadHeader() {
 			<!-- navlink -->
 			<a href="javascript:void(0)" class="navlink btn btnred logoutbtn">
 				<span class="img"></span>
-				<img src="${ getRelativeUrl('./assets/media/avatar-m.png') }"/>
+				<img src="${ getRelativeUrl('./../resources/images/user/avatar-m.png') }"/>
 				<span class="caption">Log out</span>
 			</a>
 			<!-- /navlink -->
@@ -179,7 +179,7 @@ function loadHeader() {
 	<a class="profile" href="javascript:void(0)">
 
 		<!-- avatar -->
-		<img class="avatar" src="${ getRelativeUrl('./assets/media/avatar-m.png') }">
+		<img class="avatar" src="${ getRelativeUrl('./../resources/images/user/avatar-m.png') }">
 		<!-- /avatar -->
 
 	</a>
@@ -325,7 +325,7 @@ function loadHeader() {
 function loadTrail() {
 
 	// Disregard breadcrumb trail for home page. 
-	if(currentPageId=='home' /* || currentPageLevel==0 */) {
+	if(currentPageId=='home' /* || projectPageLevel==0 */) {
 		// console.log('No breadcrumb trail at base level.');
 		return;
 	}
@@ -923,6 +923,6 @@ function activateLiveSearch() {
 	const openbtn = document.querySelector('div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.search');
 
 	// Create new Search object. 
-	/* const s =  */new Search(openbtn,closebtn,searchOverlay,searchField,resultsBox);
+	/* const s =  */new SearchOverlay(openbtn,closebtn,searchOverlay,searchField,resultsBox);
 }
 

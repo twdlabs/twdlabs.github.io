@@ -11,7 +11,7 @@
 		<title>Header | True University</title>
 		
 		<!-- Live Search Stylesheet -->
-		<link href="./../../../livesearch/livesearch.css" rel="stylesheet" type="text/css">
+		<link href="../../../livesearch/style/livesearch.css" rel="stylesheet" type="text/css">
 		
 		<!-- Main Stylesheet -->
 		<link href="../style/style.css" rel="stylesheet" type="text/css">
@@ -109,7 +109,7 @@
 						<a class="profile" href="javascript:void(0)">
 		
 							<!-- avatar -->
-							<img class="avatar" src="./../../assets/media/avatar-m.png">
+							<img class="avatar" src="../../../resources/images/user/avatar-m.png">
 							<!-- /avatar -->
 		
 						</a>
@@ -137,7 +137,7 @@
 								<!-- navlink -->
 								<a href="javascript:void(0)" class="navlink btn btnred logoutbtn">
 									<span class="img"></span>
-									<img src="./../../assets/media/avatar-m.png"/>
+									<img src="../../../resources/images/user/avatar-m.png"/>
 									<span class="caption">Log out</span>
 								</a>
 								<!-- /navlink -->
@@ -312,7 +312,7 @@
 		<!-- /#container -->
 		
 		<!-- Live Search Script -->
-		<script src="./../../../livesearch/livesearch.js" type="text/javascript"></script>
+		<script src="../../../livesearch/script/livesearch.js" type="text/javascript"></script>
 		
 		<script type="text/javascript">
 
@@ -397,7 +397,7 @@
 				const openbtn = document.querySelector('div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.search');
 			
 				// Create new Search object. 
-				/* const s =  */new Search(openbtn,closebtn,searchOverlay,searchField,resultsBox);
+				/* const s =  */new SearchOverlay(openbtn,closebtn,searchOverlay,searchField,resultsBox);
 			}
 			
 		</script>

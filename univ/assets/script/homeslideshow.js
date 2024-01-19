@@ -5,7 +5,7 @@
 const slideData = [
 
 	{
-		imageurl:'./assets/media/bus.jpg',
+		imageurl:'./../resources/images/univ/bus.jpg',
 		header:'Free Transportation',
 		textcopy:'All students have free unlimited bus fare.',
 		btncaption:'Learn More',
@@ -13,7 +13,7 @@ const slideData = [
 	},
 
 	{
-		imageurl:'./assets/media/apples.jpg',
+		imageurl:'./../resources/images/univ/apples.jpg',
 		header:'An Apple a Day',
 		textcopy:'Our dentistry program recommends eating apples.',
 		btncaption:'Learn More',
@@ -21,7 +21,7 @@ const slideData = [
 	},
 
 	{
-		imageurl:'./assets/media/bread.jpg',
+		imageurl:'./../resources/images/univ/bread.jpg',
 		header:'Free Food',
 		textcopy:'True University offers lunch plans for those in need.',
 		btncaption:'Learn More',

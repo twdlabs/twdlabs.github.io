@@ -85,7 +85,7 @@ div#container header#header nav.navmenu ul.navlist li.navitem a.navlink.toggler 
 /* Navigation Menu: Account State (Logged in/out) */
 /* div#container header#header nav.navmenu.a {} */
 div#container header#header nav.navmenu.a a.profile {display:block; background-color:#000A; --picsize:4rem; width:var(--picsize); border-radius:50%; overflow:hidden; --boxshadow:0 0 .25rem #0003; box-shadow:var(--boxshadow);}
-div#container.user header#header nav.navmenu.a a.profile {}
+/* div#container.user header#header nav.navmenu.a a.profile {} */
 div#container header#header nav.navmenu.a a.profile img.avatar {display:block; height:100%; width:100%; object-fit:cover; visibility:hidden;}
 div#container.user header#header nav.navmenu.a a.profile img.avatar {visibility:visible;}
 /* div#container header#header nav.navmenu.a ul.navlist.accountlist {} */
