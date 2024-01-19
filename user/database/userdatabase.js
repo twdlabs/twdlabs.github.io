@@ -79,8 +79,8 @@ function User(fname,lname,admin,avatarurl) {
 const positionList = ['UX Designer','UI Designer','Website Developer','Quality Assurance Tester',];
 
 // Get avatar urls. 
-let avatarm = './../user/images/avatar-m.png';
-let avatarf = './../user/images/avatar-f.png';
+let avatarm = './../resources/images/user/avatar-m.png';
+let avatarf = './../resources/images/user/avatar-f.png';
 
 
 // Define default list of user data. 
@@ -118,7 +118,7 @@ const defaultUserData = [
 	new User('Xavier','Toven',false,avatarm,),
 	new User('Yolanda','Yokes',false,avatarf,),
 ];
-console.log('Default user data:',defaultUserData);
+// console.log('Default user data:',defaultUserData);
 
 // Initialize list of user data. 
 let userDataList = [];
