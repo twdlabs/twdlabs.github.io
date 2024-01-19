@@ -35,7 +35,7 @@ function fillData() {
 			<div class="head">
 	
 				<!-- avatar -->
-				<div class="avatar">${ (client.avatarurl) ? (`<img src="../chat/${client.avatarurl}" alt="">`) : ('') }</div>
+				<div class="avatar">${ (client.avatarurl) ? (`<img src="${ /* getRelativeUrl */(client.avatarurl) }" alt="">`) : ('') }</div>
 				<!-- /avatar -->
 	
 				<!-- remainder -->
