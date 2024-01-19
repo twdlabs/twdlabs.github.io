@@ -58,7 +58,7 @@ div#container main#pagecontent section.story article.story div.content span.item
 div#container main#pagecontent section.story article.story div.content span.item span.value article.post div.postcontent p.postexcerpt a.readlink {color:#999; white-space:nowrap;}
 
 div#container main#pagecontent section.archive {padding:0 3rem;}
-div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--postwidth); padding:0; margin:0 auto;}
+div#container main#pagecontent section.archive ul.postlist {list-style:none; max-width:var(--archivewidth); padding:0; margin:0 auto;}
 div#container main#pagecontent section.archive ul.postlist {opacity:1; visibility:visible; transform:translateY(0); transition:.5s;}
 div#container main#pagecontent section.archive ul.postlist.gone {opacity:0; visibility:hidden; transform:translateY(-2rem);}
 /* div#container main#pagecontent section.archive ul.postlist li.postitem {border-top:1px solid var(--trpnavy);} */

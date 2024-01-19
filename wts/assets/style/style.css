@@ -34,7 +34,7 @@
 	--lucentgreen:rgba(34,215,100,0.89);
 	
 	--pagewidth:60rem;
-	--postwidth:30rem;
+	--archivewidth:30rem;
 	--articlewidth:48rem;
 	--themecolor:var(--green);
 }
@@ -85,7 +85,7 @@ div#container header#header nav.navmenu ul.navlist li.navitem a.navlink.toggler 
 
 /* Navigation Menu: Account */
 /* div#container header#header nav.navmenu.a {} */
-div#container header#header nav.navmenu.a ul.navlist.accountlist {display:none;}
+/* div#container header#header nav.navmenu.a ul.navlist.accountlist {display:none;} */
 /* div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem {} */
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btn {text-decoration:none; border-radius:.25rem; display:flex; align-items:center; overflow:hidden;}
 div#container header#header nav.navmenu.a ul.navlist.accountlist li.navitem a.navlink.btnred {background-color:var(--red);}
