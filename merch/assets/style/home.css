@@ -24,7 +24,7 @@ div#container section.slideshow div.grid div.stage ul.slideset li.slideitem span
 div#container section.slideshow div.grid div.stage ul.slideset li.slideitem span.caption {background-color:var(--blackglass); color:white; padding:.5rem 1rem; border-radius:.25rem;}
 
 /* Slideshow: Slide Controls */
-div#container section.slideshow div.grid div.controls {display:grid; place-items:center;}
+div#container section.slideshow div.grid div.controls {display:grid; place-items:center; place-content:center;}
 /* Slideshow: Slide Control Dots */
 div#container section.slideshow div.grid div.controls ul.dotlist {position:absolute; bottom:0; /* width:100%; */}
 div#container section.slideshow div.grid div.controls ul.dotlist {background-color:var(--blackglass); list-style:none; padding:0; margin:0;}
