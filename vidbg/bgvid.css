@@ -1,0 +1,20 @@
+
+html,body {height:100%; margin:0;}
+video#bgvid {
+	position:fixed; top:50%; left:50%;
+	/*-ms-transform:translateX(-50%) translateY(-50%);
+	-moz-transform:translateX(-50%) translateY(-50%);
+	-webkit-transform:translateX(-50%) translateY(-50%);*/
+	transform:translateX(-50%) translateY(-50%);
+	min-width:100%; min-height:100%;
+	width:auto; height:auto; z-index:-10;
+	background:url('./../resources/images/palmtree.jpg') no-repeat; background-size:cover;
+}
+div#content {
+	position:fixed; top:0; right:0; bottom:0; left:0;
+	min-width:100%; min-height:100%; z-index:-9;
+	background-color:rgba(0,0,0,0.25);
+}
+@media screen and (max-width:400px) {
+	video#bgvid, div#content {display:none;}
+}
