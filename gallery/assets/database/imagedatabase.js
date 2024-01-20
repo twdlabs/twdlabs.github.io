@@ -4,7 +4,7 @@
 // Define image data (i.e. urls, tags). 
 const imageData = [
 	{
-		imageurl:'1.jpg',
+		imageurl:'./1.jpg',
 		taglist:[
 			'city',
 			'water',
@@ -12,14 +12,14 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'2 2.jpg',
+		imageurl:'./2 2.jpg',
 		taglist:[
 			'mountain',
 			'',
 		]
 	},
 	{
-		imageurl:'2.jpg',
+		imageurl:'./2.jpg',
 		taglist:[
 			'water',
 			'mountain',
@@ -28,22 +28,24 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'3.jpg',
+		imageurl:'./3.jpg',
 		taglist:[
 			'dog',
 			'grass',
+			'park',
 			'',
 		]
 	},
 	{
-		imageurl:'1033200-starry-sky-background-1330x2000-for-ipad.jpg',
+		imageurl:'./1033200-starry-sky-background-1330x2000-for-ipad.jpg',
 		taglist:[
 			'sky',
+			'stars',
 			'',
 		]
 	},
 	{
-		imageurl:'a.jpg',
+		imageurl:'./a.jpg',
 		taglist:[
 			'buildings',
 			'water',
@@ -53,7 +55,7 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'b.jpeg',
+		imageurl:'./b.jpeg',
 		taglist:[
 			'city',
 			'trees',
@@ -62,7 +64,7 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'city.jpg',
+		imageurl:'./city.jpg',
 		taglist:[
 			'city',
 			'trees',
@@ -72,29 +74,30 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'code.jpg',
+		imageurl:'./code.jpg',
 		taglist:[
 			'code',
 			'',
 		]
 	},
 	{
-		imageurl:'codecode.jpg',
+		imageurl:'./codecode.jpg',
 		taglist:[
 			'code',
 			'',
 		]
 	},
 	{
-		imageurl:'devicework.jpg',
+		imageurl:'./devicework.jpg',
 		taglist:[
 			'device',
 			'hands',
+			'suit',
 			'',
 		]
 	},
 	{
-		imageurl:'Dubai.jpg',
+		imageurl:'./Dubai.jpg',
 		taglist:[
 			'sky',
 			'city',
@@ -103,14 +106,14 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'earthmap.jpg',
+		imageurl:'./earthmap.jpg',
 		taglist:[
 			'map',
 			'',
 		]
 	},
 	{
-		imageurl:'fd21366fc13ca502751ebb8f7d18f2dd.jpg',
+		imageurl:'./fd21366fc13ca502751ebb8f7d18f2dd.jpg',
 		taglist:[
 			'beach',
 			'water',
@@ -119,14 +122,14 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'library.jpg',
+		imageurl:'./library.jpg',
 		taglist:[
 			'buildings',
 			'',
 		]
 	},
 	{
-		imageurl:'Navagio.jpg',
+		imageurl:'./Navagio.jpg',
 		taglist:[
 			'beach',
 			'mountain',
@@ -136,7 +139,7 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'NEWSLIDER21.jpg',
+		imageurl:'./NEWSLIDER21.jpg',
 		taglist:[
 			'trees',
 			'sky',
@@ -144,7 +147,7 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'np3.jpg',
+		imageurl:'./np3.jpg',
 		taglist:[
 			'beach',
 			'mountain',
@@ -154,7 +157,7 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'Squarespace+Learning+-+Forum+Banner.jpg',
+		imageurl:'./Squarespace+Learning+-+Forum+Banner.jpg',
 		taglist:[
 			'device',
 			'desk',
@@ -162,21 +165,23 @@ const imageData = [
 		]
 	},
 	{
-		imageurl:'starry-sky-wallpaper-dark.jpg',
+		imageurl:'./starry-sky-wallpaper-dark.jpg',
 		taglist:[
 			'sky',
+			'stars',
 			'',
 		]
 	},
 	{
-		imageurl:'wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
+		imageurl:'./wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
 		taglist:[
 			'sky',
+			'stars',
 			'',
 		]
 	},
 	{
-		imageurl:'ze0NeqF.jpg',
+		imageurl:'./ze0NeqF.jpg',
 		taglist:[
 			'beach',
 			'mountain',

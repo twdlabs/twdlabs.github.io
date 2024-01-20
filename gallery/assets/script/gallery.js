@@ -189,7 +189,7 @@ function loadItUp() {
 				<!-- /panel -->
 
 				<!-- image -->
-				<div class="image" style="background-image:url('assets/images/thumbnail/${ img.imageurl }');"></div>
+				<div class="image" style="background-image:url('./assets/images/thumbnail/${ img.imageurl }');"></div>
 				<!-- /image -->
 
 				<!-- panel -->
@@ -245,7 +245,7 @@ function loadItUp() {
 					<!-- /space -->
 
 					<!-- btn -->
-					<a class="btn dl" href="assets/images/full/${ img.imageurl }" target="_blank" download="img${index}">
+					<a class="btn dl" href="./assets/images/full/${ img.imageurl }" target="_blank" download="img${index}">
 
 						<!-- icon -->
 						<svg class="icon download" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

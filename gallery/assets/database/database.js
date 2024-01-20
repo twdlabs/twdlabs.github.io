@@ -8,7 +8,7 @@ let userData = [
 	{
 		username:'TWDLabs',
 		followercount:'6490',
-		avatarurl:'assets/images/avatar.jpg',
+		avatarurl:'./../resources/images/user/avatarsocial.jpg',
 	},
 ];
 
