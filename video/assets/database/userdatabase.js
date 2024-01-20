@@ -6,7 +6,7 @@ const userDataList = [
 	{
 		name:'UserName A',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],
@@ -37,7 +37,7 @@ const userDataList = [
 	{
 		name:'UserName B',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],
@@ -68,7 +68,7 @@ const userDataList = [
 	{
 		name:'UserName C',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],
@@ -99,7 +99,7 @@ const userDataList = [
 	{
 		name:'UserName D',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],
@@ -130,7 +130,7 @@ const userDataList = [
 	{
 		name:'UserName E',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],
@@ -161,7 +161,7 @@ const userDataList = [
 	{
 		name:'UserName F',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],
@@ -192,7 +192,7 @@ const userDataList = [
 	{
 		name:'UserName G',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],
@@ -223,7 +223,7 @@ const userDataList = [
 	{
 		name:'UserName H',
 		email:'UserName@mail.com',
-		photourl:'./assets/images/avatar-m.png',
+		photourl:'./../resources/images/user/avatar-m.png',
 		
 		// Define initial list of liked videos. 
 		likedIds:[ 8, 2, 5, 7 ],

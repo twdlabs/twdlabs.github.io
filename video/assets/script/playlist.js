@@ -84,7 +84,7 @@ function loadVideoPlaylist() {
 			<a class="vidlink" href="javascript:void(0)" data-vidindex="${ vidIndex }">
 
 				<!-- photo -->
-				<div class="photo" style="background-image:url('${ vid.thumbnailurl }');"></div>
+				<div class="photo" style="background-image:url('${ /* getRelativeUrl */(vid.thumbnailurl) }');"></div>
 				<!-- /photo -->
 
 				<!-- content -->

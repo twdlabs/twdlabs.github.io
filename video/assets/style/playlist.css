@@ -48,12 +48,14 @@ div#container div.layout aside.playlist ul.vidlist li.viditem:hover a.vidlink {b
 div#container div.layout aside.playlist ul.vidlist li.viditem.active a.vidlink {background-color:var(--themecolor); color:white;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.photo {flex-grow:0; min-width:6rem; max-width:100%; border:1px solid var(--ltblackglass); border-radius:.25rem;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-color:var(--ltblackglass); background-size:cover; background-position:center; background-repeat:no-repeat;}
-div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-image:url('../assets/images/0000001.png');}
+div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.photo {background-image:url('../../../resources/images/vidthumbnails/0000001.png');}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.photo::after {content:''; display:block; padding-top:62.5%;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content {flex-grow:1; padding-left:.5rem;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content {display:flex; flex-direction:row; justify-content:flex-start; align-items:flex-start; align-items:center;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {display:none;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {background-color:var(--ltblackglass); border-radius:50%; min-width:2.5rem; min-height:2.5rem; margin-right:.4rem;}
+div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {background-size:cover; background-position:center; background-repeat:no-repeat;}
+div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content div.avatar {background-image:url('../../../resources/images/user/avatar-m.png');}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta {flex-grow:1;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
 div#container div.layout aside.playlist ul.vidlist li.viditem a.vidlink div.content div.meta div.vidtitle {font-size:.875rem; line-height:1.25;}
