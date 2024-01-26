@@ -74,7 +74,7 @@ function activateSearchBar() {
 
 		/***/
 
-		// Sanitize search query. 
+		// Sanitize search query to be acceptable for use in filtering process. 
 		function sanitizeSearchQuery(searchquery) {
 
 			// Replace spaces with plus signs. 

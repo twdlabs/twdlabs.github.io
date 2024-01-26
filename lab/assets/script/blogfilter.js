@@ -2,7 +2,7 @@
 
 
 // Get input field for search query. 
-const searchqueryfield = document.querySelector('div#container section.blog div.grid div.head div.modpanel input#searchquery');
+const searchqueryfield = document.querySelector('div#container section.blog div.grid div.head div.modpanel input#filtersearchquery');
 // console.log('searchqueryfield:',searchqueryfield);
 
 // Get clear button for search query. 
@@ -14,25 +14,32 @@ const emptysearchlabel = document.querySelector('div#container section.blog div.
 // console.log('emptysearchlabel:',emptysearchlabel);
 
 
-// Get destination for list of applied filters. 
-const filtertaglistdestination = document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist');
-// console.log('filtertaglistdestination:',filtertaglistdestination);
+// Get componenets of filter panel. 
+const filterpanel = {
 
-// Get filter panel. 
-const filterpanel = document.querySelector('div#container section.blog div.grid div.body div.filterpanel');
-// console.log('filterpanel:',filterpanel);
+	// Get container of filter panel. 
+	box: document.querySelector('div#container section.blog div.grid div.body div.filterpanel'),
 
-// Get destination for filter groups in filter panel. 
-const filtergroupsdestination = document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist');
-// console.log('filtergroupsdestination:',filtergroupsdestination);
+	// Get buttons in filter panel. 
+	applybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.applybtn'),
+	clearbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.clearbtn'),
 
-// Get group headers in filter panel. 
-// const filtergroupheaders = document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup h2.filterhead');
-// console.log('filtergroupheaders:',filtergroupheaders);
+	// Get destination for filter groups in filter panel. 
+	groupsdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist'),
+	// Get group headers in filter panel. 
+	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup h2.filterhead'),
 
-// Get checkbox in any/all switch. 
-const anyallswitchcheckbox = document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb');
-// console.log('anyallswitchcheckbox:',anyallswitchcheckbox);
+	// Get switch for filter type (matching any single criterion vs matching all criteria). 
+	anyallswitch: {
+		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice.any'),
+		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice.all'),
+		checkbox: document.querySelector('div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb'),
+	},
+
+	// Get destination for list of applied filters. 
+	taglistdestination: document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist'),
+}
+// console.log('Filter panel:',filterpanel);
 
 
 /*****/
@@ -48,15 +55,15 @@ activateBlogFilters();
 // Activate blog post filtering. 
 function activateBlogFilters() {
 
-	// Activate blog post search. 
+	// Activate blog post search filter (if search query field exists). 
 	if(searchqueryfield) activateBlogSearch();
 
-	// Load groups of post filters. 
-	if(filterpanel) loadFilterGroups();
+	// Load post filter groups into filter panel (if panel exists). 
+	if(filterpanel.box) loadFilterGroups();
 
 	/****/
 
-	// Activate blog post search. 
+	// Activate blog post search filter. 
 	function activateBlogSearch() {
 
 		// Activate input field to search blog posts. 
@@ -77,6 +84,11 @@ function activateBlogFilters() {
 
 			// Initialize number of matching posts. 
 			let numMatchingPosts = 0;
+
+			// TODO: There's an easier way to do this. But this way doesn't work yet cuz its not an array; ts a collection of nodes. 
+			// let matchingPosts = blogpostcards.filter( (card)=>checkForMatch( card.getAttribute('data-projectid').toUpperCase() ) )
+			// Set number of matching posts. 
+			// let numMatchingPosts = matchingPosts.length;
 		
 			// Go thru all blog posts. 
 			for(let postcard of blogpostcards) {
@@ -91,27 +103,34 @@ function activateBlogFilters() {
 				if(matchFound) numMatchingPosts++;
 
 				// Update visibility state of post based on match. 
-				updatePostState(postcard, matchFound);
+				if(dohardfilter=false) loadBlog(xyz);
+				else updatePostState(postcard, matchFound);
 			}
 
 			// Show label if no search results found. 
-			if(numMatchingPosts==0) emptysearchlabel.classList.add('on');
+			if(numMatchingPosts==0) setEmptySearchResult(true);
 			// Hide label if any search results found. 
-			else emptysearchlabel.classList.remove('on');
+			else setEmptySearchResult(false);
 
 			/**/
+
+			// Set state of label for empty search result. 
+			function setEmptySearchResult(state) {
+				if(state) emptysearchlabel.classList.add('on');
+				else emptysearchlabel.classList.remove('on');
+			}
 
 			// Check for matching post. 
 			function checkForMatch(projectid) {
 
-				// Get search query. 
-				let searchquery = searchqueryfield.value.toUpperCase();
+				// Get search query of post filter. 
+				let filtersearchquery = searchqueryfield.value.toUpperCase();
 				// Get list of words in search query. 
-				let searchquerywords = searchquery.split(' ');
-				// console.log('Searching posts...', searchquery, searchquerywords);
+				let searchquerywords = filtersearchquery.split(' ');
+				// console.log('Searching posts...', filtersearchquery, searchquerywords);
 
 				// Check for matching post (by full query). 
-				let matchFullQuery = projectid.includes(searchquery);
+				let matchFullQuery = projectid.includes(filtersearchquery);
 				// Check for matching post (by each word). 
 				let matchEveryWord = checkForMatchEveryWord(projectid,searchquerywords);
 
@@ -158,185 +177,198 @@ function activateBlogFilters() {
 			searchBlogPosts();
 		}
 	}
-}
 
-// Load list of post filter groups. 
-function loadFilterGroups() {
-	// console.log('Loading list of post filter groups');
-
-	// Initialize layout for filter groups. 
-	let filtergroupslayout = '';
-
-	// Go thru each filter group. 
-	for(let filtergroup of postFilterData) {
-		// console.log('Filter group:',filtergroup);
-		
-		// Add filter group to layout. 
-		filtergroupslayout += `
-		<!-- filtergroup -->
-		<li class="filtergroup open" data-filtertypeid="${filtergroup.filtergroupid}">
-
-			<!-- filterhead -->
-			<h2 class="filterhead">
-
-				<!-- caption -->
-				<span class="caption">${filtergroup.filtername}</span>
-				<!-- /caption -->
-
-				<!-- icon -->
-				<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-				</svg>
-				<!-- /icon -->
-
-				<!-- icon -->
-				<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-					<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-				</svg>
-				<!-- /icon -->
-
-			</h2>
-			<!-- /filterhead -->
-
-			<!-- filterbody -->
-			<div class="filterbody">
-
-				<!-- itemslist -->
-				<ul class="itemslist">${ createFilterItemsListLayout(filtergroup) }</ul>
-				<!-- /itemslist -->
-				
-			</div>
-			<!-- /filterbody -->
+	// Load post filter groups into filter panel. 
+	function loadFilterGroups() {
+		// console.log('Loading list of post filter groups');
+	
+		// Initialize layout for filter groups. 
+		let filtergroupslayout = '';
+	
+		// Go thru each filter group. 
+		for(let filtergroup of postFilterData) {
+			// console.log('Filter group:',filtergroup);
 			
-		</li>
-		<!-- /filtergroup -->`;
-	}
-
-	// Display filter groups in filter panel. 
-	filtergroupsdestination.innerHTML = filtergroupslayout;
-
-	// Activate filter headers in filter panel. 
-	activateFilterHeads();
-
-	// Activate filter items in filter panel. 
-	activateFilterItems();
-
-	/****/
-
-	// Create layout for filter items list. 
-	function createFilterItemsListLayout(filtergroup) {
-
-		// Get filter group id. 
-		let filtergroupid = filtergroup.filtergroupid;
-
-		// Get list of filter items. 
-		let filteritemslist = filtergroup.filteritems;
-		// console.log('Creating layout for filter items list',filteritemslist);
-
-		// Initialize layout for filter items list. 
-		let filteritemslistlayout = '';
-
-		// Go thru each filter item in given list. 
-		for(let filteritem of filteritemslist) {
-			// console.log('Filter item:',filteritem);
-
-			// Add filter item to layout. 
-			filteritemslistlayout += createFilterItemLayout(filteritem);
-		}
-
-		// Return layout for criteria list. 
-		return filteritemslistlayout;
-
-		/***/
-
-		// Create layout for given filter item. 
-		function createFilterItemLayout(filteritem) {
-
-			// Get value of current filter item. 
-			let itemvalue = filteritem.value;
-			if(!itemvalue) console.log('Filter item value:',itemvalue);
-
-			// Get name of current filter item. 
-			let itemname = filtergroup.filteritemnamer(itemvalue);
-			// console.log('Filter item name:',itemname);
-
-			// Create unique id for current filter item. 
-			let uniqueitemid = filtergroupid + itemvalue;
-
-			// Compile layout for filter item. 
-			return `
-			<!-- filteritem -->
-			<li class="filteritem" data-filteritemvalueid="${itemvalue}" title="${itemvalue}">
+			// Add filter group to layout. 
+			filtergroupslayout += `
+			<!-- filtergroup -->
+			<li class="filtergroup open" data-filtertypeid="${filtergroup.filtergroupid}">
 	
-				<!-- checkbox -->
-				<input class="checkbox" type="checkbox" id="${uniqueitemid}">
-				<!-- /checkbox -->
+				<!-- filterhead -->
+				<h2 class="filterhead">
 	
-				<!-- front -->
-				<label class="front" for="${uniqueitemid}">
+					<!-- caption -->
+					<span class="caption">${filtergroup.filtername}</span>
+					<!-- /caption -->
 	
 					<!-- icon -->
-					<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+					<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
 					</svg>
 					<!-- /icon -->
 	
-					<!-- caption -->
-					<span class="caption">${itemname}</span>
-					<!-- /caption -->
+					<!-- icon -->
+					<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+					</svg>
+					<!-- /icon -->
 	
-					<!-- matchcount -->
-					<span class="matchcount">${ filteritem.frequency}</span>
-					<!-- /matchcount -->
+				</h2>
+				<!-- /filterhead -->
 	
-				</label>
-				<!-- /front -->
+				<!-- filterbody -->
+				<div class="filterbody">
+	
+					<!-- itemslist -->
+					<ul class="itemslist">${ createFilterItemsListLayout(filtergroup) }</ul>
+					<!-- /itemslist -->
+					
+				</div>
+				<!-- /filterbody -->
 				
 			</li>
-			<!-- /filteritem -->`;
+			<!-- /filtergroup -->`;
 		}
-	}
-
-	// Activate filter group headers in filter panel. 
-	function activateFilterHeads() {
-
-		// Get loaded headers in filter panel. 
-		let filtergroupheaders = filtergroupsdestination.querySelectorAll('li.filtergroup h2.filterhead');
 	
-		// Go thru each header in filter panel. 
-		for(let header of filtergroupheaders) {
+		// Display filter groups in filter panel. 
+		filterpanel.groupsdestination.innerHTML = filtergroupslayout;
 	
-			// Enable header clicks to toggle group in filter panel. 
-			header.addEventListener('click',toggleFilterGroup);
-		}
-
+		// Activate filter headers in filter panel. 
+		activateFilterHeads();
+	
+		// Activate filter items in filter panel. 
+		activateFilterItems();
+	
 		/***/
-
-		// Toggle group in post filter panel. 
-		function toggleFilterGroup(event) {
+	
+		// Create layout for filter items list. 
+		function createFilterItemsListLayout(filtergroup) {
+	
+			// Get filter group id. 
+			let filtergroupid = filtergroup.filtergroupid;
+	
+			// Get list of filter items. 
+			let filteritemslist = filtergroup.filteritems;
+			// console.log('Creating layout for filter items list',filteritemslist);
+	
+			// Initialize layout for filter items list. 
+			let filteritemslistlayout = '';
+	
+			// Go thru each filter item in given list. 
+			for(let filteritem of filteritemslist) {
+				// console.log('Filter item:',filteritem);
+	
+				// Add filter item to layout. 
+				filteritemslistlayout += createFilterItemLayout(filteritem);
+			}
+	
+			// Return layout for criteria list. 
+			return filteritemslistlayout;
+	
+			/**/
+	
+			// Create layout for given filter item. 
+			function createFilterItemLayout(filteritem) {
+	
+				// Get value of current filter item. 
+				let itemvalue = filteritem.value;
+				if(!itemvalue) console.log('Filter item value:',itemvalue);
+	
+				// Get name of current filter item. 
+				let itemname = filtergroup.filteritemnamer(itemvalue);
+				// console.log('Filter item name:',itemname);
+	
+				// Create unique id for current filter item. 
+				let uniqueitemid = filtergroupid + itemvalue;
+	
+				// Compile layout for filter item. 
+				return `
+				<!-- filteritem -->
+				<li class="filteritem" data-filteritemvalueid="${itemvalue}" title="${itemvalue}">
 		
-			// Get filter group header. 
-			let filtergroupheader = event.currentTarget;
+					<!-- checkbox -->
+					<input class="checkbox" type="checkbox" id="${uniqueitemid}">
+					<!-- /checkbox -->
 		
-			// Get filter group. 
-			let filtergroup = filtergroupheader.parentElement;
+					<!-- front -->
+					<label class="front" for="${uniqueitemid}">
 		
-			// Toggle filter group. 
-			filtergroup.classList.toggle('open');
+						<!-- icon -->
+						<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+						</svg>
+						<!-- /icon -->
+		
+						<!-- caption -->
+						<span class="caption">${itemname}</span>
+						<!-- /caption -->
+		
+						<!-- matchcount -->
+						<span class="matchcount">${ filteritem.frequency}</span>
+						<!-- /matchcount -->
+		
+					</label>
+					<!-- /front -->
+					
+				</li>
+				<!-- /filteritem -->`;
+			}
 		}
-	}
-
-	// Activate filter group items in filter panel. 
-	function activateFilterItems() {
 	
-		// Get loaded items in filter panel. 
-		let filterpanelitems = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+		// Activate filter group headers in filter panel. 
+		function activateFilterHeads() {
 	
-		// Go thru each item in filter panel. 
-		for(let checkbox of filterpanelitems) {
+			// Get loaded headers in filter panel. 
+			let filtergroupheaders = filterpanel.groupsdestination.querySelectorAll('li.filtergroup h2.filterhead');
+		
+			// Go thru each header in filter panel. 
+			for(let header of filtergroupheaders) {
+		
+				// Enable header clicks to toggle group in filter panel. 
+				header.addEventListener('click',toggleFilterGroup);
+			}
 	
-			// Enable header clicks to toggle group in filter panel. 
-			checkbox.addEventListener('input',applySelectedFilters);
+			/**/
+	
+			// Toggle group in post filter panel. 
+			function toggleFilterGroup(event) {
+			
+				// Get filter group header. 
+				let filtergroupheader = event.currentTarget;
+			
+				// Get filter group. 
+				let filtergroup = filtergroupheader.parentElement;
+			
+				// Toggle filter group. 
+				filtergroup.classList.toggle('open');
+			}
+		}
+	
+		// Activate filter group items in filter panel. 
+		function activateFilterItems() {
+		
+			// Get loaded items in filter panel. 
+			let filterpanelcheckboxes = filterpanel.groupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+		
+			// Go thru each item in filter panel. 
+			for(let checkbox of filterpanelcheckboxes) {
+		
+				// Enable toggle of filter item. 
+				checkbox.addEventListener('input',applySelectedFilters);
+			}
+	
+			// Enable apply button in filter panel. 
+			filterpanel.applybtn.addEventListener('click',applySelectedFilters);
+	
+			// Enable clear button in filter panel. 
+			filterpanel.clearbtn.addEventListener('click',clearAllAppliedFilters);
+	
+			// Enable checkbox for any/all switch. 
+			filterpanel.anyallswitch.checkbox.addEventListener('input',applySelectedFilters);
+			// Enable any label: Set filter mode to 'any'. 
+			filterpanel.anyallswitch.anybtn.addEventListener('click', ()=>{ filterpanel.anyallswitch.checkbox.checked = false; applySelectedFilters(); } );
+			// Enable all label: Set filter mode to 'all'. 
+			filterpanel.anyallswitch.allbtn.addEventListener('click', ()=>{ filterpanel.anyallswitch.checkbox.checked = true; applySelectedFilters(); } );
 		}
 	}
 }
@@ -345,14 +377,14 @@ function loadFilterGroups() {
 function toggleFilterPanel() {
 
 	// Toggle filter panel. 
-	filterpanel.classList.toggle('open');
+	filterpanel.box.classList.toggle('open');
 }
 
 // Clear all applied filter items. 
 function clearAllAppliedFilters() {
 
 	// Get loaded items in filter panel. 
-	let filterpanelcheckboxes = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+	let filterpanelcheckboxes = filterpanel.groupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
 
 	// Go thru each item in filter panel. 
 	for(let checkbox of filterpanelcheckboxes) {
@@ -372,7 +404,7 @@ function applySelectedFilters() {
 	let selectedfilteritems = [];
 
 	// Get checkboxes for loaded filter items in filter panel. 
-	let filterpanelcheckboxes = filtergroupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
+	let filterpanelcheckboxes = filterpanel.groupsdestination.querySelectorAll('li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox');
 
 	// Go thru each checkbox in filter panel. 
 	for(let checkbox of filterpanelcheckboxes) {
@@ -408,7 +440,7 @@ function applySelectedFilters() {
 				filtervalueid:filtervalueid,
 				caption:filteritemcaption,
 			});
-			// console.log('filteritemuniqueid:',filteritemuniqueid);
+			console.log('Selected filter items:',selectedfilteritems);
 		}
 	}
 
@@ -417,7 +449,7 @@ function applySelectedFilters() {
 	// console.log('filtertaglistlayout:',filtertaglistlayout);
 
 	// Display layout for list of filter tags. 
-	filtertaglistdestination.innerHTML = filtertaglistlayout;
+	filterpanel.taglistdestination.innerHTML = filtertaglistlayout;
 	// console.log('Selected filter items:',selectedfilteritems);
 
 	// Apply selected filter values to loaded blog posts. 

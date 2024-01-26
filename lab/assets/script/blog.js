@@ -1,7 +1,7 @@
 
 
 
-// Get featured section. 
+// Get components of featured section. 
 const featured = {
 	section:document.querySelector('div#container section.blog div.grid div.body div.posts#featured'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist'),
@@ -10,7 +10,7 @@ const featured = {
 };
 // console.log('Featured section:',featured);
 
-// Get archive section. 
+// Get components of archive section. 
 const archive = {
 	section:document.querySelector('div#container section.blog div.grid div.body div.posts#archive'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist'),
@@ -18,7 +18,7 @@ const archive = {
 };
 // console.log('Archive section:',archive);
 
-// Get category section. 
+// Get components of category section. 
 const category = {
 	section:document.querySelector('div#container section.blog div.grid div.body div.posts#category'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist'),
@@ -26,7 +26,7 @@ const category = {
 };
 // console.log('Category section:',category);
 
-// Get collection section. 
+// Get components of collection section. 
 const collection = {
 	section:document.querySelector('div#container section.blog div.grid div.body div.posts#collection'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist'),
@@ -59,6 +59,9 @@ loadBlog( [] );
 function loadBlog(selectedfilteritems) {
 	console.log('Loading blog...',selectedfilteritems);
 
+	// Check if all criteria required. 
+	let passallcriteria = (typeof filterpanel != 'undefined') ? filterpanel.anyallswitch.checkbox.checked : undefined;
+
 	// Load featured posts. 
 	loadFeaturedPosts();
 	
@@ -79,9 +82,14 @@ function loadBlog(selectedfilteritems) {
 		// Pass filter if no filter items selected. 
 		if(!selectedfilteritems.length) return true;
 
-		// Check if switch checkbox checked. 
-		if(anyallswitchcheckbox.checked) return checkFilterPassAll();
-		else return checkFilterPassAny();
+		// Check post for all criteria. 
+		if(passallcriteria) {
+			return checkFilterPassAll();
+		}
+		// Check post for any criteria. 
+		else {
+			return checkFilterPassAny();
+		}
 
 		/***/
 
@@ -116,7 +124,7 @@ function loadBlog(selectedfilteritems) {
 				// Get xyz. 
 				let typeid = filteritem.filtertypeid;
 				let valueid = filteritem.filtervalueid;
-				/* if(!valueid) */ console.log('value id:',valueid,undefined);
+				if(!valueid) console.log('value id:',valueid/* ,undefined */);
 	
 				// Check for match btwn given project and current filter item. 
 				let passed = (projectitem[typeid] == valueid);
@@ -308,6 +316,23 @@ function loadBlog(selectedfilteritems) {
 		}
 	}
 	
+	// Load general posts. 
+	function loadPosts(section,projects,previewsOn,doMinimalPage) {
+
+		// Filter projects. 
+		projects = projects.filter(checkFilterPass);
+		// console.log('Projects:', archiveProjects.length, archiveProjects);
+		
+		// Display layout for posts in blog section. 
+		section.pagesdestination.innerHTML = createBlogLayout(projects,previewsOn,doMinimalPage);
+
+		// Load dot panel in page navigator. 
+		loadPageNavigator(section.section);
+
+		// Display currently selected page. 
+		displaySelectedPage();
+	}
+	
 	// Load archive posts. 
 	function loadArchivePosts() {
 
@@ -321,19 +346,30 @@ function loadBlog(selectedfilteritems) {
 		// Get list of archive projects. 
 		let archiveProjects = getArchiveProjects();
 		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
+	
+		// Load archive posts. 
+		loadPosts(archive,archiveProjects, false, false);
 		
-		// Filter projects. 
-		archiveProjects = archiveProjects.filter(checkFilterPass);
-		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
+		// // Filter projects. 
+		// archiveProjects = archiveProjects.filter(checkFilterPass);
+		// // console.log('Archive projects:', archiveProjects.length, archiveProjects);
 		
-		// Display layout for archive posts in blog section. 
-		archive.pagesdestination.innerHTML = createBlogLayout(archiveProjects, false, false);
+		// // Display layout for archive posts in blog section. 
+		// archive.pagesdestination.innerHTML = createBlogLayout(archiveProjects, false, false);
 
-		// Load dot panel in page navigator. 
-		loadPageNavigator(archive.section);
+		// // Load dot panel in page navigator. 
+		// loadPageNavigator(archive.section);
 
-		// Display currently selected page. 
-		displaySelectedPage();
+		// // Display currently selected page. 
+		// displaySelectedPage();
+
+		// 
+		if(typeof emptysearchlabel != 'undefined') {
+			// 
+			if(archiveProjects.length) emptysearchlabel.classList.remove('on');
+			// 
+			else emptysearchlabel.classList.add('on');
+		}
 	
 		/***/
 
@@ -358,19 +394,22 @@ function loadBlog(selectedfilteritems) {
 		// Get list of projects for given category. 
 		let categoryProjects = getCategoryProjects();
 		// console.log('Category projects:', categoryProjects.length, categoryProjects);
+	
+		// Load category posts. 
+		loadPosts(category,categoryProjects, allowPreview, false);
 		
-		// Filter projects. 
-		categoryProjects = categoryProjects.filter(checkFilterPass);
-		// console.log('Category projects:', categoryProjects.length, categoryProjects);
+		// // Filter projects. 
+		// categoryProjects = categoryProjects.filter(checkFilterPass);
+		// // console.log('Category projects:', categoryProjects.length, categoryProjects);
 		
-		// Display layout for category posts in blog section. 
-		category.pagesdestination.innerHTML = createBlogLayout(categoryProjects, allowPreview, false);
+		// // Display layout for category posts in blog section. 
+		// category.pagesdestination.innerHTML = createBlogLayout(categoryProjects, allowPreview, false);
 
-		// Load dot panel in page navigator. 
-		loadPageNavigator(category.section);
+		// // Load dot panel in page navigator. 
+		// loadPageNavigator(category.section);
 
-		// Display currently selected page. 
-		displaySelectedPage();
+		// // Display currently selected page. 
+		// displaySelectedPage();
 
 		/***/
 
@@ -401,19 +440,22 @@ function loadBlog(selectedfilteritems) {
 		// Get list of projects for given collection. 
 		let collectionProjects = getCollectionProjects();
 		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
+	
+		// Load general posts. 
+		loadPosts(collection,collectionProjects, allowPreview, false);
 		
-		// Filter projects. 
-		collectionProjects = collectionProjects.filter(checkFilterPass);
-		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
+		// // Filter projects. 
+		// collectionProjects = collectionProjects.filter(checkFilterPass);
+		// // console.log('Collection projects:', collectionProjects.length, collectionProjects);
 		
-		// Display layout for collection posts in blog section. 
-		collection.pagesdestination.innerHTML = createBlogLayout(collectionProjects, allowPreview, false);
+		// // Display layout for collection posts in blog section. 
+		// collection.pagesdestination.innerHTML = createBlogLayout(collectionProjects, allowPreview, false);
 
-		// Load dot panel in page navigator. 
-		loadPageNavigator(collection.section);
+		// // Load dot panel in page navigator. 
+		// loadPageNavigator(collection.section);
 
-		// Display currently selected page. 
-		displaySelectedPage();
+		// // Display currently selected page. 
+		// displaySelectedPage();
 
 		/***/
 	
@@ -454,19 +496,22 @@ function loadBlog(selectedfilteritems) {
 		// Get list of featured projects. 
 		let featuredProjects = getFeaturedProjects();
 		// console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
+	
+		// Load general posts. 
+		loadPosts(featured,featuredProjects, allowPreview, true);
 		
-		// Filter projects. 
-		featuredProjects = featuredProjects.filter(checkFilterPass);
-		// console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
+		// // Filter projects. 
+		// featuredProjects = featuredProjects.filter(checkFilterPass);
+		// // console.log('Featured projects:', featuredProjects.length, xyz, featuredProjects);
 		
-		// Add layout for featured posts to blog section. 
-		featured.pagesdestination.innerHTML = createBlogLayout(featuredProjects, allowPreview, true);
+		// // Add layout for featured posts to blog section. 
+		// featured.pagesdestination.innerHTML = createBlogLayout(featuredProjects, allowPreview, true);
 
-		// Load dot panel in page navigator. 
-		loadPageNavigator(featured.section);
+		// // Load dot panel in page navigator. 
+		// loadPageNavigator(featured.section);
 
-		// Display currently selected page. 
-		displaySelectedPage();
+		// // Display currently selected page. 
+		// displaySelectedPage();
 
 		/***/
 
@@ -576,9 +621,17 @@ function loadBlog(selectedfilteritems) {
 
 // Sort projects by project id. 
 function sortByProjectId(a,b) {
+
+	// 
 	if(a.projectid == b.projectid) return 0;
+
+	// 
 	else if(a.projectid < b.projectid) return -1;
+
+	// 
 	else if(a.projectid > b.projectid) return 1;
+
+	// 
 	else {
 		console.warn('Questionable comparison', a.projectid,b.projectid, a,b);
 		return 0;

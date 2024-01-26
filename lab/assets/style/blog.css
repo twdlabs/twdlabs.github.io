@@ -17,18 +17,18 @@ div#container section.blog div.grid div.head div.modpanel div.togglers div.btn {
 /* div#container section.blog div.grid div.head div.modpanel div.togglers div.filterbtn {} */
 div#container section.blog div.grid div.head div.modpanel div.togglers div.btn:hover {background-color:var(--forecolor); color:var(--backcolor2);}
 div#container section.blog div.grid div.head div.modpanel div.togglers div.btn svg.icon {font-size:1.5rem;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery {position:relative; overflow:hidden; width:100%; /* max-width:calc(var(--pagewidth)/3); */ border-radius:5rem; /* margin:2rem auto; */ margin-right:.75rem; box-shadow:var(--boxshadow);}
-/* div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchlabel {background-color:var(--forecolor2); color:var(--backcolor);} */
-div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchlabel {display:flex; flex-direction:column; justify-content:center; cursor:pointer; padding:0 1.125rem;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchlabel {position:absolute; left:0; top:0; height:100%;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchlabel svg.icon {font-size:1.375rem;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery input#searchquery {background-color:var(--backcolor2); color:var(--forecolor);}
-div#container section.blog div.grid div.head div.modpanel div.searchquery input#searchquery {font-family:inherit; font-size:1.25rem; font-weight:300; width:100%; padding:.625rem 3.25rem .625rem 3.5rem;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery input#searchquery {border:.125rem solid var(--backcolor2); border:0 none; outline:none;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchclearbtn {position:absolute; right:0; top:50%; transform:translateY(-50%);height:var(--btnsize); width:var(--btnsize);}
-div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchclearbtn {/* background-color:#FFFFFF08; color:black; */ --btnsize:2rem; opacity:.375; cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchclearbtn {display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1.125rem; margin-right:.5rem;}
-div#container section.blog div.grid div.head div.modpanel div.searchquery label.searchclearbtn svg.icon {font-size:1.375rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {position:relative; overflow:hidden; width:100%; /* max-width:calc(var(--pagewidth)/3); */ border-radius:5rem; /* margin:2rem auto; */ margin-right:.75rem; box-shadow:var(--boxshadow);}
+/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel {background-color:var(--forecolor2); color:var(--backcolor);} */
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel {display:flex; flex-direction:column; justify-content:center; cursor:pointer; padding:0 1.125rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel {position:absolute; left:0; top:0; height:100%;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel svg.icon {font-size:1.375rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery input#filtersearchquery {background-color:var(--backcolor2); color:var(--forecolor);}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery input#filtersearchquery {font-family:inherit; font-size:1.25rem; font-weight:300; width:100%; padding:.625rem 3.25rem .625rem 3.5rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery input#filtersearchquery {border:.125rem solid var(--backcolor2); border:0 none; outline:none;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn {position:absolute; right:0; top:50%; transform:translateY(-50%);height:var(--btnsize); width:var(--btnsize);}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn {/* background-color:#FFFFFF08; color:black; */ --btnsize:2rem; opacity:.375; cursor:pointer; user-select:none;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn {display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1.125rem; margin-right:.5rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn svg.icon {font-size:1.375rem;}
 
 
 
@@ -201,16 +201,20 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.fi
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup.open h2.filterhead svg.icon.dn {display:none;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup.open h2.filterhead svg.icon.up {display:block;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel {display:flex; flex-direction:column; /* justify-content:center; */ align-items:center; padding:.625em 1rem; padding-top:0;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel {display:flex; flex-direction:column; flex-direction:row; /* justify-content:center; */ align-items:center; padding:.625em 1rem; padding-top:0;}
+/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel {display:none;} */
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.btn {background-color:var(--drkthemecolor); background-color:var(--themecolor); width:100%; padding:.375em 1.5rem; border-radius:1em; margin:0 .5em; margin-top:.5rem;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.btn {color:white; cursor:pointer; font-size:1.25rem; font-weight:500; text-align:center; user-select:none;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.applybtn {display:none;}
+/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.applybtn {display:none;} */
+/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.clearbtn {display:none;} */
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row {display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice {margin:0 .5rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice {cursor:pointer; user-select:none; margin:0 .875rem;}
+/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice.any {} */
+/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice.all {} */
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {background-color:var(--forecolor); display:block; cursor:pointer; position:relative; padding:.125rem; border:1px solid var(--backcolor2); border-radius:3rem;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {box-sizing:content-box; --ballsize:1.5rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {box-sizing:content-box; --ballsize:1.375rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch div.ball {background-color:var(--backcolor2); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch div.ball {transform:none; transition:.5s;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch div.ball {transform:none; transition:.25s;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb {position:absolute; top:0; left:0; display:none;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb:checked + div.ball {--delta:100%; /* --delta:150%; */ transform:translateX( var(--delta) );}
 
@@ -233,7 +237,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	div#container section.blog div.grid div.head div.modpanel {grid-column-end:span 1;}
 	/* div#container section.blog div.grid div.head div.modpanel div.togglers {} */
-	/* div#container section.blog div.grid div.head div.modpanel div.searchquery {} */
+	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
 
 
 	/* Blog Section: Body */
@@ -281,7 +285,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.head {} */
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.togglers {} */
-	/* div#container section.blog div.grid div.head div.modpanel div.searchquery {} */
+	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
 
 
 	/* Blog Section: Body */
@@ -328,7 +332,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.head {} */
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.togglers {} */
-	/* div#container section.blog div.grid div.head div.modpanel div.searchquery {} */
+	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
 
 
 	/* Blog Section: Body */
@@ -375,7 +379,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.head {} */
 	div#container section.blog div.grid div.head div.modpanel {flex-direction:column;}
 	/* div#container section.blog div.grid div.head div.modpanel div.togglers {} */
-	div#container section.blog div.grid div.head div.modpanel div.searchquery {margin-right:0; margin-bottom:1rem;}
+	div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {margin-right:0; margin-bottom:1rem;}
 
 
 	/* Blog Section: Body */
@@ -425,7 +429,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.head {} */
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.togglers {} */
-	/* div#container section.blog div.grid div.head div.modpanel div.searchquery {} */
+	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
 
 
 	/* Blog Section: Body */
@@ -472,7 +476,7 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody div.b
 	/* div#container section.blog div.grid div.head {} */
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.togglers {} */
-	/* div#container section.blog div.grid div.head div.modpanel div.searchquery {} */
+	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
 
 
 	/* Blog Section: Body */

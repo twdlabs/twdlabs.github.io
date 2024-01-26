@@ -43,7 +43,7 @@ const projectTimeData = [
 		year:2022,
 		quarterlyidlists:[
 			['stepprogressbar','countdown','breadcrumbs','analogclock','instagram','delta','podcast','clipboard','musicplaylist','clubhouse','retool','hamburger','crm','netflix','crud2','crud','formvalidation','testimonial','slideshow','inventory','360finance','switcher','musicplayer2','storybrand','boxshadow','desktop','admin','keypress','loader','toastprogress','gitcalendar','rolodex',],
-			['timeline','notesquares','upload','skeleton','touch','throttle','banner','wavyloader','socialbtns','gameboard','megamenu','cardstacks','accordion','dragndroplist','pixelart','blockmenu','dotnav','clockspinner','user2','navcircle','safari','wts3','wordswitcher',],
+			['timeline','notesquares','upload','skeleton','touch','throttle','banner','wavyloader','socialbtns','gameboard','megamenu','cardstacks','accordion','dragndroplist','pixelart','blockmenu','dotnav','clockspinner','user2','navcircle','safari','wtslegacy','wordswitcher',],
 			['orbit','timing','periodictable','bizmath','cruchcalhoun','escapebrand','musicplayer',],
 			['coordinates','keyfinder','funnel','resume','anime','education','glow','relativelink','user','calendar','urlparams2','tagscroller','wts','atm','chess','paginator','lander','lab','colorpicker','affiliate','blog','blogsocial','portfolio0','time',],
 		],

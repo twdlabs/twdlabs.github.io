@@ -488,11 +488,11 @@
 						<!-- modpanel -->
 						<div class="modpanel">
 
-							<!-- searchquery -->
-							<div class="searchquery">
+							<!-- filtersearchquery -->
+							<div class="filtersearchquery">
 	
 								<!-- searchlabel -->
-								<label class="searchlabel" for="searchquery">
+								<label class="searchlabel" for="filtersearchquery">
 		
 									<!-- icon -->
 									<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -503,12 +503,12 @@
 								</label>
 								<!-- /searchlabel -->
 		
-								<!-- searchquery -->
-								<input class="searchquery" id="searchquery" type="text" placeholder="Search posts..." disabled>
-								<!-- /searchquery -->
+								<!-- filtersearchquery -->
+								<input class="filtersearchquery" id="filtersearchquery" type="text" placeholder="Search posts..." disabled>
+								<!-- /filtersearchquery -->
 		
 								<!-- searchclearbtn -->
-								<label class="searchclearbtn" for="searchquery">
+								<label class="searchclearbtn" for="filtersearchquery">
 		
 									<!-- icon -->
 									<svg class="icon xbig" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -521,7 +521,7 @@
 								<!-- /searchclearbtn -->
 
 							</div>
-							<!-- /searchquery -->
+							<!-- /filtersearchquery -->
 
 							<!-- togglers -->
 							<div class="togglers">
@@ -708,14 +708,14 @@
 									<div class="row">
 
 										<!-- choice -->
-										<span class="choice">Any</span>
+										<span class="choice any">Any</span>
 										<!-- /choice -->
 
 										<!-- switch -->
 										<label class="switch">
 	
 											<!-- cb -->
-											<input class="cb" type="checkbox" oninput="applySelectedFilters()">
+											<input class="cb" type="checkbox">
 											<!-- /cb -->
 	
 											<!-- ball -->
@@ -726,7 +726,7 @@
 										<!-- /switch -->
 
 										<!-- choice -->
-										<span class="choice">All</span>
+										<span class="choice all">All</span>
 										<!-- /choice -->
 
 									</div>
@@ -815,11 +815,11 @@
 								<div class="btnpanel">
 	
 									<!-- clearbtn -->
-									<div class="btn clearbtn" onclick="clearAllAppliedFilters()">Clear</div>
+									<div class="btn clearbtn">Clear</div>
 									<!-- /clearbtn -->
 		
 									<!-- applybtn -->
-									<div class="btn applybtn" onclick="applySelectedFilters()">Apply</div>
+									<div class="btn applybtn">Apply</div>
 									<!-- /applybtn -->
 	
 								</div>

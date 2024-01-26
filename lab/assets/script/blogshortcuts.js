@@ -4,7 +4,9 @@
 // Enable keyboard shortcuts. 
 enableShortcutKeys();
 
+
 /*****/
+
 
 // Enable keyboard shortcuts. 
 function enableShortcutKeys() {
@@ -47,7 +49,7 @@ function enableShortcutKeys() {
 		else if(event.keyCode==13) {
 
 			// Check if filter panel open. 
-			let filterpanelopen = filterpanel.classList.contains('open');
+			let filterpanelopen = filterpanel.box.classList.contains('open');
 
 			// Apply selected filter items if filter panel open. 
 			if(filterpanelopen) {
@@ -56,7 +58,7 @@ function enableShortcutKeys() {
 				applySelectedFilters();
 
 				// Close filter panel. 
-				filterpanel.classList.remove('open');
+				filterpanel.box.classList.remove('open');
 			}
 		}
 	}
