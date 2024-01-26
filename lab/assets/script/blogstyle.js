@@ -10,7 +10,7 @@ const postssection = document.querySelector('div#container section.blog div.grid
 // console.log('Posts section:',postssection);
 
 // Get posts section. 
-// postssection = featured.section || archive.section || category.section || collection.section;
+// postssection = featured.block || archive.block || category.block || collection.block;
 // console.log('Posts section:',postssection);
 
 

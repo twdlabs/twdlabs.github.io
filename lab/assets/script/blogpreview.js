@@ -11,8 +11,8 @@ activateBlogPreviews();
 // Activate blog previews. 
 function activateBlogPreviews() {
 
-	// Disregard outside of archive section of projects page (where previews already present). 
-	if(!archive.section) return;
+	// Disregard unless in archive section of library page (where previews not present). 
+	if(!archive.block) return;
 
 	// Access loaded blog post cards. 
 	let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
