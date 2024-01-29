@@ -13,19 +13,25 @@
 
 
 :root {
-	--themecolor:dodgerblue;
-	--bgimg:linear-gradient(135deg, dodgerblue, white);
 	
-	--blue:#4e65ff;
+	/* Theme Colors */
+	--grey:#888;
+	--beautyblue:#4e65ff;
 	--cyan:#92effd;
-	--purp:#8847FF;
-	--olive:#FFE091;
-	--lightpurp:#A26FFF;
-	--bgimg:linear-gradient(45deg,var(--blue),var(--cyan));
-	--themecolor:var(--blue);
-	
-	--btnbgcolor:var(--cyan);
-	--mainbgcolor:var(--themecolor);
+	/* --purp:#8847FF; */
+	/* --olive:#FFE091; */
+	/* --orange:#ff8f1f; */
+	/* --lightpurp:#A26FFF; */
+	/* --themecolor:dodgerblue; */
+	--themecolor:var(--beautyblue);
+
+	/* Selected Theme Colors */
+	--openbtnbackcolor:var(--grey);
+	--openbtnforecolor:var(--cyan);
+
+	/* Backgrounds */
+	--bgimg:linear-gradient(45deg, var(--themecolor), white);
+	--bgimg:linear-gradient(45deg,var(--themecolor),var(--cyan));
 
 	/* Box Shadows */
 	--boxshadow:0 0 1rem 0 #0002;
@@ -42,8 +48,7 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 /* Main Container */
 
-div#container {background-color:var(--mainbgcolor); background-image:var(--bgimg); min-height:100vh;}
-div#container {position:relative;}
-div#container div.openbtn {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-div#container div.openbtn {background-color:var(--btnbgcolor); background-color:#888; color:var(--btnbgcolor); font-size:4rem; cursor:pointer; padding:.75em .875em; border-radius:.25em; box-shadow:var(--boxshadowx);}
+div#container {background-color:var(--themecolor); background-image:var(--bgimg); min-height:100vh;}
+div#container {display:grid; place-items:center; place-content:center; position:relative;}
+div#container div.openbtn {background-color:var(--openbtnbackcolor); color:var(--openbtnforecolor); font-size:4rem; cursor:pointer; padding:.75em .875em; border-radius:.25em; box-shadow:var(--boxshadowx);}
 div#container div.openbtn svg.icon {display:block;}
