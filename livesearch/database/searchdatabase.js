@@ -16,112 +16,114 @@ const postregister = {
 
 
 // Define default search results, the basis of final search results. 
-const defaultResults = [
+const defaultResultSet = [
 
 	{
 		setname:'Alphabet',
-		foldername:'xyz',
+		folderpath:'./alphabet',
 		searchlabel:{
 			plural:'letters',
 			singular:'letter',
 		},
-		setlist: alphabetData,
+		itemlist: alphabetData,
 		visual:false,
 	},
 	{
 		setname:'U.S. Presidents',
-		foldername:'xyz',
+		folderpath:'./presidents',
 		searchlabel:{
 			plural:'presidents',
 			singular:'president',
 		},
-		setlist: presidentData,
+		itemlist: presidentData,
 		visual:true,
 	},
 	{
 		setname:'American Universities',
-		foldername:'xyz',
+		folderpath:'./universities',
 		searchlabel:{
 			plural:'universities',
 			singular:'university',
 		},
-		setlist: universityData,
+		itemlist: universityData,
 		visual:false,
 	},
 	{
 		setname:'Social Media Platforms',
-		foldername:'xyz',
+		folderpath:'./socialmedia',
 		searchlabel:{
 			plural:'social platforms',
 			singular:'social platform',
 		},
-		setlist: socialData,
+		itemlist: socialData,
 		visual:false,
 	},
 	{
 		setname:'Months of the Year',
-		foldername:'xyz',
+		folderpath:'./months',
 		searchlabel:{
 			plural:'months',
 			singular:'month',
 		},
-		setlist: monthData,
+		itemlist: monthData,
 		visual:false,
 	},
 	{
 		setname:'Astrological Zodiac Signs',
-		foldername:'xyz',
+		folderpath:'./zodiacsigns',
 		searchlabel:{
 			plural:'zodiac signs',
 			singular:'zodiac sign',
 		},
-		setlist: zodiacData,
+		itemlist: zodiacData,
 		visual:false,
 	},
 	{
 		setname:'Numbers',
-		foldername:'xyz',
+		folderpath:'./numbers',
 		searchlabel:{
 			plural:'numbers',
 			singular:'number',
 		},
-		setlist: numberData,
+		itemlist: numberData,
 		visual:false,
 	},
 	{
 		setname:'Planets',
-		foldername:'xyz',
+		folderpath:'./planets',
 		searchlabel:{
 			plural:'planets',
 			singular:'planet',
 		},
-		setlist: planetData,
+		itemlist: planetData,
 		visual:false,
 	},
 	{
 		setname:'Days of the Week',
-		foldername:'xyz',
+		folderpath:'./weekdays',
 		searchlabel:{
 			plural:'days',
 			singular:'day',
 		},
-		setlist: dayData,
+		itemlist: dayData,
 		visual:false,
 	},
 	{
 		setname:'Seasons',
-		foldername:'xyz',
+		folderpath:'./seasons',
 		searchlabel:{
 			plural:'seasons',
 			singular:'season',
 		},
-		setlist: seasonData,
+		itemlist: seasonData,
 		visual:false,
 	},
 
 	// {
-	// 	setname:'Set Name',
-	// 	setlist: [
+	// 	setname:'Xyz Set',
+	// 	folderpath:'./xyz',
+	// 	searchlabel:{plural:'xyz', singular:'xyz',},
+	// 	itemlist: [
 	// 		{
 	// 			posttype:'xyz',
 	// 			title:'XyzResult',
@@ -137,7 +139,8 @@ const defaultResults = [
 	// 			title:'XyzResult',
 	// 			content:'Hello there world'
 	// 		},
-	// 	]
+	// 	],
+	// 	visual:false,
 	// },
 	
 ];
@@ -148,20 +151,20 @@ const defaultResults = [
 
 // Add additional result properties. 
 addResultProperties();
-// console.log(defaultResults);
+// console.log(defaultResultSet);
 
 
 /*****/
 
 
-// Define additional result properties. 
+// Define additional result properties for search functionality. 
 function addResultProperties() {
 
-	// Go thru all result sets. 
-	for(let resultSet of defaultResults) {
+	// Go thru each result block. 
+	for(let resultblock of defaultResultSet) {
 
-		// Go thru all result items in current set. 
-		for(let resultitem of resultSet.setlist) {
+		// Go thru each result item in current block. 
+		for(let resultitem of resultblock.itemlist) {
 			
 			// Get searchable result data. 
 			resultitem.searchtags = getResultTags(resultitem);

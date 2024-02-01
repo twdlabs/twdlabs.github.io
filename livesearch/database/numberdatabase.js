@@ -1,7 +1,13 @@
 
 
-// Define number data. 
+// Define number digit data. 
 const numberData = [
+	{
+		posttype:'number',
+		numberid:-1,
+		title:'Zero',
+		content:'Hello there world'
+	},
 	{
 		posttype:'number',
 		numberid:-1,
@@ -54,12 +60,6 @@ const numberData = [
 		posttype:'number',
 		numberid:-1,
 		title:'Nine',
-		content:'Hello there world'
-	},
-	{
-		posttype:'number',
-		numberid:-1,
-		title:'Ten',
 		content:'Hello there world'
 	},
 ];

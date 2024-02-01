@@ -2,11 +2,12 @@
 
 
 // Define search overlay object. 
-class SearchOverlay {
+class LiveSearchOverlay {
+
 
 	// 1. Describe and create / initiate object. 
 
-	constructor(openbtn,closebtn,searchOverlay,searchField,resultsBox) {
+	constructor(openbtn,closebtn,searchOverlay,searchQueryField,searchResultsBox) {
 
 		// Get page elements for open/close buttons. 
 		this.openbtn = openbtn;
@@ -14,17 +15,19 @@ class SearchOverlay {
 
 		// Get page elements for search overlay. 
 		this.searchOverlay = searchOverlay;
-		this.searchField = searchField;
-		this.resultsBox = resultsBox;
+		this.searchQueryField = searchQueryField;
+		this.searchResultsBox = searchResultsBox;
+
+		// Initialize representation of previously typed query. 
 		this.prevQuery = '';
 
-		// Define search results delay. 
+		// Define delay time for search results. 
 		this.dt = 500;
 
 		// Handle events. 
 		this.handleEvents();
 
-		// Set open/close state of overlay. 
+		// Initialize saved state of live search. 
 		this.alreadyOpen = false;
 
 		// Set initial state for loading of results. 
@@ -40,13 +43,13 @@ class SearchOverlay {
 	handleEvents() {
 
 		// Handle search overlay opening. 
-		this.openbtn.addEventListener( 'click', this.openOverlay.bind(this) );
+		this.openbtn.addEventListener( 'click', this.openSearchOverlay.bind(this) );
 
 		// Handle search overlay closing. 
-		this.closebtn.addEventListener( 'click', this.closeOverlay.bind(this) );
+		this.closebtn.addEventListener( 'click', this.closeSearchOverlay.bind(this) );
 
 		// Handle results shown upon typing query. 
-		this.searchField.addEventListener( 'keyup', this.respondToQueryTyping.bind(this) );
+		this.searchQueryField.addEventListener( 'keyup', this.respondToQueryTyping.bind(this) );
 
 		// Handle keyboard shortcuts. 
 		document.documentElement.addEventListener( 'keyup', this.dispatchKeyPress.bind(this) );
@@ -61,25 +64,25 @@ class SearchOverlay {
 	clearSearchQuery() {
 
 		// Clear contents of text field. 
-		this.searchField.value = '';
+		this.searchQueryField.value = '';
 
 		// Remove focus from text field. 
-		this.searchField.blur();
+		this.searchQueryField.blur();
 	}
 
 	// Handle what's being shown upon typing query. 
 	respondToQueryTyping() {
-		console.log('Typed query...', this.searchField.value);
+		console.log('Typed query...', this.searchQueryField.value);
 
 		// Ignore typing that doesn't change query (non-character keys). 
-		let sameQueryAsB4 = (this.searchField.value == this.prevQuery);
+		let sameQueryAsB4 = (this.searchQueryField.value == this.prevQuery);
 		if(sameQueryAsB4) return;
 
 		// Clear timer if still typing. 
 		clearTimeout(this.resultsTimer);
 
 		// Start doing stuff (if query present). 
-		if(this.searchField.value) {
+		if(this.searchQueryField.value) {
 
 			// Clear previous search results. 
 			this.clearSearchResults();
@@ -102,7 +105,7 @@ class SearchOverlay {
 		}
 
 		// Save query for comparison with next query. 
-		this.prevQuery = this.searchField.value;
+		this.prevQuery = this.searchQueryField.value;
 	}
 
 
@@ -121,48 +124,48 @@ class SearchOverlay {
 	clearSearchResults() {
 
 		// Remove content within search results box. 
-		this.resultsBox.innerHTML = '';
+		this.searchResultsBox.innerHTML = '';
 	}
 
 	// Show all matching results for given search query. 
 	displaySearchResults() {
 		
 		// Get search query. 
-		let searchquery = (this.searchField).value;
+		let searchquery = (this.searchQueryField).value;
 		console.log(`searchquery: "${searchquery}"`);
 		
 		// Get list of words in search query. 
-		let searchquerylist = searchquery.split(' ');
-		console.log('searchquerylist:',searchquerylist);
+		let searchquerywordlist = searchquery.split(' ');
+		console.log('searchquerywordlist:',searchquerywordlist);
 		// Check for multi-word search query. 
-		let multiWordQuery = ( searchquerylist.length > 1 );
-		// 
-		// if(multiWordQuery) 
+		let isMultiWordQuery = ( searchquerywordlist.length > 1 );
 		
 		// Get initial search results from post database. 
-		let initialResultList = defaultResults;
-		console.log('Initial result list:',initialResultList);
+		let initialResultMatrix = defaultResultSet;
+		console.log('Initial result list:',initialResultMatrix);
 		
-		// Send request for matching search results. 
-		// let finalResultList = getSearchResults(initialResultList);
+		// Send request for matrix of matching search results. 
+		// let finalResultList = getSearchResults(initialResultMatrix);
 		// console.log('Final result list:',finalResultList);
 		
 		// Initialize total number of matching search results. 
-		let totalNumMatchingResults = 0;
+		let totalMatchingResults = 0;
 		// Get total number of matching search results. 
-		// let totalNumMatchingResults = countTotalResults(finalResultList);
+		// let totalMatchingResults = countTotalResults(finalResultList);
 		
-		// Create layout for final search results. 
-		let finalResultsLayout = '';
-		// Add body of results. 
-		finalResultsLayout += createResultBody(/* finalResultList */);
-		// Add results header. 
-		finalResultsLayout += createResultHeader(totalNumMatchingResults);
-		// console.log('Results:',finalResultsLayout);
+		// Initialize layout for search results. 
+		let fullsearchresultslayout = '';
+
+		// Add layout for search results body. 
+		fullsearchresultslayout += createResultsBodyLayout(/* finalResultList */);
+
+		// Add layout for search results header. 
+		fullsearchresultslayout += createResultsHeaderLayout(totalMatchingResults);
 		
-		// Display search results on page. 
-		(this.resultsBox).innerHTML = finalResultsLayout;
-		// console.log('Results box:',this.resultsBox);
+		// Display layout for search results on page. 
+		(this.searchResultsBox).innerHTML = fullsearchresultslayout;
+		// console.log('Search results layout:',fullsearchresultslayout);
+		// console.log('Search results destination:',this.searchResultsBox);
 
 		// Hide loader icon. 
 		this.setWaitState(false);
@@ -171,11 +174,11 @@ class SearchOverlay {
 		/*****/
 
 
-		// TODO: Get matching search results. 
-		function getSearchResults(initialResultList) {
+		// TODO: Get matrix of matching search results. 
+		function getSearchResults(initialResultMatrix) {
 
-			// 
-			return initialResultList.filter(checkForKeep);
+			// Start with initial set of results. 
+			return initialResultMatrix.filter(checkForKeep);
 
 			/****/
 
@@ -185,27 +188,51 @@ class SearchOverlay {
 			}
 		}
 
-		// Create results header. 
-		function createResultHeader(numResultsFound) {
+		// Count total number of result items in result matrix. 
+		function countTotalResults(resultmatrix) {
+
+			// Initialize total number of result items. 
+			let total = 0;
+
+			// Go thru each result block in matrix. 
+			for(let resultblock of resultmatrix) {
+
+				// Increment total result count. 
+				total += resultblock.itemlist.length;
+
+				// // Go thru each item in result list of result block. 
+				// for(let item of resultblock.itemlist) {
+
+				// 	// Increment total result count. 
+				// 	total += 1;
+				// }
+			}
+
+			// Return total number of results in set list. 
+			return total;
+		}
+
+		// Create layout for search results header. 
+		function createResultsHeaderLayout(resultcount) {
 			// 
 			return `
 			<!-- resulthead -->
-			<h1 class="resulthead ${ (numResultsFound>0) ? '' : 'empty' }">
+			<h1 class="resulthead ${ (resultcount>0) ? '' : 'empty' }">
 	
 				<!-- searchquery -->
-				<span class="searchquery">"${searchquery}"</span>
+				<span class="searchquery">${searchquery}</span>
 				<!-- /searchquery -->
 	
 				<!-- resultcount -->
-				<span class="resultcount">${numResultsFound} results found</span>
+				<span class="resultcount">${resultcount}</span>
 				<!-- /resultcount -->
 	
 			</h1>
 			<!-- /resulthead -->`;
 		}
 
-		// Create body of results. 
-		function createResultBody() {
+		// Create layout for search results body. 
+		function createResultsBodyLayout() {
 
 			// Initialize final result body. 
 			let finalResultBody = '';
@@ -215,46 +242,46 @@ class SearchOverlay {
 			<!-- resultbody -->
 			<div class="resultbody">`;
 	
-			// Go thru all sets to find matching result sets. 
-			for(let key in initialResultList) {
-				
-				// Get current result set. 
-				let currentSet = initialResultList[key]
-				console.log(`\tSearching ${ currentSet['searchlabel'].plural }...`);
-				// console.log('Result set:',key,currentSet);
+			// Go thru each result block to find matching result sets. 
+			for(let key in initialResultMatrix) {
+
+				// Get current result block. 
+				let currentresultblock = initialResultMatrix[key]
+				console.log(`\tSearching ${ currentresultblock['searchlabel'].plural }...`);
+				// console.log('Result set:',key,currentresultblock);
 	
-				// Initialize number of matching items in current set. 
-				let numMatchesInCurrentSet = 0;
+				// Initialize number of matching items in current result block. 
+				let currentresultblockmatchcount = 0;
 	
-				// Initialize list of matching results for current set. 
-				let currentSetResultItems = '';
+				// Initialize layout for list of matching items in current result block. 
+				let currentresultblocklayout = '';
 	
 				// Accumulate matching items for current set. 
-				for(let currentItem of currentSet.setlist) {
-					// console.log('Current result item',currentItem);
+				for(let currentresultitem of currentresultblock.itemlist) {
+					// console.log('Current result item',currentresultitem);
 					
 					// Check for match with search query. 
-					let currentItemMatchesQuery = checkForMatch(currentItem);
+					let currentItemMatchesQuery = checkForMatch(currentresultitem);
 					
 					// Include item in results if match for query. 
 					if(currentItemMatchesQuery) {
 						
 						// Increment number of matching results in current set. 
-						numMatchesInCurrentSet += 1;
+						currentresultblockmatchcount += 1;
 						
 						// Increment total number of matching results. 
-						totalNumMatchingResults += 1;
+						totalMatchingResults += 1;
 	
 						// Add matching result item to current set of search results. 
-						currentSetResultItems += createResultItem( currentSet, currentItem );
+						currentresultblocklayout += createResultItemLayout( currentresultblock, currentresultitem );
 					}
 				}
 
-				// Add current set of results to final body of results. 
-				finalResultBody += createResultSet(currentSet,numMatchesInCurrentSet,currentSetResultItems);
+				// Add current result block to layout for results body. 
+				finalResultBody += createResultBlockLayout(currentresultblock,currentresultblockmatchcount,currentresultblocklayout);
 	
 				// Log number of results found for current post type. 
-				console.log( `\t\t${numMatchesInCurrentSet} ${currentSet['searchlabel'].singular} results found` );
+				console.log( `\t\t${currentresultblockmatchcount} ${currentresultblock['searchlabel'].singular} results found` );
 
 				/***/
 
@@ -320,10 +347,10 @@ class SearchOverlay {
 					function matchesAllQueryWords(tag) {
 
 						// 
-						if(!multiWordQuery) return ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+						if(!isMultiWordQuery) return ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
 						
 						// 
-						for(let queryword of searchquerylist) {
+						for(let queryword of searchquerywordlist) {
 
 							// Check if tag contains query word. 
 							let tagContainsQueryWord = ( tag.toUpperCase() ).includes( queryword.toUpperCase() );
@@ -346,20 +373,20 @@ class SearchOverlay {
 
 			/****/
 
-			// Create result set. 
-			function createResultSet(currentSet,numMatchesInCurrentSet,currentSetResultItems) {
+			// Create layout for given result block. 
+			function createResultBlockLayout(resultblock,resultblockmatchcount,resultblockitemslayout) {
 	
 				// Get archive url. 
 				let archiveUrl = 'javascript:void(0)';
 
 				// Get plural name of current post type. 
-				let searchlabel = currentSet['searchlabel'].plural;
+				let searchlabel = resultblock['searchlabel'].plural;
 
-				// Initialize current set layout. 
-				let currentSetLayout = '';
+				// Initialize layout for current result block. 
+				let resultblocklayout = '';
 				
-				// Open result set. 
-				currentSetLayout += `
+				// Open layout for result block. 
+				resultblocklayout += `
 				<!-- resultset -->
 				<div class="resultset">
 
@@ -367,43 +394,43 @@ class SearchOverlay {
 					<h2 class="resulthead ${''}">
 						
 						<!-- caption -->
-						<span class="caption">${ currentSet.setname }</span>
+						<span class="caption">${ resultblock.setname }</span>
 						<!-- /caption -->
 
 						<!-- count -->
-						<span class="count">${ numMatchesInCurrentSet }</span>
+						<span class="count">${ resultblockmatchcount }</span>
 						<!-- /count -->
 
 					</h2>
 					<!-- /resulthead -->
 			
 					<!-- resultlist -->
-					<ul class="resultlist ${ (currentSet.visual) ? ('visual') : ('') }">`;
+					<ul class="resultlist ${ (resultblock.visual) ? ('visual') : ('') }">`;
 				
 				// Create layout for result set that contains matches. 
-				if(numMatchesInCurrentSet>0) {
-					currentSetLayout += currentSetResultItems;
+				if(resultblockmatchcount>0) {
+					resultblocklayout += resultblockitemslayout;
 				}
 				// Create layout for empty result set (message and archive page link). 
 				else {
-					currentSetLayout += createEmptyResultItem();
+					resultblocklayout += createEmptyResultItemLayout();
 				}
 	
-				// Close result set. 
-				currentSetLayout += `
+				// Close layout for result block. 
+				resultblocklayout += `
 					</ul>
 					<!-- /resultlist -->
 	
 				</div>
 				<!-- /resultset -->`;
 
-				// Return current set layout. 
-				return currentSetLayout;
+				// Return layout for current result block. 
+				return resultblocklayout;
 
 				/***/
 
-				// Create empty result item. 
-				function createEmptyResultItem() {
+				// Create layout for empty result item. 
+				function createEmptyResultItemLayout() {
 					// 
 					return `
 					<!-- resultitem -->
@@ -422,28 +449,28 @@ class SearchOverlay {
 				}
 			}
 
-			// Create result item. 
-			function createResultItem(set,item) {
+			// Create layout for result item. 
+			function createResultItemLayout(resultblock,resultitem) {
 
 				// Get folder name for current result set. 
-				let foldername = getFolderName(set);
+				let foldername = getFolderName(resultblock);
 				
 				// Get link url for current result. 
-				let resulturl = getResultUrl(foldername,item);
+				let resulturl = getResultUrl(foldername,resultitem);
 
 				// Get post name for current result. 
-				let resultname = getResultName(item);
+				let resultname = getResultName(resultitem);
 
 				// TODO: Create functions for these 3 post types (blog, reg, visual). 
 
 				// Create result for blog post. 
-				if(item.posttype=='post') {
+				if(resultitem.posttype=='post') {
 				
 					// Get link url for author of current result. 
-					let authorurl = getAuthorUrl(item);
+					let authorurl = getAuthorUrl(resultitem);
 	
 					// Get author name for current result. 
-					let authorname = getAuthorName(item);
+					let authorname = getAuthorName(resultitem);
 
 					// Return result. 
 					return `
@@ -468,7 +495,7 @@ class SearchOverlay {
 				}
 
 				// Create result for visual post. 
-				else if(item.visual) {
+				else if(resultitem.visual) {
 
 					// Return result. 
 					return `
@@ -479,7 +506,7 @@ class SearchOverlay {
 						<a class="resultlink" href="${ getRelativeUrl(resulturl) }" target="_blank">
 
 							<!-- photo -->
-							<img class="photo" src="${item.photourl}">
+							<img class="photo" src="${resultitem.photourl}">
 							<!-- /photo -->
 
 							<!-- caption -->
@@ -511,9 +538,10 @@ class SearchOverlay {
 
 				/***/
 
-				// Get foler name of result set. 
+				// Get folder name of result set. 
 				function getFolderName(set) {
-					return set.foldername;
+					console.log('Getting folder name for result set:',set)
+					return set.folderpath;
 				}
 				
 				// Get link url for given post (using folder name & post item). 
@@ -599,57 +627,82 @@ class SearchOverlay {
 				}
 			}
 		}
-
-		// Count number of results in set list. 
-		function countTotalResults(resultList) {
-			// 
-			let total = 0;
-
-			// 
-			// for(let i in resultList) {
-			// 	let set = resultList[i];
-			for(let set of resultList) {
-				for(let item of set.setlist) {
-					total += 1;
-				}
-			}
-
-			// 
-			return total;
-		}
 	}
 
 
 	// Open search overlay. 
-	openOverlay() {
-		console.log('Opening search overlay...');
+	openSearchOverlay() {
+		console.log('Opening live search overlay...');
 
 		// Freeze background page scrolling. 
-		document.body.classList.add('freeze');
+		this.setBodyFreeze(true);
 
 		// Activate search overlay window. 
-		this.searchOverlay.classList.add('active');
-		// Bring focus to text field. 
-		setTimeout( ()=>{ this.searchField.focus(); }, this.dt );
+		this.setOverlayState(true);
 
-		// Update overlay state. 
+		// Open search query field. 
+		setTimeout( openSearchQuery.bind(this), this.dt );
+
+		// Update saved state of live search. 
 		this.alreadyOpen = true;
+
+		/*****/
+
+		// Open search query field. 
+		function openSearchQuery() {
+
+			// Bring focus to text field. 
+			this.searchQueryField.focus();
+		}
 	}
 
 	// Close search overlay. 
-	closeOverlay() {
-		console.log('Closing search overlay...');
+	closeSearchOverlay() {
+		console.log('Closing live search overlay...');
 
 		// De-activate search overlay window. 
-		this.searchOverlay.classList.remove('active');
-		// Clear contents of text field. Remove focus from text field. 
-		setTimeout( ()=>{ this.clearSearchQuery(); this.clearSearchResults(); }, this.dt );
+		this.setOverlayState(false);
 
 		// Un-freeze background page scrolling. 
-		document.body.classList.remove('freeze');
+		this.setBodyFreeze(false);
 
-		// Update overlay state. 
+		// Close search query field. 
+		setTimeout( closeSearchQuery.bind(this), this.dt );
+
+		// Update saved state of live search. 
 		this.alreadyOpen = false;
+
+		/*****/
+
+		// Close search query field. 
+		function closeSearchQuery() {
+
+			// Clear contents of text field. 
+			this.clearSearchQuery();
+
+			// Remove focus from text field. 
+			this.clearSearchResults();
+		}
+	}
+
+	// Set state of search overlay window. 
+	setOverlayState(showOverlay) {
+
+		// Open search overlay window. 
+		if(showOverlay) this.searchOverlay.classList.add('active');
+		
+		// Close search overlay window. 
+		else this.searchOverlay.classList.remove('active');
+	}
+
+	// Set state of background page scrolling/freezing. 
+	setBodyFreeze(doFreeze) {
+
+		// Freeze background page scrolling. 
+		if(doFreeze) document.body.classList.add('freeze');
+		
+		// Un-freeze background page scrolling. 
+		else document.body.classList.remove('freeze');
 	}
 
 	// Handle keyboard shortcuts. 
@@ -659,20 +712,31 @@ class SearchOverlay {
 		let key = event.charCode || event.keyCode;
 
 		// Check if user is typing in a text field. 
-		let typingInTextField = false;
-		let allTextFields = document.querySelectorAll('textarea,input');
-		for(let tf of allTextFields) {
-			if(document.activeElement==tf) typingInTextField = true;
+		let typingTextField = false;
+
+		// Get all text fields. 
+		const allTextFields = document.querySelectorAll('textarea,input');
+
+		// Go thru each text field. 
+		for(let textfield of allTextFields) {
+
+			// Check if text field active. 
+			if(document.activeElement==textfield) {
+
+				// Assume typing if at least one text field active. 
+				typingTextField = true;
+				return;
+			}
 		}
 
 		// Handle open shortcut (Key: S). 
-		if(!this.alreadyOpen && (key==83 || key==115) && (!typingInTextField) ) {
-			this.openOverlay();
+		if(!this.alreadyOpen && (key==83 || key==115) && !typingTextField ) {
+			this.openSearchOverlay();
 		}
 
 		// Handle close shortcut (Key: ESC). 
 		if(this.alreadyOpen && key==27) {
-			this.closeOverlay();
+			this.closeSearchOverlay();
 		}
 	}
 

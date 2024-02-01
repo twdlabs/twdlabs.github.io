@@ -50,5 +50,5 @@ body {font-family:Nunito,sans-serif; margin:0;}
 
 div#container {background-color:var(--themecolor); background-image:var(--bgimg); min-height:100vh;}
 div#container {display:grid; place-items:center; place-content:center; position:relative;}
-div#container div.openbtn {background-color:var(--openbtnbackcolor); color:var(--openbtnforecolor); font-size:4rem; cursor:pointer; padding:.75em .875em; border-radius:.25em; box-shadow:var(--boxshadowx);}
+div#container div.openbtn {background-color:var(--openbtnbackcolor); color:var(--openbtnforecolor); font-size:3rem; cursor:pointer; padding:.75em .875em; border-radius:.25em; box-shadow:var(--boxshadowx);}
 div#container div.openbtn svg.icon {display:block;}

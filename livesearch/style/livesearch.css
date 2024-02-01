@@ -20,7 +20,7 @@
 	--loadspinnercolor:var(--offwhite2);
 
 	/* Numbers */
-	--pagewidth:75rem;
+	--pagewidth:125rem;
 }
 
 
@@ -44,19 +44,21 @@ div#container div#searchoverlay section.body {flex-grow:1; flex-shrink:1; positi
 /* Query Section */
 
 div#container div#searchoverlay section.head {background-color:var(--headbackcolor); color:var(--headforecolor); font-size:1.25em; border-bottom:1px solid #0002;}
-div#container div#searchoverlay section.head div.input {position:relative; max-width:var(--pagewidth); margin:auto;}
-div#container div#searchoverlay section.head div.input div.closebtn,
-div#container div#searchoverlay section.head div.input label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); cursor:pointer; user-select:none;}
-div#container div#searchoverlay section.head div.input div.closebtn {background-color:var(--headforecolor); color:white; right:0; padding:0 .375em; border-radius:.25rem; margin:0 .375em; box-shadow:var(--boxshadowx);}
-div#container div#searchoverlay section.head div.input label.searchlabel {font-size:.875em; /* font-size:1.5rem; */ left:0; margin:0 1em;}
-div#container div#searchoverlay section.head div.input label.searchlabel svg.icon {display:block;}
-div#container div#searchoverlay section.head div.input input#searchquery {display:block; width:100%; height:100%; padding:.625em 2em; border:0 none; outline:none;}
-div#container div#searchoverlay section.head div.input input#searchquery {background-color:/* white */transparent; color:inherit; font-family:inherit; font-size:1em;}
+div#container div#searchoverlay section.head div.grid {max-width:calc(var(--pagewidth)*.6); margin:auto;}
+div#container div#searchoverlay section.head div.querybox {position:relative;}
+div#container div#searchoverlay section.head div.querybox div.closebtn,
+div#container div#searchoverlay section.head div.querybox label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); cursor:pointer; user-select:none;}
+div#container div#searchoverlay section.head div.querybox div.closebtn {background-color:var(--headforecolor); color:white; right:0; padding:0 .375em; border-radius:.25rem; margin:0 .375em; box-shadow:var(--boxshadowx);}
+div#container div#searchoverlay section.head div.querybox label.searchlabel {font-size:.875em; /* font-size:1.5rem; */ left:0; margin:0 1em;}
+div#container div#searchoverlay section.head div.querybox label.searchlabel svg.icon {display:block;}
+div#container div#searchoverlay section.head div.querybox input#searchquery {display:block; width:100%; height:100%; padding:.625em 2.25em; border:0 none; outline:none;}
+div#container div#searchoverlay section.head div.querybox input#searchquery {background-color:/* white */transparent; color:inherit; font-family:inherit; font-size:1em;}
 
 
 /* Results Section */
 
-div#container div#searchoverlay section.body {background-color:var(--bodybackcolor); /* font-size:1em; */ padding:4rem;}
+div#container div#searchoverlay section.body {background-color:var(--bodybackcolor); /* font-size:1em; */}
+div#container div#searchoverlay section.body div.grid {max-width:var(--pagewidth); padding:4rem; margin:auto;}
 
 div#container div#searchoverlay section.body:before {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2.5rem; height:2.5rem; border-radius:50%;}
 div#container div#searchoverlay section.body:before {background-color:transparent; content:''; border:.5rem solid var(--loadspinnercolor); border-top-color:transparent;}
@@ -64,13 +66,14 @@ div#container div#searchoverlay section.body:before {visibility:hidden; opacity:
 div#container div#searchoverlay.wait section.body:before {visibility:visible; opacity:1; animation:spinning 1s linear infinite;}
 
 div#container div#searchoverlay section.body div#resultsbox {background-color:var(--resultsbackcolor); color:white; width:100%; min-height:100%; overflow:visible; padding:2rem;}
-div#container div#searchoverlay section.body div#resultsbox {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch; max-width:calc(var(--pagewidth)*1.5); margin:auto;}
+div#container div#searchoverlay section.body div#resultsbox {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch;}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead {font-size:1.25em;}
 /* div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.resultcount {font-size:1.5em;} */
+div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.resultcount::after {content:' results found';}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery {word-wrap:anywhere;}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery:before {content:'Here are your search results for ';}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery::after {content:'.';}
+div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery:before {content:'Here are your search results for \'';}
+div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery::after {content:'\'.';}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead.empty span.resultcount {visibility:hidden;}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead.empty span.searchquery:before {content:'No matches found for ';}
 /* div#container div#searchoverlay section.body div#resultsbox div.resultbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;} */
@@ -135,7 +138,8 @@ div#container div#searchoverlay section.body div#resultsbox div.resultbody div.r
 	/* div#container div#searchoverlay section.head {} */
 	
 	/* Results Section */
-	div#container div#searchoverlay section.body {padding:2rem;}
+	/* div#container div#searchoverlay section.body {} */
+	div#container div#searchoverlay section.body div.grid {padding:2rem;}
 	/* div#container div#searchoverlay section.body div#resultsbox {} */
 	/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead {} */
 	div#container div#searchoverlay section.body div#resultsbox div.resultbody {--gridcolumns:2;}
@@ -160,23 +164,31 @@ div#container div#searchoverlay section.body div#resultsbox div.resultbody div.r
 
 
 /* Small Smartphone Screen */
-/* Small screen (mobile) */
 @media screen and (max-width:36rem) {
 	
 	/* Search Overlay */
-	div#container div#searchoverlay {font-size:1.25rem; font-size:1.125rem;}
+	div#container div#searchoverlay {font-size:1.125rem;}
 	
 	/* Query Section */
 	/* div#container div#searchoverlay section.head {} */
 	
 	/* Results Section */
-	div#container div#searchoverlay section.body {padding:1rem;}
+	/* div#container div#searchoverlay section.body {} */
+	div#container div#searchoverlay section.body div.grid {padding:1rem;}
 	/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead {} */
 	div#container div#searchoverlay section.body div#resultsbox div.resultbody {--gridcolumns:1;}
 	div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset {margin:0; margin-top:1.5rem;}
 	div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead {font-size:1.125rem; /* display:block; */}
 	/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead span.count:before {content:' (';} */
 	/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead span.count::after {content:')';} */
+}
+
+
+/* Tiny Smartphone Screen */
+@media screen and (max-width:24rem) {
+	
+	/* Search Overlay */
+	div#container div#searchoverlay {font-size:1rem;}
 }
 
 

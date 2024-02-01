@@ -41,155 +41,167 @@
 				
 				<!-- head -->
 				<section class="head">
+
+					<!-- grid -->
+					<div class="grid">
 					
-					<!-- input -->
-					<div class="input">
-						
-						<!-- searchlabel -->
-						<label class="searchlabel" for="searchquery">
+						<!-- querybox -->
+						<div class="querybox">
 							
-							<!-- icon -->
-							<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-							</svg>
-							<!-- /icon -->
+							<!-- searchlabel -->
+							<label class="searchlabel" for="searchquery">
+								
+								<!-- icon -->
+								<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+								</svg>
+								<!-- /icon -->
+								
+							</label>
+							<!-- /searchlabel -->
 							
-						</label>
-						<!-- /searchlabel -->
-						
-						
-						<!-- #searchquery -->
-						<input id="searchquery" type="text" placeholder="What are you looking for ?" autocomplete="off" />
-						<!-- /#searchquery -->
-						
-						<!-- closebtn -->
-						<div id="closebtn" class="closebtn btn">
 							
-							<!-- icon -->
-							<span class="icon">&times;</span>
-							<!-- /icon -->
+							<!-- #searchquery -->
+							<input id="searchquery" type="text" placeholder="What are you looking for ?" autocomplete="off" />
+							<!-- /#searchquery -->
+							
+							<!-- closebtn -->
+							<div id="closebtn" class="closebtn btn">
+								
+								<!-- icon -->
+								<span class="icon">&times;</span>
+								<!-- /icon -->
+								
+							</div>
+							<!-- /closebtn -->
 							
 						</div>
-						<!-- /closebtn -->
-						
+						<!-- /querybox -->
+
 					</div>
-					<!-- /input -->
+					<!-- /grid -->
 					
 				</section>
 				<!-- /head -->
 				
 				<!-- body -->
 				<section class="body">
+
+					<!-- grid -->
+					<div class="grid">
 					
-					<!-- #resultsbox -->
-					<div id="resultsbox">
-
-						<!-- resulthead -->
-						<h1 class="resulthead" style="display:none;">
-
-							<!-- searchquery -->
-							<span class="searchquery">"searchquerygoeshere"</span>
-							<!-- /searchquery -->
-
-							<!-- resultcount -->
-							<span class="resultcount">0</span>
-							<!-- /resultcount -->
-
-						</h1>
-						<!-- /resulthead -->
-
-						<!-- resultbody -->
-						<div class="resultbody">
-
-							<!-- resultset -->
-							<div class="resultset" style="display:none;">
+						<!-- #resultsbox -->
+						<div id="resultsbox">
 	
-								<!-- resulthead -->
-								<h2 class="resulthead">
-									
-									<!-- caption -->
-									<span class="caption">Result Head</span>
-									<!-- /caption -->
-
-									<!-- count -->
-									<span class="count">0</span>
-									<!-- /count -->
-
-								</h2>
-								<!-- /resulthead -->
+							<!-- resulthead -->
+							<h1 class="resulthead" style="display:none;">
+	
+								<!-- searchquery -->
+								<span class="searchquery">"searchquerygoeshere"</span>
+								<!-- /searchquery -->
+	
+								<!-- resultcount -->
+								<span class="resultcount">0</span>
+								<!-- /resultcount -->
+	
+							</h1>
+							<!-- /resulthead -->
+	
+							<!-- resultbody -->
+							<div class="resultbody">
+	
+								<!-- resultset -->
+								<div class="resultset" style="display:none;">
 		
-								<!-- resultlist -->
-								<ul class="resultlist visual">
-		
-									<!-- resultitem -->
-									<li class="resultitem">
-		
-										<!-- resultlink -->
-										<a class="resultlink" href="javascript:void(0)" target="_blank">
-
-											<!-- photo -->
-											<img class="photo" src="" alt="Name" title="Name">
-											<!-- /photo -->
-
+									<!-- resulthead -->
+									<h2 class="resulthead">
+										
+										<!-- caption -->
+										<span class="caption">Result Head</span>
+										<!-- /caption -->
+	
+										<!-- count -->
+										<span class="count">0</span>
+										<!-- /count -->
+	
+									</h2>
+									<!-- /resulthead -->
+			
+									<!-- resultlist -->
+									<ul class="resultlist visual">
+			
+										<!-- resultitem -->
+										<li class="resultitem">
+			
+											<!-- resultlink -->
+											<a class="resultlink" href="javascript:void(0)" target="_blank">
+	
+												<!-- photo -->
+												<img class="photo" src="" alt="Name" title="Name">
+												<!-- /photo -->
+	
+												<!-- caption -->
+												<span class="caption">Name</span>
+												<!-- /caption -->
+												
+											</a>
+											<!-- /resultlink -->
+			
+										</li>
+										<!-- /resultitem -->
+			
+									</ul>
+									<!-- /resultlist -->
+			
+									<!-- resultlist -->
+									<ul class="resultlist">
+			
+										<!-- resultitem -->
+										<li class="resultitem">
+			
+											<!-- resultlink -->
+											<a class="resultlink" href="javascript:void(0)" target="_blank">Result Link</a>
+											<!-- /resultlink -->
+	
 											<!-- caption -->
-											<span class="caption">Name</span>
+											<span class="caption">by</span>
+											<!-- /caption -->
+			
+											<!-- authorlink -->
+											<a class="authorlink" href="javascript:void(0)" target="_blank">Author Link</a>
+											<!-- /authorlink -->
+			
+										</li>
+										<!-- /resultitem -->
+			
+										<!-- resultitem -->
+										<li class="resultitem">
+	
+											<!-- caption -->
+											<span class="caption">No xyzposts match that search.</span>
 											<!-- /caption -->
 											
-										</a>
-										<!-- /resultlink -->
+											<!-- archivelink -->
+											<a class="archivelink" href="javascript:void(0)">View all xyzposts</a>
+											<!-- /archivelink -->
+			
+										</li>
+										<!-- /resultitem -->
+			
+									</ul>
+									<!-- /resultlist -->
 		
-									</li>
-									<!-- /resultitem -->
-		
-								</ul>
-								<!-- /resultlist -->
-		
-								<!-- resultlist -->
-								<ul class="resultlist">
-		
-									<!-- resultitem -->
-									<li class="resultitem">
-		
-										<!-- resultlink -->
-										<a class="resultlink" href="javascript:void(0)" target="_blank">Result Link</a>
-										<!-- /resultlink -->
-
-										<!-- caption -->
-										<span class="caption">by</span>
-										<!-- /caption -->
-		
-										<!-- authorlink -->
-										<a class="authorlink" href="javascript:void(0)" target="_blank">Author Link</a>
-										<!-- /authorlink -->
-		
-									</li>
-									<!-- /resultitem -->
-		
-									<!-- resultitem -->
-									<li class="resultitem">
-
-										<!-- caption -->
-										<span class="caption">No xyzposts match that search.</span>
-										<!-- /caption -->
-										
-										<!-- archivelink -->
-										<a class="archivelink" href="javascript:void(0)">View all xyzposts</a>
-										<!-- /archivelink -->
-		
-									</li>
-									<!-- /resultitem -->
-		
-								</ul>
-								<!-- /resultlist -->
+								</div>
+								<!-- /resultset -->
 	
 							</div>
-							<!-- /resultset -->
-
+							<!-- /resultbody -->
+							
 						</div>
-						<!-- /resultbody -->
+						<!-- /#resultsbox -->
 						
 					</div>
-					<!-- /#resultsbox -->
+					<!-- /grid -->
 					
 				</section>
 				<!-- /body -->
