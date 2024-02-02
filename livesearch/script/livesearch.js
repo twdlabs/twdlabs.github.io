@@ -149,9 +149,9 @@ class LiveSearchOverlay {
 		// console.log('Final result list:',finalResultList);
 		
 		// Initialize total number of matching search results. 
-		let totalMatchingResults = 0;
+		let matchingresultscount = 0;
 		// Get total number of matching search results. 
-		// let totalMatchingResults = countTotalResults(finalResultList);
+		// let matchingresultscount = countTotalResults(finalResultList);
 		
 		// Initialize layout for search results. 
 		let fullsearchresultslayout = '';
@@ -160,7 +160,7 @@ class LiveSearchOverlay {
 		fullsearchresultslayout += createResultsBodyLayout(/* finalResultList */);
 
 		// Add layout for search results header. 
-		fullsearchresultslayout += createResultsHeaderLayout(totalMatchingResults);
+		fullsearchresultslayout += createResultsHeaderLayout();
 		
 		// Display layout for search results on page. 
 		(this.searchResultsBox).innerHTML = fullsearchresultslayout;
@@ -188,49 +188,6 @@ class LiveSearchOverlay {
 			}
 		}
 
-		// Count total number of result items in result matrix. 
-		function countTotalResults(resultmatrix) {
-
-			// Initialize total number of result items. 
-			let total = 0;
-
-			// Go thru each result block in matrix. 
-			for(let resultblock of resultmatrix) {
-
-				// Increment total result count. 
-				total += resultblock.itemlist.length;
-
-				// // Go thru each item in result list of result block. 
-				// for(let item of resultblock.itemlist) {
-
-				// 	// Increment total result count. 
-				// 	total += 1;
-				// }
-			}
-
-			// Return total number of results in set list. 
-			return total;
-		}
-
-		// Create layout for search results header. 
-		function createResultsHeaderLayout(resultcount) {
-			// 
-			return `
-			<!-- resulthead -->
-			<h1 class="resulthead ${ (resultcount>0) ? '' : 'empty' }">
-	
-				<!-- searchquery -->
-				<span class="searchquery">${searchquery}</span>
-				<!-- /searchquery -->
-	
-				<!-- resultcount -->
-				<span class="resultcount">${resultcount}</span>
-				<!-- /resultcount -->
-	
-			</h1>
-			<!-- /resulthead -->`;
-		}
-
 		// Create layout for search results body. 
 		function createResultsBodyLayout() {
 
@@ -254,7 +211,7 @@ class LiveSearchOverlay {
 				let currentresultblockmatchcount = 0;
 	
 				// Initialize layout for list of matching items in current result block. 
-				let currentresultblocklayout = '';
+				let currentresultblockitemslayout = '';
 	
 				// Accumulate matching items for current set. 
 				for(let currentresultitem of currentresultblock.itemlist) {
@@ -270,15 +227,15 @@ class LiveSearchOverlay {
 						currentresultblockmatchcount += 1;
 						
 						// Increment total number of matching results. 
-						totalMatchingResults += 1;
+						matchingresultscount += 1;
 	
 						// Add matching result item to current set of search results. 
-						currentresultblocklayout += createResultItemLayout( currentresultblock, currentresultitem );
+						currentresultblockitemslayout += createResultItemLayout( currentresultblock, currentresultitem );
 					}
 				}
 
 				// Add current result block to layout for results body. 
-				finalResultBody += createResultBlockLayout(currentresultblock,currentresultblockmatchcount,currentresultblocklayout);
+				finalResultBody += createResultBlockLayout(currentresultblock,currentresultblockmatchcount,currentresultblockitemslayout);
 	
 				// Log number of results found for current post type. 
 				console.log( `\t\t${currentresultblockmatchcount} ${currentresultblock['searchlabel'].singular} results found` );
@@ -382,11 +339,8 @@ class LiveSearchOverlay {
 				// Get plural name of current post type. 
 				let searchlabel = resultblock['searchlabel'].plural;
 
-				// Initialize layout for current result block. 
-				let resultblocklayout = '';
-				
-				// Open layout for result block. 
-				resultblocklayout += `
+				// Compile layout for result block. 
+				let resultblocklayout = `
 				<!-- resultset -->
 				<div class="resultset">
 
@@ -394,7 +348,7 @@ class LiveSearchOverlay {
 					<h2 class="resulthead ${''}">
 						
 						<!-- caption -->
-						<span class="caption">${ resultblock.setname }</span>
+						<span class="caption">${ resultblock.blockname }</span>
 						<!-- /caption -->
 
 						<!-- count -->
@@ -405,19 +359,8 @@ class LiveSearchOverlay {
 					<!-- /resulthead -->
 			
 					<!-- resultlist -->
-					<ul class="resultlist ${ (resultblock.visual) ? ('visual') : ('') }">`;
-				
-				// Create layout for result set that contains matches. 
-				if(resultblockmatchcount>0) {
-					resultblocklayout += resultblockitemslayout;
-				}
-				// Create layout for empty result set (message and archive page link). 
-				else {
-					resultblocklayout += createEmptyResultItemLayout();
-				}
-	
-				// Close layout for result block. 
-				resultblocklayout += `
+					<ul class="resultlist ${ (resultblock.visual) ? ('visual') : ('') }">
+						${ (resultblockmatchcount>0) ? resultblockitemslayout : createEmptyResultListLayout() }
 					</ul>
 					<!-- /resultlist -->
 	
@@ -429,8 +372,8 @@ class LiveSearchOverlay {
 
 				/***/
 
-				// Create layout for empty result item. 
-				function createEmptyResultItemLayout() {
+				// Create layout for empty result block (message and archive page link). 
+				function createEmptyResultListLayout() {
 					// 
 					return `
 					<!-- resultitem -->
@@ -451,12 +394,9 @@ class LiveSearchOverlay {
 
 			// Create layout for result item. 
 			function createResultItemLayout(resultblock,resultitem) {
-
-				// Get folder name for current result set. 
-				let foldername = getFolderName(resultblock);
 				
 				// Get link url for current result. 
-				let resulturl = getResultUrl(foldername,resultitem);
+				let resulturl = getResultUrl(resultblock,resultitem);
 
 				// Get post name for current result. 
 				let resultname = getResultName(resultitem);
@@ -478,7 +418,7 @@ class LiveSearchOverlay {
 					<li class="resultitem">
 						
 						<!-- resultlink -->
-						<a class="resultlink" href="${ getRelativeUrl(resulturl) }" target="_blank">${ resultname }</a>
+						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">${ resultname }</a>
 						<!-- /resultlink -->
 						
 						<!-- caption -->
@@ -487,7 +427,7 @@ class LiveSearchOverlay {
 						
 						
 						<!-- authorlink -->
-						<a class="authorlink" href="${ getRelativeUrl(authorurl) }" target="_blank">${ authorname }</a>
+						<a class="authorlink" href="${ authorurl ? getRelativeUrl(authorurl) : 'javascript:void(0)' }" target="_blank">${ authorname }</a>
 						<!-- /authorlink -->
 						
 					</li>
@@ -503,7 +443,7 @@ class LiveSearchOverlay {
 					<li class="resultitem">
 		
 						<!-- resultlink -->
-						<a class="resultlink" href="${ getRelativeUrl(resulturl) }" target="_blank">
+						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">
 
 							<!-- photo -->
 							<img class="photo" src="${resultitem.photourl}">
@@ -529,7 +469,7 @@ class LiveSearchOverlay {
 					<li class="resultitem">
 						
 						<!-- resultlink -->
-						<a class="resultlink" href="${ getRelativeUrl(resulturl) }" target="_blank">${ resultname }</a>
+						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">${ resultname }</a>
 						<!-- /resultlink -->
 						
 					</li>
@@ -537,26 +477,25 @@ class LiveSearchOverlay {
 				}
 
 				/***/
-
-				// Get folder name of result set. 
-				function getFolderName(set) {
-					console.log('Getting folder name for result set:',set)
-					return set.folderpath;
-				}
 				
-				// Get link url for given post (using folder name & post item). 
-				function getResultUrl(foldername,item) {
+				// Get url for given post (using folder name & post item). 
+				function getResultUrl(resultblock,resultitem) {
 
-					// Get post id. 
-					let id = getPostId(item);
-					// console.log('\t\tgetPostId(item):',id);
+					// Get folder path for result block. 
+					let folderpath = getFolderPath(resultblock);
+
+					// Get post id for result item. 
+					let postid = getPostId(resultitem);
+					console.log('\t\tPost id(item):',postid);
 
 					// Return general url for given post. 
-					// if(foldername && id) return `${foldername}/post/index.html?id=${id}`;
-					if(foldername && id) return `${foldername}/post/?id=${id}`;
+					if(folderpath && postid) {
+						return `${folderpath}/post/?pid=${postid}`;
+						return `${folderpath}/post/index.html?pid=${postid}`;
+					}
 
 					// Return empty url if missing any parameter(s). 
-					else return 'javascript:void(0)';
+					else return '';
 
 					/***/
 					
@@ -565,19 +504,25 @@ class LiveSearchOverlay {
 						// console.log(`\t\t\tpostregister:`,postregister);
 						
 						// Get post id from post register. 
-						let idname = postregister[item.posttype];
-						let id = item[idname];
+						let idkey = postregister[item.posttype];
+						let postid = item[idkey];
 						// console.log(`\t\t\tid: '${id}'`);
 						
 						// Handle registered post type. 
-						if( id || !isNaN(id) ) return id;
+						if( postid || !isNaN(postid) ) return postid;
 	
 						// Handle unregistered post type. 
-						else console.warn('\t\t\tPost type not recognized:', item.posttype, id);
+						else console.warn('\t\t\tPost type not recognized:', item.posttype, postid);
+					}
+
+					// Get folder path for given result block. 
+					function getFolderPath(resultblock) {
+						console.log('Getting folder path for result block:',resultblock)
+						return resultblock.folderpath;
 					}
 				}
 
-				// Get post title for given search result item. 
+				// Get name of given result item. 
 				function getResultName(item) {
 		
 					// Get type of post. 
@@ -590,21 +535,23 @@ class LiveSearchOverlay {
 					return item['title'];
 				}
 
-				// Get link url for given author (using author id). 
+				// Get url for given author (using author id). 
 				function getAuthorUrl(item) {
 
 					// Get author id. 
-					let id = item['authorid'];
-					// console.log('\t\tAuthor id:',id);
+					let authorid = item['authorid'];
+					// console.log('\t\tAuthor id:',authorid);
 
-					// 
-					if( !isNaN(id) && id>=0 ) return `users/post/?id=${id}`;
-					// if( !isNaN(id) && id>=0 ) return `users/post/index.html?id=${id}`;
-					// if( !isNaN(id) && id>=0 ) return `authors/post/?id=${id}`;
-					// if( !isNaN(id) && id>=0 ) return `authors/post/index.html?id=${id}`;
+					// Return url if author id valid. 
+					if( !isNaN(authorid) && authorid>=0 ) {
+						return `./users/post/?id=${authorid}`;
+						return `./users/post/index.html?id=${authorid}`;
+						return `./authors/post/?id=${authorid}`;
+						return `./authors/post/index.html?id=${authorid}`;
+					}
 
-					// Return empty url if missing any parameter(s). 
-					else return 'javascript:void(0)';
+					// Return empty url if author id invalid. 
+					else return '';
 				}
 
 				// Get search result name for given item. 
@@ -626,6 +573,48 @@ class LiveSearchOverlay {
 					return authorname;
 				}
 			}
+		}
+
+		// Create layout for search results header. 
+		function createResultsHeaderLayout() {
+			return `
+			<!-- resulthead -->
+			<h1 class="resulthead ${ (matchingresultscount>0) ? '' : 'none' }">
+	
+				<!-- searchquery -->
+				<span class="searchquery">${searchquery}</span>
+				<!-- /searchquery -->
+	
+				<!-- resultcount -->
+				<span class="resultcount">${matchingresultscount}</span>
+				<!-- /resultcount -->
+	
+			</h1>
+			<!-- /resulthead -->`;
+		}
+
+		// Count total number of result items in result matrix. 
+		function countTotalResults(resultmatrix) {
+
+			// Initialize total number of result items. 
+			let totalresultcount = 0;
+
+			// Go thru each block in result matrix. 
+			for(let resultblock of resultmatrix) {
+
+				// Increment total number of result items. 
+				totalresultcount += resultblock.itemlist.length;
+
+				// // Go thru each item in result list of result block. 
+				// for(let item of resultblock.itemlist) {
+
+				// 	// Increment total number of result items. 
+				// 	totalresultcount += 1;
+				// }
+			}
+
+			// Return total number of results items. 
+			return totalresultcount;
 		}
 	}
 

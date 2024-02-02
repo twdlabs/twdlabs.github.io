@@ -19,7 +19,7 @@ const postregister = {
 const defaultResultSet = [
 
 	{
-		setname:'Alphabet',
+		blockname:'Alphabet',
 		folderpath:'./alphabet',
 		searchlabel:{
 			plural:'letters',
@@ -29,7 +29,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'U.S. Presidents',
+		blockname:'U.S. Presidents',
 		folderpath:'./presidents',
 		searchlabel:{
 			plural:'presidents',
@@ -39,7 +39,7 @@ const defaultResultSet = [
 		visual:true,
 	},
 	{
-		setname:'American Universities',
+		blockname:'American Universities',
 		folderpath:'./universities',
 		searchlabel:{
 			plural:'universities',
@@ -49,7 +49,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'Social Media Platforms',
+		blockname:'Social Media Platforms',
 		folderpath:'./socialmedia',
 		searchlabel:{
 			plural:'social platforms',
@@ -59,7 +59,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'Months of the Year',
+		blockname:'Months of the Year',
 		folderpath:'./months',
 		searchlabel:{
 			plural:'months',
@@ -69,7 +69,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'Astrological Zodiac Signs',
+		blockname:'Astrological Zodiac Signs',
 		folderpath:'./zodiacsigns',
 		searchlabel:{
 			plural:'zodiac signs',
@@ -79,7 +79,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'Numbers',
+		blockname:'Numbers',
 		folderpath:'./numbers',
 		searchlabel:{
 			plural:'numbers',
@@ -89,7 +89,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'Planets',
+		blockname:'Planets',
 		folderpath:'./planets',
 		searchlabel:{
 			plural:'planets',
@@ -99,7 +99,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'Days of the Week',
+		blockname:'Days of the Week',
 		folderpath:'./weekdays',
 		searchlabel:{
 			plural:'days',
@@ -109,7 +109,7 @@ const defaultResultSet = [
 		visual:false,
 	},
 	{
-		setname:'Seasons',
+		blockname:'Seasons',
 		folderpath:'./seasons',
 		searchlabel:{
 			plural:'seasons',
@@ -120,7 +120,7 @@ const defaultResultSet = [
 	},
 
 	// {
-	// 	setname:'Xyz Set',
+	// 	blockname:'Xyz Set',
 	// 	folderpath:'./xyz',
 	// 	searchlabel:{plural:'xyz', singular:'xyz',},
 	// 	itemlist: [

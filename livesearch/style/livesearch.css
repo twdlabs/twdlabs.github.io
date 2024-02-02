@@ -69,13 +69,13 @@ div#container div#searchoverlay section.body div#resultsbox {background-color:va
 div#container div#searchoverlay section.body div#resultsbox {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch;}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead {font-size:1.25em;}
-/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.resultcount {font-size:1.5em;} */
+/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.resultcount {} */
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.resultcount::after {content:' results found';}
+div#container div#searchoverlay section.body div#resultsbox h1.resulthead.none span.resultcount {visibility:hidden;}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery {word-wrap:anywhere;}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery:before {content:'Here are your search results for \'';}
 div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery::after {content:'\'.';}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead.empty span.resultcount {visibility:hidden;}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead.empty span.searchquery:before {content:'No matches found for ';}
+div#container div#searchoverlay section.body div#resultsbox h1.resulthead.none span.searchquery:before {content:'No matches found for \'';}
 /* div#container div#searchoverlay section.body div#resultsbox div.resultbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;} */
 div#container div#searchoverlay section.body div#resultsbox div.resultbody {display:grid; grid-template-columns:repeat( var(--gridcolumns) ,1fr); --gridcolumns:4;}
 div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 2rem 0 0; /* text-align:center; */}
