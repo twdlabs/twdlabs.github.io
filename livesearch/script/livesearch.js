@@ -7,30 +7,30 @@ class LiveSearchOverlay {
 
 	// 1. Describe and create / initiate object. 
 
-	constructor(openbtn,closebtn,searchOverlay,searchQueryField,searchResultsBox) {
+	constructor(openbtn,closebtn,searchoverlay,searchqueryfield,searchresultsdestination) {
 
 		// Get page elements for open/close buttons. 
 		this.openbtn = openbtn;
 		this.closebtn = closebtn;
 
 		// Get page elements for search overlay. 
-		this.searchOverlay = searchOverlay;
-		this.searchQueryField = searchQueryField;
-		this.searchResultsBox = searchResultsBox;
+		this.searchoverlay = searchoverlay;
+		this.searchqueryfield = searchqueryfield;
+		this.searchresultsdestination = searchresultsdestination;
 
 		// Initialize representation of previously typed query. 
-		this.prevQuery = '';
+		this.prevquery = '';
 
 		// Define delay time for search results. 
-		this.dt = 500;
+		this.dt = 250;
 
 		// Handle events. 
 		this.handleEvents();
 
 		// Initialize saved state of live search. 
-		this.alreadyOpen = false;
+		this.overlayopen = false;
 
-		// Set initial state for loading of results. 
+		// Set initial state of results loading. 
 		this.currentlyLoadingResults = false;
 
 		// Initialize results timer. 
@@ -49,7 +49,7 @@ class LiveSearchOverlay {
 		this.closebtn.addEventListener( 'click', this.closeSearchOverlay.bind(this) );
 
 		// Handle results shown upon typing query. 
-		this.searchQueryField.addEventListener( 'keyup', this.respondToQueryTyping.bind(this) );
+		this.searchqueryfield.addEventListener( 'keyup', this.respondToQueryTyping.bind(this) );
 
 		// Handle keyboard shortcuts. 
 		document.documentElement.addEventListener( 'keyup', this.dispatchKeyPress.bind(this) );
@@ -64,31 +64,32 @@ class LiveSearchOverlay {
 	clearSearchQuery() {
 
 		// Clear contents of text field. 
-		this.searchQueryField.value = '';
+		this.searchqueryfield.value = '';
 
 		// Remove focus from text field. 
-		this.searchQueryField.blur();
+		this.searchqueryfield.blur();
 	}
 
 	// Handle what's being shown upon typing query. 
 	respondToQueryTyping() {
-		console.log('Typed query...', this.searchQueryField.value);
+		console.log('Typed search query...', this.searchqueryfield.value);
 
-		// Ignore typing that doesn't change query (non-character keys). 
-		let sameQueryAsB4 = (this.searchQueryField.value == this.prevQuery);
-		if(sameQueryAsB4) return;
+		// Check for unchanged query. 
+		let noQueryChange = (this.searchqueryfield.value == this.prevquery);
+		// Disregard if query unchanged (i.e. non-character keys). 
+		if(noQueryChange) return;
 
-		// Clear timer if still typing. 
+		// Clear previous timer for results (still typing). 
 		clearTimeout(this.resultsTimer);
 
-		// Start doing stuff (if query present). 
-		if(this.searchQueryField.value) {
+		// Clear previous search results. 
+		this.clearSearchResults();
 
-			// Clear previous search results. 
-			this.clearSearchResults();
+		// Start doing stuff (if query present). 
+		if(this.searchqueryfield.value) {
 
 			// Show loader icon. 
-			if(!this.currentlyLoadingResults) this.setWaitState(true);
+			if(!this.currentlyLoadingResults) this.updateWaitState(true);
 
 			// Start timer for new search results. 
 			this.resultsTimer = setTimeout(this.displaySearchResults.bind(this), this.dt);
@@ -97,55 +98,52 @@ class LiveSearchOverlay {
 		// Stop everything (if no query present). 
 		else {
 
-			// Clear previous search results. 
-			this.clearSearchResults();
-
 			// Hide loader icon. 
-			this.setWaitState(false);
+			this.updateWaitState(false);
 		}
 
-		// Save query for comparison with next query. 
-		this.prevQuery = this.searchQueryField.value;
+		// Save current query for comparison with future query. 
+		this.prevquery = this.searchqueryfield.value;
 	}
 
 
 	// Set appropriate state for loader. 
-	setWaitState(nowWaiting) {
+	updateWaitState(nowWaiting) {
 
-		// Set state for loading of results. 
+		// Update state of results loading. 
 		this.currentlyLoadingResults = nowWaiting;
 		
 		// Apply state to loader on page. 
-		if(nowWaiting) this.searchOverlay.classList.add('wait');
-		else this.searchOverlay.classList.remove('wait');
+		if(nowWaiting) this.searchoverlay.classList.add('wait');
+		else this.searchoverlay.classList.remove('wait');
 	}
 
 	// Clear previous search results. 
 	clearSearchResults() {
 
 		// Remove content within search results box. 
-		this.searchResultsBox.innerHTML = '';
+		this.searchresultsdestination.innerHTML = '';
 	}
 
 	// Show all matching results for given search query. 
 	displaySearchResults() {
 		
 		// Get search query. 
-		let searchquery = (this.searchQueryField).value;
-		console.log(`searchquery: "${searchquery}"`);
+		let searchquery = (this.searchqueryfield).value;
+		console.log(`Processing search query: \'${searchquery}\'`);
 		
 		// Get list of words in search query. 
 		let searchquerywordlist = searchquery.split(' ');
-		console.log('searchquerywordlist:',searchquerywordlist);
+		console.log('Search query word list:',searchquerywordlist);
 		// Check for multi-word search query. 
 		let isMultiWordQuery = ( searchquerywordlist.length > 1 );
 		
-		// Get initial search results from post database. 
-		let initialResultMatrix = defaultResultSet;
-		console.log('Initial result list:',initialResultMatrix);
+		// Get from post database: origin of search results matrix. 
+		let originalResultsMatrix = defaultResultSet;
+		console.log('Original results matrix:',originalResultsMatrix);
 		
 		// Send request for matrix of matching search results. 
-		// let finalResultList = getSearchResults(initialResultMatrix);
+		// let finalResultList = getSearchResults(originalResultsMatrix);
 		// console.log('Final result list:',finalResultList);
 		
 		// Initialize total number of matching search results. 
@@ -163,22 +161,22 @@ class LiveSearchOverlay {
 		fullsearchresultslayout += createResultsHeaderLayout();
 		
 		// Display layout for search results on page. 
-		(this.searchResultsBox).innerHTML = fullsearchresultslayout;
+		(this.searchresultsdestination).innerHTML = fullsearchresultslayout;
 		// console.log('Search results layout:',fullsearchresultslayout);
-		// console.log('Search results destination:',this.searchResultsBox);
+		// console.log('Search results destination:',this.searchresultsdestination);
 
 		// Hide loader icon. 
-		this.setWaitState(false);
+		this.updateWaitState(false);
 
 
 		/*****/
 
 
 		// TODO: Get matrix of matching search results. 
-		function getSearchResults(initialResultMatrix) {
+		function getSearchResults(originalResultsMatrix) {
 
 			// Start with initial set of results. 
-			return initialResultMatrix.filter(checkForKeep);
+			return originalResultsMatrix.filter(checkForKeep);
 
 			/****/
 
@@ -200,11 +198,14 @@ class LiveSearchOverlay {
 			<div class="resultbody">`;
 	
 			// Go thru each result block to find matching result sets. 
-			for(let key in initialResultMatrix) {
+			for(let key in originalResultsMatrix) {
 
 				// Get current result block. 
-				let currentresultblock = initialResultMatrix[key]
-				console.log(`\tSearching ${ currentresultblock['searchlabel'].plural }...`);
+				let currentresultblock = originalResultsMatrix[key];
+
+				// Get search labels for current result block. 
+				let searchlabels = currentresultblock['searchlabel'];
+				console.log(`\tSearching ${ searchlabels.plural }...`);
 				// console.log('Result set:',key,currentresultblock);
 	
 				// Initialize number of matching items in current result block. 
@@ -238,86 +239,9 @@ class LiveSearchOverlay {
 				finalResultBody += createResultBlockLayout(currentresultblock,currentresultblockmatchcount,currentresultblockitemslayout);
 	
 				// Log number of results found for current post type. 
-				console.log( `\t\t${currentresultblockmatchcount} ${currentresultblock['searchlabel'].singular} results found` );
+				console.log( `\t\t${currentresultblockmatchcount} ${searchlabels.singular} results found` );
 
 				/***/
-
-				// Check for match between current item and current search query (case insensitive).
-				function checkForMatch(currentItem) {
-				
-					// Determine current search mode. 
-					let titleSearchOnly = false;
-					let carefulSearch = true;
-
-					// Check for simple match (by title) with search query (case insensitive). 
-					if(titleSearchOnly) {
-						// return ( currentItem.title.toUpperCase() ).includes( searchquery.toUpperCase() );
-						return matchesAllQueryWords(currentItem.title);
-					}
-
-					// Do search only on selected tags. 
-					else if(carefulSearch) {
-					
-						// Old implementation: before data structure update (search tags of searchable post items). 
-						// Get case-insensitive search check components: search tags, search query. 
-						// let runontagstring = ( currentItem['searchtags'] ).toUpperCase();
-						// Check for match within run-on search tag. 
-						// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
-
-						// New implementation: after data structure update (search tags of searchable post items). 
-						// Check for match within list of search tags. 
-						for(let tag of currentItem.searchtags) {
-
-							// Check for match between search query and current search tag. 
-							// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
-							let matchOn = matchesAllQueryWords(tag);
-							// Return true if any match found. 
-							if(matchOn) return true;
-						}
-						// Return false if no match found. 
-						return false;
-					}
-	
-					// Otherwise, do all-out search on all properties of given item. 
-					else {
-					
-						// Check for match with search query (any property, case insensitive). 
-						for(let key in currentItem) {
-							// console.log(key);
-		
-							// Get case-insensitive search check component. 
-							let keyvalue = currentItem[key].toString();
-	
-							// Check for match in value of current property. 
-							// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
-							let foundMatch = matchesAllQueryWords(keyvalue);
-		
-							// End search upon finding match (proceeding to next post item). 
-							if(foundMatch) return true;
-						}
-						
-						// Return false if match not found. 
-						return false;
-					}
-
-					// Check for match with all query words. 
-					function matchesAllQueryWords(tag) {
-
-						// 
-						if(!isMultiWordQuery) return ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
-						
-						// 
-						for(let queryword of searchquerywordlist) {
-
-							// Check if tag contains query word. 
-							let tagContainsQueryWord = ( tag.toUpperCase() ).includes( queryword.toUpperCase() );
-							if( !tagContainsQueryWord ) return false;
-						}
-
-						// Passed all tests (contins all words in search query). 
-						return true;
-					}
-				}
 			}
 	
 			// Close result body. 
@@ -329,6 +253,85 @@ class LiveSearchOverlay {
 			return finalResultBody;
 
 			/****/
+
+			// Check match between result item and current search query (case insensitive).
+			function checkForMatch(resultitem) {
+			
+				// Define parameters of current search. 
+				let titleSearchOnly = false;
+				let carefulSearch = true;
+
+				// Check for simple match (by title) with search query (case insensitive). 
+				if(titleSearchOnly) {
+					// return ( resultitem.title.toUpperCase() ).includes( searchquery.toUpperCase() );
+					return matchesAllQueryWords(resultitem.title);
+				}
+
+				// Do search only on selected tags. 
+				else if(carefulSearch) {
+				
+					// Old implementation: before data structure update (search tags of searchable post items). 
+					// Get case-insensitive search check components: search tags, search query. 
+					// let runontagstring = ( resultitem['searchtags'] ).toUpperCase();
+					// Check for match within run-on search tag. 
+					// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
+
+					// New implementation: after data structure update (search tags of searchable post items). 
+					// Check for match within list of search tags. 
+					for(let tag of resultitem.searchtags) {
+
+						// Check for match between search query and current search tag. 
+						// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+						let matchOn = matchesAllQueryWords(tag);
+						// Return true if any match found. 
+						if(matchOn) return true;
+					}
+					// Return false if no match found. 
+					return false;
+				}
+
+				// Otherwise, do all-out search on all properties of given item. 
+				else {
+				
+					// Check for match with search query (any property, case insensitive). 
+					for(let key in resultitem) {
+						// console.log(key);
+	
+						// Get case-insensitive search check component. 
+						let keyvalue = resultitem[key].toString();
+
+						// Check for match in value of current property. 
+						// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
+						let foundMatch = matchesAllQueryWords(keyvalue);
+	
+						// End search upon finding match (proceeding to next post item). 
+						if(foundMatch) return true;
+					}
+					
+					// Return false if match not found. 
+					return false;
+				}
+
+				/***/
+
+				// Check for match with all query words. 
+				function matchesAllQueryWords(tag) {
+
+					// 
+					if(!isMultiWordQuery) return ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+					
+					// 
+					for(let queryword of searchquerywordlist) {
+
+						// Check if tag contains query word. 
+						let tagContainsQueryWord = ( tag.toUpperCase() ).includes( queryword.toUpperCase() );
+						if( !tagContainsQueryWord ) return false;
+					}
+
+					// Passed all tests (contins all words in search query). 
+					return true;
+				}
+			}
 
 			// Create layout for given result block. 
 			function createResultBlockLayout(resultblock,resultblockmatchcount,resultblockitemslayout) {
@@ -403,8 +406,57 @@ class LiveSearchOverlay {
 
 				// TODO: Create functions for these 3 post types (blog, reg, visual). 
 
-				// Create result for blog post. 
-				if(resultitem.posttype=='post') {
+				// Return layout for blog post. 
+				if(resultitem.posttype=='post') return createBlogPostResultItemLayout();
+
+				// Return layout for visual post. 
+				else if(resultitem.visual) return createVisualResultItemLayout();
+
+				// Return layout for regular post. 
+				else return createRegResultItem();
+
+				/***/
+
+				// Create layout for regular result item. 
+				function createRegResultItem() {
+					return `
+					<!-- resultitem -->
+					<li class="resultitem">
+						
+						<!-- resultlink -->
+						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">${ resultname }</a>
+						<!-- /resultlink -->
+						
+					</li>
+					<!-- /resultitem -->`;
+				}
+
+				// Create layout for visual result item. 
+				function createVisualResultItemLayout() {
+					return `
+					<!-- resultitem -->
+					<li class="resultitem">
+		
+						<!-- resultlink -->
+						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">
+	
+							<!-- photo -->
+							<img class="photo" src="${resultitem.photourl}">
+							<!-- /photo -->
+	
+							<!-- caption -->
+							<span class="caption">${resultname}</span>
+							<!-- /caption -->
+							
+						</a>
+						<!-- /resultlink -->
+						
+					</li>
+					<!-- /resultitem -->`;
+				}
+
+				// Create layout for blog post result item. 
+				function createBlogPostResultItemLayout() {
 				
 					// Get link url for author of current result. 
 					let authorurl = getAuthorUrl(resultitem);
@@ -434,50 +486,6 @@ class LiveSearchOverlay {
 					<!-- /resultitem -->`;
 				}
 
-				// Create result for visual post. 
-				else if(resultitem.visual) {
-
-					// Return result. 
-					return `
-					<!-- resultitem -->
-					<li class="resultitem">
-		
-						<!-- resultlink -->
-						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">
-
-							<!-- photo -->
-							<img class="photo" src="${resultitem.photourl}">
-							<!-- /photo -->
-
-							<!-- caption -->
-							<span class="caption">${resultname}</span>
-							<!-- /caption -->
-							
-						</a>
-						<!-- /resultlink -->
-						
-					</li>
-					<!-- /resultitem -->`;
-				}
-
-				// Create result for all other posts. 
-				else {
-
-					// Return result. 
-					return `
-					<!-- resultitem -->
-					<li class="resultitem">
-						
-						<!-- resultlink -->
-						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">${ resultname }</a>
-						<!-- /resultlink -->
-						
-					</li>
-					<!-- /resultitem -->`;
-				}
-
-				/***/
-				
 				// Get url for given post (using folder name & post item). 
 				function getResultUrl(resultblock,resultitem) {
 
@@ -497,7 +505,7 @@ class LiveSearchOverlay {
 					// Return empty url if missing any parameter(s). 
 					else return '';
 
-					/***/
+					/**/
 					
 					// Get post id. 
 					function getPostId(item) {
@@ -517,48 +525,48 @@ class LiveSearchOverlay {
 
 					// Get folder path for given result block. 
 					function getFolderPath(resultblock) {
-						console.log('Getting folder path for result block:',resultblock)
+						// console.log('Getting folder path for result block:',resultblock)
 						return resultblock.folderpath;
 					}
 				}
 
 				// Get name of given result item. 
-				function getResultName(item) {
+				function getResultName(resultitem) {
 		
 					// Get type of post. 
-					// let type = item['posttype'];
+					// let type = resultitem['posttype'];
 		
 					// Get search result name for given post types: blog posts, programs, courses, events, people. 
 					// if(type=='post' || type=='program' || type=='course' || type=='event' || type=='faculty' || type=='student')
 					
-					// Get result name. 
-					return item['title'];
+					// Return name of result item. 
+					return resultitem['title'];
 				}
 
 				// Get url for given author (using author id). 
-				function getAuthorUrl(item) {
+				function getAuthorUrl(resultitem) {
 
 					// Get author id. 
-					let authorid = item['authorid'];
+					let authorid = resultitem['authorid'];
 					// console.log('\t\tAuthor id:',authorid);
 
 					// Return url if author id valid. 
 					if( !isNaN(authorid) && authorid>=0 ) {
 						return `./users/post/?id=${authorid}`;
-						return `./users/post/index.html?id=${authorid}`;
-						return `./authors/post/?id=${authorid}`;
-						return `./authors/post/index.html?id=${authorid}`;
+						// return `./users/post/index.html?id=${authorid}`;
+						// return `./authors/post/?id=${authorid}`;
+						// return `./authors/post/index.html?id=${authorid}`;
 					}
 
 					// Return empty url if author id invalid. 
 					else return '';
 				}
 
-				// Get search result name for given item. 
-				function getAuthorName(item) {
+				// Get search author name for given result item. 
+				function getAuthorName(resultitem) {
 
 					// Get author id. 
-					let id = item['authorid'];
+					let id = resultitem['authorid'];
 					// console.log('\t\tAuthor id:',id);
 
 					// Return nothing if invalid id. 
@@ -579,7 +587,7 @@ class LiveSearchOverlay {
 		function createResultsHeaderLayout() {
 			return `
 			<!-- resulthead -->
-			<h1 class="resulthead ${ (matchingresultscount>0) ? '' : 'none' }">
+			<h1 class="resulthead${ (matchingresultscount>0) ? '' : ' none' }">
 	
 				<!-- searchquery -->
 				<span class="searchquery">${searchquery}</span>
@@ -629,19 +637,19 @@ class LiveSearchOverlay {
 		// Activate search overlay window. 
 		this.setOverlayState(true);
 
-		// Open search query field. 
-		setTimeout( openSearchQuery.bind(this), this.dt );
+		// Prepare to search. 
+		setTimeout( prepareToSearch.bind(this), this.dt );
 
 		// Update saved state of live search. 
-		this.alreadyOpen = true;
+		this.overlayopen = true;
 
 		/*****/
 
-		// Open search query field. 
-		function openSearchQuery() {
+		// Prepare to search. 
+		function prepareToSearch() {
 
 			// Bring focus to text field. 
-			this.searchQueryField.focus();
+			this.searchqueryfield.focus();
 		}
 	}
 
@@ -655,16 +663,16 @@ class LiveSearchOverlay {
 		// Un-freeze background page scrolling. 
 		this.setBodyFreeze(false);
 
-		// Close search query field. 
-		setTimeout( closeSearchQuery.bind(this), this.dt );
+		// Clear search query and results. 
+		setTimeout( clearOutSearch.bind(this), this.dt );
 
 		// Update saved state of live search. 
-		this.alreadyOpen = false;
+		this.overlayopen = false;
 
 		/*****/
 
-		// Close search query field. 
-		function closeSearchQuery() {
+		// Clear search query and results. 
+		function clearOutSearch() {
 
 			// Clear contents of text field. 
 			this.clearSearchQuery();
@@ -678,10 +686,10 @@ class LiveSearchOverlay {
 	setOverlayState(showOverlay) {
 
 		// Open search overlay window. 
-		if(showOverlay) this.searchOverlay.classList.add('active');
+		if(showOverlay) this.searchoverlay.classList.add('active');
 		
 		// Close search overlay window. 
-		else this.searchOverlay.classList.remove('active');
+		else this.searchoverlay.classList.remove('active');
 	}
 
 	// Set state of background page scrolling/freezing. 
@@ -697,35 +705,43 @@ class LiveSearchOverlay {
 	// Handle keyboard shortcuts. 
 	dispatchKeyPress(event) {
 
-		// Get selected key. 
-		let key = event.charCode || event.keyCode;
-
-		// Check if user is typing in a text field. 
-		let typingTextField = false;
-
-		// Get all text fields. 
-		const allTextFields = document.querySelectorAll('textarea,input');
-
-		// Go thru each text field. 
-		for(let textfield of allTextFields) {
-
-			// Check if text field active. 
-			if(document.activeElement==textfield) {
-
-				// Assume typing if at least one text field active. 
-				typingTextField = true;
-				return;
-			}
-		}
+		// Get code of selected key. 
+		let keycode = event.keyCode || event.charCode;
+	
+		// Check if user typing text. 
+		let typingText = checkTypingText();
 
 		// Handle open shortcut (Key: S). 
-		if(!this.alreadyOpen && (key==83 || key==115) && !typingTextField ) {
+		if(!this.overlayopen && (keycode==83 || keycode==115) && !typingText ) {
 			this.openSearchOverlay();
 		}
 
 		// Handle close shortcut (Key: ESC). 
-		if(this.alreadyOpen && key==27) {
+		if(this.overlayopen && keycode==27) {
 			this.closeSearchOverlay();
+		}
+
+		/*****/
+
+		// Check if user typing in text field. 
+		function checkTypingText() {
+
+			// Get all text input fields. 
+			const allTextFields = document.querySelectorAll('textarea,input');
+
+			// Go thru each text field. 
+			for(let textfield of allTextFields) {
+	
+				// Check if text field active. 
+				if(document.activeElement==textfield) {
+	
+					// Assume typing in text field if any text field active. 
+					return true;
+				}
+			}
+
+			// Assume not typing in text field if no text fields active. 
+			return false;
 		}
 	}
 

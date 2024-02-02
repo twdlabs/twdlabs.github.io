@@ -5,13 +5,13 @@
 const openbtn = document.querySelector('div#container div.openbtn');
 
 // Get search overlay window. 
-const searchOverlay = document.querySelector('div#container div#searchoverlay');
+const searchoverlay = document.querySelector('div#container div#searchoverlay');
 // Get close button. 
 const closebtn = document.querySelector('div#container div#searchoverlay section.head div.querybox div.closebtn');
 // Get search query field. 
-const searchQueryField = document.querySelector('div#container div#searchoverlay section.head div.querybox input#searchquery');
+const searchqueryfield = document.querySelector('div#container div#searchoverlay section.head div.querybox input#searchquery');
 // Get search results box. 
-const searchResultsBox = document.querySelector('div#container div#searchoverlay section.body div#resultsbox');
+const searchresultsbox = document.querySelector('div#container div#searchoverlay section.body div#resultsbox');
 
 
 /*****/
@@ -28,5 +28,5 @@ activateLiveSearch();
 function activateLiveSearch() {
 
 	// Create new Search object. 
-	const lso = new LiveSearchOverlay(openbtn,closebtn,searchOverlay,searchQueryField,searchResultsBox);
+	const lso = new LiveSearchOverlay(openbtn,closebtn,searchoverlay,searchqueryfield,searchresultsbox);
 }
