@@ -20,7 +20,7 @@ const defaultResultSet = [
 
 	{
 		blockname:'Alphabet',
-		folderpath:'./alphabet',
+		folderpath:'../alphabet',
 		searchlabel:{
 			plural:'letters',
 			singular:'letter',
@@ -31,7 +31,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'U.S. Presidents',
-		folderpath:'./presidents',
+		folderpath:'../presidents',
 		searchlabel:{
 			plural:'presidents',
 			singular:'president',
@@ -42,7 +42,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'American Universities',
-		folderpath:'./universities',
+		folderpath:'../universities',
 		searchlabel:{
 			plural:'universities',
 			singular:'university',
@@ -53,7 +53,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Social Media Platforms',
-		folderpath:'./socialmedia',
+		folderpath:'../socialmedia',
 		searchlabel:{
 			plural:'social platforms',
 			singular:'social platform',
@@ -64,7 +64,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Months of the Year',
-		folderpath:'./months',
+		folderpath:'../months',
 		searchlabel:{
 			plural:'months',
 			singular:'month',
@@ -75,7 +75,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Astrological Zodiac',
-		folderpath:'./zodiacsigns',
+		folderpath:'../zodiacsigns',
 		searchlabel:{
 			plural:'zodiac signs',
 			singular:'zodiac sign',
@@ -86,7 +86,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Numbers',
-		folderpath:'./numbers',
+		folderpath:'../numbers',
 		searchlabel:{
 			plural:'numbers',
 			singular:'number',
@@ -97,7 +97,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Planets',
-		folderpath:'./planets',
+		folderpath:'../planets',
 		searchlabel:{
 			plural:'planets',
 			singular:'planet',
@@ -108,7 +108,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Days of the Week',
-		folderpath:'./weekdays',
+		folderpath:'../weekdays',
 		searchlabel:{
 			plural:'days',
 			singular:'day',
@@ -119,7 +119,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Seasons',
-		folderpath:'./seasons',
+		folderpath:'../seasons',
 		searchlabel:{
 			plural:'seasons',
 			singular:'season',
@@ -131,7 +131,7 @@ const defaultResultSet = [
 
 	// {
 	// 	blockname:'Xyz Set',
-	// 	folderpath:'./xyz',
+	// 	folderpath:'../xyz',
 	// 	searchlabel:{plural:'xyz', singular:'xyz',},
 	// 	itemlist: [
 	// 		{

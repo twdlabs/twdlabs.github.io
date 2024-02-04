@@ -146,11 +146,10 @@ class LiveSearchOverlay {
 		
 		// Get from post database: origin of search results matrix. 
 		let originalResultsMatrix = defaultResultSet;
-		console.log('Original results matrix:',originalResultsMatrix);
+		console.log('Results matrix:',originalResultsMatrix);
 		
 		// Generate matching search results. 
 		getMatchingSearchResults();
-		console.log('Matching results matrix:',originalResultsMatrix);
 		
 		// Get total number of search results. 
 		let resultscount = countTotalResults('itemlist');
@@ -271,76 +270,35 @@ class LiveSearchOverlay {
 		// TODO: Get matrix of matching search results. 
 		function getMatchingSearchResults() {
 	
-			// TODO: Define filter for matching items. 
-			let matchfilter = checkForMatch;
-			// matchfilter = () => Math.round( Math.random() );
-	
 			// Go thru each result block. 
 			for(let currentresultblock of originalResultsMatrix) {
 				console.log(`\tSearching ${ currentresultblock['searchlabel'].plural }...`/* ,currentresultblock */);
 
-				// Generate list of matching items for current result block. 
-				currentresultblock.matchingitemlist = currentresultblock.itemlist.filter(matchfilter);
+				// Save list of matching items for current result block. 
+				currentresultblock.matchingitemlist = currentresultblock.itemlist.filter(checkForMatch);
+	
+				// Share number of results found for current result block. 
+				console.log( `\t\t${currentresultblock.matchingitemlist.length} result(s) found` );
 			}
 		}
 
 		// Create layout for search results body. 
 		function createResultsBodyLayout() {
 
-			// Initialize final result body. 
-			let finalResultBody = '';
-
-			// Open result body. 
-			finalResultBody += `
+			// Compile final result body. 
+			return `
 			<!-- resultsbody -->
-			<div class="resultsbody">`;
-	
-			// Go thru each result block's matching results. 
-			for(let currentresultblock of originalResultsMatrix) {
-	
-				// Initialize number of matching items in current result block. 
-				let currentresultblockmatchcount = 0;
-	
-				// Initialize layout for list of matching items in current result block. 
-				let currentresultblockitemslayout = '';
-	
-				// Accumulate matching items for current result block. 
-				for(let currentresultitem of currentresultblock.itemlist) {
-					// console.log('Current result item',currentresultitem);
-					
-					// Check for match with search query. 
-					let currentItemMatchesQuery = checkForMatch(currentresultitem);
-					
-					// Include item if matches search query. 
-					if(currentItemMatchesQuery) {
-						
-						// Increment number of matching results in current result block. 
-						currentresultblockmatchcount += 1;
-	
-						// Add matching result item to current result block of search results. 
-						currentresultblockitemslayout += createResultItemLayout( currentresultblock, currentresultitem );
-					}
-				}
-
-				// Add current result block to layout for results body. 
-				finalResultBody += createResultBlockLayout(currentresultblock,currentresultblockmatchcount,currentresultblockitemslayout);
-	
-				// Log number of results found for current result block. 
-				console.log( `\t\t${currentresultblockmatchcount} result(s) found` );
-			}
-	
-			// Close result body. 
-			finalResultBody += 
-			`</div>
+			<div class="resultsbody">
+				${ originalResultsMatrix.map( (resultblock) => createResultBlockLayout(resultblock) ).join('') }
+			</div>
 			<!-- /resultsbody -->`;
-
-			// Return final result body. 
-			return finalResultBody;
 
 			/****/
 
 			// Create layout for given result block. 
-			function createResultBlockLayout(resultblock,resultblockmatchcount,resultblockitemslayout) {
+			function createResultBlockLayout(resultblock) {
+
+				let resultblockmatchcount = resultblock.matchingitemlist.length;
 
 				// Compile layout for result block. 
 				let resultblocklayout = `
@@ -362,8 +320,8 @@ class LiveSearchOverlay {
 					<!-- /blockhead -->
 			
 					<!-- resultlist -->
-					<ul class="resultlist ${ (resultblock.visual) ? ('visual') : ('') }">
-						${ (resultblockmatchcount>0) ? resultblockitemslayout : createNullResultLayout() }
+					<ul class="resultlist${ (resultblock.visual) ? (' visual') : ('') }">
+						${ (resultblockmatchcount>0) ? createResultListLayout() : createNullResultListLayout() }
 					</ul>
 					<!-- /resultlist -->
 	
@@ -375,8 +333,13 @@ class LiveSearchOverlay {
 
 				/***/
 
-				// Create layout for block of empty results. 
-				function createNullResultLayout() {
+				// Create list layout for block with matching results. 
+				function createResultListLayout() {
+					return resultblock.matchingitemlist.map( (resultitem) => createResultItemLayout(resultitem,resultblock.folderpath) ).join('');
+				}
+
+				// Create list layout for block with no matching results. 
+				function createNullResultListLayout() {
 	
 					// Get plural name of current post type. 
 					let resultnameplural = resultblock['searchlabel'].plural;
@@ -409,10 +372,10 @@ class LiveSearchOverlay {
 			}
 
 			// Create layout for result item. 
-			function createResultItemLayout(resultblock,resultitem) {
+			function createResultItemLayout(resultitem,folderpath) {
 				
 				// Get link url for current result. 
-				let resulturl = getResultUrl(resultblock,resultitem);
+				let resulturl = getResultUrl(resultitem);
 
 				// Get post name for current result. 
 				let resultname = getResultName(resultitem);
@@ -498,10 +461,7 @@ class LiveSearchOverlay {
 				}
 
 				// Get url for given post (using folder name & post item). 
-				function getResultUrl(resultblock,resultitem) {
-
-					// Get folder path for result block. 
-					let folderpath = getFolderPath(resultblock);
+				function getResultUrl(resultitem) {
 
 					// Get post id for result item. 
 					let postid = getPostId(resultitem);
@@ -532,12 +492,6 @@ class LiveSearchOverlay {
 	
 						// Handle unregistered post type. 
 						else console.warn('\t\t\tPost type not recognized:', item.posttype, postid);
-					}
-
-					// Get folder path for given result block. 
-					function getFolderPath(resultblock) {
-						// console.log('Getting folder path for result block:',resultblock)
-						return resultblock.folderpath;
 					}
 				}
 
