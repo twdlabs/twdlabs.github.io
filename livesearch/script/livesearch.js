@@ -31,10 +31,13 @@ class LiveSearchOverlay {
 		this.overlayopen = false;
 
 		// Set initial state of results loading. 
-		this.currentlyLoadingResults = false;
+		this.currentlyloadingresults = false;
 
 		// Initialize results timer. 
-		this.resultsTimer = undefined;
+		this.searchresultstimer = undefined;
+
+		// Temp: Open search overlay. 
+		this.openSearchOverlay()
 	}
 
 
@@ -72,34 +75,34 @@ class LiveSearchOverlay {
 
 	// Handle what's being shown upon typing query. 
 	respondToQueryTyping() {
-		console.log('Typed search query...', this.searchqueryfield.value);
+		console.log('Received search query', this.searchqueryfield.value);
 
 		// Check for unchanged query. 
-		let noQueryChange = (this.searchqueryfield.value == this.prevquery);
+		let queryunchanged = (this.searchqueryfield.value == this.prevquery);
 		// Disregard if query unchanged (i.e. non-character keys). 
-		if(noQueryChange) return;
+		if(queryunchanged) return;
 
 		// Clear previous timer for results (still typing). 
-		clearTimeout(this.resultsTimer);
+		clearTimeout(this.searchresultstimer);
 
 		// Clear previous search results. 
 		this.clearSearchResults();
 
-		// Start doing stuff (if query present). 
+		// Load new search results (if query present). 
 		if(this.searchqueryfield.value) {
 
-			// Show loader icon. 
-			if(!this.currentlyLoadingResults) this.updateWaitState(true);
+			// Turn on results loader. 
+			if(!this.currentlyloadingresults) this.updateResultsLoader(true);
 
 			// Start timer for new search results. 
-			this.resultsTimer = setTimeout(this.displaySearchResults.bind(this), this.dt);
+			this.searchresultstimer = setTimeout(this.displaySearchResults.bind(this), this.dt);
 		}
 
 		// Stop everything (if no query present). 
 		else {
 
-			// Hide loader icon. 
-			this.updateWaitState(false);
+			// Turn off results loader. 
+			this.updateResultsLoader(false);
 		}
 
 		// Save current query for comparison with future query. 
@@ -107,15 +110,21 @@ class LiveSearchOverlay {
 	}
 
 
-	// Set appropriate state for loader. 
-	updateWaitState(nowWaiting) {
+	// Apply newly selected state to results loader. 
+	updateResultsLoader(newstate) {
 
-		// Update state of results loading. 
-		this.currentlyLoadingResults = nowWaiting;
+		// Update loading state for search results. 
+		this.currentlyloadingresults = newstate;
 		
-		// Apply state to loader on page. 
-		if(nowWaiting) this.searchoverlay.classList.add('wait');
-		else this.searchoverlay.classList.remove('wait');
+
+		// Turn on results loader. 
+		if(this.currentlyloadingresults) {
+			this.searchoverlay.classList.add('load');
+		}
+		// Turn off results loader. 
+		else {
+			this.searchoverlay.classList.remove('load');
+		}
 	}
 
 	// Clear previous search results. 
@@ -130,32 +139,31 @@ class LiveSearchOverlay {
 		
 		// Get search query. 
 		let searchquery = (this.searchqueryfield).value;
-		console.log(`Processing search query: \'${searchquery}\'`);
 		
 		// Get list of words in search query. 
 		let searchquerywordlist = searchquery.split(' ');
-		console.log('Search query word list:',searchquerywordlist);
-		// Check for multi-word search query. 
-		let isMultiWordQuery = ( searchquerywordlist.length > 1 );
+		console.log(`Processing search query: \'${searchquery}\'`,searchquerywordlist);
 		
 		// Get from post database: origin of search results matrix. 
 		let originalResultsMatrix = defaultResultSet;
 		console.log('Original results matrix:',originalResultsMatrix);
 		
-		// Send request for matrix of matching search results. 
-		// let finalResultList = getSearchResults(originalResultsMatrix);
-		// console.log('Final result list:',finalResultList);
+		// Generate matching search results. 
+		getMatchingSearchResults();
+		console.log('Matching results matrix:',originalResultsMatrix);
 		
-		// Initialize total number of matching search results. 
-		let matchingresultscount = 0;
+		// Get total number of search results. 
+		let resultscount = countTotalResults('itemlist');
+		console.log('All results:',resultscount);
 		// Get total number of matching search results. 
-		// let matchingresultscount = countTotalResults(finalResultList);
+		let matchingresultscount = countTotalResults('matchingitemlist');
+		console.log('Matching results:',matchingresultscount);
 		
 		// Initialize layout for search results. 
 		let fullsearchresultslayout = '';
 
 		// Add layout for search results body. 
-		fullsearchresultslayout += createResultsBodyLayout(/* finalResultList */);
+		fullsearchresultslayout += createResultsBodyLayout();
 
 		// Add layout for search results header. 
 		fullsearchresultslayout += createResultsHeaderLayout();
@@ -165,24 +173,114 @@ class LiveSearchOverlay {
 		// console.log('Search results layout:',fullsearchresultslayout);
 		// console.log('Search results destination:',this.searchresultsdestination);
 
-		// Hide loader icon. 
-		this.updateWaitState(false);
+		// Turn off results loader. 
+		this.updateResultsLoader(false);
 
 
 		/*****/
 
 
-		// TODO: Get matrix of matching search results. 
-		function getSearchResults(originalResultsMatrix) {
+		// Check match between result item and current search query (case insensitive).
+		function checkForMatch(resultitem) {
+		
+			// Define parameters of current search. 
+			let titleSearchOnly = false;
+			let carefulSearch = true;
 
-			// Start with initial set of results. 
-			return originalResultsMatrix.filter(checkForKeep);
+			// Check for simple match (by title) with search query (case insensitive). 
+			if(titleSearchOnly) {
+				// return ( resultitem.title.toUpperCase() ).includes( searchquery.toUpperCase() );
+				return matchesAllQueryWords(resultitem.title);
+			}
 
-			/****/
+			// Do search only on selected tags. 
+			else if(carefulSearch) {
+			
+				// Old implementation: before data structure update (search tags of searchable post items). 
+				// Get case-insensitive search check components: search tags, search query. 
+				// let runontagstring = ( resultitem['searchtags'] ).toUpperCase();
+				// Check for match within run-on search tag. 
+				// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
 
-			// Check for keeping of current set. 
-			function checkForKeep() {
+				// New implementation: after data structure update (search tags of searchable post items). 
+				// Check for match within list of search tags. 
+				for(let tag of resultitem.searchtags) {
+
+					// Check for match between search query and current search tag. 
+					// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+					let matchOn = matchesAllQueryWords(tag);
+					// Return true if any match found. 
+					if(matchOn) return true;
+				}
+				// Return false if no match found. 
+				return false;
+			}
+
+			// Otherwise, do all-out search on all properties of given item. 
+			else {
+			
+				// Check for match with search query (any property, case insensitive). 
+				for(let key in resultitem) {
+					// console.log(key);
+
+					// Get case-insensitive search check component. 
+					let keyvalue = resultitem[key].toString();
+
+					// Check for match in value of current property. 
+					// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
+					let foundMatch = matchesAllQueryWords(keyvalue);
+
+					// End search upon finding match (proceeding to next post item). 
+					if(foundMatch) return true;
+				}
+				
+				// Return false if match not found. 
+				return false;
+			}
+
+			/***/
+
+			// Check for match with all query words. 
+			function matchesAllQueryWords(tag) {
+
+				// Check for multi-worded search query. 
+				let isMultiWordQuery = ( searchquerywordlist.length > 1 );
+
 				// 
+				if(!isMultiWordQuery) return ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+				
+				// 
+				for(let queryword of searchquerywordlist) {
+
+					// Check if tag contains query word. 
+					let tagContainsQueryWord = ( tag.toUpperCase() ).includes( queryword.toUpperCase() );
+					if( !tagContainsQueryWord ) return false;
+				}
+
+				// Passed all tests (contins all words in search query). 
+				return true;
+			}
+
+			// TODO: Check for match with any query word. 
+			function matchesAnyQueryWord(tag) {
+
+				// 
+			}
+		}
+
+		// TODO: Get matrix of matching search results. 
+		function getMatchingSearchResults() {
+	
+			// TODO: Define filter for matching items. 
+			let matchfilter = checkForMatch;
+			// matchfilter = () => Math.round( Math.random() );
+	
+			// Go thru each result block. 
+			for(let currentresultblock of originalResultsMatrix) {
+				console.log(`\tSearching ${ currentresultblock['searchlabel'].plural }...`/* ,currentresultblock */);
+
+				// Generate list of matching items for current result block. 
+				currentresultblock.matchingitemlist = currentresultblock.itemlist.filter(matchfilter);
 			}
 		}
 
@@ -194,19 +292,11 @@ class LiveSearchOverlay {
 
 			// Open result body. 
 			finalResultBody += `
-			<!-- resultbody -->
-			<div class="resultbody">`;
+			<!-- resultsbody -->
+			<div class="resultsbody">`;
 	
-			// Go thru each result block to find matching result sets. 
-			for(let key in originalResultsMatrix) {
-
-				// Get current result block. 
-				let currentresultblock = originalResultsMatrix[key];
-
-				// Get search labels for current result block. 
-				let searchlabels = currentresultblock['searchlabel'];
-				console.log(`\tSearching ${ searchlabels.plural }...`);
-				// console.log('Result set:',key,currentresultblock);
+			// Go thru each result block's matching results. 
+			for(let currentresultblock of originalResultsMatrix) {
 	
 				// Initialize number of matching items in current result block. 
 				let currentresultblockmatchcount = 0;
@@ -214,23 +304,20 @@ class LiveSearchOverlay {
 				// Initialize layout for list of matching items in current result block. 
 				let currentresultblockitemslayout = '';
 	
-				// Accumulate matching items for current set. 
+				// Accumulate matching items for current result block. 
 				for(let currentresultitem of currentresultblock.itemlist) {
 					// console.log('Current result item',currentresultitem);
 					
 					// Check for match with search query. 
 					let currentItemMatchesQuery = checkForMatch(currentresultitem);
 					
-					// Include item in results if match for query. 
+					// Include item if matches search query. 
 					if(currentItemMatchesQuery) {
 						
-						// Increment number of matching results in current set. 
+						// Increment number of matching results in current result block. 
 						currentresultblockmatchcount += 1;
-						
-						// Increment total number of matching results. 
-						matchingresultscount += 1;
 	
-						// Add matching result item to current set of search results. 
+						// Add matching result item to current result block of search results. 
 						currentresultblockitemslayout += createResultItemLayout( currentresultblock, currentresultitem );
 					}
 				}
@@ -238,117 +325,30 @@ class LiveSearchOverlay {
 				// Add current result block to layout for results body. 
 				finalResultBody += createResultBlockLayout(currentresultblock,currentresultblockmatchcount,currentresultblockitemslayout);
 	
-				// Log number of results found for current post type. 
-				console.log( `\t\t${currentresultblockmatchcount} ${searchlabels.singular} results found` );
-
-				/***/
+				// Log number of results found for current result block. 
+				console.log( `\t\t${currentresultblockmatchcount} result(s) found` );
 			}
 	
 			// Close result body. 
 			finalResultBody += 
 			`</div>
-			<!-- /resultbody -->`;
+			<!-- /resultsbody -->`;
 
 			// Return final result body. 
 			return finalResultBody;
 
 			/****/
 
-			// Check match between result item and current search query (case insensitive).
-			function checkForMatch(resultitem) {
-			
-				// Define parameters of current search. 
-				let titleSearchOnly = false;
-				let carefulSearch = true;
-
-				// Check for simple match (by title) with search query (case insensitive). 
-				if(titleSearchOnly) {
-					// return ( resultitem.title.toUpperCase() ).includes( searchquery.toUpperCase() );
-					return matchesAllQueryWords(resultitem.title);
-				}
-
-				// Do search only on selected tags. 
-				else if(carefulSearch) {
-				
-					// Old implementation: before data structure update (search tags of searchable post items). 
-					// Get case-insensitive search check components: search tags, search query. 
-					// let runontagstring = ( resultitem['searchtags'] ).toUpperCase();
-					// Check for match within run-on search tag. 
-					// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
-
-					// New implementation: after data structure update (search tags of searchable post items). 
-					// Check for match within list of search tags. 
-					for(let tag of resultitem.searchtags) {
-
-						// Check for match between search query and current search tag. 
-						// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
-						let matchOn = matchesAllQueryWords(tag);
-						// Return true if any match found. 
-						if(matchOn) return true;
-					}
-					// Return false if no match found. 
-					return false;
-				}
-
-				// Otherwise, do all-out search on all properties of given item. 
-				else {
-				
-					// Check for match with search query (any property, case insensitive). 
-					for(let key in resultitem) {
-						// console.log(key);
-	
-						// Get case-insensitive search check component. 
-						let keyvalue = resultitem[key].toString();
-
-						// Check for match in value of current property. 
-						// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
-						let foundMatch = matchesAllQueryWords(keyvalue);
-	
-						// End search upon finding match (proceeding to next post item). 
-						if(foundMatch) return true;
-					}
-					
-					// Return false if match not found. 
-					return false;
-				}
-
-				/***/
-
-				// Check for match with all query words. 
-				function matchesAllQueryWords(tag) {
-
-					// 
-					if(!isMultiWordQuery) return ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
-					
-					// 
-					for(let queryword of searchquerywordlist) {
-
-						// Check if tag contains query word. 
-						let tagContainsQueryWord = ( tag.toUpperCase() ).includes( queryword.toUpperCase() );
-						if( !tagContainsQueryWord ) return false;
-					}
-
-					// Passed all tests (contins all words in search query). 
-					return true;
-				}
-			}
-
 			// Create layout for given result block. 
 			function createResultBlockLayout(resultblock,resultblockmatchcount,resultblockitemslayout) {
-	
-				// Get archive url. 
-				let archiveUrl = 'javascript:void(0)';
-
-				// Get plural name of current post type. 
-				let searchlabel = resultblock['searchlabel'].plural;
 
 				// Compile layout for result block. 
 				let resultblocklayout = `
-				<!-- resultset -->
-				<div class="resultset">
+				<!-- resultblock -->
+				<div class="resultblock">
 
-					<!-- resulthead -->
-					<h2 class="resulthead ${''}">
+					<!-- blockhead -->
+					<h2 class="blockhead ${''}">
 						
 						<!-- caption -->
 						<span class="caption">${ resultblock.blockname }</span>
@@ -359,35 +359,48 @@ class LiveSearchOverlay {
 						<!-- /count -->
 
 					</h2>
-					<!-- /resulthead -->
+					<!-- /blockhead -->
 			
 					<!-- resultlist -->
 					<ul class="resultlist ${ (resultblock.visual) ? ('visual') : ('') }">
-						${ (resultblockmatchcount>0) ? resultblockitemslayout : createEmptyResultListLayout() }
+						${ (resultblockmatchcount>0) ? resultblockitemslayout : createNullResultLayout() }
 					</ul>
 					<!-- /resultlist -->
 	
 				</div>
-				<!-- /resultset -->`;
+				<!-- /resultblock -->`;
 
 				// Return layout for current result block. 
 				return resultblocklayout;
 
 				/***/
 
-				// Create layout for empty result block (message and archive page link). 
-				function createEmptyResultListLayout() {
-					// 
+				// Create layout for block of empty results. 
+				function createNullResultLayout() {
+	
+					// Get plural name of current post type. 
+					let resultnameplural = resultblock['searchlabel'].plural;
+
+					// Get caption for null label. 
+					let nullresultcaption = `No ${resultnameplural} match that search.`;
+
+					// Get caption for archive link. 
+					let archivelinkcaption = `View all ${resultnameplural}`;
+	
+					// Get archive url for post type of given result block. 
+					let archiveurl = resultblock.folderpath;
+
+					// Compile layout. 
 					return `
 					<!-- resultitem -->
 					<li class="resultitem">
 	
 						<!-- caption -->
-						<span class="caption">No ${searchlabel} match that search.</span>
+						<span class="caption">${nullresultcaption}</span>
 						<!-- /caption -->
 						
 						<!-- archivelink -->
-						<a class="archivelink" href="${archiveUrl}">View all ${searchlabel}</a>
+						<a class="archivelink" href="${ archiveurl ? getRelativeUrl(archiveurl) : 'javascript:void(0)'}" target="_blank">${archivelinkcaption}</a>
 						<!-- /archivelink -->
 	
 					</li>
@@ -403,8 +416,6 @@ class LiveSearchOverlay {
 
 				// Get post name for current result. 
 				let resultname = getResultName(resultitem);
-
-				// TODO: Create functions for these 3 post types (blog, reg, visual). 
 
 				// Return layout for blog post. 
 				if(resultitem.posttype=='post') return createBlogPostResultItemLayout();
@@ -494,7 +505,7 @@ class LiveSearchOverlay {
 
 					// Get post id for result item. 
 					let postid = getPostId(resultitem);
-					console.log('\t\tPost id(item):',postid);
+					// console.log('\t\t\tPost id(item):',postid);
 
 					// Return general url for given post. 
 					if(folderpath && postid) {
@@ -586,8 +597,8 @@ class LiveSearchOverlay {
 		// Create layout for search results header. 
 		function createResultsHeaderLayout() {
 			return `
-			<!-- resulthead -->
-			<h1 class="resulthead${ (matchingresultscount>0) ? '' : ' none' }">
+			<!-- resultshead -->
+			<h1 class="resultshead${ (matchingresultscount>0) ? '' : ' none' }">
 	
 				<!-- searchquery -->
 				<span class="searchquery">${searchquery}</span>
@@ -598,26 +609,23 @@ class LiveSearchOverlay {
 				<!-- /resultcount -->
 	
 			</h1>
-			<!-- /resulthead -->`;
+			<!-- /resultshead -->`;
 		}
 
 		// Count total number of result items in result matrix. 
-		function countTotalResults(resultmatrix) {
+		function countTotalResults(blockkey) {
 
 			// Initialize total number of result items. 
 			let totalresultcount = 0;
 
 			// Go thru each block in result matrix. 
-			for(let resultblock of resultmatrix) {
+			for(let resultblock of originalResultsMatrix) {
 
 				// Increment total number of result items. 
-				totalresultcount += resultblock.itemlist.length;
+				totalresultcount += resultblock[blockkey].length;
 
 				// // Go thru each item in result list of result block. 
-				// for(let item of resultblock.itemlist) {
-
-				// 	// Increment total number of result items. 
-				// 	totalresultcount += 1;
+				// for(let item of resultblockitemlist) {
 				// }
 			}
 

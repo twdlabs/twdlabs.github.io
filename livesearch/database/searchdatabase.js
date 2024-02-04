@@ -26,6 +26,7 @@ const defaultResultSet = [
 			singular:'letter',
 		},
 		itemlist: alphabetData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
@@ -36,6 +37,7 @@ const defaultResultSet = [
 			singular:'president',
 		},
 		itemlist: presidentData,
+		matchingitemlist: [],
 		visual:true,
 	},
 	{
@@ -46,6 +48,7 @@ const defaultResultSet = [
 			singular:'university',
 		},
 		itemlist: universityData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
@@ -56,6 +59,7 @@ const defaultResultSet = [
 			singular:'social platform',
 		},
 		itemlist: socialData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
@@ -66,16 +70,18 @@ const defaultResultSet = [
 			singular:'month',
 		},
 		itemlist: monthData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
-		blockname:'Astrological Zodiac Signs',
+		blockname:'Astrological Zodiac',
 		folderpath:'./zodiacsigns',
 		searchlabel:{
 			plural:'zodiac signs',
 			singular:'zodiac sign',
 		},
 		itemlist: zodiacData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
@@ -86,6 +92,7 @@ const defaultResultSet = [
 			singular:'number',
 		},
 		itemlist: numberData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
@@ -96,6 +103,7 @@ const defaultResultSet = [
 			singular:'planet',
 		},
 		itemlist: planetData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
@@ -106,6 +114,7 @@ const defaultResultSet = [
 			singular:'day',
 		},
 		itemlist: dayData,
+		matchingitemlist: [],
 		visual:false,
 	},
 	{
@@ -116,6 +125,7 @@ const defaultResultSet = [
 			singular:'season',
 		},
 		itemlist: seasonData,
+		matchingitemlist: [],
 		visual:false,
 	},
 
@@ -140,6 +150,7 @@ const defaultResultSet = [
 	// 			content:'Hello there world'
 	// 		},
 	// 	],
+	// 	matchingitemlist: [],
 	// 	visual:false,
 	// },
 	

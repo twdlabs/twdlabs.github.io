@@ -37,14 +37,17 @@ div#container div#searchoverlay {opacity:0; visibility:hidden; transform:scale(1
 div#container div#searchoverlay.active {opacity:.988; visibility:visible; transform:none;}
 
 div#container div#searchoverlay {display:flex; flex-direction:column; align-items:stretch;}
+/* div#container div#searchoverlay section {} */
 div#container div#searchoverlay section.head {flex-grow:0; flex-shrink:0;}
 div#container div#searchoverlay section.body {flex-grow:1; flex-shrink:1; position:relative; overflow-x:hidden; overflow-y:auto;}
+div#container div#searchoverlay section div.grid {max-width:var(--pagewidth); margin:auto;}
+div#container div#searchoverlay section.head div.grid {max-width:calc(var(--pagewidth)*.6);}
+div#container div#searchoverlay section.body div.grid {padding:4rem;}
 
 
 /* Query Section */
 
 div#container div#searchoverlay section.head {background-color:var(--headbackcolor); color:var(--headforecolor); font-size:1.25em; border-bottom:1px solid #0002;}
-div#container div#searchoverlay section.head div.grid {max-width:calc(var(--pagewidth)*.6); margin:auto;}
 div#container div#searchoverlay section.head div.querybox {position:relative;}
 div#container div#searchoverlay section.head div.querybox div.closebtn,
 div#container div#searchoverlay section.head div.querybox label.searchlabel {position:absolute; top:50%; transform:translateY(-50%); cursor:pointer; user-select:none;}
@@ -58,50 +61,51 @@ div#container div#searchoverlay section.head div.querybox input#searchquery {bac
 /* Results Section */
 
 div#container div#searchoverlay section.body {background-color:var(--bodybackcolor); /* font-size:1em; */}
-div#container div#searchoverlay section.body div.grid {max-width:var(--pagewidth); padding:4rem; margin:auto;}
 
 div#container div#searchoverlay section.body:before {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:2.5rem; height:2.5rem; border-radius:50%;}
 div#container div#searchoverlay section.body:before {background-color:transparent; content:''; border:.5rem solid var(--loadspinnercolor); border-top-color:transparent;}
 div#container div#searchoverlay section.body:before {visibility:hidden; opacity:0; transition:.15s;}
-div#container div#searchoverlay.wait section.body:before {visibility:visible; opacity:1; animation:spinning 1s linear infinite;}
+div#container div#searchoverlay.load section.body:before {visibility:visible; opacity:1; animation:loadingspin 1s linear infinite;}
 
 div#container div#searchoverlay section.body div#resultsbox {background-color:var(--resultsbackcolor); color:white; width:100%; min-height:100%; overflow:visible; padding:2rem;}
 div#container div#searchoverlay section.body div#resultsbox {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch;}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead {font-size:1.25em;}
-/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.resultcount {} */
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.resultcount::after {content:' results found';}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead.none span.resultcount {visibility:hidden;}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery {word-wrap:anywhere;}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery:before {content:'Here are your search results for \'';}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead span.searchquery::after {content:'\'.';}
-div#container div#searchoverlay section.body div#resultsbox h1.resulthead.none span.searchquery:before {content:'No matches found for \'';}
-/* div#container div#searchoverlay section.body div#resultsbox div.resultbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;} */
-div#container div#searchoverlay section.body div#resultsbox div.resultbody {display:grid; grid-template-columns:repeat( var(--gridcolumns) ,1fr); --gridcolumns:4;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 2rem 0 0; /* text-align:center; */}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead {color:var(--resultsetheadforecolor); font-size:1.125em; padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead {display:flex; flex-direction:row; justify-content:space-between;}
-/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead span.caption {} */
-/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead span.count */
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist.visual {display:flex; flex-direction:row; flex-wrap:wrap;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem {margin-top:.5rem;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist.visual li.resultitem {margin:0 .375rem .375rem 0;}
-/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem span.caption {} */
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.archivelink,
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.authorlink,
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.resultlink {color:var(--resultsetbodyforecolor);}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist li.resultitem a.archivelink {display:block; text-decoration:underline;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist.visual li.resultitem a.resultlink {position:relative; display:block; height:8rem; width:6rem;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist.visual li.resultitem a.resultlink img.photo {object-fit:cover; height:100%; width:100%;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist.visual li.resultitem a.resultlink span.caption {position:absolute; right:0; bottom:0; left:0; width:100%; padding:.25rem 0;}
-div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset ul.resultlist.visual li.resultitem a.resultlink span.caption {background-color:var(--resultsetbodyforecolor); color:white; font-size:.625rem; text-align:center; white-space:nowrap;}
+
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;}
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead {font-size:1.25em; cursor:default; user-select:none;}
+/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.resultcount {} */
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.resultcount::after {content:' result(s) found';}
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead.none span.resultcount {visibility:hidden;}
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.searchquery {word-wrap:anywhere;}
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.searchquery:before {content:'Here are your search results for \'';}
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.searchquery::after {content:'\'';}
+div#container div#searchoverlay section.body div#resultsbox h1.resultshead.none span.searchquery:before {content:'No matches found for \'';}
+
+/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;} */
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody {display:grid; grid-template-columns:repeat( var(--gridcolumns) ,1fr); --gridcolumns:4;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 2rem 0 0; /* text-align:center; */}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {color:var(--resultsetheadforecolor); font-size:1.125em; padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {display:flex; flex-direction:row; justify-content:space-between;}
+/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.caption {} */
+/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.count */
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual {display:flex; flex-direction:row; flex-wrap:wrap;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem {margin-top:.5rem;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem {margin:0 .375rem .375rem 0;}
+/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem span.caption {} */
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.archivelink,
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.authorlink,
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.resultlink {color:var(--resultsetbodyforecolor);}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.archivelink {display:block; text-decoration:underline;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink {position:relative; display:block; height:8rem; width:6rem;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink img.photo {object-fit:cover; height:100%; width:100%;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink span.caption {position:absolute; right:0; bottom:0; left:0; width:100%; padding:.25rem 0;}
+div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink span.caption {background-color:var(--resultsetbodyforecolor); color:white; font-size:.625rem; text-align:center; white-space:nowrap;}
 
 
 
 
 
-@keyframes spinning {
+@keyframes loadingspin {
 	0% {transform:rotate(0deg);}
 	100% {transform:rotate(180deg);}
 	100% {transform:rotate(360deg);}
@@ -123,8 +127,8 @@ div#container div#searchoverlay section.body div#resultsbox div.resultbody div.r
 	/* Results Section */
 	/* div#container div#searchoverlay section.body {} */
 	/* div#container div#searchoverlay section.body div#resultsbox {} */
-	/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead {} */
-	div#container div#searchoverlay section.body div#resultsbox div.resultbody {--gridcolumns:3;}
+	/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead {} */
+	div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:3;}
 }
 
 
@@ -141,10 +145,10 @@ div#container div#searchoverlay section.body div#resultsbox div.resultbody div.r
 	/* div#container div#searchoverlay section.body {} */
 	div#container div#searchoverlay section.body div.grid {padding:2rem;}
 	/* div#container div#searchoverlay section.body div#resultsbox {} */
-	/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead {} */
-	div#container div#searchoverlay section.body div#resultsbox div.resultbody {--gridcolumns:2;}
-	div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset {margin:1rem 1rem 0 0;}
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead {} */
+	/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead {} */
+	div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:2;}
+	div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock {margin:1rem 1rem 0 0;}
+	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {} */
 }
 
 
@@ -159,7 +163,7 @@ div#container div#searchoverlay section.body div#resultsbox div.resultbody div.r
 	
 	/* Results Section */
 	/* div#container div#searchoverlay section.body {} */
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultbody {--gridcolumns:1;} */
+	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:1;} */
 }
 
 
@@ -175,12 +179,12 @@ div#container div#searchoverlay section.body div#resultsbox div.resultbody div.r
 	/* Results Section */
 	/* div#container div#searchoverlay section.body {} */
 	div#container div#searchoverlay section.body div.grid {padding:1rem;}
-	/* div#container div#searchoverlay section.body div#resultsbox h1.resulthead {} */
-	div#container div#searchoverlay section.body div#resultsbox div.resultbody {--gridcolumns:1;}
-	div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset {margin:0; margin-top:1.5rem;}
-	div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead {font-size:1.125rem; /* display:block; */}
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead span.count:before {content:' (';} */
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultbody div.resultset h2.resulthead span.count::after {content:')';} */
+	/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead {} */
+	div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:1;}
+	div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock {margin:0; margin-top:1.5rem;}
+	div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {font-size:1.125rem; /* display:block; */}
+	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.count:before {content:' (';} */
+	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.count::after {content:')';} */
 }
 
 
