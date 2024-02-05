@@ -923,6 +923,6 @@ function activateLiveSearch() {
 	const openbtn = document.querySelector('div#container header#header nav.navmenu.b ul.navlist li.navitem a.navlink.search');
 
 	// Create new Search object. 
-	/* const s =  */new SearchOverlay(openbtn,closebtn,searchOverlay,searchField,resultsBox);
+	/* const lso =  */new LiveSearchOverlay(openbtn,closebtn,searchOverlay,searchField,resultsBox);
 }
 
