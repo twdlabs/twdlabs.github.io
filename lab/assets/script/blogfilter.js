@@ -1,19 +1,6 @@
 
 
 
-// Get input field for search query. 
-const searchqueryfield = document.querySelector('div#container section.blog div.grid div.head div.modpanel input#filtersearchquery');
-// console.log('searchqueryfield:',searchqueryfield);
-
-// Get clear button for search query. 
-const searchclearbtn = document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn');
-// console.log('searchclearbtn:',searchclearbtn);
-
-// Get label for empty search results. 
-const emptysearchlabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel');
-// console.log('emptysearchlabel:',emptysearchlabel);
-
-
 // Get componenets of filter panel. 
 const filterpanel = {
 
@@ -38,7 +25,7 @@ const filterpanel = {
 
 	// Get destination for list of applied filters. 
 	taglistdestination: document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist'),
-}
+};
 // console.log('Filter panel:',filterpanel);
 
 
@@ -55,20 +42,23 @@ activateBlogFilters();
 // Activate blog post filtering. 
 function activateBlogFilters() {
 
-	// Activate blog post search filter (if search query field exists). 
-	if(searchqueryfield) activateBlogSearch();
+	// Load post filter groups into filter panel. 
+	loadFilterGroups();
 
-	// Load post filter groups into filter panel (if panel exists). 
-	if(filterpanel.box) loadFilterGroups();
+	// Activate blog post search filter (if search query field exists). 
+	activateBlogSearch();
 
 	/****/
 
 	// Activate blog post search filter. 
 	function activateBlogSearch() {
 
+		// Check if search panel query field exists. 
+		if(!searchpanel.queryfield) return;
+
 		// Activate input field to search blog posts. 
-		searchqueryfield.addEventListener('input',searchBlogPosts);
-		searchclearbtn.addEventListener('click',clearSearchQuery);
+		searchpanel.queryfield.addEventListener('input',searchBlogPosts);
+		searchpanel.clearbtn.addEventListener('click',clearSearchQuery);
 
 		// Clear any previous search query. 
 		clearSearchQuery();
@@ -77,6 +67,24 @@ function activateBlogFilters() {
 
 		// Show blog posts that match given search query. 
 		function searchBlogPosts() {
+
+			// TODO: Do hard filter. 
+			if(dohardfilter=false) {
+
+				// Get search filter criteria. 
+				let selectedfilteritems = [];
+
+				// Load matching posts for given search filter criteria. 
+				loadBlog(selectedfilteritems);
+
+				// Load new post filter groups into filter panel. 
+				loadFilterGroups();
+
+				// 
+				return;
+			}
+
+			// Do soft filter. 
 
 			// Access loaded blog post cards. 
 			let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
@@ -90,7 +98,7 @@ function activateBlogFilters() {
 			// Set number of matching posts. 
 			// let numMatchingPosts = matchingPosts.length;
 		
-			// Go thru all blog posts. 
+			// Go thru each blog post. 
 			for(let postcard of blogpostcards) {
 
 				// Get project id for given post. 
@@ -103,28 +111,21 @@ function activateBlogFilters() {
 				if(matchFound) numMatchingPosts++;
 
 				// Update visibility state of post based on match. 
-				if(dohardfilter=false) loadBlog(xyz);
-				else updatePostState(postcard, matchFound);
+				updatePostState(postcard, matchFound);
 			}
 
 			// Show label if no search results found. 
-			if(numMatchingPosts==0) setEmptySearchResult(true);
+			if(numMatchingPosts==0) setEmptyResult(true);
 			// Hide label if any search results found. 
-			else setEmptySearchResult(false);
+			else setEmptyResult(false);
 
 			/**/
-
-			// Set state of label for empty search result. 
-			function setEmptySearchResult(state) {
-				if(state) emptysearchlabel.classList.add('on');
-				else emptysearchlabel.classList.remove('on');
-			}
 
 			// Check for matching post. 
 			function checkForMatch(projectid) {
 
 				// Get search query of post filter. 
-				let filtersearchquery = searchqueryfield.value.toUpperCase();
+				let filtersearchquery = searchpanel.queryfield.value.toUpperCase();
 				// Get list of words in search query. 
 				let searchquerywords = filtersearchquery.split(' ');
 				// console.log('Searching posts...', filtersearchquery, searchquerywords);
@@ -171,7 +172,7 @@ function activateBlogFilters() {
 		function clearSearchQuery() {
 
 			// Clear search query. 
-			searchqueryfield.value = '';
+			searchpanel.queryfield.value = '';
 
 			// Show all blog posts. 
 			searchBlogPosts();
@@ -180,7 +181,10 @@ function activateBlogFilters() {
 
 	// Load post filter groups into filter panel. 
 	function loadFilterGroups() {
-		// console.log('Loading list of post filter groups');
+		console.log('Loading list of post filter groups');
+
+		// Check if filter panel exists. 
+		if(!filterpanel.box) return;
 	
 		// Initialize layout for filter groups. 
 		let filtergroupslayout = '';

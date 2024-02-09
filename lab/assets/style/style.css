@@ -60,6 +60,9 @@ body {
 	--themecolor:var(--green);
 	--tpthemecolor:var(--tpgreen);
 	--drkthemecolor:var(--drkgreen);
+
+	/* Search Theme Color */
+	--searchthemecolor:var(--themecolor);
 }
 body.b {
 
@@ -197,39 +200,43 @@ div#container header.navbar div.bin div.drawer div.livesearch div.searchresults.
 div#container header.navbar div.bin div.navtoggler {display:none; cursor:pointer;}
 div#container header.navbar div.bin div.navtoggler svg.icon {display:block; font-size:1.875rem;}
 
-/* Navbar: Theme Bar */
-div#container header.navbar div.bin div.themebar {display:flex; flex-direction:row; justify-content:flex-end; align-items:center; padding-left:1rem; border-left:1px solid #FFF4; margin-left:2rem;}
+/* Navbar: Corner Panel */
+div#container header.navbar div.bin div.cornerpanel {display:flex; flex-direction:row; justify-content:flex-end; align-items:center; padding-left:1rem; border-left:1px solid #FFF4; margin-left:2rem;}
+div#container header.navbar div.bin div.cornerpanel div.panelitem {font-size:1.125rem; height:100%; margin-left:.875rem;}
+div#container header.navbar div.bin div.cornerpanel div.panelitem div.togglebtn {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
+div#container header.navbar div.bin div.cornerpanel div.panelitem div.togglebtn svg.icon.arrowdown {font-size:.625em; margin-left:.25rem;}
+/* div#container header.navbar div.bin div.cornerpanel div.panelitem div.togglebtn svg.icon.selection {} */
+div#container header.navbar div.bin div.cornerpanel div.panelitem div.togglebtn span.color.selection {background-color:transparent; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.125rem solid white;}
 /* Navbar: Theme Selector */
-div#container header.navbar div.bin div.themebar div.themeswitcher {position:relative; font-size:1.125rem; height:100%; margin-left:.875rem;}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist {display:none; position:absolute; right:0; top:100%;}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist {background-color:var(--backcolor); list-style:none; padding:0; padding:.125rem .25rem; border-radius:.5rem; margin:0; margin-top:.5rem; box-shadow:var(--boxshadow);}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist.open {display:block;}
-/* div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem {} */
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn {color:inherit; color:var(--forecolor); font-size:.875rem; height:2.375em; width:8em; text-decoration:none;}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; padding:0 1rem; border-radius:.375rem; margin:.125rem 0;}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn:hover {background-color:var(--ltglasshovercolor);}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--forecolor); color:var(--backcolor);}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--themecolor); color:white; font-weight:bold;}
-div#container header.navbar div.bin div.themebar div.themeswitcher ul.themelist li.themeitem a.themebtn span.caption {margin-left:.75rem;}
-div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn {display:flex; flex-direction:row; align-items:center; cursor:pointer; user-select:none;}
-div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn svg.icon.arrowdown {font-size:.625em; margin-left:.25rem;}
-/* div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn svg.icon.selection {} */
-div#container header.navbar div.bin div.themebar div.themeswitcher div.togglebtn span.color.selection {background-color:transparent; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.125rem solid white;}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher {position:relative;}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist {display:none; position:absolute; right:0; top:100%;}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist {background-color:var(--backcolor); list-style:none; padding:0; padding:.125rem .25rem; border-radius:.5rem; margin:0; margin-top:.5rem; box-shadow:var(--boxshadow);}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist.open {display:block;}
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist li.themeitem {} */
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist li.themeitem a.themebtn {color:inherit; color:var(--forecolor); font-size:.875rem; height:2.375em; width:8em; text-decoration:none;}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist li.themeitem a.themebtn {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; padding:0 1rem; border-radius:.375rem; margin:.125rem 0;}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist li.themeitem a.themebtn:hover {background-color:var(--ltglasshovercolor);}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--forecolor); color:var(--backcolor);}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist li.themeitem a.themebtn.active {background-color:var(--themecolor); color:white; font-weight:bold;}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher ul.themelist li.themeitem a.themebtn span.caption {margin-left:.75rem;}
 /* Navbar: Color Theme Switcher */
-div#container header.navbar div.bin div.themebar div.themeswitcher.color {--dotsize:1.375rem; }
-/* div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist {} */
-/* div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem {} */
-/* div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn {} */
-div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color {background-color:black; flex-shrink:0; height:var(--dotsize); width:var(--dotsize); border-radius:50%; border:.125rem solid white;}
-div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.b {background-color:var(--royalblue);}
-div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.g {background-color:var(--green);}
-div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.o {background-color:var(--orange);}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color {--dotsize:1.375rem; --dotsize:1.125rem;}
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist {} */
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem {} */
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem a.themebtn {} */
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color {background-color:black; flex-shrink:0; height:var(--dotsize); width:var(--dotsize); border-radius:50%;}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.b {background-color:var(--royalblue);}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.g {background-color:var(--green);}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem a.themebtn span.color.o {background-color:var(--orange);}
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem a.themebtn.active span.color {border:.125rem solid white;}
 /* Navbar: Light/Dark Theme Switcher */
-/* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk {} */
-/* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist {} */
-/* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem {} */
-/* div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn {} */
-div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn svg.icon {flex-shrink:0;}
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk {} */
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist {} */
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist li.themeitem {} */
+/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn {} */
+div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn svg.icon {flex-shrink:0;}
+/* Navbar: Live Search Trigger Button */
+div#container header.navbar div.bin div.cornerpanel div.livesearchbtn {}
 
 
 
@@ -325,6 +332,12 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 
 
+/* Search Overlay */
+
+div#container div#searchoverlay {}
+
+
+
 
 
 /* Large Tablet Screen */
@@ -349,8 +362,8 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Bar */
-	/* div#container header.navbar div.bin div.themebar {} */
-	/* div#container header.navbar div.bin div.themebar div.themeswitcher {} */
+	/* div#container header.navbar div.bin div.cornerpanel {} */
+	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
 
 
 	/* General Section */
@@ -400,8 +413,8 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Bar */
-	/* div#container header.navbar div.bin div.themebar {} */
-	/* div#container header.navbar div.bin div.themebar div.themeswitcher {} */
+	/* div#container header.navbar div.bin div.cornerpanel {} */
+	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
 
 
 	/* General Section */
@@ -478,8 +491,8 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container header.navbar div.bin div.navtoggler {display:block;}
 	
 	/* Navbar: Theme Bar */
-	div#container header.navbar div.bin div.themebar {padding-left:0; border-left:0 none; margin-left:0;}
-	/* div#container header.navbar div.bin div.themebar div.themeswitcher {} */
+	div#container header.navbar div.bin div.cornerpanel {padding-left:0; border-left:0 none; margin-left:0;}
+	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
 
 
 	/* General Section */
@@ -533,8 +546,8 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Bar */
-	/* div#container header.navbar div.bin div.themebar {} */
-	/* div#container header.navbar div.bin div.themebar div.themeswitcher {} */
+	/* div#container header.navbar div.bin div.cornerpanel {} */
+	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
 
 
 	/* General Section */
@@ -585,8 +598,8 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Bar */
-	/* div#container header.navbar div.bin div.themebar {} */
-	/* div#container header.navbar div.bin div.themebar div.themeswitcher {} */
+	/* div#container header.navbar div.bin div.cornerpanel {} */
+	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
 
 
 	/* General Section */
@@ -641,8 +654,8 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.navtoggler {} */
 	
 	/* Navbar: Theme Bar */
-	/* div#container header.navbar div.bin div.themebar {} */
-	/* div#container header.navbar div.bin div.themebar div.themeswitcher {} */
+	/* div#container header.navbar div.bin div.cornerpanel {} */
+	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
 
 
 	/* General Section */

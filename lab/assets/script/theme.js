@@ -5,16 +5,16 @@
 const ltdrkswitcher = {
 
 	// Get toggle button for theme selector list. 
-	togglerbtn:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk div.togglebtn'),
+	togglerbtn:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk div.togglebtn'),
 
 	// Get icon of toggle button for theme selector list. 
-	togglericon:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk div.togglebtn svg.icon.selection'),
+	togglericon:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk div.togglebtn svg.icon.selection'),
 
 	// Get theme selector list. 
-	themeselectorlist:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist'),
+	themeselectorlist:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist'),
 
 	// Get all theme selector buttons. 
-	themeselectorbtns:document.querySelectorAll('div#container header.navbar div.bin div.themebar div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn'),
+	themeselectorbtns:document.querySelectorAll('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn'),
 
 	// Initialize timer for periodic theme check. 
 	themechecktimer:null,
@@ -24,16 +24,16 @@ const ltdrkswitcher = {
 const colorswitcher = {
 
 	// Get toggle button for theme selector list. 
-	togglerbtn:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.color div.togglebtn'),
+	togglerbtn:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color div.togglebtn'),
 
 	// Get icon of toggle button for theme selector list. 
-	togglericon:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.color div.togglebtn span.color.selection'),
+	togglericon:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color div.togglebtn span.color.selection'),
 
 	// Get theme selector list. 
-	themeselectorlist:document.querySelector('div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist'),
+	themeselectorlist:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist'),
 
 	// Get all theme selector buttons. 
-	themeselectorbtns:document.querySelectorAll('div#container header.navbar div.bin div.themebar div.themeswitcher.color ul.themelist li.themeitem a.themebtn'),
+	themeselectorbtns:document.querySelectorAll('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.themelist li.themeitem a.themebtn'),
 };
 
 

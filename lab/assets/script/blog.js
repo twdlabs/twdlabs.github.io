@@ -35,6 +35,21 @@ const collection = {
 // console.log('Collection section:',collection);
 
 
+// Get componenets of search panel. 
+const searchpanel = {
+
+	// Get input field for search query. 
+	queryfield: document.querySelector('div#container section.blog div.grid div.head div.modpanel input#filtersearchquery'),
+
+	// Get clear button for search panel. 
+	clearbtn: document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn'),
+
+	// Get label for empty results. 
+	emptylabel: document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel'),
+};
+// console.log('Search panel:',searchpanel);
+
+
 /*****/
 
 
@@ -434,12 +449,8 @@ function loadBlog(selectedfilteritems) {
 		loadPosts(archive,archiveProjects, false, false);
 
 		// 
-		if(typeof emptysearchlabel != 'undefined') {
-			// 
-			if(archiveProjects.length) emptysearchlabel.classList.remove('on');
-			// 
-			else emptysearchlabel.classList.add('on');
-		}
+		if(archiveProjects.length) setEmptyResult(false);
+		else setEmptyResult(true);
 	
 		/***/
 
@@ -607,6 +618,18 @@ function loadBlog(selectedfilteritems) {
 		// Return result. 
 		return result;
 	}
+}
+
+// Set state of label for empty results. 
+function setEmptyResult(state) {
+
+	// Disregard if empty label doesn't exist. 
+	if(typeof searchpanel.emptylabel == 'undefined') return;
+
+	// Label empty block. 
+	if(state) searchpanel.emptylabel.classList.add('on');
+	// Un-label non-empty block. 
+	else searchpanel.emptylabel.classList.remove('on');
 }
 
 // Create preview panel for blog post card. 

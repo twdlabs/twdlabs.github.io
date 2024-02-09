@@ -22,6 +22,8 @@
 		<link href="./assets/style/blocks.css" rel="stylesheet" type="text/css"/>
 		<!-- Home Page Stylesheet -->
 		<link href="./assets/style/home.css" rel="stylesheet" type="text/css"/>
+		<!-- Home Page Stylesheet -->
+		<link href="./../livesearch/style/livesearch.css" rel="stylesheet" type="text/css"/>
 
 		<!-- <style type="text/css"></style> -->
 	</head>
@@ -258,11 +260,11 @@
 					</div>
 					<!-- /drawer -->
 
-					<!-- themebar -->
-					<div class="themebar">
+					<!-- cornerpanel -->
+					<div class="cornerpanel">
 
 						<!-- themeswitcher -->
-						<div class="themeswitcher color">
+						<div class="panelitem themeswitcher color">
 	
 							<!-- togglebtn -->
 							<div class="togglebtn">
@@ -350,7 +352,7 @@
 						<!-- /themeswitcher -->
 	
 						<!-- themeswitcher -->
-						<div class="themeswitcher ltdrk">
+						<div class="panelitem themeswitcher ltdrk">
 	
 							<!-- togglebtn -->
 							<div class="togglebtn">
@@ -446,9 +448,27 @@
 							
 						</div>
 						<!-- /themeswitcher -->
+
+						<!-- livesearchbtn -->
+						<div class="panelitem livesearchbtn">
+
+							<!-- togglebtn -->
+							<div class="togglebtn">
+				
+								<!-- icon -->
+								<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+								</svg>
+								<!-- /icon -->
+
+							</div>
+							<!-- /togglebtn -->
+
+						</div>
+						<!-- /livesearchbtn -->
 						
 					</div>
-					<!-- /themebar -->
+					<!-- /cornerpanel -->
 					
 				</div>
 				<!-- /bin -->
@@ -1046,6 +1066,179 @@
 			</footer>
 			<!-- /footer -->
 
+			<!-- #searchoverlay -->
+			<div id="searchoverlay" class="">
+				
+				<!-- head -->
+				<section class="head">
+
+					<!-- grid -->
+					<div class="grid">
+					
+						<!-- querybox -->
+						<div class="querybox">
+							
+							<!-- searchlabel -->
+							<label class="searchlabel" for="searchquery">
+								
+								<!-- icon -->
+								<svg class="icon search" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+								</svg>
+								<!-- /icon -->
+								
+							</label>
+							<!-- /searchlabel -->
+							
+							
+							<!-- #searchquery -->
+							<input id="searchquery" type="text" placeholder="What are you looking for ?" autocomplete="off" />
+							<!-- /#searchquery -->
+							
+							<!-- closebtn -->
+							<div id="closebtn" class="closebtn btn">
+								
+								<!-- icon -->
+								<span class="icon">&times;</span>
+								<!-- /icon -->
+								
+							</div>
+							<!-- /closebtn -->
+							
+						</div>
+						<!-- /querybox -->
+
+					</div>
+					<!-- /grid -->
+					
+				</section>
+				<!-- /head -->
+				
+				<!-- body -->
+				<section class="body">
+
+					<!-- grid -->
+					<div class="grid">
+					
+						<!-- #searchresults -->
+						<div id="searchresults">
+	
+							<!-- resultshead -->
+							<h1 class="resultshead" style="display:none;">
+	
+								<!-- searchquery -->
+								<span class="searchquery">"searchquerygoeshere"</span>
+								<!-- /searchquery -->
+	
+								<!-- resultcount -->
+								<span class="resultcount">0</span>
+								<!-- /resultcount -->
+	
+							</h1>
+							<!-- /resultshead -->
+	
+							<!-- resultsbody -->
+							<div class="resultsbody">
+	
+								<!-- resultblock -->
+								<div class="resultblock" style="display:none;">
+		
+									<!-- blockhead -->
+									<h2 class="blockhead">
+										
+										<!-- caption -->
+										<span class="caption">Result Head</span>
+										<!-- /caption -->
+	
+										<!-- count -->
+										<span class="count">0</span>
+										<!-- /count -->
+	
+									</h2>
+									<!-- /blockhead -->
+			
+									<!-- resultlist -->
+									<ul class="resultlist visual">
+			
+										<!-- resultitem -->
+										<li class="resultitem">
+			
+											<!-- resultlink -->
+											<a class="resultlink" href="javascript:void(0)" target="_blank">
+	
+												<!-- photo -->
+												<img class="photo" src="" alt="Name" title="Name">
+												<!-- /photo -->
+	
+												<!-- caption -->
+												<span class="caption">Name</span>
+												<!-- /caption -->
+												
+											</a>
+											<!-- /resultlink -->
+			
+										</li>
+										<!-- /resultitem -->
+			
+									</ul>
+									<!-- /resultlist -->
+			
+									<!-- resultlist -->
+									<ul class="resultlist">
+			
+										<!-- resultitem -->
+										<li class="resultitem">
+			
+											<!-- resultlink -->
+											<a class="resultlink" href="javascript:void(0)" target="_blank">Result Link</a>
+											<!-- /resultlink -->
+	
+											<!-- caption -->
+											<span class="caption">by</span>
+											<!-- /caption -->
+			
+											<!-- authorlink -->
+											<a class="authorlink" href="javascript:void(0)" target="_blank">Author Link</a>
+											<!-- /authorlink -->
+			
+										</li>
+										<!-- /resultitem -->
+			
+										<!-- resultitem -->
+										<li class="resultitem">
+	
+											<!-- caption -->
+											<span class="caption">No xyzposts match that search.</span>
+											<!-- /caption -->
+											
+											<!-- archivelink -->
+											<a class="archivelink" href="javascript:void(0)" target="_blank">View all xyzposts</a>
+											<!-- /archivelink -->
+			
+										</li>
+										<!-- /resultitem -->
+			
+									</ul>
+									<!-- /resultlist -->
+		
+								</div>
+								<!-- /resultblock -->
+	
+							</div>
+							<!-- /resultsbody -->
+							
+						</div>
+						<!-- /#searchresults -->
+						
+					</div>
+					<!-- /grid -->
+					
+				</section>
+				<!-- /body -->
+				
+			</div>
+			<!-- /#searchoverlay -->
+
 		</div>
 		<!-- /#container -->
 
@@ -1068,6 +1261,8 @@
 		<script src="./assets/database/yeardatabase.js" type="text/javascript"></script>
 		<!-- Post Filter Database -->
 		<script src="./assets/database/postfilterdatabase.js" type="text/javascript"></script>
+		<!-- Live Search Database -->
+		<script src="./assets/database/searchdatabase.js" type="text/javascript"></script>
 
 		<!-- Project Page Level -->
 		<script type="text/javascript">
@@ -1099,7 +1294,7 @@
 		<script src="./assets/script/sitemap.js" type="text/javascript"></script>
 		
 		<!-- Live Search Script -->
-		<script src="./../livesearch/script/livesearch.js" type="text/javascript"></script>
+		<script src="./../livesearch/script/livesearchoverlay.js" type="text/javascript"></script>
 		<!-- Live Search Script -->
 		<script src="./assets/script/livesearch.js" type="text/javascript"></script>
 		

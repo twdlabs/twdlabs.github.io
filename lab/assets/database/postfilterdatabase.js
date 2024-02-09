@@ -126,103 +126,14 @@ const postFilterData = [
 // Augment project data. 
 augmentProjectData();
 
-// Create item values for filter group: authors. 
-createFilterValues('authorid');
-
-// Create item values for filter group: categories. 
-createFilterValues('categoryid');
-
-// Create item values for filter group: collections. 
-createFilterValues('collectionid');
-
-// Create item values for filter group: creation year. 
-createFilterValues('createdyear');
-
-// Create item values for filter group: creation quarter. 
-// createFilterValues('createdquarter');
+// Augment filter data. 
+augmentFilterData();
 
 // console.log('Post filter data:',postFilterData);
 
 
 /*****/
 
-
-// Create item values for given filter group. 
-function createFilterValues(filtergroupid) {
-	
-	// Get filter group by id. 
-	let filtergroup = getFilterGroupById(filtergroupid);
-	// console.log('Filter criteria list (old):',filtergroup.filteritems);
-	
-	// Disregard if not valid filter group. 
-	if(!filtergroup) {
-		console.warn('Invalid filter group:',filtergroupid,filtergroup);
-		return;
-	}
-
-	// Initialize list of filter items. 
-	let filteritems = [];
-
-	// TOOD: Go thru each project to collect distinct filter item values. 
-	for(let project of projectData) {
-
-		// Get value of filter item from current project. 
-		let filteritemvalue = project[filtergroupid];
-
-		// Get filter item associated with value (if exists). 
-		let filteritem = getFilterItemByValue(filteritemvalue);
-
-		// Check if current value is distinct. 
-		// let gotdistinctvalue = !filteritems.includes(filteritemvalue);
-		let gotdistinctvalue = !filteritem;
-
-		// Save new filter item value (if distinct). 
-		// if(gotdistinctvalue) filteritems.push(filteritemvalue);
-		// Save new filter item (if distinct). 
-		if(gotdistinctvalue) filteritems.push( {value:filteritemvalue,frequency:1,} );
-
-		// Increment value frequency (if not distinct). 
-		else filteritem.frequency++;
-	}
-	// console.log('Filter items:',filteritems);
-
-	// Save sorted list of filter items. 
-	filtergroup.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
-	// console.log('Filter criteria list (new):',filtergroup.filteritems);
-
-	/****/
-
-	// Get filter group by id. 
-	function getFilterGroupById(filtergroupid) {
-	
-		// Go thru each filter group. 
-		for(let filtergroup of postFilterData) {
-	
-			// Check for match. 
-			if(filtergroup.filtergroupid==filtergroupid) return filtergroup;
-		}
-	
-		// Return nothing if not found. 
-		return null;
-	}
-
-	// Get filter item by value. 
-	function getFilterItemByValue(value) {
-
-		// Go thru each existing filter item. 
-		for(let item of filteritems) {
-
-			// Check for matching value. 
-			let matchfound = item.value == value;
-
-			// Return matching item if found. 
-			if(matchfound) return item;
-		}
-
-		// Return nothing if not found. 
-		return null;
-	}
-}
 
 // Augment project data for easy filtering. 
 function augmentProjectData() {
@@ -302,4 +213,109 @@ function augmentProjectData() {
 	}
 
 	console.log('Augmented project data:',projectData);
+}
+
+
+// Reset filter data. 
+function resetFilterData() {
+
+	// 
+}
+
+// Augment filter data. 
+function augmentFilterData() {
+
+	// TODO: Do alternative method. 
+	for(let filtergroup of postFilterData) {
+
+		// 
+		// filtergroup.filtergroupid;
+	}
+
+	// Create item values for filter group: authors. 
+	addFilterItemValues('authorid');
+	
+	// Create item values for filter group: categories. 
+	addFilterItemValues('categoryid');
+	
+	// Create item values for filter group: collections. 
+	addFilterItemValues('collectionid');
+	
+	// Create item values for filter group: creation year. 
+	addFilterItemValues('createdyear');
+	
+	// Create item values for filter group: creation quarter. 
+	// addFilterItemValues('createdquarter');
+
+	/****/
+
+	// Create item values for given filter group from project data. 
+	function addFilterItemValues(filtergroupid) {
+		
+		// Get filter group by id. 
+		let filtergroup = getFilterGroupById(filtergroupid);
+		// console.log('Filter criteria list (old):',filtergroup.filteritems);
+		
+		// Disregard if not valid filter group. 
+		if(!filtergroup) {
+			console.warn('Invalid filter group:',filtergroupid,filtergroup);
+			return;
+		}
+	
+		// Initialize list of filter items. 
+		let filteritems = [];
+	
+		// TOOD: Go thru each matching project to collect distinct values for given filter item. 
+		for(let project of projectData) {
+	
+			// Get value of filter item from current project. 
+			let filteritemvalue = project[filtergroupid];
+	
+			// Find filter item associated with current value (if already exists). 
+			let filteritem = getFilterItemByValue(filteritemvalue);
+	
+			// Increment frequency of filter item (if already exists). 
+			if(filteritem) filteritem.frequency++;
+			// Create new filter item with frequency of 1 (if new value). 
+			else filteritems.push( {value:filteritemvalue, frequency:1,} );
+		}
+		// console.log('Filter items:',filteritems);
+	
+		// Save sorted list of filter items. 
+		filtergroup.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
+		// console.log('Filter criteria list (new):',filtergroup.filteritems);
+	
+		/***/
+	
+		// Get filter group by id. 
+		function getFilterGroupById(filtergroupid) {
+		
+			// Go thru each filter group. 
+			for(let filtergroup of postFilterData) {
+		
+				// Check for match. 
+				if(filtergroup.filtergroupid==filtergroupid) return filtergroup;
+			}
+		
+			// Return nothing if not found. 
+			return null;
+		}
+	
+		// Get filter item by value. 
+		function getFilterItemByValue(value) {
+	
+			// Go thru each existing filter item. 
+			for(let item of filteritems) {
+	
+				// Check for matching value. 
+				let matchfound = item.value == value;
+	
+				// Return matching item if found. 
+				if(matchfound) return item;
+			}
+	
+			// Return nothing if not found. 
+			return null;
+		}
+	}
 }

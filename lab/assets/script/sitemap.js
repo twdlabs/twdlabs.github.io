@@ -38,7 +38,8 @@ function loadSiteMap() {
 
 	// Create layout for project matrix. 
 	// console.log('\nMatrix: Project items by category by arbitrary grouping');
-	let projectmatrixlayoutA = createLinkMatrix( projectCategoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' );
+	// let projectmatrixlayoutA = createLinkMatrix( projectCategoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' );
+	let projectmatrixlayoutA = createLinkMatrix( projectCategoryMatrixData, getProjectById,getProjectCategoryById, './library/project/?pid=','projectname' );
 	// console.log('projectmatrixlayoutA:',projectmatrixlayoutA);
 
 	// Create layout for project matrix. 
