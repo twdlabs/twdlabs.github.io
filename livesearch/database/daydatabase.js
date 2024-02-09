@@ -4,43 +4,43 @@
 const dayData = [
 	{
 		posttype:'day',
-		dayid:-1,
+		dayid:'mon',
 		title:'Monday',
 		content:'Hello there world'
 	},
 	{
 		posttype:'day',
-		dayid:-1,
+		dayid:'tue',
 		title:'Tuesday',
 		content:'Hello there world'
 	},
 	{
 		posttype:'day',
-		dayid:-1,
+		dayid:'wed',
 		title:'Wednesday',
 		content:'Hello there world'
 	},
 	{
 		posttype:'day',
-		dayid:-1,
+		dayid:'thu',
 		title:'Thursday',
 		content:'Hello there world'
 	},
 	{
 		posttype:'day',
-		dayid:-1,
+		dayid:'fri',
 		title:'Friday',
 		content:'Hello there world'
 	},
 	{
 		posttype:'day',
-		dayid:-1,
+		dayid:'sat',
 		title:'Saturday',
 		content:'Hello there world'
 	},
 	{
 		posttype:'day',
-		dayid:-1,
+		dayid:'sun',
 		title:'Sunday',
 		content:'Hello there world'
 	},

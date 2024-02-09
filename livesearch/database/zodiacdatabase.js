@@ -4,73 +4,73 @@
 const zodiacData = [
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'cap',
 		title:'Capricorn',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'aqu',
 		title:'Aquarius',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'pis',
 		title:'Pisces',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'ari',
 		title:'Aries',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'tau',
 		title:'Taurus',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'gem',
 		title:'Gemini',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'can',
 		title:'Cancer',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'leo',
 		title:'Leo',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'vir',
 		title:'Virgo',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'lib',
 		title:'Libra',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'sco',
 		title:'Scorpio',
 		content:'Hello there world'
 	},
 	{
 		posttype:'zodiacsign',
-		zodiacsignid:-1,
+		zodiacsignid:'sag',
 		title:'Saggitarius',
 		content:'Hello there world'
 	},

@@ -4,61 +4,61 @@
 const numberData = [
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'0',
 		title:'Zero',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'1',
 		title:'One',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'2',
 		title:'Two',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'3',
 		title:'Three',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'4',
 		title:'Four',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'5',
 		title:'Five',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'6',
 		title:'Six',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'7',
 		title:'Seven',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'8',
 		title:'Eight',
 		content:'Hello there world'
 	},
 	{
 		posttype:'number',
-		numberid:-1,
+		numberid:'9',
 		title:'Nine',
 		content:'Hello there world'
 	},

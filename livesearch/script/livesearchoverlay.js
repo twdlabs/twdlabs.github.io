@@ -7,16 +7,20 @@ class LiveSearchOverlay {
 
 	// 1. Describe and create / initiate object. 
 
-	constructor(openbtn,closebtn,searchoverlay,searchqueryfield,searchresultsdestination) {
-
-		// Get page elements for open/close buttons. 
-		this.openbtn = openbtn;
-		this.closebtn = closebtn;
+	// constructor(openbtn/* ,closebtn */,searchoverlay/* ,searchqueryfield,searchresultsdestination */) {
+	constructor(searchoverlay,openbtn) {
 
 		// Get page elements for search overlay. 
 		this.searchoverlay = searchoverlay;
-		this.searchqueryfield = searchqueryfield;
-		this.searchresultsdestination = searchresultsdestination;
+		// this.searchqueryfield = searchqueryfield;
+		this.searchqueryfield = searchoverlay.querySelector('section.head div.querybox input#searchquery');
+		// this.searchresultsdestination = searchresultsdestination;
+		this.searchresultsdestination = searchoverlay.querySelector('section.body div#searchresults');
+
+		// Get page elements for open/close buttons. 
+		this.openbtn = openbtn;
+		// this.closebtn = closebtn;
+		this.closebtn = searchoverlay.querySelector('section.head div.querybox div.closebtn');
 
 		// Initialize representation of previously typed query. 
 		this.prevquery = '';
@@ -35,9 +39,6 @@ class LiveSearchOverlay {
 
 		// Initialize results timer. 
 		this.searchresultstimer = undefined;
-
-		// Temp: Open search overlay. 
-		this.openSearchOverlay()
 	}
 
 
@@ -55,7 +56,7 @@ class LiveSearchOverlay {
 		this.searchqueryfield.addEventListener( 'keyup', this.respondToQueryTyping.bind(this) );
 
 		// Handle keyboard shortcuts. 
-		document.documentElement.addEventListener( 'keyup', this.dispatchKeyPress.bind(this) );
+		document.documentElement.addEventListener( 'keydown', this.dispatchKeyPress.bind(this) );
 	}
 
 
@@ -77,12 +78,10 @@ class LiveSearchOverlay {
 	respondToQueryTyping() {
 		console.log('Received search query', this.searchqueryfield.value);
 
-		// Check for unchanged query. 
-		let queryunchanged = (this.searchqueryfield.value == this.prevquery);
-		// Disregard if query unchanged (i.e. non-character keys). 
-		if(queryunchanged) return;
+		// Disregard if query unchanged (i.e. for non-character key press). 
+		if(this.searchqueryfield.value == this.prevquery) return;
 
-		// Clear previous timer for results (still typing). 
+		// Clear timer for previous results (still typing). 
 		clearTimeout(this.searchresultstimer);
 
 		// Clear previous search results. 
@@ -98,7 +97,7 @@ class LiveSearchOverlay {
 			this.searchresultstimer = setTimeout(this.displaySearchResults.bind(this), this.dt);
 		}
 
-		// Stop everything (if no query present). 
+		// Stop loading (if no query present). 
 		else {
 
 			// Turn off results loader. 
@@ -149,7 +148,7 @@ class LiveSearchOverlay {
 		console.log('Results matrix:',originalResultsMatrix);
 		
 		// Generate matching search results. 
-		getMatchingSearchResults();
+		getMatchingResults();
 		
 		// Get total number of search results. 
 		let resultscount = countTotalResults('itemlist');
@@ -179,7 +178,7 @@ class LiveSearchOverlay {
 		/*****/
 
 
-		// Check match between result item and current search query (case insensitive).
+		// TODO: Check match between result item and current search query (case insensitive).
 		function checkForMatch(resultitem) {
 		
 			// Define parameters of current search. 
@@ -267,8 +266,8 @@ class LiveSearchOverlay {
 			}
 		}
 
-		// TODO: Get matrix of matching search results. 
-		function getMatchingSearchResults() {
+		// Generate matching search results. 
+		function getMatchingResults() {
 	
 			// Go thru each result block. 
 			for(let currentresultblock of originalResultsMatrix) {
@@ -479,19 +478,19 @@ class LiveSearchOverlay {
 					/**/
 					
 					// Get post id. 
-					function getPostId(item) {
-						// console.log(`\t\t\tpostregister:`,postregister);
+					function getPostId(resultitem) {
 						
-						// Get post id from post register. 
-						let idkey = postregister[item.posttype];
-						let postid = item[idkey];
-						// console.log(`\t\t\tid: '${id}'`);
+						// Get from post register: key for post id. 
+						let idkey = postregister[resultitem.posttype];
 						
-						// Handle registered post type. 
+						// Get post id. 
+						let postid = resultitem[idkey];
+						console.log(`\t\t\tPost id (${resultitem.posttype}): '${postid}'`);
+						
+						// Handle registered post type (valid string or number). 
 						if( postid || !isNaN(postid) ) return postid;
-	
 						// Handle unregistered post type. 
-						else console.warn('\t\t\tPost type not recognized:', item.posttype, postid);
+						else console.warn('\t\t\tPost type not yet recognized. Please add to post register: ', resultitem.posttype, postid);
 					}
 				}
 
@@ -567,7 +566,7 @@ class LiveSearchOverlay {
 		}
 
 		// Count total number of result items in result matrix. 
-		function countTotalResults(blockkey) {
+		function countTotalResults(listkey) {
 
 			// Initialize total number of result items. 
 			let totalresultcount = 0;
@@ -576,14 +575,14 @@ class LiveSearchOverlay {
 			for(let resultblock of originalResultsMatrix) {
 
 				// Increment total number of result items. 
-				totalresultcount += resultblock[blockkey].length;
+				totalresultcount += resultblock[listkey].length;
 
 				// // Go thru each item in result list of result block. 
-				// for(let item of resultblockitemlist) {
+				// for(let resultitem of resultblockitemlist) {
 				// }
 			}
 
-			// Return total number of results items. 
+			// Return total number of result items in selected list. 
 			return totalresultcount;
 		}
 	}

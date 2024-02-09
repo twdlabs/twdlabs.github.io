@@ -1,5 +1,6 @@
 
 
+
 // Define post register. 
 const postregister = {
 	'letter':'letterid',
@@ -13,6 +14,7 @@ const postregister = {
 	'day':'dayid',
 	'season':'seasonid',
 };
+console.log(`Post register:`,postregister);
 
 
 // Define default search results, the basis of final search results. 
@@ -155,6 +157,7 @@ const defaultResultSet = [
 	// },
 	
 ];
+console.log(`Default result set:`,defaultResultSet);
 
 
 /*****/

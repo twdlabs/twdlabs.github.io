@@ -23,7 +23,7 @@
 	/* --orange:#ff8f1f; */
 	/* --lightpurp:#A26FFF; */
 	/* --themecolor:dodgerblue; */
-	--themecolor:var(--beautyblue);
+	--searchthemecolor:var(--beautyblue);
 
 	/* Selected Theme Colors */
 	--openbtnbackcolor:var(--grey);

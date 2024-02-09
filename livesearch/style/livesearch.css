@@ -10,17 +10,20 @@
 	--lightorange:#ffbf80;
 	--transparentwhite:#FFFFFF08;
 
+	/* Numbers */
+	--pagewidth:125rem;
+}
+
+body {
+
 	/* Selected Theme Colors */
 	--headbackcolor:var(--offwhite);
-	--headforecolor:var(--beautyblue);
-	--bodybackcolor:var(--beautyblue);
+	--headforecolor:var(--searchthemecolor);
+	--bodybackcolor:var(--searchthemecolor);
 	--resultsbackcolor:var(--transparentwhite);
 	--resultsetheadforecolor:var(--lightyellow);
 	--resultsetbodyforecolor:var(--lightorange);
 	--loadspinnercolor:var(--offwhite2);
-
-	/* Numbers */
-	--pagewidth:125rem;
 }
 
 
@@ -37,7 +40,7 @@ div#container div#searchoverlay {opacity:0; visibility:hidden; transform:scale(1
 div#container div#searchoverlay.active {opacity:.988; visibility:visible; transform:none;}
 
 div#container div#searchoverlay {display:flex; flex-direction:column; align-items:stretch;}
-/* div#container div#searchoverlay section {} */
+div#container div#searchoverlay section {padding:0; margin:0;}
 div#container div#searchoverlay section.head {flex-grow:0; flex-shrink:0;}
 div#container div#searchoverlay section.body {flex-grow:1; flex-shrink:1; position:relative; overflow-x:hidden; overflow-y:auto;}
 div#container div#searchoverlay section div.grid {max-width:var(--pagewidth); margin:auto;}
@@ -67,39 +70,39 @@ div#container div#searchoverlay section.body:before {background-color:transparen
 div#container div#searchoverlay section.body:before {visibility:hidden; opacity:0; transition:.15s;}
 div#container div#searchoverlay.load section.body:before {visibility:visible; opacity:1; animation:loadingspin 1s linear infinite;}
 
-div#container div#searchoverlay section.body div#resultsbox {background-color:var(--resultsbackcolor); color:white; width:100%; min-height:100%; overflow:visible; padding:2rem;}
-div#container div#searchoverlay section.body div#resultsbox {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch;}
+div#container div#searchoverlay section.body div#searchresults {background-color:var(--resultsbackcolor); color:white; width:100%; min-height:100%; overflow:visible; padding:2rem;}
+div#container div#searchoverlay section.body div#searchresults {display:flex; flex-direction:column-reverse; justify-content:flex-end; align-items:stretch;}
 
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;}
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead {font-size:1.25em; cursor:default; user-select:none;}
-/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.resultcount {} */
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.resultcount::after {content:' result(s) found';}
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead.none span.resultcount {visibility:hidden;}
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.searchquery {word-wrap:anywhere;}
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.searchquery:before {content:'Here are your search results for \'';}
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead span.searchquery::after {content:'\'';}
-div#container div#searchoverlay section.body div#resultsbox h1.resultshead.none span.searchquery:before {content:'No matches found for \'';}
+div#container div#searchoverlay section.body div#searchresults h1.resultshead {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;}
+div#container div#searchoverlay section.body div#searchresults h1.resultshead {font-size:1.25em; cursor:default; user-select:none;}
+/* div#container div#searchoverlay section.body div#searchresults h1.resultshead span.resultcount {} */
+div#container div#searchoverlay section.body div#searchresults h1.resultshead span.resultcount::after {content:' result(s) found';}
+div#container div#searchoverlay section.body div#searchresults h1.resultshead.none span.resultcount {visibility:hidden;}
+div#container div#searchoverlay section.body div#searchresults h1.resultshead span.searchquery {word-wrap:anywhere;}
+div#container div#searchoverlay section.body div#searchresults h1.resultshead span.searchquery:before {content:'Here are your search results for \'';}
+div#container div#searchoverlay section.body div#searchresults h1.resultshead span.searchquery::after {content:'\'';}
+div#container div#searchoverlay section.body div#searchresults h1.resultshead.none span.searchquery:before {content:'No matches found for \'';}
 
-/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;} */
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody {display:grid; grid-template-columns:repeat( var(--gridcolumns) ,1fr); --gridcolumns:4;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 2rem 0 0; /* text-align:center; */}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {color:var(--resultsetheadforecolor); font-size:1.125em; padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {display:flex; flex-direction:row; justify-content:space-between;}
-/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.caption {} */
-/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.count */
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual {display:flex; flex-direction:row; flex-wrap:wrap;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem {margin-top:.5rem;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem {margin:0 .375rem .375rem 0;}
-/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem span.caption {} */
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.archivelink,
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.authorlink,
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.resultlink {color:var(--resultsetbodyforecolor);}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist li.resultitem a.archivelink {display:block; text-decoration:underline;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink {position:relative; display:block; height:8rem; width:6rem;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink img.photo {object-fit:cover; height:100%; width:100%;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink span.caption {position:absolute; right:0; bottom:0; left:0; width:100%; padding:.25rem 0;}
-div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink span.caption {background-color:var(--resultsetbodyforecolor); color:white; font-size:.625rem; text-align:center; white-space:nowrap;}
+/* div#container div#searchoverlay section.body div#searchresults div.resultsbody {display:flex; flex-direction:row; flex-wrap:wrap; justify-content:flex-start; align-content:flex-start;} */
+div#container div#searchoverlay section.body div#searchresults div.resultsbody {display:grid; grid-template-columns:repeat( var(--gridcolumns) ,1fr); --gridcolumns:4;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 2rem 0 0; /* text-align:center; */}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead {color:var(--resultsetheadforecolor); font-size:1.125em; padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead {display:flex; flex-direction:row; justify-content:space-between;}
+/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.caption {} */
+/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.count */
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist.visual {display:flex; flex-direction:row; flex-wrap:wrap;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist li.resultitem {margin-top:.5rem;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist.visual li.resultitem {margin:0 .375rem .375rem 0;}
+/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist li.resultitem span.caption {} */
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist li.resultitem a.archivelink,
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist li.resultitem a.authorlink,
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist li.resultitem a.resultlink {color:var(--resultsetbodyforecolor);}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist li.resultitem a.archivelink {display:block; text-decoration:underline;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink {position:relative; display:block; height:8rem; width:6rem;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink img.photo {object-fit:cover; height:100%; width:100%;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink span.caption {position:absolute; right:0; bottom:0; left:0; width:100%; padding:.25rem 0;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist.visual li.resultitem a.resultlink span.caption {background-color:var(--resultsetbodyforecolor); color:white; font-size:.625rem; text-align:center; white-space:nowrap;}
 
 
 
@@ -126,9 +129,9 @@ div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.
 	
 	/* Results Section */
 	/* div#container div#searchoverlay section.body {} */
-	/* div#container div#searchoverlay section.body div#resultsbox {} */
-	/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead {} */
-	div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:3;}
+	/* div#container div#searchoverlay section.body div#searchresults {} */
+	/* div#container div#searchoverlay section.body div#searchresults h1.resultshead {} */
+	div#container div#searchoverlay section.body div#searchresults div.resultsbody {--gridcolumns:3;}
 }
 
 
@@ -144,11 +147,11 @@ div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.
 	/* Results Section */
 	/* div#container div#searchoverlay section.body {} */
 	div#container div#searchoverlay section.body div.grid {padding:2rem;}
-	/* div#container div#searchoverlay section.body div#resultsbox {} */
-	/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead {} */
-	div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:2;}
-	div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock {margin:1rem 1rem 0 0;}
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {} */
+	/* div#container div#searchoverlay section.body div#searchresults {} */
+	/* div#container div#searchoverlay section.body div#searchresults h1.resultshead {} */
+	div#container div#searchoverlay section.body div#searchresults div.resultsbody {--gridcolumns:2;}
+	div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock {margin:1rem 1rem 0 0;}
+	/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead {} */
 }
 
 
@@ -163,7 +166,7 @@ div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.
 	
 	/* Results Section */
 	/* div#container div#searchoverlay section.body {} */
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:1;} */
+	/* div#container div#searchoverlay section.body div#searchresults div.resultsbody {--gridcolumns:1;} */
 }
 
 
@@ -179,12 +182,12 @@ div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.
 	/* Results Section */
 	/* div#container div#searchoverlay section.body {} */
 	div#container div#searchoverlay section.body div.grid {padding:1rem;}
-	/* div#container div#searchoverlay section.body div#resultsbox h1.resultshead {} */
-	div#container div#searchoverlay section.body div#resultsbox div.resultsbody {--gridcolumns:1;}
-	div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock {margin:0; margin-top:1.5rem;}
-	div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead {font-size:1.125rem; /* display:block; */}
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.count:before {content:' (';} */
-	/* div#container div#searchoverlay section.body div#resultsbox div.resultsbody div.resultblock h2.blockhead span.count::after {content:')';} */
+	/* div#container div#searchoverlay section.body div#searchresults h1.resultshead {} */
+	div#container div#searchoverlay section.body div#searchresults div.resultsbody {--gridcolumns:1;}
+	div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock {margin:0; margin-top:1.5rem;}
+	div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead {font-size:1.125rem; /* display:block; */}
+	/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.count:before {content:' (';} */
+	/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.count::after {content:')';} */
 }
 
 

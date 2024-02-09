@@ -4,55 +4,55 @@
 const planetData = [
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'mer',
 		title:'Mercury',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'ven',
 		title:'Venus',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'ear',
 		title:'Earth',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'mar',
 		title:'Mars',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'jup',
 		title:'Jupiter',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'sat',
 		title:'Saturn',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'ura',
 		title:'Uranus',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'nep',
 		title:'Neptune',
 		content:'Hello there world'
 	},
 	{
 		posttype:'planet',
-		planetid:-1,
+		planetid:'plu',
 		title:'Pluto',
 		content:'Hello there world'
 	},

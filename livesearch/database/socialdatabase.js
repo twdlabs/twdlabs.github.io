@@ -4,115 +4,115 @@
 const socialData = [
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'fs',
 		title:'Friendster',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'ms',
 		title:'MySpace',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'bp',
 		title:'Black Planet',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'fb',
 		title:'Facebook',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'tw',
 		title:'Twitter',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'ig',
 		title:'Instagram',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'sc',
 		title:'Snapchat',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'yt',
 		title:'YouTube',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'mk',
 		title:'Meerkat',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'tn',
 		title:'Tinder',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'bb',
 		title:'Bumble',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'rm',
 		title:'Rumble',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'tk',
 		title:'TikTok',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'mu',
 		title:'musically',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'pe',
 		title:'Periscope',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'li',
 		title:'LinkedIn',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'se',
 		title:'Speakeasy',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'ms',
 		title:'FB Messenger',
 		content:'Hello there world'
 	},
 	{
 		posttype:'platform',
-		platformid:-1,
+		platformid:'wa',
 		title:'WhatsApp',
 		content:'Hello there world'
 	},

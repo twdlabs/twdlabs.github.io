@@ -4,25 +4,25 @@
 const seasonData = [
 	{
 		posttype:'season',
-		seasonid:-1,
+		seasonid:'spr',
 		title:'Spring',
 		content:'Hello there world'
 	},
 	{
 		posttype:'season',
-		seasonid:-1,
+		seasonid:'sum',
 		title:'Summer',
 		content:'Hello there world'
 	},
 	{
 		posttype:'season',
-		seasonid:-1,
-		title:'Fall',
+		seasonid:'aut',
+		title:'Autumn',
 		content:'Hello there world'
 	},
 	{
 		posttype:'season',
-		seasonid:-1,
+		seasonid:'wnt',
 		title:'Winter',
 		content:'Hello there world'
 	},
