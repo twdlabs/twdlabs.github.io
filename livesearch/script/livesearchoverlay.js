@@ -345,13 +345,6 @@ class LiveSearchOverlay {
 		// Generate matching search results. 
 		getMatchingResults();
 		
-		// Get total number of search results. 
-		let resultscount = countTotalResults('itemlist');
-		console.log('All results:',resultscount);
-		// Get total number of matching search results. 
-		let matchingresultscount = countTotalResults('matchingitemlist');
-		console.log('Matching results:',matchingresultscount);
-		
 		// Initialize layout for search results. 
 		let fullsearchresultslayout = '';
 
@@ -373,124 +366,6 @@ class LiveSearchOverlay {
 		/*****/
 
 
-		// Check match between result item and current search query (case insensitive).
-		function checkForMatch(resultitem) {
-		
-			// Define parameters of current search. 
-			let doTitleSearch = false;
-			let doSelectiveSearch = true;
-
-			// Check for simple match (by title) with search query (case insensitive). 
-			if(doTitleSearch) {
-
-				// Get title for given result item. 
-				let resultitemtitle = resultitem['title'];
-
-				// Check for matching title. 
-				// return ( resultitemtitle.toUpperCase() ).includes( searchquery.toUpperCase() );
-				return checkMatchAllQueryWords(resultitemtitle);
-			}
-
-			// Perform search only on selected tags. 
-			else if(doSelectiveSearch) {
-			
-				// Old implementation: before data structure update (search tags of searchable post items). 
-				// Get case-insensitive search check components: search tags, search query. 
-				// let runontagstring = ( resultitem['searchtags'] ).toUpperCase();
-				// Check for match within run-on search tag. 
-				// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
-
-				// New implementation: after data structure update (search tags of searchable post items). 
-				// Check for match within list of search tags. 
-				for(let tag of resultitem.searchtags) {
-
-					// Check for match between search query and current search tag. 
-					// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
-					let matchOn = checkMatchAllQueryWords(tag);
-					// Return true if any match found. 
-					if(matchOn) return true;
-					else continue;
-				}
-
-				// Return false if no match found. 
-				return false;
-			}
-
-			// Otherwise, do all-out search on all properties of given item. 
-			else {
-			
-				// Check for match with search query (any property, case insensitive). 
-				for(let key in resultitem) {
-					// console.log(key);
-
-					// Get case-insensitive search check component. 
-					let keyvalue = resultitem[key].toString();
-
-					// Check for match in value of current property. 
-					// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
-					let foundMatch = checkMatchAllQueryWords(keyvalue);
-
-					// End search upon finding match (proceeding to next post item). 
-					if(foundMatch) return true;
-				}
-				
-				// Return false if match not found. 
-				return false;
-			}
-
-			/***/
-
-			// Check given string for match with all search query words. 
-			function checkMatchAllQueryWords(string) {
-
-				// Check for multiple words in search query. 
-				let querymultiplewords = ( searchquerywordlist.length > 1 );
-
-				// Check for match with single-word query. 
-				if(!querymultiplewords) {
-					return ( string.toUpperCase() ).includes( searchquery.toUpperCase() );
-				}
-
-				// Check for match with multiple-word query. 
-				for(let searchqueryword of searchquerywordlist) {
-
-					// Check if given string contains current query word. 
-					let searchquerywordfound = ( string.toUpperCase() ).includes( searchqueryword.toUpperCase() );
-
-					// Assume false if any search query word not found in given string. 
-					if( !searchquerywordfound ) return false;
-				}
-
-				// Assume true if all search query words found in given string. 
-				return true;
-			}
-
-			// Check given string for match with any of search query words. 
-			function checkMatchAnyQueryWord(string) {
-
-				// Check for multiple words in search query. 
-				let querymultiplewords = ( searchquerywordlist.length > 1 );
-
-				// Check for match with single-word query. 
-				if(!querymultiplewords) {
-					return ( string.toUpperCase() ).includes( searchquery.toUpperCase() );
-				}
-
-				// Check for match with multiple-word query. 
-				for(let searchqueryword of searchquerywordlist) {
-
-					// Check if given string contains current query word. 
-					let searchquerywordfound = ( string.toUpperCase() ).includes( searchqueryword.toUpperCase() );
-
-					// Assume true if any search query word found in given string. 
-					if( searchquerywordfound ) return true;
-				}
-				
-				// Assume false if all search query words not found in given string. 
-				return false;
-			}
-		}
-
 		// Generate matching search results. 
 		function getMatchingResults() {
 	
@@ -499,10 +374,130 @@ class LiveSearchOverlay {
 				console.log(`\tSearching ${ currentresultblock['searchlabel'].plural }...`,currentresultblock,currentresultblock.itemlist,currentresultblock.matchingitemlist);
 
 				// Save list of matching items for current result block. 
-				currentresultblock.matchingitemlist = currentresultblock.itemlist.filter(checkForMatch);
+				currentresultblock.matchingitemlist = currentresultblock.itemlist.filter(checkQueryMatch);
 	
 				// Share number of results found for current result block. 
 				console.log( `\t\t${currentresultblock.matchingitemlist.length} result(s) found` );
+			}
+
+			/****/
+
+			// Check match between result item and current search query (case insensitive).
+			function checkQueryMatch(resultitem) {
+			
+				// Define parameters of current search. 
+				let doTitleSearch = false;
+				let doSelectiveSearch = true;
+	
+				// Check for simple match (by title) with search query (case insensitive). 
+				if(doTitleSearch) {
+	
+					// Get title for given result item. 
+					let resultitemtitle = resultitem['title'];
+	
+					// Check for matching title. 
+					// return ( resultitemtitle.toUpperCase() ).includes( searchquery.toUpperCase() );
+					return checkQueryMatchAllWords(resultitemtitle);
+				}
+	
+				// Perform search only on selected tags. 
+				else if(doSelectiveSearch) {
+				
+					// Old implementation: before data structure update (search tags of searchable post items). 
+					// Get case-insensitive search check components: search tags, search query. 
+					// let runontagstring = ( resultitem['searchtags'] ).toUpperCase();
+					// Check for match within run-on search tag. 
+					// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
+	
+					// New implementation: after data structure update (search tags of searchable post items). 
+					// Check for match within list of search tags. 
+					for(let tag of resultitem.searchtags) {
+	
+						// Check for match between search query and current search tag. 
+						// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
+						let matchOn = checkQueryMatchAllWords(tag);
+						// Return true if any match found. 
+						if(matchOn) return true;
+						else continue;
+					}
+	
+					// Return false if no match found. 
+					return false;
+				}
+	
+				// Otherwise, do all-out search on all properties of given item. 
+				else {
+				
+					// Check for match with search query (any property, case insensitive). 
+					for(let key in resultitem) {
+						// console.log(key);
+	
+						// Get case-insensitive search check component. 
+						let keyvalue = resultitem[key].toString();
+	
+						// Check for match in value of current property. 
+						// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
+						let foundMatch = checkQueryMatchAllWords(keyvalue);
+	
+						// End search upon finding match (proceeding to next post item). 
+						if(foundMatch) return true;
+					}
+					
+					// Return false if match not found. 
+					return false;
+				}
+	
+				/***/
+	
+				// Check given string for match with all words in search query. 
+				function checkQueryMatchAllWords(string) {
+	
+					// Check for multiple words in search query. 
+					let querymultiplewords = ( searchquerywordlist.length > 1 );
+	
+					// Check for match with single-word query. 
+					if(!querymultiplewords) {
+						return ( string.toUpperCase() ).includes( searchquery.toUpperCase() );
+					}
+	
+					// Check for match with multiple-word query. 
+					for(let searchqueryword of searchquerywordlist) {
+	
+						// Check if given string contains current query word. 
+						let searchquerywordfound = ( string.toUpperCase() ).includes( searchqueryword.toUpperCase() );
+	
+						// Assume false if any search query word not found in given string. 
+						if( !searchquerywordfound ) return false;
+					}
+	
+					// Assume true if all search query words found in given string. 
+					return true;
+				}
+	
+				// Check given string for match with any word in search query. 
+				function checkQueryMatchAnyWord(string) {
+	
+					// Check for multiple words in search query. 
+					let querymultiplewords = ( searchquerywordlist.length > 1 );
+	
+					// Check for match with single-word query. 
+					if(!querymultiplewords) {
+						return ( string.toUpperCase() ).includes( searchquery.toUpperCase() );
+					}
+	
+					// Check for match with multiple-word query. 
+					for(let searchqueryword of searchquerywordlist) {
+	
+						// Check if given string contains current query word. 
+						let searchquerywordfound = ( string.toUpperCase() ).includes( searchqueryword.toUpperCase() );
+	
+						// Assume true if any search query word found in given string. 
+						if( searchquerywordfound ) return true;
+					}
+					
+					// Assume false if all search query words not found in given string. 
+					return false;
+				}
 			}
 		}
 
@@ -774,6 +769,16 @@ class LiveSearchOverlay {
 
 		// Create layout for search results header. 
 		function createResultsHeaderLayout() {
+		
+			// // Get total number of search result items. 
+			// let resultscount = countTotalResults('itemlist');
+			// console.log('All result items:',resultscount);
+
+			// Get total number of matching search result items. 
+			let matchingresultscount = countTotalResults('matchingitemlist');
+			console.log('Matching result items:',matchingresultscount);
+
+			// Compile layout for search results header. 
 			return `
 			<!-- resultshead -->
 			<h1 class="resultshead${ (matchingresultscount>0) ? '' : ' none' }">
@@ -788,27 +793,29 @@ class LiveSearchOverlay {
 	
 			</h1>
 			<!-- /resultshead -->`;
-		}
 
-		// Count total number of result items in result matrix. 
-		function countTotalResults(listkey) {
+			/****/
 
-			// Initialize total number of result items. 
-			let totalresultcount = 0;
-
-			// Go thru each block in result matrix. 
-			for(let resultblock of originalResultsMatrix) {
-
-				// Increment total number of result items. 
-				totalresultcount += resultblock[listkey].length;
-
-				// // Go thru each item in result list of result block. 
-				// for(let resultitem of resultblockitemlist) {
-				// }
+			// Count total number of result items in result matrix. 
+			function countTotalResults(listkey) {
+	
+				// Initialize total number of result items. 
+				let totalresultcount = 0;
+	
+				// Go thru each block in result matrix. 
+				for(let resultblock of originalResultsMatrix) {
+	
+					// Increment total number of result items. 
+					totalresultcount += resultblock[listkey].length;
+	
+					// // Go thru each item in result list of result block. 
+					// for(let resultitem of resultblockitemlist) {
+					// }
+				}
+	
+				// Return total number of result items in selected list. 
+				return totalresultcount;
 			}
-
-			// Return total number of result items in selected list. 
-			return totalresultcount;
 		}
 	}
 
