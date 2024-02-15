@@ -22,7 +22,7 @@ const defaultResultSet = [
 
 	{
 		blockname:'Alphabet',
-		folderpath:'../alphabet',
+		archivefolderpath:'../alphabet',
 		searchlabel:{
 			plural:'letters',
 			singular:'letter',
@@ -33,7 +33,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'U.S. Presidents',
-		folderpath:'../presidents',
+		archivefolderpath:'../presidents',
 		searchlabel:{
 			plural:'presidents',
 			singular:'president',
@@ -44,7 +44,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'American Universities',
-		folderpath:'../universities',
+		archivefolderpath:'../universities',
 		searchlabel:{
 			plural:'universities',
 			singular:'university',
@@ -55,7 +55,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Social Media Platforms',
-		folderpath:'../socialmedia',
+		archivefolderpath:'../socialmedia',
 		searchlabel:{
 			plural:'social platforms',
 			singular:'social platform',
@@ -66,7 +66,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Months of the Year',
-		folderpath:'../months',
+		archivefolderpath:'../months',
 		searchlabel:{
 			plural:'months',
 			singular:'month',
@@ -77,7 +77,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Astrological Zodiac',
-		folderpath:'../zodiacsigns',
+		archivefolderpath:'../zodiacsigns',
 		searchlabel:{
 			plural:'zodiac signs',
 			singular:'zodiac sign',
@@ -88,7 +88,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Numbers',
-		folderpath:'../numbers',
+		archivefolderpath:'../numbers',
 		searchlabel:{
 			plural:'numbers',
 			singular:'number',
@@ -99,7 +99,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Planets',
-		folderpath:'../planets',
+		archivefolderpath:'../planets',
 		searchlabel:{
 			plural:'planets',
 			singular:'planet',
@@ -110,7 +110,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Days of the Week',
-		folderpath:'../weekdays',
+		archivefolderpath:'../weekdays',
 		searchlabel:{
 			plural:'days',
 			singular:'day',
@@ -121,7 +121,7 @@ const defaultResultSet = [
 	},
 	{
 		blockname:'Seasons',
-		folderpath:'../seasons',
+		archivefolderpath:'../seasons',
 		searchlabel:{
 			plural:'seasons',
 			singular:'season',
@@ -133,7 +133,7 @@ const defaultResultSet = [
 
 	// {
 	// 	blockname:'Xyz Set',
-	// 	folderpath:'../xyz',
+	// 	archivefolderpath:'../xyz',
 	// 	searchlabel:{plural:'xyz', singular:'xyz',},
 	// 	itemlist: [
 	// 		{
@@ -158,42 +158,3 @@ const defaultResultSet = [
 	
 ];
 console.log(`Default result set:`,defaultResultSet);
-
-
-/*****/
-
-
-// Add additional result properties. 
-addResultProperties();
-// console.log(defaultResultSet);
-
-
-/*****/
-
-
-// Define additional result properties for search functionality. 
-function addResultProperties() {
-
-	// Go thru each result block. 
-	for(let resultblock of defaultResultSet) {
-
-		// Go thru each result item in current block. 
-		for(let resultitem of resultblock.itemlist) {
-			
-			// Get searchable result data. 
-			resultitem.searchtags = getResultTags(resultitem);
-		}
-	}
-
-	/****/
-	
-	// Define searchable result tags. 
-	function getResultTags(resultitem) {
-	
-		// Compile searchable components for this post type: general result. 
-		let tagsources = [ resultitem.title, resultitem.content ];
-		
-		// Return list of tags split by word. 
-		return tagsources.join(' ').split(' ');
-	}
-}
