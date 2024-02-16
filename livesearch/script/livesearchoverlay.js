@@ -54,7 +54,8 @@ class LiveSearchOverlay {
 		let container = document.querySelector('div#container');
 
 		// Add overlay to container. 
-		container.insertAdjacentHTML('beforeend', createOverlay() );
+		if(container) container.insertAdjacentHTML('beforeend', createOverlay() );
+		else console.warn('Main container missing');
 
 		/*****/
 
@@ -259,6 +260,80 @@ class LiveSearchOverlay {
 	// 3. Actions: Define object methods and functions. 
 
 
+	// Set state of search overlay window and background page scroll/freeze. 
+	setOverlayState(showOverlay) {
+
+		// Open search overlay window. 
+		if(showOverlay) {
+
+			// Freeze background page scrolling. 
+			document.body.classList.add('freeze');
+
+			// Activate search overlay window. 
+			this.searchoverlay.classList.add('active');
+		}
+		
+		// Close search overlay window. 
+		else {
+
+			// De-activate search overlay window. 
+			this.searchoverlay.classList.remove('active');
+
+			// Un-freeze background page scrolling. 
+			document.body.classList.remove('freeze');
+		}
+	}
+
+	// Open search overlay. 
+	openSearchOverlay() {
+		console.log('Opening live search overlay...');
+
+		// Open search overlay window. 
+		this.setOverlayState(true);
+
+		// Prepare to search. 
+		setTimeout( prepareToSearch.bind(this), this.dt );
+
+		// Update open/close state of live search. 
+		this.overlaycurrentlyopen = true;
+
+		/*****/
+
+		// Prepare to search. 
+		function prepareToSearch() {
+
+			// Bring focus to text field. 
+			this.searchqueryfield.focus();
+		}
+	}
+
+	// Close search overlay. 
+	closeSearchOverlay() {
+		console.log('Closing live search overlay...');
+
+		// Close search overlay window. 
+		this.setOverlayState(false);
+
+		// Clear search query and results. 
+		setTimeout( clearOutSearch.bind(this), this.dt );
+
+		// Update open/close state of live search. 
+		this.overlaycurrentlyopen = false;
+
+		/*****/
+
+		// Clear search query and results. 
+		function clearOutSearch() {
+
+			// Clear contents of text field. 
+			this.clearSearchQuery();
+
+			// Remove focus from text field. 
+			this.clearSearchResults();
+		}
+	}
+
+
 	// Clear previous search query. 
 	clearSearchQuery() {
 
@@ -282,20 +357,20 @@ class LiveSearchOverlay {
 		// Clear previous search results. 
 		this.clearSearchResults();
 
-		// Load new search results (if query present). 
+		// Turn on loader (if query present). 
 		if(this.searchqueryfield.value) {
 
-			// Turn on results loader. 
+			// Display results loader. 
 			if(!this.currentlyloadingresults) this.updateResultsLoader(true);
 
-			// Start timer for new search results. 
+			// Start timer: Load new search results. 
 			this.searchresultstimer = setTimeout(this.displaySearchResults.bind(this), this.dt);
 		}
 
-		// Stop loading (if no query present). 
+		// Turn off loader (if no query present). 
 		else {
 
-			// Turn off results loader. 
+			// Remove results loader. 
 			this.updateResultsLoader(false);
 		}
 
@@ -309,7 +384,6 @@ class LiveSearchOverlay {
 
 		// Update loading state for search results. 
 		this.currentlyloadingresults = newstate;
-		
 
 		// Turn on results loader. 
 		if(this.currentlyloadingresults) {
@@ -343,7 +417,7 @@ class LiveSearchOverlay {
 		console.log('Results matrix:',originalResultsMatrix);
 		
 		// Generate matching search results. 
-		getMatchingResults();
+		getMatchingResults('title');
 		
 		// Initialize layout for search results. 
 		let fullsearchresultslayout = '';
@@ -367,7 +441,7 @@ class LiveSearchOverlay {
 
 
 		// Generate matching search results. 
-		function getMatchingResults() {
+		function getMatchingResults(attributekey) {
 	
 			// Go thru each result block. 
 			for(let currentresultblock of originalResultsMatrix) {
@@ -382,22 +456,23 @@ class LiveSearchOverlay {
 
 			/****/
 
-			// Check match between result item and current search query (case insensitive).
+			// Check given result item for match with search query (case insensitive).
 			function checkQueryMatch(resultitem) {
 			
-				// Define parameters of current search. 
-				let doTitleSearch = false;
+				// Define parameters of search. 
+				let doSimpleSearch = true;
 				let doSelectiveSearch = true;
 	
-				// Check for simple match (by title) with search query (case insensitive). 
-				if(doTitleSearch) {
+				// Check for simple match (by attribute value) with search query (case insensitive). 
+				if(doSimpleSearch) {
 	
-					// Get title for given result item. 
-					let resultitemtitle = resultitem['title'];
+					// Get attribute value for given result item. 
+					let resultitemattributevalue = resultitem[attributekey];
+					// console.log('resultitemattributevalue:',resultitemattributevalue);
 	
-					// Check for matching title. 
-					// return ( resultitemtitle.toUpperCase() ).includes( searchquery.toUpperCase() );
-					return checkQueryMatchAllWords(resultitemtitle);
+					// Check for matching attribute value. 
+					// return resultitemattributevalue ? checkQueryMatchAllWords(resultitemattributevalue) : null;
+					return resultitemattributevalue ? checkQueryMatchAnyWord(resultitemattributevalue) : null;
 				}
 	
 				// Perform search only on selected tags. 
@@ -414,8 +489,8 @@ class LiveSearchOverlay {
 					for(let tag of resultitem.searchtags) {
 	
 						// Check for match between search query and current search tag. 
-						// let matchOn = ( tag.toUpperCase() ).includes( searchquery.toUpperCase() );
-						let matchOn = checkQueryMatchAllWords(tag);
+						// let matchOn = checkQueryMatchAllWords(tag);
+						let matchOn = checkQueryMatchAnyWord(tag);
 						// Return true if any match found. 
 						if(matchOn) return true;
 						else continue;
@@ -436,8 +511,8 @@ class LiveSearchOverlay {
 						let keyvalue = resultitem[key].toString();
 	
 						// Check for match in value of current property. 
-						// let foundMatch = ( keyvalue.toUpperCase() ).includes( searchquery.toUpperCase() );
-						let foundMatch = checkQueryMatchAllWords(keyvalue);
+						// let foundMatch = checkQueryMatchAllWords(keyvalue);
+						let foundMatch = checkQueryMatchAnyWord(keyvalue);
 	
 						// End search upon finding match (proceeding to next post item). 
 						if(foundMatch) return true;
@@ -532,7 +607,7 @@ class LiveSearchOverlay {
 						<!-- /caption -->
 
 						<!-- count -->
-						<span class="count">${ resultblockmatchcount }</span>
+						<span class="count">${ resultblockmatchcount ? resultblockmatchcount : '' }</span>
 						<!-- /count -->
 
 					</h2>
@@ -562,15 +637,18 @@ class LiveSearchOverlay {
 	
 					// Get plural name of current post type. 
 					let resultnameplural = resultblock['searchlabel'].plural;
+					// console.log('Result name plural:',resultnameplural);
 
 					// Get caption for null label. 
-					let nullresultcaption = `No ${resultnameplural} match that search.`;
+					// let nullresultcaption = `No ${resultnameplural} match that search`;
+					let nullresultcaption = `No matches found`;
+					// console.log('Null result caption:',nullresultcaption);
 
-					// Get caption for archive link. 
-					let archivelinkcaption = `View all ${resultnameplural}`;
-	
 					// Get archive url for post type of given result block. 
 					let archiveurl = resultblock.archivefolderpath;
+					// Get caption for archive link of given result block. 
+					let archivelinkcaption = `View all ${resultnameplural}`;
+					console.log('Archive link:',archiveurl,archivelinkcaption);
 
 					// Compile layout. 
 					return `
@@ -723,7 +801,7 @@ class LiveSearchOverlay {
 					// Get search result name for given post types: blog posts, programs, courses, events, people. 
 					// if(type=='post' || type=='program' || type=='course' || type=='event' || type=='faculty' || type=='student')
 					
-					// Return name of result item. 
+					// TODO: Return name of result item. 
 					return resultitem['title'];
 				}
 
@@ -760,7 +838,7 @@ class LiveSearchOverlay {
 					let user = userData[id];
 					// console.log('\t\tUser:',user);
 					
-					// Return string of user's first and last name. 
+					// TODO: Return string of user's first and last name. 
 					let authorname = user['title'];
 					return authorname;
 				}
@@ -819,81 +897,6 @@ class LiveSearchOverlay {
 		}
 	}
 
-
-	// Open search overlay. 
-	openSearchOverlay() {
-		console.log('Opening live search overlay...');
-
-		// Freeze background page scrolling. 
-		this.setBodyFreeze(true);
-
-		// Activate search overlay window. 
-		this.setOverlayState(true);
-
-		// Prepare to search. 
-		setTimeout( prepareToSearch.bind(this), this.dt );
-
-		// Update open/close state of live search. 
-		this.overlaycurrentlyopen = true;
-
-		/*****/
-
-		// Prepare to search. 
-		function prepareToSearch() {
-
-			// Bring focus to text field. 
-			this.searchqueryfield.focus();
-		}
-	}
-
-	// Close search overlay. 
-	closeSearchOverlay() {
-		console.log('Closing live search overlay...');
-
-		// De-activate search overlay window. 
-		this.setOverlayState(false);
-
-		// Un-freeze background page scrolling. 
-		this.setBodyFreeze(false);
-
-		// Clear search query and results. 
-		setTimeout( clearOutSearch.bind(this), this.dt );
-
-		// Update open/close state of live search. 
-		this.overlaycurrentlyopen = false;
-
-		/*****/
-
-		// Clear search query and results. 
-		function clearOutSearch() {
-
-			// Clear contents of text field. 
-			this.clearSearchQuery();
-
-			// Remove focus from text field. 
-			this.clearSearchResults();
-		}
-	}
-
-	// Set state of search overlay window. 
-	setOverlayState(showOverlay) {
-
-		// Open search overlay window. 
-		if(showOverlay) this.searchoverlay.classList.add('active');
-		
-		// Close search overlay window. 
-		else this.searchoverlay.classList.remove('active');
-	}
-
-	// Set state of background page scrolling/freezing. 
-	setBodyFreeze(doFreeze) {
-
-		// Freeze background page scrolling. 
-		if(doFreeze) document.body.classList.add('freeze');
-		
-		// Un-freeze background page scrolling. 
-		else document.body.classList.remove('freeze');
-	}
 
 	// Handle keyboard shortcuts. 
 	dispatchKeyPress(event) {

@@ -87,9 +87,9 @@ div#container div#searchoverlay section.body div#searchresults h1.resultshead.no
 div#container div#searchoverlay section.body div#searchresults div.resultsbody {display:grid; grid-template-columns:repeat( var(--gridcolumns) ,1fr); --gridcolumns:4;}
 div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock {/* padding:2rem 1.5rem; */ /* border:1px solid #FFF3; */ /* border-radius:.5rem; */ margin:2rem 2rem 0 0; /* text-align:center; */}
 div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead {color:var(--resultsetheadforecolor); font-size:1.125em; padding-bottom:.5rem; border-bottom:1px solid #FFF3; margin:0;}
-div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead {display:flex; flex-direction:row; justify-content:space-between;}
-/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.caption {} */
-/* div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.count */
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.count {font-size:.875em;}
+div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock h2.blockhead span.caption {font-size:1em;}
 div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist {list-style:none; padding:0; margin:0; margin-top:.75rem;}
 div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist.visual {display:flex; flex-direction:row; flex-wrap:wrap;}
 div#container div#searchoverlay section.body div#searchresults div.resultsbody div.resultblock ul.resultlist li.resultitem {margin-top:.5rem;}
