@@ -313,19 +313,23 @@ class LiveSearchOverlay {
 		// GeT matching search results. 
 		getMatchingResults('title');
 		
+		// // Get total number of search result items. 
+		let resultscount = countTotalResults('itemlist');
+		// Get total number of matching search result items. 
+		let matchingresultscount = countTotalResults('matchingitemlist');
+		console.log('Matching result items:',matchingresultscount,'of',resultscount);
+		
 		// Initialize layout for search results. 
 		let fullsearchresultslayout = '';
-
 		// Add layout for search results body. 
 		fullsearchresultslayout += createResultsBodyLayout();
-
 		// Add layout for search results header. 
 		fullsearchresultslayout += createResultsHeaderLayout();
 		
 		// Display layout for search results on page. 
 		(this.searchresultsdestination).innerHTML = fullsearchresultslayout;
-		// console.log('Search results layout:',fullsearchresultslayout);
 		// console.log('Search results destination:',this.searchresultsdestination);
+		// console.log('Search results layout:',fullsearchresultslayout);
 
 		// Turn off results loader. 
 		this.updateResultsLoader(false);
@@ -336,16 +340,20 @@ class LiveSearchOverlay {
 
 		// GeT matching search results. 
 		function getMatchingResults(singleattributekey) {
+
+			// Define to show details. 
+			let showDetails = false;
 	
 			// Go thru each result block. 
 			for(let currentresultblock of originalResultsMatrix) {
-				console.log(`\tSearching ${ currentresultblock['searchlabel'].plural }...`,currentresultblock,currentresultblock.itemlist,currentresultblock.matchingitemlist);
-
+				if(showDetails) console.log(`\tSearching ${ currentresultblock.itemlist.length } ${ currentresultblock['searchlabel'].plural }...`/* ,currentresultblock */);
+				
 				// Save list of matching items for current result block. 
 				currentresultblock.matchingitemlist = currentresultblock.itemlist.filter(checkQueryMatch);
-	
+				
 				// Share number of results found for current result block. 
-				console.log( `\t\t${currentresultblock.matchingitemlist.length} result(s) found` );
+				if(showDetails) console.log( `\t\t Matches found: ${ currentresultblock.matchingitemlist.length } of ${ currentresultblock.itemlist.length }` );
+				if(showDetails) console.log(`\t\t`, currentresultblock.matchingitemlist , currentresultblock.itemlist/* ,currentresultblock */);
 			}
 
 			/****/
@@ -355,18 +363,18 @@ class LiveSearchOverlay {
 
 				// Go thru each attribute of given result item. 
 				// for(let attributevalue of resultitem) console.log(attributevalue);
-				for(let attributekey in resultitem) console.log('attribute:',attributekey,resultitem[attributekey].toString());
+				// for(let attributekey in resultitem) console.log('attribute:',attributekey,resultitem[attributekey].toString());
 			
 				// Define parameters of search. 
 				let doSearchBySingleAttribute = false;
-				let doSearchByTag = true;
+				let doSearchByTag = false;
 	
 				// Check for match by single attribute value. 
 				if(doSearchBySingleAttribute) {
 	
 					// Get attribute value for given result item. 
 					let attributevalue = resultitem[singleattributekey];
-					// console.log('Result item attribute value:',attributevalue);
+					// console.log('Result item attribute:',singleattributekey,attributevalue);
 	
 					// Check for matching attribute value. 
 					// return attributevalue ? checkQueryMatchAllWords(attributevalue) : null;
@@ -390,12 +398,12 @@ class LiveSearchOverlay {
 				
 					// Go thru each attribute for given result item. 
 					for(let attributekey in resultitem) {
-						// console.log(attributekey);
-	
-						// Get attribute value for current attribute key. 
+						
+						// Get value for current attribute. 
 						let attributevalue = resultitem[attributekey].toString();
+						// console.log('Current attribute:',attributekey,attributevalue);
 
-						// Check for matching attribute value on current attribute. 
+						// Check for matching value on current attribute. 
 						// let matchingattributefound = checkQueryMatchAllWords(attributevalue);
 						let matchingattributefound = checkQueryMatchAnyWord(attributevalue);
 	
@@ -515,6 +523,9 @@ class LiveSearchOverlay {
 				// Create list layout for block with matching results. 
 				function createResultListLayout() {
 
+					// Define to show details. 
+					let showDetails = false;
+
 					// Get archive url for post type of given result block. 
 					let archiveurl = resultblock.archivefolderpath;
 
@@ -532,7 +543,7 @@ class LiveSearchOverlay {
 
 					// Get caption for archive link of given result block. 
 					let archivelinkcaption = `View all ${resultnameplural}`;
-					console.log('Archive link:',archiveurl,archivelinkcaption);
+					if(showDetails) console.log('Archive link:',archiveurl,archivelinkcaption);
 
 					// Compile list layout for block with no matching results. 
 					return `
@@ -690,7 +701,7 @@ class LiveSearchOverlay {
 						
 						// Get post id. 
 						let postid = resultitem[idkey];
-						console.log(`\t\t\tPost id (${resultitem.posttype}): '${postid}'`);
+						// console.log(`\t\t\tPost id (${resultitem.posttype}): '${postid}'`);
 						
 						// Handle registered post type (valid string or number). 
 						if( postid || !isNaN(postid) ) return postid;
@@ -754,14 +765,6 @@ class LiveSearchOverlay {
 
 		// Create layout for search results header. 
 		function createResultsHeaderLayout() {
-		
-			// // Get total number of search result items. 
-			// let resultscount = countTotalResults('itemlist');
-			// console.log('All result items:',resultscount);
-
-			// Get total number of matching search result items. 
-			let matchingresultscount = countTotalResults('matchingitemlist');
-			console.log('Matching result items:',matchingresultscount);
 
 			// Compile layout for search results header. 
 			return `
@@ -778,29 +781,27 @@ class LiveSearchOverlay {
 	
 			</h1>
 			<!-- /resultshead -->`;
+		}
 
-			/****/
+		// Count total number of result items in result matrix. 
+		function countTotalResults(listkey) {
 
-			// Count total number of result items in result matrix. 
-			function countTotalResults(listkey) {
-	
-				// Initialize total number of result items. 
-				let totalresultcount = 0;
-	
-				// Go thru each block in result matrix. 
-				for(let resultblock of originalResultsMatrix) {
-	
-					// Increment total number of result items. 
-					totalresultcount += resultblock[listkey].length;
-	
-					// // Go thru each item in result list of result block. 
-					// for(let resultitem of resultblockitemlist) {
-					// }
-				}
-	
-				// Return total number of result items in selected list. 
-				return totalresultcount;
+			// Initialize total number of result items. 
+			let totalresultcount = 0;
+
+			// Go thru each block in result matrix. 
+			for(let resultblock of originalResultsMatrix) {
+
+				// Increment total number of result items. 
+				totalresultcount += resultblock[listkey].length;
+
+				// // Go thru each item in result list of result block. 
+				// for(let resultitem of resultblockitemlist) {
+				// }
 			}
+
+			// Return total number of result items in selected list. 
+			return totalresultcount;
 		}
 	}
 
