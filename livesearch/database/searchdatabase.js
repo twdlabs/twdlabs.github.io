@@ -29,7 +29,7 @@ const defaultResultSet = [
 		},
 		itemlist: alphabetData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'U.S. Presidents',
@@ -40,7 +40,7 @@ const defaultResultSet = [
 		},
 		itemlist: presidentData,
 		matchingitemlist: [],
-		visual:true,
+		usevisual:true,
 	},
 	{
 		blockname:'American Universities',
@@ -51,7 +51,7 @@ const defaultResultSet = [
 		},
 		itemlist: universityData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Social Media Platforms',
@@ -62,7 +62,7 @@ const defaultResultSet = [
 		},
 		itemlist: socialData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Months of the Year',
@@ -73,7 +73,7 @@ const defaultResultSet = [
 		},
 		itemlist: monthData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Astrological Zodiac',
@@ -84,7 +84,7 @@ const defaultResultSet = [
 		},
 		itemlist: zodiacData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Numbers',
@@ -95,7 +95,7 @@ const defaultResultSet = [
 		},
 		itemlist: numberData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Planets',
@@ -106,7 +106,7 @@ const defaultResultSet = [
 		},
 		itemlist: planetData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Days of the Week',
@@ -117,7 +117,7 @@ const defaultResultSet = [
 		},
 		itemlist: dayData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Seasons',
@@ -128,7 +128,7 @@ const defaultResultSet = [
 		},
 		itemlist: seasonData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 
 	// {
@@ -153,7 +153,7 @@ const defaultResultSet = [
 	// 		},
 	// 	],
 	// 	matchingitemlist: [],
-	// 	visual:false,
+	// 	usevisual:false,
 	// },
 	
 ];

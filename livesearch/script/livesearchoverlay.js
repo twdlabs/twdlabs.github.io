@@ -24,7 +24,7 @@ class LiveSearchOverlay {
 		this.searchresultsdestination = searchoverlay.querySelector('section.body div#searchresults');
 
 		// Get page elements for open/close buttons. 
-		this.openbtn = openbtn;
+		if(openbtn) this.openbtn = openbtn;
 		// this.closebtn = closebtn;
 		this.closebtn = searchoverlay.querySelector('section.head div.querybox div.closebtn');
 
@@ -117,113 +117,7 @@ class LiveSearchOverlay {
 					<div class="grid">
 					
 						<!-- #searchresults -->
-						<div id="searchresults">
-	
-							<!-- resultshead -->
-							<h1 class="resultshead" style="display:none;">
-	
-								<!-- searchquery -->
-								<span class="searchquery">"searchquerygoeshere"</span>
-								<!-- /searchquery -->
-	
-								<!-- resultcount -->
-								<span class="resultcount">0</span>
-								<!-- /resultcount -->
-	
-							</h1>
-							<!-- /resultshead -->
-	
-							<!-- resultsbody -->
-							<div class="resultsbody">
-	
-								<!-- resultblock -->
-								<div class="resultblock" style="display:none;">
-		
-									<!-- blockhead -->
-									<h2 class="blockhead">
-										
-										<!-- caption -->
-										<span class="caption">Result Head</span>
-										<!-- /caption -->
-	
-										<!-- count -->
-										<span class="count">0</span>
-										<!-- /count -->
-	
-									</h2>
-									<!-- /blockhead -->
-			
-									<!-- resultlist -->
-									<ul class="resultlist visual">
-			
-										<!-- resultitem -->
-										<li class="resultitem">
-			
-											<!-- resultlink -->
-											<a class="resultlink" href="javascript:void(0)" target="_blank">
-	
-												<!-- photo -->
-												<img class="photo" src="" alt="Name" title="Name">
-												<!-- /photo -->
-	
-												<!-- caption -->
-												<span class="caption">Name</span>
-												<!-- /caption -->
-												
-											</a>
-											<!-- /resultlink -->
-			
-										</li>
-										<!-- /resultitem -->
-			
-									</ul>
-									<!-- /resultlist -->
-			
-									<!-- resultlist -->
-									<ul class="resultlist">
-			
-										<!-- resultitem -->
-										<li class="resultitem">
-			
-											<!-- resultlink -->
-											<a class="resultlink" href="javascript:void(0)" target="_blank">Result Link</a>
-											<!-- /resultlink -->
-	
-											<!-- caption -->
-											<span class="caption">by</span>
-											<!-- /caption -->
-			
-											<!-- authorlink -->
-											<a class="authorlink" href="javascript:void(0)" target="_blank">Author Link</a>
-											<!-- /authorlink -->
-			
-										</li>
-										<!-- /resultitem -->
-			
-										<!-- resultitem -->
-										<li class="resultitem">
-	
-											<!-- caption -->
-											<span class="caption">No xyzposts match that search.</span>
-											<!-- /caption -->
-											
-											<!-- archivelink -->
-											<a class="archivelink" href="javascript:void(0)" target="_blank">View all xyzposts</a>
-											<!-- /archivelink -->
-			
-										</li>
-										<!-- /resultitem -->
-			
-									</ul>
-									<!-- /resultlist -->
-		
-								</div>
-								<!-- /resultblock -->
-	
-							</div>
-							<!-- /resultsbody -->
-							
-						</div>
+						<div id="searchresults"></div>
 						<!-- /#searchresults -->
 						
 					</div>
@@ -243,7 +137,7 @@ class LiveSearchOverlay {
 	handleEvents() {
 
 		// Handle search overlay opening. 
-		this.openbtn.addEventListener( 'click', this.openSearchOverlay.bind(this) );
+		if(this.openbtn) this.openbtn.addEventListener( 'click', this.openSearchOverlay.bind(this) );
 
 		// Handle search overlay closing. 
 		this.closebtn.addEventListener( 'click', this.closeSearchOverlay.bind(this) );
@@ -416,7 +310,7 @@ class LiveSearchOverlay {
 		let originalResultsMatrix = defaultResultSet;
 		console.log('Results matrix:',originalResultsMatrix);
 		
-		// Generate matching search results. 
+		// GeT matching search results. 
 		getMatchingResults('title');
 		
 		// Initialize layout for search results. 
@@ -440,8 +334,8 @@ class LiveSearchOverlay {
 		/*****/
 
 
-		// Generate matching search results. 
-		function getMatchingResults(attributekey) {
+		// GeT matching search results. 
+		function getMatchingResults(singleattributekey) {
 	
 			// Go thru each result block. 
 			for(let currentresultblock of originalResultsMatrix) {
@@ -458,73 +352,64 @@ class LiveSearchOverlay {
 
 			// Check given result item for match with search query (case insensitive).
 			function checkQueryMatch(resultitem) {
+
+				// Go thru each attribute of given result item. 
+				// for(let attributevalue of resultitem) console.log(attributevalue);
+				for(let attributekey in resultitem) console.log('attribute:',attributekey,resultitem[attributekey].toString());
 			
 				// Define parameters of search. 
-				let doSimpleSearch = true;
-				let doSelectiveSearch = true;
+				let doSearchBySingleAttribute = false;
+				let doSearchByTag = true;
 	
-				// Check for simple match (by attribute value) with search query (case insensitive). 
-				if(doSimpleSearch) {
+				// Check for match by single attribute value. 
+				if(doSearchBySingleAttribute) {
 	
 					// Get attribute value for given result item. 
-					let resultitemattributevalue = resultitem[attributekey];
-					// console.log('resultitemattributevalue:',resultitemattributevalue);
+					let attributevalue = resultitem[singleattributekey];
+					// console.log('Result item attribute value:',attributevalue);
 	
 					// Check for matching attribute value. 
-					// return resultitemattributevalue ? checkQueryMatchAllWords(resultitemattributevalue) : null;
-					return resultitemattributevalue ? checkQueryMatchAnyWord(resultitemattributevalue) : null;
+					// return attributevalue ? checkQueryMatchAllWords(attributevalue) : null;
+					return attributevalue ? checkQueryMatchAnyWord(attributevalue) : false;
 				}
 	
-				// Perform search only on selected tags. 
-				else if(doSelectiveSearch) {
-				
-					// Old implementation: before data structure update (search tags of searchable post items). 
-					// Get case-insensitive search check components: search tags, search query. 
-					// let runontagstring = ( resultitem['searchtags'] ).toUpperCase();
-					// Check for match within run-on search tag. 
-					// return ( (runontagstring).includes( searchquery.toUpperCase() ) );
-	
-					// New implementation: after data structure update (search tags of searchable post items). 
-					// Check for match within list of search tags. 
-					for(let tag of resultitem.searchtags) {
-	
-						// Check for match between search query and current search tag. 
-						// let matchOn = checkQueryMatchAllWords(tag);
-						let matchOn = checkQueryMatchAnyWord(tag);
-						// Return true if any match found. 
-						if(matchOn) return true;
-						else continue;
-					}
-	
-					// Return false if no match found. 
-					return false;
+				// Check for match by search tag. 
+				else if(doSearchByTag) {
+
+					// Get search tag for given result item. 
+					let searchtag = resultitem['searchtag'];
+					// console.log('Result item search tag:',searchtag);
+
+					// Check for matching attribute value. 
+					// return resultitem.searchtag ? checkQueryMatchAllWords(resultitem.searchtag) : false;
+					return searchtag ? checkQueryMatchAnyWord(searchtag) : false;
 				}
 	
-				// Otherwise, do all-out search on all properties of given item. 
+				// Check for match by all properties. 
 				else {
 				
-					// Check for match with search query (any property, case insensitive). 
-					for(let key in resultitem) {
-						// console.log(key);
+					// Go thru each attribute for given result item. 
+					for(let attributekey in resultitem) {
+						// console.log(attributekey);
 	
-						// Get case-insensitive search check component. 
-						let keyvalue = resultitem[key].toString();
+						// Get attribute value for current attribute key. 
+						let attributevalue = resultitem[attributekey].toString();
+
+						// Check for matching attribute value on current attribute. 
+						// let matchingattributefound = checkQueryMatchAllWords(attributevalue);
+						let matchingattributefound = checkQueryMatchAnyWord(attributevalue);
 	
-						// Check for match in value of current property. 
-						// let foundMatch = checkQueryMatchAllWords(keyvalue);
-						let foundMatch = checkQueryMatchAnyWord(keyvalue);
-	
-						// End search upon finding match (proceeding to next post item). 
-						if(foundMatch) return true;
+						// Assume true if matching attribute found. 
+						if(matchingattributefound) return true;
 					}
 					
-					// Return false if match not found. 
+					// Assume false if no matching attribute found. 
 					return false;
 				}
 	
 				/***/
 	
-				// Check given string for match with all words in search query. 
+				// Check given string for match with all words in search query (case insensitive). 
 				function checkQueryMatchAllWords(string) {
 	
 					// Check for multiple words in search query. 
@@ -549,7 +434,7 @@ class LiveSearchOverlay {
 					return true;
 				}
 	
-				// Check given string for match with any word in search query. 
+				// Check given string for match with any word in search query (case insensitive). 
 				function checkQueryMatchAnyWord(string) {
 	
 					// Check for multiple words in search query. 
@@ -614,8 +499,8 @@ class LiveSearchOverlay {
 					<!-- /blockhead -->
 			
 					<!-- resultlist -->
-					<ul class="resultlist${ (resultblock.visual) ? (' visual') : ('') }">
-						${ (resultblockmatchcount>0) ? createResultListLayout() : createNullResultListLayout() }
+					<ul class="resultlist${ (resultblock.usevisual) ? (' visual') : ('') }">
+						${ createResultListLayout() }
 					</ul>
 					<!-- /resultlist -->
 	
@@ -629,11 +514,12 @@ class LiveSearchOverlay {
 
 				// Create list layout for block with matching results. 
 				function createResultListLayout() {
-					return resultblock.matchingitemlist.map( (resultitem) => createResultItemLayout(resultitem,resultblock.archivefolderpath) ).join('');
-				}
 
-				// Create list layout for block with no matching results. 
-				function createNullResultListLayout() {
+					// Get archive url for post type of given result block. 
+					let archiveurl = resultblock.archivefolderpath;
+
+					// Compile list layout for block with matching results. 
+					if(resultblockmatchcount>0) return resultblock.matchingitemlist.map( (resultitem) => createResultItemLayout(resultitem,archiveurl) ).join('');
 	
 					// Get plural name of current post type. 
 					let resultnameplural = resultblock['searchlabel'].plural;
@@ -644,13 +530,11 @@ class LiveSearchOverlay {
 					let nullresultcaption = `No matches found`;
 					// console.log('Null result caption:',nullresultcaption);
 
-					// Get archive url for post type of given result block. 
-					let archiveurl = resultblock.archivefolderpath;
 					// Get caption for archive link of given result block. 
 					let archivelinkcaption = `View all ${resultnameplural}`;
 					console.log('Archive link:',archiveurl,archivelinkcaption);
 
-					// Compile layout. 
+					// Compile list layout for block with no matching results. 
 					return `
 					<!-- resultitem -->
 					<li class="resultitem">
@@ -658,9 +542,15 @@ class LiveSearchOverlay {
 						<!-- caption -->
 						<span class="caption">${nullresultcaption}</span>
 						<!-- /caption -->
-						
+
 						<!-- archivelink -->
-						<a class="archivelink" href="${ archiveurl ? getRelativeUrl(archiveurl) : 'javascript:void(0)'}" target="_blank">${archivelinkcaption}</a>
+						<a class="archivelink" href="${ archiveurl ? getRelativeUrl(archiveurl) : 'javascript:void(0)'}" target="_blank">
+
+							<!-- caption -->
+							<span class="caption">${archivelinkcaption}</span>
+							<!-- /caption -->
+							
+						</a>
 						<!-- /archivelink -->
 	
 					</li>
@@ -677,13 +567,13 @@ class LiveSearchOverlay {
 				// Get post name for current result. 
 				let resultname = getResultName(resultitem);
 
-				// Return layout for blog post. 
+				// Create layout for blog post. 
 				if(resultitem.posttype=='post') return createBlogPostResultItemLayout();
 
-				// Return layout for visual post. 
-				else if(resultitem.visual) return createVisualResultItemLayout();
+				// Create layout for visual post. 
+				else if(resultitem.usevisual) return createVisualResultItemLayout();
 
-				// Return layout for regular post. 
+				// Create layout for regular post. 
 				else return createRegResultItem();
 
 				/***/
@@ -693,9 +583,15 @@ class LiveSearchOverlay {
 					return `
 					<!-- resultitem -->
 					<li class="resultitem">
-						
+			
 						<!-- resultlink -->
-						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">${ resultname }</a>
+						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">
+
+							<!-- caption -->
+							<span class="caption">${ resultname }</span>
+							<!-- /caption -->
+
+						</a>
 						<!-- /resultlink -->
 						
 					</li>
@@ -739,20 +635,31 @@ class LiveSearchOverlay {
 					return `
 					<!-- resultitem -->
 					<li class="resultitem">
-						
+					
 						<!-- resultlink -->
-						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">${ resultname }</a>
+						<a class="resultlink" href="${ resulturl ? getRelativeUrl(resulturl) : 'javascript:void(0)' }" target="_blank">
+
+							<!-- caption -->
+							<span class="caption">${ resultname }</span>
+							<!-- /caption -->
+
+						</a>
 						<!-- /resultlink -->
 						
 						<!-- caption -->
 						<span class="caption">by</span>
 						<!-- /caption -->
 						
-						
 						<!-- authorlink -->
-						<a class="authorlink" href="${ authorurl ? getRelativeUrl(authorurl) : 'javascript:void(0)' }" target="_blank">${ authorname }</a>
+						<a class="authorlink" href="${ authorurl ? getRelativeUrl(authorurl) : 'javascript:void(0)' }" target="_blank">
+
+							<!-- caption -->
+							<span class="caption">${ authorname }</span>
+							<!-- /caption -->
+
+						</a>
 						<!-- /authorlink -->
-						
+
 					</li>
 					<!-- /resultitem -->`;
 				}
@@ -947,37 +854,50 @@ class LiveSearchOverlay {
 /*****/
 
 
-// Add additional result properties. 
-addResultProperties();
+// Add searchable tags to result items. 
+addSearchAbility();
 // console.log(defaultResultSet);
 
 
 /*****/
 
 
-// Define additional result properties for search functionality. 
-function addResultProperties() {
+// Add searchable tags to result items for search functionality. 
+function addSearchAbility() {
+
+	// TODO: Define list of attributes to include in all search tags. 
+	const tagattributekeys = ['title','content',];
 
 	// Go thru each result block. 
 	for(let resultblock of defaultResultSet) {
 
-		// Go thru each result item in current block. 
+		// Go thru each result item in current result block. 
 		for(let resultitem of resultblock.itemlist) {
-			
-			// Get searchable result data. 
-			resultitem.searchtags = getResultTags(resultitem);
+
+			// Save searchable tag string for given result item. 
+			resultitem.searchtag = createSearchTag(resultitem);
 		}
 	}
 
 	/****/
 	
-	// Define searchable result tags. 
-	function getResultTags(resultitem) {
-	
-		// Compile searchable components for this post type: general result. 
-		let tagsources = [ resultitem.title, resultitem.content ];
+	// Create searchable tag string for given result item. 
+	function createSearchTag(resultitem) {
 		
-		// Return list of tags split by word. 
-		return tagsources.join(' ').split(' ');
+		// Initialize list of searchable values. 
+		let searchablevalues = [];
+
+		// Compile list of searchable values. 
+		for(let attributekey of tagattributekeys) {
+
+			// Get attribute value. 
+			let attributevalue = resultitem[attributekey];
+
+			// Save attribute value to list of searchable values. 
+			searchablevalues.push( attributevalue );
+		}
+		
+		// Return searchable tag string. 
+		return searchablevalues.join(' ');
 	}
 }
