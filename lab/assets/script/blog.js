@@ -3,6 +3,7 @@
 
 // Get components of featured section. 
 const featured = {
+	blockpresent:true,
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#featured'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist'),
 	postsdestinationa:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage ul.postlist.a'),
@@ -12,6 +13,7 @@ const featured = {
 
 // Get components of archive section. 
 const archive = {
+	blockpresent:true,
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#archive'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist li.postpage ul.postlist'),
@@ -20,6 +22,7 @@ const archive = {
 
 // Get components of category section. 
 const category = {
+	blockpresent:true,
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#category'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist li.postpage ul.postlist'),
@@ -28,6 +31,7 @@ const category = {
 
 // Get components of collection section. 
 const collection = {
+	blockpresent:true,
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#collection'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist li.postpage ul.postlist'),
@@ -35,19 +39,9 @@ const collection = {
 // console.log('Collection section:',collection);
 
 
-// Get componenets of search panel. 
-const searchpanel = {
-
-	// Get input field for search query. 
-	queryfield: document.querySelector('div#container section.blog div.grid div.head div.modpanel input#filtersearchquery'),
-
-	// Get clear button for search panel. 
-	clearbtn: document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn'),
-
-	// Get label for empty results. 
-	emptylabel: document.querySelector('div#container section.blog div.grid div.body div.posts div.emptylabel'),
-};
-// console.log('Search panel:',searchpanel);
+// Get indicator label for empty set of results. 
+const nullresultslabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.nullresultslabel');
+// console.log('Null results label:',nullresultslabel);
 
 
 /*****/
@@ -55,6 +49,7 @@ const searchpanel = {
 
 // Set flag for memory load (previews on by default). 
 let allowPreview = true;
+allowPreview = false;
 
 // Define if pagination on. 
 let paginationOn = true;
@@ -264,20 +259,20 @@ function loadBlog(selectedfilteritems) {
 					function createBlogCard(post,previewsOn) {
 						// if(!post) console.warn('\t\tNull project post', post);
 				
-						// Get project id for given post. 
+						// Get project id for given project post. 
 						let projectid = post ? post.projectid : '';
-						// Get project name for given post. 
+						// Get project name for given project post. 
 						let projectname = post ? post.projectname : '';
-						// Get category name for given post. 
-						let categoryname = getCategoryName(projectid);
-						// Get author name for given post. 
-						let authorname = post ? getAuthorName(post.authorid) : '';
+						// Get category name for given project post. 
+						let categoryname = getCategoryNameByProject(projectid);
+						// Get author name for given project post. 
+						let authorname = post ? getAuthorNameById(post.authorid) : '';
 				
 						// Get url of project to be added. 
 						// let projecturl = projectid ? getRelativeUrl(`./../${projectid}/index.html`) : 'javascript:void(0)';
 						let projecturl = projectid ? getRelativeUrl(`./library/project/?pid=${projectid}`) : 'javascript:void(0)';
 				
-						// Compile post card. 
+						// Compile post card for given project. 
 						return `
 						<!-- postcard -->
 						<li class="postcard${ !post ? ' x' : '' }" data-projectid="${projectid}" title="${projectid}">
@@ -320,7 +315,7 @@ function loadBlog(selectedfilteritems) {
 						/**/
 				
 						// Get category name for given project. 
-						function getCategoryName(projectid) {
+						function getCategoryNameByProject(projectid) {
 							if(!projectid) return '';
 				
 							// Go thru each project category. 
@@ -335,16 +330,6 @@ function loadBlog(selectedfilteritems) {
 				
 							// Return nothing if project not found in any category. 
 							return '';
-						}
-				
-						// Get author name for given project. 
-						function getAuthorName(authorid) {
-		
-							// Get author name. 
-							let authorname = authorData[authorid];
-		
-							// Return nothing if author not found. 
-							return (authorname ? authorname : '');
 						}
 					}
 				}
@@ -437,6 +422,9 @@ function loadBlog(selectedfilteritems) {
 		// Check if loading archive posts. 
 		if(!archive.pagesdestination) {
 			// console.log('\tBypass archive posts...');
+
+			// Mark block as not present. 
+			archive.blockpresent = false;
 			return;
 		}
 		console.log('Loading archive posts...');
@@ -448,9 +436,8 @@ function loadBlog(selectedfilteritems) {
 		// Load archive posts. 
 		loadPosts(archive,archiveProjects, false, false);
 
-		// 
-		if(archiveProjects.length) setEmptyResult(false);
-		else setEmptyResult(true);
+		// Set state of results block. 
+		setResultState(archiveProjects.length);
 	
 		/***/
 
@@ -468,6 +455,9 @@ function loadBlog(selectedfilteritems) {
 		// Check if loading category posts. 
 		if(!category.pagesdestination) {
 			// console.log('\tBypass category posts...');
+
+			// Mark block as not present. 
+			category.blockpresent = false;
 			return;
 		}
 		console.log('Loading category posts...');
@@ -501,6 +491,9 @@ function loadBlog(selectedfilteritems) {
 		// Check if loading collection posts. 
 		if(!collection.pagesdestination) {
 			// console.log('\tBypass collection posts...');
+
+			// Mark block as not present. 
+			collection.blockpresent = false;
 			return;
 		}
 		console.log('Loading collection posts...');
@@ -544,6 +537,9 @@ function loadBlog(selectedfilteritems) {
 		// if(!featured.postsdestinationa || !featured.postsdestinationb) {
 		if(!featured.pagesdestination) {
 			// console.log('\tBypass featured posts...');
+
+			// Mark block as not present. 
+			featured.blockpresent = false;
 			return;
 		}
 		console.log('Loading featured posts...');
@@ -620,16 +616,31 @@ function loadBlog(selectedfilteritems) {
 	}
 }
 
-// Set state of label for empty results. 
+// Set state of results block. 
+function setResultState(state) {
+	setEmptyResult(!state);
+}
+
+// Set state of null label in results block. 
 function setEmptyResult(state) {
 
-	// Disregard if empty label doesn't exist. 
-	if(typeof searchpanel.emptylabel == 'undefined') return;
+	// Disregard if empty label gone. 
+	if(typeof nullresultslabel == 'undefined') return;
 
-	// Label empty block. 
-	if(state) searchpanel.emptylabel.classList.add('on');
-	// Un-label non-empty block. 
-	else searchpanel.emptylabel.classList.remove('on');
+	// Get block of posts. 
+	const postblock = document.querySelector('div#container section.blog div.grid div.body div.posts');
+	// console.log('Posts block:',postblock);
+
+	// Label block as empty. 
+	if(state) {
+		postblock.classList.add('empty');
+		// nullresultslabel.classList.add('on');
+	}
+	// Label block as not empty. 
+	else {
+		postblock.classList.remove('empty');
+		// nullresultslabel.classList.remove('on');
+	}
 }
 
 // Create preview panel for blog post card. 

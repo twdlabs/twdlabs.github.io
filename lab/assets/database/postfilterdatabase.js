@@ -21,7 +21,7 @@ const postFilterData = [
 				frequency:0,
 			},
 		],
-		filteritemnamer:(authorid)=>( authorData[authorid] ),
+		filteritemnamer:getAuthorNameById,
 	},
 
 	{

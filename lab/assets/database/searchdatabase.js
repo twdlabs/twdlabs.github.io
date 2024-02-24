@@ -17,47 +17,57 @@ console.log(`Post register:`,postregister);
 const defaultResultSet = [
 	{
 		blockname:'Developers',
-		folderpath:'./authors',
+		archivefolderpath:'./authors',
+		archivefolderpath:'./',
 		searchlabel:{
 			plural:'developers',
 			singular:'developer',
 		},
 		itemlist: authorData,
+		itemlist: [],
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Projects',
-		folderpath:'./library/project/?pid=',
+		archivefolderpath:'./library',
+		archivefolderpath:'./project/?pid=',
+		archivefolderpath:'./',
 		searchlabel:{
 			plural:'projects',
 			singular:'project',
 		},
 		itemlist: projectData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Categories',
-		folderpath:'./category',
+		archivefolderpath:'./category',
+		archivefolderpath:'./',
 		searchlabel:{
 			plural:'categories',
 			singular:'category',
 		},
 		itemlist: projectCategoryData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 	{
 		blockname:'Collections',
-		folderpath:'./collection',
+		archivefolderpath:'./collection',
+		archivefolderpath:'./',
 		searchlabel:{
 			plural:'collections',
 			singular:'collection',
 		},
 		itemlist: projectCollectionData,
 		matchingitemlist: [],
-		visual:false,
+		usevisual:false,
 	},
 ];
 console.log(`Default result set:`,defaultResultSet);
+
+
+// Define list of attributes to include in search tag. 
+const searchtagattributekeys = ['title','content',];

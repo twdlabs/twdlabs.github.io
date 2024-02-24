@@ -29,6 +29,18 @@ const filterpanel = {
 // console.log('Filter panel:',filterpanel);
 
 
+// Get componenets of search panel. 
+const searchpanel = {
+
+	// Get input field for search query. 
+	queryfield: document.querySelector('div#container section.blog div.grid div.head div.modpanel input#filtersearchquery'),
+
+	// Get clear button for search panel. 
+	clearbtn: document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn'),
+};
+// console.log('Search panel:',searchpanel);
+
+
 /*****/
 
 
@@ -114,10 +126,8 @@ function activateBlogFilters() {
 				updatePostState(postcard, matchFound);
 			}
 
-			// Show label if no search results found. 
-			if(numMatchingPosts==0) setEmptyResult(true);
-			// Hide label if any search results found. 
-			else setEmptyResult(false);
+			// Set state of results block. 
+			setResultState(numMatchingPosts);
 
 			/**/
 
