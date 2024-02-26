@@ -44,8 +44,8 @@ div#container section.blog div.grid div.body div.posts {position:relative; overf
 
 /* Blog Section: Null Results Label */
 div#container section.blog div.grid div.body div.posts div.nullresultslabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
-/* div#container section.blog div.grid div.body div.posts div.nullresultslabel.on {display:block;} */
 div#container section.blog div.grid div.body div.posts.empty div.nullresultslabel {display:block;}
+/* div#container section.blog div.grid div.body div.posts div.nullresultslabel.on {display:block;} */
 
 /* Blog Section: Pages */
 div#container section.blog div.grid div.body div.posts ul.pagelist {display:flex; flex-direction:row; overflow:visible; transform:none; transition:.25s;}
@@ -188,36 +188,43 @@ div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.fi
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup h2.filterhead svg.icon.up {display:none;}
 /* div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup h2.filterhead span.caption {} */
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody {max-height:0; overflow:hidden;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist {display:flex; flex-direction:column; list-style:none; padding:0; padding:.5rem 0; margin:0;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.125rem .5rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist {display:flex; flex-direction:column; flex-flow:row wrap; list-style:none; padding:0; padding:.5rem; margin:0;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem {display:flex; flex-direction:row; align-items:center; font-weight:300; padding:.25rem 0; padding-right:.375rem;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front {display:flex; align-items:center; cursor:pointer; /* font-size:.875rem; */ --checksize:1.25rem;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.caption {margin-left:.375rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front {background-color:var(--backcolor2); padding:.375rem .75rem; border-radius:.875rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.caption {}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount {display:none;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount {color:var(--forecolor2); font-size:.75em; text-align:center;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount {background-color:var(--backcolor2); min-height:1em; min-width:1.25em; padding:0 .25rem; border-radius:.125em; margin-left:.125rem;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front span.matchcount:empty {/* display:none; */ margin-left:.375rem;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {/* display:block;  */height:var(--checksize); width:var(--checksize); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor);}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {display:block; height:var(--checksize); width:var(--checksize); padding:1px; border:1px solid var(--forecolor2); border-radius:.25rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {background-color:var(--backcolor); color:var(--backcolor); margin-right:.375rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem label.front svg.icon.check {display:none;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox {display:none; opacity:.125;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox:checked + label.front {background-color:var(--drkthemecolor); color:white;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup div.filterbody ul.itemslist li.filteritem input.checkbox:checked + label.front svg.icon.check {background-color:var(--themecolor); color:white;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup.open h2.filterhead svg.icon.dn {display:none;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup.open h2.filterhead svg.icon.up {display:block;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody ul.filterlist li.filtergroup.open div.filterbody {max-height:fit-content;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel {display:flex; flex-direction:column; flex-direction:row; /* justify-content:center; */ align-items:center; padding:.625em 1rem; padding-top:0;}
+/* Blog Section: Filter Panel Sub-Panel */
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.panel {padding:.625em 1rem; padding-top:0;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel {display:flex; flex-direction:column; flex-direction:row; /* justify-content:center; */ align-items:center;}
 /* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel {display:none;} */
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.btn {background-color:var(--drkthemecolor); background-color:var(--themecolor); width:100%; padding:.375em 1.5rem; border-radius:1em; margin:0 .5em; margin-top:.5rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.btn {background-color:var(--themecolor); background-color:var(--drkthemecolor); width:100%; padding:.375em 1.5rem; border-radius:1em; margin:0 .5em; margin-top:.5rem;}
 div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.btn {color:white; cursor:pointer; font-size:1.25rem; font-weight:500; text-align:center; user-select:none;}
 /* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.applybtn {display:none;} */
 /* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.clearbtn {display:none;} */
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row {display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice {cursor:pointer; user-select:none; margin:0 .875rem;}
-/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice.any {} */
-/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row span.choice.all {} */
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {background-color:var(--forecolor2); display:block; cursor:pointer; position:relative; padding:.125rem; border:1px solid var(--backcolor2); border-radius:3rem;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch {box-sizing:content-box; --ballsize:1.375rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch div.ball {background-color:var(--backcolor2); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch div.ball {transform:none; transition:.25s;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb {position:absolute; top:0; left:0; display:none;}
-div#container section.blog div.grid div.body div.filterpanel div.panelbody div.btnpanel div.row label.switch input.cb:checked + div.ball {--delta:100%; /* --delta:150%; */ transform:translateX( var(--delta) );}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel {display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel {display:none;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel span.choice {cursor:pointer; user-select:none; margin:0 .875rem;}
+/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel span.choice.any {} */
+/* div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel span.choice.all {} */
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel label.switch {background-color:var(--forecolor2); display:block; cursor:pointer; position:relative; padding:.125rem; border:1px solid var(--backcolor2); border-radius:3rem;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel label.switch {box-sizing:content-box; --ballsize:1.375rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel label.switch div.ball {background-color:var(--backcolor2); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel label.switch div.ball {transform:none; transition:.25s;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel label.switch input.cb {position:absolute; top:0; left:0; display:none;}
+div#container section.blog div.grid div.body div.filterpanel div.panelbody div.switchpanel label.switch input.cb:checked + div.ball {--delta:100%; /* --delta:150%; */ transform:translateX( var(--delta) );}
 
 
 

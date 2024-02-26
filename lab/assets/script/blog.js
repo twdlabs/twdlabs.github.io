@@ -101,6 +101,9 @@ function loadBlog(selectedfilteritems) {
 
 		// Display currently selected page. 
 		displaySelectedPage();
+
+		// Set state of results block. 
+		setResultState(projects.length);
 	
 		/***/
 
@@ -435,9 +438,6 @@ function loadBlog(selectedfilteritems) {
 	
 		// Load archive posts. 
 		loadPosts(archive,archiveProjects, false, false);
-
-		// Set state of results block. 
-		setResultState(archiveProjects.length);
 	
 		/***/
 
@@ -618,28 +618,32 @@ function loadBlog(selectedfilteritems) {
 
 // Set state of results block. 
 function setResultState(state) {
+
+	// Set state of null label in results block. 
 	setEmptyResult(!state);
-}
 
-// Set state of null label in results block. 
-function setEmptyResult(state) {
+	/****/
 
-	// Disregard if empty label gone. 
-	if(typeof nullresultslabel == 'undefined') return;
-
-	// Get block of posts. 
-	const postblock = document.querySelector('div#container section.blog div.grid div.body div.posts');
-	// console.log('Posts block:',postblock);
-
-	// Label block as empty. 
-	if(state) {
-		postblock.classList.add('empty');
-		// nullresultslabel.classList.add('on');
-	}
-	// Label block as not empty. 
-	else {
-		postblock.classList.remove('empty');
-		// nullresultslabel.classList.remove('on');
+	// Set state of null label in results block. 
+	function setEmptyResult(state) {
+	
+		// Disregard if empty label gone. 
+		if(typeof nullresultslabel == 'undefined') return;
+	
+		// Get block of posts. 
+		const postblock = document.querySelector('div#container section.blog div.grid div.body div.posts');
+		// console.log('Posts block:',postblock);
+	
+		// Label block as empty. 
+		if(state) {
+			postblock.classList.add('empty');
+			// nullresultslabel.classList.add('on');
+		}
+		// Label block as not empty. 
+		else {
+			postblock.classList.remove('empty');
+			// nullresultslabel.classList.remove('on');
+		}
 	}
 }
 

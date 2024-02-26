@@ -80,16 +80,20 @@ function activateBlogFilters() {
 		// Show blog posts that match given search query. 
 		function searchBlogPosts() {
 
-			// TODO: Do hard filter. 
-			if(dohardfilter=false) {
+			// Set filter style. 
+			let dohardfilter = true;
+			dohardfilter = false;
 
-				// Get search filter criteria. 
+			// Do hard filter. 
+			if(dohardfilter) {
+
+				// TODO: Get search filter criteria. 
 				let selectedfilteritems = [];
 
-				// Load matching posts for given search filter criteria. 
+				// TODO: Load matching posts for given search filter criteria. 
 				loadBlog(selectedfilteritems);
 
-				// Load new post filter groups into filter panel. 
+				// TODO: Load new post filter groups into filter panel. 
 				loadFilterGroups();
 
 				// 
@@ -114,7 +118,7 @@ function activateBlogFilters() {
 			for(let postcard of blogpostcards) {
 
 				// Get project id for given post. 
-				let projectid = postcard.getAttribute('data-projectid').toUpperCase();
+				let projectid = postcard.getAttribute('data-projectid');
 
 				// Check for matching post. 
 				let matchFound = checkForMatch(projectid);
@@ -134,6 +138,9 @@ function activateBlogFilters() {
 			// Check for matching post. 
 			function checkForMatch(projectid) {
 
+				// Capitalize project id. 
+				projectid = projectid.toUpperCase();
+
 				// Get search query of post filter. 
 				let filtersearchquery = searchpanel.queryfield.value.toUpperCase();
 				// Get list of words in search query. 
@@ -143,15 +150,31 @@ function activateBlogFilters() {
 				// Check for matching post (by full query). 
 				let matchFullQuery = projectid.includes(filtersearchquery);
 				// Check for matching post (by each word). 
-				let matchEveryWord = checkForMatchEveryWord(projectid,searchquerywords);
+				let matchEveryWord = checkForMatchAllWords(projectid,searchquerywords);
 
 				// Compile match criteria. 
 				return (matchFullQuery || matchEveryWord);
 
 				/**/
 
-				// Check for matching post (by each word). 
-				function checkForMatchEveryWord(projectid,searchquerywords) {
+				// Check for matching post (by all words). 
+				function checkForMatchAllWords(projectid,searchquerywords) {
+			
+					// Go thru each word in search query. 
+					for(let word of searchquerywords) {
+	
+						let wordPresent = projectid.includes(word);
+	
+						// Return false if any query word is missing. 
+						if(!wordPresent) return false;
+					}
+	
+					// Return true if passed (no query words missing). 
+					return true;
+				}
+
+				// Check for matching post (by any words). 
+				function checkForMatchAnyWord(projectid,searchquerywords) {
 			
 					// Go thru each word in search query. 
 					for(let word of searchquerywords) {
