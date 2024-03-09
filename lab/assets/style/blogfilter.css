@@ -14,24 +14,24 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype.open div.togglebtn svg.icon.dn {display:none;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype.open div.togglebtn svg.icon.up {display:block;}
 /* div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock {display:none;} */
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock {background-color:var(--drkthemecolor); opacity:.875; padding:.375rem 1rem; border-radius:2rem 2rem 0 0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock {background-color:var(--drkthemecolor); opacity:.95; padding:.375rem 1rem; border-radius:2rem 2rem 0 0;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock {position:fixed; right:0; bottom:0; left:0; min-height:50vh; width:100%; z-index:99;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock {transform:translateY(100%); transition:.25s ease-out;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype.open div.filterblock {/* display:block; */ transform:none;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock:before {background-color:var(--blackglass); display:block;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock:before {position:fixed; inset:0; z-index:-1;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype.open div.filterblock:before {content:'';}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.filterhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:white; padding:.5rem; border-bottom:.125rem solid var(--whiteglasss); margin-bottom:1em;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.filterhead div.donebtn {font-weight:600; cursor:pointer; padding:.25rem 0;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.filterhead h2.filtertypename {font-size:1.375em; font-weight:600; margin:0;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist {display:flex; list-style:none; padding:0; margin:0;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist {flex-direction:column; align-items:stretch;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist {flex-flow:row wrap;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist li.filteritem {font-weight:300; padding:.25rem 0; padding-right:.375rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist li.filteritem label.front {background-color:var(--backcolor2); cursor:pointer;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist li.filteritem label.front {display:flex; align-items:center; padding:.375rem .75rem; border-radius:.875rem;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist li.filteritem label.front span.caption {}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock ul.itemslist li.filteritem label.front span.matchcount {display:none;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockhead {display:flex; flex-direction:row; justify-content:space-between; align-items:center; color:white; padding:.5rem; border-bottom:.125rem solid var(--whiteglasss); margin-bottom:.875rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockhead div.donebtn {font-weight:600; cursor:pointer; padding:.25rem 0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockhead h2.filtertypename {font-size:1.375em; font-weight:600; margin:0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody {}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist {display:flex; list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist {flex-direction:column; align-items:stretch;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist {flex-flow:row wrap;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem {font-weight:300; margin:.25rem 0; margin-right:.375rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem label.front {background-color:var(--backcolor2); cursor:pointer;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem label.front {display:flex; align-items:center; padding:.375rem .75rem; border-radius:.875rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem label.front span.caption {}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.blockunderlay {background-color:var(--blacksheet); display:none;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.blockunderlay {position:fixed; inset:0; z-index:98;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype.open div.blockunderlay {display:block;}
 
 
 /* Blog Section: Filter Pane */

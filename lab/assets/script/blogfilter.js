@@ -309,11 +309,15 @@ function activateBlogFilters() {
 				</div>
 				<!-- /togglebtn -->
 
+				<!-- blockunderlay -->
+				<div class="blockunderlay" onclick="this.parentElement.classList.remove('open')"></div>
+				<!-- /blockunderlay -->
+
 				<!-- filterblock -->
 				<div class="filterblock">
 
-					<!-- filterhead -->
-					<div class="filterhead">
+					<!-- blockhead -->
+					<div class="blockhead">
 
 						<!-- filtertypename -->
 						<h2 class="filtertypename">
@@ -336,11 +340,17 @@ function activateBlogFilters() {
 						<!-- /donebtn -->
 						
 					</div>
-					<!-- /filterhead -->
+					<!-- /blockhead -->
 
-					<!-- itemslist -->
-					<ul class="itemslist">${ createFilterItemsListLayout(filtertype,true) }</ul>
-					<!-- /itemslist -->
+					<!-- blockbody -->
+					<div class="blockbody">
+
+						<!-- itemslist -->
+						<ul class="itemslist">${ createFilterItemsListLayout(filtertype,true) }</ul>
+						<!-- /itemslist -->
+						
+					</div>
+					<!-- /blockbody -->
 					
 				</div>
 				<!-- /filterblock -->
@@ -414,10 +424,6 @@ function activateBlogFilters() {
 						<!-- caption -->
 						<span class="caption">${itemname}</span>
 						<!-- /caption -->
-
-						<!-- matchcount -->
-						<span class="matchcount">${ filteritem.frequency}</span>
-						<!-- /matchcount -->
 
 					</label>
 					<!-- /front -->

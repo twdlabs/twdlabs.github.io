@@ -680,11 +680,15 @@
 									</div>
 									<!-- /togglebtn -->
 
+									<!-- blockunderlay -->
+									<div class="blockunderlay" onclick="this.parentElement.classList.remove('open')"></div>
+									<!-- /blockunderlay -->
+
 									<!-- filterblock -->
 									<div class="filterblock">
 
-										<!-- filterhead -->
-										<div class="filterhead">
+										<!-- blockhead -->
+										<div class="blockhead">
 	
 											<!-- filtertypename -->
 											<h2 class="filtertypename">
@@ -707,33 +711,35 @@
 											<!-- /donebtn -->
 											
 										</div>
-										<!-- /filterhead -->
+										<!-- /blockhead -->
 
-										<!-- itemslist -->
-										<ul class="itemslist">
-					
-											<!-- filteritem -->
-											<li class="filteritem" data-filteritemvalueid="xyz" title="xyz">
+										<!-- blockbody -->
+										<div class="blockbody">
+
+											<!-- itemslist -->
+											<ul class="itemslist">
+						
+												<!-- filteritem -->
+												<li class="filteritem" data-filteritemvalueid="xyz" title="xyz">
+		
+													<!-- front -->
+													<label class="front" for="xyz">
 	
-												<!-- front -->
-												<label class="front" for="xyz">
-
-													<!-- caption -->
-													<span class="caption">Filter Item</span>
-													<!-- /caption -->
-
-													<!-- matchcount -->
-													<span class="matchcount">0</span>
-													<!-- /matchcount -->
-
-												</label>
-												<!-- /front -->
+														<!-- caption -->
+														<span class="caption">Filter Item</span>
+														<!-- /caption -->
+	
+													</label>
+													<!-- /front -->
+													
+												</li>
+												<!-- /filteritem -->
 												
-											</li>
-											<!-- /filteritem -->
+											</ul>
+											<!-- /itemslist -->
 											
-										</ul>
-										<!-- /itemslist -->
+										</div>
+										<!-- /blockbody -->
 										
 									</div>
 									<!-- /filterblock -->
