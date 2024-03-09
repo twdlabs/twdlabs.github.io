@@ -18,6 +18,7 @@
 		<link href="../assets/style/sitemap.css" rel="stylesheet" type="text/css"/>
 		<!-- Blog Posts Stylesheet -->
 		<link href="../assets/style/blog.css" rel="stylesheet" type="text/css"/>
+		<link href="../assets/style/blogfilter.css" rel="stylesheet" type="text/css"/>
 		<!-- Blocks Posts Stylesheet -->
 		<link href="../assets/style/blocks.css" rel="stylesheet" type="text/css"/>
 		<!-- Library Page Stylesheet -->
@@ -613,7 +614,7 @@
 								<!-- /sizerbtn -->
 
 								<!-- filterbtn -->
-								<div class="filterbtn btn" onclick="toggleFilterPanel()">
+								<div class="filterbtn btn" onclick="toggleFilterPane()">
 			
 									<!-- icon -->
 									<svg class="icon funnel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -648,62 +649,122 @@
 					<!-- body -->
 					<div class="body">
 
-						<!-- appliedfilters -->
-						<div class="appliedfilters">
+						<!-- filterpanel -->
+						<div class="filterpanel">
 
-							<!-- listhead -->
-							<h2 class="listhead">Filters Applied:</h2>
-							<!-- /listhead -->
+							<!-- filterlist -->
+							<ul class="filterlist">
+		
+								<!-- filtertype -->
+								<li class="filtertype open" data-filtertypeid="xyz">
 
-							<!-- filtertaglist -->
-							<ul class="filtertaglist">
-
-								<!-- filtertag -->
-								<li class="filtertag x">
-
-									<!-- removebtn -->
-									<label class="removebtn" for="xyzabcxyz">
-
+									<!-- togglebtn -->
+									<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
+	
 										<!-- caption -->
-										<span class="caption">Criterion X</span>
+										<span class="caption">Filter Type</span>
 										<!-- /caption -->
 	
 										<!-- icon -->
-										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+										<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
 										</svg>
 										<!-- /icon -->
+	
+										<!-- icon -->
+										<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+										</svg>
+										<!-- /icon -->
+										
+									</div>
+									<!-- /togglebtn -->
 
-									</label>
-									<!-- /removebtn -->
+									<!-- filterblock -->
+									<div class="filterblock">
 
+										<!-- filterhead -->
+										<div class="filterhead">
+	
+											<!-- filtertypename -->
+											<h2 class="filtertypename">
+	
+												<!-- caption -->
+												<span class="caption">Filter Type</span>
+												<!-- /caption -->
+												
+											</h2>
+											<!-- /filtertypename -->
+	
+											<!-- donebtn -->
+											<div class="donebtn" onclick="this.parentElement.parentElement.parentElement.classList.remove('open')">
+	
+												<!-- caption -->
+												<span class="caption">Done</span>
+												<!-- /caption -->
+												
+											</div>
+											<!-- /donebtn -->
+											
+										</div>
+										<!-- /filterhead -->
+
+										<!-- itemslist -->
+										<ul class="itemslist">
+					
+											<!-- filteritem -->
+											<li class="filteritem" data-filteritemvalueid="xyz" title="xyz">
+	
+												<!-- front -->
+												<label class="front" for="xyz">
+
+													<!-- caption -->
+													<span class="caption">Filter Item</span>
+													<!-- /caption -->
+
+													<!-- matchcount -->
+													<span class="matchcount">0</span>
+													<!-- /matchcount -->
+
+												</label>
+												<!-- /front -->
+												
+											</li>
+											<!-- /filteritem -->
+											
+										</ul>
+										<!-- /itemslist -->
+										
+									</div>
+									<!-- /filterblock -->
+									
 								</li>
-								<!-- /filtertag -->
+								<!-- /filtertype -->
 								
 							</ul>
-							<!-- /filtertaglist -->
-							
-						</div>
-						<!-- /appliedfilters -->
+							<!-- /filterlist -->
 
-						<!-- filterpanel -->
-						<div class="filterpanel">
+						</div>
+						<!-- /filterpanel -->
+
+						<!-- filterpane -->
+						<div class="filterpane">
 
 							<!-- panelhead -->
 							<div class="panelhead">
 
-								<!-- panelhead -->
-								<h1 class="panelhead">
+								<!-- panelheader -->
+								<h1 class="panelheader">
 	
 									<!-- caption -->
 									<span class="caption">Filter Results</span>
 									<!-- /caption -->
 	
 								</h1>
-								<!-- /panelhead -->
+								<!-- /panelheader -->
 
 								<!-- closebtn -->
-								<div class="closebtn btn" onclick="toggleFilterPanel()">
+								<div class="closebtn btn" onclick="toggleFilterPane()">
 		
 									<!-- icon -->
 									<svg class="icon xbig" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -731,9 +792,9 @@
 									<!-- switch -->
 									<label class="switch">
 
-										<!-- cb -->
-										<input class="cb" type="checkbox">
-										<!-- /cb -->
+										<!-- switchstate -->
+										<input class="switchstate" type="checkbox">
+										<!-- /switchstate -->
 
 										<!-- ball -->
 										<div class="ball"></div>
@@ -752,14 +813,14 @@
 								<!-- filterlist -->
 								<ul class="filterlist">
 		
-									<!-- filtergroup -->
-									<li class="filtergroup open" data-filtertypeid="xyz">
+									<!-- filtertype -->
+									<li class="filtertype open" data-filtertypeid="xyz">
 	
 										<!-- filterhead -->
 										<h2 class="filterhead">
 	
 											<!-- caption -->
-											<span class="caption">Category</span>
+											<span class="caption">Filter Type</span>
 											<!-- /caption -->
 	
 											<!-- icon -->
@@ -800,7 +861,7 @@
 														<!-- /icon -->
 	
 														<!-- caption -->
-														<span class="caption">Criterion</span>
+														<span class="caption">Filter Item</span>
 														<!-- /caption -->
 	
 														<!-- matchcount -->
@@ -820,7 +881,7 @@
 										<!-- /filterbody -->
 										
 									</li>
-									<!-- /filtergroup -->
+									<!-- /filtertype -->
 									
 								</ul>
 								<!-- /filterlist -->
@@ -843,7 +904,45 @@
 							<!-- /panelbody -->
 	
 						</div>
-						<!-- /filterpanel -->
+						<!-- /filterpane -->
+
+						<!-- appliedfilters -->
+						<div class="appliedfilters">
+
+							<!-- listhead -->
+							<h2 class="listhead">Filters Applied:</h2>
+							<!-- /listhead -->
+
+							<!-- filtertaglist -->
+							<ul class="filtertaglist">
+
+								<!-- filtertag -->
+								<li class="filtertag x">
+
+									<!-- removebtn -->
+									<label class="removebtn" for="xyzabcxyz">
+
+										<!-- caption -->
+										<span class="caption">Criterion X</span>
+										<!-- /caption -->
+	
+										<!-- icon -->
+										<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+										</svg>
+										<!-- /icon -->
+
+									</label>
+									<!-- /removebtn -->
+
+								</li>
+								<!-- /filtertag -->
+								
+							</ul>
+							<!-- /filtertaglist -->
+							
+						</div>
+						<!-- /appliedfilters -->
 	
 						<!-- posts -->
 						<div class="posts small" id="archive">

@@ -70,7 +70,7 @@ function loadBlog(selectedfilteritems) {
 	console.log('Loading blog...',selectedfilteritems);
 
 	// Check if all criteria required. 
-	let passallcriteria = (typeof filterpanel != 'undefined') ? filterpanel.anyallswitch.checkbox.checked : undefined;
+	let passallcriteria = (typeof filterpane != 'undefined') ? filterpane.anyallswitch.switchstate.checked : undefined;
 
 	// Load featured posts. 
 	loadFeaturedPosts();

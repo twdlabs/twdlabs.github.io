@@ -28,7 +28,7 @@ function enableShortcutKeys() {
 		if(istypingtext) return;
 
 		// Respond to 'F' key. 
-		else if(event.keyCode==70) toggleFilterPanel();
+		else if(event.keyCode==70) toggleFilterPane();
 
 		// Respond to 'S' key. 
 		else if(event.keyCode==83) setLayoutStyleById(0);
@@ -48,17 +48,17 @@ function enableShortcutKeys() {
 		// Respond to 'enter' key. 
 		else if(event.keyCode==13) {
 
-			// Check if filter panel open. 
-			let filterpanelopen = filterpanel.box.classList.contains('open');
+			// Check if filter pane open. 
+			let filterpaneopen = filterpane.box.classList.contains('open');
 
-			// Apply selected filter items if filter panel open. 
-			if(filterpanelopen) {
+			// Apply selected filter items if filter pane open. 
+			if(filterpaneopen) {
 
 				// Apply selected filter items
 				applySelectedFilters();
 
-				// Close filter panel. 
-				filterpanel.box.classList.remove('open');
+				// Close filter pane. 
+				filterpane.box.classList.remove('open');
 			}
 		}
 	}

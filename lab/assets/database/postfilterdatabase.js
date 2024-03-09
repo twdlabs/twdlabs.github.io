@@ -6,7 +6,7 @@ const postFilterData = [
 
 	{
 		filtername:'Author',
-		filtergroupid:'authorid',
+		filtertypeid:'authorid',
 		filteritems:[
 			{
 				value:'authora',
@@ -26,7 +26,7 @@ const postFilterData = [
 
 	{
 		filtername:'Collection',
-		filtergroupid:'collectionid',
+		filtertypeid:'collectionid',
 		filteritems:[
 			{
 				value:'collectiona',
@@ -46,7 +46,7 @@ const postFilterData = [
 
 	{
 		filtername:'Category',
-		filtergroupid:'categoryid',
+		filtertypeid:'categoryid',
 		filteritems:[
 			{
 				value:'categorya',
@@ -67,7 +67,7 @@ const postFilterData = [
 	{
 		filtername:'Created',
 		filtername:'Year',
-		filtergroupid:'createdyear',
+		filtertypeid:'createdyear',
 		filteritems:[
 			{
 				value:2001,
@@ -87,7 +87,7 @@ const postFilterData = [
 
 	// {
 	// 	filtername:'Year Quarter',
-	// 	filtergroupid:'createdquarter',
+	// 	filtertypeid:'createdquarter',
 	// 	filteritems:[
 	// 		{
 	// 			value:'2001 Q1',
@@ -111,7 +111,7 @@ const postFilterData = [
 
 	// {
 	// 	filtername:'Xyz',
-	// 	filtergroupid:'xyz',
+	// 	filtertypeid:'xyz',
 	// 	filteritems:[
 	// 	],
 	// 	filteritemnamer:(value)=>(value),
@@ -226,39 +226,39 @@ function resetFilterData() {
 function augmentFilterData() {
 
 	// TODO: Do alternative method. 
-	for(let filtergroup of postFilterData) {
+	for(let filtertype of postFilterData) {
 
 		// 
-		// filtergroup.filtergroupid;
+		// filtertype.filtertypeid;
 	}
 
-	// Create item values for filter group: authors. 
-	addFilterItemValues('authorid');
+	// Save item values for filter type: authors. 
+	saveFilterItemValues('authorid');
 	
-	// Create item values for filter group: categories. 
-	addFilterItemValues('categoryid');
+	// Save item values for filter type: categories. 
+	saveFilterItemValues('categoryid');
 	
-	// Create item values for filter group: collections. 
-	addFilterItemValues('collectionid');
+	// Save item values for filter type: collections. 
+	saveFilterItemValues('collectionid');
 	
-	// Create item values for filter group: creation year. 
-	addFilterItemValues('createdyear');
+	// Save item values for filter type: creation year. 
+	saveFilterItemValues('createdyear');
 	
-	// Create item values for filter group: creation quarter. 
-	// addFilterItemValues('createdquarter');
+	// Save item values for filter type: creation quarter. 
+	// saveFilterItemValues('createdquarter');
 
 	/****/
 
-	// Create item values for given filter group from project data. 
-	function addFilterItemValues(filtergroupid) {
+	// Save item values for given filter type from project data. 
+	function saveFilterItemValues(filtertypeid) {
 		
-		// Get filter group by id. 
-		let filtergroup = getFilterGroupById(filtergroupid);
-		// console.log('Filter criteria list (old):',filtergroup.filteritems);
+		// Get ] by id. 
+		let filtertype = getFilterGroupById(filtertypeid);
+		// console.log('Filter criteria list (old):',filtertype.filteritems);
 		
-		// Disregard if not valid filter group. 
-		if(!filtergroup) {
-			console.warn('Invalid filter group:',filtergroupid,filtergroup);
+		// Disregard if not valid filter type. 
+		if(!filtertype) {
+			console.warn('Invalid filter type:',filtertypeid,filtertype);
 			return;
 		}
 	
@@ -269,7 +269,7 @@ function augmentFilterData() {
 		for(let project of projectData) {
 	
 			// Get value of filter item from current project. 
-			let filteritemvalue = project[filtergroupid];
+			let filteritemvalue = project[filtertypeid];
 	
 			// Find filter item associated with current value (if already exists). 
 			let filteritem = getFilterItemByValue(filteritemvalue);
@@ -282,19 +282,19 @@ function augmentFilterData() {
 		// console.log('Filter items:',filteritems);
 	
 		// Save sorted list of filter items. 
-		filtergroup.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
-		// console.log('Filter criteria list (new):',filtergroup.filteritems);
+		filtertype.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
+		// console.log('Filter criteria list (new):',filtertype.filteritems);
 	
 		/***/
 	
-		// Get filter group by id. 
-		function getFilterGroupById(filtergroupid) {
+		// Get filter type by id. 
+		function getFilterGroupById(filtertypeid) {
 		
-			// Go thru each filter group. 
-			for(let filtergroup of postFilterData) {
+			// Go thru each filter type. 
+			for(let filtertype of postFilterData) {
 		
 				// Check for match. 
-				if(filtergroup.filtergroupid==filtergroupid) return filtergroup;
+				if(filtertype.filtertypeid==filtertypeid) return filtertype;
 			}
 		
 			// Return nothing if not found. 
