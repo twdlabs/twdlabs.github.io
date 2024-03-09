@@ -8,19 +8,19 @@ const filterpane = {
 	box: document.querySelector('div#container section.blog div.grid div.body div.filterpane'),
 
 	// Get buttons in filter pane. 
-	applybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panelbody div.btnpanel div.applybtn'),
-	clearbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panelbody div.btnpanel div.clearbtn'),
+	applybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.btnpanel div.applybtn'),
+	clearbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.btnpanel div.clearbtn'),
 
 	// Get destination for grouped types of filter items in filter pane. 
-	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panelbody ul.filterlist'),
+	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody ul.filterlist'),
 	// Get group headers in filter pane. 
-	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane div.panelbody ul.filterlist li.filtertype h2.filterhead'),
+	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane div.panebody ul.filterlist li.filtertype h2.filterhead'),
 
 	// Get switch for filter type (matching any criterion vs matching all criteria). 
 	anyallswitch: {
-		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panelbody div.switchpanel span.choice.any'),
-		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panelbody div.switchpanel span.choice.all'),
-		switchstate: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panelbody div.switchpanel label.switch input.switchstate'),
+		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.switchpanel span.choice.any'),
+		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.switchpanel span.choice.all'),
+		switchstate: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.switchpanel label.switch input.switchstate'),
 	},
 
 	// Get destination for list of applied filters. 
@@ -285,7 +285,7 @@ function activateBlogFilters() {
 			// Add filter type to mobile layout. 
 			mobilefiltergroupslayout += `
 			<!-- filtertype -->
-			<li class="filtertype" data-filtertypeid="xyz">
+			<li class="filtertype" data-filtertypeid="${filtertype.filtertypeid}">
 
 				<!-- togglebtn -->
 				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
@@ -339,29 +339,7 @@ function activateBlogFilters() {
 					<!-- /filterhead -->
 
 					<!-- itemslist -->
-					<ul class="itemslist">
-
-						<!-- filteritem -->
-						<li class="filteritem" data-filteritemvalueid="xyz" title="xyz">
-
-							<!-- front -->
-							<label class="front" for="xyz">
-
-								<!-- caption -->
-								<span class="caption">Filter Item</span>
-								<!-- /caption -->
-
-								<!-- matchcount -->
-								<span class="matchcount">0</span>
-								<!-- /matchcount -->
-
-							</label>
-							<!-- /front -->
-							
-						</li>
-						<!-- /filteritem -->
-						
-					</ul>
+					<ul class="itemslist">${ createFilterItemsListLayout(filtertype,true) }</ul>
 					<!-- /itemslist -->
 					
 				</div>
@@ -386,7 +364,7 @@ function activateBlogFilters() {
 		/***/
 	
 		// Create layout for filter items list. 
-		function createFilterItemsListLayout(filtertype) {
+		function createFilterItemsListLayout(filtertype,usemobileversion) {
 	
 			// Get id for given filter type. 
 			let filtertypeid = filtertype.filtertypeid;
@@ -416,7 +394,7 @@ function activateBlogFilters() {
 	
 				// Get value of current filter item. 
 				let itemvalue = filteritem.value;
-				if(!itemvalue) console.log('Filter item value:',itemvalue);
+				if(!itemvalue) console.log('Filter item value:',itemvalue,filteritem);
 	
 				// Get name of current filter item. 
 				let itemname = filtertype.filteritemnamer(itemvalue);
@@ -426,7 +404,29 @@ function activateBlogFilters() {
 				let uniqueitemid = filtertypeid + itemvalue;
 	
 				// Compile layout for filter item. 
-				return `
+				if(usemobileversion) return `
+				<!-- filteritem -->
+				<li class="filteritem" data-filteritemvalueid="${itemvalue}" title="${itemvalue}">
+
+					<!-- front -->
+					<label class="front" for="${uniqueitemid}">
+
+						<!-- caption -->
+						<span class="caption">${itemname}</span>
+						<!-- /caption -->
+
+						<!-- matchcount -->
+						<span class="matchcount">${ filteritem.frequency}</span>
+						<!-- /matchcount -->
+
+					</label>
+					<!-- /front -->
+					
+				</li>
+				<!-- /filteritem -->`;
+	
+				// Compile layout for filter item. 
+				else return `
 				<!-- filteritem -->
 				<li class="filteritem" data-filteritemvalueid="${itemvalue}" title="${itemvalue}">
 		
