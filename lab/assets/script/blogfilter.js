@@ -14,7 +14,7 @@ const filterpane = {
 	// Get destination for grouped types of filter items in filter pane. 
 	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody ul.filterlist'),
 	// Get group headers in filter pane. 
-	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane div.panebody ul.filterlist li.filtertype h2.filterhead'),
+	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane div.panebody ul.filterlist li.filtertype div.filterblock h2.blockhead'),
 
 	// Get switch for filter type (matching any criterion vs matching all criteria). 
 	anyallswitch: {
@@ -246,38 +246,44 @@ function activateBlogFilters() {
 			filtergroupslayout += `
 			<!-- filtertype -->
 			<li class="filtertype open" data-filtertypeid="${filtertype.filtertypeid}">
+
+				<!-- filterblock -->
+				<div class="filterblock">
 	
-				<!-- filterhead -->
-				<h2 class="filterhead">
-	
-					<!-- caption -->
-					<span class="caption">${filtertype.filtername}</span>
-					<!-- /caption -->
-	
-					<!-- icon -->
-					<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-					</svg>
-					<!-- /icon -->
-	
-					<!-- icon -->
-					<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-					</svg>
-					<!-- /icon -->
-	
-				</h2>
-				<!-- /filterhead -->
-	
-				<!-- filterbody -->
-				<div class="filterbody">
-	
-					<!-- itemslist -->
-					<ul class="itemslist">${ createFilterItemsListLayout(filtertype) }</ul>
-					<!-- /itemslist -->
-					
+					<!-- blockhead -->
+					<h2 class="blockhead">
+		
+						<!-- caption -->
+						<span class="caption">${filtertype.filtername}</span>
+						<!-- /caption -->
+		
+						<!-- icon -->
+						<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+						</svg>
+						<!-- /icon -->
+		
+						<!-- icon -->
+						<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+						</svg>
+						<!-- /icon -->
+		
+					</h2>
+					<!-- /blockhead -->
+		
+					<!-- blockbody -->
+					<div class="blockbody">
+		
+						<!-- itemslist -->
+						<ul class="itemslist">${ createFilterItemsListLayout(filtertype) }</ul>
+						<!-- /itemslist -->
+						
+					</div>
+					<!-- /blockbody -->
+				
 				</div>
-				<!-- /filterbody -->
+				<!-- /filterblock -->
 				
 			</li>
 			<!-- /filtertype -->`;
@@ -469,7 +475,7 @@ function activateBlogFilters() {
 		function activateFilterHeads() {
 	
 			// Get loaded headers in filter pane. 
-			let filtergroupheaders = filterpane.filterlistdestination.querySelectorAll('li.filtertype h2.filterhead');
+			let filtergroupheaders = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock h2.blockhead');
 		
 			// Go thru each header in filter pane. 
 			for(let header of filtergroupheaders) {
@@ -487,7 +493,7 @@ function activateBlogFilters() {
 				let filtergroupheader = event.currentTarget;
 			
 				// Get block for filter type. 
-				let filtertype = filtergroupheader.parentElement;
+				let filtertype = filtergroupheader.parentElement.parentElement;
 			
 				// Toggle block for filter type. 
 				filtertype.classList.toggle('open');
@@ -498,7 +504,7 @@ function activateBlogFilters() {
 		function activateFilterItems() {
 		
 			// Get loaded items in filter pane. 
-			let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterbody ul.itemslist li.filteritem input.checkbox');
+			let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
 		
 			// Go thru each item in filter pane. 
 			for(let checkbox of filterpanecheckboxes) {
@@ -534,7 +540,7 @@ function toggleFilterPane() {
 function clearAllAppliedFilters() {
 
 	// Get loaded items in filter pane. 
-	let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterbody ul.itemslist li.filteritem input.checkbox');
+	let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
 
 	// Go thru each item in filter pane. 
 	for(let checkbox of filterpanecheckboxes) {
@@ -554,7 +560,7 @@ function applySelectedFilters() {
 	let selectedfilteritems = [];
 
 	// Get checkboxes for loaded filter items in filter pane. 
-	let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterbody ul.itemslist li.filteritem input.checkbox');
+	let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
 
 	// Go thru each checkbox in filter pane. 
 	for(let checkbox of filterpanecheckboxes) {

@@ -19,16 +19,16 @@ div#container section.blog div.grid div.head div.modpanel div.togglers div.btn:h
 div#container section.blog div.grid div.head div.modpanel div.togglers div.btn svg.icon {font-size:1.5rem;}
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {position:relative; overflow:hidden; width:100%; /* max-width:calc(var(--pagewidth)/3); */ border-radius:5rem; /* margin:2rem auto; */ margin-right:.75rem; box-shadow:var(--boxshadow);}
 /* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel {background-color:var(--forecolor2); color:var(--backcolor);} */
-div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel {display:flex; flex-direction:column; justify-content:center; cursor:pointer; padding:0 1.125rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel {display:flex; flex-direction:column; justify-content:center; cursor:pointer; padding:0 1rem;}
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel {position:absolute; left:0; top:0; height:100%;}
-div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel svg.icon {font-size:1.375rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchlabel svg.icon {font-size:1.25rem;}
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery input#filtersearchquery {background-color:var(--backcolor2); color:var(--forecolor);}
-div#container section.blog div.grid div.head div.modpanel div.filtersearchquery input#filtersearchquery {font-family:inherit; font-size:1.25rem; font-weight:300; width:100%; padding:.625rem 3.25rem .625rem 3.5rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery input#filtersearchquery {font-family:inherit; font-size:1.125rem; font-weight:300; width:100%; padding:.5rem 3rem;}
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery input#filtersearchquery {border:.125rem solid var(--backcolor2); border:0 none; outline:none;}
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn {position:absolute; right:0; top:50%; transform:translateY(-50%);height:var(--btnsize); width:var(--btnsize);}
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn {/* background-color:#FFFFFF08; color:black; */ --btnsize:2rem; opacity:.375; cursor:pointer; user-select:none;}
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn {display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1.125rem; margin-right:.5rem;}
-div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn svg.icon {font-size:1.375rem;}
+div#container section.blog div.grid div.head div.modpanel div.filtersearchquery label.searchclearbtn svg.icon {font-size:1.125rem;}
 
 
 
