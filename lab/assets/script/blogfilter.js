@@ -8,19 +8,19 @@ const filterpane = {
 	box: document.querySelector('div#container section.blog div.grid div.body div.filterpane'),
 
 	// Get buttons in filter pane. 
-	applybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.btnpanel div.applybtn'),
-	clearbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.btnpanel div.clearbtn'),
+	applybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.btnpanel div.applybtn'),
+	clearbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.btnpanel div.clearbtn'),
 
 	// Get destination for grouped types of filter items in filter pane. 
-	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody ul.filterlist'),
+	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpane ul.filterlist'),
 	// Get group headers in filter pane. 
-	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane div.panebody ul.filterlist li.filtertype div.filterblock h2.blockhead'),
+	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockhead'),
 
 	// Get switch for filter type (matching any criterion vs matching all criteria). 
 	anyallswitch: {
-		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.switchpanel span.choice.any'),
-		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.switchpanel span.choice.all'),
-		switchstate: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.panebody div.switchpanel label.switch input.switchstate'),
+		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.any'),
+		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.all'),
+		switchstate: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch input.switchstate'),
 	},
 
 	// Get destination for list of applied filters. 
@@ -251,11 +251,17 @@ function activateBlogFilters() {
 				<div class="filterblock">
 	
 					<!-- blockhead -->
-					<h2 class="blockhead">
+					<div class="blockhead">
+
+						<!-- filtertypename -->
+						<h2 class="filtertypename">
 		
-						<!-- caption -->
-						<span class="caption">${filtertype.filtername}</span>
-						<!-- /caption -->
+							<!-- caption -->
+							<span class="caption">${filtertype.filtername}</span>
+							<!-- /caption -->
+
+						</h2>
+						<!-- /filtertypename -->
 		
 						<!-- icon -->
 						<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -269,7 +275,7 @@ function activateBlogFilters() {
 						</svg>
 						<!-- /icon -->
 		
-					</h2>
+					</div>
 					<!-- /blockhead -->
 		
 					<!-- blockbody -->
@@ -475,7 +481,7 @@ function activateBlogFilters() {
 		function activateFilterHeads() {
 	
 			// Get loaded headers in filter pane. 
-			let filtergroupheaders = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock h2.blockhead');
+			let filtergroupheaders = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockhead');
 		
 			// Go thru each header in filter pane. 
 			for(let header of filtergroupheaders) {
