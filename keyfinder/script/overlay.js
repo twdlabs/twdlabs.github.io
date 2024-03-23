@@ -49,8 +49,8 @@ function openScaleDisplay(resultIndex) {
 	scaleIndex = matchingScaleResults[resultIndex];
 	// console.log('Scale index:',scaleIndex);
 
-	// Get selected scale. 
-	let selectedScale = scaleList[scaleIndex];
+	// Get data for selected scale. 
+	let selectedscale = scaleList[scaleIndex];
 
 	// Add attribute to scale display: result index. 
 	overlayDisplay.setAttribute('data-resultindex',resultIndex);
@@ -75,20 +75,20 @@ function openScaleDisplay(resultIndex) {
 	// Create display: piano keys, scale listing. 
 	function createScaleDisplay() {
 	
-		// Get scale id. 
-		let scaleid = selectedScale.scaleid;
+		// Get id for selected scale. 
+		let scaleid = selectedscale.scaleid;
 		// console.log('Scale id:', scaleid );
 	
-		// Get scale name. 
-		let scalename = selectedScale.scalename;
+		// Get name for selected scale. 
+		let scalename = selectedscale.scalename;
 		// console.log('Scale name:', scalename );
 		
-		// Get scale naming indicator. 
-		let namingkey = selectedScale.namingkey;
+		// Get naming key for selected scale. 
+		let namingkey = selectedscale.namingkey;
 		// console.log('Naming key:', namingkey );
 
 		// Get list of key indexes for selected scale. 
-		let keyindexlist = selectedScale.keyindexlist;
+		let keyindexlist = selectedscale.keyindexlist;
 		console.log('Key index list:', keyindexlist );
 		
 		// Get formatted list of keys for given scale. 
@@ -109,17 +109,23 @@ function openScaleDisplay(resultIndex) {
 		<span class="scalekeys">${ scalekeyslist.join(' ') }</span>
 		<!-- /scalekeys -->
 	
-		<!-- pianokeys -->
-		<div class="pianokeys">
+		<!-- pianokeyboard -->
+		<div class="pianokeyboard">
 	
-			<!-- inner -->
-			<div class="inner">
-				${ createPianoKeyboard() }
-			</div>
-			<!-- /inner -->
+			<!-- octavelist -->
+			<ul class="octavelist">
+				${ createPianoOctave() }
+				${ createPianoOctave() }
+				${ createPianoOctave() }
+				${ createPianoOctave() }
+				${ createPianoOctave() }
+				${ createPianoOctave() }
+				${ createPianoOctave() }
+			</ul>
+			<!-- /octavelist -->
 	
 		</div>
-		<!-- /pianokeys -->
+		<!-- /pianokeyboard -->
 	
 		<!-- scalecopier -->
 		<div class="scalecopier">
@@ -149,74 +155,56 @@ function openScaleDisplay(resultIndex) {
 		<!-- /scalecopier -->`;
 
 		/***/
+	
+		// Create layout for piano octave. 
+		function createPianoOctave() {
 
-		// Create display of piano keys. 
-		function createPianoKeyboard() {
-	
-			// Initialize result. 
-			let result = '';
-	
-			// Add piano octaves. 
-			result += createPianoOctave();
-			result += createPianoOctave();
-	
-			// Return result to origin. 
-			// console.log(result);
-			return result;
-			
-			// 
-		
-			/***/
-	
-			// Create piano octave. 
-			function createPianoOctave() {
-	
-				// Initialize result. 
-				let octavekeys = '';
-	
-				// Open octave. 
-				octavekeys += `
-				<!-- octave -->
-				<div class="octave">`;
-	
-				// Add all keys to octave. 
-				for(let i in keyList) {
-					octavekeys += createPianoKey(i);
-				}
-	
-				// End octave. 
-				octavekeys += `
-				</div>
-				<!-- /octave -->`;
-	
-				// 
-				return octavekeys;
-	
-				/**/
-	
-				// Create piano key. 
-				function createPianoKey(keyindex) {
-	
-					// Get current key details. 
-					let caption = keyList[keyindex].keyid;
-					let keytype = keyList[keyindex].keytype;
+			// Initialize layout for list of octave keys. 
+			let octavekeylistlayout = '';
+
+			// Add layout for each key in octave. 
+			for(let i in keyList) {
+				octavekeylistlayout += createPianoKey(i);
+			}
+
+			// Compile layout for piano octave. 
+			return `
+			<!-- octave -->
+			<li class="octave">
+
+				<!-- keylist -->
+				<ul class="keylist">
+					${octavekeylistlayout}
+				</ul>
+				<!-- /keylist -->
+
+			</li>
+			<!-- /octave -->`;
+
+			/**/
+
+			// Create layout for piano key. 
+			function createPianoKey(keyindex) {
+
+				// Get data for current key. 
+				let keydata = keyList[keyindex];
+				
+				// Check if key is included in current scale. 
+				let keyInScale = keyindexlist.includes(1*keyindex);
+				let keyOnTonic = keyindexlist[0]==(1*keyindex);
+				console.log('Current key in selected scale:',keyindex,keyInScale,keyOnTonic);
+
+				// Compile layout for piano key. 
+				return `
+				<!-- key -->
+				<li class="key ${ keydata.keytype }${ keyInScale?' on':'' }${ keyOnTonic?' tonic':'' }" data-keyindex="${keyindex}">
+
+					<!-- caption -->
+					<span class="caption">${keydata.keyid}</span>
+					<!-- /caption -->
 					
-					// Determine if key is included in current scale. 
-					let doHighlight = keyindexlist.includes(1*keyindex);
-					// console.log(i,'inCurrentScale:',doHighlight);
-	
-					// Return result. 
-					return `
-					<!-- key -->
-					<div class="key ${keytype} ${ (doHighlight) ? ('on') : ('') }" data-keyindex="${keyindex}">
-	
-						<!-- caption -->
-						<span class="caption">${caption}</span>
-						<!-- /caption -->
-						
-					</div>
-					<!-- /key -->`;
-				}
+				</li>
+				<!-- /key -->`;
 			}
 		}
 	
@@ -242,7 +230,7 @@ function openScaleDisplay(resultIndex) {
 		const allScaleKeys = document.querySelectorAll('div#overlay main.main div.display span.scalekeys span.key');
 
 		// Get all key buttons on piano keyboard. 
-		const allPianoKeyBtns = document.querySelectorAll('div#overlay main.main div.display div.pianokeys div.octave div.key');
+		const allPianoKeyBtns = document.querySelectorAll('div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key');
 		// console.log('All key buttons',allPianoKeyBtns);
 
 		// Go thru all key buttons. 

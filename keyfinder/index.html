@@ -8,7 +8,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="../atgicon.ico" rel="icon"/>
+		<link href="./../atgicon.ico" rel="icon"/>
 		<link href="./media/piano.png" rel="apple-touch-icon"/>
 		<!-- <link href="../atgicon.ico" rel="apple-touch-icon"/> -->
 		<!-- <link href="./media/appicon.png" rel="apple-touch-icon"/> -->
@@ -112,9 +112,19 @@
 
 				<!-- item -->
 				<div class="item">
-					&#9837;
-					&#9838;
-					&#9839;
+	
+					<!-- textcopy -->
+					<p class="textcopy">
+						&#9837;
+						&#9838;
+						&#9839;
+					</p>
+					<!-- /textcopy -->
+
+					<!-- textcopy -->
+					<p class="textcopy">Please enter included keys.</p>
+					<!-- /textcopy -->
+					
 				</div>
 				<!-- /item -->
 
@@ -580,15 +590,21 @@
 						
 					</div>
 					<!-- /input -->
-
+					
 				</div>
 				<!-- /item -->
 
 				<!-- item -->
 				<div class="item">
-					&#9837;
-					&#9838;
-					&#9839;
+
+					<!-- textcopy -->
+					<p class="textcopy">
+						&#9837;
+						&#9838;
+						&#9839;
+					</p>
+					<!-- /textcopy -->
+
 				</div>
 				<!-- /item -->
 
@@ -605,11 +621,11 @@
 							<div class="scale" data-scaleindex="0" data-resultindex="0" style="display:none;">
 	
 								<!-- scalename -->
-								<span class="scalename">scalename</span>
+								<span class="scalename">Scale Name</span>
 								<!-- /scalename -->
 	
 								<!-- scalekeys -->
-								<span class="scalekeys">scalekeys</span>
+								<span class="scalekeys">Scale Keys</span>
 								<!-- /scalekeys -->
 								
 							</div>
@@ -693,63 +709,69 @@
 					</span>
 					<!-- /scalekeys -->
 	
-					<!-- pianokeys -->
-					<div class="pianokeys">
+					<!-- pianokeyboard -->
+					<div class="pianokeyboard">
 
-						<!-- inner -->
-						<div class="inner">
+						<!-- octavelist -->
+						<ul class="octavelist">
 	
 							<!-- octave -->
-							<div class="octave">
+							<li class="octave">
+
+								<!-- keylist -->
+								<ul class="keylist">
 		
-								<!-- key -->
-								<div class="key white" data-keyindex="0">
-		
-									<!-- caption -->
-									<span class="caption">X</span>
-									<!-- /caption -->
-									
-								</div>
-								<!-- /key -->
-		
-								<!-- key -->
-								<div class="key white" data-keyindex="0">
-		
-									<!-- caption -->
-									<span class="caption">X</span>
-									<!-- /caption -->
-									
-								</div>
-								<!-- /key -->
-		
-								<!-- key -->
-								<div class="key white" data-keyindex="0">
-		
-									<!-- caption -->
-									<span class="caption">X</span>
-									<!-- /caption -->
-									
-								</div>
-								<!-- /key -->
+									<!-- key -->
+									<li class="key white" data-keyindex="0">
 			
-								<!-- key -->
-								<div class="key black p0" data-keyindex="0">
+										<!-- caption -->
+										<span class="caption">X</span>
+										<!-- /caption -->
+										
+									</li>
+									<!-- /key -->
+			
+									<!-- key -->
+									<li class="key white" data-keyindex="0">
+			
+										<!-- caption -->
+										<span class="caption">X</span>
+										<!-- /caption -->
+										
+									</li>
+									<!-- /key -->
+			
+									<!-- key -->
+									<li class="key white" data-keyindex="0">
+			
+										<!-- caption -->
+										<span class="caption">X</span>
+										<!-- /caption -->
+										
+									</li>
+									<!-- /key -->
+				
+									<!-- key -->
+									<li class="key black p0" data-keyindex="0">
+			
+										<!-- caption -->
+										<span class="caption">X</span>
+										<!-- /caption -->
+			
+									</li>
+									<!-- /key -->
+									
+								</ul>
+								<!-- /keylist -->
 		
-									<!-- caption -->
-									<span class="caption">X</span>
-									<!-- /caption -->
-		
-								</div>
-								<!-- /key -->
-		
-							</div>
+							</li>
 							<!-- /octave -->
 
-						</div>
-						<!-- /inner -->
+						</ul>
+						<!-- /octavelist -->
 	
 					</div>
-					<!-- /pianokeys -->
+					<!-- /pianokeyboard -->
 
 					<!-- scalecopier -->
 					<div class="scalecopier">

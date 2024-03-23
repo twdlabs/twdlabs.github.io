@@ -29,40 +29,40 @@ const keyList = [
 
 	{
 		keyid:'C',
-		keytype:'white c',
+		keytype:'white',
 		keyflatname:'C',
 		keysharpname:'C',
 		// keysharpname:'B#',
 	},
 	{
 		keyid:'CD',
-		keytype:'black cd p1',
+		keytype:'black p1',
 		keyflatname:'Db',
 		keysharpname:'C#',
 	},
 	{
 		keyid:'D',
-		keytype:'white d',
+		keytype:'white',
 		keyflatname:'D',
 		keysharpname:'D',
 	},
 
 	{
 		keyid:'DE',
-		keytype:'black de p2',
+		keytype:'black p2',
 		keyflatname:'Eb',
 		keysharpname:'D#',
 	},
 	{
 		keyid:'E',
-		keytype:'white e',
+		keytype:'white',
 		keyflatname:'E',
 		keysharpname:'E',
 		// keyflatname:'Fb',
 	},
 	{
 		keyid:'F',
-		keytype:'white f',
+		keytype:'white',
 		keyflatname:'F',
 		keysharpname:'F',
 		// keysharpname:'E#',
@@ -70,38 +70,38 @@ const keyList = [
 
 	{
 		keyid:'FG',
-		keytype:'black fg p4',
+		keytype:'black p4',
 		keyflatname:'Gb',
 		keysharpname:'F#',
 	},
 	{
 		keyid:'G',
-		keytype:'white g',
+		keytype:'white',
 		keyflatname:'G',
 		keysharpname:'G',
 	},
 	{
 		keyid:'GA',
-		keytype:'black ga p5',
+		keytype:'black p5',
 		keyflatname:'Ab',
 		keysharpname:'G#',
 	},
 
 	{
 		keyid:'A',
-		keytype:'white a',
+		keytype:'white',
 		keyflatname:'A',
 		keysharpname:'A',
 	},
 	{
 		keyid:'AB',
-		keytype:'black ab p6',
+		keytype:'black p6',
 		keyflatname:'Bb',
 		keysharpname:'A#',
 	},
 	{
 		keyid:'B',
-		keytype:'white b',
+		keytype:'white',
 		keyflatname:'Cb',
 		keysharpname:'B',
 	},
