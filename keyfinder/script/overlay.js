@@ -214,7 +214,7 @@ function openScaleDisplay(resultIndex) {
 				// Check if key is included in current scale. 
 				let keyInScale = keyindexlist.includes(1*keyindex);
 				let keyOnTonic = keyindexlist[0]==(1*keyindex);
-				console.log('Current key in selected scale:',keyindex,keyInScale,keyOnTonic);
+				console.log('Current key in selected scale:', keyindex, keyInScale,keyOnTonic);
 
 				// Compile layout for piano key. 
 				return `

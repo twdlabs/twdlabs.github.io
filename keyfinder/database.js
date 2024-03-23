@@ -36,7 +36,7 @@ const keyList = [
 	},
 	{
 		keyid:'CD',
-		keytype:'black p1',
+		keytype:'black l l1',
 		keyflatname:'Db',
 		keysharpname:'C#',
 	},
@@ -49,7 +49,7 @@ const keyList = [
 
 	{
 		keyid:'DE',
-		keytype:'black p2',
+		keytype:'black l l2',
 		keyflatname:'Eb',
 		keysharpname:'D#',
 	},
@@ -70,7 +70,7 @@ const keyList = [
 
 	{
 		keyid:'FG',
-		keytype:'black p4',
+		keytype:'black r r3',
 		keyflatname:'Gb',
 		keysharpname:'F#',
 	},
@@ -82,7 +82,7 @@ const keyList = [
 	},
 	{
 		keyid:'GA',
-		keytype:'black p5',
+		keytype:'black r r2',
 		keyflatname:'Ab',
 		keysharpname:'G#',
 	},
@@ -95,7 +95,7 @@ const keyList = [
 	},
 	{
 		keyid:'AB',
-		keytype:'black p6',
+		keytype:'black r r1',
 		keyflatname:'Bb',
 		keysharpname:'A#',
 	},
