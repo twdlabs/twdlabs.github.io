@@ -20,6 +20,11 @@
 	--emptycolor2:#0002;
 	--emptycolor3:#0003;
 
+	--keycorner:.5em; 
+	--keywidthw:3em;
+	--keywidthb:1.875em;
+	--keyheightw:12em;
+	--keyheightb:7em;
 	--cornersize:.5rem;
 	--boxshadow:0 0 1rem #0002;
 	--boxshadow:0 0 .25rem #0003;

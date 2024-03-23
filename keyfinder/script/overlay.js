@@ -114,13 +114,15 @@ function openScaleDisplay(resultIndex) {
 	
 			<!-- octavelist -->
 			<ul class="octavelist">
-				${ createPianoOctave() }
-				${ createPianoOctave() }
-				${ createPianoOctave() }
-				${ createPianoOctave() }
-				${ createPianoOctave() }
-				${ createPianoOctave() }
-				${ createPianoOctave() }
+				${ createPianoOctave(0) }
+				${ createPianoOctave(1) }
+				${ createPianoOctave(2) }
+				${ createPianoOctave(3) }
+				${ createPianoOctave(4) }
+				${ createPianoOctave(5) }
+				${ createPianoOctave(6) }
+				${ createPianoOctave(7) }
+				${ createPianoOctave(8) }
 			</ul>
 			<!-- /octavelist -->
 	
@@ -157,14 +159,34 @@ function openScaleDisplay(resultIndex) {
 		/***/
 	
 		// Create layout for piano octave. 
-		function createPianoOctave() {
+		function createPianoOctave(octaveindex) {
 
 			// Initialize layout for list of octave keys. 
 			let octavekeylistlayout = '';
 
-			// Add layout for each key in octave. 
-			for(let i in keyList) {
-				octavekeylistlayout += createPianoKey(i);
+			// Create layout for keys in first piano octave. 
+			if(octaveindex==0) {
+
+				// Add layout for each key in octave. 
+				octavekeylistlayout += createPianoKey(9);
+				octavekeylistlayout += createPianoKey(10);
+				octavekeylistlayout += createPianoKey(11);
+			}
+
+			// Create layout for keys in last piano octave. 
+			else if(octaveindex==8) {
+
+				// Add layout for each key in octave. 
+				octavekeylistlayout += createPianoKey(0);
+			}
+
+			// Create layout for keys in intermediate piano octave. 
+			else {
+
+				// Add layout for each key in octave. 
+				for(let i in keyList) {
+					octavekeylistlayout += createPianoKey(i);
+				}
 			}
 
 			// Compile layout for piano octave. 
@@ -200,7 +222,7 @@ function openScaleDisplay(resultIndex) {
 				<li class="key ${ keydata.keytype }${ keyInScale?' on':'' }${ keyOnTonic?' tonic':'' }" data-keyindex="${keyindex}">
 
 					<!-- caption -->
-					<span class="caption">${keydata.keyid}</span>
+					<span class="caption">${keydata.keyid}${octaveindex}</span>
 					<!-- /caption -->
 					
 				</li>

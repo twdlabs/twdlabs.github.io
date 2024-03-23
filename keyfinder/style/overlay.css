@@ -25,22 +25,22 @@ div#overlay main.main div.display span.scalekeys {display:flex; flex-direction:r
 div#overlay main.main div.display span.scalekeys span.key {color:inherit; /* cursor:pointer; */ user-select:none; margin:0 .25rem; transition:.125s;}
 div#overlay main.main div.display span.scalekeys span.key.on {color:var(--darkblue); font-weight:bold; transform:scale(1.625); transition:.5s;}
 
-div#overlay main.main div.display div.pianokeyboard {background-color:var(--darkblue); overflow-x:auto; max-width:100%; /* padding:.25rem; */ border:.125rem solid var(--fillcolor2); margin-top:.5rem;}
+div#overlay main.main div.display div.pianokeyboard {background-color:var(--emptycolor2); overflow-x:auto; max-width:100%; /* padding:.25rem; */ border:.125rem solid var(--fillcolor2); margin-top:.5rem;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist {display:flex; flex-direction:row; justify-content:center; width:fit-content; overflow:visible;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist {list-style:none; padding:0; margin:0;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave {position:relative;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist {display:flex; flex-direction:row; /* margin:.25rem; */}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist {list-style:none; padding:0; margin:0;}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key {cursor:pointer; display:grid; place-items:center; position:relative; /* font-size:.5rem; */}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.white {background-color:whitesmoke; color:black; height:12em; width:3em; --dotsize:1.25em; border:1px solid var(--fillcolor2); border-top:0 none; z-index:10;}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black {background-color:black; color:whitesmoke; height:7em; width:1.875em; --dotsize:1.125em; --cornersize:.5em; border:.125rem solid black; border-radius:0 0 var(--cornersize) var(--cornersize);}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key {cursor:pointer; display:grid; place-items:center; position:relative; font-size:.5rem;}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.white {background-color:whitesmoke; color:black; height:var(--keyheightw); width:var(--keywidthw); --dotsize:1.5em; border:1px solid var(--fillcolor2); border-top:0 none; z-index:10;}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black {background-color:black; color:whitesmoke; height:var(--keyheightb); width:var(--keywidthb); --dotsize:1.25em; border:.125rem solid black; border-top:0 none; border-radius:0 0 var(--keycorner) var(--keycorner);}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black {position:absolute; top:0; transform:translateX(-50%); z-index:20;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.tonic {--dotsize:1.625em;}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p1 {left:calc(100% * 1/7);}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p2 {left:calc(100% * 2/7);}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p4 {left:calc(100% * 4/7);}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p5 {left:calc(100% * 5/7);}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p6 {left:calc(100% * 6/7);}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p1 {/* left:calc(100% * 1/7); */ left:calc(var(--keywidthw) * 1);}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p2 {/* left:calc(100% * 2/7); */ left:calc(var(--keywidthw) * 2);}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p4 {/* left:calc(100% * 4/7); */ right:calc(var(--keywidthw) * 3); transform:translateX(50%);}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p5 {/* left:calc(100% * 5/7); */ right:calc(var(--keywidthw) * 2); transform:translateX(50%);}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.p6 {/* left:calc(100% * 6/7); */ right:calc(var(--keywidthw) * 1); transform:translateX(50%);}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key span.caption {position:absolute; bottom:0; left:50%; transform:translateX(-50%);}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key span.caption {font-size:.625rem; /* opacity:.875; */ user-select:none;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black span.caption {visibility:hidden;}
@@ -49,7 +49,7 @@ div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.k
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key::after {opacity:0; visibility:hidden;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.on::after {visibility:visible;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.white.on::after {opacity:.625;}
-div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.on::after {opacity:.875;}
+div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key.black.on::after {opacity:.75;}
 div#overlay main.main div.display div.pianokeyboard {perspective:100rem; transform-style:preserve-3d;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key {transform-origin:top; transition:.125s; --pressangle:-6deg;}
 div#overlay main.main div.display div.pianokeyboard ul.octavelist li.octave ul.keylist li.key:active {background-color:var(--darkblue);}
