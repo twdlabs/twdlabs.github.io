@@ -1,0 +1,93 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--red:#f53b57;
+	--purp:#3c40c6;
+	--green:#05c46b;
+	--cyan:#0fbcf9;
+	--gold:#ffa801;
+	--lightgrey:#CCC;
+	--lightblack:#333;
+
+	/* Page Sizes */
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+body {
+
+	--bgcolor:var(--lightgrey);
+	--backcolor:white;
+	--forecolor:var(--lightblack);
+}
+
+body.dark {
+
+	--bgcolor:var(--lightblack);
+	/* --backcolor:white; */
+	/* --forecolor:var(--lightblack); */
+}
+
+
+body {background-color:var(--bgcolor); color:var(--forecolor); font-family:Nunito,sans-serif; margin:0;}
+body.r {background-color:var(--red);}
+body.p {background-color:var(--purp);}
+body.g {background-color:var(--green);}
+body.c {background-color:var(--cyan);}
+body.y {background-color:var(--gold);}
+
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.menu {background-color:var(--backcolor); padding:.375rem; border-radius:var(--cornersize); border-radius:10em; box-shadow:var(--boxshadow);}
+/* div#container main.menu {width:100%; max-width:var(--pagewidth);} */
+div#container main.menu ul.menulist {display:flex; flex-direction:column; grid-gap:.375rem; position:relative;}
+div#container main.menu ul.menulist {list-style:none; padding:0; margin:0;}
+div#container main.menu ul.menulist li.dot {position:absolute; top:0; left:0;}
+div#container main.menu ul.menulist li.dot {background-color:var(--lightblack);  width:100%; padding-top:100%; border-radius:50%;}
+div#container main.menu ul.menulist li.menuitem {/* background-color:white; */ position:relative; /* font-size:2em; */ padding:.75em; border-radius:50%;}
+div#container main.menu ul.menulist li.menuitem {color:var(--lightblack); /* cursor:pointer; */}
+div#container main.menu ul.menulist li.menuitem.active {color:white;}
+/* div#container main.menu ul.menulist li.menuitem.active {background-color:var(--lightblack);} */
+/* div#container main.menu ul.menulist li.menuitem.active.r {background-color:var(--red);} */
+/* div#container main.menu ul.menulist li.menuitem.active.p {background-color:var(--purp);} */
+/* div#container main.menu ul.menulist li.menuitem.active.g {background-color:var(--green);} */
+/* div#container main.menu ul.menulist li.menuitem.active.c {background-color:var(--cyan);} */
+/* div#container main.menu ul.menulist li.menuitem.active.y {background-color:var(--gold);} */
+div#container main.menu ul.menulist li.menuitem a.menulink {color:inherit; text-decoration:none;}
+div#container main.menu ul.menulist li.menuitem a.menulink svg.icon {display:block; font-size:1em;}
+div#container main.menu ul.menulist li.menuitem a.menulink span.caption {background-color:white; color:var(--lightblack); font-size:1rem; /* display:block; */}
+div#container main.menu ul.menulist li.menuitem a.menulink span.caption {position:absolute; left:100%; top:50%; padding:.25em .625em; border-radius:.25rem; margin:0 1.5rem;}
+div#container main.menu ul.menulist li.menuitem a.menulink span.caption {visibility:hidden; opacity:0; transform:translate(1rem,-50%); transition:opacity .5s, transform 1s;}
+div#container main.menu ul.menulist li.menuitem.active a.menulink span.caption {visibility:visible; opacity:1; transform:translateY(-50%);}
+div#container main.menu ul.menulist li.menuitem a.menulink span.caption::after {background-color:inherit; content:''; --size:.75em; height:var(--size); width:var(--size); border-radius:.125rem;}
+div#container main.menu ul.menulist li.menuitem a.menulink span.caption::after {position:absolute; right:100%; top:50%; transform:translate(50%,-50%) rotate(45deg); z-index:-1;}
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
+
