@@ -21,6 +21,7 @@
 	/* Page Sizes */
 	--pagewidth:60rem;
 	--cornersize:.5rem;
+	--changetime:.5s;
 	
 	/* Box Shadows */
 	--boxshadow:0 0 1rem 0 #0002;
@@ -51,29 +52,31 @@ body.y {background-color:var(--gold);}
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
 
-div#container main.menu {background-color:var(--backcolor); padding:.375rem; border-radius:var(--cornersize); border-radius:10em; box-shadow:var(--boxshadow);}
+div#container main.menu {background-color:var(--backcolor); padding:.5rem; border-radius:var(--cornersize); border-radius:10em; box-shadow:var(--boxshadow);}
 /* div#container main.menu {width:100%; max-width:var(--pagewidth);} */
-div#container main.menu ul.menulist {display:flex; flex-direction:column; grid-gap:.375rem; position:relative;}
+div#container main.menu ul.menulist {display:flex; flex-direction:column; /* grid-gap:.375rem; */ position:relative;}
 div#container main.menu ul.menulist {list-style:none; padding:0; margin:0;}
-div#container main.menu ul.menulist li.dot {position:absolute; top:0; left:0;}
-div#container main.menu ul.menulist li.dot {background-color:var(--lightblack);  width:100%; padding-top:100%; border-radius:50%;}
-div#container main.menu ul.menulist li.menuitem {/* background-color:white; */ position:relative; /* font-size:2em; */ padding:.75em; border-radius:50%;}
+div#container main.menu ul.menulist li.dot {position:absolute; top:0; left:0; transition:var(--changetime);}
+/* div#container main.menu ul.menulist li.dot {background-color:var(--lightblack); width:100%; padding-top:100%; border-radius:50%;} */
+div#container main.menu ul.menulist li.menuitem {/* background-color:white; */ position:relative;}
 div#container main.menu ul.menulist li.menuitem {color:var(--lightblack); /* cursor:pointer; */}
-div#container main.menu ul.menulist li.menuitem.active {color:white;}
-/* div#container main.menu ul.menulist li.menuitem.active {background-color:var(--lightblack);} */
-/* div#container main.menu ul.menulist li.menuitem.active.r {background-color:var(--red);} */
-/* div#container main.menu ul.menulist li.menuitem.active.p {background-color:var(--purp);} */
-/* div#container main.menu ul.menulist li.menuitem.active.g {background-color:var(--green);} */
-/* div#container main.menu ul.menulist li.menuitem.active.c {background-color:var(--cyan);} */
-/* div#container main.menu ul.menulist li.menuitem.active.y {background-color:var(--gold);} */
+div#container main.menu ul.menulist li.menuitem a.menulink {display:block; font-size:2em; padding:.625em; border-radius:50%;}
 div#container main.menu ul.menulist li.menuitem a.menulink {color:inherit; text-decoration:none;}
+div#container main.menu ul.menulist li.menuitem a.menulink:hover {color:white; transition:color var(--changetime);}
+div#container main.menu ul.menulist li.menuitem a.menulink:hover {background-color:var(--lightblack);}
+div#container main.menu ul.menulist li.menuitem a.menulink.active {color:white; transition:color var(--changetime);}
+div#container main.menu ul.menulist li.menuitem a.menulink.active {background-color:var(--lightblack);}
 div#container main.menu ul.menulist li.menuitem a.menulink svg.icon {display:block; font-size:1em;}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption {background-color:white; color:var(--lightblack); font-size:1rem; /* display:block; */}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption {position:absolute; left:100%; top:50%; padding:.25em .625em; border-radius:.25rem; margin:0 1.5rem;}
-div#container main.menu ul.menulist li.menuitem a.menulink span.caption {visibility:hidden; opacity:0; transform:translate(1rem,-50%); transition:opacity .5s, transform 1s;}
-div#container main.menu ul.menulist li.menuitem.active a.menulink span.caption {visibility:visible; opacity:1; transform:translateY(-50%);}
+div#container main.menu ul.menulist li.menuitem a.menulink span.caption {visibility:hidden; opacity:0; transform:translate(1rem,-50%); transition:opacity var(--changetime), transform 1s;}
+div#container main.menu ul.menulist li.menuitem a.menulink:hover span.caption {visibility:visible; opacity:1; transform:translateY(-50%);}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption::after {background-color:inherit; content:''; --size:.75em; height:var(--size); width:var(--size); border-radius:.125rem;}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption::after {position:absolute; right:100%; top:50%; transform:translate(50%,-50%) rotate(45deg); z-index:-1;}
+
+
+
+
 
 
 /* Tablet Screen */
@@ -90,4 +93,9 @@ div#container main.menu ul.menulist li.menuitem a.menulink span.caption::after {
 @media screen and (max-width:32rem) {
 	/*  */
 }
-
+/* 
+div#container main.menu ul.menulist li.menuitem.r a.menulink:hover {background-color:var(--red);}
+div#container main.menu ul.menulist li.menuitem.p a.menulink:hover {background-color:var(--purp);}
+div#container main.menu ul.menulist li.menuitem.g a.menulink:hover {background-color:var(--green);}
+div#container main.menu ul.menulist li.menuitem.c a.menulink:hover {background-color:var(--cyan);}
+div#container main.menu ul.menulist li.menuitem.y a.menulink:hover {background-color:var(--gold);} */
