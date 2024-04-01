@@ -1,62 +1,123 @@
 
 
 
-// Get menu items. 
-const menuitems = document.querySelectorAll('div#container main.menu ul.menulist li.menuitem');
+// Get container for menu list. 
+const menulist = document.querySelector('div#container main.menu ul.menulist');
 
 // Get dot indicator. 
-const dotindicator = document.querySelector('div#container main.menu ul.menulist li.dot');
+// const dotindicator = document.querySelector('div#container main.menu ul.menulist li.dot');
+
+// Initialize index for selected menu item. 
+let selectedmenuindex = -1;
 
 
 /*****/
 
+
+// Add tabs. 
+addTabs();
 
 // Activate tabs. 
-// activateTabs();
+activateTabs();
 
 
 /*****/
 
+
+// Add tabs. 
+function addTabs() {
+
+	// Initialize result. 
+	let result = '';
+
+	// Go thru each menu item. 
+	for(let menuindex in menudata) {
+		
+		// Add to result: layout for menu item. 
+		result += createTab(menuindex);
+	}
+
+	// Display result. 
+	menulist.innerHTML = result;
+
+	/****/
+
+	// Create layout for menu item. 
+	function createTab(menuindex) {
+		
+		// Get details for given menu item. 
+		let menuitem = menudata[menuindex];
+		let icontag = menuitem.icontag;
+		let currentlyselected = (menuindex==selectedmenuindex);
+		
+		// Compile layout for menu item. 
+		return `
+		<!-- menuitem -->
+		<li class="menuitem${ currentlyselected ? ' active' : '' }" data-menuindex="${ menuindex }">
+
+			<!-- menulink -->
+			<a class="menulink" href="javascript:void(0)">
+
+				<!-- icon -->
+				<svg class="icon ${ icontag }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					${ icondata[icontag] }
+				</svg>
+				<!-- /icon -->
+
+				<!-- caption -->
+				<span class="caption">${ menuitem.caption }</span>
+				<!-- /caption -->
+
+			</a>
+			<!-- /menulink -->
+			
+		</li>
+		<!-- /menuitem -->`;
+	}
+}
 
 // Activate tabs. 
 function activateTabs() {
+
+	// Get menu items. 
+	const menuitems = document.querySelectorAll('div#container main.menu ul.menulist li.menuitem');
 
 	// Go thru each menu item. 
 	for(let menuitem of menuitems) {
 	
 		// Activate menu item. 
-		menuitem.addEventListener('mouseenter',selectTab);
+		// menuitem.addEventListener('mouseenter',selectTab);
+		menuitem.addEventListener('click',selectTab);
 	}
 	
 	/****/
 
 	// Select tab. 
 	function selectTab(event) {
+		console.log('selectTab');
 	
 		// Clear all tabs. 
 		clearAllTabs();
 	
 		// Get selected menu item. 
 		let selectedmenuitem = event.currentTarget;
+		// Save index from selected menu item. 
+		selectedmenuindex = selectedmenuitem.getAttribute('data-menuindex') * 1;
+
 		// Activate selected menu item. 
 		selectedmenuitem.classList.add('active');
-	
-		// Get index from selected menu item. 
-		let selectedmenuindex = selectedmenuitem.getAttribute('data-menuindex') * 1;
-		// Show tab at selected menu index. 
-		showTabAtIndex(selectedmenuindex);
+
+		// Highlight tab at selected menu index. 
+		setStyleValue('selectedmenuindex',`${selectedmenuindex}`);
+
+		// Get name of color associated with selected menu item. 
+		let colorname = menudata[selectedmenuindex].colorname;
+
+		// TODO: Assign selected color to menu (by style variable). 
+		document.body.style.backgroundColor = `var(--${colorname})`;
+		console.log(`var(--${colorname})`);
 	
 		/***/
-	
-		// Show tab at given menu index. 
-		function showTabAtIndex(menuindex) {
-		
-			// TODO: Get vertical position for dot indicator. 
-			let dotposition = 100 * menuindex;
-	
-			// TODO: Move dot indicator. 
-			dotindicator.style.transform = `translateY(${ dotposition }%)`;
-		}
 
 		// Clear all tabs. 
 		function clearAllTabs() {
@@ -67,9 +128,16 @@ function activateTabs() {
 				// Clear menu item. 
 				menuitem.classList.remove('active');
 			}
+	
+			// Update index for no selection. 
+			selectedmenuindex = -1
 		}
 	}
 }
+
+
+/*****/
+
 
 // Get existing style value. 
 function getStyleValue(name) {
