@@ -37,6 +37,12 @@ function addTabs() {
 		result += createTab(menuindex);
 	}
 
+	// Add dot indicator. 
+	result += `
+	<!-- dot -->
+	<span class="dot"></span>
+	<!-- /dot -->`;
+
 	// Display result. 
 	menulist.innerHTML = result;
 
@@ -115,6 +121,7 @@ function activateTabs() {
 
 		// TODO: Assign selected color to menu (by style variable). 
 		document.body.style.backgroundColor = `var(--${colorname})`;
+		document.querySelector('div#container main.menu ul.menulist span.dot').style.backgroundColor = `var(--${colorname})`;
 		console.log(`var(--${colorname})`);
 	
 		/***/

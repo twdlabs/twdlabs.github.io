@@ -21,7 +21,7 @@
 	/* Page Sizes */
 	--pagewidth:60rem;
 	--cornersize:.5rem;
-	--changetime:.5s;
+	--changetime:.375s;
 	--selectedmenuindex:-1;
 	
 	/* Box Shadows */
@@ -44,7 +44,7 @@ body.dark {
 }
 
 
-body {background-color:var(--bgcolor); color:var(--forecolor); font-family:Nunito,sans-serif; margin:0;}
+body {background-color:var(--bgcolor); color:var(--forecolor); font-family:Nunito,sans-serif; transition:background-color var(--changetime); margin:0;}
 
 
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
@@ -58,9 +58,9 @@ div#container main.menu {background-color:var(--backcolor); padding:.5rem; borde
 div#container main.menu ul.menulist {display:flex; flex-direction:column; /* grid-gap:.375rem; */}
 div#container main.menu ul.menulist {position:relative; overflow:hidden;}
 div#container main.menu ul.menulist {list-style:none; padding:0; margin:0;}
-div#container main.menu ul.menulist::before {position:absolute; top:0; left:0; width:100%; transition:transform var(--changetime);}
-div#container main.menu ul.menulist::before {background-color:var(--lightblack); content:''; transform:translateY( calc(var(--selectedmenuindex) * 100%) ); padding-top:100%; border-radius:50%;}
-div#container main.menu ul.menulist li.menuitem {/* background-color:white; */ position:relative;}
+div#container main.menu ul.menulist span.dot {position:absolute; top:0; left:0; width:100%; z-index:10; transition:transform var(--changetime);}
+div#container main.menu ul.menulist span.dot {background-color:var(--lightblack); content:''; transform:translateY( calc(var(--selectedmenuindex) * 100%) ); padding-top:100%; border-radius:50%;}
+div#container main.menu ul.menulist li.menuitem {/* background-color:white; */ position:relative; z-index:20;}
 div#container main.menu ul.menulist li.menuitem {color:var(--lightblack); /* cursor:pointer; */}
 
 /* Menu List: Menu Link */
