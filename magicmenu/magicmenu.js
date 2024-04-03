@@ -92,8 +92,8 @@ function activateTabs() {
 	for(let menuitem of menuitems) {
 	
 		// Activate menu item. 
-		// menuitem.addEventListener('mouseenter',selectTab);
-		menuitem.addEventListener('click',selectTab);
+		menuitem.addEventListener('mouseenter',selectTab);
+		// menuitem.addEventListener('click',selectTab);
 	}
 	
 	/****/

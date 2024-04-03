@@ -22,7 +22,7 @@
 	--pagewidth:60rem;
 	--cornersize:.5rem;
 	--changetime:.375s;
-	--selectedmenuindex:-1;
+	--selectedmenuindex:-2;
 	
 	/* Box Shadows */
 	--boxshadow:0 0 1rem 0 #0002;
@@ -56,7 +56,7 @@ div#container main.menu {background-color:var(--backcolor); padding:.5rem; borde
 
 /* Menu List */
 div#container main.menu ul.menulist {display:flex; flex-direction:column; /* grid-gap:.375rem; */}
-div#container main.menu ul.menulist {position:relative; overflow:hidden;}
+div#container main.menu ul.menulist {position:relative; /* overflow:hidden; */}
 div#container main.menu ul.menulist {list-style:none; padding:0; margin:0;}
 div#container main.menu ul.menulist span.dot {position:absolute; top:0; left:0; width:100%; z-index:10; transition:transform var(--changetime);}
 div#container main.menu ul.menulist span.dot {background-color:var(--lightblack); content:''; transform:translateY( calc(var(--selectedmenuindex) * 100%) ); padding-top:100%; border-radius:50%;}
@@ -74,6 +74,7 @@ div#container main.menu ul.menulist li.menuitem a.menulink svg.icon {display:blo
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption {background-color:white; color:var(--lightblack); font-size:1rem; /* display:block; */}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption {position:absolute; left:100%; top:50%; padding:.25em .625em; border-radius:.25rem; margin:0 1.5rem;}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption {visibility:hidden; opacity:0; transform:translate(1rem,-50%); transition:opacity var(--changetime), transform 1s;}
+/* div#container main.menu ul.menulist li.menuitem.active a.menulink span.caption {visibility:visible; opacity:1; transform:translateY(-50%);} */
 div#container main.menu ul.menulist li.menuitem a.menulink:hover span.caption {visibility:visible; opacity:1; transform:translateY(-50%);}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption::after {background-color:inherit; content:''; --size:.75em; height:var(--size); width:var(--size); border-radius:.125rem;}
 div#container main.menu ul.menulist li.menuitem a.menulink span.caption::after {position:absolute; right:100%; top:50%; transform:translate(50%,-50%) rotate(45deg); z-index:-1;}
