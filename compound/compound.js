@@ -13,10 +13,46 @@ const inputcompoundingperiodsperyear = document.querySelector('div#container mai
 const inputperiodiccontribution = document.querySelector('div#container main.main div.input input#periodiccontribution');
 // Get input field: periodiccontributionfrequencyperyear. 
 const inputperiodiccontributionfrequencyperyear = document.querySelector('div#container main.main div.input input#periodiccontributionfrequencyperyear');
-// Get output field for future value. 
-const outputfuturevalue = document.querySelector('div#container main.main div.output');
 
-// Calculate future value
+// Group all outputs into list. 
+let inputBoxList = [inputprincipalamount,inputannualgrowthrate,inputnumberofyears,inputcompoundingperiodsperyear,inputperiodiccontribution,inputperiodiccontributionfrequencyperyear];
+
+// Get output field for future value. 
+const outputsimplevalue = document.querySelector('div#container main.main div.output.simple');
+const outputcompoundvalue = document.querySelector('div#container main.main div.output.compound');
+
+
+/*****/
+
+
+// Handle events. 
+handleEvents();
+
+
+/*****/
+
+
+// Handle events. 
+function handleEvents() {
+
+	// 
+	for(let inputBox of inputBoxList) {
+		inputBox.addEventListener('keyup', respondToKey);
+	}
+
+	/****/
+
+	// Respond to key. 
+	function respondToKey(event) {
+		// console.log('Responding to key',event.keyCode,event.key);
+
+		// Check if enter key pressed. 
+		if(event.keyCode==13 || event.key=='Enter') calculateFutureValue();
+	}
+}
+
+
+// Calculate future value. 
 function calculateFutureValue() {
 
 	// Get value from input field: principalamount. 
@@ -56,7 +92,8 @@ function calculateFutureValue() {
 	let n = compoundingperiodsperyear ? compoundingperiodsperyear : 1;
 	let c = periodiccontribution ? periodiccontribution : 0;
 	let f = periodiccontributionfrequencyperyear ? periodiccontributionfrequencyperyear : 0;
-	let C = c * f/n /* * n/f */;
+	let C = c * f/n;
+	// let C = c * n/f;
 	
 	// Calculate future value. 
 	let result = 0;
@@ -66,8 +103,12 @@ function calculateFutureValue() {
 	// console.log('pow:',pow);
 	console.log('result:',result);
 	
+	// Display simple value. 
+	// outputsimplevalue.innerHTML = dollar( P * (1 + r*t) );
+	outputsimplevalue.innerHTML = dollar( P + (1 + r*t) );
+	
 	// Display future value. 
-	outputfuturevalue.innerHTML = dollar(result);
-	// outputfuturevalue.innerHTML = dollarBrief(result);
+	outputcompoundvalue.innerHTML = dollar(result);
+	// outputcompoundvalue.innerHTML = dollarBrief(result);
 }
 

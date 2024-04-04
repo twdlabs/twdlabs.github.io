@@ -8,14 +8,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../atgicon.ico" rel="icon"/>
-		<!-- <link href="./icon.png" rel="apple-touch-icon"/> -->
+		<link href="./growthicon.JPG" rel="icon"/>
+		<link href="./growthicon.JPG" rel="apple-touch-icon"/>
 		<title>Compound Interest Calculator</title>
 
 		<!-- Main Stylesheet -->
 		<link href="./compound.css" rel="stylesheet" type="text/css"/>
-
-		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
@@ -81,6 +79,10 @@
 						<!-- #principalamount -->
 						<input id="principalamount" type="number" min=".01" required>
 						<!-- /#principalamount -->
+
+						<!-- tooltip -->
+						<span class="tooltip">Principal Amount</span>
+						<!-- /tooltip -->
 	
 						<!-- label -->
 						<label class="label" for="principalamount"></label>
@@ -107,6 +109,10 @@
 						<!-- #annualgrowthrate -->
 						<input id="annualgrowthrate" type="number" min="0" required>
 						<!-- /#annualgrowthrate -->
+
+						<!-- tooltip -->
+						<span class="tooltip">Growth Rate</span>
+						<!-- /tooltip -->
 	
 						<!-- label -->
 						<label class="label" for="annualgrowthrate">
@@ -141,6 +147,10 @@
 						<!-- #numberofyears -->
 						<input id="numberofyears" type="number" min="0" required>
 						<!-- /#numberofyears -->
+
+						<!-- tooltip -->
+						<span class="tooltip">Term</span>
+						<!-- /tooltip -->
 	
 						<!-- label -->
 						<label class="label" for="numberofyears">yrs</label>
@@ -173,6 +183,10 @@
 						<!-- #compoundingperiodsperyear -->
 						<input id="compoundingperiodsperyear" type="number" min="0" required>
 						<!-- /#compoundingperiodsperyear -->
+
+						<!-- tooltip -->
+						<span class="tooltip">Compounding Periods Per Year</span>
+						<!-- /tooltip -->
 	
 						<!-- label -->
 						<label class="label" for="compoundingperiodsperyear">/ yr</label>
@@ -198,7 +212,7 @@
 						<!-- /icon -->
 
 						<!-- caption -->
-						<span class="caption">Contribution</span>
+						<span class="caption">Principal Contribution</span>
 						<!-- /caption -->
 
 					</h2>
@@ -222,6 +236,10 @@
 						<!-- #periodiccontribution -->
 						<input id="periodiccontribution" type="number" min="0">
 						<!-- /#periodiccontribution -->
+
+						<!-- tooltip -->
+						<span class="tooltip">Periodic Contribution</span>
+						<!-- /tooltip -->
 	
 						<!-- label -->
 						<label class="label" for="periodiccontribution"></label>
@@ -255,6 +273,10 @@
 						<!-- #periodiccontributionfrequencyperyear -->
 						<input id="periodiccontributionfrequencyperyear" type="number" min="">
 						<!-- /#periodiccontributionfrequencyperyear -->
+
+						<!-- tooltip -->
+						<span class="tooltip">Frequency of Periodic Contribution</span>
+						<!-- /tooltip -->
 	
 						<!-- label -->
 						<label class="label" for="periodiccontributionfrequencyperyear">/ yr</label>
@@ -296,7 +318,11 @@
 					<!-- /input -->
 	
 					<!-- output -->
-					<div class="output"></div>
+					<div class="output simple"></div>
+					<!-- /output -->
+	
+					<!-- output -->
+					<div class="output compound"></div>
 					<!-- /output -->
 
 				</section>
