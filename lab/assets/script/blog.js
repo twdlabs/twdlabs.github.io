@@ -67,10 +67,7 @@ loadBlog( [] );
 
 // Load blog posts. 
 function loadBlog(selectedfilteritems) {
-	console.log('Loading blog...',selectedfilteritems);
-
-	// Check if all criteria required. 
-	let passallcriteria = (typeof filterpane != 'undefined') ? filterpane.anyallswitch.switchstate.checked : undefined;
+	// console.log('Loading blog...',selectedfilteritems)
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -89,8 +86,8 @@ function loadBlog(selectedfilteritems) {
 	// Load posts. 
 	function loadPosts(section,projects,previewsOn,doMinimalPage) {
 
-		// Filter projects. 
-		projects = projects.filter(checkFilterPass);
+		// TODO: Filter projects (if filter criteria present). 
+		if(selectedfilteritems) projects = projects.filter(checkFilterPass);
 		// console.log('Projects:', projects.length, projects);
 		
 		// Display layout for posts in blog section. 
@@ -107,14 +104,14 @@ function loadBlog(selectedfilteritems) {
 	
 		/***/
 
-		// Check if post passes filter criteria. 
+		// TODO: Check if post passes filter criteria. 
 		function checkFilterPass(projectitem) {
 		
 			// Pass filter if no filter items selected. 
 			if(!selectedfilteritems.length) return true;
 	
 			// Check post for all criteria. 
-			if(passallcriteria) {
+			if(needallcriteria) {
 				return checkFilterPassAll();
 			}
 			// Check post for any criteria. 
@@ -130,13 +127,8 @@ function loadBlog(selectedfilteritems) {
 				// Go thru each selected filter item. 
 				for(let filteritem of selectedfilteritems) {
 		
-					// Get xyz. 
-					let typeid = filteritem.filtertypeid;
-					let valueid = filteritem.filtervalueid;
-					/* if(!valueid) */ console.log('value id:',valueid,undefined);
-		
-					// Check for match btwn given project and current filter item. 
-					let passed = (projectitem[typeid] == valueid);
+					// Check if post passes current filter item. 
+					let passed = checkFilterItem(filteritem);
 		
 					// Return false if any mismatch found. 
 					if(!passed) return false;
@@ -152,13 +144,8 @@ function loadBlog(selectedfilteritems) {
 				// Go thru each selected filter item. 
 				for(let filteritem of selectedfilteritems) {
 		
-					// Get xyz. 
-					let typeid = filteritem.filtertypeid;
-					let valueid = filteritem.filtervalueid;
-					if(!valueid) console.log('value id:',valueid/* ,undefined */);
-		
-					// Check for match btwn given project and current filter item. 
-					let passed = (projectitem[typeid] == valueid);
+					// Check if post passes current filter item. 
+					let passed = checkFilterItem(filteritem);
 		
 					// Return true if any match found. 
 					if(passed) return true;
@@ -166,6 +153,21 @@ function loadBlog(selectedfilteritems) {
 		
 				// Return false if no match found. 
 				return false;
+			}
+		
+			// Check if post passes given filter item. 
+			function checkFilterItem(filteritem) {
+		
+				// Get type of filter item. 
+				let typeid = filteritem.filtertypeid;
+				if(!typeid) console.log('Filter item type id:',typeid);
+
+				// Get value of filter item. 
+				let valueid = filteritem.filtervalueid;
+				if(!valueid) console.log('Filter item value id:',valueid);
+
+				// Check for match btwn given project and current filter item. 
+				return (projectitem[typeid] == valueid);
 			}
 		}
 
@@ -430,7 +432,7 @@ function loadBlog(selectedfilteritems) {
 			archive.blockpresent = false;
 			return;
 		}
-		console.log('Loading archive posts...');
+		// console.log('Loading archive posts...');
 	
 		// Get list of archive projects. 
 		let archiveProjects = getArchiveProjects();
@@ -460,7 +462,7 @@ function loadBlog(selectedfilteritems) {
 			category.blockpresent = false;
 			return;
 		}
-		console.log('Loading category posts...');
+		// console.log('Loading category posts...');
 	
 		// Get list of projects for given category. 
 		let categoryProjects = getCategoryProjects();
@@ -496,7 +498,7 @@ function loadBlog(selectedfilteritems) {
 			collection.blockpresent = false;
 			return;
 		}
-		console.log('Loading collection posts...');
+		// console.log('Loading collection posts...');
 	
 		// Get list of projects for given collection. 
 		let collectionProjects = getCollectionProjects();
@@ -542,7 +544,7 @@ function loadBlog(selectedfilteritems) {
 			featured.blockpresent = false;
 			return;
 		}
-		console.log('Loading featured posts...');
+		// console.log('Loading featured posts...');
 	
 		// Get list of featured projects. 
 		let featuredProjects = getFeaturedProjects();

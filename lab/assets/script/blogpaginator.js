@@ -121,9 +121,15 @@ function displaySelectedPage() {
 		}
 
 		// Display currently selected page number. 
-		if(pagenumdestination) pagenumdestination.textContent = (1*selectedpageindex + 1);
+		if(pagenumdestination) {
+			if(selectedpageindex && pagecount) pagenumdestination.textContent = (1*selectedpageindex + 1);
+			else pagenumdestination.textContent = '';
+		}
 	
 		// Display total number of post pages. 
-		if(pagecountdestination) pagecountdestination.textContent = pagecount;
+		if(pagecountdestination) {
+			if(pagecount) pagecountdestination.textContent = pagecount;
+			else pagecountdestination.textContent = '';
+		}
 	}
 }

@@ -15,6 +15,8 @@ const filterpane = {
 	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpane ul.filterlist'),
 	// Get group headers in filter pane. 
 	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockhead'),
+	// Get checkboxes for filter item states. 
+	filteritemstates:undefined,
 
 	// Get switch for filter type (matching any criterion vs matching all criteria). 
 	anyallswitch: {
@@ -97,122 +99,151 @@ function activateBlogFilters() {
 
 			// Set filter style. 
 			let dohardfilter = true;
-			dohardfilter = false;
+			// dohardfilter = false;
+	
+			// Get search query of post filter. 
+			let filtersearchquery = searchpanel.queryfield.value.toUpperCase();
+			// Get list of words in search query. 
+			let searchquerywords = filtersearchquery.split(' ');
+			// console.log('Searching posts...', filtersearchquery, searchquerywords);
 
 			// Do hard filter. 
-			if(dohardfilter) {
+			if(dohardfilter) doHardFilter();
+			// Do soft filter. 
+			else doSoftFilter();
 
-				// TODO: Get search filter criteria. 
+			/**/
+
+			// TODO: Do hard filter. 
+			function doHardFilter() {
+
+				// Create list for search filter items. 
 				let selectedfilteritems = [];
 
-				// TODO: Load matching posts for given search filter criteria. 
+				// Get all filter blocks. 
+				let filtertypeblocks = filterpane.filterlistdestination.querySelectorAll('li.filtertype');
+
+				// Go thru each filter type. 
+				for(let filtertypeblock of filtertypeblocks) {
+					// console.log('Filter block:',filtertypeblock);
+
+					// Get id for block of selected filter type. 
+					let filtertypeid = filtertypeblock.getAttribute('data-filtertypeid');
+					// console.log('Filter type id:',filtertypeid);
+
+					// Go thru each word in search query. 
+					for(let queryword of searchquerywords) {
+	
+						// Add filter item to list. 
+						selectedfilteritems.push({
+							filtertypeid:filtertypeid,
+							filtervalueid:queryword,
+							// caption:xyz,
+						});
+					}
+				}
+
+				// Load matching posts for given search filter criteria. 
 				loadBlog(selectedfilteritems);
 
 				// TODO: Load new post filter groups into filter pane. 
 				loadFilterGroups();
-
-				// 
-				return;
 			}
 
 			// Do soft filter. 
+			function doSoftFilter() {
 
-			// Access loaded blog post cards. 
-			let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
-			// console.log('Blog post cards:',blogpostcards);
-
-			// Initialize number of matching posts. 
-			let numMatchingPosts = 0;
-
-			// TODO: There's an easier way to do this. But this way doesn't work yet cuz its not an array; ts a collection of nodes. 
-			// let matchingPosts = blogpostcards.filter( (card)=>checkForMatch( card.getAttribute('data-projectid').toUpperCase() ) )
-			// Set number of matching posts. 
-			// let numMatchingPosts = matchingPosts.length;
-		
-			// Go thru each blog post. 
-			for(let postcard of blogpostcards) {
-
-				// Get project id for given post. 
-				let projectid = postcard.getAttribute('data-projectid');
-
-				// Check for matching post. 
-				let matchFound = checkForMatch(projectid);
-
-				// Increment number of matching posts. 
-				if(matchFound) numMatchingPosts++;
-
-				// Update visibility state of post based on match. 
-				updatePostState(postcard, matchFound);
-			}
-
-			// Set state of results block. 
-			setResultState(numMatchingPosts);
-
-			/**/
-
-			// Check for matching post. 
-			function checkForMatch(projectid) {
-
-				// Capitalize project id. 
-				projectid = projectid.toUpperCase();
-
-				// Get search query of post filter. 
-				let filtersearchquery = searchpanel.queryfield.value.toUpperCase();
-				// Get list of words in search query. 
-				let searchquerywords = filtersearchquery.split(' ');
-				// console.log('Searching posts...', filtersearchquery, searchquerywords);
-
-				// Check for matching post (by full query). 
-				let matchFullQuery = projectid.includes(filtersearchquery);
-				// Check for matching post (by each word). 
-				let matchEveryWord = checkForMatchAllWords(projectid,searchquerywords);
-
-				// Compile match criteria. 
-				return (matchFullQuery || matchEveryWord);
+				// Access loaded blog post cards. 
+				let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
+				// console.log('Blog post cards:',blogpostcards);
+	
+				// Initialize number of matching posts. 
+				let numMatchingPosts = 0;
+	
+				// TODO: There's an easier way to do this. But this way doesn't work yet cuz its not an array; ts a collection of nodes. 
+				// let matchingPosts = blogpostcards.filter( (card)=>checkForMatch( card.getAttribute('data-projectid').toUpperCase() ) )
+				// Set number of matching posts. 
+				// let numMatchingPosts = matchingPosts.length;
+			
+				// Go thru each blog post. 
+				for(let postcard of blogpostcards) {
+	
+					// Get project id for given post. 
+					let projectid = postcard.getAttribute('data-projectid');
+	
+					// Check for matching post. 
+					let matchFound = checkForMatch(projectid);
+	
+					// Increment number of matching posts. 
+					if(matchFound) numMatchingPosts++;
+	
+					// Update visibility state of post based on match. 
+					updatePostState(postcard, matchFound);
+				}
+	
+				// Set state of results block. 
+				setResultState(numMatchingPosts);
 
 				/**/
 
-				// Check for matching post (by all words). 
-				function checkForMatchAllWords(projectid,searchquerywords) {
-			
-					// Go thru each word in search query. 
-					for(let word of searchquerywords) {
+				// Check for matching post. 
+				function checkForMatch(projectid) {
 	
-						let wordPresent = projectid.includes(word);
+					// Capitalize project id. 
+					projectid = projectid.toUpperCase();
 	
-						// Return false if any query word is missing. 
-						if(!wordPresent) return false;
+					// Check for matching post (by full query). 
+					let matchFullQuery = projectid.includes(filtersearchquery);
+					// Check for matching post (by each word). 
+					let matchEveryWord = checkForMatchAllWords(projectid,searchquerywords);
+	
+					// Compile match criteria. 
+					return (matchFullQuery || matchEveryWord);
+	
+					/**/
+	
+					// Check for matching post (by all words). 
+					function checkForMatchAllWords(projectid,searchquerywords) {
+				
+						// Go thru each word in search query. 
+						for(let word of searchquerywords) {
+		
+							let wordPresent = projectid.includes(word);
+		
+							// Return false if any query word is missing. 
+							if(!wordPresent) return false;
+						}
+		
+						// Return true if passed (no query words missing). 
+						return true;
 					}
 	
-					// Return true if passed (no query words missing). 
-					return true;
-				}
-
-				// Check for matching post (by any words). 
-				function checkForMatchAnyWord(projectid,searchquerywords) {
-			
-					// Go thru each word in search query. 
-					for(let word of searchquerywords) {
-	
-						let wordPresent = projectid.includes(word);
-	
-						// Return false if any query word is missing. 
-						if(!wordPresent) return false;
+					// Check for matching post (by any words). 
+					function checkForMatchAnyWord(projectid,searchquerywords) {
+				
+						// Go thru each word in search query. 
+						for(let word of searchquerywords) {
+		
+							let wordPresent = projectid.includes(word);
+		
+							// Return false if any query word is missing. 
+							if(!wordPresent) return false;
+						}
+		
+						// Return true if passed (no query words missing). 
+						return true;
 					}
-	
-					// Return true if passed (no query words missing). 
-					return true;
 				}
-			}
-
-			// Update visibility state of post based on match. 
-			function updatePostState(postcard,matchesQuery) {
-
-				// Show matching post. 
-				if(matchesQuery) postcard.classList.remove('gone');
-
-				// Hide non-matching post. 
-				else postcard.classList.add('gone');
+	
+				// Update visibility state of post based on match. 
+				function updatePostState(postcard,matchesQuery) {
+	
+					// Show matching post. 
+					if(matchesQuery) postcard.classList.remove('gone');
+	
+					// Hide non-matching post. 
+					else postcard.classList.add('gone');
+				}
 			}
 		}
 
@@ -229,7 +260,7 @@ function activateBlogFilters() {
 
 	// Load post filter groups into filter pane. 
 	function loadFilterGroups() {
-		console.log('Loading list of post filter groups');
+		// console.log('Loading list of post filter groups');
 
 		// Check if filter pane exists. 
 		if(!filterpane.box) return;
@@ -510,10 +541,11 @@ function activateBlogFilters() {
 		function activateFilterItems() {
 		
 			// Get loaded items in filter pane. 
-			let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+			// let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+			filterpane.filteritemstates = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
 		
 			// Go thru each item in filter pane. 
-			for(let checkbox of filterpanecheckboxes) {
+			for(let checkbox of filterpane.filteritemstates) {
 		
 				// Enable toggle of filter item. 
 				checkbox.addEventListener('input',applySelectedFilters);
@@ -546,10 +578,11 @@ function toggleFilterPane() {
 function clearAllAppliedFilters() {
 
 	// Get loaded items in filter pane. 
-	let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+	// let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+	filterpane.filteritemstates = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
 
 	// Go thru each item in filter pane. 
-	for(let checkbox of filterpanecheckboxes) {
+	for(let checkbox of filterpane.filteritemstates) {
 
 		// Uncheck checkbox for current filter item. 
 		checkbox.checked = false;
@@ -566,25 +599,28 @@ function applySelectedFilters() {
 	let selectedfilteritems = [];
 
 	// Get checkboxes for loaded filter items in filter pane. 
-	let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+	// let filterpanecheckboxes = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+	filterpane.filteritemstates = filterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
 
 	// Go thru each checkbox in filter pane. 
-	for(let checkbox of filterpanecheckboxes) {
+	for(let checkbox of filterpane.filteritemstates) {
 
 		// Check if filter item selected. 
 		if(checkbox.checked) {
 			
 			// Get box for filter item. 
 			let filteritembox = checkbox.parentElement;
-			let filtergroupbox = filteritembox.parentElement.parentElement.parentElement;
-			// console.log('Filter group box:',filtergroupbox);
-			// console.log('Filter item box:',filteritembox);
-			// console.log('Filter item checkbox:',checkbox);
+			let filtergroupblock = filteritembox.parentElement.parentElement.parentElement.parentElement;
+			console.log('Filter group box:',filtergroupblock);
+			console.log('Filter item box:',filteritembox);
+			console.log('Filter item checkbox:',checkbox);
 
-			// Get ids for selected filter item. 
-			let filtertypeid = filtergroupbox.getAttribute('data-filtertypeid');
+			// Get id for block of selected filter type. 
+			let filtertypeid = filtergroupblock.getAttribute('data-filtertypeid');
+			// console.log('Filter type id:',filtertypeid);
+			// Get id for value of selected filter item. 
 			let filtervalueid = filteritembox.getAttribute('data-filteritemvalueid');
-			// console.log('Filter item ids:',filtertypeid,filtervalueid);
+			// console.log('Filter item value id:',filtervalueid);
 
 			// Get caption for selected filter item. 
 			let filteritemcaptionbox = filteritembox.querySelector('span.caption');
@@ -605,6 +641,7 @@ function applySelectedFilters() {
 			console.log('Selected filter items:',selectedfilteritems);
 		}
 	}
+	console.log('Selected filter items:',selectedfilteritems);
 
 	// Create layout for list of filter tags. 
 	let filtertaglistlayout = selectedfilteritems.map(createFilterTagLayout).join('');
@@ -612,15 +649,16 @@ function applySelectedFilters() {
 
 	// Display layout for list of filter tags. 
 	filterpane.taglistdestination.innerHTML = filtertaglistlayout;
-	// console.log('Selected filter items:',selectedfilteritems);
 
 	// Apply selected filter values to loaded blog posts. 
 	loadBlog(selectedfilteritems);
+	console.log('Selected filter items:',selectedfilteritems);
 
 	/****/
 
 	// Create layout for filter tag. 
 	function createFilterTagLayout(filteritem) {
+		console.log('Creating filter tag layout', filteritem.filtertypeid, filteritem.filtervalueid);
 
 		// Get unique id of selected filter item. 
 		let filteritemuniqueid = filteritem.filtertypeid + filteritem.filtervalueid;

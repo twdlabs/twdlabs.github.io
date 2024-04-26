@@ -197,12 +197,6 @@ div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist
 
 	/* Blog Section: Filter Pane */
 	/* div#container section.blog div.grid div.body div.filterpane {} */
-	/* Blog Section: Filter Pane: Filter List */
-	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist {} */
-	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype {} */
-	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockbody {} */
-	/* Blog Section: Filter Pane: Filter Item List */
-	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist {display:none;} */
 
 	/* Blog Section: Applied Filters */
 	/* div#container section.blog div.grid div.body div.appliedfilters {} */
@@ -211,11 +205,21 @@ div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist
 /* Small Smartphone Screen */
 @media screen and (max-width:30rem) {
 
+	/* Blog Section: Filter Panel */
+	/* div#container section.blog div.grid div.body div.filterpanel {} */
+
 	/* Blog Section: Filter Pane */
 	/* div#container section.blog div.grid div.body div.filterpane {} */
 	div#container section.blog div.grid div.body div.filterpane {position:static;}
 	div#container section.blog div.grid div.body div.filterpane {display:none;}
 	div#container section.blog div.grid div.body div.filterpane.open {display:block;}
+	/* Blog Section: Filter Pane: Filter List */
+	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist {} */
+	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype {} */
+	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock {} */
+	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockbody {} */
+	/* Blog Section: Filter Pane: Filter Item List */
+	/* div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockbody ul.itemslist {} */
 
 	/* Blog Section: Applied Filters */
 	/* div#container section.blog div.grid div.body div.appliedfilters {} */
