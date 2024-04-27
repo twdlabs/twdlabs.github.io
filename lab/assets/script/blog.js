@@ -67,7 +67,7 @@ loadBlog( [] );
 
 // Load blog posts. 
 function loadBlog(selectedfilteritems) {
-	// console.log('Loading blog...',selectedfilteritems)
+	console.log('Loading blog...',selectedfilteritems);
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -109,6 +109,11 @@ function loadBlog(selectedfilteritems) {
 		
 			// Pass filter if no filter items selected. 
 			if(!selectedfilteritems.length) return true;
+
+			// Require all matching criteria. 
+			let needallcriteria = true;
+			// Require single matching criteria. 
+			// needallcriteria = false;
 	
 			// Check post for all criteria. 
 			if(needallcriteria) {

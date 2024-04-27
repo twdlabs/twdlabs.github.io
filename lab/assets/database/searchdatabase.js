@@ -10,7 +10,7 @@ const postregister = {
 	// 'collection':'collectionid',
 	'collection':'groupid',
 };
-console.log(`Post register:`,postregister);
+// console.log(`Post register:`,postregister);
 
 
 // Define default search results, the basis of final search results. 
@@ -66,7 +66,7 @@ const defaultResultSet = [
 		usevisual:false,
 	},
 ];
-console.log(`Default result set:`,defaultResultSet);
+// console.log(`Default result set:`,defaultResultSet);
 
 
 // Define list of attributes to include in search tag. 

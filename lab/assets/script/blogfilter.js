@@ -594,6 +594,7 @@ function clearAllAppliedFilters() {
 
 // Apply selected filter items. 
 function applySelectedFilters() {
+	// console.log('Applying selected filters...');
 
 	// Initialize list of selected filter items. 
 	let selectedfilteritems = [];
@@ -611,9 +612,9 @@ function applySelectedFilters() {
 			// Get box for filter item. 
 			let filteritembox = checkbox.parentElement;
 			let filtergroupblock = filteritembox.parentElement.parentElement.parentElement.parentElement;
-			console.log('Filter group box:',filtergroupblock);
-			console.log('Filter item box:',filteritembox);
-			console.log('Filter item checkbox:',checkbox);
+			// console.log('Filter group box:',filtergroupblock);
+			// console.log('Filter item box:',filteritembox);
+			// console.log('Filter item checkbox:',checkbox);
 
 			// Get id for block of selected filter type. 
 			let filtertypeid = filtergroupblock.getAttribute('data-filtertypeid');
@@ -638,10 +639,10 @@ function applySelectedFilters() {
 				filtervalueid:filtervalueid,
 				caption:filteritemcaption,
 			});
-			console.log('Selected filter items:',selectedfilteritems);
+			// console.log('Selected filter items:',selectedfilteritems);
 		}
 	}
-	console.log('Selected filter items:',selectedfilteritems);
+	// console.log('Selected filter items:',selectedfilteritems);
 
 	// Create layout for list of filter tags. 
 	let filtertaglistlayout = selectedfilteritems.map(createFilterTagLayout).join('');
@@ -658,7 +659,7 @@ function applySelectedFilters() {
 
 	// Create layout for filter tag. 
 	function createFilterTagLayout(filteritem) {
-		console.log('Creating filter tag layout', filteritem.filtertypeid, filteritem.filtervalueid);
+		// console.log('Creating filter tag layout', filteritem.filtertypeid, filteritem.filtervalueid);
 
 		// Get unique id of selected filter item. 
 		let filteritemuniqueid = filteritem.filtertypeid + filteritem.filtervalueid;

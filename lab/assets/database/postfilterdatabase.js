@@ -212,7 +212,7 @@ function augmentProjectData() {
 		}
 	}
 
-	console.log('Augmented project data:',projectData);
+	// console.log('Augmented project data:',projectData);
 }
 
 

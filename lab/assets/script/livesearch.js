@@ -23,5 +23,5 @@ function activateLiveSearch() {
 	// Create new Search object. 
 	const lso = new LiveSearchOverlay(livesearchoverlay,livesearchopenbtn);
 	// const lso = new LiveSearchOverlay(livesearchopenbtn,livesearchclosebtn,livesearchoverlay,livesearchqueryfield,livesearchresultsbox);
-	console.log('Live search overlay:',lso);
+	// console.log('Live search overlay:',lso);
 }
