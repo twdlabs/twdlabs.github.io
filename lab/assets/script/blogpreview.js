@@ -12,7 +12,7 @@ activateBlogPreviews();
 function activateBlogPreviews() {
 
 	// Disregard unless in archive section of library page (where previews not present). 
-	if(!archive.block) return;
+	if(!archivesection.block) return;
 
 	// Access loaded blog post cards. 
 	let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');

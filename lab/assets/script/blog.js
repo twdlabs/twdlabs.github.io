@@ -2,41 +2,41 @@
 
 
 // Get components of featured section. 
-const featured = {
-	blockpresent:true,
+const featuredsection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#featured'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist'),
 	postsdestinationa:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage ul.postlist.a'),
 	postsdestinationb:document.querySelector('div#container section.blog div.grid div.body div.posts#featured ul.pagelist li.postpage ul.postlist.b'),
+	sectionpresent:true,
 };
-// console.log('Featured section:',featured);
+// console.log('Featured section:',featuredsection);
 
 // Get components of archive section. 
-const archive = {
-	blockpresent:true,
+const archivesection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#archive'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist li.postpage ul.postlist'),
+	sectionpresent:true,
 };
-// console.log('Archive section:',archive);
+// console.log('Archive section:',archivesection);
 
 // Get components of category section. 
-const category = {
-	blockpresent:true,
+const categorysection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#category'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist li.postpage ul.postlist'),
+	sectionpresent:true,
 };
-// console.log('Category section:',category);
+// console.log('Category section:',categorysection);
 
 // Get components of collection section. 
-const collection = {
-	blockpresent:true,
+const collectionsection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#collection'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist'),
 	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist li.postpage ul.postlist'),
+	sectionpresent:true,
 };
-// console.log('Collection section:',collection);
+// console.log('Collection section:',collectionsection);
 
 
 // Get indicator label for empty set of results. 
@@ -430,11 +430,11 @@ function loadBlog(selectedfilteritems) {
 	function loadArchivePosts() {
 
 		// Check if loading archive posts. 
-		if(!archive.pagesdestination) {
+		if(!archivesection.pagesdestination) {
 			// console.log('\tBypass archive posts...');
 
-			// Mark block as not present. 
-			archive.blockpresent = false;
+			// Mark section as not present. 
+			archivesection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading archive posts...');
@@ -444,7 +444,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
 	
 		// Load archive posts. 
-		loadPosts(archive,archiveProjects, false, false);
+		loadPosts(archivesection,archiveProjects, false, false);
 	
 		/***/
 
@@ -460,11 +460,11 @@ function loadBlog(selectedfilteritems) {
 	function loadCategoryPosts() {
 
 		// Check if loading category posts. 
-		if(!category.pagesdestination) {
+		if(!categorysection.pagesdestination) {
 			// console.log('\tBypass category posts...');
 
-			// Mark block as not present. 
-			category.blockpresent = false;
+			// Mark section as not present. 
+			categorysection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading category posts...');
@@ -474,7 +474,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Category projects:', categoryProjects.length, categoryProjects);
 	
 		// Load category posts. 
-		loadPosts(category,categoryProjects, allowPreview, false);
+		loadPosts(categorysection,categoryProjects, allowPreview, false);
 
 		/***/
 
@@ -496,11 +496,11 @@ function loadBlog(selectedfilteritems) {
 	function loadCollectionPosts() {
 
 		// Check if loading collection posts. 
-		if(!collection.pagesdestination) {
+		if(!collectionsection.pagesdestination) {
 			// console.log('\tBypass collection posts...');
 
-			// Mark block as not present. 
-			collection.blockpresent = false;
+			// Mark section as not present. 
+			collectionsection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading collection posts...');
@@ -510,7 +510,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
 	
 		// Load general posts. 
-		loadPosts(collection,collectionProjects, allowPreview, false);
+		loadPosts(collectionsection,collectionProjects, allowPreview, false);
 
 		/***/
 	
@@ -541,12 +541,12 @@ function loadBlog(selectedfilteritems) {
 	function loadFeaturedPosts() {
 
 		// Check if loading featured posts. 
-		// if(!featured.postsdestinationa || !featured.postsdestinationb) {
-		if(!featured.pagesdestination) {
+		// if(!featuredsection.postsdestinationa || !featuredsection.postsdestinationb) {
+		if(!featuredsection.pagesdestination) {
 			// console.log('\tBypass featured posts...');
 
-			// Mark block as not present. 
-			featured.blockpresent = false;
+			// Mark section as not present. 
+			featuredsection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading featured posts...');
@@ -556,7 +556,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Featured projects:', featuredProjects.length, featuredProjects);
 	
 		// Load general posts. 
-		loadPosts(featured,featuredProjects, allowPreview, true);
+		loadPosts(featuredsection,featuredProjects, allowPreview, true);
 
 		/***/
 
@@ -580,8 +580,8 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
 
 		// Add layout for featured posts to blog section. 
-		// featured.postsdestinationa.innerHTML = createBlogLayout(featuredProjectsA, allowPreview, false);
-		// featured.postsdestinationb.innerHTML = createBlogLayout(featuredProjectsB, allowPreview, false);
+		// featuredsection.postsdestinationa.innerHTML = createBlogLayout(featuredProjectsA, allowPreview, false);
+		// featuredsection.postsdestinationb.innerHTML = createBlogLayout(featuredProjectsB, allowPreview, false);
 	}
 
 	// Sort project items by project id. 
