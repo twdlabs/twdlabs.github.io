@@ -67,7 +67,7 @@ div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.pos
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {flex-basis:20%;} */
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {overflow:hidden; border-radius:var(--cornersize); margin-bottom:var(--gapsize); box-shadow:var(--boxshadowx);}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.x {opacity:.125; /* visibility:hidden; */ pointer-events:none;}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage.m ul.postlist li.postcard.x {display:none;}
+/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage.m ul.postlist li.postcard.x {display:none;} */
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard.gone {/* display:none; */ opacity:.375; transition:.375s;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {color:inherit; color:var(--forecolor); text-decoration:none;}
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard a.projectlink {background-color:var(--backcolor2); display:block; position:relative;}

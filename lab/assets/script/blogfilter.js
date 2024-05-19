@@ -99,7 +99,7 @@ function activateBlogFilters() {
 
 			// Set filter style. 
 			let dohardfilter = true;
-			// dohardfilter = false;
+			dohardfilter = false;
 	
 			// Get search query of post filter. 
 			let filtersearchquery = searchpanel.queryfield.value.toUpperCase();
@@ -107,9 +107,9 @@ function activateBlogFilters() {
 			let searchquerywords = filtersearchquery.split(' ');
 			// console.log('Searching posts...', filtersearchquery, searchquerywords);
 
-			// Do hard filter. 
+			// Do hard filter: Reload full layout of posts. 
 			if(dohardfilter) doHardFilter();
-			// Do soft filter. 
+			// Do soft filter: Modify pre-loaded posts. 
 			else doSoftFilter();
 
 			/**/

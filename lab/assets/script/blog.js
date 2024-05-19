@@ -15,7 +15,6 @@ const featuredsection = {
 const archivesection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#archive'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist'),
-	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#archive ul.pagelist li.postpage ul.postlist'),
 	sectionpresent:true,
 };
 // console.log('Archive section:',archivesection);
@@ -24,7 +23,6 @@ const archivesection = {
 const categorysection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#category'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist'),
-	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#category ul.pagelist li.postpage ul.postlist'),
 	sectionpresent:true,
 };
 // console.log('Category section:',categorysection);
@@ -33,7 +31,6 @@ const categorysection = {
 const collectionsection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#collection'),
 	pagesdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist'),
-	postsdestination:document.querySelector('div#container section.blog div.grid div.body div.posts#collection ul.pagelist li.postpage ul.postlist'),
 	sectionpresent:true,
 };
 // console.log('Collection section:',collectionsection);
@@ -47,9 +44,9 @@ const nullresultslabel = document.querySelector('div#container section.blog div.
 /*****/
 
 
-// Set flag for memory load (previews on by default). 
-let allowPreview = true;
-allowPreview = false;
+// Set flag for memory load (previews always on by default). 
+let permanentPreview = true;
+permanentPreview = false;
 
 // Define if pagination on. 
 let paginationOn = true;
@@ -67,7 +64,8 @@ loadBlog( [] );
 
 // Load blog posts. 
 function loadBlog(selectedfilteritems) {
-	console.log('Loading blog...',selectedfilteritems);
+	console.log('Loading blog...');
+	console.log('Selected filter items:',selectedfilteritems);
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -83,15 +81,17 @@ function loadBlog(selectedfilteritems) {
 
 	/****/
 	
-	// Load posts. 
-	function loadPosts(section,projects,previewsOn,doMinimalPage) {
+	// Load posts for specified group of projects into specified destination. 
+	function loadGroupOfPosts(section,rawpostlist,previewsOn,doMinimalPage) {
+		console.log('\t\tRaw list of posts:',rawpostlist);
+		// console.log('\t\tPreviews on:',previewsOn);
 
 		// TODO: Filter projects (if filter criteria present). 
-		if(selectedfilteritems) projects = projects.filter(checkFilterPass);
-		// console.log('Projects:', projects.length, projects);
+		if(selectedfilteritems) rawpostlist = rawpostlist.filter(checkFilterPass);
+		// console.log('Projects:', rawpostlist.length, rawpostlist);
 		
-		// Display layout for posts in blog section. 
-		section.pagesdestination.innerHTML = createBlogLayout(projects,previewsOn,doMinimalPage);
+		// Display layout for pages of posts in blog section. 
+		section.pagesdestination.innerHTML = loadBlogLayout();
 
 		// Load dot panel in page navigator. 
 		loadPageNavigator(section.block);
@@ -100,15 +100,17 @@ function loadBlog(selectedfilteritems) {
 		displaySelectedPage();
 
 		// Set state of results block. 
-		setResultState(projects.length);
+		setResultState(rawpostlist.length);
 	
 		/***/
 
-		// TODO: Check if post passes filter criteria. 
+		// TODO: Check if given project passes filter criteria. 
 		function checkFilterPass(projectitem) {
+			// console.log(`checkFilterPass(projectitem)`);
+			// console.log(`projectitem:`,projectitem);
 		
-			// Pass filter if no filter items selected. 
-			if(!selectedfilteritems.length) return true;
+			// Pass filter by default if no filter items present. 
+			if(selectedfilteritems.length==0) return true;
 
 			// Require all matching criteria. 
 			let needallcriteria = true;
@@ -127,7 +129,7 @@ function loadBlog(selectedfilteritems) {
 			/**/
 	
 			// Check if post passes all given filter criteria. 
-			function checkFilterPassAll(/* projectitem */) {
+			function checkFilterPassAll() {
 		
 				// Go thru each selected filter item. 
 				for(let filteritem of selectedfilteritems) {
@@ -144,7 +146,7 @@ function loadBlog(selectedfilteritems) {
 			}
 		
 			// Check if post passes any given filter criteria. 
-			function checkFilterPassAny(/* projectitem */) {
+			function checkFilterPassAny() {
 		
 				// Go thru each selected filter item. 
 				for(let filteritem of selectedfilteritems) {
@@ -165,21 +167,19 @@ function loadBlog(selectedfilteritems) {
 		
 				// Get type of filter item. 
 				let typeid = filteritem.filtertypeid;
-				if(!typeid) console.log('Filter item type id:',typeid);
+				// console.log('\tFilter item type id:',typeid);
 
 				// Get value of filter item. 
 				let valueid = filteritem.filtervalueid;
-				if(!valueid) console.log('Filter item value id:',valueid);
+				// console.log('\tFilter item value id:',valueid);
 
 				// Check for match btwn given project and current filter item. 
 				return (projectitem[typeid] == valueid);
 			}
 		}
 
-		// Create layout for blog posts. 
-		function createBlogLayout(rawpostlist,previewsOn,doMinimalPage) {
-			// console.log('\t\tRaw post list:',rawpostlist);
-			// console.log('\t\tPreviews on:',previewsOn);
+		// Create layout for pages of blog posts. 
+		function loadBlogLayout() {
 		
 			// Initialize blog layout. 
 			let bloglayout = '';
@@ -188,7 +188,7 @@ function loadBlog(selectedfilteritems) {
 			if(!paginationOn) {
 	
 				// Add page of posts. 
-				bloglayout += createBlogPage(0,rawpostlist,previewsOn);
+				bloglayout += createBlogPage(0,rawpostlist);
 	
 				// Save page count. 
 				pagecount = 1;
@@ -208,20 +208,21 @@ function loadBlog(selectedfilteritems) {
 					let postlist = postmatrix[pageindex];
 	
 					// Add page of posts. 
-					bloglayout += createBlogPage(pageindex,postlist,previewsOn,doMinimalPage);
+					bloglayout += createBlogPage(pageindex,postlist,doMinimalPage);
 				}
 	
 				// Save page count. 
 				pagecount = postmatrix.length;
 			}
 		
-			// Return blog layout. 
+			// Display blog layout. 
+			// xyz.xyz = bloglayout;
 			return bloglayout;
 	
 			/**/
 	
 			// Create page for blog posts layout. 
-			function createBlogPage(pageindex,pagepostlist,previewsOn,doMinimalPage) {
+			function createBlogPage(pageindex,pagepostlist,doMinimalPage) {
 		
 				// Initialize page layout. 
 				let pagelayout = '';
@@ -257,7 +258,7 @@ function loadBlog(selectedfilteritems) {
 						// if(!post) continue;
 				
 						// Add to page layout: blog post card with project link. 
-						listlayout += createBlogCard(post,previewsOn);
+						listlayout += createBlogCard(post);
 					}
 		
 					// Return list layout. 
@@ -266,7 +267,7 @@ function loadBlog(selectedfilteritems) {
 					/**/
 		
 					// Create card for blog post. 
-					function createBlogCard(post,previewsOn) {
+					function createBlogCard(post) {
 						// if(!post) console.warn('\t\tNull project post', post);
 				
 						// Get project id for given project post. 
@@ -356,7 +357,7 @@ function loadBlog(selectedfilteritems) {
 			}
 	
 			// Check if any matches found. 
-			// console.log('Page count:',pagecount,dotpaneldestination);
+			console.log('Page count:',pagecount,dotpaneldestination);
 	
 			// Initialize layout for dot panel. 
 			let dotpanellayout = '';
@@ -430,11 +431,9 @@ function loadBlog(selectedfilteritems) {
 	function loadArchivePosts() {
 
 		// Check if loading archive posts. 
-		if(!archivesection.pagesdestination) {
+		archivesection.sectionpresent = !!(archivesection.pagesdestination);
+		if(!archivesection.sectionpresent) {
 			// console.log('\tBypass archive posts...');
-
-			// Mark section as not present. 
-			archivesection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading archive posts...');
@@ -444,7 +443,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
 	
 		// Load archive posts. 
-		loadPosts(archivesection,archiveProjects, false, false);
+		loadGroupOfPosts(archivesection,archiveProjects, false, false);
 	
 		/***/
 
@@ -460,11 +459,9 @@ function loadBlog(selectedfilteritems) {
 	function loadCategoryPosts() {
 
 		// Check if loading category posts. 
-		if(!categorysection.pagesdestination) {
+		categorysection.sectionpresent = !!(categorysection.pagesdestination);
+		if(!categorysection.sectionpresent) {
 			// console.log('\tBypass category posts...');
-
-			// Mark section as not present. 
-			categorysection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading category posts...');
@@ -474,7 +471,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Category projects:', categoryProjects.length, categoryProjects);
 	
 		// Load category posts. 
-		loadPosts(categorysection,categoryProjects, allowPreview, false);
+		loadGroupOfPosts(categorysection,categoryProjects, permanentPreview, false);
 
 		/***/
 
@@ -493,14 +490,12 @@ function loadBlog(selectedfilteritems) {
 	}
 	
 	// Load collection posts. 
-	function loadCollectionPosts() {
+	function loadCollectionPosts() { 
 
 		// Check if loading collection posts. 
-		if(!collectionsection.pagesdestination) {
+		collectionsection.sectionpresent = !!(collectionsection.pagesdestination);
+		if(!collectionsection.sectionpresent) {
 			// console.log('\tBypass collection posts...');
-
-			// Mark section as not present. 
-			collectionsection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading collection posts...');
@@ -510,7 +505,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
 	
 		// Load general posts. 
-		loadPosts(collectionsection,collectionProjects, allowPreview, false);
+		loadGroupOfPosts(collectionsection,collectionProjects, permanentPreview, false);
 
 		/***/
 	
@@ -518,19 +513,19 @@ function loadBlog(selectedfilteritems) {
 		function getCollectionProjects() {
 
 			// Get list of project category ids for collection. 
-			let collectioncategoryids = projectcollection.groupitemsidlist;
+			let collectioncategoryidslist = projectcollection.groupitemsidlist;
 
 			// Get list of project categories for collection. 
-			let collectioncategories = collectioncategoryids.map(getProjectCategoryById);
+			let collectioncategories = collectioncategoryidslist.map(getProjectCategoryById);
 
 			// Get matrix of project ids for collection. 
-			let collectionprojectidsmatrix = collectioncategories.map( category => category.groupitemsidlist );
+			let collectionprojectidsmatrix = collectioncategories.map( category => category.groupitemsidlist );
 
 			// Get list of project ids for collection. 
-			let collectionprojectids = flattenMatrixToList(collectionprojectidsmatrix);
+			let collectionprojectidslist = flattenMatrixToList(collectionprojectidsmatrix);
 
 			// Get list of collection projects. 
-			let collectionprojects = collectionprojectids.map(getProjectById);
+			let collectionprojects = collectionprojectidslist.map(getProjectById);
 
 			// Return list of collection projects, sorted by project id. 
 			return collectionprojects.sort(sortProjectsById);
@@ -541,12 +536,9 @@ function loadBlog(selectedfilteritems) {
 	function loadFeaturedPosts() {
 
 		// Check if loading featured posts. 
-		// if(!featuredsection.postsdestinationa || !featuredsection.postsdestinationb) {
-		if(!featuredsection.pagesdestination) {
+		featuredsection.sectionpresent = !!(featuredsection.pagesdestination);
+		if(!featuredsection.sectionpresent) {
 			// console.log('\tBypass featured posts...');
-
-			// Mark section as not present. 
-			featuredsection.sectionpresent = false;
 			return;
 		}
 		// console.log('Loading featured posts...');
@@ -556,7 +548,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Featured projects:', featuredProjects.length, featuredProjects);
 	
 		// Load general posts. 
-		loadPosts(featuredsection,featuredProjects, allowPreview, true);
+		loadGroupOfPosts(featuredsection,featuredProjects, permanentPreview, true);
 
 		/***/
 
@@ -564,7 +556,7 @@ function loadBlog(selectedfilteritems) {
 		function getFeaturedProjects() {
 
 			// Get list of all featured project ids. 
-			let featuredprojectids = featuredProjectIds['a'].concat( featuredProjectIds['b'] );
+			let featuredprojectids = featuredProjectIds['all'];
 
 			// Get list of featured projects. 
 			let featuredprojects = featuredprojectids.map(getProjectById);
@@ -572,16 +564,6 @@ function loadBlog(selectedfilteritems) {
 			// Return list of featured projects. 
 			return featuredprojects;
 		}
-
-		// Get list of featured projects. 
-		// let featuredProjectsA = ( featuredProjectIds['a'] ).map(getProjectById);
-		// let featuredProjectsB = ( featuredProjectIds['b'] ).map(getProjectById);
-		// console.log('Featured projects A:', featuredProjectsA.length, featuredProjectIds['a'], featuredProjectsA);
-		// console.log('Featured projects B:', featuredProjectsB.length, featuredProjectIds['b'], featuredProjectsB);
-
-		// Add layout for featured posts to blog section. 
-		// featuredsection.postsdestinationa.innerHTML = createBlogLayout(featuredProjectsA, allowPreview, false);
-		// featuredsection.postsdestinationb.innerHTML = createBlogLayout(featuredProjectsB, allowPreview, false);
 	}
 
 	// Sort project items by project id. 

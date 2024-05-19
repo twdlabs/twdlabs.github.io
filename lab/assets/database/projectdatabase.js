@@ -18,6 +18,7 @@ const featuredProjectIds = {
 		'pixelart','pong','storage','tasks',
 	],
 };
+featuredProjectIds['all'] = featuredProjectIds['a'].concat( featuredProjectIds['b'] );
 // console.log('Featured project ids:',featuredProjectIds);
 
 
