@@ -65,7 +65,7 @@ loadBlog( [] );
 // Load blog posts. 
 function loadBlog(selectedfilteritems) {
 	console.log('Loading blog...');
-	console.log('Selected filter items:',selectedfilteritems);
+	console.log('\tSelected filter items:',selectedfilteritems);
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -83,19 +83,24 @@ function loadBlog(selectedfilteritems) {
 	
 	// Load blog layout for specified group of projects into specified destination. 
 	function loadBlogLayout(section,rawpostlist,previewsOn,doMinimalPage) {
-		console.log('\t\tRaw list of posts:', rawpostlist.length,rawpostlist);
 		// console.log('\t\tPreviews on:',previewsOn);
 
-		// TODO: Filter list of project posts (if filter criteria present). 
-		if(selectedfilteritems) filteredpostlist = rawpostlist.filter(checkFilterPass);
-		else filteredpostlist = rawpostlist.filter( ()=>true );
-		// console.log('\t\tFiltered list of posts:', filteredpostlist.length,filteredpostlist);
+		// Filter list of project posts (if filter criteria present). 
+		if(selectedfilteritems) {
+			filteredpostlist = rawpostlist.filter(checkFilterPass);
+		} else {
+			filteredpostlist = rawpostlist.filter( ()=>true );
+		}
+		console.log('\t',rawpostlist.length,'raw posts');
+		console.log('\t',rawpostlist);
+		console.log('\t',filteredpostlist.length,'filtered posts');
+		console.log('\t',filteredpostlist);
 		
-		// Display layout for pages of posts in blog section. 
-		section.pagesdestination.innerHTML = createBlogLayout();
+		// Display layout for pages of blog posts. 
+		loadBlogLayout();
 
 		// Load dot panel in page navigator. 
-		loadPageNavigator(section.block);
+		loadPageNavigator();
 
 		// Display currently selected page. 
 		displaySelectedPage();
@@ -105,10 +110,9 @@ function loadBlog(selectedfilteritems) {
 	
 		/***/
 
-		// TODO: Check if given project passes filter criteria. 
-		function checkFilterPass(projectitem) {
-			// console.log(`checkFilterPass(projectitem)`);
-			// console.log(`projectitem:`,projectitem);
+		// TODO: Check if given project post passes filter criteria. 
+		function checkFilterPass(projectpostitem) {
+			// console.log(`projectpostitem:`,projectpostitem);
 		
 			// Pass filter by default if no filter items present. 
 			if(selectedfilteritems.length==0) return true;
@@ -118,32 +122,30 @@ function loadBlog(selectedfilteritems) {
 			// Require single matching criteria. 
 			// needallcriteria = false;
 	
-			// Check post for all criteria. 
+			// Check post for all criteria matches. 
 			if(needallcriteria) {
 				return checkFilterPassAll();
 			}
-			// Check post for any criteria. 
+			// Check post for any criteria match. 
 			else {
 				return checkFilterPassAny();
 			}
 	
 			/**/
-	
-			// Check if post passes all given filter criteria. 
-			function checkFilterPassAll() {
 		
-				// Go thru each selected filter item. 
-				for(let filteritem of selectedfilteritems) {
+			// Check if post passes given filter item. 
+			function checkFilterItem(filteritem) {
 		
-					// Check if post passes current filter item. 
-					let passed = checkFilterItem(filteritem);
-		
-					// Return false if any mismatch found. 
-					if(!passed) return false;
-				}
-		
-				// Return true if no mismatch found. 
-				return true;
+				// Get type of filter item. 
+				let typeid = filteritem.typeid;
+				// console.log('\tFilter item type id:',typeid);
+
+				// Get value of filter item. 
+				let valueid = filteritem.valueid;
+				// console.log('\tFilter item value id:',valueid);
+
+				// Check for match btwn given project and current filter item. 
+				return (projectpostitem[typeid] == valueid);
 			}
 		
 			// Check if post passes any given filter criteria. 
@@ -162,25 +164,27 @@ function loadBlog(selectedfilteritems) {
 				// Return false if no match found. 
 				return false;
 			}
+	
+			// Check if post passes all given filter criteria. 
+			function checkFilterPassAll() {
 		
-			// Check if post passes given filter item. 
-			function checkFilterItem(filteritem) {
+				// Go thru each selected filter item. 
+				for(let filteritem of selectedfilteritems) {
 		
-				// Get type of filter item. 
-				let typeid = filteritem.typeid;
-				// console.log('\tFilter item type id:',typeid);
-
-				// Get value of filter item. 
-				let valueid = filteritem.valueid;
-				// console.log('\tFilter item value id:',valueid);
-
-				// Check for match btwn given project and current filter item. 
-				return (projectitem[typeid] == valueid);
+					// Check if post passes current filter item. 
+					let passed = checkFilterItem(filteritem);
+		
+					// Return false if any mismatch found. 
+					if(!passed) return false;
+				}
+		
+				// Return true if no mismatch found. 
+				return true;
 			}
 		}
 
-		// Create layout for pages of blog posts. 
-		function createBlogLayout() {
+		// Display layout for pages of posts in blog section. 
+		function loadBlogLayout() {
 		
 			// Initialize blog layout. 
 			let bloglayout = '';
@@ -217,8 +221,8 @@ function loadBlog(selectedfilteritems) {
 			}
 		
 			// Display blog layout. 
-			// xyz.xyz = bloglayout;
-			return bloglayout;
+			section.pagesdestination.innerHTML = bloglayout;
+			// return bloglayout;
 	
 			/**/
 	
@@ -349,7 +353,7 @@ function loadBlog(selectedfilteritems) {
 		}
 
 		// Load dot panel in page navigator. 
-		function loadPageNavigator(section) {
+		function loadPageNavigator() {
 	
 			// Check if loading page navigator. 
 			if(!dotpaneldestination) {
@@ -358,7 +362,7 @@ function loadBlog(selectedfilteritems) {
 			}
 	
 			// Check if any matches found. 
-			console.log('Page count:',pagecount,dotpaneldestination);
+			console.log('\t',pagecount,'pages of filtered posts',dotpaneldestination);
 	
 			// Initialize layout for dot panel. 
 			let dotpanellayout = '';
@@ -377,7 +381,7 @@ function loadBlog(selectedfilteritems) {
 			activatePageLinks();
 	
 			// Turn on page shifter buttons in given section (if needed). 
-			if(pagecount>1) section.classList.add('multipage');
+			if(pagecount>1) section.block.classList.add('multipage');
 	
 			/**/
 	
