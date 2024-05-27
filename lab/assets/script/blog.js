@@ -81,17 +81,18 @@ function loadBlog(selectedfilteritems) {
 
 	/****/
 	
-	// Load posts for specified group of projects into specified destination. 
-	function loadGroupOfPosts(section,rawpostlist,previewsOn,doMinimalPage) {
-		console.log('\t\tRaw list of posts:',rawpostlist);
+	// Load blog layout for specified group of projects into specified destination. 
+	function loadBlogLayout(section,rawpostlist,previewsOn,doMinimalPage) {
+		console.log('\t\tRaw list of posts:', rawpostlist.length,rawpostlist);
 		// console.log('\t\tPreviews on:',previewsOn);
 
-		// TODO: Filter projects (if filter criteria present). 
-		if(selectedfilteritems) rawpostlist = rawpostlist.filter(checkFilterPass);
-		// console.log('Projects:', rawpostlist.length, rawpostlist);
+		// TODO: Filter list of project posts (if filter criteria present). 
+		if(selectedfilteritems) filteredpostlist = rawpostlist.filter(checkFilterPass);
+		else filteredpostlist = rawpostlist.filter( ()=>true );
+		// console.log('\t\tFiltered list of posts:', filteredpostlist.length,filteredpostlist);
 		
 		// Display layout for pages of posts in blog section. 
-		section.pagesdestination.innerHTML = loadBlogLayout();
+		section.pagesdestination.innerHTML = createBlogLayout();
 
 		// Load dot panel in page navigator. 
 		loadPageNavigator(section.block);
@@ -100,7 +101,7 @@ function loadBlog(selectedfilteritems) {
 		displaySelectedPage();
 
 		// Set state of results block. 
-		setResultState(rawpostlist.length);
+		setResultState(filteredpostlist.length);
 	
 		/***/
 
@@ -166,11 +167,11 @@ function loadBlog(selectedfilteritems) {
 			function checkFilterItem(filteritem) {
 		
 				// Get type of filter item. 
-				let typeid = filteritem.filtertypeid;
+				let typeid = filteritem.typeid;
 				// console.log('\tFilter item type id:',typeid);
 
 				// Get value of filter item. 
-				let valueid = filteritem.filtervalueid;
+				let valueid = filteritem.valueid;
 				// console.log('\tFilter item value id:',valueid);
 
 				// Check for match btwn given project and current filter item. 
@@ -179,7 +180,7 @@ function loadBlog(selectedfilteritems) {
 		}
 
 		// Create layout for pages of blog posts. 
-		function loadBlogLayout() {
+		function createBlogLayout() {
 		
 			// Initialize blog layout. 
 			let bloglayout = '';
@@ -188,7 +189,7 @@ function loadBlog(selectedfilteritems) {
 			if(!paginationOn) {
 	
 				// Add page of posts. 
-				bloglayout += createBlogPage(0,rawpostlist);
+				bloglayout += createBlogPage(0,filteredpostlist);
 	
 				// Save page count. 
 				pagecount = 1;
@@ -198,7 +199,7 @@ function loadBlog(selectedfilteritems) {
 			else {
 	
 				// Paginate post data into post matrix. 
-				let postmatrix = paginateData(rawpostlist,pagepostcapacity);
+				let postmatrix = paginateData(filteredpostlist,pagepostcapacity);
 				// console.log('\t\tPaginated post matrix:',postmatrix);
 		
 				// Go thru each page in post matrix. 
@@ -443,7 +444,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Archive projects:', archiveProjects.length, archiveProjects);
 	
 		// Load archive posts. 
-		loadGroupOfPosts(archivesection,archiveProjects, false, false);
+		loadBlogLayout(archivesection,archiveProjects, false, false);
 	
 		/***/
 
@@ -471,7 +472,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Category projects:', categoryProjects.length, categoryProjects);
 	
 		// Load category posts. 
-		loadGroupOfPosts(categorysection,categoryProjects, permanentPreview, false);
+		loadBlogLayout(categorysection,categoryProjects, permanentPreview, false);
 
 		/***/
 
@@ -505,7 +506,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Collection projects:', collectionProjects.length, collectionProjects);
 	
 		// Load general posts. 
-		loadGroupOfPosts(collectionsection,collectionProjects, permanentPreview, false);
+		loadBlogLayout(collectionsection,collectionProjects, permanentPreview, false);
 
 		/***/
 	
@@ -548,7 +549,7 @@ function loadBlog(selectedfilteritems) {
 		// console.log('Featured projects:', featuredProjects.length, featuredProjects);
 	
 		// Load general posts. 
-		loadGroupOfPosts(featuredsection,featuredProjects, permanentPreview, true);
+		loadBlogLayout(featuredsection,featuredProjects, permanentPreview, true);
 
 		/***/
 

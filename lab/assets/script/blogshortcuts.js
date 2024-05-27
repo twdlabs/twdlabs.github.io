@@ -28,7 +28,7 @@ function enableShortcutKeys() {
 		if(istypingtext) return;
 
 		// Respond to 'F' key. 
-		else if(event.keyCode==70) toggleFilterPane();
+		else if(event.keyCode==70) toggleTagFilterPane();
 
 		// Respond to 'S' key. 
 		else if(event.keyCode==83) setLayoutStyleById(0);
@@ -55,7 +55,7 @@ function enableShortcutKeys() {
 			if(filterpaneopen) {
 
 				// Apply selected filter items
-				applySelectedFilters();
+				applySelectedTagFilters();
 
 				// Close filter pane. 
 				filterpane.box.classList.remove('open');

@@ -252,7 +252,7 @@ function augmentFilterData() {
 	// Save item values for given filter type from project data. 
 	function saveFilterItemValues(filtertypeid) {
 		
-		// Get ] by id. 
+		// Get xyzabcxyz by id. 
 		let filtertype = getFilterGroupById(filtertypeid);
 		// console.log('Filter criteria list (old):',filtertype.filteritems);
 		
