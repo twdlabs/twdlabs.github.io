@@ -81,7 +81,7 @@ function loadSiteMap() {
 			let projectgroupslist = projectgroupidslist.map( getMetaById );
 			// console.log('Project group set:',projectgroupslist);
 		
-			// Add list box to result layout. 
+			// Add list set to result layout. 
 			result += `
 			<!-- listset -->
 			<div class="listset ${ set.setid }">

@@ -49,7 +49,7 @@ function enableShortcutKeys() {
 		else if(event.keyCode==13) {
 
 			// Check if filter pane open. 
-			let filterpaneopen = filterpane.box.classList.contains('open');
+			let filterpaneopen = tagfilterpane.block.classList.contains('open');
 
 			// Apply selected filter items if filter pane open. 
 			if(filterpaneopen) {
@@ -58,7 +58,7 @@ function enableShortcutKeys() {
 				applySelectedTagFilters();
 
 				// Close filter pane. 
-				filterpane.box.classList.remove('open');
+				tagfilterpane.block.classList.remove('open');
 			}
 		}
 	}

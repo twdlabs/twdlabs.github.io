@@ -76,7 +76,7 @@ function setLayoutStyleById(styleindex) {
 			// Apply style to posts section. 
 			postssection.classList.add(postsid);
 			// Apply style to body section (if valid). 
-			if(bodyid && filterpane.box) bodysection.classList.add(bodyid);
+			if(bodyid && tagfilterpane.block) bodysection.classList.add(bodyid);
 		}
 		
 		// Turn off non-selected style. 
@@ -84,7 +84,7 @@ function setLayoutStyleById(styleindex) {
 			// Remove style from posts section. 
 			postssection.classList.remove(postsid);
 			// Remove style from body section (if valid). 
-			if(bodyid && filterpane.box) bodysection.classList.remove(bodyid);
+			if(bodyid && tagfilterpane.block) bodysection.classList.remove(bodyid);
 		}
 	}
 }

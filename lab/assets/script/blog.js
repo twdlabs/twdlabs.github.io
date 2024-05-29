@@ -11,6 +11,7 @@ const featuredsection = {
 };
 // console.log('Featured section:',featuredsection);
 
+
 // Get components of archive section. 
 const archivesection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#archive'),
@@ -18,6 +19,7 @@ const archivesection = {
 	sectionpresent:true,
 };
 // console.log('Archive section:',archivesection);
+
 
 // Get components of category section. 
 const categorysection = {
@@ -27,6 +29,7 @@ const categorysection = {
 };
 // console.log('Category section:',categorysection);
 
+
 // Get components of collection section. 
 const collectionsection = {
 	block:document.querySelector('div#container section.blog div.grid div.body div.posts#collection'),
@@ -34,6 +37,10 @@ const collectionsection = {
 	sectionpresent:true,
 };
 // console.log('Collection section:',collectionsection);
+
+
+// Initialize list for search filter items. 
+let selectedfilteritems;
 
 
 // Get indicator label for empty set of results. 
@@ -63,9 +70,12 @@ loadBlog( [] );
 
 
 // Load blog posts. 
-function loadBlog(selectedfilteritems) {
+function loadBlog(sfi) {
 	console.log('Loading blog...');
-	console.log('\tSelected filter items:',selectedfilteritems);
+
+	// Save new list of selected filter items. 
+	selectedfilteritems = sfi;
+	console.log('\tSelected filter items:',sfi);
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -81,7 +91,7 @@ function loadBlog(selectedfilteritems) {
 
 	/****/
 	
-	// Load blog layout for specified group of projects into specified destination. 
+	// Load blog layout for specified group of projects into specified section. 
 	function loadBlogLayout(section,rawpostlist,previewsOn,doMinimalPage) {
 		// console.log('\t\tPreviews on:',previewsOn);
 
@@ -97,16 +107,16 @@ function loadBlog(selectedfilteritems) {
 		console.log('\t',filteredpostlist);
 		
 		// Display layout for pages of blog posts. 
-		loadBlogLayout();
+		loadBlogPages();
 
 		// Load dot panel in page navigator. 
-		loadPageNavigator();
+		loadBlogPageNavigator();
 
 		// Display currently selected page. 
 		displaySelectedPage();
 
 		// Set state of results block. 
-		setResultState(filteredpostlist.length);
+		setResultState(!!filteredpostlist.length);
 	
 		/***/
 
@@ -184,7 +194,7 @@ function loadBlog(selectedfilteritems) {
 		}
 
 		// Display layout for pages of posts in blog section. 
-		function loadBlogLayout() {
+		function loadBlogPages() {
 		
 			// Initialize blog layout. 
 			let bloglayout = '';
@@ -353,7 +363,7 @@ function loadBlog(selectedfilteritems) {
 		}
 
 		// Load dot panel in page navigator. 
-		function loadPageNavigator() {
+		function loadBlogPageNavigator() {
 	
 			// Check if loading page navigator. 
 			if(!dotpaneldestination) {
