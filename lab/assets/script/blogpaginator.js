@@ -103,11 +103,11 @@ function displaySelectedPage() {
 	function updatePageNavigator() {
 
 		// Get all page links in dot panel. 
-		const pagenavdots = document.querySelectorAll('div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink');
-		// console.log('Page navigator dots:',pagenavdots);
+		const pagedotnavlinks = document.querySelectorAll('div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink');
+		// console.log('Page dot navigation links:',pagedotnavlinks);
 
 		// Go thru each page link dot. 
-		for(let pagelink of pagenavdots) {
+		for(let pagelink of pagedotnavlinks) {
 
 			// Check if on link for selected page. 
 			let onselectedpagelink = pagelink.getAttribute('data-pageindex') * 1 == 1*selectedpageindex;
@@ -122,13 +122,24 @@ function displaySelectedPage() {
 
 		// Display currently selected page number. 
 		if(pagenumdestination) {
-			if(selectedpageindex && pagecount) pagenumdestination.textContent = (1*selectedpageindex + 1);
+
+			// Check if pages available (if destination valid). 
+			let isPagesAvailable = !isNaN(selectedpageindex) && (pagecount>0);
+
+			// Display page number if pages available. 
+			if(isPagesAvailable) pagenumdestination.textContent = (1*selectedpageindex + 1);
+
+			// Clear page number if pages not available. 
 			else pagenumdestination.textContent = '';
 		}
 	
-		// Display total number of post pages. 
+		// Display total number of post pages (if destination valid). 
 		if(pagecountdestination) {
-			if(pagecount) pagecountdestination.textContent = pagecount;
+
+			// Display page count if pages available. 
+			if(pagecount>0) pagecountdestination.textContent = pagecount;
+
+			// Clear page count if pages not available. 
 			else pagecountdestination.textContent = '';
 		}
 	}

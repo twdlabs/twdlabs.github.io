@@ -114,10 +114,13 @@ div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltab
 /* Blog Section: Page Panel */
 div#container section.blog div.grid div.body nav.pagepanel {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-top:var(--sectionspacing);}
 div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel {flex-wrap:wrap;}
 div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel {list-style:none; padding:0; margin:0;}
-div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem {font-size:var(--dotsize); --dotsize:.75rem; padding:0 .25em;}
-div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink {display:block;}
-div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink:empty {background-color:var(--forecolor); opacity:.4; transition:.5s; height:var(--dotsize); width:var(--dotsize); border-radius:1rem;}
+div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem {font-size:var(--dotsize); --dotsize:.75rem;}
+div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem {padding:.125em;}
+div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink {display:block;/*  margin:.125em 0; */}
+div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink:empty {background-color:var(--forecolor); opacity:.4; transition:.5s; border-radius:1rem;}
+div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink:empty {height:.25em; width:2em;}
 div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem.active a.pagelink:empty {opacity:1;}
 div#container section.blog div.grid div.body nav.pagepanel div.numpanel {display:flex; flex-direction:row; align-items:center; font-size:1.75rem; user-select:none; margin-top:1rem;}
 div#container section.blog div.grid div.body nav.pagepanel div.numpanel span.num {font-size:1.125em;}
@@ -351,6 +354,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 
 	/* Blog Section: Pages */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist {} */
+	div#container section.blog div.grid div.body div.posts.multipage ul.pagelist {margin:0;}
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage {} */
 	/* Blog Section: Page Posts */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {} */
@@ -362,9 +366,13 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist li.postcard a.projectlink div.preview {padding-top:50%;}
 	/* Blog Section: Overlay Panel */
 	div#container section.blog div.grid div.body div.posts nav.overlaypanel {display:none;}
+	div#container section.blog div.grid div.body div.posts.multipage nav.overlaypanel {display:none;}
 	/* div#container section.blog div.grid div.body div.posts nav.overlaypanel a.deltabtn {} */
 	/* Blog Section: Page Panel */
 	/* div#container section.blog div.grid div.body nav.pagepanel {} */
+	/* div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel {} */
+	div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem {padding:.25em;}
+	div#container section.blog div.grid div.body nav.pagepanel ul.dotpanel li.dotitem a.pagelink:empty {height:1em; width:1em;}
 	/* Blog Section: Page Toggler */
 	/* div#container section.blog div.grid div.body div.posts div.zoomer {} */
 }

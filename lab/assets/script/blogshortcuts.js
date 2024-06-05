@@ -51,10 +51,10 @@ function enableShortcutKeys() {
 			// Check if filter pane open. 
 			let filterpaneopen = tagfilterpane.block.classList.contains('open');
 
-			// Apply selected filter items if filter pane open. 
+			// Apply selected filter tag items (if filter pane open). 
 			if(filterpaneopen) {
 
-				// Apply selected filter items
+				// Apply selected tag filter items. 
 				applySelectedTagFilters();
 
 				// Close filter pane. 

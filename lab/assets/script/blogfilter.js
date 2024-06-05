@@ -22,7 +22,7 @@ const tagfilterpane = {
 	anyallswitch: {
 		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.any'),
 		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.all'),
-		switchstate: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch input.switchstate'),
+		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch input.switchcontroller'),
 	},
 
 	// Get destination for list of applied filters. 
@@ -129,7 +129,7 @@ function loadFilterSystem() {
 					for(let queryword of searchquerywords) {
 	
 						// Add filter item to list. 
-						sfi.push({
+						stfitems.push({
 							typeid:filtertypeid,
 							valueid:queryword,
 							// caption:xyz,
@@ -138,7 +138,7 @@ function loadFilterSystem() {
 				}
 
 				// Load matching posts for given search filter criteria. 
-				loadBlog(sfi);
+				loadBlog(stfitems);
 			}
 
 			// Do soft filter. 
@@ -303,9 +303,9 @@ function loadFilterSystem() {
 					<!-- blockbody -->
 					<div class="blockbody">
 		
-						<!-- itemslist -->
-						<ul class="itemslist">${ createFilterItemsListLayout(filtertype) }</ul>
-						<!-- /itemslist -->
+						<!-- filteritemslist -->
+						<ul class="filteritemslist">${ createFilterItemsListLayout(filtertype) }</ul>
+						<!-- /filteritemslist -->
 						
 					</div>
 					<!-- /blockbody -->
@@ -379,9 +379,9 @@ function loadFilterSystem() {
 					<!-- blockbody -->
 					<div class="blockbody">
 
-						<!-- itemslist -->
-						<ul class="itemslist">${ createFilterItemsListLayout(filtertype,true) }</ul>
-						<!-- /itemslist -->
+						<!-- filteritemslist -->
+						<ul class="filteritemslist">${ createFilterItemsListLayout(filtertype,true) }</ul>
+						<!-- /filteritemslist -->
 						
 					</div>
 					<!-- /blockbody -->
@@ -452,15 +452,15 @@ function loadFilterSystem() {
 				<!-- filteritem -->
 				<li class="filteritem" data-tagfilteritemvalueid="${itemvalue}" title="${itemvalue}">
 
-					<!-- front -->
-					<label class="front" for="${uniqueitemid}">
+					<!-- filteritemfront -->
+					<label class="filteritemfront" for="${uniqueitemid}">
 
 						<!-- caption -->
 						<span class="caption">${itemname}</span>
 						<!-- /caption -->
 
 					</label>
-					<!-- /front -->
+					<!-- /filteritemfront -->
 					
 				</li>
 				<!-- /filteritem -->`;
@@ -470,12 +470,12 @@ function loadFilterSystem() {
 				<!-- filteritem -->
 				<li class="filteritem" data-tagfilteritemvalueid="${itemvalue}" title="${itemvalue}">
 		
-					<!-- checkbox -->
-					<input class="checkbox" type="checkbox" id="${uniqueitemid}">
-					<!-- /checkbox -->
+					<!-- filteritemcontroller -->
+					<input class="filteritemcontroller" type="checkbox" id="${uniqueitemid}">
+					<!-- /filteritemcontroller -->
 		
-					<!-- front -->
-					<label class="front" for="${uniqueitemid}">
+					<!-- filteritemfront -->
+					<label class="filteritemfront" for="${uniqueitemid}">
 		
 						<!-- icon -->
 						<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -492,7 +492,7 @@ function loadFilterSystem() {
 						<!-- /matchcount -->
 		
 					</label>
-					<!-- /front -->
+					<!-- /filteritemfront -->
 					
 				</li>
 				<!-- /filteritem -->`;
@@ -532,13 +532,13 @@ function loadFilterSystem() {
 		function activateFilterItems() {
 		
 			// Get current tag filter controllers. 
-			tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+			tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.filteritemslist li.filteritem input.filteritemcontroller');
 		
 			// Go thru each tag filter controller. 
-			for(let checkbox of tagfilterpane.tagfiltercontrollers) {
+			for(let controller of tagfilterpane.tagfiltercontrollers) {
 		
 				// Enable toggle of tag filter. 
-				checkbox.addEventListener('input',applySelectedTagFilters);
+				controller.addEventListener('input',applySelectedTagFilters);
 			}
 	
 			// Enable apply button in filter pane. 
@@ -547,14 +547,21 @@ function loadFilterSystem() {
 			// Enable clear button in filter pane. 
 			tagfilterpane.clearbtn.addEventListener('click',clearTagFilters);
 	
-			// Enable checkbox for any/all switch. 
-			tagfilterpane.anyallswitch.switchstate.addEventListener('input',applySelectedTagFilters);
-			// Enable any label: Set filter mode to 'any'. 
-			tagfilterpane.anyallswitch.anybtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchstate.checked = false; applySelectedTagFilters(); } );
-			// Enable all label: Set filter mode to 'all'. 
-			tagfilterpane.anyallswitch.allbtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchstate.checked = true; applySelectedTagFilters(); } );
+			// Enable 'any' label: Set filter mode to 'any'. 
+			tagfilterpane.anyallswitch.anybtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchcontroller.checked = false; applySelectedTagFilters(); } );
+			// Enable 'all' label: Set filter mode to 'all'. 
+			tagfilterpane.anyallswitch.allbtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchcontroller.checked = true; applySelectedTagFilters(); } );
+			// Enable controller for any/all switch. 
+			tagfilterpane.anyallswitch.switchcontroller.addEventListener('input',applySelectedTagFilters);
 		}
 	}
+}
+
+// Close tag filter pane. 
+function closeTagFilterPane() {
+
+	// Close tag filter pane. 
+	tagfilterpane.block.classList.remove('open');
 }
 
 // Toggle tag filter pane. 
@@ -568,16 +575,16 @@ function toggleTagFilterPane() {
 function clearTagFilters() {
 
 	// Get current tag filter controllers. 
-	tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+	// tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.filteritemslist li.filteritem input.filteritemcontroller');
 
 	// Go thru each tag filter controller. 
-	for(let checkbox of tagfilterpane.tagfiltercontrollers) {
+	for(let controller of tagfilterpane.tagfiltercontrollers) {
 
 		// Turn off current tag filter item. 
-		checkbox.checked = false;
+		controller.checked = false;
 	}
 
-	// Apply selected filter items to blog posts. 
+	// Apply selected tag filter items to blog posts. 
 	applySelectedTagFilters();
 }
 
@@ -585,18 +592,18 @@ function clearTagFilters() {
 function applySelectedTagFilters() {
 	// console.log('Applying selected tag filters...');
 
-	// Initialize new list of selected filter items. 
-	let sfi = [];
+	// Initialize new list of selected tag filter items. 
+	let stfitems = [];
 
 	// Get current tag filter controllers. 
-	tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.itemslist li.filteritem input.checkbox');
+	// tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.filteritemslist li.filteritem input.filteritemcontroller');
 
 	// Go thru each tag filter controller. 
 	for(let controller of tagfilterpane.tagfiltercontrollers) {
 
 		// Check if current tag filter item is selected. 
 		if(controller.checked) {
-			// console.log('Tag filter item controller:',controller);
+			// console.log('Tag filter item switch:',controller);
 			
 			// Get block for current tag filter item. 
 			let tagfilteritemblock = controller.parentElement;
@@ -626,7 +633,7 @@ function applySelectedTagFilters() {
 			// console.log('Filter item unique id:',filteritemuniqueid);
 
 			// Save to list: details of selected tag filter item. 
-			sfi.push({
+			stfitems.push({
 				typeid:filtertypeid,
 				valueid:filtervalueid,
 				caption:filteritemcaption,
@@ -637,8 +644,11 @@ function applySelectedTagFilters() {
 	// Load layout for list of filter tags. 
 	loadFilterTagsLayout();
 
-	// Load blog posts associated with selected filter items. 
-	loadBlog(sfi);
+	// Load blog posts associated with selected tag filter items. 
+	loadBlog(stfitems);
+
+	// Close tag filter pane. 
+	closeTagFilterPane();
 
 	// Clear search filter query. 
 	searchfilterpanel.queryfield.value = '';
@@ -649,7 +659,7 @@ function applySelectedTagFilters() {
 	function loadFilterTagsLayout() {
 
 		// Create layout for list of filter tags. 
-		let filtertaglistlayout = sfi.map(createFilterTagLayout).join('');
+		let filtertaglistlayout = stfitems.map(createFilterTagLayout).join('');
 		// console.log('filtertaglistlayout:',filtertaglistlayout);
 	
 		// Display layout for list of filter tags. 
@@ -703,9 +713,9 @@ function applySelectedTagFilters() {
 // 	// console.log('filteritemtag:',filteritemtag);
 
 // 	// TODO: Uncheck associated item in fiter panel. 
-// 	// sfi.remove(xyz);
+// 	// stfitems.remove(xyz);
 
-// 	// Apply selected filter items. 
+// 	// Apply selected tag filter items. 
 // 	applySelectedTagFilters();
 // }
 

@@ -490,7 +490,7 @@ const projectData = [
 		projectid:'gradient',
 		projectname:'Scrolling Gradient',
 	},{
-		authorid:'codepen',
+		authorid:'cp',
 		projectid:'graph',
 		projectname:'Bar Graph',
 	},{
@@ -634,7 +634,7 @@ const projectData = [
 	},
 	
 	{
-		authorid:'codepen',
+		authorid:'cp',
 		projectid:'macbook',
 		projectname:'Macbook Animation',
 	},{

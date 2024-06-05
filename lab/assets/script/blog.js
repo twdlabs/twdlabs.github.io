@@ -40,7 +40,7 @@ const collectionsection = {
 
 
 // Initialize list for search filter items. 
-let selectedfilteritems;
+let selectedtagfilteritems;
 
 
 // Get indicator label for empty set of results. 
@@ -69,13 +69,13 @@ loadBlog( [] );
 /*****/
 
 
-// Load blog posts. 
-function loadBlog(sfi) {
+// Load blog posts (given selected tag filter items). 
+function loadBlog(stfitems) {
 	console.log('Loading blog...');
 
-	// Save new list of selected filter items. 
-	selectedfilteritems = sfi;
-	console.log('\tSelected filter items:',sfi);
+	// Save new list of selected tag filter items. 
+	selectedtagfilteritems = stfitems;
+	console.log('\tSelected tag filter items:',stfitems);
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -96,7 +96,7 @@ function loadBlog(sfi) {
 		// console.log('\t\tPreviews on:',previewsOn);
 
 		// Filter list of project posts (if filter criteria present). 
-		if(selectedfilteritems) {
+		if(selectedtagfilteritems) {
 			filteredpostlist = rawpostlist.filter(checkFilterPass);
 		} else {
 			filteredpostlist = rawpostlist.filter( ()=>true );
@@ -125,7 +125,7 @@ function loadBlog(sfi) {
 			// console.log(`projectpostitem:`,projectpostitem);
 		
 			// Pass filter by default if no filter items present. 
-			if(selectedfilteritems.length==0) return true;
+			if(selectedtagfilteritems.length==0) return true;
 
 			// Require all matching criteria. 
 			let needallcriteria = true;
@@ -162,7 +162,7 @@ function loadBlog(sfi) {
 			function checkFilterPassAny() {
 		
 				// Go thru each selected filter item. 
-				for(let filteritem of selectedfilteritems) {
+				for(let filteritem of selectedtagfilteritems) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
@@ -179,7 +179,7 @@ function loadBlog(sfi) {
 			function checkFilterPassAll() {
 		
 				// Go thru each selected filter item. 
-				for(let filteritem of selectedfilteritems) {
+				for(let filteritem of selectedtagfilteritems) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
@@ -663,3 +663,4 @@ function createPreviewPanel(projectid) {
 	<iframe class="preview" src="${pageurl}"></iframe>
 	<!-- /preview -->`;
 }
+ 
