@@ -114,6 +114,9 @@ function loadFilterSystem() {
 			// TODO: Do hard filter. 
 			function doHardFilter() {
 
+				// Initialize new list of selected search filter items. 
+				let selectedsearchfilteritems = [];
+
 				// Get all filter blocks. 
 				let filtertypeblocks = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype');
 
@@ -129,7 +132,7 @@ function loadFilterSystem() {
 					for(let queryword of searchquerywords) {
 	
 						// Add filter item to list. 
-						selectedtagfilteritems.push({
+						selectedsearchfilteritems.push({
 							typeid:filtertypeid,
 							valueid:queryword,
 							// caption:xyz,
@@ -137,8 +140,11 @@ function loadFilterSystem() {
 					}
 				}
 
+				// Save new list of selected search filter items. 
+				selectedfilteritems['searchfilters'] = selectedsearchfilteritems;
+
 				// Load matching posts for given search filter criteria. 
-				loadBlog(selectedtagfilteritems);
+				loadBlog();
 			}
 
 			// Do soft filter. 
@@ -641,14 +647,17 @@ function applySelectedTagFilters() {
 		}
 	}
 
-	// Load layout for list of filter tags. 
-	loadFilterTagsLayout();
+	// Save new list of selected tag filter items. 
+	selectedfilteritems['tagfilters'] = selectedtagfilteritems;
 
 	// Load blog posts associated with selected tag filter items. 
-	loadBlog(selectedtagfilteritems);
+	loadBlog();
 
 	// Close tag filter pane. 
 	closeTagFilterPane();
+
+	// Load layout for list of filter tags. 
+	loadFilterTagsLayout();
 
 	// Clear search filter query. 
 	searchfilterpanel.queryfield.value = '';
@@ -659,7 +668,8 @@ function applySelectedTagFilters() {
 	function loadFilterTagsLayout() {
 
 		// Create layout for list of filter tags. 
-		let filtertaglistlayout = selectedtagfilteritems.map(createFilterTagLayout).join('');
+		let filtertaglistlayout = selectedfilteritems['tagfilters'].map(createFilterTagLayout).join('');
+		console.log('Filter tag list:',selectedfilteritems['tagfilters']);
 		// console.log('filtertaglistlayout:',filtertaglistlayout);
 	
 		// Display layout for list of filter tags. 

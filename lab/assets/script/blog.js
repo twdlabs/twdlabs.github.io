@@ -40,12 +40,12 @@ const collectionsection = {
 
 
 // Initialize lists for currently selected filter items. 
-let currentlyselectedfilteritems = {
+let selectedfilteritems = {
+	// xyz:[],
 	tagfilters:[],
 	searchfilters:[],
-	// xyz:[],
 };
-// console.log('Currently selected filter items:',currentlyselectedfilteritems);
+// console.log('Selected filter items:',selectedfilteritems);
 
 
 // Get indicator label for empty set of results. 
@@ -68,19 +68,18 @@ let paginationOn = true;
 
 
 // Load blog posts. 
-loadBlog( [] );
+loadBlog();
 
 
 /*****/
 
 
 // Load blog posts (given selected tag filter items). 
-function loadBlog(selectedtagfilteritems) {
+function loadBlog() {
 	console.log('Loading blog...');
-
-	// Save new list of selected tag filter items. 
-	currentlyselectedfilteritems.tagfilters = selectedtagfilteritems;
-	console.log('\tSelected tag filter items:',selectedtagfilteritems);
+	// console.log('\tSelected filter items:', selectedfilteritems );
+	// console.log('\tSelected tag filter items:', selectedfilteritems['tagfilters'] );
+	// console.log('\tSelected search filter items:', selectedfilteritems['searchfilters'] );
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -126,9 +125,9 @@ function loadBlog(selectedtagfilteritems) {
 			// console.log(`projectpostitem:`,projectpostitem);
 
 			// Check for any selected tag filters. 
-			let notagfilterselected = currentlyselectedfilteritems['tagfilters'].length==0;
+			let notagfilterselected = selectedfilteritems['tagfilters'].length==0;
 			// Check for any selected search filters. 
-			let nosearchfilterselected = currentlyselectedfilteritems['searchfilters'].length==0;
+			let nosearchfilterselected = selectedfilteritems['searchfilters'].length==0;
 			// Pass filter by default if no filter items selected. 
 			if(notagfilterselected && nosearchfilterselected) return true;
 
@@ -152,7 +151,7 @@ function loadBlog(selectedtagfilteritems) {
 			function checkFilterPassAny() {
 		
 				// Go thru each selected tag filter item. 
-				for(let filteritem of currentlyselectedfilteritems['tagfilters']) {
+				for(let filteritem of selectedfilteritems['tagfilters']) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
@@ -162,7 +161,7 @@ function loadBlog(selectedtagfilteritems) {
 				}
 		
 				// Go thru each selected search filter item. 
-				for(let filteritem of currentlyselectedfilteritems['searchfilters']) {
+				for(let filteritem of selectedfilteritems['searchfilters']) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
@@ -179,7 +178,7 @@ function loadBlog(selectedtagfilteritems) {
 			function checkFilterPassAll() {
 		
 				// Go thru each selected tag filter item. 
-				for(let filteritem of currentlyselectedfilteritems['tagfilters']) {
+				for(let filteritem of selectedfilteritems['tagfilters']) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
@@ -189,7 +188,7 @@ function loadBlog(selectedtagfilteritems) {
 				}
 		
 				// Go thru each selected search filter item. 
-				for(let filteritem of currentlyselectedfilteritems['searchfilters']) {
+				for(let filteritem of selectedfilteritems['searchfilters']) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
