@@ -129,7 +129,7 @@ function loadFilterSystem() {
 					for(let queryword of searchquerywords) {
 	
 						// Add filter item to list. 
-						stfitems.push({
+						selectedtagfilteritems.push({
 							typeid:filtertypeid,
 							valueid:queryword,
 							// caption:xyz,
@@ -138,7 +138,7 @@ function loadFilterSystem() {
 				}
 
 				// Load matching posts for given search filter criteria. 
-				loadBlog(stfitems);
+				loadBlog(selectedtagfilteritems);
 			}
 
 			// Do soft filter. 
@@ -593,7 +593,7 @@ function applySelectedTagFilters() {
 	// console.log('Applying selected tag filters...');
 
 	// Initialize new list of selected tag filter items. 
-	let stfitems = [];
+	let selectedtagfilteritems = [];
 
 	// Get current tag filter controllers. 
 	// tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.filteritemslist li.filteritem input.filteritemcontroller');
@@ -633,7 +633,7 @@ function applySelectedTagFilters() {
 			// console.log('Filter item unique id:',filteritemuniqueid);
 
 			// Save to list: details of selected tag filter item. 
-			stfitems.push({
+			selectedtagfilteritems.push({
 				typeid:filtertypeid,
 				valueid:filtervalueid,
 				caption:filteritemcaption,
@@ -645,7 +645,7 @@ function applySelectedTagFilters() {
 	loadFilterTagsLayout();
 
 	// Load blog posts associated with selected tag filter items. 
-	loadBlog(stfitems);
+	loadBlog(selectedtagfilteritems);
 
 	// Close tag filter pane. 
 	closeTagFilterPane();
@@ -659,7 +659,7 @@ function applySelectedTagFilters() {
 	function loadFilterTagsLayout() {
 
 		// Create layout for list of filter tags. 
-		let filtertaglistlayout = stfitems.map(createFilterTagLayout).join('');
+		let filtertaglistlayout = selectedtagfilteritems.map(createFilterTagLayout).join('');
 		// console.log('filtertaglistlayout:',filtertaglistlayout);
 	
 		// Display layout for list of filter tags. 
@@ -713,7 +713,7 @@ function applySelectedTagFilters() {
 // 	// console.log('filteritemtag:',filteritemtag);
 
 // 	// TODO: Uncheck associated item in fiter panel. 
-// 	// stfitems.remove(xyz);
+// 	// selectedtagfilteritems.remove(xyz);
 
 // 	// Apply selected tag filter items. 
 // 	applySelectedTagFilters();

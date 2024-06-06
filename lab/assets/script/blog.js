@@ -39,8 +39,13 @@ const collectionsection = {
 // console.log('Collection section:',collectionsection);
 
 
-// Initialize list for search filter items. 
-let selectedtagfilteritems;
+// Initialize lists for currently selected filter items. 
+let currentlyselectedfilteritems = {
+	tagfilters:[],
+	searchfilters:[],
+	// xyz:[],
+};
+// console.log('Currently selected filter items:',currentlyselectedfilteritems);
 
 
 // Get indicator label for empty set of results. 
@@ -70,12 +75,12 @@ loadBlog( [] );
 
 
 // Load blog posts (given selected tag filter items). 
-function loadBlog(stfitems) {
+function loadBlog(selectedtagfilteritems) {
 	console.log('Loading blog...');
 
 	// Save new list of selected tag filter items. 
-	selectedtagfilteritems = stfitems;
-	console.log('\tSelected tag filter items:',stfitems);
+	currentlyselectedfilteritems.tagfilters = selectedtagfilteritems;
+	console.log('\tSelected tag filter items:',selectedtagfilteritems);
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -96,11 +101,7 @@ function loadBlog(stfitems) {
 		// console.log('\t\tPreviews on:',previewsOn);
 
 		// Filter list of project posts (if filter criteria present). 
-		if(selectedtagfilteritems) {
-			filteredpostlist = rawpostlist.filter(checkFilterPass);
-		} else {
-			filteredpostlist = rawpostlist.filter( ()=>true );
-		}
+		filteredpostlist = rawpostlist.filter(checkFilterPass);
 		console.log('\t',rawpostlist.length,'raw posts');
 		console.log('\t',rawpostlist);
 		console.log('\t',filteredpostlist.length,'filtered posts');
@@ -123,17 +124,21 @@ function loadBlog(stfitems) {
 		// TODO: Check if given project post passes filter criteria. 
 		function checkFilterPass(projectpostitem) {
 			// console.log(`projectpostitem:`,projectpostitem);
-		
-			// Pass filter by default if no filter items present. 
-			if(selectedtagfilteritems.length==0) return true;
+
+			// Check for any selected tag filters. 
+			let notagfilterselected = currentlyselectedfilteritems['tagfilters'].length==0;
+			// Check for any selected search filters. 
+			let nosearchfilterselected = currentlyselectedfilteritems['searchfilters'].length==0;
+			// Pass filter by default if no filter items selected. 
+			if(notagfilterselected && nosearchfilterselected) return true;
 
 			// Require all matching criteria. 
-			let needallcriteria = true;
+			let passrequiresallfiltercriteria = true;
 			// Require single matching criteria. 
-			// needallcriteria = false;
+			passrequiresallfiltercriteria = false;
 	
 			// Check post for all criteria matches. 
-			if(needallcriteria) {
+			if(passrequiresallfiltercriteria) {
 				return checkFilterPassAll();
 			}
 			// Check post for any criteria match. 
@@ -143,26 +148,21 @@ function loadBlog(stfitems) {
 	
 			/**/
 		
-			// Check if post passes given filter item. 
-			function checkFilterItem(filteritem) {
-		
-				// Get type of filter item. 
-				let typeid = filteritem.typeid;
-				// console.log('\tFilter item type id:',typeid);
-
-				// Get value of filter item. 
-				let valueid = filteritem.valueid;
-				// console.log('\tFilter item value id:',valueid);
-
-				// Check for match btwn given project and current filter item. 
-				return (projectpostitem[typeid] == valueid);
-			}
-		
 			// Check if post passes any given filter criteria. 
 			function checkFilterPassAny() {
 		
-				// Go thru each selected filter item. 
-				for(let filteritem of selectedtagfilteritems) {
+				// Go thru each selected tag filter item. 
+				for(let filteritem of currentlyselectedfilteritems['tagfilters']) {
+		
+					// Check if post passes current filter item. 
+					let passed = checkFilterItem(filteritem);
+		
+					// Return true if any match found. 
+					if(passed) return true;
+				}
+		
+				// Go thru each selected search filter item. 
+				for(let filteritem of currentlyselectedfilteritems['searchfilters']) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
@@ -178,8 +178,18 @@ function loadBlog(stfitems) {
 			// Check if post passes all given filter criteria. 
 			function checkFilterPassAll() {
 		
-				// Go thru each selected filter item. 
-				for(let filteritem of selectedtagfilteritems) {
+				// Go thru each selected tag filter item. 
+				for(let filteritem of currentlyselectedfilteritems['tagfilters']) {
+		
+					// Check if post passes current filter item. 
+					let passed = checkFilterItem(filteritem);
+		
+					// Return false if any mismatch found. 
+					if(!passed) return false;
+				}
+		
+				// Go thru each selected search filter item. 
+				for(let filteritem of currentlyselectedfilteritems['searchfilters']) {
 		
 					// Check if post passes current filter item. 
 					let passed = checkFilterItem(filteritem);
@@ -190,6 +200,21 @@ function loadBlog(stfitems) {
 		
 				// Return true if no mismatch found. 
 				return true;
+			}
+		
+			// Check if post passes given filter item. 
+			function checkFilterItem(filteritem) {
+		
+				// Get type of filter item. 
+				let typeid = filteritem.typeid;
+				// console.log('\tFilter item type id:',typeid);
+
+				// Get value of filter item. 
+				let valueid = filteritem.valueid;
+				// console.log('\tFilter item value id:',valueid);
+
+				// Check for match btwn given project and current filter item. 
+				return (projectpostitem[typeid] == valueid);
 			}
 		}
 
