@@ -61,17 +61,20 @@ div#container section.blog div.grid div.body div.filterpane div.btnpanel div.btn
 div#container section.blog div.grid div.body div.filterpane div.btnpanel div.btn {color:white; cursor:pointer; font-size:1.25rem; font-weight:500; text-align:center; user-select:none;}
 /* div#container section.blog div.grid div.body div.filterpane div.btnpanel div.applybtn {display:none;} */
 /* div#container section.blog div.grid div.body div.filterpane div.btnpanel div.clearbtn {display:none;} */
-div#container section.blog div.grid div.body div.filterpane div.switchpanel {display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;}
-div#container section.blog div.grid div.body div.filterpane div.switchpanel {display:none;}
-div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice {cursor:pointer; user-select:none; margin:0 .875rem;}
-/* div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.any {} */
-/* div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.all {} */
-div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch {background-color:var(--forecolor2); display:block; cursor:pointer; position:relative; padding:.125rem; border:1px solid var(--backcolor2); border-radius:3rem;}
-div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch {box-sizing:content-box; --ballsize:1.375rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
-div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch div.ball {background-color:var(--backcolor2); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
-div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch div.ball {transform:none; transition:.25s;}
-div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch input.switchcontroller {position:absolute; top:0; left:0; display:none;}
-div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch input.switchcontroller:checked + div.ball {--delta:100%; /* --delta:150%; */ transform:translateX( var(--delta) );}
+/* div#container section.blog div.grid div.body div.filterpane div.switchpanel {display:none;} */
+div#container section.blog div.grid div.body div.filterpane div.switchpanel {display:grid; grid-template-columns:repeat(2,1fr);}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock {display:flex; flex-direction:row; justify-content:center; align-items:center; width:100%;}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice {cursor:pointer; user-select:none; margin:0 .875rem;}
+/* div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.any {} */
+/* div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.all {} */
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch {display:block; cursor:pointer; position:relative; overflow:hidden; padding:.125rem; border:1px solid var(--backcolor2); border-radius:3rem;}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch {box-sizing:content-box; --ballsize:1.375rem; --multiple:2; /* --multiple:2.5; */ height:auto; width:calc(var(--ballsize)*var(--multiple));}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch div.back {background-color:var(--backcolor); position:absolute; inset:0; height:100%; width:100%;}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch div.ball {background-color:var(--backcolor2); height:var(--ballsize); width:var(--ballsize); border-radius:50%;}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch div.ball {position:relative; transform:none; transition:.25s;}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch input.switchcontroller {position:absolute; top:0; left:0; display:none;}
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch input.switchcontroller:checked ~ div.back {background-color:var(--forecolor2); }
+div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch input.switchcontroller:checked ~ div.ball {--delta:100%; /* --delta:150%; */ transform:translateX( var(--delta) );}
 
 
 /* Blog Section: Filter Panel */

@@ -49,8 +49,8 @@ let selectedfilteritems = {
 
 
 // Get indicator label for empty set of results. 
-const nullresultslabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.nullresultslabel');
-// console.log('Null results label:',nullresultslabel);
+const emptyresultslabel = document.querySelector('div#container section.blog div.grid div.body div.posts div.emptyresultslabel');
+// console.log('Null results label:',emptyresultslabel);
 
 
 /*****/
@@ -100,7 +100,7 @@ function loadBlog() {
 		// console.log('\t\tPreviews on:',previewsOn);
 
 		// Filter list of project posts (if filter criteria present). 
-		filteredpostlist = rawpostlist.filter(checkFilterPass);
+		filteredpostlist = rawpostlist.filter(checkForFilterPass);
 		console.log('\t',rawpostlist.length,'raw posts');
 		console.log('\t',rawpostlist);
 		console.log('\t',filteredpostlist.length,'filtered posts');
@@ -116,13 +116,13 @@ function loadBlog() {
 		displaySelectedPage();
 
 		// Set state of results block. 
-		setResultState(!!filteredpostlist.length);
+		setResultState(filteredpostlist.length);
 	
 		/***/
 
-		// TODO: Check if given project post passes filter criteria. 
-		function checkFilterPass(projectpostitem) {
-			// console.log(`projectpostitem:`,projectpostitem);
+		// TODO: Check if given project post passes selected filter criteria. 
+		function checkForFilterPass(projectpostitem) {
+			console.log(`checkForFilterPass`,projectpostitem);
 
 			// Check for any selected tag filters. 
 			let notagfilterselected = selectedfilteritems['tagfilters'].length==0;
@@ -151,20 +151,20 @@ function loadBlog() {
 			function checkFilterPassAny() {
 		
 				// Go thru each selected tag filter item. 
-				for(let filteritem of selectedfilteritems['tagfilters']) {
+				for(let tagfilteritem of selectedfilteritems['tagfilters']) {
 		
 					// Check if post passes current filter item. 
-					let passed = checkFilterItem(filteritem);
+					let passed = checkFilterItem(tagfilteritem);
 		
 					// Return true if any match found. 
 					if(passed) return true;
 				}
 		
 				// Go thru each selected search filter item. 
-				for(let filteritem of selectedfilteritems['searchfilters']) {
+				for(let searchfilteritem of selectedfilteritems['searchfilters']) {
 		
 					// Check if post passes current filter item. 
-					let passed = checkFilterItem(filteritem);
+					let passed = checkFilterItem(searchfilteritem);
 		
 					// Return true if any match found. 
 					if(passed) return true;
@@ -178,20 +178,20 @@ function loadBlog() {
 			function checkFilterPassAll() {
 		
 				// Go thru each selected tag filter item. 
-				for(let filteritem of selectedfilteritems['tagfilters']) {
+				for(let tagfilteritem of selectedfilteritems['tagfilters']) {
 		
 					// Check if post passes current filter item. 
-					let passed = checkFilterItem(filteritem);
+					let passed = checkFilterItem(tagfilteritem);
 		
 					// Return false if any mismatch found. 
 					if(!passed) return false;
 				}
 		
 				// Go thru each selected search filter item. 
-				for(let filteritem of selectedfilteritems['searchfilters']) {
+				for(let searchfilteritem of selectedfilteritems['searchfilters']) {
 		
 					// Check if post passes current filter item. 
-					let passed = checkFilterItem(filteritem);
+					let passed = checkFilterItem(searchfilteritem);
 		
 					// Return false if any mismatch found. 
 					if(!passed) return false;
@@ -201,19 +201,20 @@ function loadBlog() {
 				return true;
 			}
 		
-			// Check if post passes given filter item. 
+			// Check if project post passes given filter item. 
 			function checkFilterItem(filteritem) {
 		
-				// Get type of filter item. 
-				let typeid = filteritem.typeid;
-				// console.log('\tFilter item type id:',typeid);
+				// Get type id of filter item. 
+				let filteritemtypeid = filteritem.typeid;
+				// console.log('\tFilter item type id:', filteritemtypeid, projectpostitem[filteritemtypeid] );
 
-				// Get value of filter item. 
-				let valueid = filteritem.valueid;
-				// console.log('\tFilter item value id:',valueid);
+				// Get value of input filter item. 
+				let filteritemvalueid = filteritem.valueid;
+				// console.log('\tFilter item value id:', filteritemvalueid);
 
 				// Check for match btwn given project and current filter item. 
-				return (projectpostitem[typeid] == valueid);
+				// return (projectpostitem[filteritemtypeid] == filteritemvalueid);
+				return ( `${ projectpostitem[filteritemtypeid] }`.toUpperCase() ).includes( filteritemvalueid.toUpperCase() );
 			}
 		}
 
@@ -645,32 +646,33 @@ function loadBlog() {
 }
 
 // Set state of results block. 
-function setResultState(state) {
+function setResultState(resultcount) {
 
-	// Set state of null label in results block. 
-	setEmptyResult(!state);
-
+	// Indicate if no matching results in results block. 
+	setEmptyResult(!resultcount);
+	
 	/****/
-
-	// Set state of null label in results block. 
+	
+	// Indicate if no matching results in results block. 
 	function setEmptyResult(state) {
 	
-		// Disregard if empty label gone. 
-		if(typeof nullresultslabel == 'undefined') return;
+		// Disregard if empty results label not available. 
+		if(typeof emptyresultslabel == 'undefined') return;
 	
-		// Get block of posts. 
-		const postblock = document.querySelector('div#container section.blog div.grid div.body div.posts');
-		// console.log('Posts block:',postblock);
-	
+		// Get block for result posts. 
+		const resultpostsblock = document.querySelector('div#container section.blog div.grid div.body div.posts');
+		// console.log('Result posts block:',resultpostsblock);
+		
+		// Set state of null label in results block. 
 		// Label block as empty. 
 		if(state) {
-			postblock.classList.add('empty');
-			// nullresultslabel.classList.add('on');
+			resultpostsblock.classList.add('empty');
+			// emptyresultslabel.classList.add('on');
 		}
 		// Label block as not empty. 
 		else {
-			postblock.classList.remove('empty');
-			// nullresultslabel.classList.remove('on');
+			resultpostsblock.classList.remove('empty');
+			// emptyresultslabel.classList.remove('on');
 		}
 	}
 }

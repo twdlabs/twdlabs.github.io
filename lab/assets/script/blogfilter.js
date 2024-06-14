@@ -20,15 +20,15 @@ const tagfilterpane = {
 
 	// Get switch for filter type (matching any criterion vs matching all criteria). 
 	anyallswitch: {
-		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.any'),
-		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel span.choice.all'),
-		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel label.switch input.switchcontroller'),
+		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.any'),
+		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.all'),
+		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch input.switchcontroller.anyall'),
 	},
 
 	// Get destination for list of applied filters. 
 	taglistdestination: document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist'),
 };
-// console.log('Filter pane:',tagfilterpane);
+// console.log('Tag filter pane components:',tagfilterpane);
 
 
 // Get componenets of tag filter panel. 
@@ -40,7 +40,7 @@ const tagfilterpanel = {
 	// Get destination for grouped types of filter items in filter panel. 
 	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpanel ul.filterlist'),
 };
-// console.log('Filter panel:',tagfilterpanel);
+// console.log('Tag filter panel components:',tagfilterpanel);
 
 
 // Get componenets of search filter panel. 
@@ -51,8 +51,15 @@ const searchfilterpanel = {
 
 	// Get clear button for search panel. 
 	clearbtn: document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn'),
+
+	// Get switch for search filter type (post layout modification vs post layout reload). 
+	softhardswitch: {
+		softbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.soft'),
+		hardbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.hard'),
+		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch input.switchcontroller.softhard'),
+	},
 };
-// console.log('Search filter panel:',searchfilterpanel);
+// console.log('Search filter panel components:',searchfilterpanel);
 
 
 /*****/
@@ -69,7 +76,7 @@ loadFilterSystem();
 function loadFilterSystem() {
 
 	// Load groups of tag filters. 
-	loadFilterGroups();
+	// loadFilterGroups();
 
 	// Activate blog post search filter. 
 	activateSearchFilter();
@@ -88,55 +95,71 @@ function loadFilterSystem() {
 
 		// Clear any previous search filter query. 
 		clearSearchFilterQuery();
+	
+		// Activate filter modifiers in search filter panel. 
+		activateSearchFilterMods();
 
 		/***/
 
 		// Show blog posts that match given search query. 
 		function searchBlogPosts() {
-
-			// Set filter style. 
-			let dohardfilter = true;
-			dohardfilter = false;
 	
 			// Get search query of post filter. 
 			let filtersearchquery = searchfilterpanel.queryfield.value.toUpperCase();
 			// Get list of words in search query. 
 			let searchquerywords = filtersearchquery.split(' ');
-			// console.log('Searching posts...', filtersearchquery, searchquerywords);
+			console.log('Searching posts...', filtersearchquery, searchquerywords);
 
-			// Do hard filter: Reload full layout of posts. 
-			if(dohardfilter) doHardFilter();
-			// Do soft filter: Modify pre-loaded posts. 
-			else doSoftFilter();
+			// Get style of search filter. 
+			let dohardfilter = searchfilterpanel.softhardswitch.switchcontroller.checked;
+
+			// Do hard search filter. 
+			if(dohardfilter) doHardSearchFilter();
+			// Do soft search filter. 
+			else doSoftSearchFilter();
+
+			// Load new groups of tag filters. 
+			loadFilterGroups();
+
+			// Apply selected tag filter items to blog posts. 
+			applySelectedTagFilters();
 
 			/**/
 
-			// TODO: Do hard filter. 
-			function doHardFilter() {
+			// TODO: Perform hard search filter: Load new layout of posts. 
+			function doHardSearchFilter() {
 
 				// Initialize new list of selected search filter items. 
 				let selectedsearchfilteritems = [];
 
-				// Get all filter blocks. 
-				let filtertypeblocks = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype');
+				// Check if any search query present. 
+				let isSearchQueryPresent = filtersearchquery.length > 0;
 
-				// Go thru each filter type. 
-				for(let filtertypeblock of filtertypeblocks) {
-					// console.log('Filter block:',filtertypeblock);
+				// Proceed only if search query present. 
+				if(isSearchQueryPresent) {
 
-					// Get id for block of selected filter type. 
-					let filtertypeid = filtertypeblock.getAttribute('data-tagfiltertypeid');
-					// console.log('Filter type id:',filtertypeid);
+					// Get all filter blocks. 
+					let filtertypeblocks = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype');
 
 					// Go thru each word in search query. 
 					for(let queryword of searchquerywords) {
 	
-						// Add filter item to list. 
-						selectedsearchfilteritems.push({
-							typeid:filtertypeid,
-							valueid:queryword,
-							// caption:xyz,
-						});
+						// TODO: Go thru each filter type. 
+						// TODO: Include other attributes of project objects (i.e. project id, project name)
+						for(let filtertypeblock of filtertypeblocks) {
+							// console.log('Filter block:',filtertypeblock);
+		
+							// Get id for block of selected filter type. 
+							let filtertypeid = filtertypeblock.getAttribute('data-tagfiltertypeid');
+							// console.log('Filter type id:',filtertypeid);
+			
+							// Add filter item to list. 
+							selectedsearchfilteritems.push({
+								typeid:filtertypeid,
+								valueid:queryword,
+								caption:`${filtertypeid}:${queryword}`,
+							});
+						}
 					}
 				}
 
@@ -145,10 +168,13 @@ function loadFilterSystem() {
 
 				// Load matching posts for given search filter criteria. 
 				loadBlog();
+
+				// Load layout for list of selected filter tags. 
+				loadFilterTagsLayout();
 			}
 
-			// Do soft filter. 
-			function doSoftFilter() {
+			// Perform soft search filter: Modify current layout of posts. 
+			function doSoftSearchFilter() {
 
 				// Access loaded blog post cards. 
 				let blogpostcards = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard');
@@ -162,7 +188,7 @@ function loadFilterSystem() {
 				// Set number of matching posts. 
 				// let numMatchingPosts = matchingPosts.length;
 			
-				// Go thru each blog post. 
+				// Go thru card for each project post. 
 				for(let postcard of blogpostcards) {
 	
 					// Get project id for given post. 
@@ -179,58 +205,12 @@ function loadFilterSystem() {
 				}
 	
 				// Set state of results block. 
-				setResultState(!!numMatchingPosts);
+				setResultState(numMatchingPosts);
+
+				// Load layout for list of selected filter tags. 
+				loadFilterTagsLayout();
 
 				/**/
-
-				// Check for matching post. 
-				function checkForMatch(projectid) {
-	
-					// Capitalize project id. 
-					projectid = projectid.toUpperCase();
-	
-					// Check for matching post (by full query). 
-					let matchFullQuery = projectid.includes(filtersearchquery);
-					// Check for matching post (by each word). 
-					let matchEveryWord = checkForMatchAllWords(projectid,searchquerywords);
-	
-					// Compile match criteria. 
-					return (matchFullQuery || matchEveryWord);
-	
-					/**/
-	
-					// Check for matching post (by all words). 
-					function checkForMatchAllWords(projectid,searchquerywords) {
-				
-						// Go thru each word in search query. 
-						for(let word of searchquerywords) {
-		
-							let wordPresent = projectid.includes(word);
-		
-							// Return false if any query word is missing. 
-							if(!wordPresent) return false;
-						}
-		
-						// Return true if passed (no query words missing). 
-						return true;
-					}
-	
-					// Check for matching post (by any words). 
-					function checkForMatchAnyWord(projectid,searchquerywords) {
-				
-						// Go thru each word in search query. 
-						for(let word of searchquerywords) {
-		
-							let wordPresent = projectid.includes(word);
-		
-							// Return false if any query word is missing. 
-							if(!wordPresent) return false;
-						}
-		
-						// Return true if passed (no query words missing). 
-						return true;
-					}
-				}
 	
 				// Update visibility state of post based on match. 
 				function updatePostState(postcard,matchesQuery) {
@@ -240,6 +220,56 @@ function loadFilterSystem() {
 	
 					// Hide non-matching post. 
 					else postcard.classList.add('gone');
+				}
+			}
+
+			// Check for matching post (ONLY by project id). 
+			function checkForMatch(projectid) {
+				console.log('checkForMatch',projectid);
+
+				// Capitalize project id. 
+				projectid = projectid.toUpperCase();
+
+				// Check for matching post (by full query). 
+				let matchFullQuery = projectid.includes(filtersearchquery);
+				// Check for matching post (by each word). 
+				let matchEveryWord = checkForMatchAllWords(projectid,searchquerywords);
+
+				// Compile match criteria. 
+				return (matchFullQuery || matchEveryWord);
+
+				/**/
+
+				// Check for matching post (by all words). 
+				function checkForMatchAllWords(projectid,searchquerywords) {
+			
+					// Go thru each word in search query. 
+					for(let word of searchquerywords) {
+	
+						let wordPresent = projectid.includes(word);
+	
+						// Return false if any query word is missing. 
+						if(!wordPresent) return false;
+					}
+	
+					// Return true if passed (no query words missing). 
+					return true;
+				}
+
+				// Check for matching post (by any words). 
+				function checkForMatchAnyWord(projectid,searchquerywords) {
+			
+					// Go thru each word in search query. 
+					for(let word of searchquerywords) {
+	
+						let wordPresent = projectid.includes(word);
+	
+						// Return false if any query word is missing. 
+						if(!wordPresent) return false;
+					}
+	
+					// Return true if passed (no query words missing). 
+					return true;
 				}
 			}
 		}
@@ -253,9 +283,22 @@ function loadFilterSystem() {
 			// Show all blog posts. 
 			searchBlogPosts();
 		}
+	
+		// Activate filter modifiers in search filter panel. 
+		function activateSearchFilterMods() {
+	
+			// Enable 'soft' label: Set search filter mode to 'soft'. 
+			searchfilterpanel.softhardswitch.softbtn.addEventListener('click', ()=>{ searchfilterpanel.softhardswitch.switchcontroller.checked = false; searchBlogPosts(); } );
+
+			// Enable 'hard' label: Set search filter mode to 'hard'. 
+			searchfilterpanel.softhardswitch.hardbtn.addEventListener('click', ()=>{ searchfilterpanel.softhardswitch.switchcontroller.checked = true; searchBlogPosts(); } );
+
+			// Enable controller for soft/hard switch. 
+			searchfilterpanel.softhardswitch.switchcontroller.addEventListener('input',searchBlogPosts);
+		}
 	}
 
-	// Load groups of tag filters. 
+	// Load groups of tag filters (based on search filter query). 
 	function loadFilterGroups() {
 		// console.log('Loading list of post filter groups');
 
@@ -266,9 +309,9 @@ function loadFilterSystem() {
 		let filtergroupslayout = '';
 		let mobilefiltergroupslayout = '';
 	
-		// Go thru each filter type. 
+		// Go thru each filter type group. 
 		for(let filtertype of postFilterData) {
-			// console.log('Filter group:',filtertype);
+			// console.log('Filter type group:',filtertype);
 			
 			// Add filter type to primary layout. 
 			filtergroupslayout += `
@@ -285,7 +328,7 @@ function loadFilterSystem() {
 						<h2 class="filtertypename">
 		
 							<!-- caption -->
-							<span class="caption">${filtertype.filtername}</span>
+							<span class="caption">${filtertype.filtertypename}</span>
 							<!-- /caption -->
 
 						</h2>
@@ -331,7 +374,7 @@ function loadFilterSystem() {
 				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
 
 					<!-- caption -->
-					<span class="caption">${filtertype.filtername}</span>
+					<span class="caption">${filtertype.filtertypename}</span>
 					<!-- /caption -->
 
 					<!-- icon -->
@@ -363,7 +406,7 @@ function loadFilterSystem() {
 						<h2 class="filtertypename">
 
 							<!-- caption -->
-							<span class="caption">${filtertype.filtername}</span>
+							<span class="caption">${filtertype.filtertypename}</span>
 							<!-- /caption -->
 							
 						</h2>
@@ -411,23 +454,26 @@ function loadFilterSystem() {
 		// Activate filter items in filter pane. 
 		activateFilterItems();
 	
+		// Activate filter modifiers in filter pane. 
+		activateFilterMods();
+	
 		/***/
 	
 		// Create layout for filter items list. 
 		function createFilterItemsListLayout(filtertype,usemobileversion) {
 	
-			// Get id for given filter type. 
+			// Get id for given filter type group. 
 			let filtertypeid = filtertype.filtertypeid;
 	
-			// Get list of items for given filter type. 
-			let filteritemslist = filtertype.filteritems;
-			// console.log('Creating layout for filter items list',filteritemslist);
+			// Get list of items for given filter type group. 
+			let filtergroupitemslist = filtertype.filteritems;
+			// console.log('Creating layout for filter group items list',filtergroupitemslist);
 	
-			// Initialize layout for filter items list. 
+			// Initialize layout for filter group items list. 
 			let filteritemslistlayout = '';
 	
-			// Go thru each filter item in given list. 
-			for(let filteritem of filteritemslist) {
+			// Go thru each filter item in list for given group. 
+			for(let filteritem of filtergroupitemslist) {
 				// console.log('Filter item:',filteritem);
 	
 				// Add filter item to layout. 
@@ -494,7 +540,7 @@ function loadFilterSystem() {
 						<!-- /caption -->
 		
 						<!-- matchcount -->
-						<span class="matchcount">${ filteritem.frequency}</span>
+						<span class="matchcount">${ filteritem.frequency }</span>
 						<!-- /matchcount -->
 		
 					</label>
@@ -523,14 +569,16 @@ function loadFilterSystem() {
 			// Toggle group in post filter pane. 
 			function toggleFilterGroup(event) {
 			
-				// Get header for filter type. 
-				let filtergroupheader = event.currentTarget;
+				// Get header for selected filter group. 
+				let filtergrouphead = event.currentTarget;
+				console.log('filtergrouphead:',filtergrouphead);
 			
-				// Get block for filter type. 
-				let filtertype = filtergroupheader.parentElement.parentElement;
+				// Get block for selected filter group. 
+				let filtergroupblock = filtergrouphead.parentElement.parentElement;
+				console.log('filtergroupblock:',filtergroupblock);
 			
-				// Toggle block for filter type. 
-				filtertype.classList.toggle('open');
+				// Toggle state of selected block. 
+				filtergroupblock.classList.toggle('open');
 			}
 		}
 	
@@ -552,11 +600,17 @@ function loadFilterSystem() {
 	
 			// Enable clear button in filter pane. 
 			tagfilterpane.clearbtn.addEventListener('click',clearTagFilters);
+		}
 	
-			// Enable 'any' label: Set filter mode to 'any'. 
+		// Activate filter modifiers in filter pane. 
+		function activateFilterMods() {
+	
+			// Enable 'any' label: Set general filter mode to 'any'. 
 			tagfilterpane.anyallswitch.anybtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchcontroller.checked = false; applySelectedTagFilters(); } );
-			// Enable 'all' label: Set filter mode to 'all'. 
+
+			// Enable 'all' label: Set general filter mode to 'all'. 
 			tagfilterpane.anyallswitch.allbtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchcontroller.checked = true; applySelectedTagFilters(); } );
+
 			// Enable controller for any/all switch. 
 			tagfilterpane.anyallswitch.switchcontroller.addEventListener('input',applySelectedTagFilters);
 		}
@@ -643,6 +697,7 @@ function applySelectedTagFilters() {
 				typeid:filtertypeid,
 				valueid:filtervalueid,
 				caption:filteritemcaption,
+				caption:`${filtertypeid}:${filtervalueid}`,
 			});
 		}
 	}
@@ -654,63 +709,62 @@ function applySelectedTagFilters() {
 	loadBlog();
 
 	// Close tag filter pane. 
-	closeTagFilterPane();
+	// closeTagFilterPane();
 
-	// Load layout for list of filter tags. 
+	// Load layout for list of selected filter tags. 
 	loadFilterTagsLayout();
 
 	// Clear search filter query. 
-	searchfilterpanel.queryfield.value = '';
+	// searchfilterpanel.queryfield.value = '';
+}
+
+// Load layout for list of selected filter tags. 
+function loadFilterTagsLayout() {
+
+	// Create layout for list of filter tags. 
+	let filtertaglistlayoutT = selectedfilteritems['tagfilters'].map(createFilterTagLayout).join('');
+	let filtertaglistlayoutS = selectedfilteritems['searchfilters'].map(createFilterTagLayout).join('');
+	console.log('Selected filter list:',selectedfilteritems/* ['tagfilters'] */);
+	// console.log('filtertaglistlayout:',filtertaglistlayout);
+
+	// Display layout for list of filter tags. 
+	tagfilterpane.taglistdestination.innerHTML = filtertaglistlayoutT + filtertaglistlayoutS;
 
 	/****/
 
-	// Load layout for list of filter tags. 
-	function loadFilterTagsLayout() {
+	// Create layout for filter tag. 
+	function createFilterTagLayout(filteritem) {
+		// console.log('Creating filter tag layout', filteritem.typeid, filteritem.valueid);
 
-		// Create layout for list of filter tags. 
-		let filtertaglistlayout = selectedfilteritems['tagfilters'].map(createFilterTagLayout).join('');
-		console.log('Filter tag list:',selectedfilteritems['tagfilters']);
-		// console.log('filtertaglistlayout:',filtertaglistlayout);
-	
-		// Display layout for list of filter tags. 
-		tagfilterpane.taglistdestination.innerHTML = filtertaglistlayout;
+		// Get unique id of selected filter item. 
+		let filteritemuniqueid = filteritem.typeid + filteritem.valueid;
 
-		/***/
+		// Get caption for selected filter item. 
+		let filteritemcaption = filteritem.caption;
+		
+		// Compile layout for filter tag. 
+		return `
+		<!-- filtertag -->
+		<li class="filtertag">
 
-		// Create layout for filter tag. 
-		function createFilterTagLayout(filteritem) {
-			// console.log('Creating filter tag layout', filteritem.typeid, filteritem.valueid);
-	
-			// Get unique id of selected filter item. 
-			let filteritemuniqueid = filteritem.typeid + filteritem.valueid;
-	
-			// Get caption for selected filter item. 
-			let filteritemcaption = filteritem.caption;
-			
-			// Compile layout for filter tag. 
-			return `
-			<!-- filtertag -->
-			<li class="filtertag">
-	
-				<!-- removebtn -->
-				<label class="removebtn" for="${filteritemuniqueid}">
-	
-					<!-- caption -->
-					<span class="caption">${filteritemcaption}</span>
-					<!-- /caption -->
-	
-					<!-- icon -->
-					<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-					</svg>
-					<!-- /icon -->
-	
-				</label>
-				<!-- /removebtn -->
-	
-			</li>
-			<!-- /filtertag -->`;
-		}
+			<!-- removebtn -->
+			<label class="removebtn" for="${filteritemuniqueid}">
+
+				<!-- caption -->
+				<span class="caption">${filteritemcaption}</span>
+				<!-- /caption -->
+
+				<!-- icon -->
+				<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+				</svg>
+				<!-- /icon -->
+
+			</label>
+			<!-- /removebtn -->
+
+		</li>
+		<!-- /filtertag -->`;
 	}
 }
 

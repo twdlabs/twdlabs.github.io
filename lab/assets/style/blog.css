@@ -43,9 +43,9 @@ div#container section.blog div.grid div.body div.posts {position:relative; overf
 /* div#container section.blog div.grid div.body div.posts#collection {} */
 
 /* Blog Section: Null Results Label */
-div#container section.blog div.grid div.body div.posts div.nullresultslabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
-div#container section.blog div.grid div.body div.posts.empty div.nullresultslabel {display:block;}
-/* div#container section.blog div.grid div.body div.posts div.nullresultslabel.on {display:block;} */
+div#container section.blog div.grid div.body div.posts div.emptyresultslabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
+div#container section.blog div.grid div.body div.posts.empty div.emptyresultslabel {display:block;}
+/* div#container section.blog div.grid div.body div.posts div.emptyresultslabel.on {display:block;} */
 
 /* Blog Section: Pages */
 div#container section.blog div.grid div.body div.posts ul.pagelist {display:flex; flex-direction:row; overflow:visible; transform:none; transition:.25s;}
@@ -178,7 +178,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.body.split {grid-template-columns:20rem 1fr;} */
 	/* div#container section.blog div.grid div.body div.posts {} */
 	/* Blog Section: Empty Label */
-	/* div#container section.blog div.grid div.body div.posts div.nullresultslabel {} */
+	/* div#container section.blog div.grid div.body div.posts div.emptyresultslabel {} */
 
 	/* Blog Section: Pages */
 	div#container section.blog div.grid div.body div.posts ul.pagelist {margin:0;}
@@ -221,7 +221,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	div#container section.blog div.grid div.body.split {grid-template-columns:16rem 1fr;}
 	/* div#container section.blog div.grid div.body div.posts {} */
 	/* Blog Section: Empty Label */
-	/* div#container section.blog div.grid div.body div.posts div.nullresultslabel {} */
+	/* div#container section.blog div.grid div.body div.posts div.emptyresultslabel {} */
 
 	/* Blog Section: Pages */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist {} */
@@ -263,7 +263,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.body {} */
 	/* div#container section.blog div.grid div.body div.posts {} */
 	/* Blog Section: Empty Label */
-	/* div#container section.blog div.grid div.body div.posts div.nullresultslabel {} */
+	/* div#container section.blog div.grid div.body div.posts div.emptyresultslabel {} */
 
 	/* Blog Section: Pages */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist {} */
@@ -307,7 +307,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	div#container section.blog div.grid div.body.split {grid-template-columns:auto;}
 	/* div#container section.blog div.grid div.body div.posts {} */
 	/* Blog Section: Empty Label */
-	/* div#container section.blog div.grid div.body div.posts div.nullresultslabel {} */
+	/* div#container section.blog div.grid div.body div.posts div.emptyresultslabel {} */
 
 	/* Blog Section: Pages */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist {} */
@@ -350,7 +350,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.body {} */
 	/* div#container section.blog div.grid div.body div.posts {} */
 	/* Blog Section: Empty Label */
-	/* div#container section.blog div.grid div.body div.posts div.nullresultslabel {} */
+	/* div#container section.blog div.grid div.body div.posts div.emptyresultslabel {} */
 
 	/* Blog Section: Pages */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist {} */
@@ -398,7 +398,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.body {} */
 	/* div#container section.blog div.grid div.body div.posts {} */
 	/* Blog Section: Empty Label */
-	/* div#container section.blog div.grid div.body div.posts div.nullresultslabel {} */
+	/* div#container section.blog div.grid div.body div.posts div.emptyresultslabel {} */
 
 	/* Blog Section: Pages */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist {} */

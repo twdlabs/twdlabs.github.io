@@ -5,8 +5,8 @@
 const postFilterData = [
 
 	{
-		filtername:'Author',
 		filtertypeid:'authorid',
+		filtertypename:'Author',
 		filteritems:[
 			{
 				value:'authora',
@@ -25,8 +25,8 @@ const postFilterData = [
 	},
 
 	{
-		filtername:'Collection',
 		filtertypeid:'collectionid',
+		filtertypename:'Collection',
 		filteritems:[
 			{
 				value:'collectiona',
@@ -45,8 +45,8 @@ const postFilterData = [
 	},
 
 	{
-		filtername:'Category',
 		filtertypeid:'categoryid',
+		filtertypename:'Category',
 		filteritems:[
 			{
 				value:'categorya',
@@ -65,9 +65,9 @@ const postFilterData = [
 	},
 
 	{
-		filtername:'Created',
-		filtername:'Year',
 		filtertypeid:'createdyear',
+		filtertypename:'Created',
+		filtertypename:'Year',
 		filteritems:[
 			{
 				value:2001,
@@ -85,33 +85,33 @@ const postFilterData = [
 		filteritemnamer:(value)=>(value),
 	},
 
-	// {
-	// 	filtername:'Year Quarter',
-	// 	filtertypeid:'createdquarter',
-	// 	filteritems:[
-	// 		{
-	// 			value:'2001 Q1',
-	// 			frequency:0,
-	// 		},
-	// 		{
-	// 			value:'2001 Q3',
-	// 			frequency:0,
-	// 		},
-	// 		{
-	// 			value:'2001 Q3',
-	// 			frequency:0,
-	// 		},
-	// 		{
-	// 			value:'2001 Q4',
-	// 			frequency:0,
-	// 		},
-	// 	],
-	// 	filteritemnamer:(value)=>(value),
-	// },
+	{
+		filtertypeid:'createdquarter',
+		filtertypename:'Year Quarter',
+		filteritems:[
+			{
+				value:'2001 Q1',
+				frequency:0,
+			},
+			{
+				value:'2001 Q2',
+				frequency:0,
+			},
+			{
+				value:'2001 Q3',
+				frequency:0,
+			},
+			{
+				value:'2001 Q4',
+				frequency:0,
+			},
+		],
+		filteritemnamer:(value)=>(value),
+	},
 
 	// {
-	// 	filtername:'Xyz',
 	// 	filtertypeid:'xyz',
+	// 	filtertypename:'Xyz',
 	// 	filteritems:[
 	// 	],
 	// 	filteritemnamer:(value)=>(value),
@@ -126,8 +126,8 @@ const postFilterData = [
 // Augment project data. 
 augmentProjectData();
 
-// Augment filter data. 
-augmentFilterData();
+// Save filter data. 
+saveFilterData();
 
 // console.log('Post filter data:',postFilterData);
 
@@ -167,20 +167,32 @@ function augmentProjectData() {
 
 	// Go thru each project. 
 	for(let project of projectData) {
-		
-		// Check if project missing project category. 
-		if(!project.categoryid || !project.collectionid) {
-			console.warn('Project missing category/collection:', project);
 
-			// Add null parameter for missing project category. 
+		// Add searchable string to project. 
+		project.searchablestring = `${project.projectid} ${project.projectname} `;
+		project.searchablestring += `${getAuthorNameById(project.authorid)} `;
+		project.searchablestring += `${getProjectCategoryNameById(project.categoryid)} `;
+		project.searchablestring += `${getProjectCollectionNameById(project.collectionid)} `;
+		
+		// Fill in if project missing category id. 
+		if( !project.categoryid ) {
+			console.warn('Project missing category id:', project);
+
+			// Add empty value for missing category id. 
 			project.categoryid = '';
-			// Add null parameter for missing project collection. 
+		}
+		
+		// Fill in if project missing collection id. 
+		if( !project.collectionid ) {
+			console.warn('Project missing collection id:', project);
+
+			// Add empty value for missing collection id. 
 			project.collectionid = '';
 		}
 	}
 
 	// Define roman numerals for yearly quarter labels. 
-	const roman = ['I','II','III','IV',];
+	// const roman = ['I','II','III','IV',];
 
 	// Go thru each project year block. 
 	for(let yearblock of projectTimeData) {
@@ -222,14 +234,14 @@ function resetFilterData() {
 	// 
 }
 
-// Augment filter data. 
-function augmentFilterData() {
+// Save filter data. 
+function saveFilterData() {
 
 	// TODO: Do alternative method. 
-	for(let filtertype of postFilterData) {
+	for(let filtertypegroup of postFilterData) {
 
 		// 
-		// filtertype.filtertypeid;
+		// filtertypegroup.filtertypeid;
 	}
 
 	// Save item values for filter type: authors. 
@@ -245,20 +257,20 @@ function augmentFilterData() {
 	saveFilterItemValues('createdyear');
 	
 	// Save item values for filter type: creation quarter. 
-	// saveFilterItemValues('createdquarter');
+	saveFilterItemValues('createdquarter');
 
 	/****/
 
 	// Save item values for given filter type from project data. 
 	function saveFilterItemValues(filtertypeid) {
 		
-		// Get xyzabcxyz by id. 
-		let filtertype = getFilterGroupById(filtertypeid);
-		// console.log('Filter criteria list (old):',filtertype.filteritems);
+		// Get filter type group using given filter type id. 
+		let filtertypegroup = getFilterTypeGroupById(filtertypeid);
+		// console.log('Filter criteria list (old):',filtertypegroup.filteritems);
 		
-		// Disregard if not valid filter type. 
-		if(!filtertype) {
-			console.warn('Invalid filter type:',filtertypeid,filtertype);
+		// Disregard if not valid filter type group. 
+		if(!filtertypegroup) {
+			console.warn('Invalid filter type group:',filtertypeid,filtertypegroup);
 			return;
 		}
 	
@@ -282,19 +294,19 @@ function augmentFilterData() {
 		// console.log('Filter items:',filteritems);
 	
 		// Save sorted list of filter items. 
-		filtertype.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
-		// console.log('Filter criteria list (new):',filtertype.filteritems);
+		filtertypegroup.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
+		// console.log('Filter criteria list (new):',filtertypegroup.filteritems);
 	
 		/***/
 	
-		// Get filter type by id. 
-		function getFilterGroupById(filtertypeid) {
+		// Get filter type group by id. 
+		function getFilterTypeGroupById(filtertypeid) {
 		
-			// Go thru each filter type. 
-			for(let filtertype of postFilterData) {
+			// Go thru each filter type group. 
+			for(let filtertypegroup of postFilterData) {
 		
-				// Check for match. 
-				if(filtertype.filtertypeid==filtertypeid) return filtertype;
+				// Check for matching filter type group. 
+				if(filtertypegroup.filtertypeid==filtertypeid) return filtertypegroup;
 			}
 		
 			// Return nothing if not found. 
