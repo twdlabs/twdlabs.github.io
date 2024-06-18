@@ -1,6 +1,27 @@
 
 
 
+// Get componenets of settings pane. 
+const settingspane = {
+
+	// Get container for settings pane. 
+	block: document.querySelector('div#container section.blog div.grid div.body div.settingspane'),
+
+	// Get switch for filter type (matching any criterion vs matching all criteria). 
+	anyallswitch: {
+		anybtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.any'),
+		allbtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.all'),
+		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock label.switch input.switchcontroller.anyall'),
+	},
+
+	// Get switch for search filter type (post layout modification vs post layout reload). 
+	softhardswitch: {
+		softbtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.soft'),
+		hardbtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.hard'),
+		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock label.switch input.switchcontroller.softhard'),
+	},
+}
+
 // Get componenets of tag filter pane. 
 const tagfilterpane = {
 
@@ -17,13 +38,6 @@ const tagfilterpane = {
 	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockhead'),
 	// Get tag filter controllers. 
 	tagfiltercontrollers:undefined,
-
-	// Get switch for filter type (matching any criterion vs matching all criteria). 
-	anyallswitch: {
-		anybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.any'),
-		allbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.all'),
-		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch input.switchcontroller.anyall'),
-	},
 
 	// Get destination for list of applied filters. 
 	taglistdestination: document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist'),
@@ -51,13 +65,6 @@ const searchfilterpanel = {
 
 	// Get clear button for search panel. 
 	clearbtn: document.querySelector('div#container section.blog div.grid div.head div.modpanel label.searchclearbtn'),
-
-	// Get switch for search filter type (post layout modification vs post layout reload). 
-	softhardswitch: {
-		softbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.soft'),
-		hardbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock span.choice.hard'),
-		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.switchpanel div.switchblock label.switch input.switchcontroller.softhard'),
-	},
 };
 // console.log('Search filter panel components:',searchfilterpanel);
 
@@ -111,7 +118,7 @@ function loadFilterSystem() {
 			console.log('Searching posts...', filtersearchquery, searchquerywords);
 
 			// Get style of search filter. 
-			let dohardfilter = searchfilterpanel.softhardswitch.switchcontroller.checked;
+			let dohardfilter = settingspane.softhardswitch.switchcontroller.checked;
 
 			// Do hard search filter. 
 			if(dohardfilter) doHardSearchFilter();
@@ -183,7 +190,7 @@ function loadFilterSystem() {
 				// Initialize number of matching posts. 
 				let numMatchingPosts = 0;
 	
-				// TODO: There's an easier way to do this. But this way doesn't work yet cuz its not an array; ts a collection of nodes. 
+				// TODO: There's an easier way to do this. But this way doesn't work yet cuz its not an array; its a collection of nodes. 
 				// let matchingPosts = blogpostcards.filter( (card)=>checkForMatch( card.getAttribute('data-projectid').toUpperCase() ) )
 				// Set number of matching posts. 
 				// let numMatchingPosts = matchingPosts.length;
@@ -191,11 +198,17 @@ function loadFilterSystem() {
 				// Go thru card for each project post. 
 				for(let postcard of blogpostcards) {
 	
+					// Set for matching post. 
+					let matchFound = false;
+	
 					// Get project id for given post. 
 					let projectid = postcard.getAttribute('data-projectid');
 	
+					// Get project id for given post. 
+					let projectitem = getProjectById(projectid);
+
 					// Check for matching post. 
-					let matchFound = checkForMatch(projectid);
+					if(projectitem) matchFound = checkForMatch(projectitem.searchablestring);
 	
 					// Increment number of matching posts. 
 					if(matchFound) numMatchingPosts++;
@@ -223,53 +236,61 @@ function loadFilterSystem() {
 				}
 			}
 
-			// Check for matching post (ONLY by project id). 
-			function checkForMatch(projectid) {
-				console.log('checkForMatch',projectid);
+			// Check for matching post (by search string). 
+			function checkForMatch(searchablestring) {
+				console.log('checkForMatch',searchablestring);
 
-				// Capitalize project id. 
-				projectid = projectid.toUpperCase();
+				// Ensure match check case insensitive. 
+				searchablestring = searchablestring.toUpperCase();
 
 				// Check for matching post (by full query). 
-				let matchFullQuery = projectid.includes(filtersearchquery);
-				// Check for matching post (by each word). 
-				let matchEveryWord = checkForMatchAllWords(projectid,searchquerywords);
+				// TODO: You can use these boolean values to rank stuff in order. 
+				let matchFullQuery = searchablestring.includes(filtersearchquery);
+				// Check for matching post (by each n every word). 
+				let matchAllWords = checkForMatchAllWords(searchablestring,searchquerywords);
+				// Check for matching post (by any word). 
+				let matchAnyWord = checkForMatchAnyWord(searchablestring,searchquerywords);
 
 				// Compile match criteria. 
-				return (matchFullQuery || matchEveryWord);
+				return matchAnyWord;
+
+				// Compile match criteria. 
+				return ( matchFullQuery || matchAllWords || matchAnyWord );
 
 				/**/
 
 				// Check for matching post (by all words). 
-				function checkForMatchAllWords(projectid,searchquerywords) {
+				function checkForMatchAllWords(propertyvalue,searchquerywords) {
 			
 					// Go thru each word in search query. 
 					for(let word of searchquerywords) {
 	
-						let wordPresent = projectid.includes(word);
+						// Check if word found in property value. 
+						let wordPresent = propertyvalue.includes(word);
 	
-						// Return false if any query word is missing. 
+						// Return false if any query word missing. 
 						if(!wordPresent) return false;
 					}
 	
-					// Return true if passed (no query words missing). 
+					// Return true if no query words missing. 
 					return true;
 				}
 
 				// Check for matching post (by any words). 
-				function checkForMatchAnyWord(projectid,searchquerywords) {
+				function checkForMatchAnyWord(propertyvalue,searchquerywords) {
 			
 					// Go thru each word in search query. 
 					for(let word of searchquerywords) {
 	
-						let wordPresent = projectid.includes(word);
+						// Check if word found in property value. 
+						let wordPresent = propertyvalue.includes(word);
 	
-						// Return false if any query word is missing. 
-						if(!wordPresent) return false;
+						// Return true if any query word found. 
+						if(wordPresent) return true;
 					}
 	
-					// Return true if passed (no query words missing). 
-					return true;
+					// Return false if no query words found. 
+					return false;
 				}
 			}
 		}
@@ -288,13 +309,13 @@ function loadFilterSystem() {
 		function activateSearchFilterMods() {
 	
 			// Enable 'soft' label: Set search filter mode to 'soft'. 
-			searchfilterpanel.softhardswitch.softbtn.addEventListener('click', ()=>{ searchfilterpanel.softhardswitch.switchcontroller.checked = false; searchBlogPosts(); } );
+			settingspane.softhardswitch.softbtn.addEventListener('click', ()=>{ settingspane.softhardswitch.switchcontroller.checked = false; searchBlogPosts(); } );
 
 			// Enable 'hard' label: Set search filter mode to 'hard'. 
-			searchfilterpanel.softhardswitch.hardbtn.addEventListener('click', ()=>{ searchfilterpanel.softhardswitch.switchcontroller.checked = true; searchBlogPosts(); } );
+			settingspane.softhardswitch.hardbtn.addEventListener('click', ()=>{ settingspane.softhardswitch.switchcontroller.checked = true; searchBlogPosts(); } );
 
 			// Enable controller for soft/hard switch. 
-			searchfilterpanel.softhardswitch.switchcontroller.addEventListener('input',searchBlogPosts);
+			settingspane.softhardswitch.switchcontroller.addEventListener('input',searchBlogPosts);
 		}
 	}
 
@@ -606,13 +627,13 @@ function loadFilterSystem() {
 		function activateFilterMods() {
 	
 			// Enable 'any' label: Set general filter mode to 'any'. 
-			tagfilterpane.anyallswitch.anybtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchcontroller.checked = false; applySelectedTagFilters(); } );
+			settingspane.anyallswitch.anybtn.addEventListener('click', ()=>{ settingspane.anyallswitch.switchcontroller.checked = false; applySelectedTagFilters(); } );
 
 			// Enable 'all' label: Set general filter mode to 'all'. 
-			tagfilterpane.anyallswitch.allbtn.addEventListener('click', ()=>{ tagfilterpane.anyallswitch.switchcontroller.checked = true; applySelectedTagFilters(); } );
+			settingspane.anyallswitch.allbtn.addEventListener('click', ()=>{ settingspane.anyallswitch.switchcontroller.checked = true; applySelectedTagFilters(); } );
 
 			// Enable controller for any/all switch. 
-			tagfilterpane.anyallswitch.switchcontroller.addEventListener('input',applySelectedTagFilters);
+			settingspane.anyallswitch.switchcontroller.addEventListener('input',applySelectedTagFilters);
 		}
 	}
 }
@@ -629,6 +650,13 @@ function toggleTagFilterPane() {
 
 	// Toggle tag filter pane. 
 	tagfilterpane.block.classList.toggle('open');
+}
+
+// Toggle settings pane. 
+function toggleSettingsPane() {
+
+	// Toggle settings pane. 
+	settingspane.block.classList.toggle('open');
 }
 
 // Clear all applied tag filters. 
@@ -723,12 +751,12 @@ function loadFilterTagsLayout() {
 
 	// Create layout for list of filter tags. 
 	let filtertaglistlayoutT = selectedfilteritems['tagfilters'].map(createFilterTagLayout).join('');
-	let filtertaglistlayoutS = selectedfilteritems['searchfilters'].map(createFilterTagLayout).join('');
+	// let filtertaglistlayoutS = selectedfilteritems['searchfilters'].map(createFilterTagLayout).join('');
 	console.log('Selected filter list:',selectedfilteritems/* ['tagfilters'] */);
 	// console.log('filtertaglistlayout:',filtertaglistlayout);
 
 	// Display layout for list of filter tags. 
-	tagfilterpane.taglistdestination.innerHTML = filtertaglistlayoutT + filtertaglistlayoutS;
+	tagfilterpane.taglistdestination.innerHTML = filtertaglistlayoutT/*  + filtertaglistlayoutS */;
 
 	/****/
 

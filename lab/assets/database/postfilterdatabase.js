@@ -65,9 +65,9 @@ const postFilterData = [
 	},
 
 	{
-		filtertypeid:'createdyear',
-		filtertypename:'Created',
+		filtertypeid:'creationyear',
 		filtertypename:'Year',
+		filtertypename:'Year Created',
 		filteritems:[
 			{
 				value:2001,
@@ -86,8 +86,9 @@ const postFilterData = [
 	},
 
 	{
-		filtertypeid:'createdquarter',
+		filtertypeid:'creationquarter',
 		filtertypename:'Year Quarter',
+		filtertypename:'Quarter Created',
 		filteritems:[
 			{
 				value:'2001 Q1',
@@ -107,6 +108,26 @@ const postFilterData = [
 			},
 		],
 		filteritemnamer:(value)=>(value),
+	},
+
+	{
+		filtertypeid:'projectid',
+		filtertypename:'Project',
+		filteritems:[
+			{
+				value:'projecta',
+				frequency:0,
+			},
+			{
+				value:'projectb',
+				frequency:0,
+			},
+			{
+				value:'projectc',
+				frequency:0,
+			},
+		],
+		filteritemnamer:(prjid)=>( getProjectById(prjid).projectname ),
 	},
 
 	// {
@@ -217,8 +238,8 @@ function augmentProjectData() {
 			
 				// Augment project data. 
 				if(project) {
-					project.createdyear = yearblock.year;
-					project.createdquarter = qlabel;
+					project.creationyear = yearblock.year;
+					project.creationquarter = qlabel;
 				}
 			}
 		}
@@ -254,10 +275,13 @@ function saveFilterData() {
 	saveFilterItemValues('collectionid');
 	
 	// Save item values for filter type: creation year. 
-	saveFilterItemValues('createdyear');
+	saveFilterItemValues('creationyear');
 	
 	// Save item values for filter type: creation quarter. 
-	saveFilterItemValues('createdquarter');
+	saveFilterItemValues('creationquarter');
+
+	// Save item values for filter type: project. 
+	saveFilterItemValues('projectid');
 
 	/****/
 

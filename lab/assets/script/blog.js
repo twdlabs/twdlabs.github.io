@@ -58,7 +58,7 @@ const emptyresultslabel = document.querySelector('div#container section.blog div
 
 // Set flag for memory load (previews always on by default). 
 let permanentPreview = true;
-permanentPreview = false;
+// permanentPreview = false;
 
 // Define if pagination on. 
 let paginationOn = true;
@@ -122,7 +122,7 @@ function loadBlog() {
 
 		// TODO: Check if given project post passes selected filter criteria. 
 		function checkForFilterPass(projectpostitem) {
-			console.log(`checkForFilterPass`,projectpostitem);
+			// console.log(`\tcheckForFilterPass`,projectpostitem);
 
 			// Check for any selected tag filters. 
 			let notagfilterselected = selectedfilteritems['tagfilters'].length==0;
@@ -131,16 +131,14 @@ function loadBlog() {
 			// Pass filter by default if no filter items selected. 
 			if(notagfilterselected && nosearchfilterselected) return true;
 
-			// Require all matching criteria. 
 			let passrequiresallfiltercriteria = true;
-			// Require single matching criteria. 
 			passrequiresallfiltercriteria = false;
 	
-			// Check post for all criteria matches. 
+			// Check post for all matching criteria. 
 			if(passrequiresallfiltercriteria) {
 				return checkFilterPassAll();
 			}
-			// Check post for any criteria match. 
+			// Check post for single matching criteria. 
 			else {
 				return checkFilterPassAny();
 			}
