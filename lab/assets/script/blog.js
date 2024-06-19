@@ -212,7 +212,7 @@ function loadBlog() {
 
 				// Check for match btwn given project and current filter item. 
 				// return (projectpostitem[filteritemtypeid] == filteritemvalueid);
-				return ( `${ projectpostitem[filteritemtypeid] }`.toUpperCase() ).includes( filteritemvalueid.toUpperCase() );
+				return ( `${ projectpostitem[filteritemtypeid] }`.toLowerCase() ).includes( filteritemvalueid.toLowerCase() );
 			}
 		}
 

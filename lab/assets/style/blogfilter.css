@@ -120,16 +120,16 @@ div#container section.blog div.grid div.body div.appliedfilters {/* display:flex
 /* div#container section.blog div.grid div.body div.appliedfilters {position:relative; padding-bottom:.75rem;} */
 div#container section.blog div.grid div.body.split div.appliedfilters {grid-column-end:span 2;}
 div#container section.blog div.grid div.body div.appliedfilters h2.listhead {display:none; font-size:1.125rem; font-size:1rem; font-weight:normal; white-space:nowrap; margin:0; margin-right:.25rem;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist {width:fit-content; list-style:none; padding:0; margin:0;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist:before {content:'Filters Applied:'; white-space:nowrap;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist:empty::after {content:'None'; margin-left:.5rem;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag {background-color:var(--backcolor2); font-size:.875rem; overflow:hidden; border-radius:2em; margin:.25rem 0; margin-left:.5rem; box-shadow:var(--boxshadow);}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag.x {display:none;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn {cursor:pointer; user-select:none;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn svg.icon {font-size:1.5em; margin-left:.25rem;}
-div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist li.filtertag label.removebtn span.caption {white-space:nowrap;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist {display:flex; flex-direction:row; align-items:center; flex-wrap:wrap; /* grid-gap:.625rem; */}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist {width:fit-content; list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist:before {content:'Filters Applied:'; white-space:nowrap;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist:empty::after {content:'None'; margin-left:.5rem;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem {background-color:var(--backcolor2); font-size:.875rem; overflow:hidden; border-radius:2em; margin:.25rem 0; margin-left:.5rem; box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem.x {display:none;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn {cursor:pointer; user-select:none;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn svg.icon {font-size:1.5em; margin-left:.25rem;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn span.caption {white-space:nowrap;}
 
 
 

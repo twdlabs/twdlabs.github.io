@@ -87,7 +87,7 @@ function loadDesktop() {
 		function getCategoryIndex(name) {
 
 			// Get leading letter of given name. 
-			let letter = `${name}`.substring(0,1).toUpperCase();
+			let letter = `${name}`.substring(0,1).toLowerCase();
 
 			// Go thru all potential leading letters. 
 			for(let i in initialCharGroups) {

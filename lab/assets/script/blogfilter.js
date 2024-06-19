@@ -40,7 +40,7 @@ const tagfilterpane = {
 	tagfiltercontrollers:undefined,
 
 	// Get destination for list of applied filters. 
-	taglistdestination: document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.filtertaglist'),
+	taglistdestination: document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.taglist'),
 };
 // console.log('Tag filter pane components:',tagfilterpane);
 
@@ -114,7 +114,7 @@ function loadFilterSystem() {
 		function searchBlogPosts() {
 	
 			// Get search query of post filter. 
-			let filtersearchquery = searchfilterpanel.queryfield.value.toUpperCase();
+			let filtersearchquery = searchfilterpanel.queryfield.value.toLowerCase();
 			// Get list of words in search query. 
 			let searchquerywords = filtersearchquery.split(' ');
 			console.log('Searching posts...', filtersearchquery, searchquerywords);
@@ -166,7 +166,8 @@ function loadFilterSystem() {
 							selectedsearchfilteritems.push({
 								typeid:filtertypeid,
 								valueid:queryword,
-								caption:`${filtertypeid}:${queryword}`,
+								caption:queryword,
+								hovercaption:`${filtertypeid}:${queryword}`,
 							});
 						}
 					}
@@ -193,7 +194,7 @@ function loadFilterSystem() {
 				let numMatchingPosts = 0;
 	
 				// TODO: There's an easier way to do this. But this way doesn't work yet cuz its not an array; its a collection of nodes. 
-				// let matchingPosts = blogpostcards.filter( (card)=>checkForMatch( card.getAttribute('data-projectid').toUpperCase() ) )
+				// let matchingPosts = blogpostcards.filter( (card)=>checkForMatch( card.getAttribute('data-projectid').toLowerCase() ) )
 				// Set number of matching posts. 
 				// let numMatchingPosts = matchingPosts.length;
 			
@@ -243,7 +244,7 @@ function loadFilterSystem() {
 				console.log('checkForMatch',searchablestring);
 
 				// Ensure match check case insensitive. 
-				searchablestring = searchablestring.toUpperCase();
+				searchablestring = searchablestring.toLowerCase();
 
 				// Check for matching post (by full query). 
 				// TODO: You can use these boolean values to rank stuff in order. 
@@ -730,7 +731,7 @@ function applySelectedTagFilters() {
 				typeid:filtertypeid,
 				valueid:filtervalueid,
 				caption:filteritemcaption,
-				caption:`${filtertypeid}:${filtervalueid}`,
+				hovercaption:`${filtertypeid}:${filtervalueid}`,
 			});
 		}
 	}
@@ -755,33 +756,34 @@ function applySelectedTagFilters() {
 function loadFilterTagsLayout() {
 
 	// Create layout for list of filter tags. 
-	let filtertaglistlayoutT = selectedfilteritems['tagfilters'].map(createFilterTagLayout).join('');
-	// let filtertaglistlayoutS = selectedfilteritems['searchfilters'].map(createFilterTagLayout).join('');
+	let filtertaglistlayoutT = selectedfilteritems['tagfilters'].map(createTagFilterTagLayout).join('');
+	let filtertaglistlayoutS = selectedfilteritems['searchfilters'].map(createSearchFilterTagLayout).join('');
 	console.log('Selected filter list:',selectedfilteritems/* ['tagfilters'] */);
 	// console.log('filtertaglistlayout:',filtertaglistlayout);
 
 	// Display layout for list of filter tags. 
-	tagfilterpane.taglistdestination.innerHTML = filtertaglistlayoutT/*  + filtertaglistlayoutS */;
+	tagfilterpane.taglistdestination.innerHTML = filtertaglistlayoutT + filtertaglistlayoutS;
 
 	/****/
 
-	// Create layout for filter tag. 
-	function createFilterTagLayout(filteritem) {
-		// console.log('Creating filter tag layout', filteritem.typeid, filteritem.valueid);
+	// Create tag layout for tag filter. 
+	function createTagFilterTagLayout(filteritem) {
+		// console.log('Creating tag layout', filteritem.typeid, filteritem.valueid);
 
-		// Get unique id of selected filter item. 
-		let filteritemuniqueid = filteritem.typeid + filteritem.valueid;
+		// Get unique id of given filter item. 
+		let filteritemuniqueid = `${filteritem.typeid}${filteritem.valueid}`;
 
-		// Get caption for selected filter item. 
+		// Get caption for given filter item. 
 		let filteritemcaption = filteritem.caption;
+		let filteritemhovercaption = filteritem.hovercaption;
 		
-		// Compile layout for filter tag. 
+		// Compile tag layout for given filter item. 
 		return `
-		<!-- filtertag -->
-		<li class="filtertag">
+		<!-- tagitem -->
+		<li class="tagitem">
 
 			<!-- removebtn -->
-			<label class="removebtn" for="${filteritemuniqueid}">
+			<label class="removebtn" for="${filteritemuniqueid}" title="${filteritemhovercaption}">
 
 				<!-- caption -->
 				<span class="caption">${filteritemcaption}</span>
@@ -797,7 +799,43 @@ function loadFilterTagsLayout() {
 			<!-- /removebtn -->
 
 		</li>
-		<!-- /filtertag -->`;
+		<!-- /tagitem -->`;
+	}
+
+	// Create tag layout for search filter. 
+	function createSearchFilterTagLayout(filteritem) {
+		// console.log('Creating tag layout', filteritem.typeid, filteritem.valueid);
+
+		// Get unique id of given filter item. 
+		let filteritemuniqueid = `${filteritem.typeid}${filteritem.valueid}`;
+
+		// Get caption for given filter item. 
+		let filteritemcaption = filteritem.caption;
+		let filteritemhovercaption = filteritem.hovercaption;
+		
+		// Compile tag layout for given filter item. 
+		return `
+		<!-- tagitem -->
+		<li class="tagitem">
+
+			<!-- removebtn -->
+			<label class="removebtn" for="${filteritemuniqueid}" title="${filteritemhovercaption}">
+
+				<!-- caption -->
+				<span class="caption">${filteritemcaption}</span>
+				<!-- /caption -->
+
+				<!-- icon -->
+				<svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+					<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+				</svg>
+				<!-- /icon -->
+
+			</label>
+			<!-- /removebtn -->
+
+		</li>
+		<!-- /tagitem -->`;
 	}
 }
 
