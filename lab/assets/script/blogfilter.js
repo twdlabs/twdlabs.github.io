@@ -152,6 +152,12 @@ function loadFilterSystem() {
 
 					// Go thru each word in search query. 
 					for(let queryword of searchquerywords) {
+			
+						// Create new search query item. 
+						let queryitem = {
+							queryword:queryword,
+							filteritemlist:[],
+						};
 	
 						// TODO: Go thru each filter type. 
 						// TODO: Include other attributes of project objects (i.e. project id, project name)
@@ -162,14 +168,19 @@ function loadFilterSystem() {
 							let filtertypeid = filtertypeblock.getAttribute('data-tagfiltertypeid');
 							// console.log('Filter type id:',filtertypeid);
 			
-							// Add filter item to list. 
-							selectedsearchfilteritems.push({
+							// Create new filter item. 
+							let filteritem = {
 								typeid:filtertypeid,
 								valueid:queryword,
 								caption:queryword,
 								hovercaption:`${filtertypeid}:${queryword}`,
-							});
+							};
+							// Add filter item to list. 
+							queryitem.filteritemlist.push(filteritem);
 						}
+
+						// Add search query item to list. 
+						selectedsearchfilteritems.push(queryitem);
 					}
 				}
 
@@ -803,15 +814,18 @@ function loadFilterTagsLayout() {
 	}
 
 	// Create tag layout for search filter. 
-	function createSearchFilterTagLayout(filteritem) {
-		// console.log('Creating tag layout', filteritem.typeid, filteritem.valueid);
+	function createSearchFilterTagLayout(queryitem) {
+		// console.log('Creating tag layout', queryitem.queryword, queryitem.filteritemlist);
+
+		// Get list of filter items for given query item. 
+		let filteritem = queryitem.filteritemlist;
 
 		// Get unique id of given filter item. 
-		let filteritemuniqueid = `${filteritem.typeid}${filteritem.valueid}`;
+		let filteritemuniqueid = `queryword${filteritem.valueid}`;
 
 		// Get caption for given filter item. 
-		let filteritemcaption = filteritem.caption;
-		let filteritemhovercaption = filteritem.hovercaption;
+		let filteritemcaption = queryitem.queryword;
+		let filteritemhovercaption = queryitem.queryword;
 		
 		// Compile tag layout for given filter item. 
 		return `

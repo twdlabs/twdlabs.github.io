@@ -78,8 +78,6 @@ let paginationOn = true;
 function loadBlog() {
 	console.log('Loading blog...');
 	// console.log('\tSelected filter items:', selectedfilteritems );
-	// console.log('\tSelected tag filter items:', selectedfilteritems['tagfilters'] );
-	// console.log('\tSelected search filter items:', selectedfilteritems['searchfilters'] );
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -127,7 +125,7 @@ function loadBlog() {
 			// Check for any selected tag filters. 
 			let notagfilterselected = selectedfilteritems['tagfilters'].length==0;
 			// Check for any selected search filters. 
-			let nosearchfilterselected = selectedfilteritems['searchfilters'].length==0;
+			let nosearchfilterselected = selectedfilteritems['searchfilters']/* ['filteritemlist'] */.length==0;
 			// Pass filter by default if no filter items selected. 
 			if(notagfilterselected && nosearchfilterselected) return true;
 
@@ -158,14 +156,18 @@ function loadBlog() {
 					if(passed) return true;
 				}
 		
-				// Go thru each selected search filter item. 
-				for(let searchfilteritem of selectedfilteritems['searchfilters']) {
+				// Go thru each selected search query item. 
+				for(let searchqueryitem of selectedfilteritems['searchfilters']) {
 		
-					// Check if post passes current filter item. 
-					let passed = checkFilterItem(searchfilteritem);
+					// Go thru each selected search filter item. 
+					for(let searchfilteritem of searchqueryitem['filteritemlist']) {
 		
-					// Return true if any match found. 
-					if(passed) return true;
+						// Check if post passes current filter item. 
+						let passed = checkFilterItem(searchfilteritem);
+			
+						// Return true if any match found. 
+						if(passed) return true;
+					}
 				}
 		
 				// Return false if no match found. 
@@ -185,14 +187,18 @@ function loadBlog() {
 					if(!passed) return false;
 				}
 		
-				// Go thru each selected search filter item. 
-				for(let searchfilteritem of selectedfilteritems['searchfilters']) {
+				// Go thru each selected search query item. 
+				for(let searchqueryitem of selectedfilteritems['searchfilters']) {
 		
-					// Check if post passes current filter item. 
-					let passed = checkFilterItem(searchfilteritem);
+					// Go thru each selected search filter item. 
+					for(let searchfilteritem of searchqueryitem['filteritemlist']) {
 		
-					// Return false if any mismatch found. 
-					if(!passed) return false;
+						// Check if post passes current filter item. 
+						let passed = checkFilterItem(searchqueryitem);
+			
+						// Return false if any mismatch found. 
+						if(!passed) return false;
+					}
 				}
 		
 				// Return true if no mismatch found. 
