@@ -335,6 +335,9 @@ function loadFilterSystem() {
 		// Go thru each filter type group. 
 		for(let filtertype of postFilterData) {
 			// console.log('Filter type group:',filtertype);
+
+			// Skip invisible filter types for layout. 
+			if(!filtertype.filtertypevisible) continue;
 			
 			// Add filter type to primary layout. 
 			filtergroupslayout += `

@@ -5,8 +5,52 @@
 const postFilterData = [
 
 	{
+		filtertypeid:'projectid',
+		filtertypename:'Project',
+		filtertypevisible:false,
+		filteritems:[
+			{
+				value:'projecta',
+				frequency:0,
+			},
+			{
+				value:'projectb',
+				frequency:0,
+			},
+			{
+				value:'projectc',
+				frequency:0,
+			},
+		],
+		filteritemnamer:(prjid)=>( getProjectById(prjid).projectname ),
+	},
+
+	{
+		filtertypeid:'creationyear',
+		filtertypename:'Year',
+		filtertypename:'Year Created',
+		filtertypevisible:true,
+		filteritems:[
+			{
+				value:2001,
+				frequency:0,
+			},
+			{
+				value:2002,
+				frequency:0,
+			},
+			{
+				value:2003,
+				frequency:0,
+			},
+		],
+		filteritemnamer:(value)=>(value),
+	},
+
+	{
 		filtertypeid:'authorid',
 		filtertypename:'Author',
+		filtertypevisible:true,
 		filteritems:[
 			{
 				value:'authora',
@@ -27,6 +71,7 @@ const postFilterData = [
 	{
 		filtertypeid:'collectionid',
 		filtertypename:'Collection',
+		filtertypevisible:true,
 		filteritems:[
 			{
 				value:'collectiona',
@@ -47,6 +92,7 @@ const postFilterData = [
 	{
 		filtertypeid:'categoryid',
 		filtertypename:'Category',
+		filtertypevisible:true,
 		filteritems:[
 			{
 				value:'categorya',
@@ -65,28 +111,8 @@ const postFilterData = [
 	},
 
 	{
-		filtertypeid:'creationyear',
-		filtertypename:'Year',
-		filtertypename:'Year Created',
-		filteritems:[
-			{
-				value:2001,
-				frequency:0,
-			},
-			{
-				value:2002,
-				frequency:0,
-			},
-			{
-				value:2003,
-				frequency:0,
-			},
-		],
-		filteritemnamer:(value)=>(value),
-	},
-
-	{
 		filtertypeid:'creationquarter',
+		filtertypevisible:false,
 		filtertypename:'Year Quarter',
 		filtertypename:'Quarter Created',
 		filteritems:[
@@ -108,26 +134,6 @@ const postFilterData = [
 			},
 		],
 		filteritemnamer:(value)=>(value),
-	},
-
-	{
-		filtertypeid:'projectid',
-		filtertypename:'Project',
-		filteritems:[
-			{
-				value:'projecta',
-				frequency:0,
-			},
-			{
-				value:'projectb',
-				frequency:0,
-			},
-			{
-				value:'projectc',
-				frequency:0,
-			},
-		],
-		filteritemnamer:(prjid)=>( getProjectById(prjid).projectname ),
 	},
 
 	// {
@@ -258,30 +264,33 @@ function resetFilterData() {
 // Save filter data. 
 function saveFilterData() {
 
-	// TODO: Do alternative method. 
+	// Go thru each filter type. 
 	for(let filtertypegroup of postFilterData) {
 
-		// 
-		// filtertypegroup.filtertypeid;
+		// Get id of given filter type. 
+		let filtertypeid = filtertypegroup.filtertypeid;
+
+		// Save item values for given filter type. 
+		saveFilterItemValues(filtertypeid);
 	}
 
-	// Save item values for filter type: authors. 
-	saveFilterItemValues('authorid');
+	// // Save item values for filter type: authors. 
+	// saveFilterItemValues('authorid');
 	
-	// Save item values for filter type: categories. 
-	saveFilterItemValues('categoryid');
+	// // Save item values for filter type: categories. 
+	// saveFilterItemValues('categoryid');
 	
-	// Save item values for filter type: collections. 
-	saveFilterItemValues('collectionid');
+	// // Save item values for filter type: collections. 
+	// saveFilterItemValues('collectionid');
 	
-	// Save item values for filter type: creation year. 
-	saveFilterItemValues('creationyear');
+	// // Save item values for filter type: creation year. 
+	// saveFilterItemValues('creationyear');
 	
-	// Save item values for filter type: creation quarter. 
-	saveFilterItemValues('creationquarter');
+	// // Save item values for filter type: creation quarter. 
+	// saveFilterItemValues('creationquarter');
 
-	// Save item values for filter type: project. 
-	saveFilterItemValues('projectid');
+	// // Save item values for filter type: project. 
+	// saveFilterItemValues('projectid');
 
 	/****/
 
