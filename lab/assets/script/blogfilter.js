@@ -98,8 +98,8 @@ function loadFilterSystem() {
 
 		// Activate input field to filter blog posts by search query. 
 		searchfilterpanel.queryfield.addEventListener('input',searchBlogPosts);
-		searchfilterpanel.queryfield.addEventListener('keyup',searchBlogPosts);
-		searchfilterpanel.queryfield.addEventListener('touchend',searchBlogPosts);
+		// searchfilterpanel.queryfield.addEventListener('keyup',searchBlogPosts);
+		// searchfilterpanel.queryfield.addEventListener('touchend',searchBlogPosts);
 		searchfilterpanel.clearbtn.addEventListener('click',clearSearchFilterQuery);
 
 		// Clear any previous search filter query. 
@@ -131,7 +131,7 @@ function loadFilterSystem() {
 			loadFilterGroups();
 
 			// Apply selected tag filter items to blog posts. 
-			// applySelectedTagFilters();
+			applySelectedTagFilters();
 
 			/**/
 
