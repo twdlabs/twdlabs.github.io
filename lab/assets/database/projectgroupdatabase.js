@@ -287,7 +287,7 @@ const projectCategoryData = [
 		groupid:'mw',
 		groupname:'Media Widgets',
 		groupicontag:'mediacollection',
-		groupdescription:'Web components and tools developed for seamless presentations of various communication media',
+		groupdescription:'Web components and tools for seamless presentations of various communication media',
 		groupitemsidlist:[
 			'autoslideshow',
 			'desktop',
