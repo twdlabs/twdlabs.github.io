@@ -1648,7 +1648,7 @@ function getProjectById(pid) {
 	}
 
 	// Return nothing if not found. 
-	console.log('Project not found for id:',pid);
+	// console.log('Project not found for id:',pid);
 	return null;
 }
 

@@ -68,7 +68,7 @@ let paginationOn = true;
 
 
 // Load blog posts. 
-loadBlog();
+// loadBlog();
 
 
 /*****/
