@@ -39,13 +39,13 @@ const collectionsection = {
 // console.log('Collection section:',collectionsection);
 
 
-// Initialize lists for currently selected filter items. 
-let selectedfilteritems = {
+// Initialize data for currently selected filter items. 
+let selectedfilterdata = {
 	// xyz:[],
 	tagfilters:[],
 	searchfilters:[],
 };
-// console.log('Selected filter items:',selectedfilteritems);
+// console.log('Selected filter data:',selectedfilterdata);
 
 
 // Get indicator label for empty set of results. 
@@ -77,7 +77,7 @@ loadBlog();
 // Load blog posts (given selected tag filter items). 
 function loadBlog() {
 	console.log('Loading blog...');
-	// console.log('\tSelected filter items:', selectedfilteritems );
+	// console.log('\tSelected filter data:', selectedfilterdata );
 
 	// Load featured posts. 
 	loadFeaturedPosts();
@@ -123,9 +123,9 @@ function loadBlog() {
 			// console.log(`\tcheckForFilterPass`,projectpostitem);
 
 			// Check for any selected tag filters. 
-			let notagfilterselected = selectedfilteritems['tagfilters'].length==0;
+			let notagfilterselected = selectedfilterdata['tagfilters'].length==0;
 			// Check for any selected search filters. 
-			let nosearchfilterselected = selectedfilteritems['searchfilters']/* ['filteritemlist'] */.length==0;
+			let nosearchfilterselected = selectedfilterdata['searchfilters']/* ['filteritemlist'] */.length==0;
 			// Pass filter by default if no filter items selected. 
 			if(notagfilterselected && nosearchfilterselected) return true;
 
@@ -147,26 +147,26 @@ function loadBlog() {
 			function checkFilterPassAny() {
 		
 				// Go thru each selected tag filter item. 
-				for(let tagfilteritem of selectedfilteritems['tagfilters']) {
+				for(let tagfilteritem of selectedfilterdata['tagfilters']) {
 		
-					// Check if post passes current filter item. 
-					let passed = checkFilterItem(tagfilteritem);
+					// Check if project post passes current filter criteria. 
+					let passedcriteria = checkFilterItem(tagfilteritem);
 		
 					// Return true if any match found. 
-					if(passed) return true;
+					if(passedcriteria) return true;
 				}
 		
 				// Go thru each selected search query item. 
-				for(let searchqueryitem of selectedfilteritems['searchfilters']) {
+				for(let searchqueryitem of selectedfilterdata['searchfilters']) {
 		
 					// Go thru each selected search filter item. 
 					for(let searchfilteritem of searchqueryitem['filteritemlist']) {
 		
-						// Check if post passes current filter item. 
-						let passed = checkFilterItem(searchfilteritem);
+						// Check if project post passes current filter criteria. 
+						let passedcriteria = checkFilterItem(searchfilteritem);
 			
 						// Return true if any match found. 
-						if(passed) return true;
+						if(passedcriteria) return true;
 					}
 				}
 		
@@ -178,26 +178,26 @@ function loadBlog() {
 			function checkFilterPassAll() {
 		
 				// Go thru each selected tag filter item. 
-				for(let tagfilteritem of selectedfilteritems['tagfilters']) {
+				for(let tagfilteritem of selectedfilterdata['tagfilters']) {
 		
-					// Check if post passes current filter item. 
-					let passed = checkFilterItem(tagfilteritem);
+					// Check if project post passes current filter criteria. 
+					let passedcriteria = checkFilterItem(tagfilteritem);
 		
 					// Return false if any mismatch found. 
-					if(!passed) return false;
+					if(!passedcriteria) return false;
 				}
 		
 				// Go thru each selected search query item. 
-				for(let searchqueryitem of selectedfilteritems['searchfilters']) {
+				for(let searchqueryitem of selectedfilterdata['searchfilters']) {
 		
 					// Go thru each selected search filter item. 
 					for(let searchfilteritem of searchqueryitem['filteritemlist']) {
 		
-						// Check if post passes current filter item. 
-						let passed = checkFilterItem(searchqueryitem);
+						// Check if project post passes current filter criteria. 
+						let passedcriteria = checkFilterItem(searchqueryitem);
 			
 						// Return false if any mismatch found. 
-						if(!passed) return false;
+						if(!passedcriteria) return false;
 					}
 				}
 		

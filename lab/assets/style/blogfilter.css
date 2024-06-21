@@ -88,7 +88,7 @@ div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.fi
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.togglebtn svg.icon {font-size:.75em;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.togglebtn svg.icon.dn {display:block;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.togglebtn svg.icon.up {display:none;}
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.togglebtn span.caption {margin-right:.25rem;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.togglebtn span.caption {margin-right:.375em;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype.open div.togglebtn svg.icon.dn {display:none;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype.open div.togglebtn svg.icon.up {display:block;}
 /* div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.filterblock {display:none;} */
@@ -127,7 +127,8 @@ div#container section.blog div.grid div.body div.appliedfilters ul.taglist:empty
 div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem {background-color:var(--backcolor2); font-size:.875rem; overflow:hidden; border-radius:2em; margin:.25rem 0; margin-left:.5rem; box-shadow:var(--boxshadow);}
 div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem.x {display:none;}
 div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn {display:flex; flex-direction:row; align-items:center; padding:.25em .875em; padding-right:.25em;}
-div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn {cursor:pointer; user-select:none;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn {cursor:pointer; user-select:none; transition:.25s;}
+div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn:hover {background-color:var(--drkthemecolor);}
 div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn svg.icon {font-size:1.5em; margin-left:.25rem;}
 div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.tagitem label.removebtn span.caption {white-space:nowrap;}
 
@@ -194,6 +195,7 @@ div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.ta
 
 	/* Blog Section: Window Pane */
 	/* div#container section.blog div.grid div.body div.windowpane {} */
+	div#container section.blog div.grid div.body div.windowpane.open {opacity:0; visibility:hidden; height:0; margin-top:0;}
 
 	/* Blog Section: Filter Panel */
 	div#container section.blog div.grid div.body div.filterpanel {display:block;}

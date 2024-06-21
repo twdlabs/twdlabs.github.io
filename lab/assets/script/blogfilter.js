@@ -1,7 +1,7 @@
 
 
 
-// Get componenets of settings pane. 
+// Get components of settings pane. 
 const settingspane = {
 
 	// Get container for settings pane. 
@@ -22,7 +22,7 @@ const settingspane = {
 	},
 }
 
-// Get componenets of tag filter pane. 
+// Get components of tag filter pane. 
 const tagfilterpane = {
 
 	// Get container for filter pane. 
@@ -45,7 +45,7 @@ const tagfilterpane = {
 // console.log('Tag filter pane components:',tagfilterpane);
 
 
-// Get componenets of tag filter panel. 
+// Get components of tag filter panel. 
 const tagfilterpanel = {
 
 	// Get container for filter panel. 
@@ -57,7 +57,7 @@ const tagfilterpanel = {
 // console.log('Tag filter panel components:',tagfilterpanel);
 
 
-// Get componenets of search filter panel. 
+// Get components of search filter panel. 
 const searchfilterpanel = {
 
 	// Get input field for search query. 
@@ -117,17 +117,19 @@ function loadFilterSystem() {
 			let filtersearchquery = searchfilterpanel.queryfield.value.toLowerCase();
 			// Get list of words in search query. 
 			let searchquerywords = filtersearchquery.split(' ');
-			console.log('Searching posts...', filtersearchquery, searchquerywords);
-
+			// Disregard any empty word at end. 
+			if( !searchquerywords[searchquerywords.length - 1] ) searchquerywords.pop();
+			
 			// Get style of search filter. 
 			let dohardfilter = settingspane.softhardswitch.switchcontroller.checked;
+			console.log(`Searching posts (${dohardfilter?'hard':'soft'})...`, filtersearchquery, searchquerywords);
 
 			// Do hard search filter. 
 			if(dohardfilter) doHardSearchFilter();
 			// Do soft search filter. 
 			else doSoftSearchFilter();
 
-			// Load new groups of tag filters. 
+			// TODO: Load new groups of tag filters. 
 			loadFilterGroups();
 
 			// Apply selected tag filter items to blog posts. 
@@ -138,14 +140,14 @@ function loadFilterSystem() {
 			// TODO: Perform hard search filter: Load new layout of posts. 
 			function doHardSearchFilter() {
 
-				// Initialize new list of selected search filter items. 
-				let selectedsearchfilteritems = [];
+				// Initialize new data for search filter. 
+				let searchquerydata = [];
 
 				// Check if any search query present. 
-				let isSearchQueryPresent = filtersearchquery.length > 0;
+				let hasSearchQueryPresent = filtersearchquery.length > 0;
 
 				// Proceed only if search query present. 
-				if(isSearchQueryPresent) {
+				if(hasSearchQueryPresent) {
 
 					// Get all filter blocks. 
 					let filtertypeblocks = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype');
@@ -159,7 +161,7 @@ function loadFilterSystem() {
 							filteritemlist:[],
 						};
 	
-						// TODO: Go thru each filter type. 
+						// Go thru each filter category. 
 						// TODO: Include other attributes of project objects (i.e. project id, project name)
 						for(let filtertypeblock of filtertypeblocks) {
 							// console.log('Filter block:',filtertypeblock);
@@ -176,16 +178,17 @@ function loadFilterSystem() {
 								hovercaption:`${filtertypeid}:${queryword}`,
 							};
 							// Add filter item to list. 
-							queryitem.filteritemlist.push(filteritem);
+							queryitem['filteritemlist'].push(filteritem);
 						}
 
-						// Add search query item to list. 
-						selectedsearchfilteritems.push(queryitem);
+						// Add new search query item to list. 
+						searchquerydata.push(queryitem);
 					}
 				}
 
-				// Save new list of selected search filter items. 
-				selectedfilteritems['searchfilters'] = selectedsearchfilteritems;
+				// Save new data for selected search filter items. 
+				selectedfilterdata['searchfilters'] = searchquerydata;
+				console.log('searchquerydata:',searchquerydata);
 
 				// Load matching posts for given search filter criteria. 
 				loadBlog();
@@ -252,7 +255,7 @@ function loadFilterSystem() {
 
 			// Check for matching post (by search string). 
 			function checkForMatch(searchablestring) {
-				console.log('checkForMatch',searchablestring);
+				// console.log('checkForMatch',searchablestring);
 
 				// Ensure match check case insensitive. 
 				searchablestring = searchablestring.toLowerCase();
@@ -655,8 +658,11 @@ function loadFilterSystem() {
 	}
 }
 
-// Close tag filter pane. 
-function closeTagFilterPane() {
+// Close all window panes. 
+function closeWindowPanes() {
+
+	// Close settings pane. 
+	settingspane.block.classList.remove('open');
 
 	// Close tag filter pane. 
 	tagfilterpane.block.classList.remove('open');
@@ -665,12 +671,18 @@ function closeTagFilterPane() {
 // Toggle tag filter pane. 
 function toggleTagFilterPane() {
 
+	// Close all window panes. 
+	closeWindowPanes();
+
 	// Toggle tag filter pane. 
 	tagfilterpane.block.classList.toggle('open');
 }
 
 // Toggle settings pane. 
 function toggleSettingsPane() {
+
+	// Close all window panes. 
+	closeWindowPanes();
 
 	// Toggle settings pane. 
 	settingspane.block.classList.toggle('open');
@@ -747,14 +759,14 @@ function applySelectedTagFilters() {
 		}
 	}
 
-	// Save new list of selected tag filter items. 
-	selectedfilteritems['tagfilters'] = selectedtagfilteritems;
+	// Save new data for selected tag filter items. 
+	selectedfilterdata['tagfilters'] = selectedtagfilteritems;
 
 	// Load blog posts associated with selected tag filter items. 
 	loadBlog();
 
-	// Close tag filter pane. 
-	// closeTagFilterPane();
+	// Close all window panes. 
+	// closeWindowPanes();
 
 	// Load layout for list of selected filter tags. 
 	loadFilterTagsLayout();
@@ -766,14 +778,14 @@ function applySelectedTagFilters() {
 // Load layout for list of selected filter tags. 
 function loadFilterTagsLayout() {
 
-	// Create layout for list of filter tags. 
-	let filtertaglistlayoutT = selectedfilteritems['tagfilters'].map(createTagFilterTagLayout).join('');
-	let filtertaglistlayoutS = selectedfilteritems['searchfilters'].map(createSearchFilterTagLayout).join('');
-	console.log('Selected filter list:',selectedfilteritems/* ['tagfilters'] */);
+	// Create layout for list of selected filter tags. 
+	let filtertaglistlayoutT = selectedfilterdata['tagfilters'].map(createTagFilterTagLayout).join('');
+	let filtertaglistlayoutS = selectedfilterdata['searchfilters'].map(createSearchFilterTagLayout).join('');
+	console.log('Selected filter data:',selectedfilterdata/* ['tagfilters'] */);
 	// console.log('filtertaglistlayout:',filtertaglistlayout);
 
 	// Display layout for list of filter tags. 
-	tagfilterpane.taglistdestination.innerHTML = filtertaglistlayoutT + filtertaglistlayoutS;
+	tagfilterpane.taglistdestination.innerHTML = `${filtertaglistlayoutS}${filtertaglistlayoutT}`;
 
 	/****/
 
