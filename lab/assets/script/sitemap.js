@@ -18,9 +18,9 @@ let pagematrices = {
 // Get destination for matrices in footer. 
 let footermatrices = {
 	// Get destination for matrix of category links by collection. 
-	collectioncategoriesdestination: document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups'),
+	collectioncategoriesdestination: document.querySelector('div#container footer.footer div.grid div.linkmatrix.cc'),
 	// Get destination for matrix of project links by category. 
-	categoryprojectsdestination: document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects'),
+	categoryprojectsdestination: document.querySelector('div#container footer.footer div.grid div.linkmatrix.cp'),
 	// xyz:xyz,
 }
 // console.log('Footer matrices:',footermatrices);
