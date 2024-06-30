@@ -4,6 +4,7 @@
 // Create data space for author names. 
 const authorData = {
 	twd:{
+		authorname:'Titus',
 		authorname:'TWD Labs',
 		website:'https://twdlabs.xyz',
 		// xyz:'xyz',

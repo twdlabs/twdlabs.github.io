@@ -12,9 +12,17 @@ div#container section.hero::before {position:absolute; top:0; left:0; height:100
 div#container section.hero div.grid {position:relative; text-align:center; max-width:calc(var(--pagewidth)*.5); padding:4rem 0; margin-top:var(--headerheight);}
 div#container section.hero div.grid div.col {display:flex; flex-direction:column; align-items:center;}
 div#container section.hero div.grid div.col h1.head {font-size:3rem; margin:0; /* margin-bottom:1rem; */}
+/* div#container section.hero div.grid div.col h1.head span.caption {} */
+div#container section.hero div.grid div.col h1.head span.caption:empty {background-color:var(--forecolor); display:block; height:1em; width:8em; border-radius:1em;}
 div#container section.hero div.grid div.col img.logo {display:block; width:100%; max-width:12rem; margin:1rem;}
 div#container section.hero div.grid div.col img.logo {display:none;}
 div#container section.hero div.grid div.col p.textcopy {color:var(--forecolor2); font-size:1.75rem; font-weight:200; margin:0; margin:1rem 0;}
+/* div#container section.hero div.grid div.col p.textcopy span.caption {} */
+div#container section.hero div.grid div.col p.textcopy span.caption:empty {display:flex; flex-direction:column; align-items:center;}
+div#container section.hero div.grid div.col p.textcopy span.caption:empty:before,
+div#container section.hero div.grid div.col p.textcopy span.caption:empty::after {background-color:var(--forecolor2); content:''; display:block; height:1em; max-width:100%; border-radius:1em;}
+div#container section.hero div.grid div.col p.textcopy span.caption:empty:before {width:24em;}
+div#container section.hero div.grid div.col p.textcopy span.caption:empty::after {width:18em; margin-top:.125em;}
 div#container section.hero div.grid div.col a.contactlink {font-size:1.5rem; text-decoration:none; min-width:9em;}
 div#container section.hero div.grid div.col a.contactlink {display:inline-block; padding:.375em 1.5em; border-radius:1.125em; border:.25rem solid; margin:.5em .5rem 0; box-shadow:var(--boxshadowxx);}
 /* div#container section.hero div.grid div.col a.contactlink {opacity:.9; transition:.125s;} */

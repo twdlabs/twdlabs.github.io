@@ -236,7 +236,7 @@ div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color ul.t
 /* div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn {} */
 div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.themelist li.themeitem a.themebtn svg.icon {flex-shrink:0;}
 /* Navbar: Live Search Trigger Button */
-div#container header.navbar div.bin div.cornerpanel div.livesearchbtn {}
+/* div#container header.navbar div.bin div.cornerpanel div.livesearchbtn {} */
 
 
 
@@ -263,6 +263,7 @@ div#container section div.grid div.more a.morebtn svg.icon {margin-left:.5rem;}
 /* div#container section div.grid div.more {display:none;} */
 
 
+
 /* Hero Section */
 div#container section.hero {margin-top:var(--headerheight);}
 
@@ -282,10 +283,19 @@ div#container footer.footer div.grid div.brand div.trademark {display:grid; grid
 /* div#container footer.footer div.grid div.brand div.trademark {display:flex; flex-direction:column; align-items:flex-start;} */
 div#container footer.footer div.grid div.brand div.trademark h1.head {grid-area:head;}
 div#container footer.footer div.grid div.brand div.trademark h1.head {color:var(--forecolor); font-size:1.75rem; font-weight:300; text-align:inherit; margin:0; margin-top:.875rem;}
+/* div#container footer.footer div.grid div.brand div.trademark h1.head span.caption {} */
+/* div#container footer.footer div.grid div.brand div.trademark h1.head span.caption:empty {} */
+div#container footer.footer div.grid div.brand div.trademark h1.head span.caption:empty::after {background-color:var(--forecolor); display:block; content:''; height:1em; width:6em; border-radius:1em;}
 div#container footer.footer div.grid div.brand div.trademark img.logo {grid-area:logo;}
 div#container footer.footer div.grid div.brand div.trademark img.logo {height:6rem; margin-top:.5rem;}
 div#container footer.footer div.grid div.brand div.trademark p.textcopy {grid-area:textcopy;}
 div#container footer.footer div.grid div.brand div.trademark p.textcopy {color:var(--forecolor2); /* font-size:1.125rem; */ margin:0; margin-top:.5rem;}
+/* div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption {} */
+/* div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption:empty {} */
+div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption:empty:before,
+div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption:empty::after {background-color:var(--forecolor2); display:block; content:''; height:1em; border-radius:1em; max-width:100%;}
+div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption:empty:before {width:20em;}
+div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption:empty::after {width:15em; margin-top:.125em;}
 
 /* Footer: Link Line */
 div#container footer.footer div.grid div.linkline {margin-top:1rem;}
@@ -300,6 +310,7 @@ div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlin
 div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink:hover {color:var(--themecolor);}
 /* div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink svg.icon {margin-right:.375em;} */
 /* div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink span.caption {} */
+div#container footer.footer div.grid div.linkline ul.navlist li.navitem a.navlink span.caption:empty {background-color:var(--forecolor2); height:1em; width:4em; border-radius:1em;}
 /* Footer: Link Line A */
 /* div#container footer.footer div.grid div.linkline.a {} */
 /* div#container footer.footer div.grid div.linkline.a ul.navlist {} */
@@ -334,7 +345,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 /* Search Overlay */
 
-div#container div#searchoverlay {}
+/* div#container div#searchoverlay {} */
 
 
 
@@ -619,6 +630,11 @@ div#container div#searchoverlay {}
 	/* Footer: Brand */
 	div#container footer.footer div.grid div.brand {margin:0;}
 	div#container footer.footer div.grid div.brand div.trademark {display:flex; flex-direction:column; align-items:center; text-align:center;}
+	/* div#container footer.footer div.grid div.brand div.trademark h1.head {} */
+	/* div#container footer.footer div.grid div.brand div.trademark img.logo {} */
+	div#container footer.footer div.grid div.brand div.trademark p.textcopy {display:flex; flex-direction:column; align-items:center; width:15em;}
+	/* div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption {} */
+	div#container footer.footer div.grid div.brand div.trademark p.textcopy span.caption:empty {width:100%; /* max-width:15em; */}
 
 	/* Footer: Link Line */
 	/* div#container footer.footer div.grid div.linkline {} */

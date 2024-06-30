@@ -128,7 +128,7 @@ const methodData = [
 	{
 		icontag:'calculator',
 		header:'Mathematics',
-		description:'Building useful mathematical models using algebra, geometry, trigonometry, and calculus',
+		description:'Building practical mathematical models using algebra, geometry, trigonometry, and calculus',
 	},
 
 	{

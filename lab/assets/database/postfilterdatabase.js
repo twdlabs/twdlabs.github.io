@@ -26,28 +26,6 @@ const postFilterData = [
 	},
 
 	{
-		filtertypeid:'creationyear',
-		filtertypename:'Year',
-		filtertypename:'Year Created',
-		filtertypevisible:true,
-		filteritems:[
-			{
-				value:2001,
-				frequency:0,
-			},
-			{
-				value:2002,
-				frequency:0,
-			},
-			{
-				value:2003,
-				frequency:0,
-			},
-		],
-		filteritemnamer:(value)=>(value),
-	},
-
-	{
 		filtertypeid:'authorid',
 		filtertypename:'Author',
 		filtertypevisible:true,
@@ -108,6 +86,28 @@ const postFilterData = [
 			},
 		],
 		filteritemnamer:getProjectCategoryNameById,
+	},
+
+	{
+		filtertypeid:'creationyear',
+		filtertypename:'Year Created',
+		filtertypename:'Year',
+		filtertypevisible:true,
+		filteritems:[
+			{
+				value:2001,
+				frequency:0,
+			},
+			{
+				value:2002,
+				frequency:0,
+			},
+			{
+				value:2003,
+				frequency:0,
+			},
+		],
+		filteritemnamer:(value)=>(value),
 	},
 
 	{

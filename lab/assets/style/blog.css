@@ -44,6 +44,14 @@ div#container section.blog div.grid div.body div.posts {position:relative; overf
 /* div#container section.blog div.grid div.body div.posts#archive {} */
 /* div#container section.blog div.grid div.body div.posts#category {} */
 /* div#container section.blog div.grid div.body div.posts#collection {} */
+div#container section.blog div.grid div.body.split {grid-template-areas: 'fpnl fpnl fpnl' 'af af af' 'fwp posts posts' 'swp posts posts' 'xyz posts posts' 'npp npp npp';}
+/* div#container section.blog div.grid div.body.split > * {border:.25rem solid salmon !important;} */
+div#container section.blog div.grid div.body.split div.filterpanel {grid-area:fpnl;}
+div#container section.blog div.grid div.body.split div.appliedfilters {grid-area:af;}
+div#container section.blog div.grid div.body.split div.filterpane {grid-area:fwp;}
+div#container section.blog div.grid div.body.split div.settingspane {grid-area:swp;}
+div#container section.blog div.grid div.body.split div.posts {grid-area:posts;}
+div#container section.blog div.grid div.body.split nav.pagepanel {grid-area:npp;}
 
 /* Blog Section: Null Results Label */
 div#container section.blog div.grid div.body div.posts div.emptyresultslabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
