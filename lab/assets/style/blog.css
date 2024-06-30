@@ -68,7 +68,7 @@ div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage.a
 
 /* Blog Section: Page Posts */
 div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {display:grid; grid-template-columns:repeat( var(--gridcolumns), 1fr); grid-gap:0 var(--gapsize); transition:.25s;}
-div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {list-style:none; /* overflow:hidden; */ padding:0; padding:0 1rem; margin:0;}
+div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {list-style:none; /* overflow:hidden; */ padding:0; padding:0 .375rem; margin:0;}
 /* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {display:flex; flex-wrap:wrap; justify-content:center;} */
 div#container section.blog div.grid div.body div.posts.small ul.pagelist li.postpage ul.postlist {--gridcolumns:10; --gapsize:.875rem;}
 div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist {--gridcolumns:6; --gapsize:1.25rem;}
@@ -296,7 +296,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage {} */
 	/* Blog Section: Page Posts */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {} */
-	/* div#container section.blog div.grid div.body div.posts.small ul.pagelist li.postpage ul.postlist {--gridcolumns:4;} */
+	div#container section.blog div.grid div.body div.posts.small ul.pagelist li.postpage ul.postlist {--gridcolumns:3;}
 	div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist {--gridcolumns:2;}
 	/* div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.postpage ul.postlist {} */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {} */
@@ -345,7 +345,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage {} */
 	/* Blog Section: Page Posts */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist {} */
-	div#container section.blog div.grid div.body div.posts.small ul.pagelist li.postpage ul.postlist {--gridcolumns:3;}
+	/* div#container section.blog div.grid div.body div.posts.small ul.pagelist li.postpage ul.postlist {--gridcolumns:3;} */
 	/* div#container section.blog div.grid div.body div.posts.large ul.pagelist li.postpage ul.postlist {} */
 	/* div#container section.blog div.grid div.body div.posts.listed ul.pagelist li.postpage ul.postlist {} */
 	/* div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage ul.postlist li.postcard {} */

@@ -243,6 +243,7 @@ div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk ul.t
 /* General Section */
 /* div#container section {background-color:#FFF1;} */
 div#container section {padding:1.75rem 2.5rem; /* border-radius:.5rem; */ margin-top:var(--sectionspacing); /* box-shadow:var(--boxshadow); */}
+div#container section {padding:1.75rem 1.5rem;}
 div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
 div#container section div.grid h1.head {font-size:2.5rem; font-weight:300; line-height:1; text-align:center; white-space:nowrap; margin:0;}
 /* div#container section div.grid h1.head:empty {display:flex; justify-content:center;} */
