@@ -29,6 +29,20 @@ const projectCollectionData = [
 	},
 
 	{
+		groupid:'l',
+		groupname:'Examples',
+		groupicontag:'lightbulb',
+		groupdescription:'Basic illustrations of concepts in web development and software development',
+		groupitemsidlist:[
+			'cl',
+			'fl',
+			'bl',
+			'3d',
+			// 'xyz',
+		],
+	},
+
+	{
 		groupid:'w',
 		groupname:'Widgets',
 		groupicontag:'motherboard',
@@ -46,26 +60,12 @@ const projectCollectionData = [
 		],
 	},
 
-	{
-		groupid:'l',
-		groupname:'Examples',
-		groupicontag:'lightbulb',
-		groupdescription:'Basic illustrations of concepts in web development and software development',
-		groupitemsidlist:[
-			'cl',
-			'fl',
-			'bl',
-			'3d',
-			// 'xyz',
-		],
-	},
-
 ];
 // console.log('Project collections:',projectCollectionData);
 
 
 // Define sets of project collections in matrix. 
-const projectCollectionMatrixData = [
+const collectionMatrixData = [
 	{
 		setid:'collectionsetA',
 		setlist:['c',],
@@ -83,7 +83,7 @@ const projectCollectionMatrixData = [
 	// 	setlist:['x',],
 	// },
 ];
-// console.log('Project collection matrix:',projectCollectionMatrixData);
+// console.log('Project collection matrix:',collectionMatrixData);
 
 
 /*****/

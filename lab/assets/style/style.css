@@ -336,7 +336,8 @@ div#container footer.footer div.grid div.linkline.c ul.navlist li.navitem a.navl
 /* Footer: Link Matrix */
 /* div#container footer.footer div.grid div.linkmatrix {} */
 div#container footer.footer div.grid div.linkmatrix.groups {grid-area:groups;}
-div#container footer.footer div.grid div.linkmatrix.projects {display:none; grid-area:projects;}
+div#container footer.footer div.grid div.linkmatrix.projects {grid-area:projects;}
+div#container footer.footer div.grid div.linkmatrix.projects {display:none;}
 /* div#container footer.footer div.grid div.linkmatrix div.listset {} */
 /* div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist {margin-top:1.5rem;} */
 div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.navitem {margin-top:.75rem;}

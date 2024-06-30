@@ -1,67 +1,95 @@
 
 
 
-// Get destination for matrix of project links on site map page. 
-const pagegroupmatrixdestination = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.groups');
-// console.log('pagegroupmatrixdestination:',pagegroupmatrixdestination);
+// Get destination for matrices on site map page. 
+let pagematrices = {
+	// Get destination for matrix of category links by collection. 
+	collectioncategoriesdestination: document.querySelector('div#container section.sitemap div.grid div.linkmatrix.cc'),
+	// Get destination for matrix of project links by category, and by collection. 
+	collectioncategoryprojectsdestination: document.querySelector('div#container section.sitemap div.grid div.linkmatrix.ccp'),
+	// Get destination for matrix of project links by category. 
+	categoryprojectsdestination: document.querySelector('div#container section.sitemap div.grid div.linkmatrix.cp'),
+	// xyz:xyz,
+}
+// console.log('Page matrices:',pagematrices);
 
-// Get destination for matrix of project links on site map page. 
-const pageprojectmatrixdestination = document.querySelector('div#container section.sitemap div.grid div.linkmatrix.projects');
-// console.log('pageprojectmatrixdestination:',pageprojectmatrixdestination);
 
-// Get destination for matrix of group links in footer. 
-const footergroupmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups');
-// console.log('footergroupmatrixdestination:',footergroupmatrixdestination);
 
-// Get destination for matrix of project links in footer. 
-const footerprojectmatrixdestination = document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects');
-// console.log('footerprojectmatrixdestination:',footerprojectmatrixdestination);
+// Get destination for matrices in footer. 
+let footermatrices = {
+	// Get destination for matrix of category links by collection. 
+	collectioncategoriesdestination: document.querySelector('div#container footer.footer div.grid div.linkmatrix.groups'),
+	// Get destination for matrix of project links by category. 
+	categoryprojectsdestination: document.querySelector('div#container footer.footer div.grid div.linkmatrix.projects'),
+	// xyz:xyz,
+}
+// console.log('Footer matrices:',footermatrices);
+
 
 
 /*****/
 
 
 // Load site map link matrices. 
-loadSiteMap();
+loadSiteMaps();
 
 
 /*****/
 
 
 // Load site map link matrices. 
-function loadSiteMap() {
+function loadSiteMaps() {
 
-	// Create layout for group matrix. 
-	// console.log('\nMatrix: Project category by collection grouping');
-	let groupmatrixlayout = createLinkMatrix( projectCollectionMatrixData, getProjectCategoryById,getProjectCollectionById, './category/?cid=','groupname' );
-	// console.log('groupmatrixlayout:',groupmatrixlayout);
+	// Create basis for last matrix. 
+	let collectionCategoryMatrixData = projectCollectionData.map( collection => { return { setid:collection.groupid, setlist:collection.groupitemsidlist } } );
 
-	// Create layout for project matrix. 
-	// console.log('\nMatrix: Project items by category by arbitrary grouping');
-	// let projectmatrixlayoutA = createLinkMatrix( projectCategoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' );
-	let projectmatrixlayoutA = createLinkMatrix( projectCategoryMatrixData, getProjectById,getProjectCategoryById, './library/project/?pid=','projectname' );
-	// console.log('projectmatrixlayoutA:',projectmatrixlayoutA);
+	// Create set of matrix layouts. 
+	let matrixlayouts = {
 
-	// Create layout for project matrix. 
-	// console.log('\nMatrix: Project items by category by collection grouping');
-	// let xyz = projectCollectionData.map( collection => { return { setid:'abc', setlist:collection.groupitemsidlist } } );
-	// console.log(xyz);
-	// let projectmatrixlayoutB = createLinkMatrix( xyz, getProjectById,getProjectCategoryById, '../','projectname' );
-	// console.log('projectmatrixlayoutB:',projectmatrixlayoutB);
+		// Create matrix layout: categories by collection. 
+		collectioncategories: createLinkMatrix( collectionMatrixData, getProjectCategoryById,getProjectCollectionById, './category/?cid=','groupname' ),
+	
+		// Create matrix layout: projects by category (arbitrarily arranged). 
+		// categoryprojects: createLinkMatrix( categoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' ),
+		categoryprojects: createLinkMatrix( categoryMatrixData, getProjectById,getProjectCategoryById, './library/project/?pid=','projectname' ),
+	
+		// Create matrix layout: projects by category (by collection). 
+		collectioncategoryprojects: createLinkMatrix( collectionCategoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' ),
+	};
+	// console.log('Matrix layouts:',matrixlayouts);
 
-	// Add layout for group matrix to footer. 
-	if(pagegroupmatrixdestination) pagegroupmatrixdestination.innerHTML = groupmatrixlayout/*  + projectmatrixlayoutB */;
-	// Add layout for project matrix to site map page. 
-	if(pageprojectmatrixdestination) pageprojectmatrixdestination.innerHTML = projectmatrixlayoutA;
 
-	// Add layout for group matrix to footer. 
-	if(footergroupmatrixdestination) footergroupmatrixdestination.innerHTML = groupmatrixlayout;
-	// Add layout for project matrix to footer. 
-	if(footerprojectmatrixdestination) footerprojectmatrixdestination.innerHTML = projectmatrixlayoutA;
+	// 
+	if(pagematrices.collectioncategoriesdestination) {
+		// Add layout for group matrix to footer. 
+		pagematrices.collectioncategoriesdestination.innerHTML = matrixlayouts.collectioncategories;
+	}
+	// 
+	if(pagematrices.collectioncategoryprojectsdestination) {
+		pagematrices.collectioncategoryprojectsdestination.innerHTML = matrixlayouts.collectioncategoryprojects;
+	}
+	// 
+	if(pagematrices.categoryprojectsdestination) {
+		// Add layout for project matrix to site map page. 
+		pagematrices.categoryprojectsdestination.innerHTML = matrixlayouts.categoryprojects;
+	}
+
+	// 
+	if(footermatrices.collectioncategoriesdestination) {
+		// Add layout for group matrix to footer. 
+		footermatrices.collectioncategoriesdestination.innerHTML = matrixlayouts.collectioncategories;
+	}
+	// 
+	if(footermatrices.categoryprojectsdestination) {
+		// Add layout for project matrix to footer. 
+		footermatrices.categoryprojectsdestination.innerHTML = matrixlayouts.categoryprojects;
+	}
+
 
 	/****/
 
-	// Create box layout for grouped projects. 
+
+	// Create layout for matrix grouped projects. 
 	function createLinkMatrix(matrixData,getItemById,getMetaById,urlprefix,namekey) {
 
 		// Initialize result. 

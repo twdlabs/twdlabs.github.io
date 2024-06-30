@@ -486,7 +486,7 @@ const projectCategoryData = [
 
 
 // Define sets of project categories in matrix. 
-const projectCategoryMatrixData = [
+const categoryMatrixData = [
 	{
 		setid:'categorysetA',
 		setlist:['cl','fl','nw','tw',],
@@ -505,14 +505,14 @@ const projectCategoryMatrixData = [
 	},
 	{
 		setid:'categorysetE',
-		setlist:['ld','ap','cp',],
+		setlist:['ld','ap','cp','orphans',],
 	},
 	{
 		setid:'categorysetX',
-		setlist:['orphans','missing',],
+		setlist:['missing',],
 	},
 ];
-// console.log('Project category matrix:',projectCategoryMatrixData);
+// console.log('Project category matrix:',categoryMatrixData);
 
 
 /*****/
