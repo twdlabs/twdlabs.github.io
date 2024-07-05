@@ -5,7 +5,7 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<link href="clubMeNow.png" rel="icon" type="image/png"/>
+		<link href="clubmenow.png" rel="icon" type="image/png"/>
 		<title>ClubMeNow - Add New Club</title>
 
 		<!-- Bootstrap 3 -->
@@ -17,7 +17,7 @@
 		<script src="https://atg973.github.io/bs3/bootstrap.min.js" type="text/javascript"></script>
 		
 		<!-- ClubMeNow Custom CSS -->
-		<link href="clubMeNow.css" rel="stylesheet"/>
+		<link href="clubmenow.css" rel="stylesheet"/>
 	</head>
 	<body>
 
@@ -25,7 +25,7 @@
 
 			<h1>Add Club</h1>
 
-			<form action="clubMeNow.html">
+			<form action="index.html">
 				<input name="clubName" id="clubName" type="text" class="form-control CMN_moreHeight" placeholder="Club Name" required />
 
 				<div class="buttonBox">
@@ -47,7 +47,7 @@
 		</div>
 
 		<!-- ClubMeNow Custom JS -->
-		<script src="clubMeNow.js" type="text/javascript"></script>
+		<script src="clubmenow.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			// Retrieve row of user-chosen club. 
 			var clubRow = parseInt(localStorage.getItem('clubIndex'));
@@ -80,7 +80,7 @@
 				if(clubs.length>14) alert('Warning: you are only allowed to carry 14 clubs in your golf bag in match play competition.');
 
 				// Refresh to home screen. 
-				window.location.href = "clubMeNow.html";
+				window.location.href = "index.html";
 			}
 		</script>
 

@@ -4,7 +4,7 @@
 
 
 //////////////////////////////////////////////
-// ------ Functions (clubMeNow.html) ------ //
+// ------ Functions (clubmenow/index.html) ------ //
 //////////////////////////////////////////////
 
 
@@ -104,7 +104,7 @@ function resetDistanceList() {
 	localStorage.setItem('clubsArray',str);
 
 	// Refresh screen. 
-	window.location.href = "clubMeNow.html";
+	window.location.href = "index.html";
 }
 
 
@@ -114,7 +114,7 @@ function newDistanceEntry(i) {
 	// Save the index of chosen club. 
 	localStorage.setItem('clubIndex',i);
 	// Redirect to the entry form. 
-	window.location.href = "newDistance.html";
+	window.location.href = "newdistance.html";
 }
 
 
@@ -133,7 +133,7 @@ function undoLastShot() {
 	localStorage.setItem('clubsArray',str);
 
 	// Refresh to home screen. 
-	window.location.href = "clubMeNow.html";
+	window.location.href = "index.html";
 }
 
 // Navigate to "About" screen. 
@@ -167,7 +167,7 @@ function removeOneClub(i) {
 
 
 ////////////////////////////////////////////////
-// ------ Functions (newDistance.html) ------ //
+// ------ Functions (newdistance.html) ------ //
 ////////////////////////////////////////////////
 
 
@@ -201,7 +201,7 @@ function addTapEntryBtns() {
 		avgMinus = 0;
 	}
 
-	// Add buttons to newDistance entry page 
+	// Add buttons to newdistance entry page 
 	var code = '';
 	for (var i=320 ; i>0 ; i-=5) {
 		
@@ -263,26 +263,26 @@ function updateStats(shotDistance=0) {
 		localStorage.setItem('clubsArray',str);
 		
 		// Return to home screen. 
-		window.location.href = "clubMeNow.html";
+		window.location.href = "index.html";
 	}
 }
 
 
 // Navigate to home screen (club distance list). 
 function cancelEntry() {
-	window.location.href = "clubMeNow.html";
+	window.location.href = "index.html";
 }
 
 // Navigate to new club screen. 
 function newClubEntry() {
-	window.location.href = "newClub.html";
+	window.location.href = "newclub.html";
 }
 
 
 
 
 ////////////////////////////////////////////////
-// ------ Functions (newClub.html) ------ //
+// ------ Functions (newclub.html) ------ //
 ////////////////////////////////////////////////
 
 // TODO: Add error checking for club count > 14. 
