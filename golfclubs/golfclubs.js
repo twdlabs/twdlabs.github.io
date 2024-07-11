@@ -4,11 +4,11 @@
 // Load club table headers. 
 loadClubTableHeaders();
 
-// Load initial club entries. 
-loadClubEntries();
+// Load initial club table entries. 
+loadClubTableEntries();
 
-// Load club creation fields. 
-loadClubCreationFields();
+// Load fields for new club creation. 
+loadNewClubEntry();
 
 
 /*****/
@@ -24,15 +24,15 @@ function loadClubTableHeaders() {
 	let tableheadersresult = '';
 
 	// Compile layout for table headers. 
-	for(let headercaption of tabledata.headers) {
+	for(let header of tabledata.headers) {
 
 		// 
 		tableheadersresult += `
 		<!-- head -->
-		<th class="head">
+		<th class="head${ header.center ? ' c' : '' }">
 
 			<!-- caption -->
-			<span class="caption">${headercaption}</span>
+			<span class="caption">${header.caption}</span>
 			<!-- /caption -->
 
 		</th>
@@ -43,8 +43,8 @@ function loadClubTableHeaders() {
 	tableheadersdestination.innerHTML = tableheadersresult;
 }
 
-// TODO: Load club entries into table. 
-function loadClubEntries() {
+// TODO: Load club table entries. 
+function loadClubTableEntries() {
 
 	// Get destination for list of club entries. 
 	let clublistdestination = document.querySelector('div#container main.main div.clubviewer table.clubtable tbody.body');
@@ -77,23 +77,52 @@ function loadClubEntries() {
 		result += createTableDataBlock( clubentry.clubname ? clubentry.clubname : '0' );
 
 		// Add minimum distance for given club. 
-		clubentry.mindistance = clubentry.distancelist.length ? Math.min(...clubentry.distancelist) : 0;
+		clubentry.mindistance = clubentry.distancelist.length ? findMinimum(clubentry.distancelist) : 0;
 		result += createTableDataBlock( clubentry.mindistance , true );
 
 		// Add average distance for given club. 
-		clubentry.avgdistance = clubentry.distancelist.length ? Math.avg(...clubentry.distancelist) : 0;
+		clubentry.avgdistance = clubentry.distancelist.length ? findAverage(clubentry.distancelist) : 0;
 		result += createTableDataBlock( clubentry.avgdistance , true );
 
 		// Add maximum distance for given club. 
-		clubentry.maxdistance = clubentry.distancelist.length ? Math.max(...clubentry.distancelist) : 0;
+		clubentry.maxdistance = clubentry.distancelist.length ? findMaximum(clubentry.distancelist) : 0;
 		result += createTableDataBlock( clubentry.maxdistance , true );
 
 		// Add new entry field for given club. 
-		// result += createTableDataBlock();
+		result += createTableInputBlock(clubentry.clubid);
 
 		// Return result. 
-		console.log('Club entry:',clubentry);
 		return result;
+		// console.log('Club entry:',clubentry);
+
+		/***/
+
+		// Find minimum of number list. 
+		function findMinimum(numberlist) {
+			return Math.min(...numberlist);
+		}
+
+		// Find maximum of number list. 
+		function findMaximum(numberlist) {
+			return Math.max(...numberlist);
+		}
+
+		// Find average of number list. 
+		function findAverage(numberlist) {
+
+			// Initialize sum of numbers. 
+			let sum = 0;
+
+			// Go thru each number in number list. 
+			for(let num of numberlist) {
+
+				// Add number to running total. 
+				sum += 1*num;
+			}
+
+			// Return sum of numbers. 
+			return (sum / numberlist.length);
+		}
 	}
 
 	// Create table data block. 
@@ -111,10 +140,26 @@ function loadClubEntries() {
 		</td>
 		<!-- /data -->`;
 	}
+
+	// Create table input block. 
+	function createTableInputBlock(uniqueclubid) {
+
+		// Compile table data block. 
+		return `
+		<!-- data -->
+		<td class="data">
+
+			<!-- newdistance -->
+			<input class="newdistance" type="number" id="${uniqueclubid}distanceentry">
+			<!-- /newdistance -->
+
+		</td>
+		<!-- /data -->`;
+	}
 }
 
-// Load club creation fields. 
-function loadClubCreationFields() {
+// Load fields for new club creation. 
+function loadNewClubEntry() {
 
 	// Get destination for list of entry fields. 
 	let creationfieldsdestination = document.querySelector('div#container main.main div.clubadder ul.entrylist');

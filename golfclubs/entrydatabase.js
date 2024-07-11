@@ -4,22 +4,49 @@
 // Define data for club table (R in CRUD). 
 let tabledata = {
 
+	// Define table headers (per column). 
 	headers:
 	[
-		'Golf Club Name',
-		'Minimum Distance',
-		'Average Distance',
-		'Maximum Distance',
-		'Add New Entry',
-		// 'xyz',
+		{
+			caption:'Golf Club',
+			center:false,
+		},
+		{
+			caption:'Min<br>Distance',
+			caption:'Minimum Distance',
+			caption:'Min',
+			center:true,
+		},
+		{
+			caption:'Avg<br>Distance',
+			caption:'Average Distance',
+			caption:'Avg',
+			center:true,
+		},
+		{
+			caption:'Max<br>Distance',
+			caption:'Maximum Distance',
+			caption:'Max',
+			center:true,
+		},
+		{
+			caption:'Add New Entry',
+			caption:'New Distance',
+			center:true,
+		},
+		// {
+		// 	caption:'xyz',
+		// 	center:false,
+		// },
 	],
 
+	// Define table entries (per row). 
 	initialclubs:
 	[
 		{
 			clubid:'driver',
 			clubname:'Driver',
-			distancelist:[],
+			distancelist:[997,7],
 		},
 		{
 			clubid:'3hybrid',
@@ -65,7 +92,7 @@ let entryfielddata = [
 	{
 		entryid:'clubname',
 		entrytype:'text',
-		entrycaption:'Club Name',
+		entrycaption:'New Golf Club',
 	},
 	{
 		entryid:'mindistance',

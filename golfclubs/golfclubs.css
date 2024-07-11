@@ -57,23 +57,26 @@ div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit;
 
 div#container main.main {background-color:white; padding:.375rem; border-radius:var(--cornersize); margin-top:.75rem; box-shadow:var(--boxshadow);}
 /* div#container main.main {width:100%; max-width:var(--pagewidth);} */
-/* div#container main.main div.clubadder {} */
+div#container main.main div.clubadder {display:flex; flex-direction:column; align-items:center;}
 div#container main.main div.clubadder ul.entrylist {list-style:none; padding:0; margin:0;}
 div#container main.main div.clubadder ul.entrylist li.entryitem {margin-top:.25rem;}
 div#container main.main div.clubadder ul.entrylist li.entryitem div.entry {background-color:var(--backcolor); display:grid; grid-template-columns:repeat(2,1fr); align-items:center; padding:.375rem .5rem; border-radius:.5rem;}
 div#container main.main div.clubadder ul.entrylist li.entryitem div.entry label.entryname {margin-right:.5em;}
-div#container main.main div.clubadder ul.entrylist li.entryitem div.entry input.entryvalue {background-color:transparent; font-size:.875rem; width:8rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
+div#container main.main div.clubadder ul.entrylist li.entryitem div.entry input.entryvalue {background-color:transparent; font-size:.875rem; width:9rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
+div#container main.main div.clubadder button.addbtn {display:flex; place-items:center; padding:.375rem .75rem; margin-top:.5rem;}
+/* div#container main.main div.clubadder button.addbtn span.caption {} */
 /* div#container main.main div.clubviewer table.clubtable {} */
 /* div#container main.main div.clubviewer table.clubtable thead.head {} */
 /* div#container main.main div.clubviewer table.clubtable thead.head tr.row {} */
-div#container main.main div.clubviewer table.clubtable thead.head th.head {background-color:limegreen; /* background-color:forestgreen; */ color:white; font-weight:bold;}
+div#container main.main div.clubviewer table.clubtable thead.head th.head {background-color:limegreen; /* background-color:forestgreen; */ color:white; font-weight:bold; text-align:left;}
+div#container main.main div.clubviewer table.clubtable thead.head th.head.c {text-align:center;}
 /* div#container main.main div.clubviewer table.clubtable tbody.body {} */
 /* div#container main.main div.clubviewer table.clubtable tbody.body tr.row {} */
 /* div#container main.main div.clubviewer table.clubtable tbody.body td.data {} */
 div#container main.main div.clubviewer table.clubtable tbody.body td.data.c {text-align:center;}
 /* div#container main.main div.clubviewer table.clubtable tbody.body td.data {} */
-div#container main.main div.clubviewer table.clubtable tbody.body td.data input.newdistance {}
-div#container main.main div.clubviewer table.clubtable tr.row span.caption {display:block; padding:.5rem 1rem;}
+div#container main.main div.clubviewer table.clubtable tbody.body td.data input.newdistance {background-color:transparent; font-size:.875rem; width:9rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem; margin-top:.5rem;}
+div#container main.main div.clubviewer table.clubtable tr.row span.caption {display:block; padding:.375rem 1rem;}
 
 
 /* Tablet Screen */
