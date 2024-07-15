@@ -16,7 +16,7 @@ let newclubinputfields = {
 loadClubTableHead();
 
 // Load body of clubs table. 
-loadClubTableBody();
+// loadClubTableBody();
 
 // Load fields for new club creation. 
 loadClubTableAdder();
@@ -66,14 +66,28 @@ function loadClubTableBody() {
 	// Restore saved data from memory. 
 	restoreSavedData();
 
-	// Go thru each club entry. 
-	for(let clubentry of tabledata.clubslist) {
-		
-		// Add table row layout for single club entry. 
-		clubtablelayout += `
-		<!-- row -->
-		<tr class="row">${ createClubEntryRowLayout(clubentry) }</tr>
-		<!-- /row -->`;
+	// Check if clubs list is empty. 
+	let clubslistempty = (tabledata.clubslist.length == 0);
+
+	// Proceed if clubs list empty. 
+	if(clubslistempty) {
+
+		// Create placeholder for empty table body. 
+		clubtablelayout = createEmptyTableRowLayout();
+	}
+
+	// Proceed if clubs list not empty. 
+	else {
+
+		// Go thru each club entry. 
+		for(let clubentry of tabledata.clubslist) {
+			
+			// Add table row layout for single club entry. 
+			clubtablelayout += `
+			<!-- row -->
+			<tr class="row">${ createClubEntryRowLayout(clubentry) }</tr>
+			<!-- /row -->`;
+		}
 	}
 
 	// Display list of club entries. 
@@ -106,45 +120,13 @@ function loadClubTableBody() {
 		result += createTableInputBlock(clubentry.clubid);
 
 		// Add action field for given club. 
-		result += createTableActionBlock();
+		result += createTableActionBlockLayout();
 
 		// Return result. 
 		return result;
 		// console.log('Club entry:',clubentry);
 
 		/***/
-
-		// Create table layout for action block. 
-		function createTableActionBlock() {
-
-			// 
-			return `
-			<!-- data -->
-			<td class="data a">
-
-				<!-- editbtn -->
-				<button class="btn editbtn" onclick="editClubEntry('${clubentry.clubid}')">
-
-					<!-- caption -->
-					<span class="caption">Edit</span>
-					<!-- /caption -->
-					
-				</button>
-				<!-- /editbtn -->
-
-				<!-- deletebtn -->
-				<button class="btn deletebtn" onclick="deleteClubEntry('${clubentry.clubid}')">
-
-					<!-- caption -->
-					<span class="caption">Delete</span>
-					<!-- /caption -->
-					
-				</button>
-				<!-- /deletebtn -->
-
-			</td>
-			<!-- /data -->`;
-		}
 
 		// Find minimum of number list. 
 		function findMinimum(numberlist) {
@@ -172,38 +154,92 @@ function loadClubTableBody() {
 			// Return sum of numbers. 
 			return (sum / numberlist.length);
 		}
+
+		// Create block layout for given table data. 
+		function createTableDataBlockLayout(caption,isblockcentered) {
+	
+			// Compile table data block. 
+			return `
+			<!-- data -->
+			<td class="data${ isblockcentered ? ' c' : '' }">
+	
+				<!-- caption -->
+				<span class="caption">${caption}</span>
+				<!-- /caption -->
+	
+			</td>
+			<!-- /data -->`;
+		}
+
+		// Create table input block. 
+		function createTableInputBlock(uniqueclubid) {
+	
+			// Compile table data block. 
+			return `
+			<!-- data -->
+			<td class="data">
+	
+				<!-- newdistance -->
+				<input class="newdistance" type="number" id="${uniqueclubid}newdistance" onchange="saveNewClubDistance('${uniqueclubid}')">
+				<!-- /newdistance -->
+	
+			</td>
+			<!-- /data -->`;
+		}
+
+		// Create table layout for action block. 
+		function createTableActionBlockLayout() {
+
+			// Compile table action block. 
+			return `
+			<!-- data -->
+			<td class="data a">
+
+				<!-- editbtn -->
+				<button class="btn editbtn" onclick="editClubEntry('${clubentry.clubid}')">
+
+					<!-- caption -->
+					<span class="caption">Edit</span>
+					<!-- /caption -->
+					
+				</button>
+				<!-- /editbtn -->
+
+				<!-- deletebtn -->
+				<button class="btn deletebtn" onclick="deleteClubEntry('${clubentry.clubid}')">
+
+					<!-- caption -->
+					<span class="caption">Delete</span>
+					<!-- /caption -->
+					
+				</button>
+				<!-- /deletebtn -->
+
+			</td>
+			<!-- /data -->`;
+		}
 	}
 
-	// Create block layout for given table data. 
-	function createTableDataBlockLayout(caption,center) {
+	// Create placeholder table row layout for empty table. 
+	function createEmptyTableRowLayout() {
 
-		// Compile table data block. 
+		// Compile placeholder table row layout for empty table. 
 		return `
-		<!-- data -->
-		<td class="data${ center ? ' c' : '' }">
+		<!-- row -->
+		<tr class="row">
 
-			<!-- caption -->
-			<span class="caption">${caption}</span>
-			<!-- /caption -->
+			<!-- data -->
+			<td class="data empty" colspan="6">
 
-		</td>
-		<!-- /data -->`;
-	}
+				<!-- caption -->
+				<span class="caption">Add a new club to view here</span>
+				<!-- /caption -->
 
-	// Create table input block. 
-	function createTableInputBlock(uniqueclubid) {
+			</td>
+			<!-- /data -->
 
-		// Compile table data block. 
-		return `
-		<!-- data -->
-		<td class="data">
-
-			<!-- newdistance -->
-			<input class="newdistance" type="number" id="${uniqueclubid}newdistance" onchange="saveNewClubDistance('${uniqueclubid}')">
-			<!-- /newdistance -->
-
-		</td>
-		<!-- /data -->`;
+		</tr>
+		<!-- /row -->`;
 	}
 }
 

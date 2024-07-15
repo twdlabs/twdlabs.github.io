@@ -8,8 +8,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../atgicon.ico" rel="icon"/>
-		<link href="./../atgicon.ico" rel="apple-touch-icon"/>
+		<link href="./icons/istockphoto-660995292-170667a.jpg" rel="icon"/>
+		<link href="./icons/golf-logo-icon-stock-illustration-free-vector.jpg" rel="apple-touch-icon"/>
 		<title>Golf Clubs</title>
 
 		<!-- Main Stylesheet -->
@@ -42,7 +42,7 @@
 						<!-- /logo -->
 
 						<!-- logo -->
-						<!-- <img class="logo" src="./icons/istockphoto-660995292-170667a.jpg" alt="golf logo"> -->
+						<img class="logo" src="./icons/istockphoto-660995292-170667a.jpg" alt="golf logo">
 						<!-- /logo -->
 
 						<!-- logo -->
@@ -50,7 +50,7 @@
 						<!-- /logo -->
 
 						<!-- logo -->
-						<img class="logo" src="./icons/pngtree-crossed-golf-clubs-icon-isolated-png-image_5260008.jpg" alt="golf logo">
+						<!-- <img class="logo" src="./icons/pngtree-crossed-golf-clubs-icon-isolated-png-image_5260008.jpg" alt="golf logo"> -->
 						<!-- /logo -->
 						
 						<!-- caption -->
@@ -67,8 +67,12 @@
 						<li class="navitem">
 
 							<!-- navlink -->
-							<a class="navlink" href="javascript:void(0)">Link</a>
+							<!-- <a class="navlink" href="javascript:void(0)">Default</a> -->
 							<!-- /navlink -->
+
+							<!-- navbtn -->
+							<button class="navbtn btn" onclick="resetClubDatabase()">Default</button>
+							<!-- /navbtn -->
 
 						</li>
 						<!-- /navitem -->
@@ -77,18 +81,26 @@
 						<li class="navitem">
 
 							<!-- navlink -->
-							<a class="navlink" href="javascript:void(0)">Link</a>
+							<!-- <a class="navlink" href="javascript:void(0)">Delete all</a> -->
 							<!-- /navlink -->
+
+							<!-- navbtn -->
+							<button class="navbtn btn" onclick="clearClubDatabase()">Delete all</button>
+							<!-- /navbtn -->
 
 						</li>
 						<!-- /navitem -->
 	
 						<!-- navitem -->
-						<li class="navitem">
+						<li class="navitem x">
 
 							<!-- navlink -->
-							<a class="navlink" href="javascript:void(0)">Link</a>
+							<!-- <a class="navlink" href="javascript:void(0)">Link</a> -->
 							<!-- /navlink -->
+
+							<!-- navbtn -->
+							<button class="navbtn btn">Button</button>
+							<!-- /navbtn -->
 
 						</li>
 						<!-- /navitem -->
@@ -164,7 +176,7 @@
 							<tr class="row">
 
 								<!-- data -->
-								<td class="data">
+								<td class="data" colspan="4">
 
 									<!-- caption -->
 									<span class="caption">Xyz</span>
@@ -212,21 +224,27 @@
 							</tr>
 							<!-- /row -->
 
+							<!-- row -->
+							<tr class="row">
+
+								<!-- data -->
+								<td class="data empty" colspan="6">
+
+									<!-- caption -->
+									<span class="caption">Add a new club to view here</span>
+									<!-- /caption -->
+
+								</td>
+								<!-- /data -->
+
+							</tr>
+							<!-- /row -->
+
 						</tbody>
 						<!-- /body -->
 						
 					</table>
 					<!-- /clubtable -->
-
-					<!-- resetbtn -->
-					<button class="resetbtn" onclick="resetClubDatabase()">
-
-						<!-- caption -->
-						<span class="caption">Reset clubs</span>
-						<!-- /caption -->
-
-					</button>
-					<!-- /resetbtn -->
 					
 				</div>
 				<!-- /grid -->
