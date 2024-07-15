@@ -12,19 +12,16 @@ let tabledata = {
 			center:false,
 		},
 		{
-			caption:'Min<br>Distance',
 			caption:'Minimum Distance',
 			caption:'Min',
 			center:true,
 		},
 		{
-			caption:'Avg<br>Distance',
 			caption:'Average Distance',
 			caption:'Avg',
 			center:true,
 		},
 		{
-			caption:'Max<br>Distance',
 			caption:'Maximum Distance',
 			caption:'Max',
 			center:true,
@@ -32,6 +29,11 @@ let tabledata = {
 		{
 			caption:'Add New Entry',
 			caption:'New Distance',
+			caption:'New',
+			center:true,
+		},
+		{
+			caption:'Action',
 			center:true,
 		},
 		// {
@@ -41,7 +43,7 @@ let tabledata = {
 	],
 
 	// Define table entries (per row). 
-	initialclubs:
+	clubslist:
 	[
 		{
 			clubid:'driver',
@@ -78,11 +80,11 @@ let tabledata = {
 			clubname:'Sand Wedge',
 			distancelist:[],
 		},
-		{
-			clubid:'xyz',
-			clubname:'Xyz',
-			distancelist:[],
-		},
+		// {
+		// 	clubid:'xyz',
+		// 	clubname:'Xyz',
+		// 	distancelist:[],
+		// },
 	],
 };
 
@@ -90,27 +92,53 @@ let tabledata = {
 // Define data for club creation fields (C in CRUD). 
 let entryfielddata = [
 	{
-		entryid:'clubname',
+		entryid:'newclubid',
 		entrytype:'text',
-		entrycaption:'New Golf Club',
+		entrycaption:'Club ID',
 	},
 	{
-		entryid:'mindistance',
-		entrytype:'number',
-		entrycaption:'Minimum Distance',
+		entryid:'newclubname',
+		entrytype:'text',
+		entrycaption:'Club Name',
 	},
-	{
-		entryid:'avgdistance',
-		entrytype:'number',
-		entrycaption:'Average Distance',
-	},
-	{
-		entryid:'maxdistance',
-		entrytype:'number',
-		entrycaption:'Maximum Distance',
-	},
+	// {
+	// 	entryid:'mindistance',
+	// 	entrytype:'number',
+	// 	entrycaption:'Minimum Distance',
+	// },
+	// {
+	// 	entryid:'avgdistance',
+	// 	entrytype:'number',
+	// 	entrycaption:'Average Distance',
+	// },
+	// {
+	// 	entryid:'maxdistance',
+	// 	entrytype:'number',
+	// 	entrycaption:'Maximum Distance',
+	// },
 	// {
 	// 	entryid:'xyz',
 	// 	entrycaption:'xyz',
 	// },
 ];
+
+
+/*****/
+
+
+// Find club entry by given id. 
+function getClubById(givenclubid) {
+
+	// Go thru each club entry in list. 
+	for(let clubentry of tabledata.clubslist) {
+
+		// Check if matching club entry found. 
+		let matchFound = clubentry.clubid == givenclubid;
+
+		// Return matching club entry (if found). 
+		if(matchFound) return clubentry;
+	}
+
+	// Return nothing if no match found. 
+	return null;
+}

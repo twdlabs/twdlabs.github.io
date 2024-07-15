@@ -102,59 +102,15 @@
 			</nav>
 			<!-- /navbar -->
 
-			<!-- main -->
-			<main class="main">
+			<!-- clubviewer -->
+			<section class="clubviewer">
 
-				<!-- clubadder -->
-				<div class="clubadder">
+				<!-- grid -->
+				<div class="grid">
 
-					<!-- entrylist -->
-					<ul class="entrylist">
-
-						<!-- entryitem -->
-						<li class="entryitem">
-
-							<!-- entry -->
-							<div class="entry">
-		
-								<!-- entryname -->
-								<label class="entryname" for="uniqueentryid">Entry Name</label>
-								<!-- /entryname -->
-		
-								<!-- entryvalue -->
-								<input class="entryvalue" type="text" id="uniqueentryid">
-								<!-- /entryvalue -->
-		
-							</div>
-							<!-- /entry -->
-							
-						</li>
-						<!-- /entryitem -->
-
-					</ul>
-					<!-- /entrylist -->
-
-					<!-- addbtn -->
-					<button class="addbtn">
-
-						<!-- caption -->
-						<span class="caption">Add new club</span>
-						<!-- /caption -->
-
-					</button>
-					<!-- /addbtn -->
-
-				</div>
-				<!-- /clubadder -->
-
-			</main>
-			<!-- /main -->
-
-			<!-- main -->
-			<main class="main">
-
-				<!-- clubviewer -->
-				<div class="clubviewer">
+					<!-- head -->
+					<h2 class="head">Golf Club Distances</h2>
+					<!-- /head -->
 
 					<!-- clubtable -->
 					<table class="clubtable">
@@ -164,6 +120,16 @@
 
 							<!-- row -->
 							<tr class="row">
+
+								<!-- head -->
+								<th class="head">
+
+									<!-- caption -->
+									<span class="caption">Xyz</span>
+									<!-- /caption -->
+
+								</th>
+								<!-- /head -->
 
 								<!-- head -->
 								<th class="head">
@@ -211,8 +177,34 @@
 								<td class="data">
 
 									<!-- newdistance -->
-									<input class="newdistance" type="number" id="uniquedistanceentryid">
+									<input class="newdistance" type="number" id="uniqueclubidnewdistanceentry" onchange="saveNewClubDistance('xyzclub')">
 									<!-- /newdistance -->
+
+								</td>
+								<!-- /data -->
+
+								<!-- data -->
+								<td class="data a">
+
+									<!-- editbtn -->
+									<button class="btn editbtn" onclick="editClubEntry('clubid')">
+
+										<!-- caption -->
+										<span class="caption">Edit</span>
+										<!-- /caption -->
+										
+									</button>
+									<!-- /editbtn -->
+
+									<!-- deletebtn -->
+									<button class="btn deletebtn" onclick="deleteClubEntry('clubid')">
+
+										<!-- caption -->
+										<span class="caption">Delete</span>
+										<!-- /caption -->
+										
+									</button>
+									<!-- /deletebtn -->
 
 								</td>
 								<!-- /data -->
@@ -225,12 +217,74 @@
 						
 					</table>
 					<!-- /clubtable -->
+
+					<!-- resetbtn -->
+					<button class="resetbtn" onclick="resetClubDatabase()">
+
+						<!-- caption -->
+						<span class="caption">Reset clubs</span>
+						<!-- /caption -->
+
+					</button>
+					<!-- /resetbtn -->
 					
 				</div>
-				<!-- /clubviewer -->
+				<!-- /grid -->
 
-			</main>
-			<!-- /main -->
+			</section>
+			<!-- /clubviewer -->
+
+			<!-- clubadder -->
+			<section class="clubadder">
+
+				<!-- grid -->
+				<div class="grid">
+
+					<!-- head -->
+					<h2 class="head">New Golf Club</h2>
+					<!-- /head -->
+
+					<!-- entrylist -->
+					<ul class="entrylist">
+
+						<!-- entryitem -->
+						<li class="entryitem">
+
+							<!-- entry -->
+							<div class="entry">
+		
+								<!-- entryname -->
+								<label class="entryname" for="uniqueentryid">Entry Name</label>
+								<!-- /entryname -->
+		
+								<!-- entryvalue -->
+								<input class="entryvalue" type="text" id="uniqueentryid" placeholder="xyz">
+								<!-- /entryvalue -->
+		
+							</div>
+							<!-- /entry -->
+							
+						</li>
+						<!-- /entryitem -->
+
+					</ul>
+					<!-- /entrylist -->
+
+					<!-- addbtn -->
+					<button class="addbtn" onclick="addNewClubEntry()">
+
+						<!-- caption -->
+						<span class="caption">Add new club</span>
+						<!-- /caption -->
+
+					</button>
+					<!-- /addbtn -->
+
+				</div>
+				<!-- /grid -->
+
+			</section>
+			<!-- /clubadder -->
 
 		</div>
 		<!-- /#container -->
@@ -239,8 +293,11 @@
 		<!-- Database -->
 		<!-- <script src="./database.js" type="text/javascript"></script> -->
 
-		<!-- Entry Database -->
-		<script src="./entrydatabase.js" type="text/javascript"></script>
+		<!-- Club Entry Database -->
+		<script src="./clubentrydatabase.js" type="text/javascript"></script>
+
+		<!-- Memory Script -->
+		<script src="./golfclubmemory.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
 		<script src="./golfclubs.js" type="text/javascript"></script>
