@@ -48,7 +48,7 @@ div#container {display:flex; flex-direction:column; justify-content:center; alig
 
 /* Navbar */
 div#container nav.navbar {position:absolute; top:0; right:0; left:0; width:100%;}
-div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:1rem 2rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:.5rem 2rem; box-shadow:var(--boxshadow);}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
 div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
 div#container nav.navbar div.bin h1.head svg.icon {display:none;}
@@ -86,7 +86,7 @@ div#container section.clubviewer div.grid table.clubtable tbody.body td.data.c {
 div#container section.clubviewer div.grid table.clubtable tbody.body td.data input.newdistance {background-color:transparent; font-size:.875rem; width:4rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
 div#container section.clubviewer div.grid table.clubtable tbody.body td.data button.btn {background-color:var(--limegreen); color:white; cursor:pointer; padding:0; border:0 none; box-shadow:var(--boxshadow);}
 div#container section.clubviewer div.grid table.clubtable tbody.body td.data span.caption {}
-div#container section.clubviewer div.grid table.clubtable tbody.body td.data.empty span.caption {color:var(--lightgrey); text-align:center; padding:4rem;}
+div#container section.clubviewer div.grid table.clubtable tbody.body td.data.empty span.caption {color:var(--lightgrey); text-align:center; padding:2rem;}
 /* div#container section.clubviewer div.grid table.clubtable tbody.body td.data button.editbtn {} */
 /* div#container section.clubviewer div.grid table.clubtable tbody.body td.data button.deletebtn {} */
 div#container section.clubviewer div.grid table.clubtable span.caption {display:block; padding:.625rem 1rem;}

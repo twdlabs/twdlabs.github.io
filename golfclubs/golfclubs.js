@@ -16,7 +16,7 @@ let newclubinputfields = {
 loadClubTableHead();
 
 // Load body of clubs table. 
-// loadClubTableBody();
+loadClubTableBody();
 
 // Load fields for new club creation. 
 loadClubTableAdder();
