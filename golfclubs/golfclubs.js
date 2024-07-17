@@ -393,19 +393,25 @@ function deleteClubEntry(givenclubid) {
 function clearClubDatabase() {
     console.log('Clearing club database...');
 
+	// Confirm deletion of all club entries. 
+	if( !confirm('Are you sure you want to delete current club entries?') );
+
     // Create new list of clubs and distances. 
     tabledata.clubslist = [];
-
-	// Show updated table of clubs. 
-	loadClubTableBody();
 	
 	// Save data to memory. 
 	saveData();
+
+	// Show updated table of clubs. 
+	loadClubTableBody();
 }
 
 // Reset club database to default. 
 function resetClubDatabase() {
     console.log('Resetting club database to default...');
+
+	// Confirm deletion of all club entries. 
+	if( !confirm('Are you sure you want to delete current club entries?') );
 
     // Delete list of clubs and distances. 
     localStorage.removeItem('savedclubslist');
@@ -413,9 +419,6 @@ function resetClubDatabase() {
 
 	// Show updated table of clubs. 
     window.location.reload();
-	
-	// Save data to memory. 
-	saveData();
 }
 
 // Save newly entered club distance. 
