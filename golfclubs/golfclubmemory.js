@@ -27,26 +27,3 @@ function restoreSavedData() {
     // Restore saved list of clubs and distances. 
     if(strclubslist) tabledata.clubslist = JSON.parse(strclubslist);
 }
-
-// Clear out all entries from club database. 
-function clearClubDatabase() {
-    console.log('Clearing club database...');
-
-    // Create new list of clubs and distances. 
-    tabledata.clubslist = [];
-
-	// Show updated table of clubs. 
-	loadClubTableBody();
-}
-
-// Reset club database. 
-function resetClubDatabase() {
-    console.log('Resetting club database...');
-
-    // Delete list of clubs and distances. 
-    localStorage.removeItem('savedclubslist');
-    console.log('\tlocalStorage:',localStorage);
-
-	// Show updated table of clubs. 
-    window.location.reload();
-}

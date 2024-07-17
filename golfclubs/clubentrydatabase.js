@@ -1,7 +1,7 @@
 
 
 
-// Define data for club table (R in CRUD). 
+// Define data for club table. 
 let tabledata = {
 
 	// Define table headers (per column). 
@@ -89,7 +89,7 @@ let tabledata = {
 };
 
 
-// Define data for club creation fields (C in CRUD). 
+// Define data for club creation fields. 
 let entryfielddata = [
 	{
 		entryid:'newclubid',

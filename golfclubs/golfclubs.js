@@ -18,7 +18,7 @@ loadClubTableHead();
 // Load body of clubs table. 
 loadClubTableBody();
 
-// Load fields for new club creation. 
+// Load fields for creation of new club. 
 loadClubTableAdder();
 
 
@@ -54,7 +54,7 @@ function loadClubTableHead() {
 	tableheadersdestination.innerHTML = tableheadersresult;
 }
 
-// Load body of clubs table. 
+// Load body of clubs table (R in CRUD). 
 function loadClubTableBody() {
 
 	// Get destination for list of club entries. 
@@ -243,7 +243,7 @@ function loadClubTableBody() {
 	}
 }
 
-// Load fields for new club creation. 
+// Load fields for creation of new club. 
 function loadClubTableAdder() {
 
 	// Get destination for list of entry fields. 
@@ -281,7 +281,7 @@ function loadClubTableAdder() {
 	creationfieldsdestination.innerHTML = entrylistresult;
 }
 
-// Add newly entered club to database. 
+// Add newly entered club to database (C in CRUD). 
 function addNewClubEntry() {
 
 	// Get newly entered club data: club id. 
@@ -317,7 +317,7 @@ function addNewClubEntry() {
 	saveData();
 }
 
-// Edit club entry in database. 
+// Edit club entry in database (U in CRUD). 
 function editClubEntry(givenclubid) {
 
 	// Get club entry associated with given club id. 
@@ -333,7 +333,7 @@ function editClubEntry(givenclubid) {
 	saveData();
 }
 
-// Delete club entry from database. 
+// Delete club entry from database (D in CRUD). 
 function deleteClubEntry(givenclubid) {
 
 	// Go thru each club entry in list. 
@@ -387,6 +387,35 @@ function deleteClubEntry(givenclubid) {
 		// Remove item at given index of deletion. 
 		tabledata.clubslist.splice(indexofdeletion,1);
 	}
+}
+
+// Delete all entries from club database (D in CRUD). 
+function clearClubDatabase() {
+    console.log('Clearing club database...');
+
+    // Create new list of clubs and distances. 
+    tabledata.clubslist = [];
+
+	// Show updated table of clubs. 
+	loadClubTableBody();
+	
+	// Save data to memory. 
+	saveData();
+}
+
+// Reset club database to default. 
+function resetClubDatabase() {
+    console.log('Resetting club database to default...');
+
+    // Delete list of clubs and distances. 
+    localStorage.removeItem('savedclubslist');
+    console.log('\tlocalStorage:',localStorage);
+
+	// Show updated table of clubs. 
+    window.location.reload();
+	
+	// Save data to memory. 
+	saveData();
 }
 
 // Save newly entered club distance. 
