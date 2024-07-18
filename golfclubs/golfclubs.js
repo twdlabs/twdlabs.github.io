@@ -1,17 +1,6 @@
 
 
 
-// Get input fields for receiving new club data. 
-let newclubinputfields = {
-	clubid:document.querySelector('div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry input.entryvalue#newclubid'),
-	clubname:document.querySelector('div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry input.entryvalue#newclubname'),
-	// xyz:xyz,
-}
-
-
-/*****/
-
-
 // Load head of clubs table. 
 loadClubTableHead();
 
@@ -35,7 +24,7 @@ function loadClubTableHead() {
 	let tableheadersresult = '';
 
 	// Compile layout for table headers. 
-	for(let header of tabledata.headers) {
+	for(let header of tabledata.tableheaders) {
 
 		// 
 		tableheadersresult += `
@@ -95,38 +84,44 @@ function loadClubTableBody() {
 
 	/****/
 
-	// Create table row layout for club entry. 
+	// Create table row layout for given club entry. 
 	function createClubEntryRowLayout(clubentry) {
 
-		// Initialize result. 
-		let result = '';
+		// Get name of given club. 
+		let clubname = clubentry.clubname ? clubentry.clubname : '--';
+		// Get minimum distance for given club. 
+		let mindistance = clubentry.distancelist.length ? findMinimum(clubentry.distancelist) : 0;
+		// Get average distance for given club. 
+		let avgdistance = clubentry.distancelist.length ? findAverage(clubentry.distancelist) : 0;
+		// Get maximum distance for given club. 
+		let maxdistance = clubentry.distancelist.length ? findMaximum(clubentry.distancelist) : 0;
 
-		// Add name of given club. 
-		result += createTableDataBlockLayout( clubentry.clubname ? clubentry.clubname : '0' );
-
-		// Add minimum distance for given club. 
-		clubentry.mindistance = clubentry.distancelist.length ? findMinimum(clubentry.distancelist) : 0;
-		result += createTableDataBlockLayout( clubentry.mindistance , true );
-
-		// Add average distance for given club. 
-		clubentry.avgdistance = clubentry.distancelist.length ? findAverage(clubentry.distancelist) : 0;
-		result += createTableDataBlockLayout( clubentry.avgdistance , true );
-
-		// Add maximum distance for given club. 
-		clubentry.maxdistance = clubentry.distancelist.length ? findMaximum(clubentry.distancelist) : 0;
-		result += createTableDataBlockLayout( clubentry.maxdistance , true );
-
-		// Add new entry field for given club. 
-		result += createTableInputBlock(clubentry.clubid);
-
+		// Initialize layout for table row. 
+		let tablerowlayout = '';
+ 		// Add layout for name of given club. 
+		tablerowlayout += createTableDataBlockLayout( clubname );
+		// Add layout for minimum distance of given club. 
+		tablerowlayout += createTableDataBlockLayout( formatNumber(mindistance) , true );
+		// Add layout for average distance of given club. 
+		tablerowlayout += createTableDataBlockLayout( formatNumber(avgdistance) , true );
+		// Add layout for maximum distance of given club. 
+		tablerowlayout += createTableDataBlockLayout( formatNumber(maxdistance) , true );
+		// Add layout for distance entry field of given club. 
+		tablerowlayout += createTableInputBlockLayout(clubentry.clubid);
 		// Add action field for given club. 
-		result += createTableActionBlockLayout();
+		tablerowlayout += createTableActionBlockLayout();
+		// console.log('Club entry table row layout:',tablerowlayout,clubentry);
 
-		// Return result. 
-		return result;
-		// console.log('Club entry:',clubentry);
+		// Return layout for table row. 
+		return tablerowlayout;
 
 		/***/
+
+		// Format number. 
+		function formatNumber(num) {
+			num = 1 * num;
+			return ( Number.isInteger(num) ? num : num.toFixed(1) );
+		}
 
 		// Find minimum of number list. 
 		function findMinimum(numberlist) {
@@ -172,7 +167,7 @@ function loadClubTableBody() {
 		}
 
 		// Create table input block. 
-		function createTableInputBlock(uniqueclubid) {
+		function createTableInputBlockLayout(uniqueclubid) {
 	
 			// Compile table data block. 
 			return `
@@ -284,6 +279,14 @@ function loadClubTableAdder() {
 // Add newly entered club to database (C in CRUD). 
 function addNewClubEntry() {
 
+	// Get input fields for receiving new club data. 
+	let newclubinputfields = {
+		clubid:document.querySelector('div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry input.entryvalue#newclubid'),
+		clubname:document.querySelector('div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry input.entryvalue#newclubname'),
+		distancelist:document.querySelector('div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry input.entryvalue#newdistancelist'),
+		// xyz:xyz,
+	}
+
 	// Get newly entered club data: club id. 
 	let clubid = `${newclubinputfields.clubid.value}`;
 	// if(clubid.includes(' ')) {
@@ -293,6 +296,9 @@ function addNewClubEntry() {
 
 	// Get newly entered club data: club name. 
 	let clubname = `${newclubinputfields.clubname.value}`;
+
+	// Get newly entered club data: club distance list. 
+	let distancelist = `${newclubinputfields.distancelist.value}`.split(',');
 
 	// Check if club entry already exists. 
 	let alreadyclubentry = getClubById(clubid);
@@ -307,7 +313,7 @@ function addNewClubEntry() {
 	let newclubentry = {
 		clubid:clubid,
 		clubname:clubname,
-		distancelist:[],
+		distancelist:distancelist,
 	};
 	
 	// Add newly entered club entry to database. 
@@ -315,6 +321,25 @@ function addNewClubEntry() {
 
 	// Save data to memory. 
 	saveData();
+
+	// Clear input fields for new club data. 
+	clearNewClubInputFields();
+
+	/****/
+
+	// Clear input fields for new club data. 
+	function clearNewClubInputFields() {
+
+		// Go thru each input field. 
+		for(let key in newclubinputfields) {
+
+			// Get input field. 
+			let inputfield = newclubinputfields[key];
+
+			// Clear input field. 
+			inputfield.value = '';
+		}
+	}
 }
 
 // Edit club entry in database (U in CRUD). 
@@ -328,6 +353,9 @@ function editClubEntry(givenclubid) {
 
 	// Edit club name. 
 	clubentry.clubname = prompt('Enter new club name.',clubentry.clubname);
+
+	// Edit club distance list. 
+	clubentry.distancelist = ( prompt('Enter new club distances.',clubentry.distancelist) ).split(',');
 	
 	// Save data to memory. 
 	saveData();
@@ -393,8 +421,8 @@ function deleteClubEntry(givenclubid) {
 function clearClubDatabase() {
     console.log('Clearing club database...');
 
-	// Confirm deletion of all club entries. 
-	if( !confirm('Are you sure you want to delete current club entries?') );
+	// Confirm deletion of all current club entries. 
+	if( tabledata.clubslist.length>0 && !confirm('Are you sure you want to delete current club entries?') );
 
     // Create new list of clubs and distances. 
     tabledata.clubslist = [];
@@ -410,8 +438,8 @@ function clearClubDatabase() {
 function resetClubDatabase() {
     console.log('Resetting club database to default...');
 
-	// Confirm deletion of all club entries. 
-	if( !confirm('Are you sure you want to delete current club entries?') );
+	// Confirm deletion of all current club entries. 
+	if( tabledata.clubslist.length>0 && !confirm('Are you sure you want to delete current club entries?') );
 
     // Delete list of clubs and distances. 
     localStorage.removeItem('savedclubslist');

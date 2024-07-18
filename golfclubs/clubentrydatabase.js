@@ -4,8 +4,8 @@
 // Define data for club table. 
 let tabledata = {
 
-	// Define table headers (per column). 
-	headers:
+	// Define club table headers (per column). 
+	tableheaders:
 	[
 		{
 			caption:'Golf Club',
@@ -42,23 +42,23 @@ let tabledata = {
 		// },
 	],
 
-	// Define table entries (per row). 
+	// Define club table entries (per row). 
 	clubslist:
 	[
 		{
 			clubid:'driver',
 			clubname:'Driver',
-			distancelist:[997,7],
+			distancelist:[100,74,7],
 		},
 		{
 			clubid:'3hybrid',
 			clubname:'3-Hybrid',
-			distancelist:[],
+			distancelist:[1,2,3],
 		},
 		{
 			clubid:'5hybrid',
 			clubname:'5-Hybrid',
-			distancelist:[],
+			distancelist:[1],
 		},
 		{
 			clubid:'7iron',
@@ -101,6 +101,11 @@ let entryfielddata = [
 		entrytype:'text',
 		entrycaption:'Club Name',
 	},
+	{
+		entryid:'newdistancelist',
+		entrytype:'text',
+		entrycaption:'Distance List',
+	},
 	// {
 	// 	entryid:'mindistance',
 	// 	entrytype:'number',
@@ -118,6 +123,7 @@ let entryfielddata = [
 	// },
 	// {
 	// 	entryid:'xyz',
+	// 	entrytype:'number',
 	// 	entrycaption:'xyz',
 	// },
 ];
