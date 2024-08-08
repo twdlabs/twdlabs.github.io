@@ -7,8 +7,12 @@
 :root {
 
 	/* Theme Colors */
-	--limegreen:#4caf50;
 	--limegreen:limegreen;
+	--limegreen:#4caf50;
+	--red:#f00;
+
+	/* Theme Colors */
+	--reggrey:#AAA;
 	--lightgrey:#DDD;
 	--lightblack:#333;
 	
@@ -57,52 +61,24 @@ div#container nav.navbar div.bin h1.head span.caption {margin-left:.375rem;}
 div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
 div#container nav.navbar div.bin ul.navlist li.navitem {padding:.25rem;}
 div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem button.navbtn {background-color:var(--themecolor); color:white; padding:.625rem .75rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:block; color:inherit; text-decoration:none;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {background-color:var(--themecolor); color:white; padding:.5rem 1.25rem; border-radius:.25rem;}
 
 
 /* General Section */
-div#container section {background-color:white; padding:.375rem; border-radius:var(--cornersize); margin-top:.75rem; box-shadow:var(--boxshadow);}
+div#container section {background-color:white; padding:.375rem; /* padding-top:1rem; */ border-radius:var(--cornersize); margin-top:.75rem; box-shadow:var(--boxshadow);}
 /* div#container section {width:100%; max-width:var(--pagewidth);} */
-div#container section div.grid {display:flex; flex-direction:column; align-items:center;}
-div#container section div.grid h2.head {margin:0; margin:.125em 0;}
-div#container section div.grid > button {display:flex; place-items:center; padding:.375rem .75rem; margin-top:.5rem;}
-/* div#container section div.grid button span.caption {} */
-
-
-/* Club Viewer Section */
-/* div#container section.clubviewer div.grid {} */
-div#container section.clubviewer div.grid h2.head {font-size:1.375rem;}
-/* div#container section.clubviewer div.grid table.clubtable {} */
-/* div#container section.clubviewer div.grid table.clubtable thead.head {} */
-/* div#container section.clubviewer div.grid table.clubtable thead.head tr.row {margin-bottom:5rem;} */
-div#container section.clubviewer div.grid table.clubtable thead.head th.head {background-color:var(--limegreen); /* background-color:forestgreen; */ color:white; font-weight:bold; text-align:left;}
-div#container section.clubviewer div.grid table.clubtable thead.head th.head.c {text-align:center;}
-div#container section.clubviewer div.grid table.clubtable tbody.body {}
-/* div#container section.clubviewer div.grid table.clubtable tbody.body tr.row {} */
-/* div#container section.clubviewer div.grid table.clubtable tbody.body td.data {} */
-div#container section.clubviewer div.grid table.clubtable tbody.body td.data.c {text-align:center;}
-/* div#container section.clubviewer div.grid table.clubtable tbody.body td.data.a {padding-left:.5rem;} */
-div#container section.clubviewer div.grid table.clubtable tbody.body td.data input.newdistance {background-color:transparent; font-size:.875rem; width:4rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
-div#container section.clubviewer div.grid table.clubtable tbody.body td.data button.btn {background-color:var(--limegreen); color:white; cursor:pointer; padding:0; border:0 none; box-shadow:var(--boxshadow);}
-div#container section.clubviewer div.grid table.clubtable tbody.body td.data span.caption {}
-div#container section.clubviewer div.grid table.clubtable tbody.body td.data.empty span.caption {color:var(--lightgrey); text-align:center; padding:2rem;}
-/* div#container section.clubviewer div.grid table.clubtable tbody.body td.data button.editbtn {} */
-/* div#container section.clubviewer div.grid table.clubtable tbody.body td.data button.deletebtn {} */
-div#container section.clubviewer div.grid table.clubtable span.caption {display:block; padding:.625rem 1rem;}
-
-
-/* Club Adder Section */
-/* div#container section.clubadder div.grid {} */
-div#container section.clubadder div.grid h2.head {font-size:1.25rem;}
-/* div#container section.clubadder div.grid form.addform {} */
-div#container section.clubadder div.grid ul.entrylist {list-style:none; padding:0; margin:0;}
-div#container section.clubadder div.grid ul.entrylist li.entryitem {margin-top:.25rem;}
-div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry {background-color:var(--backcolor); display:grid; grid-template-columns:repeat(2,1fr); align-items:center; padding:.375rem .5rem; border-radius:.5rem;}
-div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry label.entryname {margin-right:.5em;}
-div#container section.clubadder div.grid ul.entrylist li.entryitem div.entry input.entryvalue {background-color:transparent; font-size:.875rem; width:9rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
-/* div#container section.clubadder div.grid button.addbtn {} */
-/* div#container section.clubadder div.grid button.addbtn span.caption {} */
+/* div#container section div.grid {display:flex; flex-direction:column; align-items:center;} */
+div#container section div.grid div.head {display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; padding:0 .125em;}
+div#container section div.grid div.head h2.header {margin:0; padding:0 .25em; margin:.125em 0;}
+div#container section div.grid button.btn {background-color:var(--limegreen); background-color:var(--lightblack); color:white; cursor:pointer;}
+div#container section div.grid button.btn {display:inline-flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section div.grid button.btn {padding:.5rem; border:0 none; border-radius:.25rem; margin-top:.125rem; box-shadow:var(--boxshadow);}
+div#container section div.grid button.btn svg.icon {display:none;}
+div#container section div.grid button.btn svg.icon:first-child {display:block;}
+div#container section div.grid button.btn span.caption {/* display:none; */ font-size:.75rem; margin-left:.375rem;}
+/* div#container section div.grid div.foot {} */
+div#container section div.grid div.foot button.btn {width:100%; padding:.625rem; margin-top:.25rem;}
 
 
 

@@ -1,0 +1,15 @@
+
+
+
+/* Editor Section */
+/* div#container section.editor div.grid {} */
+/* div#container section.editor div.grid div.head {} */
+div#container section.editor div.grid div.head h2.header {font-size:1.25rem;}
+/* div#container section.editor div.grid form.addform {} */
+div#container section.editor div.grid ul.entrylist {list-style:none; padding:0; margin:0;}
+div#container section.editor div.grid ul.entrylist li.entryitem {margin-top:.25rem;}
+div#container section.editor div.grid ul.entrylist li.entryitem div.entry {background-color:var(--backcolor); display:grid; grid-template-columns:repeat(2,1fr); align-items:center; padding:.375rem .5rem; border-radius:.5rem;}
+div#container section.editor div.grid ul.entrylist li.entryitem div.entry label.entryname {margin-right:.5em;}
+div#container section.editor div.grid ul.entrylist li.entryitem div.entry input.entryvalue {background-color:transparent; font-size:.875rem; width:9rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
+/* div#container section.editor div.grid button.addbtn {} */
+/* div#container section.editor div.grid button.addbtn span.caption {} */

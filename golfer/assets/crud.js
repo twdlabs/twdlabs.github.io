@@ -2,10 +2,10 @@
 
 
 // Load head of clubs table. 
-loadClubTableHead();
+if(loadItUp) loadClubTableHead();
 
 // Load body of clubs table. 
-loadClubTableBody();
+if(loadItUp) loadClubTableBody();
 
 // Load fields for creation of new club. 
 loadClubTableAdder();
@@ -14,19 +14,19 @@ loadClubTableAdder();
 /*****/
 
 
-// Load head of clubs table. 
+// Load head layout for clubs table. 
 function loadClubTableHead() {
 
 	// Get destination for table headers. 
-	let tableheadersdestination = document.querySelector('div#container section.clubviewer div.grid table.clubtable thead.head tr.row');
+	let tableheadersdestination = document.querySelector('div#container section.clubsviewer div.grid table.clubstable thead.head tr.row');
 
 	// Initialize layout for table headers. 
 	let tableheadersresult = '';
 
-	// Compile layout for table headers. 
-	for(let header of tabledata.tableheaders) {
+	// Accumulate layout for all table headers. 
+	for(let header of clubstable.tableheaders) {
 
-		// 
+		// Compile layout for single table header. 
 		tableheadersresult += `
 		<!-- head -->
 		<th class="head${ header.center ? ' c' : '' }">
@@ -43,11 +43,11 @@ function loadClubTableHead() {
 	tableheadersdestination.innerHTML = tableheadersresult;
 }
 
-// Load body of clubs table (R in CRUD). 
+// Load body layout for clubs table (R in CRUD). 
 function loadClubTableBody() {
 
 	// Get destination for list of club entries. 
-	let clublistdestination = document.querySelector('div#container section.clubviewer div.grid table.clubtable tbody.body');
+	let clublistdestination = document.querySelector('div#container section.clubsviewer div.grid table.clubstable tbody.body');
 
 	// Initialize layout for list of club entries. 
 	let clubtablelayout = '';
@@ -56,27 +56,22 @@ function loadClubTableBody() {
 	restoreSavedData();
 
 	// Check if clubs list is empty. 
-	let clubslistempty = (tabledata.clubslist.length == 0);
+	let clubslistempty = clubstable.tableentries.length == 0;
 
-	// Proceed if clubs list empty. 
-	if(clubslistempty) {
+	// Create placeholder for empty table body. 
+	clubtablelayout += `
+	<!-- row -->
+	<tr class="row">${ clubslistempty ? createEmptyTableRowLayout() : '' }</tr>
+	<!-- /row -->`;
 
-		// Create placeholder for empty table body. 
-		clubtablelayout = createEmptyTableRowLayout();
-	}
-
-	// Proceed if clubs list not empty. 
-	else {
-
-		// Go thru each club entry. 
-		for(let clubentry of tabledata.clubslist) {
-			
-			// Add table row layout for single club entry. 
-			clubtablelayout += `
-			<!-- row -->
-			<tr class="row">${ createClubEntryRowLayout(clubentry) }</tr>
-			<!-- /row -->`;
-		}
+	// Go thru each club entry. 
+	for(let clubentry of clubstable.tableentries) {
+		
+		// Add table row layout for single club entry. 
+		clubtablelayout += `
+		<!-- row -->
+		<tr class="row">${ createClubEntryRowLayout(clubentry) }</tr>
+		<!-- /row -->`;
 	}
 
 	// Display list of club entries. 
@@ -191,7 +186,14 @@ function loadClubTableBody() {
 			<td class="data a">
 
 				<!-- editbtn -->
-				<button class="btn editbtn" onclick="editClubEntry('${clubentry.clubid}')">
+				<button class="btn editbtn" title="Edit club: '${clubentry.clubname}'" onclick="editClubEntry('${clubentry.clubid}')">
+
+					<!-- icon -->
+					<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+						<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+					</svg>
+					<!-- /icon -->
 
 					<!-- caption -->
 					<span class="caption">Edit</span>
@@ -201,7 +203,19 @@ function loadClubTableBody() {
 				<!-- /editbtn -->
 
 				<!-- deletebtn -->
-				<button class="btn deletebtn" onclick="deleteClubEntry('${clubentry.clubid}')">
+				<button class="btn deletebtn" title="Delete club: '${clubentry.clubname}'" onclick="deleteClubEntry('${clubentry.clubid}')">
+
+					<!-- icon -->
+					<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- icon -->
+					<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+					</svg>
+					<!-- /icon -->
 
 					<!-- caption -->
 					<span class="caption">Delete</span>
@@ -220,35 +234,29 @@ function loadClubTableBody() {
 
 		// Compile placeholder table row layout for empty table. 
 		return `
-		<!-- row -->
-		<tr class="row">
+		<!-- data -->
+		<td class="data null" colspan="6">
 
-			<!-- data -->
-			<td class="data empty" colspan="6">
+			<!-- caption -->
+			<span class="caption">Add new clubs to view here</span>
+			<!-- /caption -->
 
-				<!-- caption -->
-				<span class="caption">Add a new club to view here</span>
-				<!-- /caption -->
-
-			</td>
-			<!-- /data -->
-
-		</tr>
-		<!-- /row -->`;
+		</td>
+		<!-- /data -->`;
 	}
 }
 
 // Load fields for creation of new club. 
 function loadClubTableAdder() {
 
-	// Get destination for list of entry fields. 
+	// Get destination for new entry fields. 
 	let creationfieldsdestination = document.querySelector('div#container section.clubadder div.grid ul.entrylist');
 
 	// Initialize layout for list of entry fields. 
 	let entrylistresult = '';
 
 	// Compile layout for list of entry fields. 
-	for(let entryfield of entryfielddata) {
+	for(let entryfield of clubstable.newclubfields) {
 
 		entrylistresult += `
 		<!-- entryitem -->
@@ -276,6 +284,12 @@ function loadClubTableAdder() {
 	creationfieldsdestination.innerHTML = entrylistresult;
 }
 
+// TODO: Start new club entry. 
+function startNewClubEntry() {
+
+	// 
+}
+
 // Add newly entered club to database (C in CRUD). 
 function addNewClubEntry() {
 
@@ -300,8 +314,8 @@ function addNewClubEntry() {
 	// Get newly entered club data: club distance list. 
 	let distancelist = `${newclubinputfields.distancelist.value}`.split(',');
 
-	// Check if club entry already exists. 
-	let alreadyclubentry = getClubById(clubid);
+	// TODO: Check if club entry already exists. 
+	let alreadyclubentry = false && getClubById(clubid);
 
 	// Warn user and abandon new club entry if already exists. 
 	if(alreadyclubentry) {
@@ -317,7 +331,7 @@ function addNewClubEntry() {
 	};
 	
 	// Add newly entered club entry to database. 
-	tabledata.clubslist.push(newclubentry);
+	clubstable.tableentries.push(newclubentry);
 
 	// Save data to memory. 
 	saveData();
@@ -365,10 +379,10 @@ function editClubEntry(givenclubid) {
 function deleteClubEntry(givenclubid) {
 
 	// Go thru each club entry in list. 
-	for(let index=0 ; index<tabledata.clubslist.length ; index++) {
+	for(let index=0 ; index<clubstable.tableentries.length ; index++) {
 
 		// Get current club entry. 
-		let clubentry = tabledata.clubslist[index];
+		let clubentry = clubstable.tableentries[index];
 
 		// Check if matching club entry found. 
 		let matchFound = clubentry.clubid == givenclubid;
@@ -376,11 +390,11 @@ function deleteClubEntry(givenclubid) {
 		// Delete matching club entry (if found). 
 		if(matchFound) {
 
-			// Confirm deletion. 
-			let go = confirm('Continue with deletion?');
+			// Confirm deletion of given club entry. 
+			let deletionconfirmed = confirm('Continue with deletion?');
 
-			// 
-			if(go) {
+			// Proceed if deletion confirmed. 
+			if(deletionconfirmed) {
 
 				// Delete club entry at given index. 
 				deleteClubEntryAtIndex(index);
@@ -393,7 +407,7 @@ function deleteClubEntry(givenclubid) {
 				return clubentry;
 			}
 
-			// 
+			// Note if deletion not confirmed. 
 			else {
 			
 				// Return remaining club entry. 
@@ -413,19 +427,15 @@ function deleteClubEntry(givenclubid) {
 	function deleteClubEntryAtIndex(indexofdeletion) {
 
 		// Remove item at given index of deletion. 
-		tabledata.clubslist.splice(indexofdeletion,1);
+		clubstable.tableentries.splice(indexofdeletion,1);
 	}
 }
 
-// Delete all entries from club database (D in CRUD). 
-function clearClubDatabase() {
-    console.log('Clearing club database...');
-
-	// Confirm deletion of all current club entries. 
-	if( tabledata.clubslist.length>0 && !confirm('Are you sure you want to delete current club entries?') );
-
-    // Create new list of clubs and distances. 
-    tabledata.clubslist = [];
+// Assign given data as clubs database. 
+function assignToClubsDatabase(givendata) {
+	
+	// Assign new list of clubs. 
+	clubstable.tableentries = givendata;
 	
 	// Save data to memory. 
 	saveData();
@@ -434,19 +444,46 @@ function clearClubDatabase() {
 	loadClubTableBody();
 }
 
-// Reset club database to default. 
-function resetClubDatabase() {
-    console.log('Resetting club database to default...');
+// Delete all entries from clubs database (D in CRUD). 
+function clearClubsDatabase() {
+	console.log('Clearing clubs database...');
 
-	// Confirm deletion of all current club entries. 
-	if( tabledata.clubslist.length>0 && !confirm('Are you sure you want to delete current club entries?') );
+	// Proceed if any club entries present. 
+	if( clubstable.tableentries.length>0 ) {
+		
+		// Confirm deletion of all current club entries. 
+		if( confirm('Are you sure you want to DELETE ALL current club entries?') ) {
 
-    // Delete list of clubs and distances. 
-    localStorage.removeItem('savedclubslist');
-    console.log('\tlocalStorage:',localStorage);
+			// Create new list of clubs. 
+			assignToClubsDatabase( [] );
+		}
+	}
 
-	// Show updated table of clubs. 
-    window.location.reload();
+	// Disregard if no club entries present. 
+	else alert('No club entries currently present.');
+}
+
+// Reset clubs database to default. 
+function resetClubsDatabase() {
+	console.log('Resetting clubs database to default...');
+
+	// Proceed if any club entries present. 
+	if( clubstable.tableentries.length>0 ) {
+
+		// Confirm replacement of all current club entries. 
+		if( confirm('Are you sure you want to REPLACE ALL current club entries with default club entries?') ) {
+
+			// Reset list of clubs to default. 
+			assignToClubsDatabase( defaultclubslist );
+		}
+	}
+
+	// Disregard if no club entries present. 
+	else {
+
+		// Reset list of clubs. 
+		assignToClubsDatabase( defaultclubslist );
+	}
 }
 
 // Save newly entered club distance. 

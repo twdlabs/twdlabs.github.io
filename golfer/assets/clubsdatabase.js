@@ -1,10 +1,54 @@
 
 
 
-// Define data for club table. 
-let tabledata = {
+// Define default entries for clubs table (per row). 
+const defaultclubslist = [
+	{
+		clubid:'driver',
+		clubname:'Driver',
+		distancelist:[100,74,7],
+	},
+	{
+		clubid:'3hybrid',
+		clubname:'3-Hybrid',
+		distancelist:[1,2,3],
+	},
+	{
+		clubid:'5hybrid',
+		clubname:'5-Hybrid',
+		distancelist:[1],
+	},
+	{
+		clubid:'7iron',
+		clubname:'7-Iron',
+		distancelist:[],
+	},
+	{
+		clubid:'9iron',
+		clubname:'9-Iron',
+		distancelist:[],
+	},
+	{
+		clubid:'approachwedge',
+		clubname:'Approach Wedge',
+		distancelist:[],
+	},
+	{
+		clubid:'sandwedge',
+		clubname:'Sand Wedge',
+		distancelist:[],
+	},
+	// {
+	// 	clubid:'xyz',
+	// 	clubname:'Xyz',
+	// 	distancelist:[],
+	// },
+];
 
-	// Define club table headers (per column). 
+// Define data for clubs table. 
+let clubstable = {
+
+	// Define headers for clubs table (per column). 
 	tableheaders:
 	[
 		{
@@ -42,91 +86,62 @@ let tabledata = {
 		// },
 	],
 
-	// Define club table entries (per row). 
-	clubslist:
-	[
+	// Define current entries of clubs table (per row). 
+	tableentries:defaultclubslist,
+
+	// Define entry fields for creating new clubs. 
+	newclubfields:[
+		// {
+		// 	entryid:'newclubid',
+		// 	entrytype:'text',
+		// 	entrycaption:'Club ID',
+		// },
 		{
-			clubid:'driver',
-			clubname:'Driver',
-			distancelist:[100,74,7],
+			entryid:'newclubbrand',
+			entrytype:'text',
+			entrycaption:'Club Brand',
 		},
 		{
-			clubid:'3hybrid',
-			clubname:'3-Hybrid',
-			distancelist:[1,2,3],
+			entryid:'newclubname',
+			entrytype:'text',
+			entrycaption:'Club Name',
 		},
 		{
-			clubid:'5hybrid',
-			clubname:'5-Hybrid',
-			distancelist:[1],
-		},
-		{
-			clubid:'7iron',
-			clubname:'7-Iron',
-			distancelist:[],
-		},
-		{
-			clubid:'9iron',
-			clubname:'9-Iron',
-			distancelist:[],
-		},
-		{
-			clubid:'approachwedge',
-			clubname:'Approach Wedge',
-			distancelist:[],
-		},
-		{
-			clubid:'sandwedge',
-			clubname:'Sand Wedge',
-			distancelist:[],
+			entryid:'newdistancelist',
+			entrytype:'text',
+			entrycaption:'Distance List',
 		},
 		// {
-		// 	clubid:'xyz',
-		// 	clubname:'Xyz',
-		// 	distancelist:[],
+		// 	entryid:'mindistance',
+		// 	entrytype:'number',
+		// 	entrycaption:'Minimum Distance',
+		// },
+		// {
+		// 	entryid:'avgdistance',
+		// 	entrytype:'number',
+		// 	entrycaption:'Average Distance',
+		// },
+		// {
+		// 	entryid:'maxdistance',
+		// 	entrytype:'number',
+		// 	entrycaption:'Maximum Distance',
+		// },
+		// {
+		// 	entryid:'xyz',
+		// 	entrytype:'number',
+		// 	entrycaption:'xyz',
+		// },
+	],
+
+	// Define entry fields for editing current clubs. 
+	editclubfields:[
+		// {
+		// 	entryid:'xyz',
+		// 	entrytype:'number',
+		// 	entrycaption:'xyz',
 		// },
 	],
 };
-
-
-// Define data for club creation fields. 
-let entryfielddata = [
-	{
-		entryid:'newclubid',
-		entrytype:'text',
-		entrycaption:'Club ID',
-	},
-	{
-		entryid:'newclubname',
-		entrytype:'text',
-		entrycaption:'Club Name',
-	},
-	{
-		entryid:'newdistancelist',
-		entrytype:'text',
-		entrycaption:'Distance List',
-	},
-	// {
-	// 	entryid:'mindistance',
-	// 	entrytype:'number',
-	// 	entrycaption:'Minimum Distance',
-	// },
-	// {
-	// 	entryid:'avgdistance',
-	// 	entrytype:'number',
-	// 	entrycaption:'Average Distance',
-	// },
-	// {
-	// 	entryid:'maxdistance',
-	// 	entrytype:'number',
-	// 	entrycaption:'Maximum Distance',
-	// },
-	// {
-	// 	entryid:'xyz',
-	// 	entrytype:'number',
-	// 	entrycaption:'xyz',
-	// },
-];
 
 
 /*****/
@@ -136,7 +151,7 @@ let entryfielddata = [
 function getClubById(givenclubid) {
 
 	// Go thru each club entry in list. 
-	for(let clubentry of tabledata.clubslist) {
+	for(let clubentry of clubstable.tableentries) {
 
 		// Check if matching club entry found. 
 		let matchFound = clubentry.clubid == givenclubid;
