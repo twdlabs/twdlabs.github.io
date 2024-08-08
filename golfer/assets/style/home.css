@@ -1,0 +1,17 @@
+
+
+
+/* div#container {} */
+
+
+/* Navbar */
+div#container nav.navbar {position:static; width:auto; padding:1rem; border-radius:.5rem;}
+div#container nav.navbar div.bin {display:flex; flex-direction:column;}
+div#container nav.navbar div.bin a.homelink h1.head {display:flex; flex-direction:column;}
+div#container nav.navbar div.bin a.homelink {flex-direction:column;}
+/* div#container nav.navbar div.bin a.homelink h1.head {} */
+/* div#container nav.navbar div.bin a.homelink h1.head span.caption {} */
+div#container nav.navbar div.bin a.homelink img.logo {height:5rem;}
+div#container nav.navbar div.bin ul.navlist {margin-top:.5rem;}
+/* div#container nav.navbar div.bin ul.navlist li.navitem {} */
+/* div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {} */

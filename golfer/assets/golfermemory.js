@@ -25,7 +25,7 @@ function saveData() {
 	}
 
 	// Show updated table of clubs. 
-	loadClubTableBody();
+	loadClubsTableBody();
 }
 
 // Restore saved data from memory (if it exists). 

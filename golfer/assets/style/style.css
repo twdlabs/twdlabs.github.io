@@ -54,10 +54,12 @@ div#container {display:flex; flex-direction:column; justify-content:center; alig
 div#container nav.navbar {position:absolute; top:0; right:0; left:0; width:100%;}
 div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:.5rem 2rem; box-shadow:var(--boxshadow);}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
-div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
-div#container nav.navbar div.bin h1.head svg.icon {display:none;}
-div#container nav.navbar div.bin h1.head img.logo {height:1.75em;}
-div#container nav.navbar div.bin h1.head span.caption {margin-left:.375rem;}
+div#container nav.navbar div.bin a.homelink {display:flex; flex-direction:row; align-items:center;}
+div#container nav.navbar div.bin a.homelink {color:inherit; text-decoration:none; user-select:none;}
+div#container nav.navbar div.bin a.homelink h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
+div#container nav.navbar div.bin a.homelink h1.head span.caption {margin-left:.375rem;}
+div#container nav.navbar div.bin a.homelink img.logo {display:none; height:2.5rem;}
+div#container nav.navbar div.bin a.homelink img.logo:first-child {display:block;}
 div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
 div#container nav.navbar div.bin ul.navlist li.navitem {padding:.25rem;}
 div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}

@@ -1,21 +1,15 @@
 
 
 
-// Load head of clubs table. 
-if(loadItUp) loadClubTableHead();
-
-// Load body of clubs table. 
-if(loadItUp) loadClubTableBody();
-
 // Load fields for creation of new club. 
-loadClubTableAdder();
+// loadClubTableAdder();
 
 
 /*****/
 
 
 // Load head layout for clubs table. 
-function loadClubTableHead() {
+function loadClubsTableHead() {
 
 	// Get destination for table headers. 
 	let tableheadersdestination = document.querySelector('div#container section.clubsviewer div.grid table.clubstable thead.head tr.row');
@@ -44,7 +38,7 @@ function loadClubTableHead() {
 }
 
 // Load body layout for clubs table (R in CRUD). 
-function loadClubTableBody() {
+function loadClubsTableBody() {
 
 	// Get destination for list of club entries. 
 	let clublistdestination = document.querySelector('div#container section.clubsviewer div.grid table.clubstable tbody.body');
@@ -246,7 +240,7 @@ function loadClubTableBody() {
 	}
 }
 
-// Load fields for creation of new club. 
+// Load fields for creating new clubs. 
 function loadClubTableAdder() {
 
 	// Get destination for new entry fields. 
@@ -284,10 +278,11 @@ function loadClubTableAdder() {
 	creationfieldsdestination.innerHTML = entrylistresult;
 }
 
-// TODO: Start new club entry. 
-function startNewClubEntry() {
+// Start new general entry. 
+function startNewEntry() {
 
-	// 
+	// Go directly to editor page for new entry. 
+	window.location.href = './add/';
 }
 
 // Add newly entered club to database (C in CRUD). 
@@ -358,6 +353,7 @@ function addNewClubEntry() {
 
 // Edit club entry in database (U in CRUD). 
 function editClubEntry(givenclubid) {
+	editEntry(givenclubid);
 
 	// Get club entry associated with given club id. 
 	let clubentry = getClubById(givenclubid);
@@ -373,6 +369,13 @@ function editClubEntry(givenclubid) {
 	
 	// Save data to memory. 
 	saveData();
+}
+
+// Edit general entry in database (U in CRUD). 
+function editEntry(givenentryid) {
+
+	// Go directly to editor page for existing entry. 
+	window.location.href = './edit/'
 }
 
 // Delete club entry from database (D in CRUD). 
@@ -441,7 +444,7 @@ function assignToClubsDatabase(givendata) {
 	saveData();
 
 	// Show updated table of clubs. 
-	loadClubTableBody();
+	loadClubsTableBody();
 }
 
 // Delete all entries from clubs database (D in CRUD). 
