@@ -8,82 +8,104 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../atgicon.ico" rel="icon"/>
-		<link href="./../atgicon.ico" rel="apple-touch-icon"/>
-		<title>Template</title>
+		<link href="../assets/icons/golf-logo-icon-stock-illustration-free-vector.jpg" rel="icon"/>
+		<title>Shots | Golf Tracker</title>
 
-		<!-- Main Stylesheet -->
-		<!-- <link href="./template.css" rel="stylesheet" type="text/css"/> -->
-		<style type="text/css">
-			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+		<!-- General Stylesheet -->
+		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
 
+		<!-- Viewer Page Stylesheet -->
+		<link href="../assets/style/viewer.css" rel="stylesheet" type="text/css"/>
 
-			* {box-sizing:border-box; /* padding:0; margin:0; */}
-
-
-			:root {
-
-				/* Theme Colors */
-				--lightgrey:#CCC;
-				--lightblack:#333;
-				
-				/* Gradient Colors */
-				/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
-
-				/* Page Sizes */
-				--pagewidth:60rem;
-				--cornersize:.5rem;
-				
-				/* Box Shadows */
-				--boxshadow:0 0 1rem 0 #0002;
-				--boxshadow:0 0 .25rem 0 #0003;
-			}
-
-			body {
-
-				--backcolor:var(--lightgrey);
-				--forecolor:black;
-			}
-
-			/* body.dark {
-
-				--backcolor:var(--lightblack);
-				--forecolor:white;
-			} */
-
-
-			body {background-color:var(--backcolor); background-image:var(--bgimg); margin:0;}
-			body {color:var(--forecolor); font-family:Nunito,sans-serif;}
-
-
-			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-			
-			div#container main.main {background-color:white; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
-			/* div#container main.main {width:100%; max-width:var(--pagewidth);} */
-			/* div#container main.main div.item {} */
-
-			
-			/* Tablet Screen */
-			@media screen and (max-width:64rem) {
-				/*  */
-			}
-			
-			/* Big Smartphone Screen */
-			@media screen and (max-width:48rem) {
-				/*  */
-			}
-			
-			/* Small Smartphone Screen */
-			@media screen and (max-width:32rem) {
-				/*  */
-			}
-		</style>
+		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
 
 		<!-- #container -->
 		<div id="container">
+
+			<!-- navbar -->
+			<nav class="navbar">
+
+				<!-- bin -->
+				<div class="bin">
+
+					<!-- homelink -->
+					<a class="homelink" href="../">
+
+						<!-- logo -->
+						<img class="logo" src="../assets/icons/pngtree-crossed-golf-clubs-icon-isolated-png-image_5260008.jpg" alt="logo">
+						<!-- /logo -->
+	
+						<!-- logo -->
+						<img class="logo" src="../assets/icons/istockphoto-660995292-170667a.jpg" alt="logo">
+						<!-- /logo -->
+	
+						<!-- head -->
+						<h1 class="head">
+							
+							<!-- caption -->
+							<span class="caption">Golf Tracker</span>
+							<!-- /caption -->
+						
+						</h1>
+						<!-- /head -->
+
+					</a>
+					<!-- /homelink -->
+	
+					<!-- navlist -->
+					<ul class="navlist">
+	
+						<!-- navitem -->
+						<li class="navitem">
+
+							<!-- navlink -->
+							<a class="navlink" href="../clubs">Clubs</a>
+							<!-- /navlink -->
+
+						</li>
+						<!-- /navitem -->
+	
+						<!-- navitem -->
+						<li class="navitem">
+
+							<!-- navlink -->
+							<a class="navlink" href="../holes">Holes</a>
+							<!-- /navlink -->
+
+						</li>
+						<!-- /navitem -->
+	
+						<!-- navitem -->
+						<li class="navitem">
+
+							<!-- navlink -->
+							<a class="navlink" href="../shots">Shots</a>
+							<!-- /navlink -->
+
+						</li>
+						<!-- /navitem -->
+	
+						<!-- navitem -->
+						<li class="navitem x">
+
+							<!-- navlink -->
+							<a class="navlink" href="javascript:void(0)">Link</a>
+							<!-- /navlink -->
+
+						</li>
+						<!-- /navitem -->
+	
+					</ul>
+					<!-- /navlist -->
+
+				</div>
+				<!-- /bin -->
+
+			</nav>
+			<!-- /navbar -->
 
 			<!-- main -->
 			<main class="main">
