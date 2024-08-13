@@ -90,55 +90,91 @@ let clubstable = {
 	tableentries:defaultclubslist,
 
 	// Define entry fields for creating new clubs. 
-	newclubfields:[
+	clubaddfields:[
 		// {
-		// 	entryid:'newclubid',
-		// 	entrytype:'text',
-		// 	entrycaption:'Club ID',
+		// 	fieldid:'newclubid',
+		// 	fieldtype:'text',
+		// 	fieldcaption:'Club ID',
 		// },
 		{
-			entryid:'newclubbrand',
-			entrytype:'text',
-			entrycaption:'Club Brand',
+			fieldid:'newclubbrand',
+			fieldtype:'text',
+			fieldcaption:'Club Brand',
 		},
 		{
-			entryid:'newclubname',
-			entrytype:'text',
-			entrycaption:'Club Name',
+			fieldid:'newclubname',
+			fieldtype:'text',
+			fieldcaption:'Club Name',
+		},
+		// {
+		// 	fieldid:'newdistancelist',
+		// 	fieldtype:'text',
+		// 	fieldcaption:'Distance List',
+		// },
+		{
+			fieldid:'newmindistance',
+			fieldtype:'number',
+			fieldcaption:'Minimum Distance',
+			fieldcaption:'Min Distance',
 		},
 		{
-			entryid:'newdistancelist',
-			entrytype:'text',
-			entrycaption:'Distance List',
+			fieldid:'newavgdistance',
+			fieldtype:'number',
+			fieldcaption:'Average Distance',
+			fieldcaption:'Avg Distance',
+		},
+		{
+			fieldid:'newmaxdistance',
+			fieldtype:'number',
+			fieldcaption:'Maximum Distance',
+			fieldcaption:'Max Distance',
 		},
 		// {
-		// 	entryid:'mindistance',
-		// 	entrytype:'number',
-		// 	entrycaption:'Minimum Distance',
-		// },
-		// {
-		// 	entryid:'avgdistance',
-		// 	entrytype:'number',
-		// 	entrycaption:'Average Distance',
-		// },
-		// {
-		// 	entryid:'maxdistance',
-		// 	entrytype:'number',
-		// 	entrycaption:'Maximum Distance',
-		// },
-		// {
-		// 	entryid:'xyz',
-		// 	entrytype:'number',
-		// 	entrycaption:'xyz',
+		// 	fieldid:'xyz',
+		// 	fieldtype:'number',
+		// 	fieldcaption:'xyz',
 		// },
 	],
 
-	// Define entry fields for editing current clubs. 
-	editclubfields:[
+	// Define entry fields for editing existing clubs. 
+	clubeditfields:[
+		{
+			fieldid:'clubbrand',
+			fieldtype:'text',
+			fieldcaption:'Club Brand',
+		},
+		{
+			fieldid:'clubname',
+			fieldtype:'text',
+			fieldcaption:'Club Name',
+		},
 		// {
-		// 	entryid:'xyz',
-		// 	entrytype:'number',
-		// 	entrycaption:'xyz',
+		// 	fieldid:'newdistancelist',
+		// 	fieldtype:'text',
+		// 	fieldcaption:'Distance List',
+		// },
+		{
+			fieldid:'mindistance',
+			fieldtype:'number',
+			fieldcaption:'Minimum Distance',
+			fieldcaption:'Min Distance',
+		},
+		{
+			fieldid:'avgdistance',
+			fieldtype:'number',
+			fieldcaption:'Average Distance',
+			fieldcaption:'Avg Distance',
+		},
+		{
+			fieldid:'maxdistance',
+			fieldtype:'number',
+			fieldcaption:'Maximum Distance',
+			fieldcaption:'Max Distance',
+		},
+		// {
+		// 	fieldid:'xyz',
+		// 	fieldtype:'number',
+		// 	fieldcaption:'xyz',
 		// },
 	],
 };

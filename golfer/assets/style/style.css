@@ -63,7 +63,7 @@ div#container nav.navbar div.bin a.homelink img.logo:first-child {display:block;
 div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
 div#container nav.navbar div.bin ul.navlist li.navitem {padding:.25rem;}
 div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:block; color:inherit; text-decoration:none;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:block; color:inherit; text-decoration:none; user-select:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {background-color:var(--themecolor); color:white; padding:.5rem 1.25rem; border-radius:.25rem;}
 
 
@@ -79,7 +79,7 @@ div#container section div.grid button.btn {padding:.5rem; border:0 none; border-
 div#container section div.grid button.btn svg.icon {display:none;}
 div#container section div.grid button.btn svg.icon:first-child {display:block;}
 div#container section div.grid button.btn span.caption {/* display:none; */ font-size:.75rem; margin-left:.375rem;}
-/* div#container section div.grid div.foot {} */
+div#container section div.grid div.foot {display:flex; flex-direction:row; grid-gap:.25rem;}
 div#container section div.grid div.foot button.btn {width:100%; padding:.625rem; margin-top:.25rem;}
 
 
