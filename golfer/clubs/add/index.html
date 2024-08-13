@@ -123,37 +123,43 @@
 					</div>
 					<!-- /head -->
 
-					<!-- entrylist -->
-					<ul class="entrylist">
+					<!-- body -->
+					<form class="body" id="addform" action="./addclub.php" method="post">
 
-						<!-- entryitem -->
-						<li class="entryitem">
+						<!-- fieldlist -->
+						<ul class="fieldlist">
+	
+							<!-- fielditem -->
+							<li class="fielditem">
+	
+								<!-- entryfield -->
+								<div class="entryfield">
+			
+									<!-- fieldname -->
+									<label class="fieldname" for="uniqueentryid">Field Name</label>
+									<!-- /fieldname -->
+			
+									<!-- fieldvalue -->
+									<input class="fieldvalue" type="text" id="uniqueentryid" name="uniqueentryid" placeholder="placeholder">
+									<!-- /fieldvalue -->
+			
+								</div>
+								<!-- /entryfield -->
+								
+							</li>
+							<!-- /fielditem -->
+	
+						</ul>
+						<!-- /fieldlist -->
 
-							<!-- entry -->
-							<div class="entry">
-		
-								<!-- entryname -->
-								<label class="entryname" for="uniqueentryid">Entry Name</label>
-								<!-- /entryname -->
-		
-								<!-- entryvalue -->
-								<input class="entryvalue" type="text" id="uniqueentryid" placeholder="xyz">
-								<!-- /entryvalue -->
-		
-							</div>
-							<!-- /entry -->
-							
-						</li>
-						<!-- /entryitem -->
-
-					</ul>
-					<!-- /entrylist -->
+					</form>
+					<!-- /body -->
 
 					<!-- foot -->
 					<div class="foot">
 
 						<!-- addbtn -->
-						<button class="btn addbtn" onclick="addNewClubEntry()">
+						<button class="btn addbtn" form="addform" onclick="addNewClubEntry()">
 	
 							<!-- icon -->
 							<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -168,6 +174,22 @@
 						</button>
 						<!-- /addbtn -->
 
+						<!-- cancelbtn -->
+						<button class="btn cancelbtn" onclick="cancelNewClubEntry()">
+	
+							<!-- icon -->
+							<svg class="icon cross" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+							</svg>
+							<!-- /icon -->
+	
+							<!-- caption -->
+							<span class="caption">Cancel</span>
+							<!-- /caption -->
+	
+						</button>
+						<!-- /cancelbtn -->
+
 					</div>
 					<!-- /foot -->
 
@@ -181,14 +203,29 @@
 		<!-- /#container -->
 
 
+		<!-- Parameter Script -->
+		<script type="text/javascript">
+			let loadItUp = false;
+			loadItUp = true;
+		</script>
+
+
 		<!-- Clubs Database -->
-		<script src="../../assets/clubsdatabase.js" type="text/javascript"></script>
+		<script src="../../assets/database/clubsdatabase.js" type="text/javascript"></script>
 
 		<!-- Memory Script -->
-		<script src="../../assets/golfermemory.js" type="text/javascript"></script>
+		<script src="../../assets/database/golfermemory.js" type="text/javascript"></script>
 
 		<!-- CRUD Script -->
 		<script src="../../assets/crud.js" type="text/javascript"></script>
+		<script src="../../assets/script/create.js" type="text/javascript"></script>
+
+		<!-- Run Script -->
+		<script type="text/javascript">
+
+			// Load fields for creating new club. 
+			if(loadItUp) loadClubTableAdder();
+		</script>
 
 	</body>
 

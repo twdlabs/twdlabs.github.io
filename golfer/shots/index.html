@@ -133,12 +133,31 @@
 		<!-- /#container -->
 
 
-		<!-- Xyz Database -->
-		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
+		<!-- Parameter Script -->
+		<script type="text/javascript">
+			let loadItUp = false;
+			loadItUp = true;
+		</script>
 
-		<!-- Main Script -->
-		<!-- <script src="./template.js" type="text/javascript"></script> -->
-		<!-- <script type="text/javascript"></script> -->
+		<!-- Shots Database -->
+		<script src="../assets/shotsdatabase.js" type="text/javascript"></script>
+
+		<!-- Memory Script -->
+		<script src="../assets/database/golfermemory.js" type="text/javascript"></script>
+
+		<!-- CRUD Script -->
+		<script src="../assets/crud.js" type="text/javascript"></script>
+		<script src="../assets/script/read.js" type="text/javascript"></script>
+
+		<!-- Run Script -->
+		<script type="text/javascript">
+
+			// Load head of shots table. 
+			if(loadItUp) loadShotsTableHead();
+			
+			// Load body of shots table. 
+			if(loadItUp) loadShotsTableBody();
+		</script>
 
 	</body>
 
