@@ -71,6 +71,8 @@ function loadClubsTableBody() {
 
 		// Get name of given club. 
 		let clubname = clubentry.clubname ? clubentry.clubname : '--';
+		// Get brand of given club. 
+		let clubbrand = clubentry.clubbrand ? clubentry.clubbrand : '--';
 		// Get minimum distance for given club. 
 		let mindistance = clubentry.distancelist.length ? findMinimum(clubentry.distancelist) : 0;
 		// Get average distance for given club. 
@@ -82,6 +84,8 @@ function loadClubsTableBody() {
 		let tablerowlayout = '';
  		// Add layout for name of given club. 
 		tablerowlayout += createTableDataBlockLayout( clubname );
+ 		// Add layout for brand of given club. 
+		tablerowlayout += createTableDataBlockLayout( clubbrand );
 		// Add layout for minimum distance of given club. 
 		tablerowlayout += createTableDataBlockLayout( formatNumber(mindistance) , true );
 		// Add layout for average distance of given club. 

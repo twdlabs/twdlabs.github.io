@@ -6,41 +6,49 @@ const defaultclubslist = [
 	{
 		clubid:'driver',
 		clubname:'Driver',
+		clubbrand:'Xyz',
 		distancelist:[100,74,7],
 	},
 	{
 		clubid:'3hybrid',
 		clubname:'3-Hybrid',
+		clubbrand:'Xyz',
 		distancelist:[1,2,3],
 	},
 	{
 		clubid:'5hybrid',
 		clubname:'5-Hybrid',
+		clubbrand:'Xyz',
 		distancelist:[1],
 	},
 	{
 		clubid:'7iron',
 		clubname:'7-Iron',
+		clubbrand:'Xyz',
 		distancelist:[],
 	},
 	{
 		clubid:'9iron',
 		clubname:'9-Iron',
+		clubbrand:'Xyz',
 		distancelist:[],
 	},
 	{
 		clubid:'approachwedge',
 		clubname:'Approach Wedge',
+		clubbrand:'Xyz',
 		distancelist:[],
 	},
 	{
 		clubid:'sandwedge',
 		clubname:'Sand Wedge',
+		clubbrand:'Xyz',
 		distancelist:[],
 	},
 	// {
 	// 	clubid:'xyz',
 	// 	clubname:'Xyz',
+	// 	clubbrand:'Xyz',
 	// 	distancelist:[],
 	// },
 ];
@@ -53,6 +61,10 @@ let clubstable = {
 	[
 		{
 			caption:'Golf Club',
+			center:false,
+		},
+		{
+			caption:'Brand',
 			center:false,
 		},
 		{

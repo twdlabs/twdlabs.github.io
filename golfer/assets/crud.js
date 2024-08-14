@@ -1,6 +1,20 @@
 
 
 
+// Start creating new entry (C in CRUD). 
+function startNewEntry() {
+
+	// Go directly to editor page for new entry. 
+	window.location.href = './add/';
+}
+
+// Start editing entry (U in CRUD). 
+function startEditEntry(givenentryid) {
+
+	// Go directly to editor page for existing entry. 
+	window.location.href = './edit/?entryid='+givenentryid;
+}
+
 // Compile layout for given list of fields. 
 function createFieldsListLayout(fieldslistdata) {
 
@@ -34,38 +48,4 @@ function createFieldsListLayout(fieldslistdata) {
 
 	// 
 	return fieldlistresult;
-}
-
-// Start new general entry. 
-function startNewEntry() {
-
-	// Go directly to editor page for new entry. 
-	window.location.href = './add/';
-}
-
-// Edit general entry in database (U in CRUD). 
-function startEditEntry(givenentryid) {
-
-	// Go directly to editor page for existing entry. 
-	window.location.href = './edit/?entryid='+givenentryid;
-}
-
-// Edit club entry in database (U in CRUD). 
-function editClubEntrySimple(givenclubid) {
-	startEditEntry(givenclubid);
-
-	// Get club entry associated with given club id. 
-	let clubentry = getClubById(givenclubid);
-
-	// Edit club id. 
-	clubentry.clubid = prompt('Enter new club id.',clubentry.clubid);
-
-	// Edit club name. 
-	clubentry.clubname = prompt('Enter new club name.',clubentry.clubname);
-
-	// Edit club distance list. 
-	clubentry.distancelist = ( prompt('Enter new club distances.',clubentry.distancelist) ).split(',');
-	
-	// Save data to memory. 
-	saveData();
 }
