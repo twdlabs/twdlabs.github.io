@@ -2,7 +2,7 @@
 
 
 // Save data to memory. 
-function saveData() {
+function saveToMemory() {
 	console.log('Saving data to memory...');
 
 	// Save if any club entries present. 
@@ -30,7 +30,7 @@ function saveData() {
 }
 
 // Restore saved data from memory (if it exists). 
-function restoreSavedData() {
+function restoreFromMemory() {
 	console.log('Restoring saved data from memory...');
 
 	// Get saved list of clubs (in string form). 

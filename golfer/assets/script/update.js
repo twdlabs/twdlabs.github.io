@@ -18,7 +18,7 @@ function loadClubTableEditor() {
 	let editformfieldsdestination = document.querySelector('div#container section.clubeditor div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(clubstable.clubeditorfields,false);
+	let fieldlistresult = createFieldsListLayout(clubstable.tableentryfields,false);
 
 	// Display list of fields in 'edit entry' form. 
 	editformfieldsdestination.innerHTML = fieldlistresult;
@@ -38,7 +38,7 @@ function saveUpdatedClubEntry() {
 	let clubentry = getClubById(entryid);
 
 	// Go thru each club property (by field data item). 
-	for(let fielddata of clubstable.clubeditorfields) {
+	for(let fielddata of clubstable.tableentryfields) {
 
 		// Get field id for given field data item. 
 		let fieldid = fielddata.fieldid;
@@ -64,7 +64,7 @@ function saveUpdatedClubEntry() {
 	// // clubentry.xyz = xyz;
 
 	// Save data to memory. 
-	saveData();
+	saveToMemory();
 
 	// Close club entry editor. 
 	closeEditClubEntry();
@@ -109,5 +109,5 @@ function saveNewClubDistance(givenclubid) {
 	}
 
 	// Save data to memory. 
-	saveData();
+	saveToMemory();
 }

@@ -11,15 +11,15 @@ function loadClubsTableHead() {
 	let tableheadersresult = '';
 
 	// Accumulate layout for all table headers. 
-	for(let header of clubstable.tableheaders) {
+	for(let column of clubstable.tablecolumns) {
 
 		// Compile layout for single table header. 
 		tableheadersresult += `
 		<!-- head -->
-		<th class="head${ header.center ? ' c' : '' }">
+		<th class="head${ column.columncenter ? ' c' : '' }">
 
 			<!-- caption -->
-			<span class="caption">${header.caption}</span>
+			<span class="caption">${column.columnheader}</span>
 			<!-- /caption -->
 
 		</th>
@@ -40,7 +40,7 @@ function loadClubsTableBody() {
 	let clubtablelayout = '';
 
 	// Restore saved data from memory. 
-	restoreSavedData();
+	restoreFromMemory();
 
 	// Check if clubs list is empty. 
 	let clubslistempty = clubstable.tableentries.length == 0;
@@ -57,7 +57,7 @@ function loadClubsTableBody() {
 		// Add table row layout for single club entry. 
 		clubtablelayout += `
 		<!-- row -->
-		<tr class="row">${ createClubEntryRowLayout(clubentry) }</tr>
+		<tr class="row" title="id:${clubentry.clubid}">${ createEntryRowLayout(clubentry) }</tr>
 		<!-- /row -->`;
 	}
 
@@ -67,8 +67,10 @@ function loadClubsTableBody() {
 	/****/
 
 	// Create table row layout for given club entry. 
-	function createClubEntryRowLayout(clubentry) {
+	function createEntryRowLayout(clubentry) {
 
+		// Get name of given club. 
+		let clubid = clubentry.clubid ? clubentry.clubid : '--';
 		// Get name of given club. 
 		let clubname = clubentry.clubname ? clubentry.clubname : '--';
 		// Get brand of given club. 
@@ -82,16 +84,18 @@ function loadClubsTableBody() {
 
 		// Initialize layout for table row. 
 		let tablerowlayout = '';
+		// Add layout for id of given club. 
+	   tablerowlayout += createTableBlockLayout(clubid, 0);
  		// Add layout for name of given club. 
-		tablerowlayout += createTableDataBlockLayout( clubname );
+		tablerowlayout += createTableBlockLayout(clubname, 1);
  		// Add layout for brand of given club. 
-		tablerowlayout += createTableDataBlockLayout( clubbrand );
+		tablerowlayout += createTableBlockLayout(clubbrand, 2);
 		// Add layout for minimum distance of given club. 
-		tablerowlayout += createTableDataBlockLayout( formatNumber(mindistance) , true );
+		tablerowlayout += createTableBlockLayout( formatNumber(mindistance), 3);
 		// Add layout for average distance of given club. 
-		tablerowlayout += createTableDataBlockLayout( formatNumber(avgdistance) , true );
+		tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 4);
 		// Add layout for maximum distance of given club. 
-		tablerowlayout += createTableDataBlockLayout( formatNumber(maxdistance) , true );
+		tablerowlayout += createTableBlockLayout( formatNumber(maxdistance), 5);
 		// Add layout for distance entry field of given club. 
 		tablerowlayout += createTableInputBlockLayout(clubentry.clubid);
 		// Add action field for given club. 
@@ -137,7 +141,10 @@ function loadClubsTableBody() {
 		}
 
 		// Create block layout for given table data. 
-		function createTableDataBlockLayout(caption,isblockcentered) {
+		function createTableBlockLayout(caption,blockindex) {
+
+			// Check if block is centered. 
+			let isblockcentered = clubstable.tablecolumns[blockindex].columncenter;
 	
 			// Compile table data block. 
 			return `

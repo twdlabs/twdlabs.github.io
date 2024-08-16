@@ -26,7 +26,7 @@ function deleteClubEntry(givenclubid) {
 				deleteClubEntryAtIndex(index);
 	
 				// Save data to memory. 
-				saveData();
+				saveToMemory();
 			
 				// Return deleted club entry. 
 				console.log('Club entry deleted:',clubentry);
@@ -80,21 +80,12 @@ function clearClubsDatabase() {
 function resetClubsDatabase() {
 	console.log('Resetting clubs database to default...');
 
-	// Simplify if no club entries present. 
-	if( clubstable.tableentries.length==0 ) {
-
-		// Reset list of clubs. 
-		assignToClubsDatabase( defaultclubslist );
-        return;
+	// Proceed if no club entries present or if replacement confirmed. 
+	let proceed = clubstable.tableentries.length==0 || confirm('Are you sure you want to REPLACE ALL current club entries with default club entries?');
+	if(proceed) {
+		// Reset list of clubs to default. 
+		assignToClubsDatabase( clubstable.defaulttableentries );
 	}
-
-	// Proceed if any club entries present. 
-    // Confirm replacement of all current club entries. 
-    if( confirm('Are you sure you want to REPLACE ALL current club entries with default club entries?') ) {
-
-        // Reset list of clubs to default. 
-        assignToClubsDatabase( defaultclubslist );
-    }
 }
 
 // Assign given data as clubs database. 
@@ -104,7 +95,7 @@ function assignToClubsDatabase(givendata) {
 	clubstable.tableentries = givendata;
 	
 	// Save data to memory. 
-	saveData();
+	saveToMemory();
 
 	// Show updated table of clubs. 
 	loadClubsTableBody();

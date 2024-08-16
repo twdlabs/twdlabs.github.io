@@ -1,111 +1,58 @@
 
 
 
-// Define default entries for clubs table (per row). 
-const defaultclubslist = [
-	{
-		clubid:'driver',
-		clubname:'Driver',
-		clubbrand:'Xyz',
-		distancelist:[100,74,7],
-	},
-	{
-		clubid:'3hybrid',
-		clubname:'3-Hybrid',
-		clubbrand:'Xyz',
-		distancelist:[1,2,3],
-	},
-	{
-		clubid:'5hybrid',
-		clubname:'5-Hybrid',
-		clubbrand:'Xyz',
-		distancelist:[1],
-	},
-	{
-		clubid:'7iron',
-		clubname:'7-Iron',
-		clubbrand:'Xyz',
-		distancelist:[],
-	},
-	{
-		clubid:'9iron',
-		clubname:'9-Iron',
-		clubbrand:'Xyz',
-		distancelist:[],
-	},
-	{
-		clubid:'approachwedge',
-		clubname:'Approach Wedge',
-		clubbrand:'Xyz',
-		distancelist:[],
-	},
-	{
-		clubid:'sandwedge',
-		clubname:'Sand Wedge',
-		clubbrand:'Xyz',
-		distancelist:[],
-	},
-	// {
-	// 	clubid:'xyz',
-	// 	clubname:'Xyz',
-	// 	clubbrand:'Xyz',
-	// 	distancelist:[],
-	// },
-];
-
 // Define data for clubs table. 
 let clubstable = {
 
-	// Define headers for clubs table (per column). 
-	tableheaders:
+	// Define current entries of clubs table (per row). 
+	tableentries:[],
+
+	// Define column headers for clubs table (per column). 
+	tablecolumns:
 	[
 		{
-			caption:'Golf Club',
-			center:false,
+			columnheader:'ID',
+			columncenter:true,
 		},
 		{
-			caption:'Brand',
-			center:false,
+			columnheader:'Golf Club',
+			columncenter:false,
 		},
 		{
-			caption:'Minimum Distance',
-			caption:'Min',
-			center:true,
+			columnheader:'Brand',
+			columncenter:false,
 		},
 		{
-			caption:'Average Distance',
-			caption:'Avg',
-			center:true,
+			columnheader:'Minimum Distance',
+			columnheader:'Min',
+			columncenter:true,
 		},
 		{
-			caption:'Maximum Distance',
-			caption:'Max',
-			center:true,
+			columnheader:'Average Distance',
+			columnheader:'Avg',
+			columncenter:true,
 		},
 		{
-			caption:'Add New Entry',
-			caption:'New Distance',
-			caption:'New',
-			center:true,
+			columnheader:'Maximum Distance',
+			columnheader:'Max',
+			columncenter:true,
 		},
 		{
-			caption:'Action',
-			center:true,
+			columnheader:'Add New Entry',
+			columnheader:'New Distance',
+			columnheader:'New',
+			columncenter:true,
 		},
-		// {
-		// 	caption:'xyz',
-		// 	center:false,
-		// },
+		{
+			columnheader:'Action',
+			columncenter:true,
+		},
 	],
 
-	// Define current entries of clubs table (per row). 
-	tableentries:defaultclubslist,
-
-	// Define entry fields for creating new clubs. 
-	// Define entry fields for editing existing clubs. 
-	clubeditorfields:[
+	// Define entry fields for clubs. 
+	tableentryfields:[
 		// {
-		// 	fieldid:'clubid',
+	// 	fieldid:'clubid',
 		// 	fieldtype:'text',
 		// 	fieldcaption:'Club ID',
 		// },
@@ -147,6 +94,60 @@ let clubstable = {
 		// 	fieldid:'xyz',
 		// 	fieldtype:'number',
 		// 	fieldcaption:'xyz',
+		// 	columnheader:'xyz',
+		// 	columncenter:false,
+		// },
+	],
+
+	// Define default entries for clubs table (per row). 
+	defaulttableentries: [
+		{
+			clubid:'drv',
+			clubname:'Driver',
+			clubbrand:'Nike',
+			distancelist:[100,74,7],
+		},
+		{
+			clubid:'3h',
+			clubname:'3-Hybrid',
+			clubbrand:'Reebok',
+			distancelist:[1,2,3],
+		},
+		{
+			clubid:'5h',
+			clubname:'5-Hybrid',
+			clubbrand:'Adidas',
+			distancelist:[1],
+		},
+		{
+			clubid:'7i',
+			clubname:'7-Iron',
+			clubbrand:'Toyota',
+			distancelist:[],
+		},
+		{
+			clubid:'9i',
+			clubname:'9-Iron',
+			clubbrand:'Honda',
+			distancelist:[],
+		},
+		{
+			clubid:'apw',
+			clubname:'Approach Wedge',
+			clubbrand:'Samsung',
+			distancelist:[],
+		},
+		{
+			clubid:'sw',
+			clubname:'Sand Wedge',
+			clubbrand:'Apple',
+			distancelist:[],
+		},
+		// {
+		// 	clubid:'xyz',
+		// 	clubname:'Xyz',
+		// 	clubbrand:'Xyz',
+		// 	distancelist:[],
 		// },
 	],
 };

@@ -8,7 +8,7 @@ function loadClubTableAdder() {
 	let addformfieldsdestination = document.querySelector('div#container section.clubadder div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(clubstable.clubeditorfields,true);
+	let fieldlistresult = createFieldsListLayout(clubstable.tableentryfields,true);
 
 	// Display list of fields in 'add entry' form. 
 	addformfieldsdestination.innerHTML = fieldlistresult;
@@ -28,7 +28,7 @@ function saveNewClubEntry() {
 	let newclubentry = {};
 
 	// Go thru each club property (by field data item). 
-	for(let fielddata of clubstable.clubeditorfields) {
+	for(let fielddata of clubstable.tableentryfields) {
 
 		// Get field id for given field data item. 
 		let fieldid = 'new' + fielddata.fieldid;
@@ -45,7 +45,7 @@ function saveNewClubEntry() {
 	clubstable.tableentries.push(newclubentry);
 
 	// Save data to memory. 
-	saveData();
+	saveToMemory();
 
 	// Close new club entry editor. 
 	closeNewClubEntry();
