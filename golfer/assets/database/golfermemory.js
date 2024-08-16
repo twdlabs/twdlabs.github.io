@@ -25,7 +25,8 @@ function saveData() {
 	}
 
 	// Show updated table of clubs. 
-	loadClubsTableBody();
+	let xyz = typeof tablepresent !== typeof undefined;
+	if(xyz) loadClubsTableBody();
 }
 
 // Restore saved data from memory (if it exists). 

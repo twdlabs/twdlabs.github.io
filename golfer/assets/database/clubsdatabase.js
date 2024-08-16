@@ -102,68 +102,28 @@ let clubstable = {
 	tableentries:defaultclubslist,
 
 	// Define entry fields for creating new clubs. 
-	clubaddfields:[
+	// Define entry fields for editing existing clubs. 
+	clubeditorfields:[
 		// {
-		// 	fieldid:'newclubid',
+		// 	fieldid:'clubid',
 		// 	fieldtype:'text',
 		// 	fieldcaption:'Club ID',
 		// },
-		{
-			fieldid:'newclubbrand',
-			fieldtype:'text',
-			fieldcaption:'Club Brand',
-		},
-		{
-			fieldid:'newclubname',
-			fieldtype:'text',
-			fieldcaption:'Club Name',
-		},
-		// {
-		// 	fieldid:'newdistancelist',
-		// 	fieldtype:'text',
-		// 	fieldcaption:'Distance List',
-		// },
-		{
-			fieldid:'newmindistance',
-			fieldtype:'number',
-			fieldcaption:'Minimum Distance',
-			fieldcaption:'Min Distance',
-		},
-		{
-			fieldid:'newavgdistance',
-			fieldtype:'number',
-			fieldcaption:'Average Distance',
-			fieldcaption:'Avg Distance',
-		},
-		{
-			fieldid:'newmaxdistance',
-			fieldtype:'number',
-			fieldcaption:'Maximum Distance',
-			fieldcaption:'Max Distance',
-		},
-		// {
-		// 	fieldid:'xyz',
-		// 	fieldtype:'number',
-		// 	fieldcaption:'xyz',
-		// },
-	],
-
-	// Define entry fields for editing existing clubs. 
-	clubeditfields:[
-		{
-			fieldid:'clubbrand',
-			fieldtype:'text',
-			fieldcaption:'Club Brand',
-		},
 		{
 			fieldid:'clubname',
 			fieldtype:'text',
 			fieldcaption:'Club Name',
 		},
+		{
+			fieldid:'clubbrand',
+			fieldtype:'text',
+			fieldcaption:'Club Brand',
+		},
 		// {
-		// 	fieldid:'newdistancelist',
+		// 	fieldid:'distancelist',
 		// 	fieldtype:'text',
 		// 	fieldcaption:'Distance List',
+		// 	fieldlistmode:true,
 		// },
 		{
 			fieldid:'mindistance',

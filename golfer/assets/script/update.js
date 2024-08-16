@@ -18,53 +18,70 @@ function loadClubTableEditor() {
 	let editformfieldsdestination = document.querySelector('div#container section.clubeditor div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(clubstable.clubeditfields);
+	let fieldlistresult = createFieldsListLayout(clubstable.clubeditorfields,false);
 
 	// Display list of fields in 'edit entry' form. 
 	editformfieldsdestination.innerHTML = fieldlistresult;
 }
 
-// Cancel edit club entry. 
-function cancelEditClubEntry() {
+// Close club entry editor. 
+function closeEditClubEntry() {
 
 	// Go directly to previous page (club viewer). 
 	window.location.href = '../';
 }
 
-// TODO: Save edited club entry to database (U in CRUD). 
-function saveEditedClubEntry() {
+// TODO: Save updated club entry in database (U in CRUD). 
+function saveUpdatedClubEntry() {
 
-	// Get club associated to given id. 
+	// Get club entry to be edited (by given club id in url). 
 	let clubentry = getClubById(entryid);
 
-	// Update new attributes of given club entry. 
-	// clubentry.xyz = xyz;
+	// Go thru each club property (by field data item). 
+	for(let fielddata of clubstable.clubeditorfields) {
+
+		// Get field id for given field data item. 
+		let fieldid = fielddata.fieldid;
+
+		// Get actual input field elements. 
+		let fieldinput = document.querySelector('div#container section.clubeditor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#'+fieldid);
+		
+		// Save newly entered data for club property. 
+		if(fieldinput.value) clubentry[fieldid] = `${fieldinput.value}`;
+		else console.warn(`Invalid value provided for club property: ${fieldid}.`);
+	}
 	
-		// Edit club name. 
-		// clubentry.clubname = prompt('Enter new club name.',clubentry.clubname);
+	// // Get new club name. 
+	// let newclubname = document.querySelector('input#clubname').value;
+	// // Get new club brand. 
+	// let newclubbrand = document.querySelector('input#clubbrand').value;
 	
-		// Edit club brand. 
-		// clubentry.clubbrand = prompt('Enter new club brand.',clubentry.clubid);
+	// // Update name attribute of given club entry. 
+	// if(newclubname) clubentry.clubname = newclubname;
+	// // Update brand attribute of given club entry. 
+	// if(newclubbrand) clubentry.clubbrand = newclubbrand;
+	// // Update new attribute of given club entry. 
+	// // clubentry.xyz = xyz;
+
+	// Save data to memory. 
+	saveData();
+
+	// Close club entry editor. 
+	closeEditClubEntry();
 
 	/****/
 
 	// Edit club entry in database (U in CRUD). 
 	function editClubEntry(givenclubid) {
 	
-		// Get club entry associated with given club id. 
-		let clubentry = getClubById(givenclubid);
-	
-		// Edit club name. 
+		// Update club name. 
 		clubentry.clubname = prompt('Enter new club name.',clubentry.clubname);
 	
-		// Edit club brand. 
+		// Update club brand. 
 		clubentry.clubbrand = prompt('Enter new club brand.',clubentry.clubid);
 	
-		// Edit club distance list. 
+		// Update club distance list. 
 		clubentry.distancelist = ( prompt('Enter new club distances.',clubentry.distancelist) ).split(',');
-		
-		// Save data to memory. 
-		saveData();
 	}
 }
 

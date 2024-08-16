@@ -16,13 +16,16 @@ function startEditEntry(givenentryid) {
 }
 
 // Compile layout for given list of fields. 
-function createFieldsListLayout(fieldslistdata) {
+function createFieldsListLayout(fieldslistdata,newmode) {
 
 	// Initialize layout for list of fields. 
 	let fieldlistresult = '';
 
 	// Compile layout for list of fields. 
 	for(let fielddata of fieldslistdata) {
+
+		// Get field id. 
+		let fieldid = `${ newmode ? 'new' : '' }${ fielddata.fieldid }`;
 
 		fieldlistresult += `
 		<!-- fielditem -->
@@ -32,11 +35,11 @@ function createFieldsListLayout(fieldslistdata) {
 			<div class="entryfield">
 
 				<!-- fieldname -->
-				<label class="fieldname" for="${fielddata.fieldid}">${fielddata.fieldcaption}</label>
+				<label class="fieldname" for="${fieldid}">${fielddata.fieldcaption}</label>
 				<!-- /fieldname -->
 
 				<!-- fieldvalue -->
-				<input class="fieldvalue" type="${fielddata.fieldtype}" id="${fielddata.fieldid}" name="${fielddata.fieldid}" placeholder="${fielddata.fieldid}">
+				<input class="fieldvalue" type="${fielddata.fieldtype}" id="${fieldid}" name="${fieldid}" placeholder="${fieldid}">
 				<!-- /fieldvalue -->
 
 			</div>
