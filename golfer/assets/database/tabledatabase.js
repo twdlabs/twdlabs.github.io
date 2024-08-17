@@ -6,11 +6,14 @@ let tabledata = {
 
 	// Define data for clubs table. 
 	clubs: {
+
+		// Define title of table. 
+		tabletitle:'Golf Clubs',
 	
-		// Define current entries of clubs table (per row). 
+		// Define current entries (per row). 
 		tableentries:[],
 	
-		// Define column headers for clubs table (per column). 
+		// Define column headers (per column). 
 		tablecolumns:[
 			{
 				columnheader:'ID',
@@ -56,7 +59,7 @@ let tabledata = {
 			},
 		],
 	
-		// Define entry fields for clubs. 
+		// Define fields for each entry. 
 		tableentryfields:[
 			// {
 			// 	fieldid:'clubid',
@@ -111,7 +114,7 @@ let tabledata = {
 			// },
 		],
 	
-		// Define default entries for clubs table (per row). 
+		// Define default entries (per row). 
 		defaulttableentries:[
 			{
 				clubid:'drv',
@@ -241,23 +244,79 @@ let tabledata = {
 			// },
 		],
 	
-		// Define destination for table headers. 
-		tableheadersdestination:document.querySelector('div#container section.clubsviewer div.grid table.table thead.head tr.row'),
+		// Define destination for table title. 
+		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
 	
 		// Define destination for table body. 
-		tablebodydestination:document.querySelector('div#container section.clubsviewer div.grid table.table tbody.body'),
+		tablebodydestination:document.querySelector('div#container section.viewer.clubs div.grid table.table tbody.body'),
+	
+		// Define destination for table headers. 
+		tableheadersdestination:document.querySelector('div#container section.viewer.clubs div.grid table.table thead.head tr.row'),
+
+		// Define row layout creator. 
+		// rowlayer:createClubEntryRowLayout,
 	},
 
 	// Define data for holes table. 
 	holes: {
 
-		// 
+		// Define title of table. 
+		tabletitle:'Golf Holes',
+	
+		// Define current entries (per row). 
+		tableentries:[],
+	
+		// Define column headers (per column). 
+		tablecolumns:[],
+	
+		// Define fields for each entry. 
+		tableentryfields:[],
+	
+		// Define default entries (per row). 
+		defaulttableentries:[],
+	
+		// Define destination for table title. 
+		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
+	
+		// Define destination for table body. 
+		tablebodydestination:document.querySelector('div#container section.viewer.holes div.grid table.table tbody.body'),
+	
+		// Define destination for table headers. 
+		tableheadersdestination:document.querySelector('div#container section.viewer.holes div.grid table.table thead.head tr.row'),
+
+		// Define row layout creator. 
+		// rowlayer:createClubEntryRowLayout,
 	},
 
 	// Define data for shots table. 
 	shots: {
 
-		// 
+		// Define title of table. 
+		tabletitle:'Golf Shots',
+	
+		// Define current entries (per row). 
+		tableentries:[],
+	
+		// Define column headers (per column). 
+		tablecolumns:[],
+	
+		// Define fields for each entry. 
+		tableentryfields:[],
+	
+		// Define default entries (per row). 
+		defaulttableentries:[],
+	
+		// Define destination for table title. 
+		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
+	
+		// Define destination for table body. 
+		tablebodydestination:document.querySelector('div#container section.viewer.shots div.grid table.table tbody.body'),
+	
+		// Define destination for table headers. 
+		tableheadersdestination:document.querySelector('div#container section.viewer.shots div.grid table.table thead.head tr.row'),
+
+		// Define row layout creator. 
+		// rowlayer:createClubEntryRowLayout,
 	},
 };
 

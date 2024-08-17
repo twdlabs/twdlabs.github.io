@@ -3,7 +3,7 @@
 
 // Save table data to memory. 
 function saveToMemory(tablekey) {
-	console.log('Saving data to memory...',tablekey);
+	console.log(`Saving ${tablekey} data to memory...`);
 
 	// Save if any entries present. 
 	if(tabledata[tablekey].tableentries.length) {
@@ -13,7 +13,7 @@ function saveToMemory(tablekey) {
 		
 		// Save current list of entries. 
 		localStorage.setItem( `saved${tablekey}` ,stringedentrylist);
-		console.log('\tlocalStorage:',localStorage);
+		// console.log('localStorage:',localStorage);
 	}
 
 	// Remove from memory if no entries present. 
@@ -21,21 +21,20 @@ function saveToMemory(tablekey) {
 
 		// Remove any saved list of clubs from memory. 
 		localStorage.removeItem( `saved${tablekey}` );
-		console.log('\tlocalStorage:',localStorage);
+		// console.log('localStorage:',localStorage);
 	}
 
-	// Show updated table entries (if destination table present). 
-	let istablepresent = tabledata[tablekey].tablebodydestination && tabledata[tablekey].tableheadersdestination;
-	if(istablepresent) loadTableBody(tablekey);
+	// Show updated table entries. 
+	loadTableBody(tablekey);
 }
 
 // Restore saved data from memory (if it exists). 
 function restoreFromMemory(tablekey) {
-	console.log('Restoring saved data from memory...',tablekey);
+	console.log(`Restoring ${tablekey} data from memory...`);
 
 	// Get saved list of entries (in string form). 
 	let stringedentrylist = localStorage.getItem( `saved${tablekey}` );
-	console.log('\tlocalStorage:',localStorage);
+	// console.log('localStorage:',localStorage);
 	
 	// Restore saved list of entries (if exists in memory). 
 	if(stringedentrylist) tabledata[tablekey].tableentries = JSON.parse(stringedentrylist);

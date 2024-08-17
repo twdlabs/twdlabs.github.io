@@ -34,7 +34,12 @@ function loadShotsTable() {
 
 // Load head layout for given table. 
 function loadTableHead(tablekey) {
+
+	// Get table data for given table key. 
 	let giventabledata = tabledata[tablekey];
+
+	// Disregard if no destination present for table head. 
+	if(!giventabledata.tabletitledestination || !giventabledata.tableheadersdestination) return;
 
 	// Initialize layout for table headers. 
 	let tableheadersresult = '';
@@ -55,46 +60,68 @@ function loadTableHead(tablekey) {
 		<!-- /head -->`;
 	}
 
-	// Display table headers. 
+	// Display table head. 
 	giventabledata.tableheadersdestination.innerHTML = tableheadersresult;
+	giventabledata.tabletitledestination.innerHTML = giventabledata.tabletitle;
 }
 
 // Load body layout for given table (R in CRUD). 
 function loadTableBody(tablekey) {
+
+	// Get table data for given table key. 
 	let giventabledata = tabledata[tablekey];
 
+	// Disregard if no destination present for table body. 
+	if(!giventabledata.tablebodydestination) return;
+
 	// Initialize layout for list of entries. 
-	let tablelayout = '';
+	let tablebodylayout = '';
 
 	// Restore saved data from memory. 
 	restoreFromMemory(tablekey);
 
 	// Check if list is empty. 
-	let islistempty = tabledata['clubs'].tableentries.length == 0;
+	let islistempty = giventabledata.tableentries.length == 0;
 
 	// Create placeholder for empty table body. 
-	tablelayout += `
+	tablebodylayout += `
 	<!-- row -->
 	<tr class="row">${ islistempty ? createEmptyTableRowLayout() : '' }</tr>
 	<!-- /row -->`;
 
-	// Go thru each club entry. 
-	for(let clubentry of tabledata['clubs'].tableentries) {
+	// Go thru each table entry. 
+	for(let entry of giventabledata.tableentries) {
 		
-		// Add table row layout for single club entry. 
-		tablelayout += `
+		// Add table row layout for single table entry. 
+		tablebodylayout += `
 		<!-- row -->
-		<tr class="row" title="id:${clubentry.clubid}">${ createEntryRowLayout(clubentry) }</tr>
+		<tr class="row">${ createClubEntryRowLayout(entry) }</tr>
 		<!-- /row -->`;
 	}
 
-	// Display list of club entries. 
-	giventabledata.tablebodydestination.innerHTML = tablelayout;
+	// Display list of table entries in table body. 
+	giventabledata.tablebodydestination.innerHTML = tablebodylayout;
 
 	/****/
 
+	// Create placeholder table row layout for empty table. 
+	function createEmptyTableRowLayout() {
+
+		// Compile placeholder table row layout for empty table. 
+		return `
+		<!-- data -->
+		<td class="data null" colspan="${giventabledata.tablecolumns.length}">
+
+			<!-- caption -->
+			<span class="caption">Add new ${tablekey} to view here</span>
+			<!-- /caption -->
+
+		</td>
+		<!-- /data -->`;
+	}
+
 	// Create table row layout for given club entry. 
-	function createEntryRowLayout(clubentry) {
+	function createClubEntryRowLayout(clubentry) {
 
 		// Get name of given club. 
 		let clubid = clubentry.clubid ? clubentry.clubid : '--';
@@ -185,7 +212,7 @@ function loadTableBody(tablekey) {
 		function createTableBlockLayout(caption,blockindex) {
 
 			// Check if block is centered. 
-			let isblockcentered = tabledata['clubs'].tablecolumns[blockindex].columncenter;
+			let isblockcentered = giventabledata.tablecolumns[blockindex].columncenter;
 	
 			// Compile table data block. 
 			return `
@@ -266,21 +293,5 @@ function loadTableBody(tablekey) {
 			</td>
 			<!-- /data -->`;
 		}
-	}
-
-	// Create placeholder table row layout for empty table. 
-	function createEmptyTableRowLayout() {
-
-		// Compile placeholder table row layout for empty table. 
-		return `
-		<!-- data -->
-		<td class="data null" colspan="${tabledata['clubs'].tablecolumns.length}">
-
-			<!-- caption -->
-			<span class="caption">Add new clubs to view here</span>
-			<!-- /caption -->
-
-		</td>
-		<!-- /data -->`;
 	}
 }
