@@ -75,17 +75,20 @@ function loadClubsTableBody() {
 		let clubname = clubentry.clubname ? clubentry.clubname : '--';
 		// Get brand of given club. 
 		let clubbrand = clubentry.clubbrand ? clubentry.clubbrand : '--';
+
+		// Get list of distances for given club. 
+		let distancelist = clubentry.distancelist;
 		// Get minimum distance for given club. 
-		let mindistance = clubentry.distancelist.length ? findMinimum(clubentry.distancelist) : 0;
+		let mindistance = distancelist.length ? findMinimum(distancelist) : 0;
 		// Get average distance for given club. 
-		let avgdistance = clubentry.distancelist.length ? findAverage(clubentry.distancelist) : 0;
+		let avgdistance = distancelist.length ? findAverage(distancelist) : 0;
 		// Get maximum distance for given club. 
-		let maxdistance = clubentry.distancelist.length ? findMaximum(clubentry.distancelist) : 0;
+		let maxdistance = distancelist.length ? findMaximum(distancelist) : 0;
 
 		// Initialize layout for table row. 
 		let tablerowlayout = '';
 		// Add layout for id of given club. 
-	   tablerowlayout += createTableBlockLayout(clubid, 0);
+		tablerowlayout += createTableBlockLayout(clubid, 0);
  		// Add layout for name of given club. 
 		tablerowlayout += createTableBlockLayout(clubname, 1);
  		// Add layout for brand of given club. 
@@ -97,7 +100,7 @@ function loadClubsTableBody() {
 		// Add layout for maximum distance of given club. 
 		tablerowlayout += createTableBlockLayout( formatNumber(maxdistance), 5);
 		// Add layout for distance entry field of given club. 
-		tablerowlayout += createTableInputBlockLayout(clubentry.clubid);
+		tablerowlayout += createTableInputBlockLayout();
 		// Add action field for given club. 
 		tablerowlayout += createTableActionBlockLayout();
 		// console.log('Club entry table row layout:',tablerowlayout,clubentry);
@@ -160,7 +163,7 @@ function loadClubsTableBody() {
 		}
 
 		// Create table input block. 
-		function createTableInputBlockLayout(uniqueclubid) {
+		function createTableInputBlockLayout() {
 	
 			// Compile table data block. 
 			return `
@@ -168,7 +171,7 @@ function loadClubsTableBody() {
 			<td class="data">
 	
 				<!-- newdistance -->
-				<input class="newdistance" type="number" id="${uniqueclubid}newdistance" onchange="saveNewClubDistance('${uniqueclubid}')">
+				<input class="newdistance" type="number" id="${clubid}newdistance" onchange="saveNewClubDistance('${clubid}')">
 				<!-- /newdistance -->
 	
 			</td>
