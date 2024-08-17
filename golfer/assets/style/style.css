@@ -48,10 +48,10 @@ body {background-color:var(--backcolor); background-image:var(--bgimg); margin:0
 body {color:var(--forecolor); font-family:Nunito,sans-serif;}
 
 
-div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1rem;}
+div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; /* padding:1rem; */}
 
 /* Navbar */
-div#container nav.navbar {position:absolute; top:0; right:0; left:0; width:100%;}
+div#container nav.navbar {position:sticky; position:fixed; top:0; right:0; left:0; width:100%;}
 div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:.5rem 2rem; box-shadow:var(--boxshadow);}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
 div#container nav.navbar div.bin a.homelink {display:flex; flex-direction:row; align-items:center;}
@@ -64,7 +64,7 @@ div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; a
 div#container nav.navbar div.bin ul.navlist li.navitem {padding:.25rem;}
 div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}
 div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:block; color:inherit; text-decoration:none; user-select:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {background-color:var(--themecolor); color:white; padding:.5rem 1.25rem; border-radius:.25rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {background-color:var(--themecolor); color:white; padding:.5rem 1rem; border-radius:.25rem;}
 
 
 /* General Section */

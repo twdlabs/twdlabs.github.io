@@ -1,17 +1,46 @@
 
 
 
-// Load head layout for clubs table. 
-function loadClubsTableHead() {
+// Load layout for clubs table. 
+function loadClubsTable() {
 
-	// Get destination for table headers. 
-	let tableheadersdestination = document.querySelector('div#container section.clubsviewer div.grid table.clubstable thead.head tr.row');
+	// Load head of clubs table. 
+	loadTableHead('clubs');
+	
+	// Load body of clubs table. 
+	loadTableBody('clubs');
+}
+
+// Load layout for holes table. 
+function loadHolesTable() {
+
+	// Load head of holes table. 
+	loadTableHead('holes');
+	
+	// Load body of holes table. 
+	loadTableBody('holes');
+}
+
+// Load layout for shots table. 
+function loadShotsTable() {
+
+	// Load head of shots table. 
+	loadTableHead('shots');
+	
+	// Load body of shots table. 
+	loadTableBody('shots');
+}
+
+
+// Load head layout for given table. 
+function loadTableHead(tablekey) {
+	let giventabledata = tabledata[tablekey];
 
 	// Initialize layout for table headers. 
 	let tableheadersresult = '';
 
 	// Accumulate layout for all table headers. 
-	for(let column of clubstable.tablecolumns) {
+	for(let column of giventabledata.tablecolumns) {
 
 		// Compile layout for single table header. 
 		tableheadersresult += `
@@ -27,42 +56,40 @@ function loadClubsTableHead() {
 	}
 
 	// Display table headers. 
-	tableheadersdestination.innerHTML = tableheadersresult;
+	giventabledata.tableheadersdestination.innerHTML = tableheadersresult;
 }
 
-// Load body layout for clubs table (R in CRUD). 
-function loadClubsTableBody() {
+// Load body layout for given table (R in CRUD). 
+function loadTableBody(tablekey) {
+	let giventabledata = tabledata[tablekey];
 
-	// Get destination for list of club entries. 
-	let clublistdestination = document.querySelector('div#container section.clubsviewer div.grid table.clubstable tbody.body');
-
-	// Initialize layout for list of club entries. 
-	let clubtablelayout = '';
+	// Initialize layout for list of entries. 
+	let tablelayout = '';
 
 	// Restore saved data from memory. 
-	restoreFromMemory();
+	restoreFromMemory(tablekey);
 
-	// Check if clubs list is empty. 
-	let clubslistempty = clubstable.tableentries.length == 0;
+	// Check if list is empty. 
+	let islistempty = tabledata['clubs'].tableentries.length == 0;
 
 	// Create placeholder for empty table body. 
-	clubtablelayout += `
+	tablelayout += `
 	<!-- row -->
-	<tr class="row">${ clubslistempty ? createEmptyTableRowLayout() : '' }</tr>
+	<tr class="row">${ islistempty ? createEmptyTableRowLayout() : '' }</tr>
 	<!-- /row -->`;
 
 	// Go thru each club entry. 
-	for(let clubentry of clubstable.tableentries) {
+	for(let clubentry of tabledata['clubs'].tableentries) {
 		
 		// Add table row layout for single club entry. 
-		clubtablelayout += `
+		tablelayout += `
 		<!-- row -->
 		<tr class="row" title="id:${clubentry.clubid}">${ createEntryRowLayout(clubentry) }</tr>
 		<!-- /row -->`;
 	}
 
 	// Display list of club entries. 
-	clublistdestination.innerHTML = clubtablelayout;
+	giventabledata.tablebodydestination.innerHTML = tablelayout;
 
 	/****/
 
@@ -75,15 +102,24 @@ function loadClubsTableBody() {
 		let clubname = clubentry.clubname ? clubentry.clubname : '--';
 		// Get brand of given club. 
 		let clubbrand = clubentry.clubbrand ? clubentry.clubbrand : '--';
+		// Get loft of given club. 
+		let clubloftdegrees = clubentry.clubloftdegrees ? clubentry.clubloftdegrees : 0;
 
 		// Get list of distances for given club. 
 		let distancelist = clubentry.distancelist;
-		// Get minimum distance for given club. 
-		let mindistance = distancelist.length ? findMinimum(distancelist) : 0;
-		// Get average distance for given club. 
-		let avgdistance = distancelist.length ? findAverage(distancelist) : 0;
-		// Get maximum distance for given club. 
-		let maxdistance = distancelist.length ? findMaximum(distancelist) : 0;
+
+		// Initialize distance metrics for given club. 
+		let mindistance = 0; let avgdistance = 0; let maxdistance = 0;
+
+		// 
+		if(distancelist) {
+			// Get minimum distance for given club. 
+			mindistance = distancelist.length ? findMinimum(distancelist) : 0;
+			// Get average distance for given club. 
+			avgdistance = distancelist.length ? findAverage(distancelist) : 0;
+			// Get maximum distance for given club. 
+			maxdistance = distancelist.length ? findMaximum(distancelist) : 0;
+		}
 
 		// Initialize layout for table row. 
 		let tablerowlayout = '';
@@ -93,12 +129,14 @@ function loadClubsTableBody() {
 		tablerowlayout += createTableBlockLayout(clubname, 1);
  		// Add layout for brand of given club. 
 		tablerowlayout += createTableBlockLayout(clubbrand, 2);
+ 		// Add layout for loft of given club. 
+		tablerowlayout += createTableBlockLayout( `${formatNumber(clubloftdegrees)}&deg;`, 3);
 		// Add layout for minimum distance of given club. 
-		tablerowlayout += createTableBlockLayout( formatNumber(mindistance), 3);
+		tablerowlayout += createTableBlockLayout( formatNumber(mindistance), 4);
 		// Add layout for average distance of given club. 
-		tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 4);
+		tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 5);
 		// Add layout for maximum distance of given club. 
-		tablerowlayout += createTableBlockLayout( formatNumber(maxdistance), 5);
+		tablerowlayout += createTableBlockLayout( formatNumber(maxdistance), 6);
 		// Add layout for distance entry field of given club. 
 		tablerowlayout += createTableInputBlockLayout();
 		// Add action field for given club. 
@@ -147,7 +185,7 @@ function loadClubsTableBody() {
 		function createTableBlockLayout(caption,blockindex) {
 
 			// Check if block is centered. 
-			let isblockcentered = clubstable.tablecolumns[blockindex].columncenter;
+			let isblockcentered = tabledata['clubs'].tablecolumns[blockindex].columncenter;
 	
 			// Compile table data block. 
 			return `
@@ -236,7 +274,7 @@ function loadClubsTableBody() {
 		// Compile placeholder table row layout for empty table. 
 		return `
 		<!-- data -->
-		<td class="data null" colspan="6">
+		<td class="data null" colspan="${tabledata['clubs'].tablecolumns.length}">
 
 			<!-- caption -->
 			<span class="caption">Add new clubs to view here</span>

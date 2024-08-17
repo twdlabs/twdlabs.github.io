@@ -10,7 +10,7 @@ div#container section.viewer div.grid div.head div.btnbox button.btn {margin-bot
 /* div#container section.viewer div.grid table.table {} */
 /* div#container section.viewer div.grid table.table thead.head {} */
 /* div#container section.viewer div.grid table.table thead.head tr.row {margin-bottom:5rem;} */
-div#container section.viewer div.grid table.table thead.head th.head {background-color:var(--limegreen); /* background-color:forestgreen; */ color:white; font-weight:bold; text-align:left;}
+div#container section.viewer div.grid table.table thead.head th.head {background-color:var(--limegreen); /* background-color:forestgreen; */ color:white; font-weight:bold; text-align:left; border-radius:.25rem;}
 div#container section.viewer div.grid table.table thead.head th.head.c {text-align:center;}
 div#container section.viewer div.grid table.table thead.head th.head span.caption {display:block; padding:.5rem 1rem;}
 /* div#container section.viewer div.grid table.table tbody.body {} */

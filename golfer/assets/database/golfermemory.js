@@ -1,45 +1,45 @@
 
 
 
-// Save data to memory. 
-function saveToMemory() {
-	console.log('Saving data to memory...');
+// Save table data to memory. 
+function saveToMemory(tablekey) {
+	console.log('Saving data to memory...',tablekey);
 
-	// Save if any club entries present. 
-	if(clubstable.tableentries.length) {
+	// Save if any entries present. 
+	if(tabledata[tablekey].tableentries.length) {
 
-		// Convert current list of clubs (to string form). 
-		let strclubslist = JSON.stringify(clubstable.tableentries);
+		// Convert current list of entries (to string form). 
+		let stringedentrylist = JSON.stringify(tabledata[tablekey].tableentries);
 		
-		// Save current list of clubs. 
-		localStorage.setItem('savedclubslist',strclubslist);
+		// Save current list of entries. 
+		localStorage.setItem( `saved${tablekey}` ,stringedentrylist);
 		console.log('\tlocalStorage:',localStorage);
 	}
 
-	// Remove from memory if no club entries present. 
+	// Remove from memory if no entries present. 
 	else {
 
 		// Remove any saved list of clubs from memory. 
-		localStorage.removeItem('savedclubslist');
+		localStorage.removeItem( `saved${tablekey}` );
 		console.log('\tlocalStorage:',localStorage);
 	}
 
-	// Show updated table of clubs. 
-	let xyz = typeof tablepresent !== typeof undefined;
-	if(xyz) loadClubsTableBody();
+	// Show updated table entries (if destination table present). 
+	let istablepresent = tabledata[tablekey].tablebodydestination && tabledata[tablekey].tableheadersdestination;
+	if(istablepresent) loadTableBody(tablekey);
 }
 
 // Restore saved data from memory (if it exists). 
-function restoreFromMemory() {
-	console.log('Restoring saved data from memory...');
+function restoreFromMemory(tablekey) {
+	console.log('Restoring saved data from memory...',tablekey);
 
-	// Get saved list of clubs (in string form). 
-	let strclubslist = localStorage.getItem('savedclubslist');
+	// Get saved list of entries (in string form). 
+	let stringedentrylist = localStorage.getItem( `saved${tablekey}` );
 	console.log('\tlocalStorage:',localStorage);
 	
-	// Restore saved list of clubs (if exists in memory). 
-	if(strclubslist) clubstable.tableentries = JSON.parse(strclubslist);
+	// Restore saved list of entries (if exists in memory). 
+	if(stringedentrylist) tabledata[tablekey].tableentries = JSON.parse(stringedentrylist);
 
-	// Create empty list of clubs (if not in memory). 
-	else clubstable.tableentries = [];
+	// Create empty list of entries (if not in memory). 
+	else tabledata[tablekey].tableentries = [];
 }
