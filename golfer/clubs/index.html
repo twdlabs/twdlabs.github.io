@@ -117,7 +117,7 @@
 					<div class="head">
 
 						<!-- header -->
-						<h2 class="header">Golf Club Distances</h2>
+						<h2 class="header">Golf Clubs</h2>
 						<!-- /header -->
 
 						<!-- btnbox -->
@@ -175,34 +175,14 @@
 					</div>
 					<!-- /head -->
 
-					<!-- clubstable -->
-					<table class="table clubstable">
+					<!-- table -->
+					<table class="table">
 
 						<!-- head -->
 						<thead class="head">
 
 							<!-- row -->
 							<tr class="row">
-
-								<!-- head -->
-								<th class="head">
-
-									<!-- caption -->
-									<span class="caption"></span>
-									<!-- /caption -->
-
-								</th>
-								<!-- /head -->
-
-								<!-- head -->
-								<th class="head">
-
-									<!-- caption -->
-									<span class="caption"></span>
-									<!-- /caption -->
-
-								</th>
-								<!-- /head -->
 
 								<!-- head -->
 								<th class="head">
@@ -267,7 +247,7 @@
 							<tr class="row">
 
 								<!-- data -->
-								<td class="data null" colspan="7">
+								<td class="data null" colspan="5">
 
 									<!-- caption -->
 									<span class="caption">Add new clubs below to view here</span>
@@ -283,7 +263,27 @@
 							<tr class="row" title="id:entryid">
 
 								<!-- data -->
-								<td class="data" colspan="5">
+								<td class="data">
+
+									<!-- caption -->
+									<span class="caption"></span>
+									<!-- /caption -->
+
+								</td>
+								<!-- /data -->
+
+								<!-- data -->
+								<td class="data">
+
+									<!-- caption -->
+									<span class="caption"></span>
+									<!-- /caption -->
+
+								</td>
+								<!-- /data -->
+
+								<!-- data -->
+								<td class="data">
 
 									<!-- caption -->
 									<span class="caption"></span>
@@ -366,7 +366,7 @@
 						<!-- /body -->
 						
 					</table>
-					<!-- /clubstable -->
+					<!-- /table -->
 
 					<!-- foot -->
 					<div class="foot">
@@ -397,28 +397,6 @@
 			</section>
 			<!-- /viewer -->
 
-			<!-- main -->
-			<main class="main">
-
-				<!-- item -->
-				<div class="item"></div>
-				<!-- /item -->
-
-				<!-- item -->
-				<div class="item" style="display:none;">
-
-					<!-- icon -->
-					<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<!-- <> -->
-					</svg>
-					<!-- /icon -->
-					
-				</div>
-				<!-- /item -->
-
-			</main>
-			<!-- /main -->
-
 		</div>
 		<!-- /#container -->
 
@@ -427,11 +405,10 @@
 		<script type="text/javascript">
 			let loadItUp = false;
 			loadItUp = true;
-			let tablepresent = true;
 		</script>
 
-		<!-- Clubs Database -->
-		<script src="../assets/database/clubsdatabase.js" type="text/javascript"></script>
+		<!-- Entry Database -->
+		<script src="../assets/database/entrydatabase.js" type="text/javascript"></script>
 
 		<!-- Memory Script -->
 		<script src="../assets/database/golfermemory.js" type="text/javascript"></script>
@@ -444,11 +421,8 @@
 		<!-- Run Script -->
 		<script type="text/javascript">
 
-			// Load head of clubs table. 
-			if(loadItUp) loadClubsTableHead();
-			
-			// Load body of clubs table. 
-			if(loadItUp) loadClubsTableBody();
+			// Load clubs table. 
+			if(loadItUp) loadClubsTable();
 		</script>
 
 	</body>
