@@ -1,43 +1,55 @@
 
 
 
-// Get current url search parameters. 
-let urlparams = new URLSearchParams(window.location.search);
-
-// Get id of current club entry. 
-let urlentryid = urlparams.get('entryid');
+// Get id of current table entry. 
+const entryid = urlparams.get('entryid');
+console.log('entryid:',entryid);
 
 
 /*****/
 
 
-// Load fields for editing existing clubs. 
-function loadClubTableEditor() {
+// Load fields for editing existing entry. 
+function loadEntryEditor() {
 
-	// Get destination for fields of 'edit entry' form. 
-	let editformfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
+
+	// Get destination for fields of editor form. 
+	let editorfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(databasetables['clubs'].tableentryfields,false);
+	let fieldlistresult = createFieldsListLayout(giventabledata.tableentryfields,true);
 
 	// Display list of fields in 'edit entry' form. 
-	editformfieldsdestination.innerHTML = fieldlistresult;
+	editorfieldsdestination.innerHTML = fieldlistresult;
 
-	// TODO: Fill in current values for selected entry. 
-}
+	// Get selected table entry. 
+	let tableentry = getClubEntryById(entryid);
+	// let tableentry = getTableEntryById(tableid,'clubid',entryid);
+	console.log('Current table entry:',tableentry);
+	
+	// Fill in current values for selected entry. 
+	if(!tableentry) return;
+	for(let entryfield of giventabledata.tableentryfields) {
 
-// Close table editor for existing entry. 
-function closeEntryEditor() {
+		// Get field value. 
+		let fieldvalue = tableentry[entryfield.fieldid]
 
-	// Go directly to previous page (club viewer). 
-	window.location.href = '../';
+		// Get input field. 
+		let inputfield = document.querySelector(`div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#${entryfield.fieldid}`);
+		
+		// Assign current value to input field. 
+		inputfield.value = fieldvalue;
+		console.log('inputfield:',fieldvalue,inputfield);
+	}
 }
 
 // TODO: Save updated entry in database table (U in CRUD). 
-function saveUpdatedTableEntry(tableid,tableentryidkey) {
+function saveUpdatedEntry(tableid,tableentryidkey) {
 
 	// Get table entry to be edited (using entry id from url). 
-	let tableentry = getTableEntryById(tableid,urlentryid,tableentryidkey);
+	let tableentry = getTableEntryById(tableid,tableentryidkey,entryid);
 
 	// Go thru each property (by field data item). 
 	for(let fielddata of databasetables[tableid].tableentryfields) {
@@ -73,7 +85,7 @@ function saveUpdatedTableEntry(tableid,tableentryidkey) {
 
 	/****/
 
-	// Edit entry in database table (U in CRUD). 
+	// Edit entry in database table. 
 	function editTableEntry(givenentryid) {
 	
 		// Update club name. 

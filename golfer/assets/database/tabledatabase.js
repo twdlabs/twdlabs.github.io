@@ -344,27 +344,29 @@ let databasetables = {
 
 // Find club entry by id. 
 function getClubEntryById(givenentryid) {
-	getTableEntryById('clubs',givenentryid,'clubid');
+	return getTableEntryById('clubs','clubid',givenentryid);
 }
 
 // Find hole entry by id. 
-function getClubEntryById(givenentryid) {
-	getTableEntryById('holes',givenentryid,'holeid');
+function getHoleEntryById(givenentryid) {
+	return getTableEntryById('holes','holeid',givenentryid);
 }
 
 // Find shot entry by id. 
-function getClubEntryById(givenentryid) {
-	getTableEntryById('shots',givenentryid,'shotid');
+function getShotEntryById(givenentryid) {
+	return getTableEntryById('shots','shotid',givenentryid);
 }
 
 // Find table entry by table id and entry id. 
-function getTableEntryById(tableid,givenentryid,tableentryidkey) {
+function getTableEntryById(tableid,tableentryidkey,givenentryid) {
+	console.log('Finding table entry...',tableid,tableentryidkey,givenentryid);
 
 	// Get table data for given table id. 
 	let giventabledata = databasetables[tableid];
 
 	// Go thru each table entry in list. 
 	for(let tableentry of giventabledata.tableentries) {
+		// console.log('\tGoing thru table entries...',tableentry);
 
 		// Check if matching table entry found. 
 		let matchFound = tableentry[tableentryidkey] == givenentryid;

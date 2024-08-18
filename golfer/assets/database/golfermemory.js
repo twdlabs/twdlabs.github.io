@@ -23,9 +23,6 @@ function saveTableToMemory(tableid) {
 		localStorage.removeItem( `saved${tableid}` );
 		// console.log('localStorage:',localStorage);
 	}
-
-	// Show updated table entries. 
-	loadTableBody(tableid);
 }
 
 // Restore saved table data from memory (if it exists). 

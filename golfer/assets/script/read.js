@@ -1,72 +1,56 @@
 
 
 
-// Load layout for clubs table. 
-function loadClubsTable() {
+// Load layout for given database table. 
+function loadTable(tableid) {
 
-	// Load head of clubs table. 
-	loadTableHead('clubs');
+	// Load head of given database table. 
+	loadTableHead(tableid);
 	
-	// Load body of clubs table. 
-	loadTableBody('clubs');
-}
+	// Load body of given database table. 
+	loadTableBody(tableid);
 
-// Load layout for holes table. 
-function loadHolesTable() {
+	/****/
 
-	// Load head of holes table. 
-	loadTableHead('holes');
+	// Load head layout for given table. 
+	function loadTableHead(tableid) {
 	
-	// Load body of holes table. 
-	loadTableBody('holes');
-}
-
-// Load layout for shots table. 
-function loadShotsTable() {
-
-	// Load head of shots table. 
-	loadTableHead('shots');
+		// Get table data for given table id. 
+		let giventabledata = databasetables[tableid];
 	
-	// Load body of shots table. 
-	loadTableBody('shots');
-}
-
-
-// Load head layout for given table. 
-function loadTableHead(tableid) {
-
-	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
-
-	// Disregard if no destination present for table head. 
-	if(!giventabledata.tabletitledestination || !giventabledata.tableheadersdestination) return;
-
-	// Initialize layout for table headers. 
-	let tableheadersresult = '';
-
-	// Accumulate layout for all table headers. 
-	for(let column of giventabledata.tablecolumns) {
-
-		// Compile layout for single table header. 
-		tableheadersresult += `
-		<!-- head -->
-		<th class="head${ column.columncenter ? ' c' : '' }">
-
-			<!-- caption -->
-			<span class="caption">${column.columnheader}</span>
-			<!-- /caption -->
-
-		</th>
-		<!-- /head -->`;
+		// Disregard if no destination present for table head. 
+		if(!giventabledata.tabletitledestination || !giventabledata.tableheadersdestination) return;
+	
+		// Initialize layout for table headers. 
+		let tableheadersresult = '';
+	
+		// Accumulate layout for all table headers. 
+		for(let column of giventabledata.tablecolumns) {
+	
+			// Compile layout for single table header. 
+			tableheadersresult += `
+			<!-- head -->
+			<th class="head${ column.columncenter ? ' c' : '' }">
+	
+				<!-- caption -->
+				<span class="caption">${column.columnheader}</span>
+				<!-- /caption -->
+	
+			</th>
+			<!-- /head -->`;
+		}
+	
+		// Display table head. 
+		giventabledata.tableheadersdestination.innerHTML = tableheadersresult;
+		giventabledata.tabletitledestination.innerHTML = giventabledata.tabletitle;
 	}
-
-	// Display table head. 
-	giventabledata.tableheadersdestination.innerHTML = tableheadersresult;
-	giventabledata.tabletitledestination.innerHTML = giventabledata.tabletitle;
 }
 
 // Load body layout for given table (R in CRUD). 
 function loadTableBody(tableid) {
+
+	// Restore saved table data from memory. 
+	restoreTableFromMemory(tableid);
 
 	// Get table data for given table id. 
 	let giventabledata = databasetables[tableid];
@@ -76,9 +60,6 @@ function loadTableBody(tableid) {
 
 	// Initialize layout for list of entries. 
 	let tablebodylayout = '';
-
-	// Restore saved table data from memory. 
-	restoreTableFromMemory(tableid);
 
 	// Check if list is empty. 
 	let islistempty = giventabledata.tableentries.length == 0;
@@ -252,7 +233,7 @@ function loadTableBody(tableid) {
 			<td class="data a">
 
 				<!-- editbtn -->
-				<button class="btn editbtn" title="Edit club: '${clubentry.clubname}'" onclick="startEditEntry('${clubentry.clubid}')">
+				<button class="btn editbtn" title="Edit entry: '${clubname}'" onclick="startEditEntry('${tableid}','${clubid}')">
 
 					<!-- icon -->
 					<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -269,7 +250,7 @@ function loadTableBody(tableid) {
 				<!-- /editbtn -->
 
 				<!-- deletebtn -->
-				<button class="btn deletebtn" title="Delete club: '${clubentry.clubname}'" onclick="deleteTableEntry('clubs','${clubentry.clubid}')">
+				<button class="btn deletebtn" title="Delete entry: '${clubname}'" onclick="startDeleteEntry('${tableid}','${clubid}')">
 
 					<!-- icon -->
 					<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

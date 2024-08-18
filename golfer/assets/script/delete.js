@@ -2,7 +2,7 @@
 
 
 // Delete entry from database table (D in CRUD). 
-function deleteTableEntry(tableid,entryid) {
+function startDeleteEntry(tableid,entryid) {
 
 	// Get table data for given table id. 
 	let giventabledata = databasetables[tableid];
@@ -14,7 +14,7 @@ function deleteTableEntry(tableid,entryid) {
 		let currententry = giventabledata.tableentries[index];
 
 		// Check if matching table entry found. 
-		let matchFound = currententry.clubid == entryid;
+		let matchFound = currententry['clubid'] == entryid;
 
 		// Delete matching table entry (if found). 
 		if(matchFound) {
@@ -26,13 +26,16 @@ function deleteTableEntry(tableid,entryid) {
 			if(deletionconfirmed) {
 
 				// Delete table entry at given index. 
-				deleteTableEntryAtIndex(index);
+				deleteEntryAtIndex(index);
 	
 				// Save table data to memory. 
 				saveTableToMemory(tableid);
+
+				// Show updated table entries. 
+				loadTableBody(tableid);
 			
 				// Return deleted table entry. 
-				console.log('Club entry deleted:',currententry);
+				console.log('Table entry deleted:',currententry);
 				return currententry;
 			}
 
@@ -40,7 +43,7 @@ function deleteTableEntry(tableid,entryid) {
 			else {
 			
 				// Return remaining table entry. 
-				console.log('Club entry not deleted:',currententry);
+				console.log('Table entry not deleted:',currententry);
 				return currententry;
 			}
 		}
@@ -53,7 +56,7 @@ function deleteTableEntry(tableid,entryid) {
 	/****/
 
 	// Delete table entry at given index. 
-	function deleteTableEntryAtIndex(indexofdeletion) {
+	function deleteEntryAtIndex(indexofdeletion) {
 
 		// Remove item at given index of deletion. 
 		giventabledata.tableentries.splice(indexofdeletion,1);
@@ -71,14 +74,14 @@ function clearDatabaseTable(tableid) {
 	let tableentriespresent = giventabledata.tableentries.length > 0;
 
 	// Confirm deletion if any table entries present. 
-	if(tableentriespresent && confirm('Are you sure you want to DELETE ALL current club entries?') ) {
+	if(tableentriespresent && confirm('Are you sure you want to DELETE ALL current table entries?') ) {
 
 		// Create new empty list for table entries. 
 		assignToDatabaseTable( tableid , [] );
 	}
 
 	// Disregard if table empty or deletion not confirmed. 
-	else console.log('No deletion operation');
+	// else console.log('No deletion operation');
 }
 
 // Reset database table to default. 
@@ -92,9 +95,9 @@ function resetDatabaseTable(tableid) {
 	let istableempty = giventabledata.tableentries.length==0;
 
 	// Confirm replacement unless table already empty. 
-	if( istableempty || confirm('Are you sure you want to REPLACE ALL current club entries with default club entries?') ) {
+	if( istableempty || confirm('Are you sure you want to REPLACE ALL current table entries with default entries?') ) {
 
-		// Reset list of clubs to default. 
+		// Reset list of entries to default. 
 		assignToDatabaseTable( tableid , giventabledata.defaulttableentrylist );
 	}
 }
@@ -105,12 +108,12 @@ function assignToDatabaseTable(tableid,giventableentrylist) {
 	// Get table data for given table id. 
 	let giventabledata = databasetables[tableid];
 	
-	// Assign new list of clubs. 
+	// Assign new list of entries. 
 	giventabledata.tableentries = giventableentrylist;
 	
 	// Save table data to memory. 
 	saveTableToMemory(tableid);
 
-	// Show updated table of clubs. 
+	// Show updated table entries. 
 	loadTableBody(tableid);
 }

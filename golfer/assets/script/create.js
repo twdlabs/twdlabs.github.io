@@ -1,28 +1,24 @@
 
 
 
-// Load fields for creating new clubs. 
-function loadClubTableAdder() {
+// Load fields for creating new entry. 
+function loadNewEntryEditor() {
 
-	// Get destination for fields of 'add entry' form. 
-	let addformfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
+
+	// Get destination for fields of editor form. 
+	let editorfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(databasetables['clubs'].tableentryfields,true);
+	let fieldlistresult = createFieldsListLayout(giventabledata.tableentryfields,false);
 
 	// Display list of fields in 'add entry' form. 
-	addformfieldsdestination.innerHTML = fieldlistresult;
+	editorfieldsdestination.innerHTML = fieldlistresult;
 }
 
-// Close table editor for new entry. 
-function closeNewEntryEditor() {
-
-	// Go directly to previous page (table viewer). 
-	window.location.href = '../';
-}
-
-// Add new entry to database table (C in CRUD). 
-function saveNewTableEntry(tableid) {
+// Save new entry to database table (C in CRUD). 
+function saveNewEntry(tableid) {
 	
 	// Initialize new entry. 
 	let newentry = {};
@@ -53,7 +49,7 @@ function saveNewTableEntry(tableid) {
 	/****/
 
 	// // Check if table entry already exists. 
-	// let alreadytableentry = false && getTableEntryById(tableid,clubid,'clubid');
+	// let alreadytableentry = false && getTableEntryById(tableid,'clubid',clubid);
 
 	// // Warn user and abandon new club entry if already exists. 
 	// if(alreadytableentry) {
