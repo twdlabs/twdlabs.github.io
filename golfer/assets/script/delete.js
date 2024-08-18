@@ -100,7 +100,7 @@ function resetDatabaseTable(tableid) {
 }
 
 // Assign given table data to given database table. 
-function assignToDatabaseTable(giventableentrylist) {
+function assignToDatabaseTable(tableid,giventableentrylist) {
 
 	// Get table data for given table id. 
 	let giventabledata = databasetables[tableid];
