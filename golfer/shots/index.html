@@ -312,7 +312,7 @@
 								<td class="data">
 
 									<!-- newdistance -->
-									<input class="newdistance" type="number" id="uniqueclubidnewdistanceentry" onchange="saveNewClubDistance('xyzclub')">
+									<input class="newdistance" type="number" id="uniqueclubidnewdistanceentry" onchange="saveNewClubDistance('xyzentry')">
 									<!-- /newdistance -->
 
 								</td>
@@ -322,7 +322,7 @@
 								<td class="data a">
 
 									<!-- editbtn -->
-									<button class="btn editbtn" title="Edit club: 'xyzclub'" onclick="startEditEntry('clubid')">
+									<button class="btn editbtn" title="Edit entry: 'xyzentry'" onclick="startEditEntry('shots','entryid')">
 	
 										<!-- icon -->
 										<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -351,7 +351,7 @@
 									<!-- /editbtn -->
 
 									<!-- deletebtn -->
-									<button class="btn deletebtn" title="Delete club: 'xyzclub'" onclick="deleteTableEntry('clubs','clubid')">
+									<button class="btn deletebtn" title="Delete entry: 'xyzentry'" onclick="startDeleteEntry('clubs','clubid')">
 	
 										<!-- icon -->
 										<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -388,7 +388,7 @@
 					<div class="foot">
 
 						<!-- newbtn -->
-						<button class="btn newbtn" title="Add a brand new club" onclick="startNewEntry()">
+						<button class="btn newbtn" title="Add a brand new shot" onclick="startNewEntry('shots')">
 
 							<!-- icon -->
 							<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -419,6 +419,9 @@
 
 		<!-- Parameter Script -->
 		<script type="text/javascript">
+
+			// Set table id. 
+			const tableid = 'shots';
 			let loadItUp = false;
 			loadItUp = true;
 		</script>
@@ -438,7 +441,7 @@
 		<script type="text/javascript">
 
 			// Load shots table. 
-			if(loadItUp) loadShotsTable();
+			if(loadItUp) loadTable(tableid);
 		</script>
 
 	</body>
