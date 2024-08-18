@@ -1,8 +1,8 @@
 
 
 
-// Define table data. 
-let tabledata = {
+// Define database tables. 
+let databasetables = {
 
 	// Define data for clubs table. 
 	clubs: {
@@ -115,7 +115,7 @@ let tabledata = {
 		],
 	
 		// Define default entries (per row). 
-		defaulttableentries:[
+		defaulttableentrylist:[
 			{
 				clubid:'drv',
 				clubname:'Driver',
@@ -267,13 +267,22 @@ let tabledata = {
 		tableentries:[],
 	
 		// Define column headers (per column). 
-		tablecolumns:[],
+		tablecolumns:[
+			{
+				columnheader:'ID',
+				columncenter:true,
+			},
+			{
+				columnheader:'Action',
+				columncenter:true,
+			},
+		],
 	
 		// Define fields for each entry. 
 		tableentryfields:[],
 	
 		// Define default entries (per row). 
-		defaulttableentries:[],
+		defaulttableentrylist:[],
 	
 		// Define destination for table title. 
 		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
@@ -298,13 +307,22 @@ let tabledata = {
 		tableentries:[],
 	
 		// Define column headers (per column). 
-		tablecolumns:[],
+		tablecolumns:[
+			{
+				columnheader:'ID',
+				columncenter:true,
+			},
+			{
+				columnheader:'Action',
+				columncenter:true,
+			},
+		],
 	
 		// Define fields for each entry. 
 		tableentryfields:[],
 	
 		// Define default entries (per row). 
-		defaulttableentries:[],
+		defaulttableentrylist:[],
 	
 		// Define destination for table title. 
 		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
@@ -324,17 +342,35 @@ let tabledata = {
 /*****/
 
 
-// Find club entry by given id. 
-function getClubById(givenclubid) {
+// Find club entry by id. 
+function getClubEntryById(givenentryid) {
+	getTableEntryById('clubs',givenentryid,'clubid');
+}
 
-	// Go thru each club entry in list. 
-	for(let clubentry of tabledata['clubs'].tableentries) {
+// Find hole entry by id. 
+function getClubEntryById(givenentryid) {
+	getTableEntryById('holes',givenentryid,'holeid');
+}
 
-		// Check if matching club entry found. 
-		let matchFound = clubentry.clubid == givenclubid;
+// Find shot entry by id. 
+function getClubEntryById(givenentryid) {
+	getTableEntryById('shots',givenentryid,'shotid');
+}
 
-		// Return matching club entry (if found). 
-		if(matchFound) return clubentry;
+// Find table entry by table id and entry id. 
+function getTableEntryById(tableid,givenentryid,tableentryidkey) {
+
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
+
+	// Go thru each table entry in list. 
+	for(let tableentry of giventabledata.tableentries) {
+
+		// Check if matching table entry found. 
+		let matchFound = tableentry[tableentryidkey] == givenentryid;
+
+		// Return matching table entry (if found). 
+		if(matchFound) return tableentry;
 	}
 
 	// Return nothing if no match found. 

@@ -2,17 +2,17 @@
 
 
 // Save table data to memory. 
-function saveToMemory(tablekey) {
-	console.log(`Saving ${tablekey} data to memory...`);
+function saveTableToMemory(tableid) {
+	console.log(`Saving ${tableid} data to memory...`);
 
 	// Save if any entries present. 
-	if(tabledata[tablekey].tableentries.length) {
+	if(databasetables[tableid].tableentries.length) {
 
 		// Convert current list of entries (to string form). 
-		let stringedentrylist = JSON.stringify(tabledata[tablekey].tableentries);
+		let stringedentrylist = JSON.stringify(databasetables[tableid].tableentries);
 		
 		// Save current list of entries. 
-		localStorage.setItem( `saved${tablekey}` ,stringedentrylist);
+		localStorage.setItem( `saved${tableid}` ,stringedentrylist);
 		// console.log('localStorage:',localStorage);
 	}
 
@@ -20,25 +20,25 @@ function saveToMemory(tablekey) {
 	else {
 
 		// Remove any saved list of clubs from memory. 
-		localStorage.removeItem( `saved${tablekey}` );
+		localStorage.removeItem( `saved${tableid}` );
 		// console.log('localStorage:',localStorage);
 	}
 
 	// Show updated table entries. 
-	loadTableBody(tablekey);
+	loadTableBody(tableid);
 }
 
-// Restore saved data from memory (if it exists). 
-function restoreFromMemory(tablekey) {
-	console.log(`Restoring ${tablekey} data from memory...`);
+// Restore saved table data from memory (if it exists). 
+function restoreTableFromMemory(tableid) {
+	console.log(`Restoring ${tableid} data from memory...`);
 
 	// Get saved list of entries (in string form). 
-	let stringedentrylist = localStorage.getItem( `saved${tablekey}` );
+	let stringedentrylist = localStorage.getItem( `saved${tableid}` );
 	// console.log('localStorage:',localStorage);
 	
 	// Restore saved list of entries (if exists in memory). 
-	if(stringedentrylist) tabledata[tablekey].tableentries = JSON.parse(stringedentrylist);
+	if(stringedentrylist) databasetables[tableid].tableentries = JSON.parse(stringedentrylist);
 
 	// Create empty list of entries (if not in memory). 
-	else tabledata[tablekey].tableentries = [];
+	else databasetables[tableid].tableentries = [];
 }

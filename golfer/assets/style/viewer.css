@@ -10,7 +10,7 @@ div#container section.viewer div.grid div.head div.btnbox button.btn {margin-bot
 div#container section.viewer div.grid table.table {width:100%;}
 /* div#container section.viewer div.grid table.table thead.head {} */
 /* div#container section.viewer div.grid table.table thead.head tr.row {margin-bottom:5rem;} */
-div#container section.viewer div.grid table.table thead.head th.head {background-color:var(--limegreen); /* background-color:forestgreen; */ color:white; font-weight:bold; text-align:left; border-radius:.25rem;}
+div#container section.viewer div.grid table.table thead.head th.head {background-color:/* forestgreen */var(--limegreen); /* background-color:var(--lightblack); */ color:white; font-weight:bold; text-align:left; border-radius:.25rem;}
 div#container section.viewer div.grid table.table thead.head th.head.c {text-align:center;}
 div#container section.viewer div.grid table.table thead.head th.head span.caption {display:block; padding:.5rem 1rem;}
 /* div#container section.viewer div.grid table.table tbody.body {} */
@@ -21,7 +21,7 @@ div#container section.viewer div.grid table.table tbody.body td.data.c {text-ali
 /* div#container section.viewer div.grid table.table tbody.body td.data.null {} */
 div#container section.viewer div.grid table.table tbody.body td.data > span.caption {display:block; padding:.25rem 1rem;}
 div#container section.viewer div.grid table.table tbody.body td.data.null > span.caption {color:var(--reggrey); text-align:center; padding:2rem;}
-div#container section.viewer div.grid table.table tbody.body td.data input.newdistance {background-color:transparent; font-size:.875rem; width:4rem; padding:.25rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
+div#container section.viewer div.grid table.table tbody.body td.data input.newdistance {background-color:transparent; font-size:.875rem; width:4rem; padding:.25rem .5rem; /* border:0 none; border:1px solid var(--forecolor2); */ outline:none; border-radius:.25rem;}
 /* div#container section.viewer div.grid table.table tbody.body td.data button.btn {} */
 /* div#container section.viewer div.grid table.table tbody.body td.data button.editbtn {} */
 /* div#container section.viewer div.grid table.table tbody.body td.data button.deletebtn {background-color:var(--red);} */

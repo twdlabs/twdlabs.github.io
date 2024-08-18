@@ -33,10 +33,10 @@ function loadShotsTable() {
 
 
 // Load head layout for given table. 
-function loadTableHead(tablekey) {
+function loadTableHead(tableid) {
 
-	// Get table data for given table key. 
-	let giventabledata = tabledata[tablekey];
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
 
 	// Disregard if no destination present for table head. 
 	if(!giventabledata.tabletitledestination || !giventabledata.tableheadersdestination) return;
@@ -66,10 +66,10 @@ function loadTableHead(tablekey) {
 }
 
 // Load body layout for given table (R in CRUD). 
-function loadTableBody(tablekey) {
+function loadTableBody(tableid) {
 
-	// Get table data for given table key. 
-	let giventabledata = tabledata[tablekey];
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
 
 	// Disregard if no destination present for table body. 
 	if(!giventabledata.tablebodydestination) return;
@@ -77,8 +77,8 @@ function loadTableBody(tablekey) {
 	// Initialize layout for list of entries. 
 	let tablebodylayout = '';
 
-	// Restore saved data from memory. 
-	restoreFromMemory(tablekey);
+	// Restore saved table data from memory. 
+	restoreTableFromMemory(tableid);
 
 	// Check if list is empty. 
 	let islistempty = giventabledata.tableentries.length == 0;
@@ -113,7 +113,7 @@ function loadTableBody(tablekey) {
 		<td class="data null" colspan="${giventabledata.tablecolumns.length}">
 
 			<!-- caption -->
-			<span class="caption">Add new ${tablekey} to view here</span>
+			<span class="caption">Add new ${tableid} to view here</span>
 			<!-- /caption -->
 
 		</td>
@@ -269,7 +269,7 @@ function loadTableBody(tablekey) {
 				<!-- /editbtn -->
 
 				<!-- deletebtn -->
-				<button class="btn deletebtn" title="Delete club: '${clubentry.clubname}'" onclick="deleteClubEntry('${clubentry.clubid}')">
+				<button class="btn deletebtn" title="Delete club: '${clubentry.clubname}'" onclick="deleteTableEntry('clubs','${clubentry.clubid}')">
 
 					<!-- icon -->
 					<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

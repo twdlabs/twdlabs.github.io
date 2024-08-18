@@ -1,102 +1,116 @@
 
 
 
-// Delete club entry from database (D in CRUD). 
-function deleteClubEntry(givenclubid) {
+// Delete entry from database table (D in CRUD). 
+function deleteTableEntry(tableid,entryid) {
 
-	// Go thru each club entry in list. 
-	for(let index=0 ; index<tabledata['clubs'].tableentries.length ; index++) {
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
 
-		// Get current club entry. 
-		let clubentry = tabledata['clubs'].tableentries[index];
+	// Go thru each entry in given table. 
+	for(let index in giventabledata.tableentries) {
 
-		// Check if matching club entry found. 
-		let matchFound = clubentry.clubid == givenclubid;
+		// Get current table entry. 
+		let currententry = giventabledata.tableentries[index];
 
-		// Delete matching club entry (if found). 
+		// Check if matching table entry found. 
+		let matchFound = currententry.clubid == entryid;
+
+		// Delete matching table entry (if found). 
 		if(matchFound) {
 
-			// Confirm deletion of given club entry. 
+			// Confirm deletion of given table entry. 
 			let deletionconfirmed = confirm('Continue with deletion?');
 
 			// Proceed if deletion confirmed. 
 			if(deletionconfirmed) {
 
-				// Delete club entry at given index. 
-				deleteClubEntryAtIndex(index);
+				// Delete table entry at given index. 
+				deleteTableEntryAtIndex(index);
 	
 				// Save table data to memory. 
-				saveToMemory('clubs');
+				saveTableToMemory(tableid);
 			
-				// Return deleted club entry. 
-				console.log('Club entry deleted:',clubentry);
-				return clubentry;
+				// Return deleted table entry. 
+				console.log('Club entry deleted:',currententry);
+				return currententry;
 			}
 
 			// Note if deletion not confirmed. 
 			else {
 			
-				// Return remaining club entry. 
-				console.log('Club entry not deleted:',clubentry);
-				return clubentry;
+				// Return remaining table entry. 
+				console.log('Club entry not deleted:',currententry);
+				return currententry;
 			}
 		}
 	}
 
 	// Return nothing if no match found. 
-	console.log('No club entry found to delete...',clubentry);
+	console.log('No table entry found to delete...',tableid,entryid);
 	return null;
 
 	/****/
 
-	// Delete club entry at given index. 
-	function deleteClubEntryAtIndex(indexofdeletion) {
+	// Delete table entry at given index. 
+	function deleteTableEntryAtIndex(indexofdeletion) {
 
 		// Remove item at given index of deletion. 
-		tabledata['clubs'].tableentries.splice(indexofdeletion,1);
+		giventabledata.tableentries.splice(indexofdeletion,1);
 	}
 }
 
-// Delete all entries from clubs database (D in CRUD). 
-function clearClubsDatabase() {
-	console.log('Clearing clubs database...');
+// Delete all entries from database table (D in CRUD). 
+function clearDatabaseTable(tableid) {
+	console.log('Clearing database table...',tableid);
 
-	// Proceed if any club entries present. 
-	if( tabledata['clubs'].tableentries.length>0 ) {
-		
-		// Confirm deletion of all current club entries. 
-		if( confirm('Are you sure you want to DELETE ALL current club entries?') ) {
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
 
-			// Create new list of clubs. 
-			assignToClubsDatabase( [] );
-		}
+	// Check if any table entries present. 
+	let tableentriespresent = giventabledata.tableentries.length > 0;
+
+	// Confirm deletion if any table entries present. 
+	if(tableentriespresent && confirm('Are you sure you want to DELETE ALL current club entries?') ) {
+
+		// Create new empty list for table entries. 
+		assignToDatabaseTable( tableid , [] );
 	}
 
-	// Disregard if no club entries present. 
-	else alert('No club entries currently present.');
+	// Disregard if table empty or deletion not confirmed. 
+	else console.log('No deletion operation');
 }
 
-// Reset clubs database to default. 
-function resetClubsDatabase() {
-	console.log('Resetting clubs database to default...');
+// Reset database table to default. 
+function resetDatabaseTable(tableid) {
+	console.log('Resetting database table to default...',tableid);
 
-	// Proceed if no club entries present or if replacement confirmed. 
-	let proceed = tabledata['clubs'].tableentries.length==0 || confirm('Are you sure you want to REPLACE ALL current club entries with default club entries?');
-	if(proceed) {
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
+
+	// Check if table empty. 
+	let istableempty = giventabledata.tableentries.length==0;
+
+	// Confirm replacement unless table already empty. 
+	if( istableempty || confirm('Are you sure you want to REPLACE ALL current club entries with default club entries?') ) {
+
 		// Reset list of clubs to default. 
-		assignToClubsDatabase( tabledata['clubs'].defaulttableentries );
+		assignToDatabaseTable( tableid , giventabledata.defaulttableentrylist );
 	}
 }
 
-// Assign given data as clubs database. 
-function assignToClubsDatabase(givendata) {
+// Assign given table data to given database table. 
+function assignToDatabaseTable(giventableentrylist) {
+
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
 	
 	// Assign new list of clubs. 
-	tabledata['clubs'].tableentries = givendata;
+	giventabledata.tableentries = giventableentrylist;
 	
 	// Save table data to memory. 
-	saveToMemory('clubs');
+	saveTableToMemory(tableid);
 
 	// Show updated table of clubs. 
-	loadClubsTableBody();
+	loadTableBody(tableid);
 }

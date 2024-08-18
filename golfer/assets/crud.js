@@ -52,3 +52,30 @@ function createFieldsListLayout(fieldslistdata,newmode) {
 	// 
 	return fieldlistresult;
 }
+
+// Save newly entered club distance. 
+function saveNewClubDistance(givenclubid) {
+
+	// Get selected input field. 
+	let inputfield = event.currentTarget;
+	// console.log();
+
+	// Get club entry associated with given club id. 
+	let clubentry = getClubEntryById(givenclubid);
+
+	// Proceed if club entry exists. 
+	if(clubentry) {
+
+		// Get value of new distance entry. 
+		let newdistancevalue = parseFloat(inputfield.value);
+
+		// Disregard any non-number values. 
+		if( isNaN(newdistancevalue) ) return;
+
+		// Save if valid number value. 
+		else clubentry.distancelist.push(newdistancevalue);
+	}
+
+	// Save table data to memory. 
+	saveTableToMemory('clubs');
+}

@@ -5,7 +5,7 @@
 let urlparams = new URLSearchParams(window.location.search);
 
 // Get id of current club entry. 
-let entryid = urlparams.get('entryid');
+let urlentryid = urlparams.get('entryid');
 
 
 /*****/
@@ -15,40 +15,42 @@ let entryid = urlparams.get('entryid');
 function loadClubTableEditor() {
 
 	// Get destination for fields of 'edit entry' form. 
-	let editformfieldsdestination = document.querySelector('div#container section.clubeditor div.grid form.body ul.fieldlist');
+	let editformfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(tabledata['clubs'].tableentryfields,false);
+	let fieldlistresult = createFieldsListLayout(databasetables['clubs'].tableentryfields,false);
 
 	// Display list of fields in 'edit entry' form. 
 	editformfieldsdestination.innerHTML = fieldlistresult;
+
+	// TODO: Fill in current values for selected entry. 
 }
 
-// Close club entry editor. 
-function closeEditClubEntry() {
+// Close table editor for existing entry. 
+function closeEntryEditor() {
 
 	// Go directly to previous page (club viewer). 
 	window.location.href = '../';
 }
 
-// TODO: Save updated club entry in database (U in CRUD). 
-function saveUpdatedClubEntry() {
+// TODO: Save updated entry in database table (U in CRUD). 
+function saveUpdatedTableEntry(tableid,tableentryidkey) {
 
-	// Get club entry to be edited (by given club id in url). 
-	let clubentry = getClubById(entryid);
+	// Get table entry to be edited (using entry id from url). 
+	let tableentry = getTableEntryById(tableid,urlentryid,tableentryidkey);
 
-	// Go thru each club property (by field data item). 
-	for(let fielddata of tabledata['clubs'].tableentryfields) {
+	// Go thru each property (by field data item). 
+	for(let fielddata of databasetables[tableid].tableentryfields) {
 
 		// Get field id for given field data item. 
 		let fieldid = fielddata.fieldid;
 
 		// Get actual input field elements. 
-		let fieldinput = document.querySelector('div#container section.clubeditor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#'+fieldid);
+		let fieldinput = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#'+fieldid);
 		
-		// Save newly entered data for club property. 
-		if(fieldinput.value) clubentry[fieldid] = `${fieldinput.value}`;
-		else console.warn(`Invalid value provided for club property: ${fieldid}.`);
+		// Save newly entered value for club property. 
+		if(fieldinput.value) tableentry[fieldid] = `${fieldinput.value}`;
+		else console.warn(`Invalid value provided for given property: ${fieldid}.`);
 	}
 	
 	// // Get new club name. 
@@ -64,50 +66,23 @@ function saveUpdatedClubEntry() {
 	// // clubentry.xyz = xyz;
 
 	// Save table data to memory. 
-	saveToMemory('clubs');
+	saveTableToMemory(tableid);
 
-	// Close club entry editor. 
-	closeEditClubEntry();
+	// Close table editor for existing entry. 
+	closeEntryEditor();
 
 	/****/
 
-	// Edit club entry in database (U in CRUD). 
-	function editClubEntry(givenclubid) {
+	// Edit entry in database table (U in CRUD). 
+	function editTableEntry(givenentryid) {
 	
 		// Update club name. 
-		clubentry.clubname = prompt('Enter new club name.',clubentry.clubname);
+		tableentry.clubname = prompt('Enter new club name.',tableentry.clubname);
 	
 		// Update club brand. 
-		clubentry.clubbrand = prompt('Enter new club brand.',clubentry.clubid);
+		tableentry.clubbrand = prompt('Enter new club brand.',tableentry.clubid);
 	
 		// Update club distance list. 
-		clubentry.distancelist = ( prompt('Enter new club distances.',clubentry.distancelist) ).split(',');
+		tableentry.distancelist = ( prompt('Enter new club distances.',tableentry.distancelist) ).split(',');
 	}
-}
-
-// Save newly entered club distance. 
-function saveNewClubDistance(givenclubid) {
-
-	// Get selected input field. 
-	let inputfield = event.currentTarget;
-	// console.log();
-
-	// Get club entry associated with given club id. 
-	let clubentry = getClubById(givenclubid);
-
-	// Proceed if club entry exists. 
-	if(clubentry) {
-
-		// Get value of new distance entry. 
-		let newdistancevalue = parseFloat(inputfield.value);
-
-		// Disregard any non-number values. 
-		if( isNaN(newdistancevalue) ) return;
-
-		// Save if valid number value. 
-		else clubentry.distancelist.push(newdistancevalue);
-	}
-
-	// Save table data to memory. 
-	saveToMemory('clubs');
 }
