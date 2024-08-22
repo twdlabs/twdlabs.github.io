@@ -18,6 +18,15 @@
 		<link href="../assets/style/viewer.css" rel="stylesheet" type="text/css"/>
 
 		<!-- <style type="text/css"></style> -->
+
+		<!-- Parameter Script -->
+		<script type="text/javascript">
+
+			// Set table id. 
+			const tableid = 'clubs';
+			let loadItUp = false;
+			loadItUp = true;
+		</script>
 	</head>
 
 	<body>
@@ -315,6 +324,28 @@
 									<input class="newdistance" type="number" id="uniqueclubidnewdistanceentry" onchange="saveNewClubDistance('xyzentry')">
 									<!-- /newdistance -->
 
+									<!-- newdistanceebtn -->
+									<button class="btn newdistanceebtn" title="Add new distance for club: 'xyzentry'" onclick="startNewClubDistance('givenclubid')">
+	
+										<!-- icon -->
+										<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+										</svg>
+										<!-- /icon -->
+	
+										<!-- icon -->
+										<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+										</svg>
+										<!-- /icon -->
+
+										<!-- caption -->
+										<!-- <span class="caption">Add</span> -->
+										<!-- /caption -->
+										
+									</button>
+									<!-- /newdistanceebtn -->
+
 								</td>
 								<!-- /data -->
 
@@ -417,25 +448,21 @@
 		<!-- /#container -->
 
 
-		<!-- Parameter Script -->
-		<script type="text/javascript">
-
-			// Set table id. 
-			const tableid = 'clubs';
-			let loadItUp = false;
-			loadItUp = true;
-		</script>
-
 		<!-- Table Database -->
 		<script src="../assets/database/tabledatabase.js" type="text/javascript"></script>
-
 		<!-- Memory Script -->
 		<script src="../assets/database/golfermemory.js" type="text/javascript"></script>
 
+		<!-- Viewer Script -->
+		<!-- <script src="../assets/script/urlparams.js" type="text/javascript"></script> -->
+		<script src="../assets/script/viewer.js" type="text/javascript"></script>
+
 		<!-- CRUD Script -->
-		<script src="../assets/crud.js" type="text/javascript"></script>
-		<script src="../assets/script/read.js" type="text/javascript"></script>
-		<script src="../assets/script/delete.js" type="text/javascript"></script>
+		<script src="../assets/script/crud.js" type="text/javascript"></script>
+		<!-- <script src="../assets/script/crud/create.js" type="text/javascript"></script> -->
+		<script src="../assets/script/crud/read.js" type="text/javascript"></script>
+		<!-- <script src="../assets/script/crud/update.js" type="text/javascript"></script> -->
+		<script src="../assets/script/crud/delete.js" type="text/javascript"></script>
 
 		<!-- Run Script -->
 		<script type="text/javascript">
