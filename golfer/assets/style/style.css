@@ -76,7 +76,7 @@ div#container section {background-color:white; padding:.375rem; /* padding-top:1
 /* div#container section div.grid {display:flex; flex-direction:column; align-items:center;} */
 div#container section div.grid div.head {display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; padding:0 .125em;}
 div#container section div.grid div.head h2.header {margin:0; padding:0 .25em; margin:.125em 0; margin-right:.375em;}
-div#container section div.grid div.head h2.header:empty {background-color:var(--lightgrey); height:1em; width:7.5em; border-radius:1em;}
+div#container section div.grid div.head h2.header:empty {background-color:var(--lightgrey); height:1em; width:5em; border-radius:1em;}
 div#container section div.grid button.btn {background-color:var(--limegreen); background-color:var(--lightblack); color:white; cursor:pointer;}
 div#container section div.grid button.btn {display:inline-flex; flex-direction:row; justify-content:center; align-items:center;}
 div#container section div.grid button.btn {padding:.625rem; border:0 none; border-radius:.25rem; margin-top:.125rem; box-shadow:var(--boxshadow);}

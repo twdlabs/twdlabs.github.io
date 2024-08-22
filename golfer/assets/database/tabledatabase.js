@@ -7,8 +7,12 @@ let databasetables = {
 	// Define data for clubs table. 
 	clubs: {
 
-		// Define title of table. 
-		tabletitle:'Golf Clubs',
+		// Define title of viewer table. 
+		viewertitle:'Golf Clubs',
+		// Define title of update editor. 
+		editortitle:'Edit Golf Club',
+		// Define title of create editor. 
+		editortitlenew:'New Golf Club',
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -81,12 +85,6 @@ let databasetables = {
 				fieldtype:'number',
 				fieldcaption:'Club Loft',
 			},
-			// {
-			// 	fieldid:'distancelist',
-			// 	fieldtype:'text',
-			// 	fieldcaption:'Distance List',
-			// 	fieldlistmode:true,
-			// },
 			{
 				fieldid:'mindistance',
 				fieldtype:'number',
@@ -121,137 +119,182 @@ let databasetables = {
 				clubname:'Driver',
 				clubbrand:'Nike',
 				clubloftdegrees:10.5,
-				distancelist:[100,74,7],
+				numshots:1,
+				avgdistance:50,
+				mindistance:1,
+				maxdistance:95,
 			},
 			{
 				clubid:'3w',
 				clubname:'3+ Wood',
 				clubbrand:'Puma',
 				clubloftdegrees:13.5,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'3h',
 				clubname:'3-Hybrid',
 				clubbrand:'Reebok',
 				clubloftdegrees:18,
-				distancelist:[1,2,3],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'5h',
 				clubname:'5-Hybrid',
 				clubbrand:'Adidas',
 				clubloftdegrees:0,
-				distancelist:[1],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'3i',
 				clubname:'3-Iron',
 				clubbrand:'Lamborghini',
 				clubloftdegrees:18.5,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'4i',
 				clubname:'4-Iron',
 				clubbrand:'Ferrari',
 				clubloftdegrees:18.5,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'5i',
 				clubname:'5-Iron',
 				clubbrand:'Mercedes-Benz',
 				clubloftdegrees:21,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'6i',
 				clubname:'6-Iron',
 				clubbrand:'Lexus',
 				clubloftdegrees:24,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'7i',
 				clubname:'7-Iron',
 				clubbrand:'Toyota',
 				clubloftdegrees:27,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'8i',
 				clubname:'8-Iron',
 				clubbrand:'Honda',
 				clubloftdegrees:31.5,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'9i',
 				clubname:'9-Iron',
 				clubbrand:'Hyundai',
 				clubloftdegrees:36,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'pw',
 				clubname:'Pitching Wedge',
 				clubbrand:'GMC',
 				clubloftdegrees:41,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'apw',
 				clubname:'Approach Wedge',
 				clubbrand:'Ford',
 				clubloftdegrees:46,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'gw',
 				clubname:'Gap Wedge',
 				clubbrand:'Samsung',
 				clubloftdegrees:51,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'sw',
 				clubname:'Sand Wedge',
 				clubbrand:'Apple',
 				clubloftdegrees:56,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'lw',
 				clubname:'Lob Wedge',
 				clubbrand:'Meta',
 				clubloftdegrees:60,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			{
 				clubid:'ptr',
 				clubname:'Putter',
 				clubbrand:'Microsoft',
 				clubloftdegrees:60,
-				distancelist:[],
+				numshots:0,
+				avgdistance:60,
+				mindistance:10,
+				maxdistance:120,
 			},
 			// {
 			// 	clubid:'xyz',
 			// 	clubname:'Xyz',
 			// 	clubbrand:'Xyz',
 			// 	clubloftdegrees:0,
-			// 	distancelist:[],
+			// 	numshots:0,
+			// 	avgdistance:0,
+			// 	mindistance:0,
+			// 	maxdistance:0,
 			// },
 		],
-	
-		// Define destination for table title. 
-		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
-	
-		// Define destination for table body. 
-		tablebodydestination:document.querySelector('div#container section.viewer.clubs div.grid table.table tbody.body'),
-	
-		// Define destination for table headers. 
-		tableheadersdestination:document.querySelector('div#container section.viewer.clubs div.grid table.table thead.head tr.row'),
 
 		// Define row layout creator. 
 		// rowlayer:createClubEntryRowLayout,
@@ -260,8 +303,12 @@ let databasetables = {
 	// Define data for holes table. 
 	holes: {
 
-		// Define title of table. 
-		tabletitle:'Golf Holes',
+		// Define title of viewer table. 
+		viewertitle:'Golf Holes',
+		// Define title of update editor. 
+		editortitle:'Edit Golf Hole',
+		// Define title of create editor. 
+		editortitlenew:'New Golf Hole',
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -283,15 +330,6 @@ let databasetables = {
 	
 		// Define default entries (per row). 
 		defaulttableentrylist:[],
-	
-		// Define destination for table title. 
-		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
-	
-		// Define destination for table body. 
-		tablebodydestination:document.querySelector('div#container section.viewer.holes div.grid table.table tbody.body'),
-	
-		// Define destination for table headers. 
-		tableheadersdestination:document.querySelector('div#container section.viewer.holes div.grid table.table thead.head tr.row'),
 
 		// Define row layout creator. 
 		// rowlayer:createClubEntryRowLayout,
@@ -300,8 +338,12 @@ let databasetables = {
 	// Define data for shots table. 
 	shots: {
 
-		// Define title of table. 
-		tabletitle:'Golf Shots',
+		// Define title of viewer table. 
+		viewertitle:'Golf Shots',
+		// Define title of update editor. 
+		editortitle:'Edit Golf Shots',
+		// Define title of create editor. 
+		editortitlenew:'New Golf Shots',
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -323,15 +365,6 @@ let databasetables = {
 	
 		// Define default entries (per row). 
 		defaulttableentrylist:[],
-	
-		// Define destination for table title. 
-		tabletitledestination:document.querySelector('div#container section div.grid div.head h2.header'),
-	
-		// Define destination for table body. 
-		tablebodydestination:document.querySelector('div#container section.viewer.shots div.grid table.table tbody.body'),
-	
-		// Define destination for table headers. 
-		tableheadersdestination:document.querySelector('div#container section.viewer.shots div.grid table.table thead.head tr.row'),
 
 		// Define row layout creator. 
 		// rowlayer:createClubEntryRowLayout,
@@ -359,7 +392,7 @@ function getShotEntryById(givenentryid) {
 
 // Find table entry by table id and entry id. 
 function getTableEntryById(tableid,tableentryidkey,givenentryid) {
-	console.log('Finding table entry...',tableid,tableentryidkey,givenentryid);
+	// console.log('Finding table entry...',tableid,tableentryidkey,givenentryid);
 
 	// Get table data for given table id. 
 	let giventabledata = databasetables[tableid];

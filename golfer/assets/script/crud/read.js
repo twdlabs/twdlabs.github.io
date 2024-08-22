@@ -1,6 +1,16 @@
 
 
 
+// Define destination for table body. 
+const tablebodydestination = document.querySelector('div#container section.viewer div.grid table.table tbody.body');
+
+// Define destination for table headers. 
+const tableheadersdestination = document.querySelector('div#container section.viewer div.grid table.table thead.head tr.row');
+
+
+/*****/
+
+
 // Load layout for given database table. 
 function loadTable(tableid) {
 
@@ -19,7 +29,7 @@ function loadTable(tableid) {
 		let giventabledata = databasetables[tableid];
 	
 		// Disregard if no destination present for table head. 
-		if(!giventabledata.tabletitledestination || !giventabledata.tableheadersdestination) return;
+		if(!tableheadersdestination) return;
 	
 		// Initialize layout for table headers. 
 		let tableheadersresult = '';
@@ -40,23 +50,19 @@ function loadTable(tableid) {
 			<!-- /head -->`;
 		}
 	
-		// Display table head. 
-		giventabledata.tableheadersdestination.innerHTML = tableheadersresult;
-		giventabledata.tabletitledestination.innerHTML = giventabledata.tabletitle;
+		// Display information in table head. 
+		tableheadersdestination.innerHTML = tableheadersresult;
 	}
 }
 
 // Load body layout for given table (R in CRUD). 
 function loadTableBody(tableid) {
 
-	// Restore saved table data from memory. 
-	restoreTableFromMemory(tableid);
-
 	// Get table data for given table id. 
 	let giventabledata = databasetables[tableid];
 
 	// Disregard if no destination present for table body. 
-	if(!giventabledata.tablebodydestination) return;
+	if(!tablebodydestination) return;
 
 	// Initialize layout for list of entries. 
 	let tablebodylayout = '';
@@ -81,7 +87,7 @@ function loadTableBody(tableid) {
 	}
 
 	// Display list of table entries in table body. 
-	giventabledata.tablebodydestination.innerHTML = tablebodylayout;
+	tablebodydestination.innerHTML = tablebodylayout;
 
 	/****/
 
@@ -113,21 +119,21 @@ function loadTableBody(tableid) {
 		// Get loft of given club. 
 		let clubloftdegrees = clubentry.clubloftdegrees ? clubentry.clubloftdegrees : 0;
 
-		// Get list of distances for given club. 
-		let distancelist = clubentry.distancelist;
-
-		// Initialize distance metrics for given club. 
-		let mindistance = 0; let avgdistance = 0; let maxdistance = 0;
+		// Get distance metrics for given club. 
+		let numshots = clubentry.numshots ? clubentry.numshots : 0;
+		let avgdistance = clubentry.avgdistance ? clubentry.avgdistance : 0;
+		let mindistance = clubentry.mindistance ? clubentry.mindistance : 0;
+		let maxdistance = clubentry.maxdistance ? clubentry.maxdistance : 0;
 
 		// 
-		if(distancelist) {
-			// Get minimum distance for given club. 
-			mindistance = distancelist.length ? findMinimum(distancelist) : 0;
-			// Get average distance for given club. 
-			avgdistance = distancelist.length ? findAverage(distancelist) : 0;
-			// Get maximum distance for given club. 
-			maxdistance = distancelist.length ? findMaximum(distancelist) : 0;
-		}
+		// if(distancelist) {
+		// 	// Get minimum distance for given club. 
+		// 	mindistance = distancelist.length ? findMinimum(distancelist) : 0;
+		// 	// Get average distance for given club. 
+		// 	avgdistance = distancelist.length ? findAverage(distancelist) : 0;
+		// 	// Get maximum distance for given club. 
+		// 	maxdistance = distancelist.length ? findMaximum(distancelist) : 0;
+		// }
 
 		// Initialize layout for table row. 
 		let tablerowlayout = '';
@@ -138,7 +144,7 @@ function loadTableBody(tableid) {
  		// Add layout for brand of given club. 
 		tablerowlayout += createTableBlockLayout(clubbrand, 2);
  		// Add layout for loft of given club. 
-		tablerowlayout += createTableBlockLayout( `${formatNumber(clubloftdegrees)}&deg;`, 3);
+		tablerowlayout += createTableBlockLayout( formatNumber(clubloftdegrees)+'&deg', 3);
 		// Add layout for minimum distance of given club. 
 		tablerowlayout += createTableBlockLayout( formatNumber(mindistance), 4);
 		// Add layout for average distance of given club. 
@@ -162,16 +168,6 @@ function loadTableBody(tableid) {
 			return ( Number.isInteger(num) ? num : num.toFixed(1) );
 		}
 
-		// Find minimum of number list. 
-		function findMinimum(numberlist) {
-			return Math.min(...numberlist);
-		}
-
-		// Find maximum of number list. 
-		function findMaximum(numberlist) {
-			return Math.max(...numberlist);
-		}
-
 		// Find average of number list. 
 		function findAverage(numberlist) {
 
@@ -189,11 +185,21 @@ function loadTableBody(tableid) {
 			return (sum / numberlist.length);
 		}
 
+		// Find minimum of number list. 
+		function findMinimum(numberlist) {
+			return Math.min(...numberlist);
+		}
+
+		// Find maximum of number list. 
+		function findMaximum(numberlist) {
+			return Math.max(...numberlist);
+		}
+
 		// Create block layout for given table data. 
-		function createTableBlockLayout(caption,blockindex) {
+		function createTableBlockLayout(caption,columnindex) {
 
 			// Check if block is centered. 
-			let isblockcentered = giventabledata.tablecolumns[blockindex].columncenter;
+			let isblockcentered = giventabledata.tablecolumns[columnindex].columncenter;
 	
 			// Compile table data block. 
 			return `
@@ -219,6 +225,28 @@ function loadTableBody(tableid) {
 				<!-- newdistance -->
 				<input class="newdistance" type="number" id="${clubid}newdistance" onchange="saveNewClubDistance('${clubid}')">
 				<!-- /newdistance -->
+
+				<!-- newdistanceebtn -->
+				<button class="btn newdistanceebtn" title="Add new distance for club: '${clubid}'" onclick="startNewClubDistance('${clubid}')">
+
+					<!-- icon -->
+					<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- icon -->
+					<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- caption -->
+					<!-- <span class="caption">Add</span> -->
+					<!-- /caption -->
+					
+				</button>
+				<!-- /newdistanceebtn -->
 	
 			</td>
 			<!-- /data -->`;

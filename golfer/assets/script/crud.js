@@ -1,6 +1,38 @@
 
 
 
+// Define destination for table title. 
+const tabletitledestination = document.querySelector('div#container section div.grid div.head h2.header');
+
+
+/*****/
+
+
+// Load title of given table. 
+loadTableTitle();
+
+
+/*****/
+
+
+// Load title of given table. 
+function loadTableTitle() {
+	
+	// Disregard if no destination present. 
+	if(!tabletitledestination) return;
+	
+	// Get table data for given table id. 
+	let giventabledata = databasetables[tableid];
+
+	// Choose title to display (based on current page). 
+	let selectedtitle = giventabledata.viewertitle;
+	if(xyz) selectedtitle = giventabledata.editortitle;
+	if(xyz) selectedtitle = giventabledata.editortitlenew;
+
+	// Display information in table head. 
+	tabletitledestination.innerHTML = selectedtitle;
+}
+
 // Start creating new entry. 
 function startNewEntry(tableid) {
 
@@ -10,6 +42,7 @@ function startNewEntry(tableid) {
 	// Go directly to editor page for new entry. 
 	// window.location.href = './add/';
 	window.location.href = `../add/?tableid=${tableid}`;
+	// window.location.href = `../editor/?tableid=${tableid}`;
 }
 
 // Close table editor for new entry. 
@@ -34,6 +67,7 @@ function startEditEntry(tableid,entryid) {
 	// Go directly to editor page for existing entry. 
 	// window.location.href = './edit/?entryid='+entryid;
 	window.location.href = `../edit/?tableid=${tableid}&entryid=${entryid}`;
+	// window.location.href = `../editor/?tableid=${tableid}&entryid=${entryid}`;
 }
 
 // Close table editor for existing entry. 
@@ -50,44 +84,17 @@ function closeEntryEditor() {
 }
 
 
-// Compile layout for given list of fields. 
-function createFieldsListLayout(fielddatalist,entryalreadyexists) {
+// Start entry of new club distance. 
+function startNewClubDistance(givenclubid) {
 
-	// Initialize layout for list of fields. 
-	let fieldlistresult = '';
+	// Go directly to distance editor page. 
+	window.location.href = './newdistance/?clubid='+givenclubid;
+}
 
-	// Compile layout for list of fields. 
-	for(let fielddata of fielddatalist) {
+// Close entry of new club distance. 
+function closeNewClubDistance() {
 
-		// Get field id. 
-		let fieldid = `${ !entryalreadyexists ? 'new' : '' }${ fielddata.fieldid }`;
-		// Get field captions. 
-		let fieldcaption = fielddata.fieldcaption;
-
-		fieldlistresult += `
-		<!-- fielditem -->
-		<li class="fielditem">
-
-			<!-- entryfield -->
-			<div class="entryfield">
-
-				<!-- fieldname -->
-				<label class="fieldname" for="${fieldid}">${fieldcaption}</label>
-				<!-- /fieldname -->
-
-				<!-- fieldvalue -->
-				<input class="fieldvalue" type="${fielddata.fieldtype}" id="${fieldid}" name="${fieldid}" placeholder="${fieldcaption}">
-				<!-- /fieldvalue -->
-
-			</div>
-			<!-- /entryfield -->
-			
-		</li>
-		<!-- /fielditem -->`;
-	}
-
-	// Return layout for list of fields. 
-	return fieldlistresult;
+	// 
 }
 
 // Save newly entered club distance. 
