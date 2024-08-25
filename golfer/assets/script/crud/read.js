@@ -55,6 +55,8 @@ function loadTable() {
 // -- R in CRUD -- //
 // Load body layout for given table. 
 function loadTableBody() {
+	console.log('Table entries:',selectedtable.tableentries);
+	
 
 	// Get list of table entries. 
 	let tableentrieslist = selectedtable['tableentries'];

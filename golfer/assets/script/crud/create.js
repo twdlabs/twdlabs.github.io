@@ -25,27 +25,37 @@ function saveNewEntry() {
 	let tableentrieslist = selectedtable['tableentries'];
 
 	// Initialize new entry. 
-	let newentry = {};
+	let newtableentry = {};
 
 	// Generate id for new entry. 
-	newentry['id'] = generateNewEntryId();
+	newtableentry['id'] = generateNewEntryId();
 
-	// Go thru each property (using field data item). 
-	for(let fielddata of selectedtable['tableentryfields']) {
+	// Go thru each field. 
+	for(let currentfield of selectedtable['tableentryfields']) {
 
-		// Get field id for given field data item. 
-		let fieldid = `new${fielddata.fieldid}`;
+		// Get id of current field. 
+		let fieldid = currentfield.fieldid;
 
-		// Get actual input field elements. 
-		let fieldinput = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#'+fieldid);
+		// Get input element of current field. 
+		let fieldinput = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#new'+fieldid);
 		
-		// Save newly entered data for club property. 
-		if(fieldinput.value) newentry[fieldid] = `${fieldinput.value}`;
-		else console.warn(`Invalid value provided for property of new entry: ${fieldid}.`);
+		// Get newly entered value for current field. 
+		let fieldinputvalue = fieldinput.value;
+		
+		// Save value for current field (if valid). 
+		if( checkFieldValue(fieldinputvalue) ) {
+			newtableentry[fieldid] = `${fieldinput.value}`;
+		}
+
+		// Disregard value for current field (if not valid). 
+		else {
+			newtableentry[fieldid] = null;
+			console.warn(`Invalid value provided: Null value saved for '${fieldid}' field.`);
+		}
 	}
 	
-	// Add new entry to database. 
-	tableentrieslist.push(newentry);
+	// Add new entry to database table. 
+	tableentrieslist.push(newtableentry);
 
 	// Save table entries to memory. 
 	saveTableToMemory(selectedtableid);
@@ -55,19 +65,47 @@ function saveNewEntry() {
 
 	/****/
 
-	// TODO: Generate unique identification for new entry. 
+	// Generate unique identification number for new entry. 
 	function generateNewEntryId() {
 
-		// Initialize id of last entry. 
-		let lastentryid = 0;
+		// Initialize id of new entry. 
+		let newentryid = 0;
+	
+		// Assume default id already taken. 
+		let alreadytaken = true;
 
-		// Go thru each entry in table. 
-		for(let currententry of tableentrieslist) {
+		// Continue generating new id. 
+		while(alreadytaken) {
 
-			// Check for gap from id of last entry. 
+			// Increment id of new entry. 
+			newentryid++
+	
+			// Check if new id already taken. 
+			alreadytaken = checkIfEntryIdTaken(newentryid);
 		}
 
 		// Return id. 
-		return -1;
+		return newentryid;
+	
+		// Check for gap from id of last entry. 
+
+		/***/
+	
+		// Check if new entry identification already taken. 
+		function checkIfEntryIdTaken(givenid) {
+
+			// Go thru each entry in table. 
+			for(let currententry of tableentrieslist) {
+	
+				// Check for matching id. 
+				let matchfound = currententry['id'] == givenid;
+
+				// End search, assuming true if match found. 
+				if(matchfound) return true;
+			}
+
+			// Assume false if match not found. 
+			return false;
+		}
 	}
 }

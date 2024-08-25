@@ -35,6 +35,7 @@ function loadEntryEditor() {
 	
 			// Get field value. 
 			let fieldvalue = selectedtableentry[currentfield.fieldid]
+			console.log('Field value:',fieldvalue);
 	
 			// Get input field. 
 			let inputfield = document.querySelector(`div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#${currentfield.fieldid}`);
@@ -51,18 +52,34 @@ function loadEntryEditor() {
 // Save updated entry in database table. 
 function saveUpdatedEntry() {
 
-	// Go thru each property (by field data item). 
-	for(let fielddata of selectedtable['tableentryfields']) {
+	// Ensure existence of selected entry. 
+	if(!selectedtableentry) {
+		console.warn(`No valid table entry selected.`,selectedtableentry);
+		return;
+	}
 
-		// Get field id for given field data item. 
-		let fieldid = fielddata.fieldid;
+	// Go thru each field. 
+	for(let currentfield of selectedtable['tableentryfields']) {
 
-		// Get actual input field elements. 
+		// Get id of current field. 
+		let fieldid = currentfield.fieldid;
+
+		// Get input element of current field. 
 		let fieldinput = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#'+fieldid);
 		
-		// Save newly entered value for club property. 
-		if(fieldinput.value) selectedtableentry[fieldid] = `${fieldinput.value}`;
-		else console.warn(`Invalid value provided for given property: ${fieldid}.`);
+		// Get newly entered value for current field. 
+		let fieldinputvalue = fieldinput.value;
+		
+		// Save value for current field (if valid). 
+		if( checkFieldValue(fieldinputvalue) ) {
+			selectedtableentry[fieldid] = `${fieldinput.value}`;
+		}
+
+		// Disregard value for current field (if not valid). 
+		else {
+			// selectedtableentry[fieldid] = null;
+			console.warn(`Invalid value provided: New value disregarded for '${fieldid}' field.`);
+		}
 	}
 
 	// Save table entries to memory. 

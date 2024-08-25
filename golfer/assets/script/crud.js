@@ -1,7 +1,7 @@
 
 
 
-// Define destination for table title. 
+// Define table section. 
 const tablesection = document.querySelector('div#container section');
 
 // Define destination for table title. 
@@ -20,7 +20,6 @@ loadTableTitle();
 
 // Load title of current table. 
 function loadTableTitle() {
-	console.log('Selected table:',selectedtable);
 
 	// Disregard if no destination for title. 
 	if(!tabletitledestination) return;
@@ -32,7 +31,7 @@ function loadTableTitle() {
 	if( !selectedtableid && !selectedentryid ) {
 
 		// Set viewer title. 
-		selectedtitle = selectedtable['viewertitle'];
+		selectedtitle = selectedtable['tabletitles']['viewertitle'];
 	}
 
 	// Handle editor table in create mode. 
@@ -42,7 +41,7 @@ function loadTableTitle() {
 		tablesection.classList.add('c');
 
 		// Set editor title. 
-		selectedtitle = selectedtable['editortitlenew'];
+		selectedtitle = selectedtable['tabletitles']['editortitlenew'];
 	}
 
 	// Handle editor table in update mode. 
@@ -52,12 +51,19 @@ function loadTableTitle() {
 		tablesection.classList.add('u');
 
 		// Set editor title. 
-		selectedtitle = selectedtable['editortitleexisting'];
+		selectedtitle = selectedtable['tabletitles']['editortitleexisting'];
 	}
 
 	// Display information in table head. 
 	tabletitledestination.innerHTML = selectedtitle;
 }
+
+// Check for valid field value. 
+function checkFieldValue(givenvalue) {
+	return !!givenvalue || !isNaN(givenvalue);
+}
+
+/*****/
 
 // Start creating new entry. 
 function startNewEntry() {

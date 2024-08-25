@@ -4,14 +4,18 @@
 /* Editor Section */
 /* div#container section.editor div.grid {} */
 div#container section.editor div.grid div.head {justify-content:center;}
-div#container section.editor div.grid div.head h2.header {font-size:1.25rem;}
+div#container section.editor div.grid div.head h2.header {font-size:1.5rem;}
 /* div#container section.editor div.grid form.body {} */
 div#container section.editor div.grid form.body ul.fieldlist {list-style:none; padding:0; margin:0;}
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem {margin-top:.25rem;}
-div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield {background-color:var(--backcolor); display:grid; grid-template-columns:repeat(2,1fr); align-items:center; padding:.375rem .5rem; border-radius:.5rem;}
-div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname {margin-right:.5em;}
-div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {background-color:transparent; font-size:.875rem; width:9rem; text-align:center;}
-div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {padding:.375rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield {background-color:var(--backcolor); display:grid; place-items:center; padding:.375rem .5rem; border-radius:.5rem;}
+div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield {grid-template-columns:repeat(2,1fr); justify-items:initial;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname {font-weight:bold; text-align:center; margin:0 .5em; margin-bottom:.25em;}
+div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname {text-align:left; margin-bottom:0;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname:empty {background-color:var(--forecolor2); height:1em; width:5em; border-radius:1em; margin-bottom:.375em;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {background-color:transparent; font-size:1em; text-align:center;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {padding:.375rem .75rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
+div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {font-size:.875rem; max-width:9rem; text-align:left;}
 /* div#container section.editor div.grid div.foot {} */
 /* div#container section.editor div.grid div.foot button.btn {} */
 /* div#container section.editor div.grid div.foot button.savebtn {} */

@@ -7,12 +7,15 @@ let databasetables = {
 	// Define data for clubs table. 
 	clubs: {
 
-		// Define title of viewer table. 
-		viewertitle:'Golf Clubs',
-		// Define title of create editor. 
-		editortitlenew:'New Golf Club',
-		// Define title of update editor. 
-		editortitleexisting:'Edit Golf Club',
+		// Define table titles. 
+		tabletitles:{
+			// Define title of viewer table. 
+			viewertitle:'Golf Clubs',
+			// Define title of create editor. 
+			editortitlenew:'New Golf Club',
+			// Define title of update editor. 
+			editortitleexisting:'Edit Golf Club',
+		},
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -65,44 +68,59 @@ let databasetables = {
 			// 	fieldtype:'text',
 			// 	fieldtype:'number',
 			// 	fieldcaption:'ID',
+			// 	fielddefaultvalue:0,
 			// },
 			{
 				fieldid:'clubname',
 				fieldtype:'text',
 				fieldcaption:'Club Name',
+				fielddefaultvalue:'',
 			},
 			{
 				fieldid:'clubbrand',
 				fieldtype:'text',
 				fieldcaption:'Club Brand',
+				fielddefaultvalue:'',
 			},
 			{
 				fieldid:'clubloftdegrees',
 				fieldtype:'number',
-				fieldcaption:'Club Loft',
+				fieldcaption:'Club Loft (&deg;)',
+				fielddefaultvalue:0,
 			},
 			{
 				fieldid:'mindistance',
 				fieldtype:'number',
 				fieldcaption:'Minimum Distance',
 				fieldcaption:'Min Distance',
+				fielddefaultvalue:0,
 			},
 			{
 				fieldid:'avgdistance',
 				fieldtype:'number',
 				fieldcaption:'Average Distance',
 				fieldcaption:'Avg Distance',
+				fielddefaultvalue:0,
 			},
 			{
 				fieldid:'maxdistance',
 				fieldtype:'number',
 				fieldcaption:'Maximum Distance',
 				fieldcaption:'Max Distance',
+				fielddefaultvalue:0,
+			},
+			{
+				fieldid:'numshots',
+				fieldtype:'number',
+				fieldcaption:'Number of Shots',
+				fieldcaption:'Num Shots',
+				fielddefaultvalue:0,
 			},
 			// {
 			// 	fieldid:'xyz',
 			// 	fieldtype:'number',
 			// 	fieldcaption:'xyz',
+			// 	fielddefaultvalue:'',
 			// 	columnheader:'xyz',
 			// 	columncenter:false,
 			// },
@@ -299,12 +317,15 @@ let databasetables = {
 	// Define data for holes table. 
 	holes: {
 
-		// Define title of viewer table. 
-		viewertitle:'Golf Holes',
-		// Define title of create editor. 
-		editortitlenew:'New Golf Hole',
-		// Define title of update editor. 
-		editortitleexisting:'Edit Golf Hole',
+		// Define table titles. 
+		tabletitles:{
+			// Define title of viewer table. 
+			viewertitle:'Golf Holes',
+			// Define title of create editor. 
+			editortitlenew:'New Golf Hole',
+			// Define title of update editor. 
+			editortitleexisting:'Edit Golf Hole',
+		},
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -340,12 +361,15 @@ let databasetables = {
 	// Define data for shots table. 
 	shots: {
 
-		// Define title of viewer table. 
-		viewertitle:'Golf Shots',
-		// Define title of create editor. 
-		editortitlenew:'New Golf Shots',
-		// Define title of update editor. 
-		editortitleexisting:'Edit Golf Shots',
+		// Define table titles. 
+		tabletitles:{
+			// Define title of viewer table. 
+			viewertitle:'Golf Shots',
+			// Define title of create editor. 
+			editortitlenew:'New Golf Shots',
+			// Define title of update editor. 
+			editortitleexisting:'Edit Golf Shots',
+		},
 	
 		// Define current entries (per row). 
 		tableentries:[],

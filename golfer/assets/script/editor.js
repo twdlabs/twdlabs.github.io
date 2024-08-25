@@ -27,8 +27,11 @@ function createFieldsListLayout(fielddatalist,entryalreadyexists) {
 
 		// Get field id. 
 		let fieldid = `${ !entryalreadyexists ? 'new' : '' }${ fielddata.fieldid }`;
-		// Get field captions. 
+		// Get field caption. 
 		let fieldcaption = fielddata.fieldcaption;
+		// Get default field value. 
+		let defaultvalue = fielddata.fielddefaultvalue!=undefined ? fielddata.fielddefaultvalue : '';
+		let placeholder = defaultvalue!=undefined ? `Ex: ${defaultvalue}` : '';
 
 		fieldlistresult += `
 		<!-- fielditem -->
@@ -42,7 +45,7 @@ function createFieldsListLayout(fielddatalist,entryalreadyexists) {
 				<!-- /fieldname -->
 
 				<!-- fieldvalue -->
-				<input class="fieldvalue" type="${fielddata.fieldtype}" id="${fieldid}" name="${fieldid}" placeholder="${fieldcaption}">
+				<input class="fieldvalue" type="${fielddata.fieldtype}" id="${fieldid}" name="${fieldid}" placeholder="${placeholder}" value="${defaultvalue}">
 				<!-- /fieldvalue -->
 
 			</div>

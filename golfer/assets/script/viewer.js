@@ -6,4 +6,4 @@ restoreTableFromMemory(displaytableid);
 
 // Get currently displayed table. 
 let selectedtable = databasetables[displaytableid];
-console.log('Currently displayed table:',selectedtable);
+console.log('Selected table:',selectedtable);
