@@ -15,10 +15,12 @@ div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname:empty {background-color:var(--forecolor2); height:1em; width:5em; border-radius:1em; margin-bottom:.375em;}
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {background-color:transparent; font-size:1em; text-align:center;}
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {padding:.375rem .75rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
-div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {font-size:.875rem; max-width:9rem; text-align:left;}
+div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {font-size:.875rem; max-width:9rem; /* text-align:left; */}
 /* div#container section.editor div.grid div.foot {} */
 /* div#container section.editor div.grid div.foot button.btn {} */
 /* div#container section.editor div.grid div.foot button.savebtn {} */
+/* div#container section.editor div.grid div.foot button.cancelbtn {} */
+div#container section.editor.c div.grid div.foot button.deletebtn {display:none;}
 div#container section.editor.u div.grid div.foot button.savenewbtn {display:none;}
 div#container section.editor.c div.grid div.foot button.saveupdatebtn {display:none;}
 /* div#container section.editor div.grid div.foot button.btn span.caption {} */

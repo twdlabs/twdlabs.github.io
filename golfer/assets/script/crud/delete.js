@@ -28,12 +28,27 @@ function startDeleteEntry(givenentryid) {
 
 				// Delete table entry at given index. 
 				deleteEntryAtIndex(index);
-	
-				// Save table entries to memory. 
-				saveTableToMemory(displaytableid);
 
-				// Show updated table entries. 
-				loadTableBody();
+				// Handle things on viewer page. 
+				// if( !(typeof displaytableid == 'undefined') )
+				if( typeof selectedtableid == 'undefined' ) {
+	
+					// Save table entries to memory. 
+					saveTableToMemory(displaytableid);
+	
+					// Show updated table entries. 
+					loadTableBody();
+				}
+
+				// Handle things on editor page. 
+				else {
+	
+					// Save table entries to memory. 
+					saveTableToMemory(selectedtableid);
+
+					// Close table entry editor. 
+					closeEntryEditor();
+				}
 			
 				// Return deleted table entry. 
 				console.log('Table entry deleted:',currententry);
@@ -76,7 +91,7 @@ function clearDatabaseTable() {
 	if(tableentriespresent && confirm('Are you sure you want to DELETE ALL current table entries?') ) {
 
 		// Create new empty list for table entries. 
-		assignToDatabaseTable( [] );
+		assignToSelectedTable( [] );
 	}
 
 	// Disregard if table empty or deletion not confirmed. 
@@ -95,15 +110,15 @@ function resetDatabaseTable() {
 	if( istableempty || confirm('Are you sure you want to REPLACE ALL current table entries with default entries?') ) {
 
 		// Reset list of entries to default. 
-		assignToDatabaseTable( selectedtable['defaulttableentrylist'] );
+		assignToSelectedTable( selectedtable['defaulttableentrylist'] );
 	}
 }
 
-// Assign given table data to given database table. 
-function assignToDatabaseTable(giventableentrylist) {
+// Assign given table entries to selected database table. 
+function assignToSelectedTable(giventableentrieslist) {
 	
 	// Assign new list of entries. 
-	selectedtable['tableentries'] = giventableentrylist;
+	selectedtable['tableentries'] = giventableentrieslist;
 	
 	// Save table entries to memory. 
 	saveTableToMemory(displaytableid);

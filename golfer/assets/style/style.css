@@ -79,12 +79,12 @@ div#container section div.grid div.head h2.header {margin:0; padding:0 .25em; ma
 div#container section div.grid div.head h2.header:empty {background-color:var(--lightgrey); height:1em; width:5em; border-radius:1em;}
 div#container section div.grid button.btn {background-color:var(--limegreen); background-color:var(--lightblack); color:white; cursor:pointer;}
 div#container section div.grid button.btn {display:inline-flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container section div.grid button.btn {padding:.625rem; border:0 none; border-radius:.25rem; margin-top:.125rem; box-shadow:var(--boxshadow);}
+div#container section div.grid button.btn {padding:.625rem; border:0 none; border-radius:.25rem; margin-top:.375rem; box-shadow:var(--boxshadow);}
 div#container section div.grid button.btn svg.icon {display:none;}
 div#container section div.grid button.btn svg.icon:first-child {display:block;}
 div#container section div.grid button.btn span.caption {font-size:.75rem; margin-left:.375rem;}
 div#container section div.grid div.foot {display:flex; flex-direction:row; grid-gap:.25rem;}
-div#container section div.grid div.foot button.btn {width:100%; padding:.625rem; margin-top:.25rem;}
+div#container section div.grid div.foot button.btn {width:100%; padding:.625rem; margin-top:.375rem;}
 
 
 
