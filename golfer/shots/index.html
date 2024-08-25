@@ -22,8 +22,8 @@
 		<!-- Parameter Script -->
 		<script type="text/javascript">
 
-			// Set table id. 
-			const tableid = 'shots';
+			// Set id for currently displayed table. 
+			const displaytableid = 'shots';
 			let loadItUp = false;
 			loadItUp = true;
 		</script>
@@ -149,7 +149,7 @@
 							<!-- /logbtn -->
 
 							<!-- resetbtn -->
-							<button class="resetbtn btn" onclick="resetDatabaseTable('shots')">
+							<button class="resetbtn btn" onclick="resetDatabaseTable()">
 	
 								<!-- icon -->
 								<svg class="icon database" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -173,7 +173,7 @@
 							<!-- /resetbtn -->
 	
 							<!-- clearbtn -->
-							<button class="clearbtn btn" onclick="clearDatabaseTable('shots')">
+							<button class="clearbtn btn" onclick="clearDatabaseTable()">
 	
 								<!-- icon -->
 								<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -320,10 +320,6 @@
 								<!-- data -->
 								<td class="data">
 
-									<!-- newdistance -->
-									<input class="newdistance" type="number" id="uniqueclubidnewdistanceentry" onchange="saveNewClubDistance('xyzentry')">
-									<!-- /newdistance -->
-
 								</td>
 								<!-- /data -->
 
@@ -331,7 +327,7 @@
 								<td class="data a">
 
 									<!-- editbtn -->
-									<button class="btn editbtn" title="Edit entry: 'xyzentry'" onclick="startEditEntry('shots','entryid')">
+									<button class="btn editbtn" title="Edit entry: 'xyzentry'" onclick="startEditEntry('selectedentryid')">
 	
 										<!-- icon -->
 										<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -360,7 +356,7 @@
 									<!-- /editbtn -->
 
 									<!-- deletebtn -->
-									<button class="btn deletebtn" title="Delete entry: 'xyzentry'" onclick="startDeleteEntry('clubs','clubid')">
+									<button class="btn deletebtn" title="Delete entry: 'xyzentry'" onclick="startDeleteEntry('entryid')">
 	
 										<!-- icon -->
 										<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -397,7 +393,7 @@
 					<div class="foot">
 
 						<!-- newbtn -->
-						<button class="btn newbtn" title="Add a brand new shot" onclick="startNewEntry('shots')">
+						<button class="btn newbtn" title="Add a brand new shot" onclick="startNewEntry()">
 
 							<!-- icon -->
 							<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -426,13 +422,12 @@
 		<!-- /#container -->
 
 
-		<!-- Table Database -->
+		<!-- Table Memory -->
 		<script src="../assets/database/tabledatabase.js" type="text/javascript"></script>
-		<!-- Memory Script -->
 		<script src="../assets/database/golfermemory.js" type="text/javascript"></script>
 
 		<!-- Viewer Script -->
-		<!-- <script src="../assets/script/urlparams.js" type="text/javascript"></script> -->
+		<script src="../assets/script/urlparams.js" type="text/javascript"></script>
 		<script src="../assets/script/viewer.js" type="text/javascript"></script>
 
 		<!-- CRUD Script -->
@@ -446,7 +441,7 @@
 		<script type="text/javascript">
 
 			// Load shots table. 
-			if(loadItUp) loadTable(tableid);
+			if(loadItUp) loadTable();
 		</script>
 
 	</body>
