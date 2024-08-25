@@ -5,9 +5,9 @@
 const urlparams = new URLSearchParams(window.location.search);
 
 // Get id of selected table. 
-const tableid = urlparams.get('tableid');
-console.log('tableid:',tableid);
+const selectedtableid = urlparams.get('tid');
+console.log('Selected table id:',selectedtableid);
 
 // Get id of selected table entry. 
-const entryid = urlparams.get('entryid');
-console.log('entryid:',entryid);
+const selectedentryid = urlparams.get('eid');
+console.log('Selected table entry id:',selectedentryid);

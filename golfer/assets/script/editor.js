@@ -1,13 +1,16 @@
 
 
 
-// Restore saved table data from memory. 
-restoreTableFromMemory(tableid);
+// Restore saved table entries from memory. 
+restoreTableFromMemory(selectedtableid);
 
-// Get selected table entry to be edited. 
-let tableentry = getClubEntryById(entryid);
-// let tableentry = getTableEntryById(tableid,'clubid',entryid);
-console.log('Selected table entry:',tableentry);
+// Get selected table. 
+let selectedtable = databasetables[selectedtableid];
+console.log('Selected table:',selectedtable);
+
+// Get selected table entry (if it exists). 
+let selectedtableentry = getTableEntryById(selectedtableid,selectedentryid);
+console.log('Selected table entry:',selectedtableentry);
 
 
 /*****/

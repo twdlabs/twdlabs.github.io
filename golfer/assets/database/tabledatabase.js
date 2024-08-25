@@ -9,10 +9,10 @@ let databasetables = {
 
 		// Define title of viewer table. 
 		viewertitle:'Golf Clubs',
-		// Define title of update editor. 
-		editortitle:'Edit Golf Club',
 		// Define title of create editor. 
 		editortitlenew:'New Golf Club',
+		// Define title of update editor. 
+		editortitleexisting:'Edit Golf Club',
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -26,15 +26,6 @@ let databasetables = {
 			{
 				columnheader:'Golf Club',
 				columncenter:false,
-			},
-			{
-				columnheader:'Brand',
-				columncenter:false,
-			},
-			{
-				columnheader:'Loft (in degrees)',
-				columnheader:'Loft',
-				columncenter:true,
 			},
 			{
 				columnheader:'Minimum Distance',
@@ -52,7 +43,11 @@ let databasetables = {
 				columncenter:true,
 			},
 			{
-				columnheader:'Add New Entry',
+				columnheader:'Num Distances',
+				columnheader:'Num',
+				columncenter:true,
+			},
+			{
 				columnheader:'New Distance',
 				columnheader:'New',
 				columncenter:true,
@@ -66,9 +61,10 @@ let databasetables = {
 		// Define fields for each entry. 
 		tableentryfields:[
 			// {
-			// 	fieldid:'clubid',
+			// 	fieldid:'id',
 			// 	fieldtype:'text',
-			// 	fieldcaption:'Club ID',
+			// 	fieldtype:'number',
+			// 	fieldcaption:'ID',
 			// },
 			{
 				fieldid:'clubname',
@@ -115,7 +111,7 @@ let databasetables = {
 		// Define default entries (per row). 
 		defaulttableentrylist:[
 			{
-				clubid:'drv',
+				id:'drv',
 				clubname:'Driver',
 				clubbrand:'Nike',
 				clubloftdegrees:10.5,
@@ -125,7 +121,7 @@ let databasetables = {
 				maxdistance:95,
 			},
 			{
-				clubid:'3w',
+				id:'3w',
 				clubname:'3+ Wood',
 				clubbrand:'Puma',
 				clubloftdegrees:13.5,
@@ -135,7 +131,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'3h',
+				id:'3h',
 				clubname:'3-Hybrid',
 				clubbrand:'Reebok',
 				clubloftdegrees:18,
@@ -145,7 +141,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'5h',
+				id:'5h',
 				clubname:'5-Hybrid',
 				clubbrand:'Adidas',
 				clubloftdegrees:0,
@@ -155,7 +151,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'3i',
+				id:'3i',
 				clubname:'3-Iron',
 				clubbrand:'Lamborghini',
 				clubloftdegrees:18.5,
@@ -165,7 +161,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'4i',
+				id:'4i',
 				clubname:'4-Iron',
 				clubbrand:'Ferrari',
 				clubloftdegrees:18.5,
@@ -175,7 +171,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'5i',
+				id:'5i',
 				clubname:'5-Iron',
 				clubbrand:'Mercedes-Benz',
 				clubloftdegrees:21,
@@ -185,7 +181,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'6i',
+				id:'6i',
 				clubname:'6-Iron',
 				clubbrand:'Lexus',
 				clubloftdegrees:24,
@@ -195,7 +191,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'7i',
+				id:'7i',
 				clubname:'7-Iron',
 				clubbrand:'Toyota',
 				clubloftdegrees:27,
@@ -205,7 +201,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'8i',
+				id:'8i',
 				clubname:'8-Iron',
 				clubbrand:'Honda',
 				clubloftdegrees:31.5,
@@ -215,7 +211,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'9i',
+				id:'9i',
 				clubname:'9-Iron',
 				clubbrand:'Hyundai',
 				clubloftdegrees:36,
@@ -225,7 +221,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'pw',
+				id:'pw',
 				clubname:'Pitching Wedge',
 				clubbrand:'GMC',
 				clubloftdegrees:41,
@@ -235,7 +231,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'apw',
+				id:'apw',
 				clubname:'Approach Wedge',
 				clubbrand:'Ford',
 				clubloftdegrees:46,
@@ -245,7 +241,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'gw',
+				id:'gw',
 				clubname:'Gap Wedge',
 				clubbrand:'Samsung',
 				clubloftdegrees:51,
@@ -255,7 +251,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'sw',
+				id:'sw',
 				clubname:'Sand Wedge',
 				clubbrand:'Apple',
 				clubloftdegrees:56,
@@ -265,7 +261,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'lw',
+				id:'lw',
 				clubname:'Lob Wedge',
 				clubbrand:'Meta',
 				clubloftdegrees:60,
@@ -275,7 +271,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			{
-				clubid:'ptr',
+				id:'ptr',
 				clubname:'Putter',
 				clubbrand:'Microsoft',
 				clubloftdegrees:60,
@@ -285,7 +281,7 @@ let databasetables = {
 				maxdistance:120,
 			},
 			// {
-			// 	clubid:'xyz',
+			// 	id:'xyz',
 			// 	clubname:'Xyz',
 			// 	clubbrand:'Xyz',
 			// 	clubloftdegrees:0,
@@ -305,10 +301,10 @@ let databasetables = {
 
 		// Define title of viewer table. 
 		viewertitle:'Golf Holes',
-		// Define title of update editor. 
-		editortitle:'Edit Golf Hole',
 		// Define title of create editor. 
 		editortitlenew:'New Golf Hole',
+		// Define title of update editor. 
+		editortitleexisting:'Edit Golf Hole',
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -326,7 +322,13 @@ let databasetables = {
 		],
 	
 		// Define fields for each entry. 
-		tableentryfields:[],
+		tableentryfields:[
+			{
+				fieldid:'holename',
+				fieldtype:'text',
+				fieldcaption:'Hole Name',
+			},
+		],
 	
 		// Define default entries (per row). 
 		defaulttableentrylist:[],
@@ -340,10 +342,10 @@ let databasetables = {
 
 		// Define title of viewer table. 
 		viewertitle:'Golf Shots',
-		// Define title of update editor. 
-		editortitle:'Edit Golf Shots',
 		// Define title of create editor. 
 		editortitlenew:'New Golf Shots',
+		// Define title of update editor. 
+		editortitleexisting:'Edit Golf Shots',
 	
 		// Define current entries (per row). 
 		tableentries:[],
@@ -361,7 +363,28 @@ let databasetables = {
 		],
 	
 		// Define fields for each entry. 
-		tableentryfields:[],
+		tableentryfields:[
+			{
+				fieldid:'shotname',
+				fieldtype:'text',
+				fieldcaption:'Shot Name',
+			},
+			{
+				fieldid:'shotdistance',
+				fieldtype:'text',
+				fieldcaption:'Shot Distance',
+			},
+			{
+				fieldid:'holeid',
+				fieldtype:'text',
+				fieldcaption:'Hole ID',
+			},
+			{
+				fieldid:'clubid',
+				fieldtype:'text',
+				fieldcaption:'Club ID',
+			},
+		],
 	
 		// Define default entries (per row). 
 		defaulttableentrylist:[],
@@ -377,35 +400,44 @@ let databasetables = {
 
 // Find club entry by id. 
 function getClubEntryById(givenentryid) {
-	return getTableEntryById('clubs','clubid',givenentryid);
+	return getTableEntryById('clubs',givenentryid);
 }
 
 // Find hole entry by id. 
 function getHoleEntryById(givenentryid) {
-	return getTableEntryById('holes','holeid',givenentryid);
+	return getTableEntryById('holes',givenentryid);
 }
 
 // Find shot entry by id. 
 function getShotEntryById(givenentryid) {
-	return getTableEntryById('shots','shotid',givenentryid);
+	return getTableEntryById('shots',givenentryid);
 }
 
 // Find table entry by table id and entry id. 
-function getTableEntryById(tableid,tableentryidkey,givenentryid) {
-	// console.log('Finding table entry...',tableid,tableentryidkey,givenentryid);
+function getTableById(giventableid) {
+	return databasetables[giventableid];
+}
+
+// Find table entry by table id and entry id. 
+function getTableEntryById(giventableid,givenentryid) {
+	// console.log('Finding table entry...',giventableid,givenentryid);
+
+	// // Get key for entry id. 
+	// let idkey = giventableid.substr(0,giventableid.length-1)+'id';
+	// console.log('idkey:',idkey);
 
 	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
+	let giventabledata = databasetables[giventableid];
 
 	// Go thru each table entry in list. 
-	for(let tableentry of giventabledata.tableentries) {
-		// console.log('\tGoing thru table entries...',tableentry);
+	for(let currenttableentry of giventabledata.tableentries) {
+		// console.log('\tGoing thru table entries...',currenttableentry);
 
 		// Check if matching table entry found. 
-		let matchFound = tableentry[tableentryidkey] == givenentryid;
+		let matchFound = currenttableentry['id'] == givenentryid;
 
 		// Return matching table entry (if found). 
-		if(matchFound) return tableentry;
+		if(matchFound) return currenttableentry;
 	}
 
 	// Return nothing if no match found. 

@@ -14,6 +14,7 @@ div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.en
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {padding:.375rem .5rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
 /* div#container section.editor div.grid div.foot {} */
 /* div#container section.editor div.grid div.foot button.btn {} */
-/* div#container section.editor div.grid div.foot button.savenewbtn {} */
-/* div#container section.editor div.grid div.foot button.saveupdatebtn {} */
+/* div#container section.editor div.grid div.foot button.savebtn {} */
+div#container section.editor.u div.grid div.foot button.savenewbtn {display:none;}
+div#container section.editor.c div.grid div.foot button.saveupdatebtn {display:none;}
 /* div#container section.editor div.grid div.foot button.btn span.caption {} */

@@ -1,20 +1,21 @@
 
 
 
-// Delete entry from database table (D in CRUD). 
-function startDeleteEntry(tableid,entryid) {
+// -- D in CRUD -- //
+// Delete entry from database table. 
+function startDeleteEntry(givenentryid) {
 
-	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
+	// Get list of table entries. 
+	let tableentrieslist = selectedtable['tableentries'];
 
 	// Go thru each entry in given table. 
-	for(let index in giventabledata.tableentries) {
+	for(let index in tableentrieslist) {
 
 		// Get current table entry. 
-		let currententry = giventabledata.tableentries[index];
+		let currententry = tableentrieslist[index];
 
 		// Check if matching table entry found. 
-		let matchFound = currententry['clubid'] == entryid;
+		let matchFound = currententry['id'] == givenentryid;
 
 		// Delete matching table entry (if found). 
 		if(matchFound) {
@@ -28,11 +29,11 @@ function startDeleteEntry(tableid,entryid) {
 				// Delete table entry at given index. 
 				deleteEntryAtIndex(index);
 	
-				// Save table data to memory. 
-				saveTableToMemory(tableid);
+				// Save table entries to memory. 
+				saveTableToMemory(displaytableid);
 
 				// Show updated table entries. 
-				loadTableBody(tableid);
+				loadTableBody();
 			
 				// Return deleted table entry. 
 				console.log('Table entry deleted:',currententry);
@@ -50,7 +51,7 @@ function startDeleteEntry(tableid,entryid) {
 	}
 
 	// Return nothing if no match found. 
-	console.log('No table entry found to delete...',tableid,entryid);
+	console.log('No table entry found to delete...',displaytableid,givenentryid);
 	return null;
 
 	/****/
@@ -59,61 +60,54 @@ function startDeleteEntry(tableid,entryid) {
 	function deleteEntryAtIndex(indexofdeletion) {
 
 		// Remove item at given index of deletion. 
-		giventabledata.tableentries.splice(indexofdeletion,1);
+		tableentrieslist.splice(indexofdeletion,1);
 	}
 }
 
-// Delete all entries from database table (D in CRUD). 
-function clearDatabaseTable(tableid) {
-	console.log('Clearing database table...',tableid);
-
-	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
+// -- D in CRUD -- //
+// Delete all current entries from database table. 
+function clearDatabaseTable() {
+	console.log('Clearing database table...',displaytableid);
 
 	// Check if any table entries present. 
-	let tableentriespresent = giventabledata.tableentries.length > 0;
+	let tableentriespresent = selectedtable['tableentries'].length > 0;
 
 	// Confirm deletion if any table entries present. 
 	if(tableentriespresent && confirm('Are you sure you want to DELETE ALL current table entries?') ) {
 
 		// Create new empty list for table entries. 
-		assignToDatabaseTable( tableid , [] );
+		assignToDatabaseTable( [] );
 	}
 
 	// Disregard if table empty or deletion not confirmed. 
 	// else console.log('No deletion operation');
 }
 
-// Reset database table to default. 
-function resetDatabaseTable(tableid) {
-	console.log('Resetting database table to default...',tableid);
-
-	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
+// -- D in CRUD -- //
+// Delete all current entries from database table. Reset to default. 
+function resetDatabaseTable() {
+	console.log('Resetting database table to default...',displaytableid);
 
 	// Check if table empty. 
-	let istableempty = giventabledata.tableentries.length==0;
+	let istableempty = selectedtable['tableentries'].length==0;
 
 	// Confirm replacement unless table already empty. 
 	if( istableempty || confirm('Are you sure you want to REPLACE ALL current table entries with default entries?') ) {
 
 		// Reset list of entries to default. 
-		assignToDatabaseTable( tableid , giventabledata.defaulttableentrylist );
+		assignToDatabaseTable( selectedtable['defaulttableentrylist'] );
 	}
 }
 
 // Assign given table data to given database table. 
-function assignToDatabaseTable(tableid,giventableentrylist) {
-
-	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
+function assignToDatabaseTable(giventableentrylist) {
 	
 	// Assign new list of entries. 
-	giventabledata.tableentries = giventableentrylist;
+	selectedtable['tableentries'] = giventableentrylist;
 	
-	// Save table data to memory. 
-	saveTableToMemory(tableid);
+	// Save table entries to memory. 
+	saveTableToMemory(displaytableid);
 
 	// Show updated table entries. 
-	loadTableBody(tableid);
+	loadTableBody();
 }

@@ -101,8 +101,8 @@ div#container section div.grid div.foot button.btn {width:100%; padding:.625rem;
 	/* General Section */
 	/* div#container section {} */
 	/* div#container section div.grid {} */
-	div#container section div.grid button.btn {padding:.75rem;}
-	div#container section div.grid button.btn span.caption {display:none;}
+	/* div#container section div.grid button.btn {} */
+	/* div#container section div.grid button.btn span.caption {} */
 }
 
 /* Big Smartphone Screen */

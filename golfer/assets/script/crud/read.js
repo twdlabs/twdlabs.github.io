@@ -12,21 +12,18 @@ const tableheadersdestination = document.querySelector('div#container section.vi
 
 
 // Load layout for given database table. 
-function loadTable(tableid) {
+function loadTable() {
 
 	// Load head of given database table. 
-	loadTableHead(tableid);
+	loadTableHead();
 	
 	// Load body of given database table. 
-	loadTableBody(tableid);
+	loadTableBody();
 
 	/****/
 
 	// Load head layout for given table. 
-	function loadTableHead(tableid) {
-	
-		// Get table data for given table id. 
-		let giventabledata = databasetables[tableid];
+	function loadTableHead() {
 	
 		// Disregard if no destination present for table head. 
 		if(!tableheadersdestination) return;
@@ -35,7 +32,7 @@ function loadTable(tableid) {
 		let tableheadersresult = '';
 	
 		// Accumulate layout for all table headers. 
-		for(let column of giventabledata.tablecolumns) {
+		for(let column of selectedtable['tablecolumns']) {
 	
 			// Compile layout for single table header. 
 			tableheadersresult += `
@@ -55,11 +52,15 @@ function loadTable(tableid) {
 	}
 }
 
-// Load body layout for given table (R in CRUD). 
-function loadTableBody(tableid) {
+// -- R in CRUD -- //
+// Load body layout for given table. 
+function loadTableBody() {
 
-	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
+	// Get list of table entries. 
+	let tableentrieslist = selectedtable['tableentries'];
+
+	// Get list of table columns. 
+	let tablecolumnlist = selectedtable['tablecolumns'];
 
 	// Disregard if no destination present for table body. 
 	if(!tablebodydestination) return;
@@ -68,7 +69,7 @@ function loadTableBody(tableid) {
 	let tablebodylayout = '';
 
 	// Check if list is empty. 
-	let islistempty = giventabledata.tableentries.length == 0;
+	let islistempty = tableentrieslist.length == 0;
 
 	// Create placeholder for empty table body. 
 	tablebodylayout += `
@@ -77,7 +78,7 @@ function loadTableBody(tableid) {
 	<!-- /row -->`;
 
 	// Go thru each table entry. 
-	for(let entry of giventabledata.tableentries) {
+	for(let entry of tableentrieslist) {
 		
 		// Add table row layout for single table entry. 
 		tablebodylayout += `
@@ -97,65 +98,61 @@ function loadTableBody(tableid) {
 		// Compile placeholder table row layout for empty table. 
 		return `
 		<!-- data -->
-		<td class="data null" colspan="${giventabledata.tablecolumns.length}">
+		<td class="data null" colspan="${tablecolumnlist.length}">
 
 			<!-- caption -->
-			<span class="caption">Add new ${tableid} to view here</span>
+			<span class="caption">Add new ${displaytableid} to view here</span>
 			<!-- /caption -->
 
 		</td>
 		<!-- /data -->`;
 	}
 
+	// Create table row layout for given entry. 
+	function createEntryRowLayout(givenentry) {
+
+		// 
+	}
+
 	// Create table row layout for given club entry. 
 	function createClubEntryRowLayout(clubentry) {
 
-		// Get name of given club. 
-		let clubid = clubentry.clubid ? clubentry.clubid : '--';
-		// Get name of given club. 
-		let clubname = clubentry.clubname ? clubentry.clubname : '--';
-		// Get brand of given club. 
-		let clubbrand = clubentry.clubbrand ? clubentry.clubbrand : '--';
-		// Get loft of given club. 
-		let clubloftdegrees = clubentry.clubloftdegrees ? clubentry.clubloftdegrees : 0;
+		// Get id of given club entry. 
+		let clubentryid = clubentry['id'] ? clubentry['id'] : '--';
+		// Get details of given club entry. 
+		let clubname = clubentry['clubname'] ? clubentry['clubname'] : '--';
+		let clubbrand = clubentry['clubbrand'] ? clubentry['clubbrand'] : '--';
+		let clubloftdegrees = clubentry['clubloftdegrees'] ? clubentry['clubloftdegrees'] : 0;
+		let clubloftdisplay = formatNumber(clubloftdegrees)+'&deg';
 
-		// Get distance metrics for given club. 
-		let numshots = clubentry.numshots ? clubentry.numshots : 0;
-		let avgdistance = clubentry.avgdistance ? clubentry.avgdistance : 0;
-		let mindistance = clubentry.mindistance ? clubentry.mindistance : 0;
-		let maxdistance = clubentry.maxdistance ? clubentry.maxdistance : 0;
+		// Get distance metrics for given club entry. 
+		let numshots = clubentry['numshots'] ? clubentry['numshots'] : 0;
+		let avgdistance = clubentry['avgdistance'] ? clubentry['avgdistance'] : 0;
+		let mindistance = clubentry['mindistance'] ? clubentry['mindistance'] : 0;
+		let maxdistance = clubentry['maxdistance'] ? clubentry['maxdistance'] : 0;
 
 		// 
 		// if(distancelist) {
-		// 	// Get minimum distance for given club. 
-		// 	mindistance = distancelist.length ? findMinimum(distancelist) : 0;
-		// 	// Get average distance for given club. 
+		// 	// Get average distance for given club entry. 
 		// 	avgdistance = distancelist.length ? findAverage(distancelist) : 0;
-		// 	// Get maximum distance for given club. 
-		// 	maxdistance = distancelist.length ? findMaximum(distancelist) : 0;
 		// }
 
 		// Initialize layout for table row. 
 		let tablerowlayout = '';
-		// Add layout for id of given club. 
-		tablerowlayout += createTableBlockLayout(clubid, 0);
- 		// Add layout for name of given club. 
-		tablerowlayout += createTableBlockLayout(clubname, 1);
- 		// Add layout for brand of given club. 
-		tablerowlayout += createTableBlockLayout(clubbrand, 2);
- 		// Add layout for loft of given club. 
-		tablerowlayout += createTableBlockLayout( formatNumber(clubloftdegrees)+'&deg', 3);
-		// Add layout for minimum distance of given club. 
-		tablerowlayout += createTableBlockLayout( formatNumber(mindistance), 4);
-		// Add layout for average distance of given club. 
-		tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 5);
-		// Add layout for maximum distance of given club. 
-		tablerowlayout += createTableBlockLayout( formatNumber(maxdistance), 6);
-		// Add layout for distance entry field of given club. 
-		tablerowlayout += createTableInputBlockLayout();
-		// Add action field for given club. 
-		tablerowlayout += createTableActionBlockLayout();
-		// console.log('Club entry table row layout:',tablerowlayout,clubentry);
+		// Add layout for id of given club entry. 
+		tablerowlayout += createTableBlockLayout(clubentryid, 0);
+ 		// Add layout for club name, brand, and loft of given club entry. 
+		tablerowlayout += createTableBlockLayout( `<b>${clubbrand}</b> <i>${clubname}</i> (${clubloftdisplay})` , 1);
+		// Add layout for distance metrics of given club entry. 
+		tablerowlayout += createTableBlockLayout( mindistance, 2);
+		tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 3);
+		tablerowlayout += createTableBlockLayout( maxdistance, 4);
+		tablerowlayout += createTableBlockLayout( numshots, 5);
+		// Add layout for distance entry field of given club entry. 
+		tablerowlayout += createTableInputBlockLayout(6);
+		// Add action field for given club entry. 
+		tablerowlayout += createTableActionBlockLayout(7);
+		// console.log('Club entry table row layout:',tablerowlayout);
 
 		// Return layout for table row. 
 		return tablerowlayout;
@@ -185,49 +182,19 @@ function loadTableBody(tableid) {
 			return (sum / numberlist.length);
 		}
 
-		// Find minimum of number list. 
-		function findMinimum(numberlist) {
-			return Math.min(...numberlist);
-		}
-
-		// Find maximum of number list. 
-		function findMaximum(numberlist) {
-			return Math.max(...numberlist);
-		}
-
-		// Create block layout for given table data. 
-		function createTableBlockLayout(caption,columnindex) {
+		// Create table input block. 
+		function createTableInputBlockLayout(columnindex) {
 
 			// Check if block is centered. 
-			let isblockcentered = giventabledata.tablecolumns[columnindex].columncenter;
+			let isblockcentered = tablecolumnlist[columnindex].columncenter;
 	
 			// Compile table data block. 
 			return `
 			<!-- data -->
 			<td class="data${ isblockcentered ? ' c' : '' }">
-	
-				<!-- caption -->
-				<span class="caption">${caption}</span>
-				<!-- /caption -->
-	
-			</td>
-			<!-- /data -->`;
-		}
 
-		// Create table input block. 
-		function createTableInputBlockLayout() {
-	
-			// Compile table data block. 
-			return `
-			<!-- data -->
-			<td class="data">
-	
-				<!-- newdistance -->
-				<input class="newdistance" type="number" id="${clubid}newdistance" onchange="saveNewClubDistance('${clubid}')">
-				<!-- /newdistance -->
-
-				<!-- newdistanceebtn -->
-				<button class="btn newdistanceebtn" title="Add new distance for club: '${clubid}'" onclick="startNewClubDistance('${clubid}')">
+				<!-- newdistancebtn -->
+				<button class="btn newdistancebtn" title="Add new distance for club: '${clubname}'" onclick="startNewClubDistance('${clubentryid}')">
 
 					<!-- icon -->
 					<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -246,22 +213,44 @@ function loadTableBody(tableid) {
 					<!-- /caption -->
 					
 				</button>
-				<!-- /newdistanceebtn -->
+				<!-- /newdistancebtn -->
 	
 			</td>
 			<!-- /data -->`;
 		}
 
-		// Create table layout for action block. 
-		function createTableActionBlockLayout() {
+		// Create layout for given table block. 
+		function createTableBlockLayout(caption,columnindex) {
+
+			// Check if block is centered. 
+			let isblockcentered = tablecolumnlist[columnindex].columncenter;
+	
+			// Compile table data block. 
+			return `
+			<!-- data -->
+			<td class="data${ isblockcentered ? ' c' : '' }">
+	
+				<!-- caption -->
+				<span class="caption">${caption}</span>
+				<!-- /caption -->
+	
+			</td>
+			<!-- /data -->`;
+		}
+
+		// Create layout for table action block. 
+		function createTableActionBlockLayout(columnindex) {
+
+			// Check if block is centered. 
+			let isblockcentered = tablecolumnlist[columnindex].columncenter;
 
 			// Compile table action block. 
 			return `
 			<!-- data -->
-			<td class="data a">
+			<td class="data a${ isblockcentered ? ' c' : '' }">
 
 				<!-- editbtn -->
-				<button class="btn editbtn" title="Edit entry: '${clubname}'" onclick="startEditEntry('${tableid}','${clubid}')">
+				<button class="btn editbtn" title="Edit entry: '${clubname}'" onclick="startEditEntry('${clubentryid}')">
 
 					<!-- icon -->
 					<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -278,7 +267,7 @@ function loadTableBody(tableid) {
 				<!-- /editbtn -->
 
 				<!-- deletebtn -->
-				<button class="btn deletebtn" title="Delete entry: '${clubname}'" onclick="startDeleteEntry('${tableid}','${clubid}')">
+				<button class="btn deletebtn" title="Delete entry: '${clubname}'" onclick="startDeleteEntry('${clubentryid}')">
 
 					<!-- icon -->
 					<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

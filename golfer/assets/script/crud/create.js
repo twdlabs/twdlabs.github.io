@@ -5,36 +5,33 @@
 function loadNewEntryEditor() {
 
 	// Check if editing existing entry. 
-	let isexistingentry = !!tableentry;
-
-	// Get table data for given table id. 
-	let giventabledata = databasetables[tableid];
+	let editingexistingentry = !!selectedtableentry;
 
 	// Get destination for fields of editor form. 
 	let editorfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(giventabledata.tableentryfields,isexistingentry);
+	let fieldlistresult = createFieldsListLayout(selectedtable['tableentryfields'],editingexistingentry);
 
 	// Display list of fields in editor form. 
 	editorfieldsdestination.innerHTML = fieldlistresult;
 }
 
-// Save new entry to database table (C in CRUD). 
-function saveNewEntry(tableid) {
+// -- C in CRUD -- //
+// Save new entry to database table. 
+function saveNewEntry() {
 
-	// Get key for entry id. 
-	let idkey = tableid.substr(0,tableid.length-1)+'id';
-	console.log('idkey:',idkey);
+	// Get list of table entries. 
+	let tableentrieslist = selectedtable['tableentries'];
 
 	// Initialize new entry. 
 	let newentry = {};
 
-	// TODO: Add id to new entry.
-	newentry[idkey] = -1;
+	// Generate id for new entry. 
+	newentry['id'] = generateNewEntryId();
 
-	// Go thru each property (by field data item). 
-	for(let fielddata of databasetables[tableid].tableentryfields) {
+	// Go thru each property (using field data item). 
+	for(let fielddata of selectedtable['tableentryfields']) {
 
 		// Get field id for given field data item. 
 		let fieldid = `new${fielddata.fieldid}`;
@@ -48,22 +45,29 @@ function saveNewEntry(tableid) {
 	}
 	
 	// Add new entry to database. 
-	databasetables[tableid].tableentries.push(newentry);
+	tableentrieslist.push(newentry);
 
-	// Save table data to memory. 
-	saveTableToMemory(tableid);
+	// Save table entries to memory. 
+	saveTableToMemory(selectedtableid);
 
-	// Close table editor for new entry. 
-	closeNewEntryEditor();
+	// Close table entry editor. 
+	closeEntryEditor();
 
 	/****/
 
-	// // Check if table entry already exists. 
-	// let alreadytableentry = false && getTableEntryById(tableid,'clubid',clubid);
+	// TODO: Generate unique identification for new entry. 
+	function generateNewEntryId() {
 
-	// // Warn user and abandon new club entry if already exists. 
-	// if(alreadytableentry) {
-	// 	console.warn(`Club id already exists: '${clubid}'. Please choose another id.`);
-	// 	return;
-	// }
+		// Initialize id of last entry. 
+		let lastentryid = 0;
+
+		// Go thru each entry in table. 
+		for(let currententry of tableentrieslist) {
+
+			// Check for gap from id of last entry. 
+		}
+
+		// Return id. 
+		return -1;
+	}
 }
