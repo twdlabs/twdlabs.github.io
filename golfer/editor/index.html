@@ -9,7 +9,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="../assets/icons/golf-logo-icon-stock-illustration-free-vector.jpg" rel="icon"/>
-		<title>Update Club Editor | Golf Tracker</title>
+		<title>Update Club Editor | Golfer Tracker</title>
 
 		<!-- General Stylesheet -->
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
@@ -52,7 +52,7 @@
 						<h1 class="head">
 							
 							<!-- caption -->
-							<span class="caption">Golf Tracker</span>
+							<span class="caption">Golfer Tracker</span>
 							<!-- /caption -->
 						
 						</h1>
@@ -114,7 +114,7 @@
 			<!-- /navbar -->
 
 			<!-- editor -->
-			<section class="editor update">
+			<section class="editor create update" ondblclick="this.classList.toggle('g2')">
 
 				<!-- grid -->
 				<div class="grid">
@@ -142,11 +142,11 @@
 								<div class="entryfield">
 			
 									<!-- fieldname -->
-									<label class="fieldname" for="uniqueentryid">Field Name</label>
+									<label class="fieldname" for="fieldid"></label>
 									<!-- /fieldname -->
 			
 									<!-- fieldvalue -->
-									<input class="fieldvalue" type="text" id="uniqueentryid" name="uniqueentryid" placeholder="placeholder">
+									<input class="fieldvalue" type="text" id="fieldid" name="fieldid" placeholder="Ex: " value="">
 									<!-- /fieldvalue -->
 			
 								</div>
