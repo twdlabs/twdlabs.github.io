@@ -126,30 +126,31 @@
 					<div class="head">
 
 						<!-- header -->
-						<h2 class="header"></h2>
+						<h2 class="header" title="Double click to view contents of local storage" ondblclick="showLocalStorage()"></h2>
 						<!-- /header -->
 
 						<!-- btnbox -->
 						<div class="btnbox">
 
-							<!-- logbtn -->
-							<button class="logbtn btn" title="Show contents of local storage" onclick="console.log('Local storage:',localStorage)">
+							<!-- undobtn -->
+							<button class="undobtn btn" title="Undo last modification of table" onclick="undoLastTableAction()">
 	
 								<!-- icon -->
-								<svg class="icon disk" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M0 10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2 0a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1M.91 7.204A3 3 0 0 1 2 7h12c.384 0 .752.072 1.09.204l-1.867-3.422A1.5 1.5 0 0 0 11.906 3H4.094a1.5 1.5 0 0 0-1.317.782z"/>
+								<svg class="icon arrowcounterclockwise" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2z"/>
+									<path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466"/>
 								</svg>
 								<!-- /icon -->
 
 								<!-- caption -->
-								<span class="caption">Log</span>
+								<span class="caption">Undo</span>
 								<!-- /caption -->
 
 							</button>
-							<!-- /logbtn -->
+							<!-- /undobtn -->
 
-							<!-- resetbtn -->
-							<button class="resetbtn btn" onclick="resetDatabaseTable()">
+							<!-- examplebtn -->
+							<button class="examplebtn btn" title="Load example table entries" onclick="setExampleDatabaseTable()">
 	
 								<!-- icon -->
 								<svg class="icon database" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -166,14 +167,20 @@
 								<!-- /icon -->
 
 								<!-- caption -->
-								<span class="caption">Default</span>
+								<span class="caption">Example</span>
 								<!-- /caption -->
 
 							</button>
-							<!-- /resetbtn -->
+							<!-- /examplebtn -->
 	
-							<!-- clearbtn -->
-							<button class="clearbtn btn" onclick="clearDatabaseTable()">
+							<!-- resetbtn -->
+							<button class="resetbtn btn" title="Delete all current table entries" onclick="clearDatabaseTable()">
+	
+								<!-- icon -->
+								<svg class="icon backspace" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8z"/>
+								</svg>
+								<!-- /icon -->
 	
 								<!-- icon -->
 								<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -188,11 +195,11 @@
 								<!-- /icon -->
 
 								<!-- caption -->
-								<span class="caption">Delete all</span>
+								<span class="caption">Reset</span>
 								<!-- /caption -->
 
 							</button>
-							<!-- /clearbtn -->
+							<!-- /resetbtn -->
 
 						</div>
 						<!-- /btnbox -->
@@ -424,7 +431,7 @@
 
 		<!-- Table Memory -->
 		<script src="../assets/database/tabledatabase.js" type="text/javascript"></script>
-		<script src="../assets/database/golfermemory.js" type="text/javascript"></script>
+		<script src="../assets/database/localmemory.js" type="text/javascript"></script>
 
 		<!-- Viewer Script -->
 		<script src="../assets/script/urlparams.js" type="text/javascript"></script>
