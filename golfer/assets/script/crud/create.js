@@ -1,22 +1,6 @@
 
 
 
-// Load fields for creating new entry. 
-function loadNewEntryEditor() {
-
-	// Check if editing existing entry. 
-	let editingexistingentry = !!selectedtableentry;
-
-	// Get destination for fields of editor form. 
-	let editorfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
-
-	// Compile layout for list of fields. 
-	let fieldlistresult = createFieldsListLayout(selectedtable['tableentryfields'],editingexistingentry);
-
-	// Display list of fields in editor form. 
-	editorfieldsdestination.innerHTML = fieldlistresult;
-}
-
 // -- C in CRUD -- //
 // Save new entry to database table. 
 function saveNewEntry() {
@@ -81,7 +65,7 @@ function saveNewEntry() {
 			newentryid++
 	
 			// Check if new id already taken. 
-			alreadytaken = checkIfEntryIdTaken(newentryid);
+			alreadytaken = checkForTakenEntryId(newentryid);
 		}
 
 		// Return id. 
@@ -92,7 +76,7 @@ function saveNewEntry() {
 		/***/
 	
 		// Check if new entry identification already taken. 
-		function checkIfEntryIdTaken(givenid) {
+		function checkForTakenEntryId(givenid) {
 
 			// Go thru each entry in table. 
 			for(let currententry of tableentrieslist) {

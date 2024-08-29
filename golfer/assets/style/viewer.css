@@ -2,11 +2,15 @@
 
 
 /* Viewer Section */
+/* div#container section.viewer {} */
+div#container section.viewer {/* width:100%; */ max-width:var(--pagewidth);}
 /* div#container section.viewer div.grid {} */
+/* Viewer Section Head */
 /* div#container section.viewer div.grid div.head {} */
 div#container section.viewer div.grid div.head h2.header {font-size:1.625rem;}
 /* div#container section.viewer div.grid div.head div.btnbox {} */
 div#container section.viewer div.grid div.head div.btnbox button.btn {margin-bottom:.375rem;}
+/* Viewer Section Body */
 div#container section.viewer div.grid table.table {width:100%;}
 /* div#container section.viewer div.grid table.table thead.head {} */
 /* div#container section.viewer div.grid table.table thead.head tr.row {margin-bottom:5rem;} */
@@ -23,8 +27,6 @@ div#container section.viewer div.grid table.table tbody.body tr.row:nth-child(2n
 div#container section.viewer div.grid table.table tbody.body tr.row:nth-child(2n+1) td.data {background-color:#f0f0f0;}
 div#container section.viewer div.grid table.table tbody.body td.data > span.caption {display:block; padding:.25rem 1rem;}
 div#container section.viewer div.grid table.table tbody.body td.data.null > span.caption {color:var(--reggrey); text-align:center; padding:2rem;}
-div#container section.viewer div.grid table.table tbody.body td.data input.newdistance {background-color:transparent; display:none; font-size:.875rem; width:4rem; text-align:center;}
-div#container section.viewer div.grid table.table tbody.body td.data input.newdistance {padding:.25rem .5rem; border:0 none; /* border:1px solid var(--backcolor); */ outline:none; border-radius:.25rem;}
 div#container section.viewer div.grid table.table tbody.body td.data button.btn {padding:.5rem; margin-top:0;}
 /* div#container section.viewer div.grid table.table tbody.body td.data button.btn svg.icon {} */
 /* div#container section.viewer div.grid table.table tbody.body td.data button.btn span.caption {} */
@@ -32,6 +34,7 @@ div#container section.viewer div.grid table.table tbody.body td.data button.btn 
 /* div#container section.viewer div.grid table.table tbody.body td.data button.deletebtn {background-color:var(--red);} */
 div#container section.viewer div.grid table.table span.caption:empty {text-align:center;}
 div#container section.viewer div.grid table.table span.caption:empty::after {content:'--';}
+/* Viewer Section Body */
 div#container section.viewer div.grid div.foot {padding:0 .125em;}
 
 
@@ -39,10 +42,25 @@ div#container section.viewer div.grid div.foot {padding:0 .125em;}
 
 /* Large Tablet Screen */
 @media screen and (max-width:64rem) {
+
+	/* Viewer Section */
+	/* div#container section.viewer {} */
+	/* div#container section.viewer div.grid {} */
+	/* div#container section.viewer div.grid div.head {} */
 }
 
 /* Small Tablet Screen */
 @media screen and (max-width:56rem) {
+
+	/* Viewer Section */
+	/* div#container section.viewer {} */
+	/* div#container section.viewer div.grid {} */
+	/* div#container section.viewer div.grid div.head {} */
+	/* div#container section.viewer div.grid div.head button.btn {} */
+	div#container section.viewer div.grid div.head button.btn span.caption {display:none;}
+	div#container section.viewer div.grid table.table {}
+	div#container section.viewer div.grid table.table tbody.body {}
+	div#container section.viewer div.grid table.table tbody.body td.data {}
 	div#container section.viewer div.grid table.table tbody.body td.data button.btn {padding:.75rem;}
 	/* div#container section.viewer div.grid table.table tbody.body td.data button.btn svg.icon {} */
 	div#container section.viewer div.grid table.table tbody.body td.data button.btn span.caption {display:none;}
@@ -50,8 +68,18 @@ div#container section.viewer div.grid div.foot {padding:0 .125em;}
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
+
+	/* Viewer Section */
+	/* div#container section.viewer {} */
+	/* div#container section.viewer div.grid {} */
+	/* div#container section.viewer div.grid div.head {} */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
+
+	/* Viewer Section */
+	/* div#container section.viewer {} */
+	/* div#container section.viewer div.grid {} */
+	/* div#container section.viewer div.grid div.head {} */
 }

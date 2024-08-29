@@ -126,8 +126,8 @@ let databasetables = {
 			// },
 		],
 	
-		// Define default entries (per row). 
-		defaulttableentrylist:[
+		// Define example table entries (per row). 
+		tableentriesexample:[
 			{
 				id:'drv',
 				clubname:'Driver',
@@ -351,8 +351,8 @@ let databasetables = {
 			},
 		],
 	
-		// Define default entries (per row). 
-		defaulttableentrylist:[],
+		// Define example table entries (per row). 
+		tableentriesexample:[],
 
 		// Define row layout creator. 
 		// rowlayer:createClubEntryRowLayout,
@@ -410,8 +410,8 @@ let databasetables = {
 			},
 		],
 	
-		// Define default entries (per row). 
-		defaulttableentrylist:[],
+		// Define example table entries (per row). 
+		tableentriesexample:[],
 
 		// Define row layout creator. 
 		// rowlayer:createClubEntryRowLayout,

@@ -58,9 +58,14 @@ function loadTableTitle() {
 	tabletitledestination.innerHTML = selectedtitle;
 }
 
-// Check for valid field value. 
-function checkFieldValue(givenvalue) {
-	return !!givenvalue || !isNaN(givenvalue);
+// Show contents of local storage. 
+function showLocalStorage() {
+
+	// Show contents of local storage. 
+	console.log('Local storage:',localStorage);
+
+	// Notify user. 
+	alert('View storage log in console...');
 }
 
 /*****/
@@ -85,7 +90,7 @@ function startEditEntry(givenentryid) {
 function startNewClubDistance(givenentryid) {
 
 	// Go directly to editor page for new club distances. 
-	window.location.href = './newdistance/?eid='+givenentryid;
+	window.location.href = `./newdistance/?tid=${displaytableid}&eid=${givenentryid}`;
 }
 
 // Close table entry editor. 

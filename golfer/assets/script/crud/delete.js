@@ -29,9 +29,13 @@ function startDeleteEntry(givenentryid) {
 				// Delete table entry at given index. 
 				deleteEntryAtIndex(index);
 
+				// Check if on viewer page. 
+				let onviewerpage = !(typeof displaytableid == 'undefined');
+				// let onviewerpage = typeof selectedtableid == 'undefined';
+				console.log('onviewerpage:',onviewerpage);
+
 				// Handle things on viewer page. 
-				// if( !(typeof displaytableid == 'undefined') )
-				if( typeof selectedtableid == 'undefined' ) {
+				if( onviewerpage ) {
 	
 					// Save table entries to memory. 
 					saveTableToMemory(displaytableid);
@@ -80,7 +84,7 @@ function startDeleteEntry(givenentryid) {
 }
 
 // -- D in CRUD -- //
-// Delete all current entries from database table. 
+// Delete all current table entries. 
 function clearDatabaseTable() {
 	console.log('Clearing database table...',displaytableid);
 
@@ -98,19 +102,19 @@ function clearDatabaseTable() {
 	// else console.log('No deletion operation');
 }
 
-// -- D in CRUD -- //
-// Delete all current entries from database table. Reset to default. 
-function resetDatabaseTable() {
-	console.log('Resetting database table to default...',displaytableid);
+// -- D,C in CRUD -- //
+// Replace all current table entries with example entries. 
+function setExampleDatabaseTable() {
+	console.log('Setting example database table...',displaytableid);
 
 	// Check if table empty. 
 	let istableempty = selectedtable['tableentries'].length==0;
 
 	// Confirm replacement unless table already empty. 
-	if( istableempty || confirm('Are you sure you want to REPLACE ALL current table entries with default entries?') ) {
+	if( istableempty || confirm('Are you sure you want to REPLACE ALL current table entries with example table entries?') ) {
 
-		// Reset list of entries to default. 
-		assignToSelectedTable( selectedtable['defaulttableentrylist'] );
+		// Reset list of entries to default example. 
+		assignToSelectedTable( selectedtable['tableentriesexample'] );
 	}
 }
 
