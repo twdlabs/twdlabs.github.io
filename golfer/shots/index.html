@@ -129,11 +129,11 @@
 						<h2 class="header" title="Double click to view contents of local storage" ondblclick="showLocalStorage()"></h2>
 						<!-- /header -->
 
-						<!-- btnbox -->
-						<div class="btnbox">
+						<!-- btnpanel -->
+						<div class="btnpanel">
 
 							<!-- undobtn -->
-							<button class="undobtn btn" title="Undo last modification of table" onclick="undoLastTableAction()">
+							<button class="undobtn btn" title="Undo last modification of table" onclick="restorePrevMemoryTable(); loadTableBody();">
 	
 								<!-- icon -->
 								<svg class="icon arrowcounterclockwise" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -148,6 +148,23 @@
 
 							</button>
 							<!-- /undobtn -->
+
+							<!-- redobtn -->
+							<button class="redobtn btn" title="Redo last modification of table" onclick="restoreNextMemoryTable(); loadTableBody();">
+	
+								<!-- icon -->
+								<svg class="icon arrowclockwise" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+									<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+								</svg>
+								<!-- /icon -->
+
+								<!-- caption -->
+								<span class="caption">Redo</span>
+								<!-- /caption -->
+
+							</button>
+							<!-- /redobtn -->
 
 							<!-- examplebtn -->
 							<button class="examplebtn btn" title="Load example table entries" onclick="setExampleDatabaseTable()">
@@ -202,7 +219,7 @@
 							<!-- /resetbtn -->
 
 						</div>
-						<!-- /btnbox -->
+						<!-- /btnpanel -->
 
 					</div>
 					<!-- /head -->
@@ -300,6 +317,10 @@
 
 								<!-- data -->
 								<td class="data null" colspan="3">
+
+									<!-- nullicon -->
+									<img class="nullicon" src="./../assets/icons/istockphoto-660995292-170667a.jpg">
+									<!-- /nullicon -->
 
 									<!-- caption -->
 									<span class="caption">Add new entries to view here</span>
