@@ -2,7 +2,7 @@
 
 		
 // Save new distance. 
-saveNewDistance();
+// saveNewDistance();
 
 
 /*****/

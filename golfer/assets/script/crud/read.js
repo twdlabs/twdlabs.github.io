@@ -102,6 +102,10 @@ function loadTableBody() {
 		<!-- data -->
 		<td class="data null" colspan="${tablecolumnlist.length}">
 
+			<!-- nullicon -->
+			<img class="nullicon" src="./../assets/icons/istockphoto-660995292-170667a.jpg">
+			<!-- /nullicon -->
+
 			<!-- caption -->
 			<span class="caption">Add new ${displaytableid} to view here</span>
 			<!-- /caption -->

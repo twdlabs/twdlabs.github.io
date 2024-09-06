@@ -5,12 +5,12 @@
 let selectedtable = databasetables[selectedtableid];
 console.log('Selected table:',selectedtable);
 
+// Restore saved table entries from memory (put before for getTableEntryById to work). 
+restoreTableFromMemory();
+
 // Get selected table entry (if it exists). 
 let selectedtableentry = getTableEntryById(selectedtableid,selectedentryid);
 console.log('Selected table entry:',selectedtableentry);
-
-// Restore saved table entries from memory. 
-restoreTableFromMemory();
 
 
 /*****/
@@ -23,12 +23,10 @@ function checkFieldValue(givenvalue) {
 
 // Load fields for editing entry. 
 function loadEntryEditor() {
-	console.log('selectedtable:',selectedtable);
-	console.log('selectedtableentry:',selectedtableentry);
 
 	// Check if editing existing entry. 
 	let editingexistingentry = !!selectedtableentry;
-	console.log('editingexistingentry:',editingexistingentry);
+	console.log('Editing existing entry?',editingexistingentry);
 
 	// Get destination for fields in editor form. 
 	let editorfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');

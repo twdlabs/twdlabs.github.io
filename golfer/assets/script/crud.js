@@ -28,14 +28,15 @@ function loadTableTitle() {
 	let selectedtitle = ''
 
 	// Handle viewer table. 
-	if( !selectedtableid && !selectedentryid ) {
+	// if( !selectedtableid && !selectedentryid ) {
+	if( typeof displaytableid != 'undefined' ) {
 
 		// Set viewer title. 
 		selectedtitle = selectedtable['tabletitles']['viewertitle'];
 	}
 
 	// Handle editor table in create mode. 
-	if( selectedtableid && !selectedentryid ) {
+	else if( selectedtableid && !selectedentryid ) {
 
 		// Set editor mode: create. 
 		tablesection.classList.add('c');
@@ -45,7 +46,7 @@ function loadTableTitle() {
 	}
 
 	// Handle editor table in update mode. 
-	if( selectedtableid && selectedentryid ) {
+	else if( selectedtableid && selectedentryid ) {
 
 		// Set editor mode: update. 
 		tablesection.classList.add('u');
@@ -86,19 +87,19 @@ function startEditEntry(givenentryid) {
 	window.location.href = `../editor/?tid=${displaytableid}&eid=${givenentryid}`;
 }
 
-// Start entering new club distance. 
-function startNewClubDistance(givenentryid) {
-
-	// Go directly to editor page for new club distances. 
-	window.location.href = `./newdistance/?tid=${displaytableid}&eid=${givenentryid}`;
-}
-
 // Close table entry editor. 
 function closeEntryEditor() {
 
 	// Go directly to previous page (table viewer). 
 	if(selectedtableid) window.location.href = `../${selectedtableid}`;
 	else console.warn('No table id provided...',selectedtableid);
+}
+
+// Start entering new club distance. 
+function startNewClubDistance(givenentryid) {
+
+	// Go directly to editor page for new club distances. 
+	window.location.href = `./newdistance/?tid=${displaytableid}&eid=${givenentryid}`;
 }
 
 // Close entry of new club distance. 

@@ -71,7 +71,7 @@ div#container nav.navbar div.bin ul.navlist li.navitem a.navlink svg.icon {displ
 
 
 /* General Section */
-div#container section {background-color:white; padding:.375rem; /* padding-top:1rem; */ border-radius:var(--cornersize); margin:1.75rem; box-shadow:var(--boxshadow);}
+div#container section {background-color:white; padding:.375rem; /* padding-top:1rem; */ border-radius:var(--cornersize); margin:1.75rem 0; box-shadow:var(--boxshadow);}
 /* div#container section div.grid {display:flex; flex-direction:column; align-items:center;} */
 div#container section div.grid div.head {display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; padding:0 .125em;}
 div#container section div.grid div.head h2.header {/* cursor:pointer; */ user-select:none; padding:0 .25em; margin:0; margin:.125em 0; margin-right:.375em;}
@@ -99,8 +99,6 @@ div#container section div.grid button.btn span.caption {font-size:.75rem; margin
 	
 	/* Navbar */
 	/* div#container nav.navbar {} */
-	/* div#container nav.navbar div.bin {} */
-	div#container nav.navbar div.bin ul.navlist {display:none;}
 
 	/* General Section */
 	/* div#container section {} */
@@ -127,6 +125,8 @@ div#container section div.grid button.btn span.caption {font-size:.75rem; margin
 
 	/* Navbar */
 	/* div#container nav.navbar {} */
+	div#container nav.navbar div.bin {flex-direction:column;}
+	/* div#container nav.navbar div.bin ul.navlist {display:none;} */
 
 	/* General Section */
 	/* div#container section {} */
