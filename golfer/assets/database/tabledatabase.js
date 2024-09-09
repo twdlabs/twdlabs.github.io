@@ -8,7 +8,7 @@ let databasetables = {
 	clubs: {
 
 		// Define table titles. 
-		tabletitles:{
+		titles:{
 			// Define title of viewer table. 
 			viewertitle:'Golf Clubs',
 			// Define title of create editor. 
@@ -16,11 +16,7 @@ let databasetables = {
 			// Define title of update editor. 
 			editortitleexisting:'Edit Golf Club',
 		},
-	
-		// Define current entries (per row). 
-		tableentries:[],
-	
-		// Define column headers (per column). 
+		// Define column headers (each column). 
 		tablecolumns:[
 			{
 				columnheader:'ID',
@@ -60,8 +56,7 @@ let databasetables = {
 				columncenter:true,
 			},
 		],
-	
-		// Define fields for each entry. 
+		// Define attribute fields (each column). 
 		tableentryfields:[
 			// {
 			// 	fieldid:'id',
@@ -126,8 +121,8 @@ let databasetables = {
 			// },
 		],
 	
-		// Define example table entries (per row). 
-		tableentriesexample:[
+		// Define example table entries (each row). 
+		exampleentries:[
 			{
 				id:'drv',
 				clubname:'Driver',
@@ -309,6 +304,16 @@ let databasetables = {
 			// 	maxdistance:0,
 			// },
 		],
+		// Define current table entries (each row). 
+		currententries:[],
+		// Define state history of table entries. 
+		entrieshistory:[
+			// [],
+			// [],
+			// [],
+		],
+		// Define index for current table state. 
+		currenthistoryindex:-1,
 
 		// Define row layout creator. 
 		// rowlayer:createClubEntryRowLayout,
@@ -318,7 +323,7 @@ let databasetables = {
 	holes: {
 
 		// Define table titles. 
-		tabletitles:{
+		titles:{
 			// Define title of viewer table. 
 			viewertitle:'Golf Holes',
 			// Define title of create editor. 
@@ -326,11 +331,7 @@ let databasetables = {
 			// Define title of update editor. 
 			editortitleexisting:'Edit Golf Hole',
 		},
-	
-		// Define current entries (per row). 
-		tableentries:[],
-	
-		// Define column headers (per column). 
+		// Define column headers (each column). 
 		tablecolumns:[
 			{
 				columnheader:'ID',
@@ -341,8 +342,7 @@ let databasetables = {
 				columncenter:true,
 			},
 		],
-	
-		// Define fields for each entry. 
+		// Define attribute fields (each column). 
 		tableentryfields:[
 			{
 				fieldid:'holename',
@@ -351,18 +351,28 @@ let databasetables = {
 			},
 		],
 	
-		// Define example table entries (per row). 
-		tableentriesexample:[],
+		// Define example table entries (each row). 
+		exampleentries:[],
+		// Define current table entries (each row). 
+		currententries:[],
+		// Define state history of table entries. 
+		entrieshistory:[
+			// [],
+			// [],
+			// [],
+		],
+		// Define index for current table state. 
+		currenthistoryindex:-1,
 
 		// Define row layout creator. 
-		// rowlayer:createClubEntryRowLayout,
+		// rowlayer:createHoleEntryRowLayout,
 	},
 
 	// Define data for shots table. 
 	shots: {
 
 		// Define table titles. 
-		tabletitles:{
+		titles:{
 			// Define title of viewer table. 
 			viewertitle:'Golf Shots',
 			// Define title of create editor. 
@@ -370,11 +380,7 @@ let databasetables = {
 			// Define title of update editor. 
 			editortitleexisting:'Edit Golf Shots',
 		},
-	
-		// Define current entries (per row). 
-		tableentries:[],
-	
-		// Define column headers (per column). 
+		// Define column headers (each column). 
 		tablecolumns:[
 			{
 				columnheader:'ID',
@@ -385,8 +391,7 @@ let databasetables = {
 				columncenter:true,
 			},
 		],
-	
-		// Define fields for each entry. 
+		// Define attribute fields (each column). 
 		tableentryfields:[
 			{
 				fieldid:'shotname',
@@ -410,11 +415,21 @@ let databasetables = {
 			},
 		],
 	
-		// Define example table entries (per row). 
-		tableentriesexample:[],
+		// Define example table entries (each row). 
+		exampleentries:[],
+		// Define current table entries (each row). 
+		currententries:[],
+		// Define state history of table entries. 
+		entrieshistory:[
+			// [],
+			// [],
+			// [],
+		],
+		// Define index for current table state. 
+		currenthistoryindex:-1,
 
 		// Define row layout creator. 
-		// rowlayer:createClubEntryRowLayout,
+		// rowlayer:createShotEntryRowLayout,
 	},
 };
 
@@ -454,7 +469,7 @@ function getTableEntryById(giventableid,givenentryid) {
 	let giventabledata = databasetables[giventableid];
 
 	// Go thru each table entry in list. 
-	for(let currenttableentry of giventabledata.tableentries) {
+	for(let currenttableentry of giventabledata['currententries']) {
 		// console.log('\tGoing thru table entries...',currenttableentry);
 
 		// Check if matching table entry found. 

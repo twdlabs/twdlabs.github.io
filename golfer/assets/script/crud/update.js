@@ -35,9 +35,8 @@ function saveUpdatedEntry() {
 		}
 	}
 
-	// Save table entries to memory. 
-	saveTableToMemory(selectedtableid);
-
+	// Save table changes. 
+	saveTableChanges();
 	// Close table entry editor. 
 	closeEntryEditor();
 }

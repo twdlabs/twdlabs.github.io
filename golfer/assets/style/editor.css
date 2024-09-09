@@ -3,12 +3,19 @@
 
 /* Editor Section */
 /* div#container section.editor div.grid {} */
+
+
+/* Editor Section Head */
 div#container section.editor div.grid div.head {justify-content:center;}
-div#container section.editor div.grid div.head h2.header {font-size:1.5rem;}
-/* div#container section.editor div.grid form.body {} */
+div#container section.editor div.grid div.head h2.header {font-size:1.375rem;}
+div#container section.editor div.grid div.head h2.header.username {font-size:1rem;}
+
+
+/* Editor Section Body */
+div#container section.editor div.grid form.body {margin-top:.5rem;}
 div#container section.editor div.grid form.body ul.fieldlist {list-style:none; padding:0; margin:0;}
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem {margin-top:.25rem;}
-div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield {background-color:var(--backcolor); display:grid; place-items:center; padding:.375rem .5rem; border-radius:.5rem;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield {background-color:var(--backcolor); display:grid; place-items:center; padding:.375rem .5rem; border-radius:.25rem;}
 div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield {grid-template-columns:repeat(2,1fr); justify-items:initial;}
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname {font-weight:bold; text-align:center; margin:0 .5em; margin-bottom:.25em;}
 div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname {text-align:left; margin-bottom:0;}
@@ -16,7 +23,10 @@ div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.en
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {background-color:transparent; font-size:1em; text-align:center;}
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {padding:.375rem .75rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
 div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {font-size:.875rem; max-width:9rem; /* text-align:left; */}
-div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#newdistance {background-color:transparent; width:4rem; padding:.25rem .5rem; /* border:1px solid var(--backcolor); */}
+/* div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#newdistance {background-color:transparent; width:4rem; padding:.25rem .5rem; border:1px solid var(--backcolor);} */
+
+
+/* Editor Section Foot */
 /* div#container section.editor div.grid div.foot {} */
 /* div#container section.editor div.grid div.foot button.btn {} */
 /* div#container section.editor div.grid div.foot button.savebtn {} */
@@ -25,3 +35,72 @@ div#container section.editor.c div.grid div.foot button.deletebtn {display:none;
 div#container section.editor.u div.grid div.foot button.savenewbtn {display:none;}
 div#container section.editor.c div.grid div.foot button.saveupdatebtn {display:none;}
 /* div#container section.editor div.grid div.foot button.btn span.caption {} */
+
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* Editor Section */
+	/* div#container section.editor div.grid {} */
+	
+	/* Editor Section Head */
+	/* div#container section.editor div.grid div.head {} */
+
+	/* Editor Section Body */
+	/* div#container section.editor div.grid form.body {} */
+
+	/* Editor Section Foot */
+	/* div#container section.editor div.grid div.foot {} */
+}
+
+/* Small Tablet Screen */
+@media screen and (max-width:56rem) {
+	
+	/* Editor Section */
+	/* div#container section.editor div.grid {} */
+	
+	/* Editor Section Head */
+	/* div#container section.editor div.grid div.head {} */
+
+	/* Editor Section Body */
+	/* div#container section.editor div.grid form.body {} */
+
+	/* Editor Section Foot */
+	/* div#container section.editor div.grid div.foot {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/* Editor Section */
+	/* div#container section.editor div.grid {} */
+	
+	/* Editor Section Head */
+	/* div#container section.editor div.grid div.head {} */
+
+	/* Editor Section Body */
+	/* div#container section.editor div.grid form.body {} */
+
+	/* Editor Section Foot */
+	/* div#container section.editor div.grid div.foot {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	
+	/* Editor Section */
+	/* div#container section.editor div.grid {} */
+	
+	/* Editor Section Head */
+	/* div#container section.editor div.grid div.head {} */
+
+	/* Editor Section Body */
+	/* div#container section.editor div.grid form.body {} */
+
+	/* Editor Section Foot */
+	/* div#container section.editor div.grid div.foot {} */
+}

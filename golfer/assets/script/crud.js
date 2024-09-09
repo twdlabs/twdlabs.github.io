@@ -5,34 +5,34 @@
 const tablesection = document.querySelector('div#container section');
 
 // Define destination for table title. 
-const tabletitledestination = document.querySelector('div#container section div.grid div.head h2.header');
+const tabletitledestination = document.querySelector('div#container section div.grid div.head h2.header.tabletitle');
 
 
 /*****/
 
 
-// Load title of current table. 
-loadTableTitle();
+// Display title of current table. 
+if(typeof manualtitle=='undefined') displayTableTitle();
 
 
 /*****/
 
 
-// Load title of current table. 
-function loadTableTitle() {
+// Display title of current table. 
+function displayTableTitle() {
 
 	// Disregard if no destination for title. 
 	if(!tabletitledestination) return;
 
 	// Initialize title to display. 
-	let selectedtitle = ''
+	let selectedtitle = '';
 
 	// Handle viewer table. 
 	// if( !selectedtableid && !selectedentryid ) {
 	if( typeof displaytableid != 'undefined' ) {
 
 		// Set viewer title. 
-		selectedtitle = selectedtable['tabletitles']['viewertitle'];
+		selectedtitle = selectedtable['titles']['viewertitle'];
 	}
 
 	// Handle editor table in create mode. 
@@ -42,7 +42,7 @@ function loadTableTitle() {
 		tablesection.classList.add('c');
 
 		// Set editor title. 
-		selectedtitle = selectedtable['tabletitles']['editortitlenew'];
+		selectedtitle = selectedtable['titles']['editortitlenew'];
 	}
 
 	// Handle editor table in update mode. 
@@ -52,21 +52,11 @@ function loadTableTitle() {
 		tablesection.classList.add('u');
 
 		// Set editor title. 
-		selectedtitle = selectedtable['tabletitles']['editortitleexisting'];
+		selectedtitle = selectedtable['titles']['editortitleexisting'];
 	}
 
 	// Display information in table head. 
 	tabletitledestination.innerHTML = selectedtitle;
-}
-
-// Show contents of local storage. 
-function showLocalStorage() {
-
-	// Show contents of local storage. 
-	console.log('Local storage:',localStorage);
-
-	// Notify user. 
-	alert('View storage log in console...');
 }
 
 /*****/

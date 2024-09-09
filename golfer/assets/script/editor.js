@@ -21,8 +21,8 @@ function checkFieldValue(givenvalue) {
 	return !!givenvalue || !isNaN(givenvalue);
 }
 
-// Load fields for editing entry. 
-function loadEntryEditor() {
+// Display fields for editing table entry. 
+function displayEntryEditor() {
 
 	// Check if editing existing entry. 
 	let editingexistingentry = !!selectedtableentry;
@@ -115,4 +115,10 @@ function loadEntryEditor() {
 			// console.log('input field value:',fieldvalue,inputfield);
 		}
 	}
+}
+
+// TODO: Display fields for editing table entry. 
+function displayDistanceEditor() {
+
+	// 
 }
