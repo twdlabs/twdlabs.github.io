@@ -114,7 +114,7 @@
 			<!-- /navbar -->
 
 			<!-- editor -->
-			<section class="editor create update" ondblclick="this.classList.toggle('g2')">
+			<section class="editor g2" ondblclick="this.classList.toggle('g2')">
 
 				<!-- grid -->
 				<div class="grid">
@@ -123,7 +123,11 @@
 					<div class="head">
 
 						<!-- header -->
-						<h2 class="header"></h2>
+						<h2 class="header tabletitle"></h2>
+						<!-- /header -->
+
+						<!-- header -->
+						<h2 class="header username" ondblclick="changeCurrentUser()"></h2>
 						<!-- /header -->
 
 					</div>
@@ -164,76 +168,82 @@
 					<!-- foot -->
 					<div class="foot">
 
-						<!-- savenewbtn -->
-						<button class="btn savebtn savenewbtn" form="entryform0" title="Save new entry" onclick="saveNewEntry()">
-	
-							<!-- icon -->
-							<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M8 0q-.264 0-.523.017l.064.998a7 7 0 0 1 .918 0l.064-.998A8 8 0 0 0 8 0M6.44.152q-.52.104-1.012.27l.321.948q.43-.147.884-.237L6.44.153zm4.132.271a8 8 0 0 0-1.011-.27l-.194.98q.453.09.884.237zm1.873.925a8 8 0 0 0-.906-.524l-.443.896q.413.205.793.459zM4.46.824q-.471.233-.905.524l.556.83a7 7 0 0 1 .793-.458zM2.725 1.985q-.394.346-.74.74l.752.66q.303-.345.648-.648zm11.29.74a8 8 0 0 0-.74-.74l-.66.752q.346.303.648.648zm1.161 1.735a8 8 0 0 0-.524-.905l-.83.556q.254.38.458.793l.896-.443zM1.348 3.555q-.292.433-.524.906l.896.443q.205-.413.459-.793zM.423 5.428a8 8 0 0 0-.27 1.011l.98.194q.09-.453.237-.884zM15.848 6.44a8 8 0 0 0-.27-1.012l-.948.321q.147.43.237.884zM.017 7.477a8 8 0 0 0 0 1.046l.998-.064a7 7 0 0 1 0-.918zM16 8a8 8 0 0 0-.017-.523l-.998.064a7 7 0 0 1 0 .918l.998.064A8 8 0 0 0 16 8M.152 9.56q.104.52.27 1.012l.948-.321a7 7 0 0 1-.237-.884l-.98.194zm15.425 1.012q.168-.493.27-1.011l-.98-.194q-.09.453-.237.884zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a7 7 0 0 1-.458-.793zm13.828.905q.292-.434.524-.906l-.896-.443q-.205.413-.459.793zm-12.667.83q.346.394.74.74l.66-.752a7 7 0 0 1-.648-.648zm11.29.74q.394-.346.74-.74l-.752-.66q-.302.346-.648.648zm-1.735 1.161q.471-.233.905-.524l-.556-.83a7 7 0 0 1-.793.458zm-7.985-.524q.434.292.906.524l.443-.896a7 7 0 0 1-.793-.459zm1.873.925q.493.168 1.011.27l.194-.98a7 7 0 0 1-.884-.237zm4.132.271a8 8 0 0 0 1.012-.27l-.321-.948a7 7 0 0 1-.884.237l.194.98zm-2.083.135a8 8 0 0 0 1.046 0l-.064-.998a7 7 0 0 1-.918 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- caption -->
-							<span class="caption">Create</span>
-							<!-- /caption -->
-	
-						</button>
-						<!-- /savenewbtn -->
+						<!-- btnpanel -->
+						<div class="btnpanel">
 
-						<!-- saveupdatebtn -->
-						<button class="btn savebtn saveupdatebtn" form="entryform0" title="Update entry" onclick="saveUpdatedEntry()">
+							<!-- savenewbtn -->
+							<button class="btn savebtn savenewbtn" form="entryform0" title="Save new entry" onclick="saveNewEntry()">
+		
+								<!-- icon -->
+								<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M8 0q-.264 0-.523.017l.064.998a7 7 0 0 1 .918 0l.064-.998A8 8 0 0 0 8 0M6.44.152q-.52.104-1.012.27l.321.948q.43-.147.884-.237L6.44.153zm4.132.271a8 8 0 0 0-1.011-.27l-.194.98q.453.09.884.237zm1.873.925a8 8 0 0 0-.906-.524l-.443.896q.413.205.793.459zM4.46.824q-.471.233-.905.524l.556.83a7 7 0 0 1 .793-.458zM2.725 1.985q-.394.346-.74.74l.752.66q.303-.345.648-.648zm11.29.74a8 8 0 0 0-.74-.74l-.66.752q.346.303.648.648zm1.161 1.735a8 8 0 0 0-.524-.905l-.83.556q.254.38.458.793l.896-.443zM1.348 3.555q-.292.433-.524.906l.896.443q.205-.413.459-.793zM.423 5.428a8 8 0 0 0-.27 1.011l.98.194q.09-.453.237-.884zM15.848 6.44a8 8 0 0 0-.27-1.012l-.948.321q.147.43.237.884zM.017 7.477a8 8 0 0 0 0 1.046l.998-.064a7 7 0 0 1 0-.918zM16 8a8 8 0 0 0-.017-.523l-.998.064a7 7 0 0 1 0 .918l.998.064A8 8 0 0 0 16 8M.152 9.56q.104.52.27 1.012l.948-.321a7 7 0 0 1-.237-.884l-.98.194zm15.425 1.012q.168-.493.27-1.011l-.98-.194q-.09.453-.237.884zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a7 7 0 0 1-.458-.793zm13.828.905q.292-.434.524-.906l-.896-.443q-.205.413-.459.793zm-12.667.83q.346.394.74.74l.66-.752a7 7 0 0 1-.648-.648zm11.29.74q.394-.346.74-.74l-.752-.66q-.302.346-.648.648zm-1.735 1.161q.471-.233.905-.524l-.556-.83a7 7 0 0 1-.793.458zm-7.985-.524q.434.292.906.524l.443-.896a7 7 0 0 1-.793-.459zm1.873.925q.493.168 1.011.27l.194-.98a7 7 0 0 1-.884-.237zm4.132.271a8 8 0 0 0 1.012-.27l-.321-.948a7 7 0 0 1-.884.237l.194.98zm-2.083.135a8 8 0 0 0 1.046 0l-.064-.998a7 7 0 0 1-.918 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+								</svg>
+								<!-- /icon -->
+		
+								<!-- caption -->
+								<span class="caption">Create</span>
+								<!-- /caption -->
+		
+							</button>
+							<!-- /savenewbtn -->
 	
-							<!-- icon -->
-							<svg class="icon disk" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M11 2H9v3h2z"/>
-								<path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
-							</svg>
-							<!-- /icon -->
+							<!-- saveupdatebtn -->
+							<button class="btn savebtn saveupdatebtn" form="entryform0" title="Update entry" onclick="saveUpdatedEntry()">
+		
+								<!-- icon -->
+								<svg class="icon disk" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11 2H9v3h2z"/>
+									<path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+								</svg>
+								<!-- /icon -->
+		
+								<!-- icon -->
+								<svg class="icon disk" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v3.5A1.5 1.5 0 0 1 11.5 6h-7A1.5 1.5 0 0 1 3 4.5V1H1.5a.5.5 0 0 0-.5.5m9.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+								</svg>
+								<!-- /icon -->
+		
+								<!-- caption -->
+								<span class="caption">Save</span>
+								<!-- /caption -->
+		
+							</button>
+							<!-- /saveupdatebtn -->
 	
-							<!-- icon -->
-							<svg class="icon disk" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v3.5A1.5 1.5 0 0 1 11.5 6h-7A1.5 1.5 0 0 1 3 4.5V1H1.5a.5.5 0 0 0-.5.5m9.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
-							</svg>
-							<!-- /icon -->
+							<!-- cancelbtn -->
+							<button class="btn cancelbtn" title="Cancel entry" onclick="closeEntryEditor()">
+		
+								<!-- icon -->
+								<svg class="icon cross" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+								</svg>
+								<!-- /icon -->
+		
+								<!-- caption -->
+								<span class="caption">Cancel</span>
+								<!-- /caption -->
+		
+							</button>
+							<!-- /cancelbtn -->
 	
-							<!-- caption -->
-							<span class="caption">Save</span>
-							<!-- /caption -->
-	
-						</button>
-						<!-- /saveupdatebtn -->
-
-						<!-- cancelbtn -->
-						<button class="btn cancelbtn" title="Cancel entry" onclick="closeEntryEditor()">
-	
-							<!-- icon -->
-							<svg class="icon cross" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- caption -->
-							<span class="caption">Cancel</span>
-							<!-- /caption -->
-	
-						</button>
-						<!-- /cancelbtn -->
-
-						<!-- deletebtn -->
-						<button class="btn deletebtn" title="Delete entry" onclick="startDeleteEntry(selectedentryid)">
-	
-							<!-- icon -->
-							<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- caption -->
-							<span class="caption">Delete</span>
-							<!-- /caption -->
-	
-						</button>
-						<!-- /deletebtn -->
+							<!-- deletebtn -->
+							<button class="btn deletebtn" title="Delete entry" onclick="startDeleteEntry(selectedentryid)">
+		
+								<!-- icon -->
+								<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+								</svg>
+								<!-- /icon -->
+		
+								<!-- caption -->
+								<span class="caption">Delete</span>
+								<!-- /caption -->
+		
+							</button>
+							<!-- /deletebtn -->
+							
+						</div>
+						<!-- /btnpanel -->
 
 					</div>
 					<!-- /foot -->
@@ -249,11 +259,16 @@
 
 
 		<!-- Table Memory -->
+		<script src="../assets/script/urlparams.js" type="text/javascript"></script>
 		<script src="../assets/database/tabledatabase.js" type="text/javascript"></script>
 		<script src="../assets/database/localmemory.js" type="text/javascript"></script>
 
+		<!-- User Script -->
+		<script src="../assets/script/user.js" type="text/javascript"></script>
+
+		<!-- Viewer Script -->
+		<!-- <script src="../assets/script/viewer.js" type="text/javascript"></script> -->
 		<!-- Editor Script -->
-		<script src="../assets/script/urlparams.js" type="text/javascript"></script>
 		<script src="../assets/script/editor.js" type="text/javascript"></script>
 
 		<!-- CRUD Script -->
@@ -266,8 +281,8 @@
 		<!-- Run Script -->
 		<script type="text/javascript">
 
-			// Load fields for editing entry. 
-			if(loadItUp) loadEntryEditor();
+			// Display fields for editing table entry. 
+			if(loadItUp) displayEntryEditor();
 		</script>
 
 	</body>
