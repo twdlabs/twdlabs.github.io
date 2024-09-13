@@ -30,8 +30,8 @@ div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div
 /* div#container section.editor div.grid div.foot {} */
 /* div#container section.editor div.grid div.foot button.btn {} */
 /* div#container section.editor div.grid div.foot button.savebtn {} */
-/* div#container section.editor div.grid div.foot button.cancelbtn {} */
 div#container section.editor.c div.grid div.foot button.deletebtn {display:none;}
+/* div#container section.editor div.grid div.foot button.cancelbtn {} */
 div#container section.editor.u div.grid div.foot button.savenewbtn {display:none;}
 div#container section.editor.c div.grid div.foot button.saveupdatebtn {display:none;}
 /* div#container section.editor div.grid div.foot button.btn span.caption {} */

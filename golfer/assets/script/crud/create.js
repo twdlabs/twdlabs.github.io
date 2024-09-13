@@ -44,6 +44,7 @@ function saveNewEntry() {
 
 		// Check associated club. 
 		let clubentry = checkClub();
+		// Ensure valid club entry. 
 		if(!clubentry) return;
 	
 		// Get id of distance field. 
@@ -75,9 +76,19 @@ function saveNewEntry() {
 	
 			// Get club entry associated with new distance. 
 			let clubentry = getClubEntryById(associatedclubid);
+			console.log('Associated club entry:',clubentry);
 
-			// Ensure valid club entry. 
-			if(!clubentry) console.warn('Invalid club selected',clubentry);
+			// TODO
+			if(clubentry) {
+	
+				// Get id of distance field. 
+				let fieldid = 'clubid';
+			
+				// Get input element of distance field. 
+				let fieldinput = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#new'+fieldid);
+				fieldinput.setAttribute('disabled','');
+			}
+			else console.warn('Invalid club selected',clubentry);
 
 			// Return club entry
 			return clubentry;

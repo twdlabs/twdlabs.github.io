@@ -24,7 +24,7 @@ function checkForNextTable() {
 
 // Update table history navigation buttons. 
 function updateHistoryBtns() {
-	console.log('Updating table history nav...')
+	// console.log('Updating table history nav...')
 
 	// Ensure both history buttons present (viewer page). 
 	if( !undobtn || !redobtn ) {
@@ -36,7 +36,7 @@ function updateHistoryBtns() {
 	let prevexists = checkForPrevTable();
 	// Check if following table state exists. 
 	let nextexists = checkForNextTable();
-	console.log('Prev/Next table?',prevexists,nextexists);
+	// console.log('Prev/Next table?',prevexists,nextexists);
 
 	// Enable undo button if previous table exists. 
 	if(prevexists) enableBtn(undobtn);
@@ -100,7 +100,7 @@ function redoAction() {
 	}
 
 	// Shift history tables backward. 
-	shiftTableHistoryBack();
+	shiftTableHistoryBwd();
 
 	// Go to updated table. 
 	goToUpdatedTable();
@@ -108,7 +108,7 @@ function redoAction() {
 	/****/
 
 	// Shift table history backward. 
-	function shiftTableHistoryBack() {
+	function shiftTableHistoryBwd() {
 
 		// Shift current table to back history. 
 		pushToStack( selectedtable['bcktablestack'] , selectedtable['currententries'] );

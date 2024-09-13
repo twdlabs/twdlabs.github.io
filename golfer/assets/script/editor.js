@@ -2,21 +2,26 @@
 
 
 // Get selected table. 
-let selectedtable = databasetables[selectedtableid];
-console.log('Selected table:',selectedtable);
+const selectedtable = getTableById(selectedtableid);
+if(selectedtable) console.log('Selected table:',selectedtable);
 
-// Restore saved table entries from memory (put before for getTableEntryById to work). 
-restoreTableFromMemory();
-
-// Get selected table entry (if it exists). 
+// Get selected table entry (if exists). 
 let selectedtableentry = getTableEntryById(selectedtableid,selectedentryid);
-console.log('Selected table entry:',selectedtableentry);
+if(selectedtableentry) console.log('Selected table entry:',selectedtableentry);
+
+
+/*****/
+
 
 // Display fields for editing table entry. 
 if(loadItUp) displayEntryEditor();
 
+// Display title for current table. 
+if(loadItUp) displayTableTitle();
+
 
 /*****/
+
 
 
 // Check for valid field value. 

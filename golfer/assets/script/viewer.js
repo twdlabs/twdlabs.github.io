@@ -2,8 +2,15 @@
 
 
 // Get currently displayed table. 
-let selectedtable = databasetables[displaytableid];
-console.log('Selected table:',selectedtable);
+const selectedtable = getTableById(displaytableid);
+if(selectedtable) console.log('Selected table:',selectedtable);
 
-// Restore saved table entries from memory. 
-restoreTableFromMemory();
+
+/*****/
+
+
+// Display table. 
+if(loadItUp) displayTable();
+
+// Display title for current table. 
+if(loadItUp) displayTableTitle();

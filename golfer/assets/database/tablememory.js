@@ -1,8 +1,15 @@
 
 
 
-// Define memory key. 
-const tablememorykey = `saved${selectedtableid}`;
+// Define memory key for selected table. 
+const selectedtablememorykey = `saved${selectedtableid}`;
+
+
+/*****/
+
+
+// Restore all database tables from memory. 
+restoreDatabaseFromMemory();
 
 
 /*****/
@@ -20,7 +27,7 @@ function showMemory() {
 
 // Save current table and table state history to memory. 
 function saveTableToMemory() {
-	console.log(`Saving table data to memory...`,selectedtableid);
+	console.log('Saving table data to memory...',selectedtableid);
 
 	// Save current table state to memory. 
 	saveCurrentTableToMemory();
@@ -40,11 +47,11 @@ function saveTableToMemory() {
 			let currenttablestatestring = JSON.stringify( selectedtable['currententries'] );
 	
 			// Save current table state to memory. 
-			localStorage.setItem( tablememorykey, currenttablestatestring);
+			localStorage.setItem( selectedtablememorykey, currenttablestatestring);
 		}
 
 		// Remove from memory if current table empty. 
-		else localStorage.removeItem(tablememorykey);
+		else localStorage.removeItem(selectedtablememorykey);
 	}
 
 	// Save current table's state history to memory. 
@@ -57,11 +64,11 @@ function saveTableToMemory() {
 			let prevtablestatesstring = JSON.stringify( selectedtable['bcktablestack'] );
 	
 			// Save table state history to memory. 
-			localStorage.setItem( `${tablememorykey}prev`, prevtablestatesstring );
+			localStorage.setItem( `${selectedtablememorykey}prev`, prevtablestatesstring );
 		}
 
 		// Remove from memory if no prev tables. 
-		else localStorage.removeItem(`${tablememorykey}prev`);
+		else localStorage.removeItem(`${selectedtablememorykey}prev`);
 
 		// Save to memory if any next tables. 
 		if( selectedtable['fwdtablestack'].length ) {
@@ -70,51 +77,71 @@ function saveTableToMemory() {
 			let nexttablestatesstring = JSON.stringify( selectedtable['fwdtablestack'] );
 	
 			// Save table state history to memory. 
-			localStorage.setItem( `${tablememorykey}next`, nexttablestatesstring );
+			localStorage.setItem( `${selectedtablememorykey}next`, nexttablestatesstring );
 		}
 
 		// Remove from memory if no next tables. 
-		else localStorage.removeItem(`${tablememorykey}next`);
+		else localStorage.removeItem(`${selectedtablememorykey}next`);
 	}
 }
 
-// Restore current table from memory (if exists). 
-function restoreTableFromMemory() {
-	console.log(`Restoring table data from memory...`,selectedtableid);
+// Restore all database tables from memory. 
+function restoreDatabaseFromMemory() {
+	console.log('Restoring table data from memory...');
 
-	// Restore current table state from memory. 
-	restoreCurrentTableFromMemory();
+	// Go thru each table id. 
+	for(currenttableid in databasetables) {
 
-	// Restore current table's state history from memory. 
-	restoreTableHistoryFromMemory();
-
-	/****/
-
-	// Restore current table state from memory. 
-	function restoreCurrentTableFromMemory() {
-
-		// Get current table state (in string form) from memory. 
-		let currenttablestatestring = localStorage.getItem(tablememorykey);
-		// Restore current table state (if exists). 
-		if(currenttablestatestring) selectedtable['currententries'] = JSON.parse(currenttablestatestring);
-		else console.log('No current table state');
+		// Restore current table from memory. 
+		restoreTableFromMemory(currenttableid);
 	}
 
-	// Restore current table's state history from memory. 
-	function restoreTableHistoryFromMemory() {
-
-		// Get prev table states (in string form) from memory. 
-		let prevtablestatesstring = localStorage.getItem(`${tablememorykey}prev`);
-		// Restore prev table states (if exists). 
-		if(prevtablestatesstring) selectedtable['bcktablestack'] = JSON.parse(prevtablestatesstring);
-		// Disregard prev table states (if not). 
-		// else console.log('No previous table state history');
-
-		// Get next table states (in string form) from memory. 
-		let nexttablestatesstring = localStorage.getItem(`${tablememorykey}next`);
-		// Restore next table states (if exists). 
-		if(nexttablestatesstring) selectedtable['fwdtablestack'] = JSON.parse(nexttablestatesstring);
-		// Disregard next table states (if not). 
-		// else console.log('No following table state history');
+	/****/
+	
+	// Restore given table from memory (if exists). 
+	function restoreTableFromMemory(giventableid) {
+		console.log('Restoring table data from memory...',giventableid);
+	
+		// Get given table. 
+		let giventable = getTableById(giventableid);
+	
+		// Define memory key for given table. 
+		const giventablememorykey = `saved${giventableid}`;
+	
+		// Restore current table state from memory. 
+		restoreCurrentTableFromMemory();
+	
+		// Restore current table's state history from memory. 
+		restoreTableHistoryFromMemory();
+	
+		/***/
+	
+		// Restore current table state from memory. 
+		function restoreCurrentTableFromMemory() {
+	
+			// Get current table state (in string form) from memory. 
+			let currenttablestatestring = localStorage.getItem(giventablememorykey);
+			// Restore current table state (if exists). 
+			if(currenttablestatestring) giventable['currententries'] = JSON.parse(currenttablestatestring);
+			// else console.log('No current table state');
+		}
+	
+		// Restore current table's state history from memory. 
+		function restoreTableHistoryFromMemory() {
+	
+			// Get prev table states (in string form) from memory. 
+			let prevtablestatesstring = localStorage.getItem(`${giventablememorykey}prev`);
+			// Restore prev table states (if exists). 
+			if(prevtablestatesstring) giventable['bcktablestack'] = JSON.parse(prevtablestatesstring);
+			// Disregard prev table states (if not). 
+			// else console.log('No previous table state history');
+	
+			// Get next table states (in string form) from memory. 
+			let nexttablestatesstring = localStorage.getItem(`${giventablememorykey}next`);
+			// Restore next table states (if exists). 
+			if(nexttablestatesstring) giventable['fwdtablestack'] = JSON.parse(nexttablestatesstring);
+			// Disregard next table states (if not). 
+			// else console.log('No following table state history');
+		}
 	}
 }

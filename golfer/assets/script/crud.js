@@ -11,19 +11,14 @@ const tabletitledestination = document.querySelector('div#container section div.
 /*****/
 
 
-// Display title of current table. 
-displayTableTitle();
-
-
-/*****/
-
-
-// Display title of current table. 
+// Display title for current table. 
 function displayTableTitle() {
 
 	// Disregard if no destination for title. 
 	if(!tabletitledestination) return;
 
+	// Initialize page mode. 
+	let pagemode = '';
 	// Initialize title to display. 
 	let selectedtitle = '';
 
@@ -31,6 +26,8 @@ function displayTableTitle() {
 	// if( !selectedtableid && !selectedentryid ) {
 	if( typeof displaytableid != 'undefined' ) {
 
+		// Set page mode: read viewer. 
+		pagemode = 'r';
 		// Set viewer title. 
 		selectedtitle = selectedtable['titles']['viewertitle'];
 	}
@@ -38,24 +35,24 @@ function displayTableTitle() {
 	// Handle editor table in create mode. 
 	else if( selectedtableid && !selectedentryid ) {
 
-		// Set editor mode: create. 
-		tablesection.classList.add('c');
-
+		// Set page mode: create editor. 
+		pagemode = 'c';
 		// Set editor title. 
-		selectedtitle = selectedtable['titles']['editortitlenew'];
+		selectedtitle = selectedtable['titles']['editortitlec'];
 	}
 
 	// Handle editor table in update mode. 
 	else if( selectedtableid && selectedentryid ) {
 
-		// Set editor mode: update. 
-		tablesection.classList.add('u');
-
+		// Set page mode: update editor. 
+		pagemode = 'u';
 		// Set editor title. 
-		selectedtitle = selectedtable['titles']['editortitleexisting'];
+		selectedtitle = selectedtable['titles']['editortitleu'];
 	}
 
-	// Display information in table head. 
+	// Assign page mode to table. 
+	tablesection.classList.add(pagemode);
+	// Display title in table head. 
 	tabletitledestination.innerHTML = selectedtitle;
 }
 
@@ -74,6 +71,7 @@ function startNewDistanceEntry(givenclubid) {
 
 	// Go directly to editor page for new club distances. 
 	window.location.href = `../editor/?tid=${destinationtableid}&cid=${givenclubid}`;
+	alert('Hi');
 }
 
 // Start editing existing entry. 
@@ -110,10 +108,10 @@ function saveTableChanges() {
 	function updateTableHistory() {
 
 		// Get old current table. 
-		let oldcurrenttable = JSON.parse( localStorage.getItem(tablememorykey) );
+		let oldcurrenttable = JSON.parse( localStorage.getItem(selectedtablememorykey) );
 
 		// Shift old current table backward in history. 
-		selectedtable['bcktablestack'].push(oldcurrenttable);
+		selectedtable['bcktablestack'].push( oldcurrenttable ? oldcurrenttable : [] );
 
 		// Clear out forward history. 
 		selectedtable['fwdtablestack'] = [];
@@ -125,16 +123,10 @@ function goToUpdatedTable() {
 
 	// Check if on editor page. 
 	let oneditorpage = (typeof displaytableid == 'undefined');
-	console.log('Editor page?',oneditorpage);
+	// console.log('Editor page?',oneditorpage);
 
 	// Close entry editor (editor page). 
 	if(oneditorpage) closeEntryEditor();
-
-	// Display updated table section (viewer page). 
-	else {
-		// Display updated table. 
-		displayTableBody();
-		// Update table history navigation buttons. 
-		updateHistoryBtns();
-	}
+	// Display updated table (viewer page). 
+	else displayTable();
 }

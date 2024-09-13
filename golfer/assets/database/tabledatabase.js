@@ -12,9 +12,9 @@ let databasetables = {
 			// Define title of viewer table. 
 			viewertitle:'Golf Clubs',
 			// Define title of create editor. 
-			editortitlenew:'New Golf Club',
+			editortitlec:'New Golf Club',
 			// Define title of update editor. 
-			editortitleexisting:'Edit Golf Club',
+			editortitleu:'Edit Golf Club',
 		},
 		// Define column headers (by column). 
 		tablecolumns:[
@@ -314,9 +314,9 @@ let databasetables = {
 			// Define title of viewer table. 
 			viewertitle:'Golf Holes',
 			// Define title of create editor. 
-			editortitlenew:'New Golf Hole',
+			editortitlec:'New Golf Hole',
 			// Define title of update editor. 
-			editortitleexisting:'Edit Golf Hole',
+			editortitleu:'Edit Golf Hole',
 		},
 		// Define column headers (by column). 
 		tablecolumns:[
@@ -350,7 +350,28 @@ let databasetables = {
 		],
 	
 		// Define example table entries (by row). 
-		exampleentries:[],
+		exampleentries:[
+			{
+				id:'a',
+				holename:'Alpha',
+			},
+			{
+				id:'b',
+				holename:'Beta',
+			},
+			{
+				id:'d',
+				holename:'Delta',
+			},
+			{
+				id:'e',
+				holename:'Epsilon',
+			},
+			{
+				id:'g',
+				holename:'Gamma',
+			},
+		],
 		// Define current table state (entries by row). 
 		currententries:[],
 		// Define backward state history for list of table entries. 
@@ -370,9 +391,9 @@ let databasetables = {
 			// Define title of viewer table. 
 			viewertitle:'Golf Distances',
 			// Define title of create editor. 
-			editortitlenew:'New Golf Distance',
+			editortitlec:'New Golf Distance',
 			// Define title of update editor. 
-			editortitleexisting:'Edit Golf Distance',
+			editortitleu:'Edit Golf Distance',
 		},
 		// Define column headers (by column). 
 		tablecolumns:[

@@ -15,6 +15,7 @@ div#container section.viewer div.grid div.head h2.header.username {font-size:1re
 div#container section.viewer div.grid div.head div.btnpanel button.btn {margin-bottom:.375rem;}
 /* div#container section.viewer div.grid div.head div.btnpanel button.undobtn {} */
 /* div#container section.viewer div.grid div.head div.btnpanel button.redobtn {} */
+/* div#container section.viewer div.grid div.head div.btnpanel button.peekbtn {display:none;} */
 /* div#container section.viewer div.grid div.head div.btnpanel button.resetbtn {} */
 /* div#container section.viewer div.grid div.head div.btnpanel button.examplebtn {} */
 div#container section.viewer div.grid div.head div.btnpanel button.btn:disabled {cursor:initial; opacity:.5;}
