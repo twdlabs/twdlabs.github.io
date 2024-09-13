@@ -16,7 +16,7 @@ div#container section.viewer div.grid div.head div.btnpanel {order:0; grid-colum
 div#container section.viewer div.grid div.head h2.header.username {order:2;}
 div#container section.viewer div.grid div.head h2.header.tabletitle {order:1;}
 /* div#container section.viewer div.grid div.head div.btnpanel {} */
-div#container section.viewer div.grid div.head div.btnpanel br {display:none;}
+div#container section.viewer div.grid div.head div.btnpanel br {display:none; margin:0 1rem;}
 div#container section.viewer div.grid div.head div.btnpanel button.btn {margin-bottom:.375rem;}
 /* div#container section.viewer div.grid div.head div.btnpanel button.undobtn {} */
 /* div#container section.viewer div.grid div.head div.btnpanel button.redobtn {} */

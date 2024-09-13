@@ -447,12 +447,16 @@ let databasetables = {
 				fieldtype:'select',
 				fieldcaption:'Club',
 				fielddefaultvalue:'',
+				selectortableid:'clubs',
+				selectornamekey:'clubname',
 			},
 			{
 				fieldid:'holeid',
 				fieldtype:'select',
 				fieldcaption:'Hole',
 				fielddefaultvalue:'',
+				selectortableid:'holes',
+				selectornamekey:'holename',
 			},
 			{
 				fieldid:'distance',

@@ -64,6 +64,8 @@ function displayEntryEditor() {
 			let inputid = `${ editingexistingentry ? '' : 'new' }${fieldid}`;
 			// Get field type. 
 			let type = currentfield['fieldtype'];
+			let tableid = currentfield['selectortableid'];
+			let namekey = currentfield['selectornamekey'];
 			// Get field caption. 
 			let caption = currentfield['fieldcaption'];
 			// Check for default field value. 
@@ -85,7 +87,7 @@ function displayEntryEditor() {
 					<label class="fieldname" for="${inputid}">${caption}</label>
 					<!-- /fieldname -->
 
-					${ type=='select' ? createDropdownInput(inputid) : createSimpleInput(type,inputid,ph) }
+					${ type=='select' ? createDropdownInput(inputid,tableid,namekey) : createSimpleInput(type,inputid,ph) }
 
 				</div>
 				<!-- /entryfield -->
@@ -99,12 +101,18 @@ function displayEntryEditor() {
 
 		/***/
 
-		// Create dropdown input. 
-		function createDropdownInput(inpid) {
+		// Create simple input. 
+		function createSimpleInput(type,id,ph) {
 
-			// Define table to select options from. 
-			let giventableid = 'clubs';
-			let entrynamekey = 'clubname';
+			// Compile simple input. 
+			return `
+			<!-- fieldvalue -->
+			<input class="fieldvalue" type="${type}" id="${id}" name="${id}" placeholder="${ph}">
+			<!-- /fieldvalue -->`;
+		}
+
+		// Create dropdown input. 
+		function createDropdownInput(inpid,giventableid,entrynamekey) {
 
 			// Compile dropdown input. 
 			return `
@@ -133,16 +141,6 @@ function displayEntryEditor() {
 				// Initialize layout of select options. 
 				return optionslayout;
 			}
-		}
-
-		// Create simple input. 
-		function createSimpleInput(type,id,ph) {
-
-			// Compile simple input. 
-			return `
-			<!-- fieldvalue -->
-			<input class="fieldvalue" type="${type}" id="${id}" name="${id}" placeholder="${ph}">
-			<!-- /fieldvalue -->`;
 		}
 	}
 

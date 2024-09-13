@@ -20,7 +20,7 @@ function saveNewEntry() {
 		let fieldid = currentfield['fieldid'];
 
 		// Get input element of current field. 
-		let fieldinput = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#new'+fieldid);
+		let fieldinput = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#new'+fieldid) || document.querySelector('div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield select.fieldvalue#new'+fieldid);
 		// Get newly entered value for current field. 
 		let fieldvalue = fieldinput.value;
 		// Check if field value valid. 

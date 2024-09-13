@@ -154,13 +154,13 @@ function displayTable() {
 				// 	avgdistance = distancelist.length ? findAverage(distancelist) : 0;
 				// }
 
-				// Define row template for distance entry. 
+				// Define row template for club entry. 
 				let rowtemplate = [
-					// Add layout for id of given club entry. 
+					// Define caption for club id. 
 					entryid,
-					// Add layout for club name, brand, and loft of given club entry. 
+					// Define caption for brand name, club name, and loft. 
 					`<b>${clubbrand}</b> <i>${clubname}</i> (${clubloftdisplay})`,
-					// Add layout for distance metrics of given club entry. 
+					// Define captions for distance metrics. 
 					mindistance,
 					formatNumber(avgdistance),
 					maxdistance,
@@ -206,11 +206,11 @@ function displayTable() {
 				// Get details of given hole entry. 
 				let holename = holeentry['holename'] ? holeentry['holename'] : '--';
 
-				// Define row template for distance entry. 
+				// Define row template for hole entry. 
 				let rowtemplate = [
-					// Add layout for id of given hole entry. 
+					// Define caption for hole id. 
 					entryid,
-					// Add layout for name of given hole entry. 
+					// Define caption for hole name. 
 					holename,
 				];
 
@@ -227,18 +227,18 @@ function displayTable() {
 				let holeid = shotentry['holeid'];
 				let clubentry = getClubEntryById(clubid);
 				let holeentry = getHoleEntryById(holeid);
-				console.log('Associated club entry:',clubid,clubentry);
-				console.log('Associated hole entry:',holeid,holeentry);
+				// console.log('Associated club entry:',clubid,clubentry);
+				// console.log('Associated hole entry:',holeid,holeentry);
 				
 				// Get details of given club entry. 
 				let clubname = clubentry ? clubentry['clubname'] : '--';
-				console.log('Club name:',clubname);
+				// console.log('Club name:',clubname);
 				let holename = holeentry ? holeentry['holename'] : '--';
-				console.log('Hole name:',holename);
+				// console.log('Hole name:',holename);
 
 				// Define row template for distance entry. 
 				let rowtemplate = [
-					// Define caption for entry id. 
+					// Define caption for shot id. 
 					entryid,
 					// Define caption for club name. 
 					clubentry?`${clubname} (${clubid})`:clubname,
