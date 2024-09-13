@@ -132,6 +132,8 @@ function displayTable() {
 			// Select row layer function and return result. 
 			return rowlayer[displaytableid](givenentry);
 	
+			/**/
+	
 			// Create table row layout for given club entry. 
 			function createClubEntryRowLayout(clubentry) {
 		
@@ -165,7 +167,7 @@ function displayTable() {
 				tablerowlayout += createTableBlockLayout( numshots, 5);
 				// Add layout for distance entry field of given club entry. 
 				tablerowlayout += createTableInputBlockLayout(6);
-				// Add action field for given club entry. 
+				// Add action field layout for given entry. 
 				tablerowlayout += createTableActionBlockLayout( entryid, 7);
 				// console.log('Club entry table row layout:',tablerowlayout);
 		
@@ -247,7 +249,7 @@ function displayTable() {
 				}
 			}
 		
-			// TODO: Create table row layout for given hole entry. 
+			// Create table row layout for given hole entry. 
 			function createHoleEntryRowLayout(holeentry) {
 		
 				// Get details of given hole entry. 
@@ -260,14 +262,14 @@ function displayTable() {
 				tablerowlayout += createTableBlockLayout( entryid, 0);
 				 // Add layout for name of given hole entry. 
 				tablerowlayout += createTableBlockLayout( holename , 1);
-				// Add action field for given hole entry. 
+				// Add action field layout for given entry. 
 				tablerowlayout += createTableActionBlockLayout( entryid, 2);
 		
 				// Return layout for table row. 
 				return tablerowlayout;
 			}
 		
-			// TODO: Create table row layout for given distance entry. 
+			// Create table row layout for given distance entry. 
 			function createDistanceEntryRowLayout(shotentry) {
 		
 				// Get details of given distance entry. 
@@ -284,21 +286,34 @@ function displayTable() {
 				console.log('Club name:',clubname);
 				let holename = holeentry ? holeentry['holename'] : '--';
 				console.log('Hole name:',holename);
+
+				// Define row template for distance entry. 
+				let rowtemplate = [
+					// Define caption for entry id. 
+					entryid,
+					// Define caption for club name. 
+					clubentry?`${clubname} (${clubid})`:clubname,
+					// Define caption for hole name. 
+					holeentry?`${holename} (${holeid})`:holename,
+					// Define caption for distance. 
+					distance,
+				];
 		
 				// Initialize layout for table row. 
 				let tablerowlayout = '';
 
-				// Add layout for id of given distance entry. 
-				tablerowlayout += createTableBlockLayout( entryid, 0);
-				 // Add layout for club name for given distance entry. 
-				tablerowlayout += createTableBlockLayout( clubentry?`${clubname} (${clubid})`:clubname , 1);
-				 // Add layout for hole name for given distance entry. 
-				tablerowlayout += createTableBlockLayout( holeentry?`${holename} (${holeid})`:holename , 2);
-				 // Add layout for distance of given distance entry. 
-				tablerowlayout += createTableBlockLayout( distance , 3);
+				// Go thru each data point in row template. 
+				for(let index in rowtemplate) {
+
+					// Get caption for data point. 
+					let caption = rowtemplate[index];
+
+					// Add layout for data point in given entry. 
+					tablerowlayout += createTableBlockLayout(caption,index);
+				}
 	
-				// Add action field for given club entry. 
-				tablerowlayout += createTableActionBlockLayout( entryid, 4);
+				// Add action field layout for given entry. 
+				tablerowlayout += createTableActionBlockLayout(entryid,index+1);
 		
 				// Return layout for table row. 
 				return tablerowlayout;
@@ -327,7 +342,7 @@ function displayTable() {
 			}
 		
 			// Create layout for table action block. 
-			function createTableActionBlockLayout( entryid, columnindex) {
+			function createTableActionBlockLayout(entryid,columnindex) {
 	
 				// TODO: Check if block is centered. 
 				let centerblock = true || tablecolumnslist[columnindex]['columncenter'];
