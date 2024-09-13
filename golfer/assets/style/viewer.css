@@ -3,14 +3,15 @@
 
 /* Viewer Section */
 /* div#container section.viewer {} */
-div#container section.viewer {width:calc(100vw - 2rem); max-width:var(--pagewidth);}
+/* div#container section.viewer {width:calc(100vw - 2rem); max-width:var(--pagewidth);} */
 /* div#container section.viewer div.grid {} */
 
 
 /* Viewer Section Head */
 /* div#container section.viewer div.grid div.head {} */
-div#container section.viewer div.grid div.head h2.header {font-size:1.625rem;}
-div#container section.viewer div.grid div.head h2.header.username {font-size:1rem;}
+div#container section.viewer div.grid div.head div.btnpanel {order:2;}
+div#container section.viewer div.grid div.head h2.header.username {order:3;}
+div#container section.viewer div.grid div.head h2.header.tabletitle {order:1;}
 /* div#container section.viewer div.grid div.head div.btnpanel {} */
 div#container section.viewer div.grid div.head div.btnpanel button.btn {margin-bottom:.375rem;}
 /* div#container section.viewer div.grid div.head div.btnpanel button.undobtn {} */
@@ -19,6 +20,9 @@ div#container section.viewer div.grid div.head div.btnpanel button.btn {margin-b
 /* div#container section.viewer div.grid div.head div.btnpanel button.resetbtn {} */
 /* div#container section.viewer div.grid div.head div.btnpanel button.examplebtn {} */
 div#container section.viewer div.grid div.head div.btnpanel button.btn:disabled {cursor:initial; opacity:.5;}
+div#container section.viewer div.grid div.head h2.header {font-size:1.625rem;}
+div#container section.viewer div.grid div.head h2.header.username {font-size:1rem;}
+/* div#container section.viewer div.grid div.head h2.header.tabletitle {} */
 
 
 /* Viewer Section Body */
@@ -78,8 +82,6 @@ div#container section.viewer div.grid div.foot {padding:0 .125em;}
 
 	/* Viewer Section Head */
 	/* div#container section.viewer div.grid div.head {} */
-	/* div#container section.viewer div.grid div.head button.btn {} */
-	div#container section.viewer div.grid div.head button.btn span.caption {display:none;}
 
 	/* Viewer Section Body */
 	/* div#container section.viewer div.grid table.table {} */
@@ -100,7 +102,10 @@ div#container section.viewer div.grid div.foot {padding:0 .125em;}
 	/* div#container section.viewer div.grid {} */
 
 	/* Viewer Section Head */
-	/* div#container section.viewer div.grid div.head {} */
+	div#container section.viewer div.grid div.head {display:grid; grid-template-columns:repeat(2,auto);}
+	div#container section.viewer div.grid div.head div.btnpanel {order:3; grid-column:1 / span 2; text-align:center;}
+	div#container section.viewer div.grid div.head h2.header.username {order:2;}
+	div#container section.viewer div.grid div.head h2.header.tabletitle {order:1;}
 
 	/* Viewer Section Body */
 	/* div#container section.viewer div.grid table.table {} */
@@ -115,6 +120,9 @@ div#container section.viewer div.grid div.foot {padding:0 .125em;}
 
 	/* Viewer Section Head */
 	/* div#container section.viewer div.grid div.head {} */
+	/* div#container section.viewer div.grid div.head div.btnpanel {} */
+	/* div#container section.viewer div.grid div.head div.btnpanel button.btn {} */
+	div#container section.viewer div.grid div.head div.btnpanel button.btn span.caption {display:none;}
 
 	/* Viewer Section Body */
 	/* div#container section.viewer div.grid table.table {} */

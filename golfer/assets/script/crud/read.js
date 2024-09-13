@@ -58,13 +58,12 @@ function displayTable() {
 	// Display body layout for current database table. 
 	function displayTableBody() {
 		// console.log('Table entries:',selectedtable['currententries']);
-		
-	
+
 		// Get list of table entries. 
 		let tableentrieslist = selectedtable['currententries'];
 	
 		// Get list of table columns. 
-		let tablecolumnlist = selectedtable['tablecolumns'];
+		let tablecolumnslist = selectedtable['tablecolumns'];
 	
 		// Disregard if no destination present for table body. 
 		if(!tablebodydestination) return;
@@ -87,7 +86,7 @@ function displayTable() {
 			// Add table row layout for single table entry. 
 			tablebodylayout += `
 			<!-- row -->
-			<tr class="row">${ createClubEntryRowLayout(entry) }</tr>
+			<tr class="row">${ createEntryRowLayout(entry) }</tr>
 			<!-- /row -->`;
 		}
 	
@@ -102,7 +101,7 @@ function displayTable() {
 			// Compile placeholder table row layout for empty table. 
 			return `
 			<!-- data -->
-			<td class="data null" colspan="${tablecolumnlist.length}">
+			<td class="data null" colspan="${tablecolumnslist.length}">
 	
 				<!-- nullicon -->
 				<img class="nullicon" src="./../assets/icons/istockphoto-660995292-170667a.jpg">
@@ -116,85 +115,194 @@ function displayTable() {
 			<!-- /data -->`;
 		}
 	
-		// TODO: Create table row layout for given entry. 
+		// Create table row layout for given entry. 
 		function createEntryRowLayout(givenentry) {
-	
-			// 
-		}
-	
-		// Create table row layout for given club entry. 
-		function createClubEntryRowLayout(clubentry) {
-	
-			// Get id of given club entry. 
-			let entryid = clubentry['id'] ? clubentry['id'] : '--';
-			// Get details of given club entry. 
-			let clubname = clubentry['clubname'] ? clubentry['clubname'] : '--';
-			let clubbrand = clubentry['clubbrand'] ? clubentry['clubbrand'] : '--';
-			let clubloftdegrees = clubentry['clubloftdegrees'] ? clubentry['clubloftdegrees'] : 0;
-			let clubloftdisplay = formatNumber(clubloftdegrees)+'&deg';
-	
-			// Get distance metrics for given club entry. 
-			let numshots = clubentry['numshots'] ? clubentry['numshots'] : 0;
-			let avgdistance = clubentry['avgdistance'] ? clubentry['avgdistance'] : 0;
-			let mindistance = clubentry['mindistance'] ? clubentry['mindistance'] : 0;
-			let maxdistance = clubentry['maxdistance'] ? clubentry['maxdistance'] : 0;
-	
-			// 
-			// if(distancelist) {
-			// 	// Get average distance for given club entry. 
-			// 	avgdistance = distancelist.length ? findAverage(distancelist) : 0;
-			// }
-	
-			// Initialize layout for table row. 
-			let tablerowlayout = '';
-			// Add layout for id of given club entry. 
-			tablerowlayout += createTableBlockLayout(entryid, 0);
-			 // Add layout for club name, brand, and loft of given club entry. 
-			tablerowlayout += createTableBlockLayout( `<b>${clubbrand}</b> <i>${clubname}</i> (${clubloftdisplay})` , 1);
-			// Add layout for distance metrics of given club entry. 
-			tablerowlayout += createTableBlockLayout( mindistance, 2);
-			tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 3);
-			tablerowlayout += createTableBlockLayout( maxdistance, 4);
-			tablerowlayout += createTableBlockLayout( numshots, 5);
-			// Add layout for distance entry field of given club entry. 
-			tablerowlayout += createTableInputBlockLayout(6);
-			// Add action field for given club entry. 
-			tablerowlayout += createTableActionBlockLayout(7);
-			// console.log('Club entry table row layout:',tablerowlayout);
-	
-			// Return layout for table row. 
-			return tablerowlayout;
-	
-			/**/
-	
-			// Format number. 
-			function formatNumber(num) {
-				num = 1 * num;
-				return ( Number.isInteger(num) ? num : num.toFixed(1) );
+
+			// Get id of given entry. 
+			let entryid = givenentry['id'] ? givenentry['id'] : '--';
+			// console.log('Entry id:',entryid);
+
+			// Define row layer functions. 
+			let rowlayer = {
+				clubs:createClubEntryRowLayout,
+				holes:createHoleEntryRowLayout,
+				shots:createDistanceEntryRowLayout,
 			}
 	
-			// Find average of number list. 
-			function findAverage(numberlist) {
+			// Select row layer function and return result. 
+			return rowlayer[displaytableid](givenentry);
 	
-				// Initialize sum of numbers. 
-				let sum = 0;
+			// Create table row layout for given club entry. 
+			function createClubEntryRowLayout(clubentry) {
+		
+				// Get details of given club entry. 
+				let clubname = clubentry['clubname'] ? clubentry['clubname'] : '--';
+				let clubbrand = clubentry['clubbrand'] ? clubentry['clubbrand'] : '--';
+				let clubloftdegrees = clubentry['clubloftdegrees'] ? clubentry['clubloftdegrees'] : 0;
+				let clubloftdisplay = formatNumber(clubloftdegrees)+'&deg';
+		
+				// Get distance metrics for given club entry. 
+				let numshots = clubentry['numshots'] ? clubentry['numshots'] : 0;
+				let avgdistance = clubentry['avgdistance'] ? clubentry['avgdistance'] : 0;
+				let mindistance = clubentry['mindistance'] ? clubentry['mindistance'] : 0;
+				let maxdistance = clubentry['maxdistance'] ? clubentry['maxdistance'] : 0;
+		
+				// if(distancelist) {
+				// 	// Get average distance for given club entry. 
+				// 	avgdistance = distancelist.length ? findAverage(distancelist) : 0;
+				// }
+		
+				// Initialize layout for table row. 
+				let tablerowlayout = '';
+				// Add layout for id of given club entry. 
+				tablerowlayout += createTableBlockLayout( entryid, 0);
+				 // Add layout for club name, brand, and loft of given club entry. 
+				tablerowlayout += createTableBlockLayout( `<b>${clubbrand}</b> <i>${clubname}</i> (${clubloftdisplay})` , 1);
+				// Add layout for distance metrics of given club entry. 
+				tablerowlayout += createTableBlockLayout( mindistance, 2);
+				tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 3);
+				tablerowlayout += createTableBlockLayout( maxdistance, 4);
+				tablerowlayout += createTableBlockLayout( numshots, 5);
+				// Add layout for distance entry field of given club entry. 
+				tablerowlayout += createTableInputBlockLayout(6);
+				// Add action field for given club entry. 
+				tablerowlayout += createTableActionBlockLayout( entryid, 7);
+				// console.log('Club entry table row layout:',tablerowlayout);
+		
+				// Return layout for table row. 
+				return tablerowlayout;
+		
+				/**/
+		
+				// Format number. 
+				function formatNumber(num) {
 	
-				// Go thru each number in number list. 
-				for(let num of numberlist) {
+					// Ensure number form. 
+					num = 1 * num;
 	
-					// Add number to running total. 
-					sum += 1*num;
+					// Return as integer or 1-place decimal number. 
+					return ( Number.isInteger(num) ? num : num.toFixed(1) );
 				}
-	
-				// Return sum of numbers. 
-				return (sum / numberlist.length);
+		
+				// Find average of number list. 
+				function findAverage(numberlist) {
+		
+					// Initialize sum of numbers. 
+					let sum = 0;
+		
+					// Go thru each number in number list. 
+					for(let num of numberlist) {
+		
+						// Add number to running total. 
+						sum += 1*num;
+					}
+		
+					// Return sum of numbers. 
+					return (sum / numberlist.length);
+				}
+		
+				// Create table input block. 
+				function createTableInputBlockLayout(columnindex) {
+		
+					// Check if block is centered. 
+					let centerblock = tablecolumnslist[columnindex]['columncenter'];
+			
+					// Compile table data block. 
+					return `
+					<!-- data -->
+					<td class="data a${ centerblock ? ' c' : '' }">
+		
+						<!-- btnpanel -->
+						<div class="btnpanel">
+		
+							<!-- newdistancebtn -->
+							<button class="btn newdistancebtn" title="Add new distance for club (${entryid})" onclick="startNewDistanceEntry('${entryid}')">
+		
+								<!-- icon -->
+								<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+								</svg>
+								<!-- /icon -->
+		
+								<!-- icon -->
+								<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+								</svg>
+								<!-- /icon -->
+		
+								<!-- caption -->
+								<!-- <span class="caption">Add</span> -->
+								<!-- /caption -->
+								
+							</button>
+							<!-- /newdistancebtn -->
+							
+						</div>
+						<!-- /btnpanel -->
+		
+					</td>
+					<!-- /data -->`;
+				}
 			}
+		
+			// TODO: Create table row layout for given hole entry. 
+			function createHoleEntryRowLayout(holeentry) {
+		
+				// Get details of given club entry. 
+				let holename = holeentry['holename'] ? holeentry['holename'] : '--';
+		
+				// Initialize layout for table row. 
+				let tablerowlayout = '';
+
+				// Add layout for id of given hole entry. 
+				tablerowlayout += createTableBlockLayout( entryid, 0);
+				 // Add layout for name of given hole entry. 
+				tablerowlayout += createTableBlockLayout( holename , 1);
+				// Add action field for given hole entry. 
+				tablerowlayout += createTableActionBlockLayout( entryid, 2);
+		
+				// Return layout for table row. 
+				return tablerowlayout;
+			}
+		
+			// TODO: Create table row layout for given distance entry. 
+			function createDistanceEntryRowLayout(shotentry) {
+		
+				// Get details of given club entry. 
+				let clubid = shotentry['clubid'];
+				let holeid = shotentry['holeid'];
+				let distance = shotentry['distance'];
+				
+				// Get details of given club entry. 
+				let clubname = clubid ? getClubEntryById(clubid)['clubname'] : '--';
+				let holename = holeid ? getHoleEntryById(holeid)['holename'] : '--';
+		
+				// Initialize layout for table row. 
+				let tablerowlayout = '';
+
+				// Add layout for id of given distance entry. 
+				tablerowlayout += createTableBlockLayout( entryid, 0);
+				 // Add layout for club name for given distance entry. 
+				tablerowlayout += createTableBlockLayout( clubname , 1);
+				 // Add layout for hole name for given distance entry. 
+				tablerowlayout += createTableBlockLayout( holename , 2);
+				 // Add layout for distance of given distance entry. 
+				tablerowlayout += createTableBlockLayout( distance , 3);
 	
+				// Add action field for given club entry. 
+				tablerowlayout += createTableActionBlockLayout( entryid, 4);
+		
+				// Return layout for table row. 
+				return tablerowlayout;
+			}
+		
 			// Create layout for given table block. 
 			function createTableBlockLayout(caption,columnindex) {
+				console.log('Creating table block layout...',columnindex);
+				
 	
 				// Check if block is centered. 
-				let centerblock = tablecolumnlist[columnindex]['columncenter'];
+				let centerblock = tablecolumnslist[columnindex]['columncenter'];
 		
 				// Compile table data block. 
 				return `
@@ -208,55 +316,12 @@ function displayTable() {
 				</td>
 				<!-- /data -->`;
 			}
-	
-			// Create table input block. 
-			function createTableInputBlockLayout(columnindex) {
-	
-				// Check if block is centered. 
-				let centerblock = tablecolumnlist[columnindex]['columncenter'];
 		
-				// Compile table data block. 
-				return `
-				<!-- data -->
-				<td class="data a${ centerblock ? ' c' : '' }">
-	
-					<!-- btnpanel -->
-					<div class="btnpanel">
-	
-						<!-- newdistancebtn -->
-						<button class="btn newdistancebtn" title="Add new distance for club (${entryid})" onclick="startNewDistanceEntry('${entryid}')">
-	
-							<!-- icon -->
-							<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- icon -->
-							<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- caption -->
-							<!-- <span class="caption">Add</span> -->
-							<!-- /caption -->
-							
-						</button>
-						<!-- /newdistancebtn -->
-						
-					</div>
-					<!-- /btnpanel -->
-	
-				</td>
-				<!-- /data -->`;
-			}
-	
 			// Create layout for table action block. 
-			function createTableActionBlockLayout(columnindex) {
+			function createTableActionBlockLayout( entryid, columnindex) {
 	
-				// Check if block is centered. 
-				let centerblock = tablecolumnlist[columnindex]['columncenter'];
+				// TODO: Check if block is centered. 
+				let centerblock = true || tablecolumnslist[columnindex]['columncenter'];
 	
 				// Compile table action block. 
 				return `

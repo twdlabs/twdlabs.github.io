@@ -77,8 +77,8 @@ div#container section div.grid div.head {display:flex; flex-direction:row; align
 div#container section div.grid div.head h2.header {/* cursor:pointer; */ user-select:none; padding:0 .25em; margin:0; margin:.125em 0;}
 div#container section div.grid div.head h2.header:empty {background-color:var(--lightgrey); height:1em; width:5em; border-radius:1em;}
 div#container section div.grid div.head h2.header.username {display:flex; flex-direction:row; align-items:center;}
-div#container section div.grid div.head h2.header.username {background-color:aliceblue; cursor:pointer; padding:.25em; padding-right:.625em; border-radius:1em;}
-div#container section div.grid div.head h2.header.tabletitle {margin-right:1em;}
+div#container section div.grid div.head h2.header.username {background-color:aliceblue; cursor:pointer; padding:.25em; padding-right:.625em; border-radius:1em; margin-left:1rem;}
+div#container section div.grid div.head h2.header.tabletitle {margin-right:1rem;}
 div#container section div.grid div.head h2.header.username::before {background-color:gainsboro; content:''; display:inline-block; height:1.5em; width:1.5em; border-radius:50%; margin-right:.375em;}
 div#container section div.grid div.head div.btnpanel {margin-top:.375rem;}
 /* div#container section div.grid div.head div.btnpanel button.btn {} */

@@ -41,6 +41,8 @@ function startDeleteEntry(givenentryid) {
 		// Proceed if deletion confirmed. 
 		if(deleteconfirmed) {
 
+			// TODO: Delete associated entries in other tables. 
+
 			// Get deleted table entry (before its deleted). 
 			let deletedentry = tableentrieslist[index];
 			console.log(`Deleting table entry (i:${index})`,deletedentry);
@@ -53,7 +55,7 @@ function startDeleteEntry(givenentryid) {
 		}
 
 		// Note if deletion not confirmed. 
-		console.log('Table unchanged (deletion cancelled)',index);
+		else console.log('Table unchanged (deletion cancelled)',index);
 
 		/***/
 

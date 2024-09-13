@@ -21,39 +21,47 @@ let databasetables = {
 			{
 				columnheader:'ID',
 				columncenter:true,
+				columnoptional:true,
 			},
 			{
 				columnheader:'Golf Club',
 				columncenter:false,
+				columnoptional:false,
 			},
 			{
 				columnheader:'Minimum Distance',
 				columnheader:'Min',
 				columncenter:true,
+				columnoptional:false,
 			},
 			{
 				columnheader:'Average Distance',
 				columnheader:'Avg',
 				columncenter:true,
+				columnoptional:false,
 			},
 			{
 				columnheader:'Maximum Distance',
 				columnheader:'Max',
 				columncenter:true,
+				columnoptional:false,
 			},
 			{
 				columnheader:'Num Distances',
 				columnheader:'Num',
 				columncenter:true,
+				columnoptional:true,
 			},
 			{
 				columnheader:'New Distance',
 				columnheader:'New',
 				columncenter:true,
+				columnoptional:true,
 			},
 			{
 				columnheader:'Action',
 				columncenter:true,
+				columnoptional:false,
 			},
 		],
 		// Define attribute fields (by column). 
@@ -323,14 +331,17 @@ let databasetables = {
 			{
 				columnheader:'ID',
 				columncenter:true,
+				columnoptional:true,
 			},
 			{
 				columnheader:'Hole Name',
 				columncenter:false,
+				columnoptional:false,
 			},
 			{
 				columnheader:'Action',
 				columncenter:true,
+				columnoptional:false,
 			},
 		],
 		// Define attribute fields (by column). 
@@ -400,22 +411,27 @@ let databasetables = {
 			{
 				columnheader:'ID',
 				columncenter:true,
+				columnoptional:true,
 			},
 			{
-				columnheader:'Club Name',
+				columnheader:'Club',
 				columncenter:false,
+				columnoptional:false,
 			},
 			{
-				columnheader:'Hole Name',
+				columnheader:'Hole',
 				columncenter:false,
+				columnoptional:false,
 			},
 			{
 				columnheader:'Distance',
 				columncenter:true,
+				columnoptional:false,
 			},
 			{
 				columnheader:'Action',
 				columncenter:true,
+				columnoptional:false,
 			},
 		],
 		// Define attribute fields (by column). 
@@ -427,9 +443,9 @@ let databasetables = {
 			// 	fielddefaultvalue:0,
 			// },
 			{
-				fieldid:'distance',
+				fieldid:'clubid',
 				fieldtype:'number',
-				fieldcaption:'Distance',
+				fieldcaption:'Club ID',
 				fielddefaultvalue:0,
 			},
 			{
@@ -439,15 +455,28 @@ let databasetables = {
 				fielddefaultvalue:0,
 			},
 			{
-				fieldid:'clubid',
+				fieldid:'distance',
 				fieldtype:'number',
-				fieldcaption:'Club ID',
+				fieldcaption:'Distance',
 				fielddefaultvalue:0,
 			},
 		],
 	
 		// Define example table entries (by row). 
-		exampleentries:[],
+		exampleentries:[
+			{
+				id:'x',
+				clubid:'drv',
+				holeid:'a',
+				distance:'300',
+			},
+			{
+				id:'y',
+				clubid:'drv',
+				holeid:'a',
+				distance:'250',
+			},
+		],
 		// Define current table state (entries by row). 
 		currententries:[],
 		// Define backward state history for list of table entries. 
