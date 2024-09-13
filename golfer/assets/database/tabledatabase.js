@@ -32,19 +32,19 @@ let databasetables = {
 				columnheader:'Minimum Distance',
 				columnheader:'Min',
 				columncenter:true,
-				columnoptional:false,
+				columnoptional:true,
 			},
 			{
 				columnheader:'Average Distance',
 				columnheader:'Avg',
 				columncenter:true,
-				columnoptional:false,
+				columnoptional:true,
 			},
 			{
 				columnheader:'Maximum Distance',
 				columnheader:'Max',
 				columncenter:true,
-				columnoptional:false,
+				columnoptional:true,
 			},
 			{
 				columnheader:'Num Distances',

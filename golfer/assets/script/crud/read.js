@@ -41,7 +41,7 @@ function displayTable() {
 			// Compile layout for single table header. 
 			tableheadersresult += `
 			<!-- head -->
-			<th class="head${ column.columncenter ? ' c' : '' }">
+			<th class="head${ column.columncenter ? ' c' : '' }${ column.columnoptional ? ' o' : '' }">
 	
 				<!-- caption -->
 				<span class="caption">${column.columnheader}</span>
@@ -206,11 +206,13 @@ function displayTable() {
 		
 					// Check if block is centered. 
 					let centerblock = tablecolumnslist[columnindex]['columncenter'];
+					// Check if block is optional. 
+					let optionalblock = tablecolumnslist[columnindex]['columnoptional'];
 			
 					// Compile table data block. 
 					return `
 					<!-- data -->
-					<td class="data a${ centerblock ? ' c' : '' }">
+					<td class="data a${ centerblock ? ' c' : '' }${ optionalblock ? ' o' : '' }">
 		
 						<!-- btnpanel -->
 						<div class="btnpanel">
@@ -298,16 +300,17 @@ function displayTable() {
 		
 			// Create layout for given table block. 
 			function createTableBlockLayout(caption,columnindex) {
-				console.log('Creating table block layout...',columnindex);
-				
+				// console.log('Creating table block layout...',columnindex);
 	
 				// Check if block is centered. 
 				let centerblock = tablecolumnslist[columnindex]['columncenter'];
+				// Check if block is optional. 
+				let optionalblock = tablecolumnslist[columnindex]['columnoptional'];
 		
 				// Compile table data block. 
 				return `
 				<!-- data -->
-				<td class="data${ centerblock ? ' c' : '' }">
+				<td class="data${ centerblock ? ' c' : '' }${ optionalblock ? ' o' : '' }">
 		
 					<!-- caption -->
 					<span class="caption">${caption}</span>
@@ -322,11 +325,13 @@ function displayTable() {
 	
 				// TODO: Check if block is centered. 
 				let centerblock = true || tablecolumnslist[columnindex]['columncenter'];
+				// Check if block is optional. 
+				let optionalblock = tablecolumnslist[columnindex]['columnoptional'];
 	
 				// Compile table action block. 
 				return `
 				<!-- data -->
-				<td class="data a${ centerblock ? ' c' : '' }">
+				<td class="data a${ centerblock ? ' c' : '' }${ optionalblock ? ' o' : '' }">
 	
 					<!-- btnpanel -->
 					<div class="btnpanel">
