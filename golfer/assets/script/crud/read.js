@@ -250,7 +250,7 @@ function displayTable() {
 			// TODO: Create table row layout for given hole entry. 
 			function createHoleEntryRowLayout(holeentry) {
 		
-				// Get details of given club entry. 
+				// Get details of given hole entry. 
 				let holename = holeentry['holename'] ? holeentry['holename'] : '--';
 		
 				// Initialize layout for table row. 
@@ -270,14 +270,20 @@ function displayTable() {
 			// TODO: Create table row layout for given distance entry. 
 			function createDistanceEntryRowLayout(shotentry) {
 		
-				// Get details of given club entry. 
+				// Get details of given distance entry. 
+				let distance = shotentry['distance'];
 				let clubid = shotentry['clubid'];
 				let holeid = shotentry['holeid'];
-				let distance = shotentry['distance'];
+				let clubentry = getClubEntryById(clubid);
+				let holeentry = getHoleEntryById(holeid);
+				console.log('Associated club entry:',clubid,clubentry);
+				console.log('Associated hole entry:',holeid,holeentry);
 				
 				// Get details of given club entry. 
-				let clubname = clubid ? getClubEntryById(clubid)['clubname'] : '--';
-				let holename = holeid ? getHoleEntryById(holeid)['holename'] : '--';
+				let clubname = clubentry ? clubentry['clubname'] : '--';
+				console.log('Club name:',clubname);
+				let holename = holeentry ? holeentry['holename'] : '--';
+				console.log('Hole name:',holename);
 		
 				// Initialize layout for table row. 
 				let tablerowlayout = '';
@@ -285,9 +291,9 @@ function displayTable() {
 				// Add layout for id of given distance entry. 
 				tablerowlayout += createTableBlockLayout( entryid, 0);
 				 // Add layout for club name for given distance entry. 
-				tablerowlayout += createTableBlockLayout( clubname , 1);
+				tablerowlayout += createTableBlockLayout( clubentry?`${clubname} (${clubid})`:clubname , 1);
 				 // Add layout for hole name for given distance entry. 
-				tablerowlayout += createTableBlockLayout( holename , 2);
+				tablerowlayout += createTableBlockLayout( holeentry?`${holename} (${holeid})`:holename , 2);
 				 // Add layout for distance of given distance entry. 
 				tablerowlayout += createTableBlockLayout( distance , 3);
 	

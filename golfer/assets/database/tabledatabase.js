@@ -65,7 +65,7 @@ let databasetables = {
 			},
 		],
 		// Define attribute fields (by column). 
-		tableentryfields:[
+		tablefields:[
 			// {
 			// 	fieldid:'id',
 			// 	fieldtype:'number',
@@ -345,7 +345,7 @@ let databasetables = {
 			},
 		],
 		// Define attribute fields (by column). 
-		tableentryfields:[
+		tablefields:[
 			// {
 			// 	fieldid:'id',
 			// 	fieldtype:'number',
@@ -400,11 +400,11 @@ let databasetables = {
 		// Define table titles. 
 		titles:{
 			// Define title of viewer table. 
-			viewertitle:'Golf Distances',
+			viewertitle:'Golf Shot Distances',
 			// Define title of create editor. 
-			editortitlec:'New Golf Distance',
+			editortitlec:'New Golf Shot',
 			// Define title of update editor. 
-			editortitleu:'Edit Golf Distance',
+			editortitleu:'Edit Golf Shot',
 		},
 		// Define column headers (by column). 
 		tablecolumns:[
@@ -435,7 +435,7 @@ let databasetables = {
 			},
 		],
 		// Define attribute fields (by column). 
-		tableentryfields:[
+		tablefields:[
 			// {
 			// 	fieldid:'id',
 			// 	fieldtype:'number',
@@ -444,15 +444,15 @@ let databasetables = {
 			// },
 			{
 				fieldid:'clubid',
-				fieldtype:'number',
-				fieldcaption:'Club ID',
-				fielddefaultvalue:0,
+				fieldtype:'select',
+				fieldcaption:'Club',
+				fielddefaultvalue:'',
 			},
 			{
 				fieldid:'holeid',
-				fieldtype:'number',
-				fieldcaption:'Hole ID',
-				fielddefaultvalue:0,
+				fieldtype:'select',
+				fieldcaption:'Hole',
+				fielddefaultvalue:'',
 			},
 			{
 				fieldid:'distance',

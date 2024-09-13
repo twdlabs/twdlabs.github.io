@@ -150,7 +150,7 @@ div#container section div.grid div.btnpanel button.btn span.caption {font-size:.
 
 	/* Navbar */
 	/* div#container nav.navbar {} */
-	div#container nav.navbar div.bin {flex-direction:column;}
+	div#container nav.navbar div.bin {flex-direction:column; grid-gap:.25rem;}
 	/* div#container nav.navbar div.bin ul.navlist {display:none;} */
 
 	/* General Section */

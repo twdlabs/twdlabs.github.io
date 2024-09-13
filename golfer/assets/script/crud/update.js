@@ -12,7 +12,7 @@ function saveUpdatedEntry() {
 	}
 
 	// Go thru each field. 
-	for(let currentfield of selectedtable['tableentryfields']) {
+	for(let currentfield of selectedtable['tablefields']) {
 
 		// Get id of current field. 
 		let fieldid = currentfield.fieldid;

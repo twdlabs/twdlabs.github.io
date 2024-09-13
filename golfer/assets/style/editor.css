@@ -20,8 +20,11 @@ div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname {font-weight:bold; text-align:center; margin:0 .5em; margin-bottom:.25em;}
 div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname {text-align:left; margin-bottom:0;}
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield label.fieldname:empty {background-color:var(--forecolor2); height:1em; width:5em; border-radius:1em; margin-bottom:.375em;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield select.fieldvalue,
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {background-color:transparent; font-size:1em; text-align:center;}
+div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield select.fieldvalue,
 div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {padding:.375rem .75rem; border:0 none; border:1px solid var(--forecolor2); outline:none; border-radius:.25rem;}
+div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield select.fieldvalue,
 div#container section.editor.g2 div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue {font-size:.875rem; max-width:9rem; /* text-align:left; */}
 /* div#container section.editor div.grid form.body ul.fieldlist li.fielditem div.entryfield input.fieldvalue#newdistance {background-color:transparent; width:4rem; padding:.25rem .5rem; border:1px solid var(--backcolor);} */
 

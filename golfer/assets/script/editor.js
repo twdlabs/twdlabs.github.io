@@ -40,18 +40,18 @@ function displayEntryEditor() {
 	let editorfieldsdestination = document.querySelector('div#container section.editor div.grid form.body ul.fieldlist');
 
 	// Compile layout for list of fields. 
-	let fieldslistlayout = createFieldsListLayout( selectedtable['tableentryfields'], editingexistingentry );
+	let fieldslistlayout = createFieldsListLayout( selectedtable['tablefields'] );
 
 	// Display list of fields in editor form. 
 	editorfieldsdestination.innerHTML = fieldslistlayout;
 
 	// Fill in current field values for selected entry. 
-	if(editingexistingentry) fillFieldValues();
+	if(editingexistingentry) fillEntryValues();
 
 	/****/
 
 	// Compile layout for given list of fields. 
-	function createFieldsListLayout(fieldslist,editingexistingentry) {
+	function createFieldsListLayout(fieldslist) {
 	
 		// Initialize layout for list of fields. 
 		let fieldslistresult = '';
@@ -59,18 +59,20 @@ function displayEntryEditor() {
 		// Go thru each field in given list. 
 		for(let currentfield of fieldslist) {
 			
-			// Get field id. 
-			let id = `${ editingexistingentry ? '' : 'new' }${ currentfield['fieldid'] }`;
+			// Get field ids. 
+			let fieldid = currentfield['fieldid'];
+			let inputid = `${ editingexistingentry ? '' : 'new' }${fieldid}`;
 			// Get field type. 
 			let type = currentfield['fieldtype'];
 			// Get field caption. 
 			let caption = currentfield['fieldcaption'];
-			// Get field value. 
+			// Check for default field value. 
 			let hasdefaultvalue = currentfield['fielddefaultvalue'] != undefined;
-			let fieldvalue = hasdefaultvalue ? currentfield['fielddefaultvalue'] : '';
-			// Create field input placeholder. 
-			let placeholder = checkFieldValue(fieldvalue) ? fieldvalue : '';
-			
+			// Get default field value. 
+			let defaultfieldvalue = hasdefaultvalue ? currentfield['fielddefaultvalue'] : '';
+			// Get field input placeholder. 
+			let ph = checkFieldValue(defaultfieldvalue) ? defaultfieldvalue : '';
+
 			// Compile layout for current field. 
 			fieldslistresult += `
 			<!-- fielditem -->
@@ -80,13 +82,11 @@ function displayEntryEditor() {
 				<div class="entryfield">
 	
 					<!-- fieldname -->
-					<label class="fieldname" for="${id}">${caption}</label>
+					<label class="fieldname" for="${inputid}">${caption}</label>
 					<!-- /fieldname -->
-	
-					<!-- fieldvalue -->
-					<input class="fieldvalue" type="${type}" id="${id}" name="${id}" placeholder="${placeholder}" value="${fieldvalue}">
-					<!-- /fieldvalue -->
-	
+
+					${ type=='select' ? createDropdownInput(inputid) : createSimpleInput(type,inputid,ph) }
+
 				</div>
 				<!-- /entryfield -->
 				
@@ -96,10 +96,58 @@ function displayEntryEditor() {
 	
 		// Return layout for list of fields. 
 		return fieldslistresult;
+
+		/***/
+
+		// Create dropdown input. 
+		function createDropdownInput(inpid) {
+
+			// Define table to select options from. 
+			let giventableid = 'clubs';
+			let entrynamekey = 'clubname';
+
+			// Compile dropdown input. 
+			return `
+			<!-- fieldvalue -->
+			<select class="fieldvalue" id="${inpid}" name="${inpid}">${ createSelectOptions(giventableid,entrynamekey) }</select>
+			<!-- /fieldvalue -->`;
+
+			/**/
+
+			// Create list of options for select menu. 
+			function createSelectOptions(tableid,namekey) {
+
+				// Initialize layout of select options. 
+				let optionslayout = '';
+
+				// Get table (using given id). 
+				let giventable = getTableById(tableid);
+
+				// Go thru each entry in given table. 
+				for(entry of giventable['currententries']) {
+
+					// Add to layout of select options. 
+					optionslayout += `<option value="${ entry['id'] }">${ entry[namekey] }</option>`;
+				}
+
+				// Initialize layout of select options. 
+				return optionslayout;
+			}
+		}
+
+		// Create simple input. 
+		function createSimpleInput(type,id,ph) {
+
+			// Compile simple input. 
+			return `
+			<!-- fieldvalue -->
+			<input class="fieldvalue" type="${type}" id="${id}" name="${id}" placeholder="${ph}">
+			<!-- /fieldvalue -->`;
+		}
 	}
 
 	// Fill in current field values for selected entry. 
-	function fillFieldValues() {
+	function fillEntryValues() {
 		
 		// Ensure valid table entry selected before proceeding. 
 		if(!selectedtableentry) {
@@ -108,10 +156,11 @@ function displayEntryEditor() {
 		}
 
 		// Go thru each field in selected table entry. 
-		for(let currentfield of selectedtable['tableentryfields']) {
+		for(let currentfield of selectedtable['tablefields']) {
 	
 			// Get field value. 
-			let fieldvalue = selectedtableentry[currentfield.fieldid]
+			let fieldid = currentfield.fieldid;
+			let fieldvalue = selectedtableentry[fieldid];
 			console.log('Field value:',fieldvalue);
 	
 			// Get input field. 

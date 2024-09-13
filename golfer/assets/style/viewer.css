@@ -3,7 +3,7 @@
 
 /* Viewer Section */
 /* div#container section.viewer {} */
-div#container section.viewer {/* width:calc(100vw - 2rem); */ /* max-width:var(--pagewidth); */}
+div#container section.viewer {overflow:auto; max-width:calc(100vw - 2rem); /* max-width:var(--pagewidth); */}
 /* div#container section.viewer div.grid {} */
 
 
@@ -16,6 +16,7 @@ div#container section.viewer div.grid div.head div.btnpanel {order:0; grid-colum
 div#container section.viewer div.grid div.head h2.header.username {order:2;}
 div#container section.viewer div.grid div.head h2.header.tabletitle {order:1;}
 /* div#container section.viewer div.grid div.head div.btnpanel {} */
+div#container section.viewer div.grid div.head div.btnpanel br {display:none;}
 div#container section.viewer div.grid div.head div.btnpanel button.btn {margin-bottom:.375rem;}
 /* div#container section.viewer div.grid div.head div.btnpanel button.undobtn {} */
 /* div#container section.viewer div.grid div.head div.btnpanel button.redobtn {} */
@@ -89,13 +90,15 @@ div#container section.viewer div.grid div.foot {padding:0 .125em;}
 
 	/* Viewer Section Head */
 	/* div#container section.viewer div.grid div.head {} */
+	/* div#container section.viewer div.grid div.head div.btnpanel {} */
+	div#container section.viewer div.grid div.head div.btnpanel br {display:block;}
 	
 	/* Viewer Section Body */
 	/* div#container section.viewer div.grid table.table {} */
 	/* div#container section.viewer div.grid table.table thead.head {} */
-	div#container section.viewer div.grid table.table thead.head th.head.o {display:none;}
 	/* div#container section.viewer div.grid table.table tbody.body {} */
 	/* div#container section.viewer div.grid table.table tbody.body tr.row td.data {} */
+	div#container section.viewer div.grid table.table thead.head th.head.o,
 	div#container section.viewer div.grid table.table tbody.body tr.row td.data.o {display:none;}
 	/* div#container section.viewer div.grid table.table tbody.body tr.row td.data.a {} */
 	/* div#container section.viewer div.grid table.table tbody.body tr.row td.data.a div.btnpanel {} */
