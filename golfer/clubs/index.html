@@ -132,7 +132,7 @@
 						<div class="btnpanel">
 
 							<!-- undobtn -->
-							<button class="undobtn btn" title="Undo last modification of table" onclick="undoAction()">
+							<button class="undobtn btn" title="Undo last modification of table" onclick="undoAction()" disabled>
 	
 								<!-- icon -->
 								<svg class="icon arrowcounterclockwise" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -149,7 +149,7 @@
 							<!-- /undobtn -->
 
 							<!-- redobtn -->
-							<button class="redobtn btn" title="Redo last modification of table" onclick="redoAction()">
+							<button class="redobtn btn" title="Redo last modification of table" onclick="redoAction()" disabled>
 	
 								<!-- icon -->
 								<svg class="icon arrowclockwise" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -358,7 +358,7 @@
 										<div class="btnpanel">
 	
 											<!-- newdistancebtn -->
-											<button class="btn newdistancebtn" title="Add new distance for club (entryid)" onclick="startNewClubDistance(entryid)">
+											<button class="btn newdistancebtn" title="Add new distance for club (entryid)" onclick="startNewDistanceEntry(entryid)">
 			
 												<!-- icon -->
 												<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -502,7 +502,8 @@
 		<!-- Table Memory -->
 		<script src="../assets/script/urlparams.js" type="text/javascript"></script>
 		<script src="../assets/database/tabledatabase.js" type="text/javascript"></script>
-		<script src="../assets/database/localmemory.js" type="text/javascript"></script>
+		<script src="../assets/database/tablehistory.js" type="text/javascript"></script>
+		<script src="../assets/database/tablememory.js" type="text/javascript"></script>
 
 		<!-- User Script -->
 		<script src="../assets/script/user.js" type="text/javascript"></script>
@@ -518,13 +519,6 @@
 		<script src="../assets/script/crud/read.js" type="text/javascript"></script>
 		<!-- <script src="../assets/script/crud/update.js" type="text/javascript"></script> -->
 		<script src="../assets/script/crud/delete.js" type="text/javascript"></script>
-
-		<!-- Run Script -->
-		<script type="text/javascript">
-
-			// Display clubs table. 
-			if(loadItUp) displayTable();
-		</script>
 
 	</body>
 
