@@ -37,6 +37,4 @@ function saveUpdatedEntry() {
 
 	// Save table changes. 
 	saveTableChanges();
-	// Close table entry editor. 
-	closeEntryEditor();
 }

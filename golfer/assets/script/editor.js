@@ -12,6 +12,9 @@ restoreTableFromMemory();
 let selectedtableentry = getTableEntryById(selectedtableid,selectedentryid);
 console.log('Selected table entry:',selectedtableentry);
 
+// Display fields for editing table entry. 
+if(loadItUp) displayEntryEditor();
+
 
 /*****/
 
@@ -115,10 +118,4 @@ function displayEntryEditor() {
 			// console.log('input field value:',fieldvalue,inputfield);
 		}
 	}
-}
-
-// TODO: Display fields for editing table entry. 
-function displayDistanceEditor() {
-
-	// 
 }

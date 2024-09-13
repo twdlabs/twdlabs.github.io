@@ -11,6 +11,13 @@ const tableheadersdestination = document.querySelector('div#container section.vi
 /*****/
 
 
+// Display table. 
+if(loadItUp) displayTable();
+
+
+/*****/
+
+
 // Display layout for given database table. 
 function displayTable() {
 
@@ -19,6 +26,9 @@ function displayTable() {
 	
 	// Display body of current table. 
 	displayTableBody();
+
+	// Update table history navigation buttons. 
+	updateHistoryBtns();
 
 	/****/
 
@@ -222,7 +232,7 @@ function displayTableBody() {
 				<div class="btnpanel">
 
 					<!-- newdistancebtn -->
-					<button class="btn newdistancebtn" title="Add new distance for club (${entryid})" onclick="startNewClubDistance('${entryid}')">
+					<button class="btn newdistancebtn" title="Add new distance for club (${entryid})" onclick="startNewDistanceEntry('${entryid}')">
 
 						<!-- icon -->
 						<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

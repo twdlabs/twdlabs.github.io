@@ -4,7 +4,7 @@
 // Define database tables. 
 let databasetables = {
 
-	// Define data for clubs table. 
+	// Define data for golf clubs table. 
 	clubs: {
 
 		// Define table titles. 
@@ -16,7 +16,7 @@ let databasetables = {
 			// Define title of update editor. 
 			editortitleexisting:'Edit Golf Club',
 		},
-		// Define column headers (each column). 
+		// Define column headers (by column). 
 		tablecolumns:[
 			{
 				columnheader:'ID',
@@ -56,11 +56,10 @@ let databasetables = {
 				columncenter:true,
 			},
 		],
-		// Define attribute fields (each column). 
+		// Define attribute fields (by column). 
 		tableentryfields:[
 			// {
 			// 	fieldid:'id',
-			// 	fieldtype:'text',
 			// 	fieldtype:'number',
 			// 	fieldcaption:'ID',
 			// 	fielddefaultvalue:0,
@@ -111,17 +110,9 @@ let databasetables = {
 				fieldcaption:'Num Shots',
 				fielddefaultvalue:0,
 			},
-			// {
-			// 	fieldid:'xyz',
-			// 	fieldtype:'number',
-			// 	fieldcaption:'xyz',
-			// 	fielddefaultvalue:'',
-			// 	columnheader:'xyz',
-			// 	columncenter:false,
-			// },
 		],
 	
-		// Define example table entries (each row). 
+		// Define example table entries (by row). 
 		exampleentries:[
 			{
 				id:'drv',
@@ -304,22 +295,18 @@ let databasetables = {
 			// 	maxdistance:0,
 			// },
 		],
-		// Define current table entries (each row). 
+		// Define current table state (entries by row). 
 		currententries:[],
-		// Define state history of table entries. 
-		entrieshistory:[
-			// [],
-			// [],
-			// [],
-		],
-		// Define index for current table state. 
-		currenthistoryindex:-1,
+		// Define backward state history for list of table entries. 
+		bcktablestack:[],
+		// Define forward state history for list of table entries. 
+		fwdtablestack:[],
 
 		// Define row layout creator. 
 		// rowlayer:createClubEntryRowLayout,
 	},
 
-	// Define data for holes table. 
+	// Define data for golf holes table. 
 	holes: {
 
 		// Define table titles. 
@@ -331,59 +318,78 @@ let databasetables = {
 			// Define title of update editor. 
 			editortitleexisting:'Edit Golf Hole',
 		},
-		// Define column headers (each column). 
+		// Define column headers (by column). 
 		tablecolumns:[
 			{
 				columnheader:'ID',
 				columncenter:true,
 			},
 			{
+				columnheader:'Hole Name',
+				columncenter:false,
+			},
+			{
 				columnheader:'Action',
 				columncenter:true,
 			},
 		],
-		// Define attribute fields (each column). 
+		// Define attribute fields (by column). 
 		tableentryfields:[
+			// {
+			// 	fieldid:'id',
+			// 	fieldtype:'number',
+			// 	fieldcaption:'ID',
+			// 	fielddefaultvalue:0,
+			// },
 			{
 				fieldid:'holename',
 				fieldtype:'text',
 				fieldcaption:'Hole Name',
+				fielddefaultvalue:'',
 			},
 		],
 	
-		// Define example table entries (each row). 
+		// Define example table entries (by row). 
 		exampleentries:[],
-		// Define current table entries (each row). 
+		// Define current table state (entries by row). 
 		currententries:[],
-		// Define state history of table entries. 
-		entrieshistory:[
-			// [],
-			// [],
-			// [],
-		],
-		// Define index for current table state. 
-		currenthistoryindex:-1,
+		// Define backward state history for list of table entries. 
+		bcktablestack:[],
+		// Define forward state history for list of table entries. 
+		fwdtablestack:[],
 
 		// Define row layout creator. 
 		// rowlayer:createHoleEntryRowLayout,
 	},
 
-	// Define data for shots table. 
+	// Define data for golf shots table. 
 	shots: {
 
 		// Define table titles. 
 		titles:{
 			// Define title of viewer table. 
-			viewertitle:'Golf Shots',
+			viewertitle:'Golf Distances',
 			// Define title of create editor. 
-			editortitlenew:'New Golf Shots',
+			editortitlenew:'New Golf Distance',
 			// Define title of update editor. 
-			editortitleexisting:'Edit Golf Shots',
+			editortitleexisting:'Edit Golf Distance',
 		},
-		// Define column headers (each column). 
+		// Define column headers (by column). 
 		tablecolumns:[
 			{
 				columnheader:'ID',
+				columncenter:true,
+			},
+			{
+				columnheader:'Club Name',
+				columncenter:false,
+			},
+			{
+				columnheader:'Hole Name',
+				columncenter:false,
+			},
+			{
+				columnheader:'Distance',
 				columncenter:true,
 			},
 			{
@@ -391,42 +397,42 @@ let databasetables = {
 				columncenter:true,
 			},
 		],
-		// Define attribute fields (each column). 
+		// Define attribute fields (by column). 
 		tableentryfields:[
+			// {
+			// 	fieldid:'id',
+			// 	fieldtype:'number',
+			// 	fieldcaption:'ID',
+			// 	fielddefaultvalue:0,
+			// },
 			{
-				fieldid:'shotname',
-				fieldtype:'text',
-				fieldcaption:'Shot Name',
-			},
-			{
-				fieldid:'shotdistance',
-				fieldtype:'text',
-				fieldcaption:'Shot Distance',
+				fieldid:'distance',
+				fieldtype:'number',
+				fieldcaption:'Distance',
+				fielddefaultvalue:0,
 			},
 			{
 				fieldid:'holeid',
-				fieldtype:'text',
+				fieldtype:'number',
 				fieldcaption:'Hole ID',
+				fielddefaultvalue:0,
 			},
 			{
 				fieldid:'clubid',
-				fieldtype:'text',
+				fieldtype:'number',
 				fieldcaption:'Club ID',
+				fielddefaultvalue:0,
 			},
 		],
 	
-		// Define example table entries (each row). 
+		// Define example table entries (by row). 
 		exampleentries:[],
-		// Define current table entries (each row). 
+		// Define current table state (entries by row). 
 		currententries:[],
-		// Define state history of table entries. 
-		entrieshistory:[
-			// [],
-			// [],
-			// [],
-		],
-		// Define index for current table state. 
-		currenthistoryindex:-1,
+		// Define backward state history for list of table entries. 
+		bcktablestack:[],
+		// Define forward state history for list of table entries. 
+		fwdtablestack:[],
 
 		// Define row layout creator. 
 		// rowlayer:createShotEntryRowLayout,
@@ -436,21 +442,6 @@ let databasetables = {
 
 /*****/
 
-
-// Find club entry by id. 
-function getClubEntryById(givenentryid) {
-	return getTableEntryById('clubs',givenentryid);
-}
-
-// Find hole entry by id. 
-function getHoleEntryById(givenentryid) {
-	return getTableEntryById('holes',givenentryid);
-}
-
-// Find shot entry by id. 
-function getShotEntryById(givenentryid) {
-	return getTableEntryById('shots',givenentryid);
-}
 
 // Find table entry by table id and entry id. 
 function getTableById(giventableid) {
@@ -481,4 +472,19 @@ function getTableEntryById(giventableid,givenentryid) {
 
 	// Return nothing if no match found. 
 	return null;
+}
+
+// Find club entry by id. 
+function getClubEntryById(givenentryid) {
+	return getTableEntryById('clubs',givenentryid);
+}
+
+// Find hole entry by id. 
+function getHoleEntryById(givenentryid) {
+	return getTableEntryById('holes',givenentryid);
+}
+
+// Find shot entry by id. 
+function getShotEntryById(givenentryid) {
+	return getTableEntryById('shots',givenentryid);
 }

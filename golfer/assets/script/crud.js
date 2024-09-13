@@ -12,7 +12,7 @@ const tabletitledestination = document.querySelector('div#container section div.
 
 
 // Display title of current table. 
-if(typeof manualtitle=='undefined') displayTableTitle();
+displayTableTitle();
 
 
 /*****/
@@ -59,14 +59,21 @@ function displayTableTitle() {
 	tabletitledestination.innerHTML = selectedtitle;
 }
 
-/*****/
-
 // Start creating new entry. 
 function startNewEntry() {
 
 	// Go directly to editor page for new entry. 
 	// window.location.href = `../add/?tid=${displaytableid}`;
 	window.location.href = `../editor/?tid=${displaytableid}`;
+}
+// Start creating new distance entry. 
+function startNewDistanceEntry(givenclubid) {
+
+	// Define id of destination table. 
+	let destinationtableid = 'shots';
+
+	// Go directly to editor page for new club distances. 
+	window.location.href = `../editor/?tid=${destinationtableid}&cid=${givenclubid}`;
 }
 
 // Start editing existing entry. 
@@ -80,21 +87,54 @@ function startEditEntry(givenentryid) {
 // Close table entry editor. 
 function closeEntryEditor() {
 
-	// Go directly to previous page (table viewer). 
+	// Go directly to table viewer page. 
 	if(selectedtableid) window.location.href = `../${selectedtableid}`;
 	else console.warn('No table id provided...',selectedtableid);
 }
 
-// Start entering new club distance. 
-function startNewClubDistance(givenentryid) {
+// Save table changes. 
+function saveTableChanges() {
 
-	// Go directly to editor page for new club distances. 
-	window.location.href = `./newdistance/?tid=${displaytableid}&eid=${givenentryid}`;
+	// Update table history. 
+	updateTableHistory();
+
+	// Save new current table in memory (replacing old current table). 
+	saveTableToMemory();
+
+	// Go to updated table. 
+	goToUpdatedTable();
+
+	/****/
+
+	// Update table history. 
+	function updateTableHistory() {
+
+		// Get old current table. 
+		let oldcurrenttable = JSON.parse( localStorage.getItem(tablememorykey) );
+
+		// Shift old current table backward in history. 
+		selectedtable['bcktablestack'].push(oldcurrenttable);
+
+		// Clear out forward history. 
+		selectedtable['fwdtablestack'] = [];
+	}
 }
 
-// Close entry of new club distance. 
-function closeNewClubDistance() {
+// Go to updated table after operation. 
+function goToUpdatedTable() {
 
-	// Go directly to previous page (table viewer). 
-	window.location.href = '../';
+	// Check if on editor page. 
+	let oneditorpage = (typeof displaytableid == 'undefined');
+	console.log('Editor page?',oneditorpage);
+
+	// Close entry editor (editor page). 
+	if(oneditorpage) closeEntryEditor();
+
+	// Display updated table section (viewer page). 
+	else {
+		// Display updated table. 
+		displayTableBody();
+		// Update table history navigation buttons. 
+		updateHistoryBtns();
+	}
 }

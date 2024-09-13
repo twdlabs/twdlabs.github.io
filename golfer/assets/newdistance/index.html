@@ -23,7 +23,6 @@
 		<script type="text/javascript">
 			let loadItUp = false;
 			loadItUp = true;
-			let manualtitle = true;
 		</script>
 	</head>
 
@@ -173,7 +172,7 @@
 						<div class="btnpanel">
 
 							<!-- savenewbtn -->
-							<button class="btn savebtn savenewbtn" form="entryform0" title="Save new club distance" onclick="saveNewDistance()">
+							<button class="btn savebtn savenewbtn" form="entryform0" title="Save new club distance" onclick="saveNewDistanceEntry()">
 		
 								<!-- icon -->
 								<svg class="icon disk" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -196,7 +195,7 @@
 							<!-- /savenewbtn -->
 	
 							<!-- cancelbtn -->
-							<button class="btn cancelbtn" title="Cancel entry" onclick="closeNewClubDistance()">
+							<button class="btn cancelbtn" title="Cancel entry" onclick="closeDistanceEditor()">
 		
 								<!-- icon -->
 								<svg class="icon cross" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -230,7 +229,8 @@
 		<!-- Table Memory -->
 		<script src="../../assets/script/urlparams.js" type="text/javascript"></script>
 		<script src="../../assets/database/tabledatabase.js" type="text/javascript"></script>
-		<script src="../../assets/database/localmemory.js" type="text/javascript"></script>
+		<script src="../../assets/database/tablehistory.js" type="text/javascript"></script>
+		<script src="../../assets/database/tablememory.js" type="text/javascript"></script>
 
 		<!-- User Script -->
 		<script src="../../assets/script/user.js" type="text/javascript"></script>
@@ -246,13 +246,6 @@
 		<!-- <script src="../../assets/script/crud/read.js" type="text/javascript"></script> -->
 		<!-- <script src="../../assets/script/crud/update.js" type="text/javascript"></script> -->
 		<!-- <script src="../../assets/script/crud/delete.js" type="text/javascript"></script> -->
-
-		<!-- Run Script -->
-		<script type="text/javascript">
-
-			// Display fields for editing table entry. 
-			if(loadItUp) displayDistanceEditor();
-		</script>
 
 	</body>
 

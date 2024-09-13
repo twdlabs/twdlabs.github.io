@@ -26,7 +26,8 @@ function startDeleteEntry(givenentryid) {
 	}
 
 	// Return nothing if no match found. 
-	console.log('No table entry found to delete...',displaytableid,givenentryid);
+	console.log('No table entry found to delete...',selectedtableid,givenentryid);
+	// console.log('No table entry found to delete...',displaytableid,givenentryid);
 	return null;
 
 	/****/
@@ -49,9 +50,6 @@ function startDeleteEntry(givenentryid) {
 
 			// Save table changes. 
 			saveTableChanges();
-
-			// Show updated table. 
-			showUpdatedTable();
 		}
 
 		// Note if deletion not confirmed. 
@@ -64,19 +62,6 @@ function startDeleteEntry(givenentryid) {
 	
 			// Remove item at given index of deletion. 
 			tableentrieslist.splice(indexofdeletion,1);
-		}
-
-		// Show updated table after deletion. 
-		function showUpdatedTable() {
-
-			// Check if on viewer page. 
-			let onviewerpage = (typeof displaytableid != 'undefined');
-			console.log('on viewer page:',onviewerpage);
-
-			// Display updated table (viewer page). 
-			if(onviewerpage) displayTableBody();
-			// Close table entry editor (editor page). 
-			else closeEntryEditor();
 		}
 	}
 }
@@ -124,6 +109,4 @@ function assignToSelectedTable(giventableentrieslist) {
 
 	// Save table changes. 
 	saveTableChanges();
-	// Display updated table. 
-	displayTableBody();
 }
