@@ -127,10 +127,12 @@ function displayTable() {
 				clubs:createClubEntryRowLayout,
 				holes:createHoleEntryRowLayout,
 				shots:createDistanceEntryRowLayout,
-			}
+			};
 	
 			// Select row layer function and return result. 
 			return rowlayer[displaytableid](givenentry);
+	
+			/**/
 	
 			// Create table row layout for given club entry. 
 			function createClubEntryRowLayout(clubentry) {
@@ -151,26 +153,22 @@ function displayTable() {
 				// 	// Get average distance for given club entry. 
 				// 	avgdistance = distancelist.length ? findAverage(distancelist) : 0;
 				// }
-		
-				// Initialize layout for table row. 
-				let tablerowlayout = '';
-				// Add layout for id of given club entry. 
-				tablerowlayout += createTableBlockLayout( entryid, 0);
-				 // Add layout for club name, brand, and loft of given club entry. 
-				tablerowlayout += createTableBlockLayout( `<b>${clubbrand}</b> <i>${clubname}</i> (${clubloftdisplay})` , 1);
-				// Add layout for distance metrics of given club entry. 
-				tablerowlayout += createTableBlockLayout( mindistance, 2);
-				tablerowlayout += createTableBlockLayout( formatNumber(avgdistance), 3);
-				tablerowlayout += createTableBlockLayout( maxdistance, 4);
-				tablerowlayout += createTableBlockLayout( numshots, 5);
-				// Add layout for distance entry field of given club entry. 
-				tablerowlayout += createTableInputBlockLayout(6);
-				// Add action field for given club entry. 
-				tablerowlayout += createTableActionBlockLayout( entryid, 7);
-				// console.log('Club entry table row layout:',tablerowlayout);
-		
-				// Return layout for table row. 
-				return tablerowlayout;
+
+				// Define row template for distance entry. 
+				let rowtemplate = [
+					// Add layout for id of given club entry. 
+					entryid,
+					// Add layout for club name, brand, and loft of given club entry. 
+					`<b>${clubbrand}</b> <i>${clubname}</i> (${clubloftdisplay})`,
+					// Add layout for distance metrics of given club entry. 
+					mindistance,
+					formatNumber(avgdistance),
+					maxdistance,
+					numshots,
+				];
+
+				// Create table row layout using row template. 
+				return createRowLayout(rowtemplate,true);
 		
 				/**/
 		
@@ -200,7 +198,117 @@ function displayTable() {
 					// Return sum of numbers. 
 					return (sum / numberlist.length);
 				}
+			}
 		
+			// Create table row layout for given hole entry. 
+			function createHoleEntryRowLayout(holeentry) {
+		
+				// Get details of given hole entry. 
+				let holename = holeentry['holename'] ? holeentry['holename'] : '--';
+
+				// Define row template for distance entry. 
+				let rowtemplate = [
+					// Add layout for id of given hole entry. 
+					entryid,
+					// Add layout for name of given hole entry. 
+					holename,
+				];
+
+				// Create table row layout using row template. 
+				return createRowLayout(rowtemplate);
+			}
+		
+			// Create table row layout for given distance entry. 
+			function createDistanceEntryRowLayout(shotentry) {
+		
+				// Get details of given distance entry. 
+				let distance = shotentry['distance'];
+				let clubid = shotentry['clubid'];
+				let holeid = shotentry['holeid'];
+				let clubentry = getClubEntryById(clubid);
+				let holeentry = getHoleEntryById(holeid);
+				console.log('Associated club entry:',clubid,clubentry);
+				console.log('Associated hole entry:',holeid,holeentry);
+				
+				// Get details of given club entry. 
+				let clubname = clubentry ? clubentry['clubname'] : '--';
+				console.log('Club name:',clubname);
+				let holename = holeentry ? holeentry['holename'] : '--';
+				console.log('Hole name:',holename);
+
+				// Define row template for distance entry. 
+				let rowtemplate = [
+					// Define caption for entry id. 
+					entryid,
+					// Define caption for club name. 
+					clubentry?`${clubname} (${clubid})`:clubname,
+					// Define caption for hole name. 
+					holeentry?`${holename} (${holeid})`:holename,
+					// Define caption for distance. 
+					distance,
+				];
+
+				// Create table row layout using row template. 
+				return createRowLayout(rowtemplate);
+			}
+		
+			// Create table row layout for given row template. 
+			function createRowLayout(rowtemplate,includeshot) {
+
+				// Initialize layout for table row. 
+				let tablerowlayout = '';
+
+				// Go thru each data point in row template. 
+				for(let index in rowtemplate) {
+
+					// Add layout for data point in given entry. 
+					tablerowlayout += createTableBlockLayout( rowtemplate[index] , index);
+				}
+
+				// TODO: Include field for new shot. 
+				if(includeshot) {
+
+					// Add layout for distance entry field of given club entry. 
+					tablerowlayout += createTableInputBlockLayout(rowtemplate.length);
+	
+					// Add action field layout for given entry. 
+					tablerowlayout += createTableActionBlockLayout(entryid,rowtemplate.length+1);
+				}
+
+				// TODO: Disregard field for new shot. 
+				else {
+	
+					// Add action field layout for given entry. 
+					tablerowlayout += createTableActionBlockLayout(entryid,rowtemplate.length);
+				}
+
+				// Return layout for table row. 
+				return tablerowlayout;
+
+				/**/
+
+				// Create layout for given table block. 
+				function createTableBlockLayout(caption,columnindex) {
+					// console.log('Creating table block layout...',columnindex);
+		
+					// Check if block is centered. 
+					let centerblock = tablecolumnslist[columnindex]['columncenter'];
+					// Check if block is optional. 
+					let optionalblock = tablecolumnslist[columnindex]['columnoptional'];
+			
+					// Compile table data block. 
+					return `
+					<!-- data -->
+					<td class="data${ centerblock ? ' c' : '' }${ optionalblock ? ' o' : '' }">
+			
+						<!-- caption -->
+						<span class="caption">${caption}</span>
+						<!-- /caption -->
+			
+					</td>
+					<!-- /data -->`;
+				}
+			
 				// Create table input block. 
 				function createTableInputBlockLayout(columnindex) {
 		
@@ -245,159 +353,80 @@ function displayTable() {
 					</td>
 					<!-- /data -->`;
 				}
-			}
+			
+				// Create layout for table action block. 
+				function createTableActionBlockLayout(entryid,columnindex) {
 		
-			// TODO: Create table row layout for given hole entry. 
-			function createHoleEntryRowLayout(holeentry) {
+					// TODO: Check if block is centered. 
+					let centerblock = true || tablecolumnslist[columnindex]['columncenter'];
+					// Check if block is optional. 
+					let optionalblock = tablecolumnslist[columnindex]['columnoptional'];
 		
-				// Get details of given hole entry. 
-				let holename = holeentry['holename'] ? holeentry['holename'] : '--';
+					// Compile table action block. 
+					return `
+					<!-- data -->
+					<td class="data a${ centerblock ? ' c' : '' }${ optionalblock ? ' o' : '' }">
 		
-				// Initialize layout for table row. 
-				let tablerowlayout = '';
-
-				// Add layout for id of given hole entry. 
-				tablerowlayout += createTableBlockLayout( entryid, 0);
-				 // Add layout for name of given hole entry. 
-				tablerowlayout += createTableBlockLayout( holename , 1);
-				// Add action field for given hole entry. 
-				tablerowlayout += createTableActionBlockLayout( entryid, 2);
+						<!-- btnpanel -->
+						<div class="btnpanel">
 		
-				// Return layout for table row. 
-				return tablerowlayout;
-			}
+							<!-- editbtn -->
+							<button class="btn editbtn" title="Edit entry (${entryid})" onclick="startEditEntry('${entryid}')">
 		
-			// TODO: Create table row layout for given distance entry. 
-			function createDistanceEntryRowLayout(shotentry) {
+								<!-- icon -->
+								<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+									<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+								</svg>
+								<!-- /icon -->
 		
-				// Get details of given distance entry. 
-				let distance = shotentry['distance'];
-				let clubid = shotentry['clubid'];
-				let holeid = shotentry['holeid'];
-				let clubentry = getClubEntryById(clubid);
-				let holeentry = getHoleEntryById(holeid);
-				console.log('Associated club entry:',clubid,clubentry);
-				console.log('Associated hole entry:',holeid,holeentry);
-				
-				// Get details of given club entry. 
-				let clubname = clubentry ? clubentry['clubname'] : '--';
-				console.log('Club name:',clubname);
-				let holename = holeentry ? holeentry['holename'] : '--';
-				console.log('Hole name:',holename);
+								<!-- icon -->
+								<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+								</svg>
+								<!-- /icon -->
 		
-				// Initialize layout for table row. 
-				let tablerowlayout = '';
-
-				// Add layout for id of given distance entry. 
-				tablerowlayout += createTableBlockLayout( entryid, 0);
-				 // Add layout for club name for given distance entry. 
-				tablerowlayout += createTableBlockLayout( clubentry?`${clubname} (${clubid})`:clubname , 1);
-				 // Add layout for hole name for given distance entry. 
-				tablerowlayout += createTableBlockLayout( holeentry?`${holename} (${holeid})`:holename , 2);
-				 // Add layout for distance of given distance entry. 
-				tablerowlayout += createTableBlockLayout( distance , 3);
-	
-				// Add action field for given club entry. 
-				tablerowlayout += createTableActionBlockLayout( entryid, 4);
+								<!-- icon -->
+								<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
+								</svg>
+								<!-- /icon -->
 		
-				// Return layout for table row. 
-				return tablerowlayout;
-			}
+								<!-- caption -->
+								<span class="caption">Edit</span>
+								<!-- /caption -->
+								
+							</button>
+							<!-- /editbtn -->
 		
-			// Create layout for given table block. 
-			function createTableBlockLayout(caption,columnindex) {
-				// console.log('Creating table block layout...',columnindex);
-	
-				// Check if block is centered. 
-				let centerblock = tablecolumnslist[columnindex]['columncenter'];
-				// Check if block is optional. 
-				let optionalblock = tablecolumnslist[columnindex]['columnoptional'];
+							<!-- deletebtn -->
+							<button class="btn deletebtn" title="Delete entry (${entryid})" onclick="startDeleteEntry('${entryid}')">
 		
-				// Compile table data block. 
-				return `
-				<!-- data -->
-				<td class="data${ centerblock ? ' c' : '' }${ optionalblock ? ' o' : '' }">
+								<!-- icon -->
+								<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+								</svg>
+								<!-- /icon -->
 		
-					<!-- caption -->
-					<span class="caption">${caption}</span>
-					<!-- /caption -->
+								<!-- icon -->
+								<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+								</svg>
+								<!-- /icon -->
 		
-				</td>
-				<!-- /data -->`;
-			}
-		
-			// Create layout for table action block. 
-			function createTableActionBlockLayout( entryid, columnindex) {
-	
-				// TODO: Check if block is centered. 
-				let centerblock = true || tablecolumnslist[columnindex]['columncenter'];
-				// Check if block is optional. 
-				let optionalblock = tablecolumnslist[columnindex]['columnoptional'];
-	
-				// Compile table action block. 
-				return `
-				<!-- data -->
-				<td class="data a${ centerblock ? ' c' : '' }${ optionalblock ? ' o' : '' }">
-	
-					<!-- btnpanel -->
-					<div class="btnpanel">
-	
-						<!-- editbtn -->
-						<button class="btn editbtn" title="Edit entry (${entryid})" onclick="startEditEntry('${entryid}')">
-	
-							<!-- icon -->
-							<svg class="icon pencilsqr" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-								<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- icon -->
-							<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- icon -->
-							<svg class="icon pencil" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.5.5 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11z"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- caption -->
-							<span class="caption">Edit</span>
-							<!-- /caption -->
+								<!-- caption -->
+								<span class="caption">Delete</span>
+								<!-- /caption -->
+								
+							</button>
+							<!-- /deletebtn -->
 							
-						</button>
-						<!-- /editbtn -->
-	
-						<!-- deletebtn -->
-						<button class="btn deletebtn" title="Delete entry (${entryid})" onclick="startDeleteEntry('${entryid}')">
-	
-							<!-- icon -->
-							<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- icon -->
-							<svg class="icon trashcan" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-							</svg>
-							<!-- /icon -->
-	
-							<!-- caption -->
-							<span class="caption">Delete</span>
-							<!-- /caption -->
-							
-						</button>
-						<!-- /deletebtn -->
-						
-					</div>
-					<!-- /btnpanel -->
-	
-				</td>
-				<!-- /data -->`;
+						</div>
+						<!-- /btnpanel -->
+		
+					</td>
+					<!-- /data -->`;
+				}
 			}
 		}
 	}
