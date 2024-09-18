@@ -1,0 +1,28 @@
+
+
+
+body {display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:100vh;}
+
+
+
+/* div.dbquery {display:none;} */
+
+div.dbquery {background-color:white; max-width:var(--pagewidth); width:calc(100vw - 3rem); border-radius:.5rem; margin:0 auto;}
+div.dbquery.head {position:fixed; top:0; right:0; left:0; /* width:100%; */ max-width:calc(var(--pagewidth)/2); /* padding-top:2rem; */}
+div.dbquery.head {font-size:.625rem; overflow:auto; scrollbar-width:none; margin-top:2.25rem;}
+div.dbquery.head {max-height:0; border:0 none; transition:.125s;}
+div.dbquery.head.open {max-height:12.5vh; border:.125rem solid var(--lightblack);}
+div.dbquery.head div.togglebtn {position:fixed; top:0; left:50%; transform:translateX(-50%);}
+div.dbquery.head div.togglebtn {background-color:var(--lightblack); color:var(--lightgrey); padding:.375rem .5rem; border-radius:.375rem; margin-top:.5rem;}
+div.dbquery.head div.togglebtn {display:flex; flex-direction:column; cursor:pointer;}
+div.dbquery.head div.togglebtn {opacity:1; transition:.375s;}
+div.dbquery.head.open div.togglebtn {opacity:.5;}
+div.dbquery.head div.togglebtn svg.icon {}
+div.dbquery.head div.togglebtn svg.icon.dn {display:block;}
+div.dbquery.head div.togglebtn svg.icon.up {display:none;}
+div.dbquery.head.open div.togglebtn svg.icon.dn {display:none;}
+div.dbquery.head.open div.togglebtn svg.icon.up {display:block;}
+div.dbquery.head div.togglebtn span.caption {display:none;}
+
+div.dbquery.solo {padding:1rem .5rem;}
+/* div#container main.main {display:none;} */

@@ -4,58 +4,45 @@
 <?php
 
 	// Connect to server database. 
-	function openDbConnection() {
+	function openDb() {
 
 		// Define server credentials. 
 		$sn = 'localhost';
 		$un = 'root';
 		$pw = '';
 		$db = 'cis355xampp';
-	
 		// Open server connection to database. 
-		$conn = new mysqli($sn,$un,$pw,$db);
-
-		// 
-		echo '<br>';
+		$dbconnect = new mysqli($sn,$un,$pw,$db);
 
 		// Check server connection to database. 
-		if($conn) echo 'Connection successful';
-		else echo 'Connection unsuccessful';
+		if($dbconnect) {
 
-		// 
-		if($conn->connect_error) die( 'Connection failed: ' . $conn->connect_error );
+			// Notify if connection successful. 
+			print '<br>Connection started...';
+			
+			// Notify of any connection errors. 
+			if($dbconnect->connect_errno) {
+				$errornum = $dbconnect->connect_errno;
+				$errormsg = $dbconnect->connect_error;
+				exit( "<br>Connection error ($errornum): $errormsg" );
+			}
+		}
+		// Notify if connection unsuccessful. 
+		else print '<br>Connection failed.';
+		// Insert line. 
+		print '<br>';
 
-		// 
-		echo '<br><br>';
-
-		// 
-		return $conn;
+		// Return connection. 
+		return $dbconnect;
 	}
 
-	// Send query to database. 
-	function sendDbQuery($conn,$sql) {
+	// Disconnect from server database. 
+	function closeDb($db) {
 
-		// Send SQL query to database. 
-		$querystate = $conn->query($sql);
-	
-		// Display state of successful query. 
-		if($querystate) {
-			echo 'Query successful';
-		}
-		// Display state of unsuccessful query. 
-		else {
-			echo 'Query unsuccessful' . $conn->error;
-		}
-
-		// 
-		echo '<br>';
-	
-		// Return result of query. 
-		return $querystate;
-	}
-
-	// Close server connection to database. 
-	function closeDbConnection($conn) {
-		$conn->close();
+		// Close server connection to database. 
+		$db->close();
+		print '<br><br>Connection closed.';
+		// Insert lines. 
+		print '<br><br>';
 	}
 ?>
