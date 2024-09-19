@@ -30,15 +30,13 @@
 				// Get functions to access given field data. 
 				require_once('../assets/script/crud.php');
 				// Get functions to access given field data. 
-				require_once('../assets/script/output.php');
+				require_once('../assets/script/io.php');
 
 				// Connect to server database. 
 				$db = openDb();
 
-				// Define table name. 
-				$tn = 'shots';
 				// Read existing database entry. 
-				$query = readEntry($db,$tn);
+				$query = readEntry($db,$tn,$pfieldid);
 				// Get result of database query. 
 				getResult($db,$query,$tn);
 

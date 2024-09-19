@@ -7,25 +7,50 @@
 	// Set state of fwds back to home page. 
 	$stayhome = false;
 
+	// Define table name. 
+	$tn = 'shots';
+	// Define primary field id (field id for form POST). 
+	$pfieldid = 'shotid';
+	// Define list of field ids. 
+	$fieldids = [
+		'clubid',
+		'holeid',
+		'distance',
+	];
+
 
 	// Display options for select dropdown menu. 
-	function showSelectOptions($entries) {
+	function showSelectOptions($tableentries) {
 
 		// Go thru each table entry. 
-		foreach($entries as $entry) {
+		foreach($tableentries as $entry) {
 
 			// Get id of table entry. 
 			$id = $entry['id'];
 
-			// // Display table entry as select option. 
-			// print "<option value=\"$id\">". json_encode($entry) ."</option>";
+			// Initialize entry summary. 
+			$entrysummary = '';
+			// $entrysummary = json_encode($entry);
+
+			// Go thru each entry field. 
+			foreach($entry as $key=>$value) {
+
+				// Skip id field. 
+				if($key=='id') ;
+
+				// Proceed for other fields. 
+				else {
+
+					// Get first letter of field id. 
+					$k = substr($key,0,1);
+
+					// Add summary of given field. 
+					$entrysummary .= "$k:$value ";
+				}
+			}
 
 			// Display table entry as select option. 
-			print "<option value=\"$id\">";
-			foreach($entry as $k=>$v) {
-				if($k!='id') print substr($k,0,1).":$v".' ';
-			}
-			print "</option>";
+			print "<option value=\"$id\">$entrysummary</option>";
 		}
 	}
 
@@ -33,20 +58,22 @@
 	// Create new database entry. 
 	function createNewEntry($db,$tablename,$fieldids) {
 
+		// Consolidate list of field values. 
+		$fieldidslist = getCommaList($fieldids);
+		$fieldvalueslist = getFieldValuesList($fieldids,$db);
+
 		// Create SQL database query. 
-		$fieldidslist = getFieldIdsList($fieldids);
-		$fieldvalueslist = getFieldValuesList($fieldids);
-		$sql = "INSERT INTO shots($fieldidslist) VALUES($fieldvalueslist)";
+		$sql = "INSERT INTO $tablename($fieldidslist) VALUES($fieldvalueslist)";
 	
 		// Send database query and return result. 
 		return $db->query($sql);
 	}
 
-	// TODO: Read existing database entry. 
-	function readEntry($db,$tablename) {
+	// Read existing database entry. 
+	function readEntry($db,$tablename,$pfieldid) {
 
-		// Get value of form field: shotid. 
-		$id = getFieldValueById('shotid');
+		// Get field value from form. 
+		$id = getFieldValueById($pfieldid,$db);
 
 		// Create SQL database query. 
 		$sql = "SELECT * FROM $tablename WHERE id=$id";
@@ -64,32 +91,27 @@
 		return $db->query($sql);
 	}
 
-	// TODO: Update existing database entry. 
-	function updateEntry($db,$tablename) {
+	// Update existing database entry. 
+	function updateEntry($db,$tablename,$fieldids,$pfieldid) {
 
-		// Get value of form field: shotid. 
-		$id = getFieldValueById('shotid');
-		// Get value of form field: clubid. 
-		$clubid = getFieldValueById('clubid');
-		// Get value of form field: holeid. 
-		$holeid = getFieldValueById('holeid');
+		// Get field value from form. 
+		$id = getFieldValueById($pfieldid,$db);
+
+		// Consolidate list of field values. 
+		$fieldidsnvalueslist = getFieldIdsNValuesList($fieldids,$db);
 
 		// Create SQL database query. 
-		$fieldidvaluelist = "";
-		$fieldidvaluelist .= "clubid='$clubid'";
-		$fieldidvaluelist .= ",";
-		$fieldidvaluelist .= "holeid='$holeid'";
-		$sql = "UPDATE $tablename SET $fieldidvaluelist WHERE id=$id";
+		$sql = "UPDATE $tablename SET $fieldidsnvalueslist WHERE id=$id";
 	
 		// Send database query and return result. 
 		return $db->query($sql);
 	}
 
-	// TODO: Delete existing database entry. 
-	function deleteEntry($db,$tablename) {
+	// Delete existing database entry. 
+	function deleteEntry($db,$tablename,$pfieldid) {
 
-		// Get value of form field: shotid. 
-		$id = getFieldValueById('shotid');
+		// Get field value from form. 
+		$id = getFieldValueById($pfieldid,$db);
 
 		// Create SQL database query. 
 		$sql = "DELETE FROM $tablename WHERE id=$id";

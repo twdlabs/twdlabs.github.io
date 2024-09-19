@@ -53,7 +53,7 @@
 				// Get functions to access given field data. 
 				require_once('./assets/script/crud.php');
 				// Get functions to access given field data. 
-				require_once('./assets/script/output.php');
+				require_once('./assets/script/io.php');
 
 				// Connect to server database. 
 				$db = openDb();
@@ -104,6 +104,24 @@
 
 				<!-- grid -->
 				<div class="grid">
+
+					<!-- form -->
+					<form class="form table">
+
+						<!-- fieldlabel -->
+						<!-- <label class="fieldlabel" for="tablename">Table</label> -->
+						<!-- /fieldlabel -->
+
+						<!-- fieldinput -->
+						<select class="fieldinput" id="tablename" name="tablename" oninput="document.querySelector('input#clubid-c').value = this.value;">
+							<option value="shots">Shots</option>
+							<option value="holes">Holes</option>
+							<option value="clubs">Clubs</option>
+						</select>
+						<!-- /fieldinput -->
+
+					</form>
+					<!-- /form -->
 
 					<!-- form -->
 					<form class="form create" method="post" action="./create/index.php">

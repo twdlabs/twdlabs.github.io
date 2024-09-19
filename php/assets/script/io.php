@@ -4,14 +4,15 @@
 <?php
 
 
-	// Get value of form field by form id. 
-	function getFieldValueById($fieldname) {
+	// Get value of field using field id. 
+	function getFieldValueById($fieldid,$db) {
 
 		// Get field value from form submission. 
-		$fieldvalue = $_POST[$fieldname];
+		$fieldvalue = $_POST[$fieldid];
+		$fieldvalue = $db->real_escape_string($fieldvalue);
 
 		// Display field value. 
-		print "$fieldname: " . $fieldvalue;
+		print "$fieldid: " . $fieldvalue;
 
 		// Handle empty field value. 
 		if($fieldvalue==null) {
@@ -20,7 +21,7 @@
 			$fieldvalue = -1;
 
 			// Display field value. 
-			print " => $fieldname: " . $fieldvalue;
+			print " => $fieldid: " . $fieldvalue;
 		}
 		print '<br>';
 
@@ -28,33 +29,51 @@
 		return $fieldvalue;
 	}
 
-	// Get value of form field by form id. 
-	function getFieldIdsList($fieldids) {
+	// Convert string array to comma-separated list string. 
+	function getCommaList($fieldids) {
 
 		// Create comma separated list of field ids. 
 		return implode(',',$fieldids);
 	}
 
-	// Get value of form field by form id. 
-	function getFieldValuesList($fieldids) {
+	// Get list of field values (in string form). 
+	function getFieldValuesList($fieldids,$db) {
 
 		// Initialize list of field values. 
-		$allfieldvalues = [];
+		$fieldvalues = [];
 
-		// Go thru each field id. 
-		foreach($fieldids as $id) {
+		// Go thru each field id key. 
+		foreach($fieldids as $idkey) {
 
-			// Get value of field. 
-			$fieldvalue = getFieldValueById($id);
-			// Save field value to list. 
-			$allfieldvalues[] = $fieldvalue;
-
-			// Set 'null value' if no value provided. 
-			// if($fieldvalue==null) $fieldvalue = -1;
+			// Get field value from form. 
+			$value = getFieldValueById($idkey,$db);
+			
+			// Save to list of field values. 
+			$fieldvalues[] = $value;
 		}
 
 		// Create comma separated list of field values. 
-		return implode(',',$allfieldvalues);
+		return getCommaList($fieldvalues);
+	}
+
+	// Get list of field ids and values (in string form). 
+	function getFieldIdsNValuesList($fieldids,$db) {
+
+		// Initialize list of field values. 
+		$fieldidsnvalues = [];
+		
+		// Go thru each field id key. 
+		foreach($fieldids as $idkey) {
+
+			// Get field value from form. 
+			$value = getFieldValueById($idkey,$db);
+			
+			// Save to list of field values. 
+			$fieldidsnvalues[] = "$idkey='$value'";
+		}
+
+		// Create comma separated list of field ids. 
+		return getCommaList($fieldidsnvalues);
 	}
 
 	// Get result of database query. 
