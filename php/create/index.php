@@ -19,36 +19,67 @@
 	</head>
 
 	<body>
-		
-		<!-- dbquery -->
-		<div class="dbquery solo">
 
-			<?php
+		<!-- #container -->
+		<div id="container">
 
-				// Get functions to access server database. 
-				require_once('../assets/script/db.php');
-				// Get functions to access given field data. 
-				require_once('../assets/script/crud.php');
-				// Get functions to access given field data. 
-				require_once('../assets/script/io.php');
+			<!-- main -->
+			<main class="main">
 
-				// Connect to server database. 
-				$db = openDb();
+				<!-- dbquery -->
+				<div class="dbquery">
 
-				// Create new database entry. 
-				$query = createNewEntry($db,$tn,$fieldids);
-				// Get result of database query. 
-				getResult($db,$query,$tn);
+					<?php
 
-				// Disconnect server database. 
-				closeDb($db);
+						// Get functions to display form layout. 
+						require_once('../assets/script/form.php');
+						// Get functions to access server database. 
+						require_once('../assets/script/db.php');
+						// Get functions to perform CRUD operations. 
+						require_once('../assets/script/crud.php');
+						// Get functions to access input and display output. 
+						require_once('../assets/script/io.php');
 
-				// Go back to home page. 
-				if($stayhome) header('location:../');
-			?>
-			
+						// Connect to server database. 
+						$db = openDb();
+
+						// Create new table entry in database. 
+						$queryresult = createNewEntry($selectedtableid,$fieldids);
+
+						// Disconnect server database. 
+						closeDb($db);
+
+						// Go back to home page. 
+						if($stayhome) header('location:../');
+					?>
+					
+				</div>
+				<!-- /dbquery -->
+
+				<!-- backbtn -->
+				<button class="backbtn btn" onclick="goBackHome()">
+
+					<!-- icon -->
+					<svg class="icon up arrowleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- caption -->
+					<span class="caption">Back</span>
+					<!-- /caption -->
+					
+				</button>
+				<!-- /backbtn -->
+
+			</main>
+			<!-- /main -->
+
 		</div>
-		<!-- /dbquery -->
+		<!-- /#container -->
+
+		<!-- Navigation Script -->
+		<script src="../assets/script/nav.js" type="text/javascript"></script>
 
 	</body>
 
