@@ -1,13 +1,14 @@
 
 
-
+	
 /* Main */
-div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-div#container main.main {background-color:white; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
-/* div#container main.main {width:100%; max-width:var(--pagewidth);} */
-div#container main.main {display:flex; flex-direction:column; align-items:center;}
-div#container main.main h1.head {font-size:1.5rem; margin:0;}
-div#container main.main div.grid {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:0 .875rem;}
+/* div#container {} */
+/* div#container main.main {} */
+div#container main.main h1.head {font-size:1.5rem; text-align:center; margin:0;}
+/* div#container main.main h1.head svg.icon {} */
+div#container main.main h1.head span.caption {display:block;}
+/* div#container main.main div.grid {} */
+div#container main.main div.grid.g4 {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:0 .875rem;}
 
 
 /* Form */
@@ -17,19 +18,21 @@ div#container main.main div.grid form.form h2.head {font-size:1.125rem; font-wei
 div#container main.main div.grid form.form h2.head svg.icon {font-size:1.125em;}
 /* div#container main.main div.grid form.form h2.head span.caption {} */
 div#container main.main div.grid form.form ul.fieldlist {flex-grow:1; padding:0; margin:0;}
-div#container main.main div.grid form.form ul.fieldlist li.field {display:grid; /* grid-template-columns:2fr 3fr; */ justify-content:center; align-items:center; margin-top:.375rem;}
-/* div#container main.main div.grid form.form ul.fieldlist li.field.x {display:none;} */
+div#container main.main div.grid form.form ul.fieldlist li.field {display:grid; grid-template-columns:2fr 3fr; justify-content:center; align-items:center; margin-top:.375rem;}
+/* div#container main.main div.grid form.form ul.fieldlist li.field.long {grid-template-columns:auto;} */
+/* div#container main.main div.grid form.form ul.fieldlist li.field.x {background-color:#ff03; display:none;} */
 div#container main.main div.grid form.form ul.fieldlist li.field label.fieldlabel {font-size:.75rem; text-align:left; padding:0 .25em; margin-bottom:.125em;}
 div#container main.main div.grid form.form.table select.fieldinput,
 div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput,
 div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput {font-size:1rem; width:11em; max-width:100%; padding:.25em .75em; border-radius:.25em; border:0 none; border:1px solid gainsboro; outline:none;}
+/* div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput.table {width:100%;} */
 div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput[multiple] {height:18rem;}
-div#container main.main div.grid form.form div.field.go {display:grid; grid-template-columns:1fr; margin-top:.5rem;}
-div#container main.main div.grid form.form div.field.go button.gobtn {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.5em 1em; border-radius:.25rem;}
+div#container main.main div.grid form.form div.field.go {display:grid; grid-template-columns:1fr; width:100%; margin-top:.5rem;}
+/* div#container main.main div.grid form.form div.field.go button.gobtn {} */
 
 
 /* Table Form */
-div#container main.main div.grid form.form.table {grid-column:1 / span 4;}
+/* div#container main.main div.grid form.form.table {grid-column:1 / span 4;} */
 div#container main.main div.grid form.form.table select.fieldinput {padding:.5em .75em;}
 
 
@@ -57,7 +60,7 @@ div#container main.main div.grid form.form.table select.fieldinput {padding:.5em
 	/* Main */
 	/* div#container {} */
 	/* div#container main.main {} */
-	div#container main.main div.grid {grid-template-columns:repeat(2,1fr);}
+	div#container main.main div.grid.g4 {grid-template-columns:repeat(2,1fr);}
 
 	/* Form */
 	/* div#container main.main div.grid form.form {} */
@@ -66,7 +69,7 @@ div#container main.main div.grid form.form.table select.fieldinput {padding:.5em
 	div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput,
 	div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput {width:12em;}
 	div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput[multiple] {height:12rem;}
-	div#container main.main div.grid form.form.table {grid-column:1 / span 2;}
+	/* div#container main.main div.grid form.form.table {grid-column:1 / span 2;} */
 
 	/* Table Form */
 	/* div#container main.main div.grid form.form.table {} */
@@ -92,7 +95,7 @@ div#container main.main div.grid form.form.table select.fieldinput {padding:.5em
 	/* Main */
 	/* div#container {} */
 	/* div#container main.main {width:calc(100vw - 2rem);} */
-	div#container main.main div.grid {grid-template-columns:1fr;}
+	div#container main.main div.grid.g4 {grid-template-columns:1fr;}
 
 	/* Form */
 	/* div#container main.main div.grid form.form {} */
@@ -102,7 +105,7 @@ div#container main.main div.grid form.form.table select.fieldinput {padding:.5em
 	div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput {width:18em;}
 
 	/* Table Form */
-	div#container main.main div.grid form.form.table {grid-column:auto;}
+	/* div#container main.main div.grid form.form.table {grid-column:auto;} */
 }
 
 /* Tiny Smartphone Screen */
