@@ -1,19 +1,33 @@
 
 
 
-// TODO: Display form fields for currently selected table. 
-function displayFormFields(tableid) {
+// Select CRUD table by id. 
+function selectTableById(selectedtableid) {
 
-	// 
-	let tabledestination = '';
+	// Define ids of database tables. 
+	let databasetableids = ['shots','holes','clubs',];
 
-	// TODO: Display 'create' form fields. 
+	// Show selected table. 
+	showSelectedTable();
 
-	// TODO: Display 'read' form fields. 
+	// Show selected table. 
+	function showSelectedTable() {
 
-	// TODO: Display 'update' form fields. 
+		// Define selector prefix. 
+		let prefix = 'div#container section.crud.';
 
-	// TODO: Display 'delete' form fields. 
+		// Go thru each table id. 
+		for(let tid of databasetableids) {
+
+			// Define selector. 
+			let selector = prefix+tid;
+
+			// Get current section. 
+			let section = document.querySelector(selector);
+			if(tid==selectedtableid) section.classList.add('on');
+			else section.classList.remove('on');
+		}
+	}
 }
 
 // TODO: Show values associated with selected entry. 

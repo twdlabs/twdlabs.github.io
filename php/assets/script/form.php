@@ -4,12 +4,6 @@
 <?php
 
 
-	// TODO: Display form fields for currently selected table. 
-	function displayFormFields($tableid) {
-	
-		print "<script> displayFormFields('$tableid'); </script>";
-	}
-
 	// Display select options for dropdown menu. 
 	function showSelectOptions($entrieslist,$tableid) {
 		global $databasetables;

@@ -21,7 +21,7 @@
 			foreach($fieldinput as $value) {
 
 				// Display string input field value. 
-				print "$fieldid: " . $value . '<br>';
+				print "<br>$fieldid: " . $value . '';
 			}
 		}
 		// Display single field value. 
@@ -31,7 +31,7 @@
 			$fieldinput = $db->real_escape_string($fieldinput);
 
 			// Display string input field value. 
-			print "$fieldid: " . $fieldinput;
+			print "<br>$fieldid: " . $fieldinput;
 		}
 
 		// Handle empty field value. 
@@ -43,14 +43,14 @@
 			// Display field value. 
 			print " => $fieldid: " . $fieldinput;
 		}
-		print '<br>';
+		print '';
 
 		// Return field value. 
 		return $fieldinput;
 	}
 
 	// Get result of database query. 
-	function getResult($query,$tableid) {
+	function getResult($query) {
 		global $db;
 		// Get number of rows hit by last query. 
 		$numrows = $db->affected_rows;
@@ -74,13 +74,11 @@
 		// Set query status if successful. 
 		if($query) $querystatus = [
 			'status'=>'success',
-			'tableid'=>$tableid,
 			'rows'=>$numrows,
 		];
 		// Set query status if unsuccessful. 
 		else $querystatus = [
 			'status'=>'error',
-			'tableid'=>$tableid,
 			'rows'=>$numrows,
 			'message'=>$db->error,
 		];

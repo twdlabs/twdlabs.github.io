@@ -8,11 +8,13 @@
 :root {
 
 	/* Theme Colors */
+	--offwhite:#d8d8d8;
+	--offwhite:#f8f8f8;
 	--lightgrey:#CCC;
 	--lightblack:#333;
 	
 	/* Gradient Colors */
-	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+	--bgimg:linear-gradient(135deg,dodgerblue,white,wheat);
 
 	/* Page Sizes */
 	--pagewidth:60rem;
@@ -40,8 +42,10 @@ body {background-color:var(--backcolor); background-image:var(--bgimg); margin:0
 body {color:var(--forecolor); font-family:Nunito,sans-serif;}
 
 /* Main */
-div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1rem;}
-div#container main.main {background-color:white; padding:1rem; border-radius:var(--cornersize); margin-top:1rem; box-shadow:var(--boxshadow);}
-/* div#container main.main {width:100%; max-width:var(--pagewidth);} */
-div#container main.main {display:flex; flex-direction:column; align-items:center; max-width:var(--pagewidth);}
-div#container main.main button.btn {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.5em 1em; border-radius:.25rem;}
+div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; padding:1.375rem;}
+
+/* Page Section */
+div#container section {background-color:white; background-color:var(--offwhite); padding:1rem; border-radius:var(--cornersize); margin-top:1rem; box-shadow:var(--boxshadow);}
+/* div#container section {width:100%; max-width:var(--pagewidth);} */
+div#container section {display:flex; flex-direction:column; align-items:center; max-width:var(--pagewidth);}
+div#container section button.btn {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.5em 1em; border-radius:.25rem;}

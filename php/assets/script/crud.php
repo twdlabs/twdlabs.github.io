@@ -74,29 +74,9 @@
 		],
 	];
 
-	// Display form fields for selected table. 
-	// displayFormFields('clubs');
-	// displayFormFields('holes');
-	// displayFormFields('shots');
-
-	// Define selected table id. 
-	$selectedtableid = 'clubs';
-	$selectedtableid = 'holes';
-	$selectedtableid = 'shots';
-
-	// Define list of field ids. 
-	$fieldids = array_map('getFieldId', $databasetables[$selectedtableid]['fields'] );
-
 
 	/*****/
 
-
-	// Select table by id. 
-	function selectTableById($tableid) {
-
-		// Update selected table id. 
-		$selectedtableid = $tableid;
-	}
 
 	// Get id of given field. 
 	function getFieldId($field) {
@@ -117,8 +97,12 @@
 
 
 	// Create new table entry in database. 
-	function createNewEntry($tableid,$fieldids) {
+	function createNewEntry($tableid) {
 		global $db;
+		global $databasetables;
+
+		// Get list of field ids. 
+		$fieldids = array_map('getFieldId', $databasetables[$tableid]['fields'] );
 
 		/****/
 
@@ -148,13 +132,17 @@
 		$fieldidslist = getCommaList($fieldids);
 		$fieldvalueslist = getFieldValuesList($fieldids);
 
+		// Print line. 
+		print '<br>';
+
 		// Create database query. 
 		$sql = "INSERT INTO $tableid ($fieldidslist) VALUES ($fieldvalueslist)";
+		print "<br>$sql";
 	
 		// Send database query. 
 		$query = $db->query($sql);
 		// Return result of query. 
-		return getResult($query,$tableid);
+		return getResult($query);
 	}
 
 	// Read existing table entry in database. 
@@ -166,7 +154,7 @@
 
 		// Check for multiple values. 
 		$multipleids = is_array($id);
-		// print "<br>multipleids = $multipleids";
+		print "<br><br>multipleids = $multipleids";
 
 		// Handle single value. 
 		if(!$multipleids) {
@@ -184,29 +172,37 @@
 			// Create database query (for multiple values). 
 			$sql = "SELECT * FROM $tableid WHERE ($conditionlist)";
 		}
-		// print "<br>sql = $sql";
+		print "<br>$sql";
 	
 		// Send database query. 
 		$query = $db->query($sql);
 		// Return result of query. 
-		return getResult($query,$tableid);
+		return getResult($query);
 	}
 	// Read all existing table entries in database. 
 	function readAllEntries($tableid) {
 		global $db;
 
+		// Print line. 
+		print '<br>';
+
 		// Create database query. 
 		$sql = "SELECT * FROM $tableid";
+		print "<br>$sql";
 	
 		// Send database query. 
 		$query = $db->query($sql);
 		// Return result of query. 
-		return getResult($query,$tableid);
+		return getResult($query);
 	}
 	
 	// Update existing table entry in database. 
-	function updateEntry($tableid,$fieldids) {
+	function updateEntry($tableid) {
 		global $db;
+		global $databasetables;
+
+		// Get list of field ids. 
+		$fieldids = array_map('getFieldId', $databasetables[$tableid]['fields'] );
 
 		/****/
 
@@ -238,13 +234,17 @@
 		// Consolidate list of field values. 
 		$fieldidsnvalueslist = getFieldIdsNValuesList($fieldids);
 
+		// Print line. 
+		print '<br>';
+
 		// Create database query. 
 		$sql = "UPDATE $tableid SET ($fieldidsnvalueslist) WHERE (id=$id)";
+		print "<br>$sql";
 	
 		// Send database query. 
 		$query = $db->query($sql);
 		// Return result of query. 
-		return getResult($query,$tableid);
+		return getResult($query);
 	}
 
 	// Delete existing table entry in database. 
@@ -256,7 +256,7 @@
 
 		// Check for multiple values. 
 		$multipleids = is_array($id);
-		// print "<br>multipleids = $multipleids";
+		print "<br><br>multipleids = $multipleids";
 
 		// Handle single value. 
 		if(!$multipleids) {
@@ -274,11 +274,11 @@
 			// Create database query (for multiple values). 
 			$sql = "DELETE FROM $tableid WHERE ($conditionlist)";
 		}
-		// print "<br>sql = $sql";
+		print "<br>$sql";
 	
 		// Send database query. 
 		$query = $db->query($sql);
 		// Return result of query. 
-		return getResult($query,$tableid);
+		return getResult($query);
 	}
 ?>

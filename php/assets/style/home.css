@@ -3,37 +3,52 @@
 	
 /* Main */
 /* div#container {} */
-/* div#container main.main {} */
-div#container main.main h1.head {font-size:1.5rem; text-align:center; margin:0;}
-/* div#container main.main h1.head svg.icon {} */
-div#container main.main h1.head span.caption {display:block;}
-/* div#container main.main div.grid {} */
-div#container main.main div.grid.g4 {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:0 .875rem;}
+
+
+/* Page Section */
+/* div#container section {} */
+/* div#container section.crud {display:none;} */
+/* div#container section.shots {} */
+/* div#container section.holes {} */
+/* div#container section.clubs {} */
+div#container section.crud.on {display:block;}
+
+/* Page Section Head */
+div#container section h1.head {font-size:1.5rem; text-align:center; margin:0;}
+/* div#container section h1.head svg.icon {} */
+div#container section h1.head span.caption {display:block;}
+
+/* Page Section Grid */
+/* div#container section div.grid {} */
+div#container section div.grid.g4 {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:0 .875rem;}
+
 
 
 /* Form */
-div#container main.main div.grid form.form {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; padding:.5rem; border-radius:.5rem; margin:0; margin-top:.875rem; box-shadow:var(--boxshadow);}
-div#container main.main div.grid form.form h2.head {display:flex; flex-direction:row; align-items:center; justify-content:center; grid-gap:.375rem;}
-div#container main.main div.grid form.form h2.head {font-size:1.125rem; font-weight:normal; text-align:center; margin:0; margin-bottom:.375rem;}
-div#container main.main div.grid form.form h2.head svg.icon {font-size:1.125em;}
-/* div#container main.main div.grid form.form h2.head span.caption {} */
-div#container main.main div.grid form.form ul.fieldlist {flex-grow:1; padding:0; margin:0;}
-div#container main.main div.grid form.form ul.fieldlist li.field {display:grid; grid-template-columns:2fr 3fr; justify-content:center; align-items:center; margin-top:.375rem;}
-/* div#container main.main div.grid form.form ul.fieldlist li.field.long {grid-template-columns:auto;} */
-/* div#container main.main div.grid form.form ul.fieldlist li.field.x {background-color:#ff03; display:none;} */
-div#container main.main div.grid form.form ul.fieldlist li.field label.fieldlabel {font-size:.75rem; text-align:left; padding:0 .25em; margin-bottom:.125em;}
-div#container main.main div.grid form.form.table select.fieldinput,
-div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput,
-div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput {font-size:1rem; width:11em; max-width:100%; padding:.25em .75em; border-radius:.25em; border:0 none; border:1px solid gainsboro; outline:none;}
-/* div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput.table {width:100%;} */
-div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput[multiple] {height:18rem;}
-div#container main.main div.grid form.form div.field.go {display:grid; grid-template-columns:1fr; width:100%; margin-top:.5rem;}
-/* div#container main.main div.grid form.form div.field.go button.gobtn {} */
+div#container section div.grid form.form {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; padding:.5rem; border-radius:.5rem; margin:0; margin-top:.875rem; box-shadow:var(--boxshadow);}
+div#container section div.grid form.form h2.head {display:flex; flex-direction:row; align-items:center; justify-content:center; grid-gap:.375rem;}
+div#container section div.grid form.form h2.head {font-size:1.125rem; font-weight:normal; text-align:center; margin:0; margin-bottom:.375rem;}
+div#container section div.grid form.form h2.head svg.icon {font-size:1.125em;}
+/* div#container section div.grid form.form h2.head span.caption {} */
+div#container section div.grid form.form ul.fieldlist {flex-grow:1; padding:0; margin:0;}
+div#container section div.grid form.form ul.fieldlist li.field {display:grid; justify-content:center; align-items:center; margin-top:.375rem;}
+/* div#container section div.grid form.form ul.fieldlist li.field {grid-template-columns:2fr 3fr;} */
+/* div#container section div.grid form.form ul.fieldlist li.field.long {grid-template-columns:auto;} */
+/* div#container section div.grid form.form ul.fieldlist li.field.x {background-color:#ff03; display:none;} */
+div#container section div.grid form.form ul.fieldlist li.field label.fieldlabel {font-size:.75rem; text-align:left; padding:0 .25em; margin-bottom:.125em;}
+div#container section div.grid form.form.table select.fieldinput,
+div#container section div.grid form.form ul.fieldlist li.field select.fieldinput,
+div#container section div.grid form.form ul.fieldlist li.field input.fieldinput {font-size:1rem; width:11em; max-width:100%; padding:.25em .75em; border-radius:.25em; border:0 none; border:1px solid gainsboro; outline:none;}
+/* div#container section div.grid form.form ul.fieldlist li.field input.fieldinput.table {width:100%;} */
+div#container section div.grid form.form input.fieldinput[type=hidden] {display:block;}
+div#container section div.grid form.form ul.fieldlist li.field select.fieldinput[multiple] {height:18rem;}
+div#container section div.grid form.form div.field.go {display:grid; grid-template-columns:1fr; width:100%; margin-top:.5rem;}
+/* div#container section div.grid form.form div.field.go button.gobtn {} */
 
 
 /* Table Form */
-/* div#container main.main div.grid form.form.table {grid-column:1 / span 4;} */
-div#container main.main div.grid form.form.table select.fieldinput {padding:.5em .75em;}
+/* div#container section div.grid form.form.table {grid-column:1 / span 4;} */
+div#container section div.grid form.form.table select.fieldinput {padding:.5em .75em;}
 
 
 
@@ -42,83 +57,145 @@ div#container main.main div.grid form.form.table select.fieldinput {padding:.5em
 
 /* Big Tablet Screen */
 @media screen and (max-width:64rem) {
+
 	
 	/* Main */
 	/* div#container {} */
-	/* div#container main.main {} */
+
+
+	/* Page Section */
+	/* div#container section {} */
+
+	/* Page Section Head */
+	/* div#container section h1.head {} */
+
+	/* Page Section Grid */
+	/* div#container section div.grid {} */
+
 
 	/* Form */
-	/* div#container main.main div.grid form.form {} */
+	/* div#container section div.grid form.form {} */
+	/* div#container section div.grid form.form ul.fieldlist {} */
+	/* div#container section div.grid form.form ul.fieldlist li.field {} */
 
 	/* Table Form */
-	/* div#container main.main div.grid form.form.table {} */
+	/* div#container section div.grid form.form.table {} */
 }
 
 /* Small Tablet Screen */
 @media screen and (max-width:56rem) {
+
 	
 	/* Main */
 	/* div#container {} */
-	/* div#container main.main {} */
-	div#container main.main div.grid.g4 {grid-template-columns:repeat(2,1fr);}
+
+
+	/* Page Section */
+	/* div#container section {} */
+
+	/* Page Section Head */
+	/* div#container section h1.head {} */
+
+	/* Page Section Grid */
+	/* div#container section div.grid {} */
+	div#container section div.grid.g4 {grid-template-columns:repeat(2,1fr);}
+
 
 	/* Form */
-	/* div#container main.main div.grid form.form {} */
-	/* div#container main.main div.grid form.form ul.fieldlist {} */
-	/* div#container main.main div.grid form.form ul.fieldlist li.field {} */
-	div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput,
-	div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput {width:12em;}
-	div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput[multiple] {height:12rem;}
-	/* div#container main.main div.grid form.form.table {grid-column:1 / span 2;} */
+	/* div#container section div.grid form.form {} */
+	/* div#container section div.grid form.form ul.fieldlist {} */
+	/* div#container section div.grid form.form ul.fieldlist li.field {} */
+	div#container section div.grid form.form ul.fieldlist li.field select.fieldinput,
+	div#container section div.grid form.form ul.fieldlist li.field input.fieldinput {width:12em;}
+	div#container section div.grid form.form ul.fieldlist li.field select.fieldinput[multiple] {height:12rem;}
+	/* div#container section div.grid form.form.table {grid-column:1 / span 2;} */
 
 	/* Table Form */
-	/* div#container main.main div.grid form.form.table {} */
+	/* div#container section div.grid form.form.table {} */
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
+
 	
 	/* Main */
 	/* div#container {} */
-	/* div#container main.main {} */
+
+
+	/* Page Section */
+	/* div#container section {} */
+
+	/* Page Section Head */
+	/* div#container section h1.head {} */
+
+	/* Page Section Grid */
+	/* div#container section div.grid {} */
+
 
 	/* Form */
-	/* div#container main.main div.grid form.form {} */
+	/* div#container section div.grid form.form {} */
+	/* div#container section div.grid form.form ul.fieldlist {} */
+	/* div#container section div.grid form.form ul.fieldlist li.field {} */
 
 	/* Table Form */
-	/* div#container main.main div.grid form.form.table {} */
+	/* div#container section div.grid form.form.table {} */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
+
 	
 	/* Main */
 	/* div#container {} */
-	/* div#container main.main {width:calc(100vw - 2rem);} */
-	div#container main.main div.grid.g4 {grid-template-columns:1fr;}
+
+
+	/* Page Section */
+	/* div#container section {width:calc(100vw - 2rem);} */
+
+	/* Page Section Head */
+	/* div#container section h1.head {} */
+
+	/* Page Section Grid */
+	/* div#container section div.grid {} */
+	div#container section div.grid.g4 {grid-template-columns:1fr;}
+
 
 	/* Form */
-	/* div#container main.main div.grid form.form {} */
-	/* div#container main.main div.grid form.form ul.fieldlist {} */
-	/* div#container main.main div.grid form.form ul.fieldlist li.field {} */
-	div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput,
-	div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput {width:18em;}
+	/* div#container section div.grid form.form {} */
+	/* div#container section div.grid form.form ul.fieldlist {} */
+	/* div#container section div.grid form.form ul.fieldlist li.field {} */
+	div#container section div.grid form.form ul.fieldlist li.field select.fieldinput,
+	div#container section div.grid form.form ul.fieldlist li.field input.fieldinput {width:18em;}
 
 	/* Table Form */
-	/* div#container main.main div.grid form.form.table {grid-column:auto;} */
+	/* div#container section div.grid form.form.table {grid-column:auto;} */
 }
 
 /* Tiny Smartphone Screen */
 @media screen and (max-width:24rem) {
+
 	
 	/* Main */
 	/* div#container {} */
-	/* div#container main.main {} */
+
+
+	/* Page Section */
+	/* div#container section {} */
+
+	/* Page Section Head */
+	/* div#container section h1.head {} */
+
+	/* Page Section Grid */
+	/* div#container section div.grid {} */
+
 
 	/* Form */
-	/* div#container main.main div.grid form.form ul.fieldlist li.field select.fieldinput,
-	div#container main.main div.grid form.form ul.fieldlist li.field input.fieldinput {width:100%;} */
+	/* div#container section div.grid form.form {} */
+	/* div#container section div.grid form.form ul.fieldlist {} */
+	/* div#container section div.grid form.form ul.fieldlist li.field {} */
+	/* div#container section div.grid form.form ul.fieldlist li.field select.fieldinput,
+	div#container section div.grid form.form ul.fieldlist li.field input.fieldinput {width:100%;} */
 
 	/* Table Form */
-	/* div#container main.main div.grid form.form.table {} */
+	/* div#container section div.grid form.form.table {} */
 }
