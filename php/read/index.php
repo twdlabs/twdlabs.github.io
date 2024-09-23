@@ -14,7 +14,7 @@
 
 		<!-- Main Stylesheet -->
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
-		<link href="../assets/style/crud.css" rel="stylesheet" type="text/css"/>
+		<link href="../assets/style/dbquery.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -23,8 +23,8 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- main -->
-			<main class="main">
+			<!-- section -->
+			<section class="">
 				
 				<!-- dbquery -->
 				<div class="dbquery">
@@ -42,6 +42,12 @@
 
 						// Connect to server database. 
 						$db = openDb();
+
+						// Print header. 
+						print '<br>Form Data<br>------------';
+
+						// Get id of selected table. 
+						$selectedtableid = getFieldValueById('tableid');
 
 						// Read existing table entry in database. 
 						$queryresult = readEntry($selectedtableid);
@@ -72,8 +78,8 @@
 				</button>
 				<!-- /backbtn -->
 
-			</main>
-			<!-- /main -->
+			</section>
+			<!-- /section -->
 
 		</div>
 		<!-- /#container -->

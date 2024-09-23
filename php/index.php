@@ -15,7 +15,7 @@
 		<!-- Main Stylesheet -->
 		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<link href="./assets/style/home.css" rel="stylesheet" type="text/css"/>
-		<link href="./assets/style/crud.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/dbquery.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -24,8 +24,8 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- main -->
-			<main class="main">
+			<!-- section -->
+			<section class="">
 
 				<!-- dbquery -->
 				<div class="dbquery head">
@@ -66,14 +66,18 @@
 						// Connect to server database. 
 						$db = openDb();
 
+						// Print header. 
+						// print '<br>Database tables:<br>'.json_encode($databasetables).'<br>';
+						print '<br>Form Data<br>------------';
+
 						// Read existing table entries: shots. 
 						$shotentries = readAllEntries('shots');
 
-						// Read existing table entries: clubs. 
-						$clubentries = readAllEntries('clubs');
-
 						// Read existing table entries: holes. 
 						$holeentries = readAllEntries('holes');
+
+						// Read existing table entries: clubs. 
+						$clubentries = readAllEntries('clubs');
 
 						// Disconnect server database. 
 						closeDb($db);
@@ -126,7 +130,8 @@
 						<!-- /fieldlabel -->
 
 						<!-- fieldinput -->
-						<select class="fieldinput" id="tablename" name="tablename" oninput="/* TODO */ displayFormFields(this.value)">
+						<select class="fieldinput" id="tablename" name="tableid[]" multiple oninput="selectTableById(this.value) /* this.parentElement.submit() */">
+							<!-- <option value=""></option> -->
 							<option value="shots">Shots</option>
 							<option value="holes">Holes</option>
 							<option value="clubs">Clubs</option>
@@ -139,11 +144,21 @@
 				</div>
 				<!-- /grid -->
 
-			</main>
-			<!-- /main -->
+			</section>
+			<!-- /section -->
 
-			<!-- main -->
-			<main class="main">
+			<!-- section -->
+			<section class="crud shots">
+
+				<!-- head -->
+				<h1 class="head">
+
+					<!-- caption -->
+					<span class="caption">Shots</span>
+					<!-- /caption -->
+
+				</h1>
+				<!-- /head -->
 
 				<!-- grid -->
 				<div class="grid g4">
@@ -164,22 +179,16 @@
 							<!-- caption -->
 							<span class="caption">Create</span>
 							<!-- /caption -->
+	
+							<!-- fieldinput -->
+							<input class="fieldinput table" type="hidden" name="tableid" value="shots">
+							<!-- /fieldinput -->
 
 						</h2>
 						<!-- /head -->
 
 						<!-- fieldlist -->
 						<ul class="fieldlist">
-		
-							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
 		
 							<!-- field -->
 							<li class="field">
@@ -289,6 +298,10 @@
 							<!-- caption -->
 							<span class="caption">Read</span>
 							<!-- /caption -->
+	
+							<!-- fieldinput -->
+							<input class="fieldinput table" type="hidden" name="tableid" value="shots">
+							<!-- /fieldinput -->
 
 						</h2>
 						<!-- /head -->
@@ -299,22 +312,12 @@
 							<!-- field -->
 							<li class="field long">
 		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field long">
-		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="shotentry-r">Entry</label>
 								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<select class="fieldinput" id="shotentry-r" name="id[]" multiple required>
+								<select class="fieldinput" id="shotentry-r" name="id[]" multiple required oninput="this.parentElement.parentElement.parentElement.submit()">
 									<!-- <option value=""></option> -->
 									<?php
 
@@ -387,7 +390,7 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="shots">
 								<!-- /fieldinput -->
 		
 							</li>
@@ -537,7 +540,7 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="shots">
 								<!-- /fieldinput -->
 		
 							</li>
@@ -600,11 +603,21 @@
 				</div>
 				<!-- /grid -->
 
-			</main>
-			<!-- /main -->
+			</section>
+			<!-- /section -->
 
-			<!-- main -->
-			<main class="main">
+			<!-- section -->
+			<section class="crud holes">
+
+				<!-- head -->
+				<h1 class="head">
+
+					<!-- caption -->
+					<span class="caption">Holes</span>
+					<!-- /caption -->
+
+				</h1>
+				<!-- /head -->
 
 				<!-- grid -->
 				<div class="grid g4">
@@ -636,11 +649,15 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
 								<!-- /fieldinput -->
 		
 							</li>
 							<!-- /field -->
+
+							<?php
+								
+							?>
 
 						</ul>
 						<!-- /fieldlist -->
@@ -697,7 +714,7 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
 								<!-- /fieldinput -->
 		
 							</li>
@@ -759,7 +776,7 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
 								<!-- /fieldinput -->
 		
 							</li>
@@ -820,7 +837,7 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
 								<!-- /fieldinput -->
 		
 							</li>
@@ -858,11 +875,21 @@
 				</div>
 				<!-- /grid -->
 
-			</main>
-			<!-- /main -->
+			</section>
+			<!-- /section -->
 
-			<!-- main -->
-			<main class="main">
+			<!-- section -->
+			<section class="crud clubs">
+
+				<!-- head -->
+				<h1 class="head">
+
+					<!-- caption -->
+					<span class="caption">Clubs</span>
+					<!-- /caption -->
+
+				</h1>
+				<!-- /head -->
 
 				<!-- grid -->
 				<div class="grid g4">
@@ -894,7 +921,7 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
 								<!-- /fieldinput -->
 		
 							</li>
@@ -955,7 +982,32 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
+								<!-- /fieldinput -->
+		
+							</li>
+							<!-- /field -->
+		
+							<!-- field -->
+							<li class="field long">
+		
+								<!-- fieldlabel -->
+								<label class="fieldlabel" for="clubentry-r">Entry</label>
+								<!-- /fieldlabel -->
+		
+								<!-- fieldinput -->
+								<select class="fieldinput" id="clubentry-r" name="id[]" multiple required oninput="this.parentElement.parentElement.parentElement.submit()">
+									<!-- <option value=""></option> -->
+									<?php
+
+										// Display table entries in dropdown menu. 
+										showSelectOptions($clubentries,'clubs');
+									?>
+								</select>
+								<!-- /fieldinput -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="id-r" name="id"> -->
 								<!-- /fieldinput -->
 		
 							</li>
@@ -1017,7 +1069,32 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
+								<!-- /fieldinput -->
+		
+							</li>
+							<!-- /field -->
+		
+							<!-- field -->
+							<li class="field">
+		
+								<!-- fieldlabel -->
+								<label class="fieldlabel" for="clubentry-u">Entry</label>
+								<!-- /fieldlabel -->
+		
+								<!-- fieldinput -->
+								<select class="fieldinput" id="clubentry-u" name="id" oninput="displaySelectedEntry()">
+									<!-- <option value=""></option> -->
+									<?php
+
+										// Display table entries in dropdown menu. 
+										showSelectOptions($clubentries,'clubs');
+									?>
+								</select>
+								<!-- /fieldinput -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="id-u" name="id"> -->
 								<!-- /fieldinput -->
 		
 							</li>
@@ -1078,7 +1155,32 @@
 							<li class="field long">
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="text" name="tableid" value="xyz" disabled>
+								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
+								<!-- /fieldinput -->
+		
+							</li>
+							<!-- /field -->
+		
+							<!-- field -->
+							<li class="field long">
+		
+								<!-- fieldlabel -->
+								<label class="fieldlabel" for="clubentry-d">Entry</label>
+								<!-- /fieldlabel -->
+		
+								<!-- fieldinput -->
+								<select class="fieldinput" id="clubentry-d" name="id[]" multiple required>
+									<!-- <option value=""></option> -->
+									<?php
+
+										// Display table entries in dropdown menu. 
+										showSelectOptions($clubentries,'clubs');
+									?>
+								</select>
+								<!-- /fieldinput -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="id-d" name="id"> -->
 								<!-- /fieldinput -->
 		
 							</li>
@@ -1116,8 +1218,8 @@
 				</div>
 				<!-- /grid -->
 
-			</main>
-			<!-- /main -->
+			</section>
+			<!-- /section -->
 
 		</div>
 		<!-- /#container -->
@@ -1133,6 +1235,9 @@
 
 		<!-- CRUD Script -->
 		<script src="./assets/script/crud.js" type="text/javascript"></script>
+
+		<!-- Form Script -->
+		<script src="./assets/script/form.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
 		<!-- <script src="./template.js" type="text/javascript"></script> -->
