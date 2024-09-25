@@ -31,7 +31,9 @@ function selectTableById(selectedtableid) {
 }
 
 // TODO: Show values associated with selected entry. 
-function displaySelectedEntry($id) {
+function displaySelectedEntry(tid,eid) {
+	// console.log(databasetable);
+	console.log(databasetableids);
 
 	// Get id of selected entry. 
 

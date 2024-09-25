@@ -60,34 +60,79 @@
 	// Get caption for club entry. 
 	function getClubCaption($entry) {
 
-		// Get id of table entry. 
-		$brand = $entry['clubbrand'];
+		// Get name of club entry. 
 		$name = $entry['clubname'];
+		// Get brand of club entry. 
+		$brand = $entry['clubbrand'];
 
-		// Compile entry caption. 
+		// Compile club entry caption. 
 		return "$brand $name";
 	}
 
 	// Get caption for hole entry. 
 	function getHoleCaption($entry) {
 
-		// Get id of table entry. 
+		// Get name of hole entry. 
 		$holename = $entry['holename'];
 
-		// Compile entry caption. 
+		// Compile hole entry caption. 
 		return "$holename";
 	}
 
 	// Get caption for shot entry. 
 	function getShotCaption($entry) {
 
-		// Get id of table entry. 
+		// Get distance of shot entry. 
 		$distance = $entry['distance'];
-		$clubid = $entry['clubid'];
-		$holeid = $entry['holeid'];
+		// Get id of club entry. 
+		$cid = $entry['clubid'];
+		// Get id of hole entry. 
+		$hid = $entry['holeid'];
+		
+		// Get name of club entry. 
+		$clubname = getClubNameById($cid);
+		// Get name of hole entry. 
+		$holename = getHoleNameById($hid);
 
 		// Compile entry caption. 
-		return "$distance ft ($clubid,$holeid)";
+		// return "$distance ft ($cid,$hid)";
+		return "$distance ft ($clubname, $holename)";
+	}
+
+	// Get club name by id. 
+	function getClubNameById($id) {
+		global $clubentries;
+
+		// Go thru each club entry. 
+		foreach($clubentries as $entry) {
+
+			// Check if match found. 
+			$matchfound = $id == $entry['id'];
+
+			// Return name of matching entry. 
+			if($matchfound) return $entry['clubname'];
+		}
+
+		// Return nothing if match not found. 
+		return '';
+	}
+
+	// Get hole name by id. 
+	function getHoleNameById($id) {
+		global $holeentries;
+
+		// Go thru each hole entry. 
+		foreach($holeentries as $entry) {
+
+			// Check if match found. 
+			$matchfound = $id == $entry['id'];
+
+			// Return name of matching entry. 
+			if($matchfound) return $entry['holename'];
+		}
+
+		// Return nothing if match not found. 
+		return '';
 	}
 
 ?>

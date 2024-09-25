@@ -31,9 +31,8 @@ div#container section div.grid form.form h2.head {font-size:1.125rem; font-weigh
 div#container section div.grid form.form h2.head svg.icon {font-size:1.125em;}
 /* div#container section div.grid form.form h2.head span.caption {} */
 div#container section div.grid form.form ul.fieldlist {flex-grow:1; padding:0; margin:0;}
-div#container section div.grid form.form ul.fieldlist li.field {display:grid; justify-content:center; align-items:center; margin-top:.375rem;}
+div#container section div.grid form.form ul.fieldlist li.field {display:grid; grid-template-columns:auto; justify-content:center; align-items:center; margin-top:.375rem;}
 /* div#container section div.grid form.form ul.fieldlist li.field {grid-template-columns:2fr 3fr;} */
-/* div#container section div.grid form.form ul.fieldlist li.field.long {grid-template-columns:auto;} */
 /* div#container section div.grid form.form ul.fieldlist li.field.x {background-color:#ff03; display:none;} */
 div#container section div.grid form.form ul.fieldlist li.field label.fieldlabel {font-size:.75rem; text-align:left; padding:0 .25em; margin-bottom:.125em;}
 div#container section div.grid form.form.table select.fieldinput,

@@ -5,7 +5,7 @@
 
 
 	// Set state of fwds back to home page. 
-	$stayhome = false;
+	$stayhome = true;
 
 	// Define database tables. 
 	$databasetables = [
@@ -18,16 +18,21 @@
 			// Define table fields. 
 			'fields' => [
 				[
+					'type'=>'select',
 					'id'=>'clubid',
-					'type'=>'select',
+					'pageid'=>'clubentry',
+					'caption'=>'Club',
 				],
 				[
+					'type'=>'select',
 					'id'=>'holeid',
-					'type'=>'select',
+					'pageid'=>'holeentry',
+					'caption'=>'Hole',
 				],
 				[
-					'id'=>'distance',
 					'type'=>'number',
+					'id'=>'distance',
+					'caption'=>'Distance',
 				],
 			],
 
@@ -43,8 +48,9 @@
 			// Define table fields. 
 			'fields' => [
 				[
-					'id'=>'holename',
 					'type'=>'text',
+					'id'=>'holename',
+					'caption'=>'Hole Name',
 				],
 			],
 
@@ -60,12 +66,14 @@
 			// Define table fields. 
 			'fields' => [
 				[
-					'id'=>'clubname',
 					'type'=>'text',
+					'id'=>'clubbrand',
+					'caption'=>'Club Brand',
 				],
 				[
-					'id'=>'clubbrand',
 					'type'=>'text',
+					'id'=>'clubname',
+					'caption'=>'Club Name',
 				],
 			],
 
@@ -119,7 +127,7 @@
 				$value = getFieldValueById($idkey);
 				
 				// Save to list of field values. 
-				$fieldvalues[] = $value;
+				$fieldvalues[] = "'$value'";
 			}
 	
 			// Create comma separated list of field values. 
