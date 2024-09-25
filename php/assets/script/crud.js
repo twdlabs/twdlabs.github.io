@@ -30,6 +30,7 @@ function selectTableById(selectedtableid) {
 	}
 }
 
+
 // TODO: Show values associated with selected entry. 
 function displaySelectedEntry(tid,eid) {
 	// console.log(databasetable);
