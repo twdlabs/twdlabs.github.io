@@ -14,7 +14,7 @@
 
 		<!-- Main Stylesheet -->
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
-		<link href="../assets/style/dbquery.css" rel="stylesheet" type="text/css"/>
+		<link href="../assets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -26,8 +26,8 @@
 			<!-- section -->
 			<section class="">
 
-				<!-- dbquery -->
-				<div class="dbquery">
+				<!-- query -->
+				<div class="query">
 
 					<?php
 
@@ -60,7 +60,7 @@
 					?>
 					
 				</div>
-				<!-- /dbquery -->
+				<!-- /query -->
 
 				<!-- backbtn -->
 				<button class="backbtn btn" onclick="goBackHome()">

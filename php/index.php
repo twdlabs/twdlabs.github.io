@@ -15,7 +15,7 @@
 		<!-- Main Stylesheet -->
 		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<link href="./assets/style/home.css" rel="stylesheet" type="text/css"/>
-		<link href="./assets/style/dbquery.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -27,8 +27,8 @@
 			<!-- section -->
 			<section class="">
 
-				<!-- dbquery -->
-				<div class="dbquery head">
+				<!-- query -->
+				<div class="query head">
 					
 					<!-- togglebtn -->
 					<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
@@ -67,6 +67,7 @@
 						$db = openDb();
 
 						// Print header. 
+						print '<script>databasetables = '.json_encode($databasetables).'</script>';
 						// print '<br>Database tables:<br>'.json_encode($databasetables).'<br>';
 						print '<br>Form Data<br>------------';
 
@@ -84,7 +85,7 @@
 					?>
 					
 				</div>
-				<!-- /dbquery -->
+				<!-- /query -->
 
 				<!-- head -->
 				<h1 class="head">
@@ -165,6 +166,10 @@
 
 					<!-- form -->
 					<form class="form create" method="post" action="./create/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="shots">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -179,10 +184,6 @@
 							<!-- caption -->
 							<span class="caption">Create</span>
 							<!-- /caption -->
-	
-							<!-- fieldinput -->
-							<input class="fieldinput table" type="hidden" name="tableid" value="shots">
-							<!-- /fieldinput -->
 
 						</h2>
 						<!-- /head -->
@@ -285,6 +286,10 @@
 
 					<!-- form -->
 					<form class="form read" method="post" action="./read/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="shots">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -298,10 +303,6 @@
 							<!-- caption -->
 							<span class="caption">Read</span>
 							<!-- /caption -->
-	
-							<!-- fieldinput -->
-							<input class="fieldinput table" type="hidden" name="tableid" value="shots">
-							<!-- /fieldinput -->
 
 						</h2>
 						<!-- /head -->
@@ -310,7 +311,7 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
+							<li class="field">
 		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="shotentry-r">Entry</label>
@@ -365,6 +366,10 @@
 
 					<!-- form -->
 					<form class="form update" method="post" action="./update/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="shots">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -387,16 +392,6 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="shots">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
 							<li class="field">
 		
 								<!-- fieldlabel -->
@@ -404,7 +399,7 @@
 								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<select class="fieldinput" id="shotentry-u" name="id" oninput="displaySelectedEntry()">
+								<select class="fieldinput" id="shotentry-u" name="id" oninput="displaySelectedEntry(this.value)">
 									<!-- <option value=""></option> -->
 									<?php
 
@@ -516,6 +511,10 @@
 
 					<!-- form -->
 					<form class="form delete" method="post" action="./delete/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="shots">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -537,17 +536,7 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="shots">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field long">
+							<li class="field">
 		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="shotentry-d">Entry</label>
@@ -624,6 +613,10 @@
 
 					<!-- form -->
 					<form class="form create" method="post" action="./create/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="holes">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -644,20 +637,6 @@
 
 						<!-- fieldlist -->
 						<ul class="fieldlist">
-		
-							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-
-							<?php
-								
-							?>
 
 						</ul>
 						<!-- /fieldlist -->
@@ -690,6 +669,10 @@
 
 					<!-- form -->
 					<form class="form read" method="post" action="./read/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="holes">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -711,10 +694,25 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
+							<li class="field">
+		
+								<!-- fieldlabel -->
+								<label class="fieldlabel" for="holeentry-r">Entry</label>
+								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
+								<select class="fieldinput" id="holeentry-r" name="id[]" multiple required oninput="this.parentElement.parentElement.parentElement.submit()">
+									<!-- <option value=""></option> -->
+									<?php
+
+										// Display table entries in dropdown menu. 
+										showSelectOptions($holeentries,'holes');
+									?>
+								</select>
+								<!-- /fieldinput -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="id-r" name="id"> -->
 								<!-- /fieldinput -->
 		
 							</li>
@@ -751,6 +749,10 @@
 
 					<!-- form -->
 					<form class="form update" method="post" action="./update/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="holes">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -773,10 +775,25 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
+							<li class="field">
+		
+								<!-- fieldlabel -->
+								<label class="fieldlabel" for="holeentry-u">Entry</label>
+								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
+								<select class="fieldinput" id="holeentry-u" name="id" oninput="displaySelectedEntry(this.value)">
+									<!-- <option value=""></option> -->
+									<?php
+
+										// Display table entries in dropdown menu. 
+										showSelectOptions($holeentries,'holes');
+									?>
+								</select>
+								<!-- /fieldinput -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="id-u" name="id"> -->
 								<!-- /fieldinput -->
 		
 							</li>
@@ -813,6 +830,10 @@
 
 					<!-- form -->
 					<form class="form delete" method="post" action="./delete/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="holes">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -834,10 +855,25 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
+							<li class="field">
+		
+								<!-- fieldlabel -->
+								<label class="fieldlabel" for="holeentry-d">Entry</label>
+								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="holes">
+								<select class="fieldinput" id="holeentry-d" name="id[]" multiple required>
+									<!-- <option value=""></option> -->
+									<?php
+
+										// Display table entries in dropdown menu. 
+										showSelectOptions($holeentries,'holes');
+									?>
+								</select>
+								<!-- /fieldinput -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="id-d" name="id"> -->
 								<!-- /fieldinput -->
 		
 							</li>
@@ -896,6 +932,10 @@
 
 					<!-- form -->
 					<form class="form create" method="post" action="./create/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -916,16 +956,6 @@
 
 						<!-- fieldlist -->
 						<ul class="fieldlist">
-		
-							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
 
 						</ul>
 						<!-- /fieldlist -->
@@ -958,6 +988,10 @@
 
 					<!-- form -->
 					<form class="form read" method="post" action="./read/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -979,17 +1013,7 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field long">
+							<li class="field">
 		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="clubentry-r">Entry</label>
@@ -1044,6 +1068,10 @@
 
 					<!-- form -->
 					<form class="form update" method="post" action="./update/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -1066,16 +1094,6 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
 							<li class="field">
 		
 								<!-- fieldlabel -->
@@ -1083,7 +1101,7 @@
 								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<select class="fieldinput" id="clubentry-u" name="id" oninput="displaySelectedEntry()">
+								<select class="fieldinput" id="clubentry-u" name="id" oninput="displaySelectedEntry(this.value)">
 									<!-- <option value=""></option> -->
 									<?php
 
@@ -1131,6 +1149,10 @@
 
 					<!-- form -->
 					<form class="form delete" method="post" action="./delete/index.php">
+
+						<!-- fieldinput -->
+						<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
+						<!-- /fieldinput -->
 	
 						<!-- head -->
 						<h2 class="head">
@@ -1152,17 +1174,7 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field long">
-		
-								<!-- fieldinput -->
-								<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field long">
+							<li class="field">
 		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="clubentry-d">Entry</label>
@@ -1237,7 +1249,7 @@
 		<script src="./assets/script/crud.js" type="text/javascript"></script>
 
 		<!-- Form Script -->
-		<script src="./assets/script/form.js" type="text/javascript"></script>
+		<script src="./assets/script/editor.js" type="text/javascript"></script>
 
 		<!-- Main Script -->
 		<!-- <script src="./template.js" type="text/javascript"></script> -->
@@ -1245,10 +1257,10 @@
 		<script type="text/javascript">
 			let shotentries = <?php echo json_encode($shotentries); ?>;
 			console.log('Shot entries:',shotentries);
-			let clubentries = <?php echo json_encode($clubentries); ?>;
-			console.log('Club entries:',clubentries);
 			let holeentries = <?php echo json_encode($holeentries); ?>;
 			console.log('Hole entries:',holeentries);
+			let clubentries = <?php echo json_encode($clubentries); ?>;
+			console.log('Club entries:',clubentries);
 		</script>
 
 	</body>

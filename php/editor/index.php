@@ -10,7 +10,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="../assets/flaskicon.png" rel="icon"/>
 		<link href="../assets/flaskicon.png" rel="apple-touch-icon"/>
-		<title>Update | CRUD Template</title>
+		<title>Editor | CRUD Template</title>
 
 		<!-- Main Stylesheet -->
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
@@ -25,7 +25,7 @@
 
 			<!-- section -->
 			<section class="">
-				
+
 				<!-- query -->
 				<div class="query">
 
@@ -49,8 +49,8 @@
 						// Get id of selected table. 
 						$selectedtableid = getFieldValueById('tableid');
 
-						// Update existing table entry in database. 
-						$queryresult = updateEntry($selectedtableid);
+						// Create new table entry in database. 
+						$queryresult = createNewEntry($selectedtableid);
 
 						// Disconnect server database. 
 						closeDb($db);
