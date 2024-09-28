@@ -29,18 +29,3 @@ function selectTableById(selectedtableid) {
 		}
 	}
 }
-
-
-// TODO: Show values associated with selected entry. 
-function displaySelectedEntry(tid,eid) {
-	// console.log(databasetable);
-	console.log(databasetableids);
-
-	// Get id of selected entry. 
-
-	// Get selected entry. 
-
-	// Get value(s) of selected entry. 
-
-	// Display value(s) of selected entry. 
-}

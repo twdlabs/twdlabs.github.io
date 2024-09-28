@@ -20,13 +20,11 @@
 				[
 					'type'=>'select',
 					'id'=>'clubid',
-					'pageid'=>'clubentry',
 					'caption'=>'Club',
 				],
 				[
 					'type'=>'select',
 					'id'=>'holeid',
-					'pageid'=>'holeentry',
 					'caption'=>'Hole',
 				],
 				[

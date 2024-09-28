@@ -1,13 +1,9 @@
 
 
 
-// Define ids for CRUD operations. 
-const crudoperations = [ 'create', /* 'read', */ 'update', /* 'delete', */ ];
-// console.log('CRUD operations:',crudoperations);
-
-
-/*****/
-
+// Define loader flag. 
+let letitload = false;
+// letitload = true;
 
 // Display editor fields for clubs table. 
 displayFormFields('clubs');
@@ -16,7 +12,7 @@ displayFormFields('clubs');
 displayFormFields('holes');
 
 // Display editor fields for shots table. 
-// displayFormFields('shots');
+displayFormFields('shots');
 
 
 /*****/
@@ -24,58 +20,27 @@ displayFormFields('holes');
 
 // Display editor fields for currently selected table. 
 function displayFormFields(tableid) {
-	// console.log('Displaying editor fields...',tableid);
+	console.log('Displaying editor fields for:',tableid);
+	// console.log('Database tables:',databasetables);
+	if(!letitload) return;
 
-	// Get list of fields. 
+	// Get destination for given table's editor fields. 
+	let editorfieldsdestination = document.querySelector(`div#container section.crud.${tableid} div.grid form.form ul.fieldlist`);
+	// console.log('\tField destinations:',tableid,editorfieldsdestination);
+
+	// Get list of fields for given table. 
 	let fieldslist = databasetables[tableid]['fields'];
 
-	// Get destinations for editor fields. 
-	let fielddestinations = {};
-	// fielddestinations = crudoperations.map(getFieldsDestination);
-
-	// Go thru each operation. 
-	for(let opid of crudoperations) {
-
-		// Get fields destination for current operation. 
-		fielddestinations[opid] = getFieldsDestination(opid);
-	}
-	// console.log('Field destinations:',fielddestinations);
-
-	// Create editor fields: 'create'. 
-	let createlayout = createFieldLayout(fieldslist,'c');
-	// Display editor fields: 'create'. 
-	fielddestinations['create'].insertAdjacentHTML('beforeend',createlayout);
-
-	// // Create editor fields: 'read'. 
-	// let readlayout = createFieldLayout(fieldslist,'r');
-	// // Display editor fields: 'read'. 
-	// fielddestinations['read'].insertAdjacentHTML('beforeend',readlayout);
-
-	// Create editor fields: 'update'. 
-	let updatelayout = createFieldLayout(fieldslist,'u');
-	// Display editor fields: 'update'. 
-	fielddestinations['update'].insertAdjacentHTML('beforeend',updatelayout);
-
-	// // Create editor fields: 'delete'. 
-	// let deletelayout = createFieldLayout(fieldslist,'d');
-	// // Display editor fields: 'delete'. 
-	// fielddestinations['delete'].insertAdjacentHTML('beforeend',deletelayout);
+	// Create layout for editor fields. 
+	let editorfieldslayout = createFieldsLayout(fieldslist);
+	// Display editor fields. 
+	// editorfieldsdestination.innerHTML = (editorfieldslayout);
+	editorfieldsdestination.insertAdjacentHTML('beforeend',editorfieldslayout);
 
 	/****/
 
-	// Get destination for list of fields. 
-	function getFieldsDestination(opid) {
-
-		// Get selected element. 
-		let destination = document.querySelector(`div#container section.crud.${tableid} div.grid form.form.${opid} ul.fieldlist`);
-		// console.log('\t',tableid,opid,destination);
-
-		// Return selected element. 
-		return (destination);
-	}
-
 	// Create layout for form field. 
-	function createFieldLayout(fieldlist,crudid) {
+	function createFieldsLayout(fieldlist) {
 
 		// Initialize layout. 
 		let fieldslayout = '';
@@ -83,11 +48,26 @@ function displayFormFields(tableid) {
 		// Go thru each field. 
 		for(let field of fieldlist) {
 
+			// Get field type. 
+			let type = field['type'];
+
+			// Compile layout for current field. 
+			if(type=='select') fieldslayout += createSelectField(field);
+
+			// Compile layout for current field. 
+			else fieldslayout += createInputField(field);
+		}
+
+		// Return layout. 
+		return fieldslayout;
+
+		/***/
+
+		// Create input field. 
+		function createInputField(field) {
+
 			// Get field id. 
 			let fieldid = field['id'];
-
-			// Get page id. 
-			let pageid = field['pageid'];
 
 			// Get field type. 
 			let type = field['type'];
@@ -95,51 +75,102 @@ function displayFormFields(tableid) {
 			// Get field caption. 
 			let caption = field['caption'];
 
-			// Compile layout for current field. 
-			if(type=='select') fieldslayout += `
-			<!-- field -->
-			<li class="field">
-
-				<!-- fieldlabel -->
-				<label class="fieldlabel" for="${pageid}-${crudid}">${caption}</label>
-				<!-- /fieldlabel -->
-
-				<!-- fieldinput -->
-				<select class="fieldinput" id="${pageid}-${crudid}" name="${fieldid}">
-					<!-- <option value=""></option> -->
-					<?php
-
-						// Display clubs table entries in dropdown menu. 
-						showSelectOptions($holeentries,'holes');
-					?>
-				</select>
-				<!-- /fieldinput -->
-
-				<!-- fieldinput -->
-				<!-- <input class="fieldinput" type="${type}" id="${fieldid}-${crudid}" name="${fieldid}"> -->
-				<!-- /fieldinput -->
-
-			</li>
-			<!-- /field -->`;
-
-			// Compile layout for current field. 
-			else fieldslayout += `
+			// Compile layout for given field. 
+			return `
 			<!-- field -->
 			<li class="field">
 	
 				<!-- fieldlabel -->
-				<label class="fieldlabel" for="${fieldid}-${crudid}">${caption}</label>
+				<label class="fieldlabel" for="${fieldid}-${tableid}">${caption}</label>
 				<!-- /fieldlabel -->
 	
 				<!-- fieldinput -->
-				<input class="fieldinput" type="${type}"${type=='number'?' min="0"':''} id="${fieldid}-${crudid}" name="${fieldid}">
+				<input class="fieldinput" type="${type}"${type=='number'?' min="0"':''} id="${fieldid}-${tableid}" name="${fieldid}">
 				<!-- /fieldinput -->
 	
 			</li>
 			<!-- /field -->`;
 		}
 
-		// Return layout. 
-		return fieldslayout;
+		// Create select field. 
+		function createSelectField(field) {
+
+			// Get field id. 
+			let fieldid = field['id'];
+
+			// Get field type. 
+			let type = field['type'];
+
+			// Get field caption. 
+			let caption = field['caption'];
+
+			// Compile layout for given field. 
+			return `
+			<!-- field -->
+			<li class="field">
+
+				<!-- fieldlabel -->
+				<label class="fieldlabel" for="${fieldid}-${tableid}">${caption}</label>
+				<!-- /fieldlabel -->
+
+				<!-- fieldinput -->
+				<select class="fieldinput" id="${fieldid}-${tableid}" name="${fieldid}">
+					<!-- <option value=""></option> -->
+					${ "showSelectOptions(entries,'xyz')" }
+				</select>
+				<!-- /fieldinput -->
+
+				<!-- fieldinput -->
+				<!-- <input class="fieldinput" type="${type}" id="${fieldid}-${tableid}" name="${fieldid}"> -->
+				<!-- /fieldinput -->
+
+			</li>
+			<!-- /field -->`;
+
+			/**/
+
+			// Display select options for dropdown menu. 
+			function showSelectOptions(entrieslist,tableid) {
+				// global $databasetables;
+	
+				// Initialize list of options. 
+				let optionslist = 'xyz';
+		
+				// Go thru each table entry. 
+				for(let entry of entrieslist) {
+		
+					// Get id of table entry. 
+					let id = entry['id'];
+	
+					// Initialize entry caption. 
+					let entrycaption = 'xyz';
+		
+					// Get entry summary. 
+					// if(tableid) entrycaption = $databasetables[tableid]['captioner'](entry);
+					// else entrycaption = createEntrySummary($entry);
+		
+					// Display table entry as select option. 
+					optionslist += `<option value=\"${id}\">${entrycaption}</option>`;
+				}
+		
+				// Return list of options. 
+				return optionslist;
+			}
+		}
 	}
+}
+
+// U in CRUD //
+// TODO: Show values associated with selected entry. 
+function displaySelectedEntry(tid,eid) {
+	// console.log(databasetable);
+	console.log(databasetableids);
+
+	// Get id of selected entry. 
+
+	// Get selected entry. 
+
+	// Get value(s) of selected entry. 
+
+	// Display value(s) of selected entry. 
 }

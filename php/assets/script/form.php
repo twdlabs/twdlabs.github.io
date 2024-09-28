@@ -8,8 +8,6 @@
 	function showSelectOptions($entrieslist,$tableid) {
 		global $databasetables;
 
-		/****/
-
 		// Go thru each table entry. 
 		foreach($entrieslist as $entry) {
 
