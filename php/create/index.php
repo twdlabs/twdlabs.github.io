@@ -31,10 +31,10 @@
 
 					<?php
 
+						// Get functions to access server database. 
+						require_once('../assets/script/config.php');
 						// Get functions to display form layout. 
 						require_once('../assets/script/form.php');
-						// Get functions to access server database. 
-						require_once('../assets/script/db.php');
 						// Get functions to perform CRUD operations. 
 						require_once('../assets/script/crud.php');
 						// Get functions to access input and display output. 
@@ -86,6 +86,10 @@
 
 		<!-- Navigation Script -->
 		<script src="../assets/script/nav.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			let queryresult = <?php echo json_encode($queryresult); ?>;
+			console.log('Query result:',queryresult);
+		</script>
 
 	</body>
 
