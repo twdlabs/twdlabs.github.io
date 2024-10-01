@@ -18,7 +18,7 @@
 		if($dbconnect) {
 
 			// Notify if connection successful. 
-			print '<br>Connection started...';
+			printToPage('Connection started...');
 			
 			// Notify of any connection errors. 
 			if($dbconnect->connect_errno) {
@@ -28,9 +28,9 @@
 			}
 		}
 		// Notify if connection unsuccessful. 
-		else print '<br>Connection failed.';
+		else printToPage('Connection failed.');
 		// Insert line. 
-		print '<br>';
+		printToPage();
 
 		// Return connection. 
 		return $dbconnect;
@@ -41,8 +41,7 @@
 
 		// Close server connection to database. 
 		$db->close();
-		print '<br><br>Connection closed.';
-		// Insert lines. 
-		print '<br><br>';
+		printToPage();
+		printToPage('Connection closed.');
 	}
 ?>

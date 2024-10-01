@@ -1,0 +1,9 @@
+
+
+
+/* Form */
+/* div#container div.grid {} */
+div#container div.grid section.crud {display:none;}
+div#container div.grid.s section.shots {display:block;}
+div#container div.grid.h section.holes {display:block;}
+div#container div.grid.c section.clubs {display:block;}

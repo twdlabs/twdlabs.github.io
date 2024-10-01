@@ -1,7 +1,7 @@
 
 
 
-// Select CRUD table by id. 
+// Select editor table by id. 
 function selectTableById(selectedtableid) {
 
 	// Define ids of database tables. 

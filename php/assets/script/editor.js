@@ -3,30 +3,30 @@
 
 // Define loader flag. 
 let letitload = false;
-// letitload = true;
+letitload = true;
 
-// Display editor fields for clubs table. 
-displayFormFields('clubs');
+// // Display editor fields for clubs table. 
+// displayEditorFields('clubs');
 
-// Display editor fields for holes table. 
-displayFormFields('holes');
+// // Display editor fields for holes table. 
+// displayEditorFields('holes');
 
-// Display editor fields for shots table. 
-displayFormFields('shots');
+// // Display editor fields for shots table. 
+// displayEditorFields('shots');
 
 
 /*****/
 
 
 // Display editor fields for currently selected table. 
-function displayFormFields(tableid) {
+function displayEditorFields(tableid) {
 	console.log('Displaying editor fields for:',tableid);
 	// console.log('Database tables:',databasetables);
 	if(!letitload) return;
 
 	// Get destination for given table's editor fields. 
-	let editorfieldsdestination = document.querySelector(`div#container section.crud.${tableid} div.grid form.form ul.fieldlist`);
-	// console.log('\tField destinations:',tableid,editorfieldsdestination);
+	let editorfieldsdestination = document.querySelector(`div#container section.crud.${tableid} form.form ul.fieldlist`);
+	console.log('\tFields destination:',editorfieldsdestination);
 
 	// Get list of fields for given table. 
 	let fieldslist = databasetables[tableid]['fields'];
@@ -114,14 +114,14 @@ function displayFormFields(tableid) {
 				<!-- /fieldlabel -->
 
 				<!-- fieldinput -->
-				<select class="fieldinput" id="${fieldid}-${tableid}" name="${fieldid}">
-					<!-- <option value=""></option> -->
-					${ "showSelectOptions(entries,'xyz')" }
-				</select>
+				<!-- <input class="fieldinput" type="${type}" id="${fieldid}-${tableid}" name="${fieldid}"> -->
 				<!-- /fieldinput -->
 
 				<!-- fieldinput -->
-				<!-- <input class="fieldinput" type="${type}" id="${fieldid}-${tableid}" name="${fieldid}"> -->
+				<select class="fieldinput" id="${fieldid}-${tableid}" name="${fieldid}">
+					<!-- <option value=""></option> -->
+					${ "getSelectOptions(entries,tableid)" }
+				</select>
 				<!-- /fieldinput -->
 
 			</li>
@@ -129,12 +129,12 @@ function displayFormFields(tableid) {
 
 			/**/
 
-			// Display select options for dropdown menu. 
-			function showSelectOptions(entrieslist,tableid) {
+			// Get list of table entries for dropdown menu. 
+			function getSelectOptions(entrieslist/* ,tableid */) {
 				// global $databasetables;
 	
-				// Initialize list of options. 
-				let optionslist = 'xyz';
+				// Initialize list of select options. 
+				let optionslist = '';
 		
 				// Go thru each table entry. 
 				for(let entry of entrieslist) {
@@ -144,27 +144,26 @@ function displayFormFields(tableid) {
 	
 					// Initialize entry caption. 
 					let entrycaption = 'xyz';
-		
-					// Get entry summary. 
+					// Get entry caption. 
 					// if(tableid) entrycaption = $databasetables[tableid]['captioner'](entry);
+					// Get entry summary as caption. 
 					// else entrycaption = createEntrySummary($entry);
 		
-					// Display table entry as select option. 
+					// Save table entry as select option. 
 					optionslist += `<option value=\"${id}\">${entrycaption}</option>`;
 				}
 		
-				// Return list of options. 
+				// Return list of select options. 
 				return optionslist;
 			}
 		}
 	}
 }
 
-// U in CRUD //
 // TODO: Show values associated with selected entry. 
-function displaySelectedEntry(tid,eid) {
-	// console.log(databasetable);
-	console.log(databasetableids);
+function displaySelectedEntry(eid,tid) {
+	console.log(databasetables);
+	// console.log(databasetableids);
 
 	// Get id of selected entry. 
 
@@ -173,4 +172,19 @@ function displaySelectedEntry(tid,eid) {
 	// Get value(s) of selected entry. 
 
 	// Display value(s) of selected entry. 
+}
+
+// Turn off primary input field. 
+function turnOffPrimaryField(btn) {
+
+	// Get associated form. 
+	let form = btn.closest('form.form');
+	console.log(form);
+
+	// Get primary entry field. 
+	let entryfield = form.querySelector('li.field.pfield select.fieldinput');
+	console.log(entryfield);
+
+	// Disable entry field. 
+	entryfield.disabled = true;
 }

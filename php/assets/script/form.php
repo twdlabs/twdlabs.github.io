@@ -4,7 +4,7 @@
 <?php
 
 
-	// Display select options for dropdown menu. 
+	// Display list of table entries in dropdown menu. 
 	function showSelectOptions($entrieslist,$tableid) {
 		global $databasetables;
 
@@ -14,18 +14,16 @@
 			// Get id of table entry. 
 			$id = $entry['id'];
 
-			// Get entry summary. 
+			// Get entry caption. 
 			if($tableid) $entrycaption = $databasetables[$tableid]['captioner']($entry);
+			// Get entry summary as caption. 
 			else $entrycaption = createEntrySummary($entry);
 
 			// Display table entry as select option. 
 			print "<option value=\"$id\">$entrycaption</option>";
 		}
 	}
-
-	/****/
-
-	// Create summary of given entry. 
+	// Get summary of given entry. 
 	function createEntrySummary($givenentry) {
 
 		// Return entry summary (simple JSON object string). 
@@ -54,6 +52,118 @@
 		// Return entry summary. 
 		return $entrysummary;
 	}
+
+	// TODO: Display editor fields. 
+	function displayEditorFields($tableid) {
+		global $databasetables;
+		// print $tableid;
+
+		// Get list of fields for given table. 
+		$fieldslist = $databasetables[$tableid]['fields'];
+
+		// Go thru each table field. 
+		foreach($fieldslist as $field) {
+
+			// Get field id. 
+			$fid = $field['id'];
+
+			// Get field type. 
+			$type = $field['type'];
+
+			// Get field caption. 
+			$caption = $field['caption'];
+
+			// Display select field. 
+			if($type=='select') {
+
+				// Get field's table id. 
+				$ftid = $field['tid'];
+
+				// Get list of table entries for given field. 
+				$fieldentries = $databasetables[$ftid]['entries'];
+
+				// Get table entries for given field. 
+				$fieldentriesoptionslist = getSelectOptions($fieldentries,$ftid);
+
+				// Display select field. 
+				print "
+				<!-- field -->
+				<li class=\"field\">
+	
+					<!-- fieldlabel -->
+					<label class=\"fieldlabel\" for=\"$fid-$tableid\">$caption</label>
+					<!-- /fieldlabel -->
+	
+					<!-- fieldinput -->
+					<!-- <input class=\"fieldinput\" type=\"$type\" id=\"$fid-$tableid\" name=\"$fid\"> -->
+					<!-- /fieldinput -->
+	
+					<!-- fieldinput -->
+					<select class=\"fieldinput\" id=\"$fid-$tableid\" name=\"$fid\">
+						<!-- <option value=\"\"></option> -->
+						$fieldentriesoptionslist
+					</select>
+					<!-- /fieldinput -->
+	
+				</li>
+				<!-- /field -->";
+			}
+
+			// Display input field. 
+			else {
+
+				// Check input type. 
+				$xyz = ($type=='number') ? ' min=\"0\"' : '';
+
+				// Display input field. 
+				print "
+				<!-- field -->
+				<li class=\"field\">
+		
+					<!-- fieldlabel -->
+					<label class=\"fieldlabel\" for=\"$fid-$tableid\">$caption</label>
+					<!-- /fieldlabel -->
+		
+					<!-- fieldinput -->
+					<input class=\"fieldinput\" type=\"$type\"$xyz id=\"$fid-$tableid\" name=\"$fid\">
+					<!-- /fieldinput -->
+		
+				</li>
+				<!-- /field -->";
+			}
+		}
+	}
+	// Get list of select options. 
+	function getSelectOptions($fieldentries,$ftid) {
+
+		// Initialize list of field select options. 
+		$fieldentriesoptionslist = '';
+
+		// Accumulate field select options in list. 
+		foreach($fieldentries as $entry) {
+			$fieldentriesoptionslist .= createSelectOption($entry,$ftid);
+		}
+
+		// Initialize list of field select options. 
+		return $fieldentriesoptionslist;
+	}
+	// Create select option for given table entry. 
+	function createSelectOption($tableentry,$tid) {
+		global $databasetables;
+
+		// Get id for given table entry. 
+		$id = '';
+
+		// Get caption for given table entry. 
+		$caption = $databasetables[$tid]['captioner']($tableentry);
+
+		// Compile layout for given table entry. 
+		return "<option value=\"$id\">$caption</option>";
+	}
+
+
+	/*****/
+
 
 	// Get caption for club entry. 
 	function getClubCaption($entry) {
@@ -99,10 +209,10 @@
 
 	// Get club name by id. 
 	function getClubNameById($id) {
-		global $clubentries;
+		global $databasetables;
 
 		// Go thru each club entry. 
-		foreach($clubentries as $entry) {
+		foreach($databasetables['clubs']['entries'] as $entry) {
 
 			// Check if match found. 
 			$matchfound = $id == $entry['id'];
@@ -117,10 +227,10 @@
 
 	// Get hole name by id. 
 	function getHoleNameById($id) {
-		global $holeentries;
+		global $databasetables;
 
 		// Go thru each hole entry. 
-		foreach($holeentries as $entry) {
+		foreach($databasetables['holes']['entries'] as $entry) {
 
 			// Check if match found. 
 			$matchfound = $id == $entry['id'];

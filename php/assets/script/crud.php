@@ -6,6 +6,7 @@
 
 	// Set state of fwds back to home page. 
 	$stayhome = true;
+	$stayhome = false;
 
 	// Define database tables. 
 	$databasetables = [
@@ -20,11 +21,13 @@
 				[
 					'type'=>'select',
 					'id'=>'clubid',
+					'tid'=>'clubs',
 					'caption'=>'Club',
 				],
 				[
 					'type'=>'select',
 					'id'=>'holeid',
+					'tid'=>'holes',
 					'caption'=>'Hole',
 				],
 				[
@@ -32,6 +35,10 @@
 					'id'=>'distance',
 					'caption'=>'Distance',
 				],
+			],
+
+			// Define table entries. 
+			'entries' => [
 			],
 
 			// Define caption getter functions. 
@@ -50,6 +57,10 @@
 					'id'=>'holename',
 					'caption'=>'Hole Name',
 				],
+			],
+
+			// Define table entries. 
+			'entries' => [
 			],
 
 			// Define caption getter functions. 
@@ -73,6 +84,10 @@
 					'id'=>'clubname',
 					'caption'=>'Club Name',
 				],
+			],
+
+			// Define table entries. 
+			'entries' => [
 			],
 
 			// Define caption getter functions. 
@@ -103,47 +118,54 @@
 
 
 	// Create new table entry in database. 
-	function createNewEntry($tableid) {
+	function createTableEntry(/* $tableid */) {
 		global $db;
 		global $databasetables;
 
-		// Get list of field ids. 
-		$fieldids = array_map('getFieldId', $databasetables[$tableid]['fields'] );
-
 		/****/
 
-		// Get list of field values (in string form). 
-		function getFieldValuesList($fieldids) {
+		// Get list of field values. 
+		function getFieldValues($fieldids) {
 	
 			// Initialize list of field values. 
 			$fieldvalues = [];
 	
 			// Go thru each field id key. 
-			foreach($fieldids as $idkey) {
+			foreach($fieldids as $fid) {
 	
-				// Get field value from form. 
-				$value = getFieldValueById($idkey);
+				// Get field value. 
+				$value = getFieldValueById($fid);
 				
 				// Save to list of field values. 
-				$fieldvalues[] = "'$value'";
+				$fieldvalues[] = "$value";
+				// $fieldvalues[] = "'$value'";
 			}
 	
 			// Create comma separated list of field values. 
-			return getCommaList($fieldvalues);
+			return $fieldvalues;
 		}
 
 		/****/
 
-		// Consolidate list of field values. 
-		$fieldidslist = getCommaList($fieldids);
-		$fieldvalueslist = getFieldValuesList($fieldids);
+		// Print header. 
+		printToPage('Field Values<br>----------------');
 
-		// Print line. 
-		print '<br>';
+		// Get field value: selected table id. 
+		$tableid = getFieldValueById('tableid');
+
+		// Get list of field ids. 
+		$fieldids = array_map('getFieldId', $databasetables[$tableid]['fields'] );
+		$fieldidslist = getCommaList($fieldids);
+
+		// Get list of field values. 
+		$fieldvalues = getFieldValues($fieldids);
+		$fieldvalueslist = getCommaList($fieldvalues);
 
 		// Create database query. 
 		$sql = "INSERT INTO $tableid ($fieldidslist) VALUES ($fieldvalueslist)";
-		print "<br>$sql";
+		// Display database query. 
+		printToPage();
+		printToPage($sql);
 	
 		// Send database query. 
 		$query = $db->query($sql);
@@ -152,49 +174,59 @@
 	}
 
 	// Read existing table entry in database. 
-	function readEntry($tableid) {
+	function readTableEntry(/* $tableid */) {
 		global $db;
 
-		// Get field value from form. 
-		$id = getFieldValueById('id');
+		// Print header. 
+		printToPage('Field Values<br>----------------');
+
+		// Get field value: selected table id. 
+		$tableid = getFieldValueById('tableid');
+		// Get field value: selected entry id(s). 
+		$entryids = getFieldValueById('id');
 
 		// Check for multiple values. 
-		$multipleids = is_array($id);
-		print "<br><br>multipleids = $multipleids";
+		$multiplevalues = is_array($entryids);
+		// $multipleselected = $multiplevalues ? 'true' : 'false';
+		// printToPage();
+		// printToPage("Multiple selected: $multipleselected");
 
-		// Handle single value. 
-		if(!$multipleids) {
+		// Create database query for single value. 
+		if(!$multiplevalues) {
 			
 			// Create database query (for single value). 
-			$sql = "SELECT * FROM $tableid WHERE (id=$id)";
+			$sql = "SELECT * FROM $tableid WHERE (id=$entryids)";
 		}
-
-		// Handle multiple values. 
+		// Create database query for multiple values. 
 		else {
 
 			// Compile condition list. 
-			$conditionlist = implode( ' OR ' , array_map('createIdCondition',$id) );
+			$conditionlist = implode( ' OR ' , array_map('createIdCondition',$entryids) );
 
 			// Create database query (for multiple values). 
 			$sql = "SELECT * FROM $tableid WHERE ($conditionlist)";
 		}
-		print "<br>$sql";
+		// Display database query. 
+		printToPage();
+		printToPage($sql);
 	
 		// Send database query. 
 		$query = $db->query($sql);
 		// Return result of query. 
 		return getResult($query);
 	}
-	// Read all existing table entries in database. 
-	function readAllEntries($tableid) {
+	// Read existing table entries in database. 
+	function readTableEntries($tableid) {
 		global $db;
 
-		// Print line. 
-		print '<br>';
+		// Get field value: selected table id. 
+		// $tableid = getFieldValueById('tableid');
 
 		// Create database query. 
 		$sql = "SELECT * FROM $tableid";
-		print "<br>$sql";
+		// Display database query. 
+		printToPage();
+		printToPage($sql);
 	
 		// Send database query. 
 		$query = $db->query($sql);
@@ -203,49 +235,54 @@
 	}
 	
 	// Update existing table entry in database. 
-	function updateEntry($tableid) {
+	function updateTableEntry(/* $tableid */) {
 		global $db;
 		global $databasetables;
 
-		// Get list of field ids. 
-		$fieldids = array_map('getFieldId', $databasetables[$tableid]['fields'] );
-
 		/****/
 
-		// Get list of field ids and values (in string form). 
-		function getFieldIdsNValuesList($fieldids) {
+		// Get list of field ids set to input values. 
+		function getFieldSetterList($fieldids) {
 	
 			// Initialize list of field values. 
 			$fieldidsnvalues = [];
 			
 			// Go thru each field id key. 
-			foreach($fieldids as $idkey) {
+			foreach($fieldids as $fid) {
 	
-				// Get field value from form. 
-				$value = getFieldValueById($idkey);
+				// Get field value. 
+				$value = getFieldValueById($fid);
 				
 				// Save to list of field values. 
-				$fieldidsnvalues[] = "$idkey='$value'";
+				$fieldidsnvalues[] = "$fid='$value'";
 			}
 	
 			// Create comma separated list of field ids. 
-			return getCommaList($fieldidsnvalues);
+			return $fieldidsnvalues;
 		}
 
 		/****/
 
-		// Get field value from form. 
-		$id = getFieldValueById('id');
+		// Print header. 
+		printToPage('Field Values<br>----------------');
 
-		// Consolidate list of field values. 
-		$fieldidsnvalueslist = getFieldIdsNValuesList($fieldids);
+		// Get field value: selected table id. 
+		$tableid = getFieldValueById('tableid');
+		// Get field value: selected entry id. 
+		$entryid = getFieldValueById('id');
 
-		// Print line. 
-		print '<br>';
+		// Get list of field ids. 
+		$fieldids = array_map('getFieldId', $databasetables[$tableid]['fields'] );
+
+		// Get list of field ids set to input values. 
+		$fieldidsnvalues = getFieldSetterList($fieldids);
+		$fieldidsnvalueslist = getCommaList($fieldidsnvalues);
 
 		// Create database query. 
-		$sql = "UPDATE $tableid SET ($fieldidsnvalueslist) WHERE (id=$id)";
-		print "<br>$sql";
+		$sql = "UPDATE $tableid SET $fieldidsnvalueslist WHERE (id=$entryid)";
+		// Display database query. 
+		printToPage();
+		printToPage($sql);
 	
 		// Send database query. 
 		$query = $db->query($sql);
@@ -254,33 +291,41 @@
 	}
 
 	// Delete existing table entry in database. 
-	function deleteEntry($tableid) {
+	function deleteTableEntry(/* $tableid */) {
 		global $db;
 
-		// Get field value from form. 
-		$id = getFieldValueById('id');
+		// Print header. 
+		printToPage('Field Values<br>----------------');
+
+		// Get field value: selected table id. 
+		$tableid = getFieldValueById('tableid');
+		// Get field value: selected entry id(s). 
+		$entryids = getFieldValueById('id');
 
 		// Check for multiple values. 
-		$multipleids = is_array($id);
-		print "<br><br>multipleids = $multipleids";
+		$multiplevalues = is_array($entryids);
+		// $multipleselected = $multiplevalues ? 'true' : 'false';
+		// printToPage();
+		// printToPage("Multiple selected: $multipleselected");
 
-		// Handle single value. 
-		if(!$multipleids) {
+		// Create database query for single value. 
+		if(!$multiplevalues) {
 			
 			// Create database query (for single value). 
-			$sql = "DELETE FROM $tableid WHERE (id=$id)";
+			$sql = "DELETE FROM $tableid WHERE (id=$entryids)";
 		}
-
-		// Handle multiple values. 
+		// Create database query for multiple values. 
 		else {
 
 			// Compile condition list. 
-			$conditionlist = implode( ' OR ' , array_map('createIdCondition',$id) );
+			$conditionlist = implode( ' OR ' , array_map('createIdCondition',$entryids) );
 
 			// Create database query (for multiple values). 
 			$sql = "DELETE FROM $tableid WHERE ($conditionlist)";
 		}
-		print "<br>$sql";
+		// Display database query. 
+		printToPage();
+		printToPage($sql);
 	
 		// Send database query. 
 		$query = $db->query($sql);

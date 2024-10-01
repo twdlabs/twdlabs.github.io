@@ -8,45 +8,51 @@
 	function getFieldValueById($fieldid) {
 		global $db;
 
-		// Get field input value from form submission. 
-		$fieldinput = $_POST[$fieldid];
+		// Get input field value. 
+		$fieldvalue = $_POST[$fieldid] /* ?? '' */;
+		// Check for multiple field values. 
+		$gotmultivalue = is_array($fieldvalue);
 
-		// Check for multiple values. 
-		$gotmultivalue = is_array($fieldinput);
+		// Handle empty field value. 
+		if($fieldvalue==null) {
 
+			// TODO: Set null field value. 
+			// $fieldvalue = null;
+			// $fieldvalue = -1;
+			// $fieldvalue = 'xyz';
+			// $fieldvalue = 0;
+			$fieldvalue = '0';
+
+			// Display default field value. 
+			printToPage("$fieldid: $fieldvalue (default)");
+		}
 		// Display multiple field values. 
-		if($gotmultivalue) {
-
-			// Go thru each field value. 
-			foreach($fieldinput as $value) {
-
-				// Display string input field value. 
-				print "<br>$fieldid: " . $value . '';
-			}
+		else if($gotmultivalue) {
+			
+			// Get list of input field values. 
+			$fieldvaluelist = getCommaList($fieldvalue);
+			
+			// Display input field values. 
+			printToPage("$fieldid: [ $fieldvaluelist ]");
 		}
 		// Display single field value. 
 		else {
 
-			// Sanitize string input. 
-			$fieldinput = $db->real_escape_string($fieldinput);
+			// TODO: Sanitize string input. 
+			$fieldvalue = $db->real_escape_string($fieldvalue);
 
-			// Display string input field value. 
-			print "<br>$fieldid: " . $fieldinput;
+			// Display input field value. 
+			printToPage("$fieldid: $fieldvalue");
 		}
-
-		// Handle empty field value. 
-		if($fieldinput==null) {
-
-			// Set null field value. 
-			$fieldinput = -1;
-
-			// Display field value. 
-			print " => $fieldid: " . $fieldinput;
-		}
-		print '';
 
 		// Return field value. 
-		return $fieldinput;
+		return $fieldvalue;
+	}
+
+	// Print to page. 
+	function printToPage($text='') {
+		/* if($text)  */print "<span class=\"block\">$text</span>";
+		// else print "<span class=\"block\"></span>";
 	}
 
 	// Get result of database query. 
@@ -85,11 +91,11 @@
 
 		// Display query status. 
 		// header('Content-Type: application/json');
-		print '<br>' . json_encode($querystatus);
+		printToPage(json_encode($querystatus));
 
 		// Display query results. 
-		// print '<br>Returned: ';
-		// print '<br>' . json_encode($resultentries);
+		// printToPage('Returned:');
+		// printToPage(json_encode($resultentries));
 
 		// Return list of table entries. 
 		return $resultentries;
