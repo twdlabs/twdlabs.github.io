@@ -15,7 +15,6 @@
 		<!-- Main Stylesheet -->
 		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<link href="./assets/style/form.css" rel="stylesheet" type="text/css"/>
-		<link href="./assets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -24,33 +23,33 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- section -->
-			<section class="hi">
-
-				<!-- query -->
-				<div class="query head">
+			<!-- query -->
+			<div class="query head">
+				
+				<!-- togglebtn -->
+				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
 					
-					<!-- togglebtn -->
-					<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
-						
-						<!-- icon -->
-						<svg class="icon dn arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-						</svg>
-						<!-- /icon -->
+					<!-- icon -->
+					<svg class="icon dn arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+					</svg>
+					<!-- /icon -->
 
-						<!-- icon -->
-						<svg class="icon up arrowup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-						</svg>
-						<!-- /icon -->
+					<!-- icon -->
+					<svg class="icon up arrowup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+					</svg>
+					<!-- /icon -->
 
-						<!-- caption -->
-						<span class="caption">Toggle</span>
-						<!-- /caption -->
-						
-					</div>
-					<!-- /togglebtn -->
+					<!-- caption -->
+					<span class="caption">Toggle</span>
+					<!-- /caption -->
+					
+				</div>
+				<!-- /togglebtn -->
+
+				<!-- contents -->
+				<div class="contents">
 
 					<?php
 
@@ -67,26 +66,36 @@
 						$db = openDb();
 
 						// Print header. 
-						print '<script>databasetables = '.json_encode($databasetables).'</script>';
-						// print '<br>Database tables:<br>'.json_encode($databasetables).'<br>';
-						print '<br>Form Data<br>------------';
+						printToPage('Field Values<br>----------------');
 
 						// Read existing table entries: shots. 
-						$shotentries = readAllEntries('shots');
-						$databasetables['shots']['entries'] = $shotentries;
+						$tid = 'shots';
+						$queryresult = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresult;
 						// Read existing table entries: holes. 
-						$holeentries = readAllEntries('holes');
-						$databasetables['holes']['entries'] = $holeentries;
+						$tid = 'holes';
+						$queryresult = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresult;
 						// Read existing table entries: clubs. 
-						$clubentries = readAllEntries('clubs');
-						$databasetables['clubs']['entries'] = $clubentries;
+						$tid = 'clubs';
+						$queryresult = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresult;
 
 						// Disconnect server database. 
 						closeDb($db);
+
+						// Save database tables. 
+						print '<script>databasetables = '.json_encode($databasetables).'</script>';
 					?>
-					
+
 				</div>
-				<!-- /query -->
+				<!-- /contents -->
+
+			</div>
+			<!-- /query -->
+
+			<!-- section -->
+			<section class="hi">
 
 				<!-- head -->
 				<h1 class="head">
@@ -110,64 +119,51 @@
 					</svg>
 					<!-- /icon -->
 
-					<!-- caption -->
-					<span class="caption">Welcome to the site!</span>
-					<!-- /caption -->
-
 				</h1>
 				<!-- /head -->
-				
-				<!-- link -->
-				<a class="link" href="./" target="_blank">Start here</a>
-				<!-- /link -->
-				
-				<!-- link -->
-				<a class="link" href="./editor" target="_blank">Editor</a>
-				<!-- /link -->
-
-				<!-- grid -->
-				<div class="grid">
-
-					<!-- form -->
-					<form class="form tableselect" method="post">
-
-						<!-- fieldlabel -->
-						<!-- <label class="fieldlabel" for="tablename">Table</label> -->
-						<!-- /fieldlabel -->
-
-						<!-- fieldinput -->
-						<select class="fieldinput" id="tablename" name="tableid[]" multiple oninput="selectTableById(this.value) /* this.parentElement.submit() */">
-							<!-- <option value=""></option> -->
-							<option value="shots">Shots</option>
-							<option value="holes">Holes</option>
-							<option value="clubs">Clubs</option>
-						</select>
-						<!-- /fieldinput -->
-
-					</form>
-					<!-- /form -->
-
-				</div>
-				<!-- /grid -->
-
-			</section>
-			<!-- /section -->
-
-			<!-- section -->
-			<section class="crud shots">
 
 				<!-- head -->
 				<h1 class="head">
 
 					<!-- caption -->
-					<span class="caption">Shots</span>
+					<span class="caption">Welcome!</span>
 					<!-- /caption -->
 
 				</h1>
 				<!-- /head -->
 
-				<!-- grid -->
-				<div class="grid">
+				<!-- navbar -->
+				<nav class="navbar x">
+					
+					<!-- link -->
+					<a class="link" href="./">Home</a>
+					<!-- /link -->
+					
+					<!-- link -->
+					<a class="link" href="./editor/">Editor</a>
+					<!-- /link -->
+
+				</nav>
+				<!-- /navbar -->
+
+			</section>
+			<!-- /section -->
+
+			<!-- grid -->
+			<div class="grid">
+
+				<!-- section -->
+				<section class="crud shots">
+
+					<!-- head -->
+					<h1 class="head">
+
+						<!-- caption -->
+						<span class="caption">Shots</span>
+						<!-- /caption -->
+
+					</h1>
+					<!-- /head -->
 
 					<!-- form -->
 					<form class="form" method="post">
@@ -187,12 +183,13 @@
 								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<select class="fieldinput" id="shotentry" name="id[]" multiple required>
+								<select class="fieldinput" id="shotentry" name="id[]" multiple xyz>
 									<!-- <option value=""></option> -->
 									<?php
 
 										// Display table entries in dropdown menu. 
-										showSelectOptions($shotentries,'shots');
+										$tid = 'shots';
+										showSelectOptions( $databasetables[$tid]['entries'] , $tid );
 									?>
 								</select>
 								<!-- /fieldinput -->
@@ -204,7 +201,7 @@
 						<!-- /fieldlist -->
 	
 						<!-- field -->
-						<div class="field go">
+						<div class="btnpanel">
 	
 							<!-- gobtn -->
 							<button class="gobtn btn" formaction="./read/index.php">
@@ -223,7 +220,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn btn" formaction="./editor/index.php">
+							<button class="gobtn btn" name="editmode" value="u" formaction="./editor/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Edit</span>
@@ -255,7 +252,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn new btn" onclick="window.location='./editor/index.php'">
+							<button class="gobtn wide btn" name="editmode" value="c" formaction="./editor/index.php">
 	
 								<!-- caption -->
 								<span class="caption">New</span>
@@ -276,27 +273,21 @@
 					</form>
 					<!-- /form -->
 
-				</div>
-				<!-- /grid -->
+				</section>
+				<!-- /section -->
 
-			</section>
-			<!-- /section -->
+				<!-- section -->
+				<section class="crud holes">
 
-			<!-- section -->
-			<section class="crud holes">
+					<!-- head -->
+					<h1 class="head">
 
-				<!-- head -->
-				<h1 class="head">
+						<!-- caption -->
+						<span class="caption">Holes</span>
+						<!-- /caption -->
 
-					<!-- caption -->
-					<span class="caption">Holes</span>
-					<!-- /caption -->
-
-				</h1>
-				<!-- /head -->
-
-				<!-- grid -->
-				<div class="grid">
+					</h1>
+					<!-- /head -->
 
 					<!-- form -->
 					<form class="form" method="post">
@@ -316,12 +307,13 @@
 								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<select class="fieldinput" id="holeentry" name="id[]" multiple required>
+								<select class="fieldinput" id="holeentry" name="id[]" multiple xyz>
 									<!-- <option value=""></option> -->
 									<?php
 
 										// Display table entries in dropdown menu. 
-										showSelectOptions($holeentries,'holes');
+										$tid = 'holes';
+										showSelectOptions( $databasetables[$tid]['entries'] , $tid );
 									?>
 								</select>
 								<!-- /fieldinput -->
@@ -333,7 +325,7 @@
 						<!-- /fieldlist -->
 	
 						<!-- field -->
-						<div class="field go">
+						<div class="btnpanel">
 	
 							<!-- gobtn -->
 							<button class="gobtn btn" formaction="./read/index.php">
@@ -352,7 +344,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn btn" formaction="./editor/index.php">
+							<button class="gobtn btn" name="editmode" value="u" formaction="./editor/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Edit</span>
@@ -384,7 +376,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn new btn" onclick="window.location='./editor/index.php'">
+							<button class="gobtn wide btn" name="editmode" value="c" formaction="./editor/index.php">
 	
 								<!-- caption -->
 								<span class="caption">New</span>
@@ -405,27 +397,21 @@
 					</form>
 					<!-- /form -->
 
-				</div>
-				<!-- /grid -->
+				</section>
+				<!-- /section -->
 
-			</section>
-			<!-- /section -->
+				<!-- section -->
+				<section class="crud clubs">
 
-			<!-- section -->
-			<section class="crud clubs">
+					<!-- head -->
+					<h1 class="head">
 
-				<!-- head -->
-				<h1 class="head">
+						<!-- caption -->
+						<span class="caption">Clubs</span>
+						<!-- /caption -->
 
-					<!-- caption -->
-					<span class="caption">Clubs</span>
-					<!-- /caption -->
-
-				</h1>
-				<!-- /head -->
-
-				<!-- grid -->
-				<div class="grid">
+					</h1>
+					<!-- /head -->
 
 					<!-- form -->
 					<form class="form" method="post">
@@ -445,12 +431,13 @@
 								<!-- /fieldlabel -->
 		
 								<!-- fieldinput -->
-								<select class="fieldinput" id="clubentry" name="id[]" multiple required>
+								<select class="fieldinput" id="clubentry" name="id[]" multiple xyz>
 									<!-- <option value=""></option> -->
 									<?php
 
 										// Display table entries in dropdown menu. 
-										showSelectOptions($clubentries,'clubs');
+										$tid = 'clubs';
+										showSelectOptions( $databasetables[$tid]['entries'] , $tid );
 									?>
 								</select>
 								<!-- /fieldinput -->
@@ -462,7 +449,7 @@
 						<!-- /fieldlist -->
 	
 						<!-- field -->
-						<div class="field go">
+						<div class="btnpanel">
 	
 							<!-- gobtn -->
 							<button class="gobtn btn" formaction="./read/index.php">
@@ -481,7 +468,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn btn" formaction="./editor/index.php">
+							<button class="gobtn btn" name="editmode" value="u" formaction="./editor/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Edit</span>
@@ -513,7 +500,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn new btn" onclick="window.location='./editor/index.php'">
+							<button class="gobtn wide btn" name="editmode" value="c" formaction="./editor/index.php">
 	
 								<!-- caption -->
 								<span class="caption">New</span>
@@ -534,11 +521,11 @@
 					</form>
 					<!-- /form -->
 
-				</div>
-				<!-- /grid -->
+				</section>
+				<!-- /section -->
 
-			</section>
-			<!-- /section -->
+			</div>
+			<!-- /grid -->
 
 		</div>
 		<!-- /#container -->
@@ -548,6 +535,8 @@
 		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
 		<!-- <script src="./../golfer/assets/database/tabledatabase.js" type="text/javascript"></script> -->
 		<script type="text/javascript">
+			let post = <?php echo json_encode($_POST); ?>;
+			console.log('Post:',post);
 			let databasetables = <?php echo json_encode($databasetables); ?>;
 			console.log('Database tables:',databasetables);
 		</script>

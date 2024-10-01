@@ -15,7 +15,7 @@
 		<!-- Main Stylesheet -->
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<link href="../assets/style/form.css" rel="stylesheet" type="text/css"/>
-		<link href="../assets/style/query.css" rel="stylesheet" type="text/css"/>
+		<link href="../assets/style/editor.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -24,33 +24,33 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- section -->
-			<section class="hi">
-
-				<!-- query -->
-				<div class="query head">
+			<!-- query -->
+			<div class="query head">
+				
+				<!-- togglebtn -->
+				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
 					
-					<!-- togglebtn -->
-					<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
-						
-						<!-- icon -->
-						<svg class="icon dn arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-						</svg>
-						<!-- /icon -->
+					<!-- icon -->
+					<svg class="icon dn arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+					</svg>
+					<!-- /icon -->
 
-						<!-- icon -->
-						<svg class="icon up arrowup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-						</svg>
-						<!-- /icon -->
+					<!-- icon -->
+					<svg class="icon up arrowup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+					</svg>
+					<!-- /icon -->
 
-						<!-- caption -->
-						<span class="caption">Toggle</span>
-						<!-- /caption -->
-						
-					</div>
-					<!-- /togglebtn -->
+					<!-- caption -->
+					<span class="caption">Toggle</span>
+					<!-- /caption -->
+					
+				</div>
+				<!-- /togglebtn -->
+
+				<!-- contents -->
+				<div class="contents">
 
 					<?php
 
@@ -67,226 +67,133 @@
 						$db = openDb();
 
 						// Print header. 
-						print '<script>databasetables = '.json_encode($databasetables).'</script>';
-						// print '<br>Database tables:<br>'.json_encode($databasetables).'<br>';
-						print '<br>Form Data<br>------------';
+						printToPage('Field Values<br>----------------');
+
+						// Get id of selected entry. 
+						$entryid = getFieldValueById('id');
+						// Get id of selected table. 
+						$tableid = getFieldValueById('tableid');
+						// Get editor mode. 
+						$editormode = getFieldValueById('editmode');
+
+						// Get id of selected table for editor. 
+						$etid = substr($tableid,0,1);
+						// TODO: Show editor for selected table. 
+
+						// Check if editor in update mode. 
+						if($editormode=='update') {
+
+							// Return home if updating w/o entry given. 
+							if(!$entryid || $entryid==-1) {
+	
+								// Revert to create mode. 
+								// $editormode = 'create';
+	
+								// Go back to home page. 
+								header("location:../");
+							}
+						}
+						// // Check if editor in create mode. 
+						// else if($editormode=='create') {
+
+						// 	// 
+						// }
+						// // TODO: Do xyz. 
+						// else {
+
+						// 	// 
+						// }
 
 						// Read existing table entries: shots. 
-						$shotentries = readAllEntries('shots');
-						$databasetables['shots']['entries'] = $shotentries;
+						$tid = 'shots';
+						$queryresult = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresult;
 						// Read existing table entries: holes. 
-						$holeentries = readAllEntries('holes');
-						$databasetables['holes']['entries'] = $holeentries;
+						$tid = 'holes';
+						$queryresult = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresult;
 						// Read existing table entries: clubs. 
-						$clubentries = readAllEntries('clubs');
-						$databasetables['clubs']['entries'] = $clubentries;
-
-						// Get id of selected table. 
-						$selectedtableid = getFieldValueById('tableid');
+						$tid = 'clubs';
+						$queryresult = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresult;
 
 						// Disconnect server database. 
 						closeDb($db);
 
-						// Go back to home page. 
-						// if($stayhome) header('location:../');
+						// Save database tables. 
+						print '<script>databasetables = '.json_encode($databasetables).'</script>';
+
+						/*****/
+
+						// Get editor mode. 
+						function getEditorMode() {
+							print ($entryid)?'u':'c';
+						}
+
+						// Get xyz. 
+						function getXyz() {
+
+							// 
+						}
 					?>
-					
-				</div>
-				<!-- /query -->
-
-				<!-- backbtn -->
-				<button class="backbtn btn" onclick="goBackHome()">
-
-					<!-- icon -->
-					<svg class="icon up arrowleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-					</svg>
-					<!-- /icon -->
-
-					<!-- caption -->
-					<span class="caption">Back</span>
-					<!-- /caption -->
-					
-				</button>
-				<!-- /backbtn -->
-
-				<!-- grid -->
-				<div class="grid">
-
-					<!-- form -->
-					<form class="form" method="post">
-
-						<!-- fieldlist -->
-						<ul class="fieldlist">
-		
-							<!-- field -->
-							<li class="field">
-		
-								<!-- fieldlabel -->
-								<label class="fieldlabel" for="clubentry">Club</label>
-								<!-- /fieldlabel -->
-		
-								<!-- fieldinput -->
-								<select class="fieldinput" id="clubentry" name="clubid">
-									<!-- <option value=""></option> -->
-									<?php
-
-										// Display clubs table entries in dropdown menu. 
-										$tid = 'clubs';
-										showSelectOptions( $databasetables[$tid]['entries'] , $tid );
-									?>
-								</select>
-								<!-- /fieldinput -->
-		
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="text" id="clubid" name="clubid"> -->
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field">
-		
-								<!-- fieldlabel -->
-								<label class="fieldlabel" for="holeentry">Hole</label>
-								<!-- /fieldlabel -->
-		
-								<!-- fieldinput -->
-								<select class="fieldinput" id="holeentry" name="holeid">
-									<!-- <option value=""></option> -->
-									<?php
-
-										// Display clubs table entries in dropdown menu. 
-										$tid = 'holes';
-										showSelectOptions( $databasetables[$tid]['entries'] , $tid );
-									?>
-								</select>
-								<!-- /fieldinput -->
-		
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="text" id="holeid" name="holeid"> -->
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field">
-		
-								<!-- fieldlabel -->
-								<label class="fieldlabel" for="distance">Distance</label>
-								<!-- /fieldlabel -->
-		
-								<!-- fieldinput -->
-								<input class="fieldinput" type="number" min="0" id="distance" name="distance">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-
-						</ul>
-						<!-- /fieldlist --> 
-
-						<!-- fieldlist -->
-						<ul class="fieldlist">
-		
-							<!-- field -->
-							<li class="field">
-		
-								<!-- fieldlabel -->
-								<label class="fieldlabel" for="clubentry">Club</label>
-								<!-- /fieldlabel -->
-		
-								<!-- fieldinput -->
-								<select class="fieldinput" id="clubentry" name="clubid">
-									<!-- <option value=""></option> -->
-									<?php
-
-										// Display clubs table entries in dropdown menu. 
-										$tid = 'clubs';
-										showSelectOptions( $databasetables[$tid]['entries'] , $tid );
-									?>
-								</select>
-								<!-- /fieldinput -->
-		
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="text" id="clubid" name="clubid"> -->
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field">
-		
-								<!-- fieldlabel -->
-								<label class="fieldlabel" for="holeentry">Hole</label>
-								<!-- /fieldlabel -->
-		
-								<!-- fieldinput -->
-								<select class="fieldinput" id="holeentry" name="holeid">
-									<!-- <option value=""></option> -->
-									<?php
-
-										// Display clubs table entries in dropdown menu. 
-										$tid = 'holes';
-										showSelectOptions( $databasetables[$tid]['entries'] , $tid );
-									?>
-								</select>
-								<!-- /fieldinput -->
-		
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="text" id="holeid" name="holeid"> -->
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-		
-							<!-- field -->
-							<li class="field">
-		
-								<!-- fieldlabel -->
-								<label class="fieldlabel" for="distance">Distance</label>
-								<!-- /fieldlabel -->
-		
-								<!-- fieldinput -->
-								<input class="fieldinput" type="number" min="0" id="distance" name="distance">
-								<!-- /fieldinput -->
-		
-							</li>
-							<!-- /field -->
-
-						</ul>
-						<!-- /fieldlist -->
-	
-					</form>
-					<!-- /form -->
 
 				</div>
-				<!-- /grid -->
+				<!-- /contents -->
 
-			</section>
-			<!-- /section -->
+			</div>
+			<!-- /query -->
 
 			<!-- section -->
-			<section class="crud shots">
+			<section class="hi">
 
 				<!-- head -->
 				<h1 class="head">
 
-					<!-- caption -->
-					<span class="caption">Shots</span>
-					<!-- /caption -->
+					<!-- icon -->
+					<svg class="icon pencilsquare" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+						<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+					</svg>
+					<!-- /icon -->
 
 				</h1>
 				<!-- /head -->
 
-				<!-- grid -->
-				<div class="grid g2">
+				<!-- navbar -->
+				<nav class="navbar x">
+					
+					<!-- link -->
+					<a class="link" href="../">Home</a>
+					<!-- /link -->
+					
+					<!-- link -->
+					<a class="link" href="./">Editor</a>
+					<!-- /link -->
+
+				</nav>
+				<!-- /navbar -->
+
+			</section>
+			<!-- /section -->
+
+			<!-- grid -->
+			<div class="grid <?php print $etid; ?>">
+
+				<!-- section -->
+				<section class="crud shots">
+
+					<!-- head -->
+					<h1 class="head">
+
+						<!-- caption -->
+						<span class="caption">Shot Editor</span>
+						<!-- /caption -->
+
+					</h1>
+					<!-- /head -->
 
 					<!-- form -->
-					<form class="form" method="post">
+					<form class="form <?php print $editormode; ?>" method="post">
 
 						<!-- fieldinput -->
 						<input class="fieldinput table" type="hidden" name="tableid" value="shots">
@@ -296,11 +203,15 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field">
+							<li class="field pfield">
 		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="shotentry-u">Entry</label>
 								<!-- /fieldlabel -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="shotid-u" name="id"> -->
+								<!-- /fieldinput -->
 		
 								<!-- fieldinput -->
 								<select class="fieldinput" id="shotentry-u" name="id" oninput="displaySelectedEntry(this.value)">
@@ -314,25 +225,44 @@
 								</select>
 								<!-- /fieldinput -->
 		
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="text" id="id-u" name="id"> -->
-								<!-- /fieldinput -->
-		
 							</li>
 							<!-- /field -->
-							
-						</ul>
-						<!-- /fieldlist -->
 
-						<!-- fieldlist -->
-						<ul class="fieldlist"></ul>
+							<?php
+
+								// 
+								// printToPage('hi');
+								// printToPage('hi');
+
+								// Display editor fields. 
+								$tid = 'shots';
+								displayEditorFields($tid);
+							?>
+
+						</ul>
 						<!-- /fieldlist -->
 	
 						<!-- field -->
-						<div class="field go">
+						<div class="btnpanel">
+
+							<!-- backbtn -->
+							<button class="backbtn btn" type="button" onclick="goBackHome()">
+
+								<!-- icon -->
+								<svg class="icon up arrowleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+								</svg>
+								<!-- /icon -->
+
+								<!-- caption -->
+								<span class="caption">Cancel</span>
+								<!-- /caption -->
+								
+							</button>
+							<!-- /backbtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn update btn" formaction="../update/index.php">
+							<button class="gobtn updatebtn btn" formaction="../update/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Update</span>
@@ -348,7 +278,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn create btn" formaction="../create/index.php">
+							<button class="gobtn createbtn btn" onclick="turnOffPrimaryField(this)" formaction="../create/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Create</span>
@@ -369,30 +299,24 @@
 					</form>
 					<!-- /form -->
 
-				</div>
-				<!-- /grid -->
+				</section>
+				<!-- /section -->
 
-			</section>
-			<!-- /section -->
+				<!-- section -->
+				<section class="crud holes">
 
-			<!-- section -->
-			<section class="crud holes">
+					<!-- head -->
+					<h1 class="head">
 
-				<!-- head -->
-				<h1 class="head">
+						<!-- caption -->
+						<span class="caption">Hole Editor</span>
+						<!-- /caption -->
 
-					<!-- caption -->
-					<span class="caption">Holes</span>
-					<!-- /caption -->
-
-				</h1>
-				<!-- /head -->
-
-				<!-- grid -->
-				<div class="grid g2">
+					</h1>
+					<!-- /head -->
 
 					<!-- form -->
-					<form class="form" method="post">
+					<form class="form <?php print $editormode; ?>" method="post">
 
 						<!-- fieldinput -->
 						<input class="fieldinput table" type="hidden" name="tableid" value="holes">
@@ -402,11 +326,15 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field">
+							<li class="field pfield">
 		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="holeentry-u">Entry</label>
 								<!-- /fieldlabel -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="holeid-u" name="id"> -->
+								<!-- /fieldinput -->
 		
 								<!-- fieldinput -->
 								<select class="fieldinput" id="holeentry-u" name="id" oninput="displaySelectedEntry(this.value)">
@@ -420,25 +348,44 @@
 								</select>
 								<!-- /fieldinput -->
 		
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="text" id="id-u" name="id"> -->
-								<!-- /fieldinput -->
-		
 							</li>
 							<!-- /field -->
 
-						</ul>
-						<!-- /fieldlist -->
+							<?php
 
-						<!-- fieldlist -->
-						<ul class="fieldlist"></ul>
+								// 
+								// printToPage('hi');
+								// printToPage('hi');
+
+								// Display editor fields. 
+								$tid = 'holes';
+								displayEditorFields($tid);
+							?>
+
+						</ul>
 						<!-- /fieldlist -->
 	
 						<!-- field -->
-						<div class="field go">
+						<div class="btnpanel">
+
+							<!-- backbtn -->
+							<button class="backbtn btn" type="button" onclick="goBackHome()">
+
+								<!-- icon -->
+								<svg class="icon up arrowleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+								</svg>
+								<!-- /icon -->
+
+								<!-- caption -->
+								<span class="caption">Cancel</span>
+								<!-- /caption -->
+								
+							</button>
+							<!-- /backbtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn update btn" formaction="../update/index.php">
+							<button class="gobtn updatebtn btn" formaction="../update/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Update</span>
@@ -454,7 +401,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn create btn" formaction="../create/index.php">
+							<button class="gobtn createbtn btn" onclick="turnOffPrimaryField(this)" formaction="../create/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Create</span>
@@ -475,30 +422,24 @@
 					</form>
 					<!-- /form -->
 
-				</div>
-				<!-- /grid -->
+				</section>
+				<!-- /section -->
 
-			</section>
-			<!-- /section -->
+				<!-- section -->
+				<section class="crud clubs">
 
-			<!-- section -->
-			<section class="crud clubs">
+					<!-- head -->
+					<h1 class="head">
 
-				<!-- head -->
-				<h1 class="head">
+						<!-- caption -->
+						<span class="caption">Club Editor</span>
+						<!-- /caption -->
 
-					<!-- caption -->
-					<span class="caption">Clubs</span>
-					<!-- /caption -->
-
-				</h1>
-				<!-- /head -->
-
-				<!-- grid -->
-				<div class="grid g2">
+					</h1>
+					<!-- /head -->
 
 					<!-- form -->
-					<form class="form" method="post">
+					<form class="form <?php print $editormode; ?>" method="post">
 
 						<!-- fieldinput -->
 						<input class="fieldinput table" type="hidden" name="tableid" value="clubs">
@@ -508,11 +449,15 @@
 						<ul class="fieldlist">
 		
 							<!-- field -->
-							<li class="field">
+							<li class="field pfield">
 		
 								<!-- fieldlabel -->
 								<label class="fieldlabel" for="clubentry-u">Entry</label>
 								<!-- /fieldlabel -->
+		
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="text" id="clubid-u" name="id"> -->
+								<!-- /fieldinput -->
 		
 								<!-- fieldinput -->
 								<select class="fieldinput" id="clubentry-u" name="id" oninput="displaySelectedEntry(this.value)">
@@ -526,25 +471,44 @@
 								</select>
 								<!-- /fieldinput -->
 		
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="text" id="id-u" name="id"> -->
-								<!-- /fieldinput -->
-		
 							</li>
 							<!-- /field -->
 
-						</ul>
-						<!-- /fieldlist -->
+							<?php
 
-						<!-- fieldlist -->
-						<ul class="fieldlist"></ul>
+								// 
+								// printToPage('hi');
+								// printToPage('hi');
+
+								// Display editor fields. 
+								$tid = 'clubs';
+								displayEditorFields($tid);
+							?>
+
+						</ul>
 						<!-- /fieldlist -->
 	
 						<!-- field -->
-						<div class="field go">
+						<div class="btnpanel">
+
+							<!-- backbtn -->
+							<button class="backbtn btn" type="button" onclick="goBackHome()">
+
+								<!-- icon -->
+								<svg class="icon up arrowleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+								</svg>
+								<!-- /icon -->
+
+								<!-- caption -->
+								<span class="caption">Cancel</span>
+								<!-- /caption -->
+								
+							</button>
+							<!-- /backbtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn update btn" formaction="../update/index.php">
+							<button class="gobtn updatebtn btn" formaction="../update/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Update</span>
@@ -560,7 +524,7 @@
 							<!-- /gobtn -->
 	
 							<!-- gobtn -->
-							<button class="gobtn create btn" formaction="../create/index.php">
+							<button class="gobtn createbtn btn" onclick="turnOffPrimaryField(this)" formaction="../create/index.php">
 	
 								<!-- caption -->
 								<span class="caption">Create</span>
@@ -581,11 +545,11 @@
 					</form>
 					<!-- /form -->
 
-				</div>
-				<!-- /grid -->
+				</section>
+				<!-- /section -->
 
-			</section>
-			<!-- /section -->
+			</div>
+			<!-- /grid -->
 
 		</div>
 		<!-- /#container -->
@@ -595,6 +559,8 @@
 		<!-- <script src="../xyzdatabase.js" type="text/javascript"></script> -->
 		<!-- <script src="../../golfer/assets/database/tabledatabase.js" type="text/javascript"></script> -->
 		<script type="text/javascript">
+			let post = <?php echo json_encode($_POST); ?>;
+			console.log('Post:',post);
 			let databasetables = <?php echo json_encode($databasetables); ?>;
 			console.log('Database tables:',databasetables);
 		</script>
