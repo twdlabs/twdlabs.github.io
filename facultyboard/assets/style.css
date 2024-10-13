@@ -1,0 +1,130 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--lightgrey:#CCC;
+	--lightblack:#333;
+	
+	/* Gradient Colors */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
+	/* Page Sizes */
+	--dt:.5s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+
+body {
+
+	--backcolor:var(--lightgrey);
+	--forecolor:black;
+}
+
+/* body.dark {
+
+	--backcolor:var(--lightblack);
+	--forecolor:white;
+} */
+
+
+
+
+
+/* Container */
+body {background-color:var(--backcolor); background-image:var(--bgimg); margin:0;}
+body {color:var(--forecolor); font-family:Nunito,sans-serif;}
+div#container {display:flex; flex-direction:column; justify-content:center; place-items:center; grid-gap:.5rem; min-height:100vh; padding:1rem;}
+
+
+/* Navbar */
+div#container nav.navbar {position:fixed; top:0; right:0; left:0; width:100%;}
+div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:1rem 2rem; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
+div#container nav.navbar div.bin h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
+/* div#container nav.navbar div.bin h1.head svg.icon {} */
+div#container nav.navbar div.bin h1.head span.caption {margin-left:.375rem;}
+div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+div#container nav.navbar div.bin ul.navlist li.navitem {padding:.5rem;}
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:flex; align-items:center; color:inherit; text-decoration:none;}
+/* div#container nav.navbar div.bin ul.navlist li.navitem a.navlink svg.icon {} */
+div#container nav.navbar div.bin ul.navlist li.navitem a.navlink span.caption {/* display:none; */ margin-left:.25em;}
+
+
+
+/* General Section */
+div#container section {background-color:white; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+/* div#container section {width:100%; max-width:var(--pagewidth);} */
+div#container section {}
+div#container section h2.head {margin:0;}
+/* div#container section h2.head span.caption {} */
+div#container section h2.head span.caption:empty {background-color:gainsboro; display:inline-block; height:1em; width:6em; border-radius:1em;}
+
+
+/* Form Section */
+div#container section form.crud {margin:0;}
+div#container section form.crud ul.fieldlist {list-style:none; padding:0; margin:0;}
+div#container section form.crud ul.fieldlist li.field {margin-top:.5rem;}
+div#container section form.crud ul.fieldlist li.field input.fieldinput,
+div#container section form.crud ul.fieldlist li.field select.fieldinput,
+div#container section form.crud ul.fieldlist li.field textarea.fieldinput,
+div#container section form.crud button.sendbtn {font-family:inherit; font-size:inherit; resize:none; width:100%; padding:.25em .5em;}
+div#container section form.crud button.sendbtn {margin-top:.5rem;}
+
+
+/* Table Section */
+div#container section.table table.table {text-align:center; width:100%;}
+div#container section.table table.table thead.head {background-color:gainsboro;}
+/* div#container section.table table.table thead.head tr.row {} */
+div#container section.table table.table thead.head th.cell {padding:.5em;}
+/* div#container section.table table.table tbody.body {} */
+/* div#container section.table table.table tbody.body tr.row {} */
+div#container section.table table.table tbody.body td.cell {background-color:#f8f8f8; padding:0 .5em;}
+div#container section.table table.table tbody.body td.cell form.crud {background-color:gainsboro; display:inline-block; width:100%; margin-top:.5rem;}
+/* div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist {display:flex;} */
+div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist li.field {margin-top:.125rem;}
+/* div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist li.field input.fieldinput {} */
+/* div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist li.field select.fieldinput {} */
+/* div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist li.field textarea.fieldinput {} */
+div#container section.table table.table tbody.body td.cell form.crud button.sendbtn {margin-top:.125rem;}
+/* div#container section.table table.table tbody.body td.cell span.caption {} */
+/* div#container section.table table.table tbody.body span.caption {} */
+
+
+/* Navigataion Section */
+/* div#container section.nav {} */
+div#container section.nav h2.head {text-align:center;}
+div#container section.nav ul.navlist {list-style:none; /* text-align:center; */ padding:0; margin:0;}
+div#container section.nav ul.navlist {display:grid; grid-template-columns:repeat(3,1fr); margin-top:1.25em;}
+/* div#container section.nav ul.navlist li.navitem {} */
+div#container section.nav ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container section.nav ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center;}
+div#container section.nav ul.navlist li.navitem a.navlink svg.icon {font-size:3em;}
+div#container section.nav ul.navlist li.navitem a.navlink span.caption {font-size:1.25em;}
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	/*  */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	/*  */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	/*  */
+}
