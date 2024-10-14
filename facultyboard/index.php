@@ -280,11 +280,11 @@
 									</td>
 									<!-- /cell -->
 
-									<?php foreach($selectedtable['editorfields'] as $field): ?>
+									<?php foreach($editorfields as $field): ?>
 
 										<?php 
 											// Get field id. 
-											$fid = $field['fid'];
+											$fid = isset($field['capref']['fid']) ? $field['capref']['fid'] : $field['fid'];
 											// Get field value. 
 											$value = $tablerow[$fid];
 										?>
@@ -348,8 +348,11 @@
 
 																<?php foreach($databasetables[$rtid]['entries'] as $rtablerow): ?>
 
+																	<?php $selected = false; ?>
+																	<?php $selected = $rtablerow['id']==$tablerow[$fid]; ?>
+
 																	<!-- option -->
-																	<option value="<?php print $rtablerow['id']; ?>"><?php print $rtablerow[$ptfid]; ?></option>
+																	<option value="<?php print $rtablerow['id']; ?>" <?php print $selected?'selected':''; ?>><?php print $rtablerow[$ptfid]; ?></option>
 																	<!-- option -->
 
 																<?php endforeach; ?>
@@ -392,7 +395,7 @@
 											<button class="sendbtn btn" type="submit">
 
 												<!-- caption -->
-												<span class="caption">Update <?php print $singlecaption; ?></span>
+												<span class="caption">Update <?php /* print $singlecaption; */ ?></span>
 												<!-- /caption -->
 
 											</button>
@@ -414,7 +417,7 @@
 											<button class="sendbtn btn" type="submit">
 
 												<!-- caption -->
-												<span class="caption">Delete <?php print $singlecaption; ?></span>
+												<span class="caption">Delete <?php /* print $singlecaption; */ ?></span>
 												<!-- /caption -->
 
 											</button>
@@ -678,6 +681,8 @@
 			console.log('Post:',<?php print json_encode($_POST); ?>);
 			console.log('Database tables:',<?php print json_encode($databasetables); ?>);
 			console.log('Selected table (rows):',<?php print json_encode($selectedtable['entries']); ?>);
+			console.log('tablerow:',<?php print json_encode($tablerow); ?>);
+			console.log('rtablerow:',<?php print json_encode($rtablerow); ?>);
 		</script>
 
 	</body>

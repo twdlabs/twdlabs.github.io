@@ -76,7 +76,7 @@ div#container section form.crud ul.fieldlist li.field {margin-top:.5rem;}
 div#container section form.crud ul.fieldlist li.field input.fieldinput,
 div#container section form.crud ul.fieldlist li.field select.fieldinput,
 div#container section form.crud ul.fieldlist li.field textarea.fieldinput,
-div#container section form.crud button.sendbtn {font-family:inherit; font-size:inherit; resize:none; width:100%; padding:.25em .5em;}
+div#container section form.crud button.sendbtn {font-family:inherit; font-size:inherit; resize:none; width:100%; max-width:10em; padding:.25em .5em;}
 div#container section form.crud button.sendbtn {margin-top:.5rem;}
 
 
@@ -88,7 +88,7 @@ div#container section.table table.table thead.head th.cell {padding:.5em;}
 /* div#container section.table table.table tbody.body {} */
 /* div#container section.table table.table tbody.body tr.row {} */
 div#container section.table table.table tbody.body td.cell {background-color:#f8f8f8; padding:0 .5em;}
-div#container section.table table.table tbody.body td.cell form.crud {background-color:gainsboro; display:inline-block; width:100%; margin-top:.5rem;}
+div#container section.table table.table tbody.body td.cell form.crud {background-color:gainsboro; display:block; width:100%; margin-top:.5rem;}
 /* div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist {display:flex;} */
 div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist li.field {margin-top:.125rem;}
 /* div#container section.table table.table tbody.body td.cell form.crud ul.fieldlist li.field input.fieldinput {} */
