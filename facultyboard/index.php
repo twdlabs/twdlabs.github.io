@@ -1,6 +1,13 @@
 
 <?php 
 
+	// Start new session to store login status. 
+	// Resume existing session for login status. 
+	session_start();
+?>
+
+<?php
+
 	// Get functions to access server database. 
 	require_once('./../sharedassets/script/config.php');
 	// Get functions to access input and display output. 
@@ -10,49 +17,9 @@
 	require_once('./assets/database.php');
 	// Get functions to perform CRUD operations. 
 	require_once('./assets/operation.php');
-?>
 
-<?php
-
-	// Connect to server database. 
-	$db = openDb('cis355issuecomments');
-
-	// Perform crud operation from previous page. 
-	// Check for crud operation. 
-	checkForOps();
-
-	// // Get entries for each database table. 
-	// $persons = getResultTableById('persons');
-	// $issues = getResultTableById('issues');
-	// $comments = getResultTableById('comments');
-?>
-
-<?php
-
-	// Check if any view selected. 
-	$tableselected = isset( $_GET['tid'] );
-
-	// Get id of selected table. 
-	$selectedtableid = $tableselected ? $_GET['tid'] : null;
-
-	// Check if data exists for selected table. 
-	$tableexists = isset( $databasetables[$selectedtableid] );
-
-	// Proceed if table data exists. 
-	if($tableexists) {
-	
-		// Get title of selected table. 
-		$selectedtabletitle = $databasetables[$selectedtableid]['tabletitle'];
-	
-		// Get form submit url. 
-		$formsubmiturl = "?tid=$selectedtableid";
-	
-		// Get caption for single item. 
-		$singlecaption = /* '' ||  */$databasetables[$selectedtableid]['singlecaption'];
-
-		// Get editor fields. 
-		$editorfields = $databasetables[$selectedtableid]['editorfields'];
-	}
+	// Check for logged-in user. 
+	$userloggedin = checkForUser();
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +37,8 @@
 
 		<!-- Main Stylesheet -->
 		<link href="./assets/style.css" rel="stylesheet" type="text/css"/>
+		<!-- Query Stylesheet -->
+		<link href="./../sharedassets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 	
@@ -77,6 +46,91 @@
 
 		<!-- #container -->
 		<div id="container">
+
+			<!-- query -->
+			<div class="query head">
+				
+				<!-- togglebtn -->
+				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
+					
+					<!-- icon -->
+					<svg class="icon dn arrowdown" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- icon -->
+					<svg class="icon up arrowup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+					</svg>
+					<!-- /icon -->
+
+					<!-- caption -->
+					<span class="caption">Toggle</span>
+					<!-- /caption -->
+					
+				</div>
+				<!-- /togglebtn -->
+
+				<!-- contents -->
+				<div class="contents">
+
+					<?php
+
+						// Connect to server database. 
+						$db = openDb('cis355issuecomments');
+
+						// Check for crud operation. 
+						checkForOperation();
+
+						// // Get entries for each database table. 
+						// $persons = getResultTableById('persons');
+						// $issues = getResultTableById('issues');
+						// $comments = getResultTableById('comments');
+
+						// Check if any view selected. 
+						$tableselected = isset( $_GET['tid'] );
+
+						// Get id of selected table. 
+						$selectedtableid = $tableselected ? $_GET['tid'] : null;
+
+						// Check if data exists for selected table. 
+						$tableexists = isset( $databasetables[$selectedtableid] );
+
+						// Proceed if table data exists. 
+						if($tableexists) {
+						
+							// Get form submit url. 
+							$formsubmiturl = "?tid=$selectedtableid";
+						
+							// Get data associated with selected table. 
+							$selectedtable = $databasetables[$selectedtableid];
+							// Get title of selected table. 
+							$tabletitle = $selectedtable['tabletitle'];
+							// Get caption for single item. 
+							$singlecaption = $selectedtable['singlecaption'];
+							// Get fields of entry editor. 
+							$editorfields = $selectedtable['editorfields'];
+							// Save table entries for selected table. 
+							$selectedtable['entries'] = getResultTableById($selectedtableid);
+
+							// Go thru each reference table for selected table. 
+							foreach($selectedtable['reftableids'] as $rtid) {
+
+								// Get reference table. 
+								$reftable = $databasetables[$rtid];
+
+								// Save table rows for reference table. 
+								$reftable['entries'] = getResultTableById($rtid,false);
+							}
+						}
+					?>
+
+				</div>
+				<!-- /contents -->
+
+			</div>
+			<!-- /query -->
 
 			<!-- navbar -->
 			<nav class="navbar">
@@ -183,22 +237,79 @@
 			</nav>
 			<!-- /navbar -->
 
+			<?php if( $userloggedin ): ?>
+
+				<!-- Show user info -->
+
+			<?php else: ?>
+				<!-- Show login/registration form -->
+
+				<!-- user -->
+				<section class="user">
+
+					<!-- head -->
+					<h2 class="head">
+
+						<!-- caption -->
+						<span class="caption">Select a table</span>
+						<!-- /caption -->
+
+					</h2>
+					<!-- /head -->
+
+					<!-- create -->
+					<form class="create crud" method="post" action="<?php print $formsubmiturl; ?>">
+
+						<!-- parameter -->
+						<input class="parameter" type="hidden" name="operation" value="create">
+						<input class="parameter" type="hidden" name="tid" value="<?php print $selectedtableid; ?>">
+						<!-- /parameter -->
+
+						<!-- fieldlist -->
+						<ul class="fieldlist">
+
+							<!-- field -->
+							<li class="field">
+
+								<!-- fieldinput -->
+								<input class="fieldinput" type="text" name="xyz" placeholder="xyz" value="" required>
+								<!-- /fieldinput -->
+
+							</li>
+							<!-- /field -->
+
+							<!-- field -->
+							<li class="field">
+
+								<!-- fieldinput -->
+								<!-- <input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $field['required'] ? 'required' : ''; ?>> -->
+								<!-- /fieldinput -->
+
+							</li>
+							<!-- /field -->
+							
+						</ul>
+						<!-- /fieldlist -->
+
+						<!-- sendbtn -->
+						<button class="sendbtn btn" type="submit">
+
+							<!-- caption -->
+							<span class="caption">Add <?php print $singlecaption; ?></span>
+							<!-- /caption -->
+
+						</button>
+						<!-- /sendbtn -->
+
+					</form>
+					<!-- /create -->
+
+				</section>
+				<!-- /user -->
+
+			<?php endif; ?>
+
 			<?php if( $tableexists ): ?>
-
-				<?php
-
-					// Get data associated with selected table. 
-					$selectedtable = $databasetables[$selectedtableid];
-					// Save table entries for selected table. 
-					$selectedtable['entries'] = getResultTableById($selectedtableid);
-
-					// Go thru each reference table for selected table. 
-					foreach($selectedtable['reftableids'] as $rtid) {
-
-						// Save table rows for reference table. 
-						$databasetables[$rtid]['entries'] = getResultTableById($rtid,false);
-					}
-				?>
 
 				<!-- table -->
 				<section class="table">
@@ -207,7 +318,7 @@
 					<h2 class="head">
 
 						<!-- caption -->
-						<span class="caption"><?php print $selectedtabletitle; ?></span>
+						<span class="caption"><?php print $tabletitle; ?></span>
 						<!-- /caption -->
 
 					</h2>
@@ -317,6 +428,7 @@
 											<ul class="fieldlist">
 
 												<?php foreach($editorfields as $field): ?>
+													<?php /* if( ! $field['editable'] ) continue; */ ?>
 
 													<!-- field -->
 													<li class="field">
@@ -340,7 +452,7 @@
 															?>
 
 															<!-- fieldinput -->
-															<select class="fieldinput" name="<?php print $fid; ?>" <?php print $field['required'] ? 'required' : ''; ?>>
+															<select class="fieldinput" name="<?php print $fid; ?>" <?php print $field['required'] ? 'required' : ''; ?> <?php print $field['editable'] ? '' : 'disabled'; ?>>
 
 																<!-- option -->
 																<option value="">Select <?php print $databasetables[$rtid]['singlecaption']; ?></option>
@@ -370,13 +482,13 @@
 															<?php if($ftype=='textarea'): ?>
 																
 																<!-- fieldinput -->
-																<textarea class="fieldinput" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" <?php print $field['required'] ? 'required' : ''; ?>><?php print $fieldvalue; ?></textarea>
+																<textarea class="fieldinput" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" <?php print $field['required'] ? 'required' : ''; ?> <?php print $field['editable'] ? '' : 'disabled'; ?>><?php print $fieldvalue; ?></textarea>
 																<!-- /fieldinput -->
 
 															<?php else: ?>
 
 																<!-- fieldinput -->
-																<input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="<?php print $fieldvalue; ?>" <?php print $field['required'] ? 'required' : ''; ?>>
+																<input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="<?php print $fieldvalue; ?>" <?php print $field['required'] ? 'required' : ''; ?> <?php print $field['editable'] ? '' : 'disabled'; ?>>
 																<!-- /fieldinput -->
 
 															<?php endif; ?>
@@ -681,8 +793,8 @@
 			console.log('Post:',<?php print json_encode($_POST); ?>);
 			console.log('Database tables:',<?php print json_encode($databasetables); ?>);
 			console.log('Selected table (rows):',<?php print json_encode($selectedtable['entries']); ?>);
-			console.log('tablerow:',<?php print json_encode($tablerow); ?>);
-			console.log('rtablerow:',<?php print json_encode($rtablerow); ?>);
+			console.log('Table row:',<?php print json_encode($tablerow); ?>);
+			console.log('Ref table row:',<?php print json_encode($rtablerow); ?>);
 		</script>
 
 	</body>
