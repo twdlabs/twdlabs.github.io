@@ -34,18 +34,76 @@
 					'fid'=>'personname',
 					'fieldtitle'=>'Name',
 					'required'=>true,
+					'editable'=>true,
 				],
 				[
 					'type'=>'email',
 					'fid'=>'emailaddress',
 					'fieldtitle'=>'E-mail',
 					'required'=>true,
+					'editable'=>true,
 				],
 				[
 					'type'=>'text',
 					'fid'=>'department',
 					'fieldtitle'=>'Department',
 					'required'=>false,
+					'editable'=>true,
+				],
+			],
+		],
+		'users' => [
+
+			// Define table title. 
+			'tabletitle' => 'Users',
+			// Define caption for single item. 
+			'singlecaption' => 'User',
+
+			// Define table entries. 
+			'entries' => [],
+
+			// Define reference tables. 
+			'reftableids' => [
+				'persons',
+			],
+
+			// Define database query (away). 
+			// 'awayquery' => "SELECT id,personid,username FROM users",
+			// Define database query (home). 
+			'homequery' => 
+			"SELECT 
+				id,
+				personname, 
+				emailaddress, 
+				department 
+			FROM persons",
+
+			// Define table editor fields. 
+			'editorfields' => [
+				[
+					'type'=>'text',
+					'fid'=>'username',
+					'fieldtitle'=>'Username',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
+					'type'=>'password',
+					'fid'=>'password',
+					'fieldtitle'=>'Password',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
+					'type'=>'select',
+					'fid'=>'personid',
+					'fieldtitle'=>'Person',
+					'required'=>true,
+					'editable'=>false,
+					'capref'=>[
+						'tid'=>'persons',
+						'fid'=>'personname',
+					],
 				],
 			],
 		],
@@ -79,12 +137,14 @@
 					'fid'=>'issuetitle',
 					'fieldtitle'=>'Title',
 					'required'=>true,
+					'editable'=>true,
 				],
 				[
 					'type'=>'textarea',
 					'fid'=>'issuedescription',
 					'fieldtitle'=>'Description',
 					'required'=>false,
+					'editable'=>true,
 				],
 			],
 		],
@@ -126,6 +186,7 @@
 					'fid'=>'issueid',
 					'fieldtitle'=>'Issue',
 					'required'=>true,
+					'editable'=>false,
 					'capref'=>[
 						'tid'=>'issues',
 						'fid'=>'issuetitle',
@@ -136,6 +197,7 @@
 					'fid'=>'personid',
 					'fieldtitle'=>'Person',
 					'required'=>true,
+					'editable'=>false,
 					'capref'=>[
 						'tid'=>'persons',
 						'fid'=>'personname',
@@ -146,6 +208,7 @@
 					'fid'=>'commenttext',
 					'fieldtitle'=>'Comment',
 					'required'=>true,
+					'editable'=>true,
 				],
 			],
 		],
