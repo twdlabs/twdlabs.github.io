@@ -24,7 +24,7 @@ div#container section.viewer div.grid div.head div.btnpanel button.btn {margin-b
 /* div#container section.viewer div.grid div.head div.btnpanel button.resetbtn {} */
 /* div#container section.viewer div.grid div.head div.btnpanel button.examplebtn {} */
 div#container section.viewer div.grid div.head div.btnpanel button.btn:disabled {cursor:initial; opacity:.5;}
-div#container section.viewer div.grid div.head h2.header {font-size:1.625rem;}
+div#container section.viewer div.grid div.head h2.header {font-size:1.625rem; margin-top:.5rem;}
 div#container section.viewer div.grid div.head h2.header.username {font-size:1rem;}
 /* div#container section.viewer div.grid div.head h2.header.tabletitle {} */
 
