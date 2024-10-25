@@ -4,22 +4,16 @@
 	// Start new session to store login status. 
 	// Resume existing session for login status. 
 	session_start();
-?>
-
-<?php
 
 	// Get functions to access server database. 
 	require_once('./../sharedassets/script/config.php');
-	// Get functions to access input and display output. 
-	require_once('./../sharedassets/script/io.php');
 
-	// Get database tables. 
-	require_once('./assets/database.php');
+	// Get metadata for database tables. 
+	require_once('./assets/database/database.php');
+	// Get functions to perform user operations. 
+	require_once('./assets/script/userops.php');
 	// Get functions to perform CRUD operations. 
-	require_once('./assets/operation.php');
-
-	// Check for logged-in user. 
-	$userloggedin = checkForUser();
+	require_once('./assets/script/crudops.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,15 +25,25 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./assets/6354674.png" rel="icon"/>
-		<link href="./assets/6354674.png" rel="apple-touch-icon"/>
+		<link href="./assets/images/6354674.png" rel="icon"/>
+		<link href="./../sharedassets/flaskicon.png" rel="icon"/>
+		<link href="./assets/images/6354674.png" rel="apple-touch-icon"/>
 		<title>Faculty Board</title>
 
-		<!-- Main Stylesheet -->
-		<link href="./assets/style.css" rel="stylesheet" type="text/css"/>
 		<!-- Query Stylesheet -->
 		<link href="./../sharedassets/style/query.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/query.css" rel="stylesheet" type="text/css"/>
+		<!-- Main Stylesheet -->
+		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
+		<!-- Data Table Stylesheet -->
+		<link href="./assets/style/datatable.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
+
+		<script type="text/javascript">
+			console.log('Session data:', <?php print isset($_SESSION) ? json_encode($_SESSION) : null; ?>);
+			console.log('Get response data:', <?php print isset($_GET) ? json_encode($_GET) : null; ?>);
+			console.log('Post response data:', <?php print isset($_POST) ? json_encode($_POST) : null; ?>);
+		</script>
 	</head>
 	
 	<body>
@@ -47,8 +51,8 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- query -->
-			<div class="query head">
+			<!-- queryarena -->
+			<div class="queryarena head">
 				
 				<!-- togglebtn -->
 				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
@@ -72,710 +76,97 @@
 				</div>
 				<!-- /togglebtn -->
 
-				<!-- contents -->
-				<div class="contents">
+				<!-- stage -->
+				<div class="stage">
 
 					<?php
 
 						// Connect to server database. 
 						$db = openDb('cis355issuecomments');
+						// Get functions to access input and display output. 
+						require_once('./../sharedassets/script/io.php');
 
-						// Check for crud operation. 
-						checkForOperation();
+						// Check for user operations (before doing anything else). 
+						checkUserOps();
 
-						// // Get entries for each database table. 
-						// $persons = getResultTableById('persons');
-						// $issues = getResultTableById('issues');
-						// $comments = getResultTableById('comments');
+						// Get id of currently logged-in user. 
+						$currentuserid = getUserId();
+						// Display currently logged-in user. 
+						printToPage("Current user id: \"$currentuserid\"");
+
+						// Get data for current user. 
+						$currentuser = getCurrentUser($currentuserid);
+						// Display currently logged-in user. 
+						printToPage( json_encode($currentuser) );
+						printToPage();
+
+						// Check for crud operation from previous page. 
+						// checkForCrudOps();
+
+						// Retrieve all table data from database. 
+						getAllTableData();
 
 						// Check if any view selected. 
-						$tableselected = isset( $_GET['tid'] );
+						$viewselected = isset( $_GET['view'] );
 
-						// Get id of selected table. 
-						$selectedtableid = $tableselected ? $_GET['tid'] : null;
+						// Get id of selected view. 
+						$selectedviewid = $viewselected ? $_GET['view'] : null;
 
-						// Check if data exists for selected table. 
-						$tableexists = isset( $databasetables[$selectedtableid] );
+						// Check if table view selected. 
+						$tableviewselected = isset( $databasetables[$selectedviewid] );
+						printToPage();
+						printToPage();
+						printToPage("Table view selected: $tableviewselected");
 
-						// Proceed if table data exists. 
-						if($tableexists) {
+						// Proceed if table view selected. 
+						if($tableviewselected) {
 						
-							// Get form submit url. 
-							$formsubmiturl = "?tid=$selectedtableid";
+							// Define form submit url (for given table). 
+							$formsubmiturl = "./?view=$selectedviewid";
 						
 							// Get data associated with selected table. 
-							$selectedtable = $databasetables[$selectedtableid];
+							$selectedtable = $databasetables[$selectedviewid];
 							// Get title of selected table. 
 							$tabletitle = $selectedtable['tabletitle'];
 							// Get caption for single item. 
 							$singlecaption = $selectedtable['singlecaption'];
-							// Get fields of entry editor. 
+							// Get fields of table display. 
+							$displayfields = $selectedtable['displayfields'];
+							// Get fields of table editor. 
 							$editorfields = $selectedtable['editorfields'];
-							// Save table entries for selected table. 
-							$selectedtable['entries'] = getResultTableById($selectedtableid);
 
-							// Go thru each reference table for selected table. 
-							foreach($selectedtable['reftableids'] as $rtid) {
+							// // Retrieve relevant table data from database. 
+							// getRelevantTableData();
+						}
 
-								// Get reference table. 
-								$reftable = $databasetables[$rtid];
-
-								// Save table rows for reference table. 
-								$reftable['entries'] = getResultTableById($rtid,false);
-							}
+						// Proceed for diff views. 
+						else {
+						
+							// Define default form submit url. 
+							$formsubmiturl = './';
 						}
 					?>
 
 				</div>
-				<!-- /contents -->
+				<!-- /stage -->
 
 			</div>
-			<!-- /query -->
+			<!-- /queryarena -->
 
-			<!-- navbar -->
-			<nav class="navbar">
+			<?php include('./assets/module/navbar.php'); ?>
 
-				<!-- bin -->
-				<div class="bin">
+			<?php include('./assets/module/splash.php'); ?>
 
-					<!-- head -->
-					<h1 class="head">
-	
-						<!-- icon -->
-						<svg class="icon journals" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2"/>
-							<path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0"/>
-						</svg>
-						<!-- /icon -->
-						
-						<!-- caption -->
-						<span class="caption">Faculty Board</span>
-						<!-- /caption -->
-					
-					</h1>
-					<!-- /head -->
-	
-					<!-- navlist -->
-					<ul class="navlist">
-	
-						<!-- navitem -->
-						<li class="navitem">
+			<?php if($currentuser): ?>
 
-							<!-- navlink -->
-							<a class="navlink" href="?tid=persons">
-	
-								<!-- icon -->
-								<svg class="icon personsquare" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-									<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
-								</svg>
-								<!-- /icon -->
-
-								<span class="caption">Faculty</span>
-
-							</a>
-							<!-- /navlink -->
-
-						</li>
-						<!-- /navitem -->
-	
-						<!-- navitem -->
-						<li class="navitem">
-
-							<!-- navlink -->
-							<a class="navlink" href="?tid=issues">
-	
-								<!-- icon -->
-								<svg class="icon journaltext" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-									<path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
-									<path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
-								</svg>
-								<!-- /icon -->
-
-								<span class="caption">Issues</span>
-
-							</a>
-							<!-- /navlink -->
-
-						</li>
-						<!-- /navitem -->
-	
-						<!-- navitem -->
-						<li class="navitem">
-
-							<!-- navlink -->
-							<a class="navlink" href="?tid=comments">
-	
-								<!-- icon -->
-								<!-- <svg class="icon chatbubble" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-								</svg> -->
-								<!-- /icon -->
-	
-								<!-- icon -->
-								<svg class="icon chatbubble" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-									<path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-								</svg>
-								<!-- /icon -->
-
-								<span class="caption">Comments</span>
-
-							</a>
-							<!-- /navlink -->
-
-						</li>
-						<!-- /navitem -->
-	
-					</ul>
-					<!-- /navlist -->
-
-				</div>
-				<!-- /bin -->
-
-			</nav>
-			<!-- /navbar -->
-
-			<?php if( $userloggedin ): ?>
-
-				<!-- Show user info -->
+				<?php
+					if($tableviewselected) include('./assets/module/datatable.php');
+					else include('./assets/module/navtable.php');
+				?>
 
 			<?php else: ?>
-				<!-- Show login/registration form -->
 
-				<!-- user -->
-				<section class="user">
-
-					<!-- head -->
-					<h2 class="head">
-
-						<!-- caption -->
-						<span class="caption">Select a table</span>
-						<!-- /caption -->
-
-					</h2>
-					<!-- /head -->
-
-					<!-- create -->
-					<form class="create crud" method="post" action="<?php print $formsubmiturl; ?>">
-
-						<!-- parameter -->
-						<input class="parameter" type="hidden" name="operation" value="create">
-						<input class="parameter" type="hidden" name="tid" value="<?php print $selectedtableid; ?>">
-						<!-- /parameter -->
-
-						<!-- fieldlist -->
-						<ul class="fieldlist">
-
-							<!-- field -->
-							<li class="field">
-
-								<!-- fieldinput -->
-								<input class="fieldinput" type="text" name="xyz" placeholder="xyz" value="" required>
-								<!-- /fieldinput -->
-
-							</li>
-							<!-- /field -->
-
-							<!-- field -->
-							<li class="field">
-
-								<!-- fieldinput -->
-								<!-- <input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $field['required'] ? 'required' : ''; ?>> -->
-								<!-- /fieldinput -->
-
-							</li>
-							<!-- /field -->
-							
-						</ul>
-						<!-- /fieldlist -->
-
-						<!-- sendbtn -->
-						<button class="sendbtn btn" type="submit">
-
-							<!-- caption -->
-							<span class="caption">Add <?php print $singlecaption; ?></span>
-							<!-- /caption -->
-
-						</button>
-						<!-- /sendbtn -->
-
-					</form>
-					<!-- /create -->
-
-				</section>
-				<!-- /user -->
-
-			<?php endif; ?>
-
-			<?php if( $tableexists ): ?>
-
-				<!-- table -->
-				<section class="table">
-
-					<!-- head -->
-					<h2 class="head">
-
-						<!-- caption -->
-						<span class="caption"><?php print $tabletitle; ?></span>
-						<!-- /caption -->
-
-					</h2>
-					<!-- /head -->
-
-					<!-- table -->
-					<table class="table">
-
-						<!-- head -->
-						<thead class="head">
-
-							<!-- row -->
-							<tr class="row">
-
-								<!-- cell -->
-								<th class="cell">
-
-									<!-- caption -->
-									<span class="caption">ID</span>
-									<!-- /caption -->
-									
-								</th>
-								<!-- /cell -->
-
-								<?php foreach($editorfields as $field): ?>
-
-									<!-- cell -->
-									<th class="cell">
-
-										<!-- caption -->
-										<span class="caption"><?php print $field['fieldtitle']; ?></span>
-										<!-- /caption -->
-										
-									</th>
-									<!-- /cell -->
-
-								<?php endforeach; ?>
-
-								<!-- cell -->
-								<th class="cell">
-
-									<!-- caption -->
-									<span class="caption">Action</span>
-									<!-- /caption -->
-									
-								</th>
-								<!-- /cell -->
-
-							</tr>
-							<!-- /row -->
-							
-						</thead>
-						<!-- /head -->
-
-						<!-- body -->
-						<tbody class="body">
-
-							<?php foreach($selectedtable['entries'] as $tablerow): ?>
-
-								<!-- row -->
-								<tr class="row">
-
-									<!-- cell -->
-									<td class="cell">
-
-										<!-- caption -->
-										<span class="caption"><?php print $tablerow['id']; ?></span>
-										<!-- /caption -->
-										
-									</td>
-									<!-- /cell -->
-
-									<?php foreach($editorfields as $field): ?>
-
-										<?php 
-											// Get field id. 
-											$fid = isset($field['capref']['fid']) ? $field['capref']['fid'] : $field['fid'];
-											// Get field value. 
-											$value = $tablerow[$fid];
-										?>
-
-										<!-- cell -->
-										<td class="cell">
-
-											<!-- caption -->
-											<span class="caption"><?php print $value ?></span>
-											<!-- /caption -->
-											
-										</td>
-										<!-- /cell -->
-
-									<?php endforeach; ?>
-
-									<!-- cell -->
-									<td class="cell">
-
-										<!-- update -->
-										<form class="update crud" method="post" action="<?php print $formsubmiturl; ?>">
-
-											<!-- parameter -->
-											<input class="parameter" type="hidden" name="operation" value="update">
-											<input class="parameter" type="hidden" name="tid" value="<?php print $selectedtableid; ?>">
-											<input class="parameter" type="hidden" name="rid" value="<?php print $tablerow['id']; ?>">
-											<!-- /parameter -->
-
-											<!-- fieldlist -->
-											<ul class="fieldlist">
-
-												<?php foreach($editorfields as $field): ?>
-													<?php /* if( ! $field['editable'] ) continue; */ ?>
-
-													<!-- field -->
-													<li class="field">
-
-														<?php 
-															// Get field id. 
-															$fid = $field['fid'];
-															// Get field type. 
-															$ftype = $field['type'];
-															// Get field value. 
-															$fieldvalue = $tablerow[$fid];
-														?>
-
-														<?php if($ftype=='select'): ?>
-
-															<?php 
-																// Get id of caption reference table. 
-																$rtid = $field['capref']['tid'];
-																// Get id of field to display from reference table. 
-																$ptfid = $field['capref']['fid'];
-															?>
-
-															<!-- fieldinput -->
-															<select class="fieldinput" name="<?php print $fid; ?>" <?php print $field['required'] ? 'required' : ''; ?> <?php print $field['editable'] ? '' : 'disabled'; ?>>
-
-																<!-- option -->
-																<option value="">Select <?php print $databasetables[$rtid]['singlecaption']; ?></option>
-																<!-- option -->
-
-																<?php foreach($databasetables[$rtid]['entries'] as $rtablerow): ?>
-
-																	<?php $selected = false; ?>
-																	<?php $selected = $rtablerow['id']==$tablerow[$fid]; ?>
-
-																	<!-- option -->
-																	<option value="<?php print $rtablerow['id']; ?>" <?php print $selected?'selected':''; ?>><?php print $rtablerow[$ptfid]; ?></option>
-																	<!-- option -->
-
-																<?php endforeach; ?>
-
-															</select>
-															<!-- /fieldinput -->
-
-														<?php else: ?>
-
-															<?php
-																// Get field title. 
-																$fieldtitle = $field['fieldtitle'];
-															?>
-
-															<?php if($ftype=='textarea'): ?>
-																
-																<!-- fieldinput -->
-																<textarea class="fieldinput" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" <?php print $field['required'] ? 'required' : ''; ?> <?php print $field['editable'] ? '' : 'disabled'; ?>><?php print $fieldvalue; ?></textarea>
-																<!-- /fieldinput -->
-
-															<?php else: ?>
-
-																<!-- fieldinput -->
-																<input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="<?php print $fieldvalue; ?>" <?php print $field['required'] ? 'required' : ''; ?> <?php print $field['editable'] ? '' : 'disabled'; ?>>
-																<!-- /fieldinput -->
-
-															<?php endif; ?>
-
-														<?php endif; ?>
-
-													</li>
-													<!-- /field -->
-
-												<?php endforeach; ?>
-												
-											</ul>
-											<!-- /fieldlist -->
-
-											<!-- sendbtn -->
-											<button class="sendbtn btn" type="submit">
-
-												<!-- caption -->
-												<span class="caption">Update <?php /* print $singlecaption; */ ?></span>
-												<!-- /caption -->
-
-											</button>
-											<!-- /sendbtn -->
-
-										</form>
-										<!-- /update -->
-
-										<!-- delete -->
-										<form class="delete crud" method="post" action="<?php print $formsubmiturl; ?>">
-
-											<!-- parameter -->
-											<input class="parameter" type="hidden" name="operation" value="delete">
-											<input class="parameter" type="hidden" name="tid" value="<?php print $selectedtableid; ?>">
-											<input class="parameter" type="hidden" name="rid" value="<?php print $tablerow['id']; ?>">
-											<!-- /parameter -->
-
-											<!-- sendbtn -->
-											<button class="sendbtn btn" type="submit">
-
-												<!-- caption -->
-												<span class="caption">Delete <?php /* print $singlecaption; */ ?></span>
-												<!-- /caption -->
-
-											</button>
-											<!-- /sendbtn -->
-
-										</form>
-										<!-- /delete -->
-										
-									</td>
-									<!-- /cell -->
-
-									<!-- cell -->
-									<td class="cell">
-
-										<!-- caption -->
-										<span class="caption test"><!-- <?php print json_encode($tablerow); ?> --></span>
-										<!-- /caption -->
-										
-									</td>
-									<!-- /cell -->
-									
-								</tr>
-								<!-- /row -->
-
-							<?php endforeach; ?>
-							
-						</tbody>
-						<!-- /body -->
-
-					</table>
-					<!-- /table -->
-
-				</section>
-				<!-- /table -->
-
-				<!-- editor -->
-				<section class="editor">
-
-					<!-- head -->
-					<h2 class="head">
-
-						<!-- caption -->
-						<span class="caption">New <?php print $singlecaption; ?></span>
-						<!-- /caption -->
-
-					</h2>
-					<!-- /head -->
-
-					<?php
-						// // Save relevant data from database. 
-						// $sql = $databasetables['persons']['awayquery'];
-						// $databasetables['persons'] = sendDatabaseQuery($sql);
-						// $sql = $databasetables['issues']['awayquery'];
-						// $databasetables['issues'] = sendDatabaseQuery($sql);
-					?>
-
-					<!-- create -->
-					<form class="create crud" method="post" action="<?php print $formsubmiturl; ?>">
-
-						<!-- parameter -->
-						<input class="parameter" type="hidden" name="operation" value="create">
-						<input class="parameter" type="hidden" name="tid" value="<?php print $selectedtableid; ?>">
-						<!-- /parameter -->
-
-						<!-- fieldlist -->
-						<ul class="fieldlist">
-
-							<?php foreach($editorfields as $field): ?>
-
-								<!-- field -->
-								<li class="field">
-
-									<?php 
-										// Get field id. 
-										$fid = $field['fid'];
-										// Get field type. 
-										$ftype = $field['type'];
-									?>
-
-									<?php if($ftype=='select'): ?>
-
-										<?php
-											// Get id of caption reference table. 
-											$rtid = $field['capref']['tid'];
-											// Get id of field to display from reference table. 
-											$ptfid = $field['capref']['fid'];
-										?>
-
-										<!-- fieldinput -->
-										<select class="fieldinput" name="<?php print $fid; ?>" <?php print $field['required'] ? 'required' : ''; ?>>
-
-											<!-- option -->
-											<option value="">Select <?php print $databasetables[$rtid]['singlecaption']; ?></option>
-											<!-- option -->
-
-											<?php foreach($databasetables[$rtid]['entries'] as $rtablerow): ?>
-
-												<!-- option -->
-												<option value="<?php print $rtablerow['id']; ?>"><?php print $rtablerow[$ptfid]; ?></option>
-												<!-- option -->
-
-											<?php endforeach; ?>
-
-										</select>
-										<!-- /fieldinput -->
-
-									<?php else: ?>
-
-										<?php
-											// Get field title. 
-											$fieldtitle = $field['fieldtitle'];
-										?>
-
-										<?php if($ftype=='textarea'): ?>
-											
-											<!-- fieldinput -->
-											<textarea class="fieldinput" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" <?php print $field['required'] ? 'required' : ''; ?>></textarea>
-											<!-- /fieldinput -->
-
-										<?php else: ?>
-
-											<!-- fieldinput -->
-											<input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $field['required'] ? 'required' : ''; ?>>
-											<!-- /fieldinput -->
-
-										<?php endif; ?>
-
-									<?php endif; ?>
-
-								</li>
-								<!-- /field -->
-
-							<?php endforeach; ?>
-							
-						</ul>
-						<!-- /fieldlist -->
-
-						<!-- sendbtn -->
-						<button class="sendbtn btn" type="submit">
-
-							<!-- caption -->
-							<span class="caption">Add <?php print $singlecaption; ?></span>
-							<!-- /caption -->
-
-						</button>
-						<!-- /sendbtn -->
-
-					</form>
-					<!-- /create -->
-
-				</section>
-				<!-- /editor -->
-
-			<?php else: ?>
-
-				<!-- nav -->
-				<section class="nav">
-
-					<!-- head -->
-					<h2 class="head">
-
-						<!-- caption -->
-						<span class="caption">Select a table</span>
-						<!-- /caption -->
-
-					</h2>
-					<!-- /head -->
-	
-					<!-- navlist -->
-					<ul class="navlist">
-	
-						<!-- navitem -->
-						<li class="navitem">
-
-							<!-- navlink -->
-							<a class="navlink" href="?tid=persons">
-	
-								<!-- icon -->
-								<svg class="icon personsquare" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-									<path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
-								</svg>
-								<!-- /icon -->
-
-								<span class="caption">Faculty</span>
-
-							</a>
-							<!-- /navlink -->
-
-						</li>
-						<!-- /navitem -->
-	
-						<!-- navitem -->
-						<li class="navitem">
-
-							<!-- navlink -->
-							<a class="navlink" href="?tid=issues">
-	
-								<!-- icon -->
-								<svg class="icon journaltext" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-									<path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
-									<path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
-								</svg>
-								<!-- /icon -->
-
-								<span class="caption">Issues</span>
-
-							</a>
-							<!-- /navlink -->
-
-						</li>
-						<!-- /navitem -->
-	
-						<!-- navitem -->
-						<li class="navitem">
-
-							<!-- navlink -->
-							<a class="navlink" href="?tid=comments">
-	
-								<!-- icon -->
-								<!-- <svg class="icon chatbubble" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-								</svg> -->
-								<!-- /icon -->
-	
-								<!-- icon -->
-								<svg class="icon chatbubble" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-									<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
-									<path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-								</svg>
-								<!-- /icon -->
-
-								<span class="caption">Comments</span>
-
-							</a>
-							<!-- /navlink -->
-
-						</li>
-						<!-- /navitem -->
-	
-					</ul>
-					<!-- /navlist -->
-
-				</section>
-				<!-- /nav -->
+				<?php include('./assets/module/userchooser.php'); ?>
 
 			<?php endif; ?>
 
@@ -789,12 +180,11 @@
 		<!-- Main Script -->
 		<!-- <script src="./template.js" type="text/javascript"></script> -->
 
+		<!-- Toggler Script -->
+		<script src="./assets/script/toggler.js" type="text/javascript"></script>
+
 		<script type="text/javascript">
-			console.log('Post:',<?php print json_encode($_POST); ?>);
-			console.log('Database tables:',<?php print json_encode($databasetables); ?>);
-			console.log('Selected table (rows):',<?php print json_encode($selectedtable['entries']); ?>);
-			console.log('Table row:',<?php print json_encode($tablerow); ?>);
-			console.log('Ref table row:',<?php print json_encode($rtablerow); ?>);
+			console.log('Database tables:', <?php print json_encode($databasetables); ?>);
 		</script>
 
 	</body>
