@@ -12,7 +12,7 @@ div#container div.queryarena.head.open {max-height:18vh; padding:1em; border:.12
 
 /* Query Arena: Stage */
 div#container div.queryarena div.stage {display:flex; flex-direction:column; text-align:center;}
-/* div#container div.queryarena div.stage span.block {} */
+div#container div.queryarena div.stage span.block {word-wrap:break-word; margin-top:.125rem;}
 /* div#container div.queryarena div.stage span.block.xyz {} */
 div#container div.queryarena div.stage span.block:empty {height:.75em;}
 
