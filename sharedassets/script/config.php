@@ -1,18 +1,15 @@
 
-
-
 <?php
 
 	// Connect to server database. 
-	function openDb() {
+	function openDb($dbname) {
 
 		// Define server credentials. 
 		$sn = 'localhost';
 		$un = 'root';
 		$pw = '';
-		$db = 'cis355xampp';
 		// Open server connection to database. 
-		$dbconnect = new mysqli($sn,$un,$pw,$db);
+		$dbconnect = new mysqli($sn,$un,$pw,$dbname);
 
 		// Check server connection to database. 
 		if($dbconnect) {
@@ -34,6 +31,12 @@
 
 		// Return connection. 
 		return $dbconnect;
+	}
+
+	// Print to page. 
+	function printToPage($text='') {
+		/* if($text)  */print "<span class=\"block\">$text</span>";
+		// else print "<span class=\"block\"></span>";
 	}
 
 	// Disconnect from server database. 
