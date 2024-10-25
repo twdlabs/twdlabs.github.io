@@ -1,26 +1,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
 
+
 * {box-sizing:border-box; /* padding:0; margin:0; */}
 
 
 :root {
 
 	/* Theme Colors */
-	--limegreen:limegreen;
-	--limegreen:#4caf50;
-	--red:#f00;
-
-	/* Theme Colors */
-	--reggrey:#AAA;
-	--lightgrey:#DDD;
+	--offwhite:#d8d8d8;
+	--offwhite:#f8f8f8;
+	--lightgrey:#CCC;
 	--lightblack:#333;
 	
 	/* Gradient Colors */
-	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+	--bgimg:linear-gradient(135deg,dodgerblue,white,wheat);
 
 	/* Page Sizes */
-	--dt:.5s;
 	--pagewidth:60rem;
 	--cornersize:.5rem;
 	
@@ -33,8 +29,6 @@ body {
 
 	--backcolor:var(--lightgrey);
 	--forecolor:black;
-	--forecolor2:var(--lightblack);
-	--themecolor:var(--limegreen);
 }
 
 /* body.dark {
@@ -44,75 +38,46 @@ body {
 } */
 
 
-body {background-color:var(--backcolor); background-image:var(--bgimg); margin:0;}
-body {color:var(--forecolor); font-family:Nunito,sans-serif;}
 
 
 /* Container */
-div#container {display:flex; flex-direction:column; justify-content:flex-start; align-items:center; min-height:100vh; /* padding:1rem; */}
+body {background-color:var(--backcolor); /* background-image:var(--bgimg); */ margin:0;}
+body {color:var(--forecolor); font-family:Nunito,sans-serif;}
+/* body {display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh;} */
+div#container {display:flex; flex-flow:row wrap; justify-content:center; align-items:flex-start; grid-gap:1rem; min-height:100vh; padding:2.375rem;}
+div#container {flex-direction:column; align-items:center;}
+div#container > div.grid {display:flex; flex-flow:row wrap; justify-content:center; grid-gap:.875rem;}
+/* Buttons */
+div#container section button.btn {display:flex; flex-direction:row; justify-content:center; align-items:center; padding:.625em 1em; border-radius:.25rem;}
+div#container section button.gobtn {padding-right:.375em;}
+div#container section button.backbtn {padding-left:.375em;}
+div#container section button.btn svg.icon {margin:0 .125em;}
 
+
+
+/* Page Section */
+div#container section {background-color:white; background-color:var(--offwhite); padding:1em; border-radius:var(--cornersize); /* margin-top:1rem; */ box-shadow:var(--boxshadow);}
+/* div#container section {width:100%; max-width:var(--pagewidth);} */
+div#container section {display:flex; flex-direction:column; align-items:center; max-width:var(--pagewidth);}
 
 /* Navbar */
-div#container nav.navbar {position:sticky; /* position:fixed; */ top:0; right:0; left:0; width:100%;}
-div#container nav.navbar {background-color:white; /* min-height:4rem; */ padding:.5rem 2rem; box-shadow:var(--boxshadow);}
-div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center; max-width:var(--pagewidth); margin:0 auto;}
-div#container nav.navbar div.bin a.homelink {display:flex; flex-direction:row; align-items:center;}
-div#container nav.navbar div.bin a.homelink {color:inherit; text-decoration:none; user-select:none;}
-div#container nav.navbar div.bin a.homelink h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
-div#container nav.navbar div.bin a.homelink h1.head span.caption {margin-left:.375rem;}
-div#container nav.navbar div.bin a.homelink img.logo {display:none; height:2.5rem;}
-div#container nav.navbar div.bin a.homelink img.logo:first-child {display:block;}
-div#container nav.navbar div.bin ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
-div#container nav.navbar div.bin ul.navlist li.navitem {padding:.25rem;}
-div#container nav.navbar div.bin ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {display:block; color:inherit; text-decoration:none; user-select:none;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink {background-color:var(--themecolor); color:white; padding:.5rem 1rem; border-radius:.25rem;}
-div#container nav.navbar div.bin ul.navlist li.navitem a.navlink svg.icon {display:block; font-size:1em;}
-
-
-/* General Section */
-div#container section {background-color:white; padding:.375rem; /* padding-top:1rem; */ border-radius:var(--cornersize); margin:1.75rem 0; box-shadow:var(--boxshadow);}
-/* div#container section div.grid {display:flex; flex-direction:column; align-items:center;} */
-div#container section div.grid div.head {display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; /* padding:0 .125em; */}
-div#container section div.grid div.head h2.header {/* cursor:pointer; */ user-select:none; padding:0 .25em; margin:0; margin:.125em 0;}
-div#container section div.grid div.head h2.header:empty {background-color:var(--lightgrey); height:1em; width:5em; border-radius:1em;}
-div#container section div.grid div.head h2.header.username {display:flex; flex-direction:row; align-items:center;}
-div#container section div.grid div.head h2.header.username {background-color:aliceblue; cursor:pointer; padding:.25em; padding-right:.625em; border-radius:1em; margin-left:1rem;}
-div#container section div.grid div.head h2.header.tabletitle {margin-right:1rem;}
-div#container section div.grid div.head h2.header.username::before {background-color:gainsboro; content:''; display:inline-block; height:1.5em; width:1.5em; border-radius:50%; margin-right:.375em;}
-div#container section div.grid div.head div.btnpanel {margin-top:.375rem;}
-/* div#container section div.grid div.head div.btnpanel button.btn {} */
-/* div#container section div.grid div.head div.btnpanel button.btn svg.icon {} */
-/* div#container section div.grid div.head div.btnpanel button.btn span.caption {} */
-div#container section div.grid div.body {max-width:100%; overflow-x:auto;}
-/* div#container section div.grid div.foot {} */
-div#container section div.grid div.foot div.btnpanel {display:flex; flex-direction:row; grid-gap:.25rem; width:100%; margin-top:.375rem;}
-div#container section div.grid div.foot div.btnpanel button.btn {width:100%; /* padding:.625em; */}
-
-
-/* General Button */
-div#container section div.grid div.btnpanel button.btn {background-color:var(--limegreen); background-color:var(--lightblack); color:white; font-size:1.25rem; cursor:pointer;}
-div#container section div.grid div.btnpanel button.btn {display:inline-flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container section div.grid div.btnpanel button.btn {transition:.25s; padding:.5em; border:0 none; border-radius:.25rem; box-shadow:var(--boxshadow);}
-div#container section div.grid div.btnpanel button.btn svg.icon {display:none;}
-div#container section div.grid div.btnpanel button.btn svg.icon:first-child {display:block;}
-div#container section div.grid div.btnpanel button.btn span.caption {font-size:.75em; margin-left:.375rem;}
+div#container section nav.navbar {display:flex; flex-direction:row; grid-gap:.25rem; margin-top:.25rem;}
+div#container section nav.navbar.x {display:none;}
+div#container section nav.navbar a.link {background-color:var(--lightblack); color:white; text-decoration:none; padding:.125em .375em; padding-top:.25em; border-radius:.25em;}
 
 
 
 
 
 
-/* Tablet Screen */
+/* Big Tablet Screen */
 @media screen and (max-width:64rem) {
-	
+
 	/* Container */
 	/* div#container {} */
-	
-	/* Navbar */
-	/* div#container nav.navbar {} */
+	/* div#container > div.grid {} */
 
-	/* General Section */
+	/* Page Section */
 	/* div#container section {} */
 }
 
@@ -121,11 +86,9 @@ div#container section div.grid div.btnpanel button.btn span.caption {font-size:.
 
 	/* Container */
 	/* div#container {} */
+	/* div#container > div.grid {} */
 
-	/* Navbar */
-	/* div#container nav.navbar {} */
-
-	/* General Section */
+	/* Page Section */
 	/* div#container section {} */
 }
 
@@ -134,11 +97,9 @@ div#container section div.grid div.btnpanel button.btn span.caption {font-size:.
 
 	/* Container */
 	/* div#container {} */
+	/* div#container > div.grid {} */
 
-	/* Navbar */
-	/* div#container nav.navbar {} */
-
-	/* General Section */
+	/* Page Section */
 	/* div#container section {} */
 }
 
@@ -147,12 +108,19 @@ div#container section div.grid div.btnpanel button.btn span.caption {font-size:.
 
 	/* Container */
 	/* div#container {} */
+	/* div#container > div.grid {} */
 
-	/* Navbar */
-	/* div#container nav.navbar {} */
-	div#container nav.navbar div.bin {flex-direction:column; grid-gap:.25rem;}
-	/* div#container nav.navbar div.bin ul.navlist {display:none;} */
+	/* Page Section */
+	/* div#container section {} */
+}
 
-	/* General Section */
+/* Tiny Smartphone Screen */
+@media screen and (max-width:24rem) {
+
+	/* Container */
+	/* div#container {} */
+	/* div#container > div.grid {} */
+
+	/* Page Section */
 	/* div#container section {} */
 }
