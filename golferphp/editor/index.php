@@ -1,4 +1,18 @@
 
+<?php
+
+	// Get functions to access server database. 
+	require_once('../../sharedassets/script/config.php');
+	// Get metadata for database tables. 
+	require_once('../assets/database/database.php');
+	// Get functions to display form layout. 
+	require_once('../assets/script/form.php');
+	// Get functions to perform CRUD operations. 
+	require_once('../assets/script/crudops.php');
+	// Get functions to access input and display output. 
+	require_once('../../sharedassets/script/io.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +30,8 @@
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<link href="../assets/style/form.css" rel="stylesheet" type="text/css"/>
 		<link href="../assets/style/editor.css" rel="stylesheet" type="text/css"/>
+		<!-- Query Stylesheet -->
+		<link href="../../sharedassets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -24,8 +40,8 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- query -->
-			<div class="query head">
+			<!-- queryarena -->
+			<div class="queryarena head open">
 				
 				<!-- togglebtn -->
 				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
@@ -49,42 +65,31 @@
 				</div>
 				<!-- /togglebtn -->
 
-				<!-- contents -->
-				<div class="contents">
+				<!-- stage -->
+				<div class="stage">
 
 					<?php
 
-						// Get functions to access server database. 
-						require_once('../assets/script/config.php');
-						// Get functions to display form layout. 
-						require_once('../assets/script/form.php');
-						// Get functions to perform CRUD operations. 
-						require_once('../assets/script/crud.php');
-						// Get functions to access input and display output. 
-						require_once('../assets/script/io.php');
-
 						// Connect to server database. 
-						$db = openDb();
+						$db = openDb('cis355golfer');
 
 						// Print header. 
 						printToPage('Field Values<br>----------------');
-
-						// Get id of selected entry. 
-						$entryid = getFieldValueById('id');
 						// Get id of selected table. 
-						$tableid = getFieldValueById('tableid');
+						$tableid = getFieldValueByIdWithDefault('tableid');
+						// Get id of selected entry. 
+						$entryid = getFieldValueByIdWithDefault('id');
 						// Get editor mode. 
-						$editormode = getFieldValueById('editmode');
+						$editormode = getFieldValueByIdWithDefault('editmode');
 
 						// Get id of selected table for editor. 
 						$etid = substr($tableid,0,1);
-						// TODO: Show editor for selected table. 
 
 						// Check if editor in update mode. 
 						if($editormode=='update') {
 
 							// Return home if updating w/o entry given. 
-							if(!$entryid || $entryid==-1) {
+							if(!$entryid || $entryid==0 || $entryid==-1) {
 	
 								// Revert to create mode. 
 								// $editormode = 'create';
@@ -106,16 +111,16 @@
 
 						// Read existing table entries: shots. 
 						$tid = 'shots';
-						$queryresult = readTableEntries($tid);
-						$databasetables[$tid]['entries'] = $queryresult;
+						$queryresultrows = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresultrows;
 						// Read existing table entries: holes. 
 						$tid = 'holes';
-						$queryresult = readTableEntries($tid);
-						$databasetables[$tid]['entries'] = $queryresult;
+						$queryresultrows = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresultrows;
 						// Read existing table entries: clubs. 
 						$tid = 'clubs';
-						$queryresult = readTableEntries($tid);
-						$databasetables[$tid]['entries'] = $queryresult;
+						$queryresultrows = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresultrows;
 
 						// Disconnect server database. 
 						closeDb($db);
@@ -138,10 +143,10 @@
 					?>
 
 				</div>
-				<!-- /contents -->
+				<!-- /stage -->
 
 			</div>
-			<!-- /query -->
+			<!-- /queryarena -->
 
 			<!-- section -->
 			<section class="hi">
@@ -559,9 +564,9 @@
 		<!-- <script src="../xyzdatabase.js" type="text/javascript"></script> -->
 		<!-- <script src="../../golfer/assets/database/tabledatabase.js" type="text/javascript"></script> -->
 		<script type="text/javascript">
-			let post = <?php echo json_encode($_POST); ?>;
+			let post = <?php print json_encode($_POST); ?>;
 			console.log('Post:',post);
-			let databasetables = <?php echo json_encode($databasetables); ?>;
+			let databasetables = <?php print json_encode($databasetables); ?>;
 			console.log('Database tables:',databasetables);
 		</script>
 

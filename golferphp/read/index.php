@@ -1,4 +1,18 @@
 
+<?php
+
+	// Get functions to access server database. 
+	require_once('../../sharedassets/script/config.php');
+	// Get metadata for database tables. 
+	require_once('../assets/database/database.php');
+	// Get functions to display form layout. 
+	require_once('../assets/script/form.php');
+	// Get functions to perform CRUD operations. 
+	require_once('../assets/script/crudops.php');
+	// Get functions to access input and display output. 
+	require_once('../../sharedassets/script/io.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +28,8 @@
 
 		<!-- Main Stylesheet -->
 		<link href="../assets/style/style.css" rel="stylesheet" type="text/css"/>
+		<!-- Query Stylesheet -->
+		<link href="../../sharedassets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -25,28 +41,19 @@
 			<!-- section -->
 			<section class="">
 				
-				<!-- query -->
-				<div class="query">
+				<!-- queryarena -->
+				<div class="queryarena">
 
-					<!-- contents -->
-					<div class="contents">
+					<!-- stage -->
+					<div class="stage">
 
 						<?php
 
-							// Get functions to access server database. 
-							require_once('../assets/script/config.php');
-							// Get functions to display form layout. 
-							require_once('../assets/script/form.php');
-							// Get functions to perform CRUD operations. 
-							require_once('../assets/script/crud.php');
-							// Get functions to access input and display output. 
-							require_once('../assets/script/io.php');
-
 							// Connect to server database. 
-							$db = openDb();
+							$db = openDb('cis355golfer');
 
 							// Read existing table entry in database. 
-							$queryresult = readTableEntry(/* $selectedtableid */);
+							$queryresultrows = readTableEntry(/* $selectedtableid */);
 
 							// Disconnect server database. 
 							closeDb($db);
@@ -56,10 +63,10 @@
 						?>
 
 					</div>
-					<!-- /contents -->
+					<!-- /stage -->
 					
 				</div>
-				<!-- /query -->
+				<!-- /queryarena -->
 
 				<!-- navbar -->
 				<nav class="navbar">
@@ -92,10 +99,10 @@
 		<!-- Navigation Script -->
 		<script src="../assets/script/nav.js" type="text/javascript"></script>
 		<script type="text/javascript">
-			let post = <?php echo json_encode($_POST); ?>;
+			let post = <?php print json_encode($_POST); ?>;
 			console.log('Post:',post);
-			let queryresult = <?php echo json_encode($queryresult); ?>;
-			console.log('Query result:',queryresult);
+			let queryresultrows = <?php print json_encode($queryresultrows); ?>;
+			console.log('Query result rows:',queryresultrows);
 		</script>
 
 	</body>

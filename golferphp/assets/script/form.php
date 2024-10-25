@@ -13,6 +13,7 @@
 
 			// Get id of table entry. 
 			$id = $entry['id'];
+			printToPage($id);
 
 			// Get entry caption. 
 			if($tableid) $entrycaption = $databasetables[$tableid]['captioner']($entry);
@@ -151,8 +152,8 @@
 	function createSelectOption($tableentry,$tid) {
 		global $databasetables;
 
-		// Get id for given table entry. 
-		$id = '';
+		// Get id of given table entry. 
+		$id = $tableentry['id'];
 
 		// Get caption for given table entry. 
 		$caption = $databasetables[$tid]['captioner']($tableentry);

@@ -1,4 +1,18 @@
 
+<?php
+
+	// Get functions to access server database. 
+	require_once('./../sharedassets/script/config.php');
+	// Get metadata for database tables. 
+	require_once('./assets/database/database.php');
+	// Get functions to display form layout. 
+	require_once('./assets/script/form.php');
+	// Get functions to perform CRUD operations. 
+	require_once('./assets/script/crudops.php');
+	// Get functions to access input and display output. 
+	require_once('./../sharedassets/script/io.php');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -10,11 +24,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="./assets/flaskicon.png" rel="icon"/>
 		<link href="./assets/flaskicon.png" rel="apple-touch-icon"/>
-		<title>CRUD Template</title>
+		<title>Golfer Tracker</title>
 
 		<!-- Main Stylesheet -->
 		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
 		<link href="./assets/style/form.css" rel="stylesheet" type="text/css"/>
+		<!-- Query Stylesheet -->
+		<link href="./../sharedassets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 	</head>
 
@@ -23,8 +39,8 @@
 		<!-- #container -->
 		<div id="container">
 
-			<!-- query -->
-			<div class="query head">
+			<!-- queryarena -->
+			<div class="queryarena head open">
 				
 				<!-- togglebtn -->
 				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
@@ -48,38 +64,28 @@
 				</div>
 				<!-- /togglebtn -->
 
-				<!-- contents -->
-				<div class="contents">
+				<!-- stage -->
+				<div class="stage">
 
 					<?php
 
-						// Get functions to access server database. 
-						require_once('./assets/script/config.php');
-						// Get functions to display form layout. 
-						require_once('./assets/script/form.php');
-						// Get functions to perform CRUD operations. 
-						require_once('./assets/script/crud.php');
-						// Get functions to access input and display output. 
-						require_once('./assets/script/io.php');
-
 						// Connect to server database. 
-						$db = openDb();
+						$db = openDb('cis355golfer');
 
 						// Print header. 
 						printToPage('Field Values<br>----------------');
-
 						// Read existing table entries: shots. 
 						$tid = 'shots';
-						$queryresult = readTableEntries($tid);
-						$databasetables[$tid]['entries'] = $queryresult;
+						$queryresultrows = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresultrows;
 						// Read existing table entries: holes. 
 						$tid = 'holes';
-						$queryresult = readTableEntries($tid);
-						$databasetables[$tid]['entries'] = $queryresult;
+						$queryresultrows = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresultrows;
 						// Read existing table entries: clubs. 
 						$tid = 'clubs';
-						$queryresult = readTableEntries($tid);
-						$databasetables[$tid]['entries'] = $queryresult;
+						$queryresultrows = readTableEntries($tid);
+						$databasetables[$tid]['entries'] = $queryresultrows;
 
 						// Disconnect server database. 
 						closeDb($db);
@@ -89,10 +95,10 @@
 					?>
 
 				</div>
-				<!-- /contents -->
+				<!-- /stage -->
 
 			</div>
-			<!-- /query -->
+			<!-- /queryarena -->
 
 			<!-- section -->
 			<section class="hi">
@@ -535,9 +541,9 @@
 		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
 		<!-- <script src="./../golfer/assets/database/tabledatabase.js" type="text/javascript"></script> -->
 		<script type="text/javascript">
-			let post = <?php echo json_encode($_POST); ?>;
+			let post = <?php print json_encode($_POST); ?>;
 			console.log('Post:',post);
-			let databasetables = <?php echo json_encode($databasetables); ?>;
+			let databasetables = <?php print json_encode($databasetables); ?>;
 			console.log('Database tables:',databasetables);
 		</script>
 
