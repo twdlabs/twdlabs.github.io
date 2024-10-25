@@ -1,0 +1,9 @@
+
+
+
+/* Query Arena */
+div#container div.queryarena.head {opacity:.875; margin-top:7.25rem;}
+div#container div.queryarena.head:hover {max-height:50vh;}
+div#container div.queryarena.head.open {max-height:75vh;}
+div#container div.queryarena div.togglebtn {margin-top:5.5rem;}
+/* span.block {display:none;} */
