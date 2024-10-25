@@ -1,6 +1,77 @@
 
 <?php
 
+
+	// Get field ids for given table. 
+	function getAllFieldIds($tableid) {
+
+		// Get list of field data. 
+		$fielddatalist = $databasetables[$tableid]['fields'];
+
+		// Isolate ids from list of field data. 
+		return array_map('getFieldId', $fielddatalist );
+
+		/****/
+
+		// Get id of given field. 
+		function getFieldId($field) {
+			return $field['id'];
+		}
+	}
+	// Get list of field values (for create query). 
+	function getFieldValues($fieldids) {
+
+		// Initialize list of field values. 
+		$fieldvalues = [];
+
+		// Go thru each field id key. 
+		foreach($fieldids as $fid) {
+
+			// Get field value. 
+			$value = getFieldValueByIdWithDefault($fid);
+			
+			// Save to list of field values. 
+			$fieldvalues[] = "$value";
+			// $fieldvalues[] = "'$value'";
+		}
+
+		// Create comma separated list of field values. 
+		return $fieldvalues;
+	}
+	// Get list of field ids set to input values (for update query). 
+	function getFieldSetterList($fieldids) {
+
+		// Initialize list of field values. 
+		$fieldidsnvalues = [];
+		
+		// Go thru each field id key. 
+		foreach($fieldids as $fid) {
+
+			// Get field value. 
+			$value = getFieldValueByIdWithDefault($fid);
+			
+			// Save to list of field values. 
+			$fieldidsnvalues[] = "$fid='$value'";
+		}
+
+		// Create comma separated list of field ids. 
+		return $fieldidsnvalues;
+	}
+	// Get conditions list (for read/delete query). 
+	function getConditionsList($entryids) {
+		
+		// Compile conditions list. 
+		return implode( ' OR ' , array_map('createIdCondition',$entryids) );
+
+		/****/
+
+		// Create single id condition. 
+		function createIdCondition($id) {
+			return "id=$id";
+		}
+	}
+
+
 	// Get field value using field id. 
 	function getFieldValueById($fieldid) {
 		
@@ -53,18 +124,24 @@
 		// Return field value. 
 		return $fieldvalue;
 	}
+
 	// Clean user input for database query (SQL). 
 	function cleanInputForQuery($input) {
 		global $db;
+		// if($input=='') {
+		// 	print "<script>console.log('Null input found:','$input')</script>";
+		// 	return 'null';
+		// }
 
-		// 
+		// Return clean input. 
 		return $db->real_escape_string($input);
 		return addslashes($input);
+		return ($input);
 	}
 	// Clean user input for output (HTML). 
 	function cleanInputForOutput($input) {
 
-		// 
+		// Return clean input. 
 		return htmlspecialchars($input);
 		return htmlentities($input);
 	}
@@ -75,6 +152,7 @@
 		return filter_var($input);
 	}
 
+
 	// Send database query to get result table rows. 
 	function sendDatabaseQuery($sql) {
 		global $db;
@@ -82,8 +160,9 @@
 		// $printstuffout = true;
 		
 		// Send database query. 
+		print "<script>console.log('Sending database query:',`$sql`)</script>";
+		// printToPage("Sending database query:<br>`$sql`");
 		$queryresult = $db->query($sql);
-		// print "<script>console.log('Sending database query:','$sql')</script>";
 		// Get status of database query. 
 		$querystatus = getQueryStatus($queryresult);
 		// Display status of database query. 
@@ -121,6 +200,7 @@
 		// Return resulting list of table rows from query. 
 		return $anyresultrows ? $resulttablerows : null;
 	}
+	/****/
 	// Get status of database query. 
 	function getQueryStatus($queryresult) {
 		global $db;
