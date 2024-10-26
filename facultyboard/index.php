@@ -9,7 +9,9 @@
 	require_once('./../sharedassets/script/config.php');
 
 	// Get metadata for database tables. 
-	require_once('./assets/database/database.php');
+	require_once('./assets/database/databasetables.php');
+	// Get metadata for database table icons. 
+	require_once('./assets/database/tableicons.php');
 	// Get functions to perform user operations. 
 	require_once('./assets/script/userops.php');
 	// Get functions to perform CRUD operations. 
@@ -86,64 +88,76 @@
 						// Get functions to access input and display output. 
 						require_once('./../sharedassets/script/io.php');
 
-						// Check for user operations (before doing anything else). 
-						checkUserOps();
+						// Check for in/out user operations (before doing anything else). 
+						$successfullogin = checkTheDoor();
 
-						// Get id of currently logged-in user. 
+						// Check for session. 
+						// checkSession();
+						// Get user id (if currently logged in). 
 						$currentuserid = getUserId();
-						// Display currently logged-in user. 
-						printToPage("Current user id: \"$currentuserid\"");
-
-						// Get data for current user. 
-						$currentuser = getCurrentUser($currentuserid);
-						// Display currently logged-in user. 
-						printToPage( json_encode($currentuser) );
-						printToPage();
+						// Get data for current user (if currently logged in). 
+						$currentuserdata = getUserData($currentuserid);
+						$currentuserdatastr = json_encode($currentuserdata);
+						// Display data for current user (if currently logged in). 
+						// printToPage("User data: ( $currentuserdatastr )");
+						// $databasetablesstr = json_encode($databasetables);
+						// printToPage("Table data: ( $databasetablesstr )");
 
 						// Check for crud operation from previous page. 
-						// checkForCrudOps();
+						checkForMovement();
 
-						// Retrieve all table data from database. 
+						// Download all table data from database. 
 						getAllTableData();
+						// $databasetablesstr = json_encode($databasetables);
+						// printToPage("Table data: ( $databasetablesstr )");
 
-						// Check if any view selected. 
-						$viewselected = isset( $_GET['view'] );
+						// Check for selected view. 
+						$isviewselected = isset( $_GET['view'] );
+						$isviewselectedstr = $isviewselected ? '👍' : '👎';
+						// printToPage();
+						printToPage("View selected: $isviewselectedstr");
 
-						// Get id of selected view. 
-						$selectedviewid = $viewselected ? $_GET['view'] : null;
+						// Proceed for selected view. 
+						if($isviewselected) {
 
-						// Check if table view selected. 
-						$tableviewselected = isset( $databasetables[$selectedviewid] );
-						printToPage();
-						printToPage();
-						printToPage("Table view selected: $tableviewselected");
+							// Get id of selected view (if selected). 
+							$selectedviewid = $isviewselected ? $_GET['view'] : null;
+							printToPage();
+							printToPage("Selected view id: $selectedviewid");
+							// Check if table view is selected. 
+							$istableviewselected = $isviewselected && isset( $databasetables[$selectedviewid] );
+	
+							// 
+							$istableviewselectedstr = $istableviewselected ? '👍' : '👎';
+							printToPage();
+							printToPage("Table view selected: $istableviewselectedstr");
 
-						// Proceed if table view selected. 
-						if($tableviewselected) {
-						
-							// Define form submit url (for given table). 
-							$formsubmiturl = "./?view=$selectedviewid";
-						
-							// Get data associated with selected table. 
-							$selectedtable = $databasetables[$selectedviewid];
-							// Get title of selected table. 
-							$tabletitle = $selectedtable['tabletitle'];
-							// Get caption for single item. 
-							$singlecaption = $selectedtable['singlecaption'];
-							// Get fields of table display. 
-							$displayfields = $selectedtable['displayfields'];
-							// Get fields of table editor. 
-							$editorfields = $selectedtable['editorfields'];
-
-							// // Retrieve relevant table data from database. 
-							// getRelevantTableData();
-						}
-
-						// Proceed for diff views. 
-						else {
-						
-							// Define default form submit url. 
-							$formsubmiturl = './';
+							// Proceed for table view. 
+							if( isset($istableviewselected) && $istableviewselected ) {
+							
+								// Define form submit url (for given table). 
+								$formsubmiturl = "./?view=$selectedviewid";
+							
+								// Get data associated with selected table. 
+								$selectedtable = $databasetables[$selectedviewid];
+								// Get title of selected table. 
+								$tabletitle = $selectedtable['tabletitle'];
+								// Get caption for single item. 
+								$singlecaption = $selectedtable['singlecaption'];
+								// Get fields of table display. 
+								$displayfields = $selectedtable['displayfields'];
+								// Get fields of table editor. 
+								$editorfields = $selectedtable['editorfields'];
+	
+								// // Retrieve relevant table data from database. 
+								// getRelevantTableData();
+							}
+							// Proceed for misc views. 
+							else {
+							
+								// Define default form submit url. 
+								$formsubmiturl = './';
+							}
 						}
 					?>
 
@@ -155,18 +169,20 @@
 
 			<?php include('./assets/module/navbar.php'); ?>
 
-			<?php include('./assets/module/splash.php'); ?>
-
-			<?php if($currentuser): ?>
+			<?php if($currentuserdata): ?>
 
 				<?php
-					if($tableviewselected) include('./assets/module/datatable.php');
+					if( isset($istableviewselected) && $istableviewselected ) include('./assets/module/datatable.php');
 					else include('./assets/module/navtable.php');
 				?>
 
-			<?php else: ?>
+			<?php elseif(  isset($selectedviewid) && ( $selectedviewid=='login' || $selectedviewid=='register' )  ): ?>
 
 				<?php include('./assets/module/userchooser.php'); ?>
+
+			<?php else: ?>
+
+				<?php include('./assets/module/splash.php'); ?>
 
 			<?php endif; ?>
 
