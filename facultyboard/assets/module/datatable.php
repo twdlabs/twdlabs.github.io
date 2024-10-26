@@ -118,8 +118,9 @@
 								<?php foreach($displayfields as $field): ?>
 
 									<?php 
-										// Get field id (for result table of home query). 
-										$fid = isset($field['capref']['fid']) ? $field['capref']['fid'] : $field['fid'];
+										// Get field id (from result table of home query). 
+										// $fid = isset($field['capref']['fid']) ? $field['capref']['fid'] : $field['fid'];
+										$fid = $field['fid'];
 										// Get field value. 
 										$value = $tablerow[$fid];
 									?>
@@ -156,7 +157,7 @@
 									</button>
 									<!-- /editbtn -->
 
-									<section class="editor" id="id<?php print $tablerow['id']; ?>">
+									<section class="editor center" id="id<?php print $tablerow['id']; ?>">
 
 										<!-- head -->
 										<div class="head">
@@ -240,7 +241,8 @@
 																<?php foreach($databasetables[$rtid]['entries'] as $rtablerow): ?>
 
 																	<?php $selected = false; ?>
-																	<?php $selected = $rtablerow['id']==$tablerow[$fid]; ?>
+																	<?php $selected = ( $rtablerow['id'] == $tablerow[$fid] ); ?>
+																	<?php "selected: $selected"; ?>
 
 																	<!-- option -->
 																	<option value="<?php print $rtablerow['id']; ?>" <?php print $selected?'selected':''; ?>><?php print $rtablerow[$ptfid]; ?></option>
@@ -340,7 +342,7 @@
 		<!-- /table -->
 
 		<!-- composer -->
-		<section class="composer">
+		<section class="composer center">
 
 			<!-- head -->
 			<div class="head">

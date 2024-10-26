@@ -31,17 +31,13 @@
 			"SELECT 
 				a.id, a.personid, p.personname 
 			FROM (admins as a) 
-			JOIN (persons as p) ON (a.personid = p.id)",
+			LEFT JOIN (persons as p) ON (a.personid = p.id)",
 
 			// Define table display fields (from home query results). 
 			'displayfields' => [
 				[
-					'fid'=>'personid',
-					'fieldtitle'=>'Name',
-					'capref'=>[
-						// 'tid'=>'persons',
-						'fid'=>'personname',
-					],
+					'fid'=>'personname',
+					'fieldtitle'=>'Person',
 				],
 			],
 
@@ -77,7 +73,9 @@
 			'entries' => [],
 
 			// Define reference tables. 
-			'reftableids' => [],
+			'reftableids' => [
+				'persons',
+			],
 
 			// Define database query (away). 
 			'awayquery' => 
@@ -89,13 +87,13 @@
 			'homequery' => 
 			"SELECT 
 				p.id, p.personname, p.emailaddress, p.passwdsalt, p.passwdhash,
-				p.genderid, g.gendername, p.department, r.personname as referralname,
+				p.referralid, p.genderid, g.gendername, p.department, r.personname as referralsource,
 				-- count(i.id) as issueshit,
 				count(c.id) as totalcomments 
 			FROM (persons as p)
 			LEFT JOIN (comments as c) ON (c.personid = p.id)
 			LEFT JOIN (genders as g) ON (p.genderid = g.id)
-			LEFT JOIN (persons as r) ON (p.referralsource = r.id)
+			LEFT JOIN (persons as r) ON (p.referralid = r.id)
 			GROUP BY p.id",
 
 			// Define table display fields (from home query results). 
@@ -105,32 +103,24 @@
 					'fieldtitle'=>'Name',
 				],
 				[
-					'fid'=>'genderid',
+					'fid'=>'gendername',
 					'fieldtitle'=>'Gender',
-					'capref'=>[
-						// 'tid'=>'genders',
-						'fid'=>'gendername',
-					],
 				],
 				[
 					'fid'=>'department',
-					'fieldtitle'=>'Department',
+					'fieldtitle'=>'Position',
 				],
 				[
 					'fid'=>'referralsource',
 					'fieldtitle'=>'Referred by',
-					'capref'=>[
-						// 'tid'=>'persons',
-						'fid'=>'referralname',
-					],
-				],
-				[
-					'fid'=>'totalcomments',
-					'fieldtitle'=>'Comments',
 				],
 				[
 					'fid'=>'emailaddress',
 					'fieldtitle'=>'E-mail',
+				],
+				[
+					'fid'=>'totalcomments',
+					'fieldtitle'=>'Comments',
 				],
 				// [
 				// 	'fid'=>'passwdsalt',
@@ -165,13 +155,13 @@
 				[
 					'type'=>'text',
 					'fid'=>'department',
-					'fieldtitle'=>'Department',
+					'fieldtitle'=>'Position',
 					'required'=>false,
 					'editable'=>true,
 				],
 				[
 					'type'=>'select',
-					'fid'=>'referralsource',
+					'fid'=>'referralid',
 					'fieldtitle'=>'Referred by',
 					'required'=>false,
 					'editable'=>true,
@@ -304,8 +294,8 @@
 				c.issueid, i.issuetitle,
 				c.personid, p.personname
 			FROM (comments as c) 
-			JOIN (issues as i) ON (c.issueid = i.id)
-			JOIN (persons as p) ON (c.personid = p.id)",
+			LEFT JOIN (issues as i) ON (c.issueid = i.id)
+			LEFT JOIN (persons as p) ON (c.personid = p.id)",
 			// Define database query (home). 
 			'homequery' => 
 			"SELECT 
@@ -314,27 +304,19 @@
 				c.issueid, i.issuetitle/* ,
 				count(cl.id) as numlikes */
 			FROM (comments as c) 
-			JOIN (issues as i) ON (c.issueid = i.id)
-			JOIN (persons as p) ON (c.personid = p.id) 
-			/* JOIN (commentlikes as cl) ON (cl.commentid = c.id) */",
+			LEFT JOIN (issues as i) ON (c.issueid = i.id)
+			LEFT JOIN (persons as p) ON (c.personid = p.id) 
+			/* LEFT JOIN (commentlikes as cl) ON (cl.commentid = c.id) */",
 
 			// Define table display fields (from home query results). 
 			'displayfields' => [
 				[
-					'fid'=>'personid',
+					'fid'=>'personname',
 					'fieldtitle'=>'Person',
-					'capref'=>[
-						// 'tid'=>'persons',
-						'fid'=>'personname',
-					],
 				],
 				[
-					'fid'=>'issueid',
+					'fid'=>'issuetitle',
 					'fieldtitle'=>'Issue',
-					'capref'=>[
-						// 'tid'=>'issues',
-						'fid'=>'issuetitle',
-					],
 				],
 				[
 					'fid'=>'commenttext',
@@ -440,14 +422,21 @@
 			// 'awayquery' => "",
 			// Define database query (home). 
 			'homequery' => 
-			"SELECT d.id, d.deptname
-			FROM (departments as d)",
+			"SELECT
+				d.id, d.deptname/* ,
+				count(p.id) as personcount */
+			FROM (departments as d)
+			/* LEFT JOIN (persons as p) ON (p.deptid = d.id) */",
 
 			// Define table display fields (from home query results). 
 			'displayfields' => [
 				[
 					'fid'=>'deptname',
 					'fieldtitle'=>'Department',
+				],
+				[
+					'fid'=>'personcount',
+					'fieldtitle'=>'Participants',
 				],
 			],
 
@@ -462,20 +451,5 @@
 				],
 			],
 		],
-	];
-
-	// Define database table icons. 
-	$databasetablesicons = [
-		'journals'=>'<path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2"/><path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0"/>',
-		'personsquare'=>'<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>',
-		'personcard'=>'<path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4m4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5M9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8m1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5"/><path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96q.04-.245.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 1 1 12z"/>',
-		'journaltext'=>'<path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/><path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/><path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>',
-		'chatbubble'=>'<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>',
-		'chatbubbletext'=>'<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/><path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>',
-		// 'personcircle'=>'<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>',
-		// 'person'=>'<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>',
-		'personlines'=>'<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>',
-		// 'xyz'=>'xyz',
-		// 'xyz'=>'xyz',
 	];
 ?>

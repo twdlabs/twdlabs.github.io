@@ -2,40 +2,40 @@
 <?php
 
 
-	// Check for user operations. 
-	function checkUserOps() {
+	// Check for in/out user operations. 
+	function checkTheDoor() {
 
-		// Check for user registration. 
-		$userregistrationtakingplace = isset( $_POST['register'] );
-		// Perform user registration. 
-		if($userregistrationtakingplace) createNewUser();
+		// Check if logout request received. 
+		$abouttobeonthewayoutthedoor = isset( $_GET['logout'] );
+		// Check if registration received. 
+		$registrationreceived = isset( $_POST['register'] );
+		// Check if login received. 
+		$loginreceived = isset( $_POST['login'] );
 
-		// Check for user login. 
-		$userlogintakingplace = isset( $_POST['login'] );
-		// Perform user login. 
-		if($userlogintakingplace) loginUser();
+		// Execute user registration. 
+		if( $registrationreceived ) {
 
-		// TODO: Check if now logging out. 
-		$useronthewayoutthedoor = isset( $_GET['logout'] );
-		// Perform user logout. 
-		if($useronthewayoutthedoor) {
-			logoutUser();
-			// exit;
+			// Create new user. 
+			$loginreceived = createNewUser();
 		}
-	}
-	// Check id of current user. 
-	function getUserId() {
-		$sessionvalid = isset( $_SESSION );
-		printToPage("Session valid: $sessionvalid");
+		// Execute user login. 
+		if( $loginreceived ) {
 
-		// Return current user id (if valid). 
-		return isset( $_SESSION['userid'] ) ? $_SESSION['userid'] : null;
+			// Login existing user. 
+			loginExistingUser();
+		}
+		// Execute user logout. 
+		if( $abouttobeonthewayoutthedoor ) {
+
+			// Logout current user. 
+			logoutUser();
+		}
 	}
 	// TODO: Create new user. 
 	function createNewUser() {
 
 		// Get user input: name. 
-		$name = getFieldValueById('name');
+		$uid = getFieldValueById('name');
 		// Get user input: password. 
 		$passwd = getFieldValueById('passwd');
 		// Get user input: password. 
@@ -51,63 +51,114 @@
 			sendDatabaseQuery($sql);
 		}
 		else ;
-
-		// // Login user. 
-		// loginUser();
 	}
 	// Login existing user. 
-	function loginUser() {
+	function loginExistingUser($dorefresh=false,$oversimplify=false) {
 		// if( !isset( $_POST['userid'] ) || !$_POST['userid'] ) return;
-		$oversimplify = false;
 
 		// Get user input: user id. 
 		$uid = $_POST['userid'];
 		// $uid = getFieldValueById('userid');
-		// Get user input: password. 
-		$pw = $_POST['password'];
-		// $pw = getFieldValueById('password');
-		$pwslt = getUserSaltById($uid);
-		$passwdhash = generatePasswdHash($pw.$pwslt);
 
 		// Run in simple mode. 
-		if($oversimplify) $_SESSION['userid'] = $uid;
+		if($oversimplify) {
+
+			// Save user id as session data. 
+			$_SESSION['userid'] = $uid;
+		}
 
 		// Run in production mode. 
 		else {
 
+			// Get user input: password. 
+			$pw = $_POST['password'];
+			// $pw = getFieldValueById('password');
+			// Get hashing salt for given user. 
+			$pwslt = getUserSaltById($uid);
+			// Get password hash for input password and selected user. 
+			$passwdhash = generatePasswdHash($pw.$pwslt);
+
 			// Create database query to find existing user. 
 			$sql = "SELECT * FROM (persons as p) WHERE p.id=$uid AND p.passwdhash='$passwdhash'";
 			// Send database query to find user. 
-			$userexists = sendDatabaseQuery($sql);
+			$userqueryresult = sendDatabaseQuery($sql);
 	
-			// Save user id to session if user exists. 
-			if($userexists) $_SESSION['userid'] = $uid;
-			else session_destroy();
+			// Save user id as session data (if match found). 
+			if($userqueryresult) {
+				$_SESSION['userid'] = $uid;
+				return true;
+			}
+
+			// Delete session data (if match not found). 
+			else {
+				session_destroy();
+				return false;
+			}
 		}
 
-		// TODO: Refresh page. 
-		header('location:./');
+		// Refresh page. 
+		if($dorefresh) header('location:./');
+	}
+	// Get hashing salt for given user. 
+	function getUserSaltById($uid) {
+
+		// Create database query. 
+		$sql = "SELECT passwdsalt FROM persons WHERE id=$uid";
+		printToPage('Retrieving user salt...');
+		// printQueryToPage($sql);
+
+		// Send database query to get hashing salt. 
+		$saltqueryresult = sendDatabaseQuery($sql);
+
+		// Return hashing salt if found. 
+		if($saltqueryresult) {
+			printToPage('User salt found.');
+			return $saltqueryresult[0]['passwdsalt'];
+		}
+		// Return nothing if not found. 
+		else {
+			printToPage('User salt not found.');
+			return '';
+		}
 	}
 	// Logout current user. 
-	function logoutUser($dorefresh) {
-		print "<script>console.log('Logging out user...')</script>";
+	function logoutUser($dorefresh=true) {
+		// print "<script>console.log('Now logging out...')</script>";
 
-		// Destroy session upon logout. 
+		// Delete session data upon logout. 
 		session_destroy();
 
-		// TODO: Refresh page. 
-		// header('location:./');
+		// Refresh page. 
+		if($dorefresh) header('location:./');
 	}
 
+	// Check for session. 
+	function checkSession() {
+
+		// Check if session is valid. 
+		$sessionvalid = isset( $_SESSION ) ? '👍' : '👎';
+		printToPage();
+		printToPage("Session valid: $sessionvalid");
+	}
+	// Check id of current user. 
+	function getUserId() {
+
+		// Get id of current user (if valid). 
+		$uid = isset( $_SESSION['userid'] ) ? $_SESSION['userid'] : null;
+
+		// Return id of current user. 
+		return $uid;
+	}
 	// Get data for current user. 
-	function getCurrentUser($currentuserid) {
+	function getUserData($uid) {
 		global $databasetables;
-		if(!$currentuserid) return null;
+		if(!$uid) return null;
 
 		// Compile database query. 
 		$awayquery = $databasetables['persons']['awayquery'];
-		$sql = "$awayquery WHERE id=$currentuserid";
-		printQueryToPage($sql);
+		$sql = "$awayquery WHERE id=$uid";
+		// printToPage('Retrieving user data...');
+		// printQueryToPage($sql);
 
 		// Send database query. 
 		$userresults = sendDatabaseQuery($sql);

@@ -14,7 +14,7 @@
 			<!-- bin -->
 			<div class="bin">
 
-				<?php if($currentuser): ?>
+				<?php if($currentuserdata): ?>
 
 					<!-- togglebtn -->
 					<a class="togglebtn btn" href="javascript:void(0)" title="Toggle table menu" onclick="toggleTableMenu()">
@@ -55,10 +55,10 @@
 				<!-- togglebtn -->
 				<a class="user togglebtn btn" href="javascript:void(0)" title="Toggle user menu" onclick="toggleUserMenu()">
 
-					<?php if($currentuser && isset($currentuser['genderid']) ): ?>
+					<?php if($currentuserdata && isset($currentuserdata['genderid']) ): ?>
 
 						<?php
-							$gid = $currentuser['genderid'];
+							$gid = $currentuserdata['genderid'];
 							$filename = [
 								'1'=>'avatar-m.png',
 								'2'=>'avatar-f.png',
@@ -93,7 +93,7 @@
 					<!-- navlist -->
 					<ul class="navlist tables">
 
-						<?php if($currentuser): ?>
+						<?php if($currentuserdata): ?>
 
 							<?php foreach($databasetables as $tid=>$table): ?>
 
@@ -138,26 +138,22 @@
 				<!-- usermenu -->
 				<div class="usermenu navmenu">
 
-					<?php if($currentuser): ?>
+					<?php if($currentuserdata): ?>
 
-						<!-- welcome -->
-						<div class="welcome">
-
-							<!-- textcopy -->
-							<p class="textcopy">
-								<?php print "User ID: $currentuserid"; ?>
-								<?php print json_encode($currentuser); ?>
-							</p>
-							<!-- /textcopy -->
+						<!-- profile -->
+						<div class="profile">
 
 							<?php
 
+								// Display current user data. 
+								// print json_encode($currentuserdata);
+
 								// Get name of current user. 
-								$name = $currentuser['personname'] ?? '[none]';
+								$name = $currentuserdata['personname'] ?? '[none]';
 								// Get email of current user. 
-								$email = $currentuser['emailaddress'] ?? '[none]';
+								$email = $currentuserdata['emailaddress'] ?? '[none]';
 								// Get department of current user. 
-								$dept = $currentuser['department'] ?? '[none]';
+								$dept = $currentuserdata['department'] ?? '[none]';
 							?>
 
 							<!-- textcopy -->
@@ -169,27 +165,27 @@
 
 							<!-- textcopy -->
 							<p class="textcopy">
-								<span class="name">E-mail:</span>
-								<span class="value"><?php print $email; ?></span>
+								<span class="name">Position:</span>
+								<span class="value"><?php print $dept; ?></span>
 							</p>
 							<!-- /textcopy -->
 
 							<!-- textcopy -->
 							<p class="textcopy">
-								<span class="name">Department:</span>
-								<span class="value"><?php print $dept; ?></span>
+								<span class="name">Username:</span>
+								<span class="value"><?php print $email; ?></span>
 							</p>
 							<!-- /textcopy -->
 
 						</div>
-						<!-- /welcome -->
+						<!-- /profile -->
 
 					<?php endif; ?>
 
 					<!-- navlist -->
 					<ul class="navlist user">
 
-						<?php if($currentuser): ?>
+						<?php if($currentuserdata): ?>
 
 							<!-- navitem -->
 							<li class="navitem">

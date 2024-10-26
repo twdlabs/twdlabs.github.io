@@ -13,7 +13,7 @@
 			<?php
 
 				// Get name of current user. 
-				$name = $currentuser['personname'] ?? '[none]';
+				$name = $currentuserdata['personname'] ?? '[none]';
 			?>
 
 			<!-- head -->

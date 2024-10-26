@@ -78,7 +78,7 @@ function toggleEntryComposer() {
 		entrycomposer.classList.add('open');
 		let selectedform = entrycomposer.querySelector('form input[type=text]');
 		console.log('selectedform:',selectedform);
-		selectedform.focus();
+		if(selectedform) selectedform.focus();
 	}
 	// Close composer (if already open). 
 	else {
@@ -118,7 +118,7 @@ function toggleEntryEditor(editbtn) {
 		entryeditor.classList.add('open');
 		let selectedform = entryeditor.querySelector('form input[type=text]');
 		console.log('selectedform:',selectedform);
-		selectedform.focus();
+		if(selectedform) selectedform.focus();
 	}
 	// Close editor (if already open). 
 	else {

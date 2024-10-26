@@ -8,7 +8,7 @@
 	<body>
 
 		<!-- splash -->
-		<section class="splash">
+		<section class="splash center">
 
 			<!-- logo -->
 			<img class="logo" src="./assets/images/6354674.png" alt="">

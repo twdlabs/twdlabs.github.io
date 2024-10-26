@@ -7,35 +7,91 @@
 	
 	<body>
 
-		<?php 
+		<?php
 
-			// Check for login mode. 
-			$newusermode = isset( $_GET['view'] ) && ($_GET['view']=='register');
+			// Check for login/register mode. 
+			$newusermode = ($selectedviewid == 'register');
+
+			// 
+			$loginreceived = isset($_POST['login']);
 		?>
 
-		<?php if($newusermode): ?>
+		<!-- user -->
+		<section class="user center">
 
-			<!-- register -->
-			<section class="register user">
+			<!-- head -->
+			<div class="head">
 
 				<!-- head -->
-				<div class="head">
+				<h2 class="head">
 
-					<!-- head -->
-					<h2 class="head">
+					<?php $formtitle = $newusermode ? 'New User' : 'Existing User'; ?>
 
-						<!-- caption -->
-						<span class="caption">New User</span>
-						<!-- /caption -->
+					<!-- caption -->
+					<span class="caption"><?php print $formtitle; ?></span>
+					<!-- /caption -->
 
-					</h2>
-					<!-- /head -->
-
-				</div>
+				</h2>
 				<!-- /head -->
 
-				<!-- register -->
-				<form class="register create crud" method="post" action="./">
+			</div>
+			<!-- /head -->
+
+			<!-- xyz -->
+			<form class="xyz crud" method="post" action="">
+
+				<?php  ?>
+				<?php $successfullogin = true; ?>
+
+				<!-- msgcenter -->
+				<div class="msgcenter">
+
+					<?php if(false): ?>
+
+						<!-- msg -->
+						<div class="msg">Xyz</div>
+						<!-- /msg -->
+
+					<?php endif; ?>
+
+					<?php if($successfullogin): ?>
+
+						<!-- msg -->
+						<!-- <div class="msg g">Login successful</div> -->
+						<!-- /msg -->
+
+					<?php else: ?>
+
+						<!-- msg -->
+						<div class="msg r">Invalid credentials</div>
+						<!-- /msg -->
+
+					<?php endif; ?>
+
+				</div>
+				<!-- /msgcenter -->
+
+			</form>
+			<!-- /xyz -->
+
+			<?php if($newusermode): ?>
+
+				<!-- create -->
+				<form class="create crud" method="post" action="">
+
+					<!-- msgcenter -->
+					<div class="msgcenter">
+
+						<?php if( $loginreceived && !$successfullogin ): ?>
+
+							<!-- msg -->
+							<div class="msg r">Invalid credentials</div>
+							<!-- /msg -->
+
+						<?php endif; ?>
+
+					</div>
+					<!-- /msgcenter -->
 
 					<!-- fieldlist -->
 					<ul class="fieldlist">
@@ -46,10 +102,24 @@
 							<!-- fieldinput -->
 							<!-- <input class="fieldinput" type="text" name="personid" placeholder="Person" value=""> -->
 							<select class="fieldinput" name="personid" required>
+
+								<!-- option -->
 								<option value="">Select Person</option>
+								<!-- /option -->
+
 								<?php foreach($databasetables['persons']['entries'] as $person): ?>
-									<option value="<?php print $person['id']; ?>"><?php print $person['personname']; ?></option>
+
+									<?php
+										$id = $person['id'];
+										$name = $person['personname'];
+									?>
+
+									<!-- option -->
+									<option value="<?php print $id; ?>"><?php print $name; ?></option>
+									<!-- /option -->
+
 								<?php endforeach; ?>
+
 							</select>
 							<!-- /fieldinput -->
 
@@ -60,7 +130,7 @@
 						<li class="field">
 
 							<!-- fieldinput -->
-							<input class="fieldinput" type="password" name="passwd" placeholder="Password" value="" required>
+							<input class="fieldinput" type="password" name="passwd" placeholder="Create Password" value="" required>
 							<!-- /fieldinput -->
 
 						</li>
@@ -83,7 +153,7 @@
 					<button class="sendbtn btn" type="submit" name="register">
 
 						<!-- caption -->
-						<span class="caption">Submit</span>
+						<span class="caption">Sign up</span>
 						<!-- /caption -->
 
 					</button>
@@ -105,46 +175,26 @@
 					<!-- /nav -->
 
 				</form>
-				<!-- /register -->
+				<!-- /create -->
 
-			</section>
-			<!-- /register -->
+			<?php else: ?>
 
-		<?php else: ?>
+				<!-- read -->
+				<form class="read crud" method="post" action="">
 
-			<!-- login -->
-			<section class="login user">
+					<!-- msgcenter -->
+					<div class="msgcenter">
 
-				<!-- head -->
-				<div class="head">
+						<?php if( $loginreceived && !$successfullogin ): ?>
 
-					<!-- head -->
-					<h2 class="head">
+							<!-- msg -->
+							<div class="msg r">Invalid credentials</div>
+							<!-- /msg -->
 
-						<!-- caption -->
-						<span class="caption">Existing User</span>
-						<!-- /caption -->
+						<?php endif; ?>
 
-					</h2>
-					<!-- /head -->
-
-				</div>
-				<!-- /head -->
-
-				<!-- login -->
-				<form class="login read crud" method="post" action="./">
-
-					<!-- msg -->
-					<!-- <div class="msg">Xyz</div> -->
-					<!-- /msg -->
-
-					<!-- msg -->
-					<!-- <div class="msg g">Login successful</div> -->
-					<!-- /msg -->
-
-					<!-- msg -->
-					<!-- <div class="msg r">Invalid user selected</div> -->
-					<!-- /msg -->
+					</div>
+					<!-- /msgcenter -->
 
 					<!-- fieldlist -->
 					<ul class="fieldlist">
@@ -155,12 +205,26 @@
 							<!-- fieldinput -->
 							<!-- <input class="fieldinput" type="text" name="personid" placeholder="Person" value=""> -->
 							<select class="fieldinput" name="userid" required>
+								<!-- option -->
 								<option value="">Select User</option>
+								<!-- /option -->
+
 								<?php $userslist = $databasetables['admins']['entries']; ?>
 								<?php $userslist = $databasetables['persons']['entries']; ?>
+
 								<?php foreach($userslist as $user): ?>
-									<option value="<?php print $user['id']; ?>"><?php print $user['personname']; ?></option>
+
+									<?php
+										$id = $user['id'];
+										$name = $user['personname'];
+									?>
+
+									<!-- option -->
+									<option value="<?php print $id; ?>"><?php print $name; ?></option>
+									<!-- /option -->
+
 								<?php endforeach; ?>
+
 							</select>
 							<!-- /fieldinput -->
 
@@ -205,12 +269,12 @@
 					<!-- /nav -->
 
 				</form>
-				<!-- /login -->
+				<!-- /read -->
 
-			</section>
-			<!-- /login -->
+			<?php endif; ?>
 
-		<?php endif; ?>
+		</section>
+		<!-- /user -->
 
 	</body>
 

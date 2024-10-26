@@ -2,7 +2,7 @@
 <?php
 
 	// Perform crud operation from previous page. 
-	function checkForCrudOps($opid,$optid) {
+	function checkForMovement($opid=null,$optid=null) {
 		global $databasetables;
 		$no_operation = !isset( $_POST['tableid'] ) || !isset( $_POST['operation'] );
 		if($no_operation) return;
@@ -70,7 +70,7 @@
 				$personname = cleanInputForQuery( $_POST['personname'] );
 				$genderid = cleanInputForQuery( $_POST['genderid'] );
 				$department = cleanInputForQuery( $_POST['department'] );
-				$referralsource = cleanInputForQuery( $_POST['referralsource'] );
+				$referralid = cleanInputForQuery( $_POST['referralid'] );
 				$emailaddress = cleanInputForQuery( $_POST['emailaddress'] );
 				$pwd = $_POST['password'] ?? '';
 
@@ -81,11 +81,15 @@
 					// printToPage("passwdsalt: $passwdsalt");
 					$passwdhash = generatePasswdHash( $pwd . $passwdsalt );
 					// printToPage("passwdhash: $passwdhash");
-					$sql = "INSERT INTO $operationtableid (personname, genderid, department, referralsource, emailaddress,  passwdsalt, passwdhash) VALUES ('$personname', '$genderid', '$department', '$referralsource', '$emailaddress', '$passwdsalt', '$passwdhash');";
+					if($referralid) $sql = "INSERT INTO $operationtableid (personname, genderid, department, referralid, emailaddress,  passwdsalt, passwdhash) VALUES ('$personname', '$genderid', '$department', '$referralid', '$emailaddress', '$passwdsalt', '$passwdhash');";
+					else $sql = "INSERT INTO $operationtableid (personname, genderid, department, referralid, emailaddress,  passwdsalt, passwdhash) VALUES ('$personname', '$genderid', '$department', null, '$emailaddress', '$passwdsalt', '$passwdhash');";
 				}
 
 				// Create database query (without password). 
-				else $sql = "INSERT INTO $operationtableid (personname, genderid, department, referralsource, emailaddress) VALUES ('$personname', '$genderid', '$department', '$referralsource', '$emailaddress');";
+				else {
+					if($referralid) $sql = "INSERT INTO $operationtableid (personname, genderid, department, referralid, emailaddress) VALUES ('$personname', '$genderid', '$department', '$referralid', '$emailaddress');";
+					else $sql = "INSERT INTO $operationtableid (personname, genderid, department, referralid, emailaddress) VALUES ('$personname', '$genderid', '$department', null, '$emailaddress');";
+				}
 			}
 	
 			// Perform person update operation. 
@@ -98,7 +102,7 @@
 				$personname = cleanInputForQuery( $_POST['personname'] );
 				$genderid = cleanInputForQuery( $_POST['genderid'] );
 				$department = cleanInputForQuery( $_POST['department'] );
-				$referralsource = cleanInputForQuery( $_POST['referralsource'] );
+				$referralid = cleanInputForQuery( $_POST['referralid'] );
 				$emailaddress = cleanInputForQuery( $_POST['emailaddress'] );
 				$pwd = $_POST['password'] ?? '';
 
@@ -110,11 +114,15 @@
 					// printToPage("passwdsalt: $passwdsalt");
 					$passwdhash = generatePasswdHash( $pwd . $passwdsalt );
 					// printToPage("passwdhash: $passwdhash");
-					$sql = "UPDATE $operationtableid SET personname='$personname', genderid='$genderid', department='$department', referralsource='$referralsource', emailaddress='$emailaddress', passwdsalt='$passwdsalt', passwdhash='$passwdhash' WHERE id='$id';";
+					if($referralid) $sql = "UPDATE $operationtableid SET personname='$personname', genderid='$genderid', department='$department', referralid='$referralid', emailaddress='$emailaddress', passwdsalt='$passwdsalt', passwdhash='$passwdhash' WHERE id='$id';";
+					else $sql = "UPDATE $operationtableid SET personname='$personname', genderid='$genderid', department='$department', referralid=null, emailaddress='$emailaddress', passwdsalt='$passwdsalt', passwdhash='$passwdhash' WHERE id='$id';";
 				}
 
 				// Create database query (without password). 
-				else $sql = "UPDATE $operationtableid SET personname='$personname', genderid='$genderid', department='$department', referralsource='$referralsource', emailaddress='$emailaddress' WHERE id='$id';";
+				else {
+					if($referralid) $sql = "UPDATE $operationtableid SET personname='$personname', genderid='$genderid', department='$department', referralid='$referralid', emailaddress='$emailaddress' WHERE id='$id';";
+					else $sql = "UPDATE $operationtableid SET personname='$personname', genderid='$genderid', department='$department', referralid=null, emailaddress='$emailaddress' WHERE id='$id';";
+				}
 			}
 	
 			// Perform person delete operation. 
@@ -241,14 +249,15 @@
 		}
 	}
 
-	// Retrieve all table data from database. 
+	// Download all table data from database. 
 	function getAllTableData() {
 		global $databasetables;
+		printToPage();
+		// printToPage("Now retrieving database data...");
 
 		// Go thru each database table. 
 		foreach($databasetables as $tid=>$table) {
-			printToPage();
-			printToPage("Retrieving all $tid from database...");
+			// printToPage("Retrieving all $tid from database...");
 			
 			// Save list of entries for database table. 
 			// $table['entries'] = getResultTableById($tid);
@@ -284,32 +293,13 @@
 		// Get database query. 
 		if($fromhome) $sql = $databasetables[$giventableid]['homequery'];
 		else $sql = $databasetables[$giventableid]['awayquery'];
-		printQueryToPage($sql);
+		// printQueryToPage($sql);
 
 		// Get rows of result table from query.
 		$resulttable = sendDatabaseQuery($sql);
 
 		// Return rows of result table. 
 		return $resulttable;
-	}
-
-	// Get hashing salt for given user. 
-	function getUserSaltById($uid) {
-
-		// Create database query. 
-		$sql = "SELECT * FROM persons WHERE id=$uid";
-		printQueryToPage($sql);
-
-		// Send database query. 
-		$userqueryresult = sendDatabaseQuery($sql);
-		if($userqueryresult) {
-			printToPage('User salt found');
-			return $userqueryresult[0]['passwdsalt'];
-		}
-		else {
-			printToPage('User salt not found');
-			return '';
-		}
 	}
 
 	// Generate random salt for password hashing. 

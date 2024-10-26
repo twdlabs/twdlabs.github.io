@@ -8,7 +8,7 @@
 
 	/* Theme Colors */
 	--lightgrey:#CCC;
-	--lightblack:#333;
+	--lightblack:#222;
 	--offwhite:#f8f8f8;
 	--navcolor:white;
 	
@@ -47,6 +47,8 @@ body {color:var(--forecolor); font-family:Nunito,sans-serif;}
 div#container {display:flex; flex-direction:column; /* justify-content:center; */ place-items:center; grid-gap:1.5rem; min-height:100vh; /* padding:1rem; */}
 
 
+
+
 /* Navbar */
 div#container nav.navbar {top:0; right:0; left:0; width:100%; z-index:30; box-shadow:var(--boxshadow);}
 div#container nav.navbar {position:fixed;} /* Bad for long (high content) pages */
@@ -71,17 +73,17 @@ div#container nav.navbar div.bin div.navmenu {position:absolute; top:100%; user-
 /* div#container nav.navbar div.bin div.navmenu div.btwn {height:1.5em; opacity:.125; border:.25px solid; margin:0 .25em;} */
 div#container nav.navbar div.bin div.navmenu ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
 div#container nav.navbar div.bin div.navmenu ul.navlist {flex-direction:column; align-items:stretch;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {padding:.375rem;}
+/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; color:inherit; text-decoration:none;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; color:inherit; text-decoration:none; padding:.375rem;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {display:block;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {/* display:none; */ font-size:.75em;}
 /* Navbar User Menu */
 /* div#container nav.navbar div.bin div.navmenu.usermenu {} */
-div#container nav.navbar div.bin div.navmenu.usermenu div.welcome {margin-bottom:.5rem;}
-div#container nav.navbar div.bin div.navmenu.usermenu div.welcome p.textcopy {margin:0; margin-top:.25rem;}
-div#container nav.navbar div.bin div.navmenu.usermenu div.welcome p.textcopy span.name {font-weight:bold;}
-/* div#container nav.navbar div.bin div.navmenu.usermenu div.welcome p.textcopy span.value {font-style:italic;} */
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile {margin-bottom:.5rem;}
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy {font-size:.875rem; padding:0 .25rem; margin:0; margin-top:.25em;}
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name {font-weight:bold;}
+/* div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.value {font-style:italic;} */
 /* Navbar Table Menu */
 /* div#container nav.navbar div.bin div.navmenu.tablemenu {} */
 div#container nav.navbar div.bin div.navmenu/* .tablemenu */ {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
@@ -109,8 +111,11 @@ div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink spa
 
 
 /* General Section */
-div#container section {background-color:white; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container section {background-color:white; padding:.75rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container section {/* width:100%; */ max-width:var(--pagewidth);}
+/* div#container section {transform:translateY(-4rem);} */
+/* div#container section.gone {transform:none;} */
+div#container section.center {position:fixed; top:45%; left:50%; transform:translate(-50%,-50%);}
 div#container section div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container section div.head h2.head {font-size:1.25em; /* text-align:center; */ margin:0;}
 /* div#container section div.head h2.head span.caption {} */
@@ -118,9 +123,7 @@ div#container section div.head h2.head span.caption:empty {background-color:gain
 div#container section div.head button.btn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
 div#container section div.head button.btn svg.icon {font-size:1.25em;}
 div#container section div.head button.btn span.caption {display:none;}
-
-
-/* General Form Section */
+/* General Section: Form */
 div#container section form.crud {margin:0;}
 div#container section form.crud ul.fieldlist {list-style:none; padding:0; margin:0;}
 div#container section form.crud ul.fieldlist li.field {margin-top:.5rem;}
@@ -128,34 +131,35 @@ div#container section form.crud ul.fieldlist li.field.x {display:none;}
 div#container section form.crud ul.fieldlist li.field input.fieldinput,
 div#container section form.crud ul.fieldlist li.field select.fieldinput,
 div#container section form.crud ul.fieldlist li.field textarea.fieldinput,
-div#container section form.crud button.sendbtn {font-family:inherit; font-size:inherit; resize:none; width:100%; /* max-width:10em; */ padding:.375em .875em; border:.125rem solid #0002; border-radius:.5rem;}
+div#container section form.crud button.sendbtn {font-family:inherit; /* font-size:inherit; */ font-size:.875em; resize:none; width:100%; max-width:16em; padding:.375em .875em; border:.125rem solid #0002; border-radius:.5rem;}
 div#container section form.crud button.sendbtn {margin-top:.5rem;}
 
 
 /* Splash Section */
-/* div#container section.splash {} */
-div#container section.splash img.logo {height:16rem;}
-div#container section.splash ul.usernavlist {display:flex; flex-direction:row; justify-content:center; align-items:center; grid-gap:1rem;}
+div#container section.splash {display:grid; place-items:center; z-index:30;}
+div#container section.splash img.logo {height:12rem; margin-top:.5rem;}
+div#container section.splash ul.usernavlist {display:flex; flex-direction:row; justify-content:center; align-items:center; grid-gap:.5rem;}
 div#container section.splash ul.usernavlist {list-style:none; padding:0; margin:0; margin-top:1rem;}
-div#container section.splash ul.usernavlist li.usernavitem {}
+/* div#container section.splash ul.usernavlist li.usernavitem {} */
 div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {display:grid; place-items:center; color:inherit; text-decoration:none;}
-div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {min-width:6rem; padding:.45rem 1rem; border:.125rem solid black; border-radius:.5rem;}
-div#container section.splash ul.usernavlist li.usernavitem a.usernavlink.pr {background-color:black; color:white;}
+div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {font-size:.875rem; font-weight:500; min-width:8rem; padding:.375rem 1rem; border:.125rem solid black; border-radius:.5rem;}
+div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {background-color:white; color:black;}
+div#container section.splash ul.usernavlist li.usernavitem a.usernavlink.pr {background-color:var(--lightblack); color:white;}
 
 
 /* User Chooser Section */
 /* div#container section.user {} */
-/* div#container section.user div.head {} */
-div#container section.user div.msg {background-color:#0004; font-size:.75rem; text-align:center; padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; margin-bottom:.75rem;}
-div#container section.user div.msg.g {background-color:#0f03; color:rgb(23, 83, 23);}
-div#container section.user div.msg.r {background-color:#f003; color:rgb(96, 29, 29);}
-div#container section.user div.nav {text-align:center; margin-top:.75rem;}
+div#container section.user div.head {justify-content:center;}
+div#container section.user div.msgcenter {display:flex; flex-direction:column; align-items:stretch; /* gap:.25rem; */}
+div#container section.user div.msgcenter div.msg {background-color:#0004; font-size:.75rem; text-align:center; padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; margin-top:.375rem;}
+div#container section.user div.msgcenter div.msg.g {background-color:#0f03; color:rgb(23, 83, 23);}
+div#container section.user div.msgcenter div.msg.r {background-color:#f003; color:rgb(96, 29, 29);}
+div#container section.user div.nav {font-size:.875em; text-align:center; margin-top:.75rem;}
 
 
 /* User Welcome Section */
 /* div#container section.welcome {} */
 /* div#container section.welcome div.head {} */
-
 
 /* Navigation Table Section */
 /* div#container section.nav {} */
@@ -182,13 +186,6 @@ div#container section.nav ul.navlist li.navitem a.navlink svg.icon {font-size:2.
 	
 	/* General Section */
 	div#container section {max-width:100%;}
-
-	/* General Form Section */
-
-	/* User Chooser Section */
-
-	/* User Welcome Section */
-	/* Navigation Table Section */
 }
 
 /* Big Smartphone Screen */
@@ -207,13 +204,7 @@ div#container section.nav ul.navlist li.navitem a.navlink svg.icon {font-size:2.
 	/* Navbar Table Menu */
 
 	/* General Section */
-
-	/* General Form Section */
-
-	/* User Chooser Section */
-
-	/* User Welcome Section */
-	/* Navigation Table Section */
+	/* div#container section {} */
 }
 
 /* Small Smartphone Screen */
@@ -230,13 +221,7 @@ div#container section.nav ul.navlist li.navitem a.navlink svg.icon {font-size:2.
 	/* Navbar Table Menu */
 
 	/* General Section */
-
-	/* General Form Section */
-
-	/* User Chooser Section */
-
-	/* User Welcome Section */
-	/* Navigation Table Section */
+	/* div#container section {} */
 }
 
 /* Small Smartphone Screen */
@@ -250,11 +235,5 @@ div#container section.nav ul.navlist li.navitem a.navlink svg.icon {font-size:2.
 	/* Navbar Table Menu */
 
 	/* General Section */
-
-	/* General Form Section */
-
-	/* User Chooser Section */
-
-	/* User Welcome Section */
-	/* Navigation Table Section */
+	/* div#container section {} */
 }

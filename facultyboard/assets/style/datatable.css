@@ -3,7 +3,7 @@
 
 /* Data Table Section */
 div#container section.table {z-index:10;}
-div#container section.table div.head {}
+/* div#container section.table div.head {} */
 div#container section.table div.head h2.head {font-size:1.375em; margin:0 1rem;}
 div#container section.table div.head h2.head a.selflink {color:inherit; text-decoration:none;}
 /* div#container section.table div.scroller {overflow-x:auto;} */
@@ -14,7 +14,7 @@ div#container section.table div.scroller table.table thead.head th.cell {padding
 /* div#container section.table div.scroller table.table tbody.body {} */
 /* div#container section.table div.scroller table.table tbody.body tr.row {} */
 div#container section.table div.scroller table.table tbody.body td.cell {background-color:var(--offwhite); text-align:center; position:relative; padding:.5em;}
-div#container section.table div.scroller table.table tbody.body td.cell section.editor {position:fixed; top:45%; left:50%; transform:translate(-50%,-50%); z-index:20;}
+div#container section.table div.scroller table.table tbody.body td.cell section.editor {z-index:20;}
 div#container section.table div.scroller table.table tbody.body td.cell section.editor {opacity:0; visibility:hidden; transition:.625s;}
 /* div#container section.table div.scroller table.table tbody.body td.cell section.editor#idX {} */
 div#container section.table div.scroller table.table tbody.body td.cell section.editor.open {opacity:1; visibility:visible;}
@@ -36,7 +36,7 @@ div#container section.table div.scroller table.table tbody.body td.cell button.e
 /* div#container section.table div.scroller table.table tbody.body span.caption {} */
 
 /* Data Editor Section */
-div#container section.composer {position:fixed; top:45%; left:50%; transform:translate(-50%,-50%); z-index:20;}
+div#container section.composer {z-index:20;}
 div#container section.composer {opacity:0; visibility:hidden; transition:.625s;}
 div#container section.composer.open {opacity:1; visibility:visible;}
 /* div#container section.composer div.head {} */
