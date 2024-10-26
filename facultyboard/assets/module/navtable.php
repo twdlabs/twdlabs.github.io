@@ -7,14 +7,8 @@
 	
 	<body>
 
-		<!-- welcome -->
-		<section class="welcome">
-
-			<?php
-
-				// Get name of current user. 
-				$name = $currentuserdata['personname'] ?? '[none]';
-			?>
+		<!-- navtable -->
+		<section class="navtable">
 
 			<!-- head -->
 			<div class="head">
@@ -23,29 +17,7 @@
 				<h2 class="head">
 
 					<!-- caption -->
-					<span class="caption">Welcome <?php print $name; ?>!</span>
-					<!-- /caption -->
-
-				</h2>
-				<!-- /head -->
-
-			</div>
-			<!-- /head -->
-
-		</section>
-		<!-- /welcome -->
-
-		<!-- nav -->
-		<section class="nav">
-
-			<!-- head -->
-			<div class="head">
-
-				<!-- head -->
-				<h2 class="head">
-
-					<!-- caption -->
-					<span class="caption">Select a table</span>
+					<span class="caption">Select a data table</span>
 					<!-- /caption -->
 
 				</h2>
@@ -93,7 +65,7 @@
 			<!-- /navlist -->
 
 		</section>
-		<!-- /nav -->
+		<!-- /navtable -->
 
 	</body>
 

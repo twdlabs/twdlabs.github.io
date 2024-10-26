@@ -7,8 +7,8 @@
 	
 	<body>
 
-		<!-- table -->
-		<section class="table">
+		<!-- datatable -->
+		<section class="datatable">
 
 			<!-- head -->
 			<div class="head">
@@ -33,7 +33,7 @@
 				<h2 class="head">
 
 					<!-- selflink -->
-					<a class="selflink" href="<?php ?>">
+					<a class="selflink" href="<?php /* print $selfrefurl; */ ?>">
 
 						<!-- caption -->
 						<span class="caption"><?php print $tabletitle; ?></span>
@@ -110,6 +110,7 @@
 					<tbody class="body">
 
 						<?php foreach($selectedtable['entries'] as $tablerow): ?>
+
 							<!-- <?php print json_encode($tablerow); ?> -->
 
 							<!-- row -->
@@ -193,7 +194,7 @@
 										<!-- /head -->
 
 										<!-- update -->
-										<form class="update crud" method="post" action="<?php print $formsubmiturl; ?>">
+										<form class="update crud" method="post" action="<?php print $selfrefurl; ?>">
 
 											<!-- parameter -->
 											<input class="parameter" type="hidden" name="operation" value="update">
@@ -298,7 +299,7 @@
 										<!-- /update -->
 
 										<!-- delete -->
-										<form class="delete crud" method="post" action="<?php print $formsubmiturl; ?>">
+										<form class="delete crud" method="post" action="<?php print $selfrefurl; ?>">
 
 											<!-- parameter -->
 											<input class="parameter" type="hidden" name="operation" value="delete">
@@ -339,7 +340,7 @@
 			<!-- /scroller -->
 
 		</section>
-		<!-- /table -->
+		<!-- /datatable -->
 
 		<!-- composer -->
 		<section class="composer center">
@@ -378,7 +379,7 @@
 			<!-- /head -->
 
 			<!-- create -->
-			<form class="create crud" method="post" action="<?php print $formsubmiturl; ?>">
+			<form class="create crud" method="post" action="<?php print $selfrefurl; ?>">
 
 				<!-- parameter -->
 				<input class="parameter" type="hidden" name="operation" value="create">

@@ -44,7 +44,7 @@ body {
 /* Container */
 body {background-color:var(--backcolor); background-image:var(--bgimg); margin:0;}
 body {color:var(--forecolor); font-family:Nunito,sans-serif;}
-div#container {display:flex; flex-direction:column; /* justify-content:center; */ place-items:center; grid-gap:1.5rem; min-height:100vh; /* padding:1rem; */}
+div#container {display:flex; flex-direction:column; /* justify-content:center; */ place-items:center; grid-gap:1.5rem; min-height:100vh; padding-bottom:1rem;}
 
 
 
@@ -117,7 +117,8 @@ div#container section {/* width:100%; */ max-width:var(--pagewidth);}
 /* div#container section.gone {transform:none;} */
 div#container section.center {position:fixed; top:45%; left:50%; transform:translate(-50%,-50%);}
 div#container section div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section div.head h2.head {font-size:1.25em; /* text-align:center; */ margin:0;}
+div#container section div.head h2.head {font-size:1.25em; font-size:1.375em; /* text-align:center; */ margin:0; margin:0 1rem;}
+div#container section div.head h2.head a.selflink {color:inherit; text-decoration:none;}
 /* div#container section div.head h2.head span.caption {} */
 div#container section div.head h2.head span.caption:empty {background-color:gainsboro; display:inline-block; height:1em; width:6em; border-radius:1em;}
 div#container section div.head button.btn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
@@ -161,16 +162,33 @@ div#container section.user div.nav {font-size:.875em; text-align:center; margin-
 /* div#container section.welcome {} */
 /* div#container section.welcome div.head {} */
 
+/* Home Feed Section */
+/* div#container section.homefeed {} */
+div#container section.homefeed div.head {justify-content:center;}
+/* div#container section.homefeed div.head h2.head {} */
+div#container section.homefeed article.issue {padding:1rem; margin-top:1rem;}
+div#container section.homefeed article.issue h3.title {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin:0;}
+/* div#container section.homefeed article.issue h3.title span.number {} */
+/* div#container section.homefeed article.issue h3.title span.caption {} */
+div#container section.homefeed article.issue p.description {margin:0;}
+div#container section.homefeed article.issue ul.commentlist {list-style:none; padding:0; margin:0; margin-top:.5em; margin-left:1em;}
+div#container section.homefeed article.issue ul.commentlist li.commentitem {margin-top:.25em;}
+div#container section.homefeed article.issue ul.commentlist li.commentitem span.name {font-weight:bold;}
+/* div#container section.homefeed article.issue ul.commentlist li.commentitem span.comment {} */
+div#container section.homefeed article.issue form.newcomment {display:grid; margin-left:1em; margin-top:.375em;}
+div#container section.homefeed article.issue form.newcomment textarea.fieldinput,
+div#container section.homefeed article.issue form.newcomment input.fieldinput {font-family:inherit; /* font-size:inherit; */ font-size:.875em; resize:none; width:100%; max-width:16em; padding:.375em .875em; border:.125rem solid #0002; border-radius:.5rem;}
+
 /* Navigation Table Section */
-/* div#container section.nav {} */
-/* div#container section.nav div.head {} */
-div#container section.nav ul.navlist {list-style:none; /* text-align:center; */ padding:0; margin:0;}
-div#container section.nav ul.navlist {display:grid; grid-template-columns:repeat(5,1fr); margin-top:1.25em;}
-/* div#container section.nav ul.navlist li.navitem {} */
-div#container section.nav ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
-div#container section.nav ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; font-size:.875em;}
-div#container section.nav ul.navlist li.navitem a.navlink svg.icon {font-size:2.5em;}
-/* div#container section.nav ul.navlist li.navitem a.navlink span.caption {} */
+/* div#container section.navtable {} */
+/* div#container section.navtable div.head {} */
+div#container section.navtable ul.navlist {list-style:none; /* text-align:center; */ padding:0; margin:0;}
+div#container section.navtable ul.navlist {display:grid; grid-template-columns:repeat(5,1fr); margin-top:1em;}
+/* div#container section.navtable ul.navlist li.navitem {} */
+div#container section.navtable ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container section.navtable ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; font-size:.875em;}
+div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-size:2.5em;}
+/* div#container section.navtable ul.navlist li.navitem a.navlink span.caption {} */
 
 
 

@@ -132,14 +132,6 @@
 		if($dorefresh) header('location:./');
 	}
 
-	// Check for session. 
-	function checkSession() {
-
-		// Check if session is valid. 
-		$sessionvalid = isset( $_SESSION ) ? '👍' : '👎';
-		printToPage();
-		printToPage("Session valid: $sessionvalid");
-	}
 	// Check id of current user. 
 	function getUserId() {
 

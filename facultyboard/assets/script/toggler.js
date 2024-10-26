@@ -9,7 +9,7 @@ let tablenavigationmenu = document.querySelector('div#container nav.navbar div.b
 // Get entry composer. 
 const entrycomposer = document.querySelector('div#container section.composer');
 // Get all entry editors. 
-const allentryeditors = document.querySelectorAll('div#container section.table div.scroller table.table tbody.body td.cell section.editor');
+const allentryeditors = document.querySelectorAll('div#container section.datatable div.scroller table.table tbody.body td.cell section.editor');
 
 
 /*****/
@@ -100,7 +100,7 @@ function toggleEntryEditor(editbtn) {
 	let entryid = editbtn.getAttribute('data-entryid');
 
 	// Get selected entry editor. 
-	let entryeditor = document.querySelector('div#container section.table div.scroller table.table tbody.body td.cell section.editor#id'+entryid);
+	let entryeditor = document.querySelector('div#container section.datatable div.scroller table.table tbody.body td.cell section.editor#id'+entryid);
 
 	// Check if editor already open. 
 	let alreadyopen = entryeditor.classList.contains('open');
