@@ -91,8 +91,6 @@
 						// Check for in/out user operations (before doing anything else). 
 						$successfullogin = checkTheDoor();
 
-						// Check for session. 
-						// checkSession();
 						// Get user id (if currently logged in). 
 						$currentuserid = getUserId();
 						// Get data for current user (if currently logged in). 
@@ -113,9 +111,12 @@
 
 						// Check for selected view. 
 						$isviewselected = isset( $_GET['view'] );
-						$isviewselectedstr = $isviewselected ? '👍' : '👎';
+						$ivs = $isviewselected ? '👍' : '👎';
 						// printToPage();
-						printToPage("View selected: $isviewselectedstr");
+						printToPage("View selected: $isviewselected ($ivs)");
+
+						// Define self-reference url. 
+						$selfrefurl = htmlspecialchars($_SERVER['PHP_SELF']);
 
 						// Proceed for selected view. 
 						if($isviewselected) {
@@ -126,17 +127,12 @@
 							printToPage("Selected view id: $selectedviewid");
 							// Check if table view is selected. 
 							$istableviewselected = $isviewselected && isset( $databasetables[$selectedviewid] );
-	
-							// 
-							$istableviewselectedstr = $istableviewselected ? '👍' : '👎';
+							$itvs = $istableviewselected ? '👍' : '👎';
 							printToPage();
-							printToPage("Table view selected: $istableviewselectedstr");
+							printToPage("Table view selected: $istableviewselected ($itvs)");
 
 							// Proceed for table view. 
-							if( isset($istableviewselected) && $istableviewselected ) {
-							
-								// Define form submit url (for given table). 
-								$formsubmiturl = "./?view=$selectedviewid";
+							if( $istableviewselected ) {
 							
 								// Get data associated with selected table. 
 								$selectedtable = $databasetables[$selectedviewid];
@@ -155,9 +151,15 @@
 							// Proceed for misc views. 
 							else {
 							
-								// Define default form submit url. 
-								$formsubmiturl = './';
+								// Set title of non-table. 
+								$tabletitle = '';
 							}
+						}
+						// Proceed for home view. 
+						else {
+						
+							// Set title of selected table. 
+							$tabletitle = 'Social Feed';
 						}
 					?>
 
@@ -171,10 +173,17 @@
 
 			<?php if($currentuserdata): ?>
 
-				<?php
-					if( isset($istableviewselected) && $istableviewselected ) include('./assets/module/datatable.php');
-					else include('./assets/module/navtable.php');
-				?>
+				<?php if( isset($istableviewselected) && $istableviewselected ): ?>
+
+					<?php include('./assets/module/datatable.php'); ?>
+					<?php include('./assets/module/navtable.php'); ?>
+
+				<?php else: ?>
+
+					<?php include('./assets/module/hometables.php'); ?>
+					<?php include('./assets/module/navtable.php'); ?>
+
+				<?php endif; ?>
 
 			<?php elseif(  isset($selectedviewid) && ( $selectedviewid=='login' || $selectedviewid=='register' )  ): ?>
 
