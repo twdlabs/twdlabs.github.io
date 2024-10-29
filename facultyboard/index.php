@@ -9,7 +9,7 @@
 	require_once('./../sharedassets/script/config.php');
 
 	// Get metadata for database tables. 
-	require_once('./assets/database/databasetables.php');
+	require_once('./assets/database/database.php');
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform user operations. 
@@ -27,9 +27,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./assets/images/6354674.png" rel="icon"/>
+		<link href="./assets/image/6354674.png" rel="icon"/>
 		<link href="./../sharedassets/flaskicon.png" rel="icon"/>
-		<link href="./assets/images/6354674.png" rel="apple-touch-icon"/>
+		<link href="./assets/image/6354674.png" rel="apple-touch-icon"/>
 		<title>Faculty Board</title>
 
 		<!-- Query Stylesheet -->
@@ -54,7 +54,7 @@
 		<div id="container">
 
 			<!-- queryarena -->
-			<div class="queryarena head">
+			<div class="queryarena head openx">
 				
 				<!-- togglebtn -->
 				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
@@ -92,17 +92,19 @@
 						$successfullogin = checkTheDoor();
 
 						// Get user id (if currently logged in). 
-						$currentuserid = getUserId();
+						$currentuserid = getCurrentUserId();
+						$iscurrentuseradmin = checkIfUserAdmin($currentuserid);
 						// Get data for current user (if currently logged in). 
 						$currentuserdata = getUserData($currentuserid);
-						$currentuserdatastr = json_encode($currentuserdata);
-						// Display data for current user (if currently logged in). 
-						// printToPage("User data: ( $currentuserdatastr )");
+						// Display all database tables. 
 						// $databasetablesstr = json_encode($databasetables);
-						// printToPage("Table data: ( $databasetablesstr )");
+						// printToPage("Table data: { $databasetablesstr }");
+
+						// Save record of new user session. 
+						if($successfullogin) saveNewSession();
 
 						// Check for crud operation from previous page. 
-						checkForMovement();
+						checkForDataMoves();
 
 						// Download all table data from database. 
 						getAllTableData();
@@ -113,23 +115,29 @@
 						$isviewselected = isset( $_GET['view'] );
 						$ivs = $isviewselected ? '👍' : '👎';
 						// printToPage();
-						printToPage("View selected: $isviewselected ($ivs)");
+						// printToPage("View selected: $isviewselected ($ivs)");
 
 						// Define self-reference url. 
-						$selfrefurl = htmlspecialchars($_SERVER['PHP_SELF']);
+						$self = $_SERVER['PHP_SELF'];
+						$query = $_SERVER['QUERY_STRING'];
+						$selfrefurl = htmlspecialchars( "$self?$query" );
+						
+						// Set default table title. 
+						$tabletitle = 'Social Feed';
 
 						// Proceed for selected view. 
 						if($isviewselected) {
 
-							// Get id of selected view (if selected). 
-							$selectedviewid = $isviewselected ? $_GET['view'] : null;
-							printToPage();
-							printToPage("Selected view id: $selectedviewid");
-							// Check if table view is selected. 
-							$istableviewselected = $isviewselected && isset( $databasetables[$selectedviewid] );
-							$itvs = $istableviewselected ? '👍' : '👎';
-							printToPage();
-							printToPage("Table view selected: $istableviewselected ($itvs)");
+							// Get id of selected view. 
+							$selectedviewid = $_GET['view'];
+							// printToPage();
+							// printToPage("Selected view id: $selectedviewid");
+
+							// Check if selected view is table. 
+							$istableviewselected = isset( $databasetables[$selectedviewid] );
+							$istableviewselectedthumb = $istableviewselected ? '👍' : '👎';
+							// printToPage();
+							// printToPage("Table view selected: $istableviewselected ($istableviewselectedthumb)");
 
 							// Proceed for table view. 
 							if( $istableviewselected ) {
@@ -145,21 +153,9 @@
 								// Get fields of table editor. 
 								$editorfields = $selectedtable['editorfields'];
 	
-								// // Retrieve relevant table data from database. 
-								// getRelevantTableData();
+								// Retrieve relevant table data from database. 
+								getRelevantTableData();
 							}
-							// Proceed for misc views. 
-							else {
-							
-								// Set title of non-table. 
-								$tabletitle = '';
-							}
-						}
-						// Proceed for home view. 
-						else {
-						
-							// Set title of selected table. 
-							$tabletitle = 'Social Feed';
 						}
 					?>
 
@@ -169,21 +165,23 @@
 			</div>
 			<!-- /queryarena -->
 
-			<?php include('./assets/module/navbar.php'); ?>
+
+
+			<?php /* include('./assets/module/navbar.php'); ?>
 
 			<?php if($currentuserdata): ?>
 
 				<?php if( isset($istableviewselected) && $istableviewselected ): ?>
 
 					<?php include('./assets/module/datatable.php'); ?>
-					<?php include('./assets/module/navtable.php'); ?>
 
 				<?php else: ?>
 
 					<?php include('./assets/module/hometables.php'); ?>
-					<?php include('./assets/module/navtable.php'); ?>
 
 				<?php endif; ?>
+
+				<?php if( $iscurrentuseradmin ) include('./assets/module/navtable.php'); ?>
 
 			<?php elseif(  isset($selectedviewid) && ( $selectedviewid=='login' || $selectedviewid=='register' )  ): ?>
 
@@ -193,7 +191,41 @@
 
 				<?php include('./assets/module/splash.php'); ?>
 
-			<?php endif; ?>
+			<?php endif; */ ?>
+
+
+
+			<?php
+
+				// 
+				include('./assets/module/navbar.php');
+				
+				// Proceed if user logged in. 
+				if($currentuserdata) {
+
+					// Check if table view selected. 
+					$tvs = isset($istableviewselected) && $istableviewselected;
+					// Display data table (if table view selected). 
+					if($tvs) include('./assets/module/datatable.php');
+					// Display home social feed (if no table view selected). 
+					else include('./assets/module/hometables.php');
+
+					// Display navigation for data tables (if current user is admin). 
+					if( $iscurrentuseradmin ) include('./assets/module/navtable.php');
+				}
+
+				// Display login/register screen (if selected and no user logged in). 
+				elseif(  isset($selectedviewid) && ( $selectedviewid=='login' || $selectedviewid=='register' )  ) {
+					include('./assets/module/userchooser.php');
+				}
+
+				// Display splash screen otherwise. 
+				else {
+					include('./assets/module/splash.php');
+				}
+				
+			?>
+
 
 		</div>
 		<!-- /#container -->
