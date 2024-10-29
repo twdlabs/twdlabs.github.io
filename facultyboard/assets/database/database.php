@@ -8,7 +8,6 @@
 
 			// Define table display mode. 
 			'tabledisplay' => true,
-
 			// Define table title. 
 			'tabletitle' => 'Admins',
 			// Define table navigation icon. 
@@ -18,29 +17,18 @@
 
 			// Define table entries. 
 			'entries' => [],
-
 			// Define reference tables. 
 			'reftableids' => [
 				'persons',
 			],
 
-			// Define database query (away). 
-			// 'awayquery' => "",
-			// Define database query (home). 
-			'homequery' => 
-			"SELECT 
-				a.id, a.personid, p.personname 
-			FROM (admins as a) 
-			LEFT JOIN (persons as p) ON (a.personid = p.id)",
-
-			// Define table display fields (from home query results). 
+			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
 					'fid'=>'personname',
 					'fieldtitle'=>'Person',
 				],
 			],
-
 			// Define table editor fields. 
 			'editorfields' => [
 				[
@@ -55,13 +43,24 @@
 					],
 				],
 			],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT 
+				id, personid 
+			FROM admins ",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT 
+				a.id, a.personid, p.personname 
+			FROM (admins as a) 
+			LEFT JOIN (persons as p) ON (a.personid = p.id) ",
 		],
 
 		'persons' => [
 
 			// Define table display mode. 
 			'tabledisplay' => true,
-
 			// Define table title. 
 			'tabletitle' => 'Faculty',
 			// Define table navigation icon. 
@@ -71,32 +70,12 @@
 
 			// Define table entries. 
 			'entries' => [],
-
 			// Define reference tables. 
 			'reftableids' => [
 				'persons',
 			],
 
-			// Define database query (away). 
-			'awayquery' => 
-			"SELECT 
-				id, personname, emailaddress,
-				genderid, department 
-			FROM persons",
-			// Define database query (home). 
-			'homequery' => 
-			"SELECT 
-				p.id, p.personname, p.emailaddress, p.passwdsalt, p.passwdhash,
-				p.referralid, p.genderid, g.gendername, p.department, r.personname as referralsource,
-				-- count(i.id) as issueshit,
-				count(c.id) as totalcomments 
-			FROM (persons as p)
-			LEFT JOIN (comments as c) ON (c.personid = p.id)
-			LEFT JOIN (genders as g) ON (p.genderid = g.id)
-			LEFT JOIN (persons as r) ON (p.referralid = r.id)
-			GROUP BY p.id",
-
-			// Define table display fields (from home query results). 
+			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
 					'fid'=>'personname',
@@ -107,16 +86,20 @@
 					'fieldtitle'=>'Gender',
 				],
 				[
-					'fid'=>'department',
+					'fid'=>'position',
 					'fieldtitle'=>'Position',
+				],
+				[
+					'fid'=>'deptname',
+					'fieldtitle'=>'Department',
 				],
 				[
 					'fid'=>'referralsource',
 					'fieldtitle'=>'Referred by',
 				],
 				[
-					'fid'=>'emailaddress',
-					'fieldtitle'=>'E-mail',
+					'fid'=>'username',
+					'fieldtitle'=>'Username',
 				],
 				[
 					'fid'=>'totalcomments',
@@ -131,7 +114,6 @@
 				// 	'fieldtitle'=>'Password Hash',
 				// ],
 			],
-
 			// Define table editor fields. 
 			'editorfields' => [
 				[
@@ -154,10 +136,21 @@
 				],
 				[
 					'type'=>'text',
-					'fid'=>'department',
+					'fid'=>'position',
 					'fieldtitle'=>'Position',
 					'required'=>false,
 					'editable'=>true,
+				],
+				[
+					'type'=>'select',
+					'fid'=>'deptid',
+					'fieldtitle'=>'Department',
+					'required'=>false,
+					'editable'=>true,
+					'capref'=>[
+						'tid'=>'departments',
+						'fid'=>'deptname',
+					],
 				],
 				[
 					'type'=>'select',
@@ -171,9 +164,9 @@
 					],
 				],
 				[
-					'type'=>'email',
-					'fid'=>'emailaddress',
-					'fieldtitle'=>'E-mail',
+					'type'=>'text',
+					'fid'=>'username',
+					'fieldtitle'=>'Username',
 					'required'=>true,
 					'editable'=>true,
 				],
@@ -186,13 +179,35 @@
 					'editable'=>false,
 				],
 			],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT 
+				id, personname, username,
+				genderid/* , position  */
+			FROM persons ",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT 
+				p.id, p.personname,
+				p.username, p.passwdsalt, p.passwdhash,
+				p.genderid, g.gendername, 
+				p.position, p.deptid, d.deptname, 
+				p.referralid, r.personname as referralsource,
+				-- count(i.id) as issueshit,
+				count(c.id) as totalcomments 
+			FROM (persons as p)
+			LEFT JOIN (comments as c) ON (c.personid = p.id)
+			LEFT JOIN (genders as g) ON (p.genderid = g.id)
+			LEFT JOIN (persons as r) ON (p.referralid = r.id)
+			LEFT JOIN (departments as d) ON (p.deptid = d.id)
+			GROUP BY p.id ",
 		],
 
 		'issues' => [
 
 			// Define table display mode. 
 			'tabledisplay' => true,
-
 			// Define table title. 
 			'tabletitle' => 'Issues',
 			// Define table navigation icon. 
@@ -202,31 +217,10 @@
 
 			// Define table entries. 
 			'entries' => [],
-
 			// Define reference tables. 
 			'reftableids' => [],
 
-			// Define database query (away). 
-			'awayquery' => "SELECT id,issuetitle FROM issues",
-			// Define database query (home). 
-			'homequery' => 
-			"SELECT 
-				i.id, i.issuetitle, i.issuedescription,
-				count(c.id) as totalcomments,
-				count(distinct p.id) as totalcommenters 
-			FROM (issues as i)
-			LEFT JOIN (comments as c) ON (c.issueid = i.id)
-			LEFT JOIN (persons as p) ON (c.personid = p.id)
-			GROUP BY i.id",
-			// Define database query (home). 
-			// 'homequery' => 
-			// "SELECT 
-			// 	i.id,
-			// 	i.issuetitle,
-			// 	i.issuedescription
-			// FROM (issues as i)",
-
-			// Define table display fields (from home query results). 
+			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
 					'fid'=>'issuetitle',
@@ -245,7 +239,6 @@
 					'fieldtitle'=>'People',
 				],
 			],
-
 			// Define table editor fields. 
 			'editorfields' => [
 				[
@@ -263,13 +256,28 @@
 					'editable'=>true,
 				],
 			],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT 
+				id, issuetitle 
+			FROM issues ",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT 
+				i.id, i.issuetitle, i.issuedescription,
+				count(c.id) as totalcomments,
+				count(distinct p.id) as totalcommenters 
+			FROM (issues as i)
+			LEFT JOIN (comments as c) ON (c.issueid = i.id)
+			LEFT JOIN (persons as p) ON (c.personid = p.id)
+			GROUP BY i.id ",
 		],
 
 		'comments' => [
 
 			// Define table display mode. 
 			'tabledisplay' => true,
-
 			// Define table title. 
 			'tabletitle' => 'Comments',
 			// Define table navigation icon. 
@@ -280,35 +288,13 @@
 
 			// Define table entries. 
 			'entries' => [],
-
 			// Define reference tables. 
 			'reftableids' => [
 				'persons',
 				'issues',
 			],
 
-			// Define database query (away). 
-			'awayquery' => 
-			"SELECT 
-				c.id, c.commenttext, c.createdat,
-				c.issueid, i.issuetitle,
-				c.personid, p.personname
-			FROM (comments as c) 
-			LEFT JOIN (issues as i) ON (c.issueid = i.id)
-			LEFT JOIN (persons as p) ON (c.personid = p.id)",
-			// Define database query (home). 
-			'homequery' => 
-			"SELECT 
-				c.id, c.commenttext, c.createdat,
-				c.personid, p.personname,
-				c.issueid, i.issuetitle/* ,
-				count(cl.id) as numlikes */
-			FROM (comments as c) 
-			LEFT JOIN (issues as i) ON (c.issueid = i.id)
-			LEFT JOIN (persons as p) ON (c.personid = p.id) 
-			/* LEFT JOIN (commentlikes as cl) ON (cl.commentid = c.id) */",
-
-			// Define table display fields (from home query results). 
+			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
 					'fid'=>'personname',
@@ -327,7 +313,6 @@
 					'fieldtitle'=>'Created',
 				],
 			],
-
 			// Define table editor fields. 
 			'editorfields' => [
 				[
@@ -347,7 +332,7 @@
 					'fieldtitle'=>'Issue',
 					'required'=>true,
 					'editable'=>false,
-					'editable'=>true,
+					'editable'=>false,
 					'capref'=>[
 						'tid'=>'issues',
 						'fid'=>'issuetitle',
@@ -361,13 +346,33 @@
 					'editable'=>true,
 				],
 			],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT 
+				c.id, c.commenttext, c.createdat,
+				c.issueid, i.issuetitle,
+				c.personid, p.personname
+			FROM (comments as c) 
+			LEFT JOIN (issues as i) ON (c.issueid = i.id)
+			LEFT JOIN (persons as p) ON (c.personid = p.id) ",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT 
+				c.id, c.commenttext, c.createdat,
+				c.personid, p.personname,
+				c.issueid, i.issuetitle/* ,
+				count(cl.id) as numlikes */
+			FROM (comments as c) 
+			LEFT JOIN (issues as i) ON (c.issueid = i.id)
+			LEFT JOIN (persons as p) ON (c.personid = p.id) 
+			/* LEFT JOIN (commentlikes as cl) ON (cl.commentid = c.id) */ ",
 		],
 		
 		'genders' => [
 
 			// Define table display mode. 
-			'tabledisplay' => false,
-
+			'tabledisplay' => true,
 			// Define table title. 
 			'tabletitle' => 'Genders',
 			// Define table navigation icon. 
@@ -377,34 +382,42 @@
 
 			// Define table entries. 
 			'entries' => [],
-
 			// Define reference tables. 
 			'reftableids' => [],
 
-			// Define database query (away). 
-			// 'awayquery' => "",
-			// Define database query (home). 
-			'homequery' => 
-			"SELECT g.id, g.gendername
-			FROM (genders as g)",
-
-			// Define table display fields (from home query results). 
+			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
 					'fid'=>'gendername',
 					'fieldtitle'=>'Gender',
 				],
+				[
+					'fid'=>'numpersons',
+					'fieldtitle'=>'Count',
+				],
 			],
-
 			// Define table editor fields. 
 			'editorfields' => [],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT 
+				id, gendername
+			FROM genders ",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT 
+				g.id, g.gendername,
+				count(p.id) as numpersons
+			FROM (genders as g)
+			LEFT JOIN (persons as p) ON (p.genderid = g.id)
+			GROUP BY g.id ",
 		],
 		
 		'departments' => [
 
 			// Define table display mode. 
 			'tabledisplay' => true,
-
 			// Define table title. 
 			'tabletitle' => 'Departments',
 			// Define table navigation icon. 
@@ -414,32 +427,20 @@
 
 			// Define table entries. 
 			'entries' => [],
-
 			// Define reference tables. 
 			'reftableids' => [],
 
-			// Define database query (away). 
-			// 'awayquery' => "",
-			// Define database query (home). 
-			'homequery' => 
-			"SELECT
-				d.id, d.deptname/* ,
-				count(p.id) as personcount */
-			FROM (departments as d)
-			/* LEFT JOIN (persons as p) ON (p.deptid = d.id) */",
-
-			// Define table display fields (from home query results). 
+			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
 					'fid'=>'deptname',
 					'fieldtitle'=>'Department',
 				],
 				[
-					'fid'=>'personcount',
-					'fieldtitle'=>'Participants',
+					'fid'=>'numpersons',
+					'fieldtitle'=>'Count',
 				],
 			],
-
 			// Define table editor fields. 
 			'editorfields' => [
 				[
@@ -450,6 +451,91 @@
 					'editable'=>true,
 				],
 			],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT
+				id, deptname
+			FROM departments ",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT
+				d.id, d.deptname,
+				count(p.id) as numpersons
+			FROM (departments as d)
+			LEFT JOIN (persons as p) ON (p.deptid = d.id)
+			GROUP BY d.id ",
+		],
+
+		'sessions' => [
+
+			// Define table display mode. 
+			'tabledisplay' => false,
+			// Define table title. 
+			'tabletitle' => 'Sessions',
+			// Define table navigation icon. 
+			'tablenavicon' => 'personlines',
+			// Define caption for single item. 
+			'singlecaption' => 'Session',
+
+			// Define table entries. 
+			'entries' => [],
+			// Define reference tables. 
+			'reftableids' => [
+				'persons',
+			],
+
+			// Define table display fields (from detailed query results). 
+			'displayfields' => [
+				[
+					'fid'=>'personname',
+					'fieldtitle'=>'Person',
+				],
+				[
+					'fid'=>'createdat',
+					'fieldtitle'=>'Session Start',
+				],
+			],
+			// Define table editor fields. 
+			'editorfields' => [
+				[
+					'type'=>'select',
+					'fid'=>'personid',
+					'fieldtitle'=>'Person',
+					'required'=>true,
+					'editable'=>false,
+					'capref'=>[
+						'tid'=>'persons',
+						'fid'=>'personname',
+					],
+				],
+				// [
+				// 	'type'=>'text',
+				// 	'fid'=>'createdat',
+				// 	'fieldtitle'=>'Session Start',
+				// 	'required'=>false,
+				// 	'editable'=>false,
+				// 	'capref'=>[
+				// 		'tid'=>'issues',
+				// 		'fid'=>'issuetitle',
+				// 	],
+				// ],
+			],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT 
+				s.id, s.createdat,
+				s.personid, p.personname
+			FROM (sessions as s) 
+			LEFT JOIN (persons as p) ON (s.personid = p.id) ",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT 
+				s.id, s.createdat,
+				s.personid, p.personname
+			FROM (sessions as s) 
+			LEFT JOIN (persons as p) ON (s.personid = p.id) ",
 		],
 	];
 ?>

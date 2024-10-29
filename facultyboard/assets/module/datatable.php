@@ -119,8 +119,7 @@
 								<?php foreach($displayfields as $field): ?>
 
 									<?php 
-										// Get field id (from result table of home query). 
-										// $fid = isset($field['capref']['fid']) ? $field['capref']['fid'] : $field['fid'];
+										// Get field id (from detailed query results). 
 										$fid = $field['fid'];
 										// Get field value. 
 										$value = $tablerow[$fid];
@@ -299,10 +298,10 @@
 										<!-- /update -->
 
 										<!-- delete -->
-										<form class="delete crud" method="post" action="<?php print $selfrefurl; ?>">
+										<form class=" DELETE crud" method="post" action="<?php print $selfrefurl; ?>">
 
 											<!-- parameter -->
-											<input class="parameter" type="hidden" name="operation" value="delete">
+											<input class="parameter" type="hidden" name="operation" value=" DELETE">
 											<input class="parameter" type="hidden" name="tableid" value="<?php print $selectedviewid; ?>">
 											<input class="parameter" type="hidden" name="rid" value="<?php print $tablerow['id']; ?>">
 											<!-- /parameter -->
@@ -415,6 +414,7 @@
 
 								<!-- fieldinput -->
 								<select class="fieldinput" name="<?php print $fid; ?>" <?php print $fieldattr; ?>>
+									<?php print json_encode( $databasetables[$rtid]['entries'] );?>
 
 									<!-- option -->
 									<option value="">Select <?php print $databasetables[$rtid]['singlecaption']; ?></option>

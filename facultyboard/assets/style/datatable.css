@@ -5,7 +5,7 @@
 div#container section.datatable {z-index:10;}
 /* div#container section.datatable div.head {} */
 /* div#container section.datatable div.head h2.head {} */
-/* div#container section.datatable div.scroller {overflow-x:auto;} */
+div#container section.datatable div.scroller {overflow-x:auto;}
 div#container section.datatable div.scroller table.table {text-align:center; width:100%; margin-top:.5em;}
 div#container section.datatable div.scroller table.table thead.head {background-color:gainsboro;}
 /* div#container section.datatable div.scroller table.table thead.head tr.row {} */

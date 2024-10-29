@@ -10,8 +10,25 @@
 		<!-- splash -->
 		<section class="splash center">
 
+			<?php $successfullogout = isset( $_GET['logout'] ); ?>
+			<?php $successfullogout = false; ?>
+
+			<!-- msgcenter -->
+			<div class="msgcenter">
+
+				<?php if($successfullogout): ?>
+
+					<!-- msg -->
+					<div class="msg g">Logout successful</div>
+					<!-- /msg -->
+
+				<?php endif; ?>
+
+			</div>
+			<!-- /msgcenter -->
+
 			<!-- logo -->
-			<img class="logo" src="./assets/images/6354674.png" alt="">
+			<img class="logo" src="./assets/image/6354674.png" alt="">
 			<!-- /logo -->
 
 			<!-- usernavlist -->

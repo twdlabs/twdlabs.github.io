@@ -55,17 +55,19 @@ div#container nav.navbar {position:fixed;} /* Bad for long (high content) pages 
 div#container nav.navbar {position:sticky;} /* Bad for short (low content) pages */
 div#container nav.navbar {background-color:var(--navcolor); /* min-height:4rem; */ border-radius:.25em;}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container nav.navbar div.bin {position:relative; max-width:var(--pagewidth); padding:.25rem 2rem; margin:0 auto;}
+div#container nav.navbar div.bin {position:relative; max-width:var(--pagewidth); padding:.5rem 2rem; margin:0 auto;}
 div#container nav.navbar div.bin a.btn {color:inherit; text-decoration:none; padding:.25em;}
 /* div#container nav.navbar div.bin a.homebtn {} */
-div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.5em; transition:.5s;}
+div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.625em; transition:.5s;}
 div#container nav.navbar div.bin a.homebtn h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
 /* div#container nav.navbar div.bin a.homebtn h1.head svg.icon {} */
 div#container nav.navbar div.bin a.homebtn h1.head span.caption {white-space:nowrap; margin-left:.5rem;}
 div#container nav.navbar div.bin a.togglebtn {/* display:none; */ z-index:1;}
+/* div#container nav.navbar div.bin a.togglebtn.tm {} */
+/* div#container nav.navbar div.bin a.togglebtn.um {} */
 div#container nav.navbar div.bin a.togglebtn svg.icon {display:block; font-size:1.625rem;}
-div#container nav.navbar div.bin a.togglebtn.user svg.icon {font-size:2.5rem;}
-div#container nav.navbar div.bin a.togglebtn img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;}
+div#container nav.navbar div.bin a.togglebtn.um svg.icon {font-size:2.5rem;}
+div#container nav.navbar div.bin a.togglebtn.um img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;}
 
 /* Navbar Menu */
 div#container nav.navbar div.bin div.navmenu {background-color:var(--navcolor); padding:.5em; border-radius:/* 0 0 .25em  */.25em; margin:.5em; box-shadow:var(--boxshadow);}
@@ -75,12 +77,12 @@ div#container nav.navbar div.bin div.navmenu ul.navlist {display:flex; flex-dire
 div#container nav.navbar div.bin div.navmenu ul.navlist {flex-direction:column; align-items:stretch;}
 /* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; color:inherit; text-decoration:none; padding:.375rem;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; color:inherit; text-decoration:none; padding:.5em;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {display:block;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {/* display:none; */ font-size:.75em;}
 /* Navbar User Menu */
 /* div#container nav.navbar div.bin div.navmenu.usermenu {} */
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile {margin-bottom:.5rem;}
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile {margin-bottom:.875rem;}
 div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy {font-size:.875rem; padding:0 .25rem; margin:0; margin-top:.25em;}
 div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name {font-weight:bold;}
 /* div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.value {font-style:italic;} */
@@ -101,7 +103,7 @@ div#container nav.navbar div.bin div.navmenu.open {transform:translateY(0%); opa
 /* div#container nav.navbar div.bin div.navmenu div.btwn {height:auto; width:90%; align-self:center; margin:.25em 0;} */
 /* div#container nav.navbar div.bin div.navmenu ul.navlist {} */
 /* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {flex-direction:row; font-size:1.25em;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {flex-direction:row; font-size:1.375em;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {font-size:1em;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {display:block;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {margin-left:.375rem;}
@@ -117,13 +119,18 @@ div#container section {/* width:100%; */ max-width:var(--pagewidth);}
 /* div#container section.gone {transform:none;} */
 div#container section.center {position:fixed; top:45%; left:50%; transform:translate(-50%,-50%);}
 div#container section div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section div.head h2.head {font-size:1.25em; font-size:1.375em; /* text-align:center; */ margin:0; margin:0 1rem;}
+div#container section div.head h2.head {font-size:1.375em; /* text-align:center; */ margin:0; margin:0 1rem;}
 div#container section div.head h2.head a.selflink {color:inherit; text-decoration:none;}
 /* div#container section div.head h2.head span.caption {} */
 div#container section div.head h2.head span.caption:empty {background-color:gainsboro; display:inline-block; height:1em; width:6em; border-radius:1em;}
 div#container section div.head button.btn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
 div#container section div.head button.btn svg.icon {font-size:1.25em;}
 div#container section div.head button.btn span.caption {display:none;}
+/* General Section: Msg Center */
+div#container section div.msgcenter {display:flex; flex-direction:column; align-items:stretch; /* gap:.25rem; */}
+div#container section div.msgcenter div.msg {background-color:#0004; font-size:.75rem; text-align:center; padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; margin-top:.375rem;}
+div#container section div.msgcenter div.msg.g {background-color:#0f03; color:rgb(23, 83, 23);}
+div#container section div.msgcenter div.msg.r {background-color:#f003; color:rgb(96, 29, 29);}
 /* General Section: Form */
 div#container section form.crud {margin:0;}
 div#container section form.crud ul.fieldlist {list-style:none; padding:0; margin:0;}
@@ -134,6 +141,7 @@ div#container section form.crud ul.fieldlist li.field select.fieldinput,
 div#container section form.crud ul.fieldlist li.field textarea.fieldinput,
 div#container section form.crud button.sendbtn {font-family:inherit; /* font-size:inherit; */ font-size:.875em; resize:none; width:100%; max-width:16em; padding:.375em .875em; border:.125rem solid #0002; border-radius:.5rem;}
 div#container section form.crud button.sendbtn {margin-top:.5rem;}
+
 
 
 /* Splash Section */
@@ -147,15 +155,6 @@ div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {font-s
 div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {background-color:white; color:black;}
 div#container section.splash ul.usernavlist li.usernavitem a.usernavlink.pr {background-color:var(--lightblack); color:white;}
 
-
-/* User Chooser Section */
-/* div#container section.user {} */
-div#container section.user div.head {justify-content:center;}
-div#container section.user div.msgcenter {display:flex; flex-direction:column; align-items:stretch; /* gap:.25rem; */}
-div#container section.user div.msgcenter div.msg {background-color:#0004; font-size:.75rem; text-align:center; padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; margin-top:.375rem;}
-div#container section.user div.msgcenter div.msg.g {background-color:#0f03; color:rgb(23, 83, 23);}
-div#container section.user div.msgcenter div.msg.r {background-color:#f003; color:rgb(96, 29, 29);}
-div#container section.user div.nav {font-size:.875em; text-align:center; margin-top:.75rem;}
 
 
 /* User Welcome Section */
@@ -192,6 +191,14 @@ div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-si
 
 
 
+/* User Chooser Section */
+/* div#container section.user {} */
+div#container section.user div.head {justify-content:center;}
+div#container section.user div.switcher {font-size:.875em; text-align:center; margin-top:.75rem;}
+
+
+
+
 
 
 /* Tablet Screen */
@@ -203,7 +210,7 @@ div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-si
 	/* Navbar Table Menu */
 	
 	/* General Section */
-	div#container section {max-width:100%;}
+	div#container section {max-width:calc(100% - 1.5rem);}
 }
 
 /* Big Smartphone Screen */
@@ -233,13 +240,15 @@ div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-si
 	/* div#container nav.navbar div.bin {} */
 	/* div#container nav.navbar div.bin a.homebtn {} */
 	/* div#container nav.navbar div.bin a.togglebtn {display:block;} */
-	div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.25em;}
+	div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.5em;}
 	/* Navbar Menu */
 	/* Navbar User Menu */
 	/* Navbar Table Menu */
-
+	
 	/* General Section */
 	/* div#container section {} */
+	/* div#container section div.head {} */
+	div#container section div.head h2.head {font-size:1.25em;}
 }
 
 /* Small Smartphone Screen */

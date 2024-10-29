@@ -7,29 +7,34 @@
 	
 	<body>
 
-		<!-- welcome -->
-		<section class="welcome">
 
-			<!-- head -->
-			<div class="head">
+		<?php if( $isviewselected && $selectedviewid=='login' ): ?>
+
+			<!-- welcome -->
+			<section class="welcome">
 
 				<!-- head -->
-				<h2 class="head">
+				<div class="head">
 
-					<?php $name = $currentuserdata['personname'] ?? '[none]'; ?>
+					<!-- head -->
+					<h2 class="head">
 
-					<!-- caption -->
-					<span class="caption">Welcome <?php print $name; ?>!</span>
-					<!-- /caption -->
+						<?php $name = $currentuserdata['personname'] ?? '[none]'; ?>
 
-				</h2>
+						<!-- caption -->
+						<span class="caption">Welcome <?php print $name; ?>!</span>
+						<!-- /caption -->
+
+					</h2>
+					<!-- /head -->
+
+				</div>
 				<!-- /head -->
 
-			</div>
-			<!-- /head -->
+			</section>
+			<!-- /welcome -->
 
-		</section>
-		<!-- /welcome -->
+		<?php endif; ?>
 
 		<!-- homefeed -->
 		<section class="homefeed">

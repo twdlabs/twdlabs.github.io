@@ -17,7 +17,7 @@
 				<?php if($currentuserdata): ?>
 
 					<!-- togglebtn -->
-					<a class="togglebtn btn" href="javascript:void(0)" title="Toggle table menu" onclick="toggleTableMenu()">
+					<a class="tm togglebtn btn" href="javascript:void(0)" title="Toggle table menu">
 
 						<!-- icon -->
 						<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -53,7 +53,7 @@
 				<!-- /homebtn -->
 
 				<!-- togglebtn -->
-				<a class="user togglebtn btn" href="javascript:void(0)" title="Toggle user menu" onclick="toggleUserMenu()">
+				<a class="um togglebtn btn" href="javascript:void(0)" title="Toggle user menu">
 
 					<?php if($currentuserdata && isset($currentuserdata['genderid']) ): ?>
 
@@ -66,7 +66,7 @@
 						?>
 
 						<!-- profilepic -->
-						<img class="profilepic" src="./assets/images/<?php print $filename; ?>" alt="">
+						<img class="profilepic" src="./assets/image/<?php print $filename; ?>" alt="">
 						<!-- /profilepic -->
 
 					<?php else: ?>
@@ -150,10 +150,8 @@
 
 								// Get name of current user. 
 								$name = $currentuserdata['personname'] ?? '[none]';
-								// Get email of current user. 
-								$email = $currentuserdata['emailaddress'] ?? '[none]';
-								// Get department of current user. 
-								$dept = $currentuserdata['department'] ?? '[none]';
+								// Get username of current user. 
+								$username = $currentuserdata['username'] ?? '[none]';
 							?>
 
 							<!-- textcopy -->
@@ -165,15 +163,8 @@
 
 							<!-- textcopy -->
 							<p class="textcopy">
-								<span class="name">Position:</span>
-								<span class="value"><?php print $dept; ?></span>
-							</p>
-							<!-- /textcopy -->
-
-							<!-- textcopy -->
-							<p class="textcopy">
-								<span class="name">Username:</span>
-								<span class="value"><?php print $email; ?></span>
+								<span class="name">E-mail:</span>
+								<span class="value"><?php print $username; ?>@twdlabs.io</span>
 							</p>
 							<!-- /textcopy -->
 

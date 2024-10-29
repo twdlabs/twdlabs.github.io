@@ -1,6 +1,11 @@
 
 
 
+// Get toggler for user navigation menu. 
+let usermenutoggler = document.querySelector('div#container nav.navbar div.bin a.togglebtn.um');
+// Get toggler for table navigation menu. 
+let tablemenutoggler = document.querySelector('div#container nav.navbar div.bin a.togglebtn.tm');
+
 // Get user navigation menu. 
 let usernavigationmenu = document.querySelector('div#container nav.navbar div.bin div.navmenu.usermenu');
 // Get table navigation menu. 
@@ -13,6 +18,28 @@ const allentryeditors = document.querySelectorAll('div#container section.datatab
 
 
 /*****/
+
+
+// Activate menu togglers. 
+activateMenuTogglers();
+
+
+/*****/
+
+
+// Activate menu togglers. 
+function activateMenuTogglers() {
+
+	// Activate menu toggler for user menu. 
+	usermenutoggler.addEventListener('click',toggleUserMenu);
+	// usermenutoggler.addEventListener('mouseenter',toggleUserMenu);
+	// usermenutoggler.addEventListener('mouseleave',toggleUserMenu);
+
+	// Activate menu toggler for table menu. 
+	tablemenutoggler.addEventListener('click',toggleTableMenu);
+	// tablemenutoggler.addEventListener('mouseenter',toggleTableMenu);
+	// tablemenutoggler.addEventListener('mouseleave',toggleTableMenu);
+}
 
 
 // Toggle user navigation menu. 
