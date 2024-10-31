@@ -158,10 +158,10 @@
 		global $db;
 		$printstuffout = false;
 		// $printstuffout = true;
+		// print "<script>console.log('Sending database query:',`$sql`)</script>";
+		printQueryToPage($sql);
 		
 		// Send database query. 
-		print "<script>console.log('Sending database query:',`$sql`)</script>";
-		// printToPage("Sending database query:<br>`$sql`");
 		$queryresult = $db->query($sql);
 		// Get status of database query. 
 		$querystatus = getQueryStatus($queryresult);
