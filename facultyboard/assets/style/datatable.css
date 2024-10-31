@@ -13,6 +13,14 @@ div#container section.datatable div.scroller table.table thead.head th.cell {pad
 /* div#container section.datatable div.scroller table.table tbody.body {} */
 /* div#container section.datatable div.scroller table.table tbody.body tr.row {} */
 div#container section.datatable div.scroller table.table tbody.body td.cell {background-color:var(--offwhite); text-align:center; position:relative; padding:.5em;}
+/* div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn {display:none !important;} */
+div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
+div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn svg.icon {font-size:1.25em;}
+div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn span.caption {display:none;}
+div#container section.datatable div.scroller table.table tbody.body td.cell img.picture {height:2em;}
+/* div#container section.datatable div.scroller table.table tbody.body td.cell span.caption {} */
+
+/* Data Editor Section */
 div#container section.datatable div.scroller table.table tbody.body td.cell section.editor {z-index:20;}
 div#container section.datatable div.scroller table.table tbody.body td.cell section.editor {opacity:0; visibility:hidden; transition:.625s;}
 /* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor#idX {} */
@@ -27,14 +35,9 @@ div#container section.datatable div.scroller table.table tbody.body td.cell sect
 /* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field select.fieldinput {} */
 /* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field textarea.fieldinput {} */
 div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud button.sendbtn {margin-top:.125rem;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn {display:none !important;} */
-div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
-div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn svg.icon {font-size:1.25em;}
-div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn span.caption {display:none;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell span.caption {} */
-/* div#container section.datatable div.scroller table.table tbody.body span.caption {} */
 
-/* Data Editor Section */
+
+/* Data Composer Section */
 div#container section.composer {z-index:20;}
 div#container section.composer {opacity:0; visibility:hidden; transition:.625s;}
 div#container section.composer.open {opacity:1; visibility:visible;}

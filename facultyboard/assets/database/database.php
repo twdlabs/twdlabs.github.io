@@ -78,13 +78,18 @@
 			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
+					'fid'=>'filename',
+					'fieldtype'=>'image',
+					'fieldtitle'=>'Avatar',
+				],
+				[
 					'fid'=>'personname',
 					'fieldtitle'=>'Name',
 				],
-				[
-					'fid'=>'gendername',
-					'fieldtitle'=>'Gender',
-				],
+				// [
+				// 	'fid'=>'gendername',
+				// 	'fieldtitle'=>'Gender',
+				// ],
 				[
 					'fid'=>'position',
 					'fieldtitle'=>'Position',
@@ -191,7 +196,7 @@
 			" SELECT 
 				p.id, p.personname,
 				p.username, p.passwdsalt, p.passwdhash,
-				p.genderid, g.gendername, 
+				p.genderid, g.gendername, g.filename, 
 				p.position, p.deptid, d.deptname, 
 				p.referralid, r.personname as referralsource,
 				-- count(i.id) as issueshit,
@@ -388,6 +393,11 @@
 			// Define table display fields (from detailed query results). 
 			'displayfields' => [
 				[
+					'fid'=>'filename',
+					'fieldtype'=>'image',
+					'fieldtitle'=>'Avatar',
+				],
+				[
 					'fid'=>'gendername',
 					'fieldtitle'=>'Gender',
 				],
@@ -397,7 +407,22 @@
 				],
 			],
 			// Define table editor fields. 
-			'editorfields' => [],
+			'editorfields' => [
+				[
+					'type'=>'text',
+					'fid'=>'gendername',
+					'fieldtitle'=>'Gender',
+					'required'=>true,
+					'editable'=>false,
+				],
+				[
+					'type'=>'text',
+					'fid'=>'filename',
+					'fieldtitle'=>'Avatar Path',
+					'required'=>true,
+					'editable'=>true,
+				],
+			],
 
 			// Define basic database query. 
 			'basicquery' => 
@@ -407,7 +432,7 @@
 			// Define detailed database query. 
 			'detailquery' => 
 			" SELECT 
-				g.id, g.gendername,
+				g.id, g.gendername, g.filename,
 				count(p.id) as numpersons
 			FROM (genders as g)
 			LEFT JOIN (persons as p) ON (p.genderid = g.id)

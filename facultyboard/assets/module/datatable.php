@@ -123,14 +123,28 @@
 										$fid = $field['fid'];
 										// Get field value. 
 										$value = $tablerow[$fid];
+										// Get field type. 
+										$fieldtype = isset($field['fieldtype']) ? $field['fieldtype'] : 'text';
 									?>
 
 									<!-- cell -->
 									<td class="cell">
+										<!-- <?php print json_encode($fieldtype); ?> -->
+										<!-- <?php print json_encode($tablerow); ?> -->
 
-										<!-- caption -->
-										<span class="caption"><?php print $value ?></span>
-										<!-- /caption -->
+										<?php if($fieldtype=='image'): ?>
+
+											<!-- picture -->
+											<img class="picture" src="./assets/image/<?php print $value ?>">
+											<!-- /picture -->
+
+										<?php else: ?>
+
+											<!-- caption -->
+											<span class="caption"><?php print $value ?></span>
+											<!-- /caption -->
+
+										<?php endif; ?>
 										
 									</td>
 									<!-- /cell -->
@@ -198,7 +212,7 @@
 											<!-- parameter -->
 											<input class="parameter" type="hidden" name="operation" value="update">
 											<input class="parameter" type="hidden" name="tableid" value="<?php print $selectedviewid; ?>">
-											<input class="parameter" type="hidden" name="rid" value="<?php print $tablerow['id']; ?>">
+											<input class="parameter" type="hidden" name="tablerowid" value="<?php print $tablerow['id']; ?>">
 											<!-- /parameter -->
 
 											<!-- fieldlist -->
@@ -303,7 +317,7 @@
 											<!-- parameter -->
 											<input class="parameter" type="hidden" name="operation" value=" DELETE">
 											<input class="parameter" type="hidden" name="tableid" value="<?php print $selectedviewid; ?>">
-											<input class="parameter" type="hidden" name="rid" value="<?php print $tablerow['id']; ?>">
+											<input class="parameter" type="hidden" name="tablerowid" value="<?php print $tablerow['id']; ?>">
 											<!-- /parameter -->
 
 											<!-- sendbtn -->
