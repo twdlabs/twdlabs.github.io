@@ -7,21 +7,24 @@
 		printToPage("Now checking for crud operation...");
 
 		// Check for operation parameters. 
-		$validoperationparameters = isset( $_POST['tableid'] ) && isset( $_POST['operation'] );
+		$validoperationparameters = isset( $_POST['tableid'] ) && isset( $_POST['optypeid'] );
 
 		// Perform operation (if parameters valid). 
 		if($validoperationparameters) {
 
 			// Get operation parameters. 
-			$tid = /* cleanInputForQuery */( $_POST['tableid'] );
-			$opid = /* cleanInputForQuery */( $_POST['operation'] );
+			$opid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'optypeid'/* ] */ );
+			$tableid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tableid'/* ] */ );
 
 			// Perform crud operation. 
-			goCrudOp($tid,$opid);
+			goCrudOp($tableid,$opid);
 			printToPage('DONE!');
 		}
+
+		// Display indication (if parameters not valid). 
 		else printToPage('NONE!');
 	}
+
 	// Perform crud operation. 
 	function goCrudOp($optable,$crudop) {
 		printToPage();
@@ -34,24 +37,24 @@
 			if($crudop=='create') {
 	
 				// Get query parameter(s). 
-				$personid = cleanInputForQuery( $_POST['personid'] );
+				$personid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'personid'/* ] */ );
 
 				// Define field id list. 
-				$fieldidlist = "(personid)";
+				$fieldidlist = " personid ";
 				// Define field value list. 
-				$fieldvaluelist = "($personid)";
+				$fieldvaluelist = " $personid ";
 
 				// Compile database query. 
-				$sql = " INSERT INTO $optable $fieldidlist VALUES $fieldvaluelist; ";
+				$sql = " INSERT INTO $optable ($fieldidlist) VALUES ($fieldvaluelist); ";
 			}
 	
 			// Perform person update operation. 
 			else if($crudop=='update') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 				// Get query parameter(s). 
-				$personid = cleanInputForQuery( $_POST['personid'] );
+				$personid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'personid'/* ] */ );
 
 				// Define field assign list. 
 				// $fieldsetlist = "personid=$personid, password='$password'";
@@ -66,7 +69,7 @@
 			else if($crudop=='delete') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 
 				// Create database query. 
 				$sql = " DELETE FROM $optable WHERE (id=$id); ";
@@ -87,38 +90,39 @@
 			if($crudop=='create') {
 	
 				// Get query parameter(s). 
-				$personname = cleanInputForQuery( $_POST['personname'] );
-				$genderid = cleanInputForQuery( $_POST['genderid'] );
-				$position = cleanInputForQuery( $_POST['position'] );
-				$deptid = cleanInputForQuery( $_POST['deptid'] );
-				$referralid = cleanInputForQuery( $_POST['referralid'] );
-				$username = cleanInputForQuery( $_POST['username'] );
-				$pwd = $_POST['password'] ?? '';
+				$personname = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'personname'/* ] */ );
+				$genderid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'genderid'/* ] */ );
+				$position = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'position'/* ] */ );
+				$deptid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'deptid'/* ] */ );
+				$referralid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'referralid'/* ] */ );
+				$username = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'username'/* ] */ );
+				$passwd = $_POST['password'] ?? '';
+				$passwdrpt = $_POST['passwordrepeat'] ?? '';
 
 				// Create database query (with password). 
-				if($pwd) {
+				if( $passwd && $passwd == $passwdrpt ) {
 
-					// printToPage("pwd: $pwd");
+					// printToPage("Password: $passwd");
 					$passwdsalt = generateRandomSalt();
 					// printToPage("passwdsalt: $passwdsalt");
-					$passwdhash = generatePasswdHash( $pwd . $passwdsalt );
+					$passwdhash = generatePasswdHash( $passwd . $passwdsalt );
 					// printToPage("passwdhash: $passwdhash");
 
 					// Create database query (with referral). 
 					if($referralid) {
 
 						// Define field id list. 
-						$fieldidlist = "(personname, genderid, position, deptid, referralid, username, passwdsalt, passwdhash)";
+						$fieldidlist = " personname, genderid, position, deptid, referralid, username, passwdsalt, passwdhash ";
 						// Define field value list. 
-						$fieldvaluelist = "('$personname', $genderid, '$position', $deptid, $referralid, '$username', '$passwdsalt', '$passwdhash')";
+						$fieldvaluelist = " '$personname', $genderid, '$position', $deptid, $referralid, '$username', '$passwdsalt', '$passwdhash' ";
 					}
 					// Create database query (without referral). 
 					else {
 
 						// Define field id list. 
-						$fieldidlist = "(personname, genderid, position, deptid, referralid, username, passwdsalt, passwdhash)";
+						$fieldidlist = " personname, genderid, position, deptid, referralid, username, passwdsalt, passwdhash ";
 						// Define field value list. 
-						$fieldvaluelist = "('$personname', $genderid, '$position', $deptid, null, '$username', '$passwdsalt', '$passwdhash')";
+						$fieldvaluelist = " '$personname', $genderid, '$position', $deptid, null, '$username', '$passwdsalt', '$passwdhash' ";
 					}
 				}
 				// Create database query (without password). 
@@ -128,46 +132,47 @@
 					if($referralid) {
 
 						// Define field id list. 
-						$fieldidlist = "(personname, genderid, position, deptid, referralid, username)";
+						$fieldidlist = " personname, genderid, position, deptid, referralid, username ";
 						// Define field value list. 
-						$fieldvaluelist = "('$personname', $genderid, '$position', $deptid, $referralid, '$username')";
+						$fieldvaluelist = " '$personname', $genderid, '$position', $deptid, $referralid, '$username' ";
 					}
 					// Create database query (without referral). 
 					else {
 
 						// Define field id list. 
-						$fieldidlist = "(personname, genderid, position, deptid, referralid, username)";
+						$fieldidlist = " personname, genderid, position, deptid, referralid, username ";
 						// Define field value list. 
-						$fieldvaluelist = "('$personname', $genderid, '$position', $deptid, null, '$username')";
+						$fieldvaluelist = " '$personname', $genderid, '$position', $deptid, null, '$username' ";
 					}
 				}
 	
 				// Compile database query. 
-				$sql = " INSERT INTO $optable $fieldidlist VALUES $fieldvaluelist; ";
+				$sql = " INSERT INTO $optable ($fieldidlist) VALUES ($fieldvaluelist); ";
 			}
 	
 			// Perform person update operation. 
 			else if($crudop=='update') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 				// Get query parameter(s). 
-				$personname = cleanInputForQuery( $_POST['personname'] );
-				$genderid = cleanInputForQuery( $_POST['genderid'] );
-				$position = cleanInputForQuery( $_POST['position'] );
-				$deptid = cleanInputForQuery( $_POST['deptid'] );
-				$referralid = cleanInputForQuery( $_POST['referralid'] );
-				$username = cleanInputForQuery( $_POST['username'] );
-				$pwd = $_POST['password'] ?? '';
+				$personname = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'personname'/* ] */ );
+				$genderid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'genderid'/* ] */ );
+				$position = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'position'/* ] */ );
+				$deptid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'deptid'/* ] */ );
+				$referralid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'referralid'/* ] */ );
+				$username = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'username'/* ] */ );
+				$passwd = $_POST['password'] ?? '';
+				$passwdrpt = $_POST['passwordrepeat'] ?? '';
 
 				// Create database query (with password). 
-				if($pwd) {
+				if( $passwd == $passwdrpt ) {
 
 					printToPage('Password present');
-					// printToPage("pwd: $pwd");
+					// printToPage("Password: $passwd");
 					$passwdsalt = generateRandomSalt();
 					// printToPage("passwdsalt: $passwdsalt");
-					$passwdhash = generatePasswdHash( $pwd . $passwdsalt );
+					$passwdhash = generatePasswdHash( $passwd . $passwdsalt );
 					// printToPage("passwdhash: $passwdhash");
 
 					// Create database query (with referral). 
@@ -208,7 +213,7 @@
 			else if($crudop=='delete') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 
 				// Create database query. 
 				$sql = " DELETE FROM $optable WHERE (id=$id); ";
@@ -229,26 +234,26 @@
 			if($crudop=='create') {
 	
 				// Get query parameter(s). 
-				$issuetitle = cleanInputForQuery( $_POST['issuetitle'] );
-				$issuedescription = cleanInputForQuery( $_POST['issuedescription'] );
+				$issuetitle = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'issuetitle'/* ] */ );
+				$issuedescription = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'issuedescription'/* ] */ );
 
 				// Define field id list. 
-				$fieldidlist = "(issuetitle, issuedescription)";
+				$fieldidlist = " issuetitle, issuedescription ";
 				// Define field value list. 
-				$fieldvaluelist = "('$issuetitle', '$issuedescription')";
+				$fieldvaluelist = " '$issuetitle', '$issuedescription' ";
 
 				// Compile database query. 
-				$sql = " INSERT INTO $optable $fieldidlist VALUES $fieldvaluelist; ";
+				$sql = " INSERT INTO $optable ($fieldidlist) VALUES ($fieldvaluelist); ";
 			}
 	
 			// Perform issue update operation. 
 			else if($crudop=='update') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 				// Get query parameter(s). 
-				$issuetitle = cleanInputForQuery( $_POST['issuetitle'] );
-				$issuedescription = cleanInputForQuery( $_POST['issuedescription'] );
+				$issuetitle = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'issuetitle'/* ] */ );
+				$issuedescription = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'issuedescription'/* ] */ );
 
 				// Define field assign list. 
 				$fieldsetlist = "issuetitle='$issuetitle', issuedescription='$issuedescription'";
@@ -261,7 +266,7 @@
 			else if($crudop=='delete') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 
 				// Create database query. 
 				$sql = " DELETE FROM $optable WHERE (id=$id); ";
@@ -282,27 +287,27 @@
 			if($crudop=='create') {
 	
 				// Get query parameter(s). 
-				$issueid = cleanInputForQuery( $_POST['issueid'] );
-				$personid = cleanInputForQuery( $_POST['personid'] );
-				$commenttext = cleanInputForQuery( $_POST['commenttext'] );
+				$issueid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'issueid'/* ] */ );
+				$personid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'personid'/* ] */ );
+				$commenttext = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'commenttext'/* ] */ );
 
 				// Define field id list. 
-				$fieldidlist = "(issueid, personid, commenttext)";
+				$fieldidlist = " issueid, personid, commenttext ";
 				// Define field value list. 
-				$fieldvaluelist = "($issueid, $personid, '$commenttext')";
+				$fieldvaluelist = " $issueid, $personid, '$commenttext' ";
 
 				// Compile database query. 
-				$sql = " INSERT INTO $optable $fieldidlist VALUES $fieldsetlist; ";
+				$sql = " INSERT INTO $optable ($fieldidlist) VALUES ($fieldvaluelist); ";
 			}
 	
 			// Perform comment update operation. 
 			else if($crudop=='update') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 				// Get query parameter(s). 
-				$issueid = cleanInputForQuery( $_POST['issueid'] );
-				$commenttext = cleanInputForQuery( $_POST['commenttext'] );
+				$issueid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'issueid'/* ] */ );
+				$commenttext = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'commenttext'/* ] */ );
 
 				// Define field assign list. 
 				$fieldsetlist = "commenttext='$commenttext', issueid=$issueid";
@@ -315,7 +320,7 @@
 			else if($crudop=='delete') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 
 				// Create database query. 
 				$sql = " DELETE FROM $optable WHERE (id=$id); ";
@@ -337,24 +342,24 @@
 				global $currentuserid;
 	
 				// Get query parameter(s). 
-				// $personid = cleanInputForQuery( $_POST['personid'] );
+				// $personid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'personid'/* ] */ );
 
 				// Define field id list. 
-				$fieldidlist = "(personid)";
+				$fieldidlist = " personid ";
 				// Define field value list. 
-				$fieldvaluelist = "($currentuserid)";
+				$fieldvaluelist = " $currentuserid ";
 
 				// Compile database query. 
-				$sql = " INSERT INTO $optable $fieldidlist VALUES $fieldsetlist; ";
+				$sql = " INSERT INTO $optable ($fieldidlist) VALUES ($fieldvaluelist); ";
 			}
 	
 			// Perform session update operation. 
 			else if($crudop=='update') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 				// Get query parameter(s). 
-				$personid = cleanInputForQuery( $_POST['personid'] );
+				$personid = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'personid'/* ] */ );
 
 				// Define field assign list. 
 				$fieldsetlist = "";
@@ -367,7 +372,7 @@
 			else if($crudop=='delete') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 
 				// Create database query. 
 				$sql = " DELETE FROM $optable WHERE (id=$id); ";
@@ -389,24 +394,24 @@
 				global $currentuserid;
 	
 				// Get query parameter(s). 
-				$deptname = cleanInputForQuery( $_POST['deptname'] );
+				$deptname = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'deptname'/* ] */ );
 
 				// Define field id list. 
-				$fieldidlist = "(deptname)";
+				$fieldidlist = " deptname ";
 				// Define field value list. 
-				$fieldvaluelist = "('$deptname')";
+				$fieldvaluelist = " '$deptname' ";
 
 				// Compile database query. 
-				$sql = " INSERT INTO $optable $fieldidlist VALUES $fieldsetlist; ";
+				$sql = " INSERT INTO $optable ($fieldidlist) VALUES ($fieldvaluelist); ";
 			}
 	
 			// Perform department update operation. 
 			else if($crudop=='update') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 				// Get query parameter(s). 
-				$deptname = cleanInputForQuery( $_POST['deptname'] );
+				$deptname = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'deptname'/* ] */ );
 
 				// Define field assign list. 
 				$fieldsetlist = "deptname='$deptname'";
@@ -419,7 +424,7 @@
 			else if($crudop=='delete') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 
 				// Create database query. 
 				$sql = " DELETE FROM $optable WHERE (id=$id); ";
@@ -441,27 +446,29 @@
 				global $currentuserid;
 	
 				// Get query parameter(s). 
-				$deptname = cleanInputForQuery( $_POST['deptname'] );
+				$gendername = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'gendername'/* ] */ );
+				$filename = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'filename'/* ] */ );
 
 				// Define field id list. 
-				$fieldidlist = "(deptname)";
+				$fieldidlist = " gendername,filename ";
 				// Define field value list. 
-				$fieldvaluelist = "('$deptname')";
+				$fieldvaluelist = " '$gendername', '$filename' ";
 
 				// Compile database query. 
-				$sql = " INSERT INTO $optable $fieldidlist VALUES $fieldsetlist; ";
+				$sql = " INSERT INTO $optable ($fieldidlist) VALUES ($fieldvaluelist); ";
 			}
 	
 			// Perform gender update operation. 
 			else if($crudop=='update') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 				// Get query parameter(s). 
-				$deptname = cleanInputForQuery( $_POST['deptname'] );
+				$gendername = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'gendername'/* ] */ );
+				$filename = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'filename'/* ] */ );
 
 				// Define field assign list. 
-				$fieldsetlist = "deptname='$deptname'";
+				$fieldsetlist = "gendername='$gendername', filename='$filename'";
 
 				// Compile database query. 
 				$sql = " UPDATE $optable SET $fieldsetlist WHERE (id=$id); ";
@@ -471,7 +478,7 @@
 			else if($crudop=='delete') {
 	
 				// Get query parameter: id. 
-				$id = cleanInputForQuery( $_POST['tablerowid'] );
+				$id = /* cleanInputForQuery */getFieldValueById( /* $_POST[ */'tablerowid'/* ] */ );
 
 				// Create database query. 
 				$sql = " DELETE FROM $optable WHERE (id=$id); ";
@@ -488,10 +495,26 @@
 		// Display error message for invalid table id. 
 		else printToPage("Invalid table selected for operation: $optable");
 
-		// Send database query.
+		// Send database query (if valid). 
 		if( isset($sql) ) {
-			printQueryToPage($sql);
-			sendDatabaseQuery($sql);
+
+			// Send database query. 
+			/* $querystate =  */sendDatabaseQuery($sql);
+			// $queryresults = $querystate['queryresults'];
+
+			// Return results from query. 
+			// return $querystate;
+			// return $queryresults;
+		}
+
+		// Notify of no database query (if not valid). 
+		else {
+			
+			// Notify of no database query. 
+			printToPage('No query!!!');
+
+			// Return results from query. 
+			// return null;
 		}
 	}
 
@@ -503,7 +526,7 @@
 
 		// Go thru each database table. 
 		foreach($databasetables as $tid=>$table) {
-			// printToPage("Retrieving $tid...");
+			printToPage("Retrieving table entries ($tid)...");
 			
 			// Save list of entries for database table. 
 			// $table['entries'] = getResultTableById($tid);
@@ -538,17 +561,25 @@
 	// Get result table for given table id. 
 	function getResultTableById($giventableid,$fulldetail=true) {
 		global $databasetables;
+		global $currentuserid;
 		if(!$giventableid) return [];
 
 		// Get database query. 
 		if($fulldetail) $sql = $databasetables[$giventableid]['detailquery'];
 		else $sql = $databasetables[$giventableid]['basicquery'];
-		// printQueryToPage($sql);
+
+		// Add id to query for 'recent activity' table. 
+		if($giventableid=='recentactivity') {
+			printQuery($sql);
+			printToPage("Current user id: $currentuserid");
+			$sql .= $currentuserid;
+			printQuery($sql);
+		}
 
 		// Get rows of result table from query.
-		$resulttable = sendDatabaseQuery($sql);
+		$queryresults = sendDatabaseQuery($sql,1)['queryresults'];
 
 		// Return rows of result table. 
-		return $resulttable;
+		return $queryresults;
 	}
 ?>

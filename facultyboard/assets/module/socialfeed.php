@@ -7,37 +7,42 @@
 	
 	<body>
 
+		<?php $errormsg = ''; ?>
+		<?php $successmsg = ''; ?>
+		<?php if( $errormsg  || $successmsg ): ?>
 
-		<?php if( $isviewselected && $selectedviewid=='login' ): ?>
+			<!-- xyz -->
+			<section class="xyz">
 
-			<!-- welcome -->
-			<section class="welcome">
+				<!-- msgcenter -->
+				<div class="msgcenter" style="margin:0;">
 
-				<!-- head -->
-				<div class="head">
+					<?php if( $errormsg ): ?>
 
-					<!-- head -->
-					<h2 class="head">
+						<!-- msg -->
+						<div class="msg r"><?php print $errormsg; ?></div>
+						<!-- /msg -->
 
-						<?php $name = $currentuserdata['personname'] ?? '[none]'; ?>
+					<?php endif; ?> 
 
-						<!-- caption -->
-						<span class="caption">Welcome <?php print $name; ?>!</span>
-						<!-- /caption -->
+					<?php if($successmsg): ?>
 
-					</h2>
-					<!-- /head -->
+						<!-- msg -->
+						<div class="msg g"><?php print $successmsg; ?></div>
+						<!-- /msg -->
+
+					<?php endif; ?>
 
 				</div>
-				<!-- /head -->
+				<!-- /msgcenter -->
 
 			</section>
-			<!-- /welcome -->
+			<!-- /xyz -->
 
 		<?php endif; ?>
 
-		<!-- homefeed -->
-		<section class="homefeed">
+		<!-- socialfeed -->
+		<section class="socialfeed">
 
 			<!-- head -->
 			<div class="head">
@@ -46,10 +51,10 @@
 				<h2 class="head">
 
 					<!-- selflink -->
-					<a class="selflink" href="<?php /* print $selfrefurl; */ ?>">
+					<a class="selflink" href="<?php print $selfurl; ?>">
 
 						<!-- caption -->
-						<span class="caption"><?php print $tabletitle; ?></span>
+						<span class="caption">Social Feed</span>
 						<!-- /caption -->
 						
 					</a>
@@ -125,10 +130,10 @@
 					<!-- /commentlist -->
 
 					<!-- newcomment -->
-					<form class="newcomment" method="post" action="<?php print $selfrefurl; ?>">
+					<form class="newcomment" method="post" action="<?php print $selfurl; ?>">
 
 						<!-- parameter -->
-						<input class="parameter" type="hidden" name="operation" value="create">
+						<input class="parameter" type="hidden" name="optypeid" value="create">
 						<input class="parameter" type="hidden" name="tableid" value="comments">
 						<!-- /parameter -->
 
@@ -151,7 +156,7 @@
 			<?php endforeach; ?>
 
 		</section>
-		<!-- /homefeed -->
+		<!-- /socialfeed -->
 
 	</body>
 

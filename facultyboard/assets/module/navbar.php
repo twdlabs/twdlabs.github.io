@@ -14,7 +14,7 @@
 			<!-- bin -->
 			<div class="bin">
 
-				<?php if($currentuserdata): ?>
+				<?php if( true || $currentuserdata ): ?>
 
 					<!-- togglebtn -->
 					<a class="tm togglebtn btn" href="javascript:void(0)" title="Toggle table menu">
@@ -87,13 +87,19 @@
 				</a>
 				<!-- /togglebtn -->
 
-				<!-- tablemenu -->
-				<div class="tablemenu navmenu">
+				<?php if( /* true || */ $currentuserdata ): ?>
 
-					<!-- navlist -->
-					<ul class="navlist tables">
+					<!-- tablemenu -->
+					<div class="tablemenu navmenu">
 
-						<?php if($currentuserdata): ?>
+						<!-- profile -->
+						<div class="profile">
+
+						</div>
+						<!-- /profile -->
+
+						<!-- navlist -->
+						<ul class="navlist tables">
 
 							<?php foreach($databasetables as $tid=>$table): ?>
 
@@ -127,13 +133,13 @@
 
 							<?php endforeach; ?>
 
-						<?php endif; ?>
+						</ul>
+						<!-- /navlist -->
 
-					</ul>
-					<!-- /navlist -->
+					</div>
+					<!-- /tablemenu -->
 
-				</div>
-				<!-- /tablemenu -->
+				<?php endif; ?>
 
 				<!-- usermenu -->
 				<div class="usermenu navmenu">
@@ -156,15 +162,29 @@
 
 							<!-- textcopy -->
 							<p class="textcopy">
+
+								<!-- name -->
 								<span class="name">Name:</span>
+								<!-- /name -->
+
+								<!-- value -->
 								<span class="value"><?php print $name; ?></span>
+								<!-- /value -->
+
 							</p>
 							<!-- /textcopy -->
 
 							<!-- textcopy -->
 							<p class="textcopy">
+
+								<!-- name -->
 								<span class="name">E-mail:</span>
+								<!-- /name -->
+
+								<!-- value -->
 								<span class="value"><?php print $username; ?>@twdlabs.io</span>
+								<!-- /value -->
+
 							</p>
 							<!-- /textcopy -->
 

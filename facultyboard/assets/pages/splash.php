@@ -8,18 +8,26 @@
 	<body>
 
 		<!-- splash -->
-		<section class="splash center">
-
-			<?php $successfullogout = isset( $_GET['logout'] ); ?>
-			<?php $successfullogout = false; ?>
+		<section class="splash float">
 
 			<!-- msgcenter -->
 			<div class="msgcenter">
 
-				<?php if($successfullogout): ?>
+				<?php $errormsg = ''; ?>
+				<?php if( $errormsg ): ?>
 
 					<!-- msg -->
-					<div class="msg g">Logout successful</div>
+					<div class="msg r"><?php print $errormsg; ?></div>
+					<!-- /msg -->
+
+				<?php endif; ?> 
+
+				<?php $justloggedout = isset( $_GET['logout'] ); ?>
+				<?php $successmsg = $justloggedout ? 'Logout successful' : ''; ?>
+				<?php if($successmsg): ?>
+
+					<!-- msg -->
+					<div class="msg g"><?php print $successmsg; ?></div>
 					<!-- /msg -->
 
 				<?php endif; ?>
@@ -27,32 +35,70 @@
 			</div>
 			<!-- /msgcenter -->
 
-			<!-- logo -->
-			<img class="logo" src="./assets/image/6354674.png" alt="">
-			<!-- /logo -->
+			<!-- head -->
+			<div class="head">
+
+				<!-- head -->
+				<h2 class="head">
+
+					<!-- caption -->
+					<span class="caption">Faculty Board</span>
+					<!-- /caption -->
+
+				</h2>
+				<!-- /head -->
+
+			</div>
+			<!-- /head -->
+
+			<!-- enterlink -->
+			<a class="enterlink" href="?view=home">
+
+				<!-- logo -->
+				<img class="logo" src="./assets/image/6354674.png" alt="">
+				<!-- /logo -->
+				
+			</a>
+			<!-- /enterlink -->
 
 			<!-- usernavlist -->
 			<ul class="usernavlist">
 
-				<!-- usernavitem -->
-				<li class="usernavitem">
+				<?php if( $currentuserdata && !$justloggedout ): ?>
 
-					<!-- usernavlink -->
-					<a class="usernavlink pr" href="?view=login">Login</a>
-					<!-- /usernavlink -->
+					<!-- usernavitem -->
+					<li class="usernavitem">
 
-				</li>
-				<!-- /usernavitem -->
+						<!-- usernavlink -->
+						<a class="usernavlink pr" href="?view=home">Enter</a>
+						<!-- /usernavlink -->
 
-				<!-- usernavitem -->
-				<li class="usernavitem">
+					</li>
+					<!-- /usernavitem -->
 
-					<!-- usernavlink -->
-					<a class="usernavlink" href="?view=register">Register</a>
-					<!-- /usernavlink -->
+				<?php else: ?>
 
-				</li>
-				<!-- /usernavitem -->
+					<!-- usernavitem -->
+					<li class="usernavitem">
+
+						<!-- usernavlink -->
+						<a class="usernavlink pr" href="?view=login">Login</a>
+						<!-- /usernavlink -->
+
+					</li>
+					<!-- /usernavitem -->
+
+					<!-- usernavitem -->
+					<li class="usernavitem">
+
+						<!-- usernavlink -->
+						<a class="usernavlink" href="?view=register">Register</a>
+						<!-- /usernavlink -->
+
+					</li>
+					<!-- /usernavitem -->
+
+				<?php endif; ?>
 
 			</ul>
 			<!-- /usernavlist -->

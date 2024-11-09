@@ -9,25 +9,47 @@
 
 		<?php
 
-			// Check if registration received. 
-			$registrationreceived = isset( $_POST['register'] );
-			// Check if login received. 
-			$loginreceived = isset( $_POST['login'] );
-
 			// Check for login/register mode. 
-			$newusermode = ($selectedviewid == 'register') || $registrationreceived;
+			// $newusermode = ($selectedviewid == 'register');
+			$existingusermode = ($selectedviewid == 'login');
+			// Define form title. 
+			// $formtitle = $newusermode ? 'New User' : 'Existing User';
+			$formtitle = $existingusermode ? 'Existing User' : 'New User';
 		?>
 
 		<!-- user -->
-		<section class="user center">
+		<section class="user float">
+
+			<!-- msgcenter -->
+			<div class="msgcenter">
+
+				<?php $goterror = ($loginreceived || $registrationreceived) && !$successfullogin ; ?>
+				<?php $errormsg = $goterror ? 'Invalid credentials<br>Please try again' : ''; ?>
+				<?php if( $errormsg ): ?>
+
+					<!-- msg -->
+					<div class="msg r"><?php print $errormsg; ?></div>
+					<!-- /msg -->
+
+				<?php endif; ?> 
+
+				<?php $successmsg = ''; ?>
+				<?php if($successmsg): ?>
+
+					<!-- msg -->
+					<div class="msg g"><?php print $successmsg; ?></div>
+					<!-- /msg -->
+
+				<?php endif; ?>
+
+			</div>
+			<!-- /msgcenter -->
 
 			<!-- head -->
 			<div class="head">
 
 				<!-- head -->
 				<h2 class="head">
-
-					<?php $formtitle = $newusermode ? 'New User' : 'Existing User'; ?>
 
 					<!-- caption -->
 					<span class="caption"><?php print $formtitle; ?></span>
@@ -39,146 +61,32 @@
 			</div>
 			<!-- /head -->
 
-			<!-- msgcenter -->
-			<div class="msgcenter">
+			<?php if( $existingusermode ): ?>
 
-				<?php if( $loginreceived && !$successfullogin ): ?>
-
-					<!-- msg -->
-					<div class="msg r">Invalid credentials<br>Please try again</div>
-					<!-- /msg -->
-
-				<?php elseif( $registrationreceived && !$successfullogin ): ?>
-
-					<!-- msg -->
-					<div class="msg r">Invalid credentials</div>
-					<!-- /msg -->
-
-				<?php endif; ?>
-
-			</div>
-			<!-- /msgcenter -->
-
-			<?php if($newusermode): ?>
-
-				<!-- create -->
-				<form class="create crud" method="post" action="<?php print $selfrefurl; ?>">
+				<!-- login -->
+				<form class="user crud" method="post" action="<?php print $selfurlbase; ?>">
 
 					<!-- fieldlist -->
 					<ul class="fieldlist">
 
 						<!-- field -->
 						<li class="field">
-							
-							<!-- fieldinput -->
-							<!-- <input class="fieldinput" type="text" name="personid" placeholder="Person" value=""> -->
-							<select class="fieldinput" name="personid" required>
 
-								<!-- option -->
-								<option value="">Select Person</option>
-								<!-- /option -->
-
-								<?php foreach($databasetables['persons']['entries'] as $person): ?>
-
-									<?php
-										$id = $person['id'];
-										$name = $person['personname'];
-									?>
-
-									<!-- option -->
-									<option value="<?php print $id; ?>"><?php print $name; ?></option>
-									<!-- /option -->
-
-								<?php endforeach; ?>
-
-							</select>
-							<!-- /fieldinput -->
-
-						</li>
-						<!-- /field -->
-
-						<!-- field -->
-						<li class="field">
-
-							<!-- fieldinput -->
-							<input class="fieldinput" type="password" name="passwd" placeholder="Create Password" value="" required>
-							<!-- /fieldinput -->
-
-						</li>
-						<!-- /field -->
-
-						<!-- field -->
-						<li class="field">
-
-							<!-- fieldinput -->
-							<input class="fieldinput" type="password" name="passwdrpt" placeholder="Repeat Password" value="" required>
-							<!-- /fieldinput -->
-
-						</li>
-						<!-- /field -->
-						
-					</ul>
-					<!-- /fieldlist -->
-
-					<!-- sendbtn -->
-					<button class="sendbtn btn" type="submit" name="register">
-
-						<!-- caption -->
-						<span class="caption">Sign up</span>
-						<!-- /caption -->
-
-					</button>
-					<!-- /sendbtn -->
-
-					<!-- nav -->
-					<div class="switcher">
-
-						<!-- caption -->
-						<!-- <span class="caption">Already registered?</span> -->
-						<span class="caption">Already have an account?</span>
-						<!-- /caption -->
-
-						<!-- link -->
-						<a href="?view=login" class="link">Log in here</a>
-						<!-- /link -->
-
-					</div>
-					<!-- /nav -->
-
-				</form>
-				<!-- /create -->
-
-			<?php else: ?>
-
-				<!-- read -->
-				<form class="read crud" method="post" action="<?php print $selfrefurl; ?>">
-
-					<!-- fieldlist -->
-					<ul class="fieldlist">
-
-						<?php if($easyusermode): ?>
-
-							<!-- field -->
-							<li class="field">
+							<?php if($easyusermode): ?>
 
 								<!-- fieldinput -->
 								<select class="fieldinput" name="userid">
+
 									<!-- option -->
 									<option value="">Select User</option>
 									<!-- /option -->
 
-									<?php $userslist = $databasetables['admins']['entries']; ?>
 									<?php $userslist = $databasetables['persons']['entries']; ?>
 
 									<?php foreach($userslist as $user): ?>
 
-										<?php
-											$id = $user['id'];
-											$name = $user['personname'];
-										?>
-
 										<!-- option -->
-										<option value="<?php print $id; ?>"><?php print $name; ?></option>
+										<option value="<?php print $user['id']; ?>"><?php print $user['personname']; ?></option>
 										<!-- /option -->
 
 									<?php endforeach; ?>
@@ -186,30 +94,51 @@
 								</select>
 								<!-- /fieldinput -->
 
-							</li>
-							<!-- /field -->
+							<?php else: ?>
 
-						<?php else: ?>
+								<!-- label -->
+								<label class="label" for="un">
 
-							<!-- field -->
-							<li class="field">
-								
+									<!-- icon -->
+									<svg class="icon person" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/> -->
+										<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+									</svg>
+									<!-- /icon -->
+
+								</label>
+								<!-- /label -->
+
 								<!-- fieldinput -->
-								<input class="fieldinput" type="text" name="username" placeholder="Username" value="" required>
+								<input class="fieldinput" id="un" type="text" name="username" placeholder="Username" value="" required>
 								<!-- /fieldinput -->
 
-							</li>
-							<!-- /field -->
+							<?php endif; ?>
 
-						<?php endif; ?>
+						</li>
+						<!-- /field -->
 
-						<?php if(!$easypasswdmode): ?>
+						<?php if(!$easypassmode): ?>
 
 							<!-- field -->
 							<li class="field">
 
+								<!-- label -->
+								<label class="label" for="pw">
+
+									<!-- icon -->
+									<svg class="icon key" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/> -->
+										<path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8m4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5"/>
+										<path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+									</svg>
+									<!-- /icon -->
+
+								</label>
+								<!-- /label -->
+
 								<!-- fieldinput -->
-								<input class="fieldinput" type="password" name="password" placeholder="Password" value="" required>
+								<input class="fieldinput" id="pw" type="password" name="password" placeholder="Password" value="" required>
 								<!-- /fieldinput -->
 
 							</li>
@@ -220,15 +149,21 @@
 					</ul>
 					<!-- /fieldlist -->
 
-					<!-- sendbtn -->
-					<button class="sendbtn btn" type="submit" name="login">
+					<!-- action -->
+					<div class="action">
 
-						<!-- caption -->
-						<span class="caption">Sign in</span>
-						<!-- /caption -->
+						<!-- sendbtn -->
+						<button class="sendbtn btn" type="submit" name="login">
 
-					</button>
-					<!-- /sendbtn -->
+							<!-- caption -->
+							<span class="caption">Sign in</span>
+							<!-- /caption -->
+
+						</button>
+						<!-- /sendbtn -->
+
+					</div>
+					<!-- /action -->
 
 					<!-- nav -->
 					<div class="switcher">
@@ -245,7 +180,102 @@
 					<!-- /nav -->
 
 				</form>
-				<!-- /read -->
+				<!-- /login -->
+
+			<?php else: ?>
+
+				<!-- register -->
+				<form class="user crud" method="post" action="<?php print $selfurlbase; ?>">
+
+					<!-- fieldlist -->
+					<ul class="fieldlist">
+
+						<?php $editorfields = $databasetables['persons']['editorfields']; ?>
+
+						<?php foreach($editorfields as $field): ?>
+
+							<!-- Define field attributes -->
+							<?php $fieldattr = $field['required']?' required':''; ?>
+
+							<!-- field -->
+							<li class="field">
+
+								<?php 
+									// Get field id. 
+									$fid = $field['fid'];
+									// Get field type. 
+									$ftype = $field['type'];
+								?>
+
+								<?php if($ftype!='select'): ?>
+
+									<?php
+										// Get field title. 
+										$fieldtitle = $field['fieldtitle'];
+										// Get field icon. 
+										$fieldicontag = $field['fieldicon'] ?? '';
+										$fieldiconfill = $databasetablesicons[$fieldicontag] ?? '';
+									?>
+
+									<!-- label -->
+									<label class="label" for="<?php print $fid; ?>">
+		
+										<!-- icon -->
+										<svg class="icon <?php print $fieldicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<?php print $fieldiconfill; ?>
+										</svg>
+										<!-- /icon -->
+		
+									</label>
+									<!-- /label -->
+
+									<!-- fieldinput -->
+									<input class="fieldinput" id="<?php print $fid; ?>" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $fieldattr; ?>>
+									<!-- /fieldinput -->
+
+								<?php endif; ?>
+
+							</li>
+							<!-- /field -->
+
+						<?php endforeach; ?>
+						
+					</ul>
+					<!-- /fieldlist -->
+
+					<!-- action -->
+					<div class="action">
+
+						<!-- sendbtn -->
+						<button class="sendbtn btn" type="submit" name="register">
+
+							<!-- caption -->
+							<span class="caption">Sign up</span>
+							<!-- /caption -->
+
+						</button>
+						<!-- /sendbtn -->
+
+					</div>
+					<!-- /action -->
+
+					<!-- nav -->
+					<div class="switcher c">
+
+						<!-- caption -->
+						<!-- <span class="caption">Already registered?</span> -->
+						<span class="caption">Already have an account?</span>
+						<!-- /caption -->
+
+						<!-- link -->
+						<a href="?view=login" class="link">Log in here</a>
+						<!-- /link -->
+
+					</div>
+					<!-- /nav -->
+
+				</form>
+				<!-- /register -->
 
 			<?php endif; ?>
 

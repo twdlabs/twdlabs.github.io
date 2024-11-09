@@ -11,6 +11,7 @@
 	--lightblack:#222;
 	--offwhite:#f8f8f8;
 	--navcolor:white;
+	--navcolor:gainsboro;
 	
 	/* Gradient Colors */
 	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
@@ -49,104 +50,55 @@ div#container {display:flex; flex-direction:column; /* justify-content:center; *
 
 
 
-/* Navbar */
-div#container nav.navbar {top:0; right:0; left:0; width:100%; z-index:30; box-shadow:var(--boxshadow);}
-div#container nav.navbar {position:fixed;} /* Bad for long (high content) pages */
-div#container nav.navbar {position:sticky;} /* Bad for short (low content) pages */
-div#container nav.navbar {background-color:var(--navcolor); /* min-height:4rem; */ border-radius:.25em;}
-div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container nav.navbar div.bin {position:relative; max-width:var(--pagewidth); padding:.5rem 2rem; margin:0 auto;}
-div#container nav.navbar div.bin a.btn {color:inherit; text-decoration:none; padding:.25em;}
-/* div#container nav.navbar div.bin a.homebtn {} */
-div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.625em; transition:.5s;}
-div#container nav.navbar div.bin a.homebtn h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
-/* div#container nav.navbar div.bin a.homebtn h1.head svg.icon {} */
-div#container nav.navbar div.bin a.homebtn h1.head span.caption {white-space:nowrap; margin-left:.5rem;}
-div#container nav.navbar div.bin a.togglebtn {/* display:none; */ z-index:1;}
-/* div#container nav.navbar div.bin a.togglebtn.tm {} */
-/* div#container nav.navbar div.bin a.togglebtn.um {} */
-div#container nav.navbar div.bin a.togglebtn svg.icon {display:block; font-size:1.625rem;}
-div#container nav.navbar div.bin a.togglebtn.um svg.icon {font-size:2.5rem;}
-div#container nav.navbar div.bin a.togglebtn.um img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;}
-
-/* Navbar Menu */
-div#container nav.navbar div.bin div.navmenu {background-color:var(--navcolor); padding:.5em; border-radius:/* 0 0 .25em  */.25em; margin:.5em; box-shadow:var(--boxshadow);}
-div#container nav.navbar div.bin div.navmenu {position:absolute; top:100%; user-select:none;}
-/* div#container nav.navbar div.bin div.navmenu div.btwn {height:1.5em; opacity:.125; border:.25px solid; margin:0 .25em;} */
-div#container nav.navbar div.bin div.navmenu ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
-div#container nav.navbar div.bin div.navmenu ul.navlist {flex-direction:column; align-items:stretch;}
-/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; color:inherit; text-decoration:none; padding:.5em;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {display:block;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {/* display:none; */ font-size:.75em;}
-/* Navbar User Menu */
-/* div#container nav.navbar div.bin div.navmenu.usermenu {} */
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile {margin-bottom:.875rem;}
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy {font-size:.875rem; padding:0 .25rem; margin:0; margin-top:.25em;}
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name {font-weight:bold;}
-/* div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.value {font-style:italic;} */
-/* Navbar Table Menu */
-/* div#container nav.navbar div.bin div.navmenu.tablemenu {} */
-div#container nav.navbar div.bin div.navmenu/* .tablemenu */ {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
-div#container nav.navbar div.bin div.navmenu {flex-direction:column; align-items:stretch;}
-/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist li.navitem a.navlink img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;} */
-/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.user {} */
-/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.tables {} */
-/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.user li.navitem a.navlink span.caption {display:none;} */
-
-/* Navbar Menu (from mobile below) */
-div#container nav.navbar div.bin div.navmenu.usermenu {right:0;}
-div#container nav.navbar div.bin div.navmenu.tablemenu {left:0;}
-div#container nav.navbar div.bin div.navmenu {transform:translateY(-100%); opacity:0; visibility:hidden; transition:.25s;}
-div#container nav.navbar div.bin div.navmenu.open {transform:translateY(0%); opacity:1; visibility:visible;}
-/* div#container nav.navbar div.bin div.navmenu div.btwn {height:auto; width:90%; align-self:center; margin:.25em 0;} */
-/* div#container nav.navbar div.bin div.navmenu ul.navlist {} */
-/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {flex-direction:row; font-size:1.375em;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {font-size:1em;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {display:block;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {margin-left:.375rem;}
-/* div#container nav.navbar div.bin div.navmenu ul.navlist.user li.navitem a.navlink span.caption {display:block;} */
-
-
-
-
 /* General Section */
-div#container section {background-color:white; padding:.75rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container section {background-color:white; padding:.75rem; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container section {/* width:100%; */ max-width:var(--pagewidth);}
 /* div#container section {transform:translateY(-4rem);} */
 /* div#container section.gone {transform:none;} */
-div#container section.center {position:fixed; top:45%; left:50%; transform:translate(-50%,-50%);}
-div#container section div.head {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section div.head h2.head {font-size:1.375em; /* text-align:center; */ margin:0; margin:0 1rem;}
+div#container section.float {position:fixed; top:45%; left:50%; transform:translate(-50%,-50%);}
+/* div#container section.float::after {position:fixed; inset:0;} */
+/* div#container section.float::after {background-color:#0004; content:'';} */
+
+/* General Section: Head */
+div#container section div.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section div.head.f {justify-content:space-between;}
+div#container section div.head h2.head {font-size:1.375em; /* text-align:center; */ margin:0; margin:0 .25rem;}
 div#container section div.head h2.head a.selflink {color:inherit; text-decoration:none;}
 /* div#container section div.head h2.head span.caption {} */
 div#container section div.head h2.head span.caption:empty {background-color:gainsboro; display:inline-block; height:1em; width:6em; border-radius:1em;}
 div#container section div.head button.btn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
 div#container section div.head button.btn svg.icon {font-size:1.25em;}
 div#container section div.head button.btn span.caption {display:none;}
-/* General Section: Msg Center */
-div#container section div.msgcenter {display:flex; flex-direction:column; align-items:stretch; /* gap:.25rem; */}
-div#container section div.msgcenter div.msg {background-color:#0004; font-size:.75rem; text-align:center; padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; margin-top:.375rem;}
-div#container section div.msgcenter div.msg.g {background-color:#0f03; color:rgb(23, 83, 23);}
-div#container section div.msgcenter div.msg.r {background-color:#f003; color:rgb(96, 29, 29);}
-/* General Section: Form */
-div#container section form.crud {margin:0;}
+
+/* General Section: Data Form */
+div#container section form.crud {--fieldspacing:.5rem; margin:0;}
+div#container section form.crud div.action {margin-top:var(--fieldspacing);}
 div#container section form.crud ul.fieldlist {list-style:none; padding:0; margin:0;}
-div#container section form.crud ul.fieldlist li.field {margin-top:.5rem;}
+div#container section form.crud ul.fieldlist li.field {margin-top:var(--fieldspacing);}
 div#container section form.crud ul.fieldlist li.field.x {display:none;}
 div#container section form.crud ul.fieldlist li.field input.fieldinput,
 div#container section form.crud ul.fieldlist li.field select.fieldinput,
 div#container section form.crud ul.fieldlist li.field textarea.fieldinput,
-div#container section form.crud button.sendbtn {font-family:inherit; /* font-size:inherit; */ font-size:.875em; resize:none; width:100%; max-width:16em; padding:.375em .875em; border:.125rem solid #0002; border-radius:.5rem;}
-div#container section form.crud button.sendbtn {margin-top:.5rem;}
+div#container section form.crud div.action button.sendbtn {font-family:inherit; /* font-size:inherit; */ font-size:.875em; resize:none; width:100%; max-width:16em; padding:.375em .875em; border:.125rem solid #0002; border-radius:.5rem;}
+
+/* General Section: Msg Center */
+div#container section div.msgcenter {display:flex; flex-direction:column; align-items:stretch; gap:.25rem; margin-bottom:.625rem;}
+div#container section div.msgcenter:empty {margin:0}
+div#container section div.msgcenter div.msg {background-color:#0004; cursor:pointer; font-size:.75rem; text-align:center;}
+div#container section div.msgcenter div.msg {padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; /* margin-top:.375rem; */}
+div#container section div.msgcenter div.msg.g {background-color:#0f03; color:rgb(23, 83, 23);}
+div#container section div.msgcenter div.msg.r {background-color:#f003; color:rgb(96, 29, 29);}
+div#container section div.msgcenter div.msg.gone {height:0; overflow:hidden; padding:0; margin:0;}
+div#container section div.msgcenter div.msg.gone {color:transparent; opacity:0; visibility:hidden; transition:.5s;}
 
 
 
 /* Splash Section */
-div#container section.splash {display:grid; place-items:center; z-index:30;}
-div#container section.splash img.logo {height:12rem; margin-top:.5rem;}
+div#container section.splash {background-color:gainsboro; display:grid; place-items:center; z-index:30;}
+/* div#container section.splash div.head {} */
+div#container section.splash div.head h2.head {font-size:2.25em; white-space:nowrap;}
+div#container section.splash a.enterlink {display:block;}
+div#container section.splash a.enterlink img.logo {height:12rem; margin-top:.5rem;}
 div#container section.splash ul.usernavlist {display:flex; flex-direction:row; justify-content:center; align-items:center; grid-gap:.5rem;}
 div#container section.splash ul.usernavlist {list-style:none; padding:0; margin:0; margin-top:1rem;}
 /* div#container section.splash ul.usernavlist li.usernavitem {} */
@@ -157,44 +109,34 @@ div#container section.splash ul.usernavlist li.usernavitem a.usernavlink.pr {bac
 
 
 
-/* User Welcome Section */
-/* div#container section.welcome {} */
-/* div#container section.welcome div.head {} */
+/* User Chooser Section */
+/* div#container section.user {} */
 
-/* Home Feed Section */
-/* div#container section.homefeed {} */
-div#container section.homefeed div.head {justify-content:center;}
-/* div#container section.homefeed div.head h2.head {} */
-div#container section.homefeed article.issue {padding:1rem; margin-top:1rem;}
-div#container section.homefeed article.issue h3.title {display:flex; flex-direction:row; justify-content:space-between; align-items:center; margin:0;}
-/* div#container section.homefeed article.issue h3.title span.number {} */
-/* div#container section.homefeed article.issue h3.title span.caption {} */
-div#container section.homefeed article.issue p.description {margin:0;}
-div#container section.homefeed article.issue ul.commentlist {list-style:none; padding:0; margin:0; margin-top:.5em; margin-left:1em;}
-div#container section.homefeed article.issue ul.commentlist li.commentitem {margin-top:.25em;}
-div#container section.homefeed article.issue ul.commentlist li.commentitem span.name {font-weight:bold;}
-/* div#container section.homefeed article.issue ul.commentlist li.commentitem span.comment {} */
-div#container section.homefeed article.issue form.newcomment {display:grid; margin-left:1em; margin-top:.375em;}
-div#container section.homefeed article.issue form.newcomment textarea.fieldinput,
-div#container section.homefeed article.issue form.newcomment input.fieldinput {font-family:inherit; /* font-size:inherit; */ font-size:.875em; resize:none; width:100%; max-width:16em; padding:.375em .875em; border:.125rem solid #0002; border-radius:.5rem;}
+/* User Chooser Section: User Data Form */
+/* div#container section.user form.crud.user {} */
+/* div#container section.user form.crud.user ul.fieldlist {} */
+div#container section.user form.crud.user ul.fieldlist li.field {position:relative;}
+div#container section.user form.crud.user ul.fieldlist li.field label.label {position:absolute; left:0; top:50%; transform:translateY(-50%);}
+div#container section.user form.crud.user ul.fieldlist li.field label.label {padding:0 .625em;}
+div#container section.user form.crud.user ul.fieldlist li.field label.label svg.icon {display:block;}
+div#container section.user form.crud.user ul.fieldlist li.field input.fieldinput {padding-left:2.25em;}
+
+/* User Chooser Section: Switcher */
+div#container section.user div.switcher {display:flex; flex-flow:row wrap; justify-content:center; grid-gap:0 .375em;}
+div#container section.user div.switcher {font-size:.875em; text-align:center; margin-top:.75rem;}
+div#container section.user div.switcher.c {flex-flow:column nowrap;}
+
+
 
 /* Navigation Table Section */
 /* div#container section.navtable {} */
-/* div#container section.navtable div.head {} */
 div#container section.navtable ul.navlist {list-style:none; /* text-align:center; */ padding:0; margin:0;}
-div#container section.navtable ul.navlist {display:grid; grid-template-columns:repeat(5,1fr); margin-top:1em;}
-/* div#container section.navtable ul.navlist li.navitem {} */
+div#container section.navtable ul.navlist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.125rem; margin-top:.25em;}
+div#container section.navtable ul.navlist li.navitem {margin-top:.75em;}
 div#container section.navtable ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
 div#container section.navtable ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; font-size:.875em;}
 div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-size:2.5em;}
 /* div#container section.navtable ul.navlist li.navitem a.navlink span.caption {} */
-
-
-
-/* User Chooser Section */
-/* div#container section.user {} */
-div#container section.user div.head {justify-content:center;}
-div#container section.user div.switcher {font-size:.875em; text-align:center; margin-top:.75rem;}
 
 
 
@@ -204,29 +146,12 @@ div#container section.user div.switcher {font-size:.875em; text-align:center; ma
 /* Tablet Screen */
 @media screen and (max-width:64rem) {
 	
-	/* Navbar */
-	/* Navbar Menu */
-	/* Navbar User Menu */
-	/* Navbar Table Menu */
-	
 	/* General Section */
 	div#container section {max-width:calc(100% - 1.5rem);}
 }
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
-	
-	/* Navbar */
-	/* div#container nav.navbar {} */
-	/* div#container nav.navbar div.bin {} */
-	/* Navbar Menu */
-	/* div#container nav.navbar div.bin div.navmenu ul.navlist {} */
-	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
-	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {} */
-	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {font-size:1.5em;} */
-	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {display:none;} */
-	/* Navbar User Menu */
-	/* Navbar Table Menu */
 
 	/* General Section */
 	/* div#container section {} */
@@ -234,16 +159,6 @@ div#container section.user div.switcher {font-size:.875em; text-align:center; ma
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
-
-	/* Navbar */
-	/* div#container nav.navbar {} */
-	/* div#container nav.navbar div.bin {} */
-	/* div#container nav.navbar div.bin a.homebtn {} */
-	/* div#container nav.navbar div.bin a.togglebtn {display:block;} */
-	div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.5em;}
-	/* Navbar Menu */
-	/* Navbar User Menu */
-	/* Navbar Table Menu */
 	
 	/* General Section */
 	/* div#container section {} */
@@ -253,13 +168,6 @@ div#container section.user div.switcher {font-size:.875em; text-align:center; ma
 
 /* Small Smartphone Screen */
 @media screen and (max-width:20rem) {
-
-	/* Navbar */
-	/* div#container nav.navbar {} */
-	div#container nav.navbar div.bin {flex-direction:column;}
-	/* Navbar Menu */
-	/* Navbar User Menu */
-	/* Navbar Table Menu */
 
 	/* General Section */
 	/* div#container section {} */

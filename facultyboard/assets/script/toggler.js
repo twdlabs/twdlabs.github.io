@@ -16,12 +16,18 @@ const entrycomposer = document.querySelector('div#container section.composer');
 // Get all entry editors. 
 const allentryeditors = document.querySelectorAll('div#container section.datatable div.scroller table.table tbody.body td.cell section.editor');
 
+// Get all message boxes in message center. 
+let msgcenterboxes = document.querySelectorAll('div#container section div.msgcenter div.msg');
+
 
 /*****/
 
 
 // Activate menu togglers. 
 activateMenuTogglers();
+
+// Activate message center. 
+activateMsgCenter();
 
 
 /*****/
@@ -31,19 +37,24 @@ activateMenuTogglers();
 function activateMenuTogglers() {
 
 	// Activate menu toggler for user menu. 
-	usermenutoggler.addEventListener('click',toggleUserMenu);
-	// usermenutoggler.addEventListener('mouseenter',toggleUserMenu);
-	// usermenutoggler.addEventListener('mouseleave',toggleUserMenu);
+	if(usermenutoggler) {
+		usermenutoggler.addEventListener('click',toggleUserMenu);
+		// usermenutoggler.addEventListener('mouseenter',toggleUserMenu);
+		// usermenutoggler.addEventListener('mouseleave',toggleUserMenu);
+	}
 
 	// Activate menu toggler for table menu. 
-	tablemenutoggler.addEventListener('click',toggleTableMenu);
-	// tablemenutoggler.addEventListener('mouseenter',toggleTableMenu);
-	// tablemenutoggler.addEventListener('mouseleave',toggleTableMenu);
+	if(tablemenutoggler) {
+		tablemenutoggler.addEventListener('click',toggleTableMenu);
+		// tablemenutoggler.addEventListener('mouseenter',toggleTableMenu);
+		// tablemenutoggler.addEventListener('mouseleave',toggleTableMenu);
+	}
 }
 
 
 // Toggle user navigation menu. 
 function toggleUserMenu() {
+	if(!usernavigationmenu) return;
 
 	// Check if menu already open. 
 	let alreadyopen = usernavigationmenu.classList.contains('open');
@@ -52,7 +63,7 @@ function toggleUserMenu() {
 	if(!alreadyopen) {
 
 		// Close other menu(s). 
-		tablenavigationmenu.classList.remove('open');
+		if(tablenavigationmenu) tablenavigationmenu.classList.remove('open');
 
 		// Open menu. 
 		usernavigationmenu.classList.add('open');
@@ -67,6 +78,7 @@ function toggleUserMenu() {
 
 // Toggle table navigation menu. 
 function toggleTableMenu() {
+	if(!tablenavigationmenu) return;
 
 	// Check if menu already open. 
 	let alreadyopen = tablenavigationmenu.classList.contains('open');
@@ -75,7 +87,7 @@ function toggleTableMenu() {
 	if(!alreadyopen) {
 
 		// Close other menu(s). 
-		usernavigationmenu.classList.remove('open');
+		if(usernavigationmenu) usernavigationmenu.classList.remove('open');
 
 		// Open menu. 
 		tablenavigationmenu.classList.add('open');
@@ -91,6 +103,7 @@ function toggleTableMenu() {
 
 // Toggle table entry composer. 
 function toggleEntryComposer() {
+	if(!entrycomposer) return;
 
 	// Check if composer already open. 
 	let alreadyopen = entrycomposer.classList.contains('open');
@@ -117,6 +130,7 @@ function toggleEntryComposer() {
 
 // Close table entry composer. 
 function closeEntryComposer() {
+	if(!entrycomposer) return;
 	entrycomposer.classList.remove('open');
 }
 
@@ -127,10 +141,11 @@ function toggleEntryEditor(editbtn) {
 	let entryid = editbtn.getAttribute('data-entryid');
 
 	// Get selected entry editor. 
-	let entryeditor = document.querySelector('div#container section.datatable div.scroller table.table tbody.body td.cell section.editor#id'+entryid);
+	let selectedentryeditor = document.querySelector('div#container section.datatable div.scroller table.table tbody.body td.cell section.editor#id'+entryid);
+	if(!selectedentryeditor) return;
 
 	// Check if editor already open. 
-	let alreadyopen = entryeditor.classList.contains('open');
+	let alreadyopen = selectedentryeditor.classList.contains('open');
 
 	// Open editor (if not already open). 
 	if(!alreadyopen) {
@@ -142,8 +157,8 @@ function toggleEntryEditor(editbtn) {
 		closeEntryEditors();
 
 		// Open selected entry editor. 
-		entryeditor.classList.add('open');
-		let selectedform = entryeditor.querySelector('form input[type=text]');
+		selectedentryeditor.classList.add('open');
+		let selectedform = selectedentryeditor.querySelector('form input[type=text]');
 		console.log('selectedform:',selectedform);
 		if(selectedform) selectedform.focus();
 	}
@@ -151,13 +166,51 @@ function toggleEntryEditor(editbtn) {
 	else {
 
 		// Close selected entry editor. 
-		entryeditor.classList.remove('open');
+		selectedentryeditor.classList.remove('open');
 	}
 }
 
 // Close all table entry editors. 
 function closeEntryEditors() {
 
-	// Close all editor(s). 
-	for(let currenteditor of allentryeditors) currenteditor.classList.remove('open');
+	// Go thru each editor. 
+	for(let currenteditor of allentryeditors) {
+
+		// Close editor. 
+		currenteditor.classList.remove('open');
+	}
+}
+
+
+// Activate message center. 
+function activateMsgCenter() {
+
+	// Go thru each message box in message center. 
+	for(let msgbox of msgcenterboxes) {
+	
+		// Activate clicks on message box. 
+		msgbox.addEventListener('click',closeMsgBox);
+	}
+
+	/****/
+	
+	// Close message box. 
+	function closeMsgBox(event) {
+
+		// Get selected message box. 
+		let selectedmsgbox = event.currentTarget;
+
+		// Hide selected message box. 
+		selectedmsgbox.classList.add('gone');
+
+		// Remove selected message box (after delay). 
+		setTimeout( ()=>{deleteMsgBox(selectedmsgbox)} , 750);
+
+		/***/
+
+		// Delete message box. 
+		function deleteMsgBox(selectedmsgbox) {
+			selectedmsgbox.remove();
+		}
+	}
 }

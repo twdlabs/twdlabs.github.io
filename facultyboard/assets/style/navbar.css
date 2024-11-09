@@ -1,0 +1,118 @@
+
+
+
+
+/* Navbar */
+div#container nav.navbar {top:0; right:0; left:0; width:100%; z-index:40; box-shadow:var(--boxshadow);}
+div#container nav.navbar {position:fixed;} /* Bad for long (high content) pages */
+div#container nav.navbar {position:sticky;} /* Bad for short (low content) pages */
+div#container nav.navbar {background-color:var(--navcolor); /* min-height:4rem; */ border-radius:.25em;}
+div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container nav.navbar div.bin {position:relative; max-width:var(--pagewidth); padding:.5rem 2rem; margin:0 auto;}
+div#container nav.navbar div.bin a.btn {color:inherit; text-decoration:none; padding:.25em;}
+/* div#container nav.navbar div.bin a.homebtn {} */
+div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.625em; transition:.5s;}
+div#container nav.navbar div.bin a.homebtn h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
+/* div#container nav.navbar div.bin a.homebtn h1.head svg.icon {} */
+div#container nav.navbar div.bin a.homebtn h1.head span.caption {white-space:nowrap; margin-left:.5rem;}
+div#container nav.navbar div.bin a.togglebtn {/* display:none; */ z-index:1;}
+/* div#container nav.navbar div.bin a.togglebtn.tm {} */
+/* div#container nav.navbar div.bin a.togglebtn.um {} */
+div#container nav.navbar div.bin a.togglebtn svg.icon {display:block; font-size:1.625rem;}
+div#container nav.navbar div.bin a.togglebtn.um svg.icon {font-size:2.5rem;}
+div#container nav.navbar div.bin a.togglebtn.um img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;}
+
+/* Navbar Menu */
+div#container nav.navbar div.bin div.navmenu {position:absolute; top:100%; user-select:none;}
+div#container nav.navbar div.bin div.navmenu {background-color:var(--navcolor); padding:.5em; border-radius:/* 0 0 .25em  */.25em; margin:.5em; box-shadow:var(--boxshadow);}
+/* div#container nav.navbar div.bin div.navmenu div.btwn {height:1.5em; opacity:.125; border:.25px solid; margin:0 .25em;} */
+div#container nav.navbar div.bin div.navmenu ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
+div#container nav.navbar div.bin div.navmenu ul.navlist {flex-direction:column; align-items:stretch;}
+/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem.x {display:none;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; color:inherit; text-decoration:none; padding:.5em;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {display:block;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {/* display:none; */ font-size:.75em;}
+/* Navbar User Menu */
+/* div#container nav.navbar div.bin div.navmenu.usermenu {} */
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile {margin-bottom:.875rem;}
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy {font-size:.875rem; padding:0 .25rem; margin:0; margin-top:.25em;}
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name {font-weight:bold;}
+/* div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.value {font-style:italic;} */
+/* Navbar Table Menu */
+/* div#container nav.navbar div.bin div.navmenu.tablemenu {} */
+div#container nav.navbar div.bin div.navmenu/* .tablemenu */ {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
+div#container nav.navbar div.bin div.navmenu {flex-direction:column; align-items:stretch;}
+/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist li.navitem a.navlink img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;} */
+/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.user {} */
+/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.tables {} */
+/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.user li.navitem a.navlink span.caption {display:none;} */
+/* Navbar Menu (from mobile below) */
+div#container nav.navbar div.bin div.navmenu.usermenu {right:0;}
+div#container nav.navbar div.bin div.navmenu.tablemenu {left:0;}
+div#container nav.navbar div.bin div.navmenu {transform:translateY(-100%); opacity:0; visibility:hidden; transition:.25s;}
+/* div#container nav.navbar div.bin div.navmenu {position:fixed; top:0; bottom:0; margin-top:4.5em;} */
+div#container nav.navbar div.bin div.navmenu.open {transform:translateY(0%); opacity:1; visibility:visible;}
+/* div#container nav.navbar div.bin div.navmenu div.btwn {height:auto; width:90%; align-self:center; margin:.25em 0;} */
+/* div#container nav.navbar div.bin div.navmenu ul.navlist {} */
+/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {flex-direction:row; font-size:1.375em;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {font-size:1em;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {display:block;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {margin-left:.375rem;}
+/* div#container nav.navbar div.bin div.navmenu ul.navlist.user li.navitem a.navlink span.caption {display:block;} */
+
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* Navbar */
+	/* Navbar Menu */
+	/* Navbar User Menu */
+	/* Navbar Table Menu */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+	
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar div.bin {} */
+	/* Navbar Menu */
+	/* div#container nav.navbar div.bin div.navmenu ul.navlist {} */
+	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
+	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {} */
+	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {font-size:1.5em;} */
+	/* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {display:none;} */
+	/* Navbar User Menu */
+	/* Navbar Table Menu */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar div.bin {} */
+	/* div#container nav.navbar div.bin a.homebtn {} */
+	/* div#container nav.navbar div.bin a.togglebtn {display:block;} */
+	div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.5em;}
+	/* Navbar Menu */
+	/* Navbar User Menu */
+	/* Navbar Table Menu */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:20rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	div#container nav.navbar div.bin {flex-direction:column;}
+	/* Navbar Menu */
+	/* Navbar User Menu */
+	/* Navbar Table Menu */
+}

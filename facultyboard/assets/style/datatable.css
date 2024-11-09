@@ -3,8 +3,6 @@
 
 /* Data Table Section */
 div#container section.datatable {z-index:10;}
-/* div#container section.datatable div.head {} */
-/* div#container section.datatable div.head h2.head {} */
 div#container section.datatable div.scroller {overflow-x:auto;}
 div#container section.datatable div.scroller table.table {text-align:center; width:100%; margin-top:.5em;}
 div#container section.datatable div.scroller table.table thead.head {background-color:gainsboro;}
@@ -21,7 +19,7 @@ div#container section.datatable div.scroller table.table tbody.body td.cell img.
 /* div#container section.datatable div.scroller table.table tbody.body td.cell span.caption {} */
 
 /* Data Editor Section */
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor {z-index:20;}
+div#container section.datatable div.scroller table.table tbody.body td.cell section.editor {background-color:var(--backcolor); z-index:20;}
 div#container section.datatable div.scroller table.table tbody.body td.cell section.editor {opacity:0; visibility:hidden; transition:.625s;}
 /* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor#idX {} */
 div#container section.datatable div.scroller table.table tbody.body td.cell section.editor.open {opacity:1; visibility:visible;}
@@ -34,13 +32,12 @@ div#container section.datatable div.scroller table.table tbody.body td.cell sect
 /* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field input.fieldinput {} */
 /* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field select.fieldinput {} */
 /* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field textarea.fieldinput {} */
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud button.sendbtn {margin-top:.125rem;}
+div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud div.action button.sendbtn {margin-top:.125rem;}
 
 
 /* Data Composer Section */
-div#container section.composer {z-index:20;}
+div#container section.composer {background-color:var(--backcolor); z-index:20;}
 div#container section.composer {opacity:0; visibility:hidden; transition:.625s;}
 div#container section.composer.open {opacity:1; visibility:visible;}
-/* div#container section.composer div.head {} */
 div#container section.composer form.crud {transform:translateY(-4rem); transition:.625s;}
 div#container section.composer.open form.crud {transform:none;}
