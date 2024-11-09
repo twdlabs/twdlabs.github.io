@@ -7,6 +7,12 @@
 
 	// Get functions to access server database. 
 	require_once('./../sharedassets/script/config.php');
+	// Get functions to handle database queries. 
+	require_once('./../sharedassets/script/query.php');
+	// Get functions to access user input. 
+	require_once('./../sharedassets/script/input.php');
+	// Get functions to display output. 
+	require_once('./../sharedassets/script/output.php');
 
 	// Get metadata for database tables. 
 	require_once('./assets/database/database.php');
@@ -37,11 +43,16 @@
 		<link href="./assets/style/query.css" rel="stylesheet" type="text/css"/>
 		<!-- Main Stylesheet -->
 		<link href="./assets/style/style.css" rel="stylesheet" type="text/css"/>
+		<!-- Navbar Stylesheet -->
+		<link href="./assets/style/navbar.css" rel="stylesheet" type="text/css"/>
 		<!-- Data Table Stylesheet -->
 		<link href="./assets/style/datatable.css" rel="stylesheet" type="text/css"/>
+		<!-- Social Feed Stylesheet -->
+		<link href="./assets/style/socialfeed.css" rel="stylesheet" type="text/css"/>
 		<!-- <style type="text/css"></style> -->
 
 		<script type="text/javascript">
+			console.log('Server data:', <?php print isset($_SERVER) ? json_encode($_SERVER) : null; ?>);
 			console.log('Session data:', <?php print isset($_SESSION) ? json_encode($_SESSION) : null; ?>);
 			console.log('Get response data:', <?php print isset($_GET) ? json_encode($_GET) : null; ?>);
 			console.log('Post response data:', <?php print isset($_POST) ? json_encode($_POST) : null; ?>);
@@ -85,11 +96,9 @@
 
 						// Connect to server database. 
 						$db = openDb('cis355issuecomments');
-						// Get functions to access input and display output. 
-						require_once('./../sharedassets/script/io.php');
 
 						// Check for in/out user operations (before doing anything else). 
-						$successfullogin = checkTheDoor();
+						$successfullogin = checkIfUserIn();
 
 						// Get user id (if currently logged in). 
 						$currentuserid = getCurrentUserId();
@@ -107,55 +116,55 @@
 						checkForDataMoves();
 
 						// Download all table data from database. 
-						getAllTableData();
+						if($currentuserdata) getAllTableData();
 						// $databasetablesstr = json_encode($databasetables);
 						// printToPage("Table data: ( $databasetablesstr )");
 
+
 						// Check for selected view. 
 						$isviewselected = isset( $_GET['view'] );
-						$ivs = $isviewselected ? '👍' : '👎';
-						// printToPage();
-						// printToPage("View selected: $isviewselected ($ivs)");
+						// Get id of selected view. 
+						$selectedviewid = $isviewselected ? $_GET['view'] : '';
+						// Check if selected view is home. 
+						$athomeview = ( $selectedviewid == 'home' );
+						// Check if selected view is table. 
+						$ontableview = isset( $databasetables[$selectedviewid] );
+						// Check if selected view is user chooser. 
+						$onuserchooser = ( $selectedviewid=='login' || $selectedviewid=='register' );
 
-						// Define self-reference url. 
-						$self = $_SERVER['PHP_SELF'];
-						$query = $_SERVER['QUERY_STRING'];
-						$selfrefurl = htmlspecialchars( "$self?$query" );
-						
-						// Set default table title. 
-						$tabletitle = 'Social Feed';
+						// Display data for selected view. 
+						printToPage();
+						$svid = $isviewselected ? $selectedviewid : '[none]';
+						printToPage("Selected view id: $svid");
+						$iucs = $onuserchooser ? 'true' : 'false';
+						printToPage("User chooser selected: $iucs");
+						$ihvs = $athomeview ? 'true' : 'false';
+						printToPage("Home view selected: $ihvs");
+						$itvs = $ontableview ? 'true' : 'false';
+						printToPage("Table view selected: $itvs");
 
-						// Proceed for selected view. 
-						if($isviewselected) {
 
-							// Get id of selected view. 
-							$selectedviewid = $_GET['view'];
-							// printToPage();
-							// printToPage("Selected view id: $selectedviewid");
+						// Get self-reference url. 
+						$selfurl = getSelfRefUrl();
+						$selfurlbase = getSelfRefUrl(false);
 
-							// Check if selected view is table. 
-							$istableviewselected = isset( $databasetables[$selectedviewid] );
-							$istableviewselectedthumb = $istableviewselected ? '👍' : '👎';
-							// printToPage();
-							// printToPage("Table view selected: $istableviewselected ($istableviewselectedthumb)");
+						// Get data needed for table view & home view. 
+						if( $ontableview || $athomeview ) {
 
-							// Proceed for table view. 
-							if( $istableviewselected ) {
-							
-								// Get data associated with selected table. 
-								$selectedtable = $databasetables[$selectedviewid];
-								// Get title of selected table. 
-								$tabletitle = $selectedtable['tabletitle'];
-								// Get caption for single item. 
-								$singlecaption = $selectedtable['singlecaption'];
-								// Get fields of table display. 
-								$displayfields = $selectedtable['displayfields'];
-								// Get fields of table editor. 
-								$editorfields = $selectedtable['editorfields'];
-	
-								// Retrieve relevant table data from database. 
-								getRelevantTableData();
-							}
+							// Get data associated with selected table. 
+							if( $athomeview ) $selectedtable = $databasetables['recentactivity'];
+							elseif( $ontableview ) $selectedtable = $databasetables[$selectedviewid];
+							// Get title of selected table. 
+							$tabletitle = $selectedtable['tabletitle'];
+							// Get caption for single item. 
+							$singlecaption = $selectedtable['singlecaption'];
+							// Get fields of table display. 
+							$displayfields = $selectedtable['displayfields'];
+							// Get fields of table editor. 
+							$editorfields = $selectedtable['editorfields'];
+
+							// Retrieve relevant table data from database. 
+							if( $ontableview ) getRelevantTableData();
 						}
 					?>
 
@@ -171,13 +180,15 @@
 
 			<?php if($currentuserdata): ?>
 
-				<?php if( isset($istableviewselected) && $istableviewselected ): ?>
+				<?php if( isset($ontableview) && $ontableview ): ?>
 
 					<?php include('./assets/module/datatable.php'); ?>
 
 				<?php else: ?>
 
-					<?php include('./assets/module/hometables.php'); ?>
+					<?php include('./assets/module/recentactivity.php'); ?>
+
+					<?php include('./assets/module/socialfeed.php'); ?>
 
 				<?php endif; ?>
 
@@ -185,11 +196,11 @@
 
 			<?php elseif(  isset($selectedviewid) && ( $selectedviewid=='login' || $selectedviewid=='register' )  ): ?>
 
-				<?php include('./assets/module/userchooser.php'); ?>
+				<?php include('./assets/pages/userchooser.php'); ?>
 
 			<?php else: ?>
 
-				<?php include('./assets/module/splash.php'); ?>
+				<?php include('./assets/pages/splash.php'); ?>
 
 			<?php endif; */ ?>
 
@@ -197,33 +208,60 @@
 
 			<?php
 
-				// 
+				// Display navbar. 
 				include('./assets/module/navbar.php');
-				
+
 				// Proceed if user logged in. 
 				if($currentuserdata) {
 
-					// Check if table view selected. 
-					$tvs = isset($istableviewselected) && $istableviewselected;
-					// Display data table (if table view selected). 
-					if($tvs) include('./assets/module/datatable.php');
-					// Display home social feed (if no table view selected). 
-					else include('./assets/module/hometables.php');
+					// Display data table (if view selected). 
+					if( $ontableview ) {
 
-					// Display navigation for data tables (if current user is admin). 
-					if( $iscurrentuseradmin ) include('./assets/module/navtable.php');
+						// Display navigation for data tables. 
+						include('./assets/module/navtable.php');
+						// Display data table. 
+						include('./assets/pages/datatable.php');
+					}
+
+					// Display home screen (if view selected). 
+					elseif( $athomeview ) {
+
+						// Display user welcome. 
+						include('./assets/module/welcome.php');
+						// Display navigation for data tables. 
+						include('./assets/module/navtable.php');
+						// Display user's recent activity. 
+						include('./assets/module/recentactivity.php');
+						// Display user's social feed. 
+						include('./assets/module/socialfeed.php');
+					}
+
+					// Display splash screen (if no view selected). 
+					else {
+
+						// Display splash screen. 
+						include('./assets/pages/splash.php');
+					}
 				}
 
-				// Display login/register screen (if selected and no user logged in). 
-				elseif(  isset($selectedviewid) && ( $selectedviewid=='login' || $selectedviewid=='register' )  ) {
-					include('./assets/module/userchooser.php');
-				}
-
-				// Display splash screen otherwise. 
+				// Proceed if user not logged in. 
 				else {
-					include('./assets/module/splash.php');
+
+					// Display user chooser screen (if view selected). 
+					if( $onuserchooser ) {
+
+						// Display user chooser (login/register) screen. 
+						include('./assets/pages/userchooser.php');
+					}
+
+					// Display splash screen (if no view selected). 
+					else {
+
+						// Display splash screen. 
+						include('./assets/pages/splash.php');
+					}
 				}
-				
+
 			?>
 
 
