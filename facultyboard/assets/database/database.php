@@ -119,7 +119,7 @@
 				// 	'fieldtitle'=>'Password Hash',
 				// ],
 			],
-			// Define table editor fields. 
+			// Define table editor fields (used for registration). 
 			'editorfields' => [
 				[
 					'type'=>'text',
@@ -127,6 +127,7 @@
 					'fieldtitle'=>'Name',
 					'required'=>true,
 					'editable'=>true,
+					'fieldicon'=>'person',
 				],
 				[
 					'type'=>'select',
@@ -145,6 +146,7 @@
 					'fieldtitle'=>'Position',
 					'required'=>false,
 					'editable'=>true,
+					'fieldicon'=>'briefcase',
 				],
 				[
 					'type'=>'select',
@@ -172,18 +174,59 @@
 					'type'=>'text',
 					'fid'=>'username',
 					'fieldtitle'=>'Username',
+					'fieldtitle'=>'Create Username',
 					'required'=>true,
 					'editable'=>true,
+					'fieldicon'=>'person',
 				],
 				[
 					'type'=>'password',
-					'type'=>'text',
 					'fid'=>'password',
-					'fieldtitle'=>'Password',
+					'fieldtitle'=>'Create Password',
 					'required'=>true,
 					'editable'=>false,
+					'fieldicon'=>'key',
+				],
+				[
+					'type'=>'password',
+					'fid'=>'passwordrepeat',
+					'fieldtitle'=>'Confirm Password',
+					'required'=>true,
+					'editable'=>false,
+					'fieldicon'=>'key',
 				],
 			],
+			// // Define table checker fields (used for login). 
+			// 'checkerfields' => [
+			// 	[
+			// 		'type'=>'select',
+			// 		'fid'=>'userid',
+			// 		'fieldtitle'=>'Select User',
+			// 		'required'=>true,
+			// 		'easyusermode'=>true,
+			// 		'easypassmode'=>true,
+			// 	],
+			// 	[
+			// 		'type'=>'text',
+			// 		'fid'=>'username',
+			// 		'fieldtitle'=>'Username',
+			// 		'required'=>true,
+			// 		'fieldicon'=>'person',
+			// 		'fieldicon'=>'personbold',
+			// 		'easyusermode'=>false,
+			// 		'easypassmode'=>true,
+			// 	],
+			// 	[
+			// 		'type'=>'password',
+			// 		'fid'=>'password',
+			// 		'fieldtitle'=>'Password',
+			// 		'required'=>true,
+			// 		'fieldicon'=>'key',
+			// 		'fieldicon'=>'keybold',
+			// 		'easyusermode'=>true,
+			// 		'easypassmode'=>false,
+			// 	],
+			// ],
 
 			// Define basic database query. 
 			'basicquery' => 
@@ -239,10 +282,10 @@
 					'fid'=>'totalcomments',
 					'fieldtitle'=>'Comments',
 				],
-				[
-					'fid'=>'totalcommenters',
-					'fieldtitle'=>'People',
-				],
+				// [
+				// 	'fid'=>'totalcommenters',
+				// 	'fieldtitle'=>'People',
+				// ],
 			],
 			// Define table editor fields. 
 			'editorfields' => [
@@ -286,7 +329,6 @@
 			// Define table title. 
 			'tabletitle' => 'Comments',
 			// Define table navigation icon. 
-			'tablenavicon' => 'chatbubble',
 			'tablenavicon' => 'chatbubbletext',
 			// Define caption for single item. 
 			'singlecaption' => 'Comment',
@@ -355,12 +397,9 @@
 			// Define basic database query. 
 			'basicquery' => 
 			" SELECT 
-				c.id, c.commenttext, c.createdat,
-				c.issueid, i.issuetitle,
-				c.personid, p.personname
-			FROM (comments as c) 
-			LEFT JOIN (issues as i) ON (c.issueid = i.id)
-			LEFT JOIN (persons as p) ON (c.personid = p.id) ",
+				id, commenttext, createdat,
+				issueid, personid
+			FROM comments ",
 			// Define detailed database query. 
 			'detailquery' => 
 			" SELECT 
@@ -413,7 +452,7 @@
 					'fid'=>'gendername',
 					'fieldtitle'=>'Gender',
 					'required'=>true,
-					'editable'=>false,
+					'editable'=>true,
 				],
 				[
 					'type'=>'text',
@@ -550,10 +589,8 @@
 			// Define basic database query. 
 			'basicquery' => 
 			" SELECT 
-				s.id, s.createdat,
-				s.personid, p.personname
-			FROM (sessions as s) 
-			LEFT JOIN (persons as p) ON (s.personid = p.id) ",
+				id, createdat, personid
+			FROM (sessions as s) ",
 			// Define detailed database query. 
 			'detailquery' => 
 			" SELECT 
@@ -561,6 +598,103 @@
 				s.personid, p.personname
 			FROM (sessions as s) 
 			LEFT JOIN (persons as p) ON (s.personid = p.id) ",
+		],
+	// ];
+
+	// // Define metadata for various view tables. 
+	// $variousviewtables = [
+
+		'recentactivity' => [
+
+			// Define table display mode. 
+			'tabledisplay' => true,
+			// Define table title. 
+			'tabletitle' => 'Recent Activity',
+			// Define table navigation icon. 
+			'tablenavicon' => 'chatbubble',
+			// Define caption for single item. 
+			'singlecaption' => 'Comment',
+
+			// Define table entries. 
+			'entries' => [],
+			// Define reference tables. 
+			'reftableids' => [
+				'persons',
+				'issues',
+			],
+
+			// Define table display fields (from detailed query results). 
+			'displayfields' => [
+				// [
+				// 	'fid'=>'personname',
+				// 	'fieldtitle'=>'Person',
+				// ],
+				[
+					'fid'=>'issuetitle',
+					'fieldtitle'=>'Issue',
+				],
+				[
+					'fid'=>'commenttext',
+					'fieldtitle'=>'Comment',
+				],
+				[
+					'fid'=>'createdat',
+					'fieldtitle'=>'Created',
+				],
+			],
+			// Define table editor fields. 
+			'editorfields' => [
+				[
+					'type'=>'select',
+					'fid'=>'personid',
+					'fieldtitle'=>'Person',
+					'required'=>true,
+					'editable'=>false,
+					'capref'=>[
+						'tid'=>'persons',
+						'fid'=>'personname',
+					],
+				],
+				[
+					'type'=>'select',
+					'fid'=>'issueid',
+					'fieldtitle'=>'Issue',
+					'required'=>true,
+					'editable'=>false,
+					'editable'=>false,
+					'capref'=>[
+						'tid'=>'issues',
+						'fid'=>'issuetitle',
+					],
+				],
+				[
+					'type'=>'textarea',
+					'fid'=>'commenttext',
+					'fieldtitle'=>'Comment',
+					'required'=>true,
+					'editable'=>true,
+				],
+			],
+
+			// Define basic database query. 
+			'basicquery' => 
+			" SELECT 
+				id, commenttext, createdat,
+				issueid, personid
+			FROM comments
+			WHERE personid=",
+			// Define detailed database query. 
+			'detailquery' => 
+			" SELECT 
+				c.id, c.commenttext, c.createdat,
+				c.personid, p.personname,
+				c.issueid, i.issuetitle/* ,
+				count(cl.id) as numlikes */
+			FROM (comments as c) 
+			LEFT JOIN (issues as i) ON (c.issueid = i.id)
+			LEFT JOIN (persons as p) ON (c.personid = p.id) 
+			/* LEFT JOIN (commentlikes as cl) ON (cl.commentid = c.id) */
+			WHERE p.id=",
 		],
 	];
 ?>
