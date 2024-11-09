@@ -33,28 +33,6 @@
 		return $dbconnect;
 	}
 
-	// Print to page. 
-	function printToPage($text='') {
-		print "<span class=\"block\">$text</span>";
-	}
-
-	// Print query to page. 
-	function printQueryToPage($sql) {
-		?>
-		<!-- queryblock -->
-		<details class="queryblock">
-			<summary>Sending query...</summary>
-			<span class="querystring"><?php print $sql; ?></span>
-		</details>
-		<!-- /queryblock -->
-		<?php
-		
-		// return;
-		// printToPage("Sending query...");
-		// printToPage($sql);
-		// print "<span class=\"block\">$text</span>";
-	}
-
 	// Disconnect from server database. 
 	function closeDb($db) {
 
