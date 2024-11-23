@@ -7,11 +7,17 @@
 :root {
 
 	/* Theme Colors */
-	--lightgrey:#CCC;
+	--offwhite:#f0f0f0;
+	--offoffwhite:#e0e0e0;
+	--lightlightgrey:#d0d0d0;
+	--lightgrey:#b0b0b0;
+	--grey:#888;
+	--darkgrey:#555;
+	--lightlightblack:#333;
 	--lightblack:#222;
-	--offwhite:#f8f8f8;
-	--navcolor:white;
-	--navcolor:gainsboro;
+	--black:#111;
+	--green:#2ECC71;
+	--drkgreen:#27AE60;
 	
 	/* Gradient Colors */
 	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
@@ -22,21 +28,33 @@
 	--cornersize:.5rem;
 	
 	/* Box Shadows */
-	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
+	--boxshadow2:0 0 1rem 0 #0002;
 }
 
 body {
 
 	--backcolor:var(--lightgrey);
+	--backcolor2:var(--lightlightgrey);
+	--backcolor3:var(--offoffwhite);
+	--backcolor4:var(--offwhite);
+	--backcolor5:white;
+
 	--forecolor:black;
+	--linkcolor:var(--drkgreen);
 }
 
-/* body.dark {
+body.dark {
 
-	--backcolor:var(--lightblack);
-	--forecolor:white;
-} */
+	--backcolor:var(--grey);
+	--backcolor2:var(--darkgrey);
+	--backcolor3:var(--lightlightblack);
+	--backcolor4:var(--lightblack);
+	--backcolor5:var(--black);
+
+	--forecolor:var(--offwhite);
+	--linkcolor:var(--green);
+}
 
 
 
@@ -51,7 +69,7 @@ div#container {display:flex; flex-direction:column; /* justify-content:center; *
 
 
 /* General Section */
-div#container section {background-color:white; padding:.75rem; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container section {background-color:white; background-color:var(--backcolor2); padding:.75rem; padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container section {/* width:100%; */ max-width:var(--pagewidth);}
 /* div#container section {transform:translateY(-4rem);} */
 /* div#container section.gone {transform:none;} */
@@ -62,17 +80,26 @@ div#container section.float {position:fixed; top:45%; left:50%; transform:transl
 /* General Section: Head */
 div#container section div.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 div#container section div.head.f {justify-content:space-between;}
-div#container section div.head h2.head {font-size:1.375em; /* text-align:center; */ margin:0; margin:0 .25rem;}
+div#container section div.head h2.head {display:flex; flex-direction:row; align-items:center;}
+div#container section div.head h2.head {font-size:1.75em; /* text-align:center; */ white-space:nowrap; margin:0; margin:0 .25rem;}
+div#container section.float div.head h2.head {font-size:1.5em;}
+div#container section div.head h2.head a.selflink {display:flex; flex-direction:row; align-items:center;}
 div#container section div.head h2.head a.selflink {color:inherit; text-decoration:none;}
+div#container section div.head h2.head svg.icon {font-size:1.25em; margin-right:.25em;}
 /* div#container section div.head h2.head span.caption {} */
 div#container section div.head h2.head span.caption:empty {background-color:gainsboro; display:inline-block; height:1em; width:6em; border-radius:1em;}
-div#container section div.head button.btn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
-div#container section div.head button.btn svg.icon {font-size:1.25em;}
+div#container section div.head button.btn {display:flex; align-items:center; grid-gap:.25em; padding:.375em;}
+div#container section div.head button.btn {--btnspace:4rem;}
+div#container section div.head button.newbtn {margin-left:var(--btnspace);}
+div#container section div.head button.backbtn {margin-right:var(--btnspace);}
+/* div#container section div.head button.btn svg.icon {font-size:1.25em;} */
 div#container section div.head button.btn span.caption {display:none;}
 
 /* General Section: Data Form */
 div#container section form.crud {--fieldspacing:.5rem; margin:0;}
 div#container section form.crud div.action {margin-top:var(--fieldspacing);}
+/* div#container section form.crud div.action button.sendbtn {} */
+div#container section form.crud div.action button.sendbtn.bold {font-weight:bold;}
 div#container section form.crud ul.fieldlist {list-style:none; padding:0; margin:0;}
 div#container section form.crud ul.fieldlist li.field {margin-top:var(--fieldspacing);}
 div#container section form.crud ul.fieldlist li.field.x {display:none;}
@@ -83,18 +110,26 @@ div#container section form.crud div.action button.sendbtn {font-family:inherit; 
 
 /* General Section: Msg Center */
 div#container section div.msgcenter {display:flex; flex-direction:column; align-items:stretch; gap:.25rem; margin-bottom:.625rem;}
-div#container section div.msgcenter:empty {margin:0}
+/* div#container section div.msgcenter:empty,
+div#container section div.msgcenter.x {margin:0} */
 div#container section div.msgcenter div.msg {background-color:#0004; cursor:pointer; font-size:.75rem; text-align:center;}
 div#container section div.msgcenter div.msg {padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; /* margin-top:.375rem; */}
-div#container section div.msgcenter div.msg.g {background-color:#0f03; color:rgb(23, 83, 23);}
-div#container section div.msgcenter div.msg.r {background-color:#f003; color:rgb(96, 29, 29);}
+div#container section div.msgcenter div.msg.s {background-color:#0f03; color:rgb(23, 83, 23);}
+div#container section div.msgcenter div.msg.w {background-color:#fc03; color:rgb(92, 78, 26);}
+div#container section div.msgcenter div.msg.e {background-color:#f003; color:rgb(96, 29, 29);}
 div#container section div.msgcenter div.msg.gone {height:0; overflow:hidden; padding:0; margin:0;}
 div#container section div.msgcenter div.msg.gone {color:transparent; opacity:0; visibility:hidden; transition:.5s;}
 
 
 
+/* Welcome Section */
+div#container section.welcome {background-color:var(--backcolor2);}
+div#container section.welcome div.head {flex-direction:column;}
+/* div#container section.welcome div.head h2.head {} */
+div#container section.welcome div.head p.textcopy {margin:0;}
+
 /* Splash Section */
-div#container section.splash {background-color:gainsboro; display:grid; place-items:center; z-index:30;}
+div#container section.splash {background-color:var(--backcolor2); display:grid; place-items:center; z-index:30;}
 /* div#container section.splash div.head {} */
 div#container section.splash div.head h2.head {font-size:2.25em; white-space:nowrap;}
 div#container section.splash a.enterlink {display:block;}
@@ -114,6 +149,8 @@ div#container section.splash ul.usernavlist li.usernavitem a.usernavlink.pr {bac
 
 /* User Chooser Section: User Data Form */
 /* div#container section.user form.crud.user {} */
+/* div#container section.user form.crud.user div.action {} */
+div#container section.user form.crud.user div.action div.btnbox {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.25rem;}
 /* div#container section.user form.crud.user ul.fieldlist {} */
 div#container section.user form.crud.user ul.fieldlist li.field {position:relative;}
 div#container section.user form.crud.user ul.fieldlist li.field label.label {position:absolute; left:0; top:50%; transform:translateY(-50%);}
@@ -125,18 +162,29 @@ div#container section.user form.crud.user ul.fieldlist li.field input.fieldinput
 div#container section.user div.switcher {display:flex; flex-flow:row wrap; justify-content:center; grid-gap:0 .375em;}
 div#container section.user div.switcher {font-size:.875em; text-align:center; margin-top:.75rem;}
 div#container section.user div.switcher.c {flex-flow:column nowrap;}
+div#container section.user div.switcher a.link {color:var(--linkcolor); text-decoration:none;}
+div#container section.user div.switcher span.caption {}
 
 
 
 /* Navigation Table Section */
-/* div#container section.navtable {} */
+div#container section.navtable {padding:.5rem;}
+div#container section.navtable div.head {display:none;}
 div#container section.navtable ul.navlist {list-style:none; /* text-align:center; */ padding:0; margin:0;}
-div#container section.navtable ul.navlist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.125rem; margin-top:.25em;}
-div#container section.navtable ul.navlist li.navitem {margin-top:.75em;}
-div#container section.navtable ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
-div#container section.navtable ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; font-size:.875em;}
+div#container section.navtable ul.navlist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.25rem; /* margin-top:.25em; */}
+/* div#container section.navtable ul.navlist li.navitem {margin-top:.75em;} */
+div#container section.navtable ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; padding:.75em .25em; padding:.75em; border-radius:.375em;}
+div#container section.navtable ul.navlist li.navitem a.navlink {position:relative;}
+div#container section.navtable ul.navlist li.navitem a.navlink {color:inherit; font-size:.875em; text-decoration:none;}
+div#container section.navtable ul.navlist li.navitem a.navlink:hover {background-color:var(--backcolor3);}
+div#container section.navtable ul.navlist li.navitem a.navlink:active {background-color:var(--backcolor4);}
 div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-size:2.5em;}
-/* div#container section.navtable ul.navlist li.navitem a.navlink span.caption {} */
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption {background-color:var(--backcolor4); font-size:1.25em; white-space:nowrap; padding:.375em .75em; border-radius:.5em; margin-bottom:.5em;}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption {position:absolute; bottom:100%; left:50%; transform:translateX(-50%); z-index:50;}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption {visibility:hidden; opacity:0;}
+div#container section.navtable ul.navlist li.navitem a.navlink:hover span.caption {visibility:visible; opacity:1; transition:.25s;}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption::after {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption::after {border:solid .5em transparent; border-top-color:var(--backcolor4); content:'';}
 
 
 
@@ -164,6 +212,7 @@ div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-si
 	/* div#container section {} */
 	/* div#container section div.head {} */
 	div#container section div.head h2.head {font-size:1.25em;}
+	div#container section div.head button.btn {--btnspace:2rem;}
 }
 
 /* Small Smartphone Screen */

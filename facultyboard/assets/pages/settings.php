@@ -7,32 +7,10 @@
 	
 	<body>
 
+		<?php include('./assets/module/message.php'); ?>
+
 		<!-- settings -->
 		<section class="settings">
-
-			<!-- msgcenter -->
-			<div class="msgcenter">
-
-				<?php $errormsg = ''; ?>
-				<?php if( $errormsg ): ?>
-
-					<!-- msg -->
-					<div class="msg r"><?php print $errormsg; ?></div>
-					<!-- /msg -->
-
-				<?php endif; ?> 
-
-				<?php $successmsg = ''; ?>
-				<?php if($successmsg): ?>
-
-					<!-- msg -->
-					<div class="msg g"><?php print $successmsg; ?></div>
-					<!-- /msg -->
-
-				<?php endif; ?>
-
-			</div>
-			<!-- /msgcenter -->
 
 			<!-- head -->
 			<div class="head">

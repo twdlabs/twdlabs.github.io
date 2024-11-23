@@ -7,32 +7,122 @@
 	
 	<body>
 
+		<?php
+
+			// Check if entry selected for details. 
+			$gotentryselection = isset( $_GET['eid'] );
+			// Proceed if entry selected for details. 
+			if( $gotentryselection ) {
+
+				// Get id of selected entry. 
+				$tableid = $selectedviewid;
+				$entryid = $_GET['eid'];
+
+				// Check if valid entry selected. 
+				foreach( $databasetables[$tableid]['entrydata'] as $tablerow ) {
+
+					// Check if entry found. 
+					$entryfound = ( $tablerow['id'] == $entryid );
+
+					// 
+					if($entryfound) $selectedentry = $tablerow;
+				}
+			}
+
+			// Proceed if entry selected for details. 
+			if( false ) {
+
+				// Get id of selected entry. 
+				$tableid = cleanInputForQuerySimple( $selectedviewid );
+				$entryid = cleanInputForQuery( $_GET['eid'] );
+
+				// Check if valid entry selected. 
+				// $querybase = $databasetables[$tableid]['detaildataquery'];
+				// $sql = " $querybase WHERE (p.id=$entryid) ";
+				$sql = " SELECT * FROM $tableid WHERE (id=$entryid) ";
+
+				// Send database query. 
+				$entryqueryresults = sendDatabaseQuery($sql,1)['queryresults'];
+				$gotsomeentrydetails = isset( $entryqueryresults[0] );
+			}
+		?>
+
+		<?php include('./assets/module/message.php'); ?>
+
+		<?php if( isset( $selectedentry ) ): ?>
+
+			<!-- detailtable -->
+			<section class="detailtable">
+
+				<!-- detaillist -->
+				<ul class="detaillist">
+
+					<!-- <?php foreach( $entryqueryresults as $tablerow ): ?> -->
+					<!-- <?php endforeach; ?> -->
+
+					<?php /* foreach( $selectedtable['entrydata'] as $tablerow ): */ ?>
+
+						<!-- detailitem -->
+						<li class="detailitem">
+
+							<!-- detailcard -->
+							<div class="detailcard">
+
+								<!-- <?php print json_encode($selectedentry); ?> -->
+
+								<?php foreach($displayfields as $field): ?>
+
+									<?php 
+										// Get field id (from detailed query results). 
+										$fid = $field['fid'];
+										// Get field type. 
+										$fieldtype = $field['fieldtype'] ?? 'text';
+									?>
+
+									<?php if( $fieldtype=='image' ): ?>
+
+										<!-- picture -->
+										<img class="picture" src="./assets/image/<?php print $selectedentry[$fid]; ?>">
+										<!-- /picture -->
+
+									<?php else: ?>
+
+										<!-- field -->
+										<div class="field">
+
+											<!-- key -->
+											<span class="key"><?php print $field['fieldtitle'] ?></span>
+											<!-- /key -->
+
+											<!-- caption -->
+											<span class="caption"><?php print $selectedentry[$fid]; ?></span>
+											<!-- /caption -->
+
+										</div>
+										<!-- /field -->
+
+									<?php endif; ?>
+
+								<?php endforeach; ?>
+
+							</div>
+							<!-- /detailcard -->
+
+						</li>
+						<!-- /detailitem -->
+
+					<?php /* endforeach; */ ?>
+
+				</ul>
+				<!-- /detaillist -->
+
+			</section>
+			<!-- /detailtable -->
+
+		<?php endif; ?>
+
 		<!-- datatable -->
 		<section class="datatable">
-
-			<!-- msgcenter -->
-			<div class="msgcenter">
-
-				<?php $errormsg = ''; ?>
-				<?php if( $errormsg ): ?>
-
-					<!-- msg -->
-					<div class="msg r"><?php print $errormsg; ?></div>
-					<!-- /msg -->
-
-				<?php endif; ?> 
-
-				<?php $successmsg = ''; ?>
-				<?php if($successmsg): ?>
-
-					<!-- msg -->
-					<div class="msg g"><?php print $successmsg; ?></div>
-					<!-- /msg -->
-
-				<?php endif; ?>
-
-			</div>
-			<!-- /msgcenter -->
 
 			<!-- head -->
 			<div class="head f">
@@ -58,6 +148,12 @@
 
 					<!-- selflink -->
 					<a class="selflink" href="<?php print $selfurl; ?>">
+
+						<!-- icon -->
+						<svg class="icon <?php print $tableicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<?php print $databasetablesicons[ $tableicontag ]; ?>
+						</svg>
+						<!-- /icon -->
 
 						<!-- caption -->
 						<span class="caption"><?php print $tabletitle; ?></span>
@@ -102,15 +198,19 @@
 
 							<?php foreach($displayfields as $field): ?>
 
-								<!-- cell -->
-								<th class="cell">
+								<?php if(  isset( $field['tablevisible'] ) && $field['tablevisible']  ): ?>
 
-									<!-- caption -->
-									<span class="caption"><?php print $field['fieldtitle']; ?></span>
-									<!-- /caption -->
-									
-								</th>
-								<!-- /cell -->
+									<!-- cell -->
+									<th class="cell">
+
+										<!-- caption -->
+										<span class="caption"><?php print $field['fieldtitle']; ?></span>
+										<!-- /caption -->
+										
+									</th>
+									<!-- /cell -->
+
+								<?php endif; ?>
 
 							<?php endforeach; ?>
 
@@ -120,7 +220,7 @@
 								<th class="cell">
 
 									<!-- caption -->
-									<span class="caption">Edit</span>
+									<span class="caption">Admin</span>
 									<!-- /caption -->
 									
 								</th>
@@ -137,7 +237,7 @@
 					<!-- body -->
 					<tbody class="body">
 
-						<?php if( sizeof($selectedtable['entries']) == 0 ): ?>
+						<?php if( empty( $selectedtable['entrydata'] ) ): ?>
 
 							<!-- row -->
 							<tr class="row">
@@ -146,7 +246,7 @@
 								<td class="cell c" colspan="<?php print sizeof($displayfields)+1; ?>">
 
 									<!-- caption -->
-									<span class="caption">There's nothing to show here</span>
+									<span class="caption">Nothing to show here</span>
 									<!-- /caption -->
 
 								</td>
@@ -157,55 +257,60 @@
 
 						<?php else: ?>
 
-							<?php foreach( $selectedtable['entries'] as $tablerow ): ?>
+							<?php foreach( $selectedtable['entrydata'] as $tablerow ): ?>
 
 								<!-- <?php print json_encode($tablerow); ?> -->
 
 								<!-- row -->
-								<tr class="row">
+								<tr class="row" onclick="window.location='./';">
 
 									<?php foreach($displayfields as $field): ?>
 
 										<?php 
+
 											// Get field id (from detailed query results). 
 											$fid = $field['fid'];
-											// Get field value. 
-											$value = $tablerow[$fid];
 											// Get field type. 
-											$fieldtype = isset($field['fieldtype']) ? $field['fieldtype'] : 'text';
+											$fieldtype = $field['fieldtype'] ?? 'text';
 										?>
 
-										<!-- cell -->
-										<td class="cell">
-											<!-- <?php print json_encode($fieldtype); ?> -->
-											<!-- <?php print json_encode($tablerow); ?> -->
+										<?php if(  isset( $field['tablevisible'] ) && $field['tablevisible']  ): ?>
 
-											<?php if($fieldtype=='image'): ?>
+											<!-- cell -->
+											<td class="cell">
 
-												<!-- picture -->
-												<img class="picture" src="./assets/image/<?php print $value ?>">
-												<!-- /picture -->
+												<!-- <?php print json_encode($fieldtype); ?> -->
 
-											<?php else: ?>
+												<?php if($fieldtype=='image'): ?>
 
-												<!-- caption -->
-												<span class="caption"><?php print $value ?></span>
-												<!-- /caption -->
+													<!-- picture -->
+													<img class="picture" src="./assets/image/<?php print $tablerow[$fid]; ?>">
+													<!-- /picture -->
 
-											<?php endif; ?>
-											
-										</td>
-										<!-- /cell -->
+												<?php else: ?>
+
+													<!-- caption -->
+													<span class="caption"><?php print $tablerow[$fid]; ?></span>
+													<!-- /caption -->
+
+												<?php endif; ?>
+												
+											</td>
+											<!-- /cell -->
+
+										<?php endif; ?>
 
 									<?php endforeach; ?>
 
 									<?php if( $iscurrentuseradmin ): ?>
 
+										<?php $entryid = $tablerow['id']; ?>
+
 										<!-- cell -->
 										<td class="cell">
 
 											<!-- editbtn -->
-											<button class="editbtn btn" onclick="toggleEntryEditor(this)" data-entryid="<?php print $tablerow['id']; ?>">
+											<button class="editbtn btn" onclick="toggleEntryEditor(this)" title="<?php print $entryid; ?>" data-entryid="<?php print $entryid; ?>">
 
 												<!-- icon -->
 												<svg class="icon penpad" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -221,7 +326,7 @@
 											</button>
 											<!-- /editbtn -->
 
-											<section class="editor float" id="id<?php print $tablerow['id']; ?>">
+											<section class="editor float" id="id<?php print $entryid; ?>">
 
 												<!-- head -->
 												<div class="head f">
@@ -269,24 +374,24 @@
 													<ul class="fieldlist">
 
 														<?php foreach($editorfields as $field): ?>
+
 															<?php /* if( ! $field['editable'] ) continue; */ ?>
 
-															<!-- Define field attributes -->
-															<?php $fieldattr = ( $field['required'] ? ' required' : '') . ( $field['editable'] ? '' : ' disabled' ); ?>
+															<?php 
+																// Get field id. 
+																$fid = $field['fid'];
+																// Get field type. 
+																$fieldtype = $field['type'];
+																// Get field value. 
+																$fieldvalue = $tablerow[$fid] ?? '';
+																// Define field attributes. 
+																$fieldattr = ( $field['required'] ? ' required' : '') . ( $field['editable'] ? '' : ' disabled' );
+															?>
 
 															<!-- field -->
 															<li class="field">
 
-																<?php 
-																	// Get field id. 
-																	$fid = $field['fid'];
-																	// Get field type. 
-																	$ftype = $field['type'];
-																	// Get field value. 
-																	$fieldvalue = $tablerow[$fid] ?? '';
-																?>
-
-																<?php if($ftype=='select'): ?>
+																<?php if($fieldtype=='select'): ?>
 
 																	<?php 
 																		// Get id of caption reference table. 
@@ -302,7 +407,7 @@
 																		<option value="">Select <?php print $databasetables[$rtid]['singlecaption']; ?></option>
 																		<!-- option -->
 
-																		<?php foreach($databasetables[$rtid]['entries'] as $rtablerow): ?>
+																		<?php foreach($databasetables[$rtid]['entrydata'] as $rtablerow): ?>
 
 																			<?php $selected = false; ?>
 																			<?php $selected = ( $rtablerow['id'] == $tablerow[$fid] ); ?>
@@ -324,7 +429,7 @@
 																		$fieldtitle = $field['fieldtitle'];
 																	?>
 
-																	<?php if($ftype=='textarea'): ?>
+																	<?php if($fieldtype=='textarea'): ?>
 																		
 																		<!-- fieldinput -->
 																		<textarea class="fieldinput" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" <?php print $fieldattr; ?>><?php print $fieldvalue; ?></textarea>
@@ -333,7 +438,7 @@
 																	<?php else: ?>
 
 																		<!-- fieldinput -->
-																		<input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="<?php print $fieldvalue; ?>" <?php print $fieldattr; ?>>
+																		<input class="fieldinput" type="<?php print $fieldtype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="<?php print $fieldvalue; ?>" <?php print $fieldattr; ?>>
 																		<!-- /fieldinput -->
 
 																	<?php endif; ?>
@@ -408,7 +513,7 @@
 							<?php endforeach; ?>
 
 						<?php endif; ?>
-						
+
 					</tbody>
 					<!-- /body -->
 
@@ -472,20 +577,19 @@
 
 						<?php foreach($editorfields as $field): ?>
 
-							<!-- Define field attributes -->
-							<?php $fieldattr = $field['required']?' required':''; ?>
+							<?php 
+								// Get field id. 
+								$fid = $field['fid'];
+								// Get field type. 
+								$fieldtype = $field['type'];
+								// Define field attributes. 
+								$fieldattr = $field['required']?' required':'';
+							?>
 
 							<!-- field -->
 							<li class="field">
 
-								<?php 
-									// Get field id. 
-									$fid = $field['fid'];
-									// Get field type. 
-									$ftype = $field['type'];
-								?>
-
-								<?php if($ftype=='select'): ?>
+								<?php if($fieldtype=='select'): ?>
 
 									<?php
 										// Get id of caption reference table. 
@@ -496,13 +600,13 @@
 
 									<!-- fieldinput -->
 									<select class="fieldinput" name="<?php print $fid; ?>" <?php print $fieldattr; ?>>
-										<?php print json_encode( $databasetables[$rtid]['entries'] );?>
+										<?php print json_encode( $databasetables[$rtid]['entrydata'] );?>
 
 										<!-- option -->
 										<option value="">Select <?php print $databasetables[$rtid]['singlecaption']; ?></option>
 										<!-- option -->
 
-										<?php foreach($databasetables[$rtid]['entries'] as $rtablerow): ?>
+										<?php foreach($databasetables[$rtid]['entrydata'] as $rtablerow): ?>
 
 											<!-- option -->
 											<option value="<?php print $rtablerow['id']; ?>"><?php print $rtablerow[$ptfid]; ?></option>
@@ -520,7 +624,7 @@
 										$fieldtitle = $field['fieldtitle'];
 									?>
 
-									<?php if($ftype=='textarea'): ?>
+									<?php if($fieldtype=='textarea'): ?>
 										
 										<!-- fieldinput -->
 										<textarea class="fieldinput" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" <?php print $fieldattr; ?>></textarea>
@@ -529,7 +633,7 @@
 									<?php else: ?>
 
 										<!-- fieldinput -->
-										<input class="fieldinput" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $fieldattr; ?>>
+										<input class="fieldinput" type="<?php print $fieldtype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $fieldattr; ?>>
 										<!-- /fieldinput -->
 
 									<?php endif; ?>

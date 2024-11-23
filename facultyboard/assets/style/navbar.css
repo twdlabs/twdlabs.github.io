@@ -3,10 +3,10 @@
 
 
 /* Navbar */
-div#container nav.navbar {top:0; right:0; left:0; width:100%; z-index:40; box-shadow:var(--boxshadow);}
+div#container nav.navbar {top:0; right:0; left:0; width:100%; z-index:40; box-shadow:var(--boxshadow2);}
 div#container nav.navbar {position:fixed;} /* Bad for long (high content) pages */
 div#container nav.navbar {position:sticky;} /* Bad for short (low content) pages */
-div#container nav.navbar {background-color:var(--navcolor); /* min-height:4rem; */ border-radius:.25em;}
+div#container nav.navbar {background-color:var(--backcolor2); /* min-height:4rem; */ border-radius:.25em;}
 div#container nav.navbar div.bin {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 div#container nav.navbar div.bin {position:relative; max-width:var(--pagewidth); padding:.5rem 2rem; margin:0 auto;}
 div#container nav.navbar div.bin a.btn {color:inherit; text-decoration:none; padding:.25em;}
@@ -15,35 +15,43 @@ div#container nav.navbar div.bin a.homebtn h1.head {font-size:1.625em; transitio
 div#container nav.navbar div.bin a.homebtn h1.head {display:flex; flex-direction:row; align-items:center; margin:0;}
 /* div#container nav.navbar div.bin a.homebtn h1.head svg.icon {} */
 div#container nav.navbar div.bin a.homebtn h1.head span.caption {white-space:nowrap; margin-left:.5rem;}
-div#container nav.navbar div.bin a.togglebtn {/* display:none; */ z-index:1;}
-/* div#container nav.navbar div.bin a.togglebtn.tm {} */
+div#container nav.navbar div.bin a.togglebtn {z-index:1;}
+/* div#container nav.navbar div.bin a.togglebtn.tm {display:none;} */
 /* div#container nav.navbar div.bin a.togglebtn.um {} */
 div#container nav.navbar div.bin a.togglebtn svg.icon {display:block; font-size:1.625rem;}
 div#container nav.navbar div.bin a.togglebtn.um svg.icon {font-size:2.5rem;}
-div#container nav.navbar div.bin a.togglebtn.um img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;}
+div#container nav.navbar div.bin a.togglebtn.um img.avatar {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;}
 
 /* Navbar Menu */
-div#container nav.navbar div.bin div.navmenu {position:absolute; top:100%; user-select:none;}
-div#container nav.navbar div.bin div.navmenu {background-color:var(--navcolor); padding:.5em; border-radius:/* 0 0 .25em  */.25em; margin:.5em; box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin div.navmenu {position:absolute; top:100%; user-select:none; --edgespace:.75em/* 1rem */;}
+div#container nav.navbar div.bin div.navmenu {background-color:var(--backcolor2); padding:.125em; border-radius:/* 0 0 .25em  */.25em; margin:1.25em var(--edgespace); box-shadow:var(--boxshadow);}
+div#container nav.navbar div.bin div.navmenu::after {color:transparent; display:block; content:''; --size:1rem; border:var(--size) solid; border-bottom-color:var(--backcolor2);}
+div#container nav.navbar div.bin div.navmenu::after {position:absolute; bottom:100%; /* height:var(--size); width:var(--size); */}
+div#container nav.navbar div.bin div.navmenu.usermenu::after {right:calc( 2.5rem - var(--edgespace) );}
+div#container nav.navbar div.bin div.navmenu.tablemenu::after {left:calc( 2rem - var(--edgespace) );}
 /* div#container nav.navbar div.bin div.navmenu div.btwn {height:1.5em; opacity:.125; border:.25px solid; margin:0 .25em;} */
+div#container nav.navbar div.bin div.navmenu ul.navlist {background-color:var(--backcolor3); border-radius:.125em;}
 div#container nav.navbar div.bin div.navmenu ul.navlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
 div#container nav.navbar div.bin div.navmenu ul.navlist {flex-direction:column; align-items:stretch;}
 /* div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem {} */
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem.x {display:none;}
-div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; color:inherit; text-decoration:none; padding:.5em;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; padding:.625em .75em;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none; transition:.125s;}
+div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink:hover {background-color:var(--backcolor4); color:var(--forecolor);}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg.icon {display:block;}
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {/* display:none; */ font-size:.75em;}
 /* Navbar User Menu */
 /* div#container nav.navbar div.bin div.navmenu.usermenu {} */
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile {margin-bottom:.875rem;}
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile {padding:.875em .75em;}
 div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy {font-size:.875rem; padding:0 .25rem; margin:0; margin-top:.25em;}
 div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name {font-weight:bold;}
+div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name::after {content:':';}
 /* div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.value {font-style:italic;} */
 /* Navbar Table Menu */
 /* div#container nav.navbar div.bin div.navmenu.tablemenu {} */
 div#container nav.navbar div.bin div.navmenu/* .tablemenu */ {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
 div#container nav.navbar div.bin div.navmenu {flex-direction:column; align-items:stretch;}
-/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist li.navitem a.navlink img.profilepic {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;} */
+/* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist li.navitem a.navlink img.avatar {display:block; --size:2.5rem; height:var(--size); width:var(--size); border-radius:50%; border:.125rem solid;} */
 /* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.user {} */
 /* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.tables {} */
 /* div#container nav.navbar div.bin div.navmenu.tablemenu ul.navlist.user li.navitem a.navlink span.caption {display:none;} */

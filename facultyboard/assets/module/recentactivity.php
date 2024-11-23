@@ -16,9 +16,15 @@
 				<!-- head -->
 				<h2 class="head">
 
-					<!-- caption -->
-					<span class="caption">Recent Activity</span>
-					<!-- /caption -->
+					<!-- selflink -->
+					<a class="selflink" href="<?php print $selfurl; ?>">
+
+						<!-- caption -->
+						<span class="caption">Recent Activity</span>
+						<!-- /caption -->
+						
+					</a>
+					<!-- /selflink -->
 
 				</h2>
 				<!-- /head -->
@@ -71,7 +77,7 @@
 					<!-- body -->
 					<tbody class="body">
 
-						<?php if( sizeof($selectedtable['entries']) == 0 ): ?>
+						<?php if( empty( $selectedtable['entrydata'] ) ): ?>
 
 							<!-- row -->
 							<tr class="row">
@@ -80,7 +86,7 @@
 								<td class="cell c" colspan="<?php print sizeof($displayfields)+1; ?>">
 
 									<!-- caption -->
-									<span class="caption">There's nothing to show here</span>
+									<span class="caption">Nothing to show here</span>
 									<!-- /caption -->
 
 								</td>
@@ -91,7 +97,7 @@
 
 						<?php else: ?>
 
-							<?php foreach( $selectedtable['entries'] as $tablerow ): ?>
+							<?php foreach( $selectedtable['entrydata'] as $tablerow ): ?>
 
 								<!-- <?php print json_encode($tablerow); ?> -->
 
@@ -106,7 +112,7 @@
 											// Get field value. 
 											$value = $tablerow[$fid];
 											// Get field type. 
-											$fieldtype = isset($field['fieldtype']) ? $field['fieldtype'] : 'text';
+											$fieldtype = $field['fieldtype'] ?? 'text';
 										?>
 
 										<!-- cell -->
@@ -234,7 +240,7 @@
 																	<option value="">Select <?php print $databasetables[$rtid]['singlecaption']; ?></option>
 																	<!-- option -->
 
-																	<?php foreach($databasetables[$rtid]['entries'] as $rtablerow): ?>
+																	<?php foreach($databasetables[$rtid]['entrydata'] as $rtablerow): ?>
 
 																		<?php $selected = false; ?>
 																		<?php $selected = ( $rtablerow['id'] == $tablerow[$fid] ); ?>
@@ -338,7 +344,7 @@
 							<?php endforeach; ?>
 
 						<?php endif; ?>
-						
+
 					</tbody>
 					<!-- /body -->
 

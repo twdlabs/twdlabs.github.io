@@ -7,39 +7,7 @@
 	
 	<body>
 
-		<?php $errormsg = ''; ?>
-		<?php $successmsg = ''; ?>
-		<?php if( $errormsg  || $successmsg ): ?>
-
-			<!-- xyz -->
-			<section class="xyz">
-
-				<!-- msgcenter -->
-				<div class="msgcenter" style="margin:0;">
-
-					<?php if( $errormsg ): ?>
-
-						<!-- msg -->
-						<div class="msg r"><?php print $errormsg; ?></div>
-						<!-- /msg -->
-
-					<?php endif; ?> 
-
-					<?php if($successmsg): ?>
-
-						<!-- msg -->
-						<div class="msg g"><?php print $successmsg; ?></div>
-						<!-- /msg -->
-
-					<?php endif; ?>
-
-				</div>
-				<!-- /msgcenter -->
-
-			</section>
-			<!-- /xyz -->
-
-		<?php endif; ?>
+		<?php include('./assets/module/message.php'); ?>
 
 		<!-- socialfeed -->
 		<section class="socialfeed">
@@ -66,14 +34,14 @@
 			</div>
 			<!-- /head -->
 
-			<?php foreach($databasetables['issues']['entries'] as $issuerow): ?>
+			<?php foreach($databasetables['issues']['entrydata'] as $issuerow): ?>
 
 				<!-- <?php print json_encode($issuerow); ?> -->
 
-				<?php $issueid = $issuerow['id']; ?>
-				<?php $title = $issuerow['issuetitle']; ?>
-				<?php $description = $issuerow['issuedescription']; ?>
-				<?php $totalcomments = $issuerow['totalcomments']; ?>
+				<?php $currentissueid = $issuerow['id']; ?>
+				<?php $currentissuetitle = $issuerow['issuetitle']; ?>
+				<?php $currentissuedescription = $issuerow['issuedescription']; ?>
+				<?php $currentissuetotalcomments = $issuerow['totalcomments']; ?>
 
 				<!-- issue -->
 				<article class="issue">
@@ -82,41 +50,41 @@
 					<h3 class="title">
 
 						<!-- caption -->
-						<span class="caption"><?php print $title; ?></span>
+						<span class="caption"><?php print $currentissuetitle; ?></span>
 						<!-- /caption -->
 
 						<!-- number -->
-						<span class="number"><?php print $totalcomments; ?></span>
+						<span class="number"><?php print $currentissuetotalcomments; ?></span>
 						<!-- /number -->
 
 					</h3>
 					<!-- /title -->
 
 					<!-- description -->
-					<p class="description"><?php print $description; ?></p>
+					<p class="description"><?php print $currentissuedescription; ?></p>
 					<!-- /description -->
 
 					<!-- commentlist -->
 					<ul class="commentlist">
 
-						<?php foreach($databasetables['comments']['entries'] as $commentrow): ?>
+						<?php foreach($databasetables['comments']['entrydata'] as $commentrow): ?>
 
 							<!-- <?php print json_encode($commentrow); ?> -->
 
-							<?php $name = $commentrow['personname']; ?>
-							<?php $comment = $commentrow['commenttext']; ?>
+							<?php $commenttext = $commentrow['commenttext']; ?>
+							<?php $commentername = $commentrow['personname']; ?>
 
-							<?php if( $commentrow['issueid']==$issueid ): ?>
+							<?php if( $commentrow['issueid']==$currentissueid ): ?>
 
 								<!-- commentitem -->
 								<li class="commentitem">
 
 									<!-- name -->
-									<span class="name"><?php print $name; ?>:</span>
+									<span class="name"><?php print $commentername; ?>:</span>
 									<!-- /name -->
 
 									<!-- comment -->
-									<span class="comment"><?php print $comment; ?></span>
+									<span class="comment"><?php print $commenttext; ?></span>
 									<!-- /comment -->
 
 								</li>
@@ -139,7 +107,7 @@
 
 						<!-- parameter -->
 						<input class="parameter" type="hidden" name="personid" value="<?php print $currentuserid; ?>">
-						<input class="parameter" type="hidden" name="issueid" value="<?php print $issueid; ?>">
+						<input class="parameter" type="hidden" name="issueid" value="<?php print $currentissueid; ?>">
 						<!-- /parameter -->
 
 						<!-- fieldinput -->

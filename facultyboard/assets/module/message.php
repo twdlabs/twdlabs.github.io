@@ -7,31 +7,43 @@
 	
 	<body>
 
-		<?php if( $selectedviewid=='login' ): ?>
+		<?php $justloggedout = $currentuserprofile && isset( $_GET['logout'] ); ?>
 
-			<!-- welcome -->
-			<section class="welcome">
+		<?php $errormsg = ''; ?>
+		<?php $errormsg = ( $isloginreceived && !$newsuccessfullogin ) ? 'Invalid credentials<br>Please try again' : ''; ?>
+		<?php $successmsg = ''; ?>
+		<?php $successmsg = $justloggedout ? 'Logout successful' : ''; ?>
+		<?php $gotmsg = $successmsg || $errormsg; ?>
 
-				<!-- head -->
-				<div class="head">
+		<?php if( $gotmsg ): ?>
 
-					<!-- head -->
-					<h2 class="head">
+			<!-- xyz -->
+			<section class="xyz">
 
-						<?php $name = $currentuserdata['personname'] ?? ''; ?>
+				<!-- msgcenter -->
+				<div class="msgcenter">
 
-						<!-- caption -->
-						<span class="caption">Welcome <?php print $name; ?>!</span>
-						<!-- /caption -->
+					<?php if( $errormsg ): ?>
 
-					</h2>
-					<!-- /head -->
+						<!-- msg -->
+						<div class="msg e"><?php print $errormsg; ?></div>
+						<!-- /msg -->
+
+					<?php endif; ?>
+
+					<?php if($successmsg): ?>
+
+						<!-- msg -->
+						<div class="msg s"><?php print $successmsg; ?></div>
+						<!-- /msg -->
+
+					<?php endif; ?>
 
 				</div>
-				<!-- /head -->
+				<!-- /msgcenter -->
 
 			</section>
-			<!-- /welcome -->
+			<!-- /xyz -->
 
 		<?php endif; ?>
 

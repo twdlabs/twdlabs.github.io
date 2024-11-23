@@ -14,7 +14,7 @@
 			<!-- bin -->
 			<div class="bin">
 
-				<?php if( true || $currentuserdata ): ?>
+				<?php if( $currentuserprofile ): ?>
 
 					<!-- togglebtn -->
 					<a class="tm togglebtn btn" href="javascript:void(0)" title="Toggle table menu">
@@ -31,7 +31,8 @@
 				<?php endif; ?>
 
 				<!-- homebtn -->
-				<a class="homebtn btn" href="./" title="Home">
+				<!-- <a class="homebtn btn" href="./" title="Home"> -->
+				<a class="homebtn btn" href="javascript:void(0)" title="Home" onclick="document.querySelector('div.queryarena').classList.toggle('open')">
 
 					<!-- head -->
 					<h1 class="head">
@@ -55,19 +56,11 @@
 				<!-- togglebtn -->
 				<a class="um togglebtn btn" href="javascript:void(0)" title="Toggle user menu">
 
-					<?php if($currentuserdata && isset($currentuserdata['genderid']) ): ?>
+					<?php if( $currentuserprofile && isset($currentuserprofile['avatarfilename']) ): ?>
 
-						<?php
-							$gid = $currentuserdata['genderid'];
-							$filename = [
-								'1'=>'avatar-m.png',
-								'2'=>'avatar-f.png',
-							][$gid];
-						?>
-
-						<!-- profilepic -->
-						<img class="profilepic" src="./assets/image/<?php print $filename; ?>" alt="">
-						<!-- /profilepic -->
+						<!-- avatar -->
+						<img class="avatar" src="./assets/image/<?php print $currentuserprofile['avatarfilename']; ?>" alt="">
+						<!-- /avatar -->
 
 					<?php else: ?>
 
@@ -87,7 +80,7 @@
 				</a>
 				<!-- /togglebtn -->
 
-				<?php if( /* true || */ $currentuserdata ): ?>
+				<?php if( $currentuserprofile ): ?>
 
 					<!-- tablemenu -->
 					<div class="tablemenu navmenu">
@@ -101,10 +94,32 @@
 						<!-- navlist -->
 						<ul class="navlist tables">
 
+							<!-- navitem -->
+							<li class="navitem">
+
+								<!-- navlink -->
+								<a class="navlink" href="./?view=home" title="Home">
+
+									<!-- icon -->
+									<svg class="icon house" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<?php print $databasetablesicons['house']; ?>
+									</svg>
+									<!-- /icon -->
+
+									<!-- caption -->
+									<span class="caption">Home</span>
+									<!-- /caption -->
+
+								</a>
+								<!-- /navlink -->
+
+							</li>
+							<!-- /navitem -->
+
 							<?php foreach($databasetables as $tid=>$table): ?>
 
 								<?php
-									if(!$table['tabledisplay']) continue;
+									if(!$table['tablevisible']) continue;
 									$title = $table['tabletitle'];
 									$icontag = $table['tablenavicon'];
 								?>
@@ -113,7 +128,7 @@
 								<li class="navitem">
 
 									<!-- navlink -->
-									<a class="navlink" href="?view=<?php print $tid; ?>" title="<?php print $title; ?>">
+									<a class="navlink" href="./?view=<?php print $tid; ?>" title="<?php print $title; ?>">
 
 										<!-- icon -->
 										<svg class="icon <?php print $icontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -144,31 +159,22 @@
 				<!-- usermenu -->
 				<div class="usermenu navmenu">
 
-					<?php if($currentuserdata): ?>
+					<?php if( $currentuserprofile ): ?>
 
 						<!-- profile -->
 						<div class="profile">
 
-							<?php
-
-								// Display current user data. 
-								// print json_encode($currentuserdata);
-
-								// Get name of current user. 
-								$name = $currentuserdata['personname'] ?? '[none]';
-								// Get username of current user. 
-								$username = $currentuserdata['username'] ?? '[none]';
-							?>
+							<!-- <?php print json_encode($currentuserprofile); ?> -->
 
 							<!-- textcopy -->
 							<p class="textcopy">
 
 								<!-- name -->
-								<span class="name">Name:</span>
+								<span class="name">ID</span>
 								<!-- /name -->
 
 								<!-- value -->
-								<span class="value"><?php print $name; ?></span>
+								<span class="value"><?php print $currentuserprofile['id'] ?? '[none]'; ?></span>
 								<!-- /value -->
 
 							</p>
@@ -178,11 +184,53 @@
 							<p class="textcopy">
 
 								<!-- name -->
-								<span class="name">E-mail:</span>
+								<span class="name">Name</span>
 								<!-- /name -->
 
 								<!-- value -->
-								<span class="value"><?php print $username; ?>@twdlabs.io</span>
+								<span class="value"><?php print $currentuserprofile['personname'] ?? '[none]'; ?></span>
+								<!-- /value -->
+
+							</p>
+							<!-- /textcopy -->
+
+							<!-- textcopy -->
+							<p class="textcopy">
+
+								<!-- name -->
+								<span class="name">E-mail</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['username'] ?? '[none]'; ?>@twdlabs.io</span>
+								<!-- /value -->
+
+							</p>
+							<!-- /textcopy -->
+
+							<!-- textcopy -->
+							<p class="textcopy">
+
+								<!-- name -->
+								<span class="name">Position</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['position'] ?? '[none]'; ?></span>
+								<!-- /value -->
+
+							</p>
+							<!-- /textcopy -->
+
+							<!-- textcopy -->
+							<p class="textcopy">
+
+								<!-- name -->
+								<span class="name">Last Login</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['lastlogin'] ?? '[none]'; ?></span>
 								<!-- /value -->
 
 							</p>
@@ -196,13 +244,13 @@
 					<!-- navlist -->
 					<ul class="navlist user">
 
-						<?php if($currentuserdata): ?>
+						<?php if( $currentuserprofile ): ?>
 
 							<!-- navitem -->
 							<li class="navitem">
 
 								<!-- navlink -->
-								<a class="navlink" href="?view=settings" title="Settings">
+								<a class="navlink" href="./?view=settings" title="Settings">
 
 									<!-- icon -->
 									<svg class="icon gear" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -250,7 +298,7 @@
 							<li class="navitem">
 
 								<!-- navlink -->
-								<a class="navlink" href="?view=login" title="Sign in">
+								<a class="navlink" href="./?view=login" title="Sign in">
 
 									<!-- icon -->
 									<svg class="icon arrowin" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -273,7 +321,7 @@
 							<li class="navitem">
 
 								<!-- navlink -->
-								<a class="navlink" href="?view=register" title="Sign up">
+								<a class="navlink" href="./?view=register" title="Sign up">
 
 									<!-- icon -->
 									<svg class="icon personplus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">

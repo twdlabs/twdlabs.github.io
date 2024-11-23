@@ -7,33 +7,84 @@
 	
 	<body>
 
+		<?php include('./assets/module/message.php'); ?>
+
+		<?php if( $currentuserprofile ): ?>
+
+			<?php $personname = $currentuserprofile['personname'] ?? ''; ?>
+
+			<!-- welcome -->
+			<section class="welcome">
+
+				<!-- head -->
+				<div class="head">
+
+					<?php if( !$justloggedout ): ?>
+
+						<!-- head -->
+						<h2 class="head">
+
+							<!-- caption -->
+							<span class="caption">Hello<?php print $personname ? ", $personname" : ''; ?></span>
+							<!-- /caption -->
+
+						</h2>
+						<!-- /head -->
+
+						<!-- textcopy -->
+						<p class="textcopy">
+
+							<?php if( isset( $currentuserprofile['lastlogin'] ) ): ?>
+
+								<!-- caption -->
+								<span class="caption">Last logged in: <?php print $currentuserprofile['lastlogin']; ?></span>
+								<!-- /caption -->
+
+							<?php else: ?>
+
+								<!-- caption -->
+								<span class="caption">Welcome to the Faculty Board platform!</span>
+								<!-- /caption -->
+
+							<?php endif; ?>
+
+						</p>
+						<!-- /textcopy -->
+
+					<?php else: ?>
+
+						<!-- head -->
+						<h2 class="head">
+
+							<!-- caption -->
+							<span class="caption">Till next time<?php print $personname ? ", $personname" : ''; ?>.</span>
+							<!-- /caption -->
+
+						</h2>
+						<!-- /head -->
+
+						<!-- textcopy -->
+						<p class="textcopy">
+
+							<!-- caption -->
+							<span class="caption">See you later!</span>
+							<!-- /caption -->
+
+						</p>
+						<!-- /textcopy -->
+
+					<?php endif; ?>
+
+				</div>
+				<!-- /head -->
+
+			</section>
+			<!-- /welcome -->
+
+		<?php endif; ?>
+
 		<!-- splash -->
-		<section class="splash float">
-
-			<!-- msgcenter -->
-			<div class="msgcenter">
-
-				<?php $errormsg = ''; ?>
-				<?php if( $errormsg ): ?>
-
-					<!-- msg -->
-					<div class="msg r"><?php print $errormsg; ?></div>
-					<!-- /msg -->
-
-				<?php endif; ?> 
-
-				<?php $justloggedout = isset( $_GET['logout'] ); ?>
-				<?php $successmsg = $justloggedout ? 'Logout successful' : ''; ?>
-				<?php if($successmsg): ?>
-
-					<!-- msg -->
-					<div class="msg g"><?php print $successmsg; ?></div>
-					<!-- /msg -->
-
-				<?php endif; ?>
-
-			</div>
-			<!-- /msgcenter -->
+		<section class="splash <?php print ( $currentuserprofile ) ? '' : 'float'; ?>">
 
 			<!-- head -->
 			<div class="head">
@@ -52,7 +103,7 @@
 			<!-- /head -->
 
 			<!-- enterlink -->
-			<a class="enterlink" href="?view=home">
+			<a class="enterlink" href="./?view=home">
 
 				<!-- logo -->
 				<img class="logo" src="./assets/image/6354674.png" alt="">
@@ -64,13 +115,13 @@
 			<!-- usernavlist -->
 			<ul class="usernavlist">
 
-				<?php if( $currentuserdata && !$justloggedout ): ?>
+				<?php if( $currentuserprofile && !$justloggedout ): ?>
 
 					<!-- usernavitem -->
 					<li class="usernavitem">
 
 						<!-- usernavlink -->
-						<a class="usernavlink pr" href="?view=home">Enter</a>
+						<a class="usernavlink pr" href="./?view=home">Enter</a>
 						<!-- /usernavlink -->
 
 					</li>
@@ -82,7 +133,7 @@
 					<li class="usernavitem">
 
 						<!-- usernavlink -->
-						<a class="usernavlink pr" href="?view=login">Login</a>
+						<a class="usernavlink pr" href="./?view=login">Login</a>
 						<!-- /usernavlink -->
 
 					</li>
@@ -92,7 +143,7 @@
 					<li class="usernavitem">
 
 						<!-- usernavlink -->
-						<a class="usernavlink" href="?view=register">Register</a>
+						<a class="usernavlink" href="./?view=register">Register</a>
 						<!-- /usernavlink -->
 
 					</li>
