@@ -22,6 +22,43 @@
 	require_once('./assets/script/userops.php');
 	// Get functions to perform CRUD operations. 
 	require_once('./assets/script/crudops.php');
+
+	// Display all database table data. 
+	function displayDatabaseTables() {
+		global $databasetables;
+
+		// 
+		printToPage();
+		$paste = json_encode($databasetables);
+		printToPage("Table data: ( $paste )");
+	}
+
+	// Display details of selected view. 
+	function displaySelectedViewDetails() {
+		global $selectedviewid;
+		global $selecteduserchooser;
+		global $selectedhomeview;
+		global $selectedtableview;
+
+		// 
+		printToPage();
+		$paste = !!$selectedviewid ? $selectedviewid : '[none]';
+		printToPage("Selected view id: $paste");
+		$paste = $selecteduserchooser ? 'true' : 'false';
+		printToPage("User chooser selected: $paste");
+		$paste = $selectedhomeview ? 'true' : 'false';
+		printToPage("Home view selected: $paste");
+		$paste = $selectedtableview ? 'true' : 'false';
+		printToPage("Table view selected: $paste");
+	}
+
+	// Get list of table entries associated with given table id. 
+	function getTableEntries($giventable) {
+		return $giventable['entrydata'];
+	}
+
+	// 
+	$xyz = array_map( 'getTableEntries', $databasetables );
 ?>
 
 <!DOCTYPE html>
@@ -52,14 +89,16 @@
 		<!-- <style type="text/css"></style> -->
 
 		<script type="text/javascript">
-			console.log('Server data:', <?php print isset($_SERVER) ? json_encode($_SERVER) : null; ?>);
+			// console.log('Server data:', <?php print isset($_SERVER) ? json_encode($_SERVER) : null; ?>);
 			console.log('Session data:', <?php print isset($_SESSION) ? json_encode($_SESSION) : null; ?>);
 			console.log('Get response data:', <?php print isset($_GET) ? json_encode($_GET) : null; ?>);
 			console.log('Post response data:', <?php print isset($_POST) ? json_encode($_POST) : null; ?>);
+			// console.log('Database tables (start):', <?php print json_encode($databasetables); ?>);
+			console.log('Database tables (start):', <?php print json_encode( $xyz ); ?>);
 		</script>
 	</head>
 	
-	<body>
+	<body class="dark" ondblclick="this.classList.toggle('dark')">
 
 		<!-- #container -->
 		<div id="container">
@@ -97,75 +136,86 @@
 						// Connect to server database. 
 						$db = openDb('cis355issuecomments');
 
-						// Check for in/out user operations (before doing anything else). 
-						$successfullogin = checkIfUserIn();
+						// Download public table entries from database. 
+						getPublicTables();
+
+						// Check for user state changes (before anything else). 
+						$newsuccessfullogin = checkUserChanges();
+						// Save record of new user session. 
+						if( $newsuccessfullogin ) saveNewSession();
 
 						// Get user id (if currently logged in). 
-						$currentuserid = getCurrentUserId();
+						$currentuserid = getCurrentUserId(1);
+						// Get profile data for current user (if currently logged in). 
+						$currentuserprofile = getUserProfile($currentuserid,1);
+						// Check if current user is admin. 
 						$iscurrentuseradmin = checkIfUserAdmin($currentuserid);
-						// Get data for current user (if currently logged in). 
-						$currentuserdata = getUserData($currentuserid);
-						// Display all database tables. 
-						// $databasetablesstr = json_encode($databasetables);
-						// printToPage("Table data: { $databasetablesstr }");
-
-						// Save record of new user session. 
-						if($successfullogin) saveNewSession();
+						// Display all database table data. 
+						// displayDatabaseTables();
 
 						// Check for crud operation from previous page. 
 						checkForDataMoves();
 
-						// Download all table data from database. 
-						if($currentuserdata) getAllTableData();
-						// $databasetablesstr = json_encode($databasetables);
-						// printToPage("Table data: ( $databasetablesstr )");
-
 
 						// Check for selected view. 
-						$isviewselected = isset( $_GET['view'] );
-						// Get id of selected view. 
-						$selectedviewid = $isviewselected ? $_GET['view'] : '';
+						$selectedviewid = $_GET['view'] ?? '';
+						// $selectedviewid = isset( $_GET['view'] ) ? cleanInputForQuery( $_GET['view'] ) : '';
 						// Check if selected view is home. 
-						$athomeview = ( $selectedviewid == 'home' );
+						$selectedhomeview = ( $selectedviewid == 'home' );
 						// Check if selected view is table. 
-						$ontableview = isset( $databasetables[$selectedviewid] );
+						$selectedtableview = isset( $databasetables[$selectedviewid] ) && ( $iscurrentuseradmin || $databasetables[$selectedviewid]['tablevisible'] );
 						// Check if selected view is user chooser. 
-						$onuserchooser = ( $selectedviewid=='login' || $selectedviewid=='register' );
-
-						// Display data for selected view. 
-						printToPage();
-						$svid = $isviewselected ? $selectedviewid : '[none]';
-						printToPage("Selected view id: $svid");
-						$iucs = $onuserchooser ? 'true' : 'false';
-						printToPage("User chooser selected: $iucs");
-						$ihvs = $athomeview ? 'true' : 'false';
-						printToPage("Home view selected: $ihvs");
-						$itvs = $ontableview ? 'true' : 'false';
-						printToPage("Table view selected: $itvs");
+						$selecteduserchooser = ( $selectedviewid=='login' || $selectedviewid=='register' );
+						// Display details of selected view. 
+						displaySelectedViewDetails();
 
 
-						// Get self-reference url. 
-						$selfurl = getSelfRefUrl();
-						$selfurlbase = getSelfRefUrl(false);
+						// Download inside data from database (if logged in). 
+						if( $currentuserprofile ) {
+							
+							// Download all table entries from database. 
+							// getAllTables();
+
+							// Download relevant table entries for table view. 
+							if( $selectedtableview ) getRelevantTables($selectedviewid);
+							// Download relevant table entries for home view: issues, comments. 
+							else if( $selectedhomeview ) {
+
+								// Get detail data for comments and basic data for issues and persons. 
+								getRelevantTables('comments');
+								// Get detail data for issues and basic data for departments. 
+								getRelevantTables('issues');
+							}
+						}
+						// Display all database table data. 
+						// displayDatabaseTables();
+
+						// Get data associated with selected table. 
+						if( $selectedhomeview ) {
+							$selectedtable = $databasetables['recentactivity'];
+						}
+						elseif( $selectedtableview ) {
+							$selectedtable = $databasetables[$selectedviewid];
+						}
 
 						// Get data needed for table view & home view. 
-						if( $ontableview || $athomeview ) {
+						if( $selectedtableview || $selectedhomeview ) {
 
-							// Get data associated with selected table. 
-							if( $athomeview ) $selectedtable = $databasetables['recentactivity'];
-							elseif( $ontableview ) $selectedtable = $databasetables[$selectedviewid];
 							// Get title of selected table. 
 							$tabletitle = $selectedtable['tabletitle'];
+							// Get icon tag for selected table. 
+							$tableicontag = $selectedtable['tablenavicon'];
 							// Get caption for single item. 
 							$singlecaption = $selectedtable['singlecaption'];
 							// Get fields of table display. 
 							$displayfields = $selectedtable['displayfields'];
 							// Get fields of table editor. 
 							$editorfields = $selectedtable['editorfields'];
-
-							// Retrieve relevant table data from database. 
-							if( $ontableview ) getRelevantTableData();
 						}
+
+						// Get self-reference url (for forms and links). 
+						$selfurl = getSelfRefUrl();
+						$selfurlbase = getSelfRefUrl(false);
 					?>
 
 				</div>
@@ -178,9 +228,9 @@
 
 			<?php /* include('./assets/module/navbar.php'); ?>
 
-			<?php if($currentuserdata): ?>
+			<?php if( $currentuserprofile ): ?>
 
-				<?php if( isset($ontableview) && $ontableview ): ?>
+				<?php if( isset($selectedtableview) && $selectedtableview ): ?>
 
 					<?php include('./assets/module/datatable.php'); ?>
 
@@ -211,11 +261,14 @@
 				// Display navbar. 
 				include('./assets/module/navbar.php');
 
+				// Display any relevant messages. 
+				include('./assets/module/message.php');
+
 				// Proceed if user logged in. 
-				if($currentuserdata) {
+				if( $currentuserprofile ) {
 
 					// Display data table (if view selected). 
-					if( $ontableview ) {
+					if( $selectedtableview ) {
 
 						// Display navigation for data tables. 
 						include('./assets/module/navtable.php');
@@ -224,14 +277,12 @@
 					}
 
 					// Display home screen (if view selected). 
-					elseif( $athomeview ) {
+					elseif( $selectedhomeview ) {
 
-						// Display user welcome. 
-						include('./assets/module/welcome.php');
 						// Display navigation for data tables. 
 						include('./assets/module/navtable.php');
 						// Display user's recent activity. 
-						include('./assets/module/recentactivity.php');
+						// include('./assets/module/recentactivity.php');
 						// Display user's social feed. 
 						include('./assets/module/socialfeed.php');
 					}
@@ -248,7 +299,7 @@
 				else {
 
 					// Display user chooser screen (if view selected). 
-					if( $onuserchooser ) {
+					if( $selecteduserchooser ) {
 
 						// Display user chooser (login/register) screen. 
 						include('./assets/pages/userchooser.php');
@@ -279,7 +330,7 @@
 		<script src="./assets/script/toggler.js" type="text/javascript"></script>
 
 		<script type="text/javascript">
-			console.log('Database tables:', <?php print json_encode($databasetables); ?>);
+			console.log('Database tables (end):', <?php print json_encode($databasetables); ?>);
 		</script>
 
 	</body>
