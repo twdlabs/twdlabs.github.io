@@ -6,14 +6,17 @@
 		
 		'departments' => [
 
-			// Define table visibility. 
-			'tablevisible' => true,
 			// Define table title. 
 			'tabletitle' => 'Departments',
 			// Define table navigation icon. 
-			'tablenavicon' => 'personcard',
+			'tableicontag' => 'personcard',
 			// Define caption for single item. 
 			'singlecaption' => 'Department',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => false,
+			'tableentriescomposable' => false,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -25,17 +28,17 @@
 				[
 					'fid'=>'deptname',
 					'fieldtitle'=>'Department',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'numpersons',
 					'fieldtitle'=>'People',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'numissues',
 					'fieldtitle'=>'Issues',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 			],
 			// Define table editor fields. 
@@ -48,6 +51,10 @@
 					'editable'=>true,
 				],
 			],
+			// Define field ids for 'new entry' query. 
+			'newentryfieldids' => [] /* [
+				// 'xyz',
+			] */,
 
 			// Define basic database query. 
 			'basicdataquery' => 
@@ -79,14 +86,17 @@
 		
 		'genders' => [
 
-			// Define table visibility. 
-			'tablevisible' => false,
 			// Define table title. 
 			'tabletitle' => 'Genders',
 			// Define table navigation icon. 
-			'tablenavicon' => 'personsquare',
+			'tableicontag' => 'personsquare',
 			// Define caption for single item. 
 			'singlecaption' => 'Gender',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => false,
+			'tableentriescomposable' => false,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -99,17 +109,17 @@
 					'fid'=>'avatarfilename',
 					'fieldtype'=>'image',
 					'fieldtitle'=>'Avatar',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'gendername',
 					'fieldtitle'=>'Gender',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'numpersons',
 					'fieldtitle'=>'Count',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 			],
 			// Define table editor fields. 
@@ -129,6 +139,10 @@
 					'editable'=>true,
 				],
 			],
+			// Define field ids for 'new entry' query. 
+			'newentryfieldids' => [] /* [
+				// 'xyz',
+			] */,
 
 			// Define basic database query. 
 			'basicdataquery' => 
@@ -147,14 +161,17 @@
 
 		'persons' => [
 
-			// Define table visibility. 
-			'tablevisible' => true,
 			// Define table title. 
 			'tabletitle' => 'Faculty',
 			// Define table navigation icon. 
-			'tablenavicon' => 'personlines',
+			'tableicontag' => 'personlines',
 			// Define caption for single item. 
 			'singlecaption' => 'Person',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => false,
+			'tableentriescomposable' => false,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -172,64 +189,65 @@
 					// 'fieldtype'=>'text',
 					'fieldtype'=>'image',
 					'fieldtitle'=>'Avatar',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'personname',
+					'fid'=>'displayname',
 					'fieldtitle'=>'Name',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'gendername',
 					'fieldtitle'=>'Gender',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 				[
 					'fid'=>'position',
 					'fieldtitle'=>'Position',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'deptname',
 					'fieldtitle'=>'Department',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'username',
 					'fieldtitle'=>'Username',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'isadmin',
 					'fieldtitle'=>'Admin',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 				[
 					'fid'=>'totalsessions',
 					'fieldtitle'=>'Logins',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 				[
 					'fid'=>'lastlogin',
 					'fieldtitle'=>'Last Login',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 				[
 					'fid'=>'relevantissues',
 					'fieldtitle'=>'Issues',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'totalcomments',
 					'fieldtitle'=>'Comments',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'totalreferrals',
 					'fieldtitle'=>'Referred',
 					'fieldtitle'=>'Referrals',
 					// 'fieldtitle'=>'Network',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				// [
 				// 	'fid'=>'referrername',
@@ -238,7 +256,7 @@
 				[
 					'fid'=>'referrerusername',
 					'fieldtitle'=>'Referrer',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 				// [
 				// 	'fid'=>'passwdsalt',
@@ -354,24 +372,23 @@
 			],
 
 			// Define basic database query. 
+			// 'basicdataquery' => 
+			// " SELECT 
+			// 	p.id, personname, username,
+			// 	genderid, position,
+			// 	max(s.createdat) as lastlogin
+			// FROM (persons as p)
+			// LEFT JOIN (sessions as s) ON (s.personid = p.id)
+			// /* GROUP BY p.id */ ",
 			'basicdataquery' => 
 			" SELECT 
-				p.id, personname, username,
-				genderid, position,
-				max(s.createdat) as lastlogin
-			FROM (persons as p)
-			LEFT JOIN (sessions as s) ON (s.personid = p.id)
-			/* GROUP BY p.id */ ",
-			'basicdataquery' => 
-			" SELECT 
-				id, personname, username,
-				genderid/* , position  */
+				id, personname, username
 			FROM persons ",
 			// Define detailed database query. 
 			'detaildataquery' => 
 			" SELECT 
 				p.id, p.personname,
-				concat( p.personname , if( count(distinct a.personid) > 0 , ' ⭐️' , '' ) ) as personname,
+				concat( p.personname , if( count(distinct a.personid) > 0 , ' ⭐️' , '' ) ) as displayname,
 				p.username, p.passwdsalt, p.passwdhash,
 				p.genderid, g.gendername, g.avatarfilename,
 				p.position, p.deptid, d.deptname,
@@ -396,15 +413,18 @@
 
 		'admins' => [
 
-			// Define table visibility. 
-			'tablevisible' => false,
 			// Define table title. 
 			'tabletitle' => 'Admins',
 			// Define table navigation icon. 
-			'tablenavicon' => 'briefcasebold',
-			'tablenavicon' => 'persongearbold',
+			'tableicontag' => 'briefcasebold',
+			'tableicontag' => 'persongearbold',
 			// Define caption for single item. 
 			'singlecaption' => 'Admin',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => false,
+			'tableentriescomposable' => false,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -418,7 +438,7 @@
 				[
 					'fid'=>'personname',
 					'fieldtitle'=>'Person',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 			],
 			// Define table editor fields. 
@@ -435,12 +455,16 @@
 					],
 				],
 			],
+			// Define field ids for 'new entry' query. 
+			'newentryfieldids' => [] /* [
+				// 'xyz',
+			] */,
 
 			// Define basic database query. 
-			'basicdataquery' => 
-			" SELECT 
-				id, personid 
-			FROM admins ",
+			// 'basicdataquery' => 
+			// " SELECT 
+			// 	id, personid 
+			// FROM admins ",
 			// Define detailed database query. 
 			'detaildataquery' => 
 			" SELECT 
@@ -451,14 +475,17 @@
 
 		'sessions' => [
 
-			// Define table visibility. 
-			'tablevisible' => false,
 			// Define table title. 
 			'tabletitle' => 'Login Sessions',
 			// Define table navigation icon. 
-			'tablenavicon' => 'opendoor',
+			'tableicontag' => 'opendoor',
 			// Define caption for single item. 
 			'singlecaption' => 'Session',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => false,
+			'tableentriescomposable' => false,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -472,30 +499,36 @@
 				[
 					'fid'=>'personname',
 					'fieldtitle'=>'Person',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'createdat',
 					'fieldtitle'=>'Session Start',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 				[
 					'fid'=>'sessiondate',
 					'fieldtitle'=>'Session Date',
 					'fieldtitle'=>'Date',
-					'tablevisible'=>true,
+					'visibleintable'=>false,
+				],
+				[
+					'fid'=>'sessiondatelocal',
+					'fieldtitle'=>'Session Date',
+					'fieldtitle'=>'Date',
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'sessiontime',
 					'fieldtitle'=>'Session Time',
 					'fieldtitle'=>'Time',
-					'tablevisible'=>true,
+					'visibleintable'=>false,
 				],
 				[
 					'fid'=>'sessiontimelocal',
-					'fieldtitle'=>'Session Time (Local)',
-					'fieldtitle'=>'Time (Local)',
-					'tablevisible'=>true,
+					'fieldtitle'=>'Session Time',
+					'fieldtitle'=>'Time',
+					'visibleintable'=>true,
 				],
 			],
 			// Define table editor fields. 
@@ -523,12 +556,16 @@
 				// 	],
 				// ],
 			],
+			// Define field ids for 'new entry' query. 
+			'newentryfieldids' => [] /* [
+				// 'xyz',
+			] */,
 
 			// Define basic database query. 
-			'basicdataquery' => 
-			" SELECT 
-				id, createdat, personid
-			FROM sessions ",
+			// 'basicdataquery' => 
+			// " SELECT 
+			// 	id, createdat, personid
+			// FROM sessions ",
 			// Define detailed database query. 
 			'detaildataquery' => 
 			" SELECT 
@@ -536,8 +573,9 @@
 				s.personid, p.personname,
 				date(s.createdat) as sessiondate,
 				time(s.createdat) as sessiontime,
+				date( convert_tz( s.createdat, '+00:00', '-05:00' ) ) as sessiondatelocal,
 				time( convert_tz( s.createdat, '+00:00', '-05:00' ) ) as sessiontimelocal,
-				date_format( convert_tz( s.createdat, '+00:00', '-05:00' ) ) as sessiontimelocal,
+				-- date_format( convert_tz( s.createdat, '+00:00', '-05:00' ) ) as sessiontimelocalB,
 				s.createdat
 			FROM (sessions as s) 
 			LEFT JOIN (persons as p) ON (s.personid = p.id) ",
@@ -545,14 +583,17 @@
 
 		'issues' => [
 
-			// Define table visibility. 
-			'tablevisible' => true,
 			// Define table title. 
 			'tabletitle' => 'Issues',
 			// Define table navigation icon. 
-			'tablenavicon' => 'journaltext',
+			'tableicontag' => 'journaltext',
 			// Define caption for single item. 
 			'singlecaption' => 'Issue',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => false,
+			'tableentriescomposable' => false,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => true,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -566,27 +607,27 @@
 				[
 					'fid'=>'deptname',
 					'fieldtitle'=>'Department',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'issuetitle',
 					'fieldtitle'=>'Issue',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'issuedescription',
 					'fieldtitle'=>'Issue Description',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'totalcomments',
 					'fieldtitle'=>'Comments',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'totalcommenters',
 					'fieldtitle'=>'People',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 			],
 			// Define table editor fields. 
@@ -617,11 +658,15 @@
 					'editable'=>true,
 				],
 			],
+			// Define field ids for 'new entry' query. 
+			'newentryfieldids' => [] /* [
+				// 'xyz',
+			] */,
 
 			// Define basic database query. 
 			'basicdataquery' => 
 			" SELECT 
-				id, issuetitle, deptid 
+				id, issuetitle
 			FROM issues ",
 			// Define detailed database query. 
 			'detaildataquery' => 
@@ -639,14 +684,17 @@
 
 		'comments' => [
 
-			// Define table visibility. 
-			'tablevisible' => true,
 			// Define table title. 
 			'tabletitle' => 'Comments',
 			// Define table navigation icon. 
-			'tablenavicon' => 'chatbubbletext',
+			'tableicontag' => 'chatbubbletext',
 			// Define caption for single item. 
 			'singlecaption' => 'Comment',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => false,
+			'tableentriescomposable' => false,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -661,22 +709,22 @@
 				[
 					'fid'=>'personname',
 					'fieldtitle'=>'Person',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'issuetitle',
 					'fieldtitle'=>'Issue',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'commenttext',
 					'fieldtitle'=>'Comment',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'createdat',
 					'fieldtitle'=>'Created',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 			],
 			// Define table editor fields. 
@@ -712,13 +760,17 @@
 					'editable'=>true,
 				],
 			],
+			// Define field ids for 'new entry' query. 
+			'newentryfieldids' => [] /* [
+				// 'xyz',
+			] */,
 
 			// Define basic database query. 
-			'basicdataquery' => 
-			" SELECT 
-				id, commenttext, createdat,
-				issueid, personid
-			FROM comments ",
+			// 'basicdataquery' => 
+			// " SELECT 
+			// 	id, commenttext, createdat,
+			// 	issueid, personid
+			// FROM comments ",
 			// Define detailed database query. 
 			'detaildataquery' => 
 			" SELECT 
@@ -731,29 +783,29 @@
 			LEFT JOIN (persons as p) ON (c.personid = p.id) 
 			/* LEFT JOIN (commentlikes as cl) ON (cl.commentid = c.id) */ ",
 		],
-	// ];
 
-	// // Define metadata for various view tables. 
-	// $variousviewtables = [
+		'mycomments' => [
 
-		'recentactivity' => [
-
-			// Define table visibility. 
-			'tablevisible' => false,
 			// Define table title. 
-			'tabletitle' => 'Recent Activity',
+			'tabletitle' => 'My Comments',
 			// Define table navigation icon. 
-			'tablenavicon' => 'activity',
+			'tableicontag' => 'activity',
+			'tableicontag' => 'chatbubbletext',
 			// Define caption for single item. 
 			'singlecaption' => 'Comment',
+			// Define table entry accessibility (for non-admin users). 
+			'tableentrieseditable' => true,
+			'tableentriescomposable' => true,
+			// Define table visibility in navigation (for non-admin users). 
+			'tablenavvisible' => true,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
 			// Define reference tables. 
 			'reftableids' => [
-				'persons',
+				// 'persons',
 				'issues',
-				'comments',
+				// 'comments',
 			],
 
 			// Define table display fields (from detailed query results). 
@@ -761,37 +813,37 @@
 				[
 					'fid'=>'personname',
 					'fieldtitle'=>'Person',
-					'tablevisible'=>false,
+					'visibleintable'=>false,
 				],
 				[
 					'fid'=>'issuetitle',
 					'fieldtitle'=>'Issue',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'commenttext',
 					'fieldtitle'=>'Comment',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 				[
 					'fid'=>'createdat',
 					'fieldtitle'=>'Created',
-					'tablevisible'=>true,
+					'visibleintable'=>true,
 				],
 			],
 			// Define table editor fields. 
 			'editorfields' => [
-				[
-					'type'=>'select',
-					'fid'=>'personid',
-					'fieldtitle'=>'Person',
-					'required'=>true,
-					'editable'=>false,
-					'capref'=>[
-						'tid'=>'persons',
-						'fid'=>'personname',
-					],
-				],
+				// [
+				// 	'type'=>'select',
+				// 	'fid'=>'personid',
+				// 	'fieldtitle'=>'Person',
+				// 	'required'=>true,
+				// 	'editable'=>false,
+				// 	'capref'=>[
+				// 		'tid'=>'persons',
+				// 		'fid'=>'personname',
+				// 	],
+				// ],
 				[
 					'type'=>'select',
 					'fid'=>'issueid',
@@ -812,14 +864,18 @@
 					'editable'=>true,
 				],
 			],
+			// Define field ids for 'new entry' query. 
+			'newentryfieldids' => [] /* [
+				// 'xyz',
+			] */,
 
 			// Define basic database query. 
-			'basicdataquery' => 
-			" SELECT 
-				id, commenttext, createdat,
-				issueid, personid
-			FROM comments
-			WHERE personid= ",
+			// 'basicdataquery' => 
+			// " SELECT 
+			// 	id, commenttext, createdat,
+			// 	issueid, personid
+			// FROM comments
+			// WHERE personid= ",
 			// Define detailed database query. 
 			'detaildataquery' => 
 			" SELECT 
