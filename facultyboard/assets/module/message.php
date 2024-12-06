@@ -17,8 +17,8 @@
 
 		<?php if( $gotmsg ): ?>
 
-			<!-- xyz -->
-			<section class="xyz">
+			<!-- msgcenter -->
+			<section class="msgcenter">
 
 				<!-- msgcenter -->
 				<div class="msgcenter">
@@ -43,7 +43,7 @@
 				<!-- /msgcenter -->
 
 			</section>
-			<!-- /xyz -->
+			<!-- /msgcenter -->
 
 		<?php endif; ?>
 

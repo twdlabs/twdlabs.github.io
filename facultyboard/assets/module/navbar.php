@@ -85,12 +85,6 @@
 					<!-- tablemenu -->
 					<div class="tablemenu navmenu">
 
-						<!-- profile -->
-						<div class="profile">
-
-						</div>
-						<!-- /profile -->
-
 						<!-- navlist -->
 						<ul class="navlist tables">
 
@@ -118,136 +112,41 @@
 
 							<?php foreach($databasetables as $tid=>$table): ?>
 
-								<?php
-									if(!$table['tablevisible']) continue;
-									$title = $table['tabletitle'];
-									$icontag = $table['tablenavicon'];
-								?>
+								<?php if( $iscurrentuseradmin || $table['tablenavvisible'] ): ?>
 
-								<!-- navitem -->
-								<li class="navitem">
+									<?php
+										$currenttabletitle = $table['tabletitle'];
+										$currenttableicontag = $table['tableicontag'];
+									?>
 
-									<!-- navlink -->
-									<a class="navlink" href="./?view=<?php print $tid; ?>" title="<?php print $title; ?>">
+									<!-- navitem -->
+									<li class="navitem">
 
-										<!-- icon -->
-										<svg class="icon <?php print $icontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<?php print $databasetablesicons[ $icontag ]; ?>
-										</svg>
-										<!-- /icon -->
+										<!-- navlink -->
+										<a class="navlink" href="./?view=<?php print $tid; ?>" title="<?php print $currenttabletitle; ?>">
 
-										<!-- caption -->
-										<span class="caption"><?php print $title; ?></span>
-										<!-- /caption -->
+											<!-- icon -->
+											<svg class="icon <?php print $currenttableicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<?php print $databasetablesicons[ $currenttableicontag ]; ?>
+											</svg>
+											<!-- /icon -->
 
-									</a>
-									<!-- /navlink -->
+											<!-- caption -->
+											<span class="caption"><?php print $currenttabletitle; ?></span>
+											<!-- /caption -->
 
-								</li>
-								<!-- /navitem -->
+										</a>
+										<!-- /navlink -->
+
+									</li>
+									<!-- /navitem -->
+
+								<?php endif; ?>
 
 							<?php endforeach; ?>
 
-						</ul>
-						<!-- /navlist -->
-
-					</div>
-					<!-- /tablemenu -->
-
-				<?php endif; ?>
-
-				<!-- usermenu -->
-				<div class="usermenu navmenu">
-
-					<?php if( $currentuserprofile ): ?>
-
-						<!-- profile -->
-						<div class="profile">
-
-							<!-- <?php print json_encode($currentuserprofile); ?> -->
-
-							<!-- textcopy -->
-							<p class="textcopy">
-
-								<!-- name -->
-								<span class="name">ID</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $currentuserprofile['id'] ?? '[none]'; ?></span>
-								<!-- /value -->
-
-							</p>
-							<!-- /textcopy -->
-
-							<!-- textcopy -->
-							<p class="textcopy">
-
-								<!-- name -->
-								<span class="name">Name</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $currentuserprofile['personname'] ?? '[none]'; ?></span>
-								<!-- /value -->
-
-							</p>
-							<!-- /textcopy -->
-
-							<!-- textcopy -->
-							<p class="textcopy">
-
-								<!-- name -->
-								<span class="name">E-mail</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $currentuserprofile['username'] ?? '[none]'; ?>@twdlabs.io</span>
-								<!-- /value -->
-
-							</p>
-							<!-- /textcopy -->
-
-							<!-- textcopy -->
-							<p class="textcopy">
-
-								<!-- name -->
-								<span class="name">Position</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $currentuserprofile['position'] ?? '[none]'; ?></span>
-								<!-- /value -->
-
-							</p>
-							<!-- /textcopy -->
-
-							<!-- textcopy -->
-							<p class="textcopy">
-
-								<!-- name -->
-								<span class="name">Last Login</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $currentuserprofile['lastlogin'] ?? '[none]'; ?></span>
-								<!-- /value -->
-
-							</p>
-							<!-- /textcopy -->
-
-						</div>
-						<!-- /profile -->
-
-					<?php endif; ?>
-
-					<!-- navlist -->
-					<ul class="navlist user">
-
-						<?php if( $currentuserprofile ): ?>
-
 							<!-- navitem -->
-							<li class="navitem">
+							<li class="navitem x">
 
 								<!-- navlink -->
 								<a class="navlink" href="./?view=settings" title="Settings">
@@ -268,6 +167,104 @@
 
 							</li>
 							<!-- /navitem -->
+
+						</ul>
+						<!-- /navlist -->
+
+					</div>
+					<!-- /tablemenu -->
+
+				<?php endif; ?>
+
+				<!-- usermenu -->
+				<div class="usermenu navmenu">
+
+					<?php if( $currentuserprofile ): ?>
+
+						<!-- profile -->
+						<ul class="profile">
+
+							<!-- <?php print json_encode($currentuserprofile); ?> -->
+
+							<!-- profileitem -->
+							<li class="profileitem x">
+
+								<!-- name -->
+								<span class="name">ID</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['id'] ?? '[none]'; ?></span>
+								<!-- /value -->
+
+							</li>
+							<!-- /profileitem -->
+
+							<!-- profileitem -->
+							<li class="profileitem">
+
+								<!-- name -->
+								<span class="name">Name</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['personname'] ?? '[none]'; ?></span>
+								<!-- /value -->
+
+							</li>
+							<!-- /profileitem -->
+
+							<!-- profileitem -->
+							<li class="profileitem">
+
+								<!-- name -->
+								<span class="name">E-mail</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['username'] ?? '[none]'; ?>@twdlabs.io</span>
+								<!-- /value -->
+
+							</li>
+							<!-- /profileitem -->
+
+							<!-- profileitem -->
+							<li class="profileitem">
+
+								<!-- name -->
+								<span class="name">Position</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['position'] ?? '[none]'; ?></span>
+								<!-- /value -->
+
+							</li>
+							<!-- /profileitem -->
+
+							<!-- profileitem -->
+							<li class="profileitem">
+
+								<!-- name -->
+								<span class="name">Last Login</span>
+								<!-- /name -->
+
+								<!-- value -->
+								<span class="value"><?php print $currentuserprofile['lastlogin'] ?? '[none]'; ?></span>
+								<!-- /value -->
+
+							</li>
+							<!-- /profileitem -->
+
+						</ul>
+						<!-- /profile -->
+
+					<?php endif; ?>
+
+					<!-- navlist -->
+					<ul class="navlist user">
+
+						<?php if( $currentuserprofile ): ?>
 
 							<!-- navitem -->
 							<li class="navitem">
