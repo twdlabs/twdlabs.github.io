@@ -1,0 +1,21 @@
+
+
+
+/* Container */
+/* body {} */
+div#container {display:grid; grid-template-columns:repeat(2,1fr); min-height:0;}
+
+
+/* General Section */
+div#container section {text-align:center;}
+
+/* General Section: Head */
+/* div#container section div.headbar {} */
+
+
+/* Data Table Section */
+/* div#container section.datatable {} */
+/* div#container section.datatable div.headbar {} */
+/* div#container section.datatable div.headbar h2.headline {} */
+div#container section.datatable table.table {white-space:nowrap; padding:.75rem .5rem;}
+/* div#container section.datatable form.crudform {} */
