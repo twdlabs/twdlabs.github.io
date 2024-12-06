@@ -1,0 +1,16 @@
+
+
+
+/* General Section: CRUD Form */
+div#container section form.crudform {/* background-color:gold; */ --fieldspacing:.25rem; margin:0;}
+div#container section form.crudform div.action {margin-top:var(--fieldspacing);}
+/* div#container section form.crudform div.action button.sendbtn {} */
+div#container section form.crudform div.action button.sendbtn.bold {font-weight:bold;}
+div#container section form.crudform ul.fieldlist {/* display:flex; */ list-style:none; padding:0; margin:0;}
+div#container section form.crudform ul.fieldlist li.field {margin-top:var(--fieldspacing);}
+div#container section form.crudform ul.fieldlist li.field.x {display:none;}
+div#container section form.crudform ul.fieldlist li.field input.fieldinput,
+div#container section form.crudform ul.fieldlist li.field select.fieldinput,
+div#container section form.crudform ul.fieldlist li.field textarea.fieldinput,
+div#container section form.crudform div.action button.sendbtn {font-family:inherit; /* font-size:inherit; */ font-size:.875em; resize:none; width:100%; max-width:16em; padding:.25em .75em; border:.125rem solid #0002; border-radius:.5rem;}
+div#container section form.crudform div.action button.sendbtn {margin-top:.125rem;}

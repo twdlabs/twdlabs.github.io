@@ -1,0 +1,145 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+:root {
+
+	/* Theme Colors */
+	--lightgrey:#CCC;
+	--lightblack:#333;
+	
+	/* Gradient Colors */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
+	/* Page Sizes */
+	--dt:.5s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
+}
+:root {
+
+	/* Theme Colors */
+	--offwhite:#f0f0f0;
+	--offoffwhite:#e0e0e0;
+	--lightlightgrey:#d0d0d0;
+	--lightgrey:#b0b0b0;
+	--grey:#888;
+	--darkgrey:#555;
+	--lightlightblack:#333;
+	--lightblack:#222;
+	--black:#111;
+	--green:#2ECC71;
+	--drkgreen:#27AE60;
+	
+	/* Gradient Colors */
+	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+
+	/* Page Sizes */
+	--dt:.5s;
+	--pagewidth:60rem;
+	--cornersize:.5rem;
+	
+	/* Box Shadows */
+	--boxshadow:0 0 .25rem 0 #0003;
+	--boxshadow2:0 0 1rem 0 #0002;
+}
+
+body {
+
+	--backcolor:var(--lightgrey);
+	--forecolor:black;
+}
+body.dark {
+
+	--backcolor:var(--lightblack);
+	--forecolor:white;
+}
+
+body {
+
+	--backcolor:var(--lightgrey);
+	--backcolor2:var(--lightlightgrey);
+	--backcolor3:var(--offoffwhite);
+	--backcolor4:var(--offwhite);
+	--backcolor5:white;
+
+	--forecolor:black;
+	--linkcolor:var(--drkgreen);
+}
+body.dark {
+
+	--backcolor:var(--grey);
+	--backcolor2:var(--darkgrey);
+	--backcolor3:var(--lightlightblack);
+	--backcolor4:var(--lightblack);
+	--backcolor5:var(--black);
+
+	--forecolor:var(--offwhite);
+	--linkcolor:var(--green);
+}
+
+
+
+/* Container */
+body {background-color:var(--backcolor); background-image:var(--bgimg); margin:0;}
+body {display:grid; place-items:center; min-height:100vh;}
+body {color:var(--forecolor); font-family:Nunito,sans-serif;}
+/* div#container {} */
+div#container {display:flex; flex-direction:column; /* justify-content:center; */ place-items:center; grid-gap:1.5rem; min-height:100vh; padding-bottom:1rem;}
+
+/* General Section */
+div#container section {background-color:white; background-color:var(--backcolor2); padding:.75rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container section {/* width:100%; */ max-width:var(--pagewidth);}
+/* General Section: Head */
+div#container section div.headbar {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container section div.headbar.spbtw {justify-content:space-between;}
+/* General Section: Header */
+div#container section div.headbar h2.headline {font-size:1.75rem; transition:.25s; margin:0; margin:0 .25rem;}
+div#container section div.headbar h2.headline {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+div#container section.float div.headbar h2.headline {font-size:1.5em;}
+/* General Section: Head Button */
+div#container section div.headbar button.btn {display:flex; align-items:center; grid-gap:.25em; padding:.5em;}
+/* div#container section div.headbar button.btn svg.icon {font-size:1.25em;} */
+div#container section div.headbar button.btn span.caption {display:none;}
+
+
+
+
+
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+	
+	/* General Section */
+	div#container section {max-width:calc(100% - 1.5rem);}
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* General Section */
+	/* div#container section {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+	
+	/* General Section */
+	/* div#container section {} */
+	/* div#container section div.headbar {} */
+	div#container section div.headbar h2.headline {font-size:1.5em;}
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:20rem) {
+
+	/* General Section */
+	/* div#container section {} */
+}
