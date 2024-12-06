@@ -1,38 +1,16 @@
 
 <?php
 
-	// Check for crud operation from previous page. 
-	function checkForDataMoves() {
-		printToPage();
-		printToPage("Checking for new data operations...");
-
-		// Check for operation parameters. 
-		$validoperationparameters = isset( $_POST['tableid'] ) && isset( $_POST['optypeid'] );
-
-		// Perform operation (if parameters valid). 
-		if($validoperationparameters) {
-
-			// Get operation parameters. 
-			$opid = cleanInputForQuerySimple( $_POST['optypeid'] );
-			$tableid = cleanInputForQuerySimple( $_POST['tableid'] );
-
-			// Perform crud operation. 
-			$successfuloperations = goCrudOp($tableid,$opid);
-			printToPage("$successfuloperations DONE!");
-		}
-
-		// Display indication (if parameters not valid). 
-		else printToPage('NONE!');
-	}
-
-	// Perform crud operation. 
+	// Perform C.R.U.D. operation. 
 	function goCrudOp($optable,$crudop) {
+		global $databasetables;
 		printToPage();
-		printToPage("Doing crud operation: (op:$crudop, tid:$optable)");
+		printToPage("Doing C.R.U.D. operation: (op:$crudop, tid:$optable)");
 
 
 		// Go for no operation. 
-		if(false) ;
+		$invalidtableselected = !isset( $databasetables[$optable] );
+		if($invalidtableselected) return;
 
 		// Go for department operation. 
 		else if( $optable=='departments' ) {
@@ -179,7 +157,7 @@
 					// printToPage("Password: $passwd");
 					$passwdsalt = generateRandomSalt(1);
 					// printToPage("passwdsalt: $passwdsalt");
-					$passwdhash = generatePasswdHash( $passwd . $passwdsalt , 1 );
+					$passwdhash = getPasswdHash( $passwd . $passwdsalt , 1 );
 					// printToPage("passwdhash: $passwdhash");
 
 					// Create database query (with referral). 
@@ -276,50 +254,20 @@
 				$deptid = getFieldValueById('deptid');
 				$referrerid = getFieldValueById('referrerid');
 				$username = getFieldValueById('username');
-				$passwd = $_POST['password'] ?? '';
+				// $passwd = $_POST['password'] ?? '';
 				// $passwdrpt = $_POST['passwordrepeat'] ?? '';
 
-				// Create database query (with password). 
-				if( $passwd == $passwdrpt ) {
+				// Create database query (with referral). 
+				if($referrerid) {
 
-					printToPage('Password present');
-					// printToPage("Password: $passwd");
-					$passwdsalt = generateRandomSalt(1);
-					// printToPage("passwdsalt: $passwdsalt");
-					$passwdhash = generatePasswdHash( $passwd . $passwdsalt , 1 );
-					// printToPage("passwdhash: $passwdhash");
-
-					// Create database query (with referral). 
-					if($referrerid) {
-
-						// Define field assign list. 
-						$fieldsetlist = " personname=$personname, genderid=$genderid, position=$position, deptid=$deptid, referrerid=$referrerid, username=$username ";
-					}
-					// Create database query (without referral). 
-					else {
-
-						// Define field assign list. 
-						$fieldsetlist = " personname=$personname, genderid=$genderid, position=$position, deptid=$deptid, referrerid=null, username=$username ";
-					}
-
-					// Append password-related data. 
-					// $fieldsetlist .= ", passwdsalt='$passwdsalt', passwdhash='$passwdhash' ";
+					// Define field assign list. 
+					$fieldsetlist = " personname=$personname, genderid=$genderid, position=$position, deptid=$deptid, referrerid=$referrerid, username=$username ";
 				}
-				// Create database query (without password). 
+				// Create database query (without referral). 
 				else {
 
-					// Create database query (with referral). 
-					if($referrerid) {
-
-						// Define field assign list. 
-						$fieldsetlist = "personname=$personname, genderid=$genderid, position=$position, deptid=$deptid, referrerid=$referrerid, username=$username";
-					}
-					// Create database query (without referral). 
-					else {
-
-						// Define field assign list. 
-						$fieldsetlist = "personname=$personname, genderid=$genderid, position=$position, deptid=$deptid, referrerid=null, username=$username";
-					}
+					// Define field assign list. 
+					$fieldsetlist = " personname=$personname, genderid=$genderid, position=$position, deptid=$deptid, referrerid=null, username=$username ";
 				}
 
 				// Compile database query. 
@@ -536,7 +484,7 @@
 			if($crudop=='create') {
 
 				// Get initial set of field data. 
-				$fieldids = ['issueid', 'personid', 'commenttext',];
+				$fieldids = ['personid', 'issueid', 'commenttext',];
 				// $fieldvaluelist = " $issueid, $personid, '$commenttext' ";
 				$fieldvalues = array_map('getFieldValueById',$fieldids);
 				// Get initial set of field data. 
@@ -592,8 +540,8 @@
 			}
 		}
 
-		// Display error message for invalid table id. 
-		else printToPage("Invalid table selected for operation: $optable");
+		// Display error message for new undefined table. 
+		else printToPage("New undefined table selected for operation: $optable");
 
 		// Send database query (if valid). 
 		if( isset($sql) ) {
@@ -616,14 +564,13 @@
 			printToPage('No query!!!');
 
 			// Return results from query. 
-			return null;
+			return 0;
 		}
 	}
 
 	// Download public table entries from database. 
-	function getPublicTables() {
+	function getPublicTables($displaydetail=false) {
 		global $databasetables;
-		// global $selectedtable;
 		printToPage();
 		printToPage("Retrieving public database table entries...");
 
@@ -633,73 +580,70 @@
 			'genders',
 		];
 
-		// Go thru each database table. 
+		// Go thru each public database table. 
 		foreach($publictableids as $tid) {
 
-			// Save list of entries for database table. 
-			$databasetables[$tid]['entrydata'] = getResultTableById($tid);
-		}
-	}
-	// Download all table entries from database. 
-	function getAllTables() {
-		global $databasetables;
-		printToPage();
-		printToPage("Retrieving all database table entries...");
+			// Do hanging reference mode. 
+			if( isset($hangingrefmode) ) {
 
-		// Go thru each database table. 
-		foreach($databasetables as $tid=>$table) {
-			
-			// Save list of entries for database table. 
-			// $table['entrydata'] = getResultTableById($tid);
-			// Save list of entries for database table. 
-			$databasetables[$tid]['entrydata'] = getResultTableById($tid);
-			$print = json_encode( $table['entrydata'] );
-			printToPage( "Local: $print" );
-			$print = json_encode( $databasetables[$tid]['entrydata'] );
-			printToPage( "Global: $print" );
+				// Get public table. 
+				$table = $databasetables[$tid];
+
+				// Download basic data for public database table. 
+				$table['entrydata'] = getResultTableById($tid,0,$displaydetail);
+			}
+
+			// Do direct reference mode. 
+			else {
+
+				// Download basic data for public database table. 
+				$databasetables[$tid]['entrydata'] = getResultTableById($tid,0,$displaydetail);
+			}
 		}
 	}
 	// Download relevant table entries from database. 
-	function getRelevantTables($selectedviewid /* 'home' */) {
+	function getRelevantTables($selectedviewid /* 'home' */,$displaydetail=false) {
 		global $databasetables;		// $databasetables
-		global $selectedtable;		// $databasetables['recentactivity']
+		global $selectedtable;		// $databasetables['mycomments']
 		printToPage();
 		printToPage("Retrieving relevant database table entries ($selectedviewid)...");
 
-		// Save table entries for selected table. 
-		// $selectedtable['entrydata'] = getResultTableById($selectedviewid,1,1);
-		$databasetables[$selectedviewid]['entrydata'] = getResultTableById($selectedviewid,1,1);
+		// Do hanging reference mode. 
+		if( isset($hangingrefmode) ) {
 
-		// Go thru each reference table. 
-		// foreach($selectedtable['reftableids'] as $rtid) {
-		foreach($databasetables[$selectedviewid]['reftableids'] as $rtid) {
-
-			// Get reference table. 
-			// $reftable = $databasetables[$rtid];
-			// Save table rows for reference table. 
-			// $reftable['entrydata'] = getResultTableById($rtid,0,1);
-
-			// Save table rows for reference table. 
-			$databasetables[$rtid]['entrydata'] = getResultTableById($rtid,0,1);
+			// Download detailed data for selected table. 
+			$selectedtable['entrydata'] = getResultTableById($selectedviewid,1,$displaydetail);
 		}
-	}
-	// Get result table for given table id. 
-	function getResultTableById($giventableid,$querydetail=false,$showdetail=false) {
-		global $databasetables;
 
-		if($showdetail) printToPage("Retrieving table entries ($giventableid)...");
-		if(!$giventableid) return [];
+		// Do direct reference mode. 
+		else {
 
-		// Get database query. 
-		if($querydetail) $sql = $databasetables[$giventableid]['detaildataquery'];
-		else $sql = $databasetables[$giventableid]['basicdataquery'];
-		// Add id to query for 'recent activity' table. 
-		if($giventableid=='recentactivity') $sql .= $_SESSION['currentuserid'];
+			// Download detailed data for selected table. 
+			$databasetables[$selectedviewid]['entrydata'] = getResultTableById($selectedviewid,1,$displaydetail);
+		}
 
-		// Get rows of result table from query.
-		$queryresults = sendDatabaseQuery($sql,$showdetail)['queryresults'];
+		// Do hanging reference mode. 
+		if( isset($hangingrefmode) ) {
 
-		// Return rows of result table. 
-		return $queryresults;
+			// Go thru each referenced database table. 
+			foreach($selectedtable['reftableids'] as $rtid) {
+	
+				// Get reference table. 
+				$reftable = $databasetables[$rtid];
+				// Download basic data for reference table. 
+				$reftable['entrydata'] = getResultTableById($rtid,0,$displaydetail);
+			}
+		}
+
+		// Do direct reference mode. 
+		else {
+
+			// Go thru each referenced database table. 
+			foreach($databasetables[$selectedviewid]['reftableids'] as $rtid) {
+	
+				// Download basic data for reference table. 
+				$databasetables[$rtid]['entrydata'] = getResultTableById($rtid,0,$displaydetail);
+			}
+		}
 	}
 ?>

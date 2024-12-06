@@ -2,14 +2,16 @@
 <?php
 
 
-	// Define login mode. 
-	$easyusermode = false;
-	// $easyusermode = true;
+	// Define login modes. 
+	$quickloginmode = true;
 	$easypassmode = false;
 	// $easypassmode = true;
 
 	// Check if login received. 
-	$isloginreceived = isset( $_POST['login'] );
+	$isloginreceived = isset( $_POST['login'] ) ;
+	$isautologinreceived = isset( $_POST['autologinuserid'] ) ;
+	// Check if login registration received. 
+	$isregistrationreceived = isset( $_POST['login'] ) && ( $_POST['login'] == 'register' ) ;
 
 
 	/*****/
@@ -17,9 +19,9 @@
 
 	// Check for user state changes. 
 	function checkUserChanges() {
-		global $isloginreceived;
+		global $isloginreceived,$isautologinreceived,$isregistrationreceived;
 		// printToPage();
-		printToPage("Checking for changes in user state...");
+		// printToPage("Checking for changes in user state...");
 
 		// Check if logout request received. 
 		$letsjustlogout = isset( $_GET['logout'] );
@@ -34,7 +36,7 @@
 		}
 
 		// Check for auto-login. 
-		if( isset( $_POST['autologinuserid'] ) ) {
+		if( $isautologinreceived ) {
 
 			// Get user id. 
 			$uid = $_POST['autologinuserid'] ?? 1;
@@ -43,10 +45,9 @@
 			$_SESSION['currentuserid'] = $uid;
 		}
 
-		// Check if login registration received. 
-		$isregistrationreceived = isset( $_POST['login'] ) && ( $_POST['login'] == 'register' );
 		// Execute user registration. 
-		if( $isregistrationreceived ) {
+		else if( $isregistrationreceived ) {
+			printToPage("Registration received...");
 
 			// Create new person/user. 
 			$successfulregistrations = goCrudOp('persons','create');
@@ -67,6 +68,7 @@
 
 		// Execute user login. 
 		else if( $isloginreceived ) {
+			printToPage("Login received...");
 
 			// Execute existing user login. 
 			$isuserloggedin = loginExistingUser(1);
@@ -84,7 +86,7 @@
 	}
 	// TODO: Login existing user. 
 	function loginExistingUser($dorefreshafterlogin=false) {
-		global $easyusermode, $easypassmode;
+		global $easypassmode;
 		// if( !isset( $_POST['userid'] ) || !$_POST['userid'] ) return;
 
 		// Define input receipt mode. 
@@ -93,58 +95,28 @@
 
 		// Disregard password (easy mode). 
 		if($easypassmode) {
-
-			// Select user (easy mode). 
-			if($easyusermode) {
 	
-				// Get user input: user id. 
-				$uid = $cleanuplogincredentials ? getFieldValueById('userid') : $_POST['userid'];
+			// Get user input: username. 
+			$uname = $cleanuplogincredentials ? getFieldValueById('username') : $_POST['username'];
 
-				// Define list of conditions for database query. 
-				$querycondition = " id=$uid ";
-			}
-			// Select user (non-easy mode). 
-			else {
-	
-				// Get user input: username. 
-				$uname = $cleanuplogincredentials ? getFieldValueById('username') : $_POST['username'];
-
-				// Define list of conditions for database query. 
-				$querycondition = " username=$uname ";
-			}
+			// Define list of conditions for database query. 
+			$querycondition = " username=$uname ";
 		}
 		// Check password (production mode). 
 		else {
 
 			// Get user input: password. 
 			$pw = $cleanuplogincredentials ? getFieldValueById('password') : $_POST['password'];
-
-			// Select user (easy mode). 
-			if($easyusermode) {
 	
-				// Get user input: user id. 
-				$uid = $cleanuplogincredentials ? getFieldValueById('userid') : $_POST['userid'];
-				// Get hashing salt for given user. 
-				$pwslt = getUserSalt($uid,'id');
-				// Get password hash for input password and selected user. 
-				$passwdhash = generatePasswdHash($pw.$pwslt);
+			// Get user input: username. 
+			$uname = $cleanuplogincredentials ? getFieldValueById('username') : $_POST['username'];
+			// Get hashing salt for given user. 
+			$pwslt = getUserSalt($uname,'username');
+			// Get password hash for input password and selected user. 
+			$passwdhash = getPasswdHash($pw.$pwslt);
 
-				// Define list of conditions for database query. 
-				$querycondition = " id=$uid AND passwdhash='$passwdhash' ";
-			}
-			// Select user (non-easy mode). 
-			else {
-	
-				// Get user input: username. 
-				$uname = $cleanuplogincredentials ? getFieldValueById('username') : $_POST['username'];
-				// Get hashing salt for given user. 
-				$pwslt = getUserSalt($uname,'username');
-				// Get password hash for input password and selected user. 
-				$passwdhash = generatePasswdHash($pw.$pwslt);
-
-				// Define list of conditions for database query. 
-				$querycondition = " username='$uname' AND passwdhash='$passwdhash' ";
-			}
+			// Define list of conditions for database query. 
+			$querycondition = " username='$uname' AND passwdhash='$passwdhash' ";
 		}
 
 		// Create database query. 
@@ -156,17 +128,19 @@
 		GROUP BY p.id; ";
 
 		// Send database query to find existing user. 
-		$userqueryresult = sendDatabaseQuery($sql)['queryresults'];
-		$isuserfound = isset( $userqueryresult[0] );
+		$userloginqueryresult = sendDatabaseQuery($sql)['queryresults'];
+		$userfound = isset( $userloginqueryresult[0] );
 
 		// Save user id as session data (if match found). 
-		if( $isuserfound ) {
+		if( $userfound ) {
 
 			// Get id of existing user. 
-			$uid = $userqueryresult[0]['id'];
+			$uid = $userloginqueryresult[0]['id'];
+			$adminstatus = $userloginqueryresult[0]['admincount'];
 
 			// Save user id into session data. 
 			$_SESSION['currentuserid'] = $uid;
+			$_SESSION['currentuseradmin'] = $adminstatus;
 		}
 		// Clear session data (if match not found). 
 		else {
@@ -176,7 +150,7 @@
 		}
 
 		// Return result. 
-		return $isuserfound;
+		return $userfound;
 	}
 	// Get hashing salt for given user. 
 	function getUserSalt($propvalue,$propname) {
@@ -199,14 +173,14 @@
 		}
 	}
 	// Logout current user. 
-	function logoutUser($dorefreshafterlogout=false) {
+	function logoutUser($doredirectafterlogout=false) {
 		// print "<script>console.log('Now logging out...')</script>";
 
 		// Clear session data upon logout. 
 		session_destroy();
 
 		// Refresh page. 
-		if($dorefreshafterlogout) header('location:./');
+		if($doredirectafterlogout) header('location:./?view=login');
 	}
 
 	// Get id of currently active user (from session data). 
@@ -216,15 +190,30 @@
 
 		// Get id of current user (if valid). 
 		$uid = $_SESSION['currentuserid'] ?? null;
-		if($displaydetail) printToPage ("uid: $uid");
+
+		// Display result block. 
+		if($displaydetail) {
+			?>
+			<!-- resultblock -->
+			<details class="resultblock">
+				<?php if( $uid ): ?>
+					<summary>User id: <?php print $uid; ?></summary>
+				<?php else: ?>
+					<summary>User id: [none]</summary>
+				<?php endif; ?>
+				<span class="resultstring"><?php print json_encode( $_SESSION ); ?></span>
+			</details>
+			<!-- /resultblock -->
+			<?php
+		}
 
 		// Return id of current user. 
 		return $uid;
 	}
 	// Retrieve profile data for given user. 
-	function getUserProfile( $uid, $displayqueryresults=false ) {
+	function getUserProfile( $uid, $displaydetail=false ) {
 		// printToPage();
-		printToPage("Retrieving user data...");
+		printToPage("Retrieving user profile data...");
 
 		// Return nothing if no user id given. 
 		if( ! $uid ) return null;
@@ -238,31 +227,30 @@
 			LEFT JOIN (sessions as s) ON (s.personid = p.id)
 			WHERE (p.id=$uid) ";
 		// Send database query. 
-		$userqueryresults = sendDatabaseQuery($sql,1)['queryresults'];
-		if($displayqueryresults) printToPage( json_encode( $userqueryresults ) );
+		$userqueryresults = sendDatabaseQuery($sql,$displaydetail)['queryresults'];
 
-		// Return user data if user found. 
-		if( $userqueryresults ) {
-
-			// Display report for found user. 
-			printToPage("Got it: user data found!");
-
-			// Return data for given user. 
-			return $userqueryresults[0];
+		// Display result block. 
+		if( $displaydetail ) {
+			?>
+			<!-- resultblock -->
+			<details class="resultblock">
+				<?php if( $userqueryresults ): ?>
+					<summary>Got it: User data found!</summary>
+				<?php else: ?>
+					<summary>Not it: No user data found!</summary>
+				<?php endif; ?>
+				<span class="resultstring"><?php print json_encode( $userqueryresults ); ?></span>
+			</details>
+			<!-- /resultblock -->
+			<?php
 		}
 
-		// Return nothing if no user found. 
-		else {
-
-			// Display report for no user. 
-			printToPage("No user data found!");
-
-			// Return nothing. 
-			return null;
-		}
+		// Return user data (if user found). 
+		// Return nothing (if no user found). 
+		return $userqueryresults[0] ?? null;
 	}
 	// Check admin status of given user. 
-	function checkIfUserAdmin( $uid, $displayqueryresults=false ) {
+	function checkIfUserAdmin( $uid, $displaydetail=false ) {
 		// printToPage();
 		printToPage("Checking user's admin status...");
 
@@ -273,9 +261,23 @@
 		$sql = " SELECT personid FROM admins WHERE (personid=$uid) ";
 
 		// Send database query. 
-		$adminqueryresults = sendDatabaseQuery($sql)['queryresults'];
-		printToPage( !empty($adminqueryresults) ? 'true' : 'false' );
-		if($displayqueryresults) printToPage( json_encode( $adminqueryresults ) );
+		$adminqueryresults = sendDatabaseQuery($sql,$displaydetail)['queryresults'];
+
+		// Display result block. 
+		if( $displaydetail ) {
+			?>
+			<!-- resultblock -->
+			<details class="resultblock">
+				<?php if( $adminqueryresults ): ?>
+					<summary>TRUE: Admin</summary>
+				<?php else: ?>
+					<summary>FALSE: Not admin</summary>
+				<?php endif; ?>
+				<span class="resultstring"><?php print json_encode( $adminqueryresults ); ?></span>
+			</details>
+			<!-- /resultblock -->
+			<?php
+		}
 
 		// Return status of current user. 
 		return !empty($adminqueryresults);
@@ -295,8 +297,8 @@
 		// Return hexadecimal bytes as salt. 
 		return $b;
 	}
-	// Generate password hash. 
-	function generatePasswdHash($input, $displaydetail=false) {
+	// Get hash of given password. 
+	function getPasswdHash($input, $displaydetail=false) {
 
 		// Generate password hash. 
 		$h = hash('sha256',$input);
