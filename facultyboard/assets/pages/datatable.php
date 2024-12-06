@@ -9,123 +9,16 @@
 
 		<?php
 
-			// Check if entry selected for details. 
-			$gotentryselection = isset( $_GET['eid'] );
-			// Proceed if entry selected for details. 
-			if( $gotentryselection ) {
-
-				// Get id of selected entry. 
-				$tableid = $selectedviewid;
-				$entryid = $_GET['eid'];
-
-				// Check if valid entry selected. 
-				foreach( $databasetables[$tableid]['entrydata'] as $tablerow ) {
-
-					// Check if entry found. 
-					$entryfound = ( $tablerow['id'] == $entryid );
-
-					// 
-					if($entryfound) $selectedentry = $tablerow;
-				}
-			}
-
-			// Proceed if entry selected for details. 
-			if( false ) {
-
-				// Get id of selected entry. 
-				$tableid = cleanInputForQuerySimple( $selectedviewid );
-				$entryid = cleanInputForQuery( $_GET['eid'] );
-
-				// Check if valid entry selected. 
-				// $querybase = $databasetables[$tableid]['detaildataquery'];
-				// $sql = " $querybase WHERE (p.id=$entryid) ";
-				$sql = " SELECT * FROM $tableid WHERE (id=$entryid) ";
-
-				// Send database query. 
-				$entryqueryresults = sendDatabaseQuery($sql,1)['queryresults'];
-				$gotsomeentrydetails = isset( $entryqueryresults[0] );
-			}
+			// Define table entry accessibility. 
+			$tableentrieseditable = $iscurrentuseradmin || $selectedtable['tableentrieseditable'];
+			$tableentriescomposable = $iscurrentuseradmin || $selectedtable['tableentriescomposable'];
 		?>
-
-		<?php include('./assets/module/message.php'); ?>
-
-		<?php if( isset( $selectedentry ) ): ?>
-
-			<!-- detailtable -->
-			<section class="detailtable">
-
-				<!-- detaillist -->
-				<ul class="detaillist">
-
-					<!-- <?php foreach( $entryqueryresults as $tablerow ): ?> -->
-					<!-- <?php endforeach; ?> -->
-
-					<?php /* foreach( $selectedtable['entrydata'] as $tablerow ): */ ?>
-
-						<!-- detailitem -->
-						<li class="detailitem">
-
-							<!-- detailcard -->
-							<div class="detailcard">
-
-								<!-- <?php print json_encode($selectedentry); ?> -->
-
-								<?php foreach($displayfields as $field): ?>
-
-									<?php 
-										// Get field id (from detailed query results). 
-										$fid = $field['fid'];
-										// Get field type. 
-										$fieldtype = $field['fieldtype'] ?? 'text';
-									?>
-
-									<?php if( $fieldtype=='image' ): ?>
-
-										<!-- picture -->
-										<img class="picture" src="./assets/image/<?php print $selectedentry[$fid]; ?>">
-										<!-- /picture -->
-
-									<?php else: ?>
-
-										<!-- field -->
-										<div class="field">
-
-											<!-- key -->
-											<span class="key"><?php print $field['fieldtitle'] ?></span>
-											<!-- /key -->
-
-											<!-- caption -->
-											<span class="caption"><?php print $selectedentry[$fid]; ?></span>
-											<!-- /caption -->
-
-										</div>
-										<!-- /field -->
-
-									<?php endif; ?>
-
-								<?php endforeach; ?>
-
-							</div>
-							<!-- /detailcard -->
-
-						</li>
-						<!-- /detailitem -->
-
-					<?php /* endforeach; */ ?>
-
-				</ul>
-				<!-- /detaillist -->
-
-			</section>
-			<!-- /detailtable -->
-
-		<?php endif; ?>
 
 		<!-- datatable -->
 		<section class="datatable">
 
 			<!-- head -->
-			<div class="head f">
+			<div class="headbar spbtw">
 
 				<!-- backbtn -->
 				<button class="backbtn btn" onclick="window.location='./?view=home';">
@@ -144,19 +37,19 @@
 				<!-- /backbtn -->
 
 				<!-- head -->
-				<h2 class="head">
+				<h2 class="headline">
 
 					<!-- selflink -->
 					<a class="selflink" href="<?php print $selfurl; ?>">
 
 						<!-- icon -->
-						<svg class="icon <?php print $tableicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<?php print $databasetablesicons[ $tableicontag ]; ?>
+						<svg class="icon <?php print $selectedtableicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<?php print $databasetablesicons[ $selectedtableicontag ]; ?>
 						</svg>
 						<!-- /icon -->
 
 						<!-- caption -->
-						<span class="caption"><?php print $tabletitle; ?></span>
+						<span class="caption"><?php print $selectedtabletitle; ?></span>
 						<!-- /caption -->
 						
 					</a>
@@ -166,7 +59,7 @@
 				<!-- /head -->
 
 				<!-- newbtn -->
-				<button class="newbtn btn" onclick="toggleEntryComposer()" <?php print $iscurrentuseradmin ? '' : 'disabled'; ?>>
+				<button class="newbtn btn" onclick="toggleEntryComposer()" <?php print ( $tableentriescomposable ? '' : 'disabled' ); ?>>
 
 					<!-- icon -->
 					<svg class="icon plus" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -196,9 +89,9 @@
 						<!-- row -->
 						<tr class="row">
 
-							<?php foreach($displayfields as $field): ?>
+							<?php foreach($selectedtabledisplayfields as $field): ?>
 
-								<?php if(  isset( $field['tablevisible'] ) && $field['tablevisible']  ): ?>
+								<?php if(  isset( $field['visibleintable'] ) && $field['visibleintable']  ): ?>
 
 									<!-- cell -->
 									<th class="cell">
@@ -214,19 +107,15 @@
 
 							<?php endforeach; ?>
 
-							<?php if( $iscurrentuseradmin ): ?>
+							<!-- cell -->
+							<th class="cell">
 
-								<!-- cell -->
-								<th class="cell">
-
-									<!-- caption -->
-									<span class="caption">Admin</span>
-									<!-- /caption -->
-									
-								</th>
-								<!-- /cell -->
-
-							<?php endif; ?>
+								<!-- caption -->
+								<span class="caption">Action</span>
+								<!-- /caption -->
+								
+							</th>
+							<!-- /cell -->
 
 						</tr>
 						<!-- /row -->
@@ -239,11 +128,13 @@
 
 						<?php if( empty( $selectedtable['entrydata'] ) ): ?>
 
+							<?php $numcolumns = sizeof($selectedtabledisplayfields) + 1; ?>
+
 							<!-- row -->
 							<tr class="row">
 
 								<!-- cell -->
-								<td class="cell c" colspan="<?php print sizeof($displayfields)+1; ?>">
+								<td class="cell c" colspan="<?php print $numcolumns; ?>">
 
 									<!-- caption -->
 									<span class="caption">Nothing to show here</span>
@@ -262,9 +153,9 @@
 								<!-- <?php print json_encode($tablerow); ?> -->
 
 								<!-- row -->
-								<tr class="row" onclick="window.location='./';">
+								<tr class="row">
 
-									<?php foreach($displayfields as $field): ?>
+									<?php foreach($selectedtabledisplayfields as $field): ?>
 
 										<?php 
 
@@ -274,7 +165,7 @@
 											$fieldtype = $field['fieldtype'] ?? 'text';
 										?>
 
-										<?php if(  isset( $field['tablevisible'] ) && $field['tablevisible']  ): ?>
+										<?php if(  isset( $field['visibleintable'] ) && $field['visibleintable']  ): ?>
 
 											<!-- cell -->
 											<td class="cell">
@@ -302,40 +193,154 @@
 
 									<?php endforeach; ?>
 
-									<?php if( $iscurrentuseradmin ): ?>
+									<?php $entryid = $tablerow['id']; ?>
 
-										<?php $entryid = $tablerow['id']; ?>
+									<!-- cell -->
+									<td class="cell">
 
-										<!-- cell -->
-										<td class="cell">
+										<!-- actionbox -->
+										<div class="actionbox">
 
-											<!-- editbtn -->
-											<button class="editbtn btn" onclick="toggleEntryEditor(this)" title="<?php print $entryid; ?>" data-entryid="<?php print $entryid; ?>">
+											<!-- viewbtn -->
+											<button class="viewbtn btn" onclick="toggleEntryViewer(this)" data-entryid="<?php print $entryid; ?>">
 
 												<!-- icon -->
-												<svg class="icon penpad" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-													<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-													<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+												<svg class="icon eye" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5z"/>
+													<path d="M2 3h10v2H2zm0 3h4v3H2zm0 4h4v1H2zm0 2h4v1H2zm5-6h2v1H7zm3 0h2v1h-2zM7 8h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2z"/>
 												</svg>
 												<!-- /icon -->
 
 												<!-- caption -->
-												<span class="caption">Edit</span>
+												<span class="caption">View</span>
 												<!-- /caption -->
 
 											</button>
-											<!-- /editbtn -->
+											<!-- /viewbtn -->
 
-											<section class="editor float" id="id<?php print $entryid; ?>">
+											<?php if( $tableentrieseditable ): ?>
+
+												<!-- editbtn -->
+												<button class="editbtn btn" onclick="toggleEntryEditor(this)" data-entryid="<?php print $entryid; ?>">
+
+													<!-- icon -->
+													<svg class="icon penpad" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+														<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+													</svg>
+													<!-- /icon -->
+
+													<!-- caption -->
+													<span class="caption">Edit</span>
+													<!-- /caption -->
+
+												</button>
+												<!-- /editbtn -->
+
+											<?php endif; ?>
+
+										</div>
+										<!-- /actionbox -->
+
+										<!-- viewer -->
+										<section class="viewer crud float" id="viewer<?php print $entryid; ?>">
+
+											<!-- head -->
+											<div class="headbar spbtw">
 
 												<!-- head -->
-												<div class="head f">
+												<h2 class="headline">
+
+													<!-- caption -->
+													<span class="caption">View <?php print $selectedtablesinglecaption; ?></span>
+													<!-- /caption -->
+
+												</h2>
+												<!-- /head -->
+
+												<!-- closebtn -->
+												<button class="closebtn btn" onclick="closeEntryViewers()">
+
+													<!-- icon -->
+													<svg class="icon xbig" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+														<path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+													</svg>
+													<!-- /icon -->
+
+													<!-- caption -->
+													<span class="caption">Close</span>
+													<!-- /caption -->
+
+												</button>
+												<!-- /closebtn -->
+
+											</div>
+											<!-- /head -->
+
+											<!-- viewcard -->
+											<div class="viewcard">
+
+												<!-- fieldlist -->
+												<ul class="fieldlist">
+
+													<?php foreach($selectedtabledisplayfields as $field): ?>
+
+														<?php 
+															// Get field id (from detailed query results). 
+															$fid = $field['fid'];
+															// Get field type. 
+															$fieldtype = $field['fieldtype'] ?? 'text';
+														?>
+
+														<!-- field -->
+														<li class="field">
+
+															<!-- key -->
+															<span class="key"><?php print $field['fieldtitle'] ?></span>
+															<!-- /key -->
+
+															<?php if( $fieldtype=='image' ): ?>
+
+																<!-- picture -->
+																<img class="picture" src="./assets/image/<?php print $tablerow[$fid]; ?>">
+																<!-- /picture -->
+
+															<?php else: ?>
+
+																<!-- caption -->
+																<span class="caption"><?php print $tablerow[$fid]; ?></span>
+																<!-- /caption -->
+
+															<?php endif; ?>
+
+														</li>
+														<!-- /field -->
+
+													<?php endforeach; ?>
+
+												</ul>
+												<!-- /fieldlist -->
+
+											</div>
+											<!-- /viewcard -->
+
+										</section>
+										<!-- /viewer -->
+
+										<?php if( $tableentrieseditable ): ?>
+
+											<!-- editor -->
+											<section class="editor crud float" id="editor<?php print $entryid; ?>">
+
+												<!-- head -->
+												<div class="headbar spbtw">
 
 													<!-- head -->
-													<h2 class="head">
+													<h2 class="headline">
 
 														<!-- caption -->
-														<span class="caption">Edit <?php print $singlecaption; ?></span>
+														<span class="caption">Edit <?php print $selectedtablesinglecaption; ?></span>
 														<!-- /caption -->
 
 													</h2>
@@ -362,18 +367,18 @@
 												<!-- /head -->
 
 												<!-- update -->
-												<form class="update crud" method="post" action="<?php print $selfurl; ?>">
+												<form class="update crudform" method="post" action="<?php print $selfurl; ?>">
 
 													<!-- parameter -->
-													<input class="parameter" type="hidden" name="optypeid" value="update">
-													<input class="parameter" type="hidden" name="tableid" value="<?php print $selectedviewid; ?>">
+													<input class="parameter" type="hidden" name="crudopid" value="update">
+													<input class="parameter" type="hidden" name="crudtableid" value="<?php print $selectedviewid; ?>">
 													<input class="parameter" type="hidden" name="tablerowid" value="<?php print $tablerow['id']; ?>">
 													<!-- /parameter -->
 
 													<!-- fieldlist -->
 													<ul class="fieldlist">
 
-														<?php foreach($editorfields as $field): ?>
+														<?php foreach($selectedtableeditorfields as $field): ?>
 
 															<?php /* if( ! $field['editable'] ) continue; */ ?>
 
@@ -460,7 +465,7 @@
 														<button class="sendbtn btn" type="submit">
 
 															<!-- caption -->
-															<span class="caption">Update <?php print $singlecaption; ?></span>
+															<span class="caption">Update <?php print $selectedtablesinglecaption; ?></span>
 															<!-- /caption -->
 
 														</button>
@@ -473,11 +478,11 @@
 												<!-- /update -->
 
 												<!-- delete -->
-												<form class="delete crud" method="post" action="<?php print $selfurl; ?>">
+												<form class="delete crudform" method="post" action="<?php print $selfurl; ?>">
 
 													<!-- parameter -->
-													<input class="parameter" type="hidden" name="optypeid" value="delete">
-													<input class="parameter" type="hidden" name="tableid" value="<?php print $selectedviewid; ?>">
+													<input class="parameter" type="hidden" name="crudopid" value="delete">
+													<input class="parameter" type="hidden" name="crudtableid" value="<?php print $selectedviewid; ?>">
 													<input class="parameter" type="hidden" name="tablerowid" value="<?php print $tablerow['id']; ?>">
 													<!-- /parameter -->
 
@@ -488,7 +493,7 @@
 														<button class="sendbtn btn" type="submit">
 
 															<!-- caption -->
-															<span class="caption">Delete <?php print $singlecaption; ?></span>
+															<span class="caption">Delete <?php print $selectedtablesinglecaption; ?></span>
 															<!-- /caption -->
 
 														</button>
@@ -501,11 +506,12 @@
 												<!-- /delete -->
 												
 											</section>
-											
-										</td>
-										<!-- /cell -->
+											<!-- /editor -->
 
-									<?php endif; ?>
+										<?php endif; ?>
+										
+									</td>
+									<!-- /cell -->
 									
 								</tr>
 								<!-- /row -->
@@ -526,26 +532,26 @@
 		</section>
 		<!-- /datatable -->
 
-		<?php if( $iscurrentuseradmin ): ?>
+		<?php if( $tableentriescomposable ): ?>
 
 			<!-- composer -->
-			<section class="composer float">
+			<section class="composer crud float">
 
 				<!-- head -->
-				<div class="head f">
+				<div class="headbar spbtw">
 
 					<!-- head -->
-					<h2 class="head">
+					<h2 class="headline">
 
 						<!-- caption -->
-						<span class="caption">New <?php print $singlecaption; ?></span>
+						<span class="caption">New <?php print $selectedtablesinglecaption; ?></span>
 						<!-- /caption -->
 
 					</h2>
 					<!-- /head -->
 
 					<!-- closebtn -->
-					<button class="closebtn btn" onclick="toggleEntryComposer()">
+					<button class="closebtn btn" onclick="closeEntryComposer()">
 
 						<!-- icon -->
 						<svg class="icon xbig" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -565,17 +571,17 @@
 				<!-- /head -->
 
 				<!-- create -->
-				<form class="create crud" method="post" action="<?php print $selfurl; ?>">
+				<form class="create crudform" method="post" action="<?php print $selfurl; ?>">
 
 					<!-- parameter -->
-					<input class="parameter" type="hidden" name="optypeid" value="create">
-					<input class="parameter" type="hidden" name="tableid" value="<?php print $selectedviewid; ?>">
+					<input class="parameter" type="hidden" name="crudopid" value="create">
+					<input class="parameter" type="hidden" name="crudtableid" value="<?php print $selectedviewid; ?>">
 					<!-- /parameter -->
 
 					<!-- fieldlist -->
 					<ul class="fieldlist">
 
-						<?php foreach($editorfields as $field): ?>
+						<?php foreach($selectedtableeditorfields as $field): ?>
 
 							<?php 
 								// Get field id. 
@@ -655,7 +661,7 @@
 						<button class="sendbtn btn" type="submit">
 
 							<!-- caption -->
-							<span class="caption">Add <?php print $singlecaption; ?></span>
+							<span class="caption">Add <?php print $selectedtablesinglecaption; ?></span>
 							<!-- /caption -->
 
 						</button>

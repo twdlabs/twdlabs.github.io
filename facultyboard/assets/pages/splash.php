@@ -7,8 +7,6 @@
 	
 	<body>
 
-		<?php include('./assets/module/message.php'); ?>
-
 		<?php if( $currentuserprofile ): ?>
 
 			<?php $personname = $currentuserprofile['personname'] ?? ''; ?>
@@ -17,12 +15,12 @@
 			<section class="welcome">
 
 				<!-- head -->
-				<div class="head">
+				<div class="headbar">
 
 					<?php if( !$justloggedout ): ?>
 
 						<!-- head -->
-						<h2 class="head">
+						<h2 class="headline">
 
 							<!-- caption -->
 							<span class="caption">Hello<?php print $personname ? ", $personname" : ''; ?></span>
@@ -54,7 +52,7 @@
 					<?php else: ?>
 
 						<!-- head -->
-						<h2 class="head">
+						<h2 class="headline">
 
 							<!-- caption -->
 							<span class="caption">Till next time<?php print $personname ? ", $personname" : ''; ?>.</span>
@@ -87,10 +85,10 @@
 		<section class="splash <?php print ( $currentuserprofile ) ? '' : 'float'; ?>">
 
 			<!-- head -->
-			<div class="head">
+			<div class="headbar">
 
 				<!-- head -->
-				<h2 class="head">
+				<h2 class="headline">
 
 					<!-- caption -->
 					<span class="caption">Faculty Board</span>

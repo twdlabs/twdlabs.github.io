@@ -10,75 +10,64 @@
 		<?php
 
 			// Check for login/register mode. 
-			// $quickmode = true;
 			$existingusermode = ($selectedviewid == 'login');
-			// Define form title. 
-			$formtitle = isset( $quickmode ) ? 'Auto-Login' : ( $existingusermode ? 'Existing User' : 'New User' );
 		?>
-
-		<?php include('./assets/module/message.php'); ?>
 
 		<!-- user -->
 		<section class="user float">
 
-			<!-- head -->
-			<div class="head">
+			<?php if( $existingusermode ): ?>
 
 				<!-- head -->
-				<h2 class="head">
+				<div class="headbar">
 
-					<!-- caption -->
-					<span class="caption"><?php print $formtitle; ?></span>
-					<!-- /caption -->
+					<!-- head -->
+					<h2 class="headline">
 
-				</h2>
+						<!-- caption -->
+						<span class="caption">Existing User</span>
+						<!-- /caption -->
+
+					</h2>
+					<!-- /head -->
+
+				</div>
 				<!-- /head -->
 
-			</div>
-			<!-- /head -->
+				<!-- login -->
+				<form class="user crudform" method="post" action="<?php print $selfurlbase; ?>">
 
-			<?php if( isset($quickmode) ): ?>
+					<?php if( isset($quickloginmode) ): ?>
 
-				<!-- autologin -->
-				<form class="user crud" method="post" action="<?php print $selfurlbase; ?>">
+						<!-- action -->
+						<div class="action">
 
-					<!-- action -->
-					<div class="action">
+							<!-- btnbox -->
+							<div class="btnbox">
 
-						<?php $databasetables['persons']['entrydata'] = getResultTableById('persons',0,0); ?>
+								<?php foreach( getResultTableById('persons',0,0) as $person ): ?>
 
-						<!-- btnbox -->
-						<div class="btnbox">
+									<!-- <input type="hidden" name="login" value="autologin"> -->
 
-							<?php foreach($databasetables['persons']['entrydata'] as $person): ?>
+									<!-- sendbtn -->
+									<button class="sendbtn btn" type="submit" name="autologinuserid" value="<?php print $person['id']; ?>">
 
-								<!-- sendbtn -->
-								<button class="sendbtn btn" type="submit" name="autologinuserid" value="<?php print $person['id']; ?>">
+										<!-- caption -->
+										<span class="caption"><?php print $person['username']; ?></span>
+										<!-- /caption -->
 
-									<!-- caption -->
-									<span class="caption"><?php print $person['username']; ?></span>
-									<!-- /caption -->
+									</button>
+									<!-- /sendbtn -->
 
-								</button>
-								<!-- /sendbtn -->
+								<?php endforeach; ?>
 
-							<?php endforeach; ?>
+							</div>
+							<!-- /btnbox -->
 
 						</div>
-						<!-- /btnbox -->
+						<!-- /action -->
 
-					</div>
-					<!-- /action -->
-
-				</form>
-				<!-- /autologin -->
-
-			<?php else: ?>
-
-				<?php if( $existingusermode ): ?>
-
-					<!-- login -->
-					<form class="user crud" method="post" action="<?php print $selfurlbase; ?>">
+					<?php else: ?>
 
 						<!-- fieldlist -->
 						<ul class="fieldlist">
@@ -86,48 +75,22 @@
 							<!-- field -->
 							<li class="field">
 
-								<?php if($easyusermode): ?>
+								<!-- label -->
+								<label class="label" for="un">
 
-									<!-- fieldinput -->
-									<select class="fieldinput" name="userid">
+									<!-- icon -->
+									<svg class="icon person" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+										<!-- <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/> -->
+										<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+									</svg>
+									<!-- /icon -->
 
-										<!-- option -->
-										<option value="">Select User</option>
-										<!-- /option -->
+								</label>
+								<!-- /label -->
 
-										<?php $userslist = $databasetables['persons']['entrydata']; ?>
-
-										<?php foreach($userslist as $user): ?>
-
-											<!-- option -->
-											<option value="<?php print $user['id']; ?>"><?php print $user['personname']; ?></option>
-											<!-- /option -->
-
-										<?php endforeach; ?>
-
-									</select>
-									<!-- /fieldinput -->
-
-								<?php else: ?>
-
-									<!-- label -->
-									<label class="label" for="un">
-
-										<!-- icon -->
-										<svg class="icon person" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<!-- <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/> -->
-											<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-										</svg>
-										<!-- /icon -->
-
-									</label>
-									<!-- /label -->
-
-									<!-- fieldinput -->
-									<input class="fieldinput" id="un" type="text" name="username" placeholder="Username" value="" required>
-									<!-- /fieldinput -->
-
-								<?php endif; ?>
+								<!-- fieldinput -->
+								<input class="fieldinput" id="un" type="text" name="username" placeholder="Username" value="" required>
+								<!-- /fieldinput -->
 
 							</li>
 							<!-- /field -->
@@ -179,153 +142,169 @@
 						</div>
 						<!-- /action -->
 
-					</form>
-					<!-- /login -->
+					<?php endif; ?>
 
-					<!-- switcher -->
-					<div class="switcher">
+				</form>
+				<!-- /login -->
+
+				<!-- switcher -->
+				<div class="switcher">
+
+					<!-- caption -->
+					<span class="caption">New here?</span>
+					<!-- /caption -->
+
+					<!-- link -->
+					<a class="link" href="./?view=register">Create an account</a>
+					<!-- /link -->
+
+				</div>
+				<!-- /switcher -->
+
+			<?php else: ?>
+
+				<!-- head -->
+				<div class="headbar">
+
+					<!-- head -->
+					<h2 class="headline">
 
 						<!-- caption -->
-						<span class="caption">New here?</span>
+						<span class="caption">New User</span>
 						<!-- /caption -->
 
-						<!-- link -->
-						<a class="link" href="./?view=register">Create an account</a>
-						<!-- /link -->
+					</h2>
+					<!-- /head -->
 
-					</div>
-					<!-- /switcher -->
+				</div>
+				<!-- /head -->
 
-				<?php else: ?>
+				<!-- register -->
+				<form class="user crudform" method="post" action="<?php print $selfurlbase; ?>">
 
-					<!-- register -->
-					<form class="user crud" method="post" action="<?php print $selfurlbase; ?>">
+					<!-- fieldlist -->
+					<ul class="fieldlist">
 
-						<!-- fieldlist -->
-						<ul class="fieldlist">
+						<?php $personcomposerfields = $databasetables['persons']['editorfields']; ?>
 
-							<?php $editorfields = $databasetables['persons']['editorfields']; ?>
+						<?php foreach($personcomposerfields as $field): ?>
 
-							<?php foreach($editorfields as $field): ?>
+							<?php if( isset($field['skipinregistration']) ) continue; ?>
 
-								<?php if( isset($field['skipinregistration']) ) continue; ?>
+							<?php
 
-								<?php
+								// Define field attributes
+								$fieldattr = $field['required']?' required':'';
+							?>
 
-									// Define field attributes
-									$fieldattr = $field['required']?' required':'';
+							<!-- field -->
+							<li class="field">
+
+								<?php 
+									// Get field id. 
+									$fid = $field['fid'];
+									// Get field type. 
+									$ftype = $field['type'];
+									// Get field title. 
+									$fieldtitle = $field['fieldtitle'];
 								?>
 
-								<!-- field -->
-								<li class="field">
+								<?php if($ftype=='select'): ?>
 
-									<?php 
-										// Get field id. 
-										$fid = $field['fid'];
-										// Get field type. 
-										$ftype = $field['type'];
-										// Get field title. 
-										$fieldtitle = $field['fieldtitle'];
+									<?php
+										// Get id of referenced table. 
+										$rtid = $field['capref']['tid'];
+										// Get id of display field from referenced table. 
+										$rtdfid = $field['capref']['fid'];
 									?>
 
-									<?php if($ftype=='select'): ?>
+									<!-- fieldinput -->
+									<select class="fieldinput" name="<?php print $fid; ?>">
 
-										<?php
-											// Get id of referenced table. 
-											$rtid = $field['capref']['tid'];
-											// Get id of display field from referenced table. 
-											$rtdfid = $field['capref']['fid'];
-										?>
+										<!-- option -->
+										<option value="">Select <?php print $fieldtitle; ?></option>
+										<!-- /option -->
 
-										<!-- fieldinput -->
-										<select class="fieldinput" name="<?php print $fid; ?>">
+										<?php $entrieslist = $databasetables[$rtid]['entrydata']; ?>
+
+										<?php foreach($entrieslist as $entry): ?>
 
 											<!-- option -->
-											<option value="">Select <?php print $fieldtitle; ?></option>
+											<option value="<?php print $entry['id']; ?>"><?php print $entry[$rtdfid]; ?></option>
 											<!-- /option -->
 
-											<?php $entrieslist = $databasetables[$rtid]['entrydata']; ?>
+										<?php endforeach; ?>
 
-											<?php foreach($entrieslist as $entry): ?>
+									</select>
+									<!-- /fieldinput -->
 
-												<!-- option -->
-												<option value="<?php print $entry['id']; ?>"><?php print $entry[$rtdfid]; ?></option>
-												<!-- /option -->
+								<?php else: ?>
 
-											<?php endforeach; ?>
+									<?php
+										// Get field icon. 
+										$fieldicontag = $field['fieldicon'] ?? '';
+										$fieldiconfill = $databasetablesicons[$fieldicontag] ?? '';
+									?>
 
-										</select>
-										<!-- /fieldinput -->
+									<!-- label -->
+									<label class="label" for="<?php print $fid; ?>">
+		
+										<!-- icon -->
+										<svg class="icon <?php print $fieldicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<?php print $fieldiconfill; ?>
+										</svg>
+										<!-- /icon -->
+		
+									</label>
+									<!-- /label -->
 
-									<?php else: ?>
+									<!-- fieldinput -->
+									<input class="fieldinput" id="<?php print $fid; ?>" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $fieldattr; ?>>
+									<!-- /fieldinput -->
 
-										<?php
-											// Get field icon. 
-											$fieldicontag = $field['fieldicon'] ?? '';
-											$fieldiconfill = $databasetablesicons[$fieldicontag] ?? '';
-										?>
+								<?php endif; ?>
 
-										<!-- label -->
-										<label class="label" for="<?php print $fid; ?>">
-			
-											<!-- icon -->
-											<svg class="icon <?php print $fieldicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-												<?php print $fieldiconfill; ?>
-											</svg>
-											<!-- /icon -->
-			
-										</label>
-										<!-- /label -->
+							</li>
+							<!-- /field -->
 
-										<!-- fieldinput -->
-										<input class="fieldinput" id="<?php print $fid; ?>" type="<?php print $ftype; ?>" name="<?php print $fid; ?>" placeholder="<?php print $fieldtitle; ?>" value="" <?php print $fieldattr; ?>>
-										<!-- /fieldinput -->
+						<?php endforeach; ?>
+						
+					</ul>
+					<!-- /fieldlist -->
 
-									<?php endif; ?>
+					<!-- action -->
+					<div class="action">
 
-								</li>
-								<!-- /field -->
+						<!-- sendbtn -->
+						<button class="sendbtn btn" type="submit" name="login" value="register">
 
-							<?php endforeach; ?>
-							
-						</ul>
-						<!-- /fieldlist -->
+							<!-- caption -->
+							<span class="caption">Sign up</span>
+							<!-- /caption -->
 
-						<!-- action -->
-						<div class="action">
-
-							<!-- sendbtn -->
-							<button class="sendbtn btn" type="submit" name="login" value="register">
-
-								<!-- caption -->
-								<span class="caption">Sign up</span>
-								<!-- /caption -->
-
-							</button>
-							<!-- /sendbtn -->
-
-						</div>
-						<!-- /action -->
-
-					</form>
-					<!-- /register -->
-
-					<!-- switcher -->
-					<div class="switcher c">
-
-						<!-- caption -->
-						<!-- <span class="caption">Already registered?</span> -->
-						<span class="caption">Already have an account?</span>
-						<!-- /caption -->
-
-						<!-- link -->
-						<a class="link" href="./?view=login">Log in here</a>
-						<!-- /link -->
+						</button>
+						<!-- /sendbtn -->
 
 					</div>
-					<!-- /switcher -->
+					<!-- /action -->
 
-				<?php endif; ?>
+				</form>
+				<!-- /register -->
+
+				<!-- switcher -->
+				<div class="switcher c">
+
+					<!-- caption -->
+					<!-- <span class="caption">Already registered?</span> -->
+					<span class="caption">Already have an account?</span>
+					<!-- /caption -->
+
+					<!-- link -->
+					<a class="link" href="./?view=login">Log in here</a>
+					<!-- /link -->
+
+				</div>
+				<!-- /switcher -->
 
 			<?php endif; ?>
 
