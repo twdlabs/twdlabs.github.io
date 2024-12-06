@@ -1,0 +1,19 @@
+
+
+
+/* Settings Section */
+div#container section.settings div.settings hr.line {width:100%; border:none; border-top:.5px solid threedlightshadow; margin:.5rem 0;}
+body.dark div#container section.settings div.settings hr.line {border-color:threeddarkshadow;}
+div#container section.settings div.settings h3.head {font-size:1rem; margin:0;}
+div#container section.settings div.settings div.themepicker {display:flex; flex-direction:row; justify-content:center; align-items:center; --ballsize:1.25rem;}
+div#container section.settings div.settings div.themepicker {--switchsize:2; /* --switchsize:2.5; */ /* --switchsize:3; */}
+div#container section.settings div.settings div.themepicker {--ballmovement:100%; /* --ballmovement:150%; */ /* --ballmovement:200%; */}
+div#container section.settings div.settings div.themepicker div.label {display:flex; flex-direction:column; align-items:center; /* font-size:.875rem; */}
+div#container section.settings div.settings div.themepicker div.label svg.icon {display:block;}
+div#container section.settings div.settings div.themepicker div.label span.caption {display:none;}
+div#container section.settings div.settings div.themepicker label.switch {background-color:#0001; border:1px solid threedlightshadow; padding:.125rem; border-radius:3rem; cursor:pointer; position:relative; transition:.5s;}
+div#container section.settings div.settings div.themepicker label.switch {box-sizing:content-box; height:auto; width:calc( var(--ballsize) * var(--switchsize) ); margin:0 .75rem;}
+body.dark div#container section.settings div.settings div.themepicker label.switch {background-color:#FFF1; border-color:threeddarkshadow;}
+div#container section.settings div.settings div.themepicker label.switch div.ball {display:block; width:var(--ballsize); height:var(--ballsize); border-radius:50%; background-color:white; transition:.5s;}
+div#container section.settings div.settings div.themepicker label.switch input.cb {position:absolute; top:0; right:0; display:none;}
+div#container section.settings div.settings div.themepicker label.switch input.cb:checked + div.ball {transform:translateX( var(--ballmovement) );}

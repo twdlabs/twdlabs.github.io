@@ -10,50 +10,43 @@ div#container section.datatable div.scroller table.table {font-size:.875em; text
 div#container section.datatable div.scroller table.table thead.head th.cell {background-color:var(--backcolor5); padding:.875em .625em;}
 /* div#container section.datatable div.scroller table.table tbody.body {} */
 /* div#container section.datatable div.scroller table.table tbody.body tr.row {} */
-div#container section.datatable div.scroller table.table tbody.body td.cell {background-color:var(--backcolor3); position:relative; padding:.5em; /*  */border:solid var(--backcolor3);}
+div#container section.datatable div.scroller table.table tbody.body td.cell {background-color:var(--backcolor3); position:relative; padding:.5em; /*  */border:solid var(--backcolor3); border-radius:.125em;}
 div#container section.datatable div.scroller table.table tbody.body td.cell.c {padding:4em;}
 div#container section.datatable div.scroller table.table tbody.body tr.row:hover td.cell {background-color:var(--backcolor4); cursor:pointer;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn {display:none !important;} */
-div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn {display:flex; display:inline-flex; align-items:center; grid-gap:.25em; padding:.375em;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn svg.icon {font-size:1.25em;} */
-div#container section.datatable div.scroller table.table tbody.body td.cell button.editbtn span.caption {display:none;}
-div#container section.datatable div.scroller table.table tbody.body td.cell img.picture {display:block; max-height:3em; width:100%; max-width:3em;}
+div#container section.datatable div.scroller table.table tbody.body td.cell img.picture {display:block; --maxsize:2.25em; --maxsize:3em; max-height:var(--maxsize); width:100%; max-width:var(--maxsize); border-radius:.25em;}
 /* div#container section.datatable div.scroller table.table tbody.body td.cell span.caption {} */
-
-/* Data Editor Section */
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor {background-color:var(--backcolor); z-index:20;}
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor {opacity:0; visibility:hidden; transition:.625s;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor#idX {} */
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor.open {opacity:1; visibility:visible;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor div.head {} */
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud {/* background-color:var(--backcolor2); display:block; width:100%; padding:.25rem; border-radius:.5rem; */ margin-top:.5rem;}
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud {transform:translateY(-4rem); transition:.625s;}
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor.open form.crud {transform:none;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist {display:flex;} */
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field {margin-top:.125rem;}
-/* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field input.fieldinput {} */
-/* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field select.fieldinput {} */
-/* div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud ul.fieldlist li.field textarea.fieldinput {} */
-div#container section.datatable div.scroller table.table tbody.body td.cell section.editor form.crud div.action button.sendbtn {margin-top:.125rem;}
+div#container section.datatable div.scroller table.table tbody.body td.cell div.actionbox {display:flex; flex-direction:row; justify-content:center; grid-gap:.25em;}
+/* div#container section.datatable div.scroller table.table tbody.body td.cell div.actionbox button.btn {display:none !important;} */
+div#container section.datatable div.scroller table.table tbody.body td.cell div.actionbox button.btn {display:flex; display:inline-flex; align-items:center; grid-gap:.25em; padding:.5em;}
+/* div#container section.datatable div.scroller table.table tbody.body td.cell div.actionbox button.btn svg.icon {font-size:1.25em;} */
+div#container section.datatable div.scroller table.table tbody.body td.cell div.actionbox button.btn span.caption {display:none;}
 
 
-/* Detail Card Section */
-div#container section.detailtable {overflow-x:auto;}
-div#container section.detailtable ul.detaillist {display:flex; flex-direction:row; grid-gap:.5rem;}
-div#container section.detailtable ul.detaillist {list-style:none; padding:0; margin:0;}
-/* div#container section.detailtable ul.detaillist li.detailitem {} */
-div#container section.detailtable ul.detaillist li.detailitem div.detailcard {background-color:var(--backcolor3); padding:.75rem; border-radius:.5rem;}
-div#container section.detailtable ul.detaillist li.detailitem div.detailcard {/* max- */width:18rem; word-wrap:break-word; overflow-x:auto;}
-div#container section.detailtable ul.detaillist li.detailitem div.detailcard img.picture {display:block; width:100%; margin-bottom:1em;}
-div#container section.detailtable ul.detaillist li.detailitem div.detailcard div.field {display:flex; flex-direction:row; align-items:center;}
-div#container section.detailtable ul.detaillist li.detailitem div.detailcard div.field span.key {font-weight:bold; white-space:nowrap; margin-right:.25em;}
-div#container section.detailtable ul.detaillist li.detailitem div.detailcard div.field span.key::after {content:': ';}
-div#container section.detailtable ul.detaillist li.detailitem div.detailcard div.field span.caption {/* font-style:italic; */ white-space:nowrap;}
-
+/* C.R.U.D. Section */
+div#container section.crud {background-color:var(--backcolor); z-index:20;}
+div#container section.crud {opacity:0; visibility:hidden; transition:.625s;}
+/* div#container section.crud#idX {} */
+div#container section.crud.open {opacity:1; visibility:visible;}
+div#container section.crud div.viewcard,
+div#container section.crud form.crudform {background-color:var(--backcolor2); /* width:100%; */ padding:.375rem; border-radius:.5rem; margin-top:.5rem;}
+div#container section.crud div.viewcard,
+div#container section.crud form.crudform {transform:translateY(-4rem); transition:.625s;}
+div#container section.crud.open div.viewcard,
+div#container section.crud.open form.crudform {transform:none;}
 
 /* Data Composer Section */
-div#container section.composer {background-color:var(--backcolor); z-index:20;}
-div#container section.composer {opacity:0; visibility:hidden; transition:.625s;}
-div#container section.composer.open {opacity:1; visibility:visible;}
-div#container section.composer form.crud {transform:translateY(-4rem); transition:.625s;}
-div#container section.composer.open form.crud {transform:none;}
+/* div#container section.composer {} */
+
+/* Data Editor Section */
+/* div#container section.editor {} */
+/* div#container section.editor#editorX {} */
+
+/* Detail Card Section */
+/* div#container section.viewer {} */
+/* div#container section.viewer#viewerX {} */
+div#container section.viewer div.viewcard {background-color:var(--backcolor3); /* width:18rem; */ overflow-x:auto; padding:.75rem; padding-right:1.5rem;}
+div#container section.viewer div.viewcard ul.fieldlist {list-style:none; padding:0; margin:0;}
+div#container section.viewer div.viewcard ul.fieldlist li.field {display:flex; flex-direction:row; align-items:center; margin-top:.25rem;}
+div#container section.viewer div.viewcard ul.fieldlist li.field span.key {font-weight:bold; white-space:nowrap; margin-right:.25em;}
+div#container section.viewer div.viewcard ul.fieldlist li.field span.key::after {content:': ';}
+div#container section.viewer div.viewcard ul.fieldlist li.field span.caption {/* font-style:italic; */ white-space:nowrap;}

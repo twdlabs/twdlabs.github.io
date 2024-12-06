@@ -42,11 +42,12 @@ div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink svg
 div#container nav.navbar div.bin div.navmenu ul.navlist li.navitem a.navlink span.caption {/* display:none; */ font-size:.75em;}
 /* Navbar User Menu */
 /* div#container nav.navbar div.bin div.navmenu.usermenu {} */
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile {padding:.875em .75em;}
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy {font-size:.875rem; padding:0 .25rem; margin:0; margin-top:.25em;}
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name {font-weight:bold;}
-div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.name::after {content:':';}
-/* div#container nav.navbar div.bin div.navmenu.usermenu div.profile p.textcopy span.value {font-style:italic;} */
+div#container nav.navbar div.bin div.navmenu.usermenu ul.profile {list-style:none; padding:.875em .75em; margin:0;}
+div#container nav.navbar div.bin div.navmenu.usermenu ul.profile li.profileitem {font-size:.875rem; padding:0 .25rem; margin:0; margin-top:.25em;}
+div#container nav.navbar div.bin div.navmenu.usermenu ul.profile li.profileitem.x {display:none;}
+div#container nav.navbar div.bin div.navmenu.usermenu ul.profile li.profileitem span.name {font-weight:bold;}
+div#container nav.navbar div.bin div.navmenu.usermenu ul.profile li.profileitem span.name::after {content:':';}
+/* div#container nav.navbar div.bin div.navmenu.usermenu ul.profile li.profileitem span.value {font-style:italic;} */
 /* Navbar Table Menu */
 /* div#container nav.navbar div.bin div.navmenu.tablemenu {} */
 div#container nav.navbar div.bin div.navmenu/* .tablemenu */ {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}

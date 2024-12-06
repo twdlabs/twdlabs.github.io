@@ -1,0 +1,22 @@
+
+
+
+/* Welcome Section */
+div#container section.welcome {background-color:var(--backcolor2);}
+div#container section.welcome div.headbar {flex-direction:column;}
+/* div#container section.welcome div.headbar h2.headline {} */
+div#container section.welcome div.headbar p.textcopy {margin:0;}
+
+/* Splash Section */
+div#container section.splash {background-color:var(--backcolor2); display:grid; place-items:center; z-index:30;}
+/* div#container section.splash div.headbar {} */
+div#container section.splash div.headbar h2.headline {font-size:2.25em; font-weight:400; white-space:nowrap;}
+div#container section.splash a.enterlink {display:block;}
+div#container section.splash a.enterlink img.logo {height:12rem; margin-top:.5rem;}
+div#container section.splash ul.usernavlist {display:flex; flex-direction:row; justify-content:center; align-items:center; grid-gap:.5rem;}
+div#container section.splash ul.usernavlist {list-style:none; padding:0; margin:0; margin-top:1rem;}
+/* div#container section.splash ul.usernavlist li.usernavitem {} */
+div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {display:grid; place-items:center; color:inherit; text-decoration:none;}
+div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {font-size:.875rem; font-weight:500; min-width:8rem; padding:.375rem 1rem; border:.125rem solid black; border-radius:.5rem;}
+div#container section.splash ul.usernavlist li.usernavitem a.usernavlink {background-color:white; color:black;}
+div#container section.splash ul.usernavlist li.usernavitem a.usernavlink.pr {background-color:var(--lightblack); color:white;}

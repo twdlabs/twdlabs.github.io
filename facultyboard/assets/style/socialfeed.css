@@ -9,6 +9,7 @@ div#container section.socialfeed article.issue h3.title {display:flex; flex-dire
 /* div#container section.socialfeed article.issue h3.title span.caption {} */
 div#container section.socialfeed article.issue p.description {margin:0;}
 div#container section.socialfeed article.issue ul.commentlist {list-style:none; padding:0; margin:0; margin-top:.5em; margin-left:1em;}
+div#container section.socialfeed article.issue ul.commentlist li.commentitem {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 div#container section.socialfeed article.issue ul.commentlist li.commentitem {background-color:var(--backcolor4); padding:.25em .75em; border-radius:25em; margin-top:.25em;}
 div#container section.socialfeed article.issue ul.commentlist li.commentitem span.name {font-weight:bold;}
 /* div#container section.socialfeed article.issue ul.commentlist li.commentitem span.comment {} */

@@ -1,0 +1,23 @@
+
+
+
+/* Navigation Table Section */
+div#container section.navtable {padding:.5rem;}
+div#container section.navtable div.headbar {display:none;}
+div#container section.navtable ul.navlist {list-style:none; /* text-align:center; */ padding:0; margin:0;}
+div#container section.navtable ul.navlist {--gridwidth:4; --gridwidth:3; /* --gridwidth:2; */}
+div#container section.navtable ul.navlist {display:grid; grid-template-columns:repeat( var(--gridwidth) , 1fr ); grid-gap:.25rem; /* margin-top:.25em; */}
+/* div#container section.navtable ul.navlist li.navitem {margin-top:.75em;} */
+div#container section.navtable ul.navlist li.navitem.x {display:none;}
+div#container section.navtable ul.navlist li.navitem.fill {grid-column-end:span var(--gridwidth);}
+div#container section.navtable ul.navlist li.navitem a.navlink {display:flex; flex-direction:column; align-items:center; padding:.75em .25em; padding:.75em; border-radius:.375em;}
+div#container section.navtable ul.navlist li.navitem a.navlink {color:inherit; font-size:.875em; text-decoration:none; position:relative;}
+div#container section.navtable ul.navlist li.navitem a.navlink:hover {background-color:var(--backcolor3);}
+div#container section.navtable ul.navlist li.navitem a.navlink:active {background-color:var(--backcolor4);}
+div#container section.navtable ul.navlist li.navitem a.navlink svg.icon {font-size:2.5em;}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption {background-color:var(--backcolor4); font-size:1.25em; white-space:nowrap; padding:.375em .75em; border-radius:.5em; margin-bottom:.5em;}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption {position:absolute; bottom:100%; left:50%; transform:translateX(-50%); z-index:50;}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption {visibility:hidden; opacity:0;}
+div#container section.navtable ul.navlist li.navitem a.navlink:hover span.caption {visibility:visible; opacity:1; transition:.25s;}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption::after {position:absolute; top:100%; left:50%; transform:translateX(-50%);}
+div#container section.navtable ul.navlist li.navitem a.navlink span.caption::after {border:solid .5em transparent; border-top-color:var(--backcolor4); content:'';}

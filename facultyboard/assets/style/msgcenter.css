@@ -1,0 +1,14 @@
+
+
+
+/* Msg Center Section */
+div#container section.msgcenter div.msgcenter {display:flex; flex-direction:column; align-items:stretch; gap:.25rem; /* margin-bottom:.625rem; */}
+/* div#container section.msgcenter div.msgcenter:empty,
+div#container section.msgcenter div.msgcenter.x {margin:0} */
+div#container section.msgcenter div.msgcenter div.msg {background-color:#0004; cursor:pointer; font-size:.75rem; text-align:center;}
+div#container section.msgcenter div.msgcenter div.msg {padding:.25rem .75rem; border-radius:.5rem; border:1px solid #0004; /* margin-top:.375rem; */}
+div#container section.msgcenter div.msgcenter div.msg.s {background-color:#0f03; color:rgb(23, 83, 23);}
+div#container section.msgcenter div.msgcenter div.msg.w {background-color:#fc03; color:rgb(92, 78, 26);}
+div#container section.msgcenter div.msgcenter div.msg.e {background-color:#f003; color:rgb(96, 29, 29);}
+div#container section.msgcenter div.msgcenter div.msg.gone {height:0; overflow:hidden; padding:0; margin:0;}
+div#container section.msgcenter div.msgcenter div.msg.gone {color:transparent; opacity:0; visibility:hidden; transition:.5s;}
