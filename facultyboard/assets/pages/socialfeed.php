@@ -7,16 +7,14 @@
 	
 	<body>
 
-		<?php include('./assets/module/message.php'); ?>
-
 		<!-- socialfeed -->
 		<section class="socialfeed">
 
 			<!-- head -->
-			<div class="head">
+			<div class="headbar">
 
 				<!-- head -->
-				<h2 class="head">
+				<h2 class="headline">
 
 					<!-- selflink -->
 					<a class="selflink" href="<?php print $selfurl; ?>">
@@ -34,7 +32,7 @@
 			</div>
 			<!-- /head -->
 
-			<?php foreach($databasetables['issues']['entrydata'] as $issuerow): ?>
+			<?php foreach( $databasetables['issues']['entrydata'] as $issuerow ): ?>
 
 				<!-- <?php print json_encode($issuerow); ?> -->
 
@@ -84,7 +82,7 @@
 									<!-- /name -->
 
 									<!-- comment -->
-									<span class="comment"><?php print $commenttext; ?></span>
+									<span class="comment" title="<?php print $commenttext; ?>"><?php print $commenttext; ?></span>
 									<!-- /comment -->
 
 								</li>
@@ -101,8 +99,8 @@
 					<form class="newcomment" method="post" action="<?php print $selfurl; ?>">
 
 						<!-- parameter -->
-						<input class="parameter" type="hidden" name="optypeid" value="create">
-						<input class="parameter" type="hidden" name="tableid" value="comments">
+						<input class="parameter" type="hidden" name="crudopid" value="create">
+						<input class="parameter" type="hidden" name="crudtableid" value="comments">
 						<!-- /parameter -->
 
 						<!-- parameter -->
