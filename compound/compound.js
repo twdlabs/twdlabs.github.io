@@ -18,8 +18,8 @@ const inputperiodiccontributionfrequencyperyear = document.querySelector('div#co
 let inputBoxList = [inputprincipalamount,inputannualgrowthrate,inputnumberofyears,inputcompoundingperiodsperyear,inputperiodiccontribution,inputperiodiccontributionfrequencyperyear];
 
 // Get output field for future value. 
-const outputsimplevalue = document.querySelector('div#container main.main div.output.simple');
-const outputcompoundvalue = document.querySelector('div#container main.main div.output.compound');
+const outputsimplevalue = document.querySelector('div#container main.main div.output.simple span.value');
+const outputcompoundvalue = document.querySelector('div#container main.main div.output.compound span.value');
 
 
 /*****/
@@ -30,26 +30,6 @@ handleEvents();
 
 
 /*****/
-
-
-// Handle events. 
-function handleEvents() {
-
-	// 
-	for(let inputBox of inputBoxList) {
-		inputBox.addEventListener('keyup', respondToKey);
-	}
-
-	/****/
-
-	// Respond to key. 
-	function respondToKey(event) {
-		// console.log('Responding to key',event.keyCode,event.key);
-
-		// Check if enter key pressed. 
-		if(event.keyCode==13 || event.key=='Enter') calculateFutureValue();
-	}
-}
 
 
 // Calculate future value. 
@@ -87,28 +67,50 @@ function calculateFutureValue() {
 	
 	// Get components of future value calculation. 
 	let P = principalamount ? principalamount : 0;
-	let r = annualgrowthrate ? annualgrowthrate : 0.01;
+	let r = annualgrowthrate ? annualgrowthrate : 0.00;
 	let t = numberofyears ? numberofyears : 0;
-	let n = compoundingperiodsperyear ? compoundingperiodsperyear : 1;
+	let n = compoundingperiodsperyear ? compoundingperiodsperyear : 12;
 	let c = periodiccontribution ? periodiccontribution : 0;
-	let f = periodiccontributionfrequencyperyear ? periodiccontributionfrequencyperyear : 0;
+	let f = periodiccontributionfrequencyperyear ? periodiccontributionfrequencyperyear : 1;
 	let C = c * f/n;
 	// let C = c * n/f;
-	
-	// Calculate future value. 
+
+	// Calculate future value (compounding). 
 	let result = 0;
-	let pow = Math.pow((1+r/n),(n*t));
+	let pow = Math.pow( (1+r/n) , (n*t) );
 	result += P * pow;
 	result += C * [ pow - 1 ] / (r/n);
-	// console.log('pow:',pow);
-	console.log('result:',result);
-	
-	// Display simple value. 
-	// outputsimplevalue.innerHTML = dollar( P * (1 + r*t) );
-	outputsimplevalue.innerHTML = dollar( P + (1 + r*t) );
-	
-	// Display future value. 
+	console.log('pow:',pow);
+	console.log('Compound result:',result);
+	// Display future value (compounding). 
 	outputcompoundvalue.innerHTML = dollar(result);
 	// outputcompoundvalue.innerHTML = dollarBrief(result);
+
+	// Calculate future value (simple). 
+	result = P * (1 + r*t);
+	if(result==0) result += (c*f*t) * (1+r);
+	console.log('Simple result:',result);
+	// Display future value (simple). 
+	outputsimplevalue.innerHTML = dollar(result);
+	// outputsimplevalue.innerHTML = dollarBrief(result);
+}
+
+// Handle events. 
+function handleEvents() {
+
+	// 
+	for(let inputBox of inputBoxList) {
+		inputBox.addEventListener('keyup', respondToKey);
+	}
+
+	/****/
+
+	// Respond to key. 
+	function respondToKey(event) {
+		// console.log('Responding to key',event.keyCode,event.key);
+
+		// Check if enter key pressed. 
+		if(event.keyCode==13 || event.key=='Enter') calculateFutureValue();
+	}
 }
 
