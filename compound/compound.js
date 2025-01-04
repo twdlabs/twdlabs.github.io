@@ -38,33 +38,33 @@ function calculateFutureValue() {
 	// Get value from input field: principalamount. 
 	let principalamount = 1 * inputprincipalamount.value;
 	console.log('principalamount:',principalamount);
-	
-	
+
+
 	// Get value from input field: annualgrowthrate. 
 	let annualgrowthrate = 1 * inputannualgrowthrate.value / 100;
 	console.log('annualgrowthrate:',annualgrowthrate);
-	
-	
+
+
 	// Get value from input field: numberofyears. 
 	let numberofyears = 1 * inputnumberofyears.value;
 	console.log('numberofyears:',numberofyears);
-	
-	
+
+
 	// Get value from input field: compoundingperiodsperyear. 
 	let compoundingperiodsperyear = 1 * inputcompoundingperiodsperyear.value;
 	console.log('compoundingperiodsperyear:',compoundingperiodsperyear);
-	
-	
+
+
 	// Get value from input field: periodiccontribution. 
 	let periodiccontribution = 1 * inputperiodiccontribution.value;
 	console.log('periodiccontribution:',periodiccontribution);
-	
-	
+
+
 	// Get value from input field: periodiccontributionfrequencyperyear. 
 	let periodiccontributionfrequencyperyear = 1 * inputperiodiccontributionfrequencyperyear.value;
 	console.log('periodiccontributionfrequencyperyear:',periodiccontributionfrequencyperyear);
-	
-	
+
+
 	// Get components of future value calculation. 
 	let P = principalamount ? principalamount : 0;
 	let r = annualgrowthrate ? annualgrowthrate : 0.00;

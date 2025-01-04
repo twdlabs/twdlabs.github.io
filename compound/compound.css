@@ -11,12 +11,12 @@
 
 	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
 	--offwhite:#e8e8e8;
-	--themecolor:#CCC;
+	--themecolor:#d8d8d8;
 	--blackglass:#333D;
 
 	--pagewidth:30rem;
 	--cornersize:.25rem;
-	
+
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
 }
@@ -35,7 +35,7 @@ div#container main.main h1.head {display:flex; flex-direction:column; align-item
 div#container main.main h1.head {font-size:2.375rem; text-align:center; margin:0; margin-top:1rem;}
 div#container main.main h1.head svg.icon {font-size:2.5em;}
 /* div#container main.main h1.head span.caption {display:none;} */
-div#container main.main section {background-color:var(--offwhite); padding:1.375rem 1.25rem; border-radius:.5rem; margin-top:1rem;}
+div#container main.main section {background-color:var(--offwhite); padding:1.375rem 1.25rem; border-radius:.5rem; margin-top:1rem; box-shadow:var(--boxshadow);}
 div#container main.main section h2.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 div#container main.main section h2.head {font-size:1.5rem; text-align:center; margin:0;}
 div#container main.main section h2.head svg.icon {font-size:1.25em; margin-right:.5rem;}
@@ -49,8 +49,8 @@ div#container main.main section.input div.input input {background-color:transpar
 div#container main.main section.input div.input input {border:.125rem solid var(--blackglass); border-radius:.25rem;}
 /* div#container main.main section.input div.input input:valid {border-color:limegreen;} */
 /* div#container main.main section.input div.input input:invalid {border-color:red;} */
-div#container main.main section.input div.input label.label {background-color:var(--themecolor); padding:.25rem; border-radius:.25rem;}
-div#container main.main section.input div.input label.label {display:flex; flex-direction:row; align-items:center; cursor:pointer; white-space:nowrap;}
+div#container main.main section.input div.input label.label {background-color:var(--themecolor); min-width:2.5em; padding:.25rem; border-radius:.25rem;}
+div#container main.main section.input div.input label.label {display:flex; flex-direction:row; justify-content:center; align-items:center; cursor:pointer; white-space:nowrap;}
 div#container main.main section.input div.input label.label svg.icon {display:block; font-size:1.5em;}
 div#container main.main section.input div.input span.tooltip {background-color:var(--blackglass); color:whitesmoke; white-space:nowrap; padding:.5rem 1rem; border-radius:.25rem;}
 div#container main.main section.input div.input span.tooltip {opacity:0; visibility:hidden; transition:.25s;}
@@ -67,10 +67,10 @@ div#container main.main section.output {display:flex; flex-direction:column; ali
 div#container main.main section.output div.input {width:100%;}
 div#container main.main section.output div.input button.calculate {background-color:gainsboro; font-family:inherit; font-size:inherit; width:100%; padding:.125em .5em; border-radius:10em; border:0 none; box-shadow:var(--boxshadow);}
 div#container main.main section.output div.output {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem; align-items:center;}
-div#container main.main section.output div.output {grid-template-columns:3fr 4fr;}	/* 3/5 (57%) */
+div#container main.main section.output div.output {grid-template-columns:3fr 4fr;}	/* 4/7 (57%) */
 div#container main.main section.output div.output {grid-template-columns:2fr 3fr;}	/* 3/5 (60%) */
-div#container main.main section.output div.output {grid-template-columns:3fr 5fr;}	/* 5/8 (62.5%) */
 div#container main.main section.output div.output {grid-template-columns:1fr 2fr;}	/* 2/3 (67%) */
+div#container main.main section.output div.output {grid-template-columns:3fr 5fr;}	/* 5/8 (62.5%) */
 div#container main.main section.output div.output {/* text-align:center; */ /* white-space:pre-wrap; */ margin-top:1rem;}
 /* div#container main.main section.output div.output.simple {} */
 /* div#container main.main section.output div.output.compound {} */
