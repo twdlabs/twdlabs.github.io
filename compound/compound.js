@@ -20,6 +20,7 @@ let inputBoxList = [inputprincipalamount,inputannualgrowthrate,inputnumberofyear
 // Get output field for future value. 
 const outputsimplevalue = document.querySelector('div#container main.main div.output.simple span.value');
 const outputcompoundvalue = document.querySelector('div#container main.main div.output.compound span.value');
+const scheduledestination = document.querySelector('div#container main.main section.output table.schedule tbody.body');
 
 
 /*****/
@@ -93,6 +94,61 @@ function calculateFutureValue() {
 	// Display future value (simple). 
 	outputsimplevalue.innerHTML = dollar(result);
 	// outputsimplevalue.innerHTML = dollarBrief(result);
+
+	// Create compounding schedule. 
+	let schedulelayout = '';
+	let sumvalue = P;
+
+	// 
+	schedulelayout += createScheduleRowLayout( 0 , sumvalue );
+
+	// Go thru each compunding period. 
+	for(let i=0 ; i<(n*t) ; i++) {
+
+		// Add compunding interest to sum value. 
+		sumvalue *= (1 + r/n);
+		// Add contribution to sum value. 
+		sumvalue += C;
+
+		// 
+		schedulelayout += createScheduleRowLayout( (i+1) , sumvalue );
+	}
+	// Display compounding schedule. 
+	scheduledestination.innerHTML = schedulelayout;
+
+	/****/
+
+	// Create layout for schedule row. 
+	function createScheduleRowLayout(pd,fv) {
+
+		// 
+		return `
+		<!-- row -->
+		<tr class="row">
+	
+			<!-- cell -->
+			<td class="cell p">
+	
+				<!-- caption -->
+				<span class="caption">${ pd }</span>
+				<!-- /caption -->
+	
+			</td>
+			<!-- /cell -->
+	
+			<!-- cell -->
+			<td class="cell v">
+	
+				<!-- caption -->
+				<span class="caption">${ dollar(fv) }</span>
+				<!-- /caption -->
+	
+			</td>
+			<!-- /cell -->
+	
+		</tr>
+		<!-- /row -->`;
+	}
 }
 
 // Handle events. 

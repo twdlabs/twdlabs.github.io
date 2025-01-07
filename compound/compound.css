@@ -38,7 +38,7 @@ div#container main.main h1.head svg.icon {font-size:2.5em;}
 div#container main.main section {background-color:var(--offwhite); padding:1.375rem 1.25rem; border-radius:.5rem; margin-top:1rem; box-shadow:var(--boxshadow);}
 div#container main.main section h2.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 div#container main.main section h2.head {font-size:1.5rem; text-align:center; margin:0;}
-div#container main.main section h2.head svg.icon {font-size:1.25em; margin-right:.5rem;}
+div#container main.main section h2.head svg.icon {font-size:1.25em; margin-right:.5em;}
 div#container main.main section div.input {margin-top:1rem;}
 
 
@@ -63,7 +63,7 @@ div#container main.main section.input div.input span.tooltip::after {content:'';
 
 /* Output Section */
 /* div#container main.main section.output {background-color:initial;} */
-div#container main.main section.output {display:flex; flex-direction:column; align-items:stretch;}
+div#container main.main section.output {display:flex; flex-direction:column; /* align-items:stretch; */}
 div#container main.main section.output div.input {width:100%;}
 div#container main.main section.output div.input button.calculate {background-color:gainsboro; font-family:inherit; font-size:inherit; width:100%; padding:.125em .5em; border-radius:10em; border:0 none; box-shadow:var(--boxshadow);}
 div#container main.main section.output div.output {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem; align-items:center;}
@@ -79,6 +79,15 @@ div#container main.main section.output div.output span.value:empty {background-c
 /* div#container main.main section.output div.output span.caption {} */
 /* div#container main.main section.output div.output span.caption::before {content:'\A';} */
 /* div#container main.main section.output div.output:empty::before {content:'';} */
+/* Output Section: Schedule Table */
+div#container main.main section.output table.schedule {/* max-height:20rem; */ text-align:center;}
+/* div#container main.main section.output table.schedule .p {text-align:left;} */
+/* div#container main.main section.output table.schedule .v {text-align:right;} */
+/* div#container main.main section.output table.schedule thead.head {} */
+/* div#container main.main section.output table.schedule thead.head th.header {} */
+/* div#container main.main section.output table.schedule tbody.body {} */
+/* div#container main.main section.output table.schedule tbody.body td.cell {} */
+/* div#container main.main section.output table.schedule span.caption {} */
 
 
 
