@@ -1,7 +1,15 @@
 
 
+
+// Get destination for gallery. 
+let gallerydestination = document.querySelector('section#gallery main');
+
+
+/*****/
+
+
 // Load images and tags. 
-loadItUp();
+// loadItUp();
 
 
 /*****/
@@ -10,11 +18,11 @@ loadItUp();
 // Load everything. 
 function loadItUp() {
 
-	// Load all tags. 
-	loadAllTags();
-
 	// Load all images. 
 	loadAllImages();
+
+	// Load all tags. 
+	loadAllTags();
 
 	/*****/
 
@@ -26,9 +34,9 @@ function loadItUp() {
 
 		// Define elements for all tag. 
 		let result = '';
-		
+
 		// Define elements for regular tags. 
-		for(let tag of allTags) {
+		for(let tag of galleryTagData) {
 			result += `
 			<!-- tag -->
 			<div class="real tag item" data-value="${tag}">
@@ -53,26 +61,29 @@ function loadItUp() {
 		function selectTag(event) {
 			console.log(event.currentTarget);
 
-			// Get tag value. 
-			let tag = event.currentTarget.getAttribute('data-value');
-			// let tag = event.currentTarget.innerText;
-			console.log('tag:',tag);
+			// Get selected tag. 
+			let selectedtag = event.currentTarget;
+
+			// Get value for selected tag. 
+			let tagvalue = selectedtag.getAttribute('data-value');
+			// let tag = selectedtag.innerText;
+			console.log('Selected tag value:',tagvalue);
 
 			// Initialize list of matching image indexes. 
 			let matchedIndexes = [];
 
 			// Find matching images and save index. 
-			for(let index in imageData) {
-				let img = imageData[index];
+			for(let index in galleryImageData) {
+				let img = galleryImageData[index];
 				// console.log(img);
 
 				// Check if image matches tag. 
-				let weGotAMatch = img.taglist.includes(tag);
+				let weGotAMatch = img.taglist.includes(tagvalue);
 
 				// Add url to list if matched. 
 				if(weGotAMatch) matchedIndexes.push(index);
 			}
-			console.log('matchedIndexes',matchedIndexes);
+			console.log('Matched image indexes:',matchedIndexes);
 
 			// Show matched images. 
 			showMatchedImages();
@@ -87,7 +98,7 @@ function loadItUp() {
 				console.log('allImgs',allImgs);
 
 				// Go thru each image element. 
-				for(let index in imageData) {
+				for(let index in galleryImageData) {
 
 					// Check if image matches selected tag. 
 					let weGotAMatch = matchedIndexes.includes(index);
@@ -103,36 +114,36 @@ function loadItUp() {
 		function getImageTags() {
 
 			// Get tags from all images. 
-			for(let img of imageData) {
+			for(let img of galleryImageData) {
 				for(tag of img.taglist) {
-					
+
 					// Check if tag already collected. 
-					let alreadyInThere = allTags.includes(tag);
+					let alreadyInThere = galleryTagData.includes(tag);
 
 					// Get tag if not already collected. 
-					if(!alreadyInThere) allTags.push(tag);
+					if(!alreadyInThere) galleryTagData.push(tag);
 				}
 			}
-			
+
 			// Sort tags in alphabetical order. 
-			allTags.sort();
+			galleryTagData.sort();
 		}
 	}
 
 	// Load all images in gallery. 
 	function loadAllImages() {
-	
+
 		// Define elements for image gallery. 
 		let result = '';
-		for(let index in imageData) {
+		for(let index in galleryImageData) {
 
-			// Create element to represent image item. 
-			result += createImage(index);
+			// Create layout for image item. 
+			result += createImageByIndex(index);
 		}
-	
+
 		// Add images to gallery. 
-		document.querySelector('section#gallery main').innerHTML = result;
-	
+		gallerydestination.innerHTML = result;
+
 		// Activate image clicks in gallery. 
 		activateImageClicks();
 
@@ -141,17 +152,19 @@ function loadItUp() {
 
 		/*****/
 
-		// Create image element. 
-		function createImage(index) {
-			// console.log(index,'liked:',likedImageIds.includes(1*index));
-			
-			// Check if image is in liked list. 
-			let liked = likedImageIds.includes(1*index);
+		// Create layout for image element by index. 
+		function createImageByIndex(index) {
+			// console.log(index,'liked:',userData[currentuserindex]['likedImageIds'].includes(1*index));
 
-			// Get image object. 
-			let img = imageData[index];
-			let user = userData[0];
-			
+			// Get image data. 
+			let img = galleryImageData[index];
+
+			// Get user data. 
+			let user = userData[currentuserindex];
+
+			// Check if image is included liked list. 
+			let liked = user['likedImageIds'].includes(1*index);
+
 			return `
 			<!-- item -->
 			<div class="item${ (liked)?(' liked'):('') }" data-imageid="${ index }">
@@ -167,7 +180,7 @@ function loadItUp() {
 							<img src="${user.avatarurl}">
 						</div>
 						<!-- /avatar -->
-			
+
 						<!-- details -->
 						<div class="details">
 
@@ -178,10 +191,10 @@ function loadItUp() {
 							<!-- followercount -->
 							<div class="followercount">${ (user.followercount) ? formatFollowerCount(user.followercount) : ('0') }</div>
 							<!-- /followercount -->
-							
+
 						</div>
 						<!-- /details -->
-						
+
 					</div>
 					<!-- /user -->
 
@@ -266,13 +279,13 @@ function loadItUp() {
 
 		// Activate image clicks. 
 		function activateImageClicks() {
-		
+
 			// Get all image elements. 
 			let imgs = document.querySelectorAll('section#gallery main div.item div.image');
-		
+
 			// Go thru each image element. 
 			for(let img of imgs) {
-		
+
 				// Add click handler to image element. 
 				img.addEventListener('click', selectImage);
 			}
@@ -282,17 +295,17 @@ function loadItUp() {
 			// Select image to blow up on overlay. 
 			function selectImage(event) {
 				// console.log('selectImage', event.currentTarget);
-			
+
 				// Get parent item. 
 				let item = event.currentTarget.parentElement;
-			
+
 				// Get id of selected image. 
 				let id = item.getAttribute('data-imageid');
 				// console.log('selected id:', id, item);
-			
+
 				// Attach selected id to overlay. 
 				overlay.setAttribute('data-displayedimageid',id);
-			
+
 				// Open page overlay, displaying selected image (by id). 
 				openPicOverlay(id);
 			}
@@ -300,13 +313,13 @@ function loadItUp() {
 
 		// Activate heart buttons in gallery. 
 		function activateGalleryLikeBtns() {
-		
+
 			// Get all heart buttons. 
 			let likebtns = document.querySelectorAll('section#gallery main div.item div.panel a.btn.like');
-		
+
 			// Go thru each heart button. 
 			for(let btn of likebtns) {
-		
+
 				// Add click handler to heart button. 
 				btn.addEventListener('click', clickGalleryLikeBtn);
 			}

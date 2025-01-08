@@ -1,8 +1,8 @@
 
 
 
-// Define image data (i.e. urls, tags). 
-const imageData = [
+// Define gallery image data (i.e. urls, tags). 
+const galleryImageData = [
 	{
 		imageurl:'./1.jpg',
 		taglist:[

@@ -1,4 +1,6 @@
 
+
+
 const xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = ()=>{
 	if(this.readyState==4 && this.status==200) ;
@@ -11,7 +13,7 @@ xhttp.send();
 function openPicOverlay(id) {
 	// console.log('id', id);
 
-	let img = imageData[id];
+	let img = galleryImageData[id];
 	// console.log('img', img);
 
 	// Add selected image to overlay. 
@@ -59,12 +61,12 @@ function openPicOverlay(id) {
 
 		// Get id of displayed image. 
 		let id = ( hasImageIdOnOverlay ) ? ( 1*overlay.getAttribute('data-displayedimageid') ) : ( -1 );
-		
-		
+
+
 		// Get url of displayed image for download button url. 
-		let imgurl = imageData[id].imageurl;
+		let imgurl = galleryImageData[id].imageurl;
 		// console.log(`imgurl: '${imgurl}'`);
-		
+
 		// Set file name for download button. 
 		dlbtn.setAttribute('download',`img${id}`);
 		// Set url for download button. 
@@ -72,13 +74,13 @@ function openPicOverlay(id) {
 
 		likebtn.addEventListener('click', clickOverlayLikeBtn);
 		// Check if displayed item now liked. 
-		let nowLiked = likedImageIds.includes(id);
+		let nowLiked = userData[currentuserindex]['likedImageIds'].includes(id);
 		// Set heart button in overlay popup to appropriate initial state. 
 		if(nowLiked) likebtn.classList.add('active');
 		else likebtn.classList.remove('active');
 
 		// Update user data on overlay. 
-		let user = userData[0];
+		let user = userData[currentuserindex];
 		document.getElementById('avatar').innerHTML = `<img src="${user.avatarurl}">`;
 		document.getElementById('username').innerHTML = user.username;
 		document.getElementById('followercount').innerHTML = (user.followercount) ? formatFollowerCount(user.followercount) : ('0');
@@ -93,10 +95,10 @@ function closePicOverlay() {
 
 	// Hide overlay popup from page. 
 	overlay.classList.remove('active');
-	
+
 	// Remove image content from overlay popup. 
 	document.querySelector('section#overlay main div.content').innerHTML = '';
-	
+
 	// Remove id value from overlay popup. 
 	overlay.removeAttribute('data-displayedimageid');
 

@@ -6,26 +6,26 @@ function toggleImageLikeById(id) {
 	if(id==-1) console.error('Toggle like error: Invalid image id found on overlay');
 
 	// Check if image already liked. 
-	let alreadyLiked = likedImageIds.includes(id);
+	let alreadyLiked = userData[currentuserindex]['likedImageIds'].includes(id);
 	// console.log('toggleImageLikeById', id, alreadyLiked?'turning off':'turning on' );
 
-	// console.log('Liked images (before):',likedImageIds);
+	// console.log('Liked images (before):',userData[currentuserindex]['likedImageIds']);
 	// Add selected image to like list. 
 	if(!alreadyLiked) addImageLikeById(id);
 	// Remove selected image from like list. 
 	else removeImageLikeById(id);
-	// console.log('Liked images (after)':,likedImageIds);
+	// console.log('Liked images (after)':,userData[currentuserindex]['likedImageIds']);
 
 
 	// Check if item now liked. 
-	let nowLiked = likedImageIds.includes(id);
+	let nowLiked = userData[currentuserindex]['likedImageIds'].includes(id);
 
 	// Get corresponding item in gallery. 
 	let item = document.querySelectorAll('section#gallery main div.item')[id];
 	// Get overlay heart button. 
 	let likebtn = document.getElementById('likebtn');
 
-	
+
 	if(nowLiked) {
 
 		// Update heart button of item in gallery. 
@@ -49,17 +49,17 @@ function toggleImageLikeById(id) {
 	function addImageLikeById(id) {
 
 		// Add image id to list. 
-		likedImageIds.push(id);
+		userData[currentuserindex]['likedImageIds'].push(id);
 	}
 
 	// Remove image 'like' by id. 
 	function removeImageLikeById(id) {
-		
+
 		// Get index of image id to remove from list. 
-		let removeIndex = likedImageIds.indexOf(id);
+		let removeIndex = userData[currentuserindex]['likedImageIds'].indexOf(id);
 
 		// Remove image id from list. 
-		likedImageIds.splice(removeIndex,1);
+		userData[currentuserindex]['likedImageIds'].splice(removeIndex,1);
 	}
 }
 
