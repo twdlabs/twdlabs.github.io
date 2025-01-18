@@ -13,8 +13,11 @@
 	--offwhite:#e8e8e8;
 	--themecolor:#d8d8d8;
 	--blackglass:#333D;
+	--blackglass2:#3335;
+	--whiteglass:#FFFD;
 
 	--pagewidth:30rem;
+	/* --pagewidth:60rem; */
 	--cornersize:.25rem;
 
 	--boxshadow:0 0 1rem 0 #0002;
@@ -26,20 +29,36 @@
 /* Container */
 html {background-color:var(--themecolor); background-image:var(--bgimg);}
 body {font-family:Nunito,sans-serif; margin:0;}
-div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+div#container {display:flex; flex-direction:column; justify-content:center; align-items:center; grid-gap:1.5rem;}
+div#container {min-height:100vh; padding:1rem;}
 
 
 /* Main Box */
-div#container main.main {background-color:white; font-size:1.375rem; width:100%; max-width:var(--pagewidth); padding:1.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-div#container main.main h1.head {display:flex; flex-direction:column; align-items:center;}
+div#container main.main {background-color:white; font-size:1.375rem; width:100%; padding:1.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main {display:grid; grid-template-columns:1fr; grid-gap:1em; max-width:var(--pagewidth);}
+div#container main.main.wide {grid-template-columns:repeat(2,1fr); max-width:calc(var(--pagewidth) * 2);}
+div#container main.main h1.head {display:flex; flex-direction:column; align-items:center; grid-gap:.125em;}
 div#container main.main h1.head {font-size:2.375rem; text-align:center; margin:0; margin-top:1rem;}
 div#container main.main h1.head svg.icon {font-size:2.5em;}
 /* div#container main.main h1.head span.caption {display:none;} */
-div#container main.main section {background-color:var(--offwhite); padding:1.375rem 1.25rem; border-radius:.5rem; margin-top:1rem; box-shadow:var(--boxshadow);}
+
+
+/* General Section */
+div#container main.main section {background-color:var(--offwhite); padding:1.375rem 1.25rem; border-radius:.5rem; /* margin-top:1rem; */ box-shadow:var(--boxshadow);}
 div#container main.main section h2.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
-div#container main.main section h2.head {font-size:1.5rem; text-align:center; margin:0;}
-div#container main.main section h2.head svg.icon {font-size:1.25em; margin-right:.5em;}
+div#container main.main section h2.head {font-size:1.75rem; text-align:center; margin:0;}
+div#container main.main section h2.head svg.icon {font-size:1.125em; margin-right:.5em;}
 div#container main.main section div.input {margin-top:1rem;}
+
+/* General Section: Input */
+div#container main.main section div.input {width:100%;}
+div#container main.main section div.input button.calculate {background-color:gainsboro; font-family:inherit; font-size:inherit; width:100%; padding:.375em .5em; border-radius:10em; border:0 none; box-shadow:var(--boxshadow);}
+div#container main.main section div.input button.calculate {background-color:var(--blackglass2); background-color:dodgerblue; color:white; cursor:pointer;}
+div#container main.main section div.input button.calculate {display:flex; flex-direction:row; justify-content:center; align-items:center;}
+div#container main.main section div.input button.calculate {opacity:.875; transition:.125s;}
+div#container main.main section div.input button.calculate:hover {opacity:1;}
+div#container main.main section div.input button.calculate svg.icon {font-size:1.375em; margin-left:.125em;}
+div#container main.main section div.input button.calculate span.caption {margin-left:1.5em;}
 
 
 /* Input Section */
@@ -64,8 +83,8 @@ div#container main.main section.input div.input span.tooltip::after {content:'';
 /* Output Section */
 /* div#container main.main section.output {background-color:initial;} */
 div#container main.main section.output {display:flex; flex-direction:column; /* align-items:stretch; */}
-div#container main.main section.output div.input {width:100%;}
-div#container main.main section.output div.input button.calculate {background-color:gainsboro; font-family:inherit; font-size:inherit; width:100%; padding:.125em .5em; border-radius:10em; border:0 none; box-shadow:var(--boxshadow);}
+
+/* Output Section: Output */
 div#container main.main section.output div.output {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem; align-items:center;}
 div#container main.main section.output div.output {grid-template-columns:3fr 4fr;}	/* 4/7 (57%) */
 div#container main.main section.output div.output {grid-template-columns:2fr 3fr;}	/* 3/5 (60%) */
@@ -75,19 +94,22 @@ div#container main.main section.output div.output {/* text-align:center; */ /* w
 /* div#container main.main section.output div.output.simple {} */
 /* div#container main.main section.output div.output.compound {} */
 /* div#container main.main section.output div.output span.value {} */
-div#container main.main section.output div.output span.value:empty {background-color:gainsboro; height:1em; width:10em; border-radius:10em;}
+div#container main.main section.output div.output span.value:empty {background-color:gainsboro; height:1em; width:100%; border-radius:10em;}
 /* div#container main.main section.output div.output span.caption {} */
 /* div#container main.main section.output div.output span.caption::before {content:'\A';} */
 /* div#container main.main section.output div.output:empty::before {content:'';} */
+
 /* Output Section: Schedule Table */
-div#container main.main section.output table.schedule {/* max-height:20rem; */ text-align:center;}
-/* div#container main.main section.output table.schedule .p {text-align:left;} */
-/* div#container main.main section.output table.schedule .v {text-align:right;} */
-/* div#container main.main section.output table.schedule thead.head {} */
-/* div#container main.main section.output table.schedule thead.head th.header {} */
-/* div#container main.main section.output table.schedule tbody.body {} */
-/* div#container main.main section.output table.schedule tbody.body td.cell {} */
-/* div#container main.main section.output table.schedule span.caption {} */
+div#container main.main section.output details.block {margin-top:1.5em;}
+div#container main.main section.output details.block summary.head {font-size:1.125em; cursor:pointer; text-align:center; user-select:none;}
+div#container main.main section.output details.block table.schedule {/* max-height:20rem; */ width:100%; text-align:center;}
+/* div#container main.main section.output details.block table.schedule .p {text-align:left;} */
+/* div#container main.main section.output details.block table.schedule .v {text-align:right;} */
+/* div#container main.main section.output details.block table.schedule thead.head {} */
+div#container main.main section.output details.block table.schedule thead.head th.header {font-size:1.125em;}
+/* div#container main.main section.output details.block table.schedule tbody.body {} */
+div#container main.main section.output details.block table.schedule tbody.body td.cell {background-color:var(--blackglass2); color:white; padding:.5rem; border-radius:.375rem;}
+/* div#container main.main section.output details.block table.schedule span.caption {} */
 
 
 
@@ -97,37 +119,51 @@ div#container main.main section.output table.schedule {/* max-height:20rem; */ t
 @media screen and (max-width:64rem) {
 
 	/* Container */
+	/* div#container {} */
 
 	/* Main Box */
+	/* div#container main.main {} */
 
 	/* Input Section */
+	/* div#container main.main section.input {} */
+	/* div#container main.main section.input div.input {} */
 	div#container main.main section.input div.input span.tooltip {margin:0; margin-bottom:var(--tipsize);}
 	div#container main.main section.input div.input span.tooltip {top:auto; right:auto; bottom:100%; left:50%; right:auto; transform:translateX(-50%);}
 	div#container main.main section.input div.input span.tooltip::after {top:100%; right:auto; bottom:auto; left:50%; transform:translateX(-50%); border:var(--tipsize) solid transparent; border-top-color:var(--blackglass);}
 
 	/* Output Section */
+	/* div#container main.main section.output {} */
 }
 
 /* Big Smartphone Screen */
-@media screen and (max-width:48rem) {
+@media screen and (max-width:52rem) {
 
 	/* Container */
+	/* div#container {} */
 
 	/* Main Box */
+	/* div#container main.main {} */
+	div#container main.main.wide {grid-template-columns:1fr;}
 
 	/* Input Section */
+	/* div#container main.main section.input {} */
 
 	/* Output Section */
+	/* div#container main.main section.output {} */
 }
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
-
+	
 	/* Container */
-
+	/* div#container {} */
+	
 	/* Main Box */
+	div#container main.main {font-size:1em;}
 
 	/* Input Section */
+	/* div#container main.main section.input {} */
 
 	/* Output Section */
+	/* div#container main.main section.output {} */
 }
