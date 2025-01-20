@@ -9,7 +9,7 @@ let gallerydestination = document.querySelector('section#gallery main');
 
 
 // Load images and tags. 
-// loadItUp();
+loadItUp();
 
 
 /*****/
