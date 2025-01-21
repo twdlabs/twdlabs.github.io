@@ -1,31 +1,66 @@
 
-body {margin:0; padding:1rem; font-family:sans-serif; background-color:#eee;}
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
 
-div#container {padding:1rem; box-shadow:rgba(0,0,0,.25) 0px 0px 8px; background-color:#FFF; max-width:600px; margin:0 auto; overflow-x:hidden;}
 
-div#container div.item {margin-bottom:2rem;}
-div#container div.item:last-of-type {margin-bottom:0;}
+* {box-sizing:border-box; /* padding:0; margin:0; */}
 
-div#container div.item label {display:block; font-size:1rem; width:100%; margin-bottom:.25rem; font-weight:bold;}
-div#container div.item div.wrapper {position:relative;}
-div#container div.item div.wrapper .userInput {font-size:1.25rem; width:100%; box-sizing:border-box;}
 
-div#container div.item div#regexWrapper:before,
-div#container div.item div#regexWrapper::after {content:'/'; position:absolute; top:50%; transform:translateY(-50%); font-size:1.5rem; font-weight:100;}
-div#container div.item div#regexWrapper::before {left:1rem;}
-div#container div.item div#regexWrapper::after {content:'/g'; right:1rem;}
-div#container div.item input#regexp {padding:.25rem 1.5rem; overflow-x:auto;}
+:root {
 
-div#container div.item div#tsBackdrop {padding:.75rem; font-family:sans-serif; font-size:1.25rem; background-color:#f001; background-color:#f0f2; border:2px solid #888; box-sizing:border-box; white-space:pre-wrap; z-index:1; color:#00f; /*color:transparent;*/ transition:.5s;}
-div#container div.item div#tsBackdrop mark {background-color:#1e90ff88;}
-/*div#container div.item div#tsBackdrop div.highlights {}*/
+	/* Theme Colors */
+	--trpred:#f004;
+	--trpblue:#1e90ff88;
+	--trphotpink:#f0f8;
 
-div#container div.item textarea#testStrings {position:absolute; top:0; left:0; width:100%; z-index:2;}
-div#container div.item textarea#testStrings {padding:.75rem; font-family:sans-serif; font-size:1.25rem; background-color:#0000; border:2px solid #888; resize:none; transition:.5s;}
+	/* Xyz */
+	--pagewidth:37.5rem;
+}
 
-div#container button {width:100%; padding:.5rem; margin-top:1rem; border-radius:.25rem; border:1px solid #888; font-size:1.5rem;}
+
+/* Container */
+body {font-family:Nunito,sans-serif; /* padding:1rem; */ margin:0;}
+div#container {background-color:#eee; display:grid; place-items:center; min-height:100vh; overflow-x:hidden;}
+
+/* Main Box */
+div#container main.main {background-color:white; width:100%; max-width:var(--pagewidth); margin:0 auto;}
+div#container main.main {display:flex; flex-direction:column; align-items:stretch; grid-gap:1rem; padding:1rem; box-shadow:rgba(0,0,0,.25) 0px 0px 8px;}
+
+
+/* General Section */
+div#container main.main section label {display:block; cursor:pointer; width:100%; margin-bottom:.25rem;}
+div#container main.main section div.input {position:relative;}
+div#container main.main section div.input .inputfield {font-family:inherit; font-size:inherit; width:100%; resize:none;}
+/* div#container main.main section div.input input.inputfield {} */
+/* div#container main.main section div.input textarea.inputfield {} */
+
+/* RegExp Section */
+div#container main.main section.regexp div.input:before,
+div#container main.main section.regexp div.input::after {position:absolute; top:50%; transform:translateY(-50%); font-size:1.125em; font-weight:800; margin:0 .5rem;}
+div#container main.main section.regexp div.input::before {content:'/'; left:0;}
+div#container main.main section.regexp div.input::after {content:'/ g'; right:0;}
+div#container main.main section.regexp div.input input#regexp {overflow-x:auto; padding:.25rem 1.5rem;}
+
+/* Test String Section */
+div#container main.main section.teststring div.input div.backdrop {background-color:var(--trpred); padding:.75rem; border:2px solid #888; z-index:10;}
+div#container main.main section.teststring div.input div.backdrop {color:whitesmoke; /*color:transparent;*/ /* font-size:1.25rem; */ white-space:pre-wrap;}
+div#container main.main section.teststring div.input div.backdrop {transform:none; transition:.5s;}
+div#container main.main section.teststring div.input div.backdrop mark {background-color:var(--trpblue);}
+/*div#container main.main section.teststring div.input div.backdrop div.highlights {}*/
+div#container main.main section.teststring div.input textarea#teststring {position:absolute; inset:0; z-index:20;}
+div#container main.main section.teststring div.input textarea#teststring {background-color:transparent; transition:.5s; padding:.75rem; border:2px solid #888;}
+
+/* Action Section */
+div#container main.main section.action button.btn {width:100%; font-size:1.125rem; padding:.5em; border:1px solid #888; border-radius:.25rem; /* margin-top:1rem; */}
+
+
+
+
+
+
+
 
 
 div#container.perspective {perspective:1600px;}
-div#container.perspective div.item div#tsBackdrop {transform:rotateY(45deg) translateX(-125px) scale(.95);}
-div#container.perspective div.item textarea#testStrings {transform:rotateY(45deg) translateX(155px) scale(1.05);}
+/* div#container.perspective main.main {} */
+div#container.perspective main.main section.item div.input div.backdrop {transform:rotateY(45deg) translateX(-125px) scale(.95);}
+div#container.perspective main.main section.item div.input textarea#teststring {transform:rotateY(45deg) translateX(155px) scale(1.05);}

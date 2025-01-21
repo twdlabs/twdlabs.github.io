@@ -4,9 +4,12 @@
 
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./../flaskicon.png" rel="icon"/>
+		<link href="./../flaskicon.png" rel="apple-touch-icon"/>
 		<title>RegExp</title>
 
 		<!-- Bootstrap 4 -->
@@ -20,63 +23,86 @@
 		<!-- <script src="https://import.atgmedia.xyz/bs4/bootstrap.min.js" type="text/javascript"></script> -->
 		<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script> -->
 
+		<!-- Main Stylesheet -->
 		<link href="regexp.css" rel="stylesheet" type="text/css">
-		<script src="regexp.js" type="text/javascript"></script>
 	</head>
 
 	<body>
 
 		<!-- #container -->
-		<div id="container">
+		<div id="container" class="perspectivex">
 
-			<!-- item -->
-			<div class="item">
+			<!-- main -->
+			<main class="main">
 
-				<!-- label -->
-				<label for="regexp">Regular Expression</label>
-				<!-- /label -->
+				<!-- regexp -->
+				<section class="regexp">
 
-				<!-- regexWrapper -->
-				<div id="regexWrapper" class="wrapper">
-					<!-- regexp -->
-					<input id="regexp" class="userInput" type="text">
-					<!-- /regexp -->
-				</div>
-				<!-- /regexWrapper -->
+					<!-- label -->
+					<!-- <label for="regexp">RegExp</label> -->
+					<label for="regexp">Regular Expression</label>
+					<!-- /label -->
 
-			</div>
-			<!-- /item -->
+					<!-- input -->
+					<div class="input">
 
-			<!-- item -->
-			<div class="item">
+						<!-- regexp -->
+						<input type="text" id="regexp" class="inputfield">
+						<!-- /regexp -->
 
-				<!-- label -->
-				<label for="testStrings">Test Strings</label>
-				<!-- /label -->
-
-				<!-- tsWrapper -->
-				<div id="tsWrapper" class="wrapper">
-
-					<!-- tsBackdrop -->
-					<div id="tsBackdrop">
-						<!-- <div class="highlights"></div> -->
 					</div>
-					<!-- /tsBackdrop -->
+					<!-- /input -->
 
-					<!-- testStrings -->
-					<textarea id="testStrings" class="userInput" cols="30" rows="15" onload="testRegex()" oninput="testRegex()">The repressed content must be made conscious so as to produce a tension of opposites, without which no forward movement is possible. The conscious mind is on top, the shadow underneath, and just as high always longs for low and hot for cold, so all consciousness, perhaps without being aware of it, seeks its unconscious opposite, lacking which it is doomed to stagnation, congestion, and ossification. Life is born only of the spark of opposites.</textarea>
-					<!-- /testStrings -->
+				</section>
+				<!-- /regexp -->
 
-				</div>
-				<!-- /tsWrapper -->
+				<!-- teststring -->
+				<section class="teststring">
 
-			</div>
-			<!-- /item -->
+					<!-- label -->
+					<label for="teststring">Test String</label>
+					<!-- /label -->
 
-			<button onclick="$('#container').toggleClass('perspective')">Toggle Perspective</button>
+					<!-- input -->
+					<div class="input">
+
+						<!-- backdrop -->
+						<div class="backdrop">
+							<!-- <div class="highlights"></div> -->
+						</div>
+						<!-- /backdrop -->
+
+						<!-- #teststring -->
+						<textarea id="teststring" class="inputfield" cols="30" rows="15" onload="testRegex()" oninput="testRegex()">The repressed content must be made conscious so as to produce a tension of opposites, without which no forward movement is possible. The conscious mind is on top, the shadow underneath, and just as high always longs for low and hot for cold, so all consciousness, perhaps without being aware of it, seeks its unconscious opposite, lacking which it is doomed to stagnation, congestion, and ossification. Life is born only of the spark of opposites.</textarea>
+						<!-- /#teststring -->
+
+					</div>
+					<!-- /input -->
+
+				</section>
+				<!-- /teststring -->
+
+				<!-- action -->
+				<section class="action">
+
+					<!-- btn -->
+					<button class="btn" onclick="container.classList.toggle('perspective')">Toggle Perspective</button>
+					<!-- /btn -->
+
+				</section>
+				<!-- /action -->
+
+			</main>
+			<!-- /main -->
 
 		</div>
 		<!-- /#container -->
+
+
+		<!-- Main Script -->
+		<script src="regexp.js" type="text/javascript"></script>
+
+		<!-- <script type="text/javascript"></script> -->
 
 	</body>
 
