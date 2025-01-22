@@ -15,40 +15,55 @@ const teststringbackdrop = document.querySelector('div#container main.main secti
 /*****/
 
 
-// Get height of text area. 
-let h = teststringfield.style.height;
-// console.log('h',h);
-
-// Assign same height to test strings backdrop. 
-teststringbackdrop.style.height = h;
+// Test regular expression. 
+testRegExp();
 
 
 /*****/
 
 
 // Test regular expression. 
-function testRegex() {
+function testRegExp() {
 
 	// Get regular expression. 
 	let regexp = regexpfield.value;
-	let regexpobj = new RegExp(regexp,'g');
+	let regexpobj = new RegExp(regexp,'gi');
+	console.log('Regular expression:',/* regexp, */regexpobj.toString());
 
 	// Get test string. 
 	let teststring = teststringfield.value;//.split('\n');
 	console.log('Test string:',teststring);
+	
+	// Check if pattern found in test string. 
+	// let patternfound = regexpobj.test(teststring);
+	let patternfound = regexpobj.exec(teststring);
+	console.log('Pattern found:',patternfound);
 
-	// Test the given strings for a match to the regular expression. 
-	let validity = [];
-	for(let i=0; i<teststring.length; i++) {
-		let v = regexpobj.test();
-		console.log(v,teststring[i]);
-		validity.push(v);
+	// Indicate with color if pattern found. 
+	if(patternfound) teststringbackdrop.classList.add('yes');
+	else teststringbackdrop.classList.remove('yes');
+
+	// Mirror test string to backdrop. 
+	mirrorTestStr();
+
+	/****/
+
+	// Mirror test string to backdrop. 
+	function mirrorTestStr() {
+		teststringbackdrop.innerHTML = teststring;
 	}
 
-	// Get text for test strings. 
-	let ts = teststringfield.value;
-	console.log('Test string:',ts);
+	/****/
 
-	// Copy test strings to test strings backdrop highlighter. 
-	teststringbackdrop.innerHTML = ts;
+	// Test the given strings for a match to the regular expression. 
+	function xyz() {
+		let validity = [];
+		for(let i=0; i<teststring.length; i++) {
+			let v = regexpobj.test('ss');
+			console.log(v,teststring[i]);
+			validity.push(v);
+		}
+		console.log(validity,teststring);
+	}
 }
+

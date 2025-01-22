@@ -9,6 +9,7 @@
 
 	/* Theme Colors */
 	--trpred:#f004;
+	--trpgreen:#0f04;
 	--trpblue:#1e90ff88;
 	--trphotpink:#f0f8;
 
@@ -41,9 +42,11 @@ div#container main.main section.regexp div.input::after {content:'/ g'; right:0;
 div#container main.main section.regexp div.input input#regexp {overflow-x:auto; padding:.25rem 1.5rem;}
 
 /* Test String Section */
-div#container main.main section.teststring div.input div.backdrop {background-color:var(--trpred); padding:.75rem; border:2px solid #888; z-index:10;}
 div#container main.main section.teststring div.input div.backdrop {color:whitesmoke; /*color:transparent;*/ /* font-size:1.25rem; */ white-space:pre-wrap;}
-div#container main.main section.teststring div.input div.backdrop {transform:none; transition:.5s;}
+div#container main.main section.teststring div.input div.backdrop {padding:.75rem; border:2px solid #888; z-index:10;}
+div#container main.main section.teststring div.input div.backdrop {background-color:transparent; transform:none; transition:.5s;}
+div#container main.main section.teststring div.input div.backdrop/* .no */ {background-color:var(--trpred);}
+div#container main.main section.teststring div.input div.backdrop.yes {background-color:var(--trpgreen);}
 div#container main.main section.teststring div.input div.backdrop mark {background-color:var(--trpblue);}
 /*div#container main.main section.teststring div.input div.backdrop div.highlights {}*/
 div#container main.main section.teststring div.input textarea#teststring {position:absolute; inset:0; z-index:20;}
