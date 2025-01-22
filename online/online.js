@@ -4,16 +4,17 @@
 // Get main container. 
 const container = document.querySelector('div#container');
 
-// Get toast items. 
-const toastitems = document.querySelectorAll('div#container ul.toasterlist li.toastitem div.toast');
+// Get toaster items. 
+const toasteritems = document.querySelectorAll('div#container ul.toasterbox li.toaster div.toast');
 
 
 /*****/
 
 
-// Define interval btwn successive connection checks. 
-const dt = 5000;
-const longdt = 15000;
+// Define interval btwn successive checks. 
+const btwndt = 15000;
+// Define duration of message display. 
+const msgdt = 2500;
 
 // Initialize current state. 
 let currentlyOnline = false;
@@ -22,18 +23,13 @@ let currentlyOnline = false;
 /*****/
 
 
-// Check for internet connection (when page loads). 
+// Check for internet connection (initially). 
 checkConnection();
+// Check for internet connection (periodically n continually). 
+setInterval(checkConnection,btwndt);
 
-// Check for internet connection (continuously). 
-// setInterval(checkConnection,longdt);
-
-// Check for internet connection (when toaster clicked). 
-for(let toast of toastitems) {
-	let closebtn = toast.querySelector('div.controls div.closebtn')
-	// toast.addEventListener('click',checkConnection);
-	closebtn.addEventListener('click',clearToast)
-}
+// Activate toaster close buttons. 
+activateToastClosers();
 
 
 /*****/
@@ -41,11 +37,12 @@ for(let toast of toastitems) {
 
 // Toggle state. 
 function toggleState() {
+
 	// Toggle state. 
 	container.classList.toggle('on');
 
 	// Check for internet connection. 
-	setTimeout(checkConnection,500);
+	setTimeout(checkConnection,msgdt);
 }
 
 // Check for internet connection. 
@@ -56,9 +53,11 @@ function checkConnection() {
 	let xhr = new XMLHttpRequest();
 
 	// Connect request with url and request method. 
-	let requesturl = 'http://127.0.0.1:5501/';
+	let requesturl = '';
+	requesturl = 'http://127.0.0.1:5501/';
 	requesturl = 'https://jsonplaceholder.typicode.com/posts';
 	xhr.open('GET', requesturl, true);
+	// xhr.open('POST', requesturl, true);
 
 	// Check status of data request when loaded. 
 	xhr.onload = checkRequestStatus/* .bind(xhr) */;
@@ -87,9 +86,13 @@ function checkConnection() {
 
 		// Set currrent state. 
 		currentlyOnline = true;
-		
-		// Update page state. 
-		updatePageState();
+
+		// Set page state: online. 
+		container.classList.remove('off');
+		container.classList.add('on');
+
+		// Show toast message. 
+		showToast();
 	}
 	// Set state as offline. 
 	function setOfflineState() {
@@ -97,25 +100,11 @@ function checkConnection() {
 
 		// Set currrent state. 
 		currentlyOnline = false;
-		
-		// Update page state. 
-		updatePageState();
-	}
-	// Update page state. 
-	function updatePageState() {
-
-		// Set page state: online. 
-		if(currentlyOnline) {
-			container.classList.remove('off');
-			container.classList.add('on');
-		}
 
 		// Set page state: offline. 
-		else {
-			container.classList.remove('on');
-			container.classList.add('off');
-		}
-		
+		container.classList.remove('on');
+		container.classList.add('off');
+
 		// Show toast message. 
 		showToast();
 	}
@@ -123,13 +112,37 @@ function checkConnection() {
 
 // Show toast message. 
 function showToast() {
-	container.classList.add('toast');
 
-	// Clear toast message in due time. 
-	if(currentlyOnline) setTimeout(clearToast,dt/2);
+	// Display toaster. 
+	container.classList.add('toasted');
+
+	// Clear toast message after message duration. 
+	if(currentlyOnline) setTimeout(clearToast,msgdt);
 }
+
+// Activate toaster close buttons. 
+function activateToastClosers() {
+
+	// Go thru each toaster. 
+	for(let toast of toasteritems) {
+	
+		// Get toaster's close button. 
+		let closebtn = toast.querySelector('div.controls div.closebtn');
+	
+		// Close toaster (when close button clicked). 
+		closebtn.addEventListener('click',clearToast);
+	
+		// Check for internet connection (when toaster clicked). 
+		// toast.addEventListener('click',checkConnection);
+	}
+}
+
 // Clear toast message. 
 function clearToast() {
-	container.classList.remove('toast');
-	if(!currentlyOnline) container.classList.add('toast');
+
+	// Conceal toaster. 
+	container.classList.remove('toasted');
+
+	// Maintain toaster display if currently offline. 
+	if(!currentlyOnline) container.classList.add('toasted');
 }

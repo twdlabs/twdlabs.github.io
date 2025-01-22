@@ -7,7 +7,7 @@
 
 :root {
 
-	/* --bgimg:linear-gradient(135deg,dodgerblue,white,wheat); */
+	/* Theme Colors */
 	--green:#2ecc71;
 	--white:#f5f5f5;
 	--drkwhite:#EEE;
@@ -17,74 +17,78 @@
 	/* --themecolor:#CCC; */
 
 	/* Page Numbers */
-	--ballsize:0;
-	--pctshift:0;
-	--pctshift:0;
-	--pctshift:0;
+	--ballsize:2rem;
 	--switchsize:6rem;
 	--switchsize:5rem;
 	--switchsize:4rem;
 	--pagewidth:60rem;
 	--cornersize:.5rem;
-	
+
+	/* Box Shadows */
 	--boxshadow:0 0 1rem 0 #0002;
 	--boxshadow:0 0 .25rem 0 #0003;
-	--box-shadow-color:#00000026;
+	/* --box-shadow-color:#00000026; */
 }
 
 
-html {background-color:var(--white); background-image:var(--bgimg);}
+
+
+html {background-color:var(--white);}
 body {font-family:Nunito,sans-serif; margin:0;}
+
 
 
 /* Container */
 div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-div#container main.main {background-color:white; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
+div#container main.main {background-color:white; /* width:100%; max-width:var(--pagewidth); */ padding:1rem; padding:.75rem; border-radius:var(--cornersize); box-shadow:var(--boxshadow);}
 div#container main.main {display:flex; flex-direction:row; align-items:center;}
+div#container main.main {transform:none; transition:.25s;}
+div#container main.main button.btn {padding:.5rem .75rem;}
 
 /* State Switcher */
-/* div#container main.main div.label {} */
-div#container main.main div.label svg.icon {display:block; font-size:1.5rem;}
+div#container main.main div.position {transform:none; transition:.25s;}
+div#container main.main div.position svg.icon {display:block; font-size:1.5rem;}
 div#container main.main label.switch {background-color:var(--drkwhite); display:block; border:1px solid threedlightshadow; padding:.25rem; border-radius:3rem;}
 div#container main.main label.switch {cursor:pointer; position:relative; transition:.5s;}
-div#container main.main label.switch {box-sizing:content-box; height:auto; width:var(--switchsize); margin:0 .75rem;}
+div#container main.main label.switch {box-sizing:content-box; height:auto; width:var(--switchsize); margin:0 .5rem;}
 div#container.on main.main label.switch {background-color:var(--green);}
-div#container main.main label.switch div.ball {width:2rem; height:2rem; border-radius:50%; background-color:white; transition:.5s;}
+div#container main.main label.switch div.ball {width:var(--ballsize); height:var(--ballsize); border-radius:50%; background-color:white; transition:.5s;}
 div#container.on main.main label.switch div.ball {transform:translateX(100%); /* transform:translateX(150%); */ /* transform:translateX(200%); */}
 
 
-/* Toaster List */
-div#container ul.toasterlist {list-style:none; padding:0; padding:.25rem 0 1rem; margin:0;}
-div#container ul.toasterlist {position:fixed; top:0; right:0; width:100%;}
-div#container ul.toasterlist {display:flex; flex-direction:column; align-items:flex-end;}
-div#container ul.toasterlist li.toastitem {position:absolute; width:100%; max-width:24rem; margin:.75rem 1rem 0;}
-div#container ul.toasterlist li.toastitem {opacity:0; transform:translateX(200%); transition:opacity .5s, transform .5s cubic-bezier(.68,-.55,.265,1.35);;}
-div#container.on.toast ul.toasterlist li.toastitem.online {opacity:1; transform:none;}
-div#container.off.toast ul.toasterlist li.toastitem.offline {opacity:1; transform:none;}
 
-/* Toast Item */
-div#container ul.toasterlist li.toastitem div.toast {background-color:white; cursor:pointer; position:relative;}
-div#container ul.toasterlist li.toastitem div.toast {display:flex; flex-direction:row; align-items:center; overflow:hidden; padding:0 .5rem;}
-div#container ul.toasterlist li.toastitem div.toast {border-left:.375rem solid var(--themecolor); border-radius:.5rem; box-shadow:var(--boxshadow);}
-div#container ul.toasterlist li.toastitem.online div.toast {--themecolor:var(--green);}
-div#container ul.toasterlist li.toastitem.offline div.toast {--themecolor:var(--ltgrey);}
+/* Toaster Box */
+div#container ul.toasterbox {list-style:none; padding:0; /* padding:.25rem 0 1rem; */ margin:0;}
+div#container ul.toasterbox {position:fixed; inset:0; bottom:auto; /* width:100%; */ /* z-index:-1; */}
+div#container ul.toasterbox {display:flex; flex-direction:column; align-items:flex-end;}
+div#container ul.toasterbox li.toaster {position:absolute; width:100%; max-width:24rem; /* z-index:1; */ margin:.75rem 1rem 0;}
+div#container ul.toasterbox li.toaster {opacity:0; transform:translateX(200%); transition:opacity .5s, transform .5s cubic-bezier(.68,-.55,.265,1.35);;}
+div#container.on.toasted ul.toasterbox li.toaster.online {opacity:1; transform:none;}
+div#container.off.toasted ul.toasterbox li.toaster.offline {opacity:1; transform:none;}
 
-/* Toast Image */
-div#container ul.toasterlist li.toastitem div.toast div.image {background-color:var(--themecolor); padding:.625rem; border-radius:50%; margin:1rem 0; margin-left:.25rem;}
-div#container ul.toasterlist li.toastitem div.toast div.image svg.icon {display:block; color:white; font-size:1.25rem;}
+/* Toaster Item */
+div#container ul.toasterbox li.toaster div.toast {background-color:white; cursor:pointer; position:relative;}
+div#container ul.toasterbox li.toaster div.toast {display:flex; flex-direction:row; align-items:center; overflow:hidden; padding:0 .5rem;}
+div#container ul.toasterbox li.toaster div.toast {border-left:.375rem solid var(--themecolor); border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container ul.toasterbox li.toaster.online div.toast {--themecolor:var(--green);}
+div#container ul.toasterbox li.toaster.offline div.toast {--themecolor:var(--ltgrey);}
 
-/* Toast Message */
-div#container ul.toasterlist li.toastitem div.toast div.message {flex-grow:1; padding:.625rem .75rem;}
-div#container ul.toasterlist li.toastitem div.toast div.message {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
-div#container ul.toasterlist li.toastitem div.toast div.message h1.head {font-size:1.125rem; font-weight:800; margin:0;}
-div#container ul.toasterlist li.toastitem div.toast div.message span.caption {color:var(--drkgrey); font-weight:100; line-height:1.25; /* white-space:nowrap; */}
+/* Toaster Item: Image */
+div#container ul.toasterbox li.toaster div.toast div.image {background-color:var(--themecolor); padding:.625rem; border-radius:50%; margin:1rem 0; margin-left:.25rem;}
+div#container ul.toasterbox li.toaster div.toast div.image svg.icon {display:block; color:white; font-size:1.25rem;}
 
-/* Toast Controls */
-div#container ul.toasterlist li.toastitem div.toast div.controls {display:flex; justify-content:center; align-items:center;}
-div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {background-color:var(--white); transition:.125s;/*  margin-left:.5rem; */}
-div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {display:grid; place-items:center; cursor:pointer; user-select:none; --size:2.25rem; width:var(--size); height:var(--size); border-radius:50%;}
-div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn:hover {background-color:var(--drkwhite)}
-div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn span.icon {font-size:1.5rem;}
+/* Toaster Item: Message */
+div#container ul.toasterbox li.toaster div.toast div.message {flex-grow:1; padding:.625rem .75rem;}
+div#container ul.toasterbox li.toaster div.toast div.message {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
+div#container ul.toasterbox li.toaster div.toast div.message h1.head {font-size:1.125rem; font-weight:800; margin:0;}
+div#container ul.toasterbox li.toaster div.toast div.message span.caption {color:var(--drkgrey); font-weight:100; line-height:1.25; /* white-space:nowrap; */}
+
+/* Toaster Item: Controls */
+div#container ul.toasterbox li.toaster div.toast div.controls {display:flex; justify-content:center; align-items:center;}
+div#container ul.toasterbox li.toaster div.toast div.controls div.closebtn {background-color:var(--white); transition:.125s;/*  margin-left:.5rem; */}
+div#container ul.toasterbox li.toaster div.toast div.controls div.closebtn {display:grid; place-items:center; cursor:pointer; user-select:none; --size:2.25rem; width:var(--size); height:var(--size); border-radius:50%;}
+div#container ul.toasterbox li.toaster div.toast div.controls div.closebtn:hover {background-color:var(--drkwhite)}
+div#container ul.toasterbox li.toaster div.toast div.controls div.closebtn span.icon {font-size:1.5rem;}
 
 
 
@@ -102,25 +106,26 @@ div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn sp
 	/* div#container main.main {} */
 
 	/* State Switcher */
+	/* div#container main.main div.position {} */
 	/* div#container main.main label.switch {} */
 	/* div#container main.main label.switch div.ball {} */
 
-	
-	/* Toaster List */
-	/* div#container ul.toasterlist {} */
-	
-	/* Toast Item */
-	/* div#container ul.toasterlist li.toastitem {} */
-	/* div#container ul.toasterlist li.toastitem div.toast {} */
 
-	/* Toast Image */
-	/* div#container ul.toasterlist li.toastitem div.toast div.image {} */
-	
-	/* Toast Message */
-	/* div#container ul.toasterlist li.toastitem div.toast div.message {} */
-	
-	/* Toast Controls */
-	/* div#container ul.toasterlist li.toastitem div.toast div.controls {} */
+	/* Toaster Box */
+	/* div#container ul.toasterbox {} */
+
+	/* Toaster Item */
+	/* div#container ul.toasterbox li.toaster {} */
+	/* div#container ul.toasterbox li.toaster div.toast {} */
+
+	/* Toaster Item: Image */
+	/* div#container ul.toasterbox li.toaster div.toast div.image {} */
+
+	/* Toaster Item: Message */
+	/* div#container ul.toasterbox li.toaster div.toast div.message {} */
+
+	/* Toaster Item: Controls */
+	/* div#container ul.toasterbox li.toaster div.toast div.controls {} */
 }
 
 
@@ -130,29 +135,31 @@ div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn sp
 
 	/* Container */
 	/* div#container {} */
-	div#container main.main {flex-direction:column-reverse;}
+	/* div#container main.main {flex-direction:column-reverse;} */
+	div#container main.main {transform:rotate(-90deg);}
 
 	/* State Switcher */
-	div#container main.main label.switch {width:auto; height:var(--switchsize); margin:.75rem 0;}
-	div#container main.main label.switch div.ball {transform:translateY(100%); /* transform:translateY(150%); */ /* transform:translateY(200%); */}
-	div#container.on main.main label.switch div.ball {transform:none;}
+	div#container main.main div.position {transform:rotate(90deg);}
+	/* div#container main.main label.switch {width:auto; height:var(--switchsize); margin:.5rem 0;} */
+	/* div#container main.main label.switch div.ball {transform:translateY(100%);} */
+	/* div#container.on main.main label.switch div.ball {transform:none;} */
 
-	
-	/* Toaster List */
-	div#container ul.toasterlist {top:0; right:1rem; bottom:auto; left:1rem;}
-	div#container ul.toasterlist {align-items:center; width:auto; margin:0 auto;}
-	
-	/* Toast Item */
-	/* div#container ul.toasterlist li.toastitem {transform:translateY(-200%);} */
-	div#container ul.toasterlist li.toastitem div.toast {flex-direction:column; text-align:center;}
 
-	/* Toast Image */
-	div#container ul.toasterlist li.toastitem div.toast div.image {margin:0; margin-top:.75rem;}
-	
-	/* Toast Message */
-	/* div#container ul.toasterlist li.toastitem div.toast div.message {} */
-	
-	/* Toast Controls */
-	/* div#container ul.toasterlist li.toastitem div.toast div.controls {} */
-	div#container ul.toasterlist li.toastitem div.toast div.controls div.closebtn {position:absolute; top:0; right:0; height:2rem; width:2rem; border-radius:.5rem; margin:.125rem;}
+	/* Toaster Box */
+	div#container ul.toasterbox {top:0; right:1rem; bottom:auto; left:1rem;}
+	div#container ul.toasterbox {align-items:center; width:auto; margin:0 auto;}
+
+	/* Toaster Item */
+	/* div#container ul.toasterbox li.toaster {transform:translateY(-200%);} */
+	div#container ul.toasterbox li.toaster div.toast {flex-direction:column; text-align:center;}
+
+	/* Toaster Item: Image */
+	div#container ul.toasterbox li.toaster div.toast div.image {margin:0; margin-top:.75rem;}
+
+	/* Toaster Item: Message */
+	/* div#container ul.toasterbox li.toaster div.toast div.message {} */
+
+	/* Toaster Item: Controls */
+	/* div#container ul.toasterbox li.toaster div.toast div.controls {} */
+	div#container ul.toasterbox li.toaster div.toast div.controls div.closebtn {position:absolute; top:0; right:0; height:2rem; width:2rem; border-radius:.5rem; margin:.125rem;}
 }
