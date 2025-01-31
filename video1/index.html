@@ -4,42 +4,41 @@
 
 	<head>
 		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="./../atgicon.ico" rel="icon"/>
+		<link href="./../video/assets/filmreel.png" rel="icon"/>
+		<link href="./../video/assets/filmreel.png" rel="apple-touch-icon"/>
 		<title>Video</title>
-
-		<!-- jQuery -->
-		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script> -->
-		<script src="https://import.atgmedia.xyz/bs3/jquery.min.js" type="text/javascript"></script>
 
 		<style type="text/css">
 			html,body {height:100%; margin:0;}
 			div#container {max-width:50rem; padding:.5rem .5rem 75rem; text-align:center;}
 			div#container button {padding:.5rem 1rem; margin-bottom:1rem; border-radius:.5rem;}
-			div#container div.vidBoxA {position:relative; background-color:dodgerblue; padding:.5rem; border-radius:.25rem; transition:.5s;}
-			div#container div.vidBoxA div.vidBoxB {}
-			div#container div.vidBoxA div.vidBoxB div.vidBoxC {}
-			div#container div.vidBoxA div.vidBoxB div.vidFill {/*display:none;*/ padding-bottom:0; /*transition:1.5s;*/}
-			div#container div.vidBoxA div.vidBoxB.min div.vidBoxC {position:fixed; top:auto; left:auto; right:.5rem; bottom:.5rem;}
-			div#container div.vidBoxA div.vidBoxB.min div.vidFill {width:100%; position:relative; padding-bottom:56.25%;}
-			div#container div.vidBoxA div.vidBoxB div.vidBoxC div.vidBoxD {width:100%; position:relative; padding-bottom:56.25%;}
-			div#container div.vidBoxA div.vidBoxB div.vidBoxC div.vidBoxD iframe.video {position:absolute; top:0; left:0; width:100%; height:100%;}
+			div#container div.vidboxA {position:relative; background-color:dodgerblue; padding:.5rem; border-radius:.25rem; transition:.5s;}
+			/* div#container div.vidboxA div.vidboxB {} */
+			/* div#container div.vidboxA div.vidboxB div.vidboxC {} */
+			div#container div.vidboxA div.vidboxB div.vidFill {/*display:none;*/ padding-bottom:0; /*transition:1.5s;*/}
+			div#container div.vidboxA div.vidboxB.min div.vidboxC {position:fixed; top:auto; left:auto; right:.5rem; bottom:.5rem;}
+			div#container div.vidboxA div.vidboxB.min div.vidFill {width:100%; position:relative; padding-bottom:56.25%;}
+			div#container div.vidboxA div.vidboxB div.vidboxC div.vidboxD {width:100%; position:relative; padding-bottom:56.25%;}
+			div#container div.vidboxA div.vidboxB div.vidboxC div.vidboxD iframe.video {position:absolute; top:0; left:0; width:100%; height:100%;}
 
 			@media screen and (min-width:992px) {
-				div#container div.vidBoxA div.vidBoxB.min div.vidBoxC {width:20%;}
+				div#container div.vidboxA div.vidboxB.min div.vidboxC {width:20%;}
 			}
 			@media screen and (max-width:991px) {
-				div#container div.vidBoxA div.vidBoxB.min div.vidBoxC {width:30%;}
+				div#container div.vidboxA div.vidboxB.min div.vidboxC {width:30%;}
 			}
 			@media screen and (max-width:767px) {
-				div#container div.vidBoxA div.vidBoxB.min div.vidBoxC {width:40%;}
+				div#container div.vidboxA div.vidboxB.min div.vidboxC {width:40%;}
 			}
 			@media screen and (max-width:575px) {
-				div#container div.vidBoxA div.vidBoxB.min div.vidBoxC {width:50%;}
+				div#container div.vidboxA div.vidboxB.min div.vidboxC {width:50%;}
 			}
 			@media screen and (max-width:400px) {
-				div#container div.vidBoxA div.vidBoxB.min div.vidBoxC {width:75%;}
+				div#container div.vidboxA div.vidboxB.min div.vidboxC {width:75%;}
 			}
 		</style>
 		<script type="text/javascript">
@@ -47,30 +46,40 @@
 			window.onscroll = checkVideo;
 
 			function checkVideo() {
-				// Get scroll level. 
-				let scrLevel = document.documentElement.scrollTop;
 
-				// Get document height. 
-				let docHeight = $(document).height();
+				// Get current scroll level. 
+				let currentscrolllevel = document.documentElement.scrollTop || document.body.scrollTop;
 
-				// Get window height. 
-				let vpHeight = $(window).height();
+				// Get full scroll height of document. 
+				// let fulldocheight = $(document).height();
+				let fulldocheight = document.documentElement.scrollHeight || document.body.scrollHeight;
+				
+				// Get current height of viewport. 
+				// let viewportheight = $(window).height();
+				let viewportheight = document.documentElement.getBoundingClientRect().height;
 
 				// Get video height. 
-				let vidHeight = $('div.vidBoxA').height();
+				// let videoheight = $('div.vidboxA').height();
+				let videoheight = document.querySelector('div.vidboxA').getBoundingClientRect().height;
 
 				// Show the numbers. 
-				console.log('Scrolled', scrLevel, '\t', 'window',vpHeight, '\t', 'document',docHeight, '\t', 'vidBox',vidHeight);
+				console.log('Scroll level:', currentscrolllevel);
+				console.log('Viewport height:',viewportheight);
+				console.log('Full document height:',fulldocheight);
+				console.log('Video height:',videoheight);
+				// console.log();
 
-				// Check if scrolled below video
-				let min = scrLevel > .5*vidHeight;
-				console.log('minimized',min);
+				// Check if scrolled below video. 
+				let scrolledbelowvideo = currentscrolllevel > .5*videoheight;
+				console.log('Scrolled below video:',scrolledbelowvideo);
 
 				// Minimize video to corner when scrolled enough. 
-				if(min) 
-					$('.vidBoxB').addClass('min');
+				if(scrolledbelowvideo) 
+					// $('.vidboxB').addClass('min');
+					document.querySelector('div.vidboxB').classList.add('min');
 				else 
-					$('.vidBoxB').removeClass('min');
+					// $('.vidboxB').removeClass('min');
+					document.querySelector('div.vidboxB').classList.remove('min');
 			}
 		</script>
 	</head>
@@ -80,31 +89,33 @@
 		<!-- #container -->
 		<div id="container">
 
-			<button onclick="$('.vidBoxB').toggleClass('min');">Minimize</button>
+			<button onclick="document.querySelector('div.vidboxB').classList.toggle('min');">Toggle</button>
 
-			<!-- vidBoxA -->
-			<div class="vidBoxA">
-				<!-- vidBoxB -->
-				<div class="vidBoxB">
+			<!-- vidboxA -->
+			<div class="vidboxA">
+
+				<!-- vidboxB -->
+				<div class="vidboxB">
 
 					<!-- vidFill -->
 					<div class="vidFill"></div>
 					<!-- /vidFill -->
 
-					<!-- vidBoxC -->
-					<div class="vidBoxC">
-						<!-- vidBoxD -->
-						<div class="vidBoxD">
+					<!-- vidboxC -->
+					<div class="vidboxC">
+						<!-- vidboxD -->
+						<div class="vidboxD">
 							<iframe class="video" src="https://www.youtube.com/embed/pJwpmMo18vE?rel=0&amp;controls=0&amp;showinfo=0" allowfullscreen width="560" height="315" frameborder="0"></iframe>
 						</div>
-						<!-- /vidBoxD -->
+						<!-- /vidboxD -->
 					</div>
-					<!-- /vidBoxC -->
+					<!-- /vidboxC -->
 
 				</div>
-				<!-- /vidBoxB -->
+				<!-- /vidboxB -->
+
 			</div>
-			<!-- /vidBoxA -->
+			<!-- /vidboxA -->
 
 		</div>
 		<!-- /#container -->
