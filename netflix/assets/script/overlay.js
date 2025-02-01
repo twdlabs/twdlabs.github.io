@@ -1,12 +1,15 @@
 
 
-// Get round buttons. 
-let roundbtns = document.querySelectorAll('div.head div.cover div.panel div.btn.round');
 
-// Hadnle clicks for round buttons. 
-for(btn of roundbtns) {
-	btn.addEventListener('click',activateBtn);
-}
+// Get all round buttons. 
+let allroundbtns = document.querySelectorAll('div.head div.cover div.panel div.btn.round');
+
+
+/*****/
+
+
+// Activate overlay button. 
+activateOverlayBtns();
 
 // Load episodes. 
 loadEpisodeData();
@@ -15,10 +18,19 @@ loadEpisodeData();
 /*****/
 
 
-// Activate round button. 
-function activateBtn(event) {
-	let btn = event.currentTarget;
-	btn.classList.toggle('active');
+// Activate overlay button. 
+function activateOverlayBtns() {
+
+	// Go thru each round button. 
+	for(btn of allroundbtns) {
+		btn.addEventListener('click',toggleBtn);
+	}
+	
+	// Toggle state of round button. 
+	function toggleBtn(event) {
+		let btn = event.currentTarget;
+		btn.classList.toggle('active');
+	}
 }
 
 // Load episode data. 
@@ -38,7 +50,13 @@ function loadEpisodeData() {
 				<div class="thumbnail">
 
 					<!-- img -->
-					<div class="img">${ (episode.thumbnailurl) ? (`<img src="${episode.thumbnailurl}">`) : ('') }</div>
+					<div class="img">
+
+						<!-- img -->
+						<img src="${ episode.thumbnailurl ? episode.thumbnailurl : './../resources/videos/thumbnails/1436812.png' }">
+						<!-- /img -->
+
+					</div>
 					<!-- /img -->
 
 					<!-- playbtn -->
@@ -69,7 +87,7 @@ function loadEpisodeData() {
 					<!-- desc -->
 					<div class="desc">${episode.description}</div>
 					<!-- /desc -->
-					
+
 				</div>
 				<!-- /metadata -->
 

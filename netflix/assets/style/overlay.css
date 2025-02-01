@@ -1,29 +1,24 @@
 
 
-* {box-sizing:border-box;}
 
+:root {
 
-
-
-body {font-family:sans-serif; margin:0;}
-
-
-
-
-div#container {background-color:dodgerblue; background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); display:grid; place-items:center; min-height:100vh; padding:1rem;}
-
+	/* Numbers */
+	--closebtnsize:2.375rem;
+}
 
 
 div#overlay {position:fixed; top:0; left:0; height:100%; width:100%; min-height:100vh; overflow:auto;}
-div#overlay {padding:2rem 1rem 0;}
+div#overlay {padding:0 1rem; padding-top:2rem;}
 div#overlay {visibility:hidden; opacity:0; transition:.25s;}
 div#overlay.active {visibility:visible; opacity:1;}
 
 
-div#overlay aside.bg {background-color:#0008; position:fixed; top:0; left:0; height:100%; width:100%; z-index:0; cursor:pointer;}
+div#overlay aside.bg {background-color:#0008; cursor:pointer;}
+div#overlay aside.bg {position:fixed; top:0; left:0; height:100%; width:100%; z-index:0;}
 
 
-div#overlay main.overlay {background-color:#181818; color:white; font-weight:100; width:100%; max-width:60rem; margin:0 auto; border-radius:.5rem; position:relative; overflow:hidden; z-index:10;}
+div#overlay main.overlay {background-color:#181818; color:white; font-weight:100; width:100%; max-width:var(--pagewidth); margin:0 auto; border-radius:.5rem; position:relative; overflow:hidden; z-index:10;}
 div#overlay main.overlay {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch;}
 
 
@@ -43,9 +38,10 @@ div#overlay main.overlay div.head div.cover div.label h3.eyebrow span.n {font-si
 /* div#overlay main.overlay div.head div.cover div.label h3.eyebrow span.caption {} */
 div#overlay main.overlay div.head div.cover div.panel {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; /* padding:0 2rem; */}
 div#overlay main.overlay div.head div.cover div.panel div.btn {color:white; margin-right:.5rem; cursor:pointer;}
-div#overlay main.overlay div.head div.cover div.panel div.btn.play {display:flex; flex-direction:row; align-items:center; background-color:white; color:black; padding:.25rem .5rem .1rem; border-radius:.25rem;}
+div#overlay main.overlay div.head div.cover div.panel div.btn.play {background-color:white; color:black; padding:.25rem .75rem .1rem; border-radius:.25rem;}
+div#overlay main.overlay div.head div.cover div.panel div.btn.play {display:flex; flex-direction:row; align-items:center;}
 div#overlay main.overlay div.head div.cover div.panel div.btn.play svg.icon {font-size:1.75rem; margin-bottom:1px;}
-div#overlay main.overlay div.head div.cover div.panel div.btn.play span.caption {font-size:.875rem; margin-right:.5rem;}
+div#overlay main.overlay div.head div.cover div.panel div.btn.play span.caption {font-size:.875rem; font-weight:800; margin-right:.5rem;}
 div#overlay main.overlay div.head div.cover div.panel div.btn.round {display:grid; place-items:center; background-color:#0008; border-radius:50%; min-height:2rem; min-width:2rem;}
 div#overlay main.overlay div.head div.cover div.panel div.btn.round {border:2px solid #FFFA; transition:10ms;}
 div#overlay main.overlay div.head div.cover div.panel div.btn.round:hover {border-color:white;}
@@ -109,7 +105,7 @@ div#overlay main.overlay div.body section.metadata.b div.line span.key {color:#6
 div#overlay main.overlay div.body section.metadata.b div.line span.key::after {content:': '; /* margin-right:.35rem; */}
 
 
-div#overlay main.overlay div.closebtn {position:absolute; top:0; right:0; min-height:2.25rem; min-width:2.25rem; border-radius:50%; margin:1rem;}
+div#overlay main.overlay div.closebtn {position:absolute; top:0; right:0; min-height:var(--closebtnsize); min-width:var(--closebtnsize); border-radius:50%; margin:1rem;}
 div#overlay main.overlay div.closebtn {background-color:black; color:white; font-size:1.75rem; font-weight:100; cursor:pointer;}
 div#overlay main.overlay div.closebtn {display:grid; place-items:center;}
 
@@ -119,7 +115,7 @@ div#overlay main.overlay div.closebtn {display:grid; place-items:center;}
 	div#overlay main.overlay div.body section {margin:3rem 1.5rem;}
 	div#overlay main.overlay div.body section.metadata.a {flex-direction:column;}
 	div#overlay main.overlay div.body section.metadata.a div.col.col {width:100%; margin:0;}
-	
+
 	/* Playlist Section */
 	div#overlay main.overlay div.body section.playlist ul.list li.item {padding:1.5rem 1rem;}
 	div#overlay main.overlay div.body section.playlist ul.list li.item div.inner:before {display:none;}
