@@ -20,19 +20,19 @@ let inputfields = {
 // Get output fields for compound interest growth. 
 const valuegrowthoutputdestination = {
 	// Get output field: simple future value. 
-	simplefuturevalue: document.querySelector('div#container main.main section.futuregrowthvalue div.output.simplefuturevalue span.value'),
+	simplefuturevalue: document.querySelector('div#container main.main section.futuregrowth div.output.simplefuturevalue span.value'),
 	// Get output field: compound future value. 
-	compoundfuturevalue: document.querySelector('div#container main.main section.futuregrowthvalue div.output.compoundfuturevalue span.value'),
+	compoundfuturevalue: document.querySelector('div#container main.main section.futuregrowth div.output.compoundfuturevalue span.value'),
 	// Get output field: compounding growth schedule. 
-	growthschedule: document.querySelector('div#container main.main section.futuregrowthvalue details.block table.schedule tbody.body'),
+	growthschedule: document.querySelector('div#container main.main section.futuregrowth details.block table.schedule tbody.body'),
 };
 
 // Get output fields for loan amortization. 
 const loanpaymentoutputdestination = {
 	// Get output field: loan payment amount. 
-	paymentamount: document.querySelector('div#container main.main section.loanpayment div.output.paymentamount span.value'),
+	paymentamount: document.querySelector('div#container main.main section.loanamortization div.output.paymentamount span.value'),
 	// Get output field: loan payment schedule. 
-	paymentschedule: document.querySelector('div#container main.main section.loanpayment details.block table.schedule tbody.body'),
+	paymentschedule: document.querySelector('div#container main.main section.loanamortization details.block table.schedule tbody.body'),
 };
 
 
@@ -85,7 +85,7 @@ function calculateFutureValue() {
 	// Get components of future value calculation. 
 	let P = userinputvalues['principalamount'] ? userinputvalues['principalamount'] : 0;
 	let r = userinputvalues['annualinterestrate'] ? userinputvalues['annualinterestrate'] : 0.00;
-	let t = userinputvalues['numtermyears'] ? userinputvalues['numtermyears'] : 0;
+	let t = userinputvalues['numtermyears'] ? userinputvalues['numtermyears'] : 1;
 	let n = userinputvalues['numcompoundsperyear'] ? userinputvalues['numcompoundsperyear'] : 12;
 	let c = userinputvalues['contributionamount'] ? userinputvalues['contributionamount'] : 0;
 	let f = userinputvalues['numcontributionsperyear'] ? userinputvalues['numcontributionsperyear'] : 1;
@@ -191,7 +191,7 @@ function calculateLoanPayment() {
 	// Get components of future value calculation. 
 	let P = userinputvalues['principalamount'] ? userinputvalues['principalamount'] : 0;
 	let r = userinputvalues['annualinterestrate'] ? userinputvalues['annualinterestrate'] : 0.00;
-	let t = userinputvalues['numtermyears'] ? userinputvalues['numtermyears'] : 0;
+	let t = userinputvalues['numtermyears'] ? userinputvalues['numtermyears'] : 1;
 	let n = userinputvalues['numcompoundsperyear'] ? userinputvalues['numcompoundsperyear'] : 12;
 	let c = userinputvalues['contributionamount'] ? userinputvalues['contributionamount'] : 0;
 	let f = userinputvalues['numcontributionsperyear'] ? userinputvalues['numcontributionsperyear'] : 1;
@@ -222,10 +222,11 @@ function calculateLoanPayment() {
 		// Initialize loan balance. 
 		let loanbalance = P;
 		// Save initial row to schedule layout. 
-		schedulelayout += createScheduleRowLayout( 0 , loanbalance );
+		schedulelayout += createScheduleRowLayout( 0 , 0 , -P , loanbalance );
 
 		// Go thru each compounding period. 
 		for(let index=1 ; index<=(n*t) ; index++) {
+			let prepaymentloanbalance = loanbalance;
 
 			// Compound interest into sum value. 
 			loanbalance *= (1 + r/n);
@@ -234,7 +235,7 @@ function calculateLoanPayment() {
 			// loanbalance -= C;
 
 			// Save current row to schedule layout. 
-			schedulelayout += createScheduleRowLayout( index , loanbalance );
+			schedulelayout += createScheduleRowLayout( index , prepaymentloanbalance , /* -1* */paymentamount , loanbalance );
 		}
 	
 		// Display layout for schedule. 
@@ -243,7 +244,9 @@ function calculateLoanPayment() {
 		/***/
 
 		// TODO: Create row layout for amortization schedule. 
-		function createScheduleRowLayout(pd,lb) {
+		function createScheduleRowLayout(pd,balA,diff,balB) {
+			let paymentprincipal = balA - balB;
+			let paymentinterest = diff - paymentprincipal;
 
 			// Compile row layout. 
 			return `
@@ -264,7 +267,7 @@ function calculateLoanPayment() {
 				<td class="cell v">
 		
 					<!-- caption -->
-					<span class="caption">${ dollar(paymentamount) }</span>
+					<span class="caption">${ dollar(balA) }</span>
 					<!-- /caption -->
 		
 				</td>
@@ -274,7 +277,37 @@ function calculateLoanPayment() {
 				<td class="cell v">
 		
 					<!-- caption -->
-					<span class="caption">${ dollar(lb) }</span>
+					<span class="caption">${ dollar(diff) }</span>
+					<!-- /caption -->
+		
+				</td>
+				<!-- /cell -->
+		
+				<!-- cell -->
+				<td class="cell v">
+		
+					<!-- caption -->
+					<span class="caption">${ dollar(balB) }</span>
+					<!-- /caption -->
+		
+				</td>
+				<!-- /cell -->
+		
+				<!-- cell -->
+				<td class="cell v">
+		
+					<!-- caption -->
+					<span class="caption">${ dollar(paymentprincipal) }</span>
+					<!-- /caption -->
+		
+				</td>
+				<!-- /cell -->
+		
+				<!-- cell -->
+				<td class="cell v">
+		
+					<!-- caption -->
+					<span class="caption">${ dollar(paymentinterest) }</span>
 					<!-- /caption -->
 		
 				</td>

@@ -169,7 +169,7 @@
 						<!-- /label -->
 
 						<!-- #numtermyears -->
-						<input id="numtermyears" type="number" min="0" placeholder="0" required>
+						<input id="numtermyears" type="number" min="0" placeholder="1" required>
 						<!-- /#numtermyears -->
 
 						<!-- tooltip -->
@@ -343,10 +343,73 @@
 				<section class="submit input">
 
 					<!-- input -->
-					<div class="input go">
+					<div class="input switch">
+
+						<!-- switchbtn -->
+						<input type="radio" name="function" id="loanamortization">
+						<label class="switchbtn" for="loanamortization">Loan Amortization</label>
+						<!-- /switchbtn -->
+
+						<!-- switchbtn -->
+						<input type="radio" name="function" id="futuregrowth">
+						<label class="switchbtn" for="futuregrowth">Future Growth</label>
+						<!-- /switchbtn -->
+
+
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input go" style="display:block;">
+
+						<!-- calculate -->
+						<button class="calculate" onclick="calculateLoanPayment();calculateFutureValue();">
+
+							<!-- caption -->
+							<span class="caption">Go</span>
+							<!-- /caption -->
+
+							<!-- icon -->
+							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+							</svg>
+							<!-- /icon -->
+
+
+						</button>
+						<!-- /calculate -->
+
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input go x">
 
 						<!-- calculate -->
 						<button class="calculate" onclick="calculateLoanPayment()">
+
+							<!-- caption -->
+							<span class="caption">Go</span>
+							<!-- /caption -->
+
+							<!-- icon -->
+							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+							</svg>
+							<!-- /icon -->
+
+
+						</button>
+						<!-- /calculate -->
+
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
+					<div class="input go x">
+
+						<!-- calculate -->
+						<button class="calculate" onclick="calculateFutureValue()">
 
 							<!-- caption -->
 							<span class="caption">Go</span>
@@ -374,8 +437,8 @@
 			<!-- main -->
 			<main class="main wide">
 
-				<!-- loanpayment -->
-				<section class="loanpayment output">
+				<!-- loanamortization -->
+				<section class="loanamortization output">
 
 					<!-- head -->
 					<h2 class="head">
@@ -387,40 +450,17 @@
 						<!-- /icon -->
 
 						<!-- caption -->
-						<span class="caption">Loan Payment</span>
+						<span class="caption">Loan Amortization</span>
 						<!-- /caption -->
 
 					</h2>
 					<!-- /head -->
 
-					<!-- input -->
-					<div class="input go">
-
-						<!-- calculate -->
-						<button class="calculate" onclick="calculateLoanPayment()">
-
-							<!-- caption -->
-							<span class="caption">Go</span>
-							<!-- /caption -->
-
-							<!-- icon -->
-							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
-							</svg>
-							<!-- /icon -->
-
-
-						</button>
-						<!-- /calculate -->
-
-					</div>
-					<!-- /input -->
-
 					<!-- output -->
 					<div class="output paymentamount">
 
 						<!-- caption -->
-						<span class="caption">Payment</span>
+						<span class="caption">Payment Amount</span>
 						<!-- /caption -->
 
 						<!-- value -->
@@ -431,10 +471,10 @@
 					<!-- /output -->
 
 					<!-- output -->
-					<div class="output paymentamount">
+					<div class="output xyz x">
 
 						<!-- caption -->
-						<span class="caption">Payment</span>
+						<span class="caption">Xyz</span>
 						<!-- /caption -->
 
 						<!-- value -->
@@ -448,7 +488,7 @@
 					<details class="scheduleblock block" open>
 
 						<!-- head -->
-						<summary class="head">Payment Schedule</summary>
+						<summary class="head">Amortization Schedule</summary>
 						<!-- /head -->
 
 						<!-- schedule -->
@@ -474,6 +514,16 @@
 									<th class="header v">
 
 										<!-- caption -->
+										<span class="caption">Pre-Balance</span>
+										<!-- /caption -->
+
+									</th>
+									<!-- /header -->
+
+									<!-- header -->
+									<th class="header v">
+
+										<!-- caption -->
 										<span class="caption">Payment</span>
 										<!-- /caption -->
 
@@ -484,8 +534,27 @@
 									<th class="header v">
 
 										<!-- caption -->
-										<!-- <span class="caption">Balance</span> -->
-										<span class="caption">Loan Balance</span>
+										<span class="caption">Post-Balance</span>
+										<!-- /caption -->
+
+									</th>
+									<!-- /header -->
+
+									<!-- header -->
+									<th class="header v">
+
+										<!-- caption -->
+										<span class="caption">Principal Payment</span>
+										<!-- /caption -->
+
+									</th>
+									<!-- /header -->
+
+									<!-- header -->
+									<th class="header v">
+
+										<!-- caption -->
+										<span class="caption">Interest Payment</span>
 										<!-- /caption -->
 
 									</th>
@@ -533,6 +602,36 @@
 									</td>
 									<!-- /cell -->
 
+									<!-- cell -->
+									<td class="cell v">
+
+										<!-- caption -->
+										<span class="caption">0</span>
+										<!-- /caption -->
+
+									</td>
+									<!-- /cell -->
+
+									<!-- cell -->
+									<td class="cell v">
+
+										<!-- caption -->
+										<span class="caption">0</span>
+										<!-- /caption -->
+
+									</td>
+									<!-- /cell -->
+
+									<!-- cell -->
+									<td class="cell v">
+
+										<!-- caption -->
+										<span class="caption">0</span>
+										<!-- /caption -->
+
+									</td>
+									<!-- /cell -->
+
 								</tr>
 								<!-- /row -->
 
@@ -546,10 +645,16 @@
 					<!-- /block -->
 
 				</section>
-				<!-- /loanpayment -->
+				<!-- /loanamortization -->
 
-				<!-- futuregrowthvalue -->
-				<section class="futuregrowthvalue output">
+			</main>
+			<!-- /main -->
+
+			<!-- main -->
+			<main class="main wide">
+
+				<!-- futuregrowth -->
+				<section class="futuregrowth output">
 
 					<!-- head -->
 					<h2 class="head">
@@ -561,34 +666,12 @@
 						<!-- /icon -->
 
 						<!-- caption -->
-						<span class="caption">Future Growth Value</span>
+						<!-- <span class="caption">Future Growth Value</span> -->
+						<span class="caption">Future Growth</span>
 						<!-- /caption -->
 
 					</h2>
 					<!-- /head -->
-
-					<!-- input -->
-					<div class="input go">
-
-						<!-- calculate -->
-						<button class="calculate" onclick="calculateFutureValue()">
-
-							<!-- caption -->
-							<span class="caption">Go</span>
-							<!-- /caption -->
-
-							<!-- icon -->
-							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
-							</svg>
-							<!-- /icon -->
-
-
-						</button>
-						<!-- /calculate -->
-
-					</div>
-					<!-- /input -->
 
 					<!-- output -->
 					<div class="output simplefuturevalue">
@@ -700,7 +783,7 @@
 					<!-- /block -->
 
 				</section>
-				<!-- /futuregrowthvalue -->
+				<!-- /futuregrowth -->
 
 			</main>
 			<!-- /main -->
