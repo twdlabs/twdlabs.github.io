@@ -34,9 +34,10 @@ div#container {min-height:100vh; padding:1rem;}
 
 
 /* Main Box */
-div#container main.main {background-color:white; font-size:1.375rem; width:100%; padding:1.5rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main {background-color:white; font-size:1.375rem; width:100%; padding:1.5rem; border-radius:.875rem; box-shadow:var(--boxshadow);}
 div#container main.main {display:grid; grid-template-columns:1fr; grid-gap:1em; max-width:var(--pagewidth);}
 div#container main.main.wide {/* grid-template-columns:repeat(2,1fr); */ max-width:calc(var(--pagewidth) * 2);}
+div#container main.main.gone {display:none;}
 div#container main.main h1.head {display:flex; flex-direction:column; align-items:center; grid-gap:.125em;}
 div#container main.main h1.head {font-size:2.375rem; text-align:center; margin:0; margin-top:1rem;}
 div#container main.main h1.head svg.icon {font-size:2.5em;}
@@ -44,7 +45,7 @@ div#container main.main h1.head svg.icon {font-size:2.5em;}
 
 
 /* General Section */
-div#container main.main section {background-color:var(--offwhite); padding:1.375rem 1.25rem; border-radius:.5rem; /* margin-top:1rem; */ box-shadow:var(--boxshadow);}
+div#container main.main section {background-color:var(--offwhite); padding:1.25rem 1.125rem; border-radius:.25rem; /* margin-top:1rem; */ box-shadow:var(--boxshadow);}
 div#container main.main section h2.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 div#container main.main section h2.head {font-size:1.75rem; text-align:center; margin:0;}
 div#container main.main section h2.head svg.icon {font-size:1.125em; margin-right:.5em;}
@@ -74,7 +75,7 @@ div#container main.main section.input div.input input {background-color:transpar
 div#container main.main section.input div.input input {border:.125rem solid var(--blackglass); border-radius:.25rem;}
 /* div#container main.main section.input div.input input:valid {border-color:limegreen;} */
 /* div#container main.main section.input div.input input:invalid {border-color:red;} */
-div#container main.main section.input div.input label.label {background-color:var(--themecolor); min-width:2.5em; padding:.25rem; border-radius:.25rem;}
+div#container main.main section.input div.input label.label {background-color:var(--themecolor); min-width:2.5em; padding:.5rem .125rem; border-radius:.25rem;}
 div#container main.main section.input div.input label.label {display:flex; flex-direction:row; justify-content:center; align-items:center; cursor:pointer; white-space:nowrap;}
 div#container main.main section.input div.input label.label svg.icon {display:block; font-size:1.5em;}
 div#container main.main section.input div.input span.tooltip {background-color:var(--blackglass); color:whitesmoke; white-space:nowrap; padding:.5rem 1rem; border-radius:.25rem;}
@@ -87,7 +88,6 @@ div#container main.main section.input div.input span.tooltip::after {content:'';
 
 
 /* Output Section */
-/* div#container main.main section.output {background-color:initial;} */
 div#container main.main section.output {display:flex; flex-direction:column; /* align-items:stretch; */}
 
 /* Output Section: Output */

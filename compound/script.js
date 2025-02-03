@@ -17,6 +17,14 @@ let inputfields = {
 	numcontributionsperyear: document.querySelector('div#container main.main div.input input#numcontributionsperyear'),
 };
 
+// Get output windows. 
+let outputwindows = {
+	// Get output window: loan amortization. 
+	la: document.querySelector('div#container main.main.la'),
+	// Get output window: future growth. 
+	fg: document.querySelector('div#container main.main.fg'),
+};
+
 // Get output fields for compound interest growth. 
 const valuegrowthoutputdestination = {
 	// Get output field: simple future value. 
@@ -45,6 +53,37 @@ handleEvents();
 
 /*****/
 
+
+// Dispatch calculation. 
+function dispatchCalculation() {
+
+	// Get selected calculation. 
+	let selectedcalculationbox = document.querySelector('div#container main.main section.input div.input input[type=radio]:checked');
+	let selectedcalculation = selectedcalculationbox.value;
+
+	// Display loan amortization (if selected). 
+	if(selectedcalculation=='la') displayLoan();
+	// Display future growth (if selected). 
+	if(selectedcalculation=='fg') displayGrowth();
+
+	// Close all output windows. 
+	closeAllOutput();
+	// Open selected output window. 
+	outputwindows[selectedcalculation].classList.remove('gone');
+
+	/****/
+
+	// Close all output windows. 
+	function closeAllOutput() {
+
+		// Go thru each output window. 
+		for(let key in outputwindows) {
+
+			// Close output window. 
+			outputwindows[key].classList.add('gone');
+		}
+	}
+}
 
 // Receive values from user input fields. 
 function getUserInputValues() {
@@ -75,115 +114,8 @@ function getUserInputValues() {
 	return result;
 }
 
-
-// Calculate future value. 
-function calculateFutureValue() {
-
-	// Get user input values. 
-	let userinputvalues = getUserInputValues();
-	console.log('User input values:',userinputvalues);
-	// Get components of future value calculation. 
-	let P = userinputvalues['principalamount'] ? userinputvalues['principalamount'] : 0;
-	let r = userinputvalues['annualinterestrate'] ? userinputvalues['annualinterestrate'] : 0.00;
-	let t = userinputvalues['numtermyears'] ? userinputvalues['numtermyears'] : 1;
-	let n = userinputvalues['numcompoundsperyear'] ? userinputvalues['numcompoundsperyear'] : 12;
-	let c = userinputvalues['contributionamount'] ? userinputvalues['contributionamount'] : 0;
-	let f = userinputvalues['numcontributionsperyear'] ? userinputvalues['numcontributionsperyear'] : 1;
-	let C = c * f/n;
-	// let C = c * n/f;
-
-	// Initialize future value. 
-	let result = 0;
-
-	// Calculate future value (compounding). 
-	let pow = Math.pow( (1+r/n) , (n*t) );
-	console.log('Multiplying factor:',pow);
-	result += P * pow;
-	result += C * [ pow - 1 ] / (r/n);
-	console.log('Compound result:',result);
-
-	// Display future value (compounding). 
-	valuegrowthoutputdestination['compoundfuturevalue'].innerHTML = dollar(result);
-	// valuegrowthoutputdestination['compoundfuturevalue'].innerHTML = dollarBrief(result);
-
-	// Calculate future value (simple). 
-	result = P * (1 + r*t);
-	if(result==0) result += (c*f*t) * (1+r);
-	console.log('Simple result:',result);
-
-	// Display future value (simple). 
-	valuegrowthoutputdestination['simplefuturevalue'].innerHTML = dollar(result);
-	// valuegrowthoutputdestination['simplefuturevalue'].innerHTML = dollarBrief(result);
-
-	// Display schedule for compounding growth. 
-	showGrowthSchedule();
-
-	/****/
-
-	// Display schedule for compounding growth. 
-	function showGrowthSchedule() {
-
-		// Initialize layout for schedule. 
-		let schedulelayout = '';
-
-		// Initialize sum value. 
-		let sumvalue = P;
-		// Save initial row to schedule layout. 
-		schedulelayout += createScheduleRowLayout( 0 , sumvalue );
-
-		// Go thru each compounding period. 
-		for(let index=1 ; index<=(n*t) ; index++) {
-
-			// Compound interest into sum value. 
-			sumvalue *= (1 + r/n);
-			// Add periodic contribution to sum value. 
-			sumvalue += C;
-
-			// Save current row to schedule layout. 
-			schedulelayout += createScheduleRowLayout( index , sumvalue );
-		}
-
-		// Display layout for schedule. 
-		valuegrowthoutputdestination['growthschedule'].innerHTML = schedulelayout;
-
-		/***/
-
-		// Create row layout for growth schedule. 
-		function createScheduleRowLayout(pd,fv) {
-	
-			// Compile row layout. 
-			return `
-			<!-- row -->
-			<tr class="row">
-		
-				<!-- cell -->
-				<td class="cell p">
-		
-					<!-- caption -->
-					<span class="caption">${ pd }</span>
-					<!-- /caption -->
-		
-				</td>
-				<!-- /cell -->
-		
-				<!-- cell -->
-				<td class="cell v">
-		
-					<!-- caption -->
-					<span class="caption">${ dollar(fv) }</span>
-					<!-- /caption -->
-		
-				</td>
-				<!-- /cell -->
-		
-			</tr>
-			<!-- /row -->`;
-		}
-	}
-}
-
-// Calculate loan payment. 
-function calculateLoanPayment() {
+// Display details of loan amortization. 
+function displayLoan() {
 
 	// Get user input values. 
 	let userinputvalues = getUserInputValues();
@@ -198,20 +130,29 @@ function calculateLoanPayment() {
 	let C = c * f/n;
 	// let C = c * n/f;
 
-	// Calculate payment amount. 
-	let pow = Math.pow( (1+r/n) , (n*t) );
-	console.log('Multiplying factor:',pow);
-	let paymentamount = P*(r/n) / ( 1 - 1/pow );
+	// Get amount of loan payment. 
+	let paymentamount = getLoanPayment();
 	console.log('Payment amount:',paymentamount);
+	// Display loan payment. 
 	loanpaymentoutputdestination['paymentamount'].innerHTML = dollar(paymentamount);
-
-	// 
-	loanpaymentoutputdestination['paymentschedule'].innerHTML = '';
 
 	// Display schedule for loan amortization. 
 	showAmortizationSchedule();
 
 	/****/
+
+	// Get amount of loan payment. 
+	function getLoanPayment() {
+		if(r==0) return P/(n*t);
+
+		// Calculate payment amount. 
+		let pow = Math.pow( (1+r/n) , (n*t) );
+		// console.log('Multiplying factor:',pow);
+		let result = P*(r/n) / ( 1 - 1/pow );
+	
+		// Return resulting amount for loan payment. 
+		return result;
+	}
 
 	// Display schedule for loan amortization. 
 	function showAmortizationSchedule() {
@@ -319,6 +260,118 @@ function calculateLoanPayment() {
 	}
 }
 
+// Display details of future growth. 
+function displayGrowth() {
+
+	// Get user input values. 
+	let userinputvalues = getUserInputValues();
+	console.log('User input values:',userinputvalues);
+	// Get components of future value calculation. 
+	let P = userinputvalues['principalamount'] ? userinputvalues['principalamount'] : 0;
+	let r = userinputvalues['annualinterestrate'] ? userinputvalues['annualinterestrate'] : 0.00;
+	let t = userinputvalues['numtermyears'] ? userinputvalues['numtermyears'] : 1;
+	let n = userinputvalues['numcompoundsperyear'] ? userinputvalues['numcompoundsperyear'] : 12;
+	let c = userinputvalues['contributionamount'] ? userinputvalues['contributionamount'] : 0;
+	let f = userinputvalues['numcontributionsperyear'] ? userinputvalues['numcontributionsperyear'] : 1;
+	let C = c * f/n;
+	// let C = c * n/f;
+
+	// Display future value. 
+	showFutureValue();
+
+	// Display schedule for compounding growth. 
+	showGrowthSchedule();
+
+	/****/
+
+	// Display future value. 
+	function showFutureValue() {
+
+		// Initialize future value. 
+		let result = 0;
+	
+		// Calculate future value (compounding). 
+		let pow = Math.pow( (1+r/n) , (n*t) );
+		console.log('Multiplying factor:',pow);
+		result += P * pow;
+		result += C * [ pow - 1 ] / (r/n);
+		console.log('Compound result:',result);
+	
+		// Display future value (compounding). 
+		valuegrowthoutputdestination['compoundfuturevalue'].innerHTML = dollar(result);
+		// valuegrowthoutputdestination['compoundfuturevalue'].innerHTML = dollarBrief(result);
+	
+		// Calculate future value (simple). 
+		result = P * (1 + r*t);
+		if(result==0) result += (c*f*t) * (1+r);
+		console.log('Simple result:',result);
+	
+		// Display future value (simple). 
+		valuegrowthoutputdestination['simplefuturevalue'].innerHTML = dollar(result);
+		// valuegrowthoutputdestination['simplefuturevalue'].innerHTML = dollarBrief(result);
+	}
+
+	// Display schedule for compounding growth. 
+	function showGrowthSchedule() {
+
+		// Initialize layout for schedule. 
+		let schedulelayout = '';
+
+		// Initialize sum value. 
+		let sumvalue = P;
+		// Save initial row to schedule layout. 
+		schedulelayout += createScheduleRowLayout( 0 , sumvalue );
+
+		// Go thru each compounding period. 
+		for(let index=1 ; index<=(n*t) ; index++) {
+
+			// Compound interest into sum value. 
+			sumvalue *= (1 + r/n);
+			// Add periodic contribution to sum value. 
+			sumvalue += C;
+
+			// Save current row to schedule layout. 
+			schedulelayout += createScheduleRowLayout( index , sumvalue );
+		}
+
+		// Display layout for schedule. 
+		valuegrowthoutputdestination['growthschedule'].innerHTML = schedulelayout;
+
+		/***/
+
+		// Create row layout for growth schedule. 
+		function createScheduleRowLayout(pd,fv) {
+	
+			// Compile row layout. 
+			return `
+			<!-- row -->
+			<tr class="row">
+		
+				<!-- cell -->
+				<td class="cell p">
+		
+					<!-- caption -->
+					<span class="caption">${ pd }</span>
+					<!-- /caption -->
+		
+				</td>
+				<!-- /cell -->
+		
+				<!-- cell -->
+				<td class="cell v">
+		
+					<!-- caption -->
+					<span class="caption">${ dollar(fv) }</span>
+					<!-- /caption -->
+		
+				</td>
+				<!-- /cell -->
+		
+			</tr>
+			<!-- /row -->`;
+		}
+	}
+}
 
 
 // Handle events. 
@@ -343,11 +396,8 @@ function handleEvents() {
 		// Check if enter key pressed. 
 		if(event.keyCode==13 || event.key=='Enter') {
 
-			// Calculate future value. 
-			calculateFutureValue();
-
-			// Calculate loan payment. 
-			calculateLoanPayment();
+			// Dispatch calculation. 
+			dispatchCalculation();
 		}
 	}
 }

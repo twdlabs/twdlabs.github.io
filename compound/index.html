@@ -346,12 +346,12 @@
 					<div class="input switch">
 
 						<!-- switchbtn -->
-						<input type="radio" name="function" id="loanamortization">
+						<input type="radio" name="function" id="loanamortization" value="la">
 						<label class="switchbtn" for="loanamortization">Loan Amortization</label>
 						<!-- /switchbtn -->
 
 						<!-- switchbtn -->
-						<input type="radio" name="function" id="futuregrowth">
+						<input type="radio" name="function" id="futuregrowth" value="fg">
 						<label class="switchbtn" for="futuregrowth">Future Growth</label>
 						<!-- /switchbtn -->
 
@@ -360,56 +360,50 @@
 					<!-- /input -->
 
 					<!-- input -->
+					<div class="input go x">
+
+						<!-- calculate -->
+						<button class="calculate" onclick="displayLoan()">
+
+							<!-- caption -->
+							<span class="caption">Go</span>
+							<!-- /caption -->
+
+							<!-- icon -->
+							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+							</svg>
+							<!-- /icon -->
+
+
+						</button>
+						<!-- /calculate -->
+
+						<!-- calculate -->
+						<button class="calculate" onclick="displayGrowth()">
+
+							<!-- caption -->
+							<span class="caption">Go</span>
+							<!-- /caption -->
+
+							<!-- icon -->
+							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+							</svg>
+							<!-- /icon -->
+
+
+						</button>
+						<!-- /calculate -->
+
+					</div>
+					<!-- /input -->
+
+					<!-- input -->
 					<div class="input go" style="display:block;">
 
 						<!-- calculate -->
-						<button class="calculate" onclick="calculateLoanPayment();calculateFutureValue();">
-
-							<!-- caption -->
-							<span class="caption">Go</span>
-							<!-- /caption -->
-
-							<!-- icon -->
-							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
-							</svg>
-							<!-- /icon -->
-
-
-						</button>
-						<!-- /calculate -->
-
-					</div>
-					<!-- /input -->
-
-					<!-- input -->
-					<div class="input go x">
-
-						<!-- calculate -->
-						<button class="calculate" onclick="calculateLoanPayment()">
-
-							<!-- caption -->
-							<span class="caption">Go</span>
-							<!-- /caption -->
-
-							<!-- icon -->
-							<svg class="icon rightarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
-							</svg>
-							<!-- /icon -->
-
-
-						</button>
-						<!-- /calculate -->
-
-					</div>
-					<!-- /input -->
-
-					<!-- input -->
-					<div class="input go x">
-
-						<!-- calculate -->
-						<button class="calculate" onclick="calculateFutureValue()">
+						<button class="calculate" onclick="dispatchCalculation();">
 
 							<!-- caption -->
 							<span class="caption">Go</span>
@@ -435,7 +429,7 @@
 			<!-- /main -->
 
 			<!-- main -->
-			<main class="main wide">
+			<main class="main la wide gone">
 
 				<!-- loanamortization -->
 				<section class="loanamortization output">
@@ -651,7 +645,7 @@
 			<!-- /main -->
 
 			<!-- main -->
-			<main class="main wide">
+			<main class="main fg wide gone">
 
 				<!-- futuregrowth -->
 				<section class="futuregrowth output">
