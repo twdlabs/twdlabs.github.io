@@ -4,43 +4,49 @@
 // Get user input fields. 
 let inputfields = {
 	// Get input field: principal amount. 
-	principalamount: document.querySelector('div#container main.main div.input input#principalamount'),
+	principalamount: document.querySelector('div#container main.window div.input input#principalamount'),
 	// Get input field: annual interest rate. 
-	annualinterestrate: document.querySelector('div#container main.main div.input input#annualinterestrate'),
+	annualinterestrate: document.querySelector('div#container main.window div.input input#annualinterestrate'),
 	// Get input field: number of years in term. 
-	numtermyears: document.querySelector('div#container main.main div.input input#numtermyears'),
+	numtermyears: document.querySelector('div#container main.window div.input input#numtermyears'),
 	// Get input field: number of compounding periods per year. 
-	numcompoundsperyear: document.querySelector('div#container main.main div.input input#numcompoundsperyear'),
+	numcompoundsperyear: document.querySelector('div#container main.window div.input input#numcompoundsperyear'),
 	// Get input field: amount of periodic contribution. 
-	contributionamount: document.querySelector('div#container main.main div.input input#contributionamount'),
+	contributionamount: document.querySelector('div#container main.window div.input input#contributionamount'),
 	// Get input field: number of contribution periods per year. 
-	numcontributionsperyear: document.querySelector('div#container main.main div.input input#numcontributionsperyear'),
+	numcontributionsperyear: document.querySelector('div#container main.window div.input input#numcontributionsperyear'),
 };
 
 // Get output windows. 
 let outputwindows = {
 	// Get output window: loan amortization. 
-	la: document.querySelector('div#container main.main.la'),
+	la: {
+		window: document.querySelector('div#container main.window#la'),
+		resultsbox: document.querySelector('div#container main.window#la section.output ul.resultlist'),
+	},
 	// Get output window: future growth. 
-	fg: document.querySelector('div#container main.main.fg'),
+	fg: {
+		window: document.querySelector('div#container main.window#fg'),
+		resultsbox: document.querySelector('div#container main.window#fg section.output ul.resultlist'),
+	},
 };
 
 // Get output fields for compound interest growth. 
 const valuegrowthoutputdestination = {
 	// Get output field: simple future value. 
-	simplefuturevalue: document.querySelector('div#container main.main section.futuregrowth div.output.simplefuturevalue span.value'),
+	simplefuturevalue: document.querySelector('div#container main.window section.futuregrowth div.result.simplefuturevalue span.value'),
 	// Get output field: compound future value. 
-	compoundfuturevalue: document.querySelector('div#container main.main section.futuregrowth div.output.compoundfuturevalue span.value'),
+	compoundfuturevalue: document.querySelector('div#container main.window section.futuregrowth div.result.compoundfuturevalue span.value'),
 	// Get output field: compounding growth schedule. 
-	growthschedule: document.querySelector('div#container main.main section.futuregrowth details.block table.schedule tbody.body'),
+	growthschedule: document.querySelector('div#container main.window section.futuregrowth details.block table.schedule tbody.body'),
 };
 
 // Get output fields for loan amortization. 
 const loanpaymentoutputdestination = {
 	// Get output field: loan payment amount. 
-	paymentamount: document.querySelector('div#container main.main section.loanamortization div.output.paymentamount span.value'),
+	paymentamount: document.querySelector('div#container main.window section.loanamortization div.result.paymentamount span.value'),
 	// Get output field: loan payment schedule. 
-	paymentschedule: document.querySelector('div#container main.main section.loanamortization details.block table.schedule tbody.body'),
+	paymentschedule: document.querySelector('div#container main.window section.loanamortization details.block table.schedule tbody.body'),
 };
 
 
@@ -58,7 +64,7 @@ handleEvents();
 function dispatchCalculation() {
 
 	// Get selected calculation. 
-	let selectedcalculationbox = document.querySelector('div#container main.main section.input div.input input[type=radio]:checked');
+	let selectedcalculationbox = document.querySelector('div#container main.window section.input ul.inputlist li.inputitem div.input input.switchchoice:checked');
 	let selectedcalculation = selectedcalculationbox.value;
 
 	// Get user input values. 
@@ -73,20 +79,9 @@ function dispatchCalculation() {
 	// Close all output windows. 
 	closeAllOutput();
 	// Open selected output window. 
-	outputwindows[selectedcalculation].classList.remove('gone');
+	outputwindows[selectedcalculation]['window'].classList.remove('gone');
 
 	/****/
-
-	// Close all output windows. 
-	function closeAllOutput() {
-
-		// Go thru each output window. 
-		for(let key in outputwindows) {
-
-			// Close output window. 
-			outputwindows[key].classList.add('gone');
-		}
-	}
 
 	// Receive values from user input fields. 
 	function getUserInputValues() {
@@ -186,9 +181,9 @@ function displayLoan(userinputvalues) {
 		/***/
 
 		// TODO: Create row layout for amortization schedule. 
-		function createScheduleRowLayout(pd,balA,diff,balB) {
-			let paymentprincipal = balA - balB;
-			let paymentinterest = diff - paymentprincipal;
+		function createScheduleRowLayout(pd,balA,totalpaid,balB) {
+			let paidprincipal = balA - balB;
+			let paidinterest = totalpaid - paidprincipal;
 
 			// Compile row layout. 
 			return `
@@ -219,7 +214,7 @@ function displayLoan(userinputvalues) {
 				<td class="cell v">
 		
 					<!-- caption -->
-					<span class="caption">${ dollar(diff) }</span>
+					<span class="caption">${ dollar(totalpaid) }</span>
 					<!-- /caption -->
 		
 				</td>
@@ -239,7 +234,7 @@ function displayLoan(userinputvalues) {
 				<td class="cell v">
 		
 					<!-- caption -->
-					<span class="caption">${ dollar(paymentprincipal) }</span>
+					<span class="caption">${ dollar(paidprincipal) }</span>
 					<!-- /caption -->
 		
 				</td>
@@ -249,7 +244,7 @@ function displayLoan(userinputvalues) {
 				<td class="cell v">
 		
 					<!-- caption -->
-					<span class="caption">${ dollar(paymentinterest) }</span>
+					<span class="caption">${ dollar(paidinterest) }</span>
 					<!-- /caption -->
 		
 				</td>
@@ -368,6 +363,17 @@ function displayGrowth(userinputvalues) {
 			</tr>
 			<!-- /row -->`;
 		}
+	}
+}
+
+// Close all output windows. 
+function closeAllOutput() {
+
+	// Go thru each output window. 
+	for(let key in outputwindows) {
+
+		// Close output window. 
+		outputwindows[key]['window'].classList.add('gone');
 	}
 }
 
