@@ -37,6 +37,7 @@ div#container {min-height:100vh; padding:1rem;}
 div#container main.main {background-color:white; font-size:1.375rem; width:100%; padding:1.5rem; border-radius:.875rem; box-shadow:var(--boxshadow);}
 div#container main.main {display:grid; grid-template-columns:1fr; grid-gap:1em; max-width:var(--pagewidth);}
 div#container main.main.wide {/* grid-template-columns:repeat(2,1fr); */ max-width:calc(var(--pagewidth) * 2);}
+div#container main.main.wide {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
 div#container main.main.gone {display:none;}
 div#container main.main h1.head {display:flex; flex-direction:column; align-items:center; grid-gap:.125em;}
 div#container main.main h1.head {font-size:2.375rem; text-align:center; margin:0; margin-top:1rem;}
@@ -54,8 +55,10 @@ div#container main.main section.input div.input {margin-top:1rem;}
 /* General Section: Input */
 div#container main.main section.input div.input {width:100%;}
 div#container main.main section.input div.input.x {display:none;}
-div#container main.main section.input div.input.switch {display:grid; grid-template-columns:repeat(1,1fr); align-items:center; margin-top:0;}
-div#container main.main section.input div.input label.switchbtn {background-color:white; cursor:pointer; user-select:none; text-align:center; min-width:6rem; padding:.25em .75em; border-radius:25rem;}
+div#container main.main section.input div.input.switch {display:grid; grid-template-columns:repeat(2,1fr); align-items:stretch; margin-top:0;}
+div#container main.main section.input div.input label.switchbtn {background-color:white; min-width:6rem; padding:.5em .875em; border-radius:1rem;}
+div#container main.main section.input div.input label.switchbtn {display:grid; place-items:center;}
+div#container main.main section.input div.input label.switchbtn {cursor:pointer; user-select:none; text-align:center;}
 div#container main.main section.input div.input input[type=radio] {display:none;}
 div#container main.main section.input div.input input[type=radio]:checked +
 /* div#container main.main section.input div.input */ label.switchbtn {background-color:dodgerblue; color:white;}
@@ -70,7 +73,7 @@ div#container main.main section.input div.input button.calculate span.caption {m
 
 /* Input Section */
 /* div#container main.main section.input {} */
-div#container main.main section.input div.input {display:flex; flex-direction:row; align-items:center; position:relative; grid-gap:.5rem;}
+div#container main.main section.input div.input {display:flex; flex-direction:row; align-items:center; position:relative; grid-gap:.75rem;}
 div#container main.main section.input div.input input {background-color:transparent; font-family:inherit; font-size:inherit; text-align:right; width:100%; padding:.125em /* .5em */; border:0 none; outline:none;}
 div#container main.main section.input div.input input {border:.125rem solid var(--blackglass); border-radius:.25rem;}
 /* div#container main.main section.input div.input input:valid {border-color:limegreen;} */

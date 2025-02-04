@@ -61,10 +61,14 @@ function dispatchCalculation() {
 	let selectedcalculationbox = document.querySelector('div#container main.main section.input div.input input[type=radio]:checked');
 	let selectedcalculation = selectedcalculationbox.value;
 
+	// Get user input values. 
+	let userinputvalues = getUserInputValues();
+	console.log('User input values:',userinputvalues);
+
 	// Display loan amortization (if selected). 
-	if(selectedcalculation=='la') displayLoan();
+	if(selectedcalculation=='la') displayLoan(userinputvalues);
 	// Display future growth (if selected). 
-	if(selectedcalculation=='fg') displayGrowth();
+	if(selectedcalculation=='fg') displayGrowth(userinputvalues);
 
 	// Close all output windows. 
 	closeAllOutput();
@@ -83,43 +87,40 @@ function dispatchCalculation() {
 			outputwindows[key].classList.add('gone');
 		}
 	}
-}
 
-// Receive values from user input fields. 
-function getUserInputValues() {
-
-	// Initialize user input values. 
-	let result = {
-		// Get value from input field: principal amount. 
-		principalamount: 1 * inputfields['principalamount'].value,
-		// Get value from input field: annual interest rate. 
-		annualinterestrate: 1 * inputfields['annualinterestrate'].value / 100,
-		// Get value from input field: number of years in term. 
-		numtermyears: 1 * inputfields['numtermyears'].value,
-		// Get value from input field: number of compounding periods per year. 
-		numcompoundsperyear: 1 * inputfields['numcompoundsperyear'].value,
-		// Get value from input field: amount of periodic contribution. 
-		contributionamount: 1 * inputfields['contributionamount'].value,
-		// Get value from input field: frequency per year of periodic contribution. 
-		numcontributionsperyear: 1 * inputfields['numcontributionsperyear'].value,
-	};
-	// console.log('Principal amount:',principalamount);
-	// console.log('Annual interest rate:',annualinterestrate);
-	// console.log('Number of years:',numtermyears);
-	// console.log('Compounding periods per year:',numcompoundsperyear);
-	// console.log('Contribution amount:',contributionamount);
-	// console.log('Number of contributions per year:',numcontributionsperyear);
-
-	// Return user input values. 
-	return result;
+	// Receive values from user input fields. 
+	function getUserInputValues() {
+	
+		// Initialize user input values. 
+		let result = {
+			// Get value from input field: principal amount. 
+			principalamount: 1 * inputfields['principalamount'].value,
+			// Get value from input field: annual interest rate. 
+			annualinterestrate: 1 * inputfields['annualinterestrate'].value / 100,
+			// Get value from input field: number of years in term. 
+			numtermyears: 1 * inputfields['numtermyears'].value,
+			// Get value from input field: number of compounding periods per year. 
+			numcompoundsperyear: 1 * inputfields['numcompoundsperyear'].value,
+			// Get value from input field: amount of periodic contribution. 
+			contributionamount: 1 * inputfields['contributionamount'].value,
+			// Get value from input field: frequency per year of periodic contribution. 
+			numcontributionsperyear: 1 * inputfields['numcontributionsperyear'].value,
+		};
+		// console.log('Principal amount:',principalamount);
+		// console.log('Annual interest rate:',annualinterestrate);
+		// console.log('Number of years:',numtermyears);
+		// console.log('Compounding periods per year:',numcompoundsperyear);
+		// console.log('Contribution amount:',contributionamount);
+		// console.log('Number of contributions per year:',numcontributionsperyear);
+	
+		// Return user input values. 
+		return result;
+	}
 }
 
 // Display details of loan amortization. 
-function displayLoan() {
+function displayLoan(userinputvalues) {
 
-	// Get user input values. 
-	let userinputvalues = getUserInputValues();
-	console.log('User input values:',userinputvalues);
 	// Get components of future value calculation. 
 	let P = userinputvalues['principalamount'] ? userinputvalues['principalamount'] : 0;
 	let r = userinputvalues['annualinterestrate'] ? userinputvalues['annualinterestrate'] : 0.00;
@@ -261,11 +262,8 @@ function displayLoan() {
 }
 
 // Display details of future growth. 
-function displayGrowth() {
+function displayGrowth(userinputvalues) {
 
-	// Get user input values. 
-	let userinputvalues = getUserInputValues();
-	console.log('User input values:',userinputvalues);
 	// Get components of future value calculation. 
 	let P = userinputvalues['principalamount'] ? userinputvalues['principalamount'] : 0;
 	let r = userinputvalues['annualinterestrate'] ? userinputvalues['annualinterestrate'] : 0.00;
