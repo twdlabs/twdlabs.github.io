@@ -4,49 +4,48 @@
 // Get user input fields. 
 let inputfields = {
 	// Get input field: principal amount. 
-	principalamount: document.querySelector('div#container main.window div.input input#principalamount'),
+	principalamount:document.querySelector('div#container main.window div.input input#principalamount'),
 	// Get input field: annual interest rate. 
-	annualinterestrate: document.querySelector('div#container main.window div.input input#annualinterestrate'),
+	annualinterestrate:document.querySelector('div#container main.window div.input input#annualinterestrate'),
 	// Get input field: number of years in term. 
-	numtermyears: document.querySelector('div#container main.window div.input input#numtermyears'),
+	numtermyears:document.querySelector('div#container main.window div.input input#numtermyears'),
 	// Get input field: number of compounding periods per year. 
-	numcompoundsperyear: document.querySelector('div#container main.window div.input input#numcompoundsperyear'),
+	numcompoundsperyear:document.querySelector('div#container main.window div.input input#numcompoundsperyear'),
 	// Get input field: amount of periodic contribution. 
-	contributionamount: document.querySelector('div#container main.window div.input input#contributionamount'),
+	contributionamount:document.querySelector('div#container main.window div.input input#contributionamount'),
 	// Get input field: number of contribution periods per year. 
-	numcontributionsperyear: document.querySelector('div#container main.window div.input input#numcontributionsperyear'),
+	numcontributionsperyear:document.querySelector('div#container main.window div.input input#numcontributionsperyear'),
 };
 
-// Get output windows. 
-let outputwindows = {
-	// Get output window: loan amortization. 
-	la: {
-		window: document.querySelector('div#container main.window#la'),
-		resultsbox: document.querySelector('div#container main.window#la section.output ul.resultlist'),
+// Get components of output overlay. 
+const outputoverlay = {
+
+	// Get output overlay. 
+	overlay:document.querySelector('div#container aside.overlay'),
+
+	// Get output window. 
+	window:document.querySelector('div#container aside.overlay main.window'),
+
+	// Get output section: compound interest growth. 
+	futuregrowth:{
+		// Get section. 
+		section:document.querySelector('div#container aside.overlay main.window section#futuregrowth'),
+		// Get destination for result list. 
+		resultlist:document.querySelector('div#container aside.overlay main.window section#futuregrowth ul.resultlist'),
+		// Get destination for body of compounding growth schedule. 
+		timeschedulebody:document.querySelector('div#container aside.overlay main.window section#futuregrowth details.block table.schedule tbody.body'),
 	},
-	// Get output window: future growth. 
-	fg: {
-		window: document.querySelector('div#container main.window#fg'),
-		resultsbox: document.querySelector('div#container main.window#fg section.output ul.resultlist'),
+	// Get output section: loan amortization. 
+	loanamortization:{
+		// Get section. 
+		section:document.querySelector('div#container aside.overlay main.window section#loanamortization'),
+		// Get destination for result list. 
+		resultlist:document.querySelector('div#container aside.overlay main.window section#loanamortization ul.resultlist'),
+		// Get destination for body of loan payment schedule. 
+		timeschedulebody:document.querySelector('div#container aside.overlay main.window section#loanamortization details.block table.schedule tbody.body'),
 	},
-};
 
-// Get output fields for compound interest growth. 
-const valuegrowthoutputdestination = {
-	// Get output field: simple future value. 
-	simplefuturevalue: document.querySelector('div#container main.window section.futuregrowth div.result.simplefuturevalue span.value'),
-	// Get output field: compound future value. 
-	compoundfuturevalue: document.querySelector('div#container main.window section.futuregrowth div.result.compoundfuturevalue span.value'),
-	// Get output field: compounding growth schedule. 
-	growthschedule: document.querySelector('div#container main.window section.futuregrowth details.block table.schedule tbody.body'),
-};
 
-// Get output fields for loan amortization. 
-const loanpaymentoutputdestination = {
-	// Get output field: loan payment amount. 
-	paymentamount: document.querySelector('div#container main.window section.loanamortization div.result.paymentamount span.value'),
-	// Get output field: loan payment schedule. 
-	paymentschedule: document.querySelector('div#container main.window section.loanamortization details.block table.schedule tbody.body'),
 };
 
 
@@ -66,20 +65,19 @@ function dispatchCalculation() {
 	// Get selected calculation. 
 	let selectedcalculationbox = document.querySelector('div#container main.window section.input ul.inputlist li.inputitem div.input input.switchchoice:checked');
 	let selectedcalculation = selectedcalculationbox.value;
+	console.log('Selected calculation:',selectedcalculation);
 
 	// Get user input values. 
 	let userinputvalues = getUserInputValues();
 	console.log('User input values:',userinputvalues);
 
-	// Display loan amortization (if selected). 
-	if(selectedcalculation=='la') displayLoan(userinputvalues);
-	// Display future growth (if selected). 
-	if(selectedcalculation=='fg') displayGrowth(userinputvalues);
+	// Open output overlay window. 
+	openOutput(selectedcalculation);
 
-	// Close all output windows. 
-	closeAllOutput();
-	// Open selected output window. 
-	outputwindows[selectedcalculation]['window'].classList.remove('gone');
+	// Display loan amortization (if selected). 
+	if(selectedcalculation=='loanamortization') displayLoan(userinputvalues);
+	// Display future growth (if selected). 
+	if(selectedcalculation=='futuregrowth') displayGrowth(userinputvalues);
 
 	/****/
 
@@ -129,8 +127,9 @@ function displayLoan(userinputvalues) {
 	// Get amount of loan payment. 
 	let paymentamount = getLoanPayment();
 	console.log('Payment amount:',paymentamount);
-	// Display loan payment. 
-	loanpaymentoutputdestination['paymentamount'].innerHTML = dollar(paymentamount);
+
+	// Display results of loan amortization. 
+	showLoanResults();
 
 	// Display schedule for loan amortization. 
 	showAmortizationSchedule();
@@ -148,6 +147,45 @@ function displayLoan(userinputvalues) {
 	
 		// Return resulting amount for loan payment. 
 		return result;
+	}
+
+	// Display results of loan amortization. 
+	function showLoanResults() {
+
+		// Define results. 
+		let resultitems = [
+			{
+				name:'Principal amount',
+				value:P,
+			},
+			{
+				name:'Annual rate (APY)',
+				value:r,
+			},
+			{
+				name:'Term',
+				value:t,
+			},
+			{
+				name:'Compoundings per yr',
+				value:n,
+			},
+			// {
+			// 	name:'xyz',
+			// 	value:xyz,
+			// },
+			// {
+			// 	name:'xyz',
+			// 	value:xyz,
+			// },
+			{
+				name:'Payment amount',
+				value:dollar(paymentamount),
+			},
+		];
+
+		// Display loan payment. 
+		outputoverlay['loanamortization']['resultlist'].innerHTML = createResultsLayout(resultitems);
 	}
 
 	// Display schedule for loan amortization. 
@@ -176,7 +214,7 @@ function displayLoan(userinputvalues) {
 		}
 	
 		// Display layout for schedule. 
-		loanpaymentoutputdestination['paymentschedule'].innerHTML = schedulelayout;
+		outputoverlay['loanamortization']['timeschedulebody'].innerHTML = schedulelayout;
 
 		/***/
 
@@ -269,16 +307,16 @@ function displayGrowth(userinputvalues) {
 	let C = c * f/n;
 	// let C = c * n/f;
 
-	// Display future value. 
-	showFutureValue();
+	// Display results of compounding growth. 
+	showGrowthResults();
 
 	// Display schedule for compounding growth. 
 	showGrowthSchedule();
 
 	/****/
 
-	// Display future value. 
-	function showFutureValue() {
+	// Display results of compounding growth. 
+	function showGrowthResults() {
 
 		// Initialize future value. 
 		let result = 0;
@@ -289,19 +327,54 @@ function displayGrowth(userinputvalues) {
 		result += P * pow;
 		result += C * [ pow - 1 ] / (r/n);
 		console.log('Compound result:',result);
-	
-		// Display future value (compounding). 
-		valuegrowthoutputdestination['compoundfuturevalue'].innerHTML = dollar(result);
-		// valuegrowthoutputdestination['compoundfuturevalue'].innerHTML = dollarBrief(result);
+		let compoundfuturevalue = result;
 	
 		// Calculate future value (simple). 
 		result = P * (1 + r*t);
 		if(result==0) result += (c*f*t) * (1+r);
 		console.log('Simple result:',result);
-	
-		// Display future value (simple). 
-		valuegrowthoutputdestination['simplefuturevalue'].innerHTML = dollar(result);
-		// valuegrowthoutputdestination['simplefuturevalue'].innerHTML = dollarBrief(result);
+		let simplefuturevalue = result;
+
+		// Define results. 
+		let resultitems = [
+			{
+				name:'Principal amount',
+				value:P,
+			},
+			{
+				name:'Annual rate (APY)',
+				value:r,
+			},
+			{
+				name:'Term',
+				value:t,
+			},
+			{
+				name:'Compoundings per yr',
+				value:n,
+			},
+			// {
+			// 	name:'xyz',
+			// 	value:xyz,
+			// },
+			// {
+			// 	name:'xyz',
+			// 	value:xyz,
+			// },
+			{
+				name:'Simple',
+				value:dollar(simplefuturevalue),
+				// value:dollarBrief(simplefuturevalue),
+			},
+			{
+				name:'Compound',
+				value:dollar(compoundfuturevalue),
+				// value:dollarBrief(compoundfuturevalue),
+			},
+		];
+
+		// Display results of future growth. 
+		outputoverlay['futuregrowth']['resultlist'].innerHTML = createResultsLayout(resultitems);
 	}
 
 	// Display schedule for compounding growth. 
@@ -328,7 +401,7 @@ function displayGrowth(userinputvalues) {
 		}
 
 		// Display layout for schedule. 
-		valuegrowthoutputdestination['growthschedule'].innerHTML = schedulelayout;
+		outputoverlay['futuregrowth']['timeschedulebody'].innerHTML = schedulelayout;
 
 		/***/
 
@@ -366,15 +439,64 @@ function displayGrowth(userinputvalues) {
 	}
 }
 
-// Close all output windows. 
-function closeAllOutput() {
+// Create layout for output results. 
+function createResultsLayout(resultitems) {
 
-	// Go thru each output window. 
-	for(let key in outputwindows) {
+	// Initialize result layout. 
+	let resultlayout = '';
 
-		// Close output window. 
-		outputwindows[key]['window'].classList.add('gone');
+	// Go thru each result item. 
+	for(let item of resultitems) {
+
+		// Compile layout for result item. 
+		resultlayout += `
+		<!-- resultitem -->
+		<li class="resultitem">
+
+			<!-- result -->
+			<div class="result">
+
+				<!-- caption -->
+				<span class="caption">${ item['name'] }</span>
+				<!-- /caption -->
+
+				<!-- value -->
+				<span class="value">${ item['value'] }</span>
+				<!-- /value -->
+
+			</div>
+			<!-- /result -->
+
+		</li>
+		<!-- /resultitem -->`;
 	}
+
+	// Return resulting layout. 
+	return resultlayout;
+}
+
+// Open output overlay window. 
+function openOutput(selectedcalculation) {
+	// console.log('selectedcalculation:',selectedcalculation);
+
+	// TODO: Display selected output section. 
+	if(selectedcalculation=='futuregrowth') {
+		outputoverlay['futuregrowth']['section'].classList.remove('gone');
+		outputoverlay['loanamortization']['section'].classList.add('gone');
+	}
+	if(selectedcalculation=='loanamortization') {
+		outputoverlay['futuregrowth']['section'].classList.add('gone');
+		outputoverlay['loanamortization']['section'].classList.remove('gone');
+	}
+
+	// Hide overlay. 
+	outputoverlay['overlay'].classList.remove('gone');
+}
+// Close output overlay window. 
+function closeOutput() {
+
+	// Hide overlay. 
+	outputoverlay['overlay'].classList.add('gone');
 }
 
 
@@ -385,11 +507,14 @@ function handleEvents() {
 	for(let key in inputfields) {
 
 		// Get user input field. 
-		field = inputfields[key];
+		let inputfield = inputfields[key];
 
-		// Activate response to key press on user input field. 
-		field.addEventListener('keyup', respondToKey);
+		// Enable response to key press in input field. 
+		inputfield.addEventListener('keyup', respondToKey);
 	}
+
+	// Enable toggling of output overlay. 
+	outputoverlay['overlay'].addEventListener('click',respondToClick);
 
 	/****/
 
@@ -403,5 +528,24 @@ function handleEvents() {
 			// Dispatch calculation. 
 			dispatchCalculation();
 		}
+	}
+
+	// Respond to click. 
+	function respondToClick(event) {
+	
+		// Get clicked element. 
+		let clickedelement = event.target;
+		// event.currentTarget;
+		// Get window element. 
+		let overlaywindow = outputoverlay['window'];
+	
+		// Check if clicked inside window. 
+		let clickedinsidewindow = overlaywindow.contains(clickedelement);
+		// Check if clicked outside window. 
+		let clickedoutsidewindow = !clickedinsidewindow;
+		// console.log('Clicked outside window:',clickedoutsidewindow);
+	
+		// Close output overlay if clicked outside window. 
+		if(clickedoutsidewindow) closeOutput();
 	}
 }

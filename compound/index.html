@@ -400,13 +400,13 @@
 							<div class="input switch">
 
 								<!-- switchbtn -->
-								<input class="switchchoice" type="radio" name="function" id="loanamortization" value="la">
-								<label class="switchbtn" for="loanamortization">Loan Amortization</label>
+								<input class="switchchoice" type="radio" name="function" id="choiceloanamortization" value="loanamortization">
+								<label class="switchbtn" for="choiceloanamortization">Loan Amortization</label>
 								<!-- /switchbtn -->
 
 								<!-- switchbtn -->
-								<input class="switchchoice" type="radio" name="function" id="futuregrowth" value="fg">
-								<label class="switchbtn" for="futuregrowth">Compound Future Growth</label>
+								<input class="switchchoice" type="radio" name="function" id="choicefuturegrowth" value="futuregrowth">
+								<label class="switchbtn" for="choicefuturegrowth">Compound Future Growth</label>
 								<!-- /switchbtn -->
 
 
@@ -500,446 +500,425 @@
 			</main>
 			<!-- /window -->
 
-			<!-- aside.overlay -->
-			<!-- aside.background -->
+			<!-- overlay -->
+			<aside class="overlay gone">
 
-			<!-- window -->
-			<main class="window float gone" id="la">
+				<!-- window -->
+				<main class="window">
 
-				<!-- closebtn -->
-				<div class="closebtn" onclick="closeAllOutput()">
-
-					<!-- icon -->
-					<!-- <svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-					</svg> -->
-					<!-- /icon -->
-
-					<!-- icon -->
-					<svg class="icon xlg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-					</svg>
-					<!-- /icon -->
-
-				</div>
-				<!-- /closebtn -->
-
-				<!-- loanamortization -->
-				<section class="loanamortization output">
-
-					<!-- head -->
-					<h2 class="head">
-
+					<!-- closebtn -->
+					<div class="closebtn" onclick="closeOutput()">
+	
 						<!-- icon -->
-						<svg class="icon wallet" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
+						<!-- <svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+						</svg> -->
+						<!-- /icon -->
+	
+						<!-- icon -->
+						<svg class="icon xlg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+							<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
 						</svg>
 						<!-- /icon -->
+	
+					</div>
+					<!-- /closebtn -->
 
-						<!-- caption -->
-						<span class="caption">Loan Amortization</span>
-						<!-- /caption -->
+					<!-- output -->
+					<section class="loanamortization output" id="loanamortization">
 
-					</h2>
-					<!-- /head -->
+						<!-- head -->
+						<h2 class="head">
 
-					<!-- resultlist -->
-					<ul class="resultlist">
+							<!-- icon -->
+							<svg class="icon wallet" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
+							</svg>
+							<!-- /icon -->
 
-						<!-- resultitem -->
-						<li class="resultitem">
+							<!-- caption -->
+							<span class="caption">Loan Amortization</span>
+							<!-- /caption -->
 
-							<!-- result -->
-							<div class="result paymentamount">
+						</h2>
+						<!-- /head -->
 
-								<!-- caption -->
-								<span class="caption">Payment Amount</span>
-								<!-- /caption -->
+						<!-- resultlist -->
+						<ul class="resultlist">
 
-								<!-- value -->
-								<span class="value"></span>
-								<!-- /value -->
+							<!-- resultitem -->
+							<li class="resultitem">
 
-							</div>
-							<!-- /result -->
+								<!-- result -->
+								<div class="result paymentamount">
 
-						</li>
-						<!-- /resultitem -->
+									<!-- caption -->
+									<span class="caption">Payment Amount</span>
+									<!-- /caption -->
 
-						<!-- resultitem -->
-						<li class="resultitem">
+									<!-- value -->
+									<span class="value"></span>
+									<!-- /value -->
 
-							<!-- result -->
-							<div class="result x">
+								</div>
+								<!-- /result -->
 
-								<!-- caption -->
-								<span class="caption">Xyz</span>
-								<!-- /caption -->
+							</li>
+							<!-- /resultitem -->
 
-								<!-- value -->
-								<span class="value"></span>
-								<!-- /value -->
+							<!-- resultitem -->
+							<li class="resultitem">
 
-							</div>
-							<!-- /result -->
+								<!-- result -->
+								<div class="result x">
 
-						</li>
-						<!-- /resultitem -->
+									<!-- caption -->
+									<span class="caption">Xyz</span>
+									<!-- /caption -->
 
-						<!-- resultitem -->
-						<li class="resultitem">
+									<!-- value -->
+									<span class="value"></span>
+									<!-- /value -->
 
-							<!-- block -->
-							<details class="scheduleblock block" open>
+								</div>
+								<!-- /result -->
+
+							</li>
+							<!-- /resultitem -->
+
+							<!-- resultitem -->
+							<li class="resultitem">
+
+							</li>
+							<!-- /resultitem -->
+
+						</ul>
+						<!-- /resultlist -->
+
+						<!-- block -->
+						<details class="scheduleblock block" open>
+
+							<!-- head -->
+							<summary class="head">Amortization Schedule</summary>
+							<!-- /head -->
+
+							<!-- schedule -->
+							<table class="paymentschedule schedule">
 
 								<!-- head -->
-								<summary class="head">Amortization Schedule</summary>
+								<thead class="head">
+
+									<!-- row -->
+									<tr class="row">
+
+										<!-- header -->
+										<th class="header p">
+
+											<!-- caption -->
+											<span class="caption">Period</span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+										<!-- header -->
+										<th class="header v">
+
+											<!-- caption -->
+											<span class="caption">Pre<!-- -Balance --></span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+										<!-- header -->
+										<th class="header v">
+
+											<!-- caption -->
+											<span class="caption">Payment</span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+										<!-- header -->
+										<th class="header v">
+
+											<!-- caption -->
+											<span class="caption">Post<!-- -Balance --></span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+										<!-- header -->
+										<th class="header v" style="display:none;">
+
+											<!-- caption -->
+											<span class="caption">Principal Payment</span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+										<!-- header -->
+										<th class="header v" style="display:none;">
+
+											<!-- caption -->
+											<span class="caption">Interest Payment</span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+									</tr>
+									<!-- /row -->
+
+								</thead>
 								<!-- /head -->
 
-								<!-- schedule -->
-								<table class="paymentschedule schedule">
+								<!-- body -->
+								<tbody class="body">
 
-									<!-- head -->
-									<thead class="head">
+									<!-- row -->
+									<tr class="row">
 
-										<!-- row -->
-										<tr class="row">
+										<!-- cell -->
+										<td class="cell p">
 
-											<!-- header -->
-											<th class="header p">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">Period</span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+										<!-- cell -->
+										<td class="cell v">
 
-											<!-- header -->
-											<th class="header v">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">Pre<!-- -Balance --></span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+										<!-- cell -->
+										<td class="cell v">
 
-											<!-- header -->
-											<th class="header v">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">Payment</span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+										<!-- cell -->
+										<td class="cell v">
 
-											<!-- header -->
-											<th class="header v">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">Post<!-- -Balance --></span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+										<!-- cell -->
+										<td class="cell v">
 
-											<!-- header -->
-											<th class="header v" style="display:none;">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">Principal Payment</span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+										<!-- cell -->
+										<td class="cell v">
 
-											<!-- header -->
-											<th class="header v" style="display:none;">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">Interest Payment</span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+									</tr>
+									<!-- /row -->
 
-										</tr>
-										<!-- /row -->
+								</tbody>
+								<!-- /body -->
 
-									</thead>
-									<!-- /head -->
+							</table>
+							<!-- /schedule -->
 
-									<!-- body -->
-									<tbody class="body">
+						</details>
+						<!-- /block -->
 
-										<!-- row -->
-										<tr class="row">
+					</section>
+					<!-- /output -->
 
-											<!-- cell -->
-											<td class="cell p">
+					<!-- output -->
+					<section class="futuregrowth output" id="futuregrowth">
 
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
+						<!-- head -->
+						<h2 class="head">
 
-											</td>
-											<!-- /cell -->
+							<!-- icon -->
+							<svg class="icon trophy" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/>
+							</svg>
+							<!-- /icon -->
 
-											<!-- cell -->
-											<td class="cell v">
+							<!-- caption -->
+							<!-- <span class="caption">Future Growth Value</span> -->
+							<span class="caption">Future Growth</span>
+							<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
+						</h2>
+						<!-- /head -->
 
-											</td>
-											<!-- /cell -->
+						<!-- resultlist -->
+						<ul class="resultlist">
 
-											<!-- cell -->
-											<td class="cell v">
+							<!-- resultitem -->
+							<li class="resultitem">
 
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
+								<!-- result -->
+								<div class="result simplefuturevalue">
 
-											</td>
-											<!-- /cell -->
+									<!-- caption -->
+									<span class="caption">Simple</span>
+									<!-- /caption -->
 
-											<!-- cell -->
-											<td class="cell v">
+									<!-- value -->
+									<span class="value"></span>
+									<!-- /value -->
 
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
+								</div>
+								<!-- /result -->
 
-											</td>
-											<!-- /cell -->
+							</li>
+							<!-- /resultitem -->
 
-											<!-- cell -->
-											<td class="cell v">
+							<!-- resultitem -->
+							<li class="resultitem">
 
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
+								<!-- result -->
+								<div class="result compoundfuturevalue">
 
-											</td>
-											<!-- /cell -->
+									<!-- caption -->
+									<span class="caption">Compounding</span>
+									<!-- /caption -->
 
-											<!-- cell -->
-											<td class="cell v">
+									<!-- value -->
+									<span class="value"></span>
+									<!-- /value -->
 
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
+								</div>
+								<!-- /result -->
 
-											</td>
-											<!-- /cell -->
+							</li>
+							<!-- /resultitem -->
 
-										</tr>
-										<!-- /row -->
+							<!-- resultitem -->
+							<li class="resultitem">
 
-									</tbody>
-									<!-- /body -->
+							</li>
+							<!-- /resultitem -->
 
-								</table>
-								<!-- /schedule -->
+						</ul>
+						<!-- /resultlist -->
 
-							</details>
-							<!-- /block -->
+						<!-- block -->
+						<details class="scheduleblock block" open>
 
-						</li>
-						<!-- /resultitem -->
+							<!-- head -->
+							<summary class="head">Growth Schedule</summary>
+							<!-- /head -->
 
-					</ul>
-					<!-- /resultlist -->
-
-				</section>
-				<!-- /loanamortization -->
-
-			</main>
-			<!-- /window -->
-
-			<!-- window -->
-			<main class="window float gone" id="fg">
-
-				<!-- closebtn -->
-				<div class="closebtn" onclick="closeAllOutput()">
-
-					<!-- icon -->
-					<!-- <svg class="icon x" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
-					</svg> -->
-					<!-- /icon -->
-
-					<!-- icon -->
-					<svg class="icon xlg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-						<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
-					</svg>
-					<!-- /icon -->
-
-				</div>
-				<!-- /closebtn -->
-
-				<!-- futuregrowth -->
-				<section class="futuregrowth output">
-
-					<!-- head -->
-					<h2 class="head">
-
-						<!-- icon -->
-						<svg class="icon trophy" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z"/>
-						</svg>
-						<!-- /icon -->
-
-						<!-- caption -->
-						<!-- <span class="caption">Future Growth Value</span> -->
-						<span class="caption">Future Growth</span>
-						<!-- /caption -->
-
-					</h2>
-					<!-- /head -->
-
-					<!-- resultlist -->
-					<ul class="resultlist">
-
-						<!-- resultitem -->
-						<li class="resultitem">
-
-							<!-- result -->
-							<div class="result simplefuturevalue">
-
-								<!-- caption -->
-								<span class="caption">Simple</span>
-								<!-- /caption -->
-
-								<!-- value -->
-								<span class="value"></span>
-								<!-- /value -->
-
-							</div>
-							<!-- /result -->
-
-						</li>
-						<!-- /resultitem -->
-
-						<!-- resultitem -->
-						<li class="resultitem">
-
-							<!-- result -->
-							<div class="result compoundfuturevalue">
-
-								<!-- caption -->
-								<span class="caption">Compounding</span>
-								<!-- /caption -->
-
-								<!-- value -->
-								<span class="value"></span>
-								<!-- /value -->
-
-							</div>
-							<!-- /result -->
-
-						</li>
-						<!-- /resultitem -->
-
-						<!-- resultitem -->
-						<li class="resultitem">
-
-							<!-- block -->
-							<details class="scheduleblock block" open>
+							<!-- schedule -->
+							<table class="growthschedule schedule">
 
 								<!-- head -->
-								<summary class="head">Growth Schedule</summary>
+								<thead class="head">
+
+									<!-- row -->
+									<tr class="row">
+
+										<!-- header -->
+										<th class="header p">
+
+											<!-- caption -->
+											<span class="caption">Period</span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+										<!-- header -->
+										<th class="header v">
+
+											<!-- caption -->
+											<!-- <span class="caption">Sum Value</span> -->
+											<span class="caption">Growth Value</span>
+											<!-- /caption -->
+
+										</th>
+										<!-- /header -->
+
+									</tr>
+									<!-- /row -->
+
+								</thead>
 								<!-- /head -->
 
-								<!-- schedule -->
-								<table class="growthschedule schedule">
+								<!-- body -->
+								<tbody class="body">
 
-									<!-- head -->
-									<thead class="head">
+									<!-- row -->
+									<tr class="row">
 
-										<!-- row -->
-										<tr class="row">
+										<!-- cell -->
+										<td class="cell p">
 
-											<!-- header -->
-											<th class="header p">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<span class="caption">Period</span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+										<!-- cell -->
+										<td class="cell v">
 
-											<!-- header -->
-											<th class="header v">
+											<!-- caption -->
+											<span class="caption">0</span>
+											<!-- /caption -->
 
-												<!-- caption -->
-												<!-- <span class="caption">Sum Value</span> -->
-												<span class="caption">Growth Value</span>
-												<!-- /caption -->
+										</td>
+										<!-- /cell -->
 
-											</th>
-											<!-- /header -->
+									</tr>
+									<!-- /row -->
 
-										</tr>
-										<!-- /row -->
+								</tbody>
+								<!-- /body -->
 
-									</thead>
-									<!-- /head -->
+							</table>
+							<!-- /schedule -->
 
-									<!-- body -->
-									<tbody class="body">
+						</details>
+						<!-- /block -->
 
-										<!-- row -->
-										<tr class="row">
+					</section>
+					<!-- /output -->
 
-											<!-- cell -->
-											<td class="cell p">
+				</main>
+				<!-- /window -->
 
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
-
-											</td>
-											<!-- /cell -->
-
-											<!-- cell -->
-											<td class="cell v">
-
-												<!-- caption -->
-												<span class="caption">0</span>
-												<!-- /caption -->
-
-											</td>
-											<!-- /cell -->
-
-										</tr>
-										<!-- /row -->
-
-									</tbody>
-									<!-- /body -->
-
-								</table>
-								<!-- /schedule -->
-
-							</details>
-							<!-- /block -->
-
-						</li>
-						<!-- /resultitem -->
-
-					</ul>
-					<!-- /resultlist -->
-
-				</section>
-				<!-- /futuregrowth -->
-
-			</main>
-			<!-- /window -->
+			</aside>
+			<!-- /overlay -->
 
 		</div>
 		<!-- /#container -->

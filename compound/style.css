@@ -42,18 +42,14 @@ div#container {min-height:100vh; padding:1rem;}
 
 
 
+
 /* Main Window */
 div#container main.window {background-color:white; font-size:1.375rem; width:100%; padding:1.5rem; border-radius:.875rem; box-shadow:var(--boxshadow);}
 div#container main.window {display:grid; grid-template-columns:1fr; grid-gap:1em; max-width:var(--pagewidth);}
-div#container main.window.float {/* grid-template-columns:repeat(2,1fr); */ max-width:calc(var(--pagewidth) * 2); }
-div#container main.window.float {position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);}
-div#container main.window.float {opacity:1; visibility:visible; transition:.5s;}
-div#container main.window.float.gone {opacity:0; visibility:hidden; /* scale:0; */}
 div#container main.window h1.head {display:flex; flex-direction:column; align-items:center; grid-gap:.125em;}
 div#container main.window h1.head {font-size:2.375rem; text-align:center; margin:0; margin-top:1rem;}
 div#container main.window h1.head svg.icon {font-size:2.5em;}
 /* div#container main.window h1.head span.caption {display:none;} */
-
 
 
 /* General Section */
@@ -61,7 +57,6 @@ div#container main.window section {background-color:var(--offwhite); padding:1.2
 div#container main.window section h2.head {display:flex; flex-direction:row; justify-content:center; align-items:center;}
 div#container main.window section h2.head {font-size:1.75rem; text-align:center; margin:0;}
 div#container main.window section h2.head svg.icon {font-size:1.125em; margin-right:.5em;}
-
 
 
 /* Input Section */
@@ -104,41 +99,54 @@ div#container main.window section.input ul.inputlist li.inputitem div.input butt
 
 
 
-/* Float Window */
-div#container main.window.float div.closebtn {position:absolute; top:0; right:0; margin:2.5rem;}
-div#container main.window.float div.closebtn {font-size:2.25rem; font-size:1.75rem; cursor:pointer;}
-div#container main.window.float div.closebtn svg.icon {display:block;}
 
-/* Float Window: Output Section */
-div#container main.window.float section.output {display:flex; flex-direction:column; /* align-items:stretch; */}
-div#container main.window.float section.output ul.resultlist {list-style:none; padding:0; margin:0;}
-/* div#container main.window.float section.output ul.resultlist li.resultitem {} */
-div#container main.window.float section.output ul.resultlist li.resultitem div.result {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem; align-items:center;}
-div#container main.window.float section.output ul.resultlist li.resultitem div.result {grid-template-columns:3fr 4fr;}	/* 4/7 (57%) */
-div#container main.window.float section.output ul.resultlist li.resultitem div.result {grid-template-columns:2fr 3fr;}	/* 3/5 (60%) */
-div#container main.window.float section.output ul.resultlist li.resultitem div.result {grid-template-columns:1fr 2fr;}	/* 2/3 (67%) */
-div#container main.window.float section.output ul.resultlist li.resultitem div.result {grid-template-columns:3fr 5fr;}	/* 5/8 (62.5%) */
-div#container main.window.float section.output ul.resultlist li.resultitem div.result {/* text-align:center; */ /* white-space:pre-wrap; */ margin-top:1rem;}
-div#container main.window.float section.output ul.resultlist li.resultitem div.result.x {display:none;}
-/* div#container main.window.float section.output ul.resultlist li.resultitem div.result.simple {} */
-/* div#container main.window.float section.output ul.resultlist li.resultitem div.result.compound {} */
-/* div#container main.window.float section.output ul.resultlist li.resultitem div.result span.value {} */
-div#container main.window.float section.output ul.resultlist li.resultitem div.result span.value:empty {background-color:gainsboro; height:1em; width:100%; border-radius:10em;}
-/* div#container main.window.float section.output ul.resultlist li.resultitem div.result span.caption {} */
-/* div#container main.window.float section.output ul.resultlist li.resultitem div.result span.caption::before {content:'\A';} */
-/* div#container main.window.float section.output ul.resultlist li.resultitem div.result:empty::before {content:'';} */
+/* Output Overlay */
+/* div#container aside.overlay {display:none;} */
+div#container aside.overlay {position:fixed; inset:0;}
+div#container aside.overlay {background-color:var(--blacksheet); cursor:pointer; display:grid; place-items:center; overflow:auto; padding:1rem;}
+div#container aside.overlay {opacity:1; visibility:visible; pointer-events:initial; transition:.5s;}
+div#container aside.overlay.gone {opacity:0; visibility:hidden; pointer-events:none;}
 
-/* Float Window: Schedule Table */
-div#container main.window.float section.output ul.resultlist details.block {margin-top:1.5em;}
-div#container main.window.float section.output ul.resultlist details.block summary.head {font-size:1.125em; cursor:pointer; text-align:center; user-select:none;}
-div#container main.window.float section.output ul.resultlist details.block table.schedule {/* max-height:20rem; */ width:100%; text-align:center;}
-/* div#container main.window.float section.output ul.resultlist details.block table.schedule .p {text-align:left;} */
-/* div#container main.window.float section.output ul.resultlist details.block table.schedule .v {text-align:right;} */
-/* div#container main.window.float section.output ul.resultlist details.block table.schedule thead.head {} */
-div#container main.window.float section.output ul.resultlist details.block table.schedule thead.head th.header {font-size:1.125em;}
-/* div#container main.window.float section.output ul.resultlist details.block table.schedule tbody.body {} */
-div#container main.window.float section.output ul.resultlist details.block table.schedule tbody.body td.cell {background-color:var(--blackglass); color:white; padding:.25rem; border-radius:.375rem;}
-/* div#container main.window.float section.output ul.resultlist details.block table.schedule span.caption {} */
+/* Output Overlay Window */
+div#container aside.overlay main.window {cursor:initial; position:relative; width:auto; max-width:calc(var(--pagewidth) * 2); }
+div#container aside.overlay main.window {transform:translateY(0); transition:.5s;}
+div#container aside.overlay.gone main.window {transform:translateY(-10%);}
+div#container aside.overlay main.window div.closebtn {position:absolute; top:0; right:0; margin:2.5rem;}
+div#container aside.overlay main.window div.closebtn {font-size:2.25rem; font-size:1.75rem; cursor:pointer;}
+div#container aside.overlay main.window div.closebtn svg.icon {display:block;}
+
+/* Output Overlay Window: Output Section */
+div#container aside.overlay main.window section.output {display:flex; flex-direction:column; /* align-items:stretch; */}
+div#container aside.overlay main.window section.output.gone {display:none;}
+/* Output Overlay Window: Result List */
+div#container aside.overlay main.window section.output ul.resultlist {list-style:none; padding:0; margin:0;}
+/* div#container aside.overlay main.window section.output ul.resultlist li.resultitem {} */
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem; align-items:center;}
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:3fr 4fr;}	/* 4/7 (57%) */
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:2fr 3fr;}	/* 3/5 (60%) */
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:1fr 2fr;}	/* 2/3 (67%) */
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:3fr 5fr;}	/* 5/8 (62.5%) */
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {/* text-align:center; */ /* white-space:pre-wrap; */ margin-top:1rem;}
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result.x {display:none;}
+/* div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result.simple {} */
+/* div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result.compound {} */
+/* div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result span.value {} */
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result span.value:empty {background-color:gainsboro; height:1em; width:100%; border-radius:10em;}
+/* div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result span.caption {} */
+/* div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result span.caption::before {content:'\A';} */
+/* div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result:empty::before {content:'';} */
+/* Output Overlay Window: Schedule Table */
+div#container aside.overlay main.window section.output details.block {max-height:calc(100vh - 30rem); overflow:auto; margin-top:1.5em;}
+div#container aside.overlay main.window section.output details.block summary.head {font-size:1.125em; cursor:pointer; text-align:center; user-select:none;}
+div#container aside.overlay main.window section.output details.block table.schedule {/* max-height:20rem; */ width:100%;}
+div#container aside.overlay main.window section.output details.block table.schedule {font-size:1rem; text-align:center;}
+/* div#container aside.overlay main.window section.output details.block table.schedule .p {text-align:left;} */
+/* div#container aside.overlay main.window section.output details.block table.schedule .v {text-align:right;} */
+/* div#container aside.overlay main.window section.output details.block table.schedule thead.head {} */
+div#container aside.overlay main.window section.output details.block table.schedule thead.head th.header {font-size:1.25em;}
+/* div#container aside.overlay main.window section.output details.block table.schedule tbody.body {} */
+div#container aside.overlay main.window section.output details.block table.schedule tbody.body td.cell {background-color:var(--blackglass); color:white; white-space:nowrap; padding:.375rem .75rem; border-radius:.375rem;}
+/* div#container aside.overlay main.window section.output details.block table.schedule span.caption {} */
 
 
 
@@ -150,18 +158,22 @@ div#container main.window.float section.output ul.resultlist details.block table
 	/* Container */
 	/* div#container {} */
 
-	/* Main Box */
+	/* Main Window */
 	/* div#container main.window {} */
 
 	/* Input Section */
 	/* div#container main.window section.input {} */
+	/* div#container main.window section.input ul.inputlist {} */
+	/* div#container main.window section.input ul.inputlist li.inputitem {} */
 	/* div#container main.window section.input ul.inputlist li.inputitem div.input {} */
 	div#container main.window section.input ul.inputlist li.inputitem div.input span.tooltip {margin:0; margin-bottom:var(--tipsize);}
 	div#container main.window section.input ul.inputlist li.inputitem div.input span.tooltip {top:auto; right:auto; bottom:100%; left:50%; right:auto; transform:translateX(-50%);}
 	div#container main.window section.input ul.inputlist li.inputitem div.input span.tooltip::after {top:100%; right:auto; bottom:auto; left:50%; transform:translateX(-50%); border:var(--tipsize) solid transparent; border-top-color:var(--blacksheet);}
 
-	/* Float Window */
-	/* div#container main.window.float section.output {} */
+	/* Output Overlay Window */
+	/* div#container aside.overlay {} */
+	/* div#container aside.overlay main.window {} */
+	/* div#container aside.overlay main.window section.output {} */
 }
 
 /* Big Smartphone Screen */
@@ -170,15 +182,16 @@ div#container main.window.float section.output ul.resultlist details.block table
 	/* Container */
 	/* div#container {} */
 
-	/* Main Box */
+	/* Main Window */
 	/* div#container main.window {} */
-	div#container main.window.float {grid-template-columns:1fr;}
 
 	/* Input Section */
 	/* div#container main.window section.input {} */
 
-	/* Float Window */
-	/* div#container main.window.float section.output {} */
+	/* Output Overlay Window */
+	/* div#container aside.overlay {} */
+	/* div#container aside.overlay main.window {} */
+	/* div#container aside.overlay main.window section.output {} */
 }
 
 /* Small Smartphone Screen */
@@ -187,12 +200,14 @@ div#container main.window.float section.output ul.resultlist details.block table
 	/* Container */
 	/* div#container {} */
 	
-	/* Main Box */
+	/* Main Window */
 	div#container main.window {font-size:1em;}
 
 	/* Input Section */
 	/* div#container main.window section.input {} */
 
-	/* Float Window */
-	/* div#container main.window.float section.output {} */
+	/* Output Overlay Window */
+	/* div#container aside.overlay {} */
+	/* div#container aside.overlay main.window {} */
+	/* div#container aside.overlay main.window section.output {} */
 }
