@@ -1,0 +1,199 @@
+
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+
+:root {
+
+	/* Theme Colors */
+	--whiteglass:#FFF4;
+	--blackglass:#0002;
+	--blackglass2:#0004;
+	--drkorange:#e68a00;
+	--orange:#ffb442;
+	--lightorange:#ffc670;
+	--whiteorange:#ffebcd;
+	--drkgrey:#444;
+	--midgrey:#888;
+	--ltgrey:#efefef;
+	--trpltgrey:#eeec;
+	--trpgreen:#0f03;
+
+	/* Box Shadows */
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+
+	/* Metrics */
+	--pagewidth:75rem;
+	--pagewidth:100rem;
+
+	/* Slideshow Aspect Ratio */
+	/* 1:1 */
+	--aspectratio:100%;
+	/* 8:7 */
+	/* --aspectratio:87.5%; */
+	/* 4:3 */
+	/* --aspectratio:75%; */
+	/* 3:2 */
+	/* --aspectratio:66.7%; */
+	/* 8:5 */
+	/* --aspectratio:62.5%; */
+	/* 16:9 */
+	/* --aspectratio:56.25%; */
+	/* 2:1 */
+	/* --aspectratio:50%; */
+}
+
+
+
+* {box-sizing:border-box;}
+
+
+
+body {background-color:var(--whiteorange); font-family:Nunito,sans-serif; margin:0;}
+
+
+
+div#container {background-color:whitesmoke; background-color:var(--whiteorange);/*  display:flex; flex-direction:column; */ min-height:100vh;}
+
+
+
+/* General Section */
+div#container section {/* min-height:10rem; */ padding:1rem; border-top:1px solid var(--blackglass2);}
+div#container section div.grid {width:100%; max-width:var(--pagewidth); margin:0 auto;}
+div#container section div.grid footer.footer {display:flex; flex-direction:column; align-items:center; /* text-align:center; */ margin-top:2.25rem;}
+
+
+
+/* Head Section */
+div#container section#head {/* flex-grow:0; */ background-color:var(--orange); transition:.25s; padding:1rem 2rem .75rem; text-align:center; z-index:30;}
+div#container section#head div.grid {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
+div#container section#head div.grid h1.head {display:flex; flex-direction:row; justify-content:center; align-items:center; margin:0 /* 1rem */;}
+div#container section#head div.grid h1.head {font-size:2rem; transition:.25s;}
+div#container section#head div.grid h1.head svg.icon {margin-right:.375em; margin-bottom:.125em;}
+div#container section#head div.grid h1.head span.caption {white-space:nowrap;}
+div#container section#head div.grid div.btn {font-size:2rem; transition:.25s; margin:0 .25em; cursor:pointer;}
+div#container section#head div.grid div.btn svg.icon {display:block;}
+
+
+
+/* Navbar Section */
+div#container section.navbox {background-color:var(--lightorange); transition:.5s;}
+/* div#container section.navbox.active {} */
+/* div#container section.navbox div.grid {} */
+div#container section.navbox div.grid ul.taglist {display:flex;}
+div#container section.navbox div.grid ul.taglist {list-style:none; padding:0; margin:0;}
+div#container section.navbox div.grid ul.taglist li.tag {flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem;}
+div#container section.navbox div.grid ul.taglist li.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
+div#container section.navbox div.grid ul.taglist li.tag {display:grid; place-items:center; white-space:nowrap; user-select:none;}
+div#container section.navbox div.grid ul.taglist li.tag:hover {background-color:black; color:var(--orange);}
+div#container section.navbox div.grid ul.taglist li.tag:empty:after {content:'-';}
+div#container section.navbox div.grid ul.taglist li.tag span.caption {padding-top:.125rem;}
+div#container section.navbox div.grid ul.taglist li.tag span.caption:empty:after {content:'All';}
+
+/* Headbar Section */
+div#container section#headbar {/* background-color:var(--orange); */ overflow:hidden; position:relative;}
+div#container section#headbar {display:flex; flex-direction:row; align-items:center; padding:1px;}
+/* div#container section#headbar {flex-grow:0; max-height:0;} */
+/* div#container section#headbar.active {max-height:10vmax;} */
+/* div#container section#headbar:before {position:absolute; top:0; left:0;} */
+/* div#container section#headbar:before {content:'Filter:'; padding:0 1rem;} */
+div#container section#headbar div.grid {max-width:none; flex-grow:1; /* padding-left:0; margin:1rem */;}
+/* div#container section#headbar div.grid::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightorange), transparent);} */
+div#container section#headbar div.grid ul.taglist {flex-direction:row; /* justify-content:space-between; */ justify-content:flex-start; align-items:center; max-width:none;}
+div#container section#headbar div.grid ul.taglist {overflow-x:auto; scrollbar-width:none; /* position:relative; */ padding:.65rem 1rem;}
+div#container section#headbar div.grid ul.taglist li.tag {margin:0 .25rem;}
+/* div#container section#headbar {display:none;} */
+
+/* Sidebar Section */
+div#container section#sidebar {background-image:linear-gradient( var(--orange) 85%, var(--lightorange) ); overflow:auto;}
+div#container section#sidebar {position:fixed; top:0; right:0; bottom:0; width:100%; max-width:16rem; /* opacity:.95; */ z-index:100; box-shadow:0 5px 10px rgba(0, 0, 0, 0.3);}
+div#container section#sidebar {transform:translateX(100%);}
+div#container section#sidebar.active {transform:translateX(0);}
+div#container section#sidebar div.grid {display:flex; flex-direction:column; justify-content:space-between; align-items:stretch; min-height:100%;}
+div#container section#sidebar div.grid ul.taglist {background-color:var(--whiteglass); flex-direction:column; justify-content:center; align-items:stretch;}
+div#container section#sidebar div.grid ul.taglist {/* flex-grow:1; */ /* flex-shrink:0; */ padding:1rem; border-radius:.75rem; margin-top:3rem;}
+/* div#container section#sidebar div.grid ul.taglist {position:relative; min-height:20rem;} */
+/* div#container section#sidebar div.grid ul.taglist::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightorange), transparent);} */
+div#container section#sidebar div.grid ul.taglist li.tag {margin:.25rem 0;}
+div#container section#sidebar div.grid div.closebtn {display:flex; justify-content:flex-end; place-items:center;}
+div#container section#sidebar div.grid div.closebtn {font-size:2rem; text-align:right; padding:.75rem 1.25rem; cursor:pointer; transition:.25s;}
+/* div#container section#sidebar div.grid div.closebtn {position:absolute; top:0; right:0;} */
+/* div#container section#sidebar div.grid div.closebtn svg.icon {} */
+div#container section#sidebar::after {content:''; display:block; position:fixed; top:0; right:100%; bottom:0; width:100vw; height:100%; z-index:-1; background-color:#0004;}
+div#container section#sidebar::after {opacity:0; visibility:hidden; transition:.5s, 0s width;}
+div#container section#sidebar.active::after {opacity:1; visibility:visible;}
+/* Navbar Section: Footer */
+/* div#container section#sidebar div.grid footer.footer {} */
+div#container section#sidebar div.grid footer.footer button.btn {background-color:var(--drkorange); color:white; cursor:pointer; padding:.5em 1.25em; border:0 none; border-radius:.5em; margin-bottom:.5rem;}
+
+
+
+
+
+
+/* Large Smartphone */
+@media screen and (max-width:64rem) {
+
+	/* Head Section */
+	/* div#container section#head {} */
+	/* div#container section#head div.grid {} */
+
+	/* Navbar Section */
+	/* div#container section.navbox {} */
+	/* div#container section.navbox.active {} */
+	/* div#container section.navbox div.grid {} */
+	/* Headbar Section */
+	/* div#container section#headbar {} */
+	/* div#container section#headbar div.grid {} */
+	/* Sidebar Section */
+	/* div#container section#sidebar {} */
+	/* div#container section#sidebar div.grid {} */
+}
+
+
+/* Medium Smartphone */
+@media screen and (max-width:48rem) {
+
+	/* Head Section */
+	div#container section#head {padding-left:1.5em; padding-right:1.5em;}
+	/* div#container section#head div.grid {} */
+	div#container section#head div.grid h1.head {font-size:1.75rem;}
+	div#container section#head div.grid div.btn {font-size:1.75rem;}
+
+	/* Navbar Section */
+	/* div#container section.navbox {} */
+	/* div#container section.navbox.active {} */
+	/* div#container section.navbox div.grid {} */
+	/* Headbar Section */
+	/* div#container section#headbar {} */
+	/* div#container section#headbar div.grid {} */
+	/* Sidebar Section */
+	/* div#container section#sidebar {} */
+	/* div#container section#sidebar div.grid {} */
+}
+
+
+/* Small Smartphone */
+@media screen and (max-width:28rem) {
+
+	/* Head Section */
+	div#container section#head {padding-left:1em; padding-right:1em;}
+	/* div#container section#head div.grid {} */
+	div#container section#head div.grid h1.head {font-size:1.5rem;}
+	div#container section#head div.grid div.btn {font-size:1.5rem;}
+
+	/* Navbar Section */
+	/* div#container section.navbox {} */
+	/* div#container section.navbox.active {} */
+	/* div#container section.navbox div.grid {} */
+	/* Headbar Section */
+	/* div#container section#headbar {} */
+	/* div#container section#headbar div.grid {} */
+	/* Sidebar Section */
+	/* div#container section#sidebar {} */
+	/* div#container section#sidebar div.grid {} */
+	div#container section#sidebar div.grid div.closebtn {font-size:1.5rem; padding:1rem 1rem 0 0;}
+}

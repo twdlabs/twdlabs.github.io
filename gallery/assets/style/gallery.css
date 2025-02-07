@@ -1,210 +1,129 @@
 
 
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+/* Gallery Section */
+div#container section.gallery {/* flex-grow:1; */ /* background-color:var(--whiteorange); */ /* text-align:center; */ /* overflow:auto; */ /* scrollbar-width:none; */ position:relative; z-index:40;}
+/* div#container section.gallery div.grid {} */
+
+
+/* Gallery Section: Media List */
+/* div#container section.gallery div.grid ul.medialist {display:flex; flex-flow:row wrap;} */
+div#container section.gallery div.grid ul.medialist {list-style:none; padding:0; margin:0;}
+div#container section.gallery div.grid ul.medialist {display:grid; grid-template-columns:repeat(4,1fr); grid-template-columns:repeat(6,1fr); grid-gap:.5rem; padding:1rem;}
+
+
+/* Gallery Section: Media Item */
+div#container section.gallery div.grid ul.medialist li.item {background-color:white; cursor:pointer; position:relative; overflow:hidden; transition:.25s;}
+div#container section.gallery div.grid ul.medialist li.item {/* width:16rem; */ border-radius:.5rem; /* border:.125rem solid white; */}
+div#container section.gallery div.grid ul.medialist li.item.x {display:none;}
+div#container section.gallery div.grid ul.medialist li.item.gone {height:0; width:0; border-width:0; margin:0; display:none;}
+/* Gallery Section: Media Item */
+div#container section.gallery div.grid ul.medialist li.item div.media {min-width:100%; /* min-height:100%; */ background-size:cover; background-position:center; position:relative; z-index:10;}
+/* div#container section.gallery div.grid ul.medialist li.item div.media {transform:none; transition:.125s;} */
+/* div#container section.gallery div.grid ul.medialist li.item:hover div.media {transform:scale(1.04);} */
+div#container section.gallery div.grid ul.medialist li.item div.media:before {background-color:var(--blackglass);content:''; display:block; width:100%; padding-top:var(--aspectratio);}
+div#container section.gallery div.grid ul.medialist li.item div.media.local::after {position:absolute; right:0; top:0; z-index:110;}
+div#container section.gallery div.grid ul.medialist li.item div.media.local::after {/* background-color:var(--trpgreen); */ content:''; display:block; height:0; width:0; margin-right:1rem;}
+div#container section.gallery div.grid ul.medialist li.item div.media.local::after {border:.875rem solid var(--drkorange); border-width:1.75rem .875rem .5rem; border-bottom-color:transparent; /* box-shadow:var(--boxshadow); */}
+
+/* Gallery Section: Media Item Panel */
+div#container section.gallery div.grid ul.medialist li.item div.panel {position:absolute; left:0; right:0; width:100%; /* height:25%; */ z-index:20;}
+div#container section.gallery div.grid ul.medialist li.item div.panel {user-select:none; /* pointer-events:none; */}
+div#container section.gallery div.grid ul.medialist li.item div.panel {opacity:0.75; transition:.25s;}
+div#container section.gallery div.grid ul.medialist li.item:hover div.panel {opacity:1;}
+
+/* Gallery Section: Media Item Profile Panel */
+div#container section.gallery div.grid ul.medialist li.item div.panel.top {background:linear-gradient(#0006,#0000); color:white; top:0;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top {padding:.5rem .25rem; /* padding:.5rem .625rem; */}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile {/* flex-grow:1;  */display:flex; flex-direction:row; align-items:center;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile {padding:.25rem .375rem .125rem; /* padding:.25rem 0 .125rem; */}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile div.avatar {flex-grow:0; width:2.25rem; height:2.25rem; border-radius:50%; overflow:hidden;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile div.avatar {background-color:#0004; background-position:top center; background-size:cover;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile div.avatar img {object-fit:cover; width:100%; height:100%;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile div.details {flex-grow:1; margin-left:.5rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile div.details div.username {font-size:.875rem;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.top div.profile div.details div.followercount {font-size:.75rem;}
+
+/* Gallery Section: Media Item Interaction Panel */
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom {background:linear-gradient(#0000,#0006); color:white; bottom:0;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom {display:flex; flex-direction:row; /* justify-content:flex-end; */ align-items:flex-end; padding:.375rem;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn {flex-grow:0; display:grid; place-items:center; min-width:1.75rem; min-height:1.75rem; cursor:pointer;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn {background-color:var(--trpltgrey); font-size:1.25rem; padding:.25rem; border-radius:.25rem; margin:.25rem;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn {color:var(--midgrey); transition:.25s;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn:hover {color:var(--drkgrey);}
+/* div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn.dl {} */
+/* div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn.like {} */
+/* div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn.comment {} */
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn.like svg.icon {transform:none; transition:.125s;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn.like svg.icon {display:block;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn.like svg.icon.bold {display:none; color:crimson;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom a.btn.like:active svg.icon {transform:scale(.75);}
+div#container section.gallery div.grid ul.medialist li.item.liked div.panel.bottom a.btn.like svg.icon {display:none;}
+div#container section.gallery div.grid ul.medialist li.item.liked div.panel.bottom a.btn.like svg.icon.bold {display:block;}
+div#container section.gallery div.grid ul.medialist li.item.liked div.panel.bottom a.btn.like:active svg.icon {transform:none;}
+div#container section.gallery div.grid ul.medialist li.item div.panel.bottom div.space {flex-grow:1;}
+
+/* Gallery Section: Media Item */
+div#container section.gallery div.grid ul.medialist.exp li.item {overflow:visible; margin:3rem 0;}
+div#container section.gallery div.grid ul.medialist.exp li.item div.panel {background:white; color:black; padding:.25rem;}
+div#container section.gallery div.grid ul.medialist.exp li.item div.panel.top {top:auto; bottom:100%; /* padding-left:.375rem; */ border-radius:.5rem .5rem 0 0;}
+div#container section.gallery div.grid ul.medialist.exp li.item div.panel.bottom {top:100%; bottom:auto; border-radius:0 0 .5rem .5rem;}
 
 
 
-:root {
-	--orange:#ffb442;
-	--lightorange:#ffc670;
-	--blackglass:#0002;
 
-	/* Slideshow Aspect Ratio */
-	/* 1:1 */
-	--aspectratio:100%;
-	/* 8:7 */
-	/* --aspectratio:87.5%; */
-	/* 4:3 */
-	/* --aspectratio:75%; */
-	/* 3:2 */
-	/* --aspectratio:66.7%; */
-	/* 8:5 */
-	/* --aspectratio:62.5%; */
-	/* 16:9 */
-	/* --aspectratio:56.25%; */
-	/* 2:1 */
-	/* --aspectratio:50%; */
+
+
+/* Small Laptop */
+@media screen and (max-width:96rem) {
+
+	/* Gallery Section */
+	/* div#container section.gallery {} */
+	/* div#container section.gallery div.grid {} */
+	/* Gallery Section: Media List */
+	div#container section.gallery div.grid ul.medialist {grid-template-columns:repeat(5,1fr);}
 }
 
 
+/* Small Laptop */
+@media screen and (max-width:76rem) {
 
-* {box-sizing:border-box;}
-
-
-
-body {font-family:Nunito,sans-serif; margin:0;}
-
-
-
-div#container {background-color:whitesmoke; display:flex; flex-direction:column; height:100vh;}
-
-
-
-/* General Section */
-div#container section {border-bottom:1px solid #0004; padding:1rem; /* min-height:10rem; */}
-div#container section main {width:100%; max-width:75rem; margin:0 auto;}
-
-
-/* Head Section */
-div#container section#head {flex-grow:0; background-color:var(--orange); padding:1rem 2rem .75rem; text-align:center; z-index:30;}
-div#container section#head main {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-div#container section#head main h1.head {display:flex; flex-direction:row; justify-content:center; align-items:center; font-size:2rem; margin:0 /* 1rem */;}
-div#container section#head main h1.head svg.icon {margin-right:.375rem; margin-bottom:.125rem;}
-div#container section#head main h1.head span.caption {white-space:nowrap;}
-div#container section#head main div.btn {font-size:2rem; /* margin:0 1rem; */ cursor:pointer;}
-div#container section#head main div.btn svg.icon {display:block;}
-div#container section#head main button.loadbtn {background-color:#e68a00; color:white; padding:.5em 1.25em; border:0 none; border-radius:.5em;}
-
-
-/* Tags Section */
-div#container section#tags {background-color:var(--orange); background-color:var(--lightorange); overflow:hidden; position:relative;}
-div#container section#tags {display:flex; flex-direction:row; align-items:center; padding:1px;}
-div#container section#tags {flex-grow:0; /* max-height:0; */ transition:.5s;}
-div#container section#tags.active {max-height:10vmax;}
-div#container section#tags:before {position:absolute; top:0; left:0;}
-/* div#container section#tags:before {content:'Filter:'; padding:0 1rem;} */
-div#container section#tags main {flex-grow:1; padding:.65rem 1rem; padding-left:0; margin:1rem;}
-div#container section#tags main {display:flex; flex-direction:row; /* justify-content:space-between; */ justify-content:flex-start; align-items:center; flex-wrap:nowrap; max-width:none;}
-div#container section#tags main {overflow-x:auto; scrollbar-width:none; position:relative;}
-/* div#container section#tags main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightorange), transparent);} */
-div#container section#tags main div.tag {flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem; margin:0 .5rem;}
-div#container section#tags main div.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
-div#container section#tags main div.tag {display:flex; justify-content:center; align-items:center; white-space:nowrap; user-select:none;}
-div#container section#tags main div.tag span.caption {padding-top:.125rem;}
-div#container section#tags main div.tag span.caption:empty::after {content:'All';}
-div#container section#tags main div.tag:hover {background-color:black; color:var(--orange);}
-div#container section#tags main div.tag:empty::after {content:'-';}
-/* div#container section#tags {display:none;} */
-
-
-/* Gallery Section */
-div#container section#gallery {flex-grow:1; background-color:#ffebcd; padding:2rem; /* text-align:center; */ overflow:auto; scrollbar-width:none; position:relative; z-index:40;}
-/* div#container section#gallery main {display:flex; flex-flow:row wrap;} */
-div#container section#gallery main {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:.5rem;}
-div#container section#gallery main div.item {background-color:white; cursor:pointer; position:relative; overflow:hidden; transition:.25s;}
-div#container section#gallery main div.item {/* width:16rem; */ border-radius:.5rem; /* border:.125rem solid white; */}
-div#container section#gallery.exp main div.item {overflow:visible; margin:3rem 0;}
-div#container section#gallery main div.item.gone {height:0; width:0; border-width:0; margin:0; display:none;}
-div#container section#gallery main div.item div.image {min-width:100%; /* min-height:100%; */ background-size:cover; background-position:center; position:relative; z-index:10;}
-/* div#container section#gallery main div.item div.image {transform:none; transition:.125s;} */
-/* div#container section#gallery main div.item:hover div.image {transform:scale(1.04);} */
-div#container section#gallery main div.item div.image:before {content:''; display:block;}
-div#container section#gallery main div.item div.image:before {background-color:var(--blackglass); width:100%; padding-top:var(--aspectratio);}
-
-/* Gallery Section: Panel */
-div#container section#gallery main div.item div.panel {position:absolute; left:0; right:0; width:100%; /* height:25%; */ z-index:20;}
-div#container section#gallery main div.item div.panel {display:flex; flex-direction:row; justify-content:flex-end; align-items:flex-end; user-select:none; /* pointer-events:none; */}
-div#container section#gallery main div.item div.panel {opacity:0.875; transition:.125s;}
-div#container section#gallery main div.item:hover div.panel {opacity:1;}
-
-/* Gallery Section: Link Panel */
-div#container section#gallery main div.item div.panel.top {top:0; background:linear-gradient(#0006,#0000); color:white; padding:.5rem .25rem;}
-div#container section#gallery.exp main div.item div.panel.top {top:auto; bottom:100%; background:white; color:black; padding:.25rem; border-radius:.5rem .5rem 0 0;}
-div#container section#gallery main div.item div.panel.top div.user {flex-grow:1; display:flex; flex-direction:row; align-items:center; padding:.25rem .375rem .125rem;}
-div#container section#gallery main div.item div.panel.top div.user div.avatar {flex-grow:0; width:2.25rem; height:2.25rem; border-radius:50%; overflow:hidden;}
-div#container section#gallery main div.item div.panel.top div.user div.avatar {background-color:#0004; background-position:top center; background-size:cover;}
-div#container section#gallery main div.item div.panel.top div.user div.avatar img {object-fit:cover; width:100%; height:100%;}
-div#container section#gallery main div.item div.panel.top div.user div.details {flex-grow:1; margin-left:.5rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
-div#container section#gallery main div.item div.panel.top div.user div.details div.username {font-size:.875rem;}
-div#container section#gallery main div.item div.panel.top div.user div.details div.followercount {font-size:.75rem;}
-
-/* Gallery Section: Interaction Panel */
-div#container section#gallery main div.item div.panel.bottom {bottom:0; background:linear-gradient(#0000,#0006); color:white; padding:.375rem;}
-div#container section#gallery.exp main div.item div.panel.bottom {bottom:auto; top:100%; background:white; color:black; padding:.25rem; border-radius:0 0 .5rem .5rem;}
-div#container section#gallery main div.item div.panel.bottom a.btn {flex-grow:0; display:grid; place-items:center; min-width:1.75rem; min-height:1.75rem; cursor:pointer;}
-div#container section#gallery main div.item div.panel.bottom a.btn {background-color:#EEEC; font-size:1.25rem; padding:.25rem; border-radius:.25rem; margin:.25rem;}
-div#container section#gallery main div.item div.panel.bottom a.btn {color:#888; transition:.25s;}
-/* div#container section#gallery main div.item div.panel.bottom a.btn.dl {} */
-/* div#container section#gallery main div.item div.panel.bottom a.btn.like {} */
-/* div#container section#gallery main div.item div.panel.bottom a.btn.comment {} */
-div#container section#gallery main div.item div.panel.bottom a.btn:hover {color:#444;}
-div#container section#gallery main div.item div.panel.bottom a.btn.like svg.icon {transform:none; transition:.125s;}
-div#container section#gallery main div.item div.panel.bottom a.btn.like svg.icon {display:block;}
-div#container section#gallery main div.item div.panel.bottom a.btn.like svg.icon.fill {display:none; color:crimson;}
-div#container section#gallery main div.item div.panel.bottom a.btn.like:active svg.icon {transform:scale(.75);}
-div#container section#gallery main div.item.liked div.panel.bottom a.btn.like svg.icon {display:none;}
-div#container section#gallery main div.item.liked div.panel.bottom a.btn.like svg.icon.fill {display:block;}
-div#container section#gallery main div.item.liked div.panel.bottom a.btn.like:active svg.icon {transform:none;}
-div#container section#gallery main div.item div.panel.bottom div.space {flex-grow:1;}
-
-
-/* Sidebar Section */
-div#container aside#sidebar {position:fixed; top:0; right:0; bottom:0; width:100%; max-width:16rem; /* opacity:.95; */ z-index:100; box-shadow:0 5px 10px rgba(0, 0, 0, 0.3);}
-div#container aside#sidebar {background-color:var(--lightorange); background-image:linear-gradient( var(--orange) 85%, var(--lightorange) ); overflow:auto;}
-div#container aside#sidebar {transform:translateX(100%); transition:.5s;}
-div#container aside#sidebar.active {transform:translateX(0);}
-
-div#container aside#sidebar div.grid {display:flex; flex-direction:column; justify-content:center; align-items:stretch; min-height:100%;}
-
-div#container aside#sidebar div.grid main {background-color:#FFF0; min-height:20rem;}
-
-div#container aside#sidebar div.grid main {flex-grow:1; /* flex-shrink:0; */ position:relative; padding:1rem;}
-div#container aside#sidebar div.grid main {display:flex; flex-direction:column; justify-content:center; align-items:stretch;}
-/* div#container aside#sidebar div.grid main::after {content:''; position:absolute; top:0; left:0; height:100%; width:4rem; background:linear-gradient(to right, var(--lightorange), transparent);} */
-div#container aside#sidebar div.grid main div.tag {display:inline-block; flex-shrink:0; min-width:6em; min-height:2em; padding:0 2rem; margin:0 .5rem; margin:.5rem 0;}
-div#container aside#sidebar div.grid main div.tag {border:2px solid black; border-radius:6rem; font-size:1rem; cursor:pointer;}
-div#container aside#sidebar div.grid main div.tag {display:flex; justify-content:center; align-items:center; white-space:nowrap; user-select:none;}
-div#container aside#sidebar div.grid main div.tag span.caption {padding-top:.125rem;}
-div#container aside#sidebar div.grid main div.tag span.caption:empty::after {content:'All';}
-div#container aside#sidebar div.grid main div.tag:hover {background-color:black; color:var(--orange);}
-div#container aside#sidebar div.grid main div.tag:empty::after {content:'-';}
-
-div#container aside#sidebar div.closebtn {font-size:2rem; text-align:right; padding:1.25rem 2.25rem 0 0; cursor:pointer; transition:.25s;}
-/* div#container aside#sidebar div.closebtn {position:absolute; top:0; right:0;} */
-/* div#container aside#sidebar div.closebtn svg.icon {} */
-
-div#container aside#sidebar::after {content:''; display:block; position:fixed; top:0; right:100%; bottom:0; width:100vw; height:100%; z-index:-1; background-color:#0004;}
-div#container aside#sidebar::after {opacity:0; visibility:hidden; transition:.5s, 0s width;}
-div#container aside#sidebar.active::after {opacity:1; visibility:visible;}
-
-
-
+	/* Gallery Section */
+	/* div#container section.gallery {} */
+	/* div#container section.gallery div.grid {} */
+	/* Gallery Section: Media List */
+	div#container section.gallery div.grid ul.medialist {grid-template-columns:repeat(4,1fr);}
+}
 
 
 /* Large Smartphone */
-@media screen and (max-width:60rem) {
-
-	/* Head Section */
-
-	/* Tags Section */
+@media screen and (max-width:62rem) {
 
 	/* Gallery Section */
-	div#container section#gallery main {grid-template-columns:repeat(3,1fr);}
-
-	/* Sidebar Section */
+	/* div#container section.gallery {} */
+	/* div#container section.gallery div.grid {} */
+	/* Gallery Section: Media List */
+	div#container section.gallery div.grid ul.medialist {grid-template-columns:repeat(3,1fr);}
 }
 
 
 /* Medium Smartphone */
 @media screen and (max-width:48rem) {
 
-	/* Head Section */
-
-	/* Tags Section */
-
 	/* Gallery Section */
-	div#container section#gallery main {grid-template-columns:repeat(2,1fr);}
-
-	/* Sidebar Section */
+	/* div#container section.gallery {} */
+	/* div#container section.gallery div.grid {} */
+	/* Gallery Section: Media List */
+	div#container section.gallery div.grid ul.medialist {grid-template-columns:repeat(2,1fr); padding:.5rem;}
 }
 
 
 /* Small Smartphone */
-@media screen and (max-width:32rem) {
-
-	/* Head Section */
-	div#container section#head {padding-left:1rem; padding-right:1rem;}
-	div#container section#head main h1.head {font-size:1.5rem;}
-	div#container section#head main div.btn {font-size:1.5rem;}
-
-	/* Tags Section */
+@media screen and (max-width:30rem) {
 
 	/* Gallery Section */
-	div#container section#gallery {padding:1rem;}
-	div#container section#gallery main {grid-template-columns:repeat(1,1fr);}
-
-	/* Sidebar Section */
-	div#container aside#sidebar div.closebtn {font-size:1.5rem; padding:1rem 1rem 0 0;}
+	/* div#container section.gallery {} */
+	/* div#container section.gallery div.grid {} */
+	/* Gallery Section: Media List */
+	div#container section.gallery div.grid ul.medialist {grid-template-columns:repeat(1,1fr); padding:0;}
 }
-

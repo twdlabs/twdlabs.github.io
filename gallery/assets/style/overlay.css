@@ -1,85 +1,145 @@
 
 
+
 /* Overlay Section */
-
-
-div#container section#overlay {position:fixed; top:0; left:0; width:100%; height:100%; overflow:auto; z-index:50;}
-div#container section#overlay {display:flex; flex-direction:column; justify-content:flex-start; align-items:center;}
-div#container section#overlay {visibility:hidden; opacity:0; transition:.5s;}
-div#container section#overlay.active {visibility:visible; opacity:1;}
-div#container section#overlay::after {content:''; background-color:#000A; position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; cursor:pointer;}
-
-div#container section#overlay main {background-color:white; max-width:40rem; width:100%; padding:.25rem; border-radius:.125rem;}
-div#container section#overlay main {box-shadow:0 5px 10px rgba(0, 0, 0, 0.3); margin:auto 0;}
-div#container section#overlay main {display:flex; flex-direction:column; align-items:stretch; position:relative;}
-
-div#container section#overlay main div.closebtn {position:absolute; top:0; right:auto; bottom:auto; left:100%;}
-div#container section#overlay main div.closebtn {background-color:#FFF0; color:#FFF; border-radius:50%; min-height:2rem; min-width:2rem; margin:.5rem;}
-div#container section#overlay main div.closebtn {display:grid; place-items:center; font-size:1.5rem; font-weight:100; cursor:pointer; user-select:none;}
-
-div#container section#overlay main div.head {flex-grow:0; display:flex; flex-direction:row; align-items:center; padding:.35rem .25rem .15rem;}
-div#container section#overlay main div.head div.space {flex-grow:1;}
-
-div#container section#overlay main div.head a.user {display:flex; flex-direction:row; align-items:center; margin:0 .25rem;}
-div#container section#overlay main div.head a.user {color:inherit; text-decoration:none;}
-div#container section#overlay main div.head a.user div.avatar {flex-grow:0; width:3rem; height:3rem; border-radius:50%; overflow:hidden;}
-div#container section#overlay main div.head a.user div.avatar {background-color:#0004; background-position:top center; background-size:cover;}
-div#container section#overlay main div.head a.user div.avatar img {width:100%; height:100%; object-fit:cover;}
-div#container section#overlay main div.head a.user div.details {flex-grow:1; margin-left:.5rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
-div#container section#overlay main div.head a.user div.details div.username {font-size:1.25rem;}
-div#container section#overlay main div.head a.user div.details div.followercount {font-size:.875rem;}
-
-div#container section#overlay main div.head a.btn {flex-grow:0; display:grid; place-items:center; width:2.125rem; height:2.125rem; cursor:pointer;}
-div#container section#overlay main div.head a.btn {background-color:#EFEFEF; font-size:1.5rem; padding:.25rem; border:1px solid #CCC; border-radius:.25rem; margin:0 .25rem;}
-div#container section#overlay main div.head a.btn {color:#888; transition:.25s;}
-div#container section#overlay main div.head a.btn:hover {color:#444;}
-/* div#container section#overlay main div.head a.btn#dlbtn {} */
-/* div#container section#overlay main div.head a.btn#likebtn {} */
-div#container section#overlay main div.head a.btn#likebtn svg.icon {display:block;}
-div#container section#overlay main div.head a.btn#likebtn svg.icon.fill {display:none; color:crimson;}
-div#container section#overlay main div.head a.btn#likebtn.active svg.icon {display:none;}
-div#container section#overlay main div.head a.btn#likebtn.active svg.icon.fill {display:block;}
-/* div#container section#overlay main div.head a.btn#commentbtn {} */
-
-div#container section#overlay main div.content {flex-grow:1; background-color:#0004; margin-top:.25rem;}
-div#container section#overlay main div.content:empty {padding-top:62.5%;}
-div#container section#overlay main div.content img {display:block; width:100%; max-height:100%;}
-
-div#container section#overlay main div.foot {/* display:none; */ padding:.75rem .5rem .5rem;}
-div#container section#overlay main div.foot div.taglist {font-size:1.125rem; transition:.25s;}
-div#container section#overlay main div.foot div.taglist span.tag {font-size:.875rem; background-color:#EFEFEF; padding:.375em .5em .25em; border:1px solid #CCC; border-radius:.35rem; margin:.25rem;}
-div#container section#overlay main div.foot div.taglist span.tag {cursor:pointer; user-select:none;}
-div#container section#overlay main div.foot div.taglist span.tag:empty {display:none;}
-
-
-div#container section#overlay aside#commentbox {background-color:#0001;}
-div#container section#overlay aside#commentbox>div {max-height:0; overflow:hidden; transition:.5s;}
-div#container section#overlay aside#commentbox.active>div {max-height:10rem;}
-div#container section#overlay aside#commentbox div#commentlist {height:10rem;}
-div#container section#overlay aside#commentbox div#commentposter {display:flex; flex-direction:row;}
-div#container section#overlay aside#commentbox div#commentposter textarea#commentcontent,
-div#container section#overlay aside#commentbox div#commentposter input#commentcontent {flex-grow:1; font-family:inherit; padding:.5rem; border:1px solid #0001; outline:none;}
-div#container section#overlay aside#commentbox div#commentposter textarea#commentcontent {/* line-height:1; */ /* height:2rem; */ /* max-height:4rem; */ resize:none;}
-div#container section#overlay aside#commentbox div#commentposter button.postcomment {background-color:transparent; color:dodgerblue; font-family:inherit; font-weight:600; cursor:pointer; padding:.5rem 1rem .15rem; border:0 none;}
+div#container section.overlay {position:fixed; top:0; left:0; width:100%; height:100%; overflow:auto; z-index:50;}
+div#container section.overlay {display:flex; flex-direction:column; justify-content:flex-start; align-items:center;}
+div#container section.overlay {visibility:hidden; opacity:0; transition:.5s;}
+div#container section.overlay.active {visibility:visible; opacity:1;}
+div#container section.overlay::after {content:''; background-color:#000A; position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; cursor:pointer;}
+div#container section.overlay div.grid {background-color:white; max-width:calc(var(--pagewidth)/2); width:100%; padding:.25rem; border-radius:.375rem;}
+div#container section.overlay div.grid {position:relative; box-shadow:0 5px 10px rgba(0, 0, 0, 0.3); margin:auto 0;}
+div#container section.overlay div.grid div.closebtn {position:absolute; top:0; right:auto; bottom:auto; left:100%;}
+div#container section.overlay div.grid div.closebtn {/* background-color:#FFF4; */ color:white; border-radius:50%; min-height:2rem; min-width:2rem; margin:.5rem;}
+div#container section.overlay div.grid div.closebtn {display:grid; place-items:center; font-size:1.5rem; font-weight:100; cursor:pointer; user-select:none;}
 
 
 
+/* Overlay Section Head */
+div#container section.overlay div.grid div.panel {display:flex; flex-direction:row; align-items:center; padding:.35rem .25rem .15rem;}
+div#container section.overlay div.grid div.panel div.space {flex-grow:1;}
+/* Overlay Section Head: Profile */
+div#container section.overlay div.grid div.panel a.profile {display:flex; flex-direction:row; align-items:center; margin:0 .25rem;}
+div#container section.overlay div.grid div.panel a.profile {color:inherit; text-decoration:none;}
+div#container section.overlay div.grid div.panel a.profile div.avatar {width:3rem; height:3rem; border-radius:50%; overflow:hidden;}
+div#container section.overlay div.grid div.panel a.profile div.avatar {background-color:#0004; background-position:top center; background-size:cover;}
+div#container section.overlay div.grid div.panel a.profile div.avatar img {width:100%; height:100%; object-fit:cover;}
+div#container section.overlay div.grid div.panel a.profile div.details {/* flex-grow:1;  */margin-left:.5rem; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+div#container section.overlay div.grid div.panel a.profile div.details div.username {font-size:1.25rem;}
+div#container section.overlay div.grid div.panel a.profile div.details div.followercount {font-size:.875rem;}
+/* Overlay Section Head: Button Panel */
+div#container section.overlay div.grid div.panel div.btnpanel {display:flex; flex-direction:row; align-items:center;}
+div#container section.overlay div.grid div.panel div.btnpanel a.btn {display:grid; place-items:center; width:2.125rem; height:2.125rem; cursor:pointer;}
+div#container section.overlay div.grid div.panel div.btnpanel a.btn {background-color:var(--ltgrey); font-size:1.5rem; padding:.25rem; border:1px solid #CCC; border-radius:.25rem; margin:/* 0  */.25rem;}
+div#container section.overlay div.grid div.panel div.btnpanel a.btn {color:var(--midgrey); transition:.25s;}
+div#container section.overlay div.grid div.panel div.btnpanel a.btn:hover {color:var(--drkgrey);}
+/* div#container section.overlay div.grid div.panel div.btnpanel a.btn#dlbtn {} */
+/* div#container section.overlay div.grid div.panel div.btnpanel a.btn#likebtn {} */
+div#container section.overlay div.grid div.panel div.btnpanel a.btn#likebtn svg.icon {display:block;}
+div#container section.overlay div.grid div.panel div.btnpanel a.btn#likebtn svg.icon.bold {display:none; color:crimson;}
+div#container section.overlay div.grid div.panel div.btnpanel a.btn#likebtn.active svg.icon {display:none;}
+div#container section.overlay div.grid div.panel div.btnpanel a.btn#likebtn.active svg.icon.bold {display:block;}
+/* div#container section.overlay div.grid div.panel div.btnpanel a.btn#commentbtn {} */
 
-@media screen and (max-width:48rem) {
+
+/* Overlay Section Body */
+div#container section.overlay div.grid div.body {background-color:var(--blackglass2); margin-top:.25rem;}
+div#container section.overlay div.grid div.body:empty {padding-top:62.5%;}
+div#container section.overlay div.grid div.body video.media,
+div#container section.overlay div.grid div.body img.media {display:block; width:100%; /* max-height:100%; */}
+
+
+/* Overlay Section Foot */
+div#container section.overlay div.grid div.foot {/* display:none; */ padding:0 .25rem; margin-top:.25rem;}
+div#container section.overlay div.grid div.panel ul.taglist {list-style:none; padding:0; margin:0;}
+div#container section.overlay div.grid div.panel ul.taglist {display:flex; flex-direction:row; align-items:center;}
+div#container section.overlay div.grid div.panel ul.taglist li.tag {background-color:#EFEFEF; padding:.375em .5em .25em; border:1px solid #CCC; border-radius:.35rem; margin:.25rem;}
+div#container section.overlay div.grid div.panel ul.taglist li.tag {font-size:.875rem; transition:.25s;}
+div#container section.overlay div.grid div.panel ul.taglist li.tag {cursor:pointer; user-select:none;}
+div#container section.overlay div.grid div.panel ul.taglist li.tag:empty {display:none;}
+div#container section.overlay div.grid div.panel ul.taglist::before {content:'Tags:'; /* font-size:1.125rem; transition:.25s; */ margin-right:.375em;}
+
+
+
+/* Overlay Section: Comment Box */
+div#container section.overlay aside#commentbox {background-color:#0001;}
+div#container section.overlay aside#commentbox>div {max-height:0; overflow:hidden; transition:.5s;}
+div#container section.overlay aside#commentbox.active>div {max-height:10rem;}
+div#container section.overlay aside#commentbox div#commentlist {height:10rem;}
+div#container section.overlay aside#commentbox div#commentposter {display:flex; flex-direction:row;}
+div#container section.overlay aside#commentbox div#commentposter textarea#commentcontent,
+div#container section.overlay aside#commentbox div#commentposter input#commentcontent {flex-grow:1; font-family:inherit; padding:.5rem; border:1px solid #0001; outline:none;}
+div#container section.overlay aside#commentbox div#commentposter textarea#commentcontent {/* line-height:1; */ /* height:2rem; */ /* max-height:4rem; */ resize:none;}
+div#container section.overlay aside#commentbox div#commentposter button.postcomment {background-color:transparent; color:dodgerblue; font-family:inherit; font-weight:600; cursor:pointer; padding:.5rem 1rem .15rem; border:0 none;}
+
+
+
+
+
+
+/* Large Smartphone */
+@media screen and (max-width:60rem) {
 
 	/* Overlay Section */
-	div#container section#overlay main div.closebtn {position:absolute; top:auto; right:0; bottom:100%; left:auto;}
+	/* div#container section.overlay {} */
+	/* div#container section.overlay div.grid {} */
+
+	/* Overlay Section Head */
+	/* div#container section.overlay div.grid div.panel {} */
+	/* Overlay Section Body */
+	/* div#container section.overlay div.grid div.body {} */
+	/* Overlay Section Foot */
+	/* div#container section.overlay div.grid div.panel {} */
+
+	/* Overlay Section: Comment Box */
+	/* div#container section.overlay aside#commentbox {} */
 }
 
 
-
-@media screen and (max-width:32rem) {
+/* Medium Smartphone */
+@media screen and (max-width:48rem) {
 
 	/* Overlay Section */
-	div#container section#overlay main div.head a.user div.avatar {width:2rem; height:2rem;}
-	div#container section#overlay main div.head a.user div.details div.username {font-size:1rem;}
-	div#container section#overlay main div.head a.user div.details div.followercount {font-size:.75rem;}
-	div#container section#overlay main div.head a.btn {font-size:1.25rem; width:1.75rem; height:1.75rem;}
-	div#container section#overlay main div.foot div.taglist {font-size:.875rem;}
-	div#container section#overlay main div.foot div.taglist span.tag {font-size:.75rem;}
+	/* div#container section.overlay {} */
+	/* div#container section.overlay div.grid {} */
+	div#container section.overlay div.grid div.closebtn {position:absolute; top:auto; right:0; bottom:100%; left:auto;}
+
+	/* Overlay Section Head */
+	/* div#container section.overlay div.grid div.panel {} */
+	/* Overlay Section Body */
+	/* div#container section.overlay div.grid div.body {} */
+	/* Overlay Section Foot */
+	/* div#container section.overlay div.grid div.panel {} */
+
+	/* Overlay Section: Comment Box */
+	/* div#container section.overlay aside#commentbox {} */
+}
+
+
+/* Small Smartphone */
+@media screen and (max-width:24rem) {
+
+	/* Overlay Section */
+	/* div#container section.overlay {} */
+	/* div#container section.overlay div.grid {} */
+
+	/* Overlay Section Head */
+	div#container section.overlay div.grid div.panel {flex-direction:column;}
+	div#container section.overlay div.grid div.panel a.profile {flex-direction:column;}
+	div#container section.overlay div.grid div.panel a.profile div.avatar {width:2rem; height:2rem;}
+	div#container section.overlay div.grid div.panel a.profile div.details {margin:0; margin-top:.125rem;}
+	div#container section.overlay div.grid div.panel a.profile div.details div.username {font-size:1rem;}
+	div#container section.overlay div.grid div.panel a.profile div.details div.followercount {font-size:.75rem;}
+	div#container section.overlay div.grid div.panel div.btnpanel {margin-top:.5rem;}
+	div#container section.overlay div.grid div.panel div.btnpanel a.btn {font-size:1.25rem; width:1.75rem; height:1.75rem;}
+	/* Overlay Section Body */
+	/* div#container section.overlay div.grid div.body {} */
+	/* Overlay Section Foot */
+	/* div#container section.overlay div.grid div.panel {} */
+	/* div#container section.overlay div.grid div.panel ul.taglist {} */
+	div#container section.overlay div.grid div.panel ul.taglist li.tag {font-size:.75rem;}
+	div#container section.overlay div.grid div.panel ul.taglist::before {content:''; /* font-size:.875rem; */}
+
+	/* Overlay Section: Comment Box */
+	/* div#container section.overlay aside#commentbox {} */
 }
