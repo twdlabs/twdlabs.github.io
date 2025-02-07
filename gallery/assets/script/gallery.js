@@ -1,8 +1,17 @@
 
 
 
-// Get destination for gallery. 
-let gallerydestination = document.querySelector('section#gallery main');
+// Get gallery container. 
+// let gallerybox = document.querySelector('div#container section.gallery');
+
+// Get destination for gallery media. 
+let gallerymediadestination = document.querySelector('div#container section.gallery div.grid ul.medialist');
+
+// Get destination for tag list in headbar. 
+let headbartaglistdestination = document.querySelector('div#container section#headbar div.grid ul.taglist');
+
+// Get destination for tag list in sidebar. 
+let sidebartaglistdestination = document.querySelector('div#container section#sidebar div.grid ul.taglist');
 
 
 /*****/
@@ -24,125 +33,21 @@ function loadItUp() {
 	// Load all tags. 
 	loadAllTags();
 
-	/*****/
-
-	// Load all tags. 
-	function loadAllTags() {
-
-		// Save all image tags. 
-		getImageTags();
-
-		// Define elements for all tag. 
-		let result = '';
-
-		// Define elements for regular tags. 
-		for(let tag of galleryTagData) {
-			result += `
-			<!-- tag -->
-			<div class="real tag item" data-value="${tag}">
-				<span class="caption">${tag}</span>
-			</div>
-			<!-- /tag -->`;
-		}
-
-		// Add tag elements to page. 
-		document.querySelector('section#tags main').innerHTML = result;
-		document.querySelector('aside#sidebar main').innerHTML = result;
-
-		// Activate tag clicks. 
-		let tags = document.querySelectorAll('section#tags main div.tag.real, aside#sidebar main div.tag.real');
-		for(let tag of tags) {
-			tag.addEventListener('click', selectTag);
-		}
-
-		/*****/
-
-		// Filter images that match selected tag. 
-		function selectTag(event) {
-			console.log(event.currentTarget);
-
-			// Get selected tag. 
-			let selectedtag = event.currentTarget;
-
-			// Get value for selected tag. 
-			let tagvalue = selectedtag.getAttribute('data-value');
-			// let tag = selectedtag.innerText;
-			console.log('Selected tag value:',tagvalue);
-
-			// Initialize list of matching image indexes. 
-			let matchedIndexes = [];
-
-			// Find matching images and save index. 
-			for(let index in galleryImageData) {
-				let img = galleryImageData[index];
-				// console.log(img);
-
-				// Check if image matches tag. 
-				let weGotAMatch = img.taglist.includes(tagvalue);
-
-				// Add url to list if matched. 
-				if(weGotAMatch) matchedIndexes.push(index);
-			}
-			console.log('Matched image indexes:',matchedIndexes);
-
-			// Show matched images. 
-			showMatchedImages();
-
-			/*****/
-
-			// Show matched images. 
-			function showMatchedImages() {
-
-				// Get all images. 
-				let allImgs = document.querySelectorAll('section#gallery main div.item');
-				console.log('allImgs',allImgs);
-
-				// Go thru each image element. 
-				for(let index in galleryImageData) {
-
-					// Check if image matches selected tag. 
-					let weGotAMatch = matchedIndexes.includes(index);
-
-					// Adjust class based on match status. 
-					if(weGotAMatch) allImgs[index].classList.remove('gone');
-					else allImgs[index].classList.add('gone');
-				}
-			}
-		}
-
-		// Save all image tags. 
-		function getImageTags() {
-
-			// Get tags from all images. 
-			for(let img of galleryImageData) {
-				for(tag of img.taglist) {
-
-					// Check if tag already collected. 
-					let alreadyInThere = galleryTagData.includes(tag);
-
-					// Get tag if not already collected. 
-					if(!alreadyInThere) galleryTagData.push(tag);
-				}
-			}
-
-			// Sort tags in alphabetical order. 
-			galleryTagData.sort();
-		}
-	}
+	/****/
 
 	// Load all images in gallery. 
 	function loadAllImages() {
 
 		// Define elements for image gallery. 
 		let result = '';
-		for(let index in galleryImageData) {
+		for(let index in galleryMediaData) {
 
 			// Create layout for image item. 
 			result += createImageByIndex(index);
 		}
 
 		// Add images to gallery. 
-		gallerydestination.innerHTML = result;
+		gallerymediadestination.innerHTML = result;
 
 		// Activate image clicks in gallery. 
 		activateImageClicks();
@@ -150,34 +55,38 @@ function loadItUp() {
 		// Activate heart buttons in gallery. 
 		activateGalleryLikeBtns();
 
-		/*****/
+		/***/
 
-		// Create layout for image element by index. 
+		// Create layout for media item by index. 
 		function createImageByIndex(index) {
-			// console.log(index,'liked:',userData[currentuserindex]['likedImageIds'].includes(1*index));
+			// console.log(index,'liked:',userData[currentuserid]['likedMediaIds'].includes(1*index));
 
-			// Get image data. 
-			let img = galleryImageData[index];
-
-			// Get user data. 
-			let user = userData[currentuserindex];
-
-			// Check if image is included liked list. 
-			let liked = user['likedImageIds'].includes(1*index);
+			// Get data for given media item. 
+			let givenmediaitem = galleryMediaData[index];
+			
+			// Get author data. 
+			let authorid = givenmediaitem['authorid'];
+			let authoruser = userData[authorid];
+			
+			// Check if media is included liked list. 
+			let currentuser = userData[currentuserid];
+			let liked = currentuser['likedMediaIds'].includes(1*index);
+			// Check if media is stored locally. 
+			let local = !!givenmediaitem['localmedia']
 
 			return `
 			<!-- item -->
-			<div class="item${ (liked)?(' liked'):('') }" data-imageid="${ index }">
+			<li class="item ${ (liked) ? ('liked') : ('') }" data-mediaid="${ index }">
 
 				<!-- panel -->
 				<div class="panel top">
 
-					<!-- user -->
-					<div class="user">
+					<!-- profile -->
+					<div class="profile">
 
 						<!-- avatar -->
 						<div class="avatar">
-							<img src="${user.avatarurl}">
+							<img src="${ authoruser['avatarurl'] }">
 						</div>
 						<!-- /avatar -->
 
@@ -185,25 +94,25 @@ function loadItUp() {
 						<div class="details">
 
 							<!-- username -->
-							<div class="username">${user.username}</div>
+							<div class="username">${ authoruser['username'] }</div>
 							<!-- /username -->
 
 							<!-- followercount -->
-							<div class="followercount">${ (user.followercount) ? formatFollowerCount(user.followercount) : ('0') }</div>
+							<div class="followercount">${ ( authoruser['followercount'] ) ? formatFollowerCount( authoruser['followercount'] ) : ('0') }</div>
 							<!-- /followercount -->
 
 						</div>
 						<!-- /details -->
 
 					</div>
-					<!-- /user -->
+					<!-- /profile -->
 
 				</div>
 				<!-- /panel -->
 
-				<!-- image -->
-				<div class="image" style="background-image:url('./assets/images/thumbnail/${ img.imageurl }');"></div>
-				<!-- /image -->
+				<!-- media -->
+				<div class="media ${ (local) ? ('local') : ('') }" style="background-image:url('${ givenmediaitem['thumbnailurl'] }');"></div>
+				<!-- /media -->
 
 				<!-- panel -->
 				<div class="panel bottom">
@@ -219,7 +128,7 @@ function loadItUp() {
 						<!-- /icon -->
 
 						<!-- icon -->
-						<svg class="icon heart fill" width=".75em" height=".75em" fill="currentColor" viewBox="0 0 16 16">
+						<svg class="icon heart bold" width=".75em" height=".75em" fill="currentColor" viewBox="0 0 16 16">
 							<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
 							<!-- <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/> -->
 						</svg>
@@ -258,7 +167,7 @@ function loadItUp() {
 					<!-- /space -->
 
 					<!-- btn -->
-					<a class="btn dl" href="./assets/images/full/${ img.imageurl }" target="_blank" download="img${index}">
+					<a class="btn dl" href="${ givenmediaitem['fullimageurl'] }" target="_blank" download="img${index}">
 
 						<!-- icon -->
 						<svg class="icon download" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -273,24 +182,24 @@ function loadItUp() {
 				</div>
 				<!-- /panel -->
 
-			</div>
+			</li>
 			<!-- /item -->`;
 		}
 
 		// Activate image clicks. 
 		function activateImageClicks() {
 
-			// Get all image elements. 
-			let imgs = document.querySelectorAll('section#gallery main div.item div.image');
+			// Get all media item images. 
+			let mediaitemimagecanvases = document.querySelectorAll('div#container section.gallery div.grid ul.medialist li.item div.media');
 
-			// Go thru each image element. 
-			for(let img of imgs) {
+			// Go thru each media item. 
+			for(let imagecanvas of mediaitemimagecanvases) {
 
-				// Add click handler to image element. 
-				img.addEventListener('click', selectImage);
+				// Add click handler to media item. 
+				imagecanvas.addEventListener('click', selectImage);
 			}
 
-			/*****/
+			/**/
 
 			// Select image to blow up on overlay. 
 			function selectImage(event) {
@@ -300,11 +209,11 @@ function loadItUp() {
 				let item = event.currentTarget.parentElement;
 
 				// Get id of selected image. 
-				let id = item.getAttribute('data-imageid');
+				let id = item.getAttribute('data-mediaid');
 				// console.log('selected id:', id, item);
 
 				// Attach selected id to overlay. 
-				overlay.setAttribute('data-displayedimageid',id);
+				overlay['box'].setAttribute('data-displayedmediaid',id);
 
 				// Open page overlay, displaying selected image (by id). 
 				openPicOverlay(id);
@@ -315,7 +224,7 @@ function loadItUp() {
 		function activateGalleryLikeBtns() {
 
 			// Get all heart buttons. 
-			let likebtns = document.querySelectorAll('section#gallery main div.item div.panel a.btn.like');
+			let likebtns = document.querySelectorAll('div#container section.gallery div.grid ul.medialist li.item div.panel a.btn.like');
 
 			// Go thru each heart button. 
 			for(let btn of likebtns) {
@@ -325,6 +234,131 @@ function loadItUp() {
 			}
 		}
 	}
+
+	// Load all tags. 
+	function loadAllTags() {
+
+		// Collect list of tags from all media items. 
+		collectMediaTags();
+
+		// Define elements for all tag. 
+		let result = '';
+
+		// Define elements for regular tags. 
+		for(let tagcaption of galleryTagData) {
+			result += `
+			<!-- tag -->
+			<li class="tag" data-value="${tagcaption}">
+				<span class="caption">${tagcaption}</span>
+			</li>
+			<!-- /tag -->`;
+		}
+
+		// Display tag list in headbar. 
+		headbartaglistdestination.innerHTML = result;
+		// Display tag list in sidebar. 
+		sidebartaglistdestination.innerHTML = result;
+
+		// Get all filter tags. 
+		let filtertags = document.querySelectorAll('div#container section.navbox div.grid ul.taglist li.tag');
+		// Go thru each filter tag. 
+		for(let tag of filtertags) {
+			// Activate tag click. 
+			tag.addEventListener('click', filterByTag);
+		}
+
+		/***/
+
+		// Filter images that match selected tag. 
+		function filterByTag(event) {
+			
+			// Get selected tag. 
+			let selectedtag = event.currentTarget;
+			console.log('Selected tag:',selectedtag);
+
+			// Get value from selected tag. 
+			// let selectedtagvalue = selectedtag.innerText;
+			let selectedtagvalue = selectedtag.getAttribute('data-value');
+			console.log('Selected tag value:',selectedtagvalue);
+
+			// Initialize list of matching image indexes. 
+			let matchedIndexes = [];
+
+			// Find matching images and save index. 
+			for(let index in galleryMediaData) {
+
+				// Get current media item. 
+				let currentmediaitem = galleryMediaData[index];
+				// console.log('Current media item:',currentmediaitem);
+
+				// Check if media item matches tag. 
+				let mediamatchestag = currentmediaitem['taglist'].includes(selectedtagvalue);
+
+				// Add id to match list if media item matches tag. 
+				if(mediamatchestag) matchedIndexes.push(index);
+			}
+			console.log('Matched media indexes:',matchedIndexes);
+
+			// Show matched images. 
+			showMatchedImages();
+
+			/**/
+
+			// Show matched images. 
+			function showMatchedImages() {
+
+				// Get all images. 
+				let allImgs = document.querySelectorAll('div#container section.gallery div.grid ul.medialist li.item');
+				console.log('allImgs',allImgs);
+
+				// Go thru data for each media item. 
+				for(let index in galleryMediaData) {
+
+					// Check if image matches selected tag. 
+					let weGotAMatch = matchedIndexes.includes(index);
+
+					// Adjust class based on match status. 
+					if(weGotAMatch) allImgs[index].classList.remove('gone');
+					else allImgs[index].classList.add('gone');
+				}
+			}
+		}
+
+		// Collect list of tags from all media items. 
+		function collectMediaTags() {
+
+			// Go thru each media item. 
+			for(let currentmediaitem of galleryMediaData) {
+
+				// Go thru each tag for current media item. 
+				for(tag of currentmediaitem['taglist']) {
+
+					// Check if tag already collected. 
+					let tagalreadycollected = galleryTagData.includes(tag);
+
+					// Save tag if not already collected. 
+					if(!tagalreadycollected) galleryTagData.push(tag);
+				}
+			}
+
+			// Sort tags in alphabetical order. 
+			galleryTagData.sort();
+		}
+	}
 }
 
+// Toggle sidebar. 
+function toggleSidebar(/* event */) {
 
+	// Toggle sidebar. 
+	document.getElementById('sidebar').classList.toggle('active');
+
+	// TODO: Show overlay. 
+}
+
+// Close sidebar. 
+function closeSidebar(/* event */) {
+
+	// Toggle sidebar. 
+	document.getElementById('sidebar').classList.remove('active');
+}
