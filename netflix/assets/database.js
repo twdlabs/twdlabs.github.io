@@ -1,6 +1,14 @@
 
-let selectedIndex = 0;
 
+
+// Get media source. 
+// const mediasourcelist = galleryMediaData;
+const mediasourcelist = blogDataList;
+
+// Define index of selected show episode. 
+let selectedepisodeindex = 0;
+
+// Define data for show episodes. 
 const episodeData = [
 	{
 		title:'Episode Title A',

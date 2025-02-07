@@ -10,11 +10,10 @@
 :root {
 
 	/* Numbers */
+	font-size:1vw;
 	--rowgap:3rem;
-	--rowgap:3vw;
-	--cellgap:.5rem;
-	--cellgap:.5vw;
-	--edgewidth:3rem;
+	--cellgap:.25rem;
+	--edgewidth:3.5rem;
 	--pagewidth:75rem;
 	--pagewidth:50rem;
 	--reledgewidth:4vw;
@@ -37,20 +36,21 @@
 	--whiteglass:#ffffff80;
 	/* Gradient Colors */
 	--lightblack:#141414;
-	--lightblack1:#14141494;
-	--lightblack2:#14141459;
-	--lightblack3:#14141426;
-	--lightblack4:#14141400;
+	--lightblack1:#141414b3;
+	--lightblack2:#14141494;
+	--lightblack3:#14141480;
+	--lightblack4:#14141459;
+	--lightblack5:#14141426;
+	--lightblack6:#14141400;
 	/* Linear Gradients */
 	--navbargradient:linear-gradient( 180deg , var(--blackglass) 10% , transparent );
 	--leftedgegradient:linear-gradient( 75deg , var(--blackglass1) , transparent 85% );
-	--bottomedgegradient:linear-gradient( 180deg , var(--lightblack4) , var(--lightblack3) , var(--lightblack2) , var(--lightblack1) , var(--lightblack) , var(--lightblack) );
+	--bottomedgegradient:linear-gradient( 180deg , var(--lightblack6) , var(--lightblack5) , var(--lightblack4) , var(--lightblack2) , var(--lightblack) , var(--lightblack) );
 }
 
 
 
-body {background-color:var(--lightblack); font-family:Nunito,sans-serif; /* font-size:1vw; */ margin:0;}
-body.x {background-color:lightsalmon;}
+body {background-color:var(--lightblack); font-family:Nunito,sans-serif; margin:0;}
 
 
 
@@ -65,7 +65,7 @@ div#container {/* background-color:var(--trplightblack); */ min-height:100vh;}
 
 /* Navbar */
 div#container nav.navbar {position:fixed; /* position:sticky;  */inset:0; bottom:auto; width:100%; z-index:1;}
-div#container nav.navbar {background:var(--navbargradient); color:white; padding:1.5rem var(--edgewidth);}
+div#container nav.navbar {background:var(--navbargradient); color:white; transition:1.25s; padding:1.5rem var(--edgewidth);}
 div#container nav.navbar.scr {background-color:var(--lightblack);}
 
 
@@ -74,32 +74,44 @@ div#container div.row {position:relative; min-height:10em; /* border-bottom:.125
 
 
 /* Media Slider */
-div#container div.slider {/* display:none; */ /* opacity:.25; */ overflow:auto; scrollbar-width:none; padding:0 var(--edgewidth);}
-div#container div.slider h2.rowhead {color:white; font-size:1rem; font-weight:bold;}
-div#container div.slider h2.rowhead a.rowtitle {display:flex; align-items:center;}
-div#container div.slider h2.rowhead a.rowtitle {color:inherit; text-decoration:none;}
-div#container div.slider h2.rowhead a.rowtitle svg.icon {color:var(--teal); font-size:.375em; margin-left:.5em;}
-div#container div.slider h2.rowhead a.rowtitle svg.icon {visibility:hidden;}
-div#container div.slider h2.rowhead a.rowtitle span.caption {display:flex; align-items:center;}
-div#container div.slider h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; margin-top:1px;}
-div#container div.slider h2.rowhead a.rowtitle span.caption::after {width:0; transform:translateX(-1rem);}
-div#container div.slider h2.rowhead a.rowtitle span.caption::after {overflow:hidden; opacity:0; visibility:hidden; transition:.5s;}
-div#container div.slider h2.rowhead a.rowtitle:hover svg.icon {visibility:visible;}
-div#container div.slider h2.rowhead a.rowtitle:hover span.caption::after {width:3.25rem; transform:none;}
-div#container div.slider h2.rowhead a.rowtitle:hover span.caption::after {opacity:1; visibility:visible;}
-div#container div.slider ul.medialist {list-style:none; padding:0; margin:0;}
-div#container div.slider ul.medialist {display:flex; flex-direction:row; grid-gap:var(--cellgap); margin-top:.625rem;}
-/* div#container div.slider ul.medialist li.mediaitem {} */
-/* div#container div.slider ul.medialist li.mediaitem a.medialink {} */
-/* div#container div.slider ul.medialist li.mediaitem a.medialink div.preview {} */
-div#container div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {background-color:lime; display:block; object-fit:cover; height:10em; width:16em;}
+/* div#container div.sliderow {display:none; opacity:.25;} */
+/* Media Slider: Head */
+div#container div.sliderow h2.rowhead {color:white; font-size:1rem; font-weight:bold;}
+div#container div.sliderow h2.rowhead a.rowtitle {display:flex; align-items:center;}
+div#container div.sliderow h2.rowhead a.rowtitle {color:inherit; text-decoration:none;}
+div#container div.sliderow h2.rowhead a.rowtitle svg.icon {color:var(--teal); font-size:.375em; margin-left:.5em;}
+div#container div.sliderow h2.rowhead a.rowtitle svg.icon {visibility:hidden;}
+div#container div.sliderow h2.rowhead a.rowtitle span.caption {display:flex; align-items:center;}
+div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; margin-top:1px;}
+div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {width:0; transform:translateX(-1rem);}
+div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {overflow:hidden; opacity:0; visibility:hidden; transition:.5s;}
+div#container div.sliderow h2.rowhead a.rowtitle:hover svg.icon {visibility:visible;}
+div#container div.sliderow h2.rowhead a.rowtitle:hover span.caption::after {width:3.25rem; transform:none;}
+div#container div.sliderow h2.rowhead a.rowtitle:hover span.caption::after {opacity:1; visibility:visible;}
+/* Media Slider: Body */
+div#container div.sliderow div.rowbody {position:relative;}
+div#container div.sliderow div.rowbody div.slider {overflow:auto; scrollbar-width:none; /* padding:0 var(--edgewidth); */ margin-top:.625rem;}
+div#container div.sliderow div.rowbody div.slider ul.medialist {list-style:none; padding:0; margin:0;}
+div#container div.sliderow div.rowbody div.slider ul.medialist {display:flex; flex-direction:row; grid-gap:var(--cellgap); width:fit-content; padding:0 var(--edgewidth);}
+/* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem {} */
+/* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {} */
+/* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {} */
+div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {background-color:lime; display:block; object-fit:cover; height:10em; width:16em;}
+div#container div.sliderow div.rowbody div.shiftbtn {position:absolute; top:0; bottom:0;}
+div#container div.sliderow div.rowbody div.shiftbtn {background-color:var(--lightblack3); color:white; cursor:pointer; display:grid; place-items:center; min-width:calc( var(--edgewidth) - var(--cellgap) );}
+div#container div.sliderow div.rowbody div.shiftbtn:hover {background-color:var(--lightblack1);}
+div#container div.sliderow div.rowbody div.shiftbtn.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}
+div#container div.sliderow div.rowbody div.shiftbtn.rightbtn {right:0; border-radius:.25rem 0 0 .25rem;}
+div#container div.sliderow div.rowbody div.shiftbtn svg.icon {display:none; font-size:2.5rem; transition:.125s;}
+div#container div.sliderow div.rowbody:hover div.shiftbtn svg.icon {display:block;}
+div#container div.sliderow div.rowbody:hover div.shiftbtn:hover svg.icon {transform:scale(1.25);}
 
 
 /* Billboard Hero */
 div#container div.billboard {/* opacity:.0125; */ padding-bottom:var(--billboardaspectratio); margin:0;}
 /* div#container div.billboard div.hero {background-color:black;} */
 div#container div.billboard div.hero {position:absolute; inset:0; bottom:auto; width:100%;}
-div#container div.billboard div.hero img.poster {width:100%;}
+div#container div.billboard div.hero img.poster {object-fit:cover; opacity:.25; height:60vw; width:100%;}
 div#container div.billboard div.hero div.gradient {position:absolute;}
 div#container div.billboard div.hero div.gradient.left {background:var(--leftedgegradient);}
 div#container div.billboard div.hero div.gradient.left {inset:0; right:auto; height:100%; width:75%;}
@@ -107,15 +119,15 @@ div#container div.billboard div.hero div.gradient.bottom {background:var(--botto
 div#container div.billboard div.hero div.gradient.bottom {inset:0;top:auto; height:25%; width:100%;}
 /* Billboard Hero: Vignette */
 div#container div.billboard div.hero div.vignette {position:absolute; bottom:33%; left:var(--edgewidth); width:33%;}
-div#container div.billboard div.hero div.vignette {color:white; font-size:1.5vw;}
-div#container div.billboard div.hero div.vignette div.mediatitle {font-size:5vw;}
+div#container div.billboard div.hero div.vignette {color:white; font-size:1.5rem;}
+div#container div.billboard div.hero div.vignette div.mediatitle {font-size:5rem;}
 div#container div.billboard div.hero div.vignette div.mediaepisode {margin-top:.25em;}
 div#container div.billboard div.hero div.vignette div.mediadescription {margin-top:.25em;}
 /* Billboard Hero: Vignette Action Box */
 div#container div.billboard div.hero div.vignette div.actionbox {display:flex; flex-direction:row; align-items:center; grid-gap:.5rem; margin-top:1.375em;}
 div#container div.billboard div.hero div.vignette div.actionbox a.btn {display:flex; flex-direction:row; align-items:center;}
 div#container div.billboard div.hero div.vignette div.actionbox a.btn {color:inherit; font-weight:bold; text-decoration:none;}
-div#container div.billboard div.hero div.vignette div.actionbox a.btn {min-height:2rem; padding:.25em 1.5em; padding:0 1.5em; border-radius:.25rem; /* border:.25rem solid transparent; */}
+div#container div.billboard div.hero div.vignette div.actionbox a.btn {min-height:2.5em; padding:.25em 1.5em; padding:0 1.5em; border-radius:.25em; /* border:.25rem solid transparent; */}
 div#container div.billboard div.hero div.vignette div.actionbox a.btn:focus {outline:.125rem solid white;}
 div#container div.billboard div.hero div.vignette div.actionbox a.btn svg.icon {font-size:1.375em;}
 div#container div.billboard div.hero div.vignette div.actionbox a.btn span.caption {margin-left:.625em;}
@@ -129,6 +141,6 @@ div#container div.billboard div.hero div.vignette div.actionbox a.morebtn:hover 
 div#container div.billboard div.hero div.vignette div.actionbox a.morebtn:active {background-color:var(--greyglass); color:var(--whitesheet);}
 /* Billboard Hero: Rating Box */
 div#container div.billboard div.hero div.ratingbox {position:absolute; bottom:33%; right:0;}
-div#container div.billboard div.hero div.ratingbox div.rating {background-color:var(--ltltblackglass); color:white; font-size:.75em; font-size:1.5vw; height:2em; width:8em;}
+div#container div.billboard div.hero div.ratingbox div.rating {background-color:var(--ltltblackglass); color:white; font-size:.75em; font-size:1.5rem; height:2em; width:8em;}
 div#container div.billboard div.hero div.ratingbox div.rating {display:flex; flex-direction:row; align-items:center; padding:0 1em; border-left:.125rem solid white;}
 /* div#container div.billboard div.hero div.ratingbox div.rating span.caption {} */

@@ -1,8 +1,19 @@
 
 
 
+// Get components of overlay. 
+const overlay = {
+
+	// Get overlay box. 
+	box: document.querySelector('div#overlay'),
+};
+// console.log('Overlay:',overlay);
+
+// Get overlay video. 
+const overlayvideo = document.querySelector('div#overlay main.overlay div.head div.video video');
+
 // Get all round buttons. 
-let allroundbtns = document.querySelectorAll('div.head div.cover div.panel div.btn.round');
+const allroundbtns = document.querySelectorAll('div#overlay main.overlay div.head div.cover div.panel div.btn.round');
 
 
 /*****/
@@ -41,7 +52,7 @@ function loadEpisodeData() {
 		let episode = episodeData[index];
 		result += `
 		<!-- item -->
-		<li class="item${ (selectedIndex==index) ? (' active') : ('') }">
+		<li class="item${ (selectedepisodeindex==index) ? (' active') : ('') }">
 
 			<!-- inner -->
 			<div class="inner">
@@ -100,3 +111,34 @@ function loadEpisodeData() {
 	document.querySelector('div.body section.playlist ul.list').innerHTML = result;
 }
 
+// Open overlay. 
+function openOverlay(event) {
+
+	// Get selected media button. 
+	let selectedmediabtn = event.currentTarget;
+	// console.log('Selected media button:',selectedmediabtn);
+	// Get index of selected media item. 
+	let selectedmediaindex = selectedmediabtn.getAttribute('data-mediaindex') * 1;
+	// console.log('Selected media index:',selectedmediaindex);
+	// Get selected media item. 
+	let selectedmediaitem = mediasourcelist[selectedmediaindex];
+	// console.log('Selected media item:',selectedmediaitem);
+
+	// Proceed if selected media item valid. 
+	if( selectedmediaitem && selectedmediaitem['vidurl'] ) {
+		
+		// Load selected media item. 
+		overlayvideo.src = selectedmediaitem['vidurl'];
+
+		// Display overlay. 
+		overlay['box'].classList.add('active');
+	}
+
+	// Notify if selected media item not valid. 
+	else console.warn('Invalid media item selected',selectedmediaindex);
+}
+
+// Close overlay. 
+function closeOverlay() {
+	overlay['box'].classList.remove('active');
+}

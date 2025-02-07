@@ -9,13 +9,13 @@
 
 
 div#overlay {position:fixed; top:0; left:0; height:100%; width:100%; min-height:100vh; overflow:auto;}
-div#overlay {padding:0 1rem; padding-top:2rem;}
+div#overlay {display:grid; place-items:center; padding:0 1rem; padding-top:2rem;}
 div#overlay {visibility:hidden; opacity:0; transition:.25s;}
 div#overlay.active {visibility:visible; opacity:1;}
 
 
 div#overlay aside.bg {background-color:#0008; cursor:pointer;}
-div#overlay aside.bg {position:fixed; top:0; left:0; height:100%; width:100%; z-index:0;}
+div#overlay aside.bg {position:fixed; inset:0; height:100%; width:100%; z-index:0;}
 
 
 div#overlay main.overlay {background-color:#181818; color:white; font-weight:100; width:100%; max-width:var(--pagewidth); margin:0 auto; border-radius:.5rem; position:relative; overflow:hidden; z-index:10;}
@@ -74,6 +74,7 @@ div#overlay main.overlay div.body section.metadata.a div.col.right div.line span
 div#overlay main.overlay div.body section.metadata.a div.col.right div.line span.key::after {content:': '; /* margin-right:.35rem; */}
 
 /* Playlist Section */
+div#overlay main.overlay div.body section.playlist {display:none;}
 div#overlay main.overlay div.body section.playlist ul.list {list-style:none; padding:0; margin:0; counter-reset:epnum;}
 div#overlay main.overlay div.body section.playlist ul.list li.item {cursor:pointer; padding:1.5rem 4rem; border-bottom:1px solid #333; counter-increment:epnum;}
 div#overlay main.overlay div.body section.playlist ul.list li.item.active {background-color:#333;}
