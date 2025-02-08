@@ -389,33 +389,33 @@ const galleryMediaData = [
 	// 		'',
 	// 	],
 	// },
-	{
-		authorid:'wts',
-		fullimageurl:'./../wts/assets/media/ballcap.jpg',
-		thumbnailurl:'./../wts/assets/media/ballcap.jpg',
-		taglist:[
-			'cap',
-			'',
-		],
-	},
-	{
-		authorid:'wts',
-		fullimageurl:'./../wts/assets/media/streetshooter.jpg',
-		thumbnailurl:'./../wts/assets/media/streetshooter.jpg',
-		taglist:[
-			'person',
-			'streets',
-			'',
-		],
-	},
-	{
-		authorid:'wts',
-		fullimageurl:'./../wts/assets/media/screenwatcher.jpg',
-		thumbnailurl:'./../wts/assets/media/screenwatcher.jpg',
-		taglist:[
-			'person',
-			'screen',
-			'',
-		],
-	},
+	// {
+	// 	authorid:'wts',
+	// 	fullimageurl:'./../wts/assets/media/ballcap.jpg',
+	// 	thumbnailurl:'./../wts/assets/media/ballcap.jpg',
+	// 	taglist:[
+	// 		'cap',
+	// 		'',
+	// 	],
+	// },
+	// {
+	// 	authorid:'wts',
+	// 	fullimageurl:'./../wts/assets/media/streetshooter.jpg',
+	// 	thumbnailurl:'./../wts/assets/media/streetshooter.jpg',
+	// 	taglist:[
+	// 		'person',
+	// 		'streets',
+	// 		'',
+	// 	],
+	// },
+	// {
+	// 	authorid:'wts',
+	// 	fullimageurl:'./../wts/assets/media/screenwatcher.jpg',
+	// 	thumbnailurl:'./../wts/assets/media/screenwatcher.jpg',
+	// 	taglist:[
+	// 		'person',
+	// 		'screen',
+	// 		'',
+	// 	],
+	// },
 ];

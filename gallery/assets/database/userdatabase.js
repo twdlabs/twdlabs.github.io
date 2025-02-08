@@ -10,6 +10,7 @@ let userData = {
 		username:'TWDLabs',
 		followercount:'6490',
 		followercount:'7890',
+		followercount:'7900',
 		avatarurl:'./../resources/images/user/twdavatar.jpg',
 		// avatarurl:'./../resources/images/user/avatarsocial.jpg',
 		// Define initial list of liked images. 
@@ -19,6 +20,7 @@ let userData = {
 		username:'Watch The Screen',
 		followercount:'3050',
 		avatarurl:'./../wts/assets/media/avatar.jpg',
+		avatarurl:'./../resources/images/user/wtsavatar.jpg',
 		// avatarurl:'./../wts/assets/media/wtslogo.jpg',
 		// Define initial list of liked images. 
 		likedMediaIds:[ 0, ],
