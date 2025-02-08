@@ -279,6 +279,17 @@ const galleryMediaData = [
 	},
 	{
 		authorid:'twd',
+		fullimageurl:'./../resources/images/scenery/scenery.jpg',
+		thumbnailurl:'./../resources/images/scenery/thumbnail/scenery.jpg',
+		taglist:[
+			'water',
+			'sky',
+			'trees',
+			'',
+		],
+	},
+	{
+		authorid:'twd',
 		fullimageurl:'./../resources/images/stock/1.jpg',
 		thumbnailurl:'./../resources/images/stock/thumbnail/1.jpg',
 		taglist:[
