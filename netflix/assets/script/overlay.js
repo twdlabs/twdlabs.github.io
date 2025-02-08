@@ -6,11 +6,15 @@ const overlay = {
 
 	// Get overlay box. 
 	box: document.querySelector('div#overlay'),
+
+	// Get overlay video. 
+	video: document.querySelector('div#overlay main.overlay div.head div.video video'),
+
+	// Get overlay title. 
+	headtitle: document.querySelector('div#overlay main.overlay div.head div.cover div.label h2.title'),
+	bodytitles: document.querySelectorAll('div#overlay main.overlay div.body section h3.head'),
 };
 // console.log('Overlay:',overlay);
-
-// Get overlay video. 
-const overlayvideo = document.querySelector('div#overlay main.overlay div.head div.video video');
 
 // Get all round buttons. 
 const allroundbtns = document.querySelectorAll('div#overlay main.overlay div.head div.cover div.panel div.btn.round');
@@ -126,9 +130,11 @@ function openOverlay(event) {
 
 	// Proceed if selected media item valid. 
 	if( selectedmediaitem && selectedmediaitem['vidurl'] ) {
-		
+
 		// Load selected media item. 
-		overlayvideo.src = selectedmediaitem['vidurl'];
+		overlay['video'].src = selectedmediaitem['vidurl'];
+		overlay['headtitle'].innerHTML = selectedmediaitem['title'];
+		for(let bodytitle of overlay['bodytitles']) bodytitle.innerHTML = selectedmediaitem['title'];
 
 		// Display overlay. 
 		overlay['box'].classList.add('active');

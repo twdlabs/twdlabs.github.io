@@ -67,6 +67,11 @@ div#container {/* background-color:var(--trplightblack); */ min-height:100vh;}
 div#container nav.navbar {position:fixed; /* position:sticky;  */inset:0; bottom:auto; width:100%; z-index:1;}
 div#container nav.navbar {background:var(--navbargradient); color:white; transition:1.25s; padding:1.5rem var(--edgewidth);}
 div#container nav.navbar.scr {background-color:var(--lightblack);}
+div#container nav.navbar ul.navlist {display:flex; flex-direction:row;}
+div#container nav.navbar ul.navlist {list-style:none; padding:0; margin:0;}
+div#container nav.navbar ul.navlist li.navitem {padding:0 1rem;}
+div#container nav.navbar ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+/* div#container nav.navbar ul.navlist li.navitem a.navlink:hover {} */
 
 
 /* General Row */
@@ -76,28 +81,29 @@ div#container div.row {position:relative; min-height:10em; /* border-bottom:.125
 /* Media Slider */
 /* div#container div.sliderow {display:none; opacity:.25;} */
 /* Media Slider: Head */
-div#container div.sliderow h2.rowhead {color:white; font-size:1rem; font-weight:bold;}
+div#container div.sliderow h2.rowhead {color:white; font-size:1.5rem; font-weight:bold; margin:0;}
+div#container div.sliderow h2.rowhead {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
 div#container div.sliderow h2.rowhead a.rowtitle {display:flex; align-items:center;}
 div#container div.sliderow h2.rowhead a.rowtitle {color:inherit; text-decoration:none;}
-div#container div.sliderow h2.rowhead a.rowtitle svg.icon {color:var(--teal); font-size:.375em; margin-left:.5em;}
+div#container div.sliderow h2.rowhead a.rowtitle svg.icon {color:var(--teal); font-size:.5em; margin-left:.5em; margin-top:.25rem;}
 div#container div.sliderow h2.rowhead a.rowtitle svg.icon {visibility:hidden;}
 div#container div.sliderow h2.rowhead a.rowtitle span.caption {display:flex; align-items:center;}
-div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; margin-top:1px;}
+div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; margin-top:.25rem;}
 div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {width:0; transform:translateX(-1rem);}
 div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {overflow:hidden; opacity:0; visibility:hidden; transition:.5s;}
 div#container div.sliderow h2.rowhead a.rowtitle:hover svg.icon {visibility:visible;}
-div#container div.sliderow h2.rowhead a.rowtitle:hover span.caption::after {width:3.25rem; transform:none;}
+div#container div.sliderow h2.rowhead a.rowtitle:hover span.caption::after {width:5rem; transform:none;}
 div#container div.sliderow h2.rowhead a.rowtitle:hover span.caption::after {opacity:1; visibility:visible;}
 /* Media Slider: Body */
-div#container div.sliderow div.rowbody {position:relative;}
-div#container div.sliderow div.rowbody div.slider {overflow:auto; scrollbar-width:none; /* padding:0 var(--edgewidth); */ margin-top:.625rem;}
+div#container div.sliderow div.rowbody {position:relative; overflow:hidden; margin-top:.625rem;}
+div#container div.sliderow div.rowbody div.slider {overflow:auto; overflow:visible; scrollbar-width:none; z-index:10; margin:0 var(--edgewidth);}
 div#container div.sliderow div.rowbody div.slider ul.medialist {list-style:none; padding:0; margin:0;}
-div#container div.sliderow div.rowbody div.slider ul.medialist {display:flex; flex-direction:row; grid-gap:var(--cellgap); width:fit-content; padding:0 var(--edgewidth);}
+div#container div.sliderow div.rowbody div.slider ul.medialist {display:flex; flex-direction:row; grid-gap:var(--cellgap); width:fit-content; /* padding:0 var(--edgewidth); */}
 /* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem {} */
 /* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {} */
 /* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {} */
 div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {background-color:lime; display:block; object-fit:cover; height:10em; width:16em;}
-div#container div.sliderow div.rowbody div.shiftbtn {position:absolute; top:0; bottom:0;}
+div#container div.sliderow div.rowbody div.shiftbtn {position:absolute; top:0; bottom:0; z-index:20;}
 div#container div.sliderow div.rowbody div.shiftbtn {background-color:var(--lightblack3); color:white; cursor:pointer; display:grid; place-items:center; min-width:calc( var(--edgewidth) - var(--cellgap) );}
 div#container div.sliderow div.rowbody div.shiftbtn:hover {background-color:var(--lightblack1);}
 div#container div.sliderow div.rowbody div.shiftbtn.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}

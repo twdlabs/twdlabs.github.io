@@ -13,8 +13,12 @@ const billboard = {
 	// Get more button. 
 	morebtn: document.querySelector('div#container div.billboard div.hero div.vignette div.actionbox a.morebtn'),
 
-	// Get billboard poster. 
-	poster: document.querySelector('div#container div.billboard div.hero img.poster'),
+	// Get billboard media poster. 
+	mediaposter: document.querySelector('div#container div.billboard div.hero img.poster'),
+	// Get billboard media title. 
+	mediatitle: document.querySelector('div#container div.billboard div.hero div.vignette div.mediatitle'),
+	// Get billboard media description. 
+	mediadescription: document.querySelector('div#container div.billboard div.hero div.vignette div.mediadescription'),
 };
 // console.log('Billboard:',billboard);
 
@@ -74,8 +78,18 @@ function loadSliderMedia() {
 		</a>
 		<!-- /rowtitle -->`;
 
+		// Compile layout for dot list. 
+		let dotlistlayout = `
+		<!-- dotlist -->
+		<ul class="dotlist">
+
+			<li class="dot" data-pageindex="-1"></li>
+
+		</ul>
+		<!-- /dotlist -->`;
+
 		// 
-		sliderheaddestination.innerHTML = rowtitlelayout;
+		sliderheaddestination.innerHTML = rowtitlelayout + dotlistlayout;
 	}
 
 	// Go thru each slide row media list. 
@@ -240,12 +254,14 @@ function featureRandomMedia() {
 		// let imgurl = mediaitem['fullimageurl'];
 		let imgurl = mediaitem['imgurl'];
 
-		// Update billboard poster image. 
-		// billboard['poster'].style.backgroundImage = imgurl;
-		billboard['poster'].src = imgurl;
+		// Update billboard media poster image. 
+		// billboard['mediaposter'].style.backgroundImage = imgurl;
+		billboard['mediaposter'].src = imgurl;
 
 		// TODO: Update information in vignette. 
-		billboard['playbtn']
+		billboard['mediatitle'].innerHTML = mediaitem['title'];
+		billboard['mediadescription'].innerHTML = mediaitem['keywords'];
+		// billboard['playbtn'];
 		billboard['morebtn'].setAttribute('data-mediaindex',mediaindex);
 		billboard['morebtn'].addEventListener('click',openOverlay);
 	}

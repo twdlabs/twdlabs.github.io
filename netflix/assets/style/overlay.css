@@ -56,6 +56,9 @@ div#overlay main.overlay div.head div.cover div.panel div.space {flex-grow:1;}
 
 div#overlay main.overlay div.body {min-height:20rem;}
 div#overlay main.overlay div.body section {margin:3rem;}
+div#overlay main.overlay div.body section.xyz {display:none;}
+div#overlay main.overlay div.body section.related {display:none;}
+div#overlay main.overlay div.body section.suggestions {display:none;}
 div#overlay main.overlay div.body section h3.head {font-size:1.45rem; font-weight:400;}
 
 /* div#overlay main.overlay div.body section.metadata {} */
