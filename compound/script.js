@@ -157,18 +157,22 @@ function displayLoan(userinputvalues) {
 			{
 				name:'Principal amount',
 				value:P,
+				value:dollar(P),
 			},
 			{
-				name:'Annual rate (APY)',
+				name:'Annual rate (APR)',
 				value:r,
+				value:`${100*r}%`,
 			},
 			{
 				name:'Term',
 				value:t,
+				value:`${t} year` + (t==1?'':'s'),
 			},
 			{
 				name:'Compoundings per yr',
 				value:n,
+				value:`${n} /yr`,
 			},
 			// {
 			// 	name:'xyz',
@@ -307,6 +311,10 @@ function displayGrowth(userinputvalues) {
 	let C = c * f/n;
 	// let C = c * n/f;
 
+	// Get compound future value. 
+	let compoundfuturevalue = getFutureValue();
+	console.log('Compound future value:',compoundfuturevalue);
+
 	// Display results of compounding growth. 
 	showGrowthResults();
 
@@ -315,43 +323,56 @@ function displayGrowth(userinputvalues) {
 
 	/****/
 
-	// Display results of compounding growth. 
-	function showGrowthResults() {
+	// Get compound future value. 
+	function getFutureValue() {
 
 		// Initialize future value. 
 		let result = 0;
 	
-		// Calculate future value (compounding). 
+		// Calculate multiplying factor. 
 		let pow = Math.pow( (1+r/n) , (n*t) );
-		console.log('Multiplying factor:',pow);
+		// console.log('Multiplying factor:',pow);
+
+		// Add principal component. 
 		result += P * pow;
+
+		// Add contribution component. 
 		result += C * [ pow - 1 ] / (r/n);
-		console.log('Compound result:',result);
-		let compoundfuturevalue = result;
+
+		// Return result. 
+		return result;
+	}
+
+	// Display results of compounding growth. 
+	function showGrowthResults() {
 	
-		// Calculate future value (simple). 
-		result = P * (1 + r*t);
-		if(result==0) result += (c*f*t) * (1+r);
-		console.log('Simple result:',result);
-		let simplefuturevalue = result;
+		// // Calculate future value (simple). 
+		// let result = P * (1 + r*t);
+		// if(result==0) result += (c*f*t) * (1+r);
+		// console.log('Simple result:',result);
+		// let simplefuturevalue = result;
 
 		// Define results. 
 		let resultitems = [
 			{
 				name:'Principal amount',
 				value:P,
+				value:dollar(P),
 			},
 			{
 				name:'Annual rate (APY)',
 				value:r,
+				value:`${100*r}%`,
 			},
 			{
 				name:'Term',
 				value:t,
+				value:`${t} year` + (t==1?'':'s'),
 			},
 			{
 				name:'Compoundings per yr',
 				value:n,
+				value:`${n} /yr`,
 			},
 			// {
 			// 	name:'xyz',
@@ -361,13 +382,13 @@ function displayGrowth(userinputvalues) {
 			// 	name:'xyz',
 			// 	value:xyz,
 			// },
+			// {
+			// 	name:'Simple',
+			// 	value:dollar(simplefuturevalue),
+			// 	// value:dollarBrief(simplefuturevalue),
+			// },
 			{
-				name:'Simple',
-				value:dollar(simplefuturevalue),
-				// value:dollarBrief(simplefuturevalue),
-			},
-			{
-				name:'Compound',
+				name:'Compound future value',
 				value:dollar(compoundfuturevalue),
 				// value:dollarBrief(compoundfuturevalue),
 			},

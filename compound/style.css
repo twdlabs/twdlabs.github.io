@@ -121,11 +121,7 @@ div#container aside.overlay main.window section.output.gone {display:none;}
 /* Output Overlay Window: Result List */
 div#container aside.overlay main.window section.output ul.resultlist {list-style:none; padding:0; margin:0;}
 /* div#container aside.overlay main.window section.output ul.resultlist li.resultitem {} */
-div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {display:grid; grid-template-columns:repeat(2,1fr); grid-gap:1rem; align-items:center;}
-div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:3fr 4fr;}	/* 4/7 (57%) */
-div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:2fr 3fr;}	/* 3/5 (60%) */
-div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:1fr 2fr;}	/* 2/3 (67%) */
-div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {grid-template-columns:3fr 5fr;}	/* 5/8 (62.5%) */
+div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {display:grid; grid-template-columns:repeat(2,1fr); grid-template-columns:3fr 2fr; grid-gap:1rem; align-items:center;}
 div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result {/* text-align:center; */ /* white-space:pre-wrap; */ margin-top:1rem;}
 div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result.x {display:none;}
 /* div#container aside.overlay main.window section.output ul.resultlist li.resultitem div.result.simple {} */
