@@ -7,6 +7,7 @@
 * {box-sizing:border-box;}
 
 
+
 :root {
 
 	/* Numbers */
@@ -17,6 +18,7 @@
 	/* --pagewidth:75rem; */
 	/* --pagewidth:50rem; */
 	/* Aspect Ratio */
+	--billboardlevel:40%;
 	--billboardrowaspectratio:50%;
 	--billboardrowaspectratio:40%;
 	--billboardposteraspectratio:57.14285714%;
@@ -24,44 +26,66 @@
 	--shiftbtnwidth:var(--edgewidth);
 	/* --shiftbtnwidth:calc( var(--edgewidth) - var(--cellgap) ); */
 	--sliderpagewidth:calc( 100vw - 2*var(--shiftbtnwidth) );
-	--slideritemsperpage:4;
+	--slideritemsperpage:5;
 	--sliderpagedelta:0;
 	--slideritemsize:calc( var(--sliderpagewidth) / var(--slideritemsperpage) );
 
 	/* Theme Colors */
 	--teal:#54b9c5;
-	--navbaroffwhite:#e5e5e5;
-	--whitesheet:#ffffffb3;
-	--whitesheet1:#ffffffbf;
-	--whiteglass:#ffffff80;
-	--greysheet:#6d6d6eb3;
-	--greyglass:#6d6d6e66;
-	--blackglass:#000000b3;
-	--blackglass1:#0009;
-	--ltltblackglass:#3339;
-	/* Gradient Colors */
-	--lightblack:#141414;
-	--lightblack1:#141414b3;
-	--lightblack2:#14141494;
-	--lightblack3:#14141480;
-	--lightblack4:#14141459;
-	--lightblack5:#14141426;
-	--lightblack6:#14141400;
-	--lighterblack:#222;
-	--ratingboxoffwhite:#dcdcdc;
-	--dotlistdrkgrey:#4d4d4d;
-	--dotlistlightgrey:#aaa;
-	/* Linear Gradients */
-	--navbargradient:linear-gradient( 180deg , var(--blackglass) 10% , transparent );
+
+	/* White Glass */
+	--whitesheet1:#ffffffbf;		/* billboard poster vignette actionbox playbtn */
+	--whitesheet:#ffffffb3;		/* billboard poster vignette actionbox morebtn */
+	--whiteglass:#ffffff80;		/* billboard poster vignette actionbox playbtn */
+
+	/* Off White */
+	--navbaroffwhite:#e5e5e5;		/* navbar text */
+	--ratingboxoffwhite:#dcdcdc;	/* ratingbox edge color */
+
+	/* Light Grey Color */
+	--dotlistlightgrey:#aaa;		/* sliderow dotlist */
+
+	/* Grey Glass */
+	--greysheet:#6d6d6eb3;			/* billboard poster vignette actionbox morebtn */
+	--greyglass:#6d6d6e66;			/* billboard poster vignette actionbox morebtn */
+
+	/* Dark Grey Color */
+	--dotlistdrkgrey:#4d4d4d;		/* sliderow dotlist */
+
+	/* Light Black Glass */
+	--ltrblackglass:#3339;			/* ratingbox bg color */
+	--ltblack:#222;				/* mediaitem backuptext */
+
+	/* Black Color */
+	--blkfull:#141414;
+	/* Black Glass */
+	--blk5:#141414b3;				/* shift btn */
+	--blk4:#14141494;				/* billboard bottom-edge gradient */
+	--blk3:#14141480;				/* shift btn */
+	--blk2:#14141459;				/* billboard bottom-edge gradient */
+	--blk1:#14141426;				/* billboard bottom-edge gradient */
+	--blk0:#14141400;				/* billboard bottom-edge gradient */
+
+	/* Dark Black Glass */
+	--drkblackglass:#0009;			/* billboard left-edge gradient */
+	--drkblacksheet:#000000b3;		/* navbar bg gradient */
+
+	/* Navbar Colors */
+	/* Navbar Gradient */
+	--navbargradient:linear-gradient( 180deg , var(--drkblacksheet) 10% , transparent );
 	/* --navbargradient:linear-gradient( 180deg , black 10% , white ); */
-	--billboardleftedgegradient:linear-gradient( 75deg , var(--blackglass1) , transparent 85% );
+
+	/* Billboard Gradients */
+	--billboardleftedgegradient:linear-gradient( 75deg , var(--drkblackglass) , transparent 85% );
 	/* --billboardleftedgegradient:linear-gradient( 75deg , black , white 85% ); */
-	--billboardbottomedgegradient:linear-gradient( 180deg , var(--lightblack6) , var(--lightblack5) , var(--lightblack4) , var(--lightblack2) , var(--lightblack) , var(--lightblack) );
+	--billboardbottomedgegradient:linear-gradient( 180deg , var(--blk0) , var(--blk1) , var(--blk2) , var(--blk4) , var(--blkfull) , var(--blkfull) );
 }
 
+:root {--slideritemsperpage:5;}
 
 
-body {background-color:var(--lightblack); font-family:Nunito,sans-serif; margin:0;}
+
+body {background-color:var(--blkfull); font-family:Nunito,sans-serif; margin:0;}
 
 
 
@@ -70,7 +94,7 @@ body {background-color:var(--lightblack); font-family:Nunito,sans-serif; margin:
 /* App Box */
 /* div#container {background-color:dodgerblue; background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%);} */
 /* div#container {display:grid; place-items:center;} */
-div#container {/* background-color:var(--trplightblack); */ min-height:100vh;}
+div#container {min-height:100vh;}
 /* div#container div.grid {max-width:var(--pagewidth); margin:0 auto;} */
 
 
@@ -80,7 +104,7 @@ div#container {/* background-color:var(--trplightblack); */ min-height:100vh;}
 div#container nav.navbar {position:fixed; /* position:sticky; */ inset:0; bottom:auto; width:100%; z-index:1;}
 div#container nav.navbar {display:flex; align-items:center; padding:1.375rem var(--edgewidth);}
 div#container nav.navbar {background:var(--navbargradient); color:var(--navbaroffwhite); transition:1.25s;}
-div#container nav.navbar.scr {background-color:var(--lightblack);}
+div#container nav.navbar.scr {background-color:var(--blkfull);}
 div#container nav.navbar a.homelink {color:inherit; text-decoration:none; margin-right:.75rem;}
 div#container nav.navbar a.homelink img.logo {background-color:red; height:3rem; width:8rem; border:0 none;}
 div#container nav.navbar a.homelink img.logo[src=''] {background-color:transparent; color:red; font-size:2.5rem; font-weight:bold; letter-spacing:-.125rem; text-transform:uppercase;}
@@ -104,7 +128,7 @@ div#container div.app h1.apphead {width:1px; height:1px; overflow:hidden; margin
 
 /* General Row */
 div#container div.app div.row {position:relative; margin-top:var(--rowgap);}
-/* div#container div.app div.row {min-height:10em; border-bottom:.125rem solid lime; border-color:var(--lightblack);} */
+/* div#container div.app div.row {min-height:10em; border-bottom:.125rem solid lime; border-color:var(--blkfull);} */
 
 
 
@@ -127,9 +151,9 @@ div#container div.app div.bbrow div.billboard div.mediaposter div.gradient.botto
 
 /* Billboard: Vignette Poster */
 /* div#container div.app div.bbrow div.billboard div.poster {} */
-div#container div.app div.bbrow div.billboard div.poster div.vignette {position:absolute; bottom:33%; left:var(--edgewidth); width:33%;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette {position:absolute; bottom:var(--billboardlevel); left:var(--edgewidth); width:33%;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette {color:white; font-size:1.5rem;}
-div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:4rem;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:7rem; white-space:nowrap;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediaepisode {margin-top:.25em;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediadescription {margin-top:.25em;}
 /* Billboard: Vignette Action Box */
@@ -142,22 +166,22 @@ div#container div.app div.bbrow div.billboard div.poster div.vignette div.action
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn span.caption {margin-left:.625em;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn {background-color:white; color:black;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn:hover {background-color:var(--whitesheet1);}
-div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn:active {background-color:var(--whiteglass); color:var(--blackglass);}
+div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn:active {background-color:var(--whiteglass); color:var(--drkblacksheet);}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn svg.icon {font-size:1.875em;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn span.caption {margin-left:.125rem;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.morebtn {background-color:var(--greysheet); color:white;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.morebtn:hover {background-color:var(--greyglass);}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.morebtn:active {background-color:var(--greyglass); color:var(--whitesheet);}
 /* Billboard: Vignette Rating Box */
-div#container div.app div.bbrow div.billboard div.poster div.ratingbox {position:absolute; bottom:33%; right:0;}
-div#container div.app div.bbrow div.billboard div.poster div.ratingbox div.rating {background-color:var(--ltltblackglass); color:white; font-size:.75em; font-size:1.5rem; height:2em; width:8em;}
+div#container div.app div.bbrow div.billboard div.poster div.ratingbox {position:absolute; bottom:var(--billboardlevel); right:0;}
+div#container div.app div.bbrow div.billboard div.poster div.ratingbox div.rating {background-color:var(--ltrblackglass); color:white; font-size:.75em; font-size:1.5rem; height:2em; width:8em;}
 div#container div.app div.bbrow div.billboard div.poster div.ratingbox div.rating {display:flex; flex-direction:row; align-items:center; padding:0 1em; border-left:.25rem solid var(--ratingboxoffwhite);}
 /* div#container div.app div.bbrow div.billboard div.poster div.ratingbox div.rating span.caption {} */
 
 
 
 /* Media Slide Row */
-/* div#container div.app div.sldrow {display:none;} */
+div#container div.app div.sldrow {/* display:none; */--sliderpagedelta:0;}
 /* div#container div.app div.sldrow {opacity:.25;} */
 
 /* Media Slide: Head */
@@ -189,24 +213,23 @@ div#container div.app div.sldrow div.rowbody div.slider ul.medialist {width:fit-
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX(0); transition:.5s;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX( calc( var(--sliderpagewidth) * -1 * var(--sliderpagedelta) ) );}
 /* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {opacity:.25; border:var(--cellgap) solid; border-color:red olivedrab orange blueviolet;} */
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {width:var(--slideritemsize); padding:0 .25rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {width:var(--slideritemsize); transition:.125s; padding:0 .25rem;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {display:block; width:100%;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {color:inherit; color:white; text-decoration:none;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {/* background-color:lawngreen; */ position:relative; padding-bottom:var(--thumbnailaspectratio);}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {position:absolute; inset:0; height:100%; width:100%; z-index:1;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {display:block; object-fit:cover; border-radius:.25rem;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {position:absolute; inset:0; height:100%; width:100%; z-index:-1;}
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background-color:var(--lighterblack); background-image:linear-gradient(transparent,black);}
-/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background:var(--blackglass1); z-index:2;} */
-/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background-color:lime; opacity:.5;} */
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background-color:var(--ltblack); background-image:linear-gradient(transparent,black);}
+/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background:var(--drkblackglass); z-index:2;} */
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {position:absolute; inset:0; top:auto; padding:10%;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {font-size:1.5rem; font-weight:bold; text-align:center;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 
 /* Media Slide: Media List Shifters */
 div#container div.app div.sldrow div.rowbody div.shiftbtn {position:absolute; top:0; bottom:0; z-index:20;}
-div#container div.app div.sldrow div.rowbody div.shiftbtn {background-color:var(--lightblack3); color:white; cursor:pointer; display:grid; place-items:center; min-width:var(--shiftbtnwidth);}
-div#container div.app div.sldrow div.rowbody div.shiftbtn:hover {background-color:var(--lightblack1);}
+div#container div.app div.sldrow div.rowbody div.shiftbtn {background-color:var(--blk3); color:white; cursor:pointer; display:grid; place-items:center; min-width:var(--shiftbtnwidth);}
+div#container div.app div.sldrow div.rowbody div.shiftbtn:hover {background-color:var(--blk5);}
 div#container div.app div.sldrow div.rowbody div.shiftbtn.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}
 div#container div.app div.sldrow div.rowbody div.shiftbtn.rightbtn {right:0; border-radius:.25rem 0 0 .25rem;}
 div#container div.app div.sldrow div.rowbody div.shiftbtn svg.icon {display:none; font-size:2.5rem; transition:.125s;}
@@ -217,7 +240,7 @@ div#container div.app div.sldrow div.rowbody:hover div.shiftbtn:hover svg.icon {
 
 
 /* Footer */
-div#container footer.footer {/* background-color:var(--greysheet); */ color:grey; padding:var(--rowgap) var(--edgewidth); margin-top:var(--rowgap);}
+div#container footer.footer {color:grey; padding:var(--rowgap) var(--edgewidth); margin-top:var(--rowgap);}
 div#container footer.footer.xyz {height:20rem;}
 /* div#container footer.footer div.links {} */
 /* div#container footer.footer div.sociallinks {} */
@@ -227,3 +250,28 @@ div#container footer.footer div.sociallinks ul.linklist {display:flex; flex-dire
 div#container footer.footer div.memberlinks ul.linklist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:1rem;}
 /* div#container footer.footer div.links ul.linklist li.linkitem {} */
 div#container footer.footer div.links ul.linklist li.linkitem a.link {color:inherit; text-decoration:none;}
+
+
+
+
+
+
+/* Large Smartphone */
+@media screen and (max-width:64rem) {
+
+	:root {--slideritemsperpage:4;}
+}
+
+
+/* Medium Smartphone */
+@media screen and (max-width:52rem) {
+
+	:root {--slideritemsperpage:3;}
+}
+
+
+/* Small Smartphone */
+@media screen and (max-width:36rem) {
+
+	:root {--slideritemsperpage:2;}
+}

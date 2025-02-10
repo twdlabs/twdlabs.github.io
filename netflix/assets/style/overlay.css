@@ -9,7 +9,7 @@
 
 
 div#overlay {position:fixed; top:0; left:0; height:100%; width:100%; min-height:100vh; z-index:90;}
-div#overlay {display:grid; place-items:center; overflow:auto; padding:0 1rem; padding-top:2rem;}
+div#overlay {display:grid; place-items:center; overflow:auto; padding:2rem 1rem; padding-top:2rem;}
 div#overlay {visibility:hidden; opacity:0; transition:.25s;}
 div#overlay.active {visibility:visible; opacity:1;}
 
