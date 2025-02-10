@@ -9,18 +9,18 @@ const navbar = document.querySelector('div#container nav.navbar');
 const billboard = {
 
 	// Get play button. 
-	playbtn: document.querySelector('div#container div.app div.bbrow div.vignette div.actionbox a.playbtn'),
+	playbtn: document.querySelector('div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn'),
 	// Get more button. 
-	morebtn: document.querySelector('div#container div.app div.bbrow div.vignette div.actionbox a.morebtn'),
+	morebtn: document.querySelector('div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.morebtn'),
 
 	// Get billboard media poster. 
-	mediaposter: document.querySelector('div#container div.app div.bbrow div.mediaposter'),
+	mediaposter: document.querySelector('div#container div.app div.bbrow div.billboard div.mediaposter'),
 	// Get billboard media poster image. 
-	mediaposterimg: document.querySelector('div#container div.app div.bbrow div.mediaposter img.hero'),
+	mediaposterimg: document.querySelector('div#container div.app div.bbrow div.billboard div.mediaposter img.hero'),
 	// Get billboard media title. 
-	mediatitle: document.querySelector('div#container div.app div.bbrow div.vignette div.mediatitle'),
+	mediatitle: document.querySelector('div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle'),
 	// Get billboard media description. 
-	mediadescription: document.querySelector('div#container div.app div.bbrow div.vignette div.mediadescription'),
+	mediadescription: document.querySelector('div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediadescription'),
 };
 // console.log('Billboard:',billboard);
 
@@ -88,7 +88,17 @@ function loadSliderMedia() {
 		<!-- dotlist -->
 		<ul class="dotlist">
 
-			<li class="dot" data-pageindex="-1"></li>
+			<!-- dot -->
+			<li class="dot on" data-pageindex="0"></li>
+			<!-- /dot -->
+
+			<!-- dot -->
+			<li class="dot" data-pageindex="1"></li>
+			<!-- /dot -->
+
+			<!-- dot -->
+			<li class="dot" data-pageindex="2"></li>
+			<!-- /dot -->
 
 		</ul>
 		<!-- /dotlist -->`;

@@ -113,7 +113,7 @@
 					<div class="billboard">
 
 						<!-- mediaposter -->
-						<div class="mediaposter">
+						<div class="mediaposter poster">
 
 							<!-- hero -->
 							<img class="hero" src="./../resources/images/city/city.png" alt="">
@@ -126,6 +126,69 @@
 							<!-- gradient -->
 							<div class="gradient bottom"></div>
 							<!-- /gradient -->
+
+						</div>
+						<!-- /mediaposter -->
+
+						<!-- vignetteposter -->
+						<div class="vignetteposter poster">
+
+							<!-- vignette -->
+							<div class="vignette">
+	
+								<!-- mediatitle -->
+								<div class="mediatitle">Media Title</div>
+								<!-- /mediatitle -->
+	
+								<!-- mediaepisode -->
+								<div class="mediaepisode"></div>
+								<!-- /mediaepisode -->
+	
+								<!-- mediadescription -->
+								<div class="mediadescription">This is a brief media description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus corrupti dolores vitae incidunt harum delectus voluptatem illum aperiam.</div>
+								<!-- /mediadescription -->
+	
+								<!-- actionbox -->
+								<div class="actionbox">
+	
+									<!-- playbtn -->
+									<a class="playbtn btn" href="javascript:void(0)">
+	
+										<!-- icon -->
+										<svg class="icon play" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+										</svg>
+										<!-- /icon -->
+	
+										<!-- caption -->
+										<span class="caption">Play</span>
+										<!-- /caption -->
+	
+									</a>
+									<!-- /playbtn -->
+	
+									<!-- morebtn -->
+									<a class="morebtn btn" href="javascript:void(0)" data-mediaindex="-1">
+	
+										<!-- icon -->
+										<svg class="icon info" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+											<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+										</svg>
+										<!-- /icon -->
+	
+										<!-- caption -->
+										<span class="caption">More Info</span>
+										<!-- /caption -->
+	
+									</a>
+									<!-- /morebtn -->
+	
+								</div>
+								<!-- /actionbox -->
+	
+							</div>
+							<!-- /vignette -->
 
 							<!-- ratingbox -->
 							<div class="ratingbox">
@@ -144,64 +207,7 @@
 							<!-- /ratingbox -->
 
 						</div>
-						<!-- /mediaposter -->
-
-						<!-- vignette -->
-						<div class="vignette">
-
-							<!-- mediatitle -->
-							<div class="mediatitle">Media Title</div>
-							<!-- /mediatitle -->
-
-							<!-- mediaepisode -->
-							<div class="mediaepisode"></div>
-							<!-- /mediaepisode -->
-
-							<!-- mediadescription -->
-							<div class="mediadescription">This is a brief media description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit natus corrupti dolores vitae incidunt harum delectus voluptatem illum aperiam.</div>
-							<!-- /mediadescription -->
-
-							<!-- actionbox -->
-							<div class="actionbox">
-
-								<!-- playbtn -->
-								<a class="playbtn btn" href="javascript:void(0)">
-
-									<!-- icon -->
-									<svg class="icon play" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-										<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-									</svg>
-									<!-- /icon -->
-
-									<!-- caption -->
-									<span class="caption">Play</span>
-									<!-- /caption -->
-
-								</a>
-								<!-- /playbtn -->
-
-								<!-- morebtn -->
-								<a class="morebtn btn" href="javascript:void(0)" data-mediaindex="-1">
-
-									<!-- icon -->
-									<svg class="icon info" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-										<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-										<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
-									</svg>
-									<!-- /icon -->
-
-									<!-- caption -->
-									<span class="caption">More Info</span>
-									<!-- /caption -->
-
-								</a>
-								<!-- /morebtn -->
-
-							</div>
-							<!-- /actionbox -->
-
-						</div>
-						<!-- /vignette -->
+						<!-- /vignetteposter -->
 
 					</div>
 					<!-- /billboard -->
@@ -234,7 +240,17 @@
 						<!-- dotlist -->
 						<ul class="dotlist">
 
-							<li class="dot" data-pageindex="-1"></li>
+							<!-- dot -->
+							<li class="dot on" data-pageindex="0"></li>
+							<!-- /dot -->
+
+							<!-- dot -->
+							<li class="dot" data-pageindex="1"></li>
+							<!-- /dot -->
+
+							<!-- dot -->
+							<li class="dot" data-pageindex="2"></li>
+							<!-- /dot -->
 
 						</ul>
 						<!-- /dotlist -->
