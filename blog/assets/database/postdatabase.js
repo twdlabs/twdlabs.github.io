@@ -52,6 +52,7 @@ const blogDataList = [
 	// 	fullimageurl:'./../resources/images/scenery/xyz.jpg',
 	// 	thumbnailurl:'./../resources/images/scenery/thumbnail/xyz.jpg',
 	// 	vidurl:'./../resources/videos/xyz.mp4',
+	// 	caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 	// 	content:[],
 	// 	published:{
 	// 		year:9999,
@@ -72,6 +73,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/fd21366fc13ca502751ebb8f7d18f2dd.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/fd21366fc13ca502751ebb8f7d18f2dd.jpg',
 		vidurl:'./../resources/videos/2231485.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -93,6 +95,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/b.jpeg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/b.jpeg',
 		vidurl:'./../resources/videos/1436812.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -114,6 +117,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/2.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/2.jpg',
 		vidurl:'./../resources/videos/0000002.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -136,6 +140,7 @@ const blogDataList = [
 		thumbnailurl:'./../resources/images/city/thumbnail/city.jpg',
 		vidurl:'./../resources/videos/1654216.mp4',
 		vidurl:'./../resources/videos/2818546.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -158,6 +163,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/1.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/1.jpg',
 		vidurl:'./../resources/videos/1436812.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -178,6 +184,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/desk/Squarespace+Learning+-+Forum+Banner.jpg',
 		thumbnailurl:'./../resources/images/desk/thumbnail/Squarespace+Learning+-+Forum+Banner.jpg',
 		vidurl:'./../resources/videos/0000001.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -198,6 +205,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/city/Dubai.jpg',
 		thumbnailurl:'./../resources/images/city/thumbnail/Dubai.jpg',
 		vidurl:'./../resources/videos/1654216.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -219,6 +227,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/2 2.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/2 2.jpg',
 		vidurl:'./../resources/videos/1583096.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -238,6 +247,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/np3.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/np3.jpg',
 		vidurl:'./../resources/videos/2231485.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -260,6 +270,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/3.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/3.jpg',
 		vidurl:'./../resources/videos/0000002.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -281,6 +292,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/a.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/a.jpg',
 		vidurl:'./../resources/videos/1644693.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -303,6 +315,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/code/code.jpg',
 		thumbnailurl:'./../resources/images/code/thumbnail/code.jpg',
 		vidurl:'./../resources/videos/1654216.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -322,6 +335,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/ze0NeqF.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/ze0NeqF.jpg',
 		vidurl:'./../resources/videos/2231485.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -345,6 +359,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/sky/wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
 		thumbnailurl:'./../resources/images/sky/thumbnail/wallpapersden.com_starry-sky-night-purple_1920x1200.jpg',
 		vidurl:'./../resources/videos/1654216.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -365,6 +380,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/scenery/Navagio.jpg',
 		thumbnailurl:'./../resources/images/scenery/thumbnail/Navagio.jpg',
 		vidurl:'./../resources/videos/2231485.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2023,
@@ -387,6 +403,7 @@ const blogDataList = [
 		fullimageurl:'./../resources/images/desk/devicework.jpg',
 		thumbnailurl:'./../resources/images/desk/thumbnail/devicework.jpg',
 		vidurl:'./../resources/videos/0000001.mp4',
+		caption:'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, nihil consequatur asperiores.',
 		content:[],
 		published:{
 			year:2022,
