@@ -9,16 +9,18 @@ const navbar = document.querySelector('div#container nav.navbar');
 const billboard = {
 
 	// Get play button. 
-	playbtn: document.querySelector('div#container div.billboard div.hero div.vignette div.actionbox a.playbtn'),
+	playbtn: document.querySelector('div#container div.app div.bbrow div.vignette div.actionbox a.playbtn'),
 	// Get more button. 
-	morebtn: document.querySelector('div#container div.billboard div.hero div.vignette div.actionbox a.morebtn'),
+	morebtn: document.querySelector('div#container div.app div.bbrow div.vignette div.actionbox a.morebtn'),
 
 	// Get billboard media poster. 
-	mediaposter: document.querySelector('div#container div.billboard div.hero img.poster'),
+	mediaposter: document.querySelector('div#container div.app div.bbrow div.mediaposter'),
+	// Get billboard media poster image. 
+	mediaposterimg: document.querySelector('div#container div.app div.bbrow div.mediaposter img.hero'),
 	// Get billboard media title. 
-	mediatitle: document.querySelector('div#container div.billboard div.hero div.vignette div.mediatitle'),
+	mediatitle: document.querySelector('div#container div.app div.bbrow div.vignette div.mediatitle'),
 	// Get billboard media description. 
-	mediadescription: document.querySelector('div#container div.billboard div.hero div.vignette div.mediadescription'),
+	mediadescription: document.querySelector('div#container div.app div.bbrow div.vignette div.mediadescription'),
 };
 // console.log('Billboard:',billboard);
 
@@ -26,10 +28,13 @@ const billboard = {
 const sliderows = {
 
 	// Get all slide row headers. 
-	rowheaders:document.querySelectorAll('div#container div.sliderow h2.rowhead'),
+	headers:document.querySelectorAll('div#container div.app div.sldrow h2.rowhead'),
 
-	// Get all slide row media lists. 
-	slidermedialists:document.querySelectorAll('div#container div.sliderow div.rowbody div.slider ul.medialist'),
+	// Get all slide row bodies. 
+	// bodies:document.querySelectorAll('div#container div.app div.sldrow div.rowbody'),
+
+	// Get all slide row media lists in row bodies. 
+	bodymedialists:document.querySelectorAll('div#container div.app div.sldrow div.rowbody div.slider ul.medialist'),
 }
 // console.log('Slide rows:',sliderows);
 
@@ -58,7 +63,7 @@ function loadSliderMedia() {
 	// console.log('Media index list:',mediaindexlist);
 
 	// Go thru each slide row header. 
-	for( let sliderheaddestination of sliderows['rowheaders'] ) {
+	for( let sliderheaddestination of sliderows['headers'] ) {
 
 		// Compile layout for row title. 
 		let rowtitlelayout = `
@@ -93,7 +98,7 @@ function loadSliderMedia() {
 	}
 
 	// Go thru each slide row media list. 
-	for( let slidermediadestination of sliderows['slidermedialists'] ) {
+	for( let slidermediadestination of sliderows['bodymedialists'] ) {
 		
 		// Shuffle list of indexes. 
 		let shuffledmediaindexlist = shuffleList(mediaindexlist);
@@ -176,7 +181,17 @@ function loadSliderMedia() {
 					<!-- thumbnail -->
 					<img class="thumbnail" src="${ mediaitem['thumbnailurl'] }" alt="">
 					<!-- /thumbnail -->
-	
+
+					<!-- backuptext -->
+					<div class="backuptext">
+
+						<!-- medianame -->
+						<span class="medianame">${ mediaitem['title'] }</span>
+						<!-- /medianame -->
+
+					</div>
+					<!-- /backuptext -->
+
 				</div>
 				<!-- /preview -->
 	
@@ -191,7 +206,7 @@ function loadSliderMedia() {
 	function activateSliderLinks() {
 	
 		// Get all media links in slider rows. 
-		let slidermedialinks = document.querySelectorAll('div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink');
+		let slidermedialinks = document.querySelectorAll('div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink');
 	
 		// Go thru each media link. 
 		for(let medialink of slidermedialinks) {
@@ -255,12 +270,12 @@ function featureRandomMedia() {
 		let imgurl = mediaitem['imgurl'];
 
 		// Update billboard media poster image. 
-		// billboard['mediaposter'].style.backgroundImage = imgurl;
-		billboard['mediaposter'].src = imgurl;
+		billboard['mediaposter'].style.backgroundImage = `url(${imgurl})`;
+		billboard['mediaposterimg'].src = imgurl;
 
 		// TODO: Update information in vignette. 
 		billboard['mediatitle'].innerHTML = mediaitem['title'];
-		billboard['mediadescription'].innerHTML = mediaitem['keywords'];
+		billboard['mediadescription'].innerHTML = `${mediaitem['caption']}.. ${mediaitem['keywords'].join(' ')}`;
 		// billboard['playbtn'];
 		billboard['morebtn'].setAttribute('data-mediaindex',mediaindex);
 		billboard['morebtn'].addEventListener('click',openOverlay);

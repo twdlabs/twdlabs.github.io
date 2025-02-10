@@ -14,26 +14,32 @@
 	--rowgap:3rem;
 	--cellgap:.25rem;
 	--edgewidth:3.5rem;
-	--pagewidth:75rem;
-	--pagewidth:50rem;
-	--reledgewidth:4vw;
+	/* --pagewidth:75rem; */
+	/* --pagewidth:50rem; */
 	/* Aspect Ratio */
 	--billboardaspectratio:50%;
-	/* --billboardaspectratio:40%; */
-	/* --billboardaspectratio:32%; */
-	/* --billboardaspectratio:24%; */
+	--billboardaspectratio:40%;
+	--billboardheroaspectratio:57.14285714%;
+	--thumbnailaspectratio:56.25%;
+	--shiftbtnwidth:var(--edgewidth);
+	/* --shiftbtnwidth:calc( var(--edgewidth) - var(--cellgap) ); */
+	--sliderpagewidth:calc( 100vw - 2*var(--shiftbtnwidth) );
+	--slideritemsperpage:4;
+	--sliderpagedelta:0;
+	--slideritemsize:calc( var(--sliderpagewidth) / var(--slideritemsperpage) );
 
 	/* Theme Colors */
 	--teal:#54b9c5;
+	--offwhite:#e5e5e5;
+	--whitesheet:#ffffffb3;
+	--whitesheet1:#ffffffbf;
+	--whiteglass:#ffffff80;
+	--greysheet:#6d6d6eb3;
+	--greyglass:#6d6d6e66;
 	--blackglass:#000000b3;
 	--blackglass1:#0009;
 	--ltltblackglass:#3339;
 	--ltltblackglass:#5559;
-	--greysheet:#6d6d6eb3;
-	--greyglass:#6d6d6e66;
-	--whitesheet:#ffffffb3;
-	--whitesheet1:#ffffffbf;
-	--whiteglass:#ffffff80;
 	/* Gradient Colors */
 	--lightblack:#141414;
 	--lightblack1:#141414b3;
@@ -42,10 +48,13 @@
 	--lightblack4:#14141459;
 	--lightblack5:#14141426;
 	--lightblack6:#14141400;
+	--lighterblack:#222;
 	/* Linear Gradients */
 	--navbargradient:linear-gradient( 180deg , var(--blackglass) 10% , transparent );
-	--leftedgegradient:linear-gradient( 75deg , var(--blackglass1) , transparent 85% );
-	--bottomedgegradient:linear-gradient( 180deg , var(--lightblack6) , var(--lightblack5) , var(--lightblack4) , var(--lightblack2) , var(--lightblack) , var(--lightblack) );
+	/* --navbargradient:linear-gradient( 180deg , black 10% , white ); */
+	--billboardleftedgegradient:linear-gradient( 75deg , var(--blackglass1) , transparent 85% );
+	/* --billboardleftedgegradient:linear-gradient( 75deg , black , white 85% ); */
+	--billboardbottomedgegradient:linear-gradient( 180deg , var(--lightblack6) , var(--lightblack5) , var(--lightblack4) , var(--lightblack2) , var(--lightblack) , var(--lightblack) );
 }
 
 
@@ -63,90 +72,152 @@ div#container {/* background-color:var(--trplightblack); */ min-height:100vh;}
 /* div#container div.grid {max-width:var(--pagewidth); margin:0 auto;} */
 
 
+
+
 /* Navbar */
-div#container nav.navbar {position:fixed; /* position:sticky;  */inset:0; bottom:auto; width:100%; z-index:1;}
-div#container nav.navbar {background:var(--navbargradient); color:white; transition:1.25s; padding:1.5rem var(--edgewidth);}
+div#container nav.navbar {position:fixed; /* position:sticky; */ inset:0; bottom:auto; width:100%; z-index:1;}
+div#container nav.navbar {display:flex; align-items:center; padding:1.375rem var(--edgewidth);}
+div#container nav.navbar {background:var(--navbargradient); color:var(--offwhite); transition:1.25s;}
 div#container nav.navbar.scr {background-color:var(--lightblack);}
+div#container nav.navbar a.homelink {color:inherit; text-decoration:none; margin-right:.75rem;}
+div#container nav.navbar a.homelink img.logo {background-color:red; height:3rem; width:8rem; border:0 none;}
+div#container nav.navbar a.homelink img.logo[src=''] {background-color:transparent; color:red; font-size:2.5rem; font-weight:bold; letter-spacing:-.125rem; text-transform:uppercase;}
 div#container nav.navbar ul.navlist {display:flex; flex-direction:row;}
 div#container nav.navbar ul.navlist {list-style:none; padding:0; margin:0;}
-div#container nav.navbar ul.navlist li.navitem {padding:0 1rem;}
-div#container nav.navbar ul.navlist li.navitem a.navlink {color:inherit; text-decoration:none;}
+div#container nav.navbar ul.navlist li.navitem {margin-left:2rem;}
+div#container nav.navbar ul.navlist li.navitem a.navlink {color:inherit; font-weight:bold; text-decoration:none;}
+div#container nav.navbar ul.navlist li.navitem a.navlink.current {color:white;}
 /* div#container nav.navbar ul.navlist li.navitem a.navlink:hover {} */
 
 
+
+
+/* App */
+/* div#container div.app {} */
+div#container div.app h1.apphead {color:white;}
+div#container div.app h1.apphead {width:1px; height:1px; overflow:hidden; margin:0;}
+
+
+
+
 /* General Row */
-div#container div.row {position:relative; min-height:10em; /* border-bottom:.125rem solid lime var(--lightblack); */ margin-bottom:var(--rowgap);}
+div#container div.app div.row {position:relative; min-height:10em; margin-top:var(--rowgap);}
+/* div#container div.app div.row {border-bottom:.125rem solid lime; border-color:var(--lightblack);} */
 
 
-/* Media Slider */
-/* div#container div.sliderow {display:none; opacity:.25;} */
-/* Media Slider: Head */
-div#container div.sliderow h2.rowhead {color:white; font-size:1.5rem; font-weight:bold; margin:0;}
-div#container div.sliderow h2.rowhead {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
-div#container div.sliderow h2.rowhead a.rowtitle {display:flex; align-items:center;}
-div#container div.sliderow h2.rowhead a.rowtitle {color:inherit; text-decoration:none;}
-div#container div.sliderow h2.rowhead a.rowtitle svg.icon {color:var(--teal); font-size:.5em; margin-left:.5em; margin-top:.25rem;}
-div#container div.sliderow h2.rowhead a.rowtitle svg.icon {visibility:hidden;}
-div#container div.sliderow h2.rowhead a.rowtitle span.caption {display:flex; align-items:center;}
-div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; margin-top:.25rem;}
-div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {width:0; transform:translateX(-1rem);}
-div#container div.sliderow h2.rowhead a.rowtitle span.caption::after {overflow:hidden; opacity:0; visibility:hidden; transition:.5s;}
-div#container div.sliderow h2.rowhead a.rowtitle:hover svg.icon {visibility:visible;}
-div#container div.sliderow h2.rowhead a.rowtitle:hover span.caption::after {width:5rem; transform:none;}
-div#container div.sliderow h2.rowhead a.rowtitle:hover span.caption::after {opacity:1; visibility:visible;}
-/* Media Slider: Body */
-div#container div.sliderow div.rowbody {position:relative; overflow:hidden; margin-top:.625rem;}
-div#container div.sliderow div.rowbody div.slider {overflow:auto; overflow:visible; scrollbar-width:none; z-index:10; margin:0 var(--edgewidth);}
-div#container div.sliderow div.rowbody div.slider ul.medialist {list-style:none; padding:0; margin:0;}
-div#container div.sliderow div.rowbody div.slider ul.medialist {display:flex; flex-direction:row; grid-gap:var(--cellgap); width:fit-content; /* padding:0 var(--edgewidth); */}
-/* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem {} */
-/* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {} */
-/* div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {} */
-div#container div.sliderow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {background-color:lime; display:block; object-fit:cover; height:10em; width:16em;}
-div#container div.sliderow div.rowbody div.shiftbtn {position:absolute; top:0; bottom:0; z-index:20;}
-div#container div.sliderow div.rowbody div.shiftbtn {background-color:var(--lightblack3); color:white; cursor:pointer; display:grid; place-items:center; min-width:calc( var(--edgewidth) - var(--cellgap) );}
-div#container div.sliderow div.rowbody div.shiftbtn:hover {background-color:var(--lightblack1);}
-div#container div.sliderow div.rowbody div.shiftbtn.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}
-div#container div.sliderow div.rowbody div.shiftbtn.rightbtn {right:0; border-radius:.25rem 0 0 .25rem;}
-div#container div.sliderow div.rowbody div.shiftbtn svg.icon {display:none; font-size:2.5rem; transition:.125s;}
-div#container div.sliderow div.rowbody:hover div.shiftbtn svg.icon {display:block;}
-div#container div.sliderow div.rowbody:hover div.shiftbtn:hover svg.icon {transform:scale(1.25);}
+
+/* Billboard Row */
+div#container div.app div.bbrow {/* opacity:.0125; */ padding-bottom:var(--billboardaspectratio); margin:0;}
+
+/* Billboard: Media Poster */
+/* div#container div.app div.bbrow div.billboard {} */
+div#container div.app div.bbrow div.mediaposter {background-color:black; background-size:cover;}
+div#container div.app div.bbrow div.mediaposter {position:absolute; inset:0; bottom:auto; width:100%;}
+div#container div.app div.bbrow div.mediaposter {height:0; padding-bottom:var(--billboardheroaspectratio);}
+div#container div.app div.bbrow div.mediaposter img.hero {display:none;}
+div#container div.app div.bbrow div.mediaposter img.hero {object-fit:cover; height:100%; width:100%;}
+div#container div.app div.bbrow div.mediaposter div.gradient {position:absolute;}
+div#container div.app div.bbrow div.mediaposter div.gradient.left {background:var(--billboardleftedgegradient);}
+div#container div.app div.bbrow div.mediaposter div.gradient.left {inset:0; right:auto; height:100%; width:75%;}
+div#container div.app div.bbrow div.mediaposter div.gradient.bottom {background:var(--billboardbottomedgegradient);}
+div#container div.app div.bbrow div.mediaposter div.gradient.bottom {inset:0;top:auto; height:25%; width:100%;}
+/* Billboard: Hero Rating Box */
+div#container div.app div.bbrow div.mediaposter div.ratingbox {position:absolute; bottom:33%; right:0;}
+div#container div.app div.bbrow div.mediaposter div.ratingbox div.rating {background-color:var(--ltltblackglass); color:white; font-size:.75em; font-size:1.5rem; height:2em; width:8em;}
+div#container div.app div.bbrow div.mediaposter div.ratingbox div.rating {display:flex; flex-direction:row; align-items:center; padding:0 1em; border-left:.125rem solid white;}
+/* div#container div.app div.bbrow div.mediaposter div.ratingbox div.rating span.caption {} */
+
+/* Billboard: Vignette */
+div#container div.app div.bbrow div.vignette {position:absolute; bottom:33%; left:var(--edgewidth); width:33%;}
+div#container div.app div.bbrow div.vignette {color:white; font-size:1.5rem;}
+div#container div.app div.bbrow div.vignette div.mediatitle {font-size:4rem;}
+div#container div.app div.bbrow div.vignette div.mediaepisode {margin-top:.25em;}
+div#container div.app div.bbrow div.vignette div.mediadescription {margin-top:.25em;}
+/* Billboard: Vignette Action Box */
+div#container div.app div.bbrow div.vignette div.actionbox {display:flex; flex-direction:row; align-items:center; grid-gap:.5rem; margin-top:1.375em;}
+div#container div.app div.bbrow div.vignette div.actionbox a.btn {display:flex; flex-direction:row; align-items:center;}
+div#container div.app div.bbrow div.vignette div.actionbox a.btn {color:inherit; font-weight:bold; text-decoration:none;}
+div#container div.app div.bbrow div.vignette div.actionbox a.btn {min-height:2.5em; padding:.25em 1.5em; padding:0 1.5em; border-radius:.25em; /* border:.25rem solid transparent; */}
+div#container div.app div.bbrow div.vignette div.actionbox a.btn:focus {outline:.125rem solid white;}
+div#container div.app div.bbrow div.vignette div.actionbox a.btn svg.icon {font-size:1.375em;}
+div#container div.app div.bbrow div.vignette div.actionbox a.btn span.caption {margin-left:.625em;}
+div#container div.app div.bbrow div.vignette div.actionbox a.playbtn {background-color:white; color:black;}
+div#container div.app div.bbrow div.vignette div.actionbox a.playbtn:hover {background-color:var(--whitesheet1);}
+div#container div.app div.bbrow div.vignette div.actionbox a.playbtn:active {background-color:var(--whiteglass); color:var(--blackglass);}
+div#container div.app div.bbrow div.vignette div.actionbox a.playbtn svg.icon {font-size:1.875em;}
+div#container div.app div.bbrow div.vignette div.actionbox a.playbtn span.caption {margin-left:.125rem;}
+div#container div.app div.bbrow div.vignette div.actionbox a.morebtn {background-color:var(--greysheet); color:white;}
+div#container div.app div.bbrow div.vignette div.actionbox a.morebtn:hover {background-color:var(--greyglass);}
+div#container div.app div.bbrow div.vignette div.actionbox a.morebtn:active {background-color:var(--greyglass); color:var(--whitesheet);}
 
 
-/* Billboard Hero */
-div#container div.billboard {/* opacity:.0125; */ padding-bottom:var(--billboardaspectratio); margin:0;}
-/* div#container div.billboard div.hero {background-color:black;} */
-div#container div.billboard div.hero {position:absolute; inset:0; bottom:auto; width:100%;}
-div#container div.billboard div.hero img.poster {object-fit:cover; opacity:.25; height:60vw; width:100%;}
-div#container div.billboard div.hero div.gradient {position:absolute;}
-div#container div.billboard div.hero div.gradient.left {background:var(--leftedgegradient);}
-div#container div.billboard div.hero div.gradient.left {inset:0; right:auto; height:100%; width:75%;}
-div#container div.billboard div.hero div.gradient.bottom {background:var(--bottomedgegradient);}
-div#container div.billboard div.hero div.gradient.bottom {inset:0;top:auto; height:25%; width:100%;}
-/* Billboard Hero: Vignette */
-div#container div.billboard div.hero div.vignette {position:absolute; bottom:33%; left:var(--edgewidth); width:33%;}
-div#container div.billboard div.hero div.vignette {color:white; font-size:1.5rem;}
-div#container div.billboard div.hero div.vignette div.mediatitle {font-size:5rem;}
-div#container div.billboard div.hero div.vignette div.mediaepisode {margin-top:.25em;}
-div#container div.billboard div.hero div.vignette div.mediadescription {margin-top:.25em;}
-/* Billboard Hero: Vignette Action Box */
-div#container div.billboard div.hero div.vignette div.actionbox {display:flex; flex-direction:row; align-items:center; grid-gap:.5rem; margin-top:1.375em;}
-div#container div.billboard div.hero div.vignette div.actionbox a.btn {display:flex; flex-direction:row; align-items:center;}
-div#container div.billboard div.hero div.vignette div.actionbox a.btn {color:inherit; font-weight:bold; text-decoration:none;}
-div#container div.billboard div.hero div.vignette div.actionbox a.btn {min-height:2.5em; padding:.25em 1.5em; padding:0 1.5em; border-radius:.25em; /* border:.25rem solid transparent; */}
-div#container div.billboard div.hero div.vignette div.actionbox a.btn:focus {outline:.125rem solid white;}
-div#container div.billboard div.hero div.vignette div.actionbox a.btn svg.icon {font-size:1.375em;}
-div#container div.billboard div.hero div.vignette div.actionbox a.btn span.caption {margin-left:.625em;}
-div#container div.billboard div.hero div.vignette div.actionbox a.playbtn {background-color:white; color:black;}
-div#container div.billboard div.hero div.vignette div.actionbox a.playbtn:hover {background-color:var(--whitesheet1);}
-div#container div.billboard div.hero div.vignette div.actionbox a.playbtn:active {background-color:var(--whiteglass); color:var(--blackglass);}
-div#container div.billboard div.hero div.vignette div.actionbox a.playbtn svg.icon {font-size:1.875em;}
-div#container div.billboard div.hero div.vignette div.actionbox a.playbtn span.caption {margin-left:.125rem;}
-div#container div.billboard div.hero div.vignette div.actionbox a.morebtn {background-color:var(--greysheet); color:white;}
-div#container div.billboard div.hero div.vignette div.actionbox a.morebtn:hover {background-color:var(--greyglass);}
-div#container div.billboard div.hero div.vignette div.actionbox a.morebtn:active {background-color:var(--greyglass); color:var(--whitesheet);}
-/* Billboard Hero: Rating Box */
-div#container div.billboard div.hero div.ratingbox {position:absolute; bottom:33%; right:0;}
-div#container div.billboard div.hero div.ratingbox div.rating {background-color:var(--ltltblackglass); color:white; font-size:.75em; font-size:1.5rem; height:2em; width:8em;}
-div#container div.billboard div.hero div.ratingbox div.rating {display:flex; flex-direction:row; align-items:center; padding:0 1em; border-left:.125rem solid white;}
-/* div#container div.billboard div.hero div.ratingbox div.rating span.caption {} */
+
+/* Media Slide Row */
+/* div#container div.app div.sldrow {display:none; opacity:.25;} */
+
+/* Media Slide: Head */
+div#container div.app div.sldrow h2.rowhead {color:white; font-size:1.5rem; font-weight:bold; padding:0 var(--edgewidth); margin:0;}
+div#container div.app div.sldrow h2.rowhead {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle {display:flex; align-items:center;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle {color:inherit; text-decoration:none;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle svg.icon {color:var(--teal); font-size:.5em; margin-left:.5em; margin-top:.25rem;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle svg.icon {visibility:hidden;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption {display:flex; align-items:center;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; margin-top:.25rem;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {width:0; transform:translateX(-1rem);}
+div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {overflow:hidden; opacity:0; visibility:hidden; transition:.5s;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle:hover svg.icon {visibility:visible;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle:hover span.caption::after {width:5rem; transform:none;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle:hover span.caption::after {opacity:1; visibility:visible;}
+div#container div.app div.sldrow h2.rowhead ul.dotlist {list-style:none; padding:0; margin:0;}
+div#container div.app div.sldrow h2.rowhead ul.dotlist li.dot {background-color:var(--greyglass); height:.125rem; width:2rem;}
+div#container div.app div.sldrow h2.rowhead ul.dotlist li.dot.on {background-color:var(--greysheet);}
+
+/* Media Slide: Body */
+div#container div.app div.sldrow div.rowbody {position:relative; overflow:hidden; margin-top:.625rem;}
+div#container div.app div.sldrow div.rowbody div.slider {overflow:auto; overflow:visible; scrollbar-width:none; z-index:10; margin:0 var(--edgewidth);}
+/* Media Slide: Media List */
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist {list-style:none; padding:0; margin:0;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist {display:flex; flex-direction:row; align-items:center; /* grid-gap:var(--cellgap); */}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist {width:fit-content; /* padding:0 var(--edgewidth); */}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX(0); transition:.5s;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX( calc( var(--sliderpagewidth) * -1 * var(--sliderpagedelta) ) );}
+/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {opacity:.25; border:var(--cellgap) solid; border-color:red olivedrab orange blueviolet;} */
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {width:var(--slideritemsize); padding:0 .25rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {display:block; width:100%;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {color:inherit; color:white; text-decoration:none;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {/* background-color:lawngreen; */ position:relative; padding-bottom:var(--thumbnailaspectratio);}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {position:absolute; inset:0; height:100%; width:100%; z-index:1;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {display:block; object-fit:cover; border-radius:.25rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {position:absolute; inset:0; height:100%; width:100%; z-index:-1;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background-color:var(--lighterblack); background-image:linear-gradient(transparent,black);}
+/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background:var(--blackglass1); z-index:2;} */
+/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background-color:lime; opacity:.5;} */
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {position:absolute; inset:0; top:auto; padding:10%;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {font-size:1.5rem; font-weight:bold; text-align:center;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+/* Media Slide: Media List Shifters */
+div#container div.app div.sldrow div.rowbody div.shiftbtn {position:absolute; top:0; bottom:0; z-index:20;}
+div#container div.app div.sldrow div.rowbody div.shiftbtn {background-color:var(--lightblack3); color:white; cursor:pointer; display:grid; place-items:center; min-width:var(--shiftbtnwidth);}
+div#container div.app div.sldrow div.rowbody div.shiftbtn:hover {background-color:var(--lightblack1);}
+div#container div.app div.sldrow div.rowbody div.shiftbtn.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}
+div#container div.app div.sldrow div.rowbody div.shiftbtn.rightbtn {right:0; border-radius:.25rem 0 0 .25rem;}
+div#container div.app div.sldrow div.rowbody div.shiftbtn svg.icon {display:none; font-size:2.5rem; transition:.125s;}
+div#container div.app div.sldrow div.rowbody:hover div.shiftbtn svg.icon {display:block;}
+div#container div.app div.sldrow div.rowbody:hover div.shiftbtn:hover svg.icon {transform:scale(1.25);}
+
+
+
+
+/* Footer */
+div#container footer.footer {/* background-color:var(--greysheet); */ color:grey; padding:var(--rowgap) var(--edgewidth); margin-top:var(--rowgap);}
+div#container footer.footer.xyz {height:20rem;}
+/* div#container footer.footer div.links {} */
+/* div#container footer.footer div.sociallinks {} */
+/* div#container footer.footer div.memberlinks {} */
+div#container footer.footer div.links ul.linklist {list-style:none; padding:0; margin:0;}
+div#container footer.footer div.sociallinks ul.linklist {display:flex; flex-direction:row; align-items:center;}
+div#container footer.footer div.memberlinks ul.linklist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:1rem;}
+/* div#container footer.footer div.links ul.linklist li.linkitem {} */
+div#container footer.footer div.links ul.linklist li.linkitem a.link {color:inherit; text-decoration:none;}
