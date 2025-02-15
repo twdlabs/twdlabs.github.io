@@ -55,58 +55,6 @@ activateDynamicNavbar();
 // Set random media item as featured media. 
 featureRandomMedia();
 
-// Go thru each slide row shifter button. 
-for( let btn of sliderows['leftshifterbtns'] ) {
-	btn.addEventListener('click', decrSliderPageDelta);
-}
-// Go thru each slide row shifter button. 
-for( let btn of sliderows['rightshifterbtns'] ) {
-	btn.addEventListener('click', incrSliderPageDelta);
-}
-
-// Decrement page delta for given slide row. 
-function decrSliderPageDelta(event) {
-
-	// Get selected shifter button. 
-	let shiftbtn = event.currentTarget;
-	// console.log('Selected shift btn:',shiftbtn);
-	// Get selected slide row. 
-	let selectedsliderow = shiftbtn.parentElement.parentElement;
-	// console.log('Selected slide row:',selectedsliderow);
-
-	// Get current page delta. 
-	let rs = getComputedStyle(selectedsliderow);
-	let currentpagedelta = rs.getPropertyValue('--sliderpagedelta') * 1;
-	console.log('Old page delta:',currentpagedelta);
-	
-	// TODO: Update attribute on selected slide row. 
-	currentpagedelta = currentpagedelta - 1;
-	selectedsliderow.style.setProperty('--sliderpagedelta',currentpagedelta);
-	console.log('New page delta:',currentpagedelta);
-}
-
-
-// Increment page delta for given slide row. 
-function incrSliderPageDelta(event) {
-
-	// Get selected shifter button. 
-	let shiftbtn = event.currentTarget;
-	// console.log('Selected shift btn:',shiftbtn);
-	// Get selected slide row. 
-	let selectedsliderow = shiftbtn.parentElement.parentElement;
-	// console.log('Selected slide row:',selectedsliderow);
-
-	// Get current page delta. 
-	let rs = getComputedStyle(selectedsliderow);
-	let currentpagedelta = rs.getPropertyValue('--sliderpagedelta') * 1;
-	console.log('Old page delta:',currentpagedelta);
-	
-	// TODO: Update attribute on selected slide row. 
-	currentpagedelta = currentpagedelta + 1;
-	selectedsliderow.style.setProperty('--sliderpagedelta',currentpagedelta);
-	console.log('New page delta:',currentpagedelta);
-}
-
 
 /*****/
 
@@ -182,8 +130,11 @@ function loadSliderMedia() {
 		slidermediadestination.innerHTML = sliderlayout;
 	}
 
-	// Activate slider links. 
-	activateSliderLinks();
+	// Activate slider media links. 
+	activateSliderMediaLinks();
+
+	// Activate slider shifters. 
+	activateSliderShifters();
 
 	/****/
 
@@ -268,8 +219,8 @@ function loadSliderMedia() {
 		<!-- /mediaitem -->`;
 	}
 
-	// Activate slider links. 
-	function activateSliderLinks() {
+	// Activate slider media links. 
+	function activateSliderMediaLinks() {
 	
 		// Get all media links in slider rows. 
 		let slidermedialinks = document.querySelectorAll('div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink');
@@ -279,6 +230,58 @@ function loadSliderMedia() {
 	
 			// Activate media link. 
 			medialink.addEventListener('click',openOverlay);
+		}
+	}
+
+	// Activate slider shifters. 
+	function activateSliderShifters() {
+
+		// Go thru each slide row shifter button. 
+		for( let btn of sliderows['leftshifterbtns'] ) {
+			btn.addEventListener('click', decrSliderPageDelta);
+		}
+		// Go thru each slide row shifter button. 
+		for( let btn of sliderows['rightshifterbtns'] ) {
+			btn.addEventListener('click', incrSliderPageDelta);
+		}
+
+		// Decrement page delta for given slide row. 
+		function decrSliderPageDelta(event) {
+			console.log('Left...',event);
+		
+			// Update attribute on selected slide row. 
+			changeSliderPageDelta(-1);
+		}
+		
+		// Increment page delta for given slide row. 
+		function incrSliderPageDelta(event) {
+			console.log('Right...',event);
+		
+			// Update attribute on selected slide row. 
+			changeSliderPageDelta(+1);
+		}
+
+		// Change page delta for given slide row. 
+		function changeSliderPageDelta(delta) {
+			console.log('Changing...',event);
+		
+			// Get selected shifter button. 
+			let shiftbtn = event.currentTarget;
+			// console.log('Selected shift btn:',shiftbtn);
+
+			// Get selected slide row. 
+			let selectedsliderow = shiftbtn.parentElement.parentElement;
+			// console.log('Selected slide row:',selectedsliderow);
+		
+			// Get current page delta. 
+			let rs = getComputedStyle(selectedsliderow);
+			let currentpagedelta = rs.getPropertyValue('--sliderpagedelta') * 1;
+			console.log('Old page delta:',currentpagedelta);
+		
+			// Update attribute on selected slide row. 
+			currentpagedelta += delta;
+			selectedsliderow.style.setProperty('--sliderpagedelta',currentpagedelta);
+			console.log('New page delta:',currentpagedelta);
 		}
 	}
 }
