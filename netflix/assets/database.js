@@ -5,6 +5,47 @@
 // const mediasourcelist = galleryMediaData;
 const mediasourcelist = blogDataList;
 
+// Define contents of slide rows. 
+const sliderowcontents = [
+	{
+		rowtitle:'Genre Category A',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category B',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category C',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category D',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category E',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category F',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category G',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category H',
+		mediaindexes:[],
+	},
+	{
+		rowtitle:'Genre Category I',
+		mediaindexes:[],
+	},
+];
+
+
 // Define index of selected show episode. 
 let selectedepisodeindex = 0;
 

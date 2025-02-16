@@ -25,10 +25,9 @@
 	--thumbnailaspectratio:56.25%;
 	--shiftbtnwidth:var(--edgewidth);
 	/* --shiftbtnwidth:calc( var(--edgewidth) - var(--cellgap) ); */
-	--sliderpagewidth:calc( 100vw - 2*var(--shiftbtnwidth) );
-	--slideritemsperpage:5;
 	--sliderpagedelta:0;
-	--slideritemsize:calc( var(--sliderpagewidth) / var(--slideritemsperpage) );
+	--slideritemsperpage:5;
+	--sliderpagewidth:calc( 100vw - 2*var(--shiftbtnwidth) );
 
 	/* Theme Colors */
 	--teal:#54b9c5;
@@ -59,9 +58,9 @@
 	/* Black Color */
 	--blkfull:#141414;
 	/* Black Glass */
-	--blk5:#141414b3;				/* shift btn */
+	--blk5:#141414b3;				/* shift btn (hover) */
 	--blk4:#14141494;				/* billboard bottom-edge gradient */
-	--blk3:#14141480;				/* shift btn */
+	--blk3:#14141480;				/* shift btn (default) */
 	--blk2:#14141459;				/* billboard bottom-edge gradient */
 	--blk1:#14141426;				/* billboard bottom-edge gradient */
 	--blk0:#14141400;				/* billboard bottom-edge gradient */
@@ -102,17 +101,17 @@ div#container {min-height:100vh;}
 
 /* Navbar */
 div#container nav.navbar {position:fixed; /* position:sticky; */ inset:0; bottom:auto; width:100%; z-index:1;}
-div#container nav.navbar {display:flex; align-items:center; padding:1.375rem var(--edgewidth);}
+div#container nav.navbar {display:flex; align-items:center; padding:1rem var(--edgewidth);}
 div#container nav.navbar {background:var(--navbargradient); color:var(--navbaroffwhite); transition:1.25s;}
 div#container nav.navbar.scr {background-color:var(--blkfull);}
 div#container nav.navbar a.homelink {color:inherit; text-decoration:none; margin-right:.75rem;}
-div#container nav.navbar a.homelink img.logo {background-color:red; height:3rem; width:8rem; border:0 none;}
+div#container nav.navbar a.homelink img.logo {background-color:red; height:2.75rem; width:8rem; border:0 none;}
 div#container nav.navbar a.homelink img.logo[src='xyz'],
-div#container nav.navbar a.homelink img.logo[src=''] {background-color:transparent; color:red; font-size:2.5rem; font-weight:bold; letter-spacing:-.125rem; text-transform:uppercase;}
+div#container nav.navbar a.homelink img.logo[src=''] {background-color:transparent; color:red; font-size:2rem; font-weight:bold; letter-spacing:-.125rem; text-transform:uppercase;}
 div#container nav.navbar ul.navlist {display:flex; flex-direction:row;}
 div#container nav.navbar ul.navlist {list-style:none; padding:0; margin:0;}
-div#container nav.navbar ul.navlist li.navitem {margin-left:2rem;}
-div#container nav.navbar ul.navlist li.navitem a.navlink {color:inherit; font-weight:bold; text-decoration:none;}
+div#container nav.navbar ul.navlist li.navitem {margin-left:1.5rem;}
+div#container nav.navbar ul.navlist li.navitem a.navlink {color:inherit; font-size:.875rem; font-weight:bold; text-decoration:none;}
 div#container nav.navbar ul.navlist li.navitem a.navlink.current {color:white;}
 /* div#container nav.navbar ul.navlist li.navitem a.navlink:hover {} */
 
@@ -153,8 +152,8 @@ div#container div.app div.bbrow div.billboard div.mediaposter div.gradient.botto
 /* Billboard: Vignette Poster */
 /* div#container div.app div.bbrow div.billboard div.poster {} */
 div#container div.app div.bbrow div.billboard div.poster div.vignette {position:absolute; bottom:var(--billboardlevel); left:var(--edgewidth); width:33%;}
-div#container div.app div.bbrow div.billboard div.poster div.vignette {color:white; font-size:1.5rem;}
-div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:7rem; white-space:nowrap;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette {color:white; font-size:1.375rem;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:6rem; font-weight:bold; white-space:nowrap;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediaepisode {margin-top:.25em;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediadescription {margin-top:.25em;}
 /* Billboard: Vignette Action Box */
@@ -212,15 +211,18 @@ div#container div.app div.sldrow div.rowbody div.slider {overflow:auto; overflow
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {list-style:none; padding:0; margin:0;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {display:flex; flex-direction:row; align-items:center; /* grid-gap:var(--cellgap); */}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {width:fit-content; /* padding:0 var(--edgewidth); */}
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX(0); transition:.5s;}
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX( calc( var(--sliderpagewidth) * -1 * var(--sliderpagedelta) ) );}
+/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX(0);} */
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX( calc( -1 * var(--sliderpagewidth) * var(--sliderpagedelta) ) );}
+div#container div.app div.sldrow div.rowbody div.slider.smooth ul.medialist {transition:.5s;}
 /* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {opacity:.25; border:var(--cellgap) solid; border-color:red olivedrab orange blueviolet;} */
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {width:var(--slideritemsize); transition:.125s; padding:0 .25rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {--slideritemsize:calc( var(--sliderpagewidth) / var(--slideritemsperpage) );}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {width:var(--slideritemsize); transition:.125s; padding:0 .125rem;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {display:block; width:100%;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {color:inherit; color:white; text-decoration:none;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {/* background-color:lawngreen; */ position:relative; padding-bottom:var(--thumbnailaspectratio);}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {overflow:hidden; border-radius:.375rem;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {position:absolute; inset:0; height:100%; width:100%; z-index:1;}
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {display:block; object-fit:cover; border-radius:.25rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {display:block; object-fit:cover;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {position:absolute; inset:0; height:100%; width:100%; z-index:-1;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background-color:var(--ltblack); background-image:linear-gradient(transparent,black);}
 /* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background:var(--drkblackglass); z-index:2;} */
@@ -229,14 +231,14 @@ div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaite
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 
 /* Media Slide: Media List Shifters */
-div#container div.app div.sldrow div.rowbody div.shiftbtn {position:absolute; top:0; bottom:0; z-index:20;}
-div#container div.app div.sldrow div.rowbody div.shiftbtn {background-color:var(--blk3); color:white; cursor:pointer; display:grid; place-items:center; min-width:var(--shiftbtnwidth);}
-div#container div.app div.sldrow div.rowbody div.shiftbtn:hover {background-color:var(--blk5);}
-div#container div.app div.sldrow div.rowbody div.shiftbtn.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}
-div#container div.app div.sldrow div.rowbody div.shiftbtn.rightbtn {right:0; border-radius:.25rem 0 0 .25rem;}
-div#container div.app div.sldrow div.rowbody div.shiftbtn svg.icon {display:none; font-size:2.5rem; transition:.125s;}
-div#container div.app div.sldrow div.rowbody:hover div.shiftbtn svg.icon {display:block;}
-div#container div.app div.sldrow div.rowbody:hover div.shiftbtn:hover svg.icon {transform:scale(1.25);}
+div#container div.app div.sldrow div.rowbody div.shifter {position:absolute; top:0; bottom:0; z-index:20;}
+div#container div.app div.sldrow div.rowbody div.shifter {background-color:var(--blk3); color:white; cursor:pointer; display:grid; place-items:center; min-width:var(--shiftbtnwidth);}
+div#container div.app div.sldrow div.rowbody div.shifter:hover {background-color:var(--blk5);}
+div#container div.app div.sldrow div.rowbody div.shifter.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}
+div#container div.app div.sldrow div.rowbody div.shifter.rightbtn {right:0; border-radius:.25rem 0 0 .25rem;}
+div#container div.app div.sldrow div.rowbody div.shifter svg.icon {display:none; font-size:2.5rem; transition:.125s;}
+div#container div.app div.sldrow div.rowbody:hover div.shifter svg.icon {display:block;}
+div#container div.app div.sldrow div.rowbody:hover div.shifter:hover svg.icon {transform:scale(1.25);}
 
 
 
