@@ -38,7 +38,7 @@ div#container main.main div.box.ready {border-style:dashed;}
 div#container main.main div.box img.item {object-fit:cover; object-position:center;}
 div#container main.main div.box img.item {cursor:pointer; height:var(--itemsize); width:var(--itemsize); border-radius:.75rem;}
 div#container main.main div.box img.item.up {opacity:.125;}
-/* div#container main.main div.box div.item svg.icon {display:none;} */
+div#container main.main div.box div.item svg.icon {display:none;}
 div#container main.main div.box div.item svg.icon {cursor:pointer; font-size:var(--itemsize);}
 
 

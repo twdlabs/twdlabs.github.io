@@ -98,6 +98,9 @@ class DragDropMatrix {
 		function receiveItem(event) {
 			console.log('Receiving item...',event);
 
+			// Allow for no-frills drop event (no file opening, no link navigation). 
+			event.preventDefault();
+
 			// Get selected drop-box. 
 			let selectedbox = event.currentTarget;
 
@@ -120,7 +123,7 @@ class DragDropMatrix {
 		function prepDropbox(event) {
 			// console.log('Readying drop-box to receive...',event);
 
-			// Prevent default drag/drop behavior (to allow item movement). 
+			// Allow for drop event (dragged item into new drop-box). 
 			event.preventDefault();
 
 			// Get selected drop-box. 
