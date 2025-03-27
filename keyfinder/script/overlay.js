@@ -30,7 +30,7 @@ function checkForShortcutKey(event) {
 		// Check for left arrow. 
 		let isLeftArrow = (event.keyCode==37 || event.key=='ArrowLeft');
 		if(isLeftArrow) showPrevScale();
-		
+
 		// Check for right arrow. 
 		let isRightArrow = (event.keyCode==39 || event.key=='ArrowRight');
 		if(isRightArrow) showNextScale();
@@ -63,7 +63,7 @@ function openScaleDisplay(resultIndex) {
 
 	// Freeze background page scrolling. 
 	pageScrollFreeze(true);
-	
+
 	// Activate keys buttons. 
 	activateKeyBtns();
 
@@ -74,15 +74,15 @@ function openScaleDisplay(resultIndex) {
 
 	// Create display: piano keys, scale listing. 
 	function createScaleDisplay() {
-	
+
 		// Get id for selected scale. 
 		let scaleid = selectedscale.scaleid;
 		// console.log('Scale id:', scaleid );
-	
+
 		// Get name for selected scale. 
 		let scalename = selectedscale.scalename;
 		// console.log('Scale name:', scalename );
-		
+
 		// Get naming key for selected scale. 
 		let namingkey = selectedscale.namingkey;
 		// console.log('Naming key:', namingkey );
@@ -90,7 +90,7 @@ function openScaleDisplay(resultIndex) {
 		// Get list of key indexes for selected scale. 
 		let keyindexlist = selectedscale.keyindexlist;
 		console.log('Key index list:', keyindexlist );
-		
+
 		// Get formatted list of keys for given scale. 
 		let scalekeyslist = formatKeyList( keyindexlist, namingkey );
 		// console.log('Scale keys list:', scalekeyslist );
@@ -108,10 +108,10 @@ function openScaleDisplay(resultIndex) {
 		<!-- scalekeys -->
 		<span class="scalekeys">${ scalekeyslist.join(' ') }</span>
 		<!-- /scalekeys -->
-	
+
 		<!-- pianokeyboard -->
 		<div class="pianokeyboard">
-	
+
 			<!-- octavelist -->
 			<ul class="octavelist">
 				${ createPianoOctave(0) }
@@ -125,13 +125,13 @@ function openScaleDisplay(resultIndex) {
 				${ createPianoOctave(8) }
 			</ul>
 			<!-- /octavelist -->
-	
+
 		</div>
 		<!-- /pianokeyboard -->
-	
+
 		<!-- scalecopier -->
 		<div class="scalecopier">
-	
+
 			<!-- copybtn -->
 			<div class="copybtn">
 
@@ -141,7 +141,7 @@ function openScaleDisplay(resultIndex) {
 					<path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
 				</svg>
 				<!-- /icon -->
-	
+
 				<!-- caption -->
 				<span class="caption">Copy</span>
 				<!-- /caption -->
@@ -149,15 +149,15 @@ function openScaleDisplay(resultIndex) {
 				<!-- tooltip -->
 				<span class="tooltip">Copy to clipboard</span>
 				<!-- /tooltip -->
-	
+
 			</div>
 			<!-- /copybtn -->
-	
+
 		</div>
 		<!-- /scalecopier -->`;
 
 		/***/
-	
+
 		// Create layout for piano octave. 
 		function createPianoOctave(octaveindex) {
 
@@ -210,7 +210,7 @@ function openScaleDisplay(resultIndex) {
 
 				// Get data for current key. 
 				let keydata = keyList[keyindex];
-				
+
 				// Check if key is included in current scale. 
 				let keyInScale = keyindexlist.includes(1*keyindex);
 				let keyOnTonic = keyindexlist[0]==(1*keyindex);
@@ -224,12 +224,12 @@ function openScaleDisplay(resultIndex) {
 					<!-- caption -->
 					<span class="caption">${keydata.keyid}${octaveindex}</span>
 					<!-- /caption -->
-					
+
 				</li>
 				<!-- /key -->`;
 			}
 		}
-	
+
 		// Format keys by index (converting numbers to letters). 
 		function formatKeyList( keyindexlist, namingkey = 'keyid' ) {
 
@@ -243,7 +243,7 @@ function openScaleDisplay(resultIndex) {
 			<!-- /key -->` );
 		}
 	}
-	
+
 	// Activate piano keyboard buttons. 
 	function activateKeyBtns() {
 		// console.log('activateKeyBtns');
@@ -267,13 +267,13 @@ function openScaleDisplay(resultIndex) {
 
 		// Show selected scale list key. 
 		function showSelectedKey(event) {
-			
+
 			// Get selected key. 
 			selectedKey = event.currentTarget;
 
 			// Get key index. 
 			keyindex = 1 * selectedKey.getAttribute('data-keyindex');
-			
+
 			// Highlight selected key on scale key list. 
 			for(let scalekey of allScaleKeys) {
 
@@ -291,10 +291,10 @@ function openScaleDisplay(resultIndex) {
 
 		// Reset scale list keys. 
 		function resetScaleKeys() {
-			
+
 			// Un-highlight all keys on scale key list. 
 			for(let scalekey of allScaleKeys) {
-				
+
 				// Un-highlight key. 
 				scalekey.classList.remove('on');
 			}
@@ -331,7 +331,7 @@ function openScaleDisplay(resultIndex) {
 
 		// Reset tooltip. 
 		function resetTooltip() {
-			
+
 			// Reset contents of tooltip. 
 			tooltip.innerHTML = 'Copy to clipboard';
 		}
@@ -341,10 +341,10 @@ function openScaleDisplay(resultIndex) {
 
 // Update scale display. 
 function updateScaleDisplay(delta) {
-	
+
 	// Get current attributes from window: scale index, result index. 
 	let resultIndex = 1 * overlayDisplay.getAttribute('data-resultindex');
-	
+
 	// Increment or decrement result index. 
 	resultIndex += (1*delta);
 
@@ -354,13 +354,13 @@ function updateScaleDisplay(delta) {
 
 	// Check for valid result index. 
 	let validResult = (resultIndex>=0) && (resultIndex<matchingScaleResults.length);
-	
+
 	// Get and save result if valid result index. 
 	if(validResult) {
 
 		// Use result index to update scale index. 
 		// scaleIndex = (1 * matchingScaleResults[resultIndex]);
-	
+
 		// Use new index to refresh scale result on scale display. 
 		openScaleDisplay(resultIndex);
 
@@ -371,7 +371,7 @@ function updateScaleDisplay(delta) {
 	else {
 		// Undo improper  previous change. 
 		resultIndex -= delta;
-		
+
 		// console.warn('Scale display not updated: Invalid result index disregarded...');
 	}
 }
@@ -379,7 +379,7 @@ function updateScaleDisplay(delta) {
 // Show previous scale on display. 
 function showPrevScale() {
 	// console.log('Going to previous scale...');
-	
+
 	// Update scale displayed on overlay popup. 
 	updateScaleDisplay(-1);
 }
@@ -387,7 +387,7 @@ function showPrevScale() {
 // Show next scale on display. 
 function showNextScale() {
 	// console.log('Going to next scale...');
-	
+
 	// Update scale displayed on overlay popup. 
 	updateScaleDisplay(+1);
 }

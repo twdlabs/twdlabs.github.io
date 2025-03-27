@@ -73,7 +73,7 @@ div#container.dark nav.navbar div.bin ul.navlist li.navitem div.themebtn svg.ico
 
 /* Main Window */
 div#container main.main {background-color:var(--emptycolor); color:var(--fillcolor); min-width:12rem; /* width:100%; */ max-width:40rem; padding:.75rem .875rem; border-radius:var(--cornersize); margin-top:4rem; box-shadow:var(--boxshadow);}
-div#container main.main div.item {display:flex; flex-direction:row; justify-content:center; align-items:center; padding-top:.75rem;}
+div#container main.main div.item {display:flex; flex-direction:row; justify-content:center; align-items:center; margin-top:.75rem;}
 div#container main.main div.item.btns {grid-gap:.5rem;}
 div#container main.main div.item div.field {display:flex; flex-direction:column; align-items:stretch; padding:0 .125rem;}
 div#container main.main div.item div.field input.key {background-color:var(--emptycolor3); color:var(--fillcolor); font-size:1.125rem; text-align:center;}
@@ -82,13 +82,14 @@ div#container main.main div.item div.field label.label {display:none; cursor:poi
 div#container main.main div.item div.field div.quickbtn {background-color:var(--fillcolor3); text-align:center; cursor:pointer; user-select:none; padding:.125rem; border-radius:.25rem; border:.125rem solid var(--fillcolor2); margin-top:.25rem;}
 div#container main.main div.item div.field div.quickbtn:hover {background-color:var(--fillcolor2);;}
 /* div#container main.main div.item div.field div.quickbtn span.caption {display:flex; justify-content:center; align-items:flex-start;} */
-div#container main.main div.item div.field button.btn {color:var(--fillcolor); font-size:1rem; font-weight:500; letter-spacing:1px; cursor:pointer; transition:.125s;}
-div#container main.main div.item div.field button.btn {background-color:var(--fillcolor2); width:100%; min-width:6rem; padding:.5rem 1.5rem; border: 1px solid var(--fillcolor); border-radius:.25rem;}
+div#container main.main div.item div.field button.btn {color:var(--fillcolor); font-size:.875rem; font-weight:500; letter-spacing:1px; cursor:pointer; transition:.125s;}
+div#container main.main div.item div.field button.btn {background-color:var(--fillcolor2); width:100%; min-width:6rem; padding:.375rem 1.5rem; border: 1px solid var(--fillcolor); border-radius:.25rem;}
 div#container main.main div.item div.field button.btn.go {background-color:var(--darkblue); color:white;}
 /* div#container main.main div.item div.field button.btn.clear {} */
 /* div#container main.main div.item div.field button.btn:hover {transform:scale(1.03);} */
 div#container main.main div.item div.field button.btn.go:hover {background-color:var(--darkblue2);}
 /* div#container main.main div.item div.field button.btn.go:active {background-color:var(--darkblue2);} */
+div#container main.main div.terminal {display:flex; flex-direction:column; align-items:center;}
 
 /* Main Window: Output Box */
 div#container main.main div.item div.output {width:100%;}
@@ -98,7 +99,7 @@ div#container main.main div.item div.output div.set div.scale {background-color:
 div#container main.main div.item div.output div.set div.scale:hover {background-color:var(--emptycolor3); transition:.25s;}
 div#container main.main div.item div.output div.set div.scale span.scalename {font-weight:bold;}
 div#container main.main div.item div.output div.set div.scale span.scalekeys {font-size:.75em; font-style:italic;}
-div#container main.main div.item p.textcopy {text-align:center; margin:0;}
+div#container main.main div.terminal p.textcopy {text-align:center; margin:0;}
 
 
 

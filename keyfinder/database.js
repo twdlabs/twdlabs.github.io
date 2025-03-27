@@ -3,13 +3,13 @@
 
 // Define semitone intervals for key types. 
 const keyTypes = {
-	
+
 	// Major Key
 	major:{
 		indexes:[ 0,2,4,5, 7,9,11,12 ],
 		// intervals:[ 0,2,2,1, 2,2,2,1 ],
 	},
-	
+
 	// Natural Minor Key
 	natMinor:{
 		indexes:[ 0,2,3,5, 7,8,10,12 ],
@@ -105,7 +105,7 @@ const keyList = [
 		keyflatname:'Cb',
 		keysharpname:'B',
 	},
-	
+
 ];
 
 
@@ -174,7 +174,7 @@ const cofList = [
 		// Key: DEm
 		minorkeytonicindex:3,
 	},
-	
+
 	{
 		namingkey:'keyflatname',
 		// Key: CD
@@ -218,13 +218,13 @@ const cofList = [
 		// Key: Am
 		minorkeytonicindex:9,
 	},
-	
+
 ];
 
 
 // Initialize list of all key scales. 
 const scaleList = [
-	
+
 
 	// Major key scales
 
@@ -319,7 +319,7 @@ const scaleList = [
 
 
 	// Natural minor key scales
-	
+
 
 	// Harmonic minor key scales
 
@@ -356,7 +356,7 @@ function listAllKeyScales() {
 	let majorTonicIndexList = getTonicKeyIndexes( cofList, 'majorkeytonicindex' );
 	// Get minor key indexes from 'circle of fifths' list. 
 	let minorTonicIndexList = getTonicKeyIndexes( cofList, 'minorkeytonicindex' );
-	
+
 	// console.log('Scale list:',scaleList);
 
 	// Add major scales. 
@@ -369,7 +369,7 @@ function listAllKeyScales() {
 	addScales(minorTonicIndexList,'H-Minor','hMinor','hm');
 
 	// console.log('Scale list:',scaleList);
-	
+
 	/****/
 
 	// Add scales. 
@@ -377,15 +377,15 @@ function listAllKeyScales() {
 
 		// Go thru all keys (in 'circle of fifths' order). 
 		for(let i in tonicIndexList) {
-	
+
 			// Get index of tonic key. 
 			let tonicKeyIndex = tonicIndexList[i];
 			let namingkey = namingKeys[i];
-	
+
 			// Get key id for tonic key. 
 			let tonicKey = keyList[tonicKeyIndex];
 			let tonicKeyName = formatKeyName(tonicKey,namingkey);
-	
+
 			// Create new scale. 
 			let newScale = {
 				scaleid: `${tonicKeyName}${keyTypeId}`,

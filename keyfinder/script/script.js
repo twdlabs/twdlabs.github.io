@@ -72,14 +72,14 @@ function handleEvents() {
 
 // Clear form. 
 function clearForm() {
-	
+
 	// Clear input. 
 	clearInput();
 	// Clear output. 
 	clearOutput();
-	
+
 	/****/
-	
+
 	// Clear input. 
 	function clearInput() {
 		keyInputBox0.value = '';
@@ -90,7 +90,7 @@ function clearForm() {
 		keyInputBox5.value = '';
 		keyInputBox6.value = '';
 	}
-	
+
 	// Clear output. 
 	function clearOutput() {
 		// 
@@ -115,7 +115,7 @@ function showOutput() {
 	// Get matching key scales. 
 	getMatchingScales(inputKeys);
 	if(debug) console.log('Matching scale indexes:',matchingScaleResults);
-	
+
 	// Show matching key scales. 
 	showMatchingScales();
 	if(debug) console.log('Matching scale indexes:',matchingScaleResults);
@@ -126,11 +126,11 @@ function showOutput() {
 	// Eb -> DE -> 3
 	function saveInputKeys() {
 		let debug = false;
-		
+
 		// Get list of key ids for all keys. 
 		let allKeyIds = keyList.map( item => item.keyid );
 		if(debug) console.log('All key ids:', allKeyIds);
-	
+
 		// 
 		// inputKeys[0] = keyInputBox0.value;
 		// inputKeys[1] = keyInputBox1.value;
@@ -168,7 +168,7 @@ function showOutput() {
 		if(i[5]>-1) inputKeyIndexes.push(i[5]);
 		if(i[6]>-1) inputKeyIndexes.push(i[6]);
 		if(debug) console.log('User input indexes:',inputKeyIndexes);
-		
+
 		/****/
 
 		// Convert input key names to raw key ids. 
@@ -188,10 +188,10 @@ function showOutput() {
 			return '';
 		}
 	}
-	
+
 	// Process: Get key scales that match user input (scale contains all input keys). 
 	function getMatchingScales(keyInput) {
-	
+
 		// Go thru each key scale. 
 		for(let i in scaleList) {
 
@@ -205,25 +205,25 @@ function showOutput() {
 			// Save index of key scale if matches input. 
 			if(scaleMatchesInput) matchingScaleResults.push(i);
 		}
-	
+
 		/****/
-	
+
 		// Check if key scale matches input keys (scale contains all input keys). 
 		function checkForMatchingScale(keyInput,keyScale) {
-		
+
 			// Go thru each input key. 
 			for(let keyIndex of inputKeyIndexes) {
-		
+
 				// Exclude if input key is missing from given list. 
 				let missingInputKey = !(keyScale.keyindexlist).includes(keyIndex);
 				if( missingInputKey ) return false;
 			}
-		
+
 			// Return true if no input keys missing from given list. 
 			return true;
 		}
 	}
-	
+
 	// Show key scales that match user input. 
 	function showMatchingScales() {
 		let debug = false;
@@ -251,7 +251,7 @@ function showOutput() {
 			// Get scale name. 
 			let scalename = scaleList[scaleIndex].scalename;
 			if(debug) console.log(`\tScale name: ${scalename}`);
-			
+
 			// Get scale naming indicator. 
 			let namingkey = scaleList[scaleIndex].namingkey || ( /* 'keyid' || 'keyflatname' || */ 'keysharpname');
 			if(debug) console.log(`\tScale naming key: ${namingkey}`);
@@ -276,7 +276,7 @@ function showOutput() {
 				<!-- scalekeys -->
 				<span class="scalekeys">${ scalekeyslist.join(' ') }</span>
 				<!-- /scalekeys -->
-				
+
 			</div>
 			<!-- /scale -->`;
 
@@ -288,7 +288,7 @@ function showOutput() {
 		result += `
 		</div>
 		<!-- /set -->`;
-		
+
 		// }
 
 		// Clear previous result. 
@@ -315,7 +315,7 @@ function showOutput() {
 
 			// Get all scale buttons. 
 			let allScaleBtns = document.querySelectorAll('div#container main.main div.item div.output div.scale');
-			
+
 			// Go thru all scale buttons. 
 			for(let scalebtn of allScaleBtns) {
 				// Show selected scale when button clicked. 
