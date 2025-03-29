@@ -48,11 +48,11 @@ function loadSiteMaps() {
 
 		// Create matrix layout: categories by collection. 
 		collectioncategories: createLinkMatrix( collectionMatrixData, getProjectCategoryById,getProjectCollectionById, './category/?cid=','groupname' ),
-	
+
 		// Create matrix layout: projects by category (arbitrarily arranged). 
 		// categoryprojects: createLinkMatrix( categoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' ),
 		categoryprojects: createLinkMatrix( categoryMatrixData, getProjectById,getProjectCategoryById, './library/project/?pid=','projectname' ),
-	
+
 		// Create matrix layout: projects by category (by collection). 
 		collectioncategoryprojects: createLinkMatrix( collectionCategoryMatrixData, getProjectById,getProjectCategoryById, '../','projectname' ),
 	};
@@ -94,7 +94,7 @@ function loadSiteMaps() {
 
 		// Initialize result. 
 		let result = '';
-	
+
 		// Go thru each set of project groups. 
 		for(let i in matrixData) {
 
@@ -104,11 +104,11 @@ function loadSiteMaps() {
 			// Get list of ids for project groups. 
 			let projectgroupidslist = set.setlist;
 			// console.log('Project group ids:',projectgroupidslist);
-	
+
 			// Get list of project groups. 
 			let projectgroupslist = projectgroupidslist.map( getMetaById );
 			// console.log('Project group set:',projectgroupslist);
-		
+
 			// Add list set to result layout. 
 			result += `
 			<!-- listset -->
@@ -126,23 +126,23 @@ function loadSiteMaps() {
 		// Create layout for set of project lists. 
 		function createSet(projectgroupslist) {
 			// console.log('Project group set:',projectgroupslist);
-	
+
 			// Initialize result. 
 			let result = '';
-	
+
 			// Go thru each project group in set. 
 			for(let projectgroup of projectgroupslist) {
-	
+
 				// // Proceed if project group exists. 
 				// if(projectgroup) {
 				// }
-	
+
 				// Add header for current project group. 
 				result += `
 				<!-- head -->
 				<h3 class="head">${ projectgroup ? projectgroup.groupname : '' }</h3>
 				<!-- /head -->`;
-	
+
 				// Add list for current project group. 
 				result += `
 				<!-- navlist -->
@@ -151,44 +151,44 @@ function loadSiteMaps() {
 				</ul>
 				<!-- /navlist -->`;
 			}
-			
+
 			// Return result. 
 			return result;
-	
+
 			/***/
-	
+
 			// Create layout for list of items. 
 			function createList(itemidlist) {
 				// console.log('Project group id list:',itemidlist);
-	
+
 				// Initialize layout for project list. 
 				let projectgrouplayout = '';
-	
+
 				// Accumulate layout for project list. 
 				for(let itemid of itemidlist) {
-	
+
 					// Get data item for current item (i.e. group, project). 
 					let item = getItemById(itemid);
 					// if(!item) console.debug('\tItem absent from database:',itemid);
-	
+
 					// Get url for current item (i.e. group, project). 
 					let url = `${urlprefix}${itemid}`;
 					// console.log('\turl:',url);
-		
+
 					// Get caption for current item (i.e. group, project). 
 					let caption = item ? item[namekey] : `⋅ ${itemid} ⋅`;
 					// let caption = item ? item['groupname'] : itemid;
 					// let caption = item ? item['projectname'] : itemid;
 					// console.log('\tcaption:',caption);
-		
+
 					// Get icon tag for current item (i.e. group, project). 
 					let icontag = item ? item['icontag'] : '';
 					// console.log('\ticontag:',icontag);
-	
+
 					// Compile navigation link for current item. 
 					projectgrouplayout += createNavLink(url,caption,icontag,true,true);
 				}
-	
+
 				// Return layout for project list. 
 				return projectgrouplayout;
 			}

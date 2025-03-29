@@ -5,7 +5,7 @@
 const authorData = {
 	twd:{
 		authorname:'Titus',
-		authorname:'TWD Labs',
+		authorname:'TWDLabs',
 		website:'https://twdlabs.xyz',
 		// xyz:'xyz',
 	},

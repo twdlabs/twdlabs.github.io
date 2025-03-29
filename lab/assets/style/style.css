@@ -50,7 +50,7 @@
 	--boxshadow:0 0 .25rem 0 #0003;
 	--boxshadowx:rgba(0,0,0,0.25) 0 0.25rem .75rem 0;
 	--boxshadowxx:rgba(0,0,0,0.25) 0 0.75rem .75rem 0;
-	
+
 	/* --bgimg:linear-gradient(135deg,dodgerblue,magenta); */
 }
 
@@ -91,7 +91,7 @@ body {
 	/* Hover Colors */
 	--glasshovercolor:var(--blackglass);
 	--ltglasshovercolor:var(--blackglasss);
-	
+
 	/* Link Colors */
 	--grpbackcolor:var(--whitesheet);
 	--linkbackcolor:var(--offwhite);
@@ -100,7 +100,7 @@ body {
 	--linkforecolorhover:white;
 }
 body.dark {
-	
+
 	/* Theme Colors */
 	--backcolor:var(--lightblack);
 	--backcolor2:var(--lightblack2);
@@ -111,7 +111,7 @@ body.dark {
 	/* Hover Colors */
 	--glasshovercolor:var(--whiteglass);
 	--ltglasshovercolor:var(--whiteglasss);
-	
+
 	/* Link Colors */
 	--grpbackcolor:var(--blacksheet);
 	--linkbackcolor:var(--lightblack);
@@ -354,12 +354,12 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 
 /* Large Tablet Screen */
-@media screen and (max-width:125rem) {
+@media screen and (max-width:112rem) {
 
 	/* Navbar */
 	div#container header.navbar {max-width:none; border-radius:0;}
 	/* div#container header.navbar div.bin {} */
-	
+
 	/* Navbar: Sidebar */
 	/* div#container header.navbar div.bin div.drawer {} */
 
@@ -367,13 +367,13 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.drawer div.navmenu {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist li.navitem {} */
-	
+
 	/* Navbar: Sidebar Search */
 	/* div#container header.navbar div.bin div.drawer div.livesearch {} */
-	
+
 	/* Navbar: Navigation Toggler */
 	/* div#container header.navbar div.bin div.navtoggler {} */
-	
+
 	/* Navbar: Theme Bar */
 	/* div#container header.navbar div.bin div.cornerpanel {} */
 	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
@@ -410,7 +410,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* Navbar */
 	/* div#container header.navbar {} */
 	/* div#container header.navbar div.bin {} */
-	
+
 	/* Navbar: Sidebar */
 	/* div#container header.navbar div.bin div.drawer {} */
 
@@ -418,13 +418,13 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.drawer div.navmenu {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist li.navitem {} */
-	
+
 	/* Navbar: Sidebar Search */
 	/* div#container header.navbar div.bin div.drawer div.livesearch {} */
-	
+
 	/* Navbar: Navigation Toggler */
 	/* div#container header.navbar div.bin div.navtoggler {} */
-	
+
 	/* Navbar: Theme Bar */
 	/* div#container header.navbar div.bin div.cornerpanel {} */
 	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
@@ -457,7 +457,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 /* Small Tablet Screen */
 @media screen and (max-width:72rem) {
-	
+
 	/* Navbar */
 	div#container header.navbar {/* position:relative; */ padding:.75rem 2rem;}
 	/* div#container header.navbar div.bin {display:grid; grid-template-columns:repeat(3,1fr);} */
@@ -465,7 +465,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container header.navbar div.bin {display:grid; grid-template-columns:repeat(3,1fr);}
 	div#container header.navbar div.bin a.brand {font-size:1.75rem;}
 	div#container header.navbar div.bin a.brand span.caption {display:none;}
-	
+
 	/* Navbar: Sidebar */
 	/* div#container header.navbar div.bin div.drawer {flex-direction:row; flex-wrap:wrap;} */
 	/* div#container header.navbar div.bin div.drawer {position:absolute; top:100%; left:0; width:100%; max-width:var(--pagewidth); margin:0 auto;} */
@@ -495,14 +495,14 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	div#container header.navbar div.bin div.drawer div.navmenu.a ul.navlist li.navitem a.navlink span.caption {display:block;}
 	div#container header.navbar div.bin div.drawer div.navmenu.b ul.navlist li.navitem a.navlink span.caption {display:none;}
 	div#container header.navbar div.bin div.drawer div.navmenu ul.navlist li.navitem a.navlink span.caption:empty {background-color:var(--forecolor2); height:1em; width:6em; border-radius:1em;}
-	
+
 	/* Navbar: Sidebar Search */
 	div#container header.navbar div.bin div.drawer div.livesearch {order:1;flex-grow:0; margin:3rem 0;}
 	/* div#container header.navbar div.bin div.drawer div.livesearch input.searchquery {} */
-	
+
 	/* Navbar: Navigation Toggler */
 	div#container header.navbar div.bin div.navtoggler {display:block;}
-	
+
 	/* Navbar: Theme Bar */
 	div#container header.navbar div.bin div.cornerpanel {padding-left:0; border-left:0 none; margin-left:0;}
 	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
@@ -543,7 +543,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* Navbar */
 	/* div#container header.navbar {} */
 	/* div#container header.navbar div.bin {} */
-	
+
 	/* Navbar: Sidebar */
 	/* div#container header.navbar div.bin div.drawer {} */
 
@@ -551,13 +551,13 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.drawer div.navmenu {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist li.navitem {} */
-	
+
 	/* Navbar: Sidebar Search */
 	/* div#container header.navbar div.bin div.drawer div.livesearch {} */
-	
+
 	/* Navbar: Navigation Toggler */
 	/* div#container header.navbar div.bin div.navtoggler {} */
-	
+
 	/* Navbar: Theme Bar */
 	/* div#container header.navbar div.bin div.cornerpanel {} */
 	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
@@ -591,11 +591,11 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 
 /* Medium Smartphone Screen */
 @media screen and (max-width:36rem) {
-	
+
 	/* Navbar */
 	/* div#container header.navbar {} */
 	/* div#container header.navbar div.bin {} */
-	
+
 	/* Navbar: Sidebar */
 	/* div#container header.navbar div.bin div.drawer {} */
 
@@ -603,13 +603,13 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.drawer div.navmenu {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist li.navitem {font-size:1.75rem;} */
-	
+
 	/* Navbar: Sidebar Search */
 	/* div#container header.navbar div.bin div.drawer div.livesearch {} */
-	
+
 	/* Navbar: Navigation Toggler */
 	/* div#container header.navbar div.bin div.navtoggler {} */
-	
+
 	/* Navbar: Theme Bar */
 	/* div#container header.navbar div.bin div.cornerpanel {} */
 	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */
@@ -623,7 +623,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* More Projects */
 	/* div#container section div.grid div.more {} */
 	div#container section div.grid div.more a.morebtn {font-size:1rem;}
-	
+
 
 	/* Footer */
 	div#container footer.footer {padding:3.5rem 1.5rem 6rem;}
@@ -656,7 +656,7 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* Navbar */
 	/* div#container header.navbar {} */
 	/* div#container header.navbar div.bin {} */
-	
+
 	/* Navbar: Sidebar */
 	/* div#container header.navbar div.bin div.drawer {} */
 
@@ -664,13 +664,13 @@ div#container footer.footer div.grid div.linkmatrix div.listset ul.navlist li.na
 	/* div#container header.navbar div.bin div.drawer div.navmenu {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist {} */
 	/* div#container header.navbar div.bin div.drawer div.navmenu ul.navlist li.navitem {} */
-	
+
 	/* Navbar: Sidebar Search */
 	/* div#container header.navbar div.bin div.drawer div.livesearch {} */
-	
+
 	/* Navbar: Navigation Toggler */
 	/* div#container header.navbar div.bin div.navtoggler {} */
-	
+
 	/* Navbar: Theme Bar */
 	/* div#container header.navbar div.bin div.cornerpanel {} */
 	/* div#container header.navbar div.bin div.cornerpanel div.themeswitcher {} */

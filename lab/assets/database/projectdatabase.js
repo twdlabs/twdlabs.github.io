@@ -24,14 +24,14 @@ featuredProjectIds['all'] = featuredProjectIds['a'].concat( featuredProjectIds['
 
 // Define project data. 
 const projectData = [
-	
-	
+
+
 	// {
 	// 	authorid:'twd',
 	// 	projectid:'projectid',
 	// 	projectname:'[Project Name Here]',
 	// },
-	
+
 
 	{
 		authorid:'twd',
@@ -98,7 +98,7 @@ const projectData = [
 		projectid:'autoslideshow',
 		projectname:'Automatic Slideshow',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'backToTop',
@@ -184,7 +184,7 @@ const projectData = [
 		projectid:'buttonpress',
 		projectname:'Button Press',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'calc',
@@ -362,7 +362,7 @@ const projectData = [
 		projectid:'cutout',
 		projectname:'Text Cutout',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'delta',
@@ -404,7 +404,7 @@ const projectData = [
 		projectid:'dynamicnavbar',
 		projectname:'Dynamic Navbar',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'eazechain',
@@ -426,7 +426,7 @@ const projectData = [
 		projectid:'event',
 		projectname:'Event Listeners',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'fam',
@@ -464,7 +464,7 @@ const projectData = [
 		projectid:'form3d',
 		projectname:'Lead Form (3D)',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'gallery',
@@ -502,7 +502,7 @@ const projectData = [
 		projectid:'grocery',
 		projectname:'Grocery Manager',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'hamburger',
@@ -528,7 +528,7 @@ const projectData = [
 		projectid:'hovercard',
 		projectname:'Hover Cards (3D)',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'iglive',
@@ -568,7 +568,7 @@ const projectData = [
 		projectid:'json',
 		projectname:'JSON Practice Test',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'keyfinder',
@@ -586,7 +586,7 @@ const projectData = [
 		projectid:'koan',
 		projectname:'Koan Enterprise',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'land',
@@ -632,7 +632,7 @@ const projectData = [
 		projectid:'login',
 		projectname:'User Access',
 	},
-	
+
 	{
 		authorid:'cp',
 		projectid:'macbook',
@@ -686,7 +686,7 @@ const projectData = [
 		projectid:'multimenu',
 		projectname:'Multi-Level Menu',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'navcircle',
@@ -716,7 +716,7 @@ const projectData = [
 		projectid:'notesquares',
 		projectname:'Note Squares',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'orbit',
@@ -730,7 +730,7 @@ const projectData = [
 		projectid:'overlay',
 		projectname:'Overlay Effect',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'pagenexter',
@@ -830,7 +830,7 @@ const projectData = [
 		projectid:'quiz',
 		projectname:'Quiz',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'resume',
@@ -852,7 +852,7 @@ const projectData = [
 		projectid:'rolodex',
 		projectname:'Contact Rolodex',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'safari',
@@ -1068,7 +1068,7 @@ const projectData = [
 		projectid:'typewriter',
 		projectname:'Counter Typewriter',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'uitest',
@@ -1102,7 +1102,7 @@ const projectData = [
 		projectid:'user2',
 		projectname:'User Profile',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'valueslider',
@@ -1128,7 +1128,7 @@ const projectData = [
 		projectid:'voisey',
 		projectname:'Voisey',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'wave',
@@ -1158,25 +1158,25 @@ const projectData = [
 		projectid:'www',
 		projectname:'Women Winning Wellness',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'xhr',
 		projectname:'XHTTP Request Tester',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'ytblp',
 		projectname:'YouTube Premium',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'zbar',
 		projectname:'Z-Index Bar',
 	},
-	
+
 	{
 		authorid:'twd',
 		projectid:'10000cards',
@@ -1214,8 +1214,8 @@ const projectData = [
 		projectid:'3dtrifold',
 		projectname:'3D Trifold Gallery',
 	},
-	
-	
+
+
 	{
 		authorid:'twd',
 		projectid:'chooser',
@@ -1261,8 +1261,8 @@ const projectData = [
 		projectid:'stocks',
 		projectname:'Stocks Dashboard',
 	},
-	
-	
+
+
 ];
 // console.log('Projects:',projectData);
 

@@ -101,7 +101,7 @@ const linkData = {
 			},
 			{
 				icontag:'envelope',
-				linkurl:'mailto:tituswebdev+lab@gmail.com',
+				linkurl:'mailto:twdlabs+lab@gmail.com',
 				linkname:'Email',
 			},
 		],
@@ -126,11 +126,15 @@ const linkData = {
 const methodData = [
 
 	{
+		icontag:'easel',
+		header:'Design',
+		description:'Creating aesthetic user interfaces and seamless user experiences while using best practice design principles',
+	},
+	{
 		icontag:'calculator',
 		header:'Mathematics',
 		description:'Building practical mathematical models using algebra, geometry, trigonometry, and calculus',
 	},
-
 	{
 		icontag:'piechart',
 		header:'Statistics',
@@ -138,27 +142,36 @@ const methodData = [
 	},
 
 	{
-		icontag:'easel',
-		header:'Design',
-		description:'Creating aesthetic user interfaces and seamless user experiences while using best practice design principles',
-	},
-
-	{
 		icontag:'bricks',
 		header:'HTML',
 		description:'Establishing hierarchichally arranged page structures and building layers with hypertext markup',
 	},
-
 	{
 		icontag:'paintbrush',
+		// icontag:'paintpalette',
 		header:'CSS',
 		description:'Decorating, smoothing transformations, and adding aesthetic beauty with cascading style sheets',
 	},
-
 	{
 		icontag:'gear',
 		header:'JavaScript',
 		description:'Enabling dynamic page movements, and practical functionality with the engine of JavaScript',
+	},
+
+	{
+		icontag:'link',
+		header:'PHP',
+		description:'Embedding programming logic and query language into efficient modules of reusable code.',
+	},
+	{
+		icontag:'database',
+		header:'MariaDB',
+		description:'Storing persistent data in efficient database table structures.',
+	},
+	{
+		icontag:'database',
+		header:'MySQL',
+		description:'Accessing database tables using structured query language.',
 	},
 
 	// {
@@ -167,11 +180,5 @@ const methodData = [
 	// 	description:'Building useful models of real world phenomena using mathematics, statistics, and programming',
 	// },
 
-	// {
-	// 	icontag:'paintpalette',
-	// 	header:'',
-	// 	description:'',
-	// },
-	
 ];
 // console.log('Method data:',methodData);

@@ -30,7 +30,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 
 
 /* Large Tablet Screen */
-@media screen and (max-width:125rem) {
+@media screen and (max-width:112rem) {
 
 	/* Footer: Link Matrix */
 	/* div#container footer.footer div.grid div.linkmatrix {} */
@@ -45,7 +45,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 
 /* Medium Tablet Screen */
 @media screen and (max-width:88rem) {
-	
+
 	/* Footer: Link Matrix */
 	/* div#container footer.footer div.grid div.linkmatrix {} */
 	/* div#container footer.footer div.grid div.linkmatrix.groups {grid-template-columns:repeat(3,1fr);} */
@@ -58,7 +58,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 
 /* Small Tablet Screen */
 @media screen and (max-width:72rem) {
-	
+
 	/* Footer: Link Matrix */
 	/* div#container footer.footer div.grid div.linkmatrix {} */
 	/* div#container footer.footer div.grid div.linkmatrix.groups {} */
@@ -76,7 +76,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
-	
+
 	/* Footer: Link Matrix */
 	/* div#container footer.footer div.grid div.linkmatrix {} */
 	/* div#container footer.footer div.grid div.linkmatrix.groups {grid-template-columns:repeat(2,1fr);} */
@@ -90,7 +90,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 
 /* Medium Smartphone Screen */
 @media screen and (max-width:36rem) {
-	
+
 	/* Footer: Link Matrix */
 	div#container /* footer.footer */ div.grid div.linkmatrix {display:flex; flex-direction:column;}
 	/* div#container footer.footer div.grid div.linkmatrix.groups {} */
@@ -103,7 +103,7 @@ div#container /* footer.footer */ div.grid div.linkmatrix div.listset ul.navlist
 
 /* Small Smartphone Screen */
 @media screen and (max-width:24rem) {
-	
+
 	/* Footer: Link Matrix */
 	/* div#container footer.footer div.grid div.linkmatrix {} */
 	/* div#container footer.footer div.grid div.linkmatrix.groups {} */

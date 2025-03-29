@@ -41,7 +41,7 @@ function loadDesktop() {
 
 	// Initialize result. 
 	let result = '';
-	
+
 	// Add project group to result. 
 	for(let i in projectNameGroups) {
 		// console.log(group);
@@ -49,7 +49,7 @@ function loadDesktop() {
 		// Add layout for given project group. 
 		result += createGroupLayout(i);
 	}
-	
+
 	// Add result to page. 
 	// desktopDestination.insertAdjacentHTML('beforeend',result);
 	desktopGroupsDestination.innerHTML = result;
@@ -112,7 +112,7 @@ function loadDesktop() {
 
 		// Get group name. 
 		let groupname = initialCharGroups[index].join(' ');
-	
+
 		// Return result. 
 		return `
 		<!-- group -->
@@ -120,13 +120,13 @@ function loadDesktop() {
 
 			<!-- ghead -->
 			<div class="ghead">
-				
+
 				<!-- icon -->
 				<svg class="icon plus open" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
 				</svg>
 				<!-- /icon -->
-				
+
 				<!-- icon -->
 				<svg class="icon minus close" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 					<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
@@ -136,7 +136,7 @@ function loadDesktop() {
 				<!-- head -->
 				<h2 class="head">${ groupname }</h2>
 				<!-- /head -->
-				
+
 				<!-- icon -->
 				<svg class="icon empty" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 				</svg>
@@ -161,18 +161,18 @@ function loadDesktop() {
 		<!-- /group -->`;
 
 		/***/
-	
+
 		// Get project links for group body. 
 		function getProjectLinks(group) {
-	
+
 			// Initialize result. 
 			let result = '';
-		
+
 			// Add project link to result. 
 			for(let projectid of group) {
 				result += createProjectLink(projectid)
 			}
-	
+
 			// Return result. 
 			return result;
 		}
@@ -187,17 +187,17 @@ function loadDesktop() {
 			return `
 			<!-- item -->
 			<a class="item" href="${pageurl}" target="_blank">
-			
+
 				<!-- icon -->
 				<svg class="icon app" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 					<path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/>
 				</svg>
 				<!-- /icon -->
-			
+
 				<!-- caption -->
 				<span class="caption">${projectid}</span>
 				<!-- /caption -->
-				
+
 			</a>
 			<!-- /item -->`;
 		}
@@ -208,26 +208,26 @@ function loadDesktop() {
 
 		// Get all group headers. 
 		let allGroupHeaders = document.querySelectorAll('div#container section.desktop div.grid ul.grouplist li.group div.ghead');
-	
+
 		// Go thru all group headers. 
 		for(let groupheader of allGroupHeaders) {
 			// Toggle selected group upon header click. 
 			groupheader.addEventListener('click',toggleGroup);
 		}
-	
+
 		/***/
 
 		// Toggle selected group. 
 		function toggleGroup(event) {
 			// console.log(event);
-	
+
 			// Get selected group. 
 			let selectedGroup = event.currentTarget.parentElement;
 			let selectedGroupBody = selectedGroup.querySelector('div.gbody');
 
 			// Check if group is already active. 
 			let groupIsActive = selectedGroup.classList.contains('active');
-			
+
 			// Toggle group. 
 			// selectedGroup.classList.toggle('active');
 

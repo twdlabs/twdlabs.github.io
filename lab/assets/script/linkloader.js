@@ -41,7 +41,7 @@ function createNavLink(url,caption,icontag,usenewwindow,userelativeurl) {
 	return `
 	<!-- navitem -->
 	<li class="navitem">
-	
+
 		<!-- navlink -->
 		<a class="navlink" href="${ url ? ( userelativeurl ? getRelativeUrl(url) : url ) : 'javascript:void(0)' }" title="${caption}" ${ url&&usenewwindow ? 'target="_blank"' : '' }>
 
@@ -50,7 +50,7 @@ function createNavLink(url,caption,icontag,usenewwindow,userelativeurl) {
 			<!-- caption -->
 			<span class="caption">${caption}</span>
 			<!-- /caption -->
-			
+
 		</a>
 		<!-- /navlink -->
 
@@ -61,7 +61,7 @@ function createNavLink(url,caption,icontag,usenewwindow,userelativeurl) {
 
 	// Create layout for link icon. 
 	function createIcon(icontag) {
-		
+
 		// Compile link icon. 
 		return `
 		<!-- icon -->
@@ -77,21 +77,21 @@ function loadNavLinks() {
 
 	let navlinks = createLinkList(linkData['nav']['groupitems'],true,true);
 	let sociallinks = createLinkList(linkData['social']['groupitems'],true,false);
-	let xyzlinks = createLinkList(linkData['foot']['groupitems'],true,true);
+	let footlinks = createLinkList(linkData['foot']['groupitems'],true,true);
 
 	// Add page links in header. 
-	headnavdestination['navlistA'].innerHTML = navlinks /* + xyzlinks */;
+	headnavdestination['navlistA'].innerHTML = navlinks /* + footlinks */;
 
 	// Add social links in header. 
 	// headnavdestination['navlistB'].innerHTML = sociallinks;
-	headnavdestination['navlistB'].innerHTML = xyzlinks;
+	headnavdestination['navlistB'].innerHTML = footlinks;
 
 	// Add page links in footer. 
 	let space = '<span class="space"></span>';
-	// footnavdestination['navlistA'].innerHTML = navlinks + space + xyzlinks;
+	// footnavdestination['navlistA'].innerHTML = navlinks + space + footlinks;
 	footnavdestination['navlistA'].innerHTML = navlinks;
 	footnavdestination['navlistB'].innerHTML = sociallinks;
-	footnavdestination['navlistC'].innerHTML = xyzlinks;
+	footnavdestination['navlistC'].innerHTML = footlinks;
 
 	/****/
 
@@ -138,17 +138,17 @@ function activateSidebar() {
 
 	// Toggle state of navigation sidebar. 
 	function toggleSidebar() {
-	
+
 		// Check if sidebar already open. 
 		let alreadyopen = headsidebar.classList.contains('active');
-	
+
 		// Close sidebar if already open. 
 		if(alreadyopen) {
 			headsidebar.classList.remove('active');
 			document.body.classList.remove('freeze');
 			document.documentElement.classList.remove('freeze');
 		}
-	
+
 		// Open sidebar if not already open. 
 		else {
 			headsidebar.classList.add('active');

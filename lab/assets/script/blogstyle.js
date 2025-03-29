@@ -10,26 +10,29 @@ const postssection = document.querySelector('div#container section.blog div.grid
 // console.log('Posts section:',postssection);
 
 // Get posts section. 
-// postssection = featuredsection.block || archivesection.block || categorysection.block || collectionsection.block;
+// postssection = featuredsection['block'] || archivesection['block'] || categorysection['block'] || collectionsection['block'];
 // console.log('Posts section:',postssection);
 
 
 /*****/
 
 
+// Define id of current layout style. 
+let currentlayoutstyleid = -1;
+
 // Define layout styles. 
-const layoutstyle = [
+const layoutsizestyles = [
 	{
 		body:'',
-		posts:'small',
+		posts:'sm',
 	},
 	{
 		body:'',
-		posts:'large',
+		posts:'md',
 	},
 	{
 		body:'split',
-		posts:'listed',
+		posts:'lg',
 	},
 ];
 
@@ -37,54 +40,76 @@ const layoutstyle = [
 /*****/
 
 
-// Set style of blog layout. 
-function setLayoutStyle(togglebtn) {
-	
-	// Get selected style index. 
-	let styleindex = togglebtn.getAttribute('data-styleindex') * 1;
+// Toggle to next layout style. 
+function toggleLayoutStyle() {
+	console.log('Current layout style id (old):',currentlayoutstyleid);
 
-	// Toggle style of posts by index. 
-	setLayoutStyleById(styleindex);
+	// Increment id of layout style. 
+	currentlayoutstyleid++;
+
+	// Ensure style id within valid range. 
+	if( currentlayoutstyleid >= layoutsizestyles.length ) currentlayoutstyleid = 0;
+	console.log('Current layout style id (new):',currentlayoutstyleid);
+
+	// 
+	setLayoutSizeStyleById(currentlayoutstyleid)
 }
 
-// Set style of blog layout by index. 
-function setLayoutStyleById(styleindex) {
-	console.log('Style index:',styleindex);
-	// Disregard if no valid style index. 
-	if( isNaN(styleindex) ) {
-		console.warn('Invalid style index provided:',styleindex);
+// Set size/style of blog layout. 
+function setLayoutSizeStyle(event) {
+
+	// Get selected toggle button. 
+	let selectedtogglebtn = event.currentTarget;
+	console.log(selectedtogglebtn);
+
+	// Get id of selected style. 
+	let selectedstyleid = selectedtogglebtn.getAttribute('data-styleid') * 1;
+
+	// Set size/style of blog layout with selected id. 
+	setLayoutSizeStyleById(selectedstyleid);
+}
+
+// Set size/style of blog layout with given id. 
+function setLayoutSizeStyleById(styleid) {
+	console.log('Style id:',styleid);
+	console.log('Posts section:',postssection);
+
+	// Disregard invalid style id. 
+	if( isNaN(styleid) ) {
+		console.warn('Invalid style id provided.');
 		return;
 	}
 
-	// console.log('Posts section:',postssection);
 	// Disregard if no posts section. 
 	if(!postssection) {
-		console.warn('Invalid posts section selected',postssection);
+		console.warn('Invalid posts section selected.');
 		return;
 	}
 
 	// Go thru each layout style. 
-	for(let index in layoutstyle) {
+	for(let index in layoutsizestyles) {
 
-		// Get current body layout style id. 
-		let bodyid = layoutstyle[index].body;
-		// Get current post layout style id. 
-		let postsid = layoutstyle[index].posts;
-	
+		// Get style id of current body layout. 
+		let bodystyle = layoutsizestyles[index]['body'];
+		// Get style id of current post layout. 
+		let postsstyle = layoutsizestyles[index]['posts'];
+
 		// Turn on selected style. 
-		if(index==styleindex) {
+		if(index==styleid) {
 			// Apply style to posts section. 
-			postssection.classList.add(postsid);
+			postssection.classList.add(postsstyle);
+			console.log('posts style id:',postsstyle);
 			// Apply style to body section (if valid). 
-			if(bodyid && tagfilterpane.block) bodysection.classList.add(bodyid);
+			if(bodystyle && tagfilterpane['block']) bodysection.classList.add(bodystyle);
+			console.log('body style id:',bodystyle);
 		}
-		
-		// Turn off non-selected style. 
+
+		// Turn off unselected styles. 
 		else {
 			// Remove style from posts section. 
-			postssection.classList.remove(postsid);
+			postssection.classList.remove(postsstyle);
 			// Remove style from body section (if valid). 
-			if(bodyid && tagfilterpane.block) bodysection.classList.remove(bodyid);
+			if(bodystyle && tagfilterpane['block']) bodysection.classList.remove(bodystyle);
 		}
 	}
 }
@@ -99,7 +124,7 @@ function toggleLikeAccordion(section,sectionbin) {
 	// Get full height of section bin. 
 	let fullheight = sectionbin.scrollHeight;
 	// console.log('Full height:',fullheight);
-	
+
 	// Open if already folded. 
 	if(sectionfolded) {
 		section.classList.remove('folded');

@@ -102,20 +102,20 @@ function loadColorThemeById(themeid) {
 
 	// Update state of theme selector buttons. 
 	function updateThemeBtns() {
-	
+
 		// Go thru each theme selector button. 
 		for(let themebtn of colorswitcher['themeselectorbtns']) {
 
 			// Check if on selected theme button. 
 			let onSelectedBtn = themebtn.getAttribute('data-colorthemeid')==themeid;
-	
+
 			// Activate selected theme button. 
 			if(onSelectedBtn) {
-	
+
 				// Activate selected theme button. 
 				themebtn.classList.add('active');
 			}
-	
+
 			// De-activate other theme buttons. 
 			else {
 
@@ -197,26 +197,26 @@ function loadLtDrkThemeById(themeid) {
 
 	// Update state of theme selector buttons. 
 	function updateThemeBtns() {
-	
+
 		// Go thru each theme selector button. 
 		for(let themebtn of ltdrkswitcher['themeselectorbtns']) {
 
 			// Check if on selected theme button. 
 			let onSelectedBtn = themebtn.getAttribute('data-ltdrkthemeid')==themeid;
-	
+
 			// Activate selected theme button. 
 			if(onSelectedBtn) {
-	
+
 				// Activate selected theme button. 
 				themebtn.classList.add('active');
-	
+
 				// Get icon from selected theme button. 
 				let selectedthemeicon = themebtn.querySelector('svg.icon');
 
 				// Update icon contents for selector list toggle button. 
 				ltdrkswitcher['togglericon'].innerHTML = selectedthemeicon.innerHTML;
 			}
-	
+
 			// De-activate other theme buttons. 
 			else {
 
@@ -269,11 +269,11 @@ function activateThemeSelectors() {
 
 	// Select new color theme. 
 	function selectNewColorTheme(event) {
-		
+
 		// Get selected theme button. 
 		const selectedthemebtn = event.currentTarget;
 		console.log('Selected color theme button:',selectedthemebtn);
-		
+
 		// Get id of selected theme. 
 		let selectedthemeid = selectedthemebtn.getAttribute('data-colorthemeid');
 		console.log('Selected color theme:',selectedthemeid);
@@ -307,11 +307,11 @@ function activateThemeSelectors() {
 
 	// Select new light/dark theme. 
 	function selectNewLtDrkTheme(event) {
-		
+
 		// Get selected theme button. 
 		const selectedthemebtn = event.currentTarget;
 		console.log('Selected light/dark theme button:',selectedthemebtn);
-		
+
 		// Get id of selected theme. 
 		let selectedthemeid = selectedthemebtn.getAttribute('data-ltdrkthemeid');
 		console.log('Selected light/dark theme:',selectedthemeid);

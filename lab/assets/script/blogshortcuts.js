@@ -31,13 +31,13 @@ function enableShortcutKeys() {
 		else if(event.keyCode==70) toggleTagFilterPane();
 
 		// Respond to 'S' key. 
-		else if(event.keyCode==83) setLayoutStyleById(0);
+		else if(event.keyCode==83) setLayoutSizeStyleById(0);
 
 		// Respond to 'B' key. 
-		else if(event.keyCode==66) setLayoutStyleById(1);
+		else if(event.keyCode==66) setLayoutSizeStyleById(1);
 
 		// Respond to 'L' key. 
-		else if(event.keyCode==76) setLayoutStyleById(2);
+		else if(event.keyCode==76) setLayoutSizeStyleById(2);
 
 		// Respond to 'left arrow' key. 
 		else if(event.keyCode==37) goPrevPage();
@@ -49,7 +49,7 @@ function enableShortcutKeys() {
 		else if(event.keyCode==13) {
 
 			// Check if filter pane open. 
-			let filterpaneopen = tagfilterpane.block.classList.contains('open');
+			let filterpaneopen = tagfilterpane['block'].classList.contains('open');
 
 			// Apply selected filter tag items (if filter pane open). 
 			if(filterpaneopen) {
@@ -58,7 +58,7 @@ function enableShortcutKeys() {
 				applySelectedTagFilters();
 
 				// Close filter pane. 
-				tagfilterpane.block.classList.remove('open');
+				tagfilterpane['block'].classList.remove('open');
 			}
 		}
 	}

@@ -19,7 +19,9 @@ const pagecountdestination = document.querySelector('div#container section.blog 
 
 // Define maximum number of posts per page. 
 // const pagepostcapacity = 12;
-const pagepostcapacity = 30;
+// const pagepostcapacity = 18;
+const pagepostcapacity = 24;
+// const pagepostcapacity = 30;
 
 // Define total number of post pages. 
 let pagecount = undefined;
@@ -67,14 +69,14 @@ function selectPageByIndex(queryindex) {
 
 // Display currently selected page. 
 function displaySelectedPage() {
-	
+
 	// Assert page index within bounds of validity. 
 	if(selectedpageindex<0) selectedpageindex = 0;
 	else if(selectedpageindex>=pagecount) selectedpageindex = pagecount - 1;
 	// console.log('Selected page index:',selectedpageindex);
 
 	// Shift page list to selected page. 
-	postpageslist.style.transform = `translateX(${selectedpageindex * -100}%)`;
+	postpageslist.style.transform = `translateX(${ selectedpageindex * -100 }%)`;
 
 	// Get all post pages. 
 	const allpostpages = document.querySelectorAll('div#container section.blog div.grid div.body div.posts ul.pagelist li.postpage');
@@ -85,12 +87,12 @@ function displaySelectedPage() {
 		// Get index of current page. 
 		let pageindex = page.getAttribute('data-pageindex');
 
-		// Check if selected page found. 
-		let selectedpagefound = pageindex == selectedpageindex;
-	
-		// Display page at currently selected index. 
-		if(selectedpagefound) page.classList.add('active');
-		// Hide page not at currently selected index. 
+		// Check if currently on selected page. 
+		let onselectedpage = pageindex == selectedpageindex;
+
+		// Display if currently on selected page. 
+		if(onselectedpage) page.classList.add('active');
+		// Un-display if not currently on selected page. 
 		else page.classList.remove('active');
 	}
 
@@ -132,7 +134,7 @@ function displaySelectedPage() {
 			// Clear page number if pages not available. 
 			else pagenumdestination.textContent = '';
 		}
-	
+
 		// Display total number of post pages (if destination valid). 
 		if(pagecountdestination) {
 

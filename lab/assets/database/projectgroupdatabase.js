@@ -327,7 +327,7 @@ const projectCategoryData = [
 			'spinner',
 		],
 	},
-	
+
 	{
 		groupid:'dc',
 		groupname:'Design Seeds',
@@ -590,14 +590,14 @@ function addExtraProjectGroups() {
 
 	// Save list of projects missing from project database. 
 	let nullCategory = getProjectCategoryById('missing');
-	
+
 	// Save list of projects missing from project category database. 
 	let orphanCategory = getProjectCategoryById('orphans');
 
 	// console.log('Missing projects:',nullCategory);
 	nullCategory.groupitemsidlist = getMissingProjectIds();
 	// console.log('Missing projects:',nullCategory);
-	
+
 	// console.log('Orphan projects:',orphanCategory);
 	orphanCategory.groupitemsidlist = getOrphanProjectIds();
 	// console.log('Orphan projects:',orphanCategory);

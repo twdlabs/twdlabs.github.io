@@ -4,7 +4,7 @@
 // Define general site data. 
 let siteData = {
 	sitename:'TWD',
-	sitename:'TWD Labs',
+	sitename:'TWDLabs',
 	headline:'Lab Experiments',
 	tagline:'Practical applications of abstract ideas to make work life easier, using mathematics, statistics, and best practice design principles.',
 };

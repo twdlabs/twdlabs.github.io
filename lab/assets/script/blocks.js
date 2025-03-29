@@ -87,7 +87,7 @@ function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode
 
 	// Initialize result layout. 
 	let result = '';
-	
+
 	// Go thru data for each block. 
 	for(let block of datasource) {
 
@@ -119,32 +119,32 @@ function createBlockSet(datasource, tagkey,namekey,descriptionkey, newwindowmode
 		let uselink = (urlprefix && urlid);
 		let linkurl = uselink ? getRelativeUrl(urlprefix + urlid) : 'javascript:void(0)';
 		// console.log('Link url:',linkurl);
-	
+
 		// Compile layout for block item. 
 		return `
 		<!-- blockitem -->
 		<li class="blockitem ${ onwideblock ? 'wide' : '' }">
-	
+
 			<!-- blocklink -->
 			<a class="blocklink" href="${linkurl}" ${ (uselink && newwindowmode) ? 'target="_blank"' : '' }>
-	
+
 				<!-- icon -->
 				<svg class="icon ${ icontag }" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 					${ iconData[icontag] }
 				</svg>
 				<!-- /icon -->
-	
+
 				<!-- blockhead -->
 				<h1 class="blockhead">${ name }</h1>
 				<!-- /blockhead -->
-	
+
 				<!-- blockdescription -->
 				<p class="blockdescription">${ description }</p>
 				<!-- /blockdescription -->
-	
+
 			</a>
 			<!-- /blocklink -->
-			
+
 		</li>
 		<!-- /blockitem -->`;
 	}

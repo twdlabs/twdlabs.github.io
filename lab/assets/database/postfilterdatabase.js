@@ -179,7 +179,7 @@ function augmentProjectData() {
 
 				// Get project by id. 
 				let project = getProjectById(projectid);
-		
+
 				// Augment project data. 
 				if(project) {
 					project.categoryid = category.groupid;
@@ -200,7 +200,7 @@ function augmentProjectData() {
 		project.searchablestring += `${getAuthorNameById(project.authorid)} `;
 		project.searchablestring += `${getProjectCategoryNameById(project.categoryid)} `;
 		project.searchablestring += `${getProjectCollectionNameById(project.collectionid)} `;
-		
+
 		// Fill in if project missing category id. 
 		if( !project.categoryid ) {
 			console.warn('Project missing category id:', project);
@@ -208,7 +208,7 @@ function augmentProjectData() {
 			// Add empty value for missing category id. 
 			project.categoryid = '';
 		}
-		
+
 		// Fill in if project missing collection id. 
 		if( !project.collectionid ) {
 			console.warn('Project missing collection id:', project);
@@ -241,7 +241,7 @@ function augmentProjectData() {
 
 				// Get project. 
 				let project = getProjectById(projectid);
-			
+
 				// Augment project data. 
 				if(project) {
 					project.creationyear = yearblock.year;
@@ -276,16 +276,16 @@ function saveFilterData() {
 
 	// // Save item values for filter type: authors. 
 	// saveFilterItemValues('authorid');
-	
+
 	// // Save item values for filter type: categories. 
 	// saveFilterItemValues('categoryid');
-	
+
 	// // Save item values for filter type: collections. 
 	// saveFilterItemValues('collectionid');
-	
+
 	// // Save item values for filter type: creation year. 
 	// saveFilterItemValues('creationyear');
-	
+
 	// // Save item values for filter type: creation quarter. 
 	// saveFilterItemValues('creationquarter');
 
@@ -296,69 +296,69 @@ function saveFilterData() {
 
 	// Save item values for given filter type from project data. 
 	function saveFilterItemValues(filtertypeid) {
-		
+
 		// Get filter type group using given filter type id. 
 		let filtertypegroup = getFilterTypeGroupById(filtertypeid);
 		// console.log('Filter criteria list (old):',filtertypegroup.filteritems);
-		
+
 		// Disregard if not valid filter type group. 
 		if(!filtertypegroup) {
 			console.warn('Invalid filter type group:',filtertypeid,filtertypegroup);
 			return;
 		}
-	
+
 		// Initialize list of filter items. 
 		let filteritems = [];
-	
+
 		// TOOD: Go thru each matching project to collect distinct values for given filter item. 
 		for(let project of projectData) {
-	
+
 			// Get value of filter item from current project. 
 			let filteritemvalue = project[filtertypeid];
-	
+
 			// Find filter item associated with current value (if already exists). 
 			let filteritem = getFilterItemByValue(filteritemvalue);
-	
+
 			// Increment frequency of filter item (if already exists). 
 			if(filteritem) filteritem.frequency++;
 			// Create new filter item with frequency of 1 (if new value). 
 			else filteritems.push( {value:filteritemvalue, frequency:1,} );
 		}
 		// console.log('Filter items:',filteritems);
-	
+
 		// Save sorted list of filter items. 
 		filtertypegroup.filteritems = filteritems.sort( (a,b)=>(a.value>b.value) );
 		// console.log('Filter criteria list (new):',filtertypegroup.filteritems);
-	
+
 		/***/
-	
+
 		// Get filter type group by id. 
 		function getFilterTypeGroupById(filtertypeid) {
-		
+
 			// Go thru each filter type group. 
 			for(let filtertypegroup of postFilterData) {
-		
+
 				// Check for matching filter type group. 
 				if(filtertypegroup.filtertypeid==filtertypeid) return filtertypegroup;
 			}
-		
+
 			// Return nothing if not found. 
 			return null;
 		}
-	
+
 		// Get filter item by value. 
 		function getFilterItemByValue(value) {
-	
+
 			// Go thru each existing filter item. 
 			for(let item of filteritems) {
-	
+
 				// Check for matching value. 
 				let matchfound = item.value == value;
-	
+
 				// Return matching item if found. 
 				if(matchfound) return item;
 			}
-	
+
 			// Return nothing if not found. 
 			return null;
 		}

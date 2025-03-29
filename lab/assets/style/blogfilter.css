@@ -2,10 +2,10 @@
 
 
 /* Blog Section: Window Pane */
-div#container section.blog div.grid div.body div.windowpane {background-color:var(--backcolor); transition:.5s; /* border-radius:var(--cornersize); */ border:1px solid var(--backcolor2);}
+div#container section.blog div.grid div.body div.windowpane {background-color:var(--backcolor); /* border-radius:var(--cornersize); */ border:1px solid var(--backcolor2);}
 div#container section.blog div.grid div.body div.windowpane {position:absolute; left:0; top:0; /* top:100%; */ overflow:auto; z-index:25; box-shadow:var(--boxshadowx);}
 div#container section.blog div.grid div.body div.windowpane {width:100%; max-width:25rem; max-height:85vh; max-height:calc( 100vh - var(--headerheight) );}
-div#container section.blog div.grid div.body div.windowpane {opacity:0; visibility:hidden; margin-top:0;}
+div#container section.blog div.grid div.body div.windowpane {opacity:0; visibility:hidden; margin-top:0; transition:.5s;}
 div#container section.blog div.grid div.body div.windowpane.open {opacity:1; visibility:visible; margin-top:2.5rem; /* transition:none; */}
 div#container section.blog div.grid div.body.split div.windowpane {/* display:block; */ opacity:1; visibility:visible; margin-top:0;}
 div#container section.blog div.grid div.body.split div.windowpane {position:static; overflow:initial; width:auto; max-width:none; max-height:none; box-shadow:var(--boxshadow);}
@@ -83,10 +83,10 @@ div#container section.blog div.grid div.body div.windowpane div.switchpanel div.
 
 
 /* Blog Section: Filter Panel */
-div#container section.blog div.grid div.body div.filterpanel {display:none;}
+/* div#container section.blog div.grid div.body div.filterpanel {display:none;} */
 
 /* Blog Section: Filter Panel: Filter List */
-div#container section.blog div.grid div.body div.filterpanel ul.filterlist {display:flex; flex-flow:row wrap; /* justify-content:center; */ list-style:none; padding:0; margin:0;}
+div#container section.blog div.grid div.body div.filterpanel ul.filterlist {display:flex; flex-flow:row wrap; justify-content:center; list-style:none; padding:0; margin:0;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype {user-select:none; padding:.25rem 0; padding-right:.375rem;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.togglebtn {font-weight:200; cursor:pointer;}
 div#container section.blog div.grid div.body div.filterpanel ul.filterlist li.filtertype div.togglebtn {display:flex; align-items:center; border:1px solid var(--backcolor2); padding:.5rem .75rem; border-radius:1.5rem;}
@@ -142,7 +142,7 @@ div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.ta
 
 
 /* Large Tablet Screen */
-@media screen and (max-width:125rem) {
+@media screen and (max-width:112rem) {
 
 	/* Blog Section: Window Pane */
 	/* div#container section.blog div.grid div.body div.windowpane {} */
@@ -182,7 +182,7 @@ div#container section.blog div.grid div.body div.appliedfilters ul.taglist li.ta
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
-	
+
 	/* Blog Section: Window Pane */
 	div#container section.blog div.grid div.body.split div.windowpane {max-height:0; overflow:hidden; border-width:0; box-shadow:none;}
 	div#container section.blog div.grid div.body.split div.windowpane.open {max-height:fit-content; max-height:calc( 100vh - var(--headerheight) ); overflow:auto; border-width:1px; box-shadow:var(--boxshadowx);}

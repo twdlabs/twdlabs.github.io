@@ -53,8 +53,8 @@ div#container section.desktop div.grid figure.previewer div.bin iframe.page {/* 
 
 
 /* Large Tablet Screen */
-@media screen and (max-width:125rem) {
-	
+@media screen and (max-width:112rem) {
+
 	/* Desktop Section */
 	/* div#container section.desktop {} */
 	/* div#container section.desktop div.grid {} */
@@ -66,7 +66,7 @@ div#container section.desktop div.grid figure.previewer div.bin iframe.page {/* 
 
 /* Medium Tablet Screen */
 @media screen and (max-width:88rem) {
-	
+
 	/* Desktop Section */
 	/* div#container section.desktop {} */
 	/* div#container section.desktop div.grid {} */
@@ -78,7 +78,7 @@ div#container section.desktop div.grid figure.previewer div.bin iframe.page {/* 
 
 /* Small Tablet Screen */
 @media screen and (max-width:64rem) {
-	
+
 	/* Desktop Section */
 	/* div#container section.desktop {} */
 	/* div#container section.desktop {margin-top:0;} */
@@ -100,7 +100,7 @@ div#container section.desktop div.grid figure.previewer div.bin iframe.page {/* 
 
 /* Big Smartphone Screen */
 @media screen and (max-width:48rem) {
-	
+
 	/* Desktop Section */
 	/* div#container section.desktop {} */
 	/* div#container section.desktop div.grid {} */
@@ -121,7 +121,7 @@ div#container section.desktop div.grid figure.previewer div.bin iframe.page {/* 
 
 /* Medium Smartphone Screen */
 @media screen and (max-width:36rem) {
-	
+
 	/* Desktop Section */
 	/* div#container section.desktop {} */
 	/* div#container section.desktop div.grid {} */

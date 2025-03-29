@@ -45,16 +45,16 @@ function customizeHeaders() {
 
 	// Set custom document title. 
 	document.title = `${projectname} | ${siteData.sitename}`;
-	
+
 	// Get custom headers for category name. 
 	const custompageheaders = document.querySelectorAll('div#container section div.grid h1.head.custom');
 	// console.log('Page headers:', [...custompageheaders].map( h => h.parentElement.parentElement) );
-	
+
 	// Set custom headers. 
 	for(let header of custompageheaders) {
 		header.innerHTML = projectname;
 	}
-	
+
 	// Get custom paragraph for category description. 
 	// const custompageparagraph = document.querySelector('section div.grid p.textcopy.custom');
 
@@ -64,10 +64,14 @@ function customizeHeaders() {
 
 // Load post details in page previewer. 
 function loadSelectedPost() {
+	console.log('pagepreviewer:',pagepreviewer);
+
 
 	// Get project url. 
 	let validproject = projectid && getProjectById(projectid);
+	console.log('Valid project:',validproject);
 	let projecturl = validproject ? getRelativeUrl(`./../${projectid}`) : '';
+	console.log('Project url:',projecturl);
 
 	// Assign project url to previewer. 
 	pagepreviewer.src = projecturl;

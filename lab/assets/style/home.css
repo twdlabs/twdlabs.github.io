@@ -2,8 +2,8 @@
 
 
 /* Hero Section */
-div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../admin/images/barcelona.jpg'); background-size:cover; background-repeat:no-repeat;}
-div#container section.hero {background-position:center 40%; height:100vw; max-height:99vh; position:relative; transition:.25s margin;}
+div#container section.hero {background-color:var(--backcolor2); background-image:url('./../../../resources/images/user/barcelona.jpg'); background-size:cover; background-repeat:no-repeat;}
+div#container section.hero {background-position:center 40%; height:75vw; max-height:99vh; position:relative; transition:.25s margin;}
 div#container section.hero {display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:6rem;}
 div#container section.hero {margin-top:0;}
 div#container section.hero::before {background-color:var(--sheetcolor); content:'';}
@@ -39,8 +39,8 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 
 
 /* Large Tablet Screen */
-@media screen and (max-width:125rem) {
-	
+@media screen and (max-width:112rem) {
+
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
@@ -48,7 +48,7 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 
 /* Medium Tablet Screen */
 @media screen and (max-width:88rem) {
-	
+
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */
@@ -56,7 +56,7 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 
 /* Small Tablet Screen */
 @media screen and (max-width:64rem) {
-	
+
 	/* Hero Section */
 	div#container section.hero {background-position-x:75%; margin-bottom:4rem;}
 	/* div#container section.hero div.grid {} */
@@ -81,7 +81,7 @@ div#container section.hero div.grid div.col a.contactlink.a:hover {background-co
 
 /* Medium Smartphone Screen */
 @media screen and (max-width:36rem) {
-	
+
 	/* Hero Section */
 	/* div#container section.hero {} */
 	/* div#container section.hero div.grid {} */

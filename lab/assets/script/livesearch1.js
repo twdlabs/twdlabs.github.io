@@ -64,7 +64,7 @@ function activateSearchBar() {
 			// Activate search button. 
 			livesearchgobtn.classList.add('on');
 		}
-		
+
 		// Remove url from search button w/o search query. 
 		else {
 
@@ -100,7 +100,7 @@ function activateSearchBar() {
 
 // Toggle search results. 
 function toggleSearchResults() {
-	
+
 	// Toggle search results box. 
 	livesearchresultsbox.classList.toggle('active');
 }
