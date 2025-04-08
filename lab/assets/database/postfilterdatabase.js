@@ -1,8 +1,8 @@
 
 
 
-// Define post filter data. 
-const postFilterData = [
+// Define data for post filter groups. 
+const postFilterGroups = [
 
 	{
 		filtertypeid:'projectid',
@@ -144,7 +144,7 @@ const postFilterData = [
 	// 	filteritemnamer:(value)=>(value),
 	// },
 ];
-// console.log('Post filter data:',postFilterData);
+// console.log('Post filter groups:',postFilterGroups);
 
 
 /*****/
@@ -156,7 +156,7 @@ augmentProjectData();
 // Save filter data. 
 saveFilterData();
 
-// console.log('Post filter data:',postFilterData);
+// console.log('Post filter groups:',postFilterGroups);
 
 
 /*****/
@@ -265,10 +265,10 @@ function resetFilterData() {
 function saveFilterData() {
 
 	// Go thru each filter type. 
-	for(let filtertypegroup of postFilterData) {
+	for(let filtertypegroup of postFilterGroups) {
 
 		// Get id of given filter type. 
-		let filtertypeid = filtertypegroup.filtertypeid;
+		let filtertypeid = filtertypegroup['filtertypeid'];
 
 		// Save item values for given filter type. 
 		saveFilterItemValues(filtertypeid);
@@ -298,7 +298,7 @@ function saveFilterData() {
 	function saveFilterItemValues(filtertypeid) {
 
 		// Get filter type group using given filter type id. 
-		let filtertypegroup = getFilterTypeGroupById(filtertypeid);
+		let filtertypegroup = getFilterGroupById(filtertypeid);
 		// console.log('Filter criteria list (old):',filtertypegroup.filteritems);
 
 		// Disregard if not valid filter type group. 
@@ -333,10 +333,10 @@ function saveFilterData() {
 		/***/
 
 		// Get filter type group by id. 
-		function getFilterTypeGroupById(filtertypeid) {
+		function getFilterGroupById(filtertypeid) {
 
 			// Go thru each filter type group. 
-			for(let filtertypegroup of postFilterData) {
+			for(let filtertypegroup of postFilterGroups) {
 
 				// Check for matching filter type group. 
 				if(filtertypegroup.filtertypeid==filtertypeid) return filtertypegroup;

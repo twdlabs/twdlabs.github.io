@@ -556,8 +556,8 @@
 								<!-- toggleritem -->
 								<li class="toggleritem">
 
-									<!-- sizerbtn -->
-									<div class="panetoggle btn" data-currentstyleid="" title="Grid style" onclick="toggleLayoutStyle()">
+									<!-- stylesbtn -->
+									<div class="stylesbtn togglerbtn btn" data-currentstyleid="" title="Grid style" onclick="toggleStylePane()">
 
 										<!-- icon -->
 										<svg class="icon linestyles" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -566,85 +566,7 @@
 										<!-- /icon -->
 
 									</div>
-									<!-- /sizerbtn -->
-
-								</li>
-								<!-- /toggleritem -->
-
-								<!-- toggleritem -->
-								<li class="toggleritem">
-
-									<!-- sizerbtn -->
-									<div class="sizerbtn btn" data-styleid="0" title="Small grid" onclick="setLayoutSizeStyle(event)">
-
-										<!-- icon -->
-										<svg class="icon gridsmall" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/>
-										</svg>
-										<!-- /icon -->
-
-										<!-- icon -->
-										<svg class="icon gridsmall bold" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
-										</svg>
-										<!-- /icon -->
-
-									</div>
-									<!-- /sizerbtn -->
-
-								</li>
-								<!-- /toggleritem -->
-
-								<!-- toggleritem -->
-								<li class="toggleritem">
-
-									<!-- sizerbtn -->
-									<div class="sizerbtn btn" data-styleid="1" title="Medium grid" onclick="setLayoutSizeStyle(event)">
-
-										<!-- icon -->
-										<svg class="icon gridlarge" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
-										</svg>
-										<!-- /icon -->
-
-										<!-- icon -->
-										<svg class="icon gridlarge bold" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
-										</svg>
-										<!-- /icon -->
-
-									</div>
-									<!-- /sizerbtn -->
-
-								</li>
-								<!-- /toggleritem -->
-
-								<!-- toggleritem -->
-								<li class="toggleritem">
-
-									<!-- sizerbtn -->
-									<div class="sizerbtn btn" data-styleid="2" title="Large grid" onclick="setLayoutSizeStyle(event)">
-
-										<!-- icon -->
-										<!-- <svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
-										</svg> -->
-										<!-- /icon -->
-
-										<!-- icon -->
-										<!-- <svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2m0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14"/>
-										</svg> -->
-										<!-- /icon -->
-
-										<!-- icon -->
-										<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<path d="M3 0h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm0 8h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
-										</svg>
-										<!-- /icon -->
-
-									</div>
-									<!-- /sizerbtn -->
+									<!-- /stylesbtn -->
 
 								</li>
 								<!-- /toggleritem -->
@@ -653,7 +575,7 @@
 								<li class="toggleritem">
 
 									<!-- filtersbtn -->
-									<div class="filtersbtn panetoggle btn" onclick="toggleTagFilterPane()">
+									<div class="filtersbtn togglerbtn btn" onclick="toggleTagFilterPane()">
 
 										<!-- icon -->
 										<svg class="icon funnel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -683,7 +605,7 @@
 								<li class="toggleritem">
 
 									<!-- settingsbtn -->
-									<div class="settingsbtn panetoggle btn" onclick="toggleSettingsPane()">
+									<div class="settingsbtn togglerbtn btn" onclick="toggleSettingsPane()">
 
 										<!-- icon -->
 										<svg class="icon gear" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
@@ -742,6 +664,96 @@
 							</div>
 							<!-- /panehead -->
 
+							<!-- panebody -->
+							<div class="panebody">
+
+								<!-- stylelist -->
+								<ul class="stylelist">
+
+									<!-- styleitem -->
+									<li class="styleitem">
+
+										<!-- stylebtn -->
+										<div class="stylebtn btn" data-styleid="0" title="Small grid" onclick="setLayoutSizeStyle(event)">
+
+											<!-- icon -->
+											<svg class="icon gridsmall" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path d="M4 2v2H2V2zm1 12v-2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m5 10v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V7a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1m0-5V2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1M9 2v2H7V2zm5 0v2h-2V2zM4 7v2H2V7zm5 0v2H7V7zm5 0h-2v2h2zM4 12v2H2v-2zm5 0v2H7v-2zm5 0v2h-2v-2zM12 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm-1 6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm1 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z"/>
+											</svg>
+											<!-- /icon -->
+
+											<!-- icon -->
+											<svg class="icon gridsmall bold" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+											</svg>
+											<!-- /icon -->
+
+										</div>
+										<!-- /stylebtn -->
+
+									</li>
+									<!-- /styleitem -->
+
+									<!-- styleitem -->
+									<li class="styleitem">
+
+										<!-- stylebtn -->
+										<div class="stylebtn btn" data-styleid="1" title="Medium grid" onclick="setLayoutSizeStyle(event)">
+
+											<!-- icon -->
+											<svg class="icon gridlarge" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+											</svg>
+											<!-- /icon -->
+
+											<!-- icon -->
+											<svg class="icon gridlarge bold" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
+											</svg>
+											<!-- /icon -->
+
+										</div>
+										<!-- /stylebtn -->
+
+									</li>
+									<!-- /styleitem -->
+
+									<!-- styleitem -->
+									<li class="styleitem">
+
+										<!-- stylebtn -->
+										<div class="stylebtn btn" data-styleid="2" title="Large grid" onclick="setLayoutSizeStyle(event)">
+
+											<!-- icon -->
+											<!-- <svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+											</svg> -->
+											<!-- /icon -->
+
+											<!-- icon -->
+											<!-- <svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2m0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14"/>
+											</svg> -->
+											<!-- /icon -->
+
+											<!-- icon -->
+											<svg class="icon list" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<path d="M3 0h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm0 8h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+											</svg>
+											<!-- /icon -->
+
+										</div>
+										<!-- /stylebtn -->
+
+									</li>
+									<!-- /styleitem -->
+
+								</ul>
+								<!-- /stylelist -->
+
+							</div>
+							<!-- /panebody -->
+
 						</div>
 						<!-- /stylepane -->
 
@@ -777,107 +789,113 @@
 							</div>
 							<!-- /panehead -->
 
-							<!-- filterlist -->
-							<ul class="filterlist">
+							<!-- panebody -->
+							<div class="panebody">
 
-								<!-- filtertype -->
-								<li class="filtertype open" data-tagfiltertypeid="xyz">
+								<!-- filtergroups -->
+								<ul class="filtergroups">
 
-									<!-- filterblock -->
-									<div class="filterblock">
+									<!-- filtergroup -->
+									<li class="filtergroup open" data-tagfiltertypeid="xyz">
 
-										<!-- blockhead -->
-										<div class="blockhead">
+										<!-- filterblock -->
+										<div class="filterblock">
 
-											<!-- filtertypename -->
-											<h2 class="filtertypename">
+											<!-- blockhead -->
+											<div class="blockhead">
 
-												<!-- caption -->
-												<span class="caption">Filter Type</span>
-												<!-- /caption -->
+												<!-- filtertypename -->
+												<h2 class="filtertypename">
 
-											</h2>
-											<!-- /filtertypename -->
+													<!-- caption -->
+													<span class="caption">Filter Type</span>
+													<!-- /caption -->
 
-											<!-- icon -->
-											<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-												<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-											</svg>
-											<!-- /icon -->
+												</h2>
+												<!-- /filtertypename -->
 
-											<!-- icon -->
-											<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-												<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-											</svg>
-											<!-- /icon -->
+												<!-- icon -->
+												<svg class="icon arrow up" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- icon -->
+												<svg class="icon arrow dn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+												</svg>
+												<!-- /icon -->
+
+											</div>
+											<!-- /blockhead -->
+
+											<!-- blockbody -->
+											<div class="blockbody">
+
+												<!-- filterlist -->
+												<ul class="filterlist">
+
+													<!-- filteritem -->
+													<li class="filteritem" data-tagfilteritemvalueid="xyz" title="xyz">
+
+														<!-- filteritemcontroller -->
+														<input class="filteritemcontroller" type="checkbox" id="uniqueitemid">
+														<!-- /filteritemcontroller -->
+
+														<!-- filteritemfront -->
+														<label class="filteritemfront" for="uniqueitemid">
+
+															<!-- icon -->
+															<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+																<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
+															</svg>
+															<!-- /icon -->
+
+															<!-- caption -->
+															<span class="caption">Filter Item</span>
+															<!-- /caption -->
+
+															<!-- matchcount -->
+															<span class="matchcount">0</span>
+															<!-- /matchcount -->
+
+														</label>
+														<!-- /filteritemfront -->
+
+													</li>
+													<!-- /filteritem -->
+
+												</ul>
+												<!-- /filterlist -->
+
+											</div>
+											<!-- /blockbody -->
 
 										</div>
-										<!-- /blockhead -->
+										<!-- /filterblock -->
 
-										<!-- blockbody -->
-										<div class="blockbody">
+									</li>
+									<!-- /filtergroup -->
 
-											<!-- filteritemslist -->
-											<ul class="filteritemslist">
+								</ul>
+								<!-- /filtergroups -->
 
-												<!-- filteritem -->
-												<li class="filteritem" data-tagfilteritemvalueid="xyz" title="xyz">
+								<!-- btnpanel -->
+								<div class="btnpanel panel">
 
-													<!-- filteritemcontroller -->
-													<input class="filteritemcontroller" type="checkbox" id="uniqueitemid">
-													<!-- /filteritemcontroller -->
+									<!-- clearbtn -->
+									<div class="btn clearbtn">Clear</div>
+									<!-- /clearbtn -->
 
-													<!-- filteritemfront -->
-													<label class="filteritemfront" for="uniqueitemid">
+									<!-- applybtn -->
+									<div class="btn applybtn">Apply</div>
+									<!-- /applybtn -->
 
-														<!-- icon -->
-														<svg class="icon check" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-															<path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022"/>
-														</svg>
-														<!-- /icon -->
-
-														<!-- caption -->
-														<span class="caption">Filter Item</span>
-														<!-- /caption -->
-
-														<!-- matchcount -->
-														<span class="matchcount">0</span>
-														<!-- /matchcount -->
-
-													</label>
-													<!-- /filteritemfront -->
-
-												</li>
-												<!-- /filteritem -->
-
-											</ul>
-											<!-- /filteritemslist -->
-
-										</div>
-										<!-- /blockbody -->
-
-									</div>
-									<!-- /filterblock -->
-
-								</li>
-								<!-- /filtertype -->
-
-							</ul>
-							<!-- /filterlist -->
-
-							<!-- btnpanel -->
-							<div class="btnpanel panel">
-
-								<!-- clearbtn -->
-								<div class="btn clearbtn">Clear</div>
-								<!-- /clearbtn -->
-
-								<!-- applybtn -->
-								<div class="btn applybtn">Apply</div>
-								<!-- /applybtn -->
+								</div>
+								<!-- /btnpanel -->
 
 							</div>
-							<!-- /btnpanel -->
+							<!-- /panebody -->
 
 						</div>
 						<!-- /filterpane -->
@@ -914,75 +932,81 @@
 							</div>
 							<!-- /panehead -->
 
-							<!-- switchpanel -->
-							<div class="switchpanel panel">
+							<!-- panebody -->
+							<div class="panebody">
 
-								<!-- switchblock -->
-								<div class="switchblock">
+								<!-- switchpanel -->
+								<div class="switchpanel panel">
 
-									<!-- choice -->
-									<span class="choice any">Any</span>
-									<!-- /choice -->
+									<!-- switchblock -->
+									<div class="switchblock">
 
-									<!-- switch -->
-									<label class="switch">
+										<!-- choice -->
+										<span class="choice any">Any</span>
+										<!-- /choice -->
 
-										<!-- switchcontroller -->
-										<input class="anyall switchcontroller" type="checkbox">
-										<!-- /switchcontroller -->
+										<!-- switch -->
+										<label class="switch">
 
-										<!-- back -->
-										<div class="back"></div>
-										<!-- /back -->
+											<!-- switchcontroller -->
+											<input class="anyall switchcontroller" type="checkbox">
+											<!-- /switchcontroller -->
 
-										<!-- ball -->
-										<div class="ball"></div>
-										<!-- /ball -->
+											<!-- back -->
+											<div class="back"></div>
+											<!-- /back -->
 
-									</label>
-									<!-- /switch -->
+											<!-- ball -->
+											<div class="ball"></div>
+											<!-- /ball -->
 
-									<!-- choice -->
-									<span class="choice all">All</span>
-									<!-- /choice -->
+										</label>
+										<!-- /switch -->
+
+										<!-- choice -->
+										<span class="choice all">All</span>
+										<!-- /choice -->
+
+									</div>
+									<!-- /switchblock -->
+
+									<!-- switchblock -->
+									<div class="switchblock">
+
+										<!-- choice -->
+										<span class="choice soft">Soft</span>
+										<!-- /choice -->
+
+										<!-- switch -->
+										<label class="switch">
+
+											<!-- switchcontroller -->
+											<input class="softhard switchcontroller" type="checkbox">
+											<!-- /switchcontroller -->
+
+											<!-- back -->
+											<div class="back"></div>
+											<!-- /back -->
+
+											<!-- ball -->
+											<div class="ball"></div>
+											<!-- /ball -->
+
+										</label>
+										<!-- /switch -->
+
+										<!-- choice -->
+										<span class="choice hard">Hard</span>
+										<!-- /choice -->
+
+									</div>
+									<!-- /switchblock -->
 
 								</div>
-								<!-- /switchblock -->
-
-								<!-- switchblock -->
-								<div class="switchblock">
-
-									<!-- choice -->
-									<span class="choice soft">Soft</span>
-									<!-- /choice -->
-
-									<!-- switch -->
-									<label class="switch">
-
-										<!-- switchcontroller -->
-										<input class="softhard switchcontroller" type="checkbox">
-										<!-- /switchcontroller -->
-
-										<!-- back -->
-										<div class="back"></div>
-										<!-- /back -->
-
-										<!-- ball -->
-										<div class="ball"></div>
-										<!-- /ball -->
-
-									</label>
-									<!-- /switch -->
-
-									<!-- choice -->
-									<span class="choice hard">Hard</span>
-									<!-- /choice -->
-
-								</div>
-								<!-- /switchblock -->
+								<!-- /switchpanel -->
 
 							</div>
-							<!-- /switchpanel -->
+							<!-- /panebody -->
 
 						</div>
 						<!-- /settingspane -->
@@ -990,11 +1014,11 @@
 						<!-- filterpanel -->
 						<div class="filterpanel">
 
-							<!-- filterlist -->
-							<ul class="filterlist">
+							<!-- filtergroups -->
+							<ul class="filtergroups">
 
-								<!-- filtertype -->
-								<li class="filtertype open" data-tagfiltertypeid="xyz">
+								<!-- filtergroup -->
+								<li class="filtergroup open" data-tagfiltertypeid="xyz">
 
 									<!-- togglebtn -->
 									<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
@@ -1054,8 +1078,8 @@
 										<!-- blockbody -->
 										<div class="blockbody">
 
-											<!-- filteritemslist -->
-											<ul class="filteritemslist">
+											<!-- filterlist -->
+											<ul class="filterlist">
 
 												<!-- filteritem -->
 												<li class="filteritem" data-tagfilteritemvalueid="xyz" title="xyz">
@@ -1074,7 +1098,7 @@
 												<!-- /filteritem -->
 
 											</ul>
-											<!-- /filteritemslist -->
+											<!-- /filterlist -->
 
 										</div>
 										<!-- /blockbody -->
@@ -1083,10 +1107,10 @@
 									<!-- /filterblock -->
 
 								</li>
-								<!-- /filtertype -->
+								<!-- /filtergroup -->
 
 							</ul>
-							<!-- /filterlist -->
+							<!-- /filtergroups -->
 
 						</div>
 						<!-- /filterpanel -->
@@ -1755,6 +1779,7 @@
 		<script src="../assets/script/blocks.js" type="text/javascript"></script>
 		<!-- Blog Script -->
 		<script src="../assets/script/blog.js" type="text/javascript"></script>
+		<script src="../assets/script/blogpane.js" type="text/javascript"></script>
 		<script src="../assets/script/blogstyle.js" type="text/javascript"></script>
 		<script src="../assets/script/blogfilter.js" type="text/javascript"></script>
 		<script src="../assets/script/blogpreview.js" type="text/javascript"></script>

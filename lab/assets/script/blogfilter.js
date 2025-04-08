@@ -1,56 +1,6 @@
 
 
 
-// Get components of tag filter pane. 
-const tagfilterpane = {
-
-	// Get container for filter pane. 
-	block: document.querySelector('div#container section.blog div.grid div.body div.filterpane'),
-
-	// Get buttons in filter pane. 
-	applybtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.btnpanel div.applybtn'),
-	clearbtn: document.querySelector('div#container section.blog div.grid div.body div.filterpane div.btnpanel div.clearbtn'),
-
-	// Get destination for grouped types of filter items in filter pane. 
-	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpane ul.filterlist'),
-	// Get group headers in filter pane. 
-	// groupheaders: document.querySelectorAll('div#container section.blog div.grid div.body div.filterpane ul.filterlist li.filtertype div.filterblock div.blockhead'),
-	// Get tag filter controllers. 
-	tagfiltercontrollers:undefined,
-
-	// Get destination for list of applied filters. 
-	taglistdestination: document.querySelector('div#container section.blog div.grid div.body div.appliedfilters ul.taglist'),
-};
-// console.log('Tag filter pane components:',tagfilterpane);
-
-// Get components of layout style pane. 
-const layoutstylepane = {
-
-	// Get container for layout style pane. 
-	block: document.querySelector('div#container section.blog div.grid div.body div.stylepane'),
-};
-
-// Get components of settings pane. 
-const settingspane = {
-
-	// Get container for settings pane. 
-	block: document.querySelector('div#container section.blog div.grid div.body div.settingspane'),
-
-	// Get switch for filter type (matching any criterion vs matching all criteria). 
-	scopeswitch: {
-		anybtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.any'),
-		allbtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.all'),
-		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock label.switch input.switchcontroller.anyall'),
-	},
-
-	// Get switch for search filter type (post layout modification vs post layout reload). 
-	strengthswitch: {
-		softbtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.soft'),
-		hardbtn: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock span.choice.hard'),
-		switchcontroller: document.querySelector('div#container section.blog div.grid div.body div.settingspane div.switchpanel div.switchblock label.switch input.switchcontroller.softhard'),
-	},
-};
-
 // Get components of tag filter panel. 
 const tagfilterpanel = {
 
@@ -58,7 +8,7 @@ const tagfilterpanel = {
 	block: document.querySelector('div#container section.blog div.grid div.body div.filterpanel'),
 
 	// Get destination for grouped types of filter items in filter panel. 
-	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpanel ul.filterlist'),
+	filterlistdestination: document.querySelector('div#container section.blog div.grid div.body div.filterpanel ul.filtergroups'),
 };
 // console.log('Tag filter panel components:',tagfilterpanel);
 
@@ -156,7 +106,7 @@ function loadFilterSystem() {
 				if(hasSearchQueryPresent) {
 
 					// Get all filter blocks. 
-					let filtertypeblocks = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtertype');
+					let filtertypeblocks = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtergroup');
 
 					// Go thru each word in search query. 
 					for(let queryword of searchquerywords) {
@@ -278,7 +228,7 @@ function loadFilterSystem() {
 				return matchAnyWord;
 
 				// Compile match criteria. 
-				return ( matchFullQuery || matchAllWords || matchAnyWord );
+				// return ( matchFullQuery || matchAllWords || matchAnyWord );
 
 				/**/
 
@@ -360,16 +310,16 @@ function loadFilterSystem() {
 		let mobilefiltergroupslayout = '';
 
 		// Go thru each filter type group. 
-		for(let filtertype of postFilterData) {
-			// console.log('Filter type group:',filtertype);
+		for(let filtertypegroup of postFilterGroups) {
+			// console.log('Filter type group:',filtertypegroup);
 
 			// Skip invisible filter types for layout. 
-			if( !filtertype['filtertypevisible'] ) continue;
+			if( !filtertypegroup['filtertypevisible'] ) continue;
 
 			// Add filter type to primary layout. 
 			filtergroupslayout += `
-			<!-- filtertype -->
-			<li class="filtertype open" data-tagfiltertypeid="${filtertype.filtertypeid}">
+			<!-- filtergroup -->
+			<li class="filtergroup open" data-tagfiltertypeid="${ filtertypegroup['filtertypeid'] }">
 
 				<!-- filterblock -->
 				<div class="filterblock">
@@ -381,7 +331,7 @@ function loadFilterSystem() {
 						<h2 class="filtertypename">
 
 							<!-- caption -->
-							<span class="caption">${filtertype.filtertypename}</span>
+							<span class="caption">${ filtertypegroup['filtertypename'] }</span>
 							<!-- /caption -->
 
 						</h2>
@@ -405,9 +355,9 @@ function loadFilterSystem() {
 					<!-- blockbody -->
 					<div class="blockbody">
 
-						<!-- filteritemslist -->
-						<ul class="filteritemslist">${ createFilterItemsListLayout(filtertype) }</ul>
-						<!-- /filteritemslist -->
+						<!-- filterlist -->
+						<ul class="filterlist">${ createFilterItemsListLayout(filtertypegroup) }</ul>
+						<!-- /filterlist -->
 
 					</div>
 					<!-- /blockbody -->
@@ -416,18 +366,18 @@ function loadFilterSystem() {
 				<!-- /filterblock -->
 
 			</li>
-			<!-- /filtertype -->`;
+			<!-- /filtergroup -->`;
 
 			// Add filter type to mobile layout. 
 			mobilefiltergroupslayout += `
-			<!-- filtertype -->
-			<li class="filtertype" data-tagfiltertypeid="${filtertype.filtertypeid}">
+			<!-- filtergroup -->
+			<li class="filtergroup" data-tagfiltertypeid="${ filtertypegroup['filtertypeid'] }">
 
 				<!-- togglebtn -->
 				<div class="togglebtn" onclick="this.parentElement.classList.toggle('open')">
 
 					<!-- caption -->
-					<span class="caption">${filtertype.filtertypename}</span>
+					<span class="caption">${ filtertypegroup['filtertypename'] }</span>
 					<!-- /caption -->
 
 					<!-- icon -->
@@ -459,7 +409,7 @@ function loadFilterSystem() {
 						<h2 class="filtertypename">
 
 							<!-- caption -->
-							<span class="caption">${filtertype.filtertypename}</span>
+							<span class="caption">${ filtertypegroup['filtertypename'] }</span>
 							<!-- /caption -->
 
 						</h2>
@@ -481,9 +431,9 @@ function loadFilterSystem() {
 					<!-- blockbody -->
 					<div class="blockbody">
 
-						<!-- filteritemslist -->
-						<ul class="filteritemslist">${ createFilterItemsListLayout(filtertype,true) }</ul>
-						<!-- /filteritemslist -->
+						<!-- filterlist -->
+						<ul class="filterlist">${ createFilterItemsListLayout(filtertypegroup,true) }</ul>
+						<!-- /filterlist -->
 
 					</div>
 					<!-- /blockbody -->
@@ -492,7 +442,7 @@ function loadFilterSystem() {
 				<!-- /filterblock -->
 
 			</li>
-			<!-- /filtertype -->`;
+			<!-- /filtergroup -->`;
 		}
 
 		// Display filter groups in filter pane. 
@@ -513,13 +463,13 @@ function loadFilterSystem() {
 		/***/
 
 		// Create layout for filter items list. 
-		function createFilterItemsListLayout(filtertype,usemobileversion) {
+		function createFilterItemsListLayout(filtertypegroup,usemobileversion) {
 
 			// Get id for given filter type group. 
-			let filtertypeid = filtertype.filtertypeid;
+			let filtertypeid = filtertypegroup['filtertypeid'];
 
 			// Get list of items for given filter type group. 
-			let filtergroupitemslist = filtertype.filteritems;
+			let filtergroupitemslist = filtertypegroup['filteritems'];
 			// console.log('Creating layout for filter group items list',filtergroupitemslist);
 
 			// Initialize layout for filter group items list. 
@@ -546,7 +496,7 @@ function loadFilterSystem() {
 				if(!itemvalue) console.log('Filter item value:',itemvalue,filteritem);
 
 				// Get name of current filter item. 
-				let itemname = filtertype.filteritemnamer(itemvalue);
+				let itemname = filtertypegroup.filteritemnamer(itemvalue);
 				// console.log('Filter item name:',itemname);
 
 				// Create unique id for current filter item. 
@@ -608,7 +558,7 @@ function loadFilterSystem() {
 		function activateFilterHeads() {
 
 			// Get loaded headers in filter pane. 
-			let filtergroupheaders = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtertype div.filterblock div.blockhead');
+			let filtergroupheaders = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtergroup div.filterblock div.blockhead');
 
 			// Go thru each header in filter pane. 
 			for(let header of filtergroupheaders) {
@@ -639,7 +589,7 @@ function loadFilterSystem() {
 		function activateFilterItems() {
 
 			// Get current tag filter controllers. 
-			tagfilterpane['tagfiltercontrollers'] = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtertype div.filterblock div.blockbody ul.filteritemslist li.filteritem input.filteritemcontroller');
+			tagfilterpane['tagfiltercontrollers'] = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtergroup div.filterblock div.blockbody ul.filterlist li.filteritem input.filteritemcontroller');
 
 			// Go thru each tag filter controller. 
 			for(let controller of tagfilterpane['tagfiltercontrollers']) {
@@ -676,51 +626,11 @@ function loadFilterSystem() {
 	}
 }
 
-// Close all window panes. 
-function closeWindowPanes() {
-
-	// Close settings pane. 
-	settingspane['block'].classList.remove('open');
-
-	// Close tag filter pane. 
-	tagfilterpane['block'].classList.remove('open');
-}
-
-// Toggle layout style pane. 
-function toggleStylePane() {
-
-	// Close all window panes. 
-	closeWindowPanes();
-
-	// Toggle tag filter pane. 
-	layoutstylepane['block'].classList.toggle('open');
-}
-
-// Toggle tag filter pane. 
-function toggleTagFilterPane() {
-
-	// Close all window panes. 
-	closeWindowPanes();
-
-	// Toggle tag filter pane. 
-	tagfilterpane['block'].classList.toggle('open');
-}
-
-// Toggle settings pane. 
-function toggleSettingsPane() {
-
-	// Close all window panes. 
-	closeWindowPanes();
-
-	// Toggle settings pane. 
-	settingspane['block'].classList.toggle('open');
-}
-
 // Clear all applied tag filters. 
 function clearTagFilters() {
 
 	// Get current tag filter controllers. 
-	// tagfilterpane['tagfiltercontrollers'] = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtertype div.filterblock div.blockbody ul.filteritemslist li.filteritem input.filteritemcontroller');
+	// tagfilterpane['tagfiltercontrollers'] = tagfilterpane['filterlistdestination'].querySelectorAll('li.filtergroup div.filterblock div.blockbody ul.filterlist li.filteritem input.filteritemcontroller');
 
 	// Go thru each tag filter controller. 
 	for(let controller of tagfilterpane['tagfiltercontrollers']) {
@@ -741,7 +651,7 @@ function applySelectedTagFilters() {
 	let selectedtagfilteritems = [];
 
 	// Get current tag filter controllers. 
-	// tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtertype div.filterblock div.blockbody ul.filteritemslist li.filteritem input.filteritemcontroller');
+	// tagfilterpane.tagfiltercontrollers = tagfilterpane.filterlistdestination.querySelectorAll('li.filtergroup div.filterblock div.blockbody ul.filterlist li.filteritem input.filteritemcontroller');
 
 	// Go thru each tag filter controller. 
 	for(let controller of tagfilterpane['tagfiltercontrollers']) {

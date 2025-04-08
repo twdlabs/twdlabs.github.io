@@ -691,4 +691,3 @@ function createPreviewPanel(projectid) {
 	<iframe class="preview" src="${pageurl}"></iframe>
 	<!-- /preview -->`;
 }
- 

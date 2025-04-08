@@ -32,7 +32,7 @@ function getAuthorNameById(authorid) {
 	let authordata = authorData[authorid];
 
 	// Get name of given author. 
-	let authorname = authordata.authorname;
+	let authorname = authordata['authorname'];
 
 	// Return nothing if author not found. 
 	return authorname ? authorname : '';

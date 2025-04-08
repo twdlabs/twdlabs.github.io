@@ -5,7 +5,7 @@
 const ltdrkswitcher = {
 
 	// Get toggle button for theme selector list. 
-	togglerbtn:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk div.togglebtn'),
+	togglebtn:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk div.togglebtn'),
 
 	// Get icon of toggle button for theme selector list. 
 	togglericon:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.ltdrk div.togglebtn svg.icon.selection'),
@@ -24,7 +24,7 @@ const ltdrkswitcher = {
 const colorswitcher = {
 
 	// Get toggle button for theme selector list. 
-	togglerbtn:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color div.togglebtn'),
+	togglebtn:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color div.togglebtn'),
 
 	// Get icon of toggle button for theme selector list. 
 	togglericon:document.querySelector('div#container header.navbar div.bin div.cornerpanel div.themeswitcher.color div.togglebtn span.color.selection'),
@@ -231,7 +231,7 @@ function loadLtDrkThemeById(themeid) {
 function activateThemeSelectors() {
 
 	// Activate toggle button for color theme selector. 
-	colorswitcher['togglerbtn'].addEventListener('click',toggleColorThemeList);
+	colorswitcher['togglebtn'].addEventListener('click',toggleColorThemeList);
 
 	// Go thru all color theme selector buttons. 
 	for(let themebtn of colorswitcher['themeselectorbtns']) {
@@ -240,7 +240,7 @@ function activateThemeSelectors() {
 	}
 
 	// Activate toggle button for light/dark theme selector. 
-	ltdrkswitcher['togglerbtn'].addEventListener('click',toggleLtDrkThemeList);
+	ltdrkswitcher['togglebtn'].addEventListener('click',toggleLtDrkThemeList);
 
 	// Go thru all light/dark theme selector buttons. 
 	for(let themebtn of ltdrkswitcher['themeselectorbtns']) {

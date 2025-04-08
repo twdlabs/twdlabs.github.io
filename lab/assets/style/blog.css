@@ -13,12 +13,14 @@ div#container section.blog div.grid div.head div.modpanel {grid-column-end:span 
 div#container section.blog div.grid div.head div.modpanel {display:flex; flex-direction:row; align-items:center; max-width:calc(var(--pagewidth) / 3); margin:0 auto;}
 div#container section.blog div.grid div.head div.modpanel ul.togglerlist {display:flex; flex-direction:row; align-items:center; list-style:none; padding:0; margin:0;}
 div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem {margin-left:.5rem;}
+div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist li.styleitem div.stylebtn,
 div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn {display:grid; place-items:center; cursor:pointer; transition:.125s; padding:.75rem .875rem; border-radius:5rem; box-shadow:var(--boxshadow);}
+div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist li.styleitem div.stylebtn:hover,
 div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn:hover {background-color:var(--forecolor); color:var(--backcolor2);}
+div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist li.styleitem div.stylebtn svg.icon,
 div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn svg.icon {font-size:1.5rem;}
-/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn {display:none;} */
-div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn svg.icon.bold {display:none;}
-/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.panetoggle {} */
+/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.togglerbtn {} */
+/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.stylesbtn {} */
 /* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {} */
 /* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.settingsbtn {} */
 div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {position:relative; overflow:hidden; width:100%; /* max-width:calc(var(--pagewidth)/3); */ border-radius:5rem; /* margin:2rem auto; */ margin-right:.75rem; box-shadow:var(--boxshadow);}
@@ -56,6 +58,12 @@ div#container section.blog div.grid div.body.split div.settingspane {grid-area:s
 div#container section.blog div.grid div.body.split div.appliedfilters {grid-area:af;}
 div#container section.blog div.grid div.body.split div.posts {grid-area:posts;}
 div#container section.blog div.grid div.body.split nav.pagepanel {grid-area:npp;}
+div#container section.blog div.grid div.body div.windowpane div.panebody {padding-bottom:.5rem;}
+div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist {display:flex; flex-direction:row; justify-content:center; align-items:center; list-style:none; padding:0; margin:0;}
+/* div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist li.styleitem {} */
+/* div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist li.styleitem div.stylebtn {display:none;} */
+/* div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist li.styleitem div.stylebtn svg.icon {} */
+div#container section.blog div.grid div.body div.windowpane div.panebody ul.stylelist li.styleitem div.stylebtn svg.icon.bold {display:none;}
 
 /* Blog Section: Null Results Label */
 div#container section.blog div.grid div.body div.posts div.emptyresultslabel {display:none; font-size:1.5rem; text-align:center; opacity:.625;}
@@ -185,8 +193,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	div#container section.blog div.grid div.head div.modpanel {grid-column-end:span 1;}
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.panetoggle {} */
+	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.togglerbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.settingsbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
@@ -233,8 +240,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.panetoggle {} */
+	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.togglerbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.settingsbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
@@ -281,8 +287,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.panetoggle {} */
+	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.togglerbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.settingsbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
@@ -329,8 +334,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	div#container section.blog div.grid div.head div.modpanel {flex-direction:column;}
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.panetoggle {} */
+	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.togglerbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.settingsbtn {} */
 	div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {margin-right:0; margin-bottom:1rem;}
@@ -378,9 +382,8 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.panetoggle {} */
-	div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {display:none;}
+	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.togglerbtn {} */
+	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {display:none;} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.settingsbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
 
@@ -431,8 +434,7 @@ div#container section.blog div.grid div.body div.posts div.zoomer div.zoombtn {d
 	/* div#container section.blog div.grid div.head div.modpanel {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.btn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.sizerbtn {} */
-	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.panetoggle {} */
+	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.togglerbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.filtersbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel ul.togglerlist li.toggleritem div.settingsbtn {} */
 	/* div#container section.blog div.grid div.head div.modpanel div.filtersearchquery {} */
