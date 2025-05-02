@@ -6,36 +6,12 @@
 		<meta charset="UTF-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<link href="../atgicon.ico" rel="icon"/>
+		<link href="./../atgicon.ico" rel="icon"/>
 		<title>Pixel Art Generator</title>
 
 		<!-- Main Stylesheet -->
-		<!-- <link href="pixelart.css" rel="stylesheet" type="text/css"/> -->
-		<style type="text/css">
-			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
-
-
-			* {box-sizing:border-box;}
-
-
-			:root {
-				--themecolor:#f4c531;
-				--boxshadow:0 0 1rem #0002;
-				--boxshadow:0 0 .25rem #0003;
-			}
-
-
-			body {font-family:Nunito,sans-serif; margin:0;}
-
-
-			div#container {background-color:var(--themecolor); /* background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); */}
-			div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
-			
-			div#container main.main {background-color:white; display:flex; flex-direction:column; align-items:center; /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
-			div#container main.main div.canvas {display:grid; grid-template-columns:repeat(3,1fr); margin:0 auto;}
-			div#container main.main div.canvas div.pixel {background-color:white; height:1rem; width:1rem; cursor:pointer; border:1px solid #0008;}
-			
-		</style>
+		<link href="./pixelart.css" rel="stylesheet" type="text/css"/>
+		<!-- <style type="text/css"></style> -->
 	</head>
 
 	<body>
@@ -56,7 +32,7 @@
 					<!-- pixel -->
 					<div class="pixel" draggable="false"></div>
 					<!-- /pixel -->
-					
+
 				</div>
 				<!-- /canvas -->
 
@@ -67,81 +43,12 @@
 		<!-- /#container -->
 
 
-		<!-- Database Script -->
+		<!-- Database -->
 		<!-- <script src="database.js" type="text/javascript"></script> -->
 
 		<!-- Main Script -->
-		<!-- <script src="pixelart.js" type="text/javascript"></script> -->
-		<script type="text/javascript">
-
-			// Get canvas. 
-			const canvas = document.querySelector('div.canvas');
-
-			// Define size of canvas. 
-			let size = 9;
-
-			// Define initial value of selected color. 
-			let selectedColor = 'black';
-
-			// Define state of press. 
-			let pressedDown = false;
-
-			// Create matrix of pixels. 
-			createCanvas();
-
-			/*****/
-
-			// Create matrix of pixels. 
-			function createCanvas() {
-				let result = '';
-				for(let i=0;i<size*size;i++) {
-					result += `
-						<!-- pixel -->
-						<div class="pixel" draggable="false"></div>
-						<!-- /pixel -->`;
-				}
-
-				// Add pixels to page. 
-				canvas.innerHTML = result;
-
-				// Set size to canvas on page. 
-				canvas.style.gridTemplateColumns = `repeat(${size},1fr)`;
-
-				// Activate pixel clicks. 
-				let allPixels = document.querySelectorAll('div.canvas div.pixel');
-				for(let pixel of allPixels) {
-					pixel.addEventListener('mousedown',pixelHit);
-					pixel.addEventListener('mouseenter',pixelRoll);
-				}
-			}
-			document.addEventListener('mouseup',pixelLift);
-
-			// Define pixel reaction. 
-			function pixelHit(event) {
-
-				// 
-				pressedDown = true;
-
-				// Fill pixel. 
-				let pixel = event.currentTarget;
-				pixel.style.backgroundColor = selectedColor;
-			}
-
-			// Define pixel reaction. 
-			function pixelRoll(event) {
-
-				// Fill pixel. 
-				let pixel = event.currentTarget;
-				if(pressedDown) pixel.style.backgroundColor = selectedColor;
-			}
-
-			// Define pixel reaction. 
-			function pixelLift(event) {
-
-				// 
-				pressedDown = false;
-			}
-		</script>
+		<script src="./pixelart.js" type="text/javascript"></script>
+		<script type="text/javascript"></script>
 
 	</body>
 

@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box;}
+
+
+:root {
+	--yellow:#f4c531;
+	--blackglass:#0008;
+	--boxshadow:0 0 1rem #0002;
+	--boxshadow:0 0 .25rem #0003;
+}
+
+
+body {font-family:Nunito,sans-serif; margin:0;}
+
+
+div#container {background-color:var(--yellow); /* background:#1fc8db linear-gradient(141deg,#9fb8ad 0%,#1fc8db 51%,#2cb5e8 75%); */}
+div#container {display:grid; place-items:center; min-height:100vh; padding:1rem;}
+
+div#container main.main {background-color:white; display:flex; flex-direction:column; align-items:center; /* width:100%; max-width:20rem; */ padding:1rem; border-radius:.5rem; box-shadow:var(--boxshadow);}
+div#container main.main div.canvas {display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); padding:var(--gap); --gap:.125rem; border:1px solid var(--blackglass); border-radius:.25rem; margin:0 auto; margin-top:.5rem;}
+div#container main.main div.canvas div.pixel {background-color:white; font-size:2rem; height:1em; width:1em; cursor:pointer; border:1px solid var(--blackglass); border-radius:.125rem;}
+
