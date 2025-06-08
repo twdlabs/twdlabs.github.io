@@ -11,16 +11,21 @@
 
 
 			body {font-family:Nunito,sans-serif;}
-			div#container {}
-			div#container h1.head {margin-top:2em; margin-bottom:.5rem;}
-			div#container form.user {background-color:gold; /* display:inline-block; */ max-width:24rem; padding:.5rem; border-radius:.375rem;}
-			div#container form.user div.field {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
-			div#container form.user div.field.b {grid-template-columns:repeat(2,1fr); grid-gap:.5em;}
-			div#container form.user div.field label.label {font-weight:bold; cursor:pointer;}
-			div#container form.user div.field input.datafield {width:100%;/*  max-width:12rem; */ padding:.375em; /* border-radius:.25em; border:0 none; */}
-			div#container form.user div.field button.btn {padding:.375em; cursor:pointer;}
-			div#container table.datatable {background-color:gold; padding:.5rem; border-radius:.375rem;}
-			div#container table.datatable.orderform tr.row td.cell input {max-width:5rem;}
+			/* div#container {display:grid; grid-template-columns: repeat(2,1fr);} */
+			div#container h1.head {margin:0;}
+			div#container div.item { margin-top:1.25em;}
+			div#container form.form h2.head {text-align:center; margin:0;}
+			div#container form.form {background-color:gold; /* display:inline-block; */ max-width:28rem; padding:.5rem; border-radius:.375rem;}
+			div#container form.form div.field {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
+			div#container form.form div.field.b {grid-template-columns:repeat(2,1fr); grid-gap:.5em;}
+			div#container form.form div.field label.label {font-weight:bold; cursor:pointer;}
+			div#container form.form div.field select.datafield,
+			div#container form.form div.field input.datafield {width:100%;/*  max-width:12rem; */ padding:.375em; /* border-radius:.25em; border:0 none; */}
+			div#container form.form div.field button.btn {background-color:black; color:white; padding:.75em; cursor:pointer; border-radius:.5em; border:0 none;}
+			/* div#container div.table {} */
+			div#container div.table h2.head {text-align:center; margin:0;}
+			div#container div.table/*  table.datatable */ {background-color:gold; padding:.5rem; border-radius:.375rem;}
+			div#container div.table table.datatable.orderform tr.row td.cell input {max-width:5rem;}
 		</style>
 	</head>
 
@@ -30,516 +35,622 @@
 		<div id="container">
 
 			<!-- head -->
-			<h1 class="head">Registration</h1>
+			<h1 class="head">Baba's Bagel</h1>
 			<!-- /head -->
 
-			<!-- user -->
-			<form class="user">
+			<!-- item -->
+			<div class="item">
 
-				<!-- field -->
-				<div class="field">
-		
-					<!-- label -->
-					<label class="label" for="parentname">Parent Name</label>
-					<!-- /label -->
-			
-					<!-- datafield -->
-					<input class="datafield" type="text" id="parentname" name="parentname" placeholder="John Smith">
-					<!-- /datafield -->
-		
-				</div>
-				<!-- /field -->
-		
-				<!-- field -->
-				<div class="field">
-		
-					<!-- label -->
-					<label class="label" for="childname">Child Name</label>
-					<!-- /label -->
-			
-					<!-- datafield -->
-					<input class="datafield" type="text" id="childname" name="childname" placeholder="Johnny Smith">
-					<!-- /datafield -->
-		
-				</div>
-				<!-- /field -->
-		
-				<!-- field -->
-				<div class="field">
-		
-					<!-- label -->
-					<label class="label" for="registrationemail">Email address</label>
-					<!-- /label -->
-			
-					<!-- datafield -->
-					<input class="datafield" type="text" id="registrationemail" name="emailaddress" placeholder="johnsmith@gmail.com">
-					<!-- /datafield -->
-		
-				</div>
-				<!-- /field -->
-		
-				<!-- field -->
-				<div class="field">
-		
-					<!-- label -->
-					<label class="label" for="registrationpassword">Password</label>
-					<!-- /label -->
-			
-					<!-- datafield -->
-					<input class="datafield" type="password" id="registrationpassword" name="password" placeholder="********">
-					<!-- /datafield -->
-		
-				</div>
-				<!-- /field -->
-		
-				<!-- field -->
-				<div class="field b">
+			</div>
+			<!-- /item -->
 
-					<!-- btn -->
-					<button class="btn" type="submit">Go</button>
-					<!-- /btn -->
+			<!-- item -->
+			<div class="item">
 
-					<!-- btn -->
-					<button class="btn" type="reset">Clear</button>
-					<!-- /btn -->
-		
-				</div>
-				<!-- /field -->
-
-			</form>
-			<!-- /user -->
-
-			<!-- head -->
-			<h1 class="head">Login</h1>
-			<!-- /head -->
-
-			<!-- user -->
-			<form class="user">
-		
-				<!-- field -->
-				<div class="field">
-		
-					<!-- label -->
-					<label class="label" for="loginemail">Email address</label>
-					<!-- /label -->
-			
-					<!-- datafield -->
-					<input class="datafield" type="text" id="loginemail" name="emailaddress" placeholder="johnsmith@gmail.com">
-					<!-- /datafield -->
-		
-				</div>
-				<!-- /field -->
-		
-				<!-- field -->
-				<div class="field">
-		
-					<!-- label -->
-					<label class="label" for="loginpw">Password</label>
-					<!-- /label -->
-			
-					<!-- datafield -->
-					<input class="datafield" type="password" id="loginpw" name="password" placeholder="********">
-					<!-- /datafield -->
-		
-				</div>
-				<!-- /field -->
-		
-				<!-- field -->
-				<div class="field b">
-
-					<!-- btn -->
-					<button class="btn" type="submit">Go</button>
-					<!-- /btn -->
-
-					<!-- btn -->
-					<button class="btn" type="reset">Clear</button>
-					<!-- /btn -->
-		
-				</div>
-				<!-- /field -->
-
-			</form>
-			<!-- /user -->
-
-			<!-- head -->
-			<h1 class="head">Place Order</h1>
-			<!-- /head -->
-
-			<!-- datatable -->
-			<table class="datatable orderform">
-
-				<!-- row -->
-				<tr class="row">
+				<!-- user -->
+				<form class="user form" action="./reg.php">
 
 					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption"></span>
-						<!-- /caption -->
-
-					</th>
+					<h2 class="head">Sign up</h1>
 					<!-- /head -->
 
-					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">Monday</span>
-						<!-- /caption -->
-
-					</th>
-					<!-- /head -->
-
-					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">Tuesday</span>
-						<!-- /caption -->
-
-					</th>
-					<!-- /head -->
-
-					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">Wednesday</span>
-						<!-- /caption -->
-
-					</th>
-					<!-- /head -->
-
-					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">Thursday</span>
-						<!-- /caption -->
-
-					</th>
-					<!-- /head -->
-
-					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">Friday</span>
-						<!-- /caption -->
-
-					</th>
-					<!-- /head -->
-
-				</tr>
-				<!-- /row -->
-
-				<!-- row -->
-				<tr class="row">
-
-					<!-- cell -->
-					<th class="cell">
+					<!-- field -->
+					<div class="field">
 
 						<!-- label -->
-						<label class="label" for="breakfast">Breakfast</label>
+						<label class="label" for="parentname">Parent Name</label>
 						<!-- /label -->
 
-					</th>
-					<!-- /cell -->
-
-					<!-- cell -->
-					<td class="cell">
-
 						<!-- datafield -->
-						<input class="datafield" type="number" id="mondaybreakfast" name="mondaybreakfast">
+						<input class="datafield" type="text" id="parentname" name="parentname" placeholder="John Smith">
 						<!-- /datafield -->
 
-					</td>
-					<!-- /cell -->
+					</div>
+					<!-- /field -->
 
-					<!-- cell -->
-					<td class="cell">
-
-						<!-- datafield -->
-						<input class="datafield" type="number" id="tuesdaybreakfast" name="tuesdaybreakfast">
-						<!-- /datafield -->
-
-					</td>
-					<!-- /cell -->
-
-					<!-- cell -->
-					<td class="cell">
-
-						<!-- datafield -->
-						<input class="datafield" type="number" id="wednesdaybreakfast" name="wednesdaybreakfast">
-						<!-- /datafield -->
-
-					</td>
-					<!-- /cell -->
-
-					<!-- cell -->
-					<td class="cell">
-
-						<!-- datafield -->
-						<input class="datafield" type="number" id="thursdaybreakfast" name="thursdaybreakfast">
-						<!-- /datafield -->
-
-					</td>
-					<!-- /cell -->
-
-					<!-- cell -->
-					<td class="cell">
-
-						<!-- datafield -->
-						<input class="datafield" type="number" id="fridaybreakfast" name="fridaybreakfast">
-						<!-- /datafield -->
-
-					</td>
-					<!-- /cell -->
-
-				</tr>
-				<!-- /row -->
-
-				<!-- row -->
-				<tr class="row">
-
-					<!-- cell -->
-					<th class="cell">
+					<!-- field -->
+					<div class="field">
 
 						<!-- label -->
-						<label class="label" for="lunch">Lunch</label>
+						<label class="label" for="childname">Child Name</label>
 						<!-- /label -->
 
-					</th>
-					<!-- /cell -->
-
-					<!-- cell -->
-					<td class="cell">
-
 						<!-- datafield -->
-						<input class="datafield" type="number" id="lunch" name="lunch">
+						<input class="datafield" type="text" id="childname" name="childname" placeholder="Johnny Smith">
 						<!-- /datafield -->
 
-					</td>
-					<!-- /cell -->
+					</div>
+					<!-- /field -->
 
-					<!-- cell -->
-					<td class="cell">
+					<!-- field -->
+					<div class="field">
 
-						<!-- datafield -->
-						<input class="datafield" type="number" id="lunch" name="lunch">
-						<!-- /datafield -->
-
-					</td>
-					<!-- /cell -->
-
-					<!-- cell -->
-					<td class="cell">
+						<!-- label -->
+						<label class="label" for="registrationemail">Email address</label>
+						<!-- /label -->
 
 						<!-- datafield -->
-						<input class="datafield" type="number" id="lunch" name="lunch">
+						<input class="datafield" type="text" id="registrationemail" name="emailaddress" placeholder="johnsmith@gmail.com">
 						<!-- /datafield -->
 
-					</td>
-					<!-- /cell -->
+					</div>
+					<!-- /field -->
 
-					<!-- cell -->
-					<td class="cell">
+					<!-- field -->
+					<div class="field">
+
+						<!-- label -->
+						<label class="label" for="registrationpassword">Password</label>
+						<!-- /label -->
 
 						<!-- datafield -->
-						<input class="datafield" type="number" id="lunch" name="lunch">
+						<input class="datafield" type="password" id="registrationpassword" name="password" placeholder="********">
 						<!-- /datafield -->
 
-					</td>
-					<!-- /cell -->
+					</div>
+					<!-- /field -->
 
-					<!-- cell -->
-					<td class="cell">
+					<!-- field -->
+					<div class="field">
+
+						<!-- label -->
+						<label class="label" for="registrationpasswordconfirm">Confirm Password</label>
+						<!-- /label -->
 
 						<!-- datafield -->
-						<input class="datafield" type="number" id="lunch" name="lunch">
+						<input class="datafield" type="password" id="registrationpasswordconfirm" name="passwordconfirm" placeholder="********">
 						<!-- /datafield -->
 
-					</td>
-					<!-- /cell -->
+					</div>
+					<!-- /field -->
 
-				</tr>
-				<!-- /row -->
+					<!-- field -->
+					<div class="field b">
 
-			</table>
-			<!-- /datatable -->
+						<!-- btn -->
+						<button class="btn" type="reset">Clear</button>
+						<!-- /btn -->
 
-			<!-- head -->
-			<h1 class="head">View Orders</h1>
-			<!-- /head -->
+						<!-- btn -->
+						<button class="btn" type="submit">Register User</button>
+						<!-- /btn -->
 
-			<!-- datatable -->
-			<table class="datatable">
+					</div>
+					<!-- /field -->
 
-				<!-- row -->
-				<tr class="row">
+				</form>
+				<!-- /user -->
 
-					<!-- head -->
-					<th class="head">
+			</div>
+			<!-- /item -->
 
-						<!-- caption -->
-						<span class="caption">userid</span>
-						<!-- /caption -->
+			<!-- item -->
+			<div class="item">
 
-					</th>
-					<!-- /head -->
-
-					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">parentname</span>
-						<!-- /caption -->
-
-					</th>
-					<!-- /head -->
+				<!-- user -->
+				<form class="user form" action="./login.php">
 
 					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">childname</span>
-						<!-- /caption -->
-
-					</th>
+					<h2 class="head">Sign in</h1>
 					<!-- /head -->
+
+					<!-- field -->
+					<div class="field">
+
+						<!-- label -->
+						<label class="label" for="loginemail">Email address</label>
+						<!-- /label -->
+
+						<!-- datafield -->
+						<input class="datafield" type="text" id="loginemail" name="emailaddress" placeholder="johnsmith@gmail.com">
+						<!-- /datafield -->
+
+					</div>
+					<!-- /field -->
+
+					<!-- field -->
+					<div class="field">
+
+						<!-- label -->
+						<label class="label" for="loginpw">Password</label>
+						<!-- /label -->
+
+						<!-- datafield -->
+						<input class="datafield" type="password" id="loginpw" name="password" placeholder="********">
+						<!-- /datafield -->
+
+					</div>
+					<!-- /field -->
+
+					<!-- field -->
+					<div class="field b">
+
+						<!-- btn -->
+						<button class="btn" type="reset">Clear</button>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<button class="btn" type="submit">Login</button>
+						<!-- /btn -->
+
+					</div>
+					<!-- /field -->
+
+				</form>
+				<!-- /user -->
+
+			</div>
+			<!-- /item -->
+
+			<!-- item -->
+			<div class="item">
+
+				<!-- order -->
+				<form class="order form" action="./order.php">
 
 					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">monbf</span>
-						<!-- /caption -->
-
-					</th>
+					<h2 class="head">Place Order</h1>
 					<!-- /head -->
+
+					<!-- field -->
+					<div class="field">
+
+						<!-- label -->
+						<label class="label" for="loginpw">Meal Choice</label>
+						<!-- /label -->
+
+						<!-- datafield -->
+						<select class="datafield" id="bmon" name="bmon">
+
+							<!-- choice -->
+							<option class="choice" value="">[None]</option>
+							<!-- /choice -->
+
+							<!-- choice -->
+							<option class="choice" value="a">Choice A</option>
+							<!-- /choice -->
+
+							<!-- choice -->
+							<option class="choice" value="b">Choice B</option>
+							<!-- /choice -->
+
+							<!-- choice -->
+							<option class="choice" value="c">Choice C</option>
+							<!-- /choice -->
+
+						</select>
+						<!-- /datafield -->
+
+					</div>
+					<!-- /field -->
+
+					<!-- field -->
+					<div class="field b">
+
+						<!-- btn -->
+						<button class="btn" type="reset">Clear</button>
+						<!-- /btn -->
+
+						<!-- btn -->
+						<button class="btn" type="submit">Send Order</button>
+						<!-- /btn -->
+
+					</div>
+					<!-- /field -->
+
+				</form>
+				<!-- /order -->
+
+				<!-- datatable -->
+				<table class="datatable orderform">
+
+					<!-- row -->
+					<tr class="row">
+
+						<!-- head -->
+						<th class="head">
+
+							<!-- caption -->
+							<span class="caption"></span>
+							<!-- /caption -->
+
+						</th>
+						<!-- /head -->
+
+						<!-- head -->
+						<th class="head">
+
+							<!-- caption -->
+							<span class="caption">Monday</span>
+							<!-- /caption -->
+
+						</th>
+						<!-- /head -->
+
+						<!-- head -->
+						<th class="head">
+
+							<!-- caption -->
+							<span class="caption">Tuesday</span>
+							<!-- /caption -->
+
+						</th>
+						<!-- /head -->
+
+						<!-- head -->
+						<th class="head">
+
+							<!-- caption -->
+							<span class="caption">Wednesday</span>
+							<!-- /caption -->
+
+						</th>
+						<!-- /head -->
+
+						<!-- head -->
+						<th class="head">
+
+							<!-- caption -->
+							<span class="caption">Thursday</span>
+							<!-- /caption -->
+
+						</th>
+						<!-- /head -->
+
+						<!-- head -->
+						<th class="head">
+
+							<!-- caption -->
+							<span class="caption">Friday</span>
+							<!-- /caption -->
+
+						</th>
+						<!-- /head -->
+
+					</tr>
+					<!-- /row -->
+
+					<!-- row -->
+					<tr class="row">
+
+						<!-- cell -->
+						<th class="cell">
+
+							<!-- label -->
+							<label class="label" for="breakfast">Breakfast</label>
+							<!-- /label -->
+
+						</th>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="mondaybreakfast" name="mondaybreakfast">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="tuesdaybreakfast" name="tuesdaybreakfast">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="wednesdaybreakfast" name="wednesdaybreakfast">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="thursdaybreakfast" name="thursdaybreakfast">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="fridaybreakfast" name="fridaybreakfast">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+					</tr>
+					<!-- /row -->
+
+					<!-- row -->
+					<tr class="row">
+
+						<!-- cell -->
+						<th class="cell">
+
+							<!-- label -->
+							<label class="label" for="lunch">Lunch</label>
+							<!-- /label -->
+
+						</th>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="lunch" name="lunch">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="lunch" name="lunch">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="lunch" name="lunch">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="lunch" name="lunch">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+						<!-- cell -->
+						<td class="cell">
+
+							<!-- datafield -->
+							<input class="datafield" type="number" id="lunch" name="lunch">
+							<!-- /datafield -->
+
+						</td>
+						<!-- /cell -->
+
+					</tr>
+					<!-- /row -->
+
+				</table>
+				<!-- /datatable -->
+
+			</div>
+			<!-- /item -->
+
+			<!-- item -->
+			<div class="item">
+
+				<!-- table -->
+				<div class="table">
 
 					<!-- head -->
-					<th class="head">
-
-						<!-- caption -->
-						<span class="caption">tuebf</span>
-						<!-- /caption -->
-
-					</th>
+					<h2 class="head">View Orders</h1>
 					<!-- /head -->
 
-					<!-- head -->
-					<th class="head">
+					<!-- datatable -->
+					<table class="datatable">
 
-						<!-- caption -->
-						<span class="caption">wedbf</span>
-						<!-- /caption -->
+						<!-- row -->
+						<tr class="row">
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">userid</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">thubf</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">parentname</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">fribf</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">childname</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">monlnch</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">monbf</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">tuelnch</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">tuebf</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">wedlnch</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">wedbf</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">thulnch</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">thubf</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">frilnch</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-					<!-- head -->
-					<th class="head">
+								<!-- caption -->
+								<span class="caption">fribf</span>
+								<!-- /caption -->
 
-						<!-- caption -->
-						<span class="caption">userid</span>
-						<!-- /caption -->
+							</th>
+							<!-- /head -->
 
-					</th>
-					<!-- /head -->
+							<!-- head -->
+							<th class="head">
 
-				</tr>
-				<!-- /row -->
+								<!-- caption -->
+								<span class="caption">monlnch</span>
+								<!-- /caption -->
 
-				<!-- row -->
-				<tr class="row">
+							</th>
+							<!-- /head -->
 
-					<!-- cell -->
-					<td class="cell">
+							<!-- head -->
+							<th class="head">
 
-						<!-- caption -->
-						<span class="caption">xyz</span>
-						<!-- /caption -->
+								<!-- caption -->
+								<span class="caption">tuelnch</span>
+								<!-- /caption -->
 
-					</td>
-					<!-- /cell -->
+							</th>
+							<!-- /head -->
 
-				</tr>
-				<!-- /row -->
+							<!-- head -->
+							<th class="head">
 
-			</table>
-			<!-- /datatable -->
+								<!-- caption -->
+								<span class="caption">wedlnch</span>
+								<!-- /caption -->
+
+							</th>
+							<!-- /head -->
+
+							<!-- head -->
+							<th class="head">
+
+								<!-- caption -->
+								<span class="caption">thulnch</span>
+								<!-- /caption -->
+
+							</th>
+							<!-- /head -->
+
+							<!-- head -->
+							<th class="head">
+
+								<!-- caption -->
+								<span class="caption">frilnch</span>
+								<!-- /caption -->
+
+							</th>
+							<!-- /head -->
+
+							<!-- head -->
+							<th class="head">
+
+								<!-- caption -->
+								<span class="caption">userid</span>
+								<!-- /caption -->
+
+							</th>
+							<!-- /head -->
+
+						</tr>
+						<!-- /row -->
+
+						<!-- row -->
+						<tr class="row">
+
+							<!-- cell -->
+							<td class="cell">
+
+								<!-- caption -->
+								<span class="caption">xyz</span>
+								<!-- /caption -->
+
+							</td>
+							<!-- /cell -->
+
+						</tr>
+						<!-- /row -->
+
+					</table>
+					<!-- /datatable -->
+
+				</div>
+				<!-- /table -->
+
+			</div>
+			<!-- /item -->
 
 		</div>
 		<!-- /#container -->
