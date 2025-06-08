@@ -1,0 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
+body {font-family:Nunito,sans-serif;}
+/* div#container {display:grid; grid-template-columns: repeat(2,1fr);} */
+div#container h1.head {margin:0;}
+div#container div.item { margin-top:1.25em;}
+div#container form.form h2.head {text-align:center; margin:0;}
+div#container form.form {background-color:gold; /* display:inline-block; */ max-width:28rem; padding:.5rem; border-radius:.375rem;}
+div#container form.form div.field {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
+div#container form.form div.field.b {grid-template-columns:repeat(2,1fr); grid-gap:.5em;}
+div#container form.form div.field label.label {font-weight:bold; cursor:pointer;}
+div#container form.form div.field select.datafield,
+div#container form.form div.field input.datafield {width:100%;/*  max-width:12rem; */ padding:.375em; /* border-radius:.25em; border:0 none; */}
+div#container form.form div.field button.btn {background-color:black; color:white; padding:.75em; cursor:pointer; border-radius:.5em; border:0 none;}
+/* div#container div.table {} */
+div#container div.table h2.head {text-align:center; margin:0;}
+div#container div.table/*  table.datatable */ {background-color:gold; padding:.5rem; border-radius:.375rem;}
+div#container div.table table.datatable.orderform tr.row td.cell input {max-width:5rem;}
