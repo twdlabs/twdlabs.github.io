@@ -5,10 +5,10 @@
 	<head>
 		<style>
 			div#container h1.head {margin-top:2em;}
-			div#container input {width:100%;}
-			div#container div.grid {display:inline-block;}
-			div#container div.grid div.inputfield {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
-			div#container div.grid input {max-width:12rem;}
+			div#container form.grid {background-color:gold; /* display:inline-block; */ max-width:24rem;}
+			div#container form.grid div.inputfield {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
+			div#container form.grid div.inputfield input {width:100%;/*  max-width:12rem; */}
+			/* div#container form.grid div.inputfield button.btn {max-width:2rem;} */
 			div#container table.orderpage tr.row td.cell input {max-width:5rem;}
 		</style>
 	</head>
@@ -23,7 +23,7 @@
 			<!-- /head -->
 
 			<!-- grid -->
-			<div class="grid">
+			<form class="grid">
 
 				<!-- inputfield -->
 				<div class="inputfield">
@@ -80,8 +80,22 @@
 		
 				</div>
 				<!-- /inputfield -->
+		
+				<!-- inputfield -->
+				<div class="inputfield">
 
-			</div>
+					<!-- btn -->
+					<button class="btn" type="submit">Go</button>
+					<!-- /btn -->
+
+					<!-- btn -->
+					<button class="btn" type="reset">Clear</button>
+					<!-- /btn -->
+		
+				</div>
+				<!-- /inputfield -->
+
+			</form>
 			<!-- /grid -->
 
 			<!-- head -->
@@ -89,7 +103,7 @@
 			<!-- /head -->
 
 			<!-- grid -->
-			<div class="grid">
+			<form class="grid">
 		
 				<!-- inputfield -->
 				<div class="inputfield">
@@ -119,7 +133,7 @@
 				</div>
 				<!-- /inputfield -->
 
-			</div>
+			</form>
 			<!-- /grid -->
 
 			<!-- head -->
