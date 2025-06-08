@@ -11,15 +11,16 @@
 
 
 			body {font-family:Nunito,sans-serif;}
+			div#container {}
 			div#container h1.head {margin-top:2em; margin-bottom:.5rem;}
-			div#container form.grid {background-color:gold; /* display:inline-block; */ max-width:24rem; padding:.5rem; border-radius:.375rem;}
-			div#container form.grid div.field {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
-			div#container form.grid div.field.b {grid-template-columns:repeat(2,1fr); grid-gap:.5em;}
-			div#container form.grid div.field label.label {font-weight:bold; cursor:pointer;}
-			div#container form.grid div.field input.datafield {width:100%;/*  max-width:12rem; */ padding:.375em; /* border-radius:.25em; border:0 none; */}
-			div#container form.grid div.field button.btn {padding:.375em; cursor:pointer;}
-			div#container table.table {background-color:gold; padding:.5rem; border-radius:.375rem;}
-			div#container table.table.orderpage tr.row td.cell input {max-width:5rem;}
+			div#container form.user {background-color:gold; /* display:inline-block; */ max-width:24rem; padding:.5rem; border-radius:.375rem;}
+			div#container form.user div.field {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
+			div#container form.user div.field.b {grid-template-columns:repeat(2,1fr); grid-gap:.5em;}
+			div#container form.user div.field label.label {font-weight:bold; cursor:pointer;}
+			div#container form.user div.field input.datafield {width:100%;/*  max-width:12rem; */ padding:.375em; /* border-radius:.25em; border:0 none; */}
+			div#container form.user div.field button.btn {padding:.375em; cursor:pointer;}
+			div#container table.datatable {background-color:gold; padding:.5rem; border-radius:.375rem;}
+			div#container table.datatable.orderform tr.row td.cell input {max-width:5rem;}
 		</style>
 	</head>
 
@@ -32,8 +33,8 @@
 			<h1 class="head">Registration</h1>
 			<!-- /head -->
 
-			<!-- grid -->
-			<form class="grid">
+			<!-- user -->
+			<form class="user">
 
 				<!-- field -->
 				<div class="field">
@@ -106,14 +107,14 @@
 				<!-- /field -->
 
 			</form>
-			<!-- /grid -->
+			<!-- /user -->
 
 			<!-- head -->
 			<h1 class="head">Login</h1>
 			<!-- /head -->
 
-			<!-- grid -->
-			<form class="grid">
+			<!-- user -->
+			<form class="user">
 		
 				<!-- field -->
 				<div class="field">
@@ -123,7 +124,7 @@
 					<!-- /label -->
 			
 					<!-- datafield -->
-					<input class="datafield" type="text" id="loginemail" name="emailaddress">
+					<input class="datafield" type="text" id="loginemail" name="emailaddress" placeholder="johnsmith@gmail.com">
 					<!-- /datafield -->
 		
 				</div>
@@ -137,7 +138,7 @@
 					<!-- /label -->
 			
 					<!-- datafield -->
-					<input class="datafield" type="password" id="loginpw" name="password">
+					<input class="datafield" type="password" id="loginpw" name="password" placeholder="********">
 					<!-- /datafield -->
 		
 				</div>
@@ -158,14 +159,14 @@
 				<!-- /field -->
 
 			</form>
-			<!-- /grid -->
+			<!-- /user -->
 
 			<!-- head -->
 			<h1 class="head">Place Order</h1>
 			<!-- /head -->
 
-			<!-- table -->
-			<table class="table orderpage">
+			<!-- datatable -->
+			<table class="datatable orderform">
 
 				<!-- row -->
 				<tr class="row">
@@ -366,14 +367,14 @@
 				<!-- /row -->
 
 			</table>
-			<!-- /table -->
+			<!-- /datatable -->
 
 			<!-- head -->
 			<h1 class="head">View Orders</h1>
 			<!-- /head -->
 
-			<!-- table -->
-			<table class="table">
+			<!-- datatable -->
+			<table class="datatable">
 
 				<!-- row -->
 				<tr class="row">
@@ -538,7 +539,7 @@
 				<!-- /row -->
 
 			</table>
-			<!-- /table -->
+			<!-- /datatable -->
 
 		</div>
 		<!-- /#container -->
