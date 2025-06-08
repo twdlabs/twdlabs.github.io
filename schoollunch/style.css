@@ -6,18 +6,27 @@
 
 
 body {font-family:Nunito,sans-serif;}
-/* div#container {display:grid; grid-template-columns: repeat(2,1fr);} */
+div#container div.grid,
+div#container {display:flex; flex-direction:column; align-items:center;}
 div#container h1.head {margin:0;}
 div#container div.item { margin-top:1.25em;}
 div#container form.form h2.head {text-align:center; margin:0;}
-div#container form.form {background-color:gold; /* display:inline-block; */ max-width:28rem; padding:.5rem; border-radius:.375rem;}
-div#container form.form div.field {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
-div#container form.form div.field.b {grid-template-columns:repeat(2,1fr); grid-gap:.5em;}
+div#container form.form {background-color:gold; /* display:inline-block; */ padding:.5rem; border-radius:.375rem;}
+div#container form.user {max-width:28rem;}
+div#container form.order {max-width:36rem;}
+div#container form.form div.field {display:grid; align-items:center; padding:.25rem;}
+div#container form.user.form div.field {grid-template-columns:1fr 2fr;}
+div#container form.form div.field.action {grid-template-columns:repeat(2,1fr); grid-gap:.5em; padding:0; margin-top:.25rem;}
 div#container form.form div.field label.label {font-weight:bold; cursor:pointer;}
+/* div#container form.form div.field select.datafield {text-align:center;} */
 div#container form.form div.field select.datafield,
-div#container form.form div.field input.datafield {width:100%;/*  max-width:12rem; */ padding:.375em; /* border-radius:.25em; border:0 none; */}
-div#container form.form div.field button.btn {background-color:black; color:white; padding:.75em; cursor:pointer; border-radius:.5em; border:0 none;}
-/* div#container div.table {} */
-div#container div.table h2.head {text-align:center; margin:0;}
+div#container form.form div.field input.datafield {width:100%;/*  max-width:12rem; */ padding:.5em .75em; /* border-radius:.25em; border:0 none; */}
+div#container form.form div.field button.btn {background-color:black; color:white; cursor:pointer; padding:.75em; border-radius:.5em; border:0 none;}
+div#container form.form table.fieldtable tr.row.x {display:none;}
+div#container form.form table.fieldtable tr.row td.cell input {max-width:5rem;}
+div#container div.table {text-align:center;}
+div#container div.table h2.head {margin:0;}
 div#container div.table/*  table.datatable */ {background-color:gold; padding:.5rem; border-radius:.375rem;}
-div#container div.table table.datatable.orderform tr.row td.cell input {max-width:5rem;}
+div#container div.table table.datatable {}
+div#container div.table table.datatable tr.row th.head.x, 
+div#container div.table table.datatable tr.row td.cell.x {display:none;}
