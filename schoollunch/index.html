@@ -4,11 +4,18 @@
 
 	<head>
 		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+
+
+			* {box-sizing:border-box; /* padding:0; margin:0; */}
+
+
 			div#container h1.head {margin-top:2em;}
-			div#container form.grid {background-color:gold; /* display:inline-block; */ max-width:24rem; padding:.5rem;}
-			div#container form.grid div.inputfield {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
-			div#container form.grid div.inputfield input {/* width:100%; *//*  max-width:12rem; */}
-			/* div#container form.grid div.inputfield button.btn {max-width:2rem;} */
+			div#container form.grid {background-color:gold; /* display:inline-block; */ max-width:24rem; padding:.5rem; border-radius:.375rem;}
+			div#container form.grid div.field {display:grid; grid-template-columns:1fr 2fr; align-items:center; padding:.25rem;}
+			div#container form.grid div.field label.label {font-weight:bold; cursor:pointer;}
+			div#container form.grid div.field input.datafield {width:100%;/*  max-width:12rem; */}
+			/* div#container form.grid div.field button.btn {max-width:2rem;} */
 			div#container table.table {background-color:gold; padding:.5rem; border-radius:.375rem;}
 			div#container table.table.orderpage tr.row td.cell input {max-width:5rem;}
 		</style>
@@ -26,8 +33,8 @@
 			<!-- grid -->
 			<form class="grid">
 
-				<!-- inputfield -->
-				<div class="inputfield">
+				<!-- field -->
+				<div class="field">
 		
 					<!-- label -->
 					<label class="label" for="parentname">Parent Name</label>
@@ -38,10 +45,10 @@
 					<!-- /datafield -->
 		
 				</div>
-				<!-- /inputfield -->
+				<!-- /field -->
 		
-				<!-- inputfield -->
-				<div class="inputfield">
+				<!-- field -->
+				<div class="field">
 		
 					<!-- label -->
 					<label class="label" for="childname">Child Name</label>
@@ -52,10 +59,10 @@
 					<!-- /datafield -->
 		
 				</div>
-				<!-- /inputfield -->
+				<!-- /field -->
 		
-				<!-- inputfield -->
-				<div class="inputfield">
+				<!-- field -->
+				<div class="field">
 		
 					<!-- label -->
 					<label class="label" for="registrationemail">Email address</label>
@@ -66,10 +73,10 @@
 					<!-- /datafield -->
 		
 				</div>
-				<!-- /inputfield -->
+				<!-- /field -->
 		
-				<!-- inputfield -->
-				<div class="inputfield">
+				<!-- field -->
+				<div class="field">
 		
 					<!-- label -->
 					<label class="label" for="registrationpassword">Password</label>
@@ -80,10 +87,10 @@
 					<!-- /datafield -->
 		
 				</div>
-				<!-- /inputfield -->
+				<!-- /field -->
 		
-				<!-- inputfield -->
-				<div class="inputfield">
+				<!-- field -->
+				<div class="field">
 
 					<!-- btn -->
 					<button class="btn" type="submit">Go</button>
@@ -94,7 +101,7 @@
 					<!-- /btn -->
 		
 				</div>
-				<!-- /inputfield -->
+				<!-- /field -->
 
 			</form>
 			<!-- /grid -->
@@ -106,8 +113,8 @@
 			<!-- grid -->
 			<form class="grid">
 		
-				<!-- inputfield -->
-				<div class="inputfield">
+				<!-- field -->
+				<div class="field">
 		
 					<!-- label -->
 					<label class="label" for="loginemail">Email address</label>
@@ -118,10 +125,10 @@
 					<!-- /datafield -->
 		
 				</div>
-				<!-- /inputfield -->
+				<!-- /field -->
 		
-				<!-- inputfield -->
-				<div class="inputfield">
+				<!-- field -->
+				<div class="field">
 		
 					<!-- label -->
 					<label class="label" for="loginpw">Password</label>
@@ -132,7 +139,7 @@
 					<!-- /datafield -->
 		
 				</div>
-				<!-- /inputfield -->
+				<!-- /field -->
 
 			</form>
 			<!-- /grid -->
