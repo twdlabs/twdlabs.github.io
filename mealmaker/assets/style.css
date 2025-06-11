@@ -50,6 +50,7 @@ div#container form.form div.act button.btn {display:flex; justify-content:center
 div#container form.form div.act button.btn {color:white; cursor:pointer;}
 /* div#container form.form div.act button.btn.send {} */
 div#container form.form div.act button.btn.clear {position:absolute; top:var(--edgesize); right:var(--edgesize);}
+div#container form.form div.act button.btn.clear {padding:.375em;}
 div#container form.form div.act button.btn svg.icon {display:none;}
 div#container form.form div.act button.btn span.caption {font-size:1.125em; margin:0 .25em;}
 
@@ -81,9 +82,10 @@ div#container div.table table.datatable tr.row td.cell.x {display:none;}
 @media screen and (max-width:32rem) {
 	
 	/* Forms */
+	div#container form.form div.act {margin-top:.75rem;}
 	/* div#container form.form div.act button.btn.clear {display:none;} */
 	/* div#container form.form div.act button.btn.clear {position:static;} */
-	div#container form.form div.act button.btn.clear {padding:.5em;}
+	/* div#container form.form div.act button.btn.clear {padding:.5em;} */
 	div#container form.form div.act button.btn.clear svg.icon {display:block;}
 	div#container form.form div.act button.btn.clear span.caption {display:none;}
 

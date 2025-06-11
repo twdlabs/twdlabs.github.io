@@ -5,7 +5,78 @@
 	$databasetables = [
 
 
-		'useraccounts' => [
+		'persons' => [
+
+			// Define table title. 
+			'tabletitle' => 'Persons',
+			// Define table navigation icon. 
+			'tableicontag' => 'personbadge',
+			// Define caption for single item. 
+			'singlecaption' => 'User Account',
+
+			// Define downloaded table entry data. 
+			'entrydata' => [],
+
+			// Define table display fields (from detailed query results). 
+			'displayfields' => [
+				// [
+				// 	'fid'=>'id',
+				// 	'fieldtitle'=>'ID',
+				// 	'visibleintable'=>false,
+				// ],
+				[
+					'fid'=>'childname',
+					'fieldtitle'=>'Child',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'parentname',
+					'fieldtitle'=>'Parent',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'phonenumber',
+					'fieldtitle'=>'Phone Number',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'username',
+					'fieldtitle'=>'Email',
+					'visibleintable'=>true,
+				],
+			],
+			// Define table editor fields. 
+			'editorfields' => [
+				[
+					'type'=>'text',
+					'fid'=>'username',
+					'fieldtitle'=>'Email',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
+					'type'=>'text',
+					'fid'=>'phonenumber',
+					'fieldtitle'=>'Phone Number',
+					'required'=>true,
+					'editable'=>true,
+				],
+			],
+
+			// Define basic database query. 
+			'basicdataquery' => "",
+			// Define detailed database query. 
+			'detaildataquery' => 
+			" SELECT 
+				p.id,
+				p.childname, p.personname,
+				p.username, p.phonenumber
+			FROM (persons as p)
+			ORDER BY p.id ",
+		],
+
+
+		'users' => [
 
 			// Define table title. 
 			'tabletitle' => 'User Accounts',
@@ -30,25 +101,10 @@
 					'visibleintable'=>true,
 				],
 				[
-					'fid'=>'childname',
-					'fieldtitle'=>'Child',
+					'fid'=>'nummeals',
+					'fieldtitle'=>'Variety of Meals',
 					'visibleintable'=>true,
 				],
-				[
-					'fid'=>'parentname',
-					'fieldtitle'=>'Parent',
-					'visibleintable'=>true,
-				],
-				[
-					'fid'=>'phonenumber',
-					'fieldtitle'=>'Phone Number',
-					'visibleintable'=>true,
-				],
-				// [
-				// 	'fid'=>'nummeals',
-				// 	'fieldtitle'=>'Number of Meals',
-				// 	'visibleintable'=>true,
-				// ],
 				[
 					'fid'=>'totalnumorders',
 					'fieldtitle'=>'Total Orders',
@@ -79,11 +135,11 @@
 			'detaildataquery' => 
 			" SELECT 
 				u.id,
-				u.childname, u.parentname,
+				u.childname, u.personname,
 				u.username, u.phonenumber,
 				-- count(distinct mo.mealid) as nummeals,
 				count(distinct o.id) as totalnumorders
-			FROM (useraccounts as u)
+			FROM (users as u)
 			LEFT JOIN (mealorders as o) ON (o.userid = u.id)
 			GROUP BY u.id 
 			ORDER BY u.id ",
@@ -221,10 +277,10 @@
 			'detaildataquery' => 
 			" SELECT 
 				o.id,
-				u.childname, u.parentname,
+				u.childname, u.personname,
 				m.mealname
 			FROM (mealorders as o)
-			LEFT JOIN (useraccounts as u) ON (o.userid = u.id)
+			LEFT JOIN (users as u) ON (o.userid = u.id)
 			LEFT JOIN (meals as m) ON (o.mealid = m.id)
 			ORDER BY o.modifiedat ",
 		],
