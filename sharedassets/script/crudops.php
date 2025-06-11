@@ -2,38 +2,43 @@
 <?php
 
 	// Switch into hanging reference mode. 
-	$hangingrefmode = true;
+	// $hangingrefmode = true;
 
 
-	// Check for new C.R.U.D. operations. 
-	function checkCrudOps() {
+	// Download public table entries from database. 
+	function getPublicTables($displaydetail=false) {
+		global $databasetables, $publictableids;
 		printToPage();
-		printToPage("Checking for new C.R.U.D. operations...");
+		printToPage("Retrieving public database table entries...");
 
-		// Check for operation parameters. 
-		$newcrudop = isset( $_POST['crudtableid'] ) && isset( $_POST['crudopid'] );
+		// Go thru each public database table. 
+		foreach($publictableids as $tid) {
 
-		// Perform operation (if valid parameters). 
-		if( $newcrudop ) {
+			// Do hanging reference mode. 
+			if( isset($hangingrefmode) ) {
 
-			// Get operation parameters. 
-			$crudopid = cleanInputForQuerySimple( $_POST['crudopid'] );
-			$crudtableid = cleanInputForQuerySimple( $_POST['crudtableid'] );
+				// Get public table. 
+				$table = $databasetables[$tid];
 
-			// Perform C.R.U.D. operation. 
-			$numsuccessfulcrudops = goCrudOp($crudtableid,$crudopid);
-			printToPage("$numsuccessfulcrudops DONE!");
+				// Download basic data for public database table. 
+				$table['entrydata'] = getResultTableById($tid,0,$displaydetail);
+			}
+
+			// Do direct reference mode. 
+			else {
+
+				// Download basic data for public database table. 
+				$databasetables[$tid]['entrydata'] = getResultTableById($tid,0,$displaydetail);
+			}
 		}
-
-		// Display indication (if parameters not valid). 
-		else printToPage('NONE!');
 	}
-
 	// Download all table entries from database. 
 	function getAllTables($displaydetail=false) {
 		global $databasetables;
+		// $hangingrefmode = true;
 		printToPage();
 		printToPage("Retrieving all database table entries...");
+		printToPage();
 
 		// Go thru each database table. 
 		foreach($databasetables as $tid=>$table) {
@@ -54,11 +59,13 @@
 				$databasetables[$tid]['entrydata'] = getResultTableById($tid,1,$displaydetail);
 			}
 
-			// 
-			$print = json_encode( $table['entrydata'] );
-			printToPage( "Local: $print" );
-			$print = json_encode( $databasetables[$tid]['entrydata'] );
-			printToPage( "Global: $print" );
+			// Display details of retrieved data. 
+			// if( $displaydetail ) {
+				$print = json_encode( $table['entrydata'] );
+				printToPage( "Local: $print" );
+				$print = json_encode( $databasetables[$tid]['entrydata'] );
+				printToPage( "Global: $print" );
+			// }
 		}
 	}
 	// Get result table for given table id. 
