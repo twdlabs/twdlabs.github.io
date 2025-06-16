@@ -71,73 +71,9 @@
 
 				// Connect to server database. 
 				$db = openDb('mealmaker');
-				// Initialize success markers. 
-				$validperson = null;
-				$validuser = null;
 
-				// Get received user details. 
-				$pname = $_POST['parentname'] ?? '';
-				$phone = $_POST['phonenumber'] ?? '';
-				$email = $_POST['emailaddress'] ?? '';
-				$pwd = $_POST['password'] ?? '';
-				$pwd1 = $_POST['passwordconfirm'] ?? '';
-
-				// Check if all info present. 
-				$allinfopresent = $pname && $phone && $email && $pwd && $pwd1 ;
-
-				// Proceed to query (if no info missing). 
-				if( $allinfopresent ) {
-
-					// Create new person. 
-					function createNewPerson($pname,$phone,$email) {
-
-						// Create database query. 
-						$sql = " INSERT INTO `parents` (parentname,phonenumber,emailaddress) VALUES ( '$pname' , '$phone' , '$email' ) ; ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql,true);
-
-						// Return validity of record for newly added person. 
-						return ( $querystate['roweffect'] /* && $querystate['success'] */ );
-					}
-
-					// Create new user. 
-					function createNewUser($pwd,$pwd1) {
-
-						// Create database query. 
-						$sql = " SELECT LAST_INSERT_ID() AS personid; ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql/* ,true */);
-
-						// 
-						$personid = $querystate['queryresults'][0]['personid'];
-
-						// Ensure both passwords match. 
-						// if( $pwd && $pwd1 && $pwd==$pwd1 )
-						if( !$pwd || !$pwd1 || $pwd!=$pwd1 ) return;
-
-						// Generate password salt for new user. 
-						$passwdsalt = generateRandomSalt(/* 1 */);
-						// Generate password hash. 
-						$passwdhash = getPasswdHash($pwd.$passwdsalt/* ,1 */);
-
-						// Create database query. 
-						$sql = " INSERT INTO `users` (id,passwdsalt,passwdhash) VALUES ( $personid , '$passwdsalt' , '$passwdhash' ); ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql,true);
-
-						// Return validity of record for newly added user. 
-						return ( $querystate['roweffect'] /* && $querystate['success'] */ );
-					}
-
-					// Create new person. 
-					$validperson = createNewPerson($pname,$phone,$email);
-
-					// Create new user (if person exists). 
-					$validuser = $validperson && createNewUser($pwd,$pwd1);
-				}
-
-				// Redirect back to user form (if any info missing). 
-				else print '<meta http-equiv="refresh" content="3;./">';
+				// Redirect back to user form. 
+				print '<meta http-equiv="refresh" content="3;./">';
 
 				// Display closing of query arena. 
 				include('./assets/module/queryarenaclose.php');
@@ -145,19 +81,13 @@
 				// Display navbar. 
 				include('./assets/module/navbar.php');
 
-				// Handle successful registration. 
-				$registrationsuccessful = $validperson && $validuser;
-				if($registrationsuccessful) {
+				// Reset session data. 
+				$_SESSION['pid'] = null;
+				// End user session. 
+				session_destroy();
 
-					// Display message. 
-					print 'Registration successful!';
-				}
-				// Handle unsuccessful registration. 
-				else {
-
-					// Display message. 
-					print 'Registration unsuccessful';
-				}
+				// Display message. 
+				print 'Logout successful!';
 
 				// Display return link. 
 				?>
