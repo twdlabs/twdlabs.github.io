@@ -13,7 +13,7 @@
 
 		// Check for valid operation parameters. 
 		$docrudop = $crudopid && $crudtableid && isset( $databasetables[ $crudtableid ] ) && in_array( $crudopid , ['create','update','delete',] );
-		
+
 		// Conclude operation (if parameters not valid). 
 		if( !$docrudop ) {
 
@@ -70,7 +70,7 @@
 
 		// Perform delete operation. 
 		else if( $crudopid=='delete' ) {
-			
+
 			// Ensure clean query parameter. 
 			$crudtableid = cleanInputForQuerySimple( $crudtableid );
 

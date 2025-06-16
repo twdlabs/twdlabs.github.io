@@ -27,9 +27,19 @@ body {
 
 /* Container */
 body {font-family:Nunito,sans-serif;}
-/* div#container {} */
-div#container div.grid {display:flex; flex-direction:column; align-items:center;}
+div#container {display:flex; flex-direction:column; align-items:center; /* justify-content:flex-end; */}
 div#container div.item {margin-top:1.25em;}
+div#container a.returnlink {background-color:black; padding:.5em .75em; border-radius:.5em;}
+div#container a.returnlink {color:white; text-decoration:none;}
+
+
+/* Navbar */
+/* div#container nav.navbar {} */
+/* div#container nav.navbar div.bin {} */
+div#container nav.navbar div.bin a.togglebtn.um {display:none;}
+div#container nav.navbar div.bin a.logoutbtn {background-color:black; padding:.5em .75em; border-radius:.5em; /* margin-left:.5em; */}
+div#container nav.navbar div.bin a.logoutbtn {color:white; text-decoration:none;}
+div#container nav.navbar div.bin a.logoutbtn svg.icon {display:block;}
 
 
 /* Forms */
@@ -53,6 +63,8 @@ div#container form.form div.act button.btn.clear {position:absolute; top:var(--e
 div#container form.form div.act button.btn.clear {padding:.375em;}
 div#container form.form div.act button.btn svg.icon {display:none;}
 div#container form.form div.act button.btn span.caption {font-size:1.125em; margin:0 .25em;}
+div#container form.form p.textcopy {text-align:center; margin:0; margin-top:.75rem;}
+div#container form.form p.textcopy a.switchlink {color:black;}
 
 
 /* User Forms */
@@ -80,7 +92,7 @@ div#container div.table table.datatable tr.row td.cell.x {display:none;}
 
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
-	
+
 	/* Forms */
 	div#container form.form div.act {margin-top:.75rem;}
 	/* div#container form.form div.act button.btn.clear {display:none;} */
