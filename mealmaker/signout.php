@@ -19,6 +19,7 @@
 
 	// Get metadata for database tables. 
 	require_once('./assets/database/database.php');
+	require_once('./assets/database/databasequery.php');
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 

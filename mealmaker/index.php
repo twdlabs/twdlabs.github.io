@@ -19,6 +19,7 @@
 
 	// Get metadata for database tables. 
 	require_once('./assets/database/database.php');
+	require_once('./assets/database/databasequery.php');
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 
@@ -92,11 +93,16 @@
 				// Check for valid session. 
 				$validsession = isset($_SESSION) && isset($_SESSION['pid']) ;
 
-				// Display user dashboard (if valid session). 
-				if( $validsession ) include('./assets/module/userdashboard.php');
-
-				// Display user form (sign-in/sign-up) (if no valid session). 
-				else include('./assets/module/userform.php');
+				// Proceed for invalid session. 
+				if( !$validsession ) {
+					// Display user getter forms (sign-in/sign-up). 
+					include('./assets/module/getuser.php');
+				}
+				// Proceed for valid session. 
+				else {
+					// Display user's dashboard. 
+					include('./assets/module/dashboard.php');
+				}
 			?>
 
 		</div>

@@ -19,6 +19,7 @@
 
 	// Get metadata for database tables. 
 	require_once('./assets/database/database.php');
+	require_once('./assets/database/databasequery.php');
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 
@@ -101,7 +102,7 @@
 					function checkUserLogin($pid,$passwd) {
 
 						// Create database query. 
-						$sql = " SELECT passwdsalt FROM `users` WHERE (id=$pid) ; ";
+						$sql = " SELECT passwdsalt FROM `parents` WHERE (id=$pid) ; ";
 						// Send database query and save state. 
 						$querystate = sendDatabaseQuery($sql,true);
 						// Get password salt for given user. 
@@ -111,7 +112,7 @@
 						$passwdhash = getPasswdHash($passwd.$passwdsalt/* ,1 */);
 
 						// Create database query. 
-						$sql = " SELECT id FROM `users` WHERE ( (id=$pid) AND (passwdhash='$passwdhash') ) ; ";
+						$sql = " SELECT id FROM `parents` WHERE ( (id=$pid) AND (passwdhash='$passwdhash') ) ; ";
 						// Send database query and save state. 
 						$querystate = sendDatabaseQuery($sql,true);
 
@@ -143,6 +144,8 @@
 
 					// Set session data. 
 					$_SESSION['pid'] = $pid;
+					$_SESSION['currentuserisadmin'] = ( $pid==1 ) ? 1 : 0 ;
+					$_SESSION['currentuserisoperator'] = ( $pid==1 || $pid==2 ) ? 1 : 0 ;
 				}
 				// Handle unsuccessful login. 
 				else {

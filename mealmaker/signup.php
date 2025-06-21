@@ -19,6 +19,7 @@
 
 	// Get metadata for database tables. 
 	require_once('./assets/database/database.php');
+	require_once('./assets/database/databasequery.php');
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 
@@ -72,68 +73,49 @@
 				// Connect to server database. 
 				$db = openDb('mealmaker');
 				// Initialize success markers. 
-				$validperson = null;
-				$validuser = null;
+				$validparentuser = null;
 
 				// Get received user details. 
-				$pname = $_POST['parentname'] ?? '';
+				$name = $_POST['parentname'] ?? '';
 				$phone = $_POST['phonenumber'] ?? '';
 				$email = $_POST['emailaddress'] ?? '';
 				$pwd = $_POST['password'] ?? '';
 				$pwd1 = $_POST['passwordconfirm'] ?? '';
 
 				// Check if all info present. 
-				$allinfopresent = $pname && $phone && $email && $pwd && $pwd1 ;
+				$allinfopresent = $name && $phone && $email && $pwd && $pwd1 ;
 
 				// Proceed to query (if no info missing). 
 				if( $allinfopresent ) {
 
-					// Create new person. 
-					function createNewPerson($pname,$phone,$email) {
+					// Create new user account for parent or operator. 
+					function createNewUser($name,$phone,$email,$pwd,$pwd1) {
+
+						// Ensure both passwords match. 
+						if( !$pwd || !$pwd1 || $pwd!=$pwd1 ) return null;
+						// Generate password salt for new user. 
+						$passwdsalt = generateRandomSalt(/* 1 */);
+						// Generate password hash. 
+						$passwdhash = getPasswdHash( $pwd.$passwdsalt /* , 1 */);
 
 						// Create database query. 
-						$sql = " INSERT INTO `parents` (parentname,phonenumber,emailaddress) VALUES ( '$pname' , '$phone' , '$email' ) ; ";
+						$sql = " INSERT INTO `parents` (parentname,phonenumber,emailaddress,passwdsalt,passwdhash) VALUES ( '$name' , '$phone' , '$email' , '$passwdsalt' , '$passwdhash' ) ; ";
 						// Send database query and save state. 
 						$querystate = sendDatabaseQuery($sql,true);
+
+						// // Create database query. 
+						// $sql = " SELECT LAST_INSERT_ID() AS parentid; ";
+						// // Send database query and save state. 
+						// $querystate = sendDatabaseQuery($sql/* ,true */);
+						// // Get id of person. 
+						// $parentid = $querystate['queryresults'][0]['parentid'];
 
 						// Return validity of record for newly added person. 
 						return ( $querystate['roweffect'] /* && $querystate['success'] */ );
 					}
 
-					// Create new user. 
-					function createNewUser($pwd,$pwd1) {
-
-						// Create database query. 
-						$sql = " SELECT LAST_INSERT_ID() AS personid; ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql/* ,true */);
-
-						// 
-						$personid = $querystate['queryresults'][0]['personid'];
-
-						// Ensure both passwords match. 
-						// if( $pwd && $pwd1 && $pwd==$pwd1 )
-						if( !$pwd || !$pwd1 || $pwd!=$pwd1 ) return;
-
-						// Generate password salt for new user. 
-						$passwdsalt = generateRandomSalt(/* 1 */);
-						// Generate password hash. 
-						$passwdhash = getPasswdHash($pwd.$passwdsalt/* ,1 */);
-
-						// Create database query. 
-						$sql = " INSERT INTO `users` (id,passwdsalt,passwdhash) VALUES ( $personid , '$passwdsalt' , '$passwdhash' ); ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql,true);
-
-						// Return validity of record for newly added user. 
-						return ( $querystate['roweffect'] /* && $querystate['success'] */ );
-					}
-
-					// Create new person. 
-					$validperson = createNewPerson($pname,$phone,$email);
-
-					// Create new user (if person exists). 
-					$validuser = $validperson && createNewUser($pwd,$pwd1);
+					// Create new user account for parent or operator. 
+					$validparentuser = createNewUser($name,$phone,$email,$pwd,$pwd1);
 				}
 
 				// Redirect back to user form (if any info missing). 
@@ -146,8 +128,7 @@
 				include('./assets/module/navbar.php');
 
 				// Handle successful registration. 
-				$registrationsuccessful = $validperson && $validuser;
-				if($registrationsuccessful) {
+				if($validparentuser) {
 
 					// Display message. 
 					print 'Registration successful!';
