@@ -21,55 +21,69 @@ body {
 	--backcolor:#fff7ca;
 	--backcolor2:#fdea7d;
 	--backcolor3:gold;
+
+	/* Theme Colors */
+	--backcolor:#f1dec1;
+	--backcolor2:#f1ba67;
+	--backcolor3:#f19307;
+	--backcolor4:#d0542b;
 }
 
 
 
 /* Container */
 body {font-family:Nunito,sans-serif;}
-div#container {display:flex; flex-direction:column; align-items:center; /* justify-content:flex-end; */}
-div#container div.item {margin-top:1.25em;}
+div#container {}
+div#container div.grid {display:flex; flex-direction:column; align-items:center; /* justify-content:flex-end; */}
+div#container div.grid div.item {display:grid; grid-template-columns:auto auto; place-items:center; grid-gap:1rem; margin-top:1.25em;}
+/* div#container div.grid div.item.d {} */
+div#container div.grid div.item.s {grid-template-columns:auto;}
+/* div#container div.grid div.item.s {display:flex; flex-direction:column; align-items:center;} */
 div#container a.returnlink {background-color:black; padding:.5em .75em; border-radius:.5em;}
 div#container a.returnlink {color:white; text-decoration:none;}
 
 
 /* Navbar */
-/* div#container nav.navbar {} */
+div#container nav.navbar {background-color:var(--backcolor4);}
 /* div#container nav.navbar div.bin {} */
+div#container nav.navbar div.bin a.homebtn {}
+div#container nav.navbar div.bin a.homebtn h1.head {color:white;}
+div#container nav.navbar div.bin a.homebtn h1.head svg.icon {display:none;}
+div#container nav.navbar div.bin a.homebtn h1.head img.logo {height:2em;}
 div#container nav.navbar div.bin a.togglebtn.um {display:none;}
 div#container nav.navbar div.bin a.logoutbtn {background-color:black; padding:.5em .75em; border-radius:.5em; /* margin-left:.5em; */}
 div#container nav.navbar div.bin a.logoutbtn {color:white; text-decoration:none;}
 div#container nav.navbar div.bin a.logoutbtn svg.icon {display:block;}
 
 
-/* Forms */
-div#container form.form {position:relative; /* display:inline-block; */}
-div#container form.form {background-color:var(--backcolor3); padding:var(--edgesize); border-radius:.375rem;}
-/* div#container form.user {max-width:32rem;} */
+/* Data Form */
+div#container div.form {background-color:var(--backcolor3); position:relative; padding:var(--edgesize); border-radius:.375rem;}
+div#container div.form h2.head {text-align:center; margin:0; margin-bottom:.25em;}
+/* div#container div.form form.dataform {} */
 /* div#container form.order {max-width:48rem;} */
-div#container form.form h2.head {text-align:center; margin:0; margin-bottom:.25em;}
-div#container form.form div.field {display:grid; align-items:center; padding:.125rem;}
-div#container form.form div.field select.datafield {cursor:pointer; text-align:center; min-width:7rem;}
-div#container form.form div.field select.datafield,
-div#container form.form div.field input.datafield {/* font-size:1rem; */ width:100%;/*  max-width:12rem; */ padding:.5em .75em; border-radius:.5rem; border:0 none;}
-div#container form.form table.fieldtable tr.row td.cell input {max-width:5rem;}
-div#container form.form div.act {display:grid; grid-template-columns:1fr; grid-gap:.5em; padding:0; margin-top:.25rem;}
-/* div#container form.form div.act {grid-template-columns:repeat(2,1fr);} */
-div#container form.form div.act button.btn {background-color:black; padding:.625em; border-radius:.5rem; border:0 none;}
-div#container form.form div.act button.btn {display:flex; justify-content:center; align-items:center;}
-div#container form.form div.act button.btn {color:white; cursor:pointer;}
-/* div#container form.form div.act button.btn.send {} */
-div#container form.form div.act button.btn.clear {position:absolute; top:var(--edgesize); right:var(--edgesize);}
-div#container form.form div.act button.btn.clear {padding:.375em;}
-div#container form.form div.act button.btn svg.icon {display:none;}
-div#container form.form div.act button.btn span.caption {font-size:1.125em; margin:0 .25em;}
-div#container form.form p.textcopy {text-align:center; margin:0; margin-top:.75rem;}
-div#container form.form p.textcopy a.switchlink {color:black;}
-
-
-/* User Forms */
-div#container form.user.form div.field {grid-template-columns:2fr 3fr;}
-div#container form.user.form div.field label.label {font-weight:bold; cursor:pointer; margin:.25rem 0; margin-right:.5rem;}
+/* div#container form.biform {max-width:32rem;} */
+div#container div.form form.dataform div.field {display:grid; align-items:center; padding:.125rem;}
+div#container div.form form.dataform div.field select.datafield {cursor:pointer;}
+div#container div.form form.dataform div.field select.datafield,
+div#container div.form form.dataform div.field input.datafield {/* font-size:1rem; */ width:100%;/*  max-width:12rem; */ padding:.5em .75em; border-radius:.5rem; border:0 none;}
+div#container div.form form.dataform div.act {display:grid; grid-template-columns:1fr; grid-gap:.5em; padding:0; margin-top:.25rem;}
+/* div#container div.form form.dataform div.act {grid-template-columns:repeat(2,1fr);} */
+div#container div.form form.dataform div.act button.btn {background-color:black; padding:.625em; border-radius:.5rem; border:0 none;}
+div#container div.form form.dataform div.act button.btn {display:flex; justify-content:center; align-items:center;}
+div#container div.form form.dataform div.act button.btn {color:white; cursor:pointer;}
+/* div#container div.form form.dataform div.act button.btn.send {} */
+div#container div.form form.dataform div.act button.btn.clear {position:absolute; top:var(--edgesize); right:var(--edgesize);}
+div#container div.form form.dataform div.act button.btn.clear {padding:.375em;}
+div#container div.form form.dataform div.act button.btn svg.icon {display:none;}
+div#container div.form form.dataform div.act button.btn span.caption {font-size:1.125em; margin:0 .25em;}
+div#container div.form form.dataform p.textcopy {text-align:center; margin:0; margin-top:.75rem;}
+div#container div.form form.dataform p.textcopy a.switchlink {color:black;}
+/* Data Bi-Form */
+div#container div.form form.dataform.biform div.field {grid-template-columns:2fr 3fr;}
+div#container div.form form.dataform.biform div.field label.label {font-weight:bold; cursor:pointer; margin:.25rem 0; margin-right:.5rem;}
+/* Data Table Form */
+div#container div.form form.dataform table.fieldtable tr.row td.cell div.field input.datafield {max-width:5rem;}
+div#container div.form form.dataform table.fieldtable tr.row td.cell div.field select.datafield {text-align:center; min-width:7rem;}
 
 
 /* Data Table */
@@ -81,8 +95,9 @@ div#container div.table table.datatable tr.row th.head,
 div#container div.table table.datatable tr.row td.cell {background-color:var(--whiteglass); background-color:var(--backcolor2); padding:.25em .75em; border-radius:.25em;}
 div#container div.table table.datatable tr.row th.head.f, 
 div#container div.table table.datatable tr.row td.cell.f {background-color:transparent;}
-div#container div.table table.datatable tr.row th.head.x, 
-div#container div.table table.datatable tr.row td.cell.x {display:none;}
+/* div#container div.table table.datatable tr.row th.head.x,  */
+/* div#container div.table table.datatable tr.row td.cell.x {display:none;} */
+div#container div.table table.datatable tr.row td.cell.n {padding:3em;}
 
 
 
@@ -93,16 +108,23 @@ div#container div.table table.datatable tr.row td.cell.x {display:none;}
 /* Small Smartphone Screen */
 @media screen and (max-width:32rem) {
 
-	/* Forms */
-	div#container form.form div.act {margin-top:.75rem;}
-	/* div#container form.form div.act button.btn.clear {display:none;} */
-	/* div#container form.form div.act button.btn.clear {position:static;} */
-	/* div#container form.form div.act button.btn.clear {padding:.5em;} */
-	div#container form.form div.act button.btn.clear svg.icon {display:block;}
-	div#container form.form div.act button.btn.clear span.caption {display:none;}
+	/* Data Forms */
+	div#container div.form form.dataform div.act {margin-top:.75rem;}
+	/* div#container div.form form.dataform div.act button.btn.clear {display:none;} */
+	/* div#container div.form form.dataform div.act button.btn.clear {position:static;} */
+	/* div#container div.form form.dataform div.act button.btn.clear {padding:.5em;} */
+	div#container div.form form.dataform div.act button.btn.clear svg.icon {display:block;}
+	div#container div.form form.dataform div.act button.btn.clear span.caption {display:none;}
+	/* Bi-Forms */
+	div#container div.form form.dataform.biform div.field {grid-template-columns:1fr;}
 
-	/* User Forms */
-	div#container form.user.form div.field {grid-template-columns:1fr;}
+	/* Data Table */
+	/* div#container div.table {} */
+	/* div#container div.table table.datatable {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
 
 	/* General Section */
 	/* div#container section {} */
