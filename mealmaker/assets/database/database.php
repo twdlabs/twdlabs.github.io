@@ -5,14 +5,18 @@
 	$databasetables = [
 
 
-		'persons' => [
+		'parents' => [
 
 			// Define table title. 
-			'tabletitle' => 'Persons',
+			'tabletitle' => 'Users',
 			// Define table navigation icon. 
 			'tableicontag' => 'personbadge',
 			// Define caption for single item. 
-			'singlecaption' => 'User Account',
+			'singlecaption' => 'User',
+			// Define accessibility of table (for non-operators). 
+			'parentaccessible' => false,
+			// Define name of script for creating new item entry. 
+			'creatorscriptname' => 'xyz',
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -25,8 +29,85 @@
 				// 	'visibleintable'=>false,
 				// ],
 				[
-					'fid'=>'childname',
-					'fieldtitle'=>'Child',
+					'fid'=>'parentname',
+					'fieldtitle'=>'Name',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'phonenumber',
+					'fieldtitle'=>'Phone',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'emailaddress',
+					'fieldtitle'=>'Email',
+					'visibleintable'=>true,
+				],
+			],
+			// Define table editor fields. 
+			'editorfields' => [
+				[
+					'type'=>'text',
+					'fid'=>'parentname',
+					'fieldtitle'=>'Name',
+					'placeholder'=>'John Smith',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
+					'type'=>'text',
+					'fid'=>'phonenumber',
+					'fieldtitle'=>'Phone Number',
+					'placeholder'=>'2134567890',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
+					'type'=>'text',
+					'fid'=>'emailaddress',
+					'fieldtitle'=>'Email Address',
+					'placeholder'=>'johnsmith@gmail.com',
+					'required'=>true,
+					'editable'=>true,
+				],
+				// [
+				// 	'type'=>'password',
+				// 	'fid'=>'password',
+				// 	'fieldtitle'=>'Password',
+				// 	'placeholder'=>'passwd',
+				// 	'required'=>true,
+				// 	'editable'=>true,
+				// ],
+			],
+		],
+
+
+		'students' => [
+
+			// Define table title. 
+			'tabletitle' => 'Students',
+			// Define table navigation icon. 
+			'tableicontag' => 'backpack',
+			// Define caption for single item. 
+			'singlecaption' => 'Student',
+			// Define accessibility of table (for non-operators). 
+			'parentaccessible' => true,
+			// Define name of script for creating new item entry. 
+			'creatorscriptname' => 'createstudent',
+
+			// Define downloaded table entry data. 
+			'entrydata' => [],
+
+			// Define table display fields (from detailed query results). 
+			'displayfields' => [
+				// [
+				// 	'fid'=>'id',
+				// 	'fieldtitle'=>'ID',
+				// 	'visibleintable'=>false,
+				// ],
+				[
+					'fid'=>'studentname',
+					'fieldtitle'=>'Student',
 					'visibleintable'=>true,
 				],
 				[
@@ -34,56 +115,56 @@
 					'fieldtitle'=>'Parent',
 					'visibleintable'=>true,
 				],
-				[
-					'fid'=>'phonenumber',
-					'fieldtitle'=>'Phone Number',
-					'visibleintable'=>true,
-				],
-				[
-					'fid'=>'username',
-					'fieldtitle'=>'Email',
-					'visibleintable'=>true,
-				],
+				// [
+				// 	'fid'=>'nummeals',
+				// 	'fieldtitle'=>'Variety of Meals',
+				// 	'visibleintable'=>true,
+				// ],
+				// [
+				// 	'fid'=>'totalnumorders',
+				// 	'fieldtitle'=>'Total Orders',
+				// 	'visibleintable'=>true,
+				// ],
 			],
 			// Define table editor fields. 
 			'editorfields' => [
 				[
 					'type'=>'text',
-					'fid'=>'username',
-					'fieldtitle'=>'Email',
+					'fid'=>'studentname',
+					'fieldtitle'=>'Student Name',
+					'fieldtitle'=>'Name',
+					'placeholder'=>'Johnny Smith',
 					'required'=>true,
 					'editable'=>true,
 				],
 				[
-					'type'=>'text',
-					'fid'=>'phonenumber',
-					'fieldtitle'=>'Phone Number',
+					'type'=>'select',
+					'fid'=>'parentid',
+					'fieldtitle'=>'Parent Name',
+					'fieldtitle'=>'Parent',
 					'required'=>true,
 					'editable'=>true,
+					'selectorsource'=>[
+						'tid'=>'parents',
+						'fid'=>'parentname',
+					],
 				],
 			],
-
-			// Define basic database query. 
-			'basicdataquery' => "",
-			// Define detailed database query. 
-			'detaildataquery' => 
-			" SELECT 
-				p.id,
-				p.childname, p.personname,
-				p.username, p.phonenumber
-			FROM (persons as p)
-			ORDER BY p.id ",
 		],
 
 
-		'users' => [
+		'drinks' => [
 
 			// Define table title. 
-			'tabletitle' => 'User Accounts',
+			'tabletitle' => 'Drinks',
 			// Define table navigation icon. 
-			'tableicontag' => 'personbadge',
+			'tableicontag' => 'drinkingcup',
 			// Define caption for single item. 
-			'singlecaption' => 'User Account',
+			'singlecaption' => 'Drink',
+			// Define accessibility of table (for non-operators). 
+			'parentaccessible' => false,
+			// Define name of script for creating new item entry. 
+			'creatorscriptname' => 'xyz',
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -96,53 +177,27 @@
 				// 	'visibleintable'=>false,
 				// ],
 				[
-					'fid'=>'username',
-					'fieldtitle'=>'Email',
+					'fid'=>'drinkname',
+					'fieldtitle'=>'Drink Name',
 					'visibleintable'=>true,
 				],
-				[
-					'fid'=>'nummeals',
-					'fieldtitle'=>'Variety of Meals',
-					'visibleintable'=>true,
-				],
-				[
-					'fid'=>'totalnumorders',
-					'fieldtitle'=>'Total Orders',
-					'visibleintable'=>true,
-				],
+				// [
+				// 	'fid'=>'nummeals',
+				// 	'fieldtitle'=>'Associated Meals',
+				// 	'visibleintable'=>true,
+				// ],
 			],
 			// Define table editor fields. 
 			'editorfields' => [
 				[
 					'type'=>'text',
-					'fid'=>'username',
-					'fieldtitle'=>'Email',
-					'required'=>true,
-					'editable'=>true,
-				],
-				[
-					'type'=>'text',
-					'fid'=>'phonenumber',
-					'fieldtitle'=>'Phone Number',
+					'fid'=>'drinkname',
+					'fieldtitle'=>'Drink Name',
+					'placeholder'=>'Water',
 					'required'=>true,
 					'editable'=>true,
 				],
 			],
-
-			// Define basic database query. 
-			'basicdataquery' => "",
-			// Define detailed database query. 
-			'detaildataquery' => 
-			" SELECT 
-				u.id,
-				u.childname, u.personname,
-				u.username, u.phonenumber,
-				-- count(distinct mo.mealid) as nummeals,
-				count(distinct o.id) as totalnumorders
-			FROM (users as u)
-			LEFT JOIN (mealorders as o) ON (o.userid = u.id)
-			GROUP BY u.id 
-			ORDER BY u.id ",
 		],
 
 
@@ -153,7 +208,11 @@
 			// Define table navigation icon. 
 			'tableicontag' => 'foodmenu',
 			// Define caption for single item. 
-			'singlecaption' => 'Meals',
+			'singlecaption' => 'Meal',
+			// Define accessibility of table (for non-operators). 
+			'parentaccessible' => false,
+			// Define name of script for creating new item entry. 
+			'creatorscriptname' => 'xyz',
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -166,8 +225,18 @@
 				// 	'visibleintable'=>false,
 				// ],
 				[
-					'fid'=>'mealname',
-					'fieldtitle'=>'Meal Name',
+					'fid'=>'entree',
+					'fieldtitle'=>'Main Dish',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'sidedish',
+					'fieldtitle'=>'Veggie/Fruit',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'drinkname',
+					'fieldtitle'=>'Drink',
 					'visibleintable'=>true,
 				],
 				[
@@ -175,46 +244,57 @@
 					'fieldtitle'=>'Orders',
 					'visibleintable'=>true,
 				],
-				[
-					'fid'=>'numpeople',
-					'fieldtitle'=>'People',
-					'visibleintable'=>true,
-				],
+				// [
+				// 	'fid'=>'numpeople',
+				// 	'fieldtitle'=>'People',
+				// 	'visibleintable'=>true,
+				// ],
 			],
 			// Define table editor fields. 
 			'editorfields' => [
 				[
 					'type'=>'text',
-					'fid'=>'mealname',
-					'fieldtitle'=>'Meal Name',
+					'fid'=>'entree',
+					'fieldtitle'=>'Main Dish',
+					'placeholder'=>'Baked Chicken Nuggets',
 					'required'=>true,
 					'editable'=>true,
 				],
+				[
+					'type'=>'text',
+					'fid'=>'sidedish',
+					'fieldtitle'=>'Veggie/Fruit',
+					'placeholder'=>'Avocado Slices',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
+					'type'=>'select',
+					'fid'=>'drinkid',
+					'fieldtitle'=>'Select Drink',
+					'required'=>true,
+					'editable'=>true,
+					'selectorsource'=>[
+						'tid'=>'drinks',
+						'fid'=>'drinkname',
+					],
+				],
 			],
-
-			// Define basic database query. 
-			'basicdataquery' => "",
-			// Define detailed database query. 
-			'detaildataquery' => 
-			" SELECT 
-				m.id, m.mealname,
-				count(o.id) as numorders,
-				count(distinct o.userid) as numpeople
-			FROM (meals as m)
-			LEFT JOIN (mealorders as o) ON (o.mealid = m.id)
-			GROUP BY m.id
-			ORDER BY m.mealname ",
 		],
 
 
 		'mealorders' => [
 
 			// Define table title. 
-			'tabletitle' => 'Meal Orders',
+			'tabletitle' => 'Orders',
 			// Define table navigation icon. 
 			'tableicontag' => 'pass',
 			// Define caption for single item. 
-			'singlecaption' => 'Meal Order',
+			'singlecaption' => 'Order',
+			// Define accessibility of table (for non-operators). 
+			'parentaccessible' => true,
+			// Define name of script for creating new item entry. 
+			'creatorscriptname' => 'xyz',
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -227,62 +307,71 @@
 				// 	'visibleintable'=>false,
 				// ],
 				[
-					'fid'=>'personname',
-					'fieldtitle'=>'Person',
+					'fid'=>'deliverydate',
+					'fieldtitle'=>'Delivery Date',
 					'visibleintable'=>true,
 				],
 				[
-					'fid'=>'eventname',
-					'fieldtitle'=>'Event',
+					'fid'=>'entree',
+					// 'fid'=>'mealsummary',
+					'fieldtitle'=>'Meal',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'studentname',
+					'fieldtitle'=>'Student',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'creatorname',
+					'fieldtitle'=>'Ordered By',
 					'visibleintable'=>true,
 				],
 			],
 			// Define table editor fields. 
 			'editorfields' => [
 				[
+					'type'=>'date',
+					'fid'=>'deliverydate',
+					'fieldtitle'=>'Delivery Date',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
 					'type'=>'select',
-					'fid'=>'eventid',
-					'fieldtitle'=>'Event',
+					'fid'=>'mealid',
+					'fieldtitle'=>'Select Meal',
 					'required'=>true,
 					'editable'=>true,
 					'selectorsource'=>[
-						'tid'=>'events',
-						'fid'=>'eventname',
+						'tid'=>'meals',
+						'fid'=>'entree',
+						// 'fid'=>'mealsummary',
 					],
 				],
 				[
 					'type'=>'select',
-					'fid'=>'personid',
-					'fieldtitle'=>'Person',
-					'fieldtitle'=>'Volunteer',
+					'fid'=>'studentid',
+					'fieldtitle'=>'Select Student',
 					'required'=>true,
 					'editable'=>true,
 					'selectorsource'=>[
-						'tid'=>'persons',
-						'fid'=>'personname',
+						'tid'=>'students',
+						'fid'=>'studentname',
 					],
 				],
-				// [
-				// 	'type'=>'text',
-				// 	'fid'=>'notes',
-				// 	'fieldtitle'=>'Notes',
-				// 	'required'=>false,
-				// 	'editable'=>true,
-				// ],
+				[
+					'type'=>'select',
+					'fid'=>'creatorid',
+					'fieldtitle'=>'Ordered By',
+					'required'=>true,
+					'editable'=>true,
+					'selectorsource'=>[
+						'tid'=>'parents',
+						'fid'=>'parentname',
+					],
+				],
 			],
-
-			// Define basic database query. 
-			'basicdataquery' => "",
-			// Define detailed database query. 
-			'detaildataquery' => 
-			" SELECT 
-				o.id,
-				u.childname, u.personname,
-				m.mealname
-			FROM (mealorders as o)
-			LEFT JOIN (users as u) ON (o.userid = u.id)
-			LEFT JOIN (meals as m) ON (o.mealid = m.id)
-			ORDER BY o.modifiedat ",
 		],
 	];
 ?>
