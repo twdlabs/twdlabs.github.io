@@ -32,8 +32,12 @@
 					<!-- head -->
 					<h1 class="head">
 
+						<!-- logo -->
+						<img class="logo" src="./assets/images/bbicon.jpg" alt="BB" title="Baba's Bagel">
+						<!-- /logo -->
+
 						<!-- icon -->
-						<svg class="icon journals" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+						<svg class="icon bagel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
 							<?php print $databasetablesicons['bagel']; ?>
 						</svg>
 						<!-- /icon -->
