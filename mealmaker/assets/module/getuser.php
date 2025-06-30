@@ -5,20 +5,20 @@
 	<head>
 		<style>
 			/*  */
-			div#container div.item.n {display:none;}
-			div#container div.item.e {display:block;}
-			div#container.newuser div.item.n {display:block;}
-			div#container.newuser div.item.e {display:none;}
+			div#container section.n {display:none;}
+			div#container section.e {display:block;}
+			div#container.newuser section.n {display:block;}
+			div#container.newuser section.e {display:none;}
 		</style>
 	</head>
 
 	<body>
 
 		<!-- item -->
-		<div class="item e">
+		<section class="e">
 
 			<!-- form -->
-			<div class="form">
+			<div class="form block show">
 
 				<!-- head -->
 				<h2 class="head">Sign in</h1>
@@ -35,7 +35,7 @@
 						<!-- /label -->
 
 						<!-- datafield -->
-						<input class="datafield" type="text" id="userid" name="emailaddress" placeholder="johnsmith@gmail.com" required>
+						<input class="datafield" type="email" id="userid" name="emailaddress" placeholder="johnsmith@gmail.com" required>
 						<!-- /datafield -->
 
 					</div>
@@ -113,14 +113,14 @@
 			</div>
 			<!-- /form -->
 
-		</div>
+		</section>
 		<!-- /item -->
 
 		<!-- item -->
-		<div class="item n">
+		<section class="n">
 
 			<!-- form -->
-			<div class="form">
+			<div class="form block show">
 
 				<!-- head -->
 				<h2 class="head">Sign up</h1>
@@ -133,7 +133,7 @@
 					<div class="field">
 
 						<!-- label -->
-						<label class="label" for="parentname">Parent Name</label>
+						<label class="label" for="parentname">Your Name</label>
 						<!-- /label -->
 
 						<!-- datafield -->
@@ -165,7 +165,7 @@
 						<!-- /label -->
 
 						<!-- datafield -->
-						<input class="datafield" type="text" id="useridcreate" name="emailaddress" placeholder="johnsmith@gmail.com" required>
+						<input class="datafield" type="email" id="useridcreate" name="emailaddress" placeholder="johnsmith@gmail.com" required>
 						<!-- /datafield -->
 
 					</div>
@@ -263,7 +263,7 @@
 			</div>
 			<!-- /form -->
 
-		</div>
+		</section>
 		<!-- /item -->
 
 		<script type="text/javascript">

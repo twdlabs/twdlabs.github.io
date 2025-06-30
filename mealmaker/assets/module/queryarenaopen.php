@@ -6,9 +6,12 @@
 	</head>
 
 	<body>
+		
+		<?php $currentuserisadmin = isset( $_SESSION ) && isset( $_SESSION['currentuserisadmin'] ) && $_SESSION['currentuserisadmin'] ; ?>
+		<?php $queryarenastate = $currentuserisadmin ? 'openx' : '' ; ?>
 
 		<!-- queryarena -->
-		<div class="queryarena navbaby open">
+		<div class="queryarena navbaby <?=$queryarenastate?>">
 
 			<!-- togglebtn -->
 			<div class="togglebtn" onclick="toggleQueryArena()">
