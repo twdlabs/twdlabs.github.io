@@ -23,8 +23,13 @@
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 
-	require_once('./assets/crudops.php');
+	require_once('./assets/script/crudops.php');
+	// Get functions to perform user operations. 
+	require_once('./assets/script/userops.php');
 ?>
+
+<?php $validviewselected = isset( $_GET['view'] ) && isset( $databasetables[ $_GET['view'] ] ) && isShowingDatabaseTable( $_GET['view'] ) ; ?>
+<?php $currentviewtitleaddon = $validviewselected ? $databasetables[ $_GET['view'] ]['tabletitle'] . ' | ' : '' ; ?>
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +40,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Meal Maker</title>
+		<link href="./assets/images/bbicon.jpg" rel="icon"/>
+		<link href="./assets/images/bbicon.jpg" rel="apple-touch-icon"/>
+		<title><?=$currentviewtitleaddon?>Baba's Bagel</title>
+
+		<!-- Cache Blocker -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
 
 		<!-- Main Stylesheet (shared) -->
 		<link href="./../sharedassets/style/style.css" rel="stylesheet" type="text/css"/>
@@ -49,7 +61,7 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
@@ -57,7 +69,6 @@
 			console.log('Session data:', <?php print isset($_SESSION) ? json_encode($_SESSION) : null; ?>);
 			console.log('Response data (GET):', <?php print isset($_GET) ? json_encode($_GET) : null; ?>);
 			console.log('Response data (POST):', <?php print isset($_POST) ? json_encode($_POST) : null; ?>);
-			// console.log('Database tables (start):', <?php print json_encode( getDatabaseEntries() ); ?>);
 		</script>
 	</head>
 
@@ -65,6 +76,8 @@
 
 		<!-- #container -->
 		<div id="container">
+			<!-- <input type="hidden" name="xyz" value="<?php print $_SESSION['pid']; ?>"> -->
+			<!-- <input type="hidden" name="xyz" value="<?php print $_SESSION['pid']; ?>"> -->
 
 			<?php
 
@@ -78,7 +91,7 @@
 				// handleCrudOps();
 
 				// Download all table entries from database. 
-				// getAllTables(0);
+				getAllTables(0);
 
 				// Get self-reference url (for forms and links). 
 				// $selfurl = getSelfRefUrl();
@@ -87,21 +100,24 @@
 				// Display closing of query arena. 
 				include('./assets/module/queryarenaclose.php');
 
-				// Display navbar. 
-				include('./assets/module/navbar.php');
-
 				// Check for valid session. 
 				$validsession = isset($_SESSION) && isset($_SESSION['pid']) ;
 
+				// Display navbar. 
+				include('./assets/module/navbar.php');
+
 				// Proceed for invalid session. 
 				if( !$validsession ) {
+
 					// Display user getter forms (sign-in/sign-up). 
 					include('./assets/module/getuser.php');
 				}
 				// Proceed for valid session. 
 				else {
+
 					// Display user's dashboard. 
 					include('./assets/module/dashboard.php');
+					// include('./assets/database/bin/dashboardX.php');
 				}
 			?>
 
@@ -112,7 +128,7 @@
 		<script src="./../sharedassets/script/toggler.js" type="text/javascript"></script>
 
 		<script type="text/javascript">
-			// console.log('Database tables (end):', <?php print json_encode( getDatabaseEntries() ); ?>);
+			console.log('Database tables (end):', <?php print json_encode( getDatabaseEntries() ); ?>);
 
 			// Close query arena (when page fully loaded). 
 			closeQueryArena();
@@ -124,3 +140,9 @@
 	</body>
 
 </html>
+
+<?php
+
+	// Disconnect server database. 
+	closeDb($db);
+?>

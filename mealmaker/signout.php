@@ -23,7 +23,9 @@
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 
-	require_once('./assets/crudops.php');
+	require_once('./assets/script/crudops.php');
+	// Get functions to perform user operations. 
+	require_once('./assets/script/userops.php');
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Meal Maker</title>
+		<title>Sign Out | Baba's Bagel</title>
+
+		<!-- Cache Blocker -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
 
 		<!-- Main Stylesheet (shared) -->
 		<link href="./../sharedassets/style/style.css" rel="stylesheet" type="text/css"/>
@@ -49,7 +56,7 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
@@ -71,32 +78,28 @@
 				include('./assets/module/queryarenaopen.php');
 
 				// Connect to server database. 
-				$db = openDb('mealmaker');
+				// $db = openDb('mealmaker');
+
+				// Clear out current session data. 
+				clearSession();
 
 				// Redirect back to user form. 
-				print '<meta http-equiv="refresh" content="3;./">';
+				print '<meta http-equiv="refresh" content="30;./">';
 
 				// Display closing of query arena. 
 				include('./assets/module/queryarenaclose.php');
 
 				// Display navbar. 
 				include('./assets/module/navbar.php');
-
-				// Reset session data. 
-				$_SESSION['pid'] = null;
-				// End user session. 
-				session_destroy();
-
-				// Display message. 
-				print 'Logout successful!';
-
-				// Display return link. 
-				?>
-					<!-- returnlink -->
-					<a class="returnlink" href="./">Proceed</a>
-					<!-- /returnlink -->
-				<?php
 			?>
+
+			<!-- head -->
+			<h2 class="head">Logout successful!</h2>
+			<!-- /head -->
+
+			<!-- returnlink -->
+			<a class="returnlink" href="./">Proceed</a>
+			<!-- /returnlink -->
 
 		</div>
 		<!-- /#container -->
@@ -113,3 +116,9 @@
 	</body>
 
 </html>
+
+<?php
+
+	// Disconnect server database. 
+	// closeDb($db);
+?>

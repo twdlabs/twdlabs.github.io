@@ -23,7 +23,9 @@
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 
-	require_once('./assets/crudops.php');
+	require_once('./assets/script/crudops.php');
+	// Get functions to perform user operations. 
+	require_once('./assets/script/userops.php');
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Meal Maker</title>
+		<title>Sign In | Baba's Bagel</title>
+
+		<!-- Cache Blocker -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
 
 		<!-- Main Stylesheet (shared) -->
 		<link href="./../sharedassets/style/style.css" rel="stylesheet" type="text/css"/>
@@ -49,7 +56,7 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
@@ -72,95 +79,57 @@
 
 				// Connect to server database. 
 				$db = openDb('mealmaker');
+
 				// Initialize success markers. 
 				$pid = null;
 				$validuserlogin = null;
 
-				// Get received user details. 
+				// Get submitted user details. 
 				$email = $_POST['emailaddress'] ?? '';
 				$pw = $_POST['password'] ?? '';
 
 				// Check if all info present. 
 				$allinfopresent = $email && $pw ;
 
+				// Redirect back to user form (if any info missing). 
+				if( !$allinfopresent ) print '<meta http-equiv="refresh" content="3;./">';
+
 				// Proceed to query (if no info missing). 
-				if( $allinfopresent ) {
-
-					// Get id of given person (by email address). 
-					function getPersonId($email) {
-
-						// Create database query. 
-						$sql = " SELECT id FROM `parents` WHERE (emailaddress='$email') ; ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql,true);
-
-						// Return id of selected person (if valid). 
-						return $querystate['roweffect'] ? $querystate['queryresults'][0]['id'] : null ;
-					}
-
-					// Check for valid user login info. 
-					function checkUserLogin($pid,$passwd) {
-
-						// Create database query. 
-						$sql = " SELECT passwdsalt FROM `parents` WHERE (id=$pid) ; ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql,true);
-						// Get password salt for given user. 
-						$passwdsalt = $querystate['queryresults'][0]['passwdsalt'];
-
-						// Generate password hash. 
-						$passwdhash = getPasswdHash($passwd.$passwdsalt/* ,1 */);
-
-						// Create database query. 
-						$sql = " SELECT id FROM `parents` WHERE ( (id=$pid) AND (passwdhash='$passwdhash') ) ; ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql,true);
-
-						// Return validity of record for selected user. 
-						return $querystate['roweffect'] ? $querystate['queryresults'][0]['id'] : null ;
-					}
+				else {
 
 					// Get id of given person (if email address exists). 
-					$pid = getPersonId($email);
-
+					$pid = getPersonIdByEmail($email);
 					// Check for valid user login (if person exists). 
 					$validuserlogin = $pid && checkUserLogin($pid,$pw);
 				}
 
-				// Redirect back to user form (if any info missing). 
-				else print '<meta http-equiv="refresh" content="3;./">';
+				// Initialize new session data. 
+				if( $validuserlogin ) createNewSession($pid);
 
 				// Display closing of query arena. 
 				include('./assets/module/queryarenaclose.php');
 
 				// Display navbar. 
 				include('./assets/module/navbar.php');
-
-				// Handle successful login. 
-				if($validuserlogin) {
-
-					// Display message. 
-					print 'Login successful!';
-
-					// Set session data. 
-					$_SESSION['pid'] = $pid;
-					$_SESSION['currentuserisadmin'] = ( $pid==1 ) ? 1 : 0 ;
-					$_SESSION['currentuserisoperator'] = ( $pid==1 || $pid==2 ) ? 1 : 0 ;
-				}
-				// Handle unsuccessful login. 
-				else {
-
-					// Display message. 
-					print 'Login unsuccessful';
-				}
-
-				// Display return link. 
-				?>
-					<!-- returnlink -->
-					<a class="returnlink" href="./">Proceed</a>
-					<!-- /returnlink -->
-				<?php
 			?>
+
+			<?php if( $validuserlogin ): ?>
+
+				<!-- head -->
+				<h2 class="head">Login successful!</h2>
+				<!-- /head -->
+
+			<?php else: ?>
+
+				<!-- head -->
+				<h2 class="head">Login unsuccessful</h2>
+				<!-- /head -->
+
+			<?php endif; ?>
+
+			<!-- returnlink -->
+			<a class="returnlink" href="./">Proceed</a>
+			<!-- /returnlink -->
 
 		</div>
 		<!-- /#container -->
@@ -177,3 +146,9 @@
 	</body>
 
 </html>
+
+<?php
+
+	// Disconnect server database. 
+	closeDb($db);
+?>

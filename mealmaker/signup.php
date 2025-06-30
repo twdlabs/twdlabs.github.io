@@ -23,7 +23,9 @@
 	// Get metadata for database table icons. 
 	require_once('./assets/database/tableicons.php');
 	// Get functions to perform CRUD operations. 
-	require_once('./assets/crudops.php');
+	require_once('./assets/script/crudops.php');
+	// Get functions to perform user operations. 
+	require_once('./assets/script/userops.php');
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,12 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="apple-mobile-web-app-capable" content="yes"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
-		<title>Meal Maker</title>
+		<title>Sign Up | Baba's Bagel</title>
+
+		<!-- Cache Blocker -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="0">
 
 		<!-- Main Stylesheet (shared) -->
 		<link href="./../sharedassets/style/style.css" rel="stylesheet" type="text/css"/>
@@ -49,7 +56,7 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
@@ -72,10 +79,11 @@
 
 				// Connect to server database. 
 				$db = openDb('mealmaker');
-				// Initialize success markers. 
-				$validparentuser = null;
 
-				// Get received user details. 
+				// Initialize success markers. 
+				$validuserregistered = null;
+
+				// Get submitted user details. 
 				$name = $_POST['parentname'] ?? '';
 				$phone = $_POST['phonenumber'] ?? '';
 				$email = $_POST['emailaddress'] ?? '';
@@ -85,68 +93,40 @@
 				// Check if all info present. 
 				$allinfopresent = $name && $phone && $email && $pwd && $pwd1 ;
 
-				// Proceed to query (if no info missing). 
-				if( $allinfopresent ) {
-
-					// Create new user account for parent or operator. 
-					function createNewUser($name,$phone,$email,$pwd,$pwd1) {
-
-						// Ensure both passwords match. 
-						if( !$pwd || !$pwd1 || $pwd!=$pwd1 ) return null;
-						// Generate password salt for new user. 
-						$passwdsalt = generateRandomSalt(/* 1 */);
-						// Generate password hash. 
-						$passwdhash = getPasswdHash( $pwd.$passwdsalt /* , 1 */);
-
-						// Create database query. 
-						$sql = " INSERT INTO `parents` (parentname,phonenumber,emailaddress,passwdsalt,passwdhash) VALUES ( '$name' , '$phone' , '$email' , '$passwdsalt' , '$passwdhash' ) ; ";
-						// Send database query and save state. 
-						$querystate = sendDatabaseQuery($sql,true);
-
-						// // Create database query. 
-						// $sql = " SELECT LAST_INSERT_ID() AS parentid; ";
-						// // Send database query and save state. 
-						// $querystate = sendDatabaseQuery($sql/* ,true */);
-						// // Get id of person. 
-						// $parentid = $querystate['queryresults'][0]['parentid'];
-
-						// Return validity of record for newly added person. 
-						return ( $querystate['roweffect'] /* && $querystate['success'] */ );
-					}
-
-					// Create new user account for parent or operator. 
-					$validparentuser = createNewUser($name,$phone,$email,$pwd,$pwd1);
-				}
-
 				// Redirect back to user form (if any info missing). 
-				else print '<meta http-equiv="refresh" content="3;./">';
+				if( !$allinfopresent ) print '<meta http-equiv="refresh" content="3;./">';
+
+				// Proceed to query (if no info missing). 
+				else {
+
+					// Create new user account for parent or operator. 
+					$validuserregistered = createNewUser($name,$phone,$email,$pwd,$pwd1);
+				}
 
 				// Display closing of query arena. 
 				include('./assets/module/queryarenaclose.php');
 
 				// Display navbar. 
 				include('./assets/module/navbar.php');
-
-				// Handle successful registration. 
-				if($validparentuser) {
-
-					// Display message. 
-					print 'Registration successful!';
-				}
-				// Handle unsuccessful registration. 
-				else {
-
-					// Display message. 
-					print 'Registration unsuccessful';
-				}
-
-				// Display return link. 
-				?>
-					<!-- returnlink -->
-					<a class="returnlink" href="./">Proceed</a>
-					<!-- /returnlink -->
-				<?php
 			?>
+
+			<?php if($validuserregistered): ?>
+
+				<!-- head -->
+				<h2 class="head">Registration successful!</h2>
+				<!-- /head -->
+
+			<?php else: ?>
+
+				<!-- head -->
+				<h2 class="head">Registration unsuccessful</h2>
+				<!-- /head -->
+
+			<?php endif; ?>
+
+			<!-- returnlink -->
+			<a class="returnlink" href="./">Proceed</a>
+			<!-- /returnlink -->
 
 		</div>
 		<!-- /#container -->
@@ -163,3 +143,9 @@
 	</body>
 
 </html>
+
+<?php
+
+	// Disconnect server database. 
+	closeDb($db);
+?>
