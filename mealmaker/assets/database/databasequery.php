@@ -7,32 +7,32 @@
 
 		'parents' => [
 
-			// Define basic database query. 
-			'basicdataquery' => "",
+			// Define mini database query. 
+			'miniquery' => "",
 
-			// Define detailed database query. 
-			'detaildataquery' => 
+			// Define full database query. 
+			'fullquery' => 
 			" SELECT 
 				p.id, p.parentname, 
-				p.phonenumber, p.emailaddress/* ,
+				p.phonenumber, p.emailaddress, p.id as loginas/* ,
 				count(distinct o.id) as totalnumorders */
 			FROM (parents as p)
 			LEFT JOIN (mealorders as o) ON (o.orderedby = p.id)
 			GROUP BY p.id 
-			ORDER BY p.createdat ",
+			ORDER BY p.id ",
 		],
 
 
 		'students' => [
 
-			// Define basic database query. 
-			'basicdataquery' => "",
+			// Define mini database query. 
+			'miniquery' => "",
 
-			// Define detailed database query. 
-			'detaildataquery' => 
+			// Define full database query. 
+			'fullquery' => 
 			" SELECT 
 				s.id, s.studentname,
-				/* s.parentid,  */p.parentname/* ,
+				/* s.parentid, */ p.parentname/* ,
 				count(distinct o.id) as totalnumorders */
 			FROM (students as s)
 			LEFT JOIN (parents as p) ON (s.parentid = p.id)
@@ -40,12 +40,11 @@
 			GROUP BY s.id 
 			ORDER BY s.createdat ",
 
-			// Define detailed database query. 
-			'customizedetaildataquery' => function($pid) {
-				// 
+			// Define full database query (user-specific). 
+			'userspecificquery' => function($pid) {
 				return " SELECT 
-					/* s.id,  */s.studentname,
-					/* s.parentid,  */p.parentname/* ,
+					s.id, s.studentname,
+					/* s.parentid, */ p.parentname/* ,
 					count(distinct o.id) as totalnumorders */
 				FROM (students as s)
 				LEFT JOIN (parents as p) ON (s.parentid = p.id)
@@ -59,11 +58,11 @@
 
 		'drinks' => [
 
-			// Define basic database query. 
-			'basicdataquery' => "",
+			// Define mini database query. 
+			'miniquery' => "",
 
-			// Define detailed database query. 
-			'detaildataquery' => 
+			// Define full database query. 
+			'fullquery' => 
 			" SELECT 
 				d.id, d.drinkname/* ,
 				count(distinct o.id) as totalnummeals */
@@ -76,11 +75,11 @@
 
 		'meals' => [
 
-			// Define basic database query. 
-			'basicdataquery' => "",
+			// Define mini database query. 
+			'miniquery' => "",
 
-			// Define detailed database query. 
-			'detaildataquery' => 
+			// Define full database query. 
+			'fullquery' => 
 			" SELECT 
 				m.id, m.entree, m.sidedish, d.drinkname,
 				count(distinct o.id) as totalnumorders/* ,
@@ -98,11 +97,11 @@
 
 		'mealtimes' => [
 
-			// Define basic database query. 
-			'basicdataquery' => "",
+			// Define mini database query. 
+			'miniquery' => "",
 
-			// Define detailed database query. 
-			'detaildataquery' => 
+			// Define full database query. 
+			'fullquery' => 
 			" SELECT 
 				t.id, t.mealtime/* ,
 				count(distinct o.id) as totalnummeals */
@@ -115,62 +114,63 @@
 
 		'mealorders' => [
 
-			// Define basic database query. 
-			'basicdataquery' => "",
+			// Define mini database query. 
+			'miniquery' => "",
 
-			// Define detailed database query. 
-			'detaildataquery' => 
+			// Define full database query. 
+			'fullquery' => 
 			" SELECT 
 				o.id, o.deliverydate,
-				/* t.id,  */t.mealtime,
-				/* s.id,  */s.studentname,
-				/* p.id,  */p.parentname as orderedby,
-				/* m.id,  *//* m.entree, m.sidedish, */
-				concat(m.entree,' + ',m.sidedish) as mealsummary
+				/* t.id, */ t.mealtime,
+				concat(m.entree,'<br>',m.sidedish,'<br>',d.drinkname) as mealsummary,
+				/* m.id, */ /* m.entree, m.sidedish, */
+				/* s.id, */ s.studentname,
+				/* p.id, */ p.parentname as orderedby
 			FROM (mealorders as o)
 			LEFT JOIN (students as s) ON (o.studentid = s.id)
 			LEFT JOIN (parents as p) ON (o.orderedby = p.id)
 			LEFT JOIN (meals as m) ON (o.mealid = m.id)
+			LEFT JOIN (drinks as d) ON (m.drinkid = d.id)
 			LEFT JOIN (mealtimes as t) ON (o.typeid = t.id)
 			GROUP BY o.id
-			ORDER BY o.modifiedat ",
+			ORDER BY o.deliverydate, o.typeid, mealsummary, s.id ",
 
-			// Define detailed database query. 
-			'customizedetaildataquery' => function($pid) {
-				// 
+			// Define full database query (user-specific). 
+			'userspecificquery' => function($pid) {
 				return " SELECT 
-					/* o.id,  */o.deliverydate,
-					/* t.id,  */t.mealtime,
-					/* s.id,  */s.studentname,
-					/* p.id,  */p.parentname as orderedby,
-					/* m.id,  *//* m.entree, m.sidedish, */
-					concat(m.entree,' + ',m.sidedish) as mealsummary
+					o.id, o.deliverydate,
+					/* t.id, */ t.mealtime,
+					concat(m.entree,'<br>',m.sidedish,'<br>',d.drinkname) as mealsummary,
+					/* m.id, */ /* m.entree, m.sidedish, */
+					/* s.id, */ s.studentname,
+					/* p.id, */ p.parentname as orderedby
 				FROM (mealorders as o)
 				LEFT JOIN (students as s) ON (o.studentid = s.id)
 				LEFT JOIN (parents as p) ON (o.orderedby = p.id)
 				LEFT JOIN (meals as m) ON (o.mealid = m.id)
+				LEFT JOIN (drinks as d) ON (m.drinkid = d.id)
 				LEFT JOIN (mealtimes as t) ON (o.typeid = t.id)
 				WHERE (o.orderedby=$pid)
 				GROUP BY o.id
-				ORDER BY o.modifiedat ";
+				ORDER BY o.deliverydate, o.typeid, mealsummary, s.id ";
 			},
 		],
 
 
 		'sessions' => [
 
-			// Define basic database query. 
-			'basicdataquery' => "",
+			// Define mini database query. 
+			'miniquery' => "",
 
-			// Define detailed database query. 
-			'detaildataquery' => 
+			// Define full database query. 
+			'fullquery' => 
 			" SELECT 
-				s.id, p.parentname, s.startedat/* ,
+				s.id, s.startedat, s.useripaddress, p.parentname/* , s.useragent *//* ,
+				convert_tz(s.startedat,'utc',user_timezone) as localtimestartedat *//* ,
 				count(distinct o.id) as totalnummeals */
 			FROM (sessions as s)
 			LEFT JOIN (parents as p) ON (s.userid = p.id)
-			-- GROUP BY d.id
-			ORDER BY s.startedat desc ",
+			ORDER BY s.startedat asc ",
 		],
 	];
 ?>

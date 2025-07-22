@@ -19,7 +19,7 @@
 			'operatoraccess' => false,
 			'allparentsaccess' => false,
 			// Define modifiability in app. 
-			'modifyinapp' => false,
+			'modifytableinapp' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -44,6 +44,11 @@
 				[
 					'fid'=>'emailaddress',
 					'fieldtitle'=>'Email',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'loginas',
+					'fieldtitle'=>'Login as..',
 					'visibleintable'=>true,
 				],
 			],
@@ -85,6 +90,79 @@
 		],
 
 
+		'students' => [
+
+			// Define table title. 
+			'tabletitle' => 'Students',
+			// Define table navigation icon. 
+			'tableicontag' => 'backpack',
+			// Define caption for single item. 
+			'singlecaption' => 'Student',
+			// Define accessibility of table (for parents/non-operators). 
+			'adminaccess' => true,
+			'operatoraccess' => true,
+			'allparentsaccess' => true,
+			// Define modifiability in app. 
+			'modifytableinapp' => true,
+
+			// Define downloaded table entry data. 
+			'entrydata' => [],
+
+			// Define table display fields (from detailed query results). 
+			'displayfields' => [
+				[
+					'fid'=>'id',
+					'fieldtitle'=>'ID',
+					'visibleintable'=>false,
+				],
+				[
+					'fid'=>'studentname',
+					'fieldtitle'=>'Student',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'parentname',
+					'fieldtitle'=>'Parent',
+					'visibleintable'=>true,
+				],
+				// [
+				// 	'fid'=>'nummeals',
+				// 	'fieldtitle'=>'Variety of Meals',
+				// 	'visibleintable'=>true,
+				// ],
+				// [
+				// 	'fid'=>'totalnumorders',
+				// 	'fieldtitle'=>'Total Orders',
+				// 	'visibleintable'=>true,
+				// ],
+			],
+			// Define table editor fields. 
+			'editorfields' => [
+				[
+					'type'=>'text',
+					'fid'=>'studentname',
+					'fieldtitle'=>'Student Name',
+					// 'fieldtitle'=>'Name',
+					'placeholder'=>'Johnny Smith',
+					'required'=>true,
+					'editable'=>true,
+				],
+				[
+					'type'=>'select',
+					'fid'=>'parentid',
+					'fieldtitle'=>'Parent Name',
+					'fieldtitle'=>'Parent',
+					'required'=>true,
+					'editable'=>true,
+					'selectorsource'=>[
+						'tid'=>'parents',
+						'fid'=>'parentname',
+					],
+				],
+			],
+		],
+
+
 		'drinks' => [
 
 			// Define table title. 
@@ -98,7 +176,7 @@
 			'operatoraccess' => false,
 			'allparentsaccess' => false,
 			// Define modifiability in app. 
-			'modifyinapp' => false,
+			'modifytableinapp' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -139,6 +217,7 @@
 
 			// Define table title. 
 			'tabletitle' => 'Meals',
+			'tabletitle' => 'Menu',
 			// Define table navigation icon. 
 			'tableicontag' => 'foodmenu',
 			// Define caption for single item. 
@@ -146,9 +225,9 @@
 			// Define accessibility of table (for parents/non-operators). 
 			'adminaccess' => true,
 			'operatoraccess' => true,
-			'allparentsaccess' => false,
+			'allparentsaccess' => true,
 			// Define modifiability in app. 
-			'modifyinapp' => true,
+			'modifytableinapp' => true,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -224,80 +303,6 @@
 		],
 
 
-		'students' => [
-
-			// Define table title. 
-			'tabletitle' => 'Students',
-			'tabletitlepersonal' => true,
-			// Define table navigation icon. 
-			'tableicontag' => 'backpack',
-			// Define caption for single item. 
-			'singlecaption' => 'Student',
-			// Define accessibility of table (for parents/non-operators). 
-			'adminaccess' => true,
-			'operatoraccess' => true,
-			'allparentsaccess' => true,
-			// Define modifiability in app. 
-			'modifyinapp' => true,
-
-			// Define downloaded table entry data. 
-			'entrydata' => [],
-
-			// Define table display fields (from detailed query results). 
-			'displayfields' => [
-				[
-					'fid'=>'id',
-					'fieldtitle'=>'ID',
-					'visibleintable'=>false,
-				],
-				[
-					'fid'=>'studentname',
-					'fieldtitle'=>'Student',
-					'visibleintable'=>true,
-				],
-				[
-					'fid'=>'parentname',
-					'fieldtitle'=>'Parent',
-					'visibleintable'=>true,
-				],
-				// [
-				// 	'fid'=>'nummeals',
-				// 	'fieldtitle'=>'Variety of Meals',
-				// 	'visibleintable'=>true,
-				// ],
-				// [
-				// 	'fid'=>'totalnumorders',
-				// 	'fieldtitle'=>'Total Orders',
-				// 	'visibleintable'=>true,
-				// ],
-			],
-			// Define table editor fields. 
-			'editorfields' => [
-				[
-					'type'=>'text',
-					'fid'=>'studentname',
-					'fieldtitle'=>'Student Name',
-					// 'fieldtitle'=>'Name',
-					'placeholder'=>'Johnny Smith',
-					'required'=>true,
-					'editable'=>true,
-				],
-				[
-					'type'=>'select',
-					'fid'=>'parentid',
-					'fieldtitle'=>'Parent Name',
-					'fieldtitle'=>'Parent',
-					'required'=>true,
-					'editable'=>true,
-					'selectorsource'=>[
-						'tid'=>'parents',
-						'fid'=>'parentname',
-					],
-				],
-			],
-		],
-
-
 		'mealtimes' => [
 
 			// Define table title. 
@@ -311,7 +316,7 @@
 			'operatoraccess' => false,
 			'allparentsaccess' => false,
 			// Define modifiability in app. 
-			'modifyinapp' => false,
+			'modifytableinapp' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -352,7 +357,7 @@
 
 			// Define table title. 
 			'tabletitle' => 'Orders',
-			'tabletitlepersonal' => true,
+			// 'tabletitle' => 'Order History',
 			// Define table navigation icon. 
 			'tableicontag' => 'pass',
 			// Define caption for single item. 
@@ -362,7 +367,7 @@
 			'operatoraccess' => true,
 			'allparentsaccess' => true,
 			// Define modifiability in app. 
-			'modifyinapp' => true,
+			'modifytableinapp' => true,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -397,7 +402,7 @@
 				],
 				[
 					'fid'=>'orderedby',
-					'fieldtitle'=>'Ordered By',
+					'fieldtitle'=>'Ordered',
 					'visibleintable'=>true,
 				],
 			],
@@ -462,7 +467,7 @@
 		'sessions' => [
 
 			// Define table title. 
-			'tabletitle' => 'User Sessions',
+			'tabletitle' => 'Sessions',
 			// Define table navigation icon. 
 			'tableicontag' => 'clock',
 			// Define caption for single item. 
@@ -473,7 +478,7 @@
 			'operatoraccess' => false,
 			'allparentsaccess' => false,
 			// Define modifiability in app. 
-			'modifyinapp' => false,
+			'modifytableinapp' => false,
 
 			// Define downloaded table entry data. 
 			'entrydata' => [],
@@ -486,19 +491,41 @@
 					'visibleintable'=>false,
 				],
 				[
+					'fid'=>'startedat',
+					'fieldtitle'=>'Login Time',
+					'fieldtitle'=>'Date',
+					'visibleintable'=>true,
+				],
+				[
+					'fid'=>'useripaddress',
+					'fieldtitle'=>'IP Address',
+					'visibleintable'=>true,
+				],
+				[
 					'fid'=>'parentname',
 					'fieldtitle'=>'Name',
 					'visibleintable'=>true,
 				],
 				[
-					'fid'=>'startedat',
-					'fieldtitle'=>'Login Time',
-					'visibleintable'=>true,
+					'fid'=>'useragent',
+					'fieldtitle'=>'Device',
+					'visibleintable'=>false,
 				],
 			],
 			// Define table editor fields. 
 			'editorfields' => [
 			],
 		],
+	];
+
+	// Define order of database tables. 
+	$databasetablesnavbarorder = [
+		'parents',
+		'sessions',
+		'students',
+		'mealorders',
+		'meals',
+		'drinks',
+		'mealtimes',
 	];
 ?>
