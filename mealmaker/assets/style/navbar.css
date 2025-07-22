@@ -1,0 +1,28 @@
+
+
+
+/* Desktop Navbar (Experiment) */
+@media screen and (min-width:64rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+	/* div#container nav.navbar div.bin {} */
+	div#container nav.navbar div.bin div.drawer {order:99;}
+	div#container nav.navbar div.bin div.drawer {justify-content:center; flex-wrap:wrap;}
+	div#container nav.navbar div.bin div.tablemenu {position:static; position:relative; margin:0;}
+	div#container nav.navbar div.bin div.tablemenu {background-color:transparent; box-shadow:none;}
+	div#container nav.navbar div.bin div.tablemenu {opacity:1; visibility:visible; transform:none;}
+	div#container nav.navbar div.bin div.tablemenu::after {display:none;}
+	div#container nav.navbar div.bin div.tablemenu ul.navlist {background-color:transparent; flex-direction:row;}
+	/* div#container nav.navbar div.bin div.tablemenu ul.navlist li.navitem {} */
+	div#container nav.navbar div.bin div.tablemenu ul.navlist li.navitem a.navlink {padding:.375em .45em;}
+}
+
+
+/* Desktop Navbar (Experiment) */
+@media screen and (min-width:96rem) {
+
+	/* Navbar */
+	/* div#container nav.navbar {display:none;} */
+	/* div#container nav.navbar div.bin {display:flex; flex-direction:row;} */
+}
