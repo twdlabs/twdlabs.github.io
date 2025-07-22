@@ -28,8 +28,23 @@
 	require_once('./assets/script/userops.php');
 ?>
 
-<?php $validviewselected = isset( $_GET['view'] ) && isset( $databasetables[ $_GET['view'] ] ) && isShowingDatabaseTable( $_GET['view'] ) ; ?>
-<?php $currentviewtitleaddon = $validviewselected ? $databasetables[ $_GET['view'] ]['tabletitle'] . ' | ' : '' ; ?>
+<?php
+
+	// Check if any view selected. 
+	$isanyviewselected = isset( $_GET['view'] ); 
+	$currentviewid = $isanyviewselected ? $_GET['view'] : ''; 
+
+	// Check if table view selected. 
+	$istableviewselected = $isanyviewselected && isset( $databasetables[$currentviewid] ) ;
+	// Check if viewable table view selected. 
+	$isviewabletableviewselected = $istableviewselected && isTableVisibleToUser($currentviewid) ;
+
+	// Compile add-on for table title (if table view selected). 
+	$tablepagetitlesupplement = $isviewabletableviewselected ? ( $databasetables[$currentviewid]['tabletitle'] . ' | ' ) : '' ;
+
+	// Redirect to home page (if non-viewable view selected). 
+	if( $isanyviewselected && !$isviewabletableviewselected ) header('location:./');
+?>
 
 <!DOCTYPE html>
 <html>
@@ -42,7 +57,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<link href="./assets/images/bbicon.jpg" rel="icon"/>
 		<link href="./assets/images/bbicon.jpg" rel="apple-touch-icon"/>
-		<title><?=$currentviewtitleaddon?>Baba's Bagel</title>
+		<title><?=$tablepagetitlesupplement?>Baba's Bagel</title>
 
 		<!-- Cache Blocker -->
 		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -61,11 +76,12 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/style.css?v=20250712" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/navbar.css?v=20250717" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
-			// console.log('Server data:', <?php print isset($_SERVER) ? json_encode($_SERVER) : null; ?>);
+			console.log('Server data:', <?php print isset($_SERVER) ? json_encode($_SERVER) : null; ?>);
 			console.log('Session data:', <?php print isset($_SESSION) ? json_encode($_SESSION) : null; ?>);
 			console.log('Response data (GET):', <?php print isset($_GET) ? json_encode($_GET) : null; ?>);
 			console.log('Response data (POST):', <?php print isset($_POST) ? json_encode($_POST) : null; ?>);
@@ -76,48 +92,98 @@
 
 		<!-- #container -->
 		<div id="container">
-			<!-- <input type="hidden" name="xyz" value="<?php print $_SESSION['pid']; ?>"> -->
+
 			<!-- <input type="hidden" name="xyz" value="<?php print $_SESSION['pid']; ?>"> -->
 
 			<?php
 
 				// Display opening of query arena. 
-				include('./assets/module/queryarenaopen.php');
+				include('./assets/module/queryarena/open.php');
 
-				// Connect to server database. 
-				$db = openDb('mealmaker');
+				// Display details of user's current view selection. 
+				if( $currentuserisadmin /* && false */ ) displayViewDetails();
 
-				// Handle new C.R.U.D. operations. 
-				// handleCrudOps();
+				// Display details of user's current view selection. 
+				function displayViewDetails() {
+					global $isanyviewselected, $currentviewid, $istableviewselected, $isviewabletableviewselected, $tablepagetitlesupplement;
 
-				// Download all table entries from database. 
-				getAllTables(0);
+					// 
+					// $displaybinary = $xyz ? 1 : 0 ;
+					// $displaybinary = $xyz ? '👍' : '👎' ;
 
-				// Get self-reference url (for forms and links). 
-				// $selfurl = getSelfRefUrl();
-				// $selfurlbase = getSelfRefUrl(false);
+					// Display details of current view. 
+					$displaybinary = $isanyviewselected ? 1 : 0 ;
+					printToPage("isanyviewselected: $displaybinary");
+					printToPage("currentviewid: '$currentviewid'");
+
+					// Display details of current table view. 
+					$displaybinary = $istableviewselected ? 1 : 0 ;
+					printToPage("istableviewselected: $displaybinary");
+					$displaybinary = $isviewabletableviewselected ? 1 : 0 ;
+					printToPage("isviewabletableviewselected: $displaybinary");
+					printToPage("tablepagetitlesupplement: '$tablepagetitlesupplement'");
+				}
+
+				// Proceed if valid session. 
+				if($validsession) {
+
+					// Connect to server database. 
+					$db = openDb('mealmaker');
+
+					// Get self-reference url (for forms and links). 
+					// $selfurl = getSelfRefUrl();
+					// $selfurlbase = getSelfRefUrl(false);
+
+					// Handle new C.R.U.D. operations. 
+					// handleCrudOps();
+
+					// Download all table entries from database. 
+					getAllTables();
+
+					// Check if displaying home view. 
+					$displayinghomeview = $validsession && !$isviewabletableviewselected;
+					// Download current schedule from database (upcoming week). 
+					if( $displayinghomeview ) {
+
+						// Get upcoming week. 
+						$upcomingwk = getUpcomingWk();
+					}
+				}
 
 				// Display closing of query arena. 
-				include('./assets/module/queryarenaclose.php');
-
-				// Check for valid session. 
-				$validsession = isset($_SESSION) && isset($_SESSION['pid']) ;
+				include('./assets/module/queryarena/close.php');
 
 				// Display navbar. 
 				include('./assets/module/navbar.php');
 
+
+				// Proceed for valid session. 
+				if( $validsession ) {
+
+					// Display view of selected table. 
+					if( $isviewabletableviewselected ) {
+
+						// Get id of selected table. 
+						$selectedtableid = $currentviewid;	// same value from $_GET['view']
+						// Get data from selected table. 
+						$selecteddatabasetable = $databasetables[ $selectedtableid ];
+
+						// Display view of selected table. 
+						include('./assets/module/userview/table.php');
+					}
+
+					// Display view of home page (calendar n schedule). 
+					else {
+
+						// Display view of home page (calendar n schedule). 
+						include('./assets/module/userview/home.php');
+					}
+				}
 				// Proceed for invalid session. 
-				if( !$validsession ) {
+				else {
 
 					// Display user getter forms (sign-in/sign-up). 
 					include('./assets/module/getuser.php');
-				}
-				// Proceed for valid session. 
-				else {
-
-					// Display user's dashboard. 
-					include('./assets/module/dashboard.php');
-					// include('./assets/database/bin/dashboardX.php');
 				}
 			?>
 
@@ -128,13 +194,13 @@
 		<script src="./../sharedassets/script/toggler.js" type="text/javascript"></script>
 
 		<script type="text/javascript">
-			console.log('Database tables (end):', <?php print json_encode( getDatabaseEntries() ); ?>);
 
 			// Close query arena (when page fully loaded). 
 			closeQueryArena();
+			/* if(<?=( !$currentuserisadmin ? 1 : 0 )?>) */ 
 
 			// Clear all input fields. 
-			clearInputFields();
+			// clearUserInputFields();
 		</script>
 
 	</body>
@@ -144,5 +210,5 @@
 <?php
 
 	// Disconnect server database. 
-	closeDb($db);
+	if($validsession) closeDb($db);
 ?>

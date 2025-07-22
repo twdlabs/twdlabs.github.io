@@ -56,7 +56,8 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/style.css?v=20250712" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/navbar.css?v=20250717" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
@@ -75,7 +76,7 @@
 			<?php
 
 				// Display opening of query arena. 
-				include('./assets/module/queryarenaopen.php');
+				include('./assets/module/queryarena/open.php');
 
 				// Connect to server database. 
 				$db = openDb('mealmaker');
@@ -89,44 +90,57 @@
 				$email = $_POST['emailaddress'] ?? '';
 				$pwd = $_POST['password'] ?? '';
 				$pwd1 = $_POST['passwordconfirm'] ?? '';
-
 				// Check if all info present. 
 				$allinfopresent = $name && $phone && $email && $pwd && $pwd1 ;
+				// Check if given email address already exists for another user. 
+				$emailalreadyexists = checkForSameEmail( $email );
 
-				// Redirect back to user form (if any info missing). 
-				if( !$allinfopresent ) print '<meta http-equiv="refresh" content="3;./">';
+				// Create new user account for parent or operator. 
+				$validuserregistered = $allinfopresent && !$emailalreadyexists && createNewUser($name,$phone,$email,$pwd,$pwd1);
 
-				// Proceed to query (if no info missing). 
-				else {
+				// Login new user (if valid). 
+				if( $validuserregistered ) {
 
-					// Create new user account for parent or operator. 
-					$validuserregistered = createNewUser($name,$phone,$email,$pwd,$pwd1);
+					// Get id of new user (if email address exists). 
+					$pid = getPersonIdByEmail( $email );
+					// Check for valid login (if user exists). 
+					$validuserlogin = $pid && checkUserLogin( $pid , $pwd );
+
+					// Initialize new session data. 
+					if( $validuserlogin ) createNewSession( $pid );
+					print '<meta http-equiv="refresh" content="1;url=./">';
 				}
 
 				// Display closing of query arena. 
-				include('./assets/module/queryarenaclose.php');
+				include('./assets/module/queryarena/close.php');
 
 				// Display navbar. 
 				include('./assets/module/navbar.php');
 			?>
 
-			<?php if($validuserregistered): ?>
+			<!-- item -->
+			<section class="item">
 
-				<!-- head -->
-				<h2 class="head">Registration successful!</h2>
-				<!-- /head -->
+				<?php if($validuserregistered): ?>
 
-			<?php else: ?>
+					<!-- head -->
+					<h2 class="head">Registration successful!</h2>
+					<!-- /head -->
 
-				<!-- head -->
-				<h2 class="head">Registration unsuccessful</h2>
-				<!-- /head -->
+				<?php else: ?>
 
-			<?php endif; ?>
+					<!-- head -->
+					<h2 class="head">Registration unsuccessful</h2>
+					<!-- /head -->
 
-			<!-- returnlink -->
-			<a class="returnlink" href="./">Proceed</a>
-			<!-- /returnlink -->
+				<?php endif; ?>
+
+				<!-- returnlink -->
+				<a class="returnlink" href="./">Proceed</a>
+				<!-- /returnlink -->
+
+			</section>
+			<!-- /item -->
 
 		</div>
 		<!-- /#container -->

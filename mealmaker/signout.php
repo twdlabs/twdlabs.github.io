@@ -56,7 +56,8 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/style.css?v=20250712" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/navbar.css?v=20250717" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
@@ -75,7 +76,7 @@
 			<?php
 
 				// Display opening of query arena. 
-				include('./assets/module/queryarenaopen.php');
+				include('./assets/module/queryarena/open.php');
 
 				// Connect to server database. 
 				// $db = openDb('mealmaker');
@@ -84,22 +85,28 @@
 				clearSession();
 
 				// Redirect back to user form. 
-				print '<meta http-equiv="refresh" content="30;./">';
+				print '<meta http-equiv="refresh" content="1;url=./">';
 
 				// Display closing of query arena. 
-				include('./assets/module/queryarenaclose.php');
+				include('./assets/module/queryarena/close.php');
 
 				// Display navbar. 
 				include('./assets/module/navbar.php');
 			?>
 
-			<!-- head -->
-			<h2 class="head">Logout successful!</h2>
-			<!-- /head -->
+			<!-- item -->
+			<section class="item">
 
-			<!-- returnlink -->
-			<a class="returnlink" href="./">Proceed</a>
-			<!-- /returnlink -->
+				<!-- head -->
+				<h2 class="head">Logout successful!</h2>
+				<!-- /head -->
+
+				<!-- returnlink -->
+				<a class="returnlink" href="./">Proceed</a>
+				<!-- /returnlink -->
+
+			</section>
+			<!-- /item -->
 
 		</div>
 		<!-- /#container -->

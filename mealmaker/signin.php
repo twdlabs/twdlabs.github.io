@@ -56,7 +56,8 @@
 		<link href="./../sharedassets/style/crudform.css" rel="stylesheet" type="text/css"/>
 
 		<!-- Main Stylesheet -->
-		<link href="./assets/style.css?v=20250629" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/style.css?v=20250712" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/navbar.css?v=20250717" rel="stylesheet" type="text/css"/>
 		<!-- <style></style> -->
 
 		<script type="text/javascript">
@@ -75,7 +76,7 @@
 			<?php
 
 				// Display opening of query arena. 
-				include('./assets/module/queryarenaopen.php');
+				include('./assets/module/queryarena/open.php');
 
 				// Connect to server database. 
 				$db = openDb('mealmaker');
@@ -87,49 +88,48 @@
 				// Get submitted user details. 
 				$email = $_POST['emailaddress'] ?? '';
 				$pw = $_POST['password'] ?? '';
-
 				// Check if all info present. 
 				$allinfopresent = $email && $pw ;
 
-				// Redirect back to user form (if any info missing). 
-				if( !$allinfopresent ) print '<meta http-equiv="refresh" content="3;./">';
-
-				// Proceed to query (if no info missing). 
-				else {
-
-					// Get id of given person (if email address exists). 
-					$pid = getPersonIdByEmail($email);
-					// Check for valid user login (if person exists). 
-					$validuserlogin = $pid && checkUserLogin($pid,$pw);
-				}
+				// Get id of given user (if email address exists). 
+				$pid = getPersonIdByEmail( $email );
+				// Check for valid login (if user exists). 
+				$validuserlogin = $allinfopresent && $pid && checkUserLogin( $pid , $pw );
 
 				// Initialize new session data. 
-				if( $validuserlogin ) createNewSession($pid);
+				if( $validuserlogin ) createNewSession( $pid );
+				print '<meta http-equiv="refresh" content="1;url=./">';
 
 				// Display closing of query arena. 
-				include('./assets/module/queryarenaclose.php');
+				include('./assets/module/queryarena/close.php');
 
 				// Display navbar. 
 				include('./assets/module/navbar.php');
 			?>
 
-			<?php if( $validuserlogin ): ?>
+			<!-- item -->
+			<section class="item">
 
-				<!-- head -->
-				<h2 class="head">Login successful!</h2>
-				<!-- /head -->
+				<?php if( $validuserlogin ): ?>
 
-			<?php else: ?>
+					<!-- head -->
+					<h2 class="head">Login successful!</h2>
+					<!-- /head -->
 
-				<!-- head -->
-				<h2 class="head">Login unsuccessful</h2>
-				<!-- /head -->
+				<?php else: ?>
 
-			<?php endif; ?>
+					<!-- head -->
+					<h2 class="head">Login unsuccessful</h2>
+					<!-- /head -->
 
-			<!-- returnlink -->
-			<a class="returnlink" href="./">Proceed</a>
-			<!-- /returnlink -->
+				<?php endif; ?>
+
+				<!-- returnlink -->
+				<a class="returnlink" href="./">Proceed</a>
+				<!-- /returnlink -->
+
+			</section>
+			<!-- /item -->
 
 		</div>
 		<!-- /#container -->
