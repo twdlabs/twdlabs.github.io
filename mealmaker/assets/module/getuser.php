@@ -1,24 +1,25 @@
-
+<!-- 
 <!DOCTYPE html>
 <html>
 
 	<head>
-		<style>
-			/*  */
-			div#container section.n {display:none;}
-			div#container section.e {display:block;}
-			div#container.newuser section.n {display:block;}
-			div#container.newuser section.e {display:none;}
-		</style>
 	</head>
 
-	<body>
+	<body> -->
+
+		<style>
+			/*  */
+			div#container section.signup {display:none;}
+			div#container section.signin {display:block;}
+			div#container.newuser section.signup {display:block;}
+			div#container.newuser section.signin {display:none;}
+		</style>
 
 		<!-- item -->
-		<section class="e">
+		<section class="item signin">
 
 			<!-- form -->
-			<div class="form block show">
+			<div class="block form">
 
 				<!-- head -->
 				<h2 class="head">Sign in</h1>
@@ -117,10 +118,10 @@
 		<!-- /item -->
 
 		<!-- item -->
-		<section class="n">
+		<section class="item signup">
 
 			<!-- form -->
-			<div class="form block show">
+			<div class="block form">
 
 				<!-- head -->
 				<h2 class="head">Sign up</h1>
@@ -269,19 +270,19 @@
 		<script type="text/javascript">
 
 			// Set user mode: new user or existing user. 
-			function setNewUserMode(newuser) {
+			function setNewUserMode(newusermode) {
 
 				// Get container. 
 				let container = document.querySelector('div#container');
 
 				// Set user mode: new user. 
-				if(newuser) container.classList.add('newuser');
+				if(newusermode) container.classList.add('newuser');
 
 				// Set user mode: existing user. 
 				else container.classList.remove('newuser');
 			}
 		</script>
-
+<!-- 
 	</body>
 
-</html>
+</html> -->

@@ -1,13 +1,13 @@
-
+<!-- 
 <!DOCTYPE html>
 <html>
 
 	<head>
 	</head>
 
-	<body>
+	<body> -->
 
-		<?php $isanyuserloggedin = isset( $_SESSION['pid'] ); ?>
+		<?php $userloggedin = isset( $_SESSION['pid'] ) || ( isset($validuserlogin) && $validuserlogin ); ?>
 
 		<!-- navbar -->
 		<nav class="navbar">
@@ -15,122 +15,97 @@
 			<!-- bin -->
 			<div class="bin">
 
-				<?php if( $isanyuserloggedin ): ?>
+				<!-- drawer -->
+				<div class="drawer">
 
-					<!-- togglebtn -->
-					<a class="tm togglebtn btn" href="javascript:void(0)" title="Toggle table menu">
+					<!-- homebtn -->
+					<!-- <a class="homebtn btn" href="./" title="Home"> -->
+					<a class="homebtn btn" href="javascript:void(0)" title="Home" <?=( $currentuserisadmin ? ' onclick="toggleQueryArena();" ' : '' )?>>
 
-						<!-- icon -->
-						<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-						</svg>
-						<!-- /icon -->
+						<!-- head -->
+						<h1 class="head">
 
-					</a>
-					<!-- /togglebtn -->
+							<!-- logo -->
+							<img class="logo" src="./assets/images/bbicon.jpg" alt="BB" title="Baba's Bagel">
+							<!-- /logo -->
 
-				<?php endif; ?>
+							<!-- icon -->
+							<svg class="icon bagel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<?php print $databasetablesicons['bagel']; ?>
+							</svg>
+							<!-- /icon -->
 
-				<!-- homebtn -->
-				<!-- <a class="homebtn btn" href="./" title="Home"> -->
-				<a class="homebtn btn" href="javascript:void(0)" title="Home" ondblclick="toggleQueryArena()">
+							<!-- caption -->
+							<span class="caption">Baba's Bagel</span>
+							<!-- /caption -->
 
-					<!-- head -->
-					<h1 class="head">
-
-						<!-- logo -->
-						<img class="logo" src="./assets/images/bbicon.jpg" alt="BB" title="Baba's Bagel">
-						<!-- /logo -->
-
-						<!-- icon -->
-						<svg class="icon bagel" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<?php print $databasetablesicons['bagel']; ?>
-						</svg>
-						<!-- /icon -->
-
-						<!-- caption -->
-						<span class="caption">Baba's Bagel</span>
-						<!-- /caption -->
-
-					</h1>
-					<!-- /head -->
-
-				</a>
-				<!-- /homebtn -->
-
-				<?php if( $isanyuserloggedin ): ?>
-
-					<!-- togglebtn -->
-					<a class="um togglebtn btn" href="javascript:void(0)" title="Toggle user menu">
-
-						<!-- icon -->
-						<svg class="icon personcircle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-							<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-							<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-						</svg>
-						<!-- /icon -->
-
-						<!-- avatar -->
-						<!-- <img class="avatar" src="./abcxyz.png" alt=""> -->
-						<!-- /avatar -->
+						</h1>
+						<!-- /head -->
 
 					</a>
-					<!-- /togglebtn -->
+					<!-- /homebtn -->
 
-					<!-- tablemenu -->
-					<div class="tablemenu navmenu">
+					<?php if( $userloggedin ): ?>
 
-						<!-- navlist -->
-						<ul class="navlist tables">
+						<!-- togglebtn -->
+						<a class="tm togglebtn btn" href="javascript:void(0)" title="Toggle table menu">
 
-							<!-- navitem -->
-							<li class="navitem">
+							<!-- icon -->
+							<svg class="icon bars" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+							</svg>
+							<!-- /icon -->
 
-								<!-- navlink -->
-								<a class="navlink" href="./" title="Home">
+						</a>
+						<!-- /togglebtn -->
 
-									<!-- icon -->
-									<svg class="icon house" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-										<?php print $databasetablesicons['housebold']; ?>
-									</svg>
-									<!-- /icon -->
+						<!-- togglebtn -->
+						<a class="um togglebtn btn" href="javascript:void(0)" title="Toggle user menu">
 
-									<!-- caption -->
-									<span class="caption">Home</span>
-									<!-- /caption -->
+							<!-- icon -->
+							<svg class="icon personcircle" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+							</svg>
+							<!-- /icon -->
 
-								</a>
-								<!-- /navlink -->
+							<!-- avatar -->
+							<!-- <img class="avatar" src="./abcxyz.png" alt=""> -->
+							<!-- /avatar -->
 
-							</li>
-							<!-- /navitem -->
+						</a>
+						<!-- /togglebtn -->
 
-							<?php foreach( $databasetables as $currentdatabasetableid=>$currentdatabasetable ): ?>
+					<?php endif; ?>
 
-								<?php $showcurrentdatabasetable = isShowingDatabaseTable($currentdatabasetableid); ?>
+				</div>
+				<!-- /drawer -->
 
-								<?php if( !$showcurrentdatabasetable ) continue; ?>
+				<?php if( $userloggedin ): ?>
 
-								<?php
-									// $usepersonaltitle = !$currentuserisoperator && isset( $currentdatabasetable['tabletitlepersonal'] );
-									$currentdatabasetabletitle = /* ( $usepersonaltitle ? 'My ' : '' ) .  */$currentdatabasetable['tabletitle'];
-									$currentdatabasetableicontag = $currentdatabasetable['tableicontag'];
-								?>
+					<!-- drawer -->
+					<div class="drawer">
+
+						<!-- tablemenu -->
+						<div class="tablemenu navmenu">
+
+							<!-- navlist -->
+							<ul class="navlist tables">
 
 								<!-- navitem -->
 								<li class="navitem">
 
 									<!-- navlink -->
-									<a class="navlink" href="./?view=<?php print $currentdatabasetableid; ?>" title="<?php print $currentdatabasetabletitle; ?>">
+									<a class="navlink" href="./" title="Home">
 
 										<!-- icon -->
-										<svg class="icon <?php print $currentdatabasetableicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-											<?php print $databasetablesicons[ $currentdatabasetableicontag ]; ?>
+										<svg class="icon house" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<?php print $databasetablesicons['housebold']; ?>
 										</svg>
 										<!-- /icon -->
 
 										<!-- caption -->
-										<span class="caption"><?php print $currentdatabasetabletitle; ?></span>
+										<span class="caption">Home</span>
 										<!-- /caption -->
 
 									</a>
@@ -139,84 +114,121 @@
 								</li>
 								<!-- /navitem -->
 
-							<?php endforeach; ?>
+								<?php foreach( $databasetablesnavbarorder as $currenttableid ): ?>
 
-						</ul>
-						<!-- /navlist -->
+									<?php if( !isTableVisibleToUser($currenttableid) ) continue; ?>
+
+									<?php $currentdatabasetable = $databasetables[$currenttableid]; ?>
+
+									<?php
+										$usinguserspecificquery = !$currentuserisoperator && isset( $databasetablequery[$currenttableid]['userspecificquery'] );
+										$currentdatabasetabletitle = /* ( $usinguserspecificquery ? 'My ' : '' ) . */ $currentdatabasetable['tabletitle'];
+										$currentdatabasetableicontag = $currentdatabasetable['tableicontag'];
+									?>
+
+									<!-- navitem -->
+									<li class="navitem">
+
+										<!-- navlink -->
+										<a class="navlink" href="./?view=<?php print $currenttableid; ?>" title="<?php print $currentdatabasetabletitle; ?>">
+
+											<!-- icon -->
+											<svg class="icon <?php print $currentdatabasetableicontag; ?>" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+												<?php print $databasetablesicons[ $currentdatabasetableicontag ]; ?>
+											</svg>
+											<!-- /icon -->
+
+											<!-- caption -->
+											<span class="caption"><?php print $currentdatabasetabletitle; ?></span>
+											<!-- /caption -->
+
+										</a>
+										<!-- /navlink -->
+
+									</li>
+									<!-- /navitem -->
+
+								<?php endforeach; ?>
+
+							</ul>
+							<!-- /navlist -->
+
+						</div>
+						<!-- /tablemenu -->
+
+						<!-- usermenu -->
+						<div class="usermenu navmenu">
+
+							<!-- profile -->
+							<ul class="profile">
+
+								<!-- profileitem -->
+								<li class="profileitem">
+
+									<!-- name -->
+									<span class="name">Name</span>
+									<!-- /name -->
+
+									<!-- value -->
+									<span class="value"><?php print $_SESSION['name']; ?></span>
+									<!-- /value -->
+
+								</li>
+								<!-- /profileitem -->
+
+								<!-- profileitem -->
+								<li class="profileitem">
+
+									<!-- name -->
+									<span class="name">E-mail</span>
+									<!-- /name -->
+
+									<!-- value -->
+									<span class="value"><?php print $_SESSION['email']; ?></span>
+									<!-- /value -->
+
+								</li>
+								<!-- /profileitem -->
+
+								<!-- profileitem -->
+								<li class="profileitem">
+
+									<!-- name -->
+									<span class="name">Last Login</span>
+									<!-- /name -->
+
+									<!-- value -->
+									<span class="value"><?php print $_SESSION['lastlogin']; ?></span>
+									<!-- /value -->
+
+								</li>
+								<!-- /profileitem -->
+
+							</ul>
+							<!-- /profile -->
+
+							<!-- logoutbtn -->
+							<a class="logoutbtn btn" href="./signout.php" title="Sign out">
+
+								<!-- icon -->
+								<svg class="icon boxoutwardarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+									<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+								</svg>
+								<!-- /icon -->
+
+								<!-- caption -->
+								<span class="caption">Sign out</span>
+								<!-- /caption -->
+
+							</a>
+							<!-- /logoutbtn -->
+
+						</div>
+						<!-- /usermenu -->
 
 					</div>
-					<!-- /tablemenu -->
-
-					<!-- usermenu -->
-					<div class="usermenu navmenu">
-
-						<!-- profile -->
-						<ul class="profile">
-
-							<!-- profileitem -->
-							<li class="profileitem">
-
-								<!-- name -->
-								<span class="name">Name</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $_SESSION['name']; ?></span>
-								<!-- /value -->
-
-							</li>
-							<!-- /profileitem -->
-
-							<!-- profileitem -->
-							<li class="profileitem">
-
-								<!-- name -->
-								<span class="name">E-mail</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $_SESSION['email']; ?></span>
-								<!-- /value -->
-
-							</li>
-							<!-- /profileitem -->
-
-							<!-- profileitem -->
-							<li class="profileitem">
-
-								<!-- name -->
-								<span class="name">Last Login</span>
-								<!-- /name -->
-
-								<!-- value -->
-								<span class="value"><?php print $_SESSION['lastlogin']; ?></span>
-								<!-- /value -->
-
-							</li>
-							<!-- /profileitem -->
-
-						</ul>
-						<!-- /profile -->
-
-						<!-- logoutbtn -->
-						<a class="logoutbtn btn" href="./signout.php" title="Sign out">
-
-							<!-- icon -->
-							<svg class="icon boxoutwardarrow" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
-								<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
-								<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
-							</svg>
-							<!-- /icon -->
-
-							<!-- caption -->
-							<span class="caption">Sign out</span>
-							<!-- /caption -->
-
-						</a>
-						<!-- /logoutbtn -->
-
-					</div>
-					<!-- /usermenu -->
+					<!-- /drawer -->
 
 				<?php endif; ?>
 
@@ -225,7 +237,7 @@
 
 		</nav>
 		<!-- /navbar -->
-
+<!-- 
 	</body>
 
-</html>
+</html> -->
