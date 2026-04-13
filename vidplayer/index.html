@@ -1,0 +1,1430 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="mobile-web-app-capable" content="yes"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link href="./../flaskicon.png" rel="icon"/>
+		<link href="./../blogsocial/assets/images/commenticon.png" rel="icon"/>
+		<link href="./../flaskicon.png" rel="apple-touch-icon"/>
+		<title>VidPlayer</title>
+
+		<!-- Main Stylesheet -->
+		<link href="./style.css" rel="stylesheet" type="text/css"/>
+		<!-- VidPlayer Stylesheets -->
+		<link href="./assets/style/vidplayer.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/videowall.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/controlbar.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/controlbarleft.css" rel="stylesheet" type="text/css"/>
+		<link href="./assets/style/controlbarright.css" rel="stylesheet" type="text/css"/>
+
+		<!-- Custom Stylesheet -->
+		<!-- <style type="text/css"></style> -->
+	</head>
+
+	<body>
+
+		<!-- #container -->
+		<div id="container">
+
+			<!-- media -->
+			<section class="media">
+
+				<!-- head -->
+				<div class="head">
+
+					<!-- vidloader -->
+					<div class="vidloader">
+
+						<!-- loadbox -->
+						<div class="loadbox">
+
+							<!-- newvidlink -->
+							<input class="newvidlink" type="text" onclick="this.select()" placeholder="Please paste video link here...">
+							<!-- /newvidlink -->
+
+							<!-- gobtn -->
+							<button class="gobtn" type="button">Load</button>
+							<!-- /gobtn -->
+
+						</div>
+						<!-- /loadbox -->
+
+					</div>
+					<!-- /vidloader -->
+
+				</div>
+				<!-- /head -->
+
+				<!-- body -->
+				<div class="body">
+
+					<!-- vidplayer -->
+					<div class="vidplayer mute">
+
+						<!-- vid -->
+						<video class="vid" src="./../resources/videos/clifftop.mp4" controls muted></video>
+						<!-- <video class="vid" src="./../resources/videos/charactergrowth.mp4" controls muted></video> -->
+						<!-- /vid -->
+
+						<!-- ghostvid -->
+						<video class="ghostvid" src="./../resources/videos/clifftop.mp4" controls muted></video>
+						<!-- <video class="ghostvid" src="./../resources/videos/charactergrowth.mp4" controls muted></video> -->
+						<!-- /ghostvid -->
+
+						<!-- vidshield -->
+						<div class="vidshield gone">
+
+							<!-- controlscreen -->
+							<div class="controlscreen">
+
+								<!-- field -->
+								<div class="left field">
+
+									<!-- indicator -->
+									<div class="indicator">
+
+										<!-- icon -->
+										<svg class="icon chevronleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+											<path class="dynamic" fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+										</svg>
+										<!-- /icon -->
+
+										<!-- icon -->
+										<!-- <svg class="icon chevronleft" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+										</svg> -->
+										<!-- /icon -->
+
+										<!-- icon -->
+										<!-- <svg class="icon rewind" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M8.404 7.304a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+											<path d="M.404 7.304a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+										</svg> -->
+										<!-- /icon -->
+
+										<!-- caption -->
+										<!-- <span class="caption">&minus;</span> -->
+										<!-- /caption -->
+
+										<!-- caption -->
+										<span class="caption">15</span>
+										<!-- /caption -->
+
+									</div>
+									<!-- /indicator -->
+
+								</div>
+								<!-- /field -->
+
+								<!-- field -->
+								<div class="middle field">
+
+									<!-- playbox -->
+									<div class="playbox indicator">
+
+										<!-- icon -->
+										<svg class="icon play" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+										</svg>
+										<!-- /icon -->
+
+										<!-- icon -->
+										<svg class="icon pause" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>
+										</svg>
+										<!-- <svg class="icon pause" width="1em" height="1em" fill="currentColor" viewBox="0 0 320 512">
+											<path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/>
+										</svg> -->
+										<!-- /icon -->
+
+										<!-- icon -->
+										<svg class="icon replay" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+											<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+										</svg>
+										<!-- /icon -->
+
+									</div>
+									<!-- /playbox -->
+
+									<!-- replaybtn -->
+									<div class="replaybtn">
+
+										<!-- icon -->
+										<svg class="icon replay" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+											<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+										</svg>
+										<!-- /icon -->
+
+										<!-- caption -->
+										<span class="caption">Watch again</span>
+										<!-- /caption -->
+
+									</div>
+									<!-- /replaybtn -->
+
+									<!-- speedbox -->
+									<div class="speedbox indicator">
+
+										<!-- caption -->
+										<span class="caption">Normal</span>
+										<!-- /caption -->
+
+									</div>
+									<!-- /speedbox -->
+
+								</div>
+								<!-- /field -->
+
+								<!-- field -->
+								<div class="right field">
+
+									<!-- indicator -->
+									<div class="indicator">
+
+										<!-- caption -->
+										<span class="caption">15</span>
+										<!-- /caption -->
+
+										<!-- caption -->
+										<!-- <span class="caption">&plus;</span> -->
+										<!-- /caption -->
+
+										<!-- icon -->
+										<!-- <svg class="icon fastfwd" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path d="M7.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+											<path d="M15.596 7.304a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+										</svg> -->
+										<!-- /icon -->
+
+										<!-- icon -->
+										<!-- <svg class="icon chevronright" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+										</svg> -->
+										<!-- /icon -->
+
+										<!-- icon -->
+										<svg class="icon chevronright" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+											<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+											<path class="dynamic" fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+										</svg>
+										<!-- /icon -->
+
+									</div>
+									<!-- /indicator -->
+
+								</div>
+								<!-- /field -->
+
+							</div>
+							<!-- /controlscreen -->
+
+							<!-- controlbar -->
+							<div class="controlbar">
+
+								<!-- controller -->
+								<div class="controller">
+
+									<!-- panebar -->
+									<div class="panebar">
+
+										<!-- leftpane -->
+										<div class="leftpane pane">
+
+											<!-- playbtn -->
+											<button class="playbtn btn">
+
+												<!-- icon -->
+												<svg class="icon play" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip tpl">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Play</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">K</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+												<!-- icon -->
+												<svg class="icon pause" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip tps">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Pause</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">K</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+												<!-- icon -->
+												<svg class="icon replay" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+													<path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip trpl">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Replay</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">K</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+											</button>
+											<!-- /playbtn -->
+
+											<!-- volumebtn -->
+											<button class="volumebtn btn">
+
+												<!-- icon -->
+												<svg class="icon novolume no" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06M6 5.04 4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96zm7.854.606a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- icon -->
+												<svg class="icon lovolume lo" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- icon -->
+												<svg class="icon hivolume hi" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
+													<path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
+													<path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip tm">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Mute</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">M</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+												<!-- tooltip -->
+												<div class="tooltip tum">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Unmute</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">M</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+												<!-- tooltip -->
+												<div class="tooltip" style="display:none;">
+
+													<!-- caption -->
+													<span class="caption">Volume</span>
+													<!-- /caption -->
+
+												</div>
+												<!-- /tooltip -->
+
+											</button>
+											<!-- /volumebtn -->
+
+											<!-- timebtn -->
+											<button class="timebtn wd btn">
+
+												<!-- remain -->
+												<span class="remain time" title="Remaining time">0:13</span>
+												<!-- /remain -->
+
+												<!-- elapsed -->
+												<span class="elapsed time" title="Elapsed time">0:02</span>
+												<!-- /elapsed -->
+
+												<!-- divider -->
+												<span class="divider">/</span>
+												<!-- /divider -->
+
+												<!-- duration -->
+												<span class="duration time" title="Video duration">0:15</span>
+												<!-- /duration -->
+
+											</button>
+											<!-- /timebtn -->
+
+											<!-- loadingbtn -->
+											<button class="loadingbtn wd btn gone">
+
+												<!-- caption -->
+												<span class="caption">Loading...</span>
+												<!-- /caption -->
+
+												<!-- icon -->
+												<svg class="icon chevronright" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+												</svg>
+												<!-- /icon -->
+
+											</button>
+											<!-- /loadingbtn -->
+
+										</div>
+										<!-- /leftpane -->
+
+										<!-- midpane -->
+										<div class="midpane leftpane pane">
+
+											<!-- videowallbtn -->
+											<button class="videowallbtn btn" onclick="toggleVideoWall()">
+
+												<!-- icon -->
+												<svg class="icon chevrondn" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip t1">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">More videos</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">V</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+												<!-- icon -->
+												<!-- <svg class="icon chevronup" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"/>
+												</svg> -->
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip t0">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Hide videos</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">V</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+											</button>
+											<!-- /videowallbtn -->
+
+										</div>
+										<!-- /midpane -->
+
+										<!-- rightpane -->
+										<div class="rightpane pane">
+
+											<!-- loopbtn -->
+											<button class="loopbtn btn">
+
+												<!-- icon -->
+												<svg class="icon repeatarrows" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- icon -->
+												<!-- <svg class="icon repeatarrowsone" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M11 4v1.466a.25.25 0 0 0 .41.192l2.36-1.966a.25.25 0 0 0 0-.384l-2.36-1.966a.25.25 0 0 0-.41.192V3H5a5 5 0 0 0-4.48 7.223.5.5 0 0 0 .896-.446A4 4 0 0 1 5 4zm4.48 1.777a.5.5 0 0 0-.896.446A4 4 0 0 1 11 12H5.001v-1.466a.25.25 0 0 0-.41-.192l-2.36 1.966a.25.25 0 0 0 0 .384l2.36 1.966a.25.25 0 0 0 .41-.192V13h6a5 5 0 0 0 4.48-7.223Z"/>
+													<path d="M9 5.5a.5.5 0 0 0-.854-.354l-1.75 1.75a.5.5 0 1 0 .708.708L8 6.707V10.5a.5.5 0 0 0 1 0z"/>
+												</svg> -->
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Repeat</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">R</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+											</button>
+											<!-- /loopbtn -->
+
+											<!-- speedbtn -->
+											<button class="speedbtn btn">
+
+												<!-- icon -->
+												<svg class="icon speedometer" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/>
+													<path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- icon -->
+												<!-- <svg class="icon stopwatch" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z"/>
+													<path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3"/>
+												</svg> -->
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip">
+
+													<!-- caption -->
+													<span class="caption">Playback speed</span>
+													<!-- /caption -->
+
+												</div>
+												<!-- /tooltip -->
+
+											</button>
+											<!-- /speedbtn -->
+
+											<!-- settingsbtn -->
+											<button class="settingsbtn btn">
+
+												<!-- icon -->
+												<svg class="icon gear" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+													<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip">
+
+													<!-- caption -->
+													<span class="caption">Settings</span>
+													<!-- /caption -->
+
+												</div>
+												<!-- /tooltip -->
+
+											</button>
+											<!-- /settingsbtn -->
+
+											<!-- theaterbtn -->
+											<button class="theaterbtn btn">
+
+												<!-- icon -->
+												<svg class="icon tv" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5M13.991 3l.024.001a1.5 1.5 0 0 1 .538.143.76.76 0 0 1 .302.254c.067.1.145.277.145.602v5.991l-.001.024a1.5 1.5 0 0 1-.143.538.76.76 0 0 1-.254.302c-.1.067-.277.145-.602.145H2.009l-.024-.001a1.5 1.5 0 0 1-.538-.143.76.76 0 0 1-.302-.254C1.078 10.502 1 10.325 1 10V4.009l.001-.024a1.5 1.5 0 0 1 .143-.538.76.76 0 0 1 .254-.302C1.498 3.078 1.675 3 2 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2"/>
+												</svg>
+												<!-- /icon -->
+
+											</button>
+											<!-- /theaterbtn -->
+
+											<!-- fullscreenbtn -->
+											<button class="fullscreenbtn btn">
+
+												<!-- icon -->
+												<!-- <svg class="icon enterfullscreen" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/>
+												</svg> -->
+												<svg class="icon expand i1" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip t1">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Full screen</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">F</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+												<!-- icon -->
+												<!-- <svg class="icon exitfullscreen" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5m5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5M0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5m10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0z"/>
+												</svg> -->
+												<svg class="icon contract i0" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+													<path fill-rule="evenodd" d="M.172 15.828a.5.5 0 0 0 .707 0l4.096-4.096V14.5a.5.5 0 1 0 1 0v-3.975a.5.5 0 0 0-.5-.5H1.5a.5.5 0 0 0 0 1h2.768L.172 15.121a.5.5 0 0 0 0 .707M15.828.172a.5.5 0 0 0-.707 0l-4.096 4.096V1.5a.5.5 0 1 0-1 0v3.975a.5.5 0 0 0 .5.5H14.5a.5.5 0 0 0 0-1h-2.768L15.828.879a.5.5 0 0 0 0-.707"/>
+												</svg>
+												<!-- /icon -->
+
+												<!-- tooltip -->
+												<div class="tooltip t0">
+
+													<!-- box -->
+													<div class="box">
+
+														<!-- caption -->
+														<span class="caption">Exit full screen</span>
+														<!-- /caption -->
+
+														<!-- key -->
+														<span class="key">F</span>
+														<!-- /key -->
+
+													</div>
+													<!-- /box -->
+
+												</div>
+												<!-- /tooltip -->
+
+											</button>
+											<!-- /fullscreenbtn -->
+
+										</div>
+										<!-- /rightpane -->
+
+									</div>
+									<!-- /panebar -->
+
+									<!-- progressbar -->
+									<div class="progressbar">
+
+										<!-- progresstube -->
+										<div class="progresstube">
+
+											<!-- progress -->
+											<div class="progress"></div>
+											<!-- /progress -->
+
+										</div>
+										<!-- /progresstube -->
+
+									</div>
+									<!-- /progressbar -->
+
+									<!-- timebubble -->
+									<div class="timebubble">
+
+										<!-- frame -->
+										<div class="frame">
+
+											<!-- framecapture -->
+											<canvas class="framecapture"></canvas>
+											<!-- /framecapture -->
+
+										</div>
+										<!-- /frame -->
+
+										<!-- timestamp -->
+										<span class="timestamp">0:00</span>
+										<!-- /timestamp -->
+
+									</div>
+									<!-- /timebubble -->
+
+									<!-- settingspane -->
+									<div class="generalpane settingspane">
+
+										<!-- vidsettings -->
+										<ul class="vidsettings">
+
+											<!-- setting -->
+											<li class="setting">
+
+												<!-- togglename -->
+												<label class="togglename" for="playspeed">
+
+													<!-- icon -->
+													<svg class="icon stopwatch" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z"/>
+														<path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3"/>
+													</svg>
+													<!-- /icon -->
+
+													<!-- caption -->
+													<span class="caption">Playback speed</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglename -->
+
+												<!-- togglevalue -->
+												<label class="togglevalue" for="playspeed">
+
+													<!-- caption -->
+													<span class="caption" id="playspeed">1.0</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglevalue -->
+
+											</li>
+											<!-- /setting -->
+
+											<!-- setting -->
+											<li class="setting">
+
+												<!-- togglename -->
+												<label class="togglename" for="volumelevel">
+
+													<!-- icon -->
+													<svg class="icon speaker" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+														<path d="M8 4.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5M8 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4m0 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-3.5 1.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+													</svg>
+													<!-- /icon -->
+
+													<!-- caption -->
+													<span class="caption">Volume level</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglename -->
+
+												<!-- togglevalue -->
+												<label class="togglevalue" for="volumelevel">
+
+													<!-- caption -->
+													<span class="caption" id="volumelevel">0%</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglevalue -->
+
+											</li>
+											<!-- /setting -->
+
+											<!-- setting -->
+											<li class="setting">
+
+												<!-- togglename -->
+												<label class="togglename" for="loopstate">
+
+													<!-- icon -->
+													<!-- <svg class="icon repeatarrows" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+														<path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+													</svg> -->
+													<!-- /icon -->
+
+													<!-- icon -->
+													<svg class="icon repeatarrows" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"/>
+													</svg>
+													<!-- /icon -->
+
+													<!-- icon -->
+													<!-- <svg class="icon repeatarrowsone" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M11 4v1.466a.25.25 0 0 0 .41.192l2.36-1.966a.25.25 0 0 0 0-.384l-2.36-1.966a.25.25 0 0 0-.41.192V3H5a5 5 0 0 0-4.48 7.223.5.5 0 0 0 .896-.446A4 4 0 0 1 5 4zm4.48 1.777a.5.5 0 0 0-.896.446A4 4 0 0 1 11 12H5.001v-1.466a.25.25 0 0 0-.41-.192l-2.36 1.966a.25.25 0 0 0 0 .384l2.36 1.966a.25.25 0 0 0 .41-.192V13h6a5 5 0 0 0 4.48-7.223Z"/>
+														<path d="M9 5.5a.5.5 0 0 0-.854-.354l-1.75 1.75a.5.5 0 1 0 .708.708L8 6.707V10.5a.5.5 0 0 0 1 0z"/>
+													</svg> -->
+													<!-- /icon -->
+
+													<!-- caption -->
+													<span class="caption">Loop</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglename -->
+
+												<!-- togglevalue -->
+												<label class="togglevalue" for="loopstate">
+
+													<!-- looptoggle -->
+													<input class="looptoggle" id="loopstate" type="checkbox">
+													<!-- /looptoggle -->
+
+													<!-- caption -->
+													<span class="caption"></span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglevalue -->
+
+											</li>
+											<!-- /setting -->
+
+											<!-- setting -->
+											<li class="setting" style="display:none;">
+
+												<!-- togglename -->
+												<label class="togglename" for="sleeptimer">
+
+													<!-- icon -->
+													<!-- <svg class="icon clocktimer" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z"/>
+														<path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z"/>
+														<path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5"/>
+													</svg> -->
+													<!-- /icon -->
+
+													<!-- icon -->
+													<svg class="icon moon" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+													</svg>
+													<!-- /icon -->
+
+													<!-- caption -->
+													<span class="caption">Sleep timer</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglename -->
+
+												<!-- togglevalue -->
+												<label class="togglevalue" for="sleeptimer">
+
+													<!-- caption -->
+													<span class="caption">off</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglevalue -->
+
+											</li>
+											<!-- /setting -->
+
+										</ul>
+										<!-- /vidsettings -->
+
+									</div>
+									<!-- /settingspane -->
+
+									<!-- speedpane -->
+									<div class="speedpane settingspane">
+
+										<!-- vidsettings -->
+										<ul class="vidspeeds vidsettings">
+
+											<!-- setting -->
+											<li class="setting">
+
+												<!-- togglename -->
+												<label class="togglename" for="playspeed">
+
+													<!-- icon -->
+													<svg class="icon xyz" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+														<>
+													</svg>
+													<!-- /icon -->
+
+												</label>
+												<!-- /togglename -->
+
+												<!-- togglevalue -->
+												<label class="togglevalue" for="playspeed">
+
+													<!-- caption -->
+													<span class="caption">1.0</span>
+													<!-- /caption -->
+
+												</label>
+												<!-- /togglevalue -->
+
+											</li>
+											<!-- /setting -->
+
+										</ul>
+										<!-- /vidsettings -->
+
+									</div>
+									<!-- /speedpane -->
+
+								</div>
+								<!-- /controller -->
+
+							</div>
+							<!-- /controlbar -->
+
+							<!-- videowall -->
+							<div class="videowall">
+
+								<!-- contentlist -->
+								<ul class="contentlist">
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title">Xyz Video Title</span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date">1m ago</span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem">
+
+										<!-- contentlink -->
+										<a class="contentlink" href="javascript:void(0)">
+
+											<!-- preview -->
+											<div class="preview">
+
+												<!-- duration -->
+												<span class="duration">0:00:00</span>
+												<!-- /duration -->
+
+											</div>
+											<!-- /preview -->
+
+											<!-- contentinfo -->
+											<div class="contentinfo">
+
+												<!-- title -->
+												<span class="title"></span>
+												<!-- /title -->
+
+												<!-- date -->
+												<span class="date"></span>
+												<!-- /date -->
+
+											</div>
+											<!-- /contentinfo -->
+
+										</a>
+										<!-- /contentlink -->
+
+									</li>
+									<!-- /contentitem -->
+
+									<!-- contentitem -->
+									<li class="contentitem"></li>
+									<!-- /contentitem -->
+
+								</ul>
+								<!-- /contentlist -->
+
+							</div>
+							<!-- /videowall -->
+
+						</div>
+						<!-- /vidshield -->
+
+					</div>
+					<!-- /vidplayer -->
+
+					<!-- activitylog -->
+					<div class="activitylog">
+
+						<!-- log -->
+						<span class="log">Loading...</span>
+						<!-- /log -->
+
+					</div>
+					<!-- /activitylog -->
+
+				</div>
+				<!-- /body -->
+
+			</section>
+			<!-- /media -->
+
+		</div>
+		<!-- /#container -->
+
+
+		<!-- VidPlayer Components -->
+		<script src="./assets/components.js" type="text/javascript"></script>
+		<!-- User Activity Scripts -->
+		<script src="./assets/script/playpause.js" type="text/javascript"></script>
+		<script src="./assets/script/volume.js" type="text/javascript"></script>
+		<script src="./assets/script/settings.js" type="text/javascript"></script>
+		<script src="./assets/script/fullscreen.js" type="text/javascript"></script>
+		<script src="./assets/script/playspeed.js" type="text/javascript"></script>
+		<script src="./assets/script/timeprogress.js" type="text/javascript"></script>
+		<script src="./assets/script/videowall.js" type="text/javascript"></script>
+		<script src="./assets/script/useractivity.js" type="text/javascript"></script>
+
+
+		<!-- Xyz Database -->
+		<!-- <script src="./xyzdatabase.js" type="text/javascript"></script> -->
+		<!-- Main Script -->
+		<!-- <script src="./vidplayer.js" type="text/javascript"></script> -->
+		<!-- Custom Script -->
+		<!-- <script type="text/javascript"></script> -->
+
+	</body>
+
+</html>

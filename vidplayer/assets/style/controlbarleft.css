@@ -1,0 +1,157 @@
+
+
+
+/* Video Player Controller Left Pane */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane {gap:.5rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.btn {background-color:var(--blackglass); padding:0; padding:.25rem; border:.25rem solid transparent;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.btn.wd {padding:.25rem .75rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.btn.gone {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.btn:hover {border-color:var(--blackglass);}
+
+
+/* Video Player Controller Left Pane: Play Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon {font-size:2rem; /* font-size:1.75rem; */}
+/* Video Player Controller Left Pane: Play Button (paused) */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.play {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.pause {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.replay {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.tpl {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.tps {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.trpl {display:none;}
+/* Video Player Controller Left Pane: Play Button (playing) */
+div#container section.media div.vidplayer.run div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.play {display:none;}
+div#container section.media div.vidplayer.run div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.pause {display:block;}
+div#container section.media div.vidplayer.run div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.replay {display:none;}
+div#container section.media div.vidplayer.run div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.tpl {display:none;}
+div#container section.media div.vidplayer.run div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.tps {display:block;}
+div#container section.media div.vidplayer.run div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.trpl {display:none;}
+/* Video Player Controller Left Pane: Play Button (completed) */
+div#container section.media div.vidplayer.done div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.play {display:none;}
+div#container section.media div.vidplayer.done div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.pause {display:none;}
+div#container section.media div.vidplayer.done div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn svg.icon.replay {display:block;}
+div#container section.media div.vidplayer.done div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.tpl {display:none;}
+div#container section.media div.vidplayer.done div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.tps {display:none;}
+div#container section.media div.vidplayer.done div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn div.tooltip.trpl {display:block;}
+
+
+/* Video Player Controller Left Pane: Volume Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon {font-size:1.625rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.no {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.lo {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.hi {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn div.tooltip.tm {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn div.tooltip.tum {display:none;}
+div#container section.media div.vidplayer.mute div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.no {display:block;}
+div#container section.media div.vidplayer.mute div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.lo {display:none;}
+div#container section.media div.vidplayer.mute div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.hi {display:none;}
+div#container section.media div.vidplayer.mute div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn div.tooltip.tm {display:none;}
+div#container section.media div.vidplayer.mute div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn div.tooltip.tum {display:block;}
+div#container section.media div.vidplayer.loud div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.no {display:none;}
+div#container section.media div.vidplayer.loud div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.lo {display:none;}
+div#container section.media div.vidplayer.loud div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn svg.icon.hi {display:block;}
+div#container section.media div.vidplayer.loud div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn div.tooltip.tm {display:block;}
+div#container section.media div.vidplayer.loud div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn div.tooltip.tum {display:none;}
+
+
+/* Video Player Controller Left Pane: Time Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span {margin:.125rem 0;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span.time {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span.remain {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span.remain::before {content:'-';}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span.elapsed {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span.duration {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span.remain {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn span.elapsed {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn.r span.remain {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn.r span.elapsed {display:none;}
+
+
+/* Video Player Controller Left Pane: Loading Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn {opacity:1; transition:.25s;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn.gone {display:none;} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn svg.icon {font-size:.75rem;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn span.caption {} */
+
+
+
+
+
+/* Desktop Screen */
+@media screen and (max-width:95rem) {
+
+	/* Video Player Controller Left Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane {} */
+
+	/* Video Player Controller Left Pane: Play Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn {} */
+
+	/* Video Player Controller Left Pane: Volume Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn {} */
+
+	/* Video Player Controller Left Pane: Time Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn {} */
+
+	/* Video Player Controller Left Pane: Loading Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn {} */
+}
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Video Player Controller Left Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane {} */
+
+	/* Video Player Controller Left Pane: Play Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn {} */
+
+	/* Video Player Controller Left Pane: Volume Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn {} */
+
+	/* Video Player Controller Left Pane: Time Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn {} */
+
+	/* Video Player Controller Left Pane: Loading Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* Video Player Controller Left Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane {} */
+
+	/* Video Player Controller Left Pane: Play Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn {} */
+
+	/* Video Player Controller Left Pane: Volume Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn {} */
+
+	/* Video Player Controller Left Pane: Time Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn {} */
+
+	/* Video Player Controller Left Pane: Loading Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Video Player Controller Left Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane {} */
+
+	/* Video Player Controller Left Pane: Play Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.playbtn {} */
+
+	/* Video Player Controller Left Pane: Volume Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.volumebtn {} */
+
+	/* Video Player Controller Left Pane: Time Button */
+	div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.timebtn {display:none;}
+
+	/* Video Player Controller Left Pane: Loading Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.leftpane button.loadingbtn {} */
+}

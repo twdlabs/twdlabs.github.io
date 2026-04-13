@@ -1,0 +1,163 @@
+
+
+
+/* Video Player Control Bar */
+div#container section.media div.vidplayer div.vidshield div.controlbar {position:absolute; right:0; bottom:0; left:0; z-index:220;}
+div#container section.media div.vidplayer div.vidshield div.controlbar {backdrop-filter:blur(1px); display:flex; flex-direction:column; gap:var(--tinyedge); /* padding:var(--tinyedge); */}
+div#container section.media div.vidplayer div.vidshield div.controlbar {/* opacity:.25; */ /* visibility:hidden; */ transition:.375s;}
+/* div#container section.media div.vidplayer:hover div.vidshield div.controlbar {opacity:1; visibility:visible;} */
+div#container section.media div.vidplayer.run div.vidshield div.controlbar {opacity:0;}
+div#container section.media div.vidplayer.run:hover div.vidshield div.controlbar {opacity:1;}
+
+/* Video Player Controller */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller {display:flex; flex-direction:column-reverse;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller {position:relative; padding:var(--tinyedge); padding:var(--tinyedge) calc( 2 * var(--tinyedge) );}
+/* Video Player Controller Pane */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane {display:flex; flex-direction:row; align-items:center; border-radius:10rem;}
+/* Video Player Controller Pane: Button */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn {display:flex; flex-direction:row; align-items:center; justify-content:center; gap:.25rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn {color:white; font-size:.75rem; cursor:pointer; transition:.125s; border-radius:10rem; border:0 none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn {min-height:var(--btnsize); min-width:var(--btnsize); --btnsize:1.5rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn:hover {background-color:var(--whiteglasss);}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn svg.icon {display:block; font-size:1.25rem; cursor:pointer;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip {display:none !important;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip {position:absolute; bottom:100%; margin-bottom:2rem; margin-bottom:0;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip {background-color:var(--blackglass); padding:.25rem .5rem; border-radius:.375rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip {opacity:0; visibility:hidden; transition:.5s;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip.t0 {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip.t1 {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn:hover div.tooltip {opacity:1; visibility:visible;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip div.box {display:flex; flex-direction:row; align-items:center; gap:.25rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip div.box span.key {padding:0 .25rem; border:1px solid var(--whiteglass); border-radius:.25rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.pane button.btn div.tooltip div.box span.caption {white-space:nowrap;}
+
+
+/* Video Player Controller: Progress Bar */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {position:absolute; inset:0; top:auto; bottom:100%;} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {/* background-color:var(--whiteglass); */ cursor:pointer; height:calc( var(--progressbarspacemultiple) * var(--progressbarheight) ); width:100%; margin-bottom:var(--tinyedge);}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {--progressbarspacemultiple:2; /* --progressbarspacemultiple:3; */}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch; /* overflow:hidden; */}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {--progressbarheight:.25rem; transition:.125s;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {--progressbarheight:4rem;} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar:hover {--progressbarheight:.375rem;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar:hover {--progressbarheight:8rem;} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar div.progresstube {background-color:var(--whiteglass); height:calc( 100% / var(--progressbarspacemultiple) ); width:100%; border-radius:10em;}
+/* Video Player Controller: Progress Bar Progress */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar div.progresstube div.progress {background-color:var(--medblue); position:relative; overflow:visible; height:100%; width:var(--currentprogresspercent,0); border-radius:inherit;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar div.progresstube div.progress {--currentprogresspercent:0%; --ballsize:.625rem;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar div.progresstube div.progress {--ballsize:12rem;} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar:hover div.progresstube div.progress {--ballsize:1.25rem;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar:hover div.progresstube div.progress {--ballsize:18rem;} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar div.progresstube div.progress::after {position:absolute; top:50%; right:0; transform:translate(50%,-50%);}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar div.progresstube div.progress::after {background-color:var(--medblue); content:''; /* display:none; */ border-radius:50%;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar div.progresstube div.progress::after {height:var(--ballsize); width:var(--ballsize); transition:.125s;}
+/* Video Player Controller: Progress Bar Time Bubble */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar + div.timebubble {opacity:0; visibility:hidden; transition:.125s;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar:hover + div.timebubble {opacity:1; visibility:visible;}
+/* Video Player Controller: Time Bubble */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.timebubble {position:absolute; bottom:100%; left:var(--seekprogresspercent); transform:translateX(-50%); /* margin:0 1rem; */}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.timebubble {left:clamp( var(--timebubblepositionmin) , var(--seekprogresspercent) , var(--timebubblepositionmax) );}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.timebubble {display:flex; flex-direction:column; align-items:center; gap:.5rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.timebubble {--seekprogresspercent:0%;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.timebubble div.frame {background-color:var(--blacksheet); width:var(--timebubbleframesize); aspect-ratio:16/9; overflow:hidden; border-radius:.5rem; border:.125rem solid whitesmoke;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.timebubble div.frame canvas.framecapture {height:100%; width:100%;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.timebubble span.timestamp {background-color:var(--blacksheet); color:white; font-size:.75rem; user-select:none; padding:.375rem .875rem; border-radius:10em;}
+
+
+/* Video Player Controller: Settings Pane */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane {position:absolute; bottom:100%; right:0; z-index:1;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane {background-color:var(--blacksheet); color:white; /* min-height:20rem; min-width:10rem; */ padding:.375rem; border-radius:.5rem; margin:0 .75rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane {opacity:0; visibility:hidden; transition:.125s;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane.open {opacity:1; visibility:visible;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings {list-style:none; padding:0; margin:0;}
+/* Video Player Controller: Settings Pane Toggle */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting {font-size:.75rem; cursor:pointer; user-select:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting {display:grid; grid-template-columns:3fr 1fr; grid-template-columns:2fr 1fr; align-items:center; padding:.75rem .5rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting.x {display:none;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting:hover {background-color:var(--whiteglasss);}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label {cursor:inherit;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglename {display:flex; flex-direction:row; align-items:center; gap:.5rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglename svg.icon {font-size:1.25rem;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglename span.caption {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue {text-align:right;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue span.caption {} */
+/* Video Player Controller: Settings Pane Loop Toggle */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue input#loopstate {display:none;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue input#loopstate ~ span.caption {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue input#loopstate ~ span.caption::after {content:'Off';}
+div#container section.media div.vidplayer.loop div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue input#loopstate ~ span.caption::after {content:'On';}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue input#loopstate:checked ~ span.caption {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue input#loopstate:checked ~ span.caption::after {content:'On';} */
+/* Video Player Controller: Settings Pane Speed Toggle */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue span.caption#playspeed {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane ul.vidsettings li.setting label.togglevalue span.caption#playspeed::after {content:'x';} */
+
+
+
+
+
+
+/* Desktop Screen */
+@media screen and (max-width:95rem) {
+
+	/* Video Player Control Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar {} */
+
+	/* Video Player Controller */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller {} */
+
+	/* Video Player Controller: Progress Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {} */
+
+	/* Video Player Controller: Settings Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane {} */
+}
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Video Player Control Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar {} */
+
+	/* Video Player Controller */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller {} */
+
+	/* Video Player Controller: Progress Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {} */
+
+	/* Video Player Controller: Settings Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* Video Player Control Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar {} */
+
+	/* Video Player Controller */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller {} */
+
+	/* Video Player Controller: Progress Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {} */
+
+	/* Video Player Controller: Settings Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Video Player Control Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar {} */
+
+	/* Video Player Controller */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller {} */
+
+	/* Video Player Controller: Progress Bar */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.progressbar {} */
+
+	/* Video Player Controller: Settings Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.settingspane {} */
+}

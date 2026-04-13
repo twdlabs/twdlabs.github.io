@@ -1,0 +1,146 @@
+
+
+
+/* Video Player Controller Right Pane */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane {background-color:var(--blackglass); border:.25rem solid transparent;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.btn {background-color:transparent; /* background-color:var(--blackglasss); */ padding:.25rem .75rem;}
+
+
+/* Video Player Controller Right Pane: Loop Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn svg.icon {font-size:1.125rem;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn svg.icon {opacity:.375;}
+div#container section.media div.vidplayer.loop div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn svg.icon {opacity:1;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn svg.icon.one {display:none;} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn svg.icon.all {display:none;} */
+
+
+/* Video Player Controller Right Pane: Theater Button */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.theaterbtn {display:none;}
+
+
+/* Video Player Controller Right Pane: Speed Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn.on {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn svg.icon {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn svg.icon.abc {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn svg.icon.xyz {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn.on svg.icon {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn.on svg.icon.abc {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn.on svg.icon.xyz {} */
+
+
+/* Video Player Controller Right Pane: Settings Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn {} */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn.on {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn svg.icon {transform:none; transition:.25s;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn.on svg.icon {transform:rotate(22.5deg);}
+
+
+/* Video Player Controller Right Pane: Fullscreen Button */
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn svg.icon {display:none; transform:rotate(90deg);}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn svg.icon.i1 {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn svg.icon.i0 {display:none;}
+/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn div.tooltip {} */
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn div.tooltip.t1 {display:block;}
+div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn div.tooltip.t0 {display:none;}
+/* div#container section.media div.vidplayer.full div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn svg.icon {} */
+div#container section.media div.vidplayer.full div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn svg.icon.i1 {display:none;}
+div#container section.media div.vidplayer.full div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn svg.icon.i0 {display:block;}
+/* div#container section.media div.vidplayer.full div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn div.tooltip {} */
+div#container section.media div.vidplayer.full div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn div.tooltip.t1 {display:none;}
+div#container section.media div.vidplayer.full div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn div.tooltip.t0 {display:block;}
+
+
+
+
+
+
+/* Desktop Screen */
+@media screen and (max-width:95rem) {
+
+	/* Video Player Controller Right Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane {} */
+
+	/* Video Player Controller Right Pane: Loop Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn {} */
+
+	/* Video Player Controller Right Pane: Theater Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.theaterbtn {} */
+
+	/* Video Player Controller Right Pane: Speed Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn {} */
+
+	/* Video Player Controller Right Pane: Settings Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn {} */
+
+	/* Video Player Controller Right Pane: Fullscreen Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn {} */
+}
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Video Player Controller Right Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane {} */
+
+	/* Video Player Controller Right Pane: Loop Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn {} */
+
+	/* Video Player Controller Right Pane: Theater Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.theaterbtn {} */
+
+	/* Video Player Controller Right Pane: Speed Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn {} */
+
+	/* Video Player Controller Right Pane: Settings Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn {} */
+
+	/* Video Player Controller Right Pane: Fullscreen Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* Video Player Controller Right Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane {} */
+
+	/* Video Player Controller Right Pane: Loop Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn {} */
+
+	/* Video Player Controller Right Pane: Theater Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.theaterbtn {} */
+
+	/* Video Player Controller Right Pane: Speed Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn {} */
+
+	/* Video Player Controller Right Pane: Settings Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn {} */
+
+	/* Video Player Controller Right Pane: Fullscreen Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Video Player Controller Right Pane */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane {} */
+
+	/* Video Player Controller Right Pane: Loop Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.loopbtn {} */
+
+	/* Video Player Controller Right Pane: Theater Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.theaterbtn {} */
+
+	/* Video Player Controller Right Pane: Speed Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.speedbtn {} */
+
+	/* Video Player Controller Right Pane: Settings Button */
+	/* div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.settingsbtn {} */
+
+	/* Video Player Controller Right Pane: Fullscreen Button */
+	div#container section.media div.vidplayer div.vidshield div.controlbar div.controller div.panebar div.rightpane button.fullscreenbtn {display:none;}
+}

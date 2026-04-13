@@ -1,0 +1,61 @@
+
+
+
+/* Video Player Video Suggestion Wall */
+div#container section.media div.vidplayer div.vidshield div.videowall {position:absolute; top:100%; left:0; right:0;}
+div#container section.media div.vidplayer div.vidshield div.videowall {background-color:var(--greensheet);--greensheet:#0f05;}
+div#container section.media div.vidplayer div.vidshield div.videowall {background-color:transparent; backdrop-filter:blur(.125rem); /* opacity:.5; */ /* height:70vh; height:70%; */ min-height:10vh; padding:.75rem;}
+/* div#container section.media div.vidplayer div.vidshield div.videowall {background-image:linear-gradient( to top , black 90% , transparent );} */
+/* div#container section.media div.vidplayer div.vidshield div.videowall {background-image:linear-gradient( to top , black 55% , var(--blacksheet) 85% , var(--blackglass) 90% , var(--blackglasss) , transparent );} */
+/* div#container section.media div.vidplayer div.vidshield div.videowall {background-image:linear-gradient( to top , black, black , var(--blacksheet) 85% , var(--blackglass) 95% , var(--blackglasss) , transparent );} */
+/* div#container section.media div.vidplayer div.vidshield div.videowall {background-image:linear-gradient( to top , black 50% , black 75% , var(--blacksheet) 85% , var(--blackglass) 95% , var(--blackglasss) , transparent );} */
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist {list-style:none; padding:0; margin:0;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist {display:grid; grid-template-columns:repeat( var(--videowallgridsize) , 1fr );}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem {padding:.125rem;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink {background-color:var(--blackglasss); backdrop-filter:blur(.5rem); display:block; aspect-ratio:5/4; padding:.25rem; border-radius:.5rem;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink {color:inherit; text-decoration:none;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink:hover {background-color:var(--whiteglasss);}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.preview {position:relative;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.preview {background-color:limegreen; opacity:.875; aspect-ratio:16/9; border-radius:.25rem;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.preview span.duration {position:absolute; bottom:0; right:0; margin:.25rem;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.preview span.duration {background-color:var(--blackglass); color:white; font-size:.75rem; padding:0 .25rem; border-radius:.125rem;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.contentinfo {display:flex; flex-direction:column; font-size:.875rem; margin-top:.25rem;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.contentinfo span.date {color:var(--ltgrey);--ltgrey:#BBB; font-size:.875em; font-weight:200;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.contentinfo span.title {color:white; font-weight:400;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.contentinfo span:empty::after {display:block; content:''; opacity:.75; height:1em; border-radius:10em; margin-top:.25rem;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.contentinfo span.date:empty::after {background-color:var(--ltgrey); width:25%;}
+div#container section.media div.vidplayer div.vidshield div.videowall ul.contentlist li.contentitem a.contentlink div.contentinfo span.title:empty::after {background-color:white; width:75%;}
+/* div#container section.media div.vidplayer.wall div.vidshield div.videowall {} */
+
+
+
+
+
+
+/* Desktop Screen */
+@media screen and (max-width:95rem) {
+
+	/* Video Player Video Suggestion Wall */
+	/* div#container section.media div.vidplayer div.vidshield div.videowall {} */
+}
+
+/* Tablet Screen */
+@media screen and (max-width:64rem) {
+
+	/* Video Player Video Suggestion Wall */
+	/* div#container section.media div.vidplayer div.vidshield div.videowall {} */
+}
+
+/* Big Smartphone Screen */
+@media screen and (max-width:48rem) {
+
+	/* Video Player Video Suggestion Wall */
+	/* div#container section.media div.vidplayer div.vidshield div.videowall {} */
+}
+
+/* Small Smartphone Screen */
+@media screen and (max-width:32rem) {
+
+	/* Video Player Video Suggestion Wall */
+	/* div#container section.media div.vidplayer div.vidshield div.videowall {} */
+}
