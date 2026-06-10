@@ -5,6 +5,8 @@
 
 	/* Numbers */
 	--closebtnsize:2.375rem;
+	--pagewidth:75rem;
+	--pagewidth:50rem;
 }
 
 
@@ -31,12 +33,13 @@ div#overlay main.overlay div.head div.video video {position:absolute; top:0; rig
 div#overlay main.overlay div.head div.cover {position:absolute; bottom:0; right:0; left:0; width:100%; padding:3rem;}
 div#overlay main.overlay div.head div.cover {display:flex; flex-direction:column; justify-content:flex-end; align-items:stretch;}
 div#overlay main.overlay div.head div.cover {background:linear-gradient(transparent,#181818);}
-div#overlay main.overlay div.head div.cover div.label {color:white; /* padding:0 2rem; */ margin-bottom:1rem;}
+div#overlay main.overlay div.head div.cover div.label {color:white; /* padding:0 2rem; */}
 div#overlay main.overlay div.head div.cover div.label h2.title {font-size:2rem; text-transform:uppercase; margin:0;}
+div#overlay main.overlay div.head div.cover div.label h3.eyebrow {visibility:hidden;}
 div#overlay main.overlay div.head div.cover div.label h3.eyebrow {display:flex; align-items:center; font-size:.75rem; text-transform:uppercase; margin:0;}
 div#overlay main.overlay div.head div.cover div.label h3.eyebrow span.n {font-size:1.5em; color:crimson; margin-right:.25rem;}
 /* div#overlay main.overlay div.head div.cover div.label h3.eyebrow span.caption {} */
-div#overlay main.overlay div.head div.cover div.panel {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; /* padding:0 2rem; */}
+div#overlay main.overlay div.head div.cover div.panel {display:flex; flex-direction:row; justify-content:flex-start; align-items:center; /* padding:0 2rem; */ margin-top:1rem;}
 div#overlay main.overlay div.head div.cover div.panel div.btn {color:white; margin-right:.5rem; cursor:pointer;}
 div#overlay main.overlay div.head div.cover div.panel div.btn.play {background-color:white; color:black; padding:.25rem .75rem .1rem; border-radius:.25rem;}
 div#overlay main.overlay div.head div.cover div.panel div.btn.play {display:flex; flex-direction:row; align-items:center;}

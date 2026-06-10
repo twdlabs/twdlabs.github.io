@@ -1,6 +1,6 @@
 
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700&display=swap');
 
 
 
@@ -11,23 +11,34 @@
 :root {
 
 	/* Numbers */
-	font-size:1vw;
+	font-size:1vmax;
+	/* font-size:1vh; */
+	/* font-size:1vw; */
+
+	/* Numbers */
 	--rowgap:3rem;
 	--cellgap:.25rem;
 	--edgewidth:3.5rem;
-	/* --pagewidth:75rem; */
-	/* --pagewidth:50rem; */
+	--slidercorner:.375rem;
 	/* Aspect Ratio */
 	--billboardlevel:40%;
 	--billboardrowaspectratio:50%;
 	--billboardrowaspectratio:40%;
+	--billboardrowaspectratio:max( 10vh , 40% , 37.5vh );
 	--billboardposteraspectratio:57.14285714%;
-	--thumbnailaspectratio:56.25%;
+	--billboardposteraspectratio:max( 10vh , 57.14285714% , 50vh );
+	--thumbnailaspectratio:33.3%;
+	--thumbnailaspectratio:40%;
+	/* --thumbnailaspectratio:56.25%; */
+	--thumbnailaspectratio:60%;
+	/* --thumbnailaspectratio:75%; */
+	/* --thumbnailaspectratio:100%; */
 	--shiftbtnwidth:var(--edgewidth);
 	/* --shiftbtnwidth:calc( var(--edgewidth) - var(--cellgap) ); */
 	--sliderpagedelta:0;
 	--slideritemsperpage:5;
 	--sliderpagewidth:calc( 100vw - 2*var(--shiftbtnwidth) );
+	--rowslidetime:.5s;
 
 	/* Theme Colors */
 	--teal:#54b9c5;
@@ -78,6 +89,10 @@
 	--billboardleftedgegradient:linear-gradient( 75deg , var(--drkblackglass) , transparent 85% );
 	/* --billboardleftedgegradient:linear-gradient( 75deg , black , white 85% ); */
 	--billboardbottomedgegradient:linear-gradient( 180deg , var(--blk0) , var(--blk1) , var(--blk2) , var(--blk4) , var(--blkfull) , var(--blkfull) );
+
+	/* Box Shadows */
+	--boxshadow:0 0 1rem 0 #0002;
+	--boxshadow:0 0 .25rem 0 #0003;
 }
 
 :root {--slideritemsperpage:5;}
@@ -106,12 +121,13 @@ div#container nav.navbar {background:var(--navbargradient); color:var(--navbarof
 div#container nav.navbar.scr {background-color:var(--blkfull);}
 div#container nav.navbar a.homelink {color:inherit; text-decoration:none; margin-right:.75rem;}
 div#container nav.navbar a.homelink img.logo {background-color:red; height:2.75rem; width:8rem; border:0 none;}
-div#container nav.navbar a.homelink img.logo[src='xyz'],
-div#container nav.navbar a.homelink img.logo[src=''] {background-color:transparent; color:red; font-size:2rem; font-weight:bold; letter-spacing:-.125rem; text-transform:uppercase;}
+div#container nav.navbar a.homelink img.logo {display:block; object-fit:contain;}
+div#container nav.navbar a.homelink img.logo/* [src='xyz'],
+div#container nav.navbar a.homelink img.logo[src=''] */ {background-color:transparent; color:red; font-size:1.5rem; font-weight:700; letter-spacing:-1px; text-transform:uppercase;}
 div#container nav.navbar ul.navlist {display:flex; flex-direction:row;}
 div#container nav.navbar ul.navlist {list-style:none; padding:0; margin:0;}
 div#container nav.navbar ul.navlist li.navitem {margin-left:1.5rem;}
-div#container nav.navbar ul.navlist li.navitem a.navlink {color:inherit; font-size:.875rem; font-weight:bold; text-decoration:none;}
+div#container nav.navbar ul.navlist li.navitem a.navlink {color:inherit; font-size:.75rem; /* font-weight:bold; */ text-decoration:none;}
 div#container nav.navbar ul.navlist li.navitem a.navlink.current {color:white;}
 /* div#container nav.navbar ul.navlist li.navitem a.navlink:hover {} */
 
@@ -125,15 +141,24 @@ div#container div.app h1.apphead {width:1px; height:1px; overflow:hidden; margin
 
 
 
-
 /* General Row */
 div#container div.app div.row {position:relative; margin-top:var(--rowgap);}
 /* div#container div.app div.row {min-height:10em; border-bottom:.125rem solid lime; border-color:var(--blkfull);} */
+/* div#container div.app div.grid {} */
+
+/* Billboard Row */
+/* div#container div.app div.bbrow {} */
+/* div#container div.app div.bbrow {opacity:.0125;} */
+/* div#container div.app div.row-b {} */
+
+/* Media Slide Row */
+/* div#container div.app div.sldrow {} */
+/* div#container div.app div.row-s {} */
 
 
 
 /* Billboard Row */
-div#container div.app div.bbrow {/* opacity:.0125; */ height:0; padding-bottom:var(--billboardrowaspectratio); margin:0;}
+div#container div.app div.bbrow {height:0; transition:.5s; padding-bottom:var(--billboardrowaspectratio); margin:0;}
 
 /* Billboard: Poster */
 div#container div.app div.bbrow div.billboard {position:absolute; inset:0; bottom:auto; height:0; padding-bottom:var(--billboardposteraspectratio);}
@@ -152,18 +177,19 @@ div#container div.app div.bbrow div.billboard div.mediaposter div.gradient.botto
 /* Billboard: Vignette Poster */
 /* div#container div.app div.bbrow div.billboard div.poster {} */
 div#container div.app div.bbrow div.billboard div.poster div.vignette {position:absolute; bottom:var(--billboardlevel); left:var(--edgewidth); width:33%;}
-div#container div.app div.bbrow div.billboard div.poster div.vignette {color:white; font-size:1.375rem;}
-div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:6rem; font-weight:bold; white-space:nowrap;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette {color:white; font-size:1.375rem; transition:.5s;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:6rem; font-weight:bold; line-height:1; /* white-space:nowrap; */ transition:.5s;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediaepisode {margin-top:.25em;}
-div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediadescription {margin-top:.25em;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediadescription {font-weight:300; margin-top:.5em;}
+
 /* Billboard: Vignette Action Box */
-div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox {display:flex; flex-direction:row; align-items:center; grid-gap:.5rem; margin-top:1.375em;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox {display:flex; flex-direction:row; align-items:center; grid-gap:.5rem; margin-top:1em;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn {display:flex; flex-direction:row; align-items:center;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn {color:inherit; font-weight:bold; text-decoration:none;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn {min-height:2.5em; padding:.25em 1.5em; padding:0 1.5em; border-radius:.25em; /* border:.25rem solid transparent; */}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn:focus {outline:.125rem solid white;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn svg.icon {font-size:1.375em;}
-div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn span.caption {margin-left:.625em;}
+div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.btn span.caption {white-space:nowrap; margin-left:.625em;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn {background-color:white; color:black;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn:hover {background-color:var(--whitesheet1);}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.playbtn:active {background-color:var(--whiteglass); color:var(--drkblacksheet);}
@@ -172,6 +198,7 @@ div#container div.app div.bbrow div.billboard div.poster div.vignette div.action
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.morebtn {background-color:var(--greysheet); color:white;}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.morebtn:hover {background-color:var(--greyglass);}
 div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox a.morebtn:active {background-color:var(--greyglass); color:var(--whitesheet);}
+
 /* Billboard: Vignette Rating Box */
 div#container div.app div.bbrow div.billboard div.poster div.ratingbox {position:absolute; bottom:var(--billboardlevel); right:0;}
 div#container div.app div.bbrow div.billboard div.poster div.ratingbox div.rating {background-color:var(--ltrblackglass); color:white; font-size:.75em; font-size:1.5rem; height:2em; width:8em;}
@@ -185,18 +212,20 @@ div#container div.app div.sldrow {/* display:none; */--sliderpagedelta:0;}
 /* div#container div.app div.sldrow {opacity:.25;} */
 
 /* Media Slide: Head */
-div#container div.app div.sldrow h2.rowhead {color:white; font-size:1.5rem; font-weight:bold; padding:0 var(--edgewidth); margin:0;}
+div#container div.app div.sldrow h2.rowhead {color:white; font-size:1.5rem; font-size:1.875rem; font-weight:bold; padding:0 var(--edgewidth); margin:0;}
 div#container div.app div.sldrow h2.rowhead {display:flex; flex-direction:row; align-items:center; justify-content:space-between;}
 div#container div.app div.sldrow h2.rowhead a.rowtitle {display:flex; align-items:center;}
 div#container div.app div.sldrow h2.rowhead a.rowtitle {color:inherit; text-decoration:none;}
-div#container div.app div.sldrow h2.rowhead a.rowtitle svg.icon {color:var(--teal); font-size:.5em; margin-left:.5em; margin-top:.25rem;}
-div#container div.app div.sldrow h2.rowhead a.rowtitle svg.icon {visibility:hidden;}
 div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption {display:flex; align-items:center;}
-div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; margin-top:.25rem;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle svg.chevronarrow {color:var(--teal); font-size:.5em; margin-left:.5em; /* margin-top:.25rem; */}
+div#container div.app div.sldrow h2.rowhead a.rowtitle svg.chevronarrow {visibility:hidden;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {color:var(--teal); font-size:.625em; white-space:nowrap; margin-left:1em; /* margin-top:.25rem; */}
+div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {content:'Explore All'; --fullwidth:5.25em;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {content:'See More'; --fullwidth:4.5em;}
 div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {width:0; transform:translateX(-1rem);}
 div#container div.app div.sldrow h2.rowhead a.rowtitle span.caption::after {overflow:hidden; opacity:0; visibility:hidden; transition:.5s;}
-div#container div.app div.sldrow h2.rowhead a.rowtitle:hover svg.icon {visibility:visible;}
-div#container div.app div.sldrow h2.rowhead a.rowtitle:hover span.caption::after {width:5rem; transform:none;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle:hover svg.chevronarrow {visibility:visible;}
+div#container div.app div.sldrow h2.rowhead a.rowtitle:hover span.caption::after {width:var(--fullwidth); transform:none;}
 div#container div.app div.sldrow h2.rowhead a.rowtitle:hover span.caption::after {opacity:1; visibility:visible;}
 div#container div.app div.sldrow h2.rowhead ul.dotlist {list-style:none; padding:0; margin:0;}
 div#container div.app div.sldrow h2.rowhead ul.dotlist {display:flex; flex-direction:row; grid-gap:.125rem;}
@@ -207,35 +236,39 @@ div#container div.app div.sldrow h2.rowhead ul.dotlist li.dot.on {background-col
 div#container div.app div.sldrow div.rowbody {position:relative; overflow:hidden; margin-top:.625rem;}
 /* div#container div.app div.sldrow div.rowbody div.slider {display:flex; flex-direction:row; align-items:center;} */
 div#container div.app div.sldrow div.rowbody div.slider {overflow:auto; overflow:visible; scrollbar-width:none; z-index:10; margin:0 var(--edgewidth);}
+
 /* Media Slide: Media List */
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {list-style:none; padding:0; margin:0;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {display:flex; flex-direction:row; align-items:center; /* grid-gap:var(--cellgap); */}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {width:fit-content; /* padding:0 var(--edgewidth); */}
 /* div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX(0);} */
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist {transform:translateX( calc( -1 * var(--sliderpagewidth) * var(--sliderpagedelta) ) );}
-div#container div.app div.sldrow div.rowbody div.slider.smooth ul.medialist {transition:.5s;}
+div#container div.app div.sldrow.smooth div.rowbody div.slider ul.medialist {pointer-events:none; transition:var(--rowslidetime);}
 /* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {opacity:.25; border:var(--cellgap) solid; border-color:red olivedrab orange blueviolet;} */
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {--slideritemsize:calc( var(--sliderpagewidth) / var(--slideritemsperpage) );}
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {width:var(--slideritemsize); transition:.125s; padding:0 .125rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem {width:var(--slideritemsize); transition:.125s; padding:0 var(--cellgap);}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {display:block; width:100%;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink {color:inherit; color:white; text-decoration:none;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {/* background-color:lawngreen; */ position:relative; padding-bottom:var(--thumbnailaspectratio);}
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {overflow:hidden; border-radius:.375rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview {overflow:hidden; border-radius:var(--slidercorner);}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {position:absolute; inset:0; height:100%; width:100%; z-index:1;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview img.thumbnail {display:block; object-fit:cover;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {position:absolute; inset:0; height:100%; width:100%; z-index:-1;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background-color:var(--ltblack); background-image:linear-gradient(transparent,black);}
-/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background:var(--drkblackglass); z-index:2;} */
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {position:absolute; inset:0; top:auto; padding:10%;}
-div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {font-size:1.5rem; font-weight:bold; text-align:center;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext {background:var(--drkblackglass); opacity:.625; z-index:2;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {position:absolute; inset:0;}
+/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {top:auto; padding:10%;} */
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {bottom:auto; right:auto; padding:.75rem;}
+div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {font-size:1.5rem; font-size:1.375rem; font-weight:bold; text-align:center;}
 div#container div.app div.sldrow div.rowbody div.slider ul.medialist li.mediaitem a.medialink div.preview div.backuptext span.medianame {white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 
 /* Media Slide: Media List Shifters */
 div#container div.app div.sldrow div.rowbody div.shifter {position:absolute; top:0; bottom:0; z-index:20;}
-div#container div.app div.sldrow div.rowbody div.shifter {background-color:var(--blk3); color:white; cursor:pointer; display:grid; place-items:center; min-width:var(--shiftbtnwidth);}
+div#container div.app div.sldrow div.rowbody div.shifter {color:white; cursor:pointer; display:grid; place-items:center; min-width:var(--shiftbtnwidth);}
+div#container div.app div.sldrow div.rowbody div.shifter {background-color:var(--blk3); background-color:transparent; transition:.25s;}
 div#container div.app div.sldrow div.rowbody div.shifter:hover {background-color:var(--blk5);}
-div#container div.app div.sldrow div.rowbody div.shifter.leftbtn {left:0; border-radius:0 .25rem .25rem 0;}
-div#container div.app div.sldrow div.rowbody div.shifter.rightbtn {right:0; border-radius:.25rem 0 0 .25rem;}
+div#container div.app div.sldrow div.rowbody div.shifter.leftbtn {left:0; border-radius:0 var(--slidercorner) var(--slidercorner) 0;}
+div#container div.app div.sldrow div.rowbody div.shifter.rightbtn {right:0; border-radius:var(--slidercorner) 0 0 var(--slidercorner);}
 div#container div.app div.sldrow div.rowbody div.shifter svg.icon {display:none; font-size:2.5rem; transition:.125s;}
 div#container div.app div.sldrow div.rowbody:hover div.shifter svg.icon {display:block;}
 div#container div.app div.sldrow div.rowbody:hover div.shifter:hover svg.icon {transform:scale(1.25);}
@@ -244,16 +277,22 @@ div#container div.app div.sldrow div.rowbody:hover div.shifter:hover svg.icon {t
 
 
 /* Footer */
-div#container footer.footer {color:grey; padding:var(--rowgap) var(--edgewidth); margin-top:var(--rowgap);}
-div#container footer.footer.xyz {height:20rem;}
+div#container footer.footer {color:grey; padding:var(--rowgap) var(--edgewidth); margin-top:calc(2*var(--rowgap)); margin-top:var(--rowgap);}
+div#container footer.footer.xyz {min-height:20rem;}
 /* div#container footer.footer div.links {} */
-/* div#container footer.footer div.sociallinks {} */
-/* div#container footer.footer div.memberlinks {} */
+div#container footer.footer div.legallinks {text-align:center; margin-top:3em;}
+div#container footer.footer div.sociallinks {color:white; font-size:2em;}
+div#container footer.footer div.memberlinks {display:flex; flex-direction:row; gap:.5rem;}
+div#container footer.footer div.memberlinks {display:grid; grid-template-columns:repeat( var(--colcount) , 1fr ); grid-gap:1rem; --colcount:4;}
 div#container footer.footer div.links ul.linklist {list-style:none; padding:0; margin:0;}
-div#container footer.footer div.sociallinks ul.linklist {display:flex; flex-direction:row; align-items:center;}
-div#container footer.footer div.memberlinks ul.linklist {display:grid; grid-template-columns:repeat(4,1fr); grid-gap:1rem;}
+div#container footer.footer div.sociallinks ul.linklist {display:flex; flex-direction:row; align-items:center; /* gap:1em; */}
+div#container footer.footer div.memberlinks ul.linklist {display:flex; flex-direction:column; /* align-items:center; */}
 /* div#container footer.footer div.links ul.linklist li.linkitem {} */
+div#container footer.footer div.sociallinks ul.linklist li.linkitem {padding:0 .625em;}
+div#container footer.footer div.memberlinks ul.linklist li.linkitem {margin-top:1em;}
 div#container footer.footer div.links ul.linklist li.linkitem a.link {color:inherit; text-decoration:none;}
+/* div#container footer.footer div.links ul.linklist li.linkitem a.link svg.icon {} */
+/* div#container footer.footer div.links ul.linklist li.linkitem a.link span.caption {} */
 
 
 
@@ -263,19 +302,225 @@ div#container footer.footer div.links ul.linklist li.linkitem a.link {color:inhe
 /* Large Smartphone */
 @media screen and (max-width:64rem) {
 
+
 	:root {--slideritemsperpage:4;}
+
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+
+
+	/* App */
+	/* div#container div.app {} */
+	/* div#container div.app h1.apphead {} */
+
+	/* General Row */
+	/* div#container div.app div.row {} */
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Billboard: Poster */
+	/* div#container div.app div.bbrow div.billboard {} */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* Billboard: Media Poster */
+	/* div#container div.app div.bbrow div.billboard div.mediaposter {} */
+	/* Billboard: Vignette Poster */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette {} */
+	div#container div.app div.bbrow div.billboard div.poster div.vignette {font-size:1.25rem;}
+	div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:5rem;}
+	/* Billboard: Vignette Action Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox {} */
+	/* Billboard: Vignette Rating Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.ratingbox {} */
+
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+	/* Media Slide: Head */
+	/* div#container div.app div.sldrow h2.rowhead {} */
+	/* Media Slide: Body */
+	/* div#container div.app div.sldrow div.rowbody {} */
+	/* Media Slide: Media List */
+	/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist {} */
+	/* Media Slide: Media List Shifters */
+	/* div#container div.app div.sldrow div.rowbody div.shifter {} */
+
+
+	/* Footer */
+	/* div#container footer.footer {} */
 }
 
 
 /* Medium Smartphone */
 @media screen and (max-width:52rem) {
 
+
 	:root {--slideritemsperpage:3;}
+
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+
+
+	/* App */
+	/* div#container div.app {} */
+	/* div#container div.app h1.apphead {} */
+
+	/* General Row */
+	/* div#container div.app div.row {} */
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Billboard: Poster */
+	/* div#container div.app div.bbrow div.billboard {} */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* Billboard: Media Poster */
+	/* div#container div.app div.bbrow div.billboard div.mediaposter {} */
+	/* Billboard: Vignette Poster */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette {} */
+	div#container div.app div.bbrow div.billboard div.poster div.vignette {font-size:1.125rem;}
+	div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:4rem;}
+	/* Billboard: Vignette Action Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox {} */
+	/* Billboard: Vignette Rating Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.ratingbox {} */
+
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+	/* Media Slide: Head */
+	/* div#container div.app div.sldrow h2.rowhead {} */
+	/* Media Slide: Body */
+	/* div#container div.app div.sldrow div.rowbody {} */
+	/* Media Slide: Media List */
+	/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist {} */
+	/* Media Slide: Media List Shifters */
+	/* div#container div.app div.sldrow div.rowbody div.shifter {} */
+
+
+	/* Footer */
+	/* div#container footer.footer {} */
 }
 
 
 /* Small Smartphone */
 @media screen and (max-width:36rem) {
 
+
 	:root {--slideritemsperpage:2;}
+
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+
+
+	/* App */
+	/* div#container div.app {} */
+	/* div#container div.app h1.apphead {} */
+
+	/* General Row */
+	/* div#container div.app div.row {} */
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Billboard: Poster */
+	/* div#container div.app div.bbrow div.billboard {} */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* Billboard: Media Poster */
+	/* div#container div.app div.bbrow div.billboard div.mediaposter {} */
+	/* Billboard: Vignette Poster */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette {} */
+	div#container div.app div.bbrow div.billboard div.poster div.vignette {font-size:1rem;}
+	div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:3rem;}
+	/* Billboard: Vignette Action Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox {} */
+	/* Billboard: Vignette Rating Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.ratingbox {} */
+
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+	/* Media Slide: Head */
+	/* div#container div.app div.sldrow h2.rowhead {} */
+	div#container div.app div.sldrow h2.rowhead ul.dotlist {display:none;}
+	/* Media Slide: Body */
+	/* div#container div.app div.sldrow div.rowbody {} */
+	/* Media Slide: Media List */
+	/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist {} */
+	/* Media Slide: Media List Shifters */
+	/* div#container div.app div.sldrow div.rowbody div.shifter {} */
+
+
+	/* Footer */
+	/* div#container footer.footer {} */
+	/* div#container footer.footer div.memberlinks {--colcount:2;} */
+}
+
+
+/* Small Smartphone */
+@media screen and (max-width:24rem) {
+
+
+	:root {--slideritemsperpage:1;}
+
+
+	/* Navbar */
+	/* div#container nav.navbar {} */
+
+
+	/* App */
+	/* div#container div.app {} */
+	/* div#container div.app h1.apphead {} */
+
+	/* General Row */
+	/* div#container div.app div.row {} */
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+
+	/* Billboard Row */
+	/* div#container div.app div.bbrow {} */
+	/* Billboard: Poster */
+	/* div#container div.app div.bbrow div.billboard {} */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* Billboard: Media Poster */
+	/* div#container div.app div.bbrow div.billboard div.mediaposter {} */
+	/* Billboard: Vignette Poster */
+	/* div#container div.app div.bbrow div.billboard div.poster {} */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette {} */
+	div#container div.app div.bbrow div.billboard div.poster div.vignette {font-size:.875rem;}
+	div#container div.app div.bbrow div.billboard div.poster div.vignette div.mediatitle {font-size:2rem;}
+	/* Billboard: Vignette Action Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.vignette div.actionbox {} */
+	/* Billboard: Vignette Rating Box */
+	/* div#container div.app div.bbrow div.billboard div.poster div.ratingbox {} */
+
+	/* Media Slide Row */
+	/* div#container div.app div.sldrow {} */
+	/* Media Slide: Head */
+	/* div#container div.app div.sldrow h2.rowhead {} */
+	/* Media Slide: Body */
+	/* div#container div.app div.sldrow div.rowbody {} */
+	/* Media Slide: Media List */
+	/* div#container div.app div.sldrow div.rowbody div.slider ul.medialist {} */
+	/* Media Slide: Media List Shifters */
+	/* div#container div.app div.sldrow div.rowbody div.shifter {} */
+
+
+	/* Footer */
+	/* div#container footer.footer {} */
+	div#container footer.footer div.memberlinks {--colcount:2;}
 }

@@ -13,21 +13,18 @@ const overlay = {
 	// Get overlay title. 
 	headtitle: document.querySelector('div#overlay main.overlay div.head div.cover div.label h2.title'),
 	bodytitles: document.querySelectorAll('div#overlay main.overlay div.body section h3.head'),
+
+	// Get all round buttons in the overlay. 
+	roundbtns: document.querySelectorAll('div#overlay main.overlay div.head div.cover div.panel div.btn.round'),
 };
 // console.log('Overlay:',overlay);
-
-// Get all round buttons. 
-const allroundbtns = document.querySelectorAll('div#overlay main.overlay div.head div.cover div.panel div.btn.round');
 
 
 /*****/
 
 
-// Activate overlay button. 
-activateOverlayBtns();
-
 // Load episodes. 
-loadEpisodeData();
+// loadEpisodeData();
 
 
 /*****/
@@ -37,7 +34,7 @@ loadEpisodeData();
 function activateOverlayBtns() {
 
 	// Go thru each round button. 
-	for(btn of allroundbtns) {
+	for(btn of overlay['roundbtns']) {
 		btn.addEventListener('click',toggleBtn);
 	}
 	
@@ -68,7 +65,7 @@ function loadEpisodeData() {
 					<div class="img">
 
 						<!-- img -->
-						<img src="${ episode.thumbnailurl ? episode.thumbnailurl : './../resources/videos/thumbnails/1436812.png' }">
+						<img src="${ episode.thumbnailurl ? episode.thumbnailurl : './../resources/videos/clips/thumbnails/1436812.png' }">
 						<!-- /img -->
 
 					</div>
